@@ -13,31 +13,55 @@ Multichar_Symbols
  Q1 Q2 Q3 Q4 Q5 Q6 Q7 Q8 Q9
  Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8
 
-
-
+! Basic lexica, pointing to the other lexicon files
+! ===============================================
+  
 LEXICON Root
  NounRoot ;
- ProperNoun ;
+! ProperNoun ;
  AdjectiveRoot ;
  VerbRoot ;
- Copula ;
- Negativeverb ;
- Adverb ;
- Particles ;
- Subjunction ;
- Conjunction ;
- Adposition ;
- Postposition ;
- Preposition ;
- Interjection ;
+! Copula ;
+! Negativeverb ;
+! Adverb ;
+! Particles ;
+! Subjunction ;
+! Conjunction ;
+! Adposition ;
+! Postposition ;
+! Preposition ;
+! Interjection ;
  Pronoun ;
 
 ! Sublexica for NounRoot
-!!!!!!!!!!!!!!!!!!!!!!!!
+! ======================
 
+
+! Even-syllable stems
+! -------------------
+
+! 2syll stem with cg (note X1)
 LEXICON MUORRA
  +N: N-EVENSTRONGSTEM ;
  +N:X1 N-EVENWEAKSTEM ;
+
+! 2syll stem without cg (note missing X1)
+LEXICON LÅHKKE
+ +N: N-EVENSTRONGSTEM ;
+ +N: N-EVENWEAKSTEM ;
+
+LEXICON GÅNÅGIS
+ +N: GÅNÅGIS-C ;
+ +N:a GÅNÅGIS-EVEN ;
+
+LEXICON GÅNÅGIS-C
+ +Sg+Nom: K ;
+
+LEXICON GÅNÅGIS-EVEN
+ +Ess:n K ;
+ +Ess:n PxC ;
+ ILL-EVENCASE ;
+ :X1 N-EVENWEAKSTEM ;
 
 LEXICON N-EVENSTRONGSTEM
  NE-EVENCASE ;
@@ -67,15 +91,17 @@ LEXICON N-EVENWEAKSTEM
  +Pl+Gen:j K ;
  +Pl+Acc:jt K ;
  +Pl+Acc:jd PxC ;
+ +Pl+Ill:jda K ;
  +Pl+Ine:jn K ;
  +Pl+Ine:jn PxC ;
  +Pl+Ela:ij K ;
  +Pl+Ela:jst PxC ;
  +Pl+Com:js K ;
-
+! ess & ill pl do not use Px that often, left out.
 
 ! Contracted stems
-!!!!!!!!!!!!!!!!!!
+! ----------------
+
 
 LEXICON SARVES
  :e N-CONTRWEAKSTEM ;
@@ -84,7 +110,7 @@ LEXICON SARVES
 LEXICON N-CONTRWEAKSTEM
  +Sg+Nom:s K ;
  +Sg+Nom:s PxC ;
- +Ess:n ;
+ +Ess:n K ;
  
 LEXICON N-CONTRSTRONGSTEM
  ILL-EVENCASE ;
@@ -92,17 +118,19 @@ LEXICON N-CONTRSTRONGSTEM
 
 
 ! Odd-syllable stems
-!!!!!!!!!!!!!!!!!!!!
+! ------------------
 
-
+! oddsyll, cg, C-final, 2ndsyll vowchange
 LEXICON ÅRES
  NE-ODDCASE ;
  OTH-ODDCASE ;
 
+! oddsyll, cg, C-final, no 2ndsyll vowchange
 LEXICON GÁMAS ! Odd-syllable C-final noun with CG but no VChange
  NE-ODDCASE ;
  OTH-ODDCASE ;
 
+! oddsyll, no cg, no vowchange
 LEXICON GAHPER
  +Sg+Nom: K ;
  +Sg+Nom: PxC ; 
@@ -110,8 +138,8 @@ LEXICON GAHPER
 
 LEXICON NE-ODDCASE
  +Sg+Nom:X1 K ;
- +Sg+Nom: PxC ;
- +Ess:n K ;
+ +Sg+Nom:X1 PxC ;
+ +Ess:X1n K ;
 
 LEXICON OTH-ODDCASE
  +Sg+Gen:a K ;
@@ -136,6 +164,21 @@ LEXICON OTH-ODDCASE
  +Pl+Ela:ijs K ;
  +Pl+Ela:ijst PxC ;
  +Pl+Com:ij K ;
+
+
+! Sublexica for AdjectiveRoot
+! ===========================
+
+! Even-syllable stems
+! -------------------
+
+
+
+
+
+
+! Sublexica for possessive suffixes
+! =================================
 
 LEXICON PxV
  +PxSg1:m K ;
@@ -165,7 +208,7 @@ LEXICON PxC
 LEXICON PxCc
  +PxSg3:is K ;
  +PxDu1:imme K ;
- +PxDu2:ihttea K ;
+ +PxDu2:ihtte K ;
  +PxDu3:iskká K ;
  +PxPl1:imme K ;
  +PxPl2:ihtte K ;
