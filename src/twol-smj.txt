@@ -13,11 +13,11 @@ Alphabet
 
 Sets
  Vow = a á e i o u y æ ä ø ö å ;
- Cns = b c d f g h j k l m n ñ p q r s t v w x z ;
+ Cns = b c d f g g2 h h2 j k l m m2 n n2 ñ p q r s t v w x z ;
  DelCns = g2 m2 n2 h2 ;
- WeG = X1 X2 ;
- StemCns = b d g h j l m n ñ r s ;
- Dummy = X1 Y1 Q1 ;
+ WeG = X1 X2 X3 ;
+ StemCns = b d g g2 h h2 j l m m2 n n2 ñ r s ;
+ Dummy = X1 X2 X3 Y1 Q1 ;
 
 Rules
 
@@ -48,9 +48,18 @@ Cy:0 <=> Vow: Cx: _ #: ;
 ! jågåsj:jågåtja
 
 "Word Final Deletion of n2 m2 g2 h2"
-  Cx:0 <=> Vow _ [ X4: | X8: | X6: Cns: | X9: ] ;
+  Cx:0 <=> Vow _  X3:  ;
 			where Cx in (DelCns) matched ;
+! The twol-sme had [X4:|X8:|X6: Cons:|X9:], be prepared to 
+! expand this rule accordingly.
 
+
+"Word Final Neutralization of g2, h2, m2"
+  Cx:Cy <=> Vow _  X2: #: ;
+			where Cx in (g2 h2 m2)
+				Cy in (t t n)
+			matched ;
+! The twol-sme had [X2: | X7: ], be prepared to expand this rule accordingly.
 
 ! Vowel lengthening
 ! -----------------
