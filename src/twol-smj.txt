@@ -18,9 +18,9 @@ Sets
  Cns = b b3 c d d3 f g g2 g3 h h2 h3 j k l m m2 m3 n n2 ñ 
        p q r s t v w x z ;
  DelCns = g2 m2 n2 h2 ;
- WeG = X2 X3 Q1 Q2 Q3 ;
+ WeG = X2 X3 X7 Y5 Q1 Q2 Q3 ;
  StemCns = b b3 d d3 g g2 g3 h h2 h3 j l m m2 m3 n n2 ñ r s ;
- Dummy = X2 X3 X4 X5 X6 Y1 Y2 Y3 Q1 Q2 Q3 ;
+ Dummy = X2 X3 X4 X5 X6 X7 Y1 Y2 Y3 Y4 Y5 Q1 Q2 Q3 ;
 
 
 Rules
@@ -44,12 +44,13 @@ Rules
 ! iemet:iemeda
 
 "Word final weakening -tj and -ttj to -sj"
- t:s <=> Vow: _ ( t: ) j ( Dummy: ) #: ;
-! jågåsj:jågåtja
+ t:s <=> Vow: ( Dummy: ) _ ( t: ) j ( Dummy: ) #: ;
+! jågåsj:jågåtja 
 
 !"Word final weakening of -ttj to -sj"
 ! t:0 <=> Vow: t:s _ j #: ;
-! oajválattja : oajválasj
+! oajválattja : oajválasj This is moved to the t:0 rule set.
+! Still, this will fail if and when clitics are added to the word.
 
 "Word Final Deletion of n2 m2 g2 h2"
   Cx:0 <=> Vow _  X3: ;
@@ -126,12 +127,14 @@ Rules
 	 Cns _ Y2: ; ! Indicative Present Singular 3rd Final Vowel in verbs
 	 Cns _ Y3: ; ! PrsPrc, gállet : gállám
 	 [ Vow - å ] Cns:* _ Q2: ; ! gállet : gáláv
-
+	 Cns:* _ X7: ; ! báhko : bágusj, goahte : godásj
 ! e:á <=> [ Vow: - å ] Cns* _ X4:0 [ j #: | s Vow: ] ;
 ! The first subrule gives Ill. sg. of even-stem
 ! The shorter version is to include contracted N
 ! The second subrule gives oblique of uneven stem
 ! The third one is for verbs
+! The X7 rule could be replaced by a general vowel changer, combined with Q1 in
+! the lexicon entry for the Dim suffix.
 
 "e:å in certain stem types with å as root vowel"
  e:å <=> å Cns* _ X4:0 [ j #: | s Vow: ]  ;
@@ -142,6 +145,13 @@ Rules
 ! The second subrule gives oblique of uneven stem
 ! The third one is vowel harmony, e:å after root vowel å
 
+"e:u in Verb Derivations"
+ e:u <=> Cns* _ Y4:0 ; 
+! árret : árrusit
+
+"e:a in Verb Derivation"
+ e:a <=> Cns* _ Y5:0 ;
+! vaddet : vattatjit
 
 ! o-stem alternations
 ! - - - - - - - - - -
@@ -332,6 +342,8 @@ t:0 <=> Vow: [j|ñ|r|v] _ t Vow: ( StemCns: ) WeG: ; ! S3 jtt:jt etc.
 	Vow: [b|j|v] _ t s Vow: ( StemCns: ) WeG: ; ! S3
 	Vow: h: _ t ( [ j|s ] ) Vow: ( StemCns: ) WeG: ; ! S4 htt(j)
 	Vow: t:s _ j #: ; ! Word final weakening of -ttj to -sj
+! This last rule will fail if and when clitics are added to the word.
+! Note that there is no weak grade clitic here.
 
 !"Gradation Series 4, II-I, h Loss 1"
 !h:0 <=> Vow: _ [ k: | p: | t: ] Vow: ( StemCns: ) WeG: ;
