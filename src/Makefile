@@ -4,7 +4,7 @@
 
 # This goal is to build the final analyser. It depends on all the files.
 
-smj.fst: smj.save caseconv.fst tok.fst
+smj.fst: smj.save caseconv.fst spellrelax.fst tok.fst
 	@echo
 	@echo "*** Building smj.fst ***" ;
 	@echo
@@ -14,7 +14,20 @@ smj.fst: smj.save caseconv.fst tok.fst
 	@xfst < /tmp/smj-fst-script
 	@rm -f /tmp/smj-fst-script
 
-# The second goal il to build the caseconv.fst file
+
+# This goal is to allow for ä/æ and ö/ø mix
+
+spellrelax.fst: spellrelax.regex
+	@echo
+	@echo "*** Building spellrelax.fst ***" ;
+	@echo
+	@printf "read regex < spellrelax.regex \n\
+	save stack spellrelax.fst \n\
+	quit \n" > /tmp/spellrelax-script
+	@xfst < /tmp/spellrelax-script
+	@rm -f /tmp/spellrelax-script
+
+# The second goal is to build the caseconv.fst file
 # This goal depends on case.regex
 
 caseconv.fst: case.regex
