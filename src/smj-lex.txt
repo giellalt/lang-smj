@@ -14,10 +14,12 @@ Multichar_Symbols
  m3 d3 
  X1 X2 X3 X4 X5 X6 X7 X8 X9
  Q1 Q2 Q3 Q4 Q5 Q6 Q7 Q8 Q9
- Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8
+ Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9
 
+
+! =================================================
 ! Basic lexica, pointing to the other lexicon files
-! ===============================================
+! =================================================
   
 LEXICON Root
  NounRoot ;
@@ -36,6 +38,9 @@ LEXICON Root
 Numeral ;
  Punctuation ;
 
+
+
+! ======================
 ! Sublexica for NounRoot
 ! ======================
 
@@ -91,8 +96,8 @@ LEXICON N-EVENWEAKSTEM
  +Sg+Ine:n PxCi ;
  +Sg+Ela:s K ;
  +Sg+Ela:st PxCi ;
- +Sg+Com:jn K ;
- +Sg+Com:jn PxCi ;
+ +Sg+Com:X5jn K ; ! X5 for o:u in ComSg. Note two dummies in a row!
+ +Sg+Com:X5jn PxCi ;
  +Pl+Nom: K ;
  +Pl+Gen:j K ;
  +Pl+Acc:jt K ;
@@ -209,6 +214,9 @@ LEXICON N-CONTRSTRONGSTEM
  N-EVENWEAKSTEM ;
 
 
+
+
+! ===========================
 ! Sublexica for AdjectiveRoot
 ! ===========================
 
@@ -338,6 +346,9 @@ LEXICON BUOREMUS-OBL
 
 
 
+
+
+! ======================
 ! Sublexica for VerbRoot
 ! ======================
 
@@ -356,15 +367,18 @@ LEXICON FINITE-EVEN
 +Ind+Prs: I-even-V ;
 +Ind+Prt: II-even-V ;
 +Pot:Q1tj I-odd-V ;
-+Imprt: K ;
-+ImprtII: K ; 
++Imprt+Sg2:Q1 K ; ! Basic Imperative, like ConNeg
++Imprt+Du2: K ; ! Ad hoc solution. We need a II => III operation here !! (todo)
++Imprt:Y1 IMP1-EVEN ;
++ImprtII:Y1u IMP2-EVEN ; 
 +Inf:t K ;
 +PrfPrc:m K ;
 +Ger:min K ;
 +Sup:Q1tjit K ;
 +VAbess:Q1k K ;
 +VGen:Q1 K ;
-+Ind+Prs+ConNeg: K ;
++Ind+Prs+ConNeg:Q1 K ;
+
 
 ! Odd-syllable stems
 ! ------------------
@@ -376,16 +390,16 @@ LEXICON FINITE-UNEVEN
  +Ind+Prs: I-odd-V ;
  +Ind+Prt: II-odd-V ;
  +Pot:ittja I-even-V ;
-
-+Imprt: K ; ! TODO: Imperatives
-+ImprtII: K ; 
-+Inf:it K ;
-+PrfPrc:am K ;
-+Ger:ime K ;
-+Sup:ittjat K ;
-+VAbess:ik K ;
-+VGen:a K ;
-+Ind+Prs+ConNeg:a K ;
+ +Imprt+Sg2:a K ;
+ +Imprt: IMP1-UNEVEN ; 
+ +ImprtII:u IMP2-UNEVEN ; 
+ +Inf:it K ;
+ +PrfPrc:am K ;
+ +Ger:ime K ;
+ +Sup:ittjat K ;
+ +VAbess:ik K ;
+ +VGen:a K ;
+ +Ind+Prs+ConNeg:a K ;
 
 ! Contracted stems
 ! ----------------
@@ -396,8 +410,12 @@ LEXICON OADDÁT
 LEXICON FINITE-CONTRACTED
  +Ind+Prs: I-contr-V ;
  +Ind+Prt: II-contr-V ;
- +Imprt: K ;
- +ImprtII: K ; 
+ +Imprt+Du2:jihtte K ;
+ +Imprt+Pl2:jip K ;
+ +Imprt:ji IMP-CONTRACTED ;
+ +ImprtII+Du2:juhtu K ;
+ +ImprtII+Pl2:juhtut K ;
+ +ImprtII:ju IMP-CONTRACTED ; 
  +Inf:t K ;
  +PrfPrc:m K ;
  +Ger:min K ;
@@ -406,19 +424,22 @@ LEXICON FINITE-CONTRACTED
  +VGen: K ;
  +Ind+Prs+ConNeg: K ;
 
+
+
+
 ! Intermediate suffix lexica
 ! --------------------------
 
 LEXICON I-even-V
  :Q2 I-sg12 ; ! Q2 governs WeG and e:á
- :Y2 I-sg3 ;
-     I-du23pl12 ;
- :Y1 I-du1pl3 ;
+ :Y2 I-sg3 ;  ! Y2 gives á in sg3 of verbs
+     I-du23pl12 ; ! No diacritic, no stem changes
+ :Y1 I-du1pl3 ; ! Y1 deletes stem vowels in front of j
 
 LEXICON II-even-V
- :Y1 II-sg12pl3 ;
- :X2 II-other ;
-
+ :Y1 II-sg12pl3 ; ! Y1 deletes stem vowels in front of j
+ :Q1 II-other ; ! ! Q1, WeG. Q1 deletes stem vow bef. j
+! Y1 does not give WeG as Q1 does, therefore the split
 
 LEXICON II-odd-V
  II-sg12pl3 ;
@@ -486,6 +507,66 @@ LEXICON II-other
 +Du3:jga K ;
 +Pl1:jma K ;
 +Pl2:jda K ;
+
+
+! Other series
+! - - - - - - 
+
+
+LEXICON IMP1-EVEN
+ +Sg3:is K ;
+ +Du1:on K ;
+ +Du3:iska K ;
+ +Pl1:op K ;
+ +Pl2:it K ;
+ +Pl3:isa K ;
+
+LEXICON IMP2-EVEN
+ +Sg2: K ;
+ +Sg3:s K ;
+ +Du1:n K ;
+ +Du2:da K ;
+ +Du3:ska K ;
+ +Pl1:p K ;
+ +Pl2:t K ;
+ +Pl3:sa K ;
+
+
+
+LEXICON IMP1-UNEVEN
+ +Sg3:is K ;
+ +Du1:in'no K ;
+ +Du2:ihtte K ;
+ +Du3:isá K ;
+ +Pl1:ip K ;
+ +Pl2:it K ;
+ +Pl3:isá K ;
+
+LEXICON IMP2-UNEVEN
+ +Sg2: K ;
+ +Sg3:s K ;
+ +Du1:n'no K ;
+ +Du2:htu K ;
+ +Du3:ska K ;
+ +Pl1:p K ;
+ +Pl2:htut K ;
+ +Pl3:sá K ;
+
+
+LEXICON IMP-CONTRACTED !Imp1 & Imp2 have common suffs
+ +Sg2: K ;
+ +Sg3:s K ;
+ +Du1:n'no K ;
+ +Du3:ska K ;
+ +Pl1:p K ;
+ +Pl3:sá K ;
+
+
+
+
+
+
+
 
 ! Auxiliary verbs
 ! ---------------
