@@ -17,9 +17,9 @@ Sets
        é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý ;
  Cns = b c d f g g2 h h2 j k l m m2 n n2 ñ p q r s t v w x z ;
  DelCns = g2 m2 n2 h2 ;
- WeG = X1 X2 X3 Q2 ;
+ WeG = Q1 X2 X3 Q2 ;
  StemCns = b d g g2 h h2 j l m m2 n n2 ñ r s ;
- Dummy = X1 X2 X3 X4 Y1 Q1 Q2 ;
+ Dummy = Q1 X2 X3 X4 Y1 Y2 Q2 ;
 
 Rules
 
@@ -80,12 +80,12 @@ Cy:0 <=> Vow: Cx: _ #: ;
 "Compulsatory lengthening in one-letter grade I even-syllables"
 ! a:á <=> Cns Vx Cns:* _ WeG: ; ! old, defect
  a:á <=> Cns Vx [ Cns:0 Cns: | Cns: Cns:0 ] _ WeG: ; ! in grade I
- where Vx in ( a i u ) ; ! not all simple vowels ( e o å ä ) are evidently long!
+ where Vx in ( a i u ) ; ! not all simple vowels ( e o å æ ) are evidently long!
 ! gussa : gusá
 
 "Compulsatory lengthening in palatal grade I even-syllables"
  a:á <=> Cns Vx [ n | s | t ] j _ WeG: ; ! nj, sj, tj in grade I
- where Vx in ( a i u ) ; ! not all simple vowels ( e o å ä ) are evidently long!
+ where Vx in ( a i u ) ; ! not all simple vowels ( e o å æ ) are evidently long!
 ! example?
 
 
@@ -93,7 +93,7 @@ Cy:0 <=> Vow: Cx: _ #: ;
 ! -----------------------
 
 "e:i in e-stems"
- e:i <=> Cns _ X1:0 j ;
+ e:i <=> Cns _ Q1:0 j ;
 
 "e:á before illative j in e-stems with CG"
  e:á <=> [ Vow: - å ] Cns* _ X4:0 j ;
@@ -127,25 +127,26 @@ Cy:0 <=> Vow: Cx: _ #: ;
 	    Vy in ( 0 0 0 u )
 	    matched ;
 
-"ä:e vhenever weak grade"
- ä:e <=> _ Cns Cns:+ WeG: ; ! old without Cns
+"æ:e vhenever weak grade"
+ æ:e <=> _ Cns Cns:+ WeG: ; ! old without Cns
 ! no, this is not WeG only, it requires change to á as well.
 
 "Vovel change in front of stem vowel variation"
- ä:e <=> _ Cns Cns:+ o:u ; ! ditto
+ æ:e <=> _ Cns Cns:+ o:u ; ! ditto
 
 "Stem Vowel in 1st and 2nd Person Singular Present"
   e:á <=> [ Vow - å ] Cns* _ Q2: ;
 ! gállet : gáláv
 
 "e:å after root vowel å"
- e:å <=> å Cns* _ Q2:0 ; ! This is the complement to last rule
+ e:å <=> å Cns:* _ Q2:0 ; ! This is the complement to last rule
 ! gådet : gådåv
+! Cns* was wrong since it required C1:C1, not C1:C2
 
 ! Note the parallel illative rule pair above
 
 "Indicative Present Singular 3rd Final Vowel in verbs"
-  Vx:á <=> Cns _ Q1:0 ;
+  Vx:á <=> Cns _ Y2:0 ;
 			where Vx in (a e ) ;
 ! bassat : bassá,  gállet:gállá
 
@@ -156,22 +157,36 @@ Cy:0 <=> Vow: Cx: _ #: ;
 ! -----------------------
 
 !"Diphtong simplification 1"
-! o:0 <=> Cns _ a:å Cns:* e:i X1:0 ;
+! o:0 <=> Cns _ a:å Cns:* e:i Q1:0 ;
 
 !"Diphtong simplification 2"
-! a:å <=> o:0 _ Cns:* e:i X1:0 ;
+! a:å <=> o:0 _ Cns:* e:i Q1:0 ;
 
 
-"Diphtong simplification 1, initial deletion"
- Vx:0 <=>  _ Vy:Vz ;
- where Vx in ( o i )
-       Vy in ( a e )
-       Vz in ( å ä )
-       matched ;
+!"Diphtong simplification 1, initial deletion"
+! Vx:0 <=>  _ Vy:Vz ;
+! where Vx in ( o i )
+!       Vy in ( a e )
+!       Vz in ( å æ )
+!       matched ;
 ! Deleting the first segment of oa, ie, whenever 2nd segment changes
+! This over-generates, and gives e:æ all over the place, as long as there is a vowel there
 
-"oa:å whenever weak grade in a-stems"
- a:å <=> o: _ Cns:* a ( Cns:0 ) WeG: ;
+
+
+"Diphtong simplification whenever weak grade in a-stems I"
+ Vx:0 <=> _ Vy:Vz Cns:* a ( Cns:0 ) WeG: ;
+      where Vx in ( o i )
+	    Vy in ( a e )
+	    Vz in ( å æ )
+	    matched ;
+
+"Diphtong simplification whenever weak grade in a-stems II"
+ Vy:Vz <=> Vx:0 _ Cns:* a ( Cns:0 ) WeG: ;
+      where Vx in ( o i )
+	    Vy in ( a e )
+	    Vz in ( å æ )
+	    matched ;
 ! boarkka : bårka
 ! loavddag2 : låvdda
 
