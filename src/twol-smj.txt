@@ -18,9 +18,9 @@ Sets
  Cns = b b3 c d d3 f g g2 g3 h h2 h3 j k l m m2 m3 n n2 ñ 
        p q r s t v w x z ;
  DelCns = g2 m2 n2 h2 ;
- WeG = Q1 X2 X3 Q2 ;
+ WeG = X2 X3 Q1 Q2 Q3 ;
  StemCns = b b3 d d3 g g2 g3 h h2 h3 j l m m2 m3 n n2 ñ r s ;
- Dummy = X2 X3 X4 X5 Y1 Y2 Q1 Q2 ;
+ Dummy = X2 X3 X4 X5 X6 Y1 Y2 Q1 Q2 Q3 ;
 
 
 Rules
@@ -29,12 +29,12 @@ Rules
 ! Consonant alternations in certain pos
 ! -------------------------------------
 
-"Word final double consonant simplification"
-Cy:0 <=> Vow: Cx: _ #: ;
-     where Cx in ( s ) 
-	   Cy in ( s ) 
-	   matched ;
-
+!"Word final double consonant simplification"
+!Cy:0 <=> Vow: Cx: _ #: ;
+!     where Cx in ( s ) 
+!	   Cy in ( s ) 
+!	   matched ;
+! Moved to the CG chapter. But does this rule wait for more cases?
 
 "Word Final Devoicing of Certain Single Consonants d3 etc."
  Cx:Cy <=> Vow: _ ( Dummy: ) #: ;
@@ -47,8 +47,8 @@ Cy:0 <=> Vow: Cx: _ #: ;
  t:s <=> Vow: _ ( t: ) j ( Dummy: ) #: ;
 ! jågåsj:jågåtja
 
-"Word final weakening of -ttj to -sj"
- t:0 <=> Vow: t:s _ j #: ;
+!"Word final weakening of -ttj to -sj"
+! t:0 <=> Vow: t:s _ j #: ;
 ! oajválattja : oajválasj
 
 "Word Final Deletion of n2 m2 g2 h2"
@@ -74,27 +74,27 @@ Cy:0 <=> Vow: Cx: _ #: ;
 ! iemet:iemeda
 
 
-"Deleting Final Cns in Short Essive of Uneven Syllables"
- Cx:0 <=> Vow: _ Q1: X1: n ;
-      where Cx in ( s m h ) ;
+!"Deleting Final Cns in Short Essive of Uneven Syllables"
+! Cx:0 <=> Vow: _ Q1: X1: n ;
+!      where Cx in ( s m h ) ;
 
 
 
 ! Vowel lengthening
 ! -----------------
 
-"Compulsatory lengthening in one-letter grade I even-syllables"
- a:á <=> Cns Vx [ Cns:0 Cns: | Cns: Cns:0 ] _ WeG: ; ! in grade I
- where Vx in ( a i u ) ; ! not all simple vowels ( e o å æ ) are evidently long!
+"Compulsatory lengthening in grade I even-syllables"
+ a:á <=> Cns [ a|i|u ] [ Cns:0 Cns: | Cns: Cns:0 ] _ WeG: ; ! in grade I
+	 Cns [ a|i|u ] [ n | s | t ] j _ WeG: ; ! nj, sj, tj in grade I
+	 Cns _ Y2:0 ; ! Indicative Present Singular 3rd Final Vowel in verbs
+! where Vx in ( a i u ) ; ! not all simple vowels ( e o å æ ) are evidently long!
 ! gussa : gusá
 
-"Compulsatory lengthening in palatal grade I even-syllables"
- a:á <=> Cns Vx [ n | s | t ] j _ WeG: ; ! nj, sj, tj in grade I
- where Vx in ( a i u ) ; ! not all simple vowels ( e o å æ ) are evidently long!
+!"Compulsatory lengthening in palatal grade I even-syllables"
+! a:á <=> Cns [ a|i|u ] [ n | s | t ] j _ WeG: ; ! nj, sj, tj in grade I
+! where Vx in ( a i u ) ; ! not all simple vowels ( e o å æ ) are evidently long!
 ! example?
-
-
-
+! delete if preceeding works
 
 
 
@@ -113,35 +113,45 @@ Cy:0 <=> Vow: Cx: _ #: ;
 ! - - - - - - - - - -
 
 "e:i in e-stems"
- e:i <=> Cns _ ( Q1:0 ) j ; ! WeG or not, e:i
+ e:i <=> Cns _ ( Q1:0 ) j [ #: | Cns: ] ; ! WeG or not, e:i
 
 "e:á in certain stem types"
- e:á <=> [ Vow: - å ] Cns* _ X4:0 [ j #: | s Vow: ] ;
+ e:á <=> [ Vow: - å ] Cns* _ X4: ; 
 	 [ Vow: - å ] Cns* _ Cns: X5: Vow ;
+	 Cns _ Y2: ; ! Indicative Present Singular 3rd Final Vowel in verbs
+	 [ Vow - å ] Cns:* _ Q2: ; ! gállet : gáláv
+
+! e:á <=> [ Vow: - å ] Cns* _ X4:0 [ j #: | s Vow: ] ;
 ! The first subrule gives Ill. sg. of even-stem
+! The shorter version is to include contracted N
 ! The second subrule gives oblique of uneven stem
+! The third one is for verbs
 
 "e:å in certain stem types with å as root vowel"
  e:å <=> å Cns* _ X4:0 [ j #: | s Vow: ]  ;
 	 å Cns* _ Cns: X5: Vow ;
+	 å Cns:* _ Q2:0 ; ! gådet : gådåv
 ! The first subrule gives Ill. sg. of even-stem
+! No shorter version here, bec. of no å-å effect
 ! The second subrule gives oblique of uneven stem
+! The third one is vowel harmony, e:å after root vowel å
+
+!"e:å after root vowel å"
+! e:å <=> å Cns:* _ Q2:0 ; ! This is the complement to last rule
+! gådet : gådåv
+! Cns* was wrong since it required C1:C1, not C1:C2
 
 
 ! o-stem alternations
 ! - - - - - - - - - -
 
-"o:u in  certain nominal stem types"
- o:u <=> Cns: _ [ X4: | Q1: X5: ] j ; !X4 IllSg, Q1 X5 ComSg.
+"o:u in  certain stem types"
+ o:u <=> Cns: _ [ X4: | Q1: X5: ] ; !X4 IllSg, Q1 X5 ComSg.
          Cns: _ Cns: X5: Vow ;
-! The first subrule gives Ill & Com Sg of o-stem nouns
-! The second subrule gives o:u in odd-syllable nouns
-! 
-! rabo : rahpuga
+	 Cns: _ [ Y1: | Y2: ] ; ! Y1: and Y2 for different verb forms
 
-"o:u in even-syllable verbs"
- o:u <=> Cns: _ [ Y1: | Y2: ] ;
-! Y1: and Y2 for different verb forms
+!"o:u in even-syllable verbs"
+! o:u <=> Cns: _ [ Y1: | Y2: ] ; ! Y1: and Y2 for different verb forms
 
 
 
@@ -149,38 +159,24 @@ Cy:0 <=> Vow: Cx: _ #: ;
 ! alternations valid for several stem types
 ! - - - - - - - - - - - - - - - - - - - - -
 
-!"o:u and e:å in odd-syllable nouns"
-! o:u <=>
-!       where Vx in ( e o )
-!	     Vy in ( å u )
-!	     matched ;
-! rabo : rahpuga
-!bruk berre o:u
-
 "Stem vowel deletion in even-syllable verbs, 1du, 3pl"
- Vx:Vy <=> Cns: _ Y1:0 ;
-      where Vx in ( a å e o )
-	    Vy in ( 0 0 0 u )
-	    matched ;
+ Vx:0 <=> Cns: _ Y1:0 ;
+      where Vx in ( a å e ) ;
 
-
-"Indicative Present Singular 3rd Final Vowel in verbs"
-  Vx:á <=> Cns _ Y2:0 ;
-	where Vx in (a e ) ;
+!"Indicative Present Singular 3rd Final Vowel in verbs"
+!  e:á <=> Cns _ Y2:0 ;
 ! bassat : bassá,  gállet:gállá
 
-"Stem Vowel in 1st and 2nd Person Singular Present"
-  e:á <=> [ Vow - å ] Cns:* _ Q2: ;
+!"Indicative Present Singular 3rd Final Vowel in verbs"
+!  Vx:á <=> Cns _ Y2:0 ;
+!	where Vx in (a e ) ;
+! bassat : bassá,  gállet:gállá
+
+!"Stem Vowel in 1st and 2nd Person Singular Present"
+!  e:á <=> [ Vow - å ] Cns:* _ Q2: ;
 ! gállet : gáláv
 
 
-! Vowel harmony
-! - - - - - - -
-
-"e:å after root vowel å"
- e:å <=> å Cns:* _ Q2:0 ; ! This is the complement to last rule
-! gådet : gådåv
-! Cns* was wrong since it required C1:C1, not C1:C2
 
 
 
@@ -191,14 +187,14 @@ Cy:0 <=> Vow: Cx: _ #: ;
  o:0 <=> [ #: | Cns: | Dummy: ] _ a: Cns:* [ a: | i: ] WeG: ; ! WeG of a- and i-stems
 	 [ #: | Cns: | Dummy: ] _ a: Cns:* e: Q1: j ; ! ComSg & G-C Pl of e-stems
 	 [ #: | Cns: | Dummy: ] _ a: Cns:* e: Y1: ; ! Different verb forms
-	 [ #: | Cns: | Dummy: ] _ a: Cns:* o: ( Dummy:* ) j ; ! even-syll o-stems, before j.
+	 [ #: | Cns: | Dummy: ] _ a: Cns:* o: (Dummy:* - Q3:) j ; ! even-syll o-st, before j.
 	 [ #: | Cns: | Dummy: ] _ a: Cns:* o: Cns: X5: Vow ; ! odd-syll, oblique
 
 "oa:å Diphtong Simplification Part II"
  a:å <=> [ #: | Cns: | Dummy: ] o: _ Cns:* [ a: | i: ] WeG: ; ! WeG of a- and i-stems
 	 [ #: | Cns: | Dummy: ] o: _ Cns:* e: Q1: j ; ! ComSg & G-C Pl of e-stems
 	 [ #: | Cns: | Dummy: ] o: _ Cns:* e: Y1: ; ! Different verb forms
-	 [ #: | Cns: | Dummy: ] o: _ Cns:* o: ( Dummy:* ) j ; ! o-stems, before j.
+	 [ #: | Cns: | Dummy: ] o: _ Cns:* o: ( Dummy:* - Q3: ) j ; ! o-stems, before j.
 	 [ #: | Cns: | Dummy: ] o: _ Cns:* o: Cns: X5: Vow ; ! odd-syll, oblique
 
 ! The rule complexes are identical, but fix different parts of the monophtongisation.
@@ -209,6 +205,8 @@ Cy:0 <=> Vow: Cx: _ #: ;
 	 [ #: | Cns: | Dummy: ] _ Cns:* e: Q1: j ; ! ComSg & G-C Pl of e-stems
 	 [ #: | Cns: | Dummy: ] _ Cns:* o: [ X4: | Q1: X5: ] j ; ! Ill & Com Sg.
 	 [ #: | Cns: | Dummy: ] _ Cns:* o: Cns: X5: Vow ; ! odd-syll, oblique
+	 _ Cns Cns:+ o:u ; ! Vovel change in front of stem vowel variation
+
 
 "ie:æ Diphtong Simplification Part I"
  i:0 <=> [ #: | Cns: | Dummy: ] _ e: Cns:* e: X4: j ; ! Illative j in e-stems with CG
@@ -242,8 +240,8 @@ Cy:0 <=> Vow: Cx: _ #: ;
 
 
 
-"Vovel change in front of stem vowel variation"
- æ:e <=> _ Cns Cns:+ o:u ; ! ditto
+!"Vovel change in front of stem vowel variation"
+! æ:e <=> _ Cns Cns:+ o:u ; ! ditto
 
 
 
@@ -254,154 +252,155 @@ Cy:0 <=> Vow: Cx: _ #: ;
 ! Consonant gradation rules
 ! -------------------------
 
+! New rules, without conflicts
 ! The numbering of rules refer to the overview in Spiiks grammar
+! Thus !S1-3 means "Series 1, 3-letter patterns", etc.
 
-"Gradation Series 1, III-II, three-letter patterns"
- Cx:0 <=> Vow: Cx _ Cy Vow ( StemCns: ) WeG: ;
- where Cx in ( b d d g k l l l m m n p p s s s s ñ ñ )
-       Cy in ( m j n ñ n d j t b p d s t k m n t g k )
-       matched ;
+! Deletion rules
+! - - - - - - - -
 
-"Gradation Series 1, III-II, four-letter patterns"
- Cx:0 <=> Vow: Cx _ Cy Cz Vow ( StemCns: ) WeG: ;
- where Cx in ( d l k n n p p p s s s )
-       Cy in ( n t t t t s t t j j j )
-       Cz in ( j j j j s j j s k m v )
-       matched ;
+"Consonant gradation b:0"
+b:0 <=> Vow: ( b ) _ m Vow: ( StemCns: ) WeG: ; ! S1-3, S1-2
+	Vow: _ [ d | j | l | n | r | s ] Vow: ( StemCns: ) WeG: ; ! S1-2
+	Vow: [ j|l|r ] _ b Vow: ( StemCns: ) WeG: ; ! S3-3
+	Vow: _ b: m Vow: X6: ; ! III-I special gradation
+	Vow: b: _ m Vow: X6: ; ! III-I special gradation
 
-"Gradation Series 1, II-I, two-letter patterns"
- Cx:0 <=> Vow: _ Cy Vow ( StemCns: ) WeG: ;
- where Cx in ( b d d g )
-       Cy in ( m j n ñ )
-       matched ;
+"Consonant gradation d:0"
+d:0 <=> Vow: ( d ) _ [ n | j ] Vow: ( StemCns: ) WeG: ; ! S1-3, S1-2
+	Vow: ( d ) _ n j Vow: ( StemCns: ) WeG: ; ! S1-4 and S1, dnj:nj
+	Vow: [ b | j | r | v ] _ d Vow: ( StemCns: ) WeG: ; ! S3
+	Vow: _ d: n Vow: X6: ; ! III-I special gradation
+	Vow: d: _ n Vow: X6: ; ! III-I special gradation
 
-"Gradation Series 1, II-I, dnj-nj"
- d:0 <=> Vow: _ n j Vow ( StemCns: ) WeG: ;
+"Consonant gradation g:0"
+g:0 <=> Vow: ( g ) _ ñ Vow: (StemCns: ) WeG: ; ! S1-3, S1-2
+	Vow: [ j|l|r|v ] _ g Vow: ( StemCns: ) WeG: ; ! S3
 
-"Gradation Series 2, II-I"
- Cx:0 <=> Vow: Cx _ Vow ( StemCns: ) WeG: ;
- where Cx in ( f l m n ñ r s v ) ;
+"Consonant gradation k:0"
+k:0 <=> Vow: k _ n Vow: ( StemCns: ) WeG: ; ! S1-3
+	Vow: k _ t j Vow: ( StemCns: ) WeG: ; ! S1-4
+	Vow: [ j|l|m|r|v ] _ k Vow: ( StemCns: ) WeG: ; ! S3
+	Vow: h _  k Vow: ( StemCns: ) WeG: ; ! S4, preasp stops
 
-"Gradation Series 2, palatalized snd component"
- Cx:0 <=> Vow: Cx _ j Vow ( StemCns: ) WeG: ;
- where Cx in ( n s ) ;
+"Consonant gradation l:0"
+l:0 <=> Vow: l _ [ d|j|t ] Vow: ( StemCns: ) WeG: ; ! S1-3
+	Vow: l _ t j Vow: ( StemCns: ) WeG: ; ! S1-4
+	Vow: l _ Vow: ( StemCns: ) WeG: ; ! S2, II-I
+	Vow: [ j|b|v ] _ l  Vow: ( StemCns: ) WeG: ; ! S3
 
-"Gradation Series 3, III-II, schwaa alternation, initial b, j, l"
- Cy:0 <=> Vow: Cx _ Cy Vow ( StemCns: ) WeG: ;
- where Cx in ( b b b b b b j j j j j j j j j j j j j l l l l l l l l l l )
-       Cy in ( d j l n r s b d g k l m n ñ p r s t v b f g k m n ñ p s v )
-       matched ;
-
-"Gradation Series 3, III-II, schwaa alternation, initial m, n, ñ, r, v"
- Cy:0 <=> Vow: Cx _ Cy Vow ( StemCns: ) WeG: ;
- where Cx in ( m m n ñ ñ r r r r r r r r r r r r r v v v v v v v v v )
-       Cy in ( k s s n t b d f g j k m n ñ p s t v d g k l n ñ r s t )
-       matched ;
+"Consonant gradation m:0"
+m:0 <=> Vow: m _ [ b|p ] Vow: ( StemCns: ) WeG: ; ! S1-3
+	Vow: m _ Vow: ( StemCns: ) WeG: ; ! S2, II-I
+	Vow: [ j|l|r ] _ m Vow: ( StemCns: ) WeG: ; ! S3
+	Vow: _ Q1: X1: n ; ! Deleting Final Cns in Short Essive of Uneven Syllables
 
 
-"Gradation Series 3, III-II, schwaa alternation, 4-letter combinations"
- Cy:0 <=> Vow: Cx _ Cy Cz Vow ( StemCns: ) WeG: ;
- where Cx in ( b b b j j j l l m m n n r r r r v v v v )
-       Cy in ( n t t s t t s s s s s s n s s t n s t t )
-       Cz in ( j j s t j s j k j t k t j j k j j t j s )
-       matched ;
+"Consonant gradation n:0"
+n:0 <=> Vow: n _ d Vow: ( StemCns: ) WeG: ; ! S1-3
+	Vow: n _ t [ j|s ] Vow: ( StemCns: ) WeG: ; ! S1-4
+	Vow: n _ ( j ) Vow: ( StemCns: ) WeG: ; ! S2, II-I, also palat.
+	Vow: [ b|j|l|ñ|r|v ] _ n Vow: ( StemCns: ) WeG: ; ! S3, III-II
+	Vow: [ b|r|v ] _ n j Vow: ( StemCns: ) WeG: ; ! S3-4, III-II
 
-"Gradation Series 3, III-II, rssjt-rsjt"
- s:0 <=> Vow: r s _ j t Vow ( StemCns: ) WeG: ; ! Vow: to cope with deleted vow
+"Consonant gradation p:0"
+p:0 <=> Vow: p _ [ s|t ] ( j ) Vow: ( StemCns: ) WeG: ; ! S1-3, S1-4 j
+	Vow: p _ t s Vow: ( StemCns: ) WeG: ; ! S1-4 ppts:pts
+	Vow: [ j|l|r|v ] _ p Vow: ( StemCns: ) WeG: ; ! S3 
+	Vow: h _ Vow: ( StemCns: ) WeG: ; ! S4 hpp:hp
 
-!"Gradation Series 4, III-II, preaspirated stops"
-! Cx:0 <=> Vow: h:0 _ Cx Cy Vow ( StemCns: ) WeG: ;
-! where Cx in ( k p t t t ) 
-!       Cy in ( 0 0 0 j s )
-!       matched ;
-!This one not correct. New try below.
+"Consonant gradation s:0"
+s:0 <=> Vow: s _ ( [ j|k|m|n|t ] ) Vow: ( StemCns: ) WeG: ; ! S1-3, S2 II-I
+	Vow: s _ j [ k|m|v ] Vow: ( StemCns: ) WeG: ; ! S1-4
+	Vow: [ b|j|l|m|n|r|v ] _ s Vow: ( StemCns: ) WeG: ; ! S3
+	Vow: [ r|l|m ] _ s j Vow: ( StemCns: ) WeG: ; ! S3-4
+	Vow: [ r|l|n ] _ s k Vow: ( StemCns: ) WeG: ; ! S3-4
+	Vow: [ j|m|n|v ] _ s t Vow: ( StemCns: ) WeG: ; ! S3-4
+	Vow: r s _ j t Vow: ( StemCns: ) WeG: ; ! S3 rssjt:rsjt
+	Vow: s: _ #: ; ! This is a word fin simpl, ss# -> s#, and not CG
+	Vow: _ Q1: X1: n ; ! Deleting Final Cns in Short Essive of Uneven Syllables
 
-"Gradation Series 4, III-II, preaspirated stops"
- Cx:0 <=> Vow: h _ Cx Vow ( StemCns: ) WeG: ;
- where Cx in ( k p t ) ;
-! áhkko : áhko
+"Consonant gradation b:0"
+ñ:0 <=> Vow: ñ _ ( [ g|k ] ) Vow: ( StemCns: ) WeG: ; ! S1-3, S2 II-I
+	Vow: [ j|l|r|v ] _ ñ Vow: ( StemCns: ) WeG: ; ! S3 
 
-"Gradation Series 4, III-II, preaspirated palatal stop"
- t:0 <=> Vow: h _ t [ j | s ] Vow ( StemCns: ) WeG: ;
-! miehttse : miehtse
+	
+"Consonant gradation b:0"
+f:0 <=> Vow: ( [r|l] ) _ f Vow: ( StemCns: ) WeG: ; ! S2 ff:f, S3 rff:rf
 
-"Gradation Series 4, II-I, h Loss 1"
- h:0 <=> Vow: _ Cx: Vow ( StemCns: ) WeG: ;
- where Cx in ( k p t ) ;
+"Consonant gradation r:0"
+r:0 <=> Vow: ( [ b|j|v ] ) _ r Vow: ( StemCns: ) WeG: ; ! S2 rr:r, S3 brr etc.
+
+"Consonant gradation v:0"
+v:0 <=> Vow: ( [ j|l|r ] ) _ v Vow: ( StemCns: ) WeG: ; ! S2 , S3 jvv etc.
+
+"Consonant gradation j:0"
+j:0 <=> Vow: [b|r] _ j Vow: ( StemCns: ) WeG: ; ! S3
+
+"Consonant gradation t:0"
+t:0 <=> Vow: [j|ñ|r|v] _ t Vow: ( StemCns: ) WeG: ; ! S3 jtt:jt etc.
+	Vow: [b|j|r|v] _ t j Vow: ( StemCns: ) WeG: ; ! S3
+	Vow: [b|j|v] _ t s Vow: ( StemCns: ) WeG: ; ! S3
+	Vow: h: _ t ( [ j|s ] ) Vow: ( StemCns: ) WeG: ; ! S4 htt(j)
+	Vow: t:s _ j #: ; ! Word final weakening of -ttj to -sj
+
+!"Gradation Series 4, II-I, h Loss 1"
+!h:0 <=> Vow: _ [ k: | p: | t: ] Vow: ( StemCns: ) WeG: ;
+!	Vow: _ Q1: X1: n ; ! Deleting Final Cns in Short Essive of Uneven Syllables	 
 
 "Gradation Series 4, II-I, tj and ts"
- h:0 <=> Vow: _ t Cx Vow ( StemCns: ) WeG: ;
- where Cx in ( j s ) ;
+ h:0 <=> Vow: _ [ k: | p: | t: ] Vow: ( StemCns: ) WeG: ;
+	 Vow: _ (t:) t [j|s] Vow: ( StemCns: ) WeG: ;
+	 Vow: _ Q1: X1: n ; ! Deleting Final Cns in Short Essive of Uneven Syllables
+! (t:) for III-I CG)
+
+
+! Change rules
+! - - - - - - 
+
 
 "Gradation Series 4, II-I"
- Cx:Cy <=> Vow: h:0 _ Vow ( StemCns: ) WeG: ;
+ Cx:Cy <=> Vow: h:0 _ Vow: ( StemCns: ) WeG: ;
  where Cx in ( k p t )
        Cy in ( g b d )
        matched ;
 
-"Gradation Series 5, III-II, dtj, dts"
- d:t <=> Vow: _ t Cx Vow ( StemCns: ) WeG: ;
- where Cx in ( j s ) ;
+!"Gradation Series 5, III-II, dtj, dts"
+! d:t <=> Vow: _ t Cx Vow: ( StemCns: ) WeG: ;
+! where Cx in ( j s ) ;
 
-"Gradation Series 6, III-II, bb, dd, gg 1"
- Cx:Cy <=> Vow: _ Cx: Vow ( StemCns: ) WeG: ;
- where Cx in ( b d g )
-       Cy in ( p t k )
-       matched ;
+"bb:pp"
+b:p <=> Vow: _ b: Vow: ( StemCns: ) WeG: ;
+	Vow: b: _ Vow: ( StemCns: ) WeG: ;
 
-"Gradation Series 6, III-II, bb, dd, gg 2"
- Cx:Cy <=> Vow: :Cy _ Vow ( StemCns: ) WeG: ;
- where Cx in ( b d g )
-       Cy in ( p t k )
-       matched ;
+"gg:kk"
+g:k <=> Vow: _ g: Vow: ( StemCns: ) WeG: ;
+	Vow: g: _ Vow: ( StemCns: ) WeG: ;
 
-"Gradation Series 7, III-II, ks, kt"
- k:v <=> Vow: _ Cx Vow ( StemCns: ) WeG: ;
- where Cx in ( s t ) ;
-
-"Gradation Series 7, III-II, ktj, kts"
- k:v <=> Vow: _ t Cx Vow ( StemCns: ) WeG: ;
- where Cx in ( j s ) ;
+"dd:tt and dtj, dts"
+d:t <=> Vow: _ d: Vow: ( StemCns: ) WeG: ;
+	Vow: d: _ Vow: ( StemCns: ) WeG: ;
+	Vow: _ t [ j|s ] Vow: ( StemCns: ) WeG: ;
 
 
-
-
-
-
-
-! Deleted rules
-! =============
-
-!"Word final cluster simplification I" ! Pot -sj# 
-! t:0 <=> _ t:0 j #: ;
-!"Word final cluster simplification I"
-! t:0 <=> t:0 _ j #: ;
-!Instead relying on "Word final weakening -tj to -sj"
-
-
-!"Vowel deletion in preterite verbs" ! also other contexts?
-! Vx:0 <=> _ Y1:0 ;
-!      where Vx in ( a å e ) ;
-
-!"Vowel change in preterite verbs"
-! o:u <=> _ Y1:0 ;
-! gáhtot : gáhtuv
-
-
-!"Diphtong simplification 1"
-! o:0 <=> Cns _ a:å Cns:* e:i Q1:0 ;
-
-!"Diphtong simplification 2"
-! a:å <=> o:0 _ Cns:* e:i Q1:0 ;
-
-
-!"Diphtong simplification 1, initial deletion"
-! Vx:0 <=>  _ Vy:Vz ;
-! where Vx in ( o i )
-!       Vy in ( a e )
-!       Vz in ( å æ )
+!"Gradation Series 6, III-II, bb, gg 1"
+! Cx:Cy <=> Vow: _ Cz: Vow: ( StemCns: ) WeG: ;
+! where Cx in ( b d g )
+!       Cy in ( p t k )
+!       Cz in ( b d g )
 !       matched ;
-! Deleting the first segment of oa, ie, whenever 2nd segment changes
-! This over-generates, and gives e:æ all over the place, as long as there is a vowel there
+
+!"Gradation Series 6, III-II, bb, gg 2"
+! Cx:Cy <=> Vow: :Cy _ Vow: ( StemCns: ) WeG: ;
+! where Cx in ( b d g )
+!       Cy in ( p t k )
+!       matched ;
+
+"Gradation Series 7, III-II, ks, kt, ktj, kts"
+ k:v <=> Vow: _ [ s|t ] Vow: ( StemCns: ) WeG: ;
+	 Vow: _ t [ j|s ] Vow: ( StemCns: ) WeG: ;
+
+
+
 
 
