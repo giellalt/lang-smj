@@ -164,9 +164,7 @@ LEXICON GÁMAS ! Odd-syllable C-final noun with CG but no VChange
 
 ! oddsyll, no cg, no vowchange
 LEXICON GAHPER
-! +N+Sg+Nom: K ;
-! +N+Sg+Nom: PxC ; ! superseded by next line
- +N: NE-ODDCASE ;
+ +N: N-ODDCASE ; ! no pointer to E-ODDCASE, as gahper has no short Ess
  +N: OTH-ODDCASE ;
 
 ! oddsyll, cg, vowchange, V-final nominative
@@ -178,9 +176,15 @@ LEXICON BENA
 ! Odd-syllable stems, sublexica
 ! - - - - - - - - - - - - - - - 
 
-LEXICON NE-ODDCASE
+LEXICON NE-ODDCASE ! The lexicon is split bec. of gahper's missing short Ess
+ N-ODDCASE ;
+ E-ODDCASE ;
+
+LEXICON N-ODDCASE
  +Sg+Nom: K ;
  +Sg+Nom: PxC ;
+
+LEXICON E-ODDCASE
  +Ess:X1n K ; ! X1 to delete cns before short ess
 
 LEXICON OTH-ODDCASE
