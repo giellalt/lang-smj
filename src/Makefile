@@ -6,7 +6,7 @@
 # This goal depends on twol-smj.bin and a bunch of lexicon files
 
 smj.save: twol-smj.bin smj-lex.txt noun-smj-lex.txt adj-smj-lex.txt \
-	verb-smj-lex.txt closed-smj-lex.txt
+	adv-smj-lex.txt verb-smj-lex.txt closed-smj-lex.txt
 	@echo
 	@echo
 	@echo
@@ -15,7 +15,8 @@ smj.save: twol-smj.bin smj-lex.txt noun-smj-lex.txt adj-smj-lex.txt \
 	@echo
 	@echo
 	printf "compile-source smj-lex.txt noun-smj-lex.txt \
-	adj-smj-lex.txt verb-smj-lex.txt closed-smj-lex.txt \n\
+	adj-smj-lex.txt verb-smj-lex.txt closed-smj-lex.txt \
+	adv-smj-lex.txt \n\
 	read-rules twol-smj.bin \n\
 	compose-result \n\
 	save-result smj.save \n\
