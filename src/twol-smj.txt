@@ -16,6 +16,16 @@ Sets
 Rules
 
 
+! Consonant alternations in certain pos
+! -------------------------------------
+
+"Word final double consonant simplification"
+Cy:0 <=> Vow: Cx: _ #: ;
+     where Cx in ( s ) 
+	   Cy in ( s ) 
+	   matched ;
+
+
 ! Vowel lengthening
 ! -----------------
 
@@ -34,11 +44,16 @@ Rules
 ! Diphtong simplification
 ! -----------------------
 
+! 
+
 !"Diphtong simplification 1"
 ! o:0 <=> Cns _ a:å Cns:* e:i X1:0 ;
 
 !"Diphtong simplification 2"
 ! a:å <=> o:0 _ Cns:* e:i X1:0 ;
+
+
+
 
 "Diphtong simplification 1, initial deletion"
  Vx:0 <=>  _ Vy:Vz ;
@@ -48,20 +63,30 @@ Rules
        matched ;
 ! Deleting the first segment of oa, ie, whenever 2nd segment changes
 
-"oa:å whenever weak grade"
- a:å <=> o: _ Cns:* WeG: ;
+"oa:å whenever weak grade in a-stems"
+ a:å <=> o: _ Cns:* a WeG: ;
+! boarkka : bårka
+
+!"oa:å
+! here comes the other oa:å rules
 
 "ä:e vhenever weak grade"
  ä:e <=> _ Cns:* WeG: ;
+! no, this is not WeG only, it requires change to á as well.
 
-"Dipthtong simplification in front of stem vowel variation"
- Vx:Vy <=> Vz: _ Cns:* Vv:Vw ;
- where Vx in ( a e )
-       Vy in ( å ä )
-       Vz in ( o i )
-       Vv in ( o e )
-       Vw in ( u á )
-       matched ;
+
+!"Dipthtong simplification in front of stem vowel variation"
+! Vx:Vy <=> Vz: _ Cns:* Vv:Vw ;
+! where Vx in ( a e )
+!       Vy in ( å ä )
+!       Vz in ( o i )
+!       Vv in ( o e )
+!       Vw in ( u á )
+!       matched ;
+! to get rid of -mmá Px
+! This is wrong anyway. it says giesse : giässáj, correct is gässáj
+! I also am afraid that this or next rule is responsible for the *muurra
+! form of muorra
 
 "Vovel change in front of stem vowel variation"
  ä:e <=> _ Cns:* o:u ;
@@ -128,14 +153,14 @@ Rules
  s:0 <=> Vow s _ j t Vow ( StemCns: ) WeG: ;
 
 "Gradation Series 4, III-II, preaspirated stops"
- Cx:0 <=> Vow h _ Cx Cy Vow ( StemCns: ) WeG: ;
+ Cx:0 <=> Vow h:0 _ Cx Cy Vow ( StemCns: ) WeG: ;
  where Cx in ( k p t t t ) 
        Cy in ( 0 0 0 j s )
        matched ;
 
 "Gradation Series 4, II-I, h Loss 1"
  h:0 <=> Vow _ Cx: Vow ( StemCns: ) WeG: ;
- where Cx in ( k p ) ;
+ where Cx in ( k p t ) ;
 
 "Gradation Series 4, II-I, tj and ts"
  h:0 <=> Vow _ t Cx Vow ( StemCns: ) WeG: ;
