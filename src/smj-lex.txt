@@ -5,11 +5,13 @@ Multichar_Symbols
  +Sg +Pl +Nom +Gen +Acc +Ill +Ine +Ela +Com +Ess +Par +Abe
  +PxSg1 +PxSg2 +PxSg3 +PxDu1 +PxDu2 +PxDu3 +PxPl1 +PxPl2 +PxPl3
  +Comp +Superl +Actor
- +Clt +Attr
+ +Clt +Attr +Dim 
  +Pass +Ind +Prs +Prt +Pot +Cond +Imprt +ImprtII +Sup
  +Sg1 +Sg2 +Sg3 +Du1 +Du2 +Du3 +Pl1 +Pl2 +Pl3
  +Inf +Act +Ger +GerII +ConNeg +Neg +PrsPrc +PrfPrc +VGen +VAbess
  +CLB +PUNCT +HYPH +PAR
+ +Der/d +Der/l +Der/st +Der/n +Der/h +Der/s +Der/dahtte +Der/dasste
+ +Der/ladda +Der/stalla +Der/tj
  g2 m2 n2 h2
  b3 d3 g3 m3 h3
  X1 X2 X3 X4 X5 X6 X7 X8 X9
@@ -55,6 +57,7 @@ Numeral ;
 LEXICON MUORRA
  +N: N-EVENSTRONGSTEM ;
  +N:Q1 N-EVENWEAKSTEM ; ! Weak grade Q1
+ +N: DenominalNounsMUORRA ;
 
 ! 2syll stem without cg (note missing Q1) 
 ! Many of these are  pres ptc, they should be derived from
@@ -181,6 +184,7 @@ LEXICON NE-ODDCASE
  +Ess:X1n K ; ! X1 to delete cns before short ess
 
 LEXICON OTH-ODDCASE
+ DenominalNounsODD ;
  +Sg+Gen:a K ;
  +Sg+Gen: PxC ;
  +Sg+Acc:av K ;
@@ -252,6 +256,21 @@ LEXICON CONTR-OTH
  ILL-EVENCASE ;
  N-EVENWEAKSTEM ;
 ! ComSg may cause trouble, since there is a dummy for it
+
+
+
+! Denominal nouns
+! ===============
+
+LEXICON DenominalNounsMUORRA
+ +Dim:X7tj GAHPER ;
+
+LEXICON DenominalNounsODD
+ +Dim+N+Sg+Nom:sj K ;
+ +Dim+N:ttja GÅNÅGIS-EVEN ;
+
+! LEXICON DenominalNounsODD-OBL
+ 
 
 
 
@@ -395,14 +414,48 @@ LEXICON BUOREMUS-OBL
 ! -------------------
 
 LEXICON BASSAT
-+V: FINITE-EVEN ;
+
++V: BASSATStem ;
++V: DeverbalVerbsBASSAT ;
+
+
+LEXICON BASSATStem
+ EVEN-PASSIVE ;
+ BASSATINCH ;
+
+LEXICON EVEN-PASSIVE
+ +Pass+V:Q1duvva INFL-EVEN ;
+ +Pass+V:Q1dalla INFL-EVEN ;
+
+LEXICON BASSATINCH
+ +Inch+V:goahte INFL-EVEN ;
+ INFL-EVEN ;
+ DeverbalNounsBASSAT ;
+
+LEXICON DeverbalVerbsBASSAT
+ +Der/d+V:Q1d INFL-ODD ;
+ +Der/dahtte+V:Q1dahtte INFL-EVEN ;
+ +Der/dasste+V:Q1dasste INFL-EVEN ;
+ +Der/l+V:l INFL-ODD ;
+ +Der/ladda+V:ladda INFL-EVEN ;
+ +Der/s+V:Y4s INFL-ODD ;
+ +Der/st+V:Q1st INFL-ODD ;
+ +Der/stalla+V:Q1stalla INFL-EVEN ;
+ +Der/tj+V:Y5tj INFL-ODD ;
+! +Der/d+V:Q1d DeverbalVerbsJÅLLÅRIT ;
+! double causatives?
+
+LEXICON DeverbalNounsBASSAT
+ # ;
+
+
 
 LEXICON GALGGAT
-+V: FINITE-EVEN ;
++V: INFL-EVEN ;
 ! This is for auxiliaries, they do not have passive.
 ! Thus, when passive is added, it will include BASSAT, but not GALGGAT
 
-LEXICON FINITE-EVEN
+LEXICON INFL-EVEN
 +Ind+Prs: I-even-V ;
 +Ind+Prt: II-even-V ;
 +Pot:Q1tj I-odd-V ;
@@ -430,15 +483,35 @@ LEXICON VSUBST
 ! ------------------
 
 LEXICON JÅLLÅRIT
- +V: FINITE-UNEVEN ;
 
-LEXICON FINITE-UNEVEN
+ +V: JÅLLÅRITStem ;
+ +V: DeverbalVerbsJÅLLÅRIT ;
+
+LEXICON JÅLLÅRITStem
+ ODD-PASSIVE ;
+ JÅLLÅRITINCH ;
+
+LEXICON ODD-PASSIVE
+ +Pass+V:uvva INFL-EVEN ;
+
+LEXICON JÅLLÅRITINCH
+ +Inch+V:goahte INFL-EVEN ;
+ INFL-ODD ;
+ DeverbalNounsJÅLLÅRIT ;
+
+LEXICON DeverbalVerbsJÅLLÅRIT
+ +Der/d+V:ahtte INFL-EVEN ;
+
+LEXICON DeverbalNounsJÅLLÅRIT
+ # ;
+
+LEXICON INFL-ODD
  +Ind+Prs: I-odd-V ;
  +Ind+Prt: II-odd-V ;
  +Pot:ittja I-even-V ;
  +Imprt+Sg2:a K ;
- +Imprt: IMP1-UNEVEN ; 
- +ImprtII:u IMP2-UNEVEN ; 
+ +Imprt: IMP1-ODD ; 
+ +ImprtII:u IMP2-ODD ; 
  +Inf:it K ;
  +PrfPrc:am K ;
  +PrsPrs:iddje NOADE ; ! as nouns
@@ -453,9 +526,28 @@ LEXICON FINITE-UNEVEN
 ! ----------------
 
 LEXICON OADDÁT
- +V: FINITE-CONTRACTED ;
+ +V: OADDÁTStem ;
+ +V: DeverbalVerbsOADDÁT ;
 
-LEXICON FINITE-CONTRACTED
+LEXICON OADDÁTStem
+ OADDÁTINCH ;
+ CONTR-PASSIVE ;
+
+LEXICON OADDÁTINCH
+ +Inch+V:goahte INFL-CONTRACTED ;
+ INFL-CONTRACTED ;
+ DeverbalNounsOADDÁT ;
+
+LEXICON CONTR-PASSIVE
+ +Pass+V:duvva INFL-EVEN ;
+
+LEXICON DeverbalNounsOADDÁT
+ # ;
+
+LEXICON DeverbalVerbsOADDÁT
+ # ;
+
+LEXICON INFL-CONTRACTED
  +Ind+Prs: I-contr-V ;
  +Ind+Prt: II-contr-V ;
  +Imprt+Du2:jihtte K ;
@@ -583,7 +675,7 @@ LEXICON IMP2-EVEN
 
 
 
-LEXICON IMP1-UNEVEN
+LEXICON IMP1-ODD
  +Sg3:is K ;
  +Du1:in'no K ;
  +Du2:ihtte K ;
@@ -592,7 +684,7 @@ LEXICON IMP1-UNEVEN
  +Pl2:it K ;
  +Pl3:isá K ;
 
-LEXICON IMP2-UNEVEN
+LEXICON IMP2-ODD
  +Sg2: K ;
  +Sg3:s K ;
  +Du1:n'no K ;
@@ -750,12 +842,12 @@ LULU ;
 LITTJA ;
 
 LEXICON LULU
-+Cond:lulu V-UNEVEN-PRET ;
++Cond:lulu V-ODD-PRET ;
 
 LEXICON LITTJA
-+Pot:li V-UNEVEN-POT ;
++Pot:li V-ODD-POT ;
 
-LEXICON V-UNEVEN-PRET
+LEXICON V-ODD-PRET
 +Sg1:v K ;
 +Sg2: K ;
 +Sg3:j K ;
@@ -766,7 +858,7 @@ LEXICON V-UNEVEN-PRET
 +Pl2:jda K ;
 +Pl3:n K ;
 
-LEXICON V-UNEVEN-POT
+LEXICON V-ODD-POT
 +Prs+Sg1:lav K ;
 +Prs+Sg2:la K ;
 +Prs+Sg3:la K ;
