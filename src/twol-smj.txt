@@ -21,6 +21,7 @@ Sets
  StemCns = b d g g2 h h2 j l m m2 n n2 ñ r s ;
  Dummy = Q1 X2 X3 X4 Y1 Y2 Q2 ;
 
+
 Rules
 
 
@@ -33,11 +34,6 @@ Cy:0 <=> Vow: Cx: _ #: ;
 	   Cy in ( s ) 
 	   matched ;
 
-!"Word final cluster simplification I" ! Pot -sj# 
-! t:0 <=> _ t:0 j #: ;
-!"Word final cluster simplification I"
-! t:0 <=> t:0 _ j #: ;
-!Instead relying on "Word final weakening -tj to -sj"
 
 "Word final devoicing of single consonants"
  Cx:Cy <=> Vow: _ ( Dummy: ) #: ;
@@ -74,11 +70,11 @@ Cy:0 <=> Vow: Cx: _ #: ;
 	     matched ;
 ! iemet:iemeda
 
+
 ! Vowel lengthening
 ! -----------------
 
 "Compulsatory lengthening in one-letter grade I even-syllables"
-! a:á <=> Cns Vx Cns:* _ WeG: ; ! old, defect
  a:á <=> Cns Vx [ Cns:0 Cns: | Cns: Cns:0 ] _ WeG: ; ! in grade I
  where Vx in ( a i u ) ; ! not all simple vowels ( e o å æ ) are evidently long!
 ! gussa : gusá
@@ -87,6 +83,21 @@ Cy:0 <=> Vow: Cx: _ #: ;
  a:á <=> Cns Vx [ n | s | t ] j _ WeG: ; ! nj, sj, tj in grade I
  where Vx in ( a i u ) ; ! not all simple vowels ( e o å æ ) are evidently long!
 ! example?
+
+
+! Vowel harmony
+! -------------
+
+"e:å after root vowel å"
+ e:å <=> å Cns:* _ Q2:0 ; ! This is the complement to last rule
+! gådet : gådåv
+! Cns* was wrong since it required C1:C1, not C1:C2
+
+
+"Stem Vowel in 1st and 2nd Person Singular Present"
+  e:á <=> [ Vow - å ] Cns* _ Q2: ;
+! gállet : gáláv
+
 
 
 ! Stem vowel alternations
@@ -98,28 +109,23 @@ Cy:0 <=> Vow: Cx: _ #: ;
 "e:á before illative j in e-stems with CG"
  e:á <=> [ Vow: - å ] Cns* _ X4:0 j ;
 
+! Note the parallel illative rule pair above
+
+"Indicative Present Singular 3rd Final Vowel in verbs"
+  Vx:á <=> Cns _ Y2:0 ;
+	where Vx in (a e ) ;
+! bassat : bassá,  gállet:gállá
+
+
 "e:å before illative j in e-stems with å as root vowel"
  e:å <=> å Cns* _ X4: j #: ;
 
-!"Vowel deletion in preterite verbs" ! also other contexts?
-! Vx:0 <=> _ Y1:0 ;
-!      where Vx in ( a å e ) ;
-
-!"Vowel change in preterite verbs"
-! o:u <=> _ Y1:0 ;
-! gáhtot : gáhtuv
-
 "o:u in odd-syllable nouns"
-! o:u <=> _ DelCns: Vow ; § try the one below instead
-! rabo : rahpuga
-! This rules should be generalized, perhaps
-! And it could be that we have o-final nouns in the
-! bena camp as well. Suggestion:
  Vx:Vy <=> _ Cns: Vow ;
        where Vx in ( e o )
 	     Vy in ( å u )
 	     matched ;
-
+! rabo : rahpuga
 
 "Stem vowel deletion in even-syllable verbs, 1du, 3pl"
  Vx:Vy <=> Cns: _ Y1:0 ;
@@ -127,52 +133,12 @@ Cy:0 <=> Vow: Cx: _ #: ;
 	    Vy in ( 0 0 0 u )
 	    matched ;
 
-"æ:e vhenever weak grade"
- æ:e <=> _ Cns Cns:+ WeG: ; ! old without Cns
-! no, this is not WeG only, it requires change to á as well.
-
-"Vovel change in front of stem vowel variation"
- æ:e <=> _ Cns Cns:+ o:u ; ! ditto
-
-"Stem Vowel in 1st and 2nd Person Singular Present"
-  e:á <=> [ Vow - å ] Cns* _ Q2: ;
-! gállet : gáláv
-
-"e:å after root vowel å"
- e:å <=> å Cns:* _ Q2:0 ; ! This is the complement to last rule
-! gådet : gådåv
-! Cns* was wrong since it required C1:C1, not C1:C2
-
-! Note the parallel illative rule pair above
-
-"Indicative Present Singular 3rd Final Vowel in verbs"
-  Vx:á <=> Cns _ Y2:0 ;
-			where Vx in (a e ) ;
-! bassat : bassá,  gállet:gállá
 
 
 
 
 ! Diphtong simplification
 ! -----------------------
-
-!"Diphtong simplification 1"
-! o:0 <=> Cns _ a:å Cns:* e:i Q1:0 ;
-
-!"Diphtong simplification 2"
-! a:å <=> o:0 _ Cns:* e:i Q1:0 ;
-
-
-!"Diphtong simplification 1, initial deletion"
-! Vx:0 <=>  _ Vy:Vz ;
-! where Vx in ( o i )
-!       Vy in ( a e )
-!       Vz in ( å æ )
-!       matched ;
-! Deleting the first segment of oa, ie, whenever 2nd segment changes
-! This over-generates, and gives e:æ all over the place, as long as there is a vowel there
-
-
 
 "Diphtong simplification whenever weak grade in a-stems I"
  Vx:0 <=> _ Vy:Vz Cns:* a ( Cns:0 ) WeG: ;
@@ -189,6 +155,15 @@ Cy:0 <=> Vow: Cx: _ #: ;
 	    matched ;
 ! boarkka : bårka
 ! loavddag2 : låvdda
+
+
+"æ:e vhenever weak grade"
+ æ:e <=> _ Cns Cns:+ WeG: ; ! old without Cns
+! no, this is not WeG only, it requires change to á as well.
+
+"Vovel change in front of stem vowel variation"
+ æ:e <=> _ Cns Cns:+ o:u ; ! ditto
+
 
 
 
@@ -306,5 +281,46 @@ Cy:0 <=> Vow: Cx: _ #: ;
 "Gradation Series 7, III-II, ktj, kts"
  k:v <=> Vow: _ t Cx Vow ( StemCns: ) WeG: ;
  where Cx in ( j s ) ;
+
+
+
+
+
+
+
+! Deleted rules
+! =============
+
+!"Word final cluster simplification I" ! Pot -sj# 
+! t:0 <=> _ t:0 j #: ;
+!"Word final cluster simplification I"
+! t:0 <=> t:0 _ j #: ;
+!Instead relying on "Word final weakening -tj to -sj"
+
+
+!"Vowel deletion in preterite verbs" ! also other contexts?
+! Vx:0 <=> _ Y1:0 ;
+!      where Vx in ( a å e ) ;
+
+!"Vowel change in preterite verbs"
+! o:u <=> _ Y1:0 ;
+! gáhtot : gáhtuv
+
+
+!"Diphtong simplification 1"
+! o:0 <=> Cns _ a:å Cns:* e:i Q1:0 ;
+
+!"Diphtong simplification 2"
+! a:å <=> o:0 _ Cns:* e:i Q1:0 ;
+
+
+!"Diphtong simplification 1, initial deletion"
+! Vx:0 <=>  _ Vy:Vz ;
+! where Vx in ( o i )
+!       Vy in ( a e )
+!       Vz in ( å æ )
+!       matched ;
+! Deleting the first segment of oa, ie, whenever 2nd segment changes
+! This over-generates, and gives e:æ all over the place, as long as there is a vowel there
 
 
