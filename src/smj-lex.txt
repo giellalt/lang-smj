@@ -2,7 +2,7 @@ Multichar_Symbols
  +N +A +Adv +V
  +Pron +CS +CC +Adp +Po +Pr +Interj +Pcle
  +Pers +Dem +Interr +Refl +Recipr +Rel +Indef
- +Sg +Pl +Nom +Gen +Acc +Ill +Ine +Ela +Com +Ess 
+ +Sg +Pl +Nom +Gen +Acc +Ill +Ine +Ela +Com +Ess +Par +Abe
  +PxSg1 +PxSg2 +PxSg3 +PxDu1 +PxDu2 +PxDu3 +PxPl1 +PxPl2 +PxPl3
  +Comp +Superl +Actor
  +Clt +Attr
@@ -25,8 +25,8 @@ LEXICON Root
 ! Negativeverb ;
 ! Adverb ;
 ! Particles ;
-! Subjunction ;
-! Conjunction ;
+ Subjunction ;
+ Conjunction ;
 ! Adposition ;
 ! Postposition ;
 ! Preposition ;
@@ -172,6 +172,9 @@ LEXICON OTH-ODDCASE
 ! Even-syllable stems
 ! -------------------
 
+LEXICON GIEVRRA
+ +A: K ;
+
 
 
 ! Sublexica for VerbRoot
@@ -192,42 +195,103 @@ LEXICON FINITE-EVEN
 +Inf:t K ;
 +PrfPrc:m K ;
 +Ger:min K ;
-+Sup:X1tjit ;
++Sup:X1tjit K ;
 +VAbess:X1k K ;
 +VGen:X1 K ;
++Ind+Prs+ConNeg: K ;
 
 ! Odd-syllable stems
 ! ------------------
 
+LEXICON JÅLLÅRIT
+ +V: FINITE-UNEVEN ;
+
+LEXICON FINITE-UNEVEN
+ +Ind+Prs: I-odd-V ;
+ +Ind+Prt: II-odd-V ;
+ +Pot:ittja I-even-V ;
+
++Imprt: K ; ! TODO: Imperatives
++ImprtII: K ; 
++Inf:it K ;
++PrfPrc:am K ;
++Ger:ime K ;
++Sup:ittjat K ;
++VAbess:ik K ;
++VGen:a K ;
++Ind+Prs+ConNeg:a K ;
 
 ! Contracted stems
 ! ----------------
 
+LEXICON OADDÁT
+ +V: FINITE-CONTRACTED ;
 
-! Suffix lexica
-! -------------
+LEXICON FINITE-CONTRACTED
+ +Ind+Prs: I-contr-V ;
+ +Ind+Prt: II-contr-V ;
+ +Imprt: K ;
+ +ImprtII: K ; 
+ +Inf:t K ;
+ +PrfPrc:m K ;
+ +Ger:min K ;
+ +Sup:tjit K ;
+ +VAbess:k K ;
+ +VGen: K ;
+ +Ind+Prs+ConNeg: K ;
+
+! Intermediate suffix lexica
+! --------------------------
 
 LEXICON I-even-V
-+Sg1:X1v K ;
-+Sg2:X1 K ;
-+Sg3: K ;
-+Du1:Y1in K ;
-+Du2:abihtte K ;
-+Du3:aba K ;
-+Pl1:ap K ;
-+Pl2:abihtit K ;
-+Pl3:Y1i K ;
+ :X1 I-sg12 ;
+ :Q1 I-sg3 ;
+     I-du23pl12 ;
+ :Y1 I-du1pl3 ;
 
 LEXICON II-even-V
-+Sg1:Y1iv K ;
-+Sg2:Y1i K ;
-+Sg3:X1j K ;
-+Du1:X1jma K ;
-+Du2:X1jda K ;
-+Du3:X1jga K ;
-+Pl1:X1jma K ;
-+Pl2:X1jda K ;
-+Pl3:Y1in K ;
+ :Y1 II-sg12pl3 ;
+ :X2 II-other ;
+
+
+LEXICON II-odd-V
+ II-sg12pl3 ;
+ :i II-other ;
+
+LEXICON I-contr-V
+ I-sg12 ;
+ I-sg3 ;
+ I-du23pl12 ;
+ :j I-du1pl3 ;
+
+LEXICON II-contr-V
+ :j II-sg12pl3 ;
+ :j II-other ;
+ 
+
+
+! Final suffix lexica
+! -------------------
+
+! Suffix series I
+! - - - - - - - - 
+
+LEXICON I-sg12
++Sg1:v K ;
++Sg2: K ;
+
+LEXICON I-sg3
++Sg3: K ;
+
+LEXICON I-du23pl12
++Du2:bihtte K ;
++Du3:ba K ;
++Pl1:p K ;
++Pl2:bihtit K ;
+
+LEXICON I-du1pl3
++Du1:in K ;
++Pl3:i K ;
 
 LEXICON I-odd-V
 +Sg1:av K ;
@@ -241,6 +305,21 @@ LEXICON I-odd-V
 +Pl3: K ;
 
 
+! Suffix series II
+! - - - - - - - - 
+
+LEXICON II-sg12pl3
++Sg1:iv K ;
++Sg2:i K ;
++Pl3:in K ;
+
+LEXICON II-other
++Sg3:j K ;
++Du1:jma K ;
++Du2:jda K ;
++Du3:jga K ;
++Pl1:jma K ;
++Pl2:jda K ;
 
 ! Auxiliary verbs
 ! ---------------
@@ -377,14 +456,20 @@ K ;
 ! Sublexica for possessive suffixes
 ! =================================
 
-LEXICON PxV
+LEXICON PxV ! This intermezzo of a lexicon due to
+ PxV1 ;	    ! the stem alternation in the possessive
+ PxV23 ;    ! suffixes.
+
+LEXICON PxV1
  +PxSg1:m K ;
+ +PxDu1:ma K ;
+ +PxPl1:ma K ;
+
+LEXICON PxV23
  +PxSg2:t K ;
  +PxSg3:s K ;
- +PxDu1:ma K ;
  +PxDu2:da K ;
  +PxDu3:ska K ;
- +PxPl1:ma K ;
  +PxPl2:da K ;
  +PxPl3:sa K ;
 
