@@ -7,7 +7,7 @@ Alphabet
  É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý þ Ð
  é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý þ ð ß ª ß ç
  h2:h g2:g m2:m n2:n  ! these are deleted in nom
- m3:m d3:d ! these can not occur before #
+ b3:b d3:d g3:g m3:m h3:h ! these can not occur before #
  X1:0 X2:0 X3:0 X4:0 X5:0 X6:0 X7:0 X8:0 X9:0
  Q1:0 Q2:0 Q3:0 Q4:0 Q5:0 Q6:0 Q7:0 Q8:0 Q9:0 Q:0
  Y1:0 Y2:0 Y3:0 Y4:0 Y5:0 Y6:0 Y7:0 Y8:0 ;
@@ -15,10 +15,11 @@ Alphabet
 Sets
  Vow = a á e i o u y æ ä ø ö å
        é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý ;
- Cns = b c d f g g2 h h2 j k l m m2 n n2 ñ p q r s t v w x z ;
+ Cns = b b3 c d d3 f g g2 g3 h h2 h3 j k l m m2 m3 n n2 ñ 
+       p q r s t v w x z ;
  DelCns = g2 m2 n2 h2 ;
  WeG = Q1 X2 X3 Q2 ;
- StemCns = b d g g2 h h2 j l m m2 n n2 ñ r s ;
+ StemCns = b b3 d d3 g g2 g3 h h2 h3 j l m m2 m3 n n2 ñ r s ;
  Dummy = X2 X3 X4 X5 Y1 Y2 Q1 Q2 ;
 
 
@@ -35,11 +36,12 @@ Cy:0 <=> Vow: Cx: _ #: ;
 	   matched ;
 
 
-"Word final devoicing of single consonants"
+"Word Final Devoicing of Certain Single Consonants d3 etc."
  Cx:Cy <=> Vow: _ ( Dummy: ) #: ;
-       where Cx in ( b d g m h )
-	     Cy in ( p t k v j )
+       where Cx in ( b3 d3 g3 m3 h3 )
+	     Cy in ( p  t  k  v  j )
 	     matched ;
+! iemet:iemeda
 
 "Word final weakening -tj and -ttj to -sj"
  t:s <=> Vow: _ ( t: ) j ( Dummy: ) #: ;
@@ -62,13 +64,20 @@ Cy:0 <=> Vow: Cx: _ #: ;
 				Cy in (t t n)
 			matched ;
 ! The twol-sme had [X2: | X7: ], be prepared to expand this rule accordingly.
+! Since we use X2, the "2" in g2 etc. may be superfluous...
 
-"Word-final Devoicing of d3, m3"
- Cx:Cy <=> Vow _ #: ;
-       where Cx in ( d3 m3 )
-	     Cy in ( t v )
-	     matched ;
+!"Word-final Devoicing of d3, m3"
+! Cx:Cy <=> Vow _ #: ;
+!       where Cx in ( d3 m3 )
+!	     Cy in ( t v )
+!	     matched ;
 ! iemet:iemeda
+
+
+"Deleting Final Cns in Short Essive of Uneven Syllables"
+ Cx:0 <=> Vow: _ Q1: X1: n ;
+      where Cx in ( s m h ) ;
+
 
 
 ! Vowel lengthening
@@ -104,21 +113,31 @@ Cy:0 <=> Vow: Cx: _ #: ;
 ! - - - - - - - - - -
 
 "e:i in e-stems"
- e:i <=> Cns _ Q1:0 j ;
+ e:i <=> Cns _ ( Q1:0 ) j ; ! WeG or not, e:i
 
-"e:á before illative j in e-stems with CG"
- e:á <=> [ Vow: - å ] Cns* _ X4:0 j ;
+"e:á in certain stem types"
+ e:á <=> [ Vow: - å ] Cns* _ X4:0 [ j #: | s Vow: ] ;
+	 [ Vow: - å ] Cns* _ Cns: X5: Vow ;
+! The first subrule gives Ill. sg. of even-stem
+! The second subrule gives oblique of uneven stem
 
-"e:å before illative j in e-stems with å as root vowel"
- e:å <=> å Cns* _ X4: j #: ;
-
+"e:å in certain stem types with å as root vowel"
+ e:å <=> å Cns* _ X4:0 [ j #: | s Vow: ]  ;
+	 å Cns* _ Cns: X5: Vow ;
+! The first subrule gives Ill. sg. of even-stem
+! The second subrule gives oblique of uneven stem
 
 
 ! o-stem alternations
 ! - - - - - - - - - -
 
-"o:u in Ill & Com Sg of o-stem nouns"
+"o:u in  certain nominal stem types"
  o:u <=> Cns: _ [ X4: | Q1: X5: ] j ; !X4 IllSg, Q1 X5 ComSg.
+         Cns: _ Cns: X5: Vow ;
+! The first subrule gives Ill & Com Sg of o-stem nouns
+! The second subrule gives o:u in odd-syllable nouns
+! 
+! rabo : rahpuga
 
 "o:u in even-syllable verbs"
  o:u <=> Cns: _ [ Y1: | Y2: ] ;
@@ -130,12 +149,13 @@ Cy:0 <=> Vow: Cx: _ #: ;
 ! alternations valid for several stem types
 ! - - - - - - - - - - - - - - - - - - - - -
 
-"o:u and e:å in odd-syllable nouns"
- Vx:Vy <=> _ Cns: Vow ;
-       where Vx in ( e o )
-	     Vy in ( å u )
-	     matched ;
+!"o:u and e:å in odd-syllable nouns"
+! o:u <=>
+!       where Vx in ( e o )
+!	     Vy in ( å u )
+!	     matched ;
 ! rabo : rahpuga
+!bruk berre o:u
 
 "Stem vowel deletion in even-syllable verbs, 1du, 3pl"
  Vx:Vy <=> Cns: _ Y1:0 ;
@@ -171,13 +191,15 @@ Cy:0 <=> Vow: Cx: _ #: ;
  o:0 <=> [ #: | Cns: | Dummy: ] _ a: Cns:* [ a: | i: ] WeG: ; ! WeG of a- and i-stems
 	 [ #: | Cns: | Dummy: ] _ a: Cns:* e: Q1: j ; ! ComSg & G-C Pl of e-stems
 	 [ #: | Cns: | Dummy: ] _ a: Cns:* e: Y1: ; ! Different verb forms
-	 [ #: | Cns: | Dummy: ] _ a: Cns:* o: ( Dummy: ) j ; ! o-stems, before j.
+	 [ #: | Cns: | Dummy: ] _ a: Cns:* o: ( Dummy:* ) j ; ! even-syll o-stems, before j.
+	 [ #: | Cns: | Dummy: ] _ a: Cns:* o: Cns: X5: Vow ; ! odd-syll, oblique
 
 "oa:å Diphtong Simplification Part II"
  a:å <=> [ #: | Cns: | Dummy: ] o: _ Cns:* [ a: | i: ] WeG: ; ! WeG of a- and i-stems
 	 [ #: | Cns: | Dummy: ] o: _ Cns:* e: Q1: j ; ! ComSg & G-C Pl of e-stems
 	 [ #: | Cns: | Dummy: ] o: _ Cns:* e: Y1: ; ! Different verb forms
-	 [ #: | Cns: | Dummy: ] o: _ Cns:* o: ( Dummy: ) j ; ! o-stems, before j.
+	 [ #: | Cns: | Dummy: ] o: _ Cns:* o: ( Dummy:* ) j ; ! o-stems, before j.
+	 [ #: | Cns: | Dummy: ] o: _ Cns:* o: Cns: X5: Vow ; ! odd-syll, oblique
 
 ! The rule complexes are identical, but fix different parts of the monophtongisation.
 
@@ -186,14 +208,17 @@ Cy:0 <=> Vow: Cx: _ #: ;
  æ:e <=> [ #: | Cns: | Dummy: ] _ Cns:* [ a: | i: ] WeG: ; ! WeG of a- and i-stems
 	 [ #: | Cns: | Dummy: ] _ Cns:* e: Q1: j ; ! ComSg & G-C Pl of e-stems
 	 [ #: | Cns: | Dummy: ] _ Cns:* o: [ X4: | Q1: X5: ] j ; ! Ill & Com Sg.
+	 [ #: | Cns: | Dummy: ] _ Cns:* o: Cns: X5: Vow ; ! odd-syll, oblique
 
 "ie:æ Diphtong Simplification Part I"
  i:0 <=> [ #: | Cns: | Dummy: ] _ e: Cns:* e: X4: j ; ! Illative j in e-stems with CG
 	 [ #: | Cns: | Dummy: ] _ e: Cns:* e: [ Q2: | Y2: ] ;   ! Prs Sg of e-stem verbs
+	 [ #: | Cns: | Dummy: ] _ e: Cns:* e: Cns: X5: Vow ; ! odd-syll, oblique
 
 "ie:æ Diphtong Simplification Part II"
  e:æ <=> [ #: | Cns: | Dummy: ] i: _ Cns:* e: X4: j ; ! Illative j in e-stems with CG
 	 [ #: | Cns: | Dummy: ] i: _ Cns:* e: [ Q2: | Y2: ] ;   ! Prs Sg of e-stem verbs
+	 [ #: | Cns: | Dummy: ] i: _ Cns:* e: Cns: X5: Vow ; ! odd-syll, oblique
 
 ! Note: Check that Q2 above does not overgenerate to nouns!
 
