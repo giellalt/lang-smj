@@ -13,9 +13,9 @@ ismj.fst: ../bin/ismj.fst
 	@printf "load ../bin/smj.save \n\
 	invert net \n\
 	save stack ../bin/ismj.fst \n\
-	quit \n" > /tmp/ismj-fst-script
-	@xfst < /tmp/ismj-fst-script
-	@rm -f /tmp/ismj-fst-script
+	quit \n" > ../../tmp/ismj-fst-script
+	@xfst < ../../tmp/ismj-fst-script
+	@rm -f ../../tmp/ismj-fst-script
 
 
 # This goal is to build the final analyser. It depends on all the files.
@@ -29,9 +29,9 @@ smj.fst: ../bin/smj.fst
 	@printf "read regex @\"../bin/smj.save\" .o. @\"../bin/caseconv.fst\" \
 	.o. @\"../bin/spellrelax.fst\" ; \n\
 	save stack ../bin/smj.fst \n\
-	quit \n" > /tmp/smj-fst-script
-	@xfst < /tmp/smj-fst-script
-	@rm -f /tmp/smj-fst-script
+	quit \n" > ../../tmp/smj-fst-script
+	@xfst < ../../tmp/smj-fst-script
+	@rm -f ../../tmp/smj-fst-script
 
 
 # This goal is to allow for ä/æ and ö/ø mix
@@ -43,9 +43,9 @@ spellrelax.fst: ../bin/spellrelax.fst
 	@echo
 	@printf "read regex < spellrelax.regex \n\
 	save stack ../bin/spellrelax.fst \n\
-	quit \n" > /tmp/spellrelax-script
-	@xfst < /tmp/spellrelax-script
-	@rm -f /tmp/spellrelax-script
+	quit \n" > ../../tmp/spellrelax-smj-script
+	@xfst < ../../tmp/spellrelax-smj-script
+	@rm -f ../../tmp/spellrelax-smj-script
 
 # The second goal is to build the caseconv.fst file
 # This goal depends on case.regex
@@ -57,9 +57,9 @@ caseconv.fst: caseconv.fst
 	@echo
 	@printf "read regex < case.regex \n\
 	save stack ../bin/caseconv.fst \n\
-	quit \n" > /tmp/caseconv-script
-	@xfst < /tmp/caseconv-script
-	@rm -f /tmp/caseconv-script
+	quit \n" > ../../tmp/caseconv-smj-script
+	@xfst < ../../tmp/caseconv-smj-script
+	@rm -f ../../tmp/caseconv-smj-script
 
 
 # Another goal is to build a preprocessor.This goal depends on tok.txt
@@ -71,9 +71,9 @@ tok.fst: ../bin/tok.fst
 	@echo
 	@printf "source tok.txt \n\
 	save stack ../bin/tok.fst \n\
-	quit \n" > /tmp/tok-script
-	@xfst < /tmp/tok-script
-	@rm -f /tmp/tok-script
+	quit \n" > ../../tmp/tok-smj-script
+	@xfst < ../../tmp/tok-smj-script
+	@rm -f ../../tmp/tok-smj-script
 
 
 # The first goal is to build smj.save
@@ -96,9 +96,9 @@ smj.save: ../bin/smj.save
 	read-rules ../bin/twol-smj.bin \n\
 	compose-result \n\
 	save-result ../bin/smj.save \n\
-	quit \n" > /tmp/smj-save-script
-	@lexc < /tmp/smj-save-script
-	rm -f /tmp/smj-save-script
+	quit \n" > ../../tmp/smj-save-script
+	@lexc < ../../tmp/smj-save-script
+	rm -f ../../tmp/smj-save-script
 
 
 # The second goal is to build twol-smj.bin
@@ -116,9 +116,9 @@ twol-smj.bin: ../bin/twol-smj.bin
 	@printf "read-grammar twol-smj.txt \n\
 	compile \n\
 	save-binary ../bin/twol-smj.bin \n\
-	quit \n" > /tmp/twol-smj-script
-	@twolc < /tmp/twol-smj-script
-	@rm -f /tmp/twol-smj-script
+	quit \n" > ../../tmp/twol-smj-script
+	@twolc < ../../tmp/twol-smj-script
+	@rm -f ../../tmp/twol-smj-script
 
 
 # Then an option to remove all the binary files
