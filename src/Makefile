@@ -2,11 +2,50 @@
 # *****************************************************************
 
 
+# This goal is to build the final analyser. It depends on all the files.
+
+smj.fst: smj.save caseconv.fst tok.fst
+	@echo
+	@echo "*** Building smj.fst ***" ;
+	@echo
+	@printf "read regex @\"smj.save\" .o. @\"caseconv.fst\" ; \n\
+	save stack smj.fst \n\
+	quit \n" > /tmp/smj-fst-script
+	@xfst < /tmp/smj-fst-script
+	@rm -f /tmp/smj-fst-script
+
+# The second goal il to build the caseconv.fst file
+# This goal depends on case.regex
+
+caseconv.fst: case.regex
+	@echo
+	@echo "*** Building caseconv.fst ***" ;
+	@echo
+	@printf "read regex < case.regex \n\
+	save stack caseconv.fst \n\
+	quit \n" > /tmp/caseconv-script
+	@xfst < /tmp/caseconv-script
+	@rm -f /tmp/caseconv-script
+
+
+# Another goal is to build a preprocessor.This goal depends on tok.txt
+
+tok.fst: tok.txt
+	@echo
+	@echo "*** Building the tokenizer tok.fst ***" ;
+	@echo
+	@printf "source tok.txt \n\
+	save stack tok.fst \n\
+	quit \n" > /tmp/tok-script
+	@xfst < /tmp/tok-script
+	@rm -f /tmp/tok-script
+
+
 # The first goal is to build smj.save
 # This goal depends on twol-smj.bin and a bunch of lexicon files
 
 smj.save: twol-smj.bin smj-lex.txt noun-smj-lex.txt adj-smj-lex.txt \
-	adv-smj-lex.txt verb-smj-lex.txt closed-smj-lex.txt
+	adv-smj-lex.txt verb-smj-lex.txt closed-smj-lex.txt punct-smj-lex.txt
 	@echo
 	@echo
 	@echo
@@ -16,7 +55,7 @@ smj.save: twol-smj.bin smj-lex.txt noun-smj-lex.txt adj-smj-lex.txt \
 	@echo
 	printf "compile-source smj-lex.txt noun-smj-lex.txt \
 	adj-smj-lex.txt verb-smj-lex.txt closed-smj-lex.txt \
-	adv-smj-lex.txt \n\
+	adv-smj-lex.txt punct-smj-lex.txt \n\
 	read-rules twol-smj.bin \n\
 	compose-result \n\
 	save-result smj.save \n\
