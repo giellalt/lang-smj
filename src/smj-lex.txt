@@ -21,9 +21,7 @@ LEXICON Root
 ! ProperNoun ;
  AdjectiveRoot ;
  VerbRoot ;
-! Copula ;
-! Negativeverb ;
-! Adverb ;
+ Adverb ;
 ! Particles ;
  Subjunction ;
  Conjunction ;
@@ -45,7 +43,10 @@ LEXICON MUORRA
  +N: N-EVENSTRONGSTEM ;
  +N:X1 N-EVENWEAKSTEM ;
 
-! 2syll stem without cg (note missing X1)
+! 2syll stem without cg (note missing X1) 
+! This is actually a pres ptc, it should be derived from
+! the verbs, and taken from there
+! LÅHKKE muwst thus be exchanged for GIRKU or smth.
 LEXICON LÅHKKE
  +N: N-EVENSTRONGSTEM ;
  +N: N-EVENWEAKSTEM ;
@@ -71,6 +72,7 @@ LEXICON NE-EVENCASE
  +Sg+Nom: K ;
  +Sg+Nom: PxV ;
  +Ess:n K ;
+
 
 LEXICON ILL-EVENCASE
  +Sg+Ill:j K ;
@@ -172,8 +174,111 @@ LEXICON OTH-ODDCASE
 ! Even-syllable stems
 ! -------------------
 
-LEXICON GIEVRRA
- +A: K ;
+LEXICON GIEVRRA ! Attr WeG, -s
+ +A+Attr:X1s K ;
+ +A: N-EVENSTRONGSTEM ;
+ +A:X1 N-EVENWEAKSTEM ;
+ +A: BU/MUS ;
+ +Adv:X1t K ;
+
+LEXICON NUORRA ! Attr =
+ +A+Attr: K ;
+ +A: N-EVENSTRONGSTEM ;
+ +A:X1 N-EVENWEAKSTEM ; ! cg in nominal paradigm
+ +A: BU/MUS ;
+ +Adv:X1t K ; ! Presumably WeG as adverb as well
+
+LEXICON HÁVSSKE ! Attr w/o WeG, -s
+ +A+Attr:s K ;
+ +A: N-EVENSTRONGSTEM ;
+ +A:X1 N-EVENWEAKSTEM ; ! Presumably WeG in nominal paradigm
+ +A: BU/MUS ;
+ +Adv:X1t K ;
+
+LEXICON UNNE ! Attr e > a~e, WeG
+ +A+Attr:aX1 K ; ! a-attr.
+ +A+Attr:eX1 K ; ! e-attr.
+ +A:e N-EVENSTRONGSTEM ; ! presumably normal adjective
+ +A:eX1 N-EVENWEAKSTEM ; ! behaviour, with cg, and with
+ +A:e BU/MUS ;           ! the e-form as a starting
+ +Adv:eX1t K ;           ! point.
+
+! LEXICON LÅHKKE
+! Fix the pres participle
+
+LEXICON ÁRMMOGIS ! Attr = Pred. Nom. Sg.
+ +A+Attr: K ; ! twol fixes the ss > s
+ +A+Sg+Nom: K ;
+ +A:a GÅNÅGIS-EVEN ; ! Declined as four-syllable noun
+ +A:a BU/MUS ;
+ +Adv:aX1t K ; 
+
+LEXICON ASIDASJ
+ +A+Attr:is K ; ! Special Attr form
+ +A+Sg+Nom:asj K ;
+ +A:atja OTH-ODDCASE ; ! Declined as four-syllable noun
+ +A:atja BU/MUS ;
+ +Adv:atjaX1t K ; 
+
+LEXICON TJALMEDIBME
+ +A+Attr:is K ; ! Special Attr form
+ +A:ibme N-EVENSTRONGSTEM ;
+ +A:ibmeX1 N-EVENWEAKSTEM ;
+ +A:ibme BU/MUS ;
+ +Adv:ibmeX1t K ; 
+
+! Odd-syllable stems
+! ------------------
+
+LEXICON TJIEGOS
++A+Attr: K ;
+
+
+! Contracted stems
+! ----------------
+
+! Comparation
+! -----------
+
+LEXICON BU/MUS
+ +Comp:b BUStem ;
+ +Superl:muss BUOREMUS ;
+
+LEXICON BUStem
+ +Sg+Nom: K ;
+ +Sg+Gen:u K ;
+ +Sg+Acc:uv K ;
+ +Sg+Ill:uj K ;
+ +Sg+Ine:un K ;
+ +Sg+Ela:us K ;
+ +Sg+Com:ujn K ;
+ +Ess:un K ;
+ +Pl+Nom:u K ;
+ +Pl+Gen:uj K ;
+ +Pl+Acc:ujt K ;
+ +Pl+Ill:ujda K ;
+ +Pl+Ine:ujn K ;
+ +Pl+Ela:ujs K ;
+ +Pl+Com:uj K ;
+
+LEXICON BUOREMUS
+ +Sg+Nom: K ; ! the short form, twol shortens ss#
+ +Sg+Nom: PxV ; ! separate nom bec of the short form
+ :a BUOREMUS-OBL ; ! Add -a, direct to the obliques
+
+LEXICON BUOREMUS-OBL
+ +Ess:n K ; ! essive has strong stem
+ +Ill:j K ; ! so has illative
+ +Ill:s PxC ; ! this Px form not mentioned in Spiik
+ :X1 N-EVENWEAKSTEM ; ! These words go like muorra
+ 
+
+! Comparative
+! -----------
+
+
+! Superlative
+! -----------
 
 
 
