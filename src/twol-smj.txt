@@ -1,0 +1,133 @@
+Alphabet
+ a á b c d e f g h i j k l m n ñ o p q 
+ r s t u v w x y z å ä ø ö å %-
+ ':0
+ X1:0 X2:0 X3:0 X4:0 X5:0 X6:0 X7:0 X8:0 X9:0
+ Q1:0 Q2:0 Q3:0 Q4:0 Q5:0 Q6:0 Q7:0 Q8:0 Q9:0 Q:0
+ Y1:0 Y2:0 Y3:0 Y4:0 Y5:0 Y6:0 Y7:0 Y8:0 ;
+
+Sets
+ Vow = a á e i o u y æ ä ø ö å ;
+ Cns = b c d f g h j k l m n ñ p q r s t v w x z ;
+ WeG = X1 ;
+ StemCns = b d g h j l m n ñ r s ;
+ Dummy = X1 ;
+
+Rules
+
+"Compulsatory lengthening in even-syllables"
+ a:á <=> Cns Vx Cns* _ WeG: ;
+ where Vx in ( a e i o u å ä ) ;
+
+"e:i in e-stems"
+ e:i <=> Cns _ X1:0 j ;
+
+"Diphtong simplification 1"
+ o:0 <=> Cns _ a:å Cns* e:i X1:0 ;
+
+"Diphtong simplification 2"
+ a:å <=> o:0 _ Cns* e:i X1:0 ;
+ 
+! Consonant gradation rules
+!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+! The rule titles refer to the overview in Spiiks grammar
+
+"Gradation Series 1, III-II, three-letter patterns"
+ Cx:0 <=> Vow Cx _ Cy Vow ( StemCns: ) WeG: ;
+ where Cx in ( b d d g k l l l m m n p p s s s s ñ ñ )
+       Cy in ( m j n ñ n d j t b p d s t k m n t g k )
+       matched ;
+
+"Gradation Series 1, III-II, four-letter patterns"
+ Cx:0 <=> Vow Cx _ Cy Cz Vow ( StemCns: ) WeG: ;
+ where Cx in ( d k n n p p p s s s )
+       Cy in ( n t t t s t t j j j )
+       Cz in ( j j j s j j s k m v )
+       matched ;
+
+"Gradation Series 1, II-I, two-letter patterns"
+ Cx:0 <=> Vow _ Cy Vow ( StemCns: ) WeG: ;
+ where Cx in ( b d d g )
+       Cy in ( m j n ñ )
+       matched ;
+
+"Gradation Series 1, II-I, dnj-nj"
+ d:0 <=> Vow _ n j Vow ( StemCns: ) WeG: ;
+
+"Gradation Series 2, II-I"
+ Cx:0 <=> Vow Cx _ Vow ( StemCns: ) WeG: ;
+ where Cx in ( f l m n ñ r s v ) ;
+
+"Gradation Series 2, palatalized snd component"
+ Cx:0 <=> Vow Cx _ j Vow ( StemCns: ) WeG: ;
+ where Cx in ( n s ) ;
+
+"Gradation Series 3, III-II, schwaa alternation, initial b, j, l"
+ Cy:0 <=> Vow Cx _ Cy Vow ( StemCns: ) WeG: ;
+ where Cx in ( b b b b b b j j j j j j j j j j j j j l l l l l l l l l l )
+       Cy in ( d j l n r s b d g k l m n ñ p r s t v b f g k m n ñ p s v )
+       matched ;
+
+"Gradation Series 3, III-II, schwaa alternation, initial m, n, ñ, r, v"
+ Cy:0 <=> Vow Cx _ Cy Vow ( StemCns: ) WeG: ;
+ where Cx in ( m m n ñ ñ r r r r r r r r r r r r r v v v v v v v v v )
+       Cy in ( k s s n t b d f g j k m n ñ p s t v d g k l n ñ r s t )
+       matched ;
+
+
+"Gradation Series 3, III-II, schwaa alternation, 4-letter combinations"
+ Cy:0 <=> Vow Cx _ Cy Cz Vow ( StemCns: ) WeG: ;
+ where Cx in ( b b b j j j l l m m n n r r r r v v v v )
+       Cy in ( n t t s t t s s s s s s n s s t n s t t )
+       Cz in ( j j s t j s j k j t k t j j k j j t j s )
+       matched ;
+
+"Gradation Series 3, III-II, rssjt-rsjt"
+ s:0 <=> Vow s _ j t Vow ( StemCns: ) WeG: ;
+
+"Gradation Series 4, III-II, preaspirated stops"
+ Cx:0 <=> Vow h _ Cx Cy Vow ( StemCns: ) WeG: ;
+ where Cx in ( k p t t t ) 
+       Cy in ( 0 0 0 j s )
+       matched ;
+
+"Gradation Series 4, II-I, h Loss 1"
+ h:0 <=> Vow _ Cx: Vow ( StemCns: ) WeG: ;
+ where Cx in ( k p ) ;
+
+"Gradation Series 4, II-I, tj and ts"
+ h:0 <=> Vow _ t Cx Vow ( StemCns: ) WeG: ;
+ where Cx in ( j s ) ;
+
+"Gradation Series 4, II-I"
+ Cx:Cy <=> Vow h:0 _ Vow ( StemCns: ) WeG: ;
+ where Cx in ( k p t )
+       Cy in ( g b d )
+       matched ;
+
+"Gradation Series 5, III-II, dtj, dts"
+ d:t <=> Vow _ t Cx Vow ( StemCns: ) WeG: ;
+ where Cx in ( j t ) ;
+
+"Gradation Series 6, III-II, bb, dd, gg 1"
+ Cx:Cy <=> Vow _ Cx: Vow ( StemCns: ) WeG: ;
+ where Cx in ( b d g )
+       Cy in ( p t k )
+       matched ;
+
+"Gradation Series 6, III-II, bb, dd, gg 2"
+ Cx:Cy <=> Vow :Cy _ Vow ( StemCns: ) WeG: ;
+ where Cx in ( b d g )
+       Cy in ( p t k )
+       matched ;
+
+"Gradation Series 7, III-II, ks, kt"
+ k:v <=> Vow _ Cx Vow ( StemCns: ) WeG: ;
+ where Cx in ( s t ) ;
+
+"Gradation Series 7, III-II, ktj, kts"
+ k:v <=> Vow _ t Cx Vow ( StemCns: ) WeG: ;
+ where Cx in ( j s ) ;
+
+
