@@ -8,7 +8,8 @@ smj.fst: smj.save caseconv.fst spellrelax.fst tok.fst
 	@echo
 	@echo "*** Building smj.fst ***" ;
 	@echo
-	@printf "read regex @\"smj.save\" .o. @\"caseconv.fst\" ; \n\
+	@printf "read regex @\"smj.save\" .o. @\"caseconv.fst\" \
+	.o. @\"spellrelax.fst\" ; \n\
 	save stack smj.fst \n\
 	quit \n" > /tmp/smj-fst-script
 	@xfst < /tmp/smj-fst-script
