@@ -10,8 +10,8 @@ Multichar_Symbols
  +Sg1 +Sg2 +Sg3 +Du1 +Du2 +Du3 +Pl1 +Pl2 +Pl3
  +Inf +Act +Ger +ConNeg +Neg +ImprtII +PrsPrc +PrfPrc +VGen +VAbess
  +CLB +PUNCT +HYPH +PAR
- h2 g2 m2 n2
- m3 d3 
+ g2 m2 n2 h2
+ b3 d3 g3 m3 h3
  X1 X2 X3 X4 X5 X6 X7 X8 X9
  Q1 Q2 Q3 Q4 Q5 Q6 Q7 Q8 Q9
  Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9
@@ -75,7 +75,7 @@ LEXICON GÅNÅGIS-EVEN
 
 LEXICON N-EVENSTRONGSTEM
  NE-EVENCASE ;
- :X4 ILL-EVENCASE ; ! X4 for the e:á alternation
+ :X4 ILL-EVENCASE ; ! X4 for the e:á and e:å alternation
 
 LEXICON NE-EVENCASE
  +Sg+Nom: K ;
@@ -117,34 +117,34 @@ LEXICON N-EVENWEAKSTEM
 
 ! oddsyll, cg, C-final, 2ndsyll vowchange
 LEXICON ÅRES
- +N: NE-ODDCASE ;
- +N: OTH-ODDCASE ;
+ +N:Q1 NE-ODDCASE ; ! Q1 is general WeG
+ +N:X5 OTH-ODDCASE ; ! X5 is e:å and o:u
 
 ! oddsyll, cg, C-final, no 2ndsyll vowchange
 LEXICON GÁMAS ! Odd-syllable C-final noun with CG but no VChange
- +N: NE-ODDCASE ;
+ +N:Q1 NE-ODDCASE ;
  +N: OTH-ODDCASE ;
 
 ! oddsyll, no cg, no vowchange
 LEXICON GAHPER
- +N+Sg+Nom: K ;
- +N+Sg+Nom: PxC ; 
+! +N+Sg+Nom: K ;
+! +N+Sg+Nom: PxC ; ! superseded by next line
+ +N: NE-ODDCASE ;
  +N: OTH-ODDCASE ;
 
 ! oddsyll, cg, vowchange, V-final nominative
 LEXICON BENA
  +N:X3 BENA-NE ;
-! +N:X4 OTH-ODDCASE ;
- +N: OTH-ODDCASE ;
-! Why X4 here? Let's try without it
+ +N:X5 OTH-ODDCASE ;
+! X5 for vow change
 
 ! Odd-syllable stems, sublexica
 ! - - - - - - - - - - - - - - - 
 
 LEXICON NE-ODDCASE
- +Sg+Nom:Q1 K ;
- +Sg+Nom:Q1 PxC ;
- +Ess:Q1n K ;
+ +Sg+Nom: K ;
+ +Sg+Nom: PxC ;
+ +Ess:X1n K ; ! X1 to delete cns before short ess
 
 LEXICON OTH-ODDCASE
  +Sg+Gen:a K ;
