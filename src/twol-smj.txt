@@ -1,7 +1,7 @@
 Alphabet
  a á b c d e f g h i j k l m n ñ o p q 
  r s t u v w x y z å ä ø ö å %-
- ':0
+ '
  X1:0 X2:0 X3:0 X4:0 X5:0 X6:0 X7:0 X8:0 X9:0
  Q1:0 Q2:0 Q3:0 Q4:0 Q5:0 Q6:0 Q7:0 Q8:0 Q9:0 Q:0
  Y1:0 Y2:0 Y3:0 Y4:0 Y5:0 Y6:0 Y7:0 Y8:0 ;
@@ -9,9 +9,9 @@ Alphabet
 Sets
  Vow = a á e i o u y æ ä ø ö å ;
  Cns = b c d f g h j k l m n ñ p q r s t v w x z ;
- WeG = X1 ;
+ WeG = X1 X2 ;
  StemCns = b d g h j l m n ñ r s ;
- Dummy = X1 ;
+ Dummy = X1 Y1 Q1 ;
 
 Rules
 
@@ -25,6 +25,11 @@ Cy:0 <=> Vow: Cx: _ #: ;
 	   Cy in ( s ) 
 	   matched ;
 
+"Word final cluster simplification I" ! Pot -sj# 
+ t:0 <=> _ t:0 j #: ;
+
+"Word final cluster simplification I"
+ t:0 <=> t:0 _ j #: ;
 
 ! Vowel lengthening
 ! -----------------
@@ -40,8 +45,24 @@ Cy:0 <=> Vow: Cx: _ #: ;
 "e:i in e-stems"
  e:i <=> Cns _ X1:0 j ;
 
-"a deletion in verbs" ! also other contexts?
- a:0 <=> _ Y1 ;
+"Vowel deletion in preterite verbs" ! also other contexts?
+ Vx:0 <=> _ Y1:0 ;
+      where Vx in ( a å e ) ;
+
+"Vowel change in preterite verbs"
+ o:u <=> _ Y1:0 ;
+! gáhtot : gáhtuv
+
+"Stem vowel deletion in even-syllable verbs, 1du, 3pl"
+ Vx:Vy <=> _ Y1:0 ;
+      where Vx in ( a å e o )
+	    Vy in ( 0 0 0 u )
+	    matched ;
+
+"Indicative Present Singular 3rd Final Vowel in verbs"
+  Vx:á <=> Cns _ Q1:0 ;
+			where Vx in (a e ) ;
+! bassat : bassá,  gállet:gállá
 
 
 ! Diphtong simplification
