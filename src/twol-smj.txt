@@ -15,23 +15,64 @@ Sets
 
 Rules
 
+
+! Vowel lengthening
+! -----------------
+
 "Compulsatory lengthening in even-syllables"
- a:á <=> Cns Vx Cns*: _ WeG: ;
+ a:á <=> Cns Vx Cns:* _ WeG: ;
  where Vx in ( a e i o u å ä ) ;
+
+
+! Stem vowel alternations
+! -----------------------
 
 "e:i in e-stems"
  e:i <=> Cns _ X1:0 j ;
 
-"Diphtong simplification 1"
- o:0 <=> Cns _ a:å Cns* e:i X1:0 ;
 
-"Diphtong simplification 2"
- a:å <=> o:0 _ Cns* e:i X1:0 ;
+! Diphtong simplification
+! -----------------------
+
+!"Diphtong simplification 1"
+! o:0 <=> Cns _ a:å Cns:* e:i X1:0 ;
+
+!"Diphtong simplification 2"
+! a:å <=> o:0 _ Cns:* e:i X1:0 ;
+
+"Diphtong simplification 1, initial deletion"
+ Vx:0 <=>  _ Vy:Vz ;
+ where Vx in ( o i )
+       Vy in ( a e )
+       Vz in ( å ä )
+       matched ;
+! Deleting the first segment of oa, ie, whenever 2nd segment changes
+
+"oa:å whenever weak grade"
+ a:å <=> o: _ Cns:* WeG: ;
+
+"ä:e vhenever weak grade"
+ ä:e <=> _ Cns:* WeG: ;
+
+"Dipthtong simplification in front of stem vowel variation"
+ Vx:Vy <=> Vz: _ Cns:* Vv:Vw ;
+ where Vx in ( a e )
+       Vy in ( å ä )
+       Vz in ( o i )
+       Vv in ( o e )
+       Vw in ( u á )
+       matched ;
+
+"Vovel change in front of stem vowel variation"
+ ä:e <=> _ Cns:* o:u ;
+
+
  
-! Consonant gradation rules
-!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-! The rule titles refer to the overview in Spiiks grammar
+! Consonant gradation rules
+! -------------------------
+
+! The numbering of rules refer to the overview in Spiiks grammar
 
 "Gradation Series 1, III-II, three-letter patterns"
  Cx:0 <=> Vow Cx _ Cy Vow ( StemCns: ) WeG: ;
