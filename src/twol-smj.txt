@@ -19,7 +19,7 @@ Sets
  DelCns = g2 m2 n2 h2 ;
  WeG = Q1 X2 X3 Q2 ;
  StemCns = b d g g2 h h2 j l m m2 n n2 ñ r s ;
- Dummy = Q1 X2 X3 X4 Y1 Y2 Q2 ;
+ Dummy = X2 X3 X4 X5 Y1 Y2 Q1 Q2 ;
 
 
 Rules
@@ -85,23 +85,23 @@ Cy:0 <=> Vow: Cx: _ #: ;
 ! example?
 
 
-! Vowel harmony
-! -------------
-
-"e:å after root vowel å"
- e:å <=> å Cns:* _ Q2:0 ; ! This is the complement to last rule
-! gådet : gådåv
-! Cns* was wrong since it required C1:C1, not C1:C2
 
 
-"Stem Vowel in 1st and 2nd Person Singular Present"
-  e:á <=> [ Vow - å ] Cns* _ Q2: ;
-! gállet : gáláv
 
 
 
 ! Stem vowel alternations
 ! -----------------------
+
+! a-stem alternations
+! - - - - - - - - - -
+
+! no one?
+
+
+
+! e-stem alternations
+! - - - - - - - - - -
 
 "e:i in e-stems"
  e:i <=> Cns _ Q1:0 j ;
@@ -109,18 +109,28 @@ Cy:0 <=> Vow: Cx: _ #: ;
 "e:á before illative j in e-stems with CG"
  e:á <=> [ Vow: - å ] Cns* _ X4:0 j ;
 
-! Note the parallel illative rule pair above
-
-"Indicative Present Singular 3rd Final Vowel in verbs"
-  Vx:á <=> Cns _ Y2:0 ;
-	where Vx in (a e ) ;
-! bassat : bassá,  gállet:gállá
-
-
 "e:å before illative j in e-stems with å as root vowel"
  e:å <=> å Cns* _ X4: j #: ;
 
-"o:u in odd-syllable nouns"
+
+
+! o-stem alternations
+! - - - - - - - - - -
+
+"o:u in Ill & Com Sg of o-stem nouns"
+ o:u <=> Cns: _ [ X4: | Q1: X5: ] j ; !X4 IllSg, Q1 X5 ComSg.
+
+"o:u in even-syllable verbs"
+ o:u <=> Cns: _ [ Y1: | Y2: ] ;
+! Y1: and Y2 for different verb forms
+
+
+
+
+! alternations valid for several stem types
+! - - - - - - - - - - - - - - - - - - - - -
+
+"o:u and e:å in odd-syllable nouns"
  Vx:Vy <=> _ Cns: Vow ;
        where Vx in ( e o )
 	     Vy in ( å u )
@@ -134,32 +144,78 @@ Cy:0 <=> Vow: Cx: _ #: ;
 	    matched ;
 
 
+"Indicative Present Singular 3rd Final Vowel in verbs"
+  Vx:á <=> Cns _ Y2:0 ;
+	where Vx in (a e ) ;
+! bassat : bassá,  gállet:gállá
+
+"Stem Vowel in 1st and 2nd Person Singular Present"
+  e:á <=> [ Vow - å ] Cns:* _ Q2: ;
+! gállet : gáláv
+
+
+! Vowel harmony
+! - - - - - - -
+
+"e:å after root vowel å"
+ e:å <=> å Cns:* _ Q2:0 ; ! This is the complement to last rule
+! gådet : gådåv
+! Cns* was wrong since it required C1:C1, not C1:C2
 
 
 
 ! Diphtong simplification
 ! -----------------------
 
-"Diphtong simplification whenever weak grade in a-stems I"
- Vx:0 <=> _ Vy:Vz Cns:* a ( Cns:0 ) WeG: ;
-      where Vx in ( o i )
-	    Vy in ( a e )
-	    Vz in ( å æ )
-	    matched ;
+"oa:å Diphtong Simplification Part I"
+ o:0 <=> [ #: | Cns: | Dummy: ] _ a: Cns:* [ a: | i: ] WeG: ; ! WeG of a- and i-stems
+	 [ #: | Cns: | Dummy: ] _ a: Cns:* e: Q1: j ; ! ComSg & G-C Pl of e-stems
+	 [ #: | Cns: | Dummy: ] _ a: Cns:* e: Y1: ; ! Different verb forms
+	 [ #: | Cns: | Dummy: ] _ a: Cns:* o: ( Dummy: ) j ; ! o-stems, before j.
 
-"Diphtong simplification whenever weak grade in a-stems II"
- Vy:Vz <=> Vx:0 _ Cns:* a ( Cns:0 ) WeG: ;
-      where Vx in ( o i )
-	    Vy in ( a e )
-	    Vz in ( å æ )
-	    matched ;
+"oa:å Diphtong Simplification Part II"
+ a:å <=> [ #: | Cns: | Dummy: ] o: _ Cns:* [ a: | i: ] WeG: ; ! WeG of a- and i-stems
+	 [ #: | Cns: | Dummy: ] o: _ Cns:* e: Q1: j ; ! ComSg & G-C Pl of e-stems
+	 [ #: | Cns: | Dummy: ] o: _ Cns:* e: Y1: ; ! Different verb forms
+	 [ #: | Cns: | Dummy: ] o: _ Cns:* o: ( Dummy: ) j ; ! o-stems, before j.
+
+! The rule complexes are identical, but fix different parts of the monophtongisation.
+
+
+"æ:e Diphtong Simplification"
+ æ:e <=> [ #: | Cns: | Dummy: ] _ Cns:* [ a: | i: ] WeG: ; ! WeG of a- and i-stems
+	 [ #: | Cns: | Dummy: ] _ Cns:* e: Q1: j ; ! ComSg & G-C Pl of e-stems
+	 [ #: | Cns: | Dummy: ] _ Cns:* o: [ X4: | Q1: X5: ] j ; ! Ill & Com Sg.
+
+"ie:æ Diphtong Simplification Part I"
+ i:0 <=> [ #: | Cns: | Dummy: ] _ e: Cns:* e: X4: j ; ! Illative j in e-stems with CG
+	 [ #: | Cns: | Dummy: ] _ e: Cns:* e: [ Q2: | Y2: ] ;   ! Prs Sg of e-stem verbs
+
+"ie:æ Diphtong Simplification Part II"
+ e:æ <=> [ #: | Cns: | Dummy: ] i: _ Cns:* e: X4: j ; ! Illative j in e-stems with CG
+	 [ #: | Cns: | Dummy: ] i: _ Cns:* e: [ Q2: | Y2: ] ;   ! Prs Sg of e-stem verbs
+
+! Note: Check that Q2 above does not overgenerate to nouns!
+
+
+
+!"Diphtong simplification whenever weak grade in a-stems I"
+! Vx:0 <=> _ Vy:Vz Cns:* a ( Cns:0 ) WeG: ;
+!      where Vx in ( o i )
+!	    Vy in ( a e )
+!	    Vz in ( å æ )
+!	    matched ;
+
+!"Diphtong simplification whenever weak grade in a-stems II"
+! Vy:Vz <=> Vx:0 _ Cns:* a ( Cns:0 ) WeG: ;
+!      where Vx in ( o i )
+!	    Vy in ( a e )
+!	    Vz in ( å æ )
+!	    matched ;
 ! boarkka : bårka
 ! loavddag2 : låvdda
 
 
-"æ:e vhenever weak grade"
- æ:e <=> _ Cns Cns:+ WeG: ; ! old without Cns
-! no, this is not WeG only, it requires change to á as well.
 
 "Vovel change in front of stem vowel variation"
  æ:e <=> _ Cns Cns:+ o:u ; ! ditto
