@@ -2,6 +2,21 @@
 # *****************************************************************
 
 
+# Here we build the final generator , an inverted transducer of the analyzer.
+# It is dependent upon smj.save
+
+ismj.fst: smj.fst
+	@echo
+	@echo "*** Building the inverse ismj.fst ***"
+	@echo
+	@printf "load smj.save \n\
+	invert net \n\
+	save stack ismj.fst \n\
+	quit \n" > /tmp/ismj-fst-script
+	@xfst < /tmp/ismj-fst-script
+	@rm -f /tmp/ismj-fst-script
+
+
 # This goal is to build the final analyser. It depends on all the files.
 
 smj.fst: smj.save caseconv.fst spellrelax.fst tok.fst
