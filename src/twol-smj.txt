@@ -2,6 +2,7 @@ Alphabet
  a á b c d e f g h i j k l m n ñ o p q 
  r s t u v w x y z å ä ø ö å %-
  '
+ h2:h g2:g m2:m n2:n 
  X1:0 X2:0 X3:0 X4:0 X5:0 X6:0 X7:0 X8:0 X9:0
  Q1:0 Q2:0 Q3:0 Q4:0 Q5:0 Q6:0 Q7:0 Q8:0 Q9:0 Q:0
  Y1:0 Y2:0 Y3:0 Y4:0 Y5:0 Y6:0 Y7:0 Y8:0 ;
@@ -9,6 +10,7 @@ Alphabet
 Sets
  Vow = a á e i o u y æ ä ø ö å ;
  Cns = b c d f g h j k l m n ñ p q r s t v w x z ;
+ DelCns = g2 m2 n2 h2 ;
  WeG = X1 X2 ;
  StemCns = b d g h j l m n ñ r s ;
  Dummy = X1 Y1 Q1 ;
@@ -31,6 +33,21 @@ Cy:0 <=> Vow: Cx: _ #: ;
 "Word final cluster simplification I"
  t:0 <=> t:0 _ j #: ;
 
+"Word final devoicing of single consonants"
+ Cx:Cy <=> Vow: _ #: ;
+       where Cx in ( b d g m h )
+	     Cy in ( p t k v j )
+	     matched ;
+
+"Word final weakening -tj to -sj"
+ t:s <=> Vow: _ j #: ;
+! jågåsj:jågåtja
+
+"Word Final Deletion of n2 m2 g2 h2"
+  Cx:0 <=> Vow _ [ X4: | X8: | X6: Cns: | X9: ] ;
+			where Cx in (DelCns) matched ;
+
+
 ! Vowel lengthening
 ! -----------------
 
@@ -45,12 +62,12 @@ Cy:0 <=> Vow: Cx: _ #: ;
 "e:i in e-stems"
  e:i <=> Cns _ X1:0 j ;
 
-"Vowel deletion in preterite verbs" ! also other contexts?
- Vx:0 <=> _ Y1:0 ;
-      where Vx in ( a å e ) ;
+!"Vowel deletion in preterite verbs" ! also other contexts?
+! Vx:0 <=> _ Y1:0 ;
+!      where Vx in ( a å e ) ;
 
-"Vowel change in preterite verbs"
- o:u <=> _ Y1:0 ;
+!"Vowel change in preterite verbs"
+! o:u <=> _ Y1:0 ;
 ! gáhtot : gáhtuv
 
 "Stem vowel deletion in even-syllable verbs, 1du, 3pl"
