@@ -84,6 +84,7 @@ Rules
 
 
 
+
 ! Vowel lengthening
 ! -----------------
 
@@ -162,7 +163,12 @@ Rules
 	 Cns: _ [ Y1: | Y2: | Y3: ] ; ! Y1=  Y2= Y3=PrsPrc 
 
 
+! å-stem alternations
+! - - - - - - - - - -
 
+"å:e in Present Participle of even-syllable verbs"
+ å:e <=> Cns: _ Y6: ;
+! låhkåt : låhkke
 
 
 ! alternations valid for several stem types
@@ -373,6 +379,10 @@ t:0 <=> Vow: [j|ñ|r|v] _ t Vow: ( StemCns: ) WeG: ; ! S3 jtt:jt etc.
 "bb:pp"
 b:p <=> Vow: _ b: Vow: ( StemCns: ) WeG: ;
 	Vow: b: _ Vow: ( StemCns: ) WeG: ;
+	Vow: _ #:0 ;
+! The third rule is for unnep : unnebu. It must be revised in two ways:
+! a. it should be extended to more consonants
+! b. it should be restricted, perhaps b should be replaced with b2
 
 "gg:kk"
 g:k <=> Vow: _ g: Vow: ( StemCns: ) WeG: ;
@@ -401,7 +411,41 @@ d:t <=> Vow: _ d: Vow: ( StemCns: ) WeG: ;
  k:v <=> Vow: _ [ s|t ] Vow: ( StemCns: ) WeG: ;
 	 Vow: _ t [ j|s ] Vow: ( StemCns: ) WeG: ;
 
+! Exceptional II-III inverse gradation in present participles
+! -----------------------------------------------------------
 
+! This gradation is only for II-I syllable verbs that get III as
+! present participles.
 
+! Candidates:
+!! bbm - bm - m
+! ddn - dn - n
+! ddnj- dnj- nj
+!! ggñ - gñ - ñ
+! ddj - dj - dj
 
+! hkk - hk - g
+! hpp - hp - b
+
+! htt - ht - d
+! httj- htj- tj
+! htts- hts- ts
+
+! Strategy: Do insertion rule for the initial element.
+
+"Consonant insertion as II-III strengthening gradation with bm,gñ"
+ 0:Cx <=> Vow _ Cx Cy Vow: Y6 ;
+      where Cx in ( b g )
+	    Cy in ( m ñ )
+	    matched ;
+
+"Consonant insertion as II-III strengthening gradation with dn/j"
+ 0:d <=> Vow _ d [ n | n j | j ] Vow: Y6 ;
+
+"Consonant insertion as II-III strengthening gradation with hk, hp"
+ 0:Cx <=> Vow h _ Cx Vow: Y6 ;
+      where Cx in ( k p ) ;
+
+"Consonant insertion as II-III strengthening gradation with htt(j/s)"
+ 0:t <=> Vow h _ t (j|s) Vow: Y6 ;
 
