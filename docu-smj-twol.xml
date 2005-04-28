@@ -8,21 +8,21 @@
     </authors>
   </header>
   <body>
-    <section id="Background" >
+    <section>
       <title>Background</title>
-      <p>The file itself is <a href="../../../smj/twol-smj.txt" >twol-smj.txt</a>, located in the smj directory. The file is modeled upon the corresponding file for Northern Sámi, but has been revised and differs from it on several issues. The grammatical sources are Spiik 1989: Lulesamisk grammatik and Nystø and Johnsen 2001: Sámásta 2.</p>
+      <p>The file itself is located in <code>gt/src/smj/twol.txt</code>. The file is modeled upon the corresponding file for Northern Sámi, but has been revised and differs from it on several issues. The grammatical sources are Spiik 1989: Lulesamisk grammatik and Nystø and Johnsen 2001: Sámásta 2.</p>
     </section>
-    <section id="File_structure" >
+    <section>
       <title>File structure</title>
       <p>The rule file has the sections Alphabet, Sets and Rules. The rules are ordered thematically, with 3 main sections: Consonant alternations (except cg), vowel alternations, and consonant gradation.</p>
-      <section id="The_Alphabet_section" >
+      <section>
         <title>The Alphabet section</title>
-        <section id="The_members" >
+        <section>
           <title>The members</title>
           <p>All Lule Sami letters are listed. The Lule Sámi ENG sound is represented as <strong>ñ</strong>. The 3rd degree mark <strong>'</strong> is never realized, hence declared as <strong>':0</strong>.</p>
           <p>h2, g2 etc. are consonants deleted in the Nom. m3, d3 etc. (?) are consonants that undergo certain processes word-finally. This issue should be looked into. Perhaps the two sets can be unified. The reason why there are more distinctions than for sme, is that the cns deletion process is more phonological in sme.</p>
         </section>
-        <section id="The_Dummy_symbols" >
+        <section>
           <title>The Dummy symbols</title>
           <p>The Dummy symbols are taken from the sme file for convenience, only a small part of them are actually used, they are defined in the Sets section along the way, included there as soon as they are used. The set of actually used Dummy symbols is thus the set declared in &quot;Dummy&quot;.</p>
           <p>X shall be used for nouns only, Y for verbs only and Q for processes common to both. The symbols themselves are used in the following way:</p>
@@ -46,7 +46,7 @@ Q3 = WeG in contracted, also does not trigger Dipht simpl.
 </source>
         </section>
       </section>
-      <section id="The_Sets_section" >
+      <section>
         <title>The Sets section</title>
         <p>These are the sets:</p>
         <ol>
@@ -58,9 +58,9 @@ Q3 = WeG in contracted, also does not trigger Dipht simpl.
           <li>Dummy = the set of dummy symbols, they are there to trigger certain morphophonological symbols</li>
         </ol>
       </section>
-      <section id="The_rules" >
+      <section>
         <title>The rules</title>
-        <section id="Overview" >
+        <section>
           <title>Overview</title>
           <p>The rules section has the following chapters:</p>
           <source>! Consonant alternations in certain pos
@@ -70,43 +70,43 @@ Q3 = WeG in contracted, also does not trigger Dipht simpl.
 ! Consonant gradation rules
 </source>
         </section>
-        <section id="Consonant_alternations_in_certain_pos" >
+        <section>
           <title>Consonant alternations in certain pos</title>
           <p>All rules deal with word-final position.</p>
         </section>
-        <section id="Vowel_lengthening" >
+        <section>
           <title>Vowel lengthening</title>
           <p>This is the gussa : gusá case, where the 2nd syll vowel <em>a</em> is lengthened to <em>á</em> whenever the consonant is shortened to grade I.</p>
         </section>
-        <section id="Stem_vowel_alternations" >
+        <section>
           <title>Stem vowel alternations</title>
           <p>This section is divided according to stem vowels: a-, e-, o- stems.</p>
           <p>There are no rules for a-stems.</p>
           <p>For e-stems, there is e:i, e:á, e:å, e:u and e:a. Each alternation is triggered by a combination of phonological content and dummy symbols.</p>
           <p>For o-stems there is o:u.</p>
         </section>
-        <section id="Diphthong_simplification" >
+        <section>
           <title>Diphthong simplification</title>
           <p>The diphthong simplification handles oa:å and æ:e. Phonologically, these are identical processes, but since the dip thong is written by two letters in the former case and by one letter in the latter, the alternations must be handled separately. The section also handles ie:æ, these are in principle the same as oa:å, but the alternation does not occur in so many contexts.</p>
           <p>The oa:å simplification has a two-art rule, one for o deletion, and one for a:å change. Otherwise, the rules are identical (this is the type where xfst would have been better than twolc).</p>
         </section>
-        <section id="Consonant_gradation_rules" >
+        <section>
           <title>Consonant gradation rules</title>
           <p>The consonant gradation rules differ considerably from the corresponding rules for Northern Sámi. Instead of generalizing over sets of consonants (Cx:Cy &lt;=> ...), each rule contains the alternation for one consonant only, and to the right of the &lt;=> arrow is listed all the contexts where the relevant alternation appears. The disadvantage with this method is that the same context must be written several times, if e.g. both p, t and k are deleted in the same contexts, each of these contexts must be written several times, one for each consonant. The advantage is that there are no conflicts during compilation, compilation takes 10 seconds rather than 3 minutes. The earlier Northern-Sámi-style rule set was ordered according to CG pattern. This pattern is still visible in the new rules, via the reference S1-3 etc. (Spiik's Series 1, 3-letter pattern, etc) behind each subrule.</p>
           <p>This actually opens up for a migration to an xfst rule file instead of the current twolc format, since what xfst really cannot do is generalize over sets (Cx:Cy etc.). This is an issue for future revisions to decide.</p>
           <p>The rules are divided in two subsections, deletion rules and change (alternation) rules.</p>
-          <section id="Deletion_rules" >
+          <section>
             <title>Deletion rules</title>
             <p>The <strong>b, d, g</strong> deletion rules are similar, via the optional ( b ) etc. in front of the &quot;_&quot; symbol, both <strong>bm:m</strong> and <strong>bbm:bm</strong> alternations are covered. The contexts differ to a certain extent. For <strong>b</strong> and <strong>d</strong>, the III-I special gradation <strong>bbm:m</strong> is covered by two separate rules, and a special Dummy (X6), not part of the ordinary WeG set.</p>
             <p>Note that one of the rules for <strong>t:0</strong> refers to <strong>#:</strong> as part of its context. As soon as clitics are added to the word form, this rule will thus not be triggered. Look into this when the clitics are added.</p>
           </section>
-          <section id="Change_rules" >
+          <section>
             <title>Change rules</title>
             <p>The Cx:Cy format was kept for <strong>hk:g, hp:b, ht:d</strong>, since the left context h:0 was unique, and no compilation conflict thus arose.</p>
             <p>The <strong>bb:pp, gg:kk, dd:tt</strong> alternations were split into three rules, since keeping them in one Cx:Cy rule created compilation conflicts. Also, <strong>d:t</strong> contain a rule not found for the other two...</p>
           </section>
         </section>
-        <section id="Debugging_of_twol-rules" >
+        <section>
           <title>Debugging of twol-rules</title>
           <p>All rule conflicts have been successfully resolved. The rule file should be kept that way. Look out for conflicts in the compilation process, and resolve them as they appear!</p>
         </section>
