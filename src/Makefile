@@ -106,8 +106,8 @@ smj.save: ../bin/smj.save
 	@echo
 	@echo
 	printf "compile-source smj-lex.txt noun-smj-lex.txt \
-	adj-smj-lex.txt verb-smj-lex.txt closed-smj-lex.txt \
-	adv-smj-lex.txt pp-smj-lex.txt punct-smj-lex.txt \n\
+	adv-smj-lex.txt closed-smj-lex.txt adj-smj-lex.txt \
+	pp-smj-lex.txt punct-smj-lex.txt verb-smj-lex.txt \n\
 	read-rules ../bin/twol-smj.bin \n\
 	compose-result \n\
 	save-result ../bin/smj.save \n\
