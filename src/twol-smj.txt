@@ -16,7 +16,7 @@ Sets
  Vow = a á e i o u y æ ä ø ö å
        é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý ;
  Cns = b b3 c d d3 f g g2 g3 h h2 h3 j k l m m2 m3 n n2 ñ 
-       p q r s t v w x z ;
+       p q r s t v w x z ' ;
  DelCns = g2 m2 n2 h2 ;
  WeG = X2 X3 X7 Y5 Q1 Q2 Q3 ;
  StemCns = b b3 d d3 g g2 g3 h h2 h3 j l m m2 m3 n n2 ñ r s ;
@@ -123,8 +123,8 @@ Rules
 
 
 "e:á in certain stem types"
- e:á <=> [ Vow: - å ] Cns* _ X4: ; 
-	 [ Vow: - å ] Cns* _ Cns: X5: Vow ;
+ e:á <=> [ Vow: - å ] Cns:* _ X4: ; 
+	 [ Vow: - å ] Cns:* _ Cns: X5: Vow ;
 	 Cns _ Y2: ; ! Indicative Present Singular 3rd Final Vowel in verbs
 	 Cns _ Y3: ; ! PrsPrc, gállet : gállám
 	 [ Vow - å ] Cns:* _ Q2: ; ! gállet : gáláv
@@ -138,8 +138,8 @@ Rules
 ! the lexicon entry for the Dim suffix.
 
 "e:å in certain stem types with å as root vowel"
- e:å <=> å Cns* _ X4:0 [ j #: | s Vow: ]  ;
-	 å Cns* _ Cns: X5: Vow ;
+ e:å <=> å Cns:* _ X4:0 [ j #: | s Vow: ]  ;
+	 å Cns:* _ Cns: X5: Vow ;
 	 å Cns:* _ Q2:0 ; ! gådet : gådåv
 ! The first subrule gives Ill. sg. of even-stem
 ! No shorter version here, bec. of no å-å effect
@@ -147,11 +147,11 @@ Rules
 ! The third one is vowel harmony, e:å after root vowel å
 
 "e:u in Verb Derivations"
- e:u <=> Cns* _ Y4:0 ; 
+ e:u <=> Cns:* _ Y4:0 ; 
 ! árret : árrusit
 
 "e:a in Verb Derivation"
- e:a <=> Cns* _ Y5:0 ;
+ e:a <=> Cns:* _ Y5:0 ;
 ! vaddet : vattatjit
 
 ! o-stem alternations
