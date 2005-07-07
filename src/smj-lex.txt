@@ -538,10 +538,8 @@ LEXICON BUOREMUS-OBL
 ! -------------------
 
 LEXICON BASSAT
-
 +V: BASSATStem ;
 +V: DeverbalVerbsBASSAT ;
-
 
 LEXICON BASSATStem
  EVEN-PASSIVE ;
@@ -572,7 +570,18 @@ LEXICON DeverbalVerbsBASSAT
 LEXICON DeverbalNounsBASSAT
  # ;
 
+LEXICON GÁDJOT
++V: GÁDJOTStem ;
++V: DeverbalVerbsBASSAT ;
 
+LEXICON GÁDJOTStem
+ EVEN-PASSIVE ;
+ GÁDJOTINCH ;
+ 
+LEXICON GÁDJOTINCH
+ +Inch+V:goahte INFL-EVEN ;
+ INFL-o- ;
+ DeverbalNounsBASSAT ;
 
 LEXICON GALGGAT
 +V: INFL-EVEN ;
@@ -602,6 +611,30 @@ LEXICON INFL-EVEN
 +ImprtII+ConNeg: ImprtIIConNeg ;
 +VNoun:m VSUBST ;
 
+LEXICON INFL-o-
++Ind+Prs: I-o-V ;
++Ind+Prt: II-o-V ;
++Pot:Q1tj I-odd-V ;
++Imprt+Sg2:Q1 K ; ! Basic Imperative, like ConNeg
++Imprt+Du2:Y6 K ; ! Ad hoc solution. We need a II => III operation here !! (todo)
++Imprt: IMP1-o- ;
++ImprtII:Y1 IMP2-EVEN ; 
++Inf:t K ;
++PrfPrc:Y3m K ;
++PrsPrc:Y6 NOADE ; ! Noun, not correct, III grade!
++Ger:Q1dijn K ;
++GerII:min K ;
++Sup:Q1tjit K ;
++VAbess:Q1k K ;
++VGen:Q1 K ;
++Ind+Prs+ConNeg:Q1 K ;
++Ind+Prt+ConNeg:Y3m K ;
++Pot+ConNeg:Q1tja K ;
++Imprt+ConNeg:Q1 K ;
++ImprtII+ConNeg: ImprtIIConNeg-o- ;
++VNoun:m VSUBST ;
+
+
 LEXICON ImprtIIConNeg
 +Sg2:Y1u K ;
 +Sg3:Q1 K ;
@@ -610,6 +643,16 @@ LEXICON ImprtIIConNeg
 +Du3:Q1 K ;
 +Pl1:Q1 K ;
 +Pl2:Y1u K ;
++Pl3:Q1 K ;
+
+LEXICON ImprtIIConNeg-o-
++Sg2:Y1 K ;
++Sg3:Q1 K ;
++Du1:Q1 K ;
++Du2:Y1 K ;
++Du3:Q1 K ;
++Pl1:Q1 K ;
++Pl2:Y1 K ;
 +Pl3:Q1 K ;
 
 LEXICON VSUBST
@@ -721,6 +764,17 @@ LEXICON II-even-V
  :Q1 II-other ; ! ! Q1, WeG. Q1 deletes stem vow bef. j
 ! Y1 does not give WeG as Q1 does, therefore the split
 
+LEXICON I-o-V
+:Q2 I-sg12 ; ! Q2 governs WeG and e:á
+ :Y2 I-sg3 ;  ! Y2 gives á in sg3 of verbs
+     I-du23pl12 ; ! No diacritic, no stem changes
+ :Y1 I-du1pl3-o- ; ! Y1 deletes stem vowels in front of j
+ 
+LEXICON II-o-V
+ :Y1 II-sg12pl3-o- ; ! Y1 deletes stem vowels in front of j
+ :Q1 II-other ; ! ! Q1, WeG. Q1 deletes stem vow bef. j
+! Y1 does not give WeG as Q1 does, therefore the split
+ 
 LEXICON II-odd-V
  II-sg12pl3 ;
  :i II-other ;
@@ -760,6 +814,10 @@ LEXICON I-du1pl3
 +Du1:in K ;
 +Pl3:i K ;
 
+LEXICON I-du1pl3-o-
++Du1:n K ;
++Pl3: K ;
+
 LEXICON I-odd-V
 +Sg1:av K ;
 +Sg2:a K ;
@@ -779,6 +837,11 @@ LEXICON II-sg12pl3
 +Sg1:iv K ;
 +Sg2:i K ;
 +Pl3:in K ;
+
+LEXICON II-sg12pl3-o-
++Sg1:v K ;
++Sg2: K ;
++Pl3:n K ;
 
 LEXICON II-other
 +Sg3:j K ;
@@ -800,6 +863,14 @@ LEXICON IMP1-EVEN
  +Pl1:op K ;
  +Pl2:it K ;
  +Pl3:isa K ;
+ 
+LEXICON IMP1-o-
+ +Sg3:Y1s K ;
+ +Du1:n K ;
+ +Du3:Y1ska K ;
+ +Pl1:p K ;
+ +Pl2:Y1t K ;
+ +Pl3:Y1sa K ;
 
 LEXICON IMP2-EVEN
  +Sg2: K ;
