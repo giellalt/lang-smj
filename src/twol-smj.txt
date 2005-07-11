@@ -7,7 +7,7 @@ Alphabet
  É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý þ Ð
  é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý þ ð ß ª ß ç
  h2:h g2:g m2:m n2:n  ! these are deleted in nom
- b3:b d3:d g3:g m3:m h3:h ! these can not occur before #
+ b3:b d3:d g3:g m3:m h3:h r3:r ! these can not occur before #
  X1:0 X2:0 X3:0 X4:0 X5:0 X6:0 X7:0 X8:0 X9:0
  Q1:0 Q2:0 Q3:0 Q4:0 Q5:0 Q6:0 Q7:0 Q8:0 Q9:0 Q:0
  Y1:0 Y2:0 Y3:0 Y4:0 Y5:0 Y6:0 Y7:0 Y8:0 ;
@@ -16,10 +16,10 @@ Sets
  Vow = a á e i o u y æ ä ø ö å
        é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý ;
  Cns = b b3 c d d3 f g g2 g3 h h2 h3 j k l m m2 m3 n n2 ñ 
-       p q r s t v w x z ' ;
+       p q r r3 s t v w x z ' ;
  DelCns = g2 m2 n2 h2 ;
  WeG = X2 X3 X7 Y5 Q1 Q2 Q3 ;
- StemCns = b b3 d d3 g g2 g3 h h2 h3 j l m m2 m3 n n2 ñ r s ;
+ StemCns = b b3 d d3 g g2 g3 h h2 h3 j l m m2 m3 n n2 ñ r r3 s ;
  Dummy = X2 X3 X4 X5 X6 X7 X8 Y1 Y2 Y3 Y4 Y5 Q1 Q2 Q3 ;
 
 Rules
@@ -28,22 +28,17 @@ Rules
 ! Consonant alternations in certain pos
 ! -------------------------------------
 
-!"Word final double consonant simplification"
-!Cy:0 <=> Vow: Cx: _ #: ;
-!     where Cx in ( s ) 
-!	   Cy in ( s ) 
-!	   matched ;
-! Moved to the CG chapter. But does this rule wait for more cases?
 
 "Word Final Devoicing of Certain Single Consonants d3 etc."
  Cx:Cy <=> Vow: _ ( Dummy: ) #: ;
-       where Cx in ( b3 d3 g3 m3 h3 )
-	     Cy in ( p  t  k  v  j )
+       where Cx in ( b3 d3 g3 m3 h3 r3 )
+	     Cy in ( p  t  k  v  j  r  )
 	     matched ;
 ! iemet:iemeda
 
 "Word final weakening -tj and -ttj to -sj"
- t:s <=> Vow: ( Dummy: ) _ ( t: ) j ( Dummy: ) #: ;
+ t:s <=> Vow: ( Dummy: ) ( d: ) _ j ( Dummy: ) #: ;
+! t:s <=> Vow: ( Dummy: ) _ ( t: ) j ( Dummy: ) #: ;
 ! jågåsj:jågåtja 
 
 !"Word final weakening of -ttj to -sj" 
@@ -80,6 +75,9 @@ Rules
  
 "Deleting Final m3 in Short Essive of Uneven Syllables"
  m3:0 <=> Vow: _ Q1: X1: n ;
+
+"Deleting Final r3 in Short Essive of Uneven Syllables"
+ r3:0 <=> Vow: _ Q1: X1: n ;
  
  
 !      where Cx in ( s m h ) ;
@@ -123,7 +121,7 @@ Rules
 ! - - - - - - - - - -
 
 "e:i in e-stems"
- e:i <=> Cns _ Q1:0 ( X5:0 ) j [ #: | Cns: ] ; ! WeG or not, e:i
+ e:i <=> Cns: _ Q1:0 ( X5:0 ) j [ #: | Cns: ] ; ! WeG or not, e:i
 ! X5 is added to get e:i also in ComSg.
 
 "e:i in potensialis" 
@@ -172,8 +170,13 @@ Rules
 ! o-stem alternations
 ! - - - - - - - - - -
 
+"Facultative o:u in Com sg"
+ o:u => Cns: _ Q1: X5:  ; ! Q1 X5 ComSg.
+
+
 "o:u in  certain stem types"
- o:u <=> Cns: _ [ X4: j | Q1: X5: ] ; !X4 IllSg, Q1 X5 ComSg.
+! o:u <=> Cns: _ [ X4: j | Q1: X5: ] ; !X4 IllSg, Q1 X5 ComSg.
+ o:u <=> Cns: _  X4: j ; !X4 IllSg, Q1 X5 ComSg.
          Cns: _ Cns: X5: Vow ;
 	 Cns: _ [ Y1: | Y2: | Y3: ] ; ! Y1=  Y2= Y3=PrsPrc 
 
@@ -202,7 +205,8 @@ Rules
 !	 [ #: | Cns: | Dummy: ] _ a: Cns:* e: Q1: j ; ! ComSg & G-C Pl of e-stems
 	 [ #: | Cns: | Dummy: ] _ a: Cns:* e: Q1: ( X5: ) j ; ! ComSg & G-C Pl of e-stems
 	 [ #: | Cns: | Dummy: ] _ a: Cns:* e: Y1: ; ! Different verb forms
-	 [ #: | Cns: | Dummy: ] _ a: Cns:* o: (Dummy:* - Q3:) j ; ! even-syll o-st, before j.
+	 [ #: | Cns: | Dummy: ] _ Cns:* o: [ X4: | Q1: X5: ] j ; ! Ill & Com Sg. !instead of next line
+!	 [ #: | Cns: | Dummy: ] _ a: Cns:* o: (Dummy:* - Q3:) j ; ! even-syll o-st, before j. ! rm when tested
 	 [ #: | Cns: | Dummy: ] _ a: Cns:* o: Cns: X5: Vow ; ! odd-syll, oblique
 
 "oa:å Diphtong Simplification Part II"
@@ -210,16 +214,21 @@ Rules
 !	 [ #: | Cns: | Dummy: ] o: _ Cns:* e: Q1: j ; ! ComSg & G-C Pl of e-stems
 	 [ #: | Cns: | Dummy: ] o: _ Cns:* e: Q1: ( X5: ) j ; ! ComSg & G-C Pl of e-stems
 	 [ #: | Cns: | Dummy: ] o: _ Cns:* e: Y1: ; ! Different verb forms
-	 [ #: | Cns: | Dummy: ] o: _ Cns:* o: ( Dummy:* - Q3: ) j ; ! o-stems, before j.
+	 [ #: | Cns: | Dummy: ] _ Cns:* o: [ X4: | Q1: X5: ] j ; ! Ill & Com Sg. !instead of next line
+!	 [ #: | Cns: | Dummy: ] o: _ Cns:* o: ( Dummy:* - Q3: ) j ; ! o-stems, before j. !rm when tested
 	 [ #: | Cns: | Dummy: ] o: _ Cns:* o: Cns: X5: Vow ; ! odd-syll, oblique
-
 ! The rule complexes are identical, but fix different parts of the monophtongisation.
+! Note that the "o-stems before j" part is restricted to Ill & Com Sg, cf. bug #136.
 
+
+"æ:e Facultative Diphtong Simplification in Comitative"
+ æ:e  => [ #: | Cns: | Dummy: ] _ Cns:* o: Q1: X5: j n ; ! Com Sg.
 
 "æ:e Diphtong Simplification"
  æ:e <=> [ #: | Cns: | Dummy: ] _ Cns:* [ a: | i: ] WeG: ; ! WeG of a- and i-stems
 	 [ #: | Cns: | Dummy: ] _ Cns:* e: Q1: j ; ! ComSg & G-C Pl of e-stems
-	 [ #: | Cns: | Dummy: ] _ Cns:* o: [ X4: | Q1: X5: ] j ; ! Ill & Com Sg.
+	 [ #: | Cns: | Dummy: ] _ Cns:* o: X4: j ; ! Ill Sg.
+!	 [ #: | Cns: | Dummy: ] _ Cns:* o: [ X4: | Q1: X5: ] j ; ! Ill & Com Sg. !old, rm.
 	 [ #: | Cns: | Dummy: ] _ Cns:* o: Cns: X5: Vow ; ! odd-syll, oblique
 	 _ Cns Cns:+ o:u ; ! Vovel change in front of stem vowel variation
 
@@ -270,64 +279,65 @@ Rules
 
 ! New rules, without conflicts
 ! The numbering of rules refer to the overview in Spiiks grammar
-! Thus !Š-3 means "Series 1, 3-letter patterns", etc.
+! Thus !S1-3 means "Series 1, 3-letter patterns", etc.
 
 ! Deletion rules
 ! - - - - - - - -
 
 "Consonant gradation b:0"
-b:0 <=> Vow: ( b ) _ m Vow: ( StemCns: ) WeG: ; ! Š-3, Š-2
-	Vow: _ [ d | j | l | n | r | s ] Vow: ( StemCns: ) WeG: ; ! Š-2
+b:0 <=> Vow: ( b ) _ m Vow: ( StemCns: ) WeG: ; ! S1-3, S1-2
+	Vow: _ [ d | j | l | n | r | s ] Vow: ( StemCns: ) WeG: ; ! S1-2
 	Vow: [ j|l|r ] _ b Vow: ( StemCns: ) WeG: ; ! S3-3
 	Vow: _ b: m Vow: X6: ; ! III-I special gradation
 	Vow: b: _ m Vow: X6: ; ! III-I special gradation
 
 "Consonant gradation d:0"
-d:0 <=> Vow: ( d ) _ [ n | j ] Vow: ( StemCns: ) WeG: ; ! Š-3, Š-2
-	Vow: ( d ) _ n j Vow: ( StemCns: ) WeG: ; ! Š-4 and Š, dnj:nj
+d:0 <=> Vow: ( d ) _ [ n | j ] Vow: ( StemCns: ) WeG: ; ! S1-3, S1-2
+	Vow: ( d ) _ n j Vow: ( StemCns: ) WeG: ; ! S1-4 and S1, dnj:nj
 	Vow: [ b | j | r | v ] _ d Vow: ( StemCns: ) WeG: ; ! S3
 	Vow: _ d: n Vow: X6: ; ! III-I special gradation
 	Vow: d: _ n Vow: X6: ; ! III-I special gradation
+	Vow: _ t:s j #: ;      ! oajváladtj# : oajvála0sj0
 
 "Consonant gradation g:0"
-g:0 <=> Vow: ( g ) _ ñ Vow: (StemCns: ) WeG: ; ! Š-3, Š-2
+g:0 <=> Vow: ( g ) _ ñ Vow: (StemCns: ) WeG: ; ! S1-3, S1-2
 	Vow: [ j|l|r|v ] _ g Vow: ( StemCns: ) WeG: ; ! S3
 
 "Consonant gradation k:0"
-k:0 <=> Vow: k _ n Vow: ( StemCns: ) WeG: ; ! Š-3
-	Vow: k _ t j Vow: ( StemCns: ) WeG: ; ! Š-4
+k:0 <=> Vow: k _ n Vow: ( StemCns: ) WeG: ; ! S1-3
+	Vow: k _ t j Vow: ( StemCns: ) WeG: ; ! S1-4
 	Vow: [ j|l|m|r|v ] _ k Vow: ( StemCns: ) WeG: ; ! S3
 	Vow: h _  k Vow: ( StemCns: ) WeG: ; ! S4, preasp stops
 
 "Consonant gradation l:0"
-l:0 <=> Vow: l _ [ d|j|t|n ] Vow: ( StemCns: ) WeG: ; ! Š-3
-	Vow: l _ t j Vow: ( StemCns: ) WeG: ; ! Š-4
+l:0 <=> Vow: l _ [ d|j|t|n ] Vow: ( StemCns: ) WeG: ; ! S1-3
+	Vow: l _ t j Vow: ( StemCns: ) WeG: ; ! S1-4
 	Vow: l _ Vow: ( StemCns: ) WeG: ; ! S2, II-I
 	Vow: [ j|b|v ] _ l  Vow: ( StemCns: ) WeG: ; ! S3
 
 "Consonant gradation m:0"
-m:0 <=> Vow: m _ [ b|p ] Vow: ( StemCns: ) WeG: ; ! Š-3
+m:0 <=> Vow: m _ [ b|p ] Vow: ( StemCns: ) WeG: ; ! S1-3
 	Vow: m _ Vow: ( StemCns: ) WeG: ; ! S2, II-I
 	Vow: [ j|l|r ] _ m Vow: ( StemCns: ) WeG: ; ! S3
 	Vow: _ Q1: X1: n ; ! Deleting Final Cns in Short Essive of Uneven Syllables
 
 
 "Consonant gradation n:0"
-n:0 <=> Vow: n _ d Vow: ( StemCns: ) WeG: ; ! Š-3
-	Vow: n _ t [ j|s ] Vow: ( StemCns: ) WeG: ; ! Š-4
+n:0 <=> Vow: n _ d Vow: ( StemCns: ) WeG: ; ! S1-3
+	Vow: n _ t [ j|s ] Vow: ( StemCns: ) WeG: ; ! S1-4
 	Vow: n _ ( j ) Vow: ( StemCns: ) WeG: ; ! S2, II-I, also palat.
 	Vow: [ b|j|l|ñ|r|v ] _ n Vow: ( StemCns: ) WeG: ; ! S3, III-II
 	Vow: [ b|r|v ] _ n j Vow: ( StemCns: ) WeG: ; ! S3-4, III-II
 
 "Consonant gradation p:0"
-p:0 <=> Vow: p _ [ s|t ] ( j ) Vow: ( StemCns: ) WeG: ; ! Š-3, Š-4 j
-	Vow: p _ t s Vow: ( StemCns: ) WeG: ; ! Š-4 ppts:pts
+p:0 <=> Vow: p _ [ s|t ] ( j ) Vow: ( StemCns: ) WeG: ; ! S1-3, S1-4 j
+	Vow: p _ t s Vow: ( StemCns: ) WeG: ; ! S1-4 ppts:pts
 	Vow: [ j|l|r|v ] _ p Vow: ( StemCns: ) WeG: ; ! S3 
 	Vow: h _ p Vow: ( StemCns: ) WeG: ; ! S4 hpp:hp
 
 "Consonant gradation s:0"
-s:0 <=> Vow: s _ ( [ j|k|m|n|t ] ) Vow: ( StemCns: ) WeG: ; ! Š-3, S2 II-I
-	Vow: s _ j [ k|m|v ] Vow: ( StemCns: ) WeG: ; ! Š-4
+s:0 <=> Vow: s _ ( [ j|k|m|n|t ] ) Vow: ( StemCns: ) WeG: ; ! S1-3, S2 II-I
+	Vow: s _ j [ k|m|v ] Vow: ( StemCns: ) WeG: ; ! S1-4
 	Vow: [ b|j|l|m|n|r|v ] _ s Vow: ( StemCns: ) WeG: ; ! S3
 	Vow: [ r|l|m ] _ s j Vow: ( StemCns: ) WeG: ; ! S3-4
 	Vow: [ r|l|n ] _ s k Vow: ( StemCns: ) WeG: ; ! S3-4
@@ -337,7 +347,7 @@ s:0 <=> Vow: s _ ( [ j|k|m|n|t ] ) Vow: ( StemCns: ) WeG: ; ! Š-3, S2 II-I
 	Vow: _ Q1: X1: n ; ! Deleting Final Cns in Short Essive of Uneven Syllables
 
 "Consonant gradation ñ:0"
-ñ:0 <=> Vow: ñ _ ( [ g|k ] ) Vow: ( StemCns: ) WeG: ; ! Š-3, S2 II-I
+ñ:0 <=> Vow: ñ _ ( [ g|k ] ) Vow: ( StemCns: ) WeG: ; ! S1-3, S2 II-I
 	Vow: [ j|l|r|v ] _ ñ Vow: ( StemCns: ) WeG: ; ! S3 
 
 	
@@ -371,6 +381,13 @@ t:0 <=> Vow: [j|ñ|r|v] _ t Vow: ( StemCns: ) WeG: ; ! S3 jtt:jt etc.
 	 Vow: _ (t:) t [j|s] Vow: ( StemCns: ) WeG: ;
 	 Vow: _ Q1: X1: n ; ! Deleting Final Cns in Short Essive of Uneven Syllables
 ! (t:) for III-I CG)
+
+!"Word final double consonant simplification"
+!Cy:0 <=> Vow: Cx: _ #: ;
+!     where Cx in ( s ) 
+!	   Cy in ( s ) 
+!	   matched ;
+! Moved to the CG chapter. But does this rule wait for more cases?
 
 
 ! Change rules
