@@ -63,6 +63,46 @@ Numeral ;
 ! ======================
 
 
+! Prefixing and compounding
+! =========================
+
+!LEXICON Prefixes	!^C^
+!ii%- AdjectiveRoot ;  ! ii-biologalaš	!^C^
+!Lulle%- ProperNoun ;  ! Lulli-Trøndelaga etc.	!^C^
+!Lulli%- ProperNoun ;	!^C^
+!Lullinuorta%- ProperNoun ;	!^C^
+!Máttá%- ProperNoun ;	!^C^
+!Davvi%- ProperNoun ;	!^C^
+!Oarje%- ProperNoun ;	!^C^
+!Oarjel%- ProperNoun ;		!^C^
+!Nuorta%- ProperNoun ;		!^C^
+!Ođđa%- ProperNoun ;	!^C^
+
+
+!LEXICON R !^C^
+! # NounRoot ;                      ! This is the normal case.		    ^C^
+! # NounSecond ;			   ! Testing some quasisuff, cf. noun file  ^C^
+! #@P.NeedNoun.ON@  VerbRoot ;      ! Flag diacr declares that the compound  ^C^
+! #@P.NeedNoun.ON@  AdjectiveRoot ; ! needs a +N tag later in the derivation ^C^
+! #:%- NounRoot ;                        ! These 3 cases add a hyphen, so    ^C^
+! #:%-@P.NeedNoun.ON@  VerbRoot ;        ! Sem-julggaštus and the like	    ^C^
+! #:%-@P.NeedNoun.ON@  AdjectiveRoot ;   ! is allowed.			    ^C^
+! # ProperNoun ;     ! Now, let us allow proper nouns as the 2nd part of com-^C^
+! #:%- ProperNoun ;  ! pounds. Thus: London-Hull, LondonHull, Hull-viessu    ^C^
+                    ! and viessuLondon are now all ok. Some refinement could^C^
+                    ! perhaps be done, but corpus research is needed.	    ^C^
+! +Cmpnd:%- # ;     ! This to take care of Oahpo- ja dutkandept.		    ^C^
+
+
+! It seems the P flag in the AdjectiveRoot entry is irrelevant, since there
+! are no N + [A-N] compounds. The pointers to AdjectiveRoot are temorarily 
+! (030129) left for inspection, they (line 3 and 6 of R) should be removed
+! if no deadjectival nouns turn up.
+
+
+
+
+
 ! Even-syllable stems
 ! -------------------
 
@@ -127,6 +167,7 @@ LEXICON N-EVENSTRONGSTEM
 LEXICON NE-EVENCASE
  +Sg+Nom: K ;
  +Sg+Nom:X4 PxV ;
+! +Sg+Nom:XXX R ; !XXX Fix this
  +Ess:n K ;
 ! +Ess:n PxC ; ! parallel with CELCIUS above (but this shouldn´t be here(?) TO)
 
@@ -749,7 +790,7 @@ LEXICON INFL-CONTRACTED
 ! Infinite
  +Inf:t K ;
  +PrfPrc:m K ;
-! +PrsPrc: NOADE ; !contr. nouns don´t form PrsPrc but Der/r
+ +PrsPrc:jiddje NOADE ; 
  +Der/r:Y5r GAHPER ;
  +GerII:min K ;
  +Ger:dijn K ;
@@ -954,8 +995,35 @@ LEXICON ImprtIIConNeg-o-
 !+Pl3:Q1 K ;
 
 
+! Noun derivation
+! - - - - - - - - 
+
+LEXICON VUOHTA					!^C^
+ +vuohta+N:#vuohta@C.NeedNoun@ VUOHTAMORPH ;
+ 	
+LEXICON VUOHTAMORPH
+ NE-EVENCASE ;
+ :X4 ILL-EVENCASE ;
+ :Q1 N-EVENWEAKSTEM ;
+! GOAHTE- ;	!XXX FIX THIS
+! +Sg+Gen:X4 R ; !XXX FIX THIS
+
+!LEXICON MUS
 
 
+
+! Adjective Derivation
+! ---------------------
+
+LEXICON LIS
+ +Attr: K ;
+ VUOHTA ;
+ GÅNÅGIS-C ;
+ :a GÅNÅGIS-EVEN ;
+
+
+
+! Verb Derivation
 ! --------------------
 
 
@@ -996,7 +1064,7 @@ LEXICON DeverbalVerbsBASSAT
  +Der/dahtte+V:Q1dahtte INFL-EVEN ;   !Double Caus
  +Der/dasste+V:Q1dasste INFL-EVEN ;   !Caus-Dim
  +Der/l+V:l INFL-ODD ;                !Subitive
- +Der/ladda+V:Y2ladda INFL-EVEN ;     !Subitive-Freq
+ +Der/ladda+V:Y3ladda INFL-EVEN ;     !Subitive-Freq
  +Der/lahtte+V:lahtte INFL-EVEN ;     !Subitive-Caus
  +Der/lasste+V:lasste INFL-EVEN ;     !Subitive-Dim
  +Der/st+V:Q1st INFL-ODD ;            !Dim
@@ -1011,8 +1079,8 @@ LEXICON DeverbalVerbsBASSAT
 
 LEXICON DeverbalNounsBASSAT
  +Actor:@C.NeedNoun@  NOADE ;	
- +Actor:Y6@C.NeedNoun@ DenominalNounsMUORRA ;
-! +las+A:X2lass LAS ;				!^C^
+ +Actor:Y6@C.NeedNoun@ DenominalNounsMUORRA ;   
+ +lis+A:Y3liss LIS ;				!^C^
 
 
 ! Odd-syllable stems
