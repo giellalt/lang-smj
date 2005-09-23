@@ -114,6 +114,10 @@ LEXICON MUORRA
  +N: N-EVENSTRONGSTEM ;
  +N:Q1 N-EVENWEAKSTEM ; ! Weak grade Q1
  +N: DenominalNounsMUORRA ;
+ +N: DenominalAdjsV1 ;
+ +N: DenominalAdjsV2 ;
+
+ 
 
 ! 2syll stem without cg (note missing Q1) 
 ! Many of these are  pres ptc, they should be derived from
@@ -121,13 +125,19 @@ LEXICON MUORRA
 LEXICON NOADE
  +N:Y6 N-EVENSTRONGSTEM ;
  +N:Y6 N-EVENWEAKSTEM ;
+ +N:Y6 DenominalAdjsV1 ;
+ +N:Y7 DenominalAdjsV2 ;
 
-! 2syll stems witout any morphophonology
+
+! 2syll stems without any morphophonology
 LEXICON KINO ! no diacritics whatsoever
  +N: NE-EVENCASE ;
  +N: ILL-EVENCASE ;
  +N: N-EVENWEAKSTEM-OTH ;
  +N: N-EVENWEAKSTEM-SG-COM ;
+ +N:X1 DenominalAdjsV1 ;
+ +N:X1 DenominalAdjsV2 ;
+
 
 
 ! 4syll stems
@@ -343,12 +353,6 @@ LEXICON CONTR-OTH
 
 LEXICON DenominalNounsMUORRA  !^C^
  +Dim:X7tj GAHPER ;          !^C^
-  
-LEXICON DenominalNounsActor  !^C^
- +Dim:Y7tj GAHPER ; !^C^
- !+Dim+N+Sg+Nom:Y7tj R ; !^C^!XXX
- !+Dim+N+Sg+Gen:Y7tja R ; !^C^!XXX
- !+Dim+N+Pl+Gen:Y7tjij R ;	!^C^!XXX
  
 LEXICON DenominalNounsODD
  +Dim+N+Sg+Nom:asj K ; !^C^! added a
@@ -356,8 +360,23 @@ LEXICON DenominalNounsODD
 
 ! LEXICON DenominalNounsODD-OBL !^C^
 
-
+  
+LEXICON DenominalNounsActor  !^C^
+ +Dim:Y7tj GAHPER ; !^C^
+ !+Dim+N+Sg+Nom:Y7tj R ; !^C^!XXX
+ !+Dim+N+Sg+Gen:Y7tja R ; !^C^!XXX
+ !+Dim+N+Pl+Gen:Y7tjij R ;	!^C^!XXX
  
+
+LEXICON VUOHTA					!^C^
+ +Der/vuohta+N:#vuohta@C.NeedNoun@ VUOHTAMORPH ; !^C^
+ 	
+LEXICON VUOHTAMORPH
+!+Sg+Nom: R ;	!XXX!^C^
+ NE-EVENCASE ;
+ :X4 ILL-EVENCASE ;
+ :Q1 N-EVENWEAKSTEM ;
+! +Sg+Gen:Q1 R ; !XXX FIX THIS!^C^
 
 
 
@@ -373,21 +392,21 @@ LEXICON GIEVRRA ! Attr WeG, -s
  +A: N-EVENSTRONGSTEM ;
  +A:Q1 N-EVENWEAKSTEM ;
  +A:Q1 BU/MUS ;
- +Adv:Q1t K ;
+ +A+Adv:Q1t K ;
 
 LEXICON NUORRA ! Attr =
  +A+Attr: K ;
  +A: N-EVENSTRONGSTEM ;
  +A:Q1 N-EVENWEAKSTEM ; ! cg in nominal paradigm
  +A:Q1 BU/MUS ;
- +Adv:Q1t K ; ! Presumably WeG as adverb as well
+ +A+Adv:Q1t K ; ! Presumably WeG as adverb as well
 
 LEXICON HÁVSSKE ! Attr w/o WeG, -s
  +A+Attr:s K ;
  +A: N-EVENSTRONGSTEM ;
  +A:Q1 N-EVENWEAKSTEM ; ! Presumably WeG in nominal paradigm
  +A:Q1 BU/MUS ;
- +Adv:Q1t K ;
+ +A+Adv:Q1t K ;
 
 LEXICON UNNE ! Attr e > a~e, WeG
  +A+Attr:aQ1 K ; ! a-attr.
@@ -395,7 +414,7 @@ LEXICON UNNE ! Attr e > a~e, WeG
  +A:e N-EVENSTRONGSTEM ; ! presumably normal adjective
  +A:eQ1 N-EVENWEAKSTEM ; ! behaviour, with cg, and with
  +A:eQ1 BU/MUS ;           ! the e-form as a starting
- +Adv:eQ1t K ;           ! point.
+ +A+Adv:eQ1t K ;           ! point.
 
 
 ! Fix the pres participle
@@ -406,7 +425,7 @@ LEXICON ÁRMMOGIS ! Attr = Pred. Nom. Sg.
  +A+Sg+Nom:a PxV ;
  +A:a GÅNÅGIS-EVEN ; ! Declined as four-syllable noun
  +A:aQ1 BU/MUS ;
- +Adv:aQ1t K ; 
+ +A+Adv:aQ1t K ; 
 
 LEXICON ASIDASJ
  +A+Attr:is K ; ! Special Attr form
@@ -419,14 +438,14 @@ LEXICON ASIDASJ
  +A:attja N-EVENWEAKSTEM ; !This seems right. TO
 ! +A:attja BU/MUS ; !unusual comp. and superl.
  +A: ABBO/AMOS ; 
- +Adv:attjaQ1t K ; 
+ +A+Adv:attjaQ1t K ; 
 
 LEXICON TJALMEDIBME
  +A+Attr:is K ; ! Special Attr form
  +A:ibme N-EVENSTRONGSTEM ;
  +A:ibmeQ1 N-EVENWEAKSTEM ;
  +A:ibmeQ1 BU/MUS ;
- +Adv:ibmeQ1t K ; 
+ +A+Adv:ibmeQ1t K ; 
 
 ! Odd-syllable stems
 ! ------------------
@@ -436,14 +455,14 @@ LEXICON TJIEGOS ! a. Adjs on -k, negating adjs on -dahkes, sm adjs on -os
  +A:X2 N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
  +A:X5 OTH-ODDCASE ;
  +A:X5 ABBO/AMOS ;
- +Adv:it K ; 
+ +A+Adv:it K ; 
  
 LEXICON BASSTEL ! b. Adjs on -et, -l, -r, sm om -k, -sj with -is-attr
  +A+Attr:is K ;
  +A: N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
  +A: OTH-ODDCASE ;
  +A: ABBO/AMOS ;
- +Adv:it K ; 
+ +A+Adv:it K ; 
  
 LEXICON MUTTÁK ! c. Adjs on -ák, Attr -is or =
  +A+Attr: K ;
@@ -451,35 +470,35 @@ LEXICON MUTTÁK ! c. Adjs on -ák, Attr -is or =
  +A: N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
  +A: OTH-ODDCASE ;
  +A: ABBO/AMOS ;
- +Adv:it K ; 
+ +A+Adv:it K ; 
  
 LEXICON ALLAK ! d. Adjs on -ak, attr. on -a
  +A+Attr:a K ;
  +A:ak N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess ;
  +A:ag OTH-ODDCASE ;
  +A:iQ1 BU/MUS ; 
- +Adv:agit K ;
+ +A+Adv:agit K ;
  
 LEXICON GÅBDDÅK ! d2. Adjs on -åk, attr. on -å
  +A+Attr:a K ;
  +A:åk N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess ;
  +A:åg OTH-ODDCASE ;
  +A:iQ1 BU/MUS ; 
- +Adv:ågit K ;
+ +A+Adv:ågit K ;
  
 LEXICON GALMAS
  +A+Attr: K ;
  +A:sX2 N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
  +A:sX5 OTH-ODDCASE ;
  +A:sX5 ABBO/AMOS ;
- +Adv:sit K ; 
+ +A+Adv:sit K ; 
  
 LEXICON SUOHKAT
  +A+Attr:is K ;
  +A:aQ1t N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
  +A:aQ1d OTH-ODDCASE ;
  +A:aQ1d ABBO/AMOS ;
- +Adv:aQ1dit K ; 
+ +A+Adv:aQ1dit K ; 
  
 LEXICON LÅSSÅT
  +A+Attr:is K ;
@@ -488,21 +507,21 @@ LEXICON LÅSSÅT
  +A:åd OTH-ODDCASE ;
  +A:åd ABBO/AMOS ;
  +A:iQ1 BU/MUS ; 
- +Adv:ådit K ; 
+ +A+Adv:ådit K ; 
 
 LEXICON DIMES
  +A+Attr:a K ;
  +A:esQ1 N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
  +A:ás OTH-ODDCASE ;
  +A:ás ABBO/AMOS ;
- +Adv:ásit K ;
+ +A+Adv:ásit K ;
  
 LEXICON OAMES
  +A+Attr: K ;
  +A:sQ1 N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
  +A:X4s OTH-ODDCASE ;
  +A:X4s ABBO/AMOS ;
- +Adv:X4sit K ;
+ +A+Adv:X4sit K ;
  
 LEXICON TJALMMIS
  +A+Attr:X2 K ;
@@ -510,7 +529,7 @@ LEXICON TJALMMIS
  +A:X2 N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
  +A:X5 OTH-ODDCASE ;
  +A:X5 ABBO/AMOS ;
- +Adv:it K ; !Can these really form adverbs?
+ +A+Adv:it K ; !Can these really form adverbs?
  
 
  
@@ -602,8 +621,35 @@ LEXICON BUOREMUS-OBL
 ! Derivation of adjectives
 ! ------------------------
 
-! tbw.
+LEXICON DenominalAdjsV1			!^C^
+ +Der/dibme+A:Q1dibme DIBME ;		!^C^
+ +Der/dibme+A+Attr:Q1dis K ;		!^C^
+ +Der/dibme+A:Q1dis VUOHTA ;		!^C^
 
+
+LEXICON DenominalAdjsV2			!^C^
+ +Der/lasj:X7ladtj ÁRMMOGIS ;			!^C^
+ +Der/lasj+A+Dim:X7lattjatj TJIEGOS ;
+
+
+!LEXICON DenominalAdjsC			!^C^
+! +laš:#lažž ISSORAS ;		!^C^
+
+ 
+LEXICON DIBME
+ +Dim:X7tj TJIEGOS ;
+ N-EVENSTRONGSTEM ; 
+ :Q1 N-EVENWEAKSTEM ; 
+ :Q1 BU/MUS ;           
+ +Adv:Q1t K ;   
+ 
+
+LEXICON LIS  !^C^
+ +Attr: K ;  !^C^
+ VUOHTA ;    !^C^
+ MUS ;       !^C^
+   
+ 
 
 
 ! ======================
@@ -1005,72 +1051,6 @@ LEXICON ImprtIIConNeg-o-
 !+Pl3:Q1 K ;
 
 
-! Noun derivation
-! - - - - - - - - 
-
-LEXICON VUOHTA					!^C^
- +Der/vuohta+N:#vuohta@C.NeedNoun@ VUOHTAMORPH ; !^C^
- 	
-LEXICON VUOHTAMORPH
-!+Sg+Nom: R ;	!XXX!^C^
- NE-EVENCASE ;
- :X4 ILL-EVENCASE ;
- :Q1 N-EVENWEAKSTEM ;
-! +Sg+Gen:Q1 R ; !XXX FIX THIS!^C^
-
-LEXICON MUS
- +Sg+Nom: K ;
-! +Sg+Nom: R ;	!XXXFix!^C^
- :a MUSSA ;
-
-LEXICON MUSSA
- +Sg+Nom: PxV ;
- +Ess:n K ;
-! +Pl+Gen:X5jd R ;	!XXXFix!^C^
- :Q1 N-EVENWEAKSTEM-OTH ;
- ILL-EVENCASE ;
- :Q1 N-EVENWEAKSTEM-SG-COM ;
- 
-LEXICON ACTOR			
-! +N+Sg+Nom: R ;! XXX!^C^
- NOADE ;
- 
-LEXICON BOAHTEM !^C^
- +N+Sg+Nom: K ; !^C^
-!+N+Sg+Nom: R ;	!XXXTEMPORARY (!)!^C^
- +N: OTH-ODDCASE ; !^C^
- 
-LEXICON IBME           !^C^
-! +N+Sg+Nom:im R ; !XXX!^C^
- +N:ibme VSUBST-EVEN ; !^C^
- 
-LEXICON JÅLLÅRUS
- +Sg+Nom: K ;
-! +Sg+Nom: R ;			!^C^!XXX
- +Sg+Nom:a PxV ; 
- +Ess:an K ;
- :aQ1 N-EVENWEAKSTEM-OTH ;
- :a ILL-EVENCASE ;
- :aQ1 N-EVENWEAKSTEM-SG-COM ;
-! +Dim+N+Sg+Gen:a R ; !^C^ 
-! +Dim+N+Sg+Gen: R ;  !^C^
- +Dim:aX7tj GAHPER ;
- 
-
- 		
-
-
-
-! Adjective Derivation
-! ---------------------
-
-LEXICON LIS  !^C^
- +Attr: K ;  !^C^
- VUOHTA ;    !^C^
- MUS ;       !^C^
-
-
-
 ! Verb Derivation
 ! --------------------
 
@@ -1099,6 +1079,8 @@ LEXICON EVEN-PASSIVE
  +Pass+V+Inch+V:Q1duvvagoahte INFL-EVEN ;
  +Pass+V:Q1duvva DeverbalNounsBASSAT ; !^C^
  +Pass+V:Q2dalla DeverbalNounsBASSAT ; !^C^
+ +Pass+V:Q1duvva DeverbalVerbsBASSAT ; !^C^
+ +Pass+V:Q2dalla DeverbalVerbsBASSAT ; !^C^
  +Pass+V+PrfPrc:Q1dum K ;
 
 LEXICON ODD-PASSIVE
@@ -1106,6 +1088,7 @@ LEXICON ODD-PASSIVE
  +Pass+V+Inch+V:uvvagoahte INFL-EVEN ;
  +Pass+V+PrfPrc:um K ;
  +Pass+V:uvva DeverbalNounsBASSAT ;  !^C^
+ +Pass+V:uvva DeverbalVerbsBASSAT ; !^C^
  
 
 LEXICON CONTR-PASSIVE
@@ -1113,6 +1096,7 @@ LEXICON CONTR-PASSIVE
  +Pass+V+Inch+V:duvvagoahte INFL-EVEN ;
  +Pass+V+PrfPrc:dum K ;
  +Pass+V:duvva DeverbalNounsBASSAT ; !^C^
+ +Pass+V: mnduvva DeverbalVerbsBASSAT ; !^C^
 
 
 
@@ -1184,9 +1168,51 @@ LEXICON DeverbalNounsOADDÁT     !^C^
  +Actor+N:jiddje@C.NeedNoun@ DenominalNounsActor ;   !^C^
  +Actio:m@C.NeedNoun@ BOAHTEM ;		!^C^
  +Der/mus+N:muss@C.NeedNoun@ MUS ;	!^C^
- +Actio:m@C.NeedNoun@ BOAHTEM ;     !^C^
+ 
+ 
+!Sublexicas deverbal nouns
+!---------------------------
 
 
+LEXICON MUS
+ +Sg+Nom: K ;
+! +Sg+Nom: R ;	!XXXFix!^C^
+ :a MUSSA ;
+
+LEXICON MUSSA
+ +Sg+Nom: PxV ;
+ +Ess:n K ;
+! +Pl+Gen:X5jd R ;	!XXXFix!^C^
+ :Q1 N-EVENWEAKSTEM-OTH ;
+ ILL-EVENCASE ;
+ :Q1 N-EVENWEAKSTEM-SG-COM ;
+ 
+LEXICON ACTOR			
+! +N+Sg+Nom: R ;! XXX!^C^
+ NOADE ;
+ 
+LEXICON BOAHTEM !^C^
+ +N+Sg+Nom: K ; !^C^
+!+N+Sg+Nom: R ;	!XXXTEMPORARY (!)!^C^
+ +N: OTH-ODDCASE ; !^C^
+ 
+LEXICON IBME           !^C^
+! +N+Sg+Nom:im R ; !XXX!^C^
+ +N:ibme VSUBST-EVEN ; !^C^
+ 
+LEXICON JÅLLÅRUS
+ +Sg+Nom: K ;
+! +Sg+Nom: R ;			!^C^!XXX
+ +Sg+Nom:a PxV ; 
+ +Ess:an K ;
+ :aQ1 N-EVENWEAKSTEM-OTH ;
+ :a ILL-EVENCASE ;
+ :aQ1 N-EVENWEAKSTEM-SG-COM ;
+! +Dim+N+Sg+Gen:a R ; !^C^ 
+! +Dim+N+Sg+Gen: R ;  !^C^
+ +Dim:aX7tj GAHPER ;
+ 
+ 		
 
 
 ! Auxiliary verbs
