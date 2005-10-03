@@ -31,6 +31,12 @@ Sets
  Vow = a á e i o u y æ ä ø ö å
        é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý ;
  Cns = b b3 c d d3 f g g2 g3 h h2 h3 j k l l3 m m2 m3 n n2 n3 ñ p q r r3 s t v w x z ' ;
+! We cannot have set operations here.
+! CnsPhon = [ Cns | n j | s j | t j | t s ] ;
+! G3 = [ [ CnsPhon CnsPhon CnsPhon:+ ] - [[[j|l|m|n|v] s k ] | [l|r] s k | r s j t ] ] ;
+! G2 = [ CnsPhon CnsPhon | [[[j|l|m|n|v] s k ] | [l|r] s k | r s j t ] ] ;
+! G1 = CnsPhon ;
+! G12 = [ CnsPhon | [ CnsPhon CnsPhon | [[[j|l|m|n|v] s k ] | [l|r] s k | r s j t ] ] ] ;
  DelCns = g2 m2 n2 h2 ;
  WeG = X2 X3 X7 Y5 Q1 Q2 Q3 ;
  StemCns = b b3 d d3 g g2 g3 h h2 h3 j l l3 m m2 m3 n n2 n3 ñ r r3 s ;
@@ -42,6 +48,10 @@ Rules
 
 ! Consonant alternations in certain pos
 ! -------------------------------------
+
+! This is a dummy negative test, in order to get the test paradigm work.
+!$ a
+!$ b
 
 
 "Word Final Devoicing of Certain Single Consonants d3 etc."
@@ -129,9 +139,9 @@ Rules
      Cns:* _ Y6:0 X4:0 j ;!Ill sg of Actor nouns bassat : basse : bas'sáj
      Cns:* _ Y7: ;!Diminutive of Actor nouns bassat : basse : bassásj
 ! where Vx in ( a i u ) ; ! not all simple vowels ( e o å æ ) are evidently long!
-!€ gussaX1#
+!€ gussaQ1#
 !€ gus0á00
-!€ skihpaX1s#
+!€ skihpaQ1s#
 !€ ski0bá0s0
 
 ! the right-context facultative consonant in order to ensure skibás.
@@ -155,7 +165,8 @@ Rules
 	 [ #: | Cns: | Dummy: ] _ Cns:* o: [ X4: | Q1: X5: ] j ; !Ill&ComSg. !instead of !line
 	 [ #: | Cns: | Dummy: ] _ a: Cns:* o: Cns: X5: Vow ; ! odd-syll, oblique
 	 [ #: | Cns: | Dummy: ] _ a: Cns:* a g2: X3: [#: | n ] ; !NE låvda
-     _ Vow ( Cns: ) Cns:+ o:u ; ! Vovel change in front of stem vowel variation
+      _ Vow [ CnsPhon | [ CnsPhon CnsPhon ] | [[[j|l|m|n|v] s k ] | [l|r] s k | r s j t ] ]  o:u ;
+!     _ Vow ( Cns: ) Cns: o:u ; ! Vovel change in front of stem vowel variation
 !	 [ #: | Cns: | Dummy: ] _ a: Cns:* o: (Dummy:* - Q3:) j ; ! even-syll o-st, before j. ! rm when tested
 
 "oa:å Diphtong Simplification Part II"
@@ -168,7 +179,12 @@ Rules
 	 [ #: | Cns: | Dummy: ] _ Cns:* o: [ X4: | Q1: X5: ] j ; !Ill&ComSg. !instead of !line
 	 [ #: | Cns: | Dummy: ] o: _ Cns:* o: Cns: X5: Vow ; ! odd-syll, oblique
 	 [ #: | Cns: | Dummy: ] o: _ Cns:* a g2: X3: [#: | n ] ; !NE låvda
-	 _ ( Cns: ) Cns:+ o:u ; ! Vovel change in front of stem vowel variation
+      _ [ CnsPhon | [ CnsPhon CnsPhon] | [[[j|l|m|n|v] s k ] | [l|r] s k | r s j t ] ] o:u ;
+!	 _ ( Cns: ) Cns: o:u ; ! Vovel change in front of stem vowel variation
+!€ boalloX4j
+!€ b0ållu0j
+!$ roavggoX4j
+!$ r0åvggu0j
 !	 [ #: | Cns: | Dummy: ] o: _ Cns:* o: ( Dummy:* - Q3: ) j ; ! o-stems, before j. !rm when tested
 ! The rule complexes are identical, but fix different parts of the monophtongisation.
 ! Note that the "o-stems before j" part is restricted to Ill & Com Sg, cf. bug #136.
@@ -225,7 +241,7 @@ Rules
 !	    Vy in ( a e )
 !	    Vz in ( å æ )
 !	    matched ;
-!€ boarkkaX1
+!€ boarkkaQ1
 !€ b0år0ka0
 !€ loavddag2#
 !€ l0åvdda00
@@ -413,7 +429,7 @@ Rules
     Cns:* _ X7: ; ! báhko : bágusj, goahte : godásj
     Cns:* _ Y7: ; ! PrsPrc dim
      
-!Old o:u ruels   
+!Old o:u rules   
 ! o:u <=> Cns: _ [ X4: j | Q1: X5: ] ; !X4 IllSg, Q1 X5 ComSg.
 ! o:u <=> Cns: _  X4: j ; !X4 IllSg, Q1 X5 ComSg.
 
