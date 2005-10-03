@@ -1,4 +1,4 @@
-
+ 
 ! ========================================================================== !
 !                   Lule Sámi morphophonological rule set                    !
 ! ========================================================================== !
@@ -13,7 +13,7 @@ Alphabet
  é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý þ ð ß ª ß ç
 
  A Á B C D E F G H I J K L M N Ñ O P Q			! capital
- R S T U V W X Y Z Å Ä Ø Ö Å Æ
+ R S T U V W X Y Z Å Ä Ø Ö Å Æ 
  É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý þ Ð
 
  ':0			        ! Gradation mark
@@ -165,6 +165,7 @@ Rules
 	 [ #: | Cns: | Dummy: ] _ Cns:* o: [ X4: | Q1: X5: ] j ; !Ill&ComSg. !instead of !line
 	 [ #: | Cns: | Dummy: ] _ a: Cns:* o: Cns: X5: Vow ; ! odd-syll, oblique
 	 [ #: | Cns: | Dummy: ] _ a: Cns:* a g2: X3: [#: | n ] ; !NE låvda
+!     _ Vow ( Cns ) Cns:+ o:u ; ! Vovel change in front of stem vowel variation
       _ Vow [ CnsPhon | [ CnsPhon CnsPhon ] | [[[j|l|m|n|v] s k ] | [l|r] s k | r s j t ] ]  o:u ;
 !     _ Vow ( Cns: ) Cns: o:u ; ! Vovel change in front of stem vowel variation
 !	 [ #: | Cns: | Dummy: ] _ a: Cns:* o: (Dummy:* - Q3:) j ; ! even-syll o-st, before j. ! rm when tested
@@ -179,12 +180,14 @@ Rules
 	 [ #: | Cns: | Dummy: ] _ Cns:* o: [ X4: | Q1: X5: ] j ; !Ill&ComSg. !instead of !line
 	 [ #: | Cns: | Dummy: ] o: _ Cns:* o: Cns: X5: Vow ; ! odd-syll, oblique
 	 [ #: | Cns: | Dummy: ] o: _ Cns:* a g2: X3: [#: | n ] ; !NE låvda
+!	 _ ( Cns ) Cns:+ o:u ; ! Vovel change in front of stem vowel variation
       _ [ CnsPhon | [ CnsPhon CnsPhon] | [[[j|l|m|n|v] s k ] | [l|r] s k | r s j t ] ] o:u ;
 !	 _ ( Cns: ) Cns: o:u ; ! Vovel change in front of stem vowel variation
 !€ boalloX4j
 !€ b0ållu0j
 !$ roavggoX4j
 !$ r0åvggu0j
+
 !	 [ #: | Cns: | Dummy: ] o: _ Cns:* o: ( Dummy:* - Q3: ) j ; ! o-stems, before j. !rm when tested
 ! The rule complexes are identical, but fix different parts of the monophtongisation.
 ! Note that the "o-stems before j" part is restricted to Ill & Com Sg, cf. bug #136.
@@ -222,7 +225,7 @@ Rules
 	 [ #: | Cns: | Dummy: ] i: _ Cns:* e: Cns: X5: Vow ; ! odd-syll, oblique
 	 _ (Cns) Cns:+ e:á ; ! Vovel change in front of stem vowel variation
 	 _ Cns Cns:+ a:á ; !Vowel change in front of stem vowel variation, bessat : bæssá
-	 [ #: | Cns: | Dummy: ] _ Cns:* a: Y6: ( X5: ) [ #: | n: | v: | s: | j: ] ; !Actor nouns
+	 [ #: | Cns: | Dummy: ] _ Cns:* a: Y6: ( X5: ) ; !Actor nouns
 
 ! Note: Check that Q2 above does not overgenerate to nouns!
 
@@ -267,6 +270,9 @@ Rules
  a:i <=> Cns: _ Y6:0 ( X5:0 ) j [ #: | Cns: ] ;
 !€ bas'saY6jt#
 !€ bas0si0jt0
+
+"a-stem vowel deletion in even-syllable verbs, imp 1du, 1pl"
+ a:0 <=> Cns: _ Y8:0 ;
 
 
 
@@ -356,7 +362,7 @@ Rules
 	 å Cns:* _ Y2:0 ; ! gådet : gådå,  jåhtet : jåhtå
 	 å Cns:* _ Y3:0 ; ! jåhtet : jåhtåm
 	 å Cns:* _ Y5:0 ; ! verb derivation
-	 å Cns:* _ Y7:0 t: j [ #: | Vow: ] [ #: | v | n | h | b | p | j | s | t | 0 ]  ; ! noun derivation låhkke:låhkkåsj
+	 å Cns:* _ Y7:0 t: j [ #: | Vow: ] ; ! noun derivation låhkke:låhkkåsj
 	 å Cns:* _ Y7:0 X7:0 l ; ! noun derivation låhkke:låhkkålasj
      å Cns:* _ Y6:0 X4:0 j ; ! noun derivation
 	 	! The first subrule gives Ill. sg. of even-stem
@@ -380,10 +386,9 @@ Rules
  
 ! e:0
 ! ----
- "Stem vowel deletion in even-syllable verbs, imp 1du, 1pl"
+ "e-stem vowel deletion in even-syllable verbs, imp 1du, 1pl"
  e:0 <=> Cns: _ Y8:0 ;
       
-
  
 
 ! i-stem alternations
@@ -446,6 +451,9 @@ Rules
 "å:i in Actor nouns of even-syllable verbs"
  å:i <=> Cns: _ Y6:0 ( X5:0 ) j [ #: | Cns: ] ;
 ! låhkåt : låhkkijt
+
+"å-stem vowel deletion in even-syllable verbs, imp 1du, 1pl"
+ å:0 <=> Cns: _ Y8:0 ;
 
 ! alternations valid for several stem types
 ! - - - - - - - - - - - - - - - - - - - - -
@@ -556,7 +564,7 @@ t:0 <=> Vow: [j|ñ|r|v] _ t Vow: ( StemCns: ) WeG: ; ! S3 jtt:jt etc.
 	Vow: h: _ t ( [ j|s ] ) Vow: ( StemCns: ) WeG: ; ! S4 htt(j)
     Vow: t:s _ j #: ; ! Word final weakening of -ttj to -sj
     Vow ( Dummy: ) s _ (Hyph) #:  ; !W-Final Cl. Simpl. málestit : máles
-    Vow: h: _ t ( [ j|s ] ) Vow: X6: ;
+    Vow: h: _ t ( [ j|s ] ) Vow: X6: ; ! III-I special gradation
 ! Second last rule will fail if and when clitics are added to the word.
 ! Note that there is no weak grade clitic here.
 
@@ -567,7 +575,7 @@ t:0 <=> Vow: [j|ñ|r|v] _ t Vow: ( StemCns: ) WeG: ; ! S3 jtt:jt etc.
 "Gradation Series 4, II-I, tj and ts"
  h:0 <=> Vow: _ [ k: | p: | t: ] Vow: ( StemCns: ) WeG: ;
 	 Vow: _ t [j|s] Vow: ( StemCns: ) WeG: ;
-	 Vow: _ t: t: ( [ j|s ] ) Vow: X6: ;
+	 Vow: _ t: t: ( [ j|s ] ) Vow: X6: ; ! III-I special gradation
 	 Vow: _ Q1: X1: n ; ! Deleting Final Cns in Short Essive of Uneven Syllables
 ! (t:) for III-I CG)
 
