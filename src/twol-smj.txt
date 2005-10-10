@@ -23,7 +23,7 @@ Alphabet
 
  X1:0 X2:0 X3:0 X4:0 X5:0 X6:0 X7:0 X8:0 X9:0  ! Diacritics
  Q1:0 Q2:0 Q3:0 Q4:0 Q5:0 Q6:0 Q7:0 Q8:0 Q9:0  ! They trigger morphophono-
- Y1:0 Y2:0 Y3:0 Y4:0 Y5:0 Y6:0 Y7:0 Y8:0 ;     ! logical rules
+ Y1:0 Y2:0 Y3:0 Y4:0 Y5:0 Y6:0 Y7:0 Y8:0 Y9:0 ;     ! logical rules
 
 
 
@@ -273,8 +273,8 @@ Rules
 !€ bas'saY6jt#
 !€ bas0si0jt0
 
-"a-stem vowel deletion in even-syllable verbs, imp 1du, 1pl"
- a:0 <=> Cns: _ Y8:0 ;
+"a-stem vowel deletion in even-syllable verbs, imp 1du, 1pl and short passives"
+ a:0 <=> Cns: _ [ Y8: | Y9: ] ;
 
 
 
@@ -388,8 +388,8 @@ Rules
  
 ! e:0
 ! ----
- "e-stem vowel deletion in even-syllable verbs, imp 1du, 1pl"
- e:0 <=> Cns: _ Y8:0 ;
+ "e-stem vowel deletion in even-syllable verbs, imp 1du, 1pl and short passives"
+ e:0 <=> Cns: _ [ Y8: | Y9: ] ;
       
  
 
@@ -442,6 +442,9 @@ Rules
 
 "u:o in contracted nouns"
  u:o <=> Cns:* _ [ Q3: | X6: ] ; !æddnu:ænoj, boahttsu:boatsoj
+ 
+"o-stem vowel deletion in short passives"
+ o:0 <=> Cns: _ Y9:0 ;
 
 ! å-stem alternations
 ! - - - - - - - - - -
@@ -454,8 +457,8 @@ Rules
  å:i <=> Cns: _ Y6:0 ( X5:0 ) j [ #: | Cns: ] ;
 ! låhkåt : låhkkijt
 
-"å-stem vowel deletion in even-syllable verbs, imp 1du, 1pl"
- å:0 <=> Cns: _ Y8:0 ;
+"å-stem vowel deletion in even-syllable verbs, imp 1du, 1pl and short passives"
+ å:0 <=> Cns: _ [ Y8: | Y9: ] ;
 
 ! alternations valid for several stem types
 ! - - - - - - - - - - - - - - - - - - - - -
@@ -661,18 +664,18 @@ d:t <=> Vow: _ d: Vow: ( StemCns: ) WeG: ;
 ! Strategy: Do insertion rule for the initial element.
 
 "Consonant insertion as II-III strengthening gradation with bm,gñ"
- 0:Cx <=> Vow _ Cx Cy Vow: [ Y6: | Y7: ] ;
+ 0:Cx <=> Vow _ Cx Cy Vow: [ Y6: | Y7: | Y9: ] ;
       where Cx in ( b g )
 	    Cy in ( m ñ )
 	    matched ;
 
 "Consonant insertion as II-III strengthening gradation with dn/j"
- 0:d <=> Vow _ d [ n | n j | j ] Vow: [ Y6: | Y7: ] ;
+ 0:d <=> Vow _ d [ n | n j | j ] Vow: [ Y6: | Y7: | Y9: ] ;
 
 "Consonant insertion as II-III strengthening gradation with hk, hp,"
- 0:Cx <=> Vow h _ Cx Vow: [ Y6: | Y7: ] ;
+ 0:Cx <=> Vow h _ Cx Vow: [ Y6: | Y7: | Y9: ] ;
       where Cx in ( k p ) ;
       
 "Consonant insertion as II-III strengthening gradation with htt(j/s)"
- 0:t <=> Vow h _ t (j|s) Vow: [ Y6: | Y7: ] ;
+ 0:t <=> Vow h _ t (j|s) Vow: [ Y6: | Y7: | Y9: ] ;
 
