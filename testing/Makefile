@@ -102,7 +102,9 @@ clean:
 		  *paradigm \
 		  *.tgz	\
 		  *~ \
-		  $(TEMP)/*test-script
+		  $(TEMP)/*test-script \
+                  *.in \
+                  *.out
 
 .PHONY: almost-clean
 almost-clean:
@@ -121,7 +123,9 @@ almost-clean:
 		  *.ptest \
 		  *.tgz	\
 		  *~ \
-		  $(TEMP)/*test-script
+		  $(TEMP)/*test-script \
+                  *.in \
+                  *.out
 
 
 # POS SPECIFIC SECTIONS
