@@ -433,6 +433,8 @@ twol-extract: ../src/twol-smj.txt
 	@echo
 	@grep '^!€' $< > $(FILEPOS)
 	@grep '^!\$$' $< > $(FILENEG)
+	@touch twol-pos.out
+	@touch twol-neg.out
 
 twol-test: ../bin/twol-smj.bin twol-extract
 	@echo
