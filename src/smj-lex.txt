@@ -12,14 +12,14 @@ Multichar_Symbols
  +N +A +Adv +V
  +Pron +CS +CC +Adp +Po +Pr +Interj +Pcle
  +Pers +Dem +Interr +Refl +Recipr +Rel +Indef
- +Sg +Pl +Nom +Gen +Acc +Ill +Ine +Ela +Com +Ess +Par +Abe
+ +Sg +Pl +Nom +Gen +Acc +Ill +Ine +Ela +Com +Ess +Par +Abe +SgNomCmp +SgGenCmp 
  +PxSg1 +PxSg2 +PxSg3 +PxDu1 +PxDu2 +PxDu3 +PxPl1 +PxPl2 +PxPl3
  +Comp +Superl +Actor +Actio
  +Clt +Attr +Dim +Inch 
  +Pass +Ind +Prs +Prt +Pot +Cond +Imprt +ImprtII +Sup
  +Sg1 +Sg2 +Sg3 +Du1 +Du2 +Du3 +Pl1 +Pl2 +Pl3
- +Inf +Act +Ger +GerII +ConNeg +Neg +PrsPrc +PrfPrc +VGen +VAbess 
- +CLB +PUNCT +HYPH +PAR +Cmpnd 
+ +Inf +Ger +GerII +ConNeg +Neg +PrsPrc +PrfPrc +VGen +VAbess 
+ +CLB +PUNCT +HYPH +PAR 
  +Der/r +Der/d +Der/dalla +Der/l +Der/st +Der/n +Der/h +Der/dahtte +Der/dasste +Der/stalla +Der/stahtte +Der/stasste +Der/ladda +Der/lahtte +Der/lasste +Der/(u/a/å)r +Der/ahtte +Der/alla +Der/asste +Der/vuohta +Der/dibme +Der/lasj +Der/lis +Der/mus +Der/us +Der/lágásj +Der/lágán +Der/ahtes +Der/ahkes +Der/duvva +Der/duhtte +Der/juolgak +Der/luottak +Der/suttak +Der/uvsuk +Der/jienak +Der/rattak +Der/hekkak +Der/åjvak +Der/belak +Der/sijduk +Der/giedak +Der/gielak +Der/muoduk +Der/varák +Der/báguk +Der/nálak +Der/rabdak +Der/rávak +Der/ájvuk+Der/såjak +Der/giesjkak +Der/bának +Der/njálmak +Der/nierak +Der/merkak +Der/suorgak +Der/suorak +Der/gattsak +Der/siejbak +Der/siejnak +Der/hájak +Der/habsak +Der/hápsak +Der/hábjak +Der/sáv'vak +Der/namák +Der/lanják +Der/vuoduk +Der/hámak +Der/linnjak +Der/lijkak +Der/dávtak +Der/tjårvak +Der/gietjak +Der/bieljak +Der/tjuvdak +Der/dábak +Der/tjiegak +Der/gerdak +Der/vuobdak +Der/uvsak +Der/ivnak +Der/ferjak +Der/bájnuk +Der/luonduk +Der/dávdak +Der/jergak +Der/mielak +Der/jiermak +Der/njunjak +Der/guovluk +Der/dáfuk +Der/vájmuk +Der/lahkak +Der/åsak +Der/garák +Der/tjuolmak +Der/tjålak +Der/segak +Der/tjalmak +Der/vigák +Der/girjak +Der/stával +Der/agák +Der/jagák
 
 
@@ -91,6 +91,7 @@ ij%- AdjectiveRoot ;  ! ij-biologalasj	!^C^
 
 
 LEXICON R !^C^
+! # NAMAK ;                           !^C^
  # NounRoot ;                      ! This is the normal case.		    ^C^
 ! # NounSecond ;			   ! Testing some quasisuff, cf. noun file  ^C^
  #@P.NeedNoun.ON@  VerbRoot ;      ! Flag diacr declares that the compound  ^C^
@@ -127,6 +128,7 @@ LEXICON MUORRA
  +N: DenominalNounsMUORRA ;
  +N: DenominalAdjsV1 ;
  +N: DenominalAdjsV2 ;
+ +N: MUORRACmp ;                     !^C^
  
 
  
@@ -142,6 +144,7 @@ LEXICON NOADE
  +N:Y6 DenominalAdjsV1 ;
  +N:Y7 DenominalAdjsV2 ;
  +N:Y7 DenominalNounsMUORRA ;
+ +N:Y6 NOADECmp ;                       !^C^
 
 
 ! 2syll stems without any morphophonology
@@ -156,6 +159,7 @@ LEXICON KINO ! no diacritics whatsoever
  +N:X1 DenominalAdjsV2 ;
  +N:X1 DenominalNounsMUORRA ;
  +N: VUOHTA ;                        !^C^
+ +N:X1 MUORRACmp ;                           !^C^
 
 
 
@@ -165,7 +169,6 @@ LEXICON GÅNÅGIS
  +N: GÅNÅGIS-C ;
  +N:a GÅNÅGIS-EVEN ;
  +N:aQ1 DenominalNounsMUORRA ;
- 
  
 
 LEXICON GÅNÅGIS-C
@@ -184,6 +187,9 @@ LEXICON GÅNÅGIS-C
  +Abess:aQ1dagá K ;           !^C^
  +Abess:aQ1dak K ;           !^C^
  +Abess:aQ1da K ;           !^C^
+ +SgNomCmp: R ;        !^C^
+ +SgNomCmp:# NAMAK ;        !^C^
+ +SgGenCmp:aQ1 R ;          !^C^ 
 
 
 LEXICON GÅNÅGIS-EVEN
@@ -230,8 +236,6 @@ LEXICON N-EVENWEAKSTEM
 
 LEXICON N-EVENWEAKSTEM-OTH
  +Sg+Gen: K ;
-! +Sg+Gen: R ; ! Testing compounds
- +Cmpnd: R ; ! Testing compounds
  +Sg+Gen: PxV ;
  +Sg+Acc:v K ;
  +Sg+Acc: PxV ;
@@ -259,6 +263,22 @@ LEXICON N-EVENWEAKSTEM-SG-COM
  +Sg+Com:X5jn K ; ! X5 for o:u in ComSg. Note two dummies in a row!
  +Sg+Com:X5jn PxCi ;
 
+LEXICON MUORRACmp    !^C^
+ +SgNomCmp: R ;        !^C^
+ +SgGenCmp:Q1 R ;          !^C^ 
+ +SgNomCmp:# NAMAK ;        !^C^
+ 
+ LEXICON NOADECmp    !^C^
+ +SgNomCmp: R ;        !^C^
+ +SgGenCmp:Q1 R ;          !^C^ 
+ +SgNomCmp:# NAMAK ;        !^C^
+ 
+ LEXICON ODDCmp    !^C^
+ +SgNomCmp: R ;        !^C^
+ +SgGenCmp:a R ;          !^C^ 
+ +SgNomCmp:# NAMAK ;        !^C^
+
+
 
 ! Odd-syllable stems
 ! ------------------
@@ -269,6 +289,7 @@ LEXICON ÅRES
  +N:X5 OTH-ODDCASE ; ! X5 is e:å and o:u
  +N:X5 DenominalNounsODD ;
  +N:X5 DenominalAdjsC ;
+ +N:X5 ODDCmp ;             !^C^
 
  
 ! oddsyll, cg, C-final, no 2ndsyll vowchange
@@ -277,6 +298,7 @@ LEXICON GÁMAS ! Odd-syllable C-final noun with CG but no VChange
  +N: OTH-ODDCASE ;
  +N:X5 DenominalNounsODD ;
  +N: DenominalAdjsC ;
+ +N:X5 ODDCmp ;             !^C^
 
 ! oddsyll, cg, C-final, no 2ndsyll vowchange, only long essive
 LEXICON SÅHKÅR ! Odd-syllable C-final noun with CG but no VChange
@@ -284,6 +306,7 @@ LEXICON SÅHKÅR ! Odd-syllable C-final noun with CG but no VChange
  +N: OTH-ODDCASE ;
  +N:X5 DenominalNounsODD ;
  +N: DenominalAdjsC ;
+ +N:X5 ODDCmp ;             !^C^
 
 
 ! oddsyll, no cg, no vowchange
@@ -292,6 +315,7 @@ LEXICON GAHPER
  +N: OTH-ODDCASE ;
  +N: DenominalNounsODD ;
  +N: DenominalAdjsC ;
+ +N: ODDCmp ;             !^C^
 
 ! oddsyll, cg, vowchange, V-final nominative
 LEXICON BENA
@@ -299,7 +323,8 @@ LEXICON BENA
  +N:X5 OTH-ODDCASE ;
  +N:X5 DenominalNounsODD ;
  +N:X5 DenominalAdjsC ;
-! X5 for vow change
+ +N:X5 ODDCmp ;             !^C^
+ ! X5 for vow change
 
 ! Odd-syllable stems, sublexica
 ! - - - - - - - - - - - - - - - 
@@ -345,6 +370,8 @@ LEXICON OTH-ODDCASE
 LEXICON BENA-NE
  VUOHTA ;   !^C^
  +Sg+Nom: K ;
+ +SgNomCmp: R ;        !^C^
+ +SgNomCmp:# NAMAK ;        !^C^
  +Ess:n K ;
 
 !LEXICON BENA-OBL
@@ -368,19 +395,19 @@ LEXICON SARVES
  +N:Q1 SARVES-NE ;
  +N:X4 CONTR-OTH ;
  +N:X4 DenominalNounsCONTR ;
- +N:X4 DenominalAdjsV1 ;
+ +N:X4 DenominalAdjsContr ;
 
 
 LEXICON SUOLOJ
  +N:Q3 SUOLOJ-NE ;
  +N:X4 CONTR-OTH ;
  +N:X4 DenominalNounsCONTR ; 
- +N:X4 DenominalAdjsV1 ;
+ +N:X4 DenominalAdjsContr ;
 ! +N:X5 CONTR-OTH ; ! o:u as well!
 
 LEXICON GUOMOJ
  +N:X4 DenominalNounsCONTR ; 
- +N:X4 DenominalAdjsV1 ;
+ +N:X4 DenominalAdjsContr ;
  +N:X6 SUOLOJ-NE ; ! III-I CG
  +N:X5 ILL-EVENCASE ;
  +N:X4 N-EVENWEAKSTEM ;
@@ -394,18 +421,26 @@ LEXICON SARVES-NE
  +Sg+Nom:s K ;
 ! +Sg+Nom:s PxC ; !Moved to CONTR-OTH
  +Ess:n K ;
+ +SgNomCmp:s R ;        !^C^
+ +SgNomCmp:s# NAMAK ;        !^C^
+
  
 LEXICON SUOLOJ-NE
  :j VUOHTA ;   !^C^
  +Sg+Nom:j K ;
 ! +Sg+Nom:j PxC ; !Moved to CONTR-OTH
  +Ess:n K ;
+ +SgNomCmp:j R ;        !^C^
+ +SgNomCmp:j# NAMAK ;        !^C^
+
  
 LEXICON CONTR-OTH
  ILL-EVENCASE ;
  N-EVENWEAKSTEM ;
  +Sg+Nom: PxV ;
  +Ess:n K ;
+ +SgGenCmp: R ;          !^C^ 
+ 
 ! ComSg may cause trouble, since there is a dummy for it
 
 
@@ -421,9 +456,13 @@ LEXICON DenominalNounsMUORRA  !^C^
  +Dim+N+Abess:X7tjadagá K ;           !^C^
  +Dim+N+Abess:X7tjadak K ;           !^C^
  +Dim+N+Abess:X7tjada K ;           !^C^
+ +Dim+N:X7tj ODDCmp ;   !^C^
 
 LEXICON DenominalNounsODD    !^C^
  +Dim+N+Sg+Nom:asj K ; !^C^! added a
+ +Dim+N+SgNomCmp:asj R ; !^C^! added a
+ +Dim+N+SgNomCmp:asj# NAMAK ; !^C^! added a
+ +Dim+N+SgGenCmp:attja R ; !^C^! added a
  +Dim+N:adtja GÅNÅGIS-EVEN ; !^C^! added a
  +Dim+N:asj VUOHTA ; !^C^
  +Dim+N+Der/ahtes:atj AHTES ;             !^C^
@@ -439,6 +478,9 @@ LEXICON DenominalNounsODD    !^C^
 LEXICON DenominalNounsCONTR     !^C^
  +Dim+N:tj OTH-ODDCASE ;     !^C^
  +Dim+N+Sg+Nom:sj K ;
+ +Dim+N+SgNomCmp:sj R ; !^C^! added a
+ +Dim+N+SgNomCmp:sj# NAMAK ; !^C^! added a
+ +Dim+N:tj ODDCmp ;              !^C^
  +Dim+N:sj VUOHTA ; !^C^
  +Dim+N+Der/ahtes:tj AHTES ;             !^C^
  +Dim+N+Abess:tjadagi K ;           !^C^
@@ -450,27 +492,22 @@ LEXICON DenominalNounsCONTR     !^C^
 LEXICON DenominalNounsActor  !^C^
  +Dim+N:Y7tj N-ODDCASE ;              !^C^
  +Dim+N:Y7tj OTH-ODDCASE ;                   !^C^
- +Dim+N+Sg+Nom:Y7tj R ; !^C^
- +Dim+N+Sg+Gen:Y7tja R ; !^C^
- +Dim+N+Pl+Gen:Y7tjij R ;	!^C^
  +Dim+N+Der/ahtes:Y7tj AHTES ;             !^C^
  +Dim+N+Abess:Y7tjadagi K ;           !^C^
  +Dim+N+Abess:Y7tjadagá K ;           !^C^
  +Dim+N+Abess:Y7tjadak K ;           !^C^
  +Dim+N+Abess:Y7tjada K ;           !^C^
+ +Dim+N:Y7tj ODDCmp ;              !^C^
 
- 
 
 LEXICON VUOHTA					!^C^
  +Der/vuohta+N:#vuohta@C.NeedNoun@ VUOHTAMORPH ; !^C^
  	
 LEXICON VUOHTAMORPH
- +Sg+Nom: R ;	!^C^
  NE-EVENCASE ;
+ MUORRACmp ;               !^C^
  :X4 ILL-EVENCASE ;
  :Q1 N-EVENWEAKSTEM ;
-! +Sg+Gen:Q1 R ; !^C^
- +Cmpnd:Q1 R ; !^C^
  +Abess:Q1dagi K ;           !^C^
  +Abess:Q1dagá K ;           !^C^
  +Abess:Q1dak K ;           !^C^
@@ -662,18 +699,21 @@ LEXICON BU/MUS ! even-syll adjectives
  +Superl+Adv:musát K ;
  +Comp+Dim:busj VUOHTA ;  !^C^
  +Comp+Dim+Sg+Nom:busj K ;
+ +Comp+Dim+Sg+Attr:busj ATTR ;
  +Comp+Dim:budtja GÅNÅGIS-EVEN ; 
  +Comp+Dim+Adv:buttjat K ;
             
  
 LEXICON ABBO/AMOS ! odd-syll adjectives
  +Comp+Sg+Nom:ap K ;
+ +Comp+Attr:ap ATTR ;
  +Comp: ABBO ;
  +Superl: AMOS ; 
  +Comp+Adv:appot K ;
  +Superl+Adv:abmusit K ;
  +Comp+Dim:appusj VUOHTA ;  !^C^
  +Comp+Dim+Sg+Nom:appusj K ;
+ +Comp+Dim+Sg+Attr:appusj ATTR ;
  +Comp+Dim:apputj OTH-ODDCASE ; 
  +Comp+Dim+Adv:apputjit K ;
   
@@ -684,6 +724,7 @@ LEXICON ABBO/AMOS ! odd-syll adjectives
 
 LEXICON BUStem
  :p VUOHTA ;
+ +Attr:p ATTR ;
  +Sg+Nom:p K ;
  +Sg+Nom:bu PxV ;
  +Sg+Gen:bu K ;
@@ -729,6 +770,7 @@ LEXICON ABBO
 
 LEXICON AMOS
  :amos VUOHTA ;
+ +Attr:amos ATTR ;
  +Sg+Nom:amos K ;
  +Sg+Nom:abmusa PxV ;
  +Sg+Gen:abmusa K ;
@@ -759,6 +801,7 @@ LEXICON AMOS
 
 LEXICON BUOREMUS
  VUOHTA ;
+ +Attr: ATTR ;
  +Sg+Nom: K ; ! the short form, twol shortens ss#
  +Sg+Nom: PxV ; ! separate nom bec of the short form
  :a BUOREMUS-OBL ; ! Add -a, directly to the obliques
@@ -774,7 +817,7 @@ LEXICON BUOREMUS-OBL
 ! ---------------
 
 LEXICON ATTR
- NAMAT ;			!^C^
+ NAMAK ;			!^C^
  K ;                  ! Plain attributive
 ! -:#%- ProperNoun ;   ! Compounds		!^C^
 ! +Der/lágásj:lágán LÁGÁSJ ;
@@ -790,7 +833,7 @@ LEXICON ATTR
 
 LEXICON DenominalAdjsV1			!^C^
  +Der/dibme+A:Q1dibme DIBME ;		!^C^
- +Der/dibme+A+Attr:Q1dis K ;		!^C^
+ +Der/dibme+A+Attr:Q1dis ATTR ;		!^C^
  +Der/dibme+A:Q1dis VUOHTA ;		!^C^
  +Der/dibme+A:Q1d DUVVAT ;                 !^C^
  +Der/ahtes:Q1g AHTES ;       !^C^
@@ -813,9 +856,20 @@ LEXICON DenominalAdjsC			!^C^
  +Abess:ada K ;           !^C^
 ! +laš:#lažž ISSORAS ;		!^C^  !Doesn´t seem very productive
 
+LEXICON DenominalAdjsContr			!^C^
+ +Der/dibme+A:dibme DIBME ;		!^C^
+ +Der/dibme+A+Attr:dis ATTR ;		!^C^
+ +Der/dibme+A:dis VUOHTA ;		!^C^
+ +Der/dibme+A:d DUVVAT ;                 !^C^
+ +Der/ahtes:g AHTES ;       !^C^
+ +Abess:dagi K ;           !^C^
+ +Abess:dagá K ;           !^C^
+ +Abess:dak K ;           !^C^
+ +Abess:da K ;           !^C^
+
 
 LEXICON AHTES
- +A+Attr:ahtes K ;
+ +A+Attr:ahtes ATTR ;
  +A+Adv:ahtá K ;
  +A+Sg+Nom:ahtes K ;
  +A+Sg+Nom:ahttá PxV ;
@@ -836,13 +890,10 @@ LEXICON DIBME
   
 
 LEXICON LIS  !^C^
- +Attr: K ;  !^C^
+ +Attr: ATTR ;  !^C^
  +Sg+Nom: K ;
-! +Sg+Nom: R ;	!^C^
- +Cmpnd: R ;	!^C^
  +Sg+Nom:a PxV ;
  +Ess:an K ;
- +Pl+Gen:ajQ1 R ;	!^C^
  :aQ1 N-EVENWEAKSTEM-OTH ;
  :a ILL-EVENCASE ;
  :aQ1 N-EVENWEAKSTEM-SG-COM ;
@@ -851,7 +902,6 @@ LEXICON LIS  !^C^
  
 LEXICON LÁGÁSJ					!^C^
  +A+Attr: K ;                     !^C^
- +A+Sg+Nom: R ;	                !^C^
  +A: N-ODDCASE ;                      !^C^
  +A: OTH-ODDCASE ;                   !^C^
  +A: DenominalAdjsC ;       !^C^
@@ -881,14 +931,12 @@ LEXICON LÁGÁSJ					!^C^
 
 LEXICON AGAdj					!^C^
  +A+Attr: K ;                     !^C^
- +A+Sg+Nom: R ;	                !^C^
  +A: N-ODDCASE ;                      !^C^
  +A: OTH-ODDCASE ;                   !^C^
 
 
 LEXICON STÁVAL                     !^C^
  +A+Attr:Q1 K ;                     !^C^
- +A+Sg+Nom:Q1 R ;	                !^C^ 
  +A:Q1 N-ODDCASE ;               !^C^
  +A: OTH-ODDCASE ;               !^C^
 	
@@ -910,7 +958,7 @@ LEXICON GALGGAT
 +V+Pot:Q1tj I-odd-V ;
 +V+Inf:t K ;
 +V+PrfPrc:Y3m K ;
-+V+Act:m VSUBST-ODD ;
++V+Actio:m VSUBST-ODD ;
 +V+Ind+ConNeg:Q1 K ;
 +V+Pot+ConNeg:Q1tja K ;
 +V+Der/mus+N:muss@C.NeedNoun@ MUS ;	!^C^
@@ -1019,7 +1067,7 @@ LEXICON INFL-EVEN
 +Pot+ConNeg:Q1tja K ;
 +Imprt+ConNeg:Q1 K ;
 +ImprtII+ConNeg: ImprtIIConNeg ;
-+Act: VSUBST-ODD ; 
++Actio: VSUBST-ODD ; 
 
  
 
@@ -1050,7 +1098,7 @@ LEXICON INFL-o-
 +Pot+ConNeg:Q1tja K ;
 +Imprt+ConNeg:Q1 K ;
 +ImprtII+ConNeg: ImprtIIConNeg-o- ;
-+Act: VSUBST-ODD ; 
++Actio: VSUBST-ODD ; 
 !+Ind+Prs+ConNeg:Q1 K ; 
 !+Ind+Prt+ConNeg:Y3m K ;
 
@@ -1084,7 +1132,7 @@ LEXICON INFL-ODD
  +Pot+ConNeg:ittja K ; !tentative
  +Ind+ConNeg:a K ;
  +ImprtII+ConNeg: ImprtIIConNeg ;
- +Act: VSUBST-EVEN ;
+ +Actio: VSUBST-EVEN ;
 
 
 
@@ -1118,7 +1166,7 @@ LEXICON INFL-CONTRACTED
  +Pot+ConNeg:tja K ; !tentative
  +Ind+ConNeg: K ;
  +ImprtII+ConNeg:j ImprtIIConNeg ;
- +Act: VSUBST-ODD ;
+ +Actio: VSUBST-ODD ;
  
 
 
@@ -1318,6 +1366,7 @@ LEXICON ImprtIIConNeg-o-
 
 LEXICON VSUBST-ODD
  +N+Sg+Nom:m K ;
+ +N+SgNomCmp:m R ;            !^C^
  +N+Sg+Nom:m VUOHTA ;        !^C^
  +N:m OTH-ODDCASE ;
  +N+Der/ahtes:m AHTES ;       !^C^
@@ -1326,6 +1375,7 @@ LEXICON VSUBST-EVEN
  +N+Sg+Nom:ibme K ;
  +N+Sg+Nom:ibmeX4 PxV ;
  +N+Sg+Nom:im VUOHTA ;        !^C^
+ +N+SgNomCmp:im R ;        !^C^
  +N+Sg+Nom+Der/ahtes:im AHTES ;       !^C^
  +N+Ess:ibmeQ1 K ;
  +N:ibmeX4 ILL-EVENCASE ;
@@ -1441,13 +1491,11 @@ LEXICON DeverbalNounsOADDÁT     !^C^
 
 LEXICON MUS
  +Sg+Nom: K ;
- +Sg+Nom: R ;	!^C^
  :a MUSSA ;
 
 LEXICON MUSSA
  +Sg+Nom: PxV ;
  +Ess:n K ;
- +Pl+Gen:Q1j R ;	!^C^
  :Q1 N-EVENWEAKSTEM-OTH ;
  ILL-EVENCASE ;
  :Q1 N-EVENWEAKSTEM-SG-COM ;
@@ -1459,7 +1507,6 @@ LEXICON MUSSA
  
 LEXICON ACTOR			!^C^
  +A+Attr:Y6s K ;        !^C^
- +N+Sg+Nom:Y6 R ;       !^C^
  +N:Y6 NE-EVENCASE ;    !^C^
  +N:Y6 ACTORILL ;        !^C^
  +N:Y6 N-EVENWEAKSTEM ;  !^C^
@@ -1472,29 +1519,29 @@ LEXICON ACTORILL          !^C^
  
 LEXICON BOAHTEM !^C^
  +N+Sg+Nom: K ; !^C^
- +N+Sg+Nom: R ;	!^C^
+ +N+SgNomCmp: R ;	!^C^
  +N+Sg+Nom: VUOHTA ;	!^C^
  +N: OTH-ODDCASE ; !^C^
  +N+Der/ahtes: AHTES ;       !^C^
   
 LEXICON IBME           !^C^
- +N+Sg+Nom:im R ;     !^C^
  +N+Sg+Nom:im VUOHTA ;     !^C^
- +N: VSUBST-EVEN ; !^C^
+ VSUBST-EVEN ; !^C^
  +N+Sg+Nom+Der/ahtes:im AHTES ;       !^C^
 
  
 LEXICON JÅLLÅRUS
  +Sg+Nom: K ;
- +Sg+Nom: R ;			!^C^
+ +Sg+Nom: VUOHTA ;
+ +SgNomCmp: R ;			!^C^
+ +SgGenCmp:aQ1 R ;			!^C^
+ +PlGenCmp:ajQ1 R ;			!^C^
  +Sg+Nom:a PxV ; 
  +Ess:an K ;
  :aQ1 N-EVENWEAKSTEM-OTH ;
  :a ILL-EVENCASE ;
  :aQ1 N-EVENWEAKSTEM-SG-COM ;
- +Dim+N+Sg+Nom:aQ1sj R ;	!^C^
- +Dim+N+Sg+Gen:aQ1tja R ; !^C^ 
- +Dim+N:aQ1sj N-ODDCASE ; ! no pointer to E-ODDCASE, as gahper has no short Ess
+ +Dim+N+Sg+Nom: K ; 
  +Dim+N:aQ1tj OTH-ODDCASE ;
  +Dim+N:aQ1tj DenominalNounsODD ; 
  +Der/ahtes:#ág AHTES ;       !^C^
@@ -1502,6 +1549,7 @@ LEXICON JÅLLÅRUS
  +Abess:#ádagá K ;           !^C^
  +Abess:#ádak K ;           !^C^
  +Abess:#áda K ;           !^C^
+ :a DenominalNounsMUORRA ;           !^C^
  		
 
 
