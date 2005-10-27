@@ -12,7 +12,7 @@ Multichar_Symbols
  +N +A +Adv +V
  +Pron +CS +CC +Adp +Po +Pr +Interj +Pcle
  +Pers +Dem +Interr +Refl +Recipr +Rel +Indef
- +Sg +Pl +Nom +Gen +Acc +Ill +Ine +Ela +Com +Ess +Par +Abe +SgNomCmp +SgGenCmp 
+ +Sg +Pl +Nom +Gen +Acc +Ill +Ine +Ela +Com +Ess +Par +Abe +SgNomCmp +SgGenCmp +PlGenCmp 
  +PxSg1 +PxSg2 +PxSg3 +PxDu1 +PxDu2 +PxDu3 +PxPl1 +PxPl2 +PxPl3
  +Comp +Superl +Actor +Actio
  +Clt +Attr +Dim +Inch 
@@ -177,7 +177,11 @@ LEXICON KINO ! no diacritics whatsoever
  +N:X1 DenominalAdjsV2 ;
  +N:X1 DenominalNounsMUORRA ;
  +N: VUOHTA ;                        !^C^
- +N:X1 MUORRACmp ;                           !^C^
+ +N+SgNomCmp: R ;        !^C^
+ +N+SgGenCmp:Q1 R ;          !^C^ 
+ +N+PlGenCmp:j R ;          !^C^ 
+ +N+SgNomCmp:# NAMAK ;        !^C^
+ +N+SgGenCmp: SASJ ;          !^C^ 
 
 
 
@@ -208,6 +212,7 @@ LEXICON GÅNÅGIS-C
  +SgNomCmp: R ;        !^C^
  +SgNomCmp:# NAMAK ;        !^C^
  +SgGenCmp:aQ1 R ;          !^C^ 
+ +PlGenCmp:ajQ1 R ;          !^C^
 
 
 LEXICON GÅNÅGIS-EVEN
@@ -282,19 +287,24 @@ LEXICON N-EVENWEAKSTEM-SG-COM
  +Sg+Com:X5jn PxCi ;
 
 LEXICON MUORRACmp    !^C^
+ +SgNomCmp:X9 R ;        !^C^
  +SgNomCmp: R ;        !^C^
  +SgGenCmp:Q1 R ;          !^C^ 
+ +PlGenCmp:jQ1 R ;          !^C^ 
  +SgNomCmp:# NAMAK ;        !^C^
  +SgGenCmp:Q1 SASJ ;          !^C^ 
  
  LEXICON NOADECmp    !^C^
  +SgNomCmp: R ;        !^C^
+ +SgNomCmp:X9 R ;        !^C^
  +SgGenCmp:Q1 R ;          !^C^ 
+ +PlGenCmp:jQ1 R ;          !^C^ 
  +SgNomCmp:# NAMAK ;        !^C^
  
  LEXICON ODDCmp    !^C^
  +SgNomCmp: R ;        !^C^
  +SgGenCmp:a R ;          !^C^ 
+ +PlGenCmp:ij R ;          !^C^ 
  +SgNomCmp:# NAMAK ;        !^C^
 
 
@@ -458,7 +468,8 @@ LEXICON CONTR-OTH
  N-EVENWEAKSTEM ;
  +Sg+Nom: PxV ;
  +Ess:n K ;
- +SgGenCmp: R ;          !^C^ 
+ +SgGenCmp: R ;          !^C^
+ +PlGenCmp:j R ;          !^C^ 
  
 ! ComSg may cause trouble, since there is a dummy for it
 
@@ -484,6 +495,7 @@ LEXICON DenominalNounsODD    !^C^
  +Dim+N+SgNomCmp:asj R ; !^C^! added a
  +Dim+N+SgNomCmp:asj# NAMAK ; !^C^! added a
  +Dim+N+SgGenCmp:attja R ; !^C^! added a
+ +Dim+N+PlGenCmp:attjaj R ; !^C^! added a
  +Dim+N:adtja GÅNÅGIS-EVEN ; !^C^! added a
  +Dim+N:asj VUOHTA ; !^C^
  +Dim+N+Der/ahtes:atj AHTES ;             !^C^
@@ -531,7 +543,9 @@ LEXICON VUOHTA					!^C^
 LEXICON VUOHTAMORPH
  NE-EVENCASE ;
  +SgNomCmp: R ;        !^C^
+ +SgNomCmp:X9 R ;        !^C^
  +SgGenCmp:Q1 R ;          !^C^ 
+ +PlGenCmp:jQ1 R ;          !^C^ 
  :X4 ILL-EVENCASE ;
  :Q1 N-EVENWEAKSTEM ;
  +Abess:Q1dagi K ;           !^C^
@@ -1385,27 +1399,6 @@ LEXICON ImprtIIConNeg-o-
 ! Verb Derivation
 ! --------------------
 
-! vsubst
-! These are actio forms
-
-LEXICON VSUBST-ODD
- +N+Sg+Nom:m K ;
- +N+SgNomCmp:m R ;            !^C^
- +N+Sg+Nom:m VUOHTA ;        !^C^
- +N:m OTH-ODDCASE ;
- +N+Der/ahtes:m AHTES ;       !^C^
- 
-LEXICON VSUBST-EVEN
- +N+Sg+Nom:ibme K ;
- +N+Sg+Nom:ibmeX4 PxV ;
- +N+Sg+Nom:im VUOHTA ;        !^C^
- +N+SgNomCmp:im R ;        !^C^
- +N+Sg+Nom+Der/ahtes:im AHTES ;       !^C^
- +N+Ess:ibmeQ1 K ;
- +N:ibmeX4 ILL-EVENCASE ;
- +N:ibmeQ1 N-EVENWEAKSTEM ;
- 
- 
 
 ! Passive derivation
 ! - - - - - - - - - -
@@ -1512,6 +1505,26 @@ LEXICON DeverbalNounsOADDÁT     !^C^
 !Sublexicas deverbal nouns
 !---------------------------
 
+! vsubst
+! These are actio forms
+
+LEXICON VSUBST-ODD
+ +N+Sg+Nom:m K ;
+ +N+SgNomCmp:m R ;            !^C^
+ +N+Sg+Nom:m VUOHTA ;        !^C^
+ +N:m OTH-ODDCASE ;
+ +N+Der/ahtes:m AHTES ;       !^C^
+ 
+LEXICON VSUBST-EVEN
+ +N+Sg+Nom:ibme K ;
+ +N+Sg+Nom:ibmeX4 PxV ;
+ +N+Sg+Nom:im VUOHTA ;        !^C^
+ +N+SgNomCmp:im R ;        !^C^
+ +N+Sg+Nom+Der/ahtes:im AHTES ;       !^C^
+ +N+Ess:ibmeQ1 K ;
+ +N:ibmeX4 ILL-EVENCASE ;
+ +N:ibmeQ1 N-EVENWEAKSTEM ;
+ 
 
 LEXICON MUS
  +Sg+Nom: K ;
