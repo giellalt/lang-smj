@@ -31,7 +31,9 @@ Alphabet
 Sets
  Vow = a á e i o u y æ ä ø ö å
        é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý ;
- Cns = b b3 c d d3 f g g2 g3 h h2 h3 j k l l3 m m2 m3 n n2 n3 ñ p q r r3 s t v w x z ' ;
+ Cns1 = b    c d    f g       h       j k l    m       n       ñ p q r    s t v w x z   ;
+ Cns2 =   b3     d3     g2 g3   h2 h3       l3   m2 m3   n2 n3         r3             ' ;
+ Cns  = b b3 c d d3 f g g2 g3 h h2 h3 j k l l3 m m2 m3 n n2 n3 ñ p q r r3 s t v w x z ' ;
  DelCns = g2 m2 n2 h2 ;
  WeG = X2 X3 X7 Y5 Q1 Q2 Q3 ;
  StemCns = b b3 d d3 g g2 g3 h h2 h3 j l l3 m m2 m3 n n2 n3 ñ r r3 s ;
@@ -39,11 +41,18 @@ Sets
 
 Definitions
 
- CnsPhon = [ Cns | n j | s j | t j | t s ] ;
- G3      = [ [ CnsPhon CnsPhon [ CnsPhon+ | '] ] - [[[j|l|m|n|v] s k ] | [l|r] s k | r s j t ] ] ;
- G2      = [   CnsPhon CnsPhon |                   [[[j|l|m|n|v] s k ] | [l|r] s k | r s j t ] ] ;
- G1      =     CnsPhon ;
- G12     = [ G1 | G2 ] ;
+! CnsPhon = [ [ Cns1 | Cns2: ] | n j | s j | t j | t s ] ;
+! G3      = [ [ CnsPhon CnsPhon [ CnsPhon+ | '] ] - [[[j|l|m|n|v] s k ] | [l|r] s k | r s j t ] ] ;
+! G2      = [   CnsPhon CnsPhon |                   [[[j|l|m|n|v] s k ] | [l|r] s k | r s j t ] ] ;
+! G1      =     CnsPhon ;
+! G12     = [ G1 | G2 ] ;
+
+ LowerCnsPhon = [ :Cns1 | :n :j | :s :j | :t :j | :t :s ] ;
+ LowerG2  = [ LowerCnsPhon LowerCnsPhon |  [[[:j|:l|:m|:n|:v] :s :k ] | [:l|:r] :s :k | :r :s :j :t ] ] ;
+ LowerG1  =   LowerCnsPhon ;
+ LowerG12 = [ LowerG1 | LowerG2 ] ;
+
+
 
 Rules
 
@@ -164,39 +173,82 @@ Rules
 ! -----------------------
 
 "oa:å Diphtong Simplification Part I"
- o:0 <=> [ #: | Cns: | Dummy: ] _ a: Cns:* [ a: | i: ] WeG: ; ! WeG of a- and i-stems
-!	 [ #: | Cns: | Dummy: ] _ a: Cns:+ e: Q1: j ; ! ComSg & G-C Pl of e-stems
-	 [ #: | Cns: | Dummy: ] _ a: Cns:+ e: Q1: ( X5: ) j ; ! ComSg & G-C Pl of e-stems
-     [ #: | Cns: | Dummy: ] _ a: Cns:+ a: Y6: ( X5: ) j ; ! ComSg & G-C Pl of Actor nouns from a-verbs
-     [ #: | Cns: | Dummy: ] _ a: Cns:+ e: Y6: ( X5: ) j ; ! ComSg & G-C Pl of Actor nouns from e-verbs
-	 [ #: | Cns: | Dummy: ] _ a: Cns:+ e: Y1: ; ! Different verb forms
-	 [ #: | Cns: | Dummy: ] _ a: Cns:+ o: [ X4: | Q1: X5: ] j ; !Ill&ComSg. !instead of !line
-	 [ #: | Cns: | Dummy: ] _ a: Cns:+ o: Cns: X5: Vow ; ! odd-syll, oblique
-	 [ #: | Cns: | Dummy: ] _ a: Cns:+ a g2: X3: [#: | n ] ; !NE låvda
+ o:0 <=> [ #: | Cns: | Dummy: ] _ a: Cns:* [ a: | i: ] WeG: ;   ! WeG of a- and i-stems
+!	 [ #: | Cns: | Dummy: ] _ a: Cns:+ e: Q1: j ;               ! ComSg & G-C Pl of e-stems
+	 [ #: | Cns: | Dummy: ] _ a: Cns:+ e: Q1: ( X5: ) j ;       ! ComSg & G-C Pl of e-stems
+     [ #: | Cns: | Dummy: ] _ a: Cns:+ a: Y6: ( X5: ) j ;       ! ComSg & G-C Pl of Actor nouns from a-verbs
+     [ #: | Cns: | Dummy: ] _ a: Cns:+ e: Y6: ( X5: ) j ;       ! ComSg & G-C Pl of Actor nouns from e-verbs
+	 [ #: | Cns: | Dummy: ] _ a: Cns:+ e: Y1: ;                 ! Different verb forms
+	 [ #: | Cns: | Dummy: ] _ a: Cns:+ o: [ X4: | Q1: X5: ] j ; ! Ill&ComSg. !instead of !line
+	 [ #: | Cns: | Dummy: ] _ a: Cns:+ o: Cns: X5: Vow ;        ! odd-syll, oblique
+	 [ #: | Cns: | Dummy: ] _ a: Cns:+ a g2: X3: [#: | n ] ;    ! NE låvda
 	 _ Vow Cns:* e: Q1:0 t: j [ #: | Vow: ] [ #: | v | n | h | b | p | 0 ] ;
 !    _ Vow ( Cns ) Cns:+ o:u ; ! Vovel change in front of stem vowel variation
-     _ Vow G12 o:u ;
+     _ Vow         LowerG12  o:u ;
 !    _ Vow ( Cns: ) Cns: o:u ; ! Vovel change in front of stem vowel variation
 !	 [ #: | Cns: | Dummy: ] _ a: Cns:* o: (Dummy:* - Q3:) j ; ! even-syll o-st, before j. ! rm when tested
 
 "oa:å Diphtong Simplification Part II"
- a:å <=> [ #: | Cns: | Dummy: ] o: _ Cns:* [ a: | i: ] WeG: ; ! WeG of a- and i-stems
-!	 [ #: | Cns: | Dummy: ] o: _ Cns:+ e: Q1: j ; ! ComSg & G-C Pl of e-stems
-     [ #: | Cns: | Dummy: ] o: _ Cns:+ e: Q1: ( X5: ) j ; ! ComSg & G-C Pl of e-stems
-     [ #: | Cns: | Dummy: ] o: _ Cns:+ a: Y6: ( X5: ) j ; ! ComSg & G-C Pl of Actor nouns from a-verbs
-     [ #: | Cns: | Dummy: ] o: _ Cns:+ e: Y6: ( X5: ) j ; ! ComSg & G-C Pl of Actor nouns from e-verbs
-	 [ #: | Cns: | Dummy: ] o: _ Cns:+ e: Y1: ; ! Different verb forms
-	 [ #: | Cns: | Dummy: ] o: _ Cns:+ o: [ X4: | Q1: X5: ] j ; !Ill&ComSg. !instead of !line
-	 [ #: | Cns: | Dummy: ] o: _ Cns:+ o: Cns: X5: Vow ; ! odd-syll, oblique
-	 [ #: | Cns: | Dummy: ] o: _ Cns:+ a g2: X3: [#: | n ] ; !NE låvda
+ a:å <=> [ #: | Cns: | Dummy: ] o: _ Cns:* [ a: | i: ] WeG: ;   ! WeG of a- and i-stems
+!	 [ #: | Cns: | Dummy: ] o: _ Cns:+ e: Q1: j ;               ! ComSg & G-C Pl of e-stems
+     [ #: | Cns: | Dummy: ] o: _ Cns:+ e: Q1: ( X5: ) j ;       ! ComSg & G-C Pl of e-stems
+     [ #: | Cns: | Dummy: ] o: _ Cns:+ a: Y6: ( X5: ) j ;       ! ComSg & G-C Pl of Actor nouns from a-verbs
+     [ #: | Cns: | Dummy: ] o: _ Cns:+ e: Y6: ( X5: ) j ;       ! ComSg & G-C Pl of Actor nouns from e-verbs
+	 [ #: | Cns: | Dummy: ] o: _ Cns:+ e: Y1: ;                 ! Different verb forms
+	 [ #: | Cns: | Dummy: ] o: _ Cns:+ o: [ X4: | Q1: X5: ] j ; ! Ill&ComSg. !instead of !line
+	 [ #: | Cns: | Dummy: ] o: _ Cns:+ o: Cns: X5: Vow ;        ! odd-syll, oblique
+	 [ #: | Cns: | Dummy: ] o: _ Cns:+ a g2: X3: [#: | n ] ;    ! NE låvda
 	o: _ Cns:* e: Q1:0 t: j [ #: | Vow: ] [ #: | v | n | h | b | p | 0 ] ;
 !	o: _ ( Cns ) Cns:+ o:u ; ! Vovel change in front of stem vowel variation
-    o: _ G12 o:u ;
+    o: _         LowerG12  o:u ;
 !	o: _ ( Cns: ) Cns: o:u ; ! Vovel change in front of stem vowel variation
 !€ boalloX4j
 !€ b0ållu0j
 !$ roavggoX4j
 !$ r0åvggu0j
+
+
+! The next example shows actor noun in G3 (actor nouns are always G3)
+!€ goar'roY6
+!€ goar0ru0
+
+!€ goarroY6
+!€ goarru0
+
+! The next example shows errouneous dipht simpl for G3.
+!$ goar'roY6
+!$ g0år0ru0
+
+! The following example shows correct diphtong simplification in G2 (3Sg pres)
+!€ goar'roY2
+!€ g0år0ru0
+
+!€ goarroY2
+!€ g0årru0
+
+!€ doa0djeY6
+!€ doaddje0
+
+!$ doa0djeY6
+!$ d0åddje0
+
+! The following tests are using fictive, non-existent verbs, to test the correctnes of the mapping rules in twolc
+! the verb *toabmot, *toamov
+! X4 for o:u i illsg 
+
+!€ toa0bmoY6X4j
+!€ toabbmu00j
+
+!€ toabmoX4j
+!€ t0åbmu0j
+
+!$ toa0bmoY6X4j
+!$ t0åbbmu00j
+
+!€ oadoY6X4j
+!€ 0ådu00j
+
+
 
 "Facultative oa:å Diphtong Simplification Part I"
  o:0 => _ a: Cns:+ Vow:0 X9: ; !Facultative in first-part of compounds
@@ -798,21 +850,21 @@ d:t <=> Vow: _ d: Vow: ( StemCns: ) WeG: ;
 
 ! Candidates:
 !! bbm - bm - m
-! ddn - dn - n
-! ddnj- dnj- nj
-!! ggñ - gñ - ñ
-! ddj - dj - dj
+!! ddn - dn - n
+!! ddnj- dnj- nj
+!! ggŋ - gŋ - ŋ
+!! ddj - dj - dj
 
-! hkk - hk - g
-! hpp - hp - b
+!! hkk - hk - g
+!! hpp - hp - b
 
-! htt - ht - d
-! httj- htj- tj
-! htts- hts- ts
+!! htt - ht - d
+!! httj- htj- tj
+!! htts- hts- ts
 
 ! Strategy: Do insertion rule for the initial element.
 
-"Consonant insertion as II-III strengthening gradation with bm,gñ"
+"Consonant insertion as II-III strengthening gradation with bm,gŋ"
  0:Cx <=> Vow _ Cx Cy Vow: [ Y6: | Y7: | Y9: ] ;
       where Cx in ( b g )
 	    Cy in ( m ñ )
