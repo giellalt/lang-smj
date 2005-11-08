@@ -32,6 +32,7 @@ Sets
  Cns1 =      c      f         h       j   l    m       n       ñ p q r    s t v w x z   ;
  Cns2 = b    c d    f g       h       j k l    m       n       ñ p q r    s t v w x z   ;
  Cns3 =   b3     d3     g2 g3   h2 h3       l3   m2 m3   n2 n3         r3             ' ;
+ Cns4 = f l m n ŋ r v ;
  Cns  = b b3 c d d3 f g g2 g3 h h2 h3 j k l l3 m m2 m3 n n2 n3 ñ p q r r3 s t v w x z ' ;
  DelCns = g2 m2 n2 h2 ;
  WeG = X2 X3 X7 Y5 Q1 Q2 Q3 ;
@@ -48,7 +49,9 @@ Definitions
                 (Cns:0) [ :l | :r ] :s :k |
                 (Cns:0) [ :b (Cns:0) [ :d | :m | :j | :l | :n | :n :j | :r | :s | :t :j | :t :s  ]
                         | :d (Cns:0) [ :j | :n | :n :j ] | :g (Cns:0) :ŋ | :k (Cns:0) [ :n :k ] ]
-                (Cns:0)  :r :s :j :t ] ] - [ [d t [ s | j]] | b b | d d | g g | k [ s | t | t j | t s ] ]];
+                (Cns:0)  :r :s :j :t ] ]
+                 - [ [d t [ s | j]] | b b | d d | g g | k [ s | t | t j | t s ] 
+                 | f ':0 f | l ':0 l | m ':0 m | n ':0 n | ŋ ':0 ŋ | r ':0 r | v ':0 v ]];
  LowerG1   = (Cns:0)   LCnsPhon ;
  LowerG12  = [ LowerG1 | LowerG2 ] ;
 
@@ -214,12 +217,17 @@ Rules
 !$ roavggoX4j
 !$ r0åvggu0j
 
-! The next example shows actor noun in G3 (actor nouns are always G3)
+! The next example shows actor noun in G3 (actor nouns are always G3) 
 !€ goar'roY6X5jn
 !€ goar0ru00jn
+! This test should hit, but fails, since G3 looks like G2 at the lower level.
+! Further clever thinking is needed here.
 
 !€ goarroY6X5jn
 !€ goarru00jn
+! This case is really hard, since we have G2 upper, and invisible G3 lower, thus nothing
+! to look at.
+! this is G2 > G3. Derived G3 from a G2 stem (actor noun)
 
 ! The next example shows errouneous dipht simpl for G3.
 !$ goar'roY6X5jn
@@ -721,29 +729,48 @@ p:0 <=> Vow: p _ [ s|t ] ( j ) Vow: ( StemCns: ) WeG: ; ! S1-3, S1-4 j
 	Vow: h _ p Vow:0 X9: ; !first part of compounds
 
 "Consonant gradation s:0"
-s:0 <=> Vow: s _ ( [ j|k|m|n|t ] ) Vow: ( StemCns: ) WeG: ; ! S1-3, S2 II-I
-    Vow: s _ ( [ j|k|m|n|t ] ) Vow:0 X9: ; !first part of compounds
-	Vow: s _ j [ k|m|v ] Vow: ( StemCns: ) WeG: ;            ! S1-4
-	Vow: s _ j [ k|m|v ] Vow:0 X9: ; !first part of compounds
-	Vow: [ b|j|l|m|n|r|v ] _ s Vow: ( StemCns: ) WeG: ;  ! S3
-	Vow: [ b|j|l|m|n|r|v ] _ s Vow:0 X9: ; !first part of compounds
-	Vow: [ r|l|m ] _ s j Vow: ( StemCns: ) WeG: ;        ! S3-4
-	Vow: [ r|l|m ] _ s j Vow:0 X9: ; !first part of compounds
-	Vow: [ r|l|n ] _ s k Vow: ( StemCns: ) WeG: ;         ! S3-4
-	Vow: [ r|l|n ] _ s k Vow:0 X9: ; !first part of compounds
-	Vow: [ j|m|n|v ] _ s t Vow: ( StemCns: ) WeG: ;          ! S3-4
-	Vow: [ j|m|n|v ] _ s t Vow:0 X9: ; !first part of compounds
-	Vow: r s _ j t Vow: ( StemCns: ) WeG: ; ! S3 rssjt:rsjt
-	Vow: r s _ j t Vow:0 X9: ; ! No real consonant gradation, rather consonant reduction in compounds (X9)
-    Vow: h:0 t:s _ Vow:0 X9: ; ! No real consonant gradation, rather consonant reduction in compounds (X9)
-	Vow: s: _ #: ; ! This is a word fin simpl, ss# -> s#, and not CG
-	Vow: _ Q1: X1: n ; ! Deleting Final Cns in Short Essive of Uneven Syllables
+s:0 <=> Vow: _ s ( [ j|k|m|n|t ] ) Vow: ( StemCns: ) WeG: ; ! S1-3, S2 II-I
+        Vow: _ s ( [ j|k|m|n|t ] ) Vow:0 X9: ; !first part of compounds
+        Vow: _ s j [ k|m|v ] Vow: ( StemCns: ) WeG: ;            ! S1-4
+        Vow: _ s j [ k|m|v ] Vow:0 X9: ; !first part of compounds
+        Vow: [ b|j|l|m|n|r|v ] _ s Vow: ( StemCns: ) WeG: ;  ! S3
+        Vow: [ b|j|l|m|n|r|v ] _ s Vow:0 X9: ; !first part of compounds
+        Vow: [ r|l|m ] _ s j Vow: ( StemCns: ) WeG: ;        ! S3-4
+        Vow: [ r|l|m ] _ s j Vow:0 X9: ; !first part of compounds
+        Vow: [ r|l|n ] _ s k Vow: ( StemCns: ) WeG: ;         ! S3-4
+        Vow: [ r|l|n ] _ s k Vow:0 X9: ; !first part of compounds
+        Vow: [ j|m|n|v ] _ s t Vow: ( StemCns: ) WeG: ;          ! S3-4
+        Vow: [ j|m|n|v ] _ s t Vow:0 X9: ; !first part of compounds
+        Vow: r _ s j t Vow: ( StemCns: ) WeG: ; ! S3 rssjt:rsjt
+        Vow: r _ s j t Vow:0 X9: ; ! No real consonant gradation, rather consonant reduction in compounds (X9)
+        Vow: h:0 t:s _ Vow:0 X9: ; ! No real consonant gradation, rather consonant reduction in compounds (X9)
+        Vow: s: _ #: ; ! This is a word fin simpl, ss# -> s#, and not CG
+        Vow: _ Q1: X1: n ; ! Deleting Final Cns in Short Essive of Uneven Syllables
+
+!"Consonant gradation s:0"
+!s:0 <=> Vow: s _ ( [ j|k|m|n|t ] ) Vow: ( StemCns: ) WeG: ; ! S1-3, S2 II-I
+!        Vow: s _ ( [ j|k|m|n|t ] ) Vow:0 X9: ; !first part of compounds
+!        Vow: s _ j [ k|m|v ] Vow: ( StemCns: ) WeG: ;            ! S1-4
+!        Vow: s _ j [ k|m|v ] Vow:0 X9: ; !first part of compounds
+!        Vow: [ b|j|l|m|n|r|v ] _ s Vow: ( StemCns: ) WeG: ;  ! S3
+!        Vow: [ b|j|l|m|n|r|v ] _ s Vow:0 X9: ; !first part of compounds
+!        Vow: [ r|l|m ] _ s j Vow: ( StemCns: ) WeG: ;        ! S3-4
+!        Vow: [ r|l|m ] _ s j Vow:0 X9: ; !first part of compounds
+!        Vow: [ r|l|n ] _ s k Vow: ( StemCns: ) WeG: ;         ! S3-4
+!        Vow: [ r|l|n ] _ s k Vow:0 X9: ; !first part of compounds
+!        Vow: [ j|m|n|v ] _ s t Vow: ( StemCns: ) WeG: ;          ! S3-4
+!        Vow: [ j|m|n|v ] _ s t Vow:0 X9: ; !first part of compounds
+!        Vow: r s _ j t Vow: ( StemCns: ) WeG: ; ! S3 rssjt:rsjt
+!        Vow: r s _ j t Vow:0 X9: ; ! No real consonant gradation, rather consonant reduction in compounds (X9)
+!        Vow: h:0 t:s _ Vow:0 X9: ; ! No real consonant gradation, rather consonant reduction in compounds (X9)
+!        Vow: s: _ #: ; ! This is a word fin simpl, ss# -> s#, and not CG
+!        Vow: _ Q1: X1: n ; ! Deleting Final Cns in Short Essive of Uneven Syllables
 
 "Consonant gradation ñ:0"
 ñ:0 <=> Vow: ñ _ ( [ g|k ] ) Vow: ( StemCns: ) WeG: ; ! S1-3, S2 II-I
-    Vow: ñ _ ( [ g|k ] ) Vow:0 X9: ; !first part of compounds
-	Vow: [ j|l|r|v ] _ ñ Vow: ( StemCns: ) WeG: ; ! S3 
-	Vow: [ j|l|r|v ] _ ñ Vow:0 X9: ; !first part of compounds
+        Vow: ñ _ ( [ g|k ] ) Vow:0 X9: ; !first part of compounds
+        Vow: [ j|l|r|v ] _ ñ Vow: ( StemCns: ) WeG: ; ! S3 
+        Vow: [ j|l|r|v ] _ ñ Vow:0 X9: ; !first part of compounds
 
 	
 "Consonant gradation f:0"
