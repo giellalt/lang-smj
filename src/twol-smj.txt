@@ -26,13 +26,12 @@ Alphabet
  Q1:0 Q2:0 Q3:0 Q4:0 Q5:0 Q6:0 Q7:0 Q8:0 Q9:0  ! They trigger morphophono-
  Y1:0 Y2:0 Y3:0 Y4:0 Y5:0 Y6:0 Y7:0 Y8:0 Y9:0 ;     ! logical rules
 
-
-
 Sets
  Vow = a á e i o u y æ ä ø ö å
        é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý ;
  Cns1 = b    c d    f g       h       j k l    m       n       ñ p q r    s t v w x z   ;
- Cns2 =   b3     d3     g2 g3   h2 h3       l3   m2 m3   n2 n3         r3             ' ;
+ Cns2 =      c      f         h       j   l    m       n       ñ p q r    s t v w x z   ;
+ Cns3 =   b3     d3     g2 g3   h2 h3       l3   m2 m3   n2 n3         r3             ' ;
  Cns  = b b3 c d d3 f g g2 g3 h h2 h3 j k l l3 m m2 m3 n n2 n3 ñ p q r r3 s t v w x z ' ;
  DelCns = g2 m2 n2 h2 ;
  WeG = X2 X3 X7 Y5 Q1 Q2 Q3 ;
@@ -41,19 +40,17 @@ Sets
 
 Definitions
 
-! CnsPhon = [ [ Cns1 | Cns2: ] | n j | s j | t j | t s ] ;
-! G3      = [ [ CnsPhon CnsPhon [ CnsPhon+ | '] ] - [[[j|l|m|n|v] s t ] | [l|r] s k | r s j t ] ] ;
-! G2      = [   CnsPhon CnsPhon |                   [[[j|l|m|n|v] s t ] | [l|r] s k | r s j t ] ] ;
-! G1      =     CnsPhon ;
-! G12     = [ G1 | G2 ] ;
+ LCnsPhon1 = [ :Cns1 | :n :j | :s :j | :t :j | :t :s ] ;     ! Using Cns1, excluding 1st member of two-cns G3 
+ LCnsPhon  = [ :Cns2 | :n :j | :s :j | :t :j | :t :s ] ;     ! Using Cns2, without the previous restriction
 
- LowerCnsPhon = [ :Cns1 | :n :j | :s :j | :t :j | :t :s ] ;
- LowerG2  = [ (Cns:0)  LowerCnsPhon (Cns:0) LowerCnsPhon (Cns:0) | 
-              (Cns:0) [[[:j|:l|:m|:n|:v] :s :t ] |
-              (Cns:0) [:l|:r] :s :k |
-              (Cns:0)  :r :s :j :t ] ] ;
- LowerG1  = (Cns:0)   LowerCnsPhon ;
- LowerG12 = [ LowerG1 | LowerG2 ] ;
+ LowerG2   = [[ (Cns:0)  LCnsPhon1 (Cns:0) LCnsPhon (Cns:0) |
+                (Cns:0) [[[:j|:l|:m|:n|:v] :s :t ] |
+                (Cns:0) [ :l | :r ] :s :k |
+                (Cns:0) [ :b (Cns:0) [ :d | :m | :j | :l | :n | :n :j | :r | :s | :t :j | :t :s  ]
+                        | :d (Cns:0) [ :j | :n | :n :j ] | :g (Cns:0) :ŋ | :k (Cns:0) [ :n :k ] ]
+                (Cns:0)  :r :s :j :t ] ] - [ [d t [ s | j]] | b b | d d | g g | k [ s | t | t j | t s ] ]];
+ LowerG1   = (Cns:0)   LCnsPhon ;
+ LowerG12  = [ LowerG1 | LowerG2 ] ;
 
 
 
