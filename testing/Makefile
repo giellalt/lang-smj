@@ -423,9 +423,9 @@ savefile:
 
 TWOLC = twolc -utf8
 TYPE = pos
-FILE =
 FILEPOS = twol-pos.in
 FILENEG = twol-neg.in
+FILE = $(FILEPOS)
 
 twol-extract: ../src/twol-smj.txt
 	@echo
