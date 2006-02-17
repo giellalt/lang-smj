@@ -307,7 +307,26 @@ LEXICON Cc
 ! Numerals
 ! ========
 
-LEXICON Numeral
+
+
+LEXICON Numeral					!^N^
+!MILJON ;          ! a noun of its own		!^N^
+UNDERDUHAT ;      ! for generator under 1000	!^N^
+!JUSTDUHAT ;       ! going via 1000		!^N^
+!OVERDUHAT ;       ! for generator over 1000	!^N^
+!OLD ;             ! for "thirteen hundred, etc.	!^N^
+!num-ordinal ;     ! The basic ordinal numbers	!^N^!Integrated in card.
+!num-derived ;    ! still unimplemented		!^N^
+!num-imprecise ;   ! still almost unimplemented	!^N^
+ARABIC ;          ! for the arabic numerals	!^C^
+ROMAN ;           ! for the roman numerals	!^C^
+NUM-PREFIXES ;    ! for §34 etc.		!^C^
+ISOLATED-NUMEXP ; ! for ½ etc.			!^C^
+
+
+
+
+LEXICON UNDERDUHAT
 
 akta AKTA ;
 guokta GUOKTA ;
@@ -415,3 +434,289 @@ håj	INTERJ ;
 ge	INTERJ ;
 fuoj	INTERJ ;
 vuoj	INTERJ ;
+
+
+
+! Arabic numerals
+! ---------------
+
+
+LEXICON NUM-PREFIXES				!^C^
+§	ARABIC ;      ! §24			!^C^
+§§	ARABIC ;     ! §§24			!^C^
+§% 	ARABIC ;    ! § 24			!^C^
+§§% 	ARABIC ;   ! §§ 24			!^C^
+%-	ARABIC ;     ! -24			!^C^
+%‒	ARABIC ;     ! -24 U+2012 Figure line	!^C^
+%–	ARABIC ;     ! -24 U+2013 en dash	!^C^
+%—	ARABIC ;     ! -24 U+2014 em dash	!^C^
+%―	ARABIC ;     ! -24 U+2015 horizontal l	!^C^
+%+	ARABIC ;     ! +24			!^C^
+%-% 	ARABIC ;	! - 24			!^C^
+%‒% 	ARABIC ;	! - 24 2012		!^C^
+%–% 	ARABIC ;	! - 24 2013	 	!^C^
+%—% 	ARABIC ;	! - 24 2014		!^C^
+%―% 	ARABIC ;	! - 24 2015 		!^C^
+%+% 	ARABIC ;	! + 24			!^C^
+%*	ARABIC ;     ! *24			!^C^
+%$	ARABIC ;     ! $24  ! And the Euro?	!^C^
+%<	ARABIC ;     ! <24			!^C^
+%>	ARABIC ;     ! >24			!^C^
+s%.	ARABIC ;     ! s.24			!^C^
+	
+
+
+LEXICON ARABIC					!^C^
+1 ARABICLOOP ;					!^C^
+2 ARABICLOOP ;					!^C^
+3 ARABICLOOP ;					!^C^
+4 ARABICLOOP ;					!^C^
+5 ARABICLOOP ;					!^C^
+6 ARABICLOOP ;					!^C^
+7 ARABICLOOP ;					!^C^
+8 ARABICLOOP ;					!^C^
+9 ARABICLOOP ;					!^C^
+%0 ARABICLOOP ;					!^C^
+
+LEXICON ARABICLOOP				!^C^
+ARABIC ;					!^C^
+%-	ARABIC ;	      ! 1-2    multipart numbers	!^C^
+%.%- 	ARABIC ;	      ! 1.-2   multipart numbers	!^C^
+%-% 	ARABIC ;	      ! 1- 2   multipart numbers	!^C^
+% %-	ARABIC ;	      ! 1 -2   multipart numbers	!^C^
+% %-% 	ARABIC ;	      ! 1 - 2  multipart numbers	!^C^
+% %-%-%   ARABIC ;	      ! 1 -- 2 multipart numbers	!^C^
+% %-      ARABICDELIMITER ;   ! 1 -   multipart numbers		!^C^
+% %-%-	  ARABICDELIMITER ;   ! 1 --  multipart numbers		!^C^
+%. ARABIC ;							!^C^
+%, ARABIC ;							!^C^
+%: ARABIC ;							!^C^
+%  ARABIC ;	   ! Allowing for "23 500".			!^C^
+%/ ARABIC ;	   ! 24/12					!^C^
+!%' ARABIC ;	   ! Since ' denotes cons.grad. This is not optimal either. 
+!+Num:%- R ; !^C^	   ! Number compounds
++Num: R ; !^C^	   ! Hyphen removed bec. of "123- ja 124-viessu" !^C^
++Num+Ord:%. # ;							 !^C^
+,%-+Num:,%- # ;		! 10,-					 !^C^
+%%+Num+Nom:%% # ;	! 50%. It is wrong, but 75 % of us write "75%".		!^C^
+% %%+Num+Nom:% %% # ;	! We must analyse the correct ones as well... 50 % etc.	!^C^
++Num: ARABICDELIMITER ; ! list of number-case delimiters			!^C^
+
+
+LEXICON ARABICDELIMITER								!^C^
+  ARABICCASE ;      ! This is the 1984s case.					!^C^
+ :%: ARABICCASE ;    ! This is the 1984:s case.					!^C^
+ :%' ARABICCASE ;    ! This is the 1984's case.					!^C^
+ :%- ARABICCASE ;    ! This is the 1984-s case.					!^C^
+                     ! So, what does the lg council prefer?			
+
+LEXICON ARABICCASE								!^C^
++Nom:f # ;		! s. 123f.						!^C^
++Nom:ff # ;		! s. 123ff.						!^C^
++Nom:b # ;		! § 123b						!^C^
++Nom:c # ;		! § 123c						!^C^
++Nom:d # ;		! § 123d						!^C^
++Nom:e # ;		! § 123e						!^C^
+! # ;		! 123 is now 123+Num as well as 123+Num+Nom etc. Out again!	!^C^
++Nom: # ;									!^C^
++Gen: # ;									!^C^
++Acc: # ;									!^C^
++Gen:a # ;	! But here 123a 123+Num+Gen					!^C^
++Acc:a # ;									!^C^
++Ill:i # ;									!^C^
++Ill:ij # ;									!^C^
++Ill:áj # ;	! Testing over the weekend.					!^C^
++Loc:s # ;									!^C^
++Loc:is # ;									!^C^
++Loc:as # ;									!^C^
++Com:in # ;									!^C^
++Com:ain # ;									!^C^
++Ess:n # ;									!^C^
++Ess:an # ;									!^C^
+! No plural numbers, hmm.
+
+
+! The Roman numerals !
+! ------------------ !
+
+LEXICON ROMAN						!^C^
+ ROM-THOUSAND ;						!^C^
+ ROM-HUNDRED ;						!^C^
+ ROM-TEN ;						!^C^
+ ROM-ONE ;						!^C^
+
+LEXICON ROM-THOUSAND              !^C^
+ M ROM-THOUSAND-TAG ;						!^C^
+ MM ROM-THOUSAND-TAG ;					!^C^
+ MMM ROM-THOUSAND-TAG ;					!^C^
+ MMMM ROM-THOUSAND-TAG ;					!^C^
+ MMMMM ROM-THOUSAND-TAG ;					!^C^
+
+LEXICON ROM-THOUSAND-TAG					!^C^
+ +Num: ROMNUMTAG ;						!^C^
+ ROM-HUNDRED ;					!^C^
+ ROM-SPLIT	;				!^C^
+
+LEXICON ROM-HUNDRED					!^C^
+ C ROM-HUNDRED-TAG ;						!^C^
+ CC ROM-HUNDRED-TAG ;						!^C^
+ CCC ROM-HUNDRED-TAG ;						!^C^
+ CD ROM-HUNDRED-TAG ;						!^C^
+ D ROM-HUNDRED-TAG ;						!^C^
+ DC ROM-HUNDRED-TAG ;						!^C^
+ DCC ROM-HUNDRED-TAG ;						!^C^
+ DCCC ROM-HUNDRED-TAG ;						!^C^
+ CM ROM-HUNDRED-TAG ;						!^C^
+
+LEXICON ROM-HUNDRED-TAG					!^C^
+ +Num: ROMNUMTAG ;						!^C^
+ ROM-TEN ;					!^C^
+ ROM-SPLIT ;					!^C^
+
+LEXICON ROM-TEN						!^C^
+ X ROM-TEN-TAG ;						!^C^
+ XX ROM-TEN-TAG ;						!^C^
+ XXX ROM-TEN-TAG ;						!^C^
+ XL ROM-TEN-TAG ;						!^C^
+ L ROM-TEN-TAG ;						!^C^
+ LX ROM-TEN-TAG ;						!^C^
+ LXX ROM-TEN-TAG ;						!^C^
+ LXXX ROM-TEN-TAG ;						!^C^
+ XC ROM-TEN-TAG ;						!^C^
+
+LEXICON ROM-TEN-TAG					!^C^
+ +Num: ROMNUMTAG ;						!^C^
+ ROM-ONE ;						!^C^
+ ROM-SPLIT ;						!^C^
+
+LEXICON ROM-ONE						!^C^
+ I ROM-ONE-TAG ;						!^C^
+ II ROM-ONE-TAG ;						!^C^
+ III ROM-ONE-TAG ;						!^C^
+ IV  ROM-ONE-TAG ;						!^C^
+ V ROM-ONE-TAG ;						!^C^
+ VI ROM-ONE-TAG ;						!^C^
+ VII ROM-ONE-TAG ;						!^C^
+ VIII ROM-ONE-TAG ;						!^C^
+ IX ROM-ONE-TAG ;						!^C^
+
+LEXICON ROM-ONE-TAG					!^C^
+ +Num: ROMNUMTAG ;						!^C^
+ +N: ROMNUMTAG ;						!^C^ !The Olav viđeš fix (V gets N tag)
+ ROM-SPLIT ;						!^C^
+
+! Here, we split the Roman numerals, in order to account for cases like "Kapihtal II-IV".
+! We may send this first part directly to ROM-TAG below (and get the +Num tag), or we may
+! send them through a second loop, identical to the first one, but marked wit "2" (the lexica
+! are called 2ROMAN, etc. We do this instead of making a loop, since we do not want cases
+! like "II-IV-VI-VII-IX". If that should turn out to be a good idea, a loop would do the 
+! trick.
+
+LEXICON ROM-SPLIT					!^C^
+ :%- 2ROMAN ; ! II-VI, etc.				!^C^
+
+
+! Here goes loop 2.
+
+LEXICON 2ROMAN						!^C^
+ 2ROM-THOUSAND ;						!^C^
+ 2ROM-HUNDRED ;						!^C^
+ 2ROM-TEN ;						!^C^
+ 2ROM-ONE ;						!^C^
+
+LEXICON 2ROM-THOUSAND              !^C^
+ M 2ROM-THOUSAND-TAG ;						!^C^
+ MM 2ROM-THOUSAND-TAG ;					!^C^
+ MMM 2ROM-THOUSAND-TAG ;					!^C^
+ MMMM 2ROM-THOUSAND-TAG ;					!^C^
+ MMMMM 2ROM-THOUSAND-TAG ;					!^C^
+
+LEXICON 2ROM-THOUSAND-TAG					!^C^
+ +Num: ROMNUMTAG ;						!^C^
+ 2ROM-HUNDRED ;					!^C^
+
+LEXICON 2ROM-HUNDRED					!^C^
+ C 2ROM-HUNDRED-TAG ;						!^C^
+ CC 2ROM-HUNDRED-TAG ;						!^C^
+ CCC 2ROM-HUNDRED-TAG ;						!^C^
+ CD 2ROM-HUNDRED-TAG ;						!^C^
+ D 2ROM-HUNDRED-TAG ;						!^C^
+ DC 2ROM-HUNDRED-TAG ;						!^C^
+ DCC 2ROM-HUNDRED-TAG ;						!^C^
+ DCCC 2ROM-HUNDRED-TAG ;						!^C^
+ CM 2ROM-HUNDRED-TAG ;						!^C^
+
+LEXICON 2ROM-HUNDRED-TAG					!^C^
+ +Num: ROMNUMTAG ;						!^C^
+ 2ROM-TEN ;					!^C^
+
+LEXICON 2ROM-TEN						!^C^
+ X 2ROM-TEN-TAG ;						!^C^
+ XX 2ROM-TEN-TAG ;						!^C^
+ XXX 2ROM-TEN-TAG ;						!^C^
+ XL 2ROM-TEN-TAG ;						!^C^
+ L 2ROM-TEN-TAG ;						!^C^
+ LX 2ROM-TEN-TAG ;						!^C^
+ LXX 2ROM-TEN-TAG ;						!^C^
+ LXXX 2ROM-TEN-TAG ;						!^C^
+ XC 2ROM-TEN-TAG ;						!^C^
+
+LEXICON 2ROM-TEN-TAG					!^C^
+ +Num: ROMNUMTAG ;					!^C^
+ 2ROM-ONE ;					!^C^
+
+LEXICON 2ROM-ONE						!^C^
+ I 2ROM-ONE-TAG ;						!^C^
+ II 2ROM-ONE-TAG ;						!^C^
+ III 2ROM-ONE-TAG ;						!^C^
+ IV  2ROM-ONE-TAG ;						!^C^
+ V 2ROM-ONE-TAG ;						!^C^
+ VI 2ROM-ONE-TAG ;						!^C^
+ VII 2ROM-ONE-TAG ;						!^C^
+ VIII 2ROM-ONE-TAG ;						!^C^
+ IX 2ROM-ONE-TAG ;						!^C^
+
+LEXICON 2ROM-ONE-TAG						!^C^
+ +Num: ROMNUMTAG ;						!^C^
+ 
+LEXICON ROMNUMTAG 						!^C^
++Nom: # ;									!^C^
++Gen: # ;									!^C^
++Acc: # ;									!^C^
+ :%: ROMNUMTAGOBL ;						!^C^
+ :%' ROMNUMTAGOBL ;						!^C^
+ :%- ROMNUMTAGOBL ;						!^C^
+ :%´ ROMNUMTAGOBL ;						!^C^
+     ROMNUMTAGOBL ;						!^C^
+
+LEXICON ROMNUMTAGOBL 						!^C^
++Gen:a # ;	! But here 123a 123+Num+Gen					!^C^
++Acc:a # ;									!^C^
++Ill:i # ;									!^C^
++Ill:ij # ;									!^C^
++Ill:áj # ;					!^C^
++Loc:s # ;									!^C^
++Com:in # ;									!^C^
++Ess:n # ;									!^C^
+
+
+
+
+! A final section with some isolated numeral expresssions !
+! ------------------------------------------------------- !
+
+      
+LEXICON ISOLATED-NUMEXP					!^C^
+½+Num:½ # ;						!^C^
+¹+Num:¹ # ;						!^C^
+²+Num:² # ;						!^C^
+³+Num:³ # ;						!^C^
+¼+Num:¼ # ;						!^C^
+
+
+
+
+
+
+
+
