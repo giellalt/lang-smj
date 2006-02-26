@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN"
+"http://forrest.apache.org/dtd/document-v20.dtd">
+<document xml:lang="en">
+  <header>
+    <title>Test diary</title>
+  </header>
+
+  <body>
+    <section>
+      <title>Test results for the morphology and lexicon files</title>
+
+<p>This document contains test results for the Lule Sámi parser. We
+will move to an automatic test regime, but while waiting, the first
+initial steps will be documented here.</p>
+
+<section><title>Test results for the lexicon</title>
+
+          <p>The following table records recall for word forms in various
+          texts. Here we measure coverage of the vocabulary, by recording all
+          word forms that are not recognised.</p>
+
+          <source>---------------------------------------------------
+zcorp/gt/smj/bible/nt/lule_sami_new_testament.html.xml
+         Token recall testing      Type recall testing
+----------------------------------------------------------------------
+Test 1   lex Wf-total Wf-tkn %-recall  Tytot  Wf-typ %-recall
+060226 17723   135662   108573   80,0 %  13289    8952   67,4 % <= More Kintel
+060222         135662    82748   70,0 %  13289    2195   16,5 % <= First Kintel import
+060124  3368   135662    75018   55,3 %  13289    2084   15,6 % <= Still no lexicon
+-------------------------------------------------------------------------
+</source>
+
+            <p>Lower token than type percentage indicates that the
+            parser misses common words more often than seldom
+            ones. Lower type than token percentage (which is the case)
+            indicates that the parser is good at the core vocabulary,
+            but has lower coverage of more seldom words.</p>
+
+            <p>Each text is given a separate section in the table,
+            ordered chronologically, with the oldest test case (Test
+            1) at the bottom.  The first line of each section gives
+            the name of the file. Each line represents a test run. The
+            first colum gives the test date (in the format ddmmyy),
+            the second (WFtot) the total number of words in the file
+            question, the third (Wf-tkn) the number of recognised word
+            form tokens, and the percentage compared to the total. The
+            next columns does the same for wordform types (cf. below
+            for the commands used to calculate the numbers).</p>
+
+<p>Test 1 does not cover proper nouns, as they are not added to the
+lexicon yet. The commands used to get the numbers are:</p>
+
+<dl>
+<dt>The file command (below referred to as <em>ccat file</em></dt>
+<dd>ccat zcorp/gt/smj/bible/nt/lule_sami_new_testament.html.xml | ...</dd>
+<dt>Wftot (total number of wordform types)</dt>
+<dd>ccat file | preprocess | grep -v '^[A-Z]' | wc -l</dd>
+
+<dt>Wf-tkn (total number of wordform tokens)</dt>
+<dd>Wftot - Non_recognised_wf</dd>
+
+<dt>Non_recognised_wf:</dt>
+<dd>ccat file | preprocess | lookup -flags mbTT -utf8 bin/smj.fst | grep '\?' | grep -v CLB | wc -l</dd>
+
+<dt>Wf-tkn =</dt>
+<dd>Wftot - Non_recognised_wf</dd>
+
+</dt>%-recall = </dt>
+<dd>Wf-tkn * 100 / Wftot</dd>
+
+<dt>Tytot (Total number of wordform types):</dt>
+<dd>ccat file | preprocess | grep -v '^[A-Z]' | sort | uniq | wc -l</dd>
+
+<dt>Non_recognised_wt (Number of non-analysed wordform types:</dt>
+<dd>ccat file | preprocess | sort | uniq |lookup -flags mbTT -utf8 bin/smj.fst | grep '\?' | grep -v CLB | wc -l</dd>
+
+<dt>Wf-typ (Number of recognised wordform types) =</dt>
+<dd>Tytot - Non_recognised_wt</dd>
+
+<dt>%-recall = </dt><dd>Wf-typ * 100 / Tytot</dd>
+</dl>
+
+
+      </section>
+    </section>
+
+    <p class="last_modified">Last modified $Date$, by
+    $Author$</p>
+  </body>
+</document>
