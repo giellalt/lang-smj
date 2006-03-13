@@ -25,6 +25,7 @@ zcorp/gt/smj/bible/nt/lule_sami_new_testament.html.xml
          Token recall testing      Type recall testing
 ----------------------------------------------------------------------
 Test 1   lex Wf-total   Wf-tkn  %-recall Tytot  Wf-typ %-recall
+060228 19742   135662   131212   96,7 %  13289   11831   89,0 % ← 978 inc missing.
 060228 18307   135662   125367   92,4 %  13289   11385   85,7 % ← More rare words.
 060227 17997   135662   123368   90,1 %  13289    9938   74,8 % ← More Kintel, äöŋ fix
 060226 17723   135662   108573   80,0 %  13289    8952   67,4 % ← More Kintel
@@ -63,7 +64,7 @@ lexicon yet. The commands used to get the numbers are:</p>
 <dd>Wftot - Non_recognised_wf</dd>
 
 <dt>Non_recognised_wf:</dt>
-<dd>ccat file | preprocess | lookup -flags mbTT -utf8 bin/smj.fst | grep '\?' | grep -v CLB | wc -l</dd>
+<dd>ccat zcorp/gt/smj/bible/nt/lule_sami_new_testament.html.xml | preprocess | grep -v '^[A-Z]' | lookup -flags mbTT -utf8 bin/smj.fst | grep '\?' | grep '[a-z]' | wc -l</dd>
 
 <dt>Wf-tkn =</dt>
 <dd>Wftot - Non_recognised_wf</dd>
