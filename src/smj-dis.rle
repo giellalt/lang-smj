@@ -31,6 +31,7 @@ LIST Adv = Adv ;
 LIST V = V ;
 
 LIST Pron = Pron ;
+LIST Prop = Prop ;
 LIST CS = CS ;
 LIST CC = CC ;
 LIST Adp = Adp ;
@@ -45,6 +46,7 @@ LIST Refl = Refl ;
 LIST Recipr = Recipr ;
 LIST Rel = Rel ;
 LIST Indef = Indef ;
+LIST Num = Num ;
 
 LIST Sg = Sg ;
 LIST Pl = Pl ;
@@ -60,6 +62,7 @@ LIST Ess = Ess ;
 LIST Par = Par ;
 LIST Abe = Abe ;
 
+LIST Sur = Sur ; LIST Mal = Mal ; LIST Fem = Fem ; LIST Plc = Plc ; LIST Ani = Ani ; LIST Org = Org ; LIST Obj = Obj ;
 LIST SgCmp = SgCmp ;
 LIST SgNomCmp = SgNomCmp ;
 LIST SgGenCmp = SgGenCmp ;
@@ -228,16 +231,24 @@ LIST Der/stával = Der/stával ;
 LIST Der/agák = Der/agák ;
 LIST Der/jagák = Der/jagák ;
 
+LIST COMMA = "," ;
 
+SETS
+
+LIST WORD = N A Adv V Pron CS CC Adp Po Pr Interj Pcle Pers Dem Interr Refl Recipr Rel Indef ;
+
+SET NOT-A = WORD - A ;
 
 CONSTRAINTS
 
-SELECT ConNeg IF (-1 Neg) ;
-	## Iv jållåra.
 
+# Cycle 0
+
+# Cycle 1
+
+# Subject-verb
 SELECT (V Sg2) IF (-1 (Pron Sg2)) ;
 	## Dån jållåra.	
-
 REMOVE Dem IF (0 (Pron Pers Sg2))(1 (V Sg2));
 	## Dån jållåra.
 REMOVE (Imprt Sg2) IF (-1 (Pron Pers Sg2))(0 (Ind Prs Sg2));
@@ -259,11 +270,82 @@ SELECT Du2 IF (0 (Pron Pers Du2 Nom))(1 (V Du2));
 SELECT Pl1 IF (0 (Pron Pers Pl1 Nom))(1 (V Pl1));
 SELECT Pl2 IF (0 (Pron Pers Pl2 Nom))(1 (V Pl2));
 
+
+# Neg - ConNeg
+SELECT ConNeg IF (-1 Neg) ;
+	## Iv jållåra.
+
+SELECT (Imprt ConNeg) IF (-1 (Neg Imprt));
+SELECT (Ind ConNeg) IF (-1 (Neg Prt) OR (Neg Prs));
+SELECT (Neg Imprt) IF (1 (Imprt ConNeg));
+
+
+# Attr pre-N
+
+SELECT Attr IF (0 (Prop Attr))(1 Mal OR Fem OR Sur);
+	## Jesus Kristus
+
+REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NOT *1 N BARRIER NOT-A);
+
+# Gen in Spec
+REMOVE (Pl Nom) IF (0 Prop)(*1 N BARRIER NOT-A);
+
+# Gen before Po
+
+SELECT Gen IF (1C Po);
+	## Profehta baktu.
+
+# Rel or Interr
+
+REMOVE Interr IF (NOT -1 BOS)(0 Rel);
+REMOVE Interr IF (NOT -2 BOS)(-1 CC OR COMMA)(0 Rel);
+REMOVE Interr IF (NOT -3 BOS)(-2 COMMA)(-1 CC)(0 Rel);
+
+REMOVE Rel IF (*-1 BOS BARRIER N OR Pron OR Num OR A);
+
+
 # Specific words
 # ==============
 
 SELECT Adv IF (0 ("åvddål"))(1 CS) ;
 	## åvddål gå lij bárnes.
+
+
+
+# Cycle 2
+
+# Case disambiguation
+
+# N Sg Gen = N Pl Nom
+# N Sg Nom = N Sg Gen = N Pl Nom (cases without CG)
+# N Pl Gen = N Pl Com
+# N Pl Gen = N Pl Com = N Sg Ill
+# Pron Pers ... Gen = Pron Pers ... Acc
+# N Sg Ela = N Sg Acc PxSg3 = N Sg Gen PxSg3
+# N Sg Ine = N Ess (cases without CG)
+
+#POS homonymy:
+# Pron Interr = Pron Rel
+# Adv Po
+
+#Verb homonymy:
+# V TV Ind Prs Pl3 = V TV Ind Prt Sg2
+# Adv = V Neg Prs Sg3 (the verb 'ij')
+# V TV Ind ConNeg = V TV Imprt ConNeg = V TV VGen = V TV Imprt Sg2 = V TV Ind Prs Sg2
+#  V TV Inf = V* TV Actor N Sg {Gen/Nom/Acc} PxSg2
+# V Pot = V Prs Pl3
+
+#Adjective homonymy:
+# A Attr = A Sg Nom
+
+
+# NP-Internal
+
+# Cycle 3
+
+# Objects
+
+#Adverbials
 
 
 
