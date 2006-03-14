@@ -4,13 +4,28 @@
 # =================================================================== #
 # =================================================================== #
 
+            # =========================================== #
+            #            Short table of contents          #
+            # =========================================== #
+
+            # Delimiters
+            # Tags and sets
+	        # Mapping rules
+            # Disambiguation rules
+              # One-cohort disambiguation - cycle 0
+              # Local disambiguation - cycles 1 and 2
+              # Cycle 2: Other local disambiguation         
+              # Cycle 3: Global disambiguation 
+	          # Cycle 4: Syntactic disambiguation 
+	          # Cycle 5: Post-syntactic morphological disambiguation
+
 
 # ========== #
 # Delimiters #
 # ========== #
 
 
-DELIMITERS = "<.>" "<!>" "<?>" "<¶>";
+DELIMITERS = "<.>" "<!>" "<?>" "<...>" "<¶>";
 
 
 
@@ -25,31 +40,27 @@ DELIMITERS = "<.>" "<!>" "<?>" "<¶>";
 
 LIST BOS = (>>>) (<s>); LIST EOS = (<<<) (</s>); # vislcg and CG-2 together.
 
-LIST N = N ;
-LIST A = A ;
-LIST Adv = Adv ;
-LIST V = V ;
+# Tags declared as single-membered LISTs 
+# ======================================
+# Parts of speech
+# ---------------
 
-LIST Pron = Pron ;
-LIST Prop = Prop ;
-LIST CS = CS ;
-LIST CC = CC ;
-LIST Adp = Adp ;
-LIST Po = Po ;
-LIST Pr = Pr ;
-LIST Interj = Interj ;
-LIST Pcle = Pcle ;
-LIST Pers = Pers ;
-LIST Dem = Dem ;
-LIST Interr = Interr ;
-LIST Refl = Refl ;
-LIST Recipr = Recipr ;
-LIST Rel = Rel ;
-LIST Indef = Indef ;
-LIST Num = Num ;
+LIST N = N ; LIST A = A ; LIST Adv = Adv ; LIST V = V ;
 
-LIST Sg = Sg ;
-LIST Pl = Pl ;
+
+# POS sub-categories
+# ------------------
+
+LIST Pron = Pron ; LIST Prop = Prop ; LIST CS = CS ; LIST CC = CC ;
+LIST Po = Po ; LIST Pr = Pr ; LIST Interj = Interj ; LIST Pcle = Pcle ;
+ LIST Pers = Pers ; LIST Dem = Dem ; LIST Interr = Interr ; LIST Refl = Refl ;
+ LIST Recipr = Recipr ; LIST Rel = Rel ; LIST Indef = Indef ; LIST Num = Num ;
+
+
+# Morphosyntactic properties
+# --------------------------
+
+LIST Sg = Sg ; LIST Pl = Pl ;
 
 LIST Nom = Nom ;
 LIST Gen = Gen ;
@@ -62,7 +73,6 @@ LIST Ess = Ess ;
 LIST Par = Par ;
 LIST Abe = Abe ;
 
-LIST Sur = Sur ; LIST Mal = Mal ; LIST Fem = Fem ; LIST Plc = Plc ; LIST Ani = Ani ; LIST Org = Org ; LIST Obj = Obj ;
 LIST SgCmp = SgCmp ;
 LIST SgNomCmp = SgNomCmp ;
 LIST SgGenCmp = SgGenCmp ;
@@ -123,6 +133,11 @@ LIST CLB = CLB ;
 LIST PUNCT = PUNCT ;
 LIST HYPH = HYPH ;
 LIST PAR = PAR ;
+
+
+# Derivation
+# ----------
+
 
 LIST Der/r = Der/r ;
 LIST Der/d = Der/d ;
@@ -231,26 +246,252 @@ LIST Der/stával = Der/stával ;
 LIST Der/agák = Der/agák ;
 LIST Der/jagák = Der/jagák ;
 
+
+
+
+# Syntactic tags
+# --------------
+
+LIST @+FAUXV = @+FAUXV ; LIST @+FMAINV = @+FMAINV ; LIST @-FAUXV = @-FAUXV ; 
+LIST @-FMAINV = @-FMAINV ; LIST @-FSUBJ = @-FSUBJ ; 
+
+LIST @ADV-A = @ADV-A ; LIST @ADV-ADV = @ADV-ADV ; LIST @ADVL = @ADVL ; 
+
+LIST @AN> = @AN> ; LIST @ActioN> = @ActioN> ; LIST @CC = @CC ; LIST @CMPND = @CMPND ; LIST @CS = @CS ; 
+LIST @DN> = @DN> ; LIST @GA> = @GA> ; LIST @GN> = @GN> ; LIST @GP< = @GP< ; LIST @GP> = @GP> ; 
+LIST @HNOUN = @HNOUN ; LIST @INTERJ = @INTERJ ; LIST @MEASURE = @MEASURE ; 
+LIST @NNum> = @NNum>; LIST @NumN< = @NumN<;
+LIST @NPron< = @NPron< ;
+LIST @NQ< = @NQ< ;  LIST @NUM-PRON = @NUM-PRON ; #LIST @NUMBER = @NUMBER ;
+LIST @OBJ = @OBJ ; 
+LIST @OPRED = @OPRED ; LIST @PCLE = @PCLE ; LIST @PCLE-COMPL = @PCLE-COMPL ; LIST @PROP> = @PROP> ; 
+LIST @PrcN> = @PrcN> ; LIST @PronN< = @PronN< ; LIST @PronN> = @PronN> ;  LIST @QN< = @QN< ; 
+LIST @QN> = @QN> ; LIST @SPRED = @SPRED ; LIST @SUBJ = @SUBJ ; LIST @SUBJ-QH = @SUBJ-QH ; 
+
+
+LIST @TITLE = @TITLE ; LIST @VOC = @VOC ; LIST @X = @X ;
+
+# Semantic tags
+# -------------
+
+LIST Ani = Ani ; LIST Fem = Fem ; LIST Mal = Mal ;
+LIST Obj = Obj ; List Org = Org ; LIST Plc = Plc ;
+LIST Sur = Sur ; LIST Tit = Tit ;
+
+# Other tags
+# ----------
+
 LIST COMMA = "," ;
 
-SETS
+
+
+# Single-word sets
+# ----------------
+# Initials
+# --------
+# Tag sets
+# ========
+   SETS
+# ========
 
 LIST WORD = N A Adv V Pron CS CC Adp Po Pr Interj Pcle Pers Dem Interr Refl Recipr Rel Indef ;
 
 SET NOT-A = WORD - A ;
+SET NOT-ADV = WORD - Adv ;
 
-CONSTRAINTS
+
+# Case sets
+# ---------
+# Noun sets
+# ---------
+# Verb sets
+# ---------
+# Finiteness and mood
+# - - - - - - - - - -
+
+SET V-IND-FIN = Prs | Prt ; # Problem: "In boahtán" is an invisible indicative
+
+SET V-MOOD = Ind | Pot | Imprt | Cond ;
+
+SET VFIN = V-MOOD - ConNeg ;
+
+SET VFIN-POS = V-MOOD - ConNeg - Neg ;
+
+SET VFIN-NOT-IMP = VFIN - Imprt ;
+
+# Person
+# - - - - 
+
+LIST V-SG1 = (V  Ind Prs Sg1) (V Ind Prt Sg1) (V Cond Prs Sg1) 
+             (V Cond Prt Sg1) (V Pot Prs Sg1) (V  Neg Ind Sg1); 
+LIST V-SG2 = (V  Ind Prs Sg2) (V Ind Prt Sg2) (V Cond Prs Sg2) 
+             (V Cond Prt Sg2) (V Pot Prs Sg2) (V  Neg Ind Sg2); 
+LIST V-SG3 = (V  Ind Prs Sg3) (V Ind Prt Sg3) (V Cond Prs Sg3) 
+             (V Cond Prt Sg3) (V Pot Prs Sg3) (V  Neg Ind Sg3); 
+LIST V-DU1 = (V  Ind Prs Du1) (V Ind Prt Du1) (V Cond Prs Du1) 
+	     (V Cond Prt Du1) (V Pot Prs Du1) (V  Neg Ind Du1); 
+LIST V-DU2 = (V  Ind Prs Du2) (V Ind Prt Du2) (V Cond Prs Du2) 
+	     (V Cond Prt Du2) (V Pot Prs Du2) (V  Neg Ind Du2); 
+LIST V-DU3 = (V  Ind Prs Du3) (V Ind Prt Du3) (V Cond Prs Du3) 
+	     (V Cond Prt Du3) (V Pot Prs Du3) (V  Neg Ind Du3); 
+LIST V-PL1 = (V  Ind Prs Pl1) (V Ind Prt Pl1) (V Cond Prs Pl1) 
+             (V Cond Prt Pl1) (V Pot Prs Pl1) (V  Neg Ind Pl1); 
+LIST V-PL2 = (V  Ind Prs Pl2) (V Ind Prt Pl2) (V Cond Prs Pl2) 
+             (V Cond Prt Pl2) (V Pot Prs Pl2) (V  Neg Ind Pl2); 
+LIST V-PL3 = (V  Ind Prs Pl3) (V Ind Prt Pl3) (V Cond Prs Pl3) 
+             (V Cond Prt Pl3) (V Pot Prs Pl3) (V  Neg Ind Pl3); 
+
+ # Note that imperative verbs are not included in these sets!
 
 
-# Cycle 0
+# Some subsets of the VFIN sets
+# - - - - - - - - - - - - - - -
 
-# Cycle 1
+SET V-DU = V-DU1 | V-DU2 | V-DU3 ;
+SET V-PL = V-PL1 | V-PL2 | V-PL3 ;
+
+SET V-DU-PL = V-DU1 | V-DU2 | V-DU3 | V-PL1 | V-PL2 | V-PL3 ;
+
+SET V-NOT-SG1 = VFIN-NOT-IMP - V-SG1 ;
+
+SET V-NOT-SG3 = V-SG1 | V-SG2 | V-DU1 | V-DU2 | V-DU3 |
+                V-PL1 | V-PL2 | V-PL3 ;
+
+SET V-1-2 = V-SG1 | V-SG2 | V-DU1 | V-DU2 | V-PL1 | V-PL2 ;
+SET V-3   = V-SG3 | V-DU3 | V-PL3 ;
+
+# Some subsets of the VFIN sets
+# - - - - - - - - - - - - - - -
+# Sets consisting of forms of "leat" (these ones need to be rewritten)
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Pronoun sets
+# ------------
+# Adjectival sets and their complements
+# -------------------------------------
+# Adverbial sets and their complements
+# ------------------------------------
+# Sets for adverbs that have lookalikes
+# - - - - - - - - - - - - - - - - - - -
+# Sets of elements with common syntactic behaviour
+# ================================================
+# VERBS
+# -----
+# Sets for verbs choosing oblique objects or adverbials
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# Other verb sets
+# - - - - - - - -
+# NOUNS
+# -----
+# NP sets defined according to their morphosyntactic features
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# The PRE-NP-HEAD family of sets
+# - - - - - - - - - - - - - - - -
+# Other negatively defined sets
+# - - - - - - - - - - - - - - -
+# Nominal sets defined according to their lexical properties
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Miscellaneous sets
+# ------------------
+# Border sets and their complements
+# ---------------------------------
+# Syntactic sets
+# --------------
+
+
+# ============= #
+# ============= #
+# Mapping rules #
+# ============= #
+# ============= #
+    MAPPINGS    #
+# ============= #
+
+
+
+
+# Mappings of minor categories
+# ----------------------------
+# Determiner mappings
+# -------------------
+# Attribute mappings
+# ------------------
+# Genitive mappings
+# -----------------
+# Quantifier mappings
+# -------------------
+# Fragment mappings
+# -----------------
+# Verb mappings
+# -------------
+# Complements of particles in comparison
+# --------------------------------------
+# Other special nominative mappings
+# ---------------------------------
+# Arguments and secondary predicates
+# ----------------------------------
+# Adverbial mappings
+# ------------------
+# Default mapping
+# ---------------
+
+
+
+# ==================== #
+# ==================== #
+# Disambiguation rules #
+# ==================== #
+# ==================== #
+
+
+# Rough outline of the plan.
+# 0 same cohort
+# 1 neighbour, early (1-2)
+# subj-vfin in that order
+# neg-conneg, in that order
+# 
+# 2 close, later
+# the bulk here, ordered according to POS
+# 3 everywhere, late
+
+ 
+# =================================== #
+# One-cohort disambiguation - cycle 0 #
+# =================================== #
+             CONSTRAINTS              #
+# =================================== #
+
+    # ----------------- #
+    # Table of Contents #
+    # ----------------- #
+
+
+
+
+
+# ===================================== #
+# Local disambiguation - cycles 1 and 2 #
+# ===================================== #
+# --------------------------------------------------------- #
+# Cycle 1a: cases that will be needed in careful mode later #
+# --------------------------------------------------------- #
+                 CONSTRAINTS
+# --------------------------------------------------------- #
+
+
+# ---------------------------------------------------------------- #
+# Cycle 1b: removing the readings that were left from the 1a rules #
+# ---------------------------------------------------------------- #
+              CONSTRAINTS
+# ---------------------------------------------------------------- #
 
 # Subject-verb
-SELECT (V Sg2) IF (-1 (Pron Sg2)) ;
-	## Dån jållåra.	
+
+SELECT (V Sg2) IF (*-1 (Pron Sg2) BARRIER NOT-ADV) ;
+	## Dån jållåra. Ahte dån farga jållårå.
+		
 REMOVE Dem IF (0 (Pron Pers Sg2))(1 (V Sg2));
 	## Dån jållåra.
+	
 REMOVE (Imprt Sg2) IF (-1 (Pron Pers Sg2))(0 (Ind Prs Sg2));
 	## Dån jållåra.
 
@@ -311,15 +552,100 @@ SELECT Adv IF (0 ("åvddål"))(1 CS) ;
 	## åvddål gå lij bárnes.
 
 
+# -------------------------------------------- #
+# Cycle 2: Other cases of local disambiguation #
+# -------------------------------------------- #
+             CONSTRAINTS
+# -------------------------------------------- #
 
-# Cycle 2
+# ============ #
+# Noun or not? #
+# ============ #
+# ====================== #
+# Adjectives and adverbs #
+# ====================== #
+# ========================== #
+# Disambiguating clitics     #
+# ========================== #
+# ========================== #
+# Disambiguating numerals    #
+# ========================== #
+# ========================== #
+# Disambiguating adpositions #
+# ========================== #
+
+SELECT Po IF (-1 Gen)(NOT *1 Gen BARRIER Attr OR CLB OR V OR CC OR CS);
+    ## Nåv li buolva Abrahama fájes Davida rádjáj.
+    
+# =========================== #
+# Disambiguating subjunctions #
+# =========================== #
+# =========================== #
+
+
+# ====================== #
+# Disambiguating adverbs #
+# ====================== #
+# ====================== #
+
+
+# ======================= #
+# Disambiguating pronouns #
+# ======================= #
+
+
+# Personal pronouns
+
+# Genitive Sg = Accusative Sg for personal pronouns.
+# Accusative vs. Genitive
+# =======================
+
+# Accusative is unique (-v), with one notable exception:
+# Accusative = genitive for personal pronouns (big issue)
+
+SELECT Gen IF (*-1 BOS BARRIER NOT-ADV)(0 (Pron Pers))(*1 N BARRIER NOT-A);
+    ## Muv niejdda le jur jábmám.
+    
+SELECT Gen if (NOT *-1 TV)(0 (Pron Pers))(1 Po);
+    ## Go sijddasis jåvsådij, di bådijga tjalmedime suv åvddåj.     
+
+
+# =================================== #
+# Interrogative and relative pronouns #
+# =================================== #
+
+SELECT Gen IF (0 Rel)(*1 N BARRIER NOT-A LINK *1 V-SG3);
+
+
+
+# =========== #
+# Numerals
+# ========
+# ========================= #
+# Disambiguating adjectives #
+# ========================= #
+# ========================= #
+# Rules related to specific adjectives
+# ====================================
+# ============================= #
+# Disambiguating verbs - part 1 #
+# ============================= #
+# ============================= #
+# In this cycle we apply some safe verb rules.
+# ConNeg forms
+# ------------
+# Need more advanced rule to select ConNeg when there is more
+# material between Neg and ConNeg.
+# Imperative
+# ----------
+# Infinitive
+# ----------
+# ==================== #
+# Disambiguating nouns #
+# ==================== #
 
 # Case disambiguation
 
-# N Sg Gen = N Pl Nom
-# N Sg Nom = N Sg Gen = N Pl Nom (cases without CG)
-# N Pl Gen = N Pl Com
-# N Pl Gen = N Pl Com = N Sg Ill
 # Pron Pers ... Gen = Pron Pers ... Acc
 # N Sg Ela = N Sg Acc PxSg3 = N Sg Gen PxSg3
 # N Sg Ine = N Ess (cases without CG)
@@ -328,7 +654,58 @@ SELECT Adv IF (0 ("åvddål"))(1 CS) ;
 # Pron Interr = Pron Rel
 # Adv Po
 
-#Verb homonymy:
+# ==================== #
+# Proper nouns
+# ============
+# Prop or not
+# -----------
+# Nouns versus adjectives
+# =======================
+# Nouns vs. verbs
+# ======================
+# Case disambiguation
+# ===================
+
+# Nominative
+# ==========
+
+#REMOVE Gen IF (1 COMMA OR CC)(NOT 2 Gen);
+
+# Genitive
+# ========
+
+# N Sg Gen = N Pl Nom
+# -------------------
+
+SELECT (Sg Gen) IF (*-1 (Dem Sg Gen) BARRIER NOT-A);
+    ## Dat lij dan ájgge gå álmmugav vuolgadin Babylonaj.
+    
+SELECT (Sg Gen) IF (0 Prop)(1 N LINK NOT 0 Prop);
+    ## Josef la Maria ålmåj.
+        
+# N Sg Nom = N Sg Gen = N Pl Nom (cases without CG)
+# N Pl Gen = N Pl Com
+# N Pl Gen = N Pl Com = N Sg Ill
+
+
+
+# Illative
+# ========
+
+# "<Isakij>"  Pl Com = Sg Ill = Pl Gen
+
+
+
+
+
+# ============================= #
+# Disambiguating verbs - part 1 #
+# ============================= #
+             CONSTRAINTS        #
+# ============================= #
+
+# In this cycle we apply some safe verb rules.
+
 # V TV Ind Prs Pl3 = V TV Ind Prt Sg2
 # Adv = V Neg Prs Sg3 (the verb 'ij')
 # V TV Ind ConNeg = V TV Imprt ConNeg = V TV VGen = V TV Imprt Sg2 = V TV Ind Prs Sg2
