@@ -53,8 +53,8 @@ LIST N = N ; LIST A = A ; LIST Adv = Adv ; LIST V = V ;
 
 LIST Pron = Pron ; LIST Prop = Prop ; LIST CS = CS ; LIST CC = CC ;
 LIST Po = Po ; LIST Pr = Pr ; LIST Interj = Interj ; LIST Pcle = Pcle ;
- LIST Pers = Pers ; LIST Dem = Dem ; LIST Interr = Interr ; LIST Refl = Refl ;
- LIST Recipr = Recipr ; LIST Rel = Rel ; LIST Indef = Indef ; LIST Num = Num ;
+LIST Pers = Pers ; LIST Dem = Dem ; LIST Interr = Interr ; LIST Refl = Refl ;
+LIST Recipr = Recipr ; LIST Rel = Rel ; LIST Indef = Indef ; LIST Num = Num ;
 
 
 # Morphosyntactic properties
@@ -215,9 +215,6 @@ LIST COMMA = "," ;
 
 LIST WORD = N A Adv V Pron CS CC Adp Po Pr Interj Pcle Pers Dem Interr Refl Recipr Rel Indef ;
 
-SET NOT-A = WORD - A ;
-SET NOT-ADV = WORD - Adv ;
-SET NOT-ADV-PCLE = WORD - Adv - Pcle ;
 
 # Case sets
 # ---------
@@ -294,18 +291,51 @@ SET V-3   = V-SG3 | V-DU3 | V-PL3 ;
 # -----
 # Sets for verbs choosing oblique objects or adverbials
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+#LIST INE-VERB =
+#LIST COM-VERB = 
+
+LIST ILL-VERB = "riegádit" ;
+
+
 # Other verb sets
 # - - - - - - - -
+
+LIST INF-VERB = "liehket" "galggat" "máhttet" "oadtjot" "sihtat" ;
+
 # NOUNS
 # -----
 # NP sets defined according to their morphosyntactic features
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 # The PRE-NP-HEAD family of sets
 # - - - - - - - - - - - - - - - -
+SET PRE-NP-HEAD = (Prop Attr) | (Prop @PROP>) | A | (Pron Pers Gen) | (N Gen) | Num | Cmpnd | CC |
+                  (Pron Dem)  | (Pron Refl Gen) | (Pron Indef) | PrfPrc | PrsPrc ;
+SET NP-MEMBER   = PRE-NP-HEAD | N ;
+
+# There must be a sensible naming convention for these sets...
+SET NPNH = WORD - PRE-NP-HEAD ;#| ABBR ;     # NPNH = "NOT-PRE-NP-HEAD". 
+SET NPNHA = WORD - PRE-NP-HEAD - Adv ;     # NPNHA = "NOT (PRE-NP-HEAD-OR-ADV)"
+
+# Not at all sure that we need the following four:
+SET NPNHAI = WORD - PRE-NP-HEAD - Adv - Indef ; # NPNHAI " "...-OR-INDEF"
+SET NPNHAII = WORD - PRE-NP-HEAD - Adv - Indef - Ill ; # Illative indir.obj.
+SET NPNHAIIP = WORD - PRE-NP-HEAD - Adv - Indef - Ill - Pcle ;
+SET NPNHC = WORD - PRE-NP-HEAD - Com ; # "njaŋggofirpmiiguin bivdin"
+
 # Other negatively defined sets
 # - - - - - - - - - - - - - - -
+
+SET NOT-A = WORD - A ;
+SET NOT-ADV = WORD - Adv ;
+SET NOT-ADV-PCLE = WORD - Adv - Pcle ;
+
+
 # Nominal sets defined according to their lexical properties
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+
 # Miscellaneous sets
 # ------------------
 # Border sets and their complements
@@ -345,6 +375,10 @@ SET V-3   = V-SG3 | V-DU3 | V-PL3 ;
 # ---------------------------------
 # Arguments and secondary predicates
 # ----------------------------------
+
+MAP (@OBJ) TARGET Acc ;
+
+
 # Adverbial mappings
 # ------------------
 # Default mapping
@@ -442,7 +476,8 @@ SELECT (Neg Imprt) IF (1 (Imprt ConNeg));
 SELECT Attr IF (0 (Prop Attr))(1 Mal OR Fem OR Sur);
 	## Jesus Kristus
 
-REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NOT *1 N BARRIER NOT-A);
+REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NOT 1 N);
+REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NOT 1 A LINK *1 N BARRIER NOT-A);
 
 # Gen in Spec
 REMOVE (Pl Nom) IF (0 Prop)(*1 N BARRIER NOT-A);
@@ -512,6 +547,10 @@ SELECT Po IF (-1 Gen)(NOT *1 Gen BARRIER Attr OR CLB OR V OR CC OR CS);
 
 # Personal pronouns
 
+SELECT (Sg2) IF (0 (Pron Pers))(*1 (V Sg2) BARRIER N);
+	## Ja dån dal muv luse boadá.
+
+
 # Genitive Sg = Accusative Sg for personal pronouns.
 # Accusative vs. Genitive
 # =======================
@@ -522,7 +561,8 @@ SELECT Po IF (-1 Gen)(NOT *1 Gen BARRIER Attr OR CLB OR V OR CC OR CS);
 SELECT Gen IF (*-1 BOS OR CLB BARRIER NOT-ADV)(0 (Pron Pers))(*1 N BARRIER NOT-A);
     ## Muv niejdda le jur jábmám.
     
-SELECT Gen IF (NOT *-1 TV)(0 (Pron Pers))(1 Po);
+SELECT Gen IF (NOT *-1 TV BARRIER CLB OR CS)(0 (Pron Pers))(1 Po OR N);
+SELECT Gen IF (NOT *-1 TV BARRIER CLB OR CS)(0 (Pron Pers))(1 A LINK *1 N BARRIER NPNH);
     ## Go sijddasis jåvsådij, di bådijga tjalmedime suv åvddåj.     
 
 SELECT Acc IF (-1 ("liehket"))(0 (Pron Pers))(1 TV);
@@ -564,6 +604,11 @@ SELECT Gen IF (0 Rel)(*1 N BARRIER NOT-A LINK *1 V-SG3);
 # ----------
 # Infinitive
 # ----------
+# Inf or Imprt Pl2 or Der of different sorts.
+
+SELECT Inf IF (*-1 INF-VERB);#BARRIER
+
+
 # ==================== #
 # Disambiguating nouns #
 # ==================== #
@@ -632,6 +677,9 @@ SELECT (Sg Gen) IF (-1 Gen)(0C N)(1 COMMA)(*2 N BARRIER NOT-A);
 
 # "<Isakij>"  Pl Com = Sg Ill = Pl Gen
 
+SELECT Ill IF (1 ILL-VERB LINK 1 Nom BARRIER NPNH);
+
+
 
 
 
@@ -642,6 +690,16 @@ SELECT (Sg Gen) IF (-1 Gen)(0C N)(1 COMMA)(*2 N BARRIER NOT-A);
              CONSTRAINTS        #
 # ============================= #
 
+# Person
+# ======
+
+# Copula
+
+SELECT Sg2 IF (*-1 (Pron Pers Sg2) BARRIER N);
+SELECT Sg3 IF (*-1 (Pron Pers Sg3) BARRIER N);
+SELECT Pl3 IF (*-1 (Pron Pers Pl3) BARRIER N);
+
+SELECT Sg3 IF (*-1 (N Sg Nom) BARRIER NOT-ADV);
 
 # PrfPrc
 # =======
