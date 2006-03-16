@@ -410,6 +410,8 @@ MAP (@OBJ) TARGET Acc ;
              CONSTRAINTS              #
 # =================================== #
 
+# This is for cases using the same cohort only.
+
     # ----------------- #
     # Table of Contents #
     # ----------------- #
@@ -427,12 +429,112 @@ MAP (@OBJ) TARGET Acc ;
                  CONSTRAINTS
 # --------------------------------------------------------- #
 
+# Possessive suffix
 
+# PxSg1
+#   V* TV Pass V PrfPrc          = V* TV Pass V* Actor N Sg Gen PxSg1
+# = V* TV Pass V* Actio N Sg Nom = V* TV Pass V* Actor N Sg Acc PxSg1 
+# = V* TV Pass V* Actor N Sg Nom PxSg1
+
+# PxSg2
+# V TV Inf = V* TV Actor N Sg Gen PxSg2 = V* TV Actor N Sg Nom PxSg2
+#          = V* TV Actor N Sg Acc PxSg2 
+
+# PxSg3
+# N Sg Ela = N Sg Acc PxSg3 = N Sg Gen PxSg3 ( = N Sg Nom PxSg3)
+ 
+        
 # ---------------------------------------------------------------- #
 # Cycle 1b: removing the readings that were left from the 1a rules #
 # ---------------------------------------------------------------- #
               CONSTRAINTS
 # ---------------------------------------------------------------- #
+
+# 1b is for finishing off the 1a leftovers.
+
+
+
+# -------------------------------------------- #
+# Cycle 2: Other cases of local disambiguation #
+# -------------------------------------------- #
+             CONSTRAINTS
+# -------------------------------------------- #
+
+
+
+# ImprtII
+# -------
+
+SELECT (ImprtII ConNeg Sg2) IF (*-1 (Neg ImprtII Sg2));
+    ## Allu då dån tjállu!
+SELECT (ImprtII ConNeg Sg3) IF (*-1 (Neg ImprtII Sg3));
+    ## Allus tjále!
+
+SELECT (ImprtII ConNeg Du1) IF (*-1 (Neg ImprtII Du1));
+    ## Allun   tjále!                          
+SELECT (ImprtII ConNeg Du2) IF (*-1 (Neg ImprtII Du2));
+    ## Alluda då dåj tjállu!                          
+SELECT (ImprtII ConNeg Du3) IF (*-1 (Neg ImprtII Du3));
+    ## Alluska   tjále!                          
+                                                      
+SELECT (ImprtII ConNeg Pl1) IF (*-1 (Neg ImprtII Pl1));    
+    ## Allup  tjále!                              
+SELECT (ImprtII ConNeg Pl2) IF (*-1 (Neg ImprtII Pl2));    
+    ## Allut dij tjállu!                              
+SELECT (ImprtII ConNeg Pl3) IF (*-1 (Neg ImprtII Pl3));    
+    ## Allusa  tjále!
+
+# In case of poetry; Make sure that no Neg ImprtII is found to the right (!)
+SELECT (ImprtII ConNeg Sg2) IF (*1 (Neg ImprtII Sg2) LINK *1 EOS BARRIER (ImprtII ConNeg));
+SELECT (ImprtII ConNeg Sg3) IF (*1 (Neg ImprtII Sg3) LINK *1 EOS BARRIER (ImprtII ConNeg));
+SELECT (ImprtII ConNeg Du1) IF (*1 (Neg ImprtII Du1) LINK *1 EOS BARRIER (ImprtII ConNeg));
+SELECT (ImprtII ConNeg Du2) IF (*1 (Neg ImprtII Du2) LINK *1 EOS BARRIER (ImprtII ConNeg));
+SELECT (ImprtII ConNeg Du3) IF (*1 (Neg ImprtII Du3) LINK *1 EOS BARRIER (ImprtII ConNeg));
+SELECT (ImprtII ConNeg Pl1) IF (*1 (Neg ImprtII Pl1) LINK *1 EOS BARRIER (ImprtII ConNeg));    
+SELECT (ImprtII ConNeg Pl2) IF (*1 (Neg ImprtII Pl2) LINK *1 EOS BARRIER (ImprtII ConNeg));    
+SELECT (ImprtII ConNeg Pl3) IF (*1 (Neg ImprtII Pl3) LINK *1 EOS BARRIER (ImprtII ConNeg));    
+
+CONSTRAINTS
+
+REMOVE (ImprtII ConNeg);
+
+
+# Neg forms
+# ---------
+
+SELECT Neg IF (1 ConNeg);
+    ## I galga Härrav
+
+
+# ConNeg forms
+# ------------
+
+# V Ind ConNeg = V Imprt ConNeg = V VGen = V Imprt Sg2 = V Ind Prs Sg2
+ 
+SELECT (Imprt ConNeg) IF (*-1 (Neg Imprt) BARRIER VFIN OR ConNeg OR CS);
+
+
+SELECT ConNeg IF (*-1 Neg BARRIER ConNeg);
+	## Iv jållåra.
+    ## Jubmel le aktidam, ij almasj galga tjuolldet.
+
+# SELECT (Ind ConNeg) IF (*-1 (Neg Ind) BARRIER VFIN OR ConNeg OR PrfPrc OR CS OR CP)
+# 	(NOT 0 N LINK *1 ConNeg BARRIER NOT-ADV-PCLE) <= noun lookalike
+# 	(NOT 0 Loc LINK -1 (Neg Foc) LINK -1 Loc);    <= locative lookalike
+	
+SELECT (Imprt ConNeg) IF (-1 (Neg Imprt));
+SELECT (Ind ConNeg) IF (-1 (Neg Prt) OR (Neg Prs));
+SELECT (Neg Imprt) IF (1 (Imprt ConNeg));
+
+# No Neg, no ConNeg.
+REMOVE ConNeg IF (*-1 BOS OR CLB LINK *1 CLB BARRIER Neg); 
+#REMOVE ConNeg IF (NOT *-1 Neg BARRIER CLB)(NOT *1 Neg BARRIER CLB);      
+
+#bos clb    ij   conneg  clb  ... *conneg .. clb eos         
+#clb obj , neg (kooridinerer) obj conneg   => conneg ok
+
+
+CONSTRAINTS
 
 # Subject-verb
 
@@ -461,14 +563,6 @@ SELECT Du2 IF (0 (Pron Pers Du2 Nom))(1 (V Du2));
 SELECT Pl1 IF (0 (Pron Pers Pl1 Nom))(1 (V Pl1));
 SELECT Pl2 IF (0 (Pron Pers Pl2 Nom))(1 (V Pl2));
 
-
-# Neg - ConNeg
-SELECT ConNeg IF (-1 Neg) ;
-	## Iv jållåra.
-
-SELECT (Imprt ConNeg) IF (-1 (Neg Imprt));
-SELECT (Ind ConNeg) IF (-1 (Neg Prt) OR (Neg Prs));
-SELECT (Neg Imprt) IF (1 (Imprt ConNeg));
 
 
 # Attr pre-N
@@ -501,14 +595,8 @@ REMOVE Rel IF (*-1 BOS BARRIER N OR Pron OR Num OR A);
 
 SELECT Adv IF (0 ("åvddål"))(1 CS) ;
 	## åvddål gå lij bárnes.
-
-
-# -------------------------------------------- #
-# Cycle 2: Other cases of local disambiguation #
-# -------------------------------------------- #
-             CONSTRAINTS
-# -------------------------------------------- #
-
+	
+	
 # ============ #
 # Noun or not? #
 # ============ #
@@ -616,11 +704,6 @@ SELECT Inf IF (*-1 INF-VERB);#BARRIER
 # ==================== #
 
 
-# Case disambiguation
-# ===================
-# Pron Pers ... Gen = Pron Pers ... Acc
-# N Sg Ela = N Sg Acc PxSg3 = N Sg Gen PxSg3
-# N Sg Ine = N Ess (cases without CG)
 
 #POS homonymy:
 # Pron Interr = Pron Rel
@@ -635,11 +718,22 @@ SELECT Inf IF (*-1 INF-VERB);#BARRIER
 # =======================
 # Nouns vs. verbs
 # ======================
+
+
+# ===== #
+# Nouns #
+# ===== #
+
+
 # Case disambiguation
 # ===================
 
+
 # Nominative
 # ==========
+
+# Nom Sg = Gen Sg if no CG
+# Nom Pl = Gen Sg systematically, cf. under Genitive below.
 
 #REMOVE Gen IF (1 COMMA OR CC)(NOT 2 Gen);
 
@@ -675,11 +769,18 @@ SELECT (Sg Gen) IF (-1 Gen)(0C N)(1 COMMA)(*2 N BARRIER NOT-A);
 # Illative
 # ========
 
-# "<Isakij>"  Pl Com = Sg Ill = Pl Gen
+# Sg Ill = Pl Com =  Pl Gen (if no CG)
 
 SELECT Ill IF (1 ILL-VERB LINK 1 Nom BARRIER NPNH);
 
+# Inessive
+# ========
+# N Sg Ine = N Ess if no CG
 
+# Elative
+# ======= 
+
+# N Sg Ela = N Sg Acc PxSg3 = N Sg Gen PxSg3
 
 
 
@@ -698,8 +799,18 @@ SELECT Ill IF (1 ILL-VERB LINK 1 Nom BARRIER NPNH);
 SELECT Sg2 IF (*-1 (Pron Pers Sg2) BARRIER N);
 SELECT Sg3 IF (*-1 (Pron Pers Sg3) BARRIER N);
 SELECT Pl3 IF (*-1 (Pron Pers Pl3) BARRIER N);
+    ## Sij le jåhtemin.
 
-SELECT Sg3 IF (*-1 (N Sg Nom) BARRIER NOT-ADV);
+SELECT Pl3 IF (*-1C (N Pl Nom) BARRIER (Pron Pers Sg2 Nom) OR  (Pron Pers Sg3 Nom)
+    OR (N Sg Nom));
+
+    
+SELECT Pl3 IF (*-1 (N Sg Nom) BARRIER (Pron Pers Sg2 Nom) OR  (Pron Pers Sg3 Nom)
+    OR (N Sg Nom) LINK *-1 CC BARRIER NPNH LINK -1 (N Sg Nom));
+    ## Anne ja Berit le jåhtemin.
+    
+REMOVE Sg2 IF (*-1 (N Sg Nom) OR (Rel Sg Nom) BARRIER (Pron Pers Sg2 Nom))(NOT 0 Neg);
+REMOVE Pl3 IF (*-1 (N Sg Nom) LINK NOT *-1 CC BARRIER NPNH LINK -1 (N Sg Nom));
 
 # PrfPrc
 # =======
@@ -727,4 +838,80 @@ SELECT PrfPrc IF (-1 BOS)(*1 ("liehket") BARRIER NOT-ADV-PCLE) ;
 
 # Adverbials
 
+# ============================= #
+# Disambiguating verbs - part 2 #
+# ============================= #
+             CONSTRAINTS        #
+# ============================= #
+
+        # Finite forms
+        # Indicative or imperative
+        # Verbs according to person and number
+        # Rules for a special infinitive construction
+        # More finite verbs
+        # Passive
+        # Non-finite verb forms
+            # Infinitive
+            # Present Participle
+            # Actio/Perfect Participle
+            # Imperative II (empty)
+            # Verbgenitive
+        # Selecting some more finite verbs
+        # Lexical disambiguation of verbs
+    # Residual cases
+        # Case rules
+        # Other rules for nouns and pronouns
+        # Px rules
+        # Determiners
+        # Adverbs and adjectives
+
+# Verbs according to person and number
+# ====================================
+
+# First person singular - Sg1
+# ---------------------------
+    # just ambiguity with respect to difference in derivational affixes and
+    # possessive suffixes in deverbal nouns
+
+# Second person singular - Sg2
+# ----------------------------
+    # Prt Sg2 = Prs Pl3
+    # V TV ImprtII Sg2 = V TV ImprtII ConNeg Sg2 ?
+    # V TV ImprtII ConNeg Pl2 = V* TV Pass V VGen = V* TV Pass V Ind Prs Sg2 
+    # = V* TV Pass V Ind ConNeg = V* TV Pass V Ind Prs Sg3 ?
+    # bále = V TV Imprt Sg2 = N Pl Nom = V TV Imprt ConNeg = N Sg Gen 
+    # = V TV Ind ConNeg = V TV VGen
+    # homonymy with derived verbs
+    
+#SELECT (V Sg2) IF (*-
+
+# Third person singular - Sg3
+# ---------------------------
+    # 
+
+# First person dual - Du1
+# -----------------------
+    # Prs Du1 = Prt Pl3 "bårråt" "juhkat"
+    # Prt Du1 = Prt Pl1
+    # Imprt Du1 = N Ess ("mujttet" - "mujtto")
+
+# Second person dual - Du2
+# ------------------------
+    # Prt Du2 = Prt Pl2
+    
+# Third person dual - Du3
+# -----------------------
+
+# First person plural - Pl1
+# -------------------------
+    # Prt Pl1 = Prt Du1
+
+# Second person plural - Pl2
+# --------------------------
+     # Prt Pl2 =  Prt Du2
+
+# Third person plural - Pl3
+# -------------------------
+    # Prt Pl3 = Prs Du1
+    # Prt Sg2 = Prs Pl3
 
