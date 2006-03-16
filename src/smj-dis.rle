@@ -154,6 +154,26 @@ LIST Der/vuohta = Der/vuohta ; LIST Der/vájmuk = Der/vájmuk ;
 LIST Der/ájvukDer/såjak = Der/ájvukDer/såjak ;
 LIST Der/åjvak = Der/åjvak ; LIST Der/åsak = Der/åsak ;
 
+# Single-word sets
+# ----------------
+ 
+LIST COMMA = "," ; LIST ¶ = ¶;
+
+
+# Adverbial sets and their complements
+# ------------------------------------
+
+LIST MO = "gåsi" ;
+
+# Miscellaneous sets
+# ------------------
+
+SET REALCLB = CLB - COMMA ;
+
+# Border sets and their complements
+# ---------------------------------
+
+SET CP = (Pron Interr) | (Pron Rel) | MO ;
 
 
 
@@ -189,13 +209,6 @@ LIST @TITLE = @TITLE ; LIST @VOC = @VOC ; LIST @X = @X ;
 LIST Ani = Ani ; LIST Fem = Fem ; LIST Mal = Mal ;
 LIST Obj = Obj ; List Org = Org ; LIST Plc = Plc ;
 LIST Sur = Sur ; LIST Tit = Tit ;
-
-# Other tags
-# ----------
-
-LIST COMMA = "," ;
-
-
 
 
 
@@ -440,6 +453,19 @@ MAP (@OBJ) TARGET Acc ;
 # V TV Inf = V* TV Actor N Sg Gen PxSg2 = V* TV Actor N Sg Nom PxSg2
 #          = V* TV Actor N Sg Acc PxSg2 
 
+# PxSg1
+#   V* TV Pass V PrfPrc          = V* TV Pass V* Actor N Sg Gen PxSg1
+# = V* TV Pass V* Actio N Sg Nom = V* TV Pass V* Actor N Sg Acc PxSg1 
+# = V* TV Pass V* Actor N Sg Nom PxSg1
+
+# PxSg2
+# V TV Inf = V* TV Actor N Sg Gen PxSg2 = V* TV Actor N Sg Nom PxSg2
+#          = V* TV Actor N Sg Acc PxSg2 
+
+# PxSg3
+# N Sg Ela = N Sg Acc PxSg3 = N Sg Gen PxSg3 ( = N Sg Nom PxSg3)
+ 
+        
 # PxSg3
 # N Sg Ela = N Sg Acc PxSg3 = N Sg Gen PxSg3 ( = N Sg Nom PxSg3)
  
@@ -449,6 +475,91 @@ MAP (@OBJ) TARGET Acc ;
 # ---------------------------------------------------------------- #
               CONSTRAINTS
 # ---------------------------------------------------------------- #
+
+
+# 1b is for finishing off the 1a leftovers.
+
+
+
+# -------------------------------------------- #
+# Cycle 2: Other cases of local disambiguation #
+# -------------------------------------------- #
+             CONSTRAINTS
+# -------------------------------------------- #
+
+# ImprtII
+# -------
+
+SELECT (ImprtII ConNeg Sg2) IF (*-1 (Neg ImprtII Sg2));
+    ## Allu då dån tjállu!
+SELECT (ImprtII ConNeg Sg3) IF (*-1 (Neg ImprtII Sg3));
+    ## Allus tjále!
+
+SELECT (ImprtII ConNeg Du1) IF (*-1 (Neg ImprtII Du1));
+    ## Allun   tjále!                          
+SELECT (ImprtII ConNeg Du2) IF (*-1 (Neg ImprtII Du2));
+    ## Alluda då dåj tjállu!                          
+SELECT (ImprtII ConNeg Du3) IF (*-1 (Neg ImprtII Du3));
+    ## Alluska   tjále!                          
+                                                      
+SELECT (ImprtII ConNeg Pl1) IF (*-1 (Neg ImprtII Pl1));    
+    ## Allup  tjále!                              
+SELECT (ImprtII ConNeg Pl2) IF (*-1 (Neg ImprtII Pl2));    
+    ## Allut dij tjállu!                              
+SELECT (ImprtII ConNeg Pl3) IF (*-1 (Neg ImprtII Pl3));    
+    ## Allusa  tjále!
+
+# In case of poetry; Make sure that no Neg ImprtII is found to the right (!)
+SELECT (ImprtII ConNeg Sg2) IF (*1 (Neg ImprtII Sg2) LINK *1 EOS BARRIER (ImprtII ConNeg));
+SELECT (ImprtII ConNeg Sg3) IF (*1 (Neg ImprtII Sg3) LINK *1 EOS BARRIER (ImprtII ConNeg));
+SELECT (ImprtII ConNeg Du1) IF (*1 (Neg ImprtII Du1) LINK *1 EOS BARRIER (ImprtII ConNeg));
+SELECT (ImprtII ConNeg Du2) IF (*1 (Neg ImprtII Du2) LINK *1 EOS BARRIER (ImprtII ConNeg));
+SELECT (ImprtII ConNeg Du3) IF (*1 (Neg ImprtII Du3) LINK *1 EOS BARRIER (ImprtII ConNeg));
+SELECT (ImprtII ConNeg Pl1) IF (*1 (Neg ImprtII Pl1) LINK *1 EOS BARRIER (ImprtII ConNeg));    
+SELECT (ImprtII ConNeg Pl2) IF (*1 (Neg ImprtII Pl2) LINK *1 EOS BARRIER (ImprtII ConNeg));    
+SELECT (ImprtII ConNeg Pl3) IF (*1 (Neg ImprtII Pl3) LINK *1 EOS BARRIER (ImprtII ConNeg));    
+
+CONSTRAINTS
+
+REMOVE (ImprtII ConNeg);
+
+
+# Neg forms
+# ---------
+
+SELECT Neg IF (1 ConNeg);
+    ## I galga Härrav
+
+
+# ConNeg forms
+# ------------
+
+# V Ind ConNeg = V Imprt ConNeg = V VGen = V Imprt Sg2 = V Ind Prs Sg2
+ 
+SELECT (Imprt ConNeg) IF (*-1 (Neg Imprt) BARRIER VFIN OR ConNeg OR CS);
+
+
+SELECT ConNeg IF (*-1 Neg BARRIER ConNeg);
+	## Iv jållåra.
+    ## Jubmel le aktidam, ij almasj galga tjuolldet.
+
+# SELECT (Ind ConNeg) IF (*-1 (Neg Ind) BARRIER VFIN OR ConNeg OR PrfPrc OR CS OR CP)
+# 	(NOT 0 N LINK *1 ConNeg BARRIER NOT-ADV-PCLE) <= noun lookalike
+# 	(NOT 0 Loc LINK -1 (Neg Foc) LINK -1 Loc);    <= locative lookalike
+	
+SELECT (Imprt ConNeg) IF (-1 (Neg Imprt));
+SELECT (Ind ConNeg) IF (-1 (Neg Prt) OR (Neg Prs));
+SELECT (Neg Imprt) IF (1 (Imprt ConNeg));
+
+# No Neg, no ConNeg.
+REMOVE ConNeg IF (*-1 BOS OR CLB LINK *1 CLB BARRIER Neg); 
+#REMOVE ConNeg IF (NOT *-1 Neg BARRIER CLB)(NOT *1 Neg BARRIER CLB);      
+
+#bos clb    ij   conneg  clb  ... *conneg .. clb eos         
+#clb obj , neg (kooridinerer) obj conneg   => conneg ok
+
+
+CONSTRAINTS
 
 # 1b is for finishing off the 1a leftovers.
 
@@ -535,6 +646,7 @@ REMOVE ConNeg IF (*-1 BOS OR CLB LINK *1 CLB BARRIER Neg);
 
 
 CONSTRAINTS
+
 
 # Subject-verb
 
@@ -773,6 +885,7 @@ SELECT (Sg Gen) IF (-1 Gen)(0C N)(1 COMMA)(*2 N BARRIER NOT-A);
 
 SELECT Ill IF (1 ILL-VERB LINK 1 Nom BARRIER NPNH);
 
+
 # Inessive
 # ========
 # N Sg Ine = N Ess if no CG
@@ -780,7 +893,18 @@ SELECT Ill IF (1 ILL-VERB LINK 1 Nom BARRIER NPNH);
 # Elative
 # ======= 
 
+# Inessive
+# ========
+# N Sg Ine = N Ess if no CG
+
+
 # N Sg Ela = N Sg Acc PxSg3 = N Sg Gen PxSg3
+
+# Elative
+# ======= 
+
+# N Sg Ela = N Sg Acc PxSg3 = N Sg Gen PxSg3
+
 
 
 
@@ -825,6 +949,46 @@ SELECT PrfPrc IF (-1 BOS)(*1 ("liehket") BARRIER NOT-ADV-PCLE) ;
 # V TV Ind ConNeg = V TV Imprt ConNeg = V TV VGen = V TV Imprt Sg2 = V TV Ind Prs Sg2
 #  V TV Inf = V* TV Actor N Sg {Gen/Nom/Acc} PxSg2
 # V Pot = V Prs Pl3
+
+# Imperative
+# ----------
+
+    #  V TV Ind ConNeg=V TV Imprt ConNeg=V TV VGen=V TV Imprt Sg2
+    # = V TV Ind Prs Sg2
+ 
+    # V TV Ind ConNeg = V TV Imprt ConNeg = V TV VGen = V TV Imprt Sg2
+
+    # V* TV Actor N Sg Gen = V TV Imprt Du2 = V* TV Actor N Pl Nom
+    #= V* TV Actor N Sg Nom = V* TV Actor A Attr
+  
+    # V TV Inf = V TV Imprt Pl2
+  
+    # V TV Ind ConNeg = V TV Imprt ConNeg
+ 
+    # V* TV Pass V VGen = V* TV Pass V Ind Prs Sg3 = V* TV Pass V Ind ConNeg
+    #= V* TV Pass V Imprt Sg2 = V* TV Pass V Ind Prs Sg2 = V TV Ind Prs Sg3
+
+
+REMOVE Imprt IF (*-1C (Ind Neg) BARRIER CLB OR V-IND-FIN);
+    #Does not work yet but might work later
+REMOVE Imprt IF (*-1C ConNeg BARRIER VFIN OR COMMA OR CS OR CP);
+	## I galga Härráv, Jubmelat, gähttjalit. 
+
+
+#REMOVE Imprt IF (-1 N OR A OR Po);
+	#Imperative after N is possible 
+
+#REMOVE Imprt IF (*1C VFIN BARRIER NOT-ADV-PCLE OR CLB);
+	## Lágas ii duššaduvvo oktage bustávaš dahje čuoggáš, ovdal go...
+
+#REMOVE Imprt IF (*-1 (PUNCT LEFT) BARRIER (PUNCT RIGHT))(0 N);
+	## Láigolihtus eai čuovo makkárge sierravuoigatvuođat gáddái (buo.
+	## riehkit, stárat).
+
+SELECT Imprt IF (-1 BOS OR PUNCT OR REALCLB)(0 ("liehket"))(1 A);
+	## Leage buorre!
+
+
 
 #Adjective homonymy:
 # A Attr = A Sg Nom
