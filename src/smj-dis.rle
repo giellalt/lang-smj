@@ -236,7 +236,40 @@ LIST INITIAL =  "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m"
    SETS    #
 # ======== #
 
+
+
+
 LIST WORD = N A Adv V Pron CS CC Adp Po Pr Interj Pcle Pers Dem Interr Refl Recipr Rel Indef ; # any word
+
+
+# Derivational sets
+# -----------------
+# (Check these sets)
+
+LIST N-DER = +Der/vuohta +Der/lis +Der/mus +Der/dahka +Der/us +Der/ahkes ;
+
+LIST V-DER = +Der/r +Der/d +Der/dalla +Der/l +Der/st +Der/h
++Der/dahtte +Der/dasste +Der/stalla +Der/stahtte +Der/stasste
++Der/ladda +Der/lahtte +Der/lasste +Der/u/a/år +Der/ahtte +Der/alla
++Der/asste +Der/duvva +Der/duhtte ;
+
+LIST A-DER = +Der/dibme +Der/lasj +Der/lágásj +Der/lágán +Der/ahtes
++Der/juolgak +Der/luottak +Der/suttak +Der/uvsuk +Der/jienak
++Der/rattak +Der/hekkak +Der/åjvak +Der/belak +Der/sijduk +Der/giedak
++Der/gielak +Der/muoduk +Der/varák +Der/báguk +Der/nálak +Der/rabdak
++Der/rávak +Der/ájvuk+Der/såjak +Der/giesjkak +Der/bának +Der/njálmak
++Der/nierak +Der/merkak +Der/suorgak +Der/suorak +Der/gattsak
++Der/siejbak +Der/siejnak +Der/hájak +Der/habsak +Der/hápsak
++Der/hábjak +Der/sáv'vak +Der/namák +Der/lanják +Der/vuoduk +Der/hámak
++Der/linnjak +Der/lijkak +Der/dávtak +Der/tjårvak +Der/gietjak
++Der/bieljak +Der/tjuvdak +Der/dábak +Der/tjiegak +Der/gerdak
++Der/vuobdak +Der/uvsak +Der/ivnak +Der/ferjak +Der/bájnuk
++Der/luonduk +Der/dávdak +Der/jergak +Der/mielak +Der/jiermak
++Der/njunjak +Der/guovluk +Der/dáfuk +Der/vájmuk +Der/lahkak +Der/åsak
++Der/garák +Der/tjuolmak +Der/tjålak +Der/segak +Der/tjalmak
++Der/vigák +Der/girjak +Der/stával +Der/agák +Der/jagák ;
+
+
 
 # Case sets
 # ---------
@@ -254,7 +287,8 @@ LIST WORD = N A Adv V Pron CS CC Adp Po Pr Interj Pcle Pers Dem Interr Refl Reci
 LIST N-SG-NOM = (N Sg Nom); LIST N-PL-NOM = (N Pl Nom);
 LIST N-NOM = (N Nom) ; LIST N-GEN = (N Gen);
 
-#SET LEX-N = N - N-DER;
+SET LEX-N = N - N-DER;
+SET NOT-ACTOR = N - Actor ;
 
 LIST PROP = (N Prop);
 SET CNOUN = N - Prop;
@@ -263,8 +297,16 @@ SET HNOUN = N - Cmpnd ;
 SET HNOUN-NOM = (N Nom) - Cmpnd ;
 SET N-NOT-GEN = N - (N Gen) ;
 
+# Adjective sets
+# --------------
+
+SET LEX-A = A - A-DER;
+
 # Verb sets
 # ---------
+
+SET LEX-V = V - V-DER;
+
 # Finiteness and mood
 # - - - - - - - - - -
 
@@ -360,16 +402,16 @@ LIST A-CC = A CC ;
 
 SET NOT-ADJ = WORD - A ;
 SET NOT-Attr = WORD - Attr ;
-SET NOT-ADJ-PCLE = WORD - A - Pcle ;
-SET NOT-ADJ-CC = WORD - A-CC ;
-
 SET NOT-AA = WORD - A - Adv ;
 
-#LIST NOMINAL-ADJ = "guoktilaš" "lámis" "oasálaš" ("suddu" laš) "viissis"; 
- # and many others
 
 # Adverbial sets and their complements
 # ------------------------------------
+
+SET NOT-ADJ-PCLE = WORD - A - Pcle ;
+SET NOT-ADJ-CC = WORD - A-CC ;
+SET NOT-ADV = WORD - Adv ;
+SET NOT-ADV-PCLE = WORD - Adv - Pcle ;
 
 LIST MANNE = "gåsi" "goasse" "goassa" "goassis" "gåkku" "gånne" "gåste" "makkir" "makkár" "manne" "manen" "mannas" ;
 
@@ -453,6 +495,8 @@ LIST ILL-VERB = "riegádit" ;
 #LIST ACC-LOC-VERB
 #LIST ACC-ILL-VERB
 
+LIST ESS-VERB = "gåhttjot" ;
+
 
 # Other verb sets
 # - - - - - - - -
@@ -473,7 +517,7 @@ LIST INF-VERB = "liehket" "galggat" "máhttet" "oadtjot" "sihtat" ;
  # These verbs typically combine with place adverbials in the genitive case 
  # (i.e. not accusative).
 
-#LIST TOGETHER-VERB = "goallostuvvot" "beaškkehat" "bidjat" "čatnit" "suddat"  "heivet" "biddjojuvvot" "časkit" "geassit" "gullat" "rehkenastit" "ordnet" "soahpat" "gávnnadit" "heivehit" "čatnat" "doaibmat" "iskat" "laktit" "seaguhit";
+#LIST TOGETHER-VERB = "goallostuvvot" "beaškkehat" "bidjat" "ô ­atnit" "suddat"  "heivet" "biddjojuvvot" "ô ­askit" "geassit" "gullat" "rehkenastit" "ordnet" "soahpat" "gávnnadit" "heivehit" "ô ­atnat" "doaibmat" "iskat" "laktit" "seaguhit";
  # Danger: This list could be to long, in certain respects. 
  # TODO: Think of counter examples, i.e. sentences where we have these verbs, but
  # where oktii is not an adverbial.
@@ -507,14 +551,11 @@ SET NPNHA = WORD - PRE-NP-HEAD - Adv ;     # NPNHA = "NOT (PRE-NP-HEAD-OR-ADV)"
 SET NPNHAI = WORD - PRE-NP-HEAD - Adv - Indef ; # NPNHAI " "...-OR-INDEF"
 SET NPNHAII = WORD - PRE-NP-HEAD - Adv - Indef - Ill ; # Illative indir.obj.
 SET NPNHAIIP = WORD - PRE-NP-HEAD - Adv - Indef - Ill - Pcle ;
-SET NPNHC = WORD - PRE-NP-HEAD - Com ; # "njaŋggofirpmiiguin bivdin"
+SET NPNHC = WORD - PRE-NP-HEAD - Com ; # "njaô ëggofirpmiiguin bivdin"
 
 # Other negatively defined sets
 # - - - - - - - - - - - - - - -
 
-SET NOT-A = WORD - A ;
-SET NOT-ADV = WORD - Adv ;
-SET NOT-ADV-PCLE = WORD - Adv - Pcle ;
 SET NOT-N =  WORD - N ;
 SET NOT-NA = WORD - N - A ;
 SET NOT-NP = VFIN | ConNeg | Inf | Pcle | Interj | CS ; # The set NP-BORDER is bigger. 
@@ -523,31 +564,31 @@ SET NOT-NP = VFIN | ConNeg | Inf | Pcle | Interj | CS ; # The set NP-BORDER is b
 # Nominal sets defined according to their lexical properties
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-#LIST MANNU = "ođđa#jage#mánnu" "ođđa#jagi#mánnu" 
+#LIST MANNU = "oô ±ô ±a#jage#mánnu" "oô ±ô ±a#jagi#mánnu" 
 #             "guovva#mánnu" 
-#             "njukča#mánnu" "njuvčča#mánnu" "márs#mánnu" 
-#             "cuoŋo#mánnu" "cuoŋos#mánnu" "gáranas#mánnu" 
+#             "njukô ­a#mánnu" "njuvô ­ô ­a#mánnu" "márs#mánnu" 
+#             "cuoô ëo#mánnu" "cuoô ëos#mánnu" "gáranas#mánnu" 
 #             "miesse#mánnu" "mái#mánnu" 
 #             "geasse#mánnu" 
 #             "suoidne#mánnu" 
-#             "borge#mánnu" "šnjilča#mánnu" "šnjilža#mánnu" 
-#             "čakča#mánnu" 
+#             "borge#mánnu" "šnjilô ­a#mánnu" "šnjilô¡¾a#mánnu" 
+#             "ô ­akô ­a#mánnu" 
 #             "golggot#mánnu" 
 #             "skábma#mánnu" "november#mánnu" "ritne#mánnu" 
 #             "juovla#mánnu" ;
 #LIST AIGODAT = "áigodat" "stuoradigge#áigodat" "sámedigge#áigodat" 
-#              "guođohan#áigodat" "doaibma#áigodat" ;             
+#              "guoô ±ohan#áigodat" "doaibma#áigodat" ;             
 
-#LIST VAHKKU = "áigi" "beaivi" "jándor" "bodda" "čakča" "čakča#geassi" "čuohte#jahki" 
-#		"dálvi"	"diibmu" "dbm" "geardi" "geassi" "giđđa" "hávvi" "idja" "jahki" 
-#		"jahke#čuohti" "mánnu" "riegádan#beaivi" "tiibmu" "vahkku" jahki 
+#LIST VAHKKU = "áigi" "beaivi" "jándor" "bodda" "ô ­akô ­a" "ô ­akô ­a#geassi" "ô ­uohte#jahki" 
+#		"dálvi"	"diibmu" "dbm" "geardi" "geassi" "giô ±ô ±a" "hávvi" "idja" "jahki" 
+#		"jahke#ô ­uohti" "mánnu" "riegádan#beaivi" "tiibmu" "vahkku" jahki 
 #		"stuorradigge#áigodat" ;
  # The quoteless jahki here is since the preprocessor is not fine-tuned
  # yet, it still gives '"1870-" # jahki N Sg Com'.
  # lets see if "dbm" works
 
  
-#LIST BEAIVI =	"mánnodat" "vuoss#árga" "disdat" "maŋŋeb#árga" "gaska#vahkku"
+#LIST BEAIVI =	"mánnodat" "vuoss#árga" "disdat" "maô ëô ëeb#árga" "gaska#vahkku"
 #		"duorastat" "bearjadat" "lávvardat" "lávvordat" "sotna#beaivi" 
 #		"duopmo#beaivi" "sábbát";
 #
@@ -555,7 +596,7 @@ SET NOT-NP = VFIN | ConNeg | Inf | Pcle | Interj | CS ; # The set NP-BORDER is b
     # Do not add AIGODAT, it has some other characteristics in some cases.
 #SET NOTIME = N - TIME ;
 #
-#LIST GEASSET = "dálvet" "dálvit" "giđđat" "geasset" "geassit" "čakčat" ; # What is special here?
+#LIST GEASSET = "dálvet" "dálvit" "giô ±ô ±at" "geasset" "geassit" "ô ­akô ­at" ; # What is special here?
 #
 #LIST GUOVLU = "ássan#guovlu" "sámi#guovlu" "báiki" "gávpot" "guovlu" "sádji" 
 #	"viessu" ;
@@ -565,26 +606,26 @@ SET NOT-NP = VFIN | ConNeg | Inf | Pcle | Interj | CS ; # The set NP-BORDER is b
 #LIST MEASURE = "miila" "kilo#mehtar" "mehtar" "mehter" "centi#mehtar" "sente"
 #	"cm" "milli#mehtar" "tumá" "állan" "salla" "lihtter" "gilo" ;	
 #
-#LIST PL-NOUN = "beassaš" "čalbme#láse" "gálssot" "headja" "sabet" "sisttet" 
+#LIST PL-NOUN = "beassaš" "ô ­albme#láse" "gálssot" "headja" "sabet" "sisttet" 
 #	"skárri"; 
  # Nominals that appear with plural numerals.
 
-#LIST PREGEN = ("álgogeahčen")("bealli" N Sg Loc)("gaskavuohta" N Sg Loc)("guoskevaš")
-#	("loahpageahčen")("miella" N Sg Loc)("oktavuohta" N Sg Loc);
+#LIST PREGEN = ("álgogeahô ­en")("bealli" N Sg Loc)("gaskavuohta" N Sg Loc)("guoskevaš")
+#	("loahpageahô ­en")("miella" N Sg Loc)("oktavuohta" N Sg Loc);
  # Nouns and adjectives that take a preceding genitive.
 
 #LIST N-NOPX = "lohku";
  # Nominals that probably do not have a Px ('1600-logus').
 
-#LIST N-PX = "áhčči" "bárdni" "eadni" "nieida" "viellja" "oabbá";
+#LIST N-PX = "áhô ­ô ­i" "bárdni" "eadni" "nieida" "viellja" "oabbá";
  # Nominals that well may have a Px.
 
-#LIST ALU = ("allu" Gen)("assu" Gen)("čiekŋu" Gen)("gassu" Gen)("govdu" Gen)
+#LIST ALU = ("allu" Gen)("assu" Gen)("ô ­iekô ëu" Gen)("gassu" Gen)("govdu" Gen)
 	   #("guhkku" Gen)("lossu" Gen)("stuorru" Gen)("viidu" Gen);
 
 #LIST TITLE = "ámta#mánni" "direktevra" "eanan#hearrá" ("gásttašit" eaddji) "gonagas" 
 #	"justitiarius" "korefereanta" "ossodat#direktevra" 
-#	"profehta" "professor" "prof" "ráđđe#addi" "stipendiáhta" "sundi" 
+#	"profehta" "professor" "prof" "ráô ±ô ±e#addi" "stipendiáhta" "sundi" 
 #	"universitehtalektor" "vuosttas#konsuleanta" "cand.mag" "cand.oecon"
 #    "cand.philol" "cand.real" "cand.scient" "cand.theol" "cand" "dr.art" 
 #    "eksp.hoavd" "eksp.sj" "fenr" "fig" "fil.tri" "gen.lt" "genr" 
@@ -624,7 +665,7 @@ LIST Px = PxSg1 PxSg2 PxSg3 PxDu1 PxDu2 PxDu3 PxPl1 PxPl2 PxPl3 ;
 
 #SET NOT-NUMERALS = WORD - Num ;
 
-#LIST MANGA = "máŋga" "galle" ; # Not referred to by any rule.
+#LIST MANGA = "máô ëga" "galle" ; # Not referred to by any rule.
 
 #SET CARDINALS = Num - Ord - MANGA ;
 
@@ -653,7 +694,7 @@ SET NP-BORDER = BOS | EOS | REALCLB | VFIN | Inf | (Actio Ess) | ConNeg | VGen |
 	Sup | PPRON-NOT-GEN | Recipr | Po | Pr | Pcle | ("jed") | Interj | CS | CP ;
 
  # CLB removed from set in order to allow for NP-internal commas.
- # Refl is removed because of "sin iežaset vieruid" etc.
+ # Refl is removed because of "sin ieô¡¾aset vieruid" etc.
 
 
 
@@ -747,6 +788,33 @@ MAP (@OBJ) TARGET Acc ;
     # ----------------- #
 
 
+# Lexicalised names
+# -----------------
+
+
+
+REMOVE ACR IF (0 Prop) ;
+
+
+# Lexicalised derivations
+# -----------------------
+# SELECT instead of REMOVE if one wants to investigate word structure.
+
+REMOVE N-DER IF (0 LEX-N LINK NOT 0 Ess);
+ # Check!!!
+
+REMOVE (V* Actor N Sg Nom) IF (0 NOT-ACTOR);
+
+
+REMOVE N-DER IF (0 N-DER LINK 0 Ess)(0 LEX-N LINK 0 Ess)(NOT 0 Actio);
+ # Removes N-DER if O is also a lexical noun, and both nouns are essive.
+ # Check!!!
+
+REMOVE A-DER IF (0 LEX-A);
+
+
+
+
 
 
 
@@ -838,13 +906,13 @@ SELECT (ImprtII ConNeg Pl3) IF (*1 (Neg ImprtII Pl3) LINK *1 EOS BARRIER (ImprtI
 
 CONSTRAINTS
 
-REMOVE (ImprtII ConNeg);
+REMOVE (ImprtII ConNeg);
 
 
 # Neg forms
 # ---------
 
-SELECT Neg IF (1 ConNeg);
+SELECT Neg IF (*1 ConNeg); # Probably needs a barrier.
     ## I galga Härrav
 
 
@@ -967,6 +1035,17 @@ CONSTRAINTS
 
 # Subject-verb
 
+
+# Sg1
+# ---
+
+# V Sg1 = Acc
+
+SELECT (V Sg1) IF (*-1 (Pron Pers Sg1) BARRIER V);
+	## Mån didjij javlav:
+
+# Sg2
+
 SELECT (V Sg2) IF (*-1 (Pron Sg2) BARRIER NOT-ADV) ;
 	## Dån jållåra. Ahte dån farga jållårå.
 		
@@ -1000,10 +1079,10 @@ SELECT Attr IF (0 (Prop Attr))(1 Mal OR Fem OR Sur);
 	## Jesus Kristus
 
 REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NOT 1 N);
-REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NOT 1 A LINK *1 N BARRIER NOT-A);
+REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NOT 1 A LINK *1 N BARRIER NOT-ADJ);
 
 # Gen in Spec
-REMOVE (Pl Nom) IF (0 Prop)(*1 N BARRIER NOT-A);
+REMOVE (Pl Nom) IF (0 Prop)(*1 N BARRIER NOT-ADJ);
 
 # Gen before Po
 
@@ -1022,20 +1101,68 @@ REMOVE Rel IF (*-1 BOS BARRIER N OR Pron OR Num OR A);
 # Specific words
 # ==============
 
+
+# Adverbs
 SELECT Adv IF (0 ("åvddål"))(1 CS) ;
 	## åvddål gå lij bárnes.
 	
 
+# rádjáj
+#SELECT Po #Awaiting a Po / Po Ill verdict.
+
+# rájes
+
+SELECT Po IF (*1 ("rádjáj" Po));
+	## Fáô ëô ëgavuoda rájes Kristusa rádjáj.
+
+# Proper nouns
+
+# Johannes
+SELECT ("Johannes") IF (1 ("gástadiddje"));
+	## Johannes gástadiddje
+
+# Nouns
+SELECT ("gástadiddje") IF (-1 ("Johannes"));
+
+# Verbs
+
 # bådij
 # "båhte" N Pl Com  = "boahtet" V TV Ind Prt Sg3 = "båhte" N Pl Gen
+
+# riegádij
+
+SELECT (Ill) IF (1 ("riegádit" V)) ;
+	## Serubbabelij riegádij Avihud.
 
 	
 # ============ #
 # Noun or not? #
 # ============ #
+
+
+
+# ============ #
+# Verb or not? #
+# ============ #
+
+
+# Ind Prt Sg3 vs N Pl Gen/Com
+
+SELECT (Ind Prt Sg3) IF (-2 (Ind Prt Sg3))(-1 CC)(0 (N Pl Gen))(NOT 1 NPNH OR N);
+    ## Ja de sijáv Betlehemaj rájaj ja javlaj:
+
+
+SELECT (Ind Prt Sg3) IF (*-1 (Sg Nom) BARRIER NOT-ADV)(1 CC)(2 (Ind Prt Sg3));
+    ## Valla Johannes nádoj ja javlaj:
+
+
+
 # ====================== #
 # Adjectives and adverbs #
 # ====================== #
+
+REMOVE Attr IF (1C V OR Pr OR Po OR Adv OR A);
+
 # ========================== #
 # Disambiguating clitics     #
 # ========================== #
@@ -1068,6 +1195,8 @@ SELECT Po IF (-1 Gen)(NOT *1 Gen BARRIER Attr OR CLB OR V OR CC OR CS);
 
 # Personal pronouns
 
+# Sg2
+
 SELECT (Sg2) IF (0 (Pron Pers))(*1 (V Sg2) BARRIER N);
 	## Ja dån dal muv luse boadá.
 
@@ -1079,7 +1208,7 @@ SELECT (Sg2) IF (0 (Pron Pers))(*1 (V Sg2) BARRIER N);
 # Accusative is unique (-v), with one notable exception:
 # Accusative = genitive for personal pronouns (big issue)
 
-SELECT Gen IF (*-1 BOS OR CLB BARRIER NOT-ADV)(0 (Pron Pers))(*1 N BARRIER NOT-A);
+SELECT Gen IF (*-1 BOS OR CLB BARRIER NOT-ADV)(0 (Pron Pers))(*1 N BARRIER NOT-ADJ);
     ## Muv niejdda le jur jábmám.
     
 SELECT Gen IF (NOT *-1 TV BARRIER CLB OR CS)(0 (Pron Pers))(1 Po OR N);
@@ -1099,8 +1228,19 @@ SELECT Acc IF (-1 Neg)(0 (Pron Pers))(1 TV);
 # Interrogative and relative pronouns #
 # =================================== #
 
-SELECT Gen IF (0 Rel)(*1 N BARRIER NOT-A LINK *1 V-SG3);
+# Relative
 
+SELECT Gen IF (0 Rel)(*1 N BARRIER NOT-ADJ LINK *1 V-SG3);
+
+# Rel Sg Nom = Pers Pl1 Nom
+
+SELECT (Pron Rel Sg Nom) IF (-1 N OR COMMA)(NOT *1 V-PL1);
+
+
+# Demonstrative pronouns
+
+REMOVE Par IF (0 (Pron Dem Sg Nom))(1 V-SG3);
+    ## Divna dát sjattaj vaj lulu ålliduvvat mav Härrá lij profehta baktu javllam.
 
 
 # =========== #
@@ -1147,6 +1287,12 @@ SELECT Inf IF (*-1 INF-VERB);#BARRIER
 # ============ #
 # Prop or not
 # -----------
+
+# Prop Nom Sg or Gen Sg or Nom Pl
+SELECT (N Prop Sg Nom) IF (-1 CS OR BOS)(*1 V-SG3 BARRIER NOT-ADV-PCLE);
+    ## Maria lij bárnes riegádahttám.
+
+
 # Nouns versus adjectives
 # =======================
 # Nouns vs. verbs
@@ -1170,23 +1316,31 @@ SELECT Inf IF (*-1 INF-VERB);#BARRIER
 
 #REMOVE Gen IF (1 COMMA OR CC)(NOT 2 Gen);
 
+# Nominative
+# ==========
+
+REMOVE (N Pl Nom) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
+REMOVE (N Sg Gen) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
+	## gå profehta le náv tjállám.
+
+
 # Genitive
 # ========
 
 # N Sg Gen = N Pl Nom
 # -------------------
 
-SELECT Gen IF (*-2 Nom)(-1 TV)(0 Sg)(*1 N BARRIER NOT-A LINK 1 EOS);
+SELECT Gen IF (*-2 Nom)(-1 TV)(0 Sg)(*1 N BARRIER NOT-ADJ LINK 1 EOS);
     ## Mån basáv gusá muorra.
 
-SELECT (Sg Gen) IF (*-1 (Dem Sg Gen) BARRIER NOT-A);
+SELECT (Sg Gen) IF (*-1 (Dem Sg Gen) BARRIER NOT-ADJ);
     ## Dat lij dan ájgge gå álmmugav vuolgadin Babylonaj.
     
 SELECT (Sg Gen) IF (0 Prop)(1 (N Nom) LINK NOT 0 Prop);
     ## Josef la Maria ålmåj.
         
 SELECT (Sg Gen) IF (-1C Gen)(0C N)(1 N);
-SELECT (Sg Gen) IF (-1 Gen)(0C N)(1 COMMA)(*2 N BARRIER NOT-A);
+SELECT (Sg Gen) IF (-1 Gen)(0C N)(1 COMMA)(*2 N BARRIER NOT-ADJ);
     ## Davida bárne, Abrahama bárne máddo.
 
 
@@ -1229,6 +1383,11 @@ SELECT Ill IF (1 ILL-VERB LINK 1 Nom BARRIER NPNH);
 
 # N Sg Ela = N Sg Acc PxSg3 = N Sg Gen PxSg3
 
+# Essive
+# ======
+
+REMOVE Ine IF (*-1 ESS-VERB BARRIER Ess)(0 Ess);
+	## Suv gåhttju Immanuelin.
 
 
 
@@ -1293,7 +1452,7 @@ SELECT PrfPrc IF (-1 BOS)(*1 ("liehket") BARRIER NOT-ADV-PCLE) ;
     #= V* TV Pass V Imprt Sg2 = V* TV Pass V Ind Prs Sg2 = V TV Ind Prs Sg3
 
 REMOVE Imprt IF (0C Pass);
-    ## Valla sunji ij goassak ándagi luojteduvá, guhti ájlis Vuoiŋŋanisáv álbet, ájnat siválattjan ihkeven sudduj bissu.
+    ## Valla sunji ij goassak ándagi luojteduvá, guhti ájlis Vuoiô ëô ëanisáv álbet, ájnat siválattjan ihkeven sudduj bissu.
     
 REMOVE Imprt IF (*-1 CS OR CP);
     ## Juohkka dåssjedis bágo åvdås, mav almasj tsuvkká, hähttu duobbmobiejven vásstedit.
@@ -1314,12 +1473,8 @@ REMOVE Imprt IF (*1C VFIN BARRIER NOT-ADV-PCLE OR CLB);
 	## Tjalmme le rubmaha tjuovgga.
 	## Dåppe buktin suv lusi gállnam ålmmåv guoddemlqtjo nanna vällahime.
 
-#REMOVE Imprt IF (*-1 (PUNCT LEFT) BARRIER (PUNCT RIGHT))(0 N);
-	## Láigolihtus eai čuovo makkárge sierravuoigatvuođat gáddái (buo.
-	## riehkit, stárat).
-
 SELECT Imprt IF (-1 BOS OR PUNCT OR REALCLB)(0 ("liehket"))(1 A);
-	## Leage buorre!
+
 
 
 
@@ -1411,4 +1566,19 @@ SELECT Imprt IF (-1 BOS OR PUNCT OR REALCLB)(0 ("liehket"))(1 A);
 # -------------------------
     # Prt Pl3 = Prs Du1
     # Prt Sg2 = Prs Pl3
+
+
+# ===================== #
+# Global rules: cycle 4 #
+# ===================== #
+        CONSTRAINTS     #
+# ===================== #
+
+# Here we have some rules that scan the whole domain.
+# We myst consider whether they should be integrated earlier or not.
+
+# Late rules
+
+SELECT VFIN IF (NOT *-1 VFIN BARRIER CLB)(NOT *1 VFIN BARRIER CLB);
+
 
