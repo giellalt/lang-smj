@@ -1,15 +1,94 @@
 LEXICON Punctuation
-+CLB:%,   # ;
-+CLB:%.   # ;
-+CLB:%:   # ;
-+CLB:%;	  # ;
-+CLB:%!	  # ;
-+CLB:%?	  # ;
-+PUNCT:%-  # ;
-+HYPH:%" # ;
-+HYPH:%« # ;
-+HYPH:%» # ;
-+PAR:%[ # ;
-+PAR:%] # ;
-+PAR:%( # ;
-+PAR:%) # ;
+
+! Clause boundary symbols
+
+%,+CLB:%,   # ;
+%.+CLB:%.   # ;
+%.%.+CLB:%.%.   # ;
+%.%.%.+CLB:%.%.%.   # ;
+%:+CLB:%:   # ;
+%;+CLB:%;	  # ;
+^excl+CLB:%!	  # ;	!^C^
+%?+CLB:%?	  # ;
+…+CLB:…		  # ;
+¿+CLB:¿		  # ;	! Only seen as noise.
+¶+CLB:¶		  # ;	! This sign is for titles, it is introduced by the
+			! catxml script, and may be changed if it interferes 
+			! with real pilcrow signs.
+
+! Miscellaneous symbols, abbreviation symbols (could be moved to abbr-sme-lex.txt) 
+  
+§+N+ABBR:§ PUNCTconnector ;    ! §:s	!^C^
+§§+N+ABBR:§§ PUNCTconnector ;  ! §:ain	!^C^
+$+N+ABBR:$  PUNCTconnector ;    ! $:s	!^C^
+€+N+ABBR:€  PUNCTconnector ;    ! €:s	!^C^
+£+N+ABBR:£  PUNCTconnector ;    ! €:s	!^C^
+
+! Single punctuation marks
+
+•+PUNCT:•	  # ;
+-+PUNCT:-  # ;
+--+PUNCT:--  # ;
+=+PUNCT:=  # ;
+%%+PUNCT:%%  # ;
+&+PUNCT:& # ;
+%"+PUNCT:%"  # ;
+'+PUNCT:'1  # ;   ! We use "'1" to avoid the CG symbol of ái'gi etc.
+%*+PUNCT:%*  # ;
+++PUNCT:+  # ;
+`+PUNCT:`  # ;
+´+PUNCT:´  # ;
+/+PUNCT:/  # ; 
++/-+PUNCT:+/- # ;
+%~+PUNCT:%~	  # ;
+
+
+! Paired punctuation marks
+
+%«+PUNCT+LEFT:%«  # ;
+%»+PUNCT+RIGHT:%»  # ;
+%“+PUNCT+LEFT:%“  # ;
+%”+PUNCT+RIGHT:%”  # ;
+%‘+PUNCT+LEFT:%‘  # ;
+%’+PUNCT+RIGHT:%’  # ;
+%‹+PUNCT+LEFT:%‹ # ;
+%›+PUNCT+RIGHT:%›  # ;
+%(+PUNCT+LEFT:%(  # ;
+%)+PUNCT+RIGHT:%)  # ;
+%[+PUNCT+LEFT:%[  # ;
+%]+PUNCT+RIGHT:%]  # ;
+%{+PUNCT+LEFT:%{  # ;
+%}+PUNCT+RIGHT:%}  # ;
+%<+PUNCT+LEFT:%<   # ;
+%>+PUNCT+LEFT:%>   # ;
+
+
+
+LEXICON PUNCTconnector
+ +Sg+Nom: K ;	! §
+!+Sg+Gen: K ;	! §
+!+Sg+Acc: K ;	! §
+ PUNCTsuff ;		! §as
+ :%: PUNCTsuff ;	! §:as
+ :%- PUNCTsuff ;	! §-as  ! Perhaps.
+ :%' PUNCTsuff ;	! §'as  ! Perhaps.
+ 
+LEXICON PUNCTsuff
+! K ;		! § 14 (no case on the bare §). Oh, yes. Case.
++Sg+Gen: K ;	! §:a  (case suffix on the rest, in case of explicit
++Sg+Acc: K ;	!       suffix)
++Sg+Gen:a K ;	! §:a  (case suffix on the rest, in case of explicit
++Sg+Acc:a K ;	!       suffix)
++Sg+Ill:ij K ;
++Sg+Loc:s K ;   ! §:s
++Sg+Loc:as K ;  ! §:as
++Sg+Com:in K ;
+   +Ess:an K ;
++Pl+Nom:at K ;
++Pl+Gen:ajd K ;
++Pl+Acc:ajd K ;
++Pl+Ill:ajde K ;
++Pl+Loc:ajn K ;
++Pl+Com:ajgujn K ;
+
+
