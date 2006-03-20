@@ -1181,6 +1181,9 @@ SELECT Po IF (-1 Gen)(NOT *1 Gen BARRIER Attr OR CLB OR V OR CC OR CS);
 # =========================== #
 # =========================== #
 
+REMOVE Pcle IF (-1 BOS OR CLB)(0 CS);
+	##, de allit sunji åsko!
+
 
 # ====================== #
 # Disambiguating adverbs #
@@ -1196,6 +1199,9 @@ SELECT Po IF (-1 Gen)(NOT *1 Gen BARRIER Attr OR CLB OR V OR CC OR CS);
 # Personal pronouns
 
 # Sg2
+
+SELECT (Pron Pers Sg2 Nom) IF (-2 (V Sg2))(-1 ("gus" Pcle));
+	## Le gus dån oahpes dán bájkkáj? 
 
 SELECT (Sg2) IF (0 (Pron Pers))(*1 (V Sg2) BARRIER N);
 	## Ja dån dal muv luse boadá.
@@ -1288,9 +1294,16 @@ SELECT Inf IF (*-1 INF-VERB);#BARRIER
 # Prop or not
 # -----------
 
-# Prop Nom Sg or Gen Sg or Nom Pl
+# Prop Sg Nom or Gen Sg or Pl Nom
 SELECT (N Prop Sg Nom) IF (-1 CS OR BOS)(*1 V-SG3 BARRIER NOT-ADV-PCLE);
     ## Maria lij bárnes riegádahttám.
+
+# Prop Sg Gen or Pl Nom
+REMOVE (N Prop Sg Nom) IF (-1 BOS)(1 N)(2 (V Sg3));
+	## Nordlánda fulkkasuohkanin gullu gålmmå sámegiela.
+# This must be too strong...
+
+
 
 
 # Nouns versus adjectives
@@ -1535,11 +1548,16 @@ SELECT Imprt IF (-1 BOS OR PUNCT OR REALCLB)(0 ("liehket"))(1 A);
     # = V TV Ind ConNeg = V TV VGen
     # homonymy with derived verbs
     
-#SELECT (V Sg2) IF (*-
+SELECT (V Sg2) IF (-1 BOS)(1 ("gus" Pcle))(2 (Pron Pers Sg2 Nom));
+	## Le gus dån oahpes dán bájkkáj?
 
 # Third person singular - Sg3
 # ---------------------------
-    # 
+    # Copula le is Sg3 = Sg2 = Pl3.
+
+SELECT (V Sg3) IF (-1 BOS)(1 ("gus" Pcle))(2 (Pron Pers Sg3 Nom));
+	## Le gus sån oahpes dán bájkkáj?
+
 
 # First person dual - Du1
 # -----------------------
@@ -1566,6 +1584,9 @@ SELECT Imprt IF (-1 BOS OR PUNCT OR REALCLB)(0 ("liehket"))(1 A);
 # -------------------------
     # Prt Pl3 = Prs Du1
     # Prt Sg2 = Prs Pl3
+
+SELECT (V Pl3) IF (-1 BOS)(1 ("gus" Pcle))(2 (Pron Pers Pl3 Nom));
+	## Le gus sij oahpes dán bájkkáj?
 
 
 # ===================== #
