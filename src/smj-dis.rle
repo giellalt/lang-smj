@@ -817,7 +817,7 @@ REMOVE N-DER IF (0 N-DER LINK 0 Ess)(0 LEX-N LINK 0 Ess)(NOT 0 Actio);
  # Check!!!
 
 REMOVE A-DER IF (0 LEX-A);
-
+REMOVE (V-DER Inf) IF (0 (NOT-DER Inf)); 
 
 
 
@@ -1381,6 +1381,9 @@ REMOVE (N Sg Gen) IF (-2 ADVLCASE)(-1 VFIN)(0 (N Sg Nom));
 SELECT (N Sg Nom) IF (*-1 Rel BARRIER NPNH)(*1 V-SG3 BARRIER NOT-ADV-PCLE LINK *1 CLB OR EOS BARRIER (N Sg Nom));
 	## Dát sjattaj vaj luluj ålliduvvat mav Härrá lij profehta baktu javllam.
 
+REMOVE (N Sg Gen) IF (*-1 BOS OR CS BARRIER NPNH)(1 (V Ind Pl3) LINK NOT 0 Imprt OR ImprtII);
+	## dan dihti go profehta le náv tjállám.
+
 # Genitive
 # ========
 
@@ -1640,6 +1643,9 @@ SELECT (V Sg3) IF (-1 BOS)(1 ("gus" Pcle))(2 (Pron Pers Sg3 Nom));
 
 SELECT (V Pl3) IF (-1 BOS)(1 ("gus" Pcle))(2 (Pron Pers Pl3 Nom));
 	## Le gus sij oahpes dán bájkkáj?
+
+SELECT (V Pl3) IF (*-2 BOS OR CS BARRIER NPNH)(-1 (N Pl Nom))(0 VFIN);
+	## Dan diehti go profehta le náv tjállam.
 
 
 # ===================== #
