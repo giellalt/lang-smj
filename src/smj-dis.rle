@@ -48,7 +48,7 @@ LIST BOS = (>>>) (<s>); LIST EOS = (<<<) (</s>); # vislcg and CG-2 together.
 
 LIST N = N ; LIST A = A ; LIST Adv = Adv ; LIST V = V ; LIST Pron = Pron ;
 LIST CS = CS ; LIST CC = CC ; LIST Po = Po ; LIST Pr = Pr ;
-LIST Pcle = Pcle ; LIST Num = Num ; LIST Prop = Prop ;
+LIST Pcle = Pcle ; LIST Qst = Qst ; LIST Num = Num ; LIST Prop = Prop ;
 
 # POS sub-categories
 # ------------------
@@ -97,6 +97,7 @@ LIST PrsPrc = PrsPrc ; LIST PrfPrc = PrfPrc ;
 LIST VGen = VGen ; LIST VAbess = VAbess ;
 
 LIST CLB = CLB ; LIST PUNCT = PUNCT ; 
+LIST LEFT = LEFT ; LIST RIGHT = RIGHT ;
 LIST HYPH = HYPH ; LIST PAR = PAR ;
 
 
@@ -269,13 +270,13 @@ LIST A-DER = +Der/dibme +Der/lasj +Der/lágásj +Der/lágán +Der/ahtes
 +Der/garák +Der/tjuolmak +Der/tjålak +Der/segak +Der/tjalmak
 +Der/vigák +Der/girjak +Der/stával +Der/agák +Der/jagák ;
 
-
+SET NOT-DER = WORD - DERIVED ;
 
 # Case sets
 # ---------
-#LIST ADVLCASE = Ill Loc Com Ess ;
-
-#LIST CASE = Nom Acc Gen Ill Loc Com Ess ;
+LIST ADVLCASE =             Ill Ine Ela Com Ess     ;
+LIST OBLCASE  =     Acc Gen Ill Ine Ela Com Ess Par ;
+LIST CASE     = Nom Acc Gen Ill Ine Ela Com Ess Par ;
 
 #SET NOT-NOM = CASE - Nom ;
 #SET NOT-GEN = CASE - Gen ;
@@ -448,18 +449,20 @@ LIST COPULAS = "dáidit" "bissut" "gártat" "leahkit" "leat" "orrut" "šaddat" ;
 
 SET V-NOT-COP = V - COPULAS ;
 
-#LIST MOD-ASP = "berret" "dáidit" "fertet" "galgat" "gillet" "lávet" "sáhttit" 
+LIST MOD-ASP = "fertet" ;
+#                "berret" "dáidit" "fertet" "galgat" "gillet" "lávet" "sáhttit" 
 #		"seahtit" "soaitit" "viggat" ;
  # Verbs that never have arguments of their own - so we leave out "áigut", for ex.
 
-#LIST AUX-OR-MAIN = "áigut" "beassat" "hálidit" "háliidit" "máhttit" "nagodit" 
+LIST AUX-OR-MAIN = "áiggot" ;
+#"beassat" "hálidit" "háliidit" "máhttit" "nagodit" 
 #			"orrut" "sihtat" "veadjit";
  # These verbs can take arguments, so they do not belong in the AUX group, 
  # but they are nevertheless mapped to (@+FAUXV). 
 
-#SET AUX = COPULAS | Neg | MOD-ASP | AUX-OR-MAIN ; 
+SET AUX = COPULAS | Neg | MOD-ASP | AUX-OR-MAIN ; 
 
-#SET V-NOT-AUX = V - AUX ;  # The set of verbs that cannot be auxiliaries. 
+SET V-NOT-AUX = V - AUX ;  # The set of verbs that cannot be auxiliaries. 
 			   # Does not include AUX-OR-MAIN.
 
 #SET VFIN-NOT-AUX = VFIN - AUX ;
@@ -478,10 +481,10 @@ SET V-NOT-COP = V - COPULAS ;
 #SET V-ACT = V - Pass; # No longer in use.
 #
 #SET ACT-PRFP = PrfPrc - V-PASS; # Appears in one rule.
-#
-#SET V-TRANS-ACT = TV - Pass ; 
-# # All active verbs with a TV tag, including AUX-OR-MAIN.
-# 
+
+SET V-TRANS-ACT = TV - Pass ; 
+ # All active verbs with a TV tag, including AUX-OR-MAIN.
+ 
 #SET V-TRANS-ACT-NOT-AUX  = TV - V-PASS - AUX ;
 
 # Sets for verbs choosing oblique objects or adverbials
@@ -799,6 +802,10 @@ REMOVE ACR IF (0 Prop) ;
 # -----------------------
 # SELECT instead of REMOVE if one wants to investigate word structure.
 
+REMOVE (Der/lasj A Attr) IF (0 NOT-DER LINK 0 (A Attr));
+	## bájkálasj
+REMOVE (Der/lasj A Attr) IF (0 NOT-DER LINK 0 (N));
+
 REMOVE N-DER IF (0 LEX-N LINK NOT 0 Ess);
  # Check!!!
 
@@ -836,6 +843,10 @@ REMOVE A-DER IF (0 LEX-A);
 # PxSg2
 # V TV Inf = V* TV Actor N Sg Gen PxSg2 = V* TV Actor N Sg Nom PxSg2
 #          = V* TV Actor N Sg Acc PxSg2 
+
+
+
+
 
 # PxSg1
 #   V* TV Pass V PrfPrc          = V* TV Pass V* Actor N Sg Gen PxSg1
@@ -936,7 +947,7 @@ SELECT (Ind ConNeg) IF (-1 (Neg Prt) OR (Neg Prs));
 SELECT (Neg Imprt) IF (1 (Imprt ConNeg));
 
 # No Neg, no ConNeg.
-REMOVE ConNeg IF (*-1 BOS OR CLB LINK *1 CLB BARRIER Neg); 
+REMOVE ConNeg IF (*-1 BOS OR CLB LINK *1 CS OR CLB BARRIER Neg); 
 #REMOVE ConNeg IF (NOT *-1 Neg BARRIER CLB)(NOT *1 Neg BARRIER CLB);      
 
 #bos clb    ij   conneg  clb  ... *conneg .. clb eos         
@@ -1077,8 +1088,20 @@ SELECT Pl2 IF (0 (Pron Pers Pl2 Nom))(1 (V Pl2));
 SELECT Attr IF (0 (Prop Attr))(1 Mal OR Fem OR Sur);
 	## Jesus Kristus
 
+SELECT Attr IF (-1 V-NOT-AUX OR N)(0 A)(1 N);
+	## Æjgádijda vaddá buorep diedojt.
+
 REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NOT 1 N);
 REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NOT 1 A LINK *1 N BARRIER NOT-ADJ);
+
+REMOVE Attr IF (*1 VFIN BARRIER N);
+	## Josef lij rievtesmielak, ittjij sidá suv hehpaduttet.
+
+REMOVE Adv IF (-1 (Dem Com))(0 (A Attr))(1 (N Com));
+	## dajna gjielgga rájájn.
+
+REMOVE (A Sg Nom) IF (*-1 BOS OR LEFT OR CLB BARRIER NPNH)(1 N)(2 BOS OR RIGHT OR CLB);
+	## (vijdes sisanujn)
 
 # Gen in Spec
 REMOVE (Pl Nom) IF (0 Prop)(*1 N BARRIER NOT-ADJ);
@@ -1120,8 +1143,22 @@ SELECT Po IF (*1 ("rádjáj" Po));
 SELECT ("Johannes") IF (1 ("gástadiddje"));
 	## Johannes gástadiddje
 
+# Valla
+REMOVE ("Valla") IF (-1 BOS OR PUNCT OR ("." CLB))(NOT 1 V-SG3 LINK 1 (Pron Pers Sg3 Nom));
+	## Valla Jesus sunji javlaj:
+
 # Nouns
+
+# gástadiddje
 SELECT ("gástadiddje") IF (-1 ("Johannes"));
+
+# miella
+SELECT Ela IF (-1 Gen)(0 ("miella" N Sg Ela));
+	## Valla suv mielas la na.
+
+# jages
+SELECT Ela IF (0 ("jahke" N Sg Ela))(1 ("jahke" N Sg Ill));
+	## Jages jahkáj.
 
 # Verbs
 
@@ -1138,6 +1175,8 @@ SELECT (Ill) IF (1 ("riegádit" V)) ;
 # Noun or not? #
 # ============ #
 
+REMOVE V IF (-1C Attr)(0 N);
+	## Álmmuk mij sjievnnejdin årru, le stuorra tjuovgav vuojnnám.
 
 
 # ============ #
@@ -1160,7 +1199,9 @@ SELECT (Ind Prt Sg3) IF (*-1 (Sg Nom) BARRIER NOT-ADV)(1 CC)(2 (Ind Prt Sg3));
 # Adjectives and adverbs #
 # ====================== #
 
-REMOVE Attr IF (1C V OR Pr OR Po OR Adv OR A);
+REMOVE Attr IF (1C V OR Pr OR Po OR Adv OR A OR EOS);
+REMOVE Attr IF (1 COMMA)(NOT 2 (A Attr));
+	## li ållo sáme, gudi mánnán sáme ságastin.
 
 # ========================== #
 # Disambiguating clitics     #
@@ -1335,6 +1376,10 @@ REMOVE (N Pl Nom) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)
 REMOVE (N Sg Gen) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
 	## gå profehta le náv tjállám.
 
+REMOVE (N Sg Gen) IF (-2 ADVLCASE)(-1 VFIN)(0 (N Sg Nom));
+	## Hiskiaj riegádij Manasse.
+SELECT (N Sg Nom) IF (*-1 Rel BARRIER NPNH)(*1 V-SG3 BARRIER NOT-ADV-PCLE LINK *1 CLB OR EOS BARRIER (N Sg Nom));
+	## Dát sjattaj vaj luluj ålliduvvat mav Härrá lij profehta baktu javllam.
 
 # Genitive
 # ========
@@ -1355,6 +1400,8 @@ SELECT (Sg Gen) IF (-1C Gen)(0C N)(1 N);
 SELECT (Sg Gen) IF (-1 Gen)(0C N)(1 COMMA)(*2 N BARRIER NOT-ADJ);
     ## Davida bárne, Abrahama bárne máddo.
 
+REMOVE (Pl Nom) IF (*-1 Num BARRIER NOT-ADJ);
+	## gålmmå jage.
 
 # N Sg Nom = N Sg Gen = N Pl Nom (cases without CG)
 # -------------------------------------------------
@@ -1395,6 +1442,11 @@ SELECT Ill IF (1 ILL-VERB LINK 1 Nom BARRIER NPNH);
 
 # N Sg Ela = N Sg Acc PxSg3 = N Sg Gen PxSg3
 
+
+# Comitative
+# ==========
+
+#REMOVE (N Pl Ine) IF 
 # Essive
 # ======
 
@@ -1429,12 +1481,14 @@ SELECT Pl3 IF (*-1 (N Sg Nom) BARRIER (Pron Pers Sg2 Nom) OR  (Pron Pers Sg3 Nom
     ## Anne ja Berit le jåhtemin.
     
 REMOVE Sg2 IF (*-1 (N Sg Nom) OR (Rel Sg Nom) BARRIER (Pron Pers Sg2 Nom))(NOT 0 Neg);
-REMOVE Pl3 IF (*-1 (N Sg Nom) LINK NOT *-1 CC BARRIER NPNH LINK -1 (N Sg Nom));
+REMOVE Pl3 IF (*-1 (N Sg Nom) LINK NOT *-1 CC BARRIER NPNH LINK -1 (N Sg Nom));
 
 # PrfPrc
 # =======
 
-SELECT PrfPrc IF (*-1 ("liehket") BARRIER V);
+SELECT PrfPrc IF (*-1 ("liehket" V) BARRIER V);
+	## Dát sjattaj vaj luluj ålliduvvat mav Härrá lij profehta baktu javllam.
+
 SELECT PrfPrc IF (-1 BOS)(*1 ("liehket") BARRIER NOT-ADV-PCLE) ;
 
 # In this cycle we apply some safe verb rules.
