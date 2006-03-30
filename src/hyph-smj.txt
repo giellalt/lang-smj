@@ -9,35 +9,46 @@ define Vow       [ a | á | e | i | o | u | y | æ | ø | å | ä | ö |
 é | ó | ú | í | à | è | ò | ù | ì | ë | ü | ï | â | ê | ô | û | î | ã | ý 
 É | Ó | Ú | Í | À | È | Ò | Ù | Ì | Ë | Ü | Ï | Â | Ê | Ô | Û | Î | Ã | Ý ] ;
 
-define VowNot2ndVow   [ á | u | y | æ | ø | å | ä | ö | 
-                   Á | U | Y | Æ | Ø | Å | Ä | Ö | 
-é | ó | ú | í | à | è | ò | ù | ì | ë | ü | ï | â | ê | ô | û | î | ã | ý 
-É | Ó | Ú | Í | À | È | Ò | Ù | Ì | Ë | Ü | Ï | Â | Ê | Ô | Û | Î | Ã | Ý ] ;
+define 2ndVow [ e | a | o | E | A | U ] ;
 
+define VowNot2ndVow [ Vow - 2ndVow ] ;
+
+define U [ u | U ] ; define O [ o | O ]  ; define A [ a | A ]  ;
+define E [ e | E ] ; define I [ i | I ]  ;
+
+define VowNotU [ Vow - U ] ;
+define VowNotO [ Vow - O ] ;
+define VowNotA [ Vow - A ] ;
+define VowNotE [ Vow - E ] ;
+define VowNotI [ Vow - I ] ;
 
 define Cns [ b | c | č | d | đ | f | g | h | j | k | l | m | n | ŋ | 
              B | C | Č | D | Đ | F | G | H | J | K | L | M | N | Ŋ | 
              p | r | s | š | t | ŧ | v | z | ž |   
              P | R | S | Š | T | Ŧ | V | Z | Ž ] ; 
 
+define S [ S | s ] ; define Cnss [ Cns - S ] ;
+
+!define Sgm [ Cns | Vow ] ;
+
 !define Cns [ Cnssymb | Vow i ] ;
 
 echo << Rules>>
 
-define nodipht  [..] -> %-#%- || Cns Vow _ VowNot2ndVow ;
-define rdnj4cns     [..] -> %- || Vow r _ d n j ;
-define unvoiced [..] -> %- || Vow _ h [ n | m | l | j | r ] ;
-define palatal  [..] -> %- || Vow d _ d j , Vow l _ l j , Vow n _ n j , Vow d _ n j , Vow t _ n j ;
+define nodipht  [..] -> %-#%- || Cns Vow _ VowNot2ndVow , Cns VowNotU _ O  , Cns VowNotO _ A  , Cns VowNotI _ E ;
+define rdnj4cns [..] -> %- || Vow (Cns) r _ d n j ;
+define unvoiced [..] -> %- || Vow (Cns) _ h [ n | m | l | j | r ] ;
+define palatal  [..] -> %- || Vow (Cns) d _ d j , Vow (Cns) l _ l j , Vow (Cns) n _ n j , Vow (Cns) d _ n j , Vow (Cns) t _ n j ;
 define dissnas  [..] -> %- || Vow [ đ | j | l | r | v ] _ [ b m | d n | g ŋ ] ;
-define s2cns     [..] -> %- || Vow Cns _ s Cns Vow ; ! mái-stit (if commented out: máis-tit)
-define j4cns     [..] -> %- || Vow  Cns Cns Cns _ [s|t] j  Vow ;
-define j3cns     [..] -> %- || Vow  Cns Cns _ [s|t] j  Vow ;
-define j2cns     [..] -> %- || Vow  Cns     _ [s|t] j  Vow ;
-define j1cns     [..] -> %- || Vow          _ [s|t] j  Vow ;
+define s2cns    [..] -> %- || Vow Cns _ s Cnss Vow ; ! máj-stet,  (if commented out: máis-tit), " Vow (Cns)" as LC gives må-rå-stit, fá-sto, now rås-tit, fás-to.
+define j4cns    [..] -> %- || Vow  Cns Cns Cns  _ [ [s|t] j | t s ]  Vow ;
+define j3cns    [..] -> %- || Vow  Cns Cns      _ [ [s|t] j | t s ] Vow ;
+define j2cns    [..] -> %- || Vow  Cns          _ [ [s|t] j | t s ] Vow ;
+define j1cns    [..] -> %- || Vow               _ [ [s|t] j | t s ] Vow ;
 define 4cns     [..] -> %- || Vow  Cns Cns  Cns _  Cns Vow ;
-define 3cns     [..] -> %- || Vow  Cns Cns  _  Cns Vow ;
-define 2cns     [..] -> %- || Vow  Cns      _  Cns Vow ;
-define 1cns     [..] -> %- || Vow           _  Cns Vow ;
+define 3cns     [..] -> %- || Vow  Cns Cns      _  Cns Vow ;
+define 2cns     [..] -> %- || Vow  Cns          _  Cns Vow ;
+define 1cns     [..] -> %- || Vow               _  Cns Vow ;
 
                      
 echo <<Combining...>>
