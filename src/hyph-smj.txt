@@ -22,10 +22,16 @@ define VowNotA [ Vow - A ] ;
 define VowNotE [ Vow - E ] ;
 define VowNotI [ Vow - I ] ;
 
+define IEdipht [ i e | I e | I E ] ;
+define UOdipht [ u o | U o | U O ] ;
+define OAdipht [ o a | O a | O A ] ;
+
+define dipht [ IEdipht | UOdipht | OAdipht ] ;
+
 define Cns [ b | c | č | d | đ | f | g | h | j | k | l | m | n | ŋ | 
              B | C | Č | D | Đ | F | G | H | J | K | L | M | N | Ŋ | 
-             p | r | s | š | t | ŧ | v | z | ž |   
-             P | R | S | Š | T | Ŧ | V | Z | Ž ] ; 
+             p | r | s | š | t | ŧ | v | x | z | ž |   
+             P | R | S | Š | T | Ŧ | V | X | Z | Ž ] ; 
 
 define S [ S | s ] ; define Cnss [ Cns - S ] ;
 
@@ -35,9 +41,10 @@ define S [ S | s ] ; define Cnss [ Cns - S ] ;
 
 echo << Rules>>
 
-define nodipht  [..] -> %-#%- || Cns Vow _ VowNot2ndVow , Cns VowNotU _ O  , Cns VowNotO _ A  , Cns VowNotI _ E ;
+define beforedipht [..] -> %- || Vow _ dipht ;
+define nodipht  [..] -> %- || Cns Vow _ VowNot2ndVow , Cns VowNotU _ O  , Cns VowNotO _ A  , Cns VowNotI _ E ;
 define rdnj4cns [..] -> %- || Vow (Cns) r _ d n j ;
-define unvoiced [..] -> %- || Vow (Cns) _ h [ n | m | l | j | r ] ;
+define unvoiced [..] -> %- || Vow (Cns) _ h [ n | m | l | j | r ] Vow ;
 define palatal  [..] -> %- || Vow (Cns) d _ d j , Vow (Cns) l _ l j , Vow (Cns) n _ n j , Vow (Cns) d _ n j , Vow (Cns) t _ n j ;
 define dissnas  [..] -> %- || Vow [ đ | j | l | r | v ] _ [ b m | d n | g ŋ ] ;
 define s2cns    [..] -> %- || Vow Cns _ s Cnss Vow ; ! máj-stet,  (if commented out: máis-tit), " Vow (Cns)" as LC gives må-rå-stit, fá-sto, now rås-tit, fás-to.
@@ -54,6 +61,8 @@ define 1cns     [..] -> %- || Vow               _  Cns Vow ;
 echo <<Combining...>>
 
 read regex [
+beforedipht
+.o.
 nodipht
 .o.
 rdnj4cns 
