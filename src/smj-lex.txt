@@ -46,8 +46,8 @@ Multichar_Symbols
 LEXICON Root
  Prefixes ;					!^G^ !^C^
  +Cmpnd+:%- NounRoot ;				!^G^  !^C^
- @U.Cap.Obl@	ProperNoun ;			!^G^  ! These flags are for
- @U.Cap.Opt@ ProperNoun ;			!^G^  ! downcasing the propernouns
+! @U.Cap.Obl@	ProperNoun ;			!^G^  ! These flags are for
+! @U.Cap.Opt@ ProperNoun ;			!^G^  ! downcasing the propernouns
 ! AspellProp ;				! Only for aspell target !!
  NounRoot ;					!^G^
 ! AspellAffix ;				!Only for aspell target !!
@@ -555,7 +555,7 @@ LEXICON GIEVRRA ! Attr WeG, -s
 
 LEXICON NUORRA ! Attr =
  +A+Attr: ATTR ;
- +A+Der/vuohta: VUOHTA ;
+ +A+Der/vuohta: VUOHTA ;                !^C^
  +A: N-EVENSTRONGSTEM ;
  +A:Q1 N-EVENWEAKSTEM ; ! cg in nominal paradigm
  +A:Q1 BU/MUS ;
@@ -581,24 +581,33 @@ LEXICON UNNE ! Attr e > a~e, WeG
  +A:eQ1 BU/MUS ;           ! the e-form as a starting
  +A+Adv:eQ1t K ;           ! point.
 
-LEXICON SÁVADAHTTE
+LEXICON SÁVADAHTTE  !Causative-participles
  +A: NE-EVENCASE ;
  +A:X4 ILL-EVENCASE ;
  +A:Q1 N-EVENWEAKSTEM ;
 
 
 LEXICON ÁRMMOGIS ! Attr = Pred. Nom. Sg.
- +A+Der/vuohta: VUOHTA ;
+ +A+Der/vuohta: VUOHTA ;                       !^C^
  +A+Attr: ATTR ; ! twol fixes the ss > s
  +A+Sg+Nom: K ;
  +A+Sg+Nom:a PxV ;
  +A:a GÅNÅGIS-EVEN ; ! Declined as four-syllable noun
  +A:aQ1 BU/MUS ;
+ +A+Adv:aQ1t K ;
+ 
+LEXICON MÁHTULASJ !as ÁRMMOGIS but no attr.
+ +A+Der/vuohta: VUOHTA ;                       !^C^
+ +A+Sg+Nom: K ;
+ +A+Sg+Nom:a PxV ;
+ +A:a GÅNÅGIS-EVEN ; ! Declined as four-syllable noun
+ +A:aQ1 BU/MUS ;
  +A+Adv:aQ1t K ; 
+ 
 
 LEXICON ASIDASJ
- +A+Der/vuohta:asj VUOHTA ;
- +A+Der/vuohta:is VUOHTA ; 
+ +A+Der/vuohta:asj VUOHTA ;                    !^C^
+ +A+Der/vuohta:is VUOHTA ;                     !^C^
  +A+Attr:is ATTR ; ! Special Attr form
  +A+Sg+Nom:asj K ;
  +A+Sg+Nom:adtja PxV ;
@@ -612,7 +621,7 @@ LEXICON ASIDASJ
  +A+Adv:attjaQ1t K ; 
 
 LEXICON TJALMEDIBME
- +A+Der/vuohta:is VUOHTA ;
+ +A+Der/vuohta:is VUOHTA ;                     !^C^
  +A+Attr:is ATTR ; ! Special Attr form
  +A:ibme NE-EVENCASE ;
  +A:ibmeX4 ILL-EVENCASE ;
@@ -621,12 +630,31 @@ LEXICON TJALMEDIBME
  +A+Adv:ibmeQ1t K ;
  +A: DUVVAT ; 
 
+LEXICON SUOLASIEHKE ! evenstem No attribute
+ +A: NE-EVENCASE ;
+ +A:X4 ILL-EVENCASE ;
+ +A:Q1 N-EVENWEAKSTEM ;
+ +A:Q1 BU/MUS ;
+ +A+Adv:Q1t K ;
+ 
+ 
+LEXICON NUORTTALABBO   !Inherent comparatives
+ +A: ABBO/AMOS ;
+ 
+LEXICON GASSKALAMOS   !Inherent superlatives
+ +A+Superl: AMOS ; 
+ +A+Superl+Adv:abmusit K ;
+ 
+
+
+
+
 ! Odd-syllable stems
 ! ------------------
 
 LEXICON TJIEGOS ! a. Adjs on -k, negating adjs on -dahkes, sm adjs on -os
  +A+Attr:X2 ATTR ;
- +A+Der/vuohta:X2 VUOHTA ;
+ +A+Der/vuohta:X2 VUOHTA ;               !^C^
  +A:X2 N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
  +A:X5 OTH-ODDCASE ;
  +A:X5 ABBO/AMOS ;
@@ -634,8 +662,8 @@ LEXICON TJIEGOS ! a. Adjs on -k, negating adjs on -dahkes, sm adjs on -os
  
 LEXICON BASSTEL ! b. Adjs on -et, -l, -r, sm om -k, -sj with -is-attr
  +A+Attr:is ATTR ;
- +A+Der/vuohta:is VUOHTA ;
-  +A+Der/vuohta: VUOHTA ;
+ +A+Der/vuohta:is VUOHTA ;               !^C^
+  +A+Der/vuohta: VUOHTA ;                !^C^
  +A: N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
  +A: OTH-ODDCASE ;
  +A: ABBO/AMOS ;
@@ -644,8 +672,8 @@ LEXICON BASSTEL ! b. Adjs on -et, -l, -r, sm om -k, -sj with -is-attr
 LEXICON MUTTÁK ! c. Adjs on -ák, Attr -is or =
  +A+Attr: ATTR ;
  +A+Attr:is ATTR ;
- +A+Der/vuohta: VUOHTA ;
- +A+Der/vuohta:is VUOHTA ;
+ +A+Der/vuohta: VUOHTA ;                    !^C^
+ +A+Der/vuohta:is VUOHTA ;                  !^C^
  +A: N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
  +A: OTH-ODDCASE ;
  +A: ABBO/AMOS ;
@@ -653,8 +681,8 @@ LEXICON MUTTÁK ! c. Adjs on -ák, Attr -is or =
  
 LEXICON ALLAK ! d. Adjs on -ak, attr. on -a
  +A+Attr:a ATTR ;
- +A+Der/vuohta:a VUOHTA ;
- +A+Der/vuohta:ak VUOHTA ;
+ +A+Der/vuohta:a VUOHTA ;                   !^C^
+ +A+Der/vuohta:ak VUOHTA ;                  !^C^
  +A:ak N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess ;
  +A:ag OTH-ODDCASE ;
 ! +A:eQ1 BU/MUS ; !replaced to avoid adv. form alibut
@@ -671,8 +699,8 @@ LEXICON ALLAK ! d. Adjs on -ak, attr. on -a
  
 LEXICON GÅBDDÅK ! d2. Adjs on -åk, attr. on -å
  +A+Attr:a ATTR ;
- +A+Der/vuohta:a VUOHTA ;
- +A+Der/vuohta:åk VUOHTA ;
+ +A+Der/vuohta:a VUOHTA ;                       !^C^
+ +A+Der/vuohta:åk VUOHTA ;                     !^C^
  +A:åk N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess ;
  +A:åg OTH-ODDCASE ;
 ! +A:eQ1 BU/MUS ; !replaced to avoid adv. form gåbdibut
@@ -689,8 +717,8 @@ LEXICON GÅBDDÅK ! d2. Adjs on -åk, attr. on -å
  
 LEXICON GALMAS
  +A+Attr: ATTR ;
- +A+Der/vuohta: VUOHTA ;
- +A+Der/vuohta:sX2 VUOHTA ;
+ +A+Der/vuohta: VUOHTA ;                    !^C^
+ +A+Der/vuohta:sX2 VUOHTA ;                !^C^
  +A:sX2 N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
  +A:sX5 OTH-ODDCASE ;
  +A:sX5 ABBO/AMOS ;
@@ -698,8 +726,8 @@ LEXICON GALMAS
  
 LEXICON SUOHKAT
  +A+Attr:is ATTR ;
- +A+Der/vuohta:is VUOHTA ;
- +A+Der/vuohta:aQ1t VUOHTA ;
+ +A+Der/vuohta:is VUOHTA ;                  !^C^
+ +A+Der/vuohta:aQ1t VUOHTA ;                 !^C^
  +A:aQ1t N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
  +A:aQ1d OTH-ODDCASE ;
  +A:aQ1d ABBO/AMOS ;
@@ -708,9 +736,9 @@ LEXICON SUOHKAT
 LEXICON LÅSSÅT
  +A+Attr:is ATTR ;
  +A+Attr:å ATTR ;
- +A+Der/vuohta:is VUOHTA ;
- +A+Der/vuohta:å VUOHTA ;
- +A+Der/vuohta:åt VUOHTA ;
+ +A+Der/vuohta:is VUOHTA ;                   !^C^
+ +A+Der/vuohta:å VUOHTA ;                     !^C^
+ +A+Der/vuohta:åt VUOHTA ;                    !^C^
  +A:åt N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
  +A:åd OTH-ODDCASE ;
  +A:åd ABBO/AMOS ;
@@ -726,8 +754,8 @@ LEXICON LÅSSÅT
 
 LEXICON DIMES
  +A+Attr:a ATTR ;
- +A+Der/vuohta:a VUOHTA ;
- +A+Der/vuohta:esQ1 VUOHTA ;
+ +A+Der/vuohta:a VUOHTA ;           !^C^
+ +A+Der/vuohta:esQ1 VUOHTA ;        !^C^
  +A:esQ1 N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
  +A:ás OTH-ODDCASE ;
  +A:ás ABBO/AMOS ;
@@ -735,7 +763,7 @@ LEXICON DIMES
  
 LEXICON OAMES
  +A+Attr: ATTR ;
- +A+Der/vuohta: VUOHTA ;
+ +A+Der/vuohta: VUOHTA ;                 !^C^
  +A:sQ1 N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
  +A:X4s OTH-ODDCASE ;
  +A:X4s ABBO/AMOS ;
@@ -744,8 +772,8 @@ LEXICON OAMES
 LEXICON TJALMMIS
  +A+Attr:X2 ATTR ;
  +A+Attr:is ATTR ;
- +A+Der/vuohta:is VUOHTA ;
- +A+Der/vuohta:X2 VUOHTA ;
+ +A+Der/vuohta:is VUOHTA ;           !^C^
+ +A+Der/vuohta:X2 VUOHTA ;           !^C^
  +A:X2 N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
  +A:X5 OTH-ODDCASE ;
  +A:X5 ABBO/AMOS ;
@@ -754,17 +782,84 @@ LEXICON TJALMMIS
 LEXICON STUORAK
  +A+Attr: ATTR ;
  +A+Attr:ra ATTR ;
- +A+Der/vuohta:ra VUOHTA ;
+ +A+Der/vuohta:ra VUOHTA ;              !^C^
+ +A+Der/vuohta:ak VUOHTA ;              !^C^
  +A:ak N-ODDCASE ; 
  +A:ag OTH-ODDCASE ;
  +A:á BU/MUS ;
  +A+Adv:agit K ; 
+ 
+LEXICON SJÆVNNJAT ! miscellanious uneven No attribute, stemvowel change
+ +A+Der/vuohta:Q1 VUOHTA ;                !^C^
+ +A:Q1 N-ODDCASE ; 
+ +A:X5 OTH-ODDCASE ;
+ +A:X5 ABBO/AMOS ;
+ +A+Adv:X5it K ;
+ 
+LEXICON RIHTSOK ! miscellanious uneven No attribute, no stemvowel change
+ +A+Der/vuohta:Q1 VUOHTA ;                !^C^
+ +A:Q1 N-ODDCASE ; 
+ +A: OTH-ODDCASE ;
+ +A: ABBO/AMOS ;
+ +A+Adv:it K ;
+ 
+ 
+LEXICON OANEP  !Inherent comparatives
+ +A: BU/MUS ; 
+ 
+LEXICON TSIBTSA !attr =
+ +A+Attr:X3 ATTR ;
+ +A+Der/vuohta:X3 VUOHTA ;              !^C^
+ +A+Sg+Nom:X3 K ;
+ +A:X5 OTH-ODDCASE ;
+ +A:X5 ABBO/AMOS ;
+ +A+Adv:X5it K ;
+
+
+
 
  
-
  
 ! Contracted stems
 ! ----------------
+
+LEXICON SÁDNES ! attr =
+ +A+Attr:Q1s ATTR ;
+ +A+Der/vuohta:Q1s VUOHTA ;              !^C^
+ +A+Sg+Nom:Q1s K ;
+ +A:X4 ILL-EVENCASE ;
+ +A:X4 N-EVENWEAKSTEM ;
+ +A+Sg+Nom:X4 PxV ;
+ +A+Ess:X4n K ;
+ +A:X4 BU/MUS ;
+ +A+Adv:X4t K ;
+ 
+LEXICON GOAVSOS  !attr =
+ +A+Attr:Q3s ATTR ;
+ +A+Der/vuohta:Q3s VUOHTA ;              !^C^
+ +A+Sg+Nom:Q3s K ;
+ +A:X4 ILL-EVENCASE ;
+ +A:X4 N-EVENWEAKSTEM ;
+ +A+Sg+Nom:X4 PxV ;
+ +A+Ess:X4n K ;
+ +A:X4 BU/MUS ;
+ +A+Adv:X4t K ;
+ 
+LEXICON SUVRES  !attr suvra
+ +A+Attr:Q1a ATTR ;
+ +A+Der/vuohta:Q1a VUOHTA ;              !^C^
+ +A+Der/vuohta:Q1es VUOHTA ;              !^C^
+ +A+Sg+Nom:Q1es K ;
+ +A:á ILL-EVENCASE ;
+ +A:á N-EVENWEAKSTEM ;
+ +A+Sg+Nom:á PxV ;
+ +A+Ess:án K ;
+ +A:á BU/MUS ;
+ +A+Adv:át K ;
+ 
+
+
+
 
 ! Comparation
 ! -----------
@@ -783,6 +878,7 @@ LEXICON BU/MUS ! even-syll adjectives
  
 LEXICON ABBO/AMOS ! odd-syll adjectives
  +Comp+Sg+Nom:ap K ;
+ +Comp+Sg+Nom:abbo K ;
  +Comp+Attr:ap ATTR ;
  +Comp: ABBO ;
  +Superl: AMOS ; 
