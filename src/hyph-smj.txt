@@ -13,14 +13,14 @@ define 2ndVow [ e | a | o | E | A | U ] ;
 
 define VowNot2ndVow [ Vow - 2ndVow ] ;
 
-define U [ u | U ] ; define O [ o | O ]  ; define A [ a | A ]  ;
-define E [ e | E ] ; define I [ i | I ]  ;
+define vU [ u | U ] ; define vO [ o | O ]  ; define vA [ a | A ]  ;
+define vE [ e | E ] ; define vI [ i | I ]  ;
 
-define VowNotU [ Vow - U ] ;
-define VowNotO [ Vow - O ] ;
-define VowNotA [ Vow - A ] ;
-define VowNotE [ Vow - E ] ;
-define VowNotI [ Vow - I ] ;
+define VowNotU [ Vow - vU ] ;
+define VowNotO [ Vow - vO ] ;
+define VowNotA [ Vow - vA ] ;
+define VowNotE [ Vow - vE ] ;
+define VowNotI [ Vow - vI ] ;
 
 define IEdipht [ i e | I e | I E ] ;
 define UOdipht [ u o | U o | U O ] ;
@@ -33,7 +33,7 @@ define Cns [ b | c | č | d | đ | f | g | h | j | k | l | m | n | ŋ |
              p | r | s | š | t | ŧ | v | x | z | ž |   
              P | R | S | Š | T | Ŧ | V | X | Z | Ž ] ; 
 
-define S [ S | s ] ; define Cnss [ Cns - S ] ;
+define cS [ S | s ] ; define Cnss [ Cns - cS ] ;
 
 !define Sgm [ Cns | Vow ] ;
 
@@ -42,7 +42,7 @@ define S [ S | s ] ; define Cnss [ Cns - S ] ;
 echo << Rules>>
 
 define beforedipht [..] -> %- || Vow _ dipht ;
-define nodipht  [..] -> %- || Cns Vow _ VowNot2ndVow , Cns VowNotU _ O  , Cns VowNotO _ A  , Cns VowNotI _ E ;
+define nodipht  [..] -> %- || Cns Vow _ VowNot2ndVow , Cns VowNotU _ vO  , Cns VowNotO _ vA  , Cns VowNotI _ vE ;
 define rdnj4cns [..] -> %- || Vow (Cns) r _ d n j ;
 define unvoiced [..] -> %- || Vow (Cns) _ h [ n | m | l | j | r ] Vow ;
 define palatal  [..] -> %- || Vow (Cns) d _ d j , Vow (Cns) l _ l j , Vow (Cns) n _ n j , Vow (Cns) d _ n j , Vow (Cns) t _ n j ;
