@@ -28,8 +28,8 @@ define OAdipht [ o a | O a | O A ] ;
 
 define dipht [ IEdipht | UOdipht | OAdipht ] ;
 
-define Cns [ b | c | č | d | đ | f | g | h | j | k | l | m | n | ŋ | 
-             B | C | Č | D | Đ | F | G | H | J | K | L | M | N | Ŋ | 
+define Cns [ b | c | č | d | đ | f | g | h | j | k | l | m | n | ŋ | ñ | ń | 
+             B | C | Č | D | Đ | F | G | H | J | K | L | M | N | Ŋ | Ñ | Ń |
              p | r | s | š | t | ŧ | v | w | x | z | ž |   
              P | R | S | Š | T | Ŧ | V | W | X | Z | Ž ] ; 
 
@@ -48,10 +48,10 @@ define unvoiced [..] -> %- || Vow (Cns) _ h [ n | m | l | j | r ] Vow ;
 define palatal  [..] -> %- || Vow (Cns) d _ d j , Vow (Cns) l _ l j , Vow (Cns) n _ n j , Vow (Cns) d _ n j , Vow (Cns) t _ n j ;
 define dissnas  [..] -> %- || Vow [ đ | j | l | r | v ] _ [ b m | d n | g ŋ ] ;
 define s2cns    [..] -> %- || Vow Cns _ s Cnss Vow ; ! máj-stet,  (if commented out: máis-tit), " Vow (Cns)" as LC gives må-rå-stit, fá-sto, now rås-tit, fás-to.
-define j4cns    [..] -> %- || Vow  Cns Cns Cns  _ [ [s|t] j | t s ]  Vow ;
-define j3cns    [..] -> %- || Vow  Cns Cns      _ [ [s|t] j | t s ] Vow ;
-define j2cns    [..] -> %- || Vow  Cns          _ [ [s|t] j | t s ] Vow ;
-define j1cns    [..] -> %- || Vow               _ [ [s|t] j | t s ] Vow ;
+define j4cns    [..] -> %- || Vow  Cns Cns Cns  _ [ [s|t|n] j | t s ]  Vow ;
+define j3cns    [..] -> %- || Vow  Cns Cns      _ [ [s|t|n] j | t s ] Vow ;
+define j2cns    [..] -> %- || Vow  Cns          _ [ [s|t|n] j | t s ] Vow ;
+define j1cns    [..] -> %- || Vow               _ [ [s|t|n] j | t s ] Vow ;
 define 4cns     [..] -> %- || Vow  Cns Cns  Cns _  Cns Vow ;
 define 3cns     [..] -> %- || Vow  Cns Cns      _  Cns Vow ;
 define 2cns     [..] -> %- || Vow  Cns          _  Cns Vow ;
