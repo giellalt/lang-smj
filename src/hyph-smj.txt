@@ -33,6 +33,11 @@ define Cns [ b | c | č | d | đ | f | g | h | j | k | l | m | n | ŋ | ñ | ń 
              p | r | s | š | t | ŧ | v | w | x | z | ž |   
              P | R | S | Š | T | Ŧ | V | W | X | Z | Ž ] ; 
 
+!define Gem [ b b | d d | f f | g g | k k | l l | m m | n n | ŋ ŋ | ñ ñ | ń ń | 
+!             B B | D D | F F | G G | K K | L L | M M | N N | Ŋ Ŋ | Ñ Ñ | Ń Ń |
+!             p p | r r | s s | š š | t t | ŧ ŧ | v v |    
+!             P P | R R | S S | Š Š | T T | Ŧ Ŧ | V V ]  ;
+             
 define cS [ S | s ] ; define Cnss [ Cns - cS ] ;
 
 !define Sgm [ Cns | Vow ] ;
@@ -45,9 +50,23 @@ define beforedipht [..] -> %- || Vow _ dipht ;
 define nodipht  [..] -> %- || Cns Vow _ VowNot2ndVow , Cns VowNotU _ vO  , Cns VowNotO _ vA  , Cns VowNotI _ vE ;
 define rdnj4cns [..] -> %- || Vow (Cns) r _ d n j ;
 define unvoiced [..] -> %- || Vow (Cns) _ h [ n | m | l | j | r ] Vow ;
-define palatal  [..] -> %- || Vow (Cns) d _ d j , Vow (Cns) l _ l j , Vow (Cns) n _ n j , Vow (Cns) d _ n j , Vow (Cns) t _ n j ;
-define dissnas  [..] -> %- || Vow [ đ | j | l | r | v ] _ [ b m | d n | g ŋ ] ;
+define palatal  [..] -> %- || Vow (Cns) d _ d j , Vow (Cns) l _ l j , Vow (Cns) n _ n j , Vow ([Cns - d]) d _ n j , Vow ([Cns - t]) t _ n j ;
+!define dissnas  [..] -> %- || Vow [ b | d | j | l | r | v ] _ [ b m | d n | g ŋ ] Vow ;
+define dissnas  [..] -> %- || Vow [ b | d | j | l | r | v ] _ [ b m | d n | g ŋ ] Vow ;
 define s2cns    [..] -> %- || Vow Cns _ s Cnss Vow ; ! máj-stet,  (if commented out: máis-tit), " Vow (Cns)" as LC gives må-rå-stit, fá-sto, now rås-tit, fás-to.
+
+define gem1cns  [..] -> %- || 
+                              Vow b _ b m Vow ,
+                              Vow d _ d (n) j Vow , 
+                              Vow g _ g [ŋ|ń|ñ] Vow , 
+                              Vow k _ k n Vow , 
+                              Vow l _ l [d|j|n|t(j)] Vow ,
+                              Vow m _ m [b|p] Vow ,
+                              Vow n _ n [ d | t [j|s] ]  Vow ,
+                              Vow [ŋ|ń|ñ] _ [ŋ|ń|ñ] [g|k] Vow ,
+                              Vow p _ p [t([j|s])|s(j)] Vow ,
+                              Vow s _ s [[j[k|m|v]] | k|m|n|t ]  Vow ;
+                             
 define j4cns    [..] -> %- || Vow  Cns Cns Cns  _ [ [s|t|n] j | t s ]  Vow ;
 define j3cns    [..] -> %- || Vow  Cns Cns      _ [ [s|t|n] j | t s ] Vow ;
 define j2cns    [..] -> %- || Vow  Cns          _ [ [s|t|n] j | t s ] Vow ;
@@ -74,6 +93,8 @@ palatal
 dissnas 
 .o.
 s2cns
+.o.
+gem1cns
 .o.
 j4cns
 .o.
