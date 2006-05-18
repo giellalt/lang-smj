@@ -9,7 +9,7 @@ define Vow       [ a | á | e | i | o | u | y | æ | ø | å | ä | ö |
 é | ó | ú | í | à | è | ò | ù | ì | ë | ü | ï | â | ê | ô | û | î | ã | ý 
 É | Ó | Ú | Í | À | È | Ò | Ù | Ì | Ë | Ü | Ï | Â | Ê | Ô | Û | Î | Ã | Ý ] ;
 
-define 2ndVow [ e | a | o | E | A | U ] ;
+define 2ndVow [ e | a | o | u | E | A | O | U ] ;
 
 define VowNot2ndVow [ Vow - 2ndVow ] ;
 
@@ -25,8 +25,9 @@ define VowNotI [ Vow - vI ] ;
 define IEdipht [ i e | I e | I E ] ;
 define UOdipht [ u o | U o | U O ] ;
 define OAdipht [ o a | O a | O A ] ;
+define OUdipht [ o u | O u | O U ] ; ! jour-na-lis-sta
 
-define dipht [ IEdipht | UOdipht | OAdipht ] ;
+define dipht [ IEdipht | UOdipht | OAdipht | OUdipht ] ;
 
 define Cns [ b | c | č | d | đ | f | g | h | j | k | l | m | n | ŋ | ñ | ń | 
              B | C | Č | D | Đ | F | G | H | J | K | L | M | N | Ŋ | Ñ | Ń |
@@ -46,27 +47,33 @@ define cS [ S | s ] ; define Cnss [ Cns - cS ] ;
 
 echo << Rules>>
 
-define beforedipht [..] -> %- || Vow _ dipht ;
-define nodipht  [..] -> %- || Cns Vow _ VowNot2ndVow , Cns VowNotU _ vO  , Cns VowNotO _ vA  , Cns VowNotI _ vE ;
-define rdnj4cns [..] -> %- || Vow (Cns) r _ d n j ;
-define unvoiced [..] -> %- || Vow (Cns) _ h [ n | m | l | j | r ] Vow ;
-define palatal  [..] -> %- || Vow (Cns) d _ d j , Vow (Cns) l _ l j , Vow (Cns) n _ n j , Vow ([Cns - d]) d _ n j , Vow ([Cns - t]) t _ n j ;
-!define dissnas  [..] -> %- || Vow [ b | d | j | l | r | v ] _ [ b m | d n | g ŋ ] Vow ;
+define befdipht [..] -> %- ||     Vow           _ dipht ;
+define nodipht  [..] -> %- || Cns Vow           _ VowNot2ndVow , Cns VowNotU _ vO , 
+                              Cns VowNotO       _ [vA|vU]      , Cns VowNotI _ vE ;
+define rdnj4cns [..] -> %- || Vow (Cns) r       _ d n j ;
+define unvoiced [..] -> %- || Vow (Cns)         _ h [ n | m | l | j | r ] Vow ;
+define palatal  [..] -> %- || Vow (Cns) d       _ d j , Vow (Cns) l _ l j , Vow (Cns) n _ n j , 
+                              Vow ([Cns - d]) d _ n j , Vow ([Cns - t]) t _ n j ;
+                              
 define dissnas  [..] -> %- || Vow [ b | d | j | l | r | v ] _ [ b m | d n | g ŋ ] Vow ;
-define s2cns    [..] -> %- || Vow Cns _ s Cnss Vow ; ! máj-stet,  (if commented out: máis-tit), " Vow (Cns)" as LC gives må-rå-stit, fá-sto, now rås-tit, fás-to.
 
-define gem1cns  [..] -> %- || 
-                              Vow b _ b m Vow ,
-                              Vow d _ d (n) j Vow , 
-                              Vow g _ g [ŋ|ń|ñ] Vow , 
-                              Vow k _ k n Vow , 
-                              Vow l _ l [d|j|n|t(j)] Vow ,
-                              Vow m _ m [b|p] Vow ,
-                              Vow n _ n [ d | t [j|s] ]  Vow ,
-                              Vow [ŋ|ń|ñ] _ [ŋ|ń|ñ] [g|k] Vow ,
-                              Vow p _ p [t([j|s])|s(j)] Vow ,
-                              Vow s _ s [[j[k|m|v]] | k|m|n|t ]  Vow ;
-                             
+define gem1cns  [..] -> %- || Vow b       _       b m Vow ,
+                              Vow d       _       d (n) j Vow , 
+                              Vow g       _       g [ŋ|ń|ñ] Vow , 
+                              Vow k       _       k n Vow , 
+                              Vow l       _       l [d|j|n|t(j)] Vow ,
+                              Vow m       _       m [b|p] Vow ,
+                              Vow n       _       n [ d | g | t ([j|s]) ]  Vow ,
+                              Vow [ŋ|ń|ñ] _ [ŋ|ń|ñ] [g|k] (Cns) Vow ,
+                              Vow p       _       p [k|t([j|s])|s(j)] Vow ,
+                              Vow s       _       s [[j[k|m|v]] | k|m|n|t ]  Vow ;
+define s2cns    [..] -> %- || Vow Cns s   _ s (j) (Cnss) Vow ;
+define s2cnswg  [..] -> %- || Vow Cns     _ s (j) Cnss Vow ;  
+                                                         ! máj-stet,  (if commented out: máis-tit), 
+                                                         ! " Vow (Cns)" as LC gives må-rå-stit, 
+                                                         ! fá-sto, now rås-tit, fás-to.
+
+!define st       [..] -> %- || Vow               _ s t Vow ;   ! a-sta                          
 define j4cns    [..] -> %- || Vow  Cns Cns Cns  _ [ [s|t|n] j | t s ]  Vow ;
 define j3cns    [..] -> %- || Vow  Cns Cns      _ [ [s|t|n] j | t s ] Vow ;
 define j2cns    [..] -> %- || Vow  Cns          _ [ [s|t|n] j | t s ] Vow ;
@@ -80,7 +87,7 @@ define 1cns     [..] -> %- || Vow               _  Cns Vow ;
 echo <<Combining...>>
 
 read regex [
-beforedipht
+befdipht
 .o.
 nodipht
 .o.
@@ -92,9 +99,11 @@ palatal
 .o.
 dissnas 
 .o.
+gem1cns
+.o.
 s2cns
 .o.
-gem1cns
+s2cnswg
 .o.
 j4cns
 .o.
@@ -113,3 +122,7 @@ j1cns
 1cns ] ;
 
 invert net ;
+
+
+
+!define dissnas  [..] -> %- || Vow [ b | d | j | l | r | v ] _ [ b m | d n | g ŋ ] Vow ;
