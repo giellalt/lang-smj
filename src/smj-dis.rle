@@ -542,9 +542,10 @@ SET NP-HEAD-GEN = (Pron Gen) | (N Gen) - Cmpnd;
 
 # The PRE-NP-HEAD family of sets
 # - - - - - - - - - - - - - - - -
-SET PRE-NP-HEAD = (Prop Attr) | (Prop @PROP>) | A | (Pron Pers Gen) | (N Gen) | Num | Cmpnd | CC |
-                  (Pron Dem)  | (Pron Refl Gen) | (Pron Indef) | (PrfPrc @PrcN>)  |
-                   (PrsPrc @PrcN>) ;SET NP-MEMBER   = PRE-NP-HEAD | N ;
+SET PRE-NP-HEAD = (Prop Attr) | (Prop @PROP>) | A | (Pron Pers Gen) | (N Gen) | 
+                  Num | Cmpnd | CC | (Pron Dem)  | (Pron Refl Gen) | (Pron Indef) | 
+                  (PrfPrc @PrcN>)  | (PrsPrc @PrcN>) ;
+SET NP-MEMBER   = PRE-NP-HEAD | N ;
 
 # There must be a sensible naming convention for these sets...
 SET NPNH = WORD - PRE-NP-HEAD ;#| ABBR ;     # NPNH = "NOT-PRE-NP-HEAD". 
@@ -1058,6 +1059,7 @@ SELECT (V Sg1) IF (*-1 (Pron Pers Sg1) BARRIER V);
 	## Mån didjij javlav:
 
 # Sg2
+# ---
 
 SELECT (V Sg2) IF (*-1 (Pron Sg2) BARRIER NOT-ADV) ;
 	## Dån jållåra. Ahte dån farga jållårå.
@@ -1068,25 +1070,44 @@ REMOVE Dem IF (0 (Pron Pers Sg2))(1 (V Sg2));
 REMOVE (Imprt Sg2) IF (-1 (Pron Pers Sg2))(0 (Ind Prs Sg2));
 	## Dån jållåra.
 
-SELECT Pl1 IF (-1 (Pron Pers Pl1 Nom))(0 (V Prt));
-	## Mij båråjma ;
+# Du1
+# ---
 
 SELECT Du1 IF (-1 (Pron Pers Du1 Nom))(0 (V Prt));
 	## Måj båråjma ;
 
-SELECT Pl2 IF (-1 (Pron Pers Pl2 Nom))(0 (V Prt));
-	## Dij båråjda ;
+# Du2
+# ---
 
 SELECT Du2 IF (-1 (Pron Pers Du2 Nom))(0 (V Prt));
 	## Dåj båråjda ;
 
 SELECT Du2 IF (0 (Pron Pers Du2 Nom))(1 (V Du2));
+
+# Pl1
+# ---
+
+SELECT Pl1 IF (-1 (Pron Pers Pl1 Nom))(0 (V Prt));
+	## Mij båråjma ;
+
 SELECT Pl1 IF (0 (Pron Pers Pl1 Nom))(1 (V Pl1));
+
+
+# Pl2
+# ---
+
+SELECT Pl2 IF (-1 (Pron Pers Pl2 Nom))(0 (V Prt));
+	## Dij båråjda ;
+
 SELECT Pl2 IF (0 (Pron Pers Pl2 Nom))(1 (V Pl2));
 
 
+# Adjectives
+# ==========
+
 
 # Attr pre-N
+# ----------
 
 SELECT Attr IF (0 (Prop Attr))(1 Mal OR Fem OR Sur);
 	## Jesus Kristus
@@ -1105,6 +1126,13 @@ REMOVE Adv IF (-1 (Dem Com))(0 (A Attr))(1 (N Com));
 
 REMOVE (A Sg Nom) IF (*-1 BOS OR LEFT OR CLB BARRIER NPNH)(1 N)(2 BOS OR RIGHT OR CLB);
 	## (vijdes sisanujn)
+
+
+# Case
+# ====
+
+# Genitive
+# ========
 
 # Gen in Spec
 REMOVE (Pl Nom) IF (0 Prop)(*1 N BARRIER NOT-ADJ);
@@ -1384,9 +1412,10 @@ REMOVE (N Sg Gen) IF (-2 ADVLCASE)(-1 VFIN)(0 (N Sg Nom));
 SELECT (N Sg Nom) IF (*-1 Rel BARRIER NPNH)(*1 V-SG3 BARRIER NOT-ADV-PCLE LINK *1 CLB OR EOS BARRIER (N Sg Nom));
 	## Dát sjattaj vaj luluj ålliduvvat mav Härrá lij profehta baktu javllam.
 
-REMOVE (N Sg Gen) IF (*-1 BOS OR CS BARRIER NPNH)(1 (V Ind Pl3) LINK NOT 0 Imprt OR ImprtII);
+#REMOVE (N Sg Gen) IF (*-1 BOS OR CS BARRIER NPNH)(1 (V Ind Pl3) LINK NOT 0 Imprt OR ImprtII);
 	## dan dihti go profehta le náv tjállám.
 
+REMOVE (N Sg Gen) IF (*-1 BOS OR CS BARRIER (Pron Pers Du1))(0 (N Pl Nom))(1 (V Ind Pl3) LINK NOT 0 Imprt OR ImprtII);
 # Genitive
 # ========
 
@@ -1487,7 +1516,7 @@ SELECT Pl3 IF (*-1 (N Sg Nom) BARRIER (Pron Pers Sg2 Nom) OR  (Pron Pers Sg3 Nom
     ## Anne ja Berit le jåhtemin.
     
 REMOVE Sg2 IF (*-1 (N Sg Nom) OR (Rel Sg Nom) BARRIER (Pron Pers Sg2 Nom))(NOT 0 Neg);
-REMOVE Pl3 IF (*-1 (N Sg Nom) LINK NOT *-1 CC BARRIER NPNH LINK -1 (N Sg Nom));
+REMOVE Pl3 IF (NOT *-1 (N Pl Nom))(*-1 (N Sg Nom) LINK NOT *-1 CC BARRIER NPNH LINK -1 (N Sg Nom));
 
 # PrfPrc
 # =======
