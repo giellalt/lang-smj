@@ -409,7 +409,6 @@ moattes+Pron+Indef:moaddás goabbákcase ;
 ålos+Pron+Indef:ållus goabbákcase ;
 nubbe+Pron+Indef+Sg+Nom:nubbe K ;
 nubbe+Pron+Indef+Ess:nubben K ;
-nubbe+Pron+Indef+Sg+Nom:nubbe K ;
 juobbá+Pron+Indef+Sg+Nom:juobbá K ;
 juobbá+Pron+Indef+Sg+Ill:juobbáj K ;
 nubbe+Pron+Indef+Sg+Ill:nubbáj K ;
@@ -810,166 +809,883 @@ LEXICON Cc
 
 
 LEXICON Numeral					!^N^
-!MILJON ;          ! a noun of its own		!^N^
-UNDERDUHAT ;      ! for generator under 1000	!^N^
-!JUSTDUHAT ;       ! going via 1000		!^N^
-!OVERDUHAT ;       ! for generator over 1000	!^N^
-!OLD ;             ! for "thirteen hundred, etc.	!^N^
-!num-ordinal ;     ! The basic ordinal numbers	!^N^!Integrated in card.
+MILIJÅVNNÅ ;          ! a noun of its own		!^N^
+UNDERTUVSÁN ;      ! for generator under 1000	!^N^
+JUSTTUVSÁN ;       ! going via 1000		!^N^
+OVERTUVSÁN ;       ! for generator over 1000	!^N^
+OLD ;             ! for "thirteen hundred, etc.	!^N^
 !num-derived ;    ! still unimplemented		!^N^
-!num-imprecise ;   ! still almost unimplemented	!^N^
+num-imprecise ;   ! still almost unimplemented	!^N^
 ARABIC ;          ! for the arabic numerals	!^C^
 ROMAN ;           ! for the roman numerals	!^C^
 NUM-PREFIXES ;    ! for §34 etc.		!^C^
 ISOLATED-NUMEXP ; ! for ½ etc.			!^C^
 
+! Million, a noun of its own
+! --------------------------
+
+LEXICON MILIJÅVNNÅ					!^N
+milijåvnnå:milijåvnnå AKTA ;			!^N^
+millijåvnnå:millijåvnnå AKTA ;	!^N^
+milijåvnåt+A+Ord:milijåvnåd3 VUOSTASJ ;	!^N^
+millijåvnåt+A+Ord:millijåvnåd3 VUOSTASJ ;	!^N^
+milliárdda:milliárdda AKTA ;		!^N^ ! Num or N?
+milliárdat+A+Ord:milliárdad3 VUOSTASJ ;		!^N^
+
+! Overtuvsán, for the numerals over 1000
+! --------------------------------------
+
+LEXICON OVERTUVSÁN				!^N^
+O-AKTAF ;     ! 1000				!^N^
+O-2TO9F ;     ! 2000, 3000, ...			!^N^
+O-JUSTLÅGEVF ; ! 10000				!^N^
+O-2TO9LÅG;   ! 20000, 30000, ...		!^N^
+O-LÅGENAN ;  ! 11000, 12000, ...		!^N^
+O-TJUOHTE ;     ! 100000				!^N^	
+O-2TO9TJUO ;   ! 200000, 300000, ...		!^N^
+
+! All the child lexica of OVERTUVSÁN have the prefix O-.
+! They are directed via their respective numerals to the lexicon JUSTTUVSÁN.
+
+
+! Thousands
+
+LEXICON O-AKTAF		!^N^
+akta JUSTDUHÁT ;	!^N^
+JUSTDUHÁT ;		!^N^
+
+LEXICON O-X1000		!^N^
+akta JUSTTUVSÁN ;	!^N^
+
+LEXICON O-2TO9F			!^N^
+guokta JUSTTUVSÁN ;		!^N^	
+gålmmå JUSTTUVSÁN ;		!^N^
+niellja JUSTTUVSÁN ;		!^N^		
+vihtta JUSTTUVSÁN ;		!^N^
+guhtta JUSTTUVSÁN ;		!^N^
+gietjav JUSTTUVSÁN ;		!^N^
+gáktsa JUSTTUVSÁN ;		!^N^
+aktse JUSTTUVSÁN ;		!^N^
+
+
+! Tens of thousands
+
+LEXICON O-JUSTLÅGEVF		!^N^
+lågev JUSTTUVSÁN ;		!^N^
+! This lexicon is for the number 10000 only. it is separated from the
+! rest to avoid forms like *logivihttaduhát, etc.
+
+
+LEXICON O-LÅGEVF			!^N^	     
+låk JUSTTUVSÁN ;		!^N^ !XXXlong form too?
+låk O-X1000 ;			!^N^ !XXXlong form too?
+låk O-2TO9F ;			!^N^ !XXXlong form too?
+! this lexicon is accessed only via other O-lexica, and not directly 
+! from OVERTUVSÁN. Thus, *logivihttaduhát, etc. is avoided.
+
+LEXICON O-2TO9LÅG		!^N^	  
+guokta O-LÅGEVF ;		!^N^
+gålmmå O-LÅGEVF ;		!^N^
+niellja O-LÅGEVF ;		!^N^
+vihtta O-LÅGEVF ;		!^N^
+guhtta O-LÅGEVF ;		!^N^
+gietjav O-LÅGEVF ;			!^N^
+gáktsa O-LÅGEVF ;		!^N^
+aktse O-LÅGEVF ;			!^N^
+
+
+! Teens of thousands
+
+LEXICON O-LÅGENAN		!^N^
+lågenan#akta JUSTTUVSÁN ;        !^N^
+lågenan#guokta:lågenan#guokta JUSTTUVSÁN ;          !^N^ 
+lågenan#gålmmå JUSTTUVSÁN ;       !^N^
+lågenan#niellja:lågenan#niellja JUSTTUVSÁN ;      !^N^ 
+lågenan#vihtta:lågenan#vihtta JUSTTUVSÁN ;             !^N^
+lågenan#guhtta:lågenan#guhtta JUSTTUVSÁN ;         !^N^ 
+lågenan#gietjav:lågenan#giehtjav JUSTTUVSÁN ;       !^N^ 
+lågenan#gáktsa:lågenan#gáktsa JUSTTUVSÁN ;       !^N^
+lågenan#aktse:lågenan#aktse JUSTTUVSÁN ;                 !^N^
+
+akta O-NL ;        !^N^
+guokta O-NL ;          !^N^ 
+gålmmå O-NL ;       !^N^
+niellja O-NL ;      !^N^ 
+vihtta O-NL ;             !^N^
+guhtta O-NL ;         !^N^ 
+gietjav O-NL ;       !^N^ 
+gáktsa O-NL ;       !^N^
+aktse O-NL ;                 !^N^
+
+
+ LEXICON O-NL			!^N^
+ lågenan JUSTTUVSÁN ;	!^N^
+
+
+! Hundreds of thousands
+
+LEXICON O-TJUOHTE					!^N^
+tjuohte JUSTTUVSÁN ;  ! 100000			!^N^
+tjuohte O-X1000 ;     ! 101000			!^N^
+tjuohte O-2TO9F ;    ! 102000, 103000, ...	!^N^
+tjuohte O-LÅGEVF ;    ! 110000, 113000, ...	!^N^
+tjuohte O-2TO9LÅG ;  ! 120000, 123000, ...	!^N^
+tjuohte O-LÅGENAN ; ! 115000, ...		!^N^
+
+LEXICON O-TJUODE					!^N^
+tjuode JUSTTUVSÁN ;  ! 200000			!^N^
+tjuode O-X1000 ;     ! 201000			!^N^
+tjuode O-2TO9F ;    ! 202000, 203000, ...	!^N^
+tjuode O-LÅGEVF ;    ! 210000, 213000, ...	!^N^
+tjuode O-2TO9LÅG ;  ! 220000, 223000, ...	!^N^
+tjuode O-LÅGENAN ; ! 215000, ...		!^N^
+
+LEXICON O-2TO9TJUO				!^N^
+akta O-TJUOHTE ;       ! #one# hundred...		!^N^
+guokta O-TJUODE ;				!^N^
+gålmmå O-TJUODE ;				!^N^
+niellja O-TJUODE ;				!^N^
+vihtta O-TJUODE ;				!^N^
+guhtta O-TJUODE ;				!^N^
+gietjav O-TJUODE ;					!^N^
+gáktsa O-TJUODE ;				!^N^
+aktse O-TJUODE ;					!^N^
+
+LEXICON JUSTDUHÁT				!^N^
+tuvsán UNDERTUVSÁN ;  	!^N^
+tuvsán+Num:tuvsán TUVSÁN ; ! Case infl of tuvsán	!^N^
+tuvsánat+A+Ord:tuvsána TUVSÁNAT ;			!^N^
+duhát UNDERTUVSÁN ;  	!^N^
+duhát:duhád TUVSÁN ; ! Case infl of duhát	!^N^
+duhádat+A+Ord:duháda TUVSÁNAT ;			!^N^
 
 
 
-LEXICON UNDERDUHAT
 
-akta AKTA ;
-akta:åvtå ÅVTÅ ;
-guokta GUOKTA ;
-gålmmå GÅLMMÅ ;
-niellja GUOKTA ;
-vihtta GÅLMMÅ ;
-guhtta GÅLMMÅ ;
-gietjav GIETJAV ;
-gáktsa GÁKTSA ;
-aktse AKTSE ;
-lågev LÅGEV ;
-tjuohte TJUOHTE ;
+! Justtuvsán, for numerals going via 1000
+! -------------------------------------
 
+LEXICON JUSTTUVSÁN				!^N^
+tuvsána UNDERTUVSÁN ;  ! Thousand-and-something	!^N^
+tuvsán:tuvsán TUVSÁN ; ! Case infl of tuvsán	!^N^
+tuvsánat+A+Ord:tuvsána TUVSÁNAT ;			!^N^
+duháda UNDERTUVSÁN ;  ! Thousand-and-something	!^N^
+duhát:duhád TUVSÁN ; ! Case infl of duhát	!^N^
+duhádat+A+Ord:duháda TUVSÁNAT ;			!^N^
+
+
+! Old, for the old counting thirteen hundred etc.	
+! -----------------------------------------------
+
+LEXICON OLD					!^N^
+akta NLX ;					!^N^	
+guokta NLX ;					!^N^
+gålmmå NLX ;					!^N^
+niellja NLX ;					!^N^
+vihtta NLX ;					!^N^
+guhtta NLX ;					!^N^
+gietjav NLX ;					!^N^
+gáktsa NLX ;					!^N^
+aktse NLX ;					!^N^
+lågenanakta GTJUODE ;					!^N^	
+lågenanguokta GTJUODE ;					!^N^
+lågenangålmmå GTJUODE ;					!^N^
+lågenanniellja GTJUODE ;					!^N^
+lågenanvihtta GTJUODE ;					!^N^
+lågenanguhtta GTJUODE ;					!^N^
+lågenangietjav GTJUODE ;					!^N^
+lågenangáktsa GTJUODE ;					!^N^
+lågenanaktse GTJUODE ;					!^N^
+
+LEXICON NLX					!^N^
+lågenan GTJUODE ;				!^N^
+
+
+
+
+LEXICON UNDERTUVSÁN				!^N^
+AKTAF ;     ! 1				!^N^
+2TO9F ;     ! 2-9			!^N^
+LÅGEVF ;     ! 10				!^N^
+LÅGENAN ;   ! 11-19             !^N^
+2TO9LÅG ;   ! 20-99				!^N^
+TJUOHTE ;     ! 100-199				!^N^
+2TO9TJUO ;   ! 200-999				!^N^
+
+LEXICON AKTAF					!^N^
+akta AKTA ;        !^N^
+akta:åvtå ÅVTÅ ;		!^N^
+vuostasj+A+Ord:vuostatj VUOSTASJ ;			 !^N^
+
+
+LEXICON 2TO9F					!^N^ 
+guokta:guokt GUOKTA ;                 !^N^ 
+nubbe+A+Ord:nupp nubbecase ;		!^N^ 
+nubbe+A+Ord+Sg+Nom:nubbe K ;        !^N^ 
+nubbe+A+Ord+Ess:nubben K ;         !^N^ 
+nubbe+A+Ord+Sg+Ill:nubbáj K ;       !^N^ 
+nubbe+A+Ord+Sg+Gen:nubbáj NUMERALCOMPOUNDS ;       !^N^ ^C^ 
+nuppát+A+Ord:nuppád3 VUOSTASJ ;       !^N^ 
+gålmmå GÅLMMÅ ;       !^N^ 
+goalmát+A+Ord:goalmád3 VUOSTASJ ;       !^N^ 
+niellja:niellj GUOKTA ;             !^N^ 
+nælját+A+Ord:næljád3 VUOSTASJ ;       !^N^ 
+vihtta+Num:vidá GÅLMMÅ-OBL ;                    !^N^
+vihtta+Num+Sg+Nom:vihtta K ;          !^N^
+vihtta+Num+Sg+Acc:vihtta K ;         !^N^
+vihtta+Num+Sg+Ill:vihttaj K ;         !^N^
+vihtta+Num+Ess:vihttan K ;            !^N^
+vidát+A+Ord:vidád3 VUOSTASJ ;       !^N^ 
+guhtta+Num:gudá GÅLMMÅ-OBL ;               !^N^ 
+guhtta+Num+Sg+Nom:guhtta K ;          !^N^
+guhtta+Num+Sg+Acc:guhtta K ;         !^N^
+guhtta+Num+Sg+Ill:guhttaj K ;         !^N^
+guhtta+Num+Ess:guhttan K ;            !^N^
+gudát+A+Ord:gudád3 VUOSTASJ ;       !^N^ 
+gietjav:giehtja GIETJAV ;        !^N^ 
+giehttjit+A+Ord:giehttjid3 VUOSTASJ ;       !^N^ 
+gáktsa:gákts GÁKTSA ;              !^N^
+gávtsát+A+Ord:gávtsád3 VUOSTASJ ;       !^N^ 
+aktse:akts AKTSE ;                      !^N^
+avtsát+A+Ord:avtsád3 VUOSTASJ ;       !^N^ 
+
+
+LEXICON LÅGEVF					!^N^
+lågev:låhk LÅGEV ;   !^N^
+lågåt+A+Ord:lågåd3 VUOSTASJ ;			!^N^
+låhke:låhk  TJUOHTECASE ; !^N^ 
+låhke+Num+Sg+Ill:låhkåj K ;            !^N^
+
+LEXICON LÅK-
+låk AKTAF ;				!^N^ !XXXlong form too?
+låk 2TO9F ;				!^N^ !XXXlong form too?
+låhke+Num+Sg+Nom:låk K ;         !^N^
+låhke+Num+Sg+Acc+Attr:låk K ;         !^N^
+låhke+Num+Sg+Gen:låk NUMERALCOMPOUNDS ;      !^N^ ^C^
+låhke+Num+Sg+Gen:låge NUMERALCOMPOUNDS ;      !^N^ ^C^
+låhke:låhk  TJUOHTECASE ; !^N^ ! vihttalåhke, collective number
+låhke+Num+Sg+Ill:låhkåj K ;            !^N^
+lågåt+A+Ord:lågåd3 VUOSTASJ ;			!^N^
+
+LEXICON LÅGENAN
+lågenan#akta AKTA ;        !^N^
+lågenan#akta:lågenan#åvtå ÅVTÅ ;		!^N^
+lågenan#vuostasj+A+Ord:lågenan#vuostatj VUOSTASJ ;			 !^N^
+lågenan#guokta:lågenan#guokt GUOKTA ;          !^N^ 
+lågenan#nubbe+A+Ord:lågenan#nupp nubbecase ;		!^N^ 
+lågenan#nubbe+A+Ord+Sg+Nom:lågenan#nubbe K ;      !^N^ 
+lågenan#nubbe+A+Ord+Ess:lågenan#nubben K ;       !^N^ 
+lågenan#nubbe+A+Ord+Sg+Ill:lågenan#nubbáj K ;    !^N^ 
+lågenan#nuppát+A+Ord:lågenan#nuppád3 VUOSTASJ ;       !^N^ 
+lågenan#gålmmå GÅLMMÅ ;       !^N^
+lågenan#goalmát+A+Ord:lågenan#goalmád3 VUOSTASJ ;       !^N^ 
+lågenan#niellja:lågenan#niellj GUOKTA ;      !^N^ 
+lågenan#nælját+A+Ord:lågenan#næljád3 VUOSTASJ ;       !^N^ 
+lågenan#vihtta+Num:lågenan#vidá GÅLMMÅ-OBL ;             !^N^
+lågenan#vihtta+Num+Sg+Nom:lågenan#vihtta K ;          !^N^
+lågenan#vihtta+Num+Sg+Acc:lågenan#vihtta K ;         !^N^
+lågenan#vihtta+Num+Sg+Ill:lågenan#vihttaj K ;         !^N^
+lågenan#vihtta+Num+Ess:lågenan#vihttan K ;            !^N^
+lågenan#vidát+A+Ord:lågenan#vidád3 VUOSTASJ ;       !^N^ 
+lågenan#guhtta+Num:lågenan#gudá GÅLMMÅ-OBL ;         !^N^ 
+lågenan#guhtta+Num+Sg+Nom:lågenan#guhtta K ;          !^N^
+lågenan#guhtta+Num+Sg+Acc:lågenan#guhtta K ;         !^N^
+lågenan#guhtta+Num+Sg+Ill:lågenan#guhttaj K ;         !^N^
+lågenan#guhtta+Num+Ess:lågenan#guhttan K ;            !^N^
+lågenan#gudát+A+Ord:lågenan#gudád3 VUOSTASJ ;       !^N^ 
+lågenan#gietjav:lågenan#giehtja GIETJAV ;       !^N^ 
+lågenan#giehttjit+A+Ord:lågenan#giehttjid3 VUOSTASJ ;       !^N^  
+lågenan#gáktsa:lågenan#gákts GÁKTSA ;       !^N^
+lågenan#gávtsát+A+Ord:lågenan#gávtsád3 VUOSTASJ ;       !^N^
+lågenan#aktse:lågenan#akts AKTSE ;                 !^N^
+lågenan#avtsát+A+Ord:lågenan#avtsád3 VUOSTASJ ;       !^N^ 
+
+akta AKTALÅGENAN ;        !^N^
+akta:åvtå ÅVTÅLÅGENAN ;		!^N^
+vuostasj#lågåt+A+Ord:vuostasj#lågåd3 VUOSTASJ ;			 !^N^
+guokta:guokt GUOKTALÅGENAN ;          !^N^ 
+!nubbe+A+Ord:nupp nubbecase ;		!^N^ XXX???
+!nubbe+A+Ord+Sg+Nom:nubbe K ;      !^N^XXX??? 
+!nubbe+A+Ord+Ess:nubben K ;       !^N^ XXX???
+!nubbe+A+Ord+Sg+Ill:nubbáj K ;    !^N^ XXX???
+nuppát#lågåt+A+Ord:nuppát#lågåd3 VUOSTASJ ;       !^N^ 
+gålmmå GÅLMMÅLÅGENAN ;       !^N^
+goalmát#lågåt+A+Ord:goalmát#lågåd3 VUOSTASJ ;       !^N^ 
+niellja:niellj GUOKTALÅGENAN ;      !^N^ 
+nælját#lågåt+A+Ord:nælját#lågåd3 VUOSTASJ ;       !^N^ 
+vihtta+Num:vidá GÅLMMÅLÅGENAN-OBL ;             !^N^
+vihtta#lågenan+Num+Sg+Nom:vihtta#lågenan K ;          !^N^
+vihtta#lågenan+Num+Sg+Acc:vihtta#lågenan K ;         !^N^
+vihtta#lågenan+Num+Sg+Ill:vihttaj#lågenan K ;         !^N^
+vihtta#lågenan+Num+Ess:vihttan#lågenan K ;            !^N^
+vidát#lågåt+A+Ord:vidát#lågåd3 VUOSTASJ ;       !^N^ 
+guhtta+Num:gudá GÅLMMÅLÅGENAN-OBL ;         !^N^ 
+guhtta#lågenan+Num+Sg+Nom:guhtta#lågenan K ;          !^N^
+guhtta#lågenan+Num+Sg+Acc:guhtta#lågenan K ;         !^N^
+guhtta#lågenan+Num+Sg+Ill:guhttaj#lågenan K ;         !^N^
+guhtta#lågenan+Num+Ess:guhttan#lågenan K ;            !^N^
+gudát#lågåt+A+Ord:gudát#lågåd3 VUOSTASJ ;       !^N^ 
+gietjav:giehtja GIETJAVLÅGENAN ;       !^N^ 
+giehttjit#lågåt+A+Ord:giehttjit#lågåd3 VUOSTASJ ;       !^N^  
+gáktsa:gákts GÁKTSALÅGENAN ;       !^N^
+gávtsát#lågåt+A+Ord:gávtsát#lågåt VUOSTASJ ;       !^N^
+aktse:akts AKTSELÅGENAN ;                 !^N^
+avtsát#lågåt+A+Ord:avtsát#lågåd3 VUOSTASJ ;       !^N^ 
+
+
+! LEXICON NUPPELOT				!^N^ !XXX
+! okta NL ;					!^N^
+! guokte NL ;					!^N^
+! golbma NL ;					!^N^
+! njeallje NL ;					!^N^
+! njeallja NL ;					!^N^
+! vihtta NL ;					!^N^
+! guhtta NL ;					!^N^
+! čieža NL ;					!^N^
+! gávcci NL ;					!^N^
+! ovcci NL ;					!^N^
+
+! LEXICON NL					!^N^
+! :nuppe#lohkái JUSTTUVSÁN ;			!^N^
+! :nuppe#lohkái NUPPELOHKAI ;			!^N^
+
+
+LEXICON 2TO9LÅG					!^N^
+guokta LÅK- ;					!^N^
+gålmmå LÅK- ;					!^N^
+niellja LÅK- ;				!^N^
+vihtta LÅK- ;					!^N^
+guhtta LÅK- ;					!^N^
+gietjav LÅK- ;					!^N^
+gáktsa LÅK- ;					!^N^
+aktse LÅK- ;					!^N^
+
+LEXICON TJUOHTE					!^N^
+tjuohte:tjuoht TJUOHTECASE ;    !^N^
+tjuohte+Num+Sg+Ill:tjuohtáj K ; !^N^ 
+tjuohte+Num+Sg+Nom:tjuohte NUMERALCOMPOUNDS ; !^N^  ^C^
+!čuohti:čuođi OVERTUVSÁN ;			!^N^
+tjuohte LÅGEVF ;					!^N^ !to LÅK- too?
+tjuohte 2TO9LÅG ;					!^N^
+tjuohte AKTAF ;					!^N^
+tjuohte 2TO9F ;					!^N^
+tjuohte LÅGENAN ;				!^N^
+tjuodát+A+Ord:tjuodád3 VUOSTASJ ;			!^N^
+
+
+LEXICON 2TO9TJUO					!^N^
+guokta GTJUODE ;					!^N^
+gålmmå GTJUODE ;					!^N^
+niellja GTJUODE ;				!^N^
+njeallja GTJUODE ;				!^N^
+vihtta GTJUODE ;					!^N^
+guhtta GTJUODE ;					!^N^
+gietjav GTJUODE ;					!^N^
+gáktsa GTJUODE ;					!^N^
+aktse GTJUODE ;					!^N^
+
+
+LEXICON GTJUODE					!^N^
+!čuođi OVERTUVSÁN ;				!^N^
+tjuode+Num+Sg+Gen:tjuode NUMERALCOMPOUNDS ; !^N^ ^C^
+tjuode LÅGEVF ;					!^N^ !to LÅK- too?
+tjuode 2TO9LÅG ;					!^N^
+tjuode AKTAF ;					!^N^
+tjuode 2TO9F ;					!^N^
+tjuode LÅGENAN ;				!^N^
+tjuohte:tjuoht TJUOHTECASE ;    !^N^  ! imprecise number
+tjuodát+A+Ord:tjuodád3 VUOSTASJ ;			!^N^
+
+
+! Case forms of the basic digits
+! ------------------------------
+
+LEXICON AKTA                !^N^
++Num: AKTA-NIE ;               !^N^
++Num:Q1 AKTA-OBL ;              !^N^
+
+LEXICON AKTA-NIE                !^N^
+ +Sg+Nom: K ;               !^N^
+ +Sg+Ill:j K ;              !^N^
+ +Ess:n K ;                 !^N^
+
+LEXICON AKTA-OBL                !^N^
+ +Sg+Gen: K ;               !^N^
+ +Sg+Gen: NUMERALCOMPOUNDS ;        !^N^ ^C^
+ +Sg+Acc:v K ;              !^N^
+ +Sg+Ine:n K ;              !^N^
+ +Sg+Ela:s K ;              !^N^
+ +Sg+Com:jn K ;             !^N^
+ +Sg+Par:t K ;               !^N^
+ +Pl+Nom: K ;                !^N^
+ +Pl+Gen:j K ;               !^N^
+ +Pl+Acc:jt K ;              !^N^
+ +Pl+Ill:jda K ;             !^N^
+ +Pl+Ine:jn K ;              !^N^
+ +Pl+Ela:js K ;              !^N^
+ +Pl+Com:j K ;               !^N^
+ 
+LEXICON ÅVTÅ                 !^N^
++Num+Sg+Gen: K ;             !^N^
++Num+Sg+Gen: NUMERALCOMPOUNDS ;        !^N^ ^C^
++Num+Sg+Acc:v K ;            !^N^
++Num+Sg+Ine:n K ;            !^N^
++Num+Sg+Ela:s K ;            !^N^
++Num+Sg+Com:jn K ;           !^N^
++Num+Sg+Par:t K ;            !^N^
++Num+Pl+Nom: K ;             !^N^
++Num+Pl+Gen:j K ;            !^N^
++Num+Pl+Acc:jt K ;           !^N^
++Num+Pl+Ill:jda K ;          !^N^
++Num+Pl+Ine:jn K ;           !^N^
++Num+Pl+Ela:js K ;           !^N^
++Num+Pl+Com:j K ;            !^N^
+
+LEXICON GUOKTA                  !^N^
++Num:Q1 GUOVTE- ;               !^N^
++Num: GUOKTA- ;                 !^N^
+
+LEXICON GUOVTE-             !^N^
+ +Sg+Gen:e K ;              !^N^
+ +Sg+Gen:e NUMERALCOMPOUNDS ;        !^N^  ^C^
+ +Sg+Ine:en K ;             !^N^
+ +Sg+Ela:es K ;             !^N^
+ +Sg+Com:ijn K ;            !^N^
+ +Sg+Par:et K ;             !^N^
+ +Pl+Nom:e K ;              !^N^
+ +Pl+Gen:ij K ;             !^N^
+ +Pl+Acc:ijt K ;            !^N^
+ +Pl+Ill:ijda K ;           !^N^
+ +Pl+Ine:ijn K ;            !^N^
+ +Pl+Ela:ijs K ;            !^N^
+ +Pl+Com:ij K ;             !^N^
+
+
+LEXICON GUOKTA-          !^N^  
+ +Sg+Nom:a K ;           !^N^
+ +Sg+Acc:a K ;           !^N^
+ +Sg+Ill:áj K ;          !^N^
+ +Ess:an K ;             !^N^
+                         
+LEXICON GÅLMMÅ           !^N^
++Num: GÅLMMÅ-NAIE ;      !^N^
++Num:Q1 GÅLMMÅ-OBL ;     !^N^
+                        
+LEXICON GÅLMMÅ-NAIE      !^N^
+ +Sg+Nom: K ;            !^N^
+ +Sg+Acc: K ;            !^N^
+ +Sg+Ill:j K ;           !^N^
+ +Ess:n K ;              !^N^
+                         
+LEXICON GÅLMMÅ-OBL       !^N^
+ +Sg+Gen: K ;            !^N^
+ +Sg+Gen: NUMERALCOMPOUNDS ;        !^N^ ^C^
+ +Sg+Ine:n K ;           !^N^
+ +Sg+Ela:s K ;           !^N^
+ +Sg+Com:jn K ;          !^N^
+ +Sg+Par:t K ;           !^N^
+ +Pl+Nom: K ;            !^N^
+ +Pl+Gen:j K ;           !^N^
+ +Pl+Acc:jt K ;          !^N^
+ +Pl+Ill:jda K ;         !^N^
+ +Pl+Ine:jn K ;          !^N^
+ +Pl+Ela:js K ;          !^N^
+ +Pl+Com:j K ;           !^N^
+
+
+LEXICON GIETJAV             !^N^
++Num: GIETJAV-IE ;          !^N^
++Num:Q1 GIETJAV-OBL ;       !^N^
+                            
+LEXICON GIETJAV-IE          !^N^
+ +Sg+Ill:j K ;              !^N^
+ +Ess:n K ;                 !^N^
+                        
+LEXICON GIETJAV-OBL         !^N^
+ +Sg+Nom:v K ;              !^N^
+ +Sg+Gen: K ;               !^N^
+ +Sg+Gen: NUMERALCOMPOUNDS ;        !^N^  ^C^
+ +Sg+Acc:v K ;              !^N^
+ +Sg+Ine:n K ;              !^N^
+ +Sg+Ela:s K ;              !^N^
+ +Sg+Com:jn K ;             !^N^
+ +Sg+Par:t K ;              !^N^
+ +Pl+Nom: K ;               !^N^
+ +Pl+Gen:j K ;              !^N^
+ +Pl+Acc:jt K ;             !^N^
+ +Pl+Ill:jda K ;            !^N^
+ +Pl+Ine:jn K ;             !^N^
+ +Pl+Ela:js K ;             !^N^
+ +Pl+Com:j K ;              !^N^
  
 
-!lågenan
-!låhke
-!låk
-
-LEXICON AKTA
-+Num: AKTA-NIE ;
-+Num:X1 AKTA-OBL ;
-
-LEXICON AKTA-NIE
- +Sg+Nom: K ;
- +Sg+Ill:j K ;
- +Ess:n K ;
-
-LEXICON AKTA-OBL
- +Sg+Gen: K ; 
- +Sg+Acc:v K ;
- +Sg+Ine:n K ;
- +Sg+Ela:s K ;
- +Sg+Com:jn K ;
- +Sg+Par:t K ;
- +Pl+Nom: K ;
- +Pl+Gen:j K ;
- +Pl+Acc:jt K ;
- +Pl+Ill:jda K ;
- +Pl+Ine:jn K ;
- +Pl+Ela:js K ;
- +Pl+Com:j K ;
+LEXICON GÁKTSA              !^N^
++Num:Q1 GÁVTSE- ;           !^N^
++Num: GÁKTSA- ;             !^N^
+                            
+LEXICON GÁVTSE-             !^N^
+ +Sg+Gen:e K ;              !^N^
+ +Sg+Gen:e NUMERALCOMPOUNDS ;        !^N^ ^C^
+ +Sg+Ine:en K ;             !^N^
+ +Sg+Ela:es K ;             !^N^
+ +Sg+Com:ijn K ;            !^N^
+ +Sg+Par:et K ;             !^N^
+ +Pl+Nom:e K ;              !^N^
+ +Pl+Gen:ij K ;             !^N^
+ +Pl+Acc:ijt K ;            !^N^
+ +Pl+Ill:ijda K ;           !^N^
+ +Pl+Ine:ijn K ;            !^N^
+ +Pl+Ela:ijs K ;            !^N^
+ +Pl+Com:ij K ;             !^N^
+                            
+                            
+LEXICON GÁKTSA-             !^N^
+ +Sg+Nom:a K ;              !^N^
+ +Sg+Acc:a K ;              !^N^
+ +Sg+Ill:áj K ; !^N^  !XXX Spiik 77 -aj
+ +Ess:an K ;      !^N^
  
-LEXICON ÅVTÅ
-+Num+Sg+Gen: K ; 
-+Num+Sg+Acc:v K ;
-+Num+Sg+Ine:n K ;
-+Num+Sg+Ela:s K ;
-+Num+Sg+Com:jn K ;
-+Num+Sg+Par:t K ;
-+Num+Pl+Nom: K ;
-+Num+Pl+Gen:j K ;
-+Num+Pl+Acc:jt K ;
-+Num+Pl+Ill:jda K ;
-+Num+Pl+Ine:jn K ;
-+Num+Pl+Ela:js K ;
-+Num+Pl+Com:j K ;
+
+LEXICON AKTSE            !^N^
++Num:Q1 AVTSE- ;           !^N^
++Num: AKTS- ;             !^N^
+
+LEXICON AVTSE-          !^N^  
+ +Sg+Gen:e K ;          !^N^
+ +Sg+Gen:e NUMERALCOMPOUNDS ;        !^N^ ^C^
+ +Sg+Ine:en K ;         !^N^
+ +Sg+Ela:es K ;         !^N^
+ +Sg+Com:ijn K ;        !^N^
+ +Sg+Par:et K ;         !^N^
+ +Pl+Nom:e K ;          !^N^
+ +Pl+Gen:ij K ;         !^N^
+ +Pl+Acc:ijt K ;        !^N^
+ +Pl+Ill:ijda K ;       !^N^
+ +Pl+Ine:ijn K ;        !^N^
+ +Pl+Ela:ijs K ;        !^N^
+ +Pl+Com:ij K ;         !^N^
+                        
+                    
+LEXICON AKTS-           !^N^
+ +Sg+Nom:e K ;          !^N^
+ +Sg+Acc:e K ;          !^N^
+ +Sg+Ill:áj K ;  !^N^ !XXXSpiik 77 -aj
+ +Ess:an K ;        !^N^
+ 
+
+LEXICON LÅGEV      !^N^           
++Num:Q1 LÅGE- ;    !^N^
++Num: LÅHK- ;      !^N^
+                   
+LEXICON LÅGE-      !^N^
+ +Sg+Nom:ev K ;    !^N^
+ +Sg+Acc:ev K ;    !^N^
+ +Sg+Gen:e K ;     !^N^
+ +Sg+Gen:e NUMERALCOMPOUNDS ;        !^N^ ^C^
+ +Sg+Ine:en K ;    !^N^
+ +Sg+Ela:es K ;    !^N^
+ +Sg+Com:ijn K ;   !^N^
+ +Sg+Par:et K ;    !^N^
+ +Pl+Nom:e K ;     !^N^
+ +Pl+Gen:ij K ;    !^N^
+ +Pl+Acc:ijt K ;   !^N^
+ +Pl+Ill:ijda K ;  !^N^
+ +Pl+Ine:ijn K ;   !^N^
+ +Pl+Ela:ijs K ;   !^N^
+ +Pl+Com:ij K ;    !^N^
+                   
+                   
+LEXICON LÅHK-      !^N^
+ +Sg+Ill:åj K ;    !^N^
+ +Ess:en K ;       !^N^
+                   
+                   
+LEXICON AKTALÅGENAN  !^N^
++Num: AKTALÅGENAN-NIE ;  !^N^
++Num:Q1 AKTALÅGENAN-OBL ;      !^N^
+                   
+LEXICON AKTALÅGENAN-NIE    !^N^
+ +Sg+Nom:#lågenan K ;     !^N^
+ +Sg+Ill:j#lågenan K ;       !^N^
+ +Ess:n#lågenan K ;        !^N^
+                   
+LEXICON AKTALÅGENAN-OBL    !^N^
+ +Sg+Gen:#lågenan K ;      !^N^
+ +Sg+Gen:#lågenan NUMERALCOMPOUNDS ;      !^N^ ^C^
+ +Sg+Acc:v#lågenan K ; !^N^
+ +Sg+Ine:n#lågenan K ; !^N^
+ +Sg+Ela:s#lågenan K ; !^N^
+ +Sg+Com:jn#lågenan K ; !^N^
+ +Sg+Par:t#lågenan K ; !^N^
+ +Pl+Nom:#lågenan K ; !^N^
+ +Pl+Gen:j#lågenan K ; !^N^
+ +Pl+Acc:jt#lågenan K ; !^N^
+ +Pl+Ill:jda#lågenan K ; !^N^
+ +Pl+Ine:jn#lågenan K ; !^N^
+ +Pl+Ela:js#lågenan K ; !^N^
+ +Pl+Com:j#lågenan K ; !^N^
+ 
+LEXICON ÅVTÅLÅGENAN                   !^N^
++Num+Sg+Gen:#lågenan K ;              !^N^
++Num+Sg+Gen:#lågenan NUMERALCOMPOUNDS ;      !^N^ ^C^
++Num+Sg+Acc:v#lågenan K ;             !^N^
++Num+Sg+Ine:n#lågenan K ;             !^N^
++Num+Sg+Ela:s#lågenan K ;             !^N^
++Num+Sg+Com:jn#lågenan K ;            !^N^
++Num+Sg+Par:t#lågenan K ;             !^N^
++Num+Pl+Nom:#lågenan K ;              !^N^
++Num+Pl+Gen:j#lågenan K ;             !^N^
++Num+Pl+Acc:jt#lågenan K ;            !^N^
++Num+Pl+Ill:jda#lågenan K ;           !^N^
++Num+Pl+Ine:jn#lågenan K ;            !^N^
++Num+Pl+Ela:js#lågenan K ;            !^N^
++Num+Pl+Com:j#lågenan K ;             !^N^
+                                      
+LEXICON GUOKTALÅGENAN                 !^N^
++Num:Q1 GUOVTELÅGENAN ;               !^N^
++Num: GUOKT-LÅGENAN ;                 !^N^
+                                      
+LEXICON GUOVTELÅGENAN                 !^N^
+ +Sg+Gen:e#lågenan K ;                !^N^
+ +Sg+Gen:e#lågenan NUMERALCOMPOUNDS ;           !^N^ ^C^
+ +Sg+Ine:en#lågenan K ;               !^N^
+ +Sg+Ela:es#lågenan K ;               !^N^
+ +Sg+Com:ijn#lågenan K ;              !^N^
+ +Sg+Par:et#lågenan K ;               !^N^
+ +Pl+Nom:e#lågenan K ;                !^N^
+ +Pl+Gen:ij#lågenan K ;               !^N^
+ +Pl+Acc:ijt#lågenan K ;              !^N^
+ +Pl+Ill:ijda#lågenan K ;             !^N^
+ +Pl+Ine:ijn#lågenan K ;              !^N^
+ +Pl+Ela:ijs#lågenan K ;              !^N^
+ +Pl+Com:ij#lågenan K ;               !^N^
+                                      
+LEXICON GUOKT-LÅGENAN                 !^N^
+ +Sg+Nom:a#lågenan K ;                !^N^
+ +Sg+Acc:a#lågenan K ;                !^N^
+ +Sg+Ill:áj#lågenan K ;               !^N^
+ +Ess:an#lågenan K ;                  !^N^
+                                      
+LEXICON GÅLMMÅLÅGENAN                 !^N^
++Num: GÅLMMÅLÅGENAN-NAIE ;            !^N^
++Num:Q1 GÅLMMÅLÅGENAN-OBL ;           !^N^
+                                      
+LEXICON GÅLMMÅLÅGENAN-NAIE            !^N^
+ +Sg+Nom:#lågenan K ;                 !^N^
+ +Sg+Acc:#lågenan K ;                 !^N^
+ +Sg+Ill:j#lågenan K ;                !^N^
+ +Ess:n#lågenan K ;                   !^N^
+                                      
+LEXICON GÅLMMÅLÅGENAN-OBL             !^N^
+ +Sg+Gen:#lågenan K ;                 !^N^
+ +Sg+Gen:#lågenan NUMERALCOMPOUNDS ;         !^N^ ^C^
+ +Sg+Ine:n#lågenan K ;                !^N^
+ +Sg+Ela:s#lågenan K ;                !^N^
+ +Sg+Com:jn#lågenan K ;               !^N^
+ +Sg+Par:t#lågenan K ;                !^N^
+ +Pl+Nom:#lågenan K ;                 !^N^
+ +Pl+Gen:j#lågenan K ;                !^N^
+ +Pl+Acc:jt#lågenan K ;               !^N^
+ +Pl+Ill:jda#lågenan K ;              !^N^
+ +Pl+Ine:jn#lågenan K ;               !^N^
+ +Pl+Ela:js#lågenan K ;               !^N^
+ +Pl+Com:j#lågenan K ;                !^N^
+                                      
+LEXICON GIETJAVLÅGENAN                !^N^
++Num: GIETJAVLÅGENAN-IE ;             !^N^
++Num:Q1 GIETJAVLÅGENAN-OBL ;          !^N^
+                                      
+LEXICON GIETJAVLÅGENAN-IE             !^N^
+ +Sg+Ill:j#lågenan K ;                !^N^
+ +Ess:n#lågenan K ;                   !^N^
+                                      
+LEXICON GIETJAVLÅGENAN-OBL            !^N^
+ +Sg+Nom:v#lågenan K ;                !^N^
+ +Sg+Gen:#lågenan K ;                 !^N^
+ +Sg+Gen:#lågenan NUMERALCOMPOUNDS ;          !^N^ ^C^
+ +Sg+Acc:v#lågenan K ;                !^N^
+ +Sg+Ine:n#lågenan K ;                !^N^
+ +Sg+Ela:s#lågenan K ;                !^N^
+ +Sg+Com:jn#lågenan K ;               !^N^
+ +Sg+Par:t#lågenan K ;                !^N^
+ +Pl+Nom:#lågenan K ;                 !^N^
+ +Pl+Gen:j#lågenan K ;                !^N^
+ +Pl+Acc:jt#lågenan K ;               !^N^
+ +Pl+Ill:jda#lågenan K ;              !^N^
+ +Pl+Ine:jn#lågenan K ;               !^N^
+ +Pl+Ela:js#lågenan K ;               !^N^
+ +Pl+Com:j#lågenan K ;                !^N^
+                                      
+LEXICON GÁKTSALÅGENAN                 !^N^
++Num:Q1 GÁVTSELÅGENAN ;               !^N^
++Num: GÁKTS-LÅGENAN ;                 !^N^
+                                      
+LEXICON GÁVTSELÅGENAN                 !^N^
+ +Sg+Gen:e#lågenan K ;                !^N^
+ +Sg+Gen:e#lågenan NUMERALCOMPOUNDS ;       !^N^ ^C^
+ +Sg+Ine:en#lågenan K ;               !^N^
+ +Sg+Ela:es#lågenan K ;               !^N^
+ +Sg+Com:ijn#lågenan K ;              !^N^
+ +Sg+Par:et#lågenan K ;               !^N^
+ +Pl+Nom:e#lågenan K ;                !^N^
+ +Pl+Gen:ij#lågenan K ;               !^N^
+ +Pl+Acc:ijt#lågenan K ;              !^N^
+ +Pl+Ill:ijda#lågenan K ;             !^N^
+ +Pl+Ine:ijn#lågenan K ;              !^N^
+ +Pl+Ela:ijs#lågenan K ;              !^N^
+ +Pl+Com:ij#lågenan K ;               !^N^
+                                      
+LEXICON GÁKTS-LÅGENAN                 !^N^
+ +Sg+Nom:a#lågenan K ;                !^N^
+ +Sg+Acc:a#lågenan K ;                !^N^
+ +Sg+Ill:áj#lågenan K ; !^N^    !XXX Spiik 77 -aj
+ +Ess:an#lågenan K ;                  !^N^
+                                      
+LEXICON AKTSELÅGENAN                  !^N^
++Num:Q1 AVTSELÅGENAN ;                !^N^
++Num: AKTS-LÅGENAN ;                  !^N^
+                                      
+LEXICON AVTSELÅGENAN                  !^N^
+ +Sg+Gen:e#lågenan K ;                !^N^
+ +Sg+Gen:e#lågenan NUMERALCOMPOUNDS ;      !^N^ ^C^
+ +Sg+Ine:en#lågenan K ;               !^N^
+ +Sg+Ela:es#lågenan K ;               !^N^
+ +Sg+Com:ijn#lågenan K ;              !^N^
+ +Sg+Par:et#lågenan K ;               !^N^
+ +Pl+Nom:e#lågenan K ;                !^N^
+ +Pl+Gen:ij#lågenan K ;               !^N^
+ +Pl+Acc:ijt#lågenan K ;              !^N^
+ +Pl+Ill:ijda#lågenan K ;             !^N^
+ +Pl+Ine:ijn#lågenan K ;              !^N^
+ +Pl+Ela:ijs#lågenan K ;              !^N^
+ +Pl+Com:ij#lågenan K ;               !^N^
+                                      
+LEXICON AKTS-LÅGENAN                  !^N^
+ +Sg+Nom:e#lågenan K ;                !^N^
+ +Sg+Acc:e#lågenan K ;                !^N^
+ +Sg+Ill:áj#lågenan K ;  !^N^    !XXXSpiik 77 -aj
+ +Ess:an#lågenan K ;                  !^N^
+                                      
+LEXICON TJUOHTECASE           !^N^
+ +Num:Q1 TJUODE- ;                     !^N^
+ +Num: TJUOHT- ;                       !^N^
+                                      
+LEXICON TJUODE-                       !^N^
+ +Sg+Acc:ev K ;                       !^N^
+ +Sg+Gen:e K ;                        !^N^
+ +Sg+Ine:en K ;                       !^N^
+ +Sg+Ela:es K ;                       !^N^
+ +Sg+Com:ijn K ;                      !^N^
+ +Sg+Par:et K ;                       !^N^
+ +Pl+Nom:e K ;                        !^N^
+ +Pl+Gen:ij K ;                       !^N^
+ +Pl+Acc:ijt K ;                      !^N^
+ +Pl+Ill:ijda K ;                     !^N^
+ +Pl+Ine:ijn K ;                      !^N^
+ +Pl+Ela:ijs K ;                      !^N^
+ +Pl+Com:ij K ;                       !^N^
+                                      
+LEXICON TJUOHT-                       !^N^
+ +Sg+Nom:e K ;                        !^N^
+ +Ess:en K ;                          !^N^
+
+LEXICON TUVSÁN				!^N^
+ +Sg+Nom: K ;          !^N^
+ +Sg+Gen:a K ;         !^N^
+ +Sg+Gen: NUMERALCOMPOUNDS ;         !^N^  ^C^
+ +Sg+Acc:av K ;            !^N^
+ +Sg+Ill:ij K ;   !^N^
+ +Sg+Ine:in K ;           !^N^
+ +Sg+Ela:is K ;            !^N^
+ +Sg+Com:ijn K ;            !^N^
+ +Ess:in K ;                  !^N^
+ +Pl+Nom:a K ;                 !^N^
+ +Pl+Gen:ij K ;              !^N^
+ +Pl+Acc:ijt K ;              !^N^
+ +Pl+Ill:ijda K ;              !^N^
+ +Pl+Ine:ijn K ;                !^N^
+ +Pl+Ela:ijs K ;                 !^N^
+ +Pl+Com:ij K ;                 !^N^
 
 
-LEXICON GUOKTA
-+Num: GUOVTE- ;
-+Num: GUOKTA- ;
-
-LEXICON GUOVTE-
-K ;
-
-LEXICON GUOKTA-
-K ; 
-
-LEXICON GÅLMMÅ
-+Num: K ; 
-
-LEXICON GIETJAV
-+Num: K ; 
-
-LEXICON GÁKTSA
-+Num: K ; 
-
-LEXICON AKTSE
-+Num: K ; 
-
-LEXICON LÅGEV
-+Num: K ; 
-
-LEXICON TJUOHTE
-+Num: K ; 
 
 
+LEXICON NUMERALCOMPOUNDS ! numeral as first part !^N^
+ NAMÁK ;			   ! tuvsánjienat, logigielat, etc. !^N^
+ SASJ ; !^N^
+! NounSecond ;	! golmmačiegahas	!^N^
+! geardásaš:geardás DABALAS ;	   
+! !tuvsán#geardásaš !^N^
+! jahkásaš:jahkás DABALAS ; !^N^
 
 
-! Particles
-! =========
-
-LEXICON PCLE
-+Pcle: # ;
-
-LEXICON QPCLE
-+Qst+Pcle: # ; !Only Qst?
-
-LEXICON Particle
-aj PCLE ;
-dal PCLE ;
-dat PCLE ;
-de PCLE ;
-gal PCLE ;
-galla PCLE ;
-gus QPCLE ;
-gåla PCLE ;
-ham PCLE ;
-juo PCLE ;
-lik PCLE ;
-nav PCLE ;
-ga PCLE ;
-så PCLE ;
-ban PCLE ;
-rat PCLE ;
-ga PCLE ;
-vuojn PCLE ;
-villap PCLE ;
-gis PCLE ;
-má PCLE ;
-na PCLE ; 
-ná PCLE ;
-då PCLE ;
-iehtja PCLE ;
+! Ordinal numbers
+! ---------------
 
 
+LEXICON VUOSTASJ				!^N^
+ +Sg+Nom: K ;          !^N^
+ +Sg+Gen:a K ;         !^N^
+ +Sg+Acc:av K ;            !^N^
+ +Sg+Ill:ij K ;   !^N^
+ +Sg+Ine:in K ;           !^N^
+ +Sg+Ela:is K ;            !^N^
+ +Sg+Com:ijn K ;            !^N^
+ +Ess:in K ;                  !^N^
+ +Pl+Nom:a K ;                 !^N^
+ +Pl+Gen:ij K ;              !^N^
+ +Pl+Acc:ijt K ;              !^N^
+ +Pl+Ill:ijda K ;              !^N^
+ +Pl+Ine:ijn K ;                !^N^
+ +Pl+Ela:ijs K ;                 !^N^
+ +Pl+Com:ij K ;                 !^N^
+ +Attr: K ;					!^N^
+
+LEXICON TUVSÁNAT				!^N^
+ +Sg+Nom:t K ;          !^N^
+ +Sg+Gen:tta K ;         !^N^
+ +Sg+Acc:ttav K ;            !^N^
+ +Sg+Ill:ddaj K ;   !^N^
+ +Sg+Ine:ttan K ;           !^N^
+ +Sg+Ela:ttas K ;            !^N^
+ +Sg+Com:ttajn K ;            !^N^
+ +Ess:ddan K ;                  !^N^
+ +Pl+Nom:tta K ;                 !^N^
+ +Pl+Gen:ttaj K ;              !^N^
+ +Pl+Acc:ttajt K ;              !^N^
+ +Pl+Ill:ttajda K ;              !^N^
+ +Pl+Ine:ttajn K ;                !^N^
+ +Pl+Ela:ttajs K ;                 !^N^
+ +Pl+Com:ttaj K ;                 !^N^
+ +Attr:t K ;					!^N^
 
 
-! Interjections
-! =============
+! Imprecise numbers
+! -----------------
 
-LEXICON INTERJ
-+Interj: # ;
+LEXICON num-imprecise				!^N^
+!máŋga num-imprecise-distribution ;		!^N^
+!moadde   num-imprecise-distribution ;		!^N^
+!galle  num-imprecise-distribution ;		!^N^
+!máŋ0ga:máŋ'ga GOLBMA ;				!^N^
+!moadde:moadd GUOKTE ;				!^N^
+!gal0le:gal'le GOLBMA ;				!^N^
+!beal-nup+Num:beal%-nup3 # ; ! ad hoc		!^N^
+bielnup+Num+Sg+Nom:bielnup # ;				!^N^
+bielnup+Num+Sg+Gen:bielnup # ;				!^N^
+bielnup+Num+Sg+Acc:bielnup # ;				!^N^
+bielnup+Num+Sg+Gen:bielnup SASJ ;				!^N^
 
-LEXICON Interjection
-hå	INTERJ ;
-håj	INTERJ ;
-ge	INTERJ ;
-fuoj	INTERJ ;
-vuoj	INTERJ ;
-dale INTERJ ;
+!LEXICON num-imprecise-distribution		!^N^
+!NUPPELOHKAIGENERATOR ;  ! máŋga#nuppe#lohkái, máŋga !^N^
+!LOGIF ;        ! máŋga#logi, máŋga#lot		  !^N^
+!CUODI ;        ! máŋga#čuođi			  !^N^
+!NL ;           ! máŋga#nuppe#lohkái#duhát		  !^N^
+!O-NL ;         ! máŋga#nuppe#lohkái#duhát		  !^N^
+!O-LOGIF ;      ! máŋga#logi#duhát			  !^N^
+!JUSTTUVSÁN ;    ! máŋga#duhát			  !^N^
+!O-CUODI ;      ! máŋga#duhát			  !^N^
+
 
 
 
@@ -1028,11 +1744,12 @@ ARABIC ;					!^C^
 %, ARABIC ;							!^C^
 %: ARABIC ;							!^C^
 %  ARABIC ;	   ! Allowing for "23 500".			!^C^
+   ARABIC ;	   ! Allowing for "23 500" w/nbsp (initial char is alt-space)	!^C^
 %/ ARABIC ;	   ! 24/12					!^C^
 !%' ARABIC ;	   ! Since ' denotes cons.grad. This is not optimal either. 
 !+Num:%- R ; !^C^	   ! Number compounds
 +Num: R ; !^C^	   ! Hyphen removed bec. of "123- ja 124-viessu" !^C^
-+Num+Ord:%. # ;							 !^C^
++A+Ord:%. # ;							 !^C^
 ,%-+Num:,%- # ;		! 10,-					 !^C^
 %%+Num+Nom:%% # ;	! 50%. It is wrong, but 75 % of us write "75%".		!^C^
 % %%+Num+Nom:% %% # ;	! We must analyse the correct ones as well... 50 % etc.	!^C^
@@ -1056,17 +1773,20 @@ LEXICON ARABICCASE								!^C^
 ! # ;		! 123 is now 123+Num as well as 123+Num+Nom etc. Out again!	!^C^
 +Nom: # ;									!^C^
 +Gen: # ;									!^C^
-+Acc: # ;									!^C^
+!+Acc: # ;									!^C^
 +Gen:a # ;	! But here 123a 123+Num+Gen					!^C^
-+Acc:a # ;									!^C^
-+Ill:i # ;									!^C^
-+Ill:ij # ;									!^C^
++Acc:av # ;									!^C^
++Ill:j # ;									!^C^
++Ill:aj # ;									!^C^
 +Ill:áj # ;	! Testing over the weekend.					!^C^
-+Loc:s # ;									!^C^
-+Loc:is # ;									!^C^
-+Loc:as # ;									!^C^
-+Com:in # ;									!^C^
-+Com:ain # ;									!^C^
++Ela:s # ;									!^C^
++Ela:is # ;									!^C^
++Ela:as # ;									!^C^
++Ine:s # ;									!^C^
++Ine:is # ;									!^C^
++Ine:as # ;									!^C^
++Com:jn # ;									!^C^
++Com:ajn # ;									!^C^
 +Ess:n # ;									!^C^
 +Ess:an # ;									!^C^
 ! No plural numbers, hmm.
@@ -1089,7 +1809,7 @@ LEXICON ROM-THOUSAND              !^C^
  MMMMM ROM-THOUSAND-TAG ;					!^C^
 
 LEXICON ROM-THOUSAND-TAG					!^C^
- +Num: ROMNUMTAG ;						!^C^
+  ROMNUMTAG ;						!^C^
  ROM-HUNDRED ;					!^C^
  ROM-SPLIT	;				!^C^
 
@@ -1105,7 +1825,7 @@ LEXICON ROM-HUNDRED					!^C^
  CM ROM-HUNDRED-TAG ;						!^C^
 
 LEXICON ROM-HUNDRED-TAG					!^C^
- +Num: ROMNUMTAG ;						!^C^
+  ROMNUMTAG ;						!^C^
  ROM-TEN ;					!^C^
  ROM-SPLIT ;					!^C^
 
@@ -1121,7 +1841,7 @@ LEXICON ROM-TEN						!^C^
  XC ROM-TEN-TAG ;						!^C^
 
 LEXICON ROM-TEN-TAG					!^C^
- +Num: ROMNUMTAG ;						!^C^
+  ROMNUMTAG ;						!^C^
  ROM-ONE ;						!^C^
  ROM-SPLIT ;						!^C^
 
@@ -1137,8 +1857,8 @@ LEXICON ROM-ONE						!^C^
  IX ROM-ONE-TAG ;						!^C^
 
 LEXICON ROM-ONE-TAG					!^C^
- +Num: ROMNUMTAG ;						!^C^
- +N: ROMNUMTAG ;						!^C^ !The Olav viđeš fix (V gets N tag)
+  ROMNUMTAG ;						!^C^
+! +N: ROMNUMTAG ;						!^C^ !The Olav viđeš fix (Roman V now gets A)
  ROM-SPLIT ;						!^C^
 
 ! Here, we split the Roman numerals, in order to account for cases like "Kapihtal II-IV".
@@ -1168,7 +1888,7 @@ LEXICON 2ROM-THOUSAND              !^C^
  MMMMM 2ROM-THOUSAND-TAG ;					!^C^
 
 LEXICON 2ROM-THOUSAND-TAG					!^C^
- +Num: ROMNUMTAG ;						!^C^
+  ROMNUMTAG ;						!^C^
  2ROM-HUNDRED ;					!^C^
 
 LEXICON 2ROM-HUNDRED					!^C^
@@ -1183,7 +1903,7 @@ LEXICON 2ROM-HUNDRED					!^C^
  CM 2ROM-HUNDRED-TAG ;						!^C^
 
 LEXICON 2ROM-HUNDRED-TAG					!^C^
- +Num: ROMNUMTAG ;						!^C^
+  ROMNUMTAG ;						!^C^
  2ROM-TEN ;					!^C^
 
 LEXICON 2ROM-TEN						!^C^
@@ -1198,7 +1918,7 @@ LEXICON 2ROM-TEN						!^C^
  XC 2ROM-TEN-TAG ;						!^C^
 
 LEXICON 2ROM-TEN-TAG					!^C^
- +Num: ROMNUMTAG ;					!^C^
+  ROMNUMTAG ;					!^C^
  2ROM-ONE ;					!^C^
 
 LEXICON 2ROM-ONE						!^C^
@@ -1213,26 +1933,29 @@ LEXICON 2ROM-ONE						!^C^
  IX 2ROM-ONE-TAG ;						!^C^
 
 LEXICON 2ROM-ONE-TAG						!^C^
- +Num: ROMNUMTAG ;						!^C^
+  ROMNUMTAG ;						!^C^
  
 LEXICON ROMNUMTAG 						!^C^
-+Nom: # ;									!^C^
-+Gen: # ;									!^C^
-+Acc: # ;									!^C^
- :%: ROMNUMTAGOBL ;						!^C^
- :%' ROMNUMTAGOBL ;						!^C^
- :%- ROMNUMTAGOBL ;						!^C^
- :%´ ROMNUMTAGOBL ;						!^C^
-     ROMNUMTAGOBL ;						!^C^
+ +Num+Nom: # ;									!^C^
+ +Num+Gen: # ;									!^C^
+! +Num+Acc: # ;									!^C^
+ +A+Ord:%. # ;									!^C^ !III. as ordinal.
+ +A+Ord: # ;								!^C^ !Looking for trouble...
+ +Num:%: ROMNUMTAGOBL ;						!^C^
+ +Num:%' ROMNUMTAGOBL ;						!^C^
+ +Num:%- ROMNUMTAGOBL ;						!^C^
+ +Num:%´ ROMNUMTAGOBL ;						!^C^
+ +Num:   ROMNUMTAGOBL ;						!^C^
 
 LEXICON ROMNUMTAGOBL 						!^C^
 +Gen:a # ;	! But here 123a 123+Num+Gen					!^C^
-+Acc:a # ;									!^C^
-+Ill:i # ;									!^C^
++Acc:av # ;									!^C^
++Ill:j # ;									!^C^
 +Ill:ij # ;									!^C^
 +Ill:áj # ;					!^C^
-+Loc:s # ;									!^C^
-+Com:in # ;									!^C^
++Ela:s # ;									!^C^
++Ine:s # ;									!^C^
++Com:jn # ;									!^C^
 +Ess:n # ;									!^C^
 
 
@@ -1253,6 +1976,57 @@ LEXICON ISOLATED-NUMEXP					!^C^
 
 
 
+! Particles
+! =========
 
+LEXICON PCLE
++Pcle: # ;
+
+LEXICON QPCLE
++Qst+Pcle: # ; !Only Qst?
+
+LEXICON Particle
+aj PCLE ;
+dal PCLE ;
+dat PCLE ;
+de PCLE ;
+gal PCLE ;
+galla PCLE ;
+gus QPCLE ;
+gåla PCLE ;
+ham PCLE ;
+juo PCLE ;
+lik PCLE ;
+nav PCLE ;
+ga PCLE ;
+så PCLE ;
+ban PCLE ;
+rat PCLE ;
+ga PCLE ;
+vuojn PCLE ;
+villap PCLE ;
+gis PCLE ;
+má PCLE ;
+na PCLE ; 
+ná PCLE ;
+då PCLE ;
+iehtja PCLE ;
+
+
+
+
+! Interjections
+! =============
+
+LEXICON INTERJ
++Interj: # ;
+
+LEXICON Interjection
+hå	INTERJ ;
+håj	INTERJ ;
+ge	INTERJ ;
+fuoj	INTERJ ;
+vuoj	INTERJ ;
+dale INTERJ ;
 
 
