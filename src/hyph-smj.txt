@@ -61,23 +61,24 @@ define cS [ S | s ] ; define Cnss [ Cns - cS ] ;
 
 echo << Rules>>
 
-define befdipht [..] -> %- ||     Vow           _ dipht ;
-define nodipht  [..] -> %- || Cns Vow           _ VowNot2ndVow ;
-define NotXUdipht [..] -> %- || Cns VowNotEOA _ vU ;
-define NotUOdipht [..] -> %- || Cns VowNotUI _ vO ;
-define NotOAdipht [..] -> %- || Cns VowNotO _ vA ;
-define NotIEdipht [..] -> %- || Cns VowNotIAO _ vE ;
-define NotØYdipht [..] -> %- || Cns VowNotØ _ vY ;
-define NotIØdipht [..] -> %- || Cns VowNotI _ Ø Sgm ;
+define befdipht   [..] -> %^ ||     Vow           _ dipht ;
+define nodipht    [..] -> %^ || Cns Vow           _ VowNot2ndVow ;
+define NotXUdipht [..] -> %^ || Cns VowNotEOA _ vU ;
+define NotUOdipht [..] -> %^ || Cns VowNotUI _ vO ;
+define NotOAdipht [..] -> %^ || Cns VowNotO _ vA ;
+define NotIEdipht [..] -> %^ || Cns VowNotIAO _ vE ;
+define NotØYdipht [..] -> %^ || Cns VowNotØ _ vY ;
+define NotIØdipht [..] -> %^ || Cns VowNotI _ Ø Sgm ;
 !Cns VowNotU _ vO , Cns VowNotO       _ [vA|vU] , Cns VowNotI _ vE
-define rdnj4cns [..] -> %- || Vow (Cns) r       _ d n j ;
-define unvoiced [..] -> %- || Vow (Cns)         _ h [ n | m | l | j | r ] Vow ;
-define palatal  [..] -> %- || Vow (Cns) d       _ d j , Vow (Cns) l l _ j , Vow (Cns) n _ n j , 
+
+define rdnj4cns [..] -> %^ || Vow (Cns) r       _ d n j ;
+define unvoiced [..] -> %^ || Vow (Cns)         _ h [ n | m | l | j | r ] Vow ;
+define palatal  [..] -> %^ || Vow (Cns) d       _ d j , Vow (Cns) l l _ j , Vow (Cns) n _ n j , 
                               Vow ([Cns - d]) d _ n j , Vow ([Cns - t]) t _ n j ;
                               
-!define dissnas  [..] -> %- || Vow [ b | d | j | l | r | v ] _ [ b m | d n | g ŋ ] Vow ; !North sámi, messes up the following rules
+!define dissnas [..] -> %^ || Vow [ b | d | j | l | r | v ] _ [ b m | d n | g ŋ ] Vow ; !North sámi, messes up the following rules
 
-define gem1cns  [..] -> %- || Vow b b      _      m Vow ,
+define gem1cns  [..] -> %^ || Vow b b      _      m Vow ,
                               Vow d d      _      (n) j Vow , 
                               Vow g g      _      [ŋ|ń|ñ] Vow , 
                               Vow k k      _      n Vow , 
@@ -87,90 +88,63 @@ define gem1cns  [..] -> %- || Vow b b      _      m Vow ,
                               Vow [ŋ|ń|ñ] [ŋ|ń|ñ] _ [g|k] (Cns) Vow ,
                               Vow p p      _      [k|t([j|s])|s(j)] Vow ,
                               Vow s s (j)  _      [ k|m|v|n|t ]  Vow ;
-define s2cns    [..] -> %- || Vow Cns s _ s (j)  (Cnss) Vow ;
-define s2cnswg  [..] -> %- || Vow Cns   _ s (j)  (Cnss) Vow ;  
+define s2cns    [..] -> %^ || Vow Cns s _ s (j)  (Cnss) Vow ;
+define s2cnswg  [..] -> %^ || Vow Cns   _ s (j)  (Cnss) Vow ;  
                                                          ! máj-stet,  (if commented out: máis-tit), 
                                                          ! " Vow (Cns)" as LC gives må-rå-stit, 
                                                          ! fá-sto, now rås-tit, fás-to.
 
-define j4cns    [..] -> %- || Vow  Cns Cns Cns  _ [ [s|t|n] j | t s ]  Vow ;
-define j3cns    [..] -> %- || Vow  Cns Cns      _ [ [s|t|n] j | t s ] Vow ;
-define j2cns    [..] -> %- || Vow  Cns          _ [ [s|t|n] j | t s ] Vow ;
-define j1cns    [..] -> %- || Vow               _ [ [s|t|n] j | t s ] Vow ;
-define 4cns     [..] -> %- || Vow  Cns Cns  Cns _  Cns Vow ;
-define 3cns     [..] -> %- || Vow  Cns Cns      _  Cns Vow ;
-define xcns       [..] -> %- || x _ Vow ;
-define 2cns     [..] -> %- || Vow  Cns          _  Cns Vow ;
-define 1cns     [..] -> %- || Vow               _  Cns Vow ;
+define j4cns    [..] -> %^ || Vow  Cns Cns Cns  _ [ [s|t|n] j | t s ]  Vow ;
+define j3cns    [..] -> %^ || Vow  Cns Cns      _ [ [s|t|n] j | t s ] Vow ;
+define j2cns    [..] -> %^ || Vow  Cns          _ [ [s|t|n] j | t s ] Vow ;
+define j1cns    [..] -> %^ || Vow               _ [ [s|t|n] j | t s ] Vow ;
+define 4cns     [..] -> %^ || Vow  Cns Cns  Cns _  Cns Vow ;
+define 3cns     [..] -> %^ || Vow  Cns Cns      _  Cns Vow ;
+define xcns     [..] -> %^ || x _ Vow ;
+define 2cns     [..] -> %^ || Vow  Cns          _  Cns Vow ;
+define 1cns     [..] -> %^ || Vow               _  Cns Vow ;
 
 ! The philosophy here is to remove some boundaries who, when seen also in a left
 ! context, are parts of triphthongs, and thus should not be divided. We do it
 ! via restoring, in order not to mess up our diphthong rules.
 
-define savetripht %- -> 0 || e _ a u ;  ! does  work...
-define savetripht2 %- -> 0 || i _ e u ;  ! does  work...
-define savetripht3 %- -> 0 || i _ o u ;  ! does  work...
+define savetripht  %^ -> 0 || e _ a u ;  ! does  work...
+define savetripht2 %^ -> 0 || i _ e u ;  ! does  work...
+define savetripht3 %^ -> 0 || i _ o u ;  ! does  work...
 
 
                      
 echo <<Combining...>>
 
 read regex [
-befdipht
-.o.
-nodipht
-.o.
-NotXUdipht
-.o.
-NotUOdipht
-.o.
-NotOAdipht
-.o.
-NotIEdipht
-.o.
-NotØYdipht
-.o.
-NotIØdipht
-.o.
-rdnj4cns 
-.o.
-unvoiced
-.o.
-palatal 
-.o.
-gem1cns
-.o.
-s2cns
-.o.
-s2cnswg
-.o.
-j4cns
-.o.
-j3cns
-.o.
-j2cns
-.o.
-j1cns
-.o.
-4cns
-.o.
-3cns
-.o.
-xcns
-.o.
-2cns
-.o.
-1cns
-.o.
-savetripht
-.o.
-savetripht2
-.o.
-savetripht3
+    befdipht
+.o. nodipht
+.o. NotXUdipht
+.o. NotUOdipht
+.o. NotOAdipht
+.o. NotIEdipht
+.o. NotØYdipht
+.o. NotIØdipht
+.o. rdnj4cns 
+.o. unvoiced
+.o. palatal 
+.o. gem1cns
+.o. s2cns
+.o. s2cnswg
+.o. j4cns
+.o. j3cns
+.o. j2cns
+.o. j1cns
+.o. 4cns
+.o. 3cns
+.o. xcns
+.o. 2cns
+.o. 1cns
+.o. savetripht
+.o. savetripht2
+.o. savetripht3
  ] ;
 
 invert net ;
 
-
-
-!define dissnas  [..] -> %- || Vow [ b | d | j | l | r | v ] _ [ b m | d n | g ŋ ] Vow ;
+!define dissnas  [..] -> %^ || Vow [ b | d | j | l | r | v ] _ [ b m | d n | g ŋ ] Vow ;
