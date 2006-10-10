@@ -7,6 +7,27 @@
 ! The file contains the rule set for the non-segmental 
 ! Lule Sámi morphphonological rules
 
+! m4 rules for selecting parts of the file to a certain application.
+changequote(<<,>>)
+changecom(<<!>>,<<
+>>)
+define(<<FLAGINIT>>,
+<<ifdef(<<$1>>,<<define(<<$1>>,1)>>,<<define(<<$1>>,0)>>)>>)dnl
+dnl
+define(<<DIVNUM>>,0)dnl
+define(<<ENDOMIT>>,<<popdef(<<DIVNUM>>)divert(DIVNUM)dnl>>)dnl
+define(<<ENDKEEP>>,<<popdef(<<DIVNUM>>)divert(DIVNUM)dnl>>)dnl
+define(<<OMITIF>>,
+  <<pushdef(<<DIVNUM>>,ifelse(eval($1),0,0,-1))divert(DIVNUM)dnl>>)dnl
+define(<<KEEPIF>>,
+  <<pushdef(<<DIVNUM>>,ifelse(eval($1),0,-1,0))divert(DIVNUM)dnl>>)dnl
+define(<<ELSE>>,
+  <<define(<<DIVNUM>>,ifelse(DIVNUM,0,-1,0))divert(DIVNUM)dnl>>)dnl
+
+FLAGINIT(<<HYPHENATE>>)
+FLAGINIT(<<SHORTCOMP>>)
+FLAGINIT(<<DIPHSIMPL>>)
+
 Alphabet
  a á b c d e f g h i j k l m n ñ ŋ o p q			! small
  r s t u v w x y z å ä ø ö å æ %-
@@ -18,8 +39,13 @@ Alphabet
  É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý
  Ç Č Đ Ð Š Ŧ þ
 
- ':0			        ! Gradation mark
- #:0 %^:0                   ! Compounds
+ ':0			            ! Gradation mark
+
+KEEPIF(HYPHENATE)
+ #   %^                     ! Compound boundary and hyphenation mark (hyphenation version)
+ELSE
+ #:0 %^:0                   ! Compound boundary and hyphenation mark
+ENDKEEP
 
  e1:e i1:i o1:o o3:o u1:u   ! Morphophonemes  in sme, here temporarily due to common propernoun file
 
