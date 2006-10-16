@@ -20,8 +20,7 @@ define vE [ e | E ] ;
 define vI [ i | I ] ;
 define vEOA [ e | E | o | O | a | A ] ;
 define vIAO [ i | I | a | A | o | O ] ;
-define vOslash [ ø | Ø ] ; ! Renamed from vØ due to UTF-8 bug in the newest
-                           ! Xerox tools. Should be renamed back when the bug is fixed
+define vØ [ ø | Ø ] ;
 define vUI [ u | U | i | I ] ;
 
 define VowNotU [ Vow - vU ] ;
@@ -29,8 +28,7 @@ define VowNotO [ Vow - vO ] ;
 define VowNotA [ Vow - vA ] ;
 define VowNotE [ Vow - vE ] ;
 define VowNotI [ Vow - vI ] ;
-define VowNotOslash [ Vow - vOslash ] ; ! Renamed from VowNotØ due to UTF-8 bug in the newest
-                                        ! Xerox tools. Should be renamed back when the bug is fixed
+define VowNotØ [ Vow - vØ ] ;
 define VowNotY [ Vow - vY ] ;
 
 
@@ -41,14 +39,14 @@ define OUdipht [ o u | O u | O U ] ; ! jour-na-lis-sta
 define AUdipht [ a u | A u | A U ] ; ! fau-na
 define EUdipht [ e u | E u | E U ] ; ! leut-nánta
 define AEdipht [ a e | A e | A E ] ; ! lae-sta-dius
-define OslashYdipht [ ø y | Ø y | Ø Y ] ; ! nøyt-rála !ØYdipht renamed, cf above
+define ØYdipht [ ø y | Ø y | Ø Y ] ; ! nøyt-rála
 define OEdipht [ o e | O e | O E ] ; ! goe-the
 define IEdipht [ i e | I e | I E ] ; ! skiøld
 define IOdipht [ i o | I o | I O ] ; ! skiold, nation
 
 
 
-define dipht [ IEdipht | UOdipht | OAdipht | OUdipht | AUdipht | EUdipht | AEdipht | OslashYdipht | OEdipht | IEdipht | IOdipht ] ;
+define dipht [ IEdipht | UOdipht | OAdipht | OUdipht | AUdipht | EUdipht | AEdipht | ØYdipht | OEdipht | IEdipht | IOdipht ] ;
 
 define Cns [ b | c | č | d | đ | f | g | h | j | k | l | m | n | ŋ | ñ | ń | 
              B | C | Č | D | Đ | F | G | H | J | K | L | M | N | Ŋ | Ñ | Ń |
@@ -74,8 +72,8 @@ define NotXUdipht [..] -> %^ || Cns VowNotEOA _ vU ;
 define NotUOdipht [..] -> %^ || Cns VowNotUI _ vO ;
 define NotOAdipht [..] -> %^ || Cns VowNotO _ vA ;
 define NotIEdipht [..] -> %^ || Cns VowNotIAO _ vE ;
-define NotOslashYdipht [..] -> %^ || Cns VowNotOslash _ vY ;
-define NotIOslashdipht [..] -> %^ || Cns VowNotI _ Ø Sgm ; ! NotIØdipht renamed, change back later, cf above.
+define NotØYdipht [..] -> %^ || Cns VowNotØ _ vY ;
+define NotIØdipht [..] -> %^ || Cns VowNotI _ Ø Sgm ;
 !Cns VowNotU _ vO , Cns VowNotO       _ [vA|vU] , Cns VowNotI _ vE
 
 define rdnj4cns [..] -> %^ || Vow (Cns) r       _ d n j ;
@@ -92,12 +90,12 @@ define gem1cns  [..] -> %^ || Vow b b      _          m                  Vow ,
                               Vow d d      _      (n) j                  Vow , 
                               Vow g g      _      [ŋ|ń|ñ]                Vow , 
                               Vow k k      _          n                  Vow , 
-                              Vow l l      _      [d|j|n|t(j)]           Vow ,
+                              Vow l l      _      [d|j|n|t (j) ]         Vow ,
                               Vow m m      _      [b|p]                  Vow ,
                               Vow n n      _      [ d | g | t ([j|s]) ]  Vow ,
                               Vow [ŋ|ń|ñ]
                                   [ŋ|ń|ñ]  _      [g|k] (Cns)            Vow ,
-                              Vow p p      _      [k|t([j|s])|s(j)]      Vow ,
+                              Vow p p      _      [k|t ([j|s]) | s (j) ] Vow ,
                               Vow s s (j)  _      [ k|m|v|n|t ]          Vow ;
 
 define s2cns    [..] -> %^ || Vow Cns s _ s (j)  (Cnss) Vow ;
@@ -135,8 +133,8 @@ read regex [
 .o. NotUOdipht
 .o. NotOAdipht
 .o. NotIEdipht
-.o. NotOslashYdipht
-.o. NotIOslashdipht
+.o. NotØYdipht
+.o. NotIØdipht
 .o. rdnj4cns 
 .o. unvoiced
 .o. palatal 
