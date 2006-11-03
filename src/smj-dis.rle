@@ -186,6 +186,8 @@ LIST DERIVED =
 LIST @+FAUXV = @+FAUXV ; LIST @+FMAINV = @+FMAINV ; LIST @-FAUXV = @-FAUXV ; 
 LIST @-FMAINV = @-FMAINV ; LIST @-FSUBJ = @-FSUBJ ; 
 
+SET FMAINV = @-FMAINV | @+FMAINV ;
+
 LIST @ADV-A = @ADV-A ; LIST @ADV-ADV = @ADV-ADV ; LIST @ADVL = @ADVL ; 
 
 LIST @AN> = @AN> ; LIST @ActioN> = @ActioN> ; LIST @CC = @CC ; LIST @CMPND = @CMPND ; LIST @CS = @CS ; 
@@ -317,6 +319,7 @@ SET VFIN = V-MOOD - ConNeg ;
 SET VFIN-POS = V-MOOD - ConNeg - Neg ;
 SET VFIN-NOT-IMP = VFIN - Imprt ;
 
+SET VFIN-NOT-NEG = VFIN - (Neg Foc) ;
 
 # Person
 # - - - - 
@@ -542,27 +545,57 @@ SET NP-HEAD-GEN = (Pron Gen) | (N Gen) - Cmpnd;
 
 # The PRE-NP-HEAD family of sets
 # - - - - - - - - - - - - - - - -
-SET PRE-NP-HEAD = (Prop Attr) | (Prop @PROP>) | A | (Pron Pers Gen) | (N Gen) | 
-                  Num | Cmpnd | CC | (Pron Dem)  | (Pron Refl Gen) | (Pron Indef) | 
-                  (PrfPrc @PrcN>)  | (PrsPrc @PrcN>) ;
-SET NP-MEMBER   = PRE-NP-HEAD | N ;
+
+SET PRE-NP-HEAD = (Prop Attr) | (Prop @PROP>) | (A Attr) | ("buorre") | (Pron Pers Gen) | (N Gen) | 
+         Num | Cmpnd | CC | (Pron Dem) | (Pron Refl Gen) | (Pron Indef) | 
+         (PrfPrc @AN>) | (PrfPrc @PrcN>) | PrsPrc | (A Ord) ;
+         # | (Ill LINK 1 (PrfPrc @AN>)) | (Com LINK 1 (PrfPrc @AN>)) | (Loc LINK 1 (PrfPrc @AN>))
+         # The strict version of items that can only be premodifiers, not parts of the predicate
+         
+SET V-PRE-NP = PrfPrc | PrsPrc | Actor |  Actio | (V A) | (Ind Prs Sg3) | (Ind Prs Sg1) | (Imprt Prs Du2) ;
+    # to be used together with PRE-NP-HEAD before @PrcN> is disambiguated
+         
+SET NP-MEMBER  = PRE-NP-HEAD | N ;
+SET PRE-A-N   = (Pron Pers Gen) | (Pron Indef) | Num | (A Ord) | (Pron Dem) | (Pron Refl Gen) ;
+SET NOT-PRE-A-N = WORD - PRE-A-N ;
+SET PRE-APP   = COMMA | (PUNCT LEFT) | PRE-NP-HEAD ; # This set ist not only for what can
+                            # stand in front of appositions but also
+                            # postmodifiers.
+SET PUNCT-LEFT = (PUNCT LEFT) ;
+SET PUNCT-RIGHT = (PUNCT RIGHT) ;
+
+# V NPNHAIIP... N
+# BOS ... N V
 
 # There must be a sensible naming convention for these sets...
-SET NPNH = WORD - PRE-NP-HEAD ;#| ABBR ;     # NPNH = "NOT-PRE-NP-HEAD". 
-SET NPNHA = WORD - PRE-NP-HEAD - Adv ;     # NPNHA = "NOT (PRE-NP-HEAD-OR-ADV)"
+# Most strict BARRIERs...
+SET NPNH     = WORD - PRE-NP-HEAD | ABBR ;       # NPNH  = "NOT-PRE-NP-HEAD" 
+SET NPNHV    = WORD - PRE-NP-HEAD - V-PRE-NP ;    # including possible verbal premodifiers 
+SET NPNHA    = WORD - PRE-NP-HEAD - Adv ;        # NPNHA = "NOT-PRE-NP-HEAD-OR-ADV"
+SET NPNHAV   = WORD - PRE-NP-HEAD - Adv - V-PRE-NP ; # including possible verbal premodifiers
+SET NPNHAI   = WORD - PRE-NP-HEAD - Adv - Indef ;    # NPNHAI = "     ...-OR-INDEF"
+SET NPNHAII  = WORD - PRE-NP-HEAD - Adv - Indef - Ill ; # Illative indir.obj.
+SET NPNHAIIP = WORD - PRE-NP-HEAD - Adv - Indef - Ill - Pcle ; # <== is this our NPNH set?
+SET NPNHC    = WORD - PRE-NP-HEAD - Com ; # "njaŋggofirpmiiguin bivdin"
+SET NPNHCCC  = WORD - PRE-NP-HEAD - COMMA ;
+SET NAPP     = WORD - PRE-APP ;
+# SET TOLERANT-PRENPP = V ; (everything non-NP-head!)
+# ... Most sloppy BARRIERs
 
-# Not at all sure that we need the following four:
-SET NPNHAI = WORD - PRE-NP-HEAD - Adv - Indef ; # NPNHAI " "...-OR-INDEF"
-SET NPNHAII = WORD - PRE-NP-HEAD - Adv - Indef - Ill ; # Illative indir.obj.
-SET NPNHAIIP = WORD - PRE-NP-HEAD - Adv - Indef - Ill - Pcle ;
-SET NPNHC = WORD - PRE-NP-HEAD - Com ; # "njaô ëggofirpmiiguin bivdin"
+# Set for NP with participle premodifier
+# ... IF *-1 X BARRIER NPNH OR 
+# LocComIll are ok, but only with a PrfPcc to the right
+
 
 # Other negatively defined sets
 # - - - - - - - - - - - - - - -
 
-SET NOT-N =  WORD - N ;
+SET NOT-N = WORD - N ;
+SET NOT-A = WORD - A ;
 SET NOT-NA = WORD - N - A ;
-SET NOT-NP = VFIN | ConNeg | Inf | Pcle | Interj | CS ; # The set NP-BORDER is bigger. 
+SET NOT-NP = VFIN-NOT-NEG | ConNeg | Inf | Pcle | Interj | CS ; # The set NP-BOUNDARY is bigger. 
+SET NPROP = N - PROP ;
+SET NOT-COMMA = CLB - COMMA | PUNCT-LEFT | PUNCT-RIGHT ;
 
 
 # Nominal sets defined according to their lexical properties
@@ -580,71 +613,11 @@ LIST MANNU = "ådå-jak-#mánno" "ådåjakmánno"
              "gålgådismánno" 
              "basádismánno" 
              "javllamánno" ;
-#LIST AIGODAT = "áigodat" "stuoradigge#áigodat" "sámedigge#áigodat" 
-#              "guoô ±ohan#áigodat" "doaibma#áigodat" ;             
-
-#LIST VAHKKU = "áigi" "beaivi" "jándor" "bodda" "ô ­akô ­a" "ô ­akô ­a#geassi" "ô ­uohte#jahki" 
-#		"dálvi"	"diibmu" "dbm" "geardi" "geassi" "giô ±ô ±a" "hávvi" "idja" "jahki" 
-#		"jahke#ô ­uohti" "mánnu" "riegádan#beaivi" "tiibmu" "vahkku" jahki 
-#		"stuorradigge#áigodat" ;
- # The quoteless jahki here is since the preprocessor is not fine-tuned
- # yet, it still gives '"1870-" # jahki N Sg Com'.
- # lets see if "dbm" works
 
  
 LIST BEAIVI =	"mánnodak" "dijstak" "gasskavak" "duorastak"
 		"bierjjedak" "lávvodak" "ájllek" "basse";
-#
-#SET TIME = MANNU | VAHKKU | BEAIVI ;
-    # Do not add AIGODAT, it has some other characteristics in some cases.
-#SET NOTIME = N - TIME ;
-#
-#LIST GEASSET = "dálvet" "dálvit" "giô ±ô ±at" "geasset" "geassit" "ô ­akô ­at" ; # What is special here?
-#
-#LIST GUOVLU = "ássan#guovlu" "sámi#guovlu" "báiki" "gávpot" "guovlu" "sádji" 
-#	"viessu" ;
-#
-#LIST ROUTE = "fávli" "geaidnu" "guorra" "luodda" "miila"; # and others!
-#
-#LIST MEASURE = "miila" "kilo#mehtar" "mehtar" "mehter" "centi#mehtar" "sente"
-#	"cm" "milli#mehtar" "tumá" "állan" "salla" "lihtter" "gilo" ;	
-#
-#LIST PL-NOUN = "beassaš" "ô ­albme#láse" "gálssot" "headja" "sabet" "sisttet" 
-#	"skárri"; 
- # Nominals that appear with plural numerals.
 
-#LIST PREGEN = ("álgogeahô ­en")("bealli" N Sg Loc)("gaskavuohta" N Sg Loc)("guoskevaš")
-#	("loahpageahô ­en")("miella" N Sg Loc)("oktavuohta" N Sg Loc);
- # Nouns and adjectives that take a preceding genitive.
-
-#LIST N-NOPX = "lohku";
- # Nominals that probably do not have a Px ('1600-logus').
-
-#LIST N-PX = "áhô ­ô ­i" "bárdni" "eadni" "nieida" "viellja" "oabbá";
- # Nominals that well may have a Px.
-
-#LIST ALU = ("allu" Gen)("assu" Gen)("ô ­iekô ëu" Gen)("gassu" Gen)("govdu" Gen)
-	   #("guhkku" Gen)("lossu" Gen)("stuorru" Gen)("viidu" Gen);
-
-#LIST TITLE = "ámta#mánni" "direktevra" "eanan#hearrá" ("gásttašit" eaddji) "gonagas" 
-#	"justitiarius" "korefereanta" "ossodat#direktevra" 
-#	"profehta" "professor" "prof" "ráô ±ô ±e#addi" "stipendiáhta" "sundi" 
-#	"universitehtalektor" "vuosttas#konsuleanta" "cand.mag" "cand.oecon"
-#    "cand.philol" "cand.real" "cand.scient" "cand.theol" "cand" "dr.art" 
-#    "eksp.hoavd" "eksp.sj" "fenr" "fig" "fil.tri" "gen.lt" "genr" 
-#    "genr.lt" "h.r.adv" "hr" "kapt" "korp" "lekt" "lic" "ltn" "mag.art"
-#    "mag" "merc" "odont" "oecon" "ordf" "ossod.dir" "stud.phil."
-#    "res.kap" "stud.philol" "vit.ass" "dr" "dr.med" "dr.philos" "dr.theol" ;
-#
-#LIST COUNTABLE = "oassi" "kapihttal" "paragráfa" ;
-
-#LIST NUMMAR
-#LIST KLASS
-#LIST LAHKA
-#SET NOT-LAHKA = N - LAHKA 
-#LIST FYLKA
-#LIST INSTITUTION
-#LIST HUMAN
 
 
 # Miscellaneous sets
@@ -654,36 +627,7 @@ LIST BEAIVI =	"mánnodak" "dijstak" "gasskavak" "duorastak"
 
 LIST Px = PxSg1 PxSg2 PxSg3 PxDu1 PxDu2 PxDu3 PxPl1 PxPl2 PxPl3 ;
 
-#SET PPOS = Po | Pr ;
 
-#LIST POST-A = "rájes" ;   
-#LIST POST-B = "rádjái" ;
-
-#LIST WACKERNAGEL = "go" "ba" "bat" "be" "bahan" "son" ;
-
-#LIST GASKAL = "gaskal" "gaskkal" "gaskii" "gaskka" "gaskkas" ; 
- # p-positions that like coordination
-
-#SET NUMERALS = Num - OKTA ;
-
-#SET NOT-NUMERALS = WORD - Num ;
-
-#LIST MANGA = "máô ëga" "galle" ; # Not referred to by any rule.
-
-#SET CARDINALS = Num - Ord - MANGA ;
-
-#SET NOT-CC = WORD - CC ;
-
-#SET NOT-PCLE = WORD - Pcle ;
-
-#LIST COMPAR = "dávjjit" "eanet" "earalágan" "eará" "earret" "seammás" 
-#		"seammalágan" "seammalágán" "seammaláhkai"; 
- # These combine with "go" Pcle, but COMPAR stands for 'comparison' rather than
- # 'comparative'.
-
-#LIST CONTRA = "muhto" ; # In lean muitalan, muhto dál muitalan.
-
-#LIST PROSEANTA = "proseanta" "%" ;
 
 SET REALCLB = CLB - COMMA ;
 
@@ -691,13 +635,50 @@ SET REALCLB = CLB - COMMA ;
 # Border sets and their complements
 # ---------------------------------
 
-SET CP = (Pron Interr) | (Pron Rel) | MANNE ;
+#SET CP = (Pron Interr) | (Pron Rel) | MANNE ;
 
-SET NP-BORDER = BOS | EOS | REALCLB | VFIN | Inf | (Actio Ess) | ConNeg | VGen | 
-	Sup | PPRON-NOT-GEN | Recipr | Po | Pr | Pcle | ("jed") | Interj | CS | CP ;
+#SET NP-BOUNDARY = BOS | EOS | REALCLB | VFIN | Inf | (Actio Ess) | ConNeg | VGen | 
+#	Sup | PPRON-NOT-GEN | Recipr | Po | Pr | Pcle | ("jed") | Interj | CS | CP ;
 
  # CLB removed from set in order to allow for NP-internal commas.
  # Refl is removed because of "sin ieô¡¾aset vieruid" etc.
+
+
+# Border sets and their complements
+# ---------------------------------
+
+SET CP = (Pron Interr) | (Pron Rel) ;
+
+
+ 
+LIST SEMICOL = "\;" ;
+LIST COL = ":" ;
+
+SET S-BOUNDARY = (Pron Interr) | (Pron Rel) | ("muhto")  | CS | ("\;") | (":") ;
+	# includes CP
+	# remember that (",") and CC are potential sentence boundaries, too
+	
+SET S-BOUNDARY2 = (Pron Interr) | (Pron Rel) | ("muhto") |  CS | ("\;") | (":") | (@CC-VP) ;
+	# includes CP
+	# this one includes @CC-VP, the conjunction, which actually connects two sentences (each with a finite verb) to each other, and not @CC-NP, which coordinates internal NP-/AdvP-/AP ... coordination
+	# To be used only AFTER the disambiguation of @CC-VP and @CC-NP taking place in the chapter right before "Disambiguatig pronouns"
+
+SET NP-BOUNDARY = BOS | EOS | REALCLB | VFIN | Inf | (Actio Ess) | ConNeg | VGen | Sup | PPRON-NOT-GEN | Recipr | Po | Pr | Pcle | ("jed") | Interj | CS | CP ; 
+
+SET SV-BOUNDARY = S-BOUNDARY | FMAINV ; # VFIN-NOT-AUX ; # should be V-MAIN linked to VFIN-aux to the left. (cg-3)
+# This set is ment to use in rules for disambiguating due to verbs or verbsets. 
+SET SV-BOUNDARY2 = S-BOUNDARY2 | FMAINV ;
+
+SET SVF-BOUNDARY = S-BOUNDARY | VFIN ;
+# This set is ment to use in rules for disambiguating due to verbs or verbsets. 
+# Here we search for either an S-BOUNDARY or a finite verb, either aux or main.
+
+SET CCCOMMA = CC | COMMA ;
+	# remember that those are potential sentence boundaries, too
+SET BOUNDARY = S-BOUNDARY OR NP-BOUNDARY ;
+
+SET INTR = Rel  | PUNCT-LEFT ;
+	# interrupters
 
 
 
@@ -731,6 +712,35 @@ LIST ALLSYNTAG = (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@-FSUBJ)
 
 # Mappings of minor categories
 # ----------------------------
+
+MAP (@CC-NP @CC-VP) TARGET CC ;
+	## Na muhto don it leat dasa nama čállán!
+# meaning: @CC-G @CC-L (global, local, i.e., inside and outside NP)
+# mun liikon vuojadit ja viehkat @CC-NP
+# mun lean bures ja johtilit vuodján. @CC-NP
+# [S [NP mun] [VP [V vuoján] [AdvP bures ja johtilit]]]. @CC-NP
+# @CC-NP, @CC-S
+
+MAP (@CS) TARGET CS ;
+	## Leago guhkes áigi dassá go Máreha oidnet?
+
+MAP (@INTERJ) TARGET Interj ;
+	## Maid, iigo leat boahtán?
+
+MAP (@INTERJ) TARGET ("surgat") IF (-1 ("vuoi") OR ("hei"));
+	## Vuoi surgat dan gándda!
+
+MAP (@INTERJ) TARGET ("beargalat") IF (*-1 Nom BARRIER S-BOUNDARY LINK NOT 0 (Dem Nom));
+	## Gosa don leat beargalat mu reaga dahkan?
+
+MAP (@PCLE) TARGET Pcle ;
+	## Amma mii eat leat máksán? 
+MAP (@NNum<) TARGET ABBR IF (-1 Num)(0 INITIAL LINK NOT 1 NP-MEMBER);
+  	## 98 B.
+  	
+MAP (@PROP>) TARGET ABBR IF (-1 (Prop Mal) OR (Prop Fem))(1 (Prop Sur));
+	## Aslak A. Guttorm.  	
+
 # Determiner mappings
 # -------------------
 # Attribute mappings
@@ -751,7 +761,8 @@ LIST ALLSYNTAG = (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@-FSUBJ)
 # ----------------------------------
 
 MAP (@OBJ) TARGET Acc ;
-
+MAP (@ADVL) TARGET (Sg Com) IF (0 N);
+MAP (@ADVL) TARGET (Pl Ill) IF (0 N);
 
 # Adverbial mappings
 # ------------------
