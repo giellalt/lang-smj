@@ -645,6 +645,10 @@ SET NOT-COMMA = CLB - COMMA | PUNCT-LEFT | PUNCT-RIGHT ;
 # Nominal sets defined according to their semantical properties
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+LIST CONCRETE-ROUTE = "uksa#rájgge" "væddja";
+LIST ABSTR-ROUTE = "mijlla" ;
+
+SET ROUTE = CONCRETE-ROUTE | ABSTR-ROUTE ; 
 
 # SETS FROM SME TO COME IN HERE.
 
@@ -660,7 +664,7 @@ LIST VAHKKU = "beaivi" "b" "jándor" "bodda" "čakča" "čakča#geassi" "čakča
  # yet, it still gives '"1870-" # jahki N Sg Com'. # lets see if "dbm" works
  
 # These must be translated to smj
-LIST AJGGI = "ájggi" "bivdo#ájggi" "Beassaš-#ájggi" "čakča#ájggi" "dálve#ájggi" "geasse#ájggi" "juovla#ájggi";
+LIST AJGGI = "ájgge" "bivdo#ájgge" "Beassaš-#ájgge" "čakča#ájgge" "dálve#ájgge" "geasse#ájgge" "juovla#ájgge";
   # Maybe it could be added to VAHKKU?
 
 
@@ -1988,6 +1992,9 @@ REMOVE Plc IF (*1 ("guhti") BARRIER WORD);
 REMOVE (N Pl Nom) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
 REMOVE (N Sg Gen) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
 	## gå profehta le náv tjállám.
+ 
+REMOVE (N Sg Gen) IF (0 (N Pl Nom) LINK NOT 0 TIME OR ROUTE)(NOT 1 N OR Gen OR (Pron Indef) OR Num OR Po OR CC OR COMMA) ;
+    ## Nåv li divna buolva, ...
 
 REMOVE (N Sg Gen) IF (-2 ADVLCASE)(-1 VFIN)(0 (N Sg Nom))(NOT 1 Nom);
 	## Hiskiaj riegádij Manasse.
