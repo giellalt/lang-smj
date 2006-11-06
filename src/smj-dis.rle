@@ -400,6 +400,7 @@ SET A-CASE = A - Attr - Adv ;
 LIST A-CC = A CC ;
 
 SET NOT-ADJ = WORD - A ;
+#SET NOT-ADJ-NUM-GEN = WORD - A - Num - Gen ;
 SET NOT-Attr = WORD - Attr ;
 SET NOT-AA = WORD - A - Adv ;
 
@@ -408,7 +409,7 @@ SET NOT-AA = WORD - A - Adv ;
 # ------------------------------------
 
 SET NOT-ADJ-PCLE = WORD - A - Pcle ;
-SET NOT-ADJ-CC = WORD - A-CC ;
+SET NOT-ADJ-CC = WORD - A - CC ;
 SET NOT-ADV = WORD - Adv ;
 SET NOT-ADV-PCLE = WORD - Adv - Pcle ;
 SET NOT-ADV-PCLE-VFIN = WORD - Adv - Pcle - VFIN ;
@@ -644,6 +645,7 @@ SET NOT-COMMA = CLB - COMMA | PUNCT-LEFT | PUNCT-RIGHT ;
 
 # Nominal sets defined according to their semantical properties
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+LIST TITLE =  "profehtta" ;
 
 LIST CONCRETE-ROUTE = "uksa#rájgge" "væddja";
 LIST ABSTR-ROUTE = "mijlla" ;
@@ -841,7 +843,13 @@ MAP (@NNum<) TARGET ABBR IF (-1 Num)(0 INITIAL LINK NOT 1 NP-MEMBER);
   	## 98 B.
   	
 MAP (@PROP>) TARGET ABBR IF (-1 (Prop Mal) OR (Prop Fem))(1 (Prop Sur));
-	## Aslak A. Guttorm.  	
+	## Aslak A. Guttorm.  
+	
+# From sme-dis.rle:	
+ADD (@TITLE) TARGET TITLE IF (1 Prop LINK 0 Fem OR Mal OR Sur);
+#ADD (@TITLE) TARGET PROFESSION IF (1 Prop LINK 0 Fem OR Mal OR Sur);
+#ADD (@TITLE) TARGET OFFICE IF (1 Prop LINK 0 Fem OR Mal OR Sur);
+		
 
 # Determiner mappings
 # -------------------
@@ -1998,7 +2006,9 @@ REMOVE (N Sg Gen) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)
 
 # N Sg Gen = N Pl Nom
 # ------------------- 
-REMOVE (N Sg Gen) IF (0 (N Pl Nom) LINK NOT 0 TIME OR ROUTE)(NOT 1 N OR Gen OR (Pron Indef) OR Num OR Po OR CC OR COMMA) ;
+SELECT Nom IF (0 (@TITLE))(1C Nom);
+
+REMOVE Gen IF (NOT 0 TIME OR ROUTE)(NOT 1 N OR A OR Gen OR (Pron Indef) OR Num OR Po OR CC OR COMMA) ;
     ## Nåv li divna buolva.
     
 REMOVE (N Sg Gen) IF (0 (N Pl Nom) LINK NOT 0 TIME OR ROUTE LINK *-1 COPULAS BARRIER Nom OR S-BOUNDARY OR VERB)(1 CC OR COMMA LINK NOT 1 Gen) ;
@@ -2060,6 +2070,9 @@ SELECT (Sg Gen) IF (*-1 (Dem Sg Gen) BARRIER NOT-ADJ);
     
 SELECT (Sg Gen) IF (0 Prop)(1 (N Nom) LINK NOT 0 Prop);
     ## Josef la Maria ålmåj.
+    
+REMOVE Nom IF (NOT 0 TITLE)(1C Nom);
+    ## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj:
         
 SELECT (Sg Gen) IF (-1C Gen)(0C N)(1 N);
 SELECT (Sg Gen) IF (-1 Gen)(0C N)(1 COMMA)(*2 N BARRIER NOT-ADJ);
@@ -2094,11 +2107,17 @@ SELECT Ill IF (1 ILL-VERB LINK 1 Nom BARRIER NPNH);
 
 # Elative
 # ======= 
+SELECT Ela IF (1 (IV PrfPrc));
+    ## Maria lij ájlis Vuojŋŋanisás sahkanam, ..
+
+
 
 # Inessive
 # ========
 # N Sg Ine = N Ess if no CG
 
+REMOVE Ess IF (NOT *-1 ESS-VERB BARRIER SV-BOUNDARY2)(0 (Prop Ine))(NOT *1 ESS-VERB BARRIER SV-BOUNDARY2);   
+    ## Gå Jesus lij riegádam Betleheman, Judean, ...
 
 # N Sg Ela = N Sg Acc PxSg3 = N Sg Gen PxSg3
 
