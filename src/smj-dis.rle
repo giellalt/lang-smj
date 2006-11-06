@@ -717,7 +717,10 @@ SET NUMERALS = Num - AKTA ;
 
 SET CARDINALS = Num - Ord ;
 
+# Semantic noun-sets
+# -------------------
 
+LIST HUMAN-INDIVIDUAL = "áddjá" "áhkká" "áhkko" "áhttje" "áhttje#bielle" "ájttek" "bárne#bárnne" "bárne#niejdda" "bárnne" "bárnne#bielle" "biebbmo#bárnne" "biddno#moarsse" "boaddnje" "gájmme" "gállasj#guojmme"  "gállasj#ålmåj" "gálojinitja" pl. "goasske" "goasske"  "gieruk" "ibme" "ieddne" "ieddne#bielle" "iemet" "irgge" "iset" "niejdda" "næjttso" "næjttso#riehko" "oarbben#bielle" "oarbben" "siessá" "siessal" "svilli" "mannje" "moarsse" "muohtá" "muohtal" "niehpe" "oabbá" "oabbá#bielle" "tjiehtje" "tjiehtjev" "viellja" "viellja#gieres" "viellja#bielle" "æddnul" "ænoj" ; 
 
 
 # Miscellaneous sets
@@ -1619,7 +1622,7 @@ SELECT Adv IF (0 A)(1 CC)(2C Adv);
 
 # Gen after Num
 
-SELECT (Sg Gen) IF (*-1 Num BARRIER NPNH);
+SELECT (Sg Gen) IF (*-1 Num BARRIER NPNH)(NOT 0 Po);
 	## Aktat ij buvte guokta härrä dievnnut.
 
 # Gen in Spec
@@ -1653,8 +1656,8 @@ SELECT Adv IF (0 ("åvddål"))(1 CS) ;
 
 # rájes
 
-SELECT Po IF (*1 ("rádjáj" Po));
-	## Fáô ëô ëgavuoda rájes Kristusa rádjáj.
+SELECT Po IF (0 ("rájes"))(*1 ("rádjáj" Po) BARRIER VERB);
+	## Fáŋŋgavuoda rájes Kristusa rádjáj.
 
 # Proper nouns
 
@@ -1992,9 +1995,14 @@ REMOVE Plc IF (*1 ("guhti") BARRIER WORD);
 REMOVE (N Pl Nom) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
 REMOVE (N Sg Gen) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
 	## gå profehta le náv tjállám.
- 
+
+# N Sg Gen = N Pl Nom
+# ------------------- 
 REMOVE (N Sg Gen) IF (0 (N Pl Nom) LINK NOT 0 TIME OR ROUTE)(NOT 1 N OR Gen OR (Pron Indef) OR Num OR Po OR CC OR COMMA) ;
-    ## Nåv li divna buolva, ...
+    ## Nåv li divna buolva.
+    
+REMOVE (N Sg Gen) IF (0 (N Pl Nom) LINK NOT 0 TIME OR ROUTE LINK *-1 COPULAS BARRIER Nom OR S-BOUNDARY OR VERB)(1 CC OR COMMA LINK NOT 1 Gen) ;
+    ## Nåv li buolva, lågenanniellja buolva Abrahama rájes Davida rádjáj.
     
 REMOVE (N Sg Gen) IF (-2 Ine)(-1 COPULAS LINK 0 Pl3)(0 (N Pl Nom))(NOT 1 (Pl Nom));
     ## Johannesin lidjin biktasa kamelaguolgajs. 
@@ -2023,7 +2031,14 @@ SELECT (N Sg Nom) IF (*-1 Rel BARRIER NPNH)(*1 V-SG3 BARRIER NOT-ADV-PCLE LINK *
 
 REMOVE (N Sg Gen) IF (*-1 BOS OR CS BARRIER (Pron Pers Du1))(0 (N Pl Nom))(1 (V Ind Pl3) LINK NOT 0 Imprt OR ImprtII);
 
-
+# Oppramsing
+# - - - - - - 
+SELECT Nom IF (-2 Nom)(-1 COMMA)(0 N OR Num)(NOT *1 VFIN BARRIER COMMA);
+    ## Nåv li buolva, lågenanniellja buolva Abrahama rájes Davida rádjáj.
+    
+SELECT Nom IF (-1 COMMA OR CC LINK -1 Po LINK -1 Gen LINK *-1 Po BARRIER NPNH LINK -1 Gen LINK *-1 Nom BARRIER NPNH LINK 0 N OR Num)(0 N OR Num)(NOT *1 VFIN BARRIER COMMA) ;    
+    ## Nåv li buolva, lågenanniellja buolva Abrahama rájes Davida rádjáj, lågenanniellja buolva Davida rájes Babylona fáŋŋgavuoda rádjáj ja lågenanniellja buolva fáŋŋgavuoda rájes Kristusa rádjáj.
+    
 
 # Nominative in sentence fragments
 # --------------------------------
