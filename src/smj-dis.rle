@@ -468,7 +468,7 @@ SET VERB = V - (V N);   # V is all readings with a V tag in them, VERB should
 SET V-NOT-CMPND = V - Cmpnd; # Not in use.
 
 
-LIST COPULAS = "dáidit" "bissut" "gártat" "leahkit" "leat" "orrut" "šaddat" ;
+LIST COPULAS = "dáidit" "bissut" "gártat" "liehket" "leat" "orrut" "šaddat" ;
  # 'Dáidit' can appear without 'leat'.
 
 SET V-NOT-COP = V - COPULAS ;
@@ -730,6 +730,7 @@ SET PXNOTPL1 = Px - PxPl1 ; SET PXNOTPL2 = Px - PxPl2 ; SET PXNOTPL3 = Px - PxPl
 
 
 SET REALCLB = CLB - COMMA ;
+SET REALWORD = WORD - Num - Ord ;
 
 LIST CONTRA = "valla" ;
 
@@ -848,6 +849,11 @@ MAP (@PROP>) TARGET ABBR IF (-1 (Prop Mal) OR (Prop Fem))(1 (Prop Sur));
 # -----------------
 # Verb mappings
 # -------------
+
+
+
+
+
 # Complements of particles in comparison
 # --------------------------------------
 # Other special nominative mappings
@@ -1686,6 +1692,10 @@ SELECT (Ill) IF (1 ("riegádit" V)) ;
 
 REMOVE V IF (-1C Attr)(0 N);
 	## Álmmuk mij sjievnnejdin årru, le stuorra tjuovgav vuojnnám.
+	
+SELECT N IF (-1 Gen)(0 A)(1 CLB OR EOS);
+    ## Gen iednne lij Uriasa áhkká?	
+
 
 
 # ============ #
@@ -1932,6 +1942,9 @@ SELECT Inf IF (*-1 INF-VERB);#BARRIER
 # Prop or not
 # -----------
 
+# Capitalised nouns in the middle of a sentence are names.
+SELECT Prop IF (NOT *-1 BOS OR (":") OR (PUNCT LEFT) OR (Num Nom) BARRIER REALWORD);
+
 # Prop Sg Nom or Gen Sg or Pl Nom
 SELECT (N Prop Sg Nom) IF (-1 CS OR BOS)(*1 V-SG3 BARRIER NOT-ADV-PCLE);
     ## Maria lij bárnes riegádahttám.
@@ -1976,6 +1989,14 @@ REMOVE (N Sg Gen) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)
 
 REMOVE (N Sg Gen) IF (-2 ADVLCASE)(-1 VFIN)(0 (N Sg Nom));
 	## Hiskiaj riegádij Manasse.
+REMOVE Gen IF (-1 Ill)(0 Nom)(1 COMMA);
+    ## ..., Joramij Ussia, ...
+
+    # Taken from sme-dis.rle:
+SELECT (N Nom) IF (-2C (N Nom))(-1 CC)(NOT 0 VERB OR Pron)(NOT 0 (A Ess) LINK -2 Ess)(NOT 1 N OR Pron OR Num OR A OR Actio); 
+	## Mánát ja nuorat leat dál.  
+	##  ... , Judaj riegádijga Peres ja Sera, ...    
+
 SELECT (N Sg Nom) IF (*-1 Rel BARRIER NPNH)(*1 V-SG3 BARRIER NOT-ADV-PCLE LINK *1 CLB OR EOS BARRIER (N Sg Nom));
 	## Dát sjattaj vaj luluj ålliduvvat mav Härrá lij profehta baktu javllam.
 
@@ -1983,6 +2004,9 @@ SELECT (N Sg Nom) IF (*-1 Rel BARRIER NPNH)(*1 V-SG3 BARRIER NOT-ADV-PCLE LINK *
 	## dan dihti go profehta le náv tjállám.
 
 REMOVE (N Sg Gen) IF (*-1 BOS OR CS BARRIER (Pron Pers Du1))(0 (N Pl Nom))(1 (V Ind Pl3) LINK NOT 0 Imprt OR ImprtII);
+
+
+
 # Genitive
 # ========
 
