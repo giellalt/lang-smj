@@ -411,6 +411,7 @@ SET NOT-ADJ-PCLE = WORD - A - Pcle ;
 SET NOT-ADJ-CC = WORD - A-CC ;
 SET NOT-ADV = WORD - Adv ;
 SET NOT-ADV-PCLE = WORD - Adv - Pcle ;
+SET NOT-ADV-PCLE-VFIN = WORD - Adv - Pcle - VFIN ;
 
 SET LEX-ADV = Adv - (A*) ;
 
@@ -1349,9 +1350,8 @@ REMOVE N IF (0 (A Attr))(NOT 1 VFIN OR PrfPrc OR CLB)(NOT 0 (Sg Nom) LINK *-1 (V
 	## ...muhto dakkár radikála rievdadus eahpitkeahttá buktá garra
 	## reakšuvnnaid,...
 
-SELECT (A Attr) IF (NOT *-1 COPULAS BARRIER NP-HEAD-NOM OR V-NOT-AUX) (NOT 0 Num OR Inf OR Comp OR ("nubbi"))(NOT 0 Adv LINK 1 Gen LINK 1 N) (1 N)(NOT 1 VFIN OR Inf) (NOT 0 (N Sg Nom) LINK *-1 V-SG3 BARRIER NPNHA LINK NOT *-1 (@SUBJ) BARRIER S-BOUNDARY2) (NOT *-1 ("go") BARRIER NOT-NP LINK NOT -1 VFIN LINK NOT 1 EOS);
-	## Gonagas sáhttá mearridit sierranaš njuolggadusaid báikkalaš
-	## dilálašvuođaid ektui.
+SELECT (A Attr) IF (NOT *-1 COPULAS BARRIER NP-HEAD-NOM OR V-NOT-AUX)(NOT 0 Num OR Inf OR Comp OR ("nubbi") OR Gen)(NOT 0 Adv LINK 1 Gen LINK 1 N)(1 N)(NOT 1 VFIN OR Inf) (NOT 0 (N Sg Nom) LINK *-1 V-SG3 BARRIER NPNHA LINK NOT *-1 (@SUBJ) BARRIER S-BOUNDARY2) (NOT *-1 ("go") BARRIER NOT-NP LINK NOT -1 VFIN LINK NOT 1 EOS);
+	## Gonagas sáhttá mearridit sierranaš njuolggadusaid báikkalaš dilálašvuođaid ektui.
 
 SELECT (A Attr) IF (NOT *-1 LIEHKET-FIN-NOT-IMP BARRIER NOT-ADV LINK *-1 BOS BARRIER NOT-ADV) (NOT 0 Adv OR Inf)(1 A-CASE LINK 1 CLB LINK 1 NP-BOUNDARY); 
 	## ...main leat mielde dušše priváhta oasálaččat, ii leat...
@@ -1954,7 +1954,9 @@ REMOVE (N Prop Sg Nom) IF (-1 BOS)(1 N)(2 (V Sg3));
 	## Nordlánda fulkkasuohkanin gullu gålmmå sámegiela.
 # This must be too strong...
 
-
+# Prop Plc or not
+# - - - - - - - -
+REMOVE Plc IF (*1 ("guhti") BARRIER WORD);  
 
 
 # Nouns versus adjectives
@@ -1987,10 +1989,13 @@ REMOVE (N Pl Nom) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)
 REMOVE (N Sg Gen) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
 	## gå profehta le náv tjállám.
 
-REMOVE (N Sg Gen) IF (-2 ADVLCASE)(-1 VFIN)(0 (N Sg Nom));
+REMOVE (N Sg Gen) IF (-2 ADVLCASE)(-1 VFIN)(0 (N Sg Nom))(NOT 1 Nom);
 	## Hiskiaj riegádij Manasse.
-REMOVE Gen IF (-1 Ill)(0 Nom)(1 COMMA);
-    ## ..., Joramij Ussia, ...
+REMOVE Gen IF (-1 ADVLCASE)(0 (N Nom))(1 CLB LINK NOT 1 Gen);
+    ## ..., Joramij Ussia, ...    
+REMOVE Gen IF (-1 ADVLCASE)(0 (N Nom))(1 Com)(2 CLB);  
+    ## ..., Jakobij Juda vieljatjij, ...   
+   
 
     # Taken from sme-dis.rle:
 SELECT (N Nom) IF (-2C (N Nom))(-1 CC)(NOT 0 VERB OR Pron)(NOT 0 (A Ess) LINK -2 Ess)(NOT 1 N OR Pron OR Num OR A OR Actio); 
@@ -2073,11 +2078,18 @@ SELECT Ill IF (1 ILL-VERB LINK 1 Nom BARRIER NPNH);
 # ==========
 
 #REMOVE (N Pl Ine) IF 
+    
+SELECT Com IF (*-2 Ill BARRIER NOT-ADV-PCLE-VFIN)(-1 N)(0 Gen LINK NOT 0 V)(NOT 1 N);    
+     ## ..., Jakobij Juda vieljatjij, ...    
+     ## ... , Jakobij riegádij Juda vieljatjij dan ájge.
+
 # Essive
 # ======
 
 REMOVE Ine IF (*-1 ESS-VERB BARRIER Ess)(0 Ess);
+REMOVE Ine IF (0 Ess)(*1 ESS-VERB LINK NOT 1 Ess);
 	## Suv gåhttju Immanuelin.
+	## , gev Kristusin gåhttju.
 
 
 
