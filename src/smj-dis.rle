@@ -965,6 +965,10 @@ REMOVE (V-DER Inf) IF (0 (NOT-DER Inf));
                  CONSTRAINTS
 # --------------------------------------------------------- #
 
+REMOVE ABBR IF (NOT -1 BOS)(0 ("liehket"));
+	## Duodje l vuodon ådå ájádusájda.
+
+
 # Possessive suffix
 
 # PxSg1
@@ -1082,7 +1086,7 @@ SELECT (Ind ConNeg) IF (-1 (Neg Prt) OR (Neg Prs));
 SELECT (Neg Imprt) IF (1 (Imprt ConNeg));
 
 # No Neg, no ConNeg.
-REMOVE ConNeg IF (*-1 BOS OR CLB LINK *1 CS OR CLB BARRIER Neg);
+REMOVE ConNeg IF (*-1 BOS OR CLB OR CS LINK *1 CS OR CLB OR EOS BARRIER Neg);
 #REMOVE ConNeg IF (NOT *-1 Neg BARRIER CLB)(NOT *1 Neg BARRIER CLB);      
 
 #bos clb    ij   conneg  clb  ... *conneg .. clb eos         
@@ -1912,6 +1916,25 @@ REMOVE Par IF (0 (Pron Dem Sg Nom))(1 V-SG3);
     ## Divna dát sjattaj vaj lulu ålliduvvat mav Härrá lij profehta baktu javllam.
 
 
+# Indefinite pronouns
+
+SELECT Sg IF (0 (Pron Indef Sg Nom))(*1 (N Sg Nom) BARRIER NPNH);
+SELECT Sg IF (0 (Pron Indef Sg Gen))(*1 (N Sg Gen) BARRIER NPNH);
+SELECT Sg IF (0 (Pron Indef Sg Acc))(*1 (N Sg Acc) BARRIER NPNH);
+SELECT Sg IF (0 (Pron Indef Sg Ill))(*1 (N Sg Ill) BARRIER NPNH);
+SELECT Sg IF (0 (Pron Indef Sg Ine))(*1 (N Sg Ine) BARRIER NPNH);
+SELECT Sg IF (0 (Pron Indef Sg Com))(*1 (N Sg Com) BARRIER NPNH);
+SELECT Sg IF (0 (Pron Indef Sg Ela))(*1 (N Sg Ela) BARRIER NPNH);
+SELECT Pl IF (0 (Pron Indef Pl Nom))(*1 (N Pl Nom) BARRIER NPNH);
+SELECT Pl IF (0 (Pron Indef Pl Gen))(*1 (N Pl Gen) BARRIER NPNH);
+SELECT Pl IF (0 (Pron Indef Pl Acc))(*1 (N Pl Acc) BARRIER NPNH);
+SELECT Pl IF (0 (Pron Indef Pl Ill))(*1 (N Pl Ill) BARRIER NPNH);
+SELECT Pl IF (0 (Pron Indef Pl Ine))(*1 (N Pl Ine) BARRIER NPNH);
+SELECT Pl IF (0 (Pron Indef Pl Com))(*1 (N Pl Com) BARRIER NPNH);
+SELECT Pl IF (0 (Pron Indef Pl Ela))(*1 (N Pl Ela) BARRIER NPNH);
+
+
+
 # =========== #
 # Numerals
 # ========
@@ -2302,6 +2325,10 @@ SELECT (V Sg2) IF (-1 BOS)(1 ("gus" Pcle))(2 (Pron Pers Sg2 Nom));
 SELECT (V Sg3) IF (-1 BOS)(1 ("gus" Pcle))(2 (Pron Pers Sg3 Nom));
 	## Le gus sån oahpes dán bájkkáj?
 
+REMOVE (V Sg3) IF (-1 (N Pl Nom) OR (Pron Pl Nom) LINK NOT 0 Pr OR Po)(0 (V Pl3));
+
+REMOVE (V Pl3) IF (-1 (Sg Nom) LINK *-1 SV-BOUNDARY BARRIER CC LINK -1 (Sg Nom));
+	## Dáhta l navti.
 
 # First person dual - Du1
 # -----------------------
