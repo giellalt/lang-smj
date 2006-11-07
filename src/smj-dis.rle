@@ -432,8 +432,12 @@ LIST MANNE = "gåsi" "goasse" "goassa" "goassis" "gåkku" "gånne" "gåste" "mak
 # Coordinators
 # - - - - - - -
 
+LIST NEGFOC = (Neg Foc) ;
 
-SET CRD = COMMA | CC | ("/") ; 
+LIST XGU = "degu" ;
+  # compounds
+
+SET CRD = COMMA | CC | ("/") | XGU ; 
 	# coordinators
 	
 SET LCRD = (@CS-NP) | (@CC-NP) ;
@@ -746,6 +750,12 @@ LIST CONTRA = "valla" ;
 
 SET NOT-CC = WORD - CC ;
 
+LIST COMPAR = "dávjjit" "eanet" "earalágan" "eará" "earret" "seammás" 
+		"seammalágan" "seammalágán" "seammaláhkai"; 
+ # These combine with "gå" Pcle, but COMPAR stands for 'comparison' rather than
+ # 'comparative'.
+ # translate!!
+
 SET NOT-PUNCT-RIGHT = ALL - RIGHT ;
 
 # Border sets and their complements
@@ -818,15 +828,15 @@ LIST ALLSYNTAG = (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@-FSUBJ)
 # ----------------------------
 
 MAP (@CC-NP @CC-VP) TARGET CC ;
-	## Na muhto don it leat dasa nama čállán!
+	## Bárnev sån riegádahttá ja dån galga suv Jesusin gåhttjot, dan diehti gå álmmugav suttojstisá lånes.
 # meaning: @CC-G @CC-L (global, local, i.e., inside and outside NP)
-# mun liikon vuojadit ja viehkat @CC-NP
-# mun lean bures ja johtilit vuodján. @CC-NP
-# [S [NP mun] [VP [V vuoján] [AdvP bures ja johtilit]]]. @CC-NP
-# @CC-NP, @CC-S
 
-MAP (@CS) TARGET CS ;
-	## Leago guhkes áigi dassá go Máreha oidnet?
+MAP (@CS-NP @CS-VP) TARGET CS IF (0 ("gå") OR XGU);
+    ##
+
+MAP (@CS-VP) TARGET CS ;
+	## 
+
 
 MAP (@INTERJ) TARGET Interj ;
 	## Maid, iigo leat boahtán?
@@ -1332,6 +1342,80 @@ SELECT Pl2 IF (-1 (Pron Pers Pl2 Nom))(0 (V Prt));
 	## Dij båråjda ;
 
 SELECT Pl2 IF (0 (Pron Pers Pl2 Nom))(1 (V Pl2));
+
+
+# =========================	
+# CC- and CS-Disambiguation
+# =========================
+
+# after verb-disambiguation
+
+REMOVE GCRD IF (-1 Cmpnd);
+    ## Sávtsa- ja gájtsanáhkkegárvoj vádtsin, vánev gierddin, doarrádaláduvvin ja illastuvvin.
+    
+REMOVE GCRD IF (NOT *-1 VFIN OR AUX BARRIER S-BOUNDARY)(*-1 V OR N OR Adv OR A OR Pron);
+    ## Betleheman, Judean, dan diehti gå profehta le náv tjállám..
+    # Not supposed to select "Ja de mun lean boahtán." 
+
+REMOVE GCRD IF (-1C (@ADVL))(1C (@ADVL));
+    ## Jesus synagogajn åhpadij, evangeliumav rijka birra s´rnnedij ja almatjijt gájklágásj dávdajis ja vigijs buoredij.
+
+REMOVE GCRD IF (-1C (@SUBJ))(*1C (@SUBJ) BARRIER NPNHA);
+
+REMOVE GCRD IF (-1C (@OBJ))(*1C (@OBJ) BARRIER NPNHA);
+    ## Bärggal de alla várráj suv doalvoj ja vuosedij sunji gájkka värálda rijkajt ja daj herlukvuodav ja javlaj.
+
+REMOVE GCRD IF (-1 (@X) OR N)(*1 N BARRIER NPNHA LINK NOT 1 VFIN);
+    ## Vuolgij Nasarets ja årruj Kafarnaumij, jávrregáddáj, Sebulona ja Naftali guovlojn.
+
+REMOVE GCRD IF (NOT *1 VFIN BARRIER S-BOUNDARY OR PUNCT-RIGHT OR CCCOMMA);
+    # No potential finite verb following
+    ## Judaj riegádijga Peres ja Sera, gej ieddne lij Tamar, Peresij riegádij Hesron,...
+
+
+REMOVE LCRD IF (1 CS);
+    ## Álbmotriekti gierdá dákkár doaimmaid duššefal heahtediliin ja go daidda lea dievaslaš ipmárdus dákkár álbmogiid ovddasvástideaddji eiseválddiid bealis.
+    # Does 1 have to be strict?
+
+REMOVE LCRD IF (0 CC)(1C VFIN);
+    # A secure finite verb after it.
+    ## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj...
+
+REMOVE LCRD IF (1C VFIN);
+    ## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj: "Josef, Davida bárnne, ala balá...
+
+SELECT (@CC-VP) IF (*-1C VFIN BARRIER S-BOUNDARY)(*1C (@SUBJ) OR (@SUBJ-QH) BARRIER NPNHA);
+    ## 
+    
+REMOVE LCRD IF (*-1C VFIN BARRIER S-BOUNDARY)(*1C AUX LINK 0 Prs BARRIER S-BOUNDARY); #???
+    ## Gåhtjo dan diehti hávdev gålmmå biejve váttugit gŋahttjat vaj åhpadisålmmå e besa suv suoládit ja álmmugij javllat sån le jábbmegij lussta tjuodtjelam.
+
+REMOVE LCRD IF (*-1 COMMA LINK *-1C VFIN BARRIER S-BOUNDARY)(*1C AUX LINK 0 Prs BARRIER S-BOUNDARY); #???
+    # The comma version
+    ## Guhti tiempelav gajko ja gålmån biejven vas tsieggi, gájo dal ietjat, ja luojttáda ruossas.
+
+REMOVE LCRD IF (-1 BOS)(0 CC);
+
+    ## Ja de mun lean boahtán.
+
+REMOVE LCRD IF (-2 BOS)(-1 PUNCT)(0 CC); 
+    ## Ja bárnne daŋga båttå buorránij.
+
+REMOVE LCRD IF (*-1C VFIN BARRIER S-BOUNDARY OR CCCOMMA)(*1C VFIN BARRIER S-BOUNDARY2);
+    ## Josiaj riegádij Jojakin vieljatjij dan ájge gå álmmugav vuolgadin Babylonaj.
+
+REMOVE LCRD IF (*1 AUX LINK *1C (@-FAUX) OR (@-FMAIN));
+
+REMOVE LCRD IF (*1 AUX LINK *1 Rel OR MANNE LINK *1 AUX LINK *1 (@-FAUX) LINK *1 (@-FAUX) OR (@-FMAIN));
+    # The relative sentence version
+    ## 
+
+REMOVE LCRD IF (*-2 BOS BARRIER COMMA)(-1 COMMA);
+    # Embedded clause with initial adverbial:
+    ## Niejdda sjaddá iesselissan ja bárnev riegádahttá, ja suv gåhttju Immanuelin
+
+REMOVE LCRD IF (NOT -1 (@ADVL))(*1 (@ADVL) BARRIER NPNH LINK 1 VFIN);
+    ## Elihudaj riegádij Elasar, Elasaraj Mattan, Mattanij Jakob, ja Jakobij riegádij Josef, Maria ålmåj.
 
 
 # Adjectives
@@ -1861,6 +1945,96 @@ SELECT Po IF (NOT *-2 Pr BARRIER N OR SV-BOUNDARY)(-1C Gen)(NOT *1C Gen BARRIER 
 
 REMOVE Pcle IF (-1 BOS OR CLB)(0 CS);
 	##, de allit sunji åsko!
+	
+	# gå
+	# - -
+
+	# Yes/no ( = fi. -ko/-kö, no. V1))
+
+SELECT Pcle IF (-3 BOS OR CLB)(-2 CC)(-1 V)(0 ("gå"));
+SELECT Pcle IF (-2 BOS OR REALCLB OR PUNCT OR COMMA)(0 ("gå"))(*1 ("?"));
+	## Muhto boađát go?                         
+	
+SELECT Pcle IF (-2 ("vaj"))(0 ("gå"));
+	## ...vai geahččaluvvo go gávdnat čovdosiid bissovaš rievttis,... 
+
+SELECT Pcle IF (-2 VERB)(-1C VFIN)(0 ("gå"));
+SELECT Pcle IF (*-2 VFIN BARRIER S-BOUNDARY LINK NOT 0 Inf)(-1C VFIN)(0 ("gå")) (NOT 1 VFIN); 
+	## Árvvoštaladettiin galgá go addit lobi lea dattege gažaldat das,... 
+	## De oaidná olmmoš dárbbaša go oalgebáddi luoitiluvvot. 
+
+SELECT Pcle IF (-1 (V Neg) OR MOD-ASP)(0 ("gå"));        
+	## Son jerre it go boađe?
+	## Sámedikki eará orgánat mearridit ieža galget go čoahkkimat leat
+	## rabas vai gitta.
+
+SELECT Pcle IF (*-3 ("gå" Pcle) BARRIER S-BOUNDARY OR VFIN LINK -1 VFIN) (-2 CC)(-1 VFIN)(0 ("gå"));
+	## Addet go máŋga dearvvašvuođabargiidjoavkku veahki ja 
+	## fállojuvvo go divššohasaide birrajándororrun.
+
+SELECT Pcle IF (-2 Inf)(-1 VFIN)(NOT -1 PrfPrc)(0 ("gå"))(NOT *1 (@CS-COMPL) BARRIER S-BOUNDARY);
+	## Farisealaččat atne Jesusa čalmmis oaidnit áigu go buoridit sábbáhin.
+
+SELECT Pcle IF (-3 N OR Pron)(-2 ("ahte"))(-1 VFIN)(0 ("gå"));
+	## Politihkas lei 1866 rájes sáhka ahte galggai go stivrregoahtit 
+    	## gii oažžu eatnama láigohit stáhtas.
+
+SELECT Pcle IF (-1 N LINK *-1 BOS BARRIER NOT-NP)(NOT -1 ("hávvi"))(0 ("gå")) (*1 VFIN BARRIER S-BOUNDARY)(*1 ("?"));
+	## Eatni goarrun gákti go dus lea die?
+
+SELECT Pcle IF (-2 (N Gen) LINK *-1 BOS BARRIER NOT-NP)(-1 Po)(0 ("gå")) (*1 VFIN BARRIER S-BOUNDARY);
+	## Girdi mielde go don manat Helssegii? 
+
+	# Something else ( = fi. kuin, no. (så) som) (are all these CS?)
+	# Testing: 
+SELECT CS IF (*-1 A OR Adv LINK *-1 ("nu") OR ("mihá") BARRIER S-BOUNDARY)(0 ("gå"));
+SELECT CS IF (*-1 ("seammá"))(NOT -1 VFIN LINK NOT *-1 VFIN BARRIER S-BOUNDARY)(0 ("gå")); 
+	## Nu guhkás go Gonagas mearrida... 
+	## Giđđabuođut ráhkaduvvojit seammá vuogi mielde go geassebuođut. 
+	## Seammá gusto go... # NOT -1 VFIN!
+
+SELECT CS IF (*-1 COMPAR BARRIER NOT-ADJ OR CLB)(0 ("gå")); 
+SELECT CS IF (*-1 Comp BARRIER S-BOUNDARY OR PUNCT LINK NOT 0 VERB)(0 ("gå")) (NOT *1 VFIN BARRIER S-BOUNDARY);
+	## Dát dáhpáhuvva dávjjit go dat, maid ovdal namuhin.
+	## Láhkaásahus addá máŋgga áššis dárkilit njuolggadusaid go láhka.
+
+SELECT CS IF (-1 Comp LINK *-1 COPULAS BARRIER V-NOT-AUX OR CS) (NOT *-1 V-PL1 OR V-PL2 OR V-PL3 BARRIER V-NOT-AUX)(0 ("gå"));
+	## Dasgo mun in leat álggage heajut go dat mahkáš alla apoastalat.
+
+SELECT CS IF (*-2 Comp BARRIER NPNH LINK NOT 0 Inf)(-1 A OR N)(0 ("gå"));
+	## Dii han lehpet eanet veara go ollu cizážat.
+
+SELECT CS IF (-1 A OR Adv)(NOT -1 Po)(0 ("gå"))(*1 Interr BARRIER VFIN);
+	## Joavku ii válddahala dát gažaldagaid dobbelii go maid Sámi
+	## vuoigatvuođalávdegoddi lea dahkan.
+
+#SELECT CS IF (0 ("gå"))(*1 CONTRA OR EOS BARRIER VFIN); 
+# This one hits questions.
+SELECT CS IF (0 ("gå"))(1 ("ahte"));
+	## Mus ii leat go okta beana.
+	## Lea váttis áddet earáláhkai, go ahte maiddái duopmostuollu rahčá
+	## čađat dainna váttisvuođain. 
+
+
+	# vaj
+	# - -
+	# This one may be CS (vaj = 'in order to') or CC (vaj = 'or').
+SELECT (CC @CC-VP) IF (0 ("vaj"))(1 Neg)(2 CLB);
+SELECT (CC @CC-VP) IF (0 ("vaj"))(1 Qst);
+	## Leago sámeálbmogis vuoigatvuođat vaj eai, dahje...
+	## ... vaj leago ..
+
+SELECT (CC @CC-VP) IF (0 ("vaj"))(2 ("go"));
+	## Dáhpáhuvvá go dat ođđa lágaid bokte, vaj geahččaluvvo go gávdnat
+	## čovdosiid bissovaš rievttis? 
+
+SELECT CC IF (0 ("vaj"))(NOT *1 VFIN BARRIER S-BOUNDARY); 
+	## ...čállogo journála elektrovnnalaččat vaj báhpárii.
+
+SELECT CC IF (*-1 Inf BARRIER VERB OR CLB)(0 ("vaj"))(*1 Inf BARRIER VERB);
+	## Buriid dahkat vaj baháid dahkat.
+
+
 
 
 # ====================== #
