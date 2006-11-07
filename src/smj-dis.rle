@@ -654,6 +654,7 @@ SET NOT-COMMA = CLB - COMMA | PUNCT-LEFT | PUNCT-RIGHT ;
 # Nominal sets defined according to their semantical properties
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 LIST TITLE =  "profehtta" ;
+LIST ESS-ADVL-N = "bäjvádahka" "biegga" "dálkke" "dulvve" "njáhsto" "rássjo" "sjievnnjet"; 
 
 LIST CONCRETE-ROUTE = "uksa#rájgge" "væddja";
 LIST ABSTR-ROUTE = "mijlla" ;
@@ -841,6 +842,8 @@ MAP (@CS-NP @CS-VP) TARGET CS IF (0 ("gå") OR XGU);
 MAP (@CS-VP) TARGET CS ;
 	## 
 
+MAP (@CMPND) TARGET Cmpnd;
+MAP (@PROP>) TARGET (Prop Attr);
 
 MAP (@INTERJ) TARGET Interj ;
 	## Maid, iigo leat boahtán?
@@ -884,85 +887,65 @@ ADD (@TITLE) TARGET TITLE IF (1 Prop LINK 0 Fem OR Mal OR Sur);
 MAP (@+FAUXV @+FMAINV) TARGET VFIN IF (NOT *-1 ("liehket") OR INFV OR Neg BARRIER S-BOUNDARY OR VERB)(0 ("årrot"));
 	## Sii orro darfegođiid siste.
     ## Dåppe åroj dasik Herodes lij jábmám vaj luluj ålliduvvat.
-#MAP (@-FAUXV @-FMAINV) TARGET ("årrot");
+
+MAP (@-FAUXV @-FMAINV) TARGET ("årrot") IF (0 VFIN OR PrfPrc OR (Actio Ess));
 	## Olbmot eai orron čadnon dušše iežaset mearragáddái bivdit.
-    # This hits also Actor, VGen...
-#MAP (@-FAUXV @-FMAINV) TARGET Inf IF (*-1 INFV BARRIER VFIN) (0 AUX-OR-MAIN);
+    
+MAP (@-FAUXV @-FMAINV) TARGET Inf IF (*-1 INFV BARRIER VFIN) (0 AUX-OR-MAIN);
 	## Son galgá beassat buktit oaivilis.
     # No hits in NT.
-#MAP (@+FAUXV @+FMAINV) TARGET VFIN IF (NOT *-1 VFIN BARRIER S-BOUNDARY) (0 AUX-OR-MAIN);
+
+MAP (@+FAUXV @+FMAINV) TARGET VFIN IF (NOT *-1 VFIN BARRIER S-BOUNDARY) (0 AUX-OR-MAIN);
 	## Maid Máret áiggui goarrumis?
     # No hits in NT.
-#MAP (@-FAUXV) TARGET ConNeg IF (*-1 Neg BARRIER VERB)(0 AUX-OR-MAIN) (*1 Inf BARRIER S-BOUNDARY OR VERB);
-	## Eai guovttis ge nagot loktet dan geađggi. 
 
-#MAP (@-FAUXV @-FMAINV) TARGET AUX-OR-MAIN IF (NOT 0 VFIN);
-	## In beassan dal deatnojohtima oaidnit.
-
-#MAP (@-FMAINV) TARGET AUX-OR-MAIN IF (*-1 ("liehket") BARRIER VERB) (NOT *1 VERB BARRIER S-BOUNDARY);
-	## Sámegiela lea ávkkálaš máhttit.
-
-MAP (@-FAUXV) TARGET AUX IF (*-1 Neg BARRIER S-BOUNDARY)(0 ConNeg OR PrfPrc);
+MAP (@-FAUXV) TARGET AUX IF (*-1 Neg BARRIER S-BOUNDARY)(0 ConNeg OR PrfPrc)(*1 Inf BARRIER NOT-ADV-PCLE);
 	## Eat mii sáhte vuolgit.
     ## .., iv ga le árvvogis sujsta gábmagijt nuolatjit,..
-#MAP (@-FAUXV) TARGET PrfPrc IF (0 ("leapma" Dimin));
-	## Máŋgga oktavuođas lea leamaš stuora jearru ja dárbu eamiálbmotdutkamiid fágaidgaskasaš semináraide.
-
  
-MAP (@+FAUXV) TARGET AUX IF (0 VFIN OR ConNeg)(*1 Inf OR ConNeg BARRIER S-BOUNDARY);
+MAP (@+FAUXV) TARGET AUX IF (0 VFIN)(*1 Inf OR ConNeg OR PrfPrc BARRIER S-BOUNDARY OR VFIN);
 	## Don šattat vel joksat Sirpmás gohcciid.
+	## In sáhte olles gáhku borrat.
     ## ... , ma uddni li tsäggot ja idet vuobnnáj bálkestuvvi, 
-MAP (@+FMAINV) TARGET COPULAS IF (0 VFIN)(NOT *1 Inf OR PrfPrc OR (Actio Ess) BARRIER S-BOUNDARY OR VFIN);	
-    ## Mun lean Romssas. 
-    ## ... , gej iessne lij Tamar.
+
 MAP (@+FAUXV) TARGET COPULAS IF (0 VFIN)(*1 Inf OR PrfPrc OR (Actio Ess) BARRIER S-BOUNDARY OR VFIN);	
     ## Mun ledjen borramin.    
     ## Härrá ieŋŋgil lij gåhttjum.
+
+MAP (@-FAUXV) TARGET AUX IF (0 PrfPrc)(*1 Inf OR (Actio Ess) BARRIER S-BOUNDARY);	
+   ## In leat sáhttán gáhku borrat dan rájes. 
+   ## In leat leamaš mielde gáhku láibume ovdal.    
+        
+MAP (@+FMAINV) TARGET COPULAS IF (NOT *-1 Inf OR PrfPrc OR (Actio Ess) BARRIER S-BOUNDARY OR VFIN)(0 VFIN)(NOT *1 Inf OR PrfPrc OR (Actio Ess) BARRIER S-BOUNDARY OR VFIN);
+    ## Mun lean Romssas. 
+    ## ... , gej iessne lij Tamar.
+
 MAP (@+FMAINV) TARGET VFIN-NOT-AUX ;
 	## Boađe boahtte vahku.
     ## Peresij riegádij Hesron.
-MAP (@-FMAINV) TARGET PrfPrc IF (*-1 ("liehket") BARRIER PrfPrc OR (Actio Ess)) (1 NP-BOUNDARY);
+
+MAP (@-FMAINV) TARGET PrfPrc IF (*-1 ("leat") BARRIER PrfPrc OR (Actio Ess))(NOT 0 AUX LINK *1 Inf BARRIER S-BOUNDARY)(1 NP-BOUNDARY);
 	## Ja Biret-Elle lea easka skuvllas geargan.
     ## Maria lij ájlis Vuojŋŋanisás sahkanam.
-MAP (@-FMAINV) TARGET PrfPrc IF (*-1 ("liehket") BARRIER PrfPrc OR (Actio Ess));
-	## Lean mun gal oaidnán čakčaseavdnjadiin dola rievdamiin čázi alde Deanus.
     ## Ieddnes Maria lij Josefijn giláduvvam.
-MAP (@-FMAINV) TARGET PrfPrc IF (*-1 VFIN BARRIER REALCLB OR ("gå") LINK NOT 0 (V N))(NOT *-1 PrfPrc BARRIER VERB OR N); 
+    
+MAP (@-FMAINV) TARGET PrfPrc IF (*-1 COPULAS OR Neg BARRIER S-BOUNDARY LINK 0 VFIN)(NOT *-1C PrfPrc BARRIER VERB OR N); 
 	## Ii dal láhppán gal leat.
 	## Ii son liikon dohko.
 	## Ii okta ge geahččalan eará sivaid ohcat.
     ## Ja boahtám lip suv guddnedittjat.
-#MAP (@-FMAINV) TARGET PrfPrc IF (*-1 (Actio Nom) BARRIER NOT-ADV-PCLE LINK *-1 ("liehket" Sg3) BARRIER NPNHA LINK NOT *-1 Nom BARRIER S-BOUNDARY);
-	## Leago miehtan vižžojuvvon divššohasas...
-
-MAP (@-FMAINV) TARGET PrfPrc IF (*-1 ("liehket") BARRIER S-BOUNDARY)(NOT 0 Pass);
-	## Dalle livčče njuolggadusaid giehtaguššan issorasat geahpidan 
-	## guolástanvuoigaduvvomiid logu.
-    ## Ja gåjgodij dan diehti gå ällim buorádusáv dahkam ja jårgijdam.
-MAP (@-FMAINV) TARGET PrfPrc IF (-2 PrfPrc)(-1 CC);
-	## Artihkal lea sámegillii jorgaluvvon ja almmuhuvvon Romssa universitehta 
-	## Juridihka fakultehta čálaráiddus.
-    ## Bårråm ja juhkam lip duv siegen.
-#MAP (@-FMAINV) TARGET PrfPrc IF (*-1 ("dåssju") OR ("dåssjå") BARRIER VERB LINK *-1 ("liehket") BARRIER VERB);
-	## Čuollun sáhttá leat dušše okta fierbmi gurgaluvvon.
- # Since "dušše" is also VFIN, we need a special rule to find "leat" across it. (Do we need this in smj?)
-
-#MAP (@-FMAINV) TARGET PrfPrc IF (*-1 ("gå" Pcle) BARRIER S-BOUNDARY OR VERB LINK -1 ("liehket") LINK 0 VFIN-NOT-IMP);
-	## Leat go don máistán dien bierggus?
-
-#MAP (@-FMAINV) TARGET PrfPrc IF (*-1 ("liehket") BARRIER NOT-ADV);
-	## Leatgo dahkkojuvvon gustojeaddji vuoigatvuođat nugo...
 
 MAP (@-FMAINV) TARGET Inf;
 	## Manaigo Biret-Elle viežžat boastta?
     ## Ittjij sidá suv hehpaduhttet.
-MAP (@-FMAINV) TARGET ConNeg ;
+
+MAP (@-FMAINV) TARGET ConNeg IF (NOT 0 AUX) ;
 	## Iigo dutnje šat boađe áviisa?
     ## Ittjij sidá suv hehpaduhttet.
+
 MAP (@-FMAINV) TARGET (V Actio Ess);
 	## Oađidettiin gullen olbmo boahtimin.
 
- 
 MAP (@-FMAINV) TARGET Sup;
 	## Áddjá bázii mállása vuoššažit. 
     ## Ja boahtám lip suv guddnedittjat.
@@ -975,6 +958,7 @@ MAP (@-FMAINV) TARGET Sup;
 # Arguments and secondary predicates
 # ----------------------------------
 
+MAP (@SUBJ @SPRED @VOC) TARGET Nom IF (0 N) ;
 MAP (@OBJ) TARGET Acc ;
 
 # Adverbial mappings
@@ -983,7 +967,7 @@ MAP (@ADVL) TARGET Com IF (0 N);
 MAP (@ADVL) TARGET Ill IF (0 N);
 MAP (@ADVL) TARGET Ine IF (0 N);
 MAP (@ADVL) TARGET Ela IF (0 N);
-MAP (@ADVL @SPRED @OPRED) TARGET Ess IF (0 N);
+MAP (@SPRED @OPRED) TARGET Ess IF (NOT 0 ESS-ADVL-N);
 MAP (@ADVL) TARGET Actio IF (0 Ill OR Ine OR Ela OR Com);
 MAP (@ADVL) TARGET Adv ;
 MAP (@ADVL) TARGET Po ;
@@ -996,7 +980,7 @@ MAP (@ADVL) TARGET Ela ;
 MAP (@ADVL) TARGET Ine ;
 MAP (@ADVL) TARGET Com ;
 MAP (@ADVL) TARGET Ess IF (0 Num) ;
-# MAP (@ADVL) TARGET Ess IF (0 ("bievla") OR ("buolaš") OR ("čuoika") OR ("dálki") OR ("dulvi") OR ("seavdnjat") OR ("arvi") OR ("biegga"));
+MAP (@ADVL) TARGET Ess IF (0 ESS-ADVL-N);
 
 # Default mapping
 # ---------------
@@ -2231,6 +2215,32 @@ SELECT Acc IF (0 N)(*1 V-TRANS-ACT BARRIER SV-BOUNDARY2 LINK 0 Actio LINK 0 Ela 
 
 # Nominative
 # ==========
+SELECT (@VOC) IF (0 Nom)(-1 BOS OR REALCLB)(1 COMMA)(2 Nom)(NOT 2 Interr) (NOT 3 COMMA OR CC LINK *1 Nom BARRIER NPNH);
+	## Hearrá, mun lean gullan olusiid muitaleamen dán. 
+    ## Herodes, guhti lij tetrárkka, ..
+SELECT (@VOC) IF (0 (N Sg Nom))(-1 BOS OR REALCLB)(1 COMMA) (*2 (Pron Sg2))(NOT 2 Interr);
+	## Hearrá, du ráhkis ustit lea buohcci.
+	## Ustiban, in mun daga dutnje vearrut.
+    ## Duohta, ja didjij javlav:
+SELECT (@VOC) IF (0 Nom)(-1 BOS OR REALCLB)(1 COMMA)(2 VFIN);
+	## Ustiban, in mun daga dutnje vearrut.
+    ## Vilpástalle, gádoda vuostatjin bielkáv tjalmestat!
+SELECT (@VOC) IF (0 Nom)(-1 COMMA LINK *-1 (V Sg2) OR (V Du2) OR (V Pl2) OR (Pron Sg2) OR (Pron Du2) OR (Pron Pl2) LINK NOT 0 ("liehkit"))(1 EOS) (NOT 0 Sg LINK *-1 V-SG3 BARRIER VERB);
+	## Vuoj dunji, Betsaida!
+	## Gåjda dássta, Sáhtán!
+SELECT (@VOC) IF (0 Nom)(-1 COMMA)(0 Pers)(0 Sg2 OR Du2 Or Pl2) (*1 Nom BARRIER NPNH LINK 1 EOS);
+	## Gáidet eret mu luhtte, dii verrošeaddjit! 
+
+SELECT (@VOC) IF (0 (N Nom))(-2 BOS)(-1 (Imprt Sg2))(NOT -1 Adv OR Qst)(1 EOS);
+	## Gula eadni!
+
+SELECT (@VOC) IF (0 (N Nom))(-3 BOS)(-2 (Imprt Sg2) OR (Sg2 Qst))(NOT -2 Nom) (-1 COMMA)(1 COMMA);
+	## Buvttes, Máhtte, goikemuoraid!
+
+SELECT (@VOC) IF (0 (N Nom))(-4 BOS)(-3 (V Sg2))(-2 ("gå"))(-1 COMMA)(1 COMMA);
+	## It go, bártnážan, boađáše fargga ruoktot?
+
+REMOVE (@VOC);
 
 REMOVE (N Pl Nom) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
 REMOVE (N Sg Gen) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
