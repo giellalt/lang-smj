@@ -474,19 +474,18 @@ SET VERB = V - (V N);   # V is all readings with a V tag in them, VERB should
 SET V-NOT-CMPND = V - Cmpnd; # Not in use.
 
 
-LIST COPULAS = "dáidit" "bissut" "gártat" "liehket" "leat" "orrut" "šaddat" ;
+LIST COPULAS = "bissot" "liehket" "sjaddat" "soajttet" "viedjet" "årrot";
+#"dáidit" "gártat"  ;
  # 'Dáidit' can appear without 'leat'.
 
 SET V-NOT-COP = V - COPULAS ;
 
-LIST MOD-ASP = "fertet" ;
+LIST MOD-ASP = "bierrit" "viedjet"  "viddnit"  ;
 #                "berret" "dáidit" "fertet" "galgat" "gillet" "lávet" "sáhttit" 
 #		"seahtit" "soaitit" "viggat" ;
  # Verbs that never have arguments of their own - so we leave out "áigut", for ex.
 
-LIST AUX-OR-MAIN = "áiggot" ;
-#"beassat" "hálidit" "háliidit" "máhttit" "nagodit" 
-#			"orrut" "sihtat" "veadjit";
+LIST AUX-OR-MAIN = "ájggot" "bessat" "bierrit" "buktet" "galggat" "hálijdit" "hæhttut" "máhttet" "nagádit" "sihtat" "vierttit"  ;
  # These verbs can take arguments, so they do not belong in the AUX group, 
  # but they are nevertheless mapped to (@+FAUXV). 
 
@@ -873,7 +872,8 @@ ADD (@TITLE) TARGET TITLE IF (1 Prop LINK 0 Fem OR Mal OR Sur);
 # -------------------
 # Fragment mappings
 # -----------------
-# Verb mappings - taken from sme-dis.rle
+
+# Verb mappings - taken from sme-dis.rle. Those which have a #, have to be considered..
 # -------------
 
 MAP (@+FAUXV @+FMAINV) TARGET VFIN IF (NOT *-1 ("liehket") OR INFV OR Neg BARRIER S-BOUNDARY OR VERB)(0 ("årrot"));
@@ -901,18 +901,18 @@ MAP (@-FAUXV) TARGET AUX IF (*-1 Neg BARRIER S-BOUNDARY)(0 ConNeg OR PrfPrc);
 	## Eat mii sáhte vuolgit.
     ## .., iv ga le árvvogis sujsta gábmagijt nuolatjit,..
 #MAP (@-FAUXV) TARGET PrfPrc IF (0 ("leapma" Dimin));
-	## Máŋgga oktavuođas lea leamaš stuora jearru ja dárbu
-	## eamiálbmotdutkamiid fágaidgaskasaš semináraide.
+	## Máŋgga oktavuođas lea leamaš stuora jearru ja dárbu eamiálbmotdutkamiid fágaidgaskasaš semináraide.
 
-MAP (@-FAUXV) TARGET Inf IF (*-1 INFV BARRIER VFIN OR S-BOUNDARY)(0 AUX);
-	## Dat áigu leat ruovttus.
-    ## Dakkir rijdduj iv sidá duobmárin liehket.
-MAP (@+FAUXV) TARGET VFIN IF (0 AUX);
+ 
+MAP (@+FAUXV) TARGET AUX IF (0 VFIN OR ConNeg)(*1 Inf OR ConNeg BARRIER S-BOUNDARY);
 	## Don šattat vel joksat Sirpmás gohcciid.
-    ## .., gej ieddne lij Tamar, ..
-#MAP (@-FAUXV) TARGET AUX ;
-	## Mun in šaddan vuolgit.
-
+    ## ... , ma uddni li tsäggot ja idet vuobnnáj bálkestuvvi, 
+MAP (@+FMAINV) TARGET COPULAS IF (0 VFIN)(NOT *1 Inf OR PrfPrc OR (Actio Ess) BARRIER S-BOUNDARY OR VFIN);	
+    ## Mun lean Romssas. 
+    ## ... , gej iessne lij Tamar.
+MAP (@+FAUXV) TARGET COPULAS IF (0 VFIN)(*1 Inf OR PrfPrc OR (Actio Ess) BARRIER S-BOUNDARY OR VFIN);	
+    ## Mun ledjen borramin.    
+    ## Härrá ieŋŋgil lij gåhttjum.
 MAP (@+FMAINV) TARGET VFIN-NOT-AUX ;
 	## Boađe boahtte vahku.
     ## Peresij riegádij Hesron.
@@ -922,7 +922,7 @@ MAP (@-FMAINV) TARGET PrfPrc IF (*-1 ("liehket") BARRIER PrfPrc OR (Actio Ess)) 
 MAP (@-FMAINV) TARGET PrfPrc IF (*-1 ("liehket") BARRIER PrfPrc OR (Actio Ess));
 	## Lean mun gal oaidnán čakčaseavdnjadiin dola rievdamiin čázi alde Deanus.
     ## Ieddnes Maria lij Josefijn giláduvvam.
-MAP (@-FMAINV) TARGET PrfPrc IF (*-1 VFIN BARRIER REALCLB OR ("go") LINK NOT 0 (V N))(NOT *-1 PrfPrc BARRIER VERB OR N); 
+MAP (@-FMAINV) TARGET PrfPrc IF (*-1 VFIN BARRIER REALCLB OR ("gå") LINK NOT 0 (V N))(NOT *-1 PrfPrc BARRIER VERB OR N); 
 	## Ii dal láhppán gal leat.
 	## Ii son liikon dohko.
 	## Ii okta ge geahččalan eará sivaid ohcat.
@@ -957,16 +957,7 @@ MAP (@-FMAINV) TARGET ConNeg ;
 MAP (@-FMAINV) TARGET (V Actio Ess);
 	## Oađidettiin gullen olbmo boahtimin.
 
-#MAP (@-FMAINV) TARGET (V Actio Gen) IF (1 ("dihte") OR ("dihtii"));
-	## Boađán du lusa čállin dihte dan reivve.
-
-#MAP (@-FMAINV) TARGET (V Actio Gen) IF (1 CC)(2 (V Actio Gen)) (3 ("dihte") OR ("dihtii"));
-	## ...seailluhan, nannen ja ovddidan dihte sámi servodaga.
-
-#MAP (@-FMAINV) TARGET (V Actio Gen) IF (1 COMMA)(2 (V Actio Gen))(3 CC) (4 (V Actio Gen))(5 ("dihte") OR ("dihtii"));
-	## ..seailluhan, nannen ja ovddidan dihte sámi servodaga.
-
-
+ 
 MAP (@-FMAINV) TARGET Sup;
 	## Áddjá bázii mállása vuoššažit. 
     ## Ja boahtám lip suv guddnedittjat.
@@ -988,7 +979,7 @@ MAP (@ADVL) TARGET Ill IF (0 N);
 MAP (@ADVL) TARGET Ine IF (0 N);
 MAP (@ADVL) TARGET Ela IF (0 N);
 MAP (@ADVL @SPRED) TARGET Ess IF (0 N);
-MAP (@ADVL) TARGET Actio IF (NOT 0 Ess);
+MAP (@ADVL) TARGET Actio IF (0 Ill OR Ine OR Ela OR Com);
 
 
 # Default mapping
