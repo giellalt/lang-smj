@@ -514,20 +514,25 @@ SET VFIN-NOT-AUX = VFIN - AUX ;
 SET V-TRANS-ACT = TV - Pass ;
  # All active verbs with a TV tag, including AUX-OR-MAIN.
  
-#SET V-TRANS-ACT-NOT-AUX  = TV - V-PASS - AUX ;
+SET V-TRANS-ACT-NOT-AUX = V-TRANS-ACT - AUX ;
+
+SET V-TRANS-ACT-NOT-ACT = V-TRANS-ACT - Actio - Actor - PrsPrc ;
+
+SET V-TRANS-ACT-NOT-ACT-NOT-AUX = V-TRANS-ACT - Actio - Actor - AUX;
+
 
 # Sets for verbs choosing oblique objects or adverbials
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 #LIST INEV =
 #LIST COMV = 
-
+LIST ELAV = "ballat" ;
 LIST ILLV = "riegádit" ;
 
 #LIST ACC-LOCV
 #LIST ACC-ILLV
 
-LIST ESSV = "gåhttjot" "válldet" ;
+LIST ESSV = "adnet" "gåhttjot" "válldet" ;
 
 
 # Other verb sets
@@ -978,9 +983,20 @@ MAP (@ADVL) TARGET Com IF (0 N);
 MAP (@ADVL) TARGET Ill IF (0 N);
 MAP (@ADVL) TARGET Ine IF (0 N);
 MAP (@ADVL) TARGET Ela IF (0 N);
-MAP (@ADVL @SPRED) TARGET Ess IF (0 N);
+MAP (@ADVL @SPRED @OPRED) TARGET Ess IF (0 N);
 MAP (@ADVL) TARGET Actio IF (0 Ill OR Ine OR Ela OR Com);
-
+MAP (@ADVL) TARGET Adv ;
+MAP (@ADVL) TARGET Po ;
+MAP (@ADVL) TARGET Pr ;
+MAP (@ADVL) TARGET (VAbess) ;
+MAP (@ADVL) TARGET VGen ;
+MAP (@ADVL) TARGET Ger ;
+MAP (@ADVL) TARGET Ill ;
+MAP (@ADVL) TARGET Ela ;
+MAP (@ADVL) TARGET Ine ;
+MAP (@ADVL) TARGET Com ;
+MAP (@ADVL) TARGET Ess IF (0 Num) ;
+# MAP (@ADVL) TARGET Ess IF (0 ("bievla") OR ("buolaš") OR ("čuoika") OR ("dálki") OR ("dulvi") OR ("seavdnjat") OR ("arvi") OR ("biegga"));
 
 # Default mapping
 # ---------------
@@ -2177,6 +2193,18 @@ REMOVE (N Prop Sg Nom) IF (-1 BOS)(1 N)(2 (V Sg3));
 # - - - - - - - -
 REMOVE Plc IF (*1 ("guhti") BARRIER WORD);  
 
+# Attr
+# ----
+SELECT Attr IF (0 (Prop Mal) OR (Prop Fem))(0 Nom)(1C (N Prop Sur) OR (N Prop Fem) OR (N Prop Mal)); # (NOT 0 (@OBJ) LINK *1 (@OPRED) BARRIER NOT-NP); 
+REMOVE Attr IF (0 (Prop Mal) OR (Prop Fem))(0 Nom)(NOT 1 (N Prop Sur) OR (N Prop Fem) OR (N Prop Mal)); # (NOT 0 (@OBJ) LINK *1 (@OPRED) BARRIER NOT-NP); 
+
+# Accusative or genitive
+# ----------------------
+
+SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 OR Acc LINK NOT 0 ELAV)(0 N)(NOT 1 (N Acc));
+SELECT Acc IF (0 N)(*1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 LINK NOT *1 Acc BARRIER SV-BOUNDARY2);
+SELECT Acc IF (0 N)(*1 V-TRANS-ACT BARRIER SV-BOUNDARY2 LINK 0 Actio LINK 0 Ela OR Ill);
+
 
 # Nouns versus adjectives
 # =======================
@@ -2318,7 +2346,8 @@ SELECT Ine IF (0 (N Plc Ess));
 SELECT Ela IF (1 (IV PrfPrc));
     ## Maria lij ájlis Vuojŋŋanisás sahkanam, ..
 
-
+SELECT Ela IF (*-1 ELAV BARRIER Ela OR SV-BOUNDARY2);
+    ## Ale balá Mariav áhkkán válldemis.
 
 # Inessive
 # ========
