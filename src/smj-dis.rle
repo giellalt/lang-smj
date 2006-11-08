@@ -892,6 +892,7 @@ MAP (@DN>) TARGET (Dem Attr) IF (*1 N BARRIER NP-BOUNDARY);
 	
 MAP (@DN>) TARGET (Dem Sg Par) IF (*1 (N Sg Ela) BARRIER NP-BOUNDARY);
 	## Dat rájes Jesus sárnnedatjáj...
+	## Nissun dát bájkes suv tjuorvo suostoj..
 	
 MAP (@DN>) TARGET (Dem Sg Com) IF (*1 (N Sg Com) BARRIER NP-BOUNDARY);
 	## Duobbmobiejven Nineve almatja tjuodtjeli aktan dájna vierregijn ja sijá duobbmon sjaddá, dajna gå buorádusáv Jon sárnnedattijn dahkin...
@@ -2349,9 +2350,9 @@ REMOVE Attr IF (0 (Prop Mal) OR (Prop Fem))(0 Nom)(NOT 1 (N Prop Sur) OR (N Prop
 # Accusative or genitive
 # ----------------------
 
-SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 OR Acc LINK NOT 0 ELAV)(0 N)(NOT 1 (N Acc));
+SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 OR Acc LINK NOT 0 ELAV)(0 (N Gen))(NOT 1 (N Acc));
 SELECT Acc IF (0 N)(*1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 LINK NOT *1 Acc BARRIER SV-BOUNDARY2);
-SELECT Acc IF (0 N)(*1 V-TRANS-ACT BARRIER SV-BOUNDARY2 LINK 0 Actio LINK 0 Ela OR Ill);
+SELECT Acc IF (0 (N Gen))(*1 V-TRANS-ACT BARRIER SV-BOUNDARY2 LINK 0 Actio LINK 0 Ela OR Ill);
 
 
 # Nouns versus adjectives
@@ -2520,6 +2521,7 @@ SELECT Ill IF (1 ILLV LINK 1 Nom BARRIER NPNH);
 # Inessive
 # ========
 # N Sg Ine = N Ess if no CG
+# Dem Sg Ine = Dem Sg Com
 
 SELECT Ine IF (0 (N Plc Ess));
 	## Jesus lij riegádam Betleheman.
