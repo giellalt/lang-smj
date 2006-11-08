@@ -835,6 +835,34 @@ LIST ALLSYNTAG = (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@-FSUBJ)
 # Mappings of minor categories
 # ----------------------------
 
+# Mapping vocatives - taken from sme-dis.rle
+# - - - - - - - - - - - - - - - - - - - - - 
+
+MAP (@VOC) TARGET Nom IF (-1 BOS OR REALCLB)(1 COMMA)(2 Nom)(NOT 2 Interr) (NOT 3 COMMA OR CC LINK *1 Nom BARRIER NPNH);
+    ## Herodes, guhti lij tetrárkka, ..
+MAP (@VOC) TARGET (N Sg Nom) IF (-1 BOS OR REALCLB)(1 COMMA) (*2 (Pron Sg2))(NOT 2 Interr);
+    ## Duohta, ja didjij javlav:
+MAP (@VOC) TARGET Nom IF (-1 BOS OR REALCLB)(1 COMMA)(2 VFIN);
+    ## Vilpástalle, gádoda vuostatjin bielkáv tjalmestat!
+MAP (@VOC) TARGET Nom IF (-1 COMMA LINK *-1 (V Sg2) OR (V Du2) OR (V Pl2) OR (Pron Sg2) OR (Pron Du2) OR (Pron Pl2) LINK NOT 0 ("liehkit"))(1 EOS) (NOT 0 Sg LINK *-1 V-SG3 BARRIER VERB);
+	## Vuoj dunji, Betsaida!
+	## Gåjda dássta, Sáhtán!
+MAP (@VOC) TARGET Nom IF (-1 COMMA)(0 Pers)(0 Sg2 OR Du2 Or Pl2) (*1 Nom BARRIER NPNH LINK 1 EOS);
+	## Gáidet eret mu luhtte, dii verrošeaddjit! 
+
+MAP (@VOC) TARGET (N Nom) IF (-2 BOS)(-1 (Imprt Sg2))(NOT -1 Adv OR Qst)(1 EOS);
+	## Gula eadni!
+
+MAP (@VOC) TARGET (N Nom) IF (-3 BOS)(-2 (Imprt Sg2) OR (Sg2 Qst))(NOT -2 Nom) (-1 COMMA)(1 COMMA);
+	## Buvttes, Máhtte, goikemuoraid!
+
+MAP (@VOC) TARGET (N Nom) IF (-4 BOS)(-3 (V Sg2))(-2 ("gå"))(-1 COMMA)(1 COMMA);
+	## It go, bártnážan, boađáše fargga ruoktot?
+
+
+# Mapping CC
+# - - - - - 	
+
 MAP (@CC-NP @CC-VP) TARGET CC ;
 	## Bárnev sån riegádahttá ja dån galga suv Jesusin gåhttjot, dan diehti gå álmmugav suttojstisá lånes.
 # meaning: @CC-G @CC-L (global, local, i.e., inside and outside NP)
@@ -1113,7 +1141,7 @@ MAP (@-FMAINV) TARGET Sup;
 # Arguments and secondary predicates
 # ----------------------------------
 
-MAP (@SUBJ @SPRED @VOC) TARGET Nom IF (0 N) ;
+#MAP (@SUBJ @SPRED) TARGET Nom IF (0 N) ;
 MAP (@OBJ) TARGET Acc ;
 
 # Adverbial mappings
@@ -2380,32 +2408,7 @@ SELECT Acc IF (0 (N Gen))(*1 V-TRANS-ACT BARRIER SV-BOUNDARY2 LINK 0 Actio LINK 
 
 # Nominative
 # ==========
-SELECT (@VOC) IF (0 Nom)(-1 BOS OR REALCLB)(1 COMMA)(2 Nom)(NOT 2 Interr) (NOT 3 COMMA OR CC LINK *1 Nom BARRIER NPNH);
-	## Hearrá, mun lean gullan olusiid muitaleamen dán. 
-    ## Herodes, guhti lij tetrárkka, ..
-SELECT (@VOC) IF (0 (N Sg Nom))(-1 BOS OR REALCLB)(1 COMMA) (*2 (Pron Sg2))(NOT 2 Interr);
-	## Hearrá, du ráhkis ustit lea buohcci.
-	## Ustiban, in mun daga dutnje vearrut.
-    ## Duohta, ja didjij javlav:
-SELECT (@VOC) IF (0 Nom)(-1 BOS OR REALCLB)(1 COMMA)(2 VFIN);
-	## Ustiban, in mun daga dutnje vearrut.
-    ## Vilpástalle, gádoda vuostatjin bielkáv tjalmestat!
-SELECT (@VOC) IF (0 Nom)(-1 COMMA LINK *-1 (V Sg2) OR (V Du2) OR (V Pl2) OR (Pron Sg2) OR (Pron Du2) OR (Pron Pl2) LINK NOT 0 ("liehkit"))(1 EOS) (NOT 0 Sg LINK *-1 V-SG3 BARRIER VERB);
-	## Vuoj dunji, Betsaida!
-	## Gåjda dássta, Sáhtán!
-SELECT (@VOC) IF (0 Nom)(-1 COMMA)(0 Pers)(0 Sg2 OR Du2 Or Pl2) (*1 Nom BARRIER NPNH LINK 1 EOS);
-	## Gáidet eret mu luhtte, dii verrošeaddjit! 
 
-SELECT (@VOC) IF (0 (N Nom))(-2 BOS)(-1 (Imprt Sg2))(NOT -1 Adv OR Qst)(1 EOS);
-	## Gula eadni!
-
-SELECT (@VOC) IF (0 (N Nom))(-3 BOS)(-2 (Imprt Sg2) OR (Sg2 Qst))(NOT -2 Nom) (-1 COMMA)(1 COMMA);
-	## Buvttes, Máhtte, goikemuoraid!
-
-SELECT (@VOC) IF (0 (N Nom))(-4 BOS)(-3 (V Sg2))(-2 ("gå"))(-1 COMMA)(1 COMMA);
-	## It go, bártnážan, boađáše fargga ruoktot?
-
-REMOVE (@VOC);
 
 REMOVE (N Pl Nom) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
 REMOVE (N Sg Gen) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
