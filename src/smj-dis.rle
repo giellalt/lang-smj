@@ -532,7 +532,7 @@ LIST ILLV = "riegádit" ;
 #LIST ACC-LOCV
 #LIST ACC-ILLV
 
-LIST ESSV = "adnet" "gåhttjot" "válldet" ;
+LIST OPREDV = "adnet" "gåhttjot" "válldet" ;
 
 
 # Other verb sets
@@ -546,9 +546,6 @@ LIST INFV = "liehket" "galggat" "máhttet" "oadtjot" "sihtat" ;
  # a subset of INF-VERB.
 	## Ii suova nieiddas náitalit.
 
-
-#LIST OPRED-VERB = 
- # Verbs that occur with objects that have secondary predicates.
 
 #LIST MOVEMENT-VERB = "mannat";
  # These verbs typically combine with place adverbials in the genitive case 
@@ -867,6 +864,7 @@ ADD (@TITLE) TARGET TITLE IF (1 Prop LINK 0 Fem OR Mal OR Sur);
 #ADD (@TITLE) TARGET PROFESSION IF (1 Prop LINK 0 Fem OR Mal OR Sur);
 #ADD (@TITLE) TARGET OFFICE IF (1 Prop LINK 0 Fem OR Mal OR Sur);
 		
+MAP (@ADVL) TARGET ("akta" Num Ess);		
 
 # Determiner mappings
 # -------------------
@@ -963,10 +961,10 @@ MAP (@OBJ) TARGET Acc ;
 
 # Adverbial mappings
 # ------------------
-MAP (@ADVL) TARGET Com IF (0 N);
-MAP (@ADVL) TARGET Ill IF (0 N);
-MAP (@ADVL) TARGET Ine IF (0 N);
-MAP (@ADVL) TARGET Ela IF (0 N);
+MAP (@ADVL) TARGET Com IF (0 N OR A OR Pers OR Refl OR Interr OR Rel);
+MAP (@ADVL) TARGET Ill IF (0 N OR A OR Pers OR Refl OR Interr OR Rel);
+MAP (@ADVL) TARGET Ine IF (0 N OR A OR Pers OR Refl OR Interr OR Rel);
+MAP (@ADVL) TARGET Ela IF (0 N OR A OR Pers OR Refl OR Interr OR Rel);
 MAP (@SPRED @OPRED) TARGET Ess IF (NOT 0 ESS-ADVL-N);
 MAP (@ADVL) TARGET Actio IF (0 Ill OR Ine OR Ela OR Com);
 MAP (@ADVL) TARGET Adv ;
@@ -975,10 +973,6 @@ MAP (@ADVL) TARGET Pr ;
 MAP (@ADVL) TARGET (VAbess) ;
 MAP (@ADVL) TARGET VGen ;
 MAP (@ADVL) TARGET Ger ;
-MAP (@ADVL) TARGET Ill ;
-MAP (@ADVL) TARGET Ela ;
-MAP (@ADVL) TARGET Ine ;
-MAP (@ADVL) TARGET Com ;
 MAP (@ADVL) TARGET Ess IF (0 Num) ;
 MAP (@ADVL) TARGET Ess IF (0 ESS-ADVL-N);
 
@@ -2059,7 +2053,7 @@ SELECT (Sg2) IF (0 (Pron Pers))(*1 (V Sg2) BARRIER N);
 SELECT Gen IF (*-1 BOS OR CLB BARRIER NOT-ADV)(0 (Pron Pers))(*1 N BARRIER NOT-ADJ);
     ## Muv niejdda le jur jábmám.
     
-SELECT Gen IF (NOT *-1 TV BARRIER S-BOUNDARY)(0 (Pron Pers))(1 Po OR N);
+SELECT Gen IF (NOT *-1 TV BARRIER S-BOUNDARY)(0 (Pron Pers))(1 Po OR N)(NOT 1 Ess);
 SELECT Gen IF (NOT *-1 TV BARRIER S-BOUNDARY)(0 (Pron Pers))(1 A LINK *1 N BARRIER NPNH);
     ## Go sijddasis jåvsådij, di bådijga tjalmedime suv åvddåj.     
 
@@ -2071,6 +2065,13 @@ SELECT Acc IF (-1 V-MOOD)(0 (Pron Pers))(1 (TV Inf));
 
 SELECT Acc IF (-1 Neg)(0 (Pron Pers))(1 TV);
    ## Valla ittjij suv duohtada åvddål gå Maria lij bárnes giegádahttám.
+
+#REMOVE Gen IF (*-1 OPREDV BARRIER NPNH LINK NOT 0 N LINK NOT *-1 NP-HEAD-ACC BARRIER SV-BOUNDARY2)(1 Ess);
+	## Don galggat gohčodit su Jesusin.
+	## Sån gáhttjo suv Jesusin.
+REMOVE Gen IF (1 Ess)(2 OPREDV);
+    ## Dån galga suv Jesusin gåhttjot.
+    
 
 # =================================== #
 # Interrogative and relative pronouns #
@@ -2298,6 +2299,9 @@ SELECT Nom IF (-1 COMMA OR CC LINK -1 Po LINK -1 Gen LINK *-1 Po BARRIER NPNH LI
 SELECT Nom IF (NOT *-1 Pr OR V)(0 Gen)(NOT *1 Po OR V);
 	## Sjokoláda ja næjtso
 
+
+
+
 # Genitive
 # ========
 
@@ -2363,7 +2367,7 @@ SELECT Ela IF (*-1 ELAV BARRIER Ela OR SV-BOUNDARY2);
 # ========
 # N Sg Ine = N Ess if no CG
 
-REMOVE Ess IF (NOT *-1 ESSV BARRIER SV-BOUNDARY2)(0 (Prop Ine))(NOT *1 ESSV BARRIER SV-BOUNDARY2);   
+REMOVE Ess IF (NOT *-1 OPREDV BARRIER SV-BOUNDARY2)(0 (Prop Ine))(NOT *1 OPREDV BARRIER SV-BOUNDARY2);   
     ## Gå Jesus lij riegádam Betleheman, Judean, ...
 
 # N Sg Ela = N Sg Acc PxSg3 = N Sg Gen PxSg3
@@ -2386,8 +2390,8 @@ SELECT Com IF (*-2 Ill BARRIER NOT-ADV-PCLE-VFIN)(-1 N)(0 Gen LINK NOT 0 V)(NOT 
 # Essive
 # ======
 
-REMOVE Ine IF (*-1 ESSV BARRIER Ess)(0 Ess);
-REMOVE Ine IF (0 Ess)(*1 ESSV LINK NOT 1 Ess);
+REMOVE Ine IF (*-1 OPREDV BARRIER Ess)(0 Ess);
+REMOVE Ine IF (0 Ess)(*1 OPREDV LINK NOT 1 Ess);
 	## Suv gåhttju Immanuelin.
 	## , gev Kristusin gåhttju.
 
