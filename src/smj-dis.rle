@@ -434,7 +434,7 @@ LIST MANNE = "gåsi" "goasse" "goassa" "goassis" "gåkku" "gånne" "gåste" "mak
 
 LIST NEGFOC = (Neg Foc) ;
 
-LIST XGU = "degu" ;
+LIST XGU = "dagu" "degu" ;
   # compounds
 
 SET CRD = COMMA | CC | ("/") | XGU ; 
@@ -725,6 +725,12 @@ SET NUMERALS = Num - AKTA ;
 
 SET CARDINALS = Num - Ord ;
 
+LIST ALU = ("allu" Gen)("assu" Gen)("čiekŋu" Gen)("gassu" Gen)("govdu" Gen)
+	  ("guhkku" Gen)("lossu" Gen)("stuorru" Gen)("viidu" Gen);
+	  # Those are words that only appear in one form, which Nickel calls A/G.
+    # They are only in a predicative position.
+    # needs to be translated
+
 # Semantic noun-sets
 # -------------------
 
@@ -869,13 +875,157 @@ MAP (@ADVL) TARGET ("akta" Num Ess);
 # Determiner mappings
 # -------------------
 
+MAP (@DN>) TARGET (Dem Nom) IF (*1 Num OR A OR N BARRIER NP-BOUNDARY LINK 0 Nom) (NOT 1 Interr OR COMMA OR Dem);
+	## Mannit åhpatjit majt dá bágo mierkkiji...
+	
+MAP (@DN>) TARGET (Dem Sg Gen) IF (*1 Num OR A OR N BARRIER NP-BOUNDARY LINK 0 (Sg Gen) OR (Sg Ill) OR (Sg Ine))(NOT 1 Po);
+	## Gáhtjada vuossteguojmijnat såbadittjat gå ájn manojn lihppe, vaják duv ij duobmára åvddåj giese ja duobmár vávta åvddåj ja dån fáŋŋgagoahtáj bálkestuvá.
+
+MAP (@DN>) TARGET (Dem Sg Acc) IF (*1 Num OR A BARRIER NP-BOUNDARY OR (N Sg Acc) LINK 0 Acc)(NOT *1 CC BARRIER WORD);
+	## Mun lean oastán ja klipsen dáid njiŋŋelasaid.
+
+MAP (@DN>) TARGET (Dem Acc) IF (*1 (N Acc) BARRIER ADVLCASE OR VFIN);
+	## Jus le Jubmela Bárnne, de gåhtjo dájt giergijt lájbben sjaddat.
+
+MAP (@DN>) TARGET (Dem Attr) IF (*1 N BARRIER NP-BOUNDARY);
+	## Josiaj riegádij Joakin vieljatjij dan áige gå álmmugav vuolgadin Babylonaj.
+	
+MAP (@DN>) TARGET (Dem Sg Par) IF (*1 (N Sg Ela) BARRIER NP-BOUNDARY);
+	## Dat rájes Jesus sárnnedatjáj...
+	
+MAP (@DN>) TARGET (Dem Sg Com) IF (*1 (N Sg Com) BARRIER NP-BOUNDARY);
+	## Duobbmobiejven Nineve almatja tjuodtjeli aktan dájna vierregijn ja sijá duobbmon sjaddá, dajna gå buorádusáv Jon sárnnedattijn dahkin...
+	
+	
+	
+MAP (@DN>) TARGET (Dem Pl Nom) IF (*1C (N Pl Nom) BARRIER NP-BOUNDARY);
+	## Váidalusas galgá leat namahuvvon dat dilálašvuohta.
+
+MAP (@DN>) TARGET (Dem Pl Gen) IF (*1 (N Pl Gen) BARRIER NP-BOUNDARY);
+	## Bärggal de alla várráj suv doalvoj ja vuosedij sunji gájkka värálda rijkajt ja daj herlukvuodav ja javlaj.
+	
+MAP (@DN>) TARGET (Dem Pl Acc) IF (*1 (N Pl Acc) BARRIER NP-BOUNDARY);
+	## Dat ásahuvvojedje aiddo dainna ulbmiliin, ahte...
+	
+MAP (@DN>) TARGET (Dem Pl Ill) IF (*1 (N Pl Ill) BARRIER NP-BOUNDARY);
+	## Dat ásahuvvojedje aiddo dainna ulbmiliin, ahte...
+	
+MAP (@DN>) TARGET (Dem Pl Ine) IF (*1 (N Pl Ine) BARRIER NP-BOUNDARY);
+	## Dat ásahuvvojedje aiddo dainna ulbmiliin, ahte...
+	
+MAP (@DN>) TARGET (Dem Pl Ill) IF (*1 (N Pl Ill) BARRIER NP-BOUNDARY);
+	## De lassánii maid sisafárren dáidda guovlluide.
+
+MAP (@DN>) TARGET (Dem Pl Ine) IF (*1 (N Pl Ine) BARRIER NP-BOUNDARY);
+	## ...ahte eamiálbmotriekti sáhttá leat okta dain speadjaliin,...
+	
+MAP (@DN>) TARGET (Dem Pl Ela) IF (*1 (N Pl Ela) BARRIER NP-BOUNDARY);
+	## ...ahte eamiálbmotriekti sáhttá leat okta dain speadjaliin,...
+
+MAP (@DN>) TARGET (Dem Pl Com) IF (*1 (N Pl Com) BARRIER NP-BOUNDARY);
+	## Daj ájgij Jesus javlaj..
+
+MAP (@DN>) TARGET (Dem Pl Com) IF (*1 (N Pl Com) BARRIER NOT-AA);
+	## Ain ferte joatkit daiguin sierra doaibmabijuiguin.
+
 
 # Attribute mappings
 # ------------------
-# Genitive mappings
-# -----------------
+
+# MAP (@PronN>)
+# MAP (@AN>)
+# MAP (@PrcN>)
+# MAP (@ActioN>)
+
 # Quantifier mappings
 # -------------------
+
+# MAP (QN<)
+
+MAP (@ActioN>) TARGET (Actio Nom) IF (-1 Gen)(1 N)(NOT 1 PrfPrc);
+	## Mannit bus Israela álmmuga láhppum sávtsaj lusi.
+
+MAP (@QN<) TARGET MEASURE IF (-1 Num)(0 Gen);
+  	## 5 kr.
+
+MAP (@QN<) TARGET MEASURE IF (-1 Num)(1 ALU OR A);
+	## 
+
+MAP (@QN<) TARGET MEASURE IF (-1 Num)(1 Adv OR Pr);
+	## 
+
+MAP (@QN<) TARGET TIME IF (-1 Num)(1 ("boaris") OR ("nuorra"));
+	## 
+
+MAP (@QN<) TARGET TIME IF (-1 Num)(1 ("maŋil") OR ("maŋis"));
+	## 
+
+MAP (@QN<) TARGET N IF (-1 Num)(1 ("velgulaš"));
+	## 
+
+MAP (@QN<) TARGET (N Sg Acc) IF (-1 (Num Acc))(0 MEASURE)(1 (N Acc));
+	##
+
+
+
+# Genitive mappings
+# -----------------
+
+#
+# N Sg Gen  =  N Pl Nom
+# N Sg Nom =  N Sg Gen =  N Pl Nom
+# Pron Sg3 Acc = Gen 
+# N Sg Ela =  N Sg Nom PxSg3 =  N Sg Acc PxSg3 =  N Sg Gen PxSg3
+# N Pl Gen  =  N Pl Com
+# N Pl Gen  =  N Sg Ill  =  N Pl Com
+# Pron Pers Sg3 Gen  =  Pron Pers Sg3 Acc 
+
+# possible syntactic tags for Gen: @GN>, @GP>, @QN>, @ADVL, @NQ<, @GP<, @-FSUBJ?, @SPRED, @NNum>
+# D: @DN>
+# Indef: @PronN>
+# A: @AN>
+# Actio: @ActioN>
+
+MAP (@GN>) TARGET (Pron Sg1 Gen) IF (1 (Refl PxSg1));
+	## 
+
+MAP (@GN>) TARGET (Pron Sg2 Gen) IF (1 (Refl PxSg2));
+	## 
+
+MAP (@GN>) TARGET (Pron Sg3 Gen) IF (1 (Refl PxSg3));
+	##  
+
+MAP (@GN>) TARGET (N Sg Gen) IF (1 (Refl PxSg3));
+	## 
+
+MAP (@GN>) TARGET (Pron Du1 Gen) IF (1 (Refl PxDu1));
+	##
+
+MAP (@GN>) TARGET (Pron Du2 Gen) IF (1 (Refl PxDu2));
+	##
+
+MAP (@GN>) TARGET (Pron Du3 Gen) IF (1 (Refl PxDu3));
+	##
+
+MAP (@GN>) TARGET (Pron Pl1 Gen) IF (1 (Refl PxPl1));
+	## 
+
+MAP (@GN>) TARGET (Pron Pl2 Gen) IF (1 (Refl PxPl2));
+	## 
+
+MAP (@GN>) TARGET (Pron Pl3 Gen) IF (1 (Refl PxPl3));
+	## 
+
+
+# MAP (@SUBJ @SPRED (nom) @GN> @GP> @QN> (Gen) @ADVL (El, Com, Ill)) TARGET Gen IF (0 (N Sg))
+# MAP (
+MAP (@GP>) TARGET Gen IF (0 (N Pl))(1 Po LINK NOT *1 Gen BARRIER NPNH);
+MAP (@GN>) TARGET Gen IF (0 N)(NOT 0 Px OR TIME)(1 Nom)(NOT 1 Po);
+
+# extra Regeln für Pronomen und Numerale
+# extra Regeln für TIME und ROUTE
+
+
 # Fragment mappings
 # -----------------
 
@@ -2099,8 +2249,10 @@ SELECT (Pron Rel Sg Nom) IF (*-1 N OR COMMA OR CLB BARRIER NOT-PUNCT-RIGHT)(NOT 
 
 # Demonstrative pronouns
 
-REMOVE Par IF (0 (Pron Dem Sg Nom))(1 V-SG3);
+REMOVE Par IF (0 (Dem Sg Nom))(1 V-SG3);
     ## Divna dát sjattaj vaj lulu ålliduvvat mav Härrá lij profehta baktu javllam.
+    
+
 
 
 # Indefinite pronouns
@@ -2257,6 +2409,12 @@ REMOVE (@VOC);
 REMOVE (N Pl Nom) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
 REMOVE (N Sg Gen) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
 	## gå profehta le náv tjállám.
+	
+# N Pl Nom = N Sg Nom
+# -------------------
+
+REMOVE (N Sg Nom) IF (-1C (Dem Pl Nom))(0 (N Pl Nom));
+    ## Just oavddodago dunnu lunna bus Tyrosin ja Sidonin dagáduvvat lulun, de da stáda juo ådno lulujga buorádusáv hårsåj ja gunáj sinna dahkat.
 
 # N Sg Gen = N Pl Nom
 # ------------------- 
@@ -2319,23 +2477,23 @@ SELECT Nom IF (NOT *-1 Pr OR V)(0 Gen)(NOT *1 Po OR V);
 # N Sg Gen = N Pl Nom
 # -------------------
 
-SELECT Gen IF (*-2 Nom)(-1 TV)(0 Sg)(*1 N BARRIER NOT-ADJ LINK 1 EOS);
+SELECT Gen IF (*-2 Nom)(-1 TV)(0 (N Sg))(NOT 0 VFIN)(*1 N BARRIER NOT-ADJ LINK 1 EOS);
     ## Mån basáv gusá muorra.
 
-SELECT (Sg Gen) IF (*-1 (Dem Sg Gen) BARRIER NOT-ADJ);
+SELECT (Sg Gen) IF (*-1 (Dem Sg Gen) BARRIER NOT-ADJ)(NOT 0 VFIN)(0 N);
     ## Dat lij dan ájgge gå álmmugav vuolgadin Babylonaj.
     
 SELECT (Sg Gen) IF (0 Prop)(1 (N Nom) LINK NOT 0 Prop);
     ## Josef la Maria ålmåj.
     
-REMOVE Nom IF (NOT 0 TITLE)(1C Nom);
+REMOVE Nom IF (NOT 0 TITLE)(0 N)(1C Nom);
     ## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj:
         
 SELECT (Sg Gen) IF (-1C Gen)(0C N)(1 N);
 SELECT (Sg Gen) IF (-1 Gen)(0C N)(1 COMMA)(*2 N BARRIER NOT-ADJ);
     ## Davida bárne, Abrahama bárne máddo.
 
-REMOVE (Pl Nom) IF (*-1 Num BARRIER NOT-ADJ);
+REMOVE (Pl Nom) IF (*-1 Num BARRIER NOT-ADJ)(0 N);
 	## gålmmå jage.
 
 # N Sg Nom = N Sg Gen = N Pl Nom (cases without CG)
@@ -2343,7 +2501,8 @@ REMOVE (Pl Nom) IF (*-1 Num BARRIER NOT-ADJ);
 # N Pl Gen = N Pl Com
 # -------------------
 
-
+REMOVE (N Pl Com) IF (0 TIME LINK 0 (N Pl Gen));
+    ## Daj biejvij Johannes gástadiddje båij ja Judea åjdåmiehtsen sårnnedatjáj..
 
 # N Pl Gen = N Pl Com = N Sg Ill
 # ------------------------------
@@ -2365,6 +2524,9 @@ SELECT Ill IF (1 ILLV LINK 1 Nom BARRIER NPNH);
 SELECT Ine IF (0 (N Plc Ess));
 	## Jesus lij riegádam Betleheman.
          # Needs further condition!!
+         
+REMOVE Ine IF (-1C (Dem Sg Com))(0 (Dem Sg Com));
+    ## Duobbmobiejven Nineve almatja tjuodtjeli aktan dájna vierregijn ja sijá duobbmon sjaddá, dajn gå buorádusáv Jona sárnnedattijn dahkin...
 
 # Elative
 # ======= 
@@ -2406,7 +2568,14 @@ REMOVE Ine IF (0 Ess)(*1 OPREDV LINK NOT 1 Ess);
 	## Suv gåhttju Immanuelin.
 	## , gev Kristusin gåhttju.
 
+# Late demonstrative prononoun rules
+# ----------------------------------
 
+REMOVE Com IF (0 (Dem Pl Gen))(1C (N Pl Gen));
+    ## Daj ájgij Jesus javlaj.
+
+REMOVE Par IF (0 (Dem Sg Nom))(1C (N Sg Nom));
+    ## Beelsebula, bahás vuojŋŋanisáj oajvemusá fámujn, duot ålmåj bahás vuoiŋŋanisájt vuodjel.
 
 
 # ============================= #
