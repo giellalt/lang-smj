@@ -650,7 +650,7 @@ SET NOT-COMMA = CLB - COMMA | PUNCT-LEFT | PUNCT-RIGHT ;
 
 # Nominal sets defined according to their semantical properties
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-LIST TITLE =  "profehtta" ;
+LIST TITLE =  "gånågis" "profehtta" ;
 LIST ESS-ADVL-N = "bäjvádahka" "biegga" "dálkke" "dulvve" "njáhsto" "rássjo" "sjievnnjet"; 
 
 LIST CONCRETE-ROUTE = "uksa#rájgge" "væddja";
@@ -909,6 +909,10 @@ MAP (@+FAUXV) TARGET AUX IF (0 VFIN)(*1 Inf OR ConNeg OR PrfPrc BARRIER S-BOUNDA
 MAP (@+FAUXV) TARGET COPULAS IF (0 VFIN)(*1 Inf OR PrfPrc OR (Actio Ess) BARRIER S-BOUNDARY OR VFIN);	
     ## Mun ledjen borramin.    
     ## Härrá ieŋŋgil lij gåhttjum.
+    
+MAP (@+FAUXV) TARGET COPULAS IF (*-1 Inf OR PrfPrc OR (Actio Ess) BARRIER NOT-ADV-PCLE)(0 VFIN);
+    ## Ja boahtám lip suv guddnedittjat.
+	    
 
 MAP (@-FAUXV) TARGET AUX IF (0 PrfPrc)(*1 Inf OR (Actio Ess) BARRIER S-BOUNDARY);	
    ## In leat sáhttán gáhku borrat dan rájes. 
@@ -931,8 +935,10 @@ MAP (@-FMAINV) TARGET PrfPrc IF (*-1 COPULAS OR Neg BARRIER S-BOUNDARY LINK 0 VF
 	## Ii dal láhppán gal leat.
 	## Ii son liikon dohko.
 	## Ii okta ge geahččalan eará sivaid ohcat.
+    
+MAP (@-FMAINV) TARGET PrfPrc IF (*1 COPULAS BARRIER NOT-ADV-PCLE LINK 0 VFIN);     
     ## Ja boahtám lip suv guddnedittjat.
-
+    
 MAP (@-FMAINV) TARGET Inf;
 	## Manaigo Biret-Elle viežžat boastta?
     ## Ittjij sidá suv hehpaduhttet.
@@ -965,7 +971,8 @@ MAP (@ADVL) TARGET Com IF (0 N OR A OR Pers OR Refl OR Interr OR Rel);
 MAP (@ADVL) TARGET Ill IF (0 N OR A OR Pers OR Refl OR Interr OR Rel);
 MAP (@ADVL) TARGET Ine IF (0 N OR A OR Pers OR Refl OR Interr OR Rel);
 MAP (@ADVL) TARGET Ela IF (0 N OR A OR Pers OR Refl OR Interr OR Rel);
-MAP (@SPRED @OPRED) TARGET Ess IF (NOT 0 ESS-ADVL-N);
+MAP (@SPRED @OPRED) TARGET Ess IF (NOT 0 ESS-ADVL-N OR Actio);
+MAP (@-FMAIN @OPRED) TARGET (Actio Ess); 
 MAP (@ADVL) TARGET Actio IF (0 Ill OR Ine OR Ela OR Com);
 MAP (@ADVL) TARGET Adv ;
 MAP (@ADVL) TARGET Po ;
@@ -2066,11 +2073,15 @@ SELECT Acc IF (-1 V-MOOD)(0 (Pron Pers))(1 (TV Inf));
 SELECT Acc IF (-1 Neg)(0 (Pron Pers))(1 TV);
    ## Valla ittjij suv duohtada åvddål gå Maria lij bárnes giegádahttám.
 
-#REMOVE Gen IF (*-1 OPREDV BARRIER NPNH LINK NOT 0 N LINK NOT *-1 NP-HEAD-ACC BARRIER SV-BOUNDARY2)(1 Ess);
-	## Don galggat gohčodit su Jesusin.
-	## Sån gáhttjo suv Jesusin.
+REMOVE Gen IF (*-1 OPREDV BARRIER NPNH LINK NOT 0 N LINK NOT *-1 NP-HEAD-ACC BARRIER SV-BOUNDARY2)(1 Ess);
+	## Sån gåhttju suv Jesusin.
+
 REMOVE Gen IF (1 Ess)(2 OPREDV);
     ## Dån galga suv Jesusin gåhttjot.
+
+REMOVE (Pers Acc) IF (*1C (N Acc) BARRIER S-BOUNDARY2 OR Po OR Actio OR ("degu") LINK NOT 0 TIME);
+    ## Vuojnijma suv nástev ihtemin.
+  
     
 
 # =================================== #
@@ -2604,6 +2615,12 @@ SELECT (V Pl3) IF (*-2 BOS OR CS BARRIER NPNH)(-1 (N Pl Nom))(0 VFIN);
 
 # Here we have some rules that scan the whole domain.
 # We myst consider whether they should be integrated earlier or not.
+
+SELECT (@OPRED) IF (*-1 (@OBJ) BARRIER S-BOUNDARY2 OR PUNCT LINK NOT 0 Dem)(*-1 OPREDV BARRIER SV-BOUNDARY2)(NOT 0 Gen LINK *1 N BARRIER NPNH)(NOT 0 Interr OR TIME OR ROUTE) (NOT 0 Num LINK 1 ROUTE OR TIME)(NOT 1 (TV Actio) LINK NOT *1 (@OBJ) BARRIER S-BOUNDARY2);
+    ## Sån gåhttju suv Jesusin.
+
+SELECT (@OPRED) IF (*-1 (@OBJ) BARRIER S-BOUNDARY2 OR Nom)(0 Ess);
+    ## Dån galga suv Jesusin gåhttjot.
 
 # Late rules
 
