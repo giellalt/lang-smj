@@ -828,6 +828,8 @@ LIST CONTRA = "valla" ;
 
 SET NOT-CC = WORD - CC ;
 
+SET NOT-PCLE = WORD - Pcle ;
+
 LIST COMPAR = "dávjjit" "eanet" "earalágan" "eará" "earret" "seammás" 
 		"seammalágan" "seammalágán" "seammaláhkai"; 
  # These combine with "gå" Pcle, but COMPAR stands for 'comparison' rather than
@@ -1035,6 +1037,85 @@ MAP (@DN>) TARGET (Dem Pl Com) IF (*1 (N Pl Com) BARRIER NOT-AA);
 # MAP (@AN>)
 # MAP (@PrcN>)
 # MAP (@ActioN>)
+
+
+MAP (@ADV-ADV) TARGET Date IF (-1 BEAIVI);
+
+
+MAP (@PronN>) TARGET ("juohkka");
+	## Galgá gávdnot divššohasbearráigeahčči juohke fylkkas. 
+
+MAP (@PronN> @GP<) TARGET (Pron Attr) ;
+	## Härrá, Härrá, ep gus mij le duv namán åvddålijsárnnum, bahás vuojŋŋanisájit duv namán vuodjelam ja edna oavddodagov duv namán dahkam?
+	## Gå muhtem ájgev sijá lunna lijga årrum, de...
+	
+MAP (@PronN<) TARGET (Indef Pl Nom) IF (*-1 PPRON-DU-PL OR (N Pl) LINK 0 Nom BARRIER S-BOUNDARY)(NOT -1 CC OR CLB)(NOT 1 Rel);
+	## 
+
+MAP (@PronN<) TARGET (Refl Sg Nom) IF (*-1 MUN OR DON OR (Pron Sg3 Nom) OR (Pron Sg Nom) OR (N Sg Nom) BARRIER S-BOUNDARY);
+	## Mån iesj lev alep åjvij vuollálasj ja doarroålmmå li muv vuollálattja. 
+
+MAP (@PronN>) TARGET (Refl Sg Nom) IF (*1C MUN OR DON OR (Pron Sg3 Nom) OR (Pron Sg Nom) OR (N Sg Nom) BARRIER NOT-ADV-PCLE);
+	##  Gájkajis de iesj guhtik sijddasis vuolgij, valla Jesus Olijvavárráj manáj.
+
+MAP (@PronN<) TARGET (Refl Pl Nom) IF (*-1 PPRON-DU-PL OR (N Pl) BARRIER S-BOUNDARY LINK 0 Nom);
+	## ...ja ehpit dij ietja håla, ájnat áhtjáda Vuoiŋŋanis dijá baktu.
+
+MAP (@PronN>) TARGET (Refl Pl Nom) IF (*1 PPRON-DU-PL OR (N Pl) BARRIER NOT-ADV-PCLE LINK 0 Nom)(NOT *1 VFIN OR Inf BARRIER NOT-ADV-PCLE);
+	## Na, manen val ietja Jubmela budájit doadjebihtit ietjada njuolgadusáj diehti?
+
+MAP (@PronN>) TARGET Recipr IF (1 Recipr);
+	## 
+
+MAP (@PronN>) TARGET Indef IF (*1 N BARRIER NPNH)(NOT 0 Nom LINK 1 Acc) (NOT 0 ADVLCASE) (NOT 1 (N Sg Gen) LINK NOT 0 Px LINK *1 N BARRIER NPNH OR CC)(NOT 1 (N Sg Gen PxSg2) LINK *-1 (V-SG2) LINK *1 N BARRIER NPNH OR CC)(NOT 1 VFIN OR Ess OR ("veara"));
+  	## Gå Jesus lij riegádam Betleheman, Judean, gånågis Herodesa ájgen, de lullet muhtem násstedåbdde Jerusalemij båhtin ja gahtjin...
+
+ADD (@PronN>) TARGET Indef IF (1 ("ietjá") OR Dem)(NOT 0 Nom LINK 1 Acc) (NOT 0 ADVLCASE); 
+  	## Divna dát sjattaj vaj luluj ålliduvvat mav Härrá lij profehta baktu javllam...
+  # The partitive construction would have been máŋggain earáin and ollu daid earáin
+  
+  
+MAP (@ADVL) TARGET Indef IF (0 ("ållo"))(1 ("ietjá" Pl Loc) OR (Dem Pl Loc))(*2 V-SG3 BARRIER NOT-ADJ-PCLE)(NOT 0 Nom LINK 1 Acc)(NOT 0 ADVLCASE);
+MAP (@ADVL) TARGET Indef IF (*-1 V-SG3 BARRIER S-BOUNDARY OR VFIN)(0 ("ållo"))(1 ("ietjá" Pl Loc) OR (Dem Pl Loc))(NOT 0 Nom LINK 1 Acc)(NOT 0 ADVLCASE);
+	## Ollu earáin lea hávski. # for habeo-constructions where ollu modifies eará+Loc
+
+MAP (@PronN>) TARGET Indef IF (NOT *-1 V-SG3 BARRIER S-BOUNDARY OR VFIN)(0 ("ållo"))(1 ("ietjá" Pl Loc) OR (Dem Pl Loc))(NOT *2 V-SG3 BARRIER NOT-ADJ-PCLE)(NOT 0 Nom LINK 1 Acc)(NOT 0 ADVLCASE);
+	## 
+
+MAP (@PronN>) TARGET Indef IF (0 Nom)(*1 (N Nom) BARRIER NPNH) (NOT 0 Pl LINK 1 Inf);
+	## Gå dal Herodes árvvedij sån lij násstedåbddija bähtádallam, de harmmat moarádij ja gåhtjoj gåddet gájkka guovtejahkásaj ja nuorap bárnnemánájit Betleheman...
+
+MAP (@PronN>) TARGET Indef IF (1 A-CASE)(NOT 1 ("veara"));
+	## 
+
+MAP (@PronN>) TARGET Indef IF (NOT 0 ("iešguhtet") OR ADVLCASE)(1 Num);
+	## 
+
+MAP (@PronN>) TARGET ("gájka") IF (1 Dem OR Indef);
+	## 
+
+MAP (@PronN>) TARGET ("gájka" Pron) IF (*1 N BARRIER NPNH);
+	## 
+
+#MAP (@PronN>) TARGET Indef IF (*1 N BARRIER NP-BOUNDARY OR REALCLB) (NOT *-1 ("leat") BARRIER NOT-ADV-PCLE LINK *1 Indef LINK *1 PrfPrc BARRIER VERB) (NOT *-1 INFV BARRIER NOT-ADV-PCLE LINK *1 Indef LINK *1 Inf BARRIER VERB)(NOT 0 ADVLCASE)(NOT 1 (Pers Gen) LINK *1 N BARRIER NOT-NP OR CLB LINK NOT 0 Loc)(NOT 1 Adv LINK 1 N) (NOT 1 (N Sg Gen) LINK *1 N BARRIER NPNH)(NOT 1 VFIN OR Ess OR ("veara"));
+	## 
+
+MAP (@PronN>) TARGET ("mij" Interr Pl Nom) IF (*1C (N Pl Nom) BARRIER NP-BOUNDARY);
+MAP (@PronN>) TARGET ("mij" Rel  Pl Nom) IF (*1C (N Pl Nom) BARRIER NP-BOUNDARY);
+	## 
+
+#MAP (@PronN>) TARGET Interr IF (NOT 0 ("guhti"))(1 N) (NOT 0 ("mij") LINK NOT 1 (Pl Gen))(NOT 0 (Sg Nom) LINK 1 V-SG3) (NOT 1 Gen LINK *1 N BARRIER NPNH);
+#MAP (@PronN>) TARGET Rel  IF (NOT 0 ("guhti"))(1 N) (NOT 0 ("mij") LINK NOT 1 (Pl Gen))(NOT 0 (Sg Nom) LINK 1 V-SG3) (NOT 1 Gen LINK *1 N BARRIER NPNH);
+	## Galg anodit mav Härráj le vuornnán dahkam.
+	
+
+MAP (@PronN>) TARGET Interr IF (0 ("guhtimusj"))(*1 (Pers Loc) BARRIER NOT-PCLE);
+MAP (@PronN>) TARGET Rel  IF (0 ("guhtimusj"))(*1 (Pers Loc) BARRIER NOT-PCLE);
+	## 
+
+MAP (@PronN>) TARGET ("gajká") IF (*1 (N Pl Nom) OR (N Pl Acc) BARRIER NP-BOUNDARY);
+	##  
+
 
 # Quantifier mappings
 # -------------------
@@ -2126,7 +2207,7 @@ SELECT A IF (-2 (N Sg Nom))(-1 ("leat" Sg3))(NOT 0 N OR PrfPrc OR Inf) (NOT 0 Il
 REMOVE (A Attr) IF (0 A)(1 COMMA)(NOT 2 A OR PrsPrc)(NOT 2 CC LINK 1 Attr);
 	## Jos dat ii leat vejolaš, de mii fertet mannat.
 
-REMOVE (A Attr) IF (0 A)(NOT 1 A OR N OR Num OR Actio OR PrfPrc OR PrsPrc OR CC OR COMMA); 
+REMOVE (A Attr) IF (0 A)(NOT 0 Indef)(NOT 1 A OR N OR Num OR Actio OR PrfPrc OR PrsPrc OR CC OR COMMA); 
 	## Dat galgá čuovvoluvvot nu guhkás go vejolaš.
 
 REMOVE (A Attr) IF (0 A-CASE OR Adv)(1 CC)(NOT *2 N BARRIER NP-BOUNDARY);
@@ -2216,7 +2297,7 @@ SELECT Adv IF (0 A)(1 CC)(2C Adv);
 
 # Gen after Num
 
-SELECT (Sg Gen) IF (*-1 Num BARRIER NPNH)(NOT 0 Po);
+SELECT (Sg Gen) IF (*-1 Num BARRIER NPNH)(NOT 0 Po OR CC);
 	## Aktat ij buvte guokta härrä dievnnut.
 
 # Gen in Spec
@@ -2678,6 +2759,7 @@ REMOVE (Pl Nom) IF (*-1 Num BARRIER NOT-ADJ)(0 N);
 
 # N Sg Nom = N Sg Gen = N Pl Nom (cases without CG)
 # -------------------------------------------------
+
 # N Pl Gen = N Pl Com
 # -------------------
 
@@ -2686,6 +2768,9 @@ REMOVE (N Pl Com) IF (0 TIME LINK 0 (N Pl Gen));
 
 # N Pl Gen = N Pl Com = N Sg Ill
 # ------------------------------
+
+SELECT (Gen) IF (*-1 VFIN)(0C N LINK 0 Com OR Ill)(1C N);
+    ## Gånnå le juvdáj riegádimgånågis?
 
 
 
