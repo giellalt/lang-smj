@@ -1049,8 +1049,11 @@ MAP (@GN>) TARGET (Pron Pl3 Gen) IF (1 (Refl PxPl3));
 
 # MAP (@SUBJ @SPRED (nom) @GN> @GP> @QN> (Gen) @ADVL (El, Com, Ill)) TARGET Gen IF (0 (N Sg))
 # MAP (
-MAP (@GP>) TARGET Gen IF (0 (N Pl))(1 Po LINK NOT *1 Gen BARRIER NPNH);
+MAP (@GP>) TARGET Gen IF (1C Po OR (Po ADVLCASE) LINK NOT *1 Gen BARRIER NPNH);
+    ## ..., lågenanniellja buolva Davida rájes Babylona fáŋŋgavuoda rádjáj ja lågenanniellja buolva fáŋŋgavuoda rájes Kristusa rádjáj.
+    
 MAP (@GN>) TARGET Gen IF (0 (N Pl))(NOT 0 Px OR TIME)(1 Nom);
+MAP (@ADVL) TARGET Gen IF (0 TIME);
 
 # extra Regeln für Pronomen und Numerale
 # extra Regeln für TIME und ROUTE
@@ -1664,6 +1667,12 @@ SELECT CC IF (*-1 Inf BARRIER VERB OR CLB)(0 ("vaj"))(*1 Inf BARRIER VERB);
 
 # after verb-disambiguation
 
+REMOVE LCRD IF (-1 COMMA)(0 CC);
+    ## Ieddnes Maria lij Josefijn giláduvvam, valla åvddål gå aktan lijga viessogoahtám, de bihkusij bådij Maria lij ájlis Vuoiŋŋanisás sahkanam.
+    
+REMOVE LCRD IF (NOT -2 Gen)(-1 ("åvddål") LINK NOT *-1 VFIN BARRIER SV-BOUNDARY OR CCCOMMA)(0 ("gå"));
+    ## Ieddnes Maria lij Josefijn giláduvvam, valla åvddål gå aktan lijga viessogoahtám, de bihkusij bådij Maria lij ájlis Vuoiŋŋanisás sahkanam.
+    
 REMOVE GCRD IF (-1 Cmpnd);
     ## Sávtsa- ja gájtsanáhkkegárvoj vádtsin, vánev gierddin, doarrádaláduvvin ja illastuvvin.
     
@@ -1730,6 +1739,9 @@ REMOVE LCRD IF (*-2 BOS BARRIER COMMA)(-1 COMMA);
 
 REMOVE LCRD IF (NOT -1 (@ADVL))(*1 (@ADVL) BARRIER NPNH LINK 1 VFIN);
     ## Elihudaj riegádij Elasar, Elasaraj Mattan, Mattanij Jakob, ja Jakobij riegádij Josef, Maria ålmåj.
+    
+REMOVE LCRD IF (-1 ("diehti") LINK -1 (Dem Gen))(0 ("gå"));
+    ## Bárnev riegádahttá ja dån galga suv Jesusin gåhttjot, dan diehti gå álmmugav suttojstisá lånes.
 
 
 # Adjectives
@@ -1816,6 +1828,9 @@ SELECT (N Attr) IF (NOT 0 Prop)(1 N);
 	
 SELECT CAP-INITIAL IF (-1 (@PROP>))(0 INITIAL)(1 Sur);
     ## Mikkel A. Eira.
+    
+SELECT Adv IF (NOT -1 Gen)(0 ("åvddål") LINK NOT *-1 VFIN BARRIER SV-BOUNDARY OR CCCOMMA)(1 ("gå"));
+        ## Ieddnes Maria lij Josefijn giláduvvam, valla åvddål gå aktan lijga viessogoahtám, de bihkusij bådij Maria lij ájlis Vuoiŋŋanisás sahkanam.
 
 REMOVE Adv IF (NOT *-1 VERB BARRIER S-BOUNDARY2)(NOT 0 ("gosa") OR ("mielde"))(NOT 1C A)(NOT *1 VERB BARRIER S-BOUNDARY2);
 	## Diehtojuohkin divššohasa lagamuš oapmahažžii.
