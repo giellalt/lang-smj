@@ -1000,6 +1000,64 @@ MAP (@QN<) TARGET (N Sg Acc) IF (-1 (Num Acc))(0 MEASURE)(1 (N Acc));
 # Genitive mappings
 # -----------------
 
+
+#
+# N Sg Gen  =  N Pl Nom
+# N Sg Nom =  N Sg Gen =  N Pl Nom
+# Pron Sg3 Acc = Gen 
+# N Sg Ela =  N Sg Nom PxSg3 =  N Sg Acc PxSg3 =  N Sg Gen PxSg3
+# N Pl Gen  =  N Pl Com
+# N Pl Gen  =  N Sg Ill  =  N Pl Com
+# Pron Pers Sg3 Gen  =  Pron Pers Sg3 Acc 
+
+# possible syntactic tags for Gen: @GN>, @GP>, @QN>, @ADVL, @NQ<, @GP<, @-FSUBJ?, @SPRED, @NNum>
+# D: @DN>
+# Indef: @PronN>
+# A: @AN>
+# Actio: @ActioN>
+
+MAP (@GN>) TARGET (Pron Sg1 Gen) IF (1 (Refl PxSg1));
+	## 
+
+MAP (@GN>) TARGET (Pron Sg2 Gen) IF (1 (Refl PxSg2));
+	## 
+
+MAP (@GN>) TARGET (Pron Sg3 Gen) IF (1 (Refl PxSg3));
+	##  
+
+MAP (@GN>) TARGET (N Sg Gen) IF (1 (Refl PxSg3));
+	## 
+
+MAP (@GN>) TARGET (Pron Du1 Gen) IF (1 (Refl PxDu1));
+	##
+
+MAP (@GN>) TARGET (Pron Du2 Gen) IF (1 (Refl PxDu2));
+	##
+
+MAP (@GN>) TARGET (Pron Du3 Gen) IF (1 (Refl PxDu3));
+	##
+
+MAP (@GN>) TARGET (Pron Pl1 Gen) IF (1 (Refl PxPl1));
+	## 
+
+MAP (@GN>) TARGET (Pron Pl2 Gen) IF (1 (Refl PxPl2));
+	## 
+
+MAP (@GN>) TARGET (Pron Pl3 Gen) IF (1 (Refl PxPl3));
+	## 
+
+
+# MAP (@SUBJ @SPRED (nom) @GN> @GP> @QN> (Gen) @ADVL (El, Com, Ill)) TARGET Gen IF (0 (N Sg))
+# MAP (
+MAP (@GP>) TARGET Gen IF (0 (N Pl))(1 Po LINK NOT *1 Gen BARRIER NPNH);
+MAP (@GN>) TARGET Gen IF (0 (N Pl))(NOT 0 Px OR TIME)(1 Nom);
+
+# extra Regeln für Pronomen und Numerale
+# extra Regeln für TIME und ROUTE
+
+
+
+
 #
 # N Sg Gen  =  N Pl Nom
 # N Sg Nom =  N Sg Gen =  N Pl Nom
@@ -1053,6 +1111,7 @@ MAP (@GN>) TARGET Gen IF (0 N)(NOT 0 Px OR TIME)(1 Nom)(NOT 1 Po);
 
 # extra Regeln für Pronomen und Numerale
 # extra Regeln für TIME und ROUTE
+
 
 
 # Fragment mappings
@@ -1165,6 +1224,7 @@ MAP (@ADVL) TARGET Ess IF (0 ESS-ADVL-N);
 # Default mapping
 # ---------------
 
+MAP (@X) TARGET ALL ;
 
 
 # ==================== #
