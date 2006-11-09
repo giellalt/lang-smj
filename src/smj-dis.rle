@@ -765,7 +765,7 @@ LIST PROFESSION = "guolle#bivdde" ;
 #OBJECT = PARTS | SHOE | FOOD | TEXT
 #ENTITY = TOOLS | OBJECT | VEHICLE
 
-LIST BUILDING = "synagoga" ;
+LIST BUILDING = "fáŋŋga#goahte" "synagoga" ;
 
 # ROOM
 # GEOGRAPHICAL-PLACE 
@@ -2338,8 +2338,9 @@ SELECT Po IF (0 ("rájes"))(*1 ("rádjáj" Po) BARRIER VERB);
 	## Fáŋŋgavuoda rájes Kristusa rádjáj.
 	
 # sáddnán
-SELECT Adv IF (-1 BOS)(0 ("sáddnán"))(1 COMMA);
+SELECT Adv IF (-1 BOS OR PUNCT OR CLB)(0 ("sáddnán"))(1 COMMA OR Nom);
     ## Sáddnán, lágas ij bokstávva, ...
+    ## Sáddnán sån ij bálkás masse.
 
 # Proper nouns
 
@@ -2645,6 +2646,9 @@ SELECT Acc IF (0 (N Gen) OR (N Acc))(*1 V-TRANS-ACT BARRIER SV-BOUNDARY2 LINK 0 
 # Nominative
 # ==========
 
+SELECT (Sg Nom) IF (NOT *-1 Sg3 BARRIER SV-BOUNDARY2 OR Nom)(0 N)(1 Sg3);
+    ## Fáŋŋgagoaden Johannes guláj Kristusa dagoj birra.
+    ## Johannes bådij ja sån ittjij bårå.
 
 REMOVE (N Pl Nom) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
 REMOVE (N Sg Gen) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
@@ -2675,11 +2679,24 @@ REMOVE (Sg Nom) IF (NOT *-1 ("ja") OR COMMA BARRIER NOT-AA LINK -1 Nom)(0 (Pl No
     ## Guollebivdde vuojn lijga.
 
 SELECT (Pl Nom) (0 (Pl Nom) LINK 0 N OR (Pron Pers))(*1 (Pron Rel Pl) BARRIER WORD);
-    ## Allit fásstudattijn hådjen vuojnnu nåv gåk vilpástalle, gudi tsusskaha fásstudi almatjij vuojnedijn.    
+    ## Allit fásstudattijn hådjen vuojnnu nåv gåk vilpástalle, gudi tsusskaha fásstudi almatjij vuojnedijn. 
+    
+REMOVE Ine IF (-1 N LINK 0 ADVLCASE)(0 Prop LINK 0 Mal OR Fem OR Sur)(NOT *1 COPULAS BARRIER NOT-ADV-PCLE);
+    ## ., Elasaraj Mattan, ....       
+    
+SELECT Nom IF (-1 HUMAN-INDIVIDUAL)(0 (Prop Nom) LINK 0 Mal OR Fem)(NOT 1 N);
+    ## vielljas Andreas
+SELECT Nom IF (-2 Nom)(-1 (@CC-NP))(0 N)(NOT 1 N);
+    ## vieljatja Andreas ja Johannes
+SELECT Nom IF (0 N)(1 (@CC-NP))(2 Nom)(NOT 3 N);    
+    ## Tomas ja Matteus        
+SELECT Nom IF (0 N)(1 (@CC-NP))(2 TITLE)(3 Nom)(NOT 4 N);   
+    ## Tomas ja profehtta Matteus
 
 # N Sg Gen = N Pl Nom
 # ------------------- 
 SELECT Nom IF (0 (@TITLE))(1C Nom);
+SELECT Sg IF (0 (@TITLE))(1 Prop LINK 0 Mal OR Fem OR Sur)(NOT 2 CC LINK 1 Prop LINK 0 Mal OR Fem OR Sur);
 
 REMOVE Gen IF (NOT 0 TIME OR ROUTE)(NOT 1 N OR A OR Gen OR (Pron Indef) OR Num OR Po OR CC OR COMMA) ;
     ## Nåv li divna buolva.
@@ -2782,10 +2799,24 @@ SELECT (Gen) IF (*-1 VFIN)(0C N LINK 0 Com OR Ill)(1C N);
 SELECT Ill IF (1 ILLV LINK 1 Nom BARRIER NPNH);
 
 
+# Comitative
+# ==========
+    
+SELECT Com IF (*-2 Ill BARRIER NOT-ADV-PCLE-VFIN)(-1 N)(0 Gen LINK NOT 0 V)(NOT 1 N);    
+     ## ..., Jakobij Juda vieljatjij, ...    
+     ## ... , Jakobij riegádij Juda vieljatjij dan ájge.
+
+SELECT (Sg Com) IF (-1 (Dem Sg Com))(0 N);
+    ## Dájna vuogijn profehta Jesaja bágo sidjij ålliduvvi.
+
+
 # Inessive
 # ========
 # N Sg Ine = N Ess if no CG
 # Dem Sg Ine = Dem Sg Com
+
+SELECT Ine IF (-1 (Indef Ine))(0 N);
+    ## Jordanäno nuppen bielen.
 
 SELECT Ine IF (0 (N Plc Ess));
 	## Jesus lij riegádam Betleheman.
@@ -2793,6 +2824,7 @@ SELECT Ine IF (0 (N Plc Ess));
          
 REMOVE Ine IF (-1C (Dem Sg Com))(0 (Dem Sg Com));
     ## Duobbmobiejven Nineve almatja tjuodtjeli aktan dájna vierregijn ja sijá duobbmon sjaddá, dajn gå buorádusáv Jona sárnnedattijn dahkin...
+
 
 # Elative
 # ======= 
@@ -2809,6 +2841,11 @@ REMOVE Acc IF (NOT *-1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2)(NOT -1 COMMA LI
     ## Gå Josef oademis gåhttsåj, ... # oademis - Ela
     ## De ålliduváj mav profehta Jeremia lij javllam. # javllam - PrfPrc
     ## Nåv li divna buolva, .. # nåv - Adv   
+    
+SELECT Ela IF (*-1 COPULAS BARRIER VERB)(0 N OR Pers)(1 Comp OR ("ienep" Ess))(2 S-BOUNDARY2 OR CLB);    
+    ## Valla dánna le juoga Jonas ienebun.
+    ## Oahppe ij le åhpadiddjes bárep.
+    ## Nissunis riegádam ij le Johannes gástadiddjes stuoráp.
 
 # Inessive
 # ========
@@ -2821,16 +2858,6 @@ REMOVE Ess IF (NOT *-1 OPREDV BARRIER SV-BOUNDARY2)(0 (Prop Ine))(NOT *1 OPREDV 
 
 
 
-
-
-# Comitative
-# ==========
-
-#REMOVE (N Pl Ine) IF 
-    
-SELECT Com IF (*-2 Ill BARRIER NOT-ADV-PCLE-VFIN)(-1 N)(0 Gen LINK NOT 0 V)(NOT 1 N);    
-     ## ..., Jakobij Juda vieljatjij, ...    
-     ## ... , Jakobij riegádij Juda vieljatjij dan ájge.
 
 # Essive
 # ======
