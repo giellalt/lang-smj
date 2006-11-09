@@ -655,10 +655,7 @@ LIST SG-WORD = "mieda" "miehttse#mieda";
 LIST TITLE =  "gånågis" "profehtta" ;
 LIST ESS-ADVL-N = "bäjvádahka" "biegga" "dálkke" "dulvve" "njáhsto" "rássjo" "sjievnnjet"; 
 
-LIST CONCRETE-ROUTE = "uksa#rájgge" "væddja";
-LIST ABSTR-ROUTE = "mijlla" ;
 
-SET ROUTE = CONCRETE-ROUTE | ABSTR-ROUTE ; 
 
 # SETS FROM SME TO COME IN HERE.
 
@@ -737,6 +734,77 @@ LIST ALU = ("allu" Gen)("assu" Gen)("čiekŋu" Gen)("gassu" Gen)("govdu" Gen)
 # -------------------
 
 LIST HUMAN-INDIVIDUAL = "áddjá" "áhkká" "áhkko" "áhttje" "áhttje#bielle" "ájttek" "bárne#bárnne" "bárne#niejdda" "bárnne" "bárnne#bielle" "biebbmo#bárnne" "biddno#moarsse" "boaddnje" "gájmme" "gállasj#guojmme"  "gállasj#ålmåj" "gálojinitja" pl. "goasske" "goasske"  "gieruk" "ibme" "ieddne" "ieddne#bielle" "iemet" "irgge" "iset" "niejdda" "næjttso" "næjttso#riehko" "oarbben#bielle" "oarbben" "siessá" "siessal" "svilli" "mannje" "moarsse" "muohtá" "muohtal" "niehpe" "oabbá" "oabbá#bielle" "tjiehtje" "tjiehtjev" "viellja" "viellja#gieres" "viellja#bielle" "æddnul" "ænoj" ; 
+
+#LIST HUMAN-GROUP - bearaš, veahka, delegašuvdna
+
+LIST PROFESSION = "guolle#bivdde" ;
+
+# OFFICE - minister, áirras
+#ROLE - Actor, ássi
+
+#HUMAN = HUMAN-INDIVIDUAL | HUMAN-GROUP | PROFESSION | ROLE | OFFICE
+
+#BODY
+#ALL-ANIMALS = ANIMAL | HUNT-ANIMAL | BOAZU | FISH
+#ANIMATE = HUMAN | ALL-ANIMALS
+#PLANT
+
+#TOOLS
+#WRITING-TOOLS
+#ABSTR-TOOLS ášši, dánsa, musihkka, varra
+#
+#PARTS ruohtas
+#SHOE
+#BEDCLOTHES
+#FOOD
+#CONTAINTERS
+#VEHICLE = ROOM-VEHICLE | SMALL-VEHICLE 
+#TEXT
+#ABSTR-TEXT máinnas, eaktu, gažaldat, mearrádus
+#WATER
+#OBJECT = PARTS | SHOE | FOOD | TEXT
+#ENTITY = TOOLS | OBJECT | VEHICLE
+
+LIST BUILDING = "synagoga" ;
+
+# ROOM
+# GEOGRAPHICAL-PLACE 
+# POLITICAL-PLACE 
+# GENERAL-PLACE
+
+LIST CONCRETE-ROUTE = "uksa#rájgge" "væddja";
+LIST ABSTR-ROUTE = "mijlla" ;
+
+SET ROUTE = CONCRETE-ROUTE | ABSTR-ROUTE ; 
+
+#PLACE = GEOGRAPHICAL-PLACE | POLITICAL-PLACE | GENERAL-PLACE | ROUTE | BUILDING | ROOM
+#FYLKA
+#NATION = NATION-NOT-NORGA | NORGA
+
+#ACTOR = ANIMATE | INSTITUTION | ORGANIZATION
+#STATE ("dearvvas" Der/vuohta) "gaskavuohta" "miella#dearvvašvuohta" "ráfi" "váivi" "veahkki";
+
+#ABSTR-ENTITY  "ášši" "bálká" "bušeahtta" "doaibma#plána" "fuolahan#bálká" "giella#ruhta" "hehttehus" "plána" "prošeakta" "ruhta" "sosiála#plána" "stáhta#doaibma" "váttisvuohta" ;
+
+#CONCEPT ráhkisvuohta, bálvaleapmi, muitu, oamedovdu
+
+#LIST ACTIVITY = "čađaheapmi" "dearvvašvuođa#dutkan" "fuolaheapmi" "geahčastat" "guorahallan" "šiehtadallan" ;
+
+#ABSTRACT = ABSTR-ENTITY | CONCEPT | ACTIVITY 
+
+#SITUATION  dilli
+
+#INSTITUTION bálvalus, instituhtta
+#INDUSTRY ealáhus
+#EDUCATION
+#EVENT čoahkkin festivála headja
+#
+#ABSTR-PLACE = ORGANIZATION | INSTITUTION | EVENT | EDUCATION | INDUSTRY | SITUATION
+
+#ILLNESS
+#POLITICAL-ABSTR-N  "boazodoallo#politihkka" "boras#pirepolitihka" "kultur#árbi" "sosiála#politihkka" 
+
+#OASSI
 
 
 # Miscellaneous sets
@@ -2520,10 +2588,10 @@ REMOVE (Pl Nom) IF (0 (Sg Nom) LINK 0 N OR (Pron Pers))(1 VFIN LINK 0 Sg3);
     ## ... mav profehta Jeremia lij javllam. 
     ## Härrá lij profehta baktu javllam. 
     
-REMOVE (Sg Nom) IF (NOT *-1 ("ja") OR COMMA BARRIER NOT-AA LINK -1 Nom)(0 (Pl Nom) LINK 0 N OR (Pron Pers))(*1 VFIN BARRIER S-BOUNDARY OR Nom OR CLB LINK 0 Pl3);    
+REMOVE (Sg Nom) IF (NOT *-1 ("ja") OR COMMA BARRIER NOT-AA LINK -1 Nom)(0 (Pl Nom) LINK 0 N OR (Pron Pers))(*1 VFIN BARRIER S-BOUNDARY OR Nom OR CLB LINK 0 Pl3 OR Du3);    
     ## Biekka garrasit huodnahis vuosstij båssun ja huonaj alvvásláhkáj vieraj.
     ## De lullet muhtem násstedåbdde Betlehemaj båhtin ja gahtjin.
-    ## De farisea sunji javllin:
+    ## Guollebivdde vuojn lijga.
 
 SELECT (Pl Nom) (0 (Pl Nom) LINK 0 N OR (Pron Pers))(*1 (Pron Rel Pl) BARRIER WORD);
     ## Allit fásstudattijn hådjen vuojnnu nåv gåk vilpástalle, gudi tsusskaha fásstudi almatjij vuojnedijn.    
