@@ -428,6 +428,8 @@ SET NOT-ADVL-PCLE-NEG = WORD - @ADVL - @GP< - Pcle - Neg ; #Ask Eckhardt.
 
 LIST MANNE = "gåsi" "goasse" "goassa" "goassis" "gåkku" "gånne" "gåste" "makkir" "makkár" "manne" "manen" "mannas" ;
 
+LIST ADV-NOT-NOUN = "duodaj";
+
 
 # Coordinators
 # - - - - - - -
@@ -1270,7 +1272,7 @@ SELECT (@TITLE) IF (1 Prop LINK 0 Mal OR Fem OR Sur);
 REMOVE ACR IF (0 Prop) ;
 
 REMOVE (Prop Pl) IF (0 (Prop Sg));
-	## sijáv Betlehemaj rájaj ja javlaj...
+	## sijáv Betlehemaj rájaj ja javlaj...	
 
 # Lexicalised derivations
 # -----------------------
@@ -2174,6 +2176,9 @@ REMOVE Rel IF (*-1 BOS BARRIER N OR Pron OR Num OR A);
 SELECT Adv IF (0 ("åvddål"))(1 CS) ;
 	## åvddål gå lij bárnes.
 	
+SELECT Adv IF (0 ADV-NOT-NOUN)(1 COPULAS);	
+SELECT Adv IF (*-1 COPULAS BARRIER NOT-ADV-PCLE)(1 A);	
+    ## Valla duodaj li bårre stálpe.	
 
 # rádjáj
 #SELECT Po #Awaiting a Po / Po Ill verdict.
@@ -2495,9 +2500,6 @@ SELECT Acc IF (0 (N Gen) OR (N Acc))(*1 V-TRANS-ACT BARRIER SV-BOUNDARY2 LINK 0 
 REMOVE (N Pl Nom) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
 REMOVE (N Sg Gen) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
 	## gå profehta le náv tjállám.
-	
-# N Pl Nom = N Sg Nom
-# -------------------
     
 SELECT Pl IF (0 SG-WORD)(-1 (Pron Gen) LINK -1 Num OR Ord BARRIER NPNH);
    	## Dát lea okta min ovttasbargguin.
@@ -2518,10 +2520,13 @@ REMOVE (Pl Nom) IF (0 (Sg Nom) LINK 0 N OR (Pron Pers))(1 VFIN LINK 0 Sg3);
     ## ... mav profehta Jeremia lij javllam. 
     ## Härrá lij profehta baktu javllam. 
     
-REMOVE (Sg Nom) IF (0 (Pl Nom) LINK 0 N OR (Pron Pers))(1 Ill OR Ine)(2 VFIN LINK 0 Pl3);
+REMOVE (Sg Nom) IF (NOT *-1 ("ja") OR COMMA BARRIER NOT-AA LINK -1 Nom)(0 (Pl Nom) LINK 0 N OR (Pron Pers))(*1 VFIN BARRIER S-BOUNDARY OR Nom OR CLB LINK 0 Pl3);    
+    ## Biekka garrasit huodnahis vuosstij båssun ja huonaj alvvásláhkáj vieraj.
     ## De lullet muhtem násstedåbdde Betlehemaj båhtin ja gahtjin.
     ## De farisea sunji javllin:
-    
+
+SELECT (Pl Nom) (0 (Pl Nom) LINK 0 N OR (Pron Pers))(*1 (Pron Rel Pl) BARRIER WORD);
+    ## Allit fásstudattijn hådjen vuojnnu nåv gåk vilpástalle, gudi tsusskaha fásstudi almatjij vuojnedijn.    
 
 # N Sg Gen = N Pl Nom
 # ------------------- 
