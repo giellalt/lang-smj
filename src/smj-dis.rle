@@ -646,7 +646,7 @@ SET NOT-COMMA = CLB - COMMA | PUNCT-LEFT | PUNCT-RIGHT ;
 
 # LIST NOM-GEN-NOUN = ... ;
 
-
+LIST SG-WORD = "mieda" "miehttse#mieda";
 
 # Nominal sets defined according to their semantical properties
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -1682,7 +1682,7 @@ REMOVE GCRD IF (-1C (@OBJ))(*1C (@OBJ) BARRIER NPNHA);
 REMOVE GCRD IF (-1 (@X) OR N)(*1 N BARRIER NPNHA LINK NOT 1 VFIN);
     ## Vuolgij Nasarets ja årruj Kafarnaumij, jávrregáddáj, Sebulona ja Naftali guovlojn.
 
-REMOVE GCRD IF (NOT *1 VFIN BARRIER S-BOUNDARY OR PUNCT-RIGHT OR CCCOMMA);
+REMOVE GCRD IF (NOT -1 BOS)(NOT *1 VFIN BARRIER S-BOUNDARY OR PUNCT-RIGHT OR CCCOMMA);
     # No potential finite verb following
     ## Judaj riegádijga Peres ja Sera, gej ieddne lij Tamar, Peresij riegádij Hesron,...
 
@@ -2165,6 +2165,10 @@ SELECT Adv IF (0 ("åvddål"))(1 CS) ;
 
 SELECT Po IF (0 ("rájes"))(*1 ("rádjáj" Po) BARRIER VERB);
 	## Fáŋŋgavuoda rájes Kristusa rádjáj.
+	
+# sáddnán
+SELECT Adv IF (-1 BOS)(0 ("sáddnán"))(1 COMMA);
+    ## Sáddnán, lágas ij bokstávva, ...
 
 # Proper nouns
 
@@ -2441,6 +2445,7 @@ REMOVE Attr IF (0 (Prop Mal) OR (Prop Fem))(0 Nom)(NOT 1 (N Prop Sur) OR (N Prop
 SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 OR Acc LINK NOT 0 ELAV)(0 (N Gen) OR (N Nom))(NOT 1 (N Acc));
 SELECT Acc IF (0 N)(*1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 LINK NOT *1 Acc BARRIER SV-BOUNDARY2);
 SELECT Acc IF (0 (N Gen) OR (N Acc))(*1 V-TRANS-ACT BARRIER SV-BOUNDARY2 LINK 0 Actio LINK 0 Ela OR Ill);
+    ## Ale balá Mariav áhkkán válldemis.
 
 
 # Nouns versus adjectives
@@ -2476,6 +2481,14 @@ REMOVE (N Sg Gen) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)
 	
 # N Pl Nom = N Sg Nom
 # -------------------
+    
+SELECT Pl IF (0 SG-WORD)(-1 (Pron Gen) LINK -1 Num OR Ord BARRIER NPNH);
+   	## Dát lea okta min ovttasbargguin.
+    # This rule is necessary before the next one as it chooses plural even if the genitive pronoun modifier after the numeral and in front of the singular noun is not disambiguated yet (Acc-Gen disambiguation comes later).
+
+SELECT Sg IF (0 SG-WORD)(NOT *-1 Num OR Ord BARRIER NPNH)(*-1 BOS LINK NOT *1 ("goabbák") OR ("moattelágásj") OR ("gáiklágásj") OR ("guovtelágásj") OR ("ietjálágásj"));
+    ## Bårråmussan lij rássegahpana ja miehttsemieda.
+    # The words in the latter rule have to be checked.
 
 REMOVE (N Sg Nom) IF (-1C (Dem Pl Nom))(0 (N Pl Nom));
     ## Just oavddodago dunnu lunna bus Tyrosin ja Sidonin dagáduvvat lulun, de da stáda juo ådno lulujga buorádusáv hårsåj ja gunáj sinna dahkat.
@@ -2600,6 +2613,14 @@ SELECT Ela IF (1 (IV PrfPrc));
 
 SELECT Ela IF (*-1 ELAV BARRIER Ela OR SV-BOUNDARY2);
     ## Ale balá Mariav áhkkán válldemis.
+    
+REMOVE Nom IF (*-1 Nom BARRIER NOT-ADV-PCLE)(0 Ela LINK NOT 0 Prop);    
+    ## Gå Josef oademis gåhttsåj, ...    
+    
+REMOVE Acc IF (NOT *-1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2)(NOT -1 COMMA LINK -1 Acc)(0 N)(NOT *1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2);  
+    ## Gå Josef oademis gåhttsåj, ... # oademis - Ela
+    ## De ålliduváj mav profehta Jeremia lij javllam. # javllam - PrfPrc
+    ## Nåv li divna buolva, .. # nåv - Adv   
 
 # Inessive
 # ========
@@ -2610,10 +2631,6 @@ REMOVE Ess IF (NOT *-1 OPREDV BARRIER SV-BOUNDARY2)(0 (Prop Ine))(NOT *1 OPREDV 
 
 # N Sg Ela = N Sg Acc PxSg3 = N Sg Gen PxSg3
 
-# Elative
-# ======= 
-
-# N Sg Ela = N Sg Acc PxSg3 = N Sg Gen PxSg3
 
 
 # Comitative
