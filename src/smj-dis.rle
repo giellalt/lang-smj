@@ -2492,6 +2492,13 @@ SELECT Sg IF (0 SG-WORD)(NOT *-1 Num OR Ord BARRIER NPNH)(*-1 BOS LINK NOT *1 ("
 
 REMOVE (N Sg Nom) IF (-1C (Dem Pl Nom))(0 (N Pl Nom));
     ## Just oavddodago dunnu lunna bus Tyrosin ja Sidonin dagáduvvat lulun, de da stáda juo ådno lulujga buorádusáv hårsåj ja gunáj sinna dahkat.
+    
+SELECT (N Sg Nom) IF (*-1 COPULAS BARRIER NOT-AA LINK 0 Sg3 LINK -1 Ine LINK 0 N OR (Pron Pers))(NOT 0 PrfPrc)(NOT *1 Nom BARRIER NPNH);
+    ## Sujna le goajvvo giedan.  
+    ## Sujna le bahás vuojŋŋanis. 
+     
+SELECT (Sg Nom) IF (0 N OR (Pron Pers) LINK NOT 0 V OR (V*) OR Rel OR Ela OR Adv)(1 VFIN LINK 0 Sg3);  
+    ## ... mav profehta Jeremia lij javllam.      
 
 # N Sg Gen = N Pl Nom
 # ------------------- 
@@ -2532,8 +2539,8 @@ REMOVE (N Sg Gen) IF (*-1 BOS OR CS BARRIER (Pron Pers Du1))(0 (N Pl Nom))(1 (V 
 
 # Oppramsing
 # - - - - - - 
-SELECT Nom IF (-2 Nom)(-1 COMMA)(0 N OR Num)(NOT *1 VFIN BARRIER COMMA);
-    ## Nåv li buolva, lågenanniellja buolva Abrahama rájes Davida rádjáj.
+SELECT Nom IF (*-1 COMMA BARRIER N-NOT-GEN LINK -1 Nom)(0 N OR Num LINK NOT 0 Gen)(NOT *1 VFIN BARRIER COMMA);
+    ## Nåv li buolva, lågenanniellja buolva Abrahama rájes Davida rádjáj.  
     
 SELECT Nom IF (-1 COMMA OR CC LINK -1 Po LINK -1 Gen LINK *-1 Po BARRIER NPNH LINK -1 Gen LINK *-1 Nom BARRIER NPNH LINK 0 N OR Num)(0 N OR Num)(NOT *1 VFIN BARRIER COMMA) ;    
     ## Nåv li buolva, lågenanniellja buolva Abrahama rájes Davida rádjáj, lågenanniellja buolva Davida rájes Babylona fáŋŋgavuoda rádjáj ja lågenanniellja buolva fáŋŋgavuoda rájes Kristusa rádjáj.
@@ -2624,12 +2631,14 @@ REMOVE Acc IF (NOT *-1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2)(NOT -1 COMMA LI
 
 # Inessive
 # ========
-# N Sg Ine = N Ess if no CG
+
+SELECT Ine IF (1 COPULAS)(*2 Nom BARRIER NOT-AA);
+    ## Sujna le goajvvo giedan.
 
 REMOVE Ess IF (NOT *-1 OPREDV BARRIER SV-BOUNDARY2)(0 (Prop Ine))(NOT *1 OPREDV BARRIER SV-BOUNDARY2);   
     ## Gå Jesus lij riegádam Betleheman, Judean, ...
 
-# N Sg Ela = N Sg Acc PxSg3 = N Sg Gen PxSg3
+
 
 
 
