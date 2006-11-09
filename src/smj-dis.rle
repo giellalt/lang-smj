@@ -667,7 +667,7 @@ SET ROUTE = CONCRETE-ROUTE | ABSTR-ROUTE ;
 # These must be translated to smj
 LIST AIGODAT =  "ájggi";#"ahtanuššan#áigodat" "áigodat" "geassin#áigodat" "stuoradigge#áigodat" "sámedigge#áigodat" "guođohan#áigodat" "doaibma#áigodat" ;       
 # These must be translated to smj
-LIST VAHKKU = "biejvve" "b";# "jándor" "bodda" "čakča" "čakča#geassi" "čakča#seavdnjat" "čuohte#jahki" "dálvi"	"diibmu" "dbm" "doaibma#jahki" "geardi" "geassi" "giđđa" "hávvi" "idja" "jahki" "jahke#čuohti" "mánnu" "mihcamárra" "riegádan#beaivi" "tiibmu" "vahkku" "stuorradigge#áigodat" "1700-#lohku" ;
+LIST VAHKKU = "biejvve" "b" "tijmma" ;# "jándor" "bodda" "čakča" "čakča#geassi" "čakča#seavdnjat" "čuohte#jahki" "dálvi"	"diibmu" "dbm" "doaibma#jahki" "geardi" "geassi" "giđđa" "hávvi" "idja" "jahki" "jahke#čuohti" "mánnu" "mihcamárra" "riegádan#beaivi" "tiibmu" "vahkku" "stuorradigge#áigodat" "1700-#lohku" ;
  # The quoteless jahki here is since the preprocessor is not fine-tuned
  # yet, it still gives '"1870-" # jahki N Sg Com'. # lets see if "dbm" works
  
@@ -1260,11 +1260,12 @@ MAP (@X) TARGET ALL ;
     # Table of Contents #
     # ----------------- #
 
+SELECT (@TITLE) IF (1 Prop LINK 0 Mal OR Fem OR Sur);
+    ## Suv birra profehta Jesaja le hållam.
+
 
 # Lexicalised names
 # -----------------
-
-
 
 REMOVE ACR IF (0 Prop) ;
 
@@ -1875,9 +1876,8 @@ REMOVE (A Acc) IF (0 (A Attr))(*1 N BARRIER NOT-ADJ LINK NOT 1 Po);
 REMOVE V IF (NOT -1 (N Nom))(0 (A Attr))(*1 N BARRIER NOT-ADJ LINK NOT 1 Po) (NOT 0 Inf)(*2 VFIN BARRIER S-BOUNDARY2);
     	## Olles doaibmaviessu lea sullii 2300 njealjehasmetera stuoru. 
 
-REMOVE N IF (0 (A Attr))(NOT 1 VFIN OR PrfPrc OR CLB)(NOT 0 (Sg Nom) LINK *-1 (V Sg3) BARRIER NOT-ADV-PCLE LINK NOT *-1 Nom BARRIER S-BOUNDARY2 OR CC) (NOT 0 (Pl Nom) LINK *-1 (V Pl3) BARRIER NOT-ADV-PCLE LINK NOT *-1 Nom BARRIER S-BOUNDARY2 OR CC) (*1 N BARRIER NOT-ADJ LINK NOT 1 Po);
-	## ...muhto dakkár radikála rievdadus eahpitkeahttá buktá garra
-	## reakšuvnnaid,...
+REMOVE N IF (0 (A Attr))(NOT 1 VFIN OR PrfPrc OR CLB)(NOT 0 (Sg Nom) LINK *-1 (V Sg3) BARRIER NOT-ADV-PCLE LINK NOT *-1 Nom BARRIER S-BOUNDARY2 OR CC) (NOT 0 (Pl Nom) LINK *-1 (V Pl3) BARRIER NOT-ADV-PCLE LINK NOT *-1 Nom BARRIER S-BOUNDARY2 OR CC) (*1 N BARRIER NOT-ADJ LINK NOT 0 ADVLCASE LINK NOT 1 Po);
+	## ...muhto dakkár radikála rievdadus eahpitkeahttá buktá garra reakšuvnnaid,...
 
 SELECT (A Attr) IF (NOT *-1 COPULAS BARRIER NP-HEAD-NOM OR V-NOT-AUX)(NOT 0 Num OR Inf OR Comp OR ("nubbi") OR Gen)(NOT 0 Adv LINK 1 Gen LINK 1 N)(1 N)(NOT 1 VFIN OR Inf) (NOT 0 (N Sg Nom) LINK *-1 V-SG3 BARRIER NPNHA LINK NOT *-1 (@SUBJ) BARRIER S-BOUNDARY2) (NOT *-1 ("go") BARRIER NOT-NP LINK NOT -1 VFIN LINK NOT 1 EOS);
 	## Gonagas sáhttá mearridit sierranaš njuolggadusaid báikkalaš dilálašvuođaid ektui.
@@ -1900,8 +1900,10 @@ REMOVE (A Ine) IF (0 Attr)(1 N);
 SELECT (A Attr) IF (*-1 BOS OR CS OR (":" CLB) BARRIER NPNHA)(NOT 0 VFIN OR Inf) (*1 HNOUN BARRIER NPNH)(NOT 1 VFIN)(NOT 1 COMMA LINK 1 N);
 	## Sámedikki vuosttamuš dábálaš dievasčoahkkima maŋŋa... 
 
-REMOVE N IF (-1 Gen OR Dem OR Indef)(0 Attr)(1 N)(NOT 1 VFIN);
+#REMOVE N IF (-1 Gen OR Dem OR Indef)(0 Attr)(1 N)(NOT 1 VFIN);
 	## Oktasaš vuoigatvuođat ledje šaddan dološ áiggi rájes...
+	# This doesn´t function. It hits "násstedåbdde" in: De lullet muhtem násstedåbdde Betlehemaj båhtin ja gahtjin.
+ 
 
 REMOVE VFIN IF (-1 Gen OR Dem OR Indef)(0 Attr)(1 N);
 	## Lávži goallostuvvo dan ovddit noađđehearggi čeabehii.
@@ -2512,8 +2514,14 @@ SELECT (N Sg Nom) IF (*-1 COPULAS BARRIER NOT-AA LINK 0 Sg3 LINK -1 Ine LINK 0 N
     ## Sujna le goajvvo giedan.  
     ## Sujna le bahás vuojŋŋanis. 
      
-SELECT (Sg Nom) IF (0 N OR (Pron Pers) LINK NOT 0 V OR (V*) OR Rel OR Ela OR Adv)(1 VFIN LINK 0 Sg3);  
-    ## ... mav profehta Jeremia lij javllam.      
+REMOVE (Pl Nom) IF (0 (Sg Nom) LINK 0 N OR (Pron Pers))(1 VFIN LINK 0 Sg3);  
+    ## ... mav profehta Jeremia lij javllam. 
+    ## Härrá lij profehta baktu javllam. 
+    
+REMOVE (Sg Nom) IF (0 (Pl Nom) LINK 0 N OR (Pron Pers))(1 Ill OR Ine)(2 VFIN LINK 0 Pl3);
+    ## De lullet muhtem násstedåbdde Betlehemaj båhtin ja gahtjin.
+    ## De farisea sunji javllin:
+    
 
 # N Sg Gen = N Pl Nom
 # ------------------- 
