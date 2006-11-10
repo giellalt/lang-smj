@@ -556,18 +556,20 @@ LIST INFV = "liehket" "galggat" "máhttet" "oadtjot" "sihtat" ;
  # TODO: Think of counter examples, i.e. sentences where we have these verbs, but
  # where oktii is not an adverbial.
 
-LIST MOVEMENT-VERB = "vuollget";
+LIST MOVEMENT-V = "vuollget";
  
  
-LIST ACTIVITY-V = "gástadit" "åhpadit";
+LIST ACTIVITY-V = "gástadit" "lasedit" "åhpadit";
 
-#LIST BODY-ACTIVITY-V 
-#LIST WRITING-ACTIVITY-V
-#LIST VERBAL-ACTIVITY-V 
-#LIST ABSTR-ACTIVITY-V
-#LIST INTELLECTUAL-ACTIVITY-V
-#LIST VEHICLE-PLACE-V 
-#LIST VEHICLE-TOOL-V
+LIST BODY-ACTIVITY-V = "tjiektjat" ; 
+LIST WRITING-ACTIVITY-V = "tjállet" ; 
+LIST VERBAL-ACTIVITY-V = "hållat" ; 
+LIST ABSTR-ACTIVITY-V = "buoredit" ;  
+LIST INTELLECTUAL-ACTIVITY-V = "usjudit" ; 
+
+# More to come:
+#LIST VEHICLE-PLACE-V = "" ;   
+#LIST VEHICLE-TOOL-V = "" ;    
 #SET HUMAN-SOURCE-V = VEHICLE-PLACE-V | VEHICLE-TOOL-V ;
 # The two subsets differ in their choice of case for members of VEHICLE, but both choose locative for members of the set HUMAN (with the thematic role source)
 #LIST ABSTR-ENTITY-COM-V 
@@ -582,6 +584,8 @@ LIST PLACE-V = "tjuodtjot" "tjællot" "tsæggahit" "válldut" "vuojnnet" "vuojnn
 #LIST EVENT-V = "dáhpáhuvvat" ;  # TIME/AIGODAT are locative
 #LIST STATE-V = "eallit" ;
 #LIST REM-WITH-PARTS = "gaikkihit" ; # Belongs to the DYNAMIC-V. They also take PARTS in comitative case.   
+
+SET DYNAMIC-V = ACTIVITY-V | MOVEMENT-V | VERBAL-ACTIVITY-V | ABSTR-ACTIVITY-V | BODY-ACTIVITY-V | INTELLECTUAL-ACTIVITY-V ;
 
 #SET DYNAMIC-V = ACTIVITY-V | MOVEMENT-V | VERBAL-ACTIVITY-V | ABSTR-ACTIVITY-V | BODY-ACTIVITY-V | INTELLECTUAL-ACTIVITY-V | ABSTR-ENTITY-COM-V | HUMAN-SOURCE-V | REM-WITH-PARTS ;
 # According to the rules choosing Loc or Com, dynamic-verbs are not connected to TOOLS, ABSTR-TOOLS or CONCEPT in (Pl Loc).
@@ -785,7 +789,7 @@ SET ANIMATE = HUMAN | ALL-ANIMALS ;
 
 LIST TOOLS = "dållå" "tjáhtje";
 
-#WRITING-TOOLS
+LIST WRITING-TOOLS = "pænna" ;
 
 LIST ABSTR-TOOLS = "ássje" "musihkka" "varra"; 
  
@@ -824,7 +828,7 @@ SET PLACE = GEOGRAPHICAL-PLACE | POLITICAL-PLACE | GENERAL-PLACE | ROUTE | BUILD
 
 #ABSTR-ENTITY  "ášši" "bálká" "bušeahtta" "doaibma#plána" "fuolahan#bálká" "giella#ruhta" "hehttehus" "plána" "prošeakta" "ruhta" "sosiála#plána" "stáhta#doaibma" "váttisvuohta" ;
 
-#LIST CONCEPT = "gieresvuohta" "guojmme#gieresvuohta" "mujtto" "oame#dåbddo" ;
+LIST CONCEPT = "gieresvuohta" "guojmme#gieresvuohta" "mujtto" "måråj""oame#dåbddo" ;
 
 #LIST ACTIVITY = "čađaheapmi" "dearvvašvuođa#dutkan" "fuolaheapmi" "geahčastat" "guorahallan" "šiehtadallan" ;
 
@@ -2876,6 +2880,11 @@ SELECT Com IF (*-2 Ill BARRIER NOT-ADV-PCLE-VFIN)(-1 N)(0 Gen LINK NOT 0 V)(NOT 
 
 SELECT (Sg Com) IF (-1 (Dem Sg Com))(0 N);
     ## Dájna vuogijn profehta Jesaja bágo sidjij ålliduvvi.
+    
+SELECT (Sg Com) IF (*-1 DYNAMIC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 (Pl Ine) LINK 0 TOOLS OR ABSTR-TOOLS OR WRITING-TOOLS OR CONCEPT);
+SELECT (Sg Com) IF (0 (Pl Ine) LINK 0 TOOLS OR ABSTR-TOOLS OR WRITING-TOOLS OR CONCEPT)(*1 DYNAMIC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV);
+    ## Mån dijáv tjátjijn buorádussaj gástadav.
+    ## Ájlis Vuojŋŋanisájn ja dålåjn sån dijáv gástat.     
 
 
 # Inessive
@@ -2889,9 +2898,9 @@ SELECT Ine IF (0 Ess LINK 0 INE-NOUN);
 SELECT Ine IF (-1 (Indef Ine))(0 N);
     ## Jordanäno nuppen bielen.
     
-REMOVE Ess IF (-1 ("juohkka"))(0 N);
+REMOVE Ess IF (-1 Indef LINK NOT 0 ("sæbbmi") OR ("nubbe") OR ("ietjá"))(0 N);
     ## Juohkka biejven li ietjas vájve. 
-    # Not only "juohkka", but most Indef. Which one can be followed by Ess? "nubbe" "akta" "ietjá" more??
+    # Are there more Indef šhich can be followed by Ess? 
 
 SELECT Ine IF (0 (N Plc Ess));
 	## Jesus lij riegádam Betleheman.
