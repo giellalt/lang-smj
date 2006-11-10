@@ -822,6 +822,8 @@ SET ROUTE = CONCRETE-ROUTE | ABSTR-ROUTE ;
 
 SET PLACE = GEOGRAPHICAL-PLACE | POLITICAL-PLACE | GENERAL-PLACE | ROUTE | BUILDING | ROOM ;
 
+LIST ORGANIZATION = (Prop Org) "giddagas" "girku" ;
+
 #FYLKA
 #NATION = NATION-NOT-NORGA | NORGA
 
@@ -1417,6 +1419,9 @@ MAP (@-FMAINV) TARGET Sup;
 # Arguments and secondary predicates
 # ----------------------------------
 
+MAP (@SUBJ @SPRED) TARGET Nom IF (NOT 0 ("tijmma") OR Adv LINK *1 Num BARRIER NP-BOUNDARY OR COMMA LINK 1 Num LINK *1 MEASURE LINK 1 ALU) (NOT 0 Num LINK *-1 ("tijmma") BARRIER NP-BOUNDARY) (NOT 0 (Prop Nom) LINK 1 ORGANIZATION)(NOT 0 (Actio Ess) OR ESS-ADVL-N OR Num);
+	## Abrahamaj riegádij Isak.
+	
 #MAP (@SUBJ @SPRED) TARGET Nom IF (0 N) ;
 MAP (@OBJ) TARGET Acc ;
 
@@ -1884,6 +1889,12 @@ SELECT CC IF (*-1 Inf BARRIER VERB OR CLB)(0 ("vaj"))(*1 Inf BARRIER VERB);
 
 REMOVE LCRD IF (-1 COMMA)(0 CC);
     ## Ieddnes Maria lij Josefijn giláduvvam, valla åvddål gå aktan lijga viessogoahtám, de bihkusij bådij Maria lij ájlis Vuoiŋŋanisás sahkanam.
+    
+REMOVE LCRD IF (-1 BOS);
+
+REMOVE LCRD IF (-2 BOS LINK 1 Num)(NOT *1 Num BARRIER NPNH);
+    # We need this rule until we get a better file format without line numbers.
+    ## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj...
 
 # Idiomatic
 # - - - - -
@@ -2610,7 +2621,7 @@ SELECT Pl IF (0 (Pron Indef Pl Ela))(*1 (N Pl Ela) BARRIER NPNH);
 
 # =========== #
 # Numerals
-# ========
+# =========== #
 # ========================= #
 # Disambiguating adjectives #
 # ========================= #
@@ -3214,6 +3225,17 @@ SELECT (@OPRED) IF (*-1 (@OBJ) BARRIER S-BOUNDARY2 OR PUNCT LINK NOT 0 Dem)(*-1 
 
 SELECT (@OPRED) IF (*-1 (@OBJ) BARRIER S-BOUNDARY2 OR Nom)(0 Ess);
     ## Dån galga suv Jesusin gåhttjot.
+
+# subject predicate
+# -----------------
+
+#REMOVE (@SPRED) IF (*-1 ("liehket") BARRIER NOT-ADV-PCLE OR ("degu"))(*1 PrfPrc BARRIER NOT-ADV-PCLE LINK NOT 0 Pass);
+	##     
+SELECT (@SPRED) IF (*-1 BOS OR CLB OR PUNCT BARRIER NOT-CC)(0 A)(1 (Pers Nom) OR (Rel Nom));
+SELECT (@SPRED) IF (*-1 BOS OR CLB OR PUNCT BARRIER NOT-CC)(0 ("sáluk"))(1 (N Nom));
+	## Sálugin gudi rievtesferdukvuodav nälggu ja gåjkki, sij galliduvvi.
+	## Sálugin ármmogisá, sij ármmogisvuodav oadtju.
+
 
 # Late rules
 
