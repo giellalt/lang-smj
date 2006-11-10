@@ -487,7 +487,7 @@ LIST MOD-ASP = "bierrit" "viedjet"  "viddnit"  ;
 #		"seahtit" "soaitit" "viggat" ;
  # Verbs that never have arguments of their own - so we leave out "áigut", for ex.
 
-LIST AUX-OR-MAIN = "ájggot" "bessat" "bierrit" "buktet" "galggat" "hálijdit" "hæhttut" "máhttet" "nagádit" "sihtat" "vierttit"  ;
+LIST AUX-OR-MAIN = "ájggot" "bessat" "bierrit" "buktet" "galggat" "hálijdit" "hæhttut" "máhttet" "nagádit" "sihtat" "vierttit" "årrut" ;
  # These verbs can take arguments, so they do not belong in the AUX group, 
  # but they are nevertheless mapped to (@+FAUXV). 
 
@@ -574,7 +574,8 @@ LIST ACTIVITY-V = "gástadit" "åhpadit";
 #LIST ONLY-PLACE-LOC-V 
 #LIST HUMAN-LOC-V 
 
-LIST PLACE-V = "tjuodtjot" "tjællot" "tsæggahit" "válldut";
+LIST PLACE-V = "tjuodtjot" "tjællot" "tsæggahit" "válldut" "vuojnnet" "vuojnnut" "årrut"; 
+# not so sure about where to put "vuojnnet" "vuojnnut" 
 # Ine vs. Com: Only ANIMATE, TOOLS, ABSTR-TOOLS and CONCEPT take Com.
 
 #LIST ABSTR-PLACE-V
@@ -761,14 +762,14 @@ LIST ALU = ("allu" Gen)("assu" Gen)("čiekŋu" Gen)("gassu" Gen)("govdu" Gen)
 
 LIST HUMAN-INDIVIDUAL = "áddjá" "áhkká" "áhkko" "áhttje" "áhttje#bielle" "ájttek" "bárne#bárnne" "bárne#niejdda" "bárnne" "bárnne#bielle" "biebbmo#bárnne" "biddno#moarsse" "boaddnje" "gájmme" "gállasj#guojmme"  "gállasj#ålmåj" "gálojinitja" pl. "goasske" "goasske"  "gieruk" "ibme" "ieddne" "ieddne#bielle" "iemet" "irgge" "iset" "niejdda" "næjttso" "næjttso#riehko" "oarbben#bielle" "oarbben" "siessá" "siessal" "svilli" "mannje" "moarsse" "muohtá" "muohtal" "niehpe" "oabbá" "oabbá#bielle" "tjiehtje" "tjiehtjev" "viellja" "viellja#gieres" "viellja#bielle" "æddnul" "ænoj" ; 
 
-LIST HUMAN-GROUP = "sijdda" "vehka";   
+LIST HUMAN-GROUP = "sijdda" "vehka" ;
 
 LIST PROFESSION = "guolle#bivdde" ;
 
 LIST OFFICE = "stáhta#ministar" ;
 LIST ROLE = "årro" ;
 
-SET HUMAN = HUMAN-INDIVIDUAL | HUMAN-GROUP | PROFESSION | ROLE | OFFICE
+SET HUMAN = HUMAN-INDIVIDUAL | HUMAN-GROUP | PROFESSION | ROLE | OFFICE ;
 
 #BODY
 LIST ANIMAL = "guokkardiddje" "judos" "sávttsa" "vierttsa" ;
@@ -776,9 +777,9 @@ LIST HUNT-ANIMAL = "rievsak" ;
 LIST BOAZU = "boatsoj" ;
 LIST FISH = "guolle" ;
 
-SET ALL-ANIMALS = ANIMAL | HUNT-ANIMAL | BOAZU | FISH
+SET ALL-ANIMALS = ANIMAL | HUNT-ANIMAL | BOAZU | FISH ;
 
-SET ANIMATE = HUMAN | ALL-ANIMALS
+SET ANIMATE = HUMAN | ALL-ANIMALS ;
 
 #PLANT
 
@@ -823,7 +824,7 @@ SET PLACE = GEOGRAPHICAL-PLACE | POLITICAL-PLACE | GENERAL-PLACE | ROUTE | BUILD
 
 #ABSTR-ENTITY  "ášši" "bálká" "bušeahtta" "doaibma#plána" "fuolahan#bálká" "giella#ruhta" "hehttehus" "plána" "prošeakta" "ruhta" "sosiála#plána" "stáhta#doaibma" "váttisvuohta" ;
 
-LIST CONCEPT = "gieresvuohta" "guojmme#gieresvuohta" "mujtto" "oame#dåbddo" ;
+#LIST CONCEPT = "gieresvuohta" "guojmme#gieresvuohta" "mujtto" "oame#dåbddo" ;
 
 #LIST ACTIVITY = "čađaheapmi" "dearvvašvuođa#dutkan" "fuolaheapmi" "geahčastat" "guorahallan" "šiehtadallan" ;
 
@@ -2885,7 +2886,6 @@ SELECT (Sg Com) IF (-1 (Dem Sg Com))(0 N);
 SELECT Ine IF (0 Ess LINK 0 INE-NOUN);
     ## Náv aj ednamin.
     
-
 SELECT Ine IF (-1 (Indef Ine))(0 N);
     ## Jordanäno nuppen bielen.
 
