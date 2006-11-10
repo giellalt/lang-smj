@@ -1,6 +1,6 @@
 # =================================================================== #
 # =================================================================== #
-#              L U L E   S Á M I   D I S A M B I G U A T O R          #
+#              L U L E   S Á M I   D I S A M B I G U A T O R          #
 # =================================================================== #
 # =================================================================== #
 
@@ -551,7 +551,7 @@ LIST INFV = "liehket" "galggat" "máhttet" "oadtjot" "sihtat" ;
 	## Ii suova nieiddas náitalit.
 
 
-#LIST TOGETHER-VERB = "goallostuvvot" "beaškkehat" "bidjat" "ô ­atnit" "suddat"  "heivet" "biddjojuvvot" "ô ­askit" "geassit" "gullat" "rehkenastit" "ordnet" "soahpat" "gávnnadit" "heivehit" "ô ­atnat" "doaibmat" "iskat" "laktit" "seaguhit";
+#LIST TOGETHER-VERB = "goallostuvvot" "beaškkehat" "bidjat" "ô ­atnit" "suddat"  "heivet" "biddjojuvvot" "ô ­askit" "geassit" "gullat" "rehkenastit" "ordnet" "soahpat" "gávnnadit" "heivehit" "ô ­atnat" "doaibmat" "iskat" "laktit" "seaguhit";
  # Danger: This list could be to long, in certain respects. 
  # TODO: Think of counter examples, i.e. sentences where we have these verbs, but
  # where oktii is not an adverbial.
@@ -1402,7 +1402,7 @@ MAP (@-FMAINV) TARGET Inf;
 
 MAP (@-FMAINV) TARGET ConNeg IF (NOT 0 AUX) ;
 	## Iigo dutnje šat boađe áviisa?
-    ## Ittjij sidá suv hehpaduhttet.
+    ## Ittjij sidá suv hehpaduhttet.
 
 MAP (@-FMAINV) TARGET (V Actio Ess);
 	## Oađidettiin gullen olbmo boahtimin.
@@ -2639,6 +2639,69 @@ SELECT Pl IF (0 (Pron Indef Pl Ela))(*1 (N Pl Ela) BARRIER NPNH);
 # material between Neg and ConNeg.
 # Imperative
 # ----------
+
+
+# Imperative
+# ----------
+
+    #  V TV Ind ConNeg=V TV Imprt ConNeg=V TV VGen=V TV Imprt Sg2
+    # = V TV Ind Prs Sg2
+
+REMOVE (Imprt ConNeg) IF (*-1 Neg LINK NOT 0 Imprt);
+	## ... beassat juska ij nav vuojga duodjuhit máhte, ...
+ 
+    # V TV Ind ConNeg = V TV Imprt ConNeg = V TV VGen = V TV Imprt Sg2
+
+
+    # V Imprt Du1
+REMOVE (Imprt Du1) IF (-1 Ind) ;
+
+	## Duodje l vuodon ådå ájádusájda.
+    
+    # V* TV Actor N Sg Gen = V TV Imprt Du2 = V* TV Actor N Pl Nom
+    #= V* TV Actor N Sg Nom = V* TV Actor A Attr
+  
+    # V TV Inf = V TV Imprt Pl2
+
+REMOVE (Imprt Pl2) IF (*-1 VFIN BARRIER S-BOUNDARY)(0 Inf);
+	## Jáhkáv barggoiellemin sjaddá vuojnnut.
+
+  
+    # V TV Ind ConNeg = V TV Imprt ConNeg
+ 
+    # V* TV Pass V VGen = V* TV Pass V Ind Prs Sg3 = V* TV Pass V Ind ConNeg
+    #= V* TV Pass V Imprt Sg2 = V* TV Pass V Ind Prs Sg2 = V TV Ind Prs Sg3
+
+REMOVE Imprt IF (0C Pass);
+    ## Valla sunji ij goassak ándagi luojteduvá, guhti ájlis Vuoiô ëô ëanisáv álbet, ájnat siválattjan ihkeven sudduj bissu.
+    
+REMOVE Imprt IF (*-1 CS OR CP);
+    ## Juohkka dåssjedis bágo åvdås, mav almasj tsuvkká, hähttu duobbmobiejven vásstedit.
+
+REMOVE Imprt IF (*-1C (Neg Ind) BARRIER CLB OR V-IND-FIN);
+    #Does not work yet but might work later
+    
+REMOVE Imprt IF (*-1 (Neg ImprtII) BARRIER CLB OR V-IND-FIN);
+    
+REMOVE Imprt IF (*-1C ConNeg BARRIER VFIN OR COMMA OR CS OR CP);
+	## I galga Härráv, Jubmelat, gähttjalit. 
+
+
+#REMOVE Imprt IF (-1 N OR A OR Po);
+	#Imperative after N is possible 
+
+REMOVE Imprt IF (*1C VFIN BARRIER NOT-ADV-PCLE OR CLB);
+	## Tjalmme le rubmaha tjuovgga.
+	## Dåppe buktin suv lusi gállnam ålmmåv guoddemlqtjo nanna vällahime.
+
+SELECT Imprt IF (-1 BOS OR PUNCT OR REALCLB)(0 ("liehket"))(1 A);
+
+
+# Pl3
+REMOVE (Imprt Pl3) IF (-1 Gen)(0 N);
+	## Joarkkaskåvlå åhpadusa.
+
+
 # Infinitive
 # ----------
 # Inf or Imprt Pl2 or Der of different sorts.
@@ -3052,50 +3115,6 @@ SELECT PrfPrc IF (-1 BOS)(*1 ("liehket") BARRIER NOT-ADV-PCLE) ;
 # V TV Ind ConNeg = V TV Imprt ConNeg = V TV VGen = V TV Imprt Sg2 = V TV Ind Prs Sg2
 #  V TV Inf = V* TV Actor N Sg {Gen/Nom/Acc} PxSg2
 # V Pot = V Prs Pl3
-
-# Imperative
-# ----------
-
-    #  V TV Ind ConNeg=V TV Imprt ConNeg=V TV VGen=V TV Imprt Sg2
-    # = V TV Ind Prs Sg2
- 
-    # V TV Ind ConNeg = V TV Imprt ConNeg = V TV VGen = V TV Imprt Sg2
-
-    # V* TV Actor N Sg Gen = V TV Imprt Du2 = V* TV Actor N Pl Nom
-    #= V* TV Actor N Sg Nom = V* TV Actor A Attr
-  
-    # V TV Inf = V TV Imprt Pl2
-  
-    # V TV Ind ConNeg = V TV Imprt ConNeg
- 
-    # V* TV Pass V VGen = V* TV Pass V Ind Prs Sg3 = V* TV Pass V Ind ConNeg
-    #= V* TV Pass V Imprt Sg2 = V* TV Pass V Ind Prs Sg2 = V TV Ind Prs Sg3
-
-REMOVE Imprt IF (0C Pass);
-    ## Valla sunji ij goassak ándagi luojteduvá, guhti ájlis Vuoiô ëô ëanisáv álbet, ájnat siválattjan ihkeven sudduj bissu.
-    
-REMOVE Imprt IF (*-1 CS OR CP);
-    ## Juohkka dåssjedis bágo åvdås, mav almasj tsuvkká, hähttu duobbmobiejven vásstedit.
-
-REMOVE Imprt IF (*-1C (Neg Ind) BARRIER CLB OR V-IND-FIN);
-    #Does not work yet but might work later
-    
-REMOVE Imprt IF (*-1 (Neg ImprtII) BARRIER CLB OR V-IND-FIN);
-    
-REMOVE Imprt IF (*-1C ConNeg BARRIER VFIN OR COMMA OR CS OR CP);
-	## I galga Härráv, Jubmelat, gähttjalit. 
-
-
-#REMOVE Imprt IF (-1 N OR A OR Po);
-	#Imperative after N is possible 
-
-REMOVE Imprt IF (*1C VFIN BARRIER NOT-ADV-PCLE OR CLB);
-	## Tjalmme le rubmaha tjuovgga.
-	## Dåppe buktin suv lusi gállnam ålmmåv guoddemlqtjo nanna vällahime.
-
-SELECT Imprt IF (-1 BOS OR PUNCT OR REALCLB)(0 ("liehket"))(1 A);
-
-
 
 
 #Adjective homonymy:
