@@ -2056,7 +2056,7 @@ REMOVE Adv IF (NOT *-1 VERB BARRIER S-BOUNDARY2)(NOT 0 ("gosa") OR ("mielde"))(N
 	## Diehtojuohkin divššohasa lagamuš oapmahažžii.
 	## Stuorát guolit mat eai bisán čalmmiide, mannet čađa.
  
-SELECT (A Attr) IF (*-1 BOS OR CS OR (":" CLB) BARRIER NPNHA)(NOT 0 VERB)(NOT 1 Dem OR VERB) (NOT 0 Prop LINK -1 (Prop Attr) LINK 2 CC) (NOT 0 Prop LINK 1 CC LINK 1 Prop LINK NOT 1 Prop) (*1 N BARRIER NPNH LINK NOT 1 Po)(NOT 1 COMMA LINK 1 N);
+SELECT (A Attr) IF (*-1 BOS OR CS OR (":" CLB) BARRIER NPNHA)(NOT 0 VERB)(NOT 1 Dem OR VERB) (NOT 0 Prop LINK -1 (Prop Attr) LINK 2 CC) (NOT 0 Prop LINK 1 CC LINK 1 Prop LINK NOT 1 Prop)(*1 N BARRIER NPNH LINK NOT 1 Po)(NOT 1 COMMA LINK 1 N);
 	## Golbma čáppa, doaimmalaš nieidda livžo áhčiset riegádanbeaivve.
 
 SELECT (A Attr) IF (-1 COPULAS)(1 A OR N LINK NOT *1 Po OR Ine OR Ela OR Inf BARRIER NP-BOUNDARY) (NOT 1 Adv OR VERB)(*2 ("go") BARRIER NOT-NP);
@@ -2888,24 +2888,36 @@ SELECT Ine IF (0 Ess LINK 0 INE-NOUN);
     
 SELECT Ine IF (-1 (Indef Ine))(0 N);
     ## Jordanäno nuppen bielen.
+    
+REMOVE Ess IF (-1 ("juohkka"))(0 N);
+    ## Juohkka biejven li ietjas vájve. 
+    # Not only "juohkka", but most Indef. Which one can be followed by Ess? "nubbe" "akta" "ietjá" more??
 
 SELECT Ine IF (0 (N Plc Ess));
 	## Jesus lij riegádam Betleheman.
          # Needs further condition!!
 
-SELECT Ine IF (1 COPULAS)(*2 Nom BARRIER NOT-AA);
+SELECT Ine IF (1 COPULAS)(*2 (N Nom) BARRIER VERB);
     ## Sujna le goajvvo giedan.
+    ## Juohkka biejven li ietjas vájve.
 
 REMOVE Ess IF (NOT *-1 OPREDV BARRIER SV-BOUNDARY2)(0 (Prop Ine))(NOT *1 OPREDV BARRIER SV-BOUNDARY2);   
     ## Gå Jesus lij riegádam Betleheman, Judean, ...
 
+REMOVE Ess IF (*-1 PLACE-V OR COPULAS BARRIER SV-BOUNDARY2)(0 (Sg Ine) LINK 0 A);
+REMOVE Ess IF (0 (Sg Ine) LINK 0 A)(*1 PLACE-V OR COPULAS BARRIER SV-BOUNDARY2);
+    ## Dahpa uvsav ja råhkådalá Áhttjásit guhti le tjiehkusin. 
+    ## De Áhttját guhti tjiehkusin vuojnná.
 
-         
 REMOVE Ine IF (-1C (Dem Sg Com))(0 (Dem Sg Com));
     ## Duobbmobiejven Nineve almatja tjuodtjeli aktan dájna vierregijn ja sijá duobbmon sjaddá, dajn gå buorádusáv Jona sárnnedattijn dahkin...
     
-    
-
+REMOVE Ess IF (-1 ("liehket") OR ("årrut") LINK 0 FMAINV)(0 (A Ine) OR (N Ine) LINK NOT 0 HUMAN OR Actor); 
+REMOVE Ess IF (0 (A Ine) OR (N Ine) LINK NOT 0 HUMAN OR Actor)(1 ("liehket") OR ("årrut") LINK 0 FMAINV);  
+    ## Ålles rumáj le sjievnnjedin.
+    ## Álmmuk mij sjievnnjedin årru. 
+    ## Ja sidjij gudi jábmema rijkan ja sähkásin årru. 
+   
 
 # Elative
 # ======= 
