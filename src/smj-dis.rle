@@ -648,10 +648,15 @@ SET NOT-COMMA = CLB - COMMA | PUNCT-LEFT | PUNCT-RIGHT ;
 
 # LIST NOM-GEN-NOUN = ... ;
 
-LIST SG-WORD = "mieda" "miehttse#mieda";
 
 # Nominal sets defined according to their semantical properties
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+LIST SG-WORD = "mieda" "miehttse#mieda";
+
+# inessive vs. essive:
+LIST INE-NOUN = "ednam";
+LIST ESS-NOUN = "sáluk";
+
 LIST TITLE =  "gånågis" "profehtta" ;
 LIST ESS-ADVL-N = "bäjvádahka" "biegga" "dálkke" "dulvve" "njáhsto" "rássjo" "sjievnnjet"; 
 
@@ -2815,15 +2820,29 @@ SELECT (Sg Com) IF (-1 (Dem Sg Com))(0 N);
 # N Sg Ine = N Ess if no CG
 # Dem Sg Ine = Dem Sg Com
 
+SELECT Ine IF (0 Ess LINK 0 INE-NOUN);
+    ## Náv aj ednamin.
+    
+
 SELECT Ine IF (-1 (Indef Ine))(0 N);
     ## Jordanäno nuppen bielen.
 
 SELECT Ine IF (0 (N Plc Ess));
 	## Jesus lij riegádam Betleheman.
          # Needs further condition!!
+
+SELECT Ine IF (1 COPULAS)(*2 Nom BARRIER NOT-AA);
+    ## Sujna le goajvvo giedan.
+
+REMOVE Ess IF (NOT *-1 OPREDV BARRIER SV-BOUNDARY2)(0 (Prop Ine))(NOT *1 OPREDV BARRIER SV-BOUNDARY2);   
+    ## Gå Jesus lij riegádam Betleheman, Judean, ...
+
+
          
 REMOVE Ine IF (-1C (Dem Sg Com))(0 (Dem Sg Com));
     ## Duobbmobiejven Nineve almatja tjuodtjeli aktan dájna vierregijn ja sijá duobbmon sjaddá, dajn gå buorádusáv Jona sárnnedattijn dahkin...
+    
+    
 
 
 # Elative
@@ -2847,25 +2866,19 @@ SELECT Ela IF (*-1 COPULAS BARRIER VERB)(0 N OR Pers)(1 Comp OR ("ienep" Ess))(2
     ## Oahppe ij le åhpadiddjes bárep.
     ## Nissunis riegádam ij le Johannes gástadiddjes stuoráp.
 
-# Inessive
-# ========
-
-SELECT Ine IF (1 COPULAS)(*2 Nom BARRIER NOT-AA);
-    ## Sujna le goajvvo giedan.
-
-REMOVE Ess IF (NOT *-1 OPREDV BARRIER SV-BOUNDARY2)(0 (Prop Ine))(NOT *1 OPREDV BARRIER SV-BOUNDARY2);   
-    ## Gå Jesus lij riegádam Betleheman, Judean, ...
-
-
-
-
+ 
 # Essive
 # ======
+
+SELECT Ess IF (0 Ine LINK 0 ESS-NOUN);
+    ## Sálugin gudi vuojŋŋanisán li häjo.
+
 
 REMOVE Ine IF (*-1 OPREDV BARRIER Ess)(0 Ess);
 REMOVE Ine IF (0 Ess)(*1 OPREDV LINK NOT 1 Ess);
 	## Suv gåhttju Immanuelin.
 	## , gev Kristusin gåhttju.
+
 
 # Late demonstrative prononoun rules
 # ----------------------------------
