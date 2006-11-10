@@ -476,7 +476,7 @@ SET VERB = V - (V N);   # V is all readings with a V tag in them, VERB should
 SET V-NOT-CMPND = V - Cmpnd; # Not in use.
 
 
-LIST COPULAS = "bissot" "liehket" "sjaddat" "soajttet" "viedjet" "årrot";
+LIST COPULAS = "bissot" "liehket" "sjaddat" "soajttet" "sjaddat" "viedjet" "årrot";
 #"dáidit" "gártat"  ;
  # 'Dáidit' can appear without 'leat'.
 
@@ -536,6 +536,8 @@ LIST ILLV = "riegádit" ;
 
 LIST OPREDV = "adnet" "gåhttjot" "válldet" ;
 
+LIST ESSV = "sjaddat";
+    # ESSV + A = Ess instead of Ine.
 
 # Other verb sets
 # - - - - - - - -
@@ -549,14 +551,40 @@ LIST INFV = "liehket" "galggat" "máhttet" "oadtjot" "sihtat" ;
 	## Ii suova nieiddas náitalit.
 
 
-#LIST MOVEMENT-VERB = "mannat";
- # These verbs typically combine with place adverbials in the genitive case 
- # (i.e. not accusative).
-
 #LIST TOGETHER-VERB = "goallostuvvot" "beaškkehat" "bidjat" "ô ­atnit" "suddat"  "heivet" "biddjojuvvot" "ô ­askit" "geassit" "gullat" "rehkenastit" "ordnet" "soahpat" "gávnnadit" "heivehit" "ô ­atnat" "doaibmat" "iskat" "laktit" "seaguhit";
  # Danger: This list could be to long, in certain respects. 
  # TODO: Think of counter examples, i.e. sentences where we have these verbs, but
  # where oktii is not an adverbial.
+
+LIST MOVEMENT-VERB = "vuollget";
+ 
+ 
+LIST ACTIVITY-V = "gástadit" "åhpadit";
+
+#LIST BODY-ACTIVITY-V 
+#LIST WRITING-ACTIVITY-V
+#LIST VERBAL-ACTIVITY-V 
+#LIST ABSTR-ACTIVITY-V
+#LIST INTELLECTUAL-ACTIVITY-V
+#LIST VEHICLE-PLACE-V 
+#LIST VEHICLE-TOOL-V
+#SET HUMAN-SOURCE-V = VEHICLE-PLACE-V | VEHICLE-TOOL-V ;
+# The two subsets differ in their choice of case for members of VEHICLE, but both choose locative for members of the set HUMAN (with the thematic role source)
+#LIST ABSTR-ENTITY-COM-V 
+#LIST ONLY-PLACE-LOC-V 
+#LIST HUMAN-LOC-V 
+#LIST PLACE-V
+#LIST ABSTR-PLACE-V
+#LIST EVENT-V = "dáhpáhuvvat" ;  # TIME/AIGODAT are locative
+#LIST STATE-V = "eallit" ;
+#LIST REM-WITH-PARTS = "gaikkihit" ; # Belongs to the DYNAMIC-V. They also take PARTS in comitative case.   
+
+#SET DYNAMIC-V = ACTIVITY-V | MOVEMENT-V | VERBAL-ACTIVITY-V | ABSTR-ACTIVITY-V | BODY-ACTIVITY-V | INTELLECTUAL-ACTIVITY-V | ABSTR-ENTITY-COM-V | HUMAN-SOURCE-V | REM-WITH-PARTS ;
+# According to the rules choosing Loc or Com, dynamic-verbs are not connected to TOOLS, ABSTR-TOOLS or CONCEPT in (Pl Loc).
+# Human becomes either Loc or Com depending on its subset membership.
+
+
+
 
 
 # NOUNS
@@ -754,7 +782,8 @@ LIST PROFESSION = "guolle#bivdde" ;
 #ANIMATE = HUMAN | ALL-ANIMALS
 #PLANT
 
-#TOOLS
+LIST TOOLS = "dållå" "tjáhtje";
+
 #WRITING-TOOLS
 #ABSTR-TOOLS ášši, dánsa, musihkka, varra
 #
@@ -770,19 +799,21 @@ LIST PROFESSION = "guolle#bivdde" ;
 #OBJECT = PARTS | SHOE | FOOD | TEXT
 #ENTITY = TOOLS | OBJECT | VEHICLE
 
-LIST BUILDING = "fáŋŋga#goahte" "synagoga" ;
+LIST BUILDING = "fáŋŋga#goahte" "gábmá" "goahte" "låvda#goahte" "synagoga" ;
 
-# ROOM
-# GEOGRAPHICAL-PLACE 
-# POLITICAL-PLACE 
-# GENERAL-PLACE
+LIST ROOM = "ladnja" "oadem#ladnja" ;
 
-LIST CONCRETE-ROUTE = "uksa#rájgge" "væddja";
+LIST GEOGRAPHICAL-PLACE = "ednam" "jávrre";  
+LIST POLITICAL-PLACE = "rijkka"; 
+LIST GENERAL-PLACE = "= "stáda";  
+
+LIST CONCRETE-ROUTE = "gahttun" "uksa#rájgge" "væddja";
 LIST ABSTR-ROUTE = "mijlla" ;
 
 SET ROUTE = CONCRETE-ROUTE | ABSTR-ROUTE ; 
 
-#PLACE = GEOGRAPHICAL-PLACE | POLITICAL-PLACE | GENERAL-PLACE | ROUTE | BUILDING | ROOM
+SET PLACE = GEOGRAPHICAL-PLACE | POLITICAL-PLACE | GENERAL-PLACE | ROUTE | BUILDING | ROOM ;
+
 #FYLKA
 #NATION = NATION-NOT-NORGA | NORGA
 
@@ -2873,11 +2904,11 @@ SELECT Ela IF (*-1 COPULAS BARRIER VERB)(0 N OR Pers)(1 Comp OR ("ienep" Ess))(2
 SELECT Ess IF (0 Ine LINK 0 ESS-NOUN);
     ## Sálugin gudi vuojŋŋanisán li häjo.
 
-
 REMOVE Ine IF (*-1 OPREDV BARRIER Ess)(0 Ess);
 REMOVE Ine IF (0 Ess)(*1 OPREDV LINK NOT 1 Ess);
 	## Suv gåhttju Immanuelin.
 	## , gev Kristusin gåhttju.
+
 
 
 # Late demonstrative prononoun rules
