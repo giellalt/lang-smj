@@ -527,7 +527,7 @@ SET V-TRANS-ACT-NOT-ACT-NOT-AUX = V-TRANS-ACT - Actio - Actor - AUX;
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 #LIST INEV =
-#LIST COMV = 
+LIST COMV = "sjiehtadallat" ;
 LIST ELAV = "ballat" ;
 LIST ILLV = "riegádit" ;
 
@@ -559,12 +559,12 @@ LIST INFV = "liehket" "galggat" "máhttet" "oadtjot" "sihtat" ;
 LIST MOVEMENT-V = "vuollget";
  
  
-LIST ACTIVITY-V = "gástadit" "lasedit" "åhpadit";
+LIST ACTIVITY-V = "duobbmit" "gástadit" "lasedit" "mihttit" "åhpadit";
 
 LIST BODY-ACTIVITY-V = "tjiektjat" ; 
 LIST WRITING-ACTIVITY-V = "tjállet" ; 
 LIST VERBAL-ACTIVITY-V = "hållat" ; 
-LIST ABSTR-ACTIVITY-V = "buoredit" ;  
+LIST ABSTR-ACTIVITY-V = "buoredit" "vilpástallat" ;  
 LIST INTELLECTUAL-ACTIVITY-V = "usjudit" ; 
 
 # More to come:
@@ -687,7 +687,9 @@ SET NOT-COMMA = CLB - COMMA | PUNCT-LEFT | PUNCT-RIGHT ;
 
 # Nominal sets defined according to their semantical properties
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-LIST SG-WORD = "mieda" "miehttse#mieda";
+
+# inessive vs. comitative:
+LIST SG-WORD = "mieda" "miella" "miehttse#mieda";
 
 # inessive vs. essive:
 LIST INE-NOUN = "ednam";
@@ -764,7 +766,7 @@ LIST ALU = ("allu" Gen)("assu" Gen)("čiekŋu" Gen)("gassu" Gen)("govdu" Gen)
 # Semantic noun-sets
 # -------------------
 
-LIST HUMAN-INDIVIDUAL = "áddjá" "áhkká" "áhkko" "áhttje" "áhttje#bielle" "ájttek" "bárne#bárnne" "bárne#niejdda" "bárnne" "bárnne#bielle" "biebbmo#bárnne" "biddno#moarsse" "boaddnje" "gájmme" "gállasj#guojmme"  "gállasj#ålmåj" "gálojinitja" pl. "goasske" "goasske"  "gieruk" "ibme" "ieddne" "ieddne#bielle" "iemet" "irgge" "iset" "niejdda" "næjttso" "næjttso#riehko" "oarbben#bielle" "oarbben" "siessá" "siessal" "svilli" "mannje" "moarsse" "muohtá" "muohtal" "niehpe" "oabbá" "oabbá#bielle" "tjiehtje" "tjiehtjev" "viellja" "viellja#gieres" "viellja#bielle" "æddnul" "ænoj" ; 
+LIST HUMAN-INDIVIDUAL = "áddjá" "áhkká" "áhkko" "áhttje" "áhttje#bielle" "ájttek" "bárne#bárnne" "bárne#niejdda" "bárnne" "bárnne#bielle" "biebbmo#bárnne" "biddno#moarsse" "boaddnje" "gájmme" "gállasj#guojmme"  "gállasj#ålmåj" "gálojinitja" pl. "goasske" "goasske"  "gieruk" "ibme" "ieddne" "ieddne#bielle" "iemet" "irgge" "iset" "niejdda" "næjttso" "næjttso#riehko" "oarbben#bielle" "oarbben" "siessá" "siessal" "sirram#nissun" "svilli" "mannje" "moarsse" "muohtá" "muohtal" "niehpe" "oabbá" "oabbá#bielle" "tjiehtje" "tjiehtjev" "viellja" "viellja#gieres" "viellja#bielle" "æddnul" "ænoj" ; 
 
 LIST HUMAN-GROUP = "sijdda" "vehka" ;
 
@@ -791,7 +793,7 @@ LIST TOOLS = "dållå" "tjáhtje";
 
 LIST WRITING-TOOLS = "pænna" ;
 
-LIST ABSTR-TOOLS = "ássje" "musihkka" "varra"; 
+LIST ABSTR-TOOLS = "ássje" "duobbmo" "musihkka" "varra"; 
  
 #PARTS ruohtas
 #SHOE
@@ -811,7 +813,7 @@ LIST ROOM = "ladnja" "oadem#ladnja" ;
 
 LIST GEOGRAPHICAL-PLACE = "ednam" "jávrre";  
 LIST POLITICAL-PLACE = "rijkka"; 
-LIST GENERAL-PLACE = "= "stáda";  
+LIST GENERAL-PLACE = "gahttun#suorre" "stáda";  
 
 LIST CONCRETE-ROUTE = "gahttun" "uksa#rájgge" "væddja";
 LIST ABSTR-ROUTE = "mijlla" ;
@@ -828,7 +830,7 @@ SET PLACE = GEOGRAPHICAL-PLACE | POLITICAL-PLACE | GENERAL-PLACE | ROUTE | BUILD
 
 #ABSTR-ENTITY  "ášši" "bálká" "bušeahtta" "doaibma#plána" "fuolahan#bálká" "giella#ruhta" "hehttehus" "plána" "prošeakta" "ruhta" "sosiála#plána" "stáhta#doaibma" "váttisvuohta" ;
 
-LIST CONCEPT = "gieresvuohta" "guojmme#gieresvuohta" "mujtto" "måråj""oame#dåbddo" ;
+LIST CONCEPT = "gieresvuohta" "guojmme#gieresvuohta" "mujtto" "måråj" "oame#dåbddo" ;
 
 #LIST ACTIVITY = "čađaheapmi" "dearvvašvuođa#dutkan" "fuolaheapmi" "geahčastat" "guorahallan" "šiehtadallan" ;
 
@@ -1349,13 +1351,6 @@ MAP (@+FAUXV @+FMAINV) TARGET VFIN IF (NOT *-1 ("liehket") OR INFV OR Neg BARRIE
 MAP (@-FAUXV @-FMAINV) TARGET ("årrot") IF (0 VFIN OR PrfPrc OR (Actio Ess));
 	## Olbmot eai orron čadnon dušše iežaset mearragáddái bivdit.
     
-MAP (@-FAUXV @-FMAINV) TARGET Inf IF (*-1 INFV BARRIER VFIN) (0 AUX-OR-MAIN);
-	## Son galgá beassat buktit oaivilis.
-    # No hits in NT.
-
-MAP (@+FAUXV @+FMAINV) TARGET VFIN IF (NOT *-1 VFIN BARRIER S-BOUNDARY) (0 AUX-OR-MAIN);
-	## Maid Máret áiggui goarrumis?
-    # No hits in NT.
 
 MAP (@-FAUXV) TARGET AUX IF (*-1 Neg BARRIER S-BOUNDARY)(0 ConNeg OR PrfPrc)(*1 Inf BARRIER NOT-ADV-PCLE);
 	## Eat mii sáhte vuolgit.
@@ -2536,6 +2531,8 @@ SELECT (Pron Pers Sg2 Nom) IF (-2 (V Sg2))(-1 ("gus" Pcle));
 SELECT (Sg2) IF (0 (Pron Pers))(*1 (V Sg2) BARRIER N);
 	## Ja dån dal muv luse boadá.
 
+SELECT (Pron Interr) IF (0 (Pl1 Nom) LINK -1 S-BOUNDARY OR BOS)(1 (N Pl Acc));
+    ## Mij dahkamusájt le dujna munnujn?
 
 # Genitive Sg = Accusative Sg for personal pronouns.
 # Accusative vs. Genitive
@@ -2884,7 +2881,12 @@ SELECT (Sg Com) IF (-1 (Dem Sg Com))(0 N);
 SELECT (Sg Com) IF (*-1 DYNAMIC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 (Pl Ine) LINK 0 TOOLS OR ABSTR-TOOLS OR WRITING-TOOLS OR CONCEPT);
 SELECT (Sg Com) IF (0 (Pl Ine) LINK 0 TOOLS OR ABSTR-TOOLS OR WRITING-TOOLS OR CONCEPT)(*1 DYNAMIC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV);
     ## Mån dijáv tjátjijn buorádussaj gástadav.
-    ## Ájlis Vuojŋŋanisájn ja dålåjn sån dijáv gástat.     
+    ## Ájlis Vuojŋŋanisájn ja dålåjn sån dijáv gástat. 
+    ## Guhtis dijás mårråhijnes ga máhttá stihko guhkev viessomájggásis lasedit?
+    
+SELECT (Sg Com) IF (*-1 PLACE-V BARRIER SV-BOUNDARY2)(0 (Pl Ine) LINK 0 ANIMATE OR CONCEPT OR TOOLS OR ABSTR-TOOLS OR (Pron Pers));
+SELECT (Sg Com) IF (0 (Pl Ine) LINK 0 ANIMATE OR CONCEPT OR TOOLS OR ABSTR-TOOLS OR (Pron Pers))(*1 PLACE-V BARRIER SV-BOUNDARY2);    
+    ## Ja guhti sirramnissunijn válldu, doadjá nissuna gállasjvuodav.
 
 
 # Inessive
@@ -2909,6 +2911,20 @@ SELECT Ine IF (0 (N Plc Ess));
 SELECT Ine IF (1 COPULAS)(*2 (N Nom) BARRIER VERB);
     ## Sujna le goajvvo giedan.
     ## Juohkka biejven li ietjas vájve.
+    
+SELECT Ine IF (0 Com)(1 (@CC-NP))(*2 Ine BARRIER NPNH LINK 1 COPULAS);    
+    ## Gå mijájn ja fariseajn li fásto.  
+
+SELECT Ine IF (0 N OR (Pron Pers) LINK 0 Com)(1 COPULAS LINK NOT 1 FMAINV LINK NOT 0 COPULAS);    
+    ## Sujsta váldeduvvá aj mij sujna le.
+   
+    
+SELECT Ine IF (-1 COPULAS LINK -1 (N Pl Acc) LINK -1 ("mij" Pron Interr Sg Nom));  
+    ## Mij dahkamusájt le dujna munnujn?  
+
+# Coordination:
+SELECT Ine IF (*-1 COPULAS BARRIER SV-BOUNDARY2 LINK 0 FMAINV LINK *1 Nom BARRIER NPNH LINK 1 CC)(0 N OR Pers)(*1 (N Nom) BARRIER NPNH);
+    ## Riehpihijn li lieso ja alme låttijn biese. 
 
 REMOVE Ess IF (NOT *-1 OPREDV BARRIER SV-BOUNDARY2)(0 (Prop Ine))(NOT *1 OPREDV BARRIER SV-BOUNDARY2);   
     ## Gå Jesus lij riegádam Betleheman, Judean, ...
@@ -2926,6 +2942,13 @@ REMOVE Ess IF (0 (A Ine) OR (N Ine) LINK NOT 0 HUMAN OR Actor)(1 ("liehket") OR 
     ## Ålles rumáj le sjievnnjedin.
     ## Álmmuk mij sjievnnjedin årru. 
     ## Ja sidjij gudi jábmema rijkan ja sähkásin årru. 
+    
+
+SELECT (Pl Ine) IF (NOT *-1 COMV BARRIER SV-BOUNDARY2)(0 (Sg Com) LINK 0 PLACE)(NOT *1 COMV BARRIER SV-BOUNDARY2);
+    ## Ale ga vattástagájt jieddnát gálggi nåv gåk vilpástalle synagogajn ja gahttunijn rámmpoma diehti dahki. 
+    ## Jesus synagogajn åhpadij.
+    ## Sij lijkkuji synagogajn ja gahttunsuorijn vuojnnuma diehti råhkådallat. 
+    
    
 
 # Elative
@@ -3132,6 +3155,9 @@ REMOVE (V Sg3) IF (-1 (N Pl Nom) OR (Pron Pl Nom) LINK NOT 0 Pr OR Po)(0 (V Pl3)
 
 REMOVE (V Pl3) IF (-1 (Sg Nom) LINK *-1 SV-BOUNDARY BARRIER CC LINK -1 (Sg Nom));
 	## Dáhta l navti.
+	
+SELECT (V Sg3) IF (-1 (N Pl Acc) LINK *-1 ("mij" Pron Interr Sg Nom) BARRIER NOT-A);
+    ## Mij dahkamusájt le dujna munnujn?	
 
 # First person dual - Du1
 # -----------------------
