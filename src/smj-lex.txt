@@ -108,6 +108,20 @@ LEXICON R
 ! (030129) left for inspection, they (line 3 and 6 of R) should be removed
 ! if no deadjectival nouns turn up.
 
+LEXICON RAbbr !From abbreviations and acronyms to avoid two hyphens: a-- and ...
+ # NounRoot ;                      ! This is the normal case.		    ^C^
+! # NounSecond ;			   ! Testing some quasisuff, cf. noun file  ^C^
+ #@P.NeedNoun.ON@  VerbRoot ;      ! Flag diacr declares that the compound  ^C^
+ #@P.NeedNoun.ON@  AdjectiveRoot ; ! needs a +N tag later in the derivation ^C^
+ #:%- NounRoot ;                        ! These 3 cases add a hyphen, so    ^C^
+ #:%-@P.NeedNoun.ON@  VerbRoot ;        ! Sem-julggaštus and the like	    ^C^
+ #:%-@P.NeedNoun.ON@  AdjectiveRoot ;   ! is allowed.			    ^C^
+!# ProperNoun ;     ! Now, let us allow proper nouns as the 2nd part of com-^C^
+!#:%- ProperNoun ;  ! pounds. Thus: London-Hull, LondonHull, Hull-viessu    ^C^
+                    ! and viessuLondon are now all ok. Some refinement could^C^
+                    ! perhaps be done, but corpus research is needed.	    ^C^
+ +Cmpnd: # ;     ! This to take care of Oahpo- ja dutkandept.
+!want this in speller
 
 
 
@@ -1406,7 +1420,7 @@ LEXICON ALLAK ! d. Adjs on -ak, attr. on -a
  +A+Superl:eQ1muss BUOREMUS ;
  +A+Comp+Adv:agappot K ;
  +A+Superl+Adv:agabmusit K ;
- +A+Comp+Dim+Der/vuohta:eQ1busj VUOHTA ;
+! +A+Comp+Dim+Der/vuohta:eQ1busj VUOHTA ;
  +A+Comp+Dim+Sg+Nom:eQ1busj K ;
  +A+Comp+Dim+Sg+Attr:eQ1busj ATTR ;
  +A+Comp+Dim:eQ1budtja GÅNÅGIS-EVEN ; 
@@ -1424,7 +1438,7 @@ LEXICON GÅBDDÅK ! d2. Adjs on -åk, attr. on -å
  +A+Superl:eQ1muss BUOREMUS ;
  +A+Comp+Adv:ågappot K ;
  +A+Superl+Adv:ågabmusit K ;
- +A+Comp+Dim+Der/vuohta:eQ1busj VUOHTA ;
+! +A+Comp+Dim+Der/vuohta:eQ1busj VUOHTA ;
  +A+Comp+Dim+Sg+Nom:eQ1busj K ;
  +A+Comp+Dim+Sg+Attr:eQ1busj ATTR ;
  +A+Comp+Dim:eQ1budtja GÅNÅGIS-EVEN ; 
@@ -1461,7 +1475,7 @@ LEXICON LÅSSÅT
 ! +A:eQ1 BU/MUS ; !replaced to avoid adv. form låsibut
  +A+Comp:eQ1 BUStem ;
  +A+Superl:eQ1muss BUOREMUS ;
- +A+Comp+Dim+Der/vuohta:eQ1busj VUOHTA ;
+! +A+Comp+Dim+Der/vuohta:eQ1busj VUOHTA ;
  +A+Comp+Dim+Sg+Nom:eQ1busj K ;
  +A+Comp+Dim+Sg+Attr:eQ1busj ATTR ;
  +A+Comp+Dim:eQ1budtja GÅNÅGIS-EVEN ; 
@@ -1591,7 +1605,7 @@ LEXICON BU/MUS ! even-syll adjectives
  +Superl:muss BUOREMUS ;
  +Comp+Adv:but K ;
  +Superl+Adv:musát K ;
- +Comp+Dim+Der/vuohta:busj VUOHTA ;
+! +Comp+Dim+Der/vuohta:busj VUOHTA ;
  +Comp+Dim+Sg+Nom:busj K ;
  +Comp+Dim+Sg+Attr:busj ATTR ;
  +Comp+Dim:budtja GÅNÅGIS-EVEN ; 
@@ -1606,7 +1620,7 @@ LEXICON ABBO/AMOS ! odd-syll adjectives
  +Superl: AMOS ; 
  +Comp+Adv:appot K ;
  +Superl+Adv:abmusit K ;
- +Comp+Dim+Der/vuohta:appusj VUOHTA ;
+! +Comp+Dim+Der/vuohta:appusj VUOHTA ;
  +Comp+Dim+Sg+Nom:appusj K ;
  +Comp+Dim+Sg+Attr:appusj ATTR ;
  +Comp+Dim:apputj OTH-ODDCASE ; 
@@ -1618,7 +1632,7 @@ LEXICON ABBO/AMOS ! odd-syll adjectives
 ! -----------
 
 LEXICON BUStem
- +Der/vuohta:p VUOHTA ;
+! +Der/vuohta:p VUOHTA ;
  +Attr:p ATTR ;
  +Sg+Nom:p K ;
  +Sg+Nom:bu PxV ;
@@ -1646,7 +1660,7 @@ LEXICON BUStem
  +Pl+Com:buj K ;
  
 LEXICON ABBO
- +Der/vuohta:ap VUOHTA ;
+! +Der/vuohta:ap VUOHTA ;
  +Sg+Nom:abbo K ;
  +Sg+Gen:appo K ;
  +Sg+Acc:appov K ;
@@ -1664,7 +1678,7 @@ LEXICON ABBO
  +Pl+Com:appoj K ;
 
 LEXICON AMOS
- +Der/vuohta:amos VUOHTA ;
+! +Der/vuohta:amos VUOHTA ;
  +Attr:amos K ;
  +Sg+Nom:amos K ;
  +Sg+Nom:abmusa PxV ;
@@ -1695,7 +1709,7 @@ LEXICON AMOS
 ! -----------
 
 LEXICON BUOREMUS
- +Der/vuohta: VUOHTA ;
+! +Der/vuohta: VUOHTA ;
  +Attr: K ;
  +Sg+Nom: K ; ! the short form, twol shortens ss#
  +Sg+Nom:a PxV ; ! separate nom bec of the short form
