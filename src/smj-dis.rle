@@ -684,6 +684,9 @@ SET NOT-COMMA = CLB - COMMA | PUNCT-LEFT | PUNCT-RIGHT ;
 
 # LIST NOM-GEN-NOUN = ... ;
 
+SET N-NOT-ACTIO = N - Actio ;
+
+
 
 # Nominal sets defined according to their semantical properties
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -1025,6 +1028,8 @@ MAP (@ADVL) TARGET ("akta" Num Ess);
 
 MAP (@DN>) TARGET (Dem Nom) IF (*1 Num OR A OR N BARRIER NP-BOUNDARY LINK 0 Nom) (NOT 1 Interr OR COMMA OR Dem);
 	## Mannit åhpatjit majt dá bágo mierkkiji...
+
+MAP (@DN>) TARGET (Dem Par) IF (*1 Num OR A OR N BARRIER NP-BOUNDARY LINK 0 Ela) (NOT 1 Interr OR COMMA OR Dem);
 	
 MAP (@DN>) TARGET (Dem Sg Gen) IF (*1 Num OR A OR N BARRIER NP-BOUNDARY LINK 0 (Sg Gen) OR (Sg Ill) OR (Sg Ine))(NOT 1 Po);
 	## Gáhtjada vuossteguojmijnat såbadittjat gå ájn manojn lihppe, vaják duv ij duobmára åvddåj giese ja duobmár vávta åvddåj ja dån fáŋŋgagoahtáj bálkestuvá.
@@ -1082,7 +1087,7 @@ MAP (@DN>) TARGET (Dem Pl Com) IF (*1 (N Pl Com) BARRIER NOT-AA);
 # ------------------
 
 # MAP (@PronN>)
-# MAP (@AN>)
+MAP (@AN>) TARGET (A Attr) ;
 # MAP (@PrcN>)
 # MAP (@ActioN>)
 
@@ -1346,6 +1351,10 @@ MAP (@NPron<) TARGET (N Pl Gen) IF (-1 ("mij" Interr) OR ("mihkkege") OR ("guhti
 # Verb mappings - taken from sme-dis.rle. Those which have a #, have to be considered..
 # -------------
 
+MAP (@+FAUXV) TARGET Neg;
+MAP (@-FAUXV) TARGET ConNeg IF (0 AUX) ;
+MAP (@-FMAINV) TARGET ConNeg IF (NOT 0 AUX);
+
 MAP (@+FAUXV @+FMAINV) TARGET VFIN IF (NOT *-1 ("liehket") OR INFV OR Neg BARRIER S-BOUNDARY OR VERB)(0 ("årrot"));
 	## Sii orro darfegođiid siste.
     ## Dåppe åroj dasik Herodes lij jábmám vaj luluj ålliduvvat.
@@ -1411,6 +1420,9 @@ MAP (@-FMAINV) TARGET Sup;
 	## Áddjá bázii mállása vuoššažit. 
     ## Ja boahtám lip suv guddnedittjat.
 
+MAP (@-FMAINV) TARGET Ger;
+MAP (@-FMAINV) TARGET GerII;
+
 
 # Complements of particles in comparison
 # --------------------------------------
@@ -1442,6 +1454,11 @@ MAP (@ADVL) TARGET VGen ;
 MAP (@ADVL) TARGET Ger ;
 MAP (@ADVL) TARGET Ess IF (0 Num) ;
 MAP (@ADVL) TARGET Ess IF (0 ESS-ADVL-N);
+
+
+# Other mappings
+# --------------
+
 
 # Default mapping
 # ---------------
@@ -1507,21 +1524,21 @@ REMOVE (Der/lasj A Attr) IF (0 NOT-DER LINK 0 (N));
 REMOVE N-DER IF (0 LEX-N LINK NOT 0 Ess);
 REMOVE (V* Actor N Sg Nom) IF (0 NOT-ACTOR);
 
-REMOVE (Actio N Sg Nom) IF (0 (N Sg Nom));
-REMOVE (Actio N Sg Acc) IF (0 (N Sg Acc));
-REMOVE (Actio N Sg Gen) IF (0 (N Sg Gen));
-REMOVE (Actio N Sg Ill) IF (0 (N Sg Ill));
-REMOVE (Actio N Sg Ine) IF (0 (N Sg Ine));
-REMOVE (Actio N Sg Ela) IF (0 (N Sg Ela));
-REMOVE (Actio N Sg Com) IF (0 (N Sg Com));
-REMOVE (Actio N Ess) IF (0 (N Ess));
-REMOVE (Actio N Pl Nom) IF (0 (N Pl Nom));
-REMOVE (Actio N Pl Acc) IF (0 (N Pl Acc));
-REMOVE (Actio N Pl Gen) IF (0 (N Pl Gen));
-REMOVE (Actio N Pl Ill) IF (0 (N Pl Ill));
-REMOVE (Actio N Pl Ine) IF (0 (N Pl Ine));
-REMOVE (Actio N Pl Ela) IF (0 (N Pl Ela));
-REMOVE (Actio N Pl Com) IF (0 (N Pl Com));
+REMOVE (Actio N Sg Nom) IF (0 (N-NOT-ACTIO Sg Nom));
+REMOVE (Actio N Sg Acc) IF (0 (N-NOT-ACTIO Sg Acc));
+REMOVE (Actio N Sg Gen) IF (0 (N-NOT-ACTIO Sg Gen));
+REMOVE (Actio N Sg Ill) IF (0 (N-NOT-ACTIO Sg Ill));
+REMOVE (Actio N Sg Ine) IF (0 (N-NOT-ACTIO Sg Ine));
+REMOVE (Actio N Sg Ela) IF (0 (N-NOT-ACTIO Sg Ela));
+REMOVE (Actio N Sg Com) IF (0 (N-NOT-ACTIO Sg Com));
+REMOVE (Actio N Ess) IF (0 (N-NOT-ACTIO Ess));
+REMOVE (Actio N Pl Nom) IF (0 (N-NOT-ACTIO Pl Nom));
+REMOVE (Actio N Pl Acc) IF (0 (N-NOT-ACTIO Pl Acc));
+REMOVE (Actio N Pl Gen) IF (0 (N-NOT-ACTIO Pl Gen));
+REMOVE (Actio N Pl Ill) IF (0 (N-NOT-ACTIO Pl Ill));
+REMOVE (Actio N Pl Ine) IF (0 (N-NOT-ACTIO Pl Ine));
+REMOVE (Actio N Pl Ela) IF (0 (N-NOT-ACTIO Pl Ela));
+REMOVE (Actio N Pl Com) IF (0 (N-NOT-ACTIO Pl Com));
 
 
 
@@ -1561,26 +1578,20 @@ REMOVE ABBR IF (NOT -1 BOS)(0 ("liehket"));
 # V TV Inf = V* TV Actor N Sg Gen PxSg2 = V* TV Actor N Sg Nom PxSg2
 #          = V* TV Actor N Sg Acc PxSg2 
 
-
-
-
-
-# PxSg1
-#   V* TV Pass V PrfPrc          = V* TV Pass V* Actor N Sg Gen PxSg1
-# = V* TV Pass V* Actio N Sg Nom = V* TV Pass V* Actor N Sg Acc PxSg1 
-# = V* TV Pass V* Actor N Sg Nom PxSg1
-
-# PxSg2
-# V TV Inf = V* TV Actor N Sg Gen PxSg2 = V* TV Actor N Sg Nom PxSg2
-#          = V* TV Actor N Sg Acc PxSg2 
-
-# PxSg3
-# N Sg Ela = N Sg Acc PxSg3 = N Sg Gen PxSg3 ( = N Sg Nom PxSg3)
- 
         
 # PxSg3
 # N Sg Ela = N Sg Acc PxSg3 = N Sg Gen PxSg3 ( = N Sg Nom PxSg3)
+
+# PxDu1
+
+REMOVE PxDu1 IF (*-1 (Pron Pl1) BARRIER NPNH)(0 PxPl1);
+
+# PxDu2
+# PxDu3
  
+# PxPl1
+# PxPl2
+# PxPl3
         
 # ---------------------------------------------------------------- #
 # Cycle 1b: removing the readings that were left from the 1a rules #
