@@ -499,7 +499,9 @@ SET V-NOT-AUX = V - AUX ;  # The set of verbs that cannot be auxiliaries.
 			   # Does not include AUX-OR-MAIN.
 
 SET VFIN-NOT-AUX = VFIN - AUX ;
-#
+
+LIST GerII-V = "gullat" "vuojnnet" ;
+
 #SET V-MAIN = V - COPULAS - Neg - MOD-ASP | ("orrut") ;  # The set of verbs that can be 
 #							# main verbs. Includes 
 #							# AUX-OR-MAIN.
@@ -538,13 +540,13 @@ LIST ILLV = "riegádit" ;
 
 LIST OPREDV = "adnet" "gåhttjot" "válldet" ;
 
-LIST ESSV = "sjaddat";
+LIST ESSV = "boahtet" "sjaddat";
     # ESSV + A = Ess instead of Ine.
 
 # Other verb sets
 # - - - - - - - -
 
-LIST INFV = "liehket" "galggat" "máhttet" "oadtjot" "sihtat" ;
+LIST INFV = "boahtet" "buktet" "galggat" "gåhttjot" "liehket" "máhttet" "oadtjot" "sihtat" ;
 #LIST ACC-INFV = 
 
 
@@ -1933,7 +1935,8 @@ SELECT CC IF (*-1 Inf BARRIER VERB OR CLB)(0 ("vaj"))(*1 Inf BARRIER VERB);
 REMOVE LCRD IF (-1 COMMA)(0 CC);
     ## Ieddnes Maria lij Josefijn giláduvvam, valla åvddål gå aktan lijga viessogoahtám, de bihkusij bådij Maria lij ájlis Vuoiŋŋanisás sahkanam.
     
-REMOVE LCRD IF (-1 BOS);
+REMOVE LCRD IF (-1 BOS OR (@CC-VP));
+    ## Jesus jårgijdij ja gå suv ájtsaj de javlaj:
 
 REMOVE LCRD IF (-2 BOS LINK 1 Num)(NOT *1 Num BARRIER NPNH);
     # We need this rule until we get a better file format without line numbers.
@@ -1967,9 +1970,10 @@ REMOVE GCRD IF (-1C (@OBJ))(*1C (@OBJ) BARRIER NPNHA);
 REMOVE GCRD IF (-1 (@X) OR N)(*1 N BARRIER NPNHA LINK NOT 1 VFIN);
     ## Vuolgij Nasarets ja årruj Kafarnaumij, jávrregáddáj, Sebulona ja Naftali guovlojn.
 
-REMOVE GCRD IF (NOT -1 BOS)(NOT *1 VFIN BARRIER S-BOUNDARY OR PUNCT-RIGHT OR CCCOMMA);
+REMOVE GCRD IF (NOT -1 BOS)(NOT 1 CS)(NOT *1 VFIN BARRIER S-BOUNDARY OR PUNCT-RIGHT OR CCCOMMA);
     # No potential finite verb following
     ## Judaj riegádijga Peres ja Sera, gej ieddne lij Tamar, Peresij riegádij Hesron,...
+    ## Jesus jårgijdij ja gå suv ájtsaj de javlaj:
 
 
 REMOVE LCRD IF (1 CS);
@@ -2428,6 +2432,10 @@ REMOVE (Pl Nom) IF (0 Prop)(*1 N BARRIER NOT-ADJ);
 
 SELECT Gen IF (1C Po);
 	## Profehta baktu.
+	
+# Coordination:	
+SELECT Gen IF (1 (@CC-NP))(*2 Gen BARRIER NOT-AA LINK 1C Po);
+    ## Gåktus dijá åhpadiddje buktá tullárij ja suddárij siegen bårråt?	
 
 
 # Specific words
@@ -2531,6 +2539,11 @@ REMOVE Attr IF (1 COMMA)(NOT 2 (A Attr));
 # ========================== #
 # Disambiguating numerals    #
 # ========================== #
+
+REMOVE Acc IF (NOT *-1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 OR Acc)(0 Num)(1 (Sg Gen))(NOT *1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 OR Acc);
+    ## Gå Jesus dåppelt vuolgij, de guokta tjalmedime suv tjuorvo tjuovvolijga:
+
+
 # ========================== #
 # Disambiguating adpositions #
 # ========================== #
@@ -2562,6 +2575,11 @@ SELECT CS IF (0 ("vaj"));
 
 REMOVE Po IF (0 Adv)(NOT -1 Gen);
     ## Ja vádtse álmmuk suv åvdålt maŋelt tjuorvoj:
+    
+SELECT Adv IF (-1 V OR (@CC-VP) OR BOS)(0 ("aktan"))(1 Com);    
+    ## ..viellidin aktan sujna ja åhpadisålmmåj. 
+    ## Jesus de tjuodtjelij ja aktan åhpadisålmmåj suv tjuovvolij.
+
 
 
 # ======================= #
@@ -2638,7 +2656,8 @@ REMOVE Interr IF (NOT -3 BOS)(-2 COMMA)(-1 CC)(0 Rel);
 
 # Interrogative
 
-REMOVE Rel IF (*-1 BOS BARRIER N OR Pron OR Num OR A);
+REMOVE Rel IF (*-1 BOS OR (":") OR PUNCT BARRIER N OR Pron OR Num OR A);
+    ## ”Manen duv åhpadisålmmå e fásstuda?”
 
 
 # ====================== #
@@ -2776,8 +2795,9 @@ SELECT Inf IF (-1 CC)(-2C Inf);
 # ---------
 # Gerund II = Actio N Ess
 
-SELECT GerII IF (*-1 AUX BARRIER SV-BOUNDARY2)(0 (N Ess));
+SELECT GerII IF (*-1 AUX OR GerII-V BARRIER SV-BOUNDARY2)(0 (N Ess));
     ## Viehka dåbelin lij stuorra svijnneällo guohtomin.
+    ## Vuojnijma suv nástev ihtemin.
     # Select because it´s the only way to get rid of (Actio Ine) when the word is lexicalized. If it makes trouble, we have to make a rule for PLACE and other possible Ine. 
 
 
@@ -2973,8 +2993,9 @@ SELECT Nom IF (NOT *-1 Pr OR V)(0 Gen)(NOT *1 Po OR V);
 # N Sg Gen = N Pl Nom
 # -------------------
 
-SELECT Gen IF (*-2 Nom)(-1 TV)(0 (N Sg))(NOT 0 VFIN)(*1 N BARRIER NOT-ADJ LINK 1 EOS);
+SELECT Gen IF (-1 V-TRANS-ACT-NOT-ACT)(0 (N Sg))(NOT 0 VFIN)(*1 N BARRIER NOT-ADJ LINK 1 EOS OR CLB OR ("de") OR (@CC-VP));
     ## Mån basáv gusá muorra.
+    ## Gullam gånågisá bágojt, vuolggin.
 
 SELECT (Sg Gen) IF (*-1 (Dem Sg Gen) BARRIER NOT-ADJ)(NOT 0 VFIN)(0 N);
     ## Dat lij dan ájgge gå álmmugav vuolgadin Babylonaj.
@@ -2991,6 +3012,9 @@ SELECT (Sg Gen) IF (-1 Gen)(0C N)(1 COMMA)(*2 N BARRIER NOT-ADJ);
 
 REMOVE (Pl Nom) IF (*-1 Num BARRIER NOT-ADJ)(0 N);
 	## gålmmå jage.
+	
+REMOVE Gen IF (1 (Pron Pers Gen));
+    ## De bådijga tjalmedime suv åvddåj.	
 
 # N Sg Nom = N Sg Gen = N Pl Nom (cases without CG)
 # -------------------------------------------------
@@ -3020,8 +3044,9 @@ SELECT Ill IF (1 ILLV LINK 1 Nom BARRIER NPNH);
 # Comitative
 # ==========
     
-SELECT Com IF (-2 IV)(-1 ("akta" Adv))(0 Ine);
+SELECT Com IF (-2 IV OR (@CC-VP) OR BOS)(-1 ("aktan" Adv))(0 Ine OR Ill);
     ## Bievddegáddáj viellidin aktan sujna ja åhpadisålmmåj.
+    ## Jesus de tjuodtjelij ja aktan åhpadisålmmåj suv tjuovvolij.
 
 SELECT Com IF (*-2 Ill BARRIER NOT-ADV-PCLE-VFIN)(-1 N)(0 Gen LINK NOT 0 V)(NOT 1 N);    
      ## ..., Jakobij Juda vieljatjij, ...    
