@@ -546,7 +546,7 @@ LIST ESSV = "boahtet" "sjaddat";
 # Other verb sets
 # - - - - - - - -
 
-LIST INFV = "boahtet" "buktet" "galggat" "gåhttjot" "liehket" "máhttet" "oadtjot" "sihtat" ;
+LIST INFV = "boahtet" "buktet" "galggat" "gåhttjot" "liehket" "máhttet" "oadtjot" "sihtat" "suovvat";
 #LIST ACC-INFV = 
 
 
@@ -2631,6 +2631,9 @@ REMOVE Gen IF (1 Ess)(2 OPREDV);
 
 REMOVE (Pers Acc) IF (*1C (N Acc) BARRIER S-BOUNDARY2 OR Po OR Actio OR ("degu") LINK NOT 0 TIME);
     ## Vuojnijma suv nástev ihtemin.
+
+SELECT (Pers Acc) IF (-1 V-TRANS-ACT-NOT-ACT LINK *-1 BOS OR PUNCT OR CLB)(1 CLB);
+    ## ”Tjuovvolav duv, Härrá, ...
   
     
 
@@ -2850,7 +2853,7 @@ REMOVE Attr IF (0 (Prop Mal) OR (Prop Fem))(0 Nom)(NOT 1 (N Prop Sur) OR (N Prop
 # ----------------------
 
 SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 OR Acc LINK NOT 0 ELAV)(0 (N Gen) OR (N Nom))(NOT 1 (N Acc));
-SELECT Acc IF (0 N)(*1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 LINK NOT *1 Acc BARRIER SV-BOUNDARY2);
+SELECT Acc IF (0 N LINK NOT 0 V)(*1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 LINK NOT *1 Acc BARRIER SV-BOUNDARY2);
 SELECT Acc IF (0 (N Gen) OR (N Acc))(*1 V-TRANS-ACT BARRIER SV-BOUNDARY2 LINK 0 (Actio Ela));
     ## Ale balá Mariav áhkkán válldemis.
 
@@ -2880,6 +2883,9 @@ SELECT Acc IF (0 (N Gen) OR (N Acc))(*1 V-TRANS-ACT BARRIER SV-BOUNDARY2 LINK 0 
 
 # Nominative
 # ==========
+
+REMOVE Gen IF (-1 BOS OR PUNCT OR CLB)(1 COMMA);
+    ## Härrá, suova muv vuolgget vuostak áhtjám hávddádittjat.
 
 SELECT (Sg Nom) IF (NOT *-1 Sg3 BARRIER SV-BOUNDARY2 OR Nom)(0 N)(1 Sg3);
     ## Fáŋŋgagoaden Johannes guláj Kristusa dagoj birra.
@@ -2955,6 +2961,9 @@ REMOVE Gen IF (-1 ADVLCASE)(0 (N Nom))(1 CLB LINK NOT 1 Gen);
 REMOVE Gen IF (-1 ADVLCASE)(0 (N Nom))(1 Com)(2 CLB);  
     ## ..., Jakobij Juda vieljatjij, ...   
    
+SELECT Gen IF (-1 CC)(0 Nom)(*1 ADVLCASE BARRIER NOT-ADJ LINK *1 (N Nom) BARRIER NOT-ADJ LINK 1 CLB OR CC);
+    ## Riehpihijn li lieso ja alme låttijn biese, ..
+
 
     # Taken from sme-dis.rle:
 SELECT (N Nom) IF (-2C (N Nom))(-1 CC)(NOT 0 VERB OR Pron)(NOT 0 (A Ess) LINK -2 Ess)(NOT 1 N OR Pron OR Num OR A OR Actio); 
@@ -2971,7 +2980,7 @@ REMOVE (N Sg Gen) IF (*-1 BOS OR CS BARRIER (Pron Pers Du1))(0 (N Pl Nom))(1 (V 
 
 # Oppramsing
 # - - - - - - 
-SELECT Nom IF (*-1 COMMA BARRIER N-NOT-GEN LINK -1 Nom)(0 N OR Num LINK NOT 0 Gen)(NOT *1 VFIN BARRIER COMMA);
+SELECT Nom IF (*-1 COMMA BARRIER N-NOT-GEN LINK -1 Nom)(0 N OR Num LINK NOT 0 Gen OR V)(NOT *1 VFIN BARRIER COMMA);
     ## Nåv li buolva, lågenanniellja buolva Abrahama rájes Davida rádjáj.  
     
 SELECT Nom IF (-1 COMMA OR CC LINK -1 Po LINK -1 Gen LINK *-1 Po BARRIER NPNH LINK -1 Gen LINK *-1 Nom BARRIER NPNH LINK 0 N OR Num)(0 N OR Num)(NOT *1 VFIN BARRIER COMMA) ;    
@@ -3015,6 +3024,11 @@ REMOVE (Pl Nom) IF (*-1 Num BARRIER NOT-ADJ)(0 N);
 	
 REMOVE Gen IF (1 (Pron Pers Gen));
     ## De bådijga tjalmedime suv åvddåj.	
+    
+REMOVE Nom IF (*-2 COPULAS BARRIER NOT-ADJ)(-1 Nom OR Ess)(1 N LINK 0 ADVLCASE);    
+    ## , ja liehket koordinerimorgádna julevsáme giellabargguj.
+
+
 
 # N Sg Nom = N Sg Gen = N Pl Nom (cases without CG)
 # -------------------------------------------------
@@ -3039,6 +3053,10 @@ SELECT (Gen) IF (*-1 VFIN)(0C N LINK 0 Com OR Ill)(1C N);
 # Sg Ill = Pl Com =  Pl Gen (if no CG)
 
 SELECT Ill IF (1 ILLV LINK 1 Nom BARRIER NPNH);
+
+# Coordination:
+SELECT Ill IF (1 (@CC-NP))(*2C Ill BARRIER NOT-ADJ);
+    ## Guovtij guovtij sijáv ietjas åvdån rájadij juohkka stádaj ja bájkkáj gåsi iesj ájgoj.
 
 
 # Comitative
@@ -3222,7 +3240,7 @@ SELECT Pl3 IF (*-1 (N Sg Nom) BARRIER (Pron Pers Sg2 Nom) OR  (Pron Pers Sg3 Nom
     OR (N Sg Nom) LINK *-1 CC BARRIER NPNH LINK -1 (N Sg Nom));
     ## Anne ja Berit le jåhtemin.
     
-REMOVE Sg2 IF (*-1 (N Sg Nom) OR (Rel Sg Nom) BARRIER (Pron Pers Sg2 Nom))(NOT 0 Neg);
+REMOVE Sg2 IF (*-1 (N Sg Nom) OR (Rel Sg Nom) BARRIER (Pron Pers Sg2 Nom) OR COMMA)(NOT 0 Neg);
 REMOVE Pl3 IF (NOT *-1 (N Pl Nom))(*-1 (N Sg Nom) LINK NOT *-1 CC BARRIER NPNH LINK -1 (N Sg Nom))(0 ("liehket"));
 
 # PrfPrc
