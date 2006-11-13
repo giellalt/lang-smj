@@ -1449,6 +1449,11 @@ MAP (@ADVL) TARGET Ess IF (0 ESS-ADVL-N);
 MAP (@X) TARGET ALL ;
 
 
+
+
+
+
+
 # ==================== #
 # ==================== #
 # Disambiguation rules #
@@ -1491,18 +1496,33 @@ REMOVE ACR IF (0 Prop) ;
 REMOVE (Prop Pl) IF (0 (Prop Sg));
 	## sijáv Betlehemaj rájaj ja javlaj...	
 
+
+
 # Lexicalised derivations
 # -----------------------
 # SELECT instead of REMOVE if one wants to investigate word structure.
 
 REMOVE (Der/lasj A Attr) IF (0 NOT-DER LINK 0 (A Attr));
-	## bájkálasj
 REMOVE (Der/lasj A Attr) IF (0 NOT-DER LINK 0 (N));
-
 REMOVE N-DER IF (0 LEX-N LINK NOT 0 Ess);
- # Check!!!
-
 REMOVE (V* Actor N Sg Nom) IF (0 NOT-ACTOR);
+
+REMOVE (Actio N Sg Nom) IF (0 (N Sg Nom));
+REMOVE (Actio N Sg Acc) IF (0 (N Sg Acc));
+REMOVE (Actio N Sg Gen) IF (0 (N Sg Gen));
+REMOVE (Actio N Sg Ill) IF (0 (N Sg Ill));
+REMOVE (Actio N Sg Ine) IF (0 (N Sg Ine));
+REMOVE (Actio N Sg Ela) IF (0 (N Sg Ela));
+REMOVE (Actio N Sg Com) IF (0 (N Sg Com));
+REMOVE (Actio N Ess) IF (0 (N Ess));
+REMOVE (Actio N Pl Nom) IF (0 (N Pl Nom));
+REMOVE (Actio N Pl Acc) IF (0 (N Pl Acc));
+REMOVE (Actio N Pl Gen) IF (0 (N Pl Gen));
+REMOVE (Actio N Pl Ill) IF (0 (N Pl Ill));
+REMOVE (Actio N Pl Ine) IF (0 (N Pl Ine));
+REMOVE (Actio N Pl Ela) IF (0 (N Pl Ela));
+REMOVE (Actio N Pl Com) IF (0 (N Pl Com));
+
 
 
 REMOVE N-DER IF (0 N-DER LINK 0 Ess)(0 LEX-N LINK 0 Ess)(NOT 0 Actio);
@@ -1512,7 +1532,7 @@ REMOVE N-DER IF (0 N-DER LINK 0 Ess)(0 LEX-N LINK 0 Ess)(NOT 0 Actio);
 REMOVE A-DER IF (0 LEX-A);
 REMOVE (V-DER Inf) IF (0 (NOT-DER Inf));
 
-
+# End of SELECT/REMOVE switch area
 
 
 
@@ -2709,6 +2729,15 @@ REMOVE (Imprt Pl3) IF (-1 Gen)(0 N);
 SELECT Inf IF (*-1 INFV);#BARRIER
 
 
+# Gerund II
+# ---------
+# Gerund II = Actio N Ess
+
+SELECT GerII IF (*-1 AUX BARRIER SV-BOUNDARY2)(0 (N Ess));
+    ## Viehka dåbelin lij stuorra svijnneällo guohtomin.
+    # Select because it´s the only way to get rid of (Actio Ine) when the word is lexicalized. If it makes trouble, we have to make a rule for PLACE and other possible Ine. 
+
+
 # ==================== #
 # Disambiguating nouns #
 # ==================== #
@@ -2759,7 +2788,7 @@ REMOVE Attr IF (0 (Prop Mal) OR (Prop Fem))(0 Nom)(NOT 1 (N Prop Sur) OR (N Prop
 
 SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 OR Acc LINK NOT 0 ELAV)(0 (N Gen) OR (N Nom))(NOT 1 (N Acc));
 SELECT Acc IF (0 N)(*1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 LINK NOT *1 Acc BARRIER SV-BOUNDARY2);
-SELECT Acc IF (0 (N Gen) OR (N Acc))(*1 V-TRANS-ACT BARRIER SV-BOUNDARY2 LINK 0 Actio LINK 0 Ela OR Ill);
+SELECT Acc IF (0 (N Gen) OR (N Acc))(*1 V-TRANS-ACT BARRIER SV-BOUNDARY2 LINK 0 (Actio Ela));
     ## Ale balá Mariav áhkkán válldemis.
 
 
@@ -3228,6 +3257,15 @@ SELECT (V Pl3) IF (-1 BOS)(1 ("gus" Pcle))(2 (Pron Pers Pl3 Nom));
 
 SELECT (V Pl3) IF (*-2 BOS OR CS BARRIER NPNH)(-1 (N Pl Nom))(0 VFIN);
 	## Dan diehti go profehta le náv tjállam.
+
+
+
+# Cleaning up gerunds
+
+
+
+REMOVE (Actio N Ess) IF (0 (N Ess));
+
 
 
 # ===================== #
