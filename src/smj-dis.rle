@@ -560,7 +560,7 @@ LIST INFV = "boahtet" "buktet" "galggat" "gåhttjot" "liehket" "máhttet" "oadtj
  # TODO: Think of counter examples, i.e. sentences where we have these verbs, but
  # where oktii is not an adverbial.
 
-LIST MOVEMENT-V = "vuolgget";
+LIST MOVEMENT-V = "vádtsát" "vádtset" "vuoddját" "vuodjet" "vuolgget";
  
  
 LIST ACTIVITY-V = "duobbmit" "gástadit" "lasedit" "mihttit" "åhpadit";
@@ -818,7 +818,7 @@ SET VEHICLE = ROOM-VEHICLE | SMALL-VEHICLE ;
 #OBJECT = PARTS | SHOE | FOOD | TEXT
 #ENTITY = TOOLS | OBJECT | VEHICLE
 
-LIST BUILDING = "fáŋŋga#goahte" "gábmá" "goahte" "låvda#goahte" "synagoga" ;
+LIST BUILDING = "fáŋŋga#goahte" "gábmá" "goahte" "låvda#goahte" "oases" "synagoga" ;
 
 LIST ROOM = "ladnja" "oadem#ladnja" ;
 
@@ -2655,7 +2655,17 @@ SELECT (Pers Acc) IF (-1 V-TRANS-ACT-NOT-ACT LINK *-1 BOS OR PUNCT OR CLB)(1 CLB
 # Interrogative and relative pronouns #
 # =================================== #
 
+# Interrogative
+
+SELECT Interr IF (*-1 BOS OR PUNCT BARRIER NOT-PCLE)(0 Rel);
+SELECT Interr IF (-1 GCRD)(0 Rel);
+    ## - Na majt hærrájt sjokoládajn?
+
+
 # Relative
+
+SELECT Rel IF (-1 NOT-PCLE)(0 Interr);
+    ## Ittjij rat gulá majt javlliv.        
 
 SELECT Gen IF (0 Rel)(*1 N BARRIER NOT-ADJ LINK *1 V-SG3);
 
@@ -2665,16 +2675,16 @@ SELECT (Pron Rel Sg Nom) IF (*-1 (N Sg))(NOT *1 V-PL1);
 
 SELECT (Pron Rel Sg Nom) IF (*-1 COMMA OR CLB BARRIER NOT-PUNCT-RIGHT LINK -1 (N Sg))(NOT *1 V-PL1);
 
-
-REMOVE Interr IF (NOT -1 BOS OR PUNCT)(0 Rel);
-REMOVE Interr IF (NOT -2 BOS)(-1 CC OR COMMA)(0 Rel);
-REMOVE Interr IF (NOT -3 BOS)(-2 COMMA)(-1 CC)(0 Rel);
-
-
-# Interrogative
-
-REMOVE Rel IF (*-1 BOS OR (":") OR PUNCT BARRIER N OR Pron OR Num OR A);
+#REMOVE Rel IF (*-1 BOS OR (":") OR PUNCT BARRIER N OR Pron OR Num OR A);
     ## ”Manen duv åhpadisålmmå e fásstuda?”
+
+
+#REMOVE Interr IF (NOT -1 BOS OR PUNCT)(0 Rel);
+#REMOVE Interr IF (NOT -2 BOS)(-1 CC OR COMMA)(0 Rel);
+#REMOVE Interr IF (NOT -3 BOS)(-2 COMMA)(-1 CC)(0 Rel);
+
+
+
 
 
 # ====================== #
@@ -2740,6 +2750,12 @@ SELECT (Pron Indef Gen) IF (0 ("nubbe")) (1 ("bieles"));
 
     #  V TV Ind ConNeg=V TV Imprt ConNeg=V TV VGen=V TV Imprt Sg2
     # = V TV Ind Prs Sg2
+    
+SELECT (Imprt Sg2) IF (*-1 BOS BARRIER WORD)(1 ("sjávot")); 
+    ## Åro sjávot desik lav tjielggim.
+
+SELECT (Imprt Sg2) IF (*1 Prop BARRIER WORD LINK 0 Mal OR Fem LINK 1 COMMA);
+    ## - Gulá Tore, tjielggij.
 
 REMOVE (Imprt ConNeg) IF (*-1 Neg LINK NOT 0 Imprt);
 	## ... beassat juska ij nav vuojga duodjuhit máhte, ...
@@ -2898,8 +2914,9 @@ SELECT Acc IF (0 (N Gen) OR (N Acc))(*1 V-TRANS-ACT BARRIER SV-BOUNDARY2 LINK 0 
 # Nominative
 # ==========
 
-REMOVE Gen IF (-1 (Pron Pers Nom))(0 (Prop Nom) LINK 0 Mal OR Fem);
+REMOVE Gen IF (-1 (Pron Pers Nom) OR Imprt)(0 (Prop Nom) LINK 0 Mal OR Fem)(1 CLB);
     ## Man huohppelasj la dån Tore, javlaj Ámmá munji. 
+    ## - Gulá Tore, tjielggij.
 
 REMOVE Gen IF (-1 BOS OR PUNCT OR CLB)(1 COMMA);
     ## Härrá, suova muv vuolgget vuostak áhtjám hávddádittjat.
@@ -3022,7 +3039,7 @@ SELECT Nom IF (NOT *-1 Pr OR V)(0 Gen)(NOT *1 Po OR V);
 SELECT Gen IF (NOT -1 COPULAS LINK 0 Pl)(-1 ("soames"))(0 TIME)(NOT 1 COPULAS  LINK 0 Pl);
     ## .., javlaj Ámmá munji soames biejve.
 
-SELECT Gen IF (-1 V-TRANS-ACT-NOT-ACT)(0 (N Sg))(NOT 0 VFIN)(*1 N BARRIER NOT-ADJ LINK 1 EOS OR CLB OR ("de") OR (@CC-VP));
+SELECT Gen IF (-1 V-TRANS-ACT-NOT-ACT)(0 (N Sg))(NOT 0 VFIN)(*1 N BARRIER NOT-ADJ OR COMMA LINK 1 EOS OR CLB OR ("de") OR (@CC-VP));
     ## Mån basáv gusá muorra.
     ## Gullam gånågisá bágojt, vuolggin.
 
@@ -3108,18 +3125,13 @@ SELECT (Sg Com) IF (0 (Pl Ine) LINK 0 ANIMATE OR CONCEPT OR TOOLS OR ABSTR-TOOLS
 	# Movement-verbs - taken from sme.
 	# - - - - - - -
 # Actio-event is not included yet.
-SELECT Com IF (*-1 ANIMATE OR PPRON-NOM-NOT-DAT BARRIER S-BOUNDARY2 LINK *1 ("boahtet") LINK 0 FMAINV LINK 0 FMAINV)(0 Ine LINK NOT 0 PLACE OR ABSTR-PLACE);
-SELECT Com IF (0 Ine LINK NOT 0 PLACE OR ABSTR-PLACE)(*1 ANIMATE OR PPRON-NOM-NOT-DAT BARRIER NPNH LINK *1 ("boahtet") BARRIER SV-BOUNDARY2 LINK 0 FMAINV);
-SELECT Com IF (*-1 MOVEMENT-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV LINK NOT 0 ("boahtet"))(0 Ine LINK NOT 0 PLACE OR ABSTR-PLACE);
-SELECT Com IF (0 Ine LINK NOT 0 PLACE OR ABSTR-PLACE)(*1 MOVEMENT-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV LINK NOT 0 ("boahtet"));
-REMOVE Com IF (*-1 ANIMATE OR PPRON-NOM-NOT-DAT BARRIER S-BOUNDARY2 LINK *1 MOVEMENT-V LINK 0 FMAINV)(0 Ine LINK 0 PLACE OR ABSTR-PLACE);
-REMOVE Com IF (0 Ine LINK 0 PLACE OR ABSTR-PLACE)(*1 ANIMATE OR PPRON-NOM-NOT-DAT BARRIER NPNH LINK *1 MOVEMENT-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV LINK *1 VEHICLE OR ANIMATE BARRIER S-BOUNDARY2);  	
-  	## Oahppit bohte dábálaččat vuođđoealáhusain.
-    ## Máhtte vujii biillain.
- 	## Suovva bođii biillain.
-    ## Son bođii biillain. 
-    ## Evttohus bođii politihkkariin.
-    ## Son bođii politihkkariin.
+
+REMOVE Com IF (*1 MOVEMENT-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 Ine OR Ill LINK 0 PLACE OR ABSTR-PLACE);
+REMOVE Com IF (0 Ine OR Ill LINK 0 PLACE OR ABSTR-PLACE)(*-1 MOVEMENT-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV);
+    ## Maŋep biejve de oassásij vádtsájiv.
+
+SELECT Com IF (0 VEHICLE OR ANIMATE OR (Pron Pers))(*1 MOVEMENT-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV); 
+SELECT Com IF (*-1 MOVEMENT-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 VEHICLE OR ANIMATE OR (Pron Pers) BARRIER S-BOUNDARY2);  	
     ## De gåhtjoj åhpadisålmmåjt sujna jávre nuppe bälláj vuolgget.
     ## Sån ájggu vuolgget sujna jávre nuppe bälláj.
     ## Sån vuolggá sujna jávre nuppe bälláj.
@@ -3401,6 +3413,11 @@ SELECT (V Pl3) IF (*-2 BOS OR CS BARRIER NPNH)(-1 (N Pl Nom))(0 VFIN);
 
 # Rules for a special infinitive construction
 # ===========================================
+SELECT Inf IF (*-1 Acc BARRIER NOT-PCLE LINK -1 ("makkár") LINK -1 FMAINV); 
+SELECT Inf IF (*-1 ("makkár" Acc) BARRIER NOT-PCLE LINK -1 FMAINV); 
+    ## Usjudallagåhtiv makkár sjokoládav dal oasstet.
+    ## Valla ittjiv ájn rat diede makkárav oasstet.
+
 
 # Without finite verb:
 SELECT Inf IF (*-1 BOS LINK NOT *1 VFIN);
@@ -3461,7 +3478,7 @@ REMOVE (@SPRED) IF (0 (Pron Du2 Nom @SUBJ))(*-1 (V Du2));
 REMOVE (@SPRED) IF (0 (Pron Pl1 Nom @SUBJ))(*1 (V Pl1));
 REMOVE (@SPRED) IF (0 (Pron Pl1 Nom @SUBJ))(*-1 (V Pl1));
 
-REMOVE (@SPRED) IF (0 (Pron Pl2 Nom @SUBJ))(*1 (V Pl2));
+REMOVE (@qSPRED) IF (0 (Pron Pl2 Nom @SUBJ))(*1 (V Pl2));
 REMOVE (@SPRED) IF (0 (Pron Pl2 Nom @SUBJ))(*-1 (V Pl2));
 
 REMOVE (@SPRED) IF (NOT *-1 (@SUBJ) BARRIER S-BOUNDARY)(0 (@SUBJ))(NOT *1 (*SUBJ) BARRIER S-BOUNDARY);
@@ -3477,6 +3494,8 @@ SELECT (@SPRED) IF (*-1 BOS OR CLB OR PUNCT BARRIER NOT-CC)(0 ("sáluk"))(1 (N N
 
 # Late rules
 
-SELECT VFIN IF (NOT *-1 VFIN BARRIER CLB)(NOT *1 VFIN BARRIER CLB);
+SELECT VFIN IF (NOT *-1 VFIN BARRIER CLB)(NOT *1 VFIN BARRIER CLB OR GCRD);
+    ## - Vuorde dal ájn.
+    ## Åro sjávot desik lav tjielggim.
 
 
