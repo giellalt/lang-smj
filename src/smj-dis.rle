@@ -2443,15 +2443,22 @@ SELECT Gen IF (1 (@CC-NP))(*2 Gen BARRIER NOT-AA LINK 1C Po);
 
 
 # Adverbs
+SELECT Adv IF (NOT 0 ("akta" Ess))(0 Ess)(NOT 0 ("mij" Foc));
+    ## Árvvediv ilá tjoaskes lij ålggon vádtset.
+
+
+# aktan
+SELECT Adv IF (NOT -1 VERB)(0 ("aktan"))(NOT 1 (N Ess));
+    ## Valla åvddål gå aktan lijga viessogoahtám.
+SELECT Ess IF (0 ("aktan"))(1 (N Ess));
+
+
 SELECT Adv IF (0 ("åvddål"))(1 CS) ;
 	## åvddål gå lij bárnes.
 	
 SELECT Adv IF (0 ADV-NOT-NOUN)(1 COPULAS);	
 SELECT Adv IF (*-1 COPULAS BARRIER NOT-ADV-PCLE)(1 A);	
     ## Valla duodaj li bårre stálpe.	
-
-# rádjáj
-#SELECT Po #Awaiting a Po / Po Ill verdict.
 
 # rájes
 
@@ -2463,8 +2470,13 @@ SELECT Adv IF (-1 BOS OR PUNCT OR CLB)(0 ("sáddnán"))(1 COMMA OR Nom);
     ## Sáddnán, lágas ij bokstávva, ...
     ## Sáddnán sån ij bálkás masse.
 
-# Proper nouns
+# ållu
+SELECT Adv IF (0 ("ållu"))(1 (A Superl)) ;
+    ## Iv la gåjt mån ållu værámus.
 
+
+# Proper nouns
+# - - - - - - 
 # Johannes
 SELECT ("Johannes") IF (1 ("gástadiddje"));
 	## Johannes gástadiddje
@@ -2486,7 +2498,8 @@ SELECT Ela IF (-1 Gen)(0 ("miella" N Sg Ela));
 SELECT Ela IF (0 ("jahke" N Sg Ela))(1 ("jahke" N Sg Ill));
 	## Jages jahkáj.
 
-# Verbs
+# 
+s
 
 # bådij
 # "båhte" N Pl Com  = "boahtet" V TV Ind Prt Sg3 = "båhte" N Pl Gen
@@ -2591,9 +2604,9 @@ SELECT Adv IF (-1 V OR (@CC-VP) OR BOS)(0 ("aktan"))(1 Com);
 # Personal pronouns
 
 # Sg2
-
-SELECT (Pron Pers Sg2 Nom) IF (-2 (V Sg2))(-1 ("gus" Pcle));
+SELECT (Pron Pers Sg2 Nom) IF (*-1 (V Sg2) BARRIER NOT-ADV-PCLE);
 	## Le gus dån oahpes dán bájkkáj? 
+	## Man huohppelasj la dån Tore, javlaj Ámmá munji. 
 
 SELECT (Sg2) IF (0 (Pron Pers))(*1 (V Sg2) BARRIER N);
 	## Ja dån dal muv luse boadá.
@@ -2611,7 +2624,7 @@ SELECT (Pron Interr) IF (0 (Pl1 Nom) LINK -1 S-BOUNDARY OR BOS)(1 (N Pl Acc));
 SELECT Gen IF (*-1 BOS OR CLB BARRIER NOT-ADV)(0 (Pron Pers))(*1 N BARRIER NOT-ADJ);
     ## Muv niejdda le jur jábmám.
     
-SELECT Gen IF (NOT *-1 TV BARRIER S-BOUNDARY)(0 (Pron Pers))(1 Po OR N)(NOT 1 Ess);
+SELECT Gen IF (NOT *-1 TV BARRIER S-BOUNDARY)(0 (Pron Pers))(1 Po OR N LINK NOT 0 Prop)(NOT 1 Ess);
 SELECT Gen IF (NOT *-1 TV BARRIER S-BOUNDARY)(0 (Pron Pers))(1 A LINK *1 N BARRIER NPNH);
     ## Go sijddasis jåvsådij, di bådijga tjalmedime suv åvddåj.     
 
@@ -2653,7 +2666,7 @@ SELECT (Pron Rel Sg Nom) IF (*-1 (N Sg))(NOT *1 V-PL1);
 SELECT (Pron Rel Sg Nom) IF (*-1 COMMA OR CLB BARRIER NOT-PUNCT-RIGHT LINK -1 (N Sg))(NOT *1 V-PL1);
 
 
-REMOVE Interr IF (NOT -1 BOS OR (PUNCT RIGHT) OR (PUNCT LEFT))(0 Rel);
+REMOVE Interr IF (NOT -1 BOS OR PUNCT)(0 Rel);
 REMOVE Interr IF (NOT -2 BOS)(-1 CC OR COMMA)(0 Rel);
 REMOVE Interr IF (NOT -3 BOS)(-2 COMMA)(-1 CC)(0 Rel);
 
@@ -2885,6 +2898,9 @@ SELECT Acc IF (0 (N Gen) OR (N Acc))(*1 V-TRANS-ACT BARRIER SV-BOUNDARY2 LINK 0 
 # Nominative
 # ==========
 
+REMOVE Gen IF (-1 (Pron Pers Nom))(0 (Prop Nom) LINK 0 Mal OR Fem);
+    ## Man huohppelasj la dån Tore, javlaj Ámmá munji. 
+
 REMOVE Gen IF (-1 BOS OR PUNCT OR CLB)(1 COMMA);
     ## Härrá, suova muv vuolgget vuostak áhtjám hávddádittjat.
 
@@ -3003,11 +3019,14 @@ SELECT Nom IF (NOT *-1 Pr OR V)(0 Gen)(NOT *1 Po OR V);
 # N Sg Gen = N Pl Nom
 # -------------------
 
+SELECT Gen IF (NOT -1 COPULAS LINK 0 Pl)(-1 ("soames"))(0 TIME)(NOT 1 COPULAS  LINK 0 Pl);
+    ## .., javlaj Ámmá munji soames biejve.
+
 SELECT Gen IF (-1 V-TRANS-ACT-NOT-ACT)(0 (N Sg))(NOT 0 VFIN)(*1 N BARRIER NOT-ADJ LINK 1 EOS OR CLB OR ("de") OR (@CC-VP));
     ## Mån basáv gusá muorra.
     ## Gullam gånågisá bágojt, vuolggin.
 
-SELECT (Sg Gen) IF (*-1 (Dem Sg Gen) BARRIER NOT-ADJ)(NOT 0 VFIN)(0 N);
+SELECT (Sg Gen) IF (*-1C (Dem Sg Gen) BARRIER NOT-ADJ)(NOT 0 VFIN)(0 N);
     ## Dat lij dan ájgge gå álmmugav vuolgadin Babylonaj.
     
 SELECT (Sg Gen) IF (0 Prop)(1 (N Nom) LINK NOT 0 Prop);
@@ -3017,7 +3036,7 @@ REMOVE Nom IF (NOT 0 TITLE)(0 N)(1C Nom);
     ## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj:
         
 SELECT (Sg Gen) IF (-1C Gen)(0C N)(1 N);
-SELECT (Sg Gen) IF (-1 Gen)(0C N)(1 COMMA)(*2 N BARRIER NOT-ADJ);
+SELECT (Sg Gen) IF (-1C Gen)(0C N)(1 COMMA)(*2 N BARRIER NOT-ADJ);
     ## Davida bárne, Abrahama bárne máddo.
 
 REMOVE (Pl Nom) IF (*-1 Num BARRIER NOT-ADJ)(0 N);
@@ -3033,6 +3052,8 @@ REMOVE Nom IF (*-2 COPULAS BARRIER NOT-ADJ)(-1 Nom OR Ess)(1 N LINK 0 ADVLCASE);
 
 # N Sg Nom = N Sg Gen = N Pl Nom (cases without CG)
 # -------------------------------------------------
+
+
 
 # N Pl Gen = N Pl Com
 # -------------------
@@ -3233,6 +3254,11 @@ SELECT Sg3 IF (*-1 (Pron Pers Sg3) BARRIER N);
 SELECT Pl3 IF (*-1 (Pron Pers Pl3) BARRIER N);
     ## Sij le jåhtemin.
 
+SELECT Sg2 IF (*1 (Pron Pers Sg2) BARRIER N);
+SELECT Sg3 IF (*1 (Pron Pers Sg3) BARRIER N);
+SELECT Pl3 IF (*1 (Pron Pers Pl3) BARRIER N);
+    ## -Man huohppelasj la dån Tore, javlaj Ámmá munji. 
+    
 SELECT Pl3 IF (*-1C (N Pl Nom) BARRIER (Pron Pers Sg2 Nom) OR  (Pron Pers Sg3 Nom)
     OR (N Sg Nom));
 
@@ -3372,6 +3398,25 @@ SELECT (V Pl3) IF (-1 BOS)(1 ("gus" Pcle))(2 (Pron Pers Pl3 Nom));
 
 SELECT (V Pl3) IF (*-2 BOS OR CS BARRIER NPNH)(-1 (N Pl Nom))(0 VFIN);
 	## Dan diehti go profehta le náv tjállam.
+
+# Rules for a special infinitive construction
+# ===========================================
+
+# Without finite verb:
+SELECT Inf IF (*-1 BOS LINK NOT *1 VFIN);
+    ## Man diehti de sjokoládav oasstet?
+
+
+# More finite verbs
+# =================
+# Passive
+# =======
+# Non-finite verb forms
+# =====================
+
+# Infinitive
+# ----------
+
 
 
 
