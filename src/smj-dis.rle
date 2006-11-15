@@ -2459,6 +2459,11 @@ SELECT Adv IF (0 ("åvddål"))(1 CS) ;
 SELECT Adv IF (0 ADV-NOT-NOUN)(1 COPULAS);	
 SELECT Adv IF (*-1 COPULAS BARRIER NOT-ADV-PCLE)(1 A);	
     ## Valla duodaj li bårre stálpe.	
+    
+# desik - dasik
+SELECT CS IF (0 ("desik") OR ("dasik"))(*1 VFIN BARRIER S-BOUNDARY2);
+    ## Åro sjávot desik lav tjielggim.    
+    ## Ja de rájddiv dasik dudálattjan iehtjam dåbddiv.
 
 # rájes
 
@@ -2721,6 +2726,10 @@ SELECT (Pron Indef Gen) IF (0 ("nubbe")) (1 ("bieles"));
     ## De gåhtjoj åhpadisålmmåjt sujna jávre nuppe bälláj vuolgget.
     # More indef-pronouns should be added to this.
 
+SELECT (Pron Attr) IF (0C Pron)(*1C N BARRIER NOT-ADJ-PCLE OR ("gå"));
+    	## Dan muitalii muhtin mátkkošteaddji gean namma lei Keilhau.
+    	## Njuolggadusain ledje eará ge mearrádusat.
+    	## Usjudallagåhtiv makkár sjokoládav dal oasstet.
 
 
 # =========== #
@@ -2976,7 +2985,7 @@ SELECT Nom IF (0 N)(1 (@CC-NP))(2 TITLE)(3 Nom)(NOT 4 N);
 SELECT Nom IF (0 (@TITLE))(1C Nom);
 SELECT Sg IF (0 (@TITLE))(1 Prop LINK 0 Mal OR Fem OR Sur)(NOT 2 CC LINK 1 Prop LINK 0 Mal OR Fem OR Sur);
 
-REMOVE Gen IF (NOT 0 TIME OR ROUTE)(NOT 1 N OR A OR Gen OR (Pron Indef) OR Num OR Po OR CC OR COMMA) ;
+REMOVE Gen IF (NOT 0 TIME OR ROUTE)(0 N)(NOT 1 N OR A OR Gen OR (Pron Indef) OR Num OR Po OR CC OR COMMA) ;
     ## Nåv li divna buolva.
     
 REMOVE (N Sg Gen) IF (0 (N Pl Nom) LINK NOT 0 TIME OR ROUTE LINK *-1 COPULAS BARRIER Nom OR S-BOUNDARY OR VERB)(1 CC OR COMMA LINK NOT 1 Gen) ;
@@ -3121,8 +3130,13 @@ SELECT (Sg Com) IF (0 (Pl Ine) LINK 0 TOOLS OR ABSTR-TOOLS OR WRITING-TOOLS OR C
 SELECT (Sg Com) IF (*-1 PLACE-V BARRIER SV-BOUNDARY2)(0 (Pl Ine) LINK 0 ANIMATE OR CONCEPT OR TOOLS OR ABSTR-TOOLS OR (Pron Pers));
 SELECT (Sg Com) IF (0 (Pl Ine) LINK 0 ANIMATE OR CONCEPT OR TOOLS OR ABSTR-TOOLS OR (Pron Pers))(*1 PLACE-V BARRIER SV-BOUNDARY2);    
     ## Ja guhti sirramnissunijn válldu, doadjá nissuna gállasjvuodav.
+    
+SELECT Com IF (-2 ("mij" Acc))(-1 Pers OR N OR VFIN OR Pcle)(1 ("?"));
+SELECT Com IF (-1 ("mij" Acc))(1 ("?")); 
+    ## - Na majt hærrájt sjokoládajn? 
+    ## Na majt sjokoládajn?   
 
-	# Movement-verbs - taken from sme.
+	# Movement-verbs 
 	# - - - - - - -
 # Actio-event is not included yet.
 
@@ -3410,6 +3424,9 @@ SELECT (V Pl3) IF (-1 BOS)(1 ("gus" Pcle))(2 (Pron Pers Pl3 Nom));
 
 SELECT (V Pl3) IF (*-2 BOS OR CS BARRIER NPNH)(-1 (N Pl Nom))(0 VFIN);
 	## Dan diehti go profehta le náv tjállam.
+
+SELECT (V Pl3) IF (*-1 (Rel Pl Nom) BARRIER VFIN OR S-BOUNDARY2)(0 VFIN);
+    ## Hárjjánam lij báhtjajda gudi biebbmosjokoládav ádnu.	
 
 # Rules for a special infinitive construction
 # ===========================================
