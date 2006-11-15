@@ -3509,7 +3509,9 @@ REMOVE (@SPRED) IF (0 (Pron Pl2 Nom @SUBJ))(*-1 (V Pl2));
 
 REMOVE (@SPRED) IF (NOT *-1 (@SUBJ) BARRIER S-BOUNDARY)(0 (@SUBJ))(NOT *1 (*SUBJ) BARRIER S-BOUNDARY);
 
-#SELECT (@SPRED) IF (*-1 COPULA
+SELECT (@SPRED) IF (*-1 COPULAS BARRIER VERB LINK 0 Sg3 LINK NOT *-1 Ine BARRIER NOT-ADV-PCLE)(0 A)(NOT 0 Attr LINK 1 N)(NOT 0 Gen OR Px)(NOT *1 PrfPrc BARRIER NOT-ADV-PCLE);
+    ## Josef, suv ålmåj, guhti lij rievtesmielak, ittjij sidá suv hehpaduhttet ja ájgoj sjsta suolev sirádit.
+    
 #REMOVE (@SPRED) IF (*-1 ("liehket") BARRIER NOT-ADV-PCLE OR ("degu"))(*1 PrfPrc BARRIER NOT-ADV-PCLE LINK NOT 0 Pass);
 	##     
 SELECT (@SPRED) IF (*-1 BOS OR CLB OR PUNCT BARRIER NOT-CC)(0 A)(1 (Pers Nom) OR (Rel Nom));
@@ -3524,4 +3526,5 @@ SELECT VFIN IF (NOT *-1 VFIN BARRIER CLB)(NOT *1 VFIN BARRIER CLB OR GCRD);
     ## - Vuorde dal ájn.
     ## Åro sjávot desik lav tjielggim.
 
+#REMOVE (@SPRED) IF (NOT 0 Gen OR Px);
 
