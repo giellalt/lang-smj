@@ -2653,7 +2653,10 @@ REMOVE (Pers Acc) IF (*1C (N Acc) BARRIER S-BOUNDARY2 OR Po OR Actio OR ("degu")
 
 SELECT (Pers Acc) IF (-1 V-TRANS-ACT-NOT-ACT LINK *-1 BOS OR PUNCT OR CLB)(1 CLB);
     ## ”Tjuovvolav duv, Härrá, ...
-  
+
+SELECT Acc IF (0 Pers OR Refl)(*1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2);
+    ## Ja de rájddiv dasik dudálattjan iehtjam dåbddiv.  
+
     
 
 # =================================== #
@@ -2663,9 +2666,12 @@ SELECT (Pers Acc) IF (-1 V-TRANS-ACT-NOT-ACT LINK *-1 BOS OR PUNCT OR CLB)(1 CLB
 # Interrogative
 
 SELECT Interr IF (*-1 BOS OR PUNCT BARRIER NOT-PCLE)(0 Rel);
-SELECT Interr IF (-1 GCRD)(0 Rel);
+SELECT Interr IF (-1 CC)(0 Rel);
     ## - Na majt hærrájt sjokoládajn?
 
+#SELECT Interr IF (-1 VFIN)(0 Rel)(NOT 0 Pers);
+    ## Valla usjudalliv manen oastestiddje lij nav imálasj láhkáj munji gæhttjam gå sjokoládav ádnuv. 
+    # Working with it, preventing it from hitting Rel. Perhaps we have to make a verbset for -1.
 
 # Relative
 
@@ -2685,8 +2691,7 @@ SELECT (Pron Rel Sg Nom) IF (*-1 COMMA OR CLB BARRIER NOT-PUNCT-RIGHT LINK -1 (N
 
 
 #REMOVE Interr IF (NOT -1 BOS OR PUNCT)(0 Rel);
-#REMOVE Interr IF (NOT -2 BOS)(-1 CC OR COMMA)(0 Rel);
-#REMOVE Interr IF (NOT -3 BOS)(-2 COMMA)(-1 CC)(0 Rel);
+
 
 
 
