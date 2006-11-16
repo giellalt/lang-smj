@@ -696,7 +696,7 @@ SET N-NOT-ACTIO = N - Actio ;
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # inessive vs. comitative:
-LIST SG-WORD = "mieda" "miella" "miehttse#mieda";
+LIST SG-WORD = "mieda" "miella" "miehttse#mieda" "vijsesvuohta";
 
 # inessive vs. essive:
 LIST INE-NOUN = "ednam";
@@ -3136,14 +3136,18 @@ SELECT (Sg Com) IF (0 (Pl Ine) LINK 0 TOOLS OR ABSTR-TOOLS OR WRITING-TOOLS OR C
     ## Ájlis Vuojŋŋanisájn ja dålåjn sån dijáv gástat. 
     ## Guhtis dijás mårråhijnes ga máhttá stihko guhkev viessomájggásis lasedit?
     
-SELECT (Sg Com) IF (*-1 PLACE-V BARRIER SV-BOUNDARY2)(0 (Pl Ine) LINK 0 ANIMATE OR CONCEPT OR TOOLS OR ABSTR-TOOLS OR (Pron Pers));
+SELECT (Sg Com) IF (*-1 PLACE-V BARRIER SV-BOUNDARY2)(0 (Pl Ine) OR Ill LINK 0 ANIMATE OR CONCEPT OR TOOLS OR ABSTR-TOOLS OR (Pron Pers));
 SELECT (Sg Com) IF (0 (Pl Ine) LINK 0 ANIMATE OR CONCEPT OR TOOLS OR ABSTR-TOOLS OR (Pron Pers))(*1 PLACE-V BARRIER SV-BOUNDARY2);    
-    ## Ja guhti sirramnissunijn válldu, doadjá nissuna gállasjvuodav.
     
 SELECT Com IF (-2 ("mij" Acc))(-1 Pers OR N OR VFIN OR Pcle)(1 ("?"));
 SELECT Com IF (-1 ("mij" Acc))(1 ("?")); 
     ## - Na majt hærrájt sjokoládajn? 
     ## Na majt sjokoládajn?   
+        
+SELECT (Sg Com) IF (*1C Sg BARRIER WORD LINK 0 Interr OR Rel);
+    ## Mån jugáv ja gástadusáijn, majna gástaduváv, dåj aj gástaduvvabihtte.
+    ## Dåppe gávnadij álmmåjn
+
 
 	# Movement-verbs 
 	# - - - - - - -
@@ -3159,11 +3163,170 @@ SELECT Com IF (*-1 MOVEMENT-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 VEHICLE OR A
     ## Sån ájggu vuolgget sujna jávre nuppe bälláj.
     ## Sån vuolggá sujna jávre nuppe bälláj.
 
+# ------------ Rules from sme -------- Start ----------- 
+# These rules have to be adjusted to smj - be aware of Ill homon.:
+
+
+    # ANIMATE + Noun
+    # - - - - - - - - - - - - - -
+#SELECT (Sg Com) IF (*-1 ANIMATE BARRIER NOT-ADJ LINK 0 Nom OR Gen)(0 (Pl Loc) LINK NOT 0 ABSTR-TEXT OR TEXT OR PLACE OR INDUSTRY OR EDUCATION OR INSTITUTION)(1 CLB OR EOS);   
+    ## Sii vástidedje: Johanasa gásttain.  
+    # Does it really need (1 CLB OR EOS)?
+ 
+ 	# Disambiguation based upon verb valency
+	# --------------------------------------
+#SELECT Com IF (*-1 COMV BARRIER SV-BOUNDARY2 LINK 0 VERB)(NOT 0 PLACE OR SITUATION);
+	## Dieđut galget meannuduvvot várrugasvuođain.
+	## Nissonat barget gávppiin.
+	
+#SELECT Com IF (*-1 COMV BARRIER SV-BOUNDARY2 LINK 0 VERB)(0 POLITICAL-PLACE OR EDUCATION OR INSTITUTION OR INDUSTRY OR ORGANIZATION);
+    ## Sii áigot šiehtadit ođđasit skuvllain. 
+
+#SELECT Com IF (0 Sg)(*1 COMV BARRIER SV-BOUNDARY2 LINK 0 VERB) (NOT *1 COPULAS BARRIER VERB LINK *1 COMV BARRIER NOT-ADV-PCLE LINK 0 Inf);
+  	## ...go sápmelaččat duođas álge eanadoaluin bargat.
+
+
+#REMOVE (Pl Loc) IF (*-2 TOGETHER-V OR COMV)(*-1 ("oktii"))(0 N BARRIER Loc);
+  	## Mii heive bures oktii ránes datneláiggiin.
+  # we have to think about a barrier, another Loc to the right for example
+  
+#REMOVE Loc IF (*1 TOGETHER-V)(*2 ("oktii") BARRIER S-BOUNDARY2)(NOT *3 Com BARRIER S-BOUNDARY2);
+  	## Dáinna háliidan čatnat oktii digáštallamiid fidnopedagogihka ja
+  	## álgoálbmotoahpu birra, mat dán rádjái leat leamašan birrasiin man 
+  	## gaskkas lea leamaš unnán oktavuoht 	
+
+	# tools (concrete and abstract)
+	# - - - - - - - - - - - - - - -
+#REMOVE (Pl Loc) IF (*-1 ACTIVITY-V OR MOVEMENT-V OR PLACE-V BARRIER SV-BOUNDARY)(0 (Sg Com) LINK 0 TOOLS);
+  	## Dan moai ráidniime skárbbaniin.
+  
+#REMOVE Loc IF (0 TOOLS)(*1 ACTIVITY-V OR MOVEMENT-V OR PLACE-V BARRIER NOT-ADV);
+  	## Ja ovdal go háhppehin basttiin goivestit eret de Ánddar guvssiin bođii, vierrulii áicemaehtton: šattai ollái ipnun.
+  
+#REMOVE Loc IF (0 TOOLS LINK 1 CC LINK *1 Loc BARRIER NPNHA)(*1 ACTIVITY-V OR MOVEMENT-V);
+  	## Mon in leat dugo Sivvar - mii láve bissuin ja beatnagiin mannat dugo livččii dáčča.
+  
+#REMOVE (Pl Loc) IF (*-1 (@SUBJ) BARRIER S-BOUNDARY2 LINK 0 HUMAN)(0 ABSTR-TOOLS)(*1 ABSTR-ACTIVITY-V);
+	## Geahččoeiseválddit galget bearráigeahčuin váikkuhit dasa ahte dearvvašvuođa- ja sosiálabálvalusain váldet vuhtii geavaheaddjiid vuoigatvuođa oažžut áddehahtti informašuvnna ja vuoigatvuođa informerejuvvon miehtamii, ja fágalaččat dohkálaš doaimmaid giellagáibádusaid.
+
+	# BODY as an instrument
+	# - - - - - - - - - - -
+
+#SELECT (Sg Com) IF (*-1 VERBAL-ACTIVITY-V BARRIER VFIN OR LOC-HEAD)(0 (Pl Loc) LINK 0 BODY);
+  	## Lávdde luhtte juiget olbmot olles čoddagiin.
+  # Idea: Body as an instrument to perform verbal activity.
+  
+#SELECT (Sg Com) IF (*-1 VERBAL-ACTIVITY-V BARRIER VFIN OR LOC-HEAD)(0 (Pl Loc) LINK 0 HUMAN);
+  	## Terje hárve hupmá mediain, muhto son áinnas hupmá sápmelašvuođas birra.
+  
+	# Disambiguation based upon idiosyncratic V NP combinations has been removed to the locative-chapter
+	#   	 
+  
+ # Body-activity-verb
+# - - - - - - - - - -
+#SELECT (Sg Com) IF (*-1 BODY-ACTIVITY-V OR VERBAL-ACTIVITY-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 (Pl Loc) LINK 0 BODY);
+#SELECT (Sg Com) IF (0 (Pl Loc) LINK 0 BODY)(*1 BODY-ACTIVITY-V OR VERBAL-ACTIVITY-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV);
+    ## Muhto ieža eai hálit daid lihkastahttit suorbmagežiin ge.
+    # They belong to the dynamic-verbs, but they can also have BODY as a tool.   	 
+  	 
+
+	# Disambiguation based upon verb valency
+	# --------------------------------------
+
+#SELECT Loc IF (*-1 LOCV BARRIER SV-BOUNDARY2 OR COM-HEAD LINK NOT 0 Adv) (NOT *-1 CC BARRIER S-BOUNDARY2 LINK -1 LOCV) (NOT 0 Num OR Pron LINK *1C (N Com) BARRIER NPNH)(0 Com);
+	## Juohke dáhpáhusas ferte áibbas boastut leat beroškeahttá sámiid riekteáddejumiin.
+
+#SELECT Loc IF (NOT 0 ("dat") OR Actio)(NOT *1C Com BARRIER NPNH) (NOT 0 (N Num Nom) LINK 1 (Sg Com))(NOT 0 (Sg Com) LINK -1 (N Num Nom)) (*1 LOCV BARRIER SV-BOUNDARY2);
+	## Maiddái sámi fágabirrasiin ja ásahusain sáhttá jearrat ráđiid.
+
+#SELECT Loc IF (*-1 ACC-LOCV BARRIER NOT-NP);
+	## Sáhttá viežžat dieđuid divššohasa oapmahaččain. 
+	# Removed "viežžat" from ACC-LOCV, because it can take Com: "Mun vižžen su biillain."
+	
+# Verbal-activity-verbs
+# - - - - - - - - - - -  
+
+#SELECT (Sg Com) IF (*-1 VERBAL-ACTIVITY-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 (Pl Loc) LINK 0 ("sátni") OR ("namma"));   
+    ## Son ii daja njuolga rievttes namain. 
+    
+#SELECT (Pl Loc) IF (*-1 VERBAL-ACTIVITY-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 Com LINK 0 EVENT OR EVENT-TOOL-ACTIO);
+  	## Dan geažil lea dehálaš ávžžuhit bargiid sámástit ráđđádallamiin.
+  
+#SELECT (Pl Loc) IF (NOT *-1 COM-HEAD BARRIER NPNH)(0 TEXT OR ABSTR-TEXT)(*1 VERBAL-ACTIVITY-V LINK 0 Pass BARRIER NPNH);
+  	## Dálá sámiid máidnasiin ja muitalusain muitaluvvo dološ oskui gullan hálddiid birra .
+
+#SELECT (Pl Loc) IF (NOT *-1 COM-HEAD BARRIER NPNH)(*-1 VERBAL-ACTIVITY-V LINK 0 Pass BARRIER NPNH)(0 TEXT OR ABSTR-TEXT);
+  	## Sii máinnašuvvojedje vearrologahallamiin earáid maŋŋá .  
+	
+# Dynamic-verb but not HUMAN-SOURCE-V
+# - - - - - - - - - - - - - - - - - - - 
+#SELECT (Sg Com) IF (*-1 DYNAMIC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV LINK NOT 0 HUMAN-SOURCE-V)(0 (Pl Loc) LINK 0 HUMAN);
+#SELECT (Sg Com) IF (0 (Pl Loc) LINK 0 HUMAN)(*1 DYNAMIC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV LINK NOT 0 HUMAN-SOURCE-V);
+    # "Minste felles multiplum" for the from-human-verbs. The same rules come the other way round after the comitative-chapter - after we have picked out the special cases. 
+
+  
+
+# FROM-HUMAN-LOC-VEH-V
+# - - - - - - - - - - -
+#SELECT (Sg Com) IF (*-1 VEHICLE-TOOL-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 (Pl Loc) LINK 0 VEHICLE);
+#SELECT (Sg Com) IF (0 (Pl Loc) LINK 0 VEHICLE)(*1 VEHICLE-TOOL-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV);
+    ## Sii bukte girjjiid biillain.
+
+
+# Abstract-entity-com-verbs
+# - - - - - - - - - - - -
+
+#SELECT (Sg Com) IF (*-1 ABSTR-ENTITY-COM-V BARRIER SV-BOUNDARY2)(0 (Pl Loc) LINK 0 ABSTR-ENTITY OR ACTOR);
+#SELECT (Sg Com) IF (0 (Pl Loc) LINK 0 ABSTR-ENTITY OR ACTOR)(*1 ABSTR-ENTITY-COM-V BARRIER SV-BOUNDARY2);
+    ## Muhto mii diehtit ahte fágagirjjit leat divrasat ja diibmá jagi bušeahtain ii sáhttán investeret.
+    ## Mii leat lihkostuvvan bures prošeavttain.
+
+# Only-place-loc-verb 
+# - - - - - - - - - - 
+#SELECT (Sg Com) IF (0 (Pl Loc) LINK NOT 0 PLACE OR ORGANIZATION OR HUMAN)(*1 ONLY-PLACE-LOC-V BARRIER SV-BOUNDARY2  LINK 0 FMAINV);
+#SELECT (Sg Com) IF (*-1 ONLY-PLACE-LOC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 (Pl Loc) LINK NOT 0 PLACE OR ORGANIZATION OR HUMAN);
+    ## Giellakantuvrras ii leat formála váldi álggahit gielladoaimmaid etáhtain, muhto veahkehit.
+    # It can be ambiguity with ORGANIZATION.
+
+# HUMAN-LOC-Verb 
+# - - - - - - - 
+#SELECT (Sg Com) IF (0 (Pl Loc) LINK 0 CONCEPT OR HUMAN OR ("sátni"))(*1 HUMAN-LOC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV);
+#SELECT (Sg Com) IF (*-1 HUMAN-LOC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 (Pl Loc) LINK 0 CONCEPT OR HUMAN OR ("sátni"));
+    ## Ollu ásahusat geavahit dan sin doaimmain.
+    ## Geavat mu biilla ráhkisvuođain.
+    ## Sámediggeráđđi šálloša ja imaštalla go departementa ii namut sámi skuvlla sániin ge skuvlla IKT-áŋgiruššanplánain.     
+
+# Rem-with-parts-verb
+# - - - - - - - - - -
+#SELECT (Sg Com) IF (0 (Pl Loc) LINK 0 PARTS)(*1 REM-WITH-PARTS BARRIER SV-BOUNDARY2 LINK 0 FMAINV);
+#SELECT (Sg Com) IF (*-1 REM-WITH-PARTS BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 (Pl Loc) LINK 0 PARTS);
+    ## Juohke šaddu man mu almmalaš Áhčči ii leat gilván, gaikkihuvvo ruohttasiin.
+
+# Disambiguation based upon idiosyncratic verb NP combinations
+# --------------------------------------------------------------
+   
+	# COPULAS 
+	# - - - - 
+#SELECT (Sg Com) IF (*-1 COPULAS LINK 0 PrfPrc OR Inf OR ConNeg OR VFIN BARRIER SV-BOUNDARY2)(0 (Pl Loc) LINK 0 ANIMATE OR CONCEPT LINK *-1 A BARRIER NP-BOUNDARY);
+#SELECT (Sg Com) IF (0 (Pl Loc) LINK 0 ANIMATE OR CONCEPT LINK *-1 A BARRIER NP-BOUNDARY)(*1 COPULAS LINK 0 Inf OR ConNeg OR VFIN BARRIER S-BOUNDARY2 LINK NOT *1 VERB LINK NOT 0 VFIN LINK NOT 0 COPULAS);
+  	## Go dii ehpet leat šiega leamaš ealibiin.
+  	## Go dii lehpet šiega leamaš ealibiin.
+  	## Go dii lehpet šiega ealibiin.
+  	## Son rávvii buohkaid bissut Hearrá luhtte duođalaš váimmuin.
+  	## Son lea šaddan beakkán su joavkkuinis.
+
+
+
+
+# ---------------------- End of from sme
+
+
 
 # Coordination
 # - - - - - - 
-SELECT Com IF (-2 Com)(-1 (@CC-NP))(0 Ill)(1 CLB);
+SELECT Com IF (-2 Com)(-1 (@CC-NP))(0 Ill OR Ine)(1 CLB);
     ## Bievddegáddáj viellidin aktan sujna ja åhpadisålmmåj.
+    ## Valla ettjin rijbada vijsesvuodajn ja vuojŋŋanisájn, majna hålaj.
 
 
 # Inessive
