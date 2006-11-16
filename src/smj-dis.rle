@@ -531,7 +531,7 @@ SET V-TRANS-ACT-NOT-ACT-NOT-AUX = V-TRANS-ACT - Actio - Actor - AUX;
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 #LIST INEV =
-LIST COMV = "sjiehtadallat" ;
+LIST COMV = "aktidit" "bierggit" "sjiehtadallat" ;
 LIST ELAV = "ballat" ;
 LIST ILLV = "riegádit" ;
 
@@ -555,7 +555,8 @@ LIST INFV = "boahtet" "buktet" "galggat" "gåhttjot" "liehket" "máhttet" "oadtj
 	## Ii suova nieiddas náitalit.
 
 
-#LIST TOGETHER-VERB = "goallostuvvot" "beaškkehat" "bidjat" "ô ­atnit" "suddat"  "heivet" "biddjojuvvot" "ô ­askit" "geassit" "gullat" "rehkenastit" "ordnet" "soahpat" "gávnnadit" "heivehit" "ô ­atnat" "doaibmat" "iskat" "laktit" "seaguhit";
+LIST TOGETHER-V =  "tjadnat" ;
+#"goallostuvvot" "beaškkehat" "bidjat" "ô ­atnit" "suddat"  "heivet" "biddjojuvvot" "ô ­askit" "geassit" "gullat" "rehkenastit" "ordnet" "soahpat" "gávnnadit" "heivehit" "ô ­atnat" "doaibmat" "iskat" "laktit" "seaguhit";
  # Danger: This list could be to long, in certain respects. 
  # TODO: Think of counter examples, i.e. sentences where we have these verbs, but
  # where oktii is not an adverbial.
@@ -567,7 +568,7 @@ LIST ACTIVITY-V = "duobbmit" "gástadit" "lasedit" "mihttit" "åhpadit";
 
 LIST BODY-ACTIVITY-V = "tjiektjat" ; 
 LIST WRITING-ACTIVITY-V = "tjállet" ; 
-LIST VERBAL-ACTIVITY-V = "hållat" ; 
+LIST VERBAL-ACTIVITY-V = "hållat" "tjuorvvot" ; 
 LIST ABSTR-ACTIVITY-V = "buoredit" "vilpástallat" ;  
 LIST INTELLECTUAL-ACTIVITY-V = "usjudit" ; 
 
@@ -701,6 +702,7 @@ LIST SG-WORD = "mieda" "miella" "miehttse#mieda" "vijsesvuohta";
 # inessive vs. essive:
 LIST INE-NOUN = "ednam";
 LIST ESS-NOUN = "sáluk";
+LIST COM-NOUN = "aktijvuohta" ;
 
 LIST TITLE =  "gånågis" "profehtta" ;
 LIST ESS-ADVL-N = "bäjvádahka" "biegga" "dálkke" "dulvve" "njáhsto" "rássjo" "sjievnnjet"; 
@@ -784,7 +786,7 @@ LIST ROLE = "årro" ;
 
 SET HUMAN = HUMAN-INDIVIDUAL | HUMAN-GROUP | PROFESSION | ROLE | OFFICE ;
 
-#BODY
+LIST BODY = "giehta" "juolgge" "tjalmme" ;
 LIST ANIMAL = "guokkardiddje" "judos" "sávttsa" "vierttsa" ;
 LIST HUNT-ANIMAL = "rievsak" ;
 LIST BOAZU = "boatsoj" ;
@@ -796,7 +798,7 @@ SET ANIMATE = HUMAN | ALL-ANIMALS ;
 
 #PLANT
 
-LIST TOOLS = "dållå" "tjáhtje";
+LIST TOOLS = "dållå" "jiedna" "tjáhtje";
 
 LIST WRITING-TOOLS = "pænna" ;
 
@@ -808,12 +810,15 @@ LIST ABSTR-TOOLS = "ássje" "duobbmo" "musihkka" "varra";
 #FOOD
 #CONTAINTERS
 
-LIST ROOM-VEHICLE = "bijlla" ;
+LIST ROOM-VEHICLE = "bijlla" "hiergge" "vanás";
 LIST SMALL-VEHICLE = "syhkal" ; 
 
 SET VEHICLE = ROOM-VEHICLE | SMALL-VEHICLE ;
-#TEXT
-#ABSTR-TEXT máinnas, eaktu, gažaldat, mearrádus
+
+LIST TEXT = "girjje" ;
+LIST ABSTR-TEXT = "álmmuk#lávla" "álmmuk#subtsas" "lávla" "subtsas" ; 
+# eaktu, gažaldat, mearrádus
+
 #WATER
 #OBJECT = PARTS | SHOE | FOOD | TEXT
 #ENTITY = TOOLS | OBJECT | VEHICLE
@@ -838,7 +843,6 @@ LIST ORGANIZATION = (Prop Org) "giddagas" "girku" ;
 #FYLKA
 #NATION = NATION-NOT-NORGA | NORGA
 
-#ACTOR = ANIMATE | INSTITUTION | ORGANIZATION
 #STATE ("dearvvas" Der/vuohta) "gaskavuohta" "miella#dearvvašvuohta" "ráfi" "váivi" "veahkki";
 
 #ABSTR-ENTITY  "ášši" "bálká" "bušeahtta" "doaibma#plána" "fuolahan#bálká" "giella#ruhta" "hehttehus" "plána" "prošeakta" "ruhta" "sosiála#plána" "stáhta#doaibma" "váttisvuohta" ;
@@ -857,6 +861,8 @@ LIST EDUCATION = "skåvlla" "vuodo#skåvllå" ;
 LIST EVENT = "aktisasj#tjåhkanibme" "tjåhkanibme" ; 
 
 SET ABSTR-PLACE = ORGANIZATION | INSTITUTION | EVENT | EDUCATION | INDUSTRY | SITUATION ;
+
+SET ACTOR = ANIMATE | INSTITUTION | ORGANIZATION ;
 
 #ILLNESS
 #POLITICAL-ABSTR-N  "boazodoallo#politihkka" "boras#pirepolitihka" "kultur#árbi" "sosiála#politihkka" 
@@ -3198,7 +3204,35 @@ SELECT Com IF (*-1 MOVEMENT-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 VEHICLE OR A
     ## De gåhtjoj åhpadisålmmåjt sujna jávre nuppe bälláj vuolgget.
     ## Sån ájggu vuolgget sujna jávre nuppe bälláj.
     ## Sån vuolggá sujna jávre nuppe bälláj.
+ 
+SELECT Com IF (*-1 ("oasstet") BARRIER SV-BOUNDARY2 LINK 0 VERB)(0 ("kråvnnå") OR Num);  
+SELECT Com IF (0 ("kråvnnå") OR Num)(*1 ("oasstet") BARRIER SV-BOUNDARY2 LINK 0 VERB); 
+    ## Gålmåjn låk kråvnåjn la sån oasstám biebmojt.  
     
+SELECT Com IF (*-1 COMV BARRIER SV-BOUNDARY2 LINK 0 VERB)(NOT 0 PLACE OR SITUATION);
+SELECT Com IF (NOT 0 PLACE OR SITUATION)(*1 COMV BARRIER SV-BOUNDARY2 LINK 0 VERB);
+    ## Duola dagu subsastin man gássjel la uddni bierggit árbbedábálasj æládusáj.
+
+SELECT Com IF (*-1 COMV BARRIER SV-BOUNDARY2 LINK 0 VERB)(0 POLITICAL-PLACE);
+SELECT Com IF (0 POLITICAL-PLACE)(*1 COMV BARRIER SV-BOUNDARY2 LINK 0 VERB);
+    ##  
+	
+SELECT Com IF (*-2 TOGETHER-V LINK 1 ("aktan") BARRIER NOT-ADV LINK *1 N OR Pers BARRIER NOT-AA);
+  	## Mii heive bures oktii ránes datneláiggiin.
+  
+SELECT Com IF (*1 TOGETHER-V BARRIER NPNH OR SV-BOUNDARY2 LINK 1 ("aktan"));
+  	##  
+  	
+SELECT Com IF (*-1 (@SUBJ) BARRIER S-BOUNDARY2 LINK 0 ACTOR)(0 ABSTR-TOOLS)(*1 ABSTR-ACTIVITY-V);
+	## Geahččoeiseválddit galget bearráigeahčuin váikkuhit dasa ahte dearvvašvuođa- ja sosiálabálvalusain váldet vuhtii geavaheaddjiid vuoigatvuođa oažžut áddehahtti informašuvnna ja vuoigatvuođa informerejuvvon miehtamii, ja fágalaččat dohkálaš doaimmaid giellagáibádusaid.
+  	
+
+ # Body-activity-verb
+# - - - - - - - - - -
+SELECT Com IF (*-1 BODY-ACTIVITY-V OR VERBAL-ACTIVITY-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 BODY);
+SELECT Com IF (0 BODY)(*1 BODY-ACTIVITY-V OR VERBAL-ACTIVITY-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV);
+    ## Muhto ieža eai hálit daid lihkastahttit suorbmagežiin ge.
+    # They belong to the dynamic-verbs, but they can also have BODY as a tool.   	 
     
 
 # ------------ Rules from sme -------- Start ----------- 
@@ -3210,76 +3244,11 @@ SELECT Com IF (*-1 MOVEMENT-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 VEHICLE OR A
 #SELECT (Sg Com) IF (*-1 ANIMATE BARRIER NOT-ADJ LINK 0 Nom OR Gen)(0 (Pl Loc) LINK NOT 0 ABSTR-TEXT OR TEXT OR PLACE OR INDUSTRY OR EDUCATION OR INSTITUTION)(1 CLB OR EOS);   
     ## Sii vástidedje: Johanasa gásttain.  
     # Does it really need (1 CLB OR EOS)?
- 
- 	# Disambiguation based upon verb valency
-	# --------------------------------------
-#SELECT Com IF (*-1 COMV BARRIER SV-BOUNDARY2 LINK 0 VERB)(NOT 0 PLACE OR SITUATION);
-	## Dieđut galget meannuduvvot várrugasvuođain.
-	## Nissonat barget gávppiin.
-	
-#SELECT Com IF (*-1 COMV BARRIER SV-BOUNDARY2 LINK 0 VERB)(0 POLITICAL-PLACE OR EDUCATION OR INSTITUTION OR INDUSTRY OR ORGANIZATION);
-    ## Sii áigot šiehtadit ođđasit skuvllain. 
-
-#SELECT Com IF (0 Sg)(*1 COMV BARRIER SV-BOUNDARY2 LINK 0 VERB) (NOT *1 COPULAS BARRIER VERB LINK *1 COMV BARRIER NOT-ADV-PCLE LINK 0 Inf);
-  	## ...go sápmelaččat duođas álge eanadoaluin bargat.
-
-
-#REMOVE (Pl Loc) IF (*-2 TOGETHER-V OR COMV)(*-1 ("oktii"))(0 N BARRIER Loc);
-  	## Mii heive bures oktii ránes datneláiggiin.
-  # we have to think about a barrier, another Loc to the right for example
-  
-#REMOVE Loc IF (*1 TOGETHER-V)(*2 ("oktii") BARRIER S-BOUNDARY2)(NOT *3 Com BARRIER S-BOUNDARY2);
-  	## Dáinna háliidan čatnat oktii digáštallamiid fidnopedagogihka ja
-  	## álgoálbmotoahpu birra, mat dán rádjái leat leamašan birrasiin man 
-  	## gaskkas lea leamaš unnán oktavuoht 	
-
-	# tools (concrete and abstract)
-	# - - - - - - - - - - - - - - -
-#REMOVE (Pl Loc) IF (*-1 ACTIVITY-V OR MOVEMENT-V OR PLACE-V BARRIER SV-BOUNDARY)(0 (Sg Com) LINK 0 TOOLS);
-  	## Dan moai ráidniime skárbbaniin.
-  
-#REMOVE Loc IF (0 TOOLS)(*1 ACTIVITY-V OR MOVEMENT-V OR PLACE-V BARRIER NOT-ADV);
-  	## Ja ovdal go háhppehin basttiin goivestit eret de Ánddar guvssiin bođii, vierrulii áicemaehtton: šattai ollái ipnun.
-  
-#REMOVE Loc IF (0 TOOLS LINK 1 CC LINK *1 Loc BARRIER NPNHA)(*1 ACTIVITY-V OR MOVEMENT-V);
-  	## Mon in leat dugo Sivvar - mii láve bissuin ja beatnagiin mannat dugo livččii dáčča.
-  
-#REMOVE (Pl Loc) IF (*-1 (@SUBJ) BARRIER S-BOUNDARY2 LINK 0 HUMAN)(0 ABSTR-TOOLS)(*1 ABSTR-ACTIVITY-V);
-	## Geahččoeiseválddit galget bearráigeahčuin váikkuhit dasa ahte dearvvašvuođa- ja sosiálabálvalusain váldet vuhtii geavaheaddjiid vuoigatvuođa oažžut áddehahtti informašuvnna ja vuoigatvuođa informerejuvvon miehtamii, ja fágalaččat dohkálaš doaimmaid giellagáibádusaid.
-
-	# BODY as an instrument
-	# - - - - - - - - - - -
-
-#SELECT (Sg Com) IF (*-1 VERBAL-ACTIVITY-V BARRIER VFIN OR LOC-HEAD)(0 (Pl Loc) LINK 0 BODY);
-  	## Lávdde luhtte juiget olbmot olles čoddagiin.
-  # Idea: Body as an instrument to perform verbal activity.
-  
-#SELECT (Sg Com) IF (*-1 VERBAL-ACTIVITY-V BARRIER VFIN OR LOC-HEAD)(0 (Pl Loc) LINK 0 HUMAN);
-  	## Terje hárve hupmá mediain, muhto son áinnas hupmá sápmelašvuođas birra.
-  
-	# Disambiguation based upon idiosyncratic V NP combinations has been removed to the locative-chapter
-	#   	 
-  
- # Body-activity-verb
-# - - - - - - - - - -
-#SELECT (Sg Com) IF (*-1 BODY-ACTIVITY-V OR VERBAL-ACTIVITY-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 (Pl Loc) LINK 0 BODY);
-#SELECT (Sg Com) IF (0 (Pl Loc) LINK 0 BODY)(*1 BODY-ACTIVITY-V OR VERBAL-ACTIVITY-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV);
-    ## Muhto ieža eai hálit daid lihkastahttit suorbmagežiin ge.
-    # They belong to the dynamic-verbs, but they can also have BODY as a tool.   	 
-  	 
+   	 
 
 	# Disambiguation based upon verb valency
 	# --------------------------------------
 
-#SELECT Loc IF (*-1 LOCV BARRIER SV-BOUNDARY2 OR COM-HEAD LINK NOT 0 Adv) (NOT *-1 CC BARRIER S-BOUNDARY2 LINK -1 LOCV) (NOT 0 Num OR Pron LINK *1C (N Com) BARRIER NPNH)(0 Com);
-	## Juohke dáhpáhusas ferte áibbas boastut leat beroškeahttá sámiid riekteáddejumiin.
-
-#SELECT Loc IF (NOT 0 ("dat") OR Actio)(NOT *1C Com BARRIER NPNH) (NOT 0 (N Num Nom) LINK 1 (Sg Com))(NOT 0 (Sg Com) LINK -1 (N Num Nom)) (*1 LOCV BARRIER SV-BOUNDARY2);
-	## Maiddái sámi fágabirrasiin ja ásahusain sáhttá jearrat ráđiid.
-
-#SELECT Loc IF (*-1 ACC-LOCV BARRIER NOT-NP);
-	## Sáhttá viežžat dieđuid divššohasa oapmahaččain. 
-	# Removed "viežžat" from ACC-LOCV, because it can take Com: "Mun vižžen su biillain."
 	
 # Verbal-activity-verbs
 # - - - - - - - - - - -  
@@ -3290,11 +3259,7 @@ SELECT Com IF (*-1 MOVEMENT-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 VEHICLE OR A
 #SELECT (Pl Loc) IF (*-1 VERBAL-ACTIVITY-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 Com LINK 0 EVENT OR EVENT-TOOL-ACTIO);
   	## Dan geažil lea dehálaš ávžžuhit bargiid sámástit ráđđádallamiin.
   
-#SELECT (Pl Loc) IF (NOT *-1 COM-HEAD BARRIER NPNH)(0 TEXT OR ABSTR-TEXT)(*1 VERBAL-ACTIVITY-V LINK 0 Pass BARRIER NPNH);
-  	## Dálá sámiid máidnasiin ja muitalusain muitaluvvo dološ oskui gullan hálddiid birra .
-
-#SELECT (Pl Loc) IF (NOT *-1 COM-HEAD BARRIER NPNH)(*-1 VERBAL-ACTIVITY-V LINK 0 Pass BARRIER NPNH)(0 TEXT OR ABSTR-TEXT);
-  	## Sii máinnašuvvojedje vearrologahallamiin earáid maŋŋá .  
+ 
 	
 # Dynamic-verb but not HUMAN-SOURCE-V
 # - - - - - - - - - - - - - - - - - - - 
@@ -3340,8 +3305,6 @@ SELECT Com IF (*-1 MOVEMENT-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 VEHICLE OR A
 #SELECT (Sg Com) IF (*-1 REM-WITH-PARTS BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 (Pl Loc) LINK 0 PARTS);
     ## Juohke šaddu man mu almmalaš Áhčči ii leat gilván, gaikkihuvvo ruohttasiin.
 
-# Disambiguation based upon idiosyncratic verb NP combinations
-# --------------------------------------------------------------
    
 	# COPULAS 
 	# - - - - 
@@ -3399,7 +3362,14 @@ SELECT Ine IF (0 N OR (Pron Pers) LINK 0 Com)(1 COPULAS LINK NOT 1 FMAINV LINK N
     
 SELECT Ine IF (-1 COPULAS LINK -1 (N Pl Acc) LINK -1 ("mij" Pron Interr Sg Nom));  
     ## Mij dahkamusájt le dujna munnujn?  
+    
+SELECT Ine IF (0 TEXT OR ABSTR-TEXT)(*1 VERBAL-ACTIVITY-V LINK 0 Pass BARRIER NPNH);
+  	## Dálá sámiid máidnasiin ja muitalusain muitaluvvo dološ oskui gullan hálddiid birra .
 
+SELECT Ine IF (*-1 VERBAL-ACTIVITY-V LINK 0 Pass BARRIER NPNH)(0 TEXT OR ABSTR-TEXT);
+  	## Sii máinnašuvvojedje vearrologahallamiin earáid maŋŋá. 
+
+    
 # Coordination:
 SELECT Ine IF (*-1 COPULAS BARRIER SV-BOUNDARY2 LINK 0 FMAINV LINK *1 Nom BARRIER NPNH LINK 1 CC)(0 N OR Pers)(*1 (N Nom) BARRIER NPNH);
     ## Riehpihijn li lieso ja alme låttijn biese. 
