@@ -1227,6 +1227,21 @@ MAP (@QN<) TARGET (N Sg Acc) IF (-1 (Num Acc))(0 MEASURE)(1 (N Acc));
 # A: @AN>
 # Actio: @ActioN>
 
+MAP (@NQ<) TARGET Gen IF (*-1 NUMERALS BARRIER VFIN OR NP-BOUNDARY OR N OR REALCLB OR PUNCT LINK 0 Nom LINK NOT 0 Ord)(NOT 0 Num)(NOT 1 A OR N)(NOT -1 COMMA);
+	## Mun máksen 100 ruvnno duvle.
+	#MAP (@NQ< @GN>) TARGET Gen IF (*-1 NUMERALS BARRIER N OR REALCLB OR PUNCT
+	#	LINK 0 Nom LINK NOT 0 Ord)(NOT 0 Num)(NOT -1 Ord LINK -1 Num); 	
+MAP (@NQ< @GN>) TARGET Gen IF (*-1 NUMERALS BARRIER N OR REALCLB OR PUNCT LINK 0 Nom LINK NOT 0 Ord)(NOT 0 Num);
+	## Skuvlajagis 2001/2002 leat oktiibuot 469 oahppi suohkana vuođđoskuvllain.
+
+MAP (@NQ<) TARGET Gen IF (-1 CC LINK -1 (N Gen) LINK *-1 NUMERALS BARRIER NP-BOUNDARY OR N OR REALCLB OR PUNCT LINK 0 Nom LINK NOT 0 Ord)(NOT 0 Num LINK NOT 0 Ord);
+	## Mus leat čieža vielja ja oappá.
+
+MAP (@NQ<) TARGET (N Gen) IF (*-1 NUMERALS BARRIER NOT-ADJ LINK 0 Nom)(1 Prop);
+	## Joavkkus leat vihtta oahppi Kárášjogas.
+
+
+
 # Pronouns
 # - - - - -
 
@@ -2709,6 +2724,8 @@ REMOVE Par IF (0 (Dem Sg Nom))(1 V-SG3);
 
 # Indefinite pronouns
 
+# Number disambiguation
+
 SELECT Sg IF (0 (Pron Indef Sg Nom))(*1 (N Sg Nom) BARRIER NPNH);
 SELECT Sg IF (0 (Pron Indef Sg Gen))(*1 (N Sg Gen) BARRIER NPNH);
 SELECT Sg IF (0 (Pron Indef Sg Acc))(*1 (N Sg Acc) BARRIER NPNH);
@@ -2723,6 +2740,13 @@ SELECT Pl IF (0 (Pron Indef Pl Ill))(*1 (N Pl Ill) BARRIER NPNH);
 SELECT Pl IF (0 (Pron Indef Pl Ine))(*1 (N Pl Ine) BARRIER NPNH);
 SELECT Pl IF (0 (Pron Indef Pl Com))(*1 (N Pl Com) BARRIER NPNH);
 SELECT Pl IF (0 (Pron Indef Pl Ela))(*1 (N Pl Ela) BARRIER NPNH);
+
+# Case disambiguation
+
+SELECT Nom IF (0 (Pron Indef Sg Nom))(*1C (N Sg Nom) BARRIER NPNH);
+SELECT Gen IF (0 (Pron Indef Sg Gen))(*1C (N Sg Gen) BARRIER NPNH);
+SELECT Acc IF (0 (Pron Indef Sg Acc))(*1C (N Sg Acc) BARRIER NPNH);
+# unfinished, return to this.
 
 #Sme:
 #SELECT (Pron Indef Gen) IF (0 ("nubbi")) (1 ("dáfus" Po) OR ("beali" Po) OR ("hávvi") OR ("beallái" Po) OR ("bealli") OR ("sohka#bealli"));
@@ -2771,6 +2795,7 @@ SELECT (Imprt Sg2) IF (*-1 BOS BARRIER WORD)(1 ("sjávot"));
 SELECT (Imprt Sg2) IF (*1 Prop BARRIER WORD LINK 0 Mal OR Fem LINK 1 COMMA);
     ## - Gulá Tore, tjielggij.
 
+
 REMOVE (Imprt ConNeg) IF (*-1 Neg LINK NOT 0 Imprt);
 	## ... beassat juska ij nav vuojga duodjuhit máhte, ...
  
@@ -2779,8 +2804,11 @@ REMOVE (Imprt ConNeg) IF (*-1 Neg LINK NOT 0 Imprt);
 
     # V Imprt Du1
 REMOVE (Imprt Du1) IF (-1 Ind) ;
-
 	## Duodje l vuodon ådå ájádusájda.
+
+REMOVE (Imprt Du1) IF (-2 Pl3)(-1 CC)(0 Pl3);
+	## Ålggolij ganugin ja gåhttjun suv boahtet.
+
     
     # V* TV Actor N Sg Gen = V TV Imprt Du2 = V* TV Actor N Pl Nom
     #= V* TV Actor N Sg Nom = V* TV Actor A Attr
@@ -2811,8 +2839,6 @@ REMOVE Imprt IF (*-1C ConNeg BARRIER VFIN OR COMMA OR CS OR CP);
 	## I galga Härráv, Jubmelat, gähttjalit. 
 
 
-#REMOVE Imprt IF (-1 N OR A OR Po);
-	#Imperative after N is possible 
 
 REMOVE Imprt IF (*1C VFIN BARRIER NOT-ADV-PCLE OR CLB);
 	## Tjalmme le rubmaha tjuovgga.
@@ -2824,6 +2850,16 @@ SELECT Imprt IF (-1 BOS OR PUNCT OR REALCLB)(0 ("liehket"))(1 A);
 # Pl3
 REMOVE (Imprt Pl3) IF (-1 Gen)(0 N);
 	## Joarkkaskåvlå åhpadusa.
+
+
+#REMOVE Imprt IF (-1 N OR A OR Po OR Num);
+	#Imperative after N is possible 
+
+
+# Imperative II, ImprtII
+# ----------------------
+
+REMOVE (ImprtII Du1) IF (*-1 (Pl Nom))(0 (V Pl3));
 
 
 # Infinitive
@@ -3600,6 +3636,9 @@ SELECT (V Pl3) IF (*-2 BOS OR CS BARRIER NPNH)(-1 (N Pl Nom))(0 VFIN);
 SELECT (V Pl3) IF (*-1 (Rel Pl Nom) BARRIER VFIN OR S-BOUNDARY2)(0 VFIN);
     ## Hárjjánam lij báhtjajda gudi biebbmosjokoládav ádnu.	
 
+SELECT (V Pl3) IF (*-1C (Pl Nom) OR (Pl3 Nom) BARRIER (V Pl3) OR CC OR S-BOUNDARY);
+
+
 # Rules for a special infinitive construction
 # ===========================================
 SELECT Inf IF (*-1 Acc BARRIER NOT-PCLE LINK -1 ("makkár") LINK -1 FMAINV); 
@@ -3641,7 +3680,12 @@ REMOVE (Actio N Ess) IF (0 (N Ess));
 # ===================== #
 
 # Here we have some rules that scan the whole domain.
-# We myst consider whether they should be integrated earlier or not.
+# We must consider whether they should be integrated earlier or not.
+
+SELECT (@SUBJ) IF (0 (Sg Nom))(1 (V Sg3));
+SELECT (@SUBJ) IF (0 (Pl Nom))(1 (V Pl3));
+# This rule is too strong, 
+
 
 SELECT (@OPRED) IF (*-1 (@OBJ) BARRIER S-BOUNDARY2 OR PUNCT LINK NOT 0 Dem)(*-1 OPREDV BARRIER SV-BOUNDARY2)(NOT 0 Gen LINK *1 N BARRIER NPNH)(NOT 0 Interr OR TIME OR ROUTE) (NOT 0 Num LINK 1 ROUTE OR TIME)(NOT 1 (TV Actio) LINK NOT *1 (@OBJ) BARRIER S-BOUNDARY2);
     ## Sån gåhttju suv Jesusin.
@@ -3667,10 +3711,17 @@ REMOVE (@SPRED) IF (0 (Pron Du2 Nom @SUBJ))(*-1 (V Du2));
 REMOVE (@SPRED) IF (0 (Pron Pl1 Nom @SUBJ))(*1 (V Pl1));
 REMOVE (@SPRED) IF (0 (Pron Pl1 Nom @SUBJ))(*-1 (V Pl1));
 
-REMOVE (@qSPRED) IF (0 (Pron Pl2 Nom @SUBJ))(*1 (V Pl2));
+REMOVE (@SPRED) IF (0 (Pron Pl2 Nom @SUBJ))(*1 (V Pl2));
 REMOVE (@SPRED) IF (0 (Pron Pl2 Nom @SUBJ))(*-1 (V Pl2));
 
 REMOVE (@SPRED) IF (NOT *-1 (@SUBJ) BARRIER S-BOUNDARY)(0 (@SUBJ))(NOT *1 (*SUBJ) BARRIER S-BOUNDARY);
+
+REMOVE (@SPRED) IF (0 Rel)(NOT *1 (@SUBJ) BARRIER S-BOUNDARY);
+
+REMOVE (@SPRED) IF (*-1 S-BOUNDARY OR BOS OR Rel BARRIER (@SPRED))(0 (@SUBJ))(1 CC)(*2 (@SUBJ) LINK *1 EOS OR S-BOUNDARY OR Rel BARRIER (@SPRED));
+REMOVE (@SPRED) IF (*1 S-BOUNDARY OR EOS OR Rel BARRIER (@SPRED))(0 (@SUBJ))(-1 CC)(*-2 (@SUBJ) LINK *-1 BOS OR S-BOUNDARY OR Rel BARRIER (@SPRED));
+    ## Judaj riegádijga Peres ja Sera.
+# Still no hit.
 
 SELECT (@SPRED) IF (*-1 COPULAS BARRIER VERB LINK 0 Sg3 LINK NOT *-1 Ine BARRIER NOT-ADV-PCLE)(0 A)(NOT 0 Attr LINK 1 N)(NOT 0 Gen OR Px)(NOT *1 PrfPrc BARRIER NOT-ADV-PCLE);
     ## Josef, suv ålmåj, guhti lij rievtesmielak, ittjij sidá suv hehpaduhttet ja ájgoj sjsta suolev sirádit.
@@ -3682,6 +3733,20 @@ SELECT (@SPRED) IF (*-1 BOS OR CLB OR PUNCT BARRIER NOT-CC)(0 ("sáluk"))(1 (N N
 	## Sálugin gudi rievtesferdukvuodav nälggu ja gåjkki, sij galliduvvi.
 	## Sálugin ármmogisá, sij ármmogisvuodav oadtju.
 
+
+# P complements
+# -------------
+
+REMOVE (@P<) IF (NOT *-1 Pr BARRIER NPNH);
+
+# Q complements
+# -------------
+
+REMOVE (@NQ<) IF (NOT *-1 Num BARRIER VFIN);
+#Incomplete barrier.
+
+REMOVE (@GN>) IF (*-1 Num BARRIER NPNH)(0 (@NQ<))(NOT *1 N BARRIER NPNH);
+	## Muhtem nissin, lågenanguokta jage varddemijs bijnástuvvam, ...
 
 # Late rules
 
