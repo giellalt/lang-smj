@@ -532,8 +532,8 @@ SET V-TRANS-ACT-NOT-ACT-NOT-AUX = V-TRANS-ACT - Actio - Actor - AUX;
 
 #LIST INEV =
 LIST COMV = "aktidit" "bierggit" "sjiehtadallat" ;
-LIST ELAV = "ballat" ;
-LIST ILLV = "riegádit" ;
+LIST ELAV = "ballat" "biehttot" "buorggot" "gáhtot" "gærggat" "gåhttsåt" "gåvvat"  "hiejttet" "mássit" "nádot" "tsaggat" "várrodit" "viessot" "vuornnot" "ållit" ;
+LIST ILLV = "báhtset" "dabrijdit" "guodet" "riegádit" ;
 
 #LIST ACC-LOCV
 #LIST ACC-ILLV
@@ -823,13 +823,13 @@ LIST ABSTR-TEXT = "álmmuk#lávla" "álmmuk#subtsas" "lávla" "subtsas" ;
 #OBJECT = PARTS | SHOE | FOOD | TEXT
 #ENTITY = TOOLS | OBJECT | VEHICLE
 
-LIST BUILDING = "fáŋŋga#goahte" "gábmá" "goahte" "låvda#goahte" "oases" "synagoga" ;
+LIST BUILDING = "dåhpe" "fáŋŋga#goahte" "gábmá" "goahte" "låvda#goahte" "oases" "synagoga" ;
 
 LIST ROOM = "ladnja" "oadem#ladnja" ;
 
-LIST GEOGRAPHICAL-PLACE = "ednam" "jávrre";  
+LIST GEOGRAPHICAL-PLACE = "ednam" "jávrre" "várre";  
 LIST POLITICAL-PLACE = "rijkka"; 
-LIST GENERAL-PLACE = "gahttun#suorre" "stáda";  
+LIST GENERAL-PLACE = "gahttun#suorre" "sijdda" "stáda";  
 
 LIST CONCRETE-ROUTE = "gahttun" "uksa#rájgge" "væddja";
 LIST ABSTR-ROUTE = "mijlla" ;
@@ -1732,6 +1732,11 @@ CONSTRAINTS
              CONSTRAINTS
 # -------------------------------------------- #
 
+# Verb vs. Actio/Actor
+# - - - - - - - - - -
+SELECT VERB IF (-2 BOS)(-1C Adv)(1 CLB OR Adv OR Pr OR (@CS-VP));
+    ## Oanegav ájádallam, de huomahiv: 
+    ## Dåppe åroj dasik Herodes lij jábmám.
 
 
 # ImprtII
@@ -2477,7 +2482,7 @@ SELECT Gen IF (1 (@CC-NP))(*2 Gen BARRIER NOT-AA LINK 1C Po);
 
 
 # Adverbs
-SELECT Adv IF (NOT 0 ("akta" Ess))(0 Ess)(NOT 0 ("mij" Foc));
+SELECT Adv IF (NOT 0 ("akta" Ess))(0 Ess)(NOT 0 ("mij" Foc) OR Ine);
     ## Árvvediv ilá tjoaskes lij ålggon vádtset.
 
 
@@ -3154,6 +3159,13 @@ SELECT (Gen) IF (*-1 VFIN)(0C N LINK 0 Com OR Ill)(1C N);
 # Sg Ill = Pl Com =  Pl Gen (if no CG)
 
 SELECT Ill IF (1 ILLV LINK 1 Nom BARRIER NPNH);
+
+SELECT Ill IF (*-1 ILLV BARRIER NOT-AA);
+    ## Habssa dabrijdij njunnjáj.
+
+SELECT Ill IF (*-1 (V* TV Pass) BARRIER NOT-AA);   
+    ## Mån bårådalliv bednagij.
+    
 
 # Coordination:
 SELECT Ill IF (1 (@CC-NP))(*2C Ill BARRIER NOT-ADJ);
