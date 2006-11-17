@@ -555,7 +555,7 @@ LIST INFV = "boahtet" "buktet" "galggat" "gåhttjot" "liehket" "máhttet" "oadtj
 	## Ii suova nieiddas náitalit.
 
 
-LIST TOGETHER-V =  "tjadnat" ;
+LIST TOGETHER-V =  "tjadnat" "tjåhkanit" "viellidit" "viessot" ;
 #"goallostuvvot" "beaškkehat" "bidjat" "ô ­atnit" "suddat"  "heivet" "biddjojuvvot" "ô ­askit" "geassit" "gullat" "rehkenastit" "ordnet" "soahpat" "gávnnadit" "heivehit" "ô ­atnat" "doaibmat" "iskat" "laktit" "seaguhit";
  # Danger: This list could be to long, in certain respects. 
  # TODO: Think of counter examples, i.e. sentences where we have these verbs, but
@@ -569,7 +569,7 @@ LIST ACTIVITY-V = "duobbmit" "gástadit" "lasedit" "mihttit" "åhpadit";
 LIST BODY-ACTIVITY-V = "tjiektjat" ; 
 LIST WRITING-ACTIVITY-V = "tjállet" ; 
 LIST VERBAL-ACTIVITY-V = "hållat" "tjuorvvot" ; 
-LIST ABSTR-ACTIVITY-V = "buoredit" "vilpástallat" ;  
+LIST ABSTR-ACTIVITY-V = "buoredit" "loabedit" "vilpástallat" ;  
 LIST INTELLECTUAL-ACTIVITY-V = "usjudit" ; 
 
 # More to come:
@@ -581,7 +581,7 @@ LIST INTELLECTUAL-ACTIVITY-V = "usjudit" ;
 #LIST ONLY-PLACE-LOC-V 
 #LIST HUMAN-LOC-V 
 
-LIST PLACE-V = "tjuodtjot" "tjællot" "tsæggahit" "válldut" "vuojnnet" "vuojnnut" "årrut"; 
+LIST PLACE-V = "tjuodtjot" "tjællot" "tsæggahit" "válldut" "vuojnnet" "vuojnnut" "årrot"; 
 # not so sure about where to put "vuojnnet" "vuojnnut" 
 # Ine vs. Com: Only ANIMATE, TOOLS, ABSTR-TOOLS and CONCEPT take Com.
 
@@ -802,7 +802,7 @@ LIST TOOLS = "dållå" "jiedna" "tjáhtje";
 
 LIST WRITING-TOOLS = "pænna" ;
 
-LIST ABSTR-TOOLS = "ássje" "duobbmo" "musihkka" "varra"; 
+LIST ABSTR-TOOLS = "ássje" "duobbmo" "musihkka" "varra" "vuornes"; 
  
 #PARTS ruohtas
 #SHOE
@@ -1389,7 +1389,7 @@ MAP (@+FAUXV @+FMAINV) TARGET VFIN IF (NOT *-1 ("liehket") OR INFV OR Neg BARRIE
 	## Sii orro darfegođiid siste.
     ## Dåppe åroj dasik Herodes lij jábmám vaj luluj ålliduvvat.
 
-MAP (@-FAUXV @-FMAINV) TARGET ("årrot") IF (0 VFIN OR PrfPrc OR (Actio Ess));
+MAP (@-FAUXV @-FMAINV) TARGET ("årrot") IF (0 VFIN OR PrfPrc OR (Actio Ess))(NOT 0 Actor);
 	## Olbmot eai orron čadnon dušše iežaset mearragáddái bivdit.
     
 
@@ -1414,7 +1414,7 @@ MAP (@-FAUXV) TARGET AUX IF (0 PrfPrc)(*1 Inf OR (Actio Ess) BARRIER S-BOUNDARY)
    ## In leat sáhttán gáhku borrat dan rájes. 
    ## In leat leamaš mielde gáhku láibume ovdal.    
         
-MAP (@+FMAINV) TARGET COPULAS IF (NOT *-1 Inf OR PrfPrc OR (Actio Ess) BARRIER S-BOUNDARY OR VFIN)(0 VFIN)(NOT *1 Inf OR PrfPrc OR (Actio Ess) BARRIER S-BOUNDARY OR VFIN);
+MAP (@+FMAINV) TARGET COPULAS IF (NOT *-1 Inf OR PrfPrc OR (Actio Ess) BARRIER S-BOUNDARY OR VFIN)(0 VFIN)(NOT 0 Actor)(NOT *1 Inf OR PrfPrc OR (Actio Ess) BARRIER S-BOUNDARY OR VFIN);
     ## Mun lean Romssas. 
     ## ... , gej iessne lij Tamar.
 
@@ -2563,6 +2563,8 @@ SELECT (Ind Sg3) IF (NOT -1 V)(1 CC LINK *1 (Ind Sg3) BARRIER NOT-ADV);
     ## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj:
     ## Valla Johannes nádoj ja javlaj:
 
+SELECT (N Pl Nom) IF (NOT *-1 (Pl Nom) BARRIER S-BOUNDARY)(*1 (Ind Pl3) BARRIER NP-BOUNDARY OR (Pl Nom));
+    ## Valla stádaj årro dav gullájin.
 
 
 # ====================== #
@@ -2686,18 +2688,17 @@ SELECT Acc IF (0 Pers OR Refl)(*1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2);
 
 # Interrogative
 
-SELECT Interr IF (*-1 BOS OR PUNCT BARRIER NOT-PCLE)(0 Rel);
-SELECT Interr IF (-1 CC)(0 Rel);
+SELECT Interr IF (*-1 BOS BARRIER NOT-PCLE)(0 Rel)(*1 ("?"));
+SELECT Interr IF (-1 CC LINK *-1C Interr)(0 Rel)(*1 ("?"));
     ## - Na majt hærrájt sjokoládajn?
-
-#SELECT Interr IF (-1 VFIN)(0 Rel)(NOT 0 Pers);
-    ## Valla usjudalliv manen oastestiddje lij nav imálasj láhkáj munji gæhttjam gå sjokoládav ádnuv. 
-    # Working with it, preventing it from hitting Rel. Perhaps we have to make a verbset for -1.
+    ## "Guhtis le muv ieddne ja gudi li muv vielja?"
 
 # Relative
 
-SELECT Rel IF (-1 NOT-PCLE)(0 Interr);
+SELECT Rel IF (0 Interr);
     ## Ittjij rat gulá majt javlliv.        
+    ## Valla usjudalliv manen oastestiddje lij nav imálasj láhkáj munji gæhttjam gå sjokoládav ádnuv. 
+    ## Guhti ádnu oadtju, ja guhti áhtsá gávnna, ja guhti goalkkal, sunji uksa rabáduvvá. 
 
 SELECT Gen IF (0 Rel)(*1 N BARRIER NOT-ADJ LINK *1 V-SG3);
 
@@ -2706,14 +2707,6 @@ SELECT Gen IF (0 Rel)(*1 N BARRIER NOT-ADJ LINK *1 V-SG3);
 SELECT (Pron Rel Sg Nom) IF (*-1 (N Sg))(NOT *1 V-PL1);
 
 SELECT (Pron Rel Sg Nom) IF (*-1 COMMA OR CLB BARRIER NOT-PUNCT-RIGHT LINK -1 (N Sg))(NOT *1 V-PL1);
-
-#REMOVE Rel IF (*-1 BOS OR (":") OR PUNCT BARRIER N OR Pron OR Num OR A);
-    ## ”Manen duv åhpadisålmmå e fásstuda?”
-
-
-#REMOVE Interr IF (NOT -1 BOS OR PUNCT)(0 Rel);
-
-
 
 
 
@@ -3368,6 +3361,8 @@ SELECT Ine IF (0 TEXT OR ABSTR-TEXT)(*1 VERBAL-ACTIVITY-V LINK 0 Pass BARRIER NP
 
 SELECT Ine IF (*-1 VERBAL-ACTIVITY-V LINK 0 Pass BARRIER NPNH)(0 TEXT OR ABSTR-TEXT);
   	## Sii máinnašuvvojedje vearrologahallamiin earáid maŋŋá. 
+  	
+SELECT Ine IF (0 PLACE)(*1 PLACE-V BARRIER SV-BOUNDARY2);  	
 
     
 # Coordination:
@@ -3475,6 +3470,7 @@ SELECT Pl3 IF (*-1 (N Sg Nom) BARRIER (Pron Pers Sg2 Nom) OR  (Pron Pers Sg3 Nom
     
 REMOVE Sg2 IF (*-1 (N Sg Nom) OR (Rel Sg Nom) BARRIER (Pron Pers Sg2 Nom) OR COMMA)(NOT 0 Neg);
 REMOVE Pl3 IF (NOT *-1 (N Pl Nom))(*-1 (N Sg Nom) LINK NOT *-1 CC BARRIER NPNH LINK -1 (N Sg Nom))(0 ("liehket"));
+
 
 # PrfPrc
 # =======
