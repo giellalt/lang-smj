@@ -489,7 +489,7 @@ LIST MOD-ASP = "bierrit" "viedjet"  "viddnit"  ;
 #		"seahtit" "soaitit" "viggat" ;
  # Verbs that never have arguments of their own - so we leave out "áigut", for ex.
 
-LIST AUX-OR-MAIN = "ájggot" "bessat" "bierrit" "buktet" "galggat" "hálijdit" "hæhttut" "máhttet" "nagádit" "sihtat" "vierttit" "årrut" ;
+LIST AUX-OR-MAIN = "ájggot" "bessat" "bierrit" "buktet" "galggat" "hálijdit" "hæhttut" "máhttet" "nagádit" "sihtat" "vierttit" "årrot" ;
  # These verbs can take arguments, so they do not belong in the AUX group, 
  # but they are nevertheless mapped to (@+FAUXV). 
 
@@ -2303,8 +2303,11 @@ SELECT (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-ADV-PCLE LINK *-1 (Sg Nom) BARRIER
 SELECT (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-ADV-PCLE LINK *-1 (Sg Nom) BARRIER NOT-ADV-PCLE LINK *-1 BOS OR CS OR (":" CLB) OR CP BARRIER NOT-ADV-PCLE) (*1 COPULAS BARRIER NOT-ADV-PCLE LINK *1 CLB OR EOS BARRIER NOT-ADV-PCLE);
 	## ...dan dihte go geassegollebivdu lei áibbas heittot leamaš,...
 
-SELECT (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-ADV-PCLE LINK *-1 (N Sg Nom) OR (Pron Sg Nom) OR (Sg1 Nom) OR (Sg2 Nom) OR (Sg3 Nom) BARRIER S-BOUNDARY2 LINK NOT 0 Ess)(NOT 0 N OR Inf OR Adv)(NOT 1 VERB)(NOT 1 CC LINK 1 Adv) (NOT *1 N BARRIER NPNH);	
-	## Mun in leat dohkálaš ahte don boađášit mu vissui.
+SELECT (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-ADV-PCLE LINK *-1 (N Sg Nom) OR (Pron Sg Nom) OR (Sg1 Nom) OR (Sg2 Nom) OR (Sg3 Nom) BARRIER S-BOUNDARY2 LINK NOT 0 Ess)(NOT 0 N OR Inf OR Adv)(NOT 1 VERB)(NOT 1 CC LINK 1 Adv) (NOT *1 N BARRIER NPNH);	## Mun in leat dohkálaš ahte don boađášit mu vissui.
+    ## Dån la jalla.
+    
+SELECT (A Sg Nom) IF (*1 COPULAS BARRIER NOT-ADV-PCLE LINK 1 (N Sg Nom) OR (Pron Sg Nom) OR (Sg1 Nom) OR (Sg2 Nom) OR (Sg3 Nom) LINK NOT 0 Ess)(NOT 0 N OR Inf OR Adv)(NOT *1 N BARRIER NPNH);    
+    ## Jiesstánam lijka man jalla la dån.
 
 SELECT (A Sg Nom) IF (*-1 COPULAS BARRIER Nom OR PrfPrc OR CS OR MANNE LINK 0 Sg1 OR Sg3)(NOT 0 Adv OR N OR Inf)(NOT 1 VERB OR Num OR A) (NOT 1 ("nu") OR ("hui") LINK 1 A)(NOT 1 CC LINK 1 Adv) (NOT *1 N BARRIER NPNH); 
 	## Lea ártet go it gallet fulkkiin.
@@ -2418,7 +2421,7 @@ SELECT Adv IF (0 A)(NOT 0 Inf)(1C A)(NOT *1 N BARRIER NPNH);
 	## veadjemeahttun.
 	## ...ahte váikkuhusat divššohasa lagamuččaide leat mearkka-
 	## šahtti stuorrát. 
-
+	
 SELECT Adv IF (*-1 COPULAS BARRIER NOT-ADV-PCLE)(1 A);
 	## Sámi riekteáddejupmi ii lean doarvái miellagiddevaš 
 	## suokkarduvvot ovttas dainna gažaldagain.
@@ -2432,7 +2435,17 @@ SELECT Adv IF (0 A)(1 CC)(2C Adv);
 
 # End of adjective copy from sme
 
+SELECT Adv (0 ("man"))(1 A);	
+	## Jiesstánam lijka man jalla la dån.
 
+
+# Particles
+# =========
+
+# galla
+# - - - 
+SELECT Pcle IF (*-1 BOS BARRIER NOT-PCLE)(1 ("dal"));
+    ## Galla dal mån diedáv manen li muson.
 
 
 # Case
@@ -2688,14 +2701,14 @@ SELECT Acc IF (0 Pers OR Refl)(*1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2);
 
 # Interrogative
 
-SELECT Interr IF (*-1 BOS BARRIER NOT-PCLE)(0 Rel)(*1 ("?"));
+SELECT Interr IF (*-1 BOS OR (":") BARRIER NOT-PCLE)(0 Rel)(*1 ("?"));
 SELECT Interr IF (-1 CC LINK *-1C Interr)(0 Rel)(*1 ("?"));
     ## - Na majt hærrájt sjokoládajn?
     ## "Guhtis le muv ieddne ja gudi li muv vielja?"
 
 # Relative
 
-SELECT Rel IF (0 Interr);
+SELECT Rel IF (0 Interr)(NOT 0 Pers OR Adv);
     ## Ittjij rat gulá majt javlliv.        
     ## Valla usjudalliv manen oastestiddje lij nav imálasj láhkáj munji gæhttjam gå sjokoládav ádnuv. 
     ## Guhti ádnu oadtju, ja guhti áhtsá gávnna, ja guhti goalkkal, sunji uksa rabáduvvá. 
@@ -3720,6 +3733,38 @@ SELECT (@SPRED) IF (*-1 BOS OR CLB OR PUNCT BARRIER NOT-CC)(0 A)(1 (Pers Nom) OR
 SELECT (@SPRED) IF (*-1 BOS OR CLB OR PUNCT BARRIER NOT-CC)(0 ("sáluk"))(1 (N Nom));
 	## Sálugin gudi rievtesferdukvuodav nälggu ja gåjkki, sij galliduvvi.
 	## Sálugin ármmogisá, sij ármmogisvuodav oadtju.
+
+
+	# Verbal functions - from sme
+	# ----------------
+
+SELECT (@+FAUXV) IF (*1 Inf OR PrfPrc OR GerII BARRIER SV-BOUNDARY2);
+	## Máhtte áigu heaitit vuola juhkamis.
+	## Lijma juo mælggadav buorep dálkijt vuordatjam.
+
+SELECT (@+FAUXV) IF (*1 ConNeg BARRIER S-BOUNDARY2 OR Neg);
+	## Allos dattege šatta nu go mun dáhtun, muhto nugo don dáhtut.
+
+REMOVE (@+FAUXV) IF (0 AUX-OR-MAIN)(NOT *1 Inf OR PrfPrc OR GerII OR ConNeg BARRIER S-BOUNDARY2);
+	## Maid Máret áiggui goarrumis?
+	## Åro sjávot desik lav tjielggim.
+
+SELECT (@-FAUXV) IF (*1 Inf OR PrfPrc OR GerII BARRIER S-BOUNDARY2);
+	## In beassan dal deatnojohtima oaidnit.
+
+REMOVE (@-FAUXV) IF (0 (@-FMAINV))(NOT *1 Inf BARRIER S-BOUNDARY2);
+	## Sápmelaččat ledje orron dáin guovlluin 1600-logu birrasiin. 
+
+SELECT (@-FMAINV) IF (*-1C (@SUBJ) BARRIER S-BOUNDARY2 LINK 0 Sg)(0 Inf);
+	## Vuoigatvuohta journála geahččat.
+
+SELECT (@+FMAINV) IF (*-1 (@OBJ) BARRIER NOT-ADV-PCLE LINK *-1 (@SUBJ) BARRIER NOT-ADV-PCLE LINK 0 Sg)(0 Sg3);
+	## Juohke háve go olmmoš joddosaji molsu...
+
+SELECT (@+FMAINV) IF (NOT *-2 VFIN BARRIER S-BOUNDARY2)(-1 (@ADVL))(NOT 0 Inf) (NOT *1 VFIN BARRIER S-BOUNDARY2);
+	## Dalle bidjet buođđogeaži.
+	## Dåppe åroj dasik Herodes lij jábmám vaj luluj ålliduvvat.
+
 
 
 # P complements
