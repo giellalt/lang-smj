@@ -561,7 +561,7 @@ LIST TOGETHER-V =  "tjadnat" "tjåhkanit" "viellidit" "viessot" ;
  # TODO: Think of counter examples, i.e. sentences where we have these verbs, but
  # where oktii is not an adverbial.
 
-LIST MOVEMENT-V = "vádtsát" "vádtset" "vuoddját" "vuodjet" "vuolgget";
+LIST MOVEMENT-V = "boahtet" "mannat" "suhkat" "vádtsát" "vádtset" "vuoddját" "vuodjet" "vuolgget";
  
  
 LIST ACTIVITY-V = "duobbmit" "gástadit" "lasedit" "mihttit" "åhpadit";
@@ -573,10 +573,11 @@ LIST ABSTR-ACTIVITY-V = "buoredit" "loabedit" "vilpástallat" ;
 LIST INTELLECTUAL-ACTIVITY-V = "usjudit" ; 
 
 # More to come:
-#LIST VEHICLE-PLACE-V = "" ;   
-#LIST VEHICLE-TOOL-V = "" ;    
-#SET HUMAN-SOURCE-V = VEHICLE-PLACE-V | VEHICLE-TOOL-V ;
+LIST VEHICLE-PLACE-V = "ánodit" "gahtjat" "nisskot" "oadtjot" "suoládit" "valldet" ;   
+LIST VEHICLE-TOOL-V = "buktet" "doalvvot" ;    
+SET HUMAN-SOURCE-V = VEHICLE-PLACE-V | VEHICLE-TOOL-V ;
 # The two subsets differ in their choice of case for members of VEHICLE, but both choose locative for members of the set HUMAN (with the thematic role source)
+
 #LIST ABSTR-ENTITY-COM-V 
 #LIST ONLY-PLACE-LOC-V 
 #LIST HUMAN-LOC-V 
@@ -590,7 +591,7 @@ LIST PLACE-V = "tjuodtjot" "tjællot" "tsæggahit" "válldut" "vuojnnet" "vuojnn
 #LIST STATE-V = "eallit" ;
 #LIST REM-WITH-PARTS = "gaikkihit" ; # Belongs to the DYNAMIC-V. They also take PARTS in comitative case.   
 
-SET DYNAMIC-V = ACTIVITY-V | MOVEMENT-V | VERBAL-ACTIVITY-V | ABSTR-ACTIVITY-V | BODY-ACTIVITY-V | INTELLECTUAL-ACTIVITY-V ;
+SET DYNAMIC-V = ACTIVITY-V | MOVEMENT-V | VERBAL-ACTIVITY-V | ABSTR-ACTIVITY-V | BODY-ACTIVITY-V | INTELLECTUAL-ACTIVITY-V | HUMAN-SOURCE-V ;
 
 #SET DYNAMIC-V = ACTIVITY-V | MOVEMENT-V | VERBAL-ACTIVITY-V | ABSTR-ACTIVITY-V | BODY-ACTIVITY-V | INTELLECTUAL-ACTIVITY-V | ABSTR-ENTITY-COM-V | HUMAN-SOURCE-V | REM-WITH-PARTS ;
 # According to the rules choosing Loc or Com, dynamic-verbs are not connected to TOOLS, ABSTR-TOOLS or CONCEPT in (Pl Loc).
@@ -717,7 +718,7 @@ LIST ESS-ADVL-N = "bäjvádahka" "biegga" "dálkke" "dulvve" "njáhsto" "rássjo
 
 LIST AIGODAT =  "ájge" "gávdda" "ájge#gávdda" "válgga#gávdda" "sámedikke#gávdda ;       
 
-LIST VAHKKU = "biejvve" "b" "tijmma" ;# "jánndur" "båddå" "tjaktja" "tjaktja#giesse" "tjaktja#sjievnnjet" "tjuohte#jahke" "dálvve"	"kloahkka" "kloahkko" "kl" "doajmma#jahke" "gierdde" "giesse" "gidá" "bálle" "idja" "jahke" "jahke#tjuohte" "mánno" "mihttsamárra" "riegádim#biejve" "vahkko" "stuorradigge#gávdda" "1700-#låhko" "1700-#jahke#låhko" ;
+LIST VAHKKU = "biejvve" "b" "gidá" "giesse" "tijmma" ;# "jánndur" "båddå" "tjaktja" "tjaktja#giesse" "tjaktja#sjievnnjet" "tjuohte#jahke" "dálvve"	"kloahkka" "kloahkko" "kl" "doajmma#jahke" "gierdde" "giesse" "gidá" "bálle" "idja" "jahke" "jahke#tjuohte" "mánno" "mihttsamárra" "riegádim#biejve" "vahkko" "stuorradigge#gávdda" "1700-#låhko" "1700-#jahke#låhko" ;
  # The quoteless jahki here is since the preprocessor is not fine-tuned
  # yet, it still gives '"1870-" # jahki N Sg Com'. # lets see if "dbm" works
  
@@ -2461,8 +2462,10 @@ SELECT Pcle IF (*-1 BOS BARRIER NOT-PCLE)(1 ("dal"));
 
 # Gen after Num
 
-SELECT (Sg Gen) IF (*-1 Num BARRIER NPNH)(NOT 0 Po OR CC);
+SELECT (Sg Gen) IF (*-1 Num BARRIER NPNH LINK 0 Gen OR Nom)(NOT 0 Po OR CC OR PxSg3 OR Ill);
 	## Aktat ij buvte guokta härrä dievnnut.
+
+SELECT (Sg Gen) IF (*-1 Num BARRIER NPNH LINK 0 Acc)(NOT 0 Po OR CC OR PxSg3);
 
 # Gen in Spec
 REMOVE (Pl Nom) IF (0 Prop)(*1 N BARRIER NOT-ADJ);
@@ -2603,6 +2606,18 @@ REMOVE Attr IF (1 COMMA)(NOT 2 (A Attr));
 REMOVE Acc IF (NOT *-1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 OR Acc)(0 Num)(1 (Sg Gen))(NOT *1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 OR Acc);
     ## Gå Jesus dåppelt vuolgij, de guokta tjalmedime suv tjuorvo tjuovvolijga:
 
+SELECT (Num Ine) IF (*1C (N Ine) BARRIER NOT-ADJ);
+    ## Gålmån biejven mån manniv dåhku.
+    
+SELECT (Num Ess) IF (*1C (N Ess) BARRIER NOT-ADJ);  
+    ## gålmån guolen # It´s not in Spiik.
+
+SELECT (Num Gen) IF (*1 (N Ill) BARRIER NOT-ADJ);  
+    ## gålmå guolláj
+
+SELECT (Num Com) IF (*1 (N Com) BARRIER NOT-ADJ);  
+    ## gålmåjn guolijn
+  
 
 # ========================== #
 # Disambiguating adpositions #
@@ -2949,9 +2964,9 @@ REMOVE Attr IF (0 (Prop Mal) OR (Prop Fem))(0 Nom)(NOT 1 (N Prop Sur) OR (N Prop
 # Accusative or genitive
 # ----------------------
 
-SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 OR Acc LINK NOT 0 ELAV)(0 (N Gen) OR (N Nom))(NOT 1 (N Acc));
+SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 OR Acc LINK NOT 0 ELAV LINK NOT *-1 Acc BARRIER SV-BOUNDARY2)(0 (N Gen) OR (N Nom))(NOT 1 (N Acc));
 SELECT Acc IF (0 N LINK NOT 0 V)(*1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 LINK NOT *1 Acc BARRIER SV-BOUNDARY2);
-SELECT Acc IF (0 (N Gen) OR (N Acc))(*1 V-TRANS-ACT BARRIER SV-BOUNDARY2 LINK 0 (Actio Ela));
+SELECT Acc IF (0 (N Gen) OR (N Acc))(*1 V-TRANS-ACT BARRIER SV-BOUNDARY2 LINK 0 (Actio Ela) LINK NOT *1 Acc BARRIER SV-BOUNDARY2);
     ## Ale balá Mariav áhkkán válldemis.
 
 
@@ -3091,7 +3106,7 @@ SELECT Nom IF (-1 COMMA OR CC LINK -1 Po LINK -1 Gen LINK *-1 Po BARRIER NPNH LI
 # Nominative in sentence fragments
 # --------------------------------
 
-SELECT Nom IF (NOT *-1 Pr OR V)(0 Gen)(NOT *1 Po OR V);
+SELECT Nom IF (NOT *-1 Pr OR V)(0 Gen LINK NOT 0 Num)(NOT *1 Po OR V);
 	## Sjokoláda ja næjtso
 
 
@@ -3158,6 +3173,8 @@ SELECT (Gen) IF (*-1 VFIN)(0C N LINK 0 Com OR Ill)(1C N);
 
 # Sg Ill = Pl Com =  Pl Gen (if no CG)
 
+SELECT (N Ill) IF (*-1C (Num Gen))(NOT 0 Gen);
+
 SELECT Ill IF (1 ILLV LINK 1 Nom BARRIER NPNH);
 
 SELECT Ill IF (*-1 ILLV BARRIER NOT-AA);
@@ -3175,6 +3192,9 @@ SELECT Ill IF (1 (@CC-NP))(*2C Ill BARRIER NOT-ADJ);
 # Comitative
 # ==========
     
+SELECT Com IF (*-1C (Num Com));
+    ## avtajn guolijn
+
 SELECT Com IF (-2 IV)(-1 ("akta" Ess))(0 Ine);
     ## Bievddegáddáj viellidin aktan sujna ja åhpadisålmmåj.
 
@@ -3190,8 +3210,8 @@ SELECT Com IF (*-2 Ill BARRIER NOT-ADV-PCLE-VFIN)(-1 N)(0 Gen LINK NOT 0 V)(NOT 
 SELECT (Sg Com) IF (-1 (Dem Sg Com))(0 N);
     ## Dájna vuogijn profehta Jesaja bágo sidjij ålliduvvi.
     
-SELECT (Sg Com) IF (*-1 DYNAMIC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 (Pl Ine) LINK 0 TOOLS OR ABSTR-TOOLS OR WRITING-TOOLS OR CONCEPT);
-SELECT (Sg Com) IF (0 (Pl Ine) LINK 0 TOOLS OR ABSTR-TOOLS OR WRITING-TOOLS OR CONCEPT)(*1 DYNAMIC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV);
+SELECT (Sg Com) IF (*-1 DYNAMIC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV LINK NOT 0 HUMAN-SOURCE-V)(0 (Pl Ine) LINK 0 TOOLS OR ABSTR-TOOLS OR WRITING-TOOLS OR CONCEPT);
+SELECT (Sg Com) IF (0 (Pl Ine) LINK 0 TOOLS OR ABSTR-TOOLS OR WRITING-TOOLS OR CONCEPT)(*1 DYNAMIC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV LINK NOT 0 HUMAN-SOURCE-V);
     ## Mån dijáv tjátjijn buorádussaj gástadav.
     ## Ájlis Vuojŋŋanisájn ja dålåjn sån dijáv gástat. 
     ## Guhtis dijás mårråhijnes ga máhttá stihko guhkev viessomájggásis lasedit?
@@ -3276,21 +3296,12 @@ SELECT Com IF (0 BODY)(*1 BODY-ACTIVITY-V OR VERBAL-ACTIVITY-V BARRIER SV-BOUNDA
     
 #SELECT (Pl Loc) IF (*-1 VERBAL-ACTIVITY-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 Com LINK 0 EVENT OR EVENT-TOOL-ACTIO);
   	## Dan geažil lea dehálaš ávžžuhit bargiid sámástit ráđđádallamiin.
-  
- 
-	
-# Dynamic-verb but not HUMAN-SOURCE-V
-# - - - - - - - - - - - - - - - - - - - 
-#SELECT (Sg Com) IF (*-1 DYNAMIC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV LINK NOT 0 HUMAN-SOURCE-V)(0 (Pl Loc) LINK 0 HUMAN);
-#SELECT (Sg Com) IF (0 (Pl Loc) LINK 0 HUMAN)(*1 DYNAMIC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV LINK NOT 0 HUMAN-SOURCE-V);
-    # "Minste felles multiplum" for the from-human-verbs. The same rules come the other way round after the comitative-chapter - after we have picked out the special cases. 
-
-  
+   
 
 # FROM-HUMAN-LOC-VEH-V
 # - - - - - - - - - - -
-#SELECT (Sg Com) IF (*-1 VEHICLE-TOOL-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 (Pl Loc) LINK 0 VEHICLE);
-#SELECT (Sg Com) IF (0 (Pl Loc) LINK 0 VEHICLE)(*1 VEHICLE-TOOL-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV);
+SELECT (Sg Com) IF (*-1 VEHICLE-TOOL-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 Ine LINK 0 VEHICLE);
+SELECT (Sg Com) IF (0 Ine LINK 0 VEHICLE)(*1 VEHICLE-TOOL-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV);
     ## Sii bukte girjjiid biillain.
 
 
@@ -3366,6 +3377,9 @@ REMOVE Ess IF (-1 Indef LINK NOT 0 ("sæbbmi") OR ("nubbe") OR ("ietjá"))(0 N);
 SELECT Ine IF (0 (N Plc Ess));
 	## Jesus lij riegádam Betleheman.
          # Needs further condition!!
+         
+SELECT (N Ine) IF (0 VAHKKU OR MANNU)(*1 VFIN BARRIER NP-BOUNDARY);
+    ## Gidán máhttá oaggut.         
 
 SELECT Ine IF (1 COPULAS)(*2 (N Nom) BARRIER VERB);
     ## Sujna le goajvvo giedan.
@@ -3389,8 +3403,13 @@ SELECT Ine IF (*-1 VERBAL-ACTIVITY-V LINK 0 Pass BARRIER NPNH)(0 TEXT OR ABSTR-T
   	
 SELECT Ine IF (0 PLACE)(*1 PLACE-V BARRIER SV-BOUNDARY2);  	
 
+SELECT Ine IF (*-1 (Num Ine) BARRIER NOT-ADJ)(0 VAHKKU)(*1 VFIN BARRIER S-BOUNDARY);
+    ## Gålmån biejven mån manniv dåhku.
+    
+    
     
 # Coordination:
+# - - - - - - -
 SELECT Ine IF (*-1 COPULAS BARRIER SV-BOUNDARY2 LINK 0 FMAINV LINK *1 Nom BARRIER NPNH LINK 1 CC)(0 N OR Pers)(*1 (N Nom) BARRIER NPNH);
     ## Riehpihijn li lieso ja alme låttijn biese. 
 
@@ -3421,6 +3440,9 @@ SELECT (Pl Ine) IF (NOT *-1 COMV BARRIER SV-BOUNDARY2)(0 (Sg Com) LINK 0 PLACE)(
 
 # Elative
 # ======= 
+SELECT (N Ela) IF (*-1C (Num Par));
+    ## avtat guoles 
+
 SELECT Ela IF (1 (IV PrfPrc));
     ## Maria lij ájlis Vuojŋŋanisás sahkanam, ..
 
@@ -3439,6 +3461,13 @@ SELECT Ela IF (*-1 COPULAS BARRIER VERB)(0 N OR Pers)(1 Comp OR ("ienep" Ess))(2
     ## Valla dánna le juoga Jonas ienebun.
     ## Oahppe ij le åhpadiddjes bárep.
     ## Nissunis riegádam ij le Johannes gástadiddjes stuoráp.
+    
+    # HUMAN-SOURCE-V
+    # - - - - - - - - 
+SELECT Ela IF (0 PxSg3 LINK NOT 0 TOOLS OR ABSTR-TOOLS OR WRITING-TOOLS OR CONCEPT LINK *-1 HUMAN-SOURCE-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV);
+SELECT Ela IF (0 PxSg3 LINK NOT 0 TOOLS OR ABSTR-TOOLS OR WRITING-TOOLS OR CONCEPT)(*1 HUMAN-SOURCE-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV);
+ 
+    
 
  
 # Essive
@@ -3446,6 +3475,9 @@ SELECT Ela IF (*-1 COPULAS BARRIER VERB)(0 N OR Pers)(1 Comp OR ("ienep" Ess))(2
 
 SELECT Ess IF (0 Ine LINK 0 ESS-NOUN);
     ## Sálugin gudi vuojŋŋanisán li häjo.
+    
+SELECT ("viehkke" Ess) IF (-1 Ill)(*-2 ("boahtet") BARRIER NOT-ADV);   
+    ## Boade munji viehkken.
 
 REMOVE Ine IF (*-1 OPREDV BARRIER Ess)(0 Ess);
 REMOVE Ine IF (0 Ess)(*1 OPREDV LINK NOT 1 Ess);
@@ -3472,6 +3504,8 @@ REMOVE Par IF (0 (Dem Sg Nom))(1C (N Sg Nom));
 
 # Person
 # ======
+SELECT (Ind Pl1) IF (*-1 (Pers Pl1 Nom) BARRIER NOT-ADV-PCLE);
+    ## Giesen mij vuojadip.
 
 # Copula
 
