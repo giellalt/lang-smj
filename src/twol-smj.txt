@@ -29,12 +29,12 @@ FLAGINIT(<<SHORTCOMP>>)
 FLAGINIT(<<DIPHSIMPL>>)
 
 Alphabet
- a á b c d e f g h i j k l m n ñ ŋ o p q			! small
+ a á b c d e f g h i j k l m n ñ ń ŋ o p q			! small
  r s t u v w x y z å ä ø ö å æ %-
  é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý
  ç č đ ð š ŧ þ ß ª
 
- A Á B C D E F G H I J K L M N Ñ Ŋ O P Q			! capital
+ A Á B C D E F G H I J K L M N Ñ Ń Ŋ O P Q			! capital
  R S T U V W X Y Z Å Ä Ø Ö Å Æ 
  É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý
  Ç Č Đ Ð Š Ŧ þ
@@ -50,14 +50,14 @@ ENDKEEP
 
  e1:e i1:i o1:o o3:o u1:u   ! Morphophonemes  in sme, here temporarily due to common propernoun file
 
- h2:h g2:g m2:m n2:n		! these are deleted in nom
- b3:b d3:d g3:g l3:l m3:m n3:n h3:h r3:r	! these can not occur before #
+ h2:h g2:g m2:m n2:n		                    ! these are deleted in nom
+ b3:b d3:d g3:g l3:l m3:m n3:n h3:h r3:r    	! these can not occur before #
  k3:k t3:t                                      ! Non-sámi cons clusters
  e3:e o3:o                                      ! Wd-final foreign vow
 
- X1:0 X2:0 X3:0 X4:0 X5:0 X6:0 X7:0 X8:0 X9:0  ! Diacritics
- Q1:0 Q2:0 Q3:0 Q4:0 Q5:0 Q6:0 Q7:0 Q8:0 Q9:0  ! They trigger morphophono-
- Y1:0 Y2:0 Y3:0 Y4:0 Y5:0 Y6:0 Y7:0 Y8:0 Y9:0 ;     ! logical rules
+ X1:0 X2:0 X3:0 X4:0 X5:0 X6:0 X7:0 X8:0 X9:0   ! Diacritics
+ Q1:0 Q2:0 Q3:0 Q4:0 Q5:0 Q6:0 Q7:0 Q8:0 Q9:0   ! They trigger morphophono-
+ Y1:0 Y2:0 Y3:0 Y4:0 Y5:0 Y6:0 Y7:0 Y8:0 Y9:0 ; ! logical rules
 
 Sets
  Vow = a á e i o u y æ ä ø ö å
@@ -420,10 +420,10 @@ KEEPIF(SHORTCOMP)
  
 "Facultative oa:å Diphtong Simplification Part II"
  a:å => o: _ Cns:+ Vow:0  X9: ; !Facultative in first-part of compounds
-ENDKEEP 
 !	 [ #: | Cns: | Dummy: ] o: _ Cns:* o: ( Dummy:* - Q3: ) j ; ! o-stems, before j. !rm when tested
 ! The rule complexes are identical, but fix different parts of the monophtongisation.
 ! Note that the "o-stems before j" part is restricted to Ill & Com Sg, cf. bug #136.
+ENDKEEP 
 
 
 ! æ:e diphthong simplificaton
@@ -768,16 +768,16 @@ ENDKEEP
 ! there to resolve the => conflict between the two rules.
 
 "o:u in Com sg"
-o:u => Cns:  _      X4: j ; !X4 IllSg
-! o:u => Cns:  _ (Q1:0 | Q4:0) X5:0 j n ; ! Q1 X5 ComSg. !parenthesis (Q1:0) bec of no CG in certain words. commented out because ælojn is right, not elujn
+o:u  => Cns:  _       X4: j ; !X4 IllSg
+!o:u => Cns:  _ (Q1:0 | Q4:0) X5:0 j n ; ! Q1 X5 ComSg. !parenthesis (Q1:0) bec of no CG in certain words. commented out because ælojn is right, not elujn
         Cns:  _ Cns:+ X5: Vow ; !Odd-syllable
-        Cns:  _    [ Y1: | Y2: | Y3: ] ; ! Y1=  Y2= Y3=PrfPrc 
-        Cns:* _      Y5: ; !verb der. (u/a/å)d
+        Cns:  _     [ Y1: | Y2: | Y3: ] ; ! Y1=  Y2= Y3=PrfPrc 
+        Cns:* _       Y5: ; !verb der. (u/a/å)d
         Cns:  _ Cns:* Y4: Vow ; !verb der. alla
-!        Cns:  _      Y6:0 X5:0 j n ; ! Com sg of Actor nouns commented out because ælojn is right, not elujn
-        Cns:  _      Y6:0 X4:0 j ; ! IllSg of Actor nouns
-        Cns:* _      X7: ; ! báhko : bágusj, goahte : godásj
-        Cns:* _      Y7: ; ! PrsPrc dim
+!       Cns:  _       Y6:0 X5:0 j n ; ! Com sg of Actor nouns commented out because ælojn is right, not elujn
+        Cns:  _       Y6:0 X4:0 j ; ! IllSg of Actor nouns
+        Cns:* _       X7: ; ! báhko : bágusj, goahte : godásj
+        Cns:* _       Y7: ; ! PrsPrc dim
   
 "o:u in  certain stem types"
 o:u <= Cns:  _ X4: j ; !X4 IllSg
@@ -818,7 +818,7 @@ ENDKEEP
 "å-stem vowel deletion" 
  å:0 <=> Cns: _ [ Y8: | Y9: ] ; !in even-syllable verbs, imp 1du, 1pl and short passives
  KEEPIF(SHORTCOMP)
-          Cns: _  X9: ; !in first-part compounds
+         Cns: _  X9: ; !in first-part compounds
 ENDKEEP
 
 ! alternations valid for several stem types
@@ -844,203 +844,155 @@ ENDKEEP
 
 "Consonant gradation b:0"
 b:0 <=> Vow: ( b )     _ m                 Vow: (StemCns:) WeG: ; ! S1-3, S1-2 bbn:b0n, bn:0n
-KEEPIF(SHORTCOMP)
-        Vow: ( b )     _ m                 Vow:0  X9: ; !first part of compounds
-ENDKEEP
 !	    Vow:           _ [d|j|l|n|r|s] Vow: (StemCns:) WeG: ; ! S1-2
 	    Vow: [ j|l|r ] _ b             Vow: (StemCns:) WeG: ; ! S3-3
-KEEPIF(SHORTCOMP)
-	    Vow: [ j|l|r ] _ b             Vow:0  X9: ; ! first part of compounds
-            Vow:   b:      _               Vow:0  X9: ; ! first part of compounds
-ENDKEEP
 	    Vow:           _ b: m          Vow:  X6:            ; ! III-I special gradation ! bbm:m
 	    Vow:   b:      _    m          Vow:  X6:            ; ! III-I special gradation ! bbm:m
+KEEPIF(SHORTCOMP)
+        Vow: ( b )     _    m          Vow:0  X9: ; !first part of compounds
+	    Vow: [ j|l|r ] _ b             Vow:0  X9: ; ! first part of compounds
+        Vow:   b:      _               Vow:0  X9: ; ! first part of compounds
+ENDKEEP
 
 "Consonant gradation d:0"
 d:0 <=> Vow: ( d )             _ [ n | j ] Vow: ( StemCns: ) WeG: ; ! S1-3, S1-2 ddn:d0n, dn:0n
-KEEPIF(SHORTCOMP)
-        Vow: ( d )             _ [ n | j ] Vow:0  X9: ;             !first part of compounds
-ENDKEEP
         Vow: ( d )             _   n   j   Vow: ( StemCns: ) WeG: ; ! S1-4 and S1, dnj:nj
-KEEPIF(SHORTCOMP)
-        Vow: ( d )             _   n   j   Vow:0  X9: ;             !first part of compounds
-ENDKEEP
         Vow: [ b | j | r | v ] _ d         Vow: ( StemCns: ) WeG: ; ! S3
-KEEPIF(SHORTCOMP)
-        Vow: [ b | j | r | v ] _ d         Vow:0  X9: ;             !first part of compounds
-        Vow: d:                _           Vow:0  X9: ;             !first part of compounds
-ENDKEEP
         Vow:                   _ d: n      Vow:   X6: ;             ! III-I special gradation ddn:n
         Vow: d:                _    n      Vow:   X6: ;             ! III-I special gradation ddn:n
         Vow:                   _ t:s   j          #:  ;             ! oajváladtj# : oajvála0sj0
+KEEPIF(SHORTCOMP)
+        Vow: ( d )             _ [ n | j ] Vow:0  X9: ;             !first part of compounds
+        Vow: ( d )             _   n   j   Vow:0  X9: ;             !first part of compounds
+        Vow: [ b | j | r | v ] _ d         Vow:0  X9: ;             !first part of compounds
+        Vow: d:                _           Vow:0  X9: ;             !first part of compounds
+ENDKEEP
 
 "Consonant gradation g:0"
-g:0 <=> Vow: ( g ) _ [ñ|ń|ŋ] Vow: (StemCns: ) WeG: ; ! S1-3, S1-2
+g:0 <=> Vow: ( g )       _    [ñ|ń|ŋ] Vow: ( StemCns: ) WeG: ; ! S1-3, S1-2
+    	Vow: [ j|l|r|v ] _ g          Vow: ( StemCns: ) WeG: ; ! S3
+    	Vow:             _ g: [ñ|ń|ŋ] Vow: X6: ; ! III-I special gradation
+    	Vow:   g:        _    [ñ|ń|ŋ] Vow: X6: ; ! III-I special gradation
 KEEPIF(SHORTCOMP)
-        Vow: ( g ) _ [ñ|ń|ŋ]   Vow:0  X9: ; !first part of compounds
+        Vow: ( g )       _    [ñ|ń|ŋ] Vow:0  X9: ; !first part of compounds
+        Vow: [ j|l|r|v ] _ g          Vow:0  X9: ; !first part of compounds
+        Vow:   g:        _            Vow:0  X9: ; !first part of compounds
 ENDKEEP
-    	Vow: [ j|l|r|v ] _ g Vow: ( StemCns: ) WeG: ; ! S3
-KEEPIF(SHORTCOMP)
-        Vow: [ j|l|r|v ] _ g   Vow:0  X9: ; !first part of compounds
-        Vow: g: _   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-    	Vow: _ g: [ñ|ń|ŋ] Vow: X6: ; ! III-I special gradation
-    	Vow: g: _ [ñ|ń|ŋ] Vow: X6: ; ! III-I special gradation
 
 "Consonant gradation k:0"
-k:0 <=> Vow: k _ n Vow: ( StemCns: ) WeG: ; ! S1-3
+k:0 <=> Vow:     k         _ n   Vow: ( StemCns: ) WeG: ; ! S1-3
+    	Vow:     k         _ t j Vow: ( StemCns: ) WeG: ; ! S1-4
+    	Vow: [ j|l|m|r|v ] _ k   Vow: ( StemCns: ) WeG: ; ! S3
+    	Vow:     h         _ k   Vow: ( StemCns: ) WeG: ; ! S4, preasp stops
 KEEPIF(SHORTCOMP)
-    Vow: k _ n   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-	Vow: k _ t j Vow: ( StemCns: ) WeG: ; ! S1-4
-KEEPIF(SHORTCOMP)
-	Vow: k _ t j   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-	Vow: [ j|l|m|r|v ] _ k Vow: ( StemCns: ) WeG: ; ! S3
-KEEPIF(SHORTCOMP)
-    Vow: [ j|l|m|r|v ] _ k   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-	Vow: h _  k Vow: ( StemCns: ) WeG: ; ! S4, preasp stops
-KEEPIF(SHORTCOMP)
-	Vow: h _  k   Vow:0  X9: ; !first part of compounds
+	    Vow:     k         _ n   Vow:0  X9: ; !first part of compounds
+		Vow:     k         _ t j Vow:0  X9: ; !first part of compounds
+	    Vow: [ j|l|m|r|v ] _ k   Vow:0  X9: ; !first part of compounds
+		Vow:     h         _ k   Vow:0  X9: ; !first part of compounds
 ENDKEEP
 
 "Consonant gradation l:0"
-l:0 <=> Vow: l _ [ d|j|t|n ] Vow: ( StemCns: ) WeG: ; ! S1-3
+l:0 <=> Vow:   l       _ [ d|j|t|n ] Vow: ( StemCns: ) WeG: ; ! S1-3
+		Vow:   l       _ t j         Vow: ( StemCns: ) WeG: ; ! S1-4
+		Vow:   l       _             Vow: ( StemCns: ) WeG: ; ! S2, II-I
+		Vow: [ j|b|v ] _ l           Vow: ( StemCns: ) WeG: ; ! S3
 KEEPIF(SHORTCOMP)
-    Vow: l _ [ d|j|t|n ]   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-	Vow: l _ t j Vow: ( StemCns: ) WeG: ; ! S1-4
-KEEPIF(SHORTCOMP)
-	Vow: l _ t j   Vow:0  X9: ;  !first part of compounds
-ENDKEEP
-	Vow: l _ Vow: ( StemCns: ) WeG: ; ! S2, II-I
-KEEPIF(SHORTCOMP)
-	Vow: l _   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-	Vow: [ j|b|v ] _ l  Vow: ( StemCns: ) WeG: ; ! S3
-KEEPIF(SHORTCOMP)
-	Vow: [ j|b|v ] _ l    Vow:0  X9: ; !first part of compounds
+	    Vow:   l       _ [ d|j|t|n ] Vow:0  X9: ; !first part of compounds
+		Vow:   l       _ t j         Vow:0  X9: ;  !first part of compounds
+		Vow:   l       _             Vow:0  X9: ; !first part of compounds
+		Vow: [ j|b|v ] _ l           Vow:0  X9: ; !first part of compounds
 ENDKEEP
 
 "Consonant gradation m:0"
-m:0 <=> Vow: m _ [ b|p ] Vow: ( StemCns: ) WeG: ; ! S1-3
+m:0 <=> Vow: m         _ [ b|p ] Vow: ( StemCns: ) WeG: ; ! S1-3
+		Vow: m         _         Vow: ( StemCns: ) WeG: ; ! S2, II-I
+		Vow: [ j|l|r ] _ m       Vow: ( StemCns: ) WeG: ; ! S3
+		Vow:           _ Q1: X1: n ; ! Deleting Final Cns in Short Essive of Uneven Syllables
 KEEPIF(SHORTCOMP)
-    Vow: m _ [ b|p ]   Vow:0  X9: ; !first part of compounds
+	    Vow: m         _ [ b|p ] Vow:0  X9: ; !first part of compounds
+		Vow: m         _         Vow:0  X9: ; !first part of compounds
+		Vow: [ j|l|r ] _ m       Vow:0  X9: ; !first part of compounds
 ENDKEEP
-	Vow: m _ Vow: ( StemCns: ) WeG: ; ! S2, II-I
-KEEPIF(SHORTCOMP)
-	Vow: m _ Vow:0    X9: ; !first part of compounds
-ENDKEEP
-	Vow: [ j|l|r ] _ m Vow: ( StemCns: ) WeG: ; ! S3
-KEEPIF(SHORTCOMP)
-	Vow: [ j|l|r ] _ m   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-	Vow: _ Q1: X1: n ; ! Deleting Final Cns in Short Essive of Uneven Syllables
 
 "Consonant gradation n:0"
-n:0 <=> Vow: n _ d Vow: ( StemCns: ) WeG: ; ! S1-3
+n:0 <=> Vow:         n           _ d           Vow: ( StemCns: ) WeG: ; ! S1-3
+		Vow:         n           _ t ([ j|s ]) Vow: ( StemCns: ) WeG: ; ! S1-4
+		Vow:         n           _ ( j )       Vow: ( StemCns: ) WeG: ; ! S2, II-I, also palat.
+		Vow: [ b|j|l|ñ|ń|ŋ|r|v ] _ n           Vow: ( StemCns: ) WeG: ; ! S3, III-II
+		Vow: [ b|r|v ]           _ n j         Vow: ( StemCns: ) WeG: ; ! S3-4, III-II
 KEEPIF(SHORTCOMP)
-    Vow: n _ d   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-	Vow: n _ t ([ j|s ]) Vow: ( StemCns: ) WeG: ; ! S1-4
-KEEPIF(SHORTCOMP)
-	Vow: n _ t [ j|s ]   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-	Vow: n _ ( j ) Vow: ( StemCns: ) WeG: ; ! S2, II-I, also palat.
-KEEPIF(SHORTCOMP)
-	Vow: n _ ( j )   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-	Vow: [ b|j|l|ñ|r|v ] _ n Vow: ( StemCns: ) WeG: ; ! S3, III-II
-KEEPIF(SHORTCOMP)
-	Vow: [ b|j|l|ñ|r|v ] _ n   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-	Vow: [ b|r|v ] _ n j Vow: ( StemCns: ) WeG: ; ! S3-4, III-II
-KEEPIF(SHORTCOMP)
-	Vow: [ b|r|v ] _ n j   Vow:0  X9: ; !first part of compounds
+	    Vow:         n           _ d           Vow:0  X9: ; !first part of compounds
+		Vow:         n           _ t [ j|s ]   Vow:0  X9: ; !first part of compounds
+		Vow:         n           _ ( j )       Vow:0  X9: ; !first part of compounds
+		Vow: [ b|j|l|ñ|ń|ŋ|r|v ] _ n           Vow:0  X9: ; !first part of compounds
+		Vow: [ b|r|v ]           _ n j         Vow:0  X9: ; !first part of compounds
 ENDKEEP
 
 "Consonant gradation p:0"
-p:0 <=> Vow: p _ [ s|t ] ( j ) Vow: ( StemCns: ) WeG: ; ! S1-3, S1-4 j
+p:0 <=> Vow:         p   _ [ s|t ] ( j ) Vow: ( StemCns: ) WeG: ; ! S1-3, S1-4 j
+        Vow:         p   _ t s           Vow: ( StemCns: ) WeG: ; ! S1-4 ppts:pts
+        Vow: [ j|l|r|v ] _ p             Vow: ( StemCns: ) WeG: ; ! S3 
+        Vow:   h         _ p             Vow: ( StemCns: ) WeG: ; ! S4 hpp:hp
 KEEPIF(SHORTCOMP)
-    Vow: p _ [ s|t ] ( j )   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-	Vow: p _ t s Vow: ( StemCns: ) WeG: ; ! S1-4 ppts:pts
-KEEPIF(SHORTCOMP)
-	Vow: p _ t s   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-	Vow: [ j|l|r|v ] _ p Vow: ( StemCns: ) WeG: ; ! S3 
-KEEPIF(SHORTCOMP)
-	Vow: [ j|l|r|v ] _ p   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-	Vow: h _ p Vow: ( StemCns: ) WeG: ; ! S4 hpp:hp
-KEEPIF(SHORTCOMP)
-	Vow: h _ p   Vow:0  X9: ; !first part of compounds
+        Vow:         p   _ [ s|t ] ( j ) Vow:0  X9: ; !first part of compounds
+        Vow:         p   _ t s           Vow:0  X9: ; !first part of compounds
+        Vow: [ j|l|r|v ] _ p             Vow:0  X9: ; !first part of compounds
+        Vow:   h         _ p             Vow:0  X9: ; !first part of compounds
 ENDKEEP
 
 "Consonant gradation s:0"
-s:0 <=> Vow: _ s ( [ j|k|m|n|t ] ) Vow: ( StemCns: ) WeG: ; ! S1-3, S2 II-I
+s:0 <=> Vow:                   _ s ( [ j|k|m|n|t ] ) Vow: ( StemCns: ) WeG: ; ! S1-3, S2 II-I
+        Vow:                   _ s j [ k|m|v ]       Vow: ( StemCns: ) WeG: ; ! S1-4
+        Vow: [ b|j|l|m|n|r|v ] _ s                   Vow: ( StemCns: ) WeG: ; ! S3
+        Vow: [ r|l|m ]         _ s j                 Vow: ( StemCns: ) WeG: ; ! S3-4
+        Vow: [ r|l|n ]         _ s k                 Vow: ( StemCns: ) WeG: ; ! S3-4
+        Vow: [ j|m|n|v ]       _ s t                 Vow: ( StemCns: ) WeG: ; ! S3-4
+        Vow: r                 _ s j t               Vow: ( StemCns: ) WeG: ; ! S3 rssjt:rsjt
+        Vow: s:                _ #: ;                                         ! This is a word fin simpl, ss# -> s#, and not CG
+        Vow:                   _ Q1: X1: n ;                                  ! Deleting Final Cns in Short Essive of Uneven Syllables
 KEEPIF(SHORTCOMP)
-        Vow: _ s ( [ j|k|m|n|t ] )   Vow:0  X9: ; !first part of compounds
+        Vow:                   _ s ( [ j|k|m|n|t ] ) Vow:0  X9: ; !first part of compounds
+        Vow:                   _ s j [ k|m|v ]       Vow:0  X9: ; !first part of compounds
+        Vow: [ b|j|l|m|n|r|v ] _ s                   Vow:0  X9: ; !first part of compounds
+        Vow: [ r|l|m ]         _ s j                 Vow:0  X9: ; !first part of compounds
+        Vow: [ r|l|n ]         _ s k                 Vow:0  X9: ; !first part of compounds
+        Vow: [ j|m|n|v ]       _ s t                 Vow:0  X9: ; !first part of compounds
+        Vow: r                 _ s j t               Vow:0  X9: ; ! No real consonant gradation, rather consonant reduction in compounds (X9)
+        Vow: h:0 t:s           _                     Vow:0  X9: ; ! No real consonant gradation, rather consonant reduction in compounds (X9)
 ENDKEEP
-        Vow: _ s j [ k|m|v ] Vow: ( StemCns: ) WeG: ;            ! S1-4
-KEEPIF(SHORTCOMP)
-        Vow: _ s j [ k|m|v ]   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-        Vow: [ b|j|l|m|n|r|v ] _ s Vow: ( StemCns: ) WeG: ;  ! S3
-KEEPIF(SHORTCOMP)
-        Vow: [ b|j|l|m|n|r|v ] _ s   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-        Vow: [ r|l|m ] _ s j Vow: ( StemCns: ) WeG: ;        ! S3-4
-KEEPIF(SHORTCOMP)
-        Vow: [ r|l|m ] _ s j   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-        Vow: [ r|l|n ] _ s k Vow: ( StemCns: ) WeG: ;         ! S3-4
-KEEPIF(SHORTCOMP)
-        Vow: [ r|l|n ] _ s k   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-        Vow: [ j|m|n|v ] _ s t Vow: ( StemCns: ) WeG: ;          ! S3-4
-KEEPIF(SHORTCOMP)
-        Vow: [ j|m|n|v ] _ s t   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-        Vow: r _ s j t Vow: ( StemCns: ) WeG: ; ! S3 rssjt:rsjt
-KEEPIF(SHORTCOMP)
-        Vow: r _ s j t   Vow:0  X9: ; ! No real consonant gradation, rather consonant reduction in compounds (X9)
-
-        Vow: h:0 t:s _   Vow:0  X9: ; ! No real consonant gradation, rather consonant reduction in compounds (X9)
-ENDKEEP
-        Vow: s: _ #: ; ! This is a word fin simpl, ss# -> s#, and not CG
-        Vow: _ Q1: X1: n ; ! Deleting Final Cns in Short Essive of Uneven Syllables
 
 !"Consonant gradation s:0"
-!s:0 <=> Vow: s _ ( [ j|k|m|n|t ] ) Vow: ( StemCns: ) WeG: ; ! S1-3, S2 II-I
-!        Vow: s _ ( [ j|k|m|n|t ] )   Vow:0  X9: ; !first part of compounds
-!        Vow: s _ j [ k|m|v ] Vow: ( StemCns: ) WeG: ;            ! S1-4
-!        Vow: s _ j [ k|m|v ]   Vow:0  X9: ; !first part of compounds
-!        Vow: [ b|j|l|m|n|r|v ] _ s Vow: ( StemCns: ) WeG: ;  ! S3
-!        Vow: [ b|j|l|m|n|r|v ] _ s   Vow:0  X9: ; !first part of compounds
-!        Vow: [ r|l|m ] _ s j Vow: ( StemCns: ) WeG: ;        ! S3-4
-!        Vow: [ r|l|m ] _ s j   Vow:0  X9: ; !first part of compounds
-!        Vow: [ r|l|n ] _ s k Vow: ( StemCns: ) WeG: ;         ! S3-4
-!        Vow: [ r|l|n ] _ s k   Vow:0  X9: ; !first part of compounds
-!        Vow: [ j|m|n|v ] _ s t Vow: ( StemCns: ) WeG: ;          ! S3-4
-!        Vow: [ j|m|n|v ] _ s t   Vow:0  X9: ; !first part of compounds
-!        Vow: r s _ j t Vow: ( StemCns: ) WeG: ; ! S3 rssjt:rsjt
-!        Vow: r s _ j t   Vow:0  X9: ; ! No real consonant gradation, rather consonant reduction in compounds (X9)
-!        Vow: h:0 t:s _   Vow:0  X9: ; ! No real consonant gradation, rather consonant reduction in compounds (X9)
-!        Vow: s: _ #: ; ! This is a word fin simpl, ss# -> s#, and not CG
-!        Vow: _ Q1: X1: n ; ! Deleting Final Cns in Short Essive of Uneven Syllables
+!s:0 <=> Vow: s                 _ ( [ j|k|m|n|t ] ) Vow: ( StemCns: ) WeG: ; ! S1-3, S2 II-I
+!        Vow: s                 _ j [ k|m|v ]       Vow: ( StemCns: ) WeG: ; ! S1-4
+!        Vow: [ b|j|l|m|n|r|v ] _ s                 Vow: ( StemCns: ) WeG: ; ! S3
+!        Vow: [ r|l|m ]         _ s j               Vow: ( StemCns: ) WeG: ; ! S3-4
+!        Vow: [ r|l|n ]         _ s k               Vow: ( StemCns: ) WeG: ; ! S3-4
+!        Vow: [ j|m|n|v ]       _ s t               Vow: ( StemCns: ) WeG: ; ! S3-4
+!        Vow: r s               _ j t               Vow: ( StemCns: ) WeG: ; ! S3 rssjt:rsjt
+!        Vow: s:                _ #: ;                                       ! This is a word fin simpl, ss# -> s#, and not CG
+!        Vow:                   _ Q1: X1: n ;                                ! Deleting Final Cns in Short Essive of Uneven Syllables
 
-"Consonant gradation ñ:0"
-ñ:0 <=> Vow: [ñ|ń|ŋ] _ ( [ g|k ] ) Vow: ( StemCns: ) WeG: ; ! S1-3, S2 II-I
+!        Vow: s                 _ ( [ j|k|m|n|t ] ) Vow:0  X9: ; !first part of compounds
+!        Vow: s                 _ j [ k|m|v ]       Vow:0  X9: ; !first part of compounds
+!        Vow: [ b|j|l|m|n|r|v ] _ s                 Vow:0  X9: ; !first part of compounds
+!        Vow: [ r|l|m ]         _ s j               Vow:0  X9: ; !first part of compounds
+!        Vow: [ r|l|n ]         _ s k               Vow:0  X9: ; !first part of compounds
+!        Vow: [ j|m|n|v ]       _ s t               Vow:0  X9: ; !first part of compounds
+!        Vow: r s               _ j t               Vow:0  X9: ; ! No real consonant gradation, rather consonant reduction in compounds (X9)
+!        Vow: h:0 t:s           _                   Vow:0  X9: ; ! No real consonant gradation, rather consonant reduction in compounds (X9)
+
+"Consonant gradation ŋ:0"
+Cx:0 <=> Vow:          Cy _ ( [ g|k ] ) Vow: ( StemCns: ) WeG: ; ! S1-3, S2 II-I
+         Vow: [ j|l|r|v ] _ Cy          Vow: ( StemCns: ) WeG: ; ! S3 
+         Vow:          Cy _ k t         Vow: ( StemCns: ) WeG: ;
 KEEPIF(SHORTCOMP)
-        Vow: [ñ|ń|ŋ] _ ( [ g|k ] )   Vow:0  X9: ; !first part of compounds
+         Vow:          Cy _ ( [ g|k ] ) Vow:0  X9: ; !first part of compounds
+         Vow: [ j|l|r|v ] _ Cy          Vow:0  X9: ; !first part of compounds
 ENDKEEP
-        Vow: [ j|l|r|v ] _ [ñ|ń|ŋ] Vow: ( StemCns: ) WeG: ; ! S3 
-KEEPIF(SHORTCOMP)
-        Vow: [ j|l|r|v ] _ [ñ|ń|ŋ]   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-        Vow: [ñ|ń|ŋ] _ k t Vow: ( StemCns: ) WeG: ;
+	where Cx in ( ń ŋ ñ )
+		  Cy in ( ń ŋ ñ )
+    matched ;
+		  
 
 	
 "Consonant gradation f:0"
@@ -1068,27 +1020,21 @@ KEEPIF(SHORTCOMP)
 ENDKEEP
 
 "Consonant gradation t:0"   
-t:0 <=> Vow: [j|ñ|r|v] _ t Vow: ( StemCns: ) WeG: ;             ! S3 jtt:jt etc.
+t:0 <=> Vow: [j|ñ|ń|ŋ|r|v] _ t             Vow: ( StemCns: ) WeG: ;             ! S3 jtt:jt etc.
+    	Vow: [b|j|r|v]     _ t j           Vow: ( StemCns: ) WeG: ;           ! S3
+      	Vow:   [b|j|v]     _ t s           Vow: ( StemCns: ) WeG: ;           ! S3
+    	Vow:       h:      _ t ( [ j|s ] ) Vow: ( StemCns: ) WeG: ; ! S4 htt(j)
+        Vow:       t:s     _ j #: ;                                 ! Word final weakening of -ttj to -sj
+        Vow (Dummy:) s     _ (Hyph) #:  ;                           ! W-Final Cl. Simpl. málestit : máles
+        Vow:       h:      _ t ( [ j|s ] ) Vow: X6: ;               ! III-I special gradation
+                                                  ! Second last rule will fail if and when clitics are added to the word.
+                                                  ! Note that there is no weak grade clitic here.
 KEEPIF(SHORTCOMP)
-        Vow: [j|ñ|r|v] _ t   Vow:0  X9: ; !first part of compounds
+        Vow: [j|ñ|ń|ŋ|r|v] _ t             Vow:0  X9: ; !first part of compounds
+    	Vow: [b|j|r|v]     _ t j           Vow:0  X9: ; !first part of compounds
+    	Vow:   [b|j|v]     _ t s           Vow:0  X9: ; !first part of compounds
+    	Vow:       h:      _ t ( [ j|s ] ) Vow:0  X9: ; !first part of compounds
 ENDKEEP
-    	Vow: [b|j|r|v] _ t j Vow: ( StemCns: ) WeG: ;           ! S3
-KEEPIF(SHORTCOMP)
-    	Vow: [b|j|r|v] _ t j   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-      	Vow:   [b|j|v] _ t s Vow: ( StemCns: ) WeG: ;           ! S3
-KEEPIF(SHORTCOMP)
-    	Vow:   [b|j|v] _ t s   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-    	Vow:       h:  _ t ( [ j|s ] ) Vow: ( StemCns: ) WeG: ; ! S4 htt(j)
-KEEPIF(SHORTCOMP)
-    	Vow:       h:  _ t ( [ j|s ] )   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-        Vow:       t:s _ j #: ;                                 ! Word final weakening of -ttj to -sj
-        Vow (Dummy:) s _ (Hyph) #:  ;                           ! W-Final Cl. Simpl. málestit : máles
-        Vow:       h:  _ t ( [ j|s ] ) Vow: X6: ;               ! III-I special gradation
-                             ! Second last rule will fail if and when clitics are added to the word.
-                             ! Note that there is no weak grade clitic here.
 
 !"Gradation Series 4, II-I, h Loss 1"
 !€ oajváladtj#
@@ -1099,15 +1045,13 @@ ENDKEEP
 
 "Gradation Series 4, II-I, tj and ts"
  h:0 <=> Vow: _ [ k: | p: | t: ] Vow: ( StemCns: ) WeG: ;
- KEEPIF(SHORTCOMP)
-     Vow: _ [ k: | p: | t: ]   Vow:0  X9: ; !first part of compounds
-ENDKEEP
-	 Vow: _ t [j|s] Vow: ( StemCns: ) WeG: ;
+         Vow: _ t [j|s] Vow: ( StemCns: ) WeG: ;
+         Vow: _ t: t: ( [ j|s ] ) Vow: X6: ; ! III-I special gradation
+         Vow: _ Q1: X1: n ; ! Deleting Final Cns in Short Essive of Uneven Syllables
 KEEPIF(SHORTCOMP)
-	 Vow: _ ( t: ) [j|s]   Vow:0  X9: ; !first part of compounds
+         Vow: _ [ k: | p: | t: ]   Vow:0  X9: ; !first part of compounds
+         Vow: _ ( t: ) [j|s]   Vow:0  X9: ; !first part of compounds
 ENDKEEP
-	 Vow: _ t: t: ( [ j|s ] ) Vow: X6: ; ! III-I special gradation
-	 Vow: _ Q1: X1: n ; ! Deleting Final Cns in Short Essive of Uneven Syllables
 ! (t:) for III-I CG)
 
 !"Word final double consonant simplification"
@@ -1233,4 +1177,9 @@ ENDKEEP
 "Consonant insertion as I-III strengthening gradation with d"
  0:d <=> :Vow+ _ d Vow: [ Y6: | Y7: | Y9: ] ;
 
+ 
+ 
+Did more changes to the ñ issue: Replaced ñ with all three n-s also when it alternated with other letters.
+In the cases where ñ was the one to be deleted, in the context of double ñ, we made Cx / Cy variables, e.g. like this:
+ 
  
