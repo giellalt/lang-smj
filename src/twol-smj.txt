@@ -37,7 +37,7 @@ Alphabet
  A Á B C D E F G H I J K L M N Ñ Ŋ O P Q			! capital
  R S T U V W X Y Z Å Ä Ø Ö Å Æ 
  É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý
- Ç Č Đ Ð Š Ŧ þ
+ Ç Č Đ Ð Š Ŧ þ
 
 ! ':0			            ! Gradation mark
  ':0 %/ '1:'            ! From sme.
@@ -128,8 +128,8 @@ Definitions
 !Definitions
 !
 !! CnsPhon = [ [ Cns1 | Cns2: ] | n j | s j | t j | t s ] ;
-!! G3      = [ [ CnsPhon CnsPhon [ CnsPhon+ | '] ] - [[[j|l|m|n|v] s t ] | [l|r] s k | r s j t ] ] ;
-!! G2      = [   CnsPhon CnsPhon |                   [[[j|l|m|n|v] s t ] | [l|r] s k | r s j t ] ] ;
+!! G3      = [ [ CnsPhon CnsPhon [ CnsPhon+ | '] ] - [[[j|l|m|n|v] s t ] | [l|r] s k | r s j t ] ] ;
+!! G2      = [   CnsPhon CnsPhon |                   [[[j|l|m|n|v] s t ] | [l|r] s k | r s j t ] ] ;
 !! G1      =     CnsPhon ;
 !! G12     = [ G1 | G2 ] ;
 !
@@ -167,8 +167,9 @@ Rules
      
 "Word final weakening -tj and -ttj to -sj part 2"
  t:s => Vow: ( Dummy: ) ( d: ) _ j ( Dummy: ) #: ;
+ KEEPIF(SHORTCOMP)
         Vow:               h:0 _ [j|s] Vow:0  X9: ; !facultative in first-part compounds, ts too
-     
+ ENDKEEP
 ! t:s <=> Vow: ( Dummy: ) _ ( t: ) j ( Dummy: ) #: ;
 !€ jågåtj# 
 !€ jågåsj0
@@ -287,14 +288,14 @@ Rules
 !        [ #: | Cns: | Dummy: ] o: _ LowerG12 a:   Y6:     ( X5: )       j ;       !3 ComSg & G-C Pl of Actor nouns from a-verbs, G1
 !        [ #: | Cns: | Dummy: ] o: _ LowerG12 e:   Y6:     ( X5: )       j ;       !4 ComSg & G-C Pl of Actor nouns from e-verbs, G1
          [ #: | Cns: | Dummy: ] o: _ LowerG12 e:   Y1:                     ;       !5 Different verb forms
-         [ #: | Cns: | Dummy: ] o: _ LowerG12 o: [ X4: | [ Q1: | Q4: ] X5: ] j ; !6 Ill&ComSg. 
+         [ #: | Cns: | Dummy: ] o: _ LowerG12 o: [ X4: | [ Q1: | Q4: ] X5: ] j ; !6 Ill&ComSg.
 !        [ #: | Cns: | Dummy: ] o: _ LowerG12 o: [ (Y6:) X4: | [ Y6: | Q1: | Q4: ] X5: ] j ; !6 Ill&ComSg.
          [ #: | Cns: | Dummy: ] o: _ LowerG12 o: (Cns:*) [ Y1: | Y2: | Y3: | Y4: | Y5: | X7: ] ; !7 Long pass and Prs Sg3 etc.  
 !        [ #: | Cns: | Dummy: ] o: _ LowerG12 o: (Cns:*) [ Y1: | Y2: | Y3: | Y4: | Y5: | Y7: | Y9: | X7: ] ; !7 Long pass and Prs Sg3 etc. 
          [ #: | Cns: | Dummy: ] o: _ LowerG12 o:  Cns:+      X5: Vow        ;       !8 odd-syll, oblique
          [ #: | Cns: | Dummy: ] o: _ LowerG12 a    [g2:|l3:]      X3: [ #: | n ] ;       !9 NE låvda         
          [ #: | Cns: | Dummy: ] o: _ LowerG12 e:  Q1:0 t:     j [ #: | [Vow:[v|n|h|b|p|#:]]]; !10 Potensialis doadjet:dåjitjav
-         [ #: | Cns: | Dummy: ] o: _ LowerG12 e:       Q4: ( X5: )       j ;       !11 ComSg & G-C Pl of e-stems
+         [ #: | Cns: | Dummy: ] o: _ LowerG12 e:       Q4: ( X5: )       j ;       !11 ComSg & G-C Pl of e-stems.
          [ #: | Cns: | Dummy: ] o: _ G32      o:u WeG: ; !  X2 X3 X7 Y5 Q1 Q2 Q3 
          [ #: | Cns: | Dummy: ] o: _ G32      e:i WeG: ;
          [ #: | Cns: | Dummy: ] o: _ G32 [ a: | i: ] WeG: ;
@@ -413,13 +414,13 @@ Rules
 !$ boakku00jn 
                         
 
-
+KEEPIF(SHORTCOMP)
 "Facultative oa:å Diphtong Simplification Part I"
  o:0 => _ a: Cns:+ Vow:0  X9: ; !Facultative in first-part of compounds
  
 "Facultative oa:å Diphtong Simplification Part II"
  a:å => o: _ Cns:+ Vow:0  X9: ; !Facultative in first-part of compounds
- 
+ENDKEEP 
 !	 [ #: | Cns: | Dummy: ] o: _ Cns:* o: ( Dummy:* - Q3: ) j ; ! o-stems, before j. !rm when tested
 ! The rule complexes are identical, but fix different parts of the monophtongisation.
 ! Note that the "o-stems before j" part is restricted to Ill & Com Sg, cf. bug #136.
@@ -437,7 +438,9 @@ Rules
          [ #: | Cns: | Dummy: ] _ LowerG12 a:                                                             ; !  WeG of a-stems
          [ #: | Cns: | Dummy: ] _ G32      o:u WeG: ;
          [ #: | Cns: | Dummy: ] _ G32      a: WeG: ;
+KEEPIF(SHORTCOMP)
                                 _ Cns:+    Vow:0       X9: ; !Facultative in first-part of compounds
+ENDKEEP
 
 "æ:e Diphthong Simplification 2"
  æ:e  => [ #: | Cns: | Dummy: ] _ LowerG12 o:         [ X4: | [ Q1: | Q4: ]                 X5: ] j ; !6 Ill&ComSg.
@@ -549,6 +552,7 @@ Rules
 
 "a-stem vowel deletion" 
  a:0 <=> Cns: _ [ Y8: | Y9: ] ; !in even-syllable verbs, imp 1du, 1pl and short passives
+ KEEPIF(SHORTCOMP)
          Cns: _  X9: ; !in first-part compounds
  
  
@@ -557,7 +561,7 @@ Rules
 
 "á-stem vowel deletion" 
  á:0 <=>  Cns: _  X9: ; !in first-part compounds
-
+ENDKEEP
 
 ! e-stem alternations
 ! - - - - - - - - - -
@@ -737,8 +741,9 @@ Rules
 ! ----
  "e-stem vowel deletion" 
   e:0 <=> Cns: _ [ Y8: | Y9: ] ; !in even-syllable verbs, imp 1du, 1pl and short passives
+ KEEPIF(SHORTCOMP) 
           Cns: _  X9: ; !in first-part compounds
- 
+ ENDKEEP
 
 ! i-stem alternations
 ! - - - - - - - - - -
@@ -751,9 +756,10 @@ Rules
  i:á <=> Cns:* _ Y5:0 ;
 ! guollit : guollár
 
+KEEPIF(SHORTCOMP)
 "i-stem vowel deletion" 
- i:0 <=>  Cns: _  X9: ; !in first-part compounds
-
+ i:0 <=> Cns: _  X9: ; !in first-part compounds
+ENDKEEP
 
 ! o-stem alternations
 ! - - - - - - - - - -
@@ -762,25 +768,25 @@ Rules
 ! there to resolve the => conflict between the two rules.
 
 "o:u in Com sg"
- o:u => Cns:  _ (Q1:0 | Q4:0) X5:0 j n ; ! Q1 X5 ComSg. !parenthesis (Q1:0) bec of no CG in certain words.
-        Cns:  _      X4: j ; !X4 IllSg
+o:u => Cns:  _      X4: j ; !X4 IllSg
+! o:u => Cns:  _ (Q1:0 | Q4:0) X5:0 j n ; ! Q1 X5 ComSg. !parenthesis (Q1:0) bec of no CG in certain words. commented out because ælojn is right, not elujn
         Cns:  _ Cns:+ X5: Vow ; !Odd-syllable
         Cns:  _    [ Y1: | Y2: | Y3: ] ; ! Y1=  Y2= Y3=PrfPrc 
         Cns:* _      Y5: ; !verb der. (u/a/å)d
         Cns:  _ Cns:* Y4: Vow ; !verb der. alla
-        Cns:  _      Y6:0 X5:0 j n ; ! Com sg of Actor nouns
+!        Cns:  _      Y6:0 X5:0 j n ; ! Com sg of Actor nouns commented out because ælojn is right, not elujn
         Cns:  _      Y6:0 X4:0 j ; ! IllSg of Actor nouns
         Cns:* _      X7: ; ! báhko : bágusj, goahte : godásj
         Cns:* _      Y7: ; ! PrsPrc dim
   
 "o:u in  certain stem types"
- o:u <= Cns:  _ (Q1:0 | Q4:0) X5:0 j n ; !parenthesis (Q1:0) bec of no CG in certain words.
-        Cns:  _ X4: j ; !X4 IllSg
+o:u <= Cns:  _ X4: j ; !X4 IllSg
+! o:u <= Cns:  _ (Q1:0 | Q4:0) X5:0 j n ; !parenthesis (Q1:0) bec of no CG in certain words. commented out because ælojn is right, not elujn
         Cns:  _ Cns:+ X5: Vow ;  !Odd-syllable
         Cns:  _ [ Y1: | Y2: | Y3: ] ; ! Y1=  Y2= Y3=PrfPrc 
         Cns:* _ Y5: ; !verb der. (u/a/å)d
         Cns:  _ Cns:* Y4: Vow ; !verb der. alla
-        Cns:  _ Y6:0 X5:0 j n ; ! Com sg of Actor nouns
+!        Cns:  _ Y6:0 X5:0 j n ; ! Com sg of Actor nouns commented out because ælojn is right, not elujn
         Cns:  _ Y6:0 X4:0 j ; ! IllSg of Actor nouns
         Cns:* _ X7: ; ! báhko : bágusj, goahte : godásj
         Cns:* _ Y7: ; ! PrsPrc dim
@@ -794,7 +800,9 @@ Rules
  
 "o-stem vowel deletion" 
  o:0 <=> Cns: _ Y9:0 ; !in short passives
+ KEEPIF(SHORTCOMP)
           Cns: _  X9: ; !in first-part compounds
+ENDKEEP
 
 ! å-stem alternations
 ! - - - - - - - - - -
@@ -809,7 +817,9 @@ Rules
 
 "å-stem vowel deletion" 
  å:0 <=> Cns: _ [ Y8: | Y9: ] ; !in even-syllable verbs, imp 1du, 1pl and short passives
+ KEEPIF(SHORTCOMP)
           Cns: _  X9: ; !in first-part compounds
+ENDKEEP
 
 ! alternations valid for several stem types
 ! - - - - - - - - - - - - - - - - - - - - -
@@ -1126,7 +1136,9 @@ ENDKEEP
 "bb:pp"
 b:p <=> Vow:    _ b:  Vow: ( StemCns: ) WeG: ;
         Vow: b: _     Vow: ( StemCns: ) WeG: ;
+KEEPIF(SHORTCOMP)
         Vow:    _   b:0 Vow:0  X9: ; !first part of compounds
+ENDKEEP
 !       Vow:    _ #:0 ;  ! This gives Jakob:Jakop, and it is unclear what it gives.
 ! The last rule is for unnep : unnebu. It must be revised in two ways:
 ! a. it should be extended to more consonants
@@ -1138,7 +1150,9 @@ b:p <=> Vow:    _ b:  Vow: ( StemCns: ) WeG: ;
 "gg:kk"
 g:k <=> Vow:    _ g: Vow: ( StemCns: ) WeG: ;
   	    Vow: g: _ Vow: ( StemCns: ) WeG: ;
+KEEPIF(SHORTCOMP)
 	    Vow:    _  g:0 Vow:0  X9: ; !first part of compounds
+ENDKEEP
 
 !€ vággeQ1
 !€ vákke0
@@ -1155,7 +1169,9 @@ g:k <=> Vow:    _ g: Vow: ( StemCns: ) WeG: ;
 "dd:tt and dtj, dts"
 d:t <=> Vow: _ d: Vow: ( StemCns: ) WeG: ;
 	Vow: d: _ Vow: ( StemCns: ) WeG: ;
+KEEPIF(SHORTCOMP)
 	Vow: _   d:0 Vow:0  X9: ; !first part of compounds
+ENDKEEP
 	Vow: _ t [ j|s ] Vow: ( StemCns: ) WeG: ;
 
 
@@ -1172,8 +1188,8 @@ d:t <=> Vow: _ d: Vow: ( StemCns: ) WeG: ;
 !       Cy in ( p t k )
 !       matched ;
 
-"Gradation Series 7, III-II, ks, kt, ktj, kts"
- k:v <=> Vow: _ [ s|t ] Vow: ( StemCns: ) WeG: ;
+"Gradation Series 7, III-II, ks(t), kt, ktj, kts"
+ k:v <=> Vow: _ [ s|t ] (t) Vow: ( StemCns: ) WeG: ;
 	 Vow: _ t [ j|s ] Vow: ( StemCns: ) WeG: ;
 
 ! Exceptional II-III inverse gradation in present participles
