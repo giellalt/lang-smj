@@ -245,6 +245,7 @@ Rules
 	 Cns   _ Y2:0        ; ! Indicative Present Singular 3rd Final Vowel in verbs
          Cns:* _ Y6:0 X4:0 j ; ! Ill sg of Actor nouns bassat : basse : bas'sáj
          Cns:* _ Y7:         ; ! Diminutive of Actor nouns bassat : basse : bassásj
+         _ Y6: X4: (X4:0) (X8:0) [ m | t | d | s ] ; ! Compulsary e:á in Px, Actors! sálle : sállám
 ! where Vx in ( a i u ) ; ! not all simple vowels ( e o å æ ) are evidently long!
 !€ gussaQ1#
 !€ gu0sá00
@@ -554,6 +555,7 @@ ENDKEEP
  a:0 <=> Cns: _ [ Y8: | Y9: ] ; !in even-syllable verbs, imp 1du, 1pl and short passives
  KEEPIF(SHORTCOMP)
          Cns: _  X9: ; !in first-part compounds
+         
  
  
 ! á-stem alternations
@@ -613,7 +615,7 @@ ENDKEEP
 ! The following two rules constitute a <= / => rule pair.
  
 "e:á in certain stem types 1"
- e:á <=  [ Vow: - å ] Cns:+ _ X4:0 (X4:0) (X8:0) [ m | t | d ] ; ! 1) Compulsory e:á in Px! bárnne : bárnnám
+ e:á <=  [ Vow: - å ] Cns:+ _ X4:0 (X4:0) (X8:0) ; ! 1) Compulsory e:á in Px! bárnne : bárnnám
 [ Vow: - å ] Cns:+ _ X4: (X5: | Q1: )  [ #: | v | n | s | j | t | d | g ] ; ! 2) Ill Sg (context (1) only in part 2)
          [ Vow: - å ] ([ 0:Cns Cns: | Cns: 0:Cns ]) (Cns:+) _ Y6:0 X4:0 j ; ! 3) Ill Sg Actor nouns
          [ Vow: - å ] Cns:+ _ Cns:+ X5: Vow ;     ! 4) Uneven N. 
@@ -817,7 +819,18 @@ ENDKEEP
 ! - - - - - - - - - -
 
 "å:e in Present Participle of even-syllable verbs"
- å:e <=> Cns: _ Y6: ;
+ å:e <=> Cns: _ Y6: [
+ #:
+ |d a
+ |m (a)
+ |n
+ |n a [m|t]
+ |[ s t | n ] i [ h t t e | m m e | s | s [ k a | á ] ]
+ |s (k) (a)
+ |s t a [m|t]
+ |t
+ |v
+ ] :0 - X4: (:0 - X8:) [:0 - s:|:0 - m: |:0 - t: |:0 - d: (a:) ]  ; !All this to prevent change in Px
 ! låhkåt : låhkke
 
 "å:i in Actor nouns of even-syllable verbs"
