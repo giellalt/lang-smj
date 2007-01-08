@@ -245,7 +245,7 @@ Rules
 	 Cns   _ Y2:0        ; ! Indicative Present Singular 3rd Final Vowel in verbs
          Cns:* _ Y6:0 X4:0 j ; ! Ill sg of Actor nouns bassat : basse : bas'sáj
          Cns:* _ Y7:         ; ! Diminutive of Actor nouns bassat : basse : bassásj
-         _ Y6: X4: (X4:0) (X8:0) [ m | t | d | s ] ; ! Compulsary e:á in Px, Actors! sálle : sállám
+         _ Y6: X4: (X4:0) (X8:0) [ m | t | d | s ] ; ! Compulsary e:á in Px, Actors! sállat : sálle : sállám
 ! where Vx in ( a i u ) ; ! not all simple vowels ( e o å æ ) are evidently long!
 !€ gussaQ1#
 !€ gu0sá00
@@ -535,7 +535,7 @@ ENDKEEP
 
 "a:e in Present Participle of even-syllable verbs"
 ! a:e <=> Cns: _ Y6: ; 
- a:e <=> Cns: _ Y6:0 [#:0|n:|s:|v:|m:|t:|d:] ; 
+ a:e <=> Cns: _ Y6:0 [#:|n:|s:|v:|m:|t:|d:] ; 
 ! bassat : bas'se
 
 !Error message, delete this after testing.
@@ -615,7 +615,7 @@ ENDKEEP
 ! The following two rules constitute a <= / => rule pair.
  
 "e:á in certain stem types 1"
- e:á <=  [ Vow: - å ] Cns:+ _ X4:0 (X4:0) (X8:0) ; ! 1) Compulsory e:á in Px! bárnne : bárnnám
+ e:á <=  [ Vow: - å ] ([ 0:Cns Cns: | Cns: 0:Cns ]) (Cns:+) _ (Y6:0) X4:0 (X4:0) (X8:0) [m|t|d|s i [m|t|s|m m e|h t t e|s k a|s á]] ; ! 1) Compulsory e:á in Px! bárnne : bárnnám
 [ Vow: - å ] Cns:+ _ X4: (X5: | Q1: )  [ #: | v | n | s | j | t | d | g ] ; ! 2) Ill Sg (context (1) only in part 2)
          [ Vow: - å ] ([ 0:Cns Cns: | Cns: 0:Cns ]) (Cns:+) _ Y6:0 X4:0 j ; ! 3) Ill Sg Actor nouns
          [ Vow: - å ] Cns:+ _ Cns:+ X5: Vow ;     ! 4) Uneven N. 
@@ -624,7 +624,7 @@ ENDKEEP
          [ Vow: - å ] Cns:+ _ Q2: ;              ! 7) gállet : gáláv
          [ Vow: - å ] Cns:+ _ X7: ;              ! 8) báhko : bágusj, goahte : goadásj
          [ Vow: - å ] ([ 0:Cns Cns: | Cns: 0:Cns ]) (Cns:+) _ Y7: ;              ! 9) PrsPrc dim
-	     [ Vow: - å ] Cns:+ _ [ Q1:0 | Q4:0 ] X4:0 X8:0 ;        ! 10) 1st, 2nd Gen/Acc Px declension
+	     [ Vow: - å ] Cns:+ _ (Y6:0) [ Q1:0 | Q4:0 ] X4:0 X8:0 ;        ! 10) 1st, 2nd Gen/Acc Px declension
          [ Vow: - å ] Cns:+  _ Cns:* Y4: Vow ;    ! 11)verb der. alla
 !         [Cns:|#:] [ a|i|u ] [ Cns:0 Cns: | Cns: Cns:0 ] _ Y5: Cns:+ ; !12) verb Der/(u/a/å)d
          d: i: e: h: (:t) t: _ [Q5:|Q6:|Q7:] ;
@@ -654,7 +654,7 @@ ENDKEEP
 ! e:á <=> [ Vow: - å ] Cns* _ X4:0 [ j #: | s Vow: ] ;
 
 "e:á in certain stem types 2" 
- e:á => [ Vow: - å ] Cns:+ _ X4:0 (X4:0)  (X8:0) [ m | t | d ] ; ! 1) Compulsary e:á in Px! bárnne : bárnnám
+ e:á => [ Vow: - å ] ([ 0:Cns Cns: | Cns: 0:Cns ]) (Cns:+) _ (Y6:0) X4:0 (X4:0)  (X8:0) [m|t|d|s i [m|t|s|m m e|h t t e|s k a|s á]] ; ! 1) Compulsary e:á in Px! bárnne : bárnnám
         [ Vow: - å ] Cns:+ _ X4: (X5:)  [ #: | v | n | s | j | t | d | g ] ; ! 2) Ill Sg
         [ Vow: - å ] ([ 0:Cns Cns: | Cns: 0:Cns ]) (Cns:+) _ Y6:0 X4:0 j ;               ! 3) Ill Sg Actor Nouns
         [ Vow: - å ] Cns:+ _ Cns:+ X5: Vow ;              ! 4) Uneven N
@@ -663,7 +663,7 @@ ENDKEEP
         [ Vow: - å ] Cns:+ _ Q2: ;                       ! 7) gállet : gáláv
         [ Vow: - å ] Cns:+ _ X7: ;                       ! 8) báhko : bágusj, goahte : godásj
         [ Vow: - å ] ([ 0:Cns Cns: | Cns: 0:Cns ]) (Cns:+) _ Y7: ;                       ! 9) PrsPrc dim
-        [ Vow: - å ] Cns:+ _ [ Q1:0 | Q4:0 ] X4:0 X8:0 ;                 ! 10)1st, 2nd Gen/Acc Px declension
+        [ Vow: - å ] Cns:+ _ (Y6:0) [ Q1:0 | Q4:0 ] X4:0 X8:0 ;                 ! 10)1st, 2nd Gen/Acc Px declension
         [ Vow: - å ] Cns:+  _ Cns:* Y4: Vow ;             ! 11)verb der. alla
 !       [Cns:|#:] [ a|i|u ] [ Cns:0 Cns: | Cns: Cns:0 ] _ Y5: Cns:+  ; ! 12) verb Der/(u/a/å)d
         d: i: e: h: (:t) t: _ [Q5:|Q6:|Q7:] ;
@@ -780,9 +780,9 @@ o:u  => Cns:  _       X4: j ; !X4 IllSg
         Cns:  _       Y6:0 X4:0 j ; ! IllSg of Actor nouns
         Cns:* _       X7: ; ! báhko : bágusj, goahte : godásj
         Cns:* _       Y7: ; ! PrsPrc dim
-        _ X4:0 (X8:0) ;        ! Px áhkko:áhkkum
+        _ (Y6:0) X4:0 (X8:0) ;        ! Px áhkko:áhkkum
         _ [Q1:0|Q4:0] X4:0 X8:0 ;        !  1st, 2nd Gen/Acc Px declension
-        _ [Q1:0|Q4:0] X5: j n [a:|i:] ; !Px Com
+        _ (Y6:0) ([Q1:0|Q4:0]) X5: j n [a [m|t]|i [s|m m e|h t t e|s k a|s á]] ; !Px Com
 
   
 "o:u in certain stem types 2"
@@ -796,9 +796,9 @@ o:u <= Cns:  _ X4: j ; !X4 IllSg
         Cns:  _ Y6:0 X4:0 j ; ! IllSg of Actor nouns
         Cns:* _ X7: ; ! báhko : bágusj, goahte : godásj
         Cns:* _ Y7: ; ! PrsPrc dim
-        _ X4:0 (X8:0) ;        ! Px áhkko:áhkkum
+        _ (Y6:0) X4:0 (X8:0) ;        ! Px áhkko:áhkkum
         _ [Q1:0|Q4:0] X4:0 X8:0 ;        ! 1st, 2nd Gen/Acc Px declension
-        _ [Q1:0|Q4:0] X5: j n [a:|i:] ; !Px Com
+        _ (Y6:0) ([Q1:0|Q4:0]) X5: j n [a [m|t]|i [s|m m e|h t t e|s k a|s á]] ; !Px Com
 
 
      
