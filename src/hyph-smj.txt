@@ -13,15 +13,18 @@ define 2ndVow [ e | a | o | u | y | ø | i | E | A | O | U | Y | Ø | I ] ;
 
 define VowNot2ndVow [ Vow - 2ndVow ] ;
 
-define vU [ u | U ] ;
-define vO [ o | O ] ;
-define vA [ a | A ] ;
-define vE [ e | E ] ;
-define vI [ i | I ] ;
-define vEOA [ e | E | o | O | a | A ] ;
-define vIAO [ i | I | a | A | o | O ] ;
-define vØ [ ø | Ø ] ;
-define vUI [ u | U | i | I ] ;
+define vU     [ u | U ] ;
+define vO     [ o | O ] ;
+define vA     [ a | A ] ;
+define vE     [ e | E ] ;
+define vI     [ i | I ] ;
+define vAO    [ a | A | o | O ] ;
+define vAEIO  [ a | A | e | E | i | I | o | O ] ;
+define vAEOU [ a | A | e | E | o | O | u | U ] ;
+define vØ     [ ø | Ø | ö | Ö ] ;
+define vIØ     [ i | I | ø | Ø | ö | Ö ] ;
+define vYØ     [ y | Y | ø | Ø | ö | Ö ] ;
+define vIOU   [ i | I | o | O | u | U ] ;
 
 define VowNotU [ Vow - vU ] ;
 define VowNotO [ Vow - vO ] ;
@@ -38,11 +41,11 @@ define OAdipht [ o a | O a | O A ] ;
 define OUdipht [ o u | O u | O U ] ; ! jour-na-lis-sta
 define AUdipht [ a u | A u | A U ] ; ! fau-na
 define EUdipht [ e u | E u | E U ] ; ! leut-nánta
-define AEdipht [ a e | A e | A E ] ; ! lae-sta-dius
+define AEdipht [ a e | A e | A E ] ; ! lae-sta-dius (gives: laes^ta^dius)
 define ØYdipht [ ø y | Ø y | Ø Y ] ; ! nøyt-rála
 define OEdipht [ o e | O e | O E ] ; ! goe-the
 define IEdipht [ i e | I e | I E ] ; ! skiøld
-define IOdipht [ i o | I o | I O ] ; ! skiold, nation
+define IOdipht [ i o | I o | I O ] ; ! skiold, na-tion
 
 
 
@@ -66,15 +69,15 @@ define cS [ S | s ] ; define Cnss [ Cns - cS ] ;
 
 echo << Rules>>
 
-define befdipht   [..] -> %^ ||     Vow           _ dipht ;
-define nodipht    [..] -> %^ || Cns Vow           _ VowNot2ndVow ;
-define NotXUdipht [..] -> %^ || Cns VowNotEOA _ vU ;
-define NotUOdipht [..] -> %^ || Cns VowNotUI _ vO ;
-define NotOAdipht [..] -> %^ || Cns VowNotO _ vA ;
-define NotIEdipht [..] -> %^ || Cns VowNotIAO _ vE ;
-define NotØYdipht [..] -> %^ || Cns VowNotØ _ vY ;
-define NotIØdipht [..] -> %^ || Cns VowNotI _ Ø Sgm ;
-!Cns VowNotU _ vO , Cns VowNotO       _ [vA|vU] , Cns VowNotI _ vE
+define befdipht   [..] -> %^ ||       Vow               _ dipht ;        ! ta^iet
+define nodipht    [..] -> %^ || Cns   Vow               _ VowNot2ndVow ; ! By^ån.
+define NotXUdipht [..] -> %^ || Cns [ Vow - vAEOU ]     _ vU ;           ! by^ungdom, fauna
+define NotUOdipht [..] -> %^ || Cns [ Vow - vIOU ]      _ vO ;           ! fly^ost
+define NotOAdipht [..] -> %^ || Cns [ Vow - vAO ]       _ vA ;           ! ni^an
+define NotIEdipht [..] -> %^ || Cns [ Vow - vAEIO ]     _ vE ;           ! Le)
+define NotØYdipht [..] -> %^ || Cns [ Vow - vYØ ]       _ vY ;           ! 
+define NotIØdipht [..] -> %^ || Cns [ Vow - vIØ ]       _ vØ Sgm ;        ! 
+!Cns VowNotU _ vO , Cns VowNotO                         _ [vA|vU] , Cns VowNotI _ vE
 
 define rdnj4cns [..] -> %^ || Vow (Cns) r       _ d n j ;
 define unvoiced [..] -> %^ || Vow (Cns)         _ h [ n | m | l | j | r ] Vow ;
@@ -104,7 +107,9 @@ define s2cnswg  [..] -> %^ || Vow Cns   _ s (j)  (Cnss) Vow ;
                                                          ! " Vow (Cns)" as LC gives må-rå-stit, 
                                                          ! fá-sto, now rås-tit, fás-to.
 
-define j4cns    [..] -> %^ || Vow  Cns Cns Cns  _ [ [s|t|n] j | t s ] Vow ;
+! Ordered rule set: Maximise coda: 3 cns before 2 cns before 1 cns before vow:
+
+define j4cns    [..] -> %^ || Vow  Cns Cns Cns  _ [ [s|t|n] j | t s ] Vow ; 
 define j3cns    [..] -> %^ || Vow  Cns Cns      _ [ [s|t|n] j | t s ] Vow ;
 define j2cns    [..] -> %^ || Vow  Cns          _ [ [s|t|n] j | t s ] Vow ;
 define j1cns    [..] -> %^ || Vow               _ [ [s|t|n] j | t s ] Vow ;
