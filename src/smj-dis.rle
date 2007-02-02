@@ -180,6 +180,11 @@ LIST DERIVED =
   
 
 
+# Noun tags
+
+LIST LOC = Ine Ela ; # This set since we imported sme rules, all LOCs must be revised.
+
+
 # Syntactic tags
 # --------------
 
@@ -597,8 +602,8 @@ LIST PLACE-V = "tjuodtjot" "tjællot" "tsæggahit" "válldut" "vuojnnet" "vuojnn
 SET DYNAMIC-V = ACTIVITY-V | MOVEMENT-V | VERBAL-ACTIVITY-V | ABSTR-ACTIVITY-V | BODY-ACTIVITY-V | INTELLECTUAL-ACTIVITY-V | HUMAN-SOURCE-V ;
 
 #SET DYNAMIC-V = ACTIVITY-V | MOVEMENT-V | VERBAL-ACTIVITY-V | ABSTR-ACTIVITY-V | BODY-ACTIVITY-V | INTELLECTUAL-ACTIVITY-V | ABSTR-ENTITY-COM-V | HUMAN-SOURCE-V | REM-WITH-PARTS ;
-# According to the rules choosing Loc or Com, dynamic-verbs are not connected to TOOLS, ABSTR-TOOLS or CONCEPT in (Pl Loc).
-# Human becomes either Loc or Com depending on its subset membership.
+# According to the rules choosing LOC or Com, dynamic-verbs are not connected to TOOLS, ABSTR-TOOLS or CONCEPT in (Pl LOC).
+# Human becomes either LOC or Com depending on its subset membership.
 
 
 
@@ -637,7 +642,7 @@ SET NP-HEAD-GEN    = (Pron Gen) | (N Gen) - Cmpnd;
 SET PRE-NP-HEAD = (Prop Attr) | (Prop @PROP>) | (A Attr) | ("buorre") | (Pron Pers Gen) | (N Gen) | 
          Num | Cmpnd | CC | (Pron Dem) | (Pron Refl Gen) | (Pron Indef) | 
          (PrfPrc @AN>) | (PrfPrc @PrcN>) | PrsPrc | (A Ord) ;
-         # | (Ill LINK 1 (PrfPrc @AN>)) | (Com LINK 1 (PrfPrc @AN>)) | (Loc LINK 1 (PrfPrc @AN>))
+         # | (Ill LINK 1 (PrfPrc @AN>)) | (Com LINK 1 (PrfPrc @AN>)) | (LOC LINK 1 (PrfPrc @AN>))
          # The strict version of items that can only be premodifiers, not parts of the predicate
          
 SET V-PRE-NP = PrfPrc | PrsPrc | Actor |  Actio | (V A) | (Ind Prs Sg3) | (Ind Prs Sg1) | (Imprt Prs Du2) ;
@@ -1151,11 +1156,11 @@ ADD (@PronN>) TARGET Indef IF (1 ("ietjá") OR Dem)(NOT 0 Nom LINK 1 Acc) (NOT 0
   # The partitive construction would have been máŋggain earáin and ollu daid earáin
   
   
-MAP (@ADVL) TARGET Indef IF (0 ("ållo"))(1 ("ietjá" Pl Loc) OR (Dem Pl Loc))(*2 V-SG3 BARRIER NOT-ADJ-PCLE)(NOT 0 Nom LINK 1 Acc)(NOT 0 ADVLCASE);
-MAP (@ADVL) TARGET Indef IF (*-1 V-SG3 BARRIER S-BOUNDARY OR VFIN)(0 ("ållo"))(1 ("ietjá" Pl Loc) OR (Dem Pl Loc))(NOT 0 Nom LINK 1 Acc)(NOT 0 ADVLCASE);
+MAP (@ADVL) TARGET Indef IF (0 ("ållo"))(1 ("ietjá" Pl LOC) OR (Dem Pl LOC))(*2 V-SG3 BARRIER NOT-ADJ-PCLE)(NOT 0 Nom LINK 1 Acc)(NOT 0 ADVLCASE);
+MAP (@ADVL) TARGET Indef IF (*-1 V-SG3 BARRIER S-BOUNDARY OR VFIN)(0 ("ållo"))(1 ("ietjá" Pl LOC) OR (Dem Pl LOC))(NOT 0 Nom LINK 1 Acc)(NOT 0 ADVLCASE);
 	## Ollu earáin lea hávski. # for habeo-constructions where ollu modifies eará+Loc
 
-MAP (@PronN>) TARGET Indef IF (NOT *-1 V-SG3 BARRIER S-BOUNDARY OR VFIN)(0 ("ållo"))(1 ("ietjá" Pl Loc) OR (Dem Pl Loc))(NOT *2 V-SG3 BARRIER NOT-ADJ-PCLE)(NOT 0 Nom LINK 1 Acc)(NOT 0 ADVLCASE);
+MAP (@PronN>) TARGET Indef IF (NOT *-1 V-SG3 BARRIER S-BOUNDARY OR VFIN)(0 ("ållo"))(1 ("ietjá" Pl LOC) OR (Dem Pl LOC))(NOT *2 V-SG3 BARRIER NOT-ADJ-PCLE)(NOT 0 Nom LINK 1 Acc)(NOT 0 ADVLCASE);
 	## 
 
 MAP (@PronN>) TARGET Indef IF (0 Nom)(*1 (N Nom) BARRIER NPNH) (NOT 0 Pl LINK 1 Inf);
@@ -1173,7 +1178,7 @@ MAP (@PronN>) TARGET ("gájka") IF (1 Dem OR Indef);
 MAP (@PronN>) TARGET ("gájka" Pron) IF (*1 N BARRIER NPNH);
 	## 
 
-#MAP (@PronN>) TARGET Indef IF (*1 N BARRIER NP-BOUNDARY OR REALCLB) (NOT *-1 ("leat") BARRIER NOT-ADV-PCLE LINK *1 Indef LINK *1 PrfPrc BARRIER VERB) (NOT *-1 INFV BARRIER NOT-ADV-PCLE LINK *1 Indef LINK *1 Inf BARRIER VERB)(NOT 0 ADVLCASE)(NOT 1 (Pers Gen) LINK *1 N BARRIER NOT-NP OR CLB LINK NOT 0 Loc)(NOT 1 Adv LINK 1 N) (NOT 1 (N Sg Gen) LINK *1 N BARRIER NPNH)(NOT 1 VFIN OR Ess OR ("veara"));
+#MAP (@PronN>) TARGET Indef IF (*1 N BARRIER NP-BOUNDARY OR REALCLB) (NOT *-1 ("leat") BARRIER NOT-ADV-PCLE LINK *1 Indef LINK *1 PrfPrc BARRIER VERB) (NOT *-1 INFV BARRIER NOT-ADV-PCLE LINK *1 Indef LINK *1 Inf BARRIER VERB)(NOT 0 ADVLCASE)(NOT 1 (Pers Gen) LINK *1 N BARRIER NOT-NP OR CLB LINK NOT 0 LOC)(NOT 1 Adv LINK 1 N) (NOT 1 (N Sg Gen) LINK *1 N BARRIER NPNH)(NOT 1 VFIN OR Ess OR ("veara"));
 	## 
 
 MAP (@PronN>) TARGET ("mij" Interr Pl Nom) IF (*1C (N Pl Nom) BARRIER NP-BOUNDARY);
@@ -1185,8 +1190,8 @@ MAP (@PronN>) TARGET ("mij" Rel  Pl Nom) IF (*1C (N Pl Nom) BARRIER NP-BOUNDARY)
 	## Galg anodit mav Härráj le vuornnán dahkam.
 	
 
-MAP (@PronN>) TARGET Interr IF (0 ("guhtimusj"))(*1 (Pers Loc) BARRIER NOT-PCLE);
-MAP (@PronN>) TARGET Rel  IF (0 ("guhtimusj"))(*1 (Pers Loc) BARRIER NOT-PCLE);
+MAP (@PronN>) TARGET Interr IF (0 ("guhtimusj"))(*1 (Pers LOC) BARRIER NOT-PCLE);
+MAP (@PronN>) TARGET Rel  IF (0 ("guhtimusj"))(*1 (Pers LOC) BARRIER NOT-PCLE);
 	## 
 
 MAP (@PronN>) TARGET ("gajká") IF (*1 (N Pl Nom) OR (N Pl Acc) BARRIER NP-BOUNDARY);
@@ -1376,7 +1381,7 @@ MAP (@GN>) TARGET Gen IF (-2 ("s") OR ("siidu") OR ("paragráfa") OR ("kapihttal
 MAP (@GN>) TARGET Gen IF (NOT -1 NUMERALS LINK 0 Num) (NOT 0 ALU OR Num OR Cmpnd)(*1 N BARRIER NOT-AA OR CLB)(NOT 1 Inf);
 	## 
 
-MAP (@GA>) TARGET Gen IF (1C A)(1 (Sg Loc))(2C NP-BOUNDARY); # (NOT 0 Interr OR ALU)
+MAP (@GA>) TARGET Gen IF (1C A)(1 (Sg LOC))(2C NP-BOUNDARY); # (NOT 0 Interr OR ALU)
 	##
 
 MAP (@NPron<) TARGET (N Pl Gen) IF (-1 ("mij" Interr) OR ("mihkkege") OR ("guhti"));
@@ -1717,7 +1722,7 @@ SELECT ConNeg IF (*-1 Neg BARRIER ConNeg);
 
 # SELECT (Ind ConNeg) IF (*-1 (Neg Ind) BARRIER VFIN OR ConNeg OR PrfPrc OR CS OR CP)
 # 	(NOT 0 N LINK *1 ConNeg BARRIER NOT-ADV-PCLE) <= noun lookalike
-# 	(NOT 0 Loc LINK -1 (Neg Foc) LINK -1 Loc);    <= locative lookalike
+# 	(NOT 0 LOC LINK -1 (Neg Foc) LINK -1 LOC);    <= locative lookalike
 	
 SELECT (Imprt ConNeg) IF (-1 (Neg Imprt));
 SELECT (Ind ConNeg) IF (-1 (Neg Prt) OR (Neg Prs));
@@ -1808,7 +1813,7 @@ SELECT ConNeg IF (*-1 Neg BARRIER ConNeg);
 
 # SELECT (Ind ConNeg) IF (*-1 (Neg Ind) BARRIER VFIN OR ConNeg OR PrfPrc OR CS OR CP)
 # 	(NOT 0 N LINK *1 ConNeg BARRIER NOT-ADV-PCLE) <= noun lookalike
-# 	(NOT 0 Loc LINK -1 (Neg Foc) LINK -1 Loc);    <= locative lookalike
+# 	(NOT 0 LOC LINK -1 (Neg Foc) LINK -1 LOC);    <= locative lookalike
 	
 SELECT (Imprt ConNeg) IF (-1 (Neg Imprt));
 SELECT (Ind ConNeg) IF (-1 (Neg Prt) OR (Neg Prs));
@@ -3288,7 +3293,7 @@ SELECT Com IF (0 BODY)(*1 BODY-ACTIVITY-V OR VERBAL-ACTIVITY-V BARRIER SV-BOUNDA
 
     # ANIMATE + Noun
     # - - - - - - - - - - - - - -
-#SELECT (Sg Com) IF (*-1 ANIMATE BARRIER NOT-ADJ LINK 0 Nom OR Gen)(0 (Pl Loc) LINK NOT 0 ABSTR-TEXT OR TEXT OR PLACE OR INDUSTRY OR EDUCATION OR INSTITUTION)(1 CLB OR EOS);   
+#SELECT (Sg Com) IF (*-1 ANIMATE BARRIER NOT-ADJ LINK 0 Nom OR Gen)(0 (Pl LOC) LINK NOT 0 ABSTR-TEXT OR TEXT OR PLACE OR INDUSTRY OR EDUCATION OR INSTITUTION)(1 CLB OR EOS);   
     ## Sii vástidedje: Johanasa gásttain.  
     # Does it really need (1 CLB OR EOS)?
    	 
@@ -3300,10 +3305,10 @@ SELECT Com IF (0 BODY)(*1 BODY-ACTIVITY-V OR VERBAL-ACTIVITY-V BARRIER SV-BOUNDA
 # Verbal-activity-verbs
 # - - - - - - - - - - -  
 
-#SELECT (Sg Com) IF (*-1 VERBAL-ACTIVITY-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 (Pl Loc) LINK 0 ("sátni") OR ("namma"));   
+#SELECT (Sg Com) IF (*-1 VERBAL-ACTIVITY-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 (Pl LOC) LINK 0 ("sátni") OR ("namma"));   
     ## Son ii daja njuolga rievttes namain. 
     
-#SELECT (Pl Loc) IF (*-1 VERBAL-ACTIVITY-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 Com LINK 0 EVENT OR EVENT-TOOL-ACTIO);
+#SELECT (Pl LOC) IF (*-1 VERBAL-ACTIVITY-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 Com LINK 0 EVENT OR EVENT-TOOL-ACTIO);
   	## Dan geažil lea dehálaš ávžžuhit bargiid sámástit ráđđádallamiin.
    
 
@@ -3317,37 +3322,37 @@ SELECT (Sg Com) IF (0 Ine LINK 0 VEHICLE)(*1 VEHICLE-TOOL-V BARRIER SV-BOUNDARY2
 # Abstract-entity-com-verbs
 # - - - - - - - - - - - -
 
-#SELECT (Sg Com) IF (*-1 ABSTR-ENTITY-COM-V BARRIER SV-BOUNDARY2)(0 (Pl Loc) LINK 0 ABSTR-ENTITY OR ACTOR);
-#SELECT (Sg Com) IF (0 (Pl Loc) LINK 0 ABSTR-ENTITY OR ACTOR)(*1 ABSTR-ENTITY-COM-V BARRIER SV-BOUNDARY2);
+#SELECT (Sg Com) IF (*-1 ABSTR-ENTITY-COM-V BARRIER SV-BOUNDARY2)(0 (Pl LOC) LINK 0 ABSTR-ENTITY OR ACTOR);
+#SELECT (Sg Com) IF (0 (Pl LOC) LINK 0 ABSTR-ENTITY OR ACTOR)(*1 ABSTR-ENTITY-COM-V BARRIER SV-BOUNDARY2);
     ## Muhto mii diehtit ahte fágagirjjit leat divrasat ja diibmá jagi bušeahtain ii sáhttán investeret.
     ## Mii leat lihkostuvvan bures prošeavttain.
 
 # Only-place-loc-verb 
 # - - - - - - - - - - 
-#SELECT (Sg Com) IF (0 (Pl Loc) LINK NOT 0 PLACE OR ORGANIZATION OR HUMAN)(*1 ONLY-PLACE-LOC-V BARRIER SV-BOUNDARY2  LINK 0 FMAINV);
-#SELECT (Sg Com) IF (*-1 ONLY-PLACE-LOC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 (Pl Loc) LINK NOT 0 PLACE OR ORGANIZATION OR HUMAN);
+#SELECT (Sg Com) IF (0 (Pl LOC) LINK NOT 0 PLACE OR ORGANIZATION OR HUMAN)(*1 ONLY-PLACE-LOC-V BARRIER SV-BOUNDARY2  LINK 0 FMAINV);
+#SELECT (Sg Com) IF (*-1 ONLY-PLACE-LOC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 (Pl LOC) LINK NOT 0 PLACE OR ORGANIZATION OR HUMAN);
     ## Giellakantuvrras ii leat formála váldi álggahit gielladoaimmaid etáhtain, muhto veahkehit.
     # It can be ambiguity with ORGANIZATION.
 
 # HUMAN-LOC-Verb 
 # - - - - - - - 
-#SELECT (Sg Com) IF (0 (Pl Loc) LINK 0 CONCEPT OR HUMAN OR ("sátni"))(*1 HUMAN-LOC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV);
-#SELECT (Sg Com) IF (*-1 HUMAN-LOC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 (Pl Loc) LINK 0 CONCEPT OR HUMAN OR ("sátni"));
+#SELECT (Sg Com) IF (0 (Pl LOC) LINK 0 CONCEPT OR HUMAN OR ("sátni"))(*1 HUMAN-LOC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV);
+#SELECT (Sg Com) IF (*-1 HUMAN-LOC-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 (Pl LOC) LINK 0 CONCEPT OR HUMAN OR ("sátni"));
     ## Ollu ásahusat geavahit dan sin doaimmain.
     ## Geavat mu biilla ráhkisvuođain.
     ## Sámediggeráđđi šálloša ja imaštalla go departementa ii namut sámi skuvlla sániin ge skuvlla IKT-áŋgiruššanplánain.     
 
 # Rem-with-parts-verb
 # - - - - - - - - - -
-#SELECT (Sg Com) IF (0 (Pl Loc) LINK 0 PARTS)(*1 REM-WITH-PARTS BARRIER SV-BOUNDARY2 LINK 0 FMAINV);
-#SELECT (Sg Com) IF (*-1 REM-WITH-PARTS BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 (Pl Loc) LINK 0 PARTS);
+#SELECT (Sg Com) IF (0 (Pl LOC) LINK 0 PARTS)(*1 REM-WITH-PARTS BARRIER SV-BOUNDARY2 LINK 0 FMAINV);
+#SELECT (Sg Com) IF (*-1 REM-WITH-PARTS BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 (Pl LOC) LINK 0 PARTS);
     ## Juohke šaddu man mu almmalaš Áhčči ii leat gilván, gaikkihuvvo ruohttasiin.
 
    
 	# COPULAS 
 	# - - - - 
-#SELECT (Sg Com) IF (*-1 COPULAS LINK 0 PrfPrc OR Inf OR ConNeg OR VFIN BARRIER SV-BOUNDARY2)(0 (Pl Loc) LINK 0 ANIMATE OR CONCEPT LINK *-1 A BARRIER NP-BOUNDARY);
-#SELECT (Sg Com) IF (0 (Pl Loc) LINK 0 ANIMATE OR CONCEPT LINK *-1 A BARRIER NP-BOUNDARY)(*1 COPULAS LINK 0 Inf OR ConNeg OR VFIN BARRIER S-BOUNDARY2 LINK NOT *1 VERB LINK NOT 0 VFIN LINK NOT 0 COPULAS);
+#SELECT (Sg Com) IF (*-1 COPULAS LINK 0 PrfPrc OR Inf OR ConNeg OR VFIN BARRIER SV-BOUNDARY2)(0 (Pl LOC) LINK 0 ANIMATE OR CONCEPT LINK *-1 A BARRIER NP-BOUNDARY);
+#SELECT (Sg Com) IF (0 (Pl LOC) LINK 0 ANIMATE OR CONCEPT LINK *-1 A BARRIER NP-BOUNDARY)(*1 COPULAS LINK 0 Inf OR ConNeg OR VFIN BARRIER S-BOUNDARY2 LINK NOT *1 VERB LINK NOT 0 VFIN LINK NOT 0 COPULAS);
   	## Go dii ehpet leat šiega leamaš ealibiin.
   	## Go dii lehpet šiega leamaš ealibiin.
   	## Go dii lehpet šiega ealibiin.
