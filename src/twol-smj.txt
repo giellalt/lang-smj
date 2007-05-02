@@ -40,7 +40,7 @@ Alphabet
  Ç Č Đ Ð Š Ŧ þ
 
 ! ':0			            ! Gradation mark
- ':0 %/ '1:'            ! From sme.
+ ':0 %/ '7:'            ! From sme.
 
 KEEPIF(HYPHENATE)
  #   %^                     ! Compound boundary and hyphenation mark (hyphenation version)
@@ -48,12 +48,12 @@ ELSE
  #:0 %^:0                   ! Compound boundary and hyphenation mark
 ENDKEEP
 
- e1:e i1:i o1:o o3:o u1:u   ! Morphophonemes  in sme, here temporarily due to common propernoun file
+ e7:e i7:i o7:o o9:o u7:u   ! Morphophonemes  in sme, here temporarily due to common propernoun file
 
- h2:h g2:g m2:m n2:n		                    ! these are deleted in nom
- b3:b d3:d g3:g l3:l m3:m n3:n h3:h r3:r    	! these can not occur before #
- k3:k t3:t                                      ! Non-sámi cons clusters
- e3:e o3:o                                      ! Wd-final foreign vow
+ h8:h g8:g m8:m n8:n		                    ! these are deleted in nom
+ b9:b d9:d g9:g l9:l m9:m n9:n h9:h r9:r    	! these can not occur before #
+ k9:k t9:t                                      ! Non-sámi cons clusters
+ e9:e o9:o                                      ! Wd-final foreign vow
 
  X1:0 X2:0 X3:0 X4:0 X5:0 X6:0 X7:0 X8:0 X9:0   ! Diacritics
  Q1:0 Q2:0 Q3:0 Q4:0 Q5:0 Q6:0 Q7:0 Q8:0 Q9:0   ! They trigger morphophono-
@@ -64,51 +64,51 @@ Sets
        A Á E I O U Y Æ Ä Ø Ä Å 
        é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý 
        É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã ´Y ;
- Cns     = b b3 c d d3 f g g2 g3 h h2 h3 j k l l3 m m2 m3 n n2 n3 ŋ ñ ń p q r r3 s t v w x z ' ; ! All consonants
- Cns1    =      c      f         h       j   l    m       n       ŋ ñ ń p q r    s t v w x z   ; ! Surface cons excl 1st members of xx-type G3
- Cns2    = b    c d    f g       h       j k l    m       n       ŋ ñ ń p q r    s t v w x z   ; ! All surface consonants 
- Cns3    =   b3     d3     g2 g3   h2 h3       l3   m2 m3   n2 n3           r3             '   ; ! Underlying consonants
+ Cns     = b b9 c d d9 f g g8 g9 h h8 h9 j k l l9 m m8 m9 n n8 n9 ŋ ñ ń p q r r9 s t v w x z ' ; ! All consonants
+ Cns7    =      c      f         h       j   l    m       n       ŋ ñ ń p q r    s t v w x z   ; ! Surface cons excl 1st members of xx-type G9
+ Cns8    = b    c d    f g       h       j k l    m       n       ŋ ñ ń p q r    s t v w x z   ; ! All surface consonants 
+ Cns9    =   b9     d9     g8 g9   h8 h9       l9   m8 m9   n8 n9           r9             '   ; ! Underlying consonants
  Cns4    =             f                     l    m       n       ŋ ñ ń     r        v         ; ! Don't remember
- StemCns = b b3   d d3   g g2 g3 h h2 h3 j   l l3 m m2 m3 n n2 n3 ŋ ñ ń    r r3 s              ; ! Can occur stem-finally
- DelCns  =                 g2      h2               m2      n2                                 ; ! deleted in nom...
+ StemCns = b b9   d d9   g g8 g9 h h8 h9 j   l l9 m m8 m9 n n8 n9 ŋ ñ ń    r r9 s              ; ! Can occur stem-finally
+ DelCns  =                 g8      h8               m8      n8                                 ; ! deleted in nom...
  WeG = X2 X3 X7 Y5 Q1 Q2 Q3 Q6 ;
  Dummy = X2 X3 X4 X5 X6 X7 X8 Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9 Q1 Q2 Q3 Q4 Q5 Q6 Q7;
 
 Definitions
 
- LCnsPhon1 = [ :Cns1 | :n :j | :s :j | :t :j | :t :s ] ;     ! Using Cns1, excluding 1st member of two-cns G3 
- LCnsPhon  = [ :Cns2 | :n :j | :s :j | :t :j | :t :s ] ;     ! Using Cns2, without the previous restriction
+ LCnsPhon7 = [ :Cns7 | :n :j | :s :j | :t :j | :t :s ] ;     ! Using Cns7, excluding 1st member of two-cns G9 
+ LCnsPhon  = [ :Cns8 | :n :j | :s :j | :t :j | :t :s ] ;     ! Using Cns8, without the previous restriction
 
-!     G3:G2 Here we document our alternation patterns
-! S1 kkn:k0n
-! S2 f'f:f0f
-! S3 jgg:j0g
+!     G9:G8 Here we document our alternation patterns
+! S7 kkn:k0n
+! S8 f'f:f0f
+! S9 jgg:j0g
 ! S4 hkk:h0k
 ! S5  xy:zy (no zeros)
 ! S6  xx:yy (no zeros)
 ! S7  xy:zy (no zeros)
 ! S8        (no cg)
 
- LowerG2   = [
+ LowerG8   = [
                [
-                  (Cns:0)  LCnsPhon1 (Cns:0) LCnsPhon (Cns:0)            ! xy that cannot be G3, since x cannot form xy G3.
+                  (Cns:0)  LCnsPhon7 (Cns:0) LCnsPhon (Cns:0)            ! xy that cannot be G9, since x cannot form xy G9.
                |                                                         ! nijbe, 
-                  [           ! This section is for 3-cons G2. and for 2cns G2 that share the initial cns with 2cns G3
-                     (Cns:0) [:j|:l|:m|:n|:v] (Cns:0) :s :t                  ! S3, 3cns-G2 bäjstov, etc.
+                  [           ! This section is for 3-cons G8. and for 2cns G8 that share the initial cns with 2cns G9
+                     (Cns:0) [:j|:l|:m|:n|:v] (Cns:0) :s :t                  ! S9, 3cns-G8 bäjstov, etc.
                   |
-                     (Cns:0) [ :l | :r | :n ]      (Cns:0) :s :k                   ! S3, 3cns-G2 sválskes, etc. 
+                     (Cns:0) [ :l | :r | :n ]      (Cns:0) :s :k                   ! S9, 3cns-G8 sválskes, etc. 
                   |
-                     (Cns:0) [  ! 2cns G2 that share the initial cns wit 2cns G3
-                                :b (Cns:0) [ :d | :m | :j | :l | :n | :n :j | :r | :s | :t :j | :t :s  ] ! S3, initial b
+                     (Cns:0) [  ! 2cns G8 that share the initial cns wit 2cns G9
+                                :b (Cns:0) [ :d | :m | :j | :l | :n | :n :j | :r | :s | :t :j | :t :s  ] ! S9, initial b
                                 |                                                                        ! gábdev
-                                :d (Cns:0) [ :j | :n | :n :j ]                                           ! S1, initial d
+                                :d (Cns:0) [ :j | :n | :n :j ]                                           ! S7, initial d
                                 |                                                                        ! iednev
-                                :g (Cns:0) :ŋ                                                            ! S1, initial g
+                                :g (Cns:0) :ŋ                                                            ! S7, initial g
                                 |                                                                        ! låg0ŋot
-                                :k (Cns:0) [ :n | :k ]                                                   ! S1, initial k
+                                :k (Cns:0) [ :n | :k ]                                                   ! S7, initial k
                              ]                                                                           ! 
                              |
-                             :r (Cns:0)   :s :j :t                                                    ! S3, rsjt, bårsjtav
+                             :r (Cns:0)   :s :j :t                                                    ! S9, rsjt, bårsjtav
                   ]
                ]
                  - [
@@ -116,32 +116,32 @@ Definitions
                      f ':0 f | l ':0 l | m ':0 m | n ':0 n | n ':0 n j | ŋ ':0 ŋ | r ':0 r | s ':0 s | s ':0 s j | v ':0 v
                      ]
              ];
- LowerG1   =   (Cns:0)   LCnsPhon ;
- LowerG12  = [ LowerG1 | LowerG2 ] ;
+ LowerG7   =   (Cns:0)   LCnsPhon ;
+ LowerG72  = [ LowerG7 | LowerG8 ] ;
 
 
- G32 =  f ':0 f | l ':0 l | m ':0 m | n ':0 n | n ':0 n j | ŋ ':0 ŋ | r ':0 r | s ':0 s | s ':0 s j | v ':0 v ;
+ G92 =  f ':0 f | l ':0 l | m ':0 m | n ':0 n | n ':0 n j | ŋ ':0 ŋ | r ':0 r | s ':0 s | s ':0 s j | v ':0 v ;
   
-!diphtsimpl IF Vow: G32 AND G2 context - [Y6 Y7 Y9];
+!diphtsimpl IF Vow: G92 AND G8 context - [Y6 Y7 Y9];
 ! oa:å <=> Vow: G32 Vow: WeG ; ! Evt. a subset of WeG, if only some WeG Dummys trigger diphtsimpl 
 
 !!1.86, let's see
 !
 !Definitions
 !
-!! CnsPhon = [ [ Cns1 | Cns2: ] | n j | s j | t j | t s ] ;
-!! G3      = [ [ CnsPhon CnsPhon [ CnsPhon+ | '] ] - [[[j|l|m|n|v] s t ] | [l|r] s k | r s j t ] ] ;
-!! G2      = [   CnsPhon CnsPhon |                   [[[j|l|m|n|v] s t ] | [l|r] s k | r s j t ] ] ;
-!! G1      =     CnsPhon ;
-!! G12     = [ G1 | G2 ] ;
+!! CnsPhon = [ [ Cns7 | Cns8: ] | n j | s j | t j | t s ] ;
+!! G9      = [ [ CnsPhon CnsPhon [ CnsPhon+ | '] ] - [[[j|l|m|n|v] s t ] | [l|r] s k | r s j t ] ] ;
+!! G8      = [   CnsPhon CnsPhon |                   [[[j|l|m|n|v] s t ] | [l|r] s k | r s j t ] ] ;
+!! G7      =     CnsPhon ;
+!! G72     = [ G7 | G8 ] ;
 !
-! LowerCnsPhon = [ :Cns1 | :n :j | :s :j | :t :j | :t :s ] ;
-! LowerG2  = [ (Cns:0)  LowerCnsPhon (Cns:0) LowerCnsPhon (Cns:0) |
+! LowerCnsPhon = [ :Cns7 | :n :j | :s :j | :t :j | :t :s ] ;
+! LowerG8  = [ (Cns:0)  LowerCnsPhon (Cns:0) LowerCnsPhon (Cns:0) |
 !              (Cns:0) [[[:j|:l|:m|:n|:v] :s :t ] |
 !              (Cns:0) [:l|:r] :s :k |
 !              (Cns:0)  :r :s :j :t ] ] ;
-! LowerG1  = (Cns:0)   LowerCnsPhon ;
-! LowerG12 = [ LowerG1 | LowerG2 ] ;
+! LowerG7  = (Cns:0)   LowerCnsPhon ;
+! LowerG72 = [ LowerG7 | LowerG8 ] ;
 
 
 Rules
@@ -155,12 +155,12 @@ Rules
 !$ b
 
 
-"Word Final Devoicing of Certain Single Consonants d3 etc."
+"Word Final Devoicing of Certain Single Consonants d9 etc."
  Cx:Cy <=> Vow: (Cns:) ( Dummy: ) _ ( Dummy: ) #: ;
-       where Cx in ( b3 d3 g3 m3 h3 )
+       where Cx in ( b9 d9 g9 m9 h9 )
              Cy in ( p  t  k  v  j  )
 	   matched ;
-!€ iemed3#
+!€ iemed9#
 !€ iemet0
 
 "Word final weakening -tj and -ttj to -sj part 1"
@@ -182,46 +182,46 @@ Rules
 ! Still, this will fail if and when clitics are added to the word.
 ! d:s changed to d:
 
-"Word Final Deletion of n2 m2 g2 h2"
+"Word Final Deletion of n8 m8 g8 h8"
   Cx:0 <=> Vow _  X3: ;
 	where Cx in ( DelCns ) ;
 ! The twoL-sme had [X4:|X8:|X6: Cons:|X9:], be prepared to 
 ! expand this rule accordingly.
 
-!€ loavddag2X3#
+!€ loavddag8X3#
 !€ l0åv0da000
 
 
-"Word Final Neutralization of g2, h2, m2"
+"Word Final Neutralization of g8, h8, m8"
   Cx:Cy <=> Vow _  X2: #: ;
-			where Cx in (g2 h2 m2)
+			where Cx in (g8 h8 m8)
 			      Cy in (t  t  n )
 			matched ;
 ! The twol-sme had [X2: | X7: ], be prepared to expand this rule accordingly.
-! Since we use X2, the "2" in g2 etc. may be superfluous...
+! Since we use X2, the "2" in g8 etc. may be superfluous...
 
-!"Word-final Devoicing of d3, m3"
+!"Word-final Devoicing of d9, m9"
 ! Cx:Cy <=> Vow _ #: ;
-!       where Cx in ( d3 m3 )
+!       where Cx in ( d9 m9 )
 !	          Cy in ( t  v  )
 !	     matched ;
 ! iemet:iemeda
 
 
-"Deleting Final h3 in Short Essive of Uneven Syllables"
- h3:0 <=> Vow: _ Q1: X1: n ;
+"Deleting Final h9 in Short Essive of Uneven Syllables"
+ h9:0 <=> Vow: _ Q1: X1: n ;
  
-"Deleting Final l3 in Short Essive of Uneven Syllables"
- l3:0 <=> Vow: _ [Q1:|X3:] X1: n ;
+"Deleting Final l9 in Short Essive of Uneven Syllables"
+ l9:0 <=> Vow: _ [Q1:|X3:] X1: n ;
  
-"Deleting Final m3 in Short Essive of Uneven Syllables"
- m3:0 <=> Vow: _ Q1: X1: n ;
+"Deleting Final m9 in Short Essive of Uneven Syllables"
+ m9:0 <=> Vow: _ Q1: X1: n ;
  
-"Deleting Final n3 in Short Essive of Uneven Syllables"
- n3:0 <=> Vow: _ Q1: X1: n ;
+"Deleting Final n9 in Short Essive of Uneven Syllables"
+ n9:0 <=> Vow: _ Q1: X1: n ;
  
-"Deleting Final r3 in Short Essive of Uneven Syllables"
- r3:0 <=> Vow: _ Q1: X1: n ;
+"Deleting Final r9 in Short Essive of Uneven Syllables"
+ r9:0 <=> Vow: _ Q1: X1: n ;
 
  
  
@@ -275,7 +275,7 @@ Rules
          [ #: | Cns: | Dummy: ] _ a: LowerG12 o: (Cns:*) [ Y1: | Y2: | Y3: | Y4: | Y5: | X7: | X4: (X8:) | [Q1:|Q4:] X4: X8: ] ; !7 Long pass, Dim and Prs Sg3 etc. Px
 !        [ #: | Cns: | Dummy: ] _ a: LowerG12 o: (Cns:*) [ Y1: | Y2: | Y3: | Y4: | Y5: | Y7: | Y9: | X7: ] ; !7 Long pass, Dim and Prs Sg3 etc.
          [ #: | Cns: | Dummy: ] _ a: LowerG12 o:  Cns:+       X5:   Vow          ; !8 odd-syll, oblique
-         [ #: | Cns: | Dummy: ] _ a: LowerG12 a    [g2:|l3:]       X3:     [ #: | n ] ; !9 NE låvda         
+         [ #: | Cns: | Dummy: ] _ a: LowerG12 a    [g8:|l9:]       X3:     [ #: | n ] ; !9 NE låvda         
          [ #: | Cns: | Dummy: ] _ a: LowerG12 e:  Q1:0 t:          j [ #: | [Vow:[v|n|h|b|p|#:]]]; !10 Potensialis doadjet:dåjitjav
          [ #: | Cns: | Dummy: ] _ a: LowerG12 e:       Q4: ( X5: )       j      ; !11 ComSg & G-C Pl of e-stems
          [ #: | Cns: | Dummy: ] _ a: LowerG12 o:u [ Q1: | Q4: ] X5: j n [a:|i:] ; !12Px Com
@@ -295,7 +295,7 @@ Rules
          [ #: | Cns: | Dummy: ] o: _ LowerG12 o: (Cns:*) [ Y1: | Y2: | Y3: | Y4: | Y5: | X7: | X4: (X8:) | [Q1:|Q4:] X4: X8: ] ; !7 Long pass and Prs Sg3 etc.  Px
 !        [ #: | Cns: | Dummy: ] o: _ LowerG12 o: (Cns:*) [ Y1: | Y2: | Y3: | Y4: | Y5: | Y7: | Y9: | X7: ] ; !7 Long pass and Prs Sg3 etc. 
          [ #: | Cns: | Dummy: ] o: _ LowerG12 o:  Cns:+      X5: Vow        ;       !8 odd-syll, oblique
-         [ #: | Cns: | Dummy: ] o: _ LowerG12 a    [g2:|l3:]      X3: [ #: | n ] ;       !9 NE låvda         
+         [ #: | Cns: | Dummy: ] o: _ LowerG12 a    [g8:|l9:]      X3: [ #: | n ] ;       !9 NE låvda         
          [ #: | Cns: | Dummy: ] o: _ LowerG12 e:  Q1:0 t:     j [ #: | [Vow:[v|n|h|b|p|#:]]]; !10 Potensialis doadjet:dåjitjav
          [ #: | Cns: | Dummy: ] o: _ LowerG12 e:       Q4: ( X5: )       j ;       !11 ComSg & G-C Pl of e-stems.
          [ #: | Cns: | Dummy: ] o: _ LowerG12 o:u [ Q1: | Q4: ] X5: j n [a:|i:] ; !12Px Com
@@ -320,8 +320,8 @@ Rules
 !$ roavggoX4j
 !$ r0åvggu0j
 
-! G3:G2, fake ex
-! Here, G2 allows diphtsimpl
+! G9:G8, fake ex
+! Here, G8 allows diphtsimpl
 !€ toas'soQ1X5jn
 !€ t0ås0su00jn
    
@@ -329,7 +329,7 @@ Rules
 !$ toas'soQ1X5jn
 !$ toas0su00jn
 
-! G3:G3, lexical ex, no CG
+! G9:G9, lexical ex, no CG
 ! will have to have a different lexicon in noun-smj-lex, 
 ! not pointing to Q1. Cf. GOAHTI/STAHTA sme.
 !$ moas'soX5jn
@@ -338,29 +338,29 @@ Rules
 !€ moas'soX5jn
 !€ moas0su0jn
 
-! The next example shows actor noun in G3 (actor nouns are always G3) 
+! The next example shows actor noun in G9 (actor nouns are always G9) 
 !€ goar'roY6X5jn
 !€ goar0ru00jn
-! This test should hit, but fails, since G3 looks like G2 at the lower level.
+! This test should hit, but fails, since G9 looks like G8 at the lower level.
 ! Further clever thinking is needed here.
 
-! this is G2 > G3. Derived G3 from a G2 stem (actor noun)
+! this is G8 > G9. Derived G9 from a G8 stem (actor noun)
 !€ goarroY6X5jn
 !€ goarru00jn
 ! This example should be like this (no diphsimpl), but at present our analysator gives diphtsimpl
-! as it is G2. Whe have two possibilities:
-! a. find a way of saying that it is G3 (impossible, I think)
-! b. block the diphtsimpl not based upon (invisible) G3, but upon its triggering context.
+! as it is G8. Whe have two possibilities:
+! a. find a way of saying that it is G9 (impossible, I think)
+! b. block the diphtsimpl not based upon (invisible) G9, but upon its triggering context.
 
-! The next example shows errouneous dipht simpl for G3.
+! The next example shows errouneous dipht simpl for G9.
 !$ goar'roY6X5jn
 !$ g0år0ru00jn
 
-! Here, G3 blocks diph simpl
+! Here, G9 blocks diph simpl
 !$ goar'roY2
 !$ g0år0ru0
 
-! The following example shows correct  diphtong simplification in G2 (3Sg pres)
+! The following example shows correct  diphtong simplification in G8 (3Sg pres)
 !€ goarroY2
 !€ g0årru0
 
@@ -370,11 +370,11 @@ Rules
 !$ doa0djeY6
 !$ d0åddje0
 
-!G3 > G2
-!€ goar'roY5d3it
+!G9 > G8
+!€ goar'roY5d9it
 !€ g0år0ru0dit
 
-!$ goar'roY5d3it
+!$ goar'roY5d9it
 !$ goar0ru0dit
 
 ! The following tests are using fictive, non-existent verbs, to test the correctnes of the mapping rules in twolc
@@ -498,7 +498,7 @@ ENDKEEP
 !	    matched ;
 !€ boarkkaQ1
 !€ b0år0ka0
-!€ loavddag2X3#
+!€ loavddag8X3#
 !€ l0åv0da000
 
 
@@ -861,15 +861,15 @@ ENDKEEP
 
 ! New rules, without conflicts
 ! The numbering of rules refer to the overview in Spiiks grammar
-! Thus !S1-3 means "Series 1, 3-letter patterns", etc.
+! Thus !S7-3 means "Series 1, 3-letter patterns", etc.
 
 ! Deletion rules
 ! - - - - - - - -
 
 "Consonant gradation b:0"
-b:0 <=> Vow: ( b )     _ m                 Vow: (StemCns:) WeG: ; ! S1-3, S1-2 bbn:b0n, bn:0n
-!	    Vow:           _ [d|j|l|n|r|s] Vow: (StemCns:) WeG: ; ! S1-2
-	    Vow: [ j|l|r ] _ b             Vow: (StemCns:) WeG: ; ! S3-3
+b:0 <=> Vow: ( b )     _ m                 Vow: (StemCns:) WeG: ; ! S7-3, S7-2 bbn:b0n, bn:0n
+!	    Vow:           _ [d|j|l|n|r|s] Vow: (StemCns:) WeG: ; ! S7-2
+	    Vow: [ j|l|r ] _ b             Vow: (StemCns:) WeG: ; ! S9-3
 	    Vow:           _ b: m          Vow:  X6:            ; ! III-I special gradation ! bbm:m
 	    Vow:   b:      _    m          Vow:  X6:            ; ! III-I special gradation ! bbm:m
 KEEPIF(SHORTCOMP)
@@ -879,9 +879,9 @@ KEEPIF(SHORTCOMP)
 ENDKEEP
 
 "Consonant gradation d:0"
-d:0 <=> Vow: ( d )             _ [ n | j ] Vow: ( StemCns: ) WeG: ; ! S1-3, S1-2 ddn:d0n, dn:0n
-        Vow: ( d )             _   n   j   Vow: ( StemCns: ) WeG: ; ! S1-4 and S1, dnj:nj
-        Vow: [ b | j | r | v ] _ d         Vow: ( StemCns: ) WeG: ; ! S3
+d:0 <=> Vow: ( d )             _ [ n | j ] Vow: ( StemCns: ) WeG: ; ! S7-3, S7-2 ddn:d0n, dn:0n
+        Vow: ( d )             _   n   j   Vow: ( StemCns: ) WeG: ; ! S7-4 and S7, dnj:nj
+        Vow: [ b | j | r | v ] _ d         Vow: ( StemCns: ) WeG: ; ! S9
         Vow:                   _ d: n      Vow:   X6: ;             ! III-I special gradation ddn:n
         Vow: d:                _    n      Vow:   X6: ;             ! III-I special gradation ddn:n
         Vow:                   _ t:s   j          #:  ;             ! oajváladtj# : oajvála0sj0
@@ -893,8 +893,8 @@ KEEPIF(SHORTCOMP)
 ENDKEEP
 
 "Consonant gradation g:0"
-g:0 <=> Vow: ( g )       _    [ñ|ń|ŋ] Vow: ( StemCns: ) WeG: ; ! S1-3, S1-2
-    	Vow: [ j|l|r|v ] _ g          Vow: ( StemCns: ) WeG: ; ! S3
+g:0 <=> Vow: ( g )       _    [ñ|ń|ŋ] Vow: ( StemCns: ) WeG: ; ! S7-3, S7-2
+    	Vow: [ j|l|r|v ] _ g          Vow: ( StemCns: ) WeG: ; ! S9
     	Vow:             _ g: [ñ|ń|ŋ] Vow: X6: ; ! III-I special gradation
     	Vow:   g:        _    [ñ|ń|ŋ] Vow: X6: ; ! III-I special gradation
 KEEPIF(SHORTCOMP)
@@ -904,9 +904,9 @@ KEEPIF(SHORTCOMP)
 ENDKEEP
 
 "Consonant gradation k:0"
-k:0 <=> Vow:     k         _ n   Vow: ( StemCns: ) WeG: ; ! S1-3
-    	Vow:     k         _ t j Vow: ( StemCns: ) WeG: ; ! S1-4
-    	Vow: [ j|l|m|r|v ] _ k   Vow: ( StemCns: ) WeG: ; ! S3
+k:0 <=> Vow:     k         _ n   Vow: ( StemCns: ) WeG: ; ! S7-3
+    	Vow:     k         _ t j Vow: ( StemCns: ) WeG: ; ! S7-4
+    	Vow: [ j|l|m|r|v ] _ k   Vow: ( StemCns: ) WeG: ; ! S9
     	Vow:     h         _ k   Vow: ( StemCns: ) WeG: ; ! S4, preasp stops
 KEEPIF(SHORTCOMP)
 	    Vow:     k         _ n   Vow:0  X9: ; !first part of compounds
@@ -916,10 +916,10 @@ KEEPIF(SHORTCOMP)
 ENDKEEP
 
 "Consonant gradation l:0"
-l:0 <=> Vow:   l       _ [ d|j|t|n ] Vow: ( StemCns: ) WeG: ; ! S1-3
-		Vow:   l       _ t j         Vow: ( StemCns: ) WeG: ; ! S1-4
-		Vow:           _ l           Vow: ( StemCns: ) WeG: ; ! S2, II-I
-		Vow: [ j|b|v ] _ l           Vow: ( StemCns: ) WeG: ; ! S3
+l:0 <=> Vow:   l       _ [ d|j|t|n ] Vow: ( StemCns: ) WeG: ; ! S7-3
+		Vow:   l       _ t j         Vow: ( StemCns: ) WeG: ; ! S7-4
+		Vow:           _ l           Vow: ( StemCns: ) WeG: ; ! S8, II-I
+		Vow: [ j|b|v ] _ l           Vow: ( StemCns: ) WeG: ; ! S9
 KEEPIF(SHORTCOMP)
 	    Vow:   l       _ [ d|j|t|n ] Vow:0  X9: ; !first part of compounds
 		Vow:   l       _ t j         Vow:0  X9: ;  !first part of compounds
@@ -928,9 +928,9 @@ KEEPIF(SHORTCOMP)
 ENDKEEP
 
 "Consonant gradation m:0"
-m:0 <=> Vow: m         _ [ b|p ] Vow: ( StemCns: ) WeG: ; ! S1-3
-		Vow:           _ m        Vow: ( StemCns: ) WeG: ; ! S2, II-I
-		Vow: [ j|l|r ] _ m       Vow: ( StemCns: ) WeG: ; ! S3
+m:0 <=> Vow: m         _ [ b|p ] Vow: ( StemCns: ) WeG: ; ! S7-3
+		Vow:           _ m        Vow: ( StemCns: ) WeG: ; ! S8, II-I
+		Vow: [ j|l|r ] _ m       Vow: ( StemCns: ) WeG: ; ! S9
 		Vow:           _ Q1: X1: n ; ! Deleting Final Cns in Short Essive of Uneven Syllables
 KEEPIF(SHORTCOMP)
 	    Vow: m         _ [ b|p ] Vow:0  X9: ; !first part of compounds
@@ -939,11 +939,11 @@ KEEPIF(SHORTCOMP)
 ENDKEEP
 
 "Consonant gradation n:0"
-n:0 <=> Vow:         n           _ d           Vow: ( StemCns: ) WeG: ; ! S1-3
-		Vow:         n           _ t ([ j|s ]) Vow: ( StemCns: ) WeG: ; ! S1-4
-		Vow:                     _ n ( j )       Vow: ( StemCns: ) WeG: ; ! S2, II-I, also palat.
-		Vow: [ b|j|l|ñ|ń|ŋ|r|v|m ] _ n           Vow: ( StemCns: ) WeG: ; ! S3, III-II
-		Vow: [ b|r|v ]           _ n j         Vow: ( StemCns: ) WeG: ; ! S3-4, III-II
+n:0 <=> Vow:         n           _ d           Vow: ( StemCns: ) WeG: ; ! S7-3
+		Vow:         n           _ t ([ j|s ]) Vow: ( StemCns: ) WeG: ; ! S7-4
+		Vow:                     _ n ( j )       Vow: ( StemCns: ) WeG: ; ! S8, II-I, also palat.
+		Vow: [ b|j|l|ñ|ń|ŋ|r|v|m ] _ n           Vow: ( StemCns: ) WeG: ; ! S9, III-II
+		Vow: [ b|r|v ]           _ n j         Vow: ( StemCns: ) WeG: ; ! S9-4, III-II
 KEEPIF(SHORTCOMP)
 	    Vow:         n           _ d           Vow:0  X9: ; !first part of compounds
 		Vow:         n           _ t [ j|s ]   Vow:0  X9: ; !first part of compounds
@@ -953,9 +953,9 @@ KEEPIF(SHORTCOMP)
 ENDKEEP
 
 "Consonant gradation p:0"
-p:0 <=> Vow:         p   _ [ s|t ] ( j ) Vow: ( StemCns: ) WeG: ; ! S1-3, S1-4 j
-        Vow:         p   _ t s           Vow: ( StemCns: ) WeG: ; ! S1-4 ppts:pts
-        Vow: [ j|l|r|v ] _ p             Vow: ( StemCns: ) WeG: ; ! S3 
+p:0 <=> Vow:         p   _ [ s|t ] ( j ) Vow: ( StemCns: ) WeG: ; ! S7-3, S7-4 j
+        Vow:         p   _ t s           Vow: ( StemCns: ) WeG: ; ! S7-4 ppts:pts
+        Vow: [ j|l|r|v ] _ p             Vow: ( StemCns: ) WeG: ; ! S9 
         Vow:   h         _ p             Vow: ( StemCns: ) WeG: ; ! S4 hpp:hp
 KEEPIF(SHORTCOMP)
         Vow:         p   _ [ s|t ] ( j ) Vow:0  X9: ; !first part of compounds
@@ -965,13 +965,13 @@ KEEPIF(SHORTCOMP)
 ENDKEEP
 
 "Consonant gradation s:0"
-s:0 <=> Vow:                   _ s ( [ j|k|m|n|t ] ) Vow: ( StemCns: ) WeG: ; ! S1-3, S2 II-I
-        Vow:                   _ s j [ k|m|v ]       Vow: ( StemCns: ) WeG: ; ! S1-4
-        Vow: [ b|j|l|m|n|r|v ] _ s                   Vow: ( StemCns: ) WeG: ; ! S3
-        Vow: [ r|l|m ]         _ s j                 Vow: ( StemCns: ) WeG: ; ! S3-4
-        Vow: [ r|l|n ]         _ s k                 Vow: ( StemCns: ) WeG: ; ! S3-4
-        Vow: [ j|m|n|v ]       _ s t                 Vow: ( StemCns: ) WeG: ; ! S3-4
-        Vow: r                 _ s j t               Vow: ( StemCns: ) WeG: ; ! S3 rssjt:rsjt
+s:0 <=> Vow:                   _ s ( [ j|k|m|n|t ] ) Vow: ( StemCns: ) WeG: ; ! S7-3, S8 II-I
+        Vow:                   _ s j [ k|m|v ]       Vow: ( StemCns: ) WeG: ; ! S7-4
+        Vow: [ b|j|l|m|n|r|v ] _ s                   Vow: ( StemCns: ) WeG: ; ! S9
+        Vow: [ r|l|m ]         _ s j                 Vow: ( StemCns: ) WeG: ; ! S9-4
+        Vow: [ r|l|n ]         _ s k                 Vow: ( StemCns: ) WeG: ; ! S9-4
+        Vow: [ j|m|n|v ]       _ s t                 Vow: ( StemCns: ) WeG: ; ! S9-4
+        Vow: r                 _ s j t               Vow: ( StemCns: ) WeG: ; ! S9 rssjt:rsjt
         Vow: s:                _ #: ;                                         ! This is a word fin simpl, ss# -> s#, and not CG
         Vow:                   _ Q1: X1: n ;                                  ! Deleting Final Cns in Short Essive of Uneven Syllables
 KEEPIF(SHORTCOMP)
@@ -986,13 +986,13 @@ KEEPIF(SHORTCOMP)
 ENDKEEP
 
 !"Consonant gradation s:0"
-!s:0 <=> Vow: s                 _ ( [ j|k|m|n|t ] ) Vow: ( StemCns: ) WeG: ; ! S1-3, S2 II-I
-!        Vow: s                 _ j [ k|m|v ]       Vow: ( StemCns: ) WeG: ; ! S1-4
-!        Vow: [ b|j|l|m|n|r|v ] _ s                 Vow: ( StemCns: ) WeG: ; ! S3
-!        Vow: [ r|l|m ]         _ s j               Vow: ( StemCns: ) WeG: ; ! S3-4
-!        Vow: [ r|l|n ]         _ s k               Vow: ( StemCns: ) WeG: ; ! S3-4
-!        Vow: [ j|m|n|v ]       _ s t               Vow: ( StemCns: ) WeG: ; ! S3-4
-!        Vow: r s               _ j t               Vow: ( StemCns: ) WeG: ; ! S3 rssjt:rsjt
+!s:0 <=> Vow: s                 _ ( [ j|k|m|n|t ] ) Vow: ( StemCns: ) WeG: ; ! S7-3, S8 II-I
+!        Vow: s                 _ j [ k|m|v ]       Vow: ( StemCns: ) WeG: ; ! S7-4
+!        Vow: [ b|j|l|m|n|r|v ] _ s                 Vow: ( StemCns: ) WeG: ; ! S9
+!        Vow: [ r|l|m ]         _ s j               Vow: ( StemCns: ) WeG: ; ! S9-4
+!        Vow: [ r|l|n ]         _ s k               Vow: ( StemCns: ) WeG: ; ! S9-4
+!        Vow: [ j|m|n|v ]       _ s t               Vow: ( StemCns: ) WeG: ; ! S9-4
+!        Vow: r s               _ j t               Vow: ( StemCns: ) WeG: ; ! S9 rssjt:rsjt
 !        Vow: s:                _ #: ;                                       ! This is a word fin simpl, ss# -> s#, and not CG
 !        Vow:                   _ Q1: X1: n ;                                ! Deleting Final Cns in Short Essive of Uneven Syllables
 
@@ -1006,8 +1006,8 @@ ENDKEEP
 !        Vow: h:0 t:s           _                   Vow:0  X9: ; ! No real consonant gradation, rather consonant reduction in compounds (X9)
 
 "Consonant gradation ŋ:0"
-Cx:0 <=> Vow:             _ Cy ( [ g|k ] ) Vow: ( StemCns: ) WeG: ; ! S1-3, S2 II-I
-         Vow: [ j|l|r|v ] _ Cy          Vow: ( StemCns: ) WeG: ; ! S3 
+Cx:0 <=> Vow:             _ Cy ( [ g|k ] ) Vow: ( StemCns: ) WeG: ; ! S7-3, S8 II-I
+         Vow: [ j|l|r|v ] _ Cy          Vow: ( StemCns: ) WeG: ; ! S9 
          Vow:          Cy _ k t         Vow: ( StemCns: ) WeG: ;
 KEEPIF(SHORTCOMP)
          Vow:             _ Cy ( [ g|k ] ) Vow:0  X9: ; !first part of compounds
@@ -1020,33 +1020,33 @@ ENDKEEP
 
 	
 "Consonant gradation f:0"
-f:0 <=> Vow: ( [r|l] ) _ f Vow: ( StemCns: ) WeG: ; ! S2 ff:f, S3 rff:rf
+f:0 <=> Vow: ( [r|l] ) _ f Vow: ( StemCns: ) WeG: ; ! S8 ff:f, S9 rff:rf
 KEEPIF(SHORTCOMP)
         Vow: ( [r|l] ) _ f   Vow:0  X9: ; !first part of compounds
 ENDKEEP
 
 "Consonant gradation r:0"
-r:0 <=> Vow: ( [ b|j|v ] ) _ r Vow: ( StemCns: ) WeG: ; ! S2 rr:r, S3 brr etc.
+r:0 <=> Vow: ( [ b|j|v ] ) _ r Vow: ( StemCns: ) WeG: ; ! S8 rr:r, S9 brr etc.
 KEEPIF(SHORTCOMP)
         Vow: ( [ b|j|v ] ) _ r   Vow:0  X9: ; !first part of compounds
 ENDKEEP
 
 "Consonant gradation v:0"
-v:0 <=> Vow: ( [ j|l|r ] ) _ v Vow: ( StemCns: ) WeG: ; ! S2 , S3 jvv etc.
+v:0 <=> Vow: ( [ j|l|r ] ) _ v Vow: ( StemCns: ) WeG: ; ! S8 , S9 jvv etc.
 KEEPIF(SHORTCOMP)
         Vow: ( [ j|l|r ] ) _ v   Vow:0  X9: ; !first part of compounds
 ENDKEEP
 
 "Consonant gradation j:0"
-j:0 <=> Vow: [b|r] _ j Vow: ( StemCns: ) WeG: ; ! S3
+j:0 <=> Vow: [b|r] _ j Vow: ( StemCns: ) WeG: ; ! S9
 KEEPIF(SHORTCOMP)
         Vow: [b|r] _ j   Vow:0  X9: ; !first part of compounds
 ENDKEEP
 
 "Consonant gradation t:0"   
-t:0 <=> Vow: [j|ñ|ń|ŋ|r|v] _ t             Vow: ( StemCns: ) WeG: ;             ! S3 jtt:jt etc.
-    	Vow: [b|j|r|v]     _ t j           Vow: ( StemCns: ) WeG: ;           ! S3
-      	Vow:   [b|j|v]     _ t s           Vow: ( StemCns: ) WeG: ;           ! S3
+t:0 <=> Vow: [j|ñ|ń|ŋ|r|v] _ t             Vow: ( StemCns: ) WeG: ;             ! S9 jtt:jt etc.
+    	Vow: [b|j|r|v]     _ t j           Vow: ( StemCns: ) WeG: ;           ! S9
+      	Vow:   [b|j|v]     _ t s           Vow: ( StemCns: ) WeG: ;           ! S9
     	Vow:       h:      _ t ( [ j|s ] ) Vow: ( StemCns: ) WeG: ; ! S4 htt(j)
         Vow:       t:s     _ j #: ;                                 ! Word final weakening of -ttj to -sj
         Vow (Dummy:) s     _ (Hyph) #:  ;                           ! W-Final Cl. Simpl. málestit : máles
@@ -1110,7 +1110,7 @@ ENDKEEP
 !       Vow:    _ #:0 ;  ! This gives Jakob:Jakop, and it is unclear what it gives.
 ! The last rule is for unnep : unnebu. It must be revised in two ways:
 ! a. it should be extended to more consonants
-! b. it should be restricted, perhaps b should be replaced with b2
+! b. it should be restricted, perhaps b should be replaced with b8
 
 !€ oabbáQ1
 !€ oappá0
