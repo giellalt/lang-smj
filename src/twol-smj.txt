@@ -65,7 +65,7 @@ Sets
        é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý 
        É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã ´Y ;
  Cns     = b b9 c d d9 f g g8 g9 h h8 h9 j k l l9 m m8 m9 n n8 n9 ŋ ñ ń p q r r9 s t v w x z ' ; ! All consonants
- Cns7    =      c      f         h       j   l    m       n       ŋ ñ ń p q r    s t v w x z   ; ! Surface cons excl 1st members of xx-type G9
+ Cns7    =      c      f         h       j   l    m       n       ŋ ñ ń p q r    s t v w x z   ; ! Surface cons excl 1st members of xx-type G3
  Cns8    = b    c d    f g       h       j k l    m       n       ŋ ñ ń p q r    s t v w x z   ; ! All surface consonants 
  Cns9    =   b9     d9     g8 g9   h8 h9       l9   m8 m9   n8 n9           r9             '   ; ! Underlying consonants
  Cns4    =             f                     l    m       n       ŋ ñ ń     r        v         ; ! Don't remember
@@ -76,10 +76,10 @@ Sets
 
 Definitions
 
- LCnsPhon7 = [ :Cns7 | :n :j | :s :j | :t :j | :t :s ] ;     ! Using Cns7, excluding 1st member of two-cns G9 
+ LCnsPhon7 = [ :Cns7 | :n :j | :s :j | :t :j | :t :s ] ;     ! Using Cns7, excluding 1st member of two-cns G3 
  LCnsPhon  = [ :Cns8 | :n :j | :s :j | :t :j | :t :s ] ;     ! Using Cns8, without the previous restriction
 
-!     G9:G8 Here we document our alternation patterns
+!     G3:G2 Here we document our alternation patterns
 ! S7 kkn:k0n
 ! S8 f'f:f0f
 ! S9 jgg:j0g
@@ -89,16 +89,16 @@ Definitions
 ! S7  xy:zy (no zeros)
 ! S8        (no cg)
 
- LowerG8   = [
+ LowerG2   = [
                [
-                  (Cns:0)  LCnsPhon7 (Cns:0) LCnsPhon (Cns:0)            ! xy that cannot be G9, since x cannot form xy G9.
+                  (Cns:0)  LCnsPhon7 (Cns:0) LCnsPhon (Cns:0)            ! xy that cannot be G3, since x cannot form xy G3.
                |                                                         ! nijbe, 
-                  [           ! This section is for 3-cons G8. and for 2cns G8 that share the initial cns with 2cns G9
-                     (Cns:0) [:j|:l|:m|:n|:v] (Cns:0) :s :t                  ! S9, 3cns-G8 bäjstov, etc.
+                  [           ! This section is for 3-cons G2. and for 2cns G2 that share the initial cns with 2cns G3
+                     (Cns:0) [:j|:l|:m|:n|:v] (Cns:0) :s :t                  ! S9, 3cns-G2 bäjstov, etc.
                   |
-                     (Cns:0) [ :l | :r | :n ]      (Cns:0) :s :k                   ! S9, 3cns-G8 sválskes, etc. 
+                     (Cns:0) [ :l | :r | :n ]      (Cns:0) :s :k                   ! S9, 3cns-G2 sválskes, etc. 
                   |
-                     (Cns:0) [  ! 2cns G8 that share the initial cns wit 2cns G9
+                     (Cns:0) [  ! 2cns G2 that share the initial cns wit 2cns G3
                                 :b (Cns:0) [ :d | :m | :j | :l | :n | :n :j | :r | :s | :t :j | :t :s  ] ! S9, initial b
                                 |                                                                        ! gábdev
                                 :d (Cns:0) [ :j | :n | :n :j ]                                           ! S7, initial d
@@ -116,13 +116,13 @@ Definitions
                      f ':0 f | l ':0 l | m ':0 m | n ':0 n | n ':0 n j | ŋ ':0 ŋ | r ':0 r | s ':0 s | s ':0 s j | v ':0 v
                      ]
              ];
- LowerG7   =   (Cns:0)   LCnsPhon ;
- LowerG72  = [ LowerG7 | LowerG8 ] ;
+ LowerG1   =   (Cns:0)   LCnsPhon ;
+ LowerG12  = [ LowerG1 | LowerG2 ] ;
 
 
- G92 =  f ':0 f | l ':0 l | m ':0 m | n ':0 n | n ':0 n j | ŋ ':0 ŋ | r ':0 r | s ':0 s | s ':0 s j | v ':0 v ;
+ G32 =  f ':0 f | l ':0 l | m ':0 m | n ':0 n | n ':0 n j | ŋ ':0 ŋ | r ':0 r | s ':0 s | s ':0 s j | v ':0 v ;
   
-!diphtsimpl IF Vow: G92 AND G8 context - [Y6 Y7 Y9];
+!diphtsimpl IF Vow: G32 AND G2 context - [Y6 Y7 Y9];
 ! oa:å <=> Vow: G32 Vow: WeG ; ! Evt. a subset of WeG, if only some WeG Dummys trigger diphtsimpl 
 
 !!1.86, let's see
@@ -130,18 +130,18 @@ Definitions
 !Definitions
 !
 !! CnsPhon = [ [ Cns7 | Cns8: ] | n j | s j | t j | t s ] ;
-!! G9      = [ [ CnsPhon CnsPhon [ CnsPhon+ | '] ] - [[[j|l|m|n|v] s t ] | [l|r] s k | r s j t ] ] ;
-!! G8      = [   CnsPhon CnsPhon |                   [[[j|l|m|n|v] s t ] | [l|r] s k | r s j t ] ] ;
-!! G7      =     CnsPhon ;
-!! G72     = [ G7 | G8 ] ;
+!! G3      = [ [ CnsPhon CnsPhon [ CnsPhon+ | '] ] - [[[j|l|m|n|v] s t ] | [l|r] s k | r s j t ] ] ;
+!! G2      = [   CnsPhon CnsPhon |                   [[[j|l|m|n|v] s t ] | [l|r] s k | r s j t ] ] ;
+!! G1      =     CnsPhon ;
+!! G12     = [ G1 | G2 ] ;
 !
 ! LowerCnsPhon = [ :Cns7 | :n :j | :s :j | :t :j | :t :s ] ;
-! LowerG8  = [ (Cns:0)  LowerCnsPhon (Cns:0) LowerCnsPhon (Cns:0) |
+! LowerG2  = [ (Cns:0)  LowerCnsPhon (Cns:0) LowerCnsPhon (Cns:0) |
 !              (Cns:0) [[[:j|:l|:m|:n|:v] :s :t ] |
 !              (Cns:0) [:l|:r] :s :k |
 !              (Cns:0)  :r :s :j :t ] ] ;
-! LowerG7  = (Cns:0)   LowerCnsPhon ;
-! LowerG72 = [ LowerG7 | LowerG8 ] ;
+! LowerG1  = (Cns:0)   LowerCnsPhon ;
+! LowerG12 = [ LowerG1 | LowerG2 ] ;
 
 
 Rules
@@ -320,8 +320,8 @@ Rules
 !$ roavggoX4j
 !$ r0åvggu0j
 
-! G9:G8, fake ex
-! Here, G8 allows diphtsimpl
+! G3:G2, fake ex
+! Here, G2 allows diphtsimpl
 !€ toas'soQ1X5jn
 !€ t0ås0su00jn
    
@@ -329,7 +329,7 @@ Rules
 !$ toas'soQ1X5jn
 !$ toas0su00jn
 
-! G9:G9, lexical ex, no CG
+! G3:G3, lexical ex, no CG
 ! will have to have a different lexicon in noun-smj-lex, 
 ! not pointing to Q1. Cf. GOAHTI/STAHTA sme.
 !$ moas'soX5jn
@@ -338,29 +338,29 @@ Rules
 !€ moas'soX5jn
 !€ moas0su0jn
 
-! The next example shows actor noun in G9 (actor nouns are always G9) 
+! The next example shows actor noun in G3 (actor nouns are always G3) 
 !€ goar'roY6X5jn
 !€ goar0ru00jn
-! This test should hit, but fails, since G9 looks like G8 at the lower level.
+! This test should hit, but fails, since G3 looks like G2 at the lower level.
 ! Further clever thinking is needed here.
 
-! this is G8 > G9. Derived G9 from a G8 stem (actor noun)
+! this is G2 > G3. Derived G3 from a G2 stem (actor noun)
 !€ goarroY6X5jn
 !€ goarru00jn
 ! This example should be like this (no diphsimpl), but at present our analysator gives diphtsimpl
-! as it is G8. Whe have two possibilities:
-! a. find a way of saying that it is G9 (impossible, I think)
-! b. block the diphtsimpl not based upon (invisible) G9, but upon its triggering context.
+! as it is G2. Whe have two possibilities:
+! a. find a way of saying that it is G3 (impossible, I think)
+! b. block the diphtsimpl not based upon (invisible) G3, but upon its triggering context.
 
-! The next example shows errouneous dipht simpl for G9.
+! The next example shows errouneous dipht simpl for G3.
 !$ goar'roY6X5jn
 !$ g0år0ru00jn
 
-! Here, G9 blocks diph simpl
+! Here, G3 blocks diph simpl
 !$ goar'roY2
 !$ g0år0ru0
 
-! The following example shows correct  diphtong simplification in G8 (3Sg pres)
+! The following example shows correct  diphtong simplification in G2 (3Sg pres)
 !€ goarroY2
 !€ g0årru0
 
@@ -370,7 +370,7 @@ Rules
 !$ doa0djeY6
 !$ d0åddje0
 
-!G9 > G8
+!G3 > G2
 !€ goar'roY5d9it
 !€ g0år0ru0dit
 
