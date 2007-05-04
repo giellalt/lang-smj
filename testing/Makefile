@@ -60,8 +60,8 @@ all: n-g.summary \
 	 n-a.summary \
 	 v-g.summary \
 	 v-a.summary \
-	 num-a.summary \	 
-	 num-g.summary \	 
+	 num-a.summary \
+	 num-g.summary \
 #	 a-g.summary \
 #	 a-a.summary
 
@@ -493,7 +493,7 @@ FILEPOS = twol-pos.in
 FILENEG = twol-neg.in
 FILE = $(FILEPOS)
 
-twol-extract: ../src/twol-smj.txt
+twol-extract: ../src/twol-smj-descriptive.txt
 	@echo
 	@echo "*** Extracting twol tests ***"
 	@echo
