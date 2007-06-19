@@ -502,7 +502,7 @@ twol-extract: ../src/twol-smj.txt
 	@touch twol-pos.out
 	@touch twol-neg.out
 
-twol-test: ../bin/twol-smj.bin twol-extract
+twol-test: ../bin/twol-smj-descriptive.bin twol-extract
 	@echo
 	@echo "*** Testing twolc rules ***"
 	@echo
