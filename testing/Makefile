@@ -493,7 +493,7 @@ FILEPOS = twol-pos.in
 FILENEG = twol-neg.in
 FILE = $(FILEPOS)
 
-twol-extract: ../src/twol-smj-descriptive.txt
+twol-extract: ../src/twol-smj.txt
 	@echo
 	@echo "*** Extracting twol tests ***"
 	@echo
@@ -511,6 +511,23 @@ twol-test: ../bin/twol-smj.bin twol-extract
 	quit \n" > $(TEMP)/twol-test-script
 	$(TWOLC) < $(TEMP)/twol-test-script
 	@rm -f $(TEMP)/twol-test-script
+
+# convenience target: if one needs to recompile the twol (e.g. after rule changes),
+# just write make twol
+
+twol: ../bin/twol-smj-descriptive.bin
+../bin/twol-smj-descriptive.bin: ../src/twol-smj.txt
+	@echo
+	@echo "*** Building twol-smj-descriptive.bin ***" ;
+	@echo
+	$(M4) $(M4FLAGS) -DDIPHSIMPL $< > $(TEMP)/twol-smj-tmp.txt
+	@printf "read-grammar $(TEMP)/twol-smj-tmp.txt \n\
+	compile \n\
+	save-binary $@ \n\
+	quit \n" > $(TEMP)/twol-script
+	$(TWOLC) < $(TEMP)/twol-script
+	@rm -f $(TEMP)/twol-script
+
 
 twol-pos: TYPE=pos
 twol-pos: FILE=$(FILEPOS)
