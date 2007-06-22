@@ -79,6 +79,7 @@ Sets
  DelCns  =                 g8      h8               m8      n8                                 ; ! deleted in nom...
  WeG     = X2 X3 X7 Y5 Q1 Q2 Q3 Q6 ;
  Dummy   = X2 X3 X4 X5 X6 X7 X8 Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9 Q1 Q2 Q3 Q4 Q5 Q6 Q7;
+ Hyph = %- ;
 
 Definitions
 
@@ -539,7 +540,7 @@ ENDKEEP
                                  i: _ Cns:+     e:0 Y8: o           ;                                     !ielvvet:ælvvop, Imprt
           [ #: | Cns: | Dummy: ]    _ Cns Cns:+ a:á                 ;                                     ! Verbs: e:æ only Vowel change in front of stem vowel variation, bessat : bæssá
 !         [ #: | Cns: | Dummy: ]    _ Cns:* a: Y6: ( X5: )          ;                                     ! Verbs: e:æ only Actor nouns
-          [ #: | Cns: | Dummy: ]    _ ( [:d|:b|:g] [d|b|g] Cns:+ | Cns:+ | h :Cns Cns:+) a: Y6: ( X5: ) ; !bessat:bæsse, imprt, du2 and Actor
+          [ #: | Cns: | Dummy: ]    _ ( [:d|:b|:g] [d|b|g] Cns:+ | Cns:+ | h :Cns Cns:+) a: Y6: ( X5: ) ([Hyph|(Hyhp) #:]) ; !bessat:bæsse, imprt, du2 and Actor
 
 "ie:ä Diphthong Simplification Part II"
  e:ä <=>  [ #: | Cns: | Dummy: ] i: _ Cns:* e: X4:                  ;  !1 
@@ -551,7 +552,7 @@ ENDKEEP
                                  i: _ Cns:+     e:0 Y8: o           ;                                     !ielvvet:ælvvop, Imprt
           [ #: | Cns: | Dummy: ]    _ Cns Cns:+ a:á                 ;                                     ! Verbs: e:æ only Vowel change in front of stem vowel variation, bessat : bæssá
 !         [ #: | Cns: | Dummy: ]    _ Cns:* a: Y6: ( X5: )          ;                                     ! Verbs: e:æ only Actor nouns
-          [ #: | Cns: | Dummy: ]    _ ( [:d|:b|:g] [d|b|g] Cns:+ | Cns:+ | h :Cns Cns:+) a: Y6: ( X5: ) ; !bessat:bæsse, imprt, du2 and Actor
+          [ #: | Cns: | Dummy: ]    _ ( [:d|:b|:g] [d|b|g] Cns:+ | Cns:+ | h :Cns Cns:+) a: Y6: ( X5: ) ([Hyph|(Hyhp) #:]) ; !bessat:bæsse, imprt, du2 and Actor
 
 
 ! Note: Check that Q2 above does not overgenerate to nouns!
@@ -585,11 +586,11 @@ ENDKEEP
 
 "Vowel-change oa:å for verbs part I"
  å:o <=> [ #: | Cns: | Dummy: ] _ 0: [Cns:+|:d d] a:á ; ! hållat:hoallá, presSg3
-         [ #: | Cns: | Dummy: ] _ 0: ( [:d|:b|:g] [d|b|g]  Cns:+ | Cns:+ | h :Cns Cns:+ | :d d ) a: [ Y6: | Y7: | Y9: ] ( X5: )  ; ! hållat:hoalle, imprtDu2
+         [ #: | Cns: | Dummy: ] _ 0: ( [:d|:b|:g] [d|b|g]  Cns:+ | Cns:+ | h :Cns Cns:+ | :d d ) a: [ Y6: | Y7: | Y9: ] ( X5: ) ([Hyph|(Hyhp) #:]) ; ! hållat:hoalle, imprtDu2
 
 "Vowel-change oa:å for verbs part II"
  0:a <=> [ #: | Cns: | Dummy: ] å: _ [Cns:+|:d d] a:á ;
-         [ #: | Cns: | Dummy: ] å: _ ( [:d|:b|:g] [d|b|g] Cns:+ | Cns:+ | h :Cns Cns:+ | :d d ) a: [ Y6: | Y7: | Y9: ] ( X5: )  ;
+         [ #: | Cns: | Dummy: ] å: _ ( [:d|:b|:g] [d|b|g] Cns:+ | Cns:+ | h :Cns Cns:+ | :d d ) a: [ Y6: | Y7: | Y9: ] ( X5: ) ([Hyph|(Hyhp) #:]) ;
 
 !€ hå0llaY2
 !€ hoallá0
@@ -614,7 +615,7 @@ ENDKEEP
 
 "a:e in Present Participle of even-syllable verbs"
 ! a:e <=> Cns: _ Y6: ; 
- a:e <=> Cns: _ Y6:0 [#:|n:|s:|v:|m:|t:|d:] ; 
+ a:e <=> Cns: _ Y6:0 [Hyph|(Hyhp) #:|n:|s:|v:|m:|t:|d:] ; 
 ! bassat : bas'se
 
 !Error message, delete this after testing.
@@ -626,7 +627,7 @@ ENDKEEP
 
           
 "a:i in Prs Prc of even-syllable verbs"   
- a:i <=> Cns: _ Y6:0 ( X5:0 ) j ;
+ a:i <=> Cns: _ Y6:0 ( X5:0 ) j ([Hyph|(Hyhp) #:]) ;
 !€ bas'saY6jt#
 !€ bas0si0jt0
 
@@ -653,7 +654,7 @@ ENDKEEP
 
 "e:i in e-stems"
  e:i <=> Cns: _ [ Q1:0 | Q4:0 ] ( X5:0 ) j ; ! 1) WeG or not, e:i, X5 is added to get e:i also in ComSg.
-         Cns: _ Y6:0 (X5:0) j ; ! 2) Actor nouns
+         Cns: _ Y6:0 (X5:0) j ([Hyph|(Hyhp) #:]) ; ! 2) Actor nouns
          Cns: _ Q1:0    t:    j [ #: | [Vow:[v|n|h|b|p|#:]]] ; ! 3) "e:i in potentialis" 
          
 
@@ -905,7 +906,7 @@ ENDKEEP
 ! - - - - - - - - - -
 
 "å:e in Present Participle of even-syllable verbs"
- å:e <=> Cns: _ Y6: #: ;
+ å:e <=> Cns: _ Y6: ([Hyph|(Hyhp) #:]) ;
          Cns: _ Y6: [
  d a
  |m (a)
@@ -920,7 +921,7 @@ ENDKEEP
 ! låhkåt : låhkke
 
 "å:i in Actor nouns of even-syllable verbs"
- å:i <=> Cns: _ Y6:0 ( X5:0 ) j ;
+ å:i <=> Cns: _ Y6:0 ( X5:0 ) j ([Hyph|(Hyhp) #:]) ;
 ! låhkåt : låhkkijt
 
 "å-stem vowel deletion" 
@@ -1279,23 +1280,23 @@ ENDKEEP
 ! Strategy: Do insertion rule for the initial element.
 
 "Consonant insertion as II-III strengthening gradation with bm,gŋ"
- 0:Cx <=> :Vow+ _ Cx Cy Vow: [ Y6: | Y7: | Y9: ] ;
+ 0:Cx <=> :Vow+ _ Cx Cy Vow: [ Y6: | Y7: | Y9: ] ([Hyph|(Hyhp) #:]) ;
       where Cx in ( b g )
             Cy in ( m ŋ )
 	    matched ;
 
 "Consonant insertion as II-III strengthening gradation with dn/j"
- 0:d <=> :Vow+ _ d [ n | n j | j ] Vow: [ Y6: | Y7: | Y9: ] ;
+ 0:d <=> :Vow+ _ d [ n | n j | j ] Vow: [ Y6: | Y7: | Y9: ] ([Hyph|(Hyhp) #:]) ;
 
 "Consonant insertion as II-III strengthening gradation with hk, hp,"
- 0:Cx <=> :Vow+ h _ Cx Vow: [ Y6: | Y7: | Y9: ] ;
+ 0:Cx <=> :Vow+ h _ Cx Vow: [ Y6: | Y7: | Y9: ] ([Hyph|(Hyhp) #:]) ;
       where Cx in ( k p ) ;
       
 "Consonant insertion as II-III strengthening gradation with htt(j/s)"
- 0:t <=> :Vow+ h _ t (j|s) Vow: [ Y6: | Y7: | Y9: | Q7: ] ;
+ 0:t <=> :Vow+ h _ t (j|s) Vow: [ Y6: | Y7: | Y9: | Q7: ] ([Hyph|(Hyhp) #:]) ;
  
 "Consonant insertion as I-III strengthening gradation with d"
- 0:d <=> :Vow+ _ d Vow: [ Y6: | Y7: | Y9: ] ;
+ 0:d <=> :Vow+ _ d Vow: [ Y6: | Y7: | Y9: ] ([Hyph|(Hyhp) #:]) ;
 
  
  
