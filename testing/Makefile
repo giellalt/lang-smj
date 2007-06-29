@@ -2,7 +2,7 @@ SHELL = /bin/sh
 #!/usr/bin/make
 #
 # This is a makefile to automatise most of the testing.
-# It is language independent within the framework of the Sï¿½mi language
+# It is language independent within the framework of the Sámi language
 # technology project. See further user documentation (and technical as well)
 # in $CVSROOT/gt/doc/docu-testing.html
 
@@ -28,7 +28,7 @@ TEMP = ../../tmp
 # This variable is holding the filename of the save file:
 # (makes the Makefile truly language independent for
 # the Sami languages)
-SAVEFILE = $(wildcard $(FSTDIR)/sm?.save)
+SAVEFILE = $(wildcard $(FSTDIR)/ism?.fst)
 
 # Copied from old LS makefile:
 # Bond, James Bond
@@ -61,7 +61,7 @@ all: n-g.summary \
 	 v-g.summary \
 	 v-a.summary \
 	 num-a.summary \
-	 num-g.summary \
+	 num-g.summary
 #	 a-g.summary \
 #	 a-a.summary
 
@@ -109,9 +109,9 @@ clean:
 		  *paradigm \
 		  *.tgz	\
 		  *~ \
-		  $(TEMP)/*test-script \
-                  *.in \
-                  *.out
+		  *.in \
+		  *.out \
+		  $(TEMP)/*test-script
 
 .PHONY: almost-clean
 almost-clean:
@@ -130,9 +130,9 @@ almost-clean:
 		  *.ptest \
 		  *.tgz	\
 		  *~ \
-		  $(TEMP)/*test-script \
-                  *.in \
-                  *.out
+		  *.in \
+		  *.out \
+		  $(TEMP)/*test-script
 
 
 # POS SPECIFIC SECTIONS
@@ -186,7 +186,7 @@ n-paradigm: n-para.ptest savefile
 	@echo "*** Running the paradigm generator for '$(WORD)' ***"
 	@echo
 	@printf "load $(SAVEFILE) \n\
-	apply down <$< \n\
+	apply up <$< \n\
 	quit \n" > $(TEMP)/$@-gtest-script
 	$(XFST) < $(TEMP)/$@-gtest-script > $(WORD).paradigm
 	@rm -f $(TEMP)/$@-gtest-script
@@ -241,7 +241,7 @@ v-paradigm: v-para.ptest savefile
 	@echo "*** Running the paradigm generator for '$(WORD)' ***"
 	@echo
 	@printf "load $(SAVEFILE) \n\
-	apply down <$< \n\
+	apply up <$< \n\
 	quit \n" > $(TEMP)/$@-gtest-script
 	$(XFST) < $(TEMP)/$@-gtest-script > $(WORD).paradigm
 	@rm -f $(TEMP)/$@-gtest-script
@@ -296,7 +296,7 @@ a-paradigm: a-para.ptest savefile
 	@echo "*** Running the paradigm generator for '$(WORD)' ***"
 	@echo
 	@printf "load $(SAVEFILE) \n\
-	apply down <$< \n\
+	apply up <$< \n\
 	quit \n" > $(TEMP)/$@-gtest-script
 	$(XFST) < $(TEMP)/$@-gtest-script > $(WORD).paradigm
 	@rm -f $(TEMP)/$@-gtest-script
@@ -352,7 +352,7 @@ num-paradigm: num-para.ptest savefile
 	@echo "*** Running the paradigm generator for '$(WORD)' ***"
 	@echo
 	@printf "load $(SAVEFILE) \n\
-	apply down <$< \n\
+	apply up <$< \n\
 	quit \n" > $(TEMP)/$@-gtest-script
 	$(XFST) < $(TEMP)/$@-gtest-script > $(WORD).paradigm
 	@rm -f $(TEMP)/$@-gtest-script
@@ -362,13 +362,12 @@ num-paradigm: num-para.ptest savefile
 
 
 
-
 # POS-independent parts:
 # ======================
 
 # Make sure there is an available smX.save in the parent directory:
 savefile:
-	@cd $(SRCDIR)/ && $(MAKE) TARGET=smj
+	@cd $(SRCDIR)/ && $(MAKE) ifst TARGET=smj
 
 # Word form generation:
 # ---------------------
@@ -401,7 +400,7 @@ savefile:
 	@echo "*** Running the word form generator test for $*.txt ***"
 	@echo
 	@printf "load $(SAVEFILE) \n\
-	apply down <$< \n\
+	apply up <$< \n\
 	quit \n" > $(TEMP)/$*-gtest-script
 	$(XFST) < $(TEMP)/$*-gtest-script > $@
 	@rm -f $(TEMP)/$*-gtest-script
@@ -457,10 +456,10 @@ savefile:
 # Here we run the actual analysis test:
 %.aresult: %.atest savefile
 	@echo
-	@echo "*** Running the word form analysis test for verbs ***"
+	@echo "*** Running the word form analysis test ***"
 	@echo
 	@printf "load $(SAVEFILE) \n\
-	apply up <$< \n\
+	apply down <$< \n\
 	quit \n" > $(TEMP)/$*-atest-script
 	$(XFST) < $(TEMP)/$*-atest-script > $@
 	@rm -f $(TEMP)/$*-atest-script
@@ -477,21 +476,25 @@ savefile:
 	-@diff --side-by-side --width=70 $< $*.afacit > $@
 
 
-
 # TWOL-testing :
-#===============
+# ==============
 
 # Usage:
-# make twol-test (extracts the test words from src/twol-sme.txt)
+# make twol-test (extracts the test words from src/twol-smj.txt)
 # make twol-pos  (tests for the positive test pairs, prints output to twol-pos.out)
 # make twol-neg  (tests for the positive test pairs, prints output to twol-neg.out)
 # make twol-test FILE=filename.txt (test for pairs in filename.txt)
+# make twol      (when the rules themselves are changed, will recompile the binary)
+#                (note that "make twol" will compile the descriptive twol transducer)
 
 TWOLC = twolc -utf8
 TYPE = pos
 FILEPOS = twol-pos.in
 FILENEG = twol-neg.in
 FILE = $(FILEPOS)
+M4 = m4
+M4FLAGS = 
+
 
 twol-extract: ../src/twol-smj.txt
 	@echo
@@ -537,4 +540,5 @@ twol-neg: TYPE=neg
 twol-neg: FILE=$(FILENEG)
 twol-neg: twol-test
 
+# This doesn't work, because both twol-pos and twol-neg call twol-test
 twol-both: twol-pos twol-neg
