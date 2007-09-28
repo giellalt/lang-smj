@@ -1,0 +1,129 @@
+! ======
+! Conversion from North to Lule Sámi
+! =======
+
+echo <<defining Cns and Vow...>>
+
+define Vow       [ a | á | e | i | o | u | y | æ | ø | å | ä | ö | 
+                   A | Á | E | I | O | U | Y | Æ | Ø | Å | Ä | Ö | 
+é | ó | ú | í | à | è | ò | ù | ì | ë | ü | ï | â | ê | ô | û | î | ã | ý 
+É | Ó | Ú | Í | À | È | Ò | Ù | Ì | Ë | Ü | Ï | Â | Ê | Ô | Û | Î | Ã | Ý ] ;
+
+define 2ndVow [ e | a | o | u | y | ø | i | E | A | O | U | Y | Ø | I ] ;
+
+define VowNot2ndVow [ Vow - 2ndVow ] ;
+
+define vU     [ u | U ] ;
+define vO     [ o | O ] ;
+define vA     [ a | A ] ;
+define vE     [ e | E ] ;
+define vI     [ i | I ] ;
+define vAO    [ a | A | o | O ] ;
+define vAEIO  [ a | A | e | E | i | I | o | O ] ;
+define vAEOU [ a | A | e | E | o | O | u | U ] ;
+define vØ     [ ø | Ø | ö | Ö ] ;
+define vIØ     [ i | I | ø | Ø | ö | Ö ] ;
+define vYØ     [ y | Y | ø | Ø | ö | Ö ] ;
+define vIOU   [ i | I | o | O | u | U ] ;
+
+define VowNotU [ Vow - vU ] ;
+define VowNotO [ Vow - vO ] ;
+define VowNotA [ Vow - vA ] ;
+define VowNotE [ Vow - vE ] ;
+define VowNotI [ Vow - vI ] ;
+define VowNotØ [ Vow - vØ ] ;
+define VowNotY [ Vow - vY ] ;
+
+
+define IEdipht [ i e | I e | I E ] ;
+define UOdipht [ u o | U o | U O ] ;
+define OAdipht [ o a | O a | O A ] ;
+define OUdipht [ o u | O u | O U ] ; ! jour-na-lis-sta
+define AUdipht [ a u | A u | A U ] ; ! fau-na
+define EUdipht [ e u | E u | E U ] ; ! leut-nánta
+define AEdipht [ a e | A e | A E ] ; ! lae-sta-dius (gives: laes^ta^dius)
+define ØYdipht [ ø y | Ø y | Ø Y ] ; ! nøyt-rála
+define OEdipht [ o e | O e | O E ] ; ! goe-the
+define IEdipht [ i e | I e | I E ] ; ! skiøld
+define IOdipht [ i o | I o | I O ] ; ! skiold, na-tion
+
+
+
+define dipht [ IEdipht | UOdipht | OAdipht | OUdipht | AUdipht | EUdipht | AEdipht | ØYdipht | OEdipht | IEdipht | IOdipht ] ;
+
+define Cns [ b | c | č | d | đ | f | g | h | j | k | l | m | n | ŋ | ñ | ń | 
+             B | C | Č | D | Đ | F | G | H | J | K | L | M | N | Ŋ | Ñ | Ń |
+             p | q | r | s | š | t | ŧ | v | w | x | z | ž |   
+             P | Q | R | S | Š | T | Ŧ | V | W | X | Z | Ž ] ; 
+
+!define Gem [ b b | d d | f f | g g | k k | l l | m m | n n | ŋ ŋ | ñ ñ | ń ń | 
+!             B B | D D | F F | G G | K K | L L | M M | N N | Ŋ Ŋ | Ñ Ñ | Ń Ń |
+!             p p | r r | s s | š š | t t | ŧ ŧ | v v |    
+!             P P | R R | S S | Š Š | T T | Ŧ Ŧ | V V ]  ;
+             
+define cS [ S | s ] ; define Cnss [ Cns - cS ] ;
+
+define Syll Cns* Vow+ Cns* ;
+
+echo << Rules >>
+
+define FinalE i -> e || Syll Cns _ .#. ;
+
+
+define dtj ž ž -> d t j || Vow _ Vow ; 
+define ttj č č -> t t j || Vow _ Vow ;
+define ssj š š -> s s j || Vow _ Vow ;
+define rmm b -> m || Vow r _ m ;
+define rnn d -> n || Vow r _ n ;
+define lmm b -> m || Vow l _ m ;
+define lln d -> n || Vow l _ n ;
+define jmm i b -> j m || Vow _ m ;
+define jnn i d -> j n || Vow _ n ;
+define ssk  s k -> s s k || Vow _ Vow ;
+define sst  s t -> s s t || Vow _ Vow ;
+define ssm  s m -> s s m || Vow _ Vow ;
+define ssp  s p -> s s p || Vow _ Vow ;
+
+
+define sl š -> s || .#. _ l ;
+
+define SamiLetters č -> t j , đ -> d , š -> s j , ŧ -> t , ž -> t j  ;
+define z  z -> t s ;
+define cc c c -> t t j || Vow ([h|v]) _ Vow ;
+define c c -> t j || [.#.|Vow|v|h] _ Vow ;
+define RevDipht u -> u o || _ Cns+ e ;
+define oCns u -> o || Syll _ Cns .#. ;
+define eCns i -> e || Syll _ Cns .#. ;
+define it e -> i || Syll _ t .#. ; ! Loan word rule!!
+
+
+echo << Compile... >>
+
+read regex [
+    FinalE
+ .o. dtj
+ .o. ttj
+ .o. ssj
+ .o. rmm
+ .o. rnn
+ .o. lmm
+ .o. lln
+ .o. jmm
+ .o. jnn
+!.o. ssk !not for LOAN conversion
+!.o. sst  !not for LOAN conversion
+!.o. ssm !not for LOAN conversion
+!.o. ssp !not for LOAN conversion
+ .o. sl
+ .o. SamiLetters
+!.o. z    !not for LOAN conversion
+!.o. cc   !not for LOAN conversion
+!.o. c    !not for LOAN conversion
+
+ .o. oCns
+!.o. eCns !not for LOAN conversion
+ .o. it
+] ;
+
+invert net ;
+
