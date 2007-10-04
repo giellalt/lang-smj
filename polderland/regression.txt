@@ -23,9 +23,10 @@
 # error<tab>correction<tab>#comment
 # correct<tab><tab>!comment
 #
-# Here's the start of the error<tab>correction part:
-Barggomárnanin	Barggomárnánin	! compound with errors, no suggestion
-Allaskåvllådåjmadagas	Allaskåvllådåjmadagás
+# Here's the start of the error<tab>correction part
+# (= negative tests, all input words should be rejected):
+Barggomárnanin	Barggomárnánin	! compound with typo, no suggestion
+Allaskåvllådåjmadagas	Allaskåvllådåjmadagás	! compound with typo, no suggestion
 Galileajávrregáttev	Galilea-jávrregáttev
 barrnev	bárnev
 vidjor9jit	vidjurijt	#398 - vidjor9jit vs vidjurijt
@@ -66,83 +67,30 @@ bednagadtjbijlla	bednagasjbijlla	#526 - wrong compounding forms accepted
 jávrádtjbijlla	jávrásjbijlla	#526 - wrong compounding forms accepted
 #
 #
-# Here's the start of the correct<tab> part (words that should be accepted):
-dan		! missing pronoun
-dáv		! missing pronoun
-dát		! missing pronoun
-Daj		! missing pronoun
-Dajna		! missing pronoun
-dájs		! missing pronoun
-dasi		! missing pronoun
-Dát		! missing pronoun
-dájt		! missing pronoun
-dássta		! missing pronoun
-danna		! missing pronoun
-divna		! missing pronoun
-ietjá		! missing pronoun
-guhtis		! missing pronoun
-avtak		! missing pronoun
-juoga		! missing pronoun
-nuppev		! missing pronoun
-mige		! missing pronoun
-mavga		! missing pronoun
-dakkirijt		! missing pronoun
-juohkkahasj		! missing pronoun
-ienebuv		! missing pronoun
-ållo		#418 - missing numeral
-akta		#418 - missing numeral
-guokta		#418 - missing numeral
-lågenanniellja		#481 - missing numeral (14)
-lågenanguokta		#481 - missing numeral (12)
-millijåvnå		#481 - missing numerals
-millijåvnnå		#481 - missing numerals
+# Here's the start of the correct<tab> part
+# (= positive tests, all input words should be accepted):
 vuostasj		! missing ordinal
 Vuostasj		! missing ordinal
 nuppev		! missing ordinal
 goalmát		! missing ordinal
-alvvásláhkáj		! adj+noun
-buorredagojt		! adj+noun
-Dálásjájggásasj		! adj+noun
-dålusjájggásasj		! adj+noun
-gievrasalmasj		#421 - adj-attr+noun
-gievrasmuorra		#421 - adj-attr+noun
-gievramuorra		#421 - adj-gen+noun
-gievrramuorra		#421 - adj-nom+noun
-guhkaájggásattjat		! lexicalized compound
-mælggatåhpadusán		! adj+noun
-skihpahuodnahijn		! adj+noun
-skihpasujtár		! adj+noun
-garrasabmusit		#422 - adj->adv
-bajedimij		! 3-syllable actio
-gaskostibme		! 3-syllable actio
-jållåribme		! 3-syllable actio
-mierredimijt		! 3-syllable actio
-åvddånimev		#420 - missing 3-syllabic actio
-åvdåstibmáj		! 3-syllable actio N+Sg+Ill
 jáddamahtes		! missing actio forms
 riegádibme		! missing actio forms
 vuolgadime		! missing actio forms
 lånudim-		! actio compound form
 oahppamdiededimev		! actio compound
 riegádimgånågis		! actio compound
-Allaskåvllådievnastusdåjmadahka		! 3-part compound
-bielleájggeåhpadussaj		#419 - 3-part compound
-oahppambiednikvuogádagá		! 3-part compound
-stivrrimássjetjállagij		! 3-part compound
-Iednegiellaoahppaábnnasa		! 3-part compound
-Allaskåvllågähttjalus		! Swedish ä
-allaskåvllågähttjalus		! Swedish ä
 guovtekultuvralasj		! no hash at compound border
 gus		! missing particles
 Barggogaskostime		! missing compound
 sebrudakalmasj		! missing compound
 siellosujtov		! missing compound
 åbmudaksiebrre		! missing compound
-Svieriga		! missing names
-Malmöj		! missing names
 Svierigadárogielan		! name compound i Kintel och Korhon=vuonadár...med liten bok
 älla		! strange suggestions
+Skåvllådåjmadak		! compound
 Nárvijkan		#407 - missing smj names
+Svieriga		!407 missing names
+Malmöj		!407 missing names
 nælggot		#411 - ä not recognised
 nälggot		#411 - ä not recognised
 dæbbaga		#411 - ä not recognised
@@ -151,7 +99,39 @@ vællahit		#411 - ä not recognised
 vällahit		#411 - ä not recognised
 gæhtjáj		#411 - ä not recognised
 gähtjáj		#411 - ä not recognised
-Skåvllådåjmadak		! compound
+Allaskåvllågähttjalus		!411 - Swedish ä
+allaskåvllågähttjalus		!411 - Swedish ä
+ållo		#418 - missing numeral
+akta		#418 - missing numeral
+guokta		#418 - missing numeral
+Allaskåvllådievnastusdåjmadahka		!419 3-part compound
+bielleájggeåhpadussaj		#419 - 3-part compound
+oahppambiednikvuogádagá		!419 3-part compound
+stivrrimássjetjállagij		!419 3-part compound
+Iednegiellaoahppaábnnasa		!419 3-part compound
+bajedimij		!420 3-syllable actio
+gaskostibme		!420 3-syllable actio
+jållåribme		!420 3-syllable actio
+mierredimijt		!420 3-syllable actio
+åvddånimev		#420 - missing 3-syllabic actio
+åvdåstibmáj		!420 3-syllable actio N+Sg+Ill
+alvvásláhkáj		#421 - adj+noun
+buorredagojt		#421 - adj+noun
+Dálásjájggásasj		#421 - adj+noun
+dålusjájggásasj		#421 - adj+noun
+gievrasalmasj		#421 - adj-attr+noun
+gievrasmuorra		#421 - adj-attr+noun
+gievramuorra		#421 - adj-gen+noun
+gievrramuorra		#421 - adj-nom+noun
+guhkaájggásattjat		! lexicalized compound
+mælggatåhpadusán		#421 - adj+noun
+skihpahuodnahijn		#421 - adj+noun
+skihpasujtár		!421 adj+noun
+garrasabmusit		#422 - adj->adv
+lågenanniellja		#481 - missing numeral (14)
+lågenanguokta		#481 - missing numeral (12)
+millijåvnå		#481 - missing numerals
+millijåvnnå		#481 - missing numerals
 USA		#483 - missing bare abbrs
 NSR		#483 - missing bare abbrs
 PDF		#483 - missing bare abbrs
@@ -174,6 +154,29 @@ NSR:		#483 - missing bare abbrs
 Áillonieida		#484 - missing names
 Áilloš		#484 - missing names
 Áillun		#484 - missing names
+dan		#486 missing pronoun
+dáv		#486 missing pronoun
+dát		#486 missing pronoun
+Daj		#486 missing pronoun
+Dát		#486 missing pronoun
+Dajna		#486 missing pronoun
+dájs		#486 missing pronoun
+dasi		#486 missing pronoun
+dájt		#486 missing pronoun
+dássta		#486 missing pronoun
+danna		#486 missing pronoun
+divna		#486 missing pronoun
+ietjá		#486 missing pronoun
+guhtis		#486 missing pronoun
+avtak		#486 missing pronoun
+juoga		#486 missing pronoun
+nuppev		#486 missing pronoun
+mige		#486 missing pronoun
+mavga		#486 missing pronoun
+ienebuv		#486 missing pronoun
+dakkirijt		#486 missing pronoun
+juohkkahasj		#486 missing pronoun
+vuostamuttjan		#486 - missing pronouns
 máhkak		#496 - unrecognised clitics
 månge		#496 - unrecognised clitics
 bijllage		#496 - unrecognised clitics
@@ -242,14 +245,13 @@ doarek		#507 - unrec words
 niehkkealmasjvuorro		#510 - 3-part compound
 goasskemrájddohadde		#510 - 3-part compound
 merragálvvogárvvo		#510 - 3-part compound
+Nijbbegoasskem		#511 - doesn't follow comp tags
+bievddedåhpe		#511 - doesn't follow comp tags
+uksagáldo		#511 - doesn't follow comp tags
 muoralasj		#512 - deriv -lasj not recognised
 jærjálasj		#512 - deriv -lasj not recognised
 grámmalasj		#512 - deriv -lasj not recognised
 snuhpalasj		#512 - deriv -lasj not recognised
-vuostamuttjan		#486 - missing pronouns
-Nijbbegoasskem		#511 - doesn't follow comp tags
-bievddedåhpe		#511 - doesn't follow comp tags
-uksagáldo		#511 - doesn't follow comp tags
 Stuorafuoskok		#518 - nominal + Prop/Der compound
 Stuorrafuoskok		#518 - nominal + Prop/Der compound
 stuorafuoskok		#518 - nominal + Prop/Der compound
