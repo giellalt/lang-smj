@@ -9,59 +9,12 @@ define Vow       [ a | á | e | i | o | u | y | æ | ø | å | ä | ö |
 é | ó | ú | í | à | è | ò | ù | ì | ë | ü | ï | â | ê | ô | û | î | ã | ý 
 É | Ó | Ú | Í | À | È | Ò | Ù | Ì | Ë | Ü | Ï | Â | Ê | Ô | Û | Î | Ã | Ý ] ;
 
-define 2ndVow [ e | a | o | u | y | ø | i | E | A | O | U | Y | Ø | I ] ;
-
-define VowNot2ndVow [ Vow - 2ndVow ] ;
-
-define vU     [ u | U ] ;
-define vO     [ o | O ] ;
-define vA     [ a | A ] ;
-define vE     [ e | E ] ;
-define vI     [ i | I ] ;
-define vAO    [ a | A | o | O ] ;
-define vAEIO  [ a | A | e | E | i | I | o | O ] ;
-define vAEOU [ a | A | e | E | o | O | u | U ] ;
-define vØ     [ ø | Ø | ö | Ö ] ;
-define vIØ     [ i | I | ø | Ø | ö | Ö ] ;
-define vYØ     [ y | Y | ø | Ø | ö | Ö ] ;
-define vIOU   [ i | I | o | O | u | U ] ;
-
-define VowNotU [ Vow - vU ] ;
-define VowNotO [ Vow - vO ] ;
-define VowNotA [ Vow - vA ] ;
-define VowNotE [ Vow - vE ] ;
-define VowNotI [ Vow - vI ] ;
-define VowNotØ [ Vow - vØ ] ;
-define VowNotY [ Vow - vY ] ;
-
-
-define IEdipht [ i e | I e | I E ] ;
-define UOdipht [ u o | U o | U O ] ;
-define OAdipht [ o a | O a | O A ] ;
-define OUdipht [ o u | O u | O U ] ; ! jour-na-lis-sta
-define AUdipht [ a u | A u | A U ] ; ! fau-na
-define EUdipht [ e u | E u | E U ] ; ! leut-nánta
-define AEdipht [ a e | A e | A E ] ; ! lae-sta-dius (gives: laes^ta^dius)
-define ØYdipht [ ø y | Ø y | Ø Y ] ; ! nøyt-rála
-define OEdipht [ o e | O e | O E ] ; ! goe-the
-define IEdipht [ i e | I e | I E ] ; ! skiøld
-define IOdipht [ i o | I o | I O ] ; ! skiold, na-tion
-
-
-
-define dipht [ IEdipht | UOdipht | OAdipht | OUdipht | AUdipht | EUdipht | AEdipht | ØYdipht | OEdipht | IEdipht | IOdipht ] ;
 
 define Cns [ b | c | č | d | đ | f | g | h | j | k | l | m | n | ŋ | ñ | ń | 
              B | C | Č | D | Đ | F | G | H | J | K | L | M | N | Ŋ | Ñ | Ń |
              p | q | r | s | š | t | ŧ | v | w | x | z | ž |   
              P | Q | R | S | Š | T | Ŧ | V | W | X | Z | Ž ] ; 
 
-!define Gem [ b b | d d | f f | g g | k k | l l | m m | n n | ŋ ŋ | ñ ñ | ń ń | 
-!             B B | D D | F F | G G | K K | L L | M M | N N | Ŋ Ŋ | Ñ Ñ | Ń Ń |
-!             p p | r r | s s | š š | t t | ŧ ŧ | v v |    
-!             P P | R R | S S | Š Š | T T | Ŧ Ŧ | V V ]  ;
-             
-define cS [ S | s ] ; define Cnss [ Cns - cS ] ;
 
 define Syll Cns* Vow+ Cns* ;
 
@@ -69,7 +22,7 @@ echo << Rules >>
 
 define FinalE i -> e || Syll Cns _ .#. ;
 
-
+define ij i -> j || i _ ;
 define dtj ž ž -> d t j || Vow _ Vow ; 
 define ttj č č -> t t j || Vow _ Vow ;
 define ssj š š -> s s j || Vow _ Vow ;
@@ -79,28 +32,142 @@ define lmm b -> m || Vow l _ m ;
 define lln d -> n || Vow l _ n ;
 define jmm i b -> j m || Vow _ m ;
 define jnn i d -> j n || Vow _ n ;
-define ssk  s k -> s s k || Vow _ Vow ;
-define sst  s t -> s s t || Vow _ Vow ;
-define ssm  s m -> s s m || Vow _ Vow ;
-define ssp  s p -> s s p || Vow _ Vow ;
+
+define rd  m b -> m b b ,   m b b -> m b ,
+           m p -> m p p ,   m p p -> m p ,
+           m s -> m s s ,   m s s -> m s ,
+           m š -> m s s j , m š š -> m s j ,
+
+           n c -> n c c ,   n c c -> n c ,
+           n d -> n d d ,   n d d -> n d ,
+           ŋ g -> ŋ g g ,   ŋ g g -> ŋ g ,
+           ŋ k -> ŋ k k ,   ŋ k k -> ŋ k ,
+           n s -> n s s ,   n s s -> n s ,
+           n t -> n t t ,   n t t -> n t ,
+           n v -> n v v ,   n v v -> n v ,
+           n s -> n s s ,   n s s -> n s ,
+           n z -> n t t s , n z z -> n t s ,
+           n ž -> n t t j , n ž ž -> n t j ,
+
+           v d -> v d d ,   v d d -> v d ,
+           v g -> v g g ,   v g g -> v g ,
+           v j -> v j j ,   v j j -> v j ,
+           v k -> v k k ,   v k k -> v k ,
+           v p -> v p p ,   v p p -> v p ,
+           v t -> v t t ,   v t t -> v t ,
+           v z -> v t t s , v z z -> v t s ,
+           v ž -> v t t j , v ž ž -> v t j ,
+
+           i b -> j b b ,   i b b -> j b ,
+           i c -> j c c ,   i c c -> j c ,
+           i d -> j d d ,   i d d -> j d ,
+           i f -> j f f ,   i f f -> j f ,
+           i g -> j g g ,   i g g -> j g ,
+           i k -> j k k ,   i k k -> j k ,
+           i p -> j p p ,   i p p -> j p ,
+           i s -> j s s ,   i s s -> j s ,
+           i t -> j t t ,   i t t -> j t ,
+           i v -> j v v ,   i v v -> j v ,
+           i z -> j t t s , i z z -> j t s ,
+           i ž -> j t t j , i ž ž -> j t j ,
+           
+           l b -> l b b ,   l b b -> l b ,
+           l c -> l c c ,   l c c -> l c ,
+           l d -> l l d ,   l d d -> l d ,
+           l f -> l f f ,   l f f -> l f ,
+           l g -> l g g ,   l g g -> l g ,
+           l j -> l j j ,   l j j -> l j ,
+           l k -> l k k ,   l k k -> l k ,
+           l p -> l p p ,   l p p -> l p ,
+           l s -> l s s ,   l s s -> l s ,
+           l t -> l l t ,   l t t -> l t ,
+           l v -> l v v ,   l v v -> l v ,
+           l č -> l t t j , l č č -> l t j ,
+           l š -> l s s j , l š š -> l s j ,
+           l z -> l l t s , l z z -> l t s ,
+           l ž -> l l t j , l ž ž -> l t j ,
+
+           r b -> r b b , r b b -> r b ,
+           r c -> r c c , r c c -> r c ,
+           r d -> r d d , r d d -> r d ,
+           r f -> r f f , r f f -> r f ,
+           r g -> r g g , r g g -> r g ,
+           r j -> r j j , r j j -> r j ,
+           r k -> r k k , r k k -> r k ,
+           r p -> r p p , r p p -> r p ,
+           r s -> r s s , r s s -> r s ,
+           r t -> r t t , r t t -> r t ,
+           r v -> r v v , r v v -> r v ,
+           r č -> r t t j , r č č -> r t j ,
+           r š -> r s s j , r š š -> r s j ,
+           r z -> r t t s , r z z -> r t s ,
+           r ž -> r t t j , r ž ž -> r t j , 
+
+                            s s k -> s k ,
+                            s s t -> s t ,
+                            s s m -> s m ,
+                            s s p -> s p ,
+
+           š k -> s s j k , š š k -> s j k ,
+           š t -> s s j t , š š t -> s j t ,
+           š m -> s s j m , š š m -> s j m ,
+           š v -> s s j v , š š v -> s j v ,
+
+           đ b -> r b b , đ b b -> r b ,
+           đ g -> r g g , đ g g -> r g ,
+           đ j -> r j j , đ j j -> r j ,
+           đ v -> r v v , đ v v -> r v ,
+
+           i h l -> j h l l , i h l l -> j h l ,
+           i h m -> j h m m , i h m m -> j h m ,
+           i h n -> j h n n , i h n n -> j h n ,
+
+           đ b -> r b b , đ b b -> r b ,
+           đ b -> r b b , đ b b -> r b ,
+           đ b -> r b b , đ b b -> r b ,
+           đ b -> r b b , đ b b -> r b ,
+           đ b -> r b b , đ b b -> r b ,
+           đ b -> r b b , đ b b -> r b ,
+           đ b -> r b b , đ b b -> r b ,
+           đ b -> r b b , đ b b -> r b ,
+           
+           d n   -> d d n ,   t n   -> d n ,
+           b m   -> b b m ,   p m   -> b m ,
+           g ŋ   -> g g ŋ ,   k ŋ   -> g ŋ ,
+           d n j -> d d n j , t n j -> d n j   || .#. Cns* Vow+ _ Vow ;
+
+
+define st2sst s t -> s s t || .#.  Cns* Vow+  _ Vow ;
+define stt2st   t -> 0     || Syll Cns Vow s _ t Vow ; 
+define SK2SSK s k -> s s k   ,
+              s p -> s s p   ,
+              s m -> s s m   ,
+              š t -> s s j t ,
+              š k -> s s j k ,
+              š m -> s s j m || .#.  Cns* Vow+  _ Vow ;
+
+
 
 
 define sl š -> s || .#. _ l ;
 
 define SamiLetters č -> t j , đ -> d , š -> s j , ŧ -> t , ž -> t j  ;
-define z  z -> t s ;
-define cc c c -> t t j || Vow ([h|v]) _ Vow ;
-define c c -> t j || [.#.|Vow|v|h] _ Vow ;
+define z    z -> t s ;
+define cc   c c -> t t s || Vow ([h|v]) _ Vow ;
+define c    c -> t s || [.#.|Vow|v|h] _ Vow ;
 define RevDipht u -> u o || _ Cns+ e ;
 define oCns u -> o || Syll _ Cns .#. ;
 define eCns i -> e || Syll _ Cns .#. ;
-define it e -> i || Syll _ t .#. ; ! Loan word rule!!
-
+define it e -> i   || Syll _ t .#. ; ! Loan word rule!!
+define longain2ndsyll a -> á || .#. Cns* Vow+ [Cns|[n|s|t]j|t s] _ ;
+define H2M i -> e , u -> o , e -> i , o -> u || .#. Syll Cns _ Cns ;
+define hit2dit h -> d || _ i t .#. ; ! Odd-syll verbs only
 
 echo << Compile... >>
 
 read regex [
     FinalE
+ .o. ij    
  .o. dtj
  .o. ttj
  .o. ssj
@@ -114,15 +181,22 @@ read regex [
 !.o. sst  !not for LOAN conversion
 !.o. ssm !not for LOAN conversion
 !.o. ssp !not for LOAN conversion
+.o. rd
+.o. st2sst
+.o. stt2st
+.o. SK2SSK
  .o. sl
  .o. SamiLetters
-!.o. z    !not for LOAN conversion
-!.o. cc   !not for LOAN conversion
-!.o. c    !not for LOAN conversion
+.o. z    !not for LOAN conversion
+.o. cc   !not for LOAN conversion
+.o. c    !not for LOAN conversion
 
  .o. oCns
-!.o. eCns !not for LOAN conversion
+.o. eCns !not for LOAN conversion
  .o. it
+.o. longain2ndsyll
+.o. H2M
+.o. hit2dit
 ] ;
 
 invert net ;
