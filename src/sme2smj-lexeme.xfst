@@ -20,18 +20,7 @@ define Syll Cns* Vow+ Cns* ;
 
 echo << Rules >>
 
-define FinalE i -> e || Syll Cns _ .#. ;
-
-define ij i -> j || i _ ;
-define dtj ž ž -> d t j || Vow _ Vow ; 
-define ttj č č -> t t j || Vow _ Vow ;
-define ssj š š -> s s j || Vow _ Vow ;
-define rmm b -> m || Vow r _ m ;
-define rnn d -> n || Vow r _ n ;
-define lmm b -> m || Vow l _ m ;
-define lln d -> n || Vow l _ n ;
-define jmm i b -> j m || Vow _ m ;
-define jnn i d -> j n || Vow _ n ;
+! Defining this rule in the beginning, it is so long...
 
 define rd  m b -> m b b ,   m b b -> m b ,
            m p -> m p p ,   m p p -> m p ,
@@ -137,8 +126,28 @@ define rd  m b -> m b b ,   m b b -> m b ,
            d n j -> d d n j , t n j -> d n j   || .#. Cns* Vow+ _ Vow ;
 
 
-define st2sst s t -> s s t || .#.  Cns* Vow+  _ Vow ;
-define stt2st   t -> 0     || Syll Cns Vow s _ t Vow ; 
+! Here comes the other rules
+
+define FinalE i -> e || Syll Cns _ .#. ;
+
+define ij i -> j || i _ ;
+define dtj ž ž -> d t j || Vow _ Vow ; 
+define ttj č č -> t t j || Vow _ Vow ;
+define ssj š š -> s s j || Vow _ Vow ;
+define rmm b -> m || Vow r _ m ;
+define rnn d -> n || Vow r _ n ;
+define lmm b -> m || Vow l _ m ;
+define lln d -> n || Vow l _ n ;
+define jmm i b -> j m || Vow _ m ;
+define jnn i d -> j n || Vow _ n ;
+
+#define st2sst s t -> s s t || .#.  Cns* Vow+  _ Vow ;
+define SKK2SK s t t -> s t ,               
+              s k k -> s k ,               
+              s m m -> s m ,               
+              š t t -> š t ,               
+              š k k -> š k ,               
+              š m m -> š m ||  Vow _ Vow ; 
 define SK2SSK s k -> s s k   ,
               s p -> s s p   ,
               s m -> s s m   ,
@@ -146,22 +155,20 @@ define SK2SSK s k -> s s k   ,
               š k -> s s j k ,
               š m -> s s j m || .#.  Cns* Vow+  _ Vow ;
 
-
-
-
 define sl š -> s || .#. _ l ;
 
 define SamiLetters č -> t j , đ -> d , š -> s j , ŧ -> t , ž -> t j  ;
-define z    z -> t s ;
-define cc   c c -> t t s || Vow ([h|v]) _ Vow ;
-define c    c -> t s || [.#.|Vow|v|h] _ Vow ;
+define z    z -> t s , z z -> d t s ;
+define cc   c c -> t t s , č č -> t t j || Vow ([j|l|h|k|n|r|v]) _ Vow ;
+define c    c -> t s , č -> t j || [.#.|Vow|j|l|h|k|n|r|v] _ Vow ;
 define RevDipht u -> u o || _ Cns+ e ;
 define oCns u -> o || Syll _ Cns .#. ;
-define eCns i -> e || Syll _ Cns .#. ;
+define eCns i -> e || Syll _ [ Cns - j ] .#. , [.#.|%#] Syll Cns _ [Cns - j] ;
 define it e -> i   || Syll _ t .#. ; ! Loan word rule!!
 define longain2ndsyll a -> á || .#. Cns* Vow+ [Cns|[n|s|t]j|t s] _ ;
-define H2M i -> e , u -> o , e -> i , o -> u || .#. Syll Cns _ Cns ;
+define H2M u -> o , e -> i , o -> u || [.#.|%#] Syll Cns _ Cns ;
 define hit2dit h -> d || _ i t .#. ; ! Odd-syll verbs only
+define rgŋ r g ŋ -> r ŋ ŋ , r k ŋ -> r ŋ ;
 
 echo << Compile... >>
 
@@ -183,20 +190,20 @@ read regex [
 !.o. ssp !not for LOAN conversion
 .o. rd
 .o. st2sst
-.o. stt2st
+.o. SKK2SK
 .o. SK2SSK
  .o. sl
- .o. SamiLetters
 .o. z    !not for LOAN conversion
 .o. cc   !not for LOAN conversion
 .o. c    !not for LOAN conversion
-
+ .o. SamiLetters
  .o. oCns
 .o. eCns !not for LOAN conversion
  .o. it
 .o. longain2ndsyll
 .o. H2M
 .o. hit2dit
+.o. rgŋ
 ] ;
 
 invert net ;
