@@ -16,59 +16,24 @@
 # Also problematic patterns not yet properly handled should get test pairs here.
 #
 # It is possible, and encouraged, to add a comment with the relevant bug ID
-# after each (group of) test case. Comments start with <tab>! or <tab>#.
+# after each (group of) test case. Comments start with <tab>! or <tab>#. If
+# you start a comment with a bug ID, it will ensure that all test pairs
+# belonging to one bug is grouped together in the test report.
+#
+# For maintenance reasons, and to easier ensure that all bugs are covered by
+# both negative and positive tests, all test pairs are sorted according to bug
+# number, and test pairs without a bug number in the beginning. Please add new
+# test pairs at the proper location (usually at the end of the document).
 #
 # Format summary:
 #
 # error<tab>correction<tab>#comment
 # correct<tab><tab>!comment
 #
-# Here's the start of the error<tab>correction part
-# (= negative tests, all input words should be rejected):
 Barggomárnanin	Barggomárnánin	! compound with typo, no suggestion
 Allaskåvllådåjmadagas	Allaskåvllådåjmadagás	! compound with typo, no suggestion
 Galileajávrregáttev	Galilea-jávrregáttev
 barrnev	bárnev
-vidjor9jit	vidjurijt	#398 - vidjor9jit vs vidjurijt
-maññel	maŋŋel	#427 - ń not part of word
-mańńel	maŋŋel	#427 - ń not part of word
-Nuorttaalij--guovlojn	Nuorttalijguovlojn	#482 - double hyphen
-álggoálmmug--sisálggoálmmugij	álggoálmmugis-álggoálmmugij	#482 - double hyphen
-bullar--dutkamin	polardutkamin	#482 - double hyphen
-VG:an	VG:n	#503 - acro inflection
-varresvuohtastasjåvnnå	varresvuodastasjåvnnå	#506 - doesn't follow comp-tags
-VG:as	VG:s	#509 - accepts SUB-ed entries
-VG:aj	VG:j	#509 - accepts SUB-ed entries
-1983:as	1983:s	#509 - accepts SUB-ed entries
-1983:aj	1983:j	#509 - accepts SUB-ed entries
-Nijbegoasskem	Nijbbegoasskem	#511 - doesn't follow comp tags
-bievdedåhpe	bievddedåhpe	#511 - doesn't follow comp tags
-uvsagáldo	uksagáldo	#511 - doesn't follow comp tags
-stuorra-fuoskok	stuorrafuoskok	#518 - nominal + Prop/Der compound
-stuorraFuoskok	stuorrafuoskok	#518 - nominal + Prop/Der compound
-stuorra-Fuoskok	stuorrafuoskok	#518 - nominal + Prop/Der compound
-Stuorra-fuoskok	Stuorrafuoskok	#518 - nominal + Prop/Der compound
-StuorraFuoskok	Stuorrafuoskok	#518 - nominal + Prop/Der compound
-Stuorra-Fuoskok	Stuorrafuoskok	#518 - nominal + Prop/Der compound
-stuora-fuoskok	stuorafuoskok	#518 - nominal + Prop/Der compound
-stuoraFuoskok	stuorafuoskok	#518 - nominal + Prop/Der compound
-stuora-Fuoskok	stuorafuoskok	#518 - nominal + Prop/Der compound
-Stuora-fuoskok	Stuorafuoskok	#518 - nominal + Prop/Der compound
-StuoraFuoskok	Stuorafuoskok	#518 - nominal + Prop/Der compound
-Stuora-Fuoskok	Stuorafuoskok	#518 - nominal + Prop/Der compound
-stuor-fuoskok	stuorafuoskok	#518 - nominal + Prop/Der compound
-stuorFuoskok	stuorafuoskok	#518 - nominal + Prop/Der compound
-stuor-Fuoskok	stuorafuoskok	#518 - nominal + Prop/Der compound
-Stuor-fuoskok	Stuorafuoskok	#518 - nominal + Prop/Der compound
-StuorFuoskok	Stuorafuoskok	#518 - nominal + Prop/Der compound
-Stuor-Fuoskok	Stuorafuoskok	#518 - nominal + Prop/Der compound
-væráldbijlla	væráltbijlla	#526 - wrong compounding forms accepted
-bednagadtjbijlla	bednagasjbijlla	#526 - wrong compounding forms accepted
-jávrádtjbijlla	jávrásjbijlla	#526 - wrong compounding forms accepted
-#
-#
-# Here's the start of the correct<tab> part
-# (= positive tests, all input words should be accepted):
 vuostasj		! missing ordinal
 Vuostasj		! missing ordinal
 nuppev		! missing ordinal
@@ -88,9 +53,11 @@ siellosujtov		! missing compound
 Svierigadárogielan		! name compound i Kintel och Korhon=vuonadár...med liten bok
 älla		! strange suggestions
 Skåvllådåjmadak		! compound
+vidjor9jit	vidjurijt	#398 - vidjor9jit vs vidjurijt
+vidjurijt		#398 - vidjor9jit vs vidjurijt
 Nárvijkan		#407 - missing smj names
-Svieriga		!407 missing names
-Malmöj		!407 missing names
+Svieriga		#407 missing names
+Malmöj		#407 missing names
 nælggot		#411 - ä not recognised
 nälggot		#411 - ä not recognised
 dæbbaga		#411 - ä not recognised
@@ -104,11 +71,11 @@ allaskåvllågähttjalus		!411 - Swedish ä
 ållo		#418 - missing numeral
 akta		#418 - missing numeral
 guokta		#418 - missing numeral
-Allaskåvllådievnastusdåjmadahka		!419 3-part compound
+Allaskåvllådievnastusdåjmadahka		#419 3-part compound
 bielleájggeåhpadussaj		#419 - 3-part compound
-oahppambiednikvuogádagá		!419 3-part compound
-stivrrimássjetjállagij		!419 3-part compound
-Iednegiellaoahppaábnnasa		!419 3-part compound
+oahppambiednikvuogádagá		#419 3-part compound
+stivrrimássjetjállagij		#419 3-part compound
+Iednegiellaoahppaábnnasa		#419 3-part compound
 bajedimij		!420 3-syllable actio
 gaskostibme		!420 3-syllable actio
 jållåribme		!420 3-syllable actio
@@ -128,10 +95,15 @@ mælggatåhpadusán		#421 - adj+noun
 skihpahuodnahijn		#421 - adj+noun
 skihpasujtár		!421 adj+noun
 garrasabmusit		#422 - adj->adv
+maññel	maŋŋel	#427 - ń not part of word
+mańńel	maŋŋel	#427 - ń not part of word
 lågenanniellja		#481 - missing numeral (14)
 lågenanguokta		#481 - missing numeral (12)
 millijåvnå		#481 - missing numerals
 millijåvnnå		#481 - missing numerals
+Nuorttaalij--guovlojn	Nuorttalijguovlojn	#482 - double hyphen
+álggoálmmug--sisálggoálmmugij	álggoálmmugis-álggoálmmugij	#482 - double hyphen
+bullar--dutkamin	polardutkamin	#482 - double hyphen
 USA		#483 - missing bare abbrs
 NSR		#483 - missing bare abbrs
 PDF		#483 - missing bare abbrs
@@ -189,9 +161,11 @@ gievrage		#496 - unrecognised clitics gievrra+Gen
 måjge		#496 - unrecognised clitics
 munjik		#496 - unrecognised clitics
 dakkirge		#496 - unrecognised clitics
+VG:an	VG:n	#503 - acro inflection
 VG		#503 - nom and comp of acro
 VG-kafean		#503 - nom and comp of acro
 VG-biebbmo		#503 - nom and comp of acro
+varresvuohtastasjåvnnå	varresvuodastasjåvnnå	#506 - doesn't follow comp-tags
 varresvuodastasjåvnnå		#506 - doesn't follow comp-tags
 fámon		#507 - unrec words
 ájge		#507 - unrec words
@@ -242,9 +216,16 @@ lásjmak		#507 - unrec words
 miedek		#507 - unrec words
 snutjek		#507 - unrec words
 doarek		#507 - unrec words
+VG:as	VG:s	#509 - accepts SUB-ed entries
+VG:aj	VG:j	#509 - accepts SUB-ed entries
+1983:as	1983:s	#509 - accepts SUB-ed entries
+1983:aj	1983:j	#509 - accepts SUB-ed entries
 niehkkealmasjvuorro		#510 - 3-part compound
 goasskemrájddohadde		#510 - 3-part compound
 merragálvvogárvvo		#510 - 3-part compound
+Nijbegoasskem	Nijbbegoasskem	#511 - doesn't follow comp tags
+bievdedåhpe	bievddedåhpe	#511 - doesn't follow comp tags
+uvsagáldo	uksagáldo	#511 - doesn't follow comp tags
 Nijbbegoasskem		#511 - doesn't follow comp tags
 bievddedåhpe		#511 - doesn't follow comp tags
 uksagáldo		#511 - doesn't follow comp tags
@@ -252,10 +233,31 @@ muoralasj		#512 - deriv -lasj not recognised
 jærjálasj		#512 - deriv -lasj not recognised
 grámmalasj		#512 - deriv -lasj not recognised
 snuhpalasj		#512 - deriv -lasj not recognised
+stuorra-fuoskok	stuorrafuoskok	#518 - nominal + Prop/Der compound
+stuorraFuoskok	stuorrafuoskok	#518 - nominal + Prop/Der compound
+stuorra-Fuoskok	stuorrafuoskok	#518 - nominal + Prop/Der compound
+Stuorra-fuoskok	Stuorrafuoskok	#518 - nominal + Prop/Der compound
+StuorraFuoskok	Stuorrafuoskok	#518 - nominal + Prop/Der compound
+Stuorra-Fuoskok	Stuorrafuoskok	#518 - nominal + Prop/Der compound
+stuora-fuoskok	stuorafuoskok	#518 - nominal + Prop/Der compound
+stuoraFuoskok	stuorafuoskok	#518 - nominal + Prop/Der compound
+stuora-Fuoskok	stuorafuoskok	#518 - nominal + Prop/Der compound
+Stuora-fuoskok	Stuorafuoskok	#518 - nominal + Prop/Der compound
+StuoraFuoskok	Stuorafuoskok	#518 - nominal + Prop/Der compound
+Stuora-Fuoskok	Stuorafuoskok	#518 - nominal + Prop/Der compound
+stuor-fuoskok	stuorafuoskok	#518 - nominal + Prop/Der compound
+stuorFuoskok	stuorafuoskok	#518 - nominal + Prop/Der compound
+stuor-Fuoskok	stuorafuoskok	#518 - nominal + Prop/Der compound
+Stuor-fuoskok	Stuorafuoskok	#518 - nominal + Prop/Der compound
+StuorFuoskok	Stuorafuoskok	#518 - nominal + Prop/Der compound
+Stuor-Fuoskok	Stuorafuoskok	#518 - nominal + Prop/Der compound
 Stuorafuoskok		#518 - nominal + Prop/Der compound
 Stuorrafuoskok		#518 - nominal + Prop/Der compound
 stuorafuoskok		#518 - nominal + Prop/Der compound
 stuorrafuoskok		#518 - nominal + Prop/Der compound
+væráldbijlla	væráltbijlla	#526 - wrong compounding forms accepted
+bednagadtjbijlla	bednagasjbijlla	#526 - wrong compounding forms accepted
+jávrádtjbijlla	jávrásjbijlla	#526 - wrong compounding forms accepted
 væráltbijlla		#526 - wrong compounding forms accepted
 bednagasjbijlla		#526 - wrong compounding forms accepted
 jávrásjbijlla		#526 - wrong compounding forms accepted
