@@ -130,12 +130,12 @@ define rd  m b -> m b b ,   m b b -> m b ,
            d n   -> d d n ,   t n   -> d n ,
            b m   -> b b m ,   p m   -> b m ,
            g ŋ   -> g g ŋ ,   k ŋ   -> g ŋ ,
-           d n j -> d d n j , t n j -> d n j   || [.#.|%#|%-] Cns* Vow+ _ Vow ;
-
+!           d n j -> d d n j , t n j -> d n j   || Cns* Vow+ _ Vow ;
+           d n j -> d d n j , t n j -> d n j   || [.#.|%#|%-|%^] Cns* Vow+ _ Vow ;
 
 ! Here comes the other rules
 
-define FinalE i -> e || Syll Cns _ .#. ;
+define FinalE i -> e || Syll Cns _ [.#.|%#|%^] ;
 
 define ij i -> j || Vow _ ;
 define dtj ž ž -> d t j || Vow _ Vow ; 
@@ -160,13 +160,16 @@ define LN   đ m m -> r m ,     đ b m -> r m m ,
 
 define jNN b m -> m m , d n -> n n || Vow j _ ;
 
+
+
+
 define SK2SSK s p -> s s p   ,
               s t -> s s t   ,
               s k -> s s k   ,
               s m -> s s m   ,
               š t -> s s j t ,
               š k -> s s j k ,
-              š m -> s s j m || [.#.|%#|%-]  Cns* Vow+ ([j|m|n|r|v]) _ Vow ;
+              š m -> s s j m || [.#.|%#|%-|%^]  Cns* Vow+ ([j|m|n|r|v]) _ Vow ;
 define SKK2SK s t t -> s t ,               
               s k k -> s k ,               
               s m m -> s m ,               
@@ -174,33 +177,33 @@ define SKK2SK s t t -> s t ,
               š k k -> š k ,               
               š m m -> š m ||  Vow  ([j|m|n|r|v]) _ Vow ; 
 
-define sl š -> s || [.#.|%#|%-] _ l ;
+define sl š -> s || [.#.|%#|%-|%^] _ l ;
 define zz z z -> d t s ;
 define z    z -> t s ;
 define cc   c c -> t t s , č č -> t t j || Vow ([j|l|h|k|n|r|v]) _ Vow ;
-define c    c -> t s , č -> t j || [.#.|%#|%-|Vow|j|l|h|k|n|r|v] _ Vow ;
+define c    c -> t s , č -> t j || [.#.|%#|%-|%^|Vow|j|l|h|k|n|r|v] _ Vow ;
 define RevDipht u -> u o || _ Cns+ e ;
-define oCns u -> o || Syll _ Cns .#. ;
+!define oCns     u -> o || Syll _ Cns .#. ;
 
 define eCns i -> e ||          Syll     _ [ Cns - j ] .#. ,
-                      [.#.|%#|%-] Syll Cns _ [Cns - j] ,,
-            e -> i || [.#.|%#|%-] Syll Cns _  Cns ;
+                      [.#.|%#|%-|%^] Syll Cns _ [Cns - j] ; !,,
+!            e -> i || [.#.|%#|%-] Syll Cns _  Cns ;
 define it   e -> i || Syll _ t .#. ; ! Loan word rule!!
-!define H2M u -> o , e -> i , o -> u || [.#.|%#|%-] Syll Cns _ Cns ;
-define H2M  u -> o , o -> u          || [.#.|%#|%-] Syll Cns _ Cns ;
-define hit2dit h -> d || _ i t .#. ; ! Odd-syll verbs only
-define longain2ndsyll a -> á || [.#.|%#|%-] Cns* Vow [Cns|[n|s|t]j|t s] _ [ Cns - š ] ;
-define tjfromšafter2syll š -> t j || [.#.|%#|%-] Syll Syll _ Vow ;
+define H2M  u -> o                   || [.#.|%#|%-|%^] Syll Cns _ (Cns|%^) ;
+define M2H  o -> u                   || [.#.|%#|%-|%^] Syll Cns _ Cns ;
+define hit2dit h -> d || _ [ i t | u s ] .#. ;         ! Odd-syll verbs  and dus nouns
+define longain2ndsyll a -> á || [.#.|%#|%-|%^] Cns* Vow [Cns|[n|s|t]j|t s] _ [ Cns - š ] ;
+define tjfromšafter2syll š -> t j || [.#.|%#|%-|%^] Syll Syll _ Vow ;
 define SamiLetters č -> t j , đ -> d , š -> s j , ŧ -> t , ž -> t j  ;
-define 1stysllæ e a -> æ || [.#.|%#|%-] (Cns+) _ Cns+ á ;
-define 1stsylldiphthong o -> å , e a -> i e || [.#.|%#|%-] (Cns+) _ Cns ;
+define 1stysllæ e a -> æ || [.#.|%#|%-|%^] (Cns+) _ Cns+ á ;
+define 1stsylldiphthong o -> å , e a -> i e || [.#.|%#|%-|%^] (Cns+) _ Cns ;
 define labialharmony [a|á] -> å || å Cns+ _ ;
-define oa2åG1 o a -> å || [.#.|%#|%-] (Cns+) _  [Cns|[n|s|t]j|t s]  a ;
+define oa2åG1 o a -> å || [.#.|%#|%-|%^] (Cns+) _  [Cns|[n|s|t]j|t s]  a ;
 
 echo << and the cleaning rules at the end >>
 
 define phones e7 -> e , o7 -> o ;
-define technical %# -> 0 ;
+define technical %# -> 0 , %^ -> 0 ;
 
 echo << Compile... >>
 
@@ -220,10 +223,10 @@ read regex [
 .o. z    !not for LOAN conversion
 .o. cc   !not for LOAN conversion
 .o. c    !not for LOAN conversion
-.o. oCns
 .o. eCns !not for LOAN conversion
-.o. it
+!.o. it
 .o. H2M
+.o. M2H
 .o. hit2dit
 .o. longain2ndsyll
 .o. tjfromšafter2syll
@@ -233,7 +236,7 @@ read regex [
 .o. labialharmony
 .o. oa2åG1
 .o. phones
-.o. technical
+!.o. technical
 ] ;
 
 invert net ;
