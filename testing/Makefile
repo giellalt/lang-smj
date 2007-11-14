@@ -360,6 +360,62 @@ num-paradigm: num-para.ptest savefile
 	@less $(WORD).paradigm
 
 
+# PROPER NOUNS
+# ============
+
+# Create all the proper noun test file bases:
+prop-%.testbase: prop-%.txt prop-codes.txt
+	@echo
+	@echo "*** Creating the test base for prop-$*.txt ***"
+	@echo
+	@rm -f $@
+	$(UMASK) && \
+	$(BINDIR)/merge-codesNforms.pl prop-codes.txt $< > $@
+	@chmod 660 $@
+
+# Finally, we concatenate all *.greports
+prop-g.summary: $(NGenFiles)
+	@cat $^ > $@
+	@echo
+	@echo "*** All noun word form generation testing is done.      ***"
+	@echo "*** The concatenated reports are stored in $@. ***"
+	@echo
+#	@less $@
+
+# Finally, we concatenate all *.areports:
+prop-a.summary: $(NAnaFiles)
+	@cat $^ > $@
+	@echo
+	@echo "*** All noun word form analysis testing is done.        ***"
+	@echo "*** The concatenated reports are stored in $@. ***"
+	@echo
+#	@less $@
+
+# Create noun paradigm generation input file:
+prop-para.ptest: prop-codes.txt
+	@echo
+	@echo "*** Creating the noun paradigm input file for '$(WORD)' ***"
+	@echo
+	@rm -f $@
+	$(UMASK) && \
+	$(BINDIR)/merge-codesNword.pl $< $(WORD) > $@
+	@chmod 660 $@
+
+# Paradigm generation:
+.PHONY: prop-paradigm
+prop-paradigm: prop-para.ptest savefile
+	@echo
+	@echo "*** Running the paradigm generator for '$(WORD)' ***"
+	@echo
+	@printf "load $(SAVEFILE) \n\
+	apply up < $< \n\
+	quit \n" > $(TEMP)/$@-gtest-script
+	$(XFST) < $(TEMP)/$@-gtest-script > $(WORD).paradigm
+	@rm -f $(TEMP)/$@-gtest-script
+	@rm -f $<
+	@less $(WORD).paradigm
+
+
 
 
 # POS-independent parts:
