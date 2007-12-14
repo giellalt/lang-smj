@@ -1452,7 +1452,6 @@ LEXICON ÅRES
  +N:X5 ODDCmp ;             
  +N+SgNomCmp:Q1 R ;        
 
-
  
 ! oddsyll, cg, C-final, no 2ndsyll vowchange
 LEXICON GÁMAS ! Odd-syllable C-final noun with CG but no VChange
@@ -1852,8 +1851,7 @@ LEXICON SÁGE
  +N:ah DenominalAdjsC ;
  +N:ah ODDCmp ;             
  +N+SgNomCmp:eQ1 R ;  
-      
-
+ 
 
 ! Odd-syllable stems, sublexica
 ! - - - - - - - - - - - - - - - 
@@ -2924,14 +2922,14 @@ LEXICON BIEKKASTALLAT !Allready derived Impersonals
 +V+IV: SG3PASSEVEN ;
 
 LEXICON RAVGGAT  !a- and å-verbs
-+V+IV: BASSATStem ;
++V+IV: RAVGGATStem ;
 +V+IV: DeverbalVerbsBASSAT ;
 +V+IV: SG3PASSV ;
 +V+IV: SG3PASSEVEN ;
 
 
 LEXICON BUOLLET  !e-verbs
-+V+IV: BASSATStem ;
++V+IV: RAVGGATStem ;
 +V+IV: DeverbalVerbsLÁHPPET ;
 +V+IV: SG3PASSV ;
 +V+IV: SG3PASSEVEN ;
@@ -2951,12 +2949,12 @@ LEXICON MÁHTTET  !transitive verbs without personal passive
 
 
 LEXICON RAVGGALASSTET   !Like RAVGGAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced
-+V+IV: BASSALASSTETStem ;
++V+IV: RAVGGALASSTETStem ;
 +V+IV: SG3PASSV ;
 +V+IV: SG3PASSEVEN ;
 
 LEXICON GUOTTEDALLAT   !passives - no actio as first part of compounds, but reintroduced
- +V+IV: BASSALASSTETStem ; !replaced to avoid pass + actio, reintroduced
+ +V+IV: RAVGGALASSTETStem ; !replaced to avoid pass + actio, reintroduced
 ! +V+IV+Der3+Der/goahte+V:goahte INFL-EVEN ;
 ! +V+IV: INFL-EVEN ;
 ! +V+IV+Der3+Actor:@C.NeedNoun@  ACTOR ;
@@ -2980,7 +2978,7 @@ LEXICON LÁHPPET  !e-verbs
 +V+TV: EVEN-PASSIVE ;
 
 LEXICON JIEHKET  !e-verbs GRADE II-I WITH IE DIPHT.
-+V+TV: VIEDJETStem ;
++V+TV: JIEHKETStem ;
 +V+TV: DeverbalVerbsLÁHPPET ;
 +V+TV: EVEN-PASSIVE ;
 
@@ -3029,12 +3027,22 @@ LEXICON DIEHTET  !Only this one word, unusual diphtong behavior
 LEXICON BASSATStem
  BASSATINCH ;
  
+LEXICON RAVGGATStem
+ RAVGGATINCH ;
+
+ 
 LEXICON VIEDJETStem
  VIEDJETINCH ;
+
+LEXICON JIEHKETStem
+ JIEHKETINCH ;
 
  
 LEXICON BASSALASSTETStem
  BASSALASSTETINCH ;
+
+LEXICON RAVGGALASSTETStem
+ RAVGGALASSTETINCH ;
 
 
 LEXICON BASSATINCH
@@ -3042,7 +3050,17 @@ LEXICON BASSATINCH
  INFL-EVEN ;
  DeverbalNounsBASSAT ;
  
+LEXICON RAVGGATINCH
+ +Der3+Der/goahte+V:goahte INFL-EVEN ;
+ INFL-EVEN ;
+ DeverbalNounsRAVGGAT ;
+ 
 LEXICON VIEDJETINCH
+ +Der3+Der/goahte+V:goahte INFL-EVEN ;
+ INFL-VIEDJETEVEN ;
+ DeverbalNounsRAVGGAT ;
+
+LEXICON JIEHKETINCH
  +Der3+Der/goahte+V:goahte INFL-EVEN ;
  INFL-VIEDJETEVEN ;
  DeverbalNounsBASSAT ;
@@ -3052,6 +3070,11 @@ LEXICON BASSALASSTETINCH
  +Der3+Der/goahte+V:goahte INFL-EVEN ;
  INFL-EVEN ;
  DeverbalNounsBASSALASSTET ;
+
+LEXICON RAVGGALASSTETINCH
+ +Der3+Der/goahte+V:goahte INFL-EVEN ;
+ INFL-EVEN ;
+ DeverbalNounsRAVGGALASSTET ;
 
 
 LEXICON GÁDJOT !o-verbs
@@ -3065,12 +3088,12 @@ LEXICON JÅRGGOT !o-verbs with dim -astit that are hardcoded
 +V+TV: EVEN-PASSIVE ;
 
 LEXICON BÅRSSJOT !o-verbs
-+V+IV: GÁDJOTStem ;
++V+IV: BÅRSSJOTStem ;
 +V+IV: DeverbalVerbsBASSAT ;
 +V+IV: EVEN-PASSIVE ;
 
 LEXICON VILSSJOT !o-verbs with dim -astit that are hardcoded
-+V+IV: GÁDJOTStem ;
++V+IV: BÅRSSJOTStem ;
 +V+IV: DeverbalVerbsJUHKAT ;
 +V+IV: EVEN-PASSIVE ;
 
@@ -3078,10 +3101,21 @@ LEXICON GÁDJOTStem
  GÁDJOTINCH ;
 ! EVEN-PASSIVE ;
 
+LEXICON BÅRSSJOTStem
+ BÅRSSJOTINCH ;
+! EVEN-PASSIVE ;
+
+
 LEXICON GÁDJOTINCH
  +Der3+Der/goahte+V:goahte INFL-EVEN ;
  INFL-o- ;
  DeverbalNounsBASSAT ;
+ 
+LEXICON BÅRSSJOTINCH
+ +Der3+Der/goahte+V:goahte INFL-EVEN ;
+ INFL-o- ;
+ DeverbalNounsRAVGGAT ;
+
 
 LEXICON BIEGGATinfl
 +Ind+Prs+Sg3:Y2 K ;
@@ -3201,7 +3235,7 @@ LEXICON BIEKKASTITinfl
 
 
 LEXICON UNNEDIT ! Transitives
- +V+TV: JÅLLÅRITStem ;
+ +V+TV: UNNEDITStem ;
  +V+TV: DeverbalVerbsJÅLLÅRIT ;
  +V+TV: ODD-PASSIVE ;
  
@@ -3215,7 +3249,7 @@ LEXICON MUJTATJIT  !Words ending -tjit, -jdit, reciprocals on -dit, momentativ
  
 
 LEXICON BÅNJÅDIT  !continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms
- +V+TV: JÅLLÅRITStem ;
+ +V+TV: UNNEDITStem ;
  +V+TV: ODD-PASSIVE ;
  +V+TV+Der1+Der/ahtja+V:ahtja INFL-EVEN ;                 !Inchoative
  +V+TV+Der1+Der/ahtja+V:ahtja DeverbalNounsBASSALASSTET ; !Inchoative
@@ -3224,7 +3258,7 @@ LEXICON BÅNJÅDIT  !continuatives on -dit, frequentatives on -odit, reciprocals
 
  
 LEXICON VUORDDELIT !Trisyllabic Verbs ending -lit
- +V+TV: JÅLLÅRITStem ;
+ +V+TV: UNNEDITStem ;
  +V+TV: DeverbalVerbsVUORDDELIT ;
  +V+TV: ODD-PASSIVE ;
 
@@ -3237,7 +3271,7 @@ LEXICON JÅLLÅRIT !At the moment IV, we may perhaps change IV/TV.
  +V+IV: SG3PASS ; 
  
 LEXICON BEGATJIT  !Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but reintroduced
- +V+IV: MUJTATJITStem ;
+ +V+IV: BEGATJITStem ;
  +V+IV: SG3PASS ; 
  +V+IV+Der1+Der/ahtja+V:ahtja INFL-EVEN ;                 !Inchoative
  +V+IV+Der1+Der/ahtja+V:ahtja DeverbalNounsBASSALASSTET ; !Inchoative
@@ -3269,20 +3303,40 @@ LEXICON JÅLLÅRITStem
  JÅLLÅRITINCH ;
 ! ODD-PASSIVE ; ! this must go for TV only.
 
+LEXICON UNNEDITStem
+ UNNEDITINCH ;
+! ODD-PASSIVE ; ! this must go for TV only.
+
+
 LEXICON JÅLLÅRITINCH
  +Der3+Der/goahte+V:isjgoahte INFL-EVEN ;
  INFL-ODD ;
  DeverbalNounsJÅLLÅRIT ;
  
+LEXICON UNNEDITINCH
+ +Der3+Der/goahte+V:isjgoahte INFL-EVEN ;
+ INFL-ODD ;
+ DeverbalNounsUNNEDIT ;
+
+ 
 LEXICON MUJTATJITStem
  MUJTATJITINCH ;
 ! ODD-PASSIVE ; ! this must go for TV only.
+
+LEXICON BEGATJITStem
+ BEGATJITINCH ;
+! ODD-PASSIVE ; ! this must go for TV only.
+
 
 LEXICON MUJTATJITINCH
  +Der3+Der/goahte+V:isjgoahte INFL-EVEN ;
  INFL-ODD ;
  DeverbalNounsMUJTATJIT ;
 
+LEXICON BEGATJITINCH
+ +Der3+Der/goahte+V:isjgoahte INFL-EVEN ;
+ INFL-ODD ;
+ DeverbalNounsBEGATJIT ;
 
 
 ! Contracted stems
@@ -3333,7 +3387,7 @@ LEXICON OADDÁT ! Do not make nouns via -ár derivation
  +V+IV:d SG3PASS ;
 
 LEXICON TJUOLLÁT ! Do not make nouns via -ár derivation
- +V+TV: OADDÁTStem ;
+ +V+TV: TJUOLLÁTStem ;
  +V+TV: DeverbalVerbsOADDÁT ;
  +V+TV:  CONTR-PASSIVE ;
 
@@ -3343,7 +3397,7 @@ LEXICON STRÁFFUT ! Do not make nouns via -ár derivation
  +V+TV: CONTR-PASSIVE ;
 
 LEXICON DULLUT ! Do not make nouns via -ár derivation
- +V+IV: STRÁFFUTStem ;
+ +V+IV: DULLUTStem ;
  +V+IV: DeverbalVerbsOADDÁT ;
  +V+IV:d SG3PASS ;
 
@@ -3351,12 +3405,12 @@ LEXICON DULLUT ! Do not make nouns via -ár derivation
 LEXICON TSIEGGIT ! Make nouns via -ár derivation
  +V+TV: STRÁFFUTStem ;
  +V+TV: DeverbalVerbsOADDÁT ;
- +V+TV+Der1+Der/r+N:Y5r N-ODDCASE ; ! -ár derivation 
- +V+TV+Der1+Der/r+N:Y5r OTH-ODDCASE ; ! -ár derivation 
+ +V+TV+Der1+Der/r+N:Y5r N-ODDCASE ; !+SgNomCmp +SgGenCmp +PlGenCmp +SgNomLeft +SgGenLeft +PlGenLeft ! -ár derivation 
+ +V+TV+Der1+Der/r+N:Y5r OTH-ODDCASE ; !+SgNomCmp +SgGenCmp +PlGenCmp +SgNomLeft +SgGenLeft +PlGenLeft ! -ár derivation 
  +V+TV:  CONTR-PASSIVE ;
 
 LEXICON VALLIT ! Make nouns via -ár derivation
- +V+IV: STRÁFFUTStem ;
+ +V+IV: DULLUTStem ;
  +V+IV: DeverbalVerbsOADDÁT ;
  +V+IV+Der1+Der/r+N:Y5r N-ODDCASE ; ! -ár derivation
  +V+IV+Der1+Der/r+N:Y5r OTH-ODDCASE ; ! -ár derivation  
@@ -3376,20 +3430,40 @@ LEXICON OADDÁTStem
  OADDÁTINCH ;
 ! CONTR-PASSIVE ;
 
+LEXICON TJUOLLÁTStem
+ TJUOLLÁTINCH ;
+! CONTR-PASSIVE ;
+
+
 LEXICON OADDÁTINCH
  +Der3+Der/goahte+V:goahte INFL-EVEN ;
  INFL-CONTRACTED ;
  DeverbalNounsOADDÁT ;
  
+LEXICON TJUOLLÁTINCH
+ +Der3+Der/goahte+V:goahte INFL-EVEN ;
+ INFL-CONTRACTED ;
+ DeverbalNounsTJUOLLÁT ;
+
+ 
 LEXICON STRÁFFUTStem
  STRÁFFUTINCH ;
 ! CONTR-PASSIVE ;
+
+LEXICON DULLUTStem
+ DULLUTINCH ;
+! CONTR-PASSIVE ;
+
 
 LEXICON STRÁFFUTINCH
  +Der3+Der/goahte+V:goahte INFL-EVEN ;
  INFL-CONTRACTED ;
  DeverbalNounsSTRÁFFUT ;
 
+LEXICON DULLUTINCH
+ +Der3+Der/goahte+V:goahte INFL-EVEN ;
+ INFL-CONTRACTED ;
+ DeverbalNounsDULLUT ;
 
 
 ! Main inflectional categories
@@ -3888,6 +3962,15 @@ LEXICON DeverbalVerbsLÁHPPET
  +Der1+Der/stasste+V:Q1stasste BASSALASSTETINCH ; !Double dim
 
 LEXICON DeverbalNounsBASSAT
+ +Der3+Actor:@C.NeedNoun@  ACTORTV ;
+! +Der3+Actor+N:@C.NeedNoun@ DenominalNounsActor ;    !not usual
+ +Der3+Der/lis+A:Y3liss LIS ;
+ +Actio+Der3+Der/m:m@C.NeedNoun@ BOAHTEMTV ;
+ +Der3+Der/mus+N:muss@C.NeedNoun@ MUS ;
+! +Der3+Der/dahka+N:X7dahka N-EVENSTRONGSTEM ; !does not seem usual (TO)
+! +Der3+Der/dahka+N:X7dahkaQ1 N-EVENWEAKSTEM ; !does not seem usual (TO)
+
+LEXICON DeverbalNounsRAVGGAT
  +Der3+Actor:@C.NeedNoun@  ACTOR ;
 ! +Der3+Actor+N:@C.NeedNoun@ DenominalNounsActor ;    !not usual
  +Der3+Der/lis+A:Y3liss LIS ;
@@ -3898,12 +3981,21 @@ LEXICON DeverbalNounsBASSAT
 
 
 LEXICON DeverbalNounsBASSALASSTET
+ +Der3+Actor:@C.NeedNoun@  ACTORTV ;
+ +Der3+Der/lis+A:Y3liss LIS ;
+ +Actio+Der3+Der/m:m@C.NeedNoun@ BASSALASSTEMTV ;
+ +Der3+Der/mus+N:muss@C.NeedNoun@ MUS ;
+! +Der3+Der/dahka+N:X7dahka N-EVENSTRONGSTEM ; !does not seem usual (TO)
+! +Der3+Der/dahka+N:X7dahkaQ1 N-EVENWEAKSTEM ; !does not seem usual (TO)
+
+LEXICON DeverbalNounsRAVGGALASSTET
  +Der3+Actor:@C.NeedNoun@  ACTOR ;
  +Der3+Der/lis+A:Y3liss LIS ;
  +Actio+Der3+Der/m:m@C.NeedNoun@ BASSALASSTEM ;
  +Der3+Der/mus+N:muss@C.NeedNoun@ MUS ;
 ! +Der3+Der/dahka+N:X7dahka N-EVENSTRONGSTEM ; !does not seem usual (TO)
 ! +Der3+Der/dahka+N:X7dahkaQ1 N-EVENWEAKSTEM ; !does not seem usual (TO)
+
 
 LEXICON DeverbalVerbsBIEGGAT
  +Der1+Der/l+V:l BIEKKASTITinfl ;                !Subitive
@@ -3931,7 +4023,7 @@ LEXICON DeverbalVerbsDIEHTET
 
 
 LEXICON DeverbalNounsDIEHTET
- +Der3+Actor:@C.NeedNoun@  ACTORdiehtet ;
+! +Der3+Actor:@C.NeedNoun@  ACTORdiehtet ;
  +Actio+Der3+Der/m:m@C.NeedNoun@ BOAHTEM ;
  +Der3+Der/mus+N:muss@C.NeedNoun@ MUS ;
 
@@ -3951,10 +4043,21 @@ LEXICON DeverbalNounsJÅLLÅRIT
  +Actio+Der2+Der/ibme:@C.NeedNoun@ VSBST-EVEN ;		
  +Der3+Actor:iddje@C.NeedNoun@ ACTOR ;
  +Der2+Der/ahkes:ahkke SÁDNES ;
+ 
+LEXICON DeverbalNounsUNNEDIT
+ +Actio+Der2+Der/ibme:@C.NeedNoun@ VSBST-EVENTV ;		
+ +Der3+Actor:iddje@C.NeedNoun@ ACTORTV ;
+ +Der2+Der/ahkes:ahkke SÁDNES ;
+
 
 LEXICON DeverbalNounsMUJTATJIT
  +Actio+Der2+Der/ibme:@C.NeedNoun@ MUJTATJIBME ;		
- +Der3+Actor:iddje@C.NeedNoun@ ACTOR ;		 
+ +Der3+Actor:iddje@C.NeedNoun@ ACTORTV ;		 
+ +Der2+Der/ahkes:ahkke SÁDNES ;
+
+LEXICON DeverbalNounsBEGATJIT
+ +Actio+Der2+Der/ibme:@C.NeedNoun@ BEGATJIBME ;		
+ +Der3+Actor:iddje@C.NeedNoun@ ACTORTV ;		 
  +Der2+Der/ahkes:ahkke SÁDNES ;
 
 
@@ -4016,11 +4119,21 @@ LEXICON DeverbalNounsOADDÁT
  +Actio+Der3+Der/m:m@C.NeedNoun@ OADDÁM ;
  +Der3+Der/mus+N:muss@C.NeedNoun@ MUS ;
  
+LEXICON DeverbalNounsTJUOLLÁT
+ +Der3+Actor:jiddje@C.NeedNoun@  ACTORTV ;
+ +Actio+Der3+Der/m:m@C.NeedNoun@ TJUOLLÁM ;
+ +Der3+Der/mus+N:muss@C.NeedNoun@ MUS ;
+
+ 
 LEXICON DeverbalNounsSTRÁFFUT
+ +Der3+Actor:jiddje@C.NeedNoun@  ACTORTV ;
+ +Actio+Der3+Der/m:m@C.NeedNoun@ BOAHTEMTV ;
+ +Der3+Der/mus+N:muss@C.NeedNoun@ MUS ;
+
+LEXICON DeverbalNounsDULLUT
  +Der3+Actor:jiddje@C.NeedNoun@  ACTOR ;
  +Actio+Der3+Der/m:m@C.NeedNoun@ BOAHTEM ;
  +Der3+Der/mus+N:muss@C.NeedNoun@ MUS ;
-
 
 LEXICON DeverbalVerbsSJIERRIT
  +Der1+Der/st+V:st BIEKKASTITinfl ;            !Dim
@@ -4052,7 +4165,30 @@ LEXICON VSBST-EVEN
  +N:ibmeX4 ILL-EVENCASE ;
  +N:ibmeQ1 N-EVENWEAKSTEM ;
  
-LEXICON MUJTATJIBME
+LEXICON VSBST-EVENTV  !+SgNomCmp +DefSgGenCmp +DefPlGenCmp +SgNomLeft +SgGenLeft +PlGenLeft
+ +N+Sg+Nom:ibme K ;
+ +N+Sg+Nom:im K ;
+ +N+Sg+Nom:ibme PxV ;
+ +N+SgNomCmp:im R ;        
+ +N+Sg+Nom+Der4+Der/ahtes: AHTES ;
+ +N+Ess:ibmeQ1 K ;
+ +N+Ess:ibmen K ;
+ +N:ibmeX4 ILL-EVENCASE ;
+ +N:ibmeQ1 N-EVENWEAKSTEM ;
+
+ 
+LEXICON MUJTATJIBME !+SgNomCmp +DefSgGenCmp +DefPlGenCmp +SgNomLeft +SgGenLeft +PlGenLeft
+ +N+Sg+Nom:ibme K ;
+ +N+Sg+Nom:im K ;
+ +N+Sg+Nom:ibme PxV ;
+ +N+SgNomCmp:im R ;         !No compounds for these, but now reintroduced
+ +N+Sg+Nom+Der4+Der/ahtes: AHTES ;
+ +N+Ess:ibmeQ1 K ;
+ +N+Ess:ibmen K ;
+ +N:ibmeX4 ILL-EVENCASE ;
+ +N:ibmeQ1 N-EVENWEAKSTEM ;
+
+LEXICON BEGATJIBME
  +N+Sg+Nom:ibme K ;
  +N+Sg+Nom:im K ;
  +N+Sg+Nom:ibme PxV ;
@@ -4086,6 +4222,15 @@ LEXICON ACTOR !+SgNomCmp +SgGenCmp +PlGenCmp
 ! +N:Y7 DenominalAdjsV2 ; !not plausible
  +N:Y6 ACTORCmp ;        
 
+LEXICON ACTORTV !+SgNomCmp +SgGenCmp +PlGenCmp +SgNomLeft +SgGenLeft +PlGenLeft
+ +A+Attr:Y6 ATTR ;       
+ +N:Y6 NE-EVENCASE ;     
+ +N:Y6 ACTORILL ;        
+ +N:Y6 N-EVENWEAKSTEM ;  
+! +N:Y6 DenominalAdjsV1 ; !not plausible
+! +N:Y7 DenominalAdjsV2 ; !not plausible
+ +N:Y6 ACTORCmp ;        
+
 
 LEXICON ACTORILL         
  +Sg+Ill:X4j K ;         
@@ -4110,7 +4255,19 @@ LEXICON BOAHTEM
  +N: OTH-ODDCASE ;
  +N+Der4+Der/ahtes: AHTES ;
  
+LEXICON BOAHTEMTV  !+SgNomCmp +DefSgGenCmp +DefPlGenCmp +SgNomLeft +SgGenLeft +PlGenLeft
+ +N+Sg+Nom: K ;
+ +N+SgNomCmp: R ;	
+ +N: OTH-ODDCASE ;
+ +N+Der4+Der/ahtes: AHTES ;
+
 LEXICON BASSALASSTEM
+ +N+Sg+Nom: K ;
+ +N+SgNomCmp: R ;	 !no compounds for these, but reintroduced
+ +N: OTH-ODDCASE ;
+ +N+Der4+Der/ahtes: AHTES ;
+
+LEXICON BASSALASSTEMTV  !+SgNomCmp +DefSgGenCmp +DefPlGenCmp +SgNomLeft +SgGenLeft +PlGenLeft
  +N+Sg+Nom: K ;
  +N+SgNomCmp: R ;	 !no compounds for these, but reintroduced
  +N: OTH-ODDCASE ;
@@ -4123,6 +4280,11 @@ LEXICON OADDÁM
  +N: OTH-ODDCASE ;
  +N+Der4+Der/ahtes: AHTES ;
 
+LEXICON TJUOLLÁM  !+SgNomCmp +DefSgGenCmp +DefPlGenCmp +SgNomLeft +SgGenLeft +PlGenLeft
+ +N+Sg+Nom: K ;
+ +N+SgNomCmp: R ;	 !no compounds for these, but reintroduced
+ +N: OTH-ODDCASE ;
+ +N+Der4+Der/ahtes: AHTES ;
   
  
 
