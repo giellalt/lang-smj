@@ -6,3 +6,4 @@
 rm -f paradigm-smj.txt
 rm -f *.paradigm
 perl gen-paradigms.pl parawlist.txt
+cat *.paradigm > paradigm-smj.txt
