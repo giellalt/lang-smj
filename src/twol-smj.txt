@@ -1,13 +1,13 @@
-!Distributed under the terms of the GNU General Public License version 2 
+!Distributed under the terms of the GNU General Public License version 2
 ! or any later version.
 
- 
+
 ! ========================================================================== !
 !                   Lule Sámi morphophonological rule set                    !
 ! ========================================================================== !
 
 ! twol-smj.txt
-! The file contains the rule set for the non-segmental 
+! The file contains the rule set for the non-segmental
 ! Lule Sámi morphphonological rules
 
 ! m4 rules for selecting parts of the file to a certain application.
@@ -30,6 +30,7 @@ define(<<ELSE>>,
 FLAGINIT(<<HYPHENATE>>)
 FLAGINIT(<<SHORTCOMP>>)
 FLAGINIT(<<DIPHSIMPL>>)
+FLAGINIT(<<HUNSPELL>>)
 
 Alphabet
  a á b c d e f g h i j k l m n ñ ń ŋ o p q			! small
@@ -38,7 +39,7 @@ Alphabet
  ç č đ ð š ŧ þ ß ª
 
  A Á B C D E F G H I J K L M N Ñ Ń Ŋ O P Q			! capital
- R S T U V W X Y Z Å Ä Ø Ö Å Æ:Æ Æ:Ä 
+ R S T U V W X Y Z Å Ä Ø Ö Å Æ:Æ Æ:Ä
  É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý
  Ç Č Đ Ð Š Ŧ þ
 
@@ -67,20 +68,22 @@ OMITIF(HUNSPELL)
  X1 X2 X3 X4 X5 X6 X7 X8 X9   ! Diacritics
  Q1 Q2 Q3 Q4 Q5:0 Q6:0 Q7:0 Q8 Q9   ! They trigger morphophono-
  Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9   ! logical rules
- %> ;                         ! stem-suffix border mark, only visible in Hunspell
+ %>                          ! stem-suffix border mark, only visible in Hunspell
 ENDOMIT
+
+;
 
 Sets
  Vow     = a á e i o u y æ ä ø ö å
-           A Á E I O U Y Æ Ä Ø Ä Å 
-           é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý 
+           A Á E I O U Y Æ Ä Ø Ä Å
+           é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý
            É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý
            a9 e9 o9 æ9 ä9
                  Æ9 Ä9;
  æä      = æ ä                 ;
  Cns     = b b9 c d d9 f g g8 g9 h h8 h9 j k l l9 m m8 m9 n n8 n9 ŋ ñ ń p q r r9 s t v w x z z9 ' ; ! All consonants
  Cns7    =      c      f         h       j   l    m       n       ŋ ñ ń p q r    s t v w x z   ; ! Surface cons excl 1st members of xx-type G3
- Cns8    = b    c d    f g       h       j k l    m       n       ŋ ñ ń p q r    s t v w x z   ; ! All surface consonants 
+ Cns8    = b    c d    f g       h       j k l    m       n       ŋ ñ ń p q r    s t v w x z   ; ! All surface consonants
  Cns9    =   b9     d9     g8 g9   h8 h9       l9   m8 m9   n8 n9             r9             ' ; ! Underlying consonants
  Cns4    =             f                     l    m       n       ŋ ñ ń     r        v         ; ! Don't remember
  StemCns = b b9   d d9   g g8 g9 h h8 h9 j   l l9 m m8 m9 n n8 n9 ŋ ñ ń     r r9 s             ; ! Can occur stem-finally
@@ -91,7 +94,7 @@ Sets
 
 Definitions
 
- LCnsPhon7 = [ :Cns7 | :n :j | :s :j | :t :j | :t :s ] ;     ! Using Cns7, excluding 1st member of two-cns G3 
+ LCnsPhon7 = [ :Cns7 | :n :j | :s :j | :t :j | :t :s ] ;     ! Using Cns7, excluding 1st member of two-cns G3
  LCnsPhon  = [ :Cns8 | :n :j | :s :j | :t :j | :t :s ] ;     ! Using Cns8, without the previous restriction
 
 !     G3:G2 Here we document our alternation patterns
@@ -107,11 +110,11 @@ Definitions
  LowerG2   = [
                [
                   (Cns:0)  LCnsPhon7 (Cns:0) LCnsPhon (Cns:0)            ! xy that cannot be G3, since x cannot form xy G3.
-               |                                                         ! nijbe, 
+               |                                                         ! nijbe,
                   [           ! This section is for 3-cons G2. and for 2cns G2 that share the initial cns with 2cns G3
                      (Cns:0) [:j|:l|:m|:n|:v] (Cns:0) :s :t                  ! S9, 3cns-G2 bäjstov, etc.
                   |
-                     (Cns:0) [ :l | :r | :n ]      (Cns:0) :s :k                   ! S9, 3cns-G2 sválskes, etc. 
+                     (Cns:0) [ :l | :r | :n ]      (Cns:0) :s :k                   ! S9, 3cns-G2 sválskes, etc.
                   |
                      (Cns:0) [  ! 2cns G2 that share the initial cns wit 2cns G3
                                 :b (Cns:0) [ :d | :m | :j | :l | :n | :n :j | :r | :s | :t :j | :t :s  ] ! S9, initial b
@@ -121,7 +124,7 @@ Definitions
                                 :g (Cns:0) :ŋ                                                            ! S7, initial g
                                 |                                                                        ! låg0ŋot
                                 :k (Cns:0) [ :n | :k ]                                                   ! S7, initial k
-                             ]                                                                           ! 
+                             ]                                                                           !
                              |
                              :r (Cns:0)   :s :j :t                                                    ! S9, rsjt, bårsjtav
                   ]
@@ -136,7 +139,7 @@ Definitions
 
 
  G32 =  f ':0 f | l ':0 l | m ':0 m | n ':0 n | n ':0 n j | ŋ ':0 ŋ | r ':0 r | s ':0 s | s ':0 s j | v ':0 v ;
- 
+
  G3 =[Cns Cns Cns Cns|
  [b|:b] b m|
  [d|:d] d [n|j]|
@@ -160,9 +163,9 @@ Definitions
   d t [j|s]|
   b b|d d|g g|
   k[s|t[j|s]]] ;
-  
+
 !diphtsimpl IF Vow: G32 AND G2 context - [Y6 Y7 Y9];
-! oa:å <=> Vow: G32 Vow: WeG ; ! Evt. a subset of WeG, if only some WeG Dummys trigger diphtsimpl 
+! oa:å <=> Vow: G32 Vow: WeG ; ! Evt. a subset of WeG, if only some WeG Dummys trigger diphtsimpl
 
 !!1.86, let's see
 !
@@ -205,17 +208,17 @@ Rules
 "Word final weakening -tj and -ttj to -sj part 1"
  t:s <= Vow: (%>:) ( Dummy: ) ( d: ) _ j (%>:) ( Dummy: ) (Hyph) #: ;
 
-     
+
 "Word final weakening -tj and -ttj to -sj part 2"
  t:s => Vow: (%>:) ( Dummy: ) ( d: ) _ j (%>:) ( Dummy: ) (Hyph) #: ;
  KEEPIF(SHORTCOMP)
         Vow:               h:0 _ [j|s] Vow:0 (%>:) X9: ; !facultative in first-part compounds, ts too
  ENDKEEP
 ! t:s <=> Vow: ( Dummy: ) _ ( t: ) j (%>:) ( Dummy: ) (Hyph) #: ;
-!€ jågåtj# 
+!€ jågåtj#
 !€ jågåsj0
 
-!"Word final weakening of -ttj to -sj" 
+!"Word final weakening of -ttj to -sj"
 ! t:0 <=> Vow: t:s _ j (%>:) (Hyph) #: ;
 ! oajválattja : oajválasj This is moved to the t:0 rule set.
 ! Still, this will fail if and when clitics are added to the word.
@@ -224,7 +227,7 @@ Rules
 "Word Final Deletion of n8 m8 g8 h8"
   Cx:0 <=> Vow _  (%>:) X3: ;
 	where Cx in ( DelCns ) ;
-! The twoL-sme had [X4:|X8:|X6: Cons:|X9:], be prepared to 
+! The twoL-sme had [X4:|X8:|X6: Cons:|X9:], be prepared to
 ! expand this rule accordingly.
 
 !€ loavddag8X3#
@@ -249,28 +252,28 @@ Rules
 
 "Deleting Final h9 in Short Essive of Uneven Syllables"
  h9:0 <=> Vow: _ (%>:) Q1: X1: n ;
- 
+
 "Deleting Final l9 in Short Essive of Uneven Syllables"
  l9:0 <=> Vow: _ (%>:) [Q1:|X3:] X1: n ;
- 
+
 "Deleting Final m9 in Short Essive of Uneven Syllables"
  m9:0 <=> Vow: _ (%>:) Q1: X1: n ;
- 
+
 "Deleting Final n9 in Short Essive of Uneven Syllables"
  n9:0 <=> Vow: _ (%>:) Q1: X1: n ;
- 
+
 "Deleting Final r9 in Short Essive of Uneven Syllables"
  r9:0 <=> Vow: _ (%>:) Q1: X1: n ;
 
- 
- 
+
+
 !      where Cx in ( s m h ) ;
 ! originally it was true for s, m, h. Keep an eye on this.
 
 !"Word Final Cluster Simplification"  ! málestit : máles
-! t:0 <=> Vow (%>:) ( Dummy: ) s _ (%>:) (Hyph) (Hyph) #:  ;			
+! t:0 <=> Vow (%>:) ( Dummy: ) s _ (%>:) (Hyph) (Hyph) #:  ;
 !be prepared to define more rules on cluster simpl.
-!moved to Consonant gradation 
+!moved to Consonant gradation
 !€ málest#
 !€ máles00
 
@@ -314,7 +317,7 @@ Rules
          [ #: | Cns: | Dummy: ] _ a: LowerG12 o: (Cns:*) (%>:) [ Y1: | Y2: | Y3: | Y4: | Y5: | X7: | X4: (X8:) | [Q1:|Q4:] X4: X8: ] ; !7 Long pass, Dim and Prs Sg3 etc. Px
 !        [ #: | Cns: | Dummy: ] _ a: LowerG12 o: (Cns:*) (%>:) [ Y1: | Y2: | Y3: | Y4: | Y5: | Y7: | Y9: | X7: ] ; !7 Long pass, Dim and Prs Sg3 etc.
          [ #: | Cns: | Dummy: ] _ a: LowerG12 o: Cns:+ (%>:) X5: Vow ; !8 odd-syll, oblique
-         [ #: | Cns: | Dummy: ] _ a: LowerG12 a [g8:|l9:|s] (%>:) X3: (X1:) [ (Hyph) #: | n ] ; !9 NE låvda         
+         [ #: | Cns: | Dummy: ] _ a: LowerG12 a [g8:|l9:|s] (%>:) X3: (X1:) [ (Hyph) #: | n ] ; !9 NE låvda
          [ #: | Cns: | Dummy: ] _ a: LowerG12 e: (%>:) Q1:0 t: j [ #: | [Vow:[v|n|h|b|p|#:]]]; !10 Potensialis doadjet:dåjitjav
          [ #: | Cns: | Dummy: ] _ a: LowerG12 e: (%>:) Q4: ( X5: ) j ; !11 ComSg & G-C Pl of e-stems
          [ #: | Cns: | Dummy: ] _ a: LowerG12 o:u (%>:) [ Q1: | Q4: ] X5: j n ([a:|i:]) ; !12Px Com
@@ -332,13 +335,13 @@ Rules
          [ #: | Cns: | Dummy: ] o: _ LowerG12 e: (%>:) Y1: ;       !5 Different verb forms
          [ #: | Cns: | Dummy: ] o: _ LowerG12 o: (%>:) X4: j ; !6 Ill
          [ #: | Cns: | Dummy: ] o: _ LowerG12 o: (Cns:*) (%>:) [ Y1: | Y2: | Y3: | Y4: | Y5: | X7: | X4: (X8:) | [Q1:|Q4:] X4: X8: ] ; !7 Long pass and Prs Sg3 etc.  Px
-!        [ #: | Cns: | Dummy: ] o: _ LowerG12 o: (Cns:*) (%>:) [ Y1: | Y2: | Y3: | Y4: | Y5: | Y7: | Y9: | X7: ] ; !7 Long pass and Prs Sg3 etc. 
+!        [ #: | Cns: | Dummy: ] o: _ LowerG12 o: (Cns:*) (%>:) [ Y1: | Y2: | Y3: | Y4: | Y5: | Y7: | Y9: | X7: ] ; !7 Long pass and Prs Sg3 etc.
          [ #: | Cns: | Dummy: ] o: _ LowerG12 o: Cns:+ (%>:) X5: Vow ;       !8 odd-syll, oblique
-         [ #: | Cns: | Dummy: ] o: _ LowerG12 a [g8:|l9:|s] (%>:) X3: (X1:) [ (Hyph) #: | n ] ;       !9 NE låvda         
+         [ #: | Cns: | Dummy: ] o: _ LowerG12 a [g8:|l9:|s] (%>:) X3: (X1:) [ (Hyph) #: | n ] ;       !9 NE låvda
          [ #: | Cns: | Dummy: ] o: _ LowerG12 e: (%>:) Q1:0 t: j [ #: | [Vow:[v|n|h|b|p|#:]]]; !10 Potensialis doadjet:dåjitjav
          [ #: | Cns: | Dummy: ] o: _ LowerG12 e: (%>:) Q4: ( X5: ) j ;       !11 ComSg & G-C Pl of e-stems.
          [ #: | Cns: | Dummy: ] o: _ LowerG12 o:u (%>:) [ Q1: | Q4: ] X5: j n ([a:|i:]) ; !12Px Com
-         [ #: | Cns: | Dummy: ] o: _ G32 o:u (%>:) WeG: ; !  X2 X3 X7 Y5 Q1 Q2 Q3 
+         [ #: | Cns: | Dummy: ] o: _ G32 o:u (%>:) WeG: ; !  X2 X3 X7 Y5 Q1 Q2 Q3
          [ #: | Cns: | Dummy: ] o: _ G32 e:i (%>:) WeG: ;
          [ #: | Cns: | Dummy: ] o: _ G32 [ a: | i: ] (%>:) WeG: ;
 
@@ -346,7 +349,7 @@ Rules
 
 !€ toahkkeY6X5jn
 !€ toahkki00jn
-   
+
 !$ toahkkeY6X5jn
 !$ t0åhkki00jn
 
@@ -363,13 +366,13 @@ Rules
 ! Here, G2 allows diphtsimpl
 !€ toas'soQ1X5jn
 !€ t0ås0su00jn
-   
+
 ! And vice versa
 !$ toas'soQ1X5jn
 !$ toas0su00jn
 
 ! G3:G3, lexical ex, no CG
-! will have to have a different lexicon in noun-smj-lex, 
+! will have to have a different lexicon in noun-smj-lex,
 ! not pointing to Q1. Cf. GOAHTI/STAHTA sme.
 !$ moas'soX5jn
 !$ m0ås0su0jn
@@ -377,7 +380,7 @@ Rules
 !€ moas'soX5jn
 !€ moas0su0jn
 
-! The next example shows actor noun in G3 (actor nouns are always G3) 
+! The next example shows actor noun in G3 (actor nouns are always G3)
 !€ goar'roY6X5jn
 !€ goar0ru00jn
 ! This test should hit, but fails, since G3 looks like G2 at the lower level.
@@ -440,32 +443,32 @@ Rules
 !€ boassjkoQ1X5jn
 !€ b0å0sjku00jn
 
-!$ boassjkoQ1X5jn                          
-!$ boas0jku00jn  
+!$ boassjkoQ1X5jn
+!$ boas0jku00jn
 
 !€ boajsstoQ1X5jn
 !€ b0åj0stu00jn
 
-!$ boajsstoQ1X5jn                          
+!$ boajsstoQ1X5jn
 !$ boaj0stu00jn
 
 !€ boaggoQ1X5jn
 !€ b0åkku00jn
 
-!$ boaggoQ1X5jn                          
-!$ boakku00jn 
-                        
+!$ boaggoQ1X5jn
+!$ boakku00jn
+
 
 KEEPIF(SHORTCOMP)
 "Facultative oa:å Diphtong Simplification Part I"
  o:0 => _ a: Cns:+ Vow:0 (%>:) X9: ; !Facultative in first-part of compounds
- 
+
 "Facultative oa:å Diphtong Simplification Part II"
  a:å => o: _ Cns:+ Vow:0 (%>:) X9: ; !Facultative in first-part of compounds
 !	 [ #: | Cns: | Dummy: ] o: _ Cns:* o: ( Dummy:* - Q3: ) j ; ! o-stems, before j. !rm when tested
 ! The rule complexes are identical, but fix different parts of the monophtongisation.
 ! Note that the "o-stems before j" part is restricted to Ill & Com Sg, cf. bug #136.
-ENDKEEP 
+ENDKEEP
 
 ! All real sámi æ's are also ä's, but not in these contexts, where other rules will take over.
 "æ:ä Blocking"
@@ -518,7 +521,7 @@ ENDKEEP
 
 
 "ie:æ Diphthong Simplification Part I"
- i:0 <=> [ #: | Cns: | Dummy: ] _ e: Cns:* e: (%>:) X4: ;     !1 
+ i:0 <=> [ #: | Cns: | Dummy: ] _ e: Cns:* e: (%>:) X4: ;     !1
      	 [ #: | Cns: | Dummy: ] _ e: Cns:* e: (%>:) [ Q2: | Y2: | Y3: ] ;     !2 Prs Sg of e-stem verbs
      	 [ #: | Cns: | Dummy: ] _ e: Cns:* e: Cns: (%>:) X5: Vow ; !3 odd-syll, oblique
                                 _ e: (Cns) Cns:+ e:á (Cns:+) (%>:) [X5:|Y2:|Q2:|Y3:|X7:|Y4:|X4:(X5:|Q1:)|Y6: X4:|Y7:|[Q1:|Q4:] X4: (X4:) X8:]  ; ! Vovel change in front of stem vowel variation
@@ -538,42 +541,42 @@ ENDKEEP
 !€ g0ess00us
 
 
-! Note !!! These three rules are supposed to operate in tandem, and shound ALWAYS be kept in synch, except for the operator and operand.												   
-"ie:æ Diphthong Simplification Part IIa" ! Norwegian æ is an option...																													   
- e:æ  =>  [ #: | Cns: | Dummy: ] i: _ Cns:* e: (%>:) X4: ;  !1 																												   
-          [ #: | Cns: | Dummy: ] i: _ Cns:* e: (%>:) [ Q2: | Y2: | Y3: ] ;  !2 Prs Sg of e-stem verbs																						   
-          [ #: | Cns: | Dummy: ] i: _ Cns:* e: Cns: (%>:) X5: Vow ;  !3 odd-syll, oblique																								   
+! Note !!! These three rules are supposed to operate in tandem, and shound ALWAYS be kept in synch, except for the operator and operand.
+"ie:æ Diphthong Simplification Part IIa" ! Norwegian æ is an option...
+ e:æ  =>  [ #: | Cns: | Dummy: ] i: _ Cns:* e: (%>:) X4: ;  !1
+          [ #: | Cns: | Dummy: ] i: _ Cns:* e: (%>:) [ Q2: | Y2: | Y3: ] ;  !2 Prs Sg of e-stem verbs
+          [ #: | Cns: | Dummy: ] i: _ Cns:* e: Cns: (%>:) X5: Vow ;  !3 odd-syll, oblique
                                  i: _ (Cns) Cns:+ e:á (Cns:+) (%>:) [X5:|Y2:|Q2:|Y3:|X7:|Y4:|X4:(X5:|Q1:)|Y6: X4:|Y7:|[Q1:|Q4:] X4: (X4:) X8:]  ; ! Vovel change in front of stem vowel variation
-                                 i: _ (Cns) Cns:+ i:á (%>:) Y5: Cns:+  ;                                     !Der/r																		   
-                                 i: _ [[:d|:b|:g] [d|b|g] Cns:+ | Cns:+ | h :Cns Cns:+] e:0 (%>:) [ Y1: | Y9: ] u ; !ielvvet:ælvvu, short passive, ImprtII																					   
-                                 i: _ Cns:+ e:0 (%>:) Y8: o ;                                     !ielvvet:ælvvop, Imprt														   
-          [ #: | Cns: | Dummy: ]    _ Cns Cns:+ a:á (%>:) ;                                     ! Verbs: e:æ only Vowel change in front of stem vowel variation, bessat : bæssá  
-!         [ #: | Cns: | Dummy: ]    _ Cns:* a: (%>:) Y6: ( X5: ) ;                                     ! Verbs: e:æ only Actor nouns													   
-          [ #: | Cns: | Dummy: ]    _ ( [:d|:b|:g] [d|b|g] Cns:+ | Cns:+ | h :Cns Cns:+) a: (%>:) Y6: ( X5: ) ([Hyph|(Hyph) #:]) ; !bessat:bæsse, imprt, du2 and Actor						   
+                                 i: _ (Cns) Cns:+ i:á (%>:) Y5: Cns:+  ;                                     !Der/r
+                                 i: _ [[:d|:b|:g] [d|b|g] Cns:+ | Cns:+ | h :Cns Cns:+] e:0 (%>:) [ Y1: | Y9: ] u ; !ielvvet:ælvvu, short passive, ImprtII
+                                 i: _ Cns:+ e:0 (%>:) Y8: o ;                                     !ielvvet:ælvvop, Imprt
+          [ #: | Cns: | Dummy: ]    _ Cns Cns:+ a:á (%>:) ;                                     ! Verbs: e:æ only Vowel change in front of stem vowel variation, bessat : bæssá
+!         [ #: | Cns: | Dummy: ]    _ Cns:* a: (%>:) Y6: ( X5: ) ;                                     ! Verbs: e:æ only Actor nouns
+          [ #: | Cns: | Dummy: ]    _ ( [:d|:b|:g] [d|b|g] Cns:+ | Cns:+ | h :Cns Cns:+) a: (%>:) Y6: ( X5: ) ([Hyph|(Hyph) #:]) ; !bessat:bæsse, imprt, du2 and Actor
 
 "ie:ä Diphthong Simplification Part IIb" ! Swedish ä is an option...
- e:ä  =>  [ #: | Cns: | Dummy: ] i: _ Cns:* e: (%>:) X4: ;  !1 																												   
-          [ #: | Cns: | Dummy: ] i: _ Cns:* e: (%>:) [ Q2: | Y2: | Y3: ] ;  !2 Prs Sg of e-stem verbs																						   
-          [ #: | Cns: | Dummy: ] i: _ Cns:* e: Cns: (%>:) X5: Vow ;  !3 odd-syll, oblique																								   
+ e:ä  =>  [ #: | Cns: | Dummy: ] i: _ Cns:* e: (%>:) X4: ;  !1
+          [ #: | Cns: | Dummy: ] i: _ Cns:* e: (%>:) [ Q2: | Y2: | Y3: ] ;  !2 Prs Sg of e-stem verbs
+          [ #: | Cns: | Dummy: ] i: _ Cns:* e: Cns: (%>:) X5: Vow ;  !3 odd-syll, oblique
                                  i: _ (Cns) Cns:+ e:á (Cns:+) (%>:) [X5:|Y2:|Q2:|Y3:|X7:|Y4:|X4:(X5:|Q1:)|Y6: X4:|Y7:|[Q1:|Q4:] X4: (X4:) X8:] ; ! Vovel change in front of stem vowel variation
-                                 i: _ (Cns) Cns:+ i:á (%>:) Y5: Cns:+ ;                                     !Der/r																		   
-                                 i: _ [[:d|:b|:g] [d|b|g] Cns:+ | Cns:+ | h :Cns Cns:+] e:0 (%>:) [ Y1: | Y9: ] u ;     !ielvvet:ælvvu, short passive, ImprtII																		   
-                                 i: _ Cns:+ e:0 (%>:) Y8: o ;                                     !ielvvet:ælvvop, Imprt														   
-          [ #: | Cns: | Dummy: ]    _ Cns Cns:+ a:á (%>:) ;                                     ! Verbs: e:æ only Vowel change in front of stem vowel variation, bessat : bæssá  
-!         [ #: | Cns: | Dummy: ]    _ Cns:* a: (%>:) Y6: ( X5: ) ;                                     ! Verbs: e:æ only Actor nouns													   
-          [ #: | Cns: | Dummy: ]    _ ( [:d|:b|:g] [d|b|g] Cns:+ | Cns:+ | h :Cns Cns:+) a: (%>:) Y6: ( X5: ) ([Hyph|(Hyph) #:]) ; !bessat:bæsse, imprt, du2 and Actor			
+                                 i: _ (Cns) Cns:+ i:á (%>:) Y5: Cns:+ ;                                     !Der/r
+                                 i: _ [[:d|:b|:g] [d|b|g] Cns:+ | Cns:+ | h :Cns Cns:+] e:0 (%>:) [ Y1: | Y9: ] u ;     !ielvvet:ælvvu, short passive, ImprtII
+                                 i: _ Cns:+ e:0 (%>:) Y8: o ;                                     !ielvvet:ælvvop, Imprt
+          [ #: | Cns: | Dummy: ]    _ Cns Cns:+ a:á (%>:) ;                                     ! Verbs: e:æ only Vowel change in front of stem vowel variation, bessat : bæssá
+!         [ #: | Cns: | Dummy: ]    _ Cns:* a: (%>:) Y6: ( X5: ) ;                                     ! Verbs: e:æ only Actor nouns
+          [ #: | Cns: | Dummy: ]    _ ( [:d|:b|:g] [d|b|g] Cns:+ | Cns:+ | h :Cns Cns:+) a: (%>:) Y6: ( X5: ) ([Hyph|(Hyph) #:]) ; !bessat:bæsse, imprt, du2 and Actor
 
-"ie:ä Diphthong Simplification Part IIc" ! And there are no other options. This rule to block the e, and allow for the æ and ä.															   
- e:e  /<= [ #: | Cns: | Dummy: ] i: _ Cns:* e: (%>:) X4: ;  !1 																												   
-          [ #: | Cns: | Dummy: ] i: _ Cns:* e: (%>:) [ Q2: | Y2: | Y3: ] ;  !2 Prs Sg of e-stem verbs																						   
-          [ #: | Cns: | Dummy: ] i: _ Cns:* e: Cns: (%>:) X5: Vow ;  !3 odd-syll, oblique																								   
+"ie:ä Diphthong Simplification Part IIc" ! And there are no other options. This rule to block the e, and allow for the æ and ä.
+ e:e  /<= [ #: | Cns: | Dummy: ] i: _ Cns:* e: (%>:) X4: ;  !1
+          [ #: | Cns: | Dummy: ] i: _ Cns:* e: (%>:) [ Q2: | Y2: | Y3: ] ;  !2 Prs Sg of e-stem verbs
+          [ #: | Cns: | Dummy: ] i: _ Cns:* e: Cns: (%>:) X5: Vow ;  !3 odd-syll, oblique
                                  i: _ (Cns) Cns:+ e:á (Cns:+) (%>:) [X5:|Y2:|Q2:|Y3:|X7:|Y4:|X4:(X5:|Q1:)|Y6: X4:|Y7:|[Q1:|Q4:] X4: (X4:) X8:] ; ! Vovel change in front of stem vowel variation
-                                 i: _ (Cns) Cns:+ i:á (%>:) Y5: Cns:+ ;                                     !Der/r																		   
-                                 i: _ [[:d|:b|:g] [d|b|g] Cns:+ | Cns:+ | h :Cns Cns:+] e:0 (%>:) [ Y1: | Y9: ] u ;     !ielvvet:ælvvu, short passive, ImprtII																		   
-                                 i: _ Cns:+ e:0 (%>:) Y8: o ;                                     !ielvvet:ælvvop, Imprt														   
-          [ #: | Cns: | Dummy: ]    _ Cns Cns:+ a:á (%>:) ;                                     ! Verbs: e:æ only Vowel change in front of stem vowel variation, bessat : bæssá  
-!         [ #: | Cns: | Dummy: ]    _ Cns:* a: (%>:) Y6: ( X5: ) ;                                     ! Verbs: e:æ only Actor nouns													   
-          [ #: | Cns: | Dummy: ]    _ ( [:d|:b|:g] [d|b|g] Cns:+ | Cns:+ | h :Cns Cns:+) a: (%>:) Y6: ( X5: ) ([Hyph|(Hyph) #:]) ; !bessat:bæsse, imprt, du2 and Actor						   
+                                 i: _ (Cns) Cns:+ i:á (%>:) Y5: Cns:+ ;                                     !Der/r
+                                 i: _ [[:d|:b|:g] [d|b|g] Cns:+ | Cns:+ | h :Cns Cns:+] e:0 (%>:) [ Y1: | Y9: ] u ;     !ielvvet:ælvvu, short passive, ImprtII
+                                 i: _ Cns:+ e:0 (%>:) Y8: o ;                                     !ielvvet:ælvvop, Imprt
+          [ #: | Cns: | Dummy: ]    _ Cns Cns:+ a:á (%>:) ;                                     ! Verbs: e:æ only Vowel change in front of stem vowel variation, bessat : bæssá
+!         [ #: | Cns: | Dummy: ]    _ Cns:* a: (%>:) Y6: ( X5: ) ;                                     ! Verbs: e:æ only Actor nouns
+          [ #: | Cns: | Dummy: ]    _ ( [:d|:b|:g] [d|b|g] Cns:+ | Cns:+ | h :Cns Cns:+) a: (%>:) Y6: ( X5: ) ([Hyph|(Hyph) #:]) ; !bessat:bæsse, imprt, du2 and Actor
 
 
 ! Note: Check that Q2 above does not overgenerate to nouns!
@@ -638,34 +641,34 @@ ENDKEEP
 
 
 "a:e in Present Participle of even-syllable verbs"
-! a:e <=> Cns: _ (%>:) Y6: ; 
- a:e <=> Cns: _ (%>:) Y6:0 [Hyph|(Hyph) #:|n:|s:|v:|m:|t:|d:] ; 
+! a:e <=> Cns: _ (%>:) Y6: ;
+ a:e <=> Cns: _ (%>:) Y6:0 [Hyph|(Hyph) #:|n:|s:|v:|m:|t:|d:] ;
 ! bassat : bas'se
 
 !Error message, delete this after testing.
-! **** Conflicting pair(s) of contexts: 
+! **** Conflicting pair(s) of contexts:
 !  Cns:* _ (%>:) Y6:0 X4:0 j ;
 !  Cns: _ (%>:) Y6: ;
 !Left context example:     b
 !Right context example:    Y6:0 X4:0 j
 
-          
-"a:i in Prs Prc of even-syllable verbs"   
+
+"a:i in Prs Prc of even-syllable verbs"
  a:i <=> Cns: _ (%>:) Y6:0 ( X5:0 ) j ([Hyph|(Hyph) #:]) ;
 !€ bas'saY6jt#
 !€ bas0si0jt0
 
-"a-stem vowel deletion" 
+"a-stem vowel deletion"
  a:0 <=> Cns: _ (%>:) [ Y8: | Y9: ] ; !in even-syllable verbs, imp 1du, 1pl and short passives
  KEEPIF(SHORTCOMP)
          Cns: _ (%>:) X9: ; !in first-part compounds
-         
- 
- 
+
+
+
 ! á-stem alternations
 ! - - - - - - - - - -
 
-"á-stem vowel deletion" 
+"á-stem vowel deletion"
  á:0 <=>  Cns: _ (%>:) X9: ; !in first-part compounds
 ENDKEEP
 
@@ -679,8 +682,8 @@ ENDKEEP
 "e:i in e-stems"
  e:i <=> Cns: _ (%>:) [ Q1:0 | Q4:0 ] ( X5:0 ) j ; ! 1) WeG or not, e:i, X5 is added to get e:i also in ComSg.
          Cns: _ (%>:) Y6:0 (X5:0) j ([Hyph|(Hyph) #:]) ; ! 2) Actor nouns
-         Cns: _ (%>:) Q1:0 t: j [ #: | [Vow:[v|n|h|b|p|#:]]] ; ! 3) "e:i in potentialis" 
-         
+         Cns: _ (%>:) Q1:0 t: j [ #: | [Vow:[v|n|h|b|p|#:]]] ; ! 3) "e:i in potentialis"
+
 
 ! 1) biesse -> biesij
 !€ biesseQ1j
@@ -713,16 +716,16 @@ ENDKEEP
 !€ gá0li0tja0
 
 
-! e:á 
+! e:á
 ! - -
 
 ! The following two rules constitute a <= / => rule pair.
- 
+
 "e:á in certain stem types 1"
  e:á <=  [ Vow: - å ] ([ 0:Cns Cns: | Cns: 0:Cns ]) (Cns:+) _ (%>:) (Y6:0) X4:0 (X4:0) (X8:0) [m|t|d|s i [m|t|s|m m e|h t t e|s k a|s á]] ; ! 1) Compulsory e:á in Px! bárnne : bárnnám
 [ Vow: - å ] Cns:+ _ (%>:) X4: (X5: | Q1: )  [ #: | v | n | s | j | t | d | g | b | p ] ; ! 2) Ill Sg (context (1) only in part 2)
          [ Vow: - å ] ([ 0:Cns Cns: | Cns: 0:Cns ]) (Cns:+) _ (%>:) Y6:0 X4:0 j ; ! 3) Ill Sg Actor nouns
-         [ Vow: - å ] Cns:+ _ Cns:+ (%>:) X5: Vow ;     ! 4) Uneven N. 
+         [ Vow: - å ] Cns:+ _ Cns:+ (%>:) X5: Vow ;     ! 4) Uneven N.
          [ Vow: - å ] Cns:+ _ (%>:) Y2: ;        ! 5) Indicative Present Singular 3rd Final Vowel in verbs
          [ Vow: - å ] Cns:+ _ (%>:) Y3: ;              ! 6) PrfPrc, gállet : gállám
          [ Vow: - å ] Cns:+ _ (%>:) Q2: ;              ! 7) gállet : gáláv
@@ -757,7 +760,7 @@ ENDKEEP
 
 ! e:á <=> [ Vow: - å ] Cns* _ (%>:) X4:0 [ j #: | s Vow: ] ;
 
-"e:á in certain stem types 2" 
+"e:á in certain stem types 2"
  e:á => [ Vow: - å ] ([ 0:Cns Cns: | Cns: 0:Cns ]) (Cns:+) _ (%>:) (Y6:0) X4:0 (X4:0)  (X8:0) [m|t|d|s i [m|t|s|m m e|h t t e|s k a|s á]] ; ! 1) Compulsary e:á in Px! bárnne : bárnnám
         [ Vow: - å ] Cns:+ _ (%>:) X4: (X5:)  [ #: | v | n | s | j | t | d | g | b | p ] ; ! 2) Ill Sg
         [ Vow: - å ] ([ 0:Cns Cns: | Cns: 0:Cns ]) (Cns:+) _ (%>:) Y6:0 X4:0 j ;               ! 3) Ill Sg Actor Nouns
@@ -786,10 +789,10 @@ ENDKEEP
 
 !"e:á in 1st, 2nd person Gen/Acc Px declension." ! bárnne : bárnám, bárnes
 ! e:á <=> _ (%>:) Q1:0 X8:0 ;
-! The rule for optional e:á does not work. Thus, it is commented out, and 
+! The rule for optional e:á does not work. Thus, it is commented out, and
 ! the Px paradigm only gets ám etc. Return to this issue.
 
- 
+
 ! e:å
 ! - -
 
@@ -834,7 +837,7 @@ ENDKEEP
 ! - -
 
 !"e:u in Verb Derivations" !This holds only for one word (TO)
-! e:u <=> Cns:* _ (%>:) Y4:0 ; 
+! e:u <=> Cns:* _ (%>:) Y4:0 ;
 ! árret : árrusit
 
 ! e:a
@@ -842,18 +845,18 @@ ENDKEEP
 
 !"e:a in Verb Derivation" !not productive
 ! e:a <=> [Cns:|#:] [ (Vow:) Vow: - [å:|a:|i:|u:] ] Cns:* _ (%>:) Y5:0 ; ! láhppet : láhpadit
- 
+
 ! e:0
 ! ----
- "e-stem vowel deletion" 
+ "e-stem vowel deletion"
   e:0 <=> Vow: (%>:) (Dummy:) #: g:k _ #: ; !clitic ge:k
           Cns: _ (%>:) [ Y8: | Y9: ] ; !in even-syllable verbs, imp 1du, 1pl and short passives
-          
+
 !€ ielvveY9ut
 !€ 0ælvv00ut
 
-  		  
-KEEPIF(SHORTCOMP) 
+
+KEEPIF(SHORTCOMP)
           Cns: _ (%>:) X9: ; !in first-part compounds
  ENDKEEP
 
@@ -870,7 +873,7 @@ KEEPIF(SHORTCOMP)
 ! guollit : guollár
 
 KEEPIF(SHORTCOMP)
-"i-stem vowel deletion" 
+"i-stem vowel deletion"
  i:0 <=> Cns: _ (%>:) X9: ; !in first-part compounds
 ENDKEEP
 
@@ -884,7 +887,7 @@ ENDKEEP
 o:u  => Cns:  _ (%>:) X4: j ; !X4 IllSg
         Cns:  _ (%>:) (Q1:0 | Q4:0) X5:0 j n ; ! Q1 X5 ComSg. !parenthesis (Q1:0) bec of no CG in certain words. elujn
         Cns:  _ Cns:+ (%>:) X5: Vow ; !Odd-syllable
-        Cns:  _ (%>:) [ Y1: | Y2: | Y3: ] ; ! Y1=  Y2= Y3=PrfPrc 
+        Cns:  _ (%>:) [ Y1: | Y2: | Y3: ] ; ! Y1=  Y2= Y3=PrfPrc
         Cns:* _ (%>:) Y5: ; !verb der. (u/a/å)d
         Cns:  _ Cns:* (%>:) Y4: Vow ; !verb der. alla
         Cns:  _ (%>:) Y6:0 X5:0 j n ; ! Com sg of Actor nouns elujn
@@ -895,12 +898,12 @@ o:u  => Cns:  _ (%>:) X4: j ; !X4 IllSg
               _ (%>:) [Q1:0|Q4:0] X4:0 X8:0 ;        !  1st, 2nd Gen/Acc Px declension
               _ (%>:) (Y6:0) ([Q1:0|Q4:0]) X5: j n [a [m|t]|i [s|m m e|h t t e|s k a|s á]] ; !Px Com
 
-  
+
 "o:u in certain stem types 2"
 o:u <= Cns:  _ (%>:) X4: j ; !X4 IllSg
 !       Cns:  _ (%>:) (Q1:0 | Q4:0) X5:0 j n ; !parenthesis (Q1:0) bec of no CG in certain words. outcommented because rule is facultative:elujn/ælojn
         Cns:  _ Cns:+ (%>:) X5: Vow ;  !Odd-syllable
-        Cns:  _ (%>:) [ Y1: | Y2: | Y3: ] ; ! Y1=  Y2= Y3=PrfPrc 
+        Cns:  _ (%>:) [ Y1: | Y2: | Y3: ] ; ! Y1=  Y2= Y3=PrfPrc
         Cns:* _ (%>:) Y5: ; !verb der. (u/a/å)d
         Cns:  _ Cns:* (%>:) Y4: Vow ; !verb der. alla
         Cns:  _ (%>:) Y6:0 X5:0 j n ; ! Com sg of Actor nouns elujn
@@ -912,15 +915,15 @@ o:u <= Cns:  _ (%>:) X4: j ; !X4 IllSg
               _ (%>:) (Y6:0) ([Q1:0|Q4:0]) X5: j n [a [m|t]|i [s|m m e|h t t e|s k a|s á]] ; !Px Com
 
 
-     
-!Old o:u rules   
+
+!Old o:u rules
 ! o:u <=> Cns: _ (%>:) [ X4: j | Q1: X5: ] ; !X4 IllSg, Q1 X5 ComSg.
 ! o:u <=> Cns: _ (%>:) X4: j ; !X4 IllSg, Q1 X5 ComSg.
 
 "u:o in contracted nouns"
  u:o <=> Cns:* _ (%>:) [ Q3: | X6: ] ; !æddnu:ænoj, boahttsu:boatsoj
- 
-"o-stem vowel deletion" 
+
+"o-stem vowel deletion"
  o:0 <=> Cns: _ (%>:) Y9:0 ; !in short passives
  KEEPIF(SHORTCOMP)
           Cns: _ (%>:) X9: ; !in first-part compounds
@@ -948,7 +951,7 @@ ENDKEEP
  å:i <=> Cns: _ (%>:) Y6:0 ( X5:0 ) j ([Hyph|(Hyph) #:]) ;
 ! låhkåt : låhkkijt
 
-"å-stem vowel deletion" 
+"å-stem vowel deletion"
  å:0 <=> Cns: _ (%>:) [ Y8: | Y9: ] ; !in even-syllable verbs, imp 1du, 1pl and short passives
  KEEPIF(SHORTCOMP)
          Cns: _ (%>:) X9: ; !in first-part compounds
@@ -960,9 +963,9 @@ ENDKEEP
 "Stem vowel deletion in even-syllable verbs, imp 3sg, 3du, 2pl, 3pl"
  Vx:0 <=> Cns: _ (%>:) [Y1:0|Q8:] ;
       where Vx in ( a å e ) ;
-      
-!€ ielvveY1up      
-!€ 0ælvv00up    
+
+!€ ielvveY1up
+!€ 0ælvv00up
 
 !€ giessaY1up
 !€ giess00up
@@ -971,7 +974,7 @@ ENDKEEP
 !€ bårr00up
 
 !€
-!€ 
+!€
 
 
 ! Consonant gradation rules
@@ -1073,7 +1076,7 @@ ENDKEEP
 "Consonant gradation p:0"
 p:0 <=> Vow:         p   _ [ s|t ] ( j ) Vow: ( StemCns: ) (%>:) WeG: ; ! S7-3, S7-4 j
         Vow:         p   _ t s           Vow: ( StemCns: ) (%>:) WeG: ; ! S7-4 ppts:pts
-        Vow: [ j|l|r|v ] _ p             Vow: ( StemCns: ) (%>:) WeG: ; ! S9 
+        Vow: [ j|l|r|v ] _ p             Vow: ( StemCns: ) (%>:) WeG: ; ! S9
         Vow:   h         _ p             Vow: ( StemCns: ) (%>:) WeG: ; ! S4 hpp:hp
         Vow:         p   _ k             Vow: ( StemCns: ) (%>:) WeG: ;
 KEEPIF(SHORTCOMP)
@@ -1126,7 +1129,7 @@ ENDKEEP
 
 "Consonant gradation ŋ:0"
 Cx:0 <=> Vow:             _ Cy ( [ g|k ] ) Vow: ( StemCns: ) (%>:) WeG: ; ! S7-3, S8 II-I
-         Vow: [ j|l|r|v ] _ Cy          Vow: ( StemCns: ) (%>:) WeG: ; ! S9 
+         Vow: [ j|l|r|v ] _ Cy          Vow: ( StemCns: ) (%>:) WeG: ; ! S9
          Vow:          Cy _ k t         Vow: ( StemCns: ) (%>:) WeG: ;
 KEEPIF(SHORTCOMP)
          Vow:             _ Cy ( [ g|k ] ) Vow:0 (%>:) X9: ; !first part of compounds
@@ -1135,9 +1138,9 @@ ENDKEEP
 	where Cx in ( ń ŋ ñ )
 		  Cy in ( ń ŋ ñ )
     matched ;
-		  
 
-	
+
+
 "Consonant gradation f:0"
 f:0 <=> Vow: ( [r|l] ) _ f Vow: ( StemCns: ) (%>:) WeG: ; ! S8 ff:f, S9 rff:rf
         Vow:         f _ t Vow: ( StemCns: ) (%>:) WeG: ; ! S8 ff:f, S9 rff:rf
@@ -1164,7 +1167,7 @@ KEEPIF(SHORTCOMP)
         Vow: [b|r] _ j   Vow:0 (%>:) X9: ; !first part of compounds
 ENDKEEP
 
-"Consonant gradation t:0"   
+"Consonant gradation t:0"
 t:0 <=> Vow: [j|ñ|ń|ŋ|r|v] _ t             Vow: ( StemCns: ) (%>:) WeG: ;             ! S9 jtt:jt etc.
     	Vow: [b|j|r|v]     _ t j           Vow: ( StemCns: ) (%>:) WeG: ;           ! S9
       	Vow: [b|j|v|r]     _ t s           Vow: ( StemCns: ) (%>:) WeG: ;           ! S9
@@ -1186,7 +1189,7 @@ ENDKEEP
 !€ oajvála0sj0
 
 !h:0 <=> Vow: _ [ k: | p: | t: ] Vow: ( StemCns: ) (%>:) WeG: ;
-!        Vow: _ (%>:) Q1: X1: n ; ! Deleting Final Cns in Short Essive of Uneven Syllables	 
+!        Vow: _ (%>:) Q1: X1: n ; ! Deleting Final Cns in Short Essive of Uneven Syllables
 
 "Gradation Series 4, II-I, tj and ts"
  h:0 <=> Vow: _ [ k: | p: | t: ] Vow: ( StemCns: ) (%>:) WeG: ;
@@ -1201,15 +1204,15 @@ ENDKEEP
 
 !"Word final double consonant simplification"
 !Cy:0 <=> Vow: Cx: _ (%>:) (Hyph) #: ;
-!     where Cx in ( s ) 
-!	   Cy in ( s ) 
+!     where Cx in ( s )
+!	   Cy in ( s )
 !	   matched ;
 ! Moved to the CG chapter. But does this rule wait for more cases?
 
 
 
 ! Change rules
-! - - - - - - 
+! - - - - - -
 
 
 "Gradation Series 4, II-I"
@@ -1247,7 +1250,7 @@ ENDKEEP
 !€ vákke0
 
 !$ vággeQ1
-!$ vágge0    
+!$ vágge0
 
 !€ vággeX9
 !€ vák000
@@ -1318,16 +1321,16 @@ ENDKEEP
 "Consonant insertion as II-III strengthening gradation with hk, hp,"
  0:Cx <=> :Vow+ h _ Cx Vow: (%>:) [ Y6: | Y7: | Y9: ] ([Hyph|(Hyph) #:]) ;
       where Cx in ( k p ) ;
-      
+
 "Consonant insertion as II-III strengthening gradation with htt(j/s)"
  0:t <=> :Vow+ h _ t (j|s) Vow: (%>:) [ Y6: | Y7: | Y9: ] ([Hyph|(Hyph) #:]) ; !removed Q7, fixed in smj-lex
- 
+
 "Consonant insertion as I-III strengthening gradation with d"
  0:d <=> :Vow+ _ d Vow: (%>:) [ Y6: | Y7: | Y9: ] ([Hyph|(Hyph) #:]) ;
 
- 
- 
+
+
 !Did more changes to the ñ issue: Replaced ñ with all three n-s also when it alternated with other letters.
 !In the cases where ñ was the one to be deleted, in the context of double ñ, we made Cx / Cy variables, e.g. like !this:
- 
- 
+
+
