@@ -1,4 +1,4 @@
-!Distributed under the terms of the GNU General Public License version 2 
+!Distributed under the terms of the GNU General Public License version 2
 ! or any later version.
 
 ! ======================== !
@@ -7,9 +7,9 @@
 
 echo <<defining Cns and Vow...>>
 
-define Vow       [ a | á | e | i | o | u | y | æ | ø | å | ä | ö | 
-                   A | Á | E | I | O | U | Y | Æ | Ø | Å | Ä | Ö | 
-é | ó | ú | í | à | è | ò | ù | ì | ë | ü | ï | â | ê | ô | û | î | ã | ý 
+define Vow       [ a | á | e | i | o | u | y | æ | ø | å | ä | ö |
+                   A | Á | E | I | O | U | Y | Æ | Ø | Å | Ä | Ö |
+é | ó | ú | í | à | è | ò | ù | ì | ë | ü | ï | â | ê | ô | û | î | ã | ý
 É | Ó | Ú | Í | À | È | Ò | Ù | Ì | Ë | Ü | Ï | Â | Ê | Ô | Û | Î | Ã | Ý ] ;
 
 define 2ndVow [ e | a | o | u | y | ø | i | E | A | O | U | Y | Ø | I ] ;
@@ -54,16 +54,16 @@ define IOdipht [ i o | I o | I O ] ; ! skiold, na-tion
 
 define dipht [ IEdipht | UOdipht | OAdipht | OUdipht | AUdipht | EUdipht | AEdipht | ØYdipht | OEdipht | IEdipht | IOdipht ] ;
 
-define Cns [ b | c | č | d | đ | f | g | h | j | k | l | m | n | ŋ | ñ | ń | 
+define Cns [ b | c | č | d | đ | f | g | h | j | k | l | m | n | ŋ | ñ | ń |
              B | C | Č | D | Đ | F | G | H | J | K | L | M | N | Ŋ | Ñ | Ń |
-             p | q | r | s | š | t | ŧ | v | w | x | z | ž |   
-             P | Q | R | S | Š | T | Ŧ | V | W | X | Z | Ž ] ; 
+             p | q | r | s | š | t | ŧ | v | w | x | z | ž |
+             P | Q | R | S | Š | T | Ŧ | V | W | X | Z | Ž ] ;
 
-!define Gem [ b b | d d | f f | g g | k k | l l | m m | n n | ŋ ŋ | ñ ñ | ń ń | 
+!define Gem [ b b | d d | f f | g g | k k | l l | m m | n n | ŋ ŋ | ñ ñ | ń ń |
 !             B B | D D | F F | G G | K K | L L | M M | N N | Ŋ Ŋ | Ñ Ñ | Ń Ń |
-!             p p | r r | s s | š š | t t | ŧ ŧ | v v |    
+!             p p | r r | s s | š š | t t | ŧ ŧ | v v |
 !             P P | R R | S S | Š Š | T T | Ŧ Ŧ | V V ]  ;
-             
+
 define cS [ S | s ] ; define Cnss [ Cns - cS ] ;
 
 !define Sgm [ Cns | Vow ] ;
@@ -78,40 +78,40 @@ define NotXUdipht [..] -> %^ || Cns [ Vow - vAEOU ]     _ vU ;           ! by^un
 define NotUOdipht [..] -> %^ || Cns [ Vow - vIOU ]      _ vO ;           ! fly^ost
 define NotOAdipht [..] -> %^ || Cns [ Vow - vAO ]       _ vA ;           ! ni^an
 define NotIEdipht [..] -> %^ || Cns [ Vow - vAEIO ]     _ vE ;           ! Le)
-define NotØYdipht [..] -> %^ || Cns [ Vow - vYØ ]       _ vY ;           ! 
-define NotIØdipht [..] -> %^ || Cns [ Vow - vIØ ]       _ vØ Sgm ;        ! 
+define NotØYdipht [..] -> %^ || Cns [ Vow - vYØ ]       _ vY ;           !
+define NotIØdipht [..] -> %^ || Cns [ Vow - vIØ ]       _ vØ Sgm ;        !
 !Cns VowNotU _ vO , Cns VowNotO                         _ [vA|vU] , Cns VowNotI _ vE
 
 define rdnj4cns [..] -> %^ || Vow (Cns) r       _ d n j ;
 define unvoiced [..] -> %^ || Vow (Cns)         _ h [ n | m | l | j | r ] Vow ;
 define palatal  [..] -> %^ || Vow (Cns) d       _ d j ,
                               Vow (Cns) l l     _   j ,
-                              Vow (Cns) n       _ n j , 
+                              Vow (Cns) n       _ n j ,
                               Vow ([Cns - d]) d _ n j ,
                               Vow ([Cns - t]) t _ n j ;
-                              
+
 !define dissnas [..] -> %^ || Vow [ b | d | j | l | r | v ] _ [ b m | d n | g ŋ ] Vow ; !North sámi, messes up the following rules
 
 define gem1cns  [..] -> %^ || Vow b b       _      m                      Vow ,
-                              Vow d d       _     (n) j                   Vow , 
-                              Vow g g       _     [ŋ|ń|ñ]                 Vow , 
-                              Vow k k       _          n                  Vow , 
+                              Vow d d       _     (n) j                   Vow ,
+                              Vow g g       _     [ŋ|ń|ñ]                 Vow ,
+                              Vow k k       _          n                  Vow ,
                               Vow l l       _      [d|j|n|t (j) ]         Vow ,
                               Vow m m       _      [b|p]                  Vow ,
                               Vow n n       _      [ d | g | t ([j|s]) ]  Vow ,
-                              Vow [ŋ|ń|ñ] 
+                              Vow [ŋ|ń|ñ]
                                     [ŋ|ń|ñ] _          [g|k] (Cns)        Vow ,
                               Vow p p       _      [k|t ([j|s]) | s (j) ] Vow ,
                               Vow s s  (j)  _      [ k|m|v|n|t ]          Vow ;
 
 define s2cns    [..] -> %^ || Vow [j|l|n|r|v|m] s        _ s (j)  (Cnss) Vow ; ! májs-stet,  (if out: májs-tet),
 define Ls2cnswg [..] -> %^ || Vow [j|l|n|r|v|m]  _ s (j)  (Cnss) Vow ; ! máj-stáv
-                                                         ! " Vow (Cns)" as Left Context gives må-rå-stit, 
+                                                         ! " Vow (Cns)" as Left Context gives må-rå-stit,
                                                          ! fá-sto, now må-rås-tit, fás-to.
 
 ! Ordered rule set: Maximise coda: 3 cns before 2 cns before 1 cns before vow:
 
-define j4cns    [..] -> %^ || Vow  Cns Cns Cns  _ [ [s|t|n] j | t s ] Vow ; 
+define j4cns    [..] -> %^ || Vow  Cns Cns Cns  _ [ [s|t|n] j | t s ] Vow ;
 define j3cns    [..] -> %^ || Vow  Cns Cns      _ [ [s|t|n] j | t s ] Vow ;
 define j2cns    [..] -> %^ || Vow  Cns          _ [ [s|t|n] j | t s ] Vow ;
 define j1cns    [..] -> %^ || Vow               _ [ [s|t|n] j | t s ] Vow ;
@@ -129,8 +129,11 @@ define savetripht  %^ -> 0 || e _ a u ;  ! does  work...
 define savetripht2 %^ -> 0 || i _ e u ;  ! does  work...
 define savetripht3 %^ -> 0 || i _ o u ;  ! does  work...
 
+define removedouble %^ -> 0 || %- _ ;
+define removedouble2 %^ -> 0 || _ %- ;
 
-                     
+
+
 echo <<Combining...>>
 
 read regex [
@@ -142,9 +145,9 @@ read regex [
 .o. NotIEdipht
 .o. NotØYdipht
 .o. NotIØdipht
-.o. rdnj4cns 
+.o. rdnj4cns
 .o. unvoiced
-.o. palatal 
+.o. palatal
 .o. gem1cns
 .o. s2cns
 .o. Ls2cnswg
@@ -160,6 +163,8 @@ read regex [
 .o. savetripht
 .o. savetripht2
 .o. savetripht3
+.o. removedouble
+.o. removedouble2
  ] ;
 
 invert net ;
