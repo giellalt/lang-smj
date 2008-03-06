@@ -520,15 +520,15 @@ LIST LIEHKET-FIN-NOT-IMP = ("liehket" V Ind) ("liehket" V Cond) ("liehket" V Pot
 SETS
 
 
-SET MUN = (Pron Pers Sg1 Nom) ;
-SET DON = (Pron Pers Sg2 Nom) ;
-SET SON = ("son" Pron Pers Sg3 Nom) ;
-SET MÅJ = (Pron Pers Du1 Nom) ;
-SET DÅJ = (Pron Pers Du2 Nom) ;
-SET SÅJ = (Pron Pers Du3 Nom) ;
-SET MIJPERS = (Pron Pers Pl1 Nom) ;
-SET DIJ = (Pron Pers Pl2 Nom) ;
-SET SIJ = ("son" Pron Pers Pl3 Nom) ;
+LIST MUN = (Pron Pers Sg1 Nom) ;
+LIST DON = (Pron Pers Sg2 Nom) ;
+LIST SON = ("son" Pron Pers Sg3 Nom) ;
+LIST MÅJ = (Pron Pers Du1 Nom) ;
+LIST DÅJ = (Pron Pers Du2 Nom) ;
+LIST SÅJ = (Pron Pers Du3 Nom) ;
+LIST MIJPERS = (Pron Pers Pl1 Nom) ;
+LIST DIJ = (Pron Pers Pl2 Nom) ;
+LIST SIJ = ("son" Pron Pers Pl3 Nom) ;
 
 SET PPRON-NOM-NOT-DAT = MUN | DON | SON | MÅJ | DÅJ | SÅJ | MIJPERS | DIJ | SIJ ;
 
@@ -541,15 +541,15 @@ LIST PPRON-GEN = (Sg1 Gen) (Sg2 Gen) (Sg3 Gen) (Du1 Gen) (Du2 Gen) (Du3 Gen)
 
 SET PPRON-NOT-GEN = (Pron Pers) - PPRON-GEN ;
 
-SET DEM-SG = (Pron Dem Sg Nom);
-SET DEM-PL = (Pron Dem Pl Nom);
+LIST DEM-SG = (Pron Dem Sg Nom);
+LIST DEM-PL = (Pron Dem Pl Nom);
 SET NOT-DEM = WORD - Dem ;
 
 
 # Adjectival sets and their complements
 # -------------------------------------
 
-SET A-ATTR = (A Attr) ; # Used in one rule. Not needed? 
+LIST A-ATTR = (A Attr) ; # Used in one rule. Not needed? 
 
 #SET LEX-A = A - A-DER ;
 
@@ -802,11 +802,12 @@ SET V-PRE-NP = PrfPrc | PrsPrc | Actor |  Actio | (V A) | (Ind Prs Sg3) | (Ind P
 SET NP-MEMBER  = PRE-NP-HEAD | N ;
 SET PRE-A-N   = (Pron Pers Gen) | (Pron Indef) | Num | (A Ord) | (Pron Dem) | (Pron Refl Gen) ;
 SET NOT-PRE-A-N = WORD - PRE-A-N ;
-SET PRE-APP   = COMMA | (PUNCT LEFT) | PRE-NP-HEAD ; # This set ist not only for what can
+LIST PUNCT-LEFT = (PUNCT LEFT) ;
+LIST PUNCT-RIGHT = (PUNCT RIGHT) ;
+
+LIST PRE-APP   = COMMA | PUNCT-LEFT | PRE-NP-HEAD ; # This set ist not only for what can
                             # stand in front of appositions but also
                             # postmodifiers.
-SET PUNCT-LEFT = (PUNCT LEFT) ;
-SET PUNCT-RIGHT = (PUNCT RIGHT) ;
 
 # V NPNHAIIP... N
 # BOS ... N V
@@ -835,7 +836,6 @@ SET NAPP     = WORD - PRE-APP ;
 # - - - - - - - - - - - - - - -
 
 SET NOT-N = WORD - N ;
-SET NOT-A = WORD - A ;
 SET NOT-NA = WORD - N - A ;
 SET NOT-NP = ConNeg | Inf | Pcle | Interj | CS ; # The set NP-BOUNDARY is bigger. 
 SET NPROP = N - PROP ;
@@ -1526,7 +1526,7 @@ MAP (@GN>) TARGET Gen IF (NEGATE -1 NUMERALS LINK 0 Nom) (NEGATE 0C ALU OR Cmpnd
 MAP (@GN>) TARGET Gen IF (NEGATE -1 NUMERALS LINK 0 Nom) (NEGATE 0 ALU OR Cmpnd OR Num) (1 COMMA)(2 Rel LINK *1 COMMA LINK *1 N BARRIER NOT-NP OR REALCLB) (NEGATE 1 PUNCT LINK 1 CC) (NEGATE 1 CC LINK *1 Gen BARRIER NOT-NP LINK 1 Po) (NEGATE 1 COMMA LINK 1 Gen LINK 1 CC LINK 1 Gen LINK 1 Po) (NEGATE 0 Actio LINK 1 ("diehti"));
   	## 
   	 
-MAP (@GN>) TARGET Gen IF (-2 ("s") OR ("siidu") OR ("paragráfa") OR ("kapihttal") OR ("kapihtal") OR HEADOFPARTS OR ("jahki") OR GEASSET LINK 1 CARDINALS)(*1 N BARRIER NOT-A);
+MAP (@GN>) TARGET Gen IF (-2 ("s") OR ("siidu") OR ("paragráfa") OR ("kapihttal") OR ("kapihtal") OR HEADOFPARTS OR ("jahki") OR GEASSET LINK 1 CARDINALS)(*1 N BARRIER NOT-ADJ);
   	## 8 
 
 MAP (@GN>) TARGET Gen IF (NEGATE -1 NUMERALS LINK 0 Num) (NEGATE 0 ALU OR Num OR Cmpnd)(*1 N BARRIER NOT-AA OR CLB)(NEGATE 1 Inf);
@@ -2710,7 +2710,7 @@ SELECT Ela IF (0 ("jahke" N Sg Ela))(1 ("jahke" N Sg Ill));
 	## Jages jahkáj.
 
 # 
-s
+
 
 # bådij
 # "båhte" N Pl Com  = "boahtet" V TV Ind Prt Sg3 = "båhte" N Pl Gen
@@ -3785,7 +3785,7 @@ REMOVE (V Sg3) IF (-1 (N Pl Nom) OR (Pron Pl Nom) LINK NOT 0 Pr OR Po)(0 (V Pl3)
 REMOVE (V Pl3) IF (-1 (Sg Nom) LINK *-1 SV-BOUNDARY BARRIER CC LINK -1 (Sg Nom));
 	## Dáhta l navti.
 	
-SELECT (V Sg3) IF (-1 (N Pl Acc) LINK *-1 ("mij" Pron Interr Sg Nom) BARRIER NOT-A);
+SELECT (V Sg3) IF (-1 (N Pl Acc) LINK *-1 ("mij" Pron Interr Sg Nom) BARRIER NOT-ADJ);
     ## Mij dahkamusájt le dujna munnujn?	
 
 # First person dual - Du1
