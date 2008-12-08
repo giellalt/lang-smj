@@ -412,7 +412,7 @@ LIST ALL  = N A Adv V Pron CS CC Adp Po Pr Interj Pcle Pers Dem Interr Refl Reci
 # -----------------
 # (Check these sets)
 
-LIST N-DER = Der/vuohta Der/lis Der/mus Der/dahka Der/us Der/ahkes Der/ibme Der/Dimin Der/r Der/mielak Actor;
+LIST N-DER = Der/vuohta Der/lis Der/mus Der/dahka Der/us Der/ahkes Der/ibme Der/Dimin Der/r Der/mielak Actor Der/m;
 
 LIST V-DER = Der/r Der/d Der/dalla Der/l Der/st Der/h
 Der/dahtte Der/dasste Der/stalla Der/stahtte Der/stasste
@@ -3166,8 +3166,13 @@ REMOVE (N Prop Sg Nom) IF (-1 BOS)(1 N)(2 (V Sg3));
 	## Nordlánda fulkkasuohkanin gullu gålmmå sámegiela.
 # This must be too strong...
 
+# Which Prop
+# ----------
+
 # Johannes or Johanne
 SELECT ("Johannes" Nom) (NOT *-1 Nom BARRIER S-BOUNDARY)(0 ("Johanne"))(*1 Sg3 BARRIER Nom OR S-BOUNDARY LINK NOT 0 ("liehket")) ;
+
+SELECT (Prop Nom) (-1 ("riegádit") LINK -1 (Prop Ill)) ;
 
 
 # Prop Plc or not
