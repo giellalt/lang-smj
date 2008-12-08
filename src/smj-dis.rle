@@ -402,6 +402,7 @@ LIST CAP-INITIAL = "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M"
 # ======== #
 
 
+SECTION
 
 
 LIST WORD = N A Adv V Pron CS CC Adp Po Pr Interj Pcle Pers Dem Interr Refl Recipr Rel Indef ; # any word
@@ -411,12 +412,12 @@ LIST ALL  = N A Adv V Pron CS CC Adp Po Pr Interj Pcle Pers Dem Interr Refl Reci
 # -----------------
 # (Check these sets)
 
-LIST N-DER = Der/vuohta Der/lis Der/mus Der/dahka Der/us Der/ahkes ;
+LIST N-DER = Der/vuohta Der/lis Der/mus Der/dahka Der/us Der/ahkes Der/ibme Der3 Der/Dimin ;
 
 LIST V-DER = Der/r Der/d Der/dalla Der/l Der/st Der/h
 Der/dahtte Der/dasste Der/stalla Der/stahtte Der/stasste
 Der/ladda  Der/lahtte Der/lasste Der/u/a/år  Der/ahtte Der/alla
-Der/asste  Der/duvva  Der/duhtte ;
+Der/asste  Der/duvva  Der/duhtte Der/u/a/åd Der/Pass Der/ahtes  ;
 
 LIST A-DER = Der/dibme Der/lasj Der/lágásj Der/lágán Der/ahtes
 Der/juolgak Der/luottak Der/suttak Der/uvsuk Der/jienak
@@ -432,7 +433,7 @@ Der/vuobdak Der/uvsak Der/ivnak Der/ferjak Der/bájnuk
 Der/luonduk Der/dávdak Der/jergak Der/mielak Der/jiermak
 Der/njunjak Der/guovluk Der/dáfuk Der/vájmuk Der/lahkak Der/åsak
 Der/garák Der/tjuolmak Der/tjålak Der/segak Der/tjalmak
-Der/vigák Der/girjak Der/stával Der/agák Der/jagák ;
+Der/vigák Der/girjak Der/stával Der/agák Der/jagák Der/jahkásasj;
 
 SET NOT-DER = WORD - DERIVED ;
 
@@ -460,8 +461,8 @@ SET LEX-V = V - V-DER;
 # Finiteness and mood
 # - - - - - - - - - -
 
-SET V-IND-FIN = Prs | Prt ; # Problem: "In boahtán" is an invisible indicative
-SET V-MOOD = Prs | Prt | Pot | Imprt | Cond ;
+SET V-IND-FIN = Prs OR Prt ; # Problem: "In boahtán" is an invisible indicative
+SET V-MOOD = Prs OR Prt OR Pot OR Imprt OR Cond ;
 SET VFIN = V-MOOD - ConNeg ;
 SET VFIN-POS = V-MOOD - ConNeg - Neg ;
 SET VFIN-NOT-IMP = VFIN - Imprt ;
@@ -1077,11 +1078,12 @@ SET CP = (Pron Interr) | (Pron Rel) ;
 LIST SEMICOL = "\;" ;
 LIST COL = ":" ;
 
-SET S-BOUNDARY = (Pron Interr) | (Pron Rel) | ("muhto")  | CS | ("\;") | (":") ;
+
+SET S-BOUNDARY = (Pron Interr) OR (Pron Rel) OR ("muhto") OR CS OR ("\;") OR (":") OR (".") ;
 	# includes CP
 	# remember that (",") and CC are potential sentence boundaries, too
 	
-SET S-BOUNDARY2 = (Pron Interr) | (Pron Rel) | ("muhto") |  CS | ("\;") | (":") | (@CC-VP) ;
+SET S-BOUNDARY2 = (Pron Interr) OR (Pron Rel) OR ("muhto") OR CS OR ("\;") OR (":") OR (@CC-VP) ;
 	# includes CP
 	# this one includes @CC-VP, the conjunction, which actually connects two sentences (each with a finite verb) to each other, and not @CC-NP, which coordinates internal NP-/AdvP-/AP ... coordination
 	# To be used only AFTER the disambiguation of @CC-VP and @CC-NP taking place in the chapter right before "Disambiguatig pronouns"
@@ -1688,7 +1690,7 @@ MAP (@X) TARGET ALL ;
 # =================================== #
 # One-cohort disambiguation - cycle 0 #
 # =================================== #
-             CONSTRAINTS              #
+             SECTION              #
 # =================================== #
 
 # This is for cases using the same cohort only.
@@ -1739,6 +1741,13 @@ REMOVE (Actio N Pl Ine) IF (0 (N-NOT-ACTIO Pl Ine));
 REMOVE (Actio N Pl Ela) IF (0 (N-NOT-ACTIO Pl Ela));
 REMOVE (Actio N Pl Com) IF (0 (N-NOT-ACTIO Pl Com));
 
+REMOVE (Der1 Der/dibme) IF (0 (Der1 Der/Pass)) ;
+# várroduvvin
+
+REMOVE (Der2 Der/dahtte) IF (0 (Der1 Der/ahtte)) ;
+
+REMOVE (Der1 Der/Dimin) IF (0 Sup) ;
+
 #REMOVE (N Ess) IF (NEGATE *-1 OPREDV BARRIER VERB)(0 (V Actio Ess));
     # Do we need this? Taken from sme.    
 
@@ -1750,10 +1759,33 @@ REMOVE N-DER IF (0 N-DER LINK 0 Ess)(0 LEX-N LINK 0 Ess)(NEGATE 0 Actio);
 
 REMOVE A-DER IF (0 LEX-A);
 REMOVE (V-DER Inf) IF (0 (NOT-DER Inf));
-
+REMOVE V-DER IF (0 LEX-V) ;
+ 
 # End of SELECT/REMOVE switch area
 
+# Choosing between particular lemmas
+# -----------------------------------
 
+LIST LEMMA1 = "ah" "Alme#rijkka" "giládit" "gåhtjo#duvvá" "herlukvuohta" "Jubmel" "oajvemus" "profehtta" "tjáledit" "tjuoladit" ;
+    # first dictionary form
+
+LIST LEMMA2 = "aj" "alme#rijkka" ("gillat" Der1) "gåhttjot" ("herluk" A* Der4 Der/vuohta) "jubmel" ("oajvve" N Superl) "profehta" ("tjuollat" Der1 Der/Pass) ("tjállet" V* TV Der1 Der/Pass) ;
+
+REMOVE LEMMA2 IF (0 LEMMA1);
+
+LIST NOT-ACR = "ah" "ájgge" "ja" "dat" "vas" "vaj" "ga" "ájn" "ij" "man" "jahke"  "na";
+# "<ga>" ??
+
+REMOVE ACR IF (0 NOT-ACR) ; 
+
+SELECT VFIN IF (*-1 S-BOUNDARY OR BOS BARRIER VERB) (*1 S-BOUNDARY OR BOS BARRIER VFIN) ;   
+
+SELECT VFIN IF (*-1 ("ja") OR ("de") BARRIER VERB LINK -1 COMMA) (*1 S-BOUNDARY OR BOS BARRIER VFIN) ;    
+ 
+
+SELECT VFIN IF (*-1 S-BOUNDARY OR BOS) (*1 COMMA BARRIER VFIN LINK 1 ("ja") OR ("de")) ;    
+
+#SELECT VFIN IF (*-1 COMMA) (*1 S-BOUNDARY OR COMMA ) ; # BARRIER VFIN) ;    
 
 
 # ===================================== #
@@ -1762,7 +1794,7 @@ REMOVE (V-DER Inf) IF (0 (NOT-DER Inf));
 # --------------------------------------------------------- #
 # Cycle 1a: cases that will be needed in careful mode later #
 # --------------------------------------------------------- #
-                 CONSTRAINTS
+                 SECTION
 # --------------------------------------------------------- #
 
 REMOVE ABBR IF (NEGATE -1 BOS)(0 ("liehket"));
@@ -1798,7 +1830,7 @@ REMOVE PxDu1 IF (*-1 (Pron Pl1) BARRIER NPNH)(0 PxPl1);
 # ---------------------------------------------------------------- #
 # Cycle 1b: removing the readings that were left from the 1a rules #
 # ---------------------------------------------------------------- #
-              CONSTRAINTS
+#              SECTION
 # ---------------------------------------------------------------- #
 
 
@@ -1809,7 +1841,7 @@ REMOVE PxDu1 IF (*-1 (Pron Pl1) BARRIER NPNH)(0 PxPl1);
 # -------------------------------------------- #
 # Cycle 2: Other cases of local disambiguation #
 # -------------------------------------------- #
-             CONSTRAINTS
+             SECTION
 # -------------------------------------------- #
 
 # ImprtII
@@ -1844,7 +1876,7 @@ SELECT (ImprtII ConNeg Pl1) IF (*1 (Neg ImprtII Pl1) LINK *1 EOS BARRIER (ImprtI
 SELECT (ImprtII ConNeg Pl2) IF (*1 (Neg ImprtII Pl2) LINK *1 EOS BARRIER (ImprtII ConNeg));    
 SELECT (ImprtII ConNeg Pl3) IF (*1 (Neg ImprtII Pl3) LINK *1 EOS BARRIER (ImprtII ConNeg));    
 
-CONSTRAINTS
+SECTION
 
 REMOVE (ImprtII ConNeg);
 
@@ -1887,7 +1919,6 @@ REMOVE ConNeg IF (*-1 BOS OR CLB OR CS LINK *1 CS OR CLB OR EOS BARRIER Neg);
 #clb obj , neg (kooridinerer) obj conneg   => conneg ok
 
 
-CONSTRAINTS
 
 # 1b is for finishing off the 1a leftovers.
 
@@ -1896,7 +1927,7 @@ CONSTRAINTS
 # -------------------------------------------- #
 # Cycle 2: Other cases of local disambiguation #
 # -------------------------------------------- #
-             CONSTRAINTS
+             SECTION
 # -------------------------------------------- #
 
 # Verb vs. Actio/Actor
@@ -1938,7 +1969,7 @@ SELECT (ImprtII ConNeg Pl1) IF (*1 (Neg ImprtII Pl1) LINK *1 EOS BARRIER (ImprtI
 SELECT (ImprtII ConNeg Pl2) IF (*1 (Neg ImprtII Pl2) LINK *1 EOS BARRIER (ImprtII ConNeg));    
 SELECT (ImprtII ConNeg Pl3) IF (*1 (Neg ImprtII Pl3) LINK *1 EOS BARRIER (ImprtII ConNeg));    
 
-CONSTRAINTS
+SECTION
 
 REMOVE (ImprtII ConNeg);
 
@@ -1978,7 +2009,7 @@ REMOVE ConNeg IF (*-1 BOS OR CLB LINK *1 CLB BARRIER Neg);
 #clb obj , neg (kooridinerer) obj conneg   => conneg ok
 
 
-CONSTRAINTS
+SECTION
 
 
 # Subject-verb
@@ -2795,7 +2826,7 @@ SELECT Po IF (NEGATE *-2 Pr BARRIER N OR SV-BOUNDARY)(-1C Gen)(NEGATE *1C Gen BA
     
 
 	# ============== #
-      CONSTRAINTS    # 
+      SECTION    # 
 	# ============== #
 
 	# CS selection for specific CS candidates
@@ -3083,7 +3114,7 @@ SELECT GerII IF (*-1 AUX OR GerII-V BARRIER SV-BOUNDARY2)(0 (N Ess));
 # ==================== #
 # Disambiguating nouns #
 # ==================== #
-       CONSTRAINTS     #
+       SECTION     #
 # ==================== #
 
 
@@ -3342,7 +3373,7 @@ SELECT Ill IF (0 N)(*1 ILL-ADJ BARRIER NOT-ADJ-PCLE);
 
 SELECT (N Ill) IF (*-1C (Num Gen))(NEGATE 0 Gen);
 
-SELECT Ill IF (*-1 ILLV BARRIER NOT-AAPCLE);
+SELECT Ill IF (*0 ILLV BARRIER NOT-AAPCLE);
     ## Habssa dabrijdij njunnjáj.
 
 SELECT Ill IF (*-1 (V* TV Pass) BARRIER NOT-AAPCLE);   
@@ -3664,7 +3695,7 @@ REMOVE Par IF (0 (Dem Sg Nom))(1C (N Sg Nom));
 # ============================= #
 # Disambiguating verbs - part 1 #
 # ============================= #
-             CONSTRAINTS        #
+             SECTION        #
 # ============================= #
 
 # Person
@@ -3728,7 +3759,7 @@ SELECT PrfPrc IF (-1 BOS)(*1 ("liehket") BARRIER NOT-ADV-PCLE) ;
 # ============================= #
 # Disambiguating verbs - part 2 #
 # ============================= #
-             CONSTRAINTS        #
+             SECTION        #
 # ============================= #
 
         # Finite forms
@@ -3868,7 +3899,7 @@ REMOVE (Actio N Ess) IF (0 (N Ess));
 # ===================== #
 # Global rules: cycle 4 #
 # ===================== #
-        CONSTRAINTS     #
+        SECTION     #
 # ===================== #
 
 # Here we have some rules that scan the whole domain.
@@ -3996,7 +4027,15 @@ REMOVE (@GN>) IF (*-1 Num BARRIER NPNH)(0 (@NQ<))(NEGATE *1 N BARRIER NPNH);
 
 SELECT VFIN IF (NEGATE *-1 VFIN BARRIER CLB)(NEGATE *1 VFIN BARRIER CLB OR GCRD);
     ## - Vuorde dal ájn.
-    ## Åro sjávot desik lav tjielggim.
+    ## Åro sjávot desik lav tjielggim.  
+
+    
 
 #REMOVE (@SPRED) IF (NEGATE 0 Gen OR Px);
+
+	#=====#
+      END #
+	#=====#
+
+
 
