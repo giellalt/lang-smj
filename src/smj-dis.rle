@@ -412,7 +412,7 @@ LIST ALL  = N A Adv V Pron CS CC Adp Po Pr Interj Pcle Pers Dem Interr Refl Reci
 # -----------------
 # (Check these sets)
 
-LIST N-DER = Der/vuohta Der/lis Der/mus Der/dahka Der/us Der/ahkes Der/ibme Der3 Der/Dimin ;
+LIST N-DER = Der/vuohta Der/lis Der/mus Der/dahka Der/us Der/ahkes Der/ibme Der/Dimin Der/r Der/mielak Actor;
 
 LIST V-DER = Der/r Der/d Der/dalla Der/l Der/st Der/h
 Der/dahtte Der/dasste Der/stalla Der/stahtte Der/stasste
@@ -1766,10 +1766,10 @@ REMOVE V-DER IF (0 LEX-V) ;
 # Choosing between particular lemmas
 # -----------------------------------
 
-LIST LEMMA1 = "ah" "Alme#rijkka" "giládit" "gåhtjo#duvvá" "herlukvuohta" "Jubmel" "oajvemus" "profehtta" "tjáledit" "tjuoladit" ;
+LIST LEMMA1 = "ah" "Alme#rijkka" "áltár" "denára" "giládit" "gåhtjo#duvvá" "herlukvuohta" "Jubmel" "oajvemus" "profehtta" "tjáledit" "tjuoladit" "värro#áltár" ;
     # first dictionary form
 
-LIST LEMMA2 = "aj" "alme#rijkka" ("gillat" Der1) "gåhttjot" ("herluk" A* Der4 Der/vuohta) "jubmel" ("oajvve" N Superl) "profehta" ("tjuollat" Der1 Der/Pass) ("tjállet" V* TV Der1 Der/Pass) ;
+LIST LEMMA2 = "aj" "alme#rijkka" "álltár" "denárra" ("gillat" Der1) "gåhttjot" ("herluk" A* Der4 Der/vuohta) "jubmel" ("oajvve" N Superl) "profehta" ("tjuollat" Der1 Der/Pass) ("tjállet" V* TV Der1 Der/Pass) "värro#álltár" ;
 
 REMOVE LEMMA2 IF (0 LEMMA1);
 
@@ -2035,6 +2035,12 @@ REMOVE Dem IF (0 (Pron Pers Sg2))(1 (V Sg2));
 REMOVE (Imprt Sg2) IF (-1 (Pron Pers Sg2))(0 (Ind Prs Sg2));
 	## Dån jållåra.
 
+SELECT V-3 (*-1 (Sg Nom) BARRIER VERB OR S-BOUNDARY)(NOT *1 VFIN BARRIER S-BOUNDARY OR CC) ; 
+
+SELECT (V Ind Sg3) (1 CC LINK *1 Sg3 BARRIER VERB OR Nom) ;
+
+SELECT (V Sg3) (*-1 CC BARRIER Nom OR VERB LINK *-1 Sg3 BARRIER VERB OR Nom) ;
+
 # Du1
 # ---
 
@@ -2130,6 +2136,7 @@ SELECT CS IF (-1 A OR Adv)(NEGATE -1 Po)(0 ("gå"))(*1 Interr BARRIER VFIN);
 SELECT CS IF (0 ("gå"))(1 ("ahte"));
 	##  
 
+SELECT CS IF (0 ("danen"))(1 ("gå"));
 
 	# vaj
 	# - -
@@ -2683,6 +2690,9 @@ SELECT Gen IF (1 (@CC-NP))(*2 Gen BARRIER NOT-AA LINK 1C Po);
 SELECT Adv IF (NEGATE 0 ("akta" Ess))(0 Ess)(NEGATE 0 ("mij" Foc) OR Ine);
     ## Árvvediv ilá tjoaskes lij ålggon vádtset.
 
+SELECT Adv (0 ("maŋemussaj") OR ("riegádim#rájes") OR ("álggo#rájes")) ;
+
+SELECT Adv (-1 VFIN)(0 ("ålgus"))(1 Sup OR Inf) ;
 
 # aktan
 SELECT Adv IF (NEGATE -1 VERB)(0 ("aktan"))(NEGATE 1 (N Ess));
@@ -2859,6 +2869,10 @@ SELECT Adv IF (-1 V OR (@CC-VP) OR BOS)(0 ("aktan"))(1 Com);
 
 # Personal pronouns
 
+# Pl1
+SELECT (Pron Pers Pl1) (*1 VFIN + Pl1 BARRIER NOT-ADV-PCLE) ; 
+SELECT (Pron Pers Pl1) (1 Interj LINK 1* VFIN + Pl1 BARRIER NOT-ADV-PCLE) ; 
+
 # Sg2
 SELECT (Pron Pers Sg2 Nom) IF (*-1 (V Sg2) BARRIER NOT-ADV-PCLE);
 	## Le gus dån oahpes dán bájkkáj? 
@@ -2936,7 +2950,7 @@ SELECT (Pron Rel Sg Nom) IF (*-1 (N Sg))(NEGATE *1 V-PL1);
 
 SELECT (Pron Rel Sg Nom) IF (*-1 COMMA OR CLB BARRIER NOT-PUNCT-RIGHT LINK -1 (N Sg))(NEGATE *1 V-PL1);
 
-
+SELECT Rel (-1 Dem OR N)(0 Nom)(1 V-3);
 
 
 # ====================== #
@@ -3016,12 +3030,14 @@ SELECT (Pron Attr) IF (0C Pron)(*1C N BARRIER NOT-ADJ-PCLE OR ("gå"));
     #  V TV Ind ConNeg=V TV Imprt ConNeg=V TV VGen=V TV Imprt Sg2
     # = V TV Ind Prs Sg2
     
-SELECT (Imprt Sg2) IF (*-1 BOS BARRIER WORD)(1 ("sjávot")); 
+SELECT (Imprt Sg2) IF (*-1 BOS OR (":") BARRIER WORD)(1 ("sjávot")); 
     ## Åro sjávot desik lav tjielggim.
 
 SELECT (Imprt Sg2) IF (*1 Prop BARRIER WORD LINK 0 Mal OR Fem LINK 1 COMMA);
     ## - Gulá Tore, tjielggij.
 
+SELECT Imprt IF (*-1 BOS OR (":") BARRIER WORD)(*1 ("excl") BARRIER VFIN); 
+	## Ja ålmmåj javlaj: ”Gálggi giedat!”
 
 REMOVE (Imprt ConNeg) IF (*-1 Neg LINK NOT 0 Imprt);
 	## ... beassat juska ij nav vuojga duodjuhit máhte, ...
@@ -3122,12 +3138,15 @@ SELECT GerII IF (*-1 AUX OR GerII-V BARRIER SV-BOUNDARY2)(0 (N Ess));
 #POS homonymy:
 # Pron Interr = Pron Rel
 # Adv Po
+# N Po
 
 REMOVE Pr IF (0 Po OR Adv)(*1 EOS OR CLB OR VFIN BARRIER (N Gen) OR (Pron Gen));
     ## Almerijkka le lahka.
 
 REMOVE Po IF (0 Pr OR Adv)(*-1 BOS OR CLB OR VFIN BARRIER (N Gen) OR (Pron Gen));
     ## Almerijkka le lahka.
+
+SELECT Po (-1 (N Gen))(0 ("rádje") LINK 0 Ela OR Ill) ;
 
 # ============ #
 # Proper nouns #
@@ -3146,6 +3165,10 @@ SELECT (N Prop Sg Nom) IF (-1 CS OR BOS)(*1 V-SG3 BARRIER NOT-AAPCLE);
 REMOVE (N Prop Sg Nom) IF (-1 BOS)(1 N)(2 (V Sg3));
 	## Nordlánda fulkkasuohkanin gullu gålmmå sámegiela.
 # This must be too strong...
+
+# Johannes or Johanne
+SELECT ("Johannes" Nom) (NOT *-1 Nom BARRIER S-BOUNDARY)(0 ("Johanne"))(*1 Sg3 BARRIER Nom OR S-BOUNDARY LINK NOT 0 ("liehket")) ;
+
 
 # Prop Plc or not
 # - - - - - - - -
