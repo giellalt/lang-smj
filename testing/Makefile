@@ -28,7 +28,8 @@ TEMP = ../../tmp
 # This variable is holding the filename of the save file:
 # (makes the Makefile truly language independent for
 # the Sami languages)
-SAVEFILE = $(wildcard $(FSTDIR)/ism?-norm.fst)
+#SAVEFILE = $(wildcard $(FSTDIR)/ism?-norm.fst)
+SAVEFILE = $(wildcard $(FSTDIR)/ism?.fst)
 
 # Copied from old LS makefile:
 # Bond, James Bond
