@@ -413,11 +413,11 @@ LIST ALL  = N A Adv V Pron CS CC Adp Po Pr Interj Pcle Pers Dem Interr Refl Reci
 # -----------------
 # (Check these sets)
 
-LIST N-DER = Der/vuohta Der/lis Der/mus Der/dahka Der/us Der/ahkes Der/ibme Der/Dimin Der/r Der/mielak Actor Der/m;
+LIST N-DER = Der/vuohta Der/lis Der/mus Der/dahka Der/us Der/ahkes Der/ibme Der/dibme Der/Dimin Der/r Der/mielak Actor Der/m;
 
 LIST V-DER = Der/r Der/d Der/dalla Der/l Der/st Der/h
 Der/dahtte Der/dasste Der/stalla Der/stahtte Der/stasste
-Der/ladda  Der/lahtte Der/lasste Der/u/a/år  Der/ahtte Der/alla
+Der/ladda  Der/lahtte Der/lasste Der/u/a/år  Der/ahtte Der/alla Der/adda
 Der/asste  Der/duvva  Der/duhtte Der/u/a/åd Der/Pass Der/ahtes  ;
 
 LIST A-DER = Der/dibme Der/lasj Der/lágásj Der/lágán Der/ahtes
@@ -1029,6 +1029,8 @@ LIST EVENT = "aktisasj#tjåhkanibme" "tjåhkanibme" ;
 SET ABSTR-PLACE = ORGANIZATION | INSTITUTION | EVENT | EDUCATION | INDUSTRY | SITUATION ;
 
 SET ACTOR = ANIMATE | INSTITUTION | ORGANIZATION ;
+
+LIST LANGUAGE = "sáme#giella" ;
 
 #ILLNESS
 #POLITICAL-ABSTR-N  "boazodoallo#politihkka" "boras#pirepolitihka" "kultur#árbi" "sosiála#politihkka" 
@@ -1778,6 +1780,16 @@ LIST LEMMA2 = "aj" "almatja#bárnep" "alme#rijkka" "álltár" ("biros" Ill) "den
 
 REMOVE LEMMA2 IF (0 LEMMA1);
 
+LIST AMB-LEMMA1 = "identitehta"  ;
+
+LIST AMB-LEMMA2 = "identitehta" "identitæhtta"   ;
+
+REMOVE:r614 AMB-LEMMA2 IF (0 AMB-LEMMA1 LINK NEGATE 0 (Sg Nom) LINK NOT 0 Px);
+
+SELECT LANGUAGE (0 LANGUAGE) ;
+	# avoid "sáme#gielas" "Sáme#giella"
+	
+
 LIST VERB-BASE = "bassat" "gillat" "mannat" "njammat" "njuolggit" "njuovvat" "råhkåt" ;
 
 LIST VERD-DER = "basádit" "giládit" "mannát" "njamádit" "njuolggidit" "njuovadit" "råhkålit" ;
@@ -1785,7 +1797,7 @@ LIST VERD-DER = "basádit" "giládit" "mannát" "njamádit" "njuolggidit" "njuov
 REMOVE VERD-DER IF (0 VERB-BASE);
 
 
-LIST NOT-ACR = "ah" "ájgge" "ja" "dat" "vas" "vaj" "ga" "ájn" "ij" "man" "jahke"  "na";
+LIST NOT-ACR = "ah" "ájgge" "ja" "dat" "vas" "vaj" "ga" "ájn" "ij" "mij" "man" "jahke"  "na";
 # "<ga>" ??
 
 REMOVE ACR IF (0 NOT-ACR) ; 
@@ -1794,7 +1806,7 @@ SELECT VFIN IF (*-1 S-BOUNDARY OR BOS OR (":") BARRIER VERB) (*1 S-BOUNDARY OR B
 
 SELECT VFIN IF (*-1 ("ja") OR ("de") BARRIER VERB LINK -1 COMMA) (*1 S-BOUNDARY OR BOS BARRIER VFIN) ;    
  
-SELECT VFIN IF (*-1 S-BOUNDARY OR BOS) (*1 COMMA BARRIER VFIN LINK 1 ("ja") OR ("de")) ;    
+SELECT VFIN IF (*-1 S-BOUNDARY OR BOS)(0C V) (*1 COMMA BARRIER VFIN LINK 1 ("ja") OR ("de")) ;    
 
 SELECT VFIN IF (*-1 Ger BARRIER NOT-ADV-PCLE) ;    
 
@@ -1818,6 +1830,9 @@ REMOVE ABBR IF (NEGATE -1 BOS)(0 ("liehket"));
 # Possessive suffix
 
 REMOVE Px (0 Actio OR Actor) ;
+
+REMOVE (A PxSg2) (0 Adv) ;
+
 
 # PxSg1
 #   V* TV Pass V PrfPrc          = V* TV Pass V* Actor N Sg Gen PxSg1
@@ -1862,6 +1877,8 @@ REMOVE PxDu1 IF (*-1 (Pron Pl1) BARRIER NPNH)(0 PxPl1);
 
 # ImprtII
 # -------
+
+REMOVE ImprtII (1 VFIN LINK NOT 0 Inf) ;
 
 SELECT (ImprtII ConNeg Sg2) IF (*-1 (Neg ImprtII Sg2));
     ## Allu då dån tjállu!
@@ -2051,7 +2068,7 @@ REMOVE Dem IF (0 (Pron Pers Sg2))(1 (V Sg2));
 REMOVE (Imprt Sg2) IF (-1 (Pron Pers Sg2))(0 (Ind Prs Sg2));
 	## Dån jållåra.
 
-SELECT V-3 (*-1 (Sg Nom) BARRIER VERB OR S-BOUNDARY)(NOT *1 VFIN BARRIER S-BOUNDARY OR CC) ; 
+SELECT V-3 (*-1 (Sg Nom) BARRIER VERB OR S-BOUNDARY)(0C V)(NOT *1 VFIN BARRIER S-BOUNDARY OR CC) ; 
 
 SELECT (V Ind Sg3) (1 CC LINK *1 Sg3 BARRIER VERB OR Nom) ;
 
@@ -2059,7 +2076,7 @@ SELECT (V Sg3) (*-1 CC BARRIER Nom OR VERB LINK *-1 Sg3 BARRIER VERB OR Nom)(NOT
 
 # Sg3
 # ---
-SELECT (V Sg3)(*-1 Sg BARRIER Nom OR S-BOUNDARY) ;
+SELECT (V Sg3)(*-1 Sg BARRIER Nom OR S-BOUNDARY)(0C V) ;
 
 # Du1
 # ---
@@ -2878,6 +2895,7 @@ SELECT CS IF (0 ("vaj"));
 # ====================== #
 # ====================== #
 
+
 REMOVE Po IF (0 Adv)(NEGATE -1 Gen);
     ## Ja vádtse álmmuk suv åvdålt maŋelt tjuorvoj:
     
@@ -2914,6 +2932,8 @@ SELECT (Sg2) IF (0 (Pron Pers))(*1 (V Sg2) BARRIER N);
 
 SELECT (Pron Interr) IF (0 (Pl1 Nom) LINK -1 S-BOUNDARY OR BOS)(1 (N Pl Acc));
     ## Mij dahkamusájt le dujna munnujn?
+    
+REMOVE Adv (-1 ("oasse"))(0 (Pron Ela)) ;    
 
 # Genitive Sg = Accusative Sg for personal pronouns.
 # Accusative vs. Genitive
@@ -3083,6 +3103,8 @@ SELECT ("allak") IF (0 Der/vuohta)(1 ("tråvnnå")) ;
     #  V TV Ind ConNeg=V TV Imprt ConNeg=V TV VGen=V TV Imprt Sg2
     # = V TV Ind Prs Sg2
     
+SELECT Imprt (-1 BOS)(0 ("gæhttjat")) ;
+
 SELECT (Imprt Sg2) IF (*-1 BOS OR (":") BARRIER WORD)(1 ("sjávot")); 
     ## Åro sjávot desik lav tjielggim.
 
@@ -3186,6 +3208,10 @@ SELECT GerII IF (*-1 AUX OR GerII-V BARRIER SV-BOUNDARY2)(0 (N Ess));
        SECTION     #
 # ==================== #
 
+# Special nouns:
+REMOVE ("giellat") (0 N LINK -1 Inf OR VFIN OR Gen) ;	
+REMOVE ("giellat") (-1 CC LINK -1 LANGUAGE) ;	
+REMOVE ("giellat") (1 CC LINK 1 LANGUAGE) ;	
 
 
 #POS homonymy:
