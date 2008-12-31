@@ -434,7 +434,7 @@ Der/vuobdak Der/uvsak Der/ivnak Der/ferjak Der/bájnuk
 Der/luonduk Der/dávdak Der/jergak Der/mielak Der/jiermak
 Der/njunjak Der/guovluk Der/dáfuk Der/vájmuk Der/lahkak Der/åsak
 Der/garák Der/tjuolmak Der/tjålak Der/segak Der/tjalmak
-Der/vigák Der/girjak Der/stával Der/agák Der/jagák Der/jahkásasj;
+Der/vigák Der/girjak Der/stával Der/agák Der/jagák Der/jahkásasj Der/lis;
 
 SET NOT-DER = WORD - DERIVED ;
 
@@ -690,7 +690,7 @@ SET V-TRANS-ACT-NOT-ACT-NOT-AUX = V-TRANS-ACT - Actio - Actor - AUX;
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 #LIST INEV =
-LIST COMV = "aktidit" "bierggit" "sjiehtadallat" ;
+LIST COMV = "aktidit" "bierggit" "buohtastahttet" "oassálasstet" "sjiehtadallat" ;
 LIST ELAV = "ballat" "biehttot" "buorggot" "gáhtot" "gærggat" "gåhttsåt" "gåvvat"  "hiejttet" "mássit" "nádot" "tsaggat" "várrodit" "viessot" "vuornnot" "ållit" ;
 
 LIST ILLV = "bajkket" "báddnut" "báhtset" "biedjat" "bielkket" "boadádallat" "bæhtádallat" "bælkkut" "bårrut" "dabrijdit" "dehpudallat" "dihpput" "duhtat" "duobbmidallat" "dædnjot" "dåbdijdit" "dårvustallat" "ganudit" "ganugit" "gierrot" "givnjedit" "guhkahit" "gullut" "guodet" "guorrasit" "guosskat" "guottedallat" "gåddudallat" "gådtjåt" "gåttådallat" "hárjjánit" "jáhkket" "jánndedit" "joavddut" "ládadallat" "láhpput" "lávgájdallat" "lijkkut" "madtjut" "mielastuvvat" "njoammot" "oahpásmuvvat" "oassálasstet" "rájadallat" "riegádit" "råhtot" "sehkanit" "sjiehttat" "sjærggodit" "skulldit" "sledut" "snårrudit" "snårrut" "suhttat" "sæbrrat" "tjágŋalit" "tjágŋat" "tjajmadallat" "tjárggat" "tjuokkudallat" "tsábbmudallat" ;
@@ -701,7 +701,7 @@ LIST ILLV = "bajkket" "báddnut" "báhtset" "biedjat" "bielkket" "boadádallat" 
 
 LIST OPREDV = "adnet" "gåhttjot" "válldet" ;
 
-LIST ESSV = "boahtet" "sjaddat";
+LIST ESSV = "aneduvvat" "boahtet" "sjaddat";
     # ESSV + A = Ess instead of Ine.
 
 # Other verb sets
@@ -1773,10 +1773,10 @@ REMOVE Imprt (0 Der/vuohta OR (".*#.*t"r)) ;
 # Choosing between particular lemmas
 # -----------------------------------
 
-LIST LEMMA1 = "ah" "almatja#bárnne" "Alme#rijkka" "áltár" "birrusij" "denára" "giládit" "gåhtjo#duvvá" "herlukvuohta" "iehkedis" "Jubmel" "oajvemus" ("oanedit" Der/Pass) "profehtta" "tjáledit" "tjuoladit" "värro#áltár" "ådå" ;
+LIST LEMMA1 = "ah" "almatja#bárnne" "Alme#rijkka" "áltár" "birrusij" "denára" "giládit" "gåhtjo#duvvá" "herlukvuohta" "iehkedis" "Jubmel" "oajvemus" "oajvve#oasse" ("oanedit" Der/Pass) "profehtta" "tjáledit" "tjuoladit" "värro#áltár" "ådå" ;
     # first dictionary form
 
-LIST LEMMA2 = "aj" "almatja#bárnep" "alme#rijkka" "álltár" ("biros" Ill) "denárra" ("gillat" Der1) "gåhttjot" ("herluk" A* Der4 Der/vuohta) "iehket" "jubmel" ("oajvve" N Superl) "oane#duvvá" "profehta" ("tjuollat" Der1 Der/Pass) ("tjállet" V* TV Der1 Der/Pass) "värro#álltár" "ådås";
+LIST LEMMA2 = "aj" "almatja#bárnep" "alme#rijkka" "álltár" ("biros" Ill) "denárra" ("gillat" Der1) "gåhttjot" ("herluk" A* Der4 Der/vuohta) "iehket" "jubmel" ("oajvve" N Superl) "oajvve#oases" "oane#duvvá" "profehta" ("tjuollat" Der1 Der/Pass) ("tjállet" V* TV Der1 Der/Pass) "värro#álltár" "ådås";
 
 REMOVE LEMMA2 IF (0 LEMMA1);
 
@@ -1806,7 +1806,10 @@ SELECT VFIN IF (*-1 S-BOUNDARY OR BOS OR (":") BARRIER VERB) (*1 S-BOUNDARY OR B
 
 SELECT VFIN IF (*-1 ("ja") OR ("de") BARRIER VERB LINK -1 COMMA) (*1 S-BOUNDARY OR BOS BARRIER VFIN) ;    
  
-SELECT VFIN IF (*-1 S-BOUNDARY OR BOS)(0C V) (*1 COMMA BARRIER VFIN LINK 1 ("ja") OR ("de")) ;    
+SELECT VFIN IF (*-1 S-BOUNDARY OR BOS)(0C V) (*1 COMMA BARRIER VFIN LINK 1 ("ja") OR ("de")) ; 
+
+SELECT VFIN IF (*-1 S-BOUNDARY OR BOS)(0 Px) (*1 COMMA BARRIER VFIN LINK 1 ("ja") OR ("de")) ;    
+   
 
 SELECT VFIN IF (*-1 Ger BARRIER NOT-ADV-PCLE) ;    
 
@@ -1832,7 +1835,7 @@ REMOVE ABBR IF (NEGATE -1 BOS)(0 ("liehket"));
 REMOVE Px (0 Actio OR Actor) ;
 
 REMOVE (A PxSg2) (0 Adv) ;
-
+REMOVE Px (-1 ("juohkka"));
 
 # PxSg1
 #   V* TV Pass V PrfPrc          = V* TV Pass V* Actor N Sg Gen PxSg1
@@ -1879,6 +1882,7 @@ REMOVE PxDu1 IF (*-1 (Pron Pl1) BARRIER NPNH)(0 PxPl1);
 # -------
 
 REMOVE ImprtII (1 VFIN LINK NOT 0 Inf) ;
+REMOVE ImprtII (-1 Gen)(0 N) ;
 
 SELECT (ImprtII ConNeg Sg2) IF (*-1 (Neg ImprtII Sg2));
     ## Allu då dån tjállu!
@@ -2970,7 +2974,7 @@ REMOVE (Pers Acc) IF (*1C (N Acc) BARRIER S-BOUNDARY2 OR Po OR Actio OR ("degu")
 SELECT (Pers Acc) IF (-1 V-TRANS-ACT-NOT-ACT LINK *-1 BOS OR PUNCT OR CLB)(1 CLB);
     ## ”Tjuovvolav duv, Härrá, ...
 
-SELECT Acc IF (0 Pers OR Refl)(*1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2);
+SELECT Acc IF (0 Pers OR Refl)(*1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 LINK NOT 0 N);
     ## Ja de rájddiv dasik dudálattjan iehtjam dåbddiv.  
 
     
@@ -3489,6 +3493,9 @@ SELECT (N Ill) IF (*-1C (Num Gen))(NEGATE 0 Gen);
 
 SELECT Ill IF (*0 ILLV BARRIER NOT-AAPCLE);
     ## Habssa dabrijdij njunnjáj.
+SELECT Ill IF (*-1 CC BARRIER NPNH LINK -1 Ill LINK -1* ILLV BARRIER NOT-AAPCLE);
+	## Åhpadus sámegielan galggá viehkedit mánájt ja nuorajt oassálastátjit sáme kultuvrraj ja sebrudakiellemij.
+
 
 SELECT Ill IF (*-1 (V* TV Pass) BARRIER NOT-AAPCLE);   
     ## Mån bårådalliv bednagij.
@@ -3508,7 +3515,7 @@ SELECT Com IF (*-1C (Num Com));
 SELECT Com IF (-2 IV)(-1 ("akta" Ess))(0 Ine);
     ## Bievddegáddáj viellidin aktan sujna ja åhpadisålmmåj.
 
-SELECT Com IF (-2 IV OR (@CC-VP) OR BOS)(-1 ("aktan" Adv))(0 Ine OR Ill);
+SELECT Com IF (-2 IV OR (@CC-VP) OR BOS OR AUX)(-1 ("aktan" Adv))(0 Ine OR Ill);
 
     ## Bievddegáddáj viellidin aktan sujna ja åhpadisålmmåj.
     ## Jesus de tjuodtjelij ja aktan åhpadisålmmåj suv tjuovvolij.
@@ -3782,6 +3789,9 @@ SELECT Ela IF (0 PxSg3 LINK NOT 0 TOOLS OR ABSTR-TOOLS OR WRITING-TOOLS OR CONCE
  
 # Essive
 # ======
+
+SELECT Ess (-1 ESSV)(NOT 0 Acc) ;
+	## Fáhka sámegiella nubbegiellan máhttá aj aneduvvat ræjddon ietjá fágajda vaj giellaåhpadus máhttá nanniduvvat.
 
 SELECT Ess IF (0 Ine LINK 0 ESS-NOUN);
     ## Sálugin gudi vuojŋŋanisán li häjo.
