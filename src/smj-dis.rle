@@ -1764,6 +1764,8 @@ REMOVE A-DER IF (0 LEX-A);
 REMOVE (A* Adv) IF (0 LEX-ADV) ;
 REMOVE (V-DER Inf) IF (0 (NOT-DER Inf));
 REMOVE V-DER IF (0 LEX-V) ;
+
+REMOVE (Der1) IF (0C (Der3)) ; 
  
 REMOVE Imprt (0 Der/vuohta OR (".*#.*t"r)) ; 
 
@@ -1773,16 +1775,16 @@ REMOVE Imprt (0 Der/vuohta OR (".*#.*t"r)) ;
 # Choosing between particular lemmas
 # -----------------------------------
 
-LIST LEMMA1 = "ah" "almatja#bárnne" "Alme#rijkka" "áltár" "birrusij" "denára" "giládit" "gåhtjo#duvvá" "herlukvuohta" "iehkedis" "Jubmel" "oajvemus" "oajvve#oasse" ("oanedit" Der/Pass) "profehtta" "tjáledit" "tjuoladit" "värro#áltár" "ådå" ;
+LIST LEMMA1 = "ah" "almatja#bárnne" "Alme#rijkka" "áltár" "birrusij" "denára" "giládit" "gåhtjo#duvvá" "herlukvuohta" "iehkedis" "Jubmel" "oajvemus" "oajvve#oasse" ("oanedit" Der/Pass) "tjáledit" "tjuoladit" "värro#áltár" "ådå" ;
     # first dictionary form
 
-LIST LEMMA2 = "aj" "almatja#bárnep" "alme#rijkka" "álltár" ("biros" Ill) "denárra" ("gillat" Der1) "gåhttjot" ("herluk" A* Der4 Der/vuohta) "iehket" "jubmel" ("oajvve" N Superl) "oajvve#oases" "oane#duvvá" "profehta" ("tjuollat" Der1 Der/Pass) ("tjállet" V* TV Der1 Der/Pass) "värro#álltár" "ådås";
+LIST LEMMA2 = "aj" "almatja#bárnep" "alme#rijkka" "álltár" ("biros" Ill) "denárra" ("gillat" Der1) "gåhttjot" ("herluk" A* Der4 Der/vuohta) "iehket" "jubmel" ("oajvve" N Superl) "oajvve#oases" "oane#duvvá" ("tjuollat" Der1 Der/Pass) ("tjállet" V* TV Der1 Der/Pass) "värro#álltár" "ådås";
 
 REMOVE LEMMA2 IF (0 LEMMA1);
 
-LIST AMB-LEMMA1 = "identitehta"  ;
+LIST AMB-LEMMA1 = "identitehtta" "profehtta" ;
 
-LIST AMB-LEMMA2 = "identitehta" "identitæhtta"   ;
+LIST AMB-LEMMA2 = "identitehta" "identitæhtta" "profehta"  ;
 
 REMOVE:r614 AMB-LEMMA2 IF (0 AMB-LEMMA1 LINK NEGATE 0 (Sg Nom) LINK NOT 0 Px);
 
@@ -3108,6 +3110,8 @@ SELECT ("allak") IF (0 Der/vuohta)(1 ("tråvnnå")) ;
     # = V TV Ind Prs Sg2
     
 SELECT Imprt (-1 BOS)(0 ("gæhttjat")) ;
+REMOVE Imprt (-1 VFIN) ;
+
 
 SELECT (Imprt Sg2) IF (*-1 BOS OR (":") BARRIER WORD)(1 ("sjávot")); 
     ## Åro sjávot desik lav tjielggim.
@@ -3213,7 +3217,7 @@ SELECT GerII IF (*-1 AUX OR GerII-V BARRIER SV-BOUNDARY2)(0 (N Ess));
 # ==================== #
 
 # Special nouns:
-REMOVE ("giellat") (0 N LINK -1 Inf OR VFIN OR Gen) ;	
+REMOVE ("giellat") (0 N LINK -1 Inf OR VFIN OR Gen OR Sup) ;	
 REMOVE ("giellat") (-1 CC LINK -1 LANGUAGE) ;	
 REMOVE ("giellat") (1 CC LINK 1 LANGUAGE) ;	
 
