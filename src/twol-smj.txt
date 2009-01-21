@@ -34,12 +34,12 @@ FLAGINIT(<<HUNSPELL>>)
 
 Alphabet
  a á b c d e f g h i j k l m n ñ ń ŋ o p q			! small
- r s t u v w x y z å ä ø ö å æ:æ æ:ä %-
+ r s t u v w x y z å ä ø ö å æ:æ æ:ä ä %-
  é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý
  ç č đ ð š ŧ þ ß ª
 
  A Á B C D E F G H I J K L M N Ñ Ń Ŋ O P Q			! capital
- R S T U V W X Y Z Å Ä Ø Ö Å Æ:Æ Æ:Ä
+ R S T U V W X Y Z Å Ä Ø Ö Å Æ:Æ Æ:Ä Ä
  É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý
  Ç Č Đ Ð Š Ŧ þ
 
@@ -55,9 +55,9 @@ ENDKEEP
  e7:e i7:i o7:o o9:o u7:u z9:z   ! Morphophonemes  in sme, here temporarily due to common propernoun file
 
  h8:h g8:g m8:m n8:n		                    ! these are deleted in nom
- b9:b d9:d g9:g l9:l m9:m n9:n h9:h r9:r    	! these can not occur before #
+ b9:b d9:d g9:g l9:l m9:m n9:n h9:h r9:r        ! these can not occur before #
  k9:k t9:t s9:s p9:p                            ! Non-sámi cons clusters
- a9:a e9:e o9:o æ9:æ Æ9:Æ ä9:ä Ä9:Ä                  ! Wd-final foreign vow, and non-fluctuating æ/ä
+ a9:a e9:e o9:o æ9:æ Æ9:Æ ä9:ä Ä9:Ä             ! Wd-final foreign vow, and non-fluctuating æ/ä
 
  X1:0 X2:0 X3:0 X4:0 X5:0 X6:0 X7:0 X8:0 X9:0   ! Diacritics
  Q1:0 Q2:0 Q3:0 Q4:0 Q5:0 Q6:0 Q7:0 Q8:0 Q9:0   ! They trigger morphophono-
@@ -471,26 +471,33 @@ KEEPIF(SHORTCOMP)
 ENDKEEP
 
 ! All real sámi æ's are also ä's, but not in these contexts, where other rules will take over.
-"æ:ä Blocking"
- æ:ä /<= _ Cns:+ [ o: (%>:) (»:)                                            X4:                            j              |
-                   o:    (Cns:*) (%>:) (»:) [ Y1: | Y2: | Y3: | Y4: | Y5: | X7: | X4: (X8:) | [Q1:|Q4:] X4: X8:]          |
-                   o:     Cns:+ (%>:) (»:)                                  X5:                                           |
-                   a:     (%>:) (»:) WeG:                                                                                 |
-                   o:u   (%>:) (»:) (WeG:)                                             ([Q1:|Q4:] X5:      j n ([a:|i:])) |
-                   Vow:0 (%>:) (»:)                                                                   X9:                 ] ;
+!! Let us try without this rule. It requires steady æ marked as æ9 in propernoun-sme-lex.txt
+!! "æ:ä Blocking"
+!!  æ:ä /<= _ Cns:+ [ o:         (%>:) (»:)                                       X4:                            j              |
+!!                    o: (Cns:*) (%>:) (»:) [ Y1: | Y2: | Y3: | Y4: | Y5: | X7: | X4: (X8:) | [Q1:|Q4:] X4: X8:]                |
+!!                    o:  Cns:+  (%>:) (»:)                                                             X5:                     |
+!!                    a:         (%>:) (»:)  WeG:                                                                               |
+!!                    o:u        (%>:) (»:) (WeG:)                                           ([Q1:|Q4:] X5:      j n ([a:|i:])) |
+!!                    Vow:0      (%>:) (»:)                                                                 X9:                 ] ;
 ! Rationale:
 ! Stop change to ä in all Real Sámi contexts. The idea is to keep Swedish Snälla from becoming Lule Snelav etc.
+! The rule blocks change from Norwegian æ to Swedish ä, thus a more relevant example would be: Hægsæt - it should not become Hägsät
 
 
-!$mæddoQ1jn
-!$mätto0jn
+!€mæddoQ1jn
+!€mätto0jn
 
 !$mæddoQ1X5jn
 !$mättu00jn
 
-!$mæddoX4j
-!$mäddu0j
+!€mæddoX4j
+!€mäddu0j
 
+!$Hægsæt
+!$Hägsät
+
+!$Hærland
+!$Härland
 
 ! æ:e diphthong simplificaton
 
