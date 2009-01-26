@@ -1852,6 +1852,7 @@ REMOVE Px (-1 ("juohkka"));
 # V TV Inf = V* TV Actor N Sg Gen PxSg2 = V* TV Actor N Sg Nom PxSg2
 #          = V* TV Actor N Sg Acc PxSg2 
 
+REMOVE PxSg2 (*-1 VFIN BARRIER S-BOUNDARY LINK NOT 0 Sg2) ;  
         
 # PxSg3
 # N Sg Ela = N Sg Acc PxSg3 = N Sg Gen PxSg3 ( = N Sg Nom PxSg3)
@@ -2024,6 +2025,58 @@ SELECT Neg IF (1 ConNeg);
     ## I galga Härrav
 
 
+
+	# Verbgenitive - copied from sme-dis.rle
+	# ------------
+	
+# Background: 	
+# VGen is a bad lookalike for various finite forms. It is rare, and occurs in
+# special contexts.
+# Philosophy:
+# 1. We make rules selecting VGen where we feel safe to say we have found it.
+# 2. We remove all remaining VGen readings.
+
+# 1. Looking for VGen.
+
+
+#LIST VGENV = "bassit" "bivdit" "boahtit" "čierrut" "čuoigat" "čuoiggadit" "čuovvut" "fárret" "fitnat" "garrudit" "gálašit" "gállit" "gilljut" "girdit" "johtit" "jorgut" "luoibmat" "mannat" "mátkkoštit" "njahkalit" "njoammut" "riidet" "ruohttat" "sihkkelastit" "soabbut" "šloahtat" "váccašit" "vádjolit" "vájaldit" "vájuldit" "vánddardit" "vázzit" "viehkat" "viežžat" "vuodjat" "vuodjit" "vuojadit" "vuojašit" "vuolgit" "čilget" "čuorvut" "čurvet" "dadjat" "dárostit" "sámástit" "suomastit" "digáštallat" "hállat" "hoallat" "huikit" "hupmat" "juoigat" "lávlut" "logaldallat" "máidnut" "máinnašit" "muitalit" "savkalit" "skierbmut" "vástidit" "njurgut" "veahkehit" "vuoitit" "vuoššat" ;
+
+
+SELECT VGen IF (-1 ("gaskan"))(NEGATE 0 Der/Pass OR Ine OR Inf);
+	## Gaskan viessobasa bohte guossit.
+	## Gaskan bora viehkalin olggos.
+
+SELECT VGen IF (NEGATE *-2 Neg BARRIER VERB OR SV-BOUNDARY)(-1 ("lahka"))(NEGATE 0 Der/Pass OR N OR Inf);	
+	## Son lei lahka jámi.
+	## Dál mun lean lahka geargga.
+
+#SELECT VGen IF (*-1 VGENV BARRIER Neg OR SV-BOUNDARY LINK 0 V-MAIN)(0 VGENV LINK NOT 0 Der/Pass OR Loc OR Inf OR ("mannat"));	
+#SELECT:r1836 VGen IF (0 VGENV LINK NOT 0 Inf OR Loc OR Der/Pass OR ("mannat") OR ("fitnat"))(1 VGENV LINK 0 V-MAIN);
+#	## Máhtte vulggii njurggu čáppa nuohta.
+#	## Dat bođii čuoigga.
+#	## Mánná viegai ovtta čieru ruoktot.
+#	## Juoigga bođii ja garrut manai.
+#
+#SELECT:r1837 VGen IF (-1 COPULAS BARRIER NOT-ADV-PCLE)(0 VGENV LINK NOT 0 Der/Pass OR Loc OR Inf);  
+#	## Muhtumat ledje vácci, ja muhtumat ledje čuoigga. 
+#	
+#SELECT:r1838 VGen IF (-2 COPULAS)(-1 Indef OR Adv)(0 VGENV LINK NOT 0 Der/Pass OR Loc OR Inf);  	
+#	## Dát ađa lea uhccán vuošša. 
+#	
+#SELECT:r1839 VGen IF (NEGATE *-2 Neg BARRIER VERB OR SV-BOUNDARY)(0 VGENV LINK NOT 0 Der/Pass OR Loc OR Inf)(*1 COPULAS BARRIER SV-BOUNDARY OR Acc LINK 0 V-MAIN)(NEGATE *1 NPNH BARRIER S-BOUNDARY2)(NEGATE -1 BOS LINK 2 COMMA OR Acc);
+#	## Min vuoitti dat goitge lea.
+#	
+#SELECT:r1840 VGen IF (-1 CC LINK -1C VGen);
+#SELECT:r1841 VGen IF (1 CC LINK 1C VGen);
+#	## Olbmot bohte sihke vuoji ja vácci.
+#	## Sihke vácci ja vuoji bohte olbmot.
+
+# 2. Done that, now we remove whatever VGen was left.
+
+#REMOVE:r1842 VGen IF (0 (VGen));
+
+
+
 # ConNeg forms
 # ------------
 
@@ -2065,6 +2118,8 @@ SECTION
 
 SELECT (V Sg1) IF (*-1 (Pron Pers Sg1) BARRIER V);
 	## Mån didjij javlav:
+REMOVE (V Sg1) (-1 Refl LINK NOT 0 Sg1) ;
+
 
 # Sg2
 # ---
@@ -2087,6 +2142,8 @@ SELECT (V Sg3) (*-1 CC BARRIER Nom OR VERB LINK *-1 Sg3 BARRIER VERB OR Nom)(NOT
 # Sg3
 # ---
 SELECT (V Sg3)(*-1 Sg BARRIER Nom OR S-BOUNDARY)(0C V) ;
+SELECT (V Sg3)(-1 (Dem Sg) LINK -1 BOS) ;
+
 
 # Du1
 # ---
@@ -2714,6 +2771,12 @@ SELECT Pcle IF (*-1 BOS BARRIER NOT-PCLE)(1 ("dal"));
 # Genitive
 # ========
 
+# Gen as modifier
+REMOVE V (NOT *-1 VFIN BARRIER S-BOUNDARY)(0 Gen)(*1 (N Nom) BARRIER NPNH OR CC OR COMMA LINK *1 VFIN BARRIER V OR S-BOUNDARY) ;
+	## Giela árvo le bájnnám sámij giellamáhtov. 
+REMOVE Nom (NOT *-1 VFIN BARRIER S-BOUNDARY)(0 Gen)(*1 (N Nom) BARRIER NPNH OR CC OR COMMA LINK *1 VFIN BARRIER V OR S-BOUNDARY) ;
+	
+
 # Gen after Num
 
 SELECT (Sg Gen) IF (*-1 Num BARRIER NPNH LINK 0 Gen OR Nom)(NEGATE 0 Po OR CC OR PxSg3 OR Ill);
@@ -2730,7 +2793,7 @@ SELECT Gen IF (1C Po);
 	## Profehta baktu.
 	
 # Coordination:	
-SELECT Gen IF (1 (@CC-NP))(*2 Gen BARRIER NOT-AA LINK 1C Po);
+SELECT Gen IF (1 (@CC-NP))(*2 Gen BARRIER NPNHAI LINK 1C Po);
     ## Gåktus dijá åhpadiddje buktá tullárij ja suddárij siegen bårråt?	
 
 
