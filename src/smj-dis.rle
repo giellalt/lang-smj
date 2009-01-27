@@ -1076,13 +1076,16 @@ SET NOT-PUNCT-RIGHT = ALL - RIGHT ;
 
 SET CP = (Pron Interr) | (Pron Rel) ;
 
+LIST MO-MANge = "gåktu" "gånnå" (V Qst);
+ 
+SET MO = MO-MANge - ("man" Foc/ge) ; 
 
  
 LIST SEMICOL = "\;" ;
 LIST COL = ":" ;
 
 
-SET S-BOUNDARY = (Pron Interr) OR (Pron Rel) OR ("muhto") OR CS OR ("\;") OR (":") OR (".") ;
+SET S-BOUNDARY = (Pron Interr) OR (Pron Rel) OR MO OR ("muhto") OR CS OR ("\;") OR (":") OR (".") ;
 	# includes CP
 	# remember that (",") and CC are potential sentence boundaries, too
 	
@@ -1799,7 +1802,7 @@ LIST VERD-DER = "basádit" "giládit" "mannát" "njamádit" "njuolggidit" "njuov
 REMOVE VERD-DER IF (0 VERB-BASE);
 
 
-LIST NOT-ACR = "ah" "ájgge" "ja" "dat" "vas" "vaj" "ga" "ájn" "ij" "liehket" "mij" "man" "jahke" "na" "nav" ;
+LIST NOT-ACR = "ah" "aj" "ájgge" "ja" "dat" "vas" "vaj" "ga" "ájn" "ij" "liehket" "mij" "man" "jahke" "na" "nav" ;
 # "<ga>" ??
 
 LIST NOT-ABBR = "guhti" "ij" "dat" ;
@@ -1810,7 +1813,7 @@ REMOVE ABBR IF (0 NOT-ABBR) ;
 
 SELECT VFIN IF (*-1 S-BOUNDARY OR BOS OR (":") BARRIER VERB) (*1 S-BOUNDARY OR BOS OR (":") BARRIER VFIN) ;   
 
-SELECT VFIN IF (*-1 ("ja") OR ("de") BARRIER VERB LINK -1 COMMA) (*1 S-BOUNDARY OR BOS BARRIER VFIN) ;    
+SELECT VFIN IF (*-1 ("de") BARRIER VERB LINK -1 COMMA) (*1 S-BOUNDARY OR BOS BARRIER VFIN) ;    
  
 SELECT VFIN IF (*-1 S-BOUNDARY OR BOS)(0C V) (*1 COMMA BARRIER VFIN LINK 1 ("ja") OR ("de")) ; 
 
@@ -1819,6 +1822,7 @@ SELECT VFIN IF (*-1 S-BOUNDARY OR BOS)(0 Px) (*1 COMMA BARRIER VFIN LINK 1 ("ja"
 
 SELECT VFIN IF (*-1 Ger BARRIER NOT-ADV-PCLE) ;    
 
+#REMOVE VFIN (*-1 MO)(1C VFIN);
 
 #SELECT VFIN IF (*-1 COMMA) (*1 S-BOUNDARY OR COMMA ) ; # BARRIER VFIN) ;    
 
@@ -3012,6 +3016,9 @@ REMOVE Adv (-1 ("oasse"))(0 (Pron Ela)) ;
 # Accusative vs. Genitive
 # =======================
 
+# Sg Acc = Prs Sg1
+SELECT Acc (*-1 S-BOUNDARY BARRIER NPNH)(0 Sg1 LINK 1 VFIN LINK 0 V-TRANS-ACT-NOT-ACT LINK NOT *1 Acc BARRIER S-BOUNDARY OR COMMA);
+
 # Accusative is unique (-v), with one notable exception:
 # Accusative = genitive for personal pronouns (big issue)
 
@@ -3125,6 +3132,7 @@ SELECT (Pron Attr) IF (0C Pron)(*1C N BARRIER NOT-ADJ-PCLE OR ("gå"));
     	## Njuolggadusain ledje eará ge mearrádusat.
     	## Usjudallagåhtiv makkár sjokoládav dal oasstet.
 
+SELECT Indef (0 ("divna"))(1 Num) ;
 
 # =========== #
 # Numerals
@@ -3442,7 +3450,7 @@ SELECT Nom IF (0 N)(1 (@CC-NP))(2 TITLE)(3 Nom)(NEGATE 4 N);
 SELECT Nom IF (0 (@TITLE))(1C Nom);
 SELECT Sg IF (0 (@TITLE))(1 Prop LINK 0 Mal OR Fem OR Sur)(NEGATE 2 CC LINK 1 Prop LINK 0 Mal OR Fem OR Sur);
 
-REMOVE Gen IF (NEGATE 0 TIME OR ROUTE)(0 N)(NEGATE 1 N OR A OR Gen OR (Pron Indef) OR Num OR Po OR CC OR COMMA) ;
+REMOVE Gen IF (NEGATE 0 TIME OR ROUTE)(0 N)(NEGATE 1 N OR A OR Gen OR (Pron Indef) OR Num OR Po OR CC OR COMMA OR Ger) ;
     ## Nåv li divna buolva.
     
 REMOVE (N Sg Gen) IF (0 (N Pl Nom) LINK NOT 0 TIME OR ROUTE LINK *-1 COPULAS BARRIER Nom OR S-BOUNDARY OR VERB)(1 CC OR COMMA LINK NOT 1 Gen) ;
@@ -3499,8 +3507,17 @@ SELECT Nom IF (NEGATE *-1 Pr OR V)(0 Gen LINK NOT 0 Num)(NEGATE *1 Po OR V);
 # Genitive
 # ========
 
+# N Sg Gen = Prs Sg2 = VGen
+
+
 # N Sg Gen = N Pl Nom
 # -------------------
+
+SELECT Gen (0 N)(1C Ger) ;
+SELECT Gen (0 N)(1 CC LINK *1 Gen BARRIER NPNH LINK 1C Ger) ;
+	## adnet fáhkajguoskavasj terminologijav giela hámij ja struktuvra gåvådattijn.
+
+SELECT Gen (-1 ILLV)(0 Nom LINK 1 Ill);
 
 SELECT Gen IF (NEGATE -1 COPULAS LINK 0 Pl)(-1 ("soames"))(0 TIME)(NEGATE 1 COPULAS  LINK 0 Pl);
     ## .., javlaj Ámmá munji soames biejve.
