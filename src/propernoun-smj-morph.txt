@@ -65,8 +65,9 @@ LEXICON ACCRA-malsur
  +N+Prop+Mal:%>  ACCRADECL ;
  +N+Prop+Mal+Sg+Attr@U.Cap.Obl@:%>@U.Cap.Obl@ # ; !SUB
 
+ 
 LEXICON ACCRA-LOAN-plc ! Place names
- +N+Prop+Plc:%>  ACCRADECL ;
+ +N+Prop+Plc:%>  ACCRADECL-LOAN ;
  +N+Prop+Plc+Sg+Gen@U.Cap.Opt@:%>@U.Cap.Opt@ VUONAK ; !SUB
 
 
@@ -77,7 +78,7 @@ LEXICON ACCRA-plc ! Place names
 LEXICON ACCRA-LOAN-surplc ! Names that are both surnames and place names
  +N+Prop+Sur:%> ACCRADECL ;
  +N+Prop+Sur+Sg+Attr@U.Cap.Obl@:%>@U.Cap.Obl@ # ; !SUB
- +N+Prop+Plc:%> ACCRADECL ;
+ +N+Prop+Plc:%> ACCRADECL-LOAN ;
  +N+Prop+Plc+Sg+Gen@U.Cap.Opt@:%>@U.Cap.Opt@ VUONAK ; !SUB
 
 LEXICON ACCRA-surplc ! Names that are both surnames and place names
@@ -94,6 +95,13 @@ LEXICON ACCRADECL
 ! for the sake of the lexicon MARJA
  @U.Cap.Obl@ ACCRA-DC ;
  @U.Cap.Opt@ LASJ ; !SUB
+ 
+LEXICON ACCRADECL-LOAN
+! These sublexica are irrelevant for ACCRA, but added
+! for the sake of the lexicon MARJA
+ @U.Cap.Obl@ ACCRA-DC-LOAN ;
+ @U.Cap.Opt@ LASJ ; !SUB
+
 
 LEXICON ACCRA-DC
  +Sg+Nom: K ;
@@ -115,6 +123,28 @@ LEXICON ACCRA-DC
  +Pl+Com:Q4j K ; !Q4 to get e:i
  +Sg+Com:Q4jn K ;
  +Sg+Com:X5jn K ; !SUB Norgejn
+ 
+LEXICON ACCRA-DC-LOAN
+ +Sg+Nom: K ;
+ +Sg+Nom: R ;       
+ +Ess:n K ; !SUB
+ +Sg+Ill:Q4j K ; !SUB !Q4 to get e:i
+ +Sg+Gen: K ; !SUB
+ +Sg+Gen: R ; !SUB 
+ +Sg+Acc:v K ; !SUB
+ +Sg+Ine:n K ; !SUB
+ +Sg+Ela:s K ; !SUB
+ +Pl+Nom: K ; !SUB
+ +Pl+Gen:Q4j K ; !SUB !Q4 to get e:i
+ +Pl+Gen:Q4j K ; !SUB !Q4 to get e:i     
+ +Pl+Acc:Q4jt K ; !SUB
+ +Pl+Ill:Q4jda K ; !SUB
+ +Pl+Ine:Q4jn K ; !SUB
+ +Pl+Ela:Q4js K ; !SUB
+ +Pl+Com:Q4j K ; !SUB !Q4 to get e:i
+ +Sg+Com:Q4jn K ; !SUB
+ +Sg+Com:X5jn K ; !SUB !SUB Norgejn
+
  
 LEXICON BETFAGE-plc ! Like Accra but with sub: -ej, and NORM: -ij
  +N+Prop+Plc:%> BETFAGEDECL ;
@@ -301,7 +331,7 @@ LEXICON NYSTØ-surplc
 ! +N+Prop+Plc+Sg+Gen:%>a@U.Cap.Opt@ VUONAK ;
 
 LEXICON NYSTØ-LOAN-plc ! Place names
- +N+Prop+Plc:%>  NYSTØDECL ;
+ +N+Prop+Plc:%>  NYSTØDECL-LOAN ;
  +N+Prop+Plc+Sg+Gen:%>a@U.Cap.Opt@ VUONAK ; !SUB
 
 LEXICON NYSTØ-plc ! Place names
@@ -317,6 +347,13 @@ LEXICON NYSTØDECL
 ! @U.Cap.Obl@ NYSTØ-OBL ;
 ! @U.Cap.Opt@ NYSTØ-DC ;
 
+LEXICON NYSTØDECL-LOAN
+ @U.Cap.Obl@ NYSTØ-OBL-LOAN ;
+ @U.Cap.Opt@ LASJ ; !SUB
+! @U.Cap.Obl@ NYSTØ-OBL ; !SUB
+! @U.Cap.Opt@ NYSTØ-DC ; !SUB
+
+
 LEXICON NYSTØ-OBL 
  +Sg+Nom: K ;	
  +Sg+Nom: R ;			
@@ -328,6 +365,19 @@ LEXICON NYSTØ-OBL
  :%: NYOBL ; !SUB ! to NYOBL, optional delimiter marks. sub?
  :%- NYOBL ; !SUB
  :1 NYOBL ; !SUB
+ 
+LEXICON NYSTØ-OBL-LOAN
+ +Sg+Nom: K ;	
+ +Sg+Nom: R ;			
+! +Sg+Ela:%:s K ; ! Nystø:s  !SUB
+! +Sg+Ine:%:n K ; ! Nystø:s  !SUB
+ +Sg+Gen#:a# R ; !SUB !for placenames 
+ +Sg+Gen#:# R ; !SUB ! for placenames 
+     NYOBL ; !SUB
+ :%: NYOBL ; !SUB ! to NYOBL, optional delimiter marks. sub?
+ :%- NYOBL ; !SUB
+ :1 NYOBL ; !SUB
+
 
 !LEXICON NYSTØ-DC
 ! +laš:lažž DEARVVASLAS ;
@@ -410,10 +460,12 @@ LEXICON BERN-sur
  +N+Prop+Sur:%> BERNDECL ;
  +N+Prop+Sur+Sg+Attr@U.Cap.Obl@:%>@U.Cap.Obl@ # ; !SUB
 
+
 LEXICON BERN-LOAN-plc
 ! Different lexicon for place names. Bern.
- +N+Prop+Plc:%> BERNDECL ;
+ +N+Prop+Plc:%> BERNDECL-LOAN ;
  +N+Prop+Plc+Sg+Gen:%>a@U.Cap.Opt@ VUONAK ; !SUB
+
 
 LEXICON BERN-plc
 ! Different lexicon for place names. Bern.
@@ -457,6 +509,11 @@ LEXICON BERN
 LEXICON BERNDECL
  @U.Cap.Obl@ BERNUCASE ;
  @U.Cap.Opt@:@U.Cap.Opt@a LASJ ; !SUB
+ 
+LEXICON BERNDECL-LOAN
+ @U.Cap.Obl@ BERNUCASE-LOAN ;
+ @U.Cap.Opt@:@U.Cap.Opt@a LASJ ; !SUB
+
 
 LEXICON BERNUCASE ! Final foot structure (X) => Loc:as
  +Sg+Nom: K ;
@@ -478,6 +535,25 @@ LEXICON BERNUCASE ! Final foot structure (X) => Loc:as
  +Pl+Com:aj K ;
  +Sg+Com:ajn K ;
 
+LEXICON BERNUCASE-LOAN ! Final foot structure (X) => Loc:as
+ +Sg+Nom: K ; 
+ +Sg+Nom: R ;        
+ +Sg+Ill:aj K ; !SUB
+ +Ess:an K ; !SUB
+ +Sg+Gen:a K ; !SUB
+ +Sg+Gen:a R ; !SUB
+ +Sg+Acc:av K ; !SUB
+ +Sg+Ine:an K ; !SUB
+ +Sg+Ela:as K ; !SUB
+ +Pl+Nom:a K ; !SUB
+ +Pl+Gen:aj K ; !SUB
+ +Pl+Gen:aj R ; !SUB
+ +Pl+Acc:ajt K ; !SUB
+ +Pl+Ill:ajda K ; !SUB
+ +Pl+Ine:ajn K ; !SUB
+ +Pl+Ela:ajs K ; !SUB
+ +Pl+Com:aj K ; !SUB
+ +Sg+Com:ajn K ; !SUB
 
 
 
@@ -517,7 +593,7 @@ LEXICON LONDON-malplc
  +N+Prop+Mal:%> LONDONDECL ; 
 
 LEXICON LONDON-LOAN-plc
- +N+Prop+Plc:%> LONDONDECL ; 
+ +N+Prop+Plc:%> LONDONDECL-LOAN ; 
 
 LEXICON LONDON-plc
  +N+Prop+Plc:%> LONDONDECL ; 
@@ -542,6 +618,11 @@ LEXICON LONDONDECL
  @U.Cap.Obl@ LONDONUCASE ;
  @U.Cap.Opt@ LASJ ; !SUB
  
+LEXICON LONDONDECL-LOAN
+ @U.Cap.Obl@ LONDONUCASE-LOAN ;
+ @U.Cap.Opt@ LASJ ; !SUB
+
+ 
 LEXICON LONDONUCASE ! Final foot structure (X.) and (X..) => Loc:is
  +Sg+Nom: K ;
  +Sg+Nom: R ;        
@@ -564,6 +645,29 @@ LEXICON LONDONUCASE ! Final foot structure (X.) and (X..) => Loc:is
  +Pl+Ine:ijn K ;
  +Pl+Ela:ijs K ;
  +Pl+Com:ij K ;
+ 
+LEXICON LONDONUCASE-LOAN ! Final foot structure (X.) and (X..) => Loc:is
+ +Sg+Nom: K ;
+ +Sg+Nom: R ;        
+ +Sg+Gen:a K ; !SUB
+ +Sg+Gen:a R ;   !SUB            
+ +Sg+Acc:av K ; !SUB
+ +Sg+Ill:ij K ;    !SUB
+ +Sg+Ine:in K ; !SUB
+ +Sg+Ela:is K ; !SUB
+ +Sg+Ill:aj K ;    !SUB
+ +Sg+Ine:an K ;	   !SUB
+ +Sg+Ela:as K ;	   !SUB
+ +Sg+Com:ijn K ; !SUB
+ +Ess:in K ; !SUB
+ +Pl+Nom:a K ; !SUB
+ +Pl+Gen:ij K ; !SUB
+ +Pl+Gen:ij R ;      !SUB        
+ +Pl+Acc:ijt K ; !SUB
+ +Pl+Ill:ijda K ; !SUB
+ +Pl+Ine:ijn K ; !SUB
+ +Pl+Ela:ijs K ; !SUB
+ +Pl+Com:ij K ; !SUB
 
 
 !LEXICON NIILLAS-obj
