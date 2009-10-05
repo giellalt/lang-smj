@@ -368,6 +368,8 @@ LIST Plc = Plc ;
 LIST Sur = Sur ; 
 LIST Tit = Tit ;
 
+LIST HUM-PROP = Fem Mal Sur Tit ;
+
 # Other tags
 # ----------
 
@@ -1729,7 +1731,7 @@ REMOVE (Prop Pl) IF (0 (Prop Sg));
 
 REMOVE (Der/lasj A Attr) IF (0 NOT-DER LINK 0 (A Attr));
 REMOVE (Der/lasj A Attr) IF (0 NOT-DER LINK 0 (N));
-REMOVE N-DER IF (0 LEX-N LINK NOT 0 Ess);
+REMOVE N-DER IF (0 LEX-N LINK NOT 0 Ess OR (Der3 Actor));
 REMOVE (V* Actor N Sg Nom) IF (0 NOT-ACTOR);
 
 REMOVE (Actio N Sg Nom) IF (0 (N-NOT-ACTIO Sg Nom));
@@ -1816,7 +1818,7 @@ SELECT VFIN IF (*-1 S-BOUNDARY OR BOS OR (":") BARRIER VERB) (*1 S-BOUNDARY OR B
 
 SELECT VFIN IF (*-1 ("de") BARRIER VERB LINK -1 COMMA) (*1 S-BOUNDARY OR BOS BARRIER VFIN) ;    
  
-SELECT VFIN IF (*-1 S-BOUNDARY OR BOS)(0C V) (*1 COMMA BARRIER VFIN LINK 1 ("ja") OR ("de")) ; 
+SELECT VFIN IF (*-1 S-BOUNDARY OR BOS)(0 V) (*1 COMMA BARRIER VFIN LINK 1 ("ja") OR ("de")) ; 
 
 SELECT VFIN IF (*-1 S-BOUNDARY OR BOS)(0 Px) (*1 COMMA BARRIER VFIN LINK 1 ("ja") OR ("de")) ;    
    
@@ -2368,14 +2370,13 @@ REMOVE LCRD IF (NEGATE -1 (@ADVL))(*1 (@ADVL) BARRIER NPNH LINK 1 VFIN);
 # Adjectives
 # ==========
 
-
 # Attr pre-N
 # ----------
 
-SELECT Attr IF (0 (Prop Attr))(1 Mal OR Fem OR Sur);
+SELECT (Prop Attr) IF (1 Mal OR Fem OR Sur);
 	## Jesus Kristus
 
-SELECT Attr IF (-1 V-NOT-AUX OR N)(0 A)(1 N);
+SELECT (A Attr) IF (-1 V-NOT-AUX OR N)(1 N);
 	## Æjgádijda vaddá buorep diedojt.
 
 REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NEGATE 1 N);
@@ -2849,6 +2850,9 @@ SELECT Adv IF (0 ("ållu"))(1 (A Superl)) ;
 
 # Proper nouns
 # - - - - - - 
+SELECT Mal OR Fem ((0 Nom LINK -1 ("riegádit")) OR (0 Ill LINK 1 ("riegádit") LINK 1 Nom)) ;
+SELECT Mal OR Fem (0 Nom LINK -1 COPULAS LINK -1 HUMAN + Nom) ;
+
 # Johannes
 SELECT ("Johannes") IF (1 ("gástadiddje"));
 	## Johannes gástadiddje
@@ -2858,6 +2862,11 @@ REMOVE ("Valla") IF (-1 BOS OR PUNCT OR ("." CLB))(NEGATE 1 V-SG3 LINK 1 (Pron P
 	## Valla Jesus sunji javlaj:
 
 # Nouns
+
+# bigos
+SELECT ("bigos" Ill) IF (*0 ("boahtet") OR ("sjaddat") OR ("buktet") BARRIER NOT-ADV);
+SELECT V IF (0 ("boahtet"))(*0 ("bigos" Ill) BARRIER NOT-ADV);
+
 
 # gástadiddje
 SELECT ("gástadiddje") IF (-1 ("Johannes"));
@@ -3280,7 +3289,7 @@ SELECT Inf IF (-1 CC)(-2C Inf);
 # ---------
 # Gerund II = Actio N Ess
 
-SELECT GerII IF (*-1 AUX OR GerII-V BARRIER SV-BOUNDARY2)(0 (N Ess));
+SELECT GerII IF (*0 AUX OR GerII-V BARRIER SV-BOUNDARY2 OR VERB)(0 (N Ess));
     ## Viehka dåbelin lij stuorra svijnneällo guohtomin.
     ## Vuojnijma suv nástev ihtemin.
     # Select because it´s the only way to get rid of (Actio Ine) when the word is lexicalized. If it makes trouble, we have to make a rule for PLACE and other possible Ine. 
@@ -3323,6 +3332,8 @@ SELECT Prop IF (NEGATE *-1 BOS OR (":") OR (PUNCT LEFT) OR (Num Nom) BARRIER REA
 # Prop Sg Nom or Gen Sg or Pl Nom
 SELECT (N Prop Sg Nom) IF (-1 CS OR BOS)(*1 V-SG3 BARRIER NOT-AAPCLE);
     ## Maria lij bárnes riegádahttám.
+
+SELECT HUM-PROP (*-1 BOS OR (":") BARRIER WORD)(0 A)(1 COMMA LINK NOT *1 A BARRIER NOT-ADV) ;
 
 # Prop Sg Gen or Pl Nom
 REMOVE (N Prop Sg Nom) IF (-1 BOS)(1 N)(2 (V Sg3));
