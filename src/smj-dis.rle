@@ -873,7 +873,7 @@ LIST INE-NOUN = "ednam";
 LIST ESS-NOUN = "sáluk";
 LIST COM-NOUN = "aktijvuohta" ;
 
-LIST TITLE =  "gånågis" "profehtta" ;
+LIST TITLE =  "gånågis" "profehta" "profehtta" ;
 LIST ESS-ADVL-N = "bäjvádahka" "biegga" "dálkke" "dulvve" "njáhsto" "rássjo" "sjievnnjet"; 
 
 
@@ -996,7 +996,7 @@ LIST BUILDING = "dåhpe" "fáŋŋga#goahte" "gábmá" "goahte" "låvda#goahte" "
 
 LIST ROOM = "ladnja" "oadem#ladnja" ;
 
-LIST GEOGRAPHICAL-PLACE = "ednam" "jávrre" "várre";  
+LIST GEOGRAPHICAL-PLACE = "dáfo" "ednam" "gádde" "jávrre" "várre";  
 LIST POLITICAL-PLACE = "rijkka"; 
 LIST GENERAL-PLACE = "gahttun#suorre" "sijdda" "stáda";  
 
@@ -1127,7 +1127,7 @@ LIST ALLSYNTAG = (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@-FSUBJ)
                  (@NUM-PRON) (@OBJ) (@OPRED) (@PCLE) 
                  (@PCLE-COMPL) (@PROP>) (@PrcN>) (@PronN<) (@PronN>) 
                  (@QN<) (@QN>) (@SPRED)
-                 (@SUBJ) (@SUBJ-QH) (@TITLE) (@VOC) (@X); 
+                 (@SUBJ) (@SUBJ-QH) (@VOC) (@X); 
 
 
 
@@ -1206,7 +1206,7 @@ MAP (@PROP>) TARGET ABBR IF (-1 (Prop Mal) OR (Prop Fem))(1 (Prop Sur));
 	## Aslak A. Guttorm.  
 	
 # From sme-dis.rle:	
-ADD (@TITLE) TARGET TITLE IF (1 Prop LINK 0 Fem OR Mal OR Sur);
+#ADD (@TITLE) TARGET TITLE IF (1 Prop LINK 0 Fem OR Mal OR Sur);
 #ADD (@TITLE) TARGET PROFESSION IF (1 Prop LINK 0 Fem OR Mal OR Sur);
 #ADD (@TITLE) TARGET OFFICE IF (1 Prop LINK 0 Fem OR Mal OR Sur);
 		
@@ -1389,6 +1389,12 @@ MAP (@QN<) TARGET N IF (-1 Num)(1 ("velgulaš"));
 MAP (@QN<) TARGET (N Sg Acc) IF (-1 (Num Acc))(0 MEASURE)(1 (N Acc));
 	##
 
+MAP (@>N) TARGET TITLE + Nom IF (0 Attr OR Nom)(1 Prop LINK 0 Fem OR Mal OR Sur);
+
+	# A title is nominative if it has a Nom reading at all.
+SELECT (Sg Nom) IF (0 TITLE LINK NOT 0 ABBR LINK 1 Mal OR Fem OR Sur LINK NEGATE 1 CC LINK 1 Mal OR Fem OR Sur);
+	## Suv birra profehta Jesaja le hållam gå javlaj :
+SELECT Nom IF (0 TITLE LINK NOT 0 ABBR LINK 1 Mal OR Fem OR Sur);
 
 
 # Genitive mappings
@@ -1709,7 +1715,7 @@ MAP (@X) TARGET ALL ;
     # Table of Contents #
     # ----------------- #
 
-SELECT (@TITLE) IF (1 Prop LINK 0 Mal OR Fem OR Sur);
+#SELECT (@TITLE) IF (1 Prop LINK 0 Mal OR Fem OR Sur);
     ## Suv birra profehta Jesaja le hållam.
     
 SELECT Ill IF (0 ("gártjes" Ill));
@@ -3461,8 +3467,8 @@ SELECT Nom IF (0 N)(1 (@CC-NP))(2 TITLE)(3 Nom)(NEGATE 4 N);
 
 # N Sg Gen = N Pl Nom
 # ------------------- 
-SELECT Nom IF (0 (@TITLE))(1C Nom);
-SELECT Sg IF (0 (@TITLE))(1 Prop LINK 0 Mal OR Fem OR Sur)(NEGATE 2 CC LINK 1 Prop LINK 0 Mal OR Fem OR Sur);
+
+SELECT Gen (0 (Prop Nom) OR Refl LINK 1 GEOGRAPHICAL-PLACE) ;
 
 REMOVE Gen IF (NEGATE 0 TIME OR ROUTE)(0 N)(NEGATE 1 N OR A OR Gen OR (Pron Indef) OR Num OR Po OR CC OR COMMA OR Ger) ;
     ## Nåv li divna buolva.
