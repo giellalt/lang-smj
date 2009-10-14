@@ -328,11 +328,10 @@ LIST @APP-Pron< = @APP-Pron< ;
 LIST @APP>Pron = @APP>Pron ;
 LIST @APP-Num< = @APP-Num< ;
 LIST @APP-ADVL< = @APP-ADVL< ;
-LIST @CC = @CC ; 
 LIST @CVP = @CVP ;
 LIST @CNP = @CNP ;
 LIST @CMPND = @CMPND ; 
-LIST @CS = @CS ;
+LIST @COMP-CS< = @COMP-CS< ;
 LIST @HAB = @HAB ;
 LIST @HNOUN = @HNOUN ; 
 LIST @INTERJ = @INTERJ ; 
@@ -354,7 +353,6 @@ LIST @OPRED = @OPRED ;
 LIST @<OPRED = @<OPRED ;
 LIST @OPRED> = @OPRED> ;
 LIST @PCLE = @PCLE ; 
-LIST @PCLE-COMPL = @PCLE-COMPL ; 
 LIST @PrcN> = @PrcN> ; 
 LIST @PronN< = @PronN< ; 
 LIST @PronN> = @PronN> ; 
@@ -1676,6 +1674,8 @@ SELECT (Pers Gen) (0 Dem)(1 ("diehti")) ;
 
 SELECT (Pers Gen)(0 Dem)(1 (N Sg) LINK NOT 0 Gen) ;
 
+SELECT Pers (0 Dem) ;
+
 # =========================== #
 # Disambiguating subjunctions #
 # =========================== #
@@ -1694,7 +1694,9 @@ SELECT ("de" CC)(-1 COMMA OR VFIN) ;
 SELECT ("de" Adv)((-1 Pcle OR BOS) OR (1 COMMA)) ;
 SELECT ("de" Adv)((-1 NP-HEAD-NOM LINK -1 Pcle OR BOS) OR (1 COMMA)) ; #XX
     ## Bärggal de alla várráj suv doalvoj ja vuosedij sunji gájkka värálda rijkajt ja daj herlukvuodav ja javlaj.
-	
+
+
+
 	# gå
 	# - -
 
@@ -1765,7 +1767,6 @@ SELECT CS IF (0 ("danen"))(1 ("gå"));
 ##############################
 
 
-
 # Mappings of minor categories
 # ----------------------------
 
@@ -1814,6 +1815,32 @@ MAP (@VOC) TARGET (N Nom) IF (-4 BOS)(-3 (V Sg2))(-2 ("gå"))(-1 COMMA)(1 COMMA)
 	## It go, bártnážan, boađáše fargga ruoktot?
 
 ##############################
+# Mapping of COMP-CS<
+##############################
+
+MAP (@COMP-CS<) TARGET WORD (*-1 ("gå" CS) BARRIER VFIN OR S-BOUNDARY)((1 EOS) OR (1 COMMA LINK 1 CC OR CS)) ;
+    ## Ij gus diján le ienep árvvo gå dajn ?
+MAP (@COMP-CS<) TARGET WORD (*-1 ("vájk") BARRIER VFIN LINK -1 ("gå" CS) LINK *-1 Comp OR ("ienep") OR ("ietjá") OR ("ienebut") BARRIER VERB)(1 EOS) ;
+    ## Diján le ienep árvvo gå vájk man edna tsitsátjin.	
+
+
+MAP (@COMP-CS<) TARGET Adv (-1 ("gå" CS) LINK -1 Comp)(1 COMMA LINK 1 ("de")) ;
+	## Dál go ruhtadilli lea buoret go ovdal, de leat gávttis eanet čiŋat.
+
+MAP (@COMP-CS<) TARGET $$CASE (-1 ("gå" CS) LINK -1 $$CASE)(1 COMMA LINK 1 VFIN) ;
+    ## Guhti áhkástis sirrá ietjá oares gå skiegesvuodas , dahká vaj gállasjvuohta máhttá sujsta doajeduvvat.
+ 
+MAP (@COMP-CS<) TARGET (Pers Acc) (-1 ("gå" CS) LINK *-1 Comp OR ("ienep") OR ("ietjá") OR ("ienebut") BARRIER VERB)(1 COMMA LINK 1 VFIN) ;    
+    ## Guhti áhtjes jali iednes ähttsá ienebut gå muv , ij le munji árvvogis.
+
+MAP (@COMP-CS<) TARGET WORD (*-1 ("gå" CS) BARRIER VFIN OR S-BOUNDARY LINK *-1 Neg)(1 CC OR CS) ;
+    ## Ja aktak ij Bárnev dåbdå ietján gå Áhttjes , ja aktak ij Áhtjev dåbdå ietján gå Bárnnes ja gesi Bárnne sihtá suv bigodit .
+
+
+SELECT (@COMP-CS<) ;
+
+
+##############################
 ##### CC - CS - MAPPING ######
 ##############################
 
@@ -1836,6 +1863,8 @@ MAP (@CVP) TARGET CS ;
 # =========================	
 # CC- and CS-Disambiguation
 # =========================
+
+#XX - the rule is in use in the testcorpus
 
 REMOVE ("de" @CNP) ; #XX
 
@@ -1872,7 +1901,7 @@ SELECT @CVP IF (-1 ("diehti") LINK -1 Gen)(0 ("gå")); #XX
 SELECT @CNP IF (-1 Cmpnd); #XX
     ## Sávtsa- ja gájtsanáhkkegárvoj vádtsin, vánev gierddin, doarrádaláduvvin ja illastuvvin.
     
-SELECT @CNP IF (NEGATE *-1 VFIN OR AUX BARRIER S-BOUNDARY)(*-1 V OR N OR Adv OR A OR Pron); #X
+#SELECT @CNP IF (NEGATE *-1 VFIN OR AUX BARRIER S-BOUNDARY)(*-1 V OR N OR Adv OR A OR Pron); 
     ## Betleheman, Judean, dan diehti gå profehta le náv tjállám..
     # Not supposed to select "Ja de mun lean boahtán." 
 
@@ -1883,6 +1912,9 @@ SELECT @CNP IF (-1C NP-HEAD-NOM)(*1C NP-HEAD-NOM BARRIER NPNHA);
 
 SELECT @CNP IF (-1C NP-HEAD-ACC)(*1C NP-HEAD-ACC BARRIER NPNHA);
     ## Bärggal de alla várráj suv doalvoj ja vuosedij sunji gájkka värálda rijkajt ja daj herlukvuodav ja javlaj.
+
+SELECT @CVP IF (-1 (@COMP-CS<))(1 Rel LINK *1 VFIN BARRIER S-BOUNDARY);
+    ## Ja aktak ij Bárnev dåbdå ietján gå Áhttjes , ja aktak ij Áhtjev dåbdå ietján gå Bárnnes ja gesi Bárnne sihtá suv bigodit .
 
 #SELECT @CNP IF (-1 (@X) OR N)(NOT 0 ACR)(*1 N BARRIER NPNHA LINK NOT 1 VFIN);
     ## Vuolgij Nasarets ja årruj Kafarnaumij, jávrregáddáj, Sebulona ja Naftali guovlojn.
@@ -1900,7 +1932,7 @@ SELECT @CVP IF (1 CS); #XX
 SELECT @CVP IF (*-1 VFIN BARRIER S-BOUNDARY OR CC)(*1 VFIN BARRIER S-BOUNDARY OR CC); #XX
     ## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj.
 
-SELECT @CVP IF (0 CC)(1C VFIN); #X
+SELECT @CVP IF (0 CC)(1C VFIN); 
     # A secure finite verb after it.
     ## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj: "Josef, Davida bárnne, ala balá...
 
@@ -1930,7 +1962,7 @@ SELECT @CVP IF (-2 BOS)(-1 PUNCT)(0 CC);
 SELECT @CVP IF (*-1C VFIN BARRIER S-BOUNDARY2)(*1C VFIN BARRIER S-BOUNDARY2); #XX
     ## Josiaj riegádij Jojakin vieljatjij dan ájge gå álmmugav vuolgadin Babylonaj.
 
-SELECT @CVP IF (*1 AUX LINK *1C NOT-VFIN); #X
+SELECT @CVP IF (*1 AUX LINK *1C NOT-VFIN); 
 
 SELECT @CVP IF (*1 AUX LINK *1 Rel OR MANNE LINK *1 AUX LINK *1 NOT-VFIN LINK 0 AUX LINK *1 NOT-VFIN);
     # The relative sentence version
@@ -1940,7 +1972,7 @@ SELECT @CVP IF (*-2 BOS BARRIER COMMA)(-1 COMMA);
     # Embedded clause with initial adverbial:
     ## Niejdda sjaddá iesselissan ja bárnev riegádahttá, ja suv gåhttju Immanuelin
 
-SELECT @CVP IF (NEGATE -1 ADVLCASE OR Adv)(*1 ADVLCASE OR Adv BARRIER NPNH LINK 1 VFIN); #X
+SELECT @CVP IF (NEGATE -1 ADVLCASE OR Adv)(*1 ADVLCASE OR Adv BARRIER NPNH LINK 1 VFIN); 
     ## Elihudaj riegádij Elasar, Elasaraj Mattan, Mattanij Jakob, ja Jakobij riegádij Josef, Maria ålmåj.
 
 SELECT CS IF (0 ("vaj"));
@@ -3444,10 +3476,10 @@ REMOVE Attr IF (0 (Prop Mal) OR (Prop Fem))(0 Nom)(NEGATE 1 (N Prop Sur) OR (N P
 # Accusative or genitive
 # ----------------------
 
-SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 OR Acc LINK NOT 0 ELAV LINK NOT *-1 Acc BARRIER SV-BOUNDARY2)(0 (N Gen) OR (N Nom) LINK NOT 0 PrfPrc)(NEGATE 1 (N Acc));
-SELECT Acc IF (0 N LINK NOT 0 V)(*1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 LINK NOT *1 Acc BARRIER SV-BOUNDARY2);
-SELECT Acc IF (0 (N Gen) OR (N Acc))(*1 V-TRANS-ACT BARRIER SV-BOUNDARY2 LINK 0 (Actio Ela) LINK NOT *1 Acc BARRIER SV-BOUNDARY2);
-    ## Ale balá Mariav áhkkán válldemis.
+#SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 OR Acc LINK NOT 0 ELAV LINK NOT *-1 Acc BARRIER SV-BOUNDARY2)(0 (N Gen) OR (N Nom) LINK NOT 0 PrfPrc)(NEGATE 1 (N Acc));
+#SELECT Acc IF (0 N LINK NOT 0 V)(*1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 LINK NOT *1 Acc BARRIER SV-BOUNDARY2);
+#SELECT Acc IF (0 (N Gen) OR (N Acc))(*1 V-TRANS-ACT BARRIER SV-BOUNDARY2 LINK 0 (Actio Ela) LINK NOT *1 Acc BARRIER SV-BOUNDARY2);
+#    ## Ale balá Mariav áhkkán válldemis.
 
 
 # Nouns versus adjectives
