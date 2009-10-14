@@ -312,7 +312,7 @@ LIST @-FAUXV = @-FAUXV ;
 LIST @-FMAINV = @-FMAINV ; 
 LIST @-FSUBJ = @-FSUBJ ;
 
-SET FMAINV = @-FMAINV | @+FMAINV ;
+SET FMAINV = @-FMAINV OR @+FMAINV ;
 
 LIST @ADVL = @ADVL ;
 LIST @>ADVL = @>ADVL ;
@@ -526,18 +526,18 @@ LIST V-PL3 = (V  Ind Prs Pl3) (V Ind Prt Pl3) (V Cond Prs Pl3)
 # Some subsets of the VFIN sets
 # - - - - - - - - - - - - - - -
 
-SET V-DU = V-DU1 | V-DU2 | V-DU3 ;
-SET V-PL = V-PL1 | V-PL2 | V-PL3 ;
+SET V-DU = V-DU1 OR V-DU2 OR V-DU3 ;
+SET V-PL = V-PL1 OR V-PL2 OR V-PL3 ;
 
-SET V-DU-PL = V-DU1 | V-DU2 | V-DU3 | V-PL1 | V-PL2 | V-PL3 ;
+SET V-DU-PL = V-DU1 OR V-DU2 OR V-DU3 OR V-PL1 OR V-PL2 OR V-PL3 ;
 
 SET V-NOT-SG1 = VFIN-NOT-IMP - V-SG1 ;
 
-SET V-NOT-SG3 = V-SG1 | V-SG2 | V-DU1 | V-DU2 | V-DU3 |
-                V-PL1 | V-PL2 | V-PL3 ;
+SET V-NOT-SG3 = V-SG1 OR V-SG2 OR V-DU1 OR V-DU2 OR V-DU3 OR
+                V-PL1 OR V-PL2 OR V-PL3 ;
 
-SET V-1-2 = V-SG1 | V-SG2 | V-DU1 | V-DU2 | V-PL1 | V-PL2 ;
-SET V-3   = V-SG3 | V-DU3 | V-PL3 ;
+SET V-1-2 = V-SG1 OR V-SG2 OR V-DU1 OR V-DU2 OR V-PL1 OR V-PL2 ;
+SET V-3   = V-SG3 OR V-DU3 OR V-PL3 ;
 
 # Sets consisting of forms of "liehket" (these ones need to be rewritten)
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -561,11 +561,11 @@ LIST MIJPERS = (Pron Pers Pl1 Nom) ;
 LIST DIJ = (Pron Pers Pl2 Nom) ;
 LIST SIJ = ("son" Pron Pers Pl3 Nom) ;
 
-SET PPRON-NOM-NOT-DAT = MUN | DON | SON | MÅJ | DÅJ | SÅJ | MIJPERS | DIJ | SIJ ;
+SET PPRON-NOM-NOT-DAT = MUN OR DON OR SON OR MÅJ OR DÅJ OR SÅJ OR MIJPERS OR DIJ OR SIJ ;
 
-SET PPRON-DU-PL = MÅJ | DÅJ | SÅJ | MIJPERS | DIJ | SIJ ;
+SET PPRON-DU-PL = MÅJ OR DÅJ OR SÅJ OR MIJPERS OR DIJ OR SIJ ;
 
-SET PPRON-NOT-SIJ = MUN | DON | SON | MÅJ | DÅJ | SÅJ | MIJPERS | DIJ ;
+SET PPRON-NOT-SIJ = MUN OR DON OR SON OR MÅJ OR DÅJ OR SÅJ OR MIJPERS OR DIJ ;
 
 LIST PPRON-GEN = (Sg1 Gen) (Sg2 Gen) (Sg3 Gen) (Du1 Gen) (Du2 Gen) (Du3 Gen) 
 	(Pl1 Gen) (Pl2 Gen) (Pl3 Gen);
@@ -606,7 +606,7 @@ SET NOT-ADV-PCLE-VFIN = WORD - Adv - Pcle - VFIN ;
 
 SET LEX-ADV = Adv - (A*) ;
 
-SET ADVERBIAL = Adv | Ill | Ine | Ela | Com | Ess ;
+SET ADVERBIAL = Adv OR Ill OR Ine OR Ela OR Com OR Ess ;
 
 SET NOT-ADV-N = WORD - Adv - N;
 SET NOT-ADV-INDEF = WORD - Adv - Indef ;
@@ -629,7 +629,7 @@ LIST NEGFOC = (Neg Foc) ;
 LIST XGU = "dagu" "degu" ;
   # compounds
 
-SET CRD = COMMA | CC | ("/") | XGU ; 
+SET CRD = COMMA OR CC OR ("/") OR XGU ; 
 	# coordinators
 	
 SET LCRD = (@CNP) ;
@@ -651,7 +651,7 @@ SET GCRD = (@CVP) ;
                      # "Joba" "Johan" "Liikka" "Mai" "Mannes" "Mo" "Mot" "Naba"
                      # "Nan" "Oktan" "Sierra" "Sokka" "Villa" ;
 
-#SET ADV-NOT-OTHER-POS = ADV-NOT-VERB | ADV-NOT-NOUN | ADV-NOT-NAMES ;
+#SET ADV-NOT-OTHER-POS = ADV-NOT-VERB OR ADV-NOT-NOUN OR ADV-NOT-NAMES ;
 
 
 # Sets of elements with common syntactic behaviour
@@ -672,7 +672,7 @@ LIST AUX-OR-MAIN = "ájggot" "bessat" "bierrit" "buktet" "galggat" "hálijdit" "
  # These verbs can take arguments, so they do not belong in the AUX group, 
  # but they are nevertheless mapped to (@+FAUXV). 
 
-SET AUX = COPULAS | Neg | MOD-ASP | AUX-OR-MAIN ;
+SET AUX = COPULAS OR Neg OR MOD-ASP OR AUX-OR-MAIN ;
 
 SET V-NOT-AUX = V - AUX ;  # The set of verbs that cannot be auxiliaries. 
 			   # Does not include AUX-OR-MAIN.
@@ -681,7 +681,7 @@ SET VFIN-NOT-AUX = VFIN - AUX ;
 
 LIST GerII-V = "ájttsat" "gullat" "gullát" "mannat" "tjuodtjot" "tjåhkkåhit" "vuojnnet" "vællahit" ;
 
-#SET V-MAIN = V - COPULAS - Neg - MOD-ASP | ("orrut") ;  # The set of verbs that can be 
+#SET V-MAIN = V - COPULAS - Neg - MOD-ASP OR ("orrut") ;  # The set of verbs that can be 
 #							# main verbs. Includes 
 #							# AUX-OR-MAIN.
 #
@@ -756,7 +756,7 @@ LIST INTELLECTUAL-ACTIVITY-V = "usjudit" ;
 # More to come:
 LIST VEHICLE-PLACE-V = "ánodit" "gahtjat" "nisskot" "oadtjot" "suoládit" "valldet" ;   
 LIST VEHICLE-TOOL-V = "buktet" "doalvvot" ;    
-SET HUMAN-SOURCE-V = VEHICLE-PLACE-V | VEHICLE-TOOL-V ;
+SET HUMAN-SOURCE-V = VEHICLE-PLACE-V OR VEHICLE-TOOL-V ;
 # The two subsets differ in their choice of case for members of VEHICLE, but both choose locative for members of the set HUMAN (with the thematic role source)
 
 #LIST ABSTR-ENTITY-COM-V 
@@ -772,9 +772,9 @@ LIST PLACE-V = "tjuodtjot" "tjællot" "tsæggahit" "válldut" "vuojnnet" "vuojnn
 #LIST STATE-V = "eallit" ;
 #LIST REM-WITH-PARTS = "gaikkihit" ; # Belongs to the DYNAMIC-V. They also take PARTS in comitative case.   
 
-SET DYNAMIC-V = ACTIVITY-V | MOVEMENT-V | VERBAL-ACTIVITY-V | ABSTR-ACTIVITY-V | BODY-ACTIVITY-V | INTELLECTUAL-ACTIVITY-V | HUMAN-SOURCE-V ;
+SET DYNAMIC-V = ACTIVITY-V OR MOVEMENT-V OR VERBAL-ACTIVITY-V OR ABSTR-ACTIVITY-V OR BODY-ACTIVITY-V OR INTELLECTUAL-ACTIVITY-V OR HUMAN-SOURCE-V ;
 
-#SET DYNAMIC-V = ACTIVITY-V | MOVEMENT-V | VERBAL-ACTIVITY-V | ABSTR-ACTIVITY-V | BODY-ACTIVITY-V | INTELLECTUAL-ACTIVITY-V | ABSTR-ENTITY-COM-V | HUMAN-SOURCE-V | REM-WITH-PARTS ;
+#SET DYNAMIC-V = ACTIVITY-V OR MOVEMENT-V OR VERBAL-ACTIVITY-V OR ABSTR-ACTIVITY-V OR BODY-ACTIVITY-V OR INTELLECTUAL-ACTIVITY-V OR ABSTR-ENTITY-COM-V OR HUMAN-SOURCE-V OR REM-WITH-PARTS ;
 # According to the rules choosing LOC or Com, dynamic-verbs are not connected to TOOLS, ABSTR-TOOLS or CONCEPT in (Pl LOC).
 # Human becomes either LOC or Com depending on its subset membership.
 
@@ -799,35 +799,35 @@ SET HNOUN = N - Cmpnd ;
 SET HNOUN-NOM = (N Nom) - Cmpnd ;
 SET N-NOT-GEN = N - (N Gen) ;
 
-SET NP-HEAD        = Pron | HNOUN ;
-SET NP-HEAD-SG     = (Pron Sg) | (Pron Sg3) | (N Sg) - Cmpnd;
-SET NP-HEAD-PL     = (Pron Pl) | (Pron Pl3) | (N Pl) - Cmpnd;
-SET NP-HEAD-SG-NOM = (Pron Sg Nom) | (Pron Sg3 Nom) | (N Sg Nom) - Cmpnd;
-SET NP-HEAD-PL-NOM = (Pron Pl Nom) | (Pron Pl3 Nom) | (N Pl Nom) - Cmpnd;
-SET NP-HEAD-NOM    = NP-HEAD-SG-NOM | NP-HEAD-PL-NOM;
-SET NP-HEAD-ACC    = (Pron Acc) | (N Acc) - Cmpnd;
-SET NP-HEAD-GEN    = (Pron Gen) | (N Gen) - Cmpnd;
+SET NP-HEAD        = Pron OR HNOUN ;
+SET NP-HEAD-SG     = (Pron Sg1) OR (Pron Sg2) OR (Pron Sg3) OR (N Sg) - Cmpnd;
+SET NP-HEAD-PL     = (Pron Pl1) OR (Pron Pl2) OR (Pron Pl3) OR (N Pl) - Cmpnd;
+SET NP-HEAD-SG-NOM = (Pron Sg1 Nom) OR (Pron Sg2 Nom) OR (Pron Sg3 Nom) OR (N Sg Nom) - Cmpnd;
+SET NP-HEAD-PL-NOM = (Pron Pl1 Nom) OR (Pron Pl2 Nom) OR (Pron Pl3 Nom) OR (N Pl Nom) - Cmpnd;
+SET NP-HEAD-NOM    = NP-HEAD-SG-NOM OR NP-HEAD-PL-NOM;
+SET NP-HEAD-ACC    = (Pron Acc) OR (N Acc) - Cmpnd;
+SET NP-HEAD-GEN    = (Pron Gen) OR (N Gen) - Cmpnd;
 
 
 # The PRE-NP-HEAD family of sets
 # - - - - - - - - - - - - - - - -
 
-SET PRE-NP-HEAD = (Prop Attr) | (Prop @>N) | (A Attr) | ("buorre") | (Pron Pers Gen) | (N Gen) | 
-         Num | Cmpnd | CC | (Pron Dem) | (Pron Refl Gen) | (Pron Indef) | 
-         (PrfPrc @>N) | (PrfPrc @PrcN>) | PrsPrc | (A Ord) ;
-         # | (Ill LINK 1 (PrfPrc @AN>)) | (Com LINK 1 (PrfPrc @AN>)) | (LOC LINK 1 (PrfPrc @AN>))
+SET PRE-NP-HEAD = (Prop Attr) OR (Prop @>N) OR (A Attr) OR ("buorre") OR (Pron Pers Gen) OR (N Gen) OR 
+         Num OR Cmpnd OR CC OR (Pron Dem) OR (Pron Refl Gen) OR (Pron Indef) OR 
+         (PrfPrc @>N) OR (PrfPrc @PrcN>) OR PrsPrc OR (A Ord) ;
+         # OR (Ill LINK 1 (PrfPrc @AN>)) OR (Com LINK 1 (PrfPrc @AN>)) OR (LOC LINK 1 (PrfPrc @AN>))
          # The strict version of items that can only be premodifiers, not parts of the predicate
          
-SET V-PRE-NP = PrfPrc | PrsPrc | Actor |  Actio | (V A) | (Ind Prs Sg3) | (Ind Prs Sg1) | (Imprt Prs Du2) ;
+SET V-PRE-NP = PrfPrc OR PrsPrc OR Actor OR  Actio OR (V A) OR (Ind Prs Sg3) OR (Ind Prs Sg1) OR (Imprt Prs Du2) ;
     # to be used together with PRE-NP-HEAD before @PrcN> is disambiguated
          
-SET NP-MEMBER  = PRE-NP-HEAD | N ;
-SET PRE-A-N   = (Pron Pers Gen) | (Pron Indef) | Num | (A Ord) | (Pron Dem) | (Pron Refl Gen) ;
+SET NP-MEMBER  = PRE-NP-HEAD OR N ;
+SET PRE-A-N   = (Pron Pers Gen) OR (Pron Indef) OR Num OR (A Ord) OR (Pron Dem) OR (Pron Refl Gen) ;
 SET NOT-PRE-A-N = WORD - PRE-A-N ;
 LIST PUNCT-LEFT = (PUNCT LEFT) ;
 LIST PUNCT-RIGHT = (PUNCT RIGHT) ;
 
-LIST PRE-APP   = COMMA | PUNCT-LEFT | PRE-NP-HEAD ; # This set ist not only for what can
+SET PRE-APP   = COMMA OR PUNCT-LEFT OR PRE-NP-HEAD ; # This set ist not only for what can
                             # stand in front of appositions but also
                             # postmodifiers.
 
@@ -836,7 +836,7 @@ LIST PRE-APP   = COMMA | PUNCT-LEFT | PRE-NP-HEAD ; # This set ist not only for 
 
 # There must be a sensible naming convention for these sets...
 # Most strict BARRIERs...
-SET NPNH     = WORD - PRE-NP-HEAD | ABBR ;       # NPNH  = "NOT-PRE-NP-HEAD" 
+SET NPNH     = WORD - PRE-NP-HEAD OR ABBR ;       # NPNH  = "NOT-PRE-NP-HEAD" 
 SET NPNHV    = WORD - PRE-NP-HEAD - V-PRE-NP ;    # including possible verbal premodifiers 
 SET NPNHA    = WORD - PRE-NP-HEAD - Adv ;        # NPNHA = "NOT-PRE-NP-HEAD-OR-ADV"
 SET NPNHAV   = WORD - PRE-NP-HEAD - Adv - V-PRE-NP ; # including possible verbal premodifiers
@@ -859,9 +859,9 @@ SET NAPP     = WORD - PRE-APP ;
 
 SET NOT-N = WORD - N ;
 SET NOT-NA = WORD - N - A ;
-SET NOT-NP = ConNeg | Inf | Pcle | Interj | CS ; # The set NP-BOUNDARY is bigger. 
+SET NOT-NP = ConNeg OR Inf OR Pcle OR Interj OR CS ; # The set NP-BOUNDARY is bigger. 
 SET NPROP = N - PROP ;
-SET NOT-COMMA = CLB - COMMA | PUNCT-LEFT | PUNCT-RIGHT ;
+SET NOT-COMMA = CLB - COMMA OR PUNCT-LEFT OR PUNCT-RIGHT ;
 
 
 
@@ -917,7 +917,7 @@ LIST MANNU = "ådå-jak-#mánno" "ådåjakmánno" "guovvamánno"  "snjuktjamánn
 LIST BEAIVI = "mánnodak" "dijstak" "gasskavak" "duorastak" "bierjjedak" "lávvodak" "ájllek" "basse";
 
 
-SET TIME = MANNU | VAHKKU | BEAIVI | AJGGI ;
+SET TIME = MANNU OR VAHKKU OR BEAIVI OR AJGGI ;
   # Do not add AIGODAT, it has some other characteristics in some cases.
 
 SET NOTIME = N - TIME ;
@@ -970,7 +970,7 @@ LIST PROFESSION = "guolle#bivdde" ;
 LIST OFFICE = "stáhta#ministar" ;
 LIST ROLE = "årro" ;
 
-SET HUMAN = HUMAN-INDIVIDUAL | HUMAN-GROUP | PROFESSION | ROLE | OFFICE ;
+SET HUMAN = HUMAN-INDIVIDUAL OR HUMAN-GROUP OR PROFESSION OR ROLE OR OFFICE ;
 
 LIST BODY = "giehta" "juolgge" "tjalmme" ;
 LIST ANIMAL = "guokkardiddje" "judos" "sávttsa" "vierttsa" ;
@@ -978,9 +978,9 @@ LIST HUNT-ANIMAL = "rievsak" ;
 LIST BOAZU = "boatsoj" ;
 LIST FISH = "guolle" ;
 
-SET ALL-ANIMALS = ANIMAL | HUNT-ANIMAL | BOAZU | FISH ;
+SET ALL-ANIMALS = ANIMAL OR HUNT-ANIMAL OR BOAZU OR FISH ;
 
-SET ANIMATE = HUMAN | ALL-ANIMALS ;
+SET ANIMATE = HUMAN OR ALL-ANIMALS ;
 
 #PLANT
 
@@ -999,15 +999,15 @@ LIST ABSTR-TOOLS = "ássje" "duobbmo" "musihkka" "varra" "vuornes";
 LIST ROOM-VEHICLE = "bijlla" "hiergge" "vanás";
 LIST SMALL-VEHICLE = "syhkal" ; 
 
-SET VEHICLE = ROOM-VEHICLE | SMALL-VEHICLE ;
+SET VEHICLE = ROOM-VEHICLE OR SMALL-VEHICLE ;
 
 LIST TEXT = "girjje" ;
 LIST ABSTR-TEXT = "álmmuk#lávla" "álmmuk#subtsas" "lávla" "subtsas" ; 
 # eaktu, gažaldat, mearrádus
 
 #WATER
-#OBJECT = PARTS | SHOE | FOOD | TEXT
-#ENTITY = TOOLS | OBJECT | VEHICLE
+#OBJECT = PARTS OR SHOE OR FOOD OR TEXT
+#ENTITY = TOOLS OR OBJECT OR VEHICLE
 
 LIST BUILDING = "dåhpe" "fáŋŋga#goahte" "gábmá" "goahte" "låvda#goahte" "oases" "synagoga" ;
 
@@ -1020,14 +1020,14 @@ LIST GENERAL-PLACE = "gahttun#suorre" "sijdda" "stáda";
 LIST CONCRETE-ROUTE = "gahttun" "njálmme#rájgge" "uksa#rájgge" "væddja";
 LIST ABSTR-ROUTE = "mijlla" ;
 
-SET ROUTE = CONCRETE-ROUTE | ABSTR-ROUTE ; 
+SET ROUTE = CONCRETE-ROUTE OR ABSTR-ROUTE ; 
 
-SET PLACE = GEOGRAPHICAL-PLACE | POLITICAL-PLACE | GENERAL-PLACE | ROUTE | BUILDING | ROOM ;
+SET PLACE = GEOGRAPHICAL-PLACE OR POLITICAL-PLACE OR GENERAL-PLACE OR ROUTE OR BUILDING OR ROOM ;
 
 LIST ORGANIZATION = (Prop Org) "giddagas" "girku" ;
 
 #FYLKA
-#NATION = NATION-NOT-NORGA | NORGA
+#NATION = NATION-NOT-NORGA OR NORGA
 
 #STATE ("dearvvas" Der/vuohta) "gaskavuohta" "miella#dearvvašvuohta" "ráfi" "váivi" "veahkki";
 
@@ -1037,7 +1037,7 @@ LIST CONCEPT = "gieresvuohta" "guojmme#gieresvuohta" "mujtto" "måråj" "oame#d�
 
 #LIST ACTIVITY = "čađaheapmi" "dearvvašvuođa#dutkan" "fuolaheapmi" "geahčastat" "guorahallan" "šiehtadallan" ;
 
-#ABSTRACT = ABSTR-ENTITY | CONCEPT | ACTIVITY 
+#ABSTRACT = ABSTR-ENTITY OR CONCEPT OR ACTIVITY 
 
 LIST SITUATION = "dille" ;
 
@@ -1046,9 +1046,9 @@ LIST INDUSTRY = "æládus#tjærdda" ;
 LIST EDUCATION = "skåvlla" "vuodo#skåvllå" ;
 LIST EVENT = "aktisasj#tjåhkanibme" "tjåhkanibme" ; 
 
-SET ABSTR-PLACE = ORGANIZATION | INSTITUTION | EVENT | EDUCATION | INDUSTRY | SITUATION ;
+SET ABSTR-PLACE = ORGANIZATION OR INSTITUTION OR EVENT OR EDUCATION OR INDUSTRY OR SITUATION ;
 
-SET ACTOR = ANIMATE | INSTITUTION | ORGANIZATION ;
+SET ACTOR = ANIMATE OR INSTITUTION OR ORGANIZATION ;
 
 LIST LANGUAGE = "sáme#giella" ;
 
@@ -1094,7 +1094,7 @@ SET NOT-PUNCT-RIGHT = ALL - RIGHT ;
 # Border sets and their complements
 # ---------------------------------
 
-SET CP = (Pron Interr) | (Pron Rel) ;
+SET CP = (Pron Interr) OR (Pron Rel) ;
 
 LIST MO-MANge = "gåktu" "gånnå" (V Qst);
  
@@ -1114,21 +1114,21 @@ SET S-BOUNDARY2 = (Pron Interr) OR (Pron Rel) OR ("muhto") OR CS OR ("\;") OR ("
 	# this one includes @CVP, the conjunction, which actually connects two sentences (each with a finite verb) to each other, and not @CNP, which coordinates internal NP-/AdvP-/AP ... coordination
 	# To be used only AFTER the disambiguation of @CVP and @CNP taking place in the chapter right before "Disambiguatig pronouns"
 
-SET NP-BOUNDARY = BOS | EOS | REALCLB | VFIN | Inf | (Actio Ess) | ConNeg | VGen | Sup | PPRON-NOT-GEN | Recipr | Po | Pr | Pcle | ("jed") | Interj | CS | CP ;
+SET NP-BOUNDARY = BOS OR EOS OR REALCLB OR VFIN OR Inf OR (Actio Ess) OR ConNeg OR VGen OR Sup OR PPRON-NOT-GEN OR Recipr OR Po OR Pr OR Pcle OR ("jed") OR Interj OR CS OR CP ;
 
-SET SV-BOUNDARY = S-BOUNDARY | FMAINV ; # VFIN-NOT-AUX ; # should be V-MAIN linked to VFIN-aux to the left. (cg-3)
+SET SV-BOUNDARY = S-BOUNDARY OR FMAINV ; # VFIN-NOT-AUX ; # should be V-MAIN linked to VFIN-aux to the left. (cg-3)
 # This set is ment to use in rules for disambiguating due to verbs or verbsets. 
-SET SV-BOUNDARY2 = S-BOUNDARY2 | FMAINV ;
+SET SV-BOUNDARY2 = S-BOUNDARY2 OR FMAINV ;
 
-SET SVF-BOUNDARY = S-BOUNDARY | VFIN ;
+SET SVF-BOUNDARY = S-BOUNDARY OR VFIN ;
 # This set is ment to use in rules for disambiguating due to verbs or verbsets. 
 # Here we search for either an S-BOUNDARY or a finite verb, either aux or main.
 
-SET CCCOMMA = CC | COMMA ;
+SET CCCOMMA = CC OR COMMA ;
 	# remember that those are potential sentence boundaries, too
 SET BOUNDARY = S-BOUNDARY OR NP-BOUNDARY ;
 
-SET INTR = Rel  | PUNCT-LEFT ;
+SET INTR = Rel  OR PUNCT-LEFT ;
 	# interrupters
 
 
@@ -1249,6 +1249,7 @@ REMOVE (Der1) IF (0C (Der3)) ;
 REMOVE Imprt (0 Der/vuohta OR (".*#.*t"r)) ; 
 REMOVE (Foc/ga) (0 ("dalága") OR ("liehket" Du3)); 
 REMOVE (Foc/ge) (0 ("dasik")); 
+SELECT Po (-1 (Pers Gen))(0 ("diehti"));
  
 # End of SELECT/REMOVE switch area
 
@@ -1270,7 +1271,8 @@ REMOVE:r614 AMB-LEMMA2 IF (0 AMB-LEMMA1 LINK NEGATE 0 (Sg Nom) LINK NOT 0 Px);
 
 SELECT LANGUAGE (0 LANGUAGE) ;
 	# avoid "sáme#gielas" "Sáme#giella"
-	
+
+SELECT ("riegádahttet") ;	
 
 LIST VERB-BASE = "bassat" "gillat" "mannat" "njammat" "njuolggit" "njuovvat" "råhkåt" ;
 
@@ -1304,6 +1306,7 @@ SELECT VFIN IF (*-1 Ger BARRIER NOT-ADV-PCLE) ;
 
 #SELECT VFIN IF (*-1 COMMA) (*1 S-BOUNDARY OR COMMA ) ; # BARRIER VFIN) ;    
 
+             SECTION              #
 
 # ===================================== #
 # Local disambiguation - cycles 1 and 2 #
@@ -1663,67 +1666,89 @@ SELECT Pl2 IF (0 (Pron Pers Pl2 Nom))(1 (V Pl2))
 REMOVE ("Dan") (0 ("dat")) ; # NT
 
 # =========================== #
+# Disambiguating pronouns #
+# =========================== #
+# =========================== #
+
+SELECT Dem (0 Pers + $$CASE LINK 1 N + $$CASE) ;
+
+SELECT (Pers Gen) (0 Dem)(1 ("diehti")) ;
+
+SELECT (Pers Gen)(0 Dem)(1 (N Sg) LINK NOT 0 Gen) ;
+
+# =========================== #
 # Disambiguating subjunctions #
 # =========================== #
 # =========================== #
 
 REMOVE Pcle IF (-1 BOS OR CLB)(0 CS);
 	##, de allit sunji åsko!
+
+	# de
+	# - -
+REMOVE ("de" @CNP) ;
+
+SELECT ("de" CC)(-1 COMMA OR VFIN) ;
+    ## Valla åvddål gå aktan lijga viessogoahtám, de bihkusij bådij Maria lij ájlis Vuojŋŋanisás sahkanam.
+    ## Jesus jårgijdij ja gå suv ájtsaj de javlaj.
+SELECT ("de" Adv)((-1 Pcle OR BOS) OR (1 COMMA)) ;
+SELECT ("de" Adv)((-1 NP-HEAD-NOM LINK -1 Pcle OR BOS) OR (1 COMMA)) ; #XX
+    ## Bärggal de alla várráj suv doalvoj ja vuosedij sunji gájkka värálda rijkajt ja daj herlukvuodav ja javlaj.
 	
 	# gå
 	# - -
 
 	# Yes/no ( = fi. -ko/-kö, no. V1))
 
-SELECT Pcle IF (-3 BOS OR CLB)(-2 CC)(-1 V)(0 ("gå"));
-SELECT Pcle IF (-2 BOS OR REALCLB OR PUNCT OR COMMA)(0 ("gå"))(*1 ("?"));
-	##                       
-	
-SELECT Pcle IF (-2 ("vaj"))(0 ("gå"));
-	##  
-
-SELECT Pcle IF (-2 VERB)(-1C VFIN)(0 ("gå"));
-SELECT Pcle IF (*-2 VFIN BARRIER S-BOUNDARY LINK NOT 0 Inf)(-1C VFIN)(0 ("gå")) (NEGATE 1 VFIN); 
-	## 
-
-SELECT Pcle IF (-1 (V Neg) OR MOD-ASP)(0 ("gå"));        
-	## 
-
-SELECT Pcle IF (*-3 ("gå" Pcle) BARRIER S-BOUNDARY OR VFIN LINK -1 VFIN) (-2 CC)(-1 VFIN)(0 ("gå"));
-	## 
-
-#SELECT Pcle IF (-2 Inf)(-1 VFIN)(NEGATE -1 PrfPrc)(0 ("gå"))(NEGATE *1 (@CS-COMPL) BARRIER S-BOUNDARY); #OBS
-	## 
-
-SELECT Pcle IF (-3 N OR Pron)(-2 ("ahte"))(-1 VFIN)(0 ("gå"));
-	## 
-
-SELECT Pcle IF (-1 N LINK *-1 BOS BARRIER NOT-NP)(NEGATE -1 ("hávvi"))(0 ("gå")) (*1 VFIN BARRIER S-BOUNDARY)(*1 ("?"));
-	## 
-
-SELECT Pcle IF (-2 (N Gen) LINK *-1 BOS BARRIER NOT-NP)(-1 Po)(0 ("gå")) (*1 VFIN BARRIER S-BOUNDARY);
+#SELECT Pcle IF (-3 BOS OR CLB)(-2 CC)(-1 V)(0 ("gå"));
+#SELECT Pcle IF (-2 BOS OR REALCLB OR PUNCT OR COMMA)(0 ("gå"))(*1 ("?"));
+#	##                       
+#	
+#SELECT Pcle IF (-2 ("vaj"))(0 ("gå"));
+#	##  
+#
+#SELECT Pcle IF (-2 VERB)(-1C VFIN)(0 ("gå"));
+#SELECT Pcle IF (*-2 VFIN BARRIER S-BOUNDARY LINK NOT 0 Inf)(-1C VFIN)(0 ("gå")) (NEGATE 1 VFIN); 
+#	## 
+#
+#SELECT Pcle IF (-1 (V Neg) OR MOD-ASP)(0 ("gå"));        
+#	## 
+#
+#SELECT Pcle IF (*-3 ("gå" Pcle) BARRIER S-BOUNDARY OR VFIN LINK -1 VFIN) (-2 CC)(-1 VFIN)(0 ("gå"));
+#	## 
+#
+##SELECT Pcle IF (-2 Inf)(-1 VFIN)(NEGATE -1 PrfPrc)(0 ("gå"))(NEGATE *1 (@CS-COMPL) BARRIER S-BOUNDARY); #OBS
+#	## 
+#
+#SELECT Pcle IF (-3 N OR Pron)(-2 ("ahte"))(-1 VFIN)(0 ("gå"));
+#	## 
+#
+#SELECT Pcle IF (-1 N LINK *-1 BOS BARRIER NOT-NP)(NEGATE -1 ("hávvi"))(0 ("gå")) (*1 VFIN BARRIER S-BOUNDARY)(*1 ("?"));
+#	## 
+#
+#SELECT Pcle IF (-2 (N Gen) LINK *-1 BOS BARRIER NOT-NP)(-1 Po)(0 ("gå")) (*1 VFIN BARRIER S-BOUNDARY);
 	##  
 
 	# Something else ( = fi. kuin, no. (så) som) (are all these CS?)
 	# Testing: 
-SELECT CS IF (*-1 A OR Adv LINK *-1 ("nu") OR ("mihá") BARRIER S-BOUNDARY)(0 ("gå"));
-SELECT CS IF (*-1 ("seammá"))(NEGATE -1 VFIN LINK NOT *-1 VFIN BARRIER S-BOUNDARY)(0 ("gå")); 
+#SELECT CS IF (*-1 A OR Adv LINK *-1 ("nu") OR ("mihá") BARRIER S-BOUNDARY)(0 ("gå"));
+#SELECT CS IF (*-1 ("seammá"))(NEGATE -1 VFIN LINK NOT *-1 VFIN BARRIER S-BOUNDARY)(0 ("gå")); 
 	## 
 
-SELECT CS IF (*-1 COMPAR BARRIER NOT-ADJ OR CLB)(0 ("gå")); 
-SELECT CS IF (*-1 Comp BARRIER S-BOUNDARY OR PUNCT LINK NOT 0 VERB)(0 ("gå")) (NEGATE *1 VFIN BARRIER S-BOUNDARY);
+#SELECT CS IF (*-1 COMPAR BARRIER NOT-ADJ OR CLB)(0 ("gå")); 
+#SELECT CS IF (*-1 Comp BARRIER S-BOUNDARY OR PUNCT LINK NOT 0 VERB)(0 ("gå")) (NEGATE *1 VFIN BARRIER S-BOUNDARY);
 	## 
 
-SELECT CS IF (-1 Comp LINK *-1 COPULAS BARRIER V-NOT-AUX OR CS) (NEGATE *-1 V-PL1 OR V-PL2 OR V-PL3 BARRIER V-NOT-AUX)(0 ("gå"));
+#SELECT CS IF (-1 Comp LINK *-1 COPULAS BARRIER V-NOT-AUX OR CS) (NEGATE *-1 V-PL1 OR V-PL2 OR V-PL3 BARRIER V-NOT-AUX)(0 ("gå"));
 	## .
 
-SELECT CS IF (*-2 Comp BARRIER NPNH LINK NOT 0 Inf)(-1 A OR N)(0 ("gå"));
+#SELECT CS IF (*-2 Comp BARRIER NPNH LINK NOT 0 Inf)(-1 A OR N)(0 ("gå"));
 	## 
 
-SELECT CS IF (-1 A OR Adv)(NEGATE -1 Po)(0 ("gå"))(*1 Interr BARRIER VFIN);
+#SELECT CS IF (-1 A OR Adv)(NEGATE -1 Po)(0 ("gå"))(*1 Interr BARRIER VFIN);
 	## 
 
-SELECT CS IF (0 ("gå"))(1 ("ahte"));
+#SELECT CS IF (0 ("gå"))(1 ("ahte")); # 
 	##  
 
 SELECT CS IF (0 ("danen"))(1 ("gå"));
@@ -1807,8 +1832,14 @@ MAP (@CNP @CVP) TARGET CS IF (0 ("gå") OR XGU);
 
 MAP (@CVP) TARGET CS ;
 	## 
+	
+# =========================	
+# CC- and CS-Disambiguation
+# =========================
 
-SELECT (CC @CVP) (0 ("vaj"))(1 Neg LINK 1 EOS OR Pcle); #X
+REMOVE ("de" @CNP) ; #XX
+
+SELECT (CC @CVP) (0 ("vaj"))(1 Neg LINK 1 EOS OR Pcle); #XX
 SELECT (CC @CVP)(0 ("vaj"))(1 Qst);
 	## Le gus duolla tjæjssárij värov mákset vaj ij?
 
@@ -1821,38 +1852,31 @@ SELECT CC IF (0 ("vaj"))(NEGATE *1 VFIN BARRIER S-BOUNDARY);
 SELECT CC IF (*-1 Inf BARRIER VERB OR CLB)(0 ("vaj"))(*1 Inf BARRIER VERB);
 	## 
 
-
-# =========================	
-# CC- and CS-Disambiguation
-# =========================
-
-# after verb-disambiguation
-
-SELECT @CVP IF (-1 COMMA)(0 CC); #X
+SELECT @CVP IF (-1 COMMA)(0 CC); #XX
     ## Ieddnes Maria lij Josefijn giláduvvam, valla åvddål gå aktan lijga viessogoahtám, de bihkusij bådij Maria lij ájlis Vuoiŋŋanisás sahkanam.
     
-SELECT @CVP IF (-1 BOS OR (@CVP)); #X
+SELECT @CVP IF (-1 BOS OR (@CVP)); #XX
     ## Jesus jårgijdij ja gå suv ájtsaj de javlaj:
 
 SELECT @CVP IF (-2 BOS LINK 1 Num)(NEGATE *1 Num BARRIER NPNH);
     # We need this rule until we get a better file format without line numbers.
     ## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj...
 
-SELECT @CVP IF (NEGATE -2 Gen)(-1 ("åvddål") LINK NOT *-1 VFIN BARRIER SV-BOUNDARY OR CCCOMMA)(0 ("gå"));
+SELECT @CVP IF (NEGATE -2 Gen)(-1 ("åvddål") LINK NOT *-1 VFIN BARRIER SV-BOUNDARY2)(0 ("gå"));
     ## Ieddnes Maria lij Josefijn giláduvvam, valla åvddål gå aktan lijga viessogoahtám, de bihkusij bådij Maria lij ájlis Vuoiŋŋanisás sahkanam.
     
-SELECT @CVP IF (-1 ("diehti") LINK -1 (Dem Gen))(0 ("gå")); #X
+SELECT @CVP IF (-1 ("diehti") LINK -1 Gen)(0 ("gå")); #XX
     ## Bárnev riegádahttá ja dån galga suv Jesusin gåhttjot, dan diehti gå álmmugav suttojstisá lånes.
 
     
-SELECT @CNP IF (-1 Cmpnd); #X
+SELECT @CNP IF (-1 Cmpnd); #XX
     ## Sávtsa- ja gájtsanáhkkegárvoj vádtsin, vánev gierddin, doarrádaláduvvin ja illastuvvin.
     
 SELECT @CNP IF (NEGATE *-1 VFIN OR AUX BARRIER S-BOUNDARY)(*-1 V OR N OR Adv OR A OR Pron); #X
     ## Betleheman, Judean, dan diehti gå profehta le náv tjállám..
     # Not supposed to select "Ja de mun lean boahtán." 
 
-SELECT @CNP IF (-1C ADVLCASE)(1C ADVLCASE); #X
+SELECT @CNP IF (-1C ADVLCASE)(1C ADVLCASE); #XX
     ## Jesus synagogajn åhpadij , evangeliumav rijka birra sárnnedij ja almatjijt gájklágásj dávdajs ja vigijs buoredij.
 
 SELECT @CNP IF (-1C NP-HEAD-NOM)(*1C NP-HEAD-NOM BARRIER NPNHA);
@@ -1863,26 +1887,31 @@ SELECT @CNP IF (-1C NP-HEAD-ACC)(*1C NP-HEAD-ACC BARRIER NPNHA);
 #SELECT @CNP IF (-1 (@X) OR N)(NOT 0 ACR)(*1 N BARRIER NPNHA LINK NOT 1 VFIN);
     ## Vuolgij Nasarets ja årruj Kafarnaumij, jávrregáddáj, Sebulona ja Naftali guovlojn.
 
-SELECT @CNP IF (NEGATE -1 BOS)(NEGATE 1 CS)(NEGATE *1 VFIN BARRIER S-BOUNDARY OR PUNCT-RIGHT OR CCCOMMA); #X
+SELECT @CNP IF (NEGATE -1 BOS)(NEGATE 1 CS)(NEGATE *1 VFIN BARRIER S-BOUNDARY2 OR PUNCT-RIGHT); #XX
     # No potential finite verb following
     ## Judaj riegádijga Peres ja Sera, gej ieddne lij Tamar, Peresij riegádij Hesron,...
     ## Jesus jårgijdij ja gå suv ájtsaj de javlaj:
 
 
-SELECT @CVP IF (1 CS); #X
+SELECT @CVP IF (1 CS); #XX
     ## Álbmotriekti gierdá dákkár doaimmaid duššefal heahtediliin ja go daidda lea dievaslaš ipmárdus dákkár álbmogiid ovddasvástideaddji eiseválddiid bealis.
     # Does 1 have to be strict?
 
+SELECT @CVP IF (*-1 VFIN BARRIER S-BOUNDARY OR CC)(*1 VFIN BARRIER S-BOUNDARY OR CC); #XX
+    ## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj.
+
 SELECT @CVP IF (0 CC)(1C VFIN); #X
     # A secure finite verb after it.
-    ## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj...
-
-SELECT @CVP IF (1C VFIN);
     ## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj: "Josef, Davida bárnne, ala balá...
 
 SELECT (@CVP) IF (*-1C VFIN BARRIER S-BOUNDARY)(*1C NP-HEAD-NOM BARRIER NPNHA);
     ## 
-    
+SELECT @CVP IF (NEGATE -1 NP-HEAD-NOM)(1 NP-HEAD-NOM LINK 1 VFIN);
+    ## Bárnev sån riegádahttá ja dån galga suv Jesusin gåhttjot.
+
+SELECT @CVP IF (-1 NP-HEAD LINK *-1 VFIN BARRIER S-BOUNDARY2)(1 VFIN); #XX
+    ## Bärggal de alla várráj suv doalvoj ja vuosedij sunji gájkka värálda rijkajt ja daj herlukvuodav ja javlaj.
+
 SELECT @CVP IF (*-1C VFIN BARRIER S-BOUNDARY)(*1C AUX LINK 0 Prs BARRIER S-BOUNDARY); #???
     ## Gåhtjo dan diehti hávdev gålmmå biejve váttugit gŋahttjat vaj åhpadisålmmå e besa suv suoládit ja álmmugij javllat sån le jábbmegij lussta tjuodtjelam.
 
@@ -1891,13 +1920,14 @@ SELECT @CVP IF (*-1 COMMA LINK *-1C VFIN BARRIER S-BOUNDARY)(*1C AUX LINK 0 Prs 
     ## Guhti tiempelav gajko ja gålmån biejven vas tsieggi, gájo dal ietjat, ja luojttáda ruossas.
 
 SELECT @CVP IF (-1 BOS)(0 CC);
-
     ## Ja de mun lean boahtán.
 
 SELECT @CVP IF (-2 BOS)(-1 PUNCT)(0 CC); 
     ## Ja bárnne daŋga båttå buorránij.
 
-SELECT @CVP IF (*-1C VFIN BARRIER S-BOUNDARY OR CCCOMMA)(*1C VFIN BARRIER S-BOUNDARY2); #X
+
+
+SELECT @CVP IF (*-1C VFIN BARRIER S-BOUNDARY2)(*1C VFIN BARRIER S-BOUNDARY2); #XX
     ## Josiaj riegádij Jojakin vieljatjij dan ájge gå álmmugav vuolgadin Babylonaj.
 
 SELECT @CVP IF (*1 AUX LINK *1C NOT-VFIN); #X
@@ -1913,6 +1943,12 @@ SELECT @CVP IF (*-2 BOS BARRIER COMMA)(-1 COMMA);
 SELECT @CVP IF (NEGATE -1 ADVLCASE OR Adv)(*1 ADVLCASE OR Adv BARRIER NPNH LINK 1 VFIN); #X
     ## Elihudaj riegádij Elasar, Elasaraj Mattan, Mattanij Jakob, ja Jakobij riegádij Josef, Maria ålmåj.
 
+SELECT CS IF (0 ("vaj"));
+	## Divna dát sjattaj vaj luluj ålliduvvat mav Härrá lij profehta baktu javllam.
+	## Muv niejdda le jur jábmám, valla boade bieja giedat suv nali vaj ällá.
+
+
+             SECTION              #
 	
 # From sme-dis.rle:	
 #ADD (@TITLE) TARGET TITLE IF (1 Prop LINK 0 Fem OR Mal OR Sur);
@@ -2813,7 +2849,7 @@ SELECT Pcle IF (*-1 BOS BARRIER NOT-PCLE)(1 ("dal"));
 # Gen as modifier
 REMOVE V (NOT *-1 VFIN BARRIER S-BOUNDARY)(0 Gen LINK NEGATE 0 VFIN LINK *-1 NP-HEAD-NOM BARRIER NOT-ADV)(*1 (N Nom) BARRIER NPNH OR CC OR COMMA LINK *1 VFIN BARRIER V OR S-BOUNDARY) ;
 	## Giela árvo le bájnnám sámij giellamáhtov. 
-REMOVE Nom (NOT *-1 VFIN BARRIER S-BOUNDARY)(0 Gen)(*1 (N Nom) BARRIER NPNH OR CC OR COMMA LINK *1 VFIN BARRIER V OR S-BOUNDARY) ;
+#REMOVE Nom (NOT *-1 VFIN BARRIER S-BOUNDARY)(0 Gen)(*1 (N Nom) BARRIER NPNH OR CC OR COMMA LINK *1 VFIN BARRIER V OR S-BOUNDARY) ;
 	
 
 # Gen after Num
@@ -3005,13 +3041,6 @@ SELECT Po IF (NEGATE *-2 Pr BARRIER N OR SV-BOUNDARY)(-1C Gen)(NEGATE *1C Gen BA
       SECTION    # 
 	# ============== #
 
-	# CS selection for specific CS candidates
-	# ---------------------------------------
-SELECT CS IF (0 ("gå"));    # All other gå's are CS. (differ from Pcle sect 2?)
-SELECT CS IF (0 ("vaiku"));
-SELECT CS IF (0 ("vaj"));
-	## Divna dát sjattaj vaj luluj ålliduvvat mav Härrá lij profehta baktu javllam.
-	## Muv niejdda le jur jábmám, valla boade bieja giedat suv nali vaj ällá.
 	
 	
 # ====================== #
