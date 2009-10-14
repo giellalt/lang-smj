@@ -1808,7 +1808,7 @@ MAP (@CNP @CVP) TARGET CS IF (0 ("gå") OR XGU);
 MAP (@CVP) TARGET CS ;
 	## 
 
-SELECT (CC @CVP) (0 ("vaj"))(1 Neg LINK 1 EOS OR Pcle);
+SELECT (CC @CVP) (0 ("vaj"))(1 Neg LINK 1 EOS OR Pcle); #X
 SELECT (CC @CVP)(0 ("vaj"))(1 Qst);
 	## Le gus duolla tjæjssárij värov mákset vaj ij?
 
@@ -1828,92 +1828,89 @@ SELECT CC IF (*-1 Inf BARRIER VERB OR CLB)(0 ("vaj"))(*1 Inf BARRIER VERB);
 
 # after verb-disambiguation
 
-REMOVE @CNP IF (-1 COMMA)(0 CC);
+SELECT @CVP IF (-1 COMMA)(0 CC); #X
     ## Ieddnes Maria lij Josefijn giláduvvam, valla åvddål gå aktan lijga viessogoahtám, de bihkusij bådij Maria lij ájlis Vuoiŋŋanisás sahkanam.
     
-REMOVE @CNP IF (-1 BOS OR (@CVP));
+SELECT @CVP IF (-1 BOS OR (@CVP)); #X
     ## Jesus jårgijdij ja gå suv ájtsaj de javlaj:
 
-REMOVE @CNP IF (-2 BOS LINK 1 Num)(NEGATE *1 Num BARRIER NPNH);
+SELECT @CVP IF (-2 BOS LINK 1 Num)(NEGATE *1 Num BARRIER NPNH);
     # We need this rule until we get a better file format without line numbers.
     ## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj...
 
-# Idiomatic
-# - - - - -
-    
-REMOVE @CNP IF (NEGATE -2 Gen)(-1 ("åvddål") LINK NOT *-1 VFIN BARRIER SV-BOUNDARY OR CCCOMMA)(0 ("gå"));
+SELECT @CVP IF (NEGATE -2 Gen)(-1 ("åvddål") LINK NOT *-1 VFIN BARRIER SV-BOUNDARY OR CCCOMMA)(0 ("gå"));
     ## Ieddnes Maria lij Josefijn giláduvvam, valla åvddål gå aktan lijga viessogoahtám, de bihkusij bådij Maria lij ájlis Vuoiŋŋanisás sahkanam.
     
-REMOVE @CNP IF (-1 ("diehti") LINK -1 (Dem Gen))(0 ("gå"));
+SELECT @CVP IF (-1 ("diehti") LINK -1 (Dem Gen))(0 ("gå")); #X
     ## Bárnev riegádahttá ja dån galga suv Jesusin gåhttjot, dan diehti gå álmmugav suttojstisá lånes.
 
     
-REMOVE @CVP IF (-1 Cmpnd);
+SELECT @CNP IF (-1 Cmpnd); #X
     ## Sávtsa- ja gájtsanáhkkegárvoj vádtsin, vánev gierddin, doarrádaláduvvin ja illastuvvin.
     
-REMOVE @CVP IF (NEGATE *-1 VFIN OR AUX BARRIER S-BOUNDARY)(*-1 V OR N OR Adv OR A OR Pron);
+SELECT @CNP IF (NEGATE *-1 VFIN OR AUX BARRIER S-BOUNDARY)(*-1 V OR N OR Adv OR A OR Pron); #X
     ## Betleheman, Judean, dan diehti gå profehta le náv tjállám..
     # Not supposed to select "Ja de mun lean boahtán." 
 
-REMOVE @CVP IF (-1C ADVLCASE)(1C ADVLCASE);
+SELECT @CNP IF (-1C ADVLCASE)(1C ADVLCASE); #X
     ## Jesus synagogajn åhpadij , evangeliumav rijka birra sárnnedij ja almatjijt gájklágásj dávdajs ja vigijs buoredij.
 
-REMOVE @CVP IF (-1C NP-HEAD-NOM)(*1C NP-HEAD-NOM BARRIER NPNHA);
+SELECT @CNP IF (-1C NP-HEAD-NOM)(*1C NP-HEAD-NOM BARRIER NPNHA);
 
-REMOVE @CVP IF (-1C NP-HEAD-ACC)(*1C NP-HEAD-ACC BARRIER NPNHA);
+SELECT @CNP IF (-1C NP-HEAD-ACC)(*1C NP-HEAD-ACC BARRIER NPNHA);
     ## Bärggal de alla várráj suv doalvoj ja vuosedij sunji gájkka värálda rijkajt ja daj herlukvuodav ja javlaj.
 
-#REMOVE @CVP IF (-1 (@X) OR N)(NOT 0 ACR)(*1 N BARRIER NPNHA LINK NOT 1 VFIN);
+#SELECT @CNP IF (-1 (@X) OR N)(NOT 0 ACR)(*1 N BARRIER NPNHA LINK NOT 1 VFIN);
     ## Vuolgij Nasarets ja årruj Kafarnaumij, jávrregáddáj, Sebulona ja Naftali guovlojn.
 
-REMOVE @CVP IF (NEGATE -1 BOS)(NEGATE 1 CS)(NEGATE *1 VFIN BARRIER S-BOUNDARY OR PUNCT-RIGHT OR CCCOMMA);
+SELECT @CNP IF (NEGATE -1 BOS)(NEGATE 1 CS)(NEGATE *1 VFIN BARRIER S-BOUNDARY OR PUNCT-RIGHT OR CCCOMMA); #X
     # No potential finite verb following
     ## Judaj riegádijga Peres ja Sera, gej ieddne lij Tamar, Peresij riegádij Hesron,...
     ## Jesus jårgijdij ja gå suv ájtsaj de javlaj:
 
 
-REMOVE @CNP IF (1 CS);
+SELECT @CVP IF (1 CS); #X
     ## Álbmotriekti gierdá dákkár doaimmaid duššefal heahtediliin ja go daidda lea dievaslaš ipmárdus dákkár álbmogiid ovddasvástideaddji eiseválddiid bealis.
     # Does 1 have to be strict?
 
-REMOVE @CNP IF (0 CC)(1C VFIN);
+SELECT @CVP IF (0 CC)(1C VFIN); #X
     # A secure finite verb after it.
     ## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj...
 
-REMOVE @CNP IF (1C VFIN);
+SELECT @CVP IF (1C VFIN);
     ## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj: "Josef, Davida bárnne, ala balá...
 
 SELECT (@CVP) IF (*-1C VFIN BARRIER S-BOUNDARY)(*1C NP-HEAD-NOM BARRIER NPNHA);
     ## 
     
-REMOVE @CNP IF (*-1C VFIN BARRIER S-BOUNDARY)(*1C AUX LINK 0 Prs BARRIER S-BOUNDARY); #???
+SELECT @CVP IF (*-1C VFIN BARRIER S-BOUNDARY)(*1C AUX LINK 0 Prs BARRIER S-BOUNDARY); #???
     ## Gåhtjo dan diehti hávdev gålmmå biejve váttugit gŋahttjat vaj åhpadisålmmå e besa suv suoládit ja álmmugij javllat sån le jábbmegij lussta tjuodtjelam.
 
-REMOVE @CNP IF (*-1 COMMA LINK *-1C VFIN BARRIER S-BOUNDARY)(*1C AUX LINK 0 Prs BARRIER S-BOUNDARY); #???
+SELECT @CVP IF (*-1 COMMA LINK *-1C VFIN BARRIER S-BOUNDARY)(*1C AUX LINK 0 Prs BARRIER S-BOUNDARY); #???
     # The comma version
     ## Guhti tiempelav gajko ja gålmån biejven vas tsieggi, gájo dal ietjat, ja luojttáda ruossas.
 
-REMOVE @CNP IF (-1 BOS)(0 CC);
+SELECT @CVP IF (-1 BOS)(0 CC);
 
     ## Ja de mun lean boahtán.
 
-REMOVE @CNP IF (-2 BOS)(-1 PUNCT)(0 CC); 
+SELECT @CVP IF (-2 BOS)(-1 PUNCT)(0 CC); 
     ## Ja bárnne daŋga båttå buorránij.
 
-REMOVE @CNP IF (*-1C VFIN BARRIER S-BOUNDARY OR CCCOMMA)(*1C VFIN BARRIER S-BOUNDARY2);
+SELECT @CVP IF (*-1C VFIN BARRIER S-BOUNDARY OR CCCOMMA)(*1C VFIN BARRIER S-BOUNDARY2); #X
     ## Josiaj riegádij Jojakin vieljatjij dan ájge gå álmmugav vuolgadin Babylonaj.
 
-REMOVE @CNP IF (*1 AUX LINK *1C NOT-VFIN);
+SELECT @CVP IF (*1 AUX LINK *1C NOT-VFIN); #X
 
-REMOVE @CNP IF (*1 AUX LINK *1 Rel OR MANNE LINK *1 AUX LINK *1 NOT-VFIN LINK 0 AUX LINK *1 NOT-VFIN);
+SELECT @CVP IF (*1 AUX LINK *1 Rel OR MANNE LINK *1 AUX LINK *1 NOT-VFIN LINK 0 AUX LINK *1 NOT-VFIN);
     # The relative sentence version
     ## 
 
-REMOVE @CNP IF (*-2 BOS BARRIER COMMA)(-1 COMMA);
+SELECT @CVP IF (*-2 BOS BARRIER COMMA)(-1 COMMA);
     # Embedded clause with initial adverbial:
     ## Niejdda sjaddá iesselissan ja bárnev riegádahttá, ja suv gåhttju Immanuelin
 
-REMOVE @CNP IF (NEGATE -1 ADVLCASE OR Adv)(*1 ADVLCASE OR Adv BARRIER NPNH LINK 1 VFIN);
+SELECT @CVP IF (NEGATE -1 ADVLCASE OR Adv)(*1 ADVLCASE OR Adv BARRIER NPNH LINK 1 VFIN); #X
     ## Elihudaj riegádij Elasar, Elasaraj Mattan, Mattanij Jakob, ja Jakobij riegádij Josef, Maria ålmåj.
 
 	
@@ -2814,7 +2811,7 @@ SELECT Pcle IF (*-1 BOS BARRIER NOT-PCLE)(1 ("dal"));
 # ========
 
 # Gen as modifier
-REMOVE V (NOT *-1 VFIN BARRIER S-BOUNDARY)(0 Gen)(*1 (N Nom) BARRIER NPNH OR CC OR COMMA LINK *1 VFIN BARRIER V OR S-BOUNDARY) ;
+REMOVE V (NOT *-1 VFIN BARRIER S-BOUNDARY)(0 Gen LINK NEGATE 0 VFIN LINK *-1 NP-HEAD-NOM BARRIER NOT-ADV)(*1 (N Nom) BARRIER NPNH OR CC OR COMMA LINK *1 VFIN BARRIER V OR S-BOUNDARY) ;
 	## Giela árvo le bájnnám sámij giellamáhtov. 
 REMOVE Nom (NOT *-1 VFIN BARRIER S-BOUNDARY)(0 Gen)(*1 (N Nom) BARRIER NPNH OR CC OR COMMA LINK *1 VFIN BARRIER V OR S-BOUNDARY) ;
 	
@@ -2954,7 +2951,7 @@ SELECT (Ind Sg3) IF (NEGATE -1 V)(1 CC LINK *1 (Ind Sg3) BARRIER NOT-ADV);
     ## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj:
     ## Valla Johannes nádoj ja javlaj:
 
-SELECT (N Pl Nom) IF (NEGATE *-1 (Pl Nom) BARRIER S-BOUNDARY)(*1 (Ind Pl3) BARRIER NP-BOUNDARY OR (Pl Nom));
+SELECT (N Pl Nom) IF (NEGATE *-1 (Pl Nom) BARRIER S-BOUNDARY)(NOT 0 CC)(*1 (Ind Pl3) BARRIER NP-BOUNDARY OR (Pl Nom));
     ## Valla stádaj årro dav gullájin.
 
 
