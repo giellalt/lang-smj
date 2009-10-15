@@ -1094,7 +1094,7 @@ SET NOT-PUNCT-RIGHT = ALL - RIGHT ;
 
 SET CP = (Pron Interr) OR (Pron Rel) ;
 
-LIST MO-MANge = "gåktu" "gånnå" (V Qst);
+LIST MO-MANge = "gåktu" "gåktus" "gånnå" "gåsstå" "gåsstås" "manen" (V Qst);
  
 SET MO = MO-MANge - ("man" Foc/ge) ; 
 
@@ -1103,11 +1103,11 @@ LIST SEMICOL = "\;" ;
 LIST COL = ":" ;
 
 
-SET S-BOUNDARY = (Pron Interr) OR (Pron Rel) OR MO OR ("muhto") OR CS OR ("\;") OR (":") OR (".") ;
+SET S-BOUNDARY = (Pron Interr) OR (Pron Rel) OR MO OR ("muhto") OR ("de" CC) OR CS OR ("\;") OR (":") OR ("-") OR ("–") OR (".") ;
 	# includes CP
 	# remember that (",") and CC are potential sentence boundaries, too
 	
-SET S-BOUNDARY2 = (Pron Interr) OR (Pron Rel) OR ("muhto") OR CS OR ("\;") OR (":") OR (@CVP) ;
+SET S-BOUNDARY2 = (Pron Interr) OR (Pron Rel) OR ("muhto") OR CS OR ("de" CC) OR ("\;") OR (":") OR ("-") OR ("–") OR (@CVP) ; 
 	# includes CP
 	# this one includes @CVP, the conjunction, which actually connects two sentences (each with a finite verb) to each other, and not @CNP, which coordinates internal NP-/AdvP-/AP ... coordination
 	# To be used only AFTER the disambiguation of @CVP and @CNP taking place in the chapter right before "Disambiguatig pronouns"
@@ -1124,10 +1124,10 @@ SET SVF-BOUNDARY = S-BOUNDARY OR VFIN ;
 
 SET CCCOMMA = CC OR COMMA ;
 	# remember that those are potential sentence boundaries, too
-SET BOUNDARY = S-BOUNDARY OR NP-BOUNDARY ;
+#SET BOUNDARY = S-BOUNDARY OR NP-BOUNDARY ; # not in use
 
-SET INTR = Rel  OR PUNCT-LEFT ;
-	# interrupters
+#SET INTR = Rel OR PUNCT-LEFT ; 
+	# interrupters - not in use
 
 
 
