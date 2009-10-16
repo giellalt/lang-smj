@@ -445,7 +445,7 @@ LIST A-DER = Der/dibme Der/lasj Der/lágásj Der/lágán Der/ahtes
 Der/juolgak Der/luottak Der/suttak Der/uvsuk Der/jienak
 Der/rattak Der/hekkak Der/åjvak Der/belak Der/sijduk Der/giedak
 Der/gielak Der/muoduk Der/varák Der/báguk Der/nálak Der/rabdak
-Der/rávak Der/ájvukDer/såjak Der/giesjkak Der/bának Der/njálmak
+Der/rávak Der/ájvuk Der/såjak Der/giesjkak Der/bának Der/njálmak
 Der/nierak Der/merkak Der/suorgak Der/suorak Der/gattsak
 Der/siejbak Der/siejnak Der/hájak Der/habsak Der/hápsak
 Der/hábjak Der/sáv'vak Der/namák Der/lanják Der/vuoduk Der/hámak
@@ -455,7 +455,7 @@ Der/vuobdak Der/uvsak Der/ivnak Der/ferjak Der/bájnuk
 Der/luonduk Der/dávdak Der/jergak Der/mielak Der/jiermak
 Der/njunjak Der/guovluk Der/dáfuk Der/vájmuk Der/lahkak Der/åsak
 Der/garák Der/tjuolmak Der/tjålak Der/segak Der/tjalmak
-Der/vigák Der/girjak Der/stával Der/agák Der/jagák Der/jahkásasj Der/lis;
+Der/vigák Der/girjak Der/stával Der/agák Der/jagák Der/jahkásasj Der/lis (Actor A);
 
 SET NOT-DER = WORD - DERIVED ;
 
@@ -519,6 +519,11 @@ LIST V-PL3 = (V  Ind Prs Pl3) (V Ind Prt Pl3) (V Cond Prs Pl3)
              (V Cond Prt Pl3) (V Pot Prs Pl3) (V  Neg Ind Pl3);
 
  # Note that imperative verbs are not included in these sets!
+LIST HABEO-SG3 = ("liehket" Sg3) (V Neg Sg3) ("sjaddat" Sg3) ;
+
+LIST HABEO-PL3 = ("liehket" Pl3) (V Neg Pl3) ("sjadda" Pl3) ;
+
+SET HABEO-3 = HABEO-SG3 OR HABEO-PL3 ;
 
 
 # Some subsets of the VFIN sets
@@ -709,10 +714,9 @@ SET V-TRANS-ACT-NOT-ACT-NOT-AUX = V-TRANS-ACT - Actio - Actor - AUX;
 
 #LIST INEV =
 LIST COMV = "aktidit" "bierggit" "buohtastahttet" "oassálasstet" "sjiehtadallat" ;
-LIST ELAV = "ballat" "biehttot" "buorggot" "gáhtot" "gærggat" "gåhttsåt" "gåvvat"  "hiejttet" "mássit" "nádot" "tsaggat" "várrodit" "viessot" "vuornnot" "ållit" ;
+LIST ELAV = "ballat" "bessat" "biehttot" "buorggot" "gáhtot" "gærggat" "gåhttsåt" "gåvvat"  "hiejttet" "mássit" "nádot" "tsaggat" "várrodit" "viessot" "vuornnot" "ållit" ;
 
 LIST ILLV = "bajkket" "báddnut" "báhtset" "biedjat" "bielkket" "boadádallat" "bæhtádallat" "bælkkut" "bårrut" "dabrijdit" "dehpudallat" "dihpput" "duhtat" "duobbmidallat" "dædnjot" "dåbdijdit" "dårvustallat" "ganudit" "ganugit" "gierrot" "givnjedit" "guhkahit" "gullut" "guodet" "guoddet" "guorrasit" "guosskat" "guottedallat" "gåddudallat" "gådtjåt" "gåttådallat" "hárjjánit" "jáhkket" "jánndedit" "joavddut" "ládadallat" "láhpput" "lávgájdallat" "lijkkut" "madtjut" "mielastuvvat" "njoammot" "oahpásmuvvat" "oassálasstet" "rájadallat" "riegádit" "råhtot" "sehkanit" "sjiehttat" "sjærggodit" "skulldit" "sledut" "snårrudit" "snårrut" "suhttat" "sæbrrat" "tjágŋalit" "tjágŋat" "tjajmadallat" "tjárggat" "tjuokkudallat" "tsábbmudallat" ;
-
 
 #LIST ACC-LOCV
 #LIST ACC-ILLV
@@ -805,6 +809,8 @@ SET NP-HEAD-PL-NOM = (Pron Pl1 Nom) OR (Pron Pl2 Nom) OR (Pron Pl3 Nom) OR (N Pl
 SET NP-HEAD-NOM    = NP-HEAD-SG-NOM OR NP-HEAD-PL-NOM;
 SET NP-HEAD-ACC    = (Pron Acc) OR (N Acc) - Cmpnd;
 SET NP-HEAD-GEN    = (Pron Gen) OR (N Gen) - Cmpnd;
+
+
 
 # The PRE-NP-HEAD family of sets
 # - - - - - - - - - - - - - - - -
@@ -1046,6 +1052,8 @@ LIST EVENT = "aktisasj#tjåhkanibme" "tjåhkanibme" ;
 SET ABSTR-PLACE = ORGANIZATION OR INSTITUTION OR EVENT OR EDUCATION OR INDUSTRY OR SITUATION ;
 
 SET ACTOR = ANIMATE OR INSTITUTION OR ORGANIZATION ;
+SET HAB-ACTOR = HUMAN-INDIVIDUAL OR ACTOR OR HUMAN-GROUP OR INDUSTRY OR EDUCATION OR ("guhti") OR ("guhtis") OR ("guhtimusj") OR ("galles") OR Pers  ;
+# PEOPLE-NUM OR ("eará") 
 
 LIST LANGUAGE = "sáme#giella" ;
 
@@ -2043,6 +2051,7 @@ SELECT (A Attr) IF (*-1 (Dem Ess) BARRIER NPNH)(*1 (N Ess) BARRIER NPNH);
   	## Gaskaija áiggi Bávlos guovttos Silasiin rohkadalaiga ja lávlluiga.
   # a. also without the LINK to Com? b. larger set than only "guovttos"?
   
+REMOVE (Actor Nom)(-1C Nom)(0 Attr LINK 1 N) ; 
 
 REMOVE (A Attr) IF (1 CC)(2 N)(NEGATE 2 (A Attr)) (NEGATE 2 PrfPrc LINK *1 N BARRIER NPNH);
 	## ...jus doaimma ovttadagat sihke fágalaččat ja lágideami bokte leat...
@@ -2411,7 +2420,6 @@ SELECT Gen IF (1 (@CNP))(*2 Gen BARRIER NPNHAI LINK 1C Po);
 
 
 # Adverbs
-SELECT ("boahtte" Adv)(*-1 NP-HEAD-NOM BARRIER S-BOUNDARY2) ;
 
 SELECT Adv IF (NEGATE 0 ("akta" Ess))(0 Ess)(NEGATE 0 ("mij" Foc) OR Ine);
     ## Árvvediv ilá tjoaskes lij ålggon vádtset.
@@ -2488,6 +2496,10 @@ SELECT Ela IF (0 ("jahke" N Sg Ela))(1 ("jahke" N Sg Ill));
 	## Jages jahkáj.
 
 # 
+
+
+# boahtte
+SELECT Attr (0 ("boahtte") LINK 1 N);
 
 
 # bådij
@@ -2883,9 +2895,12 @@ SELECT Imprt IF (-1 BOS OR PUNCT OR REALCLB)(0 ("liehket"))(1 A);
 REMOVE (Imprt Pl3) IF (-1 Gen)(0 N);
 	## Joarkkaskåvlå åhpadusa.
 
+SELECT Imprt (0 Ind)(1 ("dal"));
 
 #REMOVE Imprt IF (-1 N OR A OR Po OR Num);
 	#Imperative after N is possible 
+SELECT (Imprt Sg2) (*-1C (Imprt Sg2) BARRIER VFIN)(0 Ind);
+REMOVE (Imprt Sg2) (*-1 VFIN LINK NOT 0C (Imprt Sg2))(0 Ind)(NOT 1 ("dal"));
 
 
 # Imperative II, ImprtII
@@ -3301,7 +3316,8 @@ SELECT Ill IF (0 N)(*1 ILL-ADJ BARRIER NOT-ADJ-PCLE);
 
 SELECT (N Ill) IF (*-1C (Num Gen))(NEGATE 0 Gen);
 
-SELECT Ill IF (*0 ILLV BARRIER SV-BOUNDARY2 OR Ill LINK NOT *0 Ill);
+SELECT Ill IF (*-1 ILLV BARRIER SV-BOUNDARY2 OR Ill LINK NOT -1 Ill);
+SELECT Ill IF (*1 ILLV BARRIER SV-BOUNDARY2 OR Ill)(NOT -1 Ill);
     ## Habssa dabrijdij njunnjáj.
 SELECT Ill IF (*-1 CC BARRIER NPNH LINK -1 Ill LINK -1* ILLV BARRIER SV-BOUNDARY2);
 	## Åhpadus sámegielan galggá viehkedit mánájt ja nuorajt oassálastátjit sáme kultuvrraj ja sebrudakiellemij.
@@ -3575,7 +3591,7 @@ SELECT (N Ela) IF (*-1C (Num Par));
 SELECT Ela IF (1 (IV PrfPrc));
     ## Maria lij ájlis Vuojŋŋanisás sahkanam, ..
 
-SELECT Ela IF (*-1 ELAV BARRIER Ela OR SV-BOUNDARY2);
+SELECT Ela IF (*0 ELAV BARRIER Ela OR SV-BOUNDARY2);
     ## Ale balá Mariav áhkkán válldemis.
     
 REMOVE Nom IF (*-1 Nom BARRIER NOT-AAPCLE)(0 Ela LINK NOT 0 Prop);    
@@ -3640,10 +3656,12 @@ SELECT (Ind Pl1) IF (*-1 (Pers Pl1 Nom) BARRIER NOT-ADV-PCLE);
     ## Giesen mij vuojadip.
 
 # Copula
+SELECT HABEO-SG3 (-1 HAB-ACTOR + Ine)(1 (Sg Nom)) ; ;
+SELECT HABEO-PL3 (-1 HAB-ACTOR + Ine)(1 (Pl Nom)) ; ;
 
-SELECT Sg2 IF (*-1 (Pron Pers Sg2) BARRIER N);
-SELECT Sg3 IF (*-1 (Pron Pers Sg3) BARRIER N);
-SELECT Pl3 IF (*-1 (Pron Pers Pl3) BARRIER N);
+SELECT Sg2 IF (*-1 (Pron Pers Sg2) BARRIER (N Nom)); # OR (*-1 Sg2 BARRIER Pron OR VFIN));
+SELECT Sg3 IF (*-1 (Pron Pers Sg3) BARRIER (N Nom));
+SELECT Pl3 IF (*-1 (Pron Pers Pl3) BARRIER (N Nom));
     ## Sij le jåhtemin.
 
 SELECT Sg2 IF (*1 (Pron Pers Sg2) BARRIER N);
@@ -4101,6 +4119,10 @@ MAP (@SUBJ) TARGET Nom IF (NEGATE 0 ("tijmma") OR Adv LINK *1 Num BARRIER NP-BOU
 	
 #MAP (@SUBJ @SPRED) TARGET Nom IF (0 N) ;
 MAP (@OBJ) TARGET Acc ;
+
+
+# Hbitive mappings
+MAP (@HAB) TARGET HAB-ACTOR + Ine (1 ("liehket") LINK *1 (N Nom) OR (Indef Nom)) ;
 
 # Adverbial mappings
 # ------------------
