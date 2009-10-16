@@ -3626,13 +3626,13 @@ REMOVE Com IF (0 (Dem Pl Gen))(1C (N Pl Gen));
 REMOVE Par IF (0 (Dem Sg Nom))(1C (N Sg Nom));
     ## Beelsebula, bahás vuojŋŋanisáj oajvemusá fámujn, duot ålmåj bahás vuoiŋŋanisájt vuodjel.
 
-#MAP (@OBJ) TARGET Acc ;
 
 # ============================= #
 # Disambiguating verbs - part 2 #
 # ============================= #
              SECTION            #
 # ============================= #
+
 
 # Person
 # ======
@@ -3660,8 +3660,10 @@ SELECT Pl3 IF (*-1 (N Sg Nom) BARRIER (Pron Pers Sg2 Nom) OR  (Pron Pers Sg3 Nom
 REMOVE Sg2 IF (*-1 (N Sg Nom) OR (Rel Sg Nom) BARRIER (Pron Pers Sg2 Nom) OR COMMA)(NEGATE 0 Neg);
 REMOVE Pl3 IF (NEGATE *-1 (N Pl Nom))(*-1 (N Sg Nom) LINK NOT *-1 CC BARRIER NPNH LINK -1 (N Sg Nom))(0 ("liehket"));
 
-MAP (@OBJ) TARGET Acc ;
 
+
+
+ 
 # PrfPrc
 # =======
 
@@ -3688,7 +3690,6 @@ REMOVE (V Pl3) IF (-1 (Sg Nom) LINK *-1 SV-BOUNDARY BARRIER CC LINK -1 (Sg Nom))
 	
 SELECT (V Sg3) IF (-1 (N Pl Acc) LINK *-1 ("mij" Pron Interr Sg Nom) BARRIER NOT-ADJ);
     ## Mij dahkamusájt le dujna munnujn?	
-MAP (@OBJ) TARGET Acc ;
 
 # First person dual - Du1
 # -----------------------
@@ -3732,6 +3733,7 @@ SELECT (V Pl3) IF (*-1 (Rel Pl Nom) BARRIER VFIN OR S-BOUNDARY2)(0 VFIN);
 
 SELECT (V Pl3) IF (*-1C (Pl Nom) OR (Pl3 Nom) BARRIER (V Pl3) OR CC OR S-BOUNDARY2);
 
+              SECTION            #
 
 # Rules for a special infinitive construction
 # ===========================================
@@ -3744,26 +3746,6 @@ SELECT Inf IF (*-1 ("makkár" Acc) BARRIER NOT-PCLE LINK -1 FMAINV);
 # Without finite verb:
 SELECT Inf IF (*-1 BOS LINK NOT *1 VFIN);
     ## Man diehti de sjokoládav oasstet?
-MAP (@OBJ) TARGET Acc ;    
-
-
-# More finite verbs
-# =================
-# Passive
-# =======
-# Non-finite verb forms
-# =====================
-
-# Infinitive
-# ----------
-
-# From sme-dis.rle:	
-#ADD (@TITLE) TARGET TITLE IF (1 Prop LINK 0 Fem OR Mal OR Sur);
-#ADD (@TITLE) TARGET PROFESSION IF (1 Prop LINK 0 Fem OR Mal OR Sur);
-#ADD (@TITLE) TARGET OFFICE IF (1 Prop LINK 0 Fem OR Mal OR Sur);
-		
-#MAP (@ADVL) TARGET ("akta" Num Ess);
-# Removed because that akta is added to adv-lex.
 
 # Determiner mappings
 # -------------------
@@ -4266,6 +4248,7 @@ REMOVE (@>N) IF (*-1 Num BARRIER NPNH)(0 (@NQ<))(NEGATE *1 N BARRIER NPNH);
 SELECT VFIN IF (NEGATE *-1 VFIN BARRIER CLB)(NEGATE *1 VFIN BARRIER CLB OR @CVP);
     ## - Vuorde dal ájn.
     ## Åro sjávot desik lav tjielggim.  
+              SECTION            #
 
 REMOVE (@X) ;
 
