@@ -1864,7 +1864,7 @@ MAP (@CNP @CVP) TARGET CC ;
 	## Bárnev sån riegádahttá ja dån galga suv Jesusin gåhttjot, dan diehti gå álmmugav suttojstisá lånes.
 # meaning: @CC-G @CC-L (global, local, i.e., inside and outside NP)
 
-MAP (@CNP @CVP) TARGET CS IF (0 ("gå") OR XGU);
+MAP (@CNP @CVP) TARGET CS IF (0 ("gå") OR ("nåv_gåk") OR XGU);
     ##
 
 MAP (@CVP) TARGET CS ;
@@ -1916,7 +1916,7 @@ SELECT @CNP IF (-1 Cmpnd); #XX
     # Not supposed to select "Ja de mun lean boahtán." 
 
 #SELECT @CNP IF (-1C $$CASE)(1C $$CASE); #XX
-SELECT @CNP IF (-1 $$CASE LINK 0 N)(1 $$CASE LINK 0 N LINK NOT 1 N); #XX
+SELECT @CNP IF (-1 $$CASE LINK 0 N)(1 $$CASE LINK 0 N LINK NEGATE 0 Gen LINK 1 N); #XX
     ## Jesus synagogajn åhpadij , evangeliumav rijka birra sárnnedij ja almatjijt gájklágásj dávdajs ja vigijs buoredij.
 
 SELECT @CNP IF (-1C NP-HEAD-NOM)(*1C NP-HEAD-NOM BARRIER NPNHA); #XX
@@ -1932,7 +1932,7 @@ SELECT @CVP IF (-1 (@COMP-CS<))(1 Rel LINK *1 VFIN BARRIER S-BOUNDARY); #XX
 #SELECT @CNP IF (-1 (@X) OR N)(NOT 0 ACR)(*1 N BARRIER NPNHA LINK NOT 1 VFIN);
     ## Vuolgij Nasarets ja årruj Kafarnaumij, jávrregáddáj, Sebulona ja Naftali guovlojn.
 
-SELECT @CNP IF (NEGATE -1 BOS)(NEGATE 1 CS OR Rel OR Interr)(NEGATE *1 VFIN BARRIER S-BOUNDARY2 OR PUNCT-RIGHT); #XX
+SELECT @CNP IF (NEGATE -1 BOS)(NEGATE 1 CS OR Rel OR Interr)(NEGATE *1 VFIN BARRIER S-BOUNDARY OR PUNCT-RIGHT); #XX
     # No potential finite verb following
     ## Judaj riegádijga Peres ja Sera, gej ieddne lij Tamar, Peresij riegádij Hesron,...
     ## Jesus jårgijdij ja gå suv ájtsaj de javlaj:
@@ -1942,7 +1942,7 @@ SELECT @CVP IF (1 CS); #XX
     ## Álbmotriekti gierdá dákkár doaimmaid duššefal heahtediliin ja go daidda lea dievaslaš ipmárdus dákkár álbmogiid ovddasvástideaddji eiseválddiid bealis.
     # Does 1 have to be strict?
 
-SELECT @CVP IF (*-1 VFIN BARRIER S-BOUNDARY OR CC)(*1 VFIN BARRIER S-BOUNDARY OR CC LINK NOT 0 ("diehti")); #XX
+#SELECT @CVP IF (*-1 VFIN BARRIER S-BOUNDARY OR CC)(*1 VFIN BARRIER S-BOUNDARY OR CC LINK NOT 0 ("diehti")); #XX
     ## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj.
 
 SELECT @CVP IF (0 CC)(1C VFIN);  #XX
@@ -1982,6 +1982,9 @@ SELECT @CVP IF (NEGATE -1 ADVLCASE OR Adv)(*1 ADVLCASE OR Adv BARRIER NPNH LINK 
 SELECT CS IF (0 ("vaj")); #XX
 	## Divna dát sjattaj vaj luluj ålliduvvat mav Härrá lij profehta baktu javllam.
 	## Muv niejdda le jur jábmám, valla boade bieja giedat suv nali vaj ällá.
+
+SELECT @CVP IF (*-1 VFIN BARRIER S-BOUNDARY OR @CVP)(*1 VFIN BARRIER S-BOUNDARY OR CC LINK NOT 0 ("diehti")); #XX
+
 
 SELECT @CNP ;
              SECTION              #
@@ -3159,8 +3162,8 @@ MAP (@<ADVL) TARGET VGen (*-1 VFIN BARRIER S-BOUNDARY2) ; #XX
 MAP (@ADVL>) TARGET VGen (*1 VFIN BARRIER S-BOUNDARY2) ; #XX
 	## Máhtte manai čuoigga skuvlii.
 
-MAP (@<ADVL) TARGET Ger (*-1 VFIN BARRIER S-BOUNDARY2) ;
-MAP (@ADVL>) TARGET Ger (*1 VFIN BARRIER S-BOUNDARY2);
+MAP (@<ADVL) TARGET Ger OR (V Actio Ela) (*-1 FMAINV BARRIER S-BOUNDARY2) ;
+MAP (@ADVL>) TARGET Ger OR (V Actio Ela) (*1 FMAINV BARRIER S-BOUNDARY2);
 	## Biigá lei bassaladdame báhpa boađedettiin.
 MAP (@-FMAINV) TARGET PrfPrc ; #XX
 
@@ -3675,6 +3678,7 @@ SELECT Ela IF (1 (IV PrfPrc));
     ## Maria lij ájlis Vuojŋŋanisás sahkanam, ..
 
 SELECT Ela IF (*0 ELAV BARRIER Ela OR SV-BOUNDARY2);
+SELECT (V Actio Ela) IF (*0 ELAV BARRIER Ela OR SV-BOUNDARY2);
     ## Ale balá Mariav áhkkán válldemis.
     
 REMOVE Nom IF (*-1 Nom BARRIER NOT-AAPCLE)(0 Ela LINK NOT 0 Prop);    
@@ -3929,7 +3933,7 @@ MAP (@>N) TARGET (Pron Attr) ;
 	## Härrá, Härrá, ep gus mij le duv namán åvddålijsárnnum, bahás vuojŋŋanisájit duv namán vuodjelam ja edna oavddodagov duv namán dahkam?
 	## Gå muhtem ájgev sijá lunna lijga årrum, de...
 	
-MAP (@>Pron) TARGET (Indef Gen) (1 Indef) ;
+MAP (@>Pron) TARGET Gen (1 Indef) ;
     ## Diján le ienep árvvo gå vájk man edna tsitsátjin.
 
 MAP (@Pron<) TARGET (Indef Pl Nom) IF (*-1 PPRON-DU-PL OR (N Pl) LINK 0 Nom BARRIER S-BOUNDARY2)(NEGATE -1 CC OR CLB)(NEGATE 1 Rel);
@@ -4142,16 +4146,16 @@ MAP (@ADVL>) TARGET Gen IF (0 TIME OR ROUTE)(*1 FMAINV BARRIER S-BOUNDARY2);
 MAP (@<ADVL) TARGET Gen IF (0 TIME OR ROUTE)(*-1 FMAINV BARRIER S-BOUNDARY2);
 	## 
 
-MAP (@-FSUBJ) TARGET Gen IF (1 (Actio Gen))(NEGATE 1 N)(2 N) ;
+MAP (@-FSUBJ>) TARGET Gen IF (1 (Actio Gen))(NEGATE 1 N)(2 N) ;
 	## 
 
-MAP (@-FSUBJ) TARGET Gen IF (1 Ger);
+MAP (@-FSUBJ>) TARGET Gen IF (1 Ger);
 	## Valla Petrus gájkaj guládijn vuornoj ja javlaj.
 
-MAP (@-FSUBJ) TARGET Gen IF (NEGATE 0 TIME OR ROUTE)(1 VAbess);
+MAP (@-FSUBJ>) TARGET Gen IF (NEGATE 0 TIME OR ROUTE)(1 VAbess);
 	##
 
-MAP (@-FSUBJ) TARGET Gen IF (*-1 ("liehket") BARRIER NPNHA)(1 (V Actio Ela));
+MAP (@-FSUBJ>) TARGET Gen IF (*-1 ("liehket") BARRIER NPNHA)(1 (V Actio Ela));
 	##  
 
 MAP (@>A) TARGET Gen IF (*-1 COPULAS BARRIER S-BOUNDARY2 OR VERB)(1 (A Comp)) (NEGATE 1 N);
@@ -4169,7 +4173,7 @@ MAP (@>A) TARGET Gen IF (0 MEASURE)(1 A);
 MAP (@>A) TARGET ("mierre" Gen) IF (-1 (Pron Dem Sg Gen))(1 A);
 	## 
 
-MAP (@>N) TARGET Gen IF (NEGATE -1 NUMERALS LINK 0 Nom) (NEGATE 0C ALU OR Cmpnd OR Num)(*1 N OR Actio LINK NOT 0 GerII BARRIER NOT-NP OR REALCLB) (NEGATE 1 PUNCT LINK 1 CC)(NEGATE 1 Inf) (NEGATE 1 CC LINK *1 Gen BARRIER NOT-NP LINK 1 Po) (NEGATE 1 COMMA LINK 1 Gen LINK 1 CC LINK 1 Gen LINK 1 Po) (NEGATE 1 CARDINALS LINK 0 ADVLCASE) (NEGATE 0 Actio LINK 1 ("diehti"));
+MAP (@>N) TARGET Gen IF (NEGATE -1 NUMERALS LINK 0 Nom) (NEGATE 0C ALU OR Cmpnd OR Num)(*1 N OR Actio BARRIER NOT-NP OR REALCLB OR Indef LINK NOT 0 GerII) (NEGATE 1 PUNCT LINK 1 CC)(NEGATE 1 Inf) (NEGATE 1 CC LINK *1 Gen BARRIER NOT-NP LINK 1 Po) (NEGATE 1 COMMA LINK 1 Gen LINK 1 CC LINK 1 Gen LINK 1 Po) (NEGATE 1 CARDINALS LINK 0 ADVLCASE) (NEGATE 0 Actio LINK 1 ("diehti"));
 	### 
 
 MAP (@>N) TARGET Gen IF (NEGATE -1 NUMERALS LINK 0 Nom) (NEGATE 0 ALU OR Cmpnd OR Num) (1 COMMA)(2 Rel LINK *1 COMMA LINK *1 N BARRIER NOT-NP OR REALCLB) (NEGATE 1 PUNCT LINK 1 CC) (NEGATE 1 CC LINK *1 Gen BARRIER NOT-NP LINK 1 Po) (NEGATE 1 COMMA LINK 1 Gen LINK 1 CC LINK 1 Gen LINK 1 Po) (NEGATE 0 Actio LINK 1 ("diehti"));
@@ -4334,9 +4338,7 @@ MAP (@APP-Pron<) TARGET (N Nom) IF (-1 (N Gen) OR (Pers Gen) LINK *-1 CC BARRIER
 	## Mon lean Will Turner, Sáppatbátti Turnera bárdni!
 
 SELECT:r3306 (@APP-N<) IF (-1 MEASURE LINK -1 Num LINK *-1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2) ;
-	## Juohke heasta borrá sullii 6 kilu suinniid beaivái.
-	
-	
+	## Juohke heasta borrá sullii 6 kilu suinniid beaivái.	
 
 # Habitive mappings
 MAP (@HAB) TARGET HAB-ACTOR + Ine (1 ("liehket") LINK *1 (N Nom) OR (Indef Nom)) ;
@@ -4389,7 +4391,7 @@ MAP (@SUBJ>) TARGET (Sg Nom) IF (*1 Rel BARRIER WORD LINK *1 VFIN LINK *1 (V Sg3
 
 
 
-MAP (@SUBJ>) TARGET $$PERSONNUMBER + (Pers Nom) IF (*1 $$PERSONNUMBER + V BARRIER VFIN OR S-BOUNDARY2);
+MAP (@SUBJ>) TARGET $$PERSONNUMBER + (Pers Nom) IF (*1 $$PERSONNUMBER + V BARRIER VFIN OR S-BOUNDARY2 LINK NOT 0 ConNeg);
 MAP (@<SUBJ) TARGET $$PERSONNUMBER + (Pers Nom) IF (*-1 $$PERSONNUMBER + V BARRIER VFIN OR S-BOUNDARY2);
 MAP (@SUBJ>) TARGET (Rel Nom) (*-1 BOS BARRIER VFIN) ;
 
