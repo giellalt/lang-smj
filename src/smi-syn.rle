@@ -299,7 +299,6 @@ SECTION
 
 
 LIST WORD = N A Adv V Pron CS CC Adp Po Pr Interj Pcle Pers Dem Interr Refl Recipr Rel Indef ; # any word
-LIST ALL  = N A Adv V Pron CS CC Adp Po Pr Interj Pcle Pers Dem Interr Refl Recipr Rel Indef PUNCT ; # any token
 
 
 # Case sets
@@ -354,14 +353,6 @@ LIST V-PL2 = (V  Ind Prs Pl2) (V Ind Prt Pl2) (V Cond Prs Pl2)
 LIST V-PL3 = (V  Ind Prs Pl3) (V Ind Prt Pl3) (V Cond Prs Pl3) 
              (V Cond Prt Pl3) (V Pot Prs Pl3) (V  Neg Ind Pl3);
 
- # Note that imperative verbs are not included in these sets!
-LIST HABEO-SG3 = ("liehket" Sg3) (V Neg Sg3) ("sjaddat" Sg3) ;
-
-LIST HABEO-PL3 = ("liehket" Pl3) (V Neg Pl3) ("sjadda" Pl3) ;
-
-SET HABEO-3 = HABEO-SG3 OR HABEO-PL3 ;
-
-
 # Some subsets of the VFIN sets
 # - - - - - - - - - - - - - - -
 
@@ -378,10 +369,6 @@ SET V-NOT-SG3 = V-SG1 OR V-SG2 OR V-DU1 OR V-DU2 OR V-DU3 OR
 SET V-1-2 = V-SG1 OR V-SG2 OR V-DU1 OR V-DU2 OR V-PL1 OR V-PL2 ;
 SET V-3   = V-SG3 OR V-DU3 OR V-PL3 ;
 
-# Sets consisting of forms of "liehket" (these ones need to be rewritten)
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-LIST LIEHKET-FIN-NOT-IMP = ("liehket" V Ind) ("liehket" V Cond) ("liehket" V Pot); 
 
 
 # Pronoun sets
@@ -419,15 +406,10 @@ SET NOT-DEM = WORD - Dem ;
 # Adjectival sets and their complements
 # -------------------------------------
 
-LIST A-ATTR = (A Attr) ; # Used in one rule. Not needed? 
-
-
 SET A-CASE = A - Attr - Adv ;
 
-LIST A-CC = A CC ;
 
 SET NOT-ADJ = WORD - A ;
-#SET NOT-ADJ-NUM-GEN = WORD - A - Num - Gen ;
 SET NOT-Attr = WORD - Attr ;
 SET NOT-AA = WORD - A - Adv ;
 SET NOT-AAPCLE = WORD - A - Adv - Pcle ;
@@ -454,11 +436,6 @@ SET NOT-ADV-PCLE-NEG = WORD - Adv - Pcle - Neg ;
 SET NOT-ADVL-PCLE-NEG = WORD - @ADVL - @P< - Pcle - Neg ; #Ask Eckhardt.
 
 
-LIST MANNE = "gåsi" "goasse" "goassa" "goassis" "gåkku" "gånne" "gåste" "makkir" "makkár" "manne" "manen" "mannas" ;
-
-LIST ADV-NOT-NOUN = "duodaj";
-
-
 # Coordinators
 # - - - - - - -
 
@@ -470,26 +447,6 @@ LIST XGU = "dagu" "degu" ;
 SET CRD = COMMA OR CC OR ("/") OR XGU ; 
 	# coordinators
 	
-SET LCRD = (@CNP) ;
-    # local coordinator
-SET GCRD = (@CVP) ;
-    # global coordinator
-
-
-# Sets for adverbs that have lookalikes
-# - - - - - - - - - - - - - - - - - - -
- # Here come some adverbs that have identical twins in other POS. 
- # If these are found in Adv contexts, we treat them as adverbs.
-
-#LIST ADV-NOT-VERB = "dušše" ;
-
-#LIST ADV-NOT-NOUN = "easka" "várra" ;
-
-#LIST ADV-NOT-NAMES = "Ain" "Anne" "Diego" "Dieppe" "Enge" "Galle" "Haga"
-                     # "Joba" "Johan" "Liikka" "Mai" "Mannes" "Mo" "Mot" "Naba"
-                     # "Nan" "Oktan" "Sierra" "Sokka" "Villa" ;
-
-#SET ADV-NOT-OTHER-POS = ADV-NOT-VERB OR ADV-NOT-NOUN OR ADV-NOT-NAMES ;
 
 
 # Sets of elements with common syntactic behaviour
@@ -500,8 +457,6 @@ LIST COPULAS = "bissot" "liehket" "sjaddat" "soajttet" "viedjet" "årrot";
  # 'Dáidit' can appear without 'leat'.
 LIST REALCOPULAS = "liehket" "dáidit" "leat" ;
 
-
-SET V-NOT-COP = V - COPULAS ;
 
 LIST MOD-ASP = "bierrit" "viedjet"  "viddnit"  ;
 #                "berret" "dáidit" "fertet" "galgat" "gillet" "lávet" "sáhttit" 
@@ -525,77 +480,16 @@ LIST GerII-V = "ájttsat" "gullat" "gullát" "mannat" "tjuodtjot" "tjåhkkåhit"
 SET V-TRANS-ACT = TV - (Der/Pass) ;
  # All active verbs with a TV tag, including AUX-OR-MAIN.
  
-SET V-TRANS-ACT-NOT-AUX = V-TRANS-ACT - AUX ;
-
 SET V-TRANS-ACT-NOT-ACT = V-TRANS-ACT - Actio - Actor - PrsPrc ;
 
-SET V-TRANS-ACT-NOT-ACT-NOT-AUX = V-TRANS-ACT - Actio - Actor - AUX;
 
 
 # Sets for verbs choosing oblique objects or adverbials
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-#LIST INEV =
-LIST COMV = "aktidit" "bierggit" "buohtastahttet" "gávnadit" "oassálasstet" "sjiehtadallat" ;
-LIST ELAV = "ballat" "bessat" "biehttot" "buorggot" "gáhtot" "gærggat" "gåhttsåt" "gåvvat"  "hiejttet" "luojttádit" "mássit" "nádot" "tsaggat" "várrodit" "viessot" "vuornnot" "ållit" ;
-
-LIST ILLV = "bajkket" "báddnut" "báhtset" "biedjat" "bielkket" "boadádallat" "bæhtádallat" "bælkkut" "bårrut" "dabrijdit" "dehpudallat" "dihpput" "duhtat" "duobbmidallat" "dædnjot" "dåbdijdit" "dårvustallat" "ganudit" "ganugit" "gierrot" "givnjedit" "guhkahit" "gullut" "guodet" "guoddet" "guorrasit" "guosskat" "guottedallat" "gåddudallat" "gådtjåt" "gåttådallat" "hárjjánit" "javllat" "jáhkket" "jánndedit" "joavddut" "ládadallat" "láhpput" "lávgájdallat" "lijkkut" "madtjut" "mielastuvvat" "njoammot" "oahpásmuvvat" "oassálasstet" "rájadallat" "riegádit" "råhtot" "sehkanit" "sjiehttat" "sjærggodit" "skulldit" "sledut" "snårrudit" "snårrut" "suhttat" "sæbrrat" "tjágŋalit" "tjágŋat" "tjajmadallat" "tjárggat" "tjuokkudallat" "tsábbmudallat" ;
-
-
 LIST OPREDV = "adnet" "gåhttjot" "válldet" ;
 
 LIST ESSV = "aneduvvat" "boahtet" "sjaddat";
-    # ESSV + A = Ess instead of Ine.
-
-# Other verb sets
-# - - - - - - - -
-
-LIST INFV = "boahtet" "buktet" "galggat" "gåhttjot" "liehket" "máhttet" "oadtjot" "sihtat" "suovvat";
-#LIST ACC-INFV = 
-
-
- # These are verbs taking accusative objects and infinitives;
- # a subset of INF-VERB.
-	## Ii suova nieiddas náitalit.
-
-
-LIST TOGETHER-V =  "tjadnat" "tjåhkanit" "viellidit" "viessot" ;
-#"goallostuvvot" "beaškkehat" "bidjat" "ô ­atnit" "suddat"  "heivet" "biddjojuvvot" "ô ­askit" "geassit" "gullat" "rehkenastit" "ordnet" "soahpat" "gávnnadit" "heivehit" "ô ­atnat" "doaibmat" "iskat" "laktit" "seaguhit";
- # Danger: This list could be to long, in certain respects. 
- # TODO: Think of counter examples, i.e. sentences where we have these verbs, but
- # where oktii is not an adverbial.
-
-LIST MOVEMENT-V = "boahtet" "mannat" "suhkat" "vádtsát" "vádtset" "vuoddját" "vuodjet" "vuolgget";
- 
- 
-LIST ACTIVITY-V = "duobbmit" "gástadit" "lasedit" "mihttit" "åhpadit";
-
-LIST BODY-ACTIVITY-V = "tjiektjat" ; 
-LIST WRITING-ACTIVITY-V = "tjállet" ; 
-LIST VERBAL-ACTIVITY-V = "hållat" "tjuorvvot" ; 
-LIST ABSTR-ACTIVITY-V = "buoredit" "loabedit" "vilpástallat" ;  
-LIST INTELLECTUAL-ACTIVITY-V = "usjudit" ; 
-
-# More to come:
-LIST VEHICLE-PLACE-V = "ánodit" "gahtjat" "nisskot" "oadtjot" "suoládit" "valldet" ;   
-LIST VEHICLE-TOOL-V = "buktet" "doalvvot" ;    
-SET HUMAN-SOURCE-V = VEHICLE-PLACE-V OR VEHICLE-TOOL-V ;
-# The two subsets differ in their choice of case for members of VEHICLE, but both choose locative for members of the set HUMAN (with the thematic role source)
-
-#LIST ABSTR-ENTITY-COM-V 
-#LIST ONLY-PLACE-LOC-V 
-#LIST HUMAN-LOC-V 
-
-LIST PLACE-V = "tjuodtjot" "tjællot" "tsæggahit" "válldut" "vuojnnet" "vuojnnut" "årrot"; 
-# not so sure about where to put "vuojnnet" "vuojnnut" 
-# Ine vs. Com: Only ANIMATE, TOOLS, ABSTR-TOOLS and CONCEPT take Com.
-
-
-SET DYNAMIC-V = ACTIVITY-V OR MOVEMENT-V OR VERBAL-ACTIVITY-V OR ABSTR-ACTIVITY-V OR BODY-ACTIVITY-V OR INTELLECTUAL-ACTIVITY-V OR HUMAN-SOURCE-V ;
-
-
-
-
 
 
 # NOUNS
@@ -647,8 +541,6 @@ SET PRE-APP   = COMMA OR PUNCT-LEFT OR PRE-NP-HEAD ; # This set ist not only for
                             # stand in front of appositions but also
                             # postmodifiers.
 
-# V NPNHAIIP... N
-# BOS ... N V
 
 # There must be a sensible naming convention for these sets...
 # Most strict BARRIERs...
@@ -662,11 +554,9 @@ SET NPNHAIIP = WORD - PRE-NP-HEAD - Adv - Indef - Ill - Pcle ; # <== is this our
 SET NPNHC    = WORD - PRE-NP-HEAD - Com ; # "njaŋggofirpmiiguin bivdin"
 SET NPNHCCC  = WORD - PRE-NP-HEAD - COMMA ;
 SET NAPP     = WORD - PRE-APP ;
-# SET TOLERANT-PRENPP = V ; (everything non-NP-head!)
 # ... Most sloppy BARRIERs
 
 # Set for NP with participle premodifier
-# ... IF *-1 X BARRIER NPNH OR 
 # LocComIll are ok, but only with a PrfPcc to the right
 
 
@@ -680,38 +570,11 @@ SET NPROP = N - PROP ;
 SET NOT-COMMA = CLB - COMMA OR PUNCT-LEFT OR PUNCT-RIGHT ;
 
 
-
-
-# Nominal sets defined according to their morphophonological properties
-# ---------------------------------------------------------------------
-
-LIST ILL-ADJ = "amás" "nákkes" "oasálasj" "siválasj" ;
-# There are synomyms to these words which probably also take ill.
-
-
-# LIST NOM-GEN-NOUN = ... ;
-
-SET N-NOT-ACTIO = N - Actio ;
-
-
-
 # Nominal sets defined according to their semantical properties
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-# inessive vs. comitative:
-LIST SG-WORD = "mieda" "miella" "miehttse#mieda" "vijsesvuohta";
-
-# inessive vs. essive:
-LIST INE-NOUN = "ednam";
-LIST ESS-NOUN = "sáluk" "vuodo" "vuornes";
-LIST COM-NOUN = "aktijvuohta" ;
-
 LIST TITLE =  "gånågis" "profehta" "profehtta" ;
 LIST ESS-ADVL-N = "bäjvádahka" "biegga" "dálkke" "dulvve" "njáhsto" "rássjo" "sjievnnjet"; 
 
-
-
-# SETS FROM SME TO COME IN HERE.
 
 # Time sets
 # - - - - -
@@ -736,8 +599,6 @@ LIST BEAIVI = "mánnodak" "dijstak" "gasskavak" "duorastak" "bierjjedak" "lávvo
 SET TIME = MANNU OR VAHKKU OR BEAIVI OR AJGGI ;
   # Do not add AIGODAT, it has some other characteristics in some cases.
 
-SET NOTIME = N - TIME ;
-
 LIST GIESSEK = "dálvvek" "gidak" "giessek" ("giessek" Adv) "tjaktjak" ; 
 
 
@@ -748,9 +609,6 @@ LIST GIESSEK = "dálvvek" "gidak" "giessek" ("giessek" Adv) "tjaktjak" ;
 LIST MEASURE = "mijlla" "kilo#mehter" "mehtar" "mehter" "senti#mehter" "sm" "milli#mehter" "stihkko" "salla" "lihttar" "kilo" "unnánasj" ;
 
 LIST CURRENCY = "kråvnnå" "kr" "¢" "€" "$";
-
-LIST CURRENCY-GEN = ("kråvnnå" Gen) ("kr" Gen) ("¢" Gen) ("€" Gen) ("$" Gen);
-SET NOT-CURRENCY-GEN = N - CURRENCY-GEN ; 	
 
 LIST NUMUNIT = "tjuohte" "tuvsán" "millijåvnnå" "milijåvnnå" "mill" "mil" "milliárdda" "mrd";
 
@@ -788,7 +646,6 @@ LIST ROLE = "årro" ;
 
 SET HUMAN = HUMAN-INDIVIDUAL OR HUMAN-GROUP OR PROFESSION OR ROLE OR OFFICE ;
 
-LIST BODY = "giehta" "juolgge" "tjalmme" ;
 LIST ANIMAL = "guokkardiddje" "judos" "sávttsa" "vierttsa" ;
 LIST HUNT-ANIMAL = "rievsak" ;
 LIST BOAZU = "boatsoj" ;
@@ -797,84 +654,23 @@ LIST FISH = "guolle" ;
 SET ALL-ANIMALS = ANIMAL OR HUNT-ANIMAL OR BOAZU OR FISH ;
 
 SET ANIMATE = HUMAN OR ALL-ANIMALS ;
-
-#PLANT
-
-LIST TOOLS = "dållå" "jiedna" "tjáhtje";
-
-LIST WRITING-TOOLS = "pænna" ;
-
-LIST ABSTR-TOOLS = "ássje" "duobbmo" "musihkka" "varra" "vuornes"; 
  
-#PARTS ruohtas
-#SHOE
-#BEDCLOTHES
-#FOOD
-#CONTAINTERS
-
-LIST ROOM-VEHICLE = "bijlla" "hiergge" "vanás";
-LIST SMALL-VEHICLE = "syhkal" ; 
-
-SET VEHICLE = ROOM-VEHICLE OR SMALL-VEHICLE ;
-
-LIST TEXT = "girjje" ;
-LIST ABSTR-TEXT = "álmmuk#lávla" "álmmuk#subtsas" "lávla" "subtsas" ; 
-# eaktu, gažaldat, mearrádus
-
-#WATER
-#OBJECT = PARTS OR SHOE OR FOOD OR TEXT
-#ENTITY = TOOLS OR OBJECT OR VEHICLE
-
-LIST BUILDING = "dåhpe" "fáŋŋga#goahte" "gábmá" "goahte" "låvda#goahte" "oases" "synagoga" ;
-
-LIST ROOM = "ladnja" "oadem#ladnja" ;
-
-LIST GEOGRAPHICAL-PLACE = "dáfo" "ednam" "gádde" "guovllo" "jávrre" "várre" "åjdå#miehttse";  
-LIST POLITICAL-PLACE = "rijkka" "stáda"; 
-LIST GENERAL-PLACE = "gahttun#suorre" "sijdda" "stáda";  
-LIST SPEC-PLACE = "värro#áltár" ; # for Ill disamb
 LIST CONCRETE-ROUTE = "gahttun" "njálmme#rájgge" "uksa#rájgge" "væddja";
 LIST ABSTR-ROUTE = "mijlla" ;
 
 SET ROUTE = CONCRETE-ROUTE OR ABSTR-ROUTE ; 
 
-SET PLACE = GEOGRAPHICAL-PLACE OR POLITICAL-PLACE OR GENERAL-PLACE OR ROUTE OR BUILDING OR ROOM ;
-
 LIST ORGANIZATION = (Prop Org) "giddagas" "girku" ;
-
-#FYLKA
-#NATION = NATION-NOT-NORGA OR NORGA
-
-#STATE ("dearvvas" Der/vuohta) "gaskavuohta" "miella#dearvvašvuohta" "ráfi" "váivi" "veahkki";
-
-#ABSTR-ENTITY  "ášši" "bálká" "bušeahtta" "doaibma#plána" "fuolahan#bálká" "giella#ruhta" "hehttehus" "plána" "prošeakta" "ruhta" "sosiála#plána" "stáhta#doaibma" "váttisvuohta" ;
-
-LIST CONCEPT = "gieresvuohta" "guojmme#gieresvuohta" "mujtto" "måråj" "oame#dåbddo" ;
-
-#LIST ACTIVITY = "čađaheapmi" "dearvvašvuođa#dutkan" "fuolaheapmi" "geahčastat" "guorahallan" "šiehtadallan" ;
-
-#ABSTRACT = ABSTR-ENTITY OR CONCEPT OR ACTIVITY 
-
-LIST SITUATION = "dille" ;
 
 LIST INSTITUTION = "instituhtta" ;
 LIST INDUSTRY = "æládus#tjærdda" ;
 LIST EDUCATION = "skåvlla" "vuodo#skåvllå" ;
-LIST EVENT = "aktisasj#tjåhkanibme" "tjåhkanibme" ; 
-
-SET ABSTR-PLACE = ORGANIZATION OR INSTITUTION OR EVENT OR EDUCATION OR INDUSTRY OR SITUATION ;
 
 SET ACTOR = ANIMATE OR INSTITUTION OR ORGANIZATION ;
 SET HAB-ACTOR = HUMAN-INDIVIDUAL OR ACTOR OR HUMAN-GROUP OR INDUSTRY OR EDUCATION OR ("guhti") OR ("guhtis") OR ("guhtimusj") OR ("galles") OR Pers  ;
-# PEOPLE-NUM OR ("eará") 
+
 LIST HAB-CASE = Loc (<smj> Ine) (<sma> Gen) ;
 
-LIST LANGUAGE = "sáme#giella" ;
-
-#ILLNESS
-#POLITICAL-ABSTR-N  "boazodoallo#politihkka" "boras#pirepolitihka" "kultur#árbi" "sosiála#politihkka" 
-
-#OASSI
 
 LIST HEADOFPARTS = "oassi" "oajvve#oasse" "bielle" "guhtimusj" "goappátjagá" "proseanta" "%" ;
   # This may be a better partitive set.
@@ -896,19 +692,6 @@ LIST GASKAL = "gaskal" "gaskii" "gaska" "gaskas" ;
  # p-positions that like coordination
 
 SET REALCLB = CLB - COMMA ;
-SET REALWORD = WORD - Num - Ord ;
-
-LIST CONTRA = "valla" ;
-
-SET NOT-CC = WORD - CC ;
-
-SET NOT-PCLE = WORD - Pcle ;
-
-LIST COMPAR = "dájvvábut" "ienep" "ietjá#lágásj" "ietjá" "ietján gå" "danga båttån" "sæmmi#lágásj" "sæmmi#láhkáj" "sæbbmi#láhkáj "; 
- # These combine with "gå" Pcle, but COMPAR stands for 'comparison' rather than
- # 'comparative'.
-
-SET NOT-PUNCT-RIGHT = ALL - RIGHT ;
 
 # Border sets and their complements
 # ---------------------------------
@@ -947,13 +730,6 @@ SET SV-BOUNDARY2 = S-BOUNDARY2 OR FMAINV ;
 SET SVF-BOUNDARY = S-BOUNDARY OR VFIN ;
 # This set is ment to use in rules for disambiguating due to verbs or verbsets. 
 # Here we search for either an S-BOUNDARY or a finite verb, either aux or main.
-
-SET CCCOMMA = CC OR COMMA ;
-	# remember that those are potential sentence boundaries, too
-#SET BOUNDARY = S-BOUNDARY OR NP-BOUNDARY ; # not in use
-
-#SET INTR = Rel OR PUNCT-LEFT ; 
-	# interrupters - not in use
 
 
 
