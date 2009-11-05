@@ -79,6 +79,7 @@ LIST Refl = Refl ;
 LIST Rel = Rel ;
 LIST Interj = Interj ; 
 LIST Adp = Adp ;
+LIST Coll = Coll ;
 
 
 # Morphosyntactic properties
@@ -171,7 +172,7 @@ LIST PAR = PAR ;
 
 # Noun tags
 
-LIST LOC = Ine Ela ; # This set since we imported sme rules, all LOCs must be revised.
+LIST LOC = Ine Ela Loc ; # This set since we imported sme rules, all LOCs must be revised.
 
 
 # Syntactic tags
@@ -272,20 +273,6 @@ LIST ACR = ACR ;
 LIST COMMA = "," ; 
 LIST ¶ = ¶;
 
-#LIST OKTA = "okta"; LIST gå = "gå" ;
-
-# Initials
-# --------
-
-LIST INITIAL =  "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m"
-                "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z"
-                "á" "æ" "ø" "å" "ö" "ä" ;
-
-LIST CAP-INITIAL = "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M"
-        "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"
-        "Á" "Æ" "Ø" "Å" "Ö" "Ä" ;
-
-
 
 
 # ======== #
@@ -303,23 +290,17 @@ LIST WORD = N A Adv V Pron CS CC Adp Po Pr Interj Pcle Pers Dem Interr Refl Reci
 
 # Case sets
 # ---------
-LIST ADVLCASE =             Ill Ine Ela Com Ess     ;
-LIST OBLCASE  =     Acc Gen Ill Ine Ela Com Ess Par ;
-LIST CASE     = Nom Acc Gen Ill Ine Ela Com Ess Par ;
+LIST ADVLCASE =             Ill Ine Ela Com Ess Loc    ;
+LIST OBLCASE  =     Acc Gen Ill Ine Ela Com Ess Par Loc ;
+LIST CASE     = Nom Acc Gen Ill Ine Ela Com Ess Par Loc ;
 
-SET NOT-NOM = CASE - Nom ;
 SET NOT-GEN = CASE - Gen ;
-SET NOT-ACC = CASE - Acc ;
 
 
 # Verb sets
 # ---------
 SET VERB = V - (V N);   # V is all readings with a V tag in them, VERB should
                         # be the ones without an N tag following the V
-
-
-SET V-NOT-CMPND = V - Cmpnd; # Not in use.
-
 
 # Finiteness and mood
 # - - - - - - - - - -
@@ -379,13 +360,13 @@ SETS
 
 LIST MUN = (Pron Pers Sg1 Nom) ;
 LIST DON = (Pron Pers Sg2 Nom) ;
-LIST SON = ("son" Pron Pers Sg3 Nom) ;
+LIST SON = ("son" Pron Pers Sg3 Nom) ("sån" Pron Pers Sg3 Nom) ;
 LIST MÅJ = (Pron Pers Du1 Nom) ;
 LIST DÅJ = (Pron Pers Du2 Nom) ;
 LIST SÅJ = (Pron Pers Du3 Nom) ;
 LIST MIJPERS = (Pron Pers Pl1 Nom) ;
 LIST DIJ = (Pron Pers Pl2 Nom) ;
-LIST SIJ = ("son" Pron Pers Pl3 Nom) ;
+LIST SIJ = ("son" Pron Pers Pl3 Nom) ("sån" Pron Pers Pl3 Nom) ;
 
 SET PPRON-NOM-NOT-DAT = MUN OR DON OR SON OR MÅJ OR DÅJ OR SÅJ OR MIJPERS OR DIJ OR SIJ ;
 
@@ -433,7 +414,7 @@ SET NOT-ADV-INDEF = WORD - Adv - Indef ;
 SET NOT-ADV-PCLE-ILL = WORD - Adv - Pcle - Ill ;
 SET NOT-ADV-PCLE-INDEF = WORD - Adv - Pcle - Indef ;
 SET NOT-ADV-PCLE-NEG = WORD - Adv - Pcle - Neg ;
-SET NOT-ADVL-PCLE-NEG = WORD - @ADVL - @P< - Pcle - Neg ; #Ask Eckhardt.
+SET NOT-ADVL-PCLE-NEG = WORD - @ADVL - @P< - Pcle - Neg ;
 
 
 # Coordinators
@@ -452,27 +433,11 @@ SET CRD = COMMA OR CC OR ("/") OR XGU ;
 # Sets of elements with common syntactic behaviour
 # ================================================
 
-LIST COPULAS = "bissot" "liehket" "sjaddat" "soajttet" "viedjet" "årrot";
+LIST COPULAS = "bissot" "liehket" "sjaddat" "soajttet" "viedjet" "årrot" "dáidit" "gártat" "leahkit" "leat" "orrut" "soaitit" "šaddat" "veadjit" ;
 #"dáidit" "gártat"  ;
  # 'Dáidit' can appear without 'leat'.
 LIST REALCOPULAS = "liehket" "dáidit" "leat" ;
 
-
-LIST MOD-ASP = "bierrit" "viedjet"  "viddnit"  ;
-#                "berret" "dáidit" "fertet" "galgat" "gillet" "lávet" "sáhttit" 
-#		"seahtit" "soaitit" "viggat" ;
- # Verbs that never have arguments of their own - so we leave out "áigut", for ex.
-
-LIST AUX-OR-MAIN = "ájggot" "bessat" "bierrit" "buktet" "galggat" "hálijdit" "hæhttut" "máhttet" "nagádit" "sihtat" "vierttit" "årrot" ;
- # These verbs can take arguments, so they do not belong in the AUX group, 
- # but they are nevertheless mapped to (@+FAUXV). 
-
-SET AUX = COPULAS OR Neg OR MOD-ASP OR AUX-OR-MAIN ;
-
-SET V-NOT-AUX = V - AUX ;  # The set of verbs that cannot be auxiliaries. 
-			   # Does not include AUX-OR-MAIN.
-
-SET VFIN-NOT-AUX = VFIN - AUX ;
 
 LIST GerII-V = "ájttsat" "gullat" "gullát" "mannat" "tjuodtjot" "tjåhkkåhit" "vuojnnet" "vællahit" ;
 
@@ -487,7 +452,7 @@ SET V-TRANS-ACT-NOT-ACT = V-TRANS-ACT - Actio - Actor - PrsPrc ;
 # Sets for verbs choosing oblique objects or adverbials
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-LIST OPREDV = "adnet" "gåhttjot" "válldet" ;
+LIST OPREDV = "adnet" "gåhttjot" "válldet"  "atnit" "dadjat" "dahkat" "dulkot" "geavahit" "geahččat" "gohčodit" "gohččut" "meroštallat" "navdit" "váldit" "válljet" ;
 
 LIST ESSV = "aneduvvat" "boahtet" "sjaddat";
 
@@ -572,8 +537,8 @@ SET NOT-COMMA = CLB - COMMA OR PUNCT-LEFT OR PUNCT-RIGHT ;
 
 # Nominal sets defined according to their semantical properties
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-LIST TITLE =  "gånågis" "profehta" "profehtta" ;
-LIST ESS-ADVL-N = "bäjvádahka" "biegga" "dálkke" "dulvve" "njáhsto" "rássjo" "sjievnnjet"; 
+LIST TITLE =  "gånågis" "profehta" "profehtta"  ("gásttašit" Der/eaddji) "justitiarius" "majestehta" "prof" "cand.mag" "cand.oecon" "cand.philol" "cand.real" "cand.scient" "cand.theol" "cand"  "dr.art" "eksp.hoavd" "eksp.sj" "fenr" "fig" "fil.tri" "gen.lt" "genr" "genr.lt" "h.r.adv" "hr" "kapt" "korp" "lekt" "lic" "ltn" "mag.art" "mag" "majestehta" "merc" "miss" "Miss" "Mr" "Mrs" "odont" "oecon" "ordf" "ossod.dir" "stud.phil." "res.kap" "stud.philol" "vit.ass" "dr" "dr.med" "dr.philos" "dr.theol" ;
+LIST ESS-ADVL-N = "bäjvádahka" "biegga" "dálkke" "dulvve" "njáhsto" "rássjo" "sjievnnjet"  "arvi" "árga" "baika" ("bassi" N) ("báhkka" N) "beaivvádat" "biegga" "bievla" ("buolaš" N) "čuoika" "čuovga" (".*dálki"r) "dulvi" "mánoheahpi" "muohta" "njáhcu" ("seavdnjat" N) "veaigi" ; 
 
 
 # Time sets
@@ -629,28 +594,25 @@ LIST ALU = ("allu" Gen)("assu" Gen)("čiekŋu" Gen)("gassu" Gen)("govdu" Gen)
 # Semantic noun-sets
 # -------------------
 
-LIST HUMAN-INDIVIDUAL = "áddjá" "áhkká" "áhkko" "áhttje" "áhttje#bielle" "ájttek" "bárne#bárnne" "bárne#niejdda" "bárnne" "bárnne#bielle" "biebbmo#bárnne" "biddno#moarsse" "boaddnje" "gájmme" "gállasj#guojmme"  "gállasj#ålmåj" "gálojinitja" "goasske" "goasske"  "gieruk" "ibme" "ieddne" "ieddne#bielle" "iemet" "irgge" "iset" "násste#dåbdde" "niejdda" "næjttso" "næjttso#riehko" "oarbben#bielle" "oarbben" "siessá" "siessal" "sirram#nissun" "svilli" "mannje" "moarsse" "muohtá" "muohtal" "niehpe" "oabbá" "oabbá#bielle" "tjiehtje" "tjiehtjev" "vieljasj" "viellja" "viellja#gieres" "viellja#bielle" "vilpástalle" "æddnul" "ænoj" ; 
+LIST HUMAN-smj = "áddjá" "áhkká" "áhkko" "áhttje" "áhttje#bielle" "ájttek" "bárne#bárnne" "bárne#niejdda" "bárnne" "bárnne#bielle" "biebbmo#bárnne" "biddno#moarsse" "boaddnje" "gájmme" "gállasj#guojmme"  "gállasj#ålmåj" "gálojinitja" "goasske" "goasske" "gieruk" "guolle#bivdde" "ibme" "ieddne" "ieddne#bielle" "iemet" "irgge" "iset" "násste#dåbdde" "niejdda" "næjttso" "næjttso#riehko" "oarbben#bielle" "oarbben" "siessá" "siessal" "sirram#nissun" "svilli" "mannje" "moarsse" "muohtá" "muohtal" "niehpe" "oabbá" "oabbá#bielle" "sijdda" "stáhta#ministar" "tjiehtje" "tjiehtjev" "vehka" "vieljasj" "viellja" "viellja#gieres" "viellja#bielle" "vilpástalle" "æddnul" "ænoj" "årro" ; 
 
-LIST HUMAN-GROUP = "sijdda" "vehka" ;
+LIST HUMAN-sme =  "Bergen#-soalddát" "Enodat#sápmelaš" "Guovda#geain#sápmelaš" "Maya#-indiána" "Norgga#-ustit" "Ruošša-#Sápmelaš" "Suonjil#sápmelaš" "Sáme#demokráhtta" "Sámedigge#presideanta" "Sápmi" "Várjjat#sápmelaš" "almennet" "almmolašvuohta" "almmái#olmmoš" "arkeologa" "badje#sápmelaš" "bajit#báhppa" "bargo#veahka" "bassaleaddji" "bassi" "beahtu" "bearaš" "bearaš#minister" "beargalat" "bearre#mánni" "bibliotekára" "biebmo#ministtar" "biila#divvu" "birasgáhtten#ministtar" "birasgáhttenráđđe#addi" "bisma" "bismá" "bispa" "boadnji" "boanda" "boaris" "boazo#doalli" "boazo#eaiggát" "boazo#sápmelaš" "boazo#sápmi" "boazodoallo#hoavda" "boles#meašttir" "buvttadeaddji" "báhkkár" "báhppa" "bálvalan#guoibmi" "bálvaleaddji" "bárdne#mánná" "bárdni" "bártnáš" "davvi#sápmi" "dearvvašvuođa#ministtar" "dekana" "delegašuvdna" "dievdo#olmmoš" "divššohas" "duiskkalaš" "dulka" "duojár" "dáiddár" "dáidár" "dállo#doalli" "dálon" "dálu#eamit" "dálu#isit" "dánskalaš" "dárkkisteaddji" "dáčča" ("duodje#oahpahallat" Actor) "eadni" "eahki" "eaiggát" "eallo#doalli" "ealáhus#doalli" "eamit" "eammi" "eanadoallo#minister" "eanan#doalli" "eanan#eaiggát" "eanan#hearrá" "eanu" "eatnan#doalli" "eatnigiel#hálli" "eaŋkil#olmmoš" "eŋgel" "farao" "fitnodat#doaibmi" "fitnodat#oamasteaddji" "fylkka#ráđđi" "fáldi" "fásta#ássi" "geavaheaddji" "gieldda#minister" "giella#ráđđi" "gili#almennet" "gili#ássi" "girdi" "girko#bálvaleaddji" "girko#dulka" "goaski" "golle#rávdi" "gonagas" "govva#dáiddár" "govva#dáidár" "govvedeaddji" "govvejeaddji" "guoibmi" "guolásteaddji" "guolástus#minister" "guossi" "guovdageaidnolaš" "guođoheaddji" "gáktehas" "gánda" "gávpejas" "gázzi" "hearrá" "hollándalaš" "háldi" "hárjeheaddji" "indiána" "informánta" "ipmil" "irgi" "isit" "israellaš" "johtti#sápmelaš" "johtti#sápmi" "judálaš" "julev#sápmelaš" "julev#sápmi" "justis#ministtar" "juvddálaš" "kandidáhta" "kandidáhtta" "keaisár" "kirurga" "koahkka" "korefereanta" "kránnjá" "kultur#minister" "kursa#oahppi" "lagamuš" "leans#mánni" "leanut" "lestadiánalaš" "logopeda" "luhkkár" "lulli#sápmelaš" "lulli#sápmi" "lunta" "lágideaddji" "láibu" "lávlu" "mannji" "mearra#almmái" "mearra#olmmái" "mearra#sápmi" "ministtar" "mišuneara" "moarsi" "muitaleaddji" "muoŧŧa" "muoŧŧal" "museá#bargi" "musihkka#dahkki" "musihkkár" "máhttájeaddji" "máilmme#meašttir" "mánná" "mánáid#mánná" "mánáš" "mátta#sápmi" "máttar#áddjá" "máttar#áhkku" "neahpi" "neavttár" "nieida" "nieiddaš" "nisson" "nisson#olmmoš" "nisson#áirras" "nisu" "njunuš#jurista" "njávdán#sápmelaš" "noaidi" "nomáda" "nuorra" "nuorta#sápmi" "nuortalaš" "náittos#guoibmi" "návet#vázzi" "oabbá" "oabbá#bealli" "oahpahalli" "oahppan#olmmoš" "oahppi" "oaivadeaddji" "oaivámuš" "oambealli" "oapmahaš" "oappáš" "oarje#sápmelaš" "oarje#sápmi" "oarpmealli" "oktavuođa#olmmoš" "olbmo#bárdni" "olgo#riikkalaš" "olles#olmmoš" "olmmoš" "olmmái" "osku#guoibmi" "osku#viellja" "ossodat#direktevra" "ossodat#direktøra" "ovda#olmmoš" "ovttas#ássi" "ođas#hoavda" "ođas#lohkki" "palestinalaš" "parkeren#fákta" "pasienta" "pedagoga" "plánejeaddji" "poliisa" "politihkar" "politihkkár" "politiija" "prentejeaddji" "presideanta" "profehta" "professor" "reaŋga" "redaktevra" "rehket#doalli" "rehketdoallo#dárkkisteaddji" "rektor" "riika#vuloš" "riikka#ássi" "rist#vánhen" "romalaš" "romer" "ruhttejeaddji" "ruota#suopmelaš" "ruvdna#prinsa" "ruvvejeaddji" "rádje#fákta" "rádje#soalddat" "ráidu" "ránnjá" "rávdi" "rávis#olmmoš" "ráđđe#addi" "ráđđe#almmái" "ráđđe#olmmái" "ráđđi" "samarialaš" "sealge#eadni" "sester" "siessal" "siessá" "siida#guoibme#nisu" "siida#guoibmi" "silba#rávdi" "sis#eatnan#sápmelaš" "skibir" "skihpár" "skohter#vuoddji" "smávva#gánda" "snihkkár" "soahte#olmmái" "soalddat" "sohka" "sohka#goddi" "sosionoma" "sosiála#ministtar" "spábba#čiekči" "spábbačiekčan#hárjeheaddji" "stipendiáhta" "stivra#lahttu" "studeanta" "stáhta#almennet" "stáhta#boargár" "stáhta#ministtar" "stáhta#ráđđi" "stállu" "sundi" "suodjalus#eŋgel" "suodjalus#minister" "suohkan#báhppa" "suohkan#plánejeaddji" "sága#doalli" "sáme#demokráhtta" "sáme#dikke#ráđđi" "sáme#duojár" "sáme#gielat" "sáme#mánná" "sáme#nisson" "sáme#nisu" "sáme#nuorra" "sámedigge#presideanta" "sámedikke#áirras" "sápmi" "sárdnideaddji" "sátne#jođiheaddji" "sávza#doalli" "taksi#vuoddji" "telefon#vástideaddji" "tuollár" "turista" "turista#ofelaš" "uksa#fákta" "ulda" "universitehta#lektor" "unnit#lohku" "ustit" "veahka" "verdde" "vieljaš" "viellja" "viellja#bealli" "viesso#hoiddár" "viissis" "vilbealli" "virge#guoibmi" "virge#olmmoš" "vuohppa" "vuokta#čuohppi" "vuon#áhkku" "vuoni" "vuoras#olmmoš" "vuoste#bealli" "vuoste#belle" "vuotna#sápmelaš" "vuotna#ássi" "váhnen" "váldo#doaimmaheaddji" "várre#presideanta" "áddjut" "áddjá" "áhkku" "áhkkut" "áhkká" "áhčči" "áirras" "ákšo#álmmái" "álbmot" "álbmot#guoibmi" "ámmát#olmmoš" "ámmát#olmmái" "ámta#mánni" "ássi" "čalbme#eadni" "čalbme#áhkku" "čeahci" "čeahcit" "šibit#doalli" "čiekči" "čorgejeaddji" "čála#oahppavaš" (".*#geahčči"r) (".*#guovttis"r) (".*#guovttos"r) (".*#mánni"r) (".*#vuoddji"r) (".*#vuovdi"r) (".*#álbmot"r) (".*advokahta"r) (".*artista"r) (".*assisteanta"r) (".*bagadalli"r) (".*bagadeaddji"r) (".*bargi"r) (".*bearaš"r) (".*biigá"r) (".*bivdi"r) (".*dikšu"r) (".*direktevra"r) (".*dirigeanta"r) (".*divššár"r) (".*doaimmaheaddji"r) (".*doavttir"r) (".*duopmar"r) (".*duopmár"r) (".*dutki"r) (".*hoavda"r) (".*hábmejeaddji"r) (".*joavku"r) (".*journalista"r) (".*jođiheaddji"r) (".*komiteá"r) (".*kommišuvdna"r) (".*konsuleanta"r) (".*meannudeaddji"r) (".*oahpaheaddji"r) (".*sadjásaš"r) ("sápmi" N Pl) (".*sássa"r) ("suddu" Der/laš) (".*teknihkar"r) (".*terapeuta"r) (".*terapevta"r) (".*veahka"r) (".*veahkki"r) (".*áittardeaddji"r) (".*čearda"r) (".*čuojaheaddji"r) (".*čálli"r) ;
 
-LIST PROFESSION = "guolle#bivdde" ;
+LIST HUMAN-sma = "maana"  ;
 
-LIST OFFICE = "stáhta#ministar" ;
-LIST ROLE = "årro" ;
+SET HUMAN = HUMAN-sma OR HUMAN-sme OR HUMAN-smj ;
+LIST ANIMAL-smj =  "boatsoj" "guokkardiddje" "guolle" "judos" "rievsak" "sávttsa" "vierttsa" ;
 
-SET HUMAN = HUMAN-INDIVIDUAL OR HUMAN-GROUP OR PROFESSION OR ROLE OR OFFICE ;
+LIST ANIMAL-sme = "ábe#gáhttu" "ásen" "beana" "bohkká" "bussá" "čeavrris" "ciiku" "čivga" "dámmá" "ealit" "fuođđu" "gáhttu" "gáica" "gálbi" "gihcci" "guigu" "gussa" "heasta" "horti" "láppis" "loddi" "máhtu" "njiŋŋálas" "ore" "sávza" "sávza#beana" "smávva#fuođđu" "spiinne#čivga" "spiidni" "vársá" "vársi" "vielppis" "vierca" "vuoksá" "vuoncá#varis" "vuonccis" "ealga" "rievssat"  "áldu" "boazu" "čearpmat" "čora" "eallu" "heargi" "miessi" "sarvvis" "vierro#boazu" "vuonjal" "bálddis" "čuska" "dápmot" "diddi" "diksu" "dorske#guolli" "dorski" "duovvi" "gilot" "guolli" "hávga" "juksu" "luos#juolgi" "luossa" "luossa#guolli" "luossa#nálli" "muortu" "sallit" "sáidi" "sáiva#guolli" "šákša#dorski" "stábbasáidi" "stáinnir" "stuora#sáidi" "rutnot" "veajet" "čora" "eallu" "hearge#ráidu"  "ákta" "báiski" "bovttáš" "cagan" "čearret" "gádde#loddi" "gáiru" "meara#loddi" "skávli" "skuolfi" "šuoršu"  "albatrossa" "alit#bađuš" "alit#gaccet" "alit#oai#gaccet" "bakku" "baste#suorsi" "bađoš#gaccet" "beahce#báhcat#loddi" "beahce#loddi" "bealdo#cihci" "bealdo#garjá" "bealdo#vuorra" "bealge#loddi" "beallje#loađgu" "beallje#rásttis" "bearal#skuolfi" "beaste#rages" "beibboš" "beibboš#cihci" "beibboš#cizáš" "belddoš#vizar" "beškkoš" "beštor" "biegga#fálli" "biehkan" "bigán" "bihcabas#čáihni" "bihcebas#gáski" "bihcebas#čáihni" "bisse#hávka" "bižus" "boaimmáš" "boallo#njukča" "boađđo#civkkán" "borjjastit" "borse#njunni" "bovttáš" "bulddogas" "bumbá" "buoide#gaccet" "buokčat" "buokči" "bupmálaš" "bursa#njunni" "bussá#skuolfi" "buvvedat" "báiski" "bákte#duvvá" "bárbmo#fálli" "bávgoš" "cagan" "cagán" "cielláš" "cihce#skuolfi" "cihrre#lasta#vizar" "civka#leivvoš" "cizaš#fálli" "cizopaš" "cizot" "davve#lasta#vizar" "davve#loddi" "davve#vizar" "deagga#čáihni" "deagge#báiski" "deagge#cihci" "dearbme#rásttis" "derpmoš" "dieldá" "dielko#duvvá" "dihtti" "dikso#báhppa" "dirre#lihká" "doadjo#suorsi" "dokta" "dovtta" "duoršu" "duottar#bižus" "duottar#civka#leivvoš" "duvvá" "duvvá#rásttis" "dálve#beštor" "dálve#ruoivil" "dálvi" "dáža#boaimmáš" "dáža#suorsi" "fasána" "fiehta" "fiervá#vierru" "fiervá#viroš" "fiskes#beštor" "fiskes#cihci" "fiskes#cižáš" "fiskes#gaccet" "fiskes#jievžžan" "fiskes#njun#gáhkkor" "fiskes#vizar" "fiŋka" "gaccepaš" "gaccet" "gahper#báiski" "gahper#vizar" "garjá" "gassa#njunni" "gazza#loddi" "gazze#biehtár" "geađge#jorgu" "geađge#rásttis" "giega#biigá" "giehka" "giehpa#vuonccis" "giella#vealgu" "gierdo#duvvá" "gierdo#rásttis" "gierdo#suorsi" "gierdo#čuonjá" "gierra" "giljobaš" "gilljobaš" "gilva#beštor" "girje#báhcat#loddi" "girje#livkkár" "giron" "goahcce#loddi" "goahppil" "goahppil#gálli" "goahte#goljaš" "goalsi" "goalso#ruoššehas" "goalšo#vizar" "goarga" "goarga#loddi" "goargŋo#haŋŋá" "goaski" "goaskin" "gollaš" "golle#beibboš" "golle#cihci" "golle#gahpir" "golli" "golláš" "gorges#hávda" "gorges#lihkká" "govu#skuolfi" "gođa#loddi" "gožu#vuoražas" "guoik#gáhrit" "guoik#gárri" "guoksa" "guolbba#vierru" "guolbba#viroš" "guolbba#čoavžžu" "guolle#fálli" "guolle#čearret" "guorga" "guossa#báhcat#loddi" "guossa#gaccet" "guossa#ruossa#njunni" "guossa#vizar" "guovssat" "guovsso#loddi" "gussa#goalsi" "guškil#vierru" "guškil#viroš" "guškkástat" "gádde#buvvet" "gádde#skirvi" "gádde#vierru" "gádde#viroš" "gáhkkor" "gáiru" "gállat" "gálli" "gállit" "gáranas" "gáranas#loddi" "gárggo#goalsi" "gárgo#goalsi" "gávla#čuonjá" "hálka#loddi" "haŋŋá" "hearta#vizar" "hoašša#cihci" "hurrat" "hurri" "hurri#goahppil" "hurri#čukčá" "háigir" "háigir#loddi" "hálka" "hálka#gonagas" "hálka#čielkkis" "háskil" "hávda" "idja#skuolfi" "jeagge#fálli" "jeagge#meahkástat" "jeagge#čoavžžu" "jeaggehávut" "kanária#loddi" "keaisár#pingviidna" "jiekŋa#čielkkis" "jiesmi" "jievja#skuolfi" "jievže#loddi" "jávre#sopmir" "leahtto#fálli" "leahtto#spálfu" "leaibe#loddi" "leivvoš" "lidnu" "liidn-elláš" "liin-elláš" "litnut" "livkkár" "loađgu" "loddi" "lodde#gonagas" "lodde#jievži" "luhkka#loddi" "láfol" "láhto#spálfu" "látte#guoksa" "látte#guovssat" "látto#vuonccis" "láŋgá" "meahkástat" "mearra#goaski" "mearra#goaskin" "mearra#gáiru" "mearra#čuonji" "mearra#čuonjá" "mielle#spálfu" "miestta#cihci" "miestta#rásttis" "miestta#vizar" "miestta#šurre#vizar" "molde#cizáš" "muhkke#cizáš" "muogir" "muorra#civkkán" "muorra#gakcu" "mákrealla#čearret" "niehtte#garjá" "niito#civkkán" "njukča" "njurggu" "njurgut" "noaide#loddi" "nuorta#cihci" "nuorta#lasta#vizar" "nuorti" "náhkke#soadjá" "oanehis#njun#čuonjá" "paradiisa#loddi" "pelikan#loddi" "pingviidna" "ribe#skáiti" "riddo#civka#leivvoš" "riddo#vierru" "riddo#viroš" "rievssat" "rievssat#cižáš" "rievssat#fálli" "roavgo#gonagas" "rohto#gaccet" "rohto#vizar" "rohto#čoavžu" "rohto#čoavžžu" "rukses#bađoš" "rukses#beibboš" "rukses#civka#leivvoš" "rukses#fiehta" "rukses#guškil" "rukses#juol#čoavžžu" "rukses#ruivil" "rukses#ruoivil" "rukses#rásttis" "rukses#soadjá" "rukses#suorre#hávut" "ruoivil" "ruoná#beibboš" "ruoná#cihci" "ruoná#cizáš" "ruoná#juol#čoavžžu" "ruoná#čáihni" "ruossalas#njunni" "ruovddagas" "ruovde#cihci" "ruovde#cizáš" "ruođa" "ruošša#boaimmáš" "ruošša#skire" "ruošša#skirri" "ruošša#állat" "ránes#cihci" "ránes#cizáš" "ránes#háigir" "ránes#livkkár" "ránes#rásttis" "ránes#skuolfi" "ránes#skávli" "ránes#snárttal" "ránes#čuonjá" "ránes#čáihni" "rásttis" "rávgoš" "sallet#gáiru" "sallit#gáiru" "sealle#cižáš" "siesse#mohkki" "sieđga#civkkán" "silde#gáiru" "silke#buokča" "sitron#beštor" "skierru" "skilke#skálka" "skire" "skirri" "skiŋge#gaccet" "skoarra" "skuolfi" "skutnja#loddi" "skáhpe#loddi" "skáiti" "skárfa" "skárfa#čielkkis" "skávli" "snárttal" "soadja#njálla" "sopmir" "spoađđo#duoršu" "spálfu" "stoarbma#loddi" "stoarbma#spálfu" "stohkke#gaccet" "stohkke#rievdu" "stohkke#spálfu" "stohpo#háigir" "stohpo#spálfu" "struhcca" "struhcca#loddi" "stuorra#fiehta" "stuorra#giljobaš" "stuorra#guškil" "stuorra#guškkástat" "stuorra#meahkástat" "stuorra#skáiti" "stuorra#skávli" "stuorra#vuodja" "stuorra#vuojaš" "stuorra#čarkkus" "stuorra#čoavžu" "stuorra#čoavžžu" "stuorra#čuonjá" "stálo#beibboš" "stárra" "suoidne#suorsi" "suoidne#čiksa" "suola#skáiti" "suorre#spálfu" "suorsi" "suotnjo#liráš" "suotnjo#čoavžžu" "suovka#cihci" "suvlá" "sáhco#meahkástat" "sáhpán#boaimmáš" "sáhpán#skuolfi" "sáiva#hávda" "sávja#hávda" "sávza#loddi" "toardna#garjá" "toardna#gájon" "uhca#buokča" "uhca#buvvedat" "uhca#báiski" "uhca#ciellá" "uhca#cihci" "uhca#meahkástat" "uhca#njukča" "uhca#saddi" "uhca#vierru" "uhca#viroš" "uhca#čoavžžu" "uhca#čáihni" "ummol#cizáš" "upmol#cizáš" "unduláhtta" "uvlo#hávut" "varra#loddi" "veastareaddji" "viglá#čoavžžu" "vilges#nier#čuonjá" "vilges#soadja#skávli" "vilges#ummol#cizáš" "vilges#vierru" "vilges#viroš" "vilges#čoavžu" "vilges#čoavžžu" "vilgessealčáihni" "vintán" "vuoncá#čivga" "vuoncá#varis" "vizardit" "vuodja" "vuojaš" "vuokta#fiehta" "vuokta#gaccet" "vuokta#goalsi" "vuokta#láfol" "vuokta#skárfa" "vuonccis" "vuonccis#loddi" "vuoražas" "vuorččis" "vuovda#duvvá" "vuovde#civka#leivvoš" "vuovde#gaccet" "vuovde#loddi" "vuovde#meahkástat" "vuovde#rásttis" "vuovde#vizar" "vuovde#vuorččis" "vuovde#čoavžu" "vuovde#čoavžžu" "ábi#rievssat" "áhpe#dokta" "áhpe#dovtta" "áhpe#háskil" "áhpe#hávda" "áhpe#lihkká" "áhpe#spálfu" "ákta" "állat" "čarkkus" "čearret" "čiekčá" "čielkkis" "čiergges#rásttis" "čiksa" "čoađgi" "čukčá" "čuohte#gielas" "čuohte#giella" "čuonji" "čuonjá" "čuonjá#fálli" "čáhce#bávgoš" "čáhce#vuonccis" "čáhppes#bađoš#guškil" "čáhppes#buokča" "čáhppes#seal#beštor" "čáhppes#gaccet" "čáhppes#rásttis" "čáhppes#čoavji" "čáhppes#čoavžu" "čáhppes#čoavžžu" "čáihne#cizáš" "čáihne#gaccet" "čáihni" "šilljo#cihci" ;
 
-LIST ANIMAL = "guokkardiddje" "judos" "sávttsa" "vierttsa" ;
-LIST HUNT-ANIMAL = "rievsak" ;
-LIST BOAZU = "boatsoj" ;
-LIST FISH = "guolle" ;
+#LIST ANIMAL-sma ;
 
-SET ALL-ANIMALS = ANIMAL OR HUNT-ANIMAL OR BOAZU OR FISH ;
+SET ANIMAL = ANIMAL-sme OR ANIMAL-smj ;
 
-SET ANIMATE = HUMAN OR ALL-ANIMALS ;
+SET ANIMATE = HUMAN OR ANIMAL ;
  
-LIST CONCRETE-ROUTE = "gahttun" "njálmme#rájgge" "uksa#rájgge" "væddja";
-LIST ABSTR-ROUTE = "mijlla" ;
+LIST CONCRETE-ROUTE = "gahttun" "njálmme#rájgge" "uksa#rájgge" "væddja" "Álttá-Kárášjoga-#máđidja" "Álttá-Kárášjoga-#máđii" "bálggis" "bievla#geaidnu" "dálve#luodda" "dálve#máđidja" "dálve#máđii" "eanadat#luodda" "E6#-bálggis" "gáhta" "gávpot#gáhta" "geaidnu" "guorra" "johttin#geaidnu" "kultur#luodda" "láhttu" "luodda" "luonddu#bálggis" "máđidja" "máđii" "meahcce#luodda" "ráidu" "reahpen#ráigi" "spáiddar#ráidu" "suohkan#luodda" "váldo#geaidnu" ;
+LIST ABSTR-ROUTE = "mijlla" "gaska" "mátki" "miila" "mohkki" "tuvra" ;
 
 SET ROUTE = CONCRETE-ROUTE OR ABSTR-ROUTE ; 
 
@@ -661,12 +623,12 @@ LIST INDUSTRY = "æládus#tjærdda" ;
 LIST EDUCATION = "skåvlla" "vuodo#skåvllå" ;
 
 SET ACTOR = ANIMATE OR INSTITUTION OR ORGANIZATION ;
-SET HAB-ACTOR = HUMAN-INDIVIDUAL OR ACTOR OR HUMAN-GROUP OR INDUSTRY OR EDUCATION OR ("guhti") OR ("guhtis") OR ("guhtimusj") OR ("galles") OR Pers  ;
+SET HAB-ACTOR = ACTOR OR INDUSTRY OR EDUCATION OR ("guhti") OR ("guhtis") OR ("guhtimusj") OR ("galles") OR ("gii") OR ("eará") OR Coll OR Pers OR Mal OR Fem OR Sur  ;
 
 LIST HAB-CASE = Loc (<smj> Ine) (<sma> Gen) ;
 
 
-LIST HEADOFPARTS = "oassi" "oajvve#oasse" "bielle" "guhtimusj" "goappátjagá" "proseanta" "%" ;
+LIST HEADOFPARTS = "oassi" "oajvve#oasse" "bielle" "guhtimusj" "goappátjagá" "proseanta" "%" "nisson#oassi" "váldo#oassi" "bealli" "guhtemuš" "goappašat" "proseanta" "%" ;
   # This may be a better partitive set.
 
 # Miscellaneous sets
@@ -692,7 +654,7 @@ SET REALCLB = CLB - COMMA ;
 
 SET CP = (Pron Interr) OR (Pron Rel) ;
 
-LIST MO-MANge = "gåktu" "gåktus" "gånnå" "gåsstå" "gåsstås" "manen" (V Qst);
+LIST MO-MANge = "gåktu" "gåktus" "gånnå" "gåsstå" "gåsstås" "manen" "goas" "gokko" "gos" "gosa" "govt" "makkár" "man" "manne" "mo" "mot" "mov" "movt" ("nugo" @CVP) (V Qst);
  
 SET MO = MO-MANge - ("man" Foc/ge) ; 
 
@@ -700,36 +662,17 @@ SET MO = MO-MANge - ("man" Foc/ge) ;
 LIST SEMICOL = "\;" ;
 LIST COL = ":" ;
 
+SET S-BOUNDARY2 = (Pron Interr) OR (Pron Rel) OR ("\;") OR (":") OR ("-") OR ("–") OR (@CVP) ; 
 
-SET S-BOUNDARY = (Pron Interr) OR (Pron Rel) OR MO OR ("muhto") OR ("de" CC) OR CS OR ("\;") OR (":") OR ("-") OR ("–") OR (".") ;
-	# includes CP
-	# remember that (",") and CC are potential sentence boundaries, too
-	
-SET S-BOUNDARY2 = (Pron Interr) OR (Pron Rel) OR ("muhto") OR CS OR ("de" CC) OR ("\;") OR (":") OR ("-") OR ("–") OR (@CVP) ; 
-	# includes CP
-	# this one includes @CVP, the conjunction, which actually connects two sentences (each with a finite verb) to each other, and not @CNP, which coordinates internal NP-/AdvP-/AP ... coordination
-	# To be used only AFTER the disambiguation of @CVP and @CNP taking place in the chapter right before "Disambiguatig pronouns"
-
-SET BOC = S-BOUNDARY OR BOS ;
-SET EOC = S-BOUNDARY OR EOS ;
 SET BOC2 = S-BOUNDARY2 OR BOS ;
 SET EOC2 = S-BOUNDARY2 OR EOS ;
 
 SET NP-BOUNDARY = BOS OR EOS OR REALCLB OR VFIN OR Inf OR GerII OR ConNeg OR VGen OR Sup OR PPRON-NOT-GEN OR Recipr OR Po OR Pr OR Pcle OR ("jed") OR Interj OR CS OR CP ;
 
-SET SV-BOUNDARY = S-BOUNDARY OR FMAINV ; # VFIN-NOT-AUX ; # should be V-MAIN linked to VFIN-aux to the left. (cg-3)
-# This set is ment to use in rules for disambiguating due to verbs or verbsets. 
 SET SV-BOUNDARY2 = S-BOUNDARY2 OR FMAINV ;
-
-SET SVF-BOUNDARY = S-BOUNDARY OR VFIN ;
-# This set is ment to use in rules for disambiguating due to verbs or verbsets. 
-# Here we search for either an S-BOUNDARY or a finite verb, either aux or main.
-
-
 
 # Syntactic sets
 # --------------
-
 
 LIST ALLSYNTAG = (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@-FSUBJ)
                  (@ADV-A) (@ADV-ADV) (@ADVL) (@ActioN>) (@CC)
@@ -739,10 +682,6 @@ LIST ALLSYNTAG = (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@-FSUBJ)
                  (@PCLE-COMPL) (@PrcN>) (@PronN<) (@PronN>) 
                  (@N<) (@>N) (@SPRED)
                  (@SUBJ) (@SUBJ-QH) (@VOC) (@X); 
-
-
-
-
  
 # =================================== #
 # =================================== #
@@ -757,7 +696,7 @@ MAP (@>N) TARGET (Dem Nom) IF (*1 Num OR A OR N BARRIER NP-BOUNDARY LINK 0 Nom) 
 
 MAP (@>N) TARGET (Dem Par) IF (*1 Num OR A OR N BARRIER NP-BOUNDARY LINK 0 Ela) (NEGATE 1 Interr OR COMMA OR Dem);
 	
-MAP (@>N) TARGET (Dem Sg Gen) IF (*1 Num OR A OR N BARRIER NP-BOUNDARY LINK 0 (Sg Gen) OR (Sg Ill) OR (Sg Ine))(NEGATE 1 Po);
+MAP (@>N) TARGET (Dem Sg Gen) IF (*1 Num OR A OR N BARRIER NP-BOUNDARY LINK 0 (Sg Gen) OR (Sg Ill) OR LOC + Sg)(NEGATE 1 Po);
 	## Gáhtjada vuossteguojmijnat såbadittjat gå ájn manojn lihppe, vaják duv ij duobmára åvddåj giese ja duobmár vávta åvddåj ja dån fáŋŋgagoahtáj bálkestuvá.
 
 MAP (@>N) TARGET (Dem Sg Acc) IF (*1 Num OR A BARRIER NP-BOUNDARY OR (N Sg Acc) LINK 0 Acc)(NEGATE *1 CC BARRIER WORD);
@@ -821,7 +760,8 @@ MAP (@>N) TARGET (A Attr) ;
 #MAP (@ADV-ADV) TARGET Date IF (-1 BEAIVI);
 
 
-MAP (@>N) TARGET ("juohkka");
+LIST JUOHKE = "juohkka" "juohke" ;
+MAP (@>N) TARGET JUOHKE ;
 	## Galgá gávdnot divššohasbearráigeahčči juohke fylkkas. 
 
 MAP (@>N) TARGET (Pron Attr) ;
@@ -856,12 +796,14 @@ MAP (@>N) TARGET Indef IF (*1 N BARRIER NPNH OR Indef)(NEGATE 0 Nom LINK 1 Acc) 
   	## Divna dát sjattaj vaj luluj ålliduvvat mav Härrá lij profehta baktu javllam...
   # The partitive construction would have been máŋggain earáin and ollu daid earáin
   
+LIST OLLU = "ollu" "ållo" ; 
+LIST EARA = "ietjá" "eará" "iežá" ; 
   
-MAP (@ADVL>) TARGET Indef IF (0 ("ållo"))(1 ("ietjá" Pl LOC) OR (Dem Pl LOC))(*2 V-SG3 BARRIER NOT-ADJ-PCLE)(NEGATE 0 Nom LINK 1 Acc)(NEGATE 0 ADVLCASE);
-MAP (@>ADVL) TARGET Indef IF (*-1 V-SG3 BARRIER S-BOUNDARY2 OR VFIN)(0 ("ållo"))(1 ("ietjá" Pl LOC) OR (Dem Pl LOC))(NEGATE 0 Nom LINK 1 Acc)(NEGATE 0 ADVLCASE);
+MAP (@ADVL>) TARGET Indef IF (0 OLLU)(1 EARA LINK 0 LOC + Pl OR LOC + (Dem Pl LOC))(*2 V-SG3 BARRIER NOT-ADJ-PCLE)(NEGATE 0 Nom LINK 1 Acc)(NEGATE 0 ADVLCASE);
+MAP (@>ADVL) TARGET Indef IF (*-1 V-SG3 BARRIER S-BOUNDARY2 OR VFIN)(0 OLLU)(1 EARA LINK 0 LOC + Pl OR LOC + (Dem pl))(NEGATE 0 Nom LINK 1 Acc)(NEGATE 0 ADVLCASE);
 	## Ollu earáin lea hávski. # for habeo-constructions where ollu modifies eará+Loc
 
-MAP (@>Pron) TARGET Indef IF (NEGATE *-1 V-SG3 BARRIER S-BOUNDARY2 OR VFIN)(0 ("ållo"))(1 ("ietjá" Pl LOC) OR (Dem Pl LOC))(NEGATE *2 V-SG3 BARRIER NOT-ADJ-PCLE)(NEGATE 0 Nom LINK 1 Acc)(NEGATE 0 ADVLCASE);
+MAP (@>Pron) TARGET Indef IF (NEGATE *-1 V-SG3 BARRIER S-BOUNDARY2 OR VFIN)(0 OLLU)(1 EARA LINK 0 LOC + Pl OR LOC + (Dem Pl)) (NEGATE *2 V-SG3 BARRIER NOT-ADJ-PCLE)(NEGATE 0 Nom LINK 1 Acc)(NEGATE 0 ADVLCASE);
 	## 
 
 MAP (@>N) TARGET Indef IF (0 Nom)(*1 (N Nom) BARRIER NPNH) (NEGATE 0 Pl LINK 1 Inf);
@@ -873,17 +815,21 @@ MAP (@>N) TARGET Indef IF (1 A-CASE)(NEGATE 1 ("veara"));
 MAP (@>Num) TARGET Indef IF (NEGATE 0 ("iešguhtet") OR ADVLCASE)(1 Num);
 	## 
 
-MAP (@>Pron) TARGET ("gájka") IF (1 Dem OR Indef);
+LIST GAJKA = "buot" "gájka" ;
+
+MAP (@>Pron) TARGET GAJKA IF (1 Dem OR Indef);
 	## 
 
-MAP (@>N) TARGET ("gájka" Pron) IF (*1 N BARRIER NPNH);
+MAP (@>N) TARGET GAJKA + Pron IF (*1 N BARRIER NPNH);
 	## 
 
 #MAP (@PronN>) TARGET Indef IF (*1 N BARRIER NP-BOUNDARY OR REALCLB) (NEGATE *-1 ("leat") BARRIER NOT-ADV-PCLE LINK *1 Indef LINK *1 PrfPrc BARRIER VERB) (NEGATE *-1 INFV BARRIER NOT-ADV-PCLE LINK *1 Indef LINK *1 Inf BARRIER VERB)(NEGATE 0 ADVLCASE)(NEGATE 1 (Pers Gen) LINK *1 N BARRIER NOT-NP OR CLB LINK NOT 0 LOC)(NEGATE 1 Adv LINK 1 N) (NEGATE 1 (N Sg Gen) LINK *1 N BARRIER NPNH)(NEGATE 1 VFIN OR Ess OR ("veara"));
 	## 
 
-MAP (@>SPRED) TARGET ("mij" Interr Pl Nom) IF (*1C (N Pl Nom) BARRIER NP-BOUNDARY);
-MAP (@>SPRED) TARGET ("mij" Rel  Pl Nom) IF (*1C (N Pl Nom) BARRIER NP-BOUNDARY);
+LIST MIJ =  "mij" "mii" ;
+
+MAP (@>SPRED) TARGET MIJ + (Interr Pl Nom) IF (*1C (N Pl Nom) BARRIER NP-BOUNDARY);
+MAP (@>SPRED) TARGET MIJ + (Rel Pl Nom) IF (*1C (N Pl Nom) BARRIER NP-BOUNDARY);
 	## 
 
 #MAP (@PronN>) TARGET Interr IF (NEGATE 0 ("guhti"))(1 N) (NEGATE 0 ("mij") LINK NOT 1 (Pl Gen))(NEGATE 0 (Sg Nom) LINK 1 V-SG3) (NEGATE 1 Gen LINK *1 N BARRIER NPNH);
@@ -895,7 +841,7 @@ MAP (@>SPRED) TARGET ("mij" Rel  Pl Nom) IF (*1C (N Pl Nom) BARRIER NP-BOUNDARY)
 #MAP (@>N) TARGET Rel  IF (0 ("guhtimusj"))(*1 LOC + Pers BARRIER NOT-PCLE);
 	## 
 
-MAP (@>N) TARGET ("gajká") IF (*1 (N Pl Nom) OR (N Pl Acc) BARRIER NP-BOUNDARY);
+MAP (@>N) TARGET GAJKA IF (*1 (N Pl Nom) OR (N Pl Acc) BARRIER NP-BOUNDARY);
 	##  
 
 
@@ -916,20 +862,20 @@ MAP (@Num<) TARGET MEASURE IF (-1 Num)(1 ALU OR A);
 MAP (@Num<) TARGET MEASURE IF (-1 Num)(1 Adv OR Pr);
 	## 
 
-MAP (@Num<) TARGET TIME IF (-1 Num)(1 ("boaris") OR ("nuorra"));
+MAP (@Num<) TARGET TIME IF (-1 Num)(1 ("boaris") OR ("nuorra") OR ("boares") );
 	## 
 
 MAP (@Num<) TARGET TIME IF (-1 Num)(1 ("maŋil") OR ("maŋis"));
 	## 
 
-MAP (@Num<) TARGET N IF (-1 Num)(1 ("velgulaš"));
+MAP (@Num<) TARGET N IF (-1 Num)(1 ("velggolaš") OR ("velgulasj"));
 	## 
 
 MAP (@Num<) TARGET (N Sg Acc) IF (-1 (Num Acc))(0 MEASURE)(1 (N Acc));
 	##
 	
 MAP (@>N) TARGET CASE - Gen IF (0 Num LINK NOT 0 Acc LINK *1 N BARRIER NPNH) ;
-MAP (@Num<) TARGET (N Gen) IF (*-1 (Num Acc) BARRIER NPNH LINK NOT 0 ("akta")) ;
+MAP (@Num<) TARGET (N Gen) IF (*-1 (Num Acc) BARRIER NPNH LINK NOT 0 AKTA) ;
 
 
 MAP (@>N) TARGET TITLE + Nom IF (0 Attr OR Nom)(1 Prop LINK 0 Fem OR Mal OR Sur);
@@ -1003,14 +949,16 @@ MAP (@>N) TARGET Gen IF (0 (N Pl))(NEGATE 0 Px OR TIME)(1 Nom);
 
 MAP (@>P) TARGET Gen IF (NEGATE 0 Num LINK 1 Ill)(1 Po);
 	## 
+
+LIST DIHTE = "diehti" "dihte" ;
 	
-MAP (@>P) TARGET Gen IF (NEGATE 0 Num LINK 1 Ill) (NEGATE 0 (V Actio) LINK 1 ("diehti"))(1 PUNCT-LEFT LINK *1 PUNCT-RIGHT LINK 1 Po);
+MAP (@>P) TARGET Gen IF (NEGATE 0 Num LINK 1 Ill) (NEGATE 0 (V Actio) LINK 1 DIHTE)(1 PUNCT-LEFT LINK *1 PUNCT-RIGHT LINK 1 Po);
     ## 
 
-MAP (@>P) TARGET Gen IF (NEGATE 0 Cmpnd)(1 CC)(*2 Gen BARRIER NPNHA LINK 1 Po) (NEGATE 0 (V Actio) LINK 1 CC LINK 1 (V Actio) LINK 1 ("diehti"));
+MAP (@>P) TARGET Gen IF (NEGATE 0 Cmpnd)(1 CC)(*2 Gen BARRIER NPNHA LINK 1 Po) (NEGATE 0 (V Actio) LINK 1 CC LINK 1 (V Actio) LINK 1 DIHTE);
 	## 
 	 
-MAP (@>P) TARGET Gen IF (NEGATE 0 Cmpnd)(1 COMMA)(*2 Gen BARRIER NPNHA LINK 1 CC LINK *1 Gen BARRIER NPNHA LINK 1 Po) (NEGATE 0 (V Actio) LINK 1 CC LINK 1 (V Actio) LINK 1 ("diehti"));
+MAP (@>P) TARGET Gen IF (NEGATE 0 Cmpnd)(1 COMMA)(*2 Gen BARRIER NPNHA LINK 1 CC LINK *1 Gen BARRIER NPNHA LINK 1 Po) (NEGATE 0 (V Actio) LINK 1 CC LINK 1 (V Actio) LINK 1 DIHTE);
 	## 
 
 MAP (@>P) TARGET Gen IF (1 (Neg Foc))(2 Gen)(3 Po);
@@ -1034,7 +982,9 @@ MAP (@>N) TARGET Gen IF (0 MANNU)(1 Ord);
 #MAP (@>N) TARGET Gen IF (0 TIME OR AIGODAT OR ROUTE)(NEGATE 1 CC)(NEGATE 0 VAHKKU LINK 1 CARDINALS) (*1 N BARRIER NP-BOUNDARY OR REALCLB OR Po OR Pr);
 	## 
 	
-MAP (@ADVL @>N) TARGET Gen IF (-2 Gen LINK 0 MANNU)(-1 Ord)(0 ("b") OR ("beaivi"));
+LIST BIEJVVE = "biejvve" "beaivi" "b" ;	
+	
+MAP (@ADVL @>N) TARGET Gen IF (-2 Gen LINK 0 MANNU)(-1 Ord)(0 BIEJVVE);
   	## 
   
 MAP (@ADVL>) TARGET Gen IF (0 TIME OR ROUTE)(*1 FMAINV BARRIER S-BOUNDARY2);
@@ -1056,7 +1006,7 @@ MAP (@-FSUBJ>) TARGET Gen IF (*-1 REALCOPULAS BARRIER NPNHA)(1 (V Actio Ela));
 MAP (@>A) TARGET Gen IF (*-1 COPULAS BARRIER S-BOUNDARY2 OR VERB)(1 (A Comp)) (NEGATE 1 N);
 	## ... nåv sjaddá avtat ájnna buorádusdahkke suddáris stuoráp ávvo almen, gå aktselåkavtset rievtesferdugis gudi e buorádusáv dárbaha dahkat.
 
-MAP (@>A) TARGET Gen IF (1 (A Comp))(*2 COPULAS BARRIER S-BOUNDARY2 OR VERB OR CC LINK NOT *1 V-NOT-AUX BARRIER S-BOUNDARY2);
+MAP (@>A) TARGET Gen IF (1 (A Comp))(*2 COPULAS BARRIER S-BOUNDARY2 OR VERB OR CC LINK NOT *1 FMAINV BARRIER S-BOUNDARY2);
 	## 
 
 MAP (@>A) TARGET Gen IF (1 (A Comp))(NEGATE 1 VERB OR Adv)(NEGATE *2 N BARRIER NP-BOUNDARY);
@@ -1073,13 +1023,13 @@ MAP (@HAB) TARGET HAB-ACTOR ((0 HAB-CASE LINK 1 REALCOPULAS LINK *1 (N Nom) OR (
 
 
 
-MAP (@>N) TARGET Gen IF (NEGATE -1 NUMERALS LINK 0 Nom) (NEGATE 0C ALU OR Cmpnd OR Num)(*1 N OR Actio BARRIER NOT-NP OR REALCLB OR Indef LINK NOT 0 GerII) (NEGATE 1 PUNCT LINK 1 CC)(NEGATE 1 Inf) (NEGATE 1 CC LINK *1 Gen BARRIER NOT-NP LINK 1 Po) (NEGATE 1 COMMA LINK 1 Gen LINK 1 CC LINK 1 Gen LINK 1 Po) (NEGATE 1 CARDINALS LINK 0 ADVLCASE) (NEGATE 0 Actio LINK 1 ("diehti"));
+MAP (@>N) TARGET Gen IF (NEGATE -1 NUMERALS LINK 0 Nom) (NEGATE 0C ALU OR Cmpnd OR Num)(*1 N OR Actio BARRIER NOT-NP OR REALCLB OR Indef LINK NOT 0 GerII) (NEGATE 1 PUNCT LINK 1 CC)(NEGATE 1 Inf) (NEGATE 1 CC LINK *1 Gen BARRIER NOT-NP LINK 1 Po) (NEGATE 1 COMMA LINK 1 Gen LINK 1 CC LINK 1 Gen LINK 1 Po) (NEGATE 1 CARDINALS LINK 0 ADVLCASE) (NEGATE 0 Actio LINK 1 DIHTE);
 	### 
 
-MAP (@>N) TARGET Gen IF (NEGATE -1 NUMERALS LINK 0 Nom) (NEGATE 0 ALU OR Cmpnd OR Num) (1 COMMA)(2 Rel LINK *1 COMMA LINK *1 N BARRIER NOT-NP OR REALCLB) (NEGATE 1 PUNCT LINK 1 CC) (NEGATE 1 CC LINK *1 Gen BARRIER NOT-NP LINK 1 Po) (NEGATE 1 COMMA LINK 1 Gen LINK 1 CC LINK 1 Gen LINK 1 Po) (NEGATE 0 Actio LINK 1 ("diehti"));
+MAP (@>N) TARGET Gen IF (NEGATE -1 NUMERALS LINK 0 Nom) (NEGATE 0 ALU OR Cmpnd OR Num) (1 COMMA)(2 Rel LINK *1 COMMA LINK *1 N BARRIER NOT-NP OR REALCLB) (NEGATE 1 PUNCT LINK 1 CC) (NEGATE 1 CC LINK *1 Gen BARRIER NOT-NP LINK 1 Po) (NEGATE 1 COMMA LINK 1 Gen LINK 1 CC LINK 1 Gen LINK 1 Po) (NEGATE 0 Actio LINK 1 DIHTE);
   	## 
   	 
-MAP (@>N) TARGET Gen IF (-2 ("s") OR ("siidu") OR ("paragráfa") OR ("kapihttal") OR ("kapihtal") OR HEADOFPARTS OR ("jahki") OR GIESSEK LINK 1 CARDINALS)(*1 N BARRIER NOT-ADJ);
+MAP (@>N) TARGET Gen IF (-2 ("s") OR ("siidu") OR ("sijddo") OR ("paragráfa") OR ("paragráffa") OR ("kapihttal") OR  ("kapihtal") OR HEADOFPARTS OR ("jahki") OR ("jahke") OR GIESSEK LINK 1 CARDINALS)(*1 N BARRIER NOT-ADJ);
   	## 8 
 
 MAP (@>N) TARGET Gen IF (NEGATE -1 NUMERALS LINK 0 Num) (NEGATE 0 ALU OR Num OR Cmpnd)(*1 N BARRIER NOT-AA OR CLB)(NEGATE 1 Inf);
@@ -1088,7 +1038,7 @@ MAP (@>N) TARGET Gen IF (NEGATE -1 NUMERALS LINK 0 Num) (NEGATE 0 ALU OR Num OR 
 MAP (@>A) TARGET Gen IF (1C A)(1 (Sg LOC))(2C NP-BOUNDARY); # (NEGATE 0 Interr OR ALU)
 	##
 
-MAP (@Pron<) TARGET (N Pl Gen) IF (-1 ("mij" Interr) OR ("mihkkege") OR ("guhti"));
+MAP (@Pron<) TARGET (N Pl Gen) IF (-1 MIJ + Interr OR ("mihkkege") OR ("guhti"));
 	## Maid ipmašiid doppe dagat?
 
 # Appositions
@@ -1096,13 +1046,13 @@ MAP (@Pron<) TARGET (N Pl Gen) IF (-1 ("mij" Interr) OR ("mihkkege") OR ("guhti"
 SET APP-BOUNDARY = REALCLB OR VFIN OR Inf OR GerII OR ConNeg OR VGen OR Sup OR Recipr OR Po OR Pr OR Pcle OR Interj OR CS OR CP ;
 
 
-LIST DÅPPE = "dáppe" "dåppe" "ålggon" ;
-# Adverbs with a inessive form, but don´t get Ine as a tag. 
+LIST DÅPPE = "dáppe" "dåppe" "ålggon" "badjin" "bajil" "dakko" "dá" "dákko" "dáppe" "diekko" "dieppe" "do" "dokko" "doppe" "duo" "duokko" "duoppe" "olgun" ;
+# Adverbs with a inessive form, but don´t get Ine or Loc as a tag. 
 
-LIST DÅHKU = "diehki" "dåhku" "ålgus" ;
+LIST DÅHKU = "diehki" "dåhku" "ålgus" "bajás" "deike" "diehke" "diehko" "dohko" "duohko" "lulás" "olggos" "ruoktot" "sisa" "vuovdimassii" ;
 
-LIST PAST-MARKER = "iektu" "uddni"  ; 
-LIST PRESENT-MARKER = "dálla" "dálle" "ådnå" ;
+LIST PAST-MARKER = "iektu" "uddni" ("mánná" Ess) "dalle" "diibmá" "dolin" "dološ" "dovle" "duvle" "eske" "gieskat" "ikte" ("nuorra" Ess) "ovdal" ("ovddit#beaivi" Gen) ("vássán#áigi" Loc) ("boares#áigi" Gen)  ; 
+LIST PRESENT-MARKER = "dálla" "dálle" "ådnå" "dál" "ihttin" "odne" "otne" ("boahtte#áigi" Loc) ("boahtte#áigi" Gen) ;
 SET TIME-MARKER = PAST-MARKER OR PRESENT-MARKER ;
 
 LIST OTHER-TIME-ADV =  "árabuš" "árrat" "easkka" "guhká" ("guhkit" Adv) "maŋemustá" "maŋŋel" "maŋŋelaš" "maŋŋeleappos" "maŋŋit" "muhtumin" "ovdal" ;
@@ -1113,14 +1063,14 @@ SET TIME-ADV = TIME-MARKER OR OTHER-TIME-ADV OR GIESSEK;
 MAP (@APP-N<) TARGET (Num Nom) IF (-1 (Prop Sur Nom) LINK -1 ("\("))(1 COMMA LINK 1 ("s") LINK 1 CARDINALS LINK 1 ("\)"));
     #Simonsen 1959, s. 45)
  
-MAP (@APP-N<) TARGET Num IF (-1 ("b") OR ("biejvve") LINK -1 Ord LINK -1 MANNU);
+MAP (@APP-N<) TARGET Num IF (-1 BIEJVVE LINK -1 Ord LINK -1 MANNU);
 	## Mun boađán geassemánu 16. b. 2002. 
     
 MAP (@APP-N<) TARGET Num IF (-2 Ord)(-1 MANNU);
     ## 23. cuoŋománu 1728 dovddus geaskkus lea ee. celkon ahte mearraguollebivdu lea luđolaš earret"
 
 MAP (@APP-N<) TARGET (Num Nom) IF (-1 Nom LINK 0 MANNU)(0 CARDINALS);
-MAP (@APP-N<) TARGET (Num Nom) IF (-1 Ine LINK 0 MANNU)(0 CARDINALS);
+MAP (@APP-N<) TARGET (Num Nom) IF (-1 LOC LINK 0 MANNU)(0 CARDINALS);
   	## Guovdageaidnu / Kautokeino, skábmamánnu 2002.
   	## Bargojoavkku čoahkkima árvalus ovddiduvvo konvenšuvnna oktasaščoahkkimis guovvamánus 2004.
 MAP (@APP-N<) TARGET (Num Nom) IF (-1 Gen LINK 0 MANNU)(0 CARDINALS)(1 Po);
@@ -1137,7 +1087,7 @@ MAP (@APP-N<) TARGET (N Gen) IF (*-1 COMMA BARRIER APP-BOUNDARY OR ADVLCASE LINK
 MAP (@APP-N<) TARGET (N Gen) IF (*-1 COMMA BARRIER APP-BOUNDARY OR ADVLCASE LINK -1 Gen)(1 CC LINK **1 Gen BARRIER VERB LINK 1 COMMA LINK 1 N LINK NOT 0 Gen) ;
     ## Dát lea Jesus Kristusa, Dávveda bártni ja Abrahama bártni, sohka. 
     
-MAP (@APP-ADVL<) TARGET (N Ine) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR ADVLCASE LINK -1 DÅPPE)(1 EOS) ;	
+MAP (@APP-ADVL<) TARGET LOC + N IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR ADVLCASE LINK -1 DÅPPE)(1 EOS) ;	
 MAP (@APP-ADVL<) TARGET (N Ill) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 DÅHKU LINK *-1 BOS BARRIER APP-BOUNDARY)(1 COMMA) ;
 
 MAP (@APP-ADVL<) TARGET (N Gen) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 TIME-MARKER OR TIME-ADV OR BEAIVI)(0 TIME LINK 0 Gen)(1 EOS); 	
@@ -1158,33 +1108,33 @@ MAP (@APP-Pron<) TARGET (N Nom) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR ADVL
 MAP (@APP-Pron<) TARGET (N Nom) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR ADVLCASE OR Ess LINK -1 (Pron Nom))(1 COMMA LINK 1 S-BOUNDARY2) ;
 	 ## Mon lean Will Turner, Sáppatbátti Turnera bárdni!
 
-MAP (@APP-N<) TARGET (Prop Nom) IF (-1 HUMAN-INDIVIDUAL + Nom LINK -1 BOC)(1 VFIN);
+MAP (@APP-N<) TARGET (Prop Nom) IF (-1 HUMAN + Nom LINK -1 BOC2)(1 VFIN);
 
 	 
 MAP (@APP-N<) TARGET (N Acc) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR (N Nom) LINK -1 (N Acc) LINK NOT *-1 COMMA BARRIER APP-BOUNDARY OR CC)(1 EOS) ;	
 MAP (@APP-N<) TARGET (N Acc) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR (N Nom) LINK -1 (N Acc) LINK NOT *-1 COMMA BARRIER APP-BOUNDARY OR CC)(1 COMMA LINK 1 S-BOUNDARY2) ;	
 
 MAP (@APP-Pron<) TARGET (N Acc) IF (*-1 COMMA BARRIER APP-BOUNDARY OR @CVP OR (N Nom) LINK -1 (Pron Acc) LINK NOT *-1 COMMA BARRIER APP-BOUNDARY OR CC)(1 EOS) ;
-MAP (@APP-Pron<) TARGET (N Acc) IF (*-1 COMMA BARRIER APP-BOUNDARY OR @CVP OR (N Nom) LINK -1 (Pron Acc) LINK NOT *-1 COMMA BARRIER APP-BOUNDARY OR CC)(1 COMMA LINK 1 S-BOUNDARY2 OR ("dan_diehti")) ;		
+MAP (@APP-Pron<) TARGET (N Acc) IF (*-1 COMMA BARRIER APP-BOUNDARY OR @CVP OR (N Nom) LINK -1 (Pron Acc) LINK NOT *-1 COMMA BARRIER APP-BOUNDARY OR CC)(1 COMMA LINK 1 S-BOUNDARY2 OR ("dan_diehti") OR ("dan_dihte")) ;		
 	 ## Oidnet go Mihkkala, min nuoramus bártni?
 	 ## Mon oainnán fierpmi, su mearkka, ja dieđán ahte Spider-Man lea leamaš das.	
 	 
 
-MAP (@APP-N<) TARGET (N Ine) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR ADVLCASE LINK -1 (N Ine))(1 EOS) ;	
-MAP (@APP-N<) TARGET (N Ine) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR ADVLCASE LINK -1 (N Ine))(1 COMMA LINK 1 S-BOUNDARY2 OR Adv) ;	
+MAP (@APP-N<) TARGET LOC + N IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR ADVLCASE LINK -1 LOC + N)(1 EOS) ;	
+MAP (@APP-N<) TARGET LOC + N IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR ADVLCASE LINK -1 LOC + N)(1 COMMA LINK 1 S-BOUNDARY2 OR Adv) ;	
 MAP (@APP-N<) TARGET (N Ela) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR ADVLCASE LINK -1 (N Ela))(1 EOS) ;	
 MAP (@APP-N<) TARGET (N Ela) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR ADVLCASE LINK -1 (N Ela))(1 COMMA LINK 1 S-BOUNDARY2 OR Adv) ;	
 
-MAP (@APP-Pron<) TARGET (N Ine) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR ADVLCASE LINK -1 (Pron Ine))(1 EOS) ;	
-MAP (@APP-Pron<) TARGET (N Ine) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR ADVLCASE LINK -1 (Pron Ine))(1 COMMA LINK 1 S-BOUNDARY2 OR Adv) ;	
+MAP (@APP-Pron<) TARGET LOC + N IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR ADVLCASE LINK -1 LOC + Pron)(1 EOS) ;	
+MAP (@APP-Pron<) TARGET LOC + N IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR ADVLCASE LINK -1 LOC + Pron)(1 COMMA LINK 1 S-BOUNDARY2 OR Adv) ;	
 MAP (@APP-Pron<) TARGET (N Ela) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR ADVLCASE LINK -1 (Pron Ela))(1 EOS) ;	
 MAP (@APP-Pron<) TARGET (N Ela) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC OR ADVLCASE LINK -1 (Pron Ela))(1 COMMA LINK 1 S-BOUNDARY2 OR Adv) ;	
 	 ## Ánde orru Oslos, Norgga oaivegávpogis.	
 
-MAP (@APP-N<) TARGET (N Ill) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 (N Ill))((1 EOS) OR (*1 Ine LINK 1 EOS))  ;
+MAP (@APP-N<) TARGET (N Ill) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 (N Ill))((1 EOS) OR (*1 LOC LINK 1 EOS))  ;
 MAP (@APP-N<) TARGET (N Ill) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 (N Ill))(1 COMMA LINK 1 S-BOUNDARY2) ;	
 	
-MAP (@APP-Pron<) TARGET (N Ill) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 (Pers Ill))(1 EOC OR COMMA) ;		
+MAP (@APP-Pron<) TARGET (N Ill) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 (Pers Ill))(1 EOC2 OR COMMA) ;		
 #MAP:1 (@APP-Pron<) TARGET (N Ill) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 (Pers Ill))(*1 COMMA BARRIER NOT-QMARK LINK *1 S-BOUNDARY2 BARRIER NOT-QMARK) ;			
 	     ## Dan mun muitalan dušše dutnje, mu buoremus olbmái.
 
@@ -1199,12 +1149,12 @@ MAP (@APP-N<) TARGET (N Com) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 (N
 MAP (@APP-Pron<) TARGET (N Com) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 (Pron Com))(1 EOS) ;				
 MAP (@APP-Pron<) TARGET (N Com) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 (Pron Com))(1 COMMA LINK 1 S-BOUNDARY2 OR Adv) ;									
 
-MAP (@APP-N<) TARGET (N Nom) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 (N Nom) LINK *-1 BOC BARRIER APP-BOUNDARY)(1 COMMA LINK 1 VFIN) ;
+MAP (@APP-N<) TARGET (N Nom) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 (N Nom) LINK *-1 BOC2 BARRIER APP-BOUNDARY)(1 COMMA LINK 1 VFIN) ;
 MAP (@APP-Pron<) TARGET (N Nom) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 (Pron Nom) LINK *-1 BOS BARRIER APP-BOUNDARY)(1 COMMA LINK 1 VFIN) ;
 	## Will Turner, Sáppatbátti Turnera bárdni, lea boahtán.
 	
-MAP (@APP-N<) TARGET (N Ine) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 (N Ine) LINK *-1 BOS BARRIER APP-BOUNDARY)(1 COMMA LINK 1 VFIN) ;		
-MAP (@APP-Pron<) TARGET (N Ine) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 (Pron Ine) LINK *-1 BOS BARRIER APP-BOUNDARY)(1 COMMA LINK 1 VFIN) ;		
+MAP (@APP-N<) TARGET LOC + N IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 LOC + N LINK *-1 BOS BARRIER APP-BOUNDARY)(1 COMMA LINK 1 VFIN) ;		
+MAP (@APP-Pron<) TARGET LOC + N IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 LOC + Pron LINK *-1 BOS BARRIER APP-BOUNDARY)(1 COMMA LINK 1 VFIN) ;		
 MAP (@APP-N<) TARGET (N Ela) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 (N Ela) LINK *-1 BOS BARRIER APP-BOUNDARY)(1 COMMA LINK 1 VFIN) ;		
 MAP (@APP-Pron<) TARGET (N Ela) IF (*-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 (Pron Ela) LINK *-1 BOS BARRIER APP-BOUNDARY)(1 COMMA LINK 1 VFIN) ;		
 	## Romssas, Davvi-Norgga stuorimus gávpogis, leat vaikko man ollu studeanttat.
@@ -1213,7 +1163,7 @@ MAP (@APP-N<) TARGET (N Nom) IF (-1 (N Gen) OR (Pers Gen) LINK *-1 CC BARRIER AP
 MAP (@APP-N<) TARGET (N Nom) IF (-1 (N Gen) OR (Pers Gen) LINK *-1 CC BARRIER APP-BOUNDARY LINK -1 (N Gen) OR (Pers Gen) LINK *-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 (N Nom))(1 COMMA BARRIER S-BOUNDARY2) ;
 
 MAP (@APP-Pron<) TARGET (N Nom) IF (-1 (N Gen) OR (Pers Gen) LINK *-1 CC BARRIER APP-BOUNDARY LINK -1 (N Gen) OR (Pers Gen) LINK *-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 (Pron Nom))(1 EOS) ;
-MAP (@APP-Pron<) TARGET (N Nom) IF (-1 (N Gen) OR (Pers Gen) LINK *-1 CC BARRIER APP-BOUNDARY LINK -1 (N Gen) OR (Pers Gen) LINK *-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 (Pron Nom))(1 COMMA LINK 1 S-BOUNDARY2 OR ("dan_diehti")) ;
+MAP (@APP-Pron<) TARGET (N Nom) IF (-1 (N Gen) OR (Pers Gen) LINK *-1 CC BARRIER APP-BOUNDARY LINK -1 (N Gen) OR (Pers Gen) LINK *-1 COMMA BARRIER APP-BOUNDARY OR CC LINK -1 (Pron Nom))(1 COMMA LINK 1 S-BOUNDARY2 OR ("dan_diehti") OR ("dan_dihte")) ;
 
 
 #MAP (@APP-N<) TARGET (N Nom) IF (*-1 ("nugo") OR ("sihke") BARRIER APP-BOUNDARY LINK -1 COMMA LINK -1 (N Nom))(1 EOS) ;
@@ -1250,7 +1200,7 @@ MAP (@<OPRED) TARGET Ess IF (NOT 0 ESS-ADVL-N LINK *-1 OPREDV BARRIER S-BOUNDARY
 # ---------------
 
 MAP (@<SPRED) TARGET (A Nom) OR (N Nom) OR (Indef Nom)((*-1 REALCOPULAS BARRIER NPNH LINK *-1 @HAB) OR (*-1 @HAB + <sma> BARRIER NOT-ADV-PCLE)) ;
-MAP (@<SPRED) TARGET (A Nom) OR (N Nom) OR (Indef Nom)(*-1 REALCOPULAS BARRIER NOT-ADV-PCLE LINK *-1 BOC BARRIER WORD) ;
+MAP (@<SPRED) TARGET (A Nom) OR (N Nom) OR (Indef Nom)(*-1 REALCOPULAS BARRIER NOT-ADV-PCLE LINK *-1 BOC2 BARRIER WORD) ;
 
 MAP (@<SPRED) TARGET Nom (*-1 REALCOPULAS BARRIER Nom OR SV-BOUNDARY2 LINK 0 FMAINV LINK -1 NP-HEAD-NOM OR Interr) ;
 #MAP (@SPRED>) TARGET (Interr Nom) (*1 COPULAS BARRIER NOT-ADV-PCLE LINK 0 FMAINV LINK *1 NP-HEAD-NOM BARRIER NPNH) ;
@@ -1262,10 +1212,10 @@ MAP (@SPRED>) TARGET (A Nom) (1 REALCOPULAS LINK 0 VFIN LINK *1 Inf BARRIER NOT-
 MAP (@SPRED>) TARGET Ess IF (NOT 0 ESS-ADVL-N LINK *1 FMAINV BARRIER S-BOUNDARY2);
 MAP (@<SPRED) TARGET Ess IF (NOT 0 ESS-ADVL-N LINK *-1 FMAINV BARRIER S-BOUNDARY2);
 MAP (@SPRED>) TARGET (Indef Nom) (NOT 0 ESS-ADVL-N LINK *1 ESSV BARRIER S-BOUNDARY2);
-MAP (@<SPRED) TARGET ("juoga" Indef Nom) (*-1 REALCOPULAS + Sg3 BARRIER NOT-ADV LINK -1 (Pron Ine));
+MAP (@<SPRED) TARGET ("juoga" Indef Nom) (*-1 REALCOPULAS + Sg3 BARRIER NOT-ADV LINK -1 LOC + Pron);
 
 MAP (@<SPRED) TARGET Nom (*-1 REALCOPULAS + ConNeg BARRIER S-BOUNDARY2 OR VERB LINK -1 Neg) ;
-MAP (@SPRED>) TARGET (N Nom)(*-1 COMMA OR S-BOUNDARY2 BARRIER NPNH)(*1 VFIN BARRIER NOT-ADV-PCLE LINK 0 REALCOPULAS LINK 1 EOC);
+MAP (@SPRED>) TARGET (N Nom)(*-1 COMMA OR S-BOUNDARY2 BARRIER NPNH)(*1 VFIN BARRIER NOT-ADV-PCLE LINK 0 REALCOPULAS LINK 1 EOC2);
 
 MAP (@<SPRED) TARGET (N Nom)(*-1 @CNP BARRIER NPNH LINK -1 @<SPRED) ;
 
@@ -1353,11 +1303,11 @@ MAP (@<OBJ) TARGET Acc (NOT -1 BOS) ;
 # Adverbial mappings
 # ------------------
 
-MAP (@ADVL>CS) TARGET ("dan_diehti") (1 CS)  ;
-MAP (@<ADVL) TARGET ("dan_diehti") (NOT 1 CS)(*-1 @+FMAINV BARRIER NOT-ADV-PCLE);
+MAP (@ADVL>CS) TARGET ("dan_diehti") OR ("dan_dihte") (1 CS)  ;
+MAP (@<ADVL) TARGET ("dan_diehti") OR ("dan_dihte") (NOT 1 CS)(*-1 @+FMAINV BARRIER NOT-ADV-PCLE);
 
 
-LIST ADVLMAPPING = Ill Com Ine Ela Adv Po Pr VAbess VGen Ger ;
+LIST ADVLMAPPING = Ill Com Ine Ela Loc Adv Po Pr VAbess VGen Ger ;
 
 MAP (@-FADVL) TARGET ADVLMAPPING IF (NOT 0 Po OR Pr OR Ger OR VGen)(1 Sup + @<ADVL) ;
 MAP (@-FADVL) TARGET ADVLMAPPING IF (*-1 Inf BARRIER NPNHAI LINK NOT 0 FMAINV) ;
@@ -1365,8 +1315,8 @@ MAP (@-FADVL) TARGET ADVLMAPPING IF (*-1 Inf BARRIER NPNHAI LINK NOT 0 FMAINV) ;
 MAP (@ADVL>) TARGET ADVLMAPPING IF (NOT *-1 FMAINV BARRIER S-BOUNDARY2);
 MAP (@ADVL>) TARGET ADVLMAPPING IF (*1 FMAINV BARRIER S-BOUNDARY2);
 MAP (@<ADVL) TARGET ADVLMAPPING IF (*-1 FMAINV BARRIER S-BOUNDARY2);
-MAP (@<ADVL) TARGET Actio IF (0 Ill OR Ine OR Ela OR Com LINK *-1 FMAINV BARRIER S-BOUNDARY2);
-MAP (@ADVL>) TARGET Actio IF (0 Ill OR Ine OR Ela OR Com LINK *1 FMAINV BARRIER S-BOUNDARY2);
+MAP (@<ADVL) TARGET Actio IF (0 Ill OR LOC OR Ela OR Com LINK *-1 FMAINV BARRIER S-BOUNDARY2);
+MAP (@ADVL>) TARGET Actio IF (0 Ill OR LOC OR Ela OR Com LINK *1 FMAINV BARRIER S-BOUNDARY2);
 MAP (@ADVL) TARGET Ess IF (0 Num) ;
 MAP (@ADVL) TARGET Ess IF (0 ESS-ADVL-N);
 
