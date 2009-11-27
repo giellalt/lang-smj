@@ -28,9 +28,9 @@ TEMP = ../../tmp
 # This variable is holding the filename of the save file:
 # (makes the Makefile truly language independent for
 # the Sami languages)
-SAVEFILE = $(wildcard $(FSTDIR)/ism?.fst)
-#SAVEFILE = $(wildcard $(FSTDIR)/ism?-norm.fst)
-#SAVEFILE = $(wildcard $(FSTDIR)/ism?-$(DIALECT).restr.fst)
+SAVEFILE = $(FSTDIR)/ismj.fst
+#SAVEFILE = $(FSTDIR)/ismj-norm.fst
+#SAVEFILE = $(FSTDIR)/ismj-$(DIALECT).restr.fst
 
 # Copied from old LS makefile:
 # Bond, James Bond
@@ -194,7 +194,7 @@ n-paradigm: n-para.ptest savefile
 	$(XFST) < $(TEMP)/$@-gtest-script > $(WORD).paradigm
 	@rm -f $(TEMP)/$@-gtest-script
 	@rm -f $<
-#	@less $(WORD).paradigm
+	@less $(WORD).paradigm
 
 
 # VERBS
@@ -249,7 +249,7 @@ v-paradigm: v-para.ptest savefile
 	$(XFST) < $(TEMP)/$@-gtest-script > $(WORD).paradigm
 	@rm -f $(TEMP)/$@-gtest-script
 	@rm -f $<
-#	@less $(WORD).paradigm
+	@less $(WORD).paradigm
 
 
 # ADJECTIVES
@@ -304,7 +304,7 @@ a-paradigm: a-para.ptest savefile
 	$(XFST) < $(TEMP)/$@-gtest-script > $(WORD).paradigm
 	@rm -f $(TEMP)/$@-gtest-script
 	@rm -f $<
-#	@less $(WORD).paradigm
+	@less $(WORD).paradigm
 
 
 # NUMERALS
@@ -360,7 +360,7 @@ num-paradigm: num-para.ptest savefile
 	$(XFST) < $(TEMP)/$@-gtest-script > $(WORD).paradigm
 	@rm -f $(TEMP)/$@-gtest-script
 	@rm -f $<
-#	@less $(WORD).paradigm
+	@less $(WORD).paradigm
 
 
 # PROPER NOUNS
@@ -416,7 +416,7 @@ prop-paradigm: prop-para.ptest savefile
 	$(XFST) < $(TEMP)/$@-gtest-script > $(WORD).paradigm
 	@rm -f $(TEMP)/$@-gtest-script
 	@rm -f $<
-#	@less $(WORD).paradigm
+	@less $(WORD).paradigm
 
 
 
@@ -426,6 +426,9 @@ prop-paradigm: prop-para.ptest savefile
 
 # Make sure there is an available smX.save in the parent directory:
 savefile:
+	@echo
+	@echo "*** Go to $$GTHOME and make the required transducer: ***"
+	@echo
 	@cd $(SRCDIR)/ && $(MAKE) $(notdir $(SAVEFILE)) TARGET=smj
 
 # Word form generation:
