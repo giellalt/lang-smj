@@ -53,6 +53,22 @@ Multichar_Symbols
  +Multi ! Multiword phrase tag
 !+HYPH +PAR ! Not in use, it seems.
 
+! Normative/prescriptive compounding tags:
+! (to govern compound behaviour for the speller, ie what a compound SHOULD BE)
+ +First +Last ! Spellertag: Can be first/last member of compound
+ +None ! Spellertag: Can not participate in compounds
+ +CmpOnly ! spellertag: can *only* participate in compounds
+ +SgNomLeft +SgGenLeft +PlGenLeft +SgLeft ! Restriction on compound to the left
+ +AllCmp ! Allow all compounding patterns
+ +DefSgGenCmp +DefPlGenCmp +DefCmp ! Default values
+! to be renamed:  +§SgNomCmp +§SgGenCmp +§PlGenCmp
+
+ +CmpN/Sg +CmpN/SgN +CmpN/SgG +CmpN/PlG
+ +CmpN/First +CmpN/Last +CmpN/None +CmpN/Only
+ +CmpN/SgLeft +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
+ +CmpN/All +CmpN/Def +CmpN/DefSgGen +CmpN/DefPlGen
+
+
  +Use/Sub
  +Use/Marg
  +Use/Circ
@@ -2088,7 +2104,7 @@ LEXICON DenominalNounsCONTR
 
 
 
-LEXICON VUOHTA !+SgGenCmp +DefPlGenCmp
+LEXICON VUOHTA !+CmpN/SgG +CmpN/DefPlGen
  +Der4+Der/vuohta+N:#»vuohta%>@C.NeedNoun@ VUOHTAMORPH ;
 
 LEXICON VUOHTANOUN
@@ -2105,11 +2121,11 @@ LEXICON VUOHTAMORPH
  +Abe:Q1dak K ;
  +Abe:Q1da K ;
 
-LEXICON LASJ !SUB !+SgNomCmp +SgGenCmp +PlGenCmp !from placenames
- +Der1+Der/lasj+N+Sg+Nom+Use/Sub+Use/Sub:»lasj K ; !
- +Der1+Der/lasj+N+Use/Sub+Use/Sub:»ladtja GÅNÅGIS-EVEN ; !
+LEXICON LASJ !SUB !+CmpN/SgN +CmpN/SgG +CmpN/PlG !from placenames
+ +Der1+Der/lasj+N+Sg+Nom+Use/Sub:»lasj K ; !
+ +Der1+Der/lasj+N+Use/Sub:»ladtja GÅNÅGIS-EVEN ; !
 
-LEXICON VUONAK !+SgNomCmp +SgGenCmp +PlGenCmp !from placenames
+LEXICON VUONAK !+CmpN/SgN +CmpN/SgG +CmpN/PlG !from placenames
  +Der1+Der/k+N+Sg+Nom:»k K ; ! no pointer to E-ODDCASE, as gahper has no short Ess
  +Der1+Der/k+N:»g9 OTH-ODDCASE ;
  +Der1+Der/k+N:»g ODDCmp ;
@@ -3709,8 +3725,8 @@ LEXICON DULLUT ! Does not make nouns via -ár derivation
 LEXICON TSIEGGIT ! Make nouns via -ár derivation
  +V+TV:%> STRÁFFUTStem ;
  +V+TV: DeverbalVerbsOADDÁT ;
- +V+TV+Der1+Der/r+N+SgNomCmp+SgGenCmp+PlGenCmp+SgNomLeft+SgGenLeft+PlGenLeft:»Y5r N-ODDCASE ; !
- +V+TV+Der1+Der/r+N+SgNomCmp+SgGenCmp+PlGenCmp+SgNomLeft+SgGenLeft+PlGenLeft:»Y5r OTH-ODDCASE ; !
+ +V+TV+Der1+Der/r+N+CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:»Y5r N-ODDCASE ; !
+ +V+TV+Der1+Der/r+N+CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:»Y5r OTH-ODDCASE ; !
  +V+TV:  CONTR-PASSIVE ;
 
 LEXICON VALLIT ! Make nouns via -ár derivation
@@ -4499,10 +4515,10 @@ LEXICON VSBST-EVEN
  +N+Sg+Nom+Der4+Der/ahtes:» AHTES ;
 
 
-LEXICON VSBST-EVENTV  !+SgNomCmp +DefSgGenCmp +DefPlGenCmp +SgNomLeft +SgGenLeft +PlGenLeft
+LEXICON VSBST-EVENTV  !+CmpN/SgN +CmpN/DefSgGen +CmpN/DefPlGen +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
  +N+Sg+Nom:ibme%> K ;
  +N+Sg+Nom:im%> K ;
- +N+Sg+Nom+SgNomCmp+DefSgGenCmp+DefPlGenCmp+SgNomLeft+SgGenLeft+PlGenLeft+Use/Ped:ibme%> PxV ; !
+ +N+Sg+Nom+CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped:ibme%> PxV ; !
  +N+SgNomCmp:im%> R ;
  +N+SgGenCmp:ime%> R ;
  +N+PlGenCmp:imi%>j R ;
@@ -4513,10 +4529,10 @@ LEXICON VSBST-EVENTV  !+SgNomCmp +DefSgGenCmp +DefPlGenCmp +SgNomLeft +SgGenLeft
  +N:ibme%>Q1 N-EVENWEAKSTEM ;
 
 
-LEXICON MUJTATJIBME !+SgNomCmp +DefSgGenCmp +DefPlGenCmp +SgNomLeft +SgGenLeft +PlGenLeft
+LEXICON MUJTATJIBME !+CmpN/SgN +CmpN/DefSgGen +CmpN/DefPlGen +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
  +N+Sg+Nom:ibme%> K ;
  +N+Sg+Nom:im%> K ;
- +N+Sg+Nom+SgNomCmp+DefSgGenCmp+DefPlGenCmp+SgNomLeft+SgGenLeft+PlGenLeft+Use/Ped:ibme%> PxV ; !
+ +N+Sg+Nom+CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped:ibme%> PxV ; !
  +N+SgNomCmp:im%> R ;
  +N+SgGenCmp:ime%> R ;
  +N+PlGenCmp:imi%>j R ;
@@ -4561,9 +4577,9 @@ LEXICON ACTOR
  +N:%>Y6 N-EVENWEAKSTEM ;
 ! +N:%>Y6 DenominalAdjsV1 ; !not plausible
 ! +N:%>Y7 DenominalAdjsV2 ; !not plausible
- +N+SgNomCmp+SgGenCmp+PlGenCmp:%>Y6 ACTORCmp ; !
+ +N+CmpN/SgN+CmpN/SgG+CmpN/PlG:%>Y6 ACTORCmp ; !
 
-LEXICON ACTORTV  !+SgNomCmp +SgGenCmp +PlGenCmp +SgNomLeft +SgGenLeft +PlGenLeft
+LEXICON ACTORTV  !+CmpN/SgN +CmpN/SgG +CmpN/PlG +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
  +A+Attr:%>Y6 ATTR ;
  +N:%>Y6 NE-EVENCASE ;
  +N:%>Y6 ACTORILL ;
@@ -4579,9 +4595,9 @@ LEXICON ACTORder
  +N:Y6 N-EVENWEAKSTEM ;
 ! +N:Y6 DenominalAdjsV1 ; !not plausible
 ! +N:Y7 DenominalAdjsV2 ; !not plausible
- +N+SgNomCmp+SgGenCmp+PlGenCmp:Y6 ACTORCmp ; !
+ +N+CmpN/SgN+CmpN/SgG+CmpN/PlG:Y6 ACTORCmp ; !
 
-LEXICON ACTORTVder  !+SgNomCmp +SgGenCmp +PlGenCmp +SgNomLeft +SgGenLeft +PlGenLeft
+LEXICON ACTORTVder  !+CmpN/SgN +CmpN/SgG +CmpN/PlG +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
  +A+Attr:Y6 ATTR ;
  +N:Y6 NE-EVENCASE ;
  +N:Y6 ACTORILL ;
@@ -4613,7 +4629,7 @@ LEXICON BOAHTEM
  +N:%> OTH-ODDCASE ;
  +N+Der4+Der/ahtes:» AHTES ;
 
-LEXICON BOAHTEMTV  !+SgNomCmp +DefSgGenCmp +DefPlGenCmp +SgNomLeft +SgGenLeft +PlGenLeft
+LEXICON BOAHTEMTV  !+CmpN/SgN +CmpN/DefSgGen +CmpN/DefPlGen +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
  +N+Sg+Nom:%> K ;
  +N+SgNomCmp:%> R ;
  +N+SgGenCmp:%>a R ;
@@ -4629,7 +4645,7 @@ LEXICON BASSALASSTEM
  +N:%> OTH-ODDCASE ;
  +N+Der4+Der/ahtes:» AHTES ;
 
-LEXICON BASSALASSTEMTV  !+SgNomCmp +DefSgGenCmp +DefPlGenCmp +SgNomLeft +SgGenLeft +PlGenLeft
+LEXICON BASSALASSTEMTV  !+CmpN/SgN +CmpN/DefSgGen +CmpN/DefPlGen +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
  +N+Sg+Nom:%> K ;
  +N+SgNomCmp:%> R ;
  +N+SgGenCmp:%>a R ;
@@ -4646,7 +4662,7 @@ LEXICON OADDÁM
  +N:%> OTH-ODDCASE ;
  +N+Der4+Der/ahtes:» AHTES ;
 
-LEXICON TJUOLLÁM  !+SgNomCmp +DefSgGenCmp +DefPlGenCmp +SgNomLeft +SgGenLeft +PlGenLeft
+LEXICON TJUOLLÁM  !+CmpN/SgN +CmpN/DefSgGen +CmpN/DefPlGen +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
  +N+Sg+Nom:%> K ;
  +N+SgNomCmp:%> R ;
  +N+SgGenCmp:%>a R ;
