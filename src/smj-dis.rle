@@ -3129,6 +3129,51 @@ MAP (@+FMAINV) TARGET COPULAS OR AUX (NEGATE *-1 Inf OR Sup OR PrfPrc OR GerII B
 
 MAP (@+FMAINV) TARGET ("liehket") (*-1 (A Nom) BARRIER NOT-ADV)(0 VFIN)(*1 Inf BARRIER NOT-ADV); #XX
 
+#MAP (@<ADVL) TARGET Inf IF (*-1 REKSV BARRIER NOT-ADV) ; 
+#MAP (@<ADVL) TARGET Inf IF (-1 CC LINK *-1 Inf BARRIER VERB LINK *-1 REKSV BARRIER NOT-ADV LINK *-1 Nom BARRIER S-BOUNDARY2);
+	## Go beassážiid leat čáppa dálkkit ja beaivvádat, de olbmot liikojit čuoigat meahcis dahje vuodjit mohtorgielkkáin. 
+	
+#MAP (@<ADVL) TARGET Inf IF (-1 Acc LINK *-1 REKSV BARRIER NPNH) ; 
+	## Son lea dakkár mii ii beroš lága čuovvut!
+
+#MAP:TEST (@<OBJ) TARGET Inf IF (*-1 VFIN LINK 0 FMAINV) ; 
+	## Duosttan go dahkat dan?
+
+MAP (@<OBJ) TARGET Inf OR PrfPrc IF (*-1 HAB-ACTOR BARRIER NOT-AA LINK 0 Acc LINK *-1 V-TRANS-ACT-NOT-ACT BARRIER NPNH LINK NOT 0 (A Attr) OR AUX LINK *-1 Nom)(NEGATE *-1 CC BARRIER VFIN LINK *-1 Inf BARRIER VFIN LINK *-1 AUX BARRIER NOT-ADV-PCLE LINK 0 VFIN);
+	## Mánnávuođas son vásihii dulvademiid ja eará luonddubillistemiid mat leat ožžon su čállit divttaid. 
+	## Mun háliidan mánnán boahtit ruoktot!
+
+	# The last constraint is for elliptic phrases.
+
+MAP (@<OBJ) TARGET Inf IF (*-1 HAB-ACTOR BARRIER NOT-AA LINK 0 Acc LINK *-1 V-TRANS-ACT-NOT-ACT BARRIER NPNH LINK NOT 0 AUX OR (A Attr) LINK 0 Imprt)(NEGATE *-1 CC BARRIER VFIN LINK *-1 Inf BARRIER VFIN LINK *-1 AUX BARRIER NOT-ADV-PCLE LINK 0 VFIN);
+	## Dáhto mánát boahtit ruoktot!
+
+MAP (@<OBJ) TARGET Inf IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY OR AUX OR Acc OR CC LINK NOT 0 AUX OR Adv OR Acc LINK NOT 0C Ger OR Imprt)(NEGATE 0 Pl3 LINK *-1 V-TRANS-ACT-NOT-ACT LINK 0 (Pl Nom))(NEGATE -1 CC LINK -1 Inf LINK -1 AUX) ; 
+	## Valla ij sån oattjo oadet.
+
+MAP (@<OBJ) TARGET Inf IF (*-1 V-TRANS-ACT BARRIER SV-BOUNDARY OR AUX OR Acc LINK NOT 0 AUX LINK 0 PrfPrc LINK -1 Neg OR COPULAS) ; 
+	## Olbmot dattetge dinejedje veaháš go vuvde dujiid, eaige dárbbašan oastit ávdnasiid duddjomii.
+
+
+MAP (@<OBJ) TARGET Inf IF (-1 Acc LINK NOT 0 TIME LINK *-1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY OR AUX LINK NOT 0 AUX OR Adv OR N LINK NOT 0C Ger OR Imprt)(NEGATE 0 Pl3 LINK *-1 V-TRANS-ACT-NOT-ACT LINK 0 (Pl Nom)) ; 
+	## Soames áddjá gåjkkebiergov sunnuj tsáhpá ja gåhttju mánájt bårråt.
+
+MAP (@<OBJ) TARGET (Actio Ess) IF (-1 Acc LINK NOT 0 TIME LINK *-1 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY OR AUX LINK NOT 0 AUX OR Adv OR N LINK NOT 0C Ger OR Imprt);
+	## De oinnii olbmá čohkkámin tuolloviesus.
+
+# Coordination
+MAP:r386 (@<OBJ) TARGET Inf IF (-1 CC LINK *-1 Inf BARRIER VERB LINK *-1 V-NOT-AUX BARRIER NOT-ADV LINK NOT 0 Imprt OR AUX) ; 
+# LINK *-1 Nom BARRIER S-BOUNDARY2);
+	## Son boahtá stálljii ja veahkeha čorget ja biebmat heasttaid.
+	## Mun hálidan oahppat goarrut gávtti ja gođđit ránu.
+
+MAP:r387 (@<OBJ) TARGET Inf IF (-1 CC LINK *-1 Inf BARRIER VERB LINK *-1 V-NOT-AUX BARRIER NOT-ADV LINK 0 Imprt OR AUX LINK *-1 BOC BARRIER WORD);
+	## Oahpa goarrut gávtti ja gođđit ránu.	
+	
+MAP (@<OBJ) TARGET PrfPrc IF (*-1 Acc BARRIER NOT-ADV LINK -1 Acc LINK *-1 VERBAL-ACTIVITY-V BARRIER NPNH)(0 V-TRANS-ACT);
+	## Son logai oappás dan bargan. 
+
+
 
 MAP (@+FMAINV) TARGET VFIN (*-1 ("javllat") BARRIER S-BOUNDARY2 OR VFIN OR COMMA)(NEGATE 0 Actor)(NEGATE *1 Inf OR Sup OR PrfPrc OR GerII BARRIER S-BOUNDARY2 OR VFIN OR DUOLLA); #XX
     ## Sälggagärmmahatjivga , guhtis le javllam dij boahtte moares bessabihtit ?
