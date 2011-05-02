@@ -175,16 +175,16 @@ Multichar_Symbols
 
 LEXICON Root
  +Use/Circ: Prefixes ;				    
- +LCmpnd++Use/Circ:%- NounRoot ;	    
+ +LCmpnd++Use/Circ:%- Noun ;	    
  @U.Cap.Obl@ ProperNoun ;          ! These flags are for
  @U.Cap.Opt@ ProperNoun ;          ! downcasing the propernouns
 ! AspellProp ;			               ! Only for aspell target !!
- NounRoot ;				   
+ Noun ;				   
 ! ProperNoun ;
 ! AspellAffix ;			 	           ! Only for aspell target !!
 ! ProperNounFirstPart ;	   
- AdjectiveRoot ;           
- VerbRoot ;                
+ Adjective ;           
+ Verb ;                
  Adverb ;                  
  Particle ;                
  Subjunction ;             
@@ -202,7 +202,7 @@ LEXICON Root
 
 
 ! ======================
-! Sublexica for NounRoot
+! Sublexica for Noun
 ! ======================
 
 
@@ -210,25 +210,25 @@ LEXICON Root
 ! =========================
 
 LEXICON Prefixes	!
- iehpe#+Use/Circ:iehpe# NounRoot;	!
- iehpe#+Use/Circ:iehpe# AdjectiveRoot;	!
- iehpe#+Use/Circ:iehpe# VerbRoot;		!
- ij%-+Use/Circ:ij%- AdjectiveRoot;  ! ij-biologalasj 
- ales#+Use/Circ:ales# NounRoot;	!
- badje#+Use/Circ:badje# NounRoot;	!
- guovdda#+Use/Circ:guovdda# NounRoot;	!
- maŋeldis#+Use/Circ:maŋeldis# NounRoot;	!
- maŋeldus#+Use/Circ:maŋeldus# NounRoot;	!
- maŋusj#+Use/Circ:maŋusj# NounRoot;	!
- miehte#+Use/Circ:miehte# NounRoot;	!
- oarjjel#+Use/Circ:oarjjel# NounRoot;	!
- oarjásj#+Use/Circ:oarjásj# NounRoot;	!
- sis#+Use/Circ:sis# NounRoot;	!
- sisŋutj#+Use/Circ:sisŋutj# NounRoot;	!
- sisŋátj#+Use/Circ:sisŋátj# NounRoot;	!
- vuosste#+Use/Circ:vuosste# NounRoot;	!
- åvddå#+Use/Circ:åvddå# NounRoot;	!
- åvdås#+Use/Circ:åvdås# NounRoot;	!
+ iehpe#+Use/Circ:iehpe# Noun;	!
+ iehpe#+Use/Circ:iehpe# Adjective;	!
+ iehpe#+Use/Circ:iehpe# Verb;		!
+ ij%-+Use/Circ:ij%- Adjective;  ! ij-biologalasj 
+ ales#+Use/Circ:ales# Noun;	!
+ badje#+Use/Circ:badje# Noun;	!
+ guovdda#+Use/Circ:guovdda# Noun;	!
+ maŋeldis#+Use/Circ:maŋeldis# Noun;	!
+ maŋeldus#+Use/Circ:maŋeldus# Noun;	!
+ maŋusj#+Use/Circ:maŋusj# Noun;	!
+ miehte#+Use/Circ:miehte# Noun;	!
+ oarjjel#+Use/Circ:oarjjel# Noun;	!
+ oarjásj#+Use/Circ:oarjásj# Noun;	!
+ sis#+Use/Circ:sis# Noun;	!
+ sisŋutj#+Use/Circ:sisŋutj# Noun;	!
+ sisŋátj#+Use/Circ:sisŋátj# Noun;	!
+ vuosste#+Use/Circ:vuosste# Noun;	!
+ åvddå#+Use/Circ:åvddå# Noun;	!
+ åvdås#+Use/Circ:åvdås# Noun;	!
 
 
 ! Compounds are not treated as in sme. Partly this is ok (the reduce-middle issue hasn't come up)
@@ -243,41 +243,72 @@ LEXICON Prefixes	!
 ! What does this take? A rewrite of the kultur- entries modeled on sme.
 
 
+!LEXICON R
+! #+Use/Circ:# NounRoot;                      ! This is the normal case.		         
+!! # NounSecond ;			   ! Testing some quasisuff, cf. noun file       
+! #@P.NeedNoun.ON@+Use/Circ:#@P.NeedNoun.ON@ VerbRoot;      ! Flag diacr declares that the compound   
+! #@P.NeedNoun.ON@+Use/Circ:#@P.NeedNoun.ON@ AdjectiveRoot; ! needs a N tag later in the derivation  
+! #+Use/Circ:%- NounRoot ;                        ! These 3 cases add a hyphen, so     
+! #@P.NeedNoun.ON@+Use/Circ:%-@P.NeedNoun.ON@  VerbRoot ;        ! Sem-julggaštus and the like	     
+! #@P.NeedNoun.ON@+Use/Circ:%-@P.NeedNoun.ON@  AdjectiveRoot ;   ! is allowed.			             
+!! # ProperNoun ;     ! Now, let us allow proper nouns as the 2nd part of com-
+! #+Use/Circ:%- ProperNoun ;  ! pounds. Thus: London-Hull, LondonHull, Hull-viessu     
+ !                   ! and viessuLondon are now all ok. Some refinement could 
+  !                  ! perhaps be done, but corpus research is needed.	     
+! +Cmpnd:%- ENDLEX ;     ! This to take care of Oahpo- ja dutkandept.
+!!want this in speller
+
+!! It seems the P flag in the AdjectiveRoot entry is irrelevant, since there
+!! are no N + [A-N] compounds. The pointers to AdjectiveRoot are temorarily
+!! (030129) left for inspection, they (line 3 and 6 of R) should be removed
+!! if no deadjectival nouns turn up.
+
+!LEXICON RAbbr !From abbreviations and acronyms to avoid two hyphens: a-- and ...
+! #+Use/Circ:# NounRoot;                      ! This is the normal case.		        
+!! # NounSecond ;			   ! Testing some quasisuff, cf. noun file      
+! #@P.NeedNoun.ON@+Use/Circ:#@P.NeedNoun.ON@ VerbRoot;      ! Flag diacr declares that the compound  
+! #@P.NeedNoun.ON@+Use/Circ:#@P.NeedNoun.ON@ AdjectiveRoot; ! needs a N tag later in the derivation 
+! #+Use/Circ:%- NounRoot ;                        ! These 3 cases add a hyphen, so    
+! #@P.NeedNoun.ON@+Use/Circ:%-@P.NeedNoun.ON@  VerbRoot ;        ! Sem-julggaštus and the like	    
+! #@P.NeedNoun.ON@+Use/Circ:%-@P.NeedNoun.ON@  AdjectiveRoot ;   ! is allowed.			    
+!!# ProperNoun ;     ! Now, let us allow proper nouns as the 2nd part of com-
+!!#:%- ProperNoun ;  ! pounds. Thus: London-Hull, LondonHull, Hull-viessu    
+!                    ! and viessuLondon are now all ok. Some refinement could
+!                    ! perhaps be done, but corpus research is needed.	    
+! +Cmpnd: ENDLEX ;     ! This to take care of Oahpo- ja dutkandept.
+!!want this in speller
+
 LEXICON R
- #+Use/Circ:# NounRoot;                      ! This is the normal case.		         
-! # NounSecond ;			   ! Testing some quasisuff, cf. noun file       
- #@P.NeedNoun.ON@+Use/Circ:#@P.NeedNoun.ON@ VerbRoot;      ! Flag diacr declares that the compound   
- #@P.NeedNoun.ON@+Use/Circ:#@P.NeedNoun.ON@ AdjectiveRoot; ! needs a N tag later in the derivation  
- #+Use/Circ:%- NounRoot ;                        ! These 3 cases add a hyphen, so     
- #@P.NeedNoun.ON@+Use/Circ:%-@P.NeedNoun.ON@  VerbRoot ;        ! Sem-julggaštus and the like	     
- #@P.NeedNoun.ON@+Use/Circ:%-@P.NeedNoun.ON@  AdjectiveRoot ;   ! is allowed.			             
-! # ProperNoun ;     ! Now, let us allow proper nouns as the 2nd part of com-
- #+Use/Circ:%- ProperNoun ;  ! pounds. Thus: London-Hull, LondonHull, Hull-viessu     
-                    ! and viessuLondon are now all ok. Some refinement could 
-                    ! perhaps be done, but corpus research is needed.	     
- +Cmpnd:%- ENDLEX ;     ! This to take care of Oahpo- ja dutkandept.
-!want this in speller
+ #+Use/Circ:# Noun ;                                    ! This is the normal case.		         
+ #@P.NeedNoun.ON@+Use/Circ:#@P.NeedNoun.ON@ Verb ;      ! Flag diacr declares that the compound   
+ #@P.NeedNoun.ON@+Use/Circ:#@P.NeedNoun.ON@ Adjective ; ! needs a N tag later in the derivation  
+ +Hyph#+Use/Circ:%- Noun ;                        ! These 3 cases add a hyphen, so     
+ +Hyph#@P.NeedNoun.ON@+Use/Circ:%-@P.NeedNoun.ON@  Verb ;        ! Sem-julggaštus and maana-gåetie	      
+ +Hyph#@P.NeedNoun.ON@+Use/Circ:%-@P.NeedNoun.ON@  Adjective ;   ! are allowed.			              
 
-! It seems the P flag in the AdjectiveRoot entry is irrelevant, since there
-! are no N + [A-N] compounds. The pointers to AdjectiveRoot are temorarily
-! (030129) left for inspection, they (line 3 and 6 of R) should be removed
-! if no deadjectival nouns turn up.
+ %-#+Use/Circ:%-# Acronym ;    ! maana-tv, "lomme-cd-spelar"
+ %-#+Use/Circ:%-# ProperNoun ; ! Proper nouns as the 2nd part of compounds for non-hyph.
+                               ! words. viessu-London goes through here.
 
-LEXICON RAbbr !From abbreviations and acronyms to avoid two hyphens: a-- and ...
- #+Use/Circ:# NounRoot;                      ! This is the normal case.		        
-! # NounSecond ;			   ! Testing some quasisuff, cf. noun file      
- #@P.NeedNoun.ON@+Use/Circ:#@P.NeedNoun.ON@ VerbRoot;      ! Flag diacr declares that the compound  
- #@P.NeedNoun.ON@+Use/Circ:#@P.NeedNoun.ON@ AdjectiveRoot; ! needs a N tag later in the derivation 
- #+Use/Circ:%- NounRoot ;                        ! These 3 cases add a hyphen, so    
- #@P.NeedNoun.ON@+Use/Circ:%-@P.NeedNoun.ON@  VerbRoot ;        ! Sem-julggaštus and the like	    
- #@P.NeedNoun.ON@+Use/Circ:%-@P.NeedNoun.ON@  AdjectiveRoot ;   ! is allowed.			    
-!# ProperNoun ;     ! Now, let us allow proper nouns as the 2nd part of com-
-!#:%- ProperNoun ;  ! pounds. Thus: London-Hull, LondonHull, Hull-viessu    
-                    ! and viessuLondon are now all ok. Some refinement could
-                    ! perhaps be done, but corpus research is needed.	    
- +Cmpnd: ENDLEX ;     ! This to take care of Oahpo- ja dutkandept.
-!want this in speller
+ +Cmpnd:%- ENDLEX ;     ! This to take care of Oahpo- ja dutkandept - want this in speller
 
+
+LEXICON RHyph ! Recursive lexicon from all classes REQUIRING a hyphen to follow.
+              ! NBNBNB!!! The hyphen should be added here! NOT in the other lexicons!
+
+ %-#+Use/Circ:%-# Noun;                                     ! This is the normal case.
+ %-#@P.NeedNoun.ON@+Use/Circ:%-#@P.NeedNoun.ON@ Verb;       ! Flag diacr declares that the compound
+ %-#@P.NeedNoun.ON@+Use/Circ:%-#@P.NeedNoun.ON@ Adjective ; ! needs a N tag later in the derivation
+
+ %-#+Use/Circ:%-# Acronym ;    ! maana-tv, "lomme-cd-spelar"
+ %-#+Use/Circ:%-# ProperNoun ; ! Proper nouns as the 2nd part of compounds for hyph-words.
+                               ! London-Hull is covered here, whereas Hull-viessu
+                               ! is covered by RHyph + Noun.
+
+ +Cmpnd:%- ENDLEX ;      ! This to take care of Oahpo- ja dutkandept - want this in speller
+
+! Proper noun compounds without hyphens are NOT presently covered - if they were
+! to be added, they need to be marked +Use/Sub. Examples: LondonHull & viessuLondon.
 
 
 
@@ -2137,7 +2168,7 @@ LEXICON VUONAK !+CmpN/SgN +CmpN/SgG +CmpN/PlG !from placenames
 
 
 ! ===========================
-! Sublexica for AdjectiveRoot
+! Sublexica for Adjective
 ! ===========================
 
 ! Even-syllable stems
@@ -3124,7 +3155,7 @@ LEXICON STÁVAL
 
 
 ! ======================
-! Sublexica for VerbRoot
+! Sublexica for Verb
 ! ======================
 
 ! Even-syllable stems
