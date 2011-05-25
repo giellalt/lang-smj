@@ -177,11 +177,10 @@ Multichar_Symbols
 
 LEXICON Root
  +Use/Circ: Prefixes ;				    
- +LCmpnd++Use/Circ:%- Noun ;	    
  @U.Cap.Obl@ ProperNoun ;          ! These flags are for
  @U.Cap.Opt@ ProperNoun ;          ! downcasing the propernouns
 ! AspellProp ;			               ! Only for aspell target !!
- Noun ;				   
+ NounRoot ;
 ! ProperNoun ;
 ! AspellAffix ;			 	           ! Only for aspell target !!
 ! ProperNounFirstPart ;	   
@@ -286,7 +285,8 @@ LEXICON R
  #@P.NeedNoun.ON@+Use/Circ:#@P.NeedNoun.ON@ Adjective ; ! needs a N tag later in the derivation  
  +Hyph#+Use/Circ:%- Noun ;                        ! These 3 cases add a hyphen, so     
  +Hyph#@P.NeedNoun.ON@+Use/Circ:%-@P.NeedNoun.ON@  Verb ;        ! Sem-julggaštus and maana-gåetie	      
- +Hyph#@P.NeedNoun.ON@+Use/Circ:%-@P.NeedNoun.ON@  Adjective ;   ! are allowed.			              
+ +Hyph#@P.NeedNoun.ON@+Use/Circ:%-@P.NeedNoun.ON@  Adjective ;   ! are allowed.  %-#+Use/Circ:%-# HyphNouns ; ! Go to words requiring hyphens, like -tv- and -cd-
+			              
 
  %-#+Use/Circ:%-# Acronym ;    ! maana-tv, "lomme-cd-spelar"
  %-#+Use/Circ:%-# ProperNoun ; ! Proper nouns as the 2nd part of compounds for non-hyph.
@@ -308,7 +308,8 @@ LEXICON RHyph ! Recursive lexicon from all classes REQUIRING a hyphen to follow.
                                ! is covered by RHyph + Noun.
 
  +Cmpnd:%- ENDLEX ;      ! This to take care of Oahpo- ja dutkandept - want this in speller
-
+ %-#+Use/Circ:%-# HyphNouns ; ! Go to words requiring hyphens, like -tv- and -cd-
+ 
 ! Proper noun compounds without hyphens are NOT presently covered - if they were
 ! to be added, they need to be marked +Use/Sub. Examples: LondonHull & viessuLondon.
 
