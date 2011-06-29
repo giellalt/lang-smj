@@ -40,18 +40,14 @@
           <code>gt/script/preprocess</code>, which is language-independent.
           The script is documented <a
           href="../../ling/preprocessor.html">here</a>. The language dependent
-          part of the script shall be done via a </p>
+          part of the script shall be done via the file <code>smj/bin/abbr.txt</code></p>
         </section>
 
         <section>
           <title>Handling abbreviations</title>
 
-          <fixme author="Trond, Tomi, Saara">We need Lule Sami abbreviations,
-          and the Makefile routine for generating the abbr.txt file.</fixme>
 
-          <p>On the other hand side, as long as we have neither lexicon nor
-          texts for Lule Sámi, we have no need for a Lule Sámi preprocessor
-          either.</p>
+          <p>Lule Saami abbreviations are handled as for North Saami.</p>
         </section>
       </section>
 
@@ -60,30 +56,30 @@
 
         <p>This is a feature common to Lule and Southern Sami, not to be found
         in Northern Sami. The letter æ/ä and ø/ö are used interchangeably in
-        Norway and Sweden. The parser should thus accept any version of
+        Norway and Sweden. The parser accepts any version of
         them.</p>
 
-        <p>The xfst file to handle this is short, it consists of one line:</p>
+        <p>The xfst file to handle this is the language-independent
+        <a href="https://victorio.uit.no/langtech/trunk/gt/common/src/spellrelax.regex">spellrelax.regex</a>.
+        It contains rules like:</p>
 
         <source>ń (-&gt;) ñ, ŋ (-&gt;) ñ, æ (-&gt;) ä, ø (-&gt;) ö ;</source>
 
         <p>The line says that æ may optionally be replaced by ä and that ø may
         optionally be replaced with ö, and the same for the different ways of
-        writing ŋ. A problem with this script is that it does not work,
-        although it worked earlier in 2005.</p>
+        writing ŋ.</p>
+        <p>
+        We plan to make parts of the spellrelax file language dependent.
+        </p>
 
-        <fixme author="Trond, Tomi, Saara">Fix the spellrelax.regex
-        script</fixme>
       </section>
 
       <section>
         <title>Initial capitalization</title>
 
-        <p>This works like the Northern Sami file, cf. <a
+        <p>There is a language independent <a href="https://victorio.uit.no/langtech/trunk/gt/common/src/inituppercase.regex">inituppercase.regex</a> file. Cf. <a
         href="../sme/docu-sme-preprocessor.html#ini">the documentation for
-        Northern Sami initial capitalization</a>. The content of the file is
-        slightly different, since the letter repertoire is different as
-        well.</p>
+        initial capitalization</a> written for North Saami.</p>
       </section>
 
       <section>
@@ -92,8 +88,6 @@
         <p>This has not yet been implemented.</p>
       </section>
 
-      <p class="last_modified">Last modified $Date$, by
-      $Author$</p>
     </section>
   </body>
 </document>
