@@ -110,7 +110,7 @@ LIST SgCmp = SgCmp ;
 LIST SgNomCmp = SgNomCmp ;
 LIST SgGenCmp = SgGenCmp ; 
 LIST PlGenCmp = PlGenCmp ;
-LIST Cmpnd = Cmpnd ;
+LIST RCmpnd = RCmpnd ;
 
 LIST PxSg1 = PxSg1 ; 
 LIST PxSg2 = PxSg2 ; 
@@ -492,7 +492,7 @@ SET VERB = V - (V N);   # V is all readings with a V tag in them, VERB should
 
 #SET LEX-V = VERB - V-DER;             # VERB but not V-DER
 
-SET V-NOT-CMPND = V - Cmpnd; # Not in use.
+SET V-NOT-CMPND = V - RCmpnd; # Not in use.
 
 SET LEX-V = V - V-DER;
 
@@ -807,18 +807,18 @@ SET NOT-ACTOR = N - Actor ;
 LIST PROP = (N Prop);
 SET CNOUN = N - Prop;
 SET CNOUN-PL-NOM = (N Pl Nom) - Prop ;
-SET HNOUN = N - Cmpnd ;
-SET HNOUN-NOM = (N Nom) - Cmpnd ;
+SET HNOUN = N - RCmpnd ;
+SET HNOUN-NOM = (N Nom) - RCmpnd ;
 SET N-NOT-GEN = N - (N Gen) ;
 
 SET NP-HEAD        = Pron OR HNOUN ;
-SET NP-HEAD-SG     = (Pron Sg1) OR (Pron Sg2) OR (Pron Sg3) OR (N Sg) - Cmpnd;
-SET NP-HEAD-PL     = (Pron Pl1) OR (Pron Pl2) OR (Pron Pl3) OR (N Pl) - Cmpnd;
-SET NP-HEAD-SG-NOM = (Pron Sg1 Nom) OR (Pron Sg2 Nom) OR (Pron Sg3 Nom) OR (N Sg Nom) - Cmpnd;
-SET NP-HEAD-PL-NOM = (Pron Pl1 Nom) OR (Pron Pl2 Nom) OR (Pron Pl3 Nom) OR (N Pl Nom) - Cmpnd;
+SET NP-HEAD-SG     = (Pron Sg1) OR (Pron Sg2) OR (Pron Sg3) OR (N Sg) - RCmpnd;
+SET NP-HEAD-PL     = (Pron Pl1) OR (Pron Pl2) OR (Pron Pl3) OR (N Pl) - RCmpnd;
+SET NP-HEAD-SG-NOM = (Pron Sg1 Nom) OR (Pron Sg2 Nom) OR (Pron Sg3 Nom) OR (N Sg Nom) - RCmpnd;
+SET NP-HEAD-PL-NOM = (Pron Pl1 Nom) OR (Pron Pl2 Nom) OR (Pron Pl3 Nom) OR (N Pl Nom) - RCmpnd;
 SET NP-HEAD-NOM    = NP-HEAD-SG-NOM OR NP-HEAD-PL-NOM;
-SET NP-HEAD-ACC    = (Pron Acc) OR (N Acc) - Cmpnd;
-SET NP-HEAD-GEN    = (Pron Gen) OR (N Gen) - Cmpnd;
+SET NP-HEAD-ACC    = (Pron Acc) OR (N Acc) - RCmpnd;
+SET NP-HEAD-GEN    = (Pron Gen) OR (N Gen) - RCmpnd;
 
 
 
@@ -826,7 +826,7 @@ SET NP-HEAD-GEN    = (Pron Gen) OR (N Gen) - Cmpnd;
 # - - - - - - - - - - - - - - - -
 
 SET PRE-NP-HEAD = (Prop Attr) OR (Prop @>N) OR (A Attr) OR ("buorre") OR (Pron Pers Gen) OR (N Gen) OR 
-         Num OR Cmpnd OR CC OR (Pron Dem) OR (Pron Refl Gen) OR (Pron Indef) OR 
+         Num OR RCmpnd OR CC OR (Pron Dem) OR (Pron Refl Gen) OR (Pron Indef) OR 
          (PrfPrc @>N) OR (PrfPrc @PrcN>) OR PrsPrc OR (A Ord) ;
          # OR (Ill LINK 1 (PrfPrc @AN>)) OR (Com LINK 1 (PrfPrc @AN>)) OR (LOC LINK 1 (PrfPrc @AN>))
          # The strict version of items that can only be premodifiers, not parts of the predicate
@@ -1785,7 +1785,7 @@ SELECT CS IF (0 ("danen"))(1 ("gå"));
 # Mappings of minor categories
 # ----------------------------
 
-MAP (@CMPND) TARGET Cmpnd;
+MAP (@CMPND) TARGET RCmpnd;
 MAP (@>N) TARGET (Prop Attr);
 
 MAP (@INTERJ) TARGET Interj ;
@@ -1919,7 +1919,7 @@ SELECT @CVP IF (-1 ("diehti") LINK -1 Gen)(0 ("gå")); #XX
     ## Bárnev riegádahttá ja dån galga suv Jesusin gåhttjot, dan diehti gå álmmugav suttojstisá lånes.
 
     
-SELECT @CNP IF (-1 Cmpnd); #XX
+SELECT @CNP IF (-1 RCmpnd); #XX
     ## Sávtsa- ja gájtsanáhkkegárvoj vádtsin, vánev gierddin, doarrádaláduvvin ja illastuvvin.
     
 #SELECT @CNP IF (NEGATE *-1 VFIN OR AUX BARRIER S-BOUNDARY)(*-1 V OR N OR Adv OR A OR Pron); 
@@ -2126,7 +2126,7 @@ SELECT (A Attr) IF (*-1 V-NOT-AUX BARRIER SV-BOUNDARY2)(0 Adv)(1 Acc)(2 ("gus"))
 SELECT (A Attr) IF (NEGATE *-3 COPULAS BARRIER NOT-ADV-PCLE)(-2 Attr OR PrfPrc OR PrsPrc) (-1 CC)(1 N LINK NOT 0 Nom)(NEGATE 0 (Prop Gen) LINK NOT 1 Prop);
 	## Soahpamušas váilot njuolggadusat smávit vahágahtti ja geavatlaččat bággolonistemiide.
  
-REMOVE (A Nom) IF (0 (A Attr))(NEGATE 0 (Pl Nom) LINK *-1 (V Pl3) BARRIER NOT-ADV-PCLE OR CS LINK NOT *-1 (Pl Nom) BARRIER S-BOUNDARY2 OR CC) (NEGATE 0 (Pl Nom) LINK *-1 COPULAS BARRIER NOT-ADV-PCLE LINK 0 Pl3) (*1C N OR Cmpnd BARRIER NOT-ADJ OR (PUNCT RIGHT) LINK NOT 1 Po) (NEGATE 1 Prop OR Ill)(NEGATE 1 COMMA LINK 1 N) (NEGATE 1 Gen LINK *1 Po BARRIER NP-BOUNDARY);
+REMOVE (A Nom) IF (0 (A Attr))(NEGATE 0 (Pl Nom) LINK *-1 (V Pl3) BARRIER NOT-ADV-PCLE OR CS LINK NOT *-1 (Pl Nom) BARRIER S-BOUNDARY2 OR CC) (NEGATE 0 (Pl Nom) LINK *-1 COPULAS BARRIER NOT-ADV-PCLE LINK 0 Pl3) (*1C N OR RCmpnd BARRIER NOT-ADJ OR (PUNCT RIGHT) LINK NOT 1 Po) (NEGATE 1 Prop OR Ill)(NEGATE 1 COMMA LINK 1 N) (NEGATE 1 Gen LINK *1 Po BARRIER NP-BOUNDARY);
 	## Dat lea čuovvovaš sajis.
 
 REMOVE (A Gen) IF (0 (A Attr))(*1 N BARRIER NOT-ADJ LINK NOT 1 Po);
@@ -2211,7 +2211,7 @@ SELECT PrfPrc IF (*-1 CC BARRIER NOT-ADV LINK -1 A);
  # since PrfPrc but not Actio coordinates with adjectives in predicate position. 
 
 SELECT (A Attr) IF (1 CC)(2C (A Attr));
-SELECT (A Attr) IF (1 CC)(2 (A Attr))(NEGATE 2 VERB)(3 N OR Cmpnd)(NEGATE 4 Po); 
+SELECT (A Attr) IF (1 CC)(2 (A Attr))(NEGATE 2 VERB)(3 N OR RCmpnd)(NEGATE 4 Po); 
 	## ...go galgá válljejuvvot gaskal vejolaš ja dohkkalaš iskkadan-
 	## ja dikšunvugiid. 
 	## Olbmot geat ellet náitoslágan dahje guimmešvuođalágan gaskavuođain.

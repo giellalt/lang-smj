@@ -23,6 +23,7 @@
 
 
 Multichar_Symbols
+
 ! Tags for POS
  +N +A +Adv +V
  +Pron +CS +CC +Adp +Po +Pr +Interj +Pcle +Num +Qst +Clt +Foc
@@ -30,31 +31,27 @@ Multichar_Symbols
 ! Tags for sub-POS
  +Prop +Pers +Dem +Interr +Refl +Recipr +Rel +Indef
  +Coll ! collective numerals
- +Loc
- +Foc/ge
- +Foc/gen
- +Foc/ga
- »7 %>7
 
-! Tags for Inflection
- +Ess +Sg +Du +Pl +Nom +Gen +Acc +Ill +Com +Ine +Ela +Par +Abe
- +SgCmp +SgNomCmp +SgGenCmp +PlGenCmp +Cmpnd +LCmpnd+ +Guess +ShCmp !testing ShCmp
- +First +Last +None +CmpOnly +SgNomLeft +SgGenLeft +PlGenLeft +SgLeft +AllCmp
- +DefSgGenCmp +DefPlGenCmp +DefCmp
- +PxSg1 +PxSg2 +PxSg3 +PxDu1 +PxDu2 +PxDu3 +PxPl1 +PxPl2 +PxPl3
- +Comp +Superl
- +Attr +Card
- +Ord ! CHECK THIS!! In closed-sme there are +Ord entries without circ. tag
- +Der/Pass +Ind +Prs +Prt +Pot +Cond +Imprt
- +Sg1 +Sg2 +Sg3 +Du1 +Du2 +Du3 +Pl1 +Pl2 +Pl3
- +Inf +Ger +GerII +ConNeg +Neg +ImprtII +PrsPrc +PrfPrc +Sup +VGen +VAbess
- +Actio +Actor +ABBR +ACR +CLB +PUNCT +LEFT +RIGHT ^GUESSNOUNROOT
- +TV +IV ! Transitivity tags
- +Multi ! Multiword phrase tag
-!+HYPH +PAR ! Not in use, it seems.
+! Usage tags
+ +Use/Sub
+ +Use/Marg
+ +Use/-Spell !recognized but not suggested in speller
+ +Use/Circ
+ +Use/CircN
+ +Use/Ped
+ +Use/NG
+
+! Dialect tags:
+ +Dial/-KJ
+ +Dial/-GG
+ +Dial/-GS
+ +Dial/-NOR ! Not in Norway
+ +Dial/-SW  ! Not in Sweden
+
 
 ! Normative/prescriptive compounding tags:
 ! (to govern compound behaviour for the speller, ie what a compound SHOULD BE)
+
  +First +Last ! Spellertag: Can be first/last member of compound
  +None ! Spellertag: Can not participate in compounds
  +CmpOnly ! spellertag: can *only* participate in compounds
@@ -63,32 +60,57 @@ Multichar_Symbols
  +DefSgGenCmp +DefPlGenCmp +DefCmp ! Default values
 ! to be renamed:  +§SgNomCmp +§SgGenCmp +§PlGenCmp
 
- +CmpN/Sg +CmpN/SgN +CmpN/SgG +CmpN/PlG
- +CmpN/First +CmpN/Last +CmpN/None +CmpN/Only
- +CmpN/Pref      ! prefix only
+ +CmpN/Sg +CmpN/SgN                 ! Can take right compound if self is Sg, SgN 
+ +CmpN/SgG +CmpN/PlG                ! Can take right compound if self is SgG, PlG 
+ +CmpN/First +CmpN/Last             ! prefix only
+ +CmpN/None +CmpN/Only              ! prefix only
+ +CmpN/Pref                         ! prefix only
+ +CmpN/SgLeft +CmpN/SgNomLeft       ! Can take left compound if self is Sg, SgNom
+ +CmpN/SgGenLeft +CmpN/PlGenLeft    ! Can take left compound if self is SgGen, … 
+ +CmpN/All                          ! 
+ +CmpN/Def +CmpN/DefSgGen +CmpN/DefPlGen
 
- +CmpN/SgLeft +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
- +CmpN/All +CmpN/Def +CmpN/DefSgGen +CmpN/DefPlGen
+! Tags for compound analysis - this is what a compound is:
+ +SgCmp +SgNomCmp +SgGenCmp +PlGenCmp ! Different case + number combinations
+ +Cmp ! Dynamic compound - this tag should always be part of a dynamic compound.
+      ! It is important for Apertium, and useful in other cases as well.
+ +RCmpnd  ! This is a split compound with the other part to the right:
+          ! "Arbeids- og inkluderingsdepartementet" => Arbeids- = +RCmpnd
+ +LCmpnd+ ! This is a split compound with the other part to the left
+ +ShCmp !testing ShCmp
 
+!!!! === Tags for Inflection ===
 
- +Use/Sub
- +Use/Marg
- +Use/-Spell !recognized but not suggested in speller
- +Use/Circ
- +Use/CircN
- +Use/Ped 
- +Use/NG 
- +Dial/-KJ
- +Dial/-GG
- +Dial/-GS
- +Dial/-NOR ! Not in Norway
- +Dial/-SW  ! Not in Sweden
+! Tags for Case and Number Inflection
+ +Sg +Du +Pl                                            ! Number
+ +Ess +Nom +Gen +Acc +Ill +Loc +Com +Ine +Ela +Par +Abe ! Case
 
+! Possessive tags
+ +PxSg1 +PxSg2 +PxSg3 +PxDu1 +PxDu2 +PxDu3 +PxPl1 +PxPl2 +PxPl3
+ +Comp +Superl
+ +Attr +Card
+ +Ord ! CHECK THIS!! In closed-sme there are +Ord entries without circ. tag
+ +Ind +Prs +Prt +Pot +Cond +Imprt
+ +Sg1 +Sg2 +Sg3 +Du1 +Du2 +Du3 +Pl1 +Pl2 +Pl3
+ +Inf +Ger +GerII +ConNeg +Neg +ImprtII +PrsPrc +PrfPrc +Sup +VGen +VAbess
+ +Actio +Actor
+ +ABBR +ACR +CLB +PUNCT +LEFT +RIGHT ^GUESSNOUNROOT
+ +TV +IV ! Transitivity tags
+ +Multi ! Multiword phrase tag
+ +Guess ! for the name guesser
+ +v1 +v2 +v3 +v4 +v5  ! Versions 
+ +Hyph
+! +PAR ! Not in use, it seems.
+
+! Focus particles:
+ +Foc/ge
+ +Foc/gen
+ +Foc/ga
 
 ! Semantic tags
  +Ani +Fem +Mal +Sur +Plc +Org +Obj +Tit
 
- 
+
 
 ! Der#begin
 ! Derivation position in a derivation row:  Affix and:
@@ -156,6 +178,7 @@ Multichar_Symbols
  r9 s9 t9 u7 z9 æ9 ä9 '7 r9 ø9 ö9
 ! A9 B9 E7 E9 D9 G8 G9 H8 H9 I7 J9 K9 M8 M9 N8 N9 O7 O9 P9
 ! S9 T9 U7 Z9 Æ9 Ä9 R9 Ø9 Ö9
+ »7 %>7
 
 ! Triggers for morphophonological rules
  X1 X2 X3 X4 X5 X6 X7 X8 X9
@@ -233,83 +256,39 @@ LEXICON Prefixes	!
  åvdås#+Use/Circ:åvdås# Noun;	!
 
 
-! Compounds are not treated as in sme. Partly this is ok (the reduce-middle issue hasn't come up)
-! but partly it is not ok (a better treatment of hyphen would have been possible)
-! Such a solution is sketched here
-
-! R should be split like this:
-! LEXICON R ! Default compound case. splits
-! #:%- Rhyphen ; or even %-, for two-sided hyph
-!      Rnohyphen ; !
-! Then, the hyph- and nonhyph members of today's R would go to different lexicon.
-! What does this take? A rewrite of the kultur- entries modeled on sme.
-
-
-!LEXICON R
-! #+Use/Circ:# NounRoot;                      ! This is the normal case.		         
-!! # NounSecond ;			   ! Testing some quasisuff, cf. noun file       
-! #@P.NeedNoun.ON@+Use/Circ:#@P.NeedNoun.ON@ VerbRoot;      ! Flag diacr declares that the compound   
-! #@P.NeedNoun.ON@+Use/Circ:#@P.NeedNoun.ON@ AdjectiveRoot; ! needs a N tag later in the derivation  
-! #+Use/Circ:%- NounRoot ;                        ! These 3 cases add a hyphen, so     
-! #@P.NeedNoun.ON@+Use/Circ:%-@P.NeedNoun.ON@  VerbRoot ;        ! Sem-julggaštus and the like	     
-! #@P.NeedNoun.ON@+Use/Circ:%-@P.NeedNoun.ON@  AdjectiveRoot ;   ! is allowed.			             
-!! # ProperNoun ;     ! Now, let us allow proper nouns as the 2nd part of com-
-! #+Use/Circ:%- ProperNoun ;  ! pounds. Thus: London-Hull, LondonHull, Hull-viessu     
- !                   ! and viessuLondon are now all ok. Some refinement could 
-  !                  ! perhaps be done, but corpus research is needed.	     
-! +Cmpnd:%- ENDLEX ;     ! This to take care of Oahpo- ja dutkandept.
-!!want this in speller
-
-!! It seems the P flag in the AdjectiveRoot entry is irrelevant, since there
-!! are no N + [A-N] compounds. The pointers to AdjectiveRoot are temorarily
-!! (030129) left for inspection, they (line 3 and 6 of R) should be removed
-!! if no deadjectival nouns turn up.
-
-!LEXICON RAbbr !From abbreviations and acronyms to avoid two hyphens: a-- and ...
-! #+Use/Circ:# NounRoot;                      ! This is the normal case.		        
-!! # NounSecond ;			   ! Testing some quasisuff, cf. noun file      
-! #@P.NeedNoun.ON@+Use/Circ:#@P.NeedNoun.ON@ VerbRoot;      ! Flag diacr declares that the compound  
-! #@P.NeedNoun.ON@+Use/Circ:#@P.NeedNoun.ON@ AdjectiveRoot; ! needs a N tag later in the derivation 
-! #+Use/Circ:%- NounRoot ;                        ! These 3 cases add a hyphen, so    
-! #@P.NeedNoun.ON@+Use/Circ:%-@P.NeedNoun.ON@  VerbRoot ;        ! Sem-julggaštus and the like	    
-! #@P.NeedNoun.ON@+Use/Circ:%-@P.NeedNoun.ON@  AdjectiveRoot ;   ! is allowed.			    
-!!# ProperNoun ;     ! Now, let us allow proper nouns as the 2nd part of com-
-!!#:%- ProperNoun ;  ! pounds. Thus: London-Hull, LondonHull, Hull-viessu    
-!                    ! and viessuLondon are now all ok. Some refinement could
-!                    ! perhaps be done, but corpus research is needed.	    
-! +Cmpnd: ENDLEX ;     ! This to take care of Oahpo- ja dutkandept.
-!!want this in speller
-
+! This is for regular compounding. All entries NOT requiring a hyphen should point to this:
 LEXICON R
- #+Use/Circ:# Noun ;                                    ! This is the normal case.		         
- #@P.NeedNoun.ON@+Use/Circ:#@P.NeedNoun.ON@ Verb ;      ! Flag diacr declares that the compound   
- #@P.NeedNoun.ON@+Use/Circ:#@P.NeedNoun.ON@ Adjective ; ! needs a N tag later in the derivation  
- +Hyph#+Use/Circ:%- Noun ;                        ! These 3 cases add a hyphen, so     
- +Hyph#@P.NeedNoun.ON@+Use/Circ:%-@P.NeedNoun.ON@  Verb ;        ! Sem-julggaštus and maana-gåetie	      
- +Hyph#@P.NeedNoun.ON@+Use/Circ:%-@P.NeedNoun.ON@  Adjective ;   ! are allowed.  
+                     +Use/Circ#:# Noun ;                       ! This is the normal case.		         
+      @P.NeedNoun.ON@+Use/Circ#:@P.NeedNoun.ON@# Verb ;        ! Flag diacr declares that the compound   
+      @P.NeedNoun.ON@+Use/Circ#:@P.NeedNoun.ON@# Adjective ;   ! needs a N tag later in the derivation  
+                +Hyph+Use/Circ#:%- Noun ;                      ! These 3 cases add a hyphen, so     
+ @P.NeedNoun.ON@+Hyph+Use/Circ#:@P.NeedNoun.ON@%-  Verb ;      ! Sem-julggaštus and maana-gåetie	      
+ @P.NeedNoun.ON@+Hyph+Use/Circ#:@P.NeedNoun.ON@%-  Adjective ; ! are allowed.  
 			              
 
- %-#+Use/Circ:%-# Acronym ;    ! maana-tv, "lomme-cd-spelar"
- %-#+Use/Circ:%-# ProperNoun ; ! Proper nouns as the 2nd part of compounds for non-hyph.
+ +Use/Circ%-#:%-# Acronym ;    ! maana-tv, "lomme-cd-spelar"
+ +Use/Circ%-#:%-# ProperNoun ; ! Proper nouns as the 2nd part of compounds for non-hyph.
                                ! words. viessu-London goes through here.
 
- +Cmpnd:%- ENDLEX ;     ! This to take care of Oahpo- ja dutkandept - want this in speller
-%-#+Use/Circ:%-# HyphNouns ; ! Go to words requiring hyphens, like -tv- and -cd-
+      +RCmpnd:%- ENDLEX ;     ! This to take care of Oahpo- ja dutkandept - want this in speller
+ +Use/Circ%-#:%-# HyphNouns ; ! Go to words requiring hyphens, like -tv- and -cd-
 
+
+! This is for compounding with hyphen. All entries REQUIRING a hyphen should point to this:
 LEXICON RHyph ! Recursive lexicon from all classes REQUIRING a hyphen to follow.
               ! NBNBNB!!! The hyphen should be added here! NOT in the other lexicons!
 
- %-#+Use/Circ:%-# Noun;                                     ! This is the normal case.
- %-#@P.NeedNoun.ON@+Use/Circ:%-#@P.NeedNoun.ON@ Verb;       ! Flag diacr declares that the compound
- %-#@P.NeedNoun.ON@+Use/Circ:%-#@P.NeedNoun.ON@ Adjective ; ! needs a N tag later in the derivation
+                +Use/Circ%-#:%-# Noun;                                     ! This is the normal case.
+ @P.NeedNoun.ON@+Use/Circ%-#:@P.NeedNoun.ON@%-# Verb;       ! Flag diacr declares that the compound
+ @P.NeedNoun.ON@+Use/Circ%-#:@P.NeedNoun.ON@%-# Adjective ; ! needs a N tag later in the derivation
 
- %-#+Use/Circ:%-# Acronym ;    ! maana-tv, "lomme-cd-spelar"
- %-#+Use/Circ:%-# ProperNoun ; ! Proper nouns as the 2nd part of compounds for hyph-words.
+ +Use/Circ%-#:%-# Acronym ;    ! maana-tv, "lomme-cd-spelar"
+ +Use/Circ%-#:%-# ProperNoun ; ! Proper nouns as the 2nd part of compounds for hyph-words.
                                ! London-Hull is covered here, whereas Hull-viessu
                                ! is covered by RHyph + Noun.
 
- +Cmpnd:%- ENDLEX ;      ! This to take care of Oahpo- ja dutkandept - want this in speller
- %-#+Use/Circ:%-# HyphNouns ; ! Go to words requiring hyphens, like -tv- and -cd-
+      +RCmpnd:%- ENDLEX ;      ! This to take care of Oahpo- ja dutkandept - want this in speller
+ +Use/Circ%-#:%-# HyphNouns ; ! Go to words requiring hyphens, like -tv- and -cd-
  
 ! Proper noun compounds without hyphens are NOT presently covered - if they were
 ! to be added, they need to be marked +Use/Sub. Examples: LondonHull & viessuLondon.
