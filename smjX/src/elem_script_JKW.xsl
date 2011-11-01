@@ -22,16 +22,15 @@
 	      omit-xml-declaration="no"
 	      indent="yes"/>
   
- <xsl:function name="functx:chars" as="xs:string*" 
+  
+<!--function found/copied from: http://www.xsltfunctions.com/xsl/functx_chars.html to divide up individual characters of a string-->
+  <xsl:function name="functx:chars" as="xs:string*" 
               xmlns:functx="http://www.functx.com" >
-  <xsl:param name="arg" as="xs:string?"/> 
- 
-  <xsl:sequence select=" 
-   for $ch in string-to-codepoints($arg)
-   return codepoints-to-string($ch)
- "/>
-   
-</xsl:function> 
+    <xsl:param name="arg" as="xs:string?"/> 
+    <xsl:sequence select=" 
+     for $ch in string-to-codepoints($arg)
+     return codepoints-to-string($ch)"/>
+   </xsl:function> 
   
   
   <xsl:param name="inFile" select="'gogo_file'"/>
@@ -39,9 +38,9 @@
   <xsl:param name="outDir" select="'out_1'"/>
   <xsl:param name="elem" select="'col'"/>
   <xsl:variable name="of" select="'txt'"/>
-  <xsl:variable name="e" select="'txt'"/>
+  <xsl:variable name="e" select="'txt'"/><!-- extension -->
   <xsl:variable name="debug" select="true()"/>
-  <xsl:variable name="nl" select="'&#xa;'"/>
+  <xsl:variable name="nl" select="'&#xa;'"/><!-- new line -->
   <xsl:variable name="slang" select="'sma'"/>
   <xsl:variable name="tlang" select="'nob'"/>
   
@@ -50,6 +49,7 @@
     <xsl:for-each select="for $f in collection(concat($inDir,'?recurse=no;select=*.xml;on-error=warning')) return $f">
       
       <xsl:variable name="current_file" select="(tokenize(document-uri(.), '/'))[last()]"/>
+                                            <!-- tokenize(string,pattern); pattern to make breaks at-->
       <xsl:variable name="file_name" select="substring-before($current_file, '.')"/>
       <xsl:variable name="current_dir" select="substring-before(document-uri(.), $current_file)"/>
       <xsl:variable name="current_location" select="concat($inDir, substring-after($current_dir, $inDir))"/>
@@ -57,7 +57,7 @@
       <xsl:if test="$debug">
 	<xsl:message terminate="no">
 	  <xsl:value-of select="concat('-----------------------------------------', $nl)"/>
-	  <xsl:value-of select="concat('processing file ', $current_file, ' file_name ', $file_name, $nl)"/>
+	  <xsl:value-of select="concat('processing file: ', $current_file, '; file_name: ', $file_name, $nl)"/>
 	  <xsl:value-of select="'-----------------------------------------'"/>
 	</xsl:message>
       </xsl:if>
