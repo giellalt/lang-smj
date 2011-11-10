@@ -1,0 +1,38 @@
+DRINKME
+
+The point of this exercise is to turn a FilemakerPro (FMP) xml-export file into a plain text file that is formatted like a Toolbox dictionary file, with the Toolbox (TB) tiers in the correct order for each entry.
+
+It consists of the following files:
+
+1. original data as exported by FMP (seven entries from the sje-wordlist concerning milk):
+cow.xml
+
+2. xsl-file to transform FMP-export into an indented version for the human eye, to better be able to write the final xsl-file:
+dairy.xsl
+
+3. indented data - essentially the same as cow.xml:
+milk.xml
+
+4. xsl-file to transform FMP-export into a plain text file formatted like a TB dictionary file:
+mixer.xsl
+
+5. result of xsl transformation, in TB dictionary format:
+milkshake.txt
+
+6. example of an actual (shortened) TB dictionary file:
+ToolboxDicExample.txt
+
+7. this DRINKME file
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++ DISCUSSION +++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+2011.11.10 - 16.33 Josh
+es funktioniert ziemlich gut soweit, nur gibt es leider ein wesentliches Problem:
+die Reihenfolge der Tiers in der TB-Dict-Datei ist sehr sehr wichtig! jeder Eintrag muss mit dem TB-tag "\lx" anfangen, dann \grad, dann \u, usw. (siehe ToolboxDicExample.txt); Leere tags sind ok, und es ist auch ok, wenn ein ganzer tag fehlt. aber \u muss z.B. nach \lx kommen, und nicht davor! Also muss die Reihenfolge eingehalten werden.
+Jetzt die Frage: wie kann man mit xslt die Reihenfolge ändern?
+es gibt xsl:sort, aber das sortiert nur alphabetisch oder numerisch - und aber auch nach "qname", aber ich verstehe nicht, was "qname" (qualified names) ist.
+
+
