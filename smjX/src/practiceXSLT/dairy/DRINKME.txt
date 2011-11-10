@@ -24,15 +24,37 @@ ToolboxDicExample.txt
 
 7. this DRINKME file
 
+8./9. two more files for an added intermediary step trying to order elements by attribute, and for added confusion:
+chocolateMilk.xml
+spoon.xsl
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++ DISCUSSION +++++++++++++++++++++++++
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-2011.11.10 - 16.33 Josh
+2011.11.11 - 00:26 Josh  (happy 111111 corduroy day! see: http://corduroyclub.com/)
 es funktioniert ziemlich gut soweit, nur gibt es leider ein wesentliches Problem:
 die Reihenfolge der Tiers in der TB-Dict-Datei ist sehr sehr wichtig! jeder Eintrag muss mit dem TB-tag "\lx" anfangen, dann \grad, dann \u, usw. (siehe ToolboxDicExample.txt); Leere tags sind ok, und es ist auch ok, wenn ein ganzer tag fehlt. aber \u muss z.B. nach \lx kommen, und nicht davor! Also muss die Reihenfolge eingehalten werden.
 Jetzt die Frage: wie kann man mit xslt die Reihenfolge ändern?
 es gibt xsl:sort, aber das sortiert nur alphabetisch oder numerisch - und aber auch nach "qname", aber ich verstehe nicht, was "qname" (qualified names) ist.
+
+also habe ich jetzt verschiedene Transformatoren - ziemlich verwirrend!!!!, und noch hat es nicht funktioniert. Die ganze Pipeline sieht so aus, from beginning to end:
+cow.xml * dairy.xsl -> milk.xml (reorganizes original to be consumable) 
+milk.xml * spoon.xsl -> chocolateMilk.xml (reorganizes and adds attribute 'TB_sortOrder' to element 'data' for sorting)
+chocolateMilk.xml * mixer.xsl -> milkshake.txt (the final TB dictionary result)
+***Idealerweise läuft das alles mit nur einer .xsl - aber das ist vielleicht die nächste Übung***
+
+Vielleicht funktioniert es gar nicht, da im .txt-Output gar keine Attribute vorhanden sind! Also nichts zum Sortieren!
+
+
+
+
+
+
+
+
+
+
+
 
 
