@@ -55,9 +55,6 @@
   
   <xsl:template match="entry">
     <xsl:apply-templates select="data"/>
-    <!--xsl:for-each select="entry">
-        <xsl:sort select="@FMrecordID" data-type="number"/>
-    </xsl:for-each-->    
     <xsl:for-each select="data">
         <xsl:sort select="@TB_sortOrder" data-type="number"/>
     </xsl:for-each>    

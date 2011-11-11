@@ -23,21 +23,95 @@
 <!-- output method not used for the direct output -->
   <xsl:output method="text" name="txt"
 	      encoding="UTF-8"/>
+
+<!--+
+    | BEGIN variables **************************************
+    | BEGIN variables **************************************
+    | BEGIN variables **************************************
+    +-->  
+<!-- TOOLBOX DICTIONARY POSITION NAME VARIABLES -->  
+<!-- \lx -->
+  <xsl:variable name="lx_pos">
+    <xsl:for-each select="*:FMPXMLRESULT/*:METADATA/*:FIELD">
+      <xsl:if test="@NAME='TB lx no INF suffix'">
+        <xsl:value-of select="position()"/>
+      </xsl:if>
+    </xsl:for-each>
+  </xsl:variable>
+<!-- \grad -->
+  <xsl:variable name="grad_pos">
+    <xsl:for-each select="*:FMPXMLRESULT/*:METADATA/*:FIELD">
+      <xsl:if test="@NAME='TB grad summary'">
+        <xsl:value-of select="position()"/>
+      </xsl:if>
+    </xsl:for-each>
+  </xsl:variable>
+<!-- \u (main) -->
+  <xsl:variable name="u1_pos">
+    <xsl:for-each select="*:FMPXMLRESULT/*:METADATA/*:FIELD">
+      <xsl:if test="@NAME='TB u1 no suffix'">
+        <xsl:value-of select="position()"/>
+      </xsl:if>
+    </xsl:for-each>
+  </xsl:variable>
+<!-- \a -->
+  <xsl:variable name="a_pos">
+    <xsl:for-each select="*:FMPXMLRESULT/*:METADATA/*:FIELD">
+      <xsl:if test="@NAME='TB a stem extension alt no dash'">
+        <xsl:value-of select="position()"/>
+      </xsl:if>
+    </xsl:for-each>
+  </xsl:variable>
+<!-- \u (secondary) -->
+  <xsl:variable name="u2_pos">
+    <xsl:for-each select="*:FMPXMLRESULT/*:METADATA/*:FIELD">
+      <xsl:if test="@NAME='TB u2 no suffix'">
+        <xsl:value-of select="position()"/>
+      </xsl:if>
+    </xsl:for-each>
+  </xsl:variable>
+<!-- \ps -->
+  <xsl:variable name="ps_pos">
+    <xsl:for-each select="*:FMPXMLRESULT/*:METADATA/*:FIELD">
+      <xsl:if test="@NAME='TB ps conversion to English'">
+        <xsl:value-of select="position()"/>
+      </xsl:if>
+    </xsl:for-each>
+  </xsl:variable>
+<!-- \ge -->
+  <xsl:variable name="ge_pos">
+    <xsl:for-each select="*:FMPXMLRESULT/*:METADATA/*:FIELD">
+      <xsl:if test="@NAME='English translation'">
+        <xsl:value-of select="position()"/>
+      </xsl:if>
+    </xsl:for-each>
+  </xsl:variable>
+<!-- \gs -->
+  <xsl:variable name="gs_pos">
+    <xsl:for-each select="*:FMPXMLRESULT/*:METADATA/*:FIELD">
+      <xsl:if test="@NAME='Swedish translation'">
+        <xsl:value-of select="position()"/>
+      </xsl:if>
+    </xsl:for-each>
+  </xsl:variable>
   
-<!-- TOOLBOX DICTIONARY POSITION NAME VARIABLES -->
-<xsl:variable name="lx" select="'TB lx no INF suffix'"/>
-<xsl:variable name="grad" select="'TB grad summary'"/>
-<xsl:variable name="u1" select="'TB u1 no suffix'"/>
-<xsl:variable name="a" select="'TB a stem extension alt no dash'"/>
-<xsl:variable name="u2" select="'TB u2 no suffix'"/>
-<xsl:variable name="ps" select="'TB ps conversion to English'"/>
-<xsl:variable name="ge" select="'English translation'"/>
-<xsl:variable name="gs" select="'Swedish translation'"/>
-<xsl:variable name="FMnoJW" select="'record number JW'"/>
-  
-  
+  <!-- tab -->
+  <xsl:variable name="tab" select="'&#9;'"/>
   <!-- new line -->
   <xsl:variable name="nl" select="'&#xa;'"/>
+<!--+
+    | END variables **************************************
+    | END variables **************************************
+    | END variables **************************************
+    +-->
+
+
+
+<!--+
+    | BEGIN script **************************************
+    | BEGIN script **************************************
+    | BEGIN script **************************************
+    +-->  
 
   <xsl:template match="*:FMPXMLRESULT">
     <xsl:element name="FMPXMLRESULT">
@@ -62,9 +136,7 @@
       <xsl:attribute name="FMrecordID">
         <xsl:value-of select="./@RECORDID"/>
       </xsl:attribute>
-      <xsl:apply-templates select="*:COL">
-        <xsl:sort select="./@TB_sortOrder" data-type="number"/>
-      </xsl:apply-templates>
+      <xsl:apply-templates select="*:COL"/>
     </xsl:element>
   </xsl:template>
   
@@ -79,49 +151,18 @@
         <xsl:variable name="poser" select="position()"/>
         <xsl:value-of select="fn:lower-case(../../../*:METADATA/*[position()=$poser]/@TYPE)"/>
       </xsl:attribute>
-      <xsl:attribute name="TB_sortOrder">
-        <xsl:variable name="poser" select="position()"/>
-        <xsl:choose>
-          <!-- for TB \lx tier -->
-          <xsl:when test="../../../*:METADATA/*[position()=$poser]/@NAME=$lx">
-            <xsl:value-of select="1"/>
-          </xsl:when>
-          <!-- for TB \grad tier -->
-          <xsl:when test="../../../*:METADATA/*[position()=$poser]/@NAME=$grad">
-            <xsl:value-of select="2"/>
-          </xsl:when>
-          <!-- for first TB \u tier -->
-          <xsl:when test="../../../*:METADATA/*[position()=$poser]/@NAME=$u1">
-            <xsl:value-of select="3"/>
-          </xsl:when>
-          <!-- for TB \a tier -->
-          <xsl:when test="../../../*:METADATA/*[position()=$poser]/@NAME=$a">
-            <xsl:value-of select="4"/>
-          </xsl:when>
-          <!-- for second TB \u tier -->
-          <xsl:when test="../../../*:METADATA/*[position()=$poser]/@NAME=$u2">
-            <xsl:value-of select="5"/>
-          </xsl:when>
-          <!-- for TB \ps tier -->
-          <xsl:when test="../../../*:METADATA/*[position()=$poser]/@NAME=$ps">
-            <xsl:value-of select="6"/>
-          </xsl:when>
-          <!-- for TB \ge tier -->
-          <xsl:when test="../../../*:METADATA/*[position()=$poser]/@NAME=$ge">
-            <xsl:value-of select="7"/>
-          </xsl:when>
-          <!-- for TB \gs tier -->
-          <xsl:when test="../../../*:METADATA/*[position()=$poser]/@NAME=$gs">
-            <xsl:value-of select="8"/>
-          </xsl:when>
-          <!-- for TB \FMnoJW tier -->
-          <xsl:when test="../../../*:METADATA/*[position()=$poser]/@NAME=$FMnoJW">
-            <xsl:value-of select="9"/>
-          </xsl:when>
-        </xsl:choose>
-      </xsl:attribute>
       <xsl:value-of select="."/>
     </xsl:element>
+      <xsl:if test="position()=last()">
+        <xsl:element name="Toolbox">
+          <xsl:element name="lx">
+            <xsl:value-of select="../*:COL[position()=$lx_pos]"/>
+          </xsl:element>
+          <xsl:element name="grad">
+            <xsl:value-of select="../*:COL[position()=$grad_pos]"/>
+          </xsl:element>
+        </xsl:element>
+      </xsl:if>
   </xsl:template>
 
 
@@ -140,10 +181,9 @@
 
   <xsl:template match="/">
     <xsl:apply-templates/><!-- this shows up in terminal -->
-    <xsl:result-document href="chocolateMilk_Sorted.{$ex}" format="{$ofx}">
-      <!--xsl:copy-of select="."/--><!-- NO! this just copies everything as is from "/"! -->
+    <!--xsl:result-document href="chocolateMilk.{$ex}" format="{$ofx}">
       <xsl:apply-templates/>
-    </xsl:result-document>
+    </xsl:result-document-->
     <!--xsl:result-document href="thievesLtd.{$et}" format="{$oft}">
       <xsl:apply-templates/>
     </xsl:result-document-->
