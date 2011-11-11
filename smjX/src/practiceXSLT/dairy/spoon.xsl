@@ -161,6 +161,24 @@
           <xsl:element name="grad">
             <xsl:value-of select="../*:COL[position()=$grad_pos]"/>
           </xsl:element>
+          <xsl:element name="u1">
+            <xsl:value-of select="../*:COL[position()=$u1_pos]"/>
+          </xsl:element>
+          <xsl:element name="a">
+            <xsl:value-of select="../*:COL[position()=$a_pos]"/>
+          </xsl:element>
+          <xsl:element name="u2">
+            <xsl:value-of select="../*:COL[position()=$u2_pos]"/>
+          </xsl:element>
+          <xsl:element name="ps">
+            <xsl:value-of select="../*:COL[position()=$ps_pos]"/>
+          </xsl:element>
+          <xsl:element name="ge">
+            <xsl:value-of select="../*:COL[position()=$ge_pos]"/>
+          </xsl:element>
+          <xsl:element name="gs">
+            <xsl:value-of select="../*:COL[position()=$gs_pos]"/>
+          </xsl:element>
         </xsl:element>
       </xsl:if>
   </xsl:template>
@@ -181,9 +199,9 @@
 
   <xsl:template match="/">
     <xsl:apply-templates/><!-- this shows up in terminal -->
-    <!--xsl:result-document href="chocolateMilk.{$ex}" format="{$ofx}">
+    <xsl:result-document href="chocolateMilk.{$ex}" format="{$ofx}">
       <xsl:apply-templates/>
-    </xsl:result-document-->
+    </xsl:result-document>
     <!--xsl:result-document href="thievesLtd.{$et}" format="{$oft}">
       <xsl:apply-templates/>
     </xsl:result-document-->
