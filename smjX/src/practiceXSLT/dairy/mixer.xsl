@@ -54,15 +54,12 @@
   
   
   <xsl:template match="entry">
-    <xsl:apply-templates select="data"/>
-    <xsl:for-each select="data">
-        <xsl:sort select="@TB_sortOrder" data-type="number"/>
-    </xsl:for-each>    
+    <xsl:apply-templates select="Toolbox"/>
     <xsl:value-of select="$nl"/>
   </xsl:template>
   
 <!-- TOOLBOX DICTIONARY POSITION NAME VARIABLES -->
-<xsl:variable name="lx" select="'TB lx no INF suffix'"/>
+<!--xsl:variable name="lx" select="'TB lx no INF suffix'"/>
 <xsl:variable name="grad" select="'TB grad summary'"/>
 <xsl:variable name="u1" select="'TB u1 no suffix'"/>
 <xsl:variable name="a" select="'TB a stem extension alt no dash'"/>
@@ -70,46 +67,18 @@
 <xsl:variable name="ps" select="'TB ps conversion to English'"/>
 <xsl:variable name="ge" select="'English translation'"/>
 <xsl:variable name="gs" select="'Swedish translation'"/>
-<xsl:variable name="FMnoJW" select="'record number JW'"/>
+<xsl:variable name="FMnoJW" select="'record number JW'"/-->
 
   
-  <xsl:template match="data">
-    <xsl:variable name="poser" select="position()"/>
-    <xsl:choose>
-      <xsl:when test="../../*:METADATA/*[position()=$poser]/@NAME = $lx">
-        <xsl:value-of select="concat('\lx',$tab)"/>
-          <xsl:value-of select="."/>
-        <xsl:value-of select="$nl"/>
-      </xsl:when>
-      <xsl:when test="../../*:METADATA/*[position()=$poser]/@NAME = $grad">
-        <xsl:value-of select="concat('\grad',$tab)"/>
-        <xsl:value-of select="."/>
-        <xsl:value-of select="$nl"/>
-      </xsl:when>
-      <xsl:when test="../../*:METADATA/*[position()=$poser]/@NAME = $ps">
-        <xsl:value-of select="concat('\ps',$tab)"/>
-        <xsl:value-of select="."/>
-        <xsl:value-of select="$nl"/>
-      </xsl:when>
-      <xsl:when test="../../*:METADATA/*[position()=$poser]/@NAME = $u1">
-        <xsl:value-of select="concat('\u',$tab)"/>
-        <xsl:value-of select="."/>
-        <xsl:value-of select="$nl"/>
-      </xsl:when>
-      <xsl:when test="../../*:METADATA/*[position()=$poser]/@NAME = $ge">
-        <xsl:value-of select="concat('\ge',$tab)"/>
-        <xsl:value-of select="."/>
-        <xsl:value-of select="$nl"/>
-      </xsl:when>
-      <xsl:when test="../../*:METADATA/*[position()=$poser]/@NAME = $FMnoJW">
-        <xsl:value-of select="concat('\FMnoJW',$tab)"/>
-        <xsl:value-of select="."/>
-        <xsl:value-of select="$nl"/>
-      </xsl:when>
-    </xsl:choose>
-    <!--xsl:for-each select="data">
-        <xsl:sort select="@TB_sortOrder" data-type="number"/>
-    </xsl:for-each-->
+  <xsl:template match="Toolbox">
+    <xsl:value-of select="concat('\lx',$tab,./lx,$nl)"/>
+    <xsl:value-of select="concat('\grad',$tab,./grad,$nl)"/>
+    <xsl:value-of select="concat('\u',$tab,./u1,$nl)"/>
+    <xsl:value-of select="concat('\a',$tab,./a,$nl)"/>
+    <xsl:value-of select="concat('\u',$tab,./u2,$nl)"/>
+    <xsl:value-of select="concat('\ps',$tab,./ps,$nl)"/>
+    <xsl:value-of select="concat('\ge',$tab,./ge,$nl)"/>
+    <xsl:value-of select="concat('\gs',$tab,./gs,$nl)"/>
   </xsl:template>
 
 <!-- END -->
@@ -130,13 +99,13 @@
   <xsl:variable name="et" select="$oft"/>
 
   <xsl:template match="/">
-    <xsl:apply-templates/>
-    <!--xsl:result-document href="milkshake.{$et}" format="{$oft}">
-      <xsl:apply-templates/>
-    </xsl:result-document-->
-    <xsl:result-document href="milkshake_Sort.{$ex}" format="{$ofx}">
+    <xsl:apply-templates/><!-- for Terminal output -->
+    <xsl:result-document href="milkshake.{$et}" format="{$oft}">
       <xsl:apply-templates/>
     </xsl:result-document>
+    <!--xsl:result-document href="milkshake_Sort.{$ex}" format="{$ofx}">
+      <xsl:apply-templates/>
+    </xsl:result-document-->
   </xsl:template>
 
 
