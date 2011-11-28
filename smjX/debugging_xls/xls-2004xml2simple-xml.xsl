@@ -121,6 +121,24 @@
 	    <xsl:value-of select="concat('Processing column: ', .)"/>
 	  </xsl:message>
 	  
+	  <xsl:if test="./@*:Index">
+
+	    <xsl:variable name="theRange">
+	      <xsl:call-template name="dummyCells">
+		<xsl:with-param name="index" select="./@*:Index"/>
+		<xsl:with-param name="position" select="position()"/>
+	      </xsl:call-template>
+	    </xsl:variable>
+	    
+	    <xsl:for-each select="$theRange/dummy_position">
+	      <xsl:element name="col">
+		<xsl:attribute name="id">
+		  <xsl:value-of select="."/>
+		</xsl:attribute>
+	      </xsl:element>
+	    </xsl:for-each>
+	  </xsl:if>
+	  
 	  <xsl:element name="col">
 	    <xsl:attribute name="id">
 	      <xsl:value-of select="position()"/>
@@ -137,6 +155,25 @@
 	  
 	</xsl:for-each>
       </xsl:element>
+    </xsl:if>
+  </xsl:template>
+
+
+  <xsl:template name="dummyCells">
+    <xsl:param name="index" select="0"/>
+    <xsl:param name="position" select="0"/>
+    
+    <xsl:if test="($index - $position) > 0">
+
+      <dummy_position>
+	<xsl:value-of select="$position"/>
+      </dummy_position>
+
+      <xsl:call-template name="dummyCells">
+	<xsl:with-param name="index" select="$index"/>
+	<xsl:with-param name="position" select="$position + 1"/>
+      </xsl:call-template>
+
     </xsl:if>
   </xsl:template>
   
