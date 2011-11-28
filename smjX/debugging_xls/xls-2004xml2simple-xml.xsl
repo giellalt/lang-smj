@@ -113,7 +113,7 @@
       
       <xsl:element name="{$elName}">
 	<xsl:attribute name="cell_count">
-	  <xsl:value-of select="count($theRow//*:Cell[not(normalize-space(.) = '')])"/>
+	  <xsl:value-of select="count($theRow//*:Cell)"/>
 	</xsl:attribute>
 
 	<!-- as default, don't filter empty cells (semantics = column position) -->	
