@@ -20,8 +20,8 @@
 	      indent="yes"/>
   
   <!-- Input -->
-  <xsl:param name="inFile" select="'xxxfilexxx'"/>
-  <xsl:param name="inDir" select="'testing4mavsulasj_xmlFiles'"/>
+  <xsl:param name="inFile" select="'debug_lule_klein.xml'"/>
+  <xsl:param name="inDir" select="'xxxdirxxx'"/>
   
   <!-- Output -->
   <xsl:variable name="outputDir" select="'000_outDir'"/>
