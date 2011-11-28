@@ -116,8 +116,6 @@
 	  <xsl:value-of select="count($theRow//*:Cell)"/>
 	</xsl:attribute>
 
-	<!-- as default, don't filter empty cells (semantics = column position) -->	
-	<!-- xsl:for-each select="$theRow//*:Cell[not(normalize-space(.) = '')]" -->
 	<xsl:for-each select="$theRow//*:Cell">
 	  <xsl:message terminate="no">
 	    <xsl:value-of select="concat('Processing column: ', .)"/>
@@ -127,28 +125,17 @@
 	    <xsl:attribute name="id">
 	      <xsl:value-of select="position()"/>
 	    </xsl:attribute>
-	    <!-- as default, don't filter empty cells (semantics = column position) -->	
-	    <!-- xsl:value-of select="./*:Data//text()"/ -->
+	    
+	    <xsl:if test="./@*:Index">
+	      <xsl:attribute name="real_index">
+		<xsl:value-of select="./@*:Index"/>
+	      </xsl:attribute>
+	    </xsl:if>
+	    
 	    <xsl:value-of select="./*:Data"/>
 	  </xsl:element>
+	  
 	</xsl:for-each>
-	
-	<!-- xsl:variable name="current_data">
-	     <xsl:for-each select="./*:Data//text()">
-	     <xsl:value-of select="normalize-space(concat(., ''))"/>
-	     </xsl:for-each>
-	     </xsl:variable>
-	     
-	     <xsl:if test="not($current_data = '')">
-	     <xsl:element name="col">
-	     <xsl:attribute name="id">
-	     <xsl:value-of select="position()"/>
-	     </xsl:attribute>
-	     <xsl:value-of select="./*:Data//text()"/>
-	     </xsl:element>
-	     </xsl:if>
-	     </xsl:for-each -->
-	
       </xsl:element>
     </xsl:if>
   </xsl:template>
