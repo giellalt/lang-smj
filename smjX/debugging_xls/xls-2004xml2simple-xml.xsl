@@ -119,19 +119,39 @@
 	  <xsl:value-of select="$thePosition"/>
 	</xsl:attribute>
 	
-	<xsl:for-each select="$theRow//*:Cell">
+	<!-- xsl:for-each select="$theRow//*:Cell[position() = 1 or preceding-sibling::*:Cell[not(./@*:Index)]]">
 	  <xsl:message terminate="no">
 	    <xsl:value-of select="concat('Processing column: ', .)"/>
 	  </xsl:message>
 	  
-	  <xsl:if test="preceding-sibling::*:Cell[not(./@*:Index)]">
+	  <xsl:element name="col_ok">
+	    <xsl:attribute name="id">
+	      <xsl:value-of select="position()"/>
+	    </xsl:attribute>
+	    
+	    <xsl:attribute name="content">
+	      <xsl:value-of select="./*:Data"/>
+	    </xsl:attribute>
+	    
+	    
+	  </xsl:element>
+	</xsl:for-each -->
+
+	<xsl:for-each select="$theRow//*:Cell">
+	
+	<!-- xsl:for-each select="$theRow//*:Cell[position() &gt; 1 and preceding-sibling::*:Cell[./@*:Index]]" -->
+	  <xsl:message terminate="no">
+	    <xsl:value-of select="concat('Processing column: ', .)"/>
+	  </xsl:message>
+	  
+	  <!-- xsl:if test=".[1] or preceding-sibling::*:Cell[not(./@*:Index)] or following-sibling::*:Cell[not(./@*:Index)]">
 	    <xsl:element name="cl">
 	      <xsl:attribute name="id">
 		<xsl:value-of select="position()"/>
 	      </xsl:attribute>
 	      <xsl:value-of select="./*:Data"/>
 	    </xsl:element>
-	  </xsl:if>
+	  </xsl:if -->
 	  
 	  <xsl:if test="./@*:Index">
 
@@ -162,11 +182,43 @@
 	      </xsl:attribute>
 	    </xsl:if>
 	    
-	    <content>
+	    <xsl:attribute name="content">
 	      <xsl:value-of select="./*:Data"/>
-	    </content>
-
+	    </xsl:attribute>
+	    
 	    <xsl:if test="following-sibling::*:Cell">
+
+	      <xsl:variable name="prcs">
+		<preceders>
+		  <xsl:for-each select="preceding-sibling::node()[generate-id(following-sibling::*:Cell[./@*:Index][1])=
+					generate-id(current())]">
+		    
+		    <xsl:if test="false()">
+		      <xsl:message terminate="no">
+			<xsl:value-of select="concat('/////', $nl)"/>
+			<xsl:value-of select="concat('here is: ', ., $nl)"/>
+			<xsl:value-of select="'/////'"/>
+		      </xsl:message>
+		    </xsl:if>
+		    
+		    <xsl:if test="self::*">
+		      <xsl:element name="wtp">
+			<xsl:attribute name="id">
+			  <xsl:value-of select="position()"/>
+			</xsl:attribute>
+			<xsl:value-of select="./*:Data"/>
+		      </xsl:element>
+		    </xsl:if>
+		    
+		  </xsl:for-each>
+		</preceders>
+	      </xsl:variable>
+
+	      <xsl:if test="$prcs/preceders/*">
+		<xsl:copy-of copy-namespaces="no" select="$prcs"/>
+	      </xsl:if>
+
+
 	      <xsl:variable name="flls">
 		<followers>
 		  <xsl:for-each select="following-sibling::node()[generate-id(preceding-sibling::*:Cell[./@*:Index][1])=
@@ -199,10 +251,11 @@
 	      
 	    </xsl:if>
 	    
-	  </xsl:element>
+	  </xsl:element>  <!-- col -->
 	  
 	</xsl:for-each>
-      </xsl:element>
+
+      </xsl:element> <!-- row -->
     </xsl:if>
   </xsl:template>
 
