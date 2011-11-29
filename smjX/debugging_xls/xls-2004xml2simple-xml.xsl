@@ -191,7 +191,7 @@
 	      <xsl:variable name="prcs">
 		<preceders>
 		  <xsl:for-each select="preceding-sibling::node()[generate-id(following-sibling::*:Cell[./@*:Index][1])=
-					generate-id(current())]">
+					generate-id(current())][not(./@*:Index)]">
 		    
 		    <xsl:if test="false()">
 		      <xsl:message terminate="no">
@@ -222,7 +222,7 @@
 	      <xsl:variable name="flls">
 		<followers>
 		  <xsl:for-each select="following-sibling::node()[generate-id(preceding-sibling::*:Cell[./@*:Index][1])=
-					generate-id(current())]">
+					generate-id(current())][not(./@*:Index)]">
 		    
 		    <xsl:if test="false()">
 		      <xsl:message terminate="no">
