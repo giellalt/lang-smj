@@ -115,11 +115,23 @@
 	<xsl:attribute name="cell_count">
 	  <xsl:value-of select="count($theRow//*:Cell)"/>
 	</xsl:attribute>
-
+	<xsl:attribute name="id">
+	  <xsl:value-of select="$thePosition"/>
+	</xsl:attribute>
+	
 	<xsl:for-each select="$theRow//*:Cell">
 	  <xsl:message terminate="no">
 	    <xsl:value-of select="concat('Processing column: ', .)"/>
 	  </xsl:message>
+	  
+	  <xsl:if test="preceding-sibling::*:Cell[not(./@*:Index)]">
+	    <xsl:element name="cl">
+	      <xsl:attribute name="id">
+		<xsl:value-of select="position()"/>
+	      </xsl:attribute>
+	      <xsl:value-of select="./*:Data"/>
+	    </xsl:element>
+	  </xsl:if>
 	  
 	  <xsl:if test="./@*:Index">
 
@@ -150,7 +162,43 @@
 	      </xsl:attribute>
 	    </xsl:if>
 	    
-	    <xsl:value-of select="./*:Data"/>
+	    <content>
+	      <xsl:value-of select="./*:Data"/>
+	    </content>
+
+	    <xsl:if test="following-sibling::*:Cell">
+	      <xsl:variable name="flls">
+		<followers>
+		  <xsl:for-each select="following-sibling::node()[generate-id(preceding-sibling::*:Cell[./@*:Index][1])=
+					generate-id(current())]">
+		    
+		    <xsl:if test="false()">
+		      <xsl:message terminate="no">
+			<xsl:value-of select="concat('/////', $nl)"/>
+			<xsl:value-of select="concat('here is: ', ., $nl)"/>
+			<xsl:value-of select="'/////'"/>
+		      </xsl:message>
+		    </xsl:if>
+		    
+		    <xsl:if test="self::*">
+		      <xsl:element name="wtf">
+			<xsl:attribute name="id">
+			  <xsl:value-of select="position()"/>
+			</xsl:attribute>
+			<xsl:value-of select="./*:Data"/>
+		      </xsl:element>
+		    </xsl:if>
+		    
+		  </xsl:for-each>
+		</followers>
+	      </xsl:variable>
+
+	      <xsl:if test="$flls/followers/*">
+		<xsl:copy-of copy-namespaces="no" select="$flls"/>
+	      </xsl:if>
+	      
+	    </xsl:if>
+	    
 	  </xsl:element>
 	  
 	</xsl:for-each>
