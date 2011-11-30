@@ -58,7 +58,7 @@
             <xsl:variable name="realID" select="$start + $mergeTotal + position() - 1"/>
             <!--Cell col="$realID" descriptor="{../../*:Row[1]/*:Cell[{$start + $mergeTotal + position() - 1}]}"-->
             <!--Cell col="{$start + $mergeTotal + position() - 1}"-->
-            <Cell col="{$realID}">
+            <Cell col="{$realID}" descriptor="{../../*:Row[1]/*:Cell['$realID']}">
               <xsl:value-of select="*:Data"/>
             </Cell>
           </xsl:when>
