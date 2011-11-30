@@ -63,7 +63,8 @@
             </Cell>
           </xsl:when>
           <xsl:when test="not(*:Data)">
-            <Cell col="{$start + $mergeTotal + position() - 1}" empty="yes"/>
+            <xsl:variable name="realID" select="$start + $mergeTotal + position() - 1"/>
+            <Cell col="{$start + $mergeTotal + position() - 1}" descriptor="{../../*:Row[1]/*:Cell[$realID]}" empty="yes"/>
           </xsl:when>
         </xsl:choose>
         <!--xsl:value-of select="concat($nl, 'start: ', $start, '; mergeTotal: ', $mergeTotal, '; position: ', position(), '; total count: ', $start + $mergeTotal + position() - 1, $nl, $tab, $tab)"/-->
