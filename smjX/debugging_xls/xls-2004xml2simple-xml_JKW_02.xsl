@@ -23,7 +23,7 @@
   <xsl:param name="inFile" select="'debug_lule_klein.xml'"/>
   <xsl:param name="inDir" select="'xxxdirxxx'"/>
   <xsl:param name="XSLfile" select="'xls-2004xml2simple-xml_JKW_02.xsl'"/>
-  <xsl:variable name="current_file" select="substring-before((tokenize(document-uri(.), '/'))[last()], '.xml')"/>
+  <!--xsl:variable name="current_file" select="substring-before((tokenize(document-uri(.), '/'))[last()], '.xml')"/-->
   
   <!-- Output -->
   <xsl:variable name="outputDir" select="'000_outDir'"/>
@@ -54,7 +54,7 @@
     <xsl:if test="not($inDir = 'xxxdirxxx')">
       <xsl:for-each select="for $f in collection(concat($inDir, '?select=*.xml')) return $f">
 	
-	<!--xsl:variable name="current_file" select="substring-before((tokenize(document-uri(.), '/'))[last()], '.xml')"/-->
+	<xsl:variable name="current_file" select="substring-before((tokenize(document-uri(.), '/'))[last()], '.xml')"/>
 	<xsl:variable name="current_dir" select="substring-before(document-uri(.), $current_file)"/>
 	<xsl:variable name="current_location" select="concat($inDir, substring-after($current_dir, $inDir))"/>
 	
@@ -90,11 +90,20 @@
 
     <!-- output document -->
     <xsl:result-document href="{$outputDir}/result_{$theName}.{$e}" format="{$output_format}">
-      <xsl:comment>This xml document was created using the transformer file <xsl:value-of select="$XSLfile"/> applied to the file <xsl:value-of select="$current_file"/>, which was exported from EXCEL. Created by CipG and JKW for Giellatekno and Mávsulasj.</xsl:comment>
+      <xsl:comment> Conversion from ugly Excel-2004-xml as exported by Excel to something more useable. Created by CipG and JKW for Giellatekno and Mávsulasj. </xsl:comment>
       <xsl:value-of select="$nl"/>
-      <worksheet>
+      <inputFile>
+        <xsl:value-of select="$inFile"/>
+      </inputFile>
+      <xslFile>
+        <xsl:value-of select="$XSLfile"/>
+      </xslFile>
+      <exportTimeDate>
+        <xsl:value-of select="current-dateTime()"/>
+      </exportTimeDate>
+      <excelWorksheet>
 	    <xsl:copy-of select="$output"/>
-      </worksheet>
+      </excelWorksheet>
     </xsl:result-document>
 
   </xsl:template>
@@ -156,7 +165,7 @@
         <xsl:choose>
           <xsl:when test="*:Data">
             <xsl:variable name="realID" select="$start + $mergeTotal + position() - 1"/>
-            <Cell col="{$realID}" catNo="{$realID}" descriptor="{../../*:Row[1]/*:Cell[$realID]}">
+            <Cell catNo="{$realID}" descriptor="{../../*:Row[1]/*:Cell[$realID]}">
               <xsl:value-of select="*:Data"/>
             </Cell>
           </xsl:when>
