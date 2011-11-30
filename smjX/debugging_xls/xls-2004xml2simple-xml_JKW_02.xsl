@@ -171,7 +171,7 @@
           </xsl:when>
           <xsl:when test="not(*:Data)">
             <xsl:variable name="realID" select="$start + $mergeTotal + position() - 1"/>
-            <Cell col="{$start + $mergeTotal + position() - 1}" descriptor="{../../*:Row[1]/*:Cell[$realID]}" originalEmpty="yes"/>
+            <Cell catNo="{$realID}" descriptor="{../../*:Row[1]/*:Cell[$realID]}" originalEmpty="yes"/>
           </xsl:when>
         </xsl:choose>
       </xsl:for-each>
