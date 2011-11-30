@@ -22,7 +22,7 @@
   <!-- Input -->
   <xsl:param name="inFile" select="'debug_lule_klein.xml'"/>
   <xsl:param name="inDir" select="'xxxdirxxx'"/>
-  <xsl:param name="XSLfile" select="'xxxXSLxxx'"/>
+  <xsl:param name="XSLfile" select="'xls-2004xml2simple-xml_JKW_02.xsl'"/>
   <xsl:variable name="current_file" select="substring-before((tokenize(document-uri(.), '/'))[last()], '.xml')"/>
   
   <!-- Output -->
