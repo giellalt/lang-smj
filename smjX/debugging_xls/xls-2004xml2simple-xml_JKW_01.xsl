@@ -50,6 +50,12 @@
   <Row nr="{position()}" cells="{count(node())}">
     <xsl:for-each-group select="*:Cell" group-starting-with="*:Cell[@ss:Index]">
       <xsl:variable name="start" select="(@ss:Index, 1)[1]" as="xs:integer"/>
+
+      <start>
+	<xsl:copy-of select="$start"/>
+      </start>
+
+
       <xsl:for-each select="current-group()">
         <xsl:variable name="mergeTotal" select="sum(current-group()[current() >> .]/@ss:MergeAcross)"/>
 <!-- Note: 'MergeAcross' doesn't exist in our dataset, but can be in Excel->xml output if cells are merged -->
