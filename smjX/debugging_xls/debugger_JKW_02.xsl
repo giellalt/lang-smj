@@ -26,7 +26,7 @@
   <!--xsl:variable name="current_file" select="substring-before((tokenize(document-uri(.), '/'))[last()], '.xml')"/-->
   
   <!-- Output -->
-  <xsl:variable name="outputDir" select="'000_outDir'"/>
+  <xsl:variable name="outputDir" select="'_000_outDir'"/>
   
   <!-- Patterns for the feature values -->
   <xsl:variable name="output_format" select="'xml'"/>
@@ -74,23 +74,43 @@
     </xsl:if>    
   </xsl:template>
 
-<!-- template to process file, once it's existance has been determined -->
+  <!-- template to process file, once its existence has been determined -->
   <xsl:template name="processFile">
     <xsl:param name="theFile"/>
     <xsl:param name="theName"/>
 
+    
+    <!-- build a global variable to pack the number, position and
+         meaning of the labels, i.e. the first row in the xsl-file so
+         that you can match each row against the this -->
+    <xsl:variable name="labels">
+      <Categories cellCount="{$theFile/*:Workbook/*:Worksheet/*:Table/*:Row[01]/count(node())}">
+	<xsl:for-each select="$theFile/*:Workbook/*:Worksheet/*:Table/*:Row[01]/*:Cell">
+	  <Category catNo="{position()}">
+	    <xsl:value-of select="*:Data"/>
+	  </Category>
+	</xsl:for-each>
+      </Categories>
+    </xsl:variable>
+    
+    <!-- given very big xls files, the output should not be stored
+         into a whole variable but output right away -->
     <xsl:variable name="output">
-        <xsl:message terminate="no">
-          <xsl:value-of select="'processing...'"/>
-        </xsl:message>
       <xsl:for-each select="$theFile/*:Workbook/*:Worksheet/*:Table/*:Row">
+	<!-- this debug info is much more useful -->
+	<xsl:message terminate="no">
+	  <xsl:value-of select="concat('row ', position(), ' ... ')"/>
+	</xsl:message>
 	<xsl:call-template name="processRow">
 	  <xsl:with-param name="theRow" select="."/>
 	  <xsl:with-param name="thePosition" select="position()"/>
 	</xsl:call-template>
       </xsl:for-each>
+      <xsl:message terminate="no">
+	<xsl:value-of select="'   Done!'"/>
+      </xsl:message>
     </xsl:variable>
-
+    
     <!-- output document -->
     <xsl:result-document href="{$outputDir}/result_{$theName}.{$e}" format="{$output_format}">
       <output_file>
@@ -150,7 +170,14 @@
 
 
     <xsl:template name="mutator" match="*:Row">
+
+      <xsl:variable name="labels">
+
+      </xsl:variable>
+
     <xsl:choose>
+      
+
     <xsl:when test="position()=1">
       <Categories cellCount="{count(node())}">
         <xsl:for-each select="./*:Cell">
