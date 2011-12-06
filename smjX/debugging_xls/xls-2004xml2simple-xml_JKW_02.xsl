@@ -202,7 +202,7 @@
 
      Solution:
 
-     - build two variable: the matrix and the output of the current row
+     - build two variables: the matrix and the output of the current row
      
      - check the content of the current row against the current of the matrix:
 
