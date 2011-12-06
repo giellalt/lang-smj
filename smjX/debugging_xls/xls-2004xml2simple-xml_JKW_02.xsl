@@ -93,22 +93,26 @@
 
     <!-- output document -->
     <xsl:result-document href="{$outputDir}/result_{$theName}.{$e}" format="{$output_format}">
-      <xsl:comment> Conversion from ugly Excel-2004-xml as exported by Excel to something more useable. Created by CipG and JKW for Giellatekno and Mávsulasj. </xsl:comment>
-      <xsl:value-of select="$nl"/>
-      <inputFile>
-        <xsl:value-of select="$inFile"/>
-      </inputFile>
-      <xslFile>
-        <xsl:value-of select="$XSLfile"/>
-      </xslFile>
-      <exportTimeDate>
-        <xsl:value-of select="current-dateTime()"/>
-      </exportTimeDate>
-      <excelWorksheet>
-	    <xsl:copy-of select="$output"/>
-      </excelWorksheet>
+      <output_file>
+	<xsl:comment> Conversion from ugly Excel-2004-xml as exported by Excel to something more useable. Created by CipG and JKW for Giellatekno and Mávsulasj. </xsl:comment>
+	<xsl:value-of select="$nl"/>
+	<meta-info>
+	  <inputFile>
+	    <xsl:value-of select="$inFile"/>
+	  </inputFile>
+	  <xslFile>
+	    <xsl:value-of select="$XSLfile"/>
+	  </xslFile>
+	  <exportTimeDate>
+	    <xsl:value-of select="current-dateTime()"/>
+	  </exportTimeDate>
+	</meta-info>
+	<excelWorksheet>
+	  <xsl:copy-of select="$output"/>
+	</excelWorksheet>
+      </output_file>
     </xsl:result-document>
-
+    
   </xsl:template>
 
 <!-- template to process input -->  
