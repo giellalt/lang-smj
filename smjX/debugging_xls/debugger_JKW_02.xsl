@@ -165,7 +165,7 @@
         </xsl:for-each-->
 
 	<xsl:call-template name="mutator">
-	  <xsl:with-param name="theLabels" select="$theLabels"/>
+	  <xsl:with-param name="mutator_labels" select="$theLabels"/>
 	</xsl:call-template>
 	
     <!--/xsl:element-->
@@ -174,7 +174,7 @@
 
   
   <xsl:template name="mutator" match="*:Row">
-    <xsl:param name="theLabels"/>
+    <xsl:param name="mutator_labels"/>
     
     <xsl:choose>
       <xsl:when test="position()=1">
@@ -189,96 +189,85 @@
       </xsl:when>
       <xsl:when test="not(position()=1)">
 	
-	<Row rowNo="{position() - 1}" cellCountORIG="{count(node())}" cellCountFINAL="??">
-	  
-	  <xsl:for-each-group select="*:Cell" group-starting-with="*:Cell[@ss:Index]">
-        <!--Group cellsInGroup="{count(current-group())}"-->
-      <xsl:variable name="start" select="(@ss:Index, 1)[1]" as="xs:integer"/>
-      <xsl:for-each select="current-group()">
-        <xsl:variable name="mergeTotal" select="sum(current-group()[current() >> .]/@ss:MergeAcross)"/>
-<!-- Note: 'MergeAcross' doesn't exist in our dataset, but can be in Excel->xml output if cells are merged -->
-        <xsl:choose>
-          <xsl:when test="*:Data">
-            <xsl:variable name="realID" select="$start + $mergeTotal + position() - 1"/>
-            <Cell catNo="{$realID}" descriptor="{../../*:Row[1]/*:Cell[$realID]}">
-              <xsl:value-of select="*:Data"/>
-            </Cell>
-<!--values><xsl:value-of select="concat('start=',$start,'; position=',position(),'; realID=',$realID)"/></values-->
-            <!--xsl:if test="count(node())=po">
-              <xsl:
-            </xsl:if-->
-          </xsl:when>
-          <xsl:when test="not(*:Data)">
-            <xsl:variable name="realID" select="$start + $mergeTotal + position() - 1"/>
-        <Cell catNo="{$realID}" descriptor="{../../*:Row[1]/*:Cell[$realID]}" originalValue="empty"/>
-<!--values><xsl:value-of select="concat('start=',$start,'; position=',position(),'; realID=',$realID)"/></values-->
-          </xsl:when>
-        </xsl:choose>
+	<xsl:variable name="current_row">
+	  <Row rowNo="{position() - 1}" cellCountORIG="{count(node())}" cellCountFINAL="??">
+	    
+	    <xsl:for-each-group select="*:Cell" group-starting-with="*:Cell[@ss:Index]">
+	      <!--Group cellsInGroup="{count(current-group())}"-->
+	      <xsl:variable name="start" select="(@ss:Index, 1)[1]" as="xs:integer"/>
+	      <xsl:for-each select="current-group()">
+		<xsl:variable name="mergeTotal" select="sum(current-group()[current() >> .]/@ss:MergeAcross)"/>
+		<!-- Note: 'MergeAcross' doesn't exist in our dataset, but can be in Excel->xml output if cells are merged -->
+		<xsl:choose>
+		  <xsl:when test="*:Data">
+		    <xsl:variable name="realID" select="$start + $mergeTotal + position() - 1"/>
+		    <Cell catNo="{$realID}" descriptor="{../../*:Row[1]/*:Cell[$realID]}">
+		      <xsl:value-of select="*:Data"/>
+		    </Cell>
+		    <!--values><xsl:value-of select="concat('start=',$start,'; position=',position(),'; realID=',$realID)"/></values-->
+		    <!--xsl:if test="count(node())=po">
+			<xsl:
+			</xsl:if-->
+		  </xsl:when>
+		  <xsl:when test="not(*:Data)">
+		    <xsl:variable name="realID" select="$start + $mergeTotal + position() - 1"/>
+		    <Cell catNo="{$realID}" descriptor="{../../*:Row[1]/*:Cell[$realID]}" originalValue="empty"/>
+		    <!--values><xsl:value-of select="concat('start=',$start,'; position=',position(),'; realID=',$realID)"/></values-->
+		  </xsl:when>
+		</xsl:choose>
+		
+		
+		<!-- Problem:
+		     - adding cells that were missing in original export
+		     
+		     Resources:
+		     
+		     - we have the "matrix" of the table, which is the first row with
+		     ALL cells, their positions, and their meanings
+		     
+		     - we have the output of each (non-empty) cell with the meaning tag on it
+		     
+		     Solution:
+		     
+		     - build two variables: the matrix and the output of the current row
+		     
+		     - check the content of the current row against the current of the matrix:
+		     
+		     for-each cell in the matrix do
+		     take each cell of the current row and
+		     if the meaning of the current cell corresponds with the meaning of the cell in the matrix
+		     then copy the current cell
+		     otherwise
+		     build a new cell with the information of the matrix cell, something along the line...
+		     
+		     cell position="matrix_cell_position" meaning="matrix cell meaning" content="empty"
+		     
+		-->
+		
+	      </xsl:for-each>
+	      <!--/Group-->
+	    </xsl:for-each-group>
+	  </Row>
+	</xsl:variable>
+	
+	<Row position="{position() - 1}" cellCountORIG="{count(node())}">
+	  <xsl:for-each select="$mutator_labels/Categories/Category">
 
+	    <xsl:variable name="cd" select="."/>
 
-<!-- Problem:
-     - adding cells that were missing in original export
-     
-     Resources:
-
-     - we have the "matrix" of the table, which is the first row with
-       ALL cells, their positions, and their meanings
-
-     - we have the output of each (non-empty) cell with the meaning tag on it
-
-     Solution:
-
-     - build two variables: the matrix and the output of the current row
-     
-     - check the content of the current row against the current of the matrix:
-
-       for-each cell in the matrix do
-        take each cell of the current row and
-	 if the meaning of the current cell corresponds with the meaning of the cell in the matrix
-           then copy the current cell
-	 otherwise
-           build a new cell with the information of the matrix cell, something along the line...
-
-             cell position="matrix_cell_position" meaning="matrix cell meaning" content="empty"
-
--->
-
-<!-- Add cells that were missing in original export: --> 
-<!-- this is not elegant, could certainly be improved; currently only good for max 4 missing cells -->
-        <xsl:if test="following-sibling::*:Cell[1][./@*:Index]">
-          <xsl:variable name="realID" select="$start + $mergeTotal + position() - 1"/>
-          <xsl:variable name="nextIndex" select="following-sibling::*:Cell[1]/@*:Index"/>
-          <xsl:variable name="diffRealIDs" select="$nextIndex - $realID - 1"/>
-          <!--missingCellCount><xsl:value-of select="$diffRealIDs"/></missingCellCount-->
-          <!--xsl:choose-->
-          <xsl:if test="$diffRealIDs &gt; 3">
-            <xsl:variable name="missingCount" select="$diffRealIDs - 3"/>
-              <Cell catNo="{$realID + $missingCount}" descriptor="{../../*:Row[1]/*:Cell[$realID + $missingCount]}" originalValue="missing"/>
-          </xsl:if>
-          <xsl:if test="$diffRealIDs &gt; 2">
-            <xsl:variable name="missingCount" select="$diffRealIDs - 2"/>
-              <Cell catNo="{$realID + $missingCount}" descriptor="{../../*:Row[1]/*:Cell[$realID + $missingCount]}" originalValue="missing"/>
-          </xsl:if>
-          <xsl:if test="$diffRealIDs &gt; 1">
-            <xsl:variable name="missingCount" select="$diffRealIDs - 1"/>
-              <Cell catNo="{$realID + $missingCount}" descriptor="{../../*:Row[1]/*:Cell[$realID + $missingCount]}" originalValue="missing"/>
-          </xsl:if>
-          <xsl:if test="$diffRealIDs &gt; 0">
-            <xsl:variable name="missingCount" select="$diffRealIDs"/>
-              <Cell catNo="{$realID + $missingCount}" descriptor="{../../*:Row[1]/*:Cell[$realID + $missingCount]}" originalValue="missing"/>
-<!--values><xsl:value-of select="concat('start=',$start,'; position=',position(),'; realID=',$realID)"/></values-->
-          </xsl:if>
-          <!--/xsl:choose-->
-        </xsl:if>
-
-      </xsl:for-each>
-        <!--/Group-->
-    </xsl:for-each-group>
-  </Row>
-      <xsl:value-of select="$nl"/>
-    </xsl:when>
+	    <xsl:if test="($current_row/Row/Cell[./@descriptor = $cd]) and (. = $current_row/Row/Cell/@descriptor)">
+	      <xsl:copy-of select="$current_row/Row/Cell[./@descriptor = $cd]"/>
+	    </xsl:if>
+	    
+	    <xsl:if test="not(($current_row/Row/Cell[./@descriptor = $cd]) and (. = $current_row/Row/Cell/@descriptor))">
+	      <Cell catNo="{./@catNo}" descriptor="{.}" content="empty"/>
+	    </xsl:if>
+	  </xsl:for-each>
+	</Row>
+	
+      </xsl:when>
     </xsl:choose>
-    </xsl:template>        
+  </xsl:template>        
 
 
   
