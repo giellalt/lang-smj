@@ -255,11 +255,11 @@
 
 	    <xsl:variable name="cd" select="."/>
 
-	    <xsl:if test="($current_row/Row/Cell[./@descriptor = $cd]) and (. = $current_row/Row/Cell/@descriptor)">
+	    <xsl:if test=". = $current_row/Row/Cell/@descriptor">
 	      <xsl:copy-of select="$current_row/Row/Cell[./@descriptor = $cd]"/>
 	    </xsl:if>
 	    
-	    <xsl:if test="not(($current_row/Row/Cell[./@descriptor = $cd]) and (. = $current_row/Row/Cell/@descriptor))">
+	    <xsl:if test="not($current_row/Row/Cell[./@descriptor = $cd])">
 	      <Cell catNo="{./@catNo}" descriptor="{.}" content="empty"/>
 	    </xsl:if>
 	  </xsl:for-each>
