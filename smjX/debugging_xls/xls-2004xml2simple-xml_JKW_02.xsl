@@ -189,6 +189,34 @@
           </xsl:when>
         </xsl:choose>
 
+
+<!-- Problem:
+     - adding cells that were missing in original export
+     
+     Resources:
+
+     - we have the "matrix" of the table, which is the first row with
+       ALL cells, their positions, and their meanings
+
+     - we have the output of each (non-empty) cell with the meaning tag on it
+
+     Solution:
+
+     - build two variable: the matrix and the output of the current row
+     
+     - check the content of the current row against the current of the matrix:
+
+       for-each cell in the matrix do
+        take each cell of the current row and
+	 if the meaning of the current cell corresponds with the meaning of the cell in the matrix
+           then copy the current cell
+	 otherwise
+           build a new cell with the information of the matrix cell, something along the line...
+
+             cell position="matrix_cell_position" meaning="matrix cell meaning" content="empty"
+
+-->
+
 <!-- Add cells that were missing in original export: --> 
 <!-- this is not elegant, could certainly be improved; currently only good for max 4 missing cells -->
         <xsl:if test="following-sibling::*:Cell[1][./@*:Index]">
