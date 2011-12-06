@@ -254,11 +254,11 @@
 	  <xsl:for-each select="$mutator_labels/Categories/Category">
 
 	    <xsl:variable name="cd" select="."/>
-
+	    <!-- if there is a cell with the current descriptor copy it here -->
 	    <xsl:if test=". = $current_row/Row/Cell/@descriptor">
 	      <xsl:copy-of select="$current_row/Row/Cell[./@descriptor = $cd]"/>
 	    </xsl:if>
-	    
+	    <!-- if there is no such cell build a dummy one -->
 	    <xsl:if test="not($current_row/Row/Cell[./@descriptor = $cd])">
 	      <Cell catNo="{./@catNo}" descriptor="{.}" content="empty"/>
 	    </xsl:if>
