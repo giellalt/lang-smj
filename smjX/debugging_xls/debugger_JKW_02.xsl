@@ -168,31 +168,24 @@
     </xsl:if>
   </xsl:template>
 
-
-    <xsl:template name="mutator" match="*:Row">
-
-      <xsl:variable name="labels">
-
-      </xsl:variable>
-
+  
+  <xsl:template name="mutator" match="*:Row">
     <xsl:choose>
-      
-
-    <xsl:when test="position()=1">
-      <Categories cellCount="{count(node())}">
+      <xsl:when test="position()=1">
+	<Categories cellCount="{count(node())}">
         <xsl:for-each select="./*:Cell">
-          <Category catNo="{position()}">
-            <xsl:value-of select="*:Data"/>
-          </Category>
-        </xsl:for-each>
-      <!--xsl:value-of select="$nl"/-->
-      </Categories>
-    </xsl:when>
-    <xsl:when test="not(position()=1)">
-    
-  <Row rowNo="{position() - 1}" cellCountORIG="{count(node())}" cellCountFINAL="??">
-        
-    <xsl:for-each-group select="*:Cell" group-starting-with="*:Cell[@ss:Index]">
+	  <Category catNo="{position()}">
+	    <xsl:value-of select="*:Data"/>
+	  </Category>
+	</xsl:for-each>
+	<!--xsl:value-of select="$nl"/-->
+	</Categories>
+      </xsl:when>
+      <xsl:when test="not(position()=1)">
+	
+	<Row rowNo="{position() - 1}" cellCountORIG="{count(node())}" cellCountFINAL="??">
+	  
+	  <xsl:for-each-group select="*:Cell" group-starting-with="*:Cell[@ss:Index]">
         <!--Group cellsInGroup="{count(current-group())}"-->
       <xsl:variable name="start" select="(@ss:Index, 1)[1]" as="xs:integer"/>
       <xsl:for-each select="current-group()">
