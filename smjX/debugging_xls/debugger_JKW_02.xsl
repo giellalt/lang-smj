@@ -178,6 +178,7 @@
         <xsl:variable name="currentCategory" select="../../*:Row[1]/*:Cell[$realID]"/>
           <!--xsl:value-of select="concat($nl,position(),$tab,$matrixValue,$tab,' vs. ',$tab,$currentCategory,$nl)"/-->
         <xsl:for-each select="../../*:Row[1]/*:Cell">
+        <!--xsl:for-each select="../preceding-sibling::*:Row[1]/*:Cell"-->
         <!--xsl:for-each select="../../*:Row[not(position()=1)]/*:Cell"-->
         <xsl:choose>
         <xsl:when test="$matrixValue = $currentCategory">
