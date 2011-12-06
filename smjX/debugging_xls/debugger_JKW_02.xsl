@@ -104,6 +104,7 @@
 	<xsl:call-template name="processRow">
 	  <xsl:with-param name="theRow" select="."/>
 	  <xsl:with-param name="thePosition" select="position()"/>
+	  <xsl:with-param name="theLabels" select="$labels"/>
 	</xsl:call-template>
       </xsl:for-each>
       <xsl:message terminate="no">
@@ -139,7 +140,8 @@
   <xsl:template name="processRow">
     <xsl:param name="theRow"/>
     <xsl:param name="thePosition"/>
-    
+    <xsl:param name="theLabels"/>
+
     <!--xsl:message terminate="no">
       <xsl:value-of select="concat('Row position ', $thePosition)"/>
     </xsl:message-->
@@ -162,14 +164,18 @@
     	  </xsl:message>
         </xsl:for-each-->
 
-    <xsl:call-template name="mutator"/>        
-        
+	<xsl:call-template name="mutator">
+	  <xsl:with-param name="theLabels" select="$theLabels"/>
+	</xsl:call-template>
+	
     <!--/xsl:element-->
     </xsl:if>
   </xsl:template>
 
   
   <xsl:template name="mutator" match="*:Row">
+    <xsl:param name="theLabels"/>
+    
     <xsl:choose>
       <xsl:when test="position()=1">
 	<Categories cellCount="{count(node())}">
