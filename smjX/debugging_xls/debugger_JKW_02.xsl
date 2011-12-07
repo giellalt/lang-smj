@@ -113,11 +113,11 @@
     
     <!-- output document -->
     <xsl:result-document href="{$outputDir}/result_{$theName}.{$e}" format="{$output_format}">
-      <output_file>
-	<xsl:value-of select="$nl"/>
 	<xsl:comment> Conversion from Excel-2004-xml as exported by Excel to a more useable xml structure. Created by CipG and JKW for Giellatekno and Mávsulasj. </xsl:comment>
 	<xsl:value-of select="$nl"/>
-	<meta-info>
+      <outputFile>
+	<xsl:value-of select="$nl"/>
+	<metadata>
 	  <inputFile>
 	    <xsl:value-of select="$inFile"/>
 	  </inputFile>
@@ -127,11 +127,11 @@
 	  <exportDateTime>
 	    <xsl:value-of select="current-dateTime()"/>
 	  </exportDateTime>
-	</meta-info>
+	</metadata>
 	<excelWorksheet>
 	  <xsl:copy-of select="$output"/>
 	</excelWorksheet>
-      </output_file>
+      </outputFile>
     </xsl:result-document>
     
   </xsl:template>
@@ -166,7 +166,7 @@
       <xsl:when test="not(position()=1)">
 	
 	<xsl:variable name="current_row">
-	  <Row rowNo="{position() - 1}" cellCountORIG="{count(node())}" cellCountFINAL="??">
+	  <Row rowNo="{position() - 1}" originalCellCount="{count(node())}">
 	    
 	    <xsl:for-each-group select="*:Cell" group-starting-with="*:Cell[@ss:Index]">
 	      <xsl:variable name="start" select="(@ss:Index, 1)[1]" as="xs:integer"/>
@@ -176,13 +176,13 @@
 		<xsl:choose>
 		  <xsl:when test="*:Data">
 		    <xsl:variable name="realID" select="$start + $mergeTotal + position() - 1"/>
-		    <Cell catNo="{$realID}" descriptor="{../../*:Row[1]/*:Cell[$realID]}">
+		    <Cell catNo="{$realID}" cat="{../../*:Row[1]/*:Cell[$realID]}">
 		      <xsl:value-of select="*:Data"/>
 		    </Cell>
 		  </xsl:when>
 		  <xsl:when test="not(*:Data)">
 		    <xsl:variable name="realID" select="$start + $mergeTotal + position() - 1"/>
-		    <Cell catNo="{$realID}" descriptor="{../../*:Row[1]/*:Cell[$realID]}" originalValue="empty"/>
+		    <Cell catNo="{$realID}" cat="{../../*:Row[1]/*:Cell[$realID]}" originalValue="empty"/>
 		  </xsl:when>
 		</xsl:choose>
 	    </xsl:for-each>
@@ -190,18 +190,18 @@
 	  </Row>
 	</xsl:variable>
 	
-	<Row position="{position() - 1}" cellCountORIG="{count(node())}">
+	<Row rowNo="{position() - 1}" originalCellCount="{count(node())}">
 	  <!--xsl:for-each select="$mutator_labels/Categories/Category"-->
 	  <xsl:for-each select="$theLabels/Categories/Category">
 
 	    <xsl:variable name="cd" select="."/>
-	    <!-- if there is a cell with the current descriptor copy it here -->
-	    <xsl:if test=". = $current_row/Row/Cell/@descriptor">
-	      <xsl:copy-of select="$current_row/Row/Cell[./@descriptor = $cd]"/>
+	    <!-- if there is a cell with the current category copy it here -->
+	    <xsl:if test=". = $current_row/Row/Cell/@cat">
+	      <xsl:copy-of select="$current_row/Row/Cell[./@cat = $cd]"/>
 	    </xsl:if>
 	    <!-- if there is no such cell build a dummy one -->
-	    <xsl:if test="not($current_row/Row/Cell[./@descriptor = $cd])">
-	      <Cell catNo="{./@catNo}" descriptor="{.}" content="empty"/>
+	    <xsl:if test="not($current_row/Row/Cell[./@cat = $cd])">
+	      <Cell catNo="{./@catNo}" cat="{.}" originalValue="missing"/>
 	    </xsl:if>
 	  </xsl:for-each>
 	</Row>
