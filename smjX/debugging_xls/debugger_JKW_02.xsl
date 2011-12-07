@@ -137,21 +137,21 @@
   </xsl:template>
 
 <!-- template to process input -->  
-  <xsl:template name="processRow">
+  <xsl:template name="processRow" match="*:Row">
     <xsl:param name="theRow"/>
     <xsl:param name="thePosition"/>
     <xsl:param name="theLabels"/>
     <xsl:variable name="isNonemptyRow" select="some $cell in $theRow satisfies not(normalize-space($cell) = '')"/>
     <xsl:if test="$isNonemptyRow">
-	<xsl:call-template name="mutator">
+	<!--xsl:call-template name="mutator">
 	  <xsl:with-param name="mutator_labels" select="$theLabels"/>
 	</xsl:call-template>
     </xsl:if>
-  </xsl:template>
+  </xsl:template-->
 
   
-  <xsl:template name="mutator" match="*:Row">
-    <xsl:param name="mutator_labels"/>
+  <!--xsl:template name="mutator" match="*:Row">
+    <xsl:param name="mutator_labels"/-->
     
     <xsl:choose>
       <xsl:when test="position()=1">
@@ -191,7 +191,8 @@
 	</xsl:variable>
 	
 	<Row position="{position() - 1}" cellCountORIG="{count(node())}">
-	  <xsl:for-each select="$mutator_labels/Categories/Category">
+	  <!--xsl:for-each select="$mutator_labels/Categories/Category"-->
+	  <xsl:for-each select="$theLabels/Categories/Category">
 
 	    <xsl:variable name="cd" select="."/>
 	    <!-- if there is a cell with the current descriptor copy it here -->
@@ -207,6 +208,8 @@
 	
       </xsl:when>
     </xsl:choose>
+
+    </xsl:if>
   </xsl:template>        
 
 
