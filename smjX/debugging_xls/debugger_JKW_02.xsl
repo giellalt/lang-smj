@@ -16,14 +16,13 @@
   <xsl:strip-space elements="*"/>
   <xsl:output method="xml" name="xml"
               encoding="UTF-8"
-	      omit-xml-declaration="no"
-	      indent="yes"/>
+              omit-xml-declaration="no"
+              indent="yes"/>
   
   <!-- Input -->
   <xsl:param name="inFile" select="'debug_lule_klein.xml'"/>
   <xsl:param name="inDir" select="'xxxdirxxx'"/>
-  <xsl:param name="XSLfile" select="'xls-2004xml2simple-xml_JKW_02.xsl'"/>
-  <!--xsl:variable name="current_file" select="substring-before((tokenize(document-uri(.), '/'))[last()], '.xml')"/-->
+  <xsl:param name="XSLfile" select="base-uri(document(''))"/>
   
   <!-- Output -->
   <xsl:variable name="outputDir" select="'_000_outDir'"/>
@@ -32,6 +31,7 @@
   <xsl:variable name="output_format" select="'xml'"/>
   <xsl:variable name="e" select="$output_format"/>
   <xsl:variable name="file_name" select="substring-before((tokenize($inFile, '/'))[last()], '.xml')"/>
+  <xsl:variable name="styleSheet_name" select="(tokenize($XSLfile, '/'))[last()]"/>
   <xsl:variable name="tab" select="'&#9;'"/>
   <xsl:variable name="nl" select="'&#xA;'"/>
   <xsl:variable name="debug" select="true()"/>
@@ -82,7 +82,7 @@
     
     <!-- build a global variable to pack the number, position and
          meaning of the labels, i.e. the first row in the xsl-file so
-         that you can match each row against the this -->
+         that you can match each row against this -->
     <xsl:variable name="labels">
       <Categories cellCount="{$theFile/*:Workbook/*:Worksheet/*:Table/*:Row[01]/count(node())}">
 	<xsl:for-each select="$theFile/*:Workbook/*:Worksheet/*:Table/*:Row[01]/*:Cell">
@@ -122,7 +122,7 @@
 	    <xsl:value-of select="$inFile"/>
 	  </inputFile>
 	  <xslFile>
-	    <xsl:value-of select="$XSLfile"/>
+	    <xsl:value-of select="$styleSheet_name"/>
 	  </xslFile>
 	  <exportTimeDate>
 	    <xsl:value-of select="current-dateTime()"/>
