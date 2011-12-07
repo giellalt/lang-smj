@@ -97,7 +97,6 @@
          into a whole variable but output right away -->
     <xsl:variable name="output">
       <xsl:for-each select="$theFile/*:Workbook/*:Worksheet/*:Table/*:Row">
-	<!-- this debug info is much more useful -->
 	<xsl:message terminate="no">
 	  <xsl:value-of select="concat('row ', position(), ' ... ')"/>
 	</xsl:message>
@@ -115,7 +114,8 @@
     <!-- output document -->
     <xsl:result-document href="{$outputDir}/result_{$theName}.{$e}" format="{$output_format}">
       <output_file>
-	<xsl:comment> Conversion from ugly Excel-2004-xml as exported by Excel to something more useable. Created by CipG and JKW for Giellatekno and Mávsulasj. </xsl:comment>
+	<xsl:value-of select="$nl"/>
+	<xsl:comment> Conversion from ugly Excel-2004-xml as exported by Excel to a more useable xml structure. Created by CipG and JKW for Giellatekno and Mávsulasj. </xsl:comment>
 	<xsl:value-of select="$nl"/>
 	<meta-info>
 	  <inputFile>
