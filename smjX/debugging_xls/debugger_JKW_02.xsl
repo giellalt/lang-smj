@@ -21,6 +21,7 @@
   
   <!-- Input -->
   <xsl:param name="inFile" select="'debug_lule_klein.xml'"/>
+  <!--xsl:param name="inFile" select="'SMJDictionaryComplexG.xml'"/-->
   <xsl:param name="inDir" select="'xxxdirxxx'"/>
   <xsl:param name="XSLfile" select="base-uri(document(''))"/>
   
@@ -34,8 +35,8 @@
   <xsl:variable name="styleSheet_name" select="(tokenize($XSLfile, '/'))[last()]"/>
   <xsl:variable name="tab" select="'&#9;'"/>
   <xsl:variable name="nl" select="'&#xA;'"/>
-  <xsl:variable name="debug" select="true()"/>
-  
+  <xsl:variable name="debug" select="true()"/>  
+  <xsl:variable name="outDirFile" select="concat($outputDir,'/result_',$file_name,'.',$e)"/>
 
 <!-- template to test if input DIR and FILE exist -->
   <xsl:template match="/" name="main">
@@ -107,12 +108,12 @@
 	</xsl:call-template>
       </xsl:for-each>
       <xsl:message terminate="no">
-	<xsl:value-of select="'   Done!'"/>
+	<xsl:value-of select="concat('   Done!',$nl,'   Output directory/file:  ',$outDirFile)"/>
       </xsl:message>
     </xsl:variable>
     
     <!-- output document -->
-    <xsl:result-document href="{$outputDir}/result_{$theName}.{$e}" format="{$output_format}">
+    <xsl:result-document href="{$outDirFile}" format="{$output_format}">
 	<xsl:comment> Conversion from Excel-2004-xml as exported by Excel to a more useable xml structure. Created by CipG and JKW for Giellatekno and Mávsulasj. </xsl:comment>
 	<xsl:value-of select="$nl"/>
       <outputFile>
@@ -211,8 +212,6 @@
 
     </xsl:if>
   </xsl:template>        
-
-
   
 </xsl:stylesheet>
 
