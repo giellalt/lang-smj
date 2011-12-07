@@ -115,7 +115,7 @@
     <xsl:result-document href="{$outputDir}/result_{$theName}.{$e}" format="{$output_format}">
       <output_file>
 	<xsl:value-of select="$nl"/>
-	<xsl:comment> Conversion from ugly Excel-2004-xml as exported by Excel to a more useable xml structure. Created by CipG and JKW for Giellatekno and Mávsulasj. </xsl:comment>
+	<xsl:comment> Conversion from Excel-2004-xml as exported by Excel to a more useable xml structure. Created by CipG and JKW for Giellatekno and Mávsulasj. </xsl:comment>
 	<xsl:value-of select="$nl"/>
 	<meta-info>
 	  <inputFile>
@@ -124,9 +124,9 @@
 	  <xslFile>
 	    <xsl:value-of select="$styleSheet_name"/>
 	  </xslFile>
-	  <exportTimeDate>
+	  <exportDateTime>
 	    <xsl:value-of select="current-dateTime()"/>
-	  </exportTimeDate>
+	  </exportDateTime>
 	</meta-info>
 	<excelWorksheet>
 	  <xsl:copy-of select="$output"/>
@@ -141,34 +141,11 @@
     <xsl:param name="theRow"/>
     <xsl:param name="thePosition"/>
     <xsl:param name="theLabels"/>
-
-    <!--xsl:message terminate="no">
-      <xsl:value-of select="concat('Row position ', $thePosition)"/>
-    </xsl:message-->
-    
-    <xsl:variable name="elementName" select="if (position() = 1) then 'category' else 'row'"/>
     <xsl:variable name="isNonemptyRow" select="some $cell in $theRow satisfies not(normalize-space($cell) = '')"/>
-    
     <xsl:if test="$isNonemptyRow">
-      
-      <!--xsl:element name="{$elementName}">
-        <xsl:attribute name="cell_count">
-    	  <xsl:value-of select="count($theRow//*:Cell)"/>
-    	</xsl:attribute>
-    	<xsl:attribute name="id">
-    	  <xsl:value-of select="$thePosition"/>
-    	</xsl:attribute-->	
-    	<!--xsl:for-each select="$theRow//*:Cell">
-    	  <xsl:message terminate="no">
-    	    <xsl:value-of select="concat('Processing column: ', .)"/>
-    	  </xsl:message>
-        </xsl:for-each-->
-
 	<xsl:call-template name="mutator">
 	  <xsl:with-param name="mutator_labels" select="$theLabels"/>
 	</xsl:call-template>
-	
-    <!--/xsl:element-->
     </xsl:if>
   </xsl:template>
 
@@ -184,7 +161,6 @@
 	    <xsl:value-of select="*:Data"/>
 	  </Category>
 	</xsl:for-each>
-	<!--xsl:value-of select="$nl"/-->
 	</Categories>
       </xsl:when>
       <xsl:when test="not(position()=1)">
@@ -193,7 +169,6 @@
 	  <Row rowNo="{position() - 1}" cellCountORIG="{count(node())}" cellCountFINAL="??">
 	    
 	    <xsl:for-each-group select="*:Cell" group-starting-with="*:Cell[@ss:Index]">
-	      <!--Group cellsInGroup="{count(current-group())}"-->
 	      <xsl:variable name="start" select="(@ss:Index, 1)[1]" as="xs:integer"/>
 	      <xsl:for-each select="current-group()">
 		<xsl:variable name="mergeTotal" select="sum(current-group()[current() >> .]/@ss:MergeAcross)"/>
@@ -204,48 +179,13 @@
 		    <Cell catNo="{$realID}" descriptor="{../../*:Row[1]/*:Cell[$realID]}">
 		      <xsl:value-of select="*:Data"/>
 		    </Cell>
-		    <!--values><xsl:value-of select="concat('start=',$start,'; position=',position(),'; realID=',$realID)"/></values-->
-		    <!--xsl:if test="count(node())=po">
-			<xsl:
-			</xsl:if-->
 		  </xsl:when>
 		  <xsl:when test="not(*:Data)">
 		    <xsl:variable name="realID" select="$start + $mergeTotal + position() - 1"/>
 		    <Cell catNo="{$realID}" descriptor="{../../*:Row[1]/*:Cell[$realID]}" originalValue="empty"/>
-		    <!--values><xsl:value-of select="concat('start=',$start,'; position=',position(),'; realID=',$realID)"/></values-->
 		  </xsl:when>
 		</xsl:choose>
-		
-		
-		<!-- Problem:
-		     - adding cells that were missing in original export
-		     
-		     Resources:
-		     
-		     - we have the "matrix" of the table, which is the first row with
-		     ALL cells, their positions, and their meanings
-		     
-		     - we have the output of each (non-empty) cell with the meaning tag on it
-		     
-		     Solution:
-		     
-		     - build two variables: the matrix and the output of the current row
-		     
-		     - check the content of the current row against the current of the matrix:
-		     
-		     for-each cell in the matrix do
-		     take each cell of the current row and
-		     if the meaning of the current cell corresponds with the meaning of the cell in the matrix
-		     then copy the current cell
-		     otherwise
-		     build a new cell with the information of the matrix cell, something along the line...
-		     
-		     cell position="matrix_cell_position" meaning="matrix cell meaning" content="empty"
-		     
-		-->
-		
-	      </xsl:for-each>
-	      <!--/Group-->
+	    </xsl:for-each>
 	    </xsl:for-each-group>
 	  </Row>
 	</xsl:variable>
