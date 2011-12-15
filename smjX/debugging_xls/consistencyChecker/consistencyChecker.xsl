@@ -38,6 +38,11 @@
   <xsl:variable name="debug" select="true()"/>  
   <xsl:variable name="outDirFile" select="concat($outputDir,'/result_',$file_name,'.',$e)"/>
 
+  <!-- variable to set the category (cell no.) to check for consistency -->
+  <xsl:variable name="cellNo" select="5"/>
+<!-- how to make this happen automatically (iteration) for each category? and some categories have too distinct values, need different solution -->
+
+
 <!-- template to test if input DIR and FILE exist -->
   <xsl:template match="/" name="main">
     
@@ -86,9 +91,9 @@
          into a whole variable but output right away -->
     <xsl:variable name="output">
       <xsl:for-each select="$theFile/outputFile/excelWorksheet">
-	<xsl:message terminate="no">
+	<!--xsl:message terminate="no">
 	  <xsl:value-of select="concat('row ', position(), ' ... ')"/>
-	</xsl:message>
+	</xsl:message-->
 	<xsl:call-template name="consistency"/>
       </xsl:for-each>
       <xsl:message terminate="no">
@@ -113,26 +118,29 @@
 	    <xsl:value-of select="current-dateTime()"/>
 	  </exportDateTime>
 	</metadata>
-	<consistency>
+	<consistencyCheck>
 	  <xsl:copy-of select="$output"/>
-	</consistency>
+	</consistencyCheck>
       </outputFile>
     </xsl:result-document>
     
   </xsl:template>
 
-  <xsl:key name="types" match="Row" use="Cell[3]"/>
 
 <!-- template to process input -->  
   <xsl:template name="consistency" match="excelWorksheet">
-  <xsl:variable name="cellNo" select="3"/>
-    <distinctValues cellNo="{$cellNo}"><xsl:value-of select="count(distinct-values(./Row/Cell[$cellNo]))"/></distinctValues>
+
+  <Category cellNo="{$cellNo}" category="{./Categories/Category[$cellNo]}" patternCount="{count(distinct-values(./Row/Cell[$cellNo]))}">
   <xsl:variable name="distinctTypes" select="distinct-values(./Row/Cell[$cellNo])"/>
     <xsl:for-each select="$distinctTypes">
-      <Cell>
+
+<!-- how to add calculation of the particular pattern being counted? -->
+      <!--Pattern frequency="{count(./Row/Cell[$cellNo]...???)}"-->
+      <Pattern frequency="??">
       <xsl:value-of select="." />
-      </Cell>
+      </Pattern>
     </xsl:for-each>
+  </Category>
   </xsl:template>        
   
 
