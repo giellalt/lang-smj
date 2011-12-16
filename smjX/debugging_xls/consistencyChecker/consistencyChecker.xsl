@@ -103,23 +103,26 @@
     
     <!-- given very big xls files, the output should not be stored
 	 into a whole variable but output right away -->
-    <xsl:variable name="output">
       <xsl:for-each select="$theFile/outputFile/excelWorksheet/Categories/Category">
 	<xsl:message terminate="no">
 	  <xsl:value-of select="concat('category ', ., ' label ', ./@catNo, ' ... ')"/>
 	</xsl:message>
 	<xsl:variable name="current_catNo" select="./@catNo"/>
-	<xsl:for-each select="../../Row/Cell[./@catNo = $current_catNo]">
-	  
-	</xsl:for-each>
+	<xsl:variable name="output">
+	  <cellGroup row="{../Row/position() -1}">
+	    <xsl:for-each select="../../Row/Cell[./@catNo = $current_catNo]">
+	      <xsl:copy-of select="."/>
+	    </xsl:for-each>
+	  </cellGroup>
+	</xsl:variable>
       </xsl:for-each>
+
       <xsl:message terminate="no">
 	<xsl:value-of select="concat('   Done!',$nl,'   Output directory/file:  ',$outDirFile)"/>
       </xsl:message>
-    </xsl:variable>
     
     <!-- output document -->
-    <xsl:result-document href="{$outDirFile}" format="{$output_format}">
+    <xsl:result-document href="{$outDirFile}/{$outDirFile}_{$current_catNo}" format="{$output_format}">
       <xsl:comment> Consistency check for Mávsulasj data </xsl:comment>
       <xsl:value-of select="$nl"/>
       <outputFile>
