@@ -109,7 +109,7 @@
 	  <xsl:value-of select="concat('category ', ., ' label ', ./@catNo, ' ... ')"/>
 	</xsl:message>
 	<xsl:variable name="current_catNo" select="./@catNo"/>
-	<xsl:for-each select="../Row/Cell[./@catNo = $current_catNo]">
+	<xsl:for-each select="../../Row/Cell[./@catNo = $current_catNo]">
 	  
 	</xsl:for-each>
       </xsl:for-each>
