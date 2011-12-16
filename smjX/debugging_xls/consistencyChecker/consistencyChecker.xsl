@@ -36,11 +36,28 @@
   <xsl:variable name="tab" select="'&#9;'"/>
   <xsl:variable name="nl" select="'&#xA;'"/>
   <xsl:variable name="debug" select="true()"/>  
-  <xsl:variable name="outDirFile" select="concat($outputDir,'/result_',$file_name,'.',$e)"/>
+  <xsl:variable name="outDirFile" select="concat($outputDir,'/result_',$file_name, '_cat', $cellNoDouble, '.',$e)"/>
 
   <!-- variable to set the category (cell no.) to check for consistency -->
   <xsl:variable name="cellNo" select="5"/>
 <!-- how to make this happen automatically (iteration) for each category? and some categories have too distinct values, need different solution -->
+
+  <!-- to create output filename which references the column/category being processed -->
+  <xsl:variable name="cellNoDouble">
+  <xsl:choose>
+  <xsl:when test="string-length(string($cellNo)) = 1">
+    <xsl:value-of select="concat('0',$cellNo)"/>
+  </xsl:when>
+  <xsl:when test="string-length(string($cellNo)) = 2">
+    <xsl:value-of select="$cellNo"/>
+  </xsl:when>
+  <xsl:when test="string-length(string($cellNo)) &gt; 2">
+    <xsl:message terminate="yes">
+      <xsl:value-of select="'There are no columns/categories with more than a 2-digit number!'"/>
+    </xsl:message>      
+  </xsl:when>
+  </xsl:choose>
+  </xsl:variable>
 
 
 <!-- template to test if input DIR and FILE exist -->
@@ -76,7 +93,7 @@
     </xsl:if>
     
     <xsl:if test="not(doc-available($inFile) or not($inDir = 'xxxdirxxx'))">
-      <xsl:value-of select="concat('Neither ', $inFile, ' nor ', $inDir, ' found.', $nl)"/>
+      <xsl:value-of select="concat('Could not find either ', $inFile, ' or ', $inDir, ', or both.', $nl)"/>
     </xsl:if>    
   </xsl:template>
 
