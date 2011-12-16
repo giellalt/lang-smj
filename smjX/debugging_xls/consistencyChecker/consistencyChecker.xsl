@@ -83,15 +83,16 @@
 	 into a whole variable but output right away -->
     <xsl:for-each select="$theFile/outputFile/excelWorksheet/Categories/Category">
       <xsl:message terminate="no">
-	<xsl:value-of select="concat('category ', ., ' label ', ./@catNo, ' ... ')"/>
+	<xsl:value-of select="concat('category ', ./@catNo, ': ', ., ' ... ')"/>
       </xsl:message>
+      <xsl:variable name="current_cat" select="."/>
       <xsl:variable name="current_catNo" select="./@catNo"/>
       <xsl:variable name="file_flag">
 	<xsl:value-of select="if (./@catNo &lt; 10) then concat('0', ./@catNo) else ./@catNo"/>
       </xsl:variable>
       
       <xsl:variable name="output">
-	<consistencyCheck>
+	<consistencyCheck catNo="{$current_catNo}" cat="{$current_cat}">
 	  <xsl:variable name="cellGr">
 	    <cellGroup>
 	      <xsl:for-each select="../../Row/Cell[./@catNo = $current_catNo]">
@@ -102,11 +103,19 @@
 	      </xsl:for-each>
 	    </cellGroup>
 	  </xsl:variable>
-
-	  <!-- baustelle hier:-->
+	  
+	  <xsl:variable name="frequencyCells">
 	  <xsl:for-each-group select="$cellGr/cellGroup/cell" group-by=".">
-	    <cellContentGroup counter="{count(current-group())}" content="{current-grouping-key()}"/>
+	    <pattern frequency="{count(current-group())}">
+	      <xsl:value-of select="current-grouping-key()"/>
+	    </pattern>
 	  </xsl:for-each-group>
+	  </xsl:variable>
+	  
+	  <xsl:for-each select="$frequencyCells/pattern">
+	    <xsl:sort data-type="number" order="descending" select="./@frequency"/>
+	    <xsl:copy-of select="."/>
+	  </xsl:for-each>
 	  
 	</consistencyCheck>
       </xsl:variable>
@@ -132,10 +141,12 @@
 	</outputFile>
       </xsl:result-document>
       <xsl:message terminate="no">
-	<xsl:value-of select="concat('   Done!',$nl,'   Output directory/file:  ', $outDir, '/', $theName, '_', $file_flag, '.', $e)"/>
+	<xsl:value-of select="concat('   Done!','   Output directory/file:  ', $outDir, '/', $theName, '_', $file_flag, '.', $e)"/>
       </xsl:message>
     </xsl:for-each>
+  
   </xsl:template>
+  
   
 </xsl:stylesheet>
 
