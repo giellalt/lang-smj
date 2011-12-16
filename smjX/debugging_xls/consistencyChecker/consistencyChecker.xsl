@@ -92,7 +92,7 @@
       </xsl:variable>
       
       <xsl:variable name="output">
-	<consistencyCheck catNo="{$current_catNo}" cat="{$current_cat}">
+	<consistencyCheck catNo="{$current_catNo}" cat="{$current_cat}" patternCount="">
 	  <xsl:variable name="cellGr">
 	    <cellGroup>
 	      <xsl:for-each select="../../Row/Cell[./@catNo = $current_catNo]">
