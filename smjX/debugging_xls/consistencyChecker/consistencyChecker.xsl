@@ -120,7 +120,7 @@
 	</xsl:variable>
 
 	<!-- output document -->
-	<xsl:result-document href="{$outDirFile}/{$outDirFile}_{$current_catNo}" format="{$output_format}">
+	<xsl:result-document href="{$outDirFile}/{$therFile}_{$current_catNo}" format="{$output_format}">
 	  <xsl:comment> Consistency check for Mávsulasj data </xsl:comment>
 	  <xsl:value-of select="$nl"/>
 	  <outputFile>
