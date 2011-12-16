@@ -92,7 +92,8 @@
       </xsl:variable>
       
       <xsl:variable name="output">
-	<consistencyCheck catNo="{$current_catNo}" cat="{$current_cat}">
+	<!--consistencyCheck catNo="{$current_catNo}" cat="{$current_cat}"-->
+
 	  <xsl:variable name="cellGr">
 	    <cellGroup>
 	      <xsl:for-each select="../../Row/Cell[./@catNo = $current_catNo]">
@@ -115,10 +116,13 @@
 	  </xsl:for-each-group>
 	  </xsl:variable>
 
-<!-- would prefer to have patternCount as attribute of consistencyCheck-element instead, but don't know how to get it up there! -->
+	  <xsl:variable name="patternCount">
 	  <xsl:for-each select="$frequencyCells">
-	    <patternCount total="{count(./pattern)}"/>
+	    <xsl:value-of select="count(./pattern)"/>
 	  </xsl:for-each>
+	  </xsl:variable>
+
+	<consistencyCheck catNo="{$current_catNo}" cat="{$current_cat}" patternCount="{$patternCount}">
 	  
 	  <xsl:for-each select="$frequencyCells/pattern">
 	    <xsl:sort data-type="number" order="descending" select="./@frequency"/>
