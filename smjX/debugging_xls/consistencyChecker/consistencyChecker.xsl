@@ -105,10 +105,10 @@
 	 into a whole variable but output right away -->
     <xsl:variable name="output">
       <xsl:for-each select="$theFile/outputFile/excelWorksheet/Categories/Category">
-	<!--xsl:message terminate="no">
-	    <xsl:value-of select="concat('row ', position(), ' ... ')"/>
-	    </xsl:message-->
-	<xsl:call-template name="consistency"/>
+	<xsl:message terminate="no">
+	    <xsl:value-of select="concat('category ', ., ' label ', ./@catNo, ' ... ')"/>
+	    </xsl:message>
+
       </xsl:for-each>
       <xsl:message terminate="no">
 	<xsl:value-of select="concat('   Done!',$nl,'   Output directory/file:  ',$outDirFile)"/>
