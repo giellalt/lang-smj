@@ -115,34 +115,34 @@
 	    </xsl:for-each>
 	  </cellGroup>
 	</xsl:variable>
+
+	<!-- output document -->
+	<xsl:result-document href="{$outDirFile}/{$outDirFile}_{$current_catNo}" format="{$output_format}">
+	  <xsl:comment> Consistency check for Mávsulasj data </xsl:comment>
+	  <xsl:value-of select="$nl"/>
+	  <outputFile>
+	    <xsl:value-of select="$nl"/>
+	    <metadata>
+	      <inputFile>
+		<xsl:value-of select="$inFile"/>
+	      </inputFile>
+	      <xslFile>
+		<xsl:value-of select="$styleSheet_name"/>
+	      </xslFile>
+	      <exportDateTime>
+		<xsl:value-of select="current-dateTime()"/>
+	      </exportDateTime>
+	    </metadata>
+	    <consistencyCheck>
+	      <xsl:copy-of select="$output"/>
+	    </consistencyCheck>
+	  </outputFile>
+	</xsl:result-document>
       </xsl:for-each>
 
       <xsl:message terminate="no">
 	<xsl:value-of select="concat('   Done!',$nl,'   Output directory/file:  ',$outDirFile)"/>
       </xsl:message>
-    
-    <!-- output document -->
-    <xsl:result-document href="{$outDirFile}/{$outDirFile}_{$current_catNo}" format="{$output_format}">
-      <xsl:comment> Consistency check for Mávsulasj data </xsl:comment>
-      <xsl:value-of select="$nl"/>
-      <outputFile>
-	<xsl:value-of select="$nl"/>
-	<metadata>
-	  <inputFile>
-	    <xsl:value-of select="$inFile"/>
-	  </inputFile>
-	  <xslFile>
-	    <xsl:value-of select="$styleSheet_name"/>
-	  </xslFile>
-	  <exportDateTime>
-	    <xsl:value-of select="current-dateTime()"/>
-	  </exportDateTime>
-	</metadata>
-	<consistencyCheck>
-	  <xsl:copy-of select="$output"/>
-	</consistencyCheck>
-      </outputFile>
-    </xsl:result-document>
     
   </xsl:template>
   
