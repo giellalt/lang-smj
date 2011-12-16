@@ -109,14 +109,14 @@
 	</xsl:message>
 	<xsl:variable name="current_catNo" select="./@catNo"/>
 	<xsl:variable name="output">
-	  <cellGroup>
+	  <consistencyCheck>
 	    <xsl:for-each select="../../Row/Cell[./@catNo = $current_catNo]">
 	      <cell row="{../Row/position() -1}">
 		<xsl:copy-of select="./@*"/>
 		<xsl:value-of select="normalize-space(.)"/>
 	      </cell>
 	    </xsl:for-each>
-	  </cellGroup>
+	  </consistencyCheck>
 	</xsl:variable>
 
 	<!-- output document -->
@@ -136,9 +136,7 @@
 		<xsl:value-of select="current-dateTime()"/>
 	      </exportDateTime>
 	    </metadata>
-	    <consistencyCheck>
-	      <xsl:copy-of select="$output"/>
-	    </consistencyCheck>
+	    <xsl:copy-of select="$output"/>
 	  </outputFile>
 	</xsl:result-document>
       </xsl:for-each>
