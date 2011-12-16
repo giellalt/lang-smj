@@ -113,14 +113,22 @@
       
       <xsl:variable name="output">
 	<consistencyCheck>
-	  <!-- baustelle hier:
-	  for-each-grout select=Content of cell-->
-	  <xsl:for-each select="../../Row/Cell[./@catNo = $current_catNo]">
-	    <cell row="{../Row/position() -1}">
-	      <xsl:copy-of select="./@*"/>
-	      <xsl:value-of select="normalize-space(.)"/>
-	    </cell>
-	  </xsl:for-each>
+	  <xsl:variable name="cellGr">
+	    <cellGroup>
+	      <xsl:for-each select="../../Row/Cell[./@catNo = $current_catNo]">
+		<cell row="{../Row/position() -1}">
+		  <xsl:copy-of select="./@*"/>
+		  <xsl:value-of select="normalize-space(.)"/>
+		</cell>
+	      </xsl:for-each>
+	    </cellGroup>
+	  </xsl:variable>
+
+	  <!-- baustelle hier:-->
+	  <xsl:for-each-group select="$cellGr/cellGroup/cell" group-by=".">
+	    <cellContentGroup counter="{count(current-group())}" content="{current-grouping-key()}"/>
+	  </xsl:for-each-group>
+	  
 	</consistencyCheck>
       </xsl:variable>
       
