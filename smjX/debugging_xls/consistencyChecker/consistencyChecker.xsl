@@ -104,7 +104,7 @@
     <!-- given very big xls files, the output should not be stored
 	 into a whole variable but output right away -->
     <xsl:variable name="output">
-      <xsl:for-each select="$theFile/outputFile/excelWorksheet">
+      <xsl:for-each select="$theFile/outputFile/excelWorksheet/Categories/Category">
 	<!--xsl:message terminate="no">
 	    <xsl:value-of select="concat('row ', position(), ' ... ')"/>
 	    </xsl:message-->
