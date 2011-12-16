@@ -26,7 +26,7 @@
   <xsl:param name="XSLfile" select="base-uri(document(''))"/>
   
   <!-- Output -->
-  <xsl:variable name="outputDir" select="'_000_outDir'"/>
+  <xsl:variable name="outDir" select="'_000_outDir'"/>
   
   <!-- Patterns for the feature values -->
   <xsl:variable name="output_format" select="'xml'"/>
@@ -36,7 +36,6 @@
   <xsl:variable name="tab" select="'&#9;'"/>
   <xsl:variable name="nl" select="'&#xA;'"/>
   <xsl:variable name="debug" select="true()"/>  
-  <xsl:variable name="outDirFile" select="concat($outputDir,'/result_',$file_name, '_cat', $cellNoDouble, '.',$e)"/>
 
   <!-- variable to set the category (cell no.) to check for consistency -->
   <xsl:variable name="cellNo" select="5"/>
@@ -103,47 +102,51 @@
     
     <!-- given very big xls files, the output should not be stored
 	 into a whole variable but output right away -->
-      <xsl:for-each select="$theFile/outputFile/excelWorksheet/Categories/Category">
-	<xsl:message terminate="no">
-	  <xsl:value-of select="concat('category ', ., ' label ', ./@catNo, ' ... ')"/>
-	</xsl:message>
-	<xsl:variable name="current_catNo" select="./@catNo"/>
-	<xsl:variable name="output">
-	  <consistencyCheck>
-	    <xsl:for-each select="../../Row/Cell[./@catNo = $current_catNo]">
-	      <cell row="{../Row/position() -1}">
-		<xsl:copy-of select="./@*"/>
-		<xsl:value-of select="normalize-space(.)"/>
-	      </cell>
-	    </xsl:for-each>
-	  </consistencyCheck>
-	</xsl:variable>
-
-	<!-- output document -->
-	<xsl:result-document href="{$outDirFile}/{$theFile}_{$current_catNo}" format="{$output_format}">
-	  <xsl:comment> Consistency check for Mávsulasj data </xsl:comment>
-	  <xsl:value-of select="$nl"/>
-	  <outputFile>
-	    <xsl:value-of select="$nl"/>
-	    <metadata>
-	      <inputFile>
-		<xsl:value-of select="$inFile"/>
-	      </inputFile>
-	      <xslFile>
-		<xsl:value-of select="$styleSheet_name"/>
-	      </xslFile>
-	      <exportDateTime>
-		<xsl:value-of select="current-dateTime()"/>
-	      </exportDateTime>
-	    </metadata>
-	    <xsl:copy-of select="$output"/>
-	  </outputFile>
-	</xsl:result-document>
-      </xsl:for-each>
-
+    <xsl:for-each select="$theFile/outputFile/excelWorksheet/Categories/Category">
       <xsl:message terminate="no">
-	<xsl:value-of select="concat('   Done!',$nl,'   Output directory/file:  ',$outDirFile)"/>
+	<xsl:value-of select="concat('category ', ., ' label ', ./@catNo, ' ... ')"/>
       </xsl:message>
+      <xsl:variable name="current_catNo" select="./@catNo"/>
+      <xsl:variable name="file_flag">
+	<xsl:value-of select="if (./@catNo &lt; 10) then concat('0', ./@catNo) else ./@catNo"/>
+      </xsl:variable>
+      
+      <xsl:variable name="output">
+	<consistencyCheck>
+	  <xsl:for-each select="../../Row/Cell[./@catNo = $current_catNo]">
+	    <cell row="{../Row/position() -1}">
+	      <xsl:copy-of select="./@*"/>
+	      <xsl:value-of select="normalize-space(.)"/>
+	    </cell>
+	  </xsl:for-each>
+	</consistencyCheck>
+      </xsl:variable>
+      
+      <!-- output document -->
+      <xsl:result-document href="{$outDir}/{$theName}_{$file_flag}.{$e}" format="{$output_format}">
+	<xsl:comment> Consistency check for Mávsulasj data </xsl:comment>
+	<xsl:value-of select="$nl"/>
+	<outputFile>
+	  <xsl:value-of select="$nl"/>
+	  <metadata>
+	    <inputFile>
+	      <xsl:value-of select="$inFile"/>
+	    </inputFile>
+	    <xslFile>
+	      <xsl:value-of select="$styleSheet_name"/>
+	    </xslFile>
+	    <exportDateTime>
+	      <xsl:value-of select="current-dateTime()"/>
+	    </exportDateTime>
+	  </metadata>
+	  <xsl:copy-of select="$output"/>
+	</outputFile>
+      </xsl:result-document>
+      <xsl:message terminate="no">
+	<xsl:value-of select="concat('   Done!',$nl,'   Output directory/file:  ', $outDir, '/', $theName, '_', $file_flag, '.', $e)"/>
+      </xsl:message>
+    </xsl:for-each>
+    
     
   </xsl:template>
   
