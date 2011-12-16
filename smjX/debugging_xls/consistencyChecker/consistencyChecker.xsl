@@ -109,9 +109,12 @@
 	</xsl:message>
 	<xsl:variable name="current_catNo" select="./@catNo"/>
 	<xsl:variable name="output">
-	  <cellGroup row="{../Row/position() -1}">
+	  <cellGroup>
 	    <xsl:for-each select="../../Row/Cell[./@catNo = $current_catNo]">
-	      <xsl:copy-of select="."/>
+	      <cell row="{../Row/position() -1}">
+		<xsl:copy-of select="./@*"/>
+		<xsl:value-of select="normalize-space(.)"/>
+	      </cell>
 	    </xsl:for-each>
 	  </cellGroup>
 	</xsl:variable>
