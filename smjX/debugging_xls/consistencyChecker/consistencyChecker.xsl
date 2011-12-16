@@ -40,27 +40,26 @@
 
   <!-- variable to set the category (cell no.) to check for consistency -->
   <xsl:variable name="cellNo" select="5"/>
-<!-- how to make this happen automatically (iteration) for each category? and some categories have too distinct values, need different solution -->
-
+  <!-- how to make this happen automatically (iteration) for each category? and some categories have too distinct values, need different solution -->
+  
   <!-- to create output filename which references the column/category being processed -->
   <xsl:variable name="cellNoDouble">
-  <xsl:choose>
-  <xsl:when test="string-length(string($cellNo)) = 1">
-    <xsl:value-of select="concat('0',$cellNo)"/>
-  </xsl:when>
-  <xsl:when test="string-length(string($cellNo)) = 2">
-    <xsl:value-of select="$cellNo"/>
-  </xsl:when>
-  <xsl:when test="string-length(string($cellNo)) &gt; 2">
-    <xsl:message terminate="yes">
-      <xsl:value-of select="'There are no columns/categories with more than a 2-digit number!'"/>
-    </xsl:message>      
-  </xsl:when>
-  </xsl:choose>
+    <xsl:choose>
+      <xsl:when test="string-length(string($cellNo)) = 1">
+	<xsl:value-of select="concat('0',$cellNo)"/>
+      </xsl:when>
+      <xsl:when test="string-length(string($cellNo)) = 2">
+	<xsl:value-of select="$cellNo"/>
+      </xsl:when>
+      <xsl:when test="string-length(string($cellNo)) &gt; 2">
+	<xsl:message terminate="yes">
+	  <xsl:value-of select="'There are no columns/categories with more than a 2-digit number!'"/>
+	</xsl:message>      
+      </xsl:when>
+    </xsl:choose>
   </xsl:variable>
 
-
-<!-- template to test if input DIR and FILE exist -->
+  <!-- template to test if input DIR and FILE exist -->
   <xsl:template match="/" name="main">
     
     <xsl:if test="doc-available($inFile)">
@@ -101,16 +100,14 @@
   <xsl:template name="processFile">
     <xsl:param name="theFile"/>
     <xsl:param name="theName"/>
-
-    
     
     <!-- given very big xls files, the output should not be stored
-         into a whole variable but output right away -->
+	 into a whole variable but output right away -->
     <xsl:variable name="output">
       <xsl:for-each select="$theFile/outputFile/excelWorksheet">
 	<!--xsl:message terminate="no">
-	  <xsl:value-of select="concat('row ', position(), ' ... ')"/>
-	</xsl:message-->
+	    <xsl:value-of select="concat('row ', position(), ' ... ')"/>
+	    </xsl:message-->
 	<xsl:call-template name="consistency"/>
       </xsl:for-each>
       <xsl:message terminate="no">
@@ -120,8 +117,8 @@
     
     <!-- output document -->
     <xsl:result-document href="{$outDirFile}" format="{$output_format}">
-	<xsl:comment> Consistency check for Mávsulasj data </xsl:comment>
-	<xsl:value-of select="$nl"/>
+      <xsl:comment> Consistency check for Mávsulasj data </xsl:comment>
+      <xsl:value-of select="$nl"/>
       <outputFile>
 	<xsl:value-of select="$nl"/>
 	<metadata>
@@ -142,26 +139,23 @@
     </xsl:result-document>
     
   </xsl:template>
-
-
-<!-- template to process input -->  
+  
+  
+  <!-- template to process input -->  
   <xsl:template name="consistency" match="excelWorksheet">
-
-  <Category cellNo="{$cellNo}" category="{./Categories/Category[$cellNo]}" patternCount="{count(distinct-values(./Row/Cell[$cellNo]))}">
-  <xsl:variable name="distinctTypes" select="distinct-values(./Row/Cell[$cellNo])"/>
-    <xsl:for-each select="$distinctTypes">
-
-<!-- how to add calculation of the particular pattern being counted? -->
-      <!--Pattern frequency="{count(./Row/Cell[$cellNo]...???)}"-->
-      <Pattern frequency="??">
-      <xsl:value-of select="." />
-      </Pattern>
-    </xsl:for-each>
-  </Category>
+    
+    <Category cellNo="{$cellNo}" category="{./Categories/Category[$cellNo]}" patternCount="{count(distinct-values(./Row/Cell[$cellNo]))}">
+      <xsl:variable name="distinctTypes" select="distinct-values(./Row/Cell[$cellNo])"/>
+      <xsl:for-each select="$distinctTypes">
+	
+	<!-- how to add calculation of the particular pattern being counted? -->
+	<!--Pattern frequency="{count(./Row/Cell[$cellNo]...???)}"-->
+	<Pattern frequency="??">
+	  <xsl:value-of select="." />
+	</Pattern>
+      </xsl:for-each>
+    </Category>
   </xsl:template>        
   
-
-
-
 </xsl:stylesheet>
 
