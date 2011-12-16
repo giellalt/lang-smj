@@ -18,6 +18,8 @@
               encoding="UTF-8"
               omit-xml-declaration="no"
               indent="yes"/>
+  <xsl:output method="text" name="txt"
+	      encoding="UTF-8"/>
   
   <!-- Input -->
   <!--xsl:param name="inFile" select="'debug_lule_klein.xml'"/-->
@@ -25,12 +27,15 @@
   <xsl:param name="inDir" select="'xxxdirxxx'"/>
   <xsl:param name="XSLfile" select="base-uri(document(''))"/>
   
-  <!-- Output -->
-  <xsl:variable name="outDir" select="'_000_outDir'"/>
+  <!-- Outputs -->
+  <xsl:variable name="outDirXML" select="'_000_outDirXML'"/>
+  <xsl:variable name="outDirTXT" select="'_000_outDirTXT'"/>
   
   <!-- Patterns for the feature values -->
-  <xsl:variable name="output_format" select="'xml'"/>
-  <xsl:variable name="e" select="$output_format"/>
+  <xsl:variable name="output_formatXML" select="'xml'"/>
+  <xsl:variable name="output_formatTXT" select="'txt'"/>
+  <xsl:variable name="eXML" select="$output_formatXML"/>
+  <xsl:variable name="eTXT" select="$output_formatTXT"/>
   <xsl:variable name="file_name" select="substring-before((tokenize($inFile, '/'))[last()], '.xml')"/>
   <xsl:variable name="styleSheet_name" select="(tokenize($XSLfile, '/'))[last()]"/>
   <xsl:variable name="tab" select="'&#9;'"/>
@@ -92,7 +97,6 @@
       </xsl:variable>
       
       <xsl:variable name="output">
-	<!--consistencyCheck catNo="{$current_catNo}" cat="{$current_cat}"-->
 
 	  <xsl:variable name="cellGr">
 	    <cellGroup>
@@ -122,18 +126,38 @@
 	  </xsl:for-each>
 	  </xsl:variable>
 
-	<consistencyCheck catNo="{$current_catNo}" cat="{$current_cat}" patternCount="{$patternCount}">
-	  
-	  <xsl:for-each select="$frequencyCells/pattern">
-	    <xsl:sort data-type="number" order="descending" select="./@frequency"/>
-	    <xsl:copy-of select="."/>
-	  </xsl:for-each>
-	  
-	</consistencyCheck>
+      <outputXML>
+      <consistencyCheck catNo="{$current_catNo}" cat="{$current_cat}" patternCount="{$patternCount}">
+        <xsl:for-each select="$frequencyCells/pattern">
+          <xsl:sort data-type="number" order="descending" select="./@frequency"/>
+          <xsl:copy-of select="."/>
+        </xsl:for-each>    	  
+      </consistencyCheck>
+      </outputXML>
+ 
+     <outputTXT>
+     <xsl:value-of select="concat('Column ',$file_flag,' ')"/>
+     <xsl:value-of select="concat('&#34;',$current_cat,'&#34;',$nl)"/>
+     <xsl:value-of select="concat('total number of patterns: ',$patternCount,$nl)"/>
+     <xsl:value-of select="concat('',$nl)"/>
+     <xsl:value-of select="concat('frequencies - patterns:',$nl)"/>
+     <xsl:for-each select="$frequencyCells/pattern">
+       <xsl:sort data-type="number" order="descending" select="./@frequency"/>
+       <xsl:choose>
+         <xsl:when test=".=''">
+           <xsl:copy-of select="concat(./@frequency,$tab,' - &#40;EMPTY&#41;',$nl)"/>
+         </xsl:when>
+         <xsl:when test="not(.='')">
+           <xsl:copy-of select="concat(./@frequency,$tab,' - ', .,$nl)"/>
+         </xsl:when>
+       </xsl:choose>
+     </xsl:for-each>
+     </outputTXT>
+          
       </xsl:variable>
       
-      <!-- output document -->
-      <xsl:result-document href="{$outDir}/{$theName}_{$file_flag}.{$e}" format="{$output_format}">
+      <!-- output document XML -->
+      <xsl:result-document href="{$outDirXML}/{$theName}_{$file_flag}.{$eXML}" format="{$output_formatXML}">
 	<xsl:comment> Consistency check for Mávsulasj data </xsl:comment>
 	<xsl:value-of select="$nl"/>
 	<outputFile>
@@ -149,11 +173,21 @@
 	      <xsl:value-of select="current-dateTime()"/>
 	    </exportDateTime>
 	  </metadata>
-	  <xsl:copy-of select="$output"/>
+	  <xsl:copy-of select="$output/outputXML"/>
 	</outputFile>
       </xsl:result-document>
+      
+      <!-- output document TXT -->
+      <xsl:result-document href="{$outDirTXT}/{$theName}_{$file_flag}.{$eTXT}" format="{$output_formatTXT}">
+	<xsl:value-of select="concat('CONSISTENCY OF MÁVSULASJ DATA',$nl)"/>
+	<xsl:value-of select="concat('based on file: ',$inFile,$nl)"/>
+	<xsl:value-of select="concat('using stylesheet: ',$styleSheet_name,$nl)"/>
+	<xsl:value-of select="concat('created: ',current-dateTime(),$nl,$nl)"/>
+	  <xsl:copy-of select="$output/outputTXT"/>
+      </xsl:result-document>
+      
       <xsl:message terminate="no">
-	<xsl:value-of select="concat('   Done!','   Output directory/file:  ', $outDir, '/', $theName, '_', $file_flag, '.', $e)"/>
+	<xsl:value-of select="concat('   Done!',' Output directory/files:  ', $outDirXML, '/', $theName, '_', $file_flag, '.', $eXML, ' AND ',$outDirTXT, '/', $theName, '_', $file_flag, '.', $eTXT)"/>
       </xsl:message>
     </xsl:for-each>
   
