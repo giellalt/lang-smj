@@ -113,6 +113,8 @@
       
       <xsl:variable name="output">
 	<consistencyCheck>
+	  <!-- baustelle hier:
+	  for-each-grout select=Content of cell-->
 	  <xsl:for-each select="../../Row/Cell[./@catNo = $current_catNo]">
 	    <cell row="{../Row/position() -1}">
 	      <xsl:copy-of select="./@*"/>
