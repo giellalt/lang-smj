@@ -106,9 +106,12 @@
     <xsl:variable name="output">
       <xsl:for-each select="$theFile/outputFile/excelWorksheet/Categories/Category">
 	<xsl:message terminate="no">
-	    <xsl:value-of select="concat('category ', ., ' label ', ./@catNo, ' ... ')"/>
-	    </xsl:message>
-
+	  <xsl:value-of select="concat('category ', ., ' label ', ./@catNo, ' ... ')"/>
+	</xsl:message>
+	<xsl:variable name="current_catNo" select="./@catNo"/>
+	<xsl:for-each select="../Row/Cell[./@catNo = $current_catNo]">
+	  
+	</xsl:for-each>
       </xsl:for-each>
       <xsl:message terminate="no">
 	<xsl:value-of select="concat('   Done!',$nl,'   Output directory/file:  ',$outDirFile)"/>
