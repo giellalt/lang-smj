@@ -233,7 +233,7 @@
   <!--link href="components/style_jkw.css" rel="stylesheet" type="text/css"-->
 </head>
       <body>
-      <h3><em>Consistency Check</em><br/>for Mávsulasj data<br/>based on file: <xsl:value-of select="$inFile"/><br/>using styleshee: <xsl:value-of select="$styleSheet_name"/><br/>created: <xsl:value-of select="current-dateTime()"/>
+      <h3><em>Consistency Check</em><br/>for Mávsulasj data<br/>based on file: <xsl:value-of select="$inFile"/><br/>using stylesheet: <xsl:value-of select="$styleSheet_name"/><br/>created: <xsl:value-of select="current-dateTime()"/>
       </h3>
       <xsl:copy-of select="$output/table"/>
       </body>
