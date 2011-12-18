@@ -27,7 +27,7 @@
   
   <!-- Input -->
   <!--xsl:param name="inFile" select="'debug_lule_klein.xml'"/-->
-  <xsl:param name="inFile" select="'data4consistencyChecker.xml'"/>
+  <xsl:param name="inFile" select="'data4consistencyCheck.xml'"/>
   <xsl:param name="inDir" select="'xxxdirxxx'"/>
   <xsl:param name="XSLfile" select="base-uri(document(''))"/>
   
@@ -161,7 +161,8 @@
      </xsl:for-each>
      </outputTXT>
 
-     <table style="width: 50%" border="1" cellpadding="10" cellspacing="0">
+     <!--table style="width: 50%" border="1" cellpadding="10" cellspacing="0"-->
+     <table border="1" cellpadding="10" cellspacing="0">
       <xsl:for-each select="$frequencyCells">
         <tr>
           <th>frequency</th>
@@ -171,13 +172,13 @@
         <xsl:for-each select="$frequencyCells/pattern">
         <xsl:sort data-type="number" order="descending" select="./@frequency"/>
         <tr>
-          <td>
+          <td align="center">
         <xsl:value-of select="./@frequency"/>
           </td>
           <td>
         <xsl:choose>
           <xsl:when test=".=''">
-        <xsl:value-of select="'(empty)'"/>
+        <em><xsl:value-of select="'*empty*'"/></em>
           </xsl:when>
           <xsl:when test=".">
         <xsl:value-of select="."/>
@@ -192,7 +193,7 @@
       
 
       <!-- output document XML -->
-      <xsl:result-document href="{$outDirXML}/{$theName}_{$file_flag}.{$eXML}" format="{$output_formatXML}">
+<!--      <xsl:result-document href="{$outDirXML}/{$theName}_{$file_flag}.{$eXML}" format="{$output_formatXML}">
 	<xsl:comment> Consistency check for Mávsulasj data </xsl:comment>
 	<xsl:value-of select="$nl"/>
 	<outputFile>
@@ -211,40 +212,70 @@
 	  <xsl:copy-of select="$output/outputXML"/>
 	</outputFile>
       </xsl:result-document>
-      
+-->      
       <!-- output document TXT -->
-      <xsl:result-document href="{$outDirTXT}/{$theName}_{$file_flag}.{$eTXT}" format="{$output_formatTXT}">
+<!--      <xsl:result-document href="{$outDirTXT}/{$theName}_{$file_flag}.{$eTXT}" format="{$output_formatTXT}">
 	<xsl:value-of select="concat('CONSISTENCY OF MÁVSULASJ DATA',$nl)"/>
 	<xsl:value-of select="concat('based on file: ',$inFile,$nl)"/>
 	<xsl:value-of select="concat('using stylesheet: ',$styleSheet_name,$nl)"/>
 	<xsl:value-of select="concat('created: ',current-dateTime(),$nl,$nl)"/>
 	  <xsl:copy-of select="$output/outputTXT"/>
       </xsl:result-document>
-
+-->
       <!-- output document HTML -->
       <xsl:result-document href="{$outDirHTML}/{$theName}_{$file_flag}.{$eHTML}" format="{$output_formatHTML}">
       <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <!--meta name="keywords" content="Mávsulasj"/-->
   <link rel="shortcut icon" href="components/images/wooden-wilbur.gif"/>
-  <title>patterns in <xsl:value-of select="concat($current_cat,' (',$file_flag,')')"/></title>
-  <!--link href="files/format.css" rel="styleSheet" type="text/css"-->
-  <!--link href="components/style_jkw.css" rel="stylesheet" type="text/css"-->
+  <title><xsl:value-of select="concat($current_cat,' (',$file_flag,')')"/></title>
 </head>
       <body>
-      <h3><em>Consistency Check</em><br/>for Mávsulasj data<br/>based on file: <xsl:value-of select="$inFile"/><br/>using stylesheet: <xsl:value-of select="$styleSheet_name"/><br/>created: <xsl:value-of select="current-dateTime()"/>
-      </h3>
+      <h3>Consistency Check<br/><em>for Mávsulasj data</em></h3><p>original data from: <font color="#FF0000"><xsl:value-of select="../../../metadata/inputFile"/></font><br/>transformation based on file: <xsl:value-of select="$inFile"/><br/>using stylesheet: <xsl:value-of select="$styleSheet_name"/><br/>created: <xsl:value-of select="current-dateTime()"/></p>
       <xsl:copy-of select="$output/table"/>
       </body>
       </html>
       </xsl:result-document>
+
 
       
       <xsl:message terminate="no">
 	<xsl:value-of select="concat('   Done!',' Output directory/files:  ', $outDirXML, '/', $theName, '_', $file_flag, '.', $eXML, ', ',$outDirTXT, '/', $theName, '_', $file_flag, '.', $eTXT, ' AND ',$outDirHTML, '/', $theName, '_', $file_flag, '.', $eHTML)"/>
       </xsl:message>
     </xsl:for-each>
+
+
+      <!-- output document HTMLindex -->
+      <xsl:result-document href="consistencyCheckIndex.{$eHTML}" format="{$output_formatHTML}">
+      <html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Index of patterns per column</title>
+</head>
+      <body>
+      <h3>Consistency Check INDEX<br/><em>for Mávsulasj data</em></h3><p>original data from: <font color="#FF0000"><xsl:value-of select="$theFile/outputFile/metadata/inputFile"/></font><br/>transformation based on file: <xsl:value-of select="$inFile"/><br/>using stylesheet: <xsl:value-of select="$styleSheet_name"/><br/>created: <xsl:value-of select="current-dateTime()"/></p>
+      <table style="width: 50%" border="1" cellpadding="10" cellspacing="0">
+      <tr><th>no.</th><th>category</th><th>total patterns</th><th>link</th></tr>
+        <xsl:for-each select="$theFile/outputFile/excelWorksheet/Categories/Category">
+              <xsl:variable name="file_flag">
+        	<xsl:value-of select="if (./@catNo &lt; 10) then concat('0', ./@catNo) else ./@catNo"/>
+              </xsl:variable>
+      <tr>
+      <td><xsl:value-of select="./@catNo"/></td>
+      <td><xsl:value-of select="."/></td>
+      <td>??</td>
+      <td><a target="_blank" href="{$outDirHTML}/{$theName}_{$file_flag}.{$eHTML}"><xsl:value-of select="concat($theName,'_',$file_flag)"/></a></td>
+      </tr>
+        </xsl:for-each>
+      </table>
+      </body>
+      </html>
+      </xsl:result-document>
+
+      <xsl:message terminate="no">
+	<xsl:value-of select="concat('***also created index: consistencyCheckIndex',$eHTML)"/>
+      </xsl:message>
+
   
   </xsl:template>
   
