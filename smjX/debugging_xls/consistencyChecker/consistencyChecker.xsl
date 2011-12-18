@@ -161,7 +161,9 @@
      </xsl:for-each>
      </outputTXT>
 
-     <!--table style="width: 50%" border="1" cellpadding="10" cellspacing="0"-->
+     <outputHTML>
+     <h4><font color="#477347">total number of patterns: <xsl:value-of select="$patternCount"/><br/>
+     in the category <em><xsl:value-of select="$current_cat"/></em></font></h4>
      <table border="1" cellpadding="10" cellspacing="0">
       <xsl:for-each select="$frequencyCells">
         <tr>
@@ -188,6 +190,7 @@
         </tr>
       </xsl:for-each>
      </table>
+     </outputHTML>
           
       </xsl:variable>
       
@@ -231,8 +234,8 @@
   <title><xsl:value-of select="concat($current_cat,' (',$file_flag,')')"/></title>
 </head>
       <body>
-      <h3>Consistency Check<br/><em>for Mávsulasj data</em></h3><p>original data from: <font color="#FF0000"><xsl:value-of select="../../../metadata/inputFile"/></font><br/>transformation based on file: <xsl:value-of select="$inFile"/><br/>using stylesheet: <xsl:value-of select="$styleSheet_name"/><br/>created: <xsl:value-of select="current-dateTime()"/></p>
-      <xsl:copy-of select="$output/table"/>
+      <h3>Consistency Check for <font color="#FF0000"><xsl:value-of select="$current_cat"/></font><br/><em>for Mávsulasj data</em></h3><p>original data from: <font color="#FF0000"><xsl:value-of select="../../../metadata/inputFile"/></font><br/>transformation based on file: <xsl:value-of select="$inFile"/><br/>using stylesheet: <xsl:value-of select="$styleSheet_name"/><br/>created: <xsl:value-of select="current-dateTime()"/></p>
+      <xsl:copy-of select="$output/outputHTML/*"/>
       </body>
       </html>
       </xsl:result-document>
