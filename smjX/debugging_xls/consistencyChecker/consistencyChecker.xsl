@@ -26,7 +26,6 @@
 	      encoding="UTF-8"/>
   
   <!-- Input -->
-  <!--xsl:param name="inFile" select="'debug_lule_klein.xml'"/-->
   <xsl:param name="inFile" select="'data4consistencyCheck.xml'"/>
   <xsl:param name="inDir" select="'xxxdirxxx'"/>
   <xsl:param name="XSLfile" select="base-uri(document(''))"/>
@@ -162,8 +161,8 @@
      </outputTXT>
 
      <outputHTML>
-     <h4><font color="#477347">total number of patterns: <xsl:value-of select="$patternCount"/><br/>
-     in the category <em><xsl:value-of select="$current_cat"/></em></font></h4>
+     <p>total number of patterns: <font class="header4"><xsl:value-of select="$patternCount"/></font><br/>
+     in the category <font class="header4"><em><xsl:value-of select="$current_cat"/></em></font></p>
      <table border="1" cellpadding="10" cellspacing="0">
       <xsl:for-each select="$frequencyCells">
         <tr>
@@ -230,11 +229,11 @@
       <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <link rel="shortcut icon" href="components/images/wooden-wilbur.gif"/>
+  <link href="../style_mavsulasj.css" rel="stylesheet" type="text/css"/>
   <title><xsl:value-of select="concat($current_cat,' (',$file_flag,')')"/></title>
 </head>
       <body>
-      <h3>Consistency Check for <font color="#FF0000"><xsl:value-of select="$current_cat"/></font><br/><em>for Mávsulasj data</em></h3><p>original data from: <font color="#FF0000"><xsl:value-of select="../../../metadata/inputFile"/></font><br/>transformation based on file: <xsl:value-of select="$inFile"/><br/>using stylesheet: <xsl:value-of select="$styleSheet_name"/><br/>created: <xsl:value-of select="current-dateTime()"/></p>
+      <h3>Consistency Check for <font style="color:#FF0000"><xsl:value-of select="$current_cat"/></font><br/><em>for Mávsulasj data</em></h3><p>original data from: <font style="color:#FF0000"><xsl:value-of select="../../../metadata/inputFile"/></font><br/>transformation based on file: <xsl:value-of select="$inFile"/><br/>using stylesheet: <xsl:value-of select="$styleSheet_name"/><br/>created: <xsl:value-of select="current-dateTime()"/></p>
       <xsl:copy-of select="$output/outputHTML/*"/>
       </body>
       </html>
@@ -253,20 +252,22 @@
       <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link href="style_mavsulasj.css" rel="stylesheet" type="text/css"/>
   <title>Index of patterns per column</title>
 </head>
       <body>
-      <h3>Consistency Check INDEX<br/><em>for Mávsulasj data</em></h3><p>original data from: <font color="#FF0000"><xsl:value-of select="$theFile/outputFile/metadata/inputFile"/></font><br/>transformation based on file: <xsl:value-of select="$inFile"/><br/>using stylesheet: <xsl:value-of select="$styleSheet_name"/><br/>created: <xsl:value-of select="current-dateTime()"/></p>
-      <table style="width: 50%" border="1" cellpadding="10" cellspacing="0">
+      <h3>Consistency Check INDEX<br/><em>for Mávsulasj data</em></h3>
+      <p>original data from: <font style="color:#FF0000"><xsl:value-of select="$theFile/outputFile/metadata/inputFile"/></font><br/>transformation based on file: <xsl:value-of select="$inFile"/><br/>using stylesheet: <xsl:value-of select="$styleSheet_name"/><br/>created: <xsl:value-of select="current-dateTime()"/></p>
+      <table style="width: 70%" border="1" cellpadding="10" cellspacing="0">
       <tr><th>no.</th><th>category</th><th>total patterns</th><th>link</th></tr>
         <xsl:for-each select="$theFile/outputFile/excelWorksheet/Categories/Category">
               <xsl:variable name="file_flag">
         	<xsl:value-of select="if (./@catNo &lt; 10) then concat('0', ./@catNo) else ./@catNo"/>
               </xsl:variable>
       <tr>
-      <td><xsl:value-of select="./@catNo"/></td>
+      <td align="center"><xsl:value-of select="./@catNo"/></td>
       <td><xsl:value-of select="."/></td>
-      <td>??</td>
+      <td align="center">??</td>
       <td><a target="_blank" href="{$outDirHTML}/{$theName}_{$file_flag}.{$eHTML}"><xsl:value-of select="concat($theName,'_',$file_flag)"/></a></td>
       </tr>
         </xsl:for-each>
