@@ -144,7 +144,7 @@
 	  </xsl:variable>
 
       <outputXML>
-      <consistencyCheck catNo="{$current_catNo}" cat="{$current_cat}" patternCount="{$patternCount}" totalNonEmpty="{$emptyCellCount}">
+      <consistencyCheck catNo="{$current_catNo}" cat="{$current_cat}" patternCount="{$patternCount}" totalCells="{$CellCount}" totalEmpty="{$emptyCellCount}">
         <xsl:for-each select="$frequencyCells/pattern">
           <xsl:sort data-type="number" order="descending" select="./@frequency"/>
           <xsl:copy-of select="."/>
