@@ -175,7 +175,7 @@
      <p>total number of patterns: <font class="header4"><xsl:value-of select="$patternCount"/></font><br/>
      in the category <font class="header4"><em><xsl:value-of select="$current_cat"/></em></font><br/>
      There are <font class="header4"><em><xsl:value-of select="$emptyCellCount"/></em></font> out of <font class="header4"><em><xsl:value-of select="$CellCount"/></em></font> empty cells.</p>
-     <table border="1" cellpadding="10" cellspacing="0">
+     <table  class="sortable" border="1" cellpadding="10" cellspacing="0">
       <xsl:for-each select="$frequencyCells">
         <tr>
           <th>frequency</th>
@@ -244,6 +244,11 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <link href="../style_mavsulasj.css" rel="stylesheet" type="text/css"/>
+<!--  <script src="../sorttable.js"></script>-->
+<xsl:value-of disable-output-escaping="yes">
+    &lt;script src="../sorttable.js"&gt;
+    &lt;/script&gt;
+</xsl:value-of>
   <title><xsl:value-of select="concat($current_cat,' (',$file_flag,')')"/></title>
 </head>
       <body>
@@ -261,7 +266,6 @@
       </xsl:message>
     </xsl:for-each>
   </xsl:template>
-  
   
 </xsl:stylesheet>
 
