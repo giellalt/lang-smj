@@ -26,14 +26,15 @@
 	      encoding="UTF-8"/>
   
   <!-- Input -->
-  <xsl:param name="inFile" select="'data4consistencyCheck.xml'"/>
-  <xsl:param name="inDir" select="'xxxdirxxx'"/>
+  <!--xsl:param name="inFile" select="'data4consistencyCheck.xml'"/-->
+  <xsl:param name="inDir" select="'_000_outDirXML'"/>
   <xsl:param name="XSLfile" select="base-uri(document(''))"/>
   
   <!-- Outputs -->
   <xsl:variable name="outDirXML" select="'_000_outDirXML'"/>
   <xsl:variable name="outDirTXT" select="'_000_outDirTXT'"/>
   <xsl:variable name="outDirHTML" select="'_000_outDirHTML'"/>
+  <xsl:variable name="indexFileName" select="'consistencyCheckIndex'"/>
   
   <!-- Patterns for the feature values -->
   <xsl:variable name="output_formatXML" select="'xml'"/>
@@ -42,7 +43,7 @@
   <xsl:variable name="eXML" select="$output_formatXML"/>
   <xsl:variable name="eTXT" select="$output_formatTXT"/>
   <xsl:variable name="eHTML" select="$output_formatHTML"/>
-  <xsl:variable name="file_name" select="substring-before((tokenize($inFile, '/'))[last()], '.xml')"/>
+  <!--xsl:variable name="file_name" select="substring-before((tokenize($inFile, '/'))[last()], '.xml')"/-->
   <xsl:variable name="styleSheet_name" select="(tokenize($XSLfile, '/'))[last()]"/>
   <xsl:variable name="tab" select="'&#9;'"/>
   <xsl:variable name="nl" select="'&#xA;'"/>
@@ -54,7 +55,7 @@
     <!-- xsl:if test="doc-available($inDir)" -->
     <xsl:if test="not($inDir = 'xxxdirxxx')">
       
-      <xsl:variable name="statistics">
+      <xsl:variable name="dataExtracter">
 	<xsl:for-each select="for $f in collection(concat($inDir, '?select=*.xml')) return $f">
 	  
 	  <xsl:variable name="current_file" select="substring-before((tokenize(document-uri(.), '/'))[last()], '.xml')"/>
@@ -65,17 +66,21 @@
 	    <xsl:value-of select="concat('Processing file: ', $current_file)"/>
 	  </xsl:message>
 
-	  <!-- statistische baustelle -->
-	  <stats>
+	  <extractedData>
+	    <sourceORIG ORIG_source="{.//sourceORIG}"/>
+	    <inputFile nameInput="{.//inputFile}"/>
+	    <fileName nameFile="{$current_file}"/>
 	    <category catNo="{.//consistencyCheck/@catNo}" cat="{.//consistencyCheck/@cat}" patternCount="{.//consistencyCheck/@patternCount}" total="whatever"/>
-	  </stats>
-
+	    <xsl:value-of select="$nl"/>
+	  </extractedData>
 
 	</xsl:for-each>
       </xsl:variable>
+
+<!--xsl:value-of select="$dataExtracter/extractedData[1]/inputFile/@nameInput"/-->
       
       <!-- output document HTMLindex -->
-      <xsl:result-document href="consistencyCheckIndex.{$eHTML}" format="{$output_formatHTML}">
+      <xsl:result-document href="{$indexFileName}.{$eHTML}" format="{$output_formatHTML}">
 	<html>
 	  <head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -84,18 +89,20 @@
 	  </head>
 	  <body>
 	    <h3>Consistency Check INDEX<br/><em>for Mávsulasj data</em></h3>
-	    <p>original data from: <font style="color:#FF0000"><xsl:value-of select="$theFile/outputFile/metadata/inputFile"/></font><br/>transformation based on file: <xsl:value-of select="$inFile"/><br/>using stylesheet: <xsl:value-of select="$styleSheet_name"/><br/>created: <xsl:value-of select="current-dateTime()"/></p>
+	    <p>original data from: <font style="color:#FF0000"><xsl:value-of select="$dataExtracter/extractedData[1]/sourceORIG/@ORIG_source"/></font><br/>transformation based on file: <xsl:value-of select="$dataExtracter/extractedData[1]/inputFile/@nameInput"/><br/>using stylesheet: <xsl:value-of select="$styleSheet_name"/><br/>created: <xsl:value-of select="current-dateTime()"/></p>
 	    <table style="width: 70%" border="1" cellpadding="10" cellspacing="0">
-	      <tr><th>no.</th><th>category</th><th>total patterns</th><th>link</th></tr>
-	      <xsl:for-each select="$theFile/outputFile/excelWorksheet/Categories/Category">
+	      <tr><th>no.</th><th>category</th><th>patterns/total entries</th><th>link</th></tr>
+	      <xsl:for-each select="$dataExtracter/extractedData/category">
+<!--tr><td>1</td><td>2</td><td>3</td><td>4</td></tr-->
 		<xsl:variable name="file_flag">
 		  <xsl:value-of select="if (./@catNo &lt; 10) then concat('0', ./@catNo) else ./@catNo"/>
 		</xsl:variable>
+		<xsl:variable name="nameFile" select="../fileName/@nameFile"/>
 		<tr>
 		  <td align="center"><xsl:value-of select="./@catNo"/></td>
-		  <td><xsl:value-of select="."/></td>
-		  <td align="center">??</td>
-		  <td><a target="_blank" href="{$outDirHTML}/{$theName}_{$file_flag}.{$eHTML}"><xsl:value-of select="concat($theName,'_',$file_flag)"/></a></td>
+		  <td><xsl:value-of select="./@cat"/></td>
+		  <td align="center"><xsl:value-of select="./@patternCount"/></td>
+		  <td><a target="_blank" href="{$outDirHTML}/{$nameFile}.{$eHTML}"><xsl:value-of select="$nameFile"/></a></td>
 		</tr>
 	      </xsl:for-each>
 	    </table>
@@ -104,7 +111,7 @@
       </xsl:result-document>
       
       <xsl:message terminate="no">
-	<xsl:value-of select="concat('***also created index: consistencyCheckIndex',$eHTML)"/>
+	<xsl:value-of select="concat('***Created index: ',$indexFileName,$eHTML)"/>
       </xsl:message>
       
     </xsl:if>
@@ -115,6 +122,7 @@
       <xsl:value-of select="concat('Could not find either ', $inDir, ', or both.', $nl)"/>
     </xsl:if>    
   </xsl:template>
+
   
 </xsl:stylesheet>
 
