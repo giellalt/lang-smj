@@ -105,15 +105,26 @@
       <xsl:variable name="output">
 
 	  <xsl:variable name="cellGr">
-	    <cellGroup>
+	    <cellGroup refers2cat="$current_catNo">
 	      <xsl:for-each select="../../Row/Cell[./@catNo = $current_catNo]">
-		<cell row="{../Row/position() -1}">
+		<cell row="{../@rowNo}">
 		  <xsl:copy-of select="./@*"/>
 		  <xsl:value-of select="normalize-space(.)"/>
 		</cell>
 	      </xsl:for-each>
 	    </cellGroup>
 	  </xsl:variable>
+
+      <xsl:variable name="CellCount">
+        <xsl:for-each select="$cellGr/cellGroup">
+          <xsl:value-of select="count(cell)"/>
+        </xsl:for-each>
+      </xsl:variable>
+      <xsl:variable name="emptyCellCount">
+        <xsl:for-each select="$cellGr/cellGroup">
+          <xsl:value-of select="count(cell/@originalValue)"/>
+        </xsl:for-each>
+      </xsl:variable>
 	  
 	  <xsl:variable name="frequencyCells">
 	  <xsl:for-each-group select="$cellGr/cellGroup/cell" group-by=".">
@@ -133,7 +144,7 @@
 	  </xsl:variable>
 
       <outputXML>
-      <consistencyCheck catNo="{$current_catNo}" cat="{$current_cat}" patternCount="{$patternCount}">
+      <consistencyCheck catNo="{$current_catNo}" cat="{$current_cat}" patternCount="{$patternCount}" totalNonEmpty="{$emptyCellCount}">
         <xsl:for-each select="$frequencyCells/pattern">
           <xsl:sort data-type="number" order="descending" select="./@frequency"/>
           <xsl:copy-of select="."/>
@@ -162,7 +173,8 @@
 -->
      <outputHTML>
      <p>total number of patterns: <font class="header4"><xsl:value-of select="$patternCount"/></font><br/>
-     in the category <font class="header4"><em><xsl:value-of select="$current_cat"/></em></font></p>
+     in the category <font class="header4"><em><xsl:value-of select="$current_cat"/></em></font><br/>
+     There are <font class="header4"><em><xsl:value-of select="$emptyCellCount"/></em></font> out of <font class="header4"><em><xsl:value-of select="$CellCount"/></em></font> empty cells.</p>
      <table border="1" cellpadding="10" cellspacing="0">
       <xsl:for-each select="$frequencyCells">
         <tr>
@@ -193,7 +205,6 @@
           
       </xsl:variable>
       
-
       <!-- output document XML -->
       <xsl:result-document href="{$outDirXML}/{$theName}_{$file_flag}.{$eXML}" format="{$output_formatXML}">
 	<xsl:comment> Consistency check for Mávsulasj data </xsl:comment>
