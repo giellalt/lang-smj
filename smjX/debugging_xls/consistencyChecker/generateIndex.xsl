@@ -67,7 +67,7 @@
 
 	  <!-- statistische baustelle -->
 	  <stats>
-	    <category catNo="{.//consistencyCheck/@catNo}" cat="{.//consistencyCheck/@catNo}" patternCount="{.//consistencyCheck/@catNo}" total="whatever"/>
+	    <category catNo="{.//consistencyCheck/@catNo}" cat="{.//consistencyCheck/@cat}" patternCount="{.//consistencyCheck/@patternCount}" total="whatever"/>
 	  </stats>
 
 
