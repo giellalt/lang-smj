@@ -253,6 +253,7 @@
 </head>
       <body>
       <h3>Consistency Check for <font style="color:#FF0000"><xsl:value-of select="$current_cat"/></font><br/><em>for Mávsulasj data</em></h3><p>original data from: <font style="color:#FF0000"><xsl:value-of select="../../../metadata/inputFile"/></font><br/>transformation based on file: <xsl:value-of select="$inFile"/><br/>using stylesheet: <xsl:value-of select="$styleSheet_name"/><br/>created: <xsl:value-of select="current-dateTime()"/></p>
+	    <p class="smallText"><em>click table headers to sort table by category (default is category number).</em></p>
       <xsl:copy-of select="$output/outputHTML/*"/>
       </body>
       </html>
