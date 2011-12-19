@@ -26,7 +26,7 @@
 	      encoding="UTF-8"/>
   
   <!-- Input -->
-  <xsl:param name="inFile" select="'data4consistencyCheck.xml'"/>
+  <xsl:param name="inFile" select="'result_SMJDictionaryComplexG.xml'"/>
   <xsl:param name="inDir" select="'xxxdirxxx'"/>
   <xsl:param name="XSLfile" select="base-uri(document(''))"/>
   
@@ -141,7 +141,7 @@
       </consistencyCheck>
       </outputXML>
  
-     <outputTXT>
+<!--     <outputTXT>
      <xsl:value-of select="concat('Column ',$file_flag,' ')"/>
      <xsl:value-of select="concat('&#34;',$current_cat,'&#34;',$nl)"/>
      <xsl:value-of select="concat('total number of patterns: ',$patternCount,$nl)"/>
@@ -159,7 +159,7 @@
        </xsl:choose>
      </xsl:for-each>
      </outputTXT>
-
+-->
      <outputHTML>
      <p>total number of patterns: <font class="header4"><xsl:value-of select="$patternCount"/></font><br/>
      in the category <font class="header4"><em><xsl:value-of select="$current_cat"/></em></font></p>
@@ -201,6 +201,9 @@
 	<outputFile>
 	  <xsl:value-of select="$nl"/>
 	  <metadata>
+	    <sourceORIG>
+	      <xsl:value-of select="../../../metadata/inputFile"/>
+	    </sourceORIG>
 	    <inputFile>
 	      <xsl:value-of select="$inFile"/>
 	    </inputFile>
@@ -242,7 +245,8 @@
 
       
       <xsl:message terminate="no">
-	<xsl:value-of select="concat('   Done!',' Output directory/files:  ', $outDirXML, '/', $theName, '_', $file_flag, '.', $eXML, ', ',$outDirTXT, '/', $theName, '_', $file_flag, '.', $eTXT, ' AND ',$outDirHTML, '/', $theName, '_', $file_flag, '.', $eHTML)"/>
+	<xsl:value-of select="concat('   Done!',' Output file  ',$theName, '_', $file_flag, '  for XML and HTML in: ', $outDirXML,' and ',$outDirHTML)"/>
+	<!--xsl:value-of select="concat('   Done!',' Output directory/file for XML and HTML in:  ', $outDirXML, '/', $theName, '_', $file_flag, '.', $eXML, ', ',$outDirTXT, '/', $theName, '_', $file_flag, '.', $eTXT, ' AND ',$outDirHTML, '/', $theName, '_', $file_flag, '.', $eHTML)"/-->
       </xsl:message>
     </xsl:for-each>
   </xsl:template>
