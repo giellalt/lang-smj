@@ -90,6 +90,7 @@
     <xsl:param name="theFile"/>
     <xsl:param name="theName"/>
     
+    <xsl:variable name="statistics">
     <!-- given very big xls files, the output should not be stored
 	 into a whole variable but output right away -->
     <xsl:for-each select="$theFile/outputFile/excelWorksheet/Categories/Category">
