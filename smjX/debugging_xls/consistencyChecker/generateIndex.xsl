@@ -66,7 +66,11 @@
 	  </xsl:message>
 
 	  <!-- statistische baustelle -->
-	  
+	  <stats>
+	    <category catNo="{.//consistencyCheck/@catNo}" cat="{.//consistencyCheck/@catNo}" patternCount="{.//consistencyCheck/@catNo}" total="whatever"/>
+	  </stats>
+
+
 	</xsl:for-each>
       </xsl:variable>
       
