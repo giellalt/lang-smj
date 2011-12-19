@@ -244,7 +244,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <link href="../style_mavsulasj.css" rel="stylesheet" type="text/css"/>
-<!--  <script src="../sorttable.js"></script>-->
+<!--  <script src="../sorttable.js"></script>--><!-- is understood as script for XSL unless input as follows: -->
 <xsl:value-of disable-output-escaping="yes">
     &lt;script src="../sorttable.js"&gt;
     &lt;/script&gt;
