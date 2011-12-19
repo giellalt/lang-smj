@@ -90,7 +90,6 @@
     <xsl:param name="theFile"/>
     <xsl:param name="theName"/>
     
-    <xsl:variable name="statistics">
     <!-- given very big xls files, the output should not be stored
 	 into a whole variable but output right away -->
     <xsl:for-each select="$theFile/outputFile/excelWorksheet/Categories/Category">
@@ -246,42 +245,6 @@
 	<xsl:value-of select="concat('   Done!',' Output directory/files:  ', $outDirXML, '/', $theName, '_', $file_flag, '.', $eXML, ', ',$outDirTXT, '/', $theName, '_', $file_flag, '.', $eTXT, ' AND ',$outDirHTML, '/', $theName, '_', $file_flag, '.', $eHTML)"/>
       </xsl:message>
     </xsl:for-each>
-
-
-      <!-- output document HTMLindex -->
-      <xsl:result-document href="consistencyCheckIndex.{$eHTML}" format="{$output_formatHTML}">
-      <html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <link href="style_mavsulasj.css" rel="stylesheet" type="text/css"/>
-  <title>Index of patterns per column</title>
-</head>
-      <body>
-      <h3>Consistency Check INDEX<br/><em>for Mávsulasj data</em></h3>
-      <p>original data from: <font style="color:#FF0000"><xsl:value-of select="$theFile/outputFile/metadata/inputFile"/></font><br/>transformation based on file: <xsl:value-of select="$inFile"/><br/>using stylesheet: <xsl:value-of select="$styleSheet_name"/><br/>created: <xsl:value-of select="current-dateTime()"/></p>
-      <table style="width: 70%" border="1" cellpadding="10" cellspacing="0">
-      <tr><th>no.</th><th>category</th><th>total patterns</th><th>link</th></tr>
-        <xsl:for-each select="$theFile/outputFile/excelWorksheet/Categories/Category">
-              <xsl:variable name="file_flag">
-        	<xsl:value-of select="if (./@catNo &lt; 10) then concat('0', ./@catNo) else ./@catNo"/>
-              </xsl:variable>
-      <tr>
-      <td align="center"><xsl:value-of select="./@catNo"/></td>
-      <td><xsl:value-of select="."/></td>
-      <td align="center">??</td>
-      <td><a target="_blank" href="{$outDirHTML}/{$theName}_{$file_flag}.{$eHTML}"><xsl:value-of select="concat($theName,'_',$file_flag)"/></a></td>
-      </tr>
-        </xsl:for-each>
-      </table>
-      </body>
-      </html>
-      </xsl:result-document>
-
-      <xsl:message terminate="no">
-	<xsl:value-of select="concat('***also created index: consistencyCheckIndex',$eHTML)"/>
-      </xsl:message>
-
-  
   </xsl:template>
   
   
