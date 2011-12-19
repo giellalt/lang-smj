@@ -88,12 +88,17 @@
 	  <head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	    <link href="style_mavsulasj.css" rel="stylesheet" type="text/css"/>
+<!--  <script src="sorttable.js"></script>--><!-- is understood as script for XSL unless input as follows: -->
+<xsl:value-of disable-output-escaping="yes">
+    &lt;script src="sorttable.js"&gt;&lt;/script&gt;
+</xsl:value-of>
 	    <title>Index of patterns per column</title>
 	  </head>
 	  <body>
 	    <h3>Consistency Check INDEX<br/><em>for Mávsulasj data</em></h3>
 	    <p>original data from: <font style="color:#FF0000"><xsl:value-of select="$dataExtracter/extractedData[1]/sourceORIG/@ORIG_source"/></font><br/>transformation based on file: <xsl:value-of select="$dataExtracter/extractedData[1]/inputFile/@nameInput"/><br/>using stylesheet: <xsl:value-of select="$styleSheet_name"/><br/>created: <xsl:value-of select="current-dateTime()"/></p>
-	    <table style="width: 70%" border="1" cellpadding="10" cellspacing="0">
+	    <p class="smallText"><em>click table headers to sort table by category (default is category number).</em></p>
+	    <table class="sortable" style="width: 70%" border="1" cellpadding="10" cellspacing="0">
 	      <tr><th>no.</th><th>category</th><th>patterns</th><th>valid entries<br/>(out of <xsl:value-of select="$dataExtracter/extractedData[1]/category/@totalCells"/>)</th><th>link</th></tr>
 	      <xsl:for-each select="$dataExtracter/extractedData/category">
 		<xsl:variable name="file_flag">
