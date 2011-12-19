@@ -61,6 +61,9 @@
 	  <xsl:variable name="current_file" select="substring-before((tokenize(document-uri(.), '/'))[last()], '.xml')"/>
 	  <xsl:variable name="current_dir" select="substring-before(document-uri(.), $current_file)"/>
 	  <xsl:variable name="current_location" select="concat($inDir, substring-after($current_dir, $inDir))"/>
+      <xsl:variable name="totalCells" select=".//@totalCells"/>
+      <xsl:variable name="totalEmptyCells" select=".//@totalEmpty"/>
+      <xsl:variable name="totalNonEmpty" select="$totalCells - $totalEmptyCells"/>
 	  
 	  <xsl:message terminate="no">
 	    <xsl:value-of select="concat('Processing file: ', $current_file)"/>
@@ -70,7 +73,7 @@
 	    <sourceORIG ORIG_source="{.//sourceORIG}"/>
 	    <inputFile nameInput="{.//inputFile}"/>
 	    <fileName nameFile="{$current_file}"/>
-	    <category catNo="{.//consistencyCheck/@catNo}" cat="{.//consistencyCheck/@cat}" patternCount="{.//consistencyCheck/@patternCount}" total="whatever"/>
+	    <category catNo="{.//consistencyCheck/@catNo}" cat="{.//consistencyCheck/@cat}" patternCount="{.//consistencyCheck/@patternCount}" totalNonEmpty="{$totalNonEmpty}" totalCells="{$totalCells}"/>
 	    <xsl:value-of select="$nl"/>
 	  </extractedData>
 
@@ -91,9 +94,8 @@
 	    <h3>Consistency Check INDEX<br/><em>for Mávsulasj data</em></h3>
 	    <p>original data from: <font style="color:#FF0000"><xsl:value-of select="$dataExtracter/extractedData[1]/sourceORIG/@ORIG_source"/></font><br/>transformation based on file: <xsl:value-of select="$dataExtracter/extractedData[1]/inputFile/@nameInput"/><br/>using stylesheet: <xsl:value-of select="$styleSheet_name"/><br/>created: <xsl:value-of select="current-dateTime()"/></p>
 	    <table style="width: 70%" border="1" cellpadding="10" cellspacing="0">
-	      <tr><th>no.</th><th>category</th><th>patterns/total entries</th><th>link</th></tr>
+	      <tr><th>no.</th><th>category</th><th>patterns</th><th>valid entries<br/>(out of <xsl:value-of select="$dataExtracter/extractedData[1]/category/@totalCells"/>)</th><th>link</th></tr>
 	      <xsl:for-each select="$dataExtracter/extractedData/category">
-<!--tr><td>1</td><td>2</td><td>3</td><td>4</td></tr-->
 		<xsl:variable name="file_flag">
 		  <xsl:value-of select="if (./@catNo &lt; 10) then concat('0', ./@catNo) else ./@catNo"/>
 		</xsl:variable>
@@ -102,6 +104,7 @@
 		  <td align="center"><xsl:value-of select="./@catNo"/></td>
 		  <td><xsl:value-of select="./@cat"/></td>
 		  <td align="center"><xsl:value-of select="./@patternCount"/></td>
+		  <td align="center"><xsl:value-of select="./@totalNonEmpty"/></td>
 		  <td><a target="_blank" href="{$outDirHTML}/{$nameFile}.{$eHTML}"><xsl:value-of select="$nameFile"/></a></td>
 		</tr>
 	      </xsl:for-each>
@@ -111,7 +114,7 @@
       </xsl:result-document>
       
       <xsl:message terminate="no">
-	<xsl:value-of select="concat('***Created index: ',$indexFileName,$eHTML)"/>
+	<xsl:value-of select="concat('***Created index: ',$indexFileName,'.',$eHTML)"/>
       </xsl:message>
       
     </xsl:if>
