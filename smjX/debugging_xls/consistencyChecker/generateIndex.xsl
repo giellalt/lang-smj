@@ -63,8 +63,6 @@
 	  <xsl:value-of select="concat('Processing file: ', $current_file)"/>
 	</xsl:message>
 
-
-
       <!-- output document HTMLindex -->
       <xsl:result-document href="consistencyCheckIndex.{$eHTML}" format="{$output_formatHTML}">
       <html>
