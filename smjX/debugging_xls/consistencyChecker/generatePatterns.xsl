@@ -195,7 +195,7 @@
       
 
       <!-- output document XML -->
-<!--      <xsl:result-document href="{$outDirXML}/{$theName}_{$file_flag}.{$eXML}" format="{$output_formatXML}">
+      <xsl:result-document href="{$outDirXML}/{$theName}_{$file_flag}.{$eXML}" format="{$output_formatXML}">
 	<xsl:comment> Consistency check for Mávsulasj data </xsl:comment>
 	<xsl:value-of select="$nl"/>
 	<outputFile>
@@ -214,7 +214,7 @@
 	  <xsl:copy-of select="$output/outputXML"/>
 	</outputFile>
       </xsl:result-document>
--->      
+      
       <!-- output document TXT -->
 <!--      <xsl:result-document href="{$outDirTXT}/{$theName}_{$file_flag}.{$eTXT}" format="{$output_formatTXT}">
 	<xsl:value-of select="concat('CONSISTENCY OF MÁVSULASJ DATA',$nl)"/>
