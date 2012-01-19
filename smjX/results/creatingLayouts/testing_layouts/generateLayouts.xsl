@@ -31,9 +31,9 @@
   <xsl:param name="XSLfile" select="base-uri(document(''))"/>
   
   <!-- Outputs -->
-  <xsl:variable name="outDirXML" select="'_000_outDirXML'"/>
-  <xsl:variable name="outDirTXT" select="'_000_outDirTXT'"/>
-  <xsl:variable name="outDirHTML" select="'_000_outDirHTML'"/>
+  <xsl:variable name="outDirXML" select="'outDirXML_Layouts'"/>
+  <xsl:variable name="outDirTXT" select="'outDirTXT_Layouts'"/>
+  <xsl:variable name="outDirHTML" select="'outDirHTML_Layouts'"/>
   
   <!-- Patterns for the feature values -->
   <xsl:variable name="output_formatXML" select="'xml'"/>
@@ -117,7 +117,11 @@
 	  <Output>
 	    <!--xsl:value-of select="'just testing!'"/-->
 	    <entry rowNo="{./@rowNo}">
-	      <xsl:value-of select="./Cell[@cat='smj']"/>
+	      <SMJ><xsl:value-of select="./Cell[@cat='smj']"/></SMJ>
+	      <NOB><xsl:value-of select="./Cell[@cat='nob1']"/></NOB>
+	      <SVE><xsl:value-of select="./Cell[@cat='sve1']"/></SVE>
+	      <ENG><xsl:value-of select="./Cell[@cat='eng1']"/></ENG>
+	      <LAT><xsl:value-of select="./Cell[@cat='lat1']"/></LAT>
 	    </entry>
 	  </Output>
 	</outputFile>
