@@ -98,10 +98,10 @@
 <xsl:value-of disable-output-escaping="yes">
     &lt;script src="sorttable.js"&gt;&lt;/script&gt;
 </xsl:value-of>
-	    <title>Index of SMJ entries</title>
+	    <title>SAMPLE Index of SMJ entries</title>
 	  </head>
 	  <body>
-	    <h3>INDEX of <span style="font-style:italic;">smj</span> entries<br/><em>from Mávsulasj data</em></h3>
+	    <h3>INDEX of <span style="color:red;">a random sample of</span> <span style="font-style:italic;">smj</span> entries<br/><em>from Mávsulasj data</em></h3>
 	    <p class="smallText"><em>click table headers to sort table by category.</em></p>
 	    <table class="sortable" border="1" cellpadding="10" cellspacing="0">
 	      <tr><th>no.</th><th>entry <span style="font-style:italic">(smj)</span></th><th width="50px">nob</th><th width="50px">sve</th><th width="50px">eng</th><th>link</th></tr>
