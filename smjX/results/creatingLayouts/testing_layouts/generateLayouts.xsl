@@ -101,140 +101,25 @@
 	<xsl:value-of select="if (./@rowNo &lt; 10) then concat('0', ./@rowNo) else ./@rowNo"/>
       </xsl:variable>
 
-      <xsl:variable name="output">
-
-<!--	  <xsl:variable name="cellGr">
-	    <cellGroup refers2cat="$current_catNo">
-	      <xsl:for-each select="../../Row/Cell[./@catNo = $current_catNo]">
-		<cell row="{../@rowNo}">
-		  <xsl:copy-of select="./@*"/>
-		  <xsl:value-of select="normalize-space(.)"/>
-		</cell>
-	      </xsl:for-each>
-	    </cellGroup>
-	  </xsl:variable>
-
-      <xsl:variable name="CellCount">
-        <xsl:for-each select="$cellGr/cellGroup">
-          <xsl:value-of select="count(cell)"/>
-        </xsl:for-each>
-      </xsl:variable>
-      <xsl:variable name="emptyCellCount">
-        <xsl:for-each select="$cellGr/cellGroup">
-          <xsl:value-of select="count(cell/@originalValue)"/>
-        </xsl:for-each>
-      </xsl:variable>
-	  
-	  <xsl:variable name="frequencyCells">
-	  <xsl:for-each-group select="$cellGr/cellGroup/cell" group-by=".">
-	    <patternCount>
-	      <xsl:value-of select="count(.)"/>
-	    </patternCount>
-	    <pattern frequency="{count(current-group())}">
-	      <xsl:value-of select="current-grouping-key()"/>
-	    </pattern>
-	  </xsl:for-each-group>
-	  </xsl:variable>
-
-	  <xsl:variable name="patternCount">
-	  <xsl:for-each select="$frequencyCells">
-	    <xsl:value-of select="count(./pattern)"/>
-	  </xsl:for-each>
-	  </xsl:variable>
--->
-
-<!--      <outputXML>
-      <consistencyCheck catNo="{$current_catNo}" cat="{$current_cat}" patternCount="{$patternCount}" totalCells="{$CellCount}" totalEmpty="{$emptyCellCount}">
-        <xsl:for-each select="$frequencyCells/pattern">
-          <xsl:sort data-type="number" order="descending" select="./@frequency"/>
-          <xsl:copy-of select="."/>
-        </xsl:for-each>    	  
-      </consistencyCheck>
-      </outputXML>
--->
- 
-<!--     <outputTXT>
-     <xsl:value-of select="concat('Column ',$file_flag,' ')"/>
-     <xsl:value-of select="concat('&#34;',$current_cat,'&#34;',$nl)"/>
-     <xsl:value-of select="concat('total number of patterns: ',$patternCount,$nl)"/>
-     <xsl:value-of select="concat('',$nl)"/>
-     <xsl:value-of select="concat('frequencies - patterns:',$nl)"/>
-     <xsl:for-each select="$frequencyCells/pattern">
-       <xsl:sort data-type="number" order="descending" select="./@frequency"/>
-       <xsl:choose>
-         <xsl:when test=".=''">
-           <xsl:copy-of select="concat(./@frequency,$tab,' - &#40;EMPTY&#41;',$nl)"/>
-         </xsl:when>
-         <xsl:when test="not(.='')">
-           <xsl:copy-of select="concat(./@frequency,$tab,' - ', .,$nl)"/>
-         </xsl:when>
-       </xsl:choose>
-     </xsl:for-each>
-     </outputTXT>
--->
-     <outputHTML>
-     <xsl:for-each select="./Cell[@catNo]">
-       <xsl:variable name="nowCat" select="./@cat"/>
-     <p><xsl:value-of select="$nowCat"/></p>
-     </xsl:for-each>
-<!--     <p>total number of patterns: <font class="header4"><xsl:value-of select="$patternCount"/></font><br/>
-     in the category <font class="header4"><em><xsl:value-of select="$current_cat"/></em></font><br/>
-     There are <font class="header4"><em><xsl:value-of select="$emptyCellCount"/></em></font> out of <font class="header4"><em><xsl:value-of select="$CellCount"/></em></font> empty cells.</p>
-	    <p class="smallText"><em>click table headers to sort table by category (default is frequency).</em></p>
-     <table  class="sortable" border="1" cellpadding="10" cellspacing="0">
-      <xsl:for-each select="../../Row">
-        <tr>
-          <th>frequency</th>
-          <th>pattern</th>
-        </tr>
-      </xsl:for-each>
-        <xsl:for-each select="$frequencyCells/pattern">
-        <xsl:sort data-type="number" order="descending" select="./@frequency"/>
-        <tr>
-          <td align="center">
-        <xsl:value-of select="./@frequency"/>
-          </td>
-          <td>
-        <xsl:choose>
-          <xsl:when test=".=''">
-        <em><xsl:value-of select="'*empty*'"/></em>
-          </xsl:when>
-          <xsl:when test=".">
-        <xsl:value-of select="."/>
-          </xsl:when>
-        </xsl:choose>
-          </td>
-        </tr>
-      </xsl:for-each>
-     </table>
--->     </outputHTML>
-          
-      </xsl:variable>
       
       <!-- output document XML -->
-<!--      <xsl:result-document href="{$outDirXML}/{$theName}_{$file_flag}.{$eXML}" format="{$output_formatXML}">
-	<xsl:comment> Consistency check for Mávsulasj data </xsl:comment>
+      <xsl:result-document href="{$outDirXML}/{$theName}_{$file_flag}.{$eXML}" format="{$output_formatXML}">
+	<xsl:comment> Output entries for Mávsulasj data </xsl:comment>
 	<xsl:value-of select="$nl"/>
 	<outputFile>
 	  <xsl:value-of select="$nl"/>
 	  <metadata>
-	    <sourceORIG>
-	      <xsl:value-of select="../../../metadata/inputFile"/>
-	    </sourceORIG>
-	    <inputFile>
-	      <xsl:value-of select="$inFile"/>
-	    </inputFile>
-	    <xslFile>
-	      <xsl:value-of select="$styleSheet_name"/>
-	    </xslFile>
-	    <exportDateTime>
-	      <xsl:value-of select="current-dateTime()"/>
-	    </exportDateTime>
+	    <sourceORIG><xsl:value-of select="../../../metadata/inputFile"/></sourceORIG>
+	    <inputFile><xsl:value-of select="$inFile"/></inputFile>
+	    <xslFile><xsl:value-of select="$styleSheet_name"/></xslFile>
+	    <exportDateTime><xsl:value-of select="current-dateTime()"/></exportDateTime>
 	  </metadata>
-	  <xsl:copy-of select="$output/outputXML"/>
+	  <Output>
+	    <xsl:value-of select="PIGLET"/>
+	  </Output>
 	</outputFile>
-      </xsl:result-document>
--->      
+      </xsl:result-document>      
+
       <!-- output document TXT -->
 <!--      <xsl:result-document href="{$outDirTXT}/{$theName}_{$file_flag}.{$eTXT}" format="{$output_formatTXT}">
 	<xsl:value-of select="concat('CONSISTENCY OF MÁVSULASJ DATA',$nl)"/>
@@ -270,9 +155,8 @@
 
      <p style="color:black;"><span style="font-style:italic;">grammatical details:</span><br/>
      <xsl:for-each select="./Cell[@catNo]">
-       <xsl:variable name="nowCat" select="@cat"/>
-     <xsl:if test="not(.[@cat=$nowCat]='')"><xsl:value-of select="$nowCat"/>: <span style="color:blue;"><xsl:value-of select=".[@cat=$nowCat]"/></span><br/></xsl:if>
-     <!--p><xsl:value-of select="$nowCat"/></p-->
+       <xsl:variable name="Now" select="@cat"/>
+     <xsl:if test="not(.[@cat=$Now]='')"><xsl:value-of select="$Now"/>: <span style="color:blue;"><xsl:value-of select=".[@cat=$Now]"/></span><br/></xsl:if>
      </xsl:for-each>
      </p>
 
