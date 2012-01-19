@@ -116,6 +116,9 @@
 	  </metadata>
 	  <Output>
 	    <xsl:value-of select="'just testing!'"/>
+	    <entry rowNo="{/@rowNo}">
+	      <xsl:value-of select="./Cell[@cat='smj']"/>
+	    </entry>
 	  </Output>
 	</outputFile>
       </xsl:result-document>      
