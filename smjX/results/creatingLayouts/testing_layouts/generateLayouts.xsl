@@ -115,8 +115,8 @@
 	    <exportDateTime><xsl:value-of select="current-dateTime()"/></exportDateTime>
 	  </metadata>
 	  <Output>
-	    <xsl:value-of select="'just testing!'"/>
-	    <entry rowNo="{/@rowNo}">
+	    <!--xsl:value-of select="'just testing!'"/-->
+	    <entry rowNo="{./@rowNo}">
 	      <xsl:value-of select="./Cell[@cat='smj']"/>
 	    </entry>
 	  </Output>
