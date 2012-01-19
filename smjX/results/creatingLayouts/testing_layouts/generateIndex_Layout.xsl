@@ -27,14 +27,14 @@
   
   <!-- Input -->
   <!--xsl:param name="inFile" select="'data4consistencyCheck.xml'"/-->
-  <xsl:param name="inDir" select="'_000_outDirXML'"/>
+  <xsl:param name="inDir" select="'outDirXML_Layouts'"/>
   <xsl:param name="XSLfile" select="base-uri(document(''))"/>
   
   <!-- Outputs -->
-  <xsl:variable name="outDirXML" select="'_000_outDirXML'"/>
-  <xsl:variable name="outDirTXT" select="'_000_outDirTXT'"/>
-  <xsl:variable name="outDirHTML" select="'_000_outDirHTML'"/>
-  <xsl:variable name="indexFileName" select="'consistencyCheckIndex'"/>
+  <xsl:variable name="outDirXML" select="'outDirXML_Layouts'"/>
+  <xsl:variable name="outDirTXT" select="'outDirTXT_Layouts'"/>
+  <xsl:variable name="outDirHTML" select="'outDirHTML_Layouts'"/>
+  <xsl:variable name="indexFileName" select="'Index_SMJentries'"/>
   
   <!-- Patterns for the feature values -->
   <xsl:variable name="output_formatXML" select="'xml'"/>
@@ -73,7 +73,13 @@
 	    <sourceORIG ORIG_source="{.//sourceORIG}"/>
 	    <inputFile nameInput="{.//inputFile}"/>
 	    <fileName nameFile="{$current_file}"/>
-	    <Entry rowNo="{.//Output/entry/@rowNo}"><xsl:value-of select=".//Output/entry"/></Entry>
+	    <Entry rowNo="{.//Output/entry/@rowNo}">
+	      <SMJ><xsl:value-of select=".//Output/entry/SMJ"/></SMJ>
+	      <NOB><xsl:value-of select=".//Output/entry/NOB"/></NOB>
+	      <SVE><xsl:value-of select=".//Output/entry/SVE"/></SVE>
+	      <ENG><xsl:value-of select=".//Output/entry/ENG"/></ENG>
+	      <LAT><xsl:value-of select=".//Output/entry/LAT"/></LAT>
+	    </Entry>
 	    <xsl:value-of select="$nl"/>
 	  </extractedData>
 
@@ -98,7 +104,7 @@
 	    <h3>INDEX of <span style="font-style:italic;">smj</span> entries<br/><em>from Mávsulasj data</em></h3>
 	    <p class="smallText"><em>click table headers to sort table by category.</em></p>
 	    <table class="sortable" border="1" cellpadding="10" cellspacing="0">
-	      <tr><th>no.</th><th>entry</th><th>link</th></tr>
+	      <tr><th>no.</th><th>entry <span style="font-style:italic">(smj)</span></th><th width="50px">nob</th><th width="50px">sve</th><th width="50px">eng</th><th>link</th></tr>
 	      <xsl:for-each select="$dataExtracter/extractedData/Entry">
         		<xsl:variable name="file_flag">
         		<!-- this needs to be updated to deal with up to 4 digit numbers! -->
@@ -107,7 +113,10 @@
         		<xsl:variable name="nameFile" select="../fileName/@nameFile"/>
 	      <tr>
 	     <td><xsl:value-of select="./@rowNo"/></td>
-	     <td><xsl:value-of select="."/></td>
+	     <td><xsl:value-of select="./SMJ"/><xsl:if test="./SMJ=''">~</xsl:if></td>
+	     <td><xsl:value-of select="./NOB"/><xsl:if test="./NOB=''">~</xsl:if></td>
+	     <td><xsl:value-of select="./SVE"/><xsl:if test="./SVE=''">~</xsl:if></td>
+	     <td><xsl:value-of select="./ENG"/><xsl:if test="./ENG=''">~</xsl:if></td>
 	     <td><a target="_blank" href="{$outDirHTML}/{$nameFile}.{$eHTML}"><xsl:value-of select="$nameFile"/></a></td>
 	      </tr>
 	      </xsl:for-each>
