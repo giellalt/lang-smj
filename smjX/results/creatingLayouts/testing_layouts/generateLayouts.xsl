@@ -115,7 +115,7 @@
 	    <exportDateTime><xsl:value-of select="current-dateTime()"/></exportDateTime>
 	  </metadata>
 	  <Output>
-	    <xsl:value-of select="PIGLET"/>
+	    <xsl:value-of select="just testing!"/>
 	  </Output>
 	</outputFile>
       </xsl:result-document>      
