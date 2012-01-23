@@ -112,6 +112,10 @@
       </xsl:variable>
       <headword>
       <smj><xsl:value-of select="./Cell[@cat='smj']"/></smj>
+      <pos><xsl:value-of select="./Cell[@cat='smj_pos']"/></pos>
+      <nob><xsl:value-of select="./Cell[@cat='nob1']"/></nob>
+      <sve><xsl:value-of select="./Cell[@cat='sve1']"/></sve>
+      <eng><xsl:value-of select="./Cell[@cat='eng1']"/></eng>
       <url><xsl:value-of select="concat('http://jwilbur.de/mavsulasj/outDirHTML_Layouts/result_SMJDictionaryComplexG_SMALLSAMPLE_',$file_flag,'.html')"/></url>
       </headword>
       </xsl:for-each>
