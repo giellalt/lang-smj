@@ -1,6 +1,6 @@
 <?php
 $xmlDoc=new DOMDocument();
-$xmlDoc->load("serachableSMJ_ALLES_G.xml");
+$xmlDoc->load("searchableSMJ_ALLES_G.xml");
 
 $x=$xmlDoc->getElementsByTagName('headword');
 
