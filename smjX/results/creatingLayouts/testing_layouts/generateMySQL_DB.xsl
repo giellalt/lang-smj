@@ -26,7 +26,7 @@
 	      encoding="UTF-8"/>
   
   <!-- Input -->
-  <xsl:param name="inFile" select="'result_SMJDictionaryComplexG.xml'"/>
+  <xsl:param name="inFile" select="'result_SMJDictionaryComplexG_modified.xml'"/>
   <xsl:param name="inDir" select="'xxxdirxxx'"/>
   <xsl:param name="XSLfile" select="base-uri(document(''))"/>
   
@@ -101,6 +101,8 @@
       <xsl:variable name="DBname" select="'bigG_reImport_test'"/>
       <xsl:variable name="TableName" select="'reimport_Sheet1'"/>
       <xsl:variable name="apos">'</xsl:variable>
+      <xsl:variable name="dq">"</xsl:variable>
+      <xsl:variable name="acute">´</xsl:variable>
 
 <!--+
     | special characters: 
@@ -138,7 +140,7 @@ USE `smallG_reImport_test`;
       <xsl:for-each select="Cell">
         <xsl:choose>
         <xsl:when test="not(@originalValue)">
-          <xsl:value-of select="concat($apos,.,$apos)"/>
+          <xsl:value-of select="concat($dq,.,$dq)"/>
         </xsl:when>
         <xsl:when test="@originalValue">
           <xsl:value-of select="'NULL'"/>
