@@ -26,8 +26,8 @@
 	      encoding="UTF-8"/>
   
   <!-- Input -->
-  <xsl:param name="inFileNameONLY" select="'result_SMJDictionarySimpleK'"/>
-  <xsl:param name="smjLetter" select="'K'"/>
+  <xsl:param name="inFileNameONLY" select="'result_SMJDictionarySimpleA'"/>
+  <xsl:param name="smjLetter" select="substring($inFileNameONLY,string-length($inFileNameONLY)-1,string-length($inFileNameONLY)-1)"/>
   <xsl:param name="inFile" select="concat($inFileNameONLY,'.xml')"/>
   <xsl:param name="inDir" select="'xxxdirxxx'"/>
   <xsl:param name="XSLfile" select="base-uri(document(''))"/>
@@ -136,6 +136,7 @@ USE `smallG_reImport_test`;
       </xsl:if>
       <xsl:value-of select="$nl"/>
     </xsl:for-each>
+    <xsl:value-of select="'`uniqueSMJ_ID` int(7) DEFAULT NULL'"/>
 <xsl:value-of select="concat($nl,') ENGINE=MyISAM DEFAULT CHARSET=utf8;',$nl,$nl)"/>
 
 <!-- enter data -->
@@ -150,16 +151,17 @@ USE `smallG_reImport_test`;
           <xsl:value-of select="'NULL'"/>
         </xsl:when>
         </xsl:choose>
-        <xsl:if test="not(position()=last())">
+<!--        <xsl:if test="not(position()=last())"-->
           <xsl:value-of select="', '"/>
-        </xsl:if>
+<!--        </xsl:if-->
+<!--        <xsl:value-of select="concat($dq,../@uniqueSMJno,$dq)"/-->
       </xsl:for-each>
-      <xsl:value-of select="concat(');',$nl)"/>
+      <xsl:value-of select="concat($dq,@uniqueSMJno,$dq,');',$nl)"/>
     </xsl:for-each>
 
 
 <!-- example record:
-INSERT INTO `reimport_Sheet1` VALUES('guovlloådåsa', 'åd', 'Q1', 'Q1', 'w', 'w', 'åsa', 'ådå', NULL, 'N', NULL, 'pl nom', 'd', NULL, NULL, NULL, 'y', 'ådåsa', 'guovllo', 'N', 'sg nom', 'distriktsnyheter ', 'lokala nyheter ', 'local news', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `table_SIMPLE` VALUES("åbåda", "åb", "åda", "åbåt", "N", "pl nom", "b", NULL, NULL, NULL, NULL, NULL, NULL, "snø (som er dyp, veldig myk og løs - tyngre føre enn gálav)", "snö (som är djup, väldigt mjuk och lös – ger tyngre före än gálav)", "snow (that is deep, very soft and loose)", NULL);
 -->
 
       </xsl:result-document>
