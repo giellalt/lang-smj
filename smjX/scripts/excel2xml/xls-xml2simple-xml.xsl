@@ -20,8 +20,8 @@
               indent="yes"/>
   
   <!-- Input -->
-  <xsl:param name="inFile" select="'SMJDictionarySimpleK.xml'"/>
-  <!--xsl:param name="inFile" select="'SMJDictionaryComplexG.xml'"/-->
+  <xsl:param name="inFile" select="'SMJDictionarySimpleB.xml'"/>
+  <xsl:param name="AlphabetFile" select="'smjALPHABETnumbered.xml'"/>
   <xsl:param name="inDir" select="'xxxdirxxx'"/>
   <xsl:param name="XSLfile" select="base-uri(document(''))"/>
   
@@ -40,6 +40,17 @@
 
 <!-- template to test if input DIR and FILE exist -->
   <xsl:template match="/" name="main">
+
+    <xsl:if test="doc-available($AlphabetFile)">
+      <xsl:message terminate="no">
+	    <xsl:value-of select="concat($AlphabetFile,' file found successfully')"/>
+      </xsl:message>      
+    </xsl:if>
+    <xsl:if test="not(doc-available($AlphabetFile))">
+      <xsl:message terminate="yes">
+	    <xsl:value-of select="concat($AlphabetFile,' file NOT FOUND!')"/>
+      </xsl:message>      
+    </xsl:if>
     
     <xsl:if test="doc-available($inFile)">
       <xsl:message terminate="no">
@@ -47,29 +58,11 @@
       </xsl:message>      
       <xsl:call-template name="processFile">
     	<xsl:with-param name="theFile" select="document($inFile)"/>
+    	<xsl:with-param name="theAlphabetFile" select="document($AlphabetFile)"/>
     	<xsl:with-param name="theName" select="$file_name"/>
       </xsl:call-template>
     </xsl:if>
 
-    <!-- xsl:if test="doc-available($inDir)" -->
-    <xsl:if test="not($inDir = 'xxxdirxxx')">
-      <xsl:for-each select="for $f in collection(concat($inDir, '?select=*.xml')) return $f">
-	
-	<xsl:variable name="current_file" select="substring-before((tokenize(document-uri(.), '/'))[last()], '.xml')"/>
-	<xsl:variable name="current_dir" select="substring-before(document-uri(.), $current_file)"/>
-	<xsl:variable name="current_location" select="concat($inDir, substring-after($current_dir, $inDir))"/>
-	
-	<xsl:message terminate="no">
-	  <xsl:value-of select="concat('Processing file: ', $current_file)"/>
-	</xsl:message>
-
-	<xsl:call-template name="processFile">
-	  <xsl:with-param name="theFile" select="."/>
-	  <xsl:with-param name="theName" select="$current_file"/>
-	</xsl:call-template>
-      </xsl:for-each>
-    </xsl:if>
-    
     <xsl:if test="not(doc-available($inFile) or not($inDir = 'xxxdirxxx'))">
       <xsl:value-of select="concat('Neither ', $inFile, ' nor ', $inDir, ' found.', $nl)"/>
     </xsl:if>    
@@ -79,6 +72,7 @@
   <xsl:template name="processFile">
     <xsl:param name="theFile"/>
     <xsl:param name="theName"/>
+    <xsl:param name="theAlphabetFile"/>
 
     
     <!-- build a global variable to pack the number, position and
@@ -93,10 +87,17 @@
 	</xsl:for-each>
       </Categories>
     </xsl:variable>
+
+    <!-- build a global variable to pack the reference first letters to numbers -->
+    <xsl:variable name="LetterNos">
+	<xsl:for-each select="$theAlphabetFile/document/smjAlphabet">
+	    <xsl:copy-of select="./letter"/>
+	</xsl:for-each>
+    </xsl:variable>
     
     <!-- given very big xls files, the output should not be stored
          into a whole variable but output right away -->
-    <xsl:variable name="output">
+    <xsl:variable name="output">          
       <xsl:for-each select="$theFile/*:Workbook/*:Worksheet/*:Table/*:Row">
 	<xsl:message terminate="no">
 	  <xsl:value-of select="concat('row ', position(), ' ... ')"/>
@@ -105,6 +106,7 @@
 	  <xsl:with-param name="theRow" select="."/>
 	  <xsl:with-param name="thePosition" select="position()"/>
 	  <xsl:with-param name="theLabels" select="$labels"/>
+	  <xsl:with-param name="theLetterNos" select="$LetterNos"/>
 	</xsl:call-template>
       </xsl:for-each>
       <xsl:message terminate="no">
@@ -128,6 +130,7 @@
 	  <exportDateTime>
 	    <xsl:value-of select="current-dateTime()"/>
 	  </exportDateTime>
+	  <note>The attribute 'uniqueSMJno' consists of the 2-digit letter-code plus the full 5-digit row number (ex.: basse = 0202046 : 02 for letter 'b', 02046 for row '2046')</note>
 	</metadata>
 	<excelWorksheet>
 	  <xsl:copy-of select="$output"/>
@@ -142,6 +145,7 @@
     <xsl:param name="theRow"/>
     <xsl:param name="thePosition"/>
     <xsl:param name="theLabels"/>
+    <xsl:param name="theLetterNos"/>
     <xsl:variable name="isNonemptyRow" select="some $cell in $theRow satisfies not(normalize-space($cell) = '')"/>
     <xsl:if test="$isNonemptyRow">
 	<!--xsl:call-template name="mutator">
@@ -167,8 +171,8 @@
       <xsl:when test="not(position()=1)">
 	
 	<xsl:variable name="current_row">
-	  <Row rowNo="{position() - 1}" originalCellCount="{count(node())}">
-	    
+<!--	  <Row rowNo="{position() - 1}" originalCellCount="{count(node())}">-->
+	  <Row>	    
 	    <xsl:for-each-group select="*:Cell" group-starting-with="*:Cell[@ss:Index]">
 	      <xsl:variable name="start" select="(@ss:Index, 1)[1]" as="xs:integer"/>
 	      <xsl:for-each select="current-group()">
@@ -190,9 +194,25 @@
 	    </xsl:for-each-group>
 	  </Row>
 	</xsl:variable>
+
+	<xsl:variable name="sortLetter">
+	  <xsl:value-of select="lower-case(substring($current_row/Row/Cell[1],1,1))"/>
+	</xsl:variable>
 	
-	<Row rowNo="{position() - 1}" originalCellCount="{count(node())}">
-	  <!--xsl:for-each select="$mutator_labels/Categories/Category"-->
+	<xsl:variable name="letterNo">
+	  <xsl:value-of select="$theLetterNos/letter[.=$sortLetter]/@no"/>
+	</xsl:variable>
+
+	<xsl:variable name="rowNoFull">
+	   <xsl:variable name="posRow" select="position()-1"/>
+	  <xsl:value-of select="if ($posRow &lt; 10) then concat('0000', $posRow) else if ($posRow &lt; 100) then concat('000', $posRow) else if ($posRow &lt; 1000) then concat('00', $posRow) else if ($posRow &lt; 10000) then concat('0', $posRow) else $posRow"/>
+	</xsl:variable>
+	
+	<xsl:variable name="uniqueSMJno">
+	  <xsl:value-of select="concat($letterNo,$rowNoFull)"/>
+	</xsl:variable>
+
+	<Row rowNo="{position() - 1}" originalCellCount="{count(node())}" letter="{$sortLetter}" uniqueSMJno="{$uniqueSMJno}">
 	  <xsl:for-each select="$theLabels/Categories/Category">
 
 	    <xsl:variable name="cd" select="."/>
