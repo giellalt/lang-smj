@@ -20,9 +20,10 @@
               indent="yes"/>
   
   <!-- Input -->
-  <xsl:param name="inFile" select="'SMJDictionarySimpleB.xml'"/>
+  <xsl:param name="inFile" select="'SMJDictionarySimpleA.xml'"/>
   <xsl:param name="AlphabetFile" select="'smjALPHABETnumbered.xml'"/>
-  <xsl:param name="inDir" select="'xxxdirxxx'"/>
+  <!--xsl:param name="inDir" select="'xxxdirxxx'"/-->
+  <xsl:param name="inDir" select="'originalXMLfromEXCEL'"/>
   <xsl:param name="XSLfile" select="base-uri(document(''))"/>
   
   <!-- Output -->
@@ -40,6 +41,10 @@
 
 <!-- template to test if input DIR and FILE exist -->
   <xsl:template match="/" name="main">
+
+    <xsl:message terminate="no">
+      <xsl:value-of select="'Do NOT forget to replace all double quotes in the EXCEL original!!!!!!!!!!!!!'"/>
+    </xsl:message>      
 
     <xsl:if test="doc-available($AlphabetFile)">
       <xsl:message terminate="no">
@@ -63,7 +68,7 @@
       </xsl:call-template>
     </xsl:if>
 
-    <xsl:if test="not(doc-available($inFile) or not($inDir = 'xxxdirxxx'))">
+    <xsl:if test="not(doc-available($inFile) or not($inDir = 'originalXMLfromEXCEL'))">
       <xsl:value-of select="concat('Neither ', $inFile, ' nor ', $inDir, ' found.', $nl)"/>
     </xsl:if>    
   </xsl:template>
