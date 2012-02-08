@@ -40,11 +40,11 @@
 
 <div style="width:300px;padding:10px;margin-left:810px;float:right;position:fixed;background-color:#FFFFA3;">
 <table width="300px" border="0" cellspacing="8px">
-<tr style="height:20px;font-size:9px;text-align:right;font-style:italic"><td></td><td id="uniqID"></td></tr>
-<tr><td>Lule Saami</td><td id="smjWord"></td></tr>
-<tr><td>Norwegian</td><td id="nobTransl"></td></tr>
-<tr><td>Swedish</td><td id="sveTransl"></td></tr>
-<tr><td>English</td><td id="engTransl"></td></tr>
+<tr style="height:20px;font-size:9px;text-align:right;font-style:italic;"><td width="100px"></td><td id="uniqID"></td></tr>
+<tr><td valign="top" style="font-style:italic;">Lule Saami</td><td id="smjWord"></td></tr>
+<tr><td valign="top" style="font-style:italic;">Norwegian</td><td id="nobTransl"></td></tr>
+<tr><td valign="top" style="font-style:italic;">Swedish</td><td id="sveTransl"></td></tr>
+<tr><td valign="top" style="font-style:italic;">English</td><td id="engTransl"></td></tr>
 </table>
 </div>
 <script type="text/javascript">
