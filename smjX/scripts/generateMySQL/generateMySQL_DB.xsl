@@ -26,7 +26,7 @@
 	      encoding="UTF-8"/>
   
   <!-- Input -->
-  <xsl:param name="inFileNameONLY" select="'result_SMJDictionarySimpleA'"/>
+  <xsl:param name="inFileNameONLY" select="'result_SMJDictionarySimpleB'"/>
   <xsl:param name="smjLetter" select="substring($inFileNameONLY,string-length($inFileNameONLY)-1,string-length($inFileNameONLY)-1)"/>
   <xsl:param name="inFile" select="concat($inFileNameONLY,'.xml')"/>
   <xsl:param name="inDir" select="'xxxdirxxx'"/>
@@ -95,8 +95,6 @@
   <xsl:template name="processFile">
     <xsl:param name="theFile"/>
     <xsl:param name="theName"/>
-    
-   
 
       <!-- output document MySQL database -->
       <xsl:result-document href="{$indexFileName}.sql" format="{$output_formatSQL}">
@@ -114,21 +112,13 @@
     | semi-colon ; : &#59;
     | apostrophe/single quote ' : &#39;
     +-->
-<!--
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET SQL_MODE&#61;&#34;NO_AUTO_VALUE_ON_ZERO&#34;&#59;
--->
 <xsl:value-of select="'SET SQL_MODE=&#34;NO_AUTO_VALUE_ON_ZERO&#34;;'"/>
 <xsl:value-of select="concat($nl,$nl)"/>
-<!--
-CREATE DATABASE `smallG_reImport_test` DEFAULT CHARACTER SET latin1 COLLATE latin1_general_ci;
-USE `smallG_reImport_test`;
--->
-<!--xsl:value-of select="concat('CREATE DATABASE `',$DBname,'` COLLATE latin1_general_ci; ',$nl,$nl,'USE `',$DBname,'`;')"/-->
+
+<!-- add Table -->
 <xsl:value-of select="concat('USE `',$DBname,'`;')"/>
 <xsl:value-of select="concat($nl,$nl)"/>
 <xsl:value-of select="concat('CREATE TABLE `',$TableName,'` (',$nl)"/>
-<!-- column (category) names: -->
     <xsl:for-each select="$theFile/outputFile/excelWorksheet/Categories/Category">
       <xsl:value-of select="concat('`',.,'` varchar(300) DEFAULT NULL,')"/>
       <xsl:value-of select="$nl"/>
@@ -136,7 +126,8 @@ USE `smallG_reImport_test`;
     <xsl:value-of select="'`uniqueSMJ_ID` int(7) DEFAULT NULL'"/>
 <xsl:value-of select="concat($nl,') ENGINE=MyISAM DEFAULT CHARSET=utf8;',$nl,$nl)"/>
 
-<!-- enter data -->
+
+<!-- add (insert) data -->
     <xsl:for-each select="$theFile/outputFile/excelWorksheet/Row">
       <xsl:value-of select="concat('INSERT INTO `',$TableName,'` VALUES(')"/>
       <xsl:for-each select="Cell">
@@ -153,19 +144,12 @@ USE `smallG_reImport_test`;
       <xsl:value-of select="concat($dq,@uniqueSMJno,$dq,');',$nl)"/>
     </xsl:for-each>
 
-
-<!-- example record:
-INSERT INTO `table_SIMPLE` VALUES("åbåda", "åb", "åda", "åbåt", "N", "pl nom", "b", NULL, NULL, NULL, NULL, NULL, NULL, "snø (som er dyp, veldig myk og løs - tyngre føre enn gálav)", "snö (som är djup, väldigt mjuk och lös – ger tyngre före än gálav)", "snow (that is deep, very soft and loose)", NULL);
--->
-
       </xsl:result-document>
       
       <xsl:message terminate="no">
 	<xsl:value-of select="concat('***Created index: ',$indexFileName,'.sql')"/>
       </xsl:message>
 
-
-    
     
   </xsl:template>
   
