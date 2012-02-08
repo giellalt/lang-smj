@@ -39,8 +39,21 @@
 </div>
 
 <div style="width:300px;padding:10px;margin-left:810px;float:right;position:fixed;background-color:#FFFFA3;">
-<p>detailed information about a chosen entry will hopefully go here.</p>
+<table width="300px" border="0" cellspacing="8px">
+<tr style="height:20px;font-size:9px;text-align:right;font-style:italic"><td></td><td id="uniqID"></td></tr>
+<tr><td>Lule Saami</td><td id="smjWord"></td></tr>
+<tr><td>Norwegian</td><td id="nobTransl"></td></tr>
+<tr><td>Swedish</td><td id="sveTransl"></td></tr>
+<tr><td>English</td><td id="engTransl"></td></tr>
+</table>
 </div>
+<script type="text/javascript">
+function extractSMJ(txt){document.getElementById("smjWord").innerHTML = (txt);}
+function extractNOB(txt){document.getElementById("nobTransl").innerHTML = (txt);}
+function extractSVE(txt){document.getElementById("sveTransl").innerHTML = (txt);}
+function extractENG(txt){document.getElementById("engTransl").innerHTML = (txt);}
+function extractSMJ_ID(txt){document.getElementById("uniqID").innerHTML = (txt);}
+</script>
 
 
 <div style="width:560px;padding:10px;margin-left:230px;background-color:#F0E8CA;">
@@ -52,6 +65,7 @@ if($_GET){
     $nob = $_GET['nob'];
     $sve = $_GET['sve'];
     $eng = $_GET['eng'];
+    $dq = '"';
         if ($smj==""&&$PoS==""&&$nob==""&&$sve==""&&$eng=="") $emptyRequest = 1; else $emptyRequest = 0;
     $connect = mysql_connect("localhost","root","root");
     if($connect){    
@@ -69,14 +83,22 @@ $query = "SELECT * FROM table_SIMPLE WHERE " . $querySMJ . " AND " . $queryPoS .
             ;
             $results = mysql_query($query);
             $qtyHits = mysql_num_rows($results);
+            $clickHint = "<span class='menu1' style='font-style:italic'>click anywhere on an entry to see more details</span>";
               if( $qtyHits == 0 ) echo $resultHeader."</p><p>Sorry, no hits.</p>" ;
                 else {
 //                    echo $resultHeader."</p><p class='menu1' style='text-align:left;'>";
-                    if ($emptyRequest==1) echo $resultHeader."</p><p class='menu1' style='text-align:left;'><span style='color:red;'>No search criteria entered - showing all ".$qtyHits." records</span><br/>"; 
-                    else echo $resultHeader."<span style='font-size:12pt;'> (".$qtyHits." hits)</span></p><p class='menu1' style='text-align:left;'><br/>";
+                    if ($emptyRequest==1) echo $resultHeader."</p><p class='menu1' style='text-align:left;'><span style='color:red;'>No search criteria entered - showing all ".$qtyHits." records</span><br/>".$clickHint; 
+                    else echo $resultHeader."<span style='font-size:12pt;'> (".$qtyHits." hits)</span></br>".$clickHint."</p><p class='menu1' style='text-align:left;'><br/>";
                     while($row = mysql_fetch_array($results)){
                         $rowENC = mb_detect_encoding($row['smj']);
-                        echo "• <span style='font-size:16px;'>" . $row['smj'] . "</span> (" . $row['pos'] . "); Norw.: " . $row['nob1'] . "<br/>" ;
+                        echo "<p class='menu1' style='text-align:left;font-size:16px;' onclick=".$dq."
+extractSMJ('".$row['smj']."');
+extractNOB('".$row['nob1']."');
+extractSVE('".$row['sve1']."');
+extractENG('".$row['eng1']."');
+extractSMJ_ID('no. ".$row['uniqueSMJ_ID']."');
+".$dq." value='choose'><span style='font-size:12px;'>• </span>".$row['smj'] ;
+                        echo "<span style='font-size:12px;'> (" . $row['pos'] . "); Norw.: " . $row['nob1'] . " (no. ".$row['uniqueSMJ_ID'].")</p>" ;
                         }
                     }
             echo "</p><br/>";
