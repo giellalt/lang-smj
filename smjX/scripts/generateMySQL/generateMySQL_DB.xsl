@@ -130,10 +130,7 @@ USE `smallG_reImport_test`;
 <xsl:value-of select="concat('CREATE TABLE `',$TableName,'` (',$nl)"/>
 <!-- column (category) names: -->
     <xsl:for-each select="$theFile/outputFile/excelWorksheet/Categories/Category">
-      <xsl:value-of select="concat('`',.,'` varchar(300) DEFAULT NULL')"/>
-      <xsl:if test="not(position()=last())">
-        <xsl:value-of select="','"/>
-      </xsl:if>
+      <xsl:value-of select="concat('`',.,'` varchar(300) DEFAULT NULL,')"/>
       <xsl:value-of select="$nl"/>
     </xsl:for-each>
     <xsl:value-of select="'`uniqueSMJ_ID` int(7) DEFAULT NULL'"/>
@@ -151,10 +148,7 @@ USE `smallG_reImport_test`;
           <xsl:value-of select="'NULL'"/>
         </xsl:when>
         </xsl:choose>
-<!--        <xsl:if test="not(position()=last())"-->
           <xsl:value-of select="', '"/>
-<!--        </xsl:if-->
-<!--        <xsl:value-of select="concat($dq,../@uniqueSMJno,$dq)"/-->
       </xsl:for-each>
       <xsl:value-of select="concat($dq,@uniqueSMJno,$dq,');',$nl)"/>
     </xsl:for-each>
