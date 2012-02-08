@@ -39,9 +39,10 @@
 </div>
 
 <div style="width:300px;padding:10px;margin-left:810px;float:right;position:fixed;background-color:#FFFFA3;">
-<table width="300px" border="0" cellspacing="8px">
-<tr style="height:20px;font-size:9px;text-align:right;font-style:italic;"><td width="100px"></td><td id="uniqID"></td></tr>
+<table width="300px" border="0" cellspacing="5px">
+<tr style="height:20px;font-size:9px;text-align:right;font-style:italic;"><td width="120px"></td><td id="uniqID"></td></tr>
 <tr><td valign="top" style="font-style:italic;">Lule Saami</td><td id="smjWord"></td></tr>
+<tr><td valign="top" style="font-style:italic;">part of speech</td><td id="smjPoS"></td></tr>
 <tr><td valign="top" style="font-style:italic;">Norwegian</td><td id="nobTransl"></td></tr>
 <tr><td valign="top" style="font-style:italic;">Swedish</td><td id="sveTransl"></td></tr>
 <tr><td valign="top" style="font-style:italic;">English</td><td id="engTransl"></td></tr>
@@ -49,6 +50,7 @@
 </div>
 <script type="text/javascript">
 function extractSMJ(txt){document.getElementById("smjWord").innerHTML = (txt);}
+function extractPoS(txt){document.getElementById("smjPoS").innerHTML = (txt);}
 function extractNOB(txt){document.getElementById("nobTransl").innerHTML = (txt);}
 function extractSVE(txt){document.getElementById("sveTransl").innerHTML = (txt);}
 function extractENG(txt){document.getElementById("engTransl").innerHTML = (txt);}
@@ -86,13 +88,16 @@ $query = "SELECT * FROM table_SIMPLE WHERE " . $querySMJ . " AND " . $queryPoS .
             $clickHint = "<span class='menu1' style='font-style:italic'>click anywhere on an entry to see more details</span>";
               if( $qtyHits == 0 ) echo $resultHeader."</p><p>Sorry, no hits.</p>" ;
                 else {
-//                    echo $resultHeader."</p><p class='menu1' style='text-align:left;'>";
                     if ($emptyRequest==1) echo $resultHeader."</p><p class='menu1' style='text-align:left;'><span style='color:red;'>No search criteria entered - showing all ".$qtyHits." records</span><br/>".$clickHint; 
-                    else echo $resultHeader."<span style='font-size:12pt;'> (".$qtyHits." hits)</span></br>".$clickHint."</p><p class='menu1' style='text-align:left;'><br/>";
+                    else echo $resultHeader."<span style='font-size:12pt;'> (".$qtyHits." hits)</span></br>".$clickHint."</p><p class='menu1' style='text-align:left;'>";
                     while($row = mysql_fetch_array($results)){
                         $rowENC = mb_detect_encoding($row['smj']);
-                        echo "<p class='menu1' style='text-align:left;font-size:16px;' onclick=".$dq."
+                        echo "<p class='menu1' style='text-align:left;font-size:16px;line-height:15px;' 
+                        onmouseover=".$dq."this.style.color='#FF0000'".$dq." 
+                        onmouseout=".$dq."this.style.color='#333333'".$dq." 
+                        onclick=".$dq."
 extractSMJ('".$row['smj']."');
+extractPoS('".$row['pos']."');
 extractNOB('".$row['nob1']."');
 extractSVE('".$row['sve1']."');
 extractENG('".$row['eng1']."');
