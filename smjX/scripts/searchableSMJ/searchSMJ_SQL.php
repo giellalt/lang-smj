@@ -9,15 +9,22 @@
 </head>
 <body>
 
-<div style="width:230px;padding:10px;margin:0px;float:left;position:fixed;">
-<table border="0">
-<tr><td style="font-style:italic;">Search here:</td><td class='searchCrits' >
+
+<div style="height:80px;width:1220px;padding:10px;margin-left:0px;background-color:#F0F0FF;position:fixed;">
+<h1 style="font-style:italic;">Mávsulasj - <span style="color:red">Lule Saami dictionary</span></h1>
+</div>
+
+
+<div style="width:280px;padding:10px;margin-top:100px;float:left;position:fixed;">
+<p class="header4" style="">Search here:<br/><hr style="width: 95%" >
+<table border="0" width="260px">
+<tr><td class="header4" style=""></td><td class='searchCrits' style="height:20px;">
 <?php if (strlen($_GET['smj'])==0 && strlen($_GET['PoS'])==0 && strlen($_GET['nob'])==0 && strlen($_GET['sve'])==0 && strlen($_GET['eng'])==0) echo ""; else echo "search criteria";   ?>
 </td></tr>
 <form action="" method="GET" accept-charset="utf-8">
 <tr><td colspan="2">Lule Saami entry:</td></tr>
 <tr><td><input type='text' name='smj' value=''></input></td><td align='center'><?php echo "<span class='searchCrits' > ".$_GET['smj']."</span>"; ?></td></tr>
-<tr><td colspan="2">part of speech:</td></tr>
+<tr><td colspan="2">Part of speech:</td></tr>
 <tr><td><input type="text" name="PoS" value=""></input></td><td align='center'><?php echo "<span class='searchCrits' > ".$_GET['PoS']."</span>" ?></td></tr>
 <tr><td colspan="2">Norwegian translation:</td></tr>
 <tr><td><input type="text" name="nob" value=""></input></td><td align='center'><?php echo "<span class='searchCrits' > ".$_GET['nob']."</span>" ?></td></tr>
@@ -38,7 +45,10 @@
 </table>
 </div>
 
-<div style="width:300px;padding:10px;margin-left:810px;float:right;position:fixed;background-color:#FFFFA3;">
+<div style="width:300px;margin-top:100px;padding:10px;margin-left:920px;float:right;position:fixed;background-color:#FFFFA3;">
+<p class="header4" style="">Details here:<br/>
+<hr style="width: 95%" >
+<span class='menu1' style='font-style:italic;font-size:11px;'>click any results to see details</span></p>
 <table width="300px" border="0" cellspacing="5px">
 <tr style="height:20px;font-size:9px;text-align:right;font-style:italic;"><td width="120px"></td><td id="uniqID"></td></tr>
 <tr><td valign="top" style="font-style:italic;">Lule Saami</td><td id="smjWord"></td></tr>
@@ -58,9 +68,11 @@ function extractSMJ_ID(txt){document.getElementById("uniqID").innerHTML = (txt);
 </script>
 
 
-<div style="width:560px;padding:10px;margin-left:230px;background-color:#F0E8CA;">
+<div style="width:600px;margin-top:100px;padding:10px;margin-left:300px;background-color:#F0E8CA;position:fixed;">
 <?php
-$resultHeader = "<p class='header4'>results";
+$resultHeader = "<p class='header4'>Results here";
+$doubleDIV = "<div style='width:600px;padding:10px;margin-left:300px;background-color:#F0E8CA;height:100px'></div>
+              <div style='width:600px;padding:10px;margin-left:300px;background-color:#F0E8CA;margin-top:40px'>";
 if($_GET){
     $smj = $_GET['smj'];
     $PoS = $_GET['PoS'];
@@ -85,17 +97,18 @@ $query = "SELECT * FROM table_SIMPLE WHERE " . $querySMJ . " AND " . $queryPoS .
             ;
             $results = mysql_query($query);
             $qtyHits = mysql_num_rows($results);
-            $clickHint = "<span class='menu1' style='font-style:italic'>click anywhere on an entry to see more details</span>";
-              if( $qtyHits == 0 ) echo $resultHeader."</p><p>Sorry, no hits.</p>" ;
+//            $clickHint = "<span class='menu1' style='font-style:italic'>click anywhere on an entry to see more details</span>";
+            $clickHint = "";
+              if( $qtyHits == 0 ) echo $resultHeader."</p><hr style='width:95%'></div>".$doubleDIV."<p>Sorry, no hits.</p>" ;
                 else {
-                    if ($emptyRequest==1) echo $resultHeader."</p><p class='menu1' style='text-align:left;'><span style='color:red;'>No search criteria entered - showing all ".$qtyHits." records</span><br/>".$clickHint; 
-                    else echo $resultHeader."<span style='font-size:12pt;'> (".$qtyHits." hits)</span></br>".$clickHint."</p><p class='menu1' style='text-align:left;'>";
+                    if ($emptyRequest==1) echo $resultHeader."</p><hr style='width:95%'></div>".$doubleDIV."<p class='menu1' style='text-align:left;'><span style='color:red;'>No search criteria entered - showing all ".$qtyHits." records</span><br/>".$clickHint; 
+                    else echo $resultHeader."<span style='font-size:12pt;'> (".$qtyHits." hits)</span></br>".$clickHint."</p><hr style='width:95%'></div>".$doubleDIV."<p class='menu1' style='text-align:left;'>";
                     while($row = mysql_fetch_array($results)){
                         $rowENC = mb_detect_encoding($row['smj']);
                         echo "<p class='menu1' style='text-align:left;font-size:16px;line-height:15px;' 
                         onmouseover=".$dq."this.style.color='#FF0000'".$dq." 
                         onmouseout=".$dq."this.style.color='#333333'".$dq." 
-                        onclick=".$dq."
+                            onclick=".$dq."
 extractSMJ('".$row['smj']."');
 extractPoS('".$row['pos']."');
 extractNOB('".$row['nob1']."');
