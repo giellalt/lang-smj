@@ -8,20 +8,20 @@
 <?php if (strlen($_GET['smj'])==0 && strlen($_GET['PoS'])==0 && strlen($_GET['nob'])==0 && strlen($_GET['sve'])==0 && strlen($_GET['eng'])==0) echo ""; else echo "search criteria";   ?>
 </td></tr>
 <form name="criteria" action="" method="GET" accept-charset="utf-8">
-<tr><td colspan="4">Lule Saami:</td></tr>
-<tr><td><?php echo "<input type='text' name='smj' value='".$_GET['smj']."'></input></td><td align='center' class='searchCrits' > ".$_GET['smj']; ?></td></tr>
+<tr><td colspan="4" title="enter search criteria for a Lule Saami word here">Lule Saami:</td></tr>
+<tr><td><?php echo "<input  title='enter search criteria for a Lule Saami word here' type='text' name='smj' value='".$_GET['smj']."'></input></td><td align='center' class='searchCrits' > ".$_GET['smj']; ?></td></tr>
 
-<tr><td colspan="2">part of speech:</td></tr>
-<tr><td><?php echo "<input type='text' name='PoS' value='".$_GET['PoS']."'></input></td><td align='center' class='searchCrits' > ".$_GET['PoS']; ?></td></tr>
+<tr><td colspan="2"  title='enter search criteria here to limit results to a specific part of speech'>part of speech:</td></tr>
+<tr><td><?php echo "<input title='enter search criteria here to limit results to a specific part of speech' type='text' name='PoS' value='".$_GET['PoS']."'></input></td><td align='center' class='searchCrits' > ".$_GET['PoS']; ?></td></tr>
 
-<tr><td colspan="2">Norwegian translation:</td></tr>
-<tr><td><?php echo "<input type='text' name='nob' value='".$_GET['nob']."'></input></td><td align='center' class='searchCrits' > ".$_GET['nob']; ?></td></tr>
+<tr><td colspan="2" title='search for a specific Norwegian translation here'>Norwegian translation:</td></tr>
+<tr><td><?php echo "<input title='search for a specific Norwegian translation here' type='text' name='nob' value='".$_GET['nob']."'></input></td><td align='center' class='searchCrits' > ".$_GET['nob']; ?></td></tr>
 
-<tr><td colspan="2">Swedish translation:</td></tr>
-<tr><td><?php echo "<input type='text' name='sve' value='".$_GET['sve']."'></input></td><td align='center' class='searchCrits' > ".$_GET['sve']; ?></td></tr>
+<tr><td colspan="2" title='search for a specific Swedish translation here'>Swedish translation:</td></tr>
+<tr><td><?php echo "<input title='search for a specific Swedish translation here' type='text' name='sve' value='".$_GET['sve']."'></input></td><td align='center' class='searchCrits' > ".$_GET['sve']; ?></td></tr>
 
-<tr><td colspan="2">English translation:</td></tr>
-<tr><td><?php echo "<input type='text' name='eng' value='".$_GET['eng']."'></input></td><td align='center' class='searchCrits' > ".$_GET['eng']; ?></td></tr>
+<tr><td colspan="2" title='search for a specific English translation here'>English translation:</td></tr>
+<tr><td><?php echo "<input title='search for a specific English translation here' type='text' name='eng' value='".$_GET['eng']."'></input></td><td align='center' class='searchCrits' > ".$_GET['eng']; ?></td></tr>
 
 <tr><td colspan='2'>
 <input type="hidden" name="searchMode" value="basic"></input>
