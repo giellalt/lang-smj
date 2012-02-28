@@ -9,39 +9,39 @@
 </td></tr>
 <form name="criteria" action="" method="GET" accept-charset="utf-8">
 
-<tr><td colspan="1">Lule Saami: </td><td colspan="2" style="text-align:center;width:60px;"><span class="menu1" style="font-size:12px;font-style:italic;">
+<tr><td colspan="1" title='enter search criteria for a Lule Saami word here'>Lule Saami: </td><td colspan="2" style="text-align:center;width:60px;"><span title='select this button to restrict Lule Saami results to the exact search criterium entered' class="menu1" style="font-size:12px;font-style:italic;">
 <input type='radio' value="y" name="smjExact"></input>only exact hits
 <!--input type='radio' value="n" name="smjExact">all hits</input-->
 </span></td>
 <?php if ($_GET['smjExact'] == "y") echo "<td colspan='1' align='center'  class='searchCrits' style='width:60px;text-align:left;'>✗</td>"; else echo "<td colspan='1' style='width:60px;'></td>"; ?>
 </tr>
 
-<tr><td colspan="2" ><?php echo "<input type='text' name='smj' value='".$_GET['smj']."'></input></td><td colspan='2' align='center'  class='searchCrits' style='width:60px;'>".$_GET['smj']; ?></td></tr>
+<tr><td colspan="2" ><?php echo "<input title='enter search criteria for a Lule Saami word here' type='text' name='smj' value='".$_GET['smj']."'></input></td><td colspan='2' align='center'  class='searchCrits' style='width:60px;'>".$_GET['smj']; ?></td></tr>
 
-<tr><td colspan="4">part of speech:</td></tr>
-<tr><td colspan="2"><?php echo "<input type='text' name='PoS' value='".$_GET['PoS']."'></input></td><td colspan='2' align='center' class='searchCrits'> ".$_GET['PoS']; ?></td></tr>
+<tr><td colspan="4" title='enter search criteria here to limit results to a specific part of speech'>part of speech:</td></tr>
+<tr><td colspan="2"><?php echo "<input title='enter search criteria here to limit results to a specific part of speech' type='text' name='PoS' value='".$_GET['PoS']."'></input></td><td colspan='2' align='center' class='searchCrits'> ".$_GET['PoS']; ?></td></tr>
 
-<tr><td colspan="4">Norwegian translation:</td></tr>
-<tr><td colspan="2"><?php echo "<input type='text' name='nob' value='".$_GET['nob']."'></input></td><td colspan='2' align='center' class='searchCrits' > ".$_GET['nob']; ?></td></tr>
+<tr><td colspan="4" title='search for a specific Norwegian translation here'>Norwegian translation:</td></tr>
+<tr><td colspan="2"><?php echo "<input title='search for a specific Norwegian translation here' type='text' name='nob' value='".$_GET['nob']."'></input></td><td colspan='2' align='center' class='searchCrits' > ".$_GET['nob']; ?></td></tr>
 
-<tr><td colspan="4">Swedish translation:</td></tr>
-<tr><td colspan="2"><?php echo "<input type='text' name='sve' value='".$_GET['sve']."'></input></td><td colspan='2' align='center' class='searchCrits' > ".$_GET['sve']; ?></td></tr>
+<tr><td colspan="4" title='search for a specific Swedish translation here'>Swedish translation:</td></tr>
+<tr><td colspan="2"><?php echo "<input title='search for a specific Swedish translation here' type='text' name='sve' value='".$_GET['sve']."'></input></td><td colspan='2' align='center' class='searchCrits' > ".$_GET['sve']; ?></td></tr>
 
-<tr><td colspan="4">English translation:</td></tr>
-<tr><td colspan="2"><?php echo "<input type='text' name='eng' value='".$_GET['eng']."'></input></td><td colspan='2' align='center' class='searchCrits' > ".$_GET['eng']; ?></td></tr>
+<tr><td colspan="4" title='search for a specific English translation here'>English translation:</td></tr>
+<tr><td colspan="2"><?php echo "<input title='search for a specific English translation here' type='text' name='eng' value='".$_GET['eng']."'></input></td><td colspan='2' align='center' class='searchCrits' > ".$_GET['eng']; ?></td></tr>
 <!--</table>
 
 <table border="0" width="315px">-->
-<tr><td class='cellSmall'>cons. center:</td><td class='cellSmall'>root:</td><td/><td/></tr>
-<tr><td><?php echo "<input type='text' class='inputSmall' name='conCenter' value='".$_GET['conCenter']."'></input></td>
-<td><input type='text' class='inputSmall' name='root' value='".$_GET['root']."'></input></td>
+<tr><td class='cellSmall' title='enter search criteria here to limit results to a specific consonant center pattern'>cons. center:</td><td title='enter search criteria here to limit results to a specific root' class='cellSmall'>root:</td><td/><td/></tr>
+<tr><td><?php echo "<input title='enter search criteria here to limit results to a specific consonant center pattern' type='text' class='inputSmall' name='conCenter' value='".$_GET['conCenter']."'></input></td>
+<td><input title='enter search criteria here to limit results to a specific root' type='text' class='inputSmall' name='root' value='".$_GET['root']."'></input></td>
 <td align='center' class='searchCritsSmall'> ".$_GET['conCenter']."</td><td align='center' class='searchCritsSmall'> ".$_GET['root']; ?>
 </td></tr>
 
 
-<tr><td class='cellSmall'>lemma:</td><td class='cellSmall'>grade change:</td><td/><td/></tr>
-<tr><td><?php echo "<input type='text' class='inputSmall' name='lemma' value='".$_GET['lemma']."'></input></td>
-<td><input type='text' class='inputSmall' name='gradeChange' value='".$_GET['gradeChange']."'></input></td>
+<tr><td class='cellSmall' title='enter search criteria here to limit results to a specific lemma'>lemma:</td><td class='cellSmall' title='enter search criteria here to limit results to a specific grade change pattern'>grade change:</td><td/><td/></tr>
+<tr><td><?php echo "<input title='enter search criteria here to limit results to a specific lemma' type='text' class='inputSmall' name='lemma' value='".$_GET['lemma']."'></input></td>
+<td><input title='enter search criteria here to limit results to a specific grade change pattern' type='text' class='inputSmall' name='gradeChange' value='".$_GET['gradeChange']."'></input></td>
 <td align='center' class='searchCritsSmall'> ".$_GET['lemma']."</td><td align='center' class='searchCritsSmall'> ".$_GET['gradeChange']; ?>
 </td></tr>
 
