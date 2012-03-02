@@ -8,10 +8,10 @@
 <?php if (strlen($_GET['smj'])==0 && strlen($_GET['PoS'])==0 && strlen($_GET['nob'])==0 && strlen($_GET['sve'])==0 && strlen($_GET['eng'])==0) echo ""; else echo "search criteria";   ?>
 </td></tr>
 <form name="criteria" action="" method="GET" accept-charset="utf-8">
-<tr><td colspan="4" title="enter search criteria for a Lule Saami word here">Lule Saami:</td></tr>
+<tr><td colspan="4" title='enter search criteria for a Lule Saami word here'>Lule Saami:</td></tr>
 <tr><td><?php echo "<input  title='enter search criteria for a Lule Saami word here' type='text' name='smj' value='".$_GET['smj']."'></input></td><td align='center' class='searchCrits' > ".$_GET['smj']; ?></td></tr>
 
-<tr><td colspan="2"  title='enter search criteria here to limit results to a specific part of speech'>part of speech:</td></tr>
+<tr><td colspan="2" title='enter search criteria here to limit results to a specific part of speech'>part of speech:</td></tr>
 <tr><td><?php echo "<input title='enter search criteria here to limit results to a specific part of speech' type='text' name='PoS' value='".$_GET['PoS']."'></input></td><td align='center' class='searchCrits' > ".$_GET['PoS']; ?></td></tr>
 
 <tr><td colspan="2" title='search for a specific Norwegian translation here'>Norwegian translation:</td></tr>
