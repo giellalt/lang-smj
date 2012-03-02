@@ -4,15 +4,20 @@
     <p><hr style="width: 95%;" ></p>
 </span>
 <table border="0" width="315px">
-<tr><td colspan="4" class='searchCrits' style="height:20px;text-align:right;">
+<form name="criteria" action="" method="GET" accept-charset="utf-8">
+<tr><td colspan="2" class="searchCrits" style="height:20px;text-align:left;color:#800000;">
+<?php if ($_GET['regExps']=="y") echo "in regular expression mode" ?>
+</td>
+<td colspan="2" class='searchCrits' style="height:20px;text-align:right;">
 <?php if (strlen($_GET['smj'])==0 && strlen($_GET['PoS'])==0 && strlen($_GET['nob'])==0 && strlen($_GET['sve'])==0 && strlen($_GET['eng'])==0 && strlen($_GET['conCenter'])==0 && strlen($_GET['lemma'])==0 && strlen($_GET['root'])==0 && strlen($_GET['gradeChange'])==0) echo ""; else echo "search criteria";   ?>
 </td></tr>
-<form name="criteria" action="" method="GET" accept-charset="utf-8">
+<!--<form name="criteria" action="" method="GET" accept-charset="utf-8">-->
 
-<tr><td colspan="1" title='enter search criteria for a Lule Saami word here'>Lule Saami: </td><td colspan="2" style="text-align:center;width:60px;"><span title='select this button to restrict Lule Saami results to the exact search criterium entered' class="menu1" style="font-size:12px;font-style:italic;">
-<input type='radio' value="y" name="smjExact"></input>only exact hits
-<!--input type='radio' value="n" name="smjExact">all hits</input-->
-</span></td>
+<tr><td colspan="1" title='enter search criteria for a Lule Saami word here'>Lule Saami: </td>
+<td colspan="2" style="text-align:center;width:60px;">
+<?php if ($_GET['regExps']=="y") echo ""; else echo "<span title='select this button to restrict Lule Saami results to the exact search criterium entered' class='menu1' style='font-size:12px;font-style:italic;'>
+<input type='radio' value='y' name='smjExact'></input>only exact hits</span>"; ?>
+</td>
 <?php if ($_GET['smjExact'] == "y") echo "<td colspan='1' align='center'  class='searchCrits' style='width:60px;text-align:left;'>✗</td>"; else echo "<td colspan='1' style='width:60px;'></td>"; ?>
 </tr>
 
@@ -49,19 +54,12 @@
 <tr><td colspan='4'>
 <input type="hidden" name="searchMode" value="advanced"></input>
 <button type='submit' value='submit query'>submit query</button>
-<a href="searchSMJ_SQL_long.php" target="_self"><button type='button' value='reset'>reset fields</button></a>
+<?php if ($_GET['regExps']=="y") echo "<a href='searchSMJ_SQL_longReg.php?regExps=y' target='_self'>"; else echo "<a href='searchSMJ_SQL_long.php' target='_self'>";?>
+<button type='button' value='reset'>reset fields</button></a>
 <?php echo "
 <a href='searchSMJ_SQL_short.php?smj=".$_GET['smj']."&Pos=".$_GET['PoS']."&nob=".$_GET['nob']."&sve=".$_GET['sve']."&eng=".$_GET['eng']."&searchMode=basic' target='_self'><button type='button'>basic search</button></a>
 "; ?>
 </td>
 </tr>
-</form>
-<tr><td colspan='4'>
-<table border="0" class='searchCrits' style='text-align:left;width:290px;'>
-<tr><td colspan='3' >wildcards:</td></tr>
-<tr style='font-style:normal;'><td>%</td><td>=</td><td>zero or more characters</td></tr>
-<tr style='font-style:normal;'><td>_</td><td>=</td><td>any single character</td></tr>
-</table>
-</td></tr>
-</table>
-</div>
+
+<!-- start wildcard vs. regExps here: -->
