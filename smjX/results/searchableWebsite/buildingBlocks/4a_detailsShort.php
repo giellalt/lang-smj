@@ -39,7 +39,7 @@ document.getElementById("sveTransl").innerHTML = (txt);
 document.getElementById("sveTitle").innerHTML="Swedish";
 }
 function extractENG(txt){
-//document.getElementById("engTransl").innerHTML = (txt);
+document.getElementById("engTransl").innerHTML = (txt);
 document.getElementById("engTitle").innerHTML="English";
 }
 function extractSMJ_ID(txt){
