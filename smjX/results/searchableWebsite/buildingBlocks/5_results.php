@@ -15,6 +15,7 @@ $doubleDIV = "<p><hr style='width:95%'></p></span></div>";
 
 if($_GET){
     $searchMode = $_GET['searchMode'];
+    $regExps = $_GET['regExps'];
     $dq = '"'; //double quotes
 //set search specific variables for HU MySQL-server (replace apostrophe with backslash-apostrophe in search):
     if ($surfer == "hu") {
@@ -58,19 +59,20 @@ if($_GET){
         if($toDB){
             mysql_set_charset('utf8',$connect);
 // to include NULL data in the search, IF necessary as follows; smj search for EXACT hits also defined:
-            if ($smj=="") $querySMJ = "(smj IS NULL OR smj LIKE '%')";
-                else if ($searchMode == "advanced" && $smjExact=="y") $querySMJ = "smj LIKE '" . $smj . "'";
-                else $querySMJ = "smj LIKE '" . $smj . "%'";
-            if ($PoS!="") $querySMJPoS = "smj_pos LIKE '" . $PoS . "%'"; else $querySMJPoS = "(smj_pos IS NULL OR smj_pos LIKE '%')";
-            if ($PoS!="") $queryPoS = "pos LIKE '" . $PoS . "%'"; else $queryPoS = "(pos IS NULL OR pos LIKE '%')";
-            if ($nob!="") $queryNOB = "nob1 LIKE '" . $nob . "%'"; else $queryNOB = "(nob1 IS NULL OR nob1 LIKE '%')";
-            if ($sve!="") $querySVE = "sve1 LIKE '" . $sve . "%'"; else $querySVE = "(sve1 IS NULL OR sve1 LIKE '%')";
-            if ($eng!="") $queryENG = "eng1 LIKE '" . $eng . "%'"; else $queryENG = "(eng1 IS NULL OR eng1 LIKE '%')";
-                if ($searchMode == "advanced"){
-            if ($root!="") $queryRoot = "root LIKE '" . $root . "%'"; else $queryRoot = "(root IS NULL OR root LIKE '%')";
-            if ($lemma!="") $queryLemma = "lemma LIKE '" . $lemma . "%'"; else $queryLemma = "(lemma IS NULL OR lemma LIKE '%')";
-            if ($conCenter!="") $queryConCenter = "con_center LIKE '" . $conCenter . "%'"; else $queryConCenter = "(con_center IS NULL OR con_center LIKE '%')";
-            if ($gradeChange!="") $queryGradeChange = "grade_change LIKE '" . $gradeChange . "%'"; else $queryGradeChange = "(grade_change IS NULL OR grade_change LIKE '%')";
+  if ($smj=="") $querySMJ = "(smj IS NULL OR smj LIKE '%')";
+      else if ($searchMode == "advanced" && $smjExact=="y") $querySMJ = "smj LIKE '" . $smj . "'";
+      else if ($regExps == "y") $querySMJ = "smj REGEXP '" . $smj . "'";
+      else $querySMJ = "smj LIKE '" . $smj . "%'";
+  if ($PoS!=""&&$regExps=="y") $querySMJPoS = "smj_pos REGEXP '".$PoS."'"; else if ($PoS!="") $querySMJPoS = "smj_pos LIKE '" . $PoS . "%'"; else $querySMJPoS = "(smj_pos IS NULL OR smj_pos LIKE '%')";
+  if ($PoS!=""&&$regExps=="y") $queryPoS = "pos REGEXP '".$PoS."'"; else if ($PoS!="") $queryPoS = "pos LIKE '" . $PoS . "%'"; else $queryPoS = "(pos IS NULL OR pos LIKE '%')";
+  if ($nob!=""&&$regExps=="y") $queryNOB = "nob1 REGEXP '".$nob."'"; else if ($nob!="") $queryNOB = "nob1 LIKE '" . $nob . "%'"; else $queryNOB = "(nob1 IS NULL OR nob1 LIKE '%')";
+  if ($sve!=""&&$regExps=="y") $querySVE = "sve1 REGEXP '".$sve."'"; else if ($sve!="") $querySVE = "sve1 LIKE '" . $sve . "%'"; else $querySVE = "(sve1 IS NULL OR sve1 LIKE '%')";
+  if ($eng!=""&&$regExps=="y") $queryENG = "eng1 REGEXP '".$eng."'"; else if ($eng!="") $queryENG = "eng1 LIKE '" . $eng . "%'"; else $queryENG = "(eng1 IS NULL OR eng1 LIKE '%')";
+      if ($searchMode == "advanced"){
+  if ($root!=""&&$regExps=="y") $queryRoot = "root REGEXP '".$root."'"; else if ($root!="") $queryRoot = "root LIKE '" . $root . "%'"; else $queryRoot = "(root IS NULL OR root LIKE '%')";
+  if ($lemma!=""&&$regExps=="y") $queryLemma = "lemma REGEXP '".$lemma."'"; else if ($lemma!="") $queryLemma = "lemma LIKE '" . $lemma . "%'"; else $queryLemma = "(lemma IS NULL OR lemma LIKE '%')";
+  if ($conCenter!=""&&$regExps=="y") $queryConCenter = "con_center REGEXP '".$conCenter."'"; else if ($conCenter!="") $queryConCenter = "con_center LIKE '" . $conCenter . "%'"; else $queryConCenter = "(con_center IS NULL OR con_center LIKE '%')";
+  if ($gradeChange!=""&&$regExps=="y") $queryGradeChange = "grade_change REGEXP '".$gradeChange."'"; else if ($gradeChange!="") $queryGradeChange = "grade_change LIKE '" . $gradeChange . "%'"; else $queryGradeChange = "(grade_change IS NULL OR grade_change LIKE '%')";
 
 // the actual query here for ADVANCED search:
 $query = "SELECT * 
@@ -92,17 +94,20 @@ else if ($emptyRequest==1) $doubleDIV = "<p><hr style='width:95%'></p><p class='
 <div style='width:600px;padding:10px;margin-left:340px;background-color:#FFFFFF;margin-top:40px'>
 ";
 //$clickHint = "<span class='menu1' style='font-style:italic'>click anywhere on an entry to see more details</span>";
-            $searchString = "<span class='menu1' style=''>".$query."</span>";
             $clickHint = "";
+            $searchString = "<span class='menu1' style=''>".$query."</span>";
+// set $showQueryStatus to "y" to visualize the actual search input into the MySQL server:
+            $showQueryStatus = "";
+            if ($showQueryStatus=="y") $showQuery = "<p style='color:red;'>MySQL search query:<br/><span style='font-family:Courier;'>" . $query."</span></p>"; else $showQuery = "";
 // if no hits for search:
-              if( $qtyHits == 0 ) echo $resultHeader."</p>".$doubleDIV."<p>Sorry, no hits.</p>" ;
+              if( $qtyHits == 0 ) echo $resultHeader."</p>".$doubleDIV.$showQuery."<p>Sorry, no hits.</p>" ;
 // warning for all records being shown:
                 else {
                     if ($emptyRequest==1) echo $resultHeader."</p>".$doubleDIV.$clickHint; 
 // actual output of search results:
                     else if ($qtyHits==1)
-                    echo $resultHeader."<span style='font-size:12pt;'> (".$qtyHits." hit)</span></br>".$clickHint."</p>".$doubleDIV."<p class='menu1' style='text-align:left;'>";
-                    else echo $resultHeader."<span style='font-size:12pt;'> (".$qtyHits." hits)</span></br>".$clickHint."</p>".$doubleDIV."<p class='menu1' style='text-align:left;'>";
+                    echo $resultHeader."<span style='font-size:12pt;'> (".$qtyHits." hit)</span></br>".$clickHint."</p>".$doubleDIV.$showQuery."<p class='menu1' style='text-align:left;'>";
+                    else echo $resultHeader."<span style='font-size:12pt;'> (".$qtyHits." hits)</span></br>".$clickHint."</p>".$doubleDIV.$showQuery."<p class='menu1' style='text-align:left;'>";
                     while($row = mysql_fetch_array($results)){
                         $rowENC = mb_detect_encoding($row['smj']);
 // replace apostrophes in results with backslash-apostrophe so that javascript works:
