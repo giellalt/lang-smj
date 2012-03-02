@@ -1,4 +1,9 @@
-<div style="width:300px;padding:10px;margin-top:100px;float:right;position:fixed;margin-left:960px;background-color:#FFFFFF;">
+<script>
+<!--
+document.write("<div style='width:300px;padding:10px;margin-top:100px;float:right;position:fixed;margin-left:"+leftOffset+"px;background-color:#FFFFFF;'>");
+//-->
+</script>
+<!--div style="width:300px;padding:10px;margin-top:100px;float:right;position:fixed;margin-left:960px;background-color:#FFFFFF;"-->
 <span style="line-height:0px;">
     <p class="header4" style="">Details here:</p>
     <p><hr style="width: 95%;" ></p>

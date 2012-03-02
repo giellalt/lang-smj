@@ -1,10 +1,16 @@
-<div style="width:600px;padding:10px;margin-top:100px;margin-left:340px;background-color:#FFFFFF;position:fixed;">
+<script>
+<!--
+document.write("<div style='width:"+resultsBreite+"px;padding:10px;margin-top:100px;margin-left:340px;margin-right:300px;background-color:#FFFFFF;position:fixed;'>")
+//-->
+</script>
+
+<!--div style="width:600px;padding:10px;margin-top:100px;margin-left:340px;background-color:#FFFFFF;position:fixed;"-->
 <?php
 $resultHeader = "<span style='line-height:0px;'><p class='header4' style=''>Results here:";
 $doubleDIV = "<p><hr style='width:95%'></p></span></div>";
 
 //set whether to use HU-Berlin or local server (should be scripted to know automatically later)
-    $surfer = "me" ; // either "me" or "hu" or "service"
+    $surfer = "hu" ; // either "me" or "hu" or "service"
 
     $noSurfer = "<span style='font-size:20pt;color:red;'>No surfer indicated! </span><br/>Please contact<br/><span style='color:red;font-family:".$dq."Courier".$dq."'>mavsulasj (at) gmx.net</span><br/>for support<br/>";
 // connect to server
@@ -55,7 +61,6 @@ if($_GET){
         if ($surfer=="hu") $toDB = mysql_select_db("updp",$connect);
         else if ($surfer=="me") $toDB = mysql_select_db("smjDATA",$connect);
         else die($noSurfer);
-
         if($toDB){
             mysql_set_charset('utf8',$connect);
 // to include NULL data in the search, IF necessary as follows; smj search for EXACT hits also defined:
@@ -84,21 +89,23 @@ $query = "SELECT * FROM table_SIMPLE WHERE " . $querySMJ . " AND " . $queryPoS .
 // set array of results from query:
             $results = mysql_query($query);
             $qtyHits = mysql_num_rows($results);
-// set headers for results <DIV/> after query:
-if ($emptyRequest==0) $doubleDIV = "<p><hr style='width:95%'></p></span></div>
-<div style='width:600px;padding:10px;margin-left:340px;background-color:#FFFFFF;height:100px'></div>
-<div style='width:600px;padding:10px;margin-left:340px;background-color:#FFFFFF;margin-top:40px'>
+// set headers for results <DIV/> after query, using dynamic width based on javascript variable resultsBreite set in page header:
+if ($emptyRequest==0) $doubleDIV = "<p><hr style='95%;'></p></span></div>
+<script><!--
+document.write(".$dq."<div style='width:".$dq."+resultsBreite+".$dq."px;padding:10px;margin-left:340px;background-color:#FFFFFF;height:100px'></div><div style='width:".$dq."+resultsBreite+".$dq."px;padding:10px;margin-left:340px;background-color:#FFFFFF;margin-top:40px'>".$dq.");//-->
+</script>
 ";
-else if ($emptyRequest==1) $doubleDIV = "<p><hr style='width:95%'></p><p class='menu1' style='text-align:left;color:red;'>No search criteria entered - showing all ".$qtyHits." records</p></span></div>
-<div style='width:600px;padding:10px;margin-left:340px;background-color:#FFFFFF;height:100px'></div>
-<div style='width:600px;padding:10px;margin-left:340px;background-color:#FFFFFF;margin-top:40px'>
+else if ($emptyRequest==1) $doubleDIV = "<p><hr style='width:95%'></p></span><p class='menu1' style='text-align:left;color:red;'>No search criteria entered - showing all ".$qtyHits." records</p></div>
+<script><!--
+document.write(".$dq."<div style='width:".$dq."+resultsBreite+".$dq."px;padding:10px;margin-left:340px;background-color:#FFFFFF;height:130px'></div><div style='width:".$dq."+resultsBreite+".$dq."px;padding:10px;margin-left:340px;background-color:#FFFFFF;margin-top:40px'>".$dq.");//-->
+</script>
 ";
 //$clickHint = "<span class='menu1' style='font-style:italic'>click anywhere on an entry to see more details</span>";
             $clickHint = "";
             $searchString = "<span class='menu1' style=''>".$query."</span>";
 // set $showQueryStatus to "y" to visualize the actual search input into the MySQL server:
             $showQueryStatus = "";
-            if ($showQueryStatus=="y") $showQuery = "<p style='color:red;'>MySQL search query:<br/><span style='font-family:Courier;'>" . $query."</span></p>"; else $showQuery = "";
+            if ($showQueryStatus=="y") $showQuery = "<p style='color:red;'>MySQL search query:<br/><span style='font-family:Courier;'>" . $query."</span></p><p>".$windowSize."</p>"; else $showQuery = "";
 // if no hits for search:
               if( $qtyHits == 0 ) echo $resultHeader."</p>".$doubleDIV.$showQuery."<p>Sorry, no hits.</p>" ;
 // warning for all records being shown:
