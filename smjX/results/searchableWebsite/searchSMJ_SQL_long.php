@@ -13,6 +13,7 @@
 <?php include("buildingBlocks/1_mainHeader.php"); ?>     
 
 <?php include("buildingBlocks/2b_searchFieldsLong.php"); ?>     
+<?php include("buildingBlocks/2bW_wildcards.php"); ?>     
 
 <?php include("buildingBlocks/3_credits.php"); ?>     
 
