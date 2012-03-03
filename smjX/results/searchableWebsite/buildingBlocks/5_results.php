@@ -6,11 +6,13 @@ document.write("<div style='width:"+resultsBreite+"px;padding:10px;margin-top:10
 
 <!--div style="width:600px;padding:10px;margin-top:100px;margin-left:340px;background-color:#FFFFFF;position:fixed;"-->
 <?php
-$resultHeader = "<span style='line-height:0px;'><p class='header4' style=''>Results here:";
-$doubleDIV = "<p><hr style='width:95%'></p></span></div>";
 
 //set whether to use HU-Berlin or local server (should be scripted to know automatically later)
-    $surfer = "hu" ; // either "me" or "hu" or "service"
+$surfer = "hu" ; // either "me" or "hu" or "service"
+
+if ($surfer=="me") $resultHeader = "<span style='line-height:0px;'><p class='header4' style=''>Results here: <span class='regularExpressions'>[LOCAL HOST!]</span>";
+    else $resultHeader = "<span style='line-height:0px;'><p class='header4' style=''>Results here:";
+$doubleDIV = "<p><hr style='width:95%'></p></span></div>";
 
     $noSurfer = "<span style='font-size:20pt;color:red;'>No surfer indicated! </span><br/>Please contact<br/><span style='color:red;font-family:".$dq."Courier".$dq."'>mavsulasj (at) gmx.net</span><br/>for support<br/>";
 // connect to server
