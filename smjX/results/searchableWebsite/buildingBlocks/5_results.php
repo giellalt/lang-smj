@@ -83,10 +83,10 @@ if($_GET){
 
 // the actual query here for ADVANCED search:
 $query = "SELECT * 
-FROM table_SIMPLE WHERE " . $querySMJ . " AND " . $queryPoS . " AND " . $queryNOB . " AND " . $querySVE . " AND " . $queryENG . " AND " . $queryRoot . " AND " . $queryLemma . " AND " . $queryConCenter . " AND " . $queryGradeChange ;}
+FROM smjTable WHERE " . $querySMJ . " AND " . $queryPoS . " AND " . $queryNOB . " AND " . $querySVE . " AND " . $queryENG . " AND " . $queryRoot . " AND " . $queryLemma . " AND " . $queryConCenter . " AND " . $queryGradeChange ;}
             //the actual query here for BASIC:
                 else
-$query = "SELECT * FROM table_SIMPLE WHERE " . $querySMJ . " AND " . $queryPoS . " AND " . $queryNOB . " AND " . $querySVE . " AND " . $queryENG
+$query = "SELECT * FROM smjTable WHERE " . $querySMJ . " AND " . $queryPoS . " AND " . $queryNOB . " AND " . $querySVE . " AND " . $queryENG
             ;
 // set array of results from query:
             $results = mysql_query($query);
