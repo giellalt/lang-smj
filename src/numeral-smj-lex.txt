@@ -1812,8 +1812,8 @@ LEXICON NUM-PREFIXES
  %*+Use/Circ:%* ARABIC ; ! *24
  %$+Use/Circ:%$ ARABIC ; ! $24
  %€+Use/Circ:%€ ARABIC ; ! €24
- %<+Use/Circ:%< ARABIC ; ! <24
- %>+Use/Circ:%>7 ARABIC ; ! >24
+ %<+Use/Circ:%[%<%] ARABIC ; ! <24
+ %>+Use/Circ:%[%>%] ARABIC ; ! >24
  s%.+Use/Circ:s%. ARABIC ; ! s.24
 	
 
@@ -1857,15 +1857,14 @@ LEXICON ARABICLOOP
  +Use/Circ: ARABIC ;	   ! Allowing for "23 500" w/nbsp (initial char is alt-space)	!
  %/+Use/Circ:%/ ARABIC;	   ! 24/12			!		
 !%' ARABIC ;	   ! Since ' denotes cons.grad. This is not optimal either. 
-!+Num:%- R ; !^C^	   	! Number compounds
- +Num+Use/Circ: R ; 			   	! Hyphen removed bec. of "123- ja 124-viessu" !
-!+A+Ord:%. # ;							 !^C^
+!+A+Ord:%. # ;
  ,%-+Num:,%-       # ; ! 10,-
  ,%–+Num:,%–       # ; ! 10,–
  ,%—+Num:,%—       # ; ! 10,—
  %%+Num+Nom:%%     # ; ! 50%. It is wrong, but 75 % of us write "75%".
  % %%+Num+Nom:% %% # ;! We must analyse the correct ones as well... 50 % etc.
  +Num: ARABICDELIMITER ; ! list of number-case delimiters
+ +Num: RHyph  ;          ! Hyphen and +Use/Circ added appropriately in RHyph
 
 LEXICON ARABICLOOPORD
  +A+Ord:%. # ;

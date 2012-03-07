@@ -21,27 +21,6 @@
 ! The file contains the rule set for the non-segmental
 ! Lule Sámi morphphonological rules
 
-! m4 rules for selecting parts of the file to a certain application.
-changequote(<<,>>)
-changecom(<<!>>,<<
->>)
-define(<<FLAGINIT>>,
-<<ifdef(<<$1>>,<<define(<<$1>>,1)>>,<<define(<<$1>>,0)>>)>>)dnl
-dnl
-define(<<DIVNUM>>,0)dnl
-define(<<ENDOMIT>>,<<popdef(<<DIVNUM>>)divert(DIVNUM)dnl>>)dnl
-define(<<ENDKEEP>>,<<popdef(<<DIVNUM>>)divert(DIVNUM)dnl>>)dnl
-define(<<OMITIF>>,
-  <<pushdef(<<DIVNUM>>,ifelse(eval($1),0,0,-1))divert(DIVNUM)dnl>>)dnl
-define(<<KEEPIF>>,
-  <<pushdef(<<DIVNUM>>,ifelse(eval($1),0,-1,0))divert(DIVNUM)dnl>>)dnl
-define(<<ELSE>>,
-  <<define(<<DIVNUM>>,ifelse(DIVNUM,0,-1,0))divert(DIVNUM)dnl>>)dnl
-
-FLAGINIT(<<HYPHENATE>>)
-FLAGINIT(<<DIPHSIMPL>>)
-FLAGINIT(<<HUNSPELL>>)
-
 Alphabet
  a á b c d e f g h i j k l m n ñ ń ŋ o p q			! small
  r s t u v w x y z å ä ø ö å æ:æ æ:ä %-
@@ -55,14 +34,12 @@ Alphabet
 
 ! ':0			            ! Gradation mark
  ':0 %/ '7:'            ! From sme.
-  »7:» %>7:%>
 
-
-KEEPIF(HYPHENATE)
- #   %^                     ! Compound boundary and hyphenation mark (hyphenation version)
-ELSE
- #:0 %^:0                   ! Compound boundary and hyphenation mark
-ENDKEEP
+! Literal quotes and angles must be escaped (cf morpheme boundaries further down):
+ »7     ! »
+ «7     ! «
+ %[%>%] ! >
+ %[%<%] ! <
 
  e7:e i7:i o7:o o9:o u7:u z9:z   ! Morphophonemes  in sme, here temporarily due to common propernoun file
 
@@ -76,12 +53,15 @@ ENDKEEP
  Q1:0 Q2:0 Q3:0 Q4:0 Q5:0 Q6:0 Q7:0 Q8:0 Q9:0   ! They trigger morphophono-
  Y1:0 Y2:0 Y3:0 Y4:0 Y5:0 Y6:0 Y7:0 Y8:0 Y9:0   ! logical rules
  
-OMITIF(HUNSPELL)
- %>:0 »:0	! stem-suffix border mark
-ELSE
- %> »:%>		! stem-suffix border mark, only visible in Hunspell
-ENDOMIT
+! Morpheme boundaries:
+ «  ! Derivational prefix
+ »  ! Derivational suffix
+ %< ! Inflectional prefx
+ %> ! Inflectional suffix
+ #  ! Word boundary for both lexicalised and dynamic compounds
+ %^ ! (exceptional) soft hyphenation point
 
+! End of alphabet definitions
 ;
 
 Sets
