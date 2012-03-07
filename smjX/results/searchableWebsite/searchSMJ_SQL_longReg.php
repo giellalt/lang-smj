@@ -7,7 +7,7 @@
   <link rel='shortcut icon' href='buildingBlocks/farben4.gif'/>
   <title>search Mávsulasj (advanced)</title>
   <script type="text/javascript" src="buildingBlocks/audioFiles/jwplayer/jwplayer.js"></script>
-  <script>Breite = window.innerWidth - 50; detailsBreite = 300; leftOffset = Breite - detailsBreite; resultsBreite = window.innerWidth - detailsBreite - 410;</script>
+  <script>Breite = window.innerWidth - 50; detailsBreite = 300; leftOffset = Breite - detailsBreite; resultsBreite = window.innerWidth - detailsBreite - 410; topOffset = 90;</script>
 <!-- script for pop up of regular expressions: -->
         <script type="text/javascript">
         <!--
