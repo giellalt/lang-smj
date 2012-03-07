@@ -1,6 +1,6 @@
 <script>
 <!--
-document.write("<div style='width:"+resultsBreite+"px;padding:10px;margin-top:"+topOffset+"px;margin-left:340px;margin-right:300px;background-color:#FFFFFF;position:fixed;'>")
+document.write("<div id='resultsHeader' style='width:"+resultsBreite+"px;padding:10px;margin-top:"+topOffset+"px;margin-left:340px;margin-right:300px;background-color:#FFFFFF;position:fixed;'>")
 //-->
 </script>
 
@@ -94,12 +94,12 @@ $query = "SELECT * FROM smjTable WHERE " . $querySMJ . " AND " . $queryPoS . " A
 // set headers for results <DIV/> after query, using dynamic width based on javascript variable resultsBreite set in page header:
 if ($emptyRequest==0) $doubleDIV = "<p><hr style='95%;'></p></span></div>
 <script><!--
-document.write(".$dq."<div style='width:".$dq."+resultsBreite+".$dq."px;padding:10px;margin-left:340px;background-color:#FFFFFF;height:100px'></div><div style='width:".$dq."+resultsBreite+".$dq."px;padding:10px;margin-left:340px;background-color:#FFFFFF;margin-top:40px'>".$dq.");//-->
+document.write(".$dq."<div id='normalHitsDiv1' style='width:".$dq."+resultsBreite+".$dq."px;padding:10px;margin-left:340px;background-color:#FFFFFF;height:100px'></div><div id='normalHitsDiv2' style='width:".$dq."+resultsBreite+".$dq."px;padding:10px;margin-left:340px;background-color:#FFFFFF;margin-top:30px'>".$dq.");//-->
 </script>
 ";
 else if ($emptyRequest==1) $doubleDIV = "<p><hr style='width:95%'></p></span><p class='menu1' style='text-align:left;color:red;'>No search criteria entered - showing all ".$qtyHits." records</p></div>
 <script><!--
-document.write(".$dq."<div style='width:".$dq."+resultsBreite+".$dq."px;padding:10px;margin-left:340px;background-color:#FFFFFF;height:130px'></div><div style='width:".$dq."+resultsBreite+".$dq."px;padding:10px;margin-left:340px;background-color:#FFFFFF;margin-top:40px'>".$dq.");//-->
+document.write(".$dq."<div id='emptyRequestDiv1' style='width:".$dq."+resultsBreite+".$dq."px;padding:10px;margin-left:340px;background-color:#FFFFFF;height:130px'></div><div id='emptyRequestDiv2' style='width:".$dq."+resultsBreite+".$dq."px;padding:10px;margin-left:340px;background-color:#FFFFFF;margin-top:30px'>".$dq.");//-->
 </script>
 ";
 //$clickHint = "<span class='menu1' style='font-style:italic'>click anywhere on an entry to see more details</span>";

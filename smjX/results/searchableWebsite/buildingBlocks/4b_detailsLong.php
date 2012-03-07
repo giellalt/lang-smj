@@ -1,6 +1,6 @@
 <script>
 <!--
-document.write("<div style='width:300px;padding:10px;margin-top:"+topOffset+"px;float:right;position:fixed;margin-left:"+leftOffset+"px;background-color:#FFFFFF;'>");
+document.write("<div id='detailsLongHeader' style='width:300px;padding:10px;margin-top:"+topOffset+"px;float:right;position:fixed;margin-left:"+leftOffset+"px;background-color:#FFFFFF;'>");
 //-->
 </script>
 <!--div style="width:300px;padding:10px;margin-top:100px;float:right;position:fixed;margin-left:960px;background-color:#FFFFFF;"-->

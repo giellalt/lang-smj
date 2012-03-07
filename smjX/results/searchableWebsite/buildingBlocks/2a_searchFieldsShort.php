@@ -1,6 +1,6 @@
 <script>
 <!--
-document.write("<div style='width:320px;padding:10px;margin-top:"+topOffset+"px;float:left;position:fixed;background-color:#FFFFFF;'>");
+document.write("<div id='searchShortHeader' style='width:320px;padding:10px;margin-top:"+topOffset+"px;float:left;position:fixed;background-color:#FFFFFF;'>");
 //-->
 </script>
 
