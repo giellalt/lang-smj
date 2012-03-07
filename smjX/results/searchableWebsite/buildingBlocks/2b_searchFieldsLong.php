@@ -1,4 +1,11 @@
-<div style="width:320px;padding:10px;margin-top:100px;float:left;position:fixed;background-color:#FFFFFF;">
+<script>
+<!--
+document.write("<div style='width:320px;padding:10px;margin-top:"+topOffset+"px;float:left;position:fixed;background-color:#FFFFFF;'>");
+//-->
+</script>
+
+
+<!--div style="width:320px;padding:10px;margin-top:px;float:left;position:fixed;background-color:#FFFFFF;"-->
 <span style="line-height:0px;">
     <p class="header4" style="">Search here:</p>
     <p><hr style="width: 95%;" ></p>

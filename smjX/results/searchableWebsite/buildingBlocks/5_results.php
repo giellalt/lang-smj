@@ -1,6 +1,6 @@
 <script>
 <!--
-document.write("<div style='width:"+resultsBreite+"px;padding:10px;margin-top:100px;margin-left:340px;margin-right:300px;background-color:#FFFFFF;position:fixed;'>")
+document.write("<div style='width:"+resultsBreite+"px;padding:10px;margin-top:"+topOffset+"px;margin-left:340px;margin-right:300px;background-color:#FFFFFF;position:fixed;'>")
 //-->
 </script>
 
@@ -154,9 +154,18 @@ if ($row['audioLink'] == "") // this loads an empty file into jwplayer if no fil
     echo "jwplayer().load('buildingBlocks/audioFiles/.mp3');extractAudioStatus('no audio available for ');";
     else echo "extractAudioStatus('listen to ');";
 echo $dq." value='choose'><span style='font-size:12px;'>";
-                        if ($row['audioLink']!="") echo "<span style='color:#FF3333;'>▸</span> "; else echo "• ";
-                        echo "</span>".$row['smj'] ;
-                        echo "<span style='font-size:12px;'> (" . $row['pos'] . "); Norw.: " . $row['nob1'] . " (no. ".$row['uniqueSMJ_ID'].")</p>" ;
+// formatting for actual hits here:
+            if ($row['audioLink']!="") echo "<span style='color:#FF3333;'>▸</span> "; else echo "• ";
+            echo "</span>".$row['smj'] ;
+            echo "<span style='font-size:12px;'> (" . $row['pos'] . ") ";
+                        
+            if ($row['nob1']) echo "<span style='color:#335C33;font-style:italic;'>Norw.</span> " . $row['nob1'] ;
+//                if ($row['nob1'] and ($row['sve1'] or $row['eng1'])) echo "; ";
+            if ($row['sve1']) echo "<span style='color:#335C33;font-style:italic;'> Swed.</span> " . $row['sve1'] . " ";
+//                if ($row['sve1'] and $row['eng1']) echo "; ";
+            if ($row['eng1']) echo "<span style='color:#335C33;font-style:italic;'> Engl.</span> " . $row['eng1'] . " ";
+//                echo " (no. ".$row['uniqueSMJ_ID'].")";
+                echo "</p>" ;
                         }
                     }
             echo "</p><br/>";
