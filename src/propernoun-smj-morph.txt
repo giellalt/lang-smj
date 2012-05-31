@@ -38,7 +38,7 @@ LEXICON ACCRA-LOAN-obj
  +N+Prop+Obj:%> ACCRADECL-LOAN ; 
 
 LEXICON ACCRA-org
- +N+Prop+Org:%> ACCRADECL ; 
+ +N+Prop+Org:%> ACCRADECL_PLC-ORG ; 
 
 LEXICON ACCRA-LOAN-org
  +N+Prop+Org:%> ACCRADECL-LOAN ; 
@@ -64,12 +64,12 @@ LEXICON ACCRA-malfem
 
 LEXICON ACCRA-objplc
  +N+Prop+Obj:%> ACCRADECL ;
- +N+Prop+Plc:%>  ACCRADECL ;
+ +N+Prop+Plc:%>  ACCRADECL_PLC-ORG ;
  +N+Prop+Plc+Sg+Gen:%> VUONAK ;
  
 LEXICON ACCRA-femplc
  +N+Prop+Fem:%> ACCRADECL ;
- +N+Prop+Plc:%>  ACCRADECL ;
+ +N+Prop+Plc:%>  ACCRADECL_PLC-ORG ;
  +N+Prop+Plc+Sg+Gen:%> VUONAK ;
  
 LEXICON ACCRA-sur
@@ -89,11 +89,11 @@ LEXICON ACCRA-LOAN-plc ! Place names
 
 
 LEXICON ACCRA-plc ! Place names
- +N+Prop+Plc:%>  ACCRADECL ;
+ +N+Prop+Plc:%>  ACCRADECL_PLC-ORG ;
  +N+Prop+Plc+Sg+Gen:%> VUONAK ;
 
 !LEXICON ACCRA-LOAN-surplc ! Names that are both surnames and place names
-! +N+Prop+Sur:%> ACCRADECL ;
+! +N+Prop+Sur:%> ACCRADECL-LOAN ;
 ! +N+Prop+Sur+Sg+Attr@U.Cap.Obl@+Use/Sub:%>@U.Cap.Obl@ # ; !
 ! +N+Prop+Plc:%> ACCRADECL-LOAN ;
 ! +N+Prop+Plc+Sg+Gen+Use/Sub:%> VUONAK ; !
@@ -101,60 +101,178 @@ LEXICON ACCRA-plc ! Place names
 LEXICON ACCRA-surplc ! Names that are both surnames and place names
  +N+Prop+Sur:%> ACCRADECL ;
  +N+Prop+Sur+Sg+Attr@U.Cap.Obl@+Use/Sub:%>@U.Cap.Obl@ # ; !
- +N+Prop+Plc:%> ACCRADECL ;
+ +N+Prop+Plc:%> ACCRADECL_PLC-ORG ;
  +N+Prop+Plc+Sg+Gen:%> VUONAK ;
 
 LEXICON ACCRA ! Vowel-final names without Gradation and Ill change
  +N+Prop:%> ACCRADECL ;
 
 LEXICON RONDANE-plc
- +N+Prop+Plc:%> ACCRADECL ;
+ +N+Prop+Plc:%> RONDANEDECL ;
  
 LEXICON RONDANE-LOAN ! Place names
- +N+Prop+Plc:%>  ACCRADECL-LOAN ;
+ +N+Prop+Plc:%>  RONDANEDECL-LOAN ;
  +N+Prop+Plc+Sg+Gen+Use/Sub:%> VUONAK ; !
 
 LEXICON RONDANE-sur
- +N+Prop+Sur:%> ACCRADECL ;
+ +N+Prop+Sur:%> RONDANEDECL ;
  +N+Prop+Sur+Sg+Attr@U.Cap.Obl@+Use/Sub:%>@U.Cap.Obl@ # ; !
  
 LEXICON RONDANE-obj
- +N+Prop+Obj:%> ACCRADECL ; 
+ +N+Prop+Obj:%> RONDANEDECL ; 
 
 
 LEXICON RONDANE-org
- +N+Prop+Org:%> ACCRADECL ; 
+ +N+Prop+Org:%> RONDANEDECL ; 
 
 
 LEXICON RONDANE-mal
- +N+Prop+Mal:%>  ACCRADECL ; 
+ +N+Prop+Mal:%>  RONDANEDECL ; 
  +N+Prop+Mal+Sg+Attr@U.Cap.Obl@+Use/Sub:%>@U.Cap.Obl@ # ; !
  
 LEXICON RONDANE-fem
- +N+Prop+Fem:%>  ACCRADECL ; 
+ +N+Prop+Fem:%>  RONDANEDECL ; 
  +N+Prop+Fem+Sg+Attr@U.Cap.Obl@+Use/Sub:%>@U.Cap.Obl@ # ; !
 
-LEXICON DUBAI-org
-:i BERN-org ;
+LEXICON RONDANEDECL
+ @U.Cap.Obl@ RONDANE-DC ;
+ 
+ 
+LEXICON RONDANEDECL-LOAN
+ @U.Cap.Obl@ RONDANE-DC-LOAN ;
+ +Use/Sub: LASJ; !
+ 
+LEXICON RONDANE-DC
+ +Sg+Nom: K ;
+ +Sg+Nom: RHyph ;       
+ +Ess:n K ;
+ +Sg+Ill:Q4j K ; !Q4 to get e:i
+ +Sg+Gen: K ;
+ +Sg+Gen: RHyph ;      
+ +Sg+Acc:v K ;
+ +Sg+Ine:n K ;
+ +Sg+Ela:s K ;
+ +Pl+Nom: K ;
+ +Pl+Gen:Q4j K ; !Q4 to get e:i
+ +Pl+Gen:Q4j K ; !Q4 to get e:i     
+ +Pl+Acc:Q4jt K ;
+ +Pl+Ill:Q4jda K ;
+ +Pl+Ine:Q4jn K ;
+ +Pl+Ela:Q4js K ;
+ +Pl+Com:Q4j K ; !Q4 to get e:i
+ +Sg+Com:Q4jn K ;
+ +Sg+Com+Use/Sub:X5jn K ; ! Norgejn
+ 
 
-LEXICON DUBAI-mal
-:i BERN-mal ;
+ 
+LEXICON RONDANE-DC-LOAN
+ +Sg+Nom: K ;
+ +Sg+Nom: RHyph ;       
+ +Ess+Use/Sub:n K ; !
+ +Sg+Ill+Use/Sub:Q4j K ; ! !Q4 to get e:i
+ +Sg+Gen+Use/Sub: K ; !
+ +Sg+Gen+Use/Sub: RHyph ; ! 
+ +Sg+Acc+Use/Sub:v K ; !
+ +Sg+Ine+Use/Sub:n K ; !
+ +Sg+Ela+Use/Sub:s K ; !
+ +Pl+Nom+Use/Sub: K ; !
+ +Pl+Gen+Use/Sub:Q4j K ; ! !Q4 to get e:i
+ +Pl+Gen+Use/Sub:Q4j K ; ! !Q4 to get e:i     
+ +Pl+Acc+Use/Sub:Q4jt K ; !
+ +Pl+Ill+Use/Sub:Q4jda K ; !
+ +Pl+Ine+Use/Sub:Q4jn K ; !
+ +Pl+Ela+Use/Sub:Q4js K ; !
+ +Pl+Com+Use/Sub:Q4j K ; ! !Q4 to get e:i
+ +Sg+Com+Use/Sub:Q4jn K ; !
+ +Sg+Com+Use/Sub:X5jn K ; ! !SUB Norgejn
 
-
-LEXICON DUBAI-sur
-:i BERN-sur ;
-
-LEXICON DUBAI-plc
-:i BERN-plc ;
 
 LEXICON DUBAI-fem
-:i BERN-fem ;
+! Different lexicon for female persons. Audhild.
+ +N+Prop+Fem:%> DUBAIDECL ;
+ +N+Prop+Fem+Sg+Attr@U.Cap.Obl@+Use/Sub:%>@U.Cap.Obl@i # ; !
+
+LEXICON DUBAI-org
+! Different lexicon for organisations. Microsoft.
+ +N+Prop+Org:%> DUBAIDECL_PLC-ORG ;
+ 
+LEXICON DUBAI-mal
+! Different lexicon for male persons. Finn. Torfinn.
+ +N+Prop+Mal:%> DUBAIDECL ;
+ +N+Prop+Mal+Sg+Attr@U.Cap.Obl@+Use/Sub:%>@U.Cap.Obl@i # ; !
+
+LEXICON DUBAI-sur
+! Different lexicon for personal surnames. Blind
+ +N+Prop+Sur:%> DUBAIDECL ;
+ +N+Prop+Sur+Sg+Attr@U.Cap.Obl@+Use/Sub:%>@U.Cap.Obl@i # ; !
+ 
+LEXICON DUBAI-plc
+! Different lexicon for place names. Bern.
+ +N+Prop+Plc:%> DUBAIDECL_PLC-ORG ;
+ +N+Prop+Plc+Sg+Gen:i%>ja VUONAK ;
+
+LEXICON DUBAIDECL
+ @U.Cap.Obl@ DUBAIUCASE ;
+ 
+LEXICON DUBAIDECL_PLC-ORG
+ @U.Cap.Obl@ DUBAIUCASE_PLC-ORG ;
+ +Use/Sub:ija LASJ ; !
+
+
+LEXICON DUBAIUCASE ! Final foot structure (X) => Loc:as
+ +Sg+Nom:i K ;
+ +Sg+Nom:i RHyph ;        
+ +Sg+Ill:ijaj K ;
+ +Ess:ijan K ;
+ +Sg+Gen:ija K ;
+ +Sg+Gen:i K ;
+ +Sg+Gen:i RHyph ;       
+ +Sg+Acc:ijav K ;
+ +Sg+Ine:ijan K ;
+ +Sg+Ela:ijas K ;
+ +Pl+Nom:ija K ;
+ +Pl+Gen:ijaj K ;
+ +Pl+Gen:ijaj RHyph ;      
+ +Pl+Acc:ijajt K ;
+ +Pl+Ill:ijajda K ;
+ +Pl+Ine:ijajn K ;
+ +Pl+Ela:ijajs K ;
+ +Pl+Com:ijaj K ;
+ +Sg+Com:ijajn K ;
+
+
+LEXICON DUBAIUCASE_PLC-ORG ! Final foot structure (X) => Loc:as
+ +Sg+Nom:i K ;
+ +Sg+Nom:i RHyph ;        
+ +Sg+Ill:ijaj K ;
+ +Ess:ijan K ;
+ +Sg+Gen:ija K ;
+ +Sg+Gen:i K ;
+ +Sg+Gen:i RHyph ;       
+ +Sg+Acc:ijav K ;
+ +Sg+Ine:ijan K ;
+ +Sg+Ela:ijas K ;
+! +Pl+Nom:ija K ;
+! +Pl+Gen:ijaj K ;
+! +Pl+Gen:ijaj RHyph ;      
+! +Pl+Acc:ijajt K ;
+! +Pl+Ill:ijajda K ;
+! +Pl+Ine:ijajn K ;
+! +Pl+Ela:ijajs K ;
+! +Pl+Com:ijaj K ;
+ +Sg+Com:ijajn K ;
 
 LEXICON ACCRADECL
 ! These sublexica are irrelevant for ACCRA, but added
 ! for the sake of the lexicon MARJA
  @U.Cap.Obl@ ACCRA-DC ;
+ 
+LEXICON ACCRADECL_PLC-ORG
+! These sublexica are irrelevant for ACCRA, but added
+! for the sake of the lexicon MARJA
+ @U.Cap.Obl@ ACCRA-DC_PLC-ORG ;
  +Use/Sub: LASJ; !
+
  
 LEXICON ACCRADECL-LOAN
 ! These sublexica are irrelevant for ACCRA, but added
@@ -184,6 +302,28 @@ LEXICON ACCRA-DC
  +Sg+Com:Q4jn K ;
  +Sg+Com+Use/Sub:X5jn K ; ! Norgejn
  
+LEXICON ACCRA-DC_PLC-ORG
+ +Sg+Nom: K ;
+ +Sg+Nom: RHyph ;       
+ +Ess:n K ;
+ +Sg+Ill:Q4j K ; !Q4 to get e:i
+ +Sg+Gen: K ;
+ +Sg+Gen: RHyph ;      
+ +Sg+Acc:v K ;
+ +Sg+Ine:n K ;
+ +Sg+Ela:s K ;
+! +Pl+Nom: K ;
+! +Pl+Gen:Q4j K ; !Q4 to get e:i
+! +Pl+Gen:Q4j K ; !Q4 to get e:i     
+! +Pl+Acc:Q4jt K ;
+! +Pl+Ill:Q4jda K ;
+! +Pl+Ine:Q4jn K ;
+! +Pl+Ela:Q4js K ;
+! +Pl+Com:Q4j K ; !Q4 to get e:i
+ +Sg+Com:Q4jn K ;
+ +Sg+Com+Use/Sub:X5jn K ; ! Norgejn
+
+ 
 LEXICON ACCRA-DC-LOAN
  +Sg+Nom: K ;
  +Sg+Nom: RHyph ;       
@@ -194,23 +334,23 @@ LEXICON ACCRA-DC-LOAN
  +Sg+Acc+Use/Sub:v K ; !
  +Sg+Ine+Use/Sub:n K ; !
  +Sg+Ela+Use/Sub:s K ; !
- +Pl+Nom+Use/Sub: K ; !
- +Pl+Gen+Use/Sub:Q4j K ; ! !Q4 to get e:i
- +Pl+Gen+Use/Sub:Q4j K ; ! !Q4 to get e:i     
- +Pl+Acc+Use/Sub:Q4jt K ; !
- +Pl+Ill+Use/Sub:Q4jda K ; !
- +Pl+Ine+Use/Sub:Q4jn K ; !
- +Pl+Ela+Use/Sub:Q4js K ; !
- +Pl+Com+Use/Sub:Q4j K ; ! !Q4 to get e:i
+! +Pl+Nom+Use/Sub: K ; !
+! +Pl+Gen+Use/Sub:Q4j K ; ! !Q4 to get e:i
+! +Pl+Gen+Use/Sub:Q4j K ; ! !Q4 to get e:i     
+! +Pl+Acc+Use/Sub:Q4jt K ; !
+! +Pl+Ill+Use/Sub:Q4jda K ; !
+! +Pl+Ine+Use/Sub:Q4jn K ; !
+! +Pl+Ela+Use/Sub:Q4js K ; !
+! +Pl+Com+Use/Sub:Q4j K ; ! !Q4 to get e:i
  +Sg+Com+Use/Sub:Q4jn K ; !
  +Sg+Com+Use/Sub:X5jn K ; ! !SUB Norgejn
  
 LEXICON GATA-plc
- +N+Prop+Plc:%>  ACCRADECL ;
+ +N+Prop+Plc:%>  ACCRADECL_PLC-ORG ;
 
  
 LEXICON BETFAGE-plc ! Like Accra but with sub: -ej, and NORM: -ij
- +N+Prop+Plc:%> BETFAGEDECL ;
+ +N+Prop+Plc:%> BETFAGEDECL_PLC-ORG ;
 
 LEXICON BETFAGE-fem
  +N+Prop+Fem:%>  BETFAGEDECL ; 
@@ -220,12 +360,19 @@ LEXICON BETFAGE-mal
  +N+Prop+Mal:%>  BETFAGEDECL ; 
  +N+Prop+Mal+Sg+Attr@U.Cap.Obl@+Use/Sub:%>@U.Cap.Obl@ # ; !
 
-
 LEXICON BETFAGEDECL
 ! These sublexica are irrelevant for ACCRA, but added
 ! for the sake of the lexicon MARJA
  @U.Cap.Obl@ BETFAGE-DC ;
+
+
+LEXICON BETFAGEDECL_PLC-ORG
+! These sublexica are irrelevant for ACCRA, but added
+! for the sake of the lexicon MARJA
+ @U.Cap.Obl@ BETFAGE-DC_PLC-ORG ;
  +Use/Sub: LASJ; !
+ 
+ 
 
 LEXICON BETFAGE-DC
  +Sg+Nom: K ;
@@ -255,9 +402,39 @@ LEXICON BETFAGE-DC
  +Pl+Ine+Use/Sub:jn K ; !
  +Pl+Ela+Use/Sub:js K ; !
  +Pl+Com+Use/Sub:j K ; !
+ 
+LEXICON BETFAGE-DC_PLC-ORG
+ +Sg+Nom: K ;
+ +Sg+Nom: RHyph ;       
+ +Ess:n K ;
+ +Sg+Ill:Q4j K ; !Q4 to get e:i
+ +Sg+Ill+Use/Sub:j K ; !
+ +Sg+Gen: K ;
+ +Sg+Gen: RHyph ;      
+ +Sg+Acc:v K ;
+ +Sg+Ine:n K ;
+ +Sg+Ela:s K ;
+! +Pl+Nom: K ;
+! +Pl+Gen:Q4j K ; !Q4 to get e:i
+! +Pl+Gen:Q4j K ; !Q4 to get e:i     
+! +Pl+Acc:Q4jt K ;
+! +Pl+Ill:Q4jda K ;
+! +Pl+Ine:Q4jn K ;
+! +Pl+Ela:Q4js K ;
+! +Pl+Com:Q4j K ; !Q4 to get e:i
+ +Sg+Com:Q4jn K ;
+ +Sg+Com+Use/Sub:X5jn K ; ! Norgejn
+! +Pl+Gen+Use/Sub:j K ; !
+! +Pl+Gen+Use/Sub:j K ; !     
+! +Pl+Acc+Use/Sub:jt K ; !
+! +Pl+Ill+Use/Sub:jda K ; !
+! +Pl+Ine+Use/Sub:jn K ; !
+! +Pl+Ela+Use/Sub:js K ; !
+! +Pl+Com+Use/Sub:j K ; !
+
 
 LEXICON SUOBMA-plc ! Like MARJA but no derivation
- +N+Prop+Plc:%>@U.Cap.Obl@ MARJA-DC ;
+ +N+Prop+Plc:%>@U.Cap.Obl@ MARJA-DC_PLC-ORG ;
 
  
 LEXICON MARJA-fem
@@ -314,32 +491,32 @@ LEXICON MARJA-U-obj
  +N+Prop+Obj:%> MARJADECL ;
 
 LEXICON MARJA-org
- +N+Prop+Org:%> MARJADECL ;
+ +N+Prop+Org:%> MARJADECL_PLC-ORG ;
  
 LEXICON MARJA-A-org
- +N+Prop+Org:%> MARJADECL ;
+ +N+Prop+Org:%> MARJADECL_PLC-ORG ;
 
 LEXICON MARJA-U-org
- +N+Prop+Org:%> MARJADECL ;
+ +N+Prop+Org:%> MARJADECL_PLC-ORG ;
 
 LEXICON MARJA-I-org
- +N+Prop+Org:%> MARJADECL ;
+ +N+Prop+Org:%> MARJADECL_PLC-ORG ;
 
 LEXICON MARJA-plc ! Vowel final names with Gradation and Ill change (place names)
- +N+Prop+Plc:%> MARJADECL ;
+ +N+Prop+Plc:%> MARJADECL_PLC-ORG ;
  +N+Prop+Plc+Sg+Gen:%>Q1 VUONAK ;
  
 LEXICON MARJA-A-plc ! Vowel final names with Gradation and Ill change (place names)
- +N+Prop+Plc:%> MARJADECL ;
+ +N+Prop+Plc:%> MARJADECL_PLC-ORG ;
  +N+Prop+Plc+Sg+Gen:%>Q1 VUONAK ;
  
 LEXICON MARJA-I-plc ! Vowel final names with Gradation and Ill change (place names)
- +N+Prop+Plc:%> MARJADECL ;
+ +N+Prop+Plc:%> MARJADECL_PLC-ORG ;
  +N+Prop+Plc+Sg+Gen:%>Q1 VUONAK ;
 
  
 LEXICON MARJA-U-plc ! Vowel final names with Gradation and Ill change (place names)
- +N+Prop+Plc:%> MARJADECL ;
+ +N+Prop+Plc:%> MARJADECL_PLC-ORG ;
  +N+Prop+Plc+Sg+Gen:%>Q1 VUONAK ;
 
  
@@ -367,6 +544,9 @@ LEXICON MARJA-U-sur
 !LEXICON MARJA ! No longer in use, all members are tagged.
 ! +N+Prop:%> MARJADECL ;
 
+LEXICON MARJADECL_PLC-ORG ! Vowel-final names with Gradation and Ill change (person names)
+ @U.Cap.Obl@ MARJA-DC_PLC-ORG ;
+
 LEXICON MARJADECL ! Vowel-final names with Gradation and Ill change (person names)
  @U.Cap.Obl@ MARJA-DC ;
  +Use/Sub: LASJ; !
@@ -391,6 +571,27 @@ LEXICON MARJA-DC
  +Pl+Com:Q1j K ;
  +Sg+Com:Q1X5jn K ;
  
+LEXICON MARJA-DC_PLC-ORG
+ +Sg+Nom: K ;
+ +Sg+Nom: RHyph ;        
+ +Ess:n K ;
+ +Sg+Ill:X4j K ;
+ +Sg+Gen:Q1 K ;
+ +Sg+Gen:Q1 RHyph ;      
+ +Sg+Acc:Q1v K ;
+ +Sg+Ine:Q1n K ;
+ +Sg+Ela:Q1s K ;
+! +Pl+Nom:Q1 K ;
+! +Pl+Gen:Q1j K ;
+! +Pl+Gen:Q1j RHyph ;     
+! +Pl+Acc:Q1jt K ;
+! +Pl+Ill:Q1jda K ;
+! +Pl+Ine:Q1jn K ;
+! +Pl+Ela:Q1js K ;
+! +Pl+Com:Q1j K ;
+ +Sg+Com:Q1X5jn K ;
+
+ 
 LEXICON MARJA-LOAN-DC
  +Sg+Nom: K ;
  +Sg+Nom: RHyph ;        
@@ -401,22 +602,20 @@ LEXICON MARJA-LOAN-DC
  +Sg+Acc+Use/Sub:Q1v K ; !
  +Sg+Ine+Use/Sub:Q1n K ; !
  +Sg+Ela+Use/Sub:Q1s K ; !
- +Pl+Nom+Use/Sub:Q1 K ; !
- +Pl+Gen+Use/Sub:Q1j K ; !
- +Pl+Gen+Use/Sub:Q1j RHyph ; !
- +Pl+Acc+Use/Sub:Q1jt K ; !
- +Pl+Ill+Use/Sub:Q1jda K ; !
- +Pl+Ine+Use/Sub:Q1jn K ; !
- +Pl+Ela+Use/Sub:Q1js K ; !
- +Pl+Com+Use/Sub:Q1j K ; !
+! +Pl+Nom+Use/Sub:Q1 K ; !
+! +Pl+Gen+Use/Sub:Q1j K ; !
+! +Pl+Gen+Use/Sub:Q1j RHyph ; !
+! +Pl+Acc+Use/Sub:Q1jt K ; !
+! +Pl+Ill+Use/Sub:Q1jda K ; !
+! +Pl+Ine+Use/Sub:Q1jn K ; !
+! +Pl+Ela+Use/Sub:Q1js K ; !
+! +Pl+Com+Use/Sub:Q1j K ; !
  +Sg+Com+Use/Sub:Q1X5jn K ; !
 
  
-!LEXICON SUOPMA-plc
-! +N+Prop+Plc:%> MARJADECL ;
 
 LEXICON JOKULL-plc
-+N+Prop+Plc: # ; ! NB added to make the code compile, needs revision.
++N+Prop+Plc: LONDONDECL_PLC-ORG ; ! NB added to make the code compile, needs revision.
 
 LEXICON JAVRRIE-plc ! this is a lex for Umesami names on -ie that have CG
  +N+Prop+Plc: JAVRRIEDECL ;
@@ -436,14 +635,14 @@ LEXICON JAVRRIE-DC
  +Sg+Acc:i%>Q1ev K ;
  +Sg+Ine:i%>Q1en K ;
  +Sg+Ela:i%>Q1es K ;
- +Pl+Nom:i%>Q1e K ;
- +Pl+Gen:i%>Q1j K ;
- +Pl+Gen:i%>Q1j RHyph ;     
- +Pl+Acc:i%>Q1jt K ;
- +Pl+Ill:i%>Q1jda K ;
- +Pl+Ine:i%>Q1jn K ;
- +Pl+Ela:i%>Q1js K ;
- +Pl+Com:i%>Q1j K ;
+! +Pl+Nom:i%>Q1e K ;
+! +Pl+Gen:i%>Q1j K ;
+! +Pl+Gen:i%>Q1j RHyph ;     
+! +Pl+Acc:i%>Q1jt K ;
+! +Pl+Ill:i%>Q1jda K ;
+! +Pl+Ine:i%>Q1jn K ;
+! +Pl+Ela:i%>Q1js K ;
+! +Pl+Com:i%>Q1j K ;
  +Sg+Com:i%>Q1X5jn K ;
 
 
@@ -460,7 +659,7 @@ LEXICON JAVRRIE-DC
 !+N+Prop+Plc+Sg+Gen:%> VUONAK ;
 
 !LEXICON NIKOSIIJADECL !Names with ending -iija, a-illative
-!ACCRA-DC ;
+!ACCRA-DC_PLC-ORG ;
 
 LEXICON NYSTØ-ani
  +N+Prop+Ani:%> NYSTØDECL ;
@@ -481,7 +680,7 @@ LEXICON NYSTØ-obj
  +N+Prop+Obj:%>  NYSTØDECL ;
 
 LEXICON NYSTØ-org
- +N+Prop+Org:%>  NYSTØDECL ;
+ +N+Prop+Org:%>  NYSTØDECL_PLC-ORG ;
 
 LEXICON NYSTØ-LOAN-org
  +N+Prop+Org:%>  NYSTØDECL-LOAN ;
@@ -504,7 +703,7 @@ LEXICON NYSTØ-LOAN-plc ! Place names
  +N+Prop+Plc+Sg+Gen+Use/Sub:%>a VUONAK ; !
 
 LEXICON NYSTØ-plc ! Place names
- +N+Prop+Plc:%>  NYSTØDECL ;
+ +N+Prop+Plc:%>  NYSTØDECL_PLC-ORG ;
  +N+Prop+Plc+Sg+Gen:%>a VUONAK ;
 
 LEXICON NYSTØ ! Vowel-final, heavy syll
@@ -512,15 +711,14 @@ LEXICON NYSTØ ! Vowel-final, heavy syll
  
 LEXICON NYSTØDECL
  @U.Cap.Obl@ NYSTØ-OBL ;
- +Use/Sub: LASJ; !
-! @U.Cap.Obl@ NYSTØ-OBL ;
-!  NYSTØ-DC ;
+
+LEXICON NYSTØDECL_PLC-ORG
+ @U.Cap.Obl@ NYSTØ-OBL_PLC-ORG ;
+ +Use/Sub: LASJ;
 
 LEXICON NYSTØDECL-LOAN
  @U.Cap.Obl@ NYSTØ-OBL-LOAN ;
- +Use/Sub: LASJ; !
-! @U.Cap.Obl@ NYSTØ-OBL ; !SUB
-!  NYSTØ-DC ; !SUB
+ +Use/Sub: LASJ;
 
 
 LEXICON NYSTØ-OBL 
@@ -535,6 +733,19 @@ LEXICON NYSTØ-OBL
  +Use/Sub:%- NYOBL ; !
  +Use/Sub:1 NYOBL ; !
  
+LEXICON NYSTØ-OBL_PLC-ORG
+ +Sg+Nom: K ;	
+ +Sg+Nom: RHyph ;			
+! +Sg+Ela:%:s K ; ! Nystø:s  !SUB
+! +Sg+Ine:%:n K ; ! Nystø:s  !SUB
+ +Sg+Gen#+Use/Sub:a# RHyph ; ! !for placenames 
+ +Sg+Gen#:# RHyph ; ! for placenames 
+     NYOBL_PLC-ORG ;
+ +Use/Sub:%: NYOBL_PLC-ORG ; ! ! to NYOBL, optional delimiter marks. sub?
+ +Use/Sub:%- NYOBL_PLC-ORG ; !
+ +Use/Sub:1 NYOBL_PLC-ORG ; !
+
+ 
 LEXICON NYSTØ-OBL-LOAN
  +Sg+Nom: K ;	
  +Sg+Nom: RHyph ;			
@@ -542,10 +753,10 @@ LEXICON NYSTØ-OBL-LOAN
 ! +Sg+Ine:%:n K ; ! Nystø:s  !SUB
  +Sg+Gen#+Use/Sub:a# RHyph ; ! !for placenames 
  +Sg+Gen#+Use/Sub:# RHyph ; ! ! for placenames 
- +Use/Sub: NYOBL ; !
- +Use/Sub:%: NYOBL ; ! ! to NYOBL, optional delimiter marks. sub?
- +Use/Sub:%- NYOBL ; !
- +Use/Sub:1 NYOBL ; !
+ +Use/Sub: NYOBL_PLC-ORG ; !
+ +Use/Sub:%: NYOBL_PLC-ORG ; ! ! to NYOBL, optional delimiter marks. sub?
+ +Use/Sub:%- NYOBL_PLC-ORG ; !
+ +Use/Sub:1 NYOBL_PLC-ORG ; !
 
 
 !LEXICON NYSTØ-DC
@@ -589,6 +800,44 @@ LEXICON NYOBL
  +Pl+Com+Use/Sub:aj K ;   !
  +Sg+Com+Use/Sub:ajn K ;  !
 
+LEXICON NYOBL_PLC-ORG
+ +Sg+Nom: K ;
+ +Sg+Nom: RHyph ;        
+ +Sg+Ill:j K ;
+ +Ess:n K ;
+ +Sg+Gen: K ;
+ +Sg+Gen: RHyph ;       
+ +Sg+Acc:v K ;
+ +Sg+Ine:n K ;
+ +Sg+Ela:s K ;
+! +Pl+Nom: K ;
+! +Pl+Gen:j K ;
+! +Pl+Gen:j RHyph ;      
+! +Pl+Acc:jt K ;
+! +Pl+Ill:jda K ;
+! +Pl+Ine:jn K ;
+! +Pl+Ela:js K ;
+! +Pl+Com:j K ;
+ +Sg+Com:jn K ;
+ +Sg+Nom+Use/Sub:a K ;  !
+ +Sg+Nom+Use/Sub:a RHyph ;     !   
+ +Sg+Ill+Use/Sub:aj K ;  !
+ +Ess+Use/Sub:an K ;  !
+ +Sg+Gen+Use/Sub:a K ;  !
+ +Sg+Gen+Use/Sub+Use/Circ:a RHyph ;     !  !
+ +Sg+Acc+Use/Sub:av K ;   !
+ +Sg+Ine+Use/Sub:an K ;  !
+ +Sg+Ela+Use/Sub:as K ;  !
+! +Pl+Nom+Use/Sub:a K ;   !
+! +Pl+Gen+Use/Sub:aj K ;   !
+! +Pl+Gen+Use/Sub+Use/Circ:aj RHyph ;     ! !
+! +Pl+Acc+Use/Sub:ajt K ;   !
+! +Pl+Ill+Use/Sub:ajda K ;   !
+! +Pl+Ine+Use/Sub:ajn K ;   !
+! +Pl+Ela+Use/Sub:ajs K ;   !
+! +Pl+Com+Use/Sub:aj K ;   !
+ +Sg+Com+Use/Sub:ajn K ;  !
+
 
 LEXICON BERN-ani
 !Different lexicon for animals. Eurokas.
@@ -615,7 +864,7 @@ LEXICON BERN-femplc
 ! Different lexicon for female persons. Audhild.
  +N+Prop+Fem:%> BERNDECL ;
  +N+Prop+Fem+Sg+Attr@U.Cap.Obl@+Use/Sub:%>@U.Cap.Obl@ # ; !
- +N+Prop+Plc:%> BERNDECL ;
+ +N+Prop+Plc:%> BERNDECL_PLC-ORG ;
  +N+Prop+Plc+Sg+Gen:%>a VUONAK ;
  
 !LEXICON BERN-femsur ! Not in use.
@@ -638,13 +887,13 @@ LEXICON BERN-LOAN-plc
 
 LEXICON BERN-plc
 ! Different lexicon for place names. Bern.
- +N+Prop+Plc:%> BERNDECL ;
+ +N+Prop+Plc:%> BERNDECL_PLC-ORG ;
  +N+Prop+Plc+Sg+Gen:%>a VUONAK ;
 
 !LEXICON BERN-surplc
 !! Different lexicon for names that are both surnames and places.
 ! +N+Prop+Sur:%> BERNDECL ;
-! +N+Prop+Plc:%> BERNDECL ;
+! +N+Prop+Plc:%> BERNDECL_PLC-ORG ;
 ! +N+Prop+Plc+Sg+Gen:%>a VUONAK ;
  
 LEXICON BERN-objsur
@@ -655,7 +904,7 @@ LEXICON BERN-objsur
 LEXICON BERN-orgsur
 ! Different lexicon for names that are both surnames and places.
  +N+Prop+Sur:%> BERNDECL ;
- +N+Prop+Org:%> BERNDECL ;
+ +N+Prop+Org:%> BERNDECL_PLC-ORG ;
 
 LEXICON BERN-obj
 ! Different lexicon for organisations. Microsoft.
@@ -664,7 +913,7 @@ LEXICON BERN-obj
 
 LEXICON BERN-org
 ! Different lexicon for organisations. Microsoft.
- +N+Prop+Org:%> BERNDECL ;
+ +N+Prop+Org:%> BERNDECL_PLC-ORG ;
 
 LEXICON BERN-LOAN-org
 ! Different lexicon for organisations. Microsoft.
@@ -679,6 +928,9 @@ LEXICON BERN
  
 LEXICON BERNDECL
  @U.Cap.Obl@ BERNUCASE ;
+
+LEXICON BERNDECL_PLC-ORG
+ @U.Cap.Obl@ BERNUCASE_PLC-ORG ;
  +Use/Sub:a LASJ ; !
  
 LEXICON BERNDECL-LOAN
@@ -706,6 +958,27 @@ LEXICON BERNUCASE ! Final foot structure (X) => Loc:as
  +Pl+Com:aj K ;
  +Sg+Com:ajn K ;
 
+LEXICON BERNUCASE_PLC-ORG ! Final foot structure (X) => Loc:as
+ +Sg+Nom: K ;
+ +Sg+Nom: RHyph ;        
+ +Sg+Ill:aj K ;
+ +Ess:an K ;
+ +Sg+Gen:a K ;
+ +Sg+Gen:a RHyph ;       
+ +Sg+Acc:av K ;
+ +Sg+Ine:an K ;
+ +Sg+Ela:as K ;
+! +Pl+Nom:a K ;
+! +Pl+Gen:aj K ;
+! +Pl+Gen:aj RHyph ;      
+! +Pl+Acc:ajt K ;
+! +Pl+Ill:ajda K ;
+! +Pl+Ine:ajn K ;
+! +Pl+Ela:ajs K ;
+! +Pl+Com:aj K ;
+ +Sg+Com:ajn K ;
+
+
 LEXICON BERNUCASE-LOAN ! Final foot structure (X) => Loc:as
  +Sg+Nom: K ; 
  +Sg+Nom: RHyph ;        
@@ -716,14 +989,14 @@ LEXICON BERNUCASE-LOAN ! Final foot structure (X) => Loc:as
  +Sg+Acc+Use/Sub:av K ; !
  +Sg+Ine+Use/Sub:an K ; !
  +Sg+Ela+Use/Sub:as K ; !
- +Pl+Nom+Use/Sub:a K ; !
- +Pl+Gen+Use/Sub:aj K ; !
- +Pl+Gen+Use/Sub:aj RHyph ; !
- +Pl+Acc+Use/Sub:ajt K ; !
- +Pl+Ill+Use/Sub:ajda K ; !
- +Pl+Ine+Use/Sub:ajn K ; !
- +Pl+Ela+Use/Sub:ajs K ; !
- +Pl+Com+Use/Sub:aj K ; !
+! +Pl+Nom+Use/Sub:a K ; !
+! +Pl+Gen+Use/Sub:aj K ; !
+! +Pl+Gen+Use/Sub:aj RHyph ; !
+! +Pl+Acc+Use/Sub:ajt K ; !
+! +Pl+Ill+Use/Sub:ajda K ; !
+! +Pl+Ine+Use/Sub:ajn K ; !
+! +Pl+Ela+Use/Sub:ajs K ; !
+! +Pl+Com+Use/Sub:aj K ; !
  +Sg+Com+Use/Sub:ajn K ; !
 
 
@@ -740,7 +1013,7 @@ LEXICON LONDON-ani
  +N+Prop+Ani:%> LONDONDECL ; 
 
 LEXICON LONDON-org
- +N+Prop+Org:%> LONDONDECL ; 
+ +N+Prop+Org:%> LONDONDECL_PLC-ORG ; 
 
 LEXICON LONDON-LOAN-org
  +N+Prop+Org:%> LONDONDECL-LOAN ; 
@@ -763,22 +1036,22 @@ LEXICON LONDON-malfem
  +N+Prop+Mal:%> LONDONDECL ; 
 
 LEXICON LONDON-malplc
- +N+Prop+Plc:%> LONDONDECL ; 
+ +N+Prop+Plc:%> LONDONDECL_PLC-ORG ; 
  +N+Prop+Mal:%> LONDONDECL ; 
 
 LEXICON LONDON-LOAN-plc
  +N+Prop+Plc:%> LONDONDECL-LOAN ; 
 
 LEXICON LONDON-plc
- +N+Prop+Plc:%> LONDONDECL ; 
+ +N+Prop+Plc:%> LONDONDECL_PLC-ORG ; 
 
 !LEXICON LONDON-surplc
-! +N+Prop+Plc:%> LONDONDECL ; 
+! +N+Prop+Plc:%> LONDONDECL_PLC-ORG ; 
 ! +N+Prop+Sur:%> LONDONDECL ;
 ! +N+Prop+Sur+Sg+Attr@U.Cap.Obl@+Use/Sub:%>@U.Cap.Obl@ # ;  ! ! it shall be used in cases like Konrad Nielsenii
 
 LEXICON LONDON-orgsur
- +N+Prop+Org:%> LONDONDECL ; 
+ +N+Prop+Org:%> LONDONDECL_PLC-ORG ; 
  +N+Prop+Sur:%> LONDONDECL ;
  +N+Prop+Sur+Sg+Attr@U.Cap.Obl@+Use/Sub:%>@U.Cap.Obl@ # ;  ! ! it shall be used in cases like Konrad Nielsenii
 
@@ -794,8 +1067,11 @@ LEXICON LONDON-LOAN-obj
 
 LEXICON LONDONDECL
  @U.Cap.Obl@ LONDONUCASE ;
+
+LEXICON LONDONDECL_PLC-ORG
+ @U.Cap.Obl@ LONDONUCASE_PLC-ORG ;
  +Use/Sub: LASJ; !
- 
+
 LEXICON LONDONDECL-LOAN
  @U.Cap.Obl@ LONDONUCASE-LOAN ;
  +Use/Sub: LASJ; !
@@ -824,6 +1100,30 @@ LEXICON LONDONUCASE ! Final foot structure (X.) and (X..) => Loc:is
  +Pl+Ela:ijs K ;
  +Pl+Com:ij K ;
  
+LEXICON LONDONUCASE_PLC-ORG ! Final foot structure (X.) and (X..) => Loc:is
+ +Sg+Nom: K ;
+ +Sg+Nom: RHyph ;        
+ +Sg+Gen:a K ;
+ +Sg+Gen:a RHyph ;              
+ +Sg+Acc:av K ;
+ +Sg+Ill:ij K ;   
+ +Sg+Ine:in K ;
+ +Sg+Ela:is K ;
+ +Sg+Ill+Use/Sub:aj K ;    !
+ +Sg+Ine+Use/Sub:an K ;	   !
+ +Sg+Ela+Use/Sub:as K ;	   !
+ +Sg+Com:ijn K ;
+ +Ess:in K ;
+! +Pl+Nom:a K ;
+! +Pl+Gen:ij K ;
+! +Pl+Gen:ij RHyph ;             
+! +Pl+Acc:ijt K ;
+! +Pl+Ill:ijda K ;
+! +Pl+Ine:ijn K ;
+! +Pl+Ela:ijs K ;
+! +Pl+Com:ij K ;
+
+ 
 LEXICON LONDONUCASE-LOAN ! Final foot structure (X.) and (X..) => Loc:is
  +Sg+Nom: K ;
  +Sg+Nom: RHyph ;        
@@ -838,46 +1138,16 @@ LEXICON LONDONUCASE-LOAN ! Final foot structure (X.) and (X..) => Loc:is
  +Sg+Ela+Use/Sub:as K ;	   !
  +Sg+Com+Use/Sub:ijn K ; !
  +Ess+Use/Sub:in K ; !
- +Pl+Nom+Use/Sub:a K ; !
- +Pl+Gen+Use/Sub:ij K ; !
- +Pl+Gen+Use/Sub:ij RHyph ;      !        
- +Pl+Acc+Use/Sub:ijt K ; !
- +Pl+Ill+Use/Sub:ijda K ; !
- +Pl+Ine+Use/Sub:ijn K ; !
- +Pl+Ela+Use/Sub:ijs K ; !
- +Pl+Com+Use/Sub:ij K ; !
+! +Pl+Nom+Use/Sub:a K ; !
+! +Pl+Gen+Use/Sub:ij K ; !
+! +Pl+Gen+Use/Sub:ij RHyph ;      !        
+! +Pl+Acc+Use/Sub:ijt K ; !
+! +Pl+Ill+Use/Sub:ijda K ; !
+! +Pl+Ine+Use/Sub:ijn K ; !
+! +Pl+Ela+Use/Sub:ijs K ; !
+! +Pl+Com+Use/Sub:ij K ; !
 
 
-!LEXICON NIILLAS-obj
-! +N+Prop+Obj:%> NIILLASDECL ; 
- 
-!LEXICON NIILLAS-org
-! +N+Prop+Org:%> NIILLASDECL ; 
- 
-!LEXICON NIILLAS-mal
-! +N+Prop+Mal:%>  NIILLASDECL ; 
- 
-!LEXICON NIILLAS-fem
-! +N+Prop+Fem:%>  NIILLASDECL ; 
- 
-!LEXICON NIILLAS-sur
-! +N+Prop+Sur:%> NIILLASDECL ;
- 
-!LEXICON NIILLAS-ani
-! +N+Prop+Ani:%> NIILLASDECL ;
- 
-!LEXICON NIILLAS-plc ! Place names
-! +N+Prop+Plc:%>  NIILLASDECL ;
-
-!LEXICON NIILLAS ! No longer in use, all members are tagged.
-! +N+Prop:%> NIILLASDECL ;
-
-!LEXICON NIILLASDECL ! Trisyll. Non-Gradating C-Proper Names
-! @U.Cap.Obl@ NIILLAS-OBL ;
-!  LASJ ; !SUB
-
-!LEXICON NIILLAS-OBL
-!# ;
 
 
 LEXICON ANAR-ani
@@ -887,7 +1157,7 @@ LEXICON ANAR-obj
  +N+Prop+Obj:%> ANARDECL ; 
  
 LEXICON ANAR-org
- +N+Prop+Org:%> ANARDECL ; 
+ +N+Prop+Org:%> ANARDECL_PLC-ORG ; 
  
 LEXICON ANAR-mal
  +N+Prop+Mal:%> ANARDECL ; 
@@ -899,115 +1169,23 @@ LEXICON ANAR-sur
  +N+Prop+Sur:%> ANARDECL ;
  
 LEXICON ANAR-plc ! Place names
- +N+Prop+Plc:%>  ANARDECL ;
+ +N+Prop+Plc:%>  ANARDECL_PLC-ORG ;
 
 !LEXICON ANAR
 ! +N+Prop:%> ANARDECL ;
  
 LEXICON ANARDECL ! Cns-fin, no cons.grad.
  @U.Cap.Obl@ ANAR-OBL ;
+
+LEXICON ANARDECL_PLC-ORG ! Cns-fin, no cons.grad.
+ @U.Cap.Obl@ ANAR-OBL_PLC-ORG ;
  +Use/Sub: LASJ; !
 
 LEXICON ANAR-OBL
 LONDONDECL ;
- 
-!LEXICON GUOLBBA-plc
-! +N+Prop+Plc@U.Cap.Obl@:@U.Cap.Obl@ GUOLBBA ;
-!  LASJ ; !SUB
-! +N+Prop+Plc+Sg+Nom:X3 VUONAK ;
- 
-!LEXICON GUOLBBA
-! +Sg+Nom:X3 K ;
-! +Ess:X3n K ;
-! +Sg+Nom:X3 RHyph ;        
-! +Sg+Gen:X5a K ;
-! +Sg+Gen:X5a RHyph ;              
-! +Sg+Acc:X5av K ;
-! +Sg+Ill:X5ij K ;  
-! +Sg+Ine:X5in K ;
-! +Sg+Ela:X5is K ;
-! +Sg+Com:X5ijn K ;
-! +Ess:X5in K ;
-! +Pl+Nom:X5a K ;
-! +Pl+Gen:X5ij K ;
-! +Pl+Gen:X5ij RHyph ;             
-! +Pl+Acc:X5ijt K ;
-! +Pl+Ill:X5ijda K ;
-! +Pl+Ine:X5ijn K ;
-! +Pl+Ela:X5ijs K ;
-! +Pl+Com:X5ij K ;
 
-
-!LEXICON PLACE-DIM-sur
-!# ;
-!LEXICON PLACE-DIM-plc
-!# ;
-
-!LEXICON PLACE-DIM-ani
-!# ;
-
-!LEXICON PLACE-DIM-mal
-!# ;
-
-
-!LEXICON ROMSA-plc
-! +N+Prop+Plc:%> ROMSADECL ;
-! +N+Prop+Plc+Sg+Gen:%>Q1 VUONAK ;
-
-!LEXICON ROMSADECL !Inanim. Contracted -Names - from SUOLU
-! @U.Cap.Obl@ ROMSA-OBL ;
-!  LASJ ; !SUB
-!  ROMSA-DC ;
-
-!LEXICON ROMSA-DC
-!# ;
-!LEXICON ROMSA-OBL 
-!# ;
-
-!LEXICON RANES-plc !Ráneš:%>Rátnehii
-! +N+Prop+Plc@U.Cap.Obl@:%>@U.Cap.Obl@ RANES-OBL ;
- 
-!LEXICON RANES-OBL
-! +Sg+Nom:Q1š K ; !XXX Q1 does not work because when there is -tn-
-! +CmpN/SgN:Q1š RHyph ; !XXX Q1 does not work because when there is -tn-
-! +Ess:Q1šin K ; !XXX Q1 does not work because when there is -tn-
-! +Sg+Gen:ha K ;
-! +Sg+Gen:ha RHyph ; 
-! +Sg+Acc:hav K ;
-! +Sg+Ill:hij K ;
-! +Sg+Ela:his K ;
-! +Sg+Ine:hin K ;
-! +Sg+Com:hijn K ;
-! +Pl+Nom:ha K ;
-! +Pl+Gen:hij K ;
-! +Pl+Acc:hijt K ;
-! +Pl+Ill:hijda K ;
-! +Pl+Ine:hijn K ;
-! +Pl+Ela:hijs K ;
-! +Pl+Com:hij K ;
-
-!LEXICON CAVKKUS-plc !Čavkkus:%>Čavkohii
-! +N+Prop+Plc@U.Cap.Obl@:%>@U.Cap.Obl@ CAVKKUS-OBL ;
- 
-!LEXICON CAVKKUS-OBL
-! +Sg+Nom:us K ;
-! +CmpN/SgN:us RHyph ; 
-! +Ess:usin K ;
-! +Sg+Gen:oha K ;
-! +Sg+Gen:oha RHyph ; 
-! +Sg+Acc:ohav K ;
-! +Sg+Ill:ohij K ;
-! +Sg+Ine:ohis K ;
-! +Sg+Ela:ohin K ;
-! +Sg+Com:ohijn K ;
-! +Pl+Nom:oha K ;
-! +Pl+Gen:ohij K ;
-! +Pl+Acc:ohijt K ;
-! +Pl+Ill:ohijda K ;
-! +Pl+Ine:ohijn K ;
-! +Pl+Ela:ohijs K ;
-! +Pl+Com:ohij K ;
-
+LEXICON ANAR-OBL_PLC-ORG
+LONDONDECL_PLC-ORG ;
 
 
 
@@ -1027,13 +1205,13 @@ LEXICON DAVVISUOLU-OBL
  +Sg+Acc:X4v K ;
  +Sg+Ine:X4n K ;
  +Sg+Ela:X4s K ;
- +Pl+Nom:X4 K ;
- +Pl+Gen:X4j K ;
- +Pl+Acc:X4jt K ;
- +Pl+Ill:X4jda K ;
- +Pl+Ine:X4jn K ;
- +Pl+Ela:X4js K ;
- +Pl+Com:X4j K ;
+! +Pl+Nom:X4 K ;
+! +Pl+Gen:X4j K ;
+! +Pl+Acc:X4jt K ;
+! +Pl+Ill:X4jda K ;
+! +Pl+Ine:X4jn K ;
+! +Pl+Ela:X4js K ;
+! +Pl+Com:X4j K ;
  +Sg+Com:X4X5jn K ; ! X5 for o:u in ComSg. Note two dummies in a row!
  +Ess:n K ;
  
@@ -1044,23 +1222,27 @@ LEXICON DUORTNUS-mal
  +N+Prop+Mal:%> DUORTNUSDECL ;
 
 !LEXICON DUORTNUS-sur
-! +N+Prop+Plc:%> DUORTNUSDECL ;
+! +N+Prop+Sur:%> DUORTNUSDECL ;
 
 LEXICON DUORTNUS-obj
  +N+Prop+Obj:%> DUORTNUSDECL ;
 
 LEXICON DUORTNUS-org
- +N+Prop+Org:%> DUORTNUSDECL ;
+ +N+Prop+Org:%> DUORTNUSDECL_PLC-ORG ;
 
 LEXICON DUORTNUS-plc
- +N+Prop+Plc:%> DUORTNUSDECL ;
+ +N+Prop+Plc:%> DUORTNUSDECL_PLC-ORG ;
 
 !LEXICON DUORTNUS
 ! +N+Prop:%> DUORTNUSDECL ;
 
 LEXICON DUORTNUSDECL
  @U.Cap.Obl@ DUORTNUSUCASE ;
+
+LEXICON DUORTNUSDECL_PLC-ORG
+ @U.Cap.Obl@ DUORTNUSUCASE_PLC-ORG ;
  @U.Cap.Obl@+Use/Sub:@U.Cap.Obl@ LASJ; !
+
 
 LEXICON DUORTNUSUCASE ! Cns-final, cons.grad.
  :Q1 NE-ODDCASE ; ! Q1 is general WeG
@@ -1082,6 +1264,25 @@ LEXICON DUORTNUSUCASE ! Cns-final, cons.grad.
  +Pl+Ela:X5ijs K ;
  +Pl+Com:X5ij K ;
 
+LEXICON DUORTNUSUCASE_PLC-ORG ! Cns-final, cons.grad.
+ :Q1 NE-ODDCASE ; ! Q1 is general WeG
+ +Sg+Nom: RHyph ;                 
+ +Sg+Gen:X5a K ;
+ +Sg+Gen:X5a RHyph ;              
+ +Sg+Acc:X5av K ;
+ +Sg+Ill:X5ij K ;  
+ +Sg+Ine:X5in K ;
+ +Sg+Ela:X5is K ;
+ +Sg+Com:X5ijn K ;
+ +Ess:X5in K ;
+! +Pl+Nom:X5a K ;
+! +Pl+Gen:X5ij K ;
+! +Pl+Gen:X5ij RHyph ;             
+! +Pl+Acc:X5ijt K ;
+! +Pl+Ill:X5ijda K ;
+! +Pl+Ine:X5ijn K ;
+! +Pl+Ela:X5ijs K ;
+! +Pl+Com:X5ij K ;
 
 !LEXICON HEANDARAT-ani
 ! +N+Prop+Ani:%> HEANDARATDECL ;
@@ -1090,7 +1291,7 @@ LEXICON DUORTNUSUCASE ! Cns-final, cons.grad.
 ! +N+Prop+Obj:%> HEANDARATDECL ; 
  
 !LEXICON HEANDARAT-org
-! +N+Prop+Org:%> HEANDARATDECL ; 
+! +N+Prop+Org:%> HEANDARATDECL_PLC-ORG ; 
  
 !LEXICON HEANDARAT-mal
 ! +N+Prop+Mal:%>  HEANDARATDECL ; 
@@ -1102,7 +1303,7 @@ LEXICON DUORTNUSUCASE ! Cns-final, cons.grad.
 ! +N+Prop+Sur:%> HEANDARATDECL ;
  
 LEXICON HEANDARAT-plc ! Place names
- +N+Prop+Plc:%>  HEANDARATDECL ;
+ +N+Prop+Plc:%>  HEANDARATDECL_PLC-ORG ;
  +N+Prop+Plc+Sg+Gen:%>aQ1 VUONAK ;
 
 
@@ -1110,11 +1311,35 @@ LEXICON HEANDARAT-plc ! Place names
 !LEXICON HEANDARAT ! No longer in use, all members are tagged.
 ! +N+Prop:%> HEANDARATDECL ;
  
-LEXICON HEANDARATDECL
- @U.Cap.Obl@ HEANDARATUCASE ;
+!LEXICON HEANDARATDECL
+! @U.Cap.Obl@ HEANDARATUCASE ;
+  
+LEXICON HEANDARATDECL_PLC-ORG
+ @U.Cap.Obl@ HEANDARATUCASE_PLC-ORG ;
   +Use/Sub: LASJ ;
 
-LEXICON HEANDARATUCASE ! Bisyll. Non-Gradating C-Proper Names
+
+!LEXICON HEANDARATUCASE ! Bisyll. Non-Gradating C-Proper Names
+! +Sg+Nom:a K ;
+! +Sg+Nom:a RHyph ;                        
+! +Ess:an K ;
+! +Sg+Ill:aj K ;
+! +Sg+Gen:aQ1 K ;
+! +Sg+Gen:aQ1 RHyph ;      
+! +Sg+Acc:aQ1v K ;
+! +Sg+Ine:aQ1n K ;
+! +Sg+Ela:aQ1s K ;
+! +Pl+Nom:aQ1 K ;
+! +Pl+Gen:aQ1j K ;
+! +Pl+Gen:aQ1j RHyph ;     
+! +Pl+Acc:aQ1jt K ;
+! +Pl+Ill:aQ1jda K ;
+! +Pl+Ine:aQ1jn K ;
+! +Pl+Ela:aQ1js K ;
+! +Pl+Com:aQ1j K ;
+! +Sg+Com:aQ1X5jn K ;
+
+LEXICON HEANDARATUCASE_PLC-ORG ! Bisyll. Non-Gradating C-Proper Names
  +Sg+Nom:a K ;
  +Sg+Nom:a RHyph ;                        
  +Ess:an K ;
@@ -1124,21 +1349,21 @@ LEXICON HEANDARATUCASE ! Bisyll. Non-Gradating C-Proper Names
  +Sg+Acc:aQ1v K ;
  +Sg+Ine:aQ1n K ;
  +Sg+Ela:aQ1s K ;
- +Pl+Nom:aQ1 K ;
- +Pl+Gen:aQ1j K ;
- +Pl+Gen:aQ1j RHyph ;     
- +Pl+Acc:aQ1jt K ;
- +Pl+Ill:aQ1jda K ;
- +Pl+Ine:aQ1jn K ;
- +Pl+Ela:aQ1js K ;
- +Pl+Com:aQ1j K ;
+! +Pl+Nom:aQ1 K ;
+! +Pl+Gen:aQ1j K ;
+! +Pl+Gen:aQ1j RHyph ;     
+! +Pl+Acc:aQ1jt K ;
+! +Pl+Ill:aQ1jda K ;
+! +Pl+Ine:aQ1jn K ;
+! +Pl+Ela:aQ1js K ;
+! +Pl+Com:aQ1j K ;
  +Sg+Com:aQ1X5jn K ;
 
 !LEXICON BASUDIS-obj
 ! +N+Prop+Obj:%> BASUDISDECL ; 
  
 LEXICON BASUDIS-org
- +N+Prop+Org:%> BASUDISDECL ; 
+ +N+Prop+Org:%> BASUDISDECL_PLC-ORG ; 
  
 LEXICON BASUDIS-mal
  +N+Prop+Mal:%>  BASUDISDECL ; 
@@ -1150,7 +1375,7 @@ LEXICON BASUDIS-sur
  +N+Prop+Sur:%> BASUDISDECL ;
  
 LEXICON BASUDIS-plc ! Place names
- +N+Prop+Plc:%>  BASUDISDECL ;
+ +N+Prop+Plc:%>  BASUDISDECL_PLC-ORG ;
  +N+Prop+Plc+Sg+Gen:%>aQ1 VUONAK ;
 
 
@@ -1160,6 +1385,9 @@ LEXICON BASUDIS-plc ! Place names
  
 LEXICON BASUDISDECL
  @U.Cap.Obl@ BASUDISUCASE ;
+
+LEXICON BASUDISDECL_PLC-ORG
+ @U.Cap.Obl@ BASUDISUCASE_PLC-ORG ;
  +Use/Sub: LASJ; !
 
 LEXICON BASUDISUCASE ! Bisyll. Non-Gradating C-Proper Names
@@ -1182,11 +1410,31 @@ LEXICON BASUDISUCASE ! Bisyll. Non-Gradating C-Proper Names
  +Pl+Com:aQ1j K ;
  +Sg+Com:aQ1X5jn K ;
 
+LEXICON BASUDISUCASE_PLC-ORG ! Bisyll. Non-Gradating C-Proper Names
+ +Sg+Nom: K ;
+ +Sg+Nom: RHyph ;                        
+ +Ess:an K ;
+ +Sg+Ill:aj K ;
+ +Sg+Gen:aQ1 K ;
+ +Sg+Gen:aQ1 RHyph ;      
+ +Sg+Acc:aQ1v K ;
+ +Sg+Ine:aQ1n K ;
+ +Sg+Ela:aQ1s K ;
+! +Pl+Nom:aQ1 K ;
+! +Pl+Gen:aQ1j K ;
+! +Pl+Gen:aQ1j RHyph ;     
+! +Pl+Acc:aQ1jt K ;
+! +Pl+Ill:aQ1jda K ;
+! +Pl+Ine:aQ1jn K ;
+! +Pl+Ela:aQ1js K ;
+! +Pl+Com:aQ1j K ;
+ +Sg+Com:aQ1X5jn K ;
+
 !LEXICON GEAVNNIS-obj
 ! +N+Prop+Obj:%> GEAVNNISDECL ; 
  
 !LEXICON GEAVNNIS-org
-! +N+Prop+Org:%> GEAVNNISDECL ; 
+! +N+Prop+Org:%> GEAVNNISDECL_PLC-ORG ; 
  
 !LEXICON GEAVNNIS-mal
 ! +N+Prop+Mal:%>  GEAVNNISDECL ; 
@@ -1198,17 +1446,41 @@ LEXICON BASUDISUCASE ! Bisyll. Non-Gradating C-Proper Names
 ! +N+Prop+Sur:%> GEAVNNISDECL ;
  
 LEXICON GEAVNNIS-plc ! Place names
- +N+Prop+Plc:%>  GEAVNNISDECL ;
+ +N+Prop+Plc:%>  GEAVNNISDECL_PLC-ORG ;
  +N+Prop+Plc+Sg+Gen:%>Y7 VUONAK ;
  
 !LEXICON GEAVNNIS
 ! +N+Prop:%> GEAVNNISDECL ;
 
-LEXICON GEAVNNISDECL
- @U.Cap.Obl@ GEAVNNISUCASE ;
+!LEXICON GEAVNNISDECL
+! @U.Cap.Obl@ GEAVNNISUCASE ;
+
+LEXICON GEAVNNISDECL_PLC-ORG
+ @U.Cap.Obl@ GEAVNNISUCASE_PLC-ORG ;
  +Use/Sub: LASJ; !
 
-LEXICON GEAVNNISUCASE
+!LEXICON GEAVNNISUCASE
+! +Sg+Nom:Q1s K ;
+! +Sg+Nom:Q1s RHyph ;     
+! +Ess:Q1n K ;
+! +Sg+Ill:X4j K ;
+! +Ess:X4n K ;
+! +Sg+Gen:X4 K ;
+! +Sg+Gen:X4 RHyph ;      
+! +Sg+Acc:X4v K ;
+! +Sg+Ine:X4n K ;
+! +Sg+Ela:X4s K ;
+! +Pl+Nom:X4 K ;
+! +Pl+Gen:X4j K ;
+! +Pl+Gen:X4j RHyph ;     
+! +Pl+Acc:X4jt K ;
+! +Pl+Ill:X4jda K ;
+! +Pl+Ine:X4jn K ;
+! +Pl+Ela:X4js K ;
+! +Pl+Com:X4j K ;
+! +Sg+Com:X4X5jn K ;
+
+LEXICON GEAVNNISUCASE_PLC-ORG
  +Sg+Nom:Q1s K ;
  +Sg+Nom:Q1s RHyph ;     
  +Ess:Q1n K ;
@@ -1219,77 +1491,16 @@ LEXICON GEAVNNISUCASE
  +Sg+Acc:X4v K ;
  +Sg+Ine:X4n K ;
  +Sg+Ela:X4s K ;
- +Pl+Nom:X4 K ;
- +Pl+Gen:X4j K ;
- +Pl+Gen:X4j RHyph ;     
- +Pl+Acc:X4jt K ;
- +Pl+Ill:X4jda K ;
- +Pl+Ine:X4jn K ;
- +Pl+Ela:X4js K ;
- +Pl+Com:X4j K ;
+! +Pl+Nom:X4 K ;
+! +Pl+Gen:X4j K ;
+! +Pl+Gen:X4j RHyph ;     
+! +Pl+Acc:X4jt K ;
+! +Pl+Ill:X4jda K ;
+! +Pl+Ine:X4jn K ;
+! +Pl+Ela:X4js K ;
+! +Pl+Com:X4j K ;
  +Sg+Com:X4X5jn K ;
 
-
-!LEXICON BALAK-plc !singulars on -k
-! @U.Cap.Obl@+N+Prop+Plc:%>@U.Cap.Obl@ BALAK-UCASE ;
-! +N+Prop+Plc:%>k DenominalAdjsC ; ! Changed C2 to C, have a look, Thomas.
-
-!LEXICON BALAK-fem !singulars on -k
-! @U.Cap.Obl@+N+Prop+Fem:%>@U.Cap.Obl@ BALAK-UCASE ;
-! @U.Cap.Obl@+N+Prop+Fem+Sg+Attr:%>@U.Cap.Obl@ # ; !SUB ! it shall be used in cases like Konrad Nielsenii
-
-!LEXICON BALAK-org !singulars on -k                                       
-! @U.Cap.Obl@+N+Prop+Org:%>@U.Cap.Obl@ BALAK-UCASE ;
-
-
-!LEXICON BALAK-UCASE
-! +Sg+Nom:k K ;
-! +Sg+Nom:k RHyph ; ! was: Rreal, awaiting compound discussion. 
-! +Attr:k K ; !SUB
-! +Ess:gin K ;
-! +Pl+Nom:gat K ;
-! +Pl+Ill:gijdda K ; ! 2-syll stem
-! +Sg+Gen:ga K ;
-! +Sg+Gen:k K ; !SUB
-! +Sg+Gen:k RHyph ; ! was: Rreal, awaiting compound discussion. 
-! +Sg+Gen:ga RHyph ; ! was: Rreal, awaiting compound discussion. 
-! +Sg+Acc:ga K ;
-! +Sg+Acc:k K ; !SUB
-! +Sg+Ill:gij K ;
-! +Sg+Loc:gis K ;
-! +Sg+Loc:gin K ; !SUB !SOUTH
-! +Sg+Com:gijn K ;
-! +Pl+Gen:gijd K ;
-! +Pl+Acc:gijd K ;
-! +Pl+Loc:gijn K ;
-! +Pl+Com:gijguin K ;
-
-!LEXICON SARAK-fem !Sarak:%>Sarahis
-! @U.Cap.Obl@+N+Prop+Fem:%>@U.Cap.Obl@ SARAK-UCASE ;
-! @U.Cap.Obl@+N+Prop+Fem+Sg+Attr:%>@U.Cap.Obl@ # ; !SUB ! it shall be used in cases like Konrad Nielsenii
-
-
-!LEXICON SARAK-UCASE
-! +Sg+Nom:k K ;
-! +Sg+Nom:k RHyph ; ! was: Rreal, awaiting compound discussion. 
-! +Attr:k K ; !SUB
-! +Ess:hin K ;
-! +Pl+Nom:hat K ;
-! +Pl+Ill:hijdda K ; ! 2-syll stem
-! +Sg+Gen:ha K ;
-! +Sg+Gen:k K ; !SUB
-! +Sg+Gen:k RHyph ; ! was: Rreal, awaiting compound discussion. 
-! +Sg+Gen:ha RHyph ; ! was: Rreal, awaiting compound discussion.  
-! +Sg+Acc:ha K ;
-! +Sg+Acc:k K ; !SUB
-! +Sg+Ill:hij K ;
-! +Sg+Loc:his K ;
-! +Sg+Loc:hin K ; !SUB !SOUTH
-! +Sg+Com:hijn K ;
-! +Pl+Gen:hijd K ;
-! +Pl+Acc:hijd K ;
-! +Pl+Loc:hijn K ;
-! +Pl+Com:hijguin K ;
 
 
 LEXICON VARGGAT-plc
@@ -1394,11 +1605,3 @@ LEXICON EATNAMATDECL
  
  
  
-!LEXICON SKOHTERMADII-plc 
-! +N+Prop+Sg+Nom: K ; 
-! XXX this lexicon should probably have been changed
-! into something else in the script 
-! gt/script/smesmjdumpl.sh
-
-!LEXICON FirstTag
-!+N+Prop+Attr: # ;
