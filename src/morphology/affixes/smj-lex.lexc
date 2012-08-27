@@ -1,0 +1,5290 @@
+! Divvun & Giellatekno - open source grammars for Sámi and other languages
+! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
+! http://giellatekno.uit.no & http://divvun.no
+!
+! This program is free software; you can redistribute and/or modify
+! this file under the terms of the GNU General Public License as published by
+! the Free Software Foundation, either version 3 of the License, or
+! (at your option) any later version. The GNU General Public License
+! is found at http://www.gnu.org/licenses/gpl.html. It is
+! also available in the file $GTHOME/LICENSE.txt.
+!
+! Other licensing options are available upon request, please contact
+! giellatekno@hum.uit.no or divvun@samediggi.no
+
+! ========================================================================== !
+!                      Lule Sámi morphological analyser                      !
+! ========================================================================== !
+!
+! smj-lex.txt
+! The file contains morphological affixes for the nouns, verbs and adjectives
+
+
+Multichar_Symbols
+
+! Tags for POS
+ +N +A +Adv +V
+ +Pron +CS +CC +Adp +Po +Pr +Interj +Pcle +Num
+
+! Tags for sub-POS
+ +Prop +Pers +Dem +Interr +Refl +Recipr +Rel +Indef
+ +Coll ! collective numerals
+
+! Usage tags
+ +Use/Sub
+ +Use/Marg
+ +Use/-Spell !Excluded in speller
+ +Use/SpellNoSugg !recognized but not suggested in speller
+ +Use/Circ
+ +Use/CircN
+ +Use/Ped
+ +Use/NG
+
+! Dialect tags:
+ +Dial/-NOR ! Not in Norway
+ +Dial/-SW  ! Not in Sweden
+
+
+! Normative/prescriptive compounding tags:
+! (to govern compound behaviour for the speller, ie what a compound SHOULD BE)
+
+! The first part of the component may be ..
++CmpN/Sg       ! Sg
++CmpN/SgN      ! SgNominative
++CmpN/SgG      ! SgGenitive
++CmpN/PlG      ! PlGenitive
+
+! This part of the component might be ..
++CmpN/First     ! first
++CmpN/Last      ! last
++CmpN/None      ! Can not take part in compounds
++CmpN/Only      ! Can only be part of a compound
++CmpN/Pref      ! prefix only
+
+! The second part of the compound may take ..
++CmpN/SgLeft     ! Sg to the left
++CmpN/SgNomLeft  ! etc.
++CmpN/SgGenLeft  ! 
++CmpN/PlGenLeft  ! 
+
+! This part of the compound may ... 
++CmpN/All        ! all positions, _default_, this tag does not have to be written
++CmpN/Def        ! works along with Left compound-tagging
++CmpN/DefSgGen   ! works along with Left compound-tagging
++CmpN/DefPlGen   ! works along with Left compound-tagging
+
+! Descriptive compounding tags:
+! Tags for compound analysis - this is what a compound is:
+ +SgCmp +SgNomCmp +SgGenCmp +PlGenCmp ! Different case + number combinations
+ +Cmp ! Dynamic compound - this tag should always be part of a dynamic compound.
+      ! It is important for Apertium, and useful in other cases as well.
+ +RCmpnd  ! This is a split compound with the other part to the right:
+          ! "Arbeids- og inkluderingsdepartementet" => Arbeids- = +RCmpnd
+ +LCmpnd+ ! This is a split compound with the other part to the left
+ +ShCmp !testing ShCmp
+
+!!!! === Tags for Inflection ===
+
+! Tags for Case and Number Inflection
+ +Sg +Du +Pl                                            ! Number
+ +Ess +Nom +Gen +Acc +Ill +Loc +Com +Ine +Ela +Par +Abe ! Case
+
+! Possessive tags
+ +PxSg1 +PxSg2 +PxSg3 +PxDu1 +PxDu2 +PxDu3 +PxPl1 +PxPl2 +PxPl3
+ +Comp +Superl
+ +Attr +Card
+ +Ord ! CHECK THIS!! In closed-sme there are +Ord entries without circ. tag
+ +Ind +Prs +Prt +Pot +Cond +Imprt
+ +Sg1 +Sg2 +Sg3 +Du1 +Du2 +Du3 +Pl1 +Pl2 +Pl3
+ +Inf +Ger +ConNeg +Neg +ImprtII +PrsPrc +PrfPrc +Sup +VGen +VAbess
+ +Actio
+
+! Other tags
+ +ABBR +ACR +CLB +PUNCT +LEFT +RIGHT ^GUESSNOUNROOT
+ +TV +IV ! Transitivity tags
+ +Multi ! Multiword phrase tag
+ +Guess ! for the name guesser
+ +v1 +v2 +v3 +v4 +v5  ! Versions 
+ +Hyph
+! +PAR ! Not in use, it seems.
+
+! Question and Focus particles:
+ +Qst
+ +Clt +Foc ! These two are only found in SMJ - do we need them?
+! Focus particles:
+ +Foc/ge
+ +Foc/gen
+ +Foc/ga
+
+
+! Semantic tags to help disambiguation & synt. analysis:
+ +Mal +Fem +Sur ! Names
+ +Plc ! Place
+ +Org ! Organisation
+ +Obj ! Object
+ +Ani ! Animate
+ +Hum ! Human
+
+
+! Der#begin
+! Derivation position in a derivation row:  Affix and:
+! 1              2               3                4               5          POS type
++Der1           +Der2           +Der3            +Der4           +Der5
+! Der#1
++Der/Pass                                                                   ! VV - long only
++Der/Dimin                                                                  ! NN
++Der/adda                                                                   ! VV
++Der/agák
++Der/ahkásasj
++Der/ahtja                                                                  ! VV
++Der/ahtte                                                                  ! VV
++Der/alla                                                                   ! VV
++Der/asste                                                                  ! VV
++Der/belak                                                                  ! AA
++Der/beljak
++Der/biejvvásasj
++Der/báguk
++Der/bájnok
++Der/bájnuk
++Der/bának
++Der/d                                                                      ! VV
++Der/dalla                                                                  ! VV
++Der/dasste                                                                 ! VV
++Der/dibme                                                                  ! NA
++Der/dábak
++Der/dáfuk
++Der/dávdak
++Der/dávtak
++Der/ferjak
++Der/garák
++Der/gattsak
++Der/gerdak                                                                 ! AA
++Der/getjak
++Der/giedak
++Der/gielak                                                                 ! QA
++Der/gielalasj
++Der/giesjkak
++Der/girjak
++Der/guovluk
++Der/gárvok
++Der/gárvuk
++Der/gærddásasj
++Der/habsak
++Der/hekkak
++Der/hábjak
++Der/hájak
++Der/hámak
++Der/hápsak
++Der/ivnak
++Der/jagák                                                                  ! AA
++Der/jahkásasj
++Der/jergak
++Der/jienak
++Der/jiermak
++Der/juolgak
++Der/juvlak
++Der/k                                                                      ! NN
++Der/klássak
++Der/l                                                                      ! VV
++Der/ladda                                                                  ! VV
++Der/lahkak
++Der/lahtte                                                                 ! VV
++Der/lanják
++Der/lasj                                                                   ! NA ! dont know, guess it Tronds, ojes, I see - is this ok?jes 2 Der:lasj Noun on 1472 Adj on 2040
++Der/lasj                                                                   ! NN
++Der/lasste                                                                 ! VV
++Der/lijkak
++Der/linnjak
++Der/luonduk
++Der/luottak
++Der/lágán                                                                  ! QA
++Der/lágásj                                                                 ! QA
++Der/láhkásasj
++Der/maduk
++Der/madák
++Der/merkak
++Der/mielak
++Der/muoduk
++Der/namák
++Der/nierak
++Der/njunjak
++Der/njálmak
++Der/nálak
++Der/nálán
++Der/r                                                                      ! VN
++Der/rabdak
++Der/rattak
++Der/rávak
++Der/segak
++Der/sejbak
++Der/sejnak
++Der/sijduk
++Der/sjattuk                                                                ! AA
++Der/sláj
++Der/st                                                                     ! VV
++Der/stahtte                                                                ! VV
++Der/stalla                                                                 ! VV
++Der/stasste                                                                ! VV
++Der/stával
++Der/suorak                                                                 ! AA
++Der/suorgak
++Der/suttak
++Der/sávvak
++Der/såjak
++Der/tijmmasasj
++Der/tjalmak
++Der/tjiegak
++Der/tjiluk
++Der/tjuodak
++Der/tjuohtásasj
++Der/tjuolmak
++Der/tjuvdak
++Der/tjålak
++Der/tjårvak
++Der/u/a/åd                                                                 ! VV
++Der/uvsak
++Der/uvsuk
++Der/varák
++Der/vigák
++Der/vuobdak
++Der/vuoduk
++Der/vájmuk
++Der/ájggásasj
++Der/ájvuk
++Der/åjvak
++Der/åsak
+! Der#2
+              +Der/dahtte                                                   ! VV
+              +Der/duhtte                                                   ! VV
+              +Der/duvva                                                    ! VV
+              +Der/ahkes                                                    ! VA
+              +Der/NomAct                                                   ! VN
+! Der#3
+                                +Der/goahte                                 ! VV
+                                +Der/mus                                    ! VN
+!                               +Der/NomAct                                 ! VN   Realised in two different ways.
+                                                                            !      This realisation is Der3. Outcommented
+                                                                            !      to not define the tag twice, but kept
+                                                                            !      here for documentation purposes.
+                                +Der/dahka                                  ! VN
+                                +Der/lis                                    ! VA
+                                +Actor                                      ! VN
+! Der#4
+                                                +Der/ahtes                  ! NA
+! Der#5
+                                                                +Der/at     ! AAdv
+                                                                +Der/vuohta ! AN
+! Der#other
+
+! All non-positional derivations should be preceded by this tag, to make it possible
+! to target regular expressions at all derivations in a language-independent way:
+! just specify [+Der|+Der1 .. +Der5] and you are set.
++Der
+
+! Der#end
+
+
+! Morphophonemes and Sámi letters
+! e7 e9 i7 o7 o9 u7   ! Morphophonemes in sme, here temporarily due to common propernoun file
+! g8 m8 n8 h8
+! b9 d9 g9 h9 l9 m9 n9 r9
+! k9 t9
+
+! From sme-lex.txt
+! Morphophonemes and Sámi letters
+ a9 b9 e7 e9 d9 g8 g9 h8 h9 i7 j9 k9 l9 m8 m9 n8 n9 o7 o9 p9
+ r9 s9 t9 u7 z9 æ9 ä9 '7 r9 ø9 ö9
+! A9 B9 E7 E9 D9 G8 G9 H8 H9 I7 J9 K9 M8 M9 N8 N9 O7 O9 P9
+! S9 T9 U7 Z9 Æ9 Ä9 R9 Ø9 Ö9
+
+! Symbols that need to be escaped on the lower side (towards twolc):
+ »7     ! »
+ «7     ! «
+ %[%>%] ! >
+ %[%<%] ! <
+
+! Triggers for morphophonological rules
+ X1 X2 X3 X4 X5 X6 X7 X8 X9
+ Q1 Q2 Q3 Q4 Q5 Q6 Q7 Q8 Q9
+ Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9
+
+! Flag diacritics
+ @P.NeedNoun.ON@  @D.NeedNoun.ON@  @C.NeedNoun@ ! (Dis)allowing compounds
+ @U.Cap.Obl@  @U.Cap.Opt@			! Allowing downcasing of
+						            ! derived names: deatnulasj.
+        							! Actually, downcasing should be obligatory
+
+
+! =================================================
+! Basic lexica, pointing to the other lexicon files
+! =================================================
+
+LEXICON Root
+ +Use/Circ: Prefixes ;				    
+ @U.Cap.Obl@ ProperNoun ;          ! These flags are for
+ @U.Cap.Opt@ ProperNoun ;          ! downcasing the propernouns
+! AspellProp ;			               ! Only for aspell target !!
+ NounRoot ;
+! ProperNoun ;
+! AspellAffix ;			 	           ! Only for aspell target !!
+! ProperNounFirstPart ;	   
+ Adjective ;           
+ Verb ;                
+ Adverb ;                  
+ Particle ;                
+ Subjunction ;             
+ Conjunction ;             
+ Adposition ;              
+! Postposition ;           
+! Preposition ;            
+ Interjection ;            
+ Pronoun ;                 
+ +Use/CircN: Numeral ;                  
+ Acronym ;			       
+ Abbreviation ;			   
+ Punctuation ;             
+
+
+
+! Prefixing and compounding
+! =========================
+
+LEXICON Prefixes
+    iehpe+Use/Circ#:iehpe#    Noun ;
+    iehpe+Use/Circ#:iehpe#    Adjective ;
+    iehpe+Use/Circ#:iehpe#    Verb ;
+     ij%-+Use/Circ:ij%-       Adjective ; ! ij-biologalasj 
+     ales+Use/Circ#:ales#     Noun ;
+    badje+Use/Circ#:badje#    Noun ;
+  guovdda+Use/Circ#:guovdda#  Noun ;
+ maŋeldis+Use/Circ#:maŋeldis# Noun ;
+ maŋeldus+Use/Circ#:maŋeldus# Noun ;
+   maŋusj+Use/Circ#:maŋusj#   Noun ;
+   miehte+Use/Circ#:miehte#   Noun ;
+  oarjjel+Use/Circ#:oarjjel#  Noun ;
+  oarjásj+Use/Circ#:oarjásj#  Noun ;
+      sis+Use/Circ#:sis#      Noun ;
+  sisŋutj+Use/Circ#:sisŋutj#  Noun ;
+  sisŋátj+Use/Circ#:sisŋátj#  Noun ;
+  vuosste+Use/Circ#:vuosste#  Noun ;
+    åvddå+Use/Circ#:åvddå#    Noun ;
+    åvdås+Use/Circ#:åvdås#    Noun ;
+
+
+! This is for regular compounding. All entries NOT requiring a hyphen should point to this:
+LEXICON R
+                     +Use/Circ+Cmp#:# Noun ;                       ! This is the normal case.		         
+      @P.NeedNoun.ON@+Use/Circ+Cmp#:@P.NeedNoun.ON@# Verb ;        ! Flag diacr declares that the compound   
+      @P.NeedNoun.ON@+Use/Circ+Cmp#:@P.NeedNoun.ON@# Adjective ;   ! needs a N tag later in the derivation  
+                +Hyph+Use/Circ+Cmp#:%- Noun ;                      ! These 3 cases add a hyphen, so     
+ @P.NeedNoun.ON@+Hyph+Use/Circ+Cmp#:@P.NeedNoun.ON@%-  Verb ;      ! Sem-julggaštus and maana-gåetie	      
+ @P.NeedNoun.ON@+Hyph+Use/Circ+Cmp#:@P.NeedNoun.ON@%-  Adjective ; ! are allowed.  
+
+ +Use/Circ+Cmp%-#:%-# Acronym ;    ! maana-tv, "lomme-cd-spelar"
+ +Use/Circ+Cmp%-#:%-# Numeral ;    ! maana-123
+ +Use/Circ+Cmp%-#:%-# ProperNoun ; ! Proper nouns as the 2nd part of compounds for non-hyph.
+                               ! words. viessu-London goes through here.
+
+      +RCmpnd:%- ENDLEX ;     ! This to take care of Oahpo- ja dutkandept - want this in speller
+ +Use/Circ+Cmp%-#:%-# HyphNouns ; ! Go to words requiring hyphens, like -tv- and -cd-
+
+
+! This is for compounding with hyphen. All entries REQUIRING a hyphen should point to this:
+LEXICON RHyph ! Recursive lexicon from all classes REQUIRING a hyphen to follow.
+              ! NBNBNB!!! The hyphen should be added here! NOT in the other lexicons!
+
+                +Use/Circ+Cmp%-#:%-# Noun;                                     ! This is the normal case.
+ @P.NeedNoun.ON@+Use/Circ+Cmp%-#:@P.NeedNoun.ON@%-# Verb;       ! Flag diacr declares that the compound
+ @P.NeedNoun.ON@+Use/Circ+Cmp%-#:@P.NeedNoun.ON@%-# Adjective ; ! needs a N tag later in the derivation
+
+ +Use/Circ+Cmp%-#:%-# Acronym ;    ! maana-tv, "lomme-cd-spelar"
+ +Use/Circ+Cmp%-#:%-# Numeral ;    ! maana-123
+ +Use/Circ+Cmp%-#:%-# ProperNoun ; ! Proper nouns as the 2nd part of compounds for hyph-words.
+                                   ! London-Hull is covered here, whereas Hull-viessu
+                                   ! is covered by RHyph + Noun.
+
+          +RCmpnd:%- ENDLEX ;      ! This to take care of Oahpo- ja dutkandept - want this in speller
+ +Use/Circ+Cmp%-#:%-# HyphNouns ; ! Go to words requiring hyphens, like -tv- and -cd-
+ 
+! Proper noun compounds without hyphens are NOT presently covered - if they were
+! to be added, they need to be marked +Use/Sub. Examples: LondonHull & viessuLondon.
+
+
+
+! ======================
+! Sublexica for Noun
+! ======================
+
+! Even-syllable stems
+! -------------------
+
+! 2syll stems
+! - - - - - -
+
+! 2syll stem with cg (note Q1)
+LEXICON MUORRA
+ +N:%> N-EVENSTRONGSTEM ;
+ +N:%>Q1 N-EVENWEAKSTEM ; ! Weak grade Q1
+ +N:» DenominalNounsMUORRA ;
+ +N:» DenominalAdjsV1 ;
+ +N:» DenominalAdjsV2 ;
+ +N:%> MUORRACmp ;
+
+! 2syll stem with cg (note Q1) with comparatives
+LEXICON GÁDDE
+ +N:%> N-EVENSTRONGSTEM ;
+ +N:%>Q1 N-EVENWEAKSTEM ; ! Weak grade Q1
+ +N:» DenominalNounsMUORRA ;
+ +N:» DenominalAdjsV1 ;
+ +N:» DenominalAdjsV2 ;
+ +N:%> MUORRACmp ;
+ +N+Comp:%>Q1 BUStem ;
+ +N+Superl:%>Q1muss BUOREMUS ;
+ +N+Comp+Der1+Der/Dimin+Sg+Nom:»Q1busj%> K ;
+ +N+Comp+Der1+Der/Dimin+Sg+Attr:»Q1busj%> ATTR ;
+ +N+Comp+Der1+Der/Dimin:»Q1budtja%> GÅNÅGIS-EVEN ;
+
+LEXICON ÅLGGO !Like MUORRA but no inessive/elative/illative sg, with comparatives
+ +N:%> NE-EVENCASE ;
+ +N+Sg+Gen:%>Q1 K ;
+ +N+Sg+Abe:%>Q1#dagi K ;
+ +N+Sg+Abe:%>Q1#dagá K ;
+ +N+Sg+Abe:%>Q1#tagá K ;
+ +N+Sg+Gen+Use/Ped:%>Q1 PxV ; !
+ +N+Sg+Acc:%>Q1v K ;
+ +N+Sg+Acc+Use/Ped:%>Q1 PxV ; !
+! +N+Sg+Ine:%>Q1n K ;
+! +N+Sg+Ine:%>Q1n%> PxC ; !^P^
+! +N+Sg+Ela:%>Q1s K ;
+! +N+Sg+Ela:%>Q1st%> PxC ; !^P^
+ +N+Pl+Nom:%>Q1 K ;
+ +N+Pl+Nom+Use/Ped:%>Q1 PxNomPlV ; !
+ +N+Pl+Gen:%>Q1j K ;
+ +N+Pl+Abe:%>Q1j#dagi K ;
+ +N+Pl+Abe:%>Q1j#dagá K ;
+ +N+Pl+Abe:%>Q1j#tagá K ;
+ +N+Pl+Gen+Use/Ped:%>Q1j%> PxC ; !
+ +N+Pl+Acc:%>Q1jt K ;
+ +N+Pl+Acc+Use/Ped:%>Q1jd%> PxC ; !
+ +N+Pl+Ill:%>Q1jda K ;
+ +N+Pl+Ill+Use/Ped:%>Q1jdis%> PxCs ; !
+ +N+Pl+Ine:%>Q1jn K ;
+ +N+Pl+Ine+Use/Ped:%>Q1jn%> PxC ; !
+ +N+Pl+Ela:%>Q1js K ;
+ +N+Pl+Ela+Use/Ped:%>Q1jst%> PxC ; !
+ +N+Pl+Com:%>Q1j K ;
+ +N+Pl+Com+Use/Ped:%>Q1j%> PxC ; !
+ +N+Sg+Com+Use/Sub:%>Q1X5jna K ; !
+ +N+Sg+Com:%>Q1X5jn K ; ! X5 for o:u in ComSg. Note two dummies in a row!
+ +N+Sg+Com+Use/Ped:%>Q1X5jn%> PxC ; !
+ +N:» DenominalNounsMUORRA ;
+ +N:» DenominalAdjsV1 ;
+ +N:» DenominalAdjsV2 ;
+ +N:%> MUORRACmp ;
+ +N+Comp:%>Q1 BUStem ;
+ +N+Superl:%>Q1muss BUOREMUS ;
+ +N+Comp+Der1+Der/Dimin+Sg+Nom:»Q1busj%> K ;
+ +N+Comp+Der1+Der/Dimin+Sg+Attr:»Q1busj%> ATTR ;
+ +N+Comp+Der1+Der/Dimin:»Q1budtja%> GÅNÅGIS-EVEN ;
+
+LEXICON MIEHTE !Like MUORRA but no locative/elative/illative sg
+ +N:%> NE-EVENCASE ;
+ +N+Sg+Gen:%>Q1 K ;
+ +N+Sg+Abe:%>Q1#dagi K ;
+ +N+Sg+Abe:%>Q1#dagá K ;
+ +N+Sg+Abe:%>Q1#tagá K ;
+ +N+Sg+Gen+Use/Ped:%>Q1 PxV ; !
+ +N+Sg+Acc:%>Q1v K ;
+ +N+Sg+Acc+Use/Ped:%>Q1 PxV ; !
+! +N+Sg+Ine:%>Q1n K ;
+! +N+Sg+Ine:%>Q1n%> PxC ; !^P^
+! +N+Sg+Ela:%>Q1s K ;
+! +N+Sg+Ela:%>Q1st%> PxC ; !^P^
+ +N+Pl+Nom:%>Q1 K ;
+ +N+Pl+Nom+Use/Ped:%>Q1 PxNomPlV ; !
+ +N+Pl+Gen:%>Q1j K ;
+ +N+Pl+Abe:%>Q1j#dagi K ;
+ +N+Pl+Abe:%>Q1j#dagá K ;
+ +N+Pl+Abe:%>Q1j#tagá K ;
+ +N+Pl+Gen+Use/Ped:%>Q1j%> PxC ; !
+ +N+Pl+Acc:%>Q1jt K ;
+ +N+Pl+Acc+Use/Ped:%>Q1jd%> PxC ; !
+ +N+Pl+Ill:%>Q1jda K ;
+ +N+Pl+Ill+Use/Ped:%>Q1jdis%> PxCs ; !
+ +N+Pl+Ine:%>Q1jn K ;
+ +N+Pl+Ine+Use/Ped:%>Q1jn%> PxC ; !
+ +N+Pl+Ela:%>Q1js K ;
+ +N+Pl+Ela+Use/Ped:%>Q1jst%> PxC ; !
+ +N+Pl+Com:%>Q1j K ;
+ +N+Pl+Com+Use/Ped:%>Q1j%> PxC ; !
+ +N+Sg+Com+Use/Sub:%>Q1X5jna K ; !
+ +N+Sg+Com:%>Q1X5jn K ; ! X5 for o:u in ComSg. Note two dummies in a row!
+ +N+Sg+Com+Use/Ped:%>Q1X5jn%> PxC ; !
+ +N:» DenominalNounsMUORRA ;
+ +N:» DenominalAdjsV1 ;
+ +N:» DenominalAdjsV2 ;
+ +N:%> MUORRACmp ;
+
+LEXICON BOAKSA
+ +N:oaksa%> N-EVENSTRONGSTEM ;
+ +N:åk'sa%>Q1 N-EVENWEAKSTEM ; ! Weak grade Q1
+ +N:åk'sa» DenominalNounsMUORRA ;
+ +N:åk'sa» DenominalAdjsV1 ;
+! +N:åk'sa» DenominalAdjsV2 ; not plausible
+ +N+SgCmp+Use/Sub:oaksa%>X9 R ;   !
+ +N+SgNomCmp:oaksa%> R ;
+ +N+SgGenCmp:åk'sa%>Q1 R ;
+ +N+PlGenCmp:åk'sa%>Q1j R ;
+
+
+LEXICON AHKA !words like tjerastahka with short compound-form
+ +N:ahka%> N-EVENSTRONGSTEM ;
+ +N:ahka%>Q1 N-EVENWEAKSTEM ; ! Weak grade Q1
+ +N:ahka» DenominalNounsMUORRA ;
+ +N:ahka» DenominalAdjsV1 ;
+! +N:ahka» DenominalAdjsV2 ;
+ +N+Der4+Der/ahtes:» AHTES ;
+ +N+SgNomCmp:ak%> R ;
+ +N+Sg+Nom:ak%> K ;
+ +N+SgNomCmp:ahka%> R ;
+ +N+SgGenCmp:ahka%>Q1 R ;
+ +N+PlGenCmp:ahka%>Q1j R ;
+
+
+LEXICON OADÁDAGÁ !pl. words like tjerastahka with short compound-form
+ +N+Ess:ahka%>n K ;
+ +N+Pl+Nom:ahka%>Q1 K ;
+ +N+Pl+Nom+Use/Ped:ahka%>Q1 PxNomPlV ; !
+ +N+Pl+Gen:ahka%>Q1j K ;
+ +N+Pl+Abe:ahka%>Q1j#dagi K ;
+ +N+Pl+Abe:ahka%>Q1j#dagá K ;
+ +N+Pl+Abe:ahka%>Q1j#tagá K ;
+ +N+Pl+Gen+Use/Ped:ahka%>Q1j%> PxC ; !
+ +N+Pl+Acc:ahka%>Q1jt K ;
+ +N+Pl+Acc+Use/Ped:ahka%>Q1jd%> PxC ; !
+ +N+Pl+Ill:ahka%>Q1jda K ;
+ +N+Pl+Ill+Use/Ped:ahka%>Q1jdis%> PxCs ; !
+ +N+Pl+Ine:ahka%>Q1jn K ;
+ +N+Pl+Ine+Use/Ped:ahka%>Q1jn%> PxC ; !
+ +N+Pl+Ela:ahka%>Q1js K ;
+ +N+Pl+Ela+Use/Ped:ahka%>Q1jst%> PxC ; !
+ +N+Pl+Com:ahka%>Q1j K ;
+ +N+Pl+Com+Use/Ped:ahka%>Q1j%> PxC ; !
+ +N+Der1+Der/dibme+A:ahka»Q1 DIBME ;
+ +N+Der1+Der/dibme+A+Attr:ahka»Q1dis%> ATTR ;
+! +N+Der1+Der/dibme+A:ahka»Q1dis VUOHTA ; !moved to LEXICON VUOHTA
+ +N+Der1+Der/dibme+A:ahka»Q1d DUVVAT ;
+ +N+Der4+Der/ahtes:ahka»Q1g AHTES ;
+ +N+Der4+Der/ahtes:» AHTES ;
+ +N+Abe:ahka%>Q1dak K ;
+ +N+Abe:ahka%>Q1da K ;
+ +N+PlGenCmp:ahka%>Q1j R ;
+ +N+Der1+Der/Dimin+N+Sg+Gen:ahka»X7tja K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:ahka»X7tja#dagi K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:ahka»X7tja#dagá K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:ahka»X7tja#tagá K ;
+ +N+Der1+Der/Dimin+N+Ess:ahka»X7tjin K ;
+ +N+Der1+Der/Dimin+N+Pl+Nom:ahka»X7tja K ;
+ +N+Der1+Der/Dimin+N+Pl+Gen:ahka»X7tjij K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:ahka»X7tjij#dagi K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:ahka»X7tjij#dagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:ahka»X7tjij#tagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc:ahka»X7tjijt K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped:ahka»X7tjijd%> PxCs ; !
+ +N+Der1+Der/Dimin+N+Pl+Ill:ahka»X7tjijda K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine:ahka»X7tjijn K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine+Use/Ped:ahka»X7tjijn%> PxCs ; !
+ +N+Der1+Der/Dimin+N+Pl+Ela:ahka»X7tjijs K ;
+ +N+Der1+Der/Dimin+N+Pl+Ela+Use/Ped:ahka»X7tjijst%> PxCs ; !
+ +N+Der1+Der/Dimin+N+Pl+Com:ahka»X7tjij K ;
+ +N+SgNomCmp:ak%> R ;
+
+
+! 2syll stem without cg and in weak grade
+! Many of these are  pres ptc, they should be derived from
+! the verbs, and taken from there
+LEXICON NOADE
+ +N:%> N-EVENSTRONGSTEM ;
+ +N:%>Q4 N-EVENWEAKSTEM ;
+ +N:» DenominalNounsMUORRA ;
+ +N:» DenominalAdjsV1 ;
+ +N:»Y7 DenominalAdjsV2 ;
+ +N:%> NOADECmp ;
+
+! 2syll stems without any morphophonology
+LEXICON KINO ! no diacritics whatsoever
+ +N:%> NE-EVENCASE ;
+ +N:%> ILL-EVENCASE ;
+ +N:%> N-EVENWEAKSTEM-OTH ;
+ +N:%> N-EVENWEAKSTEM-SG-COM ;
+ +N+Der1+Der/Dimin+N:»sj N-ODDCASE ;
+ +N+Der1+Der/Dimin+N:»tj OTH-ODDCASE ;
+ +N+Der1+Der/Dimin+N+SgNomCmp:»sj R ;
+ +N+Der1+Der/Dimin+N+SgGenCmp:»tja R ;
+ +N+Der1+Der/Dimin+N+SgGenCmp:»tjij R ;
+ +N:» DenominalAdjsKINO ;
+ +N:» DenominalNounsKINO ;
+ +N+SgNomCmp:%> R ;
+ +N+SgGenCmp:%>Q1 R ;
+ +N+PlGenCmp:%>j R ;
+ 
+LEXICON PREMIE !some recent loan-words on -e
+ +N:e%> NE-EVENCASE ;
+ +N+Sg+Ill:i%>j K ;
+ +N+Sg+Ill+Use/Ped:e%>s%> PxCi ; !
+ +N+Sg+Gen:e%> K ;
+ +N+Sg+Abe:e%>#dagi K ;
+ +N+Sg+Abe:e%>#dagá K ;
+ +N+Sg+Abe:e%>#tagá K ;
+ +N+Sg+Gen+Use/Ped:e%> PxV ; !
+ +N+Sg+Acc:e%>v K ;
+ +N+Sg+Acc+Use/Ped:e%> PxV ; !
+ +N+Sg+Ine:e%>n K ;
+ +N+Sg+Ine+Use/Ped:e%>n%> PxC ; !
+ +N+Sg+Ela:e%>s K ;
+ +N+Sg+Ela+Use/Ped:e%>st%> PxC ; !
+ +N+Pl+Nom:e%> K ;
+ +N+Pl+Nom+Use/Ped:e%> PxNomPlV ; !
+ +N+Pl+Gen:i%>j K ;
+ +N+Pl+Abe:i%>j#dagi K ;
+ +N+Pl+Abe:i%>j#dagá K ;
+ +N+Pl+Abe:i%>j#tagá K ;
+ +N+Pl+Gen+Use/Ped:i%>j%> PxC ; !
+ +N+Pl+Acc:i%>jt K ;
+ +N+Pl+Acc+Use/Ped:i%>jd%> PxC ; !
+ +N+Pl+Ill:i%>jda K ;
+ +N+Pl+Ill+Use/Ped:i%>jdis%> PxCs ; !
+ +N+Pl+Ine:i%>jn K ;
+ +N+Pl+Ine+Use/Ped:i%>jn%> PxC ; !
+ +N+Pl+Ela:i%>js K ;
+ +N+Pl+Ela+Use/Ped:i%>jst%> PxC ; !
+ +N+Pl+Com:i%>j K ;
+ +N+Pl+Com+Use/Ped:i%>j%> PxC ; !
+ +N:i%> N-EVENWEAKSTEM-SG-COM ;
+ +N+Der1+Der/dibme+A:e» DIBME ;
+ +N+Der1+Der/dibme+A+Attr:e»dis%> ATTR ;
+! +N+Der1+Der/dibme+A:e»dis VUOHTA ; !moved to ATTR
+ +N+Der1+Der/dibme+A:e»d DUVVAT ;
+ +N+Der4+Der/ahtes:e»g AHTES ;
+ +N+Der4+Der/ahtes:e»d AHTES ;
+ +N+Abe:e%>dak K ;
+ +N+Abe:e%>da K ;
+ +N+SgNomCmp:e%> R ;
+ +N+SgGenCmp:e%> R ;
+ +N+PlGenCmp:i%>j R ;
+ 
+LEXICON DARRHA
+ +N:rha%> N-EVENSTRONGSTEM ;
+ +N:há%> N-EVENWEAKSTEM ; ! Weak grade Q1
+ +N:há» DenominalNounsMUORRA ;
+ +N:há» DenominalAdjsV1 ;
+! +N:há» DenominalAdjsV2 ; not plausible
+ +N+SgNomCmp:rha%> R ;
+ +N+SgGenCmp:há%> R ;
+ +N+PlGenCmp:há%>j R ;
+
+
+
+! like MUORRA but only plural
+LEXICON VUOSA
+ +N+SgNomCmp:%> R ;
+ +N+Ess:%>n K ;
+ +N+Pl+Nom:%>Q1 K ;
+ +N+Pl+Nom+Use/Ped:%>Q1%> PxNomPlV ; !
+ +N+Pl+Gen:%>Q1j K ;
+ +N+Pl+Abe:%>Q1j#dagi K ;
+ +N+Pl+Abe:%>Q1j#dagá K ;
+ +N+Pl+Abe:%>Q1j#tagá K ;
+ +N+Pl+Gen+Use/Ped:%>Q1j%> PxC ; !
+ +N+Pl+Acc:%>Q1jt K ;
+ +N+Pl+Acc+Use/Ped:%>Q1jd%> PxC ; !
+ +N+Pl+Ill:%>Q1jda K ;
+ +N+Pl+Ill+Use/Ped:%>Q1jdis%> PxCs ; !
+ +N+Pl+Ine:%>Q1jn K ;
+ +N+Pl+Ine+Use/Ped:%>Q1jn%> PxC ; !
+ +N+Pl+Ela:%>Q1js K ;
+ +N+Pl+Ela+Use/Ped:%>Q1jst%> PxC ; !
+ +N+Pl+Com:%>Q1j K ;
+ +N+Pl+Com+Use/Ped:%>Q1j%> PxC ; !
+ +N+Der1+Der/dibme+A:»Q1 DIBME ;
+ +N+Der1+Der/dibme+A+Attr:»Q1dis%> ATTR ;
+! +N+Der1+Der/dibme+A:»Q1dis VUOHTA ; !moved to LEXICON VUOHTA
+ +N+Der1+Der/dibme+A:»Q1d DUVVAT ;
+ +N+Der4+Der/ahtes:»Q1g AHTES ;
+ +N+Der4+Der/ahtes:»Q1d AHTES ;
+ +N+Abe:%>Q1dak K ;
+ +N+Abe:%>Q1da K ;
+ +N+PlGenCmp:%>Q1j R ;
+ +N+Der1+Der/Dimin+N+Sg+Gen:»X7tja K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»X7tja#dagi K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»X7tja#dagá K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»X7tja#tagá K ;
+ +N+Der1+Der/Dimin+N+Ess:»X7tjin K ;
+ +N+Der1+Der/Dimin+N+Pl+Nom:»X7tja K ;
+ +N+Der1+Der/Dimin+N+Pl+Gen:»X7tjij K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»X7tjij#dagi K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»X7tjij#dagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»X7tjij#tagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc:»X7tjijt K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped:»X7tjijd%> PxCs ; !
+ +N+Der1+Der/Dimin+N+Pl+Ill:»X7tjijda K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine:»X7tjijn K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine+Use/Ped:»X7tjijn%> PxCs ; !
+ +N+Der1+Der/Dimin+N+Pl+Ela:»X7tjijs K ;
+ +N+Der1+Der/Dimin+N+Pl+Ela+Use/Ped:»X7tjijst%> PxCs ; !
+ +N+Der1+Der/Dimin+N+Pl+Com:»X7tjij K ;
+
+LEXICON KULTUR !Recent loanwords on -vrra with long and short compound-form
+ +N+SgNomCmp:vrra%> R ;
+ +N+SgNomCmp:r%> R ;
+ +N:vrra%> N-EVENSTRONGSTEM ;
+ +N:vrra%>Q1 N-EVENWEAKSTEM ;
+ +N:vrra» DenominalNounsMUORRA ;
+ +N:vrra» DenominalAdjsV1 ;
+ +N:vrra» DenominalAdjsV2 ;
+ +N+SgGenCmp:vra%> R ;
+ +N+PlGenCmp:vra%>j R ;
+
+LEXICON FAKTOR !Recent loanwords on -åvrrå with long and short compound-form
+ +N+SgNomCmp:åvrrå%> R ;
+ +N+SgNomCmp:or%> R ;
+ +N:åvrrå%> N-EVENSTRONGSTEM ;
+ +N:åvrrå%>Q1 N-EVENWEAKSTEM ;
+ +N:åvrrå» DenominalNounsMUORRA ;
+ +N:åvrrå» DenominalAdjsV1 ;
+ +N:åvrrå» DenominalAdjsV2 ;
+ +N+SgGenCmp:åvrå%> R ;
+ +N+PlGenCmp:åvrå%>j R ;
+ 
+LEXICON INSPEKTØR !Recent loanwords on -ørra with long and short compound-form
+ +N+SgNomCmp:ørra%> R ;
+ +N+SgNomCmp:ørs%> R ;
+ +N:ørra%> N-EVENSTRONGSTEM ;
+ +N:ørra%>Q1 N-EVENWEAKSTEM ;
+ +N:ørra» DenominalNounsMUORRA ;
+ +N:ørra» DenominalAdjsV1 ;
+ +N:ørra» DenominalAdjsV2 ;
+ +N+SgGenCmp:øra%> R ;
+ +N+PlGenCmp:øra%>j R ;
+
+
+LEXICON TELEFON !Recent loanwords on -åvnnå with long and short compound-form
+ +N+SgNomCmp:åvnnå%> R ;
+ +N+SgNomCmp:on%> R ;
+ +N:åvnnå%> N-EVENSTRONGSTEM ;
+ +N:åvnnå%>Q1 N-EVENWEAKSTEM ;
+ +N:åvnnå» DenominalNounsMUORRA ;
+ +N:åvnnå» DenominalAdjsV1 ;
+ +N:åvnnå» DenominalAdjsV2 ;
+ +N+SgGenCmp:åvnå%> R ;
+ +N+PlGenCmp:åvnå%>j R ;
+
+
+LEXICON INSTITUTION !Recent loanwords on -sjåvnnå with long and short compound-form: -TION IN SWEDISH
+ +N+SgNomCmp:sjåvnnå%> R ;
+ +N+SgNomCmp+Dial/-SW:sjons%> R ;   
+ +N+SgNomCmp+Dial/-NOR:tions%> R ;   
+ +N:sjåvnnå%> N-EVENSTRONGSTEM ;
+ +N:sjåvnnå%>Q1 N-EVENWEAKSTEM ;
+ +N:sjåvnnå» DenominalNounsMUORRA ;
+ +N:sjåvnnå» DenominalAdjsV1 ;
+ +N:sjåvnnå» DenominalAdjsV2 ;
+ +N+SgGenCmp:sjåvnå%> R ;
+ +N+PlGenCmp:sjåvnå%>j R ;
+
+
+LEXICON MISSION !Recent loanwords on -sjåvnnå with long and short compound-form: -SSION IN SWEDISH
+ +N+SgNomCmp:sjåvnnå%> R ;
+ +N+SgNomCmp+Dial/-SW:sjons%> R ; 
+ +N+SgNomCmp+Dial/-NOR:ssions%> R ; 
+ +N:sjåvnnå%> N-EVENSTRONGSTEM ;
+ +N:sjåvnnå%>Q1 N-EVENWEAKSTEM ;
+ +N:sjåvnnå» DenominalNounsMUORRA ;
+ +N:sjåvnnå» DenominalAdjsV1 ;
+ +N:sjåvnnå» DenominalAdjsV2 ;
+ +N+SgGenCmp:sjåvnå%> R ;
+ +N+PlGenCmp:sjåvnå%>j R ;
+
+
+LEXICON PENSION !Recent loanwords on -sjåvnnå with long and short compound-form: -SION IN SWEDISH
+ +N+SgNomCmp:sjåvnnå%> R ;
+ +N+SgNomCmp+Dial/-SW:sjons%> R ;              
+ +N+SgNomCmp+Dial/-NOR:sions%> R ;             
+ +N:sjåvnnå%> N-EVENSTRONGSTEM ;
+ +N:sjåvnnå%>Q1 N-EVENWEAKSTEM ;
+ +N:sjåvnnå» DenominalNounsMUORRA ;
+ +N:sjåvnnå» DenominalAdjsV1 ;
+ +N:sjåvnnå» DenominalAdjsV2 ;
+ +N+SgGenCmp:sjåvnå%> R ;
+ +N+PlGenCmp:sjåvnå%>j R ;
+
+
+LEXICON BENSIN !Recent loanwords on -ijnna with long and short compound-form
+ +N+SgNomCmp:ijnna%> R ;
+ +N+SgNomCmp:in%> R ;
+ +N:ijnna%> N-EVENSTRONGSTEM ;
+ +N:ijnna%>Q1 N-EVENWEAKSTEM ;
+ +N:ijnna» DenominalNounsMUORRA ;
+ +N:ijnna» DenominalAdjsV1 ;
+ +N:ijnna» DenominalAdjsV2 ;
+ +N+SgGenCmp:ijna%> R ;
+ +N+PlGenCmp:ijna%>j R ;
+
+
+LEXICON MASKIN !Recent loanwords on -sjijnna with long and short compound-form: -SKIN
+ +N+SgNomCmp:sjijnna%> R ;
+ +N+SgNomCmp:skin%> R ;
+ +N:sjijnna%> N-EVENSTRONGSTEM ;
+ +N:sjijnna%>Q1 N-EVENWEAKSTEM ;
+ +N:sjijnna» DenominalNounsMUORRA ;
+ +N:sjijnna» DenominalAdjsV1 ;
+ +N:sjijnna» DenominalAdjsV2 ;
+ +N+SgGenCmp:sjijna%> R ;
+ +N+PlGenCmp:sjijna%>j R ;
+
+
+LEXICON ADJEKTIV !Recent loanwords on -ijvva with long and short compound-form
+ +N+SgNomCmp:ijvva%> R ;
+ +N+SgNomCmp:iv%> R ;
+ +N:ijvva%> N-EVENSTRONGSTEM ;
+ +N:ijvva%>Q1 N-EVENWEAKSTEM ;
+ +N:ijvva» DenominalNounsMUORRA ;
+ +N:ijvva» DenominalAdjsV1 ;
+ +N:ijvva» DenominalAdjsV2 ;
+ +N+SgGenCmp:ijva%> R ;
+ +N+PlGenCmp:ijva%>j R ;
+
+
+LEXICON ANTIKK !Recent loanwords on -hkka with long and short compound-form on -kk/-k
+ +N+SgNomCmp:hkka%> R ;
+ +N+SgNomCmp+Dial/-SW:kk%> R ;             
+ +N+SgNomCmp+Dial/-NOR:k%> R ;             
+ +N:hkka%> N-EVENSTRONGSTEM ;
+ +N:hkka%>Q1 N-EVENWEAKSTEM ;
+ +N:hkka» DenominalNounsMUORRA ;
+ +N:hkka» DenominalAdjsV1 ;
+ +N:hkka» DenominalAdjsV2 ;
+ +N+SgGenCmp:hka%> R ;
+ +N+PlGenCmp:hka%>j R ;
+
+
+LEXICON APOTEK !Recent loanwords on -hkka with long and short compound-form on -k
+ +N+SgNomCmp:hkka%> R ;
+ +N+SgNomCmp:ks%> R ;
+ +N:hkka%> N-EVENSTRONGSTEM ;
+ +N:hkka%>Q1 N-EVENWEAKSTEM ;
+ +N:hkka» DenominalNounsMUORRA ;
+ +N:hkka» DenominalAdjsV1 ;
+ +N:hkka» DenominalAdjsV2 ;
+ +N+SgGenCmp:hka%> R ;
+ +N+PlGenCmp:hka%>j R ;
+
+
+
+LEXICON ADVOKAT !Recent loanwords on -áhtta with long and short compound-form
+ +N+SgNomCmp:áhtta%> R ;
+ +N+SgNomCmp:at%> R ;
+ +N:áhtta%> N-EVENSTRONGSTEM ;
+ +N:áhtta%>Q1 N-EVENWEAKSTEM ;
+ +N:áhtta» DenominalNounsMUORRA ;
+ +N:áhtta» DenominalAdjsV1 ;
+ +N:áhtta» DenominalAdjsV2 ;
+ +N+SgGenCmp:áhta%> R ;
+ +N+PlGenCmp:áhta%>j R ;
+
+
+
+LEXICON BUDSJETT !Recent loanwords on -æhtta with long and short compound-form
+ +N+SgNomCmp:æhtta%> R ;
+ +N+SgNomCmp:ett%> R ;
+ +N:æhtta%> N-EVENSTRONGSTEM ;
+ +N:æhtta%>Q1 N-EVENWEAKSTEM ;
+ +N:æhtta» DenominalNounsMUORRA ;
+ +N:æhtta» DenominalAdjsV1 ;
+ +N:æhtta» DenominalAdjsV2 ;
+ +N+SgGenCmp:æhtta%>Q1 R ;
+ +N+PlGenCmp:æhtta%>Q1j R ;
+
+
+LEXICON INTERNET !Recent loanwords on -æhtta with long and short compound-form: -ET IN SWEDISH
+ +N+SgNomCmp:æhtta%> R ;
+ +N+SgNomCmp+Dial/-SW:ett%> R ;           
+ +N+SgNomCmp+Dial/-NOR:et%> R ;           
+ +N:æhtta%> N-EVENSTRONGSTEM ;
+ +N:æhtta%>Q1 N-EVENWEAKSTEM ;
+ +N:æhtta» DenominalNounsMUORRA ;
+ +N:æhtta» DenominalAdjsV1 ;
+ +N:æhtta» DenominalAdjsV2 ;
+ +N+SgGenCmp:æhtta%>Q1 R ;
+ +N+PlGenCmp:æhtta%>Q1j R ;
+
+
+LEXICON IDENTITET !Recent loanwords on -ehtta, -uhtta, -ihtta with long and short compound-form on -t
+ +N+SgNomCmp:htta%> R ;
+ +N+SgNomCmp:ts%> R ;
+ +N:htta%> N-EVENSTRONGSTEM ;
+ +N:htta%>Q1 N-EVENWEAKSTEM ;
+ +N:htta» DenominalNounsMUORRA ;
+ +N:htta» DenominalAdjsV1 ;
+ +N:htta» DenominalAdjsV2 ;
+ +N+SgGenCmp:hta%> R ;
+ +N+PlGenCmp:hta%>j R ;
+
+
+LEXICON INSTITUTT !Recent loanwords on -ehtta, -uhtta, -ihtta with long and short compound-form on -tt(NOR)/-t(SW)
+ +N+SgNomCmp:htta%> R ;
+ +N+SgNomCmp+Dial/-SW:tt%> R ;             
+ +N+SgNomCmp+Dial/-NOR:t%> R ;             
+ +N:htta%> N-EVENSTRONGSTEM ;
+ +N:htta%>Q1 N-EVENWEAKSTEM ;
+ +N:htta» DenominalNounsMUORRA ;
+ +N:htta» DenominalAdjsV1 ;
+ +N:htta» DenominalAdjsV2 ;
+ +N+SgGenCmp:hta%> R ;
+ +N+PlGenCmp:hta%>j R ;
+
+
+
+LEXICON PARTISIPP !Recent loanwords on -hppa with long and short compound-form on -pp
+ +N+SgNomCmp:hppa%> R ;
+ +N+SgNomCmp+Dial/-SW:pp%> R ;             
+ +N+SgNomCmp+Dial/-NOR:p%> R ;             
+ +N:hppa%> N-EVENSTRONGSTEM ;
+ +N:hppa%>Q1 N-EVENWEAKSTEM ;
+ +N:hppa» DenominalNounsMUORRA ;
+ +N:hppa» DenominalAdjsV1 ;
+ +N:hppa» DenominalAdjsV2 ;
+ +N+SgGenCmp:hpa%> R ;
+ +N+PlGenCmp:hpa%>j R ;
+
+
+LEXICON ALLEGORI !Recent loanwords on -ija/-iddja with long and short compound-form
+ +N+SgNomCmp:ja%> R ;
+ +N+SgNomCmp:%> R ;
+ +N:ja%> N-EVENSTRONGSTEM ;
+ +N:ja%> N-EVENWEAKSTEM ;
+ +N:ja%> DenominalNounsMUORRA ;
+ +N:ja%> DenominalAdjsV1 ;
+ +N:ja%> DenominalAdjsV2 ;
+ +N+SgGenCmp:ja%> R ;
+ +N+PlGenCmp:ja%>j R ;
+  +N+SgNomCmp:ddja%> R ;
+ +N:ddja%> N-EVENSTRONGSTEM ;
+ +N:ddja%>Q1 N-EVENWEAKSTEM ;
+ +N:ddja» DenominalNounsMUORRA ;
+ +N:ddja» DenominalAdjsV1 ;
+ +N:ddja» DenominalAdjsV2 ;
+ +N+SgGenCmp:dja%> R ;
+ +N+PlGenCmp:dja%>j R ;
+
+
+LEXICON PATENT !Recent loanwords on -ænnta with long and short compound-form
+ +N+SgNomCmp:ænnta%> R ;
+ +N+SgNomCmp:ent%> R ;
+ +N:ænnta%> N-EVENSTRONGSTEM ;
+ +N:ænnta%>Q1 N-EVENWEAKSTEM ;
+ +N:ænnta» DenominalNounsMUORRA ;
+ +N:ænnta» DenominalAdjsV1 ;
+ +N:ænnta» DenominalAdjsV2 ;
+ +N+SgGenCmp:ænnta%>Q1 R ;
+ +N+PlGenCmp:ænnta%>Q1j R ;
+
+
+LEXICON VARIANT !Recent loanwords on -ánnta with long and short compound-form
+ +N+SgNomCmp:ánnta%> R ;
+ +N+SgNomCmp:ant%> R ;
+ +N:ánnta%> N-EVENSTRONGSTEM ;
+ +N:ánnta%>Q1 N-EVENWEAKSTEM ;
+ +N:ánnta» DenominalNounsMUORRA ;
+ +N:ánnta» DenominalAdjsV1 ;
+ +N:ánnta» DenominalAdjsV2 ;
+ +N+SgGenCmp:ánta%> R ;
+ +N+PlGenCmp:ánta%>j R ;
+
+
+LEXICON PARADIS !Recent loanwords on -jssa with long and short compound-form
+ +N+SgNomCmp:jssa%> R ;
+ +N+SgNomCmp:s%> R ;
+ +N:jssa%> N-EVENSTRONGSTEM ;
+ +N:jssa%>Q1 N-EVENWEAKSTEM ;
+ +N:jssa» DenominalNounsMUORRA ;
+ +N:jssa» DenominalAdjsV1 ;
+ +N:jssa» DenominalAdjsV2 ;
+ +N+SgGenCmp:jsa%> R ;
+ +N+PlGenCmp:jsa%>j R ;
+ 
+LEXICON KOLLEKT !Recent loanwords on -ækta with long and short compound-form
+ +N+SgNomCmp:ækta%> R ;
+ +N+SgNomCmp:ekt%> R ;
+ +N:ækta%> N-EVENSTRONGSTEM ;
+ +N:ækta%>Q1 N-EVENWEAKSTEM ;
+ +N:ækta» DenominalNounsMUORRA ;
+ +N:ækta» DenominalAdjsV1 ;
+ +N:ækta» DenominalAdjsV2 ;
+ +N+SgGenCmp:ækta%>Q1 R ;
+ +N+PlGenCmp:ækta%>Q1j R ;
+
+
+LEXICON TEKSTIL !Recent loanwords on -jlla with long and short compound-form
+ +N+SgNomCmp:jlla%> R ;
+ +N+SgNomCmp:l%> R ;
+ +N:jlla%> N-EVENSTRONGSTEM ;
+ +N:jlla%>Q1 N-EVENWEAKSTEM ;
+ +N:jlla» DenominalNounsMUORRA ;
+ +N:jlla» DenominalAdjsV1 ;
+ +N:jlla» DenominalAdjsV2 ;
+ +N+SgGenCmp:jla%> R ;
+ +N+PlGenCmp:jla%>j R ;
+
+
+LEXICON SYSTEM !Recent loanwords on -ebma with long and short compound-form
+ +N+SgNomCmp:bma%> R ;
+ +N+SgNomCmp:m%> R ;
+ +N:bma%> N-EVENSTRONGSTEM ;
+ +N:bma%>Q1 N-EVENWEAKSTEM ;
+ +N:bma» DenominalNounsMUORRA ;
+ +N:bma» DenominalAdjsV1 ;
+ +N:bma» DenominalAdjsV2 ;
+ +N+SgGenCmp:ma%> R ;
+ +N+PlGenCmp:ma%>j R ;
+ 
+LEXICON AGRONOM !Recent loanwords on -åvmma with long and short compound-form
+ +N+SgNomCmp:åvmmå%> R ;
+ +N+SgNomCmp:om%> R ;
+ +N:åvmmå%> N-EVENSTRONGSTEM ;
+ +N:åvmmå%>Q1 N-EVENWEAKSTEM ;
+ +N:åvmmå» DenominalNounsMUORRA ;
+ +N:åvmmå» DenominalAdjsV1 ;
+ +N:åvmmå» DenominalAdjsV2 ;
+ +N+SgGenCmp:åvmå%> R ;
+ +N+PlGenCmp:åvmå%>j R ;
+
+
+LEXICON ADVERB !Recent loanwords on -ærbba with long and short compound-form
+ +N+SgNomCmp:ærbba%> R ;
+ +N+SgNomCmp:erb%> R ;
+ +N:ærbba%> N-EVENSTRONGSTEM ;
+ +N:ærbba%>Q1 N-EVENWEAKSTEM ;
+ +N:ærbba» DenominalNounsMUORRA ;
+ +N:ærbba» DenominalAdjsV1 ;
+ +N:ærbba» DenominalAdjsV2 ;
+ +N+SgGenCmp:ærbba%>Q1 R ;
+ +N+PlGenCmp:ærbba%>Q1j R ;
+
+
+LEXICON TABELL !Recent loanwords on -äl0la with long and short compound-form
+ +N+SgNomCmp:æl'la%> R ;
+ +N+SgNomCmp:ell%> R ;
+ +N:æl'la%> N-EVENSTRONGSTEM ;
+ +N:æl'la%>Q1 N-EVENWEAKSTEM ;
+ +N:æl'la» DenominalNounsMUORRA ;
+ +N:æl'la» DenominalAdjsV1 ;
+ +N:æl'la» DenominalAdjsV2 ;
+ +N+SgGenCmp:æl'la%>Q1 R ;
+ +N+PlGenCmp:æl'la%>Q1j R ;
+
+
+LEXICON AREAL !Recent loanwords on -álla with long and short compound-form
+ +N+SgNomCmp:álla%> R ;
+ +N+SgNomCmp:al%> R ;
+ +N:álla%> N-EVENSTRONGSTEM ;
+ +N:álla%>Q1 N-EVENWEAKSTEM ;
+ +N:álla» DenominalNounsMUORRA ;
+ +N:álla» DenominalAdjsV1 ;
+ +N:álla» DenominalAdjsV2 ;
+ +N+SgGenCmp:álla%>Q1 R ;
+ +N+PlGenCmp:álla%>Q1j R ;
+
+
+LEXICON TELEGRAM !Recent loanwords on -ám'ma with long and short compound-form
+ +N+SgNomCmp:ám'ma%> R ;
+ +N+SgNomCmp:am%> R ;
+ +N:ám'ma%> N-EVENSTRONGSTEM ;
+ +N:ám'ma%>Q1 N-EVENWEAKSTEM ;
+ +N:ám'ma» DenominalNounsMUORRA ;
+ +N:ám'ma» DenominalAdjsV1 ;
+ +N:ám'ma» DenominalAdjsV2 ;
+ +N+SgGenCmp:ám'ma%>Q1 R ;
+ +N+PlGenCmp:ám'ma%>Q1j R ;
+
+
+LEXICON ORGAN !Recent loanwords on -ádna with long and short compound-form
+ +N+SgNomCmp:ádna%> R ;
+ +N+SgNomCmp:an%> R ;
+ +N:ádna%> N-EVENSTRONGSTEM ;
+ +N:ádna%>Q1 N-EVENWEAKSTEM ;
+ +N:ádna» DenominalNounsMUORRA ;
+ +N:ádna» DenominalAdjsV1 ;
+ +N:ádna» DenominalAdjsV2 ;
+ +N+SgGenCmp:ána%> R ;
+ +N+PlGenCmp:ána%>j R ;
+
+
+LEXICON SEMINAR !Recent loanwords on -árra with long and short compound-form
+ +N+SgNomCmp:árra%> R ;
+ +N+SgNomCmp:ar%> R ;
+ +N:árra%> N-EVENSTRONGSTEM ;
+ +N:árra%>Q1 N-EVENWEAKSTEM ;
+ +N:árra» DenominalNounsMUORRA ;
+ +N:árra» DenominalAdjsV1 ;
+ +N:árra» DenominalAdjsV2 ;
+ +N+SgGenCmp:ára%> R ;
+ +N+PlGenCmp:ára%>j R ;
+
+
+LEXICON SBSTANS !Recent loanwords on -ánssa with long and short compound-form
+ +N+SgNomCmp:ánssa%> R ;
+ +N+SgNomCmp:ans%> R ;
+ +N:ánssa%> N-EVENSTRONGSTEM ;
+ +N:ánssa%>Q1 N-EVENWEAKSTEM ;
+ +N:ánssa» DenominalNounsMUORRA ;
+ +N:ánssa» DenominalAdjsV1 ;
+ +N:ánssa» DenominalAdjsV2 ;
+ +N+SgGenCmp:ánsa%> R ;
+ +N+PlGenCmp:ánsa%>j R ;
+
+
+LEXICON VALENS !Recent loanwords on -ænssa with long and short compound-form
+ +N+SgNomCmp:ænssa%> R ;
+ +N+SgNomCmp:ens%> R ;
+ +N:ænssa%> N-EVENSTRONGSTEM ;
+ +N:ænssa%>Q1 N-EVENWEAKSTEM ;
+ +N:ænssa» DenominalNounsMUORRA ;
+ +N:ænssa» DenominalAdjsV1 ;
+ +N:ænssa» DenominalAdjsV2 ;
+ +N+SgGenCmp:ænssa%>Q1 R ;
+ +N+PlGenCmp:ænssa%>Q1j R ;
+
+LEXICON TURIST !Recent loanwords on -ssta with long and short compound-form
+ +N+SgNomCmp:ssta%> R ;
+ +N+SgNomCmp:st9%> R ;
+ +N:ssta%> N-EVENSTRONGSTEM ;
+ +N:ssta%>Q1 N-EVENWEAKSTEM ;
+ +N:ssta» DenominalNounsMUORRA ;
+ +N:ssta» DenominalAdjsV1 ;
+ +N:ssta» DenominalAdjsV2 ;
+ +N+SgGenCmp:sta%> R ;
+ +N+PlGenCmp:sta%>j R ;
+ 
+LEXICON FANATISM !Recent loanwords on -ssma with long and short compound-form
+ +N+SgNomCmp:ssma%> R ;
+ +N+SgNomCmp+Dial/-NOR:sm%> R ; 
+ +N:ssma%> N-EVENSTRONGSTEM ;
+ +N:ssma%>Q1 N-EVENWEAKSTEM ;
+ +N:ssma» DenominalNounsMUORRA ;
+ +N:ssma» DenominalAdjsV1 ;
+ +N:ssma» DenominalAdjsV2 ;
+ +N+SgGenCmp:sma%> R ;
+ +N+PlGenCmp:sma%>j R ;
+
+
+LEXICON DEMAGOG !Recent loanwords on -ga with long and short compound-form
+ +N+SgNomCmp:a%> R ;
+ +N+SgNomCmp:%> R ;
+ +N:a%> N-EVENSTRONGSTEM ;
+ +N:a%> N-EVENWEAKSTEM ;
+ +N:a» DenominalNounsMUORRA ;
+ +N:a» DenominalAdjsV1 ;
+ +N:a» DenominalAdjsV2 ;
+ +N+SgGenCmp:a%> R ;
+ +N+PlGenCmp:a%>j R ;
+
+
+! 4syll stems
+! - - - - - -
+LEXICON GÅNÅGIS
+ +N: GÅNÅGIS-C ;
+ +N:a%> GÅNÅGIS-EVEN ;
+ +N:a»Q1 DenominalNounsMUORRA ;
+
+
+LEXICON GÅNÅGIS-C
+ +Sg+Nom:%> K ;
+! +Der4+Der/ahtes+A+Attr:a»Q1#gahtes%> ATTR ; gånågahtes is right form
+! +Der4+Der/ahtes+Adv:a»Q1#gahtá%> K ;
+! +Der4+Der/ahtes+Adv:a»Q1#gahti%> K ;
+! +Der4+Der/ahtes+A+Sg+Nom:a»Q1#gahtes%> K ;
+! +Der4+Der/ahtes+A+Sg+Nom:a»Q1#gahttá%> PxV ; !^P^
+! +Der4+Der/ahtes+A+Ess:a»Q1#gahttá%>n K ;
+!! +Der4+Der/ahtes+A+Der5+Der/vuohta:a»Q1#gahtes VUOHTA ; !moved to LEXICON VUOHTA
+! +Der4+Der/ahtes+A:a»Q1#gahttá%> ILL-EVENCASE ;
+! +Der4+Der/ahtes+A:a»Q1#gahttá%> N-EVENWEAKSTEM ;
+! +Der4+Der/ahtes+A:a»Q1#gahttá%> BU/MUS ;
+ +Abe:a%>Q1dak K ;
+ +Abe:a%>Q1da K ;
+ +SgNomCmp:%> R ;
+ +SgGenCmp:a%>Q1 R ;
+ +PlGenCmp:a%>Q1j R ;
+
+
+LEXICON GÅNÅGIS-EVEN
+ +Sg+Nom+Use/Ped: PxV ; ! !Spiik not explicit here, thus guessing.
+ +Ess:n K ;
+! +Ess:n%> PxC ; !^P^ !No Ess+Px according to Spiik, Grundstrom
+ ILL-EVENCASE ;
+ :Q1 N-EVENWEAKSTEM ;
+ 
+LEXICON ÁRMMOGIS-EVEN
+ +Sg+Nom+Use/Ped+Use/Sub: PxV ; ! !Spiik not explicit here, thus guessing.
+ +Ess:n K ;
+! +Ess:n%> PxC ; !^P^ !No Ess+Px according to Spiik, Grundstrom
+ ILL-EVENCASEadj ;
+ :Q1 N-EVENWEAKSTEMadj ;
+
+
+LEXICON CELSIUS
+ +N: GÅNÅGIS-C ; ! just as gånågis
+ +N:a%> CELSIUS-EVEN ; ! as gånågis, but no Q1 (WeG)
+ +N:a» DenominalNounsMUORRA ;
+
+LEXICON CELSIUS-EVEN
+ +Ess:n K ;
+ +Ess+Use/Ped:n%> PxC ; !
+ ILL-EVENCASE ;
+ N-EVENWEAKSTEM ;
+
+LEXICON BERRAHATTJA !like GÅNÅGIS but pl.
+! +N+Der4+Der/ahtes+A+Attr:a»Q1#gahtes%> ATTR ; bearrahahtes is right form
+! +N+Der4+Der/ahtes+Adv:a»Q1#gahtá%> K ;
+! +N+Der4+Der/ahtes+Adv:a»Q1#gahti%> K ;
+! +N+Der4+Der/ahtes+A+Sg+Nom:a»Q1#gahtes%> K ;
+! +N+Der4+Der/ahtes+A+Sg+Nom:a»Q1#gahttá%> PxV ; !^P^
+! +N+Der4+Der/ahtes+A+Ess:a»Q1#gahttá%>n K ;
+!! +N+Der4+Der/ahtes+A+Der5+Der/vuohta:a»Q1#gahtes VUOHTA ; !moved to LEXICON VUOHTA
+! +N+Der4+Der/ahtes+A:a»Q1#gahttá%> ILL-EVENCASE ;
+! +N+Der4+Der/ahtes+A:a»Q1#gahttá%> N-EVENWEAKSTEM ;
+! +N+Der4+Der/ahtes+A:a»Q1#gahttá%> BU/MUS ;
+ +N+Abe:a%>Q1dak K ;
+ +N+Abe:a%>Q1da K ;
+ +N+SgNomCmp:%> R ;
+ +N+PlGenCmp:a%>Q1j R ;
+ +N+Pl+Nom:a%>Q1 K ;
+ +N+Pl+Nom+Use/Ped:a%>Q1 PxNomPlV ; !
+ +N+Pl+Gen:a%>Q1j K ;
+ +N+Pl+Abe:a%>Q1j#dagi K ;
+ +N+Pl+Abe:a%>Q1j#dagá K ;
+ +N+Pl+Abe:a%>Q1j#tagá K ;
+ +N+Pl+Gen+Use/Ped:a%>Q1j%> PxC ; !
+ +N+Pl+Acc:a%>Q1jt K ;
+ +N+Pl+Acc+Use/Ped:a%>Q1jd%> PxC ; !
+ +N+Pl+Ill:a%>Q1jda K ;
+ +N+Pl+Ill+Use/Ped:a%>Q1jdis%> PxCs ; !
+ +N+Pl+Ine:a%>Q1jn K ;
+ +N+Pl+Ine+Use/Ped:a%>Q1jn%> PxC ; !
+ +N+Pl+Ela:a%>Q1js K ;
+ +N+Pl+Ela+Use/Ped:a%>Q1jst%> PxC ; !
+ +N+Pl+Com:a%>Q1j K ;
+ +N+Pl+Com+Use/Ped:a%>Q1j%> PxC ; !
+ +N+Ess:a%>n K ;
+ +N:a%>Q1» DenominalNounsMUORRA ;
+ +N+Der1+Der/Dimin+N:a»Q1X7tj OTH-ODDCASE ;
+ +N+Der1+Der/Dimin+N+Sg+Gen:a»Q1X7tja K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:a»Q1X7tja#dagi K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:a»Q1X7tja#dagá K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:a»Q1X7tja#tagá K ;
+ +N+Der1+Der/Dimin+N+Ess:a»Q1X7tjin K ;
+ +N+Der1+Der/Dimin+N+Pl+Nom:a»Q1X7tja K ;
+ +N+Der1+Der/Dimin+N+Pl+Gen:a»Q1X7tjij K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:a»Q1X7tjij#dagi K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:a»Q1X7tjij#dagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:a»Q1X7tjij#tagá K ;
+! +N+Der1+Der/Dimin+N+Pl+Gen:a»Q1X7tjij%> PxCs ; !^P^
+ +N+Der1+Der/Dimin+N+Pl+Acc:a»Q1X7tjijt K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped:a»Q1X7tjijd%> PxCs ; !
+ +N+Der1+Der/Dimin+N+Pl+Ill:a»Q1X7tjijda K ;
+! +N+Der1+Der/Dimin+N+Pl+Ill:a»Q1X7tjijdas%> PxC ; !^P^
+ +N+Der1+Der/Dimin+N+Pl+Ine:a»Q1X7tjijn K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine+Use/Ped:a»Q1X7tjijn%> PxCs ; !
+ +N+Der1+Der/Dimin+N+Pl+Ela:a»Q1X7tjijs K ;
+ +N+Der1+Der/Dimin+N+Pl+Ela+Use/Ped:a»Q1X7tjijst%> PxCs ; !
+ +N+Der1+Der/Dimin+N+Pl+Com:a»Q1X7tjij K ;
+! +N+Der1+Der/Dimin+N+Pl+Com:a»Q1X7tjij%> PxCs ; !^P^
+
+
+
+LEXICON JIHPELIJ
+ +N+Sg+Nom:ij%> K ;
+ +N+Sg+Nom+Use/Ped:ahá%> PxV ; !
+ +N+Ess:ahá%>n K ;
+ +N:ahá%> ILL-EVENCASE ;
+ +N:ahá%> N-EVENWEAKSTEM ;
+ +N:ahá» DenominalNounsMUORRA ;
+ +N+Der4+Der/ahtes+A+Attr:#»ahtes%> ATTR ;
+ +N+Der4+Der/ahtes+Adv:#»ahtá%> K ;
+ +N+Der4+Der/ahtes+Adv:#»ahti%> K ;
+ +N+Der4+Der/ahtes+A+Sg+Nom:#»ahtes%> K ;
+ +N+Der4+Der/ahtes+A+Sg+Nom+Use/Ped:#»ahttá%> PxV ; !
+ +N+Der4+Der/ahtes+A+Ess:#»ahttá%>n K ;
+! +N+Der4+Der/ahtes+A+Der5+Der/vuohta:#»ahtes VUOHTA ; !moved to LEXICON VUOHTA
+ +N+Der4+Der/ahtes+A:#»ahttá%> ILL-EVENCASE ;
+ +N+Der4+Der/ahtes+A:#»ahttá%> N-EVENWEAKSTEM ;
+ +N+Der4+Der/ahtes+A:#»ahttá%> BU/MUS ;
+ +N+Abe:ahá%>Q1dak K ;
+ +N+Abe:ahá%>Q1da K ;
+ +N+SgNomCmp:ij%> R ;
+ +N+SgGenCmp:ahá%>Q1 R ;
+ +N+PlGenCmp:ahá%>Q1j R ;
+
+LEXICON OARJJILIJ
+ +N+Sg+Nom:ij%> K ;
+ +N+Sg+Nom+Use/Ped:ihá%> PxV ; !
+ +N+Ess:ihá%>n K ;
+ +N:ihá%> ILL-EVENCASE ;
+ +N:ihá%> N-EVENWEAKSTEM ;
+ +N:ihá» DenominalNounsMUORRA ;
+ +N+Der4+Der/ahtes+A+Attr:#»ahtes%> ATTR ;
+ +N+Der4+Der/ahtes+Adv:#»ahtá%> K ;
+ +N+Der4+Der/ahtes+Adv:#»ahti%> K ;
+ +N+Der4+Der/ahtes+A+Sg+Nom:#»ahtes%> K ;
+ +N+Der4+Der/ahtes+A+Sg+Nom+Use/Ped:#»ahttá%> PxV ; !
+ +N+Der4+Der/ahtes+A+Ess:#»ahttá%>n K ;
+! +N+Der4+Der/ahtes+A+Der5+Der/vuohta:#»ahtes VUOHTA ; !moved to LEXICON VUOHTA
+ +N+Der4+Der/ahtes+A:#»ahttá%> ILL-EVENCASE ;
+ +N+Der4+Der/ahtes+A:#»ahttá%> N-EVENWEAKSTEM ;
+ +N+Der4+Der/ahtes+A:#»ahttá%> BU/MUS ;
+ +N+Abe:ihá%>Q1dak K ;
+ +N+Abe:ihá%>Q1da K ;
+ +N+SgNomCmp:ij%> R ;
+ +N+SgGenCmp:ihá%>Q1 R ;
+ +N+PlGenCmp:ihá%>Q1j R ;
+
+LEXICON VIESSOMUJ
+ +N+Sg+Nom:uj%> K ;
+ +N+Sg+Nom+Use/Ped:uhá%> PxV ; !
+ +N+Ess:uhá%>n K ;
+ +N:uhá%> ILL-EVENCASE ;
+ +N+Sg+Gen:uhá%> K ;
+ +N+Sg+Abe:uhá%>#dagi K ;
+ +N+Sg+Abe:uhá%>#dagá K ;
+ +N+Sg+Abe:uhá%>#tagá K ;
+ +N+Sg+Gen+Use/Ped:uhá%> PxV ; !
+ +N+Sg+Acc:uhá%>v K ;
+ +N+Sg+Acc+Use/Ped:uhá%> PxV ; !
+ +N+Sg+Ine:uhá%>n K ;
+ +N+Sg+Ine+Use/Ped:uhá%>n%> PxC ; !
+ +N+Sg+Ela:uhá%>s K ;
+ +N+Sg+Ela+Use/Ped:uhá%>st%> PxC ; !
+ +N+Pl+Nom:uhá%> K ;
+ +N+Pl+Gen:uhá%>j K ;
+ +N+Pl+Abe:uhá%>j#dagi K ;
+ +N+Pl+Abe:uhá%>j#dagá K ;
+ +N+Pl+Abe:uhá%>j#tagá K ;
+ +N+Pl+Acc:uhá%>jt K ;
+ +N+Pl+Acc+Use/Ped:uhá%>jd%> PxC ; !
+ +N+Pl+Ill:uhá%>jda K ;
+ +N+Pl+Ine:uhá%>jn K ;
+ +N+Pl+Ine+Use/Ped:uhá%>jn%> PxC ; !
+ +N+Pl+Ela:uhá%>js K ;
+ +N+Pl+Ela+Use/Ped:uhá%>jst%> PxC ; !
+ +N+Pl+Com:uhá%>j K ;
+ +N+Sg+Com+Use/Sub:uhá%>jna K ; !
+ +N+Sg+Com:uhá%>jn K ;
+ +N+Sg+Com+Use/Ped:uhá%>jn%> PxC ; !
+ +N:uhá» DenominalNounsMUORRA ;
+ +N+Der4+Der/ahtes+A+Attr:#»ahtes%> ATTR ;
+ +N+Der4+Der/ahtes+Adv:#»ahtá%> K ;
+ +N+Der4+Der/ahtes+Adv:#»ahti%> K ;
+ +N+Der4+Der/ahtes+A+Sg+Nom:#»ahtes%> K ;
+ +N+Der4+Der/ahtes+A+Sg+Nom+Use/Ped:#»ahttá%> PxV ; !
+ +N+Der4+Der/ahtes+A+Ess:#»ahttá%>n K ;
+! +N+Der4+Der/ahtes+A+Der5+Der/vuohta:#»ahtes VUOHTA ; !moved to LEXICON VUOHTA
+ +N+Der4+Der/ahtes+A:#»ahttá%> ILL-EVENCASE ;
+ +N+Der4+Der/ahtes+A:#»ahttá%> N-EVENWEAKSTEM ;
+ +N+Der4+Der/ahtes+A:#»ahttá%> BU/MUS ;
+ +N+Abe:uhá%>Q1dak K ;
+ +N+Abe:uhá%>Q1da K ;
+ +N+SgNomCmp:uj%> R ;
+ +N+SgGenCmp:uhá%>Q1 R ;
+ +N+PlGenCmp:uhá%>Q1j R ;
+
+
+LEXICON SIJDDALAHÁ  !plurals
+ +N+Ess:ahá%>n K ;
+ +N+Pl+Nom:ahá%> K ;
+ +N+Pl+Gen:ahá%>j K ;
+ +N+Pl+Abe:ahá%>j#dagi K ;
+ +N+Pl+Abe:ahá%>j#dagá K ;
+ +N+Pl+Abe:ahá%>j#tagá K ;
+ +N+Pl+Acc:ahá%>jt K ;
+ +N+Pl+Acc+Use/Ped:ahá%>jd%> PxC ; !
+ +N+Pl+Ill:ahá%>jda K ;
+ +N+Pl+Ine:ahá%>jn K ;
+ +N+Pl+Ine+Use/Ped:ahá%>jn%> PxC ; !
+ +N+Pl+Ela:ahá%>js K ;
+ +N+Pl+Ela+Use/Ped:ahá%>jst%> PxC ; !
+ +N+Pl+Com:ahá%>j K ;
+ +N+Der4+Der/ahtes+A+Attr:#»ahtes%> ATTR ;
+ +N+Der4+Der/ahtes+Adv:#»ahtá%> K ;
+ +N+Der4+Der/ahtes+Adv:#»ahti%> K ;
+ +N+Der4+Der/ahtes+A+Sg+Nom:#»ahtes%> K ;
+ +N+Der4+Der/ahtes+A+Sg+Nom+Use/Ped:#»ahttá%> PxV ; !
+ +N+Der4+Der/ahtes+A+Ess:#»ahttá%>n K ;
+! +N+Der4+Der/ahtes+A+Der5+Der/vuohta:#»ahtes VUOHTA ; !moved to LEXICON VUOHTA
+ +N+Der4+Der/ahtes+A:#»ahttá%> ILL-EVENCASE ;
+ +N+Der4+Der/ahtes+A:#»ahttá%> N-EVENWEAKSTEM ;
+ +N+Der4+Der/ahtes+A:#»ahttá%> BU/MUS ;
+ +N+Abe:ahá%>Q1dak K ;
+ +N+Abe:ahá%>Q1da K ;
+ +N+SgNomCmp:ij%> R ;
+ +N+PlGenCmp:aháj%>Q1 R ;
+ +N+Der1+Der/Dimin+N+Sg+Gen:ahá»tja K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:ahá»tja#dagi K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:ahá»tja#dagá K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:ahá»tja#tagá K ;
+ +N+Der1+Der/Dimin+N+Ess:ahá»tjin K ;
+ +N+Der1+Der/Dimin+N+Pl+Nom:ahá»tja K ;
+ +N+Der1+Der/Dimin+N+Pl+Gen:ahá»tjij K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:ahá»tjij#dagi K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:ahá»tjij#dagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:ahá»tjij#tagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc:ahá»tjijt K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped:ahá»tjijd%> PxCs ; !
+ +N+Der1+Der/Dimin+N+Pl+Ill:ahá»tjijda K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine:ahá»tjijn K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine+Use/Ped:ahá»tjijn%> PxCs ; !
+ +N+Der1+Der/Dimin+N+Pl+Ela:ahá»tjijs K ;
+ +N+Der1+Der/Dimin+N+Pl+Ela+Use/Ped:ahá»tjijst%> PxCs ; !
+ +N+Der1+Der/Dimin+N+Pl+Com:ahá»tjij K ;
+
+ LEXICON SISSNELUHÁ  !plurals
+ +N+Ess:uhá%>n K ;
+ +N+Pl+Nom:uhá%> K ;
+ +N+Pl+Gen:uhá%>j K ;
+ +N+Pl+Abe:uhá%>j#dagi K ;
+ +N+Pl+Abe:uhá%>j#dagá K ;
+ +N+Pl+Abe:uhá%>j#tagá K ;
+ +N+Pl+Acc:uhá%>jt K ;
+ +N+Pl+Acc+Use/Ped:uhá%>jd%> PxC ; !
+ +N+Pl+Ill:uhá%>jda K ;
+ +N+Pl+Ine:uhá%>jn K ;
+ +N+Pl+Ine+Use/Ped:uhá%>jn%> PxC ; !
+ +N+Pl+Ela:uhá%>js K ;
+ +N+Pl+Ela+Use/Ped:uhá%>jst%> PxC ; !
+ +N+Pl+Com:uhá%>j K ;
+ +N+Der4+Der/ahtes+A+Attr:#»ahtes%> ATTR ;
+ +N+Der4+Der/ahtes+Adv:#»ahtá%> K ;
+ +N+Der4+Der/ahtes+Adv:#»ahti%> K ;
+ +N+Der4+Der/ahtes+A+Sg+Nom:#»ahtes%> K ;
+ +N+Der4+Der/ahtes+A+Sg+Nom+Use/Ped:#»ahttá%> PxV ; !
+ +N+Der4+Der/ahtes+A+Ess:#»ahttá%>n K ;
+! +N+Der4+Der/ahtes+A+Der5+Der/vuohta:#»ahtes VUOHTA ; !moved to LEXICON VUOHTA
+ +N+Der4+Der/ahtes+A:#»ahttá%> ILL-EVENCASE ;
+ +N+Der4+Der/ahtes+A:#»ahttá%> N-EVENWEAKSTEM ;
+ +N+Der4+Der/ahtes+A:#»ahttá%> BU/MUS ;
+ +N+Abe:uhá%>Q1dak K ;
+ +N+Abe:uhá%>Q1da K ;
+ +N+SgNomCmp:uj%> R ;
+ +N+PlGenCmp:uháj%>Q1 R ;
+ +N+Der1+Der/Dimin+N+Sg+Gen:uhá»tja K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:uhá»tja#dagi K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:uhá»tja#dagá K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:uhá»tja#tagá K ;
+ +N+Der1+Der/Dimin+N+Ess:uhá»tjin K ;
+ +N+Der1+Der/Dimin+N+Pl+Nom:uhá»tja K ;
+ +N+Der1+Der/Dimin+N+Pl+Gen:uhá»tjij K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:uhá»tjij#dagi K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:uhá»tjij#dagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:uhá»tjij#tagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc:uhá»tjijt K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped:uhá»tjijd%> PxCs ; !
+ +N+Der1+Der/Dimin+N+Pl+Ill:uhá»tjijda K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine:uhá»tjijn K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine+Use/Ped:uhá»tjijn%> PxCs ; !
+ +N+Der1+Der/Dimin+N+Pl+Ela:uhá»tjijs K ;
+ +N+Der1+Der/Dimin+N+Pl+Ela+Use/Ped:uhá»tjijst%> PxCs ; !
+ +N+Der1+Der/Dimin+N+Pl+Com:uhá»tjij K ;
+
+
+
+
+
+
+
+! Nominal substems
+! - - - - - - - -
+
+LEXICON N-EVENSTRONGSTEM
+ NE-EVENCASE ;
+ :X4 ILL-EVENCASE ; ! X4 for the e:á and e:å alternation
+
+LEXICON N-EVENSTRONGSTEMadj
+ NE-EVENCASEadj ;
+ :X4 ILL-EVENCASEadj ; ! X4 for the e:á and e:å alternation
+
+LEXICON NE-EVENCASE
+ +Sg+Nom: K ;
+ +Sg+Nom+Use/Ped: PxV ; !
+ +Ess:n K ;
+! +Ess:n%> PxC ; !^P^ ! parallel with CELCIUS above (but this shouldn´t be here(?) TO)
+
+LEXICON NE-EVENCASEadj
+ +Sg+Nom: K ;
+ +Sg+Nom+Use/Ped+Use/Sub: PxV ; !
+ +Ess:n K ;
+! +Ess+Use/Sub:n%> PxC ; !^P^ ! parallel with CELCIUS above (but this shouldn´t be here(?) TO)
+
+LEXICON ILL-EVENCASE
+ +Sg+Ill:j K ;
+ +Sg+Ill+Use/Ped:s%> PxCi ; !
+
+LEXICON ILL-EVENCASEadj
+ +Sg+Ill:j K ;
+ +Sg+Ill+Use/Ped+Use/Sub:s%> PxCi ; !
+
+LEXICON N-EVENWEAKSTEM
+ N-EVENWEAKSTEM-OTH ;
+ N-EVENWEAKSTEM-SG-COM ; ! separate bec of X5
+
+LEXICON N-EVENWEAKSTEM-OTH
+ +Sg+Gen: K ;
+ +Sg+Abe:#dagi K ;
+ +Sg+Abe:#dagá K ;
+ +Sg+Abe:#tagá K ;
+ +Sg+Gen+Use/Ped: PxV ; !
+ +Sg+Acc:v K ;
+ +Sg+Acc+Use/Ped: PxV ; !
+ +Sg+Ine:n K ;
+ +Sg+Ine+Use/Ped:n%> PxC ; !
+ +Sg+Ela:s K ;
+ +Sg+Ela+Use/Ped:st%> PxC ; !
+ +Pl+Nom: K ;
+ +Pl+Nom+Use/Ped: PxNomPlV ; !
+ +Pl+Gen:j K ;
+ +Pl+Abe:j#dagi K ;
+ +Pl+Abe:j#dagá K ;
+ +Pl+Abe:j#tagá K ;
+ +Pl+Gen+Use/Ped:j%> PxC ; !
+ +Pl+Acc:jt K ;
+ +Pl+Acc+Use/Ped:jd%> PxC ; !
+ +Pl+Ill:jda K ;
+ +Pl+Ill+Use/Ped:jdis%> PxCs ; !
+ +Pl+Ine:jn K ;
+ +Pl+Ine+Use/Ped:jn%> PxC ; !
+ +Pl+Ela:js K ;
+ +Pl+Ela+Use/Ped:jst%> PxC ; !
+ +Pl+Com:j K ;
+ +Pl+Com+Use/Ped:j%> PxC ; !
+! ess & ill pl do not use Px that often, left out.
+! But what about nom pl, gen pl?
+! Spiik: Nominativ, genitiv och illativ pluralis antager sällan
+! suffix och har därför ej medtagits i paradigmen.
+! Here we thus wait for alternative input.
+
+LEXICON N-EVENWEAKSTEM-SG-COM
+ +Sg+Com:X5jn K ; ! X5 for o:u in ComSg. Note two dummies in a row!
+ +Sg+Com+Use/Sub:X5jna K ; !
+ +Sg+Com+Use/Ped:X5jn%> PxC ; !
+
+LEXICON N-EVENWEAKSTEMadj
+ N-EVENWEAKSTEM-OTHadj ;
+ N-EVENWEAKSTEM-SG-COMadj ; ! separate bec of X5
+
+LEXICON N-EVENWEAKSTEM-OTHadj
+ +Sg+Gen: K ;
+ +Sg+Abe:#dagi K ;
+ +Sg+Abe:#dagá K ;
+ +Sg+Abe:#tagá K ;
+ +Sg+Gen+Use/Ped+Use/Sub: PxV ; !
+ +Sg+Acc:v K ;
+ +Sg+Acc+Use/Ped+Use/Sub: PxV ; !
+ +Sg+Ine:n K ;
+ +Sg+Ine+Use/Ped+Use/Sub:n%> PxC ; !
+ +Sg+Ela:s K ;
+ +Sg+Ela+Use/Ped+Use/Sub:st%> PxC ; !
+ +Pl+Nom: K ;
+ +Pl+Nom+Use/Ped+Use/Sub: PxNomPlV ; !
+ +Pl+Gen:j K ;
+ +Pl+Abe:j#dagi K ;
+ +Pl+Abe:j#dagá K ;
+ +Pl+Abe:j#tagá K ;
+ +Pl+Gen+Use/Ped+Use/Sub:j%> PxC ; !
+ +Pl+Acc:jt K ;
+ +Pl+Acc+Use/Ped+Use/Sub:jd%> PxC ; !
+ +Pl+Ill:jda K ;
+ +Pl+Ill+Use/Ped+Use/Sub:jdis%> PxCs ; !
+ +Pl+Ine:jn K ;
+ +Pl+Ine+Use/Ped+Use/Sub:jn%> PxC ; !
+ +Pl+Ela:js K ;
+ +Pl+Ela+Use/Ped+Use/Sub:jst%> PxC ; !
+ +Pl+Com:j K ;
+ +Pl+Com+Use/Ped+Use/Sub:j%> PxC ; !
+! ess & ill pl do not use Px that often, left out.
+! But what about nom pl, gen pl?
+! Spiik: Nominativ, genitiv och illativ pluralis antager sällan
+! suffix och har därför ej medtagits i paradigmen.
+! Here we thus wait for alternative input.
+
+LEXICON N-EVENWEAKSTEM-SG-COMadj
+ +Sg+Com:X5jn K ; ! X5 for o:u in ComSg. Note two dummies in a row!
+ +Sg+Com+Use/Sub:X5jna K ; !
+ +Sg+Com+Use/Ped+Use/Sub:X5jn%> PxC ; !
+
+LEXICON MUORRACmp
+ +SgCmp+Use/Sub:X9 R ;   !
+ +SgNomCmp: R ;
+ +SgGenCmp:Q1 R ;
+ +PlGenCmp:Q1j R ;
+
+ LEXICON NOADECmp
+ +SgNomCmp: R ;
+ +SgCmp+Use/Sub:X9 R ;   !
+ +SgGenCmp: R ;
+ +PlGenCmp:Y6j R ;
+
+ LEXICON ACTORCmp
+ +SgNomCmp: R ;
+ +SgGenCmp: R ;
+ +PlGenCmp:j R ;
+
+
+ LEXICON ODDCmp
+ +SgGenCmp:a R ;
+ +PlGenCmp:ij R ;
+
+
+
+
+
+! Odd-syllable stems
+! ------------------
+
+! oddsyll, cg, C-final, 2ndsyll vowchange
+LEXICON ÅRES
+ +N:%>Q1 NE-ODDCASE ; ! Q1 is general WeG
+ +N:%>X5 OTH-ODDCASE ; ! X5 is e:å and o:u
+ +N:»X5 DenominalNounsODD ;
+ +N:»X5 DenominalAdjsC ;
+ +N:%>X5 ODDCmp ;
+ +N+SgNomCmp:%>Q1 R ;
+
+
+! oddsyll, cg, C-final, no 2ndsyll vowchange
+LEXICON GÁMAS ! Odd-syllable C-final noun with CG but no VChange
+ +N:%>Q1 NE-ODDCASE ;
+ +N:%> OTH-ODDCASE ;
+ +N:»X5 DenominalNounsODD ;
+ +N:» DenominalAdjsC ;
+ +N:%>X5 ODDCmp ;
+ +N+SgNomCmp:%>Q1 R ;
+
+
+! oddsyll, cg, C-final, 2ndsyll vowchange, only long essive
+LEXICON SÅHKÅR
+ +N:%>Q1 N-ODDCASE ; ! To Nom only, since SÅHKÅR has no short essive.
+ +N:%>X5 OTH-ODDCASE ;
+ +N:»X5 DenominalNounsODD ;
+ +N:»X5 DenominalAdjsC ;
+ +N:%>X5 ODDCmp ;
+ +N+SgNomCmp:%>Q1 R ;
+
+
+! oddsyll, no cg, no vowchange
+LEXICON GAHPER
+ +N:%> N-ODDCASE ; ! no pointer to E-ODDCASE, as gahper has no short Ess
+ +N:%> OTH-ODDCASE ;
+ +N:» DenominalNounsODD ;
+ +N:» DenominalAdjsC ;
+ +N:%> ODDCmp ;
+ +N+SgNomCmp:%> R ;
+
+
+! oddsyll, cg, vowchange, V-final nominative
+LEXICON BENA
+ +N:%>X3 BENA-NE ;
+ +N:%>X5 OTH-ODDCASE ;
+ +N:»X5 DenominalNounsODD ;
+ +N:»X5 DenominalAdjsC ;
+ +N:%>X5 ODDCmp ;
+ +N+SgNomCmp:%>X3 R ;
+ ! X5 for vow change
+
+LEXICON DÁRBBAGA !like BENA BUT ONLY PLURAL
+ +N+SgNomCmp:%>X3 R ;
+ +N+Ess:%>X3n K ;
+ +N+Ess:%>X5in K ;
+ +N+Pl+Nom:%>X5a K ;
+ +N+Pl+Gen:%>X5ij K ;
+ +N+Pl+Abe:%>X5ij#dagi K ;
+ +N+Pl+Abe:%>X5ij#dagá K ;
+ +N+Pl+Abe:%>X5ij#tagá K ;
+! +N+Pl+Gen:%>X5ij%> PxCs ; !^P^
+ +N+Pl+Acc:%>X5ijt K ;
+ +N+Pl+Acc+Use/Ped:%>X5ijd%> PxCs ; !
+ +N+Pl+Ill:%>X5ijda K ;
+! +N+Pl+Ill:%>X5ijdas%> PxC ; !^P^
+ +N+Pl+Ine:%>X5ijn K ;
+ +N+Pl+Ine+Use/Ped:%>X5ijn%> PxCs ; !
+ +N+Pl+Ela:%>X5ijs K ;
+ +N+Pl+Ela+Use/Ped:%>X5ijst%> PxCs ; !
+ +N+Pl+Com:%>X5ij K ;
+! +N+Pl+Com:%>X5ij%> PxCs ; !^P^
+ +N+Der1+Der/Dimin+N+Sg+Gen:»X5attja%> K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»X5attja%>#dagi K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»X5attja%>#dagá K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»X5attja%>#tagá K ;
+ +N+Der1+Der/Dimin+N+Ess:»X5adtja%>n K ;
+ +N+Der1+Der/Dimin+N+Pl+Nom:»X5attja%> K ;
+ +N+Der1+Der/Dimin+N+Pl+Gen:»X5attja%>j K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»X5attja%>j#dagi K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»X5attja%>j#dagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»X5attja%>j#tagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc:»X5attja%>jt K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped:»X5attja%>jd%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Ill:»X5attja%>jda K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine:»X5attja%>jn K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine+Use/Ped:»X5attja%>jn%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Ela:»X5attja%>js K ;
+ +N+Der1+Der/Dimin+N+Pl+Ela+Use/Ped:»X5attja%>jst%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Com:»X5attja%>j K ;
+ +N+Der1+Der/Dimin+N+Sg+Gen:»X5attja%> K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»X5attja%>#dagi K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»X5attja%>#dagá K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»X5attja%>#tagá K ;
+ +N+Der1+Der/Dimin+N+Ess:»X5adtja%>n K ;
+ +N+Der1+Der/Dimin+N+Pl+Nom:»X5attja%> K ;
+ +N+Der1+Der/Dimin+N+Pl+Gen:»X5attja%>j K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»X5attja%>j#dagi K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»X5attja%>j#dagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»X5attja%>j#tagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc:»X5attja%>jt K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped:»X5attja%>jd%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Ill:»X5attja%>jda K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine:»X5attja%>jn K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine+Use/Ped:»X5attja%>jn%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Ela:»X5attja%>js K ;
+ +N+Der1+Der/Dimin+N+Pl+Ela+Use/Ped:»X5attja%>jst%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Com:»X5attja%>j K ;
+ +N:»X5 DenominalAdjsC ;
+ +N+PlGenCmp:%>X5ij R ;
+ ! X5 for vow change
+
+
+! oddsyllable plural only
+LEXICON VÁLLDÁRA
+ +N+Sg+Gen:%>a K ;
+ +N+Sg+Abe:%>a#dagi K ;
+ +N+Sg+Abe:%>a#dagá K ;
+ +N+Sg+Abe:%>a#tagá K ;
+ +N+Ess:%>in K ;
+ +N+Pl+Nom:%>a K ;
+ +N+Pl+Gen:%>ij K ;
+ +N+Pl+Abe:%>ij#dagi K ;
+ +N+Pl+Abe:%>ij#dagá K ;
+ +N+Pl+Abe:%>ij#tagá K ;
+! +N+Sg+Gen:%> PxC ; !^P^
+ +N+Pl+Acc:%>ijt K ;
+ +N+Pl+Acc+Use/Ped:%>ijd%> PxCs ; !
+ +N+Pl+Ill:%>ijda K ;
+! +N+Sg+Ill:%>as%> PxCs ; !^P^
+ +N+Pl+Ine:%>ijn K ;
+ +N+Pl+Ine+Use/Ped:%>ijn%> PxCs ; !
+ +N+Pl+Ela:%>ijs K ;
+ +N+Pl+Ela+Use/Ped:%>ijst%> PxCs ; !
+ +N+Pl+Com:%>ij K ;
+! +N+Sg+Com:%>ijn%> PxCs; !^P^
+ +N+Der4+Der/ahtes:» AHTES ;
+ +N+Abe:%>adak K ;
+ +N+Abe:%>ada K ;
+ +N+PlGenCmp:%>ij R ;
+ +N+Der1+Der/Dimin+N+Sg+Gen:»attja%> K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»attja%>#dagi K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»attja%>#dagá K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»attja%>#tagá K ;
+ +N+Der1+Der/Dimin+N+Ess:»adtja%>n K ;
+ +N+Der1+Der/Dimin+N+Pl+Nom:»attja%> K ;
+ +N+Der1+Der/Dimin+N+Pl+Gen:»attja%>j K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»attja%>j#dagi K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»attja%>j#dagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»attja%>j#tagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc:»attja%>jt K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped:»attja%>jd%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Ill:»attja%>jda K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine:»attja%>jn K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine+Use/Ped:»attja%>jn%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Ela:»attja%>js K ;
+ +N+Der1+Der/Dimin+N+Pl+Ela+Use/Ped:»attja%>jst%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Com:»attja%>j K ;
+
+LEXICON SNJIERÁGA
+ +N+SgNomCmp:%> R ;
+ +N+Ess:%>in K ;
+ +N+Pl+Nom:%>a K ;
+ +N+Pl+Gen:%>ij K ;
+ +N+Pl+Abe:%>ij#dagi K ;
+ +N+Pl+Abe:%>ij#dagá K ;
+ +N+Pl+Abe:%>ij#tagá K ;
+! +N+Sg+Gen:%> PxC ; !^P^
+ +N+Pl+Acc:%>ijt K ;
+ +N+Pl+Acc+Use/Ped:%>ijd%> PxCs ; !
+ +N+Pl+Ill:%>ijda K ;
+! +N+Sg+Ill:%>as%> PxCs ; !^P^
+ +N+Pl+Ine:%>ijn K ;
+ +N+Pl+Ine+Use/Ped:%>ijn%> PxCs ; !
+ +N+Pl+Ela:%>ijs K ;
+ +N+Pl+Ela+Use/Ped:%>ijst%> PxCs ; !
+ +N+Pl+Com:%>ij K ;
+! +N+Sg+Com:%>ijn%> PxCs; !^P^
+ +N+Der4+Der/ahtes:» AHTES ;
+ +N+Abe:%>adak K ;
+ +N+Abe:%>ada K ;
+ +N+PlGenCmp:%>ij R ;
+ +N+Der1+Der/Dimin+N+Sg+Gen:»attja%> K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»attja%>#dagi K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»attja%>#dagá K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»attja%>#tagá K ;
+ +N+Der1+Der/Dimin+N+Ess:»adtja%>n K ;
+ +N+Der1+Der/Dimin+N+Pl+Nom:»attja%> K ;
+ +N+Der1+Der/Dimin+N+Pl+Gen:»attja%>j K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»attja%>j#dagi K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»attja%>j#dagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»attja%>j#tagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc:»attja%>jt K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped:»attja%>jd%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Ill:»attja%>jda K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine:»attja%>jn K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine+Use/Ped:»attja%>jn%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Ela:»attja%>js K ;
+ +N+Der1+Der/Dimin+N+Pl+Ela+Use/Ped:»attja%>jst%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Com:»attja%>j K ;
+
+LEXICON BÆLLJASA !GÁMAS but plural
+ +N+SgNomCmp:%>Q1 R ;
+ +N+Ess:%>Q1X1n K ;
+ +N+Ess:%>X5in K ;
+ +N+Pl+Nom:%>X5a K ;
+ +N+Pl+Gen:%>X5ij K ;
+ +N+Pl+Abe:%>X5ij#dagi K ;
+ +N+Pl+Abe:%>X5ij#dagá K ;
+ +N+Pl+Abe:%>X5ij#tagá K ;
+! +N+Pl+Gen:%>X5ij%> PxCs ; !^P^
+ +N+Pl+Acc:%>X5ijt K ;
+ +N+Pl+Acc+Use/Ped:%>X5ijd%> PxCs ; !
+ +N+Pl+Ill:%>X5ijda K ;
+! +N+Pl+Ill:%>X5ijdas%> PxC ; !^P^
+ +N+Pl+Ine:%>X5ijn K ;
+ +N+Pl+Ine+Use/Ped:%>X5ijn%> PxCs ; !
+ +N+Pl+Ela:%>X5ijs K ;
+ +N+Pl+Ela+Use/Ped:%>X5ijst%> PxCs ; !
+ +N+Pl+Com:%>X5ij K ;
+! +N+Pl+Com:%>X5ij%> PxCs ; !^P^
+ +N+Der1+Der/Dimin+N+Sg+Gen:»X5attja%> K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»X5attja%>#dagi K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»X5attja%>#dagá K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»X5attja%>#tagá K ;
+ +N+Der1+Der/Dimin+N+Ess:»X5adtja%>n K ;
+ +N+Der1+Der/Dimin+N+Pl+Nom:»X5attja%> K ;
+ +N+Der1+Der/Dimin+N+Pl+Gen:»X5attja%>j K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»X5attja%>j#dagi K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»X5attja%>j#dagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»X5attja%>j#tagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc:»X5attja%>jt K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped:»X5attja%>jd%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Ill:»X5attja%>jda K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine:»X5attja%>jn K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine+Use/Ped:»X5attja%>jn%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Ela:»X5attja%>js K ;
+ +N+Der1+Der/Dimin+N+Pl+Ela+Use/Ped:»X5attja%>jst%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Com:»X5attja%>j K ;
+ +N+Der1+Der/Dimin+N+Sg+Gen:»X5attja%> K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»X5attja%>#dagi K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»X5attjav#dagá K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»X5attjav#tagá K ;
+ +N+Der1+Der/Dimin+N+Ess:»X5adtja%>n K ;
+ +N+Der1+Der/Dimin+N+Pl+Nom:»X5attja%> K ;
+ +N+Der1+Der/Dimin+N+Pl+Gen:»X5attja%>j K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»X5attja%>j#dagi K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»X5attja%>j#dagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»X5attja%>j#tagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc:»X5attja%>jt K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped:»X5attja%>jd%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Ill:»X5attja%>jda K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine:»X5attja%>jn K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine+Use/Ped:»X5attja%>jn%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Ela:»X5attja%>js K ;
+ +N+Der1+Der/Dimin+N+Pl+Ela+Use/Ped:»X5attja%>jst%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Com:»X5attja%>j K ;
+ +N:» DenominalAdjsC ;
+ +N+PlGenCmp:%>X5ij R ;
+ ! X5 for vow change
+
+
+
+! oddsyllable plural only
+LEXICON MANEBU
+ +N+Ess:%>n K ;
+ +N+Pl+Nom:%> K ;
+ +N+Pl+Gen:%>j K ;
+ +N+Pl+Abe:%>j#dagi K ;
+ +N+Pl+Abe:%>j#dagá K ;
+ +N+Pl+Abe:%>j#tagá K ;
+ +N+Pl+Acc:%>jt K ;
+ +N+Pl+Acc+Use/Ped:%>jd%> PxCs ; !
+ +N+Pl+Ill:%>jda K ;
+ +N+Pl+Ine:%>jn K ;
+ +N+Pl+Ine+Use/Ped:%>jn%> PxCs ; !
+ +N+Pl+Ela:%>js K ;
+ +N+Pl+Ela+Use/Ped:%>jst%> PxCs ; !
+ +N+Pl+Com:%>j K ;
+ +N+Abe:%>dak K ;
+ +N+Abe:%>da K ;
+ +N+PlGenCmp:%>j R ;
+ +N+Der1+Der/Dimin+N+Sg+Gen:»ttja%> K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»ttja%>#dagi K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»ttja%>#dagá K ;
+ +N+Der1+Der/Dimin+N+Sg+Abe:»ttja%>#tagá K ;
+ +N+Der1+Der/Dimin+N+Ess:»dtja%>n K ;
+ +N+Der1+Der/Dimin+N+Pl+Nom:»ttja%> K ;
+ +N+Der1+Der/Dimin+N+Pl+Gen:»ttja%>j K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»ttja%>j#dagi K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»ttja%>j#dagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Abe:»ttja%>j#tagá K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc:»ttja%>jt K ;
+ +N+Der1+Der/Dimin+N+Pl+Acc+Use/Ped:»ttja%>jd%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Ill:»ttja%>jda K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine:»ttja%>jn K ;
+ +N+Der1+Der/Dimin+N+Pl+Ine+Use/Ped:»ttja%>jn%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Ela:»ttja%>js K ;
+ +N+Der1+Der/Dimin+N+Pl+Ela+Use/Ped:»ttja%>jst%> PxC ; !
+ +N+Der1+Der/Dimin+N+Pl+Com:»ttja%>j K ;
+
+LEXICON BAVSEV !bavsev:baksima
+ +N+Sg+Nom:e%>Q1v K ;
+ +N+Ess:e%>Q1n K ;
+ +N:im%> OTH-ODDCASE ;
+ +N:im» DenominalNounsODD ;
+ +N:im» DenominalAdjsC ;
+ +N:im%> ODDCmp ;
+ +N+SgNomCmp:e%>Q1v R ;
+
+LEXICON GÅRDAL !gårdal:goardala
+ +N:%>X3 NE-ODDCASE ;
+ +N:%>X5 OTH-ODDCASE ;
+ +N:»X5 DenominalNounsODD ;
+ +N:»X5 DenominalAdjsC ;
+ +N:%>X5 ODDCmp ;
+ +N+SgNomCmp:%>X3 R ;
+
+LEXICON RÁBEV !rábev:ráhpuga
+ +N+Sg+Nom:bev%> K ;
+ +N+Ess:ben%> K ;
+ +N:hpug%> OTH-ODDCASE ;
+ +N:hpug» DenominalNounsODD ;
+ +N:hpug» DenominalAdjsC ;
+ +N:hpug%> ODDCmp ;
+ +N+SgNomCmp:bev%> R ;
+
+LEXICON SEKKAS !sekkas:sæggasa
+ +N+Sg+Nom:kkas%> K ;
+ +N+Ess:kkan%> K ;
+ +N:ggás%> OTH-ODDCASE ;
+ +N:ggás» DenominalNounsODD ;
+ +N:ggás» DenominalAdjsC ;
+ +N:ggás%> ODDCmp ;
+ +N+SgNomCmp:kkas%> R ;
+
+LEXICON DERDAJ !derdaj:dærddaga
+ +N+Sg+Nom:áj%> K ;
+ +N+Ess:án%> K ;
+ +N:vag%> OTH-ODDCASE ;
+ +N:vag» DenominalNounsODD ;
+ +N:vag» DenominalAdjsC ;
+ +N:vag%> ODDCmp ;
+ +N+SgNomCmp:váj%> R ;
+ 
+LEXICON BØSOJ !bøsoj:bøssog
+ +N+Sg+Nom:%>Q1j K ;
+ +N+Ess:%>Q1n K ;
+ +N:g%>X5 OTH-ODDCASE ;
+ +N:g»X5 DenominalNounsODD ;
+ +N:g»X5 DenominalAdjsC ;
+ +N:g%>X5 ODDCmp ;
+ +N+SgNomCmp:%>Q1j R ;
+
+
+LEXICON GUOVSOJVUOJOJ    !vuojoj:vuodjom
+ +N+Sg+Nom:%>Q1j K ;
+ +N+Ess:%>Q1n K ;
+ +N:%>m OTH-ODDCASE ;
+ +N:%>X5m» DenominalNounsODD ;
+ +N:m» DenominalAdjsC ;
+ +N:%>X5m ODDCmp ;
+ +N+SgNomCmp:%>Q1j R ;
+
+LEXICON RITJAS !Like GÁMAS but without stem a-lengthening for grade I (underlying long -i-)
+ +N+Sg+Nom:tjas%> K ;
+ +N+Ess:tjan%> K ;
+ +N:htjas%> OTH-ODDCASE ;
+ +N:htjas»X5 DenominalNounsODD ;
+ +N:htjas» DenominalAdjsC ;
+ +N:htjas%>X5 ODDCmp ;
+ +N+SgNomCmp:tjas%> R ;
+
+
+
+LEXICON TJÅLKES    !tjålkes:tjoalkkas-
+ +N+Sg+Nom:ålkes%> K ;
+ +N+Ess:ålken%> K ;
+ +N:oalkkas%> OTH-ODDCASE ;
+ +N:oalkkas»X5 DenominalNounsODD ;
+ +N:oalkkas» DenominalAdjsC ;
+ +N:oalkkas%>X5 ODDCmp ;
+ +N+SgNomCmp:ålkes%> R ;
+
+LEXICON BÁRNEP    !bárnep:bárnebu-
+ +N+Sg+Nom:p%> K ;
+ +N+Ess:n%> K ;
+! +N+Sg+Nom:b%> PxC ; !^P^
+ +N+Sg+Gen:bu%> K ;
+ +N+Sg+Abe:bu%>#dagi K ;
+ +N+Sg+Abe:bu%>#dagá K ;
+ +N+Sg+Abe:bu%>#tagá K ;
+! +N+Sg+Gen:b%> PxC ; !^P^
+ +N+Sg+Acc:bu%>v K ;
+! +N+Sg+Acc:b%> PxC ; !^P^
+ +N+Sg+Ill:bu%>j K ;  ! Px ?? !!
+! +N+Sg+Ill:bu%>s%> PxCs ; !^P^
+ +N+Sg+Ine:bu%>n K ;
+! +N+Sg+Ine:bu%>n%> PxCs ; !^P^
+ +N+Sg+Ela:bu%>s K ;
+! +N+Sg+Ela:bu%>st%> PxCs ; !^P^
+ +N+Sg+Com:bu%>jn K ;
+ +N+Sg+Com+Use/Sub:bu%>jna K ; !
+! +N+Sg+Com:bu%>jn%> PxCs; !^P^
+ +N+Ess:bu%>n K ;
+ +N+Pl+Nom:bu%> K ;
+ +N+Pl+Gen:bu%>j K ;
+ +N+Pl+Abe:bu%>j#dagi K ;
+ +N+Pl+Abe:bu%>j#dagá K ;
+ +N+Pl+Abe:bu%>j#tagá K ;
+! +N+Pl+Gen:bu%>j%> PxCs ; !^P^
+ +N+Pl+Acc:bu%>jt K ;
+! +N+Pl+Acc:bu%>jd%> PxCs ; !^P^
+ +N+Pl+Ill:bu%>jda K ;
+! +N+Pl+Ill:bu%>jdas%> PxC ; !^P^
+ +N+Pl+Ine:bu%>jn K ;
+! +N+Pl+Ine:bu%>jn%> PxCs ; !^P^
+ +N+Pl+Ela:bu%>js K ;
+! +N+Pl+Ela:bu%>jst%> PxCs ; !^P^
+ +N+Pl+Com:bu%>j K ;
+! +N+Pl+Com:bu%>j%> PxCs ; !^P^
+ +N+Der4+Der/ahtes:bu»g AHTES ;
+ +N+Abe:bu%>dak K ;
+ +N+Abe:bu%>da K ;
+ +N+SgGenCmp:bu%> R ;
+ +N+PlGenCmp:bu%>j R ;
+ +N+SgNomCmp:p%> R ;
+
+LEXICON SÅGAS
+ +N+Sg+Nom:%> K ;
+ +N:k%> OTH-ODDCASE ;
+ +N:k» DenominalNounsODD ;
+ +N:k» DenominalAdjsC ;
+ +N:k%> ODDCmp ;
+ +N+SgNomCmp:%> R ;
+
+LEXICON SÁGE
+ +N+Sg+Nom:e%>Q1 K ;
+ +N:ah%> OTH-ODDCASE ;
+ +N:ah» DenominalNounsODD ;
+ +N:ah» DenominalAdjsC ;
+ +N:ah%> ODDCmp ;
+ +N+SgNomCmp:e%>Q1 R ;
+
+LEXICON BUTJES
+ +N+Sg+Nom:jes%> K ;
+ +N+Ess:jen%> K ; ! X1 to delete cns before short ess
+ +N:tjes%>X5 OTH-ODDCASE ; ! X5 is e:å and o:u
+ +N:tjes»X5 DenominalNounsODD ;
+ +N:tjes»X5 DenominalAdjsC ;
+ +N:tjes%>X5 ODDCmp ;
+ +N+SgNomCmp:jes%> R ;
+
+
+
+! Odd-syllable stems, sublexica
+! - - - - - - - - - - - - - - -
+
+LEXICON NE-ODDCASE ! The lexicon is split bec. of gahper's missing short Ess
+ N-ODDCASE ;
+ E-ODDCASE ;
+
+LEXICON N-ODDCASE
+ +Sg+Nom: K ;
+
+
+LEXICON E-ODDCASE
+ +Ess:X1n K ; ! X1 to delete cns before short ess
+
+LEXICON OTH-ODDCASE
+ +Sg+Nom+Use/Ped: PxC ; !
+ +Sg+Gen:a K ;
+ +Sg+Abe:a#dagi K ;
+ +Sg+Abe:a#dagá K ;
+ +Sg+Abe:a#tagá K ;
+ +Sg+Gen+Use/Ped: PxC ; !
+ +Sg+Acc:av K ;
+ +Sg+Acc+Use/Ped: PxC ; !
+ +Sg+Ill:ij K ;  ! Px ?? !!
+ +Sg+Ill+Use/Ped:as%> PxCs ; !
+ +Sg+Ine:in K ;
+ +Sg+Ine+Use/Ped:in%> PxCs ; !
+ +Sg+Ela:is K ;
+ +Sg+Ela+Use/Ped:ist%> PxCs ; !
+ +Sg+Com:ijn K ;
+ +Sg+Com+Use/Sub:ijna K ; !
+ +Sg+Com+Use/Ped:ijn%> PxCs; !
+ +Ess:in K ;
+ +Pl+Nom:a K ;
+ +Pl+Gen:ij K ;
+ +Pl+Abe:ij#dagi K ;
+ +Pl+Abe:ij#dagá K ;
+ +Pl+Abe:ij#tagá K ;
+ +Pl+Gen+Use/Ped:ij%> PxCs ; !
+ +Pl+Acc:ijt K ;
+ +Pl+Acc+Use/Ped:ijd%> PxCs ; !
+ +Pl+Ill:ijda K ;
+ +Pl+Ill+Use/Ped:ijdas%> PxC ; !
+ +Pl+Ine:ijn K ;
+ +Pl+Ine+Use/Ped:ijn%> PxCs ; !
+ +Pl+Ela:ijs K ;
+ +Pl+Ela+Use/Ped:ijst%> PxCs ; !
+ +Pl+Com:ij K ;
+ +Pl+Com+Use/Ped:ij%> PxCs ; !
+
+LEXICON OTH-ODDCASEadj
+ +Sg+Nom+Use/Ped+Use/Sub: PxC ; !
+ +Sg+Gen:a K ;
+ +Sg+Abe:a#dagi K ;
+ +Sg+Abe:a#dagá K ;
+ +Sg+Abe:a#tagá K ;
+ +Sg+Gen+Use/Ped+Use/Sub: PxC ; !
+ +Sg+Acc:av K ;
+ +Sg+Acc+Use/Ped+Use/Sub: PxC ; !
+ +Sg+Ill:ij K ;  ! Px ?? !!
+ +Sg+Ill+Use/Ped+Use/Sub:as%> PxCs ; !
+ +Sg+Ine:in K ;
+ +Sg+Ine+Use/Ped+Use/Sub:in%> PxCs ; !
+ +Sg+Ela:is K ;
+ +Sg+Ela+Use/Ped+Use/Sub:ist%> PxCs ; !
+ +Sg+Com:ijn K ;
+ +Sg+Com+Use/Sub:ijna K ; !
+ +Sg+Com+Use/Ped+Use/Sub:ijn%> PxCs; !
+ +Ess:in K ;
+ +Pl+Nom:a K ;
+ +Pl+Gen:ij K ;
+ +Pl+Abe:ij#dagi K ;
+ +Pl+Abe:ij#dagá K ;
+ +Pl+Abe:ij#tagá K ;
+ +Pl+Gen+Use/Ped+Use/Sub:ij%> PxCs ; !
+ +Pl+Acc:ijt K ;
+ +Pl+Acc+Use/Ped+Use/Sub:ijd%> PxCs ; !
+ +Pl+Ill:ijda K ;
+ +Pl+Ill+Use/Ped+Use/Sub:ijdas%> PxC ; !
+ +Pl+Ine:ijn K ;
+ +Pl+Ine+Use/Ped+Use/Sub:ijn%> PxCs ; !
+ +Pl+Ela:ijs K ;
+ +Pl+Ela+Use/Ped+Use/Sub:ijst%> PxCs ; !
+ +Pl+Com:ij K ;
+ +Pl+Com+Use/Ped+Use/Sub:ij%> PxCs ; !
+
+LEXICON BENA-NE
+ +Sg+Nom: K ;
+ +Sg+Nom+Use/Ped: PxV ; ! !benas, in Tuolja-book
+ +SgNomCmp: R ;
+ +Ess:n K ;
+
+!LEXICON BENA-OBL
+! +Sg+Nom:00 PxC ; !^P^
+! +Sg+Gen:a K ;
+! +Sg+Abe:a#dagi K ;
+! +Sg+Abe:a#dagá K ;
+! +Sg+Abe:a#tagá K ;
+! +Sg+Gen: PxC ; !^P^
+! +Sg+Acc:a K ;
+! +Sg+Acc: K ;
+! +Sg+Acc: PxC ; !^P^
+! +Pl+Nom:at K ;
+! +Sg+Ill:asa%> PxV ; !^P^
+! :i MALLASI-/NUORABU- ;
+! :i MALLASI- ;
+
+
+! Contracted stems
+! ----------------
+
+
+LEXICON SARVES
+ +N:%>Q1 SARVES-NE ;
+ +N:%>X4 CONTR-OTH ;
+ +N:»X4 DenominalNounsCONTR ;
+ +N:»X4 DenominalAdjsContr ;
+
+
+LEXICON SUOLOJ
+ +N:%>Q3 SUOLOJ-NE ;
+ +N:%>X4 CONTR-OTH ;
+ +N:»X4 DenominalNounsCONTR ;
+ +N:»X4 DenominalAdjsContr ;
+! +N:X5 CONTR-OTH ; ! o:u as well!
+
+LEXICON GUOMOJ
+ +N:»X4 DenominalNounsCONTR ;
+ +N:»X4 DenominalAdjsContr ;
+ +N:%>X6 SUOLOJ-NE ; ! III-I CG
+ +N:%>X5 ILL-EVENCASE ;
+ +N:%>X4 N-EVENWEAKSTEM ;
+ +N+Sg+Nom+Use/Ped:%> PxV ; !
+ +N+Ess:%>n K ;
+ +N+SgGenCmp:%> R ;
+ +N+PlGenCmp:%>j R ;
+
+
+LEXICON GÅHKES !gåhkes:gåhkkå
+ +N:e%> SARVES-NE ;
+ +N:kå%> CONTR-OTH ;
+ +N:kå» DenominalNounsCONTR ;
+ +N:kå» DenominalAdjsContr ;
+
+LEXICON SJUOKKAJ !sjuokkaj:sjuoggá
+ +N:a%>Q3 SUOLOJ-NE ;
+ +N:á%>X4 CONTR-OTH ;
+ +N:á»X4 DenominalNounsCONTR ;
+ +N:á»X4 DenominalAdjsContr ;
+
+
+LEXICON GISTÁ
+ +N+Sg+Nom:%>Q1 K ;
+! +N+Sg+Nom:%>Q1 PxC ; !^P^ !Moved to CONTR-OTH
+ +N+Ess:%>Q1n K ;
+ +N+SgNomCmp:%>Q1 R ;
+ +N:%>X4 CONTR-OTH ;
+ +N:»X4 DenominalNounsCONTR ;
+ +N:»X4 DenominalAdjsContr ;
+
+
+
+
+LEXICON SARVES-NE
+ +Sg+Nom:s K ;
+! +Sg+Nom:s%> PxC ; !^P^ !Moved to CONTR-OTH
+ +Ess:n K ;
+ +SgNomCmp:s R ;
+
+
+LEXICON SUOLOJ-NE
+ +Sg+Nom:j K ;
+! +Sg+Nom:j%> PxC ; !^P^ !Moved to CONTR-OTH
+ +Ess:n K ;
+ +SgNomCmp:j R ;
+
+
+LEXICON CONTR-OTH
+ ILL-EVENCASE ;
+ N-EVENWEAKSTEM ;
+ +Sg+Nom+Use/Ped: PxV ; !
+ +Ess:n K ;
+ +SgGenCmp: R ;
+ +PlGenCmp:j R ;
+
+! ComSg may cause trouble, since there is a dummy for it
+
+
+
+! Denominal nouns
+! ===============
+
+LEXICON DenominalNounsMUORRA
+ +Der1+Der/Dimin+N:X7sj N-ODDCASE ;
+ +Der1+Der/Dimin+N:X7tj OTH-ODDCASE ;
+ +Der1+Der/Dimin+N+SgNomCmp:X7sj R ;
+ +Der1+Der/Dimin+N+SgGenCmp:X7tja R ;
+ +Der1+Der/Dimin+N+PlGenCmp:X7tjij R ;
+ +Der1+Der/Dimin+N+Der2+Der/Dimin+N+Sg+Nom:X7tja»sj K ;
+ +Der1+Der/Dimin+N+Der2+Der/Dimin+N:X7tja»dtja GÅNÅGIS-EVEN ;
+ +Der1+Der/Dimin+N+Der2+Der/Dimin+N+SgNomCmp:X7tja»sj R ;
+ +Der1+Der/Dimin+N+Der2+Der/Dimin+N+SgGenCmp:X7tja»ttja R ;
+ +Der1+Der/Dimin+N+Der2+Der/Dimin+N+PlGenCmp:X7tja»ttjaj R ;
+
+
+LEXICON DenominalNounsKINO
+ +Der1+Der/Dimin+N:tj OTH-ODDCASE ;
+ +Der1+Der/Dimin+N+Der2+Der/Dimin+N+Sg+Nom:tja»sj K ;
+ +Der1+Der/Dimin+N+Der2+Der/Dimin+N:tja»dtja GÅNÅGIS-EVEN ;
+ +Der1+Der/Dimin+N+Der2+Der/Dimin+N+SgNomCmp:tja»sj R ;
+ +Der1+Der/Dimin+N+Der2+Der/Dimin+N+SgGenCmp:tja»ttja R ;
+ +Der1+Der/Dimin+N+Der2+Der/Dimin+N+PlGenCmp:tja»ttjaj R ;
+
+
+LEXICON DenominalNounsODD
+ +Der1+Der/Dimin+N+Sg+Nom:asj K ;
+ +Der1+Der/Dimin+N:adtja GÅNÅGIS-EVEN ;
+ +Der1+Der/Dimin+N+SgNomCmp:asj R ;
+ +Der1+Der/Dimin+N+SgGenCmp:attja R ;
+ +Der1+Der/Dimin+N+PlGenCmp:attjaj R ;
+ +Der1+Der/Dimin+N+Der2+Der/Dimin+N:adtja»X7sj N-ODDCASE ;
+ +Der1+Der/Dimin+N+Der2+Der/Dimin+N:adtja»X7tj OTH-ODDCASE ;
+ +Der1+Der/Dimin+N+Der2+Der/Dimin+N+SgNomCmp:adtja»X7sj R ;
+ +Der1+Der/Dimin+N+Der2+Der/Dimin+N+SgGenCmp:adtja»X7tja R ;
+ +Der1+Der/Dimin+N+Der2+Der/Dimin+N+PlGenCmp:adtja»X7tjij R ;
+
+LEXICON DenominalNounsCONTR
+ +Der1+Der/Dimin+N:tj OTH-ODDCASE ;
+ +Der1+Der/Dimin+N+Sg+Nom:sj K ;
+ +Der1+Der/Dimin+N+SgGenCmp:tja R ;
+ +Der1+Der/Dimin+N+PlGenCmp:tjij R ;
+ +Der1+Der/Dimin+N+SgNomCmp:sj R ;
+ +Der1+Der/Dimin+N+Der2+Der/Dimin+N+Sg+Nom:tja»sj K ;
+ +Der1+Der/Dimin+N+Der2+Der/Dimin+N:tja»dtja GÅNÅGIS-EVEN ;
+ +Der1+Der/Dimin+N+Der2+Der/Dimin+N+SgNomCmp:tja»sj R ;
+ +Der1+Der/Dimin+N+Der2+Der/Dimin+N+SgGenCmp:tja»ttja GÅNÅGIS-EVEN ;
+ +Der1+Der/Dimin+N+Der2+Der/Dimin+N+PlGenCmp:tja»ttjaj GÅNÅGIS-EVEN ;
+
+
+
+LEXICON VUOHTA !+CmpN/SgG +CmpN/DefPlGen
+ +CmpN/SgG+CmpN/DefPlGen+Der5+Der/vuohta+N:#»vuohta%>@C.NeedNoun@ VUOHTAMORPH ;
+
+LEXICON VUOHTANOUN
+ +N: VUOHTAMORPH ;
+
+LEXICON VUOHTAMORPH
+ NE-EVENCASE ;
+ +SgNomCmp+Use/Sub: R ; !
+ +SgCmp+Use/Sub:X9 R ;     !
+ +SgGenCmp:Q1 R ;
+ +PlGenCmp:Q1j R ;
+ :X4 ILL-EVENCASE ;
+ :Q1 N-EVENWEAKSTEM ;
+ +Abe:Q1dak K ;
+ +Abe:Q1da K ;
+
+LEXICON LASJ !SUB !+CmpN/SgN +CmpN/SgG +CmpN/PlG !from placenames
+ +Der1+Der/lasj+N+Sg+Nom+Use/Sub:»lasj K ; !
+ +Der1+Der/lasj+N+Use/Sub:»ladtja GÅNÅGIS-EVEN ; !
+
+LEXICON VUONAK !+CmpN/SgN +CmpN/SgG +CmpN/PlG !from placenames
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+Der1+Der/k+N+Sg+Nom:»k K ; ! no pointer to E-ODDCASE, as gahper has no short Ess
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+Der1+Der/k+N:»g9 OTH-ODDCASE ;
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+Der1+Der/k+N:»g ODDCmp ;
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+Der1+Der/k+N+SgNomCmp:»k R ;
+
+
+
+! ===========================
+! Sublexica for Adjective
+! ===========================
+
+! Even-syllable stems
+! -------------------
+
+LEXICON GIEVRRA ! Attr WeG, -s
+ +A+Attr:%>Q1s ATTR ;
+! +A:%>Q1s VUOHTA ; !moved to ATTR
+ +A:%> NE-EVENCASEadj ;
+ +A:%>X4 ILL-EVENCASEadj ;
+ +A:%>Q1 N-EVENWEAKSTEMadj ;
+ +A:%>Q1 BU/MUS ;
+ +A+Der5+Der/at+Adv:%>Q1t K ;
+ +A:%> MUORRACmp ;
+
+LEXICON NUORRA ! Attr =
+ +A+Attr:%> ATTR ;
+! +A: VUOHTA ; !moved to ATTR
+ +A:%> N-EVENSTRONGSTEMadj ;
+ +A:%>Q1 N-EVENWEAKSTEMadj ; ! cg in nominal paradigm
+ +A:%>Q1 BU/MUS ;
+ +A+Der5+Der/at+Adv:%>Q1t K ; ! Presumably WeG as adverb as well
+ +A:%> MUORRACmp ;
+
+LEXICON HÁVSSKE ! Attr w/o WeG, -s
+ +A+Attr:%>s ATTR ;
+! +A:%>s VUOHTA ; !moved to ATTR
+ +A:%> NE-EVENCASEadj ;
+ +A:%>X4 ILL-EVENCASEadj ;
+ +A:%>Q1 N-EVENWEAKSTEMadj ; ! Presumably WeG in nominal paradigm
+ +A:%>Q1 BU/MUS ;
+ +A+Der5+Der/at+Adv:%>Q1t K ;
+ +A:%> MUORRACmp ;
+
+LEXICON UNNE ! Attr e > a~e, WeG
+ +A+Attr:a%>Q1 ATTR ; ! a-attr.
+! +A+Attr:es%>Q1 ATTR ; ! e-attr. !These now hardcoded
+! +A:a%>Q1 VUOHTA ; !moved to ATTR
+! +A:es%>Q1 VUOHTA ; !moved to ATTR
+ +A:e%> NE-EVENCASEadj ; ! presumably normal adjective
+ +A:e%>X4 ILL-EVENCASEadj ;
+ +A:e%>Q1 N-EVENWEAKSTEMadj ; ! behaviour, with cg, and with
+ +A:e%>Q1 BU/MUS ;           ! the e-form as a starting
+ +A+Der5+Der/at+Adv:e%>Q1t K ;           ! point.
+ +A:e%> MUORRACmp ;
+
+LEXICON SÁVADAHTTE  !Causative-participles
+ +A:%> NE-EVENCASEadj ;
+ +A:%>X4 ILL-EVENCASEadj ;
+ +A:%>Q4 N-EVENWEAKSTEMadj ;
+ +A:%> MUORRACmp ;
+
+LEXICON JUHKKE  !participles
+ +A+Attr:%>s ATTR ;
+ +A:%> NE-EVENCASEadj ;
+ +A:%>X4 ILL-EVENCASEadj ;
+ +A:%>Q4 N-EVENWEAKSTEMadj ;
+ +A:%> MUORRACmp ;
+
+LEXICON ÁRMMOGIS !Adjectives on -is, comp. -abbo
+! +A:is VUOHTA ; !moved to ATTR
+ +A+Attr:is%> ATTR ; ! twol fixes the ss > s
+ +A+Sg+Nom:is%> K ;
+ +A+Sg+Nom+Use/Ped+Use/Sub:issa%> PxV ; !
+ +A:issa%> ÁRMMOGIS-EVEN ; ! Declined as four-syllable noun
+! +A:issa%>Q1 BU/MUS ; !this is wrong:ármmogisáp
+ +A:%> ABBO/AMOS ;  !ármmogabbo
+ +A+Der5+Der/at+Adv:issa%>Q1t K ;
+ +A+SgGenCmp:issa%>Q1 R ;
+ +A+PlGenCmp:issa%>Q1j R ;
+
+
+LEXICON ÅLLAGASJ !as ÁRMMOGIS but no comparatives.
+! +A: VUOHTA ; !moved to ATTR
+ +A+Attr:%> ATTR ;
+ +A+Sg+Nom:%> K ;
+ +A+Sg+Nom+Use/Ped+Use/Sub:a%> PxV ; !
+ +A:a%> ÁRMMOGIS-EVEN ; ! Declined as four-syllable noun
+! +A:a%>Q1 BU/MUS ;
+ +A+Der5+Der/at+Adv:a%>Q1t K ;
+ +A+SgNomCmp:%> R ;
+ +A+SgGenCmp:a%>Q1 R ;
+ +A+PlGenCmp:a%>Q1j R ;
+
+
+LEXICON ASIDASJ
+ +A:asj VUOHTA ;
+! +A:is VUOHTA ; !moved to ATTR
+ +A+Attr:is%> ATTR ; ! Special Attr form
+ +A+Sg+Nom:asj%> K ;
+ +A+Sg+Nom+Use/Ped+Use/Sub:adtja%> PxV ; !
+ +A+Sg+Ill:adtja%>j K ;
+ +A+Sg+Ill+Use/Ped+Use/Sub:adtja%>s%> PxCi ; !
+ +A+Ess:adtja%>n K ;
+ +A:attja%> N-EVENWEAKSTEMadj ; !This seems right. TO
+! +A:attja%> BU/MUS ; !unusual comp. and superl.
+ +A:%> ABBO/AMOS ;
+ +A+Der5+Der/at+Adv:attja%>t K ;
+ +A+SgNomCmp:asj%> R ;
+ +A+SgGenCmp:attja%> R ;
+ +A+PlGenCmp:attja%>j R ;
+
+LEXICON DÁRBBOLASJ !comparatives -abbo
+! +A:asj VUOHTA ; !moved to ATTR
+ +A+Sg+Nom:asj%> K ;
+ +A+Attr:asj%> ATTR ;
+ +A+Sg+Nom+Use/Ped+Use/Sub:adtja%> PxV ; !
+ +A+Sg+Ill:adtja%>j K ;
+ +A+Sg+Ill+Use/Ped+Use/Sub:adtja%>s%> PxCi ; !
+ +A+Ess:adtja%>n K ;
+ +A:attja%> N-EVENWEAKSTEMadj ; !This seems right. TO
+! +A:attja%> BU/MUS ; !unusual comp. and superl.
+ +A:%> ABBO/AMOS ;
+ +A+Der5+Der/at+Adv:attja%>t K ;
+ +A+SgNomCmp:asj%> R ;
+ +A+SgGenCmp:attja%> R ;
+ +A+PlGenCmp:attja%>j R ;
+
+
+
+LEXICON TJALMEDIBME
+! +A:is VUOHTA ; !moved to ATTR
+ +A+Attr:is%> ATTR ; ! Special Attr form
+ +A:ibme%> NE-EVENCASEadj ;
+ +A:ibme%>X4 ILL-EVENCASEadj ;
+ +A:ibme%>Q1 N-EVENWEAKSTEMadj ;
+ +A:%> ABBO/AMOS ;
+ +A+Der5+Der/at+Adv:ibme%>Q1t K ;
+ +A+SgGenCmp:ibme%>Q1 R ;
+ +A+PlGenCmp:ibme%>Q1j R ;
+ +A: DUVVAT ;
+
+LEXICON SUOLASIEHKE ! evenstem No attribute
+ +A:%> NE-EVENCASEadj ;
+ +A:%>X4 ILL-EVENCASEadj ;
+ +A:%>Q1 N-EVENWEAKSTEMadj ;
+! +A:%>Q1 BU/MUS ; !no comparatives for these
+ +A+Der5+Der/at+Adv:%>Q1t K ;
+
+LEXICON NUORTTALABBO   !Inherent comparatives
+ +A:%> ABBO/AMOS ;
+
+LEXICON GASSKALAMOS   !Inherent superlatives
+ +A+Superl:%> AMOS ;
+ +A+Superl+Der5+Der/at+Adv:%>abmus%>it K ;
+
+
+
+LEXICON DÁBBELIJ
+ +A+Sg+Nom:ij%> K ;
+ +A+Attr:ij%> ATTR ;
+! +A:ij VUOHTA ; !moved to ATTR
+ +A+Sg+Nom+Use/Ped+Use/Sub:ahá%> PxV ; !
+ +A+Ess:ahá%>n K ;
+ +A:ahá%> ILL-EVENCASEadj ;
+ +A:ahá%> N-EVENWEAKSTEMadj ;
+ +A+Der5+Der/at+Adv:ahá%>t K ;
+ +A:ahá%> BU/MUS ;
+ +A+SgGenCmp:ahá%> R ;
+ +A+PlGenCmp:ahá%>j R ;
+ 
+LEXICON BOREÁLA !Like NUORRA, but no comparatives (loanwords)
+ +A+Attr:%> ATTR ;
+! +A: VUOHTA ; !moved to ATTR
+ +A:%> N-EVENSTRONGSTEMadj ;
+ +A:%>Q1 N-EVENWEAKSTEMadj ; ! cg in nominal paradigm
+ +A+Der5+Der/at+Adv:%>Q1t K ; ! Presumably WeG as adverb as well
+ +A:%> MUORRACmp ;
+
+
+
+! Odd-syllable stems
+! ------------------
+
+LEXICON TJIEGOS ! a. Adjs on -k, negating adjs on -dahkes sm adjs on -os
+ +A+Attr:%>X2 ATTR ;
+! +A:%>X2 VUOHTA ; !moved to ATTR
+ +A:%>X2 N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+ +A:%>X5 OTH-ODDCASEadj ;
+ +A:%>X5 ABBO/AMOS ;
+ +A+Der5+Der/at+Adv:%>X5it K ;
+ +A:%>X5 ODDCmp ;
+
+
+LEXICON BASSTEL ! b. Adjs on -et, -l, -r, sm om -k, -sj with -is-attr
+ +A+Attr:is%> ATTR ;
+! +A:is VUOHTA ; !moved to ATTR
+ +A: VUOHTA ;
+ +A:%> N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+ +A:%> OTH-ODDCASEadj ;
+ +A:%> ABBO/AMOS ;
+ +A+Der5+Der/at+Adv:%>it K ;
+ +A+SgNomCmp:%> R ;
+ +A:%> ODDCmp ;
+
+
+LEXICON MUTTÁK ! c. Adjs on -ák, Attr -is or =
+ +A+Attr:%> ATTR ;
+ +A+Attr:is%> ATTR ;
+! +A: VUOHTA ; !moved to ATTR
+! +A:is VUOHTA ; !moved to ATTR
+ +A:%> N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+ +A:%> OTH-ODDCASEadj ;
+ +A:%> ABBO/AMOS ;
+ +A+Der5+Der/at+Adv:%>it K ;
+ +A+SgNomCmp:%> R ;
+ +A:%> ODDCmp ;
+
+LEXICON ALLAK ! d. Adjs on -ak, attr. on -a
+ +A+Attr:a%> ATTR ;
+! +A:a VUOHTA ; !moved to ATTR
+ +A:ak VUOHTA ;
+ +A:ak%> N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess 
+ +A:ag%> OTH-ODDCASEadj ;
+! +A:e%>Q1 BU/MUS ; !replaced to avoid adv. form alibut
+ +A+Comp:e%>Q1 BUStem ;
+ +A+Superl:e%>Q1muss BUOREMUS ;
+ +A+Der5+Der/at+Adv+Comp:ag%>appot K ;
+ +A+Superl+Der5+Der/at+Adv:ag%>abmus%>it K ;
+ +A+Comp+Der1+Der/Dimin+Sg+Nom:e»Q1busj%> K ;
+ +A+Comp+Der1+Der/Dimin+Sg+Attr:e»Q1busj%> ATTR ;
+ +A+Comp+Der1+Der/Dimin:e»Q1budtja%> ÁRMMOGIS-EVEN ;
+ +A+Comp+Der1+Der/Dimin+Der5+Der/at+Adv:e»Q1buttja%>t K ;
+ +A+Der5+Der/at+Adv:ag%>it K ;
+ +A+SgNomCmp:ak%> R ;
+ +A:ag%> ODDCmp ;
+
+LEXICON GÅBDDÅK ! d8. Adjs on -åk, attr. on -å
+ +A+Attr:å%> ATTR ;
+! +A:å VUOHTA ; !moved to ATTR
+ +A:åk VUOHTA ;
+ +A:åk%> N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess 
+ +A:åg%> OTH-ODDCASEadj ;
+! +A:e%>Q1 BU/MUS ; !replaced to avoid adv. form gåbdibut
+ +A+Comp:e%>Q1 BUStem ;
+ +A+Superl:e%>Q1muss BUOREMUS ;
+ +A+Der5+Der/at+Adv+Comp:åg%>appot K ;
+ +A+Superl+Der5+Der/at+Adv:åg%>abmus%>it K ;
+ +A+Comp+Der1+Der/Dimin+Sg+Nom:e»Q1busj%> K ;
+ +A+Comp+Der1+Der/Dimin+Sg+Attr:e»Q1busj%> ATTR ;
+ +A+Comp+Der1+Der/Dimin:e»Q1budtja%> ÁRMMOGIS-EVEN ;
+ +A+Comp+Der1+Der/Dimin+Der5+Der/at+Adv:e»Q1buttja%>t K ;
+ +A+Der5+Der/at+Adv:åg%>it K ;
+ +A+SgNomCmp:åk%> R ;
+ +A:åg%> ODDCmp ;
+
+
+LEXICON GALMAS
+ +A+Attr:%> ATTR ;
+! +A: VUOHTA ; !moved to ATTR
+ +A:s%>X2 VUOHTA ;
+ +A:s%>X2 N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+ +A:s%>X5 OTH-ODDCASEadj ;
+ +A:s%>X5 ABBO/AMOS ;
+ +A+Der5+Der/at+Adv:s%>it K ;
+ +A+SgNomCmp:s%>X2 R ;
+ +A:s%>X5 ODDCmp ;
+
+LEXICON SUOHKAT
+ +A+Attr:is%> ATTR ;
+! +A:is VUOHTA ; !moved to ATTR
+ +A:a%>Q1t VUOHTA ;
+ +A:a%>Q1t N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+ +A:a%>Q1d OTH-ODDCASEadj ;
+ +A:a%>Q1d ABBO/AMOS ;
+ +A+Der5+Der/at+Adv:a%>Q1dit K ;
+ +A+SgNomCmp:a%>Q1t R ;
+ +A:a%>Q1d ODDCmp ;
+
+
+LEXICON LÅSSÅT
+ +A+Attr:is%> ATTR ;
+ +A+Attr:å%> ATTR ;
+! +A:is VUOHTA ; !moved to ATTR
+! +A:å VUOHTA ; !moved to ATTR
+ +A:åt VUOHTA ;
+ +A:åt%> N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+ +A:åd%> OTH-ODDCASEadj ;
+ +A:åd%> ABBO/AMOS ;
+! +A:e%>Q1 BU/MUS ; !replaced to avoid adv. form låsibut
+ +A+Comp:e%>Q1 BUStem ;
+ +A+Superl:e%>Q1muss BUOREMUS ;
+ +A+Comp+Der1+Der/Dimin+Sg+Nom:e»Q1busj%> K ;
+ +A+Comp+Der1+Der/Dimin+Sg+Attr:e»Q1busj%> ATTR ;
+ +A+Comp+Der1+Der/Dimin:e»Q1budtja%> ÁRMMOGIS-EVEN ;
+ +A+Comp+Der1+Der/Dimin+Der5+Der/at+Adv:e»Q1buttja%>t K ;
+ +A+Der5+Der/at+Adv:åd%>it K ;
+ +A+SgNomCmp:åt%> R ;
+ +A:åd%> ODDCmp ;
+
+
+LEXICON DIMES
+ +A+Attr:a%> ATTR ;
+! +A:a VUOHTA ; !moved to ATTR
+ +A:es%>Q1 VUOHTA ;
+ +A:es%>Q1 N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+ +A:ás%> OTH-ODDCASEadj ;
+ +A:ás%> ABBO/AMOS ;
+ +A+Der5+Der/at+Adv:ás%>it K ;
+ +A+SgNomCmp:es%>Q1 R ;
+ +A:ás%> ODDCmp ;
+
+LEXICON BITJES !bitjes:bihtjas-
+ +A+Attr:a%> ATTR ;
+! +A:a VUOHTA ; !moved to ATTR
+ +A:es%>Q1 VUOHTA ;
+ +A:es%>Q1 N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+ +A:as%> OTH-ODDCASEadj ;
+ +A:as%> ABBO/AMOS ;
+ +A+Der5+Der/at+Adv:as%>it K ;
+ +A+SgNomCmp:es%>Q1 R ;
+ +A:as%> ODDCmp ;
+
+LEXICON OAMES
+ +A+Attr:%> ATTR ;
+! +A: VUOHTA ; !moved to ATTR
+ +A:s%>Q1 VUOHTA ;
+ +A:s%>Q1 N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+ +A:%>X4s OTH-ODDCASEadj ;
+ +A:%>X4s ABBO/AMOS ;
+ +A+Der5+Der/at+Adv:%>X4sit K ;
+ +A+SgNomCmp:s%>Q1 R ;
+ +A:%>X4s ODDCmp ;
+
+
+LEXICON TJALMMIS
+ +A+Attr:%>X2 ATTR ;
+ +A+Attr:is%> ATTR ;
+! +A:is VUOHTA ; !moved to ATTR
+! +A:%>X2 VUOHTA ; !moved to ATTR
+ +A:%>X2 N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+ +A:%>X5 OTH-ODDCASEadj ;
+ +A:%>X5 ABBO/AMOS ;
+ +A+Der5+Der/at+Adv:%>it K ; !Can these really form adverbs?
+ +A:%>X5 ODDCmp ;
+
+LEXICON STUORAK
+ +A+Attr:%> ATTR ;
+ +A+Attr:ra%> ATTR ;
+! +A:ra VUOHTA ; !moved to ATTR
+ +A:ak VUOHTA ;
+ +A:ak%> N-ODDCASE ;
+ +A:ag%> OTH-ODDCASEadj ;
+ +A:á%> BU/MUS ;
+ +A+Der5+Der/at+Adv:ag%>it K ;
+ +A+SgNomCmp:ak%> R ;
+ +A:ag%> ODDCmp ;
+
+
+LEXICON SJÆVNNJAT ! miscellanious uneven No attribute, stemvowel change
+ +A:%>Q1 VUOHTA ;
+ +A:%>Q1 N-ODDCASE ;
+ +A:%>X5 OTH-ODDCASEadj ;
+ +A:%>X5 ABBO/AMOS ;
+ +A+Der5+Der/at+Adv:%>X5it K ;
+ +A+SgNomCmp:%>Q1 R ;
+ +A:%>X5 ODDCmp ;
+
+
+LEXICON RIHTSOK ! miscellanious uneven No attribute, no stemvowel change
+ +A:%>Q1 VUOHTA ;
+ +A:%>Q1 N-ODDCASE ;
+ +A:%> OTH-ODDCASEadj ;
+ +A:%> ABBO/AMOS ;
+ +A+Der5+Der/at+Adv:%>it K ;
+ +A+SgNomCmp:%>Q1 R ;
+ +A:%> ODDCmp ;
+
+
+
+LEXICON OANEP  !Inherent comparatives
+ +A:%> BU/MUS ;
+
+LEXICON TJAVGGÁMUS   !Inherent superlatives
+ +A+Superl:muss BUOREMUS ;
+ +A+Superl+Der5+Der/at+Adv:musá%>t K ;
+
+
+LEXICON TSIBTSA !attr =
+ +A+Attr:%>X3 ATTR ;
+! +A:%>X3 VUOHTA ; !moved to ATTR
+ +A+Sg+Nom:%>X3 K ;
+ +A:%>X5 OTH-ODDCASEadj ;
+ +A:%>X5 ABBO/AMOS ;
+ +A+Der5+Der/at+Adv:%>X5it K ;
+ +A:%>X5 ODDCmp ;
+
+
+LEXICON IENNILS !no comparatives
+ +A: VUOHTA ;
+ +A:%> N-ODDCASE ;
+ +A:%> OTH-ODDCASEadj ;
+ +A: NAMÁK ;
+ +A:%> R ;
+
+LEXICON GÅNTSAS
+ +A+Attr:%>X3 ATTR ;
+! +A:%>X3 VUOHTA ; !moved to ATTR
+ +A:%>X3 N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+ +A:%>X5 OTH-ODDCASEadj ;
+ +A:%>X5 ABBO/AMOS ;
+ +A+Der5+Der/at+Adv:%>X5it K ;
+ +A:%>X5 ODDCmp ;
+
+LEXICON DABÁR !like BASSTEL but with CG
+ +A+Attr:%>Q1is ATTR ;
+! +A:%>Q1is VUOHTA ; !moved to ATTR
+ +A:%>Q1 VUOHTA ;
+ +A:%>Q1 N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+ +A:%> OTH-ODDCASEadj ;
+ +A:%> ABBO/AMOS ;
+ +A+Der5+Der/at+Adv:%>it K ;
+ +A+SgNomCmp:%>Q1 R ;
+ +A:%> ODDCmp ;
+
+LEXICON SNÁVES    !snáves:snávvas-
+ +A+Attr:es%> ATTR ;
+! +A:es VUOHTA ; !moved to ATTR
+ +A:es%> N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+ +A:vas%>X5 OTH-ODDCASEadj ;
+ +A:vas%>X5 ABBO/AMOS ;
+ +A+Der5+Der/at+Adv:vas%>X5it K ;
+ +A:vas%>X5 ODDCmp ;
+
+
+
+
+! Contracted stems
+! ----------------
+
+LEXICON SÁDNES ! attr =
+ +A+Attr:%>Q1s ATTR ;
+! +A:%>Q1s VUOHTA ; !moved to ATTR
+ +A+Sg+Nom:%>Q1s K ;
+ +A:%>X4 ILL-EVENCASEadj ;
+ +A:%>X4 N-EVENWEAKSTEMadj ;
+ +A+Sg+Nom+Use/Ped+Use/Sub:%>X4 PxV ; !
+ +A+Ess:%>X4n K ;
+ +A:%>X4 BU/MUS ;
+ +A+Der5+Der/at+Adv:%>X4t K ;
+ +A+SgGenCmp:%>X4 R ;
+ +A+PlGenCmp:%>X4j R ;
+
+
+LEXICON GOAVSOS  !attr =
+ +A+Attr:%>Q3s ATTR ;
+! +A:%>Q3s VUOHTA ; !moved to ATTR
+ +A+Sg+Nom:%>Q3s K ;
+ +A:%>X4 ILL-EVENCASEadj ;
+ +A:%>X4 N-EVENWEAKSTEMadj ;
+ +A+Sg+Nom+Use/Ped+Use/Sub:%>X4 PxV ; !
+ +A+Ess:%>X4n K ;
+ +A:%>X4 BU/MUS ;
+ +A+Der5+Der/at+Adv:%>X4t K ;
+ +A+SgGenCmp:%>X4 R ;
+ +A+PlGenCmp:%>X4j R ;
+
+
+LEXICON SUVRES  !attr suvra
+ +A+Attr:a%>Q1 ATTR ;
+! +A:a%>Q1 VUOHTA ; !moved to ATTR
+ +A:e%>Q1s VUOHTA ;
+ +A+Sg+Nom:e%>Q1s K ;
+ +A:á%> ILL-EVENCASEadj ;
+ +A:á%> N-EVENWEAKSTEMadj ;
+ +A+Sg+Nom+Use/Ped+Use/Sub:á%> PxV ; !
+ +A+Ess:á%>n K ;
+ +A:á%> BU/MUS ;
+ +A+Der5+Der/at+Adv:á%>t K ;
+ +A+SgNomCmp:e%>Q1s R ;
+ +A+SgGenCmp:á%> R ;
+ +A+PlGenCmp:á%>j R ;
+
+LEXICON RÁDAS !rádas:ráddasa
+ +A+Attr:as%> ATTR ;
+! +A:as%> VUOHTA ; !moved to ATTR
+ +A:as%> N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+ +A:das%> OTH-ODDCASEadj ;
+ +A:das%> ABBO/AMOS ;
+ +A+Der5+Der/at+Adv:das%>it K ;
+ +A:das%> ODDCmp ;
+
+
+
+
+
+! Comparation
+! -----------
+
+LEXICON BU/MUS ! even-syll adjectives
+ +Comp: BUStem ;
+ +Superl:muss BUOREMUS ;
+ +Comp+Der5+Der/at+Adv:but K ;
+ +Superl+Der5+Der/at+Adv:musá%>t K ;
+ +Comp+Der1+Der/Dimin+Sg+Nom:bu»sj%> K ;
+ +Comp+Der1+Der/Dimin+Sg+Attr:bu»sj%> ATTR ;
+ +Comp+Der1+Der/Dimin:bu»dtja%> CompSup-EVEN ;
+ +Comp+Der1+Der/Dimin+Der5+Der/at+Adv:bu»ttja%>t K ;
+
+
+LEXICON ABBO/AMOS ! odd-syll adjectives
+ +Comp+Sg+Nom:ap%> K ;
+ +Comp+Sg+Nom:up%> K ;
+ +Comp+Sg+Nom:abbo%> K ;
+ +Comp+Sg+Nom:ubbo%> K ;
+ +Comp+Sg+Nom+Use/Sub:æbbo%> K ; !
+ +Comp+Attr:ap%> ATTR ;
+ +Comp+Attr:up%> ATTR ;
+ +Comp: ABBO ;
+ +Superl: AMOS ;
+ +Der5+Der/at+Adv+Comp:appo%>t K ;
+ +Superl+Der5+Der/at+Adv:abmus%>it K ;
+ +Comp+Der1+Der/Dimin+Sg+Nom:appu»sj%> K ;
+ +Comp+Der1+Der/Dimin+Sg+Attr:appu»sj%> ATTR ;
+ +Comp+Der1+Der/Dimin:appu»tj%> CompSup-ODDCASE ;
+ +Comp+Der1+Der/Dimin+Der5+Der/at+Adv:appu»tj%>it K ;
+ +Comp+Der5+Der/at+Adv:uppo%>t K ;
+ +Superl+Der5+Der/at+Adv:ubmus%>it K ;
+ +Comp+Der1+Der/Dimin+Sg+Nom:uppu»sj%> K ;
+ +Comp+Der1+Der/Dimin+Sg+Attr:uppu»sj%> ATTR ;
+ +Comp+Der1+Der/Dimin:uppu»tj%> CompSup-ODDCASE ;
+ +Comp+Der1+Der/Dimin+Der5+Der/at+Adv:uppu»tj%>it K ;
+ +Der5+Der/at+Adv+Comp+Use/Sub:æppo%>t K ; !
+ +Superl+Der5+Der/at+Adv+Use/Sub:ebmus%>it K ; !
+ +Comp+Der1+Der/Dimin+Sg+Nom+Use/Sub:eppu»sj%> K ; !
+ +Comp+Der1+Der/Dimin+Sg+Attr+Use/Sub:eppu»sj%> ATTR ; !
+ +Comp+Der1+Der/Dimin+Use/Sub:eppu»tj%> CompSup-ODDCASE ; !
+ +Comp+Der1+Der/Dimin+Der5+Der/at+Adv+Use/Sub:eppu»tj%>it K ; !
+
+
+
+
+! Comparative
+! -----------
+
+LEXICON BUStem
+ +Attr:p ATTR ;
+ +Sg+Nom:p K ;
+ +Sg+Nom+Use/Marg+Use/Ped+Use/Sub:bu%> PxV ; ! !
+ +Sg+Gen:bu K ;
+ +Sg+Abe:bu#dagi K ;
+ +Sg+Abe:bu#dagá K ;
+ +Sg+Abe:bu#tagá K ;
+ +Sg+Gen+Use/Marg+Use/Ped+Use/Sub:bu%> PxV ; ! !
+ +Sg+Acc:buv K ;
+ +Sg+Acc+Use/Marg+Use/Ped+Use/Sub:bu%> PxV ; ! !
+ +Sg+Ill:buj K ;
+ +Sg+Ine:bun K ;
+ +Sg+Ine+Use/Marg+Use/Ped+Use/Sub:bun%> PxCs ; ! !
+ +Sg+Ela:bus K ;
+ +Sg+Ela+Use/Marg+Use/Ped+Use/Sub:bust%> PxCs ; ! !
+ +Sg+Com:bujn K ;
+ +Sg+Com+Use/Sub:bujna K ; !
+ +Sg+Com+Use/Marg+Use/Ped+Use/Sub:bujn%> PxCs ; ! !
+ +Ess:bun K ;
+ +Pl+Nom:bu K ;
+ +Pl+Gen:buj K ;
+ +Pl+Abe:buj#dagi K ;
+ +Pl+Abe:buj#dagá K ;
+ +Pl+Abe:buj#tagá K ;
+ +Pl+Acc:bujt K ;
+ +Pl+Acc+Use/Marg+Use/Ped+Use/Sub:bujd%> PxCs ; ! !
+ +Pl+Ill:bujda K ;
+ +Pl+Ine:bujn K ;
+ +Pl+Ine+Use/Marg+Use/Ped+Use/Sub:bujn%> PxCs ; ! !
+ +Pl+Ela:bujs K ;
+ +Pl+Ela+Use/Marg+Use/Ped+Use/Sub:bujst%> PxCs ; ! !
+ +Pl+Com:buj K ;
+
+LEXICON ABBO
+ +Sg+Nom:abbo%> K ;
+ +Sg+Gen:appo%> K ;
+ +Sg+Abe:appo%>#dagi K ;
+ +Sg+Abe:appo%>#dagá K ;
+ +Sg+Abe:appo%>#tagá K ;
+ +Sg+Acc:appo%>v K ;
+ +Sg+Ill:abbu%>j K ;
+ +Sg+Ine:appo%>n K ;
+ +Sg+Ela:appo%>s K ;
+ +Sg+Com:appu%>jn K ;
+ +Sg+Com:appo%>jn K ;
+ +Sg+Com+Use/Sub:appu%>jna K ; !
+ +Sg+Com+Use/Sub:appo%>jna K ; !
+ +Ess:abbo%>n K ;
+ +Pl+Nom:appo%> K ;
+ +Pl+Gen:appo%>j K ;
+ +Pl+Abe:appo%>j#dagi K ;
+ +Pl+Abe:appo%>j#dagá K ;
+ +Pl+Abe:appo%>j#tagá K ;
+ +Pl+Acc:appo%>jt K ;
+ +Pl+Ill:appo%>jda K ;
+ +Pl+Ine:appo%>jn K ;
+ +Pl+Ela:appo%>js K ;
+ +Pl+Com:appo%>j K ;
+ +Sg+Nom:ubbo%> K ;
+ +Sg+Gen:uppo%> K ;
+ +Sg+Abe:uppo%>#dagi K ;
+ +Sg+Abe:uppo%>#dagá K ;
+ +Sg+Abe:uppo%>#tagá K ;
+ +Sg+Acc:uppo%>v K ;
+ +Sg+Ill:ubbu%>j K ;
+ +Sg+Ine:uppo%>n K ;
+ +Sg+Ela:uppo%>s K ;
+ +Sg+Com:uppu%>jn K ;
+ +Sg+Com:uppo%>jn K ;
+ +Sg+Com+Use/Sub:uppu%>jna K ; !
+ +Sg+Com+Use/Sub:uppo%>jna K ; !
+ +Ess:ubbo%>n K ;
+ +Pl+Nom:uppo%> K ;
+ +Pl+Gen:uppo%>j K ;
+ +Pl+Abe:uppo%>j#dagi K ;
+ +Pl+Abe:uppo%>j#dagá K ;
+ +Pl+Abe:uppo%>j#tagá K ;
+ +Pl+Acc:uppo%>jt K ;
+ +Pl+Ill:uppo%>jda K ;
+ +Pl+Ine:uppo%>jn K ;
+ +Pl+Ela:uppo%>js K ;
+ +Pl+Com:uppo%>j K ;
+ +Sg+Nom+Use/Sub:æbbo%> K ; !
+ +Sg+Gen+Use/Sub:æppo%> K ; !
+ +Sg+Abe+Use/Sub:æppo%>#dagi K ; !
+ +Sg+Abe+Use/Sub:æppo%>#dagá K ; !
+ +Sg+Abe+Use/Sub:æppo%>#tagá K ; !
+ +Sg+Acc+Use/Sub:æppo%>v K ; !
+ +Sg+Ill+Use/Sub:æbbu%>j K ; !
+ +Sg+Ine+Use/Sub:æppo%>n K ; !
+ +Sg+Ela+Use/Sub:æppo%>s K ; !
+ +Sg+Com+Use/Sub:eppu%>jn K ; !
+ +Sg+Com+Use/Sub:æppo%>jn K ; !
+ +Sg+Com+Use/Sub:eppu%>jna K ; !
+ +Sg+Com+Use/Sub:æppo%>jna K ; !
+ +Ess+Use/Sub:æbbo%>n K ; !
+ +Pl+Nom+Use/Sub:æppo%> K ; !
+ +Pl+Gen+Use/Sub:æppo%>j K ; !
+ +Pl+Abe+Use/Sub:æppo%>j#dagi K ; !
+ +Pl+Abe+Use/Sub:æppo%>j#dagá K ; !
+ +Pl+Abe+Use/Sub:æppo%>j#tagá K ; !
+ +Pl+Acc+Use/Sub:æppo%>jt K ; !
+ +Pl+Ill+Use/Sub:æppo%>jda K ; !
+ +Pl+Ine+Use/Sub:æppo%>jn K ; !
+ +Pl+Ela+Use/Sub:æppo%>js K ; !
+ +Pl+Com+Use/Sub:æppo%>j K ; !
+
+
+LEXICON AMOS
+ +Attr:amos%> K ;
+ +Sg+Nom:amos%> K ;
+ +Sg+Nom+Use/Marg+Use/Ped+Use/Sub:abmus%>a%> PxV ; ! !
+ +Sg+Gen:abmus%>a K ;
+ +Sg+Abe:abmus%>a#dagi K ;
+ +Sg+Abe:abmus%>a#dagá K ;
+ +Sg+Abe:abmus%>a#tagá K ;
+ +Sg+Gen+Use/Marg+Use/Ped+Use/Sub:abmus%>a%> PxV ; ! !
+ +Sg+Acc:abmus%>av K ;
+ +Sg+Acc+Use/Marg+Use/Ped+Use/Sub:abmus%>a%> PxV ; ! !
+ +Sg+Ill:abmus%>ij K ;
+ +Sg+Ine:abmus%>in K ;
+ +Sg+Ine+Use/Marg+Use/Ped+Use/Sub:abmus%>in%> PxCs ; ! !
+ +Sg+Ela:abmus%>is K ;
+ +Sg+Ela+Use/Marg+Use/Ped+Use/Sub:abmus%>ist%> PxCs ; ! !
+ +Sg+Com:abmus%>ijn K ;
+ +Sg+Com+Use/Sub:abmus%>ijna K ; !
+ +Sg+Com+Use/Marg+Use/Ped+Use/Sub:abmus%>ijn%> PxCs ; ! !
+ +Ess:abmus%>in K ;
+ +Pl+Nom:abmus%>a K ;
+ +Pl+Gen:abmus%>ij K ;
+ +Pl+Abe:abmus%>ij#dagi K ;
+ +Pl+Abe:abmus%>ij#dagá K ;
+ +Pl+Abe:abmus%>ij#tagá K ;
+ +Pl+Acc:abmus%>ijt K ;
+ +Pl+Acc+Use/Marg+Use/Ped+Use/Sub:abmus%>ijd%> PxCs ; ! !
+ +Pl+Ill:abmus%>ijda K ;
+ +Pl+Ine:abmus%>ijn K ;
+ +Pl+Ine+Use/Marg+Use/Ped+Use/Sub:abmus%>ijn%> PxCs ; ! !
+ +Pl+Ela:abmus%>ijs K ;
+ +Pl+Ela+Use/Marg+Use/Ped+Use/Sub:abmus%>ijst%> PxCs ; ! !
+ +Pl+Com:abmus%>ij K ;
+ +Attr:umos%> K ;
+ +Sg+Nom:umos%> K ;
+ +Sg+Nom+Use/Marg+Use/Ped+Use/Sub:ubmus%>a%> PxV ; ! !
+ +Sg+Gen:ubmus%>a K ;
+ +Sg+Abe:ubmus%>a#dagi K ;
+ +Sg+Abe:ubmus%>a#dagá K ;
+ +Sg+Abe:ubmus%>a#tagá K ;
+ +Sg+Gen+Use/Marg+Use/Ped+Use/Sub:ubmus%>a%> PxV ; ! !
+ +Sg+Acc:ubmus%>av K ;
+ +Sg+Acc+Use/Marg+Use/Ped+Use/Sub:ubmus%>a%> PxV ; ! !
+ +Sg+Ill:ubmus%>ij K ;
+ +Sg+Ine:ubmus%>in K ;
+ +Sg+Ine+Use/Marg+Use/Ped+Use/Sub:ubmus%>in%> PxCs ; ! !
+ +Sg+Ela:ubmus%>is K ;
+ +Sg+Ela+Use/Marg+Use/Ped+Use/Sub:ubmus%>ist%> PxCs ; ! !
+ +Sg+Com:ubmus%>ijn K ;
+ +Sg+Com:ubmus%>ijna K ;
+ +Sg+Com+Use/Marg+Use/Ped+Use/Sub:ubmus%>ijn%> PxCs ; ! !
+ +Ess:ubmus%>in K ;
+ +Pl+Nom:ubmus%>a K ;
+ +Pl+Gen:ubmus%>ij K ;
+ +Pl+Abe:ubmus%>ij#dagi K ;
+ +Pl+Abe:ubmus%>ij#dagá K ;
+ +Pl+Abe:ubmus%>ij#tagá K ;
+ +Pl+Acc:ubmus%>ijt K ;
+ +Pl+Acc+Use/Marg+Use/Ped+Use/Sub:ubmus%>ijd%> PxCs ; ! !
+ +Pl+Ill:ubmus%>ijda K ;
+ +Pl+Ine:ubmus%>ijn K ;
+ +Pl+Ine+Use/Marg+Use/Ped+Use/Sub:ubmus%>ijn%> PxCs ; ! !
+ +Pl+Ela:ubmus%>ijs K ;
+ +Pl+Ela+Use/Marg+Use/Ped+Use/Sub:ubmus%>ijst%> PxCs ; ! !
+ +Pl+Com:ubmus%>ij K ;
+ +Attr+Use/Sub:æmos%> K ; !
+ +Sg+Nom+Use/Sub:æmos%> K ; !
+ +Sg+Nom+Use/Sub+Use/Marg+Use/Ped+Use/Sub:ebmus%>a%> PxV ; ! ! !
+ +Sg+Gen+Use/Sub:ebmus%>a K ; !
+ +Sg+Abe+Use/Sub:ebmus%>a#dagi K ; !
+ +Sg+Abe+Use/Sub:ebmus%>a#dagá K ; !
+ +Sg+Abe+Use/Sub:ebmus%>a#tagá K ; !
+ +Sg+Gen+Use/Sub+Use/Marg+Use/Ped+Use/Sub:ebmus%>a%> PxV ; ! ! !
+ +Sg+Acc+Use/Sub:ebmus%>av K ; !
+ +Sg+Acc+Use/Sub+Use/Marg+Use/Ped+Use/Sub:ebmus%>a%> PxV ; ! ! !
+ +Sg+Ill+Use/Sub:ebmus%>ij K ; !
+ +Sg+Ine+Use/Sub:ebmus%>in K ; !
+ +Sg+Ine+Use/Sub+Use/Marg+Use/Ped+Use/Sub:ebmus%>in%> PxCs ; ! ! !
+ +Sg+Ela+Use/Sub:ebmus%>is K ; !
+ +Sg+Ela+Use/Sub+Use/Marg+Use/Ped+Use/Sub:ebmus%>ist%> PxCs ; ! ! !
+ +Sg+Com+Use/Sub:ebmus%>ijn K ; !
+ +Sg+Com+Use/Sub:ebmus%>ijna K ; ! !SUB
+ +Sg+Com+Use/Sub+Use/Marg+Use/Ped+Use/Sub:ebmus%>ijn%> PxCs ; ! ! !
+ +Ess+Use/Sub:ebmus%>in K ; !
+ +Pl+Nom+Use/Sub:ebmus%>a K ; !
+ +Pl+Gen+Use/Sub:ebmus%>ij K ; !
+ +Pl+Abe+Use/Sub:ebmus%>ij#dagi K ; !
+ +Pl+Abe+Use/Sub:ebmus%>ij#dagá K ; !
+ +Pl+Abe+Use/Sub:ebmus%>ij#tagá K ; !
+ +Pl+Acc+Use/Sub:ebmus%>ijt K ; !
+ +Pl+Acc+Use/Sub+Use/Marg+Use/Ped+Use/Sub:ebmus%>ijd%> PxCs ; ! ! !
+ +Pl+Ill+Use/Sub:ebmus%>ijda K ; !
+ +Pl+Ine+Use/Sub:ebmus%>ijn K ; !
+ +Pl+Ine+Use/Sub+Use/Marg+Use/Ped+Use/Sub:ebmus%>ijn%> PxCs ; ! ! !
+ +Pl+Ela+Use/Sub:ebmus%>ijs K ; !
+ +Pl+Ela+Use/Sub+Use/Marg+Use/Ped+Use/Sub:ebmus%>ijst%> PxCs ; ! ! !
+ +Pl+Com+Use/Sub:ebmus%>ij K ; !
+
+
+! Superlative
+! -----------
+
+LEXICON BUOREMUS
+ +Attr:%> K ;
+ +Sg+Nom:%> K ; ! the short form, twol shortens ss#
+ +Sg+Nom+Use/Marg+Use/Ped+Use/Sub:a%> PxV ; ! ! ! separate nom bec of the short form
+ :a%> BUOREMUS-OBL ; ! Add -a, directly to the obliques
+
+LEXICON BUOREMUS-OBL
+ +Ess:n K ; ! essive has strong stem
+ +Sg+Ill:j K ; ! so has illative
+! +Sg+Ill+Use/Sub:s%> PxC ; !^P^ !MARG ! this Px form not mentioned in Spiik
+ :Q1 CompSup-EVENWEAKSTEM ; ! These words go like muorra
+
+
+! Comparative and Superlative sub-lexica
+! -----------
+
+LEXICON CompSup-EVEN
+ +Sg+Nom+Use/Marg+Use/Ped+Use/Sub: PxV ; ! ! !Spiik not explicit here, thus guessing.
+ +Ess:n K ;
+! +Ess+Use/Sub:n%> PxC ; !^P^ !MARG !No Ess+Px according to Spiik, Grundstrom
+ +Sg+Ill:j K ;
+ +Sg+Ill+Use/Marg+Use/Ped+Use/Sub:s%> PxCi ; ! !
+ :Q1 CompSup-EVENWEAKSTEM ;
+
+LEXICON CompSup-EVENWEAKSTEM
+ +Sg+Gen: K ;
+ +Sg+Abe:#dagi K ;
+ +Sg+Abe:#dagá K ;
+ +Sg+Abe:#tagá K ;
+ +Sg+Gen+Use/Marg+Use/Ped+Use/Sub: PxV ; ! !
+ +Sg+Acc:v K ;
+ +Sg+Acc+Use/Marg+Use/Ped+Use/Sub: PxV ; ! !
+ +Sg+Ine:n K ;
+ +Sg+Ine+Use/Marg+Use/Ped+Use/Sub:n%> PxC ; ! !
+ +Sg+Ela:s K ;
+ +Sg+Ela+Use/Marg+Use/Ped+Use/Sub:st%> PxC ; ! !
+ +Pl+Nom: K ;
+ +Pl+Nom+Use/Marg+Use/Ped+Use/Sub: PxNomPlV ; ! !
+ +Pl+Gen:j K ;
+ +Pl+Abe:j#dagi K ;
+ +Pl+Abe:j#dagá K ;
+ +Pl+Abe:j#tagá K ;
+ +Pl+Gen+Use/Marg+Use/Ped+Use/Sub:j%> PxC ; ! !
+ +Pl+Acc:jt K ;
+ +Pl+Acc+Use/Marg+Use/Ped+Use/Sub:jd%> PxC ; ! !
+ +Pl+Ill:jda K ;
+ +Pl+Ill+Use/Marg+Use/Ped+Use/Sub:jdis%> PxCs ; ! !
+ +Pl+Ine:jn K ;
+ +Pl+Ine+Use/Marg+Use/Ped+Use/Sub:jn%> PxC ; ! !
+ +Pl+Ela:js K ;
+ +Pl+Ela+Use/Marg+Use/Ped+Use/Sub:jst%> PxC ; ! !
+ +Pl+Com:j K ;
+ +Pl+Com+Use/Marg+Use/Ped+Use/Sub:j%> PxC ; ! !
+ +Sg+Com+Use/Sub:X5jna K ; !
+ +Sg+Com:X5jn K ; ! X5 for o:u in ComSg. Note two dummies in a row!
+ +Sg+Com+Use/Marg+Use/Ped+Use/Sub:X5jn%> PxC ; ! !
+
+LEXICON CompSup-ODDCASE
+ +Sg+Nom+Use/Marg+Use/Ped+Use/Sub: PxC ; ! !
+ +Sg+Gen:a K ;
+ +Sg+Abe:a#dagi K ;
+ +Sg+Abe:a#dagá K ;
+ +Sg+Abe:a#tagá K ;
+ +Sg+Gen+Use/Marg+Use/Ped+Use/Sub: PxC ; ! !
+ +Sg+Acc:av K ;
+ +Sg+Acc+Use/Marg+Use/Ped+Use/Sub: PxC ; ! !
+ +Sg+Ill:ij K ;  ! Px ?? !!
+ +Sg+Ill+Use/Marg+Use/Ped+Use/Sub:as%> PxCs ; ! !
+ +Sg+Ine:in K ;
+ +Sg+Ine+Use/Marg+Use/Ped+Use/Sub:in%> PxCs ; ! !
+ +Sg+Ela:is K ;
+ +Sg+Ela+Use/Marg+Use/Ped+Use/Sub:ist%> PxCs ; ! !
+ +Sg+Com:ijn K ;
+ +Sg+Com+Use/Sub:ijna K ; !
+ +Sg+Com+Use/Marg+Use/Ped+Use/Sub:ijn%> PxCs; ! !
+ +Ess:in K ;
+ +Pl+Nom:a K ;
+ +Pl+Gen:ij K ;
+ +Pl+Abe:ij#dagi K ;
+ +Pl+Abe:ij#dagá K ;
+ +Pl+Abe:ij#tagá K ;
+ +Pl+Gen+Use/Marg+Use/Ped+Use/Sub:ij%> PxCs ; ! !
+ +Pl+Acc:ijt K ;
+ +Pl+Acc+Use/Marg+Use/Ped+Use/Sub:ijd%> PxCs ; ! !
+ +Pl+Ill:ijda K ;
+ +Pl+Ill+Use/Marg+Use/Ped+Use/Sub:ijdas%> PxC ; ! !
+ +Pl+Ine:ijn K ;
+ +Pl+Ine+Use/Marg+Use/Ped+Use/Sub:ijn%> PxCs ; ! !
+ +Pl+Ela:ijs K ;
+ +Pl+Ela+Use/Marg+Use/Ped+Use/Sub:ijst%> PxCs ; ! !
+ +Pl+Com:ij K ;
+ +Pl+Com+Use/Marg+Use/Ped+Use/Sub:ij%> PxCs ; ! !
+
+
+
+
+
+! Adj declension
+! ---------------
+
+LEXICON ATTR
+ : NAMÁK ;
+ K ;                  ! Plain attributive
+ R ;
+ VUOHTA ;
+! -:#%- ProperNoun ;   !already in LEXICON R !
+! : ALIT ;  ! both comp and independent adj
+
+
+
+
+! Derivation of adjectives
+! ------------------------
+
+LEXICON DenominalAdjsV1
+ +Der1+Der/dibme+A:Q1 DIBME ;
+ +Der1+Der/dibme+A+Attr:Q1dis%> ATTR ;
+! +Der1+Der/dibme+A:Q1dis VUOHTA ; !moved to ATTR
+ +Der1+Der/dibme+A:Q1d DUVVAT ;
+ +Der4+Der/ahtes:Q1g AHTES ;
+ +Der4+Der/ahtes:Q1d AHTES ;
+ +Abe:Q1dak K ;
+ +Abe:Q1da K ;
+
+
+LEXICON DenominalAdjsV2
+ +Der1+Der/lasj:X7l DÁRBBOLASJ ;
+
+LEXICON DenominalAdjsKINO
+ +Der1+Der/dibme+A: DIBME ;
+ +Der1+Der/dibme+A+Attr:dis%> ATTR ;
+! +Der1+Der/dibme+A:dis VUOHTA ; !moved to ATTR
+ +Der1+Der/dibme+A:d DUVVAT ;
+ +Der4+Der/ahtes:g AHTES ;
+ +Der4+Der/ahtes:d AHTES ;
+ +Abe:dak K ;
+ +Abe:da K ;
+ +Der1+Der/lasj:l DÁRBBOLASJ ;
+
+
+LEXICON DenominalAdjsC
+ +Der4+Der/ahtes: AHTES ;
+ +Abe:adak K ;
+ +Abe:ada K ;
+
+LEXICON DenominalAdjsContr
+ +Der1+Der/dibme+A: DIBME ;
+ +Der1+Der/dibme+A+Attr:dis%> ATTR ;
+! +Der1+Der/dibme+A:dis VUOHTA ; !moved to ATTR
+ +Der1+Der/dibme+A:d DUVVAT ;
+ +Der4+Der/ahtes:g AHTES ;
+ +Der4+Der/ahtes:d AHTES ;
+ +Abe:dak K ;
+ +Abe:da K ;
+
+
+LEXICON AHTES
+ +A+Attr:ahtes%> ATTR ;
+ +A+Der5+Der/at+Adv:ahtá%> K ;
+ +A+Der5+Der/at+Adv:ahti%> K ;
+ +A+Sg+Nom:ahtes%> K ;
+ +A+Sg+Nom+Use/Ped+Use/Sub:ahttá%> PxV ; !
+ +A+Ess:ahttá%>n K ;
+! +A:ahtes VUOHTA ; !moved to ATTR
+ +A:ahttá%> ILL-EVENCASEadj ;
+ +A:ahttá%> N-EVENWEAKSTEMadj ;
+ +A+SgGenCmp:ahttá%> R ;
+ +A+PlGenCmp:ahttá%>j R ;
+ +A:ahttá%> BU/MUS ;
+ +A:ahttás%> OTH-ODDCASEadj ;
+ +A:ahttás%> ABBO/AMOS ;
+ +A+Der5+Der/at+Adv:ahttás%>it K ;
+ +A:ahttás%> ODDCmp ;
+
+
+
+LEXICON DIBME
+ :dibme%> NE-EVENCASEadj ;
+ :dibme%>X4 ILL-EVENCASEadj ;
+ :dibme%>Q1 N-EVENWEAKSTEMadj ;
+ :d ABBO/AMOS ;
+ +SgGenCmp:dibme%>Q1 R ;
+ +PlGenCmp:dibme%>Q1j R ;
+ +Der5+Der/at+Adv:dibme%>Q1t K ;
+
+
+LEXICON LIS
+ +Attr:%> ATTR ;
+ +Sg+Nom:%> K ;
+ +Sg+Nom+Use/Ped+Use/Sub:a%> PxV ; !
+ +SgGenCmp:a%>Q1 R ;
+ +PlGenCmp:a%>Q1j R ;
+ +Ess:a%>n K ;
+ :a%>Q1 N-EVENWEAKSTEM-OTHadj ;
+ :a%> ILL-EVENCASEadj ;
+ :a%>Q1 N-EVENWEAKSTEM-SG-COMadj ;
+! : VUOHTA ; !moved to ATTR
+
+
+LEXICON LÁGÁSJ
+ +A+Attr:%> K ;
+ +A+SgGenCmp:%>a R ;
+ +A+PlGenCmp:%>ij R ;
+ +A: VUOHTA ;
+ +A:%> N-ODDCASE ;
+ +A:%> OTH-ODDCASEadj ;
+ -+Use/Circ:#%- ProperNoun ;		! ! Definitely circular x 35000.
+
+
+
+LEXICON AGAdj
+ +A+Attr:%> K ;
+ +A+SgGenCmp:%>a R ;
+ +A+PlGenCmp:%>ij R ;
+ +A: VUOHTA ;
+ +A:%> N-ODDCASE ;
+ +A:%> OTH-ODDCASEadj ;
+
+LEXICON Ahkásasj
+ +A+Attr:%> K ;
+ +A+SgGenCmp:a%>Q1 R ;
+ +A+PlGenCmp:a%>Q1j R ;
+ +A+Sg+Nom:%> K ;
+ +A:a%> ÁRMMOGIS-EVEN ;
+ +A: VUOHTA ;
+
+
+
+LEXICON STÁVAL
+ +A+Attr:%>Q1 K ;
+ +A+SgGenCmp:%>a R ;
+ +A+PlGenCmp:%>ij R ;
+ +A:%>Q1 VUOHTA ;
+ +A:%>Q1 N-ODDCASE ;
+ +A:%> OTH-ODDCASEadj ;
+
+
+
+! ======================
+! Sublexica for Verb
+! ======================
+
+! Even-syllable stems
+! -------------------
+
+! Modals
+! - - - -
+
+LEXICON GALGGAT_IV
++V+IV+Ind+Prs:%> I-even-V ;
++V+IV+Ind+Prt:%> II-even-V ;
++V+IV+Pot:%>Q1tj I-odd-V ;
++V+IV+Inf:%>t K ;
++V+IV+PrfPrc:%>Y3m K ;
++V+IV+Actio+Nom:m K ;
++V+IV+Actio+Gen:ma K ;
++V+IV+Actio+Com:mijn K ;
++V+IV+Actio+Ess:min K ;
++V+IV+Actio+Ela:mis K ;
++V+IV+Der3+Der/NomAct:»m@C.NeedNoun@ VSBST-ODD ;
++V+IV+Ind+ConNeg:%>Q1 K ;
++V+IV+Pot+ConNeg:%>Q1tja K ;
++V+IV+Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+
+LEXICON VIERTTIT_IV
++V+IV+Ind+Prs:%> I-contr-V ;
++V+IV+Ind+Prt:%> II-contr-V ;
++V+IV+Pot:%>tj I-odd-V ;
++V+IV+Inf:%>t K ;
++V+IV+PrfPrc:%>m K ;
++V+IV+Actio+Nom:m K ;
++V+IV+Actio+Gen:ma K ;
++V+IV+Actio+Com:mijn K ;
++V+IV+Actio+Ess:min K ;
++V+IV+Actio+Ela:mis K ;
++V+IV+Der3+Der/NomAct:»m@C.NeedNoun@ VSBST-ODD ;
++V+IV+Ind+ConNeg:%> K ;
++V+IV+Pot+ConNeg:%>tja K ;
++V+IV+Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+
+
+! This is for auxiliaries, they do not have passive.
+! Thus, when passive is added, it will include BASSAT, but not GALGGAT
+
+
+! Ordinary main verbs
+! - - - - - - - - - -
+
+
+LEXICON BIEGGAT_IV !Impersonals
++V+IV: DeverbalVerbsBIEGGAT ;
++V+IV:%> BIEGGATinfl ;
++V+IV: SG3PASSV ;
++V+IV: SG3PASSEVEN ;
+
+LEXICON GALSSJOT_IV !Impersonal o-verbs
++V+IV: DeverbalVerbsBIEGGAT ;
++V+IV:%> GALSSJOTinfl ;
++V+IV: SG3PASSV ;
+!+V+IV: SG3PASSEVEN ; outcommented to avoid short pass.
+
+
+
+LEXICON BIEKKASTALLAT_IV !Allready derived Impersonals
++V+IV:%> BIEGGATinfl ;
++V+IV: SG3PASSV ;
++V+IV: SG3PASSEVEN ;
+
+LEXICON RAVGGAT_IV  !a- and å-verbs
++V+IV:%> RAVGGATStem ;
++V+IV: DeverbalVerbsBASSAT ;
++V+IV: SG3PASSV ;
++V+IV: SG3PASSEVEN ;
+
+
+LEXICON BUOLLET_IV  !e-verbs
++V+IV:%> RAVGGATStem ;
++V+IV: DeverbalVerbsLÁHPPET ;
++V+IV: SG3PASSV ;
++V+IV: SG3PASSEVEN ;
+
+LEXICON VIEDJET_IV  !e-verbs GRADE II-I WITH IE DIPHT.
++V+IV:%> VIEDJETStem ;
++V+IV: DeverbalVerbsLÁHPPET ;
++V+IV: SG3PASSV ;
++V+IV: SG3PASSEVEN ;
+
+
+LEXICON MÁHTTET_TV  !transitive verbs without personal passive
++V+TV:%> BASSATStem ;
++V+TV: DeverbalVerbsLÁHPPET ;
++V+TV: SG3PASSV ;
++V+TV: SG3PASSEVEN ;
+
+
+LEXICON RAVGGALASSTET_IV   !Like RAVGGAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced
++V+IV:%> RAVGGALASSTETStem ;
++V+IV: SG3PASSV ;
++V+IV: SG3PASSEVEN ;
+
+LEXICON GUOTTEDALLAT_IV   !passives on -allat - no actio as first part of compounds, but reintroduced
+! +V+IV:%> RAVGGALASSTETStem ; !replaced to avoid pass  + actor
+ +V+IV+Der3+Der/goahte+V:%>»goahte%> INFL-EVEN ;
+ +V+IV:%> INFL-EVEN ;
+ +V+IV+Der3+Der/lis+A:%>»Y3liss LIS ;
+ +V+IV+Der3+Der/mus+N:%>»muss@C.NeedNoun@ MUS ;
+ +V+IV+Actio+Nom:m K ;
+ +V+IV+Actio+Gen:ma K ;
+ +V+IV+Actio+Com:mijn K ;
+ +V+IV+Actio+Ess:min K ;
+ +V+IV+Actio+Ela:mis K ;
+ +V+IV+Der3+Der/NomAct:%>»m@C.NeedNoun@ BASSALASSTEM ;
+ 
+LEXICON HIEBADUVVAT_IV  !passives on -uvvat - no actio as first part of compounds, but reintroduced
+! +V+IV:uvva%> RAVGGALASSTETStem ; !replaced to avoid pass + actor 
+ +V+IV+PrfPrc:uvvu%>m K ;
+ +V+IV+PrfPrc:um%> K ;
+ +V+IV+Der3+Der/goahte+V:uvva%>»goahte%> INFL-EVEN ;
+ +V+IV:uvva%> INFL-EVEN ;
+ +V+IV+Der3+Der/lis+A:uvva%>»Y3liss LIS ;
+ +V+IV+Der3+Der/mus+N:uvva%>»muss@C.NeedNoun@ MUS ;
+ +V+IV+Actio+Nom:uvva%>m K ;
+ +V+IV+Actio+Gen:uvva%>ma K ;
+ +V+IV+Actio+Com:uvva%>mijn K ;
+ +V+IV+Actio+Ess:uvva%>min K ;
+ +V+IV+Actio+Ela:uvva%>mis K ;
+ +V+IV+Der3+Der/NomAct:uvva%>»m@C.NeedNoun@ BASSALASSTEM ;
+
+LEXICON BASSAT_TV  !a- and å-verbs
++V+TV:%> BASSATStem ;
++V+TV: DeverbalVerbsBASSAT ;
++V+TV: EVEN-PASSIVE ;
+
+LEXICON JUHKAT_TV  !a-verbs with dim -istit that are hardcoded
++V+TV:%> BASSATStem ;
++V+TV: DeverbalVerbsJUHKAT ;
++V+TV: EVEN-PASSIVE ;
+
+LEXICON LÁHPPET_TV  !e-verbs
++V+TV:%> BASSATStem ;
++V+TV: DeverbalVerbsLÁHPPET ;
++V+TV: EVEN-PASSIVE ;
+
+LEXICON JIEHKET_TV  !e-verbs GRADE II-I WITH IE DIPHT.
++V+TV:%> JIEHKETStem ;
++V+TV: DeverbalVerbsLÁHPPET ;
++V+TV: EVEN-PASSIVE ;
+
+
+LEXICON BASSALASSTET_TV  !Like BASSAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced
++V+TV:%> BASSALASSTETStem ;
++V+TV: EVEN-PASSIVE ;
+
+
+LEXICON DIEHTET_TV  !Only this one word, unusual diphtong behavior
++V+TV: DeverbalVerbsDIEHTET ;
++V+TV+Ind+Prs: I-diehtet-V ;
++V+TV+Ind+Prt:%> II-sg72pl9 ;
++V+TV+Ind+Prt:e%>Q1 II-other ;
++V+TV+Pot:i%>Q1tj I-odd-V ;
+ +V+TV+Imprt+Sg2:e%>Q1 ENDLEX ; ! Basic Imperative, like ConNeg
++V+TV+Imprt+Du2:te%> ENDLEX ;
++V+TV+Imprt:%> IMP7-EVEN ;
++V+TV+Imprt+Du1:%>on ENDLEX ;
++V+TV+Imprt+Pl1:%>op ENDLEX ;
++V+TV+ImprtII:%>u IMP8-EVEN ;
+! Infinite
++V+TV+Inf:e%>t K ;
++V+TV+PrfPrc:á%>m K ;
+!+PrsPrc:%> NOADE ; ! Noun, not correct, III grade!
++V+TV+Ger:e%>Q1dijn K ;
++V+TV+Sup:á%>Q1tjit K ;
++V+TV+VAbess:e%>Q1k K ;
++V+TV+VAbess:e%>Q1dak K ;
++V+TV+VAbess:e%>Q1k VUOHTA ;
++V+TV+VAbess:e%>Q1dak VUOHTA ;
++V+TV+VGen:e%>Q1 K ;
+! ConNeg
++V+TV+Ind+ConNeg:e%>Q1 K ;
++V+TV+Pot+ConNeg:i%>Q1tja K ;
++V+TV+Imprt+ConNeg:e%>Q1 ENDLEX ;
++V+TV+ImprtII+ConNeg+Pl2:%>u ENDLEX ;
++V+TV+ImprtII+ConNeg+Sg2:%>u ENDLEX ;
++V+TV+ImprtII+ConNeg+Du2:%>u ENDLEX ;
++V+TV+Actio+Nom:em K ;
++V+TV+Actio+Gen:ema K ;
++V+TV+Actio+Com:emijn K ;
++V+TV+Actio+Ess:emin K ;
++V+TV+Actio+Ela:emis K ;
++V+TV+Der3+Der/goahte+V:e»goahte%> INFL-EVEN ;
++V+TV:e DeverbalNounsDIEHTET ;
+
+LEXICON BASSATStem
+ BASSATINCH ;
+
+LEXICON RAVGGATStem
+ RAVGGATINCH ;
+
+
+LEXICON VIEDJETStem
+ VIEDJETINCH ;
+
+LEXICON JIEHKETStem
+ JIEHKETINCH ;
+
+
+LEXICON BASSALASSTETStem
+ BASSALASSTETINCH ;
+
+LEXICON RAVGGALASSTETStem
+ RAVGGALASSTETINCH ;
+
+
+LEXICON BASSATINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-EVEN ;
+ DeverbalNounsBASSAT ;
+
+LEXICON RAVGGATINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-EVEN ;
+ DeverbalNounsRAVGGAT ;
+
+LEXICON VIEDJETINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-VIEDJETEVEN ;
+ DeverbalNounsRAVGGAT ;
+
+LEXICON JIEHKETINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-VIEDJETEVEN ;
+ DeverbalNounsBASSAT ;
+
+
+LEXICON BASSALASSTETINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-EVEN ;
+ DeverbalNounsBASSALASSTET ;
+
+LEXICON RAVGGALASSTETINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-EVEN ;
+ DeverbalNounsRAVGGALASSTET ;
+
+
+LEXICON GÁDJOT_TV !o-verbs
++V+TV:%> GÁDJOTStem ;
++V+TV: DeverbalVerbsBASSAT ;
+!+V+TV: EVEN-PASSIVE ; replaced by individual pointers to avoid short pass.
+!+V+TV+Der/Pass+V:»Y9u OADDÁTINCH ; NO SHORT PASS HERE! !replaced by individual pointers to avoid pass + actio, reintroduced since it is usual!
+!+V+TV+Der/Pass+V+Der3+Der/goahte+V:»Y9ugoahte%> INFL-EVEN ;
+!+V+TV+Der/Pass+V:»Y9u INFL-CONTRACTED ;
+!+V+TV+Der/Pass+V+Der2+Actor:»Y9ujiddje@C.NeedNoun@  ACTOR ;
+!+V+TV+Der/Pass+V+Der3+Der/mus+N:»Y9umuss@C.NeedNoun@ MUS ;
++V+TV+Der1+Der/Pass+V+Der3+Der/goahte+V:»Q1duvva»goahte%> INFL-EVEN ;
++V+TV+Der1+Der/Pass+V:»Q1duvva%> INFL-EVEN ;
++V+TV+Der1+Der/Pass+V+PrfPrc:»Q1duvvu%>m K ;
+!+V+TV+Der1+Der/Pass+V+Der2+Actor:»Q1duvva@C.NeedNoun@  ACTOR ;
++V+TV+Der1+Der/Pass+V+Der3+Der/lis+A:»Q1duvva»Y3liss LIS ;
++V+TV+Der1+Der/Pass+V+Der3+Der/mus+N:»Q1duvva»muss@C.NeedNoun@ MUS ;
++V+TV+Der1+Der/Pass+Der2+Der/duhtte+V:»Q1duhtte%> BASSATINCH ;
++V+TV+Der1+Der/Pass+V+Der3+Der/goahte+V:»X7dalla»goahte%> INFL-EVEN ;
++V+TV+Der1+Der/Pass+V:»X7dalla%> INFL-EVEN ;
+!+V+TV+Der1+Der/Pass+V+Der2+Actor:»X7dalla@C.NeedNoun@  ACTOR ;
++V+TV+Der1+Der/Pass+V+Der3+Der/lis+A:»X7dalla»Y3liss LIS ;
++V+TV+Der1+Der/Pass+V+Der3+Der/mus+N:»X7dalla»muss@C.NeedNoun@ MUS ;
++V+TV+Der1+Der/Pass+Der2+Der/dahtte+V:»X7dahtte%> BASSATINCH ;
++V+TV+Der1+Der/Pass+V+PrfPrc:»Q1dum%> K ;
+
+LEXICON JÅRGGOT_TV !o-verbs with dim -astit that are hardcoded
++V+TV:%> GÁDJOTStem ;
++V+TV: DeverbalVerbsJUHKAT ;
+!+V+TV: EVEN-PASSIVE ; replaced by individual pointers to avoid short pass.
+!+V+TV+Der/Pass+V:»Y9u OADDÁTINCH ; NO SHORT PASS HERE! !replaced by individual pointers to avoid pass + actio, reintroduced since it is usual!
+!+V+TV+Der/Pass+V+Der3+Der/goahte+V:»Y9ugoahte%> INFL-EVEN ;
+!+V+TV+Der/Pass+V:»Y9u INFL-CONTRACTED ;
+!+V+TV+Der/Pass+V+Der2+Actor:»Y9ujiddje@C.NeedNoun@  ACTOR ;
+!+V+TV+Der/Pass+V+Der3+Der/mus+N:»Y9umuss@C.NeedNoun@ MUS ;
++V+TV+Der1+Der/Pass+V+Der3+Der/goahte+V:»Q1duvva»goahte%> INFL-EVEN ;
++V+TV+Der1+Der/Pass+V:»Q1duvva%> INFL-EVEN ;
++V+TV+Der1+Der/Pass+V+PrfPrc:»Q1duvvu%>m K ;
+!+V+TV+Der1+Der/Pass+V+Der2+Actor:»Q1duvva@C.NeedNoun@  ACTOR ;
++V+TV+Der1+Der/Pass+V+Der3+Der/lis+A:»Q1duvva»Y3liss LIS ;
++V+TV+Der1+Der/Pass+V+Der3+Der/mus+N:»Q1duvva»muss@C.NeedNoun@ MUS ;
++V+TV+Der1+Der/Pass+Der2+Der/duhtte+V:»Q1duhtte%> BASSATINCH ;
++V+TV+Der1+Der/Pass+V+Der3+Der/goahte+V:»X7dalla»goahte%> INFL-EVEN ;
++V+TV+Der1+Der/Pass+V:»X7dalla%> INFL-EVEN ;
+!+V+TV+Der1+Der/Pass+V+Der2+Actor:»X7dalla@C.NeedNoun@  ACTOR ;
++V+TV+Der1+Der/Pass+V+Der3+Der/lis+A:»X7dalla»Y3liss LIS ;
++V+TV+Der1+Der/Pass+V+Der3+Der/mus+N:»X7dalla»muss@C.NeedNoun@ MUS ;
++V+TV+Der1+Der/Pass+Der2+Der/dahtte+V:»X7dahtte%> BASSATINCH ;
++V+TV+Der1+Der/Pass+V+PrfPrc:»Q1dum%> K ;
+
+
+LEXICON BÅRSSJOT_IV !o-verbs
++V+IV:%> BÅRSSJOTStem ;
++V+IV: DeverbalVerbsBASSAT ;
++V+IV: SG3PASSV ;
+!+V+IV: SG3PASSEVEN ; no short pass here!
+
+LEXICON VILSSJOT_IV !o-verbs with dim -astit that are hardcoded
++V+IV:%> BÅRSSJOTStem ;
++V+IV: DeverbalVerbsJUHKAT ;
++V+IV: SG3PASSV ;
+!+V+IV: SG3PASSEVEN ; no short pass here!
+
+LEXICON GÁDJOTStem
+ GÁDJOTINCH ;
+! EVEN-PASSIVE ;
+
+LEXICON BÅRSSJOTStem
+ BÅRSSJOTINCH ;
+! EVEN-PASSIVE ;
+
+
+LEXICON GÁDJOTINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-o- ;
+ DeverbalNounsBASSAT ;
+
+LEXICON BÅRSSJOTINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-o- ;
+ DeverbalNounsRAVGGAT ;
+
+
+LEXICON BIEGGATinfl
++Ind+Prs+Sg3:Y2 K ;
++Ind+Prt+Sg3:Q1j K ;
++Ind+ConNeg:Q1 K ;
++Pot+Sg3:Q1sj K ;
++Pot+ConNeg:Q1tja K ;
++Imprt+Sg3:Y1is ENDLEX ;
++ImprtII+Sg3:Y1us ENDLEX ;
++PrfPrc:Y3m K ;
++Inf:t K ;
++Ger:Q1dijn K ;
++Sup:Q2tjit K ;
++VAbess:Q1k K ;
++VAbess:Q1dak K ;
++VAbess:Q1k VUOHTA ;
++VAbess:Q1dak VUOHTA ;
++VGen:Q1 K ;
++Imprt+ConNeg:Q1 ENDLEX ;
++Der3+Der/goahte+V+Inf:»goahte%>t K ;
++Der3+Der/goahte+V+Ind+Prs+Sg3:»goahtá%> K ;
++Der3+Der/goahte+V+Ind+Prt+Sg3:»gådi%>j K ;
++Actio+Nom:m K ;
++Actio+Gen:ma K ;
++Actio+Com:mijn K ;
++Actio+Ess:min K ;
++Actio+Ela:mis K ;
++Der3+Der/NomAct+N+Sg+Nom:»m K ;
++Der3+Der/NomAct+N+SgNomCmp:»m R ;
++Der3+Der/NomAct+N+Sg+Acc:»mav K ;
++Der3+Der/NomAct+N+Sg+Gen:»ma K ;
++Der3+Der/NomAct+N+Sg+Ill:»mij K ;
++Der3+Der/NomAct+N+Sg+Ine:»min K ;
++Der3+Der/NomAct+N+Sg+Ela:»mis K ;
++Der3+Der/NomAct+N+Sg+Com:»mijn K ;
++Der3+Der/NomAct+N+Sg+Com+Use/Sub:»mijna K ; !
++Der3+Der/NomAct+N+Sg+Ess:»min K ;
+
+
+LEXICON GALSSJOTinfl
++Ind+Prs+Sg3:Y2 K ;
++Ind+Prt+Sg3:Q1j K ;
++Ind+ConNeg:Q1 K ;
++Pot+Sg3:Q1sj K ;
++Pot+ConNeg:Q1tja K ;
++Imprt+Sg3:Y1s ENDLEX ;
++ImprtII+Sg3:Y1s ENDLEX ;
++PrfPrc:Y3m K ;
++Inf:t K ;
++Ger:Q1dijn K ;
++Sup:Q1tjit K ;
++Sup:X7tjit K ;
++VAbess:Q1k K ;
++VAbess:Q1dak K ;
++VAbess:Q1k VUOHTA ;
++VAbess:Q1dak VUOHTA ;
++VGen:Q1 K ;
++Imprt+ConNeg:Q1 ENDLEX ;
++Der3+Der/goahte+V+Inf:»goahte%>t K ;
++Der3+Der/goahte+V+Ind+Prs+Sg3:»goahtá%> K ;
++Der3+Der/goahte+V+Ind+Prt+Sg3:»gådi%>j K ;
++Actio+Nom:m K ;
++Actio+Gen:ma K ;
++Actio+Com:mijn K ;
++Actio+Ess:min K ;
++Actio+Ela:mis K ;
++Der3+Der/NomAct+N+Sg+Nom:»m K ;
++Der3+Der/NomAct+N+SgNomCmp:»m R ;
++Der3+Der/NomAct+N+Sg+Acc:»mav K ;
++Der3+Der/NomAct+N+Sg+Gen:»ma K ;
++Der3+Der/NomAct+N+Sg+Ill:»mij K ;
++Der3+Der/NomAct+N+Sg+Ine:»min K ;
++Der3+Der/NomAct+N+Sg+Ela:»mis K ;
++Der3+Der/NomAct+N+Sg+Com:»mijn K ;
++Der3+Der/NomAct+N+Sg+Com+Use/Sub:»mijna K ; !
++Der3+Der/NomAct+N+Sg+Ess:»min K ;
+
+
+! Odd-syllable stems
+! ------------------
+
+LEXICON ITINC
+UNNEDIT_TV ;
+! This is just awaiting a manual classification
+! of incoming verbs from the smesmj dictionary project.
+
+LEXICON BIEKKASTIT_IV !Impersonals
++V+IV: DeverbalVerbsBIEKKASTIT ;
++V+IV:%> BIEKKASTITinfl ;
++V+IV: SG3PASS ;
+
+
+LEXICON BIEKKASTITinfl
++Ind+Prs+Sg3: K ;
++Ind+Prt+Sg3:ij K ;
++Ind+ConNeg:a K ;
++Pot+Sg3:isj K ;
++Pot+ConNeg:itja K ;
++Imprt+Sg3:is ENDLEX ;
++ImprtII+Sg3:us ENDLEX ;
++PrfPrc:am K ;
++Inf:it K ;
++Ger:attijn K ;
++Sup:ittjat K ;
++VAbess:ik K ;
++VAbess:ik VUOHTA ;
++VGen:a K ;
++Imprt+ConNeg:a ENDLEX ;
++Der3+Der/goahte+V+Inf:asj»goahte%>t K ;
++Der3+Der/goahte+V+Ind+Prs+Sg3:asj»goahtá%> K ;
++Der3+Der/goahte+V+Ind+Prt+Sg3:asj»gådi%>j K ;
++Der1+Der/ahtja+V+Inf:»ahtjá%>t K ;
++Der1+Der/ahtja+V+Ind+Prs+Sg3:»ahtjá%> K ;
++Der1+Der/ahtja+V+Ind+Prt+Sg3:»atjá%>j K ;
++Actio+Nom:ibme K ;
++Actio+Gen+Use/Sub:im K ;
++Actio+Gen:ime K ;
++Actio+Com:imijn K ;
++Actio+Ess:ime K ;
++Actio+Ess:imen K ;
++Actio+Ela:imes K ;
++Der2+Der/NomAct+N+Sg+Nom:»ibme%> K ;
++Der2+Der/NomAct+N+SgNomCmp:»im%> R ;
++Der2+Der/NomAct+N+Ess:»ibme%>n K ;
++Der2+Der/NomAct+N+Sg+Acc:»ime%>v K ;
++Der2+Der/NomAct+N+Sg+Gen:»ime%> K ;
++Der2+Der/NomAct+N+Sg+Ill:»ibmá%>j K ;
++Der2+Der/NomAct+N+Sg+Ine:»ime%>n K ;
++Der2+Der/NomAct+N+Sg+Ela:»ime%>s K ;
++Der2+Der/NomAct+N+Sg+Com:»imi%>jn K ;
+ +Der2+Der/NomAct+N+Sg+Com+Use/Sub:»imi%>jna K ; !
+
+
+
+LEXICON UNNEDIT_TV ! Transitives
+ +V+TV:%> UNNEDITStem ;
+ +V+TV: DeverbalVerbsJÅLLÅRIT ;
+ +V+TV: ODD-PASSIVE ;
+
+LEXICON MUJTATJIT_TV  !Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but reintroduced
+ +V+TV:%> MUJTATJITStem ;
+ +V+TV: ODD-PASSIVE ;
+ +V+TV+Der1+Der/ahtja+V:»ahtja%> INFL-EVEN ;                 !Inchoative
+ +V+TV+Der1+Der/ahtja+V:»ahtja DeverbalNounsBASSALASSTET ; !Inchoative
+
+
+
+
+LEXICON BÅNJÅDIT_TV  !continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms
+ +V+TV:%> UNNEDITStem ;
+ +V+TV: ODD-PASSIVE ;
+ +V+TV+Der1+Der/ahtja+V:»ahtja%> INFL-EVEN ;                 !Inchoative
+ +V+TV+Der1+Der/ahtja+V:»ahtja DeverbalNounsBASSALASSTET ; !Inchoative
+
+
+
+
+LEXICON VUORDDELIT_TV !Trisyllabic Verbs ending -lit
+ +V+TV:%> UNNEDITStem ;
+ +V+TV: DeverbalVerbsVUORDDELIT ;
+ +V+TV: ODD-PASSIVE ;
+
+
+
+
+LEXICON JÅLLÅRIT_IV !At the moment IV, we may perhaps change IV/TV.
+ +V+IV:%> JÅLLÅRITStem ;
+ +V+IV: DeverbalVerbsJÅLLÅRIT ;
+ +V+IV: SG3PASS ;
+
+LEXICON BEGATJIT_IV  !Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but reintroduced
+ +V+IV:%> BEGATJITStem ;
+ +V+IV: SG3PASS ;
+ +V+IV+Der1+Der/ahtja+V:»ahtja%> INFL-EVEN ;                 !Inchoative
+ +V+IV+Der1+Der/ahtja+V:»ahtja DeverbalNounsBASSALASSTET ; !Inchoative
+
+
+
+LEXICON BALÁDIT_IV  !continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms
+ +V+IV:%> JÅLLÅRITStem ;
+ +V+IV: SG3PASS ;
+ +V+IV+Der1+Der/ahtja+V:»ahtja%> INFL-EVEN ;                 !Inchoative
+ +V+IV+Der1+Der/ahtja+V:»ahtja DeverbalNounsBASSALASSTET ; !Inchoative
+
+
+LEXICON SUOGNALIT_IV !Trisyllabic Verbs ending -lit
+ +V+IV:%> JÅLLÅRITStem ;
+ +V+IV: DeverbalVerbsVUORDDELIT ;
+ +V+IV: SG3PASS ;
+
+LEXICON LASSÁNIT_IV !verbs ending -nit, -sit
+ +V+IV:%> JÅLLÅRITStem ;
+ +V+IV: DeverbalVerbsLASSÁNIT ;
+
+LEXICON BÁHTARIT_IV !verbs ending -rit
+ +V+IV:%> JÅLLÅRITStem ;
+ +V+IV: DeverbalVerbsLASSÁNIT ;
+ +V+IV: SG3PASS ;
+
+LEXICON JÅLLÅRITStem
+ JÅLLÅRITINCH ;
+! ODD-PASSIVE ; ! this must go for TV only.
+
+LEXICON UNNEDITStem
+ UNNEDITINCH ;
+! ODD-PASSIVE ; ! this must go for TV only.
+
+
+LEXICON JÅLLÅRITINCH
+ +Der3+Der/goahte+V:asj»goahte%> INFL-EVEN ;
+ INFL-ODD ;
+ DeverbalNounsJÅLLÅRIT ;
+
+LEXICON UNNEDITINCH
+ +Der3+Der/goahte+V:asj»goahte%> INFL-EVEN ;
+ INFL-ODD ;
+ DeverbalNounsUNNEDIT ;
+
+
+LEXICON MUJTATJITStem
+ MUJTATJITINCH ;
+! ODD-PASSIVE ; ! this must go for TV only.
+
+LEXICON BEGATJITStem
+ BEGATJITINCH ;
+! ODD-PASSIVE ; ! this must go for TV only.
+
+
+LEXICON MUJTATJITINCH
+ +Der3+Der/goahte+V:asj»goahte%> INFL-EVEN ;
+ INFL-ODD ;
+ DeverbalNounsMUJTATJIT ;
+
+LEXICON BEGATJITINCH
+ +Der3+Der/goahte+V:asj»goahte%> INFL-EVEN ;
+ INFL-ODD ;
+ DeverbalNounsBEGATJIT ;
+
+
+! Contracted stems
+! ----------------
+
+LEXICON SJIERRIT_IV !Impersonals
++V+IV: DeverbalVerbsSJIERRIT ;
++V+IV:%> SJIERRITinfl ;
++V+IV:d SG3PASS ;
+
+
+LEXICON SJIERRITinfl
++Ind+Prs+Sg3: K ;
++Ind+Prt+Sg3:j K ;
++Ind+ConNeg: K ;
++Pot+Sg3:sj K ;
++Pot+ConNeg:tja K ;
++Imprt+Sg3:jis ENDLEX ;
++ImprtII+Sg3:jus ENDLEX ;
++PrfPrc:m K ;
++Inf:t K ;
++Ger:dijn K ;
++Sup:tjit K ;
++VAbess:k K ;
++VAbess:dak K ;
++VAbess:k VUOHTA ;
++VAbess:dak VUOHTA ;
++VGen: K ;
++Imprt+ConNeg: ENDLEX ;
++Der3+Der/goahte+V+Inf:»goahte%>t K ;
++Der3+Der/goahte+V+Ind+Prs+Sg3:»goahtá%> K ;
++Der3+Der/goahte+V+Ind+Prt+Sg3:»gådi%>j K ;
++Actio+Nom:m K ;
++Actio+Gen:ma K ;
++Actio+Com:mijn K ;
++Actio+Ess:min K ;
++Actio+Ela:mis K ;
++Der3+Der/NomAct+N+Sg+Nom:»m K ;
++Der3+Der/NomAct+N+SgNomCmp:»m R ;
++Der3+Der/NomAct+N+Sg+Acc:»mav K ;
++Der3+Der/NomAct+N+Sg+Gen:»ma K ;
++Der3+Der/NomAct+N+Sg+Ill:»mij K ;
++Der3+Der/NomAct+N+Sg+Ine:»min K ;
++Der3+Der/NomAct+N+Sg+Ela:»mis K ;
++Der3+Der/NomAct+N+Sg+Com:»mijn K ;
+ +Der3+Der/NomAct+N+Sg+Com+Use/Sub:»mijna K ; !
++Der3+Der/NomAct+N+Sg+Ess:»min K ;
+
+
+LEXICON OADDÁT_IV ! Does not make nouns via -ár derivation
+ +V+IV:%> OADDÁTStem ;
+ +V+IV: DeverbalVerbsOADDÁT ;
+ +V+IV:d SG3PASS ;
+
+LEXICON TJUOLLÁT_TV ! Does not make nouns via -ár derivation
+ +V+TV:%> TJUOLLÁTStem ;
+ +V+TV: DeverbalVerbsOADDÁT ;
+ +V+TV:  CONTR-PASSIVE ;
+
+LEXICON STRÁFFUT_TV ! Does not make nouns via -ár derivation
+ +V+TV:%> STRÁFFUTStem ;
+ +V+TV: DeverbalVerbsOADDÁT ;
+ +V+TV: CONTR-PASSIVE ;
+
+LEXICON DULLUT_IV ! Does not make nouns via -ár derivation
+ +V+IV:%> DULLUTStem ;
+ +V+IV: DeverbalVerbsOADDÁT ;
+ +V+IV:d SG3PASS ;
+
+
+LEXICON TSIEGGIT_TV ! Make nouns via -ár derivation
+ +V+TV:%> STRÁFFUTStem ;
+ +V+TV: DeverbalVerbsOADDÁT ;
+ +V+TV+Der1+Der/r+N+CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:»Y5r N-ODDCASE ; !
+ +V+TV+Der1+Der/r+N+CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:»Y5r OTH-ODDCASE ; !
+ +V+TV:  CONTR-PASSIVE ;
+
+LEXICON VALLIT_TV ! Make nouns via -ár derivation
+ +V+IV:%> DULLUTStem ;
+ +V+IV: DeverbalVerbsOADDÁT ;
+ +V+IV+Der1+Der/r+N:»Y5r N-ODDCASE ; ! -ár derivation
+ +V+IV+Der1+Der/r+N:»Y5r OTH-ODDCASE ; ! -ár derivation
+ +V+IV:d SG3PASS ;
+
+
+LEXICON BASSUT_IV !Passives
+ +V+IV+Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ +V+IV:%> INFL-CONTRACTED ;
+ +V+IV: DeverbalVerbsOADDÁT ;
+! +V+IV+Der2+Actor:»jiddje@C.NeedNoun@  ACTOR ;
+ +V+IV+Actio+Nom:m K ;
+ +V+IV+Actio+Gen:ma K ;
+ +V+IV+Actio+Com:mijn K ;
+ +V+IV+Actio+Ess:min K ;
+ +V+IV+Actio+Ela:mis K ;
+ +V+IV+Der3+Der/NomAct:»m@C.NeedNoun@ OADDÁM ;
+ +V+IV+Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+
+
+LEXICON OADDÁTStem
+ OADDÁTINCH ;
+! CONTR-PASSIVE ;
+
+LEXICON TJUOLLÁTStem
+ TJUOLLÁTINCH ;
+! CONTR-PASSIVE ;
+
+
+LEXICON OADDÁTINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-CONTRACTED ;
+ DeverbalNounsOADDÁT ;
+
+LEXICON TJUOLLÁTINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-CONTRACTED ;
+ DeverbalNounsTJUOLLÁT ;
+
+
+LEXICON STRÁFFUTStem
+ STRÁFFUTINCH ;
+! CONTR-PASSIVE ;
+
+LEXICON DULLUTStem
+ DULLUTINCH ;
+! CONTR-PASSIVE ;
+
+
+LEXICON STRÁFFUTINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-CONTRACTED ;
+ DeverbalNounsSTRÁFFUT ;
+
+LEXICON DULLUTINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-CONTRACTED ;
+ DeverbalNounsDULLUT ;
+
+
+! Main inflectional categories
+! ----------------------------
+
+LEXICON INFL-EVEN
+! Finite
++Ind+Prs: I-even-V ;
++Ind+Prt: II-even-V ;
++Pot:Q1tj I-odd-V ;
+ +Imprt+Sg2:Q1 ENDLEX ; ! Basic Imperative, like ConNeg
+ +Imprt+Du2:Y6 ENDLEX ; ! Ad hoc solution. We need a II => III operation here !! (todo)
++Imprt:Y1 IMP7-EVEN ;
++Imprt+Du1:Y8on ENDLEX ;
++Imprt+Pl1:Y8op ENDLEX ;
++ImprtII:Y1u IMP8-EVEN ;
+! Infinite
++Inf:t K ;
++PrfPrc:Y3m K ;
+!+PrsPrc: NOADE ; ! Noun, not correct, III grade!
++Ger:Q1dijn K ;
++Sup:Q2tjit K ;
++VAbess:Q1k K ;
++VAbess:Q1dak K ;
++VAbess:Q1k VUOHTA ;
++VAbess:Q1dak VUOHTA ;
++VGen:Q1 K ;
+! ConNeg
++Ind+ConNeg:Q1 K ;
+!+Ind+Prs+ConNeg:Q1 K ;  ! What is this?
+!+Ind+Prt+ConNeg:Y3m K ; ! What is this?
++Pot+ConNeg:Q1tja K ;
++Imprt+ConNeg:Q1 ENDLEX ;
++ImprtII+ConNeg: ImprtIIConNeg ;
++Actio+Nom:m K ;
++Actio+Gen:ma K ;
++Actio+Com:mijn K ;
++Actio+Ess:min K ;
++Actio+Ela:mis K ;
+
+
+LEXICON INFL-VIEDJETEVEN
+! Finite
++Ind+Prs: I-even-V ;
++Ind+Prt: II-even-V ;
++Pot:Q1tj I-odd-V ;
+ +Imprt+Sg2:Q1 ENDLEX ; ! Basic Imperative, like ConNeg
+ +Imprt+Du2:Y6 ENDLEX ; ! Ad hoc solution. We need a II => III operation here !! (todo)
++Imprt:Y1 IMP7-EVEN ;
++Imprt+Du1:Y8on ENDLEX ;
++Imprt+Pl1:Y8op ENDLEX ;
++ImprtII:Q8u IMP8-EVEN ;
+! Infinite
++Inf:t K ;
++PrfPrc:Y3m K ;
+!+PrsPrc: NOADE ; ! Noun, not correct, III grade!
++Ger:Q1dijn K ;
++Sup:Q2tjit K ;
++VAbess:Q1k K ;
++VAbess:Q1dak K ;
++VAbess:Q1k VUOHTA ;
++VAbess:Q1dak VUOHTA ;
++VGen:Q1 K ;
+! ConNeg
++Ind+ConNeg:Q1 K ;
+!+Ind+Prs+ConNeg:Q1 K ;  ! What is this?
+!+Ind+Prt+ConNeg:Y3m K ; ! What is this?
++Pot+ConNeg:Q1tja K ;
++Imprt+ConNeg:Q1 ENDLEX ;
++ImprtII+ConNeg: ImprtIIConNeg ;
++Actio+Nom:m K ;
++Actio+Gen:ma K ;
++Actio+Com:mijn K ;
++Actio+Ess:min K ;
++Actio+Ela:mis K ;
+
+
+LEXICON INFL-o-
+! Finite
++Ind+Prs: I-o-V ;
++Ind+Prt: II-o-V ;
++Pot:Q1tj I-odd-V ;
+ +Imprt+Sg2:Q1 ENDLEX ; ! Basic Imperative, like ConNeg
+ +Imprt+Du2:Y6 ENDLEX ; ! Ad hoc solution. We need a II => III operation here !! (todo)
++Imprt: IMP7-o- ;
++ImprtII:Y1 IMP8-EVEN ;
+! Infinite
++Inf:t K ;
++PrfPrc:Y3m K ;
+!+PrsPrc:Y6 NOADE ; ! Noun, not correct, III grade!
++Ger:Q1dijn K ;
++Sup:Q1tjit K ;
++Sup:X7tjit K ;
++VAbess:Q1k K ;
++VAbess:Q1dak K ;
++VAbess:Q1k VUOHTA ;
++VAbess:Q1dak VUOHTA ;
++VGen:Q1 K ;
+! ConNeg
++Ind+ConNeg:Q1 K ;
++Pot+ConNeg:Q1tja K ;
++Imprt+ConNeg:Q1 ENDLEX ;
++ImprtII+ConNeg: ImprtIIConNeg-o- ;
++Actio+Nom:m K ;
++Actio+Gen:ma K ;
++Actio+Com:mijn K ;
++Actio+Ess:min K ;
++Actio+Ela:mis K ;
+!+Ind+Prs+ConNeg:Q1 K ;
+!+Ind+Prt+ConNeg:Y3m K ;
+
+
+LEXICON INFL-ODD
+! Finite
+ +Ind+Prs: I-odd-V ;
+ +Ind+Prt: II-odd-V ;
+ +Pot+Sg1:ittja%>v K ;
+ +Pot+Sg2:ittja%> K ;
+ +Pot+Sg3:isj%> K ;
+ +Pot+Du1:ittji%>n K ;
+ +Pot+Du2:ittja%>bihtte%> K ;
+ +Pot+Du3:ittja%>ba K ;
+ +Pot+Pl1:ittja%>p K ;
+ +Pot+Pl2:ittja%>bihti%>t K ;
+ +Pot+Pl2+Use/Sub:ittja%>behti%>t K ; !
+ +Pot+Pl3:ittji%> K ;
+ +Imprt+Sg2:a ENDLEX ;
+ +Imprt: IMP7-ODD ;
+ +ImprtII:u IMP8-ODD ;
+! Infinite
+ +Inf:it K ;
+ +PrfPrc:am K ;
+! +PrsPrc:iddje NOADE ; ! as nouns
+ +Ger:attijn K ;
+ +Sup:ittjat K ;
+ +VAbess:ik K ;
+ +VAbess:ik VUOHTA ;
+ +VGen:a K ;
+ +Ind+ConNeg:a K ;
+ +Pot+ConNeg:ittja%> K ; !tentative
+ +Ind+ConNeg:a K ;
+ +ImprtII+ConNeg: ImprtIIConNeg ;
+ +Actio+Nom:ibme K ;
+ +Actio+Gen:im K ;
+ +Actio+Gen:ime K ;
+ +Actio+Com:imijn K ;
+ +Actio+Ess:ime K ;
+ +Actio+Ess:imen K ;
+ +Actio+Ela:imes K ;
+
+
+
+LEXICON INFL-CONTRACTED
+! Finite
+ +Ind+Prs: I-contr-V ;
+ +Ind+Prt: II-contr-V ;
+ +Pot:tj I-odd-V ;
+ +Imprt+Sg2: ENDLEX ;
+ +Imprt+Du2:jihtte%> ENDLEX ;
+ +Imprt+Pl2:jit ENDLEX ;
+ +Imprt+Pl2:jihti%>t ENDLEX ;
+ +Imprt:ji IMP-CONTRACTED ;
+ +ImprtII+Sg2:ju ENDLEX ;
+ +ImprtII+Du2:juhtu%> ENDLEX ;
+ +ImprtII+Pl2:juhtu%>t ENDLEX ;
+ +ImprtII:ju IMP-CONTRACTED ;
+! Infinite
+ +Inf:t K ;
+ +PrfPrc:m K ;
+! +PrsPrc:jiddje NOADE ;
+ +Ger:dijn K ;
+ +Sup:tjit K ;
+ +VAbess:k K ;
+ +VAbess:dak K ;
+ +VAbess:k VUOHTA ;
+ +VAbess:dak VUOHTA ;
+ +VGen: K ;
+ +Ind+ConNeg: K ;
+ +Pot+ConNeg:tja K ; !tentative
+ +Ind+ConNeg: K ;
+ +ImprtII+ConNeg:j ImprtIIConNeg ;
+ +Actio+Nom:m K ;
+ +Actio+Gen:ma K ;
+ +Actio+Com:mijn K ;
+ +Actio+Ess:min K ;
+ +Actio+Ela:mis K ;
+
+
+
+
+
+! Intermediate suffix lexica
+! --------------------------
+
+! These intermediate lexica are here for
+! morphophonological reasons.
+
+LEXICON I-even-V
+ :Q2 I-sg72 ;     ! Q2 governs WeG and e:á
+ :Y2 I-sg9 ;	  ! Y2 gives á in sg9 of verbs
+ I-du83pl72 ; ! No diacritic, no stem changes
+ :Y1 I-du7pl9 ;	  ! Y1 deletes stem vowels in front of j
+
+LEXICON I-diehtet-V
+ :á%>Q1 I-sg72 ;
+ :á%>   I-sg9 ;
+ :e%>   I-du83pl72 ;
+ :%>    I-du7pl9 ;
+
+LEXICON II-even-V
+ :Y1 II-sg72pl9 ; ! Y1 deletes stem vowels in front of j
+ :Q1 II-other ;   ! Q1, WeG. Q1 deletes stem vow bef. j
+                  ! Y1 does not give WeG as Q1 does, therefore the split
+
+LEXICON I-o-V
+ :Q2 I-sg72 ;	   ! Q2 governs WeG and e:á
+ :Y2 I-sg9 ;	   ! Y2 gives á in sg9 of verbs
+ I-du83pl72 ;  ! No diacritic, no stem changes
+ :Y1 I-du7pl9-o- ; ! Y1 deletes stem vowels in front of j
+
+LEXICON II-o-V
+ :Y1 II-sg72pl9-o- ; ! Y1 deletes stem vowels in front of j
+ :Q1 II-other ;	     ! Q1, WeG. Q1 deletes stem vow bef. j
+		     ! Y1 does not give WeG as Q1 does, therefore the split
+
+LEXICON II-odd-V
+ II-sg72pl9 ;
+ :i II-other ;
+
+LEXICON I-contr-V
+ I-sg72 ;
+ I-sg9 ;
+ I-du83pl72 ;
+ :j I-du7pl9 ;
+
+LEXICON II-contr-V
+ :j II-sg72pl9 ;
+ : II-other ; !w/o j, since j in target lexicon
+
+
+
+! Final suffix lexica
+! -------------------
+
+! Suffix series I
+! - - - - - - - -
+
+LEXICON I-sg72
++Sg1:v K ;
++Sg2: K ;
+
+LEXICON I-sg9
++Sg3: K ;
+
+LEXICON I-du83pl72
++Du2:bihtte%> K ;
++Du3:ba K ;
++Pl1:p K ;
++Pl2:bihti%>t K ;
+ +Pl2+Use/Sub:behti%>t K ; !
+
+LEXICON I-du7pl9
++Du1:in K ;
++Pl3:i K ;
+
+LEXICON I-du7pl9-o-
++Du1:n K ;
++Pl3: K ;
+
+LEXICON I-odd-V
++Sg1:av K ;
++Sg2:a K ;
++Sg3: K ;
++Du1:in K ;
++Du2:ihppe%> K ;
++Du3:ibá%> K ;
++Pl1:ip K ;
++Pl2:ihpi%>t K ;
++Pl3:i K ;
+
+
+! Suffix series II
+! - - - - - - - -
+
+LEXICON II-sg72pl9
++Sg1:iv K ;
++Sg2:i K ;
++Pl3:in K ;
+
+LEXICON II-sg72pl9-o-
++Sg1:v K ;
++Sg2: K ;
++Pl3:n K ;
+
+LEXICON II-other
++Sg3:j K ;
++Du1:jma K ;
++Du2:jda K ;
+ +Du1+Use/Sub:jme K ; !
+ +Du2+Use/Sub:jde K ; !
++Du3:jga K ;
++Pl1:jma K ;
++Pl2:jda K ;
+ +Pl1+Use/Sub:jme K ; !
+ +Pl2+Use/Sub:jde K ; !
+
+
+
+! Imperative series
+! - - - - - - - - -
+
+! Affirmative
+
+LEXICON IMP7-EVEN
+ +Sg3:is K ;
+ +Du3:iska K ;
+ +Pl2:it K ;
+ +Pl3:isa K ;
+
+LEXICON IMP7-o-
+ +Sg3:Y1s K ;
+ +Du1:n K ;
+ +Du3:Y1ska K ;
+ +Pl1:p K ;
+ +Pl2:Y1t K ;
+ +Pl3:Y1sa K ;
+
+LEXICON IMP8-EVEN
+ +Sg2: K ;
+ +Sg3:s K ;
+ +Du1:n K ;
+ +Du2:da K ;
+ +Du3:ska K ;
+ +Pl1:p K ;
+ +Pl2:t K ;
+ +Pl3:sa K ;
+
+
+LEXICON IMP7-ODD
+ +Sg3:is K ;
+ +Du1:in'no%> K ;
+ +Du2:ihtte%> K ;
+ +Du3:iska%> K ;
+ +Pl1:ip K ;
+ +Pl2:it K ;
+ +Pl2:ihti%>t K ;
+ +Pl3:isá%> K ;
+
+LEXICON IMP8-ODD
+ +Sg2: K ;
+ +Sg3:s K ;
+ +Du1:n'no%> K ;
+ +Du2:htu%> K ;
+ +Du3:ska%> K ;
+ +Pl1:p K ;
+ +Pl2:htu%>t K ;
+ +Pl3:sá%> K ;
+
+
+LEXICON IMP-CONTRACTED !Imp7 & Imp8 have common suffs
+! +Sg2: K ;
+ +Sg3:s K ;
+ +Du1:n'no%> K ;
+ +Du3:ska%> K ;
+ +Pl1:p K ;
+ +Pl3:sá%> K ;
+
+
+! Negative
+
+LEXICON ImprtIIConNeg
++Sg2:Y1u K ;
++Du2:Y1u K ;
++Pl2:Y1u K ;
+
+
+LEXICON ImprtIIConNeg-o-
++Sg2:Y1 K ;
++Du2:Y1 K ;
++Pl2:Y1 K ;
+
+!We probably don't want to generate these.
+!We use the ordinary ConNeg instead. Cf. Spiik p. 75.
+!+Sg3:Q1 K ;
+!+Du1:Q1 K ;
+!+Du3:Q1 K ;
+!+Pl1:Q1 K ;
+!+Pl3:Q1 K ;
+
+
+! Verb Derivation
+! --------------------
+
+
+! Passive derivation
+! - - - - - - - - - -
+
+LEXICON SG3PASSEVEN
+ +Der/Pass+V:»Y9u SG3PASSEVENinfl ;
+
+LEXICON SG3PASSEVENinfl
++Ind+Prs+Sg3: K ;
++Ind+Prt+Sg3:j K ;
++Ind+ConNeg: K ;
++Pot+Sg3:sj K ;
++Pot+ConNeg:tja K ;
++Imprt+Sg3:jis ENDLEX ;
++ImprtII+Sg3:jus ENDLEX ;
++PrfPrc:m K ;
++Inf:t K ;
++Ger:dijn K ;
++Sup:tjit K ;
++VAbess:k K ;
++VAbess:dak K ;
++VAbess:k VUOHTA ;
++VAbess:dak VUOHTA ;
++VGen: K ;
++Imprt+ConNeg: ENDLEX ;
++Der3+Der/goahte+V+Inf:»goahte%>t K ;
++Der3+Der/goahte+V+Ind+Prs+Sg3:»goahtá%> K ;
++Der3+Der/goahte+V+Ind+Prt+Sg3:»gådi%>j K ;
++Actio+Nom:m K ;
++Actio+Gen:ma K ;
++Actio+Com:mijn K ;
++Actio+Ess:min K ;
++Actio+Ela:mis K ;
++Der3+Der/NomAct:»m@C.NeedNoun@ VSBST-ODD ;
+
+
+LEXICON SG3PASSV
+ :%>Q1d SG3PASS ;
+
+LEXICON SG3PASS
+ +Der1+Der/Pass+V:»uvva%> BIEGGATinfl ;
+ +Der1+Der/Pass+V+PrfPrc:»um K ;
+ +Der1+Der/Pass+V+PrfPrc:»uvvu%>m K ;
+
+
+LEXICON EVEN-PASSIVE
+! +Der/Pass+V:»Y9u OADDÁTINCH ; !replaced by individual pointers to avoid pass + Actor
+ +Der/Pass+V+Actio+Nom:m K ;
+ +Der/Pass+V+Actio+Gen:ma K ;
+ +Der/Pass+V+Actio+Com:mijn K ;
+ +Der/Pass+V+Actio+Ess:min K ;
+ +Der/Pass+V+Actio+Ela:mis K ;
+ +Der/Pass+V+Der3+Der/NomAct:»Y9u»m@C.NeedNoun@ OADDÁM ;
+ +Der/Pass+V+Der3+Der/mus+N:»Y9u»muss@C.NeedNoun@ MUS ;
+ +Der/Pass+V+Der3+Der/goahte+V:»Y9u»goahte%> INFL-EVEN ;
+ +Der/Pass+V:»Y9u INFL-CONTRACTED ; 
+ +Der1+Der/Pass+V+Der3+Der/goahte+V:»Q1duvva»goahte%> INFL-EVEN ;
+ +Der1+Der/Pass+V:»Q1duvva%> INFL-EVEN ;
+ +Der1+Der/Pass+V+Actio+Ela:»Q1duvvamis K ;
+ +Der1+Der/Pass+V+Actio+Nom:»Q1duvvam K ;
+ +Der1+Der/Pass+V+Actio+Gen:»Q1duvvama K ;
+ +Der1+Der/Pass+V+Actio+Com:»Q1duvvamijn K ;
+ +Der1+Der/Pass+V+Actio+Ess:»Q1duvvamin K ;
+ +Der1+Der/Pass+V+Der3+Der/NomAct:»Q1duvva»m VSBST-ODD ;
+ +Der1+Der/Pass+V+PrfPrc:»Q1duvvu%>m K ;
+! +Der1+Der/Pass+V+Der2+Actor:»Q1duvva@C.NeedNoun@  ACTOR ;
+ +Der1+Der/Pass+V+Der3+Der/lis+A:»Q1duvva»Y3liss LIS ;
+ +Der1+Der/Pass+V+Der3+Der/mus+N:»Q1duvva»muss@C.NeedNoun@ MUS ;
+ +Der1+Der/Pass+Der2+Der/duhtte+V:»Q1duhtte%> BASSATINCH ;
+ +Der1+Der/Pass+V+Der3+Der/goahte+V:»X7dalla»goahte%> INFL-EVEN ;
+ +Der1+Der/Pass+V:»X7dalla%> INFL-EVEN ;
+! +Der1+Der/Pass+V+Der2+Actor:»X7dalla@C.NeedNoun@  ACTOR ;
+ +Der1+Der/Pass+V+Der3+Der/lis+A:»X7dalla»Y3liss LIS ;
+ +Der1+Der/Pass+V+Der3+Der/mus+N:»X7dalla»muss@C.NeedNoun@ MUS ;
+ +Der1+Der/Pass+Der2+Der/dahtte+V:»X7dahtte%> BASSATINCH ;
+ +Der1+Der/Pass+V+PrfPrc:»Q1dum%> K ;
+
+LEXICON ODD-PASSIVE
+! +Der1+Der/Pass+V:»uvva%> BASSATINCH ; !replaced by individual pointers to avoid pass + Actor
+ +Der1+Der/Pass+V+Der3+Der/goahte+V:»uvva%>»goahte%> INFL-EVEN ;
+ +Der1+Der/Pass+V:»uvva%> INFL-EVEN ;
+ +Der1+Der/Pass+V+Der3+Der/lis+A:»uvva%>»Y3liss LIS ;
+ +Der1+Der/Pass+V+Der3+Der/NomAct:»uvva%>»m@C.NeedNoun@ BOAHTEMTV ;
+ +Der1+Der/Pass+V+Actio+Nom:»uvvam K ;
+ +Der1+Der/Pass+V+Actio+Gen:»uvvama K ;
+ +Der1+Der/Pass+V+Actio+Com:»uvvamijn K ;
+ +Der1+Der/Pass+V+Actio+Ess:»uvvamin K ;
+ +Der1+Der/Pass+V+Actio+Ela:»uvvamis K ;
+ +Der1+Der/Pass+V+Der3+Der/mus+N:»uvva%>»muss@C.NeedNoun@ MUS ;
+ +Der1+Der/Pass+V+PrfPrc:»uvvu%>m K ;
+ +Der1+Der/Pass+Der2+Der/duhtte+V:»uhtte%> BASSATINCH ;
+ +Der1+Der/Pass+V+PrfPrc:»um%> K ;
+
+
+LEXICON CONTR-PASSIVE
+! +Der1+Der/Pass+V:»duvva%> BASSATINCH ;!replaced by individual pointers to avoid pass + Actor
++Der1+Der/Pass+V+Der3+Der/goahte+V:»duvva%>»goahte%> INFL-EVEN ;
+ +Der1+Der/Pass+V+PrfPrc:»duvvu%>m K ;
+ +Der1+Der/Pass+V:»duvva%> INFL-EVEN ;
+ +Der1+Der/Pass+V+Der3+Der/lis+A:»duvva%>»Y3liss LIS ;
+ +Der1+Der/Pass+V+Der3+Der/NomAct:»duvva%>»m@C.NeedNoun@ BOAHTEMTV ;
+ +Der1+Der/Pass+V+Actio+Nom:»duvvam K ;
+ +Der1+Der/Pass+V+Actio+Gen:»duvvama K ;
+ +Der1+Der/Pass+V+Actio+Com:»duvvamijn K ;
+ +Der1+Der/Pass+V+Actio+Ess:»duvvamin K ;
+ +Der1+Der/Pass+V+Actio+Ela:»duvvamis K ;
+ +Der1+Der/Pass+V+Der3+Der/mus+N:»duvva%>»muss@C.NeedNoun@ MUS ;
+ +Der1+Der/Pass+Der2+Der/duhtte+V:»duhtte%> BASSATINCH ;
+ +Der1+Der/Pass+V+PrfPrc:»dum%> K ;
+
+
+LEXICON DUVVAT !deadjectival verbs from -dibme
+ +Der2+Der/duvva+V:»uvva%> BASSATINCH ;
+ +Der2+Der/duvva+V+PrfPrc:»uvvu%>m K ;
+ +Der2+Der/duhtte+V:»uhtte%> BASSATINCH ;
+
+
+
+! Even-syllabic stems
+! - - - - - - - - - -
+
+LEXICON DeverbalVerbsBASSAT
+ +Der1+Der/d+V:»Q1d9 JÅLLÅRITINCH ;             !Causative
+ +Der1+Der/dalla+V:»X7dalla%> BASSALASSTETINCH ;     !Caus-Freq
+ +Der2+Der/dahtte+V:»Q1dahtte%> BASSALASSTETINCH ;   !Double Caus
+ +Der1+Der/dasste+V:»Q1dasste%> BASSALASSTETINCH ;   !Caus-Dim
+ +Der1+Der/l+V:»l JÅLLÅRITINCH ;                !Subitive
+ +Der1+Der/ladda+V:»Y3ladda%> BASSALASSTETINCH ;     !Subitive-Freq
+ +Der1+Der/lahtte+V:»lahtte%> BASSALASSTETINCH ;     !Subitive-Caus
+ +Der1+Der/lasste+V:»lasste%> BASSALASSTETINCH ;     !Subitive-Dim
+ +Der1+Der/st+V:»Q1st JÅLLÅRITINCH ;            !Dim
+ +Der1+Der/stalla+V:»X7stalla%> BASSALASSTETINCH ;   !Dim-Freq
+ +Der1+Der/stahtte+V:»Q1stahtte%> BASSALASSTETINCH ; !Dim-Caus
+ +Der1+Der/stasste+V:»Q1stasste%> BASSALASSTETINCH ; !Double dim
+ +Der1+Der/u/a/åd+V:»Y5d9 JÅLLÅRITINCH ;      !Dem-cont-freq
+
+LEXICON DeverbalVerbsJUHKAT
+ +Der1+Der/d+V:»Q1d9 JÅLLÅRITINCH ;             !Causative
+ +Der1+Der/dalla+V:»X7dalla%> BASSALASSTETINCH ;     !Caus-Freq
+ +Der2+Der/dahtte+V:»Q1dahtte%> BASSALASSTETINCH ;   !Double Caus
+ +Der1+Der/dasste+V:»Q1dasste%> BASSALASSTETINCH ;   !Caus-Dim
+ +Der1+Der/l+V:»l JÅLLÅRITINCH ;                !Subitive
+ +Der1+Der/ladda+V:»Y3ladda%> BASSALASSTETINCH ;     !Subitive-Freq
+ +Der1+Der/lahtte+V:»lahtte%> BASSALASSTETINCH ;     !Subitive-Caus
+ +Der1+Der/lasste+V:»lasste%> BASSALASSTETINCH ;     !Subitive-Dim
+ +Der1+Der/u/a/åd+V:»Y5d9 JÅLLÅRITINCH ;      !Dem-cont-freq
+
+
+LEXICON DeverbalVerbsLÁHPPET
+ +Der1+Der/d+V:»Q1d9 JÅLLÅRITINCH ;             !Causative
+ +Der1+Der/dalla+V:»X7dalla%> BASSALASSTETINCH ;     !Caus-Freq
+ +Der2+Der/dahtte+V:»Q1dahtte%> BASSALASSTETINCH ;   !Double Caus
+ +Der1+Der/dasste+V:»Q1dasste%> BASSALASSTETINCH ;   !Caus-Dim
+ +Der1+Der/l+V:»l JÅLLÅRITINCH ;                !Subitive
+ +Der1+Der/ladda+V:»Y3ladda%> BASSALASSTETINCH ;     !Subitive-Freq
+ +Der1+Der/lahtte+V:»lahtte%> BASSALASSTETINCH ;     !Subitive-Caus
+ +Der1+Der/lasste+V:»lasste%> BASSALASSTETINCH ;     !Subitive-Dim
+ +Der1+Der/st+V:»Q1st JÅLLÅRITINCH ;            !Dim
+ +Der1+Der/stalla+V:»X7stalla%> BASSALASSTETINCH ;   !Dim-Freq
+ +Der1+Der/stahtte+V:»Q1stahtte%> BASSALASSTETINCH ; !Dim-Caus
+ +Der1+Der/stasste+V:»Q1stasste%> BASSALASSTETINCH ; !Double dim
+
+LEXICON DeverbalNounsBASSAT
+ +Der2+Actor:»@C.NeedNoun@  ACTORTVder ;
+! +Der2+Actor+N:»@C.NeedNoun@ DenominalNounsActor ;    !not usual
+ +Der3+Der/lis+A:»Y3liss LIS ;
+ +Der3+Der/NomAct:»m@C.NeedNoun@ BOAHTEMTV ;
+ +Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+! +Der3+Der/dahka+N:»X7dahka%> N-EVENSTRONGSTEM ; !does not seem usual (TO)
+! +Der3+Der/dahka+N:»X7dahka%>Q1 N-EVENWEAKSTEM ; !does not seem usual (TO)
+
+LEXICON DeverbalNounsRAVGGAT
+ +Der2+Actor:»@C.NeedNoun@  ACTORder ;
+! +Der2+Actor+N:»@C.NeedNoun@ DenominalNounsActor ;    !not usual
+ +Der3+Der/lis+A:»Y3liss LIS ;
+ +Der3+Der/NomAct:»m@C.NeedNoun@ BOAHTEM ;
+ +Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+! +Der3+Der/dahka+N:»X7dahka%> N-EVENSTRONGSTEM ; !does not seem usual (TO)
+! +Der3+Der/dahka+N:»X7dahka%>Q1 N-EVENWEAKSTEM ; !does not seem usual (TO)
+
+
+LEXICON DeverbalNounsBASSALASSTET
+ +Der2+Actor:»@C.NeedNoun@  ACTORTVder ;
+ +Der3+Der/lis+A:»Y3liss LIS ;
+ +Der3+Der/NomAct:»m@C.NeedNoun@ BASSALASSTEMTV ;
+ +Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+! +Der3+Der/dahka+N:»X7dahka%> N-EVENSTRONGSTEM ; !does not seem usual (TO)
+! +Der3+Der/dahka+N:»X7dahka%>Q1 N-EVENWEAKSTEM ; !does not seem usual (TO)
+
+LEXICON DeverbalNounsRAVGGALASSTET
+ +Der2+Actor:»@C.NeedNoun@  ACTORder ;
+ +Der3+Der/lis+A:»Y3liss LIS ;
+ +Der3+Der/NomAct:»m@C.NeedNoun@ BASSALASSTEM ;
+ +Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+! +Der3+Der/dahka+N:»X7dahka%> N-EVENSTRONGSTEM ; !does not seem usual (TO)
+! +Der3+Der/dahka+N:»X7dahka%>Q1 N-EVENWEAKSTEM ; !does not seem usual (TO)
+
+
+LEXICON DeverbalVerbsBIEGGAT
+ +Der1+Der/l+V:»l BIEKKASTITinfl ;                !Subitive
+ +Der1+Der/ladda+V:»Y3ladda%> BIEGGATinfl ;     !Subitive-Freq
+ +Der1+Der/lahtte+V:»lahtte%> BIEGGATinfl ;     !Subitive-Caus
+ +Der1+Der/lasste+V:»lasste%> BIEGGATinfl ;     !Subitive-Dim
+ +Der1+Der/st+V:»Q1st JÅLLÅRITINCH ;            !Dim
+ +Der1+Der/stalla+V:»X7stalla%> BIEGGATinfl ;   !Dim-Freq
+ +Der1+Der/stahtte+V:»Q1stahtte%> BIEGGATinfl ; !Dim-Caus
+ +Der1+Der/stasste+V:»Q1stasste%> BIEGGATinfl ; !Double dim
+
+LEXICON DeverbalVerbsDIEHTET
+ +Der1+Der/d+V:e»Q1d9 JÅLLÅRITINCH ;             !Causative
+ +Der1+Der/dalla+V:á»Q1dalla%> BASSALASSTETINCH ;     !Caus-Freq
+ +Der2+Der/dahtte+V:e»Q1dahtte%> BASSALASSTETINCH ;   !Double Caus
+ +Der1+Der/dasste+V:e»Q1dasste%> BASSALASSTETINCH ;   !Caus-Dim
+ +Der1+Der/l+V:e»l JÅLLÅRITINCH ;                !Subitive
+ +Der1+Der/ladda+V:á»ladda%> BASSALASSTETINCH ;     !Subitive-Freq
+ +Der1+Der/lahtte+V:e»lahtte%> BASSALASSTETINCH ;     !Subitive-Caus
+ +Der1+Der/lasste+V:e»lasste%> BASSALASSTETINCH ;     !Subitive-Dim
+ +Der1+Der/st+V:e»Q1st JÅLLÅRITINCH ;            !Dim
+ +Der1+Der/stalla+V:á»Q1stalla%> BASSALASSTETINCH ;   !Dim-Freq
+ +Der1+Der/stahtte+V:e»Q1stahtte%> BASSALASSTETINCH ; !Dim-Caus
+ +Der1+Der/stasste+V:e»Q1stasste%> BASSALASSTETINCH ; !Double dim
+
+
+LEXICON DeverbalNounsDIEHTET
+ +Der3+Der/NomAct:»m@C.NeedNoun@ BOAHTEM ;
+ +Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+
+
+! Odd-syllable stems
+!---------------------
+
+LEXICON DeverbalVerbsJÅLLÅRIT
+ +Der1+Der/ahtte+V:»ahtte%> BASSALASSTETINCH ;          !Caus
+ +Der1+Der/alla+V:»Y4alla%> BASSALASSTETINCH ;          !Freq-cont
+ +Der1+Der/asste+V:»asste%> BASSALASSTETINCH ;          !Dim
+ +Der1+Der/ahtja+V:»ahtja%> INFL-EVEN ;                 !Inchoative
+ +Der1+Der/ahtja+V:»ahtja DeverbalNounsBASSALASSTET ; !Inchoative
+
+
+LEXICON DeverbalNounsJÅLLÅRIT
+ +Der2+Der/NomAct:»@C.NeedNoun@ VSBST-EVEN ;
+ +Actio+N+Sg+Nom+Der4+Der/ahtes:» AHTES ;
+ +Der2+Actor:»iddje@C.NeedNoun@ ACTOR ;
+ +Der2+Der/ahkes:»ahkke SÁDNES ;
+
+LEXICON DeverbalNounsUNNEDIT
+ +Der2+Der/NomAct:»@C.NeedNoun@ VSBST-EVENTV ;
+ +Actio+N+Sg+Nom+Der4+Der/ahtes:» AHTES ;
+ +Der2+Actor:»iddje@C.NeedNoun@ ACTORTV ;
+ +Der2+Der/ahkes:»ahkke SÁDNES ;
+
+
+LEXICON DeverbalNounsMUJTATJIT
+ +Der2+Der/NomAct:»@C.NeedNoun@ MUJTATJIBME ;
+ +Actio+N+Sg+Nom+Der4+Der/ahtes:» AHTES ;
+ +Der2+Actor:»iddje@C.NeedNoun@ ACTORTV ;
+ +Der2+Der/ahkes:»ahkke SÁDNES ;
+
+LEXICON DeverbalNounsBEGATJIT
+ +Der2+Der/NomAct:»@C.NeedNoun@ BEGATJIBME ;
+ +Actio+N+Sg+Nom+Der4+Der/ahtes:» AHTES ;
+ +Der2+Actor:»iddje@C.NeedNoun@ ACTORTV ;
+ +Der2+Der/ahkes:»ahkke SÁDNES ;
+
+
+LEXICON DeverbalVerbsVUORDDELIT
+ +Der1+Der/ahtte+V:»ahtte%> BASSALASSTETINCH ;          !Caus
+ +Der1+Der/adda+V:»Y4adda%> BASSALASSTETINCH ;          !Freq-cont
+ +Der1+Der/asste+V:»asste%> BASSALASSTETINCH ;          !Dim
+ +Der1+Der/ahtja+V:»ahtja%> INFL-EVEN ;                 !Inchoative
+ +Der1+Der/ahtja+V:»ahtja%> DeverbalNounsBASSALASSTET ; !Inchoative
+
+
+LEXICON DeverbalVerbsLASSÁNIT
+ +Der1+Der/adda+V:»Y4adda%> BASSALASSTETINCH ;          !Freq-cont
+ +Der1+Der/ahtja+V:»ahtja%> INFL-EVEN ;                 !Inchoative
+ +Der1+Der/ahtja+V:»ahtja%> DeverbalNounsBASSALASSTET ; !Inchoative
+
+
+LEXICON DeverbalVerbsBIEKKASTIT
+ +Der1+Der/ahtte+V:»ahtte%> BIEGGATinfl ;          !Caus
+ +Der1+Der/alla+V:»Y4alla%> BIEGGATinfl ;          !Freq-cont
+ +Der1+Der/asste+V:»asste%> BIEGGATinfl ;          !Dim
+ +Der1+Der/ahtja+V+Ind+Prs+Sg3:»ahtja%>Y2 K ; !Inchoative
+ +Der1+Der/ahtja+V+Ind+Prt+Sg3:»ahtja%>Q1j K ; !Inchoative
+ +Der1+Der/ahtja+V+Ind+ConNeg:»ahtja%>Q1 K ; !Inchoative
+ +Der1+Der/ahtja+V+Pot+Sg3:»ahtja%>Q1sj K ; !Inchoative
+ +Der1+Der/ahtja+V+Pot+ConNeg:»ahtja%>Q1tja K ; !Inchoative
+ +Der1+Der/ahtja+V+Imprt+Sg3:»ahtja%>Y1is ENDLEX ; !Inchoative
+ +Der1+Der/ahtja+V+ImprtII+Sg3:»ahtja%>Y1us ENDLEX ; !Inchoative
+ +Der1+Der/ahtja+V+PrfPrc:»ahtja%>Y3m K ; !Inchoative
+ +Der1+Der/ahtja+V+Inf:»ahtja%>t K ; !Inchoative
+ +Der1+Der/ahtja+V+Ger:»ahtja%>Q1dijn K ; !Inchoative
+ +Der1+Der/ahtja+V+Sup:»ahtja%>Q2tjit K ; !Inchoative
+ +Der1+Der/ahtja+V+VAbess:»ahtja%>Q1k K ; !Inchoative
+ +Der1+Der/ahtja+V+VAbess:»ahtja%>Q1dak K ; !Inchoative
+ +Der1+Der/ahtja+V+VAbess:»ahtja%>Q1k VUOHTA ; !Inchoative
+ +Der1+Der/ahtja+V+VAbess:»ahtja%>Q1dak VUOHTA ; !Inchoative
+ +Der1+Der/ahtja+V+VGen:»ahtja%>Q1 K ; !Inchoative
+ +Der1+Der/ahtja+V+Imprt+ConNeg:»ahtja%>Q1 ENDLEX ; !Inchoative
+
+
+
+! Contracted stems
+! - - - - - - - - - -
+
+LEXICON DeverbalVerbsOADDÁT
+ +Der1+Der/d+V:»d9 JÅLLÅRITINCH ;             !Causative
+ +Der1+Der/dalla+V:»dalla%> BASSALASSTETINCH ;     !Caus-Freq
+ +Der2+Der/dahtte+V:»dahtte%> BASSALASSTETINCH ;   !Double Caus
+ +Der1+Der/dasste+V:»dasste%> BASSALASSTETINCH ;   !Caus-Dim
+ +Der1+Der/st+V:»st JÅLLÅRITINCH ;            !Dim
+ +Der1+Der/stalla+V:»stalla%> BASSALASSTETINCH ;   !Dim-Freq
+ +Der1+Der/stahtte+V:»stahtte%> BASSALASSTETINCH ; !Dim-Caus
+ +Der1+Der/stasste+V:»stasste%> BASSALASSTETINCH ; !Double dim
+
+
+LEXICON DeverbalNounsOADDÁT
+ +Der2+Actor:»jiddje@C.NeedNoun@  ACTOR ;
+ +Der3+Der/NomAct:»m@C.NeedNoun@ OADDÁM ;
+ +Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+
+LEXICON DeverbalNounsTJUOLLÁT
+ +Der2+Actor:»jiddje@C.NeedNoun@  ACTORTV ;
+ +Der3+Der/NomAct:»m@C.NeedNoun@ TJUOLLÁM ;
+ +Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+
+
+LEXICON DeverbalNounsSTRÁFFUT
+ +Der2+Actor:»jiddje@C.NeedNoun@  ACTORTV ;
+ +Der3+Der/NomAct:»m@C.NeedNoun@ BOAHTEMTV ;
+ +Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+
+LEXICON DeverbalNounsDULLUT
+ +Der2+Actor:»jiddje@C.NeedNoun@  ACTOR ;
+ +Der3+Der/NomAct:»m@C.NeedNoun@ BOAHTEM ;
+ +Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+
+LEXICON DeverbalVerbsSJIERRIT
+ +Der1+Der/st+V:»st BIEKKASTITinfl ;            !Dim
+ +Der1+Der/stalla+V:»stalla%> BIEGGATinfl ;   !Dim-Freq
+ +Der1+Der/stahtte+V:»stahtte%> BIEGGATinfl ; !Dim-Caus
+ +Der1+Der/stasste+V:»stasste%> BIEGGATinfl ; !Double dim
+
+
+!Sublexicas deverbal nouns
+!---------------------------
+
+! vsubst
+! These are actio forms
+
+LEXICON VSBST-ODD
+ +N+Sg+Nom:%> K ;
+ +N+SgNomCmp:%> R ;
+ +N+SgGenCmp:%>a R ;
+ +N+PlGenCmp:%>ij R ;
+ +N:%> OTH-ODDCASE ;
+ +N+Der4+Der/ahtes:» AHTES ;
+
+LEXICON VSBST-EVEN
+ +N+Sg+Nom:ibme%> K ;
+ +N+Sg+Nom+Use/Ped:ibme%> PxV ; !
+ +N+SgNomCmp:im%> R ;
+ +N+SgGenCmp:ime%> R ;
+ +N+PlGenCmp:imi%>j R ;
+ +N+Ess:ibme%>Q1 K ;
+ +N+Ess:ibme%>n K ;
+ +N:ibme%>X4 ILL-EVENCASE ;
+ +N:ibme%>Q1 N-EVENWEAKSTEM ;
+ +N+Sg+Nom+Der4+Der/ahtes:» AHTES ;
+
+
+LEXICON VSBST-EVENTV  !+CmpN/SgN +CmpN/DefSgGen +CmpN/DefPlGen +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft: VSBST-EVENTVCT ;
+
+LEXICON VSBST-EVENTVCT
+ +N+Sg+Nom:ibme%> K ;
+ +N+Sg+Nom+CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped:ibme%> PxV ; !
+ +N+SgNomCmp:im%> R ;
+ +N+SgGenCmp:ime%> R ;
+ +N+PlGenCmp:imi%>j R ;
+ +N+Sg+Nom+Der4+Der/ahtes:» AHTES ;
+ +N+Ess:ibme%>Q1 K ;
+ +N+Ess:ibme%>n K ;
+ +N:ibme%>X4 ILL-EVENCASE ;
+ +N:ibme%>Q1 N-EVENWEAKSTEM ;
+
+
+LEXICON MUJTATJIBME !+CmpN/SgN +CmpN/DefSgGen +CmpN/DefPlGen +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft: MUJTATJIBMECT ;
+
+LEXICON MUJTATJIBMECT
+ +N+Sg+Nom:ibme%> K ;
+ +N+Sg+Nom+CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped:ibme%> PxV ; !
+ +N+SgNomCmp:im%> R ;
+ +N+SgGenCmp:ime%> R ;
+ +N+PlGenCmp:imi%>j R ;
+ +N+Ess:ibme%>Q1 K ;
+ +N+Ess:ibme%>n K ;
+ +N:ibme%>X4 ILL-EVENCASE ;
+ +N:ibme%>Q1 N-EVENWEAKSTEM ;
+
+LEXICON BEGATJIBME
+ +N+Sg+Nom:ibme%> K ;
+ +N+Sg+Nom+Use/Ped:ibme%> PxV ; !
+ +N+SgNomCmp:im%> R ;         !No compounds for these, but now reintroduced
+ +N+SgGenCmp:ime%> R ;
+ +N+PlGenCmp:imi%>j R ;
+ +N+Ess:ibme%>Q1 K ;
+ +N+Ess:ibme%>n K ;
+ +N:ibme%>X4 ILL-EVENCASE ;
+ +N:ibme%>Q1 N-EVENWEAKSTEM ;
+
+LEXICON MUS
+ +Sg+Nom:%> K ;
+ +SgNomCmp:%> R ;
+ :a%> MUSSA ;
+
+LEXICON MUSSA
+ +Sg+Nom+Use/Ped: PxV ; !
+ +SgGenCmp: R ;
+ +PlGenCmp:j R ;
+ +Ess:n K ;
+ :Q1 N-EVENWEAKSTEM-OTH ;
+ ILL-EVENCASE ;
+ :Q1 N-EVENWEAKSTEM-SG-COM ;
+ +Der4+Der/ahtes:»Q1g AHTES ;
+ +Abe:Q1dak K ;
+ +Abe:Q1da K ;
+
+LEXICON ACTOR
+ +A+Attr:%>Y6 ATTR ;
+ +N:%>Y6 NE-EVENCASE ;
+ +N:%>Y6 ACTORILL ;
+ +N:%>Y6 N-EVENWEAKSTEM ;
+ +N+CmpN/SgN+CmpN/SgG+CmpN/PlG:%>Y6 ACTORCmp ; !
+
+LEXICON ACTORTV  !+CmpN/SgN +CmpN/SgG +CmpN/PlG +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+A+Attr:%>Y6 ATTR ;
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:%>Y6 NE-EVENCASE ;
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:%>Y6 ACTORILL ;
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:%>Y6 N-EVENWEAKSTEM ;
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:%>Y6 ACTORCmp ;
+
+LEXICON ACTORder
+ +A+Attr:Y6 ATTR ;
+ +N:Y6 NE-EVENCASE ;
+ +N:Y6 ACTORILL ;
+ +N:Y6 N-EVENWEAKSTEM ;
+ +N+CmpN/SgN+CmpN/SgG+CmpN/PlG:Y6 ACTORCmp ; !
+
+LEXICON ACTORTVder  !+CmpN/SgN +CmpN/SgG +CmpN/PlG +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+A+Attr:Y6 ATTR ;
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:Y6 NE-EVENCASE ;
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:Y6 ACTORILL ;
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:Y6 N-EVENWEAKSTEM ;
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:Y6 ACTORCmp ;
+
+LEXICON ACTORILL
+ +Sg+Ill:X4j K ;
+ +Sg+Ill+Use/Ped:X4s%> PxCi ; !
+
+LEXICON ACTORdiehtet
+ +A+Attr:%> ATTR ;
+ +N:%>Q7 NE-EVENCASE ;
+ +N:%>Q7 ACTORILLdiehtet ;
+ +N:%>Q7 N-EVENWEAKSTEM ;
+ +N:%> ACTORCmp ;
+
+LEXICON ACTORILLdiehtet
+ +Sg+Ill:X4j K ;
+ +Sg+Ill+Use/Ped:X4s%> PxCi ; !
+
+LEXICON BOAHTEM
+ +N+Sg+Nom:%> K ;
+ +N+SgNomCmp:%> R ;
+ +N+SgGenCmp:%>a R ;
+ +N+PlGenCmp:%>ij R ;
+ +N:%> OTH-ODDCASE ;
+ +N+Der4+Der/ahtes:» AHTES ;
+
+LEXICON BOAHTEMTV  !+CmpN/SgN +CmpN/DefSgGen +CmpN/DefPlGen +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Sg+Nom:%> K ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+SgNomCmp:%> R ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+SgGenCmp:%>a R ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+PlGenCmp:%>ij R ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:%> OTH-ODDCASE ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Der4+Der/ahtes:» AHTES ;
+
+LEXICON BASSALASSTEM
+ +N+Sg+Nom:%> K ;
+ +N+SgNomCmp:%> R ;	 !no compounds for these, but reintroduced
+ +N+SgGenCmp:%>a R ;
+ +N+PlGenCmp:%>ij R ;
+ +N:%> OTH-ODDCASE ;
+ +N+Der4+Der/ahtes:» AHTES ;
+
+LEXICON BASSALASSTEMTV  !+CmpN/SgN +CmpN/DefSgGen +CmpN/DefPlGen +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Sg+Nom:%> K ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+SgNomCmp:%> R ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+SgGenCmp:%>a R ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+PlGenCmp:%>ij R ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:%> OTH-ODDCASE ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Der4+Der/ahtes:» AHTES ;
+
+
+LEXICON OADDÁM
+ +N+Sg+Nom:%> K ;
+ +N+SgNomCmp:%> R ;	 !no compounds for these, but reintroduced
+ +N+SgGenCmp:%>a R ;
+ +N+PlGenCmp:%>ij R ;
+ +N:%> OTH-ODDCASE ;
+ +N+Der4+Der/ahtes:» AHTES ;
+
+LEXICON TJUOLLÁM  !+CmpN/SgN +CmpN/DefSgGen +CmpN/DefPlGen +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Sg+Nom:%> K ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+SgNomCmp:%> R ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+SgGenCmp:%>a R ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+PlGenCmp:%>ij R ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:%> OTH-ODDCASE ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Der4+Der/ahtes:» AHTES ;
+
+
+
+
+! Auxiliary verbs
+! ---------------
+
+LEXICON NEG
++Ind+Prs+Sg1:iv K ;
++Ind+Prs+Sg2:i K ;
++Ind+Prs+Sg3:ij K ;
++Ind+Prs+Du1:en K ;
++Ind+Prs+Du1+Use/Sub:æn K ; !
++Ind+Prs+Du2:æhppe K ;
++Ind+Prs+Du3:æbá K ;
++Ind+Prs+Pl1:ep K ;
++Ind+Prs+Pl1+Use/Sub:æp K ; !
++Ind+Prs+Pl2:ehpit K ;
++Ind+Prs+Pl3:e K ;
++Ind+Prs+Pl3+Use/Sub:æ K ; !
+
++Ind+Prt+Sg1:ittjiv K ;
++Ind+Prt+Sg2:ittji K ;
++Ind+Prt+Sg3:ittjij K ;
++Ind+Prt+Du1:ejma K ;
++Ind+Prt+Du2:ejda K ;
++Ind+Prt+Du3:ejga K ;
++Ind+Prt+Pl1:ejma K ;
++Ind+Prt+Pl2:ejda K ;
++Ind+Prt+Pl3:ettjin K ;
+
++Imprt+Sg2:ale ENDLEX ;
++Imprt+Sg3:allis ENDLEX ;
++Imprt+Du1:allon ENDLEX ;
++Imprt+Du2:al'le ENDLEX ;
++Imprt+Du3:alliska ENDLEX ;
++Imprt+Pl1:allop ENDLEX ;
++Imprt+Pl2:allit ENDLEX ;
++Imprt+Pl3:allisa ENDLEX ;
+
++ImprtII+Sg2:allu ENDLEX ;
++ImprtII+Sg3:allus ENDLEX ;
++ImprtII+Du1:allun ENDLEX ;
++ImprtII+Du2:alluda ENDLEX ;
++ImprtII+Du3:alluska ENDLEX ;
++ImprtII+Pl1:allup ENDLEX ;
++ImprtII+Pl2:allut ENDLEX ;
++ImprtII+Pl3:allusa ENDLEX ;
+
+LEXICON ÅRROT
++Inf:ro%>t K ;
+
++Imprt+Sg2:o%> ENDLEX ;
++Imprt+Sg3:ru%>s ENDLEX ;
++Imprt+Du1:ro%>n ENDLEX ;
++Imprt+Du2:'ro%> ENDLEX ;
++Imprt+Du3:ru%>ska ENDLEX ;
++Imprt+Pl1:ru%>p ENDLEX ;
++Imprt+Pl2:ru%>t ENDLEX ;
++Imprt+Pl3:ru%>sa ENDLEX ;
+
+LEXICON LIEHKET
+ +Inf:liehket K ; ! should I use årrot? (No! TO)
++Actio+Ess:liehkemin K ;
+! Present
++Ind+Prs+Sg1:lav K ;
++Ind+Prs+Sg2:la K ;
++Ind+Prs+Sg3:la K ;
++Ind+Prs+Sg3+Clt:l ENDLEX ;
++Ind+Prs+Du1:lin K ;
++Ind+Prs+Du2:lihppe K ;
++Ind+Prs+Du3:libá K ;
++Ind+Prs+Pl1:lip K ;
++Ind+Prs+Pl2:lihpit K ;
++Ind+Prs+Pl3:li K ;
+!+Ind+Prs+Pl3:%>l ENDLEX ;
+
+! Present in questions
++Ind+Prs+Sg1+Qst:lev K ;
++Ind+Prs+Sg2+Qst:le K ;
++Ind+Prs+Sg3+Qst:le K ;
++Ind+Prs+Du1+Qst:len K ;
++Ind+Prs+Sg1+Qst+Use/Sub:læv K ; !
++Ind+Prs+Sg2+Qst+Use/Sub:læ K ; !
++Ind+Prs+Sg3+Qst+Use/Sub:læ K ; !
++Ind+Prs+Du1+Qst+Use/Sub:læn K ; !
++Ind+Prs+Du2+Qst:læhppe K ;
++Ind+Prs+Du3+Qst:læbá K ;
++Ind+Prs+Pl1+Qst:lep K ;
++Ind+Prs+Pl1+Qst+Use/Sub:læp K ; !
++Ind+Prs+Pl2+Qst:lehpit K ;
++Ind+Prs+Pl3+Qst:le K ;
++Ind+Prs+Pl3+Qst+Use/Sub:læ K ; !
+
+
+! Past
++Ind+Prt+Sg1:lidjiv K ;
++Ind+Prt+Sg2:lidji K ;
++Ind+Prt+Sg3:lij K ;
++Ind+Prt+Du1:lijma K ;
++Ind+Prt+Du2:lijda K ;
++Ind+Prt+Du3:lijga K ;
++Ind+Prt+Pl1:lijma K ;
++Ind+Prt+Pl2:lijda K ;
++Ind+Prt+Pl3:lidjin K ;
+
+
+! Past in questions
++Ind+Prt+Sg1+Qst:ledjiv K ;
++Ind+Prt+Sg2+Qst:ledji K ;
++Ind+Prt+Sg3+Qst:lej K ;
++Ind+Prt+Du1+Qst:lejma K ;
++Ind+Prt+Du1+Qst+Use/Sub:lejme K ; !
++Ind+Prt+Du1+Qst+Use/Sub:lijme K ; !
++Ind+Prt+Du2+Qst:lejda K ;
++Ind+Prt+Du2+Qst+Use/Sub:lejde K ; !
++Ind+Prt+Du2+Qst+Use/Sub:lijde K ; !
++Ind+Prt+Du3+Qst:lejga K ;
++Ind+Prt+Pl1+Qst:lejma K ;
++Ind+Prt+Pl1+Qst+Use/Sub:lejme K ; !
++Ind+Prt+Pl1+Qst+Use/Sub:lijme K ; !
++Ind+Prt+Pl2+Qst+Use/Sub:lejde K ; !
++Ind+Prt+Pl2+Qst+Use/Sub:lijde K ; !
++Ind+Prt+Pl2+Qst:lejda K ;
++Ind+Prt+Pl3+Qst:ledjin K ;
+
+! Potensialis
++Pot+Sg1:littjav K ;
++Pot+Sg2:littja K ;
++Pot+Sg3:lisj K ;
++Pot+Sg3:lesj K ;
++Pot+Du1:littjin K ;
++Pot+Du2:littjabihtte K ;
++Pot+Du3:littjaba K ;
++Pot+Pl1:littjap K ;
++Pot+Pl2:littjabihtit K ;
++Pot+Pl2+Use/Sub:littjabehtit K ; !
++Pot+Pl3:littji K ;
+
+
+! Imperative
++Imprt+Sg2:liege ENDLEX ;
++Imprt+Sg3:liehkis ENDLEX ;
+ +Imprt+Sg3+Use/Sub:lehkis ENDLEX ; !
++Imprt+Du1:læhkon ENDLEX ;
++Imprt+Du2:liehkke ENDLEX ;
++Imprt+Du3:liehkiska ENDLEX ;
++Imprt+Pl1:læhkop ENDLEX ;
++Imprt+Pl2:liehkit ENDLEX ;
++Imprt+Pl3:liehkisa ENDLEX ;
+
+! Imperative II
++ImprtII+Sg2:lehku ENDLEX ;
++ImprtII+Sg3:lehkus ENDLEX ;
++ImprtII+Du1:lehkun ENDLEX ;
++ImprtII+Du2:lehkuda ENDLEX ;
++ImprtII+Du3:lehkuska ENDLEX ;
++ImprtII+Pl1:lehkup ENDLEX ;
++ImprtII+Pl2:lehkut ENDLEX ;
++ImprtII+Pl3:lehkusa ENDLEX ;
+ +ImprtII+Pl3+Use/Sub:liehkusa ENDLEX ; !
+
+
+! Contracted Neg + Cop forms
++Neg+Ind+Prs+Sg2:il'la K ;
++Neg+Ind+Prs+Sg2:il'le K ; !Variant
++Neg+Ind+Prs+Sg2+Use/Sub:il'læ K ; !
++Neg+Ind+Prs+Pl3:æl'la K ;
++Neg+Ind+Prs+Pl3:æl'le K ; !Variant
++Neg+Ind+Prs+Pl3+Use/Sub:æl'læ K ; !
++Neg+Ind+Prt+Sg2:il'lim K ;
++Neg+Ind+Prt+Pl3:æl'lim K ;
++Neg+Pot+Pl3:æl'littja K ;
+
+
+! Negative forms
++Ind+Prs+ConNeg:le K ;
++Ind+Prs+ConNeg+Use/Sub:læ K ; !
++Ind+Prs+ConNeg:la K ;
++Ind+Prt+ConNeg:lim K ;
++Cond+ConNeg:lulu K ;
++Cond+ConNeg:galga#lulu K ;
++Cond+ConNeg:máhtá#lulu K ;
++Pot+ConNeg:littja K ;
+
+! Conditional and Potentional
+LULU ;
+LITTJA ;
+
+LEXICON LULU
++Cond:lulu%> V-ODD-PRET ;
++Cond:galga#lulu%> V-ODD-PRET ;
++Cond:máhtá#lulu%> V-ODD-PRET ;
+
+LEXICON LITTJA
++Pot:li%> V-ODD-POT ;
+
+LEXICON V-ODD-PRET
++Sg1:v K ;
++Sg2: K ;
++Sg3:j K ;
++Du1:jma K ;
++Du2:jda K ;
++Du1+Use/Sub:jme K ; !
++Du2+Use/Sub:jde K ; !
++Du3:jga K ;
++Pl1:jma K ;
++Pl2:jda K ;
++Pl1+Use/Sub:jme K ; !
++Pl2+Use/Sub:jde K ; !
++Pl3:n K ;
+
+LEXICON V-ODD-POT
++Prs+Sg1:lav K ;
++Prs+Sg2:la K ;
++Prs+Sg3:la K ;
++Prs+Du1:lin K ;
++Prs+Du2:lihppe K ;
++Prs+Du3:libá K ;
++Prs+Pl1:lip K ;
++Prs+Pl2:lihpit K ;
++Prs+Pl3:li K ;
+
+
+
+
+
+
+
+
+! Sublexica for possessive suffixes
+! =================================
+
+LEXICON PxV      ! This intermezzo of a lexicon due to
+ :X4 PxV12 ;	 ! the stem alternation in the possessive
+ PxV3 ;      ! suffixes.
+
+LEXICON PxV12    ! Due to incoming Acc/Gen 12 vs 3 alternation
+ :X8 PxV1 ;
+ :X8 PxV2 ;
+
+LEXICON PxV23	! Due to incoming Refl pron 1 vs 23 alternation
+ PxV2 ;
+ PxV3 ;
+
+LEXICON PxNomPlV !Due to incoming NomPl
+ PxV1 ;
+ PxV2 ;
+ PxV3 ;
+
+LEXICON PxV1
+ +PxSg1:m K ;
+ +PxDu1:ma K ;
+ +PxPl1:ma K ;
+
+LEXICON PxV2
+ +PxSg2:t K ;
+ +PxDu2:da K ;
+ +PxPl2:da K ;
+
+LEXICON PxV3
+ +PxSg3:s K ;
+ +PxDu3:ska K ;
+ +PxPl3:sa K ;
+
+! Lexicon for the deviating -im, -it suffixes
+! Non-deviating form pointed to common PxCc
+LEXICON PxCi
+ +PxSg1:im K ;
+ +PxSg2:it K ;
+ PxCc ;
+
+! Lexicon for regular PxC nom,acc, gen
+LEXICON PxC
+ +PxSg1:am K ;
+ +PxSg1:im K ;
+ +PxSg2:at K ;
+ +PxSg2:it K ;
+ PxCc ;
+
+! Lexicon for regular PxC ine, ela, com and pl
+LEXICON PxCs
+ +PxSg1:ám K ;
+ +PxSg2:át K ;
+ +PxSg3:es K ;
+ +PxDu1:ema K ;
+ +PxDu2:eda K ;
+ +PxDu3:eska K ;
+ +PxPl1:ema K ;
+ +PxPl2:eda K ;
+ +PxPl3:esa K ;
+
+
+!Commom lexicon for all PxC
+LEXICON PxCc
+ +PxSg3:is K ;
+ +PxDu1:imme K ;
+ +PxDu2:ihtte K ;
+ +PxDu3:iska K ;
+ +PxPl1:imme K ;
+ +PxPl2:ihtte K ;
+ +PxPl3:isá K ;
+
+
+
+LEXICON K
+ ENDLEX ;
+! +Clt:clitic ENDLEX ;
+ +Foc/ge:#ge ENDLEX ;
+ +Foc/gen+Use/Circ:#gen ENDLEX ; !
+ +Foc/ga+Use/Circ:#ga ENDLEX ;	!
+! +Clt+k:#k ENDLEX ;
+
+
+LEXICON ENDLEX
+ @D.NeedNoun.ON@ # ;
+! This ENDLEX business in order to remove illegal compounds.

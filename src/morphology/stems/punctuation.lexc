@@ -1,0 +1,113 @@
+! Divvun & Giellatekno - open source grammars for Sámi and other languages
+! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
+! http://giellatekno.uit.no & http://divvun.no
+!
+! This program is free software; you can redistribute and/or modify
+! this file under the terms of the GNU General Public License as published by
+! the Free Software Foundation, either version 3 of the License, or
+! (at your option) any later version. The GNU General Public License
+! is found at http://www.gnu.org/licenses/gpl.html. It is
+! also available in the file $GTHOME/LICENSE.txt.
+!
+! Other licensing options are available upon request, please contact
+! giellatekno@hum.uit.no or divvun@samediggi.no
+
+LEXICON Punctuation
+
+! Clause boundary symbols
+
+%,+CLB:%,         # ;
+%.+CLB:%.         # ;
+%.%.+CLB:%.%.     # ;
+%.%.%.+CLB:%.%.%. # ;
+%:+CLB:%:         # ;
+%;+CLB:%;   	  # ;
+ ^excl+CLB:%!	  # ;
+ ^pipe+CLB:%|     # ;
+ %?+CLB:%?	      # ;
+ …+CLB:…		  # ;
+ ¿+CLB:¿		  # ;	! Only seen as noise.
+ ¶+CLB:¶		  # ;	! This sign is for titles, it is introduced by the
+			! catxml script, and may be changed if it interferes 
+			! with real pilcrow signs.
+
+! Miscellaneous symbols, abbreviation symbols (could be moved to abbr-sme-lex.txt) 
+  
+ §+N+ABBR+Use/Circ:§ PUNCTconnector ;    ! §:s	!
+ §§+N+ABBR+Use/Circ:§§ PUNCTconnector ;  ! §:ain	!
+ $+N+ABBR+Use/Circ:$  PUNCTconnector ;    ! $:s	!
+ €+N+ABBR+Use/Circ:€  PUNCTconnector ;    ! €:s	!
+ £+N+ABBR+Use/Circ:£  PUNCTconnector ;    ! €:s	!
+
+! Single punctuation marks
+
+•+PUNCT:•	  # ;
+-+PUNCT:-  # ;
+--+PUNCT:--  # ;
+ –+PUNCT:– # ; !endash
+ —+PUNCT:— # ; !emdash
+=+PUNCT:=  # ;
+%%+PUNCT:%%  # ;
+&+PUNCT:& # ;
+%"+PUNCT:%"  # ;
+ '+PUNCT:'7  # ;   ! We use "'7" to avoid the CG symbol of ái'gi etc.
+%*+PUNCT:%*  # ;
+++PUNCT:+  # ;
+`+PUNCT:`  # ;
+´+PUNCT:´  # ;
+/+PUNCT:/  # ; 
++/-+PUNCT:+/- # ;
+%~+PUNCT:%~	  # ;
+
+
+! Paired punctuation marks
+
+«+PUNCT+LEFT:«7  # ;
+»+PUNCT+RIGHT:»7  # ;
+%“+PUNCT+LEFT:%“  # ;
+%”+PUNCT+RIGHT:%”  # ;
+%‘+PUNCT+LEFT:%‘  # ;
+%’+PUNCT+RIGHT:%’  # ;
+%‹+PUNCT+LEFT:%‹ # ;
+%›+PUNCT+RIGHT:%›  # ;
+%(+PUNCT+LEFT:%(  # ;
+%)+PUNCT+RIGHT:%)  # ;
+%[+PUNCT+LEFT:%[  # ;
+%]+PUNCT+RIGHT:%]  # ;
+%{+PUNCT+LEFT:%{  # ;
+%}+PUNCT+RIGHT:%}  # ;
+%<+PUNCT+LEFT:%[%<%] # ;
+%>+PUNCT+LEFT:%[%>%] # ;
+
+
+
+LEXICON PUNCTconnector
+ +Sg+Nom: K ;	! §
+!+Sg+Gen: K ;	! §
+!+Sg+Acc: K ;	! §
+ PUNCTsuff ;		! §as
+ :%: PUNCTsuff ;	! §:as
+ :%- PUNCTsuff ;	! §-as  ! Perhaps.
+ :%' PUNCTsuff ;	! §'as  ! Perhaps.
+ 
+LEXICON PUNCTsuff
+! K ;		! § 14 (no case on the bare §). Oh, yes. Case.
+ +Sg+Gen: K ;	! §:a  (case suffix on the rest, in case of explicit
+ +Sg+Gen:a K ;	! §:a  (case suffix on the rest, in case of explicit
+ +Sg+Acc:av K ;	!       suffix)
++Sg+Ill:aj K ;
++Sg+Ine:n K ;
++Sg+Ine:an K ;
+ +Sg+Ela:s K ;   ! §:s
+ +Sg+Ela:as K ;  ! §:as
++Sg+Com:in K ;
+   +Ess:an K ;
++Pl+Nom:a K ;
++Pl+Gen:aj K ;
++Pl+Acc:ajt K ;
++Pl+Ill:ajda K ;
++Pl+Ine:ajn K ;
++Pl+Ela:ajs K ;
++Pl+Com:aj K ;
+
+
