@@ -11,7 +11,7 @@
 
 # 1. Extract the lemmas, adding noun-specific strings to exclude:
 $GTCORE/scripts/extract-lemmas.sh \
-	${srcdir}/../../src/morphology/stems/noun.lexc \
+	${srcdir}/../../src/morphology/stems/nouns.lexc \
 	"(CmpN/Last)" \
 	> nouns.txt
 
@@ -24,7 +24,7 @@ for f in  .xfst .hfst; do
 		lookuptool="hfst-lookup -q"
 	fi
 	if [ -f "${srcdir}/../../src/generator.gt$f" ]; then
-		sed 's/$/+N+Msc+Sg+Nom+Indef/' nouns.txt | \
+		sed 's/$/+N+Sg+Nom/' nouns.txt | \
 				$lookuptool ${srcdir}/../../src/generator.gt$f \
 				> gen-nouns$f.txt
 		if [ `grep '\?' gen-nouns$f.txt | wc -l` -gt 0 ]; then
