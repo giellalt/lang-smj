@@ -1,0 +1,92 @@
+#!/bin/bash
+
+# Dette skriptet tester at alle lemmaene i propernoun-sma-lex.txt kan genereres.
+# De som ikke kan genereres, kopieres til missingProperLemmas.txt
+
+###### Variables: #######
+sourcefile=${srcdir}/../../../src/morphology/stems/propernouns.lexc
+generatorfile=${srcdir}/../../../src/generator.gt
+resultfile=missingProperLemmas.txt
+
+# Check that the source file exists:
+if [ ! -f "$sourcefile" ]; then
+	echo Source file not found: $sourcefile
+	exit 1
+fi
+
+###### Extraction: #######
+grep ";" $sourcefile | grep -v "^\!" | egrep -v '(LAANTE|Attr)' \
+	| sed 's/% /€/g' |  tr ":+" " " | cut -d " " -f1 \
+	| tr -d "#" | tr "€" " " | sort -u > props
+grep ";" $sourcefile | grep -v "^\!" | grep LAANTE | sed 's/% /€/g' \
+	|  tr ":+" " " | cut -d " " -f1 | tr -d "#" \
+	| tr "€" " " | sed 's/$/laante/' >> props
+sort -u -o props props 
+grep ";" $sourcefile | grep -v "^\!" | grep Attr | sed 's/% /€/g' \
+	|  tr ":+" " " | cut -d " " -f1 | tr -d "#" \
+	| tr "€" " " |  sort -u > attrprops
+
+###### Start testing: #######
+transducer_found=0
+Fail=0
+
+for f in  .xfst .hfst; do
+	if [ $f == ".xfst" ]; then
+		lookuptool="lookup -q -flags mbTT"
+#		echo "Xerox test"
+	else
+		lookuptool="hfst-lookup -q"
+#		echo "Hfst test"
+	fi
+	if [ -f "$generatorfile$f" ]; then
+		let "transducer_found += 1"
+
+# Remove old generated files - don't mix Xerox and HFST test results:
+		rm -f anal*props
+
+		sed 's/$/+N+Prop+Sg+Nom/'   props \
+			| $lookuptool $generatorfile$f | cut -f2 \
+			| grep -v "N+" | grep -v "^$" | sort -u > analprops
+		sed 's/$/+N+Prop+Sg+Nom/'   props \
+			| $lookuptool $generatorfile$f | cut -f2 \
+			| grep "N+" | cut -d "+" -f1 | sed 's/$/+N+Prop+Pl+Nom/' \
+			| $lookuptool $generatorfile$f | cut -f2 \
+			| grep -v "^$" | cut -d "+" -f1 >> analprops
+		sed 's/$/+N+Prop+Sg+Nom/'   props \
+			| $lookuptool $generatorfile$f | cut -f2 \
+			| grep "N+" | cut -d "+" -f1 | sed 's/$/+N+Prop+Pl+Nom/' \
+			| $lookuptool $generatorfile$f | cut -f2 \
+			| grep "N+" | cut -d "+" -f1 > $resultfile
+		sed 's/$/+N+Prop+Attr/' attrprops \
+			| $lookuptool $generatorfile$f | cut -f2 \
+			| grep "N+" >> $resultfile
+		sed 's/$/+N+Prop+Attr/' attrprops \
+			| $lookuptool $generatorfile$f | cut -f2 \
+			|  grep -v "N+" | grep -v "^$" | sort -u > analattrprops  
+		sort -u -o analprops analprops 
+		comm -23 props analprops >> $resultfile
+		comm -23 attrprops analattrprops >> $resultfile
+		sort -u -o $resultfile $resultfile
+		rm -f *props
+
+		# if at least one word is found, the test failed, and the list of failed
+		# lemmas is opened in SubEthaEdit:
+		if [ `wc -w $resultfile | tr -s ' ' | cut -d' ' -f2` -gt 0 ]
+		then
+			see $resultfile
+		    Fail=1
+		fi
+#	else
+#		echo Transducer not found: $generatorfile$f
+	fi
+done
+
+# At least one of the Xerox or HFST tests failed:
+if [ "$Fail" = "1" ]; then
+	exit 1
+fi
+
+if [ $transducer_found -eq 0 ]; then
+    echo No transducer found
+    exit 1
+fi

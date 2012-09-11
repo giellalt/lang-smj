@@ -5,7 +5,10 @@
 ######## Test targets: ###########
 
 # List here (space separated) all test scripts that should be run:
-TESTS=generate-noun-lemmas.sh
+TESTS=test-adj-generation.sh \
+	  test-noun-generation.sh \
+	  test-propernoun-generation.sh \
+	  test-verb-generation.sh
 
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
