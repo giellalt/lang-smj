@@ -16,14 +16,14 @@ fi
 
 ###### Extraction: #######
 grep ";" $sourcefile | grep -v "^\!" | egrep -v '(LAANTE|Attr)' \
-	| sed 's/% /€/g' |  tr ":+" " " | cut -d " " -f1 \
+	| sed 's/% /€/g' |  tr ":+\t" " " | cut -d " " -f1 \
 	| tr -d "#" | tr "€" " " | sort -u > props
 grep ";" $sourcefile | grep -v "^\!" | grep LAANTE | sed 's/% /€/g' \
-	|  tr ":+" " " | cut -d " " -f1 | tr -d "#" \
+	|  tr ":+\t" " " | cut -d " " -f1 | tr -d "#" \
 	| tr "€" " " | sed 's/$/laante/' >> props
 sort -u -o props props 
 grep ";" $sourcefile | grep -v "^\!" | grep Attr | sed 's/% /€/g' \
-	|  tr ":+" " " | cut -d " " -f1 | tr -d "#" \
+	|  tr ":+\t" " " | cut -d " " -f1 | tr -d "#" \
 	| tr "€" " " |  sort -u > attrprops
 
 ###### Start testing: #######

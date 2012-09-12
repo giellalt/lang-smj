@@ -18,19 +18,19 @@ fi
 ###### Extraction: #######
 ### Regular adjectives:
 grep ";" $sourcefile | grep -v "^\!" \
-	| egrep -v "(PRED|CASE| MES|EVTEBE)" | tr ":+" " " | cut -d " " -f1 \
+	| egrep -v "(PRED|CASE| MES|EVTEBE)" | tr ":+\t" " " | cut -d " " -f1 \
 	| tr -d "#" | sort -u > adjs
 ### Adjectives with no attr form, ie only pred form:
 grep ";" $sourcefile | grep -v "^\!" \
-	| egrep "(PRED|CASE)" | tr ":+" " " | cut -d " " -f1 | tr -d "#" \
+	| egrep "(PRED|CASE)" | tr ":+\t" " " | cut -d " " -f1 | tr -d "#" \
 	| sort -u > predadjs
 ### Adjectives with only comparative forms:
 grep ";" $sourcefile | grep -v "^\!" \
-	| grep "EVTEBE" | tr ":+" " " | cut -d " " -f1 | tr -d "#" \
+	| grep "EVTEBE" | tr ":+\t" " " | cut -d " " -f1 | tr -d "#" \
 	| sort -u > compladjs
 ### Adjectives with only superlative forms:
 grep ";" $sourcefile | grep -v "^\!" \
-	| grep " MES" | tr ":+" " " | cut -d " " -f1 | tr -d "#" \
+	| grep " MES" | tr ":+\t" " " | cut -d " " -f1 | tr -d "#" \
 	| sort -u > superladjs
 
 ###### Start testing: #######

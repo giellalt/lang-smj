@@ -18,11 +18,11 @@ fi
 # extract non-compounding lemmas:
 grep ";" $sourcefile | grep -v "^\!" \
 	| egrep -v '(CmpN/Only|+Gen+|+Der+| R )' | sed 's/% /€/g' | sed 's/%:/¢/g' \
-	| tr ":+" " " | cut -d " " -f1 | tr -d "#" | tr "€" " " | tr "¢" ":" \
+	| tr ":+\t" " " | cut -d " " -f1 | tr -d "#" | tr "€" " " | tr "¢" ":" \
 	| sort -u | grep -v '^$' > nouns.txt
 # extract compounding lemmas:
 grep ";" $sourcefile | grep -v "^\!" \
-	| grep ' R '| tr ":+" " " | cut -d " " -f1 | tr -d "#" \
+	| grep ' R '| tr ":+\t" " " | cut -d " " -f1 | tr -d "#" \
 	| sort -u > Rnouns.txt
 
 ###### Start testing: #######
