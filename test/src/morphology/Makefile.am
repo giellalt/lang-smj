@@ -10,6 +10,11 @@ TESTS=test-adj-generation.sh \
 	  test-propernoun-generation.sh \
 	  test-verb-generation.sh
 
+# Add your shell scripts for running python-based tests here:
+if CAN_YAML_TEST
+TESTS+=
+endif
+
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
 # XFAIL_TESTS=
