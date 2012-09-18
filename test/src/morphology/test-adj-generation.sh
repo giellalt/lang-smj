@@ -18,12 +18,12 @@ fi
 ###### Extraction: #######
 ### Regular adjectives:
 grep ";" $sourcefile | grep -v "^\!" \
-	| egrep -v "(LEXATTR|OANEP|NUORTTALABBO|GASSKALAMOS| At |VINJO|LEXICON)" \
+	| egrep -v "(LEXATTR|OANEP|NUORTTALABBO|GASSKALAMOS|TJAVGGÁMUS| At |PrfPrc_At|VINJO|LEXICON)" \
 	| tr ":+\t" " " | cut -d " " -f1 \
 	| tr -d "#" | grep -v '^$' | sort -u > adjs
 ### Adjectives with no pred form, ie only attr form:
 grep ";" $sourcefile | grep -v "^\!" \
-	| egrep "( At |LEXATTR)" | tr ":+\t" " " | cut -d " " -f1 | tr -d "#" \
+	| egrep "( At |PrfPrc_At|LEXATTR)" | tr ":+\t" " " | cut -d " " -f1 | tr -d "#" \
 	| sort -u > attradjs
 ### Adjectives with only comparative forms:
 grep ";" $sourcefile | grep -v "^\!" \
@@ -32,7 +32,7 @@ grep ";" $sourcefile | grep -v "^\!" \
 	| sort -u > compadjs
 ### Adjectives with only superlative forms:
 grep ";" $sourcefile | grep -v "^\!" \
-	| grep "GASSKALAMOS" | tr ":+\t" " " | cut -d " " -f1 | tr -d "#" \
+	| egrep "(GASSKALAMOS|TJAVGGÁMUS)" | tr ":+\t" " " | cut -d " " -f1 | tr -d "#" \
 	| sort -u > superladjs
 ### Adjectives with only superlative forms:
 grep ";" $sourcefile | grep -v "^\!" \
