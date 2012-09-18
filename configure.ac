@@ -118,6 +118,15 @@ AC_CONFIG_FILES([test/src/morphology/run-yaml-testcases.sh], \
       [chmod a+x test/src/morphology/run-yaml-testcases.sh])
 AC_CONFIG_FILES([test/src/morphology/generate-noun-lemmas.sh], \
       [chmod a+x test/src/morphology/generate-noun-lemmas.sh])
+AC_CONFIG_FILES([test/src/morphology/test-adj-generation.sh], \
+      [chmod a+x test/src/morphology/test-adj-generation.sh])
+AC_CONFIG_FILES([test/src/morphology/test-noun-generation.sh], \
+      [chmod a+x test/src/morphology/test-noun-generation.sh])
+AC_CONFIG_FILES([test/src/morphology/test-propernoun-generation.sh], \
+      [chmod a+x test/src/morphology/test-propernoun-generation.sh])
+AC_CONFIG_FILES([test/src/morphology/test-verb-generation.sh], \
+      [chmod a+x test/src/morphology/test-verb-generation.sh])
+
 
 # This must be near the end of all configure.ac files:
 AC_OUTPUT

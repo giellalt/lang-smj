@@ -18,26 +18,27 @@ fi
 ###### Extraction: #######
 ### Regular adjectives:
 grep ";" $sourcefile | grep -v "^\!" \
-	| egrep -v "(LEXATTR|OANEP|NUORTTALABBO|GASSKALAMOS|TJAVGGÁMUS| At |PrfPrc_At|VINJO|LEXICON)" \
+	| egrep -v "(LEXATTR|OANEP|NUORTTALABBO|GASSKALAMOS|TJAVGGÁMUS)" \
+	| egrep -v "( At |PrfPrc_At|VINJO)" \
 	| tr ":+\t" " " | cut -d " " -f1 \
-	| tr -d "#" | grep -v '^$' | sort -u > adjs
+	| tr -d "#" | grep -v '^$' | grep -v 'LEXICON' | sort -u > adjs
 ### Adjectives with no pred form, ie only attr form:
 grep ";" $sourcefile | grep -v "^\!" \
-	| egrep "( At |PrfPrc_At|LEXATTR)" | tr ":+\t" " " | cut -d " " -f1 | tr -d "#" \
-	| sort -u > attradjs
+	| egrep "( At |PrfPrc_At|LEXATTR)" | tr ":+\t" " " | cut -d " " -f1 \
+	| tr -d "#" | grep -v '^$' | grep -v 'LEXICON' | sort -u > attradjs
 ### Adjectives with only comparative forms:
 grep ";" $sourcefile | grep -v "^\!" \
 	| egrep "(OANEP|NUORTTALABBO)" | tr ":+\t" " " \
 	| cut -d " " -f1 | tr -d "#" \
-	| sort -u > compadjs
+	| grep -v '^$' | sort -u > compadjs
 ### Adjectives with only superlative forms:
 grep ";" $sourcefile | grep -v "^\!" \
-	| egrep "(GASSKALAMOS|TJAVGGÁMUS)" | tr ":+\t" " " | cut -d " " -f1 | tr -d "#" \
-	| sort -u > superladjs
+	| egrep "(GASSKALAMOS|TJAVGGÁMUS)" | tr ":+\t" " " | cut -d " " -f1 \
+	| grep -v '^$' | tr -d "#" | sort -u > superladjs
 ### Adjectives with only superlative forms:
 grep ";" $sourcefile | grep -v "^\!" \
-	| grep "VINJO" | tr ":+\t" " " | cut -d " " -f1 | tr -d "#" \
-	| sort -u > compoundadjs
+	| grep "VINJO" | tr ":+\t" " " | cut -d " " -f1 \
+	| grep -v '^$' | sort -u > compoundadjs
 
 ###### Start testing: #######
 transducer_found=0
@@ -45,10 +46,10 @@ Fail=0
 
 for f in  .xfst .hfst; do
 	if [ $f == ".xfst" ]; then
-		lookuptool="lookup -q -flags mbTT"
+		lookuptool="@LOOKUP@ -q -flags mbTT"
 #		echo "Xerox test"
 	else
-		lookuptool="hfst-lookup -q"
+		lookuptool="@HFST_LOOKUP@ -q"
 #		echo "Hfst test"
 	fi
 	if [ -f "$generatorfile$f" ]; then
@@ -77,12 +78,13 @@ for f in  .xfst .hfst; do
 			| grep -v "A+" | grep -v "^$" | sort -u >> analadjs
 
 #### Then we try to generate the superlative-only adjectives:
-		sed 's/CmpN\/SgN$/Cmp#gåetie+N+Sg+Nom/' compoundadjs \
-			| sed 's/CmpN\/PlG$/Cmp#bijlla+N+Sg+Nom/' \
-			| $lookuptool $generatorfile$f | cut -f2 | grep "\-" \
-			| grep -v "\-.*\-" | cut -d "-" -f1 >> analadjs
+		sed 's/CmpN\/SgN$/A+Attr+Cmp#bijlla+N+Sg+Nom/' compoundadjs \
+			| sed 's/CmpN\/PlG$/A+Attr+Cmp#bijlla+N+Sg+Nom/' \
+			| sed 's/$/+A+Attr+Cmp#bijlla+N+Sg+Nom/' \
+			| $lookuptool $generatorfile$f | cut -f2 | sed 's/bijlla$//' \
+			| grep -v '^$' | tr 'ä' 'æ' >> analadjs
 
-		cat predadjs superladjs compladjs >> adjs
+		cat attradjs compadjs superladjs compoundadjs >> adjs
 		sort -u -o adjs adjs 
 		sort -u -o analadjs analadjs 
 		comm -23 adjs analadjs > $resultfile
