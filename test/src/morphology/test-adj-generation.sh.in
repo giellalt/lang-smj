@@ -77,7 +77,7 @@ for f in  .xfst .hfst; do
 			| $lookuptool $generatorfile$f | cut -f2 \
 			| grep -v "A+" | grep -v "^$" | sort -u >> analadjs
 
-#### Then we try to generate the superlative-only adjectives:
+#### Then we try to generate the compound-only adjectives:
 		sed 's/CmpN\/SgN$/A+Attr+Cmp#bijlla+N+Sg+Nom/' compoundadjs \
 			| sed 's/CmpN\/PlG$/A+Attr+Cmp#bijlla+N+Sg+Nom/' \
 			| sed 's/$/+A+Attr+Cmp#bijlla+N+Sg+Nom/' \

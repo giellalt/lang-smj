@@ -57,20 +57,18 @@ for f in  .xfst .hfst; do
 
 ###### Test comopunds: #######
 		# Test nouns that only can generate as compounds:
-		grep ";" $sourcefile \
-			| grep -v "^\!" | grep ' R '| cut -d ":" -f1 | sed 's/+Use\/Sub//' \
+		sed 's/+Use\/Sub//' Rnouns.txt \
 			| sed 's/+Dial\/-SW//' | sed 's/+Dial\/-NOR//' \
 			| sed 's/+CmpN\/Pref//' | sed 's/CmpN\/SgN$/Cmp#gåetie+N+Sg+Nom/' \
-			| sed 's/CmpN\/PlG$/Cmp#gåetie+N+Sg+Nom/' \
-			| $lookuptool $generatorfile$f | cut -f2 | grep "\-" \
-			| grep -v "\-.*\-" | cut -d "-" -f1 > Ranalnouns.txt
-		grep ";" $sourcefile \
-			| grep -v "^\!" | grep ' R '| cut -d ":" -f1 | sed 's/+Use\/Sub//' \
+			| sed 's/CmpN\/PlG$/Cmp#bijlla+N+Sg+Nom/' \
+			| $lookuptool $generatorfile$f | cut -f2 | sed 's/bijlla$//' \
+			| grep -v '^$' >> Ranalnouns.txt
+		sed 's/+Use\/Sub//' Rnouns.txt \
 			| sed 's/+Dial\/-SW//' | sed 's/+Dial\/-NOR//' \
 			| sed 's/+CmpN\/Pref//' | sed 's/CmpN\/SgN$/Cmp#gåetie+N+Sg+Nom/' \
-			| sed 's/CmpN\/PlG$/Cmp#gåetie+N+Sg+Nom/' \
-			| $lookuptool $generatorfile$f | cut -f2 | grep "\-" \
-			| grep "\-.*\-" | cut -d "-" -f1,2 >> Ranalnouns.txt
+			| sed 's/CmpN\/PlG$/Cmp#bijlla+N+Sg+Nom/' \
+			| $lookuptool $generatorfile$f | cut -f2 | sed 's/bijlla$//' \
+			| grep -v '^$' >> Ranalnouns.txt
 
 ###### Collect results: #######
 		# Sort and compare original input with resulting output - the diff is
