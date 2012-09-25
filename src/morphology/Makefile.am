@@ -39,16 +39,22 @@ GT_LEXC_SRCS=\
 				stems/numerals.lexc      \
 				stems/particles.lexc     \
 				stems/pronouns.lexc      \
-				stems/propernouns.lexc   \
 				stems/punctuation.lexc   \
 				stems/subjunctions.lexc  \
 				stems/verbs.lexc
 
 # Set this to the names of all generated lexc files, if any
-GENERATED_LEXC_SRCS=
+GENERATED_LEXC_SRCS=stems/smi-$(GTLANG)-propernouns.lexc
 
 # Set this to the names of all source xml files, if any
 GT_XML_SRCS=
+
+stems/smi-$(GTLANG)-propernouns.lexc: stems/smi-propernouns.lexc \
+		stems/$(GTLANG)-propernouns.lexc
+	rm -f $@
+	cp -f stems/$(GTLANG)-propernouns.lexc $@
+	echo "! <--- Dump from SMI -->" >> $@
+	$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl $< >> $@
 
 include $(top_srcdir)/am-shared/lexc-include.am
 
