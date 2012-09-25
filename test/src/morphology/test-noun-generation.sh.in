@@ -17,13 +17,17 @@ fi
 ###### Extraction: #######
 # extract non-compounding lemmas:
 grep ";" $sourcefile | grep -v "^\!" \
-	| egrep -v '(CmpN/Only|+Gen+|+Der+| R )' | sed 's/% /€/g' | sed 's/%:/¢/g' \
+	| egrep -v '(CmpN/Only|+Gen+|+Der+| R |RHyph)' | sed 's/% /€/g' | sed 's/%:/¢/g' \
 	| tr ":+\t" " " | cut -d " " -f1 | tr -d "#" | tr "€" " " | tr "¢" ":" \
 	| sort -u | grep -v '^$' > nouns.txt
 # extract compounding lemmas:
 grep ";" $sourcefile | grep -v "^\!" \
 	| grep ' R '| tr ":+\t" " " | cut -d " " -f1 | tr -d "#" \
 	| sort -u > Rnouns.txt
+# extract compounding lemmas requiring hyphen:
+grep ";" $sourcefile | grep -v "^\!" \
+	| grep ' RHyph '| tr ":+\t" " " | cut -d " " -f1 | tr -d "#" \
+	| sort -u > RHnouns.txt
 
 ###### Start testing: #######
 transducer_found=0
@@ -59,15 +63,21 @@ for f in  .xfst .hfst; do
 		# Test nouns that only can generate as compounds:
 		sed 's/+Use\/Sub//' Rnouns.txt \
 			| sed 's/+Dial\/-SW//' | sed 's/+Dial\/-NOR//' \
-			| sed 's/+CmpN\/Pref//' | sed 's/CmpN\/SgN$/Cmp#gåetie+N+Sg+Nom/' \
+			| sed 's/+CmpN\/Pref//' | sed 's/CmpN\/SgN$/Cmp#bijlla+N+Sg+Nom/' \
 			| sed 's/CmpN\/PlG$/Cmp#bijlla+N+Sg+Nom/' \
 			| $lookuptool $generatorfile$f | cut -f2 | sed 's/bijlla$//' \
 			| grep -v '^$' >> Ranalnouns.txt
 		sed 's/+Use\/Sub//' Rnouns.txt \
 			| sed 's/+Dial\/-SW//' | sed 's/+Dial\/-NOR//' \
-			| sed 's/+CmpN\/Pref//' | sed 's/CmpN\/SgN$/Cmp#gåetie+N+Sg+Nom/' \
+			| sed 's/+CmpN\/Pref//' | sed 's/CmpN\/SgN$/Cmp#bijlla+N+Sg+Nom/' \
 			| sed 's/CmpN\/PlG$/Cmp#bijlla+N+Sg+Nom/' \
 			| $lookuptool $generatorfile$f | cut -f2 | sed 's/bijlla$//' \
+			| grep -v '^$' >> Ranalnouns.txt
+		sed 's/+Use\/Sub//' RHnouns.txt \
+			| sed 's/+Dial\/-SW//' | sed 's/+Dial\/-NOR//' \
+			| sed 's/+CmpN\/Pref//' | sed 's/CmpN\/SgN$/Cmp-#bijlla+N+Sg+Nom/' \
+			| sed 's/CmpN\/PlG$/Cmp-#bijlla+N+Sg+Nom/' \
+			| $lookuptool $generatorfile$f | cut -f2 | sed 's/\-bijlla$//' \
 			| grep -v '^$' >> Ranalnouns.txt
 
 ###### Collect results: #######
