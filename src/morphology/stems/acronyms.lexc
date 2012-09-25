@@ -1,0 +1,931 @@
+! Divvun & Giellatekno - open source grammars for Sámi and other languages
+! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
+! http://giellatekno.uit.no & http://divvun.no
+!
+! This program is free software; you can redistribute and/or modify
+! this file under the terms of the GNU General Public License as published by
+! the Free Software Foundation, either version 3 of the License, or
+! (at your option) any later version. The GNU General Public License
+! is found at http://www.gnu.org/licenses/gpl.html. It is
+! also available in the file $GTHOME/LICENSE.txt.
+!
+! Other licensing options are available upon request, please contact
+! giellatekno@hum.uit.no or divvun@samediggi.no
+
+LEXICON Acronym
+
+ +Use/Circ: FIRSTLETTER ;  ! Dynamically generated acronyms, 	! Remove these from nonrec?
+               ! between two and four letters long.
+ LETTERNUMBER ; ! Listed (still not monitored)		!
+               ! Perhaps we should allow for a final arabic number at
+               ! the end of the acronyms, the NRK and NRK2 pattern.
+ SOMELONGACRO ; ! Here, we collect some long acronyms, perhaps we should  !
+               ! open for dynamic generation of longer acronyms, if this
+               ! list gets long.
+ smallacro ;    ! This is a pointer to a lexicon of manually listed small-letter
+               ! acronyms. They are not generated, since it would interfer with the
+               ! ordinary transducer, but listed here, as they then can point to the
+               ! same ACRO lexicon as the generated capital-letter acronyms.
+! quasiacro ; moved to HyphNouns  ! This is compounds with acronyms in the beginning.
+                ! They are here since they make compounds with hyphen to the left.
+
+
+
+LEXICON FIRSTLETTER	!^C^
+B SCND ; C SCND ; Č SCND ; D  SCND ; Đ SCND ; F  SCND ; G  SCND ; 	!^C^
+H SCND ; J SCND ; K  SCND ; L  SCND ; M  SCND ; N  SCND ; Ŋ SCND ; 	!^C^
+P SCND ; R SCND ; S  SCND ; Š SCND ; T  SCND ; Ŧ SCND ; V  SCND ; 	!^C^
+W SCND ; X SCND ; Z  SCND ; Ž SCND ; 								!^C^
+A SCND ; Á SCND ; E  SCND ; I  SCND ; O  SCND ; U  SCND ; 			!^C^
+Æ SCND ; Ø SCND ; Y  SCND ; Ä  SCND ; Ö  SCND ; Å  SCND ; 			!^C^
+
+LEXICON SCND			!^C^
+B THRD ; C THRD ; Č THRD ; D  THRD ; Đ THRD ; F  THRD ; G  THRD ; 	!^C^
+H THRD ; J THRD ; K  THRD ; L  THRD ; M  THRD ; N  THRD ; Ŋ THRD ; 	!^C^
+P THRD ; R THRD ; S  THRD ; Š THRD ; T  THRD ; Ŧ THRD ; V  THRD ; 	!^C^
+W THRD ; X THRD ; Z  THRD ; Ž THRD ; 								!^C^
+A THRD ; Á THRD ; E  THRD ; I  THRD ; O  THRD ; U  THRD ; 			!^C^
+Æ THRD ; Ø THRD ; Y  THRD ; Ä  THRD ; Ö  THRD ; Å  THRD ; 			!^C^
+
+LEXICON THRD			!^C^
+B FRTH ; C FRTH ; Č FRTH ; D  FRTH ; Đ FRTH ; F  FRTH ; G  FRTH ; 	!^C^
+H FRTH ; J FRTH ; K  FRTH ; L  FRTH ; M  FRTH ; N  FRTH ; Ŋ FRTH ; 	!^C^
+P FRTH ; R FRTH ; S  FRTH ; Š FRTH ; T  FRTH ; Ŧ FRTH ; V  FRTH ; 	!^C^
+W FRTH ; X FRTH ; Z  FRTH ; Ž FRTH ; 								!^C^
+A FRTH ; Á FRTH ; E  FRTH ; I  FRTH ; O  FRTH ; U  FRTH ; 			!^C^
+Æ FRTH ; Ø FRTH ; Y  FRTH ; Ä  FRTH ; Ö  FRTH ; Å  FRTH ; 			!^C^
+  ACRO ;				!^C^
+
+LEXICON FRTH			!^C^
+B ACRO ; C ACRO ; Č ACRO ; D  ACRO ; Đ ACRO ; F  ACRO ; G  ACRO ; 	!^C^
+H ACRO ; J ACRO ; K  ACRO ; L  ACRO ; M  ACRO ; N  ACRO ; Ŋ ACRO ; 	!^C^
+P ACRO ; R ACRO ; S  ACRO ; Š ACRO ; T  ACRO ; Ŧ ACRO ; V  ACRO ; 	!^C^
+W ACRO ; X ACRO ; Z  ACRO ; Ž ACRO ; 								!^C^
+A ACRO ; Á ACRO ; E  ACRO ; I  ACRO ; O  ACRO ; U  ACRO ; 			!^C^
+Æ ACRO ; Ø ACRO ; Y  ACRO ; Ä  ACRO ; Ö  ACRO ; Å  ACRO  ; 			!^C^
+ACRO ;				!^C^
+! # ; !To prevent cases like :as, `as and as. But this gives tagless 3-letter ACR.
+
+LEXICON LETTERNUMBER
+! Here, we need a good regex for
+! letter - number combination.
+1-D ACRO ;
+2-C ACRO ;
+3-A ACRO ;
+4-A ACRO ;
+4/OPYC:4%/OPYC ACRO ;
+5-G ACRO ;
+6-B ACRO ;
+A/L ACRO ;
+A/S ACRO ;
+A3 ACRO ;
+A4 ACRO ;
+A5 ACRO ;
+Bb ACRO ;
+CSM_1:CSM%_1 ACRO ;
+D/S ACRO ;
+E6 ACRO ;
+ECHAM/OPYC3 ACRO ;
+Jk1 ACRO ;
+jo1 ACRO ;
+jo2 ACRO ;
+jo3 ACRO ;
+K/S ACRO ;
+km/d ACRO ;
+km/h ACRO ;
+km/t ACRO ;
+L-97 ACRO ;
+L/L ACRO ;
+L97S ACRO ;
+LA21 ACRO ;
+LU1 ACRO ;
+LU2 ACRO ;
+NRK1 ACRO ;
+NRK2 ACRO ;
+O-97 ACRO ;
+O97S ACRO ;
+P-1 ACRO ;
+P-2 ACRO ;
+P-3 ACRO ;
+P-4 ACRO ;
+P1 ACRO ;
+P2 ACRO ;
+P3 ACRO ;
+P4 ACRO ;
+Q-2 ACRO ;
+S/S ACRO ;
+SVT1 ACRO ;
+SVT2 ACRO ;
+SVT24 ACRO ;
+T5PC ACRO ;
+TV2 ACRO ;
+TV4 ACRO ;
+U-19 ACRO ;
+U-23 ACRO ;
+U19 ACRO ;
+U23 ACRO ;
+UTF-8 ACRO ;
+UU2 ACRO ;
+Vg3 ACRO ;
+
+LEXICON SOMELONGACRO		!^C^
+ EXFACFON+Use/Sub+Use/Circ:EXFACFON ACRO; ! proper according to čállinrávvagat
+ EXFACHS+Use/Sub+Use/Circ:EXFACHS   ACRO; ! proper according to čállinrávvagat
+mánáid-TV ACRO ;
+mánáj-TV ACRO ;
+tæksta-TV ACRO ;
+
+! Here comes 500 predefined acronyms, for speller use
+! (the acro generator is circular)
+
+AB ACRO ;
+ABC ACRO ;
+ACTA+Use/Sub:ACTA ACRO; !  - proper according to čállinrávvagat
+AD ACRO ;
+ADHD ACRO ;
+ADSL ACRO ;
+AFS ACRO ;
+AIDS+Use/Sub:AIDS ACRO; !  - noun according to čállinrávvagat
+AL ACRO ;
+AMT ACRO ;
+AN ACRO ;
+ANC ACRO ;
+ANS ACRO ;
+AP ACRO ;
+APTN ACRO ;
+AR ACRO ;
+ARN ACRO ;
+AS ACRO ;
+ASA ACRO ;
+ASS ACRO ;
+ASVO+Use/Sub:ASVO ACRO; !  - proper according to čállinrávvagat
+AT ACRO ;
+ATSIC ACRO ;
+ATV ACRO ;
+AU ACRO ;
+AUF ACRO ;
+AV ACRO ;
+AWG ACRO ;
+AYC ACRO ;
+AÁF ACRO ;
+BA ACRO ;
+BASIC+Use/Sub:BASIC ACRO; !  - proper according to čállinrávvagat
+BB ACRO ;
+BBC ACRO ;
+BBL ACRO ;
+BD ACRO ;
+BDF ACRO ;
+BES ACRO ;
+BHD ACRO ;
+BI ACRO ;
+BIBSYS+Use/Sub:BIBSYS ACRO; !  - proper according to čállinrávvagat
+BK ACRO ;
+BMB ACRO ;
+BNB ACRO ;
+BNO ACRO ;
+BOF ACRO ;
+BOL ACRO ;
+BONO ACRO ;
+BPA ACRO ;
+BSS ACRO ;
+BST ACRO ;
+BT ACRO ;
+BU ACRO ;
+BUL ACRO ;
+BUORIT ACRO ;
+BUP ACRO ;
+CBS ACRO ;
+CC ACRO ;
+CCITT ACRO ;
+CD ACRO ;
+CERD ACRO ;
+CIA ACRO ;
+CNN ACRO ;
+CNN ACRO ;
+CO ACRO ;
+COCOM+Use/Sub:COCOM ACRO; !  - proper according to čállinrávvagat
+COMECON+Use/Sub:COMECON ACRO; !  - proper according to čállinrávvagat
+COOP+Use/Sub:COOP ACRO; !  - proper according to čállinrávvagat
+CPJ ACRO ;
+CV ACRO ;
+DA ACRO ;
+DAB ACRO ;
+DAN ACRO ;
+DAT ACRO ;
+DBE ACRO ;
+DD ACRO ;
+DE ACRO ;
+DES ACRO ;
+DFD ACRO ;
+DGT ACRO ;
+DILLI ACRO ;
+DIR ACRO ;
+DJ ACRO ;
+DKS ACRO ;
+DL ACRO ;
+DN ACRO ;
+DNA ACRO ;
+DON ACRO ;
+DPS ACRO ;
+DS ACRO ;
+DSE ACRO ;
+DSF ACRO ;
+DSI ACRO ;
+DSJ ACRO ;
+DSK ACRO ;
+DT ACRO ;
+DUS ACRO ;
+DVD ACRO ;
+DÁ ACRO ;
+DÁL ACRO ;
+EAI ACRO ;
+ECA ACRO ;
+ECOSOC+Use/Sub:ECOSOC ACRO; !  - propername according to čállinrávvagat
+ED ACRO ;
+EDB ACRO ;
+EEK ACRO ;
+EEO ACRO ;
+EES ACRO ;
+EFS ACRO ;
+EFTA+Use/Sub:EFTA ACRO; !  - propername according to čállinrávvagat
+EG ACRO ;
+EGD ACRO ;
+EKG ACRO ;
+EM ACRO ;
+EMM ACRO ;
+ENA ACRO ;
+ENØK+Use/Sub:ENØK ACRO; !  - proper according to čállinrávvagat
+EO ACRO ;
+EP ACRO ;
+ER ACRO ;
+ERUF ACRO ;
+ESA ACRO ;
+ETA ACRO ;
+ETS ACRO ;
+EU ACRO ;
+EZLN ACRO ;
+EØF ACRO ;
+EØS ACRO ;
+FA ACRO ;
+FAB ACRO ;
+FAF ACRO ;
+FAO ACRO ;
+FAS ACRO ;
+FC ACRO ;
+FD ACRO ;
+FE ACRO ;
+FFA ACRO ;
+FFF ACRO ;
+FFR ACRO ;
+FGDL ACRO ;
+FIFA+Use/Sub:FIFA ACRO; !  - propername according to čállinrávvagat
+FIM ACRO ;
+FJ ACRO ;
+FK ACRO ;
+FLL ACRO ;
+FLS ACRO ;
+FM ACRO ;
+FMX ACRO ;
+FN ACRO ;
+FNUC ACRO ;
+FO ACRO ;
+FORTRAN+Use/Sub:FORTRAN ACRO; !  - proper according to čállinrávvagat
+FPPS ACRO ;
+FS ACRO ;
+FSG ACRO ;
+FUG ACRO ;
+FUOM ACRO ;
+FÁGA ACRO ;
+GB ACRO ;
+GD ACRO ;
+GDL ACRO ;
+GG ACRO ;
+GGD ACRO ;
+GHVS ACRO ;
+GII ACRO ;
+GJ ACRO ;
+GJSL ACRO ;
+GJSS ACRO ;
+GL ACRO ;
+GLR ACRO ;
+GO ACRO ;
+GOD ACRO ;
+GP ACRO ;
+GPS ACRO ;
+GS ACRO ;
+GSG	ACRO ;
+GSM ACRO ;
+GSS ACRO ;
+HB ACRO ;
+HBO ACRO ;
+HE ACRO ;
+HEI ACRO ;
+HFK ACRO ;
+HIV ACRO ;
+HK ACRO ;
+HO ACRO ;
+HRW ACRO ;
+HT ACRO ;
+HV ACRO ;
+HVS ACRO ;
+IBK ACRO ;
+IBM ACRO ;
+ICC ACRO ;
+ICES ACRO ;
+ID ACRO ;
+IF ACRO ;
+IFU ACRO ;
+II ACRO ;
+III ACRO ;
+IIIA ACRO ;
+IKO ACRO ;
+IKT ACRO ;
+IL ACRO ;
+ILAR ACRO ;
+ILIOS+Use/Sub:ILIOS ACRO; !  - propername according to čállinrávvagat
+ILO ACRO ;
+ILO ACRO ;
+ILUS ACRO ;
+IMA ACRO ;
+IN ACRO ;
+INTEREG+Use/Sub:INTEREG ACRO; !  - proper according to čállinrávvagat
+INTERREG+Use/Sub:INTERREG ACRO; !  - propername according to čállinrávvagat
+IOC ACRO ;
+IPS ACRO ;
+IRA ACRO ;
+IRE ACRO ;
+IS ACRO ;
+ISAN ACRO ;
+ISBN ACRO ;
+ISDN ACRO ;
+IT ACRO ;
+IV ACRO ;
+IW ACRO ;
+IWGIA ACRO ;
+JA ACRO ;
+JB ACRO ;
+JH ACRO ;
+JK ACRO ;
+JL ACRO ;
+JOD ACRO ;
+JPD ACRO ;
+JPG ACRO ;
+JR ACRO ;
+JSL ACRO ;
+JUO ACRO ;
+JUS ACRO ;
+KAB ACRO ;
+KBB ACRO ;
+KD ACRO ;
+KF ACRO ;
+KFK ACRO ;
+KGD ACRO ;
+KIBK ACRO ;
+KIM ACRO ;
+KISP ACRO ;
+KJJS ACRO ;
+KJSS ACRO ;
+KKS ACRO ;
+KLM ACRO ;
+KLP ACRO ;
+KM ACRO ;
+KOAS ACRO ;
+KPK ACRO ;
+KR ACRO ;
+KRD ACRO ;
+KRIPOS+Use/Sub:KRIPOS ACRO; !  - propername according to čállinrávvagat
+KS ACRO ;
+KSG ACRO ;
+KSS ACRO ;
+KU ACRO ;
+KUF ACRO ;
+LA ACRO ;
+LD ACRO ;
+LEA ACRO ;
+LEI ACRO ;
+LHL ACRO ;
+LKAB ACRO ;
+LLH ACRO ;
+LMK ACRO ;
+LMS ACRO ;
+LO ACRO ;
+LOBI ACRO ;
+LSD ACRO ;
+LU ACRO ;
+MAS ACRO ;
+MB ACRO ;
+MBD ACRO ;
+MBL ACRO ;
+MC ACRO ;
+MD ACRO ;
+MEGA ACRO ;
+MGD ACRO ;
+MGP ACRO ;
+MIEHTÁ ACRO ;
+MIELDE ACRO ;
+MK ACRO ;
+ML ACRO ;
+MM ACRO ;
+MMI ACRO ;
+MNOSS ACRO ;
+MNP ACRO ;
+MP ACRO ;
+MS ACRO ;
+MSN ACRO ;
+MUHTO ACRO ;
+MUVÁ+Use/Sub:MUVÁ ACRO; ! MuVá
+MW ACRO ;
+MY ACRO ;
+MÁ ACRO ;
+NA ACRO ;
+NAF ACRO ;
+NASCO ACRO ;
+NATO+Use/Sub:NATO ACRO; !  - propername according to čállinrávvagat
+NAVO+Use/Sub:NAVO ACRO; !  - proper according to čállinrávvagat
+NAČ ACRO ;
+NB ACRO ;
+NBR ACRO ;
+NCS ACRO ;
+NEG ACRO ;
+NGO ACRO ;
+NGU ACRO ;
+NHO ACRO ;
+NIBR ACRO ;
+NIF ACRO ;
+NILF ACRO ;
+NINA ACRO ;
+NINA-NIKU ACRO ;
+NIPIAA+Use/Sub:NIPIAA ACRO; !  - proper according to čállinrávvagat
+NJ ACRO ;
+NJFF ACRO ;
+NKK ACRO ;
+NKS ACRO ;
+NLS ACRO ;
+NM ACRO ;
+NMK ACRO ;
+NMT ACRO ;
+NN ACRO ;
+NNS ACRO ;
+NOK ACRO ;
+NOPA ACRO ;
+NOR ACRO ;
+NORAD+Use/Sub:NORAD ACRO; !  - propername according to čállinrávvagat
+NORUT+Use/Sub:NORUT ACRO; !  - proper according to čállinrávvagat
+NOS ACRO ;
+NOU ACRO ;
+NRK ACRO ;
+NRQ ACRO ;
+NSB ACRO ;
+NSD ACRO ;
+NSI ACRO ;
+NSR ACRO ;
+NSR-N ACRO ;
+NTB ACRO ;
+NTL ACRO ;
+NTNU ACRO ;
+NU ACRO ;
+NVE ACRO ;
+NÁČ ACRO ;
+NČE ACRO ;
+OAFIR+Use/Sub:OAFIR ACRO;!  - propername according to čállinrávvagat
+OAS ACRO ;
+OASIS+Use/Sub:OASIS ACRO; !  - propername according to čállinrávvagat
+OB ACRO ;
+OD ACRO ;
+ODD ACRO ;
+OED ACRO ;
+OG ACRO ;
+OH ACRO ;
+OHCAN ACRO ;
+OIPA ACRO ;
+OK ACRO ;
+OL ACRO ;
+OLU ACRO ;
+ON ACRO ;
+ORO ACRO ;
+OS ACRO ;
+OSL ACRO ;
+OSS ACRO ;
+OT ACRO ;
+OVDAL ACRO ;
+PB ACRO ;
+PC ACRO ;
+PDF ACRO ;
+PETA ACRO ;
+PFK ACRO ;
+PFL ACRO ;
+PFU ACRO ;
+PIL ACRO ;
+PIPE ACRO ;
+PL ACRO ;
+PM ACRO ;
+POT ACRO ;
+PPB ACRO ;
+PPS ACRO ;
+PPT ACRO ;
+PR ACRO ;
+PS ACRO ;
+PUT ACRO ;
+RAF ACRO ;
+RAG ACRO ;
+RBK ACRO ;
+RBL ACRO ;
+RD ACRO ;
+RDA ACRO ;
+REMA+Use/Sub:REMA ACRO; !  - proper according to čállinrávvagat
+RKTL ACRO ;
+RMS ACRO ;
+RNNU ACRO ;
+RO ACRO ;
+ROP ACRO ;
+RS ACRO ;
+RSDAP ACRO ;
+RSFSR ACRO ;
+RSR ACRO ;
+RSS ACRO ;
+RUF ACRO ;
+RV ACRO ;
+SAF ACRO ;
+SAFE ACRO ;
+SAK ACRO ;
+SAP ACRO ;
+SAS ACRO ;
+SATØ+Use/Sub:SATØ ACRO; ! SATø
+SAÁO ACRO ;
+SB ACRO ;
+SBB ACRO ;
+SBS ACRO ;
+SBSS ACRO ;
+SCA ACRO ;
+SCPAR ACRO ;
+SD ACRO ;
+SDD ACRO ;
+SDG ACRO ;
+SDGB ACRO ;
+SDR ACRO ;
+SDS ACRO ;
+SE ACRO ;
+SEFO+Use/Sub:SEFO ACRO; !  - propername according to čállinrávvagat
+SEG ACRO ;
+SEK ACRO ;
+SF ACRO ;
+SF ACRO ;
+SF-012 ACRO ;
+SFF ACRO ;
+SFO ACRO ;
+SFR ACRO ;
+SFS ACRO ;
+SFT ACRO ;
+SG ACRO ;
+SGL ACRO ;
+SGP ACRO ;
+SGR ACRO ;
+SGRN ACRO ;
+SGS ACRO ;
+SI ACRO ;
+SIFI ACRO ;
+SISA ACRO ;
+SIVA ACRO ;
+SJ ACRO ;
+SJS ACRO ;
+SK ACRO ;
+SKES ACRO ;
+SKINN ACRO ;
+SKR ACRO ;
+SKS ACRO ;
+SKUP ACRO ;
+SL ACRO ;
+SLF ACRO ;
+SLČ ACRO ;
+SM ACRO ;
+SMK ACRO ;
+SMS ACRO ;
+SN ACRO ;
+SND ACRO ;
+SNF ACRO ;
+SNJ ACRO ;
+SNO ACRO ;
+SNPL ACRO ;
+SNPN ACRO ;
+SOD ACRO ;
+SOF ACRO ;
+SOG ACRO ;
+SOIF ACRO ;
+SOL ACRO ;
+SOR ACRO ;
+SOS ACRO ;
+SOU ACRO ;
+SP ACRO ;
+SPOR ACRO ;
+SPR ACRO ;
+SR ACRO ;
+SRJ ACRO ;
+SRV ACRO ;
+SS ACRO ;
+SSA ACRO ;
+SSB ACRO ;
+SSF ACRO ;
+SSG ACRO ;
+SSL ACRO ;
+SSN ACRO ;
+SSO ACRO ;
+SSR ACRO ;
+SSS ACRO ;
+SSSR ACRO ;
+STIL ACRO ;
+SU ACRO ;
+SUF ACRO ;
+SUFUR ACRO ;
+SUPU ACRO ;
+SUS ACRO ;
+SV ACRO ;
+SVD ACRO ;
+SVF ACRO ;
+SVL ACRO ;
+SVL-N ACRO ;
+SVL-S ACRO ;
+SVT ACRO ;
+SÁ ACRO ;
+SÁB ACRO ;
+SÁL ACRO ;
+SÁLAS+Use/Sub:SÁLAS ACRO; !  - propername according to čállinrávvagat
+SÁMÁS+Use/Sub:SÁMÁS ACRO; !  - propername according to čállinrávvagat
+SÅG ACRO ;
+TAC ACRO ;
+TCO ACRO ;
+TD ACRO ;
+TIL ACRO ;
+TNT ACRO ;
+TONO ACRO ;
+TRAS ACRO ;
+TSI ACRO ;
+TT ACRO ;
+TV ACRO ;
+UB ACRO ;
+UD ACRO ;
+UDI ACRO ;
+UDSL ACRO ;
+UEFA+Use/Sub:UEFA ACRO; !  - proper according to čállinrávvagat
+UEW ACRO ;
+UKM ACRO ;
+UN ACRO ;
+UNDP ACRO ;
+UNEP ACRO ;
+UNESCO+Use/Sub:UNESCO ACRO; !  - proper according to čállinrávvagat
+UNG ACRO ;
+UNICEF+Use/Sub:UNICEF ACRO; !  - proper according to čállinrávvagat
+UNIKOM+Use/Sub:UNIKOM ACRO; !  - proper according to čállinrávvagat
+UNN ACRO ;
+UNTAK ACRO ;
+UR ACRO ;
+URACCAN ACRO ;
+US ACRO ;
+USA ACRO ;
+USKAV ACRO ;
+VBL ACRO ;
+VG ACRO ;
+VI ACRO ;
+VII ACRO ;
+VIII ACRO ;
+VM ACRO ;
+VOX ACRO ;
+VR ACRO ;
+VS ACRO ;
+VUK ACRO ;
+VVS ACRO ;
+VW ACRO ;
+WC ACRO ;
+WCIP ACRO ;
+WHO ACRO ;
+WINHEC ACRO ;
+WRH ACRO ;
+WTO ACRO ;
+WWA ACRO ;
+WWF ACRO ;
+WWM ACRO ;
+XX ACRO ;
+YEH ACRO ;
+YLE ACRO ;
+YSS ACRO ;
+ÁJA+Use/Sub:ÁJA ACRO; !  - propername according to čállinrávvagat
+ÁLGU+Use/Sub:ÁLGU ACRO; !  - propername according to čállinrávvagat
+ÁVD ACRO ;
+ÅT ACRO ;
+ČSV ACRO ;
+
+
+LEXICON smallacro
+Aa ACRO ;
+as ACRO ; !A/S
+Brokkoli% MT ACRO ;
+cd ACRO ;
+mánáj-tv:mánáj-tv ACRO ;
+Radisson-SAS ACRO ;
+Sam^IT ACRO ;
+SMSAm ACRO ;
+teaksta-tv ACRO ;
+tv ACRO ;
+TWh ACRO ;
+
+!Here comes the set of acronyms that
+!are moved from abbr-sme-lex.txt
+AciA ACRO ;
+AiS ACRO ;
+Art ACRO ;
+Bb ACRO ;
+Bbl ACRO ;
+BfS ACRO ;
+DeS ACRO ;
+DnB ACRO ;
+Dssn ACRO ;
+DuÅ ACRO ;
+ekg ACRO ;
+EtMk ACRO ;
+FBb ACRO ;
+FeFo+Use/Sub:FeFo ACRO;  !  - propername according to čállinrávvagat
+FGb ACRO ;
+Flf ACRO ;
+FoU ACRO ;
+FrP ACRO ;
+Frp ACRO ;
+FrS ACRO ;
+Gb ACRO ;
+Ger ACRO ;
+Gwh ACRO ;
+HadCM ACRO ;
+HUM-fak+Use/Sub:HUM-fak ACRO ;  !  - propername according to čállinrávvagat
+ImO ACRO ;
+Jd ACRO ;
+Ji ACRO ;
+K-ent+Use/Sub:K-ent ACRO;  !  - propername according to čállinrávvagat
+kB ACRO ;
+KBb ACRO ;
+KiMK ACRO ;
+KoKo ACRO ;
+KoKS ACRO ;
+komvux+Use/Sub:komvux ACRO; !  - propername according to čállinrávvagat
+KrF ACRO ;
+Krf ACRO ;
+KrÁ ACRO ;
+kVA ACRO ;
+KáB ACRO ;
+LaMk ACRO ;
+LaW ACRO ;
+lsd ACRO ;
+LuW ACRO ;
+Med-fak+Use/Sub:Med-fak ACRO;  !  - propername according to čállinrávvagat
+MiF ACRO ;
+MuVá+Use/Sub:MuVá ACRO;  !  - propername according to čállinrávvagat
+NgL ACRO ;
+NoKTuRNL+Use/Sub:NoKTuRNL ACRO;  !  - propername according to čállinrávvagat
+Norfu+Use/Sub:Norfu ACRO;  !  - propername according to čállinrávvagat
+Or ACRO ;
+pc ACRO ;
+pdf ACRO ;
+PhD ACRO ;
+pps ACRO ;
+RiTø+Use/Sub:Ri^Tø ACRO;  !  - propername according to čállinrávvagat
+Rp ACRO ;
+Rp ACRO ;
+Rv ACRO ;
+SamS ACRO ;
+SATø+Use/Sub:SATø ACRO;  !  - propername according to čállinrávvagat
+Sf ACRO ;
+SfB ACRO ;
+SfF ACRO ;
+Sfruo ACRO ;
+SkL ACRO ;
+StA ACRO ;
+SUKPb ACRO ;
+SvJT ACRO ;
+SVL-Fi ACRO ;
+SáB ACRO ;
+UiB ACRO ;
+UiO ACRO ;
+UiT ACRO ;
+UiTø+Use/Sub:UiTø ACRO;  !  - propername according to čállinrávvagat
+wc ACRO ;
+
+!<-----the alphabet----->
+!a ACRO ; !^C^
+!á ACRO ; !^C^
+!b ACRO ; !^C^
+!c ACRO ; !^C^
+!č ACRO ; !^C^
+!d ACRO ; !^C^
+!đ ACRO ; !^C^
+!e ACRO ; !^C^
+!f ACRO ; !^C^
+!g ACRO ; !^C^
+!h ACRO ; !^C^
+!i ACRO ; !^C^
+!j ACRO ; !^C^
+!k ACRO ; !^C^
+!l ACRO ; !^C^
+!m ACRO ; !^C^
+!n ACRO ; !^C^
+!ŋ ACRO ; !^C^
+!o ACRO ; !^C^
+!p ACRO ; !^C^
+!q ACRO ; !^C^
+!r ACRO ; !^C^
+!s ACRO ; !^C^
+!š ACRO ; !^C^
+!t ACRO ; !^C^
+!ŧ ACRO ; !^C^
+!u ACRO ; !^C^
+!v ACRO ; !^C^
+!x ACRO ; !^C^
+!y ACRO ; !^C^
+!z ACRO ; !^C^
+!ž ACRO ; !^C^
+!å ACRO ; !^C^
+!æ ACRO ; !^C^
+!ø ACRO ; !^C^
+!ä ACRO ; !^C^
+!ö ACRO ; !^C^
+
+!LEXICON quasiacro moved to HyphNouns
+!CD-rom CELSIUS ;
+!CD-singel GAHPER ; !^LOAN
+!P2-kanálla:P2-kan AREAL ;
+!cd-rom CELSIUS ;
+
+
+LEXICON ACRO               ! Here we add the POS tag
++N+ACR: acroconnector ;
+
+LEXICON acroconnector     ! Here comes a set of possible symbols to
+               acronull ;
+         :%>%: acrosuff ; ! put between the abbreviation and its suffix
+ +Use/Sub:     acrosuff ; ! The lexica are split in order to avoid the POS
+ +Use/Sub:%>'7 acrosuff ; ! tag for other symbols using the acroconnector
+ +Use/Sub:%>%` acrosuff ; ! lexicon. (cf. the punct-sme-lex.txt file)
+ +Use/Sub:%>%´ acrosuff ;
+               RHyph ;    ! Acro compouonds: CD-2
+ +Use/Sub:     R ;        ! Without hyphen, not normative:  NRK23
+
+LEXICON acronull
++Sg+Nom+Use/Sub:%> K ;
++Sg+Gen+Use/Sub:%> K ;
++Pl+Nom+Use/Sub:%> K ;
++Sg+Nom:%>         # ;
++Sg+Gen:%>         # ;
++Pl+Nom:%>         # ;
+
+LEXICON acrosuff
+ +Sg+Gen+Use/Sub:a    K ;
+ +Sg+Acc+Use/Sub:av   K ;
+ +Sg+Ill+Use/Sub:aj   K ;
+ +Sg+Acc+Use/Sub:v    K ;
+ +Sg+Ill+Use/Sub:j    K ;
+!+Sg+Ill+Use/Sub:i    K ; ! NSR:i
+ +Sg+Ine+Use/Sub:n    K ; ! NRK:n
+ +Sg+Ine+Use/Sub:an   K ; ! NRK:an
+ +Sg+Ela+Use/Sub:s    K ; ! NRK:s
+ +Sg+Ela+Use/Sub:as   K ; ! NRK:as
+ +Sg+Com+Use/Sub:jn   K ;
+ +Ess+Use/Sub:n       K ; ! NBR:n
+ +Ess+Use/Sub:an      K ;
+ +Pl+Nom+Use/Sub:a    K ;
+ +Pl+Gen+Use/Sub:aj   K ;
+ +Pl+Acc+Use/Sub:ajt  K ;
+ +Pl+Ill+Use/Sub:ajda K ;
+ +Pl+Ine+Use/Sub:ajn  K ;
+ +Pl+Ela+Use/Sub:ajs  K ;
+ +Pl+Com+Use/Sub:aj   K ;
+ +Pl+Gen+Use/Sub:j    K ;
+ +Pl+Acc+Use/Sub:jt   K ;
+ +Pl+Ill+Use/Sub:jda  K ;
+ +Pl+Ine+Use/Sub:jn   K ;
+ +Pl+Ela+Use/Sub:js   K ;
+ +Pl+Com+Use/Sub:j    K ;
+ +Sg+Gen+Use/Sub:a    # ;
+ +Sg+Acc+Use/Sub:av   # ;
+ +Sg+Ill+Use/Sub:aj   # ;
+ +Sg+Acc:v            # ;
+ +Sg+Ill:j            # ;
+!+Sg+Ill:i            # ; ! NSR:i
+ +Sg+Ine:n            # ; ! NRK:n
+ +Sg+Ine+Use/Sub:an   # ; ! NRK:an
+ +Sg+Ela:s            # ; ! NRK:s
+ +Sg+Ela+Use/Sub:as   # ; ! NRK:as
+ +Sg+Com:jn           # ;
+ +Ess:n               # ; ! NBR:n
+ +Ess+Use/Sub:an      # ;
+ +Pl+Nom+Use/Sub:a    # ;
+ +Pl+Gen+Use/Sub:aj   # ;
+ +Pl+Acc+Use/Sub:ajt  # ;
+ +Pl+Ill+Use/Sub:ajda # ;
+ +Pl+Ine+Use/Sub:ajn  # ;
+ +Pl+Ela+Use/Sub:ajs  # ;
+ +Pl+Com+Use/Sub:aj   # ;
+ +Pl+Gen:j            # ;
+ +Pl+Acc:jt           # ;
+ +Pl+Ill:jda          # ;
+ +Pl+Ine:jn           # ;
+ +Pl+Ela:js           # ;
+ +Pl+Com:j            # ;
+
+!------Der/r------
+ +Der1+Der/r+CmpN/SgN+CmpN/SgG+CmpN/PlG:»ár GAHPER ;  !

@@ -1,0 +1,113 @@
+#!/bin/bash
+
+# Dette skriptet tester at nesten alle lemmaene i
+# $GTHOME/newinfra/langs/sma/src/morphology/stems/adjectives.lexc kan genereres.
+# De som ikke kan genereres, kopieres til missingAdjLemmas.txt
+
+###### Variables: #######
+sourcefile=${srcdir}/../../../src/morphology/stems/adjectives.lexc
+generatorfile=${srcdir}/../../../src/generator.gt
+resultfile=missingAdjLemmas.txt
+
+# Check that the source file exists:
+if [ ! -f "$sourcefile" ]; then
+	echo Source file not found: $sourcefile
+	exit 1
+fi
+
+###### Extraction: #######
+### Regular adjectives:
+grep ";" $sourcefile | grep -v "^\!" \
+	| egrep -v "(LEXATTR|OANEP|NUORTTALABBO|GASSKALAMOS|TJAVGGÁMUS)" \
+	| egrep -v "( At |PrfPrc_At|VINJO)" \
+	| tr ":+\t" " " | cut -d " " -f1 \
+	| tr -d "#" | grep -v '^$' | grep -v 'LEXICON' | sort -u > adjs
+### Adjectives with no pred form, ie only attr form:
+grep ";" $sourcefile | grep -v "^\!" \
+	| egrep "( At |PrfPrc_At|LEXATTR)" | tr ":+\t" " " | cut -d " " -f1 \
+	| tr -d "#" | grep -v '^$' | grep -v 'LEXICON' | sort -u > attradjs
+### Adjectives with only comparative forms:
+grep ";" $sourcefile | grep -v "^\!" \
+	| egrep "(OANEP|NUORTTALABBO)" | tr ":+\t" " " \
+	| cut -d " " -f1 | tr -d "#" \
+	| grep -v '^$' | sort -u > compadjs
+### Adjectives with only superlative forms:
+grep ";" $sourcefile | grep -v "^\!" \
+	| egrep "(GASSKALAMOS|TJAVGGÁMUS)" | tr ":+\t" " " | cut -d " " -f1 \
+	| grep -v '^$' | tr -d "#" | sort -u > superladjs
+### Adjectives with only superlative forms:
+grep ";" $sourcefile | grep -v "^\!" \
+	| grep "VINJO" | tr ":+\t" " " | cut -d " " -f1 \
+	| grep -v '^$' | sort -u > compoundadjs
+
+###### Start testing: #######
+transducer_found=0
+Fail=0
+
+for f in  .xfst .hfst; do
+	if [ $f == ".xfst" ]; then
+		lookuptool="@LOOKUP@ -q -flags mbTT"
+#		echo "Xerox test"
+	else
+		lookuptool="@HFST_LOOKUP@ -q"
+#		echo "Hfst test"
+	fi
+	if [ -f "$generatorfile$f" ]; then
+		let "transducer_found += 1"
+
+# Remove old generated files - don't mix Xerox and HFST test results:
+		rm -f analadjs
+
+#### First we try to generate the regular adjectives:
+		sed 's/$/+A+Sg+Nom/' adjs | $lookuptool $generatorfile$f \
+			| cut -f2 | grep -v "A+" | grep -v "^$" | sort -u > analadjs 
+
+#### Then we try to generate the attribute-only adjectives:
+		sed 's/$/+A+Attr/' attradjs \
+			| $lookuptool $generatorfile$f | cut -f2 \
+			| grep -v "A+" | grep -v "^$" | sort -u >> analadjs 
+
+#### Then we try to generate the comparative-only adjectives:
+		sed 's/$/+A+Comp+Sg+Nom/' compadjs \
+			| $lookuptool $generatorfile$f | cut -f2 \
+			| grep -v "A+" | grep -v "^$" | sort -u >> analadjs 
+
+#### Then we try to generate the superlative-only adjectives:
+		sed 's/$/+A+Superl+Sg+Nom/' superladjs \
+			| $lookuptool $generatorfile$f | cut -f2 \
+			| grep -v "A+" | grep -v "^$" | sort -u >> analadjs
+
+#### Then we try to generate the compound-only adjectives:
+		sed 's/CmpN\/SgN$/A+Attr+Cmp#bijlla+N+Sg+Nom/' compoundadjs \
+			| sed 's/CmpN\/PlG$/A+Attr+Cmp#bijlla+N+Sg+Nom/' \
+			| sed 's/$/+A+Attr+Cmp#bijlla+N+Sg+Nom/' \
+			| $lookuptool $generatorfile$f | cut -f2 | sed 's/bijlla$//' \
+			| grep -v '^$' | tr 'ä' 'æ' >> analadjs
+
+		cat attradjs compadjs superladjs compoundadjs >> adjs
+		sort -u -o adjs adjs 
+		sort -u -o analadjs analadjs 
+		comm -23 adjs analadjs > $resultfile
+		rm -f *adjs
+
+		# if at least one word is found, the test failed, and the list of failed
+		# lemmas is opened in SubEthaEdit:
+		if [ `wc -w $resultfile | tr -s ' ' | cut -d' ' -f2` -gt 0 ]
+		then
+			see $resultfile
+		    Fail=1
+		fi
+#	else
+#		echo Transducer not found: $generatorfile$f
+	fi
+done
+
+# At least one of the Xerox or HFST tests failed:
+if [ "$Fail" = "1" ]; then
+	exit 1
+fi
+
+if [ $transducer_found -eq 0 ]; then
+    echo No transducer found
+    exit 1
+fi

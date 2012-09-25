@@ -1,0 +1,1880 @@
+! Divvun & Giellatekno - open source grammars for Sámi and other languages
+! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
+! http://giellatekno.uit.no & http://divvun.no
+!
+! This program is free software; you can redistribute and/or modify
+! this file under the terms of the GNU General Public License as published by
+! the Free Software Foundation, either version 3 of the License, or
+! (at your option) any later version. The GNU General Public License
+! is found at http://www.gnu.org/licenses/gpl.html. It is
+! also available in the file $GTHOME/LICENSE.txt.
+!
+! Other licensing options are available upon request, please contact
+! giellatekno@hum.uit.no or divvun@samediggi.no
+
+! ========================================================================== !
+!                      Lule Sámi morphological analyser                      !
+! ========================================================================== !
+
+
+! ======================
+! Sublexica for Verb
+! ======================
+
+! Even-syllable stems
+! -------------------
+
+! Modals
+! - - - -
+
+LEXICON GALGGAT_IV
++V+IV+Ind+Prs:%> I-even-V ;
++V+IV+Ind+Prt:%> II-even-V ;
++V+IV+Pot:%>Q1tj I-odd-V ;
++V+IV+Inf:%>t K ;
++V+IV+PrfPrc:%>Y3m K ;
++V+IV+Actio+Nom:m K ;
++V+IV+Actio+Gen:ma K ;
++V+IV+Actio+Com:mijn K ;
++V+IV+Actio+Ess:min K ;
++V+IV+Actio+Ela:mis K ;
++V+IV+Der3+Der/NomAct:»m@C.NeedNoun@ VSBST-ODD ;
++V+IV+Ind+ConNeg:%>Q1 K ;
++V+IV+Pot+ConNeg:%>Q1tja K ;
++V+IV+Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+
+LEXICON VIERTTIT_IV
++V+IV+Ind+Prs:%> I-contr-V ;
++V+IV+Ind+Prt:%> II-contr-V ;
++V+IV+Pot:%>tj I-odd-V ;
++V+IV+Inf:%>t K ;
++V+IV+PrfPrc:%>m K ;
++V+IV+Actio+Nom:m K ;
++V+IV+Actio+Gen:ma K ;
++V+IV+Actio+Com:mijn K ;
++V+IV+Actio+Ess:min K ;
++V+IV+Actio+Ela:mis K ;
++V+IV+Der3+Der/NomAct:»m@C.NeedNoun@ VSBST-ODD ;
++V+IV+Ind+ConNeg:%> K ;
++V+IV+Pot+ConNeg:%>tja K ;
++V+IV+Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+
+
+! This is for auxiliaries, they do not have passive.
+! Thus, when passive is added, it will include BASSAT, but not GALGGAT
+
+
+! Ordinary main verbs
+! - - - - - - - - - -
+
+
+LEXICON BIEGGAT_IV !Impersonals
++V+IV: DeverbalVerbsBIEGGAT ;
++V+IV:%> BIEGGATinfl ;
++V+IV: SG3PASSV ;
++V+IV: SG3PASSEVEN ;
+
+LEXICON GALSSJOT_IV !Impersonal o-verbs
++V+IV: DeverbalVerbsBIEGGAT ;
++V+IV:%> GALSSJOTinfl ;
++V+IV: SG3PASSV ;
+!+V+IV: SG3PASSEVEN ; outcommented to avoid short pass.
+
+
+
+LEXICON BIEKKASTALLAT_IV !Allready derived Impersonals
++V+IV:%> BIEGGATinfl ;
++V+IV: SG3PASSV ;
++V+IV: SG3PASSEVEN ;
+
+LEXICON RAVGGAT_IV  !a- and å-verbs
++V+IV:%> RAVGGATStem ;
++V+IV: DeverbalVerbsBASSAT ;
++V+IV: SG3PASSV ;
++V+IV: SG3PASSEVEN ;
+
+LEXICON ASSTAT_IV  !only for asstat
++V+IV:%> ASSTATStem ;
++V+IV: DeverbalVerbsBASSAT ;
++V+IV: SG3PASSV ;
++V+IV: SG3PASSEVEN ;
+
+
+LEXICON BUOLLET_IV  !e-verbs
++V+IV:%> RAVGGATStem ;
++V+IV: DeverbalVerbsLÁHPPET ;
++V+IV: SG3PASSV ;
++V+IV: SG3PASSEVEN ;
+
+LEXICON VIEDJET_IV  !e-verbs GRADE II-I WITH IE DIPHT.
++V+IV:%> VIEDJETStem ;
++V+IV: DeverbalVerbsLÁHPPET ;
++V+IV: SG3PASSV ;
++V+IV: SG3PASSEVEN ;
+
+
+LEXICON MÁHTTET_TV  !transitive verbs without personal passive
++V+TV:%> BASSATStem ;
++V+TV: DeverbalVerbsLÁHPPET ;
++V+TV: SG3PASSV ;
++V+TV: SG3PASSEVEN ;
+
+
+LEXICON RAVGGALASSTET_IV   !Like RAVGGAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced
++V+IV:%> RAVGGALASSTETStem ;
++V+IV: SG3PASSV ;
++V+IV: SG3PASSEVEN ;
+
+LEXICON GUOTTEDALLAT_IV   !passives on -allat - no actio as first part of compounds, but reintroduced
+! +V+IV:%> RAVGGALASSTETStem ; !replaced to avoid pass  + actor
+ +V+IV+Der3+Der/goahte+V:%>»goahte%> INFL-EVEN ;
+ +V+IV:%> INFL-EVEN ;
+ +V+IV+Der3+Der/lis+A:%>»Y3liss LIS ;
+ +V+IV+Der3+Der/mus+N:%>»muss@C.NeedNoun@ MUS ;
+ +V+IV+Actio+Nom:m K ;
+ +V+IV+Actio+Gen:ma K ;
+ +V+IV+Actio+Com:mijn K ;
+ +V+IV+Actio+Ess:min K ;
+ +V+IV+Actio+Ela:mis K ;
+ +V+IV+Der3+Der/NomAct:%>»m@C.NeedNoun@ BASSALASSTEM ;
+ 
+LEXICON HIEBADUVVAT_IV  !passives on -uvvat - no actio as first part of compounds, but reintroduced
+! +V+IV:uvva%> RAVGGALASSTETStem ; !replaced to avoid pass + actor 
+ +V+IV+PrfPrc:uvvu%>m K ;
+ +V+IV+PrfPrc:um%> K ;
+ +V+IV+Der3+Der/goahte+V:uvva%>»goahte%> INFL-EVEN ;
+ +V+IV:uvva%> INFL-EVEN ;
+ +V+IV+Der3+Der/lis+A:uvva%>»Y3liss LIS ;
+ +V+IV+Der3+Der/mus+N:uvva%>»muss@C.NeedNoun@ MUS ;
+ +V+IV+Actio+Nom:uvva%>m K ;
+ +V+IV+Actio+Gen:uvva%>ma K ;
+ +V+IV+Actio+Com:uvva%>mijn K ;
+ +V+IV+Actio+Ess:uvva%>min K ;
+ +V+IV+Actio+Ela:uvva%>mis K ;
+ +V+IV+Der3+Der/NomAct:uvva%>»m@C.NeedNoun@ BASSALASSTEM ;
+
+LEXICON BASSAT_TV  !a- and å-verbs
++V+TV:%> BASSATStem ;
++V+TV: DeverbalVerbsBASSAT ;
++V+TV: EVEN-PASSIVE ;
+
+LEXICON JUHKAT_TV  !a-verbs with dim -istit that are hardcoded
++V+TV:%> BASSATStem ;
++V+TV: DeverbalVerbsJUHKAT ;
++V+TV: EVEN-PASSIVE ;
+
+LEXICON LÁHPPET_TV  !e-verbs
++V+TV:%> BASSATStem ;
++V+TV: DeverbalVerbsLÁHPPET ;
++V+TV: EVEN-PASSIVE ;
+
+LEXICON JIEHKET_TV  !e-verbs GRADE II-I WITH IE DIPHT.
++V+TV:%> JIEHKETStem ;
++V+TV: DeverbalVerbsLÁHPPET ;
++V+TV: EVEN-PASSIVE ;
+
+
+LEXICON BASSALASSTET_TV  !Like BASSAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced
++V+TV:%> BASSALASSTETStem ;
++V+TV: EVEN-PASSIVE ;
+
+
+LEXICON DIEHTET_TV  !Only this one word, unusual diphtong behavior
++V+TV: DeverbalVerbsDIEHTET ;
++V+TV+Ind+Prs: I-diehtet-V ;
++V+TV+Ind+Prt:%> II-sg72pl9 ;
++V+TV+Ind+Prt:e%>Q1 II-other ;
++V+TV+Pot:i%>Q1tj I-odd-V ;
+ +V+TV+Imprt+Sg2:e%>Q1 ENDLEX ; ! Basic Imperative, like ConNeg
++V+TV+Imprt+Du2:te%> ENDLEX ;
++V+TV+Imprt:%> IMP7-EVEN ;
++V+TV+Imprt+Du1:%>on ENDLEX ;
++V+TV+Imprt+Pl1:%>op ENDLEX ;
++V+TV+ImprtII:%>u IMP8-EVEN ;
+! Infinite
++V+TV+Inf:e%>t K ;
++V+TV+PrfPrc:á%>m K ;
+!+PrsPrc:%> NOADE ; ! Noun, not correct, III grade!
++V+TV+Ger:e%>Q1dijn K ;
++V+TV+Sup:á%>Q1tjit K ;
++V+TV+VAbess:e%>Q1k K ;
++V+TV+VAbess:e%>Q1dak K ;
++V+TV+VAbess:e%>Q1k VUOHTA ;
++V+TV+VAbess:e%>Q1dak VUOHTA ;
++V+TV+VGen:e%>Q1 K ;
+! ConNeg
++V+TV+Ind+ConNeg:e%>Q1 K ;
++V+TV+Pot+ConNeg:i%>Q1tja K ;
++V+TV+Imprt+ConNeg:e%>Q1 ENDLEX ;
++V+TV+ImprtII+ConNeg+Pl2:%>u ENDLEX ;
++V+TV+ImprtII+ConNeg+Sg2:%>u ENDLEX ;
++V+TV+ImprtII+ConNeg+Du2:%>u ENDLEX ;
++V+TV+Actio+Nom:em K ;
++V+TV+Actio+Gen:ema K ;
++V+TV+Actio+Com:emijn K ;
++V+TV+Actio+Ess:emin K ;
++V+TV+Actio+Ela:emis K ;
++V+TV+Der3+Der/goahte+V:e»goahte%> INFL-EVEN ;
++V+TV:e DeverbalNounsDIEHTET ;
+
+LEXICON BASSATStem
+ BASSATINCH ;
+
+LEXICON RAVGGATStem
+ RAVGGATINCH ;
+
+LEXICON ASSTATStem
+ ASSTATINCH ;
+
+
+LEXICON VIEDJETStem
+ VIEDJETINCH ;
+
+LEXICON JIEHKETStem
+ JIEHKETINCH ;
+
+
+LEXICON BASSALASSTETStem
+ BASSALASSTETINCH ;
+
+LEXICON RAVGGALASSTETStem
+ RAVGGALASSTETINCH ;
+
+
+LEXICON BASSATINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-EVEN ;
+ DeverbalNounsBASSAT ;
+
+LEXICON RAVGGATINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-EVEN ;
+ DeverbalNounsRAVGGAT ;
+
+LEXICON ASSTATINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-EVEN ;
+ DeverbalNounsASSTAT ;
+
+LEXICON VIEDJETINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-VIEDJETEVEN ;
+ DeverbalNounsRAVGGAT ;
+
+LEXICON JIEHKETINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-VIEDJETEVEN ;
+ DeverbalNounsBASSAT ;
+
+
+LEXICON BASSALASSTETINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-EVEN ;
+ DeverbalNounsBASSALASSTET ;
+
+LEXICON RAVGGALASSTETINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-EVEN ;
+ DeverbalNounsRAVGGALASSTET ;
+
+
+LEXICON GÁDJOT_TV !o-verbs
++V+TV:%> GÁDJOTStem ;
++V+TV: DeverbalVerbsBASSAT ;
+!+V+TV: EVEN-PASSIVE ; replaced by individual pointers to avoid short pass.
+!+V+TV+Der/Pass+V:»Y9u OADDÁTINCH ; NO SHORT PASS HERE! !replaced by individual pointers to avoid pass + actio, reintroduced since it is usual!
+!+V+TV+Der/Pass+V+Der3+Der/goahte+V:»Y9ugoahte%> INFL-EVEN ;
+!+V+TV+Der/Pass+V:»Y9u INFL-CONTRACTED ;
+!+V+TV+Der/Pass+V+Der2+Actor:»Y9ujiddje@C.NeedNoun@  ACTOR ;
+!+V+TV+Der/Pass+V+Der3+Der/mus+N:»Y9umuss@C.NeedNoun@ MUS ;
++V+TV+Der1+Der/Pass+V+Der3+Der/goahte+V:»Q1duvva»goahte%> INFL-EVEN ;
++V+TV+Der1+Der/Pass+V:»Q1duvva%> INFL-EVEN ;
++V+TV+Der1+Der/Pass+V+PrfPrc:»Q1duvvu%>m K ;
+!+V+TV+Der1+Der/Pass+V+Der2+Actor:»Q1duvva@C.NeedNoun@  ACTOR ;
++V+TV+Der1+Der/Pass+V+Der3+Der/lis+A:»Q1duvva»Y3liss LIS ;
++V+TV+Der1+Der/Pass+V+Der3+Der/mus+N:»Q1duvva»muss@C.NeedNoun@ MUS ;
++V+TV+Der1+Der/Pass+Der2+Der/duhtte+V:»Q1duhtte%> BASSATINCH ;
++V+TV+Der1+Der/Pass+V+Der3+Der/goahte+V:»X7dalla»goahte%> INFL-EVEN ;
++V+TV+Der1+Der/Pass+V:»X7dalla%> INFL-EVEN ;
+!+V+TV+Der1+Der/Pass+V+Der2+Actor:»X7dalla@C.NeedNoun@  ACTOR ;
++V+TV+Der1+Der/Pass+V+Der3+Der/lis+A:»X7dalla»Y3liss LIS ;
++V+TV+Der1+Der/Pass+V+Der3+Der/mus+N:»X7dalla»muss@C.NeedNoun@ MUS ;
++V+TV+Der1+Der/Pass+Der2+Der/dahtte+V:»X7dahtte%> BASSATINCH ;
++V+TV+Der1+Der/Pass+V+PrfPrc:»Q1dum%> K ;
+
+LEXICON JÅRGGOT_TV !o-verbs with dim -astit that are hardcoded
++V+TV:%> GÁDJOTStem ;
++V+TV: DeverbalVerbsJUHKAT ;
+!+V+TV: EVEN-PASSIVE ; replaced by individual pointers to avoid short pass.
+!+V+TV+Der/Pass+V:»Y9u OADDÁTINCH ; NO SHORT PASS HERE! !replaced by individual pointers to avoid pass + actio, reintroduced since it is usual!
+!+V+TV+Der/Pass+V+Der3+Der/goahte+V:»Y9ugoahte%> INFL-EVEN ;
+!+V+TV+Der/Pass+V:»Y9u INFL-CONTRACTED ;
+!+V+TV+Der/Pass+V+Der2+Actor:»Y9ujiddje@C.NeedNoun@  ACTOR ;
+!+V+TV+Der/Pass+V+Der3+Der/mus+N:»Y9umuss@C.NeedNoun@ MUS ;
++V+TV+Der1+Der/Pass+V+Der3+Der/goahte+V:»Q1duvva»goahte%> INFL-EVEN ;
++V+TV+Der1+Der/Pass+V:»Q1duvva%> INFL-EVEN ;
++V+TV+Der1+Der/Pass+V+PrfPrc:»Q1duvvu%>m K ;
+!+V+TV+Der1+Der/Pass+V+Der2+Actor:»Q1duvva@C.NeedNoun@  ACTOR ;
++V+TV+Der1+Der/Pass+V+Der3+Der/lis+A:»Q1duvva»Y3liss LIS ;
++V+TV+Der1+Der/Pass+V+Der3+Der/mus+N:»Q1duvva»muss@C.NeedNoun@ MUS ;
++V+TV+Der1+Der/Pass+Der2+Der/duhtte+V:»Q1duhtte%> BASSATINCH ;
++V+TV+Der1+Der/Pass+V+Der3+Der/goahte+V:»X7dalla»goahte%> INFL-EVEN ;
++V+TV+Der1+Der/Pass+V:»X7dalla%> INFL-EVEN ;
+!+V+TV+Der1+Der/Pass+V+Der2+Actor:»X7dalla@C.NeedNoun@  ACTOR ;
++V+TV+Der1+Der/Pass+V+Der3+Der/lis+A:»X7dalla»Y3liss LIS ;
++V+TV+Der1+Der/Pass+V+Der3+Der/mus+N:»X7dalla»muss@C.NeedNoun@ MUS ;
++V+TV+Der1+Der/Pass+Der2+Der/dahtte+V:»X7dahtte%> BASSATINCH ;
++V+TV+Der1+Der/Pass+V+PrfPrc:»Q1dum%> K ;
+
+
+LEXICON BÅRSSJOT_IV !o-verbs
++V+IV:%> BÅRSSJOTStem ;
++V+IV: DeverbalVerbsBASSAT ;
++V+IV: SG3PASSV ;
+!+V+IV: SG3PASSEVEN ; no short pass here!
+
+LEXICON VILSSJOT_IV !o-verbs with dim -astit that are hardcoded
++V+IV:%> BÅRSSJOTStem ;
++V+IV: DeverbalVerbsJUHKAT ;
++V+IV: SG3PASSV ;
+!+V+IV: SG3PASSEVEN ; no short pass here!
+
+LEXICON GÁDJOTStem
+ GÁDJOTINCH ;
+! EVEN-PASSIVE ;
+
+LEXICON BÅRSSJOTStem
+ BÅRSSJOTINCH ;
+! EVEN-PASSIVE ;
+
+
+LEXICON GÁDJOTINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-o- ;
+ DeverbalNounsBASSAT ;
+
+LEXICON BÅRSSJOTINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-o- ;
+ DeverbalNounsRAVGGAT ;
+
+
+LEXICON BIEGGATinfl
++Ind+Prs+Sg3:Y2 K ;
++Ind+Prt+Sg3:Q1j K ;
++Ind+ConNeg:Q1 K ;
++Pot+Sg3:Q1sj K ;
++Pot+ConNeg:Q1tja K ;
++Imprt+Sg3:Y1is ENDLEX ;
++ImprtII+Sg3:Y1us ENDLEX ;
++PrfPrc:Y3m K ;
++Inf:t K ;
++Ger:Q1dijn K ;
++Sup:Q2tjit K ;
++VAbess:Q1k K ;
++VAbess:Q1dak K ;
++VAbess:Q1k VUOHTA ;
++VAbess:Q1dak VUOHTA ;
++VGen:Q1 K ;
++Imprt+ConNeg:Q1 ENDLEX ;
++Der3+Der/goahte+V+Inf:»goahte%>t K ;
++Der3+Der/goahte+V+Ind+Prs+Sg3:»goahtá%> K ;
++Der3+Der/goahte+V+Ind+Prt+Sg3:»gådi%>j K ;
++Actio+Nom:m K ;
++Actio+Gen:ma K ;
++Actio+Com:mijn K ;
++Actio+Ess:min K ;
++Actio+Ela:mis K ;
++Der3+Der/NomAct+N+Sg+Nom:»m K ;
++Der3+Der/NomAct+N+SgNomCmp:»m R ;
++Der3+Der/NomAct+N+Sg+Acc:»mav K ;
++Der3+Der/NomAct+N+Sg+Gen:»ma K ;
++Der3+Der/NomAct+N+Sg+Ill:»mij K ;
++Der3+Der/NomAct+N+Sg+Ine:»min K ;
++Der3+Der/NomAct+N+Sg+Ela:»mis K ;
++Der3+Der/NomAct+N+Sg+Com:»mijn K ;
++Der3+Der/NomAct+N+Sg+Com+Use/Sub:»mijna K ; !
++Der3+Der/NomAct+N+Sg+Ess:»min K ;
+
+
+LEXICON GALSSJOTinfl
++Ind+Prs+Sg3:Y2 K ;
++Ind+Prt+Sg3:Q1j K ;
++Ind+ConNeg:Q1 K ;
++Pot+Sg3:Q1sj K ;
++Pot+ConNeg:Q1tja K ;
++Imprt+Sg3:Y1s ENDLEX ;
++ImprtII+Sg3:Y1s ENDLEX ;
++PrfPrc:Y3m K ;
++Inf:t K ;
++Ger:Q1dijn K ;
++Sup:Q1tjit K ;
++Sup:X7tjit K ;
++VAbess:Q1k K ;
++VAbess:Q1dak K ;
++VAbess:Q1k VUOHTA ;
++VAbess:Q1dak VUOHTA ;
++VGen:Q1 K ;
++Imprt+ConNeg:Q1 ENDLEX ;
++Der3+Der/goahte+V+Inf:»goahte%>t K ;
++Der3+Der/goahte+V+Ind+Prs+Sg3:»goahtá%> K ;
++Der3+Der/goahte+V+Ind+Prt+Sg3:»gådi%>j K ;
++Actio+Nom:m K ;
++Actio+Gen:ma K ;
++Actio+Com:mijn K ;
++Actio+Ess:min K ;
++Actio+Ela:mis K ;
++Der3+Der/NomAct+N+Sg+Nom:»m K ;
++Der3+Der/NomAct+N+SgNomCmp:»m R ;
++Der3+Der/NomAct+N+Sg+Acc:»mav K ;
++Der3+Der/NomAct+N+Sg+Gen:»ma K ;
++Der3+Der/NomAct+N+Sg+Ill:»mij K ;
++Der3+Der/NomAct+N+Sg+Ine:»min K ;
++Der3+Der/NomAct+N+Sg+Ela:»mis K ;
++Der3+Der/NomAct+N+Sg+Com:»mijn K ;
++Der3+Der/NomAct+N+Sg+Com+Use/Sub:»mijna K ; !
++Der3+Der/NomAct+N+Sg+Ess:»min K ;
+
+
+! Odd-syllable stems
+! ------------------
+
+LEXICON ITINC
+UNNEDIT_TV ;
+! This is just awaiting a manual classification
+! of incoming verbs from the smesmj dictionary project.
+
+LEXICON BIEKKASTIT_IV !Impersonals
++V+IV: DeverbalVerbsBIEKKASTIT ;
++V+IV:%> BIEKKASTITinfl ;
++V+IV: SG3PASS ;
+
+
+LEXICON BIEKKASTITinfl
++Ind+Prs+Sg3: K ;
++Ind+Prt+Sg3:ij K ;
++Ind+ConNeg:a K ;
++Pot+Sg3:isj K ;
++Pot+ConNeg:itja K ;
++Imprt+Sg3:is ENDLEX ;
++ImprtII+Sg3:us ENDLEX ;
++PrfPrc:am K ;
++Inf:it K ;
++Ger:attijn K ;
++Sup:ittjat K ;
++VAbess:ik K ;
++VAbess:ik VUOHTA ;
++VGen:a K ;
++Imprt+ConNeg:a ENDLEX ;
++Der3+Der/goahte+V+Inf:asj»goahte%>t K ;
++Der3+Der/goahte+V+Ind+Prs+Sg3:asj»goahtá%> K ;
++Der3+Der/goahte+V+Ind+Prt+Sg3:asj»gådi%>j K ;
++Der1+Der/ahtja+V+Inf:»ahtjá%>t K ;
++Der1+Der/ahtja+V+Ind+Prs+Sg3:»ahtjá%> K ;
++Der1+Der/ahtja+V+Ind+Prt+Sg3:»atjá%>j K ;
++Actio+Nom:ibme K ;
++Actio+Gen+Use/Sub:im K ;
++Actio+Gen:ime K ;
++Actio+Com:imijn K ;
++Actio+Ess:ime K ;
++Actio+Ess:imen K ;
++Actio+Ela:imes K ;
++Der2+Der/NomAct+N+Sg+Nom:»ibme%> K ;
++Der2+Der/NomAct+N+SgNomCmp:»im%> R ;
++Der2+Der/NomAct+N+Ess:»ibme%>n K ;
++Der2+Der/NomAct+N+Sg+Acc:»ime%>v K ;
++Der2+Der/NomAct+N+Sg+Gen:»ime%> K ;
++Der2+Der/NomAct+N+Sg+Ill:»ibmá%>j K ;
++Der2+Der/NomAct+N+Sg+Ine:»ime%>n K ;
++Der2+Der/NomAct+N+Sg+Ela:»ime%>s K ;
++Der2+Der/NomAct+N+Sg+Com:»imi%>jn K ;
+ +Der2+Der/NomAct+N+Sg+Com+Use/Sub:»imi%>jna K ; !
+
+
+
+LEXICON UNNEDIT_TV ! Transitives
+ +V+TV:%> UNNEDITStem ;
+ +V+TV: DeverbalVerbsJÅLLÅRIT ;
+ +V+TV: ODD-PASSIVE ;
+
+LEXICON MUJTATJIT_TV  !Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but reintroduced
+ +V+TV:%> MUJTATJITStem ;
+ +V+TV: ODD-PASSIVE ;
+ +V+TV+Der1+Der/ahtja+V:»ahtja%> INFL-EVEN ;                 !Inchoative
+ +V+TV+Der1+Der/ahtja+V:»ahtja DeverbalNounsBASSALASSTET ; !Inchoative
+
+
+
+
+LEXICON BÅNJÅDIT_TV  !continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms
+ +V+TV:%> UNNEDITStem ;
+ +V+TV: ODD-PASSIVE ;
+ +V+TV+Der1+Der/ahtja+V:»ahtja%> INFL-EVEN ;                 !Inchoative
+ +V+TV+Der1+Der/ahtja+V:»ahtja DeverbalNounsBASSALASSTET ; !Inchoative
+
+
+
+
+LEXICON VUORDDELIT_TV !Trisyllabic Verbs ending -lit
+ +V+TV:%> UNNEDITStem ;
+ +V+TV: DeverbalVerbsVUORDDELIT ;
+ +V+TV: ODD-PASSIVE ;
+
+
+
+
+LEXICON JÅLLÅRIT_IV !At the moment IV, we may perhaps change IV/TV.
+ +V+IV:%> JÅLLÅRITStem ;
+ +V+IV: DeverbalVerbsJÅLLÅRIT ;
+ +V+IV: SG3PASS ;
+
+LEXICON BEGATJIT_IV  !Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but reintroduced
+ +V+IV:%> BEGATJITStem ;
+ +V+IV: SG3PASS ;
+ +V+IV+Der1+Der/ahtja+V:»ahtja%> INFL-EVEN ;                 !Inchoative
+ +V+IV+Der1+Der/ahtja+V:»ahtja DeverbalNounsBASSALASSTET ; !Inchoative
+
+
+
+LEXICON BALÁDIT_IV  !continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms
+ +V+IV:%> JÅLLÅRITStem ;
+ +V+IV: SG3PASS ;
+ +V+IV+Der1+Der/ahtja+V:»ahtja%> INFL-EVEN ;                 !Inchoative
+ +V+IV+Der1+Der/ahtja+V:»ahtja DeverbalNounsBASSALASSTET ; !Inchoative
+
+
+LEXICON SUOGNALIT_IV !Trisyllabic Verbs ending -lit
+ +V+IV:%> JÅLLÅRITStem ;
+ +V+IV: DeverbalVerbsVUORDDELIT ;
+ +V+IV: SG3PASS ;
+
+LEXICON LASSÁNIT_IV !verbs ending -nit, -sit
+ +V+IV:%> JÅLLÅRITStem ;
+ +V+IV: DeverbalVerbsLASSÁNIT ;
+
+LEXICON BÁHTARIT_IV !verbs ending -rit
+ +V+IV:%> JÅLLÅRITStem ;
+ +V+IV: DeverbalVerbsLASSÁNIT ;
+ +V+IV: SG3PASS ;
+
+LEXICON JÅLLÅRITStem
+ JÅLLÅRITINCH ;
+! ODD-PASSIVE ; ! this must go for TV only.
+
+LEXICON UNNEDITStem
+ UNNEDITINCH ;
+! ODD-PASSIVE ; ! this must go for TV only.
+
+
+LEXICON JÅLLÅRITINCH
+ +Der3+Der/goahte+V:asj»goahte%> INFL-EVEN ;
+ INFL-ODD ;
+ DeverbalNounsJÅLLÅRIT ;
+
+LEXICON UNNEDITINCH
+ +Der3+Der/goahte+V:asj»goahte%> INFL-EVEN ;
+ INFL-ODD ;
+ DeverbalNounsUNNEDIT ;
+
+
+LEXICON MUJTATJITStem
+ MUJTATJITINCH ;
+! ODD-PASSIVE ; ! this must go for TV only.
+
+LEXICON BEGATJITStem
+ BEGATJITINCH ;
+! ODD-PASSIVE ; ! this must go for TV only.
+
+
+LEXICON MUJTATJITINCH
+ +Der3+Der/goahte+V:asj»goahte%> INFL-EVEN ;
+ INFL-ODD ;
+ DeverbalNounsMUJTATJIT ;
+
+LEXICON BEGATJITINCH
+ +Der3+Der/goahte+V:asj»goahte%> INFL-EVEN ;
+ INFL-ODD ;
+ DeverbalNounsBEGATJIT ;
+
+
+! Contracted stems
+! ----------------
+
+LEXICON SJIERRIT_IV !Impersonals
++V+IV: DeverbalVerbsSJIERRIT ;
++V+IV:%> SJIERRITinfl ;
++V+IV:d SG3PASS ;
+
+
+LEXICON SJIERRITinfl
++Ind+Prs+Sg3: K ;
++Ind+Prt+Sg3:j K ;
++Ind+ConNeg: K ;
++Pot+Sg3:sj K ;
++Pot+ConNeg:tja K ;
++Imprt+Sg3:jis ENDLEX ;
++ImprtII+Sg3:jus ENDLEX ;
++PrfPrc:m K ;
++Inf:t K ;
++Ger:dijn K ;
++Sup:tjit K ;
++VAbess:k K ;
++VAbess:dak K ;
++VAbess:k VUOHTA ;
++VAbess:dak VUOHTA ;
++VGen: K ;
++Imprt+ConNeg: ENDLEX ;
++Der3+Der/goahte+V+Inf:»goahte%>t K ;
++Der3+Der/goahte+V+Ind+Prs+Sg3:»goahtá%> K ;
++Der3+Der/goahte+V+Ind+Prt+Sg3:»gådi%>j K ;
++Actio+Nom:m K ;
++Actio+Gen:ma K ;
++Actio+Com:mijn K ;
++Actio+Ess:min K ;
++Actio+Ela:mis K ;
++Der3+Der/NomAct+N+Sg+Nom:»m K ;
++Der3+Der/NomAct+N+SgNomCmp:»m R ;
++Der3+Der/NomAct+N+Sg+Acc:»mav K ;
++Der3+Der/NomAct+N+Sg+Gen:»ma K ;
++Der3+Der/NomAct+N+Sg+Ill:»mij K ;
++Der3+Der/NomAct+N+Sg+Ine:»min K ;
++Der3+Der/NomAct+N+Sg+Ela:»mis K ;
++Der3+Der/NomAct+N+Sg+Com:»mijn K ;
+ +Der3+Der/NomAct+N+Sg+Com+Use/Sub:»mijna K ; !
++Der3+Der/NomAct+N+Sg+Ess:»min K ;
+
+
+LEXICON OADDÁT_IV ! Does not make nouns via -ár derivation
+ +V+IV:%> OADDÁTStem ;
+ +V+IV: DeverbalVerbsOADDÁT ;
+ +V+IV:d SG3PASS ;
+
+LEXICON TJUOLLÁT_TV ! Does not make nouns via -ár derivation
+ +V+TV:%> TJUOLLÁTStem ;
+ +V+TV: DeverbalVerbsOADDÁT ;
+ +V+TV:  CONTR-PASSIVE ;
+
+LEXICON STRÁFFUT_TV ! Does not make nouns via -ár derivation
+ +V+TV:%> STRÁFFUTStem ;
+ +V+TV: DeverbalVerbsOADDÁT ;
+ +V+TV: CONTR-PASSIVE ;
+
+LEXICON DULLUT_IV ! Does not make nouns via -ár derivation
+ +V+IV:%> DULLUTStem ;
+ +V+IV: DeverbalVerbsOADDÁT ;
+ +V+IV:d SG3PASS ;
+
+
+LEXICON TSIEGGIT_TV ! Make nouns via -ár derivation
+ +V+TV:%> STRÁFFUTStem ;
+ +V+TV: DeverbalVerbsOADDÁT ;
+ +V+TV+Der1+Der/r+N+CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:»Y5r N-ODDCASE ; !
+ +V+TV+Der1+Der/r+N+CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft:»Y5r OTH-ODDCASE ; !
+ +V+TV:  CONTR-PASSIVE ;
+
+LEXICON VALLIT_TV ! Make nouns via -ár derivation
+ +V+IV:%> DULLUTStem ;
+ +V+IV: DeverbalVerbsOADDÁT ;
+ +V+IV+Der1+Der/r+N:»Y5r N-ODDCASE ; ! -ár derivation
+ +V+IV+Der1+Der/r+N:»Y5r OTH-ODDCASE ; ! -ár derivation
+ +V+IV:d SG3PASS ;
+
+
+LEXICON BASSUT_IV !Passives
+ +V+IV+Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ +V+IV:%> INFL-CONTRACTED ;
+ +V+IV: DeverbalVerbsOADDÁT ;
+! +V+IV+Der2+Actor:»jiddje@C.NeedNoun@  ACTOR ;
+ +V+IV+Actio+Nom:m K ;
+ +V+IV+Actio+Gen:ma K ;
+ +V+IV+Actio+Com:mijn K ;
+ +V+IV+Actio+Ess:min K ;
+ +V+IV+Actio+Ela:mis K ;
+ +V+IV+Der3+Der/NomAct:»m@C.NeedNoun@ OADDÁM ;
+ +V+IV+Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+
+
+LEXICON OADDÁTStem
+ OADDÁTINCH ;
+! CONTR-PASSIVE ;
+
+LEXICON TJUOLLÁTStem
+ TJUOLLÁTINCH ;
+! CONTR-PASSIVE ;
+
+
+LEXICON OADDÁTINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-CONTRACTED ;
+ DeverbalNounsOADDÁT ;
+
+LEXICON TJUOLLÁTINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-CONTRACTED ;
+ DeverbalNounsTJUOLLÁT ;
+
+
+LEXICON STRÁFFUTStem
+ STRÁFFUTINCH ;
+! CONTR-PASSIVE ;
+
+LEXICON DULLUTStem
+ DULLUTINCH ;
+! CONTR-PASSIVE ;
+
+
+LEXICON STRÁFFUTINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-CONTRACTED ;
+ DeverbalNounsSTRÁFFUT ;
+
+LEXICON DULLUTINCH
+ +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
+ INFL-CONTRACTED ;
+ DeverbalNounsDULLUT ;
+
+
+! Main inflectional categories
+! ----------------------------
+
+LEXICON INFL-EVEN
+! Finite
++Ind+Prs: I-even-V ;
++Ind+Prt: II-even-V ;
++Pot:Q1tj I-odd-V ;
+ +Imprt+Sg2:Q1 ENDLEX ; ! Basic Imperative, like ConNeg
+ +Imprt+Du2:Y6 ENDLEX ; ! Ad hoc solution. We need a II => III operation here !! (todo)
++Imprt:Y1 IMP7-EVEN ;
++Imprt+Du1:Y8on ENDLEX ;
++Imprt+Pl1:Y8op ENDLEX ;
++ImprtII:Y1u IMP8-EVEN ;
+! Infinite
++Inf:t K ;
++PrfPrc:Y3m K ;
+!+PrsPrc: NOADE ; ! Noun, not correct, III grade!
++Ger:Q1dijn K ;
++Sup:Q2tjit K ;
++VAbess:Q1k K ;
++VAbess:Q1dak K ;
++VAbess:Q1k VUOHTA ;
++VAbess:Q1dak VUOHTA ;
++VGen:Q1 K ;
+! ConNeg
++Ind+ConNeg:Q1 K ;
+!+Ind+Prs+ConNeg:Q1 K ;  ! What is this?
+!+Ind+Prt+ConNeg:Y3m K ; ! What is this?
++Pot+ConNeg:Q1tja K ;
++Imprt+ConNeg:Q1 ENDLEX ;
++ImprtII+ConNeg: ImprtIIConNeg ;
++Actio+Nom:m K ;
++Actio+Gen:ma K ;
++Actio+Com:mijn K ;
++Actio+Ess:min K ;
++Actio+Ela:mis K ;
+
+
+LEXICON INFL-VIEDJETEVEN
+! Finite
++Ind+Prs: I-even-V ;
++Ind+Prt: II-even-V ;
++Pot:Q1tj I-odd-V ;
+ +Imprt+Sg2:Q1 ENDLEX ; ! Basic Imperative, like ConNeg
+ +Imprt+Du2:Y6 ENDLEX ; ! Ad hoc solution. We need a II => III operation here !! (todo)
++Imprt:Y1 IMP7-EVEN ;
++Imprt+Du1:Y8on ENDLEX ;
++Imprt+Pl1:Y8op ENDLEX ;
++ImprtII:Q8u IMP8-EVEN ;
+! Infinite
++Inf:t K ;
++PrfPrc:Y3m K ;
+!+PrsPrc: NOADE ; ! Noun, not correct, III grade!
++Ger:Q1dijn K ;
++Sup:Q2tjit K ;
++VAbess:Q1k K ;
++VAbess:Q1dak K ;
++VAbess:Q1k VUOHTA ;
++VAbess:Q1dak VUOHTA ;
++VGen:Q1 K ;
+! ConNeg
++Ind+ConNeg:Q1 K ;
+!+Ind+Prs+ConNeg:Q1 K ;  ! What is this?
+!+Ind+Prt+ConNeg:Y3m K ; ! What is this?
++Pot+ConNeg:Q1tja K ;
++Imprt+ConNeg:Q1 ENDLEX ;
++ImprtII+ConNeg: ImprtIIConNeg ;
++Actio+Nom:m K ;
++Actio+Gen:ma K ;
++Actio+Com:mijn K ;
++Actio+Ess:min K ;
++Actio+Ela:mis K ;
+
+
+LEXICON INFL-o-
+! Finite
++Ind+Prs: I-o-V ;
++Ind+Prt: II-o-V ;
++Pot:Q1tj I-odd-V ;
+ +Imprt+Sg2:Q1 ENDLEX ; ! Basic Imperative, like ConNeg
+ +Imprt+Du2:Y6 ENDLEX ; ! Ad hoc solution. We need a II => III operation here !! (todo)
++Imprt: IMP7-o- ;
++ImprtII:Y1 IMP8-EVEN ;
+! Infinite
++Inf:t K ;
++PrfPrc:Y3m K ;
+!+PrsPrc:Y6 NOADE ; ! Noun, not correct, III grade!
++Ger:Q1dijn K ;
++Sup:Q1tjit K ;
++Sup:X7tjit K ;
++VAbess:Q1k K ;
++VAbess:Q1dak K ;
++VAbess:Q1k VUOHTA ;
++VAbess:Q1dak VUOHTA ;
++VGen:Q1 K ;
+! ConNeg
++Ind+ConNeg:Q1 K ;
++Pot+ConNeg:Q1tja K ;
++Imprt+ConNeg:Q1 ENDLEX ;
++ImprtII+ConNeg: ImprtIIConNeg-o- ;
++Actio+Nom:m K ;
++Actio+Gen:ma K ;
++Actio+Com:mijn K ;
++Actio+Ess:min K ;
++Actio+Ela:mis K ;
+!+Ind+Prs+ConNeg:Q1 K ;
+!+Ind+Prt+ConNeg:Y3m K ;
+
+
+LEXICON INFL-ODD
+! Finite
+ +Ind+Prs: I-odd-V ;
+ +Ind+Prt: II-odd-V ;
+ +Pot+Sg1:ittja%>v K ;
+ +Pot+Sg2:ittja%> K ;
+ +Pot+Sg3:isj%> K ;
+ +Pot+Du1:ittji%>n K ;
+ +Pot+Du2:ittja%>bihtte%> K ;
+ +Pot+Du3:ittja%>ba K ;
+ +Pot+Pl1:ittja%>p K ;
+ +Pot+Pl2:ittja%>bihti%>t K ;
+ +Pot+Pl2+Use/Sub:ittja%>behti%>t K ; !
+ +Pot+Pl3:ittji%> K ;
+ +Imprt+Sg2:a ENDLEX ;
+ +Imprt: IMP7-ODD ;
+ +ImprtII:u IMP8-ODD ;
+! Infinite
+ +Inf:it K ;
+ +PrfPrc:am K ;
+! +PrsPrc:iddje NOADE ; ! as nouns
+ +Ger:attijn K ;
+ +Sup:ittjat K ;
+ +VAbess:ik K ;
+ +VAbess:ik VUOHTA ;
+ +VGen:a K ;
+ +Ind+ConNeg:a K ;
+ +Pot+ConNeg:ittja%> K ; !tentative
+ +Ind+ConNeg:a K ;
+ +ImprtII+ConNeg: ImprtIIConNeg ;
+ +Actio+Nom:ibme K ;
+ +Actio+Gen:im K ;
+ +Actio+Gen:ime K ;
+ +Actio+Com:imijn K ;
+ +Actio+Ess:ime K ;
+ +Actio+Ess:imen K ;
+ +Actio+Ela:imes K ;
+
+
+
+LEXICON INFL-CONTRACTED
+! Finite
+ +Ind+Prs: I-contr-V ;
+ +Ind+Prt: II-contr-V ;
+ +Pot:tj I-odd-V ;
+ +Imprt+Sg2: ENDLEX ;
+ +Imprt+Du2:jihtte%> ENDLEX ;
+ +Imprt+Pl2:jit ENDLEX ;
+ +Imprt+Pl2:jihti%>t ENDLEX ;
+ +Imprt:ji IMP-CONTRACTED ;
+ +ImprtII+Sg2:ju ENDLEX ;
+ +ImprtII+Du2:juhtu%> ENDLEX ;
+ +ImprtII+Pl2:juhtu%>t ENDLEX ;
+ +ImprtII:ju IMP-CONTRACTED ;
+! Infinite
+ +Inf:t K ;
+ +PrfPrc:m K ;
+! +PrsPrc:jiddje NOADE ;
+ +Ger:dijn K ;
+ +Sup:tjit K ;
+ +VAbess:k K ;
+ +VAbess:dak K ;
+ +VAbess:k VUOHTA ;
+ +VAbess:dak VUOHTA ;
+ +VGen: K ;
+ +Ind+ConNeg: K ;
+ +Pot+ConNeg:tja K ; !tentative
+ +Ind+ConNeg: K ;
+ +ImprtII+ConNeg:j ImprtIIConNeg ;
+ +Actio+Nom:m K ;
+ +Actio+Gen:ma K ;
+ +Actio+Com:mijn K ;
+ +Actio+Ess:min K ;
+ +Actio+Ela:mis K ;
+
+
+
+
+
+! Intermediate suffix lexica
+! --------------------------
+
+! These intermediate lexica are here for
+! morphophonological reasons.
+
+LEXICON I-even-V
+ :Q2 I-sg72 ;     ! Q2 governs WeG and e:á
+ :Y2 I-sg9 ;	  ! Y2 gives á in sg9 of verbs
+ I-du83pl72 ; ! No diacritic, no stem changes
+ :Y1 I-du7pl9 ;	  ! Y1 deletes stem vowels in front of j
+
+LEXICON I-diehtet-V
+ :á%>Q1 I-sg72 ;
+ :á%>   I-sg9 ;
+ :e%>   I-du83pl72 ;
+ :%>    I-du7pl9 ;
+
+LEXICON II-even-V
+ :Y1 II-sg72pl9 ; ! Y1 deletes stem vowels in front of j
+ :Q1 II-other ;   ! Q1, WeG. Q1 deletes stem vow bef. j
+                  ! Y1 does not give WeG as Q1 does, therefore the split
+
+LEXICON I-o-V
+ :Q2 I-sg72 ;	   ! Q2 governs WeG and e:á
+ :Y2 I-sg9 ;	   ! Y2 gives á in sg9 of verbs
+ I-du83pl72 ;  ! No diacritic, no stem changes
+ :Y1 I-du7pl9-o- ; ! Y1 deletes stem vowels in front of j
+
+LEXICON II-o-V
+ :Y1 II-sg72pl9-o- ; ! Y1 deletes stem vowels in front of j
+ :Q1 II-other ;	     ! Q1, WeG. Q1 deletes stem vow bef. j
+		     ! Y1 does not give WeG as Q1 does, therefore the split
+
+LEXICON II-odd-V
+ II-sg72pl9 ;
+ :i II-other ;
+
+LEXICON I-contr-V
+ I-sg72 ;
+ I-sg9 ;
+ I-du83pl72 ;
+ :j I-du7pl9 ;
+
+LEXICON II-contr-V
+ :j II-sg72pl9 ;
+ : II-other ; !w/o j, since j in target lexicon
+
+
+
+! Final suffix lexica
+! -------------------
+
+! Suffix series I
+! - - - - - - - -
+
+LEXICON I-sg72
++Sg1:v K ;
++Sg2: K ;
+
+LEXICON I-sg9
++Sg3: K ;
+
+LEXICON I-du83pl72
++Du2:bihtte%> K ;
++Du3:ba K ;
++Pl1:p K ;
++Pl2:bihti%>t K ;
+ +Pl2+Use/Sub:behti%>t K ; !
+
+LEXICON I-du7pl9
++Du1:in K ;
++Pl3:i K ;
+
+LEXICON I-du7pl9-o-
++Du1:n K ;
++Pl3: K ;
+
+LEXICON I-odd-V
++Sg1:av K ;
++Sg2:a K ;
++Sg3: K ;
++Du1:in K ;
++Du2:ihppe%> K ;
++Du3:ibá%> K ;
++Pl1:ip K ;
++Pl2:ihpi%>t K ;
++Pl3:i K ;
+
+
+! Suffix series II
+! - - - - - - - -
+
+LEXICON II-sg72pl9
++Sg1:iv K ;
++Sg2:i K ;
++Pl3:in K ;
+
+LEXICON II-sg72pl9-o-
++Sg1:v K ;
++Sg2: K ;
++Pl3:n K ;
+
+LEXICON II-other
++Sg3:j K ;
++Du1:jma K ;
++Du2:jda K ;
+ +Du1+Use/Sub:jme K ; !
+ +Du2+Use/Sub:jde K ; !
++Du3:jga K ;
++Pl1:jma K ;
++Pl2:jda K ;
+ +Pl1+Use/Sub:jme K ; !
+ +Pl2+Use/Sub:jde K ; !
+
+
+
+! Imperative series
+! - - - - - - - - -
+
+! Affirmative
+
+LEXICON IMP7-EVEN
+ +Sg3:is K ;
+ +Du3:iska K ;
+ +Pl2:it K ;
+ +Pl3:isa K ;
+
+LEXICON IMP7-o-
+ +Sg3:Y1s K ;
+ +Du1:n K ;
+ +Du3:Y1ska K ;
+ +Pl1:p K ;
+ +Pl2:Y1t K ;
+ +Pl3:Y1sa K ;
+
+LEXICON IMP8-EVEN
+ +Sg2: K ;
+ +Sg3:s K ;
+ +Du1:n K ;
+ +Du2:da K ;
+ +Du3:ska K ;
+ +Pl1:p K ;
+ +Pl2:t K ;
+ +Pl3:sa K ;
+
+
+LEXICON IMP7-ODD
+ +Sg3:is K ;
+ +Du1:in'no%> K ;
+ +Du2:ihtte%> K ;
+ +Du3:iska%> K ;
+ +Pl1:ip K ;
+ +Pl2:it K ;
+ +Pl2:ihti%>t K ;
+ +Pl3:isá%> K ;
+
+LEXICON IMP8-ODD
+ +Sg2: K ;
+ +Sg3:s K ;
+ +Du1:n'no%> K ;
+ +Du2:htu%> K ;
+ +Du3:ska%> K ;
+ +Pl1:p K ;
+ +Pl2:htu%>t K ;
+ +Pl3:sá%> K ;
+
+
+LEXICON IMP-CONTRACTED !Imp7 & Imp8 have common suffs
+! +Sg2: K ;
+ +Sg3:s K ;
+ +Du1:n'no%> K ;
+ +Du3:ska%> K ;
+ +Pl1:p K ;
+ +Pl3:sá%> K ;
+
+
+! Negative
+
+LEXICON ImprtIIConNeg
++Sg2:Y1u K ;
++Du2:Y1u K ;
++Pl2:Y1u K ;
+
+
+LEXICON ImprtIIConNeg-o-
++Sg2:Y1 K ;
++Du2:Y1 K ;
++Pl2:Y1 K ;
+
+!We probably don't want to generate these.
+!We use the ordinary ConNeg instead. Cf. Spiik p. 75.
+!+Sg3:Q1 K ;
+!+Du1:Q1 K ;
+!+Du3:Q1 K ;
+!+Pl1:Q1 K ;
+!+Pl3:Q1 K ;
+
+
+! Verb Derivation
+! --------------------
+
+
+! Passive derivation
+! - - - - - - - - - -
+
+LEXICON SG3PASSEVEN
+ +Der/Pass+V:»Y9u SG3PASSEVENinfl ;
+
+LEXICON SG3PASSEVENinfl
++Ind+Prs+Sg3: K ;
++Ind+Prt+Sg3:j K ;
++Ind+ConNeg: K ;
++Pot+Sg3:sj K ;
++Pot+ConNeg:tja K ;
++Imprt+Sg3:jis ENDLEX ;
++ImprtII+Sg3:jus ENDLEX ;
++PrfPrc:m K ;
++Inf:t K ;
++Ger:dijn K ;
++Sup:tjit K ;
++VAbess:k K ;
++VAbess:dak K ;
++VAbess:k VUOHTA ;
++VAbess:dak VUOHTA ;
++VGen: K ;
++Imprt+ConNeg: ENDLEX ;
++Der3+Der/goahte+V+Inf:»goahte%>t K ;
++Der3+Der/goahte+V+Ind+Prs+Sg3:»goahtá%> K ;
++Der3+Der/goahte+V+Ind+Prt+Sg3:»gådi%>j K ;
++Actio+Nom:m K ;
++Actio+Gen:ma K ;
++Actio+Com:mijn K ;
++Actio+Ess:min K ;
++Actio+Ela:mis K ;
++Der3+Der/NomAct:»m@C.NeedNoun@ VSBST-ODD ;
+
+
+LEXICON SG3PASSV
+ :%>Q1d SG3PASS ;
+
+LEXICON SG3PASS
+ +Der1+Der/Pass+V:»uvva%> BIEGGATinfl ;
+ +Der1+Der/Pass+V+PrfPrc:»um K ;
+ +Der1+Der/Pass+V+PrfPrc:»uvvu%>m K ;
+
+
+LEXICON EVEN-PASSIVE
+! +Der/Pass+V:»Y9u OADDÁTINCH ; !replaced by individual pointers to avoid pass + Actor
+ +Der/Pass+V+Actio+Nom:m K ;
+ +Der/Pass+V+Actio+Gen:ma K ;
+ +Der/Pass+V+Actio+Com:mijn K ;
+ +Der/Pass+V+Actio+Ess:min K ;
+ +Der/Pass+V+Actio+Ela:mis K ;
+ +Der/Pass+V+Der3+Der/NomAct:»Y9u»m@C.NeedNoun@ OADDÁM ;
+ +Der/Pass+V+Der3+Der/mus+N:»Y9u»muss@C.NeedNoun@ MUS ;
+ +Der/Pass+V+Der3+Der/goahte+V:»Y9u»goahte%> INFL-EVEN ;
+ +Der/Pass+V:»Y9u INFL-CONTRACTED ; 
+ +Der1+Der/Pass+V+Der3+Der/goahte+V:»Q1duvva»goahte%> INFL-EVEN ;
+ +Der1+Der/Pass+V:»Q1duvva%> INFL-EVEN ;
+ +Der1+Der/Pass+V+Actio+Ela:»Q1duvvamis K ;
+ +Der1+Der/Pass+V+Actio+Nom:»Q1duvvam K ;
+ +Der1+Der/Pass+V+Actio+Gen:»Q1duvvama K ;
+ +Der1+Der/Pass+V+Actio+Com:»Q1duvvamijn K ;
+ +Der1+Der/Pass+V+Actio+Ess:»Q1duvvamin K ;
+ +Der1+Der/Pass+V+Der3+Der/NomAct:»Q1duvva»m VSBST-ODD ;
+ +Der1+Der/Pass+V+PrfPrc:»Q1duvvu%>m K ;
+! +Der1+Der/Pass+V+Der2+Actor:»Q1duvva@C.NeedNoun@  ACTOR ;
+ +Der1+Der/Pass+V+Der3+Der/lis+A:»Q1duvva»Y3liss LIS ;
+ +Der1+Der/Pass+V+Der3+Der/mus+N:»Q1duvva»muss@C.NeedNoun@ MUS ;
+ +Der1+Der/Pass+Der2+Der/duhtte+V:»Q1duhtte%> BASSATINCH ;
+ +Der1+Der/Pass+V+Der3+Der/goahte+V:»X7dalla»goahte%> INFL-EVEN ;
+ +Der1+Der/Pass+V:»X7dalla%> INFL-EVEN ;
+! +Der1+Der/Pass+V+Der2+Actor:»X7dalla@C.NeedNoun@  ACTOR ;
+ +Der1+Der/Pass+V+Der3+Der/lis+A:»X7dalla»Y3liss LIS ;
+ +Der1+Der/Pass+V+Der3+Der/mus+N:»X7dalla»muss@C.NeedNoun@ MUS ;
+ +Der1+Der/Pass+Der2+Der/dahtte+V:»X7dahtte%> BASSATINCH ;
+ +Der1+Der/Pass+V+PrfPrc:»Q1dum%> K ;
+
+LEXICON ODD-PASSIVE
+! +Der1+Der/Pass+V:»uvva%> BASSATINCH ; !replaced by individual pointers to avoid pass + Actor
+ +Der1+Der/Pass+V+Der3+Der/goahte+V:»uvva%>»goahte%> INFL-EVEN ;
+ +Der1+Der/Pass+V:»uvva%> INFL-EVEN ;
+ +Der1+Der/Pass+V+Der3+Der/lis+A:»uvva%>»Y3liss LIS ;
+ +Der1+Der/Pass+V+Der3+Der/NomAct:»uvva%>»m@C.NeedNoun@ BOAHTEMTV ;
+ +Der1+Der/Pass+V+Actio+Nom:»uvvam K ;
+ +Der1+Der/Pass+V+Actio+Gen:»uvvama K ;
+ +Der1+Der/Pass+V+Actio+Com:»uvvamijn K ;
+ +Der1+Der/Pass+V+Actio+Ess:»uvvamin K ;
+ +Der1+Der/Pass+V+Actio+Ela:»uvvamis K ;
+ +Der1+Der/Pass+V+Der3+Der/mus+N:»uvva%>»muss@C.NeedNoun@ MUS ;
+ +Der1+Der/Pass+V+PrfPrc:»uvvu%>m K ;
+ +Der1+Der/Pass+Der2+Der/duhtte+V:»uhtte%> BASSATINCH ;
+ +Der1+Der/Pass+V+PrfPrc:»um%> K ;
+
+
+LEXICON CONTR-PASSIVE
+! +Der1+Der/Pass+V:»duvva%> BASSATINCH ;!replaced by individual pointers to avoid pass + Actor
++Der1+Der/Pass+V+Der3+Der/goahte+V:»duvva%>»goahte%> INFL-EVEN ;
+ +Der1+Der/Pass+V+PrfPrc:»duvvu%>m K ;
+ +Der1+Der/Pass+V:»duvva%> INFL-EVEN ;
+ +Der1+Der/Pass+V+Der3+Der/lis+A:»duvva%>»Y3liss LIS ;
+ +Der1+Der/Pass+V+Der3+Der/NomAct:»duvva%>»m@C.NeedNoun@ BOAHTEMTV ;
+ +Der1+Der/Pass+V+Actio+Nom:»duvvam K ;
+ +Der1+Der/Pass+V+Actio+Gen:»duvvama K ;
+ +Der1+Der/Pass+V+Actio+Com:»duvvamijn K ;
+ +Der1+Der/Pass+V+Actio+Ess:»duvvamin K ;
+ +Der1+Der/Pass+V+Actio+Ela:»duvvamis K ;
+ +Der1+Der/Pass+V+Der3+Der/mus+N:»duvva%>»muss@C.NeedNoun@ MUS ;
+ +Der1+Der/Pass+Der2+Der/duhtte+V:»duhtte%> BASSATINCH ;
+ +Der1+Der/Pass+V+PrfPrc:»dum%> K ;
+
+
+LEXICON DUVVAT !deadjectival verbs from -dibme
+ +Der2+Der/duvva+V:»uvva%> BASSATINCH ;
+ +Der2+Der/duvva+V+PrfPrc:»uvvu%>m K ;
+ +Der2+Der/duhtte+V:»uhtte%> BASSATINCH ;
+
+
+
+! Even-syllabic stems
+! - - - - - - - - - -
+
+LEXICON DeverbalVerbsBASSAT
+ +Der1+Der/d+V:»Q1d9 JÅLLÅRITINCH ;             !Causative
+ +Der1+Der/dalla+V:»X7dalla%> BASSALASSTETINCH ;     !Caus-Freq
+ +Der2+Der/dahtte+V:»Q1dahtte%> BASSALASSTETINCH ;   !Double Caus
+ +Der1+Der/dasste+V:»Q1dasste%> BASSALASSTETINCH ;   !Caus-Dim
+ +Der1+Der/l+V:»l JÅLLÅRITINCH ;                !Subitive
+ +Der1+Der/ladda+V:»Y3ladda%> BASSALASSTETINCH ;     !Subitive-Freq
+ +Der1+Der/lahtte+V:»lahtte%> BASSALASSTETINCH ;     !Subitive-Caus
+ +Der1+Der/lasste+V:»lasste%> BASSALASSTETINCH ;     !Subitive-Dim
+ +Der1+Der/st+V:»Q1st JÅLLÅRITINCH ;            !Dim
+ +Der1+Der/stalla+V:»X7stalla%> BASSALASSTETINCH ;   !Dim-Freq
+ +Der1+Der/stahtte+V:»Q1stahtte%> BASSALASSTETINCH ; !Dim-Caus
+ +Der1+Der/stasste+V:»Q1stasste%> BASSALASSTETINCH ; !Double dim
+ +Der1+Der/u/a/åd+V:»Y5d9 JÅLLÅRITINCH ;      !Dem-cont-freq
+
+LEXICON DeverbalVerbsJUHKAT
+ +Der1+Der/d+V:»Q1d9 JÅLLÅRITINCH ;             !Causative
+ +Der1+Der/dalla+V:»X7dalla%> BASSALASSTETINCH ;     !Caus-Freq
+ +Der2+Der/dahtte+V:»Q1dahtte%> BASSALASSTETINCH ;   !Double Caus
+ +Der1+Der/dasste+V:»Q1dasste%> BASSALASSTETINCH ;   !Caus-Dim
+ +Der1+Der/l+V:»l JÅLLÅRITINCH ;                !Subitive
+ +Der1+Der/ladda+V:»Y3ladda%> BASSALASSTETINCH ;     !Subitive-Freq
+ +Der1+Der/lahtte+V:»lahtte%> BASSALASSTETINCH ;     !Subitive-Caus
+ +Der1+Der/lasste+V:»lasste%> BASSALASSTETINCH ;     !Subitive-Dim
+ +Der1+Der/u/a/åd+V:»Y5d9 JÅLLÅRITINCH ;      !Dem-cont-freq
+
+
+LEXICON DeverbalVerbsLÁHPPET
+ +Der1+Der/d+V:»Q1d9 JÅLLÅRITINCH ;             !Causative
+ +Der1+Der/dalla+V:»X7dalla%> BASSALASSTETINCH ;     !Caus-Freq
+ +Der2+Der/dahtte+V:»Q1dahtte%> BASSALASSTETINCH ;   !Double Caus
+ +Der1+Der/dasste+V:»Q1dasste%> BASSALASSTETINCH ;   !Caus-Dim
+ +Der1+Der/l+V:»l JÅLLÅRITINCH ;                !Subitive
+ +Der1+Der/ladda+V:»Y3ladda%> BASSALASSTETINCH ;     !Subitive-Freq
+ +Der1+Der/lahtte+V:»lahtte%> BASSALASSTETINCH ;     !Subitive-Caus
+ +Der1+Der/lasste+V:»lasste%> BASSALASSTETINCH ;     !Subitive-Dim
+ +Der1+Der/st+V:»Q1st JÅLLÅRITINCH ;            !Dim
+ +Der1+Der/stalla+V:»X7stalla%> BASSALASSTETINCH ;   !Dim-Freq
+ +Der1+Der/stahtte+V:»Q1stahtte%> BASSALASSTETINCH ; !Dim-Caus
+ +Der1+Der/stasste+V:»Q1stasste%> BASSALASSTETINCH ; !Double dim
+
+LEXICON DeverbalNounsBASSAT
+ +Der2+Actor:»@C.NeedNoun@  ACTORTVder ;
+! +Der2+Actor+N:»@C.NeedNoun@ DenominalNounsActor ;    !not usual
+ +Der3+Der/lis+A:»Y3liss LIS ;
+ +Der3+Der/NomAct:»m@C.NeedNoun@ BOAHTEMTV ;
+ +Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+! +Der3+Der/dahka+N:»X7dahka%> N-EVENSTRONGSTEM ; !does not seem usual (TO)
+! +Der3+Der/dahka+N:»X7dahka%>Q1 N-EVENWEAKSTEM ; !does not seem usual (TO)
+
+LEXICON DeverbalNounsRAVGGAT
+ +Der2+Actor:»@C.NeedNoun@  ACTORder ;
+! +Der2+Actor+N:»@C.NeedNoun@ DenominalNounsActor ;    !not usual
+ +Der3+Der/lis+A:»Y3liss LIS ;
+ +Der3+Der/NomAct:»m@C.NeedNoun@ BOAHTEM ;
+ +Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+! +Der3+Der/dahka+N:»X7dahka%> N-EVENSTRONGSTEM ; !does not seem usual (TO)
+! +Der3+Der/dahka+N:»X7dahka%>Q1 N-EVENWEAKSTEM ; !does not seem usual (TO)
+
+LEXICON DeverbalNounsASSTAT
+! +Der2+Actor:»@C.NeedNoun@  ACTORder ; !because of compounds like tjikar+ asstet
+! +Der2+Actor+N:»@C.NeedNoun@ DenominalNounsActor ;    !not usual
+ +Der3+Der/lis+A:»Y3liss LIS ;
+ +Der3+Der/NomAct:»m@C.NeedNoun@ BOAHTEM ;
+ +Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+! +Der3+Der/dahka+N:»X7dahka%> N-EVENSTRONGSTEM ; !does not seem usual (TO)
+! +Der3+Der/dahka+N:»X7dahka%>Q1 N-EVENWEAKSTEM ; !does not seem usual (TO)
+
+
+LEXICON DeverbalNounsBASSALASSTET
+ +Der2+Actor:»@C.NeedNoun@  ACTORTVder ;
+ +Der3+Der/lis+A:»Y3liss LIS ;
+ +Der3+Der/NomAct:»m@C.NeedNoun@ BASSALASSTEMTV ;
+ +Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+! +Der3+Der/dahka+N:»X7dahka%> N-EVENSTRONGSTEM ; !does not seem usual (TO)
+! +Der3+Der/dahka+N:»X7dahka%>Q1 N-EVENWEAKSTEM ; !does not seem usual (TO)
+
+LEXICON DeverbalNounsRAVGGALASSTET
+ +Der2+Actor:»@C.NeedNoun@  ACTORder ;
+ +Der3+Der/lis+A:»Y3liss LIS ;
+ +Der3+Der/NomAct:»m@C.NeedNoun@ BASSALASSTEM ;
+ +Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+! +Der3+Der/dahka+N:»X7dahka%> N-EVENSTRONGSTEM ; !does not seem usual (TO)
+! +Der3+Der/dahka+N:»X7dahka%>Q1 N-EVENWEAKSTEM ; !does not seem usual (TO)
+
+
+LEXICON DeverbalVerbsBIEGGAT
+ +Der1+Der/l+V:»l BIEKKASTITinfl ;                !Subitive
+ +Der1+Der/ladda+V:»Y3ladda%> BIEGGATinfl ;     !Subitive-Freq
+ +Der1+Der/lahtte+V:»lahtte%> BIEGGATinfl ;     !Subitive-Caus
+ +Der1+Der/lasste+V:»lasste%> BIEGGATinfl ;     !Subitive-Dim
+ +Der1+Der/st+V:»Q1st JÅLLÅRITINCH ;            !Dim
+ +Der1+Der/stalla+V:»X7stalla%> BIEGGATinfl ;   !Dim-Freq
+ +Der1+Der/stahtte+V:»Q1stahtte%> BIEGGATinfl ; !Dim-Caus
+ +Der1+Der/stasste+V:»Q1stasste%> BIEGGATinfl ; !Double dim
+
+LEXICON DeverbalVerbsDIEHTET
+ +Der1+Der/d+V:e»Q1d9 JÅLLÅRITINCH ;             !Causative
+ +Der1+Der/dalla+V:á»Q1dalla%> BASSALASSTETINCH ;     !Caus-Freq
+ +Der2+Der/dahtte+V:e»Q1dahtte%> BASSALASSTETINCH ;   !Double Caus
+ +Der1+Der/dasste+V:e»Q1dasste%> BASSALASSTETINCH ;   !Caus-Dim
+ +Der1+Der/l+V:e»l JÅLLÅRITINCH ;                !Subitive
+ +Der1+Der/ladda+V:á»ladda%> BASSALASSTETINCH ;     !Subitive-Freq
+ +Der1+Der/lahtte+V:e»lahtte%> BASSALASSTETINCH ;     !Subitive-Caus
+ +Der1+Der/lasste+V:e»lasste%> BASSALASSTETINCH ;     !Subitive-Dim
+ +Der1+Der/st+V:e»Q1st JÅLLÅRITINCH ;            !Dim
+ +Der1+Der/stalla+V:á»Q1stalla%> BASSALASSTETINCH ;   !Dim-Freq
+ +Der1+Der/stahtte+V:e»Q1stahtte%> BASSALASSTETINCH ; !Dim-Caus
+ +Der1+Der/stasste+V:e»Q1stasste%> BASSALASSTETINCH ; !Double dim
+
+
+LEXICON DeverbalNounsDIEHTET
+ +Der3+Der/NomAct:»m@C.NeedNoun@ BOAHTEM ;
+ +Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+
+
+! Odd-syllable stems
+!---------------------
+
+LEXICON DeverbalVerbsJÅLLÅRIT
+ +Der1+Der/ahtte+V:»ahtte%> BASSALASSTETINCH ;          !Caus
+ +Der1+Der/alla+V:»Y4alla%> BASSALASSTETINCH ;          !Freq-cont
+ +Der1+Der/asste+V:»asste%> BASSALASSTETINCH ;          !Dim
+ +Der1+Der/ahtja+V:»ahtja%> INFL-EVEN ;                 !Inchoative
+ +Der1+Der/ahtja+V:»ahtja DeverbalNounsBASSALASSTET ; !Inchoative
+
+
+LEXICON DeverbalNounsJÅLLÅRIT
+ +Der2+Der/NomAct:»@C.NeedNoun@ VSBST-EVEN ;
+ +Actio+N+Sg+Nom+Der4+Der/ahtes:» AHTES ;
+ +Der2+Actor:»iddje@C.NeedNoun@ ACTOR ;
+ +Der2+Der/ahkes:»ahkke SÁDNES ;
+
+LEXICON DeverbalNounsUNNEDIT
+ +Der2+Der/NomAct:»@C.NeedNoun@ VSBST-EVENTV ;
+ +Actio+N+Sg+Nom+Der4+Der/ahtes:» AHTES ;
+ +Der2+Actor:»iddje@C.NeedNoun@ ACTORTV ;
+ +Der2+Der/ahkes:»ahkke SÁDNES ;
+
+
+LEXICON DeverbalNounsMUJTATJIT
+ +Der2+Der/NomAct:»@C.NeedNoun@ MUJTATJIBME ;
+ +Actio+N+Sg+Nom+Der4+Der/ahtes:» AHTES ;
+ +Der2+Actor:»iddje@C.NeedNoun@ ACTORTV ;
+ +Der2+Der/ahkes:»ahkke SÁDNES ;
+
+LEXICON DeverbalNounsBEGATJIT
+ +Der2+Der/NomAct:»@C.NeedNoun@ BEGATJIBME ;
+ +Actio+N+Sg+Nom+Der4+Der/ahtes:» AHTES ;
+ +Der2+Actor:»iddje@C.NeedNoun@ ACTORTV ;
+ +Der2+Der/ahkes:»ahkke SÁDNES ;
+
+
+LEXICON DeverbalVerbsVUORDDELIT
+ +Der1+Der/ahtte+V:»ahtte%> BASSALASSTETINCH ;          !Caus
+ +Der1+Der/adda+V:»Y4adda%> BASSALASSTETINCH ;          !Freq-cont
+ +Der1+Der/asste+V:»asste%> BASSALASSTETINCH ;          !Dim
+ +Der1+Der/ahtja+V:»ahtja%> INFL-EVEN ;                 !Inchoative
+ +Der1+Der/ahtja+V:»ahtja%> DeverbalNounsBASSALASSTET ; !Inchoative
+
+
+LEXICON DeverbalVerbsLASSÁNIT
+ +Der1+Der/adda+V:»Y4adda%> BASSALASSTETINCH ;          !Freq-cont
+ +Der1+Der/ahtja+V:»ahtja%> INFL-EVEN ;                 !Inchoative
+ +Der1+Der/ahtja+V:»ahtja%> DeverbalNounsBASSALASSTET ; !Inchoative
+
+
+LEXICON DeverbalVerbsBIEKKASTIT
+ +Der1+Der/ahtte+V:»ahtte%> BIEGGATinfl ;          !Caus
+ +Der1+Der/alla+V:»Y4alla%> BIEGGATinfl ;          !Freq-cont
+ +Der1+Der/asste+V:»asste%> BIEGGATinfl ;          !Dim
+ +Der1+Der/ahtja+V+Ind+Prs+Sg3:»ahtja%>Y2 K ; !Inchoative
+ +Der1+Der/ahtja+V+Ind+Prt+Sg3:»ahtja%>Q1j K ; !Inchoative
+ +Der1+Der/ahtja+V+Ind+ConNeg:»ahtja%>Q1 K ; !Inchoative
+ +Der1+Der/ahtja+V+Pot+Sg3:»ahtja%>Q1sj K ; !Inchoative
+ +Der1+Der/ahtja+V+Pot+ConNeg:»ahtja%>Q1tja K ; !Inchoative
+ +Der1+Der/ahtja+V+Imprt+Sg3:»ahtja%>Y1is ENDLEX ; !Inchoative
+ +Der1+Der/ahtja+V+ImprtII+Sg3:»ahtja%>Y1us ENDLEX ; !Inchoative
+ +Der1+Der/ahtja+V+PrfPrc:»ahtja%>Y3m K ; !Inchoative
+ +Der1+Der/ahtja+V+Inf:»ahtja%>t K ; !Inchoative
+ +Der1+Der/ahtja+V+Ger:»ahtja%>Q1dijn K ; !Inchoative
+ +Der1+Der/ahtja+V+Sup:»ahtja%>Q2tjit K ; !Inchoative
+ +Der1+Der/ahtja+V+VAbess:»ahtja%>Q1k K ; !Inchoative
+ +Der1+Der/ahtja+V+VAbess:»ahtja%>Q1dak K ; !Inchoative
+ +Der1+Der/ahtja+V+VAbess:»ahtja%>Q1k VUOHTA ; !Inchoative
+ +Der1+Der/ahtja+V+VAbess:»ahtja%>Q1dak VUOHTA ; !Inchoative
+ +Der1+Der/ahtja+V+VGen:»ahtja%>Q1 K ; !Inchoative
+ +Der1+Der/ahtja+V+Imprt+ConNeg:»ahtja%>Q1 ENDLEX ; !Inchoative
+
+
+
+! Contracted stems
+! - - - - - - - - - -
+
+LEXICON DeverbalVerbsOADDÁT
+ +Der1+Der/d+V:»d9 JÅLLÅRITINCH ;             !Causative
+ +Der1+Der/dalla+V:»dalla%> BASSALASSTETINCH ;     !Caus-Freq
+ +Der2+Der/dahtte+V:»dahtte%> BASSALASSTETINCH ;   !Double Caus
+ +Der1+Der/dasste+V:»dasste%> BASSALASSTETINCH ;   !Caus-Dim
+ +Der1+Der/st+V:»st JÅLLÅRITINCH ;            !Dim
+ +Der1+Der/stalla+V:»stalla%> BASSALASSTETINCH ;   !Dim-Freq
+ +Der1+Der/stahtte+V:»stahtte%> BASSALASSTETINCH ; !Dim-Caus
+ +Der1+Der/stasste+V:»stasste%> BASSALASSTETINCH ; !Double dim
+
+
+LEXICON DeverbalNounsOADDÁT
+ +Der2+Actor:»jiddje@C.NeedNoun@  ACTOR ;
+ +Der3+Der/NomAct:»m@C.NeedNoun@ OADDÁM ;
+ +Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+
+LEXICON DeverbalNounsTJUOLLÁT
+ +Der2+Actor:»jiddje@C.NeedNoun@  ACTORTV ;
+ +Der3+Der/NomAct:»m@C.NeedNoun@ TJUOLLÁM ;
+ +Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+
+
+LEXICON DeverbalNounsSTRÁFFUT
+ +Der2+Actor:»jiddje@C.NeedNoun@  ACTORTV ;
+ +Der3+Der/NomAct:»m@C.NeedNoun@ BOAHTEMTV ;
+ +Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+
+LEXICON DeverbalNounsDULLUT
+ +Der2+Actor:»jiddje@C.NeedNoun@  ACTOR ;
+ +Der3+Der/NomAct:»m@C.NeedNoun@ BOAHTEM ;
+ +Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
+
+LEXICON DeverbalVerbsSJIERRIT
+ +Der1+Der/st+V:»st BIEKKASTITinfl ;            !Dim
+ +Der1+Der/stalla+V:»stalla%> BIEGGATinfl ;   !Dim-Freq
+ +Der1+Der/stahtte+V:»stahtte%> BIEGGATinfl ; !Dim-Caus
+ +Der1+Der/stasste+V:»stasste%> BIEGGATinfl ; !Double dim
+
+
+!Sublexicas deverbal nouns
+!---------------------------
+
+! vsubst
+! These are actio forms
+
+LEXICON VSBST-ODD
+ +N+Sg+Nom:%> K ;
+ +N+SgNomCmp:%> R ;
+ +N+SgGenCmp:%>a R ;
+ +N+PlGenCmp:%>ij R ;
+ +N:%> OTH-ODDCASE ;
+ +N+Der4+Der/ahtes:» AHTES ;
+
+LEXICON VSBST-EVEN
+ +N+Sg+Nom:ibme%> K ;
+ +N+Sg+Nom+Use/Ped:ibme%> PxV ; !
+ +N+SgNomCmp:im%> R ;
+ +N+SgGenCmp:ime%> R ;
+ +N+PlGenCmp:imi%>j R ;
+ +N+Ess:ibme%>Q1 K ;
+ +N+Ess:ibme%>n K ;
+ +N:ibme%>X4 ILL-EVENCASE ;
+ +N:ibme%>Q1 N-EVENWEAKSTEM ;
+ +N+Sg+Nom+Der4+Der/ahtes:» AHTES ;
+
+
+LEXICON VSBST-EVENTV  !+CmpN/SgN +CmpN/DefSgGen +CmpN/DefPlGen +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft: VSBST-EVENTVCT ;
+
+LEXICON VSBST-EVENTVCT
+ +N+Sg+Nom:ibme%> K ;
+ +N+Sg+Nom+CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped:ibme%> PxV ; !
+ +N+SgNomCmp:im%> R ;
+ +N+SgGenCmp:ime%> R ;
+ +N+PlGenCmp:imi%>j R ;
+ +N+Sg+Nom+Der4+Der/ahtes:» AHTES ;
+ +N+Ess:ibme%>Q1 K ;
+ +N+Ess:ibme%>n K ;
+ +N:ibme%>X4 ILL-EVENCASE ;
+ +N:ibme%>Q1 N-EVENWEAKSTEM ;
+
+
+LEXICON MUJTATJIBME !+CmpN/SgN +CmpN/DefSgGen +CmpN/DefPlGen +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft: MUJTATJIBMECT ;
+
+LEXICON MUJTATJIBMECT
+ +N+Sg+Nom:ibme%> K ;
+ +N+Sg+Nom+CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+Use/Ped:ibme%> PxV ; !
+ +N+SgNomCmp:im%> R ;
+ +N+SgGenCmp:ime%> R ;
+ +N+PlGenCmp:imi%>j R ;
+ +N+Ess:ibme%>Q1 K ;
+ +N+Ess:ibme%>n K ;
+ +N:ibme%>X4 ILL-EVENCASE ;
+ +N:ibme%>Q1 N-EVENWEAKSTEM ;
+
+LEXICON BEGATJIBME
+ +N+Sg+Nom:ibme%> K ;
+ +N+Sg+Nom+Use/Ped:ibme%> PxV ; !
+ +N+SgNomCmp:im%> R ;         !No compounds for these, but now reintroduced
+ +N+SgGenCmp:ime%> R ;
+ +N+PlGenCmp:imi%>j R ;
+ +N+Ess:ibme%>Q1 K ;
+ +N+Ess:ibme%>n K ;
+ +N:ibme%>X4 ILL-EVENCASE ;
+ +N:ibme%>Q1 N-EVENWEAKSTEM ;
+
+LEXICON MUS
+ +Sg+Nom:%> K ;
+ +SgNomCmp:%> R ;
+ :a%> MUSSA ;
+
+LEXICON MUSSA
+ +Sg+Nom+Use/Ped: PxV ; !
+ +SgGenCmp: R ;
+ +PlGenCmp:j R ;
+ +Ess:n K ;
+ :Q1 N-EVENWEAKSTEM-OTH ;
+ ILL-EVENCASE ;
+ :Q1 N-EVENWEAKSTEM-SG-COM ;
+ +Der4+Der/ahtes:»Q1g AHTES ;
+ +Abe:Q1dak K ;
+ +Abe:Q1da K ;
+
+LEXICON ACTOR
+ +A+Attr:%>Y6 ATTR ;
+ +N:%>Y6 NE-EVENCASE ;
+ +N:%>Y6 ACTORILL ;
+ +N:%>Y6 N-EVENWEAKSTEM ;
+ +N+CmpN/SgN+CmpN/SgG+CmpN/PlG:%>Y6 ACTORCmp ; !
+
+LEXICON ACTORTV  !+CmpN/SgN +CmpN/SgG +CmpN/PlG +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+A+Attr:%>Y6 ATTR ;
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:%>Y6 NE-EVENCASE ;
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:%>Y6 ACTORILL ;
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:%>Y6 N-EVENWEAKSTEM ;
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:%>Y6 ACTORCmp ;
+
+LEXICON ACTORder
+ +A+Attr:Y6 ATTR ;
+ +N:Y6 NE-EVENCASE ;
+ +N:Y6 ACTORILL ;
+ +N:Y6 N-EVENWEAKSTEM ;
+ +N+CmpN/SgN+CmpN/SgG+CmpN/PlG:Y6 ACTORCmp ; !
+
+LEXICON ACTORTVder  !+CmpN/SgN +CmpN/SgG +CmpN/PlG +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+A+Attr:Y6 ATTR ;
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:Y6 NE-EVENCASE ;
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:Y6 ACTORILL ;
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:Y6 N-EVENWEAKSTEM ;
+ +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:Y6 ACTORCmp ;
+
+LEXICON ACTORILL
+ +Sg+Ill:X4j K ;
+ +Sg+Ill+Use/Ped:X4s%> PxCi ; !
+
+LEXICON ACTORdiehtet
+ +A+Attr:%> ATTR ;
+ +N:%>Q7 NE-EVENCASE ;
+ +N:%>Q7 ACTORILLdiehtet ;
+ +N:%>Q7 N-EVENWEAKSTEM ;
+ +N:%> ACTORCmp ;
+
+LEXICON ACTORILLdiehtet
+ +Sg+Ill:X4j K ;
+ +Sg+Ill+Use/Ped:X4s%> PxCi ; !
+
+LEXICON BOAHTEM
+ +N+Sg+Nom:%> K ;
+ +N+SgNomCmp:%> R ;
+ +N+SgGenCmp:%>a R ;
+ +N+PlGenCmp:%>ij R ;
+ +N:%> OTH-ODDCASE ;
+ +N+Der4+Der/ahtes:» AHTES ;
+
+LEXICON BOAHTEMTV  !+CmpN/SgN +CmpN/DefSgGen +CmpN/DefPlGen +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Sg+Nom:%> K ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+SgNomCmp:%> R ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+SgGenCmp:%>a R ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+PlGenCmp:%>ij R ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:%> OTH-ODDCASE ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Der4+Der/ahtes:» AHTES ;
+
+LEXICON BASSALASSTEM
+ +N+Sg+Nom:%> K ;
+ +N+SgNomCmp:%> R ;	 !no compounds for these, but reintroduced
+ +N+SgGenCmp:%>a R ;
+ +N+PlGenCmp:%>ij R ;
+ +N:%> OTH-ODDCASE ;
+ +N+Der4+Der/ahtes:» AHTES ;
+
+LEXICON BASSALASSTEMTV  !+CmpN/SgN +CmpN/DefSgGen +CmpN/DefPlGen +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Sg+Nom:%> K ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+SgNomCmp:%> R ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+SgGenCmp:%>a R ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+PlGenCmp:%>ij R ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:%> OTH-ODDCASE ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Der4+Der/ahtes:» AHTES ;
+
+
+LEXICON OADDÁM
+ +N+Sg+Nom:%> K ;
+ +N+SgNomCmp:%> R ;	 !no compounds for these, but reintroduced
+ +N+SgGenCmp:%>a R ;
+ +N+PlGenCmp:%>ij R ;
+ +N:%> OTH-ODDCASE ;
+ +N+Der4+Der/ahtes:» AHTES ;
+
+LEXICON TJUOLLÁM  !+CmpN/SgN +CmpN/DefSgGen +CmpN/DefPlGen +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Sg+Nom:%> K ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+SgNomCmp:%> R ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+SgGenCmp:%>a R ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+PlGenCmp:%>ij R ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:%> OTH-ODDCASE ;
+ +CmpN/SgN+CmpN/DefSgGen+CmpN/DefPlGen+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Der4+Der/ahtes:» AHTES ;
+
+
+
+
+! Auxiliary verbs
+! ---------------
+
+LEXICON NEG
++Ind+Prs+Sg1:iv K ;
++Ind+Prs+Sg2:i K ;
++Ind+Prs+Sg3:ij K ;
++Ind+Prs+Du1:en K ;
++Ind+Prs+Du1+Use/Sub:æn K ; !
++Ind+Prs+Du2:æhppe K ;
++Ind+Prs+Du3:æbá K ;
++Ind+Prs+Pl1:ep K ;
++Ind+Prs+Pl1+Use/Sub:æp K ; !
++Ind+Prs+Pl2:ehpit K ;
++Ind+Prs+Pl3:e K ;
++Ind+Prs+Pl3+Use/Sub:æ K ; !
+
++Ind+Prt+Sg1:ittjiv K ;
++Ind+Prt+Sg2:ittji K ;
++Ind+Prt+Sg3:ittjij K ;
++Ind+Prt+Du1:ejma K ;
++Ind+Prt+Du2:ejda K ;
++Ind+Prt+Du3:ejga K ;
++Ind+Prt+Pl1:ejma K ;
++Ind+Prt+Pl2:ejda K ;
++Ind+Prt+Pl3:ettjin K ;
+
++Imprt+Sg2:ale ENDLEX ;
++Imprt+Sg3:allis ENDLEX ;
++Imprt+Du1:allon ENDLEX ;
++Imprt+Du2:al'le ENDLEX ;
++Imprt+Du3:alliska ENDLEX ;
++Imprt+Pl1:allop ENDLEX ;
++Imprt+Pl2:allit ENDLEX ;
++Imprt+Pl3:allisa ENDLEX ;
+
++ImprtII+Sg2:allu ENDLEX ;
++ImprtII+Sg3:allus ENDLEX ;
++ImprtII+Du1:allun ENDLEX ;
++ImprtII+Du2:alluda ENDLEX ;
++ImprtII+Du3:alluska ENDLEX ;
++ImprtII+Pl1:allup ENDLEX ;
++ImprtII+Pl2:allut ENDLEX ;
++ImprtII+Pl3:allusa ENDLEX ;
+
+LEXICON ÅRROT
++Inf:ro%>t K ;
+
++Imprt+Sg2:o%> ENDLEX ;
++Imprt+Sg3:ru%>s ENDLEX ;
++Imprt+Du1:ro%>n ENDLEX ;
++Imprt+Du2:'ro%> ENDLEX ;
++Imprt+Du3:ru%>ska ENDLEX ;
++Imprt+Pl1:ru%>p ENDLEX ;
++Imprt+Pl2:ru%>t ENDLEX ;
++Imprt+Pl3:ru%>sa ENDLEX ;
+
+LEXICON LIEHKET
+ +Inf:liehket K ; ! should I use årrot? (No! TO)
++Actio+Ess:liehkemin K ;
+! Present
++Ind+Prs+Sg1:lav K ;
++Ind+Prs+Sg2:la K ;
++Ind+Prs+Sg3:la K ;
++Ind+Prs+Sg3+Clt:l ENDLEX ;
++Ind+Prs+Du1:lin K ;
++Ind+Prs+Du2:lihppe K ;
++Ind+Prs+Du3:libá K ;
++Ind+Prs+Pl1:lip K ;
++Ind+Prs+Pl2:lihpit K ;
++Ind+Prs+Pl3:li K ;
+!+Ind+Prs+Pl3:%>l ENDLEX ;
+
+! Present in questions
++Ind+Prs+Sg1+Qst:lev K ;
++Ind+Prs+Sg2+Qst:le K ;
++Ind+Prs+Sg3+Qst:le K ;
++Ind+Prs+Du1+Qst:len K ;
++Ind+Prs+Sg1+Qst+Use/Sub:læv K ; !
++Ind+Prs+Sg2+Qst+Use/Sub:læ K ; !
++Ind+Prs+Sg3+Qst+Use/Sub:læ K ; !
++Ind+Prs+Du1+Qst+Use/Sub:læn K ; !
++Ind+Prs+Du2+Qst:læhppe K ;
++Ind+Prs+Du3+Qst:læbá K ;
++Ind+Prs+Pl1+Qst:lep K ;
++Ind+Prs+Pl1+Qst+Use/Sub:læp K ; !
++Ind+Prs+Pl2+Qst:lehpit K ;
++Ind+Prs+Pl3+Qst:le K ;
++Ind+Prs+Pl3+Qst+Use/Sub:læ K ; !
+
+
+! Past
++Ind+Prt+Sg1:lidjiv K ;
++Ind+Prt+Sg2:lidji K ;
++Ind+Prt+Sg3:lij K ;
++Ind+Prt+Du1:lijma K ;
++Ind+Prt+Du2:lijda K ;
++Ind+Prt+Du3:lijga K ;
++Ind+Prt+Pl1:lijma K ;
++Ind+Prt+Pl2:lijda K ;
++Ind+Prt+Pl3:lidjin K ;
+
+
+! Past in questions
++Ind+Prt+Sg1+Qst:ledjiv K ;
++Ind+Prt+Sg2+Qst:ledji K ;
++Ind+Prt+Sg3+Qst:lej K ;
++Ind+Prt+Du1+Qst:lejma K ;
++Ind+Prt+Du1+Qst+Use/Sub:lejme K ; !
++Ind+Prt+Du1+Qst+Use/Sub:lijme K ; !
++Ind+Prt+Du2+Qst:lejda K ;
++Ind+Prt+Du2+Qst+Use/Sub:lejde K ; !
++Ind+Prt+Du2+Qst+Use/Sub:lijde K ; !
++Ind+Prt+Du3+Qst:lejga K ;
++Ind+Prt+Pl1+Qst:lejma K ;
++Ind+Prt+Pl1+Qst+Use/Sub:lejme K ; !
++Ind+Prt+Pl1+Qst+Use/Sub:lijme K ; !
++Ind+Prt+Pl2+Qst+Use/Sub:lejde K ; !
++Ind+Prt+Pl2+Qst+Use/Sub:lijde K ; !
++Ind+Prt+Pl2+Qst:lejda K ;
++Ind+Prt+Pl3+Qst:ledjin K ;
+
+! Potensialis
++Pot+Sg1:littjav K ;
++Pot+Sg2:littja K ;
++Pot+Sg3:lisj K ;
++Pot+Sg3:lesj K ;
++Pot+Du1:littjin K ;
++Pot+Du2:littjabihtte K ;
++Pot+Du3:littjaba K ;
++Pot+Pl1:littjap K ;
++Pot+Pl2:littjabihtit K ;
++Pot+Pl2+Use/Sub:littjabehtit K ; !
++Pot+Pl3:littji K ;
+
+
+! Imperative
++Imprt+Sg2:liege ENDLEX ;
++Imprt+Sg3:liehkis ENDLEX ;
+ +Imprt+Sg3+Use/Sub:lehkis ENDLEX ; !
++Imprt+Du1:læhkon ENDLEX ;
++Imprt+Du2:liehkke ENDLEX ;
++Imprt+Du3:liehkiska ENDLEX ;
++Imprt+Pl1:læhkop ENDLEX ;
++Imprt+Pl2:liehkit ENDLEX ;
++Imprt+Pl3:liehkisa ENDLEX ;
+
+! Imperative II
++ImprtII+Sg2:lehku ENDLEX ;
++ImprtII+Sg3:lehkus ENDLEX ;
++ImprtII+Du1:lehkun ENDLEX ;
++ImprtII+Du2:lehkuda ENDLEX ;
++ImprtII+Du3:lehkuska ENDLEX ;
++ImprtII+Pl1:lehkup ENDLEX ;
++ImprtII+Pl2:lehkut ENDLEX ;
++ImprtII+Pl3:lehkusa ENDLEX ;
+ +ImprtII+Pl3+Use/Sub:liehkusa ENDLEX ; !
+
+
+! Contracted Neg + Cop forms
++Neg+Ind+Prs+Sg2:il'la K ;
++Neg+Ind+Prs+Sg2:il'le K ; !Variant
++Neg+Ind+Prs+Sg2+Use/Sub:il'læ K ; !
++Neg+Ind+Prs+Pl3:æl'la K ;
++Neg+Ind+Prs+Pl3:æl'le K ; !Variant
++Neg+Ind+Prs+Pl3+Use/Sub:æl'læ K ; !
++Neg+Ind+Prt+Sg2:il'lim K ;
++Neg+Ind+Prt+Pl3:æl'lim K ;
++Neg+Pot+Pl3:æl'littja K ;
+
+
+! Negative forms
++Ind+Prs+ConNeg:le K ;
++Ind+Prs+ConNeg+Use/Sub:læ K ; !
++Ind+Prs+ConNeg:la K ;
++Ind+Prt+ConNeg:lim K ;
++Cond+ConNeg:lulu K ;
++Cond+ConNeg:galga#lulu K ;
++Cond+ConNeg:máhtá#lulu K ;
++Pot+ConNeg:littja K ;
+
+! Conditional and Potentional
+LULU ;
+LITTJA ;
+
+LEXICON LULU
++Cond:lulu%> V-ODD-PRET ;
++Cond:galga#lulu%> V-ODD-PRET ;
++Cond:máhtá#lulu%> V-ODD-PRET ;
+
+LEXICON LITTJA
++Pot:li%> V-ODD-POT ;
+
+LEXICON V-ODD-PRET
++Sg1:v K ;
++Sg2: K ;
++Sg3:j K ;
++Du1:jma K ;
++Du2:jda K ;
++Du1+Use/Sub:jme K ; !
++Du2+Use/Sub:jde K ; !
++Du3:jga K ;
++Pl1:jma K ;
++Pl2:jda K ;
++Pl1+Use/Sub:jme K ; !
++Pl2+Use/Sub:jde K ; !
++Pl3:n K ;
+
+LEXICON V-ODD-POT
++Prs+Sg1:lav K ;
++Prs+Sg2:la K ;
++Prs+Sg3:la K ;
++Prs+Du1:lin K ;
++Prs+Du2:lihppe K ;
++Prs+Du3:libá K ;
++Prs+Pl1:lip K ;
++Prs+Pl2:lihpit K ;
++Prs+Pl3:li K ;
+
