@@ -87,7 +87,6 @@ for f in  .xfst .hfst; do
 		sort -u -o Ranalnouns.txt Ranalnouns.txt 
 		comm -23 nouns.txt analnouns.txt > $resultfile$f.txt
 		comm -23 Rnouns.txt Ranalnouns.txt >> $resultfile$f.txt
-		rm -f *nouns.txt
 
 		# if at least one word is found, the test failed, and the list of failed
 		# lemmas is opened in SubEthaEdit:
@@ -99,6 +98,9 @@ for f in  .xfst .hfst; do
 #		echo Transducer not found: $generatorfile$f
 	fi
 done
+
+# Delete temporary files:
+rm -f *nouns.txt
 
 # At least one of the Xerox or HFST tests failed:
 if [ "$Fail" = "1" ]; then

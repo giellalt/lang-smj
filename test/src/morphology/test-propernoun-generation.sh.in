@@ -6,7 +6,7 @@
 ###### Variables: #######
 sourcefile=${srcdir}/../../../src/morphology/stems/smi-smj-propernouns.lexc
 generatorfile=${srcdir}/../../../src/generator.gt
-resultfile=missingProperLemmas.txt
+resultfile=missingProperLemmas
 
 # Check that the source file exists:
 if [ ! -f "$sourcefile" ]; then
@@ -56,30 +56,32 @@ for f in  .xfst .hfst; do
 			| $lookuptool $generatorfile$f | cut -f2 \
 			| grep "N+" | cut -d "+" -f1 | sed 's/$/+N+Prop+Pl+Nom/' \
 			| $lookuptool $generatorfile$f | cut -f2 \
-			| grep "N+" | cut -d "+" -f1 > $resultfile
+			| grep "N+" | cut -d "+" -f1 > $resultfile$f.txt
 		sed 's/$/+N+Prop+Attr/' attrprops \
 			| $lookuptool $generatorfile$f | cut -f2 \
-			| grep "N+" >> $resultfile
+			| grep "N+" >> $resultfile$f.txt
 		sed 's/$/+N+Prop+Attr/' attrprops \
 			| $lookuptool $generatorfile$f | cut -f2 \
 			|  grep -v "N+" | grep -v "^$" | sort -u > analattrprops  
 		sort -u -o analprops analprops 
-		comm -23 props analprops >> $resultfile
-		comm -23 attrprops analattrprops >> $resultfile
-		sort -u -o $resultfile $resultfile
-		rm -f *props
+		comm -23 props analprops >> $resultfile$f.txt
+		comm -23 attrprops analattrprops >> $resultfile$f.txt
+		sort -u -o $resultfile$f.txt $resultfile$f.txt
 
 		# if at least one word is found, the test failed, and the list of failed
 		# lemmas is opened in SubEthaEdit:
-		if [ `wc -w $resultfile | tr -s ' ' | cut -d' ' -f2` -gt 0 ]
+		if [ `wc -w $resultfile$f.txt | tr -s ' ' | cut -d' ' -f2` -gt 0 ]
 		then
-			see $resultfile
+			see $resultfile$f.txt
 		    Fail=1
 		fi
 #	else
 #		echo Transducer not found: $generatorfile$f
 	fi
 done
+
+# Delete temporary files:
+rm -f *props
 
 # At least one of the Xerox or HFST tests failed:
 if [ "$Fail" = "1" ]; then
