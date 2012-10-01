@@ -16,7 +16,7 @@ fi
 
 ###### Extraction: #######
 grep ";" $sourcefile | grep -v "^\!" \
-	| egrep -v '(STRAYFORMS|ENDLEX|+V)' | tr ":+\t" " " | cut -d " " -f1 \
+	| egrep -v "(STRAYFORMS|ENDLEX|\+V)" | tr ":+\t" " " | cut -d " " -f1 \
 	| tr -d "#" | sort -u > verbs
 
 ###### Start testing: #######
