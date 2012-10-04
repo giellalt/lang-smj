@@ -6,7 +6,7 @@
 
 ###### Variables: #######
 sourcefile=${srcdir}/../../../src/morphology/stems/adjectives.lexc
-generatorfile=${srcdir}/../../../src/generator.gt
+generatorfile=${srcdir}/../../../src/generator-gt-norm
 resultfile=missingAdjLemmas
 
 # Check that the source file exists:
@@ -47,10 +47,10 @@ Fail=0
 for f in  .xfst .hfst; do
 	if [ $f == ".xfst" ]; then
 		lookuptool="@LOOKUP@ -q -flags mbTT"
-#		echo "Xerox test"
+		fsttype=xfst
 	else
 		lookuptool="@HFST_LOOKUP@ -q"
-#		echo "Hfst test"
+		fsttype=hfst
 	fi
 	if [ -f "$generatorfile$f" ]; then
 		let "transducer_found += 1"
@@ -95,9 +95,10 @@ for f in  .xfst .hfst; do
 		then
 			see $resultfile$f.txt
 		    Fail=1
+		    echo "$fsttype - FAIL"
+		    continue
 		fi
-#	else
-#		echo Transducer not found: $generatorfile$f
+	    echo "$fsttype - PASS"
 	fi
 done
 
