@@ -45,49 +45,36 @@ for f in  .xfst .hfst; do
 	if [ -f "$generatorfile$f" ]; then
 		let "transducer_found += 1"
 
-# Remove old generated files - don't mix Xerox and HFST test results:
-		rm -f *analnouns.txt
-
 ###### Test non-comopunds: #######
 		# generate nouns in Singular, extract the resulting generated lemma,
 		# store it:
 		sed 's/$/+N+Sg+Nom/' nouns.txt | $lookuptool $generatorfile$f \
-			| cut -f2 | grep -v "N+" | grep -v "^$" | sort -u > analnouns.txt 
+			| cut -f2 | grep -v "N+" | grep -v "^$" | sort -u > analnouns$f.txt 
 		# Generate nouns, extract those that do not generate in singular,
 		# generate the rest in plural:
 		sed 's/$/+N+Sg+Nom/' nouns.txt | $lookuptool $generatorfile$f \
 			| cut -f2 | grep "N+" | cut -d "+" -f1 | sed 's/$/+N+Pl+Nom/' \
 			| $lookuptool $generatorfile$f | cut -f2 \
-			| grep -v "^$" >> analnouns.txt 
+			| grep -v "^$" >> analnouns$f.txt 
 
 ###### Test comopunds: #######
 		# Test nouns that only can generate as compounds:
-		sed 's/+Use\/Sub//' Rnouns.txt \
-			| sed 's/+Dial\/-SW//' | sed 's/+Dial\/-NOR//' \
-			| sed 's/+CmpN\/Pref//' | sed 's/CmpN\/SgN$/Cmp#bijlla+N+Sg+Nom/' \
-			| sed 's/CmpN\/PlG$/Cmp#bijlla+N+Sg+Nom/' \
+		sed 's/$/+N+Cmp#bijlla+N+Sg+Nom/' Rnouns.txt \
 			| $lookuptool $generatorfile$f | cut -f2 | sed 's/bijlla$//' \
-			| grep -v '^$' >> Ranalnouns.txt
-		sed 's/+Use\/Sub//' Rnouns.txt \
-			| sed 's/+Dial\/-SW//' | sed 's/+Dial\/-NOR//' \
-			| sed 's/+CmpN\/Pref//' | sed 's/CmpN\/SgN$/Cmp#bijlla+N+Sg+Nom/' \
-			| sed 's/CmpN\/PlG$/Cmp#bijlla+N+Sg+Nom/' \
-			| $lookuptool $generatorfile$f | cut -f2 | sed 's/bijlla$//' \
-			| grep -v '^$' >> Ranalnouns.txt
-		sed 's/+Use\/Sub//' RHnouns.txt \
-			| sed 's/+Dial\/-SW//' | sed 's/+Dial\/-NOR//' \
-			| sed 's/+CmpN\/Pref//' | sed 's/CmpN\/SgN$/Cmp-#bijlla+N+Sg+Nom/' \
-			| sed 's/CmpN\/PlG$/Cmp-#bijlla+N+Sg+Nom/' \
+			| grep -v '^$' >> Ranalnouns$f.txt
+		sed 's/$/+N+Cmp-#bijlla+N+Sg+Nom/' RHnouns.txt \
 			| $lookuptool $generatorfile$f | cut -f2 | sed 's/\-bijlla$//' \
-			| grep -v '^$' >> Ranalnouns.txt
+			| grep -v '^$' >> RHanalnouns$f.txt
 
 ###### Collect results: #######
 		# Sort and compare original input with resulting output - the diff is
 		# stored and opened in SEE:
-		sort -u -o analnouns.txt analnouns.txt 
-		sort -u -o Ranalnouns.txt Ranalnouns.txt 
-		comm -23 nouns.txt analnouns.txt > $resultfile$f.txt
-		comm -23 Rnouns.txt Ranalnouns.txt >> $resultfile$f.txt
+		sort -u -o analnouns$f.txt analnouns$f.txt 
+		sort -u -o Ranalnouns$f.txt Ranalnouns$f.txt 
+		sort -u -o RHanalnouns$f.txt RHanalnouns$f.txt 
+		comm -23 nouns.txt analnouns$f.txt > $resultfile$f.txt
+		comm -23 Rnouns.txt Ranalnouns$f.txt >> $resultfile$f.txt
+		comm -23 RHnouns.txt RHanalnouns$f.txt >> $resultfile$f.txt
 
 		# if at least one word is found, the test failed, and the list of failed
 		# lemmas is opened in SubEthaEdit:
