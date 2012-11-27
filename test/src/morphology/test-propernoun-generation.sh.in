@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Dette skriptet tester at alle lemmaene i propernoun-sma-lex.txt kan genereres.
+# Dette skriptet tester at alle lemmaene i
+# $GTHOME/langs/smj/src/morphology/stems/propernouns.lexc kan genereres.
 # De som ikke kan genereres, kopieres til missingProperLemmas.txt
 
 ###### Variables: #######
@@ -14,75 +15,88 @@ if [ ! -f "$sourcefile" ]; then
 	exit 1
 fi
 
+# Use autotools mechanisms to only run the configured fst types in the tests:
+fsttype=
+@CAN_HFST_TRUE@fsttype="$fsttype hfst"
+@CAN_XFST_TRUE@fsttype="$fsttype xfst"
+
+# Exit if both hfst and xerox have been shut off:
+if [ -z $fsttype ]; then
+    echo "All transducer types have been shut off at configure time."
+    echo "Nothing to test. Skipping."
+    exit 77
+fi
+
 ###### Extraction: #######
 grep ";" $sourcefile | grep -v "^\!" | egrep -v '(LAANTE|Attr)' \
-	| sed 's/% /€/g' |  tr ":+\t" " " | cut -d " " -f1 \
-	| tr -d "#" | tr "€" " " | sort -u > props
+	| sed 's/% /€/g' |  tr ":+" " " | cut -d " " -f1 \
+	| tr -d "#" | tr "€" " " > props.tmp.txt
 grep ";" $sourcefile | grep -v "^\!" | grep LAANTE | sed 's/% /€/g' \
-	|  tr ":+\t" " " | cut -d " " -f1 | tr -d "#" \
-	| tr "€" " " | sed 's/$/laante/' >> props
-sort -u -o props props 
+	|  tr ":+" " " | cut -d " " -f1 | tr -d "#" \
+	| tr "€" " " | sed 's/$/laante/' >> props.tmp.txt
+sort -u props.tmp.txt > props.txt
+rm -f props.tmp.txt
 grep ";" $sourcefile | grep -v "^\!" | grep Attr | sed 's/% /€/g' \
 	|  tr ":+\t" " " | cut -d " " -f1 | tr -d "#" \
-	| tr "€" " " |  sort -u > attrprops
+	| tr "€" " " |  sort -u > attrprops.txt
 
 ###### Start testing: #######
 transducer_found=0
 Fail=0
 
-for f in  .xfst .hfst; do
-	if [ $f == ".xfst" ]; then
+for f in $fsttype; do
+	if [ $f == "xfst" ]; then
 		lookuptool="@LOOKUP@ -q -flags mbTT"
-		fsttype=xfst
-	else
+	elif [ $f == "hfst" ]; then
 		lookuptool="@HFST_LOOKUP@ -q"
-		fsttype=hfst
+	else
+	    Fail=1
+		echo "Unknown fst type!"
+	    echo "$f - FAIL"
+	    continue
 	fi
-	if [ -f "$generatorfile$f" ]; then
+	if [ -f "$generatorfile.$f" ]; then
 		let "transducer_found += 1"
 
-# Remove old generated files - don't mix Xerox and HFST test results:
-		rm -f anal*props
-
-		sed 's/$/+N+Prop+Sg+Nom/'   props \
-			| $lookuptool $generatorfile$f | cut -f2 \
-			| grep -v "N+" | grep -v "^$" | sort -u > analprops
-		sed 's/$/+N+Prop+Sg+Nom/'   props \
-			| $lookuptool $generatorfile$f | cut -f2 \
+		sed 's/$/+N+Prop+Sg+Nom/'   props.txt \
+			| $lookuptool $generatorfile.$f | cut -f2 \
+			| grep -v "N+" | grep -v "^$" | sort -u > analprops.$f.txt
+		sed 's/$/+N+Prop+Sg+Nom/'   props.txt \
+			| $lookuptool $generatorfile.$f | cut -f2 \
 			| grep "N+" | cut -d "+" -f1 | sed 's/$/+N+Prop+Pl+Nom/' \
-			| $lookuptool $generatorfile$f | cut -f2 \
-			| grep -v "^$" | cut -d "+" -f1 >> analprops
-		sed 's/$/+N+Prop+Sg+Nom/'   props \
-			| $lookuptool $generatorfile$f | cut -f2 \
+			| $lookuptool $generatorfile.$f | cut -f2 \
+			| grep -v "^$" | cut -d "+" -f1 >> analprops.$f.txt
+		sed 's/$/+N+Prop+Sg+Nom/'   props.txt \
+			| $lookuptool $generatorfile.$f | cut -f2 \
 			| grep "N+" | cut -d "+" -f1 | sed 's/$/+N+Prop+Pl+Nom/' \
-			| $lookuptool $generatorfile$f | cut -f2 \
-			| grep "N+" | cut -d "+" -f1 > $resultfile$f.txt
-		sed 's/$/+N+Prop+Attr/' attrprops \
-			| $lookuptool $generatorfile$f | cut -f2 \
-			| grep "N+" >> $resultfile$f.txt
-		sed 's/$/+N+Prop+Attr/' attrprops \
-			| $lookuptool $generatorfile$f | cut -f2 \
-			|  grep -v "N+" | grep -v "^$" | sort -u > analattrprops  
-		sort -u -o analprops analprops 
-		comm -23 props analprops >> $resultfile$f.txt
-		comm -23 attrprops analattrprops >> $resultfile$f.txt
-		sort -u -o $resultfile$f.txt $resultfile$f.txt
+			| $lookuptool $generatorfile.$f | cut -f2 \
+			| grep "N+" | cut -d "+" -f1 > $resultfile.$f.txt
+		sed 's/$/+N+Prop+Attr/' attrprops.txt \
+			| $lookuptool $generatorfile.$f | cut -f2 \
+			| grep "N+" >> $resultfile.$f.txt
+		sed 's/$/+N+Prop+Attr/' attrprops.txt \
+			| $lookuptool $generatorfile.$f | cut -f2 \
+			|  grep -v "N+" | grep -v "^$" | sort -u > analattrprops.$f.txt  
+		sort -u -o analprops.$f.txt analprops.$f.txt 
+		comm -23 props.txt analprops.$f.txt > $resultfile.$f.txt
+		comm -23 attrprops.txt analattrprops.$f.txt >> $resultfile.$f.txt
+		sort -u -o $resultfile.$f.txt $resultfile.$f.txt
 
 		# if at least one word is found, the test failed, and the list of failed
 		# lemmas is opened in SubEthaEdit:
-		if [ `wc -w $resultfile$f.txt | tr -s ' ' | cut -d' ' -f2` -gt 0 ]
+		if [ `wc -w $resultfile.$f.txt | tr -s ' ' | cut -d' ' -f2` -gt 0 ]
 		then
-			see $resultfile$f.txt
+			see $resultfile.$f.txt
 		    Fail=1
-		    echo "$fsttype - FAIL"
+		    echo "$f - FAIL"
 		    continue
 		fi
-	    echo "$fsttype - PASS"
+	    echo "$f - PASS"
 	fi
 done
 
 # Delete temporary files:
-rm -f *props
+rm -f *props.txt
 
 # At least one of the Xerox or HFST tests failed:
 if [ "$Fail" = "1" ]; then
