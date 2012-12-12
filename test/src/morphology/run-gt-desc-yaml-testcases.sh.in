@@ -17,7 +17,7 @@ fsttype=
 @CAN_XFST_TRUE@fsttype="$fsttype xfst"
 
 # Exit if both hfst and xerox have been shut off:
-if [ -z $fsttype ]; then
+if [ "$fsttype" == "" ]; then
     echo "All transducer types have been shut off at configure time."
     echo "Nothing to test. Skipping."
     exit 77
@@ -43,7 +43,8 @@ for f in $fsttype; do
 	fi
 	if [ -f "$generatorfile.$f" -a -f "$analyserfile.$f" ]; then
 		let "transducer_found += 1"
-		if [ -z $(find ${srcdir} -name "*_$transducer.yaml") ]; then
+		testfiles=$(find ${srcdir} -name "*_$transducer.yaml")
+		if [ "$testfiles" == "" ]; then
 			echo
 			echo "*** Warning: No YAML data files found. Skipping test."
 			echo "*** Filenames covered by this test needs to end in:"
