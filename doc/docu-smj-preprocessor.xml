@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN"
+"http://forrest.apache.org/dtd/document-v20.dtd">
+<document xml:lang="en">
+  <header>
+    <title></title>
+
+    <authors>
+      <person email="trond.trosterud@hum.uit.no" name="Trond Trosterud" />
+    </authors>
+  </header>
+
+  <body>
+    <section>
+      <title>Preprocessing the input</title>
+
+      <section>
+        <title>Introduction</title>
+      </section>
+
+      <section>
+        <title>Tokenizing</title>
+
+        <section>
+          <title>Obsolete: The tokenizer file tok.txt</title>
+
+          <p>Just as for North Sámi, the Lule Saami preprocessing was
+          earlier done with the Xerox <em>tokenize</em> tool and the
+          language-specific file tok.txt. The code itself is written as a set
+          of regular expressions, and the source file (tok.txt) was compiled
+          by xfst. As explained for the sme preprocessing, this approach was
+          replaced by a preprocessor script, written in perl,
+          <code>gt/script/preprocess</code>. </p>
+        </section>
+
+        <section>
+          <title>The current preprocessor</title>
+
+          <p>Preprocessing is done by the perl script
+          <code>gt/script/preprocess</code>, which is language-independent.
+          The script is documented <a
+          href="../../ling/preprocessor.html">here</a>. The language dependent
+          part of the script shall be done via the file <code>smj/bin/abbr.txt</code></p>
+        </section>
+
+        <section>
+          <title>Handling abbreviations</title>
+
+
+          <p>Lule Saami abbreviations are handled as for North Saami.</p>
+        </section>
+      </section>
+
+      <section>
+        <title>Spell relaxation of æ/ä, ø/ö</title>
+
+        <p>This is a feature common to Lule and South Sami, not to be found
+        in North Sami. The letter æ/ä and ø/ö are used interchangeably in
+        Norway and Sweden. The parser accepts any version of
+        them.</p>
+
+        <p>The xfst file to handle this is the language-independent
+        <a href="https://victorio.uit.no/langtech/trunk/gt/common/src/spellrelax.regex">spellrelax.regex</a>.
+        It contains rules like:</p>
+
+        <source>ń (-&gt;) ñ, ŋ (-&gt;) ñ, æ (-&gt;) ä, ø (-&gt;) ö ;</source>
+
+        <p>The line says that æ may optionally be replaced by ä and that ø may
+        optionally be replaced with ö, and the same for the different ways of
+        writing ŋ.</p>
+        <p>
+        We plan to make parts of the spellrelax file language dependent.
+        </p>
+
+      </section>
+
+      <section>
+        <title>Initial capitalization</title>
+
+        <p>There is a language independent <a href="https://victorio.uit.no/langtech/trunk/gt/common/src/inituppercase.regex">inituppercase.regex</a> file. Cf. <a
+        href="../sme/docu-sme-preprocessor.html#ini">the documentation for
+        initial capitalization</a> written for North Saami.</p>
+      </section>
+
+      <section>
+        <title>Capitalization of whole words</title>
+
+        <p>This has not yet been implemented.</p>
+      </section>
+
+    </section>
+  </body>
+</document>
