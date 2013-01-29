@@ -18,13 +18,13 @@
 
 
 ! ======================
-! Sublexica for Verb
+!! !!!Sublexica for Verb
 ! ======================
 
-! Even-syllable stems
+!! !!Even-syllable stems
 ! -------------------
 
-! Modals
+!! Modals
 ! - - - -
 
 LEXICON GALGGAT_IV
@@ -60,72 +60,68 @@ LEXICON VIERTTIT_IV
 +V+IV+Der3+Der/mus+N:»muss@C.NeedNoun@ MUS ;
 
 
-! This is for auxiliaries, they do not have passive.
-! Thus, when passive is added, it will include BASSAT, but not GALGGAT
+!! This is for auxiliaries, they do not have passive.
+!! Thus, when passive is added, it will include BASSAT, but not GALGGAT
 
 
-! Ordinary main verbs
+!! Ordinary main verbs
 ! - - - - - - - - - -
 
+!! !!Even-syllable
 
-LEXICON BIEGGAT_IV !Impersonals
+LEXICON BIEGGAT_IV !!= @CODE@ Impersonals
 +V+IV: DeverbalVerbsBIEGGAT ;
 +V+IV:%> BIEGGATinfl ;
 +V+IV: SG3PASSV ;
 +V+IV: SG3PASSEVEN ;
 
-LEXICON GALSSJOT_IV !Impersonal o-verbs
+LEXICON GALSSJOT_IV !!= @CODE@ Impersonal o-verbs
 +V+IV: DeverbalVerbsBIEGGAT ;
 +V+IV:%> GALSSJOTinfl ;
 +V+IV: SG3PASSV ;
 !+V+IV: SG3PASSEVEN ; outcommented to avoid short pass.
 
 
-
-LEXICON BIEKKASTALLAT_IV !Allready derived Impersonals
+LEXICON BIEKKASTALLAT_IV !!= @CODE@ Allready derived Impersonals
 +V+IV:%> BIEGGATinfl ;
 +V+IV: SG3PASSV ;
 +V+IV: SG3PASSEVEN ;
 
-LEXICON RAVGGAT_IV  !a- and å-verbs
+!! ! Intransitives
+
+LEXICON RAVGGAT_IV  !!= @CODE@ a- and å-verbs
 +V+IV:%> RAVGGATStem ;
 +V+IV: DeverbalVerbsBASSAT ;
 +V+IV: SG3PASSV ;
 +V+IV: SG3PASSEVEN ;
 
-LEXICON ASSTAT_IV  !only for asstat, no passive
+LEXICON RAVGGALASSTET_IV   !!= @CODE@ Like RAVGGAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced
++V+IV:%> RAVGGALASSTETStem ;
++V+IV: SG3PASSV ;
++V+IV: SG3PASSEVEN ;
+
+LEXICON ASSTAT_IV  !!= @CODE@ only for asstat, no passive
 +V+IV:%> ASSTATStem ;
 +V+IV: DeverbalVerbsBASSAT ;
 
-LEXICON BUOLLET_IV  !e-verbs
+LEXICON BUOLLET_IV  !!= @CODE@ e-verbs
 +V+IV:%> RAVGGATStem ;
 +V+IV: DeverbalVerbsLÁHPPET ;
 +V+IV: SG3PASSV ;
 +V+IV: SG3PASSEVEN ;
 
-LEXICON BOAHTET_IV !e-verbs like BUOLLET_IV without passive
+LEXICON BOAHTET_IV !!= @CODE@ e-verbs like BUOLLET_IV without passive
 +V+IV:%> RAVGGATStem ;
 +V+IV: DeverbalVerbsLÁHPPET ;
 
-LEXICON VIEDJET_IV  !e-verbs GRADE II-I WITH IE DIPHT.
+LEXICON VIEDJET_IV  !!= @CODE@ e-verbs GRADE II-I WITH IE DIPHT.
 +V+IV:%> VIEDJETStem ;
 +V+IV: DeverbalVerbsLÁHPPET ;
 +V+IV: SG3PASSV ;
 +V+IV: SG3PASSEVEN ;
 
-LEXICON MÁHTTET_TV  !transitive verbs without personal passive
-+V+TV:%> BASSATStem ;
-+V+TV: DeverbalVerbsLÁHPPET ;
-+V+TV: SG3PASSV ;
-+V+TV: SG3PASSEVEN ;
 
-
-LEXICON RAVGGALASSTET_IV   !Like RAVGGAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced
-+V+IV:%> RAVGGALASSTETStem ;
-+V+IV: SG3PASSV ;
-+V+IV: SG3PASSEVEN ;
-
-LEXICON GUOTTEDALLAT_IV   !passives on -allat - no actio as first part of compounds, but reintroduced
+LEXICON GUOTTEDALLAT_IV   !!= @CODE@ passives on -allat - no actio as first part of compounds, but reintroduced
 ! +V+IV:%> RAVGGALASSTETStem ; !replaced to avoid pass  + actor
  +V+IV+Der3+Der/goahte+V:%>»goahte%> INFL-EVEN ;
  +V+IV:%> INFL-EVEN ;
@@ -138,7 +134,7 @@ LEXICON GUOTTEDALLAT_IV   !passives on -allat - no actio as first part of compou
  +V+IV+Actio+Ela:mis K ;
  +V+IV+Der3+Der/NomAct:%>»m@C.NeedNoun@ BASSALASSTEM ;
  
-LEXICON HIEBADUVVAT_IV  !passives on -uvvat - no actio as first part of compounds, but reintroduced
+LEXICON HIEBADUVVAT_IV  !!= @CODE@ passives on -uvvat - no actio as first part of compounds, but reintroduced
 ! +V+IV:uvva%> RAVGGALASSTETStem ; !replaced to avoid pass + actor 
  +V+IV+PrfPrc:uvvu%>m K ;
  +V+IV+PrfPrc:um%> K ;
@@ -153,33 +149,41 @@ LEXICON HIEBADUVVAT_IV  !passives on -uvvat - no actio as first part of compound
  +V+IV+Actio+Ela:uvva%>mis K ;
  +V+IV+Der3+Der/NomAct:uvva%>»m@C.NeedNoun@ BASSALASSTEM ;
 
-LEXICON BASSAT_TV  !a- and å-verbs
+
+!! !Transitives
+
+LEXICON MÁHTTET_TV  !!= @CODE@ transitive verbs without personal passive
++V+TV:%> BASSATStem ;
++V+TV: DeverbalVerbsLÁHPPET ;
++V+TV: SG3PASSV ;
++V+TV: SG3PASSEVEN ;
+LEXICON BASSAT_TV  !!= @CODE@ a- and å-verbs
 +V+TV:%> BASSATStem ;
 +V+TV: DeverbalVerbsBASSAT ;
 +V+TV: EVEN-PASSIVE ;
 
-LEXICON JUHKAT_TV  !a-verbs with dim -istit that are hardcoded
+LEXICON JUHKAT_TV  !!= @CODE@ a-verbs with dim -istit that are hardcoded
 +V+TV:%> BASSATStem ;
 +V+TV: DeverbalVerbsJUHKAT ;
 +V+TV: EVEN-PASSIVE ;
 
-LEXICON LÁHPPET_TV  !e-verbs
+LEXICON LÁHPPET_TV  !!= @CODE@ e-verbs
 +V+TV:%> BASSATStem ;
 +V+TV: DeverbalVerbsLÁHPPET ;
 +V+TV: EVEN-PASSIVE ;
 
-LEXICON JIEHKET_TV  !e-verbs GRADE II-I WITH IE DIPHT.
+LEXICON JIEHKET_TV  !!= @CODE@ e-verbs GRADE II-I WITH IE DIPHT.
 +V+TV:%> JIEHKETStem ;
 +V+TV: DeverbalVerbsLÁHPPET ;
 +V+TV: EVEN-PASSIVE ;
 
 
-LEXICON BASSALASSTET_TV  !Like BASSAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced
+LEXICON BASSALASSTET_TV  !!= @CODE@ Like BASSAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced
 +V+TV:%> BASSALASSTETStem ;
 +V+TV: EVEN-PASSIVE ;
 
 
-LEXICON DIEHTET_TV  !Only this one word, unusual diphtong behavior
+LEXICON DIEHTET_TV  !!= @CODE@ Only this one word, unusual diphtong behavior
 +V+TV: DeverbalVerbsDIEHTET ;
 +V+TV+Ind+Prs: I-diehtet-V ;
 +V+TV+Ind+Prt:%> II-sg72pl9 ;
@@ -217,6 +221,70 @@ LEXICON DIEHTET_TV  !Only this one word, unusual diphtong behavior
 +V+TV+Der3+Der/goahte+V:e»goahte%> INFL-EVEN ;
 +V+TV:e DeverbalNounsDIEHTET ;
 
+
+
+LEXICON GÁDJOT_TV !!= @CODE@ o-verbs
++V+TV:%> GÁDJOTStem ;
++V+TV: DeverbalVerbsBASSAT ;
+!+V+TV: EVEN-PASSIVE ; replaced by individual pointers to avoid short pass.
+!+V+TV+Der/Pass+V:»Y9u OADDÁTINCH ; NO SHORT PASS HERE! !replaced by individual pointers to avoid pass + actio, reintroduced since it is usual!
+!+V+TV+Der/Pass+V+Der3+Der/goahte+V:»Y9ugoahte%> INFL-EVEN ;
+!+V+TV+Der/Pass+V:»Y9u INFL-CONTRACTED ;
+!+V+TV+Der/Pass+V+Der2+Der/NomAg:»Y9ujiddje@C.NeedNoun@  ACTOR ;
+!+V+TV+Der/Pass+V+Der3+Der/mus+N:»Y9umuss@C.NeedNoun@ MUS ;
++V+TV+Der1+Der/Pass+V+Der3+Der/goahte+V:»Q1duvva»goahte%> INFL-EVEN ;
++V+TV+Der1+Der/Pass+V:»Q1duvva%> INFL-EVEN ;
++V+TV+Der1+Der/Pass+V+PrfPrc:»Q1duvvu%>m K ;
+!+V+TV+Der1+Der/Pass+V+Der2+Der/NomAg:»Q1duvva@C.NeedNoun@  ACTOR ;
++V+TV+Der1+Der/Pass+V+Der3+Der/lis+A:»Q1duvva»Y3liss LIS ;
++V+TV+Der1+Der/Pass+V+Der3+Der/mus+N:»Q1duvva»muss@C.NeedNoun@ MUS ;
++V+TV+Der1+Der/Pass+Der2+Der/duhtte+V:»Q1duhtte%> BASSATINCH ;
++V+TV+Der1+Der/Pass+V+Der3+Der/goahte+V:»X7dalla»goahte%> INFL-EVEN ;
++V+TV+Der1+Der/Pass+V:»X7dalla%> INFL-EVEN ;
+!+V+TV+Der1+Der/Pass+V+Der2+Der/NomAg:»X7dalla@C.NeedNoun@  ACTOR ;
++V+TV+Der1+Der/Pass+V+Der3+Der/lis+A:»X7dalla»Y3liss LIS ;
++V+TV+Der1+Der/Pass+V+Der3+Der/mus+N:»X7dalla»muss@C.NeedNoun@ MUS ;
++V+TV+Der1+Der/Pass+Der2+Der/dahtte+V:»X7dahtte%> BASSATINCH ;
++V+TV+Der1+Der/Pass+V+PrfPrc:»Q1dum%> K ;
+
+LEXICON JÅRGGOT_TV !!= @CODE@ o-verbs with dim -astit that are hardcoded
++V+TV:%> GÁDJOTStem ;
++V+TV: DeverbalVerbsJUHKAT ;
+!+V+TV: EVEN-PASSIVE ; replaced by individual pointers to avoid short pass.
+!+V+TV+Der/Pass+V:»Y9u OADDÁTINCH ; NO SHORT PASS HERE! !replaced by individual pointers to avoid pass + actio, reintroduced since it is usual!
+!+V+TV+Der/Pass+V+Der3+Der/goahte+V:»Y9ugoahte%> INFL-EVEN ;
+!+V+TV+Der/Pass+V:»Y9u INFL-CONTRACTED ;
+!+V+TV+Der/Pass+V+Der2+Der/NomAg:»Y9ujiddje@C.NeedNoun@  ACTOR ;
+!+V+TV+Der/Pass+V+Der3+Der/mus+N:»Y9umuss@C.NeedNoun@ MUS ;
++V+TV+Der1+Der/Pass+V+Der3+Der/goahte+V:»Q1duvva»goahte%> INFL-EVEN ;
++V+TV+Der1+Der/Pass+V:»Q1duvva%> INFL-EVEN ;
++V+TV+Der1+Der/Pass+V+PrfPrc:»Q1duvvu%>m K ;
+!+V+TV+Der1+Der/Pass+V+Der2+Der/NomAg:»Q1duvva@C.NeedNoun@  ACTOR ;
++V+TV+Der1+Der/Pass+V+Der3+Der/lis+A:»Q1duvva»Y3liss LIS ;
++V+TV+Der1+Der/Pass+V+Der3+Der/mus+N:»Q1duvva»muss@C.NeedNoun@ MUS ;
++V+TV+Der1+Der/Pass+Der2+Der/duhtte+V:»Q1duhtte%> BASSATINCH ;
++V+TV+Der1+Der/Pass+V+Der3+Der/goahte+V:»X7dalla»goahte%> INFL-EVEN ;
++V+TV+Der1+Der/Pass+V:»X7dalla%> INFL-EVEN ;
+!+V+TV+Der1+Der/Pass+V+Der2+Der/NomAg:»X7dalla@C.NeedNoun@  ACTOR ;
++V+TV+Der1+Der/Pass+V+Der3+Der/lis+A:»X7dalla»Y3liss LIS ;
++V+TV+Der1+Der/Pass+V+Der3+Der/mus+N:»X7dalla»muss@C.NeedNoun@ MUS ;
++V+TV+Der1+Der/Pass+Der2+Der/dahtte+V:»X7dahtte%> BASSATINCH ;
++V+TV+Der1+Der/Pass+V+PrfPrc:»Q1dum%> K ;
+
+
+LEXICON BÅRSSJOT_IV !!= @CODE@ o-verbs
++V+IV:%> BÅRSSJOTStem ;
++V+IV: DeverbalVerbsBASSAT ;
++V+IV: SG3PASSV ;
+!+V+IV: SG3PASSEVEN ; no short pass here!
+
+LEXICON VILSSJOT_IV !!= @CODE@ o-verbs with dim -astit that are hardcoded
++V+IV:%> BÅRSSJOTStem ;
++V+IV: DeverbalVerbsJUHKAT ;
++V+IV: SG3PASSV ;
+!+V+IV: SG3PASSEVEN ; no short pass here!
+
+
 LEXICON PRSPRC !SUB ! This is for PrsPrc as Adj.
  +Use/-Spell: ENDLEX ; !     !Can only be Attr.
 
@@ -249,6 +317,13 @@ LEXICON BASSALASSTETStem
 LEXICON RAVGGALASSTETStem
  RAVGGALASSTETINCH ;
 
+LEXICON GÁDJOTStem
+ GÁDJOTINCH ;
+! EVEN-PASSIVE ;
+
+LEXICON BÅRSSJOTStem
+ BÅRSSJOTINCH ;
+! EVEN-PASSIVE ;
 
 LEXICON BASSATINCH
  +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
@@ -285,77 +360,6 @@ LEXICON RAVGGALASSTETINCH
  +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
  INFL-EVEN ;
  DeverbalNounsRAVGGALASSTET ;
-
-
-LEXICON GÁDJOT_TV !o-verbs
-+V+TV:%> GÁDJOTStem ;
-+V+TV: DeverbalVerbsBASSAT ;
-!+V+TV: EVEN-PASSIVE ; replaced by individual pointers to avoid short pass.
-!+V+TV+Der/Pass+V:»Y9u OADDÁTINCH ; NO SHORT PASS HERE! !replaced by individual pointers to avoid pass + actio, reintroduced since it is usual!
-!+V+TV+Der/Pass+V+Der3+Der/goahte+V:»Y9ugoahte%> INFL-EVEN ;
-!+V+TV+Der/Pass+V:»Y9u INFL-CONTRACTED ;
-!+V+TV+Der/Pass+V+Der2+Der/NomAg:»Y9ujiddje@C.NeedNoun@  ACTOR ;
-!+V+TV+Der/Pass+V+Der3+Der/mus+N:»Y9umuss@C.NeedNoun@ MUS ;
-+V+TV+Der1+Der/Pass+V+Der3+Der/goahte+V:»Q1duvva»goahte%> INFL-EVEN ;
-+V+TV+Der1+Der/Pass+V:»Q1duvva%> INFL-EVEN ;
-+V+TV+Der1+Der/Pass+V+PrfPrc:»Q1duvvu%>m K ;
-!+V+TV+Der1+Der/Pass+V+Der2+Der/NomAg:»Q1duvva@C.NeedNoun@  ACTOR ;
-+V+TV+Der1+Der/Pass+V+Der3+Der/lis+A:»Q1duvva»Y3liss LIS ;
-+V+TV+Der1+Der/Pass+V+Der3+Der/mus+N:»Q1duvva»muss@C.NeedNoun@ MUS ;
-+V+TV+Der1+Der/Pass+Der2+Der/duhtte+V:»Q1duhtte%> BASSATINCH ;
-+V+TV+Der1+Der/Pass+V+Der3+Der/goahte+V:»X7dalla»goahte%> INFL-EVEN ;
-+V+TV+Der1+Der/Pass+V:»X7dalla%> INFL-EVEN ;
-!+V+TV+Der1+Der/Pass+V+Der2+Der/NomAg:»X7dalla@C.NeedNoun@  ACTOR ;
-+V+TV+Der1+Der/Pass+V+Der3+Der/lis+A:»X7dalla»Y3liss LIS ;
-+V+TV+Der1+Der/Pass+V+Der3+Der/mus+N:»X7dalla»muss@C.NeedNoun@ MUS ;
-+V+TV+Der1+Der/Pass+Der2+Der/dahtte+V:»X7dahtte%> BASSATINCH ;
-+V+TV+Der1+Der/Pass+V+PrfPrc:»Q1dum%> K ;
-
-LEXICON JÅRGGOT_TV !o-verbs with dim -astit that are hardcoded
-+V+TV:%> GÁDJOTStem ;
-+V+TV: DeverbalVerbsJUHKAT ;
-!+V+TV: EVEN-PASSIVE ; replaced by individual pointers to avoid short pass.
-!+V+TV+Der/Pass+V:»Y9u OADDÁTINCH ; NO SHORT PASS HERE! !replaced by individual pointers to avoid pass + actio, reintroduced since it is usual!
-!+V+TV+Der/Pass+V+Der3+Der/goahte+V:»Y9ugoahte%> INFL-EVEN ;
-!+V+TV+Der/Pass+V:»Y9u INFL-CONTRACTED ;
-!+V+TV+Der/Pass+V+Der2+Der/NomAg:»Y9ujiddje@C.NeedNoun@  ACTOR ;
-!+V+TV+Der/Pass+V+Der3+Der/mus+N:»Y9umuss@C.NeedNoun@ MUS ;
-+V+TV+Der1+Der/Pass+V+Der3+Der/goahte+V:»Q1duvva»goahte%> INFL-EVEN ;
-+V+TV+Der1+Der/Pass+V:»Q1duvva%> INFL-EVEN ;
-+V+TV+Der1+Der/Pass+V+PrfPrc:»Q1duvvu%>m K ;
-!+V+TV+Der1+Der/Pass+V+Der2+Der/NomAg:»Q1duvva@C.NeedNoun@  ACTOR ;
-+V+TV+Der1+Der/Pass+V+Der3+Der/lis+A:»Q1duvva»Y3liss LIS ;
-+V+TV+Der1+Der/Pass+V+Der3+Der/mus+N:»Q1duvva»muss@C.NeedNoun@ MUS ;
-+V+TV+Der1+Der/Pass+Der2+Der/duhtte+V:»Q1duhtte%> BASSATINCH ;
-+V+TV+Der1+Der/Pass+V+Der3+Der/goahte+V:»X7dalla»goahte%> INFL-EVEN ;
-+V+TV+Der1+Der/Pass+V:»X7dalla%> INFL-EVEN ;
-!+V+TV+Der1+Der/Pass+V+Der2+Der/NomAg:»X7dalla@C.NeedNoun@  ACTOR ;
-+V+TV+Der1+Der/Pass+V+Der3+Der/lis+A:»X7dalla»Y3liss LIS ;
-+V+TV+Der1+Der/Pass+V+Der3+Der/mus+N:»X7dalla»muss@C.NeedNoun@ MUS ;
-+V+TV+Der1+Der/Pass+Der2+Der/dahtte+V:»X7dahtte%> BASSATINCH ;
-+V+TV+Der1+Der/Pass+V+PrfPrc:»Q1dum%> K ;
-
-
-LEXICON BÅRSSJOT_IV !o-verbs
-+V+IV:%> BÅRSSJOTStem ;
-+V+IV: DeverbalVerbsBASSAT ;
-+V+IV: SG3PASSV ;
-!+V+IV: SG3PASSEVEN ; no short pass here!
-
-LEXICON VILSSJOT_IV !o-verbs with dim -astit that are hardcoded
-+V+IV:%> BÅRSSJOTStem ;
-+V+IV: DeverbalVerbsJUHKAT ;
-+V+IV: SG3PASSV ;
-!+V+IV: SG3PASSEVEN ; no short pass here!
-
-LEXICON GÁDJOTStem
- GÁDJOTINCH ;
-! EVEN-PASSIVE ;
-
-LEXICON BÅRSSJOTStem
- BÅRSSJOTINCH ;
-! EVEN-PASSIVE ;
-
 
 LEXICON GÁDJOTINCH
  +Der3+Der/goahte+V:»goahte%> INFL-EVEN ;
@@ -445,7 +449,7 @@ LEXICON GALSSJOTinfl
 +Der3+Der/NomAct+N+Sg+Ess:»min K ;
 
 
-! Odd-syllable stems
+!! !! Odd-syllable stems
 ! ------------------
 
 LEXICON ITINC
@@ -453,11 +457,10 @@ UNNEDIT_TV ;
 ! This is just awaiting a manual classification
 ! of incoming verbs from the smesmj dictionary project.
 
-LEXICON BIEKKASTIT_IV !Impersonals
+LEXICON BIEKKASTIT_IV !!= @CODE@ Impersonals
 +V+IV: DeverbalVerbsBIEKKASTIT ;
 +V+IV:%> BIEKKASTITinfl ;
 +V+IV: SG3PASS ;
-
 
 LEXICON BIEKKASTITinfl
 +Ind+Prs+Sg3: K ;
@@ -502,14 +505,12 @@ LEXICON BIEKKASTITinfl
 +Der2+Der/NomAct+N+Sg+Com:»imi%>jn K ;
  +Der2+Der/NomAct+N+Sg+Com+Use/Sub:»imi%>jna K ; !
 
-
-
-LEXICON UNNEDIT_TV ! Transitives
+LEXICON UNNEDIT_TV !!= @CODE@ Transitives
  +V+TV:%> UNNEDITStem ;
  +V+TV: DeverbalVerbsJÅLLÅRIT ;
  +V+TV: ODD-PASSIVE ;
 
-LEXICON MUJTATJIT_TV  !Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but reintroduced
+LEXICON MUJTATJIT_TV  !!= @CODE@ Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but reintroduced
  +V+TV:%> MUJTATJITStem ;
  +V+TV: ODD-PASSIVE ;
  +V+TV+Der1+Der/ahtja+V:»ahtja%> INFL-EVEN ;                !Inchoative
@@ -518,7 +519,7 @@ LEXICON MUJTATJIT_TV  !Words ending -tjit, -jdit, reciprocals on -dit, momentati
  +V+TV+Der1+Der/ahttjá+V:»ahttjá DeverbalNounsTJUOLLÁT ; !Inchoative
 
 
-LEXICON BÅNJÅDIT_TV  !continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms
+LEXICON BÅNJÅDIT_TV  !!= @CODE@ continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms
  +V+TV:%> UNNEDITStem ;
  +V+TV: ODD-PASSIVE ;
  +V+TV+Der1+Der/ahtja+V:»ahtja%> INFL-EVEN ;                 !Inchoative
@@ -526,20 +527,18 @@ LEXICON BÅNJÅDIT_TV  !continuatives on -dit, frequentatives on -odit, reciproc
  +V+TV+Der1+Der/ahttjá+V:»ahttjá%> INFL-CONTRACTED ;                 !Inchoative
  +V+TV+Der1+Der/ahttjá+V:»ahttjá DeverbalNounsTJUOLLÁT ; !Inchoative
 
-LEXICON VUORDDELIT_TV !Trisyllabic Verbs ending -lit
+LEXICON VUORDDELIT_TV !!= @CODE@ Trisyllabic Verbs ending -lit
  +V+TV:%> UNNEDITStem ;
  +V+TV: DeverbalVerbsVUORDDELIT ;
  +V+TV: ODD-PASSIVE ;
 
 
-
-
-LEXICON JÅLLÅRIT_IV !At the moment IV, we may perhaps change IV/TV.
+LEXICON JÅLLÅRIT_IV !!= @CODE@At the moment IV, we may perhaps change IV/TV.
  +V+IV:%> JÅLLÅRITStem ;
  +V+IV: DeverbalVerbsJÅLLÅRIT ;
  +V+IV: SG3PASS ;
 
-LEXICON BEGATJIT_IV  !Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but reintroduced
+LEXICON BEGATJIT_IV  !!= @CODE@ Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but reintroduced
  +V+IV:%> BEGATJITStem ;
  +V+IV: SG3PASS ;
  +V+IV+Der1+Der/ahtja+V:»ahtja%> INFL-EVEN ;                 !Inchoative
@@ -547,7 +546,7 @@ LEXICON BEGATJIT_IV  !Words ending -tjit, -jdit, reciprocals on -dit, momentativ
  +V+IV+Der1+Der/ahttjá+V:»ahttjá%> INFL-CONTRACTED ;                 !Inchoative
  +V+IV+Der1+Der/ahttjá+V:»ahttjá DeverbalNounsTJUOLLÁT ; !Inchoative
 
-LEXICON BALÁDIT_IV  !continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms
+LEXICON BALÁDIT_IV  !!= @CODE@ continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms
  +V+IV:%> JÅLLÅRITStem ;
  +V+IV: SG3PASS ;
  +V+IV+Der1+Der/ahtja+V:»ahtja%> INFL-EVEN ;                 !Inchoative
@@ -555,16 +554,16 @@ LEXICON BALÁDIT_IV  !continuatives on -dit, frequentatives on -odit, reciprocal
  +V+IV+Der1+Der/ahttjá+V:»ahttjá%> INFL-CONTRACTED ;                 !Inchoative
  +V+IV+Der1+Der/ahttjá+V:»ahttjá DeverbalNounsTJUOLLÁT ; !Inchoative
 
-LEXICON SUOGNALIT_IV !Trisyllabic Verbs ending -lit
+LEXICON SUOGNALIT_IV !!= @CODE@ Trisyllabic Verbs ending -lit
  +V+IV:%> JÅLLÅRITStem ;
  +V+IV: DeverbalVerbsVUORDDELIT ;
  +V+IV: SG3PASS ;
 
-LEXICON LASSÁNIT_IV !verbs ending -nit, -sit, no passive
+LEXICON LASSÁNIT_IV !!= @CODE@ verbs ending -nit, -sit, no passive
  +V+IV:%> JÅLLÅRITStem ;
  +V+IV: DeverbalVerbsLASSÁNIT ;
 
-LEXICON BÁHTARIT_IV !verbs ending -rit
+LEXICON BÁHTARIT_IV !!= @CODE@verbs ending -rit
  +V+IV:%> JÅLLÅRITStem ;
  +V+IV: DeverbalVerbsLASSÁNIT ;
  +V+IV: SG3PASS ;
@@ -576,6 +575,7 @@ LEXICON JÅLLÅRITStem
 LEXICON UNNEDITStem
  UNNEDITINCH ;
 ! ODD-PASSIVE ; ! this must go for TV only.
+
 
 
 LEXICON JÅLLÅRITINCH
@@ -596,6 +596,7 @@ LEXICON MUJTATJITStem
 LEXICON BEGATJITStem
  BEGATJITINCH ;
 ! ODD-PASSIVE ; ! this must go for TV only.
+
 
 
 LEXICON MUJTATJITINCH
