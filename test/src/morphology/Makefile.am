@@ -8,7 +8,8 @@
 TESTS=test-adj-generation.sh \
 	  test-noun-generation.sh \
 	  test-propernoun-generation.sh \
-	  test-verb-generation.sh
+	  test-verb-generation.sh \
+	  test-propernoun-generation.sh
 
 if CAN_YAML_TEST
 # Add your shell scripts for running python-based tests here:
