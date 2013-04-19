@@ -52,11 +52,11 @@ GT_XML_SRCS=
 $(srcdir)/stems/smi-$(GTLANG)-propernouns.lexc: \
 		$(srcdir)/stems/smi-propernouns.lexc \
 		$(srcdir)/stems/$(GTLANG)-propernouns.lexc
-	rm -f $@
-	cp -f $(srcdir)/stems/$(GTLANG)-propernouns.lexc $@
-	echo "" >> $@
-	echo "! <--- Dump from SMI -->" >> $@
-	echo "" >> $@
+	$(AM_V_GEN)rm -f $@ && \
+	cp -f $(srcdir)/stems/$(GTLANG)-propernouns.lexc $@ && \
+	echo "" >> $@ && \
+	echo "! <--- Dump from SMI -->" >> $@ && \
+	echo "" >> $@ && \
 	$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl $< >> $@
 
 include $(top_srcdir)/am-shared/lexc-include.am
