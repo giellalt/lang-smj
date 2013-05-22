@@ -157,6 +157,7 @@ LIST Ess = Ess ;
 
 LIST Sg = Sg ;
 LIST Pl = Pl ;
+LIST PronSg = Sg1 Sg2 Sg3 ;
 
 LIST RCmpnd = RCmpnd ;
 
@@ -3431,6 +3432,9 @@ SELECT:r2143 Gen IF (NEGATE 0 Adv OR PrfPrc OR (Num Nom))(1C Po)(NEGATE 1 Px OR 
 #!! !!Finite or not
 #!! !!Indicative or imperative
 #!! !!Verbs according to person and number
+
+REMOVE:Sg2 Sg2 IF (0 Sg3) (-1 Pron + Sg3 OR N + Sg);
+
 #!! !!Rules for a special infinitive construction
 #!! !!More finite verbs
 #!! !!Passive
@@ -3448,11 +3452,26 @@ SELECT:r2143 Gen IF (NEGATE 0 Adv OR PrfPrc OR (Num Nom))(1C Po)(NEGATE 1 Px OR 
 #!! !!Determiners
 #!! !!Adverbs and adjectives
 
+REMOVE:AttrNeedsHead Attr IF (NOT *1 N ) ;
+
+# Inga: Not sure that this is a good rule. 
+REMOVE:AdvAfterNoun Adv IF (-1 N) (NOT 1 V) ;
+
 #!! !!!NOUNS
+
+REMOVE:PlNomBeforePo N + Pl + Nom IF (1 Po) ;
+
+REMOVE:PersPronSgAcc Pron + Pers + PronSg + Acc IF (*1 N) ;
+
+
+
+
+
 
 #!! !!!VERBS
 
 #!! !!!NOMEN
+
 
 
 #!! !!Genitive after preposition -- round 2
