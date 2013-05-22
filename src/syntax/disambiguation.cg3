@@ -616,7 +616,7 @@ SET NOT-A-PCLE = WORD - A - Pcle ;
 SET NOT-A-CC = WORD - A-CC ;
 
 # This set was removed, for a good reason?
-SET NOT-AA = WORD - A - Adv OR ("maid") ;
+SET NOT-ADV-A = WORD - A - Adv OR ("maid") ;
 
 
 LIST NOMINAL-A = "guoktilaš" "lámis" "oasálaš" ("suddu" Der/laš) "viissis";
@@ -632,7 +632,6 @@ SET NOT-ADV-N          = WORD - Adv - N;
 SET NOT-ADV-PCLE       = WORD - Adv - Pcle ;
 SET NOT-ADV-INDEF      = WORD - Adv - Indef ;
 SET NOT-ADV-PCLE-ILL-LOC-COM = WORD - Adv - Pcle - Ill - Loc - Com;
-SET NOT-ADV-A = WORD - A - Adv OR ("maid") ;
 
 LIST MOVT = "govt" ("got" Adv) "mo" "mot" "mov" "movt" ;
 
@@ -758,16 +757,14 @@ SET MAIN-V = V - COPULAS - Neg - MOD-ASP OR ("orrut") ;
  
 # The set of verbs that can be main verbs. Includes AUX-OR-MAIN.
 
-LIST TRANS-V1 = TV (IV Der/ahtti) (IV Der/h) ;
 # This is only a tool for making the following sets, bacause of that the symbols (|) and (-) in the set don´t function as one had expected.
-SET TRANS-ACT-V = TRANS-V1 - (TV Der/PassS) - (TV Der/PassL);
  #XXX Never acc-obj for a.l. or actor?
  # All active verbs with a TV tag, including AUX-OR-MAIN.
  
-SET TRANS-ACT-NOT-AUX-V = TRANS-V1 - Der/Pass - AUX ;
+SET TRANS-ACT-NOT-AUX-V = V-TRANS - Der/Pass - AUX ;
 
 #!! TRANS-V is the set for verbs really taking objects
-SET TRANS-V = TRANS-V1 - Der/Pass - Der/NomAct - Der/NomAg - PrsPrc ;
+SET TRANS-V = V-TRANS - Der/Pass - Der/NomAct - Der/NomAg - PrsPrc ;
 
 #!! * Sets for verbs choosing oblique objects or adverbials
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -1608,7 +1605,7 @@ LIST BEDCLOTHES = "beaska" "gávdni" "oađđádagat" "rátnu" "roavgu" "seaŋga"
 
     # anything that can be used as bedclothing. IV-verbs like "oađđit" can take these as objekt. 
     
-LIST CLOTHES = "avvi" "báidi" (".*báidi"r) "beaska" "(".*bealjus"r)" "bivttas" "boagán" (".*boagán"r)  (".*buksa"r) (".*buser"r) (".*busir"r) (".*bivttas"r) "čalbmeláset" (".*čuhppa"r) "čuvla" "dorka" "fáhcca" "(".*gahpir"r)" "gákti" "gárvu" (".*gákti"r) "gistta" (".*hámet"r) (".*liidni"r) (".*luhkka"r) "rahpot" (".*readdju"r) (".*reddjo"r) "T-báidi" (".*váhcca"r) (".*váhttu"r) (".*vuolpu"r);
+LIST CLOTHES = "avvi" "báidi" (".*báidi"r) "beaska" (".*bealjus"r) "bivttas" "boagán" (".*boagán"r)  (".*buksa"r) (".*buser"r) (".*busir"r) (".*bivttas"r) "čalbmeláset" (".*čuhppa"r) "čuvla" "dorka" "fáhcca" (".*gahpir"r) "gákti" "gárvu" (".*gákti"r) "gistta" (".*hámet"r) (".*liidni"r) (".*luhkka"r) "rahpot" (".*readdju"r) (".*reddjo"r) "T-báidi" (".*váhcca"r) (".*váhttu"r) (".*vuolpu"r);
    
 
 LIST FOOD = (".*biebmu"r) (".*biergu"r) (".*borramuš"r)  (".*muorji"r) "fuođar" (".*guolli"r) "gordni" (".*mális"r) (".*jáffu"r) "jokŋa"  (".*láibi"r) "mális" "málli" "márfi" "niesti" "sarrit" "spelle" (".*gáhkku"r) ;
@@ -2022,13 +2019,13 @@ SET NON-APP = ALLSYNTAG - (@APP);
 
 
 # ==========================
-#!! !!!DISAMBIGUATION RULES  
+#!! !!!DISAMBIGUATION RULES  
 # ==========================
 # ==========================
 # ==========================
 
 
-#!! !!!SECTION 1, THE SECTION FOR POPULAR RULES 
+#!! !!!SECTION 1, THE SECTION FOR POPULAR RULES 
 # ==================================
 # ==================================
 
@@ -2141,7 +2138,7 @@ LIST ADV-NOT-NOMEN = "beare" "čoahkkái" "čoahkis" "fárrui"  "fárus" "ihttá
 REMOVE:AdvNotNA N OR A (0 ADV-NOT-NOMEN) ;
 
 #!! * __eambbogo__ selects Adv eambbo go
-SELECT:eambbogo Adv (0 ("eambbo") OR ("eanet") LINK -1 REAL-V)(1 ("go")) ; ;
+SELECT:eambbogo Adv (0 ("eambbo") OR ("eanet") LINK -1 REAL-V)(1 ("go")) ; 
 
 #!! !!Lexicalized indefinite pronoun 
 
@@ -2625,7 +2622,7 @@ SELECT:VPl1IfMiiLeft (V Pl1) IF (*-1 MII-PERS BARRIER VFIN OR PUNCT LINK NOT *-1
 	## Mii sápmelaččat gal leat vásihan dán...
 
 #!! * __VPl1IfMiiRight__ selects Pl1 if "mii" Pron to the right (r972) - 272
-SELECT:VPl1IfMiiRight (V Pl1) IF (*1 MII-PERS BARRIER NOT-ADV-PCLE OR CLB OR ("seammá") OR S-BOUNDARY LINK NOT *1 SG3-V BARRIER NOT-AA OR CLB);
+SELECT:VPl1IfMiiRight (V Pl1) IF (*1 MII-PERS BARRIER NOT-ADV-PCLE OR CLB OR ("seammá") OR S-BOUNDARY LINK NOT *1 SG3-V BARRIER NOT-ADV-A OR CLB);
 	## Galgat go mii vuordit muhtun eará? 
 
 #!! * __VPl1NotImprIfMiiLeft__ removes Imprt if if "mii" Pron to the left and 0 = "mii" (r973) - 557
@@ -2831,7 +2828,7 @@ SELECT:poQst Pcle IF (-2 (N Gen) LINK *-1 BOS BARRIER NOT-NP)(-1 Po)(0 go)(*1 VF
 REMOVE:killPcle Pcle (0 go) ;
 
 	# ============== #
-          SECTION #9 # 
+          SECTION 
 	# ============== #
 
 
@@ -3103,12 +3100,12 @@ REMOVE:NotConNegII (ConNegII) IF (NEGATE *-1 (Neg Imprt) BARRIER SV-BOUNDARY);
 	## Stáhta galgá fuolahit ahte gávdno divššohasbearráigeahčči juohke fylkkas.
 
 #!! * __NotConNegIfNotNeg__ removes ConNeg if no Neg to the left. Consider unifying with NotConNegNotNeg. - 1094269
-REMOVE:NotConNegIfNotNeg ConNeg IF (NEGATE *-1 Neg BARRIER CLB OR Ind)(NEGATE *-1 Nom LINK -1 Neg)(NEGATE *-1 (@CVP) BARRIER NOT-AA LINK *-1 ConNeg BARRIER VFIN); 
+REMOVE:NotConNegIfNotNeg ConNeg IF (NEGATE *-1 Neg BARRIER CLB OR Ind)(NEGATE *-1 Nom LINK -1 Neg)(NEGATE *-1 (@CVP) BARRIER NOT-ADV-A LINK *-1 ConNeg BARRIER VFIN); 
 	## Juohke muorra mii ii šaddat buriid šattuid, čullojuvvo ja bálkestuvvo dollii.
 	## Gávpot mii lea vári alde, ii sáhte leat čihkosis.
 
 #!! * __NotConNegNotNeg__ removes remaining ConNegs whenever no Neg to the left. - 5862
-REMOVE:NotConNegNotNeg ConNeg IF (NEGATE *-1 Neg BARRIER SV-BOUNDARY OR go)(NEGATE -1 Rel LINK -1 Neg)(NEGATE -2 Rel LINK -1 Neg)(NEGATE *-1 (@CVP) BARRIER NOT-AA LINK *-1 ConNeg BARRIER VFIN);
+REMOVE:NotConNegNotNeg ConNeg IF (NEGATE *-1 Neg BARRIER SV-BOUNDARY OR go)(NEGATE -1 Rel LINK -1 Neg)(NEGATE -2 Rel LINK -1 Neg)(NEGATE *-1 (@CVP) BARRIER NOT-ADV-A LINK *-1 ConNeg BARRIER VFIN);
 # Look at this and the previous one: they overlap appr 95%, but both catch some cases the other rule does not. 
 
 
@@ -3357,14 +3354,14 @@ SELECT:r1988 Acc IF (0 (Pron Pers) OR HUMAN LINK 0 Gen)(*1 ("sáhttit") BARRIER 
 
 #!! !Accusative or genitive in front of ALU and in front of adjectives
 
-SET NUMERALS = Num - OKTA ;
 
-SET NOTCOMMA = WORD - COMMA ;
+
 
 
 # Ritva comment: Belongs under the chapter "General rules" (if there is one?) 
-SELECT:r1992 Acc IF (0 NUMERALS)(1 MEASURE)(2 ALU OR A);
+SELECT:r1992 Acc IF (0 NUM)(1 MEASURE)(2 ALU OR A);
 	#$ Visti lei vihtta mehter alu.
+
 
 
 # Ritva comment: needs examples!
@@ -3378,7 +3375,7 @@ SELECT:r1993ja1997 Gen IF (-1 (Num Sg Acc))(0 MEASURE)(1 ALU OR A OR Pr OR ("das
 	#$ Sus lea njeallje mehtara guhkkosaš biila. 
 	#$ Ádjá viessu lea guokte miilla bajábeal márkana.
 	#$ Son bođii guokte jagi dás ovdal.
-SELECT:r1994 Acc IF (0 NUMERALS)(*1 (Num Acc) BARRIER NOTCOMMA LINK 1 MEASURE LINK 1 ALU OR A);
+SELECT:r1994 Acc IF (0 NUM)(*1 (Num Acc) BARRIER WORD LINK 1 MEASURE LINK 1 ALU OR A);
 	#$ Guokte golbma mehtera guhku, ja guhkitge, sáhttá vuojahat leat. 
 SELECT:r1995 Gen IF (1 (Num Sg Acc) LINK 1 (Num Sg Acc) LINK 1 MEASURE LINK 1 ALU OR A);
 SELECT:r1996 Gen IF (1 COMMA LINK 1 (Num Sg Acc) LINK 1 COMMA LINK 1 (Num Sg Acc) LINK 1 MEASURE LINK 1 ALU OR A);
