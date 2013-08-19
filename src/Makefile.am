@@ -99,63 +99,6 @@ endif
 #################################################
 #### Add language-specific build rules here: ####
 
-analyser-apertium-norm.att: generator-raw-gt-desc.hfst \
-					filters/remove-derivation-position-tags.hfst \
-					filters/remove-dialect-tags.hfst \
-					filters/make-optional-semantic-tags.hfst \
-					filters/remove-homonymy-tags.hfst \
-					filters/remove-variant-tags.hfst \
-					filters/remove-norm-comp-tags.hfst \
-					filters/remove-number-string-tags.hfst \
-					filters/remove-usage-tags.hfst \
-					filters/remove-sub-forms.hfst \
-					filters/remove-hyphenation-marks.hfst        \
-					filters/remove-infl_deriv-borders.hfst       \
-					filters/remove-word-boundary.hfst \
-					$(srcdir)/tagsets/apertium.relabel
-	$(AM_V_GEN)$(HFST_COMPOSE) $(HFST_FLAGS) -F -1 $< \
-			-2 filters/remove-hyphenation-marks.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-2 filters/remove-infl_deriv-borders.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-2 filters/remove-word-boundary.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/make-optional-semantic-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-sub-forms.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-usage-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-number-string-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-norm-comp-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-homonymy-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-variant-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-dialect-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE) $(HFST_FLAGS) -F \
-			-1 filters/remove-derivation-position-tags.hfst \
-		| $(HFST_MINIMIZE) $(HFST_FLAGS) \
-		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
-		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/apertium.relabel \
-		| $(HFST_INVERT) \
-		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
-		| hfst-fst2txt \
-		-o $@
-
 # Apertium-related language-specific targets - modify to suit each language:
 analyser-mt-%.und.hfst: analyser-mt-%.tmp.hfst
 	$(AM_V_GEN)$(HFST_INVERT) $< \
