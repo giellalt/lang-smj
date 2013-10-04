@@ -27,6 +27,9 @@ if [ -z $fsttype ]; then
     exit 77
 fi
 
+# Get external Mac editor for viewing failed results from configure:
+EXTEDITOR=@SEE@
+
 ###### Extraction: #######
 grep ";" $sourcefile | grep -v "^\!" | egrep -v '(LAANTE|Attr)' \
 	| sed 's/% /€/g' |  tr ":+" " " | cut -d " " -f1 \
@@ -86,7 +89,10 @@ for f in $fsttype; do
 		# lemmas is opened in SubEthaEdit:
 		if [ `wc -w $resultfile.$f.txt | tr -s ' ' | cut -d' ' -f2` -gt 0 ]
 		then
-			see $resultfile.$f.txt
+			# Only open the failed lemmas in see if @SEE@ is defined:
+			if [ "$EXTEDITOR" ]; then
+				$EXTEDITOR $resultfile.$f.txt
+			fi
 		    Fail=1
 		    echo "$f - FAIL"
 		    continue
