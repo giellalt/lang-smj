@@ -312,6 +312,26 @@ LIST DERIVED =
 
 LIST LOC = Ine Ela ; # This set since we imported sme rules, all LOCs must be revised.
 
+#!! !Semantic tags
+
+LIST Sem/Ani = Sem/Ani ;	 #!! Sem/Ani
+LIST Sem/Fem = Sem/Fem ;	 #!! Sem/Fem
+LIST Sem/Mal = Sem/Mal ;	 #!! Sem/Mal
+LIST Sem/Obj = Sem/Obj ;	 #!! Sem/Obj
+LIST Sem/Org = Sem/Org ;	 #!! Sem/Org
+LIST Sem/Plc = Sem/Plc ;	 #!! Sem/Plc
+LIST Sem/Sur = Sem/Sur ;	 #!! Sem/Sur
+LIST Sem/Time = Sem/Time ;	 #!! Sem/Time
+LIST Sem/Hum = Sem/Hum ;	 #!! Sem/Hum
+LIST Sem/Date = Sem/Date ;	 #!! Sem/Date
+LIST Sem/Year = Sem/Year ;	 #!! Sem/Year
+LIST Sem/Group = Sem/Group ; #!! Sem/Group
+LIST Sem/Route = Sem/Route ; #!! Sem/Route
+LIST Sem/Build = Sem/Build ; #!! Sem/Build
+LIST Sem/Place = Sem/Place ; #!! Sem/Place
+LIST Sem/Food = Sem/Food ;	 #!! Sem/Food
+SET FIRSTNAME = (Prop Sem/Fem) OR (Prop Sem/Mal) ;
+
 
 # Syntactic tags
 # --------------
@@ -1175,6 +1195,14 @@ LIST ALLSYNTAG = (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@-FSUBJ)
 # Disambiguation rules #
 # ==================== #
 # ==================== #
+
+BEFORE-SECTIONS
+
+#!! !!Rule for adding Sem/Date as a tag to readings which looks like dates
+SUBSTITUTE:Date1 (Num Sg) (Num Sg Sem/Date) TARGET ("<[0-3][0-9][.][0-2][0-9][.][1-2][0-9][0-9][0-9]>"r Num) ;
+SUBSTITUTE:Date1 (Num Sg) (Num Sg Sem/Date) TARGET ("<[0-9][.][0-9][.][1-2][0-9][0-9][0-9]>"r Num) ;
+SUBSTITUTE:Date1 (Num Sg) (Num Sg Sem/Date) TARGET ("<[0-3][0-9][.][0-2][0-9][.][0-9][0-9]>"r Num) ;
+SUBSTITUTE:Date1 (Num Sg) (Num Sg Sem/Year) TARGET ("<[1-2][0-9][0-9][0-9]>"r Num) ;
 
 
 # Rough outline of the plan.
