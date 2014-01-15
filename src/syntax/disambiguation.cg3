@@ -1996,10 +1996,10 @@ SELECT @CVP IF (NEGATE -1 NP-HEAD-NOM)(1 NP-HEAD-NOM LINK 1 VFIN); #XX
 SELECT @CVP IF (-1 NP-HEAD LINK *-1 VFIN BARRIER S-BOUNDARY2)(1 VFIN); #XX
     ## Bärggal de alla várráj suv doalvoj ja vuosedij sunji gájkka värálda rijkajt ja daj herlukvuodav ja javlaj.
 
-SELECT @CVP IF (*-1C VFIN BARRIER S-BOUNDARY)(*1C AUX LINK 0 Prs BARRIER S-BOUNDARY);  #XX
+SELECT @CVP IF (*-1C VFIN BARRIER S-BOUNDARY)(*1C AUX + Prs);  #XX
     ## Gåhtjo dan diehti hávdev gålmmå biejve váttugit gŋahttjat vaj åhpadisålmmå e besa suv suoládit ja álmmugij javllat sån le jábbmegij lussta tjuodtjelam.
 
-SELECT @CVP IF (*-1 COMMA LINK *-1C VFIN BARRIER S-BOUNDARY)(*1C AUX LINK 0 Prs BARRIER S-BOUNDARY);  #XX
+SELECT @CVP IF (*-1 COMMA LINK *-1C VFIN BARRIER S-BOUNDARY)(*1C AUX LINK *0 Prs BARRIER S-BOUNDARY);  #XX
     # The comma version
     ## Guhti tiempelav gajko ja gålmån biejven vas tsieggi, gájo dal ietjat, ja luojttáda ruossas.
 
@@ -3257,7 +3257,7 @@ REMOVE (N Pl Nom) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)
 REMOVE (N Sg Gen) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
 	## gå profehta le náv tjállám.
     
-SELECT Pl IF (0 SG-WORD)(-1 (Pron Gen) LINK -1 Num OR Ord BARRIER NPNH);
+SELECT Pl IF (0 SG-WORD)(-1 (Pron Gen) LINK -1 Num OR Ord);
    	## Dát lea okta min ovttasbargguin.
     # This rule is necessary before the next one as it chooses plural even if the genitive pronoun modifier after the numeral and in front of the singular noun is not disambiguated yet (Acc-Gen disambiguation comes later).
 
@@ -3505,7 +3505,7 @@ REMOVE Com IF (0 Ine OR Ill LINK 0 PLACE OR ABSTR-PLACE)(*-1 MOVEMENT-V BARRIER 
     ## Maŋep biejve de oassásij vádtsájiv.
 
 SELECT Com IF (0 VEHICLE OR ANIMATE OR (Pron Pers))(*1 MOVEMENT-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV); 
-SELECT Com IF (*-1 MOVEMENT-V BARRIER SV-BOUNDARY2 LINK 0 FMAINV)(0 VEHICLE OR ANIMATE OR (Pron Pers) BARRIER S-BOUNDARY2);  	
+SELECT Com IF (*-1 MOVEMENT-V + FMAINV BARRIER SV-BOUNDARY2)(0 VEHICLE OR ANIMATE OR (Pron Pers));  	
     ## De gåhtjoj åhpadisålmmåjt sujna jávre nuppe bälláj vuolgget.
     ## Sån ájggu vuolgget sujna jávre nuppe bälláj.
     ## Sån vuolggá sujna jávre nuppe bälláj.
@@ -3522,7 +3522,7 @@ SELECT Com IF (*-1 COMV BARRIER SV-BOUNDARY2 LINK 0 VERB)(0 POLITICAL-PLACE);
 SELECT Com IF (0 POLITICAL-PLACE)(*1 COMV BARRIER SV-BOUNDARY2 LINK 0 VERB);
     ##  
 	
-SELECT Com IF (*-2 TOGETHER-V LINK 1 ("aktan") BARRIER NOT-ADV LINK *1 N OR Pers BARRIER NOT-AAPCLE);
+SELECT Com IF (*-2 TOGETHER-V LINK *1 ("aktan") BARRIER NOT-ADV LINK *1 N OR Pers BARRIER NOT-AAPCLE);
   	## Mii heive bures oktii ránes datneláiggiin.
   
 SELECT Com IF (*1 TOGETHER-V BARRIER NPNH OR SV-BOUNDARY2 LINK 1 ("aktan"));
@@ -3664,10 +3664,10 @@ SELECT Ine IF (0 N OR (Pron Pers) LINK 0 Com)(1 COPULAS LINK NOT 1 FMAINV LINK N
 SELECT Ine IF (-1 COPULAS LINK -1 (N Pl Acc) LINK -1 ("mij" Pron Interr Sg Nom));  
     ## Mij dahkamusájt le dujna munnujn?  
     
-SELECT Ine IF (0 TEXT OR ABSTR-TEXT)(*1 VERBAL-ACTIVITY-V LINK 0 Der/Pass BARRIER NPNH);
+SELECT Ine IF (0 TEXT OR ABSTR-TEXT)(*1 VERBAL-ACTIVITY-V + Der/Pass);
   	## Dálá sámiid máidnasiin ja muitalusain muitaluvvo dološ oskui gullan hálddiid birra .
 
-SELECT Ine IF (*-1 VERBAL-ACTIVITY-V LINK 0 Der/Pass BARRIER NPNH)(0 TEXT OR ABSTR-TEXT);
+SELECT Ine IF (*-1 VERBAL-ACTIVITY-V + Der/Pass)(0 TEXT OR ABSTR-TEXT);
   	## Sii máinnašuvvojedje vearrologahallamiin earáid maŋŋá. 
   	
 SELECT Ine IF (0 PLACE)(*1 PLACE-V BARRIER SV-BOUNDARY2);  	
