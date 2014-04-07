@@ -76,12 +76,6 @@ endif # WANT_OAHPA
 
 ########################################################
 #### Add language-specific transducer targets here: ####
-if CAN_HFST
-GT_GENERATORS_HFST+=generator-oahpa-gt-norm.hfst
-if WANT_APERTIUM
-APERTIUM_ANALYSERS_HFST+=analyser-apertium-norm.att
-endif # WANT_APERTIUM
-endif # CAN_HFST
 
 #### Xerox transducers:
 if CAN_XFST
