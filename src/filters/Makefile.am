@@ -102,8 +102,6 @@ GENERATED_REGEXES=remove-semantic-tags.regex \
 # HFST targets here:
 if CAN_HFST
 GT_FILTER_TARGETS+=\
-					make-optional-semantic-tags.hfst       \
-					remove-semantic-tags.hfst              \
 					remove-illegal-derivation-strings.hfst
 
 endif
@@ -111,8 +109,6 @@ endif
 # And Xerox targets here:
 if CAN_XFST
 GT_FILTER_TARGETS+=\
-					make-optional-semantic-tags.xfst       \
-					remove-semantic-tags.xfst              \
 					remove-illegal-derivation-strings.xfst
 
 endif
