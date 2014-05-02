@@ -112,14 +112,16 @@ GENERATED_REGEXES=remove-semantic-tags.regex \
 # HFST targets here:
 if CAN_HFST
 GT_FILTER_TARGETS+=\
-					remove-illegal-derivation-strings.hfst
+				   remove-rel_focus-strings.hfst \
+				   remove-illegal-derivation-strings.hfst
 
 endif
 
 # And Xerox targets here:
 if CAN_XFST
 GT_FILTER_TARGETS+=\
-					remove-illegal-derivation-strings.xfst
+				   remove-rel_focus-strings.xfst \
+				   remove-illegal-derivation-strings.xfst
 
 endif
 
