@@ -144,6 +144,46 @@ endif # CAN_HFST
 #################################################
 #### Add language-specific build rules here: ####
 
+# The SMJ morphology has some extra tags used for marking questionable
+# normativity and our suggested norm:
+analyser-gt-%.hfst: analyser-gt-%.tmp.hfst \
+				filters/remove-DNorm-tags.hfst
+	$(AM_V_RGX2FST)$(PRINTF) "\
+				@\"filters/remove-DNorm-tags.hfst\" \
+			.o. @\"$<\" \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		| $(HFST_INVERT) \
+		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
+
+generator-gt-%.hfst: generator-gt-%.tmp.hfst \
+				filters/remove-DNorm-tags.hfst
+	$(AM_V_RGX2FST)$(PRINTF) "\
+				@\"filters/remove-DNorm-tags.hfst\" \
+			.o. @\"$<\" \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
+
+analyser-gt-%.xfst: analyser-gt-%.tmp.xfst \
+				filters/remove-DNorm-tags.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+				@\"filters/remove-DNorm-tags.xfst\" \
+			.o. @\"$<\" \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
+generator-gt-%.xfst: generator-gt-%.tmp.xfst \
+				filters/remove-DNorm-tags.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+				@\"filters/remove-DNorm-tags.xfst\" \
+			.o. @\"$<\".i \
+			;\n\
+		 invert \n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######
 ##################################################################
