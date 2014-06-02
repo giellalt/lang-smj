@@ -113,7 +113,8 @@ GENERATED_REGEXES=remove-semantic-tags.regex \
 if CAN_HFST
 GT_FILTER_TARGETS+=\
 				   remove-rel_focus-strings.hfst \
-				   remove-illegal-derivation-strings.hfst
+				   remove-illegal-derivation-strings.hfst \
+				   remove-DNorm-tags.hfst
 
 endif
 
@@ -121,7 +122,8 @@ endif
 if CAN_XFST
 GT_FILTER_TARGETS+=\
 				   remove-rel_focus-strings.xfst \
-				   remove-illegal-derivation-strings.xfst
+				   remove-illegal-derivation-strings.xfst \
+				   remove-DNorm-tags.xfst
 
 endif
 
