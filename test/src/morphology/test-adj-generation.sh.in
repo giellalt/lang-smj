@@ -75,17 +75,17 @@ for f in $fsttype; do
 
 #### First we try to generate the regular adjectives:
 		sed 's/$/+A+Sg+Nom/' adjs.txt | $lookuptool $generatorfile.$f \
-			| cut -f2 | grep -v "A+" | grep -v "^$" | sort -u > analadjs.$f.txt 
+			| cut -f2 | grep -v "A+" | grep -v "^$" | sort -u > analadjs.$f.txt
 
 #### Then we try to generate the attribute-only adjectives:
 		sed 's/$/+A+Attr/' attradjs.txt \
 			| $lookuptool $generatorfile.$f | cut -f2 \
-			| grep -v "A+" | grep -v "^$" | sort -u >> analadjs.$f.txt 
+			| grep -v "A+" | grep -v "^$" | sort -u >> analadjs.$f.txt
 
 #### Then we try to generate the comparative-only adjectives:
 		sed 's/$/+A+Comp+Sg+Nom/' compadjs.txt \
 			| $lookuptool $generatorfile.$f | cut -f2 \
-			| grep -v "A+" | grep -v "^$" | sort -u >> analadjs.$f.txt 
+			| grep -v "A+" | grep -v "^$" | sort -u >> analadjs.$f.txt
 
 #### Then we try to generate the superlative-only adjectives:
 		sed 's/$/+A+Superl+Sg+Nom/' superladjs.txt \
@@ -100,13 +100,13 @@ for f in $fsttype; do
 			| grep -v '^$' | tr 'ä' 'æ' >> analadjs.$f.txt
 
 		cat predadjs.txt superladjs.txt compladjs.txt >> adjs.txt
-		sort -u -o adjs.txt adjs.txt 
-		sort -u -o analadjs.$f.txt analadjs.$f.txt 
+		sort -u -o adjs.txt adjs.txt
+		sort -u -o analadjs.$f.txt analadjs.$f.txt
 		comm -23 adjs.txt analadjs.$f.txt > $resultfile.$f.txt
 
 		# if at least one word is found, the test failed, and the list of failed
 		# lemmas is opened in SubEthaEdit:
-		if [ `wc -w $resultfile.$f.txt | tr -s ' ' | cut -d' ' -f2` -gt 0 ]
+		if [ -s $resultfile.$f.txt ]
 		then
 			# Only open the failed lemmas in see if @SEE@ is defined:
 			if [ "$EXTEDITOR" ]; then
