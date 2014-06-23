@@ -91,6 +91,7 @@ LEXICON GÁDDE !!= @CODE@ 2syll stem with cg (note Q1) with comparatives
 !!€gt-norm: boassjo # Even-syllable test
 !!€ boassjo               boassjo+N+Sg+Nom
 !!€ båssjujn               boassjo+N+Sg+Com
+!!€ boassjojn               boassjo+N+Sg+Com
 !!€ boassjop               boassjo+N+Comp+Sg+Nom
 
 LEXICON ÅLGGO !!= @CODE@ Like MUORRA but no inessive/elative/illative sg, with comparatives
@@ -466,8 +467,10 @@ LEXICON APOTEK_CMP_INFL !!= @CODE@ Recent loanwords on -iehkka in NOR, -æhkka i
 !!€gt-norm: kartotæhkka # Even-syllable test
 !!€ kartotæhkka                 kartotæhkka+N+Sg+Nom
 !!€ kartotähkka                 kartotæhkka+N+Sg+Nom
-!!€ kartotæhkas                 kartotæhkka+N+Sg+Ela
-!!€ kartotähkas                 kartotæhkka+N+Sg+Ela
+!!€ kartotehkas                 kartotæhkka+N+Sg+Ela
+!!€ kartotehkas                 kartotæhkka+N+Sg+Ela
+!!€ kartotiehkka                 kartotæhkka+N+Sg+Nom
+!!€ kartotiehkas                 kartotæhkka+N+Sg+Ela
 
 LEXICON ANTIKK
 +N+OLang/NOB: ANTIKK_CMP_INFL ;
@@ -711,9 +714,9 @@ LEXICON BENSIN_CMP_INFL !!= @CODE@ Recent loanwords on -ijnna with long and shor
  +SgGenCmp:ijna%>    R                    ;
  +PlGenCmp:ijna%>j   R                    ;
 
-!!€gt-norm: syrijnna # Even-syllable test
-!!€ syrijnna                 syrijnna+N+Sg+Nom
-!!€ syrijnas                 syrijnna+N+Sg+Ela
+!!€gt-norm: tamburijnna # Even-syllable test
+!!€ tamburijnna                 tamburijnna+N+Sg+Nom
+!!€ tamburijnas                 tamburijnna+N+Sg+Ela
 
 LEXICON MASKIN
  +N+OLang/NOB: MASKIN_CMP_INFL ;
@@ -849,7 +852,10 @@ LEXICON SEMINAR_CMP_INFL !!= @CODE@ Recent loanwords on -árra with long and sho
 LEXICON FAKTOR
 +N+OLang/NOB: FAKTOR_CMP_INFL ;
 
-LEXICON FAKTOR_CMP_INFL !!= @CODE@ Recent loanwords on -åvrrå with long and short compound-form
+LEXICON FAKTOR_CMP_INFL !!= @CODE@ Recent loanwords on -åvrrå with long and short compound-form. 
+
+!The words ending on -or with tonefall 2 or with stress on last syll go to this lexicon. If the stress is on the first syll and tonefall 1 it goes to GAHPER. Like "lektor>liektur" Some words go to both because of differences in swedish and norwegian. (This system is from Morén-Duolljá 2014)
+
  +SgNomCmp:åvrrå%>   R                    ;
 +CmpN/Pref:or%>      R                    ;
           :åvrrå%>   N-EVENSTRONGSTEM     ;
@@ -904,9 +910,9 @@ LEXICON INSPEKTØR_CMP_INFL !!= @CODE@ Recent loanwords on -ør with long and sh
  +Err/Sub+SgGenCmp:øra%>    R                    ;
  +Err/Sub+PlGenCmp:øra%>j   R                    ;
 
-!!€gt-norm: observatørra # Even-syllable test
-!!€ observaterra                 observatørra+N+Sg+Nom
-!!€ observateras                 observatørra+N+Sg+Ela
+!!€gt-norm: observaterra # Even-syllable test
+!!€ observaterra                 observaterra+N+Sg+Nom
+!!€ observateras                 observaterra+N+Sg+Ela
 
 LEXICON SBSTANS
 +N+OLang/NOB: SBSTANS_CMP_INFL ;
@@ -1155,6 +1161,25 @@ LEXICON ADJEKTIV_CMP_INFL !!= @CODE@ Recent loanwords on -ijvva with long and sh
 !!€ datijvva                 datijvva+N+Sg+Nom
 !!€ datijvas                 datijvva+N+Sg+Ela
 
+!Loanwords becoming odd-syll
+
+LEXICON PREMIE
++OLang/NOB+Use/DNorm+N: PREMIE_UNASS_CMP_INFL ;
+
+LEXICON PREMIE_UNASS_CMP_INFL !!= @CODE@ Assimilated loanwords. on -ie, like premie, serie, bakterie. Becomes oddsyll like "riebij" Nom: premij, gen premiha. Like "riebij", but no cg. Shot and long essive. These words arn't standarized, this is Divvuns suggestion.  
+          :%>   NE-ODDCASE        ;
+          :%>   OTH-ODDCASE       ;
+          :»    DenominalNounsODD ;
+          :»    DenominalAdjsODD  ;
+          :%>   ODDCmp            ;
+ +SgNomCmp:%>   R                 ;
+          :     AHTÁ              ;
+
+!!€gt-norm: premij # Even-syllable test
+!!€ premij                 premij+N+Sg+Nom
+!!€ premihis               premij+N+Sg+Ela
+!!€ premin                 premij+N+Ess
+!!€ premihin               premij+N+Ess
 
 !! ! Unassimilated/Badly assimilated loanwords
 
@@ -1217,9 +1242,9 @@ LEXICON KINO_UNASS_CMP_INFL !!= @CODE@ Unassimilated loanwords. Not lulesami. No
                   +N+SgGenCmp:%>Q1  R                     ;
                   +N+PlGenCmp:%>j   R                     ;
 
-!!€gt-norm: media # Even-syllable test
-!!€ media                media+N+Sg+Nom
-!!€ medias               media+N+Sg+Ela
+!!€gt-norm: netto # Even-syllable test
+!!€ netto                netto+N+Sg+Nom
+!!€ nettos               netto+N+Sg+Ela
 
 LEXICON CELSIUS_UNASS
 +OLang/NOB+Use/NotDNorm+N: CELSIUS_UNASS_CMP_INFL ;
@@ -1234,56 +1259,6 @@ LEXICON CELSIUS_UNASS_CMP_INFL !!= @CODE@ Unassimilated loanwords. Not lulesami.
 !!€ aidsaj               aids+N+Sg+Ill
 !!€ aidsas               aids+N+Sg+Ela
 
-
-LEXICON PREMIE_UNASS
-+OLang/NOB+Use/NotDNorm+N: PREMIE_UNASS_CMP_INFL ;
-
-LEXICON PREMIE_UNASS_CMP_INFL !!= @CODE@ Unassimilated loanwords. on -ie, like premie, serie, bakterie. Really just norwegian words with a kind of sami inflektion.
-                +Sg+Nom:          K                     ;
-        +Sg+Nom+Use/Ped:          PxV                   ; !
-                   +Ess:in        K                     ;
-                +Sg+Ill:%>ij      K                     ;
-        +Sg+Ill+Use/Ped:a%>s%>    PxCi                  ; !
-                +Sg+Gen:a%>       K                     ;
-                +Sg+Abe:a%>#dagi  K                     ;
-                +Sg+Abe:a%>#dagá  K                     ;
-                +Sg+Abe:a%>#tagá  K                     ;
-        +Sg+Gen+Use/Ped:a%>       PxV                   ; !
-                +Sg+Acc:a%>v      K                     ;
-        +Sg+Acc+Use/Ped:a%>       PxV                   ; !
-                +Sg+Ine:%>in      K                     ;
-        +Sg+Ine+Use/Ped:i%>n%>    PxC                   ; !
-                +Sg+Ela:%>is      K                     ;
-        +Sg+Ela+Use/Ped:i%>st%>   PxC                   ; !
-                +Pl+Nom:a%>       K                     ;
-        +Pl+Nom+Use/Ped:e%>       PxNomPlV              ; !
-                +Pl+Gen:%>ij      K                     ;
-                +Pl+Abe:%>ij#dagi K                     ;
-                +Pl+Abe:%>ij#dagá K                     ;
-                +Pl+Abe:%>ij#tagá K                     ;
-        +Pl+Gen+Use/Ped:%>ij%>    PxC                   ; !
-                +Pl+Acc:%>ijt     K                     ;
-        +Pl+Acc+Use/Ped:i%>jd%>   PxC                   ; !
-                +Pl+Ill:%>ijda    K                     ;
-        +Pl+Ill+Use/Ped:i%>jdis%> PxCs                  ; !
-                +Pl+Ine:%>ijn     K                     ;
-        +Pl+Ine+Use/Ped:i%>jn%>   PxC                   ; !
-                +Pl+Ela:%>ijs     K                     ;
-        +Pl+Ela+Use/Ped:i%>jst%>  PxC                   ; !
-                +Pl+Com:%>ij      K                     ;
-        +Pl+Com+Use/Ped:i%>ij%>   PxC                   ; !
-                       :%>i       N-EVENWEAKSTEM-SG-COM ;
-!+Der1+Der/dibme+A:e» DIBME ;
-!+Der1+Der/dibme+A+Attr:e»dis%> ATTR ;
-!+Der1+Der/dibme+A:e»dis VUOHTA ; !moved to ATTR
-!+Der1+Der/dibme+A:e»d DUVVAT ;
-                       :»         DenominalNounsODD     ;
-                       :»         DenominalAdjsODD      ;
-!+Abe:e%>dak K ;
-!+Abe:e%>da K ;
-              +SgNomCmp:%>        R                     ;
-              +SgGenCmp:a%>       R                     ;
-              +PlGenCmp:%>ij      R                     ;
 
 LEXICON MEGABYTE_UNASS
 +OLang/NOB+Use/NotDNorm+N: MEGABYTE_UNASS_CMP_INFL ;
@@ -2540,9 +2515,9 @@ LEXICON GUOMOJ !!= @CODE@ III-I cg guomoj:guobbmu
        +N+SgGenCmp:%>   R                   ;
        +N+PlGenCmp:%>j  R                   ;
 
-!!€gt-norm: vuostoj # Contracted test
-!!€ vuostoj            vuostoj+N+Sg+Nom
-!!€ vuosstuv          vuostoj+N+Sg+Acc
+!!€gt-norm: ænoj # Contracted test
+!!€ ænoj            ænoj+N+Sg+Nom
+!!€ æddnuv          ænoj+N+Sg+Acc
 
 LEXICON GÅHKES !!= @CODE@ gåhkes:gåhkkå. Presently only for "gåhkes".
  +N:e%>  SARVES-NE           ;
