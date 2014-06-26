@@ -2095,16 +2095,39 @@ LEXICON BÁRNEP !!= @CODE@ bárnep:bárnebu-. Comparisation of nouns. No -ahtá 
 !!€ iednep            iednep+N+Sg+Nom
 !!€ iednebuv          iednep+N+Sg+Acc
 
-LEXICON OAPPÁSJ !!= @CODE@  Like gahper but for derived nouns, these don't get abesive -ahtá or -ahtes derivation. oddsyll, no cg, no vowchange, no short Ess.
+LEXICON OAPPÁSJ !!= @CODE@  Like GAHPER but for derived nouns in diminutive, have an underived form. Dosn't get abesive -ahtá or -ahtes derivation. oddsyll, no cg, no vowchange, no short Ess. Has only one dimin derivation since these words already are dimin, not double dim as GAHPER. 
+          +N:%> N-ODDCASE             ; ! no pointer to E-ODDCASE, as gahper has no short Ess
+          +N:%> OTH-ODDCASE           ;
+          +N:»  DenominalNounsOAPPÁSJ ; !Gives only one extra diminutive derivation, not triple "oappátjattjasj"
+          +N:%> ODDCmp                ;
+ +N+SgNomCmp:%> R                     ;
+
+!!€gt-norm: stiebil # Odd-syllable test
+!!€ oappásj            oappásj+N+Sg+Nom
+!!€ oappátjis          oappásj+N+Sg+Ela
+
+LEXICON BEDNAGASJ !!= @CODE@ Like BERLASJ but for derived nouns in diminutive. oddsyll, no cg, no vowchange, no short Ess. Has only one dimin derivation since these words already are dimin, not double dim as GAHPER. 
+ +N:     GÅNÅGIS-C            ;
+ +N:a%>  BERULASJ-EVEN         ;
+ +N:a»Q1 DenominalNounsBEDNAGASJ ;
+
+!!€gt-norm: stiebil # Odd-syllable test
+!!€ bednagasj            bednagasj+N+Sg+Nom
+!!€ bednagattjas          bednagasj+N+Sg+Ela
+
+LEXICON FIERUN !!= @CODE@  Like GAHPER but instuments derived from verbs. Fierrot>fierun. No short essive.  
           +N:%> N-ODDCASE         ; ! no pointer to E-ODDCASE, as gahper has no short Ess
           +N:%> OTH-ODDCASE       ;
           +N:»  DenominalNounsODD ;
+          +N:»  DenominalAdjsODD  ;
           +N:%> ODDCmp            ;
  +N+SgNomCmp:%> R                 ;
+          +N:     AHTÁ            ;
 
 !!€gt-norm: stiebil # Odd-syllable test
-!!€ stiebil            stiebil+N+Sg+Nom
-!!€ stiebilis          stiebil+N+Sg+Ela
+!!€ fierun            fierun+N+Sg+Nom
+!!€ fierunis          fierun+N+Sg+Ela
+
 
 !Plural odd-syll
 
@@ -2560,7 +2583,7 @@ LEXICON CONTR-OTH
 ! Denominal nouns
 ! ===============
 
-LEXICON DenominalNounsMUORRA
+LEXICON DenominalNounsMUORRA !Gives diminutive, and double diminutive
                                       +Der1+Der/Dimin+N:X7sj        N-ODDCASE    ;
                                       +Der1+Der/Dimin+N:X7tj        OTH-ODDCASE  ;
                              +Der1+Der/Dimin+N+SgNomCmp:X7sj        R            ;
@@ -2573,6 +2596,13 @@ LEXICON DenominalNounsMUORRA
             +Der1+Der/Dimin+N+Der2+Der/Dimin+N+SgGenCmp:X7tja»ttja  R            ;
             +Der1+Der/Dimin+N+Der2+Der/Dimin+N+PlGenCmp:X7tja»ttjaj R            ;
 
+LEXICON DenominalNounsBEDNAGASJ !Only one diminutive since BEDNAGASJ already is in dimin. Isn't possible with triple dimin as "bednagattjatjasj". 
+                                      +Der1+Der/Dimin+N:X7sj        N-ODDCASE    ;
+                                      +Der1+Der/Dimin+N:X7tj        OTH-ODDCASE  ;
+                             +Der1+Der/Dimin+N+SgNomCmp:X7sj        R            ;
+                             +Der1+Der/Dimin+N+SgGenCmp:X7tja       R            ;
+                             +Der1+Der/Dimin+N+PlGenCmp:X7tjij      R            ;
+
 LEXICON DenominalNounsKINO
                                       +Der1+Der/Dimin+N:tj        OTH-ODDCASE  ;
               +Der1+Der/Dimin+N+Der2+Der/Dimin+N+Sg+Nom:tja»sj    K            ; !Dobbel diminutiv
@@ -2583,7 +2613,7 @@ LEXICON DenominalNounsKINO
             +Der1+Der/Dimin+N+Der2+Der/Dimin+N+PlGenCmp:tja»ttjaj R            ;
 
 
-LEXICON DenominalNounsODD
+LEXICON DenominalNounsODD ! Gives diminutive, and double diminutive
                     +Der1+Der/Dimin+N+Sg+Nom:asj          K            ;
                            +Der1+Der/Dimin+N:attja        GÅNÅGIS-EVEN ;
         +Lex/Sub+Use/-Spell+Der1+Der/Dimin+N:adtja        GÅNÅGIS-EVEN ; !Gives gahperadtjaj, removed from speller since this is barely used. 
@@ -2595,6 +2625,14 @@ LEXICON DenominalNounsODD
  +Der1+Der/Dimin+N+Der2+Der/Dimin+N+SgNomCmp:adtja»X7sj   R            ;
  +Der1+Der/Dimin+N+Der2+Der/Dimin+N+SgGenCmp:adtja»X7tja  R            ;
  +Der1+Der/Dimin+N+Der2+Der/Dimin+N+PlGenCmp:adtja»X7tjij R            ;
+
+LEXICON DenominalNounsOAPPÁSJ !Only one diminutive since OAPPÁSJ already is in dimin. Isn't possible with triple dimin as "báttátjattjasj" and "oappátjattjasj"
+                    +Der1+Der/Dimin+N+Sg+Nom:asj          K            ;
+                           +Der1+Der/Dimin+N:attja        GÅNÅGIS-EVEN ;
+        +Lex/Sub+Use/-Spell+Der1+Der/Dimin+N:adtja        GÅNÅGIS-EVEN ; !Gives gahperadtjaj, removed from speller since this is barely used. 
+                  +Der1+Der/Dimin+N+SgNomCmp:asj          R            ;
+                  +Der1+Der/Dimin+N+SgGenCmp:attja        R            ;
+                  +Der1+Der/Dimin+N+PlGenCmp:attjaj       R            ;
 
 LEXICON DenominalNounsCONTR
                                     +Der1+Der/Dimin+N:tj        OTH-ODDCASE  ;
