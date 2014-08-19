@@ -577,7 +577,7 @@ LEXICON DIEHTET_TV  !!= @CODE@ Only this one word, unusual diphtong behavior. No
 !!€ diehtiv          diehtet+V+TV+Ind+Prt+Sg1
 !!€ diedijma         diehtet+V+TV+Ind+Prt+Pl1
 
-LEXICON GÁDJOT_TV !!= @CODE@ o-verbs. duvvat and dallat passive.
+LEXICON GÁDJOT_TV !!= @CODE@ o-verbs. only duvvat passive.
                                    +V+TV:%>                        GÁDJOTStem          ;
                                    +V+TV:                          DeverbalVerbsBASSAT ;
 !+V+TV: EVEN-PASSIVE ; replaced by individual pointers to avoid short pass.
@@ -593,13 +593,13 @@ LEXICON GÁDJOT_TV !!= @CODE@ o-verbs. duvvat and dallat passive.
     +V+TV+Der1+Der/Pass+V+Der3+Der/lis+A:»Q1duvva»Y3liss           LIS                 ;
     +V+TV+Der1+Der/Pass+V+Der3+Der/mus+N:»Q1duvva»muss@C.NeedNoun@ MUS                 ;
    +V+TV+Der1+Der/Pass+Der2+Der/duhtte+V:»Q1duhtte%>               BASSATINCH          ;
- +V+TV+Der1+Der/Pass+V+Der3+Der/goahte+V:»X7dalla»goahte%>         INFL-EVEN           ;
-                   +V+TV+Der1+Der/Pass+V:»X7dalla%>                INFL-EVEN           ;
+! +V+TV+Der1+Der/Pass+V+Der3+Der/goahte+V:»X7dalla»goahte%>         INFL-EVEN           ; ! seems like many ot-verbs dont have -dallat passive
+!                   +V+TV+Der1+Der/Pass+V:»X7dalla%>                INFL-EVEN           ; ! same
 !+V+TV+Der1+Der/Pass+V+Der2+Der/NomAg:»X7dalla@C.NeedNoun@  ACTOR ;
-    +V+TV+Der1+Der/Pass+V+Der3+Der/lis+A:»X7dalla»Y3liss           LIS                 ;
-    +V+TV+Der1+Der/Pass+V+Der3+Der/mus+N:»X7dalla»muss@C.NeedNoun@ MUS                 ;
+!    +V+TV+Der1+Der/Pass+V+Der3+Der/lis+A:»X7dalla»Y3liss           LIS                 ;
+!    +V+TV+Der1+Der/Pass+V+Der3+Der/mus+N:»X7dalla»muss@C.NeedNoun@ MUS                 ;
    +V+TV+Der1+Der/Pass+Der2+Der/dahtte+V:»X7dahtte%>               BASSATINCH          ;
-            +V+TV+Der1+Der/Pass+V+PrfPrc:»Q1dum%>                  K                   ;
+            +V+TV+Der1+Der/Pass+V+PrfPrc:»Q1dum%>                  K                   ; 
 
 !!€gt-norm: sjpædtjot # Even-syllable test
 !!€ sjpættjov           sjpædtjot+V+TV+Ind+Prs+Sg1
@@ -608,6 +608,7 @@ LEXICON GÁDJOT_TV !!= @CODE@ o-verbs. duvvat and dallat passive.
 !!€ sjpädtjuv          sjpædtjot+V+TV+Ind+Prt+Sg1
 !!€ sjpættjojma         sjpædtjot+V+TV+Ind+Prt+Pl1
 !!€ sjpättjojma         sjpædtjot+V+TV+Ind+Prt+Pl1
+
 
 LEXICON JÅRGGOT_TV !!= @CODE@ o-verbs with dim -astit that are hardcoded.  Duvvat and dallat passive.
                                    +V+TV:%>                        GÁDJOTStem          ;
@@ -1157,6 +1158,32 @@ LEXICON VALLIT_TV !!= @CODE@ Makes nouns via -ár derivation. Gets only passive 
 !!€ hinnijiv          hinnit+V+TV+Ind+Prt+Sg1
 !!€ hinnijma          hinnit+V+TV+Ind+Prt+Pl1
 !!€ hinnár             hinnit+V+TV+Der/r+N+Sg+Nom
+
+
+
+!!
+!!
+!! !!Assimilated verbs
+! ----------------
+!!
+!!
+
+LEXICON ABBONERE_TV !!= @CODE@  Loan words with more than two syllables with -rit endings. Only the two last syllables are assimilated to sami. -e>-ie (abbonere>abbonierit) Duvvat passives. Does not make nouns via -ár derivation. -erit without ie is sub tagged. 
++V+OLang/NOB: ABBONERE_TV_INFL ;
+
+LEXICON ABBONERE_TV_INFL !!= @CODE@  
+                  +V+TV:ieri%>   STRÁFFUTStem        ;
+                  +V+TV:ieri     DeverbalVerbsOADDÁT ;
+                  +V+TV:ieri     CONTR-PASSIVE       ;
+          +Err/Sub+V+TV:eri%>    STRÁFFUTStem        ;
+          +Err/Sub+V+TV:eri      DeverbalVerbsOADDÁT ;
+          +Err/Sub+V+TV:eri      CONTR-PASSIVE       ;
+
+!!€gt-norm: hinnit # Contracted test
+!!€ abbonieriv           abbonierit+V+TV+Ind+Prs+Sg1
+!!€ abbonierijiv         abbonierit+V+TV+Ind+Prt+Sg1
+!!€ abbonierijma         abbonierit+V+TV+Ind+Prt+Pl1
+
 
 
 LEXICON OADDÁTStem
