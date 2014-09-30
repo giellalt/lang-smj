@@ -50,35 +50,37 @@ Fail=0
 for f in $fsttype; do
 	if [ $f == "xfst" ]; then
 		lookuptool="@LOOKUP@ -q -flags mbTT"
+		suffix="xfst"
 	elif [ $f == "hfst" ]; then
 		lookuptool="@HFST_LOOKUP@ -q"
+		suffix="hfstol"
 	else
 	    Fail=1
 		echo "Unknown fst type!"
 	    echo "$f - FAIL"
 	    continue
 	fi
-	if [ -f "$generatorfile.$f" ]; then
+	if [ -f "$generatorfile.$suffix" ]; then
 		let "transducer_found += 1"
 
 		sed 's/$/+N+Prop+Sg+Nom/'   props.txt \
-			| $lookuptool $generatorfile.$f | cut -f2 \
+			| $lookuptool $generatorfile.$suffix | cut -f2 \
 			| grep -v "N+" | grep -v "^$" | sort -u > analprops.$f.txt
 		sed 's/$/+N+Prop+Sg+Nom/'   props.txt \
-			| $lookuptool $generatorfile.$f | cut -f2 \
+			| $lookuptool $generatorfile.$suffix | cut -f2 \
 			| grep "N+" | cut -d "+" -f1 | sed 's/$/+N+Prop+Pl+Nom/' \
-			| $lookuptool $generatorfile.$f | cut -f2 \
+			| $lookuptool $generatorfile.$suffix | cut -f2 \
 			| grep -v "^$" | cut -d "+" -f1 >> analprops.$f.txt
 		sed 's/$/+N+Prop+Sg+Nom/'   props.txt \
-			| $lookuptool $generatorfile.$f | cut -f2 \
+			| $lookuptool $generatorfile.$suffix | cut -f2 \
 			| grep "N+" | cut -d "+" -f1 | sed 's/$/+N+Prop+Pl+Nom/' \
-			| $lookuptool $generatorfile.$f | cut -f2 \
+			| $lookuptool $generatorfile.$suffix | cut -f2 \
 			| grep "N+" | cut -d "+" -f1 > $resultfile.$f.txt
 		sed 's/$/+N+Prop+Attr/' attrprops.txt \
-			| $lookuptool $generatorfile.$f | cut -f2 \
+			| $lookuptool $generatorfile.$suffix | cut -f2 \
 			| grep "N+" >> $resultfile.$f.txt
 		sed 's/$/+N+Prop+Attr/' attrprops.txt \
-			| $lookuptool $generatorfile.$f | cut -f2 \
+			| $lookuptool $generatorfile.$suffix | cut -f2 \
 			|  grep -v "N+" | grep -v "^$" | sort -u > analattrprops.$f.txt
 		sort -u -o analprops.$f.txt analprops.$f.txt
 		comm -23 props.txt analprops.$f.txt > $resultfile.$f.txt
