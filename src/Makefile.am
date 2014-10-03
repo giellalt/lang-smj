@@ -67,7 +67,7 @@ analyser-gt-%.hfst: analyser-gt-%.tmp.hfst \
 				@\"filters/remove-DNorm-tags.hfst\" \
 			.o. @\"$<\" \
 			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
 		| $(HFST_INVERT) \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
@@ -77,7 +77,7 @@ generator-gt-%.hfst: generator-gt-%.tmp.hfst \
 				@\"filters/remove-DNorm-tags.hfst\" \
 			.o. @\"$<\" \
 			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --harmonize-flags \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
 analyser-gt-%.xfst: analyser-gt-%.tmp.xfst \
