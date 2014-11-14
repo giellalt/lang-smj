@@ -1,0 +1,14 @@
+cat 2014-11-08/smj*dep |sed 's/^$/¢/' | tr "\n" "€" | tr "¢" "\n" | tr '\t' ' ' > smj20141108/sentencelines.txt
+egrep 'N .. ... Px' sentencelines.txt > nounPxsentences.txt 
+egrep 'A .. ... Px' sentencelines.txt > adjPxsentences.txt 
+cat nounPxsentences.txt |sed 's/$/¢/' |tr ' ' '\n' | egrep '("<|¢)' | cut -d '"' -f2 |tr -d '<>' |tr '\n' ' ' | tr '¢' '\n' > nounPxcleantext.txt
+cat adjPxsentences.txt |sed 's/$/¢/' |tr ' ' '\n' | egrep '("<|¢)' | cut -d '"' -f2 |tr -d '<>' |tr '\n' ' ' | tr '¢' '\n' > adjPxcleantext.txt
+rev adjPxcleantext.txt |cut -d '#' -f2- |rev > cleanAsentences.txt
+rev nounPxcleantext.txt |cut -d '#' -f2- |rev > cleanNsentences.txt
+rev adjPxcleantext.txt |cut -d '#' -f2- |rev | sed 's/^ //' > cleanAsentences.txt
+rev nounPxcleantext.txt |cut -d '#' -f2- |rev | sed 's/^ //' > cleanNsentences.txt
+rev nounPxcleantext.txt |cut -d '#' -f2- |rev | sed 's/^ //' | sort > cleanNsentences.txt
+rev nounPxcleantext.txt |cut -d '#' -f2- |rev | tr -s ' ' | sed 's/^ //' | sort > cleanNsentences.txt
+cat adjPxsentences.txt | tr '€' '\n' |sed 's/"</£/' |tr "\n" "®" | tr '£' '\n' | grep 'A .. ... P' | cut -d '>' -f1 | sort | uniq -c | sort -nr > Pxadj.txt
+cat nounPxsentences.txt | tr '€' '\n' |sed 's/"</£/' |tr "\n" "®" | tr '£' '\n' | grep 'N .. ... P' | cut -d '>' -f1 | sort | uniq -c | sort -nr > Pxnouns.txt
+
