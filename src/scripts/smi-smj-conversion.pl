@@ -23,17 +23,24 @@ while(<>) {
 	s/7 / /g ;
 	s/8 / /g ;
 	s/9 / /g ;
+	s/7#/#/g ;
+	s/8#/#/g ;
+	s/9#/#/g ;
 
 	# SMJ escape char insertion:
 	s/ss /ss9 /g ;
 	s/st /st9 /g ;
+	s/ss#/ss9#/g ;
+	s/st#/st9#/g ;
 
 	# Substitutions due to orthographic differences between SMJ and SME:
 	s/t:(.*)h /t:$1d9 /g ;
+	s/t:(.*)h#/t:$1d9#/g ;
 	s/čč/ttj/g ;
 	s/Č/Tj/g ;
 	# Andreevič -> Andreevitj:
 	s/^(.*)č /$1tj:$1t9j /g ;
+	s/^(.*)č#/$1tj:$1t9j#/g ;
 	s/č/tj/g ;
 	s/šž/sjtj/g ;
 	s/Šž/Sjtj/g ;
