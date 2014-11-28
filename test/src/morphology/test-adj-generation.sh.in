@@ -34,12 +34,13 @@ EXTEDITOR=@SEE@
 ### Regular adjectives:
 grep ";" $sourcefile | grep -v "^\!" \
 	| egrep -v "(LEXATTR|OANEP|NUORTTALABBO|GASSKALAMOS|TJAVGGÁMUS)" \
-	| egrep -v "( At |PrfPrc_At|VINJO)" \
+	| egrep -v "( At |PrfPrc_At|VINJO|DEMONSTRATIJVA)" \
 	| tr ":+\t" " " | cut -d " " -f1 \
 	| tr -d "#" | grep -v '^$' | grep -v 'LEXICON' | sort -u > adjs.txt
 ### Adjectives with no pred form, ie only attr form:
 grep ";" $sourcefile | grep -v "^\!" \
-	| egrep "( At |PrfPrc_At|LEXATTR)" | tr ":+\t" " " | cut -d " " -f1 \
+	| egrep "( At |PrfPrc_At|LEXATTR|DEMONSTRATIJVA)" \
+	| tr ":+\t" " " | cut -d " " -f1 \
 	| tr -d "#" | grep -v '^$' | grep -v 'LEXICON' | sort -u > attradjs.txt
 ### Adjectives with only comparative forms:
 grep ";" $sourcefile | grep -v "^\!" \
