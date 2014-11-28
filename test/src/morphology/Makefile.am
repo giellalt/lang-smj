@@ -21,7 +21,6 @@ endif # WANT_GENERATION
 # be fixed *later*, but is not critical at the moment:
 XFAIL_TESTS= \
 	  test-noun-generation.sh \
-	  test-propernoun-generation.sh \
 	  test-verb-generation.sh
 
 ####### Other targets: ###########
