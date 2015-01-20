@@ -20,8 +20,16 @@
 ! Compounding
 ! ===========
 
+LEXICON R
+ @P.CmpFrst.FALSE@@D.CmpLast.TRUE@@D.CmpNone.TRUE@@U.CmpNone.FALSE@ Rreal ; ! Flags to control compounding
+
+LEXICON Rreal          ! lexicalising the 3-part compounds, with the tag ShCmp
+         RrealTags   ; ! Business as usual: Normal compounds right on to Rreal
+ +Cmp#:# MiddleNouns ; ! These nouns should not return to themselves, to avoid -jotjotjot-
+                       ! They thus point directly to Rreal.
+
 ! This is for regular compounding. All entries NOT requiring a hyphen should point to this:
-LEXICON Rreal
+LEXICON RrealTags
                      +Use/Circ+Cmp#:#                 Noun      ; ! This is the normal case.		         
       @P.NeedNoun.ON@+Use/Circ+Cmp#:@P.NeedNoun.ON@#  Verb      ; ! Flag diacr declares that the compound   
       @P.NeedNoun.ON@+Use/Circ+Cmp#:@P.NeedNoun.ON@#  Adjective ; ! needs a N tag later in the derivation  
@@ -34,31 +42,29 @@ LEXICON Rreal
                    +Use/Circ+Cmp%-#:%-# Numeral                 ; ! maana-123
                    +Use/Circ+Cmp%-#:%-# ProperNoun              ; ! Proper nouns as the 2nd part of compounds for non-hyph.
                                                                   ! words. viessu-London goes through here.
+                            +RCmpnd:%-  ENDLEX                  ; ! This to take care of Oahpo- ja dutkandept - want
+                                                                  ! this in speller
 
-                            +RCmpnd:%- ENDLEX ;     ! This to take care of Oahpo- ja dutkandept - want this in speller
 
+LEXICON RHyph
+ @P.CmpFrst.FALSE@@D.CmpLast.TRUE@@D.CmpNone.TRUE@@U.CmpNone.FALSE@ RHyphTags ; ! Flags to control compounding
 
 ! This is for compounding with hyphen. All entries REQUIRING a hyphen should point to this:
-LEXICON RHyph ! Recursive lexicon from all classes REQUIRING a hyphen to follow.
-              ! NBNBNB!!! The hyphen should be added here! NOT in the other lexicons!
+LEXICON RHyphTags ! Recursive lexicon from all classes REQUIRING a hyphen to follow.
+                  ! NBNBNB!!! The hyphen should be added here! NOT in the other lexicons!
 
-                +Use/Circ+Cmp%-#:%-# Noun;                                     ! This is the normal case.
+                +Use/Circ+Cmp%-#:%-#                Noun;       ! This is the normal case.
  @P.NeedNoun.ON@+Use/Circ+Cmp%-#:@P.NeedNoun.ON@%-# Verb;       ! Flag diacr declares that the compound
  @P.NeedNoun.ON@+Use/Circ+Cmp%-#:@P.NeedNoun.ON@%-# Adjective ; ! needs a N tag later in the derivation
 
- +Use/Circ+Cmp%-#:%-# Acronym ;    ! maana-tv, "lomme-cd-spelar"
- +Use/Circ+Cmp%-#:%-# Numeral ;    ! maana-123
- +Use/Circ+Cmp%-#:%-# ProperNoun ; ! Proper nouns as the 2nd part of compounds for hyph-words.
-                                   ! London-Hull is covered here, whereas Hull-viessu
-                                   ! is covered by RHyph + Noun.
-
-          +RCmpnd:%- ENDLEX ;      ! This to take care of Oahpo- ja dutkandept - want this in speller
- +Use/Circ+Cmp%-#:%-# HyphNouns ; ! Go to words requiring hyphens, like -tv- and -cd-
+                +Use/Circ+Cmp%-#:%-# Acronym                  ; ! maana-tv, "lomme-cd-spelar"
+                +Use/Circ+Cmp%-#:%-# Numeral                  ; ! maana-123
+                +Use/Circ+Cmp%-#:%-# ProperNoun               ; ! Proper nouns as the 2nd part of compounds for hyph-words.
+                                                                ! London-Hull is covered here, whereas Hull-viessu
+                                                                ! is covered by RHyph + Noun.
+                         +RCmpnd:%-  ENDLEX                   ; ! This to take care of Oahpo- ja dutkandept -
+                                                                ! want this in speller
+                +Use/Circ+Cmp%-#:%-# HyphNouns                ; ! Go to words requiring hyphens, like -tv- and -cd-
  
 ! Proper noun compounds without hyphens are NOT presently covered - if they were
 ! to be added, they need to be marked +Err/Sub. Examples: LondonHull & viessuLondon.
-
-LEXICON R    ! lexicalising the 3-part compounds, with the tag ShCmp
-          Rreal ;  ! Business as usual: Normal compounds right on to Rreal
- +Cmp#:#  MiddleNouns ; ! These nouns should not return to themselves, to avoid -jotjotjot-
-                  ! They thus point directly to Rreal.
