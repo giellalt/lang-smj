@@ -20,74 +20,83 @@
 ! Sublexica for possessive suffixes
 ! =================================
 
-LEXICON PxV      ! This intermezzo of a lexicon due to
- :X4 PxV12 ; ! the stem alternation in the possessive
-     PxV3  ; ! suffixes.
+LEXICON PxV      ! This intermezzo of a lexicon due to vowel alternations in the possessive suffixes in E- and O-stem nouns (e-á, o-u)
+ :X4 PxV12 ; 
+     PxV3  ; 
 
 LEXICON PxV-NoSg3 ! This intermediate lexicon due to the exclusion of PxV3 (b/c we dont want to generate PxSg3, though it overdoes this a bit since PxDu3 and PxPl3 are not included here either)
  :X4 PxV12 ; 
 
-LEXICON PxV12    ! Due to incoming Acc/Gen 12 vs 3 alternation
+LEXICON PxV12    ! Due to incoming Acc/Gen 12 vs 3 alternation in E- and O-stem nouns (e-á, o-u)
  :X8 PxV1 ;
  :X8 PxV2 ;
 
-LEXICON PxV23	! Due to incoming Refl pron 1 vs 23 alternation
-   PxV2 ;
-   PxV3 ;
+LEXICON PxV23	! Due to incoming Refl pron 1 vs 23 alternation. Sg1 treated seperately in pronouns file due to special stem iehtja (sent directly to PxV1).
+   PxV2 ; ! dábálasj ietja stem
+   PxV3 ; ! dábálasj ietja stem
 
-LEXICON PxNomPlV !Due to incoming NomPl
+LEXICON PxNomPlV !Due to incoming NomPl (no vowel alternations: ieddne -> iednem)
    PxV1 ;
    PxV2 ;
    PxV3 ;
 
-LEXICON PxV1
+LEXICON PxV1 ! Regular even/contr nom- acc
  +PxSg1:m  K ;
  +PxDu1:ma K ;
  +PxPl1:ma K ;
 
-LEXICON PxV2
+LEXICON PxV2 ! Regular even/contr nom - acc
  +PxSg2:t  K ;
  +PxDu2:da K ;
  +PxPl2:da K ;
 
-LEXICON PxV3
+LEXICON PxV3 ! Regular even/contr nom - acc
  +PxSg3:s   K ;
  +PxDu3:ska K ;
  +PxPl3:sa  K ;
 
 ! Lexicon for the deviating -im, -it suffixes
 ! Non-deviating form pointed to common PxCc
+! Even/contr ill sg: oabbásim, æddnásit
+! Refl pron ill: iehtjasim/allasim
 LEXICON PxCi
  +PxSg1:im K    ;
  +PxSg2:it K    ;
            PxCc ;
 
-! Lexicon for regular PxC nom,acc, gen
+! (Lexicon for regular PxC nom,acc, gen)
+! Regular odd nom-acc sg
+! Regular even/contr ine-kom sg + gen-com pl - ill pl
 LEXICON PxC
- +PxSg1:am K    ;
+ +PxSg1:am K    ; ! bednagam
  +PxSg1:im K    ;
- +PxSg2:at K    ;
+ +PxSg2:at K    ; ! æjgádijdasat
  +PxSg2:it K    ;
            PxCc ;
 
-! Lexicon for regular PxC ine, ela, com and pl
+! (Lexicon for regular PxC ine, ela, com and pl)
+! Regular odd ill-com sg + gen-com pl - ill pl
+! Irregular even/contr ill. pl -eska
 LEXICON PxCs
- +PxSg1:ám   K ;
+ +PxSg1:ám   K ; 
  +PxSg2:át   K ;
  +PxSg3:es   K ;
  +PxDu1:ema  K ;
  +PxDu2:eda  K ;
- +PxDu3:eska K ;
+ +PxDu3:eska K ; ! even ill pl
  +PxPl1:ema  K ;
  +PxPl2:eda  K ;
  +PxPl3:esa  K ;
 
 !Commom lexicon for all PxC
+! Regular odd nom-acc sg + irregular ill pl
+! Regular even/contr sg ine - kom
+! Refl pron ine elat com
 LEXICON PxCc
- +PxSg3:is    K ;
+ +PxSg3:is    K ; ! odd nom-acc
  +PxDu1:imme  K ;
  +PxDu2:ihtte K ;
- +PxDu3:iska  K ;
+ +PxDu3:iska  K ; ! odd ill pl
  +PxPl1:imme  K ;
  +PxPl2:ihtte K ;
  +PxPl3:isá   K ;
