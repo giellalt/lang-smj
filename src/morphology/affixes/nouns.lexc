@@ -42,21 +42,6 @@ LEXICON MUORRAInfl
  :»    DenominalAdjsV1      ;
  :»    DenominalAdjsV2      ;
 
-LEXICON VIELLJA !!= @CODE@ Standard even stems here. 2syll stem with cg (note Q1). Kin terms that take the whole Px paradigm.
- +N:   VIELLJAInfl ;
- +N:%> MUORRACmp  ;
-
-!!€gt-norm:  # Even-syllable test
-!!€ viellja         viellja+N+Sg+Nom
-!!€ vieljajn        viellja+N+Sg+Com
-
-LEXICON VIELLJAInfl
- :%>   N-EVENSTRONGSTEM-FULLPX     ;
- :%>Q1 N-EVENWEAKSTEM              ; ! Weak grade Q1
- :»    DenominalNounsMUORRA        ;
- :»    DenominalAdjsV1             ;
- :»    DenominalAdjsV2             ;
-
 LEXICON LINNJA !!= @CODE@ Only for the loan word "linnja". Because it's a loan word the nnj is pronovnced nn-j, and therfor it dosn't follow the rule that it should be á in 1.grade with short vowel in first syllable (It isn't linnja-linjáv as birás-birrasav).
           +OLang/NOB+N:nnja%> N-EVENSTRONGSTEM     ;
           +OLang/NOB+N:nja%>  N-EVENWEAKSTEM       ; ! Weak grade Q1
@@ -373,7 +358,7 @@ LEXICON OADÁDAGÁ !!= @CODE@ pl. words like tjerastahka with short compound-for
 ! Many of these are  pres ptc, they should be derived from the verbs, and taken from there
 
 LEXICON NOADE !!= @CODE@ 2syll stem without cg. OBS: Don't ad nouns with invisible 3>2 cg (as bus'sa) to this lexicon. 
- +N:%>   N-EVENSTRONGSTEM-FULLPX     ; 
+ +N:%>   N-EVENSTRONGSTEM            ; 
  +N:%>Q4 N-EVENWEAKSTEM              ;
  +N:»    DenominalNounsMUORRA        ;
  +N:»    DenominalAdjsV1             ;
@@ -1736,21 +1721,6 @@ LEXICON SIJDDALAHÁ  !!= @CODE@ plurals
 ! Nominal substems
 ! - - - - - - - -
 
-!! Lexicons that take the full Px paradigm are sent here. F.eks. VIELLJA and other lexicons on kin
-
-LEXICON N-EVENSTRONGSTEM-FULLPX
- : NE-EVENCASE-FULLPX  ;
- :X4 ILL-EVENCASE ; ! X4 for the e:á and e:å alternation
- 
-LEXICON NE-EVENCASE-FULLPX
-         +Sg+Nom:  K   ;
-         +Sg+Nom:  PxV ; !
-            +Ess:n K   ;
-! +Ess:n%> PxC ; !^P^ ! parallel with CELCIUS above (but this shouldn´t be here(?) TO)
-
-
-!! Other lexicons that do not take the full Px paradigm are sent here. NomPxSg3 is left out since it often crashes with SgElative (goahtes vs. goades). 
-
 LEXICON N-EVENSTRONGSTEM
      NE-EVENCASE  ;
  :X4 ILL-EVENCASE ; ! X4 for the e:á and e:å alternation
@@ -1760,25 +1730,25 @@ LEXICON N-EVENSTRONGSTEMadj
  :X4 ILL-EVENCASEadj ; ! X4 for the e:á and e:å alternation
 
 LEXICON NE-EVENCASE
-         +Sg+Nom:  K   ;
- +Sg+Nom:  NPxV12 ; ! New sublexicon for possessives that do not generate Sg3
-< "+Sg":0 "+Nom":0 "@R.Nom3Px.add@" > NPxV3 ; ! New sublexicon for possessives that do not generate Sg3
-            +Ess:n K   ;
+                             +Sg+Nom:  K        ;
+                             +Sg+Nom:  NPxV-12  ; 
+< "+Sg":0 "+Nom":0 "@R.Nom3Px.add@" >  NPxV3    ; 
+                                +Ess:n K        ;
 ! +Ess:n%> PxC ; !^P^ ! parallel with CELCIUS above (but this shouldn´t be here(?) TO)
 
 LEXICON NE-EVENCASEadj
                  +Sg+Nom:  K   ;
- +Sg+Nom+Err/Sub:  PxV-NoSg3 ; ! New sublexicon for possessives that do not generate Sg3
+         +Sg+Nom+Err/Sub:  NPxV ; 
                     +Ess:n K   ;
 ! +Ess+Err/Sub:n%> PxC ; !^P^ ! parallel with CELCIUS above (but this shouldn´t be here(?) TO)
 
 LEXICON ILL-EVENCASE
          +Sg+Ill:j   K    ;
- +Sg+Ill:s%> PxCi ; !
+ +Sg+Ill:s%> NPxCi ; !
 
 LEXICON ILL-EVENCASEadj
                  +Sg+Ill:j   K    ;
- +Sg+Ill+Err/Sub:s%> PxCi ; !
+ +Sg+Ill+Err/Sub:s%> NPxCi ; !
 
 LEXICON N-EVENWEAKSTEM
    N-EVENWEAKSTEM-OTH    ;
@@ -1796,17 +1766,17 @@ LEXICON N-EVENWEAKSTEM-OTH
          +Pl+Ine:jn     K        ;
          +Pl+Ela:js     K        ;
          +Pl+Com:j      K        ;
- +Sg+Gen:       PxV      ; !
- +Sg+Acc:       PxV      ; !
- +Sg+Ine:n%>    PxC      ; !
- +Sg+Ela:st%>   PxC      ; !
- +Pl+Nom:       PxNomPlV ; !
- +Pl+Gen:j%>    PxC      ; !
- +Pl+Acc:jd%>   PxC      ; !
- +Pl+Ill:jdis%> PxCs     ; !
- +Pl+Ine:jn%>   PxC      ; !
- +Pl+Ela:jst%>  PxC      ; !
- +Pl+Com:j%>    PxC      ; !
+ +Sg+Gen:       NPxV      ; !
+ +Sg+Acc:       NPxV      ; !
+ +Sg+Ine:n%>    NPxC      ; !
+ +Sg+Ela:st%>   NPxC      ; !
+ +Pl+Nom:       NPxNomPlV ; !
+ +Pl+Gen:j%>    NPxC      ; !
+ +Pl+Acc:jd%>   NPxC      ; !
+ +Pl+Ill:jdis%> NPxCs     ; !
+ +Pl+Ine:jn%>   NPxC      ; !
+ +Pl+Ela:jst%>  NPxC      ; !
+ +Pl+Com:j%>    NPxC      ; !
          +Sg+Abe:#dagi  K        ;
          +Sg+Abe:#dagá  K        ;
  +Err/Sub+Sg+Abe:#tagá  K        ;
@@ -1823,7 +1793,7 @@ LEXICON N-EVENWEAKSTEM-OTH
 LEXICON N-EVENWEAKSTEM-SG-COM
          +Sg+Com:X5jn   K   ; ! X5 for o:u in ComSg. Note two dummies in a row!
  +Sg+Com+Err/Sub:X5jna  K   ; !
- +Sg+Com:X5jn%> PxC ; !
+ +Sg+Com:X5jn%> NPxC ; !
 
 LEXICON N-EVENWEAKSTEMadj
    N-EVENWEAKSTEM-OTHadj    ;
@@ -1841,17 +1811,17 @@ LEXICON N-EVENWEAKSTEM-OTHadj
                  +Pl+Ine:jn     K        ;
                  +Pl+Ela:js     K        ;
                  +Pl+Com:j      K        ;
- +Err/Sub+Sg+Gen:       PxV      ; !
- +Err/Sub+Sg+Acc:       PxV      ; !
- +Err/Sub+Sg+Ine:n%>    PxC      ; !
- +Err/Sub+Sg+Ela:st%>   PxC      ; !
- +Err/Sub+Pl+Nom:       PxNomPlV ; !
- +Err/Sub+Pl+Gen:j%>    PxC      ; !
- +Err/Sub+Pl+Acc:jd%>   PxC      ; !
- +Err/Sub+Pl+Ill:jdis%> PxCs     ; !
- +Err/Sub+Pl+Ine:jn%>   PxC      ; !
- +Err/Sub+Pl+Ela:jst%>  PxC      ; !
- +Err/Sub+Pl+Com:j%>    PxC      ; !
+ +Err/Sub+Sg+Gen:       NPxV      ; !
+ +Err/Sub+Sg+Acc:       NPxV      ; !
+ +Err/Sub+Sg+Ine:n%>    NPxC      ; !
+ +Err/Sub+Sg+Ela:st%>   NPxC      ; !
+ +Err/Sub+Pl+Nom:       NPxNomPlV ; !
+ +Err/Sub+Pl+Gen:j%>    NPxC      ; !
+ +Err/Sub+Pl+Acc:jd%>   NPxC      ; !
+ +Err/Sub+Pl+Ill:jdis%> NPxCs     ; !
+ +Err/Sub+Pl+Ine:jn%>   NPxC      ; !
+ +Err/Sub+Pl+Ela:jst%>  NPxC      ; !
+ +Err/Sub+Pl+Com:j%>    NPxC      ; !
                  +Sg+Abe:#dagi  K        ;
                  +Sg+Abe:#dagá  K        ;
                  +Err/Sub+Sg+Abe:#tagá  K        ;
@@ -1869,7 +1839,7 @@ LEXICON N-EVENWEAKSTEM-OTHadj
 LEXICON N-EVENWEAKSTEM-SG-COMadj
                  +Sg+Com:X5jn   K   ; ! X5 for o:u in ComSg. Note two dummies in a row!
          +Sg+Com+Err/Sub:X5jna  K   ; !
- +Sg+Com+Err/Sub:X5jn%> PxC ; !
+ +Sg+Com+Err/Sub:X5jn%> NPxC ; !
 
 ! These compound sublexicas are too general: Some nouns have to be in specific cases when used as first compounds for certain stems. Kintel (2012) gives a brief overview over this distribution. The full picture is however not clear as thorough research has yet to be done. Examples: mánnágæhttje, but mánájskåvllå; vuosstáhievvil, not vuostájhievvil or vuostáhievvil.
 
@@ -2621,11 +2591,12 @@ LEXICON OTH-ODDCASEadj
  +Err/Sub+Pl+Ela:ijst%>  PxCs ; !
  +Err/Sub+Pl+Com:ij%>    PxCs ; !
 
-LEXICON BENA-NE
-         +Sg+Nom:  K   ; ! bena
- +Sg+Nom:  PxV-NoSg3 ; ! !benas, in Tuolja-book. NoSg3 -> NomSg3 is not generated
-       +SgNomCmp:  R   ;
-            +Ess:n K   ;
+LEXICON BENA-NE 
+                             +Sg+Nom:  K         ; ! bena
+                             +Sg+Nom:  NPxV-12   ; ! !benas, in Tuolja-book. 
+< "+Sg":0 "+Nom":0 "@R.Nom3Px.add@" >  NPxV3     ;         
+                           +SgNomCmp:  R         ;
+                                +Ess:n K         ;
 
 !LEXICON BENA-OBL
 ! +Sg+Nom:00 PxC ; !^P^
@@ -2762,13 +2733,32 @@ LEXICON CONTR-OTH
 
 ! ComSg may cause trouble, since there is a dummy for it
 
-LEXICON NPxV12
- @R.Px.add@ PxV12 ;
+
+!! !!Px lexica
+
+LEXICON NPxV
+ @R.Px.add@ PxV ;
+ 
+LEXICON NPxV-12
+ @R.Px.add@ PxV-12 ;
 
 LEXICON NPxV3
  @R.Px.add@ PxV3 ;
 
-
+LEXICON NPxNomPlV
+ @R.Px.add@ PxNomPlV ;
+ 
+LEXICON NPxCi
+ @R.Px.add@ PxCi ;
+ 
+LEXICON NPxC
+ @R.Px.add@ PxC ;
+ 
+LEXICON NPxCs
+ @R.Px.add@ PxCs ;
+ 
+LEXICON NPxCc
+ @R.Px.add@ PxCc ;
 
 ! Denominal nouns
 ! ===============
