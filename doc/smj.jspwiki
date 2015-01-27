@@ -196,6 +196,33 @@ get the same pronounciation whether read as SME or NOB/NNO/SWE.
 
 
 
+!!Flag diacritics
+We have manually optimised the structure of our lexicon using following
+flag diacritics to restrict morhpological combinatorics - only allow compounds
+with verbs if the verb is further derived into a noun again:
+ | @P.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
+ | @D.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
+ | @C.NeedNoun@ | (Dis)allow compounds with verbs unless nominalised
+
+For languages that allow compounding, the following flag diacritics are needed
+to control position-based compounding restrictions for nominals. Their use is
+handled automatically if combined with +CmpN/xxx tags. If not used, they will
+do no harm.
+ | @P.CmpFrst.FALSE@ | Require that words tagged as such only appear first
+ | @D.CmpLast.TRUE@ | Block such words from entering R
+ | @D.CmpNone.TRUE@ | Combines with the next tag to prohibit compounding
+ | @U.CmpNone.FALSE@ | Combines with the prev tag to prohibit compounding
+
+Use the following flag diacritics to control downcasing of derived proper
+nouns (e.g. Finnish Pariisi -> pariisilainen). See e.g. North Sámi for how to use
+these flags. There exists a ready-made regex that will do the actual down-casing
+given the proper use of these flags.
+ | @U.Cap.Obl@ | Allowing downcasing of derived names: deatnulasj.
+ | @U.Cap.Opt@ | Allowing downcasing of derived names: deatnulasj.
+ | @P.Px.add@	 | Giving possibility for Px-suffixes (all except from Nom 3.p)
+ | @R.Px.add@	 | Requiring P.Px.add-flag for Px-suffixes (all except from Nom 3.p)
+ | @P.Nom3Px.add@ |  Giving possibility for Px-suffixes Nom 3.p
+ | @R.Nom3Px.add@ | Requiring P.Nom3Px.add flag for Px-suffixes Nom 3.p
 
 
 
@@ -786,14 +813,6 @@ __# Even-syllable test examples:__
 * __kártajn__: {{kártta+N+Sg+Com}}
 
 
- LEXICON VIELLJA  Standard even stems here. 2syll stem with cg (note Q1). Kin terms that take the whole Px paradigm.
-
-
-__# Even-syllable test examples:__
-* __viellja__: {{viellja+N+Sg+Nom}}
-* __vieljajn__: {{viellja+N+Sg+Com}}
-
-
  LEXICON LINNJA  Only for the loan word "linnja". Because it's a loan word the nnj is pronovnced nn-j, and therfor it dosn't follow the rule that it should be á in 1.grade with short vowel in first syllable (It isn't linnja-linjáv as birás-birrasav).
 
 
@@ -1350,13 +1369,6 @@ __sissŋeluhá # Even-syllable test examples:__
 
 
 
-Lexicons that take the full Px paradigm are sent here. F.eks. VIELLJA and other lexicons on kin
-
-
-
-
-Other lexicons that do not take the full Px paradigm are sent here. NomPxSg3 is left out since it often crashes with SgElative (goahtes vs. goades). 
-
 
 
 
@@ -1648,6 +1660,15 @@ __gistá # Contracted test examples:__
 * __gistá__: {{gistá+N+Sg+Nom}}
 * __gisstáv__: {{gistá+N+Sg+Acc}}
 
+
+
+
+
+
+
+
+
+!!Px lexica
 
 
 
