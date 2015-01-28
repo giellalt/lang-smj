@@ -208,8 +208,13 @@ define hit2dit h -> d || _ [ i t | u s ] [%_|%'|.#.] ;         ! Odd-syll verbs 
 define longain2ndsyll a -> á || [.#.|%#|%-|%^|%_|%'] Cns* Vow [Cns|[n|s|t]j|t s] _ [ Cns - š ] ;
 define tjfromšafter2syll š -> t j || [.#.|%#|%-|%^|%_|%'] Syll Syll _ Vow ;
 define SamiLetters č -> t j , đ -> d , š -> s j , ŧ -> t , ž -> t j , Č -> T j , Š -> S j ;
-define 1stysllæ e a -> æ || [.#.|%#|%-|%^|%_|%'] (Cns+) _ Cns+ á ;
+
+define 1stysllæ e a -> æ || [.#.|%#|%-|%^|%_|%'] (Cns+) _ Cns [Cns Cns [á|a|å|o|u|a] | (Cns) [o|á]] ;
+
+define 1styslle e a -> e || [.#.|%#|%-|%^|%_|%'] (Cns+) _ Cns (Cns) [u|a] ;
+
 define 1stsylldiphthong o -> å , O -> Å , e a -> i e , E a -> I e || [.#.|%#|%-|%^|%_|%'] (Cns+) _ Cns ;
+
 define labialharmony [a|á] -> å || å Cns+ _ ;
 define oa2åG1 o a -> å , O a -> Å || [.#.|%#|%-|%^|%_|%'] (Cns+) _  [Cns|[n|s|t]j|t s]  a ;
 
@@ -237,7 +242,7 @@ read regex [
 .o. cc   !not for LOAN conversion
 .o. c    !not for LOAN conversion
 .o. eCns !not for LOAN conversion
-!.o. it
+.o. it
 .o. H2M
 .o. M2H
 .o. hit2dit
@@ -245,6 +250,7 @@ read regex [
 .o. tjfromšafter2syll
 .o. SamiLetters
 .o. 1stysllæ
+.o. 1styslle
 .o. 1stsylldiphthong
 .o. labialharmony
 .o. oa2åG1
