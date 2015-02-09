@@ -93,7 +93,7 @@ generator-gt-%.xfst: generator-gt-%.tmp.xfst \
 				filters/remove-DNorm-tags.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/remove-DNorm-tags.xfst\" \
-			.o. @\"$<\".i \
+			.o. @\"$<\" \
 			;\n\
 		 invert \n\
 		 save stack $@\n\
