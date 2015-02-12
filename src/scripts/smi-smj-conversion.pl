@@ -39,8 +39,8 @@ while(<>) {
 	s/čč/ttj/g ;
 	s/Č/Tj/g ;
 	# Andreevič -> Andreevitj:
-	s/^(.*)č /$1tj:$1t9j /g ;
-	s/^(.*)č#/$1tj:$1t9j#/g ;
+	#s/^(.*)č /$1tj:$1t9j /g ;
+	#s/^(.*)č#/$1tj:$1t9j#/g ;
 	s/č/tj/g ;
 	s/šž/sjtj/g ;
 	s/Šž/Sjtj/g ;
