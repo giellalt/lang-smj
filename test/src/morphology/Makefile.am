@@ -24,7 +24,7 @@ endif # WANT_GENERATION
 # be fixed *later*, but is not critical at the moment:
 XFAIL_TESTS= \
 	  test-noun-generation.sh \
-	  test-verb-generation.sh 
+	  test-verb-generation.sh
 	  
 # Make sure all tests scripts are included in the distributed tarballs:
 EXTRA_DIST=$(TESTS) $(GENERATION_TESTS_IN)
