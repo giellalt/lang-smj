@@ -9,10 +9,13 @@
 TESTS=
 
 # Add your shell scripts for running tests requiring only a generator:
-GENERATION_TESTS_IN=test-adj-generation.sh.in \
-					test-noun-generation.sh.in \
-					test-propernoun-generation.sh.in \
-					test-verb-generation.sh.in
+GENERATION_TESTS_IN=generate-noun-lemmas.sh.in \
+					generate-verb-lemmas.sh.in \
+					generate-adjective-lemmas.sh.in 
+#					test-propernoun-generation.sh.in \
+#					test-adj-generation.sh.in \
+#					test-noun-generation.sh.in \
+#					test-verb-generation.sh.in
 
 GENERATION_TESTS=$(basename $(GENERATION_TESTS_IN))
 
@@ -23,8 +26,11 @@ endif # WANT_GENERATION
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
 XFAIL_TESTS= \
-	  test-noun-generation.sh \
-	  test-verb-generation.sh
+	  generate-noun-lemmas.sh \
+	  generate-verb-lemmas.sh \
+	  generate-adjective-lemmas.sh 
+#	  test-noun-generation.sh \
+#	  test-verb-generation.sh
 	  
 # Make sure all tests scripts are included in the distributed tarballs:
 EXTRA_DIST=$(TESTS) $(GENERATION_TESTS_IN)
