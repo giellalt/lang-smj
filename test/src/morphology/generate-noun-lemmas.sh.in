@@ -53,20 +53,25 @@ fi
 EXTEDITOR=@SEE@
 
 ##### Extract lemmas #####
-### don't use extract-lemmas.sh ###
+### don't use extract-lemmas.sh ### Why not?!
 # Hent ut lemmaer fra den nouns.lexc, bortsett fra utkommmenterte (^\!), 
 # dem som krever sammensetning (CmpN/Only|ShCmp|RCmpnd| Rreal | R | Rnoun),
 # LexSub (som blir filtrert bort fra normgenerator). Lemmaene lagres som filtered-nouns
 
-grep ";" $source_file | \
-  egrep -v "^(\!|\@|<)" | \
-  egrep -v '(CmpN/Only|ShCmp|RCmpnd| Rreal | R | Rnoun |\+V\+|\+Err\/)' | \
-  sed 's/% /€/g' | sed 's/%:/¢/g' |  tr ":+" " " | cut -d " " -f1 | \
-  tr -d "%" | tr "€" " " | tr "¢" ":" | sort -u > $lemmas
+#grep ";" $source_file | \
+#  egrep -v "^(\!|\@|<)" | \
+#  egrep -v '(CmpN/Only|ShCmp|RCmpnd| Rreal | R | Rnoun |\+V\+|\+Err\/)' | \
+#  sed 's/% /€/g' | sed 's/%:/¢/g' |  tr ":+" " " | cut -d " " -f1 | \
+#  tr -d "%" | tr "€" " " | tr "¢" ":" | sort -u > $lemmas
+# THIS is exactly the same as what is found in $GTCORE/scripts/extract-lemmas.sh
+# except that the gtcore version has added a few more robustness checks.
+# By keeping the code in the core, the language independent code can be
+# maintained in one place, and improved once for all languages.
 
 # evt. denne, sjekk skilnaden:
-# @GTCORE@/scripts/extract-lemmas.sh \
-# 	$sourcefile "(CmpN/Last)" > $lemmas
+# Det som står i "()" er egrep-uttrykk, ein kan ha fleire ved å skilja dei med |
+@GTCORE@/scripts/extract-lemmas.sh \
+	$source_file "" > $lemmas
 
 
 ###### Start testing: #######
