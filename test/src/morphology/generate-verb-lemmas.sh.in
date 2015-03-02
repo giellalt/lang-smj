@@ -60,9 +60,15 @@ EXTEDITOR=@SEE@
 # ikke har infinitivform), LexSub (som blir filtrert bort fra normgenerator).
 # Lemmaene lagres som $lemmas.
 
-grep ";" $source_file | \
-  grep -v "^\!" | egrep -v '(STRAYFORMS|ENDLEX|\+Err\/|\+Neg)' | \
-  tr ":+" " " | cut -d " " -f1 | tr -d "%" | sort -u > $lemmas
+#grep ";" $source_file | \
+#  grep -v "^\!" | egrep -v '(STRAYFORMS|ENDLEX|LexSub|\+Neg)' | \
+#  tr ":+" " " | cut -d " " -f1 | tr -d "%" | sort -u > $lemmas
+
+# evt. denne, sjekk skilnaden:
+# Det som står i "()" er egrep-uttrykk, ein kan ha fleire ved å skilja dei med |
+@GTCORE@/scripts/extract-lemmas.sh \
+	$source_file "(\+Neg|STRAYFORMS|ENDLEX)" > $lemmas
+
 
 ###### Start testing: #######
 transducer_found=0
@@ -89,8 +95,8 @@ for f in $fsttype; do
 		# generate verbs, extract the resulting generated lemma,
 		# store it:
 
-# Generer infitivsformen av verblemmaene, fjern dem som ikke gir analyse (de har V+ i output),
-# lagres som fil som har blitt deklarert oppe.
+# Generer infitivsformen av verblemmaene, fjern dem som ikke gir analyse
+# (de har V+ i output), lagres som fil som har blitt deklarert oppe.
 		sed 's/$/+V+Inf/' $lemmas | $lookuptool $generator_file.$suffix \
             | cut -f2 | grep -v "V+" | grep -v "^$" | sort -u > $generated_lemmas.$f.txt 
 
