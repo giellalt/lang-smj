@@ -71,9 +71,9 @@ EXTEDITOR=@SEE@
 #   sort -u > $lemmas
 
 @GTCORE@/scripts/extract-lemmas.sh \
-	$source_file \
+	--exclude \
 	"(LEXATTR|OANEP|NUORTTALABBO|GASSKALAMOS|TJAVGGÁMUS| At |PrfPrc_At|VINJO|DEMONSTRATIJVA)" \
-	> $lemmas
+	$source_file > $lemmas
 
 ## 2. for plurale lemmaer (_PL). Lemmaene lagres som $lemmas_pl
 #grep ";" $source_file | grep -v "^\!" |\
@@ -81,22 +81,19 @@ EXTEDITOR=@SEE@
 #  cut -d " " -f1 | tr -d "%" | sort -u > $lemmas_pl
 
 # 3. som bare har attributtform. Lagres i $lemmas_attr
-grep ";" $source_file | grep -v "^\!" |\
-  grep -v "+Gen" | grep -v LexSub \
-  | egrep "( At |PrfPrc_At|LEXATTR|DEMONSTRATIJVA)" |\
-  sed 's/% /€/g' | sed 's/%:/¢/g' |  tr ":+" " " | cut -d " " -f1 |\
-  tr -d "%" | tr "€" " " | tr "¢" ":" | sort -u > $lemmas_attr
+@GTCORE@/scripts/extract-lemmas.sh \
+	--include "( At |PrfPrc_At|LEXATTR|DEMONSTRATIJVA)" $source_file \
+	> $lemmas_attr
 
 # 4. som krever komparativtagg. Lagres i $lemmas_comp
-grep ";" $source_file | grep -v "^\!" \
-  | egrep "(OANEP|NUORTTALABBO)" \
-  | grep -v LexSub | tr ":+" " " | cut -d " " -f1 | tr -d "%" \
-  | sort -u > $lemmas_comp
+@GTCORE@/scripts/extract-lemmas.sh \
+	--include "(OANEP|NUORTTALABBO)" $source_file \
+	> $lemmas_comp
 
 # 5. som krever superlativtagg. Lagres i $lemmas_super
-grep ";" $source_file | grep -v "^\!" |\
-  grep "(GASSKALAMOS|TJAVGGÁMUS)" | grep -v LexSub | tr ":+" " " |\
-  cut -d " " -f1 | tr -d "%" | sort -u > $lemmas_super
+@GTCORE@/scripts/extract-lemmas.sh \
+	--include "(GASSKALAMOS|TJAVGGÁMUS)" $source_file \
+	> $lemmas_super
 
 #### Adjectives that only compounds:
 #grep ";" $sourcefile | grep -v "^\!" \
