@@ -27,7 +27,7 @@ generator_file=./../../../src/generator-gt-norm
 
 ### out ###
 lemmas=./filtered-adjs.tmp
-lemmas_pl=./filtered-pl_adjs.tmp
+#lemmas_pl=./filtered-pl_adjs.tmp
 lemmas_attr=./filtered-attr_adjs.tmp
 lemmas_super=./filtered-super_adjs.tmp
 lemmas_comp=./filtered-comp_adjs.tmp
@@ -65,32 +65,43 @@ EXTEDITOR=@SEE@
 # Hent ut lemmaer, bortsett fra utkommmenterte (^\!):
 
 # 1. dem med hardkoding for spesielle former (K), LexSub (som blir filtrert bort fra normgenerator), adjektiver som bare har attributtform (ATTR|Attr| At ) , adjektiver som krever tagger for komparering (BBO |MUS |BUOREMUSS|OVDDIT |STUORIBUS|BUStem) og lemmaer som bare opptrer i sammensetninger (FINJU|Rreal | R) Lemmaene lagres som $lemmas
-grep ";" $source_file | grep -v "^\!" |\
-   egrep -v "(LEXICON|ATTR|FINJU|Der|Attr| At |BBO |MUS |BUOREMUSS|OVDDIT |STUORIBUS|BUStem | K | Rreal | R |LexSub)" |\
-   sed 's/% /€/g' | sed 's/%:/¢/g' |  tr ":+" " " | cut -d " " -f1 | tr -d "%" | tr "€" " " | tr "¢" ":" |\
-   sort -u > $lemmas
+#grep ";" $source_file | grep -v "^\!" |\
+#   egrep -v "(LEXICON|ATTR|FINJU|Der|Attr| At |BBO |MUS |BUOREMUSS|OVDDIT |STUORIBUS|BUStem | K | Rreal | R |LexSub)" |\
+#   sed 's/% /€/g' | sed 's/%:/¢/g' |  tr ":+" " " | cut -d " " -f1 | tr -d "%" | tr "€" " " | tr "¢" ":" |\
+#   sort -u > $lemmas
 
-# 2. for plurale lemmaer (_PL). Lemmaene lagres som $lemmas_pl
-grep ";" $source_file | grep -v "^\!" |\
-  grep -v "+Gen" | grep -v LexSub | grep "_PL " | tr ":+" " " |\
-  cut -d " " -f1 | tr -d "%" | sort -u > $lemmas_pl
+@GTCORE@/scripts/extract-lemmas.sh \
+	$source_file \
+	"(LEXATTR|OANEP|NUORTTALABBO|GASSKALAMOS|TJAVGGÁMUS| At |PrfPrc_At|VINJO|DEMONSTRATIJVA)" \
+	> $lemmas
+
+## 2. for plurale lemmaer (_PL). Lemmaene lagres som $lemmas_pl
+#grep ";" $source_file | grep -v "^\!" |\
+#  grep -v "+Gen" | grep -v LexSub | grep "_PL " | tr ":+" " " |\
+#  cut -d " " -f1 | tr -d "%" | sort -u > $lemmas_pl
 
 # 3. som bare har attributtform. Lagres i $lemmas_attr
 grep ";" $source_file | grep -v "^\!" |\
-  grep -v "+Gen" | grep -v LexSub | egrep "(ATTR|Attr)" |\
+  grep -v "+Gen" | grep -v LexSub \
+  | egrep "( At |PrfPrc_At|LEXATTR|DEMONSTRATIJVA)" |\
   sed 's/% /€/g' | sed 's/%:/¢/g' |  tr ":+" " " | cut -d " " -f1 |\
   tr -d "%" | tr "€" " " | tr "¢" ":" | sort -u > $lemmas_attr
 
-# 4. som krever superlativtagg. Lagres i $lemmas_super
+# 4. som krever komparativtagg. Lagres i $lemmas_comp
+grep ";" $source_file | grep -v "^\!" \
+  | egrep "(OANEP|NUORTTALABBO)" \
+  | grep -v LexSub | tr ":+" " " | cut -d " " -f1 | tr -d "%" \
+  | sort -u > $lemmas_comp
+
+# 5. som krever superlativtagg. Lagres i $lemmas_super
 grep ";" $source_file | grep -v "^\!" |\
-  grep "BUOREMUSS" | grep -v LexSub | tr ":+" " " |\
+  grep "(GASSKALAMOS|TJAVGGÁMUS)" | grep -v LexSub | tr ":+" " " |\
   cut -d " " -f1 | tr -d "%" | sort -u > $lemmas_super
 
-# 5. som krever komparativtagg. Lagres i $lemmas_comp
-grep ";" $source_file | grep -v "^\!" |\
-  egrep "(OVDDIT|BBO |BU/MUS|EABBO/EAMOS|STUORIBUS|BUStem)" |\
-  grep -v LexSub | tr ":+" " " | cut -d " " -f1 | tr -d "%" |\
-  sort -u > $lemmas_comp
+#### Adjectives that only compounds:
+#grep ";" $sourcefile | grep -v "^\!" \
+#	| grep "VINJO" | tr ":+\t" " " | cut -d " " -f1 \
+#	| grep -v '^$' | sort -u > compoundadjs.txt
 
 
 ###### Start testing: #######
@@ -124,20 +135,20 @@ for f in $fsttype; do
 		sed 's/$/+A+Sg+Nom/' $lemmas | $lookuptool $generator_file.$suffix \
             | cut -f2 | grep -v "A+" | grep -v "^$" | sort -u > $generated_lemmas.$f.txt
 
-# 2. med +A+Pl+Nom for plurale lemmaer. Lagres i $generated_lemmas.$f.txt
-		sed 's/$/+A+Pl+Nom/' $lemmas_pl | $lookuptool $generator_file.$suffix \
-            | cut -f2 | grep -v "A+" | grep -v "^$" | sort -u >> $generated_lemmas.$f.txt
+## 2. med +A+Pl+Nom for plurale lemmaer. Lagres i $generated_lemmas.$f.txt
+#		sed 's/$/+A+Pl+Nom/' $lemmas_pl | $lookuptool $generator_file.$suffix \
+#            | cut -f2 | grep -v "A+" | grep -v "^$" | sort -u >> $generated_lemmas.$f.txt
 
 # 3. med +A+Attr lemmaer som bare har attributtform. Lagres i $generated_lemmas.$f.txt
 		sed 's/$/+A+Attr/' $lemmas_attr | $lookuptool $generator_file.$suffix \
             | cut -f2 | grep -v "A+" | grep -v "^$" | sort -u >> $generated_lemmas.$f.txt
 
-# 4. for lemmaer lemmaer som krever superlativtagg, med +A+Superl+Sg+Nom. Lagres i $generated_lemmas.$f.txt
-		sed 's/$/+A+Superl+Sg+Nom/' $lemmas_super | $lookuptool $generator_file.$suffix \
+# 4. for lemmaer lemmaer som krever komparativtagg, med +A+Comp+Sg+Nom. Lagres i $generated_lemmas.$f.txt
+		sed 's/$/+A+Comp+Sg+Nom/' $lemmas_comp | $lookuptool $generator_file.$suffix \
             | cut -f2 | grep -v "A+" | grep -v "^$" | sort -u >> $generated_lemmas.$f.txt
 
-# 5. for lemmaer lemmaer som krever komparativtagg, med +A+Comp+Sg+Nom. Lagres i $generated_lemmas.$f.txt
-		sed 's/$/+A+Comp+Sg+Nom/' $lemmas_comp | $lookuptool $generator_file.$suffix \
+# 5. for lemmaer lemmaer som krever superlativtagg, med +A+Superl+Sg+Nom. Lagres i $generated_lemmas.$f.txt
+		sed 's/$/+A+Superl+Sg+Nom/' $lemmas_super | $lookuptool $generator_file.$suffix \
             | cut -f2 | grep -v "A+" | grep -v "^$" | sort -u >> $generated_lemmas.$f.txt
 
 ###### Collect results: #######
@@ -145,7 +156,7 @@ for f in $fsttype; do
 		# stored and opened in SEE:
 
 # Samle alle lemmaer i en fil, sorter, unifiser
-cat $lemmas $lemmas_pl $lemmas_attr $lemmas_super $lemmas_comp > $all_adjs
+cat $lemmas $lemmas_attr $lemmas_super $lemmas_comp > $all_adjs
 sort -u -o $all_adjs $all_adjs 
 
 # Alle genererte former sorteres og unifiseres.
@@ -173,8 +184,8 @@ sort -u -o $generated_lemmas.$f.txt $generated_lemmas.$f.txt
 	fi
 done
 
-# When done, remove the generated data file:
-rm -f $lemmas $lemmas_pl $lemmas_attr $lemmas_super $lemmas_comp $all_adjs $generated_lemmas.$f.txt
+# When done, remove the generated data files:
+rm -f $lemmas $lemmas_attr $lemmas_super $lemmas_comp $all_adjs $generated_lemmas.$f.txt
 
 # At least one of the Xerox or HFST tests failed:
 if [ "$Fail" = "1" ]; then
