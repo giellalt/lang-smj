@@ -112,7 +112,7 @@ LEXICON GALLJE !!= @CODE@  Adjectives on -e, the attribute is in WeG and e > a. 
 !!€ uhtses             uhttse+A+Attr # gets this attr from LEXATTR
 !!€ uhtsep             uhttse+A+Comp+Sg+Nom
 
-LEXICON TJÁBBE !!= @CODE@  Adjectives on -e, the attribute is in WeG and e > a. Same as UNNE only different adv derivation. Sg Acc: tjáppev, Attr: tjáppa.
+LEXICON TJÁBBE !!= @CODE@  Adjectives on -e, the attribute is in WeG and e > a. Same as GALLJE only different adv derivation. Sg Acc: tjáppev, Attr: tjáppa.
             +A+Attr:a%>Q1 ATTR              ; ! a-attr.
 ! +A+Attr:es%>Q1 ATTR ; ! e-attr. !These now hardcoded
 ! +A:a%>Q1 VUOHTA ; !moved to ATTR
@@ -131,7 +131,12 @@ LEXICON TJÁBBE !!= @CODE@  Adjectives on -e, the attribute is in WeG and e > a.
 !!€ njálga              njálgge+A+Attr
 !!€ njálgep             njálgge+A+Comp+Sg+Nom
 
-LEXICON SÁVADAHTTE  !!= @CODE@ Causative-participles. No attribute. No comparision. As 1e in Spiik. Sg Acc: sávadahttev.
+
+!!
+!! Pres.participles 
+!!
+
+LEXICON SÁVADAHTTE  !!= @CODE@ Causative-participles. No attribute. No comparision. As 1e in Spiik. Sg Acc: sávadahttev. PrsPrc of causative verbs "uttrykker at handlingen lar seg gjøre eller er verdt å gjøre" (Kintel 1991).
  +A:%>   NE-EVENCASEadj    ;
  +A:%>X4 ILL-EVENCASEadj   ;
  +A:%>Q4 N-EVENWEAKSTEMadj ;
@@ -142,7 +147,7 @@ LEXICON SÁVADAHTTE  !!= @CODE@ Causative-participles. No attribute. No comparis
 !!€ vuojedahtte             vuojedahtte+A+Sg+Nom
 !!€ vuojedahttev            vuojedahtte+A+Sg+Acc
 
-LEXICON JUHKKE  !!= @CODE@ participles with -s attributive. No comparision As 1e in Spiik. Sg Acc: juhkkev, Attr: juhkkes.
+LEXICON JUHKKE  !!= @CODE@ participles with -s attributive. No comparision As 1e in Spiik. Sg Acc: juhkkev, Attr: juhkkes. Spiik: presens particip har med den attributive formen på -s betydelsen 'någon som är duktig i, snabb til att, begiven att utföra handlingen'.
  +A+Attr:%>s  ATTR_PrsPrc       ;
       +A:%>   NE-EVENCASEadj    ;
       +A:%>X4 ILL-EVENCASEadj   ;
@@ -155,7 +160,7 @@ LEXICON JUHKKE  !!= @CODE@ participles with -s attributive. No comparision As 1e
 !!€ vuohttjev             vuohttje+A+Sg+Acc
 !!€ vuohttjes              vuohttje+A+Attr
 
-LEXICON BÅRRE  !!= @CODE@ participles without the -s attributive. As 1e in Spiik. Sg Acc: bårrev, Attr: bårre.
+LEXICON BÅRRE  !!= @CODE@ participles without the -s attributive. As 1e in Spiik. Sg Acc: bårrev, Attr: bårre. Spiik: presens particip har med den attributiva formen utan -s betydelsen 'dem  som utför handlingen'.
  +A+Attr:%>   ATTR_PrsPrc       ;
       +A:%>   NE-EVENCASEadj    ;
       +A:%>X4 ILL-EVENCASEadj   ;
@@ -168,33 +173,19 @@ LEXICON BÅRRE  !!= @CODE@ participles without the -s attributive. As 1e in Spii
 !!€ ednabårrev             ednabårre+A+Sg+Acc
 !!€ ednabårre             ednabårre+A+Attr
 
-LEXICON SUOLASIEHKE !!= @CODE@ -siehke. Sg Acc: suolasiegev, attr: suolasiek
-                 +A:hke%>    NE-EVENCASEadj    ;
-          +A+Sg+Nom:hke%>    K                 ;
-            +A+Attr:k%>      ATTR              ;
-                 +A:hke%>X4  ILL-EVENCASEadj   ;
-                 +A:hke%>Q1  N-EVENWEAKSTEMadj ;
-! +A:hke%>Q1 BU/MUS ; !no comparatives for these
- +A+Der5+Der/at+Adv:hke%>Q1t K                 ;
 
-! Test data:
-!!€gt-norm: hánessiehke # Even-syllable test
-!!€ hánessiehke              hánessiehke+A+Sg+Nom
-!!€ hánessiegev              hánessiehke+A+Sg+Acc
-!!€ hánessiek                hánessiehke+A+Attr
-
-LEXICON DÁBBELIJ !!= @CODE@ presenty only for "Dábbelij". Sg Acc: dábbelaháv, Attr: dábbelij.
-                 +A+Sg+Nom:ij%>   K                 ;
-                   +A+Attr:ij%>   ATTR              ;
+!LEXICON DÁBBELIJ !!= @CODE@ presenty only for "Dábbelij". Sg Acc: dábbelaháv, Attr: dábbelij. Similar forms are analyzed as adpositions and adverbss (dábbela, dábbelin). This lexica is thus outcommented as it is not an adjective.
+!                 +A+Sg+Nom:ij%>   K                 ;
+!                   +A+Attr:ij%>   ATTR              ;
 ! +A:ij VUOHTA ; !moved to ATTR
- +A+Sg+Nom+Err/Sub:ahá%>  PxV               ; !
-                    +A+Ess:ahá%>n K                 ;
-                        +A:ahá%>  ILL-EVENCASEadj   ;
-                        +A:ahá%>  N-EVENWEAKSTEMadj ;
-        +A+Der5+Der/at+Adv:ahá%>t K                 ;
-                        +A:ahá%>  BU/MUS            ;
-               +A+SgGenCmp:ahá%>  R                 ;
-               +A+PlGenCmp:ahá%>j R                 ;
+! +A+Sg+Nom+Err/Sub:ahá%>  PxV               ; !
+!                    +A+Ess:ahá%>n K                 ;
+!                        +A:ahá%>  ILL-EVENCASEadj   ;
+!                        +A:ahá%>  N-EVENWEAKSTEMadj ;
+!        +A+Der5+Der/at+Adv:ahá%>t K                 ;
+!                        +A:ahá%>  BU/MUS            ;
+!               +A+SgGenCmp:ahá%>  R                 ;
+!               +A+PlGenCmp:ahá%>j R                 ;
 
 ! Test data:
 !!€gt-norm: dábbelij # Even-syllable test
@@ -202,6 +193,11 @@ LEXICON DÁBBELIJ !!= @CODE@ presenty only for "Dábbelij". Sg Acc: dábbelaháv
 !!€ dábbelaháv           dábbelij+A+Sg+Acc
 !!€ dábbelij             dábbelij+A+Attr
 !!€ dábbelaháp           dábbelij+A+Comp+Sg+Nom
+
+
+!!
+!! Loan words lexicas
+!!
 
 LEXICON SJONÁLLA !!= @CODE@ -tion and -sjon loanwords
           +Dial/-SW:sjon ÁLLA ;
@@ -241,6 +237,80 @@ LEXICON ÁLLA-ÆLLA !!= @CODE@
                  :a%>Q1  N-EVENWEAKSTEMadj   ; ! cg in nominal paradigm
  +Der5+Der/at+Adv:a%>Q1t K                   ; ! Presumably WeG as adverb as well
                  :a%>    MUORRACmp           ;
+
+
+LEXICON DEMONSTRATIJVA
++OLang/NOB: DEMONSTRATIJVA_CMP_INFL ;
+
+LEXICON DEMONSTRATIJVA_CMP_INFL !!= @CODE@ Loanadjectives from norwegian/swedish. Attr is in weak grad, used only in attr, but Sg+Nom is subtaged.
+                    +A+Attr:%>Q1    ATTR              ;
+          +Err/Sub+A+Sg+Nom:%>      K                 ;
+
+!LEXICON BOREÁLA !Like NUORRA, but no comparatives (loanwords)  Moved to SUBJEKTIJVA and ÁLLA.
+!            +A+Attr:%>    ATTR                ;
+!! +A: VUOHTA ; moved to ATTR
+!                 +A:%>    N-EVENSTRONGSTEMadj ;
+!                 +A:%>Q1  N-EVENWEAKSTEMadj   ; ! cg in nominal paradigm
+! +A+Der5+Der/at+Adv:%>Q1t K                   ; ! Presumably WeG as adverb as well
+!                 +A:%>    MUORRACmp           ;
+
+LEXICON SUBJEKTIJVALASJ
++A+OLang/NOB: SUBJEKTIJVALASJ_CMP_INFL ;
+
+LEXICON SUBJEKTIJVALASJ_CMP_INFL !!= @CODE@ LOAN! Norwegian/swedish adjectives adapted to smj by adding -lasj. Pred and attr are both -lasj. Odd-syllable comparison. Sg Acc: destruktijvalattjav, Attr: destruktijvalasj. Some of the words are not really -lasj derivation, since there isn't a noun that makes sense as "starting point", and for some of these adjektijves people prefere to use the short form instead of -lasj, see lexicon SUBJEKTIJVA. (The -lasj is unpopular.)
+! +A:asj VUOHTA ; !moved to ATTR
+                 +Sg+Nom:lasj%>      K                 ;
+                   +Attr:lasj%>      ATTR              ;
+         +Err/Sub+Sg+Ill:ladtja%>j   K                 ;
+            +Err/Sub+Ess:ladtja%>n   K                 ;
+                 +Sg+Ill:lattja%>j   K                 ;
+                    +Ess:lattja%>n   K                 ;
+                        :lattja%>    N-EVENWEAKSTEMadj ; !
+                        :l%>         ABBO/AMOS         ;
+        +Der5+Der/at+Adv:lattja%>t   K                 ;
+               +SgNomCmp:lasj%>      R                 ;
+               +SgGenCmp:lattja%>    R                 ;
+               +PlGenCmp:lattja%>j   R                 ;
+ +Err/Sub+Sg+Nom:ladtja%>    PxV               ; !
+ +Err/Sub+Sg+Ill:ladtja%>s%> PxCi              ; !
+         +Sg+Nom:lattja%>    PxV               ; !
+         +Sg+Ill:lattja%>s%> PxCi              ; !
+
+! Test data:
+!!€gt-norm: aktijvalasj # Even-syllable test
+!!€ aktijvalasj                aktijvalasj+A+Sg+Nom
+!!€ aktijvalattjav             aktijvalasj+A+Sg+Acc
+!!€ aktijvalasj                aktijvalasj+A+Attr
+!!€ aktijvalabbo               aktijvalasj+A+Comp+Sg+Nom
+
+
+LEXICON BIOGRÁFALASJ
++OLang/NOB: BIOGRÁFALASJ_CMP_INFL ;
+
+LEXICON BIOGRÁFALASJ_CMP_INFL !!= @CODE@ LOAN! Same as SUBJEKTIJVALASJ but no comparatives. Norwegian/swedish adjectives adapted to smj by adding -lasj. Pred and attr are both -lasj. No comparatives. Sg Acc: destruktijvalattjav, Attr: destruktijvalasj. Some of the words are not really -lasj derivation, since there isn't a noun that makes sense as "starting point", and for some of these adjektijves people prefere to use the short form instead of with the -lasj, see lexicon SUBJEKTIJVA. (The -lasj is unpopular.)
+! +A:asj VUOHTA ; !moved to ATTR
+
+! +A: VUOHTA ; !moved to ATTR
+                   +A+Attr:%>     ATTR          ;
+                 +A+Sg+Nom:%>     K             ;
+ +A+Sg+Nom+Err/Sub:a%>    PxV           ; !
+                        +A:a%>    SURGULASJ-EVEN ; ! Declined as four-syllable noun
+! +A:a%>Q1 BU/MUS ;
+        +A+Der5+Der/at+Adv:a%>Q1t K             ;
+               +A+SgNomCmp:%>     R             ;
+               +A+SgGenCmp:a%>Q1  R             ;
+               +A+PlGenCmp:a%>Q1j R             ;
+
+! Test data:
+!!€gt-norm: belulasj # Even-syllable test
+!!€ belulasj             belulasj+A+Sg+Nom
+!!€ belulattjav           belulasj+A+Sg+Acc
+!!€ belulasj             belulasj+A+Attr
+
+
+!!
+!! Inherent comparatives and superlatives lexica
+!!
 
 LEXICON OANEP  !!= @CODE@ Inherent comparatives, gives comp and superl. There are two main groups of word here: Adjectives that are lexicalized in their comparative (and superlative) forms, like sisŋep, bárep. And Nouns that can be compared, like nuortap, gáttep, oarjep (some of these are compared from their noun lexicas and thus are found twice). Some entries are likely incorrect compared forms of other adjectives, like ådåp and ruvvap (more research needed).
  +A:%> BU/MUS ;
@@ -349,75 +419,6 @@ LEXICON DÁRBULASJ !!= @CODE@ Adjectives on -asj, attribute same as pred. Odd-sy
 !!€ demokráhtalasj             demokráhtalasj+A+Attr
 !!€ demokráhtalabbo            demokráhtalasj+A+Comp+Sg+Nom
 
-LEXICON DEMONSTRATIJVA
-+OLang/NOB: DEMONSTRATIJVA_CMP_INFL ;
-
-LEXICON DEMONSTRATIJVA_CMP_INFL !!= @CODE@ Loanadjectives from norwegian/swedish. Attr is in weak grad, used only in attr, but Sg+Nom is subtaged.
-                    +A+Attr:%>Q1    ATTR              ;
-          +Err/Sub+A+Sg+Nom:%>      K                 ;
-
-!LEXICON BOREÁLA !Like NUORRA, but no comparatives (loanwords)  Moved to SUBJEKTIJVA and ÁLLA.
-!            +A+Attr:%>    ATTR                ;
-!! +A: VUOHTA ; moved to ATTR
-!                 +A:%>    N-EVENSTRONGSTEMadj ;
-!                 +A:%>Q1  N-EVENWEAKSTEMadj   ; ! cg in nominal paradigm
-! +A+Der5+Der/at+Adv:%>Q1t K                   ; ! Presumably WeG as adverb as well
-!                 +A:%>    MUORRACmp           ;
-
-LEXICON SUBJEKTIJVALASJ
-+A+OLang/NOB: SUBJEKTIJVALASJ_CMP_INFL ;
-
-LEXICON SUBJEKTIJVALASJ_CMP_INFL !!= @CODE@ LOAN! Norwegian/swedish adjectives adapted to smj by adding -lasj. Pred and attr are both -lasj. Odd-syllable comparison. Sg Acc: destruktijvalattjav, Attr: destruktijvalasj. Some of the words are not really -lasj derivation, since there isn't a noun that makes sense as "starting point", and for some of these adjektijves people prefere to use the short form instead of -lasj, see lexicon SUBJEKTIJVA. (The -lasj is unpopular.)
-! +A:asj VUOHTA ; !moved to ATTR
-                 +Sg+Nom:lasj%>      K                 ;
-                   +Attr:lasj%>      ATTR              ;
-         +Err/Sub+Sg+Ill:ladtja%>j   K                 ;
-            +Err/Sub+Ess:ladtja%>n   K                 ;
-                 +Sg+Ill:lattja%>j   K                 ;
-                    +Ess:lattja%>n   K                 ;
-                        :lattja%>    N-EVENWEAKSTEMadj ; !
-                        :l%>         ABBO/AMOS         ;
-        +Der5+Der/at+Adv:lattja%>t   K                 ;
-               +SgNomCmp:lasj%>      R                 ;
-               +SgGenCmp:lattja%>    R                 ;
-               +PlGenCmp:lattja%>j   R                 ;
- +Err/Sub+Sg+Nom:ladtja%>    PxV               ; !
- +Err/Sub+Sg+Ill:ladtja%>s%> PxCi              ; !
-         +Sg+Nom:lattja%>    PxV               ; !
-         +Sg+Ill:lattja%>s%> PxCi              ; !
-
-! Test data:
-!!€gt-norm: aktijvalasj # Even-syllable test
-!!€ aktijvalasj                aktijvalasj+A+Sg+Nom
-!!€ aktijvalattjav             aktijvalasj+A+Sg+Acc
-!!€ aktijvalasj                aktijvalasj+A+Attr
-!!€ aktijvalabbo               aktijvalasj+A+Comp+Sg+Nom
-
-
-LEXICON BIOGRÁFALASJ
-+OLang/NOB: BIOGRÁFALASJ_CMP_INFL ;
-
-LEXICON BIOGRÁFALASJ_CMP_INFL !!= @CODE@ LOAN! Same as SUBJEKTIJVALASJ but no comparatives. Norwegian/swedish adjectives adapted to smj by adding -lasj. Pred and attr are both -lasj. No comparatives. Sg Acc: destruktijvalattjav, Attr: destruktijvalasj. Some of the words are not really -lasj derivation, since there isn't a noun that makes sense as "starting point", and for some of these adjektijves people prefere to use the short form instead of with the -lasj, see lexicon SUBJEKTIJVA. (The -lasj is unpopular.)
-! +A:asj VUOHTA ; !moved to ATTR
-
-! +A: VUOHTA ; !moved to ATTR
-                   +A+Attr:%>     ATTR          ;
-                 +A+Sg+Nom:%>     K             ;
- +A+Sg+Nom+Err/Sub:a%>    PxV           ; !
-                        +A:a%>    SURGULASJ-EVEN ; ! Declined as four-syllable noun
-! +A:a%>Q1 BU/MUS ;
-        +A+Der5+Der/at+Adv:a%>Q1t K             ;
-               +A+SgNomCmp:%>     R             ;
-               +A+SgGenCmp:a%>Q1  R             ;
-               +A+PlGenCmp:a%>Q1j R             ;
-
-! Test data:
-!!€gt-norm: belulasj # Even-syllable test
-!!€ belulasj             belulasj+A+Sg+Nom
-!!€ belulattjav           belulasj+A+Sg+Acc
-!!€ belulasj             belulasj+A+Attr
-
-
 
 LEXICON ASIDASJ !!= @CODE@ Adjectives on -asj, -is attr. Odd-syllable comparison. Sg Acc: asidattjav, Attr: asidis.
                         +A:asj        VUOHTA            ;
@@ -486,6 +487,21 @@ LEXICON TJALMEDIBME !!= @CODE@  Like UDNODIBME but no comparatives. Sg Acc: tjal
 !!€ huvsodibme            huvsodibme+A+Sg+Nom
 !!€ huvsodimev            huvsodibme+A+Sg+Acc
 !!€ huvsodis              huvsodibme+A+Attr
+
+LEXICON SUOLASIEHKE !!= @CODE@ -siehke. Sg Acc: suolasiegev, attr: suolasiek
+                 +A:hke%>    NE-EVENCASEadj    ;
+          +A+Sg+Nom:hke%>    K                 ;
+            +A+Attr:k%>      ATTR              ;
+                 +A:hke%>X4  ILL-EVENCASEadj   ;
+                 +A:hke%>Q1  N-EVENWEAKSTEMadj ;
+! +A:hke%>Q1 BU/MUS ; !no comparatives for these
+ +A+Der5+Der/at+Adv:hke%>Q1t K                 ;
+
+! Test data:
+!!€gt-norm: hánessiehke # Even-syllable test
+!!€ hánessiehke              hánessiehke+A+Sg+Nom
+!!€ hánessiegev              hánessiehke+A+Sg+Acc
+!!€ hánessiek                hánessiehke+A+Attr
 
 !! !!Odd-syllable stems
 ! ------------------
@@ -557,6 +573,23 @@ LEXICON SÁJSAS !!= @CODE@  For -as adjectives with attribute -e. Presently only
 !!€ sájssasav            sájsas+A+Sg+Acc
 !!€ sájsse               sájsas+A+Attr
 !!€ sájssasabbo          sájsas+A+Comp+Sg+Nom
+
+LEXICON RÁDAS !!= @CODE@  Presently only used for "rádas". This word has special consonant gradation d>dd. Attr same as pred. Sg Acc: ráddasav, Attr: rádas.
+            +A+Attr:as%>    ATTR           ;
+! +A:as%> VUOHTA ; !moved to ATTR
+                 +A:as%>    N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+                 +A:das%>   OTH-ODDCASEadj ;
+                 +A:das%>   ABBO/AMOS      ;
+ +A+Der5+Der/at+Adv:das%>it K              ;
+                 +A:das%>   ODDCmp         ;
+
+! Test data:
+!!€gt-norm: rádas # Odd-syllable test
+!!€ rádas               rádas+A+Sg+Nom
+!!€ ráddasav            rádas+A+Sg+Acc
+!!€ rádas               rádas+A+Attr
+!!€ ráda               rádas+A+Attr # from LEXATTR
+!!€ ráddasabbo          rádas+A+Comp+Sg+Nom
 
 LEXICON LUOBES !!= @CODE@  Adjectives on -es. Attribute same as pred. Does the same as TJIEGOS only e>a. Sg Acc: luohpasav, Attr: luobes.
             +A+Attr:es%>Q1 ATTR           ;
@@ -630,23 +663,6 @@ LEXICON OAMES !!= @CODE@ Adjectives on -es with attribute -e. As g2. in Spiik. S
 !!€ goasste               goastes+A+Attr
 !!€ goasstásabbo          goastes+A+Comp+Sg+Nom
 
-LEXICON RÁDAS !!= @CODE@  Presently only used for "rádas". This word has special consonant gradation d>dd. Attr same as pred. Sg Acc: ráddasav, Attr: rádas.
-            +A+Attr:as%>    ATTR           ;
-! +A:as%> VUOHTA ; !moved to ATTR
-                 +A:as%>    N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
-                 +A:das%>   OTH-ODDCASEadj ;
-                 +A:das%>   ABBO/AMOS      ;
- +A+Der5+Der/at+Adv:das%>it K              ;
-                 +A:das%>   ODDCmp         ;
-
-! Test data:
-!!€gt-norm: rádas # Odd-syllable test
-!!€ rádas               rádas+A+Sg+Nom
-!!€ ráddasav            rádas+A+Sg+Acc
-!!€ rádas               rádas+A+Attr
-!!€ ráda               rádas+A+Attr # from LEXATTR
-!!€ ráddasabbo          rádas+A+Comp+Sg+Nom
-
 !LEXICON SNÁVES  ! Does the same as LUOBES
 ! +A+Attr:es%> ATTR ;
 ! +A:es VUOHTA ; !moved to ATTR
@@ -656,7 +672,7 @@ LEXICON RÁDAS !!= @CODE@  Presently only used for "rádas". This word has speci
 ! +A+Der5+Der/at+Adv:vas%>X5it K ;
 ! +A:vas%>X5 ODDCmp ;
 
-LEXICON BASSTEL !!= @CODE@ Adjs on -et, -l, -r, sm om -k, -sj with attr -is and no consonant gradation. As b. in Spiik. Sg Acc: basstelav, Attr: basstelis.
+LEXICON BASSTEL !!= @CODE@ Adjs on -et, -l, -r, sm om -k, -sj with attr -is and no consonant gradation. As b. in Spiik. Sg Acc: basstelav, Attr: basstelis. Many of these entries might be instances of derivations, like belak, deblak, and maybe also basstel, bargán.
             +A+Attr:is%> ATTR           ;
 ! +A:is VUOHTA ; !moved to ATTR
                  +A:     VUOHTA         ;
@@ -674,7 +690,7 @@ LEXICON BASSTEL !!= @CODE@ Adjs on -et, -l, -r, sm om -k, -sj with attr -is and 
 !!€ goavrredis               goavrret+A+Attr
 !!€ goavrredabbo          goavrret+A+Comp+Sg+Nom
 
-LEXICON DABÁR !!= @CODE@ Adjectives on -r. With attr -is like BASSTEL, but with CG. Sg Acc: dahparav, Attr: dabáris.
+LEXICON DABÁR !!= @CODE@ Adjectives on -r. With attr -is like BASSTEL, but with CG. Sg Acc: dahparav, Attr: dabáris. Presently only for dabár
             +A+Attr:%>Q1is ATTR           ;
 ! +A:%>Q1is VUOHTA ; !moved to ATTR
                  +A:%>Q1   VUOHTA         ;
@@ -692,7 +708,7 @@ LEXICON DABÁR !!= @CODE@ Adjectives on -r. With attr -is like BASSTEL, but with
 !!€ dabáris             dabár+A+Attr
 !!€ dahparabbo          dabár+A+Comp+Sg+Nom
 
-LEXICON MUTTÁK !!= @CODE@ Adjs on -ák, two attr: -is and same as pred. As c. in Spiik. Sg Acc: muttágav, Attr: muttágis and mutták.
+LEXICON MUTTÁK !!= @CODE@ Adjs on -ák/-ak/-ek, two attr: -is and same as pred. As c. in Spiik. Sg Acc: muttágav, Attr: muttágis and mutták. These seem to be instances of the adjectival -k derivation. Unclear whether such derivation have different attr forms or not, and thats maybe why some of these derivations are found in BASSTEL lexicon.
             +A+Attr:%>   ATTR           ;
             +A+Attr:is%> ATTR           ;
 ! +A: VUOHTA ; !moved to ATTR
@@ -784,7 +800,7 @@ LEXICON GÅBDDÅK !!= @CODE@  Adjs on -åk, attr. on -å. Has even-syllable comp
 !!€ gåbddå                gåbddåk+A+Attr
 !!€ gåbdep           gåbddåk+A+Comp+Sg+Nom
 
-LEXICON STUORAK !!= @CODE@  Only for stuorak. It hase two attributes. Has even-syllable comparison: stuoráp and stuorámus.Sg Acc: stuoragav, attr: stuor and stuorra..
+LEXICON STUORAK !!= @CODE@  Only for stuorak. It hase two attributes. Has even-syllable comparison: stuoráp and stuorámus.Sg Acc: stuoragav, attr: stuor and stuorra. This might be a -k derivation of adjective stuorre attr stuor(ra). The comparison is thus based on the original adjective and thus it naturally is an even syll comparison.
             +A+Attr:%>     ATTR           ;
             +A+Attr:ra%>   ATTR           ;
 ! +A:ra VUOHTA ; !moved to ATTR
@@ -920,6 +936,11 @@ LEXICON IENNILS !!= @CODE@ no comparatives, no attr
 !!€gt-norm: ieŋŋils # Odd-syllable test
 !!€ ieŋŋils                 ieŋŋils+A+Sg+Nom
 !!€ ieŋŋilsav             ieŋŋils+A+Sg+Acc
+
+
+!!
+!! Inherent comparatives and superlatives
+!!
 
 LEXICON NUORTTALABBO   !!= @CODE@ Inherent comparatives, gives both comp and superl. Most of the words are the compared forms of -el(a) words, like nuorttal, lullel.
  +A:%> ABBO/AMOS ;
@@ -1373,7 +1394,7 @@ LEXICON CompSup-ODDCASE
 
 LEXICON ATTR  !!= @CODE@ Sends attributes to
    NAMÁK  ;
-   K      ; ! Plain attributive
+   K      ; ! Plain attributive.
    R      ;
    VUOHTA ;
 ! -:#%- ProperNoun ;   !already in LEXICON R !
