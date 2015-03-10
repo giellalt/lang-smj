@@ -210,8 +210,8 @@ AC_CONFIG_FILES([test/src/morphology/generate-verb-lemmas.sh], \
       [chmod a+x test/src/morphology/generate-verb-lemmas.sh])
 AC_CONFIG_FILES([test/src/morphology/generate-adjective-lemmas.sh], \
       [chmod a+x test/src/morphology/generate-adjective-lemmas.sh])
-AC_CONFIG_FILES([test/src/morphology/test-propernoun-generation.sh], \
-      [chmod a+x test/src/morphology/test-propernoun-generation.sh])
+AC_CONFIG_FILES([test/src/morphology/generate-propernoun-lemmas.sh], \
+      [chmod a+x test/src/morphology/generate-propernoun-lemmas.sh])
 
 ############ END: Language-specific scripts. #############
 
