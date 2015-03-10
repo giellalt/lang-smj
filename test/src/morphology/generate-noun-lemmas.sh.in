@@ -27,7 +27,7 @@ generator_file=./../../../src/generator-gt-norm
 ### out ###
 lemmas=./filtered-nouns
 generated_lemmas=./generated-nouns
-result_file=missing_noun_lemmas.txt
+result_file=missing_noun_lemmas
 
 # FAIL if source file does not exist:
 if [ ! -f $sourcefile ]; then
@@ -107,9 +107,9 @@ sort -u -o $generated_lemmas.$f.txt $generated_lemmas.$f.txt
 
 # Sammenlikne: Former som er i lemmalista med ikke i lista med genererte former,
 # lagre i missingnounLemmas.txt. Formene generes med  +N+Sg+Nom for enklere debugging.
-comm -23 $lemmas $generated_lemmas.$f.txt |\
-  grep -v '^$' | sed 's/$/+N+Sg+Nom/' |\
-  $lookuptool $generator_file.$suffix > $result_file.$f.txt
+comm -23 $lemmas $generated_lemmas.$f.txt \
+  | grep -v '^$' | sed 's/$/+N+Sg+Nom/' \
+  | $lookuptool $generator_file.$suffix > $result_file.$f.txt
 
 		# Open the diff file in SubEthaEdit (if there is a diff):
 		if [ -s $result_file.$f.txt ]; then
