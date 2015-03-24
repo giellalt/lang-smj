@@ -2,36 +2,140 @@
 
 
 
-Alphabet
+!!!Background
+
+The file itself is located in {{langs/smj/src/phonology/smj-phon.twolc}}.
+The file is modeled upon the corresponding file for North Sámi, but has been
+revised and differs from it on several issues. The grammatical sources are
+Spiik 1989: Lulesamisk grammatik and Nystø and Johnsen 2001: Sámásta 2.
+
+!!!File structure
+The rule file has the sections Alphabet, Sets, Definition and Rules. The rules are ordered thematically, 
+with 3 main sections: Consonant alternations (except cg), vowel alternations, and consonant gradation.
+
+
+ !!!The Alphabet section
+
+!!The real Lule Sámi Alphabet
+
+All Lule Saami letters are listed. The Lule Sámi ENG sound is represented as ñ. 
+Lule Sámi letter repertoire is not fully standardised. In the source code we write (and you shall write!) æ; ø; ñ, 
+but the parser toleratesinput written with the the letters ä; ö; ń, ŋ (cf. the 4 rules in the file gt/smj/src/spellrelax.regex).
+The 3rd degree mark ' is never realized, hence declared as ':0.
+h2, g2 etc. are consonants deleted in the Nom. m3, d3 etc. (?) are consonants that undergo certain processes word-finally. 
+This issue should be looked into. Perhaps the two sets can be unified. 
+The reason why there are more distinctions than for sme, is that the cns deletion process is more phonological in sme.
+
+
+
+{{{
+  ':0   = Gradation mark
+  %/    = Literal /, not the TWOLC reserved symbol
+  '7:'  = From sme.
+}}}
+
+
+
+
+!!The Dummy symbols
+The Dummy symbols are taken from the sme file for convenience, only a small part of them are actually used, 
+they are defined in the Sets section along the way, included there as soon as they are used. 
+The set of actually used Dummy symbols is thus the set declared in "Dummy".
+The Dummy symbols trigger morphophonological rules. X shall be used for nouns
+only, Y for verbs only and Q for processes common to both.
+The symbols themselves are used in the following way:
+
+ ; __X1:0__ : Deletes final h3 in short essive of uneven syllables
+ ; __X2:0__ : WeG and neutralization of g2 etc. (hivsik)
+ ; __X3:0__ : Weg and deletion of g2 etc. (bena)
+ ; __X4:0__ : e:á and e:å in illatives
+ ; __X5:0__ : e:á, e:å and o:u in odd-syllable nouns
+ ; __X6:0__ : Deviant III-I consonant gradation (in contracted stems, guobbmu:guomoj
+ ; __X7:0__ : WeG and e&gt;á, o&gt;á in front of diminutives
+ ; __X8:0__ : Px declension
+ ; __X9:0__ : Stem-vowel and central consonant shortening in first part(s) of compounds  
+ ; __Q1:0__ : The general weak grade trigger. Stem vowel change e:i and o:u in fron of j.
+				 Dipht. simpl.  Any environment #only# demanding WeG shall use Q1.
+ ; __Q2:0__ : Vowel harmony: 2nd syll e realized as å whenever 1st syll is å.
+ ; __Q3:0__ : WeG in contracted, also does not trigger Dipht simpl.
+ ; __Q4:0__ : Stem vowel change e:i and o:u in fron of j. Dipht. simpl. Like Q1 but strong grade.
+ ; __Q5:0__ : e:á stem vowel change for word diehtet. Weak grade.
+ ; __Q6:0__ : e:á stem wovel change for word diehtet. Strong grade.
+ ; __Q7:0__ : e:á stem vowel change for word diehtte. Extra strong grade
+ ; __Q8:0__ : Stem vowel deletion, impII of verbs.
+ ; __Q9:0__ : TBW  
+ ; __Y1:0__ : Stem vowel deletion, imp 3sg, 3du, 2pl, 3pl of verbs
+ ; __Y2:0__ : "Indicative Present Singular 3rd Final Vowel in verbs"
+ ; __Y3:0__ : PrsPrc
+ ; __Y4:0__ : e &gt; u in front of dersuff, o &gt; u and e &gt; á in front of dersuffix -alla
+ ; __Y5:0__ : e &gt; a, i &gt; á, o &gt; u, e &gt; å in verb derivation
+ ; __Y6:0__ : "Consonant insertion as II-III strengthening gradation"
+ ; __Y7:0__ : "Consonant insertion as II-III strengthening gradation"
+ ; __Y8:0__ : "Stem vowel deletion in even-syllable verbs, imp 1du, 1pl"
+ ; __Y9:0__ : "Stem vowel deletion in short passives of even-syllable verbs
+ ; __Z1:0__ : TBW   
+
+
+!!Morpheme boundaries:
+ ; __ «  __ : Derivational prefix
+ ; __ »  __ : Derivational suffix
+ ; __ %< __ : Inflectional prefx
+ ; __ %> __ : Inflectional suffix
+ ; __ #  __ : Word boundary for both lexicalised and dynamic compounds
+ ; __ %^ __ : (exceptional) soft hyphenation point
+ ; __ %  __ : a space
+
+
+ !!!The Sets section
+
+These are the sets:
+;Vow     : the vowels
+;Cns     : the consonants
+;StemCns : consonants that may occur in stem-final position
+;DelCns  : the consonants that are deleted in nominative
+;Dummy   : the set of dummy symbols, they are there to trigger certain morphophonological symbols
+;WeG     : the dummy symbols that trigger weak grade
+
+
+
+ !!!The Definitions section
+
+In this section, the consonants are defined. This includes consonant clusters in the various grades and consonant alternations.
+
+
+!!G3 vs G2
+The alternation patterns according to Spiik's alternations series.  
+| S7 | kkn:k0n           | series 1
+| S8 | f'f:f0f           | series 2
+| S9 | jgg:j0g           | series 3
+| S4 | hkk:h0k           | series 4
+| S5 |  xy:zy (no zeros) | series 5
+| S6 |  xx:yy (no zeros) | series 6
+| S7 |  xy:zy (no zeros) | series 7
+| S8 |  ----- (no cg)    | series 8
+
+ ; LowerG2 : A definition of Grade2 consonant sequences referring mostly to the surface level
+ ; LowerG1 : A definition of Grade 1 consonant sequences
+ ; LowerG12 : A definition of Grade 1 or 2 consonant sequences 
+
+ ; G32 : A definition of Grade 3 or 2 consonant sequences
+
+ ; G3 : A definition of Grade 3 consonant sequences 
 
 
 
 
 
+ !!!The Rules section
+
+!!Overview
+
+The rules section has the following chapters: Consonant alternations in certain pos, vowel lengthening, diphthong simplification, stem vowel alternations, consonant gradation rules
 
 
+!!Consonant alternations in certain pos
 
-
-
-
-!!!Sets
-
-
-
-
-
-
-
-
-
-
-
-
-!!!Rules
-
-
-
-!!!Consonant alternations in certain pos
+All rules deal with word-final position.
 
 
 
@@ -67,10 +171,16 @@ __Deleting Final r9 in Short Essive of Uneven Syllables__
 
 
 
+!!Vowel lengthening
+
+The second syllable vowel a is lengthened to á whenever the stem consonants are in grade 1 and the first syllable vowel is short. Short vowels cannot preceed and follow a single intervocalic consonant.
 
 __Compulsatory lengthening in grade I even-syllables__  
 
 
+!!Diphtong simplification
+
+The diphthong simplification handles oa:å and æ:e. Phonologically, these are identical processes, but since the dipthong is written by two letters in the former case and by one letter in the latter, the alternations must be handled separately. This section also handles ie:æ, these are in principle the same as oa:å, but the alternation does not occur in so many contexts. 
 
 
 __oa:å Diphtong Simplification Part I__  
@@ -118,23 +228,18 @@ __oa:å Diphtong Simplification Part II__
 
 
 
-
-!!æ:e diphthong simplificaton
-
-
 __æ:e Diphthong Simplification 1__  
 
 __æ:e Diphthong Simplification 2__  
 
 
 
-__ie:æ Diphthong Simplification Part I__  
+__ie:æ Diphthong Simplification Part I __  
 
 
 
 
 
-Note: These three rules are supposed to operate in tandem, and shound ALWAYS be kept in synch, except for the operator and operand.
 
 __ie:æ Diphthong Simplification Part IIa__ Norwegian æ is an option...
 
@@ -161,10 +266,13 @@ __Vowel-change oa:å for verbs part II__
 
 
 
-!!!Stem vowel alternations
+!!Stem vowel alternations
 
-!!a-stem alternations
+This section is divided according to stem vowels: a-, e-, o-stems.
 
+!a-stem alternations
+
+There are no rules for a-stems.
 
 __a:e in Present Participle of even-syllable verbs__  
 
@@ -174,10 +282,10 @@ __a:i in Prs Prc of even-syllable verbs__
 
 __a-stem vowel deletion__  
 
-!!e-stem alternations
+!e-stem alternations
 
+For e-stems, there is e:i, e:á, e:å, e:u and e:a. Each alternation is triggered by a combination of phonological content and dummy symbols.
 
-!e:i
 
 __e:i in e-stems__  
 
@@ -192,7 +300,6 @@ __e:i in e-stems__
 
 
 
-!e:á
 
 The following two rules constitute a <= / => rule pair.
 
@@ -214,7 +321,6 @@ __e:á in certain stem types 2__
 
 
 
-!e:å
 
 __e:å in certain stem types with å as root vowel__  
 
@@ -227,26 +333,25 @@ __e:å in certain stem types with å as root vowel__
 
 
 
-!e:a
-
-
-
-!e:0
-__e:a in Verb Derivation __  
 
 
 
 
+__e-stem vowel deletion__  
 
-!!i-stem alternations
 
 
-!i:á
+
+
+!i-stem alternations
+
+There are no rules for i-stems.
 
 __i:á in Verb Derivation__  
 
 
-!!o-stem alternations
+!o-stem alternations
+
 
 The duplicates of the three lines of the two following rules are
 there to resolve the => conflict between the two rules.
@@ -263,7 +368,7 @@ __u:o in contracted nouns__
 
 __o-stem vowel deletion__  
 
-!!å-stem alternations
+!å-stem alternations
 
 __å:e in Present Participle of even-syllable verbs__  
 
@@ -272,7 +377,7 @@ __å:i in Actor nouns of even-syllable verbs__
 
 __å-stem vowel deletion__  
 
-!!alternations valid for several stem types
+!alternations valid for several stem types
 
 __Stem vowel deletion in even-syllable verbs, imp 3sg, 3du, 2pl, 3pl__  
 
@@ -281,10 +386,40 @@ __Stem vowel deletion in even-syllable verbs, imp 3sg, 3du, 2pl, 3pl__
 
 
 
-!!!Consonant gradation rules
+!!Consonant gradation rules
+
+The consonant gradation rules differ considerably from the corresponding rules for North Sámi. 
+Instead of generalizing oversets of consonants (Cx:Cy &lt;=&gt; ...), each rule contains the
+alternation for one consonant only, and to the right of the
+&lt;=&gt; arrow is listed all the contexts where the relevant
+alternation appears. The disadvantage with this method is that the
+same context must be written several times, if e.g. both p, t and k
+are deleted in the same contexts, each of these contexts must be
+written several times, one for each consonant. The advantage is that
+there are no conflicts during compilation, compilation takes 10
+seconds rather than 3 minutes. The earlier North-Sámi-style rule
+set was ordered according to CG pattern. This pattern is still
+visible in the new rules, via the reference S1-3 etc. (Spiik's
+Series 1, 3-letter pattern, etc) behind each subrule.
+
+This actually opens up for a migration to an xfst rule file
+instead of the current twolc format, since what xfst really cannot
+do is generalize over sets (Cx:Cy etc.). This is an issue for future
+revisions to decide.
+
+The rules are divided in two subsections, deletion rules and
+change (alternation) rules.
 
 
-!!Deletion rules
+!Deletion rules
+
+The b, d, g deletion rules are similar, via the optional ( b ) etc. in front of the "_" symbol, both
+bm:m and bbm:bm alternations are covered. The contexts differ to a certain extent. For
+b and d, the III-I special gradation bbm:m is covered by two separate rules,
+and a special Dummy (X6), not part of the ordinary WeG set.
+
+Note that one of the rules for t:0 refers to #: as part of its context. As soon as clitics are
+added to the word form, this rule will thus not be triggered. Look into this when the clitics are added.
 
 __Consonant gradation b:0__  
 
@@ -331,7 +466,14 @@ __Gradation Series 4, II-I, tj and ts__
 
 
 
-!!Change rules
+!Change rules
+
+The Cx:Cy format was kept for hk:g, hp:b, ht:d, since the left context h:0 was unique, 
+and no compilation conflict thus arose.
+
+The bb:pp, gg:kk, dd:tt alternations were split into three rules, 
+since keeping them in one Cx:Cy rule created compilation conflicts. 
+Also, d:t contain a rule not found for the other two...
 
 
 __Gradation Series 4, II-I__  
@@ -389,6 +531,12 @@ __Facultative alteration snj-sjnj__
 
 
 
+
+Debugging of twol-rules
+
+All rule conflicts have been successfully resolved. The rule file
+should be kept that way. Look out for conflicts in the compilation
+process, and resolve them as they appear!
 
 
 
