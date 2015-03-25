@@ -16,13 +16,13 @@ morf_codes="+A+Sg+Nom \
 source_file=src/morphology/stems/adjectives.lexc
 
 # Lexicons that should NOT be used to extract lemmas (egrep expression):
-exception_lexicons="(flagK)"
+exception_lexicons="(flagK| R | At )"
 
 # FST used for generation, MINUS suffix:
 generator_file=src/generator-gt-norm
 
 # How many lemmas maximally for each lexicon:
-lemmacount=10
+lemmacount=20
 
 # Specify path to $GTCORE - we don't use Autotools for these scripts:
 gtcore=$GTCORE
