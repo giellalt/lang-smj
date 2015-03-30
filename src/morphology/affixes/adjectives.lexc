@@ -255,17 +255,17 @@ LEXICON DEMONSTRATIJVA_CMP_INFL !!= @CODE@ Loanadjectives from norwegian/swedish
 !                 +A:%>    MUORRACmp           ;
 
 LEXICON SUBJEKTIJVALASJ
-+A+OLang/NOB: SUBJEKTIJVALASJ_CMP_INFL ;
++A+OLang/NOB+CmpNP/Last: SUBJEKTIJVALASJ_CMP_INFL ;
 
 LEXICON SUBJEKTIJVALASJ_CMP_INFL !!= @CODE@ LOAN! Norwegian/swedish adjectives adapted to smj by adding -lasj. Pred and attr are both -lasj. Odd-syllable comparison. Sg Acc: destruktijvalattjav, Attr: destruktijvalasj. Some of the words are not really -lasj derivation, since there isn't a noun that makes sense as "starting point", and for some of these adjektijves people prefere to use the short form instead of -lasj, see lexicon SUBJEKTIJVA. (The -lasj is unpopular.)
 ! +A:asj VUOHTA ; !moved to ATTR
                  +Sg+Nom:lasj%>      ENDLEX            ;
                    +Attr:lasj%>      ATTR              ;
-         +Err/Orth+Sg+Ill:ladtja%>j   ENDLEX            ;
-            +Err/Orth+Ess:ladtja%>n   ENDLEX            ;
+        +Err/Orth+Sg+Ill:ladtja%>j   ENDLEX            ;
+           +Err/Orth+Ess:ladtja%>n   ENDLEX            ;
                  +Sg+Ill:lattja%>j   ENDLEX            ;
                     +Ess:lattja%>n   ENDLEX            ;
-                        :lattja%>    N-EVENWEAKSTEMadj ; !
+                        :lattja%>    N-EVENWEAKSTEMadj ;
                         :l%>         ABBO/AMOS         ;
         +Der5+Der/at+Adv:lattja%>t   ENDLEX            ;
                +SgNomCmp:lasj%>      R                 ;
@@ -285,7 +285,7 @@ LEXICON SUBJEKTIJVALASJ_CMP_INFL !!= @CODE@ LOAN! Norwegian/swedish adjectives a
 
 
 LEXICON BIOGRÁFALASJ
-+OLang/NOB: BIOGRÁFALASJ_CMP_INFL ;
++OLang/NOB+CmpNP/Last: BIOGRÁFALASJ_CMP_INFL ;
 
 LEXICON BIOGRÁFALASJ_CMP_INFL !!= @CODE@ LOAN! Same as SUBJEKTIJVALASJ but no comparatives. Norwegian/swedish adjectives adapted to smj by adding -lasj. Pred and attr are both -lasj. No comparatives. Sg Acc: destruktijvalattjav, Attr: destruktijvalasj. Some of the words are not really -lasj derivation, since there isn't a noun that makes sense as "starting point", and for some of these adjektijves people prefere to use the short form instead of with the -lasj, see lexicon SUBJEKTIJVA. (The -lasj is unpopular.)
 ! +A:asj VUOHTA ; !moved to ATTR
@@ -374,17 +374,20 @@ LEXICON SÆHKÁLAK !!= @CODE@ Adjectives on -álak, attribute same as pred. Odd-
 !!€ sæhkálabbo           sæhkálak+A+Comp+Sg+Nom
 !!€ sähkálabbo           sæhkálak+A+Comp+Sg+Nom
 
-LEXICON ÅLLAGASJ !!= @CODE@ Adjectives on -asj, attribute same as pred.  No comparatives. 2 in Spiik. Sg Acc: ållagattjav, Attr: ållagasj.
+LEXICON ÅLLAGASJ 
++CmpNP/Last: ÅLLAGSJ_CMP_INFL ;
+
+LEXICON ÅLLAGSJ_CMP_INFL !!= @CODE@ Adjectives on -asj, attribute same as pred.  No comparatives. 2 in Spiik. Sg Acc: ållagattjav, Attr: ållagasj.
 ! +A: VUOHTA ; !moved to ATTR
                    +A+Attr:%>     ATTR          ;
                  +A+Sg+Nom:%>     ENDLEX        ;
- +A+Sg+Nom+Err/Orth:a%>    PxV           ; !
+        +A+Sg+Nom+Err/Orth:a%>    PxV           ; !
                         +A:a%>    SURGULASJ-EVEN ; ! Declined as four-syllable noun
 ! +A:a%>Q1 BU/MUS ;
-        +A+Der5+Der/at+Adv:a%>Q1t ENDLEX        ;
-               +A+SgNomCmp:%>     R             ;
-               +A+SgGenCmp:a%>Q1  R             ;
-               +A+PlGenCmp:a%>Q1j R             ;
+                   +A+Der5+Der/at+Adv:a%>Q1t ENDLEX        ;
+!               +A+SgNomCmp:%>     R             ; !is only last cmp
+!               +A+SgGenCmp:a%>Q1  R             ; !is only last cmp
+!               +A+PlGenCmp:a%>Q1j R             ; !is only last cmp
 
 ! Test data:
 !!€gt-norm: belulasj # Even-syllable test
@@ -392,7 +395,10 @@ LEXICON ÅLLAGASJ !!= @CODE@ Adjectives on -asj, attribute same as pred.  No com
 !!€ belulattjav           belulasj+A+Sg+Acc
 !!€ belulasj             belulasj+A+Attr
 
-LEXICON DÁRBULASJ !!= @CODE@ Adjectives on -asj, attribute same as pred. Odd-syllable comparison. Sg Acc: dárbulattjav, Attr: dárbulasj. Essive -attjan, -adtjan is subtaged.
+LEXICON DÁRBULASJ 
++CmpNP/Last: DÁRBULASJ_CMP_INFL ;
+
+LEXICON DÁRBULASJ_CMP_INFL !!= @CODE@ Adjectives on -asj, attribute same as pred. Odd-syllable comparison. Sg Acc: dárbulattjav, Attr: dárbulasj. Essive -attjan, -adtjan is subtaged.
 ! +A:asj VUOHTA ; !moved to ATTR
                  +A+Sg+Nom:asj%>      ENDLEX            ;
                    +A+Attr:asj%>      ATTR              ;
@@ -404,9 +410,9 @@ LEXICON DÁRBULASJ !!= @CODE@ Adjectives on -asj, attribute same as pred. Odd-sy
 ! +A:attja%> BU/MUS ; !unusual comp. and superl.
                         +A:%>         ABBO/AMOS         ;
         +A+Der5+Der/at+Adv:attja%>t   ENDLEX            ;
-               +A+SgNomCmp:asj%>      R                 ;
-               +A+SgGenCmp:attja%>    R                 ;
-               +A+PlGenCmp:attja%>j   R                 ;
+!               +A+SgNomCmp:asj%>      R                 ;
+!               +A+SgGenCmp:attja%>    R                 ;
+!               +A+PlGenCmp:attja%>j   R                 ;
          +A+Sg+Ill:attja%>s%> PxCi              ; !
          +A+Sg+Nom:attja%>    PxV               ; !
  +A+Sg+Ill+Err/Orth:adtja%>s%> PxCi              ; !
@@ -420,7 +426,10 @@ LEXICON DÁRBULASJ !!= @CODE@ Adjectives on -asj, attribute same as pred. Odd-sy
 !!€ demokráhtalabbo            demokráhtalasj+A+Comp+Sg+Nom
 
 
-LEXICON ASIDASJ !!= @CODE@ Adjectives on -asj, -is attr. Odd-syllable comparison. Sg Acc: asidattjav, Attr: asidis.
+LEXICON ASIDASJ
++CmpNP/Last: ASIDASJ_CMP_INFL  ;
+
+LEXICON ASIDASJ_CMP_INFL !!= @CODE@ Adjectives on -asj, -is attr. Odd-syllable comparison. Sg Acc: asidattjav, Attr: asidis.
                         +A:asj        VUOHTA            ;
 ! +A:is VUOHTA ; !moved to ATTR
                    +A+Attr:is%>       ATTR              ; ! Special Attr form
@@ -433,9 +442,9 @@ LEXICON ASIDASJ !!= @CODE@ Adjectives on -asj, -is attr. Odd-syllable comparison
 ! +A:attja%> BU/MUS ; !unusual comp. and superl.
                         +A:%>         ABBO/AMOS         ;
         +A+Der5+Der/at+Adv:attja%>t   ENDLEX            ;
-               +A+SgNomCmp:asj%>      R                 ;
-               +A+SgGenCmp:attja%>    R                 ;
-               +A+PlGenCmp:attja%>j   R                 ;
+!               +A+SgNomCmp:asj%>      R                 ;
+!               +A+SgGenCmp:attja%>    R                 ;
+!               +A+PlGenCmp:attja%>j   R                 ;
  +A+Sg+Ill:attja%>s%> PxCi              ; !
  +A+Sg+Nom:attja%>    PxV               ; !
  +Err/Orth+A+Sg+Ill:adtja%>s%> PxCi              ; !
