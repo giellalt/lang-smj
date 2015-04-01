@@ -52,10 +52,9 @@ fi
 # Get external Mac editor for viewing failed results from configure:
 EXTEDITOR=@SEE@
 
-##### Extract lemmas #####
-# Hent ut lemmaer fra den nouns.lexc, bortsett fra
-# dem som krever sammensetning (CmpN/Only|ShCmp|RCmpnd| Rreal | R | Rnoun).
-# Lemmaene lagres som filtered-nouns.
+##### Extract lemmas - add additional egrep pattern as parameters: #####
+##### --include "(pattern1|pattern2|...)"                          #####
+##### --exclude "(pattern1|pattern2|...)"                          #####
 @GTCORE@/scripts/extract-lemmas.sh \
 	--exclude "( Rreal | R |ShCmp|RCmpnd|CmpN/Only|\+Err\/Der)" \
 	$source_file > $lemmas
