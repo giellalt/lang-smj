@@ -93,7 +93,8 @@ for f in $fsttype; do
         # Generer plurale lemmaer i filtered-nouns med +N+Pl+Nom (som ikke
         # lar seg generer med +N+Sg+Nom).
         # Lagre dem i generated-nouns
-        sed 's/$/+N+Sg+Nom/' $lemmas | $lookuptool $generator_file.$suffix \
+        sed 's/$/+N+Sg+Nom/' $lemmas \
+            | $lookuptool $generator_file.$suffix \
             | fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Pl+Nom/' \
             | $lookuptool $generator_file.$suffix \
             | cut -f2 | grep -v "^$" | sort -u >> $generated_lemmas.$f.txt 
