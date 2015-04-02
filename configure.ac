@@ -213,12 +213,6 @@ AC_CONFIG_FILES([tools/shellscripts/usmj-gt.sh], \
       [chmod a+x tools/shellscripts/usmj-gt.sh])
 
 #### BEGIN: Add language-specific scripts below here: ####
-AC_CONFIG_FILES([test/src/morphology/generate-verb-lemmas.sh], \
-      [chmod a+x test/src/morphology/generate-verb-lemmas.sh])
-AC_CONFIG_FILES([test/src/morphology/generate-adjective-lemmas.sh], \
-      [chmod a+x test/src/morphology/generate-adjective-lemmas.sh])
-AC_CONFIG_FILES([test/src/morphology/generate-propernoun-lemmas.sh], \
-      [chmod a+x test/src/morphology/generate-propernoun-lemmas.sh])
 
 ############ END: Language-specific scripts. #############
 
