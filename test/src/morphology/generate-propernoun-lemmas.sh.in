@@ -16,16 +16,20 @@
 # De som ikke kan genereres, kopieres til missingProperLemmas.*fst.txt
 
 ###### Variables: #######
+POS=propernouns
 ### in ###
 source_file=./../../../src/morphology/generated_files/smi-smj-propernouns.lexc
 generator_file=./../../../src/generator-gt-norm
+analyser_file=./../../../src/analyser-gt-norm
 
 ### out ###
-lemmas=./filtered-propnouns
-lemmas_attr=./filtered-attr-propnouns
-generated_lemmas=./generated-propnouns
-generated_attr_lemmas=./generated-attr-propnouns
-result_file=missing_proper_lemmas
+lemmas=./filtered-${POS}
+lemmas_attr=./filtered-attr-${POS}
+generated_lemmas=./generated-${POS}
+generated_attr_lemmas=./generated-attr-${POS}
+result_file=missing_${POS}_lemmas
+gen_result_file=generated_missing_${POS}_lemmas
+ana_result_file=analysed_missing_${POS}_lemmas
 
 # Check that the source file exists:
 if [ ! -f "$source_file" ]; then
@@ -70,10 +74,10 @@ Fail=0
 
 for f in $fsttype; do
 	if [ $f == "xfst" ]; then
-		lookuptool="@LOOKUP@ -q -flags mbTT"
+		lookup_tool="@LOOKUP@ -q -flags mbTT"
 		suffix="xfst"
 	elif [ $f == "hfst" ]; then
-		lookuptool="@HFST_LOOKUP@ -q"
+		lookup_tool="@HFST_OPTIMIZED_LOOKUP@ -q"
 		suffix="hfstol"
 	else
 	    Fail=1
@@ -86,32 +90,26 @@ for f in $fsttype; do
 
 ###### Test regular propers: #######
 		sed 's/$/+N+Prop+Sg+Nom/'   $lemmas \
-			| $lookuptool $generator_file.$suffix \
-			| fgrep -v "+?" | grep -v "^$" | sort -u \
+			| $lookup_tool $generator_file.$suffix \
+			| fgrep -v "+?" | grep -v "^$" | cut -f2 | sort -u \
             > $generated_lemmas.$f.txt
 
 ###### Test plural propers: #######
 		sed 's/$/+N+Prop+Sg+Nom/'   $lemmas \
-			| $lookuptool $generator_file.$suffix | cut -f2 \
-			| grep "N+" | cut -d "+" -f1 | sed 's/$/+N+Prop+Pl+Nom/' \
-			| $lookuptool $generator_file.$suffix | cut -f2 \
+			| $lookup_tool $generator_file.$suffix \
+			| fgrep "+?" | cut -d "+" -f1 \
+			| sed 's/$/+N+Prop+Pl+Nom/' \
+			| $lookup_tool $generator_file.$suffix | cut -f2 \
 			| grep -v "^$" | cut -d "+" -f1 >> $generated_lemmas.$f.txt
-
-###### Test plural propers: #######
-		sed 's/$/+N+Prop+Sg+Nom/'   $lemmas \
-			| $lookuptool $generator_file.$suffix \
-			| fgrep "+?" | cut -d "+" -f1 | sed 's/$/+N+Prop+Pl+Nom/' \
-			| $lookuptool $generator_file.$suffix | cut -f2 \
-			| grep "N+" | cut -d "+" -f1 > $result_file.$f.txt
 
 ###### Test attr propers: #######
 		sed 's/$/+N+Prop+Attr/' $lemmas_attr \
-			| $lookuptool $generator_file.$suffix | cut -f2 \
+			| $lookup_tool $generator_file.$suffix | cut -f2 \
 			| grep "N+" >> $result_file.$f.txt
 
 ###### Test attr propers: #######
 		sed 's/$/+N+Prop+Attr/' $lemmas_attr \
-			| $lookuptool $generator_file.$suffix | cut -f2 \
+			| $lookup_tool $generator_file.$suffix | cut -f2 \
 			|  grep -v "N+" | grep -v "^$" \
 			| sort -u > $generated_attr_lemmas.$f.txt
 
@@ -125,15 +123,31 @@ for f in $fsttype; do
 # lagre i $result_file.$f.txt. Formene generes med  +N+Prop+Sg+Nom for
 # enklere debugging.
 		comm -23 $lemmas $generated_lemmas.$f.txt | sed 's/$/+N+Prop+Sg+Nom/' \
-		     | $lookuptool $generator_file.$suffix >> $result_file.$f.txt
+		     | $lookup_tool $generator_file.$suffix >> $result_file.$f.txt
 
 		# if at least one word is found, the test failed, and the list of failed
 		# lemmas is opened in SubEthaEdit:
-		if [ -s $result_file.$f.txt ]
-		then
+		if [ -s $result_file.$f.txt ]; then
+            grep -v '^$' $result_file.$f.txt \
+              | sed 's/$/+N+Prop+Sg+Nom/' \
+              | $lookup_tool $generator_file.$suffix \
+              > $gen_result_file.$f.txt
+            # If we have an analyser, analyse the missing lemmas as well:
+            if test -e $analyser_file.$suffix ; then
+                grep -v '^$' $result_file.$f.txt \
+                  | $lookup_tool $analyser_file.$suffix \
+                  > $ana_result_file.$f.txt
+            fi
 			# Only open the failed lemmas in see if @SEE@ is defined:
 			if [ "$EXTEDITOR" ]; then
 				$EXTEDITOR $result_file.$f.txt
+                $EXTEDITOR $gen_result_file.$f.txt
+                $EXTEDITOR $ana_result_file.$f.txt
+            else
+                echo "There where problem lemmas. Details in:"
+                echo "* $result_file.$f.txt    "
+                echo "* $gen_result_file.$f.txt"
+                echo "* $ana_result_file.$f.txt"
 			fi
 		    Fail=1
 		    echo "$f - FAIL"
