@@ -13,24 +13,24 @@ CORPUSNAME=spellercorpus
 generator-fstspeller-gt-norm.tmp1.hfst: \
 		generator-fstspeller-gt-norm.tmp.hfst
 	$(AM_V_GEN)cat $< \
-		| $(HFST_REWEIGHT) -a     2 -S '+Cmp'             \
-		| $(HFST_REWEIGHT) -a     1 -S '+Der'             \
-		| $(HFST_REWEIGHT) -a     1 -S '+Der1'            \
-		| $(HFST_REWEIGHT) -a     1 -S '+Der2'            \
-		| $(HFST_REWEIGHT) -a     1 -S '+Der3'            \
-		| $(HFST_REWEIGHT) -a     1 -S '+Der4'            \
-		| $(HFST_REWEIGHT) -a     1 -S '+Der5'            \
-		| $(HFST_REWEIGHT) -a     3 -S '+PxSg1'           \
-		| $(HFST_REWEIGHT) -a     3 -S '+PxSg2'           \
-		| $(HFST_REWEIGHT) -a     3 -S '+PxSg3'           \
-		| $(HFST_REWEIGHT) -a     3 -S '+PxPl1'           \
-		| $(HFST_REWEIGHT) -a     3 -S '+PxPl2'           \
-		| $(HFST_REWEIGHT) -a     3 -S '+PxPl3'           \
-		| $(HFST_REWEIGHT) -a 50000 -S '+Use/SpellNoSugg' \
-		| $(HFST_REMOVE_EPSILONS)     $(HFST_FLAGS) \
-		| $(HFST_PUSH_WEIGHTS) -p end $(HFST_FLAGS) \
-		| $(HFST_DETERMINIZE)  -E     $(HFST_FLAGS) \
-		| $(HFST_MINIMIZE)     -E     $(HFST_FLAGS) \
+		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     2 -S '+Cmp'             \
+		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     1 -S '+Der'             \
+		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     1 -S '+Der1'            \
+		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     1 -S '+Der2'            \
+		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     1 -S '+Der3'            \
+		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     1 -S '+Der4'            \
+		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     1 -S '+Der5'            \
+		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     3 -S '+PxSg1'           \
+		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     3 -S '+PxSg2'           \
+		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     3 -S '+PxSg3'           \
+		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     3 -S '+PxPl1'           \
+		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     3 -S '+PxPl2'           \
+		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     3 -S '+PxPl3'           \
+		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a 50000 -S '+Use/SpellNoSugg' \
+		| $(HFST_REMOVE_EPSILONS)     $(HFST_FLAGS) $(MORE_VERBOSITY) \
+		| $(HFST_PUSH_WEIGHTS) -p end $(HFST_FLAGS) $(MORE_VERBOSITY) \
+		| $(HFST_DETERMINIZE)  -E     $(HFST_FLAGS) $(MORE_VERBOSITY) \
+		| $(HFST_MINIMIZE)     -E     $(HFST_FLAGS) $(MORE_VERBOSITY) \
 		-o $@
 
 # Remove improper derivations:
@@ -45,6 +45,6 @@ generator-fstspeller-gt-norm.hfst: \
 		; \n\
 		twosided flag-diacritics\n\
 		save stack $@\n\
-		quit\n" | $(HFST_XFST) -p $(VERBOSITY)
+		quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
 
 include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-dir-include.am
