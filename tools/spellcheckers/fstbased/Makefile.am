@@ -8,34 +8,13 @@ SUBDIRS = weighting filters . hfst foma
 # Name of speller corpus sans suffix:
 CORPUSNAME=spellercorpus
 
-# Add weights to tags.
-#   - use this until a bug in hfst-reweight has been fixed.
-generator-fstspeller-gt-norm.tmp1.hfst: \
-		generator-fstspeller-gt-norm.tmp.hfst
-	$(AM_V_GEN)cat $< \
-		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     2 -S '+Cmp'             \
-		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     1 -S '+Der'             \
-		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     1 -S '+Der1'            \
-		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     1 -S '+Der2'            \
-		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     1 -S '+Der3'            \
-		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     1 -S '+Der4'            \
-		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     1 -S '+Der5'            \
-		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     3 -S '+PxSg1'           \
-		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     3 -S '+PxSg2'           \
-		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     3 -S '+PxSg3'           \
-		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     3 -S '+PxPl1'           \
-		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     3 -S '+PxPl2'           \
-		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a     3 -S '+PxPl3'           \
-		| $(HFST_REWEIGHT) $(MORE_VERBOSITY) -a 50000 -S '+Use/SpellNoSugg' \
-		| $(HFST_REMOVE_EPSILONS)     $(HFST_FLAGS) $(MORE_VERBOSITY) \
-		| $(HFST_PUSH_WEIGHTS) -p end $(HFST_FLAGS) $(MORE_VERBOSITY) \
-		| $(HFST_DETERMINIZE)  -E     $(HFST_FLAGS) $(MORE_VERBOSITY) \
-		| $(HFST_MINIMIZE)     -E     $(HFST_FLAGS) $(MORE_VERBOSITY) \
-		-o $@
+### BEGIN: Local build rules: *.hfst: *.tmp.hfst ###
+
+#### END: Local build rules: *.hfst: *.tmp.hfst ####
 
 # Remove improper derivations:
 generator-fstspeller-gt-norm.hfst: \
-		generator-fstspeller-gt-norm.tmp1.hfst \
+		generator-fstspeller-gt-norm.tmp.hfst \
 		filters/remove-illegal-derivation-strings.hfst
 	$(AM_V_HXFST)$(PRINTF) "\
 		set encode-weights ON \n\
