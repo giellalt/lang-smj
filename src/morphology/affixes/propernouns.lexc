@@ -189,7 +189,7 @@ LEXICON ACCRA-LOAN-obj !!= @CODE@ Only nominatives. Vowel-final names where case
 !!$ The Norwegian Sami Experience:        The Norwegian Sami Experience+N+Prop+Sem/Obj+Sg+Ill # Negative test
 
 LEXICON ACCRA-LOAN-plc !!= @CODE@ Only nominatives. Vowel-final names where case endings are added directly, no cg.Place names
- +N+Prop+Sem/Plc:%> ACCRADECL-LOAN ;
+ +N+Prop+Sem/Plc:%> ACCRADECL-LOAN-PLC ;
 ! +N+Prop+Sem/Plc+Sg+Gen@U.Cap.Opt@+Err/Orth:%>@U.Cap.Opt@ VUONAK ;
 
 !!€gt-norm: Kautokeino # Even-syllable test
@@ -223,6 +223,11 @@ LEXICON ACCRADECL-PLC
  @U.Cap.Opt@ LASJ     ;
 
 LEXICON ACCRADECL-LOAN
+! These sublexica are irrelevant for ACCRA, but added
+! for the sake of the lexicon MARJA
+ @U.Cap.Obl@ ACCRA-DC-LOAN ;
+
+LEXICON ACCRADECL-LOAN-PLC
 ! These sublexica are irrelevant for ACCRA, but added
 ! for the sake of the lexicon MARJA
  @U.Cap.Obl@ ACCRA-DC-LOAN ;
@@ -2035,8 +2040,9 @@ LEXICON DUORTNUSDECL-PLC
  @U.Cap.Opt@ LASJ          ; ! XXX Sub?
 
 LEXICON DUORTNUSUCASE ! Cns-final, cons.grad.
-        :Q1     NE-ODDCASE ; ! Q1 is general WeG
- +Sg+Nom:       RHyph      ;
+ !       :Q1     NE-ODDCASE ; ! Q1 is general WeG !Outcommented b/c not sure we want short essive for propers?
+ +Sg+Nom:Q1		K          ; 
+ +Sg+Nom:Q1     RHyph      ;
  +Sg+Gen:X5a    K          ;
  +Sg+Gen:X5a    RHyph      ;
  +Sg+Acc:X5av   K          ;
@@ -2087,8 +2093,9 @@ LEXICON TIEMPELDECL
  @U.Cap.Obl@ TIEMPELUCASE ;
  
  LEXICON TIEMPELUCASE ! Cns-final, cons.grad.
-        :Q1     NE-ODDCASE ; ! Q1 is general WeG
- +Sg+Nom:       RHyph      ;
+ !       :Q1     NE-ODDCASE ; ! Q1 is general WeG ! outcommented since we dont want short essive
+ +Sg+Nom:Q1   K          ;
+ +Sg+Nom:Q1   RHyph      ;
  +Sg+Gen:a    K          ;
  +Sg+Gen:a    RHyph      ;
  +Sg+Acc:av   K          ;
@@ -2340,14 +2347,14 @@ LEXICON GEAVNNISDECL-ORG
 
 LEXICON GEAVNNISDECL-PLC
  @U.Cap.Obl@ GEAVNNISUCASE ;
- @U.Cap.Opt@ LASJ          ; ! XXX Sub?
+ @U.Cap.Opt@ :Q1 LASJ          ; ! XXX Sub?
 
 LEXICON GEAVNNISUCASE
  +Sg+Nom:Q1s    K     ;
  +Sg+Nom:Q1s    RHyph ;
-    +Ess:Q1n    K     ;
+    +Ess:Q1n    K     ; !do we want short essive for propers, makes Sirgen
  +Sg+Ill:X4j    K     ;
-    +Ess:X4n    K     ;
+    +Ess:X4n    K     ; !Sirggán
  +Sg+Gen:X4     K     ;
  +Sg+Gen:X4     RHyph ;
  +Sg+Acc:X4v    K     ;
