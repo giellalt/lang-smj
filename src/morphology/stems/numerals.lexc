@@ -26,27 +26,24 @@
 ! ------------------
 
 LEXICON Numeral					
- MILIJÅVNNÅ ;       ! a noun of its own		
- UNDERTUVSÁN ;      ! for generator under 1000	
- JUSTTUVSÁN ;       ! going via 1000		
- OVERTUVSÁN ;       ! for generator over 1000	
- OLD ;              ! for "thirteen hundred, etc.	
-num-imprecise ;                              
-COLLECTIVE ;                            
- +Use/Circ: ARABIC ;           ! for the arabic numerals !
- +Use/Circ: ROMAN ;            ! for the roman numerals	!
- +Use/Circ: NUM-PREFIXES ;     ! for §34 etc.		!
- +Use/Circ: ISOLATED-NUMEXP ;  ! for ½ etc.			!
-O-NL ;  
-
-
-
-
-
+ MILIJÅVNNÅ                 ; ! a noun of its own	
+ OVERTUVSÁN                 ; ! for generator over 1000	
+ JUSTTUVSÁN                 ; ! going via 1000
+ OLD                        ; ! for "thirteen hundred, etc.	
+ UNDERTUVSÁN                ; ! for generator under 1000				
+ num-imprecise              ;                              
+ COLLECTIVE                 ;                            
+ +Use/Circ: ARABIC          ; ! for the arabic numerals !
+ +Use/Circ: ROMAN           ; ! for the roman numerals	!
+ +Use/Circ: NUM-PREFIXES    ; ! for §34 etc.		!
+ +Use/Circ: ISOLATED-NUMEXP ; ! for ½ etc.			!
+ O-NL                       ;  
 
 
 ! We now run through the alphabetic numerals, ending up with the case
 ! inflection of the final number.
+
+! WG-lexicons are attributive forms?
 
 ! Million, a noun of its own
 ! --------------------------
@@ -64,40 +61,40 @@ miljåvnåt+Dial/-NOR+A+Ord:miljåvnåd9 VUOSTASJ ;
 millijárdat+A+Ord:milliárdad9 VUOSTASJ ;	
 miljárdat+Dial/-NOR+A+Ord:miljárdad9 VUOSTASJ ;
 
+
 ! Overtuvsán, for the numerals over 1000
 ! --------------------------------------
 
 LEXICON OVERTUVSÁN				
- O-AKTAF ;      ! 1000				
- O-2TO9F ;      ! 2000, 3000, ...			
- O-JUSTLÅGEVF ; ! 10000				
- O-2TO9LÅG ;    ! 20000, 30000, ...		
- O-LÅGENAN ;    ! 11000, 12000, ...		
- O-TJUOHTE ;    ! 100000					
- O-2TO9TJUO ;   ! 200000, 300000, ...
+ O-X1000      ;   ! 1000			
+ O-2TO9F      ;   ! 2000, 3000, ...			
+ O-JUSTLÅGEVF ;   ! 10000		
+ O-LÅGEVF     ;   ! incoming from	O-2TO9LÅG and O-TJUOHTE	
+ ẈG-O-LÅGEVF  ;   ! incoming from O-2TO9F and O-2TO9LÅG	
+ O-2TO9LÅG    ;   ! 20000, 30000, ...		
+ O-LÅGENAN    ;   ! 11000, 12000, ...		
+ O-TJUOHTE    ;   ! 100000	
+ O-TJUODE     ;	  ! incoming from O-2TO9TJUO
+ WG-O-TJUODE  ;	  ! incoming from O-2TO9TJUO		
+ O-2TO9TJUO   ;   ! 200000, 300000, ...
 
-! All the child lexica of OVERTUVSÁN have the prefix O-.
+! All sublexica of OVERTUVSÁN have the prefix O-.
 ! They are directed via their respective numerals to the lexicon JUSTTUVSÁN.
 
-
 ! Thousands
-
-LEXICON O-AKTAF		
-akta# JUSTDUHÁT ;
-JUSTDUHÁT ;		
 
 LEXICON O-X1000		
 akta# JUSTTUVSÁN ;
 
 LEXICON O-2TO9F                               
-guokta#  JUSTTUVSÁN ;       
+guokta#  JUSTTUVSÁN ; !guoktatuvsán    
 guokte#  JUSTTUVSÁN ;
 guok#    JUSTTUVSÁN ;         
-guokta#:guovte# ẈG-O-LÅGEVF ;		     
-guokta#:guovte# WG-JUSTTUVSÁN ;		                                                                                                                                                                                                           
-gålmmå#  JUSTTUVSÁN ;  
-gålmmå#:gålmå# ẈG-O-LÅGEVF ;				
-gålmmå#:gålmå# WG-JUSTTUVSÁN ;				                                                    
+guokta#:guovte# ẈG-O-LÅGEVF ; !guoktalåktuvsán		     
+guokta#:guovte# WG-JUSTTUVSÁN ; !guoktatuvsán                                                                                                                                                                                                           
+gålmmå#  JUSTTUVSÁN ;  !gålmmåtuvsán
+gålmmå#:gålmå# ẈG-O-LÅGEVF ; !gålmmålåktuvsán			
+gålmmå#:gålmå# WG-JUSTTUVSÁN ;	!gålmmåtuvsán			                                                    
 niellja# JUSTTUVSÁN ;   
 niellje# JUSTTUVSÁN ; 
 niellja#:nielja# ẈG-O-LÅGEVF ;
@@ -125,27 +122,26 @@ aktse#:avtse# WG-JUSTTUVSÁN ;
 
 ! Tens of thousands
 
-LEXICON O-JUSTLÅGEVF		
-lågev# JUSTTUVSÁN ;		
+LEXICON O-JUSTLÅGEVF !not in use	
+lågev# JUSTTUVSÁN ;	!gáktsalågevtuvsán
 ! This lexicon is for the number 10000 only. it is separated from the
 ! rest to avoid forms like *logivihttaduhát, etc.
 
-
-LEXICON O-LÅGEVF				     
-låk# JUSTTUVSÁN ;		
-låk# O-X1000 ;			
-låk# O-2TO9F ;
+LEXICON O-LÅGEVF !Incoming from LEXICON O-2TO9LÅG and LEXICON O-TJUOHTE				     
+låk# JUSTTUVSÁN ; !vihttalåktuvsán, etc		
+låk# O-X1000 ; !vihttalåkaktatuvsán, etc	
+låk# O-2TO9F ; !gietjalåkgietjatuvsán, etc
 låge# JUSTTUVSÁN ;		
 låge# O-X1000 ;			
 låge# O-2TO9F ;					
 ! this lexicon is accessed only via other O-lexica, and not directly 
 ! from OVERTUVSÁN. Thus, *logivihttaduhát, etc. is avoided.
 
-LEXICON ẈG-O-LÅGEVF
-låk# WG-LÅK-JUSTTUVSÁN ;		
+LEXICON ẈG-O-LÅGEVF !Incoming from LEXICON O-2TO9F and LEXICON O-2TO9LÅG
+låk# WG-LÅK-JUSTTUVSÁN ; !guoktalåktuvsán,etc		
 låge# WG-LÅK-JUSTTUVSÁN ;		
 
-LEXICON O-2TO9LÅG			  
+LEXICON O-2TO9LÅG		  
 guokta# O-LÅGEVF ;		
 guokte# O-LÅGEVF ;
 guok# O-LÅGEVF ;
@@ -174,7 +170,7 @@ aktse#:avtse# ẈG-O-LÅGEVF ;
 ! Teens of thousands
 
 LEXICON O-LÅGENAN		
-lågenan#akta# JUSTTUVSÁN ;        
+lågenan#akta# JUSTTUVSÁN ; !lågenanaktatuvsán      
 lågenan#guokta#:lågenan#guokta# JUSTTUVSÁN ;    
 lågenan#guokte#:lågenan#guokte# JUSTTUVSÁN ;
 lågenan#guok#:lågenan#guok# JUSTTUVSÁN ;                                  
@@ -273,21 +269,7 @@ gáktse# O-TJUODE ;
 gáktsa#:gávtse# WG-O-TJUODE ;								
 aktse# O-TJUODE ;
 aktse#:avtse# WG-O-TJUODE ;					
-				
-
-LEXICON JUSTDUHÁT				
-tuvsán# UNDERTUVSÁN ;
-tuvsán# AVTAS ;  	  	
-tuvsán TUVSÁN ;                    ! Case infl of tuvsán
-tuvsánat+A+Ord:tuvsána TUVSÁNAT ;
-duvsán# UNDERTUVSÁN ;
-duvsán# AVTAS ;  	  	
-duvsán TUVSÁN ;                    ! Case infl of tuvsán
-duvsánat+A+Ord:duvsána TUVSÁNAT ;						
-duhát# UNDERTUVSÁN ;  	
-duhát# AVTAS ;  	
-duhát:duhád9 TUVSÁN ;              ! Case infl of duhát	
-duhádat+A+Ord:duháda TUVSÁNAT ;			
+			
 
 ! Justtuvsán, for numerals going via 1000
 ! -------------------------------------
@@ -330,7 +312,6 @@ LEXICON WG-JUSTTUVSÁN
 ! Old, for the old counting thirteen hundred etc. Removed from speller	
 ! -----------------------------------------------
 
-
 LEXICON OLD					
 akta#+Use/-Spell:akta# NLX ;						
 guokta#+Use/-Spell:guokta# NLX ;					
@@ -356,20 +337,29 @@ lågenan# GTJUODE-SPLIT ;
 ! -------------------------------------
 
 LEXICON UNDERTUVSÁN				
- AKTAF ;     ! 1				
- 2TO9F ;     ! 2-9			
- LÅGEVF ;     ! 10				
- LÅGENAN ;   ! 11-19             
- 2TO9LÅG ;   ! 20-99				
- TJUOHTE ;     ! 100-199				
- 2TO9TJUO ;   ! 200-999				
+ AKTAF            ; ! 1, regular and ordinal
+ AVTAS            ; ! 1, collective				
+ 2TO9F            ; ! 2-9, reg, ord and coll
+ ẈG-LÅK-2TO9F     ; ! ???		
+ LÅGEVF           ; ! 10	
+ LÅK-             ; ! incoming from 2TO9LÅG: 20-99
+ ẈG-LÅK-          ; ! incoming from 2TO9LÅG		
+ 2TO9LÅG          ; ! 20-99		
+ LÅGENAN          ; ! 11-19             				
+ TJUOHTE          ; ! 100-199				
+ 2TO9TJUO         ; ! 200-999	
+ GTJUODE-SPLIT    ; ! incoming from 2TO9TJUO	
+ GTJUODE          ; ! ???
+ WG-GTJUODE       ; ! ???
+ TJUOHTEIMPRECISE ; ! ???
+ COLLECTIVE       ; !aktagis, etc. animals
+ 
 
 LEXICON AKTAF					
 akta:akta AKTA ;        
 akta:åvtå ÅVTÅ ;		
 vuostasj+A+Ord:vuostatj VUOSTASJ ;
 vuostasj+Dial/N+A+Ord:vuostas VUOSTASJ ;
-
 
 LEXICON AVTAS			 
 avtas+N+Coll+Sg+Nom:avtas%> K ;
@@ -452,24 +442,24 @@ aktse:akts ẈG-LÅK-AKTSE ;
 
 LEXICON LÅGEVF					
 lågev:låhk LÅGEV ;
-akta#lågev:akta#låhk LÅGEV ;      
+akta#lågev:akta#låhk LÅGEV ;  !  
 lågåt+A+Ord:lågåd9 VUOSTASJ ;
 akta#lågåt+A+Ord:akta#lågåd9 VUOSTASJ ;						
 låhke:låhk TJUOHTECASE ;
-akta#låhke:akta#låhk TJUOHTECASE ;  
+akta#låhke:akta#låhk TJUOHTECASE ;  ! 
 låhke+Num+Sg+Ill:låhkå%>j K ;   
 låhke+Num+Sg+Nom:låhke%> K ;                        
 låhke+Num+Ess:låhke%>n K ;                          
-akta#låhke+Num+Sg+Ill:akta#låhkå%>j K ;
-akta#låhke+Num+Sg+Nom:akta#låhke%> K ;                        
-akta#låhke+Num+Ess:akta#låhke%>n K ;                                             
+akta#låhke+Num+Sg+Ill:akta#låhkå%>j K ; ! 
+akta#låhke+Num+Sg+Nom:akta#låhke%> K ;   !                     
+akta#låhke+Num+Ess:akta#låhke%>n K ;    !                                         
 låges+N+Coll+Sg+Nom:låges%> K ;
-akta#låges+N+Coll+Sg+Nom:akta#låges%> K ;      
+akta#låges+N+Coll+Sg+Nom:akta#låges%> K ;  ! 
 låges+N+Coll:låhkås VIDÁS ;       
-akta#låges+N+Coll:akta#låhkås VIDÁS ;       
+akta#låges+N+Coll:akta#låhkås VIDÁS ;    !   
 
 
-LEXICON LÅK-					
+LEXICON LÅK- !incoming from LEXICON 2TO9LÅG					
 låk# AKTAF ;
 låk# AVTAS ;								
 låk# 2TO9F ;
@@ -479,15 +469,15 @@ låge# 2TO9F ;
 låhke+Num+Sg+Attr:låk%> K ;    
 låhke#+Num+Sg+Attr:låk%> NUMERALCOMPOUNDS ;
 låhke#+Num+Sg+Gen:låge%> NUMERALCOMPOUNDS ;
- låhke:låhk  TJUOHTECASE ;  ! vihttalåhke, collective number
+låhke:låhk  TJUOHTECASE ;  ! vihttalåhke, collective number
 låhke+Num+Sg+Ill:låhkå%>j K ; 
 låhke+Num+Sg+Nom:låhke%> K ;            
 låhke+Num+Ess:låhke%>n K ;                       
-lågåt+A+Ord:lågåd9 VUOSTASJ ;
-låges+N+Coll+Sg+Nom:låges%> K ;
-låges+N+Coll:låhkås VIDÁS ;       
+lågåt+A+Ord:lågåd9 VUOSTASJ ; !redunant, in LÅGEVF..
+låges+N+Coll+Sg+Nom:låges%> K ; !redundant, in LÅGEVF
+låges+N+Coll:låhkås VIDÁS ;  !redundant, in LÅGEVF     
 		
-LEXICON ẈG-LÅK-					
+LEXICON ẈG-LÅK-	!incoming from LEXICON 2TO9LÅG				
 låk#akta ẈG-LÅK-AKTA ;
 låk#åvtå ẈG-LÅK-ÅVTÅ ;
 låk# ẈG-LÅK-2TO9F ;
@@ -506,62 +496,88 @@ låhke+Num+Sg+Ela:t#låge%>s K ;
 låhke+Num+Sg+Par:låge%>t K ;                       
 låhke+Num+Sg+Par:t#låge%>t K ;                       
 
+LEXICON 2TO9LÅG					
+guokta# LÅK- ;		
+guokte# LÅK- ;	
+guok# LÅK- ;
+guokta#:guovte# ẈG-LÅK- ;													
+gålmmå# LÅK- ;
+gålmmå#:gålmå# ẈG-LÅK- ;				
+niellja# LÅK- ;	
+niellje# LÅK- ;
+niellja#:nielja# ẈG-LÅK- ;
+niellje#:nielje# ẈG-LÅK- ;
+vihtta# LÅK- ;
+vihtta#:vidá# ẈG-LÅK- ;				
+guhtta# LÅK- ;
+guhtta#:gudá# ẈG-LÅK- ;
+gietjav# LÅK- ;	
+giehtja# LÅK- ;					
+gietja# LÅK- ;
+gietja# ẈG-LÅK- ;									
+gáktsa# LÅK- ;
+gáktse# LÅK- ;
+gáktsa#:gávtse# ẈG-LÅK- ;					
+aktse# LÅK- ;					
+aktse#:avtse# ẈG-LÅK- ;
+
 
 LEXICON LÅGENAN	 				
 lågenan#akta AKTA ;        
 lågenan#akta:lågenan#åvtå ÅVTÅ ;
-lågenan#akta# GTJUODE-SPLIT ;								
-lågenan#vuostasj+A+Ord:lågenan#vuostatj VUOSTASJ ;		
-lågenan#vuostas+A+Ord:lågenan#vuostas VUOSTASJ ;		  
+lågenan#akta# GTJUODE-SPLIT ;										  
 lågenan#guokta:lågenan#guokt GUOKTA ;
 lågenan#guokta+Num+Sg+Ill:lågenan#guokta%>j K ;    
 lågenan#guokta+Num+Sg+Nom:lågenan#guok%> K ;  
 lågenan#guokta+Num+Sg+Acc:lågenan#guok%> K ;  
-lågenan#guokta# GTJUODE-SPLIT ;	
-lågenan#guokte# GTJUODE-SPLIT ;	
-lågenan#guok# GTJUODE-SPLIT ;							                                             
-lågenan#nubbe+A+Ord:lågenan#nupp nubbecase ;		 
-lågenan#nubbe+A+Ord+Sg+Nom:lågenan#nubbe%> K ;       
-lågenan#nubbe+A+Ord+Ess:lågenan#nubbe%>n K ;        
-lågenan#nubbe+A+Ord+Sg+Ill:lågenan#nubbá%>j K ;     
-lågenan#nuppát+A+Ord:lågenan#nuppád9 VUOSTASJ ;           
+lågenan#guokta:lågenan#guokta# GTJUODE-SPLIT ;	
+lågenan#guokta:lågenan#guokte# GTJUODE-SPLIT ;	
+lågenan#guokta+Dial/SH:lågenan#guok# GTJUODE-SPLIT ;							                                                       
 lågenan#gålmmå GÅLMMÅ ;  
-lågenan#gålmmå# GTJUODE-SPLIT ;					  
-lågenan#goalmát+A+Ord:lågenan#goalmád9 VUOSTASJ ;        
+lågenan#gålmmå# GTJUODE-SPLIT ;					          
 lågenan#niellja:lågenan#niellj GUOKTA ;  
 lågenan#niellja# GTJUODE-SPLIT ;	
 lågenan#niellje# GTJUODE-SPLIT ;									
-lågenan#niellja+Num+Sg+Ill:lågenan#nælljá%>j K ;    
-lågenan#nælját+A+Ord:lågenan#næljád9 VUOSTASJ ;        
+lågenan#niellja+Num+Sg+Ill:lågenan#nælljá%>j K ;           
 lågenan#vihtta+Num:lågenan#vidá GÅLMMÅ-OBL ;             
 lågenan#vihtta+Num+Sg+Nom:lågenan#vihtta%> K ;          
 lågenan#vihtta+Num+Sg+Acc:lågenan#vihtta%> K ;         
 lågenan#vihtta+Num+Sg+Ill:lågenan#vihtta%>j K ;         
 lågenan#vihtta+Num+Ess:lågenan#vihtta%>n K ;  
-lågenan#vihtta# GTJUODE-SPLIT ;					          
-lågenan#vidát+A+Ord:lågenan#vidád9 VUOSTASJ ;       
+lågenan#vihtta# GTJUODE-SPLIT ;					                
 lågenan#guhtta+Num:lågenan#gudá GÅLMMÅ-OBL ;          
 lågenan#guhtta+Num+Sg+Nom:lågenan#guhtta%> K ;          
 lågenan#guhtta+Num+Sg+Acc:lågenan#guhtta%> K ;         
 lågenan#guhtta+Num+Sg+Ill:lågenan#guhtta%>j K ;         
 lågenan#guhtta+Num+Ess:lågenan#guhtta%>n K ; 
-lågenan#guhtta# GTJUODE-SPLIT ;					           
-lågenan#gudát+A+Ord:lågenan#gudád9 VUOSTASJ ;        
+lågenan#guhtta# GTJUODE-SPLIT ;					                  
 lågenan#gietjav:lågenan#giehtja GIETJAV ; 
 lågenan#gietjav# GTJUODE-SPLIT ;					
 lågenan#giehtja# GTJUODE-SPLIT ;					
-lågenan#gietja# GTJUODE-SPLIT ;					       
-lågenan#giehttjit+A+Ord:lågenan#giehttjid9 VUOSTASJ ;        
+lågenan#gietja# GTJUODE-SPLIT ;					              
 lågenan#gáktsa:lågenan#gákts GÁKTSA ;  
 lågenan#gáktsa# GTJUODE-SPLIT ;		
-lågenan#gáktse# GTJUODE-SPLIT ;								      
-lågenan#gávtsát+A+Ord:lågenan#gávtsád9 VUOSTASJ ;       
+lågenan#gáktse# GTJUODE-SPLIT ;								             
 lågenan#aktse:lågenan#akts AKTSE ;   
 lågenan#aktse# GTJUODE-SPLIT ;               
+
+lågenan#vuostasj+A+Ord:lågenan#vuostatj VUOSTASJ ;		
+lågenan#vuostas+A+Ord:lågenan#vuostas VUOSTASJ ;
+lågenan#nubbe+A+Ord:lågenan#nupp nubbecase ;		 
+lågenan#nubbe+A+Ord+Sg+Nom:lågenan#nubbe%> K ;       
+lågenan#nubbe+A+Ord+Ess:lågenan#nubbe%>n K ;        
+lågenan#nubbe+A+Ord+Sg+Ill:lågenan#nubbá%>j K ;     
+lågenan#nuppát+A+Ord:lågenan#nuppád9 VUOSTASJ ; 
+lågenan#goalmát+A+Ord:lågenan#goalmád9 VUOSTASJ ;
+lågenan#nælját+A+Ord:lågenan#næljád9 VUOSTASJ ; 
+lågenan#vidát+A+Ord:lågenan#vidád9 VUOSTASJ ; 
+lågenan#gudát+A+Ord:lågenan#gudád9 VUOSTASJ ; 
+lågenan#giehttjit+A+Ord:lågenan#giehttjid9 VUOSTASJ ; 
+lågenan#gávtsát+A+Ord:lågenan#gávtsád9 VUOSTASJ ;
 lågenan#avtsát+A+Ord:lågenan#avtsád9 VUOSTASJ ;        
 vuostasj#lågåt+A+Ord:vuostasj#lågåd9 VUOSTASJ ;
 vuostas#lågåt+A+Ord:vuostas#lågåd9 VUOSTASJ ;
-	
+
 lågenan#guovtes+N+Coll+Sg+Nom:lågenan#guovtes%> K ;
 lågenan#guovtá+N+Coll+Sg+Nom:lågenan#guovtá%> K ;      
 lågenan#guovtes+N+Coll:lågenan#guoktás VIDÁS ;    
@@ -611,7 +627,6 @@ aktse#lågenan+Use/-Spell:akts AKTSELÅGENAN ;
 avtsát#lågåt+Use/-Spell+A+Ord:avtsát#lågåd9 VUOSTASJ ; 
 akta#lågenan+Use/-Spell:akta AKTALÅGENAN ;   !old     
 akta#lågenan+Use/-Spell:åvtå ÅVTÅLÅGENAN ;   !old 
- 
 guovtes#lågenan+Use/-Spell+N+Coll+Sg+Nom:guovtes#lågenan%> K ;   !old   
 guovtes#lågenan+Use/-Spell+N+Coll:guoktás VIDÁSLÅGENAN ;   !old 
 gålmås#lågenan+Use/-Spell+N+Coll+Sg+Nom:gålmås#lågenan%> K ;  !old     
@@ -628,32 +643,7 @@ gávtses#lågenan+Use/-Spell+N+Coll+Sg+Nom:gávtses#lågenan%> K ; !old
 gávtses#lågenan+Use/-Spell+N+Coll:gáktsás VIDÁSLÅGENAN ; !old
 avtses#lågenan+Use/-Spell+N+Coll+Sg+Nom:avtses#lågenan%> K ; !old
 avtses#lågenan+Use/-Spell+N+Coll:aktsás# VIDÁSLÅGENAN ; !old   
-          
-
-LEXICON 2TO9LÅG					
-guokta# LÅK- ;		
-guokte# LÅK- ;	
-guok# LÅK- ;
-guokta#:guovte# ẈG-LÅK- ;													
-gålmmå# LÅK- ;
-gålmmå#:gålmå# ẈG-LÅK- ;				
-niellja# LÅK- ;	
-niellje# LÅK- ;
-niellja#:nielja# ẈG-LÅK- ;
-niellje#:nielje# ẈG-LÅK- ;
-vihtta# LÅK- ;
-vihtta#:vidá# ẈG-LÅK- ;				
-guhtta# LÅK- ;
-guhtta#:gudá# ẈG-LÅK- ;
-gietjav# LÅK- ;	
-giehtja# LÅK- ;					
-gietja# LÅK- ;
-gietja# ẈG-LÅK- ;									
-gáktsa# LÅK- ;
-gáktse# LÅK- ;
-gáktsa#:gávtse# ẈG-LÅK- ;					
-aktse# LÅK- ;					
-aktse#:avtse# ẈG-LÅK- ;
+         
 
 LEXICON TJUOHTE					
 tjuohte:tjuoht TJUOHTECASE ;    
@@ -686,9 +676,6 @@ tjuodes+N+Coll:tjuohtás VIDÁS ;
 akta#tjuodes+N+Coll+Sg+Nom:akta#tjuodes%> K ;      
 akta#tjuodes+N+Coll:akta#tjuohtás VIDÁS ;       
 
-
-
-
 LEXICON 2TO9TJUO					
 guokta# GTJUODE-SPLIT ;			
 guokte# GTJUODE-SPLIT ;	
@@ -714,7 +701,7 @@ gietja# WG-GTJUODE ;
 gáktsa#:gávtse# WG-GTJUODE ;							
 aktse#:avtse# WG-GTJUODE ;	
 
-LEXICON	GTJUODE-SPLIT
+LEXICON GTJUODE-SPLIT !incoming from LEXICON 2TO9TJUO
  GTJUODE ;
  TJUOHTEIMPRECISE ;			
 
@@ -765,10 +752,10 @@ tjuode+Num+Sg+Par:t#tjuode%>t K ;
 
 
 LEXICON TJUOHTEIMPRECISE
- tjuohte+Num+Sg+Nom:tjuohte%> K ; ! 200-or-so
+tjuohte+Num+Sg+Nom:tjuohte%> K ; ! 200-or-so
 
 
-LEXICON COLLECTIVE    !Some collective numbers that do not fit in anywhere else
+LEXICON COLLECTIVE    !Some collective numbers that do not fit in anywhere else, collectives for animals
 aktagis+N+Coll:aktagis TJUODAGIS ;               
 guoktagis+N+Coll:guoktagis TJUODAGIS ;           
 gålmmågis+N+Coll:gålmmågis TJUODAGIS ;           
