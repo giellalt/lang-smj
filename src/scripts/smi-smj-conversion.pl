@@ -60,7 +60,7 @@ while(<>) {
 	my $line = $_;
 
 	# Special treatment of æ in SMJ:
-	if ($line =~ /æ/) {
+	if ($line =~ /[æä]/ && $line !~ /^!/) {
 			# Replace space in multipart names temporarily with $.
 		$line =~ s/% /\$/g;
 		
