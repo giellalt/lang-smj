@@ -103,6 +103,10 @@ generator-gt-%.xfst: generator-gt-%.tmp.xfst \
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)
 
+# Include the scripts file in the distro to ensure we can convert the smi
+# propernouns file:
+EXTRA_DIST=scripts/
+
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######
 ##################################################################
