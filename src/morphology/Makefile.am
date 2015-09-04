@@ -68,7 +68,8 @@ GT_XML_SRCS=
 GT_LOCAL_SRCS=
 
 # Define here any additional sources just included in the distro:
-GT_DISTRO_SRCS=stems/$(GTLANG)-propernouns.lexc
+GT_DISTRO_SRCS=stems/$(GTLANG)-propernouns.lexc \
+               $(top_srcdir)/src/scripts/smi-smj-conversion.pl
 
 ### BEGIN: Local processing: ###
 
