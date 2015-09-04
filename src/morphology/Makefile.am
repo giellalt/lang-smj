@@ -68,7 +68,7 @@ GT_XML_SRCS=
 GT_LOCAL_SRCS=
 
 # Define here any additional sources just included in the distro:
-GT_DISTRO_SRCS=
+GT_DISTRO_SRCS=stems/$(GTLANG)-propernouns.lexc
 
 ### BEGIN: Local processing: ###
 
@@ -79,7 +79,7 @@ generated_files/smi-propernouns.lexc: \
 
 generated_files/smi-$(GTLANG)-propernouns.lexc: \
 		generated_files/smi-propernouns.lexc \
-		$(srcdir)/stems/$(GTLANG)-propernouns.lexc
+		stems/$(GTLANG)-propernouns.lexc
 	$(AM_V_GEN)rm -f $@ && \
 	cp -f $(srcdir)/stems/$(GTLANG)-propernouns.lexc $@ && \
 	echo "" >> $@ && \
