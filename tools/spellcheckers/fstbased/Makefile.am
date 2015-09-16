@@ -15,8 +15,6 @@ ENABLE_CORPUS_WEIGHTS=no
 
 ### BEGIN: Local build rules: *.hfst: *.tmp.hfst ###
 
-#### END: Local build rules: *.hfst: *.tmp.hfst ####
-
 # Remove improper derivations:
 generator-fstspeller-gt-norm.hfst: \
 		generator-fstspeller-gt-norm.tmp.hfst \
@@ -30,5 +28,7 @@ generator-fstspeller-gt-norm.hfst: \
 		twosided flag-diacritics\n\
 		save stack $@\n\
 		quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
+
+#### END: Local build rules: *.hfst: *.tmp.hfst ####
 
 include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-dir-include.am
