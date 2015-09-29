@@ -18,6 +18,30 @@ APERTIUM_TARGET_LANG_NAME=apertium-sme-smj
 #### BEGIN: Add local processing instructions BELOW this line ####
 ##################################################################
 
+generator-mt-gt-norm.hfst: generator-mt-gt-norm.tmp.hfst \
+			$(top_builddir)/src/filters/remove-Dial_-NOR-strings.hfst \
+			$(top_builddir)/src/filters/remove-dialect-tags.hfst
+	$(AM_V_RGX2FST)$(PRINTF) "\
+		@\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"   \
+	.o. @\"$(top_builddir)/src/filters/remove-Dial_-NOR-strings.hfst\" \
+   	.o. @\"$<\" \
+    	;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
+		> $@
+
+# TODO: How do we get this one into the build? Want to end up with 
+# apertium-smj.smj_SW.RL.att.gz
+generator-mt-gt-norm_SW.hfst: generator-mt-gt-norm.tmp.hfst \
+			$(top_builddir)/src/filters/remove-Dial_-SW-strings.hfst \
+			$(top_builddir)/src/filters/remove-dialect-tags.hfst
+	$(AM_V_RGX2FST)$(PRINTF) "\
+		@\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"   \
+	.o. @\"$(top_builddir)/src/filters/remove-Dial_-SW-strings.hfst\" \
+   	.o. @\"$<\" \
+    	;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
+		> $@
+
 
 
 ##################################################################
