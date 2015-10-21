@@ -74,12 +74,20 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
  +Dial/S      !!≈ * @CODE@ Used in the southern areas
  +Dial/SH     !!≈ * @CODE@ Short forms
 
+!! !Compounding tags
+
+!! The tags are of the following form:
+!! * __+CmpNP/xxx__ - Normative (N), Position (P), ie. the tag describes what
+!!                    position the tagged word can be in in a compound
+!! * __+CmpN/xxx__  - Normative (N) __form__ ie. the tag describes what
+!!                    form the tagged word should use when making compounds
+!! * __+Cmp/xxx__   - Descriptive compounding tags, ie. tags that''describes''
+!!                    what form a word actually is using in a compound
 
 !! Normative/prescriptive compounding tags:
-!! (to govern compound behaviour for the speller, ie what a compound SHOULD BE)
+!! (to govern compound behaviour for the speller, ie. what a compound SHOULD BE)
 
 !! The first part of the component may be ..
-
 +CmpN/Sg          !!≈ * @CODE@ = Singular
 +CmpN/SgN         !!≈ * @CODE@ = Singular Nominative
 +CmpN/SgG         !!≈ * @CODE@ = Singular Genitive
@@ -95,26 +103,32 @@ Multichar_Symbols  !!≈ !!!Definitions for @CODE@
 +CmpNP/Only      !!≈ * @CODE@ - ... only be part of a compound, i.e. can never
                  !!                 be used alone, but can appear in any position
 
-! The second part of the compound may take ..
+! The second part of the compound may require that the previous (left part) is (and thus overrides the regular CmpN tags):
 +CmpN/SgLeft     !!≈ * @CODE@  Singular to the left
 +CmpN/SgNomLeft  !!≈ * @CODE@  Singular nominative to the left
 +CmpN/SgGenLeft  !!≈ * @CODE@  Singular genitive to the left
 +CmpN/PlGenLeft  !!≈ * @CODE@  Plural genitive to the left
 
-! This part of the compound may ...
-+CmpN/Def        !!≈ * @CODE@  works along with Left compound-tagging
-+CmpN/DefSgGen   !!≈ * @CODE@  works along with Left compound-tagging
-+CmpN/DefPlGen   !!≈ * @CODE@  works along with Left compound-tagging
+! But these tags can again be overriden by the first word in a compound, if this part of the compound is tagged with a def tag:
++CmpN/Def        !!≈ * @CODE@  Left override
++CmpN/DefSgGen   !!≈ * @CODE@  Overrides left tag, requires SgGen form
++CmpN/DefPlGen   !!≈ * @CODE@  Overrides left tag, requires PlGen form
 
 ! Descriptive compounding tags:
-! Tags for compound analysis - this is what a compound is:
- +Cmp/Sg +Cmp/SgNom +Cmp/SgGen +Cmp/PlGen ! Different case + number combinations
- +Cmp ! Dynamic compound - this tag should always be part of a dynamic compound.
-      ! It is important for Apertium, and useful in other cases as well.
- +Cmp/SplitR  ! This is a split compound with the other part to the right:
-          ! "Arbeids- og inkluderingsdepartementet" => Arbeids- = +Cmp/SplitR
- +Cmp/SplitL ! This is a split compound with the other part to the left
- +Cmp/Sh !testing ShCmp
+
+! Tags for compound analysis - this is what a compound actually is:
+ +Cmp/Sg       !!≈ * __@CODE@__  Singular
+ +Cmp/SgNom    !!≈ * __@CODE@__  Singular Nominative
+ +Cmp/SgGen    !!≈ * __@CODE@__  Singular Genitive
+ +Cmp/PlGen    !!≈ * __@CODE@__  Plural Genitiv
+ 
+ +Cmp          !!≈ * __@CODE@__  Dynamic compound - this tag should always be part of a 
+               !!                dynamic compound.
+               !!                It is important for Apertium, and useful in other cases as well.
+ +Cmp/SplitR   !!≈ * __@CODE@__  This is a split compound with the other part to the right:
+               !!                "Arbeids- og inkluderingsdepartementet" => Arbeids- = +Cmp/SplitR
+ +Cmp/SplitL   !!≈ * __@CODE@__  This is a split compound with the other part to the left
+ +Cmp/Sh       !!≈ * __@CODE@__  testing ShCmp
 
 ! ! ! ! === Tags for Inflection ===
 
