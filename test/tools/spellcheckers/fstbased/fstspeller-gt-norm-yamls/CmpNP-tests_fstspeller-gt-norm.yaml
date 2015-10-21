@@ -7,19 +7,27 @@ Config:
     Morph: ../../../tools/spellcheckers/fstbased/analyser-fstspeller-gt-norm.xfst
     App: lookup
 
-Tests:
-  CmpNP/First tests:
-  
-  CmpNP/Pref tests:
-  
-  CmpNP/Last tests:
-  
-  CmpNP/Suff tests:
-  
-  CmpNP/None tests:
-  
-  CmpNP/Only tests:
-   
-  
+# Testing CmpNp/xxx tags. Currently only +CmpNP/Pref, +CmpNP/Last and +CmpNP/None are in use in smj
 
+Tests:
+  CmpNP/Pref tests:
+    miehte+N: ~miehte 
+    miehte+N+Cmp#biegga+N+Sg+Nom: miehtebiegga
+    biegga+N+Cmp/SgNom+Cmp#miehte+N: ~bieggamiehte
+    badje+N: ~badje
+    badje+N+Cmp#goahte+N+Sg+Nom: badjegoahte
+    goahte+N+Cmp/SgNom+Cmp#badje+N: ~goahtebadje
+  
+  CmpNP/Last tests: 
+    juolgge+Der/k+A+Sg+Nom: juolgak # NAMAK, this should pass, but doesnt due to restrictions in lexc
+    niellja+Num+Sg+Gen+Cmp#juolgge+Der/k+A+Sg+Nom: nieljejuolgak
+    ahke+N+Der/sasj: ahkásasj # SASJ, , this should pass, but doesntdi due to restrictions in lexc
+    guokta+Num+Sg+Gen+Cmp#ahke+N+Der/sasj+A+Sg+Nom: guovteahkásasj
+    
+    # lexc restricts entries in NAMAK and SASJ from standing alone, but maybe they actually should have a CmpNP/Suff tag instead...
+    
+  CmpNP/None tests:
+    mahte+N+Sg+Nom: mahte
+    mahte+N+Cmp/SgGen+Cmp#goahte+N+Sg+Nom: ~mahtegoahte
+    goahte+Cmp/SgGen+Cmp#mahte+N+Sg+Gen: ~goademade
    
