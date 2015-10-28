@@ -10,9 +10,11 @@
 
 This is free and open source Lule Sami morphology.
 
-              !!!Lule Sámi morphological analyser
+!!!Lule Sámi morphological analyser
 
- !!!Definitions for Multichar_Symbols
+ Definitions for Multichar_Symbols
+
+!!Tags for POS
 
  * +N Noun
  * +A Adjective
@@ -39,13 +41,13 @@ This is free and open source Lule Sami morphology.
  * +Indef indefinite pronoun
  * +Coll collective numerals
 
- * +Err/Orth  Substandard, unormert form av et ord
- * +Err/Lex  No normative lemma, it's grammatically correct. Often words with a real sami synonym, "periåvddå is tagged with Err/Lex because it's better to use "gávdda".
+ * +Err/Orth  Substandard. An ungrammatical, non-normative form of normative lemma.
+ * +Err/Lex  No normative lemma, often ungrammatical compounds like "bajásbuollda" and "songdebutierit".
  * +Err/Der  Lemmas that break with regular derivation rules, both morphologically and semantically
  * +Use/Marg  Marginal
  * +Use/-Spell  Excluded in speller
  * +Use/-PLX  Excluded in PLX speller
- * +Use/SpellNoSugg  recognized but not suggested in speller
+ * +Use/SpellNoSugg  Recognized, but not suggested in speller
  * +Use/Circ  Circular path
  * +Use/CircN  Circular number path
  * +Use/Ped  Remove from pedagogical speller
@@ -53,11 +55,9 @@ This is free and open source Lule Sami morphology.
  * __ +Use/MT          __ Generate for MT only, for restricting analyses needed 
  * __ +Use/NGminip     __ Not for miniparadigm in VD dicts
  * +Use/NotDNorm  For words without formal normalization.
-Divvun suggest that
-this shouldn't  be normative.
+Divvun suggest that this shouldn't be normative.
  * +Use/DNorm  For words without formal normalization.
-Divvun suggest that
-this should be normative.
+Divvun suggest that this should be normative. Included in speller.
 
  * +Dial/-NOR Not in Norway
  * +Dial/-SW Not in Sweden
@@ -67,12 +67,20 @@ this should be normative.
  * +Dial/S Used in the southern areas
  * +Dial/SH Short forms
 
+!Compounding tags
+
+The tags are of the following form:
+* __+CmpNP/xxx__ - Normative (N), Position (P), ie. the tag describes what
+                   position the tagged word can be in in a compound
+* __+CmpN/xxx__  - Normative (N) __form__ ie. the tag describes what
+                   form the tagged word should use when making compounds
+* __+Cmp/xxx__   - Descriptive compounding tags, ie. tags that''describes''
+                   what form a word actually is using in a compound
 
 Normative/prescriptive compounding tags:
-(to govern compound behaviour for the speller, ie what a compound SHOULD BE)
+(to govern compound behaviour for the speller, ie. what a compound SHOULD BE)
 
 The first part of the component may be ..
-
  * +CmpN/Sg = Singular
  * +CmpN/SgN = Singular Nominative
  * +CmpN/SgG = Singular Genitive
@@ -92,10 +100,23 @@ The first part of the component may be ..
  * +CmpN/SgGenLeft  Singular genitive to the left
  * +CmpN/PlGenLeft  Plural genitive to the left
 
- * +CmpN/Def  works along with Left compound-tagging
- * +CmpN/DefSgGen  works along with Left compound-tagging
- * +CmpN/DefPlGen  works along with Left compound-tagging
+ * +CmpN/Def  Left override
+ * +CmpN/DefSgGen  Overrides left tag, requires SgGen form
+ * +CmpN/DefPlGen  Overrides left tag, requires PlGen form
 
+
+ * __+Cmp/Sg__  Singular
+ * __+Cmp/SgNom__  Singular Nominative
+ * __+Cmp/SgGen__  Singular Genitive
+ * __+Cmp/PlGen__  Plural Genitiv
+
+ * __+Cmp__  Dynamic compound - this tag should always be part of a 
+               dynamic compound.
+               It is important for Apertium, and useful in other cases as well.
+ * __+Cmp/SplitR__  This is a split compound with the other part to the right:
+               "Arbeids- og inkluderingsdepartementet" => Arbeids- = +Cmp/SplitR
+ * __+Cmp/SplitL__  This is a split compound with the other part to the left
+ * __+Cmp/Sh__  testing ShCmp
 
 
  * +Sg    Singular number
@@ -1023,7 +1044,7 @@ __nuortto # Even-syllable test examples:__
 
 !Plural stems
 
- LEXICON VUOSA  Like MUORRA, only in plural
+ LEXICON BÅVSÅ  Like MUORRA, only in plural. All, except ganta, juvdá and ávta, have regular, singular stem counterparts. 
 
 
 __båvså # Even-syllable test examples:__
@@ -1498,7 +1519,7 @@ __látjádagá # Even-syllable test examples:__
 * __látjádagájs:__ {{látjádagá+N+Pl+Ela}}
 
 
- LEXICON BERRAHATTJA  Like GÅNÅGIS but pl.
+ LEXICON BERRAHATTJA  Plural stems. Like IEDNITJA, these do not have corresponding singular stems. Most stems here have the same form as the pl nom form of diminutive derivations, but (while it may have originated as a diminuitive derivation) it is not the same derivation (today) and it does not have a singular form.  
 
 
 
@@ -1507,7 +1528,7 @@ __gahpanisá # Even-syllable test examples:__
 * __gahpanisájda:__ {{gahpanisá+N+Pl+Ill}}
 * __gahpanisájs:__ {{gahpanisá+N+Pl+Ela}}
 
- LEXICON SIJDDALAHÁ   plurals
+ LEXICON SIJDDALAHÁ   Plurals
 
 
 
@@ -1700,14 +1721,14 @@ __stiebil # Odd-syllable test examples:__
 
 !Plural odd-syll
 
- LEXICON DÁRBBAGA  like BENA BUT ONLY PLURAL. Presently only for "dárbbaga".
+ LEXICON DÁRBBAGA  Like BENA, but plural. Presently only for "dárbbaga", has singular stem counterpart.
 
 
 __dárbbaga # Odd-syllable test examples:__
 * __dárbbaga:__ {{dárbbaga+N+Pl+Nom}}
 * __dárbbagijt:__ {{dárbbaga+N+Pl+Acc}}
 
- LEXICON BÆLLJASA  GÁMAS but plural
+ LEXICON BÆLLJASA  Like GÁMAS, but plural. These have corresponding singular stems.
 
 
 __jiednabælljasa # Odd-syllable test examples:__
@@ -1716,14 +1737,14 @@ __jiednabælljasa # Odd-syllable test examples:__
 * __jiednabælljasijt:__ {{jiednabælljasa+N+Pl+Acc}}
 * __jiednabälljasijt:__ {{jiednabælljasa+N+Pl+Acc}}
 
- LEXICON VÁLLDÁRA  oddsyllable pluralforms only
+ LEXICON IEDNITJA  Odd syllable pluralforms only. These do not have a singular form.
 
 
 __jáhkoguojmitja # Odd-syllable test examples:__
 * __jáhkoguojmitja:__ {{jáhkoguojmitja+N+Pl+Nom}}
 * __jáhkoguojmitjijt:__ {{jáhkoguojmitja+N+Pl+Acc}}
 
- LEXICON SNJIERÁGA  oddsyllable pluralforms only
+ LEXICON SNJIERÁGA  Odd syllable pluralforms only. These have corresponding singular stems.
 
 
 __guovlloådåsa # Odd-syllable test examples:__
