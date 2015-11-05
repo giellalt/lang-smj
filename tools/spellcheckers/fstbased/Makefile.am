@@ -97,12 +97,12 @@ generator-fstspeller-gt-norm-comp_restricted.hfst: \
 		eliminate flag Der5\n\
 		eliminate flag Der_PassL\n\
 		eliminate flag Der_PassS\n\
-		eliminate flag CmpHyph\n\
 		save stack $@\n\
 		quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
 endif
 
+#		eliminate flag CmpHyph\n\
 #		eliminate flag CmpN\n\
 #		eliminate flag NeedNoun\n\
 #		eliminate flag NeedsVowRed\n\
