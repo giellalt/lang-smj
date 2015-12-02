@@ -26,12 +26,14 @@ APERTIUM_CG_INCLUDE_SRC=
 ##################################################################
 
 generator-mt-gt-norm.hfst: generator-mt-gt-norm.tmp.hfst \
-			$(top_builddir)/src/filters/remove-Dial_-NOR-strings.hfst \
-			$(top_builddir)/src/filters/remove-dialect-tags.hfst
+			$(top_builddir)/src/filters/remove-Dial_-SW-strings.hfst \
+			$(top_builddir)/src/filters/remove-dialect-tags.hfst      \
+			filters/remove-ae-strings.hfst
 	$(AM_V_RGX2FST)$(PRINTF) "\
 		@\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"   \
-	.o. @\"$(top_builddir)/src/filters/remove-Dial_-NOR-strings.hfst\" \
+	.o. @\"$(top_builddir)/src/filters/remove-Dial_-SW-strings.hfst\" \
    	.o. @\"$<\" \
+	.o. @\"filters/remove-ae-strings.hfst\" \
     	;" \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
 		> $@
@@ -39,11 +41,11 @@ generator-mt-gt-norm.hfst: generator-mt-gt-norm.tmp.hfst \
 # TODO: How do we get this one into the build? Want to end up with 
 # apertium-smj.smj_SW.RL.att.gz
 generator-mt-gt-norm_SW.hfst: generator-mt-gt-norm.tmp.hfst \
-			$(top_builddir)/src/filters/remove-Dial_-SW-strings.hfst \
+			$(top_builddir)/src/filters/remove-Dial_-NOR-strings.hfst \
 			$(top_builddir)/src/filters/remove-dialect-tags.hfst
 	$(AM_V_RGX2FST)$(PRINTF) "\
 		@\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"   \
-	.o. @\"$(top_builddir)/src/filters/remove-Dial_-SW-strings.hfst\" \
+	.o. @\"$(top_builddir)/src/filters/remove-Dial_-NOR-strings.hfst\" \
    	.o. @\"$<\" \
     	;" \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
