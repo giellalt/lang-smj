@@ -24,7 +24,8 @@ GIELLA_FILTER_LOCAL_REGEX_SRCS=\
 				   remove-illegal-derivation-strings.regex \
 				   remove-Dial_-NOR-strings.regex \
 				   remove-Dial_-SW-strings.regex \
-				   remove-DNorm-tags.regex
+				   remove-DNorm-tags.regex \
+				   make-optional-lang_hom-tags.regex
 
 # List any local filter xfscript files here:
 GIELLA_FILTER_LOCAL_XFSCRIPT_SRCS=

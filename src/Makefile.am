@@ -79,6 +79,7 @@ generator-gt-%.hfst: generator-gt-%.tmp.hfst \
 				filters/remove-DNorm-tags.hfst
 	$(AM_V_RGX2FST)$(PRINTF) "\
 				@\"filters/remove-DNorm-tags.hfst\" \
+			.o. @\"filters/make-optional-lang_hom-tags.hfst\" \
 			.o. @\"$<\" \
 			;" \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
@@ -97,6 +98,7 @@ generator-gt-%.xfst: generator-gt-%.tmp.xfst \
 				filters/remove-DNorm-tags.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/remove-DNorm-tags.xfst\" \
+			.o. @\"filters/make-optional-lang_hom-tags.xfst\" \
 			.o. @\"$<\" \
 			;\n\
 		 invert \n\
