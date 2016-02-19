@@ -65,15 +65,48 @@ endif # CAN_FOMA
 
 # The SMJ morphology has some extra tags used for marking questionable
 # normativity and our suggested norm:
-analyser-gt-%.hfst: analyser-gt-%.tmp.hfst \
-				filters/remove-DNorm-tags.hfst
-	$(AM_V_RGX2FST)$(PRINTF) "\
-				@\"filters/remove-DNorm-tags.hfst\" \
-			.o. @\"$<\" \
-			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
-		| $(HFST_INVERT) \
-		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
+define giella_analysers
+analyser-gt-%.$(1): analyser-gt-%.tmp.$(1) \
+					 filters/remove-derivation-position-tags.$(1) \
+					 filters/remove-DNorm-tags.$(1)
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
+			    @\"filters/remove-derivation-position-tags.$(1)\" \
+			.o. @\"filters/remove-DNorm-tags.$(1)\" \
+			.o. @\"$$<\"                                      \
+			;\n\
+		 $$(INVERT_HFST)\
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+endef
+$(foreach fst,hfst xfst foma,$(eval $(call giella_analysers,$(fst))))
+
+# ... and also in the Oahpa analyser:
+analyser-oahpa-gt-norm.%: analyser-gt-norm.tmp.% \
+					filters/remove-derivation-position-tags.% \
+					filters/remove-DNorm-tags.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+			    @\"filters/remove-derivation-position-tags.$*\" \
+			.o. @\"filters/remove-DNorm-tags.$*\" \
+			.o. @\"$<\"                                     \
+			;\n\
+		 $(INVERT_HFST)\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+# ... as well as in the disambiguation analyser:
+analyser-disamb-gt-desc.%: analyser-disamb-gt-desc.tmp.% \
+					filters/remove-derivation-position-tags.% \
+					filters/rename-POS_before_Der-tags.% \
+					filters/remove-DNorm-tags.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/remove-derivation-position-tags.$*\" \
+			.o. @\"filters/rename-POS_before_Der-tags.$*\" \
+			.o. @\"filters/remove-DNorm-tags.$*\" \
+			.o. @\"$<\"                                     \
+			;\n\
+		 $(INVERT_HFST)\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
 
 generator-gt-%.hfst: generator-gt-%.tmp.hfst \
 				filters/remove-DNorm-tags.hfst
@@ -85,15 +118,6 @@ generator-gt-%.hfst: generator-gt-%.tmp.hfst \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
 		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
 
-analyser-gt-%.xfst: analyser-gt-%.tmp.xfst \
-				filters/remove-DNorm-tags.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
-				@\"filters/remove-DNorm-tags.xfst\" \
-			.o. @\"$<\" \
-			;\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
-
 generator-gt-%.xfst: generator-gt-%.tmp.xfst \
 				filters/remove-DNorm-tags.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
@@ -104,6 +128,24 @@ generator-gt-%.xfst: generator-gt-%.tmp.xfst \
 		 invert \n\
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)
+
+# We need to add processing of language-specific tags in the generator:
+define giella_generators
+generator-gt-%.$(1): generator-gt-%.tmp.$(1) \
+					 filters/remove-derivation-position-tags.$(1) \
+					 filters/remove-DNorm-tags.$(1)    \
+					 filters/make-optional-lang_hom-tags.$(1)
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
+				@\"filters/make-optional-allegro-tags.$(1)\"  \
+			.o. @\"filters/remove-derivation-position-tags.$(1)\" \
+			.o. @\"filters/remove-DNorm-tags.$(1)\" \
+			.o. @\"$$<\"                                      \
+			;\n\
+		 $$(INVERT_XFST)$$(INVERT_FOMA)\
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+endef
+$(foreach fst,hfst xfst foma,$(eval $(call giella_generators,$(fst))))
 
 # Include the scripts file in the distro to ensure we can convert the smi
 # propernouns file:
