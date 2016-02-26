@@ -27,10 +27,12 @@ APERTIUM_CG_INCLUDE_SRC=
 
 # We want to rename the POS tags in front of derivations:
 analyser-mt-gt-desc.hfst: analyser-mt-gt-desc.tmp.hfst \
+			$(top_builddir)/src/filters/remove-area-tags.hfst      \
 			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst \
 			$(top_builddir)/src/filters/rename-POS_before_Der-tags.hfst
 	$(AM_V_RGX2FST)$(PRINTF) "\
-		@\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
+		@\"$(top_builddir)/src/filters/remove-area-tags.hfst\"   \
+	.o. @\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/rename-POS_before_Der-tags.hfst\" \
    	.o. @\"$<\" \
     	;" \
@@ -52,14 +54,16 @@ analyser-mt-gt-desc.%.hfst: analyser-mt-gt-desc.%.tmp.hfst \
 		-o $@
 
 # We build two different generators. one for Norway and one for Sweden:
+# TODO: How do we get this one into the build? Want to end up with 
+# apertium-smj.smj_NO.RL.att.gz automatically from the Area codes.
 generator-mt-gt-norm.hfst: generator-mt-gt-norm.tmp.hfst \
-			$(top_builddir)/src/filters/remove-Dial_-SW-strings.hfst \
-			$(top_builddir)/src/filters/remove-dialect-tags.hfst      \
+			$(top_builddir)/src/filters/remove-area-tags.hfst      \
+			$(top_builddir)/src/filters/remove-all_areas_but_NO-strings.hfst \
 			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst \
 			filters/remove-ae-strings.hfst
 	$(AM_V_RGX2FST)$(PRINTF) "\
-		@\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"   \
-	.o. @\"$(top_builddir)/src/filters/remove-Dial_-SW-strings.hfst\" \
+		@\"$(top_builddir)/src/filters/remove-area-tags.hfst\"   \
+	.o. @\"$(top_builddir)/src/filters/remove-all_areas_but_NO-strings.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
    	.o. @\"$<\" \
 	.o. @\"filters/remove-ae-strings.hfst\" \
@@ -68,14 +72,14 @@ generator-mt-gt-norm.hfst: generator-mt-gt-norm.tmp.hfst \
 		> $@
 
 # TODO: How do we get this one into the build? Want to end up with 
-# apertium-smj.smj_SW.RL.att.gz
+# apertium-smj.smj_SE.RL.att.gz
 generator-mt-gt-norm_SW.hfst: generator-mt-gt-norm.tmp.hfst \
-			$(top_builddir)/src/filters/remove-Dial_-NOR-strings.hfst \
-			$(top_builddir)/src/filters/remove-dialect-tags.hfst \
+			$(top_builddir)/src/filters/remove-area-tags.hfst \
+			$(top_builddir)/src/filters/remove-all_areas_but_SE-strings.hfst \
 			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst
 	$(AM_V_RGX2FST)$(PRINTF) "\
-		@\"$(top_builddir)/src/filters/remove-dialect-tags.hfst\"   \
-	.o. @\"$(top_builddir)/src/filters/remove-Dial_-NOR-strings.hfst\" \
+		@\"$(top_builddir)/src/filters/remove-area-tags.hfst\"   \
+	.o. @\"$(top_builddir)/src/filters/remove-all_areas_but_SE-strings.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
    	.o. @\"$<\" \
     	;" \
