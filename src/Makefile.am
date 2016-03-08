@@ -108,27 +108,6 @@ analyser-disamb-gt-desc.%: analyser-disamb-gt-desc.tmp.% \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
-generator-gt-%.hfst: generator-gt-%.tmp.hfst \
-				filters/remove-DNorm-tags.hfst
-	$(AM_V_RGX2FST)$(PRINTF) "\
-				@\"filters/remove-DNorm-tags.hfst\" \
-			.o. @\"filters/make-optional-lang_hom-tags.hfst\" \
-			.o. @\"$<\" \
-			;" \
-		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
-		| $(HFST_FST2FST) $(HFST_FLAGS) -f olw -o $@
-
-generator-gt-%.xfst: generator-gt-%.tmp.xfst \
-				filters/remove-DNorm-tags.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
-				@\"filters/remove-DNorm-tags.xfst\" \
-			.o. @\"filters/make-optional-lang_hom-tags.xfst\" \
-			.o. @\"$<\" \
-			;\n\
-		 invert \n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
-
 # We need to add processing of language-specific tags in the generator:
 define giella_generators
 generator-gt-%.$(1): generator-gt-%.tmp.$(1) \
@@ -136,7 +115,7 @@ generator-gt-%.$(1): generator-gt-%.tmp.$(1) \
 					 filters/remove-DNorm-tags.$(1)    \
 					 filters/make-optional-lang_hom-tags.$(1)
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
-				@\"filters/make-optional-allegro-tags.$(1)\"  \
+				@\"filters/make-optional-lang_hom-tags.$(1)\"  \
 			.o. @\"filters/remove-derivation-position-tags.$(1)\" \
 			.o. @\"filters/remove-DNorm-tags.$(1)\" \
 			.o. @\"$$<\"                                      \
