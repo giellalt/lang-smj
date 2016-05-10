@@ -116,6 +116,7 @@ LEXICON ACCRA-malfem !!= @CODE@ Vowel-final names where case endings are added d
 LEXICON ACCRA-objplc !!= @CODE@ Vowel-final names where case endings are added directly, no cg. Names that can be both objects and place names
         +N+Prop+Sem/Obj:%> ACCRADECL     ;
         +N+Prop+Sem/Plc:%> ACCRADECL-PLC ;
+        +N+Prop+Sem/Sur:%> ACCRADECL-PLC ;
  +N+Prop+Sem/Plc+Sg+Gen:%> ACCRA-plc-der ;
 
 LEXICON ACCRA-plc-der
@@ -133,6 +134,7 @@ LEXICON ACCRA-plc-der
 LEXICON ACCRA-femplc !!= @CODE@ Vowel-final names where case endings are added directly, no cg. Names that can be both female and place names
         +N+Prop+Sem/Fem:%> ACCRADECL     ;
         +N+Prop+Sem/Plc:%> ACCRADECL-PLC ;
+        +N+Prop+Sem/Sur:%> ACCRADECL-PLC ;
  +N+Prop+Sem/Plc+Sg+Gen:%> ACCRA-plc-der ;
 
 !!€gt-norm: Salla # Even-syllable test
@@ -169,6 +171,7 @@ LEXICON ACCRA-A-plc
 
 LEXICON ACCRA-plc !!= @CODE@ Vowel-final names where caseendings are added directly, no cg. Place names
                    +N+Prop+Sem/Plc:%>                ACCRADECL-PLC ;
+                   +N+Prop+Sem/Sur:%>                ACCRADECL-PLC ;
  +N+Prop+Sem/Plc+Sg+Gen@U.Cap.Opt@:%>0000@U.Cap.Opt@ VUONAK        ;
 
 !!€gt-norm: Burma # Even-syllable test
@@ -211,6 +214,7 @@ LEXICON ACCRA-LOAN-obj !!= @CODE@ Only nominatives. Vowel-final names where case
 
 LEXICON ACCRA-LOAN-plc !!= @CODE@ Only nominatives. Vowel-final names where case endings are added directly, no cg.Place names
  +N+Prop+Sem/Plc:%> ACCRADECL-LOAN-PLC ;
+ +N+Prop+Sem/Sur:%> ACCRADECL-LOAN-PLC ;
 ! +N+Prop+Sem/Plc+Sg+Gen@U.Cap.Opt@+Err/Orth:%>@U.Cap.Opt@ VUONAK ;
 
 !!€gt-norm: Kautokeino # Even-syllable test
@@ -279,6 +283,7 @@ LEXICON ACCRADECL-LOAN-PLC
 
 
 LEXICON ACCRA-DC
+         +Attr:      K     ;
          +Sg+Nom:      K     ;
          +Cmp/SgNom:      RHyph ;
             +Ess:n     K     ;
@@ -322,6 +327,7 @@ LEXICON ACCRA-DC-ORG
 
 
 LEXICON ACCRA-DC-LOAN
+         +Attr:     K     ;
          +Sg+Nom:     K     ;
          +Cmp/SgNom:     RHyph ;
     +Ess+Err/Orth:n    K     ;
@@ -1621,7 +1627,7 @@ LEXICON LONDON-org !!= @CODE@  Only singular Organizations
 
 LEXICON LONDON-orgplc
  +N+Prop+Sem/Org:%> LONDONDECL-ORG ;
- +N+Prop+Sem/Plc:%> LONDONDECL-PLC ;
+ +N+Prop+Sem/Plc:%> LONDONDECL-PLC-SUR ;
 
 LEXICON LONDON-mal !!= @CODE@ Male names
                             +N+Prop+Sem/Mal:%>                LONDONDECL ;
@@ -1661,7 +1667,7 @@ LEXICON LONDON-malfem !!= @CODE@ Names that can be both male and female names.No
 !!€ Robinis:              Robin+N+Prop+Sem/Fem+Sg+Ela
 
 LEXICON LONDON-malplc !!= @CODE@ Names that can be both male- and placenames.Not used in smj-propernouns
- +N+Prop+Sem/Plc:%> LONDONDECL-PLC ;
+ +N+Prop+Sem/Plc:%> LONDONDECL-PLC-SUR ;
  +N+Prop+Sem/Mal:%> LONDONDECL     ;
 
 !!€gt-norm: Jergol # Odd-syllable test
@@ -1670,7 +1676,8 @@ LEXICON LONDON-malplc !!= @CODE@ Names that can be both male- and placenames.Not
 !!€ Jergolis:              Jergol+N+Prop+Sem/Mal+Sg+Ela
 
 LEXICON LONDON-plc !!= @CODE@ Only singular. Placenames
- +N+Prop+Sem/Plc:%> LONDONDECL-PLC ;
+ +N+Prop+Sem/Plc:%> LONDONDECL-PLC-SUR ;
+ +N+Prop+Sem/Sur:%> LONDONDECL-PLC-SUR ;
 
 !!€gt-norm: Njierek # Odd-syllable test
 !!€ Njierek:                Njierek+N+Prop+Sem/Plc+Sg+Nom
@@ -1730,7 +1737,7 @@ LEXICON LONDONDECL
 LEXICON LONDONDECL-ORG
  @U.Cap.Obl@ LONDONUCASE-ORG ;
 
-LEXICON LONDONDECL-PLC
+LEXICON LONDONDECL-PLC-SUR
  @U.Cap.Obl@ LONDONUCASE ;
 ! @U.Cap.Opt@ LASJ        ; ! odd syll dont take -lasj der
 
@@ -1740,6 +1747,7 @@ LEXICON LONDONDECL-LOAN
 
 
 LEXICON LONDONUCASE ! Final foot structure (X.) and (X..) => Loc:is
+         +Attr:     K     ;
          +Sg+Nom:     K     ;
          +Cmp/SgNom:     RHyph ;
          +Sg+Gen:a    K     ;
@@ -1812,8 +1820,9 @@ LEXICON LONDONUCASE-LOAN ! Final foot structure (X.) and (X..) => Loc:is
 !! JOKULL-plc are placenames. Lexicon added to make the code compile (?)
 
 LEXICON JOKULL-plc
- +N+Prop+Sem/Plc: LONDONDECL-PLC ; !!= @CODE@ Placenames. NB added to make the code compile, needs revision. Gets an odd syllable case marking. Non-assimilated stems.
-
+ +N+Prop+Sem/Plc: LONDONDECL-PLC-SUR ; !!= @CODE@ Placenames. NB added to make the code compile, needs revision. Gets an odd syllable case marking. Non-assimilated stems.
+ +N+Prop+Sem/Sur: LONDONDECL-PLC-SUR ;
+ 
 !!€gt-norm: Drangajökull # Even-syllable test
 !!€ Drangajökull:                Drangajökull+N+Prop+Sem/Plc+Sg+Nom
 !!€ Drangajökullij:              Drangajökull+N+Prop+Sem/Plc+Sg+Ill
