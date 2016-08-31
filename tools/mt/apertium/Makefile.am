@@ -63,12 +63,14 @@ generator-mt-gt-norm.hfst: generator-mt-gt-norm.tmp.hfst \
 			$(top_builddir)/src/filters/remove-area-tags.hfst      \
 			$(top_builddir)/src/filters/remove-all_areas_but_NO-strings.hfst \
 			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst \
-			filters/remove-ae-strings.hfst
+			filters/remove-ae-strings.hfst \
+			filters/make-optional-Attr_before_dervuota-tags.hfst
 	$(HFST_FST2FST) $(HFSTFLAGS) $(HFST_FORMAT) \
 		 < filters/remove-ae-strings.hfst \
 		 > filters/remove-ae-strings.hfst.tmp
 	$(AM_V_RGX2FST)$(PRINTF) "\
-		@\"$(top_builddir)/src/filters/remove-area-tags.hfst\"   \
+		@\"filters/make-optional-Attr_before_dervuota-tags.hfst\"             \
+	.o. @\"$(top_builddir)/src/filters/remove-area-tags.hfst\"                \
 	.o. @\"$(top_builddir)/src/filters/remove-all_areas_but_NO-strings.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
    	.o. @\"$<\" \
@@ -87,8 +89,8 @@ generator-mt-gt-norm_SW.hfst: generator-mt-gt-norm.tmp.hfst \
 			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst \
 			filters/make-optional-Attr_before_dervuota-tags.hfst
 	$(AM_V_RGX2FST)$(PRINTF) "\
-		@\"$(top_builddir)/src/filters/remove-area-tags.hfst\"                \
-	.o. @\"filters/make-optional-Attr_before_dervuota-tags.hfst\"             \
+		@\"filters/make-optional-Attr_before_dervuota-tags.hfst\"             \
+	.o. @\"$(top_builddir)/src/filters/remove-area-tags.hfst\"                \
 	.o. @\"$(top_builddir)/src/filters/remove-all_areas_but_SE-strings.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
    	.o. @\"$<\" \
