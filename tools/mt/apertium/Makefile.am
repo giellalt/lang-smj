@@ -65,21 +65,17 @@ generator-mt-gt-norm.hfst: generator-mt-gt-norm.tmp.hfst \
 			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst \
 			filters/remove-ae-strings.hfst \
 			filters/make-optional-Attr_before_dervuota-tags.hfst
-	$(HFST_FST2FST) $(HFSTFLAGS) $(HFST_FORMAT) \
-		 < filters/remove-ae-strings.hfst \
-		 > filters/remove-ae-strings.hfst.tmp
 	$(AM_V_RGX2FST)$(PRINTF) "\
 		@\"filters/make-optional-Attr_before_dervuota-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-area-tags.hfst\"                \
 	.o. @\"$(top_builddir)/src/filters/remove-all_areas_but_NO-strings.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
    	.o. @\"$<\" \
-	.o. @\"filters/remove-ae-strings.hfst.tmp\" \
+	.o. @\"filters/remove-ae-strings.hfst\" \
     	;" \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) $(HFST_FORMAT) \
 			-S --xerox-composition=ON \
 		> $@
-	$(AM_V_at)rm -f filters/remove-ae-strings.hfst.tmp
 
 # TODO: How do we get this one into the build? Want to end up with 
 # apertium-smj.smj_SE.RL.att.gz
