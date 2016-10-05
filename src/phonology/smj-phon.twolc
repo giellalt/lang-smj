@@ -150,6 +150,13 @@ Sets !!≈ !!!The @CODE@ section
            a9 e9 o9 æ9 ä9
 !                 Æ9 Ä9
 			;
+
+ CapVow  = A Á E I O U Y Æ Ä Ø Ä Å
+           É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý ;
+
+ CapCns  = B C D F G H J K L M N Ñ Ń Ŋ P Q
+           R S T V W X Z Ç Č Đ Ð Š Ŧ þ ;
+
  æä      = æ ä ; ! XXX this is used nowhere.
  Cns     = b b9 c d d9 f g g8 g9 h h8 h9 j j9 k l l9 m m8 m9 n n8 n9 ŋ ñ ń p q r r9 s t v w x z z9 ' ; ! All consonants
  Cns7    =      c      f         h       j      l    m       n       ŋ ñ ń p q r    s t v w x z      ; ! Surface cons excl 1st members of xx-type G3
@@ -1442,9 +1449,12 @@ d:t <=> Vow: _ d: Vow: ( StemCns: ) (%>:) (»:) WeG: ;
 
 
 !"Facultative alternation snj-sjnj"
-!! __@RULENAME@__
+! __@RULENAME@__
 !0:j => [ .#. | # ] s _ n j Vow ;
 
+"Acronym case vowel deletion"
+!! __@RULENAME@__
+ a:0 <=> :CapVow :CapCns+ :CapVow %: _ [ Cns | .#. ] ;
 
 !! !! Debugging of twol-rules
 
