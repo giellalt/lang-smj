@@ -95,6 +95,7 @@ analyser-gt-norm.%: analyser-gt-norm.tmp.% \
 			.o. @\"filters/remove-illegal-derivation-strings-flagbased.$*\" \
 			.o. @\"$<\"                                      \
 			;\n\
+		 twosided flag-diacritics\n\
 		 $(INVERT_HFST)\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
