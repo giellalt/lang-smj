@@ -15,6 +15,10 @@ GT_LOCAL_FSTSPELLER_FILTER_SRCS=\
     remove-Use_Minus_PLX-tags.regex         \
     split-CmpN-tags.regex
 
+# Source files copied from src/filters/ OR from
+# $(GIELLA_SHARED)/all_langs/tools/spellcheckers/fstbased/filters:
+GT_LOCAL_COPY_FILTER_SRCS=
+
 # Only build these things if speller fst's are enabled:
 if WANT_SPELLERS
 
