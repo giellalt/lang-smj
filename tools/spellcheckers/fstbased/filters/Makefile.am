@@ -8,16 +8,16 @@
 
 # List any local additions here:
 GT_LOCAL_FSTSPELLER_FILTER_SRCS=\
-    remove-illegal-derivation-strings.regex \
-    block-illegal_compound-strings.regex    \
-    insert-default-compounding-tags.regex   \
-    insert-default_left_compounding-tags.regex \
-    remove-Use_Minus_PLX-tags.regex         \
-    split-CmpN-tags.regex
+    remove-Use_Minus_PLX-tags.regex
 
 # Source files copied from src/filters/ OR from
 # $(GIELLA_SHARED)/all_langs/tools/spellcheckers/fstbased/filters:
-GT_LOCAL_COPY_FILTER_SRCS=
+GT_LOCAL_COPY_FILTER_SRCS=\
+    remove-illegal-derivation-strings-flagbased.regex \
+    block-illegal_compound-strings.regex    \
+    insert-default-compounding-tags.regex   \
+    insert-default_left_compounding-tags.regex \
+    split-CmpN-tags.regex
 
 # Only build these things if speller fst's are enabled:
 if WANT_SPELLERS
