@@ -65,20 +65,50 @@ endif # CAN_FOMA
 
 # The SMJ morphology has some extra tags used for marking questionable
 # normativity and our suggested norm:
-define giella_analysers
-analyser-gt-%.$(1): analyser-gt-%.tmp.$(1) \
-					 filters/remove-derivation-position-tags.$(1) \
-					 filters/remove-DNorm-tags.$(1)
-	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
-			    @\"filters/remove-derivation-position-tags.$(1)\" \
-			.o. @\"filters/remove-DNorm-tags.$(1)\" \
-			.o. @\"$$<\"                                      \
+analyser-gt-desc.%: analyser-gt-desc.tmp.% \
+					 filters/remove-derivation-position-tags.% \
+					 filters/remove-DNorm-tags.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+			    @\"filters/remove-derivation-position-tags.$*\" \
+			.o. @\"filters/remove-DNorm-tags.$*\" \
+			.o. @\"$<\"                                      \
 			;\n\
-		 $$(INVERT_HFST)\
-		 save stack $$@\n\
-		 quit\n" | $$(XFST_TOOL)
-endef
-$(foreach fst,hfst xfst foma,$(eval $(call giella_analysers,$(fst))))
+		 $(INVERT_HFST)\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+analyser-gt-norm.%: analyser-gt-norm.tmp.% \
+					 filters/remove-derivation-position-tags.% \
+					 filters/remove-DNorm-tags.% \
+					 filters/remove-illegal-derivation-strings-flagbased.% \
+					 filters/insert-default-compounding-tags.% \
+					 filters/insert-default_left_compounding-tags.% \
+					 filters/block-illegal_compound-strings.%  \
+					 filters/split-CmpN-tags.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+			    @\"filters/remove-derivation-position-tags.$*\" \
+			.o. @\"filters/remove-DNorm-tags.$*\" \
+			.o. @\"filters/block-illegal_compound-strings.$*\"       \
+			.o. @\"filters/split-CmpN-tags.$*\"                      \
+			.o. @\"filters/insert-default_left_compounding-tags.$*\" \
+			.o. @\"filters/insert-default-compounding-tags.$*\"      \
+			.o. @\"filters/remove-illegal-derivation-strings-flagbased.$*\" \
+			.o. @\"$<\"                                      \
+			;\n\
+		 $(INVERT_HFST)\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+analyser-gt-norm.xfst: analyser-gt-norm.tmp.xfst \
+					 filters/remove-derivation-position-tags.xfst \
+					 filters/remove-DNorm-tags.xfst
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+			    @\"filters/remove-derivation-position-tags.xfst\" \
+			.o. @\"filters/remove-DNorm-tags.xfst\" \
+			.o. @\"$<\"                                      \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
 
 # ... and also in the Oahpa analyser:
 analyser-oahpa-gt-norm.%: analyser-gt-norm.tmp.% \
