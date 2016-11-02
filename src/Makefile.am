@@ -157,7 +157,7 @@ analyser-disamb-gt-desc.%: analyser-disamb-gt-desc.tmp.%      \
 define giella_generators
 generator-gt-%.$(1): generator-gt-%.tmp.$(1)                      \
 					 filters/remove-derivation-position-tags.$(1) \
-					 filters/remove-norm-comp-tags.%              \
+					 filters/remove-norm-comp-tags.$(1)           \
 					 filters/remove-DNorm-tags.$(1)               \
 					 filters/make-optional-lang_hom-tags.$(1)
 	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
