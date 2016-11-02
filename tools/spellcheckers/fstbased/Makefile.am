@@ -20,18 +20,22 @@ generator-fstspeller-gt-norm-comp_restricted.tmp1.hfst: \
 		filters/insert-default-compounding-tags.hfst \
 		filters/insert-default_left_compounding-tags.hfst \
 		filters/block-illegal_compound-strings.hfst  \
-		filters/remove-illegal-derivation-strings.hfst \
+		filters/remove-illegal-derivation-strings-flagbased.hfst \
 		filters/remove-Use_Minus_PLX-tags.hfst       \
-		filters/split-CmpN-tags.hfst
+		filters/split-CmpN-tags.hfst \
+		filters/convert_to_flags-CmpNP-tags.hfst \
+		filters/split-CmpNP-tags.hfst
 	$(AM_V_HXFST)$(PRINTF) "\
-		read regex                                                 \
-			@\"filters/block-illegal_compound-strings.hfst\"       \
-		.o. @\"filters/split-CmpN-tags.hfst\"                      \
-		.o. @\"filters/insert-default_left_compounding-tags.hfst\" \
-		.o. @\"filters/insert-default-compounding-tags.hfst\"      \
-		.o. @\"filters/remove-illegal-derivation-strings.hfst\"    \
-		.o. @\"filters/remove-Use_Minus_PLX-tags.hfst\"            \
-		.o. @\"$<\"                                                \
+		read regex                                                        \
+			@\"filters/block-illegal_compound-strings.hfst\"              \
+		.o. @\"filters/split-CmpN-tags.hfst\"                             \
+		.o. @\"filters/insert-default_left_compounding-tags.hfst\"        \
+		.o. @\"filters/insert-default-compounding-tags.hfst\"             \
+		.o. @\"filters/remove-illegal-derivation-strings-flagbased.hfst\" \
+		.o. @\"filters/remove-Use_Minus_PLX-tags.hfst\"                   \
+		.o. @\"filters/convert_to_flags-CmpNP-tags.hfst\"                 \
+		.o. @\"filters/split-CmpNP-tags.hfst\"                            \
+		.o. @\"$<\"                                                       \
 		; \n\
 		 twosided flag-diacritics\n\
 		 save stack $@\n\
