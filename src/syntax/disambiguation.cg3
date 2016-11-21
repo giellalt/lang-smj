@@ -307,7 +307,9 @@ LIST DERIVED =
   Der/uvsak Der/uvsuk Der/varák Der/vigák Der/vuobdak Der/vuoduk
   Der/vuohta Der/vájmuk Der/ájvuk Der/såjak Der/åjvak Der/åsak ;
   
-
+LIST Err/Orth = Err/Orth Err/Orth-a/á Err/Orth-nom/gen Err/Orth-nom/acc Err/DerSub Err/CmpSub Err/UnspaceCmp Err/HyphSub Err/SpaceCmp Err/Spellrelax err_orth_mt ;
+LIST Err/Orth-spes = Err/Orth-a/á Err/Orth-nom/gen Err/Orth-nom/acc Err/DerSub Err/CmpSub Err/UnspaceCmp Err/HyphSub Err/SpaceCmp Err/Spellrelax err_orth_a_á_mt err_orth_nom_acc_mt err_orth_nom_gen_mt  ;
+# The last tags in Err/Orth sets are for Apertium
 
 # Noun tags
 
@@ -3904,6 +3906,9 @@ SELECT ("Apollos") IF (0 ("Apollosa")) ;
 SELECT ("almme") (0 ("Alme")) ;
 
             AFTER-SECTIONS             #
+
+REMOVE:errsub $$WORDLEMMA + Err/Orth (0 $$WORDLEMMA - Err/Orth ) ;   
+REMOVE:errsub2 $$WORDLEMMA + Err/Orth-spes (0 $$WORDLEMMA - Err/Orth-spes ) ; 
 
 
 #Disse kommenteres inn når analysen skal brukes i functions.cg3   
