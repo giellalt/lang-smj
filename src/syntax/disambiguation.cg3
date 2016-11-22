@@ -3907,6 +3907,11 @@ SELECT ("almme") (0 ("Alme")) ;
 
             AFTER-SECTIONS             #
 
+#!! !!!Removing Err/Orth
+# Denne regelen fjerner Err/Orth når det er samme lemma, sjøl om morfologien er forskjellig.
+
+LIST WORDLEMMA = (".*"r) ;
+
 REMOVE:errsub $$WORDLEMMA + Err/Orth (0 $$WORDLEMMA - Err/Orth ) ;   
 REMOVE:errsub2 $$WORDLEMMA + Err/Orth-spes (0 $$WORDLEMMA - Err/Orth-spes ) ; 
 
