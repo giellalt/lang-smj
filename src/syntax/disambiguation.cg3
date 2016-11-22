@@ -167,6 +167,7 @@ LIST PrsPrc = PrsPrc ;
 LIST PrfPrc = PrfPrc ;
 LIST VGen = VGen ; 
 LIST VAbess = VAbess ;
+LIST Arab = Arab ;
 
 LIST CLB = CLB ; 
 LIST PUNCT = PUNCT ;
@@ -1342,6 +1343,13 @@ REMOVE VERD-DER IF (0 VERB-BASE);
 #REMOVE ACR IF (0 NOT-ACR) ; 
 #REMOVE ABBR IF (0 NOT-ABBR) ; 
 
+
+SELECT:ArabNom (Arab Nom) (-1 BOS)(NEGATE 1 Po) ;
+SELECT:Arab1 (Arab Nom)(0 ("1")) ;
+	#$ a) Álgogursa 1 sámegielas
+SELECT:ArabNomPlc (Arab Nom) (-1 Sem/Plc)(NEGATE 1 Po) ;
+
+SELECT:Arab Arab  ; # In Apertium we get analysis both with and without the tag.
 
 SELECT VFIN IF (*-1 S-BOUNDARY OR BOS OR (":") BARRIER VERB) (*1 S-BOUNDARY OR BOS OR (":") BARRIER VFIN) ;   
 
