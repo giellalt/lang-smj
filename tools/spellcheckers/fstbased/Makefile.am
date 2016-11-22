@@ -38,47 +38,23 @@ generator-fstspeller-gt-norm.hfst: \
 		.o. @\"$<\"                                                       \
 		; \n\
 		 twosided flag-diacritics\n\
+		eliminate flag CmpHyph\n\
+		eliminate flag CmpN\n\
+		eliminate flag Der1\n\
+		eliminate flag Der2\n\
+		eliminate flag Der3\n\
+		eliminate flag Der4\n\
+		eliminate flag Der5\n\
+		eliminate flag Der_PassL\n\
+		eliminate flag Der_PassS\n\
 		 save stack $@\n\
 		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
 
-## Always use Foma to eliminate flags if available, independently of
-## configuration:
-#if HAS_FOMA
-#
-## Do not change or add the flags eliminated without thoroughly testing the
-## effect on fst file size (including the acceptor file) and speller speed:
-#generator-fstspeller-gt-norm-comp_restricted.hfst: \
-#		generator-fstspeller-gt-norm-comp_restricted.tmp1.hfst
-#	$(AM_V_FST2TXT)$(HFST_FST2TXT) --do-not-print-weights --format=att -i $< \
-#		-o $<.att
-#	$(AM_V_FOMA)$(PRINTF) "\
-#		read att $<.att \n\
-#		eliminate flag Der1\n\
-#		eliminate flag Der2\n\
-#		eliminate flag Der3\n\
-#		eliminate flag Der4\n\
-#		eliminate flag Der5\n\
-#		eliminate flag Der_PassL\n\
-#		eliminate flag Der_PassS\n\
-#		eliminate flag CmpHyph\n\
-#		eliminate flag CmpN\n\
-#		eliminate flag Want_Left\n\
-#		write att $@.att\n\
-#		quit\n" | $(FOMA) $(VERBOSITY)
-#	$(AM_V_TXT2FST)$(HFST_TXT2FST) -i $@.att -o $@
-#
-##		eliminate flag CmpN_Def\n\
-##		eliminate flag NeedNoun\n\
-## Else fall back to Hfst, but skip buggy eliminations:
-#else
-#
 ## Do not change or add the flags eliminated without thoroughly testing the
 ## effect on fst file size (including the acceptor file), speller speed and
 ## linguistic correctness (run the yaml tests):
-#generator-fstspeller-gt-norm-comp_restricted.hfst: \
-#		generator-fstspeller-gt-norm-comp_restricted.tmp1.hfst
-#	$(AM_V_HXFST)$(PRINTF) "\
-#		load $< \n\
+#		eliminate flag CmpHyph\n\
+#		eliminate flag CmpN\n\
 #		eliminate flag Der1\n\
 #		eliminate flag Der2\n\
 #		eliminate flag Der3\n\
@@ -86,14 +62,10 @@ generator-fstspeller-gt-norm.hfst: \
 #		eliminate flag Der5\n\
 #		eliminate flag Der_PassL\n\
 #		eliminate flag Der_PassS\n\
-#		save stack $@\n\
-#		quit\n" | $(HFST_XFST) -p $(VERBOSITY)
-#
-#endif
-
-#		eliminate flag CmpHyph\n\
-#		eliminate flag CmpN\n\
 #		eliminate flag NeedNoun\n\
+#		eliminate flag NeedsVowRed\n\
+#		eliminate flag Want_Left\n\
+
 #### END: Local build rules: *.hfst: *.tmp.hfst ####
 
 include $(top_srcdir)/am-shared/tools-spellcheckers-fstbased-dir-include.am
