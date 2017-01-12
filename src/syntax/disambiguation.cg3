@@ -329,6 +329,7 @@ LIST Sem/Time = Sem/Time ;	 #!! Sem/Time
 LIST Sem/Hum = Sem/Hum ;	 #!! Sem/Hum
 LIST Sem/Date = Sem/Date ;	 #!! Sem/Date
 LIST Sem/Year = Sem/Year ;	 #!! Sem/Year
+LIST Sem/Phonenr = Sem/Phonenr ; #!! Sem/Phonenr
 LIST Sem/Group = Sem/Group ; #!! Sem/Group
 LIST Sem/Route = Sem/Route ; #!! Sem/Route
 LIST Sem/Build = Sem/Build ; #!! Sem/Build
@@ -1202,11 +1203,14 @@ LIST ALLSYNTAG = (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@-FSUBJ)
 
 BEFORE-SECTIONS
 
-#!! !!Rule for adding Sem/Date as a tag to readings which looks like dates
-SUBSTITUTE:Date1 (Num Sg) (Num Sg Sem/Date) TARGET ("<[0-3][0-9][.][0-2][0-9][.][1-2][0-9][0-9][0-9]>"r Num) ;
-SUBSTITUTE:Date1 (Num Sg) (Num Sg Sem/Date) TARGET ("<[0-9][.][0-9][.][1-2][0-9][0-9][0-9]>"r Num) ;
-SUBSTITUTE:Date1 (Num Sg) (Num Sg Sem/Date) TARGET ("<[0-3][0-9][.][0-2][0-9][.][0-9][0-9]>"r Num) ;
-SUBSTITUTE:Date1 (Num Sg) (Num Sg Sem/Year) TARGET ("<[1-2][0-9][0-9][0-9]>"r Num) ;
+SELECT:SemYear Sem/Date (0 Num) ;
+
+SELECT:SemYear Sem/Year (0 Num)(NOT -1 CURRENCY)(NOT 1 CURRENCY OR MEASURE) ;
+SELECT:SemYear Sem/Year (0 Num)(NOT -1 CURRENCY)(1 Po) ;
+REMOVE:SemYear Sem/Year (0 Num) ((-1 CURRENCY) OR (1 CURRENCY OR MEASURE)) ;
+REMOVE:SemPhonenr Sem/Phonenr (0 Num) ; #vi fjerner alle inntil videre
+
+SELECT:Sem/Date  Sem/Date + Nom ; #foreløpig, for MT 
 
 
 # Rough outline of the plan.
