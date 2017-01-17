@@ -111,7 +111,7 @@ analyser-gt-norm.xfst: analyser-gt-norm.tmp.xfst \
 					 filters/remove-derivation-position-tags.xfst   \
 					 filters/remove-illegal-derivation-strings.xfst \
 					 filters/remove-DNorm-tags.xfst
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+	$(AM_V_XFST)$(PRINTF) "read regex \
 			    @\"filters/remove-derivation-position-tags.xfst\"   \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"             \
 			.o. @\"filters/remove-illegal-derivation-strings.xfst\" \
@@ -154,24 +154,71 @@ analyser-disamb-gt-desc.%: analyser-disamb-gt-desc.tmp.%      \
 		 quit\n" | $(XFST_TOOL)
 
 # We need to add processing of language-specific tags in the generator:
-define giella_generators
-generator-gt-%.$(1): generator-gt-%.tmp.$(1)                      \
-					 filters/remove-derivation-position-tags.$(1) \
-					 filters/remove-norm-comp-tags.$(1)           \
-					 filters/remove-DNorm-tags.$(1)               \
-					 filters/make-optional-lang_hom-tags.$(1)
-	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
-				@\"filters/make-optional-lang_hom-tags.$(1)\"     \
-			.o. @\"filters/remove-derivation-position-tags.$(1)\" \
-			.o. @\"filters/remove-norm-comp-tags.$(1)\"           \
-			.o. @\"filters/remove-DNorm-tags.$(1)\"               \
-			.o. @\"$$<\"                                          \
+# Xerox processing due to bug in the operation twosided flag-diacritics:
+generator-gt-norm.xfst: generator-gt-norm.tmp.xfst                \
+					 filters/remove-derivation-position-tags.xfst \
+					 filters/remove-norm-comp-tags.xfst           \
+					 filters/remove-DNorm-tags.xfst               \
+					 filters/make-optional-lang_hom-tags.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+				@\"filters/make-optional-lang_hom-tags.xfst\"     \
+			.o. @\"filters/remove-derivation-position-tags.xfst\" \
+			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
+			.o. @\"filters/remove-DNorm-tags.xfst\"               \
+			.o. @\"$<\"                                           \
 			;\n\
-		 $$(INVERT_XFST)$$(INVERT_FOMA)\
-		 save stack $$@\n\
-		 quit\n" | $$(XFST_TOOL)
-endef
-$(foreach fst,hfst xfst foma,$(eval $(call giella_generators,$(fst))))
+		 invert net\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
+# gt-norm for Foma and Hfst:
+generator-gt-norm.%: generator-gt-norm.tmp.%                   \
+					 filters/remove-derivation-position-tags.% \
+					 filters/remove-norm-comp-tags.%           \
+					 filters/remove-DNorm-tags.%               \
+					 filters/make-optional-lang_hom-tags.%     \
+					 filters/remove-illegal-derivation-strings-flagbased.% \
+					 filters/insert-default-compounding-tags.%             \
+					 filters/insert-default_left_compounding-tags.%        \
+					 filters/block-illegal_compound-strings.%              \
+					 filters/split-CmpN-tags.%                             \
+					 filters/convert_to_flags-CmpNP-tags.%                 \
+					 filters/split-CmpNP-tags.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/make-optional-lang_hom-tags.$*\"     \
+			.o. @\"filters/remove-derivation-position-tags.$*\" \
+			.o. @\"filters/remove-norm-comp-tags.$*\"           \
+			.o. @\"filters/remove-DNorm-tags.$*\"               \
+			.o. @\"filters/block-illegal_compound-strings.$*\"              \
+			.o. @\"filters/split-CmpN-tags.$*\"                             \
+			.o. @\"filters/insert-default_left_compounding-tags.$*\"        \
+			.o. @\"filters/insert-default-compounding-tags.$*\"             \
+			.o. @\"filters/remove-illegal-derivation-strings-flagbased.$*\" \
+			.o. @\"filters/convert_to_flags-CmpNP-tags.$*\"                 \
+			.o. @\"filters/split-CmpNP-tags.$*\"                            \
+			.o. @\"$<\"                                          \
+			;\n\
+		 twosided flag-diacritics\n\
+		 $(INVERT_XFST)$(INVERT_FOMA)\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+# Descriptive generators:
+generator-gt-desc.%: generator-gt-desc.tmp.%                   \
+					 filters/remove-derivation-position-tags.% \
+					 filters/remove-norm-comp-tags.%           \
+					 filters/remove-DNorm-tags.%               \
+					 filters/make-optional-lang_hom-tags.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/make-optional-lang_hom-tags.$*\"     \
+			.o. @\"filters/remove-derivation-position-tags.$*\" \
+			.o. @\"filters/remove-norm-comp-tags.$*\"           \
+			.o. @\"filters/remove-DNorm-tags.$*\"               \
+			.o. @\"$<\"                                          \
+			;\n\
+		 $(INVERT_XFST)$(INVERT_FOMA)\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
 
 # Include the scripts file in the distro to ensure we can convert the smi
 # propernouns file:
