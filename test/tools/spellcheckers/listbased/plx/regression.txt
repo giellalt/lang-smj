@@ -1,0 +1,548 @@
+#Distributed under the terms of the GNU General Public License version 2 
+# or any later version.
+#
+# speller-regressions.txt
+# This file contains example pairs of known speller bugs. It follows the
+# same pattern as the src/typos.txt files, ie error and correction separated
+# by a <tab> character:
+# error<tab>correction
+# Furthermore, this file contains correct entries that should be accepted
+# as is - their format is:
+# correct<tab>
+# ie the correct word followed by a <tab> char, followed by new-line.
+#
+# The file should be extended with examples of all known bugs we have fixed,
+# and can be used to ensure that we don't brake any old fixes in new releases.
+# Also problematic patterns not yet properly handled should get test pairs here.
+#
+# It is possible, and encouraged, to add a comment with the relevant bug ID
+# after each (group of) test case. Comments start with <tab>! or <tab>#. If
+# you start a comment with a bug ID, it will ensure that all test pairs
+# belonging to one bug is grouped together in the test report.
+#
+# For maintenance reasons, and to easier ensure that all bugs are covered by
+# both negative and positive tests, all test pairs are sorted according to bug
+# number, and test pairs without a bug number in the beginning. Please add new
+# test pairs at the proper location (usually at the end of the document).
+#
+# Format summary:
+#
+# error<tab>correction<tab>#comment
+# correct<tab><tab>!comment
+#
+Barggomárnanin	Barggomárnánin	! compound with typo, no suggestion
+Allaskåvllådåjmadagas	Allaskåvllådåjmadagás	! compound with typo, no suggestion
+Galileajávrregáttev	Galilea-jávrregáttev
+barrnev	bárnev
+vuostasj		! missing ordinal
+Vuostasj		! missing ordinal
+nuppev		! missing ordinal
+goalmát		! missing ordinal
+jáddamahtes		! missing actio forms
+riegádibme		! missing actio forms
+vuolgadime		! missing actio forms
+lånudim-		! actio compound form
+oahppamdiededimev		! actio compound
+riegádimgånågis		! actio compound
+guovtekultuvralasj		! no hash at compound border
+gus		! missing particles
+Barggogaskostime		! missing compound
+sebrudakalmasj		! missing compound
+siellosujtov		! missing compound
+åbmudaksiebrre		! missing compound
+Svierigadárogielan		! name compound i Kintel och Korhon=vuonadár...med liten bok
+älla		! strange suggestions
+Skåvllådåjmadak		! compound
+vidjor9jit	vidjurijt	#398 - vidjor9jit vs vidjurijt
+vidjurijt		#398 - vidjor9jit vs vidjurijt
+Nárvijkan	Narvijkan	#407 - missing smj names; entry was SUBed
+Narvijkan		#407 - missing smj names; entry was SUBed
+Svieriga		#407 missing names
+Malmöj		#407 missing names
+nælggot		#411 - ä not recognised
+nälggot		#411 - ä not recognised
+dæbbaga		#411 - ä not recognised
+däbbaga		#411 - ä not recognised
+vællahit		#411 - ä not recognised
+vällahit		#411 - ä not recognised
+gæhtjáj		#411 - ä not recognised
+gähtjáj		#411 - ä not recognised
+Allaskåvllågähttjalus		#411 - Swedish ä
+allaskåvllågähttjalus		#411 - Swedish ä
+ållo		#418 - missing numeral
+akta		#418 - missing numeral
+guokta		#418 - missing numeral
+Allaskåvllådievnastusdåjmadahka		#419 3-part compound
+bielleájggeåhpadussaj		#419 - 3-part compound
+oahppambiednikvuogádagá		#419 3-part compound
+stivrrimássjetjállagij		#419 3-part compound
+Iednegiellaoahppaábnnasa		#419 3-part compound
+bajedimij		#420 3-syllable actio
+gaskostibme		#420 3-syllable actio
+jållåribme		#420 3-syllable actio
+mierredimijt		#420 3-syllable actio
+åvddånimev		#420 - missing 3-syllabic actio
+åvdåstibmáj		#420 3-syllable actio N+Sg+Ill
+alvvásláhkáj		#421 - adj+noun
+buorredagojt		#421 - adj+noun
+Dálásjájggásasj		#421 - adj+noun
+dålusjájggásasj		#421 - adj+noun
+gievrasalmasj		#421 - adj-attr+noun
+gievrasmuorra		#421 - adj-attr+noun
+gievramuorra		#421 - adj-gen+noun
+gievrramuorra		#421 - adj-nom+noun
+guhkaájggásattjat		! lexicalized compound
+mælggatåhpadusán		#421 - adj+noun
+skihpahuodnahijn		#421 - adj+noun
+skihpasujtár		#421 adj+noun
+garrasabmusit		#422 - adj->adv
+maññel	maŋŋel	#427 - ń not part of word
+mańńel	maŋŋel	#427 - ń not part of word
+maŋŋel		#427 - ń not part of word
+X		#435 - roman numerals missing
+L		#435 - roman numerals missing
+D		#435 - roman numerals missing
+M		#435 - roman numerals missing
+X:j		#435 - roman numerals missing
+D:n		#435 - roman numerals missing
+L:jn		#435 - roman numerals missing
+M:jda		#435 - roman numerals missing
+IV		#435 - roman numerals missing
+XII		#435 - roman numerals missing
+XV:s		#435 - roman numerals missing
+MXVII:j		#435 - roman numerals missing
+lågenanniellja		#481 - missing numeral (14)
+lågenanguokta		#481 - missing numeral (12)
+millijåvnå		#481 - missing numerals
+millijåvnnå		#481 - missing numerals
+#Nuorttaalij--guovlojn	Nuorttalijguovlojn	#482 - double hyphen
+#álggoálmmug--sisálggoálmmugij	álggoálmmugis álggoálmmugij	#482 - double hyphen
+#bullar--dutkamin	polardutkamin	#482 - double hyphen
+Nuorttalij		#482 - double hyphen
+guovlojn		#482 - double hyphen
+álggoálmmugis		#482 - double hyphen
+álggoálmmugij		#482 - double hyphen
+álggoálmmugis-álggoálmmugij	álggoálmmugis álggoálmmugij	#482 - double hyphen
+polardutkamin		#482 - double hyphen
+USA		#483 - missing bare abbrs
+NSR		#483 - missing bare abbrs
+PDF		#483 - missing bare abbrs
+PDF:		#483 - missing bare abbrs
+NSR-		#483 - missing bare abbrs
+NSR:		#483 - missing bare abbrs
+C-giella		#596 - C-giellan is not accepted
+Áila		#484 - missing names
+Áile		#484 - missing names
+Áili		#484 - missing names
+Áillun		#484 - missing names
+dan		#486 missing pronoun
+dáv		#486 missing pronoun
+dát		#486 missing pronoun
+Daj		#486 missing pronoun
+Dát		#486 missing pronoun
+Dajna		#486 missing pronoun
+dájs		#486 missing pronoun
+dasi		#486 missing pronoun
+dájt		#486 missing pronoun
+dássta		#486 missing pronoun
+danna		#486 missing pronoun
+divna		#486 missing pronoun
+ietjá		#486 missing pronoun
+guhtis		#486 missing pronoun
+avtak		#486 missing pronoun
+juoga		#486 missing pronoun
+nuppev		#486 missing pronoun
+mige		#486 missing pronoun
+mavga		#486 missing pronoun
+ienebuv		#486 missing pronoun
+dakkirijt		#486 missing pronoun
+juohkkahasj		#486 missing pronoun
+vuostamuttjan		#486 - missing pronouns
+sábmeguolbbe	sámeguolbbe	#489 - speller does not follow compound-tagging
+suobmaguolbbe	suomaguolbbe	#489 - speller does not follow compound-tagging
+sámeguolbbe		#489 - speller does not follow compound-tagging
+suomaguolbbe		#489 - speller does not follow compound-tagging
+máhkak		#496 - unrecognised clitics
+månge		#496 - unrecognised clitics
+bijllage		#496 - unrecognised clitics
+bijllak		#496 - unrecognised clitics
+vuojnávge		#496 - unrecognised clitics
+gievrrak		#496 - unrecognised clitics gievrra+Nom
+gievrrage		#496 - unrecognised clitics gievrra+Nom
+gievrak		#496 - unrecognised clitics gievrra+Gen
+gievrage		#496 - unrecognised clitics gievrra+Gen
+måjge		#496 - unrecognised clitics
+munjik		#496 - unrecognised clitics
+dakkirge		#496 - unrecognised clitics
+VG:an	VG:n	#503 - acro inflection
+VG:n		#503 - acro inflection
+VG		#503 - nom and comp of acro
+VG-kafean		#503 - nom and comp of acro
+VG-biebbmo		#503 - nom and comp of acro
+varresvuohtastasjåvnnå	varresvuodastasjåvnnå	#506 - doesn't follow comp-tags
+varresvuodastasjåvnnå		#506 - doesn't follow comp-tags
+fámon		#507 - unrec words
+ájge		#507 - unrec words
+ájgev		#507 - unrec words
+ájgij		#507 - unrec words
+vissa		#507 - unrec words
+siebrijs		#507 - unrec words
+siebrre		#507 - unrec words
+Visa-		#507 - unrec words
+báŋŋka		#507 - unrec words
+báŋkas		#507 - unrec words
+báŋŋkaj		#507 - unrec words
+biehtsemánno		#507 - unrec words
+joarkkaskåvlåv		#507 - unrec words
+skåvlås		#507 - unrec words
+skåvlåsj		#507 - unrec words
+álmmukallaskåvlån		#507 - unrec words
+allaskåvllåj		#507 - unrec words
+isetábnas		#507 - unrec words
+biele		#507 - unrec words
+mierredimájgijt		#507 - unrec words
+muorra		#507 - unrec words
+suohkanin		#507 - unrec words
+guossa		#507 - unrec words
+biehtse		#507 - unrec words
+vuojnno		#507 - unrec words
+dile		#507 - unrec words
+gågulasj		#507 - unrec words
+Jáhkkulasj		#507 - unrec words
+tjådålasj		#507 - unrec words
+dárbbolasj		#507 - unrec words
+oanegasj		#507 - unrec words
+ájnegasj		#507 - unrec words
+joavddelasj		#507 - unrec words
+huohppelasj		#507 - unrec words
+asstelasj		#507 - unrec words
+ållagasj		#507 - unrec words
+dássásasj		#507 - unrec words
+ludtjusasj		#507 - unrec words
+vahkkusasj		#507 - unrec words
+mánnusasj		#507 - unrec words
+deblak		#507 - unrec words
+ásjmak		#507 - unrec words
+råsjmak		#507 - unrec words
+urmak		#507 - unrec words
+råntsak		#507 - unrec words
+lásjmak		#507 - unrec words
+miedek		#507 - unrec words
+snutjek		#507 - unrec words
+doarek		#507 - unrec words
+VG:as	VG:s	#509 - accepts SUB-ed entries
+VG:aj	VG:j	#509 - accepts SUB-ed entries
+1983:as	1983:s	#509 - accepts SUB-ed entries
+1983:aj	1983:j	#509 - accepts SUB-ed entries
+VG:s		#509 - accepts SUB-ed entries
+VG:j		#509 - accepts SUB-ed entries
+1983:s		#509 - accepts SUB-ed entries
+1983:j		#509 - accepts SUB-ed entries
+niehkkealmasjvuorro		#510 - 3-part compound
+goasskemrájddohadde		#510 - 3-part compound
+merragálvvogárvvo		#510 - 3-part compound
+Nijbegoasskem	Nijbbegoasskem	#511 - doesn't follow comp tags
+bievdedåhpe	bievddedåhpe	#511 - doesn't follow comp tags
+uvsagáldo	uksagáldo	#511 - doesn't follow comp tags
+Nijbbegoasskem		#511 - doesn't follow comp tags
+bievddedåhpe		#511 - doesn't follow comp tags
+uksagáldo		#511 - doesn't follow comp tags
+muoralasj		#512 - deriv -lasj not recognised
+jærjálasj		#512 - deriv -lasj not recognised
+grámmalasj		#512 - deriv -lasj not recognised
+snuhpalasj		#512 - deriv -lasj not recognised
+stuorra-fuoskok	stuorrafuoskok	#518 - nominal + Prop/Der compound
+stuorraFuoskok	stuorrafuoskok	#518 - nominal + Prop/Der compound
+stuorra-Fuoskok	stuorrafuoskok	#518 - nominal + Prop/Der compound
+Stuorra-fuoskok	Stuorrafuoskok	#518 - nominal + Prop/Der compound
+StuorraFuoskok	Stuorrafuoskok	#518 - nominal + Prop/Der compound
+Stuorra-Fuoskok	Stuorrafuoskok	#518 - nominal + Prop/Der compound
+stuora-fuoskok	stuorafuoskok	#518 - nominal + Prop/Der compound
+stuoraFuoskok	stuorafuoskok	#518 - nominal + Prop/Der compound
+stuora-Fuoskok	stuorafuoskok	#518 - nominal + Prop/Der compound
+Stuora-fuoskok	Stuorafuoskok	#518 - nominal + Prop/Der compound
+StuoraFuoskok	Stuorafuoskok	#518 - nominal + Prop/Der compound
+Stuora-Fuoskok	Stuorafuoskok	#518 - nominal + Prop/Der compound
+stuor-fuoskok	stuorafuoskok	#518 - nominal + Prop/Der compound
+stuorFuoskok	stuorafuoskok	#518 - nominal + Prop/Der compound
+stuor-Fuoskok	stuorafuoskok	#518 - nominal + Prop/Der compound
+Stuor-fuoskok	Stuorafuoskok	#518 - nominal + Prop/Der compound
+StuorFuoskok	Stuorafuoskok	#518 - nominal + Prop/Der compound
+Stuor-Fuoskok	Stuorafuoskok	#518 - nominal + Prop/Der compound
+stuorFuosskok	Stuor-Fuosskok	#518 - nominal + Prop/Der compound
+StuorFuosskok	Stuor-Fuosskok	#518 - nominal + Prop/Der compound
+Stuorafuoskok		#518 - nominal + Prop/Der compound
+Stuorrafuoskok		#518 - nominal + Prop/Der compound
+stuorafuoskok		#518 - nominal + Prop/Der compound
+stuorrafuoskok		#518 - nominal + Prop/Der compound
+væráldbijlla	væráltbijlla	#526 - wrong compounding forms accepted
+bednagadtjbijlla	bednagatjijlla	#526 - wrong compounding forms accepted
+jávrádtjbijlla	jávrásjbijlla	#526 - wrong compounding forms accepted
+væráltbijlla		#526 - wrong compounding forms accepted
+bednagasjbijlla		#526 - wrong compounding forms accepted
+jávrásjbijlla		#526 - wrong compounding forms accepted
+ráddnávuohtamuorra	ráddnávuodamuorra	#536 - "impossible" compound forms
+dåjmadibmesáhka	dåjmadibmesak	#536 - "impossible" compound forms
+Noajddudakmuorra		#536 - "impossible" compound forms
+Sákkaldakguolle		#536 - "impossible" compound forms
+ráddnávuodamuorra		#536 - "impossible" compound forms
+dåjmadimsáhka		#536 - "impossible" compound forms
+kaninmuorra		#537 - some short compound-forms not working
+patronmuorra		#537 - some short compound-forms not working
+lihttemaskinsielgge		#537 - some short compound-forms not working
+doktorandgukse		#537 - some short compound-forms not working
+bievdeguorra	bievddeguorra	#539 - speller does not follow compound-tagging
+muorraguorra		#539 - speller does not follow compound-tagging
+muorajguorra		#539 - speller does not follow compound-tagging
+Áillohaš		#552 - names wrongly converted from sme to smj
+Áillonieida		#552 - names wrongly converted from sme to smj
+Arentz-Hansen		#552 - names wrongly converted from sme to smj
+1883:a	1883	#555 - speller does not suggest 1883 for 1883:a
+Bq:a	Bq	#555 - speller does not suggest 1883 for 1883:a
+NRK:a	NRK	#555 - speller does not suggest 1883 for 1883:a
+åvdåsvásstet		#556 - non-existent word accepted
+åvdåsvastet	åvdåsvásstet	#556 - non-existent word accepted
+gájtjabájkka	gájtsabajkka	#557 - Missing suggestion when multiple errors across compound boundary
+#Áile--Kaas	Áile-Kaas	#575 - name+name suggestions with double hyphens
+#Áile--Gásluokta	Áile-Gásluokta	#575 - name+name suggestions with double hyphens
+#Áile--Kasari	Áile-Kasari	#575 - name+name suggestions with double hyphens
+#Børde--Rene	Børde-Rene	#575 - name+name suggestions with double hyphens
+Børde-Rene		#575 - name+name suggestions with double hyphens
+Áile-Kaas		#575 - name+name suggestions with double hyphens
+Myra-Land		#575 - name+name suggestions with double hyphens
+BB-Rød-Rene		#575 - name+name suggestions with double hyphens
+#Rød--Rene	Rød-Rene	#575 - name+name suggestions with double hyphens
+#Børde--Renee	Børde-Renee	#575 - name+name suggestions with double hyphens
+#Myd--Land	Myra-Land	#575 - name+name suggestions with double hyphens
+#Ryd--Åland	Ryd-Åland	#575 - name+name suggestions with double hyphens
+#Ryd--Öland	Ryd-Öland	#575 - name+name suggestions with double hyphens
+#BB--Rød--Rene	BB-Rød-Rene	#575 - name+name suggestions with double hyphens
+38jahkásasj	38-jahkásasj	#580 - suggests 38jahkásasj for 38-jahkásasj
+38-jahkásasj		#580 - suggests 38jahkásasj for 38-jahkásasj
+girkkomusijkkár		#582 - noun+Prop without hyphen
+girkkomusijkkaRa	girkkomusijkkára	#582 - noun+Prop without hyphen
+jubmeldievnnoiellemij		#584 - word not recognized
+vasstet	vásstet	#589 - suggestions involving vowel-replacement
+lågenanguokta		#594 - lågenanguokte not recognized
+lågenanguovtev		#594 - lågenanguokte not recognized
+lågenanguovtes		#594 - lågenanguokte not recognized
+lågenanguoktáj		#594 - lågenanguokte not recognized
+tsåhkeLot	tsåhke-Lot	#595 - prefix+name as split comp without hyphen
+iemeLinn	ieme-Linn 	#595 - prefix+name as split comp without hyphen
+gålmmålåk		#599 - numeral attr:s on lot
+guoktalåk		#599 - numeral attr:s on lot
+vihttalåk		#599 - numeral attr:s on lot
+sáme-dáro		#600 - Gen+hyph compound
+NRKGE	NRK-EG	#607 - acro-compounds without hyphen
+NRK-EG		#607 - acro-compounds without hyphen
+Rájerasstimijn		#615 - actios and actors as second part of compound
+rájijrasstimin		#615 - actios and actors as second part of compound
+bargojduvddemis		#615 - actios and actors as second part of compound
+bargogáddjon		#615 - actios and actors as second part of compound
+Bispadime-me-ráden	Bispadime-m-ráden	#616 - Bispadime-me-ráden
+Åhpadim-me-konsulænnta	Åhpadim-m-konsulænnta	#616 - Bispadime-me-ráden
+Åhpadis-me-konsulænnta	Åhpadis-m-konsulænnta	#616 - Bispadime-me-ráden
+me-rijkaieŋŋilsgiellaj	Amerijka-ieŋŋilsgiellaj	#616 - Bispadime-me-ráden
+#0--me-rijkaieŋŋilsgiellaj	Amerijka-ieŋŋilsgiellaj	#616 - Bispadime-me-ráden
+Lofåhtajguollima	Lofåhta-guollima	#617 - left-compound-tags affects proper-nouns too
+Råmsåjdille	Råmså-dille	#617 - left-compound-tags affects proper-nouns too
+Divtasvuonaahke	Divtasvuona-ahke	#617 - left-compound-tags affects proper-nouns too
+oajvijda	åjvijda	#618 - dipht simpl oajvve>åjvijn
+oajvijs	åjvijs	#618 - dipht simpl oajvve>åjvijn
+oajvij	åjvij	#618 - dipht simpl oajvve>åjvijn
+oajvijn	åjvijn	#618 - dipht simpl oajvve>åjvijn
+åvtånálán		#619 - numerals and pronouns to NAMÁK and SASJ  fails
+gålmålágásj		#619 - numerals and pronouns to NAMÁK and SASJ  fails
+avtanálán		#619 - numerals and pronouns to NAMÁK and SASJ  fails
+åvtålágásj		#619 - numerals and pronouns to NAMÁK and SASJ  fails
+gávtsebiejvvásasj		#619 - numerals and pronouns to NAMÁK and SASJ  fails
+dakkirtjuodak		#619 - numerals and pronouns to NAMÁK and SASJ  fails
+gålmmålágásj	gålmålágásj	#619 - numerals and pronouns to NAMÁK and SASJ  fails
+vihttalágásj	vijddalágásj	#619 - numerals and pronouns to NAMÁK and SASJ  fails
+gettsugadtjajbiejvve	gettsugattjajbiejvve	#624 - gen of ÅLLAGASJ-adj as first prt of cmp
+sjimugadtjabiejvve	sjimugattjabiejvve	#624 - gen of ÅLLAGASJ-adj as first prt of cmp
+Ájluokta		#626 - lule sami names missing
+Åmo		#626 - lule sami names missing
+Skilkká		#626 - lule sami names missing
+Ofuohttá		#626 - lule sami names missing
+Gasska-Nordlánnda		#626 - lule sami names missing
+Nordlánnda		#626 - lule sami names missing
+Råmsså		#626 - lule sami names missing
+Fuolldá		#626 - lule sami names missing
+Voaga		#626 - lule sami names missing
+Sálat		#626 - lule sami names missing
+Suortta		#626 - lule sami names missing
+Stuorgiedde		#626 - lule sami names missing
+Sálatædno		#626 - lule sami names missing
+Ruogŋo		#626 - lule sami names missing
+Dundarevuobme		#626 - lule sami names missing
+Diksná		#626 - lule sami names missing
+Bálákvuovdde		#626 - lule sami names missing
+Vindela		#626 - lule sami names missing
+Accra		#626 - lule sami names missing
+julev-		#627 - prefix + hyhpen does not get accepted
+svieriga-		#627 - prefix + hyhpen does not get accepted
+kåntåvrråa-jådediddje	kåntåvrrå-Raa-jådediddje	#629 - a taking part of compound
+kåntåvrråjådediddje		#629 - a taking part of compound
+051-bágo		#631 - number compound, numbers starting with 0
+Divtasvuona-Oarjjevuona		#634 - Prop gen + hyphen + Prop gen
+Divtasvuona-Oarjevuona	Divtasvuona-Oarjjevuona	#634 - Prop gen + hyphen + Prop gen
+miereunnedimskåvve		#639 - +Left-marked words as middle part of compound
+Aktaalmasj	Akta almasj	#641 - numeral+noun compounds
+guovtealmatja	guovte almatja	#641 - numeral+noun compounds
+1992-93:s		#644 - cased numeral+numeral compounds
+1700-LÅHKO		#647 - numerals+NOUN
+1700-Låhko	1700-låhko	#647 - numerals+NOUN
+0-nubbejådediddje	0-ruobbejådediddje	#648 - unmotivated suggestions with numeral+noun
+0-juojggamaárbbedábev		#648 - unmotivated suggestions with numeral+noun
+#0--me-rijkaieŋŋilsgiellaj	Amerijka-ieŋŋilsgiellaj	#648 - unmotivated suggestions with numeral+noun
+Kitaadábálasj	Kitaa-dábálasj	#649 - name+adj compounds without hyphen
+Sirgesdábálasj	Sirges-dábálasj	#649 - name+adj compounds without hyphen
+badjeGájnaj	Badje-Gájnaj	#650 - noun prefix+name compound without hyphen
+nuppáj	nubbáj	#651 - pp>bb phonetic rule does not apply
+rappe	rabbe	#651 - pp>bb phonetic rule does not apply
+#SAME	SM	#652 - UPPERCASE-typos only get acronym-suggestions
+SABME	SÁBME	#652 - UPPERCASE-typos only get acronym-suggestions
+SABMe	SÁBME	#652 - UPPERCASE-typos only get acronym-suggestions
+saame	sáme	#658 - suggestions saame (suggestions Saame (with capital S) is proper so in that meaning this bug won't be fixed unless we remove the proper-noun)
+3:sijn		#668 - caseforms, ordinals and collectives
+3:dijn		#668 - caseforms, ordinals and collectives
+giehtjalåkvihtta		#692 - numeral-variants
+gietjatjuodevihtta		#692 - numeral-variants
+gáktsalågenantjuotakta		#692 - numeral-variants
+vihttatjuot		#692 - numeral-variants
+guok		#692 - numeral-variants
+guoklåk		#692 - numeral-variants
+guoktjuot		#692 - numeral-variants
+guokduhát		#692 - numeral-variants
+guoktuvsán		#692 - numeral-variants
+lågenanguoktatjuodeguhttalåk		#692 - numeral-variants
+nielljelåk		#692 - numeral-variants
+giehtjalåkvitta	giehtjalåkvihtta	#692 - numeral-variants
+gietjatjuodevitta	gietjatjuodevihtta	#692 - numeral-variants
+gáktsalågeantjuotakta	gáktsalågenantjuotakta	#692 - numeral-variants
+vittatjuot	vihttatjuot	#692 - numeral-variants
+guk	guok	#692 - numeral-variants
+guklåk	guoklåk	#692 - numeral-variants
+guoktjut	guoktjuot	#692 - numeral-variants
+guokduhat	guokduhát	#692 - numeral-variants
+guoktuvsan	guoktuvsán	#692 - numeral-variants
+lågeanguoktatjuodeguhttalåk	lågenanguoktatjuodeguhttalåk	#692 - numeral-variants
+nelljelåk	nielljelåk	#692 - numeral-variants
+21bieivi	21-biejve	#711 - numeral compounds and cases
+10ijjs	10-ijá	#711 - numeral compounds and cases
+1996:itd	1996:jt	#711 - numeral compounds and cases
+10-biejvvásattja	10-bæjvvásattja	#711 - numeral compounds and cases
+21-biejve		#711 - numeral compounds and cases
+10-ijá		#711 - numeral compounds and cases
+1996:jt		#711 - numeral compounds and cases
+10-bæjvvásattja		#711 - numeral compounds and cases
+javlla-CD		#717 - noun-acro compounds
+javlla-CDan	javlla-CD:n	#717 - noun-acro compounds
+åvtåmuora	åvtå muora	#721 - nom- and gen-numerals make compounds with nouns
+guovtesuollu	guovte suollu	#721 - nom- and gen-numerals make compounds with nouns
+gålmmågahper	gålmmå gahpera	#721 - nom- and gen-numerals make compounds with nouns
+aktak		#744 - numerals + clitic
+guoktek		#744 - numerals + clitic
+guoktege		#744 - numerals + clitic
+guovtege		#744 - numerals + clitic
+nielljege		#744 - numerals + clitic
+vidánge		#744 - numerals + clitic
+guhttage		#744 - numerals + clitic
+gietjavge		#744 - numerals + clitic
+tjuohtek 		#744 - numerals + clitic
+akttak	aktak	#744 - numerals + clitic
+guoktetk	guoktek	#744 - numerals + clitic
+guokteges	guoktege	#744 - numerals + clitic
+guovttege	guovtege	#744 - numerals + clitic
+njielljege	nielljege	#744 - numerals + clitic
+vidange	vidánge	#744 - numerals + clitic
+guhtage	guhttage	#744 - numerals + clitic
+giehtjavge	gietjavge	#744 - numerals + clitic
+tjuohtik	tjuohtek 	#744 - numerals + clitic
+madduj	mädduj	#776 - norm-fst does not recognize ä when u in sec. syll.
+dabttjum	däbttjum	#776 - norm-fst does not recognize ä when u in sec. syll.
+#gæjnno---muorra	gæjnno-Amora	#784 - multiple hyphens accepted
+#C---tjiektje	C-tjiektje	#784 - multiple hyphens accepted
+#D---tjiektje	D-tjiektje	#784 - multiple hyphens accepted
+amuorra	a-muorra	#785 - does not recognize alphabet-abbr+noun
+Cmuorra	C-muorra	#785 - does not recognize alphabet-abbr+noun
+dmuorra	d-muorra	#785 - does not recognize alphabet-abbr+noun
+Emuorra	E-muorra	#785 - does not recognize alphabet-abbr+noun
+a-muorra		#785 - does not recognize alphabet-abbr+noun
+C-muorra		#785 - does not recognize alphabet-abbr+noun
+d-muorra		#785 - does not recognize alphabet-abbr+noun
+E-muorra		#785 - does not recognize alphabet-abbr+noun
+Seskaröcd	Seskarö-cd	#805 - Nouns/propers+acronyms
+Berntv	Bern-tv	#805 - Nouns/propers+acronyms
+muorraas	muorra-as	#805 - Nouns/propers+acronyms
+muorraNRK	muorra-NRK	#805 - Nouns/propers+acronyms
+NRK-Finnmarko	NRK-Finnmárko	#805 - Nouns/propers+acronyms
+NSR-Lindon	NRK-London	#805 - Nouns/propers+acronyms
+Seskarö-cd		#805 - Nouns/propers+acronyms
+Bern-tv		#805 - Nouns/propers+acronyms
+muorra-as		#805 - Nouns/propers+acronyms
+muorra-NRK		#805 - Nouns/propers+acronyms
+NRK-Finnmárko		#805 - Nouns/propers+acronyms
+NRK-London		#805 - Nouns/propers+acronyms
+ietjas		#815 - Case-forms of iesj not recognized
+ietjanis		#815 - Case-forms of iesj not recognized
+allasis		#815 - Case-forms of iesj not recognized
+ietjajnis		#815 - Case-forms of iesj not recognized
+itjas	ietjas	#815 - Case-forms of iesj not recognized
+itjanis	ietjanis	#815 - Case-forms of iesj not recognized
+alasis	allasis	#815 - Case-forms of iesj not recognized
+itjajnis	ietjajnis	#815 - Case-forms of iesj not recognized
+enujn		#816 - word not recognized
+ænujn	enujn	#816 - word not recognized
+rijkajuohkostjiektjamav	rijkajuogostjiektjamav	#817 - should not be accepted
+muorraguovggat		#837 - noun+adjective compounds
+muorraguovggis	#837 - noun+adjective compounds
+boahtemtjuovggat		#837 - noun+adjective compounds
+boahtemtjuovggis	#837 - noun+adjective compounds
+boatsoj-sujtto		#894 - hyphens or not in compounds
+giellafamiljan 		#911 - Words2008 crash and lost suggestions in Words2004
+giellafámiljan 	giellafamiljan 	#911 - Words2008 crash and lost suggestions in Words2004
+CV-s	CV:s	#913 - acronyms+cases 
+CV'j	CV:j	#913 - acronyms+cases 
+NRK:ajn	NRK:jn	#913 - acronyms+cases 
+NRK-an	NRK:n	#913 - acronyms+cases 
+CV:s		#913 - acronyms+cases 
+CV:j		#913 - acronyms+cases 
+NRK:jn		#913 - acronyms+cases 
+NRK:n		#913 - acronyms+cases 
+polárdutkamin	polardutkamin	#916 - prefixes not working
+Nuortalijguovlojn	Nuorttalijguovlojn	#916 - prefixes not working
+polardutkamin		#916 - prefixes not working
+Nuorttalijguovlojn		#916 - prefixes not working
+NRK-NRK-NRK		#933 - acros compound to each other without hyphens
+NRKNRKNRK	NRK-NRK-NRK	#933 - acros compound to each other without hyphens
+moattejahkásasj		#963 - lot of adjectives missing
+moattestávval		#963 - lot of adjectives missing
+moattejienalasj		#963 - lot of adjectives missing
+minimálla		#963 - lot of adjectives missing
+miesska		#963 - lot of adjectives missing
+mihá		#963 - lot of adjectives missing
+stuorra		#963 - lot of adjectives missing
+ådå		#963 - lot of adjectives missing
+buorre		#963 - lot of adjectives missing
+dábálasj		#963 - lot of adjectives missing
+digitála		#963 - lot of adjectives missing
+muottejahkásasj	moattejahkásasj	#963 - lot of adjectives missing
+muottestávval	moattestávval	#963 - lot of adjectives missing
+moattijienalasj	moattejienalasj	#963 - lot of adjectives missing
+minimalla	minimálla	#963 - lot of adjectives missing
+misska	miesska	#963 - lot of adjectives missing
+miha	mihá	#963 - lot of adjectives missing
+suorra	stuorra	#963 - lot of adjectives missing
+ådo	ådå	#963 - lot of adjectives missing
+buovre	buorre	#963 - lot of adjectives missing
+dábalasj	dábálasj	#963 - lot of adjectives missing
+digitala	digitála	#963 - lot of adjectives missing
+Almoduvváj	Almoduváj	#971 - uvváj and uvvát
+aneduvváj	aneduváj	#971 - uvváj and uvvát
+mujttaluvvát	mujttaluvvat	#971 - uvváj and uvvát
+bielkeduvváj	bielkeduváj	#971 - uvváj and uvvát
+Åhpaditge-konsulænnta	Åhpadit-g-konsulænnta	#1122 - inf+noun compounds
+bullar1-dutkamin	bullar-1-dutkamin	#1144 numerals compound to nouns without hyphen
+0-mujttalibmesáhka	0-mujttalimesáhka	#1145 impossible compounds
