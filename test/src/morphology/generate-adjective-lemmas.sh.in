@@ -180,9 +180,6 @@ sort -u -o $generated_lemmas.$f.txt $generated_lemmas.$f.txt
 	fi
 done
 
-# When done, remove the generated data files:
-rm -f $lemmas $lemmas_attr $lemmas_super $lemmas_comp $all_adjs $generated_lemmas.$f.txt
-
 # At least one of the Xerox or HFST tests failed:
 if [ "$Fail" = "1" ]; then
 	exit 1
@@ -192,3 +189,6 @@ if [ $transducer_found -eq 0 ]; then
     echo ERROR: No transducer found
     exit 77
 fi
+
+# When done, remove the generated data file:
+rm -f $lemmas $lemmas_attr $lemmas_super $lemmas_comp $all_adjs $generated_lemmas.$f.txt
