@@ -35,11 +35,11 @@ all_adjs=./all_adjs.tmp
 generated_lemmas=./generated-adjs.tmp
 result_file=missing_adj_lemmas
 
-
-# FAIL if source file does not exist:
-if [ ! -f $source_file ]; then
+# SKIP if source file does not exist (works with both single and
+# multiple files):
+if [ ! `ls -1 $source_file 2>/dev/null | wc -l ` -gt 0 ]; then
     echo
-    echo "*** Warning: Source file $source_file not found."
+    echo "*** Warning: Source file(s) $source_file not found."
     echo
     exit 77
 fi
