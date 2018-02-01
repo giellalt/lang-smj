@@ -24,6 +24,7 @@ generator-fstspeller-gt-norm.hfst: \
 		filters/remove-Use_Minus_PLX-tags.hfst                   \
 		filters/split-CmpN-tags.hfst                             \
 		filters/convert_to_flags-CmpNP-tags.hfst                 \
+		filters/remove-dyncomp-symbol.hfst                       \
 		filters/split-CmpNP-tags.hfst
 	$(AM_V_HXFST)$(PRINTF) "\
 		read regex                                                        \
@@ -36,6 +37,7 @@ generator-fstspeller-gt-norm.hfst: \
 		.o. @\"filters/convert_to_flags-CmpNP-tags.hfst\"                 \
 		.o. @\"filters/split-CmpNP-tags.hfst\"                            \
 		.o. @\"$<\"                                                       \
+		.o. @\"filters/remove-dyncomp-symbol.hfst\"                       \
 		; \n\
 		 twosided flag-diacritics\n\
 		eliminate flag CmpHyph\n\
