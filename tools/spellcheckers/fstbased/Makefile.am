@@ -16,14 +16,14 @@ SUBDIRS = filters . desktop mobile
 # 3. Convert tags to flags
 # 4. Make flags two-sided
 generator-fstspeller-gt-norm.hfst: \
-		generator-fstspeller-gt-norm.tmp.hfst \
-		filters/insert-default-compounding-tags.hfst \
-		filters/insert-default_left_compounding-tags.hfst \
-		filters/block-illegal_compound-strings.hfst  \
+		generator-fstspeller-gt-norm.tmp.hfst                    \
+		filters/insert-default-compounding-tags.hfst             \
+		filters/insert-default_left_compounding-tags.hfst        \
+		filters/block-illegal_compound-strings.hfst              \
 		filters/remove-illegal-derivation-strings-flagbased.hfst \
-		filters/remove-Use_Minus_PLX-tags.hfst       \
-		filters/split-CmpN-tags.hfst \
-		filters/convert_to_flags-CmpNP-tags.hfst \
+		filters/remove-Use_Minus_PLX-tags.hfst                   \
+		filters/split-CmpN-tags.hfst                             \
+		filters/convert_to_flags-CmpNP-tags.hfst                 \
 		filters/split-CmpNP-tags.hfst
 	$(AM_V_HXFST)$(PRINTF) "\
 		read regex                                                        \
