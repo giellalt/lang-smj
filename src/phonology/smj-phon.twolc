@@ -169,6 +169,26 @@ Sets !!≈ !!!The @CODE@ section
  Dummy   = X2 X3 X4 X5 X6 X7 X8 Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9 Q1 Q2 Q3 Q4 Q5 Q6 Q7 Z1 %> » %^           ;
  Hyph    = %-                                                                                        ;
 
+! Various flag diacritic symbols that can intervene in certain contexts:
+! Flags   = @P.CmpN.SgN@
+!           @P.CmpN_Def.PlGen@
+!           @R.CmpN.SgN@
+!           @P.Want_Left.FALSE@
+!           @P.CmpFrst.FALSE@
+!           @P.CmpPref.FALSE@
+!           @D.CmpLast.TRUE@
+!           @D.CmpNone.TRUE@
+!           @U.CmpNone.FALSE@
+!           @P.CmpOnly.TRUE@
+!           @C.Der1@
+!           @C.Der2@
+!           @C.Der3@
+!           @C.Der4@
+!           @C.Der5@
+!           @C.Der_PassS@
+!           @C.Der_PassL@
+!           ;
+
 Definitions !!≈ !!!The @CODE@ section
 
 !! In this section, the consonants are defined. This includes consonant clusters in the various grades and consonant alternations.
@@ -305,7 +325,7 @@ Rules !!≈ !!!The @CODE@ section
 
 "Word Final Devoicing of Certain Single Consonants d9 etc." 
 !! __@RULENAME@__  
- Cx:Cy <=> Vow: (Cns:) (%>:) (»:) ( Dummy: ) _ (%>:) (»:) ( Dummy: ) [ Hyph | # ] ;
+ Cx:Cy <=> Vow: (Cns:) (%>:) (»:) ( Dummy: ) _ (%>:) (»:) ( Dummy: ) \[ Vow | Cns ]* [ Hyph | # ] ;
        where Cx in ( b9 d9 g9 m9 h9 )
              Cy in ( p  t  k  v  j  )
 	   matched ;
@@ -314,12 +334,12 @@ Rules !!≈ !!!The @CODE@ section
 
 "Word final weakening -tj and -ttj to -sj part 1"
 !! __@RULENAME@__  
- t:s <= Vow: (%>:) (»:) ( Dummy: ) ( d: ) _ j (%>:) (»:) ( Dummy: ) [ Hyph | # ] ;
+ t:s <= Vow: (%>:) (»:) ( Dummy: ) ( d: ) _ j (%>:) (»:) ( Dummy: ) \[ Vow | Cns ]* [ Hyph | # ] ;
 
 
 "Word final weakening -tj and -ttj to -sj part 2"
 !! __@RULENAME@__  
- t:s => Vow: (%>:) (»:) ( Dummy: ) ( d: ) _ j (%>:) (»:) ( Dummy: ) [ Hyph | # ] ;
+ t:s => Vow: (%>:) (»:) ( Dummy: ) ( d: ) _ j (%>:) (»:) ( Dummy: ) \[ Vow | Cns ]* [ Hyph | # ] ;
 ! t:s <=> Vow: (%>:) (»:) ( Dummy: ) _ ( t: ) j (%>:) (»:) ( Dummy: ) (Hyph) #: ;
 !!€ jågåtj#
 !!€ jågåsj#
@@ -790,10 +810,10 @@ Rules !!≈ !!!The @CODE@ section
 
 "a:e in Present Participle of even-syllable verbs"
 !! __@RULENAME@__  
- a:e <=> :Cns _ (%>:) (»:) Y6: [Hyph     |
-                               (Hyph) #  |
-                                     .#. |
-                               n:|v:|m:|t:|d:|s:] ;
+ a:e <=> :Cns _ (%>:) (»:) \[ Vow | Cns ]* Y6: [Hyph     |
+                                               (Hyph) #  |
+                                                     .#. |
+                                               n:|v:|m:|t:|d:|s:] ;
 ! bassat : bas'se ! SNM: there is no rule for this, and it isn't visible in the
                   ! orthography
 
