@@ -83,6 +83,7 @@ analyser-gt-norm.%: analyser-gt-norm.tmp.%                                 \
 					 filters/remove-derivation-position-tags.%             \
 					 filters/remove-DNorm-tags.%                           \
 					 filters/remove-illegal-derivation-strings-flagbased.% \
+					 filters/remove-MinusSpell-strings.%                   \
 					 filters/insert-default-compounding-tags.%             \
 					 filters/insert-default_left_compounding-tags.%        \
 					 filters/block-illegal_compound-strings.%              \
@@ -99,6 +100,7 @@ analyser-gt-norm.%: analyser-gt-norm.tmp.%                                 \
 			.o. @\"filters/remove-illegal-derivation-strings-flagbased.$*\" \
 			.o. @\"filters/convert_to_flags-CmpNP-tags.$*\"                 \
 			.o. @\"filters/split-CmpNP-tags.$*\"                            \
+			.o. @\"filters/remove-MinusSpell-strings.$*\"                   \
 			.o. @\"$<\"                                                     \
 			;\n\
 		 twosided flag-diacritics\n\
