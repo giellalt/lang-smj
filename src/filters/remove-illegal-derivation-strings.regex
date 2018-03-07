@@ -19,6 +19,11 @@
 #
 # The filter should be applied on top of the nonrec transducer.
 
+# The filter in its present form is too agressive, as it will block across
+# word boundaries. Replacing ?* with \[ "+Cmp" ]* makes Xerox run forever, and
+# using the safe variant \[ "+Cmp" ]+ makes Hfst crash! Leaving it as is for now
+# but probably without using it.
+
 ~[ $[ %+Der1       ?*  %+Der1      ]
  | $[ %+Der2       ?*  %+Der1      ]
  | $[ %+Der2       ?*  %+Der2      ]
