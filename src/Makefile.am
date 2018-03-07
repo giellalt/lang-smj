@@ -116,12 +116,18 @@ analyser-gt-norm.xfst: analyser-gt-norm.tmp.xfst \
 	$(AM_V_XFST)$(PRINTF) "read regex \
 			    @\"filters/remove-derivation-position-tags.xfst\"   \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"             \
-			.o. @\"filters/remove-illegal-derivation-strings.xfst\" \
 			.o. @\"filters/remove-DNorm-tags.xfst\"                 \
 			.o. @\"$<\"                                             \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)
+
+# This does not work -  the filter in its present form blocks too much because
+# it crosses word boundaries, and restricting the filter by disallowing
+# word boundaries makes it uncompilable when using Xerox. Another version makes
+# Hfst crash!
+#			.o. @\"filters/remove-illegal-derivation-strings.xfst\" \
+#
 
 # ... and also in the Oahpa analyser:
 analyser-oahpa-gt-norm.%: analyser-gt-norm.tmp.% \
@@ -160,6 +166,7 @@ analyser-disamb-gt-desc.%: analyser-disamb-gt-desc.tmp.%      \
 generator-gt-norm.xfst: generator-gt-norm.tmp.xfst                \
 					 filters/remove-derivation-position-tags.xfst \
 					 filters/remove-norm-comp-tags.xfst           \
+					 filters/remove-illegal-derivation-strings.xfst \
 					 filters/remove-DNorm-tags.xfst               \
 					 filters/make-optional-lang_hom-tags.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
@@ -172,6 +179,13 @@ generator-gt-norm.xfst: generator-gt-norm.tmp.xfst                \
 		 invert net\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST) $(VERBOSITY)
+
+# This does not work -  the filter in its present form blocks too much because
+# it crosses word boundaries, and restricting the filter by disallowing
+# word boundaries makes it uncompilable when using Xerox. Another version makes
+# Hfst crash!
+#			.o. @\"filters/remove-illegal-derivation-strings.xfst\" \
+#
 
 # gt-norm for Foma and Hfst:
 generator-gt-norm.%: generator-gt-norm.tmp.%                   \
