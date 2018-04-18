@@ -146,6 +146,7 @@ analyser-oahpa-gt-norm.%: analyser-gt-norm.tmp.% \
 
 # ... as well as in the disambiguation analyser:
 analyser-disamb-gt-desc.%: analyser-disamb-gt-desc.tmp.%      \
+					filters/remove-orig_lang-tags.%           \
 					filters/remove-derivation-position-tags.% \
 					filters/remove-norm-comp-tags.%           \
 					filters/rename-POS_before_Der-tags.%      \
@@ -153,6 +154,7 @@ analyser-disamb-gt-desc.%: analyser-disamb-gt-desc.tmp.%      \
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/remove-derivation-position-tags.$*\" \
 			.o. @\"filters/remove-norm-comp-tags.$*\"           \
+			.o. @\"filters/remove-orig_lang-tags.$*\"           \
 			.o. @\"filters/rename-POS_before_Der-tags.$*\"      \
 			.o. @\"filters/remove-DNorm-tags.$*\"               \
 			.o. @\"$<\"                                         \
