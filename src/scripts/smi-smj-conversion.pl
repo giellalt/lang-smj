@@ -35,7 +35,7 @@ while(<>) {
 	s/9#/#/g ;
 	s/7-/-/g ;
 	s/8-/-/g ;
-	s/9-/-/g ;
+#	s/9-/-/g ; # This one is used in SMI names, and thus must be unchanged
 
 	# SMJ escape char insertion:
 	s/ss /ss9 /g ;
