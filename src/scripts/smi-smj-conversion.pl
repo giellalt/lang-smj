@@ -32,10 +32,10 @@ while(<>) {
 	s/9 / /g ;
 	s/7#/#/g ;
 	s/8#/#/g ;
-	s/9#/#/g ;
+	s/([^jktsp])9#/$1#/g ; # Some X9 letters need to be simplified, others not, cf the twol alphabet
 	s/7-/-/g ;
 	s/8-/-/g ;
-#	s/9-/-/g ; # This one is used in SMI names, and thus must be unchanged
+	s/([^jktsp])9-/$1-/g ; # Some X9 letters need to be simplified, others not, cf the twol alphabet
 
 	# SMJ escape char insertion:
 	s/ss /ss9 /g ;
