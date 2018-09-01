@@ -11,7 +11,7 @@ are applied, are:
 apertium.relabel             - automatically generated, Giella -> Apertium
 modify-tags.regex            - general tagset changes, man. added/maintained
 apertium.postproc.relabel    - general relabelling, manually added/maintained
-modify-rags.TARGETLANG.regex - pair-specific changes using regex, manually m.
+modify-tags.TARGETLANG.regex - pair-specific changes using regex, manually m.
 apertium.TARGETLANG.relabel  - pair-specific relabelling, manually add/maint.
 
 Replace TARGETLANG with the language code of the actual target language you
