@@ -26,6 +26,8 @@ GIELLA_FILTER_LOCAL_REGEX_SRCS=\
 					remove-Dial_-NOR-strings.regex \
 					remove-Dial_-SW-strings.regex \
 					remove-DNorm-tags.regex \
+					remove-area-tags.regex \
+					remove-homonymy-tags.regex \
 					make-optional-lang_hom-tags.regex \
 					remove-derivation-position-tags.regex \
 					rename-POS_before_Der-tags.regex \
