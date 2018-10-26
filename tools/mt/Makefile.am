@@ -11,14 +11,22 @@ SUBDIRS = filters . apertium
 # We want to rename the POS tags in front of derivations:
 analyser-mt-gt-desc.hfst: analyser-mt-gt-desc.tmp.hfst \
 			$(top_builddir)/src/filters/remove-norm-comp-tags.hfst           \
-			$(top_builddir)/src/filters/remove-area-tags.hfst      \
+			$(top_builddir)/src/filters/remove-area-tags.hfst                \
 			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst \
-			$(top_builddir)/src/filters/rename-POS_before_Der-tags.hfst
+			$(top_builddir)/src/filters/rename-POS_before_Der-tags.hfst      \
+			$(top_builddir)/src/filters/remove-Err_SpaceCmp-strings.hfst     \
+			$(top_builddir)/src/filters/remove-Use_minus_PMatch-tags.hfst    \
+			$(top_builddir)/src/filters/remove-Use_PMatch-strings.hfst       \
+			$(top_builddir)/src/filters/remove-Use_GC-strings.hfst
 	$(AM_V_RGX2FST)$(PRINTF) "\
-		@\"$(top_builddir)/src/filters/remove-area-tags.hfst\"   \
+		@\"$(top_builddir)/src/filters/remove-area-tags.hfst\"                \
 	.o. @\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-norm-comp-tags.hfst\"           \
-	.o. @\"$(top_builddir)/src/filters/rename-POS_before_Der-tags.hfst\" \
+	.o. @\"$(top_builddir)/src/filters/rename-POS_before_Der-tags.hfst\"      \
+	.o. @\"$(top_builddir)/src/filters/remove-Use_minus_PMatch-tags.hfst\"    \
+	.o. @\"$(top_builddir)/src/filters/remove-Err_SpaceCmp-strings.hfst\"     \
+	.o. @\"$(top_builddir)/src/filters/remove-Use_PMatch-strings.hfst\"       \
+	.o. @\"$(top_builddir)/src/filters/remove-Use_GC-strings.hfst\"           \
    	.o. @\"$<\" \
     	;" \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) $(HFST_FORMAT) \
@@ -31,17 +39,25 @@ analyser-mt-gt-desc.hfst: analyser-mt-gt-desc.tmp.hfst \
 # apertium-smj.smj_NO.RL.att.gz automatically from the Area codes.
 generator-mt-gt-norm.hfst: generator-mt-gt-norm.tmp.hfst \
 			$(top_builddir)/src/filters/remove-norm-comp-tags.hfst           \
-			$(top_builddir)/src/filters/remove-area-tags.hfst      \
+			$(top_builddir)/src/filters/remove-area-tags.hfst                \
 			$(top_builddir)/src/filters/remove-all_areas_but_NO-strings.hfst \
 			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst \
-			filters/remove-ae-strings.hfst \
-			filters/make-optional-Attr_before_dervuota-tags.hfst
+			$(top_builddir)/src/filters/remove-Err_SpaceCmp-strings.hfst     \
+			$(top_builddir)/src/filters/remove-Use_minus_PMatch-tags.hfst    \
+			$(top_builddir)/src/filters/remove-Use_PMatch-strings.hfst       \
+			$(top_builddir)/src/filters/remove-Use_GC-strings.hfst           \
+			filters/make-optional-Attr_before_dervuota-tags.hfst             \
+			filters/remove-ae-strings.hfst
 	$(AM_V_RGX2FST)$(PRINTF) "\
 		@\"filters/make-optional-Attr_before_dervuota-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-area-tags.hfst\"                \
 	.o. @\"$(top_builddir)/src/filters/remove-all_areas_but_NO-strings.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
    	.o. @\"$(top_builddir)/src/filters/remove-norm-comp-tags.hfst\"           \
+	.o. @\"$(top_builddir)/src/filters/remove-Use_minus_PMatch-tags.hfst\"    \
+	.o. @\"$(top_builddir)/src/filters/remove-Err_SpaceCmp-strings.hfst\"     \
+	.o. @\"$(top_builddir)/src/filters/remove-Use_PMatch-strings.hfst\"       \
+	.o. @\"$(top_builddir)/src/filters/remove-Use_GC-strings.hfst\"           \
    	.o. @\"$<\" \
 	.o. @\"filters/remove-ae-strings.hfst\" \
     	;" \
@@ -52,15 +68,23 @@ generator-mt-gt-norm.hfst: generator-mt-gt-norm.tmp.hfst \
 # TODO: How do we get this one into the build? Want to end up with 
 # apertium-smj.smj_SE.RL.att.gz
 generator-mt-gt-norm_SW.hfst: generator-mt-gt-norm.tmp.hfst \
-			$(top_builddir)/src/filters/remove-area-tags.hfst \
+			$(top_builddir)/src/filters/remove-area-tags.hfst                \
 			$(top_builddir)/src/filters/remove-all_areas_but_SE-strings.hfst \
 			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst \
+			$(top_builddir)/src/filters/remove-Err_SpaceCmp-strings.hfst     \
+			$(top_builddir)/src/filters/remove-Use_minus_PMatch-tags.hfst    \
+			$(top_builddir)/src/filters/remove-Use_PMatch-strings.hfst       \
+			$(top_builddir)/src/filters/remove-Use_GC-strings.hfst           \
 			filters/make-optional-Attr_before_dervuota-tags.hfst
 	$(AM_V_RGX2FST)$(PRINTF) "\
-		@\"filters/make-optional-Attr_before_dervuota-tags.hfst\"             \
-	.o. @\"$(top_builddir)/src/filters/remove-area-tags.hfst\"                \
+		@\"$(top_builddir)/src/filters/remove-area-tags.hfst\"                \
 	.o. @\"$(top_builddir)/src/filters/remove-all_areas_but_SE-strings.hfst\" \
 	.o. @\"$(top_builddir)/src/filters/remove-derivation-position-tags.hfst\" \
+	.o. @\"$(top_builddir)/src/filters/remove-Use_minus_PMatch-tags.hfst\"    \
+	.o. @\"$(top_builddir)/src/filters/remove-Err_SpaceCmp-strings.hfst\"     \
+	.o. @\"$(top_builddir)/src/filters/remove-Use_PMatch-strings.hfst\"       \
+	.o. @\"$(top_builddir)/src/filters/remove-Use_GC-strings.hfst\"           \
+	.o. @\"filters/make-optional-Attr_before_dervuota-tags.hfst\"             \
    	.o. @\"$<\" \
     	;" \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) $(HFST_FORMAT) \
