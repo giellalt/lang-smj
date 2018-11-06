@@ -27,7 +27,7 @@ GT_GENERATORS=
 #### GT_GENERATORS+=generator-oahpa-gt-norm.hfst
 #### endif
 ####
-#### NB!!!! The HFST targets should get a hyphen after 'analyser'/'generator'
+#### NB!!!!! The HFST targets should get a hyphen after 'analyser'/'generator'
 #### respectively, to make the local targets minimally different from and
 #### slightly more specific than the fallback targets. This is to avoid warnings
 #### about duplicate targets. That is, the local targets should looke like:
@@ -144,10 +144,38 @@ analyser-oahpa-gt-norm.%: analyser-gt-norm.tmp.% \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
+
+# We need special treatment of the disamb fst going to further pmatch processing
+# mainly due to the target pattern, thus listed here. The rule body and the
+# dependencies should be the same as the regular disamb analysers below:
+analyser-pmatchdisamb-gt-desc.hfst: analyser-pmatchdisamb-gt-desc.tmp.hfst \
+				filters/remove-dialect-tags.hfst               \
+				filters/remove-area-tags.hfst               \
+				filters/remove-norm-comp-tags.hfst             \
+				filters/remove-derivation-position-tags.hfst   \
+				filters/remove-orig_lang-tags.hfst             \
+				filters/rename-POS_before_Der-tags.hfst        \
+				filters/remove-Err_SpaceCmp-strings.hfst
+	$(AM_V_HXFST)$(PRINTF) "read regex \
+		    @\"filters/remove-derivation-position-tags.hfst\" \
+		.o. @\"filters/remove-dialect-tags.hfst\"             \
+		.o. @\"filters/remove-area-tags.hfst\"             \
+		.o. @\"filters/remove-norm-comp-tags.hfst\"           \
+		.o. @\"filters/remove-orig_lang-tags.hfst\"           \
+		.o. @\"filters/rename-POS_before_Der-tags.hfst\"      \
+		.o. @\"filters/remove-Err_SpaceCmp-strings.hfst\"     \
+		.o. @\"$<\"                                           \
+		;\n\
+	invert net\n\
+	save stack $@\n\
+	quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
+
+
+
 # ... as well as in the disambiguation analyser:
 analyser-disamb-gt-desc.%: analyser-disamb-gt-desc.tmp.%      \
- 				    filters/remove-dialect-tags.%               \
- 				    filters/remove-area-tags.%               \
+				    filters/remove-dialect-tags.%               \
+				    filters/remove-area-tags.%               \
 					filters/remove-homonymy-tags.%			\
 					filters/remove-orig_lang-tags.%           \
 					filters/remove-derivation-position-tags.% \
