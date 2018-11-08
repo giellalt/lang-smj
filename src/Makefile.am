@@ -150,20 +150,18 @@ analyser-oahpa-gt-norm.%: analyser-gt-norm.tmp.% \
 # dependencies should be the same as the regular disamb analysers below:
 analyser-pmatchdisamb-gt-desc.hfst: analyser-pmatchdisamb-gt-desc.tmp.hfst \
 				filters/remove-dialect-tags.hfst               \
-				filters/remove-area-tags.hfst               \
+				filters/remove-area-tags.hfst                  \
 				filters/remove-norm-comp-tags.hfst             \
 				filters/remove-derivation-position-tags.hfst   \
 				filters/remove-orig_lang-tags.hfst             \
-				filters/rename-POS_before_Der-tags.hfst        \
-				filters/remove-Err_SpaceCmp-strings.hfst
+				filters/rename-POS_before_Der-tags.hfst
 	$(AM_V_HXFST)$(PRINTF) "read regex \
 		    @\"filters/remove-derivation-position-tags.hfst\" \
 		.o. @\"filters/remove-dialect-tags.hfst\"             \
-		.o. @\"filters/remove-area-tags.hfst\"             \
+		.o. @\"filters/remove-area-tags.hfst\"                \
 		.o. @\"filters/remove-norm-comp-tags.hfst\"           \
 		.o. @\"filters/remove-orig_lang-tags.hfst\"           \
 		.o. @\"filters/rename-POS_before_Der-tags.hfst\"      \
-		.o. @\"filters/remove-Err_SpaceCmp-strings.hfst\"     \
 		.o. @\"$<\"                                           \
 		;\n\
 	invert net\n\
@@ -174,9 +172,9 @@ analyser-pmatchdisamb-gt-desc.hfst: analyser-pmatchdisamb-gt-desc.tmp.hfst \
 
 # ... as well as in the disambiguation analyser:
 analyser-disamb-gt-desc.%: analyser-disamb-gt-desc.tmp.%      \
-				    filters/remove-dialect-tags.%               \
-				    filters/remove-area-tags.%               \
-					filters/remove-homonymy-tags.%			\
+				    filters/remove-dialect-tags.%             \
+				    filters/remove-area-tags.%                \
+					filters/remove-homonymy-tags.%			  \
 					filters/remove-orig_lang-tags.%           \
 					filters/remove-derivation-position-tags.% \
 					filters/remove-norm-comp-tags.%           \
@@ -184,9 +182,9 @@ analyser-disamb-gt-desc.%: analyser-disamb-gt-desc.tmp.%      \
 					filters/remove-DNorm-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/remove-derivation-position-tags.$*\" \
-			.o. @\"filters/remove-homonymy-tags.$*\"     \
+			.o. @\"filters/remove-homonymy-tags.$*\"            \
 	  		.o. @\"filters/remove-dialect-tags.$*\"             \
-	  		.o. @\"filters/remove-area-tags.$*\"             \
+	  		.o. @\"filters/remove-area-tags.$*\"                \
 			.o. @\"filters/remove-norm-comp-tags.$*\"           \
 			.o. @\"filters/remove-orig_lang-tags.$*\"           \
 			.o. @\"filters/rename-POS_before_Der-tags.$*\"      \
