@@ -1203,6 +1203,8 @@ LIST ALLSYNTAG = (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@-FSUBJ)
 
 BEFORE-SECTIONS
 
+PROTECT (<spelled>) ;
+
 SELECT:SemYear Sem/Date (0 Num) ;
 
 SELECT:SemYear Sem/Year (0 Num)(NOT -1 CURRENCY)(NOT 1 CURRENCY OR MEASURE) ;
@@ -1657,7 +1659,7 @@ REMOVE (V Sg1) (-1 Refl LINK NOT 0 Sg1) ;
 # Sg2
 # ---
 
-SELECT (V Sg2) IF (*-1 (Pron Sg2) BARRIER NOT-ADV) ;
+SELECT (V Sg2) IF (*-1C (Pron Nom Sg2) BARRIER NOT-ADV) ;
 	## Dån jållåra. Ahte dån farga jållårå.
 		
 REMOVE Dem IF (0 (Pron Pers Sg2))(1 (V Sg2));
