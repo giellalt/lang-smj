@@ -22,9 +22,12 @@ GIELLA_GC_VALENCY=
 
 # If there are additional, language specific files used in the GC archive,
 # specify here:
-LOCAL_GC_ZIP_FILES=
+LOCAL_GC_ZIP_FILES=grc-disambiguator.bin
 
 #### BEGIN: Local build targets: ####
+
+grc-disambiguator.cg3: $(top_srcdir)/src/syntax/disambiguator.cg3
+	$(AM_V_GEN)grep -v 'PROTECT' $< > $@
 
 #### END: Local build targets:   ####
 
