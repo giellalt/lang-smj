@@ -195,6 +195,30 @@ analyser-disamb-gt-desc.%: analyser-disamb-gt-desc.tmp.%      \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
+# The HFST Grammar Checker analyser (keep the Err/SpaceCmp strings):
+analyser-gramcheck-gt-desc.hfst: analyser-gramcheck-gt-desc.tmp.hfst \
+				filters/remove-dialect-tags.hfst             \
+				filters/remove-norm-comp-tags.hfst           \
+				filters/remove-derivation-position-tags.hfst \
+				filters/rename-POS_before_Der-tags.hfst      \
+				filters/remove-word-boundary.hfst			 \
+				orthography/spellrelax-with-flagtags.compose.hfst
+	$(AM_V_HXFST)$(PRINTF) "\
+	set encode-weights ON\n\
+	read regex \
+			@\"filters/remove-dialect-tags.hfst\"             \
+		.o. @\"filters/remove-norm-comp-tags.hfst\"           \
+		.o. @\"filters/remove-derivation-position-tags.hfst\" \
+		.o. @\"filters/rename-POS_before_Der-tags.hfst\"      \
+		.o. @\"$<\"                                           \
+		.o. @\"orthography/spellrelax-with-flagtags.compose.hfst\" \
+		.o. @\"filters/remove-word-boundary.hfst\"            \
+		;\n\
+	twosided flag-diacritics\n\
+	invert net\n\
+	save stack $@\n\
+	quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
+
 # We need to add processing of language-specific tags in the generator:
 # Xerox processing due to bug in the operation twosided flag-diacritics:
 generator-gt-norm.xfst: generator-gt-norm.tmp.xfst                \
