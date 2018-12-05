@@ -399,6 +399,8 @@ LIST V-DER = +Der/PassL +Der/PassS +Der/PassD +Der/adda +Der/ahtja +Der/ahttjá 
 
 LIST A-DER = +Der/Car +Der/ferjak +Der/k +Der/lasj +Der/n +Der/r +Der/ravak +Der/sasj +Der/segak +Der/ahkes +Der/lis +Der/ahtes +Der/AAdv +Der/vuota ;
 
+LIST NA-DER = +Der/Car +Der/ferjak +Der/k +Der/lasj +Der/n +Der/ravak +Der/sasj +Der/segak +Der/ahtes ;
+
 SET NOT-DER = WORD - DERIVED ;
 
 # Case sets
@@ -1169,9 +1171,9 @@ REMOVE (Prop Pl) IF (0 (Prop Sg));
 
 REMOVE (Der/lasj A Attr) IF (0 NOT-DER LINK 0 (A Attr));
 REMOVE (Der/lasj A Attr) IF (0 NOT-DER LINK 0 (N));
-REMOVE N-DER IF (0 LEX-N LINK NOT 0 Ess OR (Der3 Actor));
-REMOVE (V* Actor N Sg Nom) IF (0 NOT-ACTOR);
-REMOVE (V* Actor N) IF (0 NOT-ACTOR);  # A try
+REMOVE N-DER IF (0 LEX-N LINK NOT 0 Ess OR Actor);
+REMOVE (Actor N Sg Nom) IF (0 NOT-ACTOR);
+REMOVE (Actor N) IF (0 NOT-ACTOR);  # A try
 
 REMOVE (Actio N Sg Nom) IF (0 (N-NOT-ACTIO Sg Nom));
 REMOVE (Actio N Sg Acc) IF (0 (N-NOT-ACTIO Sg Acc));
@@ -1208,7 +1210,6 @@ REMOVE (A* Adv) IF (0 LEX-ADV) ;
 REMOVE (V-DER Inf) IF (0 (NOT-DER Inf));
 REMOVE V-DER IF (0 LEX-V) ;
 
-REMOVE (Der1) IF (0C (Der3)) ; 
  
 REMOVE Imprt (0 Der/vuota OR (".*#.*t"r)) ; 
 REMOVE Imprt (-1 ("nåv_gåk")) ; 
@@ -1224,7 +1225,7 @@ SELECT Po (-1 Gen)(0 ("diehti"));
 LIST LEMMA1 = "ah" "almatja#bárnne" "Alme#rijkka" "áltár" "birrusij" "denára" "giládit" ("gåhttjot" Der/PassL)  "herlukvuohta" "iehkedis" "Jubmel" "oajvemus" "oajvve#oasse" ("oanedit" Der/Pass) "talennta" "tjáledit" "tjuoladit" "värro#áltár" "ådå" ;
     # first dictionary form
 
-LIST LEMMA2 = "aj" "almatja#bárnep" "alme#rijkka" "álltár" ("biros" Ill) "denárra" ("gillat" Der/d) "gåhtjo#duvvá"  ("herluk" A* Der/vuota) "iehket" "jubmel" ("oajvve" N Superl) "oajvve#oases" "oane#duvvá" "talænnta" ("tjuollat" Der/Pass) ("tjállet" V* TV Der1 Der/Pass) "värro#álltár" "ådås";
+LIST LEMMA2 = "aj" "almatja#bárnep" "alme#rijkka" "álltár" ("biros" Ill) "denárra" ("gillat" Der/d) "gåhtjo#duvvá"  ("herluk" A* Der/vuota) "iehket" "jubmel" ("oajvve" N Superl) "oajvve#oases" "oane#duvvá" "talænnta" ("tjuollat" Der/Pass) ("tjállet" TV Der/PassL) "värro#álltár" "ådås";
 
 REMOVE LEMMA2 IF (0 LEMMA1);
 
@@ -2233,7 +2234,7 @@ SELECT (A Sg Nom) IF (*-1 COPULAS BARRIER Nom OR PrfPrc OR CS OR MANNE LINK 0 Sg
 SELECT (A Sg Nom) IF (*-1 COPULAS BARRIER SV-BOUNDARY2 LINK *-1 (Neg Sg1) OR (Neg Sg2) OR (Neg Sg3) BARRIER NOT-ADV-PCLE)(NEGATE 0 N)(NEGATE 1 N OR A) (NEGATE 1 ("nu") OR ("hui") LINK 1 A);
 	## Ii leat vuogas geavahit hálduiváldima dálá fásta opmodagaide.
 
-SELECT (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-AA LINK 0 Sg3)(NEGATE 0 Inf) (0 (N Sg Ine) OR (Actor) OR (N* A))(*1 EOS OR CLB BARRIER NOT-ADV-PCLE); 
+SELECT (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-AA LINK 0 Sg3)(NEGATE 0 Inf) (0 (N Sg Ine) OR Actor OR NA-DER)(*1 EOS OR CLB BARRIER NOT-ADV-PCLE); 
 	## Lea veahá eahpidahtti, ahte eanaš oassi ođđa govvadáidagis,... 
 	## Dávjá lea lunddolaš, ahte doaktáris lea vástádusrolla.
 
