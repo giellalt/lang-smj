@@ -11,7 +11,7 @@ CORPUSNAME=spellercorpus
 # Specify whether to use corpus weights for frequency ranking of suggestions.
 # Make sure you test the suggestion quality both before and after changing this
 # setting.
-ENABLE_CORPUS_WEIGHTS=no
+ENABLE_CORPUS_WEIGHTS=yes
 
 # Use this as the source lexical fst for unit weighting, it contains correct
 # surface forms except for the word boundary #, which is still present, and
@@ -24,7 +24,7 @@ UW_SPELLER_SRC=generator-mobilespeller-gt-norm-base.hfst
 # point could be to only include word forms occurring at least twice. Try
 # different values to find the best compromise between fst size and suggestion
 # quality.
-CORPUS_SIZE=
+CORPUS_SIZE=22222
 
 ### BEGIN: Local build rules: *.hfst: *.tmp.hfst ###
 
