@@ -39,7 +39,8 @@ GIELLA_FILTER_LOCAL_REGEX_SRCS=\
 					split-CmpN-tags.regex \
 					split-CmpNP-tags.regex \
 					convert_to_flags-CmpNP-tags.regex \
-					change-optionally-word_boundary_to_hyphen.regex
+					change-optionally-word_boundary_to_hyphen.regex \
+					remove-dynamic_compound-char.regex
 
 # List any local filter xfscript files here:
 GIELLA_FILTER_LOCAL_XFSCRIPT_SRCS=
