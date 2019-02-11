@@ -1099,9 +1099,15 @@ LIST PX1 = PxSg1 PxDu1 PxPl1 ;
 LIST PX2 = PxSg2 PxDu2 PxPl2 ;
 LIST PX3 = PxSg3 PxDu3 PxPl3 ;
 
-SET PXNOTSG1 = Px - PxSg1 ; SET PXNOTSG2 = Px - PxSg2 ; SET PXNOTSG3 = Px - PxSg3 ;
-SET PXNOTDU1 = Px - PxDu1 ; SET PXNOTDU2 = Px - PxDu2 ; SET PXNOTDU3 = Px - PxDu3 ;
-SET PXNOTPL1 = Px - PxPl1 ; SET PXNOTPL2 = Px - PxPl2 ; SET PXNOTPL3 = Px - PxPl3 ;
+SET PXNOTSG1 = Px - PxSg1 ; 
+SET PXNOTSG2 = Px - PxSg2 ; 
+SET PXNOTSG3 = Px - PxSg3 ;
+SET PXNOTDU1 = Px - PxDu1 ; 
+SET PXNOTDU2 = Px - PxDu2 ; 
+SET PXNOTDU3 = Px - PxDu3 ;
+SET PXNOTPL1 = Px - PxPl1 ; 
+SET PXNOTPL2 = Px - PxPl2 ; 
+SET PXNOTPL3 = Px - PxPl3 ;
 
 LIST GASKAL = "gaskal" "gaskii" "gaska" "gaskas" ; 
  # p-positions that like coordination
@@ -1236,6 +1242,8 @@ SELECT Ill IF (0 ("gártjes" Ill));
 	## gárttjásij boahtet     
 
 
+
+
 # Lexicalised names
 # -----------------
 
@@ -1245,6 +1253,10 @@ REMOVE (Prop Pl) IF (0 (Prop Sg));
 	## sijáv Betlehemaj rájaj ja javlaj...	
 
 
+LIST NOT-PROP = "Gállá" ;
+
+#!! * Rules for removing some Props which are identical to common nouns
+REMOVE:Prop=noun Prop IF (0 NOT-PROP LINK *-1 BOS OR (":") BARRIER WORD) ;
 
 # Lexicalised derivations
 # -----------------------
@@ -1403,6 +1415,7 @@ REMOVE PxSg2 (*-1 VFIN BARRIER S-BOUNDARY LINK NOT 0 Sg2) ;
 # PxDu1
 
 REMOVE PxDu1 IF (*-1 (Pron Pl1) BARRIER NPNH)(0 PxPl1);
+REMOVE PX2 OR PX3 IF (0 Nom + Pl) ;
 
 # PxDu2
 # PxDu3
@@ -3461,7 +3474,7 @@ SELECT Ill IF (*-1 TV + Der/Pass BARRIER SV-BOUNDARY2);
     
 
 # Coordination:
-SELECT Ill IF (1 (@CNP))(*2C Ill BARRIER NOT-ADJ);
+SELECT Ill IF (1 @CNP)(*2C Ill BARRIER NOT-ADJ);
 	## Guovtij guovtij sijáv ietjas åvdån rájadij juohkka stádaj ja bájkkáj gåsi iesj ájgoj.
 
 
