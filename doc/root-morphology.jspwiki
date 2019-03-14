@@ -171,6 +171,7 @@ The first part of the component may be ..
  *  +Actio    Actio
 
  * +ABBR
+ * +Symbol = independent symbols in the text stream, like £, €, ©
  * +ACR
  * +CLB
  * +PUNCT
@@ -314,13 +315,16 @@ These tags should always be located just before the POS tag.
 !Multiple Semantic tags:
  * +Sem/Ani_Cat						
  * +Sem/Ani_Obj						
+ * +Sem/Act_Clth
  * +Sem/Act_Domain
  * +Sem/Act_Event
  * +Sem/Act_Fruit
  * +Sem/Act_Group Activity and Group
+ * +Sem/Act_Hum_Obj
  * +Sem/Act_Obj-play Activity and Object
  * +Sem/Act_Plc   A persons job is an activity, and a place as well
  * +Sem/Act_Route Activity and Route, ie johtolat
+ * +Sem/Act_Semcon
  * +Sem/Act_Tool-it
  * +Sem/Amount_Build   Amount and Building
  * +Sem/Amount_Semcon
@@ -330,6 +334,7 @@ These tags should always be located just before the POS tag.
  * +Sem/Ani_Build
  * +Sem/Ani_Build-part
  * +Sem/Ani_Build_Hum_Txt
+ * +Sem/Ani_Clth
  * +Sem/Ani_Group
  * +Sem/Ani_Group_Hum
  * +Sem/Ani_Group_Prod-vis
@@ -361,11 +366,13 @@ These tags should always be located just before the POS tag.
  * +Sem/Body_Mat
  * +Sem/Body_Measr
  * +Sem/Body_Obj_Tool-catch
+ * +Sem/Body_Org 				
  * +Sem/Body_Plc
  * +Sem/Body_Plc-elevate
  * +Sem/Body_Time
  * +Sem/Build-part_Ctain_Obj
  * +Sem/Build-part_Plc
+ * +Sem/Build-part_Prod-audio
  * +Sem/Build_Build-part
  * +Sem/Build_Clth-part
  * +Sem/Build_Edu_Org
@@ -374,12 +381,14 @@ These tags should always be located just before the POS tag.
  * +Sem/Build_Org
  * +Sem/Build_Route
  * +Sem/Build_Tool 	
+ * +Sem/Cat_Edu		
  * +Sem/Cat_Group_Hum
  * +Sem/Clth-jewl_Curr
  * +Sem/Clth-jewl_Fruit
  * +Sem/Clth-jewl_Money
  * +Sem/Clth-jewl_Org
  * +Sem/Clth-jewl_Plant
+ * +Sem/Clth_Obj
  * +Sem/Clth-part_Plc	
  * +Sem/Clth_Hum
  * +Sem/Ctain-abstr_Org
@@ -409,6 +418,7 @@ These tags should always be located just before the POS tag.
  * +Sem/Event_Plc-elevate
  * +Sem/Event_Time
  * +Sem/Feat-measr_Plc
+ * +Sem/Feat-phys_Hum
  * +Sem/Feat-phys_Tool-write
  * +Sem/Feat-phys_Veh
  * +Sem/Feat-phys_Wthr
@@ -425,6 +435,7 @@ These tags should always be located just before the POS tag.
  * +Sem/Group_Hum_Plc
  * +Sem/Group_Hum_Prod-vis
  * +Sem/Group_Org
+ * +Sem/Group_Prod-vis_Txt_Veh
  * +Sem/Group_Sign
  * +Sem/Group_Txt
  * +Sem/Hum_Lang
@@ -444,6 +455,9 @@ These tags should always be located just before the POS tag.
  * +Sem/Lang_Tool-catch 				
  * +Sem/Mat_Obj						
  * +Sem/Mat_Plant
+ * +Sem/Mat_Plc
+ * +Sem/Mat_Tool
+ * +Sem/Mat_Tool-catch
  * +Sem/Mat_Txt
  * +Sem/Measr_Plc_Time				
  *  +Sem/Measr_Sign                      = Sign (e.g. numbers, punctuation)
@@ -570,7 +584,7 @@ the class is still kept.
 The following tags are used to guide conversion to IPA: loan words
 and foreign names are usually pronounced (approximately) as in the
 originating (majority) language. Instead of trying to identify the
-correct pronounciation based on fonotactics (orthotactics actually),
+correct pronunciation based on phonotactics (orthotactics actually),
 we tag all words that can't be correctly transcribed using the SME
 transcriber with source language codes. Once tagged, it is possible
 to split the lexical transducer in smaller ones according to langu-
@@ -578,9 +592,9 @@ age, and apply different IPA conversion to each of them.
 The principle of tagging is that we only tag to the extent needed,
 and following a priority:
 # any untagged word is pronounced with SME orthographic conventions
-# NNO and NOB have identical pronounciation, NNO is only used if
+# NNO and NOB have identical pronunciation, NNO is only used if
   different in spelling from NOB
-# SWE has mostly the same pronounciation as NOB, and is only used
+# SWE has mostly the same pronunciation as NOB, and is only used
   if different in spelling from NOB
 # Occasionally even SME (the default) may be tagged, to block other
   languages from being specified, mainly during semi-automatic
@@ -589,7 +603,7 @@ All in all, we want to get as much correctly transcribed to IPA
 with as little work as possible. On the other hand, if more words
 are tagged than strictly needed, this should pose no problem as
 long as the IPA conversion is correct - at least some words will
-get the same pronounciation whether read as SME or NOB/NNO/SWE.
+get the same pronunciation whether read as SME or NOB/NNO/SWE.
  * +OLang/SME - North Sámi
  * +OLang/SMA - South Sámi
  * +OLang/FIN - Finnish
