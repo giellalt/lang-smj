@@ -26,6 +26,7 @@ GT_LEXC_SRCS_L1_L2=\
 				clitics.lexc             \
 				compounding.lexc         \
 				prefixes.lexc            \
+				affixes/acronyms.lexc    \
 				affixes/adjectives.lexc  \
 				affixes/nouns.lexc       \
 				affixes/possessives.lexc \
