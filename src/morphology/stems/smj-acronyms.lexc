@@ -1,908 +1,116 @@
-! Divvun & Giellatekno - open source grammars for Sámi and other languages
-! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
-! http://giellatekno.uit.no & http://divvun.no
-!
-! This program is free software; you can redistribute and/or modify
-! this file under the terms of the GNU General Public License as published by
-! the Free Software Foundation, either version 3 of the License, or
-! (at your option) any later version. The GNU General Public License
-! is found at http://www.gnu.org/licenses/gpl.html. It is
-! also available in the file $GTHOME/LICENSE.txt.
-!
-! Other licensing options are available upon request, please contact
-! giellatekno@hum.uit.no or feedback@divvun.no
-
 LEXICON Acronym
 
- +Use/Circ: FIRSTLETTER  ; ! Dynamically generated acronyms, 	! Remove these from nonrec?
-                           ! between two and four letters long.                          
-            THRD_vow1    ; ! ABA etc
-            LETTERNUMBER ; ! Listed (still not monitored)
-                           ! Perhaps we should allow for a final arabic number at
-                           ! the end of the acronyms, the NRK and NRK2 pattern.
-            SOMELONGACRO ; ! Here, we collect some long acronyms, perhaps we should
-                           ! open for dynamic generation of longer acronyms, if this list gets long.
-            smallacro    ; ! This is a pointer to a lexicon of manually listed small-letter
-                           ! acronyms. They are not generated, since it would interfer with the
-                           ! ordinary transducer, but listed here, as they then can point to the
-                           ! same ACRO lexicon as the generated capital-letter acronyms.
-            ! Quasiacro ;  ! moved to HyphNouns  ! These are compounds with acronyms in the beginning.
-                           ! They are here since they make compounds with hyphen to the left.
+! +Use/Circ: FIRSTLETTER  ; ! Dynamically generated acronyms,    ! Remove these from nonrec?
+!                           ! between two and four letters long.                          
+!            THRD_vow1    ; ! ABA etc
+!            LETTERNUMBER ; ! Listed (still not monitored)
+!                           ! Perhaps we should allow for a final arabic number at
+!                           ! the end of the acronyms, the NRK and NRK2 pattern.
+!            SOMELONGACRO ; ! Here, we collect some long acronyms, perhaps we should
+!                           ! open for dynamic generation of longer acronyms, if this list gets long.
+!            smallacro    ; ! This is a pointer to a lexicon of manually listed small-letter
+!                           ! acronyms. They are not generated, since it would interfer with the
+!                           ! ordinary transducer, but listed here, as they then can point to the
+!                           ! same ACRO lexicon as the generated capital-letter acronyms.
+!            ! Quasiacro ;  ! moved to HyphNouns  ! These are compounds with acronyms in the beginning.
+!                           ! They are here since they make compounds with hyphen to the left.
+!LEXICON FIRSTLETTER
+! B SCND ; C SCND ; Č SCND ; D SCND ; Đ SCND ; F SCND ; G SCND ;         
+! H SCND ; J SCND ; K SCND ; L SCND ; M SCND ; N SCND ; Ŋ SCND ;         
+! P SCND ; Q SCND ; R SCND ; S SCND ; Š SCND ; T SCND ; Ŧ SCND ; V SCND ;        
+! W SCND ; X SCND ; Z SCND ; Ž SCND ;                                                            
+! A SCND ; Á SCND ; E SCND ; I SCND ; O SCND ; U SCND ;                          
+! Æ SCND ; Ø SCND ; Y SCND ; Ä SCND ; Ö SCND ; Å SCND ;                          
+!
+!LEXICON SCND
+! B SCND_CONT ; C SCND_CONT ; Č SCND_CONT ; D SCND_CONT ; Đ SCND_CONT ; F SCND_CONT ; G SCND_CONT ; 
+!     
+! H SCND_CONT ; J SCND_CONT ; K SCND_CONT ; L SCND_CONT ; M SCND_CONT ; N SCND_CONT ; Ŋ SCND_CONT ; 
+!     
+! P SCND_CONT ; Q SCND_CONT ; R SCND_CONT ; S SCND_CONT ; Š SCND_CONT ; T SCND_CONT ; Ŧ SCND_CONT ; V SCND_CONT ;        
+! W SCND_CONT ; X SCND_CONT ; Z SCND_CONT ; Ž SCND_CONT ;                                        
+!                        
+! A SCND_CONT ; Á SCND_CONT ; E SCND_CONT ; I SCND_CONT ; O SCND_CONT ; U SCND_CONT ;            
+!                
+! Æ SCND_CONT ; Ø SCND_CONT ; Y SCND_CONT ; Ä SCND_CONT ; Ö SCND_CONT ; Å SCND_CONT ;
+!   SCND_CONT ; ! directly to the next one, ie only one FIRSTLETTER
+!
+!LEXICON SCND_CONT
+! +Use/-Spell: THRD_vow1                          ;
+! +Use/-Spell: THRD_cons1                         ;
+! %-               ARABIC "weight: 10000" ; ! N-9520 Kárášjohka
+! +Use/-Spell: ARABIC                             ;
+!
+!LEXICON THRD_vow1
+! A THRD_vow2 ; Á THRD_vow2 ; E THRD_vow2 ; I THRD_vow2 ; O THRD_vow2 ; U THRD_vow2 ;            
+! Æ THRD_vow2 ; Ø THRD_vow2 ; Y THRD_vow2 ; Ä THRD_vow2 ; Ö THRD_vow2 ; Å THRD_vow2 ;            
+!                
+!
+!LEXICON THRD_vow2
+! B THRD_vow3 ; C THRD_vow3 ; Č THRD_vow3 ; D THRD_vow3 ; Đ THRD_vow3 ; F THRD_vow3 ; G THRD_vow3 ; 
+!     
+! H THRD_vow3 ; J THRD_vow3 ; K THRD_vow3 ; L THRD_vow3 ; M THRD_vow3 ; N THRD_vow3 ; Ŋ THRD_vow3 ; 
+!     
+! P THRD_vow3 ; Q THRD_vow3 ; R THRD_vow3 ; S THRD_vow3 ; Š THRD_vow3 ; T THRD_vow3 ; Ŧ THRD_vow3 ;
+! V THRD_vow3 ; W THRD_vow3 ; X THRD_vow3 ; Z THRD_vow3 ; Ž THRD_vow3 ;                          
+!                                
+!
+!LEXICON THRD_vow3
+! B THRD_vow4 ; C THRD_vow4 ; Č THRD_vow4 ; D THRD_vow4 ; Đ THRD_vow4 ; F THRD_vow4 ; G THRD_vow4 ; 
+!     
+! H THRD_vow4 ; J THRD_vow4 ; K THRD_vow4 ; L THRD_vow4 ; M THRD_vow4 ; N THRD_vow4 ; Ŋ THRD_vow4 ; 
+!     
+! P THRD_vow4 ; Q THRD_vow4 ; R THRD_vow4 ; S THRD_vow4 ; Š THRD_vow4 ; T THRD_vow4 ; Ŧ THRD_vow4 ;
+! V THRD_vow4 ; W THRD_vow4 ; X THRD_vow4 ; Z THRD_vow4 ; Ž THRD_vow4 ;
+!   THRD_vow4 ; ! Directly to the last vowel, ie only one consonant between the vowels
+!
+!LEXICON THRD_vow4
+! A ACRO_vow ; Á ACRO_vow ; E ACRO_vow ; I ACRO_vow ; O ACRO_vow ; U ACRO_vow ;                  
+!        
+! Æ ACRO_vow ; Ø ACRO_vow ; Y ACRO_vow ; Ä ACRO_vow ; Ö ACRO_vow ; Å ACRO_vow ;                  
+!        
+!LEXICON THRD_cons1
+! B THRD_cons2 ; C THRD_cons2 ; Č THRD_cons2 ; D THRD_cons2 ; Đ THRD_cons2 ; F THRD_cons2 ; G THRD_cons2 ;       
+! H THRD_cons2 ; J THRD_cons2 ; K THRD_cons2 ; L THRD_cons2 ; M THRD_cons2 ; N THRD_cons2 ; Ŋ THRD_cons2 ;       
+! P THRD_cons2 ; Q THRD_cons2 ; R THRD_cons2 ; S THRD_cons2 ; Š THRD_cons2 ; T THRD_cons2 ; Ŧ THRD_cons2 ;
+! V THRD_cons2 ; W THRD_cons2 ; X THRD_cons2 ; Z THRD_cons2 ; Ž THRD_cons2 ;                     
+!                                        
+!
+!LEXICON THRD_cons2
+! B ACRO_cons ; C ACRO_cons ; Č ACRO_cons ; D ACRO_cons ; Đ ACRO_cons ; F ACRO_cons ; G ACRO_cons ;
+! H ACRO_cons ; J ACRO_cons ; K ACRO_cons ; L ACRO_cons ; M ACRO_cons ; N ACRO_cons ; Ŋ ACRO_cons ;
+! P ACRO_cons ; Q ACRO_cons ; R ACRO_cons ; S ACRO_cons ; Š ACRO_cons ; T ACRO_cons ; Ŧ ACRO_cons ;
+! V ACRO_cons ; W ACRO_cons ; X ACRO_cons ; Z ACRO_cons ; Ž ACRO_cons ;
+!   ACRO_cons ; ! Directly to inflections, ie only one last consonant
 
 
 
-LEXICON FIRSTLETTER
- B SCND ; C SCND ; Č SCND ; D SCND ; Đ SCND ; F SCND ; G SCND ; 	
- H SCND ; J SCND ; K SCND ; L SCND ; M SCND ; N SCND ; Ŋ SCND ; 	
- P SCND ; Q SCND ; R SCND ; S SCND ; Š SCND ; T SCND ; Ŧ SCND ; V SCND ; 	
- W SCND ; X SCND ; Z SCND ; Ž SCND ; 								
- A SCND ; Á SCND ; E SCND ; I SCND ; O SCND ; U SCND ; 				
- Æ SCND ; Ø SCND ; Y SCND ; Ä SCND ; Ö SCND ; Å SCND ; 				
 
-LEXICON SCND
- B SCND_CONT ; C SCND_CONT ; Č SCND_CONT ; D SCND_CONT ; Đ SCND_CONT ; F SCND_CONT ; G SCND_CONT ; 	
- H SCND_CONT ; J SCND_CONT ; K SCND_CONT ; L SCND_CONT ; M SCND_CONT ; N SCND_CONT ; Ŋ SCND_CONT ; 	
- P SCND_CONT ; Q SCND_CONT ; R SCND_CONT ; S SCND_CONT ; Š SCND_CONT ; T SCND_CONT ; Ŧ SCND_CONT ; V SCND_CONT ; 	
- W SCND_CONT ; X SCND_CONT ; Z SCND_CONT ; Ž SCND_CONT ; 								
- A SCND_CONT ; Á SCND_CONT ; E SCND_CONT ; I SCND_CONT ; O SCND_CONT ; U SCND_CONT ; 				
- Æ SCND_CONT ; Ø SCND_CONT ; Y SCND_CONT ; Ä SCND_CONT ; Ö SCND_CONT ; Å SCND_CONT ;
-   SCND_CONT ; ! directly to the next one, ie only one FIRSTLETTER
-
-LEXICON SCND_CONT
- +Use/-Spell: THRD_vow1 			 ;
- +Use/-Spell: THRD_cons1			 ;
- %- 		  ARABIC "weight: 10000" ; ! N-9520 Kárášjohka
- +Use/-Spell: ARABIC 				 ;
-
-LEXICON THRD_vow1
- A THRD_vow2 ; Á THRD_vow2 ; E THRD_vow2 ; I THRD_vow2 ; O THRD_vow2 ; U THRD_vow2 ; 				
- Æ THRD_vow2 ; Ø THRD_vow2 ; Y THRD_vow2 ; Ä THRD_vow2 ; Ö THRD_vow2 ; Å THRD_vow2 ; 				
-
-LEXICON THRD_vow2
- B THRD_vow3 ; C THRD_vow3 ; Č THRD_vow3 ; D THRD_vow3 ; Đ THRD_vow3 ; F THRD_vow3 ; G THRD_vow3 ; 	
- H THRD_vow3 ; J THRD_vow3 ; K THRD_vow3 ; L THRD_vow3 ; M THRD_vow3 ; N THRD_vow3 ; Ŋ THRD_vow3 ; 	
- P THRD_vow3 ; Q THRD_vow3 ; R THRD_vow3 ; S THRD_vow3 ; Š THRD_vow3 ; T THRD_vow3 ; Ŧ THRD_vow3 ;
- V THRD_vow3 ; W THRD_vow3 ; X THRD_vow3 ; Z THRD_vow3 ; Ž THRD_vow3 ; 								
-
-LEXICON THRD_vow3
- B THRD_vow4 ; C THRD_vow4 ; Č THRD_vow4 ; D THRD_vow4 ; Đ THRD_vow4 ; F THRD_vow4 ; G THRD_vow4 ; 	
- H THRD_vow4 ; J THRD_vow4 ; K THRD_vow4 ; L THRD_vow4 ; M THRD_vow4 ; N THRD_vow4 ; Ŋ THRD_vow4 ; 	
- P THRD_vow4 ; Q THRD_vow4 ; R THRD_vow4 ; S THRD_vow4 ; Š THRD_vow4 ; T THRD_vow4 ; Ŧ THRD_vow4 ;
- V THRD_vow4 ; W THRD_vow4 ; X THRD_vow4 ; Z THRD_vow4 ; Ž THRD_vow4 ;
-   THRD_vow4 ; ! Directly to the last vowel, ie only one consonant between the vowels
-
-LEXICON THRD_vow4
- A ACRO_vow ; Á ACRO_vow ; E ACRO_vow ; I ACRO_vow ; O ACRO_vow ; U ACRO_vow ; 				
- Æ ACRO_vow ; Ø ACRO_vow ; Y ACRO_vow ; Ä ACRO_vow ; Ö ACRO_vow ; Å ACRO_vow ; 				
-
-LEXICON THRD_cons1
- B THRD_cons2 ; C THRD_cons2 ; Č THRD_cons2 ; D THRD_cons2 ; Đ THRD_cons2 ; F THRD_cons2 ; G THRD_cons2 ; 	
- H THRD_cons2 ; J THRD_cons2 ; K THRD_cons2 ; L THRD_cons2 ; M THRD_cons2 ; N THRD_cons2 ; Ŋ THRD_cons2 ; 	
- P THRD_cons2 ; Q THRD_cons2 ; R THRD_cons2 ; S THRD_cons2 ; Š THRD_cons2 ; T THRD_cons2 ; Ŧ THRD_cons2 ;
- V THRD_cons2 ; W THRD_cons2 ; X THRD_cons2 ; Z THRD_cons2 ; Ž THRD_cons2 ; 								
-
-LEXICON THRD_cons2
- B ACRO_cons ; C ACRO_cons ; Č ACRO_cons ; D ACRO_cons ; Đ ACRO_cons ; F ACRO_cons ; G ACRO_cons ;
- H ACRO_cons ; J ACRO_cons ; K ACRO_cons ; L ACRO_cons ; M ACRO_cons ; N ACRO_cons ; Ŋ ACRO_cons ;
- P ACRO_cons ; Q ACRO_cons ; R ACRO_cons ; S ACRO_cons ; Š ACRO_cons ; T ACRO_cons ; Ŧ ACRO_cons ;
- V ACRO_cons ; W ACRO_cons ; X ACRO_cons ; Z ACRO_cons ; Ž ACRO_cons ;
-   ACRO_cons ; ! Directly to inflections, ie only one last consonant
-
-LEXICON LETTERNUMBER
-! Here, we need a good regex for
-! letter - number combination.
-1-D ACRO_cons ;
-2-C ACRO_cons ;
-3-A ACRO_cons ;
-4-A ACRO_cons ;
-4/OPYC:4%/OPYC ACRO_cons ;
-5-G ACRO_cons ;
-6-B ACRO_cons ;
-A/L ACRO_cons ;
-A/S ACRO_cons ;
-A3 ACRO_cons ;
-A4 ACRO_cons ;
-A5 ACRO_cons ;
-Bb ACRO_cons ;
-CSM_1:CSM%_1 ACRO_cons ;
-D/S ACRO_cons ;
-E6 ACRO_cons ;
-ECHAM/OPYC3 ACRO_cons ;
+mánáj-TV ACRO_cons ;
+mánáj-tv:mánáj-tv ACRO_cons ;
+tæksta-TV ACRO_cons ;
+tæksta-tv ACRO_cons ;
 Jk1 ACRO_cons ;
 jo1 ACRO_cons ;
 jo2 ACRO_cons ;
 jo3 ACRO_cons ;
-K/S ACRO_cons ;
-km/d ACRO_cons ;
-km/h ACRO_cons ;
-km/t ACRO_cons ;
-L-97 ACRO_cons ;
-L/L ACRO_cons ;
-L97S ACRO_cons ;
-LA21 ACRO_cons ;
-LU1 ACRO_cons ;
-LU2 ACRO_cons ;
-NRK1 ACRO_cons ;
-NRK2 ACRO_cons ;
-NRK3 ACRO_cons ;
-O-97 ACRO_cons ;
-O97S ACRO_cons ;
-P-1 ACRO_cons ;
-P-2 ACRO_cons ;
-P-3 ACRO_cons ;
-P-4 ACRO_cons ;
-P1 ACRO_cons ;
-P2 ACRO_cons ;
-P3 ACRO_cons ;
-P4 ACRO_cons ;
-Q-2 ACRO_cons ;
-S/S ACRO_cons ;
-SVT1 ACRO_cons ;
-SVT2 ACRO_cons ;
-SVT24 ACRO_cons ;
-T5PC ACRO_cons ;
-TV2 ACRO_cons ;
-TV3 ACRO_cons ;
-TV4 ACRO_cons ;
-U-19 ACRO_cons ;
-U-23 ACRO_cons ;
-U19 ACRO_cons ;
-U23 ACRO_cons ;
-UTF-8 ACRO_cons ;
-UU2 ACRO_cons ;
-Vg3 ACRO_cons ;
-XLV54%0 ACRO_cons ;
-V-8%0%0 ACRO_cons ;
-8%0%0R ACRO_cons ;
-
-LEXICON SOMELONGACRO		!^C^
-EXFACFON ACRO_cons ;
-EXFACHS ACRO_cons ; 
-mánáid-TV ACRO_cons ;
-mánáj-TV ACRO_cons ;
-tæksta-TV ACRO_cons ;
-
-! Here comes 500 predefined acronyms, for speller use
-! (the acro generator is circular)
-
-AB ACRO_cons ;
-ABC ACRO_cons ;
-ACTA ACRO_cons ;
-AD ACRO_cons ;
-ADHD ACRO_cons ;
-ADSL ACRO_cons ;
-AFS ACRO_cons ;
-AIDS ACRO_cons ;
-AL ACRO_cons ;
-AMT ACRO_cons ;
-AN ACRO_cons ;
-ANC ACRO_cons ;
-ANS ACRO_cons ;
-AP ACRO_cons ;
-APTN ACRO_cons ;
-AR ACRO_cons ;
-ARN ACRO_cons ;
-AS ACRO_cons ;
-ASA ACRO_vow ;
-ASS ACRO_cons ;
-ASVO ACRO_cons ;
-AT ACRO_cons ;
-ATSIC ACRO_cons ;
-ATV ACRO_cons ;
-AU ACRO_cons ;
-AUF ACRO_cons ;
-AV ACRO_cons ;
-AWG ACRO_cons ;
-AYC ACRO_cons ;
-AÁF ACRO_cons ;
-BA ACRO_cons ;
-BASIC ACRO_cons ; 
-BB ACRO_cons ;
-BBC ACRO_cons ;
-BBL ACRO_cons ;
-BD ACRO_cons ;
-BDF ACRO_cons ;
-BES ACRO_cons ;
-BHD ACRO_cons ;
-BI ACRO_cons ;
-BIBSYS ACRO_cons ;
-BK ACRO_cons ;
-BMB ACRO_cons ;
-BNB ACRO_cons ;
-BNO ACRO_cons ;
-BOF ACRO_cons ;
-BOL ACRO_cons ;
-BONO ACRO_cons ;
-BPA ACRO_cons ;
-BSS ACRO_cons ;
-BST ACRO_cons ;
-BT ACRO_cons ;
-BU ACRO_cons ;
-BUL ACRO_cons ;
-BUORIT ACRO_cons ;
-BUP ACRO_cons ;
-CBS ACRO_cons ;
-CC ACRO_cons ;
-CCITT ACRO_cons ;
-CD ACRO_cons ;
-CERD ACRO_cons ;
-CIA ACRO_cons ;
-CNN ACRO_cons ;
-CNN ACRO_cons ;
-CO ACRO_cons ;
-CO2 ACRO_cons ;
-COCOM ACRO_cons ;
-COMECON ACRO_cons ;
-COOP ACRO_cons ;
-CPJ ACRO_cons ;
-CV ACRO_cons ;
-DA ACRO_cons ;
-DAB ACRO_cons ;
-DAN ACRO_cons ;
-DAT ACRO_cons ;
-DBE ACRO_cons ;
-DD ACRO_cons ;
-DE ACRO_cons ;
-DES ACRO_cons ;
-DFD ACRO_cons ;
-DGT ACRO_cons ;
-DILLI ACRO_vow ;
-DIR ACRO_cons ;
-DJ ACRO_cons ;
-DKS ACRO_cons ;
-DL ACRO_cons ;
-DN ACRO_cons ;
-DNA ACRO_cons ;
-DON ACRO_cons ;
-DPS ACRO_cons ;
-DS ACRO_cons ;
-DSE ACRO_cons ;
-DSF ACRO_cons ;
-DSI ACRO_cons ;
-DSJ ACRO_cons ;
-DSK ACRO_cons ;
-DT ACRO_cons ;
-DUS ACRO_cons ;
-DVD ACRO_cons ;
-DÁ ACRO_cons ;
-DÁL ACRO_cons ;
-EAI ACRO_cons ;
-ECA ACRO_cons ;
-ECOSOC ACRO_cons ;
-ED ACRO_cons ;
-EDB ACRO_cons ;
-EEK ACRO_cons ;
-EEO ACRO_cons ;
-EES ACRO_cons ;
-EFS ACRO_cons ;
-EFTA ACRO_cons ;
-EG ACRO_cons ;
-EGD ACRO_cons ;
-EKG ACRO_cons ;
-EM ACRO_cons ;
-EMM ACRO_cons ;
-EMRIP ACRO_cons ;
-ENA ACRO_vow ;
-ENØK ACRO_cons ; 
-EO ACRO_cons ;
-EP ACRO_cons ;
-ER ACRO_cons ;
-ERUF ACRO_cons ;
-ESA ACRO_vow ;
-ETA ACRO_vow ;
-ETS ACRO_cons ;
-EU ACRO_cons ;
-EZLN ACRO_cons ;
-EØF ACRO_cons ;
-EØS ACRO_cons ;
-FA ACRO_cons ;
-FAB ACRO_cons ;
-FAF ACRO_cons ;
-FAO ACRO_cons ;
-FAS ACRO_cons ;
-FC ACRO_cons ;
-FD ACRO_cons ;
-FE ACRO_cons ;
-FFA ACRO_cons ;
-FFF ACRO_cons ;
-FFR ACRO_cons ;
-FGDL ACRO_cons ;
-FIFA ACRO_cons ;
-FIM ACRO_cons ;
-FJ ACRO_cons ;
-FK ACRO_cons ;
-FLL ACRO_cons ;
-FLS ACRO_cons ;
-FM ACRO_cons ;
-FMX ACRO_cons ;
-FN ACRO_cons ;
-FNUC ACRO_cons ;
-FO ACRO_cons ;
-FORTRAN ACRO_cons ;
-FPPS ACRO_cons ;
-FS ACRO_cons ;
-FSG ACRO_cons ;
-FUG ACRO_cons ;
-FUOM ACRO_cons ;
-FÁGA ACRO_vow ;
-GB ACRO_cons ;
-GD ACRO_cons ;
-GDL ACRO_cons ;
-GG ACRO_cons ;
-GGD ACRO_cons ;
-GHVS ACRO_cons ;
-GII ACRO_cons ;
-GJ ACRO_cons ;
-GJSL ACRO_cons ;
-GJSS ACRO_cons ;
-GL ACRO_cons ;
-GLR ACRO_cons ;
-GO ACRO_cons ;
-GOD ACRO_cons ;
-GP ACRO_cons ;
-GPS ACRO_cons ;
-GS ACRO_cons ;
-GSG ACRO_cons ;
-GSM ACRO_cons ;
-GSS ACRO_cons ;
-HB ACRO_cons ;
-HBO ACRO_cons ;
-HE ACRO_cons ;
-HEI ACRO_cons ;
-HFK ACRO_cons ;
-HIV ACRO_cons ;
-HK ACRO_cons ;
-HO ACRO_cons ;
-HRW ACRO_cons ;
-HT ACRO_cons ;
-HV ACRO_cons ;
-HVS ACRO_cons ;
-IBK ACRO_cons ;
-IBM ACRO_cons ;
-ICC ACRO_cons ;
-ICES ACRO_cons ;
-ID ACRO_cons ;
-IF ACRO_cons ;
-IFU ACRO_vow ;
-II ACRO_cons ;
-III ACRO_cons ;
-IIIA ACRO_vow ;
-IKO ACRO_vow ;
-IKT ACRO_cons ;
-IL ACRO_cons ;
-ILAR ACRO_cons ;
-ILIOS ACRO_cons ;
-ILO ACRO_vow ;
-ILO ACRO_vow ;
-ILUS ACRO_cons ;
-IMA ACRO_cons ;
-IN ACRO_cons ;
-INTEREG+Err/Orth:INTEREG ACRO_cons ; !  - proper according to čállinrávvagat
-INTERREG+Err/Orth:INTERREG ACRO_cons ; !  - propername according to čállinrávvagat
-IOC ACRO_cons ;
-IPS ACRO_cons ;
-IRA ACRO_cons ;
-IRE ACRO_cons ;
-IS ACRO_cons ;
-ISAN ACRO_cons ;
-ISBN ACRO_cons ;
-ISDN ACRO_cons ;
-IT ACRO_cons ;
-IV ACRO_cons ;
-IW ACRO_cons ;
-IWGIA ACRO_cons ;
-JA ACRO_cons ;
-JB ACRO_cons ;
-JH ACRO_cons ;
-JK ACRO_cons ;
-JL ACRO_cons ;
-JOD ACRO_cons ;
-JPD ACRO_cons ;
-JPG ACRO_cons ;
-JR ACRO_cons ;
-JSL ACRO_cons ;
-JUO ACRO_vow ;
-JUS ACRO_cons ;
-KAB ACRO_cons ;
-KBB ACRO_cons ;
-KD ACRO_cons ;
-KF ACRO_cons ;
-KFK ACRO_cons ;
-KGD ACRO_cons ;
-KIBK ACRO_cons ;
-KIM ACRO_cons ;
-KISP ACRO_cons ;
-KJJS ACRO_cons ;
-KJSS ACRO_cons ;
-KKS ACRO_cons ;
-KLM ACRO_cons ;
-KLP ACRO_cons ;
-KM ACRO_cons ;
-KOAS ACRO_cons ;
-KPK ACRO_cons ;
-KR ACRO_cons ;
-KRD ACRO_cons ;
-KRIPOS+Err/Orth:KRIPOS ACRO_cons ; !  - propername according to čállinrávvagat
-KS ACRO_cons ;
-KSG ACRO_cons ;
-KSS ACRO_cons ;
-KU ACRO_cons ;
-KUF ACRO_cons ;
-LA ACRO_cons ;
-LD ACRO_cons ;
-LEA ACRO_vow ;
-LEI ACRO_cons ;
-LHL ACRO_cons ;
-LKAB ACRO_cons ;
-LLH ACRO_cons ;
-LMK ACRO_cons ;
-LMS ACRO_cons ;
-LO ACRO_cons ;
-LOBI ACRO_cons ;
-LSD ACRO_cons ;
-LU ACRO_cons ;
-MAS ACRO_cons ;
-MB ACRO_cons ;
-MBD ACRO_cons ;
-MBL ACRO_cons ;
-MC ACRO_cons ;
-MD ACRO_cons ;
-MEGA ACRO_vow ;
 aktan.no ACRO_vow ;
-AC ACRO_cons ;
-NSU ACRO_cons ;
-MG ACRO_cons ;
-LTI ACRO_cons ;
-LDV ACRO_cons ;
-IZH ACRO_cons ;
-HRG ACRO_cons ;
-GM ACRO_cons ;
-FWD ACRO_cons ;
-ERF ACRO_cons ;
-DKW ACRO_cons ;
-AEC ACRO_cons ;
-Diamond% T ACRO_cons ;
-ET ACRO_cons ;
-SC ACRO_cons ;
-RE ACRO_cons ;
-MGD ACRO_cons ;
-MGP ACRO_cons ;
-MIEHTÁ ACRO_vow ;
-MIELDE ACRO_vow ;
-MK ACRO_cons ;
-ML ACRO_cons ;
-MM ACRO_cons ;
-MMI ACRO_cons ;
-MNOSS ACRO_cons ;
-MNP ACRO_cons ;
-MP ACRO_cons ;
-MS ACRO_cons ;
-MSN ACRO_cons ;
-MUHTO ACRO_cons ;
-MUVÁ+Err/Orth:MUVÁ ACRO_cons ; ! MuVá
-MW ACRO_cons ;
-MY ACRO_cons ;
-MÁ ACRO_cons ;
-NA ACRO_cons ;
-NAF ACRO_cons ;
-NASCO ACRO_vow ;
-NATO ACRO_cons ;
-NAVO ACRO_cons ; 
-NAČ ACRO_cons ;
-NB ACRO_cons ;
-NBR ACRO_cons ;
-NCS ACRO_cons ;
-NEG ACRO_cons ;
-NGO ACRO_cons ;
-NGU ACRO_cons ;
-NHO ACRO_cons ;
-NIBR ACRO_cons ;
-NIF ACRO_cons ;
-NILF ACRO_cons ;
-NINA ACRO_cons ;
-NINA-NIKU ACRO_vow ;
-NIPIAA ACRO_cons ; 
-NJ ACRO_cons ;
-NJFF ACRO_cons ;
-NKK ACRO_cons ;
-NKS ACRO_cons ;
-NLS ACRO_cons ;
-NM ACRO_cons ;
-NMK ACRO_cons ;
-NMT ACRO_cons ;
-NN ACRO_cons ;
-NNS ACRO_cons ;
-NOK ACRO_cons ;
-NOPA ACRO_vow ;
-NOR ACRO_cons ;
-SAMINOR ACRO_cons ;
-NORAD ACRO_cons ; 
-NORUT ACRO_cons ; 
-NOS ACRO_cons ;
-NOU ACRO_cons ;
-NRK ACRO_cons ;
-NRK3 ACRO_cons ;
-NRQ ACRO_cons ;
-NSB ACRO_cons ;
-NSD ACRO_cons ;
-NSI ACRO_cons ;
-NSR ACRO_cons ;
-NSR-N ACRO_cons ;
-NTB ACRO_cons ;
-NTL ACRO_cons ;
-NTNU ACRO_cons ;
-NU ACRO_cons ;
-NVE ACRO_cons ;
-NÁČ ACRO_cons ;
-NČE ACRO_cons ;
-NuorajTV+Err/Orth:Nuoraj-tv ACRO_cons ;
-NuorajTV+Err/Orth:NuorajTv ACRO_cons ;
-NuorajTV ACRO_cons ;
-OAFIR ACRO_cons ;
-OAS ACRO_cons ;
-OASIS ACRO_cons ;
-OB ACRO_cons ;
-OD ACRO_cons ;
-ODD ACRO_cons ;
-OED ACRO_cons ;
-OG ACRO_cons ;
-OH ACRO_cons ;
-OHCAN ACRO_cons ;
-OIPA ACRO_vow ;
-OK ACRO_cons ;
-OL ACRO_cons ;
-OLU ACRO_vow ;
-ON ACRO_cons ;
-ORO ACRO_vow ;
-OS ACRO_cons ;
-OSL ACRO_cons ;
-OSS ACRO_cons ;
-OT ACRO_cons ;
-OVDAL ACRO_cons ;
-PB ACRO_cons ;
-PC ACRO_cons ;
-PDF ACRO_cons ;
-PETA ACRO_cons ;
-PFK ACRO_cons ;
-PFL ACRO_cons ;
-PFU ACRO_cons ;
-PIL ACRO_cons ;
-PIPE ACRO_vow ;
-PL ACRO_cons ;
-PM ACRO_cons ;
-POT ACRO_cons ;
-PPB ACRO_cons ;
-PPS ACRO_cons ;
-PPT ACRO_cons ;
-PR ACRO_cons ;
-PS ACRO_cons ;
-PUT ACRO_cons ;
-RAF ACRO_cons ;
-RAG ACRO_cons ;
-RBK ACRO_cons ;
-RBL ACRO_cons ;
-RD ACRO_cons ;
-RDA ACRO_cons ;
-REMA+Err/Orth:REMA ACRO_cons ; !  - proper according to čállinrávvagat
-RKTL ACRO_cons ;
-RMS ACRO_cons ;
-RNNU ACRO_cons ;
-RO ACRO_cons ;
-ROP ACRO_cons ;
-RPU ACRO_vow ;
-RS ACRO_cons ;
-RSDAP ACRO_cons ;
-RSFSR ACRO_cons ;
-RSR ACRO_cons ;
-RSS ACRO_cons ;
-RUF ACRO_cons ;
-RV ACRO_cons ;
-SAF ACRO_cons ;
-SAFE ACRO_cons ;
-SAK ACRO_cons ;
-SÁNAG ACRO_cons ;
-SANKS ACRO_cons ;
-SAP ACRO_cons ;
-SAS ACRO_cons ;
-SATØ ACRO_cons ;
-SAÁO ACRO_vow ;
-SB ACRO_cons ;
-SBB ACRO_cons ;
-SBS ACRO_cons ;
-SBSS ACRO_cons ;
-SCA ACRO_cons ;
-SCPAR ACRO_cons ;
-SD ACRO_cons ;
-SDD ACRO_cons ;
-SDG ACRO_cons ;
-SDGB ACRO_cons ;
-SDR ACRO_cons ;
-SDS ACRO_cons ;
-SE ACRO_cons ;
-SEFO ACRO_cons ;
-SEG ACRO_cons ;
-SEK ACRO_cons ;
-SF ACRO_cons ;
-SF ACRO_cons ;
-SF-%012 ACRO_cons ;
-SFF ACRO_cons ;
-SFO ACRO_cons ;
-SFR ACRO_cons ;
-SFS ACRO_cons ;
-SFT ACRO_cons ;
-SG ACRO_cons ;
-SGL ACRO_cons ;
-SGP ACRO_cons ;
-SGR ACRO_cons ;
-SGRN ACRO_cons ;
-SGS ACRO_cons ;
-SI ACRO_cons ;
-SIFI ACRO_cons ;
-SISA ACRO_vow ;
-SIVA ACRO_vow ;
-SJ ACRO_cons ;
-SJS ACRO_cons ;
-SK ACRO_cons ;
-SKES ACRO_cons ;
-SKINN ACRO_cons ;
-SKR ACRO_cons ;
-SKS ACRO_cons ;
-SKUP ACRO_cons ;
-SL ACRO_cons ;
-SLF ACRO_cons ;
-SLČ ACRO_cons ;
-SM ACRO_cons ;
-SMK ACRO_cons ;
-SMS ACRO_cons ;
-SN ACRO_cons ;
-SND ACRO_cons ;
-SNF ACRO_cons ;
-SNJ ACRO_cons ;
-SNO ACRO_cons ;
-SNPL ACRO_cons ;
-SNPN ACRO_cons ;
-SOD ACRO_cons ;
-SOF ACRO_cons ;
-SOG ACRO_cons ;
-SOIF ACRO_cons ;
-SOL ACRO_cons ;
-SOR ACRO_cons ;
-SOS ACRO_cons ;
-SOU ACRO_cons ;
-SP ACRO_cons ;
-SPOR ACRO_cons ;
-SPR ACRO_cons ;
-SR ACRO_cons ;
-SRJ ACRO_cons ;
-SRV ACRO_cons ;
-SS ACRO_cons ;
-SSA ACRO_cons ;
-SSB ACRO_cons ;
-SSF ACRO_cons ;
-SSG ACRO_cons ;
-SSL ACRO_cons ;
-SSN ACRO_cons ;
-SSO ACRO_cons ;
-SSR ACRO_cons ;
-SSS ACRO_cons ;
-SSSR ACRO_cons ;
-STIL ACRO_cons ;
-SU ACRO_cons ;
-SUF ACRO_cons ;
-SUFUR ACRO_cons ;
-SUPU ACRO_vow ;
-SUS ACRO_cons ;
-SV ACRO_cons ;
-SVD ACRO_cons ;
-SVF ACRO_cons ;
-SVL ACRO_cons ;
-SVL-N ACRO_cons ;
-SVL-S ACRO_cons ;
-SVT ACRO_cons ;
-SÁ ACRO_cons ;
-SÁB ACRO_cons ;
-SÁL ACRO_cons ;
 SÁLAS ACRO_cons ; 
 SÁMÁS ACRO_cons ; 
-SÅG ACRO_cons ;
-TAC ACRO_cons ;
-TCO ACRO_cons ;
-TD ACRO_cons ;
-TIL ACRO_cons ;
-TNT ACRO_cons ;
-TONO ACRO_cons ;
-TRAS ACRO_cons ;
-TSI ACRO_cons ;
-TT ACRO_cons ;
-TV ACRO_cons ;
-UB ACRO_cons ;
-UD ACRO_cons ;
-UDI ACRO_cons ;
-UDSL ACRO_cons ;
-UEFA ACRO_cons ;
-UEW ACRO_cons ;
-UKM ACRO_cons ;
-UN ACRO_cons ;
-UNDP ACRO_cons ;
-UNEP ACRO_cons ;
-UNESCO ACRO_cons ;
-UNG ACRO_cons ;
-UNICEF ACRO_cons ; 
-UNIKOM ACRO_cons ; 
-UNN ACRO_cons ;
-UNTAK ACRO_cons ;
-UR ACRO_cons ;
-URACCAN ACRO_cons ;
-US ACRO_cons ;
-USA ACRO_cons ;
-USKAV ACRO_cons ;
-VBL ACRO_cons ;
-VG ACRO_cons ;
-VI ACRO_cons ;
-VII ACRO_cons ;
-VIII ACRO_cons ;
-VM ACRO_cons ;
-VOX ACRO_cons ;
-VR ACRO_cons ;
-VS ACRO_cons ;
-VUK ACRO_cons ;
-VVS ACRO_cons ;
-VW ACRO_cons ;
-WC ACRO_cons ;
-WCIP ACRO_cons ;
-WHO ACRO_cons ;
-WINHEC ACRO_cons ;
-WRH ACRO_cons ;
-WTO ACRO_cons ;
-WWA ACRO_cons ;
-WWF ACRO_cons ;
-WWM ACRO_cons ;
-XX ACRO_cons ;
-YEH ACRO_cons ;
-YLE ACRO_cons ;
-YSS ACRO_cons ;
-ÁJA ACRO_cons ; 
-ÁLGU ACRO_cons ; 
-ÁVD ACRO_cons ;
-ÅT ACRO_cons ;
-ČSV ACRO_cons ;
-
-
-LEXICON smallacro
-Aa ACRO_cons ;
-as ACRO_cons ; !A/S
-Brokkoli% MT ACRO_cons ;
-cd ACRO_cons ;
-dvd ACRO_cons ;
-mánáj-tv:mánáj-tv ACRO_cons ;
-Radisson-SAS ACRO_cons ;
-SamIT ACRO_cons ;
-SMSAm ACRO_cons ;
-tæksta-tv ACRO_cons ;
-tv ACRO_cons ;
-TWh ACRO_cons ;
-
-!Here comes the set of acronyms that
-!are moved from abbr-sme-lex.txt
-AciA ACRO_vow ;
-AiS ACRO_cons ;
-Art ACRO_cons ;
-Bb ACRO_cons ;
-Bbl ACRO_cons ;
-BfS ACRO_cons ;
-DeS ACRO_cons ;
-DnB ACRO_cons ;
-Dssn ACRO_cons ;
-DuÅ ACRO_cons ;
-ekg ACRO_cons ;
-EtMk ACRO_cons ;
-FBb ACRO_cons ;
-FeFo ACRO_cons ;
-FGb ACRO_cons ;
-Flf ACRO_cons ;
-FoU ACRO_cons ;
-FrP ACRO_cons ;
-Frp ACRO_cons ;
-FrS ACRO_cons ;
-Gb ACRO_cons ;
-Ger ACRO_cons ;
-Gwh ACRO_cons ;
-HadCM ACRO_cons ;
-HUM-fak+Err/Orth:HUM-fak ACRO_cons ;  !  - propername according to čállinrávvagat
-ImO ACRO_vow ;
-Jd ACRO_cons ;
-Ji ACRO_cons ;
-K-ent+Err/Orth:K-ent ACRO_cons ;  !  - propername according to čállinrávvagat
-kB ACRO_cons ;
-KBb ACRO_cons ;
-KiMK ACRO_cons ;
-KoKo ACRO_vow ;
-KoKS ACRO_cons ;
-komvux+Err/Orth:komvux ACRO_cons ; !  - propername according to čállinrávvagat
-KrF ACRO_cons ;
-Krf ACRO_cons ;
+SÁNAG ACRO_cons ;
+SUPU ACRO_vow ;
+DÁ ACRO_cons ;
+DÁL ACRO_cons ;
 KrÁ ACRO_cons ;
-kVA ACRO_cons ;
 KáB ACRO_cons ;
-LaMk ACRO_cons ;
-LaW ACRO_cons ;
-lsd ACRO_cons ;
-LuW ACRO_cons ;
-Med-fak+Err/Orth:Med-fak ACRO_cons ;  !  - propername according to čállinrávvagat
-MiF ACRO_cons ;
+MIEHTÁ ACRO_vow ;
+MIELDE ACRO_vow ;
+MUHTO ACRO_cons ;
+MUVÁ+Err/Orth:MUVÁ ACRO_cons ; ! MuVá
 MuVá+Err/Orth:MuVá ACRO_cons ;  !  - propername according to čállinrávvagat
-NgL ACRO_cons ;
-NoKTuRNL+Err/Orth:NoKTuRNL ACRO_cons ;  !  - propername according to čállinrávvagat
-Norfu+Err/Orth:Norfu ACRO_cons ;  !  - propername according to čállinrávvagat
-Or ACRO_cons ;
-pc ACRO_cons ;
-pdf ACRO_cons ;
-PhD ACRO_cons ;
-pps ACRO_cons ;
-RiTø+Err/Orth:Ri^Tø ACRO_cons ;  !  - propername according to čállinrávvagat
-Rp ACRO_cons ;
-Rp ACRO_cons ;
-Rv ACRO_cons ;
-SamS ACRO_cons ;
-SATø+Err/Orth:SATø ACRO_cons ;  !  - propername according to čállinrávvagat
-Sf ACRO_cons ;
-SfB ACRO_cons ;
-SfF ACRO_cons ;
-Sfruo ACRO_cons ;
-SkL ACRO_cons ;
-StA ACRO_cons ;
-SUKPb ACRO_cons ;
-SvJT ACRO_cons ;
-SVL-Fi ACRO_cons ;
-SáB ACRO_cons ;
-UiB ACRO_cons ;
-UiO ACRO_cons ;
-UiT ACRO_cons ;
-UiTø+Err/Orth:UiTø ACRO_cons ;  !  - propername according to čállinrávvagat
-wc ACRO_cons ;
+NÁČ ACRO_cons ;
+NČE ACRO_cons ;
+SAÁO ACRO_vow ;
+SLČ ACRO_cons ;
 
-!<-----the alphabet----->
-!a ACRO_cons ; !^C^
-!á ACRO_cons ; !^C^
-!b ACRO_cons ; !^C^
-!c ACRO_cons ; !^C^
-!č ACRO_cons ; !^C^
-!d ACRO_cons ; !^C^
-!đ ACRO_cons ; !^C^
-!e ACRO_cons ; !^C^
-!f ACRO_cons ; !^C^
-!g ACRO_cons ; !^C^
-!h ACRO_cons ; !^C^
-!i ACRO_cons ; !^C^
-!j ACRO_cons ; !^C^
-!k ACRO_cons ; !^C^
-!l ACRO_cons ; !^C^
-!m ACRO_cons ; !^C^
-!n ACRO_cons ; !^C^
-!ŋ ACRO_cons ; !^C^
-!o ACRO_cons ; !^C^
-!p ACRO_cons ; !^C^
-!q ACRO_cons ; !^C^
-!r ACRO_cons ; !^C^
-!s ACRO_cons ; !^C^
-!š ACRO_cons ; !^C^
-!t ACRO_cons ; !^C^
-!ŧ ACRO_cons ; !^C^
-!u ACRO_cons ; !^C^
-!v ACRO_cons ; !^C^
-!x ACRO_cons ; !^C^
-!y ACRO_cons ; !^C^
-!z ACRO_cons ; !^C^
-!ž ACRO_cons ; !^C^
-!å ACRO_cons ; !^C^
-!æ ACRO_cons ; !^C^
-!ø ACRO_cons ; !^C^
-!ä ACRO_cons ; !^C^
-!ö ACRO_cons ; !^C^
-
-!LEXICON quasiacro moved to HyphNouns
-!CD-rom CELSIUS ;
-!CD-singel GAHPER ; !^LOAN
-!P2-kanálla:P2-kan AREAL ;
-!cd-rom CELSIUS ;
 
