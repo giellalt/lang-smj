@@ -170,6 +170,10 @@ gt_CONFIG_FILES
 ##### BEGIN: Add language-specific list of files to ######
 ########## be processed by autoconf below here: ##########
 
+# Tag test file:
+AC_CONFIG_FILES([test/src/morphology/tag_test.sh], \
+      [chmod a+x test/src/morphology/tag_test.sh])
+
 ############ END: Language-specific scripts. #############
 
 # This must be near the end of all configure.ac files:
