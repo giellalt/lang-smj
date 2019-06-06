@@ -3122,13 +3122,15 @@ SELECT (Prop Mal) (-1 ("ieŋŋgil"))(0 ("Gabriel")) ;
 
 # Prop Plc or not
 # - - - - - - - -
-REMOVE Plc IF (*1 ("guhti") OR ("bárnne") BARRIER WORD);  
-REMOVE Plc IF (-1 ("jubmel") OR ("allak"))(0 Mal OR Fem);  
+REMOVE Sem/Plc IF (*1 ("guhti") OR ("bárnne") BARRIER WORD);  
+REMOVE Sem/Plc IF (-1 ("jubmel") OR ("allak"))(0 Sem/Mal OR Sem/Fem); 
 
+REMOVE Sem/Sur IF (0 (Sem/Plc Prop Ine)) (1 (Sem/Plc Prop Ine)) (NOT -1 Sem/Fem OR Sem/Mal) ;
+	## Ådå kádja anon {Måsken} Divtasvuonan li viesáda danna ådå kájav adnuj válldám.
 
 # Attr
 # ----
-IFF Attr IF (0 (Prop Mal Nom) OR (Prop Fem Nom))(*1 (N Prop Sur) OR (N Prop Fem) OR (N Prop Mal) BARRIER NOT-ABBR); # (NEGATE 0 (@OBJ) LINK *1 (@OPRED) BARRIER NOT-NP); 
+IFF Attr IF (0 (Prop Sem/Mal Nom) OR (Prop Sem/Fem Nom))(*1 (N Prop Sem/Sur) OR (N Prop Sem/Fem) OR (N Prop Sem/Mal) BARRIER NOT-ABBR); # (NEGATE 0 (@OBJ) LINK *1 (@OPRED) BARRIER NOT-NP); 
 #REMOVE Attr IF (0 (Prop Mal) OR (Prop Fem))(0 Nom)(NEGATE *1 (N Prop Sur) OR (N Prop Fem) OR (N Prop Mal) BARRIER NOT-ABBR); # (NEGATE 0 (@OBJ) LINK *1 (@OPRED) BARRIER NOT-NP); 
 
 REMOVE (A Attr) (0 ("duolla" Adv) LINK *-1 ("liehket") BARRIER NOT-PCLE)(1 Gen LINK 1 N) ;
