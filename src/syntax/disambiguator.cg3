@@ -432,16 +432,16 @@ LIST @X = @X ;
 # Semantic tags
 # -------------
 
-LIST Ani = Ani ; 
-LIST Fem = Fem ; 
-LIST Mal = Mal ;
-LIST Obj = Obj ; 
-List Org = Org ; 
-LIST Plc = Plc ;
-LIST Sur = Sur ; 
+LIST Sem/Ani = Sem/Ani ; 
+LIST Sem/Fem = Sem/Fem ; 
+LIST Sem/Mal = Sem/Mal ;
+LIST Sem/Obj = Sem/Obj ; 
+List Sem/Org = Sem/Org ; 
+LIST Sem/Plc = Sem/Plc ;
+LIST Sem/Sur = Sem/Sur ; 
 LIST Tit = Tit ;
 
-LIST HUM-PROP = Fem Mal Sur Tit ;
+LIST HUM-PROP = Sem/Fem Sem/Mal Sem/Sur Tit ;
 
 # Other tags
 # ----------
@@ -1244,7 +1244,7 @@ SELECT:Sem/Date  Sem/Date + Nom ; #foreløpig, for MT
     # Table of Contents #
     # ----------------- #
 
-#SELECT (@TITLE) IF (1 Prop LINK 0 Mal OR Fem OR Sur);
+#SELECT (@TITLE) IF (1 Prop LINK 0 Sem/Mal OR Sem/Fem OR Sem/Sur);
 	## Suv birra profehta Jesaja le hållam.
     
 SELECT Ill IF (0 ("gártjes" Ill));
@@ -1857,7 +1857,7 @@ MAP (@PCLE) TARGET Pcle ;
 MAP (@Num<) TARGET ABBR IF (-1 Num)(0 INITIAL LINK NOT 1 NP-MEMBER);
   	## 98 B.
   	
-MAP (@>N) TARGET ABBR IF (-1 (Prop Mal) OR (Prop Fem))(1 (Prop Sur));
+MAP (@>N) TARGET ABBR IF (-1 (Prop Sem/Mal) OR (Prop Sem/Fem))(1 (Prop Sem/Sur));
 	## Aslak A. Guttorm.  
 
 # Mapping vocatives - taken from sme-dis.rle
@@ -1882,7 +1882,7 @@ MAP (@VOC) TARGET (N Nom) IF (-2 BOS)(-1 (Imprt Sg2))(NEGATE -1 Adv OR Qst)(1 EO
 MAP (@VOC) TARGET (N Nom) IF (*-1 VFIN)(-1 COMMA LINK NOT -1 Nom)(1 COMMA LINK NOT 1 Nom);
 	## Buvttes, Máhtte, goikemuoraid!
 	## Tjuovvolav duv, Härrá, valla suova muv vuostak vuolgget fuolkám hivástahtátjit.
-MAP (@VOC) TARGET (Prop Nom) IF (0 Mal Or Fem LINK -1 COMMA LINK *-1 (Pers Sg2))(1 COMMA) ;
+MAP (@VOC) TARGET (Prop Nom) IF (0 Sem/Mal Or Sem/Fem LINK -1 COMMA LINK *-1 (Pers Sg2))(1 COMMA) ;
 	## Man huohppelasj la dån, Tore, javlaj Ámmá munji. 
     
 MAP (@VOC) TARGET (N Nom) IF (-4 BOS)(-3 (V Sg2))(-2 ("gå"))(-1 COMMA)(1 COMMA);
@@ -2068,7 +2068,7 @@ SELECT (Prop Attr) IF (0 ("Johannes"))(1 ("gástadiddje")) ;
 REMOVE Attr IF (-1 ("Johannes"))(0 ("gástadiddje")) ;
 
 
-SELECT (Prop Attr) IF (1 Mal OR Fem OR Sur);
+SELECT (Prop Attr) IF (1 Sem/Mal OR Sem/Fem OR Sem/Sur);
 	## Jesus Kristus
 
 SELECT (A Attr) IF (-1 V-NOT-AUX OR N)(1 N LINK NOT 0 VFIN);
@@ -2146,7 +2146,7 @@ REMOVE (A Attr) IF (1 CC)(2 N)(NEGATE 2 (A Attr)) (NEGATE 2 PrfPrc LINK *1 N BAR
 SELECT (N Attr) IF (NEGATE 0 Prop OR Pron)(1 N);
 	## Máttimus sápmelaččat eahpidedje dáža dutkiid eanet go davit sápmelaččat.
 	
-SELECT CAP-INITIAL IF (-1 Mal OR Fem)(0 INITIAL)(1 Sur); 
+SELECT CAP-INITIAL IF (-1 Sem/Mal OR Sem/Fem)(0 INITIAL)(1 Sem/Sur); 
 	## Mikkel A. Eira.
     
 SELECT Adv IF (NEGATE -1 Gen)(0 ("åvddål") LINK NOT *-1 VFIN BARRIER SV-BOUNDARY OR CCCOMMA)(1 ("gå"));
@@ -2566,8 +2566,8 @@ SELECT Adv IF (0 ("ållu"))(1 (A Superl)) ;
 
 # Proper nouns
 # - - - - - - 
-SELECT Mal OR Fem ((0 Nom LINK -1 ("riegádit")) OR (0 Ill LINK 1 ("riegádit") LINK 1 Nom)) ;
-SELECT Mal OR Fem (0 Nom LINK -1 COPULAS LINK -1 HUMAN + Nom) ;
+SELECT Sem/Mal OR Sem/Fem ((0 Nom LINK -1 ("riegádit")) OR (0 Ill LINK 1 ("riegádit") LINK 1 Nom)) ;
+SELECT Sem/Mal OR Sem/Fem (0 Nom LINK -1 COPULAS LINK -1 HUMAN + Nom) ;
 
 # Johannes
 SELECT ("Johannes") IF (1 ("gástadiddje"));
@@ -2955,7 +2955,7 @@ REMOVE Imprt (-1 VFIN) ;
 SELECT (Imprt Sg2) IF (*-1 BOS OR (":") BARRIER WORD)(NEGATE 0 ("duohta") LINK 1 COMMA)(NOT *1 (Pers Sg2) BARRIER SV-BOUNDARY2); 
 	## Åro sjávot desik lav tjielggim.
 
-SELECT (Imprt Sg2) IF (*1 Prop BARRIER WORD LINK 0 Mal OR Fem LINK 1 COMMA);
+SELECT (Imprt Sg2) IF (*1 Prop BARRIER WORD LINK 0 Sem/Mal OR Sem/Fem LINK 1 COMMA);
 
 LIST IMPRTV = "suovvat" ;
 
@@ -3115,12 +3115,12 @@ SELECT ("Johannes" Nom) (NOT *-1 Nom BARRIER S-BOUNDARY2)(0 ("Johanne"))(*1 Sg3 
 SELECT (Prop Nom) (-1 ("riegádit") LINK -1 (Prop Ill)) ;
 SELECT (Prop Nom) (1 COMMA LINK *1 Nom BARRIER NPNH LINK 1 COMMA LINK 1 VFIN) ;
 SELECT (Prop Nom) (-1 ("liehket") LINK -1 ("namma"));
-SELECT (Prop Ela) (-1 ("liehket") LINK -1 Mal OR Fem)(0 Nom);
-SELECT (Prop Plc Ela) (1 CC LINK 1 (Prop Plc Ela) LINK 1 VFIN) ;
-SELECT (Prop Mal) (-1 ("ieŋŋgil"))(0 ("Gabriel")) ;
+SELECT (Prop Ela) (-1 ("liehket") LINK -1 Sem/Mal OR Sem/Fem)(0 Nom);
+SELECT (Prop Sem/Plc Ela) (1 CC LINK 1 (Prop Sem/Plc Ela) LINK 1 VFIN) ;
+SELECT (Prop Sem/Mal) (-1 ("ieŋŋgil"))(0 ("Gabriel")) ;
 
 
-# Prop Plc or not
+# Prop Sem/Plc or not
 # - - - - - - - -
 REMOVE Sem/Plc IF (*1 ("guhti") OR ("bárnne") BARRIER WORD);  
 REMOVE Sem/Plc IF (-1 ("jubmel") OR ("allak"))(0 Sem/Mal OR Sem/Fem); 
@@ -3131,7 +3131,7 @@ REMOVE Sem/Sur IF (0 (Sem/Plc Prop Ine)) (1 (Sem/Plc Prop Ine)) (NOT -1 Sem/Fem 
 # Attr
 # ----
 IFF Attr IF (0 (Prop Sem/Mal Nom) OR (Prop Sem/Fem Nom))(*1 (N Prop Sem/Sur) OR (N Prop Sem/Fem) OR (N Prop Sem/Mal) BARRIER NOT-ABBR); # (NEGATE 0 (@OBJ) LINK *1 (@OPRED) BARRIER NOT-NP); 
-#REMOVE Attr IF (0 (Prop Mal) OR (Prop Fem))(0 Nom)(NEGATE *1 (N Prop Sur) OR (N Prop Fem) OR (N Prop Mal) BARRIER NOT-ABBR); # (NEGATE 0 (@OBJ) LINK *1 (@OPRED) BARRIER NOT-NP); 
+#REMOVE Attr IF (0 (Prop Sem/Mal) OR (Prop Sem/Fem))(0 Nom)(NEGATE *1 (N Prop Sem/Sur) OR (N Prop Sem/Fem) OR (N Prop Sem/Mal) BARRIER NOT-ABBR); # (NEGATE 0 (@OBJ) LINK *1 (@OPRED) BARRIER NOT-NP); 
 
 REMOVE (A Attr) (0 ("duolla" Adv) LINK *-1 ("liehket") BARRIER NOT-PCLE)(1 Gen LINK 1 N) ;
 
@@ -3275,7 +3275,7 @@ SET COOR-BOUNDARY = S-BOUNDARY2 OR HNOUN OR VERB ;
 # Nominative
 # ==========
 
-REMOVE Gen IF (-1 (Pron Pers Nom) OR Imprt)(0 (Prop Nom) LINK 0 Mal OR Fem)(1 CLB);
+REMOVE Gen IF (-1 (Pron Pers Nom) OR Imprt)(0 (Prop Nom) LINK 0 Sem/Mal OR Sem/Fem)(1 CLB);
 	## Man huohppelasj la dån Tore, javlaj Ámmá munji. 
 	## - Gulá Tore, tjielggij.
 
@@ -3325,11 +3325,11 @@ REMOVE Nom (0 Acc)(*0 V-TRANS-ACT-NOT-ACT-NOT-AUX + Imprt BARRIER SV-BOUNDARY2) 
 REMOVE Nom (0 Acc)(*-1 V-TRANS-ACT-NOT-ACT-NOT-AUX BARRIER SV-BOUNDARY2 OR Acc LINK NOT *-1 Acc BARRIER SV-BOUNDARY2) ;    
 
     
-REMOVE Ine IF (-1 N LINK 0 ADVLCASE)(0 Prop LINK 0 Mal OR Fem OR Sur)(NEGATE *1 COPULAS BARRIER NOT-ADV-PCLE);
+REMOVE Ine IF (-1 N LINK 0 ADVLCASE)(0 Prop LINK 0 Sem/Mal OR Sem/Fem OR Sem/Sur)(NEGATE *1 COPULAS BARRIER NOT-ADV-PCLE);
 	## ., Elasaraj Mattan, ....       
 
 # These are not safe:    
-SELECT Nom IF (-1 HUMAN-INDIVIDUAL)(0 (Prop Nom) LINK 0 Mal OR Fem)(NEGATE 1 N);
+SELECT Nom IF (-1 HUMAN-INDIVIDUAL)(0 (Prop Nom) LINK 0 Sem/Mal OR Sem/Fem)(NEGATE 1 N);
 	## vielljas Andreas
 SELECT Nom IF (-2 Nom LINK NOT *-1 Nom)(-1 (@CNP))(0 N)(NEGATE 1 N);
 	## vieljatja Andreas ja Johannes
@@ -3564,7 +3564,7 @@ SELECT Com IF (*1 TOGETHER-V BARRIER NPNH OR SV-BOUNDARY2 LINK 1 ("aktan"));
 SELECT Com IF (*-1 NP-HEAD-NOM BARRIER S-BOUNDARY2 LINK 0 ACTOR)(0 ABSTR-TOOLS)(*1 ABSTR-ACTIVITY-V);
 	## Geahččoeiseválddit galget bearráigeahčuin váikkuhit dasa ahte dearvvašvuođa- ja sosiálabálvalusain váldet vuhtii geavaheaddjiid vuoigatvuođa oažžut áddehahtti informašuvnna ja vuoigatvuođa informerejuvvon miehtamii, ja fágalaččat dohkálaš doaimmaid giellagáibádusaid.
 
-SELECT Com (0 HUMAN-INDIVIDUAL + Ill LINK -1 HUMAN-INDIVIDUAL OR Pers OR Mal OR Fem) ;  	
+SELECT Com (0 HUMAN-INDIVIDUAL + Ill LINK -1 HUMAN-INDIVIDUAL OR Pers OR Sem/Mal OR Sem/Fem) ;  	
 
  # Body-activity-verb
 # - - - - - - - - - -
@@ -3676,7 +3676,7 @@ REMOVE Ess IF (-1 Indef LINK NOT 0 ("sæbbmi") OR ("nubbe") OR ("ietjá"))(0 N);
 	## Juohkka biejven li ietjas vájve. 
     # Are there more Indef šhich can be followed by Ess? 
 
-SELECT Ine IF (0 (N Plc Ess));
+SELECT Ine IF (0 (N Sem/Plc Ess));
 	## Jesus lij riegádam Betleheman.
          # Needs further condition!!
          
