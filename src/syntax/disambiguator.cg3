@@ -3124,25 +3124,25 @@ SELECT (Prop Sem/Mal) (-1 ("ieŋŋgil"))(0 ("Gabriel")) ;
 
 # Prop Sem/Plc or not
 # - - - - - - - -
+LIST PLACE-PO = "nanna" "tjadá" "vuolen" ;
+
 REMOVE Sem/Plc IF (*1 ("guhti") OR ("bárnne") BARRIER WORD);  
 REMOVE Sem/Plc IF (-1 ("jubmel") OR ("allak"))(0 Sem/Mal OR Sem/Fem); 
 
 REMOVE Sem/Sur IF (0 (Sem/Plc Prop Ine)) (1 (Sem/Plc Prop Ine)) (NOT -1 Sem/Fem OR Sem/Mal) ;
 	## Ådå kádja anon {Måsken} Divtasvuonan li viesáda danna ådå kájav adnuj válldám.
 	
-REMOVE Sem/Sur IF (0 (Sem/Plc Prop Ine)) (-1 (Sem/Plc Prop Ine) LINK NOT -1 Sem/Fem OR Sem/Mal) ;
+REMOVE Sem/Sur IF (0 (Sem/Plc Prop Ine)) (-1 (Sem/Plc Prop Ine) OR PLACE-PO LINK NOT -1 Sem/Fem OR Sem/Mal) ;
 	## Ådå kádja anon Måsken {Divtasvuonan} li viesáda danna ådå kájav adnuj válldám.
+	## Plánimin rájgev váre tjadá Ådå E6 Ulbasjvágeváre tjadá Hábmerin la dal plánaj vuolen.
 	
 REMOVE Sem/Sur IF (0 (Sem/Plc Prop Gen)) (1 Sem/Org) (NOT -1 Sem/Fem OR Sem/Mal) ;
 	## Ådå {Áhkánjárga} suohkanin la vat oajbbom mij guosská ådå suohkangalbbaj.
 	
 REMOVE Sem/Sur IF (0 (Sem/Plc Prop)) (-1 Sem/Plc - Prop LINK NOT -1 Sem/Fem OR Sem/Mal) ;
 	## Oajvvadus lij má stiliseridum gåvvå Vuonarijka nasjunaltjåhkås {Stáddá}.
-
-
-	## Plánimin rájgev váre tjadá Ådå E6 Ulbasjvágeváre tjadá Hábmerin la dal plánaj vuolen.
 	
-
+REMOVE Sem/Sur IF (0 (Sem/Plc Prop) + $$CASE) (1 CC LINK 1C (Sem/Plc Prop) + $$CASE) ;
 	## Stahta rahtedåjmadahka la aktan Hábmera ja Divtasvuona suohkanij dasi álgov dahkamin, ja gåhttju dal vuojnojt plánajda buktet.
 	
 
