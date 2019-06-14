@@ -21,19 +21,23 @@
 # 3. adapt the tag addition and lemma generation instructions (lines 125 ff)
 
 ###### Variables: #######
+POS=adjectives
 ### in ###
-source_file=${srcdir}/../../../src/morphology/stems/adjectives.lexc
+source_file=${srcdir}/../../../src/morphology/stems/${POS}.lexc
 generator_file=./../../../src/generator-gt-norm
+analyser_file=./../../../src/analyser-gt-norm
 
 ### out ###
-lemmas=./filtered-adjs.tmp
-#lemmas_pl=./filtered-pl_adjs.tmp
-lemmas_attr=./filtered-attr_adjs.tmp
-lemmas_super=./filtered-super_adjs.tmp
-lemmas_comp=./filtered-comp_adjs.tmp
-all_adjs=./all_adjs.tmp
-generated_lemmas=./generated-adjs.tmp
-result_file=missing_adj_lemmas
+# Temporary files:
+lemmas=./filtered-${POS}.txt
+#lemmas_pl=./filtered-pl_${POS}.txt
+lemmas_attr=./filtered-attr_${POS}.txt
+lemmas_super=./filtered-super_${POS}.txt
+lemmas_comp=./filtered-comp_${POS}.txt
+all_adjs=./all_${POS}.txt
+# Result files, will get filename suffix programmatically further down:
+generated_lemmas=./generated-${POS}.txt
+result_file=missing_${POS}_lemmas
 
 # SKIP if source file does not exist (works with both single and
 # multiple files):
@@ -182,7 +186,7 @@ done
 
 # At least one of the Xerox or HFST tests failed:
 if [ "$Fail" = "1" ]; then
-	exit 1
+    exit 1
 fi
 
 if [ $transducer_found -eq 0 ]; then

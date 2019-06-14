@@ -20,14 +20,20 @@
 # 3. adapt the tag addition and lemma generation instructions (lines 90 ff)
 
 ###### Variables: #######
+POS=verbs
 ### in ###
-source_file=${srcdir}/../../../src/morphology/stems/verbs.lexc
+source_file=${srcdir}/../../../src/morphology/stems/${POS}.lexc
 generator_file=./../../../src/generator-gt-norm
+analyser_file=./../../../src/analyser-gt-norm
 
 ### out ###
-lemmas=./filtered-verbs
-generated_lemmas=./generated-verbs
-result_file=missing_verb_lemmas
+# Temporary files:
+lemmas=./filtered-${POS}.txt
+# Result files, will get filename suffix programmatically further down:
+generated_lemmas=./generated-${POS}
+result_file=missing_${POS}_lemmas
+gen_result_file=generated_missing_${POS}_lemmas
+ana_result_file=analysed_missing_${POS}_lemmas
 
 # SKIP if source file does not exist (works with both single and
 # multiple files):
@@ -57,9 +63,9 @@ EXTEDITOR=@SEE@
 # Hent ut lemmaer, bortsett fra dem med hardkoding for spesielle former
 # (STRAYFORMS|ENDLEX), eller negasjonsverbet (+Neg, som ikke har
 # infinitivform). Lemmaene lagres som $lemmas.
-@GTCORE@/scripts/extract-lemmas.sh --exclude "(\+Neg|STRAYFORMS|Rreal | R |ShCmp|RCmpnd|CmpN/Only)" \
+@GTCORE@/scripts/extract-lemmas.sh \
+    --exclude "(\+Neg|STRAYFORMS|Rreal | R |ShCmp|RCmpnd|CmpN/Only)" \
 	$source_file > $lemmas
-
 
 ###### Start testing: #######
 transducer_found=0
@@ -134,7 +140,7 @@ done
 
 # At least one of the Xerox or HFST tests failed:
 if [ "$Fail" = "1" ]; then
-	exit 1
+    exit 1
 fi
 
 if [ $transducer_found -eq 0 ]; then
