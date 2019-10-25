@@ -24,6 +24,7 @@ while(<>) {
 	s/BALAK/ANAR/g ;
 	s/HAWAII/ACCRA/g ;
 	s/SKANIK/SULLOT/g ;
+	s/Jerusalem/!Jerusalem/g ;
 
 	# SME escape char deletion:
 	s/j9/j/g ;
