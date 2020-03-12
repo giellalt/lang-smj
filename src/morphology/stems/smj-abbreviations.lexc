@@ -1,0 +1,153 @@
+! Divvun & Giellatekno - open source grammars for Sámi and other languages
+! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
+! http://giellatekno.uit.no & http://divvun.no
+!
+! This program is free software; you can redistribute and/or modify
+! this file under the terms of the GNU General Public License as published by
+! the Free Software Foundation, either version 3 of the License, or
+! (at your option) any later version. The GNU General Public License
+! is found at http://www.gnu.org/licenses/gpl.html. It is
+! also available in the file $GTHOME/LICENSE.txt.
+!
+! Other licensing options are available upon request, please contact
+! giellatekno@uit.no or feedback@divvun.no
+
+! =============================================
+!! !!!File containing North Saami abbreviations 
+! =============================================
+
+!! !!Lexica for adding tags and periods
+! ----------------------------------
+
+!! Splitting in 4 + 1 groups, because of the preprocessor
+!  - - - - - - - - - - - - - - - - - - - - - - - - -
+
+LEXICON Abbreviation-smj !!= * __@CODE@__
+ITRAB ;	  !!= # The @CODE@ lexicon (intransitive abbrs)
+TRNUMAB ; !!= # The @CODE@ lexicon (abbrs trans wrt. numberals)
+TRAB ;	  !!= # The @CODE@ lexicon (transitive abbrs)
+NOAB ;	  !!= # The @CODE@ lexicon (not really abbrs)
+NUMNOAB ; !!= # The @CODE@ lexicon (not behaving as abbr before num)
+
+
+!! !!The abbreviation lexicon itself
+! ----------------------------------
+
+
+! ==========================
+! Intransitive abbreviations 
+! ==========================
+
+LEXICON ITRAB !!= * __@CODE@__ are intransitive abbreviations, A.S. etc.
+
+cos        ab-nodot-noun ;
+bsg+N+Sem/Lang:bsg ab-dot-noun-itrab ; ! bihtánsámegiella
+g.b        ab-nodot-noun ;
+cea        ab-dot-noun ;
+d.d        ab-dot-adv ;
+dat        ab-dot-noun ;
+ded        ab-dot-noun ;
+died      ab-dot-noun ;
+do        ab-dot-adv ;
+dub ab-dot-adv ;
+dus        ab-dot-adv ;
+ger        ab-dot-noun ;
+ggl        ab-dot-noun ;
+gl        ab-dot-noun ;
+gl.rs        ab-dot-noun ;
+huom ab-dot-noun ;
+j.d ab-dot-adv ; !
+j.d.s ab-dot-adv ; !
+j.e ab-dot-adv ; !
+j.i ab-dot-adv ;
+j.n.v ab-dot-adv ; !ja nav vijdábun !
+j.s ab-dot-adv ; !
+jd    ab-dot-adv ;
+jdd    ab-dot-adv ;
+je        ab-dot-adv ;
+jed        ab-dot-adv ;
+jnv        ab-adv ;
+jná        ab-adv ; !ja nåv ájn
+Jo ab-dot-noun ;
+Lohk        ab-dot-noun ;
+lp        ab-dot-noun ; !laktapartihkkal
+miljo    ab-dot-num ;
+mKr            ab-dot-noun ;
+o.Kr    ab-dot-adv ; !Does this exist?
+od.prp    ab-dot-noun ;
+oKr    ab-dot-adv ;
+osd    ab-dot-noun ;
+ru        ab-dot-noun ;
+sd.died   ab-dot-noun ;
+u.b        ab-dot-noun ;
+
+
+! ============================================================
+! Abbreviations that are not treated as abbreviations
+! at the end of the sentence
+! ============================================================
+
+LEXICON NOAB !!= * __@CODE@__ du, gen, jur
+
+!! This class contains homonyms, which are both intransitive
+!! abbreviations and normal words. The abbreviation usage
+!! is less common and thus only the occurences in the middle of
+!! the sentnece (when next word has small letters) can be 
+!! considered as true cases.
+
+du+N+Sem/Cat:du ab-dot-noun-noab ; ! dualis
+gen+N+Sem/Cat:gen ab-dot-noun-noab ; ! genitiivi
+jur+A+Sem/Domain_Hum:jur ab-dot-adj-noab ; ! juridihkalaš
+
+
+
+! ============================================================
+! Abreviations who are transitive in front of numerals 
+! ============================================================
+
+LEXICON TRNUMAB !!= * __@CODE@__ contains abbreviations who are transitive in front of numerals 
+
+!! For abbrs for which numerals are complements, but other
+!! words not necessarily are. This group treats arabic numerals as
+!! if it were transitive but letters as if it were intransitive.
+
+! TODO: Bug the fact that these abbrs do not distinguish between
+! cap and small letters, whereast he ITRAB ones do.
+
+
+
+Apd+N:Apd ab-dot-noun-trnumab ;
+
+
+! ===============================================
+! Transitive abbreviations
+! ===============================================
+
+LEXICON TRAB !!= * __@CODE@__ contains transitive abbreviations
+
+!! This lexicon is for abbrs that always have a constituent following it.
+
+! from here pointing to two types of TRAB:
+! TRAB heads (gč. ...) here called h-ab and h-ab-dot
+! TRAB attributes (St. ...) here called ab and ab-dot or at-ab?
+
+dij    ab-dot-noun ; !dijstáhka
+snji    ab-dot-noun ; !snjilltjamánno
+sjnji    ab-dot-noun ; !snjilltjamánno
+sjnju    ab-dot-noun ; !snjuktjamánno
+snju    ab-dot-noun ; !snjuktjamánno
+vsá ab-dot-noun ; !
+vuo    ab-dot-noun ; !vuoratjismánno
+ájl    ab-dot-noun ; !ájllek
+ådå    ab-dot-noun ; !ådåjakmánno
+åss    ab-dot-noun ;
+
+
+LEXICON NUMNOAB !!= * __@CODE@__ su, dii
+
+!! This class contains homonyms, which are both abbrs for 
+!! which numerals are complements and normal words. The abbreviation usage
+!! is less common and thus only the occurences in the middle of
+!! the sentence can be considered as true cases.
+
+su+Adv:su ab-dot-adv-numnoab ; ! La stå!
