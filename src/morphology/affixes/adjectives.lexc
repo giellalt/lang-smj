@@ -231,27 +231,44 @@ LEXICON OGIJJALASJ !!= @CODE@ Just like IJJALASJ only for words ending on ogijja
   
 
 
-LEXICON MEKÁNALASJ_BADASS !!= @CODE@ LOAN! Foreign -isk adjectives adapted wrongly. Looks derived but isn't since ther is no real noun to be derived from. Mekanisk-mekánalasj, but "mekádna" is no real noun! Like MEKANIHKALASJ, but gives the Use/-Spell tag, so it's only for these wronly/non-derived loan adjectives. 
+LEXICON SJÅNÅLASJ !!= @CODE@ -sjonal/sjonell and -tional/tionel loanwords. Only for words that work as nouns, so that they are REAL dervations, as nasjonal-nasjåvnnå-nasjåvnålasj. NOT for words like "rasjonell", with no real noun. Words as "rasjonell>rasjonálla-rasjonálalasj" go to lexicon ÁLLA.  The fake derivation "nasjonálalasj" is err taged, so is the strange "nasjonálla/nasjunálla". 
+
+                            +A+OLang/NOB+CmpNP/Last:sjåvnåladtj      MEKANIHKALASJ_CMP_INFL ;
++Err/Orth+Area/NO+A+OLang/NOB+CmpNP/Last+Use/-Spell:sjonálaladtj     MEKANIHKALASJ_CMP_INFL ; ! Makes BADASS "nasjonálalasj"
++Err/Orth+Area/SE+A+OLang/NOB+CmpNP/Last+Use/-Spell:tionálaladtj     MEKANIHKALASJ_CMP_INFL ; ! Makes BADASS "nationálalasj"
+                                +Err/Orth+Area/SE+A:sjonáll          ÁLLA-ÆLLA              ; ! Makes strange "nasjonálla"
+                                +Err/Orth+Area/SE+A:tionáll          ÁLLA-ÆLLA              ; ! Makes strange "nasjonálla"
+                                +Err/Orth+Area/SE+A:sjunáll          ÁLLA-ÆLLA              ; ! Makes strange "nasjonálla"
+
+! Test data:
+!!€gt-norm: konstitusjåvnålasj # Even-syllable test
+!!€ konstitusjåvnålasj:             konstitusjåvnålasj+A+Sg+Nom
+!!€ konstitusjåvnålattjav:          konstitusjåvnålasj+A+Sg+Acc
+!!€ konstitusjåvnålasj:             konstitusjåvnålasj+A+Attr
+
+
+LEXICON MEKÁNALASJ_BADASS !!= @CODE@ LOAN! Wronly adapted -lasj adjectives fro SE/NO -isk. Looks derived but isn't since there is no real noun to be derived from. Like mekanisk-mekánalasj, but "mekádna" is no real noun! Like MEKANIHKALASJ, but gives the Use/-Spell tag, so it's only for these wronly/non-derived loan adjectives. 
+
 +A+OLang/NOB+CmpNP/Last+Use/-Spell: MEKANIHKALASJ_CMP_INFL ;
 
 LEXICON MEKANIHKALASJ_CMP_INFL 
 
-! +A: VUOHTA ; !moved to ATTR
-                          :%>     ATTR          ;
-                   +Sg+Nom:%>     ENDLEX        ;
-          +Sg+Nom+Err/Orth:a%>    PxV           ; !
+                          :%>     ATTR           ;
+                   +Sg+Nom:%>     ENDLEX         ;
+          +Sg+Nom+Err/Orth:a%>    PxV            ; !
                           :a%>    SURGULASJ-EVEN ; ! Declined as four-syllable noun
+        +Der5+Der/AAdv+Adv:a%>Q1t ENDLEX         ;
+                +Cmp/SgNom:%>     R              ;
+                +Cmp/SgGen:a%>Q1  R              ;
+                +Cmp/PlGen:a%>Q1j R              ;
 ! +A:a%>Q1 BU/MUS ;
-         +Der5+Der/AAdv+Adv:a%>Q1t ENDLEX        ;
-                 +Cmp/SgNom:%>     R             ;
-                 +Cmp/SgGen:a%>Q1  R             ;
-                 +Cmp/PlGen:a%>Q1j R             ;
+! +A: VUOHTA ; !moved to ATTR
 
 ! Test data:
-!!€gt-norm: demokráhtalasj # Even-syllable test
-!!€ demokráhtalasj:             demokráhtalasj+A+Sg+Nom
-!!€ demokráhtalattjav:          demokráhtalasj+A+Sg+Acc
-!!€ demokráhtalasj:             demokráhtalasj+A+Attr
+!!€gt-norm: kapitalismalasj # Even-syllable test
+!!€ kapitalismalasj:             kapitalismalasj+A+Sg+Nom
+!!€ kapitalismalattjav:          kapitalismalasj+A+Sg+Acc
+!!€ kapitalismalasj:             kapitalismalasj+A+Attr
 
  
 
@@ -275,9 +292,9 @@ LEXICON ARKTALASJ_CMP_INFL !!= @CODE@ Foreign -isk adjectives adapted to smj by 
 
 ! Test data:
 !!€gt-norm: analytalasj # Even-syllable test
-!!€ analytalasj           analytalasj+A+Sg+Nom
-!!€ analytalattjav:          analytalasj+A+Sg+Acc
-!!€ analytalasj           analytalasj+A+Attr
+!!€ analytalasj:           analytalasj+A+Sg+Nom
+!!€ analytalattjav:        analytalasj+A+Sg+Acc
+!!€ analytalasj:           analytalasj+A+Attr
 
 
 
@@ -345,10 +362,6 @@ LEXICON DEMONSTRATIJVA_LASJ_CMP_INFL !!= @CODE@ Loan adjectives from norwegian/s
 ! 							
 
 
-LEXICON SJONÁLLA !!= @CODE@ -tion and -sjon loanwords
-                 +Area/NO:sjon ÁLLA ;
- +Err/Orth+Use/NG+Area/SE:tion ÁLLA ;
-
 LEXICON ÁLLA !!= @CODE@ Loanwords
                              +A:áll            ÁLLA-ÆLLA         ;
                     +A+Err/Orth:elºl           ÁLLA-ÆLLA         ;
@@ -372,17 +385,17 @@ LEXICON ÁLLA !!= @CODE@ Loanwords
              +A+Sg+Ill+Err/Orth:álalattja%>s%> PxCi              ; ! Not possible with possesive suffixes
 
 LEXICON ÆLLA !!= @CODE@ Loanwords
-  +A+Area/NO:ælºl ÁLLA-ÆLLA ;
- +A+Use/NG+Area/SE:älºl ÁLLA-ÆLLA ;
-   +A+Err/Orth:áll   ÁLLA-ÆLLA ;
-   +A+Err/Orth:elºl  ÁLLA-ÆLLA ;
+        +A+Area/NO:ælºl  ÁLLA-ÆLLA ;
+ +A+Use/NG+Area/SE:älºl  ÁLLA-ÆLLA ;
+       +A+Err/Orth:áll   ÁLLA-ÆLLA ;
+       +A+Err/Orth:elºl  ÁLLA-ÆLLA ;
 
 LEXICON ÁLLA-ÆLLA !!= @CODE@
-                 :a%>Q1  ATTR                ;
-                 :a%>    N-EVENSTRONGSTEMadj ;
-                 :a%>Q1  N-EVENWEAKSTEMadj   ; ! cg in nominal paradigm
+                   :a%>Q1  ATTR                ;
+                   :a%>    N-EVENSTRONGSTEMadj ;
+                   :a%>Q1  N-EVENWEAKSTEMadj   ; ! cg in nominal paradigm
  +Der5+Der/AAdv+Adv:a%>Q1t ENDLEX              ; ! Presumably WeG as adverb as well
-                 :a%>    MUORRACmp           ;
+                   :a%>    MUORRACmp           ;
 
 
 !LEXICON A_ADJEKTIV ! now in DEMONSTRATIJVA_LASJ
