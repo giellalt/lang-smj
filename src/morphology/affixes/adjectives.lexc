@@ -263,12 +263,17 @@ LEXICON OGIJJALASJ_CMP_INFL !!= @CODE@
 
 LEXICON SJÅNÅLASJ !!= @CODE@ -sjonal/sjonell and -tional/tionel loanwords. Only for words that work as nouns, so that they are REAL dervations, as nasjonal-nasjåvnnå-nasjåvnålasj. NOT for words like "rasjonell", with no real noun. Words as "rasjonell>rasjonálla-rasjonálalasj" go to lexicon ÁLLA.  The fake derivation "nasjonálalasj" is err taged, so is the strange "nasjonálla/nasjunálla". 
 
-                            +A+OLang/NOB+CmpNP/Last:sjåvnåladtj      MEKANIHKALASJ_CMP_INFL ;
-+Err/Orth+Area/NO+A+OLang/NOB+CmpNP/Last+Use/-Spell:sjonálaladtj     MEKANIHKALASJ_CMP_INFL ; ! Makes BADASS "nasjonálalasj"
-+Err/Orth+Area/SE+A+OLang/NOB+CmpNP/Last+Use/-Spell:tionálaladtj     MEKANIHKALASJ_CMP_INFL ; ! Makes BADASS "nationálalasj"
-                                +Err/Orth+Area/SE+A:sjonáll          ÁLLA-ÆLLA              ; ! Makes strange "nasjonálla"
-                                +Err/Orth+Area/SE+A:tionáll          ÁLLA-ÆLLA              ; ! Makes strange "nasjonálla"
-                                +Err/Orth+Area/SE+A:sjunáll          ÁLLA-ÆLLA              ; ! Makes strange "nasjonálla"
++A+OLang/NOB+CmpNP/Last: SJÅNÅLASJ_CMP_INFL ;
+
+LEXICON SJÅNÅLASJ_CMP_INFL !!= @CODE@ 
+
+                            :sjåvnåladtj      MEKANIHKALASJ_CMP_INFL ;
+        +Err/Orth+Use/-Spell:sjonálaladtj     MEKANIHKALASJ_CMP_INFL ; ! Makes BADASS "nasjonálalasj"
+        +Err/Orth+Use/-Spell:sjunálaladtj     MEKANIHKALASJ_CMP_INFL ; ! Makes BADASS "nasjunálalasj"
++Err/Orth+Area/SE+Use/-Spell:tionálaladtj     MEKANIHKALASJ_CMP_INFL ; ! Makes BADASS "nationálalasj"
+           +Err/Orth+Area/SE:sjonáll          ÁLLA-ÆLLA              ; ! Makes strange "nasjonálla"
+           +Err/Orth+Area/SE:tionáll          ÁLLA-ÆLLA              ; ! Makes strange "nationálla"
+           +Err/Orth+Area/SE:sjunáll          ÁLLA-ÆLLA              ; ! Makes strange "nasjunálla"
 
 ! Test data:
 !!€gt-norm: konstitusjåvnålasj # Even-syllable test
@@ -314,13 +319,17 @@ LEXICON ARKTALASJ_CMP_INFL !!= @CODE@ Foreign -isk, that are not real derivation
 LEXICON DEMONSTRATIJVA_LASJ_NO_NORM !!= @CODE@ Loan adjectives from norwegian/swedish (Not adjectives ending on -isk). Words like demonstrativ, transitiv, dupleks, informativ, analog, privat. Gives both "demonstratijvva" and "demonstratijvalasj". There are two ways of adapting these adjectives, the adding of -lasj isn't okey, because that's a false derivation. But GG hasn't decided how these should be handled, so so far both ok. Looks like noun instead of adjective when adapted without the -lasj ending.  Attr is in weak grad, used in strong grad ass pred even thou this seems a little bit odd "Værbba l transitijvva". 
 
 
-+A+OLang/NOB: DEMONSTRATIJVA_LASJ_CMP_INFL ;
++A+OLang/NOB+CmpNP/Last: DEMONSTRATIJVA_LASJ_CMP_INFL ;
 
 
-LEXICON DEMONSTRATIJVA_LASJ_CMP_INFL !!= @CODE@                         
-                   +A+OLang/NOB+CmpNP/Last:Q1ladtj MEKANIHKALASJ_CMP_INFL  ;
-                                          :%>Q1          ATTR              ;
-                                   +Sg+Nom:%>            ENDLEX            ; !Gets only nom, should it get all cases? 
+LEXICON DEMONSTRATIJVA_LASJ_CMP_INFL !!= @CODE@   
+                      
+                        :Q1ladtj MEKANIHKALASJ_CMP_INFL  ;
+                        :Q1      ATTR                    ;
+                        :        N-EVENSTRONGSTEMadj     ;
+                        :Q1      N-EVENWEAKSTEMadj       ; ! cg in nominal paradigm
+      +Der5+Der/AAdv+Adv:Q1t     ENDLEX                  ; ! Presumably WeG as adverb as well
+                        :        MUORRACmp               ;
 
 !                   +Sg+Nom:Q1lasj%>      ENDLEX            ;
 !                          :Q1lasj%>      ATTR              ;
@@ -349,13 +358,19 @@ LEXICON DEMONSTRATIJVA_LASJ_CMP_INFL !!= @CODE@
 !!€ aktijvalabbo:               aktijvva+A+Comp+Sg+Nom
 
 
-LEXICON ÁLA_LASJ_NO_NORM !!= @CODE@ Loanwords adjectives from norwegian/swedish (Not adjectives ending on -isk). Words like digital,liberal, lokal,  Gives both "demonstratijvva" and "demonstratijvalasj". There are two ways of adapting these adjectives, the adding of -lasj isn't okey, because that's a false derivation. But GG hasn't decided how these should be handled, so so far both ok. Look like nouns instead of adjectives when adapted to smj, with the short form.  Attr is in weak grad, used in strong grad ass pred even thou this seems a little bit odd "Værbba l transitijvva". 
+LEXICON ÁLA_LASJ_NO_NORM !!= @CODE@ Same as DEMONSTRATIJVA_LASJ_NO_NORM. Only for adjectives ending on -al. Words like digital,liberal, lokal.  Gives both "eksponentiálla" and "eksponentiálalasj". Different lexicon for these -al adjectives because of Err/Orth tags. OBS, "dialektal", is assimilated "dialevtalasj", and goes to lexicon MEKANIHKALASJ.
 
-            +A+OLang/NOB+CmpNP/Last:álaladtj MEKANIHKALASJ_CMP_INFL  ;   
-                                 +A:áll            ÁLLA-ÆLLA         ;
-                        +Err/Orth+A:elºl           ÁLLA-ÆLLA         ;
-                +Err/Orth+A+Area/NO:æ9lºl          ÁLLA-ÆLLA         ;
-         +Err/Orth+A+Use/NG+Area/SE:ä9lºl          ÁLLA-ÆLLA         ;
++A+OLang/NOB+CmpNP/Last: ÁLA_LASJ_INFL_CMP ;
+
+LEXICON ÁLA_LASJ_INFL_CMP !!= @CODE@
+
+                                 :álaladtj MEKANIHKALASJ_CMP_INFL  ;   
+                        +Err/Orth:alaladtj MEKANIHKALASJ_CMP_INFL  ;   
+                                 :áll            ÁLLA-ÆLLA         ;
+                        +Err/Orth:all            ÁLLA-ÆLLA         ;
+                        +Err/Orth:elºl           ÁLLA-ÆLLA         ;
+                +Err/Orth+Area/NO:æ9lºl          ÁLLA-ÆLLA         ;
+         +Err/Orth+Use/NG+Area/SE:ä9lºl          ÁLLA-ÆLLA         ;
            
 !             +A+Sg+Nom+Err/Orth:álalasj%>      ENDLEX            ;
 !                    +A+Err/Orth:álalasj%>      ATTR              ;
@@ -374,11 +389,17 @@ LEXICON ÁLA_LASJ_NO_NORM !!= @CODE@ Loanwords adjectives from norwegian/swedish
 !             +A+Sg+Ill+Err/Orth:álaladtja%>s%> PxCi              ; ! Not possible with possesive suffixes
 !             +A+Sg+Ill+Err/Orth:álalattja%>s%> PxCi              ; ! Not possible with possesive suffixes
 
-LEXICON ÆLLA !!= @CODE@ Loanwords
-        +A+Area/NO:ælºl  ÁLLA-ÆLLA ;
- +A+Use/NG+Area/SE:älºl  ÁLLA-ÆLLA ;
-       +A+Err/Orth:áll   ÁLLA-ÆLLA ;
-       +A+Err/Orth:elºl  ÁLLA-ÆLLA ;
+LEXICON ELLA_LASJ_NO_NORM !!= @CODE@ Loanwords, same as ÁLA_LASJ_NO_NORM and DEMONSTRANTIJVA_LASJ_NO_NORM. For NO and SE adjectives ending on -ell, eksperimentell, ideell, parallell. The short form is nom parallælla, attr, parallella The long form: paralellalasj, attr parallellalasj. Different lexicon for these -ell adjectives because of err/orth tags. OBS, "individuell", is assimilated "indivijdalasj", and goes to lexicon MEKANIHKALASJ.
+
++A+OLang/NOB+CmpNP/Last: ELLA_LASJ_INFL_CMP ;
+
+LEXICON ELLA_LASJ_INFL_CMP !!= @CODE@ 
+
+                       :ellaladtj MEKANIHKALASJ_CMP_INFL  ; 
+                Area/NO:ælºl  ÁLLA-ÆLLA ;
+         Use/NG+Area/SE:älºl  ÁLLA-ÆLLA ;
+              +Err/Orth:áll   ÁLLA-ÆLLA ;
+              +Err/Orth:elºl  ÁLLA-ÆLLA ;
 
 LEXICON ÁLLA-ÆLLA !!= @CODE@
                    :a%>Q1  ATTR                ;
