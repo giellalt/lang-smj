@@ -6,7 +6,7 @@
 # sh devtools/verb_minip.sh kihlođ 
 
 
-LOOKUP=$(echo $LOOKUP)
+LOOKUP=$(echo $HLOOKUP)
 GTHOME=$(echo $GTHOME)
 
 
@@ -20,7 +20,7 @@ for lemma in $(cat $L_FILE);
 do
  for form in $(cat $P_FILE);
  do
-   echo "${lemma}${form}" | $LOOKUP $GTHOME/langs/smj/src/generator-gt-norm.xfst
+   echo "${lemma}${form}" | $LOOKUP $GTHOME/langs/smj/src/generator-gt-norm.hfstol
  done
 done
 
