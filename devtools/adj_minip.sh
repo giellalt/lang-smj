@@ -9,7 +9,7 @@
 # Only get the lemma you ask for:
 # sh devtools/adj_minip.sh '^hyeni[:+]' 
 
-LOOKUP=$(echo $LOOKUP)
+LOOKUP=$(echo $HLOOKUP)
 GTHOME=$(echo $GTHOME)
 
 PATTERN=$1
@@ -22,7 +22,7 @@ for lemma in $(cat $L_FILE);
 do
  for form in $(cat $P_FILE);
  do
-   echo "${lemma}${form}" | $LOOKUP $GTHOME/langs/smj/src/generator-gt-norm.xfst
+   echo "${lemma}${form}" | $LOOKUP $GTHOME/langs/smj/src/generator-gt-norm.hfstol
  done
 done
 
