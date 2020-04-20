@@ -12,7 +12,7 @@ JSP_PAGES=root-morphology.jspwiki \
 		  adjectives-affixes.jspwiki \
 		  nouns-affixes.jspwiki   \
 		  verbs-affixes.jspwiki   \
-		  smj-phon-phonology.jspwiki
+		  phonology-morphology.jspwiki
 # clitics-morphology.jspwiki       \
 # compounding-morphology.jspwiki   \
 # abbreviations-stems.jspwiki      \
