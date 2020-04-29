@@ -239,9 +239,26 @@ LIST  Der/Pass = Der/PassL Der/PassS Der/PassD ;
 
 LIST DERIVED =
 Der/PassL Der/PassS Der/PassD Der/Dimin Der/adda Der/ahtja Der/ahttjá Der/Caus Der/alla Der/asste Der/d Der/dalla Der/dasste Der/Car Der/ferjak Der/k Der/l Der/ladda Der/lahtte Der/lasj Der/lasj Der/lasste Der/n Der/r Der/ravak Der/sasj Der/segak Der/st Der/stahtte Der/stalla Der/stasste Der/tj Der/u/a/åd Der/dahtte Der/duhtte Der/ahkes Der/NomAct Der/duvva Der/InchL Der/mus Der/NomAct Der/dahka Der/lis Der/NomAg Der/ahtes Der/AAdv Der/vuota ;
-  
-LIST Err/Orth = Err/Orth Err/Orth-a/á Err/Orth-nom/gen Err/Orth-nom/acc Err/DerSub Err/CmpSub Err/UnspaceCmp Err/HyphSub Err/SpaceCmp Err/Spellrelax err_orth_mt ;
-LIST Err/Orth-spes = Err/Orth-a/á Err/Orth-nom/gen Err/Orth-nom/acc Err/DerSub Err/CmpSub Err/UnspaceCmp Err/HyphSub Err/SpaceCmp Err/Spellrelax err_orth_a_á_mt err_orth_nom_acc_mt err_orth_nom_gen_mt  ;
+
+LIST Err/Confused = Err/Confused ;
+LIST Err/Orth = Err/Orth ;
+LIST Err/Orth-a-á = Err/Orth-a-á ;
+LIST Err/Orth-nom-acc = Err/Orth-nom-acc ;
+LIST Err/Orth-nom-gen = Err/Orth-nom-gen ;
+LIST Err/Lex = Err/Lex ;
+LIST Err/Spellrelax = Err/Spellrelax ;
+LIST Err/DerSub = Err/DerSub ;
+LIST Err/CmpSub = Err/CmpSub ;
+LIST Err/HyphSub = Err/HyphSub ;
+LIST Err/Hyph = Err/Hyph ; # There is hyphen, but there shouldn't be
+LIST Err/MissingHyph = Err/MissingHyph ; # On compounds that SHOULD have had a hyphen, but don't
+LIST Err/SpaceCmp = Err/SpaceCmp ;
+LIST Err/MissingSpace = Err/MissingSpace ;
+LIST Err/Infl = Err/Infl ;
+LIST Err/Der = Err/Der ;
+
+LIST Err/Orth-any = Err/Infl Err/Lex Err/Der Err/Orth Err/Orth-a-á Err/Orth-nom-gen Err/Orth-nom-acc Err/DerSub Err/CmpSub Err/UnspaceCmp Err/HyphSub Err/SpaceCmp Err/Spellrelax err_orth_mt ;
+LIST Err/Orth-spes = Err/Orth-a-á Err/Orth-nom-gen Err/Orth-nom-acc Err/DerSub Err/CmpSub Err/UnspaceCmp Err/HyphSub Err/SpaceCmp Err/Spellrelax err_orth_a_á_mt err_orth_nom_acc_mt err_orth_nom_gen_mt  ;
 # The last tags in Err/Orth sets are for Apertium
 
 # Noun tags
@@ -3959,7 +3976,7 @@ SELECT ("almme") (0 ("Alme")) ;
 
 LIST WORDLEMMA = (".*"r) ;
 
-REMOVE:errsub $$WORDLEMMA + Err/Orth (0 $$WORDLEMMA - Err/Orth ) ;   
+REMOVE:errsub $$WORDLEMMA + Err/Orth-any (0 $$WORDLEMMA - Err/Orth-any ) ;   
 REMOVE:errsub2 $$WORDLEMMA + Err/Orth-spes (0 $$WORDLEMMA - Err/Orth-spes ) ; 
 
 
