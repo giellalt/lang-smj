@@ -593,6 +593,7 @@ SET CCCOMMA = CC OR COMMA ;
 
 #!! !Grammarchecker sets
 
+LIST &msyn-sme_bastard_neg = &msyn-sme_bastard_neg ;
 LIST &err-agr = &err-agr ;
 LIST &err-gen-po = &err-gen-po ;
 LIST &err-no-conneg = &err-no-conneg ;
@@ -633,3 +634,18 @@ COPY:right-guillemet ("»" &SUGGEST) EXCEPT (""") TARGET (&guillemets) ;
 
 ADD:use-ellipsis (&ellipsis) TARGET ("...");
 COPY:use-ellipsis ("…" &SUGGEST) EXCEPT ("...") TARGET (&ellipsis) ;
+
+	# negation
+	
+ADD:msyn-sme_bastard_neg (&msyn-sme_bastard_neg) TARGET (("ij") Neg Ind Prs) IF (*1 PrfPrc BARRIER NOT-ADV-PCLE - ("mige") - Acc) ;
+    ## Ij riek sjaddam nav ahte bloggiv åvdep vahkko.
+    ## ja iv vissjam basádit  åvddål gå lidjiv biesskedam
+    ## valla danna iv dádjadum majdik ja ittjiv máhttám gähttjalimev dahkat@
+    ## Árjakluoven lij boadnjásj mij ittjij sidá hiejttet noajdástallamis ja	ij miededam	sån lij mejdek boasstot dahkam ,
+    ## Gå ällobargge Jåhkåmåhkke gieldan	e adnám	vaj ålggorijkka viddnudahka ij galggam boahtet billat sijá lájddumijt
+    ## Juska	ij mierredum	makkir vehkudagá máhtti ávkkiduvvat suodjalimguovlo sisbielen
+    ## Muv plána lij Vuodnaj mannat bállov tjievtjatjit, valla ij navti sjaddam.
+    ## Basecampa ij álggám nav buoret.
+
+COPY:msyn-sme_bastard_neg (Prt &SUGGEST) EXCEPT (Prs) AFTER Ind TARGET (&msyn-sme_bastard_neg) ;
+
