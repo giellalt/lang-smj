@@ -1,0 +1,56 @@
+! Divvun & Giellatekno - open source grammars for Sámi and other languages
+! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
+! http://giellatekno.uit.no & http://divvun.no
+!
+! This program is free software; you can redistribute and/or modify
+! this file under the terms of the GNU General Public License as published by
+! the Free Software Foundation, either version 3 of the License, or
+! (at your option) any later version. The GNU General Public License
+! is found at http://www.gnu.org/licenses/gpl.html. It is
+! also available in the file $GTHOME/LICENSE.txt.
+!
+! Other licensing options are available upon request, please contact
+! giellatekno@hum.uit.no or feedback@divvun.no
+
+!! !!!Symbol affixes
+
+LEXICON Noun_symbols_possibly_inflected
+ +N+Symbol: SYMBOL_connector ;
+
+LEXICON Noun_symbols_never_inflected
+ +N+Symbol: # ;
+
+LEXICON SYMBOL_connector
+               SYMBOL_NO_suff ; ! §
+          :%:  SYMBOL_suff    ; ! §:sne
+ +Err/Orth:    SYMBOL_suff    ; ! §esne
+ +Err/Orth:%-e SYMBOL_suff    ; ! §-esne
+ +Err/Orth:%'e SYMBOL_suff    ; ! §'esne
+
+
+! NB! Is it really correct that symbols can take clitics? Looks very strange to
+! me, I suggest changing to #, as in sma.
+LEXICON SYMBOL_NO_suff
+ +Sg+Nom:   K         ; ! §
+!+Sg+Gen:   K         ; ! §
+!+Sg+Acc:   K         ; ! §
+
+LEXICON SYMBOL_suff
+!             K ; ! § 14 (no case on the bare §). Oh, yes. Case.
+ +Sg+Gen:     K ; ! §:a  (case suffix on the rest, in case of explicit
+ +Sg+Gen:a    K ; ! §:a  (case suffix on the rest, in case of explicit
+ +Sg+Acc:av   K ; !       suffix)
+ +Sg+Ill:aj   K ;
+ +Sg+Ine:n    K ;
+ +Sg+Ine:an   K ;
+ +Sg+Ela:s    K ; ! §:s
+ +Sg+Ela:as   K ; ! §:as
+ +Sg+Com:in   K ;
+    +Ess:an   K ;
+ +Pl+Nom:a    K ;
+ +Pl+Gen:aj   K ;
+ +Pl+Acc:ajt  K ;
+ +Pl+Ill:ajda K ;
+ +Pl+Ine:ajn  K ;
+ +Pl+Ela:ajs  K ;
+ +Pl+Com:aj   K ;

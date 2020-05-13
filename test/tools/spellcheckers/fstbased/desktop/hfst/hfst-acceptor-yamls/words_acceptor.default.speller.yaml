@@ -1,0 +1,47 @@
+Config:
+  hfst:
+    Morph: ../../../../tools/spellcheckers/fstbased/hfst/acceptor.default.hfst
+
+Tests:
+  testwords: # The following words should be accepted, unless prefixed with ~
+    UN-abc:  UN-abc  # Acro + noun compound
+    UN-bena: UN-bena # Acro + noun compound
+    UN:      UN      # Acro
+    abc:     abc     # noun
+    bena:    bena    # noun
+    
+# deskriptivt:
+    bårådasstet:            bårådasstet           # Der 1 - ok
+    dåjmadahtedallat:       dåjmadahtedallat      # Der 2 + Der 1 - ikkje ok
+    doajmmagoahtedahtte:   ~doajmagoahtedahtte    # Der 3 + Der 2 - ikkje ok
+    buorrevuohtaahtes:     ~buorrevuohtaahtes     # Der 5 + Der 4 - ikkje ok
+    bårådasteduvvat:        bårådasteduvvat       # Der 1 + Der 2 - ok
+    jugádahkesvuohta:       jugádahkesvuohta      # Der 1 (+Der/d) + Der 4 + Der 5
+    jugestahkesvuohta:      jugestahkesvuohta     # Der 4 + Der 5 - ok
+    juhkalisvuohta:         juhkalisvuohta        # Der 3 + der 5 - ok
+    juhkavuohtalis:        ~juhkavuohtalis        # der 5 + Der 3 - ikke ok
+    jugádallalisvuohta:     jugádallalisvuohta    # Der 1 + Der 3 + Der 5
+    jugálisdallalisvuohta: ~jugálisdallalisvuohta # Der 3 + Der 1 + Der 5
+    vuorbálasjvuohta:       vuorbálasjvuohta      # Der 1 + Der 5
+    bargadahttegoahtet:     bargadahttegoahtet    # Der 2 + Der 3
+    bårådasste:             bårådasste            # Der 1 + Der 2 NomAg - ok
+    bårådallavuohtalis:    ~bårådallavuohtalis    # Der 1 + Der 5 + Der3 - ikkje ok
+    bårrålisvuohta:         bårrålisvuohta        # Der 3 + Der 5
+    båråduvvalisvuohta:     båråduvvalisvuohta    # Der 1 + Der 3 + Der5
+    bårådallalisvuohta:     bårådallalisvuohta    # Der 1 + Der 3 + Der5
+    biednigahtesvuohta:     biednigahtesvuohta    # Der 4 + Der 5
+    viegadasstet:           viegadasstet          # Der 1
+    viegadasstegoahtet:     viegadasstegoahtet    # Der 1 + Der 3
+    viegadasstemus:         viegadasstemus        # Der 1 + Der 3
+
+# normativt: not accepted, but should (verb derivation are restricted in lexc):
+    jugádahteduvvat:        jugádahteduvvat       # Der 2 + Der 2 (+Der/duvva should be Der 3)
+    bargadahttelis:         bargadahttelis        # Der 2 + Der 3 
+    dålvudahteduvvat:       dålvudahteduvvat      # Der 2 + Der 3
+    fálladaláduvvat:        fálladaláduvvat       # Der 1 + Der
+    bårådasteduvvagoahtet: ~bårådasteduvvagoahtet # Der 1 + Der 2 + Der 3 - ikke ok (*duvvat+goahtet)
+    viegadastedahttet:      viegadastedahttet     # Der 1 + Der 2
+    viegadasstemussasj:     viegadasstemussasj    # Der 1 + Der 3 + Der/Dimin
+
+#bårråt bårådit bårå-dallat 
+#vádtsális

@@ -1,0 +1,66 @@
+Config:
+  hfst:
+    Gen: ../../../src/generator-gt-norm.hfst
+    Morph: ../../../src/analyser-gt-norm.hfst
+  xerox:
+    Gen: ../../../src/generator-gt-norm.xfst
+    Morph: ../../../src/analyser-gt-norm.xfst
+    App: lookup
+
+
+# Comments after each noun:
+# ok = checked against 
+# ? = not checked
+
+# Unassimilated and badly assimilated words in CELSIUS_UNASS, KINO-UNASS, NOADE_BADASS and GAHPER_BADASS.
+
+Tests:
+  Noun - kompendium: # CELSIUS_UNASS, NOADE_BADASS
+    kompendium+N+Sg+Nom: kompendium
+    kompendium+Err/Orth+N+Sg+Nom: kompendia
+    kompendium+N+Sg+Acc: kompendiumav
+    kompendium+Err/Orth+N+Sg+Acc: kompendiav
+    kompendium+N+Sg+Com: kompendiumajn
+    kompendium+N+Sg+Com+Err/Orth: kompendiumajna
+    kompendium+Err/Orth+N+Sg+Com: kompendiajn
+    kompendium+Err/Orth+N+Sg+Com+Err/Orth: kompendiajna
+    kompendium+N+Ess: kompendiuman
+    kompendium+Err/Orth+N+Ess: kompendian
+    
+  Noun - aids: # CELSIUS_UNASS
+    aids+N+Sg+Nom: aids
+    aids+N+Sg+Acc: aidsav
+    aids+N+Sg+Com: aidsajn
+    aids+N+Sg+Com+Err/Orth: aidsajna
+    aids+N+Ess: aidsan
+ 
+  Noun - maori: # KINO_UNASS
+    maori+N+Sg+Nom: maori
+    maori+N+Sg+Acc: maoriv
+    maori+N+Sg+Com: maorijn
+    maori+N+Sg+Com+Err/Orth: maorijna
+    maori+N+Ess: maorin
+  
+  Noun - farisea: # NOADE_BADASS
+    farisea+N+Sg+Nom: farisea
+    farisea+N+Sg+Acc: fariseav
+    farisea+N+Sg+Com: fariseajn
+    farisea+N+Sg+Com+Err/Orth: fariseajna
+    farisea+N+Ess: farisean
+    
+  Noun - interviermme: # NOADE_BADASS, Err/Lex
+    interviermme+Err/Lex+N+Sg+Nom: interviermme
+    interviermme+Err/Lex+N+Sg+Ine: interviermen
+    interviermme+Err/Lex+N+Sg+Ill: [interværmmáj, intervärmmáj]
+    
+  Noun - boaksa: # BOAKSA_BADASS, MUORRA
+    boaksa+v1+N+Sg+Nom: boaksa
+    boaksa+v1+N+Sg+Acc: båvsav
+    boaksa+v1+N+Sg+Com+Err/Orth: båvsajna
+    boaksa+v1+N+Sg+Com: båvsajn
+    boaksa+v1+N+Ess: boaksan
+    boaksa+v2+N+Err/Orth+Sg+Nom: boaksa
+    boaksa+v2+N+Err/Orth+Sg+Acc: båksav
+    boaksa+v2+N+Err/Orth+Sg+Com+Err/Orth: båksajna
+    boaksa+v2+N+Err/Orth+Sg+Com: båksajn
+    boaksa+v2+N+Err/Orth+Ess: boaksan

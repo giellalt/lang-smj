@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# script to generate paradigms for generating word forms
+# command:
+# sh generate_contlex_para.sh PATTERN
+# example, when you are in smj:
+# sh devtools/prop_minip.sh VUONA | dsmjNorm | less
+# sh devtools/prop_minip.sh Hirškikkâ | dsmjNorm 
+
+
+LOOKUP=$(echo $HLOOKUP)
+GTHOME=$(echo $GTHOME)
+
+PATTERN=$1
+L_FILE="in.txt"
+cut -d '!' -f1 src/fst/stems/smj-propernouns.lexc | grep $PATTERN | cut -d ':' -f1 | tr -d '%'>$L_FILE
+
+P_FILE="test/data/testpropparadigm.txt"
+
+for lemma in $(cat $L_FILE);
+do
+ for form in $(cat $P_FILE);
+ do
+   echo "${lemma}${form}" | $LOOKUP $GTHOME/langs/smj/src/generator-gt-norm.hfstol
+ done
+done
+

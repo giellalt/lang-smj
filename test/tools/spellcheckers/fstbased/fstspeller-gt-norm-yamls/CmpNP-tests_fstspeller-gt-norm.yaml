@@ -1,0 +1,34 @@
+Config:
+  hfst:
+    Gen:  ../../../tools/spellcheckers/fstbased/generator-fstspeller-gt-norm.hfst
+    Morph: ../../../tools/spellcheckers/fstbased/analyser-fstspeller-gt-norm.hfst
+  xerox:
+    Gen:  ../../../tools/spellcheckers/fstbased/generator-fstspeller-gt-norm.xfst
+    Morph: ../../../tools/spellcheckers/fstbased/analyser-fstspeller-gt-norm.xfst
+    App: lookup
+
+# Testing CmpNp/xxx tags. Currently only +CmpNP/Pref, +CmpNP/Last and +CmpNP/None are in use in smj
+
+Tests:
+  CmpNP/Pref tests:
+    miehte+N: ~miehte 
+    miehte+N+Sem/Dummytag+Cmp#biegga+N+Sem/Substnc_Wthr+Sg+Nom: miehte#biegga
+    biegga+N+Sem/Substnc_Wthr+Cmp/SgNom+Cmp#miehte+N: ~biegga#miehte
+    badje+N: ~badje
+    badje+N+Sem/Dummytag+Cmp#goahte+N+Sem/Build+Sg+Nom: badje#goahte
+    goahte+N+Sem/Build+Cmp/SgNom+Cmp#badje+N: ~goahte#badje
+  
+  CmpNP/Last tests: 
+    niellja+Num+Cmp#juolgge+N+Sem/Body+Der1+Der/k+A+Sg+Nom: nielje#juolgak
+    bieles+N+Sem/Plc+Sg+Ill: [bælláj, bälláj]   # alone ok
+    bielkká+N+Sem/Obj+Cmp#bieles+N+Sem/Plc+Sg+Ill: [bielkká#bælláj, bielkká#bälláj, ~bielkáj#bælláj, ~bielká#bälláj, ~bielkáj#bälláj, ~bielká#bælláj]
+    bieles+N+Sem/Plc+Cmp#bielkká+N+Sem/Obj+Sg+Ill: [~biellej#bielkkáj, ~bieles#bielkkáj, ~bielle#bielkkáj]
+    guokta+Num+Cmp#ahke+N+Sem/Ani_Hum+Der1+Der/sasj+A+Sg+Nom: guovte#ahkásasj
+    
+    # lexc restricts entries in NAMAK and SASJ from standing alone, but maybe they actually should have a CmpNP/Suff tag instead...
+    
+  CmpNP/None tests:
+    mahte+N+Sem/Dummytag+Sg+Nom: mahte
+    mahte+N+Sem/Dummytag+Cmp#goahte+N+Sem/Dummytag+Sg+Nom: [~mahte#goahte, ~madij#goahte, ~made#goahte]
+    goahte+N+Sem/Dummytag+Cmp#mahte+N+Sem/Dummytag+Sg+Gen: [~goade#made, ~goahte#made, ~gådij#made]
+   

@@ -1,0 +1,1827 @@
+! Divvun & Giellatekno - open source grammars for Sámi and other languages
+! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
+! http://giellatekno.uit.no & http://divvun.no
+!
+! This program is free software; you can redistribute and/or modify
+! this file under the terms of the GNU General Public License as published by
+! the Free Software Foundation, either version 3 of the License, or
+! (at your option) any later version. The GNU General Public License
+! is found at http://www.gnu.org/licenses/gpl.html. It is
+! also available in the file $GTHOME/LICENSE.txt.
+!
+! Other licensing options are available upon request, please contact
+! giellatekno@hum.uit.no or feedback@divvun.no
+
+! ========================================================================== !
+!                      Lule Sámi morphological analyser                      !
+! ========================================================================== !
+
+
+! ===========================
+!! !!!Sublexica for Adjective
+! ===========================
+
+!! !!Even-syllable stems
+! -------------------
+
+LEXICON GIEVRRA !!= @CODE@ Adjectives with attribute in WeG and -s. As 1a in Spiik. Sg Acc: gievrav, Attr: gievras.
+
+                    +A:%>Q1s ATTR              ;
+!                   +A:%>Q1s VUOHTA            ; !moved to ATTR
+                    +A:%>    NE-EVENCASEadj    ;
+                    +A:%>X4  ILL-EVENCASEadj   ;
+                    +A:%>Q1  N-EVENWEAKSTEMadj ;
+                    +A:%>Q1  BU/MUS            ;
+  +A+Der5+Der/AAdv+Adv:%>Q1t ENDLEX            ;
+                    +A:%>    MUORRACmp         ;
+
+! Test data:
+!!€gt-norm: gárttje # Even-syllable test
+!!€ gárttje:             gárttje+A+Sg+Nom
+!!€ gártjev:             gárttje+A+Sg+Acc
+!!€ gártjes:             gárttje+A+Attr
+!!€ gártjep:             gárttje+A+Comp+Sg+Nom
+
+LEXICON HÁVSSKE !!= @CODE@  Adjectives with attribute -s, without WeG. As 1c in Spiik. Sg Acc: hávsskev, Attr: hávsskes.
+                    +A:%>s   ATTR              ;
+!                   +A:%>s   VUOHTA            ; !moved to ATTR
+                    +A:%>    NE-EVENCASEadj    ;
+                    +A:%>X4  ILL-EVENCASEadj   ;
+                    +A:%>Q1  N-EVENWEAKSTEMadj ; ! Presumably WeG in nominal paradigm
+                    +A:%>Q1  BU/MUS            ;
+  +A+Der5+Der/AAdv+Adv:%>Q1t ENDLEX            ;
+                    +A:%>    MUORRACmp         ;
+
+! Test data:
+!!€gt-norm: hoallá # Even-syllable test
+!!€ hoallá:              hoallá+A+Sg+Nom
+!!€ hoalláv:             hoallá+A+Sg+Acc
+!!€ hoallás:             hoallá+A+Attr
+!!€ hoalláp:             hoallá+A+Comp+Sg+Nom
+
+LEXICON NUORRA !!= @CODE@  Adjectives with attribute same as pred. As 1b in Spiik. Sg Acc: nuorav, Attr: nuorra.
+                    +A:%>    ATTR                ;
+!                   +A:      VUOHTA              ; !moved to ATTR
+                    +A:%>    N-EVENSTRONGSTEMadj ;
+                    +A:%>Q1  N-EVENWEAKSTEMadj   ; ! cg in nominal paradigm
+                    +A:%>Q1  BU/MUS              ;
+  +A+Der5+Der/AAdv+Adv:%>Q1t ENDLEX              ; ! Presumably WeG as adverb as well
+                    +A:%>    MUORRACmp           ;
+
+! Test data:
+!!€gt-norm: visská # Even-syllable test
+!!€ visská:             visská+A+Sg+Nom
+!!€ viskáv:             visská+A+Sg+Acc
+!!€ visská:             visská+A+Attr
+!!€ viskáp:             visská+A+Comp+Sg+Nom
+
+LEXICON TJUODDJE !!= @CODE@ Adjectives with attribute -is, without WeG. presently only "Tjuoddje" Sg Acc: tjuoddjev, Attr: tjuoddjis.
+                 +A:i%>s   ATTR              ;
+! +A:%>s VUOHTA ; !moved to ATTR
+                 +A:e%>    NE-EVENCASEadj    ;
+                 +A:e%>X4  ILL-EVENCASEadj   ;
+                 +A:e%>Q1  N-EVENWEAKSTEMadj ; ! Presumably WeG in nominal paradigm
+                 +A:e%>Q1  BU/MUS            ;
+ +A+Der5+Der/AAdv+Adv:e%>Q1t ENDLEX            ;
+                 +A:e%>    MUORRACmp         ;
+
+! Test data:
+!!€gt-norm: tjuoddje # Even-syllable test
+!!€ tjuoddje:             tjuoddje+A+Sg+Nom
+!!€ tjuoddjev:             tjuoddje+A+Sg+Acc
+!!€ tjuoddjis:             tjuoddje+A+Attr
+!!€ tjuoddjep:             tjuoddje+A+Comp+Sg+Nom
+
+LEXICON GALLJE !!= @CODE@  Adjectives on -e, the attribute is in WeG and e > a. As 1d in Spiik. Sg Acc: galjev, Attr: galja.
+                 +A:a%>Q1  ATTR              ; ! a-attr.
+!     +A:es%>Q1 ATTR ; ! e-attr. !These now hardcoded
+! +A:a%>Q1 VUOHTA ; !moved to ATTR
+! +A:es%>Q1 VUOHTA ; !moved to ATTR
+                 +A:e%>    NE-EVENCASEadj    ; ! presumably normal adjective
+                 +A:e%>X4  ILL-EVENCASEadj   ;
+                 +A:e%>Q1  N-EVENWEAKSTEMadj ; ! behaviour, with cg, and with
+                 +A:e%>Q1  BU/MUS            ; ! the e-form as a starting +A 
+ +A+Der5+Der/AAdv+Adv:e%>Q1t ENDLEX            ; ! point.
+                 +A:e%>    MUORRACmp         ;
+
+! Test data:
+!!€gt-norm: uhttse # Even-syllable test
+!!€ uhttse:             uhttse+A+Sg+Nom
+!!€ uhtsev:             uhttse+A+Sg+Acc
+!!€ uhtsa:              uhttse+A+Attr
+!!€ uhtses:             uhttse+A+Attr # gets this attr from LEXATTR
+!!€ uhtsep:             uhttse+A+Comp+Sg+Nom
+
+LEXICON TJÁBBE !!= @CODE@  Adjectives on -e, the attribute is in WeG and e > a. Same as GALLJE only different adv derivation. Sg Acc: tjáppev, Attr: tjáppa.
+                 +A:a%>Q1 ATTR              ; ! a-attr.
+!     +A:es%>Q1 ATTR ; ! e-attr. !These now hardcoded
+! +A:a%>Q1 VUOHTA ; !moved to ATTR
+! +A:es%>Q1 VUOHTA ; !moved to ATTR
+                 +A:e%>   NE-EVENCASEadj    ; ! presumably normal adjective
+                 +A:e%>X4 ILL-EVENCASEadj   ;
+                 +A:e%>Q1 N-EVENWEAKSTEMadj ; ! behaviour, with cg, and with
+                 +A:e%>Q1 BU/MUS            ; ! the e-form as a starting
+ +A+Der5+Der/AAdv+Adv:á%>t  ENDLEX            ; ! point.
+                 +A:e%>   MUORRACmp         ;
+
+! Test data:
+!!€gt-norm: njálgge # Even-syllable test
+!!€ njálgge:             njálgge+A+Sg+Nom
+!!€ njálgev:             njálgge+A+Sg+Acc
+!!€ njálga:              njálgge+A+Attr
+!!€ njálgep:             njálgge+A+Comp+Sg+Nom
+
+
+!!
+!! Pres.participles 
+!!
+
+LEXICON SÁVADAHTTE  !!= @CODE@ Causative-participles. No attribute. No comparision. As 1e in Spiik. Sg Acc: sávadahttev. PrsPrc of causative verbs "uttrykker at handlingen lar seg gjøre eller er verdt å gjøre" (Kintel 1991).
+ +A:%>   NE-EVENCASEadj    ;
+ +A:%>X4 ILL-EVENCASEadj   ;
+ +A:%>Q4 N-EVENWEAKSTEMadj ;
+ +A:%>   MUORRACmp         ;
+
+! Test data:
+!!€gt-norm: vuojedahtte # Even-syllable test
+!!€ vuojedahtte:             vuojedahtte+A+Sg+Nom
+!!€ vuojedahttev:            vuojedahtte+A+Sg+Acc
+
+LEXICON JUHKKE  !!= @CODE@ participles with -s attributive. No comparision As 1e in Spiik. Sg Acc: juhkkev, Attr: juhkkes. Spiik: presens particip har med den attributive formen på -s betydelsen ºnågon som är duktig i, snabb til att, begiven att utföra handlingenº.
+      +A:%>s  ATTR_PrsPrc       ;
+      +A:%>   NE-EVENCASEadj    ;
+      +A:%>X4 ILL-EVENCASEadj   ;
+      +A:%>Q4 N-EVENWEAKSTEMadj ;
+      +A:%>   MUORRACmp         ;
+
+! Test data:
+!!€gt-norm: vuohttje # Even-syllable test
+!!€ vuohttje:             vuohttje+A+Sg+Nom
+!!€ vuohttjev:             vuohttje+A+Sg+Acc
+!!€ vuohttjes:              vuohttje+A+Attr
+
+LEXICON BÅRRE  !!= @CODE@ participles without the -s attributive. As 1e in Spiik. Sg Acc: bårrev, Attr: bårre. Spiik: presens particip har med den attributiva formen utan -s betydelsen ºdem  som utför handlingenº.
+      +A:%>   ATTR_PrsPrc       ;
+      +A:%>   NE-EVENCASEadj    ;
+      +A:%>X4 ILL-EVENCASEadj   ;
+      +A:%>Q4 N-EVENWEAKSTEMadj ;
+      +A:%>   MUORRACmp         ;
+
+! Test data:
+!!€gt-norm: ednabårre # Even-syllable test
+!!€ ednabårre:              ednabårre+A+Sg+Nom
+!!€ ednabårrev:             ednabårre+A+Sg+Acc
+!!€ ednabårre:             ednabårre+A+Attr
+
+
+!LEXICON DÁBBELIJ !!= @CODE@ presenty only for "Dábbelij". Sg Acc: dábbelaháv, Attr: dábbelij. Similar forms are analyzed as adpositions and adverbss (dábbela, dábbelin). This lexica is thus outcommented as it is not an adjective.
+!                 +A+Sg+Nom:ij%>   K                 ;
+!                       +A:ij%>   ATTR              ;
+! +A:ij VUOHTA ; !moved to ATTR
+! +A+Sg+Nom+Err/Orth:ahá%>  PxV               ; !
+!                    +A+Ess:ahá%>n ENDLEX            ;
+!                        +A:ahá%>  ILL-EVENCASEadj   ;
+!                        +A:ahá%>  N-EVENWEAKSTEMadj ;
+!        +A+Der5+Der/AAdv+Adv:ahá%>t ENDLEX            ;
+!                        +A:ahá%>  BU/MUS            ;
+!               +A+Cmp/SgGen:ahá%>  R                 ;
+!               +A+Cmp/PlGen:ahá%>j R                 ;
+
+!! Test data:
+!!!€gt-norm: dábbelij # Even-syllable test
+!!!€ dábbelij             dábbelij+A+Sg+Nom
+!!!€ dábbelaháv           dábbelij+A+Sg+Acc
+!!!€ dábbelij             dábbelij+A+Attr
+!!!€ dábbelaháp           dábbelij+A+Comp+Sg+Nom
+
+
+!!
+!! Loan words lexicas
+!!
+
+
+!! ! Correctly assimilated loanwords, derived from real noun.
+
+
+LEXICON MEKANIHKALASJ !!= @CODE@ LOAN! Foreign -isk adjectives adapted in updated normative way. To smj ending -alasj, adjective is truly derived from a noun. Mekanisk-mekanihkka-mekanihkalasj, instead of mekánalasj that goes to MEKÁNALASJ_BADASS. Pred and attr are both -alasj. Attr same as pred. With comparatives. 
+
++A+OLang/NOB+CmpNP/Last: MEKANIHKALASJ_CMP_INFL ;
+
+
+LEXICON MEKANIHKALASJ_CMP_INFL !!= @CODE@
+
+                        :asj%>      ATTR              ;
+                 +Sg+Nom:asj%>      ENDLEX            ;
+                 +Sg+Ill:attja%>j   ENDLEX            ;
+        +Err/Orth+Sg+Ill:adtja%>j   ENDLEX            ;
+                    +Ess:attja%>n   ENDLEX            ;
+           +Err/Orth+Ess:adtja%>n   ENDLEX            ;
+                        :attja%>    N-EVENWEAKSTEMadj ; !This seems right. TO
+                        :%>         ABBO/AMOS         ;
+      +Der5+Der/AAdv+Adv:attja%>t   ENDLEX            ;
+              +Cmp/SgNom:asj%>      R                 ;
+              +Cmp/SgGen:lattja%>   R                 ;
+              +Cmp/PlGen:lattja%>j  R                 ;
+      
+        +Err/Orth+Sg+Ill:attja%>s%> PxCi              ; !
+        +Err/Orth+Sg+Nom:attja%>    PxV               ; !
+        +Err/Orth+Sg+Ill:adtja%>s%> PxCi              ; !
+        +Err/Orth+Sg+Nom:adtja%>    PxV               ; !                
+                
+               
+
+! Test data:
+!!€gt-norm: kapitalismalasj # Even-syllable test
+!!€ kapitalismalasj:             kapitalismalasj+A+Sg+Nom
+!!€ kapitalismalattjav:          kapitalismalasj+A+Sg+Acc
+!!€ kapitalismalasj:             kapitalismalasj+A+Attr
+!!€ kapitalismalabbo:             kapitalismalasj+A+Comp+Sg+Nom
+
+
+
+LEXICON IJJALASJ !!= @CODE@ Just lik MEKANIHKALASJ only for words ending on ijjalasj/iddjalasj, so that we don't need a lot of Area and Err tags in stems file.
+
++A+OLang/NOB+CmpNP/Last: IJJALASJ_CMP_INFL ;
+
+LEXICON IJJALASJ_CMP_INFL !!= @CODE@ 
+
+         +Area/NO:ijjal  MEKANIHKALASJ_CMP_INFL ;
+         +Area/SE:idjal  MEKANIHKALASJ_CMP_INFL ;
+        +Err/Orth:ial    MEKANIHKALASJ_CMP_INFL ;
+        +Err/Orth:iddjal MEKANIHKALASJ_CMP_INFL ;
+        +Err/Orth:ijal   MEKANIHKALASJ_CMP_INFL ;
+        +Err/Orth:al     MEKANIHKALASJ_CMP_INFL ;
+  
+
+LEXICON OGIJJALASJ !!= @CODE@ Just like IJJALASJ only for words ending on ogijjalasj/ogiddjalasj, so that we don't need a lot of err tags in stems files. For words like "pedagogijjalasj" which also have "pedagåvgålasj" (not really a wrong derivation, but doesn't mean pedagogisk) and "pedagogalasj" err taged.  
+ 
++A+OLang/NOB+CmpNP/Last: OGIJJALASJ_CMP_INFL ;
+  
+LEXICON OGIJJALASJ_CMP_INFL !!= @CODE@ 
+  
+  +Area/NO:ogijjal  MEKANIHKALASJ_CMP_INFL ;
+  +Area/SE:ogidjal  MEKANIHKALASJ_CMP_INFL ;
+ +Err/Orth:ogiddjal MEKANIHKALASJ_CMP_INFL ;
+ +Err/Orth:ogijal   MEKANIHKALASJ_CMP_INFL ;
+ +Err/Orth:ogial    MEKANIHKALASJ_CMP_INFL ;
+ +Err/Orth:ogal     MEKANIHKALASJ_CMP_INFL ;
+ +Err/Orth:åvgål    MEKANIHKALASJ_CMP_INFL ; !Not really a wrong derivation but it means someting else than the norwegian -isk adjective. "Pedagåvgålasj" we get from the noun pedagåvggå. 
+
+LEXICON SJÅNÅLASJ_SJONAL !!= @CODE@ -sjonal/sjonell and -tional/tionel loanwords. Only for words that work as nouns, so that they are REAL dervations, as nasjonal-nasjåvnnå-nasjåvnålasj. NOT for words like "rasjonell", with no real noun. Words as "rasjonell>rasjonálla-rasjonálalasj" go to lexicon ÁLLA.  The fake derivation "nasjonálalasj" is err taged, so is the strange "nasjonálla/nasjunálla". 
+
++A+OLang/NOB: SJÅNÅLASJ_SJONAL_CMP_INFL ;
+
+LEXICON SJÅNÅLASJ_SJONAL_CMP_INFL !!= @CODE@ 
+
+                            +CmpNP/Last:sjåvnål      MEKANIHKALASJ_CMP_INFL ;
+        +Err/Orth+Use/-Spell+CmpNP/Last:sjon         ÁLA_LASJ_INFL_CMP  ; ! Makes BADASS "nasjonálalasj/nasjoalaladj,nasjonállalasj,nasjonállá, nasjonalla, nasjonella, nasjnælla"
+        +Err/Orth+Use/-Spell+CmpNP/Last:sjun         ÁLA_LASJ_INFL_CMP  ; ! 
++Err/Orth+Area/SE+Use/-Spell+CmpNP/Last:tion         ÁLA_LASJ_INFL_CMP  ; ! 
+
+                     +CmpNP/Pref+Cmp/Sh:sjonal%> R    ; !Short cmp "nasjonalvárre"
+            +Err/Orth+CmpNP/Pref+Cmp/Sh:sjonál%> R    ; !Short cmp
+            +Err/Orth+CmpNP/Pref+Cmp/Sh:sjunál%> R    ; !Short cmp
+
+
+! Test data:
+!!€gt-norm: konstitusjåvnålasj # Even-syllable test
+!!€ nasjåvnålasj:             nasjåvnålasj+A+Sg+Nom
+!!€ nasjåvnålattjav:          nasjåvnålasj+A+Sg+Acc
+!!€ nasjåvnålasj:             nasjåvnålasj+A+Attr
+  
+
+
+LEXICON SJÅNÅLASJ_SJONELL !!= @CODE@ -sjonal/sjonell and -tional/tionel loanwords. Only for words that work as nouns, so that they are REAL dervations, as nasjonal-nasjåvnnå-nasjåvnålasj. NOT for words like "rasjonell", with no real noun. Words as "rasjonell>rasjonálla-rasjonálalasj" go to lexicon ÁLLA.  The fake derivation "nasjonálalasj" is err taged, so is the strange "nasjonálla/nasjunálla". 
+
++A+OLang/NOB+CmpNP/Last: SJÅNÅLASJ_SJONELL_CMP_INFL ;
+
+LEXICON SJÅNÅLASJ_SJONELL_CMP_INFL !!= @CODE@ 
+
+                            :sjåvnål      MEKANIHKALASJ_CMP_INFL ;
+                   +Err/Orth:sjon         ELLA_LASJ_INFL_CMP     ; ! ! Makes strange "emosjonellalasj/emosjonælla/emosjonálla/emosjonella
+                   +Err/Orth:tion         ELLA_LASJ_INFL_CMP     ; ! 
+                   +Err/Orth:sjun         ELLA_LASJ_INFL_CMP     ; ! 
+        +Err/Orth+Use/-Spell:sjonálal     MEKANIHKALASJ_CMP_INFL ; ! Makes BADASS "emosjonálalasj"
+        +Err/Orth+Use/-Spell:sjunálal     MEKANIHKALASJ_CMP_INFL ; ! Makes BADASS "emosjunálalasj"
+
+! Test data:
+!!€gt-norm: konstitusjåvnålasj # Even-syllable test
+!!€ konstitusjåvnålasj:             konstitusjåvnålasj+A+Sg+Nom
+!!€ konstitusjåvnålattjav:          konstitusjåvnålasj+A+Sg+Acc
+!!€ konstitusjåvnålasj:             konstitusjåvnålasj+A+Attr
+
+
+!! ! Badly assimilated loanwords, some against norm others with no norm
+
+LEXICON MEKÁNALASJ_BADASS !!= @CODE@ LOAN! Wronly assimilated -lasj adjectives fro SE/NO -isk. Looks derived but isn't since there is no real noun to be derived from. Like mekanisk-mekánalasj, but "mekádna" is no real noun! Like MEKANIHKALASJ, but gives the Use/-Spell tag, so it's only for these wronly/non-derived loan adjectives. 
+
++A+OLang/NOB+CmpNP/Last+Use/-Spell: MEKÁNALASJ_CMP_INFL ;
+
+ 
+
+LEXICON ARKTALASJ_NOT_DERIVED
++A+OLang/NOB+CmpNP/Last: ARKTALASJ_CMP_INFL ;
+
+LEXICON ARKTALASJ_CMP_INFL !!= @CODE@ Foreign -isk, that are not real derivations. Same as MEKÁNALASJ_BADASS, but no +Use/-Spell tag since ther is no "right" way to assimilate these. This is a question for GG. Adapted to smj by simply adding -alasj in place of -isk. These are not real derivations, but sitation borrowed loan adjectives. Only words without a noun base, like arktisk and syntetisk. Pred and attr are both -lasj. No comparatives. 
+
+! +A:asj VUOHTA ; !moved to ATTR
+
+! +A: VUOHTA ; !moved to ATTR
+                          :%>     ATTR_PrsPrc   ; ! No vuohta derivation in this lexicon
+                   +Sg+Nom:%>     ENDLEX        ;
+          +Sg+Nom+Err/Orth:a%>    PxV           ; !
+                          :a%>    SURGULASJ-EVEN ; ! Declined as four-syllable noun
+! +A:a%>Q1 BU/MUS ;
+         +Der5+Der/AAdv+Adv:a%>Q1t ENDLEX        ;
+                 +Cmp/SgNom:%>     R             ;
+                 +Cmp/SgGen:a%>Q1  R             ;
+                 +Cmp/PlGen:a%>Q1j R             ;
+
+! Test data:
+!!€gt-norm: syntetalasj # Even-syllable test
+!!€ syntetalasj:           syntetalasj+A+Sg+Nom
+!!€ syntetalattjav:        syntetalasj+A+Sg+Acc
+!!€ syntetalasj:           syntetalasj+A+Attr
+
+LEXICON ORÁNSSJA !!= @CODE@ Loan adjectives, not -isk. Used without the -lasj. Adjectives with attribute same as pred. So far only for oránssja.
+
++OLang/NOB+CmpNP/Last: NUORRA ; 
+
+LEXICON DEMONSTRATIJVA_LASJ_NO_NORM !!= @CODE@ Loan adjectives from norwegian/swedish (Not adjectives ending on -isk). Words like demonstrativ, transitiv, dupleks, informativ, analog, privat. Gives both "demonstratijvva" and "demonstratijvalasj". There are two ways of adapting these adjectives, the adding of -lasj isn't okey, because that's a false derivation. But GG hasn't decided how these should be handled, so so far both ok. Looks like noun instead of adjective when adapted without the -lasj ending.  Attr is in weak grad, used in strong grad ass pred even thou this seems a little bit odd "Værbba l transitijvva". 
+
+
++A+OLang/NOB+CmpNP/Last: DEMONSTRATIJVA_LASJ_CMP_INFL ;
+
+
+LEXICON DEMONSTRATIJVA_LASJ_CMP_INFL !!= @CODE@   
+                      
+                 +Use/NG:Q1l     MEKÁNALASJ_CMP_INFL  ;
+                        :Q1      ATTR_PrsPrc             ; ! No vuohta derivation in this lexicon
+                        :        N-EVENSTRONGSTEMadj     ;
+                        :Q1      N-EVENWEAKSTEMadj       ; ! cg in nominal paradigm
+                        :%>Q1    BU/MUS                  ;
+      +Der5+Der/AAdv+Adv:Q1t     ENDLEX                  ; ! Presumably WeG as adverb as well
+                        :        MUORRACmp               ;
+
+!                   +Sg+Nom:Q1lasj%>      ENDLEX            ;
+!                          :Q1lasj%>      ATTR              ;
+!          +Err/Orth+Sg+Ill:Q1ladtja%>j   ENDLEX            ;
+!             +Err/Orth+Ess:Q1ladtja%>n   ENDLEX            ;
+!                   +Sg+Ill:Q1lattja%>j   ENDLEX            ;
+!                      +Ess:Q1lattja%>n   ENDLEX            ;
+!                          :Q1lattja%>    N-EVENWEAKSTEMadj ;
+!                          :Q1l%>         ABBO/AMOS         ;
+!        +Der5+Der/AAdv+Adv:Q1lattja%>t   ENDLEX            ;
+!                +Cmp/SgNom:Q1lasj%>      R                 ;
+!                +Cmp/SgGen:Q1lattja%>    R                 ;
+!                +Cmp/PlGen:Q1lattja%>j   R                 ;
+!          +Err/Orth+Sg+Nom:Q1ladtja%>    PxV               ; !
+!          +Err/Orth+Sg+Ill:Q1ladtja%>s%> PxCi              ; !
+!                   +Sg+Nom:Q1lattja%>    PxV               ; !
+!                   +Sg+Ill:Q1lattja%>s%> PxCi              ; !
+                   
+! Test data:
+!!€gt-norm: aktijvva # Even-syllable test
+!!€ aktijva:                    aktijvva+A+Attr
+!!€ aktijvalasj:                aktijvva+A+Attr
+!!€ aktijvva:                   aktijvva+A+Sg+Nom
+!!€ aktijvalasj:                aktijvva+A+Sg+Nom
+!!€ aktijvalattjav:             aktijvva+A+Sg+Acc
+!!€ aktijvav:                   aktijvva+A+Sg+Acc
+
+
+
+
+
+
+LEXICON ÁLA_LASJ_NO_NORM !!= @CODE@ Same as DEMONSTRATIJVA_LASJ_NO_NORM. Only for adjectives ending on -al. Words like digital,liberal, lokal.  Gives both "eksponentiálla" and "eksponentiálalasj". Different lexicon for these -al adjectives because of Err/Orth tags. OBS, "dialektal", is assimilated "dialevtalasj", and goes to lexicon MEKANIHKALASJ.
+
++A+OLang/NOB+CmpNP/Last: ÁLA_LASJ_INFL_CMP ;
+
+LEXICON ÁLA_LASJ_INFL_CMP !!= @CODE@
+
+                                 :álal  MEKÁNALASJ_CMP_INFL     ;   
+                        +Err/Orth:alal  MEKÁNALASJ_CMP_INFL     ;
+                        +Err/Orth:állal MEKÁNALASJ_CMP_INFL     ;
+                                 :áll            ÁLLA-ÆLLA         ;
+                        +Err/Orth:all            ÁLLA-ÆLLA         ;
+                        +Err/Orth:elºl           ÁLLA-ÆLLA         ;
+                +Err/Orth+Area/NO:æ9lºl          ÁLLA-ÆLLA         ;
+         +Err/Orth+Use/NG+Area/SE:ä9lºl          ÁLLA-ÆLLA         ;
+           
+!             +A+Sg+Nom+Err/Orth:álalasj%>      ENDLEX            ;
+!                    +A+Err/Orth:álalasj%>      ATTR              ;
+!                    +A+Err/Orth:álalattja%>    N-EVENWEAKSTEMadj ;
+!                +A+Ess+Err/Orth:álalattja%>n   ENDLEX            ;
+!       +A+Ess+Err/Orth+Err/Orth:álaladtja%>n   ENDLEX            ;
+!             +A+Sg+Ill+Err/Orth:álalattja%>j   ENDLEX            ;
+!    +A+Sg+Ill+Err/Orth+Err/Orth:álaladtja%>j   ENDLEX            ;
+!!                     +Err/Orth:álal%>         ABBO/AMOS         ;
+!  +A+Der5+Der/AAdv+Adv+Err/Orth:álalattja%>t   ENDLEX            ;
+!          +A+Cmp/SgNom+Err/Orth:álalasj%>      R                 ;
+!          +A+Cmp/SgGen+Err/Orth:álalattja%>    R                 ;
+!          +A+Cmp/PlGen+Err/Orth:álalattja%>j   R                 ;
+!             +A+Sg+Nom+Err/Orth:álaladtja%>    PxV               ; ! Not possible with possesive suffixes, Case?
+!             +A+Sg+Nom+Err/Orth:álalattja%>    PxV               ; ! Not possible with possesive suffixes, Case?
+!             +A+Sg+Ill+Err/Orth:álaladtja%>s%> PxCi              ; ! Not possible with possesive suffixes
+!             +A+Sg+Ill+Err/Orth:álalattja%>s%> PxCi              ; ! Not possible with possesive suffixes
+
+LEXICON ELLA_LASJ_NO_NORM !!= @CODE@ Loanwords, same as ÁLA_LASJ_NO_NORM  and  DEMONSTRANTIJVA_LASJ_NO_NORM. For NO and SE adjectives ending on -ell, eksperimentell, ideell, parallell. The short form is nom parallælla, attr, parallella The long form: paralellalasj, attr parallellalasj. Different lexicon for these -ell adjectives because of err/orth tags. OBS, "individuell", is assimilated "indivijdalasj", and goes to lexicon MEKANIHKALASJ.
+
++A+OLang/NOB+CmpNP/Last: ELLA_LASJ_INFL_CMP ;
+
+LEXICON ELLA_LASJ_INFL_CMP !!= @CODE@ 
+
+                       :ellal MEKÁNALASJ_CMP_INFL  ; 
+               +Area/NO:ælºl  ÁLLA-ÆLLA ;
+        +Use/NG+Area/SE:älºl  ÁLLA-ÆLLA ;
+              +Err/Orth:áll   ÁLLA-ÆLLA ;
+              +Err/Orth:elºl  ÁLLA-ÆLLA ;
+              +Err/Orth:ell   ÁLLA-ÆLLA ;
+
+LEXICON ÁLLA-ÆLLA !!= @CODE@
+                   :a%>Q1  ATTR_PrsPrc         ; ! No vuohta derivation in this lexicon
+                   :a%>    N-EVENSTRONGSTEMadj ;
+                   :a%>Q1  N-EVENWEAKSTEMadj   ; ! cg in nominal paradigm
+                   :a%>Q1    BU/MUS                  ;
+                   :a%>    MUORRACmp           ;
+! +Der5+Der/AAdv+Adv:a%>Q1t ENDLEX             ; ! No adv derivation in this lexicon
+
+LEXICON MEKÁNALASJ_CMP_INFL !!= @CODE@ Same as mekanihkalasj only without vuohta. 
+
+                        :asj%>      ATTR_PrsPrc       ; ! No vuohta derivation in this lexicon
+                 +Sg+Nom:asj%>      ENDLEX            ;
+                 +Sg+Ill:attja%>j   ENDLEX            ;
+        +Err/Orth+Sg+Ill:adtja%>j   ENDLEX            ;
+                    +Ess:attja%>n   ENDLEX            ;
+           +Err/Orth+Ess:adtja%>n   ENDLEX            ;
+                        :attja%>    N-EVENWEAKSTEMadj ; 
+                        :%>         ABBO/AMOS         ;
+      +Der5+Der/AAdv+Adv:attja%>t   ENDLEX            ;
+              +Cmp/SgNom:asj%>      R                 ;
+              +Cmp/SgGen:lattja%>   R                 ;
+              +Cmp/PlGen:lattja%>j  R                 ;
+      
+        +Err/Orth+Sg+Ill:attja%>s%> PxCi              ; !
+        +Err/Orth+Sg+Nom:attja%>    PxV               ; !
+        +Err/Orth+Sg+Ill:adtja%>s%> PxCi              ; !
+        +Err/Orth+Sg+Nom:adtja%>    PxV               ; !  
+
+
+
+! LEXICON DEMONSTRATIJVALASJ !!= @CODE@ Lexicon DEMONSTRATIJVA_LASJ now gives both demonstratijvva and demonstratijvalasj
+! +A+OLang/NOB+CmpNP/Last: DEMONSTRATIJVALASJ_CMP_INFL ;
+! 							
+! LEXICON DEMONSTRATIJVALASJ_CMP_INFL !!= @CODE@  Look like derived loan adjectives. However, they are not derived. Rather, these are "long" forms of short adjektives as those in DEMONSTRATIJVA and thus not true derivations. Same NO words as i DEMONSTRATIJVA, only another way of making the fit into sami, guess it's because of the odd predicative.  Odd-syllable comparison. Sg Acc: destruktijvalattjav, Attr: destruktijvalasj. (The -lasj is unpopular.)
+! ! +A:asj VUOHTA ; !moved to ATTR
+!                  +Sg+Nom:lasj%>      ENDLEX            ;
+!                         :lasj%>      ATTR              ;
+!         +Err/Orth+Sg+Ill:ladtja%>j   ENDLEX            ;
+!            +Err/Orth+Ess:ladtja%>n   ENDLEX            ;
+!                  +Sg+Ill:lattja%>j   ENDLEX            ;
+!                     +Ess:lattja%>n   ENDLEX            ;
+!                         :lattja%>    N-EVENWEAKSTEMadj ;
+!                         :l%>         ABBO/AMOS         ;
+!         +Der5+Der/AAdv+Adv:lattja%>t   ENDLEX            ;
+!                +Cmp/SgNom:lasj%>      R                 ;
+!                +Cmp/SgGen:lattja%>    R                 ;
+!                +Cmp/PlGen:lattja%>j   R                 ;
+!          +Err/Orth+Sg+Nom:ladtja%>    PxV               ; !
+!          +Err/Orth+Sg+Ill:ladtja%>s%> PxCi              ; !
+!                   +Sg+Nom:lattja%>    PxV               ; !
+!                   +Sg+Ill:lattja%>s%> PxCi              ; !
+! 							
+! 							
+
+
+!LEXICON A_ADJEKTIV ! now in DEMONSTRATIJVA_LASJ
+!+A+OLang/NOB: ADJEKTIJVVA_CMP_INFL ;
+!
+!LEXICON A_TABLETT ! now in DEMONSTRATIJVA_LASJ
+!+A+OLang/NOB: TABLÆHTTA_CMP_INFL ;
+!
+!
+! LEXICON AALASJ
+!           +A+OLang/NOB+CmpNP/Last:åladtj MEKANIHKALASJ_CMP_INFL ;
+!  +A+Err/Orth+OLang/NOB+CmpNP/Last:aladtj MEKANIHKALASJ_CMP_INFL ;
+!                     +A+CmpNP/Last:åladtj ASIDASJ_CMP_INFL      ;
+!                     +A+CmpNP/Last:åladtj DÁRBULASJ_CMP_INFL    ;
+!                     +A+CmpNP/Last:åladtj ÅLLAGSJ_CMP_INFL      ;
+! 
+! LEXICON ULASJ_DÁRBULASJ
+! +A+CmpNP/Last:uladtj DÁRBULASJ_CMP_INFL ;
+! +A+CmpNP/Last:uladtj ÅLLAGSJ_CMP_INFL ;
+! +A+CmpNP/Last:uladtj ASIDASJ_CMP_INFL  ;
+! +A+Err/Orth+CmpNP/Last:oladtj DÁRBULASJ_CMP_INFL ;
+ 
+!   DÁRBULASJ ; !Err/Orth
+!   DÁRBULASJ ;
+! +A+CmpNP/Last: DÁRBULASJ_CMP_INFL ;
+! 
+!   
+!
+!
+! LEXICON ALASJ
+!   +A+Area/NO+OLang/NOB+CmpNP/Last:aladtj
+!   +A+Area/SE+OLang/NOB+CmpNP/Last:aladtj
+!
+!   DEMONSTRATIJVALASJ ; ! LOAN
+! +A+OLang/NOB+CmpNP/Last: DEMONSTRATIJVALASJ_CMP_INFL ;
+!   ARKTALASJ ;
+! +A+OLang/NOB+CmpNP/Last: ARKTALASJ_CMP_INFL ;
+!   ÅLLAGASJ ;
+! +A+CmpNP/Last: ÅLLAGSJ_CMP_INFL ;
+!   
+!
+!
+! LEXICON ELASJ
+!   +A+Area/NO+OLang/NOB+CmpNP/Last:eladtj
+!   +A+Area/SE+OLang/NOB+CmpNP/Last:eladtj
+!
+!   ÅLLAGASJ ; 
+! +A+CmpNP/Last: ÅLLAGSJ_CMP_INFL ;
+!   ASIDASJ ; !
+! +A+CmpNP/Last: ASIDASJ_CMP_INFL  ;
+!   DÁRBULASJ ;
+! +A+CmpNP/Last: DÁRBULASJ_CMP_INFL ;
+!   
+!
+!
+! LEXICON ÁLASJ
+!   +A+Area/NO+OLang/NOB+CmpNP/Last:áladtj
+!   +A+Area/SE+OLang/NOB+CmpNP/Last:áladtj
+!
+!   ÅLLAGASJ ; !
+! +A+CmpNP/Last: ÅLLAGSJ_CMP_INFL ;
+!   DÁRBULASJ ;
+! +A+CmpNP/Last: DÁRBULASJ_CMP_INFL ;
+!   
+!
+!
+! LEXICON OLASJ - eksisterer ikke slike ord?! 
+!  +A+Area/NO+OLang/NOB+CmpNP/Last:oladtj
+!  +A+Area/SE+OLang/NOB+CmpNP/Last:oladtj
+!  Funnet to ord, men to ulike lexicon.
+! girkkolasj+Sem/Dummytag:girkkoladtj ÅLLAGASJ ;
+! oavdolasj+CmpN/SgN+CmpN/PlG+Sem/Dummytag:oavdol DÁRBULASJ ; !
+
+
+!!
+!! Inherent comparatives and superlatives lexica
+!!
+
+LEXICON OANEP  !!= @CODE@ Inherent comparatives, gives comp and superl. There are two main groups of word here: Adjectives that are lexicalized in their comparative (and superlative) forms, like sisŋep, bárep. And Nouns that can be compared, like nuortap, gáttep, oarjep (some of these are compared from their noun lexicas and thus are found twice). Some entries are likely incorrect compared forms of other adjectives, like ådåp and ruvvap (more research needed).
+ +A:%> BU/MUS ;
+
+! Test data:
+!!€gt-norm: lagáp # Even-syllable test
+!!€ lagáp:             lagáp+A+Comp+Sg+Nom
+!!€ lagámus:           lagáp+A+Superl+Sg+Nom
+
+
+LEXICON TJAVGGÁMUS   !!= @CODE@ Inherent superlatives, only gives superl. Some words are lexicalized in their superlative forms, like dájvvámus. Some are likely incorrect superlative forms, like tjábbámus (more research is needed)
+                   +A+Superl:muss    BUOREMUS ;
+ +A+Superl+Der5+Der/AAdv+Adv:musá%>t ENDLEX   ;
+
+! Test data:
+!!€gt-norm: dájvvámus # Even-syllable test
+!!€ dájvvámus:           dájvvámus+A+Superl+Sg+Nom
+
+!!
+!! 4-syllable miscellanious stems
+!!
+
+LEXICON ÁRMMOGIS !!= @CODE@ Adjectives on -is, attribute same as pred. Odd-syllable comparison. As 2 in Spiik. Sg Acc: ármmogisáv, Attr: ármmogis. 
+! +A:is VUOHTA ; !moved to ATTR
+                        +A:is%>      ATTR          ; ! twol fixes the ss > s
+                 +A+Sg+Nom:is%>      ENDLEX        ;
+        +A+Sg+Nom+Err/Orth:issa%>    PxV           ; !
+                        +A:issa%>    ÁRMMOGIS-EVEN ; ! Declined as four-syllable noun
+! +A:issa%>Q1 BU/MUS ; !this is wrong:ármmogisáp
+                         +A:%>        ABBO/AMOS     ; !ármmogabbo
+       +A+Der5+Der/AAdv+Adv:issa%>Q1t ENDLEX        ;
+               +A+Cmp/SgGen:issa%>Q1  R             ;
+               +A+Cmp/PlGen:issa%>Q1j R             ;
+
+! Test data:
+!!€gt-norm: bahágis # Even-syllable test
+!!€ bahágis:             bahágis+A+Sg+Nom
+!!€ bahágisáv:           bahágis+A+Sg+Acc
+!!€ bahágis:             bahágis+A+Attr
+!!€ bahágabbo:           bahágis+A+Comp+Sg+Nom
+
+LEXICON SÆHKÁLAK !!= @CODE@ Adjectives on -álak, attribute same as pred. Odd-syllable comparison. So far only for "sæhkálak".
+! +A:is VUOHTA ; !moved to ATTR
+                        +A:ak%>      ATTR          ; !
+                 +A+Sg+Nom:ak%>      ENDLEX        ;
+        +A+Sg+Nom+Err/Orth:agá%>    PxV           ; !
+                        +A:agá%>    ÁRMMOGIS-EVEN ; ! Declined as four-syllable noun
+! +A:issa%>Q1 BU/MUS ; !this is wrong:ármmogisáp
+                         +A:%>        ABBO/AMOS     ; !sæhkálabbo
+               +A+Cmp/SgGen:lagá%>  R             ;
+               +A+Cmp/PlGen:lagá%>j R             ;
+
+! Test data:
+!!€gt-norm: sæhkálak # Even-syllable test
+!!€ sæhkálak:             sæhkálak+A+Sg+Nom
+!!€ sähkálak:             sæhkálak+A+Sg+Nom
+!!€ sæhkálagáv:           sæhkálak+A+Sg+Acc
+!!€ sähkálagáv:           sæhkálak+A+Sg+Acc
+!!€ sæhkálak:             sæhkálak+A+Attr
+!!€ sähkálak:             sæhkálak+A+Attr
+!!€ sæhkálabbo:           sæhkálak+A+Comp+Sg+Nom
+!!€ sähkálabbo:           sæhkálak+A+Comp+Sg+Nom
+
+LEXICON ÅLLAGASJ 
++A+CmpNP/Last: ÅLLAGSJ_CMP_INFL ;
+
+LEXICON ÅLLAGSJ_CMP_INFL !!= @CODE@ Adjectives on -asj, attribute same as pred.  No comparatives. 2 in Spiik. Sg Acc: ållagattjav, Attr: ållagasj.
+! +A: VUOHTA ; !moved to ATTR
+                        :%>     ATTR          ;
+                 +Sg+Nom:%>     ENDLEX        ;
+!        +Sg+Nom+Err/Orth:a%>    PxV           ; !
+                        :a%>    SURGULASJ-EVEN ; ! Declined as four-syllable noun
+! +A:a%>Q1 BU/MUS ;
+        +Der5+Der/AAdv+Adv:a%>Q1t ENDLEX        ;
+!               +A+Cmp/SgNom:%>     R             ; !is only last cmp
+!               +A+Cmp/SgGen:a%>Q1  R             ; !is only last cmp
+!               +A+Cmp/PlGen:a%>Q1j R             ; !is only last cmp
+
+! Test data:
+!!€gt-norm: belulasj # Even-syllable test
+!!€ belulasj:             belulasj+A+Sg+Nom
+!!€ belulattjav:           belulasj+A+Sg+Acc
+!!€ belulasj:             belulasj+A+Attr
+
+LEXICON DÁRBULASJ 
++A+CmpNP/Last: DÁRBULASJ_CMP_INFL ;
+
+LEXICON DÁRBULASJ_CMP_INFL !!= @CODE@ Adjectives on -asj, attribute same as pred. Odd-syllable comparison. Sg Acc: dárbulattjav, Attr: dárbulasj. Essive -attjan, -adtjan is subtaged.
+! +A:asj VUOHTA ; !moved to ATTR
+                 +Sg+Nom:asj%>      ENDLEX            ;
+                        :asj%>      ATTR              ;
+                 +Sg+Ill:attja%>j   ENDLEX            ;
+        +Err/Orth+Sg+Ill:adtja%>j   ENDLEX            ;
+                    +Ess:attja%>n   ENDLEX            ;
+           +Err/Orth+Ess:adtja%>n   ENDLEX            ;
+                        :attja%>    N-EVENWEAKSTEMadj ; !This seems right. TO
+! +A:attja%> BU/MUS ; !unusual comp. and superl.
+                        :%>         ABBO/AMOS         ;
+        +Der5+Der/AAdv+Adv:attja%>t   ENDLEX            ;
+!               +A+Cmp/SgNom:asj%>      R                 ;
+!               +A+Cmp/SgGen:attja%>    R                 ;
+!               +A+Cmp/PlGen:attja%>j   R                 ;
+                 +Sg+Ill:attja%>s%> PxCi              ; !
+                 +Sg+Nom:attja%>    PxV               ; !
+        +Sg+Ill+Err/Orth:adtja%>s%> PxCi              ; !
+        +Sg+Nom+Err/Orth:adtja%>    PxV               ; !
+
+! Test data:
+!!€gt-norm: dábálasj # Even-syllable test
+!!€ dábálasj:             dábálasj+A+Sg+Nom
+!!€ dábálattjav:          dábálasj+A+Sg+Acc
+!!€ dábálasj:             dábálasj+A+Attr
+!!€ dábális:             dábálasj+A+Attr
+!!€ dábálabbo:            dábálasj+A+Comp+Sg+Nom
+
+
+LEXICON ASIDASJ
++A+CmpNP/Last: ASIDASJ_CMP_INFL  ;
+
+LEXICON ASIDASJ_CMP_INFL !!= @CODE@ Adjectives on -asj, -is attr. Odd-syllable comparison. Sg Acc: asidattjav, Attr: asidis.
+                        :asj        VUOHTA            ;
+! +A:is VUOHTA ; !moved to ATTR
+                        :is%>       ATTR              ; ! Special Attr form
+                 +Sg+Nom:asj%>      ENDLEX            ;
+        +Err/Orth+Sg+Ill:adtja%>j   ENDLEX            ;
+                 +Sg+Ill:attja%>j   ENDLEX            ;
+                    +Ess:attja%>n   ENDLEX            ;
+           +Err/Orth+Ess:adtja%>n   ENDLEX            ;
+                        :attja%>    N-EVENWEAKSTEMadj ; !This seems right. TO
+! +A:attja%> BU/MUS ; !unusual comp. and superl.
+                        :%>         ABBO/AMOS         ;
+        +Der5+Der/AAdv+Adv:attja%>t   ENDLEX            ;
+!               +A+Cmp/SgNom:asj%>      R                 ;
+!               +A+Cmp/SgGen:attja%>    R                 ;
+!               +A+Cmp/PlGen:attja%>j   R                 ;
+                +Sg+Ill:attja%>s%> PxCi              ; !
+                +Sg+Nom:attja%>    PxV               ; !
+       +Err/Orth+Sg+Ill:adtja%>s%> PxCi              ; !
+       +Err/Orth+Sg+Nom:adtja%>    PxV               ; !
+
+! Test data:
+!!€gt-norm: gågulasj # Even-syllable test
+!!€ gågulasj:             gågulasj+A+Sg+Nom
+!!€ gågulattjav:          gågulasj+A+Sg+Acc
+!!€ gågulis:             gågulasj+A+Attr
+!!€ gågulabbo:            gågulasj+A+Comp+Sg+Nom
+
+LEXICON UDNODIBME !!= @CODE@ Adjectives on -dibme, attribute on -is. Odd-syllable comparison. Sg Acc: udnodimev, Attr: udnodis.
+! +A:is VUOHTA ; !moved to ATTR
+                 +A:is%>      ATTR              ; ! Special Attr form
+                 +A:ibme%>    NE-EVENCASEadj    ;
+                 +A:ibme%>X4  ILL-EVENCASEadj   ;
+                 +A:ibme%>Q1  N-EVENWEAKSTEMadj ;
+                 +A:%>        ABBO/AMOS         ;
+ +A+Der5+Der/AAdv+Adv:ibme%>Q1t ENDLEX            ;
+        +A+Cmp/SgGen:ibme%>Q1  R                 ;
+        +A+Cmp/PlGen:ibme%>Q1j R                 ;
+!                 +A:          DUVVAT            ; ! this cant be correct?
+
+! Test data:
+!!€gt-norm: gælvodibme # Even-syllable test
+!!€ gælvodibme:             gælvodibme+A+Sg+Nom
+!!€ gälvodibme:             gælvodibme+A+Sg+Nom
+!!€ gælvodimev:          gælvodibme+A+Sg+Acc
+!!€ gälvodimev:          gælvodibme+A+Sg+Acc
+!!€ gælvodis:              gælvodibme+A+Attr
+!!€ gälvodis:              gælvodibme+A+Attr
+!!€ gælvodabbo:            gælvodibme+A+Comp+Sg+Nom
+!!€ gälvodabbo:            gælvodibme+A+Comp+Sg+Nom
+
+LEXICON TJALMEDIBME !!= @CODE@  Like UDNODIBME but no comparatives. Sg Acc: tjalmedimev, Attr: tjalmedis.
+! +A:is VUOHTA ; !moved to ATTR
+                 +A:is%>      ATTR              ; ! Special Attr form
+                 +A:ibme%>    NE-EVENCASEadj    ;
+                 +A:ibme%>X4  ILL-EVENCASEadj   ;
+                 +A:ibme%>Q1  N-EVENWEAKSTEMadj ;
+ +A+Der5+Der/AAdv+Adv:ibme%>Q1t ENDLEX            ;
+        +A+Cmp/SgGen:ibme%>Q1  R                 ;
+        +A+Cmp/PlGen:ibme%>Q1j R                 ;
+ !                +A:          DUVVAT            ; ! this cant be correct?
+
+! Test data:
+!!€gt-norm: huvsodibme # Even-syllable test
+!!€ huvsodibme:            huvsodibme+A+Sg+Nom
+!!€ huvsodimev:            huvsodibme+A+Sg+Acc
+!!€ huvsodis:              huvsodibme+A+Attr
+
+LEXICON SUOLASIEHKE !!= @CODE@ -siehke. Sg Acc: suolasiegev, attr: suolasiek
+                 +A:hke%>    NE-EVENCASEadj    ;
+          +A+Sg+Nom:hke%>    ENDLEX            ;
+                 +A:k%>      ATTR              ;
+                 +A:hke%>X4  ILL-EVENCASEadj   ;
+                 +A:hke%>Q1  N-EVENWEAKSTEMadj ;
+! +A:hke%>Q1 BU/MUS ; !no comparatives for these
+ +A+Der5+Der/AAdv+Adv:hke%>Q1t K                 ;
+
+! Test data:
+!!€gt-norm: hánessiehke # Even-syllable test
+!!€ hánessiehke:              hánessiehke+A+Sg+Nom
+!!€ hánessiegev:              hánessiehke+A+Sg+Acc
+!!€ hánessiek:                hánessiehke+A+Attr
+
+!! !!Odd-syllable stems
+! ------------------
+
+LEXICON TJIEGOS !!= @CODE@  Adjectives on -s, negating adjs on -dahkes, with attr same as pred. For adjectives with -e in second syllable e>á: divtes>diktásav in StrG. As a. in Spiik.  Sg Acc: tjiehkusav, Attr: tjiegos. Consonant gradation.
+                 +A:%>X2   ATTR           ;
+! +A:%>X2 VUOHTA ; !moved to ATTR
+                 +A:%>X2   N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+                 +A:%>X5   OTH-ODDCASEadj ;
+                 +A:%>X5   ABBO/AMOS      ;
+ +A+Der5+Der/AAdv+Adv:%>X5it ENDLEX         ;
+                 +A:%>X5   ODDCmp         ;
+
+! Test data:
+!!€gt-norm: hánes # Odd-syllable test
+!!€ hánes:               hánes+A+Sg+Nom
+!!€ hádnásav:            hánes+A+Sg+Acc
+!!€ hánes:               hánes+A+Attr
+!!€ hádnásabbo:          hánes+A+Comp+Sg+Nom
+
+LEXICON GÅNTSAS !!= @CODE@ Same as TJIEGOS but with vokal change å=oa. Attr is same as pred. Sg Acc: goanntsasav, attr: gåntsas. Consonant gradation.
+                 +A:%>X3   ATTR           ;
+! +A:%>X3 VUOHTA ; !moved to ATTR
+                 +A:%>X3   N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+                 +A:%>X5   OTH-ODDCASEadj ;
+                 +A:%>X5   ABBO/AMOS      ;
+ +A+Der5+Der/AAdv+Adv:%>X5it ENDLEX         ;
+                 +A:%>X5   ODDCmp         ;
+
+! Test data:
+!!€gt-norm: måskas # Odd-syllable test
+!!€ måskas:               måskas+A+Sg+Nom
+!!€ moasskasav:            måskas+A+Sg+Acc
+!!€ måskas:               måskas+A+Attr
+!!€ moasskasabbo:          måskas+A+Comp+Sg+Nom
+
+! !Must be checked in when lexicon work!
+! LEXICON GÅMBAL !!= @CODE@ Same as GÅNTAS å=oa, but with attr -lis. Sg Acc: goammbalav, attr: gåmbalis. Consonant gradation. So far only for gåmbal.
+!                  +A:is%> ATTR           ;
+! ! +A:%>X3 VUOHTA ; !moved to ATTR
+!                  +A:%>X3   N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+!                  +A:%>X5   OTH-ODDCASEadj ;
+!                  +A:%>X5   ABBO/AMOS      ;
+!  +A+Der5+Der/AAdv+Adv:%>X5it ENDLEX         ;
+!                  +A:%>X5   ODDCmp         ;
+! 
+! ! Test data:
+! !!€gt-norm: gåmbal # Odd-syllable test
+! !!€ gåmbal:               gåmbal+A+Sg+Nom
+! !!€ goammbalav:            gåmbal+A+Sg+Acc
+! !!€ gåmbalis:               gåmbal+A+Attr
+! !!€ goammbalabbo:          gåmbal+A+Comp+Sg+Nom
+
+
+LEXICON GALMAS !!= @CODE@  Adjectives on -as, ås- and ás, with attr ending on a (-as and -ás pred) and å (-ås pred). As e. in Spiik. Sg Acc: galmmasav, attr: galmma, Consonant gradation.
+                 +A:%>    ATTR           ;
+! +A: VUOHTA ; !moved to ATTR
+                 +A:s%>X2 VUOHTA         ;
+                 +A:s%>X2 N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+                 +A:s%>X5 OTH-ODDCASEadj ;
+                 +A:s%>X5 ABBO/AMOS      ;
+ +A+Der5+Der/AAdv+Adv:s%>it ENDLEX         ;
+        +A+Cmp/SgNom:s%>X2 R              ;
+                 +A:s%>X5 ODDCmp         ;
+
+! Test data:
+!!€gt-norm: njuoskas # Odd-syllable test
+!!€ njuoskas:               njuoskas+A+Sg+Nom
+!!€ njuosskasav:            njuoskas+A+Sg+Acc
+!!€ njuosska:               njuoskas+A+Attr
+!!€ njuosskasabbo:          njuoskas+A+Comp+Sg+Nom
+
+LEXICON SÁJSAS !!= @CODE@  For -as adjectives with attribute -e. Presently only used for "sájsas", because this -as adj gets -e attr. Sg Acc: sájssasav, Attr: sájsse. Consonant gradation.
+                 +A:e%>      ATTR           ;
+! +A: VUOHTA ; !moved to ATTR
+                 +A:as%>Q1   VUOHTA         ;
+                 +A:as%>Q1   N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+                 +A:a%>X4s   OTH-ODDCASEadj ;
+                 +A:a%>X4s   ABBO/AMOS      ;
+ +A+Der5+Der/AAdv+Adv:a%>X4sit ENDLEX         ;
+        +A+Cmp/SgNom:as%>Q1   R              ;
+                 +A:a%>X4s   ODDCmp         ;
+
+! Test data:
+!!€gt-norm: sájsas # Odd-syllable test
+!!€ sájsas:               sájsas+A+Sg+Nom
+!!€ sájssasav:            sájsas+A+Sg+Acc
+!!€ sájsse:               sájsas+A+Attr
+!!€ sájssasabbo:          sájsas+A+Comp+Sg+Nom
+
+LEXICON RÁDAS !!= @CODE@  Presently only used for "rádas". This word has special consonant gradation d>dd. Attr same as pred. Sg Acc: ráddasav, Attr: rádas. Consonant gradation.
+                 +A:as%>    ATTR           ;
+! +A:as%> VUOHTA ; !moved to ATTR
+                 +A:as%>    N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+                 +A:das%>   OTH-ODDCASEadj ;
+                 +A:das%>   ABBO/AMOS      ;
+ +A+Der5+Der/AAdv+Adv:das%>it ENDLEX         ;
+                 +A:das%>   ODDCmp         ;
+
+! Test data:
+!!€gt-norm: rádas # Odd-syllable test
+!!€ rádas:               rádas+A+Sg+Nom
+!!€ ráddasav:            rádas+A+Sg+Acc
+!!€ rádas:               rádas+A+Attr
+!!€ ráda:               rádas+A+Attr # from LEXATTR
+!!€ ráddasabbo:          rádas+A+Comp+Sg+Nom
+
+LEXICON LUOBES !!= @CODE@  Adjectives on -es. Attribute same as pred. Does the same as TJIEGOS only e>a. Sg Acc: luohpasav, Attr: luobes. Consonant gradation.
+                 +A:es%>Q1 ATTR           ;
+! +A:a VUOHTA ; !moved to ATTR
+                 +A:es%>Q1 VUOHTA         ;
+                 +A:es%>Q1 N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+                 +A:as%>   OTH-ODDCASEadj ;
+                 +A:as%>   ABBO/AMOS      ;
+ +A+Der5+Der/AAdv+Adv:as%>it ENDLEX         ;
+        +A+Cmp/SgNom:es%>Q1 R              ;
+                 +A:as%>   ODDCmp         ;
+
+! Test data:
+!!€gt-norm: luobes # Odd-syllable test
+!!€ luobes:               luobes+A+Sg+Nom
+!!€ luohpasav:            luobes+A+Sg+Acc
+!!€ luobes:               luobes+A+Attr
+!!€ luohpasabbo:          luobes+A+Comp+Sg+Nom
+
+LEXICON GIMES !!= @CODE@  Adjectives on -es with attribute -a. Vocaal e>a in StrG. As g. in Spiik. Sg Acc: gibmasav, Attr: gibma. Consonant gradation.
+                 +A:a%>    ATTR           ;
+! +A:a VUOHTA ; !moved to ATTR
+                 +A:es%>Q1 VUOHTA         ;
+                 +A:es%>Q1 N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+                 +A:as%>   OTH-ODDCASEadj ;
+                 +A:as%>   ABBO/AMOS      ;
+ +A+Der5+Der/AAdv+Adv:as%>it ENDLEX         ;
+        +A+Cmp/SgNom:es%>Q1 R              ;
+                 +A:as%>   ODDCmp         ;
+
+! Test data:
+!!€gt-norm: gimes # Odd-syllable test
+!!€ gimes:               gimes+A+Sg+Nom
+!!€ gibmasav:            gimes+A+Sg+Acc
+!!€ gibma:               gimes+A+Attr
+!!€ gibmasabbo:          gimes+A+Comp+Sg+Nom
+
+LEXICON LINES !!= @CODE@ Same as GIMES, only with e>á in StrG. Adjectives on -es with attribute -a. As g. in Spiik.  Sg Acc: lidnásav, attr: lidna. Consonant gradation.
+          +A+Use/NG:a%>    ATTR           ;
+! +A:a VUOHTA ; !moved to ATTR
+                 +A:es%>Q1 VUOHTA         ;
+                 +A:es%>Q1 N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+                 +A:ás%>   OTH-ODDCASEadj ;
+                 +A:ás%>   ABBO/AMOS      ;
+ +A+Der5+Der/AAdv+Adv:ás%>it ENDLEX         ;
+        +A+Cmp/SgNom:es%>Q1 R              ;
+                 +A:ás%>   ODDCmp         ;
+
+! Test data:
+!!€gt-norm: lines # Odd-syllable test
+!!€ lines:               lines+A+Sg+Nom
+!!€ lidnásav:            lines+A+Sg+Acc
+!!€ lidna:               lines+A+Attr
+!!€ lidnásabbo:          lines+A+Comp+Sg+Nom
+
+LEXICON OAMES !!= @CODE@ Adjectives on -es with attribute -e. As g2. in Spiik. Sg Acc: oabmásav, Attr: oabme. Consonant gradation.
+                 +A:%>      ATTR           ;
+! +A: VUOHTA ; !moved to ATTR
+                 +A:s%>Q1   VUOHTA         ;
+                 +A:s%>Q1   N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+                 +A:%>X4s   OTH-ODDCASEadj ;
+                 +A:%>X4s   ABBO/AMOS      ;
+ +A+Der5+Der/AAdv+Adv:%>X4sit ENDLEX         ;
+        +A+Cmp/SgNom:s%>Q1   R              ;
+                 +A:%>X4s   ODDCmp         ;
+
+! Test data:
+!!€gt-norm: goastes # Odd-syllable test
+!!€ goastes:               goastes+A+Sg+Nom
+!!€ goasstásav:            goastes+A+Sg+Acc
+!!€ goasste:               goastes+A+Attr
+!!€ goasstásabbo:          goastes+A+Comp+Sg+Nom
+
+!LEXICON SNÁVES  ! Does the same as LUOBES
+!     +A:es%> ATTR ;
+! +A:es VUOHTA ; !moved to ATTR
+! +A:es%> N-ODDCASE ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+! +A:vas%>X5 OTH-ODDCASEadj ;
+! +A:vas%>X5 ABBO/AMOS ;
+! +A+Der5+Der/AAdv+Adv:vas%>X5it K ;
+! +A:vas%>X5 ODDCmp ;
+
+LEXICON BASSTEL !!= @CODE@ Adjs on -et, -l, -r, sm om -k, -sj with attr -is and no consonant gradation. As b. in Spiik. Sg Acc: basstelav, Attr: basstelis. Many of these entries might be instances of derivations, like belak, deblak, and maybe also basstel, bargán.
+                 +A:is%> ATTR           ;
+! +A:is VUOHTA ; !moved to ATTR
+                 +A:     VUOHTA         ;
+                 +A:%>   N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+                 +A:%>   OTH-ODDCASEadj ;
+                 +A:%>   ABBO/AMOS      ;
+ +A+Der5+Der/AAdv+Adv:%>it ENDLEX         ;
+        +A+Cmp/SgNom:%>   R              ;
+                 +A:%>   ODDCmp         ;
+
+! Test data:
+!!€gt-norm: goavrret # Odd-syllable test
+!!€ goavrret:               goavrret+A+Sg+Nom
+!!€ goavrredav:            goavrret+A+Sg+Acc
+!!€ goavrredis:               goavrret+A+Attr
+!!€ goavrredabbo:          goavrret+A+Comp+Sg+Nom
+
+LEXICON DABÁR !!= @CODE@ Adjectives on -r. With attr -is like BASSTEL, but with CG. Sg Acc: dahparav, Attr: dabáris. Presently only for dabár. Consonant gradation.
+                 +A:%>Q1is ATTR           ;
+! +A:%>Q1is VUOHTA ; !moved to ATTR
+                 +A:%>Q1   VUOHTA         ;
+                 +A:%>Q1   N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+                 +A:%>     OTH-ODDCASEadj ;
+                 +A:%>     ABBO/AMOS      ;
+ +A+Der5+Der/AAdv+Adv:%>it   ENDLEX         ;
+        +A+Cmp/SgNom:%>Q1   R              ;
+                 +A:%>     ODDCmp         ;
+
+! Test data:
+!!€gt-norm: sihkar # Odd-syllable test
+!!€ dabár:               dabár+A+Sg+Nom
+!!€ dahparav:            dabár+A+Sg+Acc
+!!€ dabáris:             dabár+A+Attr
+!!€ dahparabbo:          dabár+A+Comp+Sg+Nom
+
+LEXICON MUTTÁK !!= @CODE@ Adjs on -ák/-ak/-ek, two attr: -is and same as pred. As c. in Spiik. Sg Acc: muttágav, Attr: muttágis and mutták. These seem to be instances of the adjectival -k derivation. Unclear whether such derivation have different attr forms or not, and thats maybe why some of these derivations are found in BASSTEL lexicon.
+                 +A:%>   ATTR           ;
+          +A+Use/NG:is%> ATTR           ;
+! +A: VUOHTA ; !moved to ATTR
+! +A:is VUOHTA ; !moved to ATTR
+                 +A:%>   N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+                 +A:%>   OTH-ODDCASEadj ;
+                 +A:%>   ABBO/AMOS      ;
+ +A+Der5+Der/AAdv+Adv:%>it ENDLEX         ;
+        +A+Cmp/SgNom:%>   R              ;
+                 +A:%>   ODDCmp         ;
+
+! Test data:
+!!€gt-norm: bárvak # Odd-syllable test
+!!€ bárvak:               bárvak+A+Sg+Nom
+!!€ bárvagav:             bárvak+A+Sg+Acc
+!!€ bárvak:               bárvak+A+Attr
+!!€ bárvagis:               bárvak+A+Attr
+!!€ bárvagabbo:           bárvak+A+Comp+Sg+Nom
+
+LEXICON SKÁRBAK !!= @CODE@  Presently only for skárbak, because it has skárbbis attr not skárbagis according to Korhonen. It might be a hybrid. Consonant gradation.
+                 +A:bis%>    ATTR           ;
+! +A:is VUOHTA ; !moved to ATTR
+                 +A:a%>Q1k   VUOHTA         ;
+                 +A:a%>Q1k   N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+                 +A:a%>Q1g   OTH-ODDCASEadj ;
+                 +A:a%>Q1g   ABBO/AMOS      ;
+ +A+Der5+Der/AAdv+Adv:a%>Q1git ENDLEX         ;
+        +A+Cmp/SgNom:a%>Q1t   R              ;
+                 +A:a%>Q1g   ODDCmp         ;
+
+! Test data:
+!!€gt-norm: skárbak # Odd-syllable test
+!!€ skárbak:               skárbak+A+Sg+Nom
+!!€ skárbagav:             skárbak+A+Sg+Acc
+!!€ skárbbis:              skárbak+A+Attr
+!!€ skárbagabbo:           skárbak+A+Comp+Sg+Nom
+
+LEXICON ALLAK !!= @CODE@ Adjs on -ak, attr.on -a. Have both gasep/gaggagabbo and alep/allagabbo as comparatives. As d. in Spiik. So far only the adjectives "allak" and "gassak" go to this lexicon.
+                                     +A:a%>           ATTR           ;
+! +A:a VUOHTA ; !moved to ATTR
+                                     +A:ak            VUOHTA         ;
+                                     +A:ak%>          N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+                                     +A:ag%>          OTH-ODDCASEadj ;
+                                     +A:e%>Q1         BU/MUS         ;
+                                     +A+Use/NG:ag%>          ABBO/AMOS      ;
+! +A+Comp:e%>Q1 BUStem ;
+! +A+Superl:e%>Q1muss BUOREMUS ;
+! +A+Comp+Der5+Der/AAdv+Adv:ag%>appot K ;
+! +A+Superl+Der5+Der/AAdv+Adv:ag%>abmus%>it K ;
+          +A+Comp+Der1+Der/Dimin+A+Sg+Nom:e»Q1busj%>    ENDLEX         ;
+              +A+Comp+Der1+Der/Dimin+A+Sg:e»Q1busj%>    ATTR           ;
+                 +A+Comp+Der1+Der/Dimin+A:e»Q1buttja%>  ÁRMMOGIS-EVEN  ;
+ +Err/Lex+Use/-Spell+A+Comp+Der1+Der/Dimin+A:e»Q1budtja%>  ÁRMMOGIS-EVEN  ;
+ +A+Comp+Der1+Der/Dimin+A+Der5+Der/AAdv+Adv:e»Q1buttja%>t ENDLEX         ;
+                     +A+Der5+Der/AAdv+Adv:ag%>it        ENDLEX          ;
+                            +A+Cmp/SgNom:ak%>          R              ;
+                                      +A:ag%>          ODDCmp         ;
+
+!!€gt-norm: gassak # Odd-syllable test
+!!€ gassak:               gassak+A+Sg+Nom
+!!€ gassagav:             gassak+A+Sg+Acc
+!!€ gassa:                gassak+A+Attr
+!!€ gassagabbo:           gassak+A+Comp+Sg+Nom
+!!€ gasep:                gassak+A+Comp+Sg+Nom
+
+LEXICON GÅBDDÅK !!= @CODE@  Adjs on -åk, attr. on -å. Has even-syllable comparison: gåbdep and gåbdemus. So far "gåbddåk" is the only word in this lexicon. As d2. in Spiik. Sg Acc: gåbddågav, Attr: gåbddå.
+                                     +A:å%>           ATTR           ;
+! +A:å VUOHTA ; !moved to ATTR
+                                     +A:åk            VUOHTA         ;
+                                     +A:åk%>          N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+                                     +A:åg%>          OTH-ODDCASEadj ;
+                                     +A:e%>Q1         BU/MUS         ;
+! +A+Comp:e%>Q1 BUStem ;
+! +A+Superl:e%>Q1muss BUOREMUS ;
+                +A+Comp+Der5+Der/AAdv+Adv:åg%>appot     ENDLEX         ;
+              +A+Superl+Der5+Der/AAdv+Adv:åg%>abmus%>it ENDLEX         ;
+            +A+Comp+Der1+Der/Dimin+A+Sg+Nom:e»Q1busj%>    ENDLEX         ;
+                +A+Comp+Der1+Der/Dimin+A+Sg:e»Q1busj%>    ATTR           ;
+                   +A+Comp+Der1+Der/Dimin+A:e»Q1buttja%>  ÁRMMOGIS-EVEN  ;
++Err/Lex+Use/-Spell+A+Comp+Der1+Der/Dimin+A:e»Q1budtja%>  ÁRMMOGIS-EVEN  ;
+ +A+Comp+Der1+Der/Dimin+A+Der5+Der/AAdv+Adv:e»Q1buttja%>t ENDLEX         ;
+                     +A+Der5+Der/AAdv+Adv:åg%>it        ENDLEX         ;
+                             +A+Cmp/SgNom:åk%>          R              ;
+                                       +A:åg%>          ODDCmp         ;
+
+!!€gt-norm: gåbddåk # Odd-syllable test
+!!€ gåbddåk:               gåbddåk+A+Sg+Nom
+!!€ gåbddågav:             gåbddåk+A+Sg+Acc
+!!€ gåbddå:                gåbddåk+A+Attr
+!!€ gåbdep:           gåbddåk+A+Comp+Sg+Nom
+
+LEXICON STUORAK !!= @CODE@  Only for stuorak. It hase two attributes. Has even-syllable comparison: stuoráp and stuorámus.Sg Acc: stuoragav, attr: stuor and stuorra. This might be a -k derivation of adjective stuorre attr stuor(ra). The comparison is thus based on the original adjective and thus it naturally is an even syll comparison.
+                 +A:%>     ATTR           ;
+          +A+Use/NG:ra%>   ATTR           ;
+! +A:ra VUOHTA ; !moved to ATTR
+                 +A:ak     VUOHTA         ;
+                 +A:ak%>   N-ODDCASE      ;
+                 +A:ag%>   OTH-ODDCASEadj ;
+                 +A:á%>    BU/MUS         ;
+ +A+Der5+Der/AAdv+Adv:ag%>it ENDLEX         ;
+        +A+Cmp/SgNom:ak%>   R              ;
+                 +A:ag%>   ODDCmp         ;
+
+!!€gt-norm: stuorak # Odd-syllable test
+!!€ stuorak:               stuorak+A+Sg+Nom
+!!€ stuoragav:             stuorak+A+Sg+Acc
+!!€ stuorra:                stuorak+A+Attr
+!!€ stuor:                stuorak+A+Attr
+!!€ stuoráp:           stuorak+A+Comp+Sg+Nom
+
+LEXICON RIHTSOK !!= @CODE@ Lexicon for miscellanious uneven adjectives. No vowel changes. The lexicon gives no attribute, either because the adjective dosnºt have attr or because there is stemvowel change in attr that the lexicon canºt handle, or because there are strange atrributes that donºt fit to any other lexicon (these attributes are hardcoded). Sg Acc: rihtsogav (attr for words in this lexicon are hardcoded). Consonant gradation.
+                 +A:%>Q1 VUOHTA         ;
+                 +A:%>Q1 N-ODDCASE      ;
+                 +A:%>   OTH-ODDCASEadj ;
+                 +A:%>   ABBO/AMOS      ;
+ +A+Der5+Der/AAdv+Adv:%>it ENDLEX         ;
+        +A+Cmp/SgNom:%>Q1 R              ;
+                 +A:%>   ODDCmp         ;
+
+!!€gt-norm: måjdås # Odd-syllable test
+!!€ måjdås:               måjdås+A+Sg+Nom
+!!€ måjddåsav:             måjdås+A+Sg+Acc
+!!€ måjddåsabbo:           måjdås+A+Comp+Sg+Nom
+
+LEXICON SJÆVNNJAT !!= @CODE@ Lexicon for miscellanious uneven adjectives on -k, -t, -l, -s. The last vowel changes, e>á, e>å, o>u, e>i. The lexicon gives no attribute, either because the adjective dosnºt have attr, because there is stemvowel change in attr that the lexicon canºt handle or because there are strange atrributes that donºt fit to any other lexicon (these attributes are hardcoded). Sg Acc: sjævnnjadav. 
+                 +A:%>Q1   VUOHTA         ;
+                 +A:%>Q1   N-ODDCASE      ;
+                 +A:%>X5   OTH-ODDCASEadj ;
+                 +A:%>X5   ABBO/AMOS      ;
+ +A+Der5+Der/AAdv+Adv:%>X5it ENDLEX         ;
+        +A+Cmp/SgNom:%>Q1   R              ;
+                 +A:%>X5   ODDCmp         ;
+
+!!€gt-norm: rávdes # Odd-syllable test
+!!€ rávdes:                rávdes+A+Sg+Nom
+!!€ rávddásav:             rávdes+A+Sg+Acc
+!!€ rávddásabbo:           rávdes+A+Comp+Sg+Nom
+
+LEXICON SUOHKAT !!= @CODE@ Adjectives on -at and -åt, with attribute III -is. No vowel change. As f. in Spiik. Sg Acc: suohkadav, attr: suohkkis,
+                 +A:is%>     ATTR           ;
+! +A:is VUOHTA ; !moved to ATTR
+                 +A:a%>Q1t   VUOHTA         ;
+                 +A:a%>Q1t   N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+                 +A:a%>Q1d   OTH-ODDCASEadj ;
+                 +A:a%>Q1d   ABBO/AMOS      ;
+ +A+Der5+Der/AAdv+Adv:a%>Q1dit ENDLEX         ;
+        +A+Cmp/SgNom:a%>Q1t   R              ;
+                  +A:a%>Q1d   ODDCmp         ;
+
+!!€gt-norm: rávvat # Odd-syllable test
+!!€ rávvat:               rávvat+A+Sg+Nom
+!!€ rávvadav:             rávvat+A+Sg+Acc
+!!€ rávvis:               rávvat+A+Attr
+!!€ rávvadabbo:           rávvat+A+Comp+Sg+Nom
+
+LEXICON LÅSSÅT !!= @CODE@ As f3. in Spiik. So far the only word i this lexicon i "låssåt", because both låssis and låsså are attr and comparative is both låsep(hybrid?) and låssådabbo.
+                              +A+Use/NG:is%>          ATTR           ;
+                                     +A:å%>           ATTR           ;
+! +A:is VUOHTA ; !moved to ATTR
+! +A:å VUOHTA ; !moved to ATTR
+                                     +A:åt            VUOHTA         ;
+                                     +A:åt%>          N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+                                     +A:åd%>          OTH-ODDCASEadj ;
+                              +A+Use/NG:åd%>          ABBO/AMOS      ;
+                                     +A:e%>Q1         BU/MUS         ;
+! +A+Comp:e%>Q1 BUStem ; ! Because we want låsebut
+! +A+Superl:e%>Q1muss BUOREMUS ;
+          +A+Comp+Der1+Der/Dimin+A+Sg+Nom:e»Q1busj%>    ENDLEX         ;
+              +A+Comp+Der1+Der/Dimin+A+Sg:e»Q1busj%>    ATTR           ;
+                 +A+Comp+Der1+Der/Dimin+A:e»Q1buttja%>  ÁRMMOGIS-EVEN  ;
+                 +Err/Lex+Use/-Spell+A+Comp+Der1+Der/Dimin+A:e»Q1budtja%>  ÁRMMOGIS-EVEN  ;
+ +A+Comp+Der1+Der/Dimin+A+Der5+Der/AAdv+Adv:e»Q1buttja%>t ENDLEX         ;
+                     +A+Der5+Der/AAdv+Adv:åd%>it        ENDLEX         ;
+                            +A+Cmp/SgNom:åt%>          R              ;
+                                     +A:åd%>          ODDCmp         ;
+
+!!€gt-norm: låssåt # Odd-syllable test
+!!€ låssåt:               låssåt+A+Sg+Nom
+!!€ låssådav:             låssåt+A+Sg+Acc
+!!€ låssis:               låssåt+A+Attr
+!!€ låsså:               låssåt+A+Attr
+!!€ låssådabbo:           låssåt+A+Comp+Sg+Nom
+!!€ låsep:           låssåt+A+Comp+Sg+Nom
+
+LEXICON TSIBTSA !!= @CODE@ Adjectives that end on -a. Attribute is same as pred. Sg Acc: tsibttsagav, Attr: tsibtsa. Consonant gradation.
+                 +A:%>X3   ATTR           ;
+! +A:%>X3 VUOHTA ; !moved to ATTR
+          +A+Sg+Nom:%>X3   ENDLEX         ;
+                 +A:%>X5   OTH-ODDCASEadj ;
+                 +A:%>X5   ABBO/AMOS      ;
+ +A+Der5+Der/AAdv+Adv:%>X5it ENDLEX         ;
+                 +A:%>X5   ODDCmp         ;
+
+!!€gt-norm: bihtja # Odd-syllable test
+!!€ bihtja:                 bihtja+A+Sg+Nom
+!!€ bihttjagav:             bihtja+A+Sg+Acc
+!!€ bihtja:                 bihtja+A+Attr
+!!€ bihttjagabbo:           bihtja+A+Comp+Sg+Nom
+
+LEXICON TJALMMIS !!= @CODE@ Adjectives ending on -is. With two attributes; same as pred and -isis. As h. in Spiik. Sg Acc: tjalmmisav, Attr: tjalmmis (Spiik og Kintel).and tjalmmisis (Korhonen).
+                 +A:%>X2 ATTR           ;
+                 +A:is%> ATTR           ;
+! +A:is VUOHTA ; !moved to ATTR
+! +A:%>X2 VUOHTA ; !moved to ATTR
+                 +A:%>X2 N-ODDCASE      ; ! no pointer to E-ODDCASE, as adjs have no short Ess
+                 +A:%>X5 OTH-ODDCASEadj ;
+                 +A:%>X5 ABBO/AMOS      ;
+ +A+Der5+Der/AAdv+Adv:%>it ENDLEX         ; !Can these really form adverbs?
+                 +A:%>X5 ODDCmp         ;
+
+!!€gt-norm: mujttis # Odd-syllable test
+!!€ mujttis:                 mujttis+A+Sg+Nom
+!!€ mujttisav:             mujttis+A+Sg+Acc
+!!€ mujttis:                 mujttis+A+Attr
+!!€ mujttisis:                 mujttis+A+Attr
+!!€ mujttisabbo:           mujttis+A+Comp+Sg+Nom
+
+LEXICON IENNILS !!= @CODE@ no comparatives, no attr
+ +A:   VUOHTA         ;
+ +A:%> N-ODDCASE      ;
+ +A:%> OTH-ODDCASEadj ;
+ +A:   NAMÁK          ;
+ +A:%> R              ;
+
+!!€gt-norm: ieŋŋils # Odd-syllable test
+!!€ ieŋŋils:                 ieŋŋils+A+Sg+Nom
+!!€ ieŋŋilsav:             ieŋŋils+A+Sg+Acc
+
+
+!!
+!! Inherent comparatives and superlatives
+!!
+
+LEXICON NUORTTALABBO   !!= @CODE@ Inherent comparatives, gives both comp and superl. Most of the words are the compared forms of -el(a) words, like nuorttal, lullel.
+ +A:%> ABBO/AMOS ;
+
+! Test data:
+!!€gt-norm: guddnelabbo # Even-syllable test
+!!€ guddnelabbo:           guddnelabbo+A+Comp+Sg+Nom
+!!€ guddnelamos:           guddnelabbo+A+Superl+Sg+Nom
+!!€ guddnelap:             guddnelabbo+A+Comp+Attr
+!!€ guddnelup:             guddnelabbo+A+Comp+Attr
+
+LEXICON GASSKALAMOS   !!= @CODE@ Inherent superlatives, gives onlys superl. Words that are lexicalized in their superlative forms. 
+                 +A+Superl:%>          AMOS    ;
+ +A+Superl+Der5+Der/AAdv+Adv:%>abmus%>it ENDLEX  ;
+
+!!€gt-norm: ájtodamos # Even-syllable test
+!!€ ájtodamos:           ájtodamos+A+Superl+Sg+Nom
+
+
+!! !!Contracted stems
+! ----------------
+
+LEXICON SÁDNES !!= @CODE@  Attr same as pred. Sg Acc: sáddnáv, Attr: sádnes.
+                        +A:%>Q1s ATTR              ;
+! +A:%>Q1s VUOHTA ; !moved to ATTR
+                 +A+Sg+Nom:%>Q1s ENDLEX            ;
+                        +A:%>X4  ILL-EVENCASEadj   ;
+                        +A:%>X4  N-EVENWEAKSTEMadj ;
+ +A+Sg+Nom+Err/Orth:%>X4  PxV               ; !
+                    +A+Ess:%>X4n ENDLEX            ;
+                        +A:%>X4  BU/MUS            ;
+        +A+Der5+Der/AAdv+Adv:%>X4t ENDLEX            ;
+               +A+Cmp/SgGen:%>X4  R                 ;
+               +A+Cmp/PlGen:%>X4j R                 ;
+
+!!€gt-norm: hávres # Contracted test
+!!€ hávres:                 hávres+A+Sg+Nom
+!!€ hávrráv:                hávres+A+Sg+Acc
+!!€ hávres:                 hávres+A+Attr
+!!€ hávrráp:                hávres+A+Comp+Sg+Nom
+
+LEXICON GOAVSOS  !!= @CODE@ Attr same as pred. Sg Acc: goaksuv, Attr: goavsos.(goavsos is so far the only word in this lexicon)
+                        +A:%>Q3s ATTR              ;
+! +A:%>Q3s VUOHTA ; !moved to ATTR
+                 +A+Sg+Nom:%>Q3s ENDLEX            ;
+                        +A:%>X4  ILL-EVENCASEadj   ;
+                        +A:%>X4  N-EVENWEAKSTEMadj ;
+ +A+Sg+Nom+Err/Orth:%>X4  PxV               ; !
+                    +A+Ess:%>X4n ENDLEX            ;
+                        +A:%>X4  BU/MUS            ;
+        +A+Der5+Der/AAdv+Adv:%>X4t ENDLEX            ;
+               +A+Cmp/SgGen:%>X4  R                 ;
+               +A+Cmp/PlGen:%>X4j R                 ;
+
+!!€gt-norm: goavsos # Contracted test
+!!€ goavsos:                 goavsos+A+Sg+Nom
+!!€ goaksuv:                 goavsos+A+Sg+Acc 
+!!€ goaksusav:               goavsos+A+Sg+Acc # From lexicon TJIEGOS
+!!€ goavsos:                 goavsos+A+Attr
+!!€ goaksup:                 goavsos+A+Comp+Sg+Nom
+!!€ goaksusabbo:             goavsos+A+Comp+Sg+Nom # from lexicon TJIEGOS
+
+LEXICON SUVRES  !!= @CODE@ Sg Acc: suvrráv, Attr: suvra.
+                        +A:a%>Q1  ATTR              ;
+! +A:a%>Q1 VUOHTA ; !moved to ATTR
+                        +A:e%>Q1s VUOHTA            ;
+                 +A+Sg+Nom:e%>Q1s ENDLEX            ;
+                        +A:á%>    ILL-EVENCASEadj   ;
+                        +A:á%>    N-EVENWEAKSTEMadj ;
+ +A+Sg+Nom+Err/Orth:á%>    PxV               ; !
+                    +A+Ess:á%>n   ENDLEX            ;
+                        +A:á%>    BU/MUS            ;
+        +A+Der5+Der/AAdv+Adv:á%>t   ENDLEX            ;
+               +A+Cmp/SgNom:e%>Q1s R                 ;
+               +A+Cmp/SgGen:á%>    R                 ;
+               +A+Cmp/PlGen:á%>j   R                 ;
+
+!!€gt-norm: suvres # Contracted test
+!!€ suvres:                 suvres+A+Sg+Nom
+!!€ suvrráv:               suvres+A+Sg+Acc
+!!€ suvrrásav:               suvres+A+Sg+Acc # From lexicon SJÆVNNJAT
+!!€ suvra:                 suvres+A+Attr
+!!€ suvrráp:             suvres+A+Comp+Sg+Nom
+!!€ suvrrásabbo:             suvres+A+Comp+Sg+Nom # from LINES
+
+!! ----
+
+!! !!!Comparation
+
+LEXICON BU/MUS !!= @CODE@  comparison for even-syll adjectives. Also derivates diminutive and adverbs from the comparisions.
+                                 +Comp:           BUStem       ;
+                               +Superl:muss       BUOREMUS     ;
+               +Comp+Der5+Der/AAdv+Adv:but        ENDLEX       ;
+             +Superl+Der5+Der/AAdv+Adv:musá%>t    ENDLEX       ;
+           +Comp+Der1+Der/Dimin+A+Sg+Nom:bu»sj%>    ENDLEX       ;
+               +Comp+Der1+Der/Dimin+A+Sg:bu»sj%>    ATTR         ;
+                  +Comp+Der1+Der/Dimin+A:bu»ttja%>  CompSup-EVEN ;
++Err/Lex+Use/-Spell+Comp+Der1+Der/Dimin+A:bu»dtja%>  CompSup-EVEN ;
+ +Comp+Der1+Der/Dimin+A+Der5+Der/AAdv+Adv:bu»ttja%>t ENDLEX       ;
+
+
+LEXICON ABBO/AMOS !!= @CODE@  comparison for odd-syll adjectives.  Also derivates diminutive and adverbs from the comparisions.
+!+Comp+Sg+Nom:ap%> K ;
+!+Comp+Sg+Nom:up%> K ;
+! +Comp+Sg+Nom:abbo%> K ;
+! +Comp+Sg+Nom:ubbo%> K ;
+! +Comp+Sg+Nom+Err/Orth:æbbo%> K ; !
+                                       +Comp:ap%>        ATTR            ;
+                   			     +Use/NG+Comp:up%>        ATTR            ;
+                                        +Comp:            ABBO            ;
+                                      +Superl:            AMOS            ;
+
+                  +Comp+Der2+Der/Dimin+A+Sg+Nom:appu»sj%>   ENDLEX          ;
+                      +Comp+Der2+Der/Dimin+A+Sg:appu»sj%>   ATTR            ;
+                         +Comp+Der2+Der/Dimin+A:appu»tj%>   CompSup-ODDCASE ;
+         +Comp+Der2+Der/Dimin+A+Der5+Der/AAdv+Adv:appu»tj%>it ENDLEX          ;
+                        +Comp+Der5+Der/AAdv+Adv:appo%>t     ENDLEX          ;
+                      +Superl+Der5+Der/AAdv+Adv:abmus%>it   ENDLEX          ;
+														     
+                +Der5+Der/AAdv+Adv+Comp+Err/Orth:æppo%>t     ENDLEX          ; !
+              +Superl+Der5+Der/AAdv+Adv+Err/Orth:ebmus%>it   ENDLEX          ; !
+          +Comp+Der2+Der/Dimin+A+Sg+Nom+Err/Orth:eppu»sj%>   ENDLEX          ; !
+          +Comp+Der2+Der/Dimin+A+Sg+Nom+Err/Orth:uppu»sj%>   ENDLEX          ;
+              +Comp+Der2+Der/Dimin+A+Sg+Err/Orth:eppu»sj%>   ATTR            ; !
+              +Comp+Der2+Der/Dimin+A+Sg+Err/Orth:uppu»sj%>   ATTR            ;
+                 +Comp+Der2+Der/Dimin+A+Err/Orth:eppu»tj%>   CompSup-ODDCASE ; !
+                 +Comp+Der2+Der/Dimin+A+Err/Orth:uppu»tj%>   CompSup-ODDCASE ;
+ +Comp+Der2+Der/Dimin+A+Der5+Der/AAdv+Adv+Err/Orth:eppu»tj%>it ENDLEX          ; !
+ +Comp+Der2+Der/Dimin+A+Der5+Der/AAdv+Adv+Err/Orth:uppu»tj%>it ENDLEX          ;
+
+
+
+
+! Comparative
+! -----------
+
+LEXICON BUStem !!= @CODE@ Comparative even-syll, case and attr.
+                                 :p        ATTR    ;
+                          +Sg+Nom:p        ENDLEX  ;
+ +Sg+Nom+Use/Marg+Err/Orth:bu%>     PxV  ; ! !	   
+                          +Sg+Gen:bu       ENDLEX  ;
+                          +Sg+Abe:bu#dagi  ENDLEX  ;
+                          +Sg+Abe:bu#dagá  ENDLEX  ;
+                          +Sg+Abe:bu#tagá  ENDLEX  ;
+ +Sg+Gen+Use/Marg+Err/Orth:bu%>     PxV  ; ! !	   
+                          +Sg+Acc:buv      ENDLEX  ;
+ +Sg+Acc+Use/Marg+Err/Orth:bu%>     PxV  ; ! !	   
+                          +Sg+Ill:buj      ENDLEX  ;
+                          +Sg+Ine:bun      ENDLEX  ;
+ +Sg+Ine+Use/Marg+Err/Orth:bun%>    PxCs ; ! !	   
+                          +Sg+Ela:bus      ENDLEX  ;
+ +Sg+Ela+Use/Marg+Err/Orth:bust%>   PxCs ; ! !	   
+                          +Sg+Com:bujn     ENDLEX  ;
+                  +Sg+Com+Err/Orth:bujna    ENDLEX  ; !
+ +Sg+Com+Use/Marg+Err/Orth:bujn%>   PxCs ; ! !	   
+                             +Ess:bun      ENDLEX  ;
+                          +Pl+Nom:bu       ENDLEX  ;
+                          +Pl+Gen:buj      ENDLEX  ;
+                          +Pl+Abe:buj#dagi ENDLEX  ;
+                          +Pl+Abe:buj#dagá ENDLEX  ;
+                          +Pl+Abe:buj#tagá ENDLEX  ;
+                          +Pl+Acc:bujt     ENDLEX  ;
+ +Pl+Acc+Use/Marg+Err/Orth:bujd%>   PxCs ; ! !	   
+                          +Pl+Ill:bujda    ENDLEX  ;
+                          +Pl+Ine:bujn     ENDLEX  ;
+ +Pl+Ine+Use/Marg+Err/Orth:bujn%>   PxCs ; ! !	   
+                          +Pl+Ela:bujs     ENDLEX  ;
+ +Pl+Ela+Use/Marg+Err/Orth:bujst%>  PxCs ; ! !	   
+                          +Pl+Com:buj      ENDLEX  ;
+
+LEXICON ABBO !!= @CODE@ Comparative odd-syll, get case and attr. With the dialect differences "-ubbo" and "-æbbo".
+! -abbo
+         +Sg+Nom:abbo%>       ENDLEX ;
+         +Sg+Gen:appo%>       ENDLEX ;
+         +Sg+Abe:appo%>#dagi  ENDLEX ;
+         +Sg+Abe:appo%>#dagá  ENDLEX ;
+         +Sg+Abe:appo%>#tagá  ENDLEX ;
+         +Sg+Acc:appo%>v      ENDLEX ;
+         +Sg+Ill:abbu%>j      ENDLEX ;
+         +Sg+Ine:appo%>n      ENDLEX ;
+         +Sg+Ela:appo%>s      ENDLEX ;
+         +Sg+Com:appu%>jn     ENDLEX ;
+         +Sg+Com:appo%>jn     ENDLEX ;
+ +Sg+Com+Err/Orth:appu%>jna    ENDLEX ; !
+ +Sg+Com+Err/Orth:appo%>jna    ENDLEX ; !
+            +Ess:abbo%>n      ENDLEX ;
+         +Pl+Nom:appo%>       ENDLEX ;
+         +Pl+Gen:appo%>j      ENDLEX ;
+         +Pl+Abe:appo%>j#dagi ENDLEX ;
+         +Pl+Abe:appo%>j#dagá ENDLEX ;
+         +Pl+Abe:appo%>j#tagá ENDLEX ;
+         +Pl+Acc:appo%>jt     ENDLEX ;
+         +Pl+Ill:appo%>jda    ENDLEX ;
+         +Pl+Ine:appo%>jn     ENDLEX ;
+         +Pl+Ela:appo%>js     ENDLEX ;
+         +Pl+Com:appo%>j      ENDLEX ;
+! -ubbo						  ENDLEX
+ +Sg+Nom+Err/Orth:ubbo%>       ENDLEX ;
+ +Sg+Gen+Err/Orth:uppo%>       ENDLEX ;
+ +Sg+Abe+Err/Orth:uppo%>#dagi  ENDLEX ;
+ +Sg+Abe+Err/Orth:uppo%>#dagá  ENDLEX ;
+ +Sg+Abe+Err/Orth:uppo%>#tagá  ENDLEX ;
+ +Sg+Acc+Err/Orth:uppo%>v      ENDLEX ;
+ +Sg+Ill+Err/Orth:ubbu%>j      ENDLEX ;
+ +Sg+Ine+Err/Orth:uppo%>n      ENDLEX ;
+ +Sg+Ela+Err/Orth:uppo%>s      ENDLEX ;
+ +Sg+Com+Err/Orth:uppu%>jn     ENDLEX ;
+ +Sg+Com+Err/Orth:uppo%>jn     ENDLEX ;
+ +Sg+Com+Err/Orth:uppu%>jna    ENDLEX ; !
+ +Sg+Com+Err/Orth:uppo%>jna    ENDLEX ; !
+    +Ess+Err/Orth:ubbo%>n      ENDLEX ;
+ +Pl+Nom+Err/Orth:uppo%>       ENDLEX ;
+ +Pl+Gen+Err/Orth:uppo%>j      ENDLEX ;
+ +Pl+Abe+Err/Orth:uppo%>j#dagi ENDLEX ;
+ +Pl+Abe+Err/Orth:uppo%>j#dagá ENDLEX ;
+ +Pl+Abe+Err/Orth:uppo%>j#tagá ENDLEX ;
+ +Pl+Acc+Err/Orth:uppo%>jt     ENDLEX ;
+ +Pl+Ill+Err/Orth:uppo%>jda    ENDLEX ;
+ +Pl+Ine+Err/Orth:uppo%>jn     ENDLEX ;
+ +Pl+Ela+Err/Orth:uppo%>js     ENDLEX ;
+ +Pl+Com+Err/Orth:uppo%>j      ENDLEX ;
+! -æbbo						  ENDLEX
+ +Sg+Nom+Err/Orth:æbbo%>       ENDLEX ; !
+ +Sg+Gen+Err/Orth:æppo%>       ENDLEX ; !
+ +Sg+Abe+Err/Orth:æppo%>#dagi  ENDLEX ; !
+ +Sg+Abe+Err/Orth:æppo%>#dagá  ENDLEX ; !
+ +Sg+Abe+Err/Orth:æppo%>#tagá  ENDLEX ; !
+ +Sg+Acc+Err/Orth:æppo%>v      ENDLEX ; !
+ +Sg+Ill+Err/Orth:æbbu%>j      ENDLEX ; !
+ +Sg+Ine+Err/Orth:æppo%>n      ENDLEX ; !
+ +Sg+Ela+Err/Orth:æppo%>s      ENDLEX ; !
+ +Sg+Com+Err/Orth:eppu%>jn     ENDLEX ; !
+ +Sg+Com+Err/Orth:æppo%>jn     ENDLEX ; !
+ +Sg+Com+Err/Orth:eppu%>jna    ENDLEX ; !
+ +Sg+Com+Err/Orth:æppo%>jna    ENDLEX ; !
+    +Ess+Err/Orth:æbbo%>n      ENDLEX ; !
+ +Pl+Nom+Err/Orth:æppo%>       ENDLEX ; !
+ +Pl+Gen+Err/Orth:æppo%>j      ENDLEX ; !
+ +Pl+Abe+Err/Orth:æppo%>j#dagi ENDLEX ; !
+ +Pl+Abe+Err/Orth:æppo%>j#dagá ENDLEX ; !
+ +Pl+Abe+Err/Orth:æppo%>j#tagá ENDLEX ; !
+ +Pl+Acc+Err/Orth:æppo%>jt     ENDLEX ; !
+ +Pl+Ill+Err/Orth:æppo%>jda    ENDLEX ; !
+ +Pl+Ine+Err/Orth:æppo%>jn     ENDLEX ; !
+ +Pl+Ela+Err/Orth:æppo%>js     ENDLEX ; !
+ +Pl+Com+Err/Orth:æppo%>j      ENDLEX ; !
+
+
+!! !!Superlative
+! -----------
+
+LEXICON BUOREMUS !!= @CODE@ Superlative even-syll, get attr and nom case.
+                            +Attr:%>  ENDLEX            ;
+                          +Sg+Nom:%>  ENDLEX            ; ! the short form, twol shortens ss#
+ +Sg+Nom+Use/Marg+Err/Orth:a%> PxV          ; ! ! ! separate nom bec of the short form
+                                 :a%> BUOREMUS-OBL ; ! Add -a, directly to the obliques
+
+LEXICON BUOREMUS-OBL
+    +Ess:n  K                    ; ! essive has strong stem
+ +Sg+Ill:j  K                    ; ! so has illative
+! +Sg+Ill+Err/Orth:s%> PxC ; !^P^ !MARG ! this Px form not mentioned in Spiik
+        :Q1 CompSup-EVENWEAKSTEM ; ! These words go like muorra
+
+LEXICON AMOS !!= @CODE@ Superlative odd-syll, get case and attr. With the dialect differences "-umos" and "-æmos".
+                                    +Attr:amos%>         ENDLEX    ;
+                                  +Sg+Nom:amos%>         ENDLEX    ; 
+                 +Sg+Nom+Use/Marg+Err/Orth:abmus%>a%>     PxV       ; ! !
+                                  +Sg+Gen:abmus%>a       ENDLEX    ;
+                                  +Sg+Abe:abmus%>a#dagi  ENDLEX    ;
+                                  +Sg+Abe:abmus%>a#dagá  ENDLEX    ;
+                                  +Sg+Abe:abmus%>a#tagá  ENDLEX    ;
+                 +Sg+Gen+Use/Marg+Err/Orth:abmus%>a%>     PxV       ; ! !
+                                  +Sg+Acc:abmus%>av      ENDLEX    ;
+                 +Sg+Acc+Use/Marg+Err/Orth:abmus%>a%>     PxV       ; ! !
+                                  +Sg+Ill:abmus%>ij      ENDLEX    ;
+                                  +Sg+Ine:abmus%>in      ENDLEX    ;
+                 +Sg+Ine+Use/Marg+Err/Orth:abmus%>in%>    PxCs      ; ! !
+                                  +Sg+Ela:abmus%>is      ENDLEX    ;
+                 +Sg+Ela+Use/Marg+Err/Orth:abmus%>ist%>   PxCs      ; ! !
+                                  +Sg+Com:abmus%>ijn     ENDLEX    ;
+                          +Sg+Com+Err/Orth:abmus%>ijna    ENDLEX    ; !
+                 +Sg+Com+Use/Marg+Err/Orth:abmus%>ijn%>   PxCs      ; ! !
+                                     +Ess:abmus%>in      ENDLEX    ;
+                                  +Pl+Nom:abmus%>a       ENDLEX    ;
+                                  +Pl+Gen:abmus%>ij      ENDLEX    ;
+                                  +Pl+Abe:abmus%>ij#dagi ENDLEX    ;
+                                  +Pl+Abe:abmus%>ij#dagá ENDLEX    ;
+                                  +Pl+Abe:abmus%>ij#tagá ENDLEX    ;
+                                  +Pl+Acc:abmus%>ijt     ENDLEX    ;
+                 +Pl+Acc+Use/Marg+Err/Orth:abmus%>ijd%>   PxCs      ; ! !
+                                  +Pl+Ill:abmus%>ijda    ENDLEX    ;
+                                  +Pl+Ine:abmus%>ijn     ENDLEX    ;
+                 +Pl+Ine+Use/Marg+Err/Orth:abmus%>ijn%>   PxCs      ; ! !
+                                  +Pl+Ela:abmus%>ijs     ENDLEX    ;
+                 +Pl+Ela+Use/Marg+Err/Orth:abmus%>ijst%>  PxCs      ; ! !
+                                  +Pl+Com:abmus%>ij      ENDLEX    ;
+
+                            +Attr+Err/Orth:umos%>         ENDLEX   ;
+                          +Sg+Nom+Err/Orth:umos%>         ENDLEX   ;
+                 +Sg+Nom+Use/Marg+Err/Orth:ubmus%>a%>     PxV      ; ! !
+                          +Sg+Gen+Err/Orth:ubmus%>a       ENDLEX   ;
+                          +Sg+Abe+Err/Orth:ubmus%>a#dagi  ENDLEX   ;
+                          +Sg+Abe+Err/Orth:ubmus%>a#dagá  ENDLEX   ;
+                          +Sg+Abe+Err/Orth:ubmus%>a#tagá  ENDLEX   ;
+                 +Sg+Gen+Use/Marg+Err/Orth:ubmus%>a%>     PxV      ; ! !
+                          +Sg+Acc+Err/Orth:ubmus%>av      ENDLEX   ;
+                 +Sg+Acc+Use/Marg+Err/Orth:ubmus%>a%>     PxV      ; ! !
+                          +Sg+Ill+Err/Orth:ubmus%>ij      ENDLEX   ;
+                          +Sg+Ine+Err/Orth:ubmus%>in      ENDLEX   ;
+                 +Sg+Ine+Use/Marg+Err/Orth:ubmus%>in%>    PxCs     ; ! !
+                          +Sg+Ela+Err/Orth:ubmus%>is      ENDLEX   ;
+                 +Sg+Ela+Use/Marg+Err/Orth:ubmus%>ist%>   PxCs     ; ! !
+                          +Sg+Com+Err/Orth:ubmus%>ijn     ENDLEX   ;
+                          +Sg+Com+Err/Orth:ubmus%>ijna    ENDLEX   ;
+                 +Sg+Com+Use/Marg+Err/Orth:ubmus%>ijn%>   PxCs     ; ! !
+                             +Ess+Err/Orth:ubmus%>in      ENDLEX   ;
+                          +Pl+Nom+Err/Orth:ubmus%>a       ENDLEX   ;
+                          +Pl+Gen+Err/Orth:ubmus%>ij      ENDLEX   ;
+                          +Pl+Abe+Err/Orth:ubmus%>ij#dagi ENDLEX   ;
+                          +Pl+Abe+Err/Orth:ubmus%>ij#dagá ENDLEX   ;
+                          +Pl+Abe+Err/Orth:ubmus%>ij#tagá ENDLEX   ;
+                          +Pl+Acc+Err/Orth:ubmus%>ijt     ENDLEX   ;
+                 +Pl+Acc+Use/Marg+Err/Orth:ubmus%>ijd%>   PxCs     ; ! !
+                          +Pl+Ill+Err/Orth:ubmus%>ijda    ENDLEX   ;
+                          +Pl+Ine+Err/Orth:ubmus%>ijn     ENDLEX   ;
+                 +Pl+Ine+Use/Marg+Err/Orth:ubmus%>ijn%>   PxCs     ; ! !
+                          +Pl+Ela+Err/Orth:ubmus%>ijs     ENDLEX   ;
+                 +Pl+Ela+Use/Marg+Err/Orth:ubmus%>ijst%>  PxCs     ; ! !
+                          +Pl+Com+Err/Orth:ubmus%>ij      ENDLEX   ;
+
+                            +Attr+Err/Orth:æmos%>         ENDLEX   ; !
+                          +Sg+Nom+Err/Orth:æmos%>         ENDLEX   ; !
+         +Sg+Nom+Err/Orth+Use/Marg+Err/Orth:ebmus%>a%>     PxV      ; ! ! !
+                          +Sg+Gen+Err/Orth:ebmus%>a       ENDLEX   ; !
+                          +Sg+Abe+Err/Orth:ebmus%>a#dagi  ENDLEX   ; !
+                          +Sg+Abe+Err/Orth:ebmus%>a#dagá  ENDLEX   ; !
+                          +Sg+Abe+Err/Orth:ebmus%>a#tagá  ENDLEX   ; !
+         +Sg+Gen+Err/Orth+Use/Marg+Err/Orth:ebmus%>a%>     PxV      ; ! ! !
+                          +Sg+Acc+Err/Orth:ebmus%>av      ENDLEX   ; !
+         +Sg+Acc+Err/Orth+Use/Marg+Err/Orth:ebmus%>a%>     PxV      ; ! ! !
+                          +Sg+Ill+Err/Orth:ebmus%>ij      ENDLEX   ; !
+                          +Sg+Ine+Err/Orth:ebmus%>in      ENDLEX   ; !
+         +Sg+Ine+Err/Orth+Use/Marg+Err/Orth:ebmus%>in%>    PxCs     ; ! ! !
+                          +Sg+Ela+Err/Orth:ebmus%>is      ENDLEX   ; !
+         +Sg+Ela+Err/Orth+Use/Marg+Err/Orth:ebmus%>ist%>   PxCs     ; ! ! !
+                          +Sg+Com+Err/Orth:ebmus%>ijn     ENDLEX   ; !
+                          +Sg+Com+Err/Orth:ebmus%>ijna    ENDLEX   ; ! !SUB
+         +Sg+Com+Err/Orth+Use/Marg+Err/Orth:ebmus%>ijn%>   PxCs     ; ! ! !
+                             +Ess+Err/Orth:ebmus%>in      ENDLEX   ; !
+                          +Pl+Nom+Err/Orth:ebmus%>a       ENDLEX   ; !
+                          +Pl+Gen+Err/Orth:ebmus%>ij      ENDLEX   ; !
+                          +Pl+Abe+Err/Orth:ebmus%>ij#dagi ENDLEX   ; !
+                          +Pl+Abe+Err/Orth:ebmus%>ij#dagá ENDLEX   ; !
+                          +Pl+Abe+Err/Orth:ebmus%>ij#tagá ENDLEX   ; !
+                          +Pl+Acc+Err/Orth:ebmus%>ijt     ENDLEX   ; !
+         +Pl+Acc+Err/Orth+Use/Marg+Err/Orth:ebmus%>ijd%>   PxCs     ; ! ! !
+                          +Pl+Ill+Err/Orth:ebmus%>ijda    ENDLEX   ; !
+                          +Pl+Ine+Err/Orth:ebmus%>ijn     ENDLEX   ; !
+         +Pl+Ine+Err/Orth+Use/Marg+Err/Orth:ebmus%>ijn%>   PxCs     ; ! ! !
+                          +Pl+Ela+Err/Orth:ebmus%>ijs     ENDLEX   ; !
+         +Pl+Ela+Err/Orth+Use/Marg+Err/Orth:ebmus%>ijst%>  PxCs     ; ! ! !
+                          +Pl+Com+Err/Orth:ebmus%>ij      ENDLEX   ; !
+
+
+!! Comparative and Superlative sub-lexica
+! -----------
+
+LEXICON CompSup-EVEN !!= @CODE@
+         +Sg+Nom+Use/Marg+Err/Orth:    PxV                  ; ! ! !Spiik not explicit here, thus guessing.
+                             +Ess:n   ENDLEX               ;
+                   ! +Ess+Err/Orth:n%> PxC ; !^P^ !MARG !No Ess+Px according to Spiik, Grundstrom
+                          +Sg+Ill:j   ENDLEX               ;
+         +Sg+Ill+Use/Marg+Err/Orth:s%> PxCi                 ; ! !
+                                 :Q1  CompSup-EVENWEAKSTEM ;
+
+LEXICON CompSup-EVENWEAKSTEM  !!= @CODE@
+                          +Sg+Gen:       ENDLEX   ;
+                          +Sg+Abe:#dagi  ENDLEX   ;
+                          +Sg+Abe:#dagá  ENDLEX   ;
+                          +Sg+Abe:#tagá  ENDLEX   ;
+         +Sg+Gen+Use/Marg+Err/Orth:       PxV      ; ! !
+                          +Sg+Acc:v      ENDLEX   ;
+         +Sg+Acc+Use/Marg+Err/Orth:       PxV      ; ! !
+                          +Sg+Ine:n      ENDLEX   ;
+         +Sg+Ine+Use/Marg+Err/Orth:n%>    PxC      ; ! !
+                          +Sg+Ela:s      ENDLEX   ;
+         +Sg+Ela+Use/Marg+Err/Orth:st%>   PxC      ; ! !
+                          +Pl+Nom:       ENDLEX   ;
+         +Pl+Nom+Use/Marg+Err/Orth:       PxNomPlV ; ! !
+                          +Pl+Gen:j      ENDLEX   ;
+                          +Pl+Abe:j#dagi ENDLEX   ;
+                          +Pl+Abe:j#dagá ENDLEX   ;
+                          +Pl+Abe:j#tagá ENDLEX   ;
+         +Pl+Gen+Use/Marg+Err/Orth:j%>    PxC      ; ! !
+                          +Pl+Acc:jt     ENDLEX   ;
+         +Pl+Acc+Use/Marg+Err/Orth:jd%>   PxC      ; ! !
+                          +Pl+Ill:jda    ENDLEX   ;
+         +Pl+Ill+Use/Marg+Err/Orth:jdis%> PxCs     ; ! !
+                          +Pl+Ine:jn     ENDLEX   ;
+         +Pl+Ine+Use/Marg+Err/Orth:jn%>   PxC      ; ! !
+                          +Pl+Ela:js     ENDLEX   ;
+         +Pl+Ela+Use/Marg+Err/Orth:jst%>  PxC              ; ! !
+                          +Pl+Com:j      ENDLEX   ;
+         +Pl+Com+Use/Marg+Err/Orth:j%>    PxC      ; ! !
+                  +Sg+Com+Err/Orth:X5jna  ENDLEX   ; !
+                          +Sg+Com:X5jn   ENDLEX   ; ! X5 for o:u in ComSg. Note two dummies in a row!
+         +Sg+Com+Use/Marg+Err/Orth:X5jn%> PxC      ; ! !
+
+LEXICON CompSup-ODDCASE
+ +Sg+Nom+Use/Marg+Err/Orth:        PxC  ; ! !
+                          +Sg+Gen:a       ENDLEX ;
+                          +Sg+Abe:a#dagi  ENDLEX ;
+                          +Sg+Abe:a#dagá  ENDLEX ;
+                          +Sg+Abe:a#tagá  ENDLEX ;
+         +Sg+Gen+Use/Marg+Err/Orth:        PxC    ; ! !
+                          +Sg+Acc:av      ENDLEX ;
+         +Sg+Acc+Use/Marg+Err/Orth:        PxC    ; ! !
+                          +Sg+Ill:ij      ENDLEX ; ! Px ?? !!
+         +Sg+Ill+Use/Marg+Err/Orth:as%>    PxCs   ; ! !
+                          +Sg+Ine:in      ENDLEX ;
+         +Sg+Ine+Use/Marg+Err/Orth:in%>    PxCs   ; ! !
+                          +Sg+Ela:is      ENDLEX ;
+         +Sg+Ela+Use/Marg+Err/Orth:ist%>   PxCs   ; ! !
+                          +Sg+Com:ijn     ENDLEX ;
+                  +Sg+Com+Err/Orth:ijna    ENDLEX ; !
+         +Sg+Com+Use/Marg+Err/Orth:ijn%>   PxCs   ; ! !
+                             +Ess:in      ENDLEX ;
+                          +Pl+Nom:a       ENDLEX ;
+                          +Pl+Gen:ij      ENDLEX ;
+                          +Pl+Abe:ij#dagi ENDLEX ;
+                          +Pl+Abe:ij#dagá ENDLEX ;
+                          +Pl+Abe:ij#tagá ENDLEX ;
+         +Pl+Gen+Use/Marg+Err/Orth:ij%>    PxCs   ; ! !
+                          +Pl+Acc:ijt     ENDLEX ;
+         +Pl+Acc+Use/Marg+Err/Orth:ijd%>   PxCs   ; ! !
+                          +Pl+Ill:ijda    ENDLEX ;
+         +Pl+Ill+Use/Marg+Err/Orth:ijdas%> PxC    ; ! !
+                          +Pl+Ine:ijn     ENDLEX ;
+         +Pl+Ine+Use/Marg+Err/Orth:ijn%>   PxCs   ; ! !
+                          +Pl+Ela:ijs     ENDLEX ;
+         +Pl+Ela+Use/Marg+Err/Orth:ijst%>  PxCs ; ! !
+                          +Pl+Com:ij      ENDLEX ;
+         +Pl+Com+Use/Marg+Err/Orth:ij%>    PxCs ; ! !
+
+
+
+
+
+! Adj declension
+! ---------------
+
+LEXICON ATTR  !!= @CODE@ Sends attributes to
+     +Attr:   NAMÁK  ;
+     +Attr:   ENDLEX ; ! Plain attributive.
+ +Cmp/Attr:   R      ;
+     +Attr:   VUOHTA ;
+! -:#%- ProperNoun ;   !already in LEXICON R !
+! : ALIT ;  ! both comp and independent adj
+
+
+LEXICON ATTR_PrsPrc  !!= @CODE@ Attr without -vuohta derivation.
+     +Attr:   NAMÁK  ;
+     +Attr:   ENDLEX ; ! Plain attributive
+ +Cmp/Attr:    R     ;
+! -:#%- ProperNoun ;   !already in LEXICON R !
+! : ALIT ;  ! both comp and independent adj
+
+
+
+!! !!Derivation of adjectives
+! ------------------------
+
+LEXICON DenominalAdjsV1 !!= @CODE@ ! even noun stems are sent here
+      +Der1+Der/Car+A:Q1      DIBME  ;
+ +Der1+Der/Car+A:Q1dis%> ATTR   ;
+! +Der1+Der/Car+A:Q1dis VUOHTA ; !moved to ATTR
+!      +Der1+Der/Car+A:Q1d     DUVVAT ; ! this is incorrect, denominal -dibme adjectives cannot be derived to a verb, at least it should be -dimeduvvat, not only -duvvat?
+                   +Abe:Q1dak   ENDLEX ;
+                   +Abe:Q1da    ENDLEX ;
+                   
+LEXICON DenominalAdjsV1_1 !!= @CODE@ ! even noun stems without grade alternation are sent here
+      +Der1+Der/Car+A:      DIBME  ;
+ +Der1+Der/Car+A:dis%> ATTR   ;
+! +Der1+Der/Car+A:dis VUOHTA ; !moved to ATTR
+!      +Der1+Der/Car+A:d     DUVVAT ; ! this is incorrect, denominal -dibme adjectives cannot be derived to a verb, at least it should be -dimeduvvat, not only -duvvat?
+                   +Abe:dak   ENDLEX ;
+                   +Abe:da    ENDLEX ;
+
+LEXICON DenominalAdjsV2 !!= @CODE@ ! even noun stems are sent here. -asj derivation
+ +Der1+Der/lasj:l DÁRBULASJ ;
+
+
+LEXICON DenominalAdjsKINO !!= @CODE@ ! unassimilated nouns are sent here
+      +Der1+Der/Car+A:      DIBME      ;
+      +Der1+Der/Car+A:dis%> ATTR       ;
+! +Der1+Der/Car+A:dis VUOHTA ; !moved to ATTR
+!      +Der1+Der/Car+A:d     DUVVAT     ; ! this is incorrect, denominal -dibme adjectives cannot be derived to a verb, at least it should be -dimeduvvat, not only -duvvat?
+!+Der4+Der/ahtes:g AHTES ; Only for odd-syllable stems
+!+Der4+Der/ahtes:d AHTES ;
+                   +Abe:dak   ENDLEX     ;
+                   +Abe:da    ENDLEX     ;
+         +Der1+Der/lasj:l     DÁRBULASJ  ;
+
+
+LEXICON DenominalAdjsODD !!= @CODE@  ! gives derivation -ahtes
+        +Der4+Der/ahtes: AHTES ;
+  !+Der4+Der/ahtes+A+Der5+Der/AAdv+Adv:ahtá%>  K    ;
+ !+Der4+Der/ahtes+A+Der5+Der/AAdv+Adv:ahti%>  K    ;
+!+Abe:adak K ; Odd-syllable stems donºt get the abessiv -dak, itºs only for párra and contracted stems.
+!+Abe:ada K ;
+
+LEXICON DenominalAdjsContr !!= @CODE@
+      +Der1+Der/Car+A:      DIBME  ;
+      +Der1+Der/Car+A:dis%> ATTR   ;
+! +Der1+Der/Car+A:dis VUOHTA ; !moved to ATTR
+!      +Der1+Der/Car+A:d     DUVVAT ; ! this is incorrect, denominal -dibme adjectives cannot be derived to a verb, at least it should be -dimeduvvat, not only -duvvat?
+                   +Abe:dak   ENDLEX ;
+                   +Abe:da    ENDLEX ;
+
+!! !! Derivations to adjectives
+
+LEXICON AHTES !!= @CODE@ ! odd syllable
+                        +A:ahtes%>    ATTR              ;
+!        +A+Der5+Der/AAdv+Adv:ahtá%>    ENDLEX            ; !- ahtá is not adverb, according to Bruce Morén-Duolljá its a case like essive.
+!        +A+Der5+Der/AAdv+Adv:ahti%>    ENDLEX            ;
+                 +A+Sg+Nom:ahtes%>    ENDLEX            ;
+        +A+Sg+Nom+Err/Orth:ahttá%>    PxV               ; !
+                    +A+Ess:ahttá%>n   ENDLEX            ;
+! +A:ahtes VUOHTA ; !moved to ATTR
+                        +A:ahttá%>    ILL-EVENCASEadj   ;
+                        +A:ahttá%>    N-EVENWEAKSTEMadj ;
+               +A+Cmp/SgGen:ahttá%>    R                 ;
+               +A+Cmp/PlGen:ahttá%>j   R                 ;
+                        +A:ahttá%>    BU/MUS            ;
+                        +A:ahttás%>   OTH-ODDCASEadj    ;
+                        +A:ahttás%>   ABBO/AMOS         ;
+        +A+Der5+Der/AAdv+Adv:ahttás%>it ENDLEX            ;
+                        +A:ahttás%>   ODDCmp            ;
+
+
+LEXICON DIBME !!= @CODE@ ! even and contracted
+                 :dibme%>    NE-EVENCASEadj    ;
+                 :dibme%>X4  ILL-EVENCASEadj   ;
+                 :dibme%>Q1  N-EVENWEAKSTEMadj ;
+      +Use/-Spell:d          ABBO/AMOS         ;
+        +Cmp/SgGen:dibme%>Q1  R                 ;
+        +Cmp/PlGen:dibme%>Q1j R                 ;
+ +Der5+Der/AAdv+Adv:dibme%>Q1t ENDLEX            ;
+
+
+LEXICON LIS !!= @CODE@ ! Handlernomen på -is?
+                        :%>     ATTR                     ;
+                 +Sg+Nom:%>     ENDLEX                   ;
+        +Sg+Nom+Err/Orth:a%>    PxV                      ; !
+               +Cmp/SgGen:a%>Q1  R                        ;
+               +Cmp/PlGen:a%>Q1j R                        ;
+                    +Ess:a%>n   ENDLEX                   ;
+                        :a%>Q1  N-EVENWEAKSTEM-OTHadj    ;
+                        :a%>    ILL-EVENCASEadj          ;
+                        :a%>Q1  N-EVENWEAKSTEM-SG-COMadj ;
+! : VUOHTA ; !moved to ATTR
+
+
+LEXICON LÁGÁSJ !!= @CODE@
+     +A+Attr:%>   ENDLEX         ;
+ +A+Cmp/SgGen:%>a  R              ;
+ +A+Cmp/PlGen:%>ij R              ;
+          +A:     VUOHTA         ;
+          +A:%>   N-ODDCASE      ;
+          +A:%>   OTH-ODDCASEadj ;
+  -+Use/Circ:#%-  ProperNoun     ; ! ! Definitely circular x 35000.
+
+
+LEXICON AGAdj !!= @CODE@ ! denominal derivations go here
+     +A+Attr:%>   ENDLEX         ;
+ +A+Cmp/SgGen:%>a  R              ;
+ +A+Cmp/PlGen:%>ij R              ;
+      +A+Attr:     VUOHTA         ;
+          +A:%>   N-ODDCASE      ;
+          +A:%>   OTH-ODDCASEadj ;
+
+LEXICON Ahkásasj !!= @CODE@ ! lexicalized and denominal -asj derivations
+     +A+Attr:%>     ENDLEX        ;
+ +A+Cmp/SgGen:a%>Q1  R             ;
+ +A+Cmp/PlGen:a%>Q1j R             ;
+   +A+Sg+Nom:%>     ENDLEX        ;
+          +A:a%>    ÁRMMOGIS-EVEN ;
+          +A:       VUOHTA        ;
+
+
+LEXICON STÁVVAL !!= @CODE@ ! OK& Kintel: stávval attr stávvalis, also as second compound
+     +A+Attr:is%> ENDLEX         ;
+ +A+Cmp/SgGen:%>a    R              ;
+ +A+Cmp/PlGen:%>ij   R              ;
+          +A:%>Q1   VUOHTA         ;
+          +A:%>   N-ODDCASE      ;
+          +A:%>     OTH-ODDCASEadj ;
+

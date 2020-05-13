@@ -1,0 +1,22 @@
+Config:
+  hfst:
+    Gen:   ../../../tools/spellcheckers/generator-speller-gt-norm.hfst
+    Morph: ../../../tools/spellcheckers/analyser-speller-gt-norm.hfst
+  xerox:
+    Gen:   ../../../tools/spellcheckers/generator-speller-gt-norm.xfst
+    Morph: ../../../tools/spellcheckers/analyser-speller-gt-norm.xfst
+    App: lookup
+
+Tests:
+  Normativity tests: # We should not generate non-standard or irrelevant forms:
+    ærrodit+V+TV+ImprtII+ConNeg+Sg2:          "errod>u"
+    gievádit+V+IV+Ind+Prs+Sg3:                "gievát>"
+    loapptet+V+TV+Pot+Sg1:                    "låpti>tjav"
+    ævtodit+V+TV+Der1+Der/alla+V+Imprt+Du2:   "evtud»alle>"
+    hg+N+Sem/Measr+ABBR:                      "hg"
+    dvd+N+Sem/Obj-el+ACR+Sg+Nom:              "dvd>"
+    jv+Adv+ABBR+Gram/IAbbr:                  ["jv", "jv."]
+    ukeslij+Po:                               "ukeslij>"
+    jerrat+A+Attr+CmpN/SgG+CmpN/DefPlGen+Der5+Der/vuota+N+Ess: "jierris>#»vuohta>n"
+    nasjåvnålasj+A+CmpNP/Last+Sg+Nom:         "nasjåvnålasj>"
+    tæksta-tv+N+ACR+Sg+Ela:                  ["täksta-tv>:as", "tæksta-tv>:as"]
