@@ -42,12 +42,15 @@ This is free and open source Lule Sami morphology.
  * +Coll collective numerals
  * +Arab arabic numerals
  * +Rom remertall
+
  * +Err/Orth  Substandard. An ungrammatical, non-normative form of normative lemma.
  * +Err/Lex  No normative lemma, often ungrammatical compounds like "bajásbuollda" and "songdebutierit".
  * +Err/Hyph  No normative lemma
  * +Err/SpaceCmp  No normative lemma
  * +Err/Der  Lemmas that break with regular derivation rules, both morphologically and semantically
  * +Err/Infl  Lemmas that break with normative inflection rules, often used with morphological changes
+ | __+Err/MissingSpace__ | in use in smi lexc
+
  * +Use/Marg  Marginal, but normative lemmas. Not in speller.
  * +Use/-Spell  Excluded from speller
  * +Use/-PLX  Excluded from PLX speller
@@ -57,12 +60,13 @@ This is free and open source Lule Sami morphology.
  * +Use/CircN  Circular number path
  * +Use/Ped  Remove from pedagogical speller
  * +Use/NG  Do not generate, only for Oahpa and MT. In speller.
- * __ +Use/MT          __ Generate for MT only, for restricting analyses needed
- * __ +Use/NGminip     __ Not for miniparadigm in VD dicts
+ * __ +Use/MT           __ Generate for MT only, for restricting analyses needed
+ * __ +Use/NGminip      __ Not for miniparadigm in VD dicts
  * +Use/NotDNorm  For words without formal normalization.
 Divvun suggest that this shouldn't be normative.
  * +Use/DNorm  For words without formal normalization.
-Divvun suggest that this should be normative. Included in speller.
+Divvun suggest that this should be normative. Included in speller.                      
+ * +Use/Derrog  Derrogatory word. Recognized, but not suggested in speller, same as SpellNoSugg
 
  * +Area/SE In Sweden
  * +Area/NO In Norway
@@ -150,8 +154,6 @@ The first part of the component may be ..
  *  +PxPl2   possessive suffix plural second person
  *  +PxPl3   possessive suffix plural plural person
 
- *  +Comp    Comparative comparison
- *  +Superl  Superlative comparison
  *  +Attr    Attribute
 
  *  +Card   
@@ -228,6 +230,9 @@ The first part of the component may be ..
 !Other tags
  * +MWE  multi word expressions, goes to abbr
  * +Sh  Short form
+
+ * +Gram/Comp = Inherent comp, lexicalized derivation 
+ * +Gram/Superl = Inherent superl, lexicalized derivation 
 
 !!Semantic tags to help disambiguation & syntactic analysis
 
@@ -640,6 +645,9 @@ These tags should always be located just before the POS tag.
  * +Sem/Time_Wthr = 
  * +Sem/Tool-music = 
 
+
+
+
 !!Derivation tags
 
 The following tags are used to describe the dynamic derivational system in
@@ -682,7 +690,8 @@ This is done to avoid possible overgeneration in the derivational system.
  * +Der/stasste VV
  * +Der/tj VV
  * +Der/u/a/åd VV
- * +Der/A 								 NA
+ * +Der/Comp 									 						 AA
+ * +Der/Superl 															 AA     
 
 !Der#2 tags - tags in second position
  * +Der/dahtte VV
@@ -861,7 +870,7 @@ __gárttje # Even-syllable test examples:__
 * __gárttje: __ {{gárttje+A+Sg+Nom }}
 * __gártjev: __ {{gárttje+A+Sg+Acc }}
 * __gártjes: __ {{gárttje+A+Attr }}
-* __gártjep: __ {{gárttje+A+Comp+Sg+Nom }}
+* __gártjep: __ {{gárttje+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON HÁVSSKE   Adjectives with attribute -s, without WeG. As 1c in Spiik. Sg Acc: hávsskev, Attr: hávsskes.
 
@@ -870,7 +879,7 @@ __hoallá # Even-syllable test examples:__
 * __hoallá: __ {{hoallá+A+Sg+Nom }}
 * __hoalláv: __ {{hoallá+A+Sg+Acc }}
 * __hoallás: __ {{hoallá+A+Attr }}
-* __hoalláp: __ {{hoallá+A+Comp+Sg+Nom }}
+* __hoalláp: __ {{hoallá+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON NUORRA   Adjectives with attribute same as pred. As 1b in Spiik. Sg Acc: nuorav, Attr: nuorra.
 
@@ -879,7 +888,7 @@ __visská # Even-syllable test examples:__
 * __visská: __ {{visská+A+Sg+Nom }}
 * __viskáv: __ {{visská+A+Sg+Acc }}
 * __visská: __ {{visská+A+Attr }}
-* __viskáp: __ {{visská+A+Comp+Sg+Nom }}
+* __viskáp: __ {{visská+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON TJUODDJE  Adjectives with attribute -is, without WeG. presently only "Tjuoddje" Sg Acc: tjuoddjev, Attr: tjuoddjis.
 
@@ -888,7 +897,7 @@ __tjuoddje # Even-syllable test examples:__
 * __tjuoddje: __ {{tjuoddje+A+Sg+Nom }}
 * __tjuoddjev: __ {{tjuoddje+A+Sg+Acc }}
 * __tjuoddjis: __ {{tjuoddje+A+Attr }}
-* __tjuoddjep: __ {{tjuoddje+A+Comp+Sg+Nom }}
+* __tjuoddjep: __ {{tjuoddje+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON GALLJE   Adjectives on -e, the attribute is in WeG and e > a. As 1d in Spiik. Sg Acc: galjev, Attr: galja.
 
@@ -898,7 +907,7 @@ __uhttse # Even-syllable test examples:__
 * __uhtsev: __ {{uhttse+A+Sg+Acc }}
 * __uhtsa: __ {{uhttse+A+Attr }}
 * __uhtses: __ {{uhttse+A+Attr }} (Eng. # gets this attr from LEXATTR)
-* __uhtsep: __ {{uhttse+A+Comp+Sg+Nom }}
+* __uhtsep: __ {{uhttse+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON TJÁBBE   Adjectives on -e, the attribute is in WeG and e > a. Same as GALLJE only different adv derivation. Sg Acc: tjáppev, Attr: tjáppa.
 
@@ -907,7 +916,7 @@ __njálgge # Even-syllable test examples:__
 * __njálgge: __ {{njálgge+A+Sg+Nom }}
 * __njálgev: __ {{njálgge+A+Sg+Acc }}
 * __njálga: __ {{njálgge+A+Attr }}
-* __njálgep: __ {{njálgge+A+Comp+Sg+Nom }}
+* __njálgep: __ {{njálgge+A+Der/Comp+A+Sg+Nom }}
 
 
 Pres.participles 
@@ -919,7 +928,7 @@ __vuojedahtte # Even-syllable test examples:__
 * __vuojedahtte: __ {{vuojedahtte+A+Sg+Nom }}
 * __vuojedahttev: __ {{vuojedahtte+A+Sg+Acc }}
 
- LEXICON JUHKKE   participles with -s attributive. No comparision As 1e in Spiik. Sg Acc: juhkkev, Attr: juhkkes. Spiik: presens particip har med den attributive formen på -s betydelsen ºnågon som är duktig i, snabb til att, begiven att utföra handlingenº.
+ LEXICON JUHKKE   participles with -s attributive. No comparision As 1e in Spiik. Sg Acc: juhkkev, Attr: juhkkes. Spiik: presens particip har med den attributive formen på -s betydelsen "någon som är duktig i, snabb til att, begiven att utföra handlingen".
 
 
 __vuohttje # Even-syllable test examples:__
@@ -961,7 +970,7 @@ __kapitalismalasj # Even-syllable test examples:__
 * __kapitalismalasj: __ {{kapitalismalasj+A+Sg+Nom }}
 * __kapitalismalattjav: __ {{kapitalismalasj+A+Sg+Acc }}
 * __kapitalismalasj: __ {{kapitalismalasj+A+Attr }}
-* __kapitalismalabbo: __ {{kapitalismalasj+A+Comp+Sg+Nom }}
+* __kapitalismalabbo: __ {{kapitalismalasj+A+Der/Comp+A+Sg+Nom }}
 
 
 
@@ -1065,6 +1074,7 @@ __aktijvva # Even-syllable test examples:__
  LEXICON ELLA_LASJ_INFL_CMP  
 
 
+
  LEXICON ÁLLA-ÆLLA 
 
  LEXICON MEKÁNALASJ_CMP_INFL  Same as mekanihkalasj only without vuohta. 
@@ -1083,16 +1093,20 @@ Inherent comparatives and superlatives lexica
  LEXICON OANEP   Inherent comparatives, gives comp and superl. There are two main groups of word here: Adjectives that are lexicalized in their comparative (and superlative) forms, like sisŋep, bárep. And Nouns that can be compared, like nuortap, gáttep, oarjep (some of these are compared from their noun lexicas and thus are found twice). Some entries are likely incorrect compared forms of other adjectives, like ådåp and ruvvap (more research needed).
 
 
+
+
+
 __lagáp # Even-syllable test examples:__
-* __lagáp: __ {{lagáp+A+Comp+Sg+Nom }}
-* __lagámus: __ {{lagáp+A+Superl+Sg+Nom }}
+* __lagáp: __ {{lagáp+A+Gram/Comp+Sg+Nom }}
+* __lagámus: __ {{lagáp+A+Gram/Superl+Sg+Nom }}
 
 
  LEXICON TJAVGGÁMUS    Inherent superlatives, only gives superl. Some words are lexicalized in their superlative forms, like dájvvámus. Some are likely incorrect superlative forms, like tjábbámus (more research is needed)
 
 
+
 __dájvvámus # Even-syllable test examples:__
-* __dájvvámus: __ {{dájvvámus+A+Superl+Sg+Nom }}
+* __dájvvámus: __ {{dájvvámus+A+Gram/Superl+Sg+Nom }}
 
 4-syllable miscellanious stems
 
@@ -1103,7 +1117,7 @@ __bahágis # Even-syllable test examples:__
 * __bahágis: __ {{bahágis+A+Sg+Nom }}
 * __bahágisáv: __ {{bahágis+A+Sg+Acc }}
 * __bahágis: __ {{bahágis+A+Attr }}
-* __bahágabbo: __ {{bahágis+A+Comp+Sg+Nom }}
+* __bahágabbo: __ {{bahágis+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON SÆHKÁLAK  Adjectives on -álak, attribute same as pred. Odd-syllable comparison. So far only for "sæhkálak".
 
@@ -1115,8 +1129,8 @@ __sæhkálak # Even-syllable test examples:__
 * __sähkálagáv: __ {{sæhkálak+A+Sg+Acc }}
 * __sæhkálak: __ {{sæhkálak+A+Attr }}
 * __sähkálak: __ {{sæhkálak+A+Attr }}
-* __sæhkálabbo: __ {{sæhkálak+A+Comp+Sg+Nom }}
-* __sähkálabbo: __ {{sæhkálak+A+Comp+Sg+Nom }}
+* __sæhkálabbo: __ {{sæhkálak+A+Der/Comp+A+Sg+Nom }}
+* __sähkálabbo: __ {{sæhkálak+A+Der/Comp+A+Sg+Nom }}
 
 
  LEXICON ÅLLAGSJ_CMP_INFL  Adjectives on -asj, attribute same as pred.  No comparatives. 2 in Spiik. Sg Acc: ållagattjav, Attr: ållagasj.
@@ -1136,7 +1150,7 @@ __dábálasj # Even-syllable test examples:__
 * __dábálattjav: __ {{dábálasj+A+Sg+Acc }}
 * __dábálasj: __ {{dábálasj+A+Attr }}
 * __dábális: __ {{dábálasj+A+Attr }}
-* __dábálabbo: __ {{dábálasj+A+Comp+Sg+Nom }}
+* __dábálabbo: __ {{dábálasj+A+Der/Comp+A+Sg+Nom }}
 
 
 
@@ -1147,7 +1161,7 @@ __gågulasj # Even-syllable test examples:__
 * __gågulasj: __ {{gågulasj+A+Sg+Nom }}
 * __gågulattjav: __ {{gågulasj+A+Sg+Acc }}
 * __gågulis: __ {{gågulasj+A+Attr }}
-* __gågulabbo: __ {{gågulasj+A+Comp+Sg+Nom }}
+* __gågulabbo: __ {{gågulasj+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON UDNODIBME  Adjectives on -dibme, attribute on -is. Odd-syllable comparison. Sg Acc: udnodimev, Attr: udnodis.
 
@@ -1159,8 +1173,8 @@ __gælvodibme # Even-syllable test examples:__
 * __gälvodimev: __ {{gælvodibme+A+Sg+Acc }}
 * __gælvodis: __ {{gælvodibme+A+Attr }}
 * __gälvodis: __ {{gælvodibme+A+Attr }}
-* __gælvodabbo: __ {{gælvodibme+A+Comp+Sg+Nom }}
-* __gälvodabbo: __ {{gælvodibme+A+Comp+Sg+Nom }}
+* __gælvodabbo: __ {{gælvodibme+A+Der/Comp+A+Sg+Nom }}
+* __gälvodabbo: __ {{gælvodibme+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON TJALMEDIBME   Like UDNODIBME but no comparatives. Sg Acc: tjalmedimev, Attr: tjalmedis.
 
@@ -1187,7 +1201,7 @@ __hánes # Odd-syllable test examples:__
 * __hánes: __ {{hánes+A+Sg+Nom }}
 * __hádnásav: __ {{hánes+A+Sg+Acc }}
 * __hánes: __ {{hánes+A+Attr }}
-* __hádnásabbo: __ {{hánes+A+Comp+Sg+Nom }}
+* __hádnásabbo: __ {{hánes+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON GÅNTSAS  Same as TJIEGOS but with vokal change å=oa. Attr is same as pred. Sg Acc: goanntsasav, attr: gåntsas. Consonant gradation.
 
@@ -1196,7 +1210,7 @@ __måskas # Odd-syllable test examples:__
 * __måskas: __ {{måskas+A+Sg+Nom }}
 * __moasskasav: __ {{måskas+A+Sg+Acc }}
 * __måskas: __ {{måskas+A+Attr }}
-* __moasskasabbo: __ {{måskas+A+Comp+Sg+Nom }}
+* __moasskasabbo: __ {{måskas+A+Der/Comp+A+Sg+Nom }}
 
 
 
@@ -1207,7 +1221,7 @@ __njuoskas # Odd-syllable test examples:__
 * __njuoskas: __ {{njuoskas+A+Sg+Nom }}
 * __njuosskasav: __ {{njuoskas+A+Sg+Acc }}
 * __njuosska: __ {{njuoskas+A+Attr }}
-* __njuosskasabbo: __ {{njuoskas+A+Comp+Sg+Nom }}
+* __njuosskasabbo: __ {{njuoskas+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON SÁJSAS   For -as adjectives with attribute -e. Presently only used for "sájsas", because this -as adj gets -e attr. Sg Acc: sájssasav, Attr: sájsse. Consonant gradation.
 
@@ -1216,7 +1230,7 @@ __sájsas # Odd-syllable test examples:__
 * __sájsas: __ {{sájsas+A+Sg+Nom }}
 * __sájssasav: __ {{sájsas+A+Sg+Acc }}
 * __sájsse: __ {{sájsas+A+Attr }}
-* __sájssasabbo: __ {{sájsas+A+Comp+Sg+Nom }}
+* __sájssasabbo: __ {{sájsas+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON RÁDAS   Presently only used for "rádas". This word has special consonant gradation d>dd. Attr same as pred. Sg Acc: ráddasav, Attr: rádas. Consonant gradation.
 
@@ -1226,7 +1240,7 @@ __rádas # Odd-syllable test examples:__
 * __ráddasav: __ {{rádas+A+Sg+Acc }}
 * __rádas: __ {{rádas+A+Attr }}
 * __ráda: __ {{rádas+A+Attr }} (Eng. # from LEXATTR)
-* __ráddasabbo: __ {{rádas+A+Comp+Sg+Nom }}
+* __ráddasabbo: __ {{rádas+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON LUOBES   Adjectives on -es. Attribute same as pred. Does the same as TJIEGOS only e>a. Sg Acc: luohpasav, Attr: luobes. Consonant gradation.
 
@@ -1235,7 +1249,7 @@ __luobes # Odd-syllable test examples:__
 * __luobes: __ {{luobes+A+Sg+Nom }}
 * __luohpasav: __ {{luobes+A+Sg+Acc }}
 * __luobes: __ {{luobes+A+Attr }}
-* __luohpasabbo: __ {{luobes+A+Comp+Sg+Nom }}
+* __luohpasabbo: __ {{luobes+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON GIMES   Adjectives on -es with attribute -a. Vocaal e>a in StrG. As g. in Spiik. Sg Acc: gibmasav, Attr: gibma. Consonant gradation.
 
@@ -1244,7 +1258,7 @@ __gimes # Odd-syllable test examples:__
 * __gimes: __ {{gimes+A+Sg+Nom }}
 * __gibmasav: __ {{gimes+A+Sg+Acc }}
 * __gibma: __ {{gimes+A+Attr }}
-* __gibmasabbo: __ {{gimes+A+Comp+Sg+Nom }}
+* __gibmasabbo: __ {{gimes+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON LINES  Same as GIMES, only with e>á in StrG. Adjectives on -es with attribute -a. As g. in Spiik.  Sg Acc: lidnásav, attr: lidna. Consonant gradation.
 
@@ -1253,7 +1267,7 @@ __lines # Odd-syllable test examples:__
 * __lines: __ {{lines+A+Sg+Nom }}
 * __lidnásav: __ {{lines+A+Sg+Acc }}
 * __lidna: __ {{lines+A+Attr }}
-* __lidnásabbo: __ {{lines+A+Comp+Sg+Nom }}
+* __lidnásabbo: __ {{lines+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON OAMES  Adjectives on -es with attribute -e. As g2. in Spiik. Sg Acc: oabmásav, Attr: oabme. Consonant gradation.
 
@@ -1262,7 +1276,7 @@ __goastes # Odd-syllable test examples:__
 * __goastes: __ {{goastes+A+Sg+Nom }}
 * __goasstásav: __ {{goastes+A+Sg+Acc }}
 * __goasste: __ {{goastes+A+Attr }}
-* __goasstásabbo: __ {{goastes+A+Comp+Sg+Nom }}
+* __goasstásabbo: __ {{goastes+A+Der/Comp+A+Sg+Nom }}
 
 
  LEXICON BASSTEL  Adjs on -et, -l, -r, sm om -k, -sj with attr -is and no consonant gradation. As b. in Spiik. Sg Acc: basstelav, Attr: basstelis. Many of these entries might be instances of derivations, like belak, deblak, and maybe also basstel, bargán.
@@ -1272,7 +1286,7 @@ __goavrret # Odd-syllable test examples:__
 * __goavrret: __ {{goavrret+A+Sg+Nom }}
 * __goavrredav: __ {{goavrret+A+Sg+Acc }}
 * __goavrredis: __ {{goavrret+A+Attr }}
-* __goavrredabbo: __ {{goavrret+A+Comp+Sg+Nom }}
+* __goavrredabbo: __ {{goavrret+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON DABÁR  Adjectives on -r. With attr -is like BASSTEL, but with CG. Sg Acc: dahparav, Attr: dabáris. Presently only for dabár. Consonant gradation.
 
@@ -1281,7 +1295,7 @@ __sihkar # Odd-syllable test examples:__
 * __dabár: __ {{dabár+A+Sg+Nom }}
 * __dahparav: __ {{dabár+A+Sg+Acc }}
 * __dabáris: __ {{dabár+A+Attr }}
-* __dahparabbo: __ {{dabár+A+Comp+Sg+Nom }}
+* __dahparabbo: __ {{dabár+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON MUTTÁK  Adjs on -ák/-ak/-ek, two attr: -is and same as pred. As c. in Spiik. Sg Acc: muttágav, Attr: muttágis and mutták. These seem to be instances of the adjectival -k derivation. Unclear whether such derivation have different attr forms or not, and thats maybe why some of these derivations are found in BASSTEL lexicon.
 
@@ -1291,7 +1305,7 @@ __bárvak # Odd-syllable test examples:__
 * __bárvagav: __ {{bárvak+A+Sg+Acc }}
 * __bárvak: __ {{bárvak+A+Attr }}
 * __bárvagis: __ {{bárvak+A+Attr }}
-* __bárvagabbo: __ {{bárvak+A+Comp+Sg+Nom }}
+* __bárvagabbo: __ {{bárvak+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON SKÁRBAK   Presently only for skárbak, because it has skárbbis attr not skárbagis according to Korhonen. It might be a hybrid. Consonant gradation.
 
@@ -1300,7 +1314,7 @@ __skárbak # Odd-syllable test examples:__
 * __skárbak: __ {{skárbak+A+Sg+Nom }}
 * __skárbagav: __ {{skárbak+A+Sg+Acc }}
 * __skárbbis: __ {{skárbak+A+Attr }}
-* __skárbagabbo: __ {{skárbak+A+Comp+Sg+Nom }}
+* __skárbagabbo: __ {{skárbak+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON ALLAK  Adjs on -ak, attr.on -a. Have both gasep/gaggagabbo and alep/allagabbo as comparatives. As d. in Spiik. So far only the adjectives "allak" and "gassak" go to this lexicon.
 
@@ -1309,8 +1323,8 @@ __gassak # Odd-syllable test examples:__
 * __gassak: __ {{gassak+A+Sg+Nom }}
 * __gassagav: __ {{gassak+A+Sg+Acc }}
 * __gassa: __ {{gassak+A+Attr }}
-* __gassagabbo: __ {{gassak+A+Comp+Sg+Nom }}
-* __gasep: __ {{gassak+A+Comp+Sg+Nom }}
+* __gassagabbo: __ {{gassak+A+Der/Comp+A+Sg+Nom }}
+* __gasep: __ {{gassak+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON GÅBDDÅK   Adjs on -åk, attr. on -å. Has even-syllable comparison: gåbdep and gåbdemus. So far "gåbddåk" is the only word in this lexicon. As d2. in Spiik. Sg Acc: gåbddågav, Attr: gåbddå.
 
@@ -1319,7 +1333,7 @@ __gåbddåk # Odd-syllable test examples:__
 * __gåbddåk: __ {{gåbddåk+A+Sg+Nom }}
 * __gåbddågav: __ {{gåbddåk+A+Sg+Acc }}
 * __gåbddå: __ {{gåbddåk+A+Attr }}
-* __gåbdep: __ {{gåbddåk+A+Comp+Sg+Nom }}
+* __gåbdep: __ {{gåbddåk+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON STUORAK   Only for stuorak. It hase two attributes. Has even-syllable comparison: stuoráp and stuorámus.Sg Acc: stuoragav, attr: stuor and stuorra. This might be a -k derivation of adjective stuorre attr stuor(ra). The comparison is thus based on the original adjective and thus it naturally is an even syll comparison.
 
@@ -1329,7 +1343,7 @@ __stuorak # Odd-syllable test examples:__
 * __stuoragav: __ {{stuorak+A+Sg+Acc }}
 * __stuorra: __ {{stuorak+A+Attr }}
 * __stuor: __ {{stuorak+A+Attr }}
-* __stuoráp: __ {{stuorak+A+Comp+Sg+Nom }}
+* __stuoráp: __ {{stuorak+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON RIHTSOK  Lexicon for miscellanious uneven adjectives. No vowel changes. The lexicon gives no attribute, either because the adjective dosnºt have attr or because there is stemvowel change in attr that the lexicon canºt handle, or because there are strange atrributes that donºt fit to any other lexicon (these attributes are hardcoded). Sg Acc: rihtsogav (attr for words in this lexicon are hardcoded). Consonant gradation.
 
@@ -1337,7 +1351,7 @@ __stuorak # Odd-syllable test examples:__
 __måjdås # Odd-syllable test examples:__
 * __måjdås: __ {{måjdås+A+Sg+Nom }}
 * __måjddåsav: __ {{måjdås+A+Sg+Acc }}
-* __måjddåsabbo: __ {{måjdås+A+Comp+Sg+Nom }}
+* __måjddåsabbo: __ {{måjdås+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON SJÆVNNJAT  Lexicon for miscellanious uneven adjectives on -k, -t, -l, -s. The last vowel changes, e>á, e>å, o>u, e>i. The lexicon gives no attribute, either because the adjective dosnºt have attr, because there is stemvowel change in attr that the lexicon canºt handle or because there are strange atrributes that donºt fit to any other lexicon (these attributes are hardcoded). Sg Acc: sjævnnjadav. 
 
@@ -1345,7 +1359,7 @@ __måjdås # Odd-syllable test examples:__
 __rávdes # Odd-syllable test examples:__
 * __rávdes: __ {{rávdes+A+Sg+Nom }}
 * __rávddásav: __ {{rávdes+A+Sg+Acc }}
-* __rávddásabbo: __ {{rávdes+A+Comp+Sg+Nom }}
+* __rávddásabbo: __ {{rávdes+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON SUOHKAT  Adjectives on -at and -åt, with attribute III -is. No vowel change. As f. in Spiik. Sg Acc: suohkadav, attr: suohkkis,
 
@@ -1354,7 +1368,7 @@ __rávvat # Odd-syllable test examples:__
 * __rávvat: __ {{rávvat+A+Sg+Nom }}
 * __rávvadav: __ {{rávvat+A+Sg+Acc }}
 * __rávvis: __ {{rávvat+A+Attr }}
-* __rávvadabbo: __ {{rávvat+A+Comp+Sg+Nom }}
+* __rávvadabbo: __ {{rávvat+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON LÅSSÅT  As f3. in Spiik. So far the only word i this lexicon i "låssåt", because both låssis and låsså are attr and comparative is both låsep(hybrid?) and låssådabbo.
 
@@ -1364,8 +1378,8 @@ __låssåt # Odd-syllable test examples:__
 * __låssådav: __ {{låssåt+A+Sg+Acc }}
 * __låssis: __ {{låssåt+A+Attr }}
 * __låsså: __ {{låssåt+A+Attr }}
-* __låssådabbo: __ {{låssåt+A+Comp+Sg+Nom }}
-* __låsep: __ {{låssåt+A+Comp+Sg+Nom }}
+* __låssådabbo: __ {{låssåt+A+Der/Comp+A+Sg+Nom }}
+* __låsep: __ {{låssåt+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON TSIBTSA  Adjectives that end on -a. Attribute is same as pred. Sg Acc: tsibttsagav, Attr: tsibtsa. Consonant gradation.
 
@@ -1374,7 +1388,7 @@ __bihtja # Odd-syllable test examples:__
 * __bihtja: __ {{bihtja+A+Sg+Nom }}
 * __bihttjagav: __ {{bihtja+A+Sg+Acc }}
 * __bihtja: __ {{bihtja+A+Attr }}
-* __bihttjagabbo: __ {{bihtja+A+Comp+Sg+Nom }}
+* __bihttjagabbo: __ {{bihtja+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON TJALMMIS  Adjectives ending on -is. With two attributes; same as pred and -isis. As h. in Spiik. Sg Acc: tjalmmisav, Attr: tjalmmis (Spiik og Kintel).and tjalmmisis (Korhonen).
 
@@ -1384,7 +1398,7 @@ __mujttis # Odd-syllable test examples:__
 * __mujttisav: __ {{mujttis+A+Sg+Acc }}
 * __mujttis: __ {{mujttis+A+Attr }}
 * __mujttisis: __ {{mujttis+A+Attr }}
-* __mujttisabbo: __ {{mujttis+A+Comp+Sg+Nom }}
+* __mujttisabbo: __ {{mujttis+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON IENNILS  no comparatives, no attr
 
@@ -1399,17 +1413,24 @@ Inherent comparatives and superlatives
  LEXICON NUORTTALABBO    Inherent comparatives, gives both comp and superl. Most of the words are the compared forms of -el(a) words, like nuorttal, lullel.
 
 
+
+
+
 __guddnelabbo # Even-syllable test examples:__
-* __guddnelabbo: __ {{guddnelabbo+A+Comp+Sg+Nom }}
-* __guddnelamos: __ {{guddnelabbo+A+Superl+Sg+Nom }}
-* __guddnelap: __ {{guddnelabbo+A+Comp+Attr }}
-* __guddnelup: __ {{guddnelabbo+A+Comp+Attr }}
+* __guddnelabbo: __ {{guddnelabbo+A+Gram/Comp+Sg+Nom }}
+* __guddnelamos: __ {{guddnelabbo+A+Gram/Superl+Sg+Nom }}
+* __guddnelap: __ {{guddnelabbo+A+Gram/Comp+Attr }}
+* __guddnelup: __ {{guddnelabbo+A+Gram/Comp+Attr }}
 
  LEXICON GASSKALAMOS    Inherent superlatives, gives onlys superl. Words that are lexicalized in their superlative forms. 
 
 
+
+
+
+
 __ájtodamos # Even-syllable test examples:__
-* __ájtodamos: __ {{ájtodamos+A+Superl+Sg+Nom }}
+* __ájtodamos: __ {{ájtodamos+A+Gram/Superl+Sg+Nom }}
 
 
 !!Contracted stems
@@ -1421,7 +1442,7 @@ __hávres # Contracted test examples:__
 * __hávres: __ {{hávres+A+Sg+Nom }}
 * __hávrráv: __ {{hávres+A+Sg+Acc }}
 * __hávres: __ {{hávres+A+Attr }}
-* __hávrráp: __ {{hávres+A+Comp+Sg+Nom }}
+* __hávrráp: __ {{hávres+A+Der/Comp+A+Sg+Nom }}
 
  LEXICON GOAVSOS   Attr same as pred. Sg Acc: goaksuv, Attr: goavsos.(goavsos is so far the only word in this lexicon)
 
@@ -1431,8 +1452,8 @@ __goavsos # Contracted test examples:__
 * __goaksuv: __ {{goavsos+A+Sg+Acc }}
 * __goaksusav: __ {{goavsos+A+Sg+Acc }} (Eng. # From lexicon TJIEGOS)
 * __goavsos: __ {{goavsos+A+Attr }}
-* __goaksup: __ {{goavsos+A+Comp+Sg+Nom }}
-* __goaksusabbo: __ {{goavsos+A+Comp+Sg+Nom }} (Eng. # from lexicon TJIEGOS)
+* __goaksup: __ {{goavsos+A+Der/Comp+A+Sg+Nom }}
+* __goaksusabbo: __ {{goavsos+A+Der/Comp+A+Sg+Nom }} (Eng. # from lexicon TJIEGOS)
 
  LEXICON SUVRES   Sg Acc: suvrráv, Attr: suvra.
 
@@ -1442,8 +1463,8 @@ __suvres # Contracted test examples:__
 * __suvrráv: __ {{suvres+A+Sg+Acc }}
 * __suvrrásav: __ {{suvres+A+Sg+Acc }} (Eng. # From lexicon SJÆVNNJAT)
 * __suvra: __ {{suvres+A+Attr }}
-* __suvrráp: __ {{suvres+A+Comp+Sg+Nom }}
-* __suvrrásabbo: __ {{suvres+A+Comp+Sg+Nom }} (Eng. # from LINES)
+* __suvrráp: __ {{suvres+A+Der/Comp+A+Sg+Nom }}
+* __suvrrásabbo: __ {{suvres+A+Der/Comp+A+Sg+Nom }} (Eng. # from LINES)
 
 ----
 
@@ -1550,7 +1571,8 @@ __# Even-syllable test examples:__
 
 
 
- LEXICON ALMME  Same as MUORRA, but with special -LASJ derivation. For noun that have strong grade -lasj. "Almmelasj" instead of "almálasj".
+ LEXICON ALMME  Same as MUORRA, but with special -LASJ derivation. For noun that have strong grade -lasj. "Almmelasj" instead of "almálasj" which is Err/Orth-taged..
+
 
 
 
@@ -1605,7 +1627,7 @@ __boassjo # Even-syllable test examples:__
 * __boassjo: __ {{boassjo+N+Sg+Nom }}
 * __båssjujn: __ {{boassjo+N+Sg+Com }}
 * __boassjojn: __ {{boassjo+N+Sg+Com }}
-* __boassjop: __ {{boassjo+N+Der/A+A+Comp+Sg+Nom }}
+* __boassjop: __ {{boassjo+N+Der/Comp+A+Sg+Nom }}
 
  LEXICON ÅLGGO  Like MUORRA, but with comparatives. This lexicon was previously without sg ill/ine/elat, but these nouns can be conjugated for regular location cases. However, "adverbs" like ålggot (from outside), nuorttan (at north), oarjas (to south), etc., are more commonly used to denote location/direction (should therefore maybe consider subing the regular location case forms).
 
@@ -1614,7 +1636,7 @@ __boassjo # Even-syllable test examples:__
 __lulle # Even-syllable test examples:__
 * __lulle: __ {{lulle+N+Sg+Nom }}
 * __lulev: __ {{lulle+N+Sg+Acc }}
-* __lulep: __ {{lulle+N+Der/A+A+Comp+Sg+Nom }}
+* __lulep: __ {{lulle+N+Der/Comp+A+Sg+Nom }}
 
 
  LEXICON MIEHTE  Like MUORRA but no locative/elative/illative sg. Presently no words in this lexica except for err subed nuortto
@@ -1643,29 +1665,13 @@ __båvså # Even-syllable test examples:__
 
  LEXICON MUORRA_LOAN   For loan words that do not fit in a loan word lexicon because of wrong short cmp, or partially assimilated loanwords without separate lexicas (medállja). This lexicon gives no short compound forms. Potential short cmps must therefore be hard coded into the FirstComponent lexicon. This also for compounded words with partially assimilated loan words. Examples of problem words: sirup>siráhppa og stetoskop>stetoskoahppa.
 
+ LEXICON A_CMP_INFL   Sub-forms. Lexicon for giving sub-variation conjugation by simply adding an -a to the norwegian/swedish word. No cg. Like "alkohola" and "agronoma". These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
- LEXICON ADVÆRBBA_CMP_INFL  Recent loanwords on -ærbba with long and short compound-form
 
 
-__detransitijvvaværbba # Even-syllable test examples:__
-* __detransitijvvaværbba: __ {{detransitijvvaværbba+N+Sg+Nom }}
-* __detransitijvvavärbba: __ {{detransitijvvaværbba+N+Sg+Nom }}
-* __detransitijvvaverbas: __ {{detransitijvvaværbba+N+Sg+Ela }}
 
 
  LEXICON KAFIEDJA_CMP_INFL   Recent loanwords on -edja. Ends on -é in norwegian. Short and long cmp. "Kafea" and "kaféa" are subtaged. See comments about the -ie/-e dialtags in ALFABIEHTTA.
-
-
- LEXICON DEMAGÅVGGÅ_CMP_INFL  Recent loanwords ending on -og with long and short compound form. Assimilated to smj as -åvggå. The old stadarization -oga that does not follow lulesami rules is sub taged.
-
-
-__pedagoga # Even-syllable test examples:__
-* __pedagåvggå: __ {{pedagåvggå+N+Sg+Nom }}
-* __pedagåvggå: __ {{pedagåvggå+N+Sg+Nom }}
-* __pedagåvgås: __ {{pedagåvggå+N+Sg+Ela }}
-
- LEXICON A_CMP_INFL   Sub-forms. Lexicon for giving sub-variation conjugation by simply adding an -a to the norwegian/swedish word. No cg. Like "alkohola" and "agronoma". These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
-
 
 
 
@@ -1678,51 +1684,6 @@ __partijja # Even-syllable test examples:__
 * __partidjas: __ {{partijja+N+Sg+Ela }}
 * __partijjas: __ {{partijja+N+Sg+Ela }}
 
-
- LEXICON APOTIEHKKA_CMP_INFL  Recent loanwords on -iehkka in NOR, -æhkka in SWE. -ehkka as sub. With long and short compound-form on -k. See comments about the -ie/-e dialtags in ALFABIEHTTA.
-
-
-
-
-__kartotiehkka # Even-syllable test examples:__
-* __kartotæhkka: __ {{kartotiehkka+N+Sg+Nom }}
-* __kartotähkka: __ {{kartotiehkka+N+Sg+Nom }}
-* __kartotehkas: __ {{kartotiehkka+N+Sg+Ela }}
-* __kartotehkas: __ {{kartotiehkka+N+Sg+Ela }}
-* __kartotiehkka: __ {{kartotiehkka+N+Sg+Nom }}
-* __kartotiehkas: __ {{kartotiehkka+N+Sg+Ela }}
-
-
- LEXICON ANTIHKKA_CMP_INFL  Recent loanwords on -hkka in Norway, both -ijkka and -hkka are used in Sweden (Antik vs antikk). With long and short compound-form on -kk/-k. The swedish forms were earlier added to stems for the Swedish version, but now added here.
-
-
-
-
-__dialektihkka # Even-syllable test examples:__
-* __dialektihkka: __ {{dialektihkka+N+Sg+Nom }}
-* __dialektihkas: __ {{dialektihkka+N+Sg+Ela }}
-* __dialektijkka: __ {{dialektihkka+N+Sg+Nom }}
-* __dialektijkas: __ {{dialektihkka+N+Sg+Ela }}
-
-
- LEXICON AREÁLLA_CMP_INFL  Recent loanwords on -álla with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
-
-
-
-
-__gasskavokálla # Even-syllable test examples:__
-* __gasskavokálla: __ {{gasskavokálla+N+Sg+Nom }}
-* __gasskavokálas: __ {{gasskavokálla+N+Sg+Ela }}
-
-
- LEXICON TABÆLLA_CMP_INFL  Recent loanwords on -älºla with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
-
-
-
-__flotælla # Even-syllable test examples:__
-* __flotælla: __ {{flotælla+N+Sg+Nom }}
-* __flotälla: __ {{flotælla+N+Sg+Nom }}
-* __flotellas: __ {{flotælla+N+Sg+Ela }}
 
 
  LEXICON TEKSTIJLLA_CMP_INFL  Recent loanwords on -ijlla with long and short compound-form. . Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
@@ -1742,64 +1703,6 @@ __asijlla # Even-syllable test examples:__
 * __asijlla: __ {{asijlla+N+Sg+Nom }}
 * __asijlas: __ {{asijlla+N+Sg+Ela }}
 
-
- LEXICON ALKOHÅVLLÅ_CMP_INFL  Recent loanwords on -åvllå with long and short compound-form. The old stadarization form "alkohola" is sub taged. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
-
-
-__parabåvllå # Even-syllable test examples:__
-* __parabåvllå: __ {{parabåvllå+N+Sg+Nom }}
-* __parabåvlås: __ {{parabåvllå+N+Sg+Ela }}
-
-
- LEXICON TELEGRÁMMA_CMP_INFL  Recent loanwords on -ámºma with long and short compound-form
-
-
-__grámma # Even-syllable test examples:__
-* __grámma: __ {{grámma+N+Sg+Nom }}
-* __grámmas: __ {{grámma+N+Sg+Ela }}
-
-
- LEXICON SYSTIEBMA_CMP_INFL  Recent loanwords on -ebma/-iebma with long and short compound-form. -em in NOR and SWE. See comments about the -ie/-e dialtags in ALFABIEHTTA. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
-
-
-
-__vokalsystiebma # Even-syllable test examples:__
-* __vokalsystebma: __ {{vokalsystiebma+N+Sg+Nom }}
-* __vokalsystiebma: __ {{vokalsystiebma+N+Sg+Nom }}
-* __vokalsystiemas: __ {{vokalsystiebma+N+Sg+Ela }}
-* __vokalsystemas: __ {{vokalsystiebma+N+Sg+Ela }}
-
-
- LEXICON AGRONÅVMMÅ_CMP_INFL  Recent loanwords on -åvmma with long and short compound-form. The old stadarization form  -oma that does not follow lulesami rules is sub taged.
-
-
-
-__agronåvmmå # Even-syllable test examples:__
-* __agronåvmmå: __ {{agronåvmmå+N+Sg+Nom }}
-* __agronåvmås: __ {{agronåvmmå+N+Sg+Ela }}
-
-
- LEXICON FANATISSMA_CMP_INFL  Recent loanwords on -ssma with long and short compound-form.
-
-
-__kabbalissma # Even-syllable test examples:__
-* __kabbalissma: __ {{kabbalissma+N+Sg+Nom }}
-* __kabbalismas: __ {{kabbalissma+N+Sg+Ela }}
-
-
- LEXICON ORGÁDNA_CMP_INFL  Recent loanwords on -ádna with long and short compound-form
-
-
-
-__guovllopládna # Even-syllable test examples:__
-* __guovllopládna: __ {{guovllopládna+N+Sg+Nom }}
-* __guovlloplánav: __ {{guovllopládna+N+Sg+Acc }}
-
-
- LEXICON HYDROGIEDNA_CMP_INFL  Recent loanwords on -iedna in NOR and -edna in SWE. Both long and short compound-form. Norwegian/swedish -en. The old standardization form -ena, without cg, is subtaged. See comments about the -ie/-e dialtags in ALFABIEHTTA.
-
-
-
  LEXICON BENSIJNNA  Recent loanwords on -ijnna with long and short compound-form
 
  LEXICON BENSIJNNA_CMP_INFL  Recent loanwords on -ijnna with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
@@ -1818,6 +1721,24 @@ __tamburijnna # Even-syllable test examples:__
 __bivtasmasjijnna # Even-syllable test examples:__
 * __bivtasmasjijnna: __ {{bivtasmasjijnna+N+Sg+Nom }}
 * __bivtasmasjijnas: __ {{bivtasmasjijnna+N+Sg+Ela }}
+
+
+ LEXICON ADJEKTIJVVA_CMP_INFL  Recent loanwords on -ijvva with long and short compound-form
+
+
+
+__datijvva # Even-syllable test examples:__
+* __datijvva: __ {{datijvva+N+Sg+Nom }}
+* __datijvas: __ {{datijvva+N+Sg+Ela }}
+
+
+ LEXICON PARADIJSSA_CMP_INFL  Recent loanwords on -ijssa with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
+
+
+
+__servijssa # Even-syllable test examples:__
+* __servijssa: __ {{servijssa+N+Sg+Nom }}
+* __servijsas: __ {{servijssa+N+Sg+Ela }}
 
 
  LEXICON TELEFÅVNNÅ_CMP_INFL  Recent loanwords on -åvnnå with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
@@ -1865,13 +1786,33 @@ __partisihppa # Even-syllable test examples:__
 * __partisihpas: __ {{partisihppa+N+Sg+Ela }}
 
 
- LEXICON SEMINÁRRA_CMP_INFL  Recent loanwords on -árra with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
+
+ LEXICON ALKOHÅVLLÅ_CMP_INFL  Recent loanwords on -åvllå with long and short compound-form. The old stadarization form "alkohola" is sub taged. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
+
+
+__parabåvllå # Even-syllable test examples:__
+* __parabåvllå: __ {{parabåvllå+N+Sg+Nom }}
+* __parabåvlås: __ {{parabåvllå+N+Sg+Ela }}
 
 
 
-__hektárra # Even-syllable test examples:__
-* __hektárra: __ {{hektárra+N+Sg+Nom }}
-* __hektáras: __ {{hektárra+N+Sg+Ela }}
+ LEXICON AGRONÅVMMÅ_CMP_INFL  Recent loanwords on -åvmma with long and short compound-form. The old stadarization form  -oma that does not follow lulesami rules is sub taged.
+
+
+
+__agronåvmmå # Even-syllable test examples:__
+* __agronåvmmå: __ {{agronåvmmå+N+Sg+Nom }}
+* __agronåvmås: __ {{agronåvmmå+N+Sg+Ela }}
+
+
+ LEXICON DEMAGÅVGGÅ_CMP_INFL  Recent loanwords ending on -og with long and short compound form. Assimilated to smj as -åvggå. The old stadarization -oga that does not follow lulesami rules is sub taged.
+
+
+__pedagoga # Even-syllable test examples:__
+* __pedagåvggå: __ {{pedagåvggå+N+Sg+Nom }}
+* __pedagåvggå: __ {{pedagåvggå+N+Sg+Nom }}
+* __pedagåvgås: __ {{pedagåvggå+N+Sg+Ela }}
+
 
 
  LEXICON FAKTÅVRRÅ_CMP_INFL  Recent loanwords on -åvrrå with long and short compound-form.
@@ -1894,12 +1835,13 @@ __muvrra # Even-syllable test examples:__
 * __muvrajn: __ {{muvrra+N+Sg+Com }}
 
 
- LEXICON INTERIERRA_CMP_INFL  Recent loanwords on -ør with long and short compound-form. Standarized by Giellagálldo 05.0514 as -erra. -ørra is subtaged
+ LEXICON ADVÆRBBA_CMP_INFL  Recent loanwords on -ærbba with long and short compound-form
 
 
-__observaterra # Even-syllable test examples:__
-* __observaterra: __ {{observaterra+N+Sg+Nom }}
-* __observateras: __ {{observaterra+N+Sg+Ela }}
+__detransitijvvaværbba # Even-syllable test examples:__
+* __detransitijvvaværbba: __ {{detransitijvvaværbba+N+Sg+Nom }}
+* __detransitijvvavärbba: __ {{detransitijvvaværbba+N+Sg+Nom }}
+* __detransitijvvaverbas: __ {{detransitijvvaværbba+N+Sg+Ela }}
 
 
  LEXICON SUBSTÁNSSA_CMP_INFL  Recent loanwords on -ánssa with long and short compound-form. Originally -ans in SWE and NOR. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
@@ -1911,6 +1853,7 @@ __instánssa # Even-syllable test examples:__
 * __instánsas: __ {{instánssa+N+Sg+Ela }}
 
 
+
  LEXICON VALÆNSSA_CMP_INFL  Recent loanwords on -ænssa with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
 
@@ -1919,14 +1862,6 @@ __intelligænssa # Even-syllable test examples:__
 * __intelligänssa: __ {{intelligænssa+N+Sg+Nom }}
 * __intelligensav: __ {{intelligænssa+N+Sg+Acc }}
 
-
- LEXICON PARADIJSSA_CMP_INFL  Recent loanwords on -ijssa with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
-
-
-
-__servijssa # Even-syllable test examples:__
-* __servijssa: __ {{servijssa+N+Sg+Nom }}
-* __servijsas: __ {{servijssa+N+Sg+Ela }}
 
 
  LEXICON ADVOKÁHTTA_CMP_INFL  Recent loanwords on -áhtta with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
@@ -1988,6 +1923,162 @@ __inuihtta # Even-syllable test examples:__
 * __inuijtas: __ {{inuihtta+N+Sg+Ela }}
 
 
+
+ LEXICON APOTIEHKKA_CMP_INFL  Recent loanwords on -iehkka in NOR, -æhkka in SWE. -ehkka as sub. With long and short compound-form on -k. See comments about the -ie/-e dialtags in ALFABIEHTTA.
+
+
+
+
+__kartotiehkka # Even-syllable test examples:__
+* __kartotæhkka: __ {{kartotiehkka+N+Sg+Nom }}
+* __kartotähkka: __ {{kartotiehkka+N+Sg+Nom }}
+* __kartotehkas: __ {{kartotiehkka+N+Sg+Ela }}
+* __kartotehkas: __ {{kartotiehkka+N+Sg+Ela }}
+* __kartotiehkka: __ {{kartotiehkka+N+Sg+Nom }}
+* __kartotiehkas: __ {{kartotiehkka+N+Sg+Ela }}
+
+
+ LEXICON ANTIHKKA_CMP_INFL  Recent loanwords on -hkka in Norway, both -ijkka and -hkka are used in Sweden (Antik vs antikk). With long and short compound-form on -kk/-k. The swedish forms were earlier added to stems for the Swedish version, but now added here.
+
+
+
+
+__dialektihkka # Even-syllable test examples:__
+* __dialektihkka: __ {{dialektihkka+N+Sg+Nom }}
+* __dialektihkas: __ {{dialektihkka+N+Sg+Ela }}
+* __dialektijkka: __ {{dialektihkka+N+Sg+Nom }}
+* __dialektijkas: __ {{dialektihkka+N+Sg+Ela }}
+
+
+ LEXICON SEMINÁRRA_CMP_INFL  Recent loanwords on -árra with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
+
+
+
+__hektárra # Even-syllable test examples:__
+* __hektárra: __ {{hektárra+N+Sg+Nom }}
+* __hektáras: __ {{hektárra+N+Sg+Ela }}
+
+
+
+ LEXICON AREÁLLA_CMP_INFL  Recent loanwords on -álla with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
+
+
+
+
+__gasskavokálla # Even-syllable test examples:__
+* __gasskavokálla: __ {{gasskavokálla+N+Sg+Nom }}
+* __gasskavokálas: __ {{gasskavokálla+N+Sg+Ela }}
+
+
+
+ LEXICON AMBASSADERRA_CMP_INFL  Recent loanwords on -ør with long and short compound-form. Standarized by Giellagálldo 05.05.14 as -erra. -ørra is subtaged
+
+
+
+
+
+__observaterra # Even-syllable test examples:__
+* __observaterra: __ {{observaterra+N+Sg+Nom }}
+* __observateras: __ {{observaterra+N+Sg+Ela }}
+
+
+
+ LEXICON VETERINERRA_CMP_INFL  Recent loanwords on -erra. Words ending in -ær in both SWE and NOR. Both long and short compound-form. The old standardization form -æra, without cg, is subtaged, -also -ær'ra and -ærra.             
+
+
+
+
+
+
+
+ LEXICON ATMOSFERRA_CMP_INFL  Recent loanwords -on erra. But with different endings in SE and NO, ending on -ære, -ær in NOR and -är, -ära in SWE (Ingefær NO, ingefära in SE).  Only long compound-form, short form must be hardcoded in firstcompnent lexicon. The old standardization form -æra, and -era, without cg, are subtaged, -also -ær'ra and -ærra.             
+
+
+
+
+
+
+
+
+
+
+__observaterra # Even-syllable test examples:__
+* __atmosferra: __ {{atmosferra+N+Sg+Nom }}
+* __atmosferas: __ {{atmosferra+N+Sg+Ela }}
+
+
+ LEXICON KARAKTIERRA_CMP_INFL  Recent loanwords -on ierra in NOR, -erra in SWE, because of long e assimilates diffenrent ways. Words ending on -er in NOR, and -er or -är in SWE. Only long compound-form, short form must be hardcoded in firstcompnent lexicon.  
+
+
+
+
+
+
+
+
+
+__observaterra # Even-syllable test examples:__
+* __karaktierra: __ {{karaktierra+N+Sg+Nom }}
+* __karaktieras: __ {{karaktierra+N+Sg+Ela }}
+* __karakterra: __ {{karaktierra+N+Sg+Nom }}
+* __karakteras: __ {{karaktierra+N+Sg+Ela }}
+
+
+
+ LEXICON TABÆLLA_CMP_INFL  Recent loanwords on -älºla with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
+
+
+
+__flotælla # Even-syllable test examples:__
+* __flotælla: __ {{flotælla+N+Sg+Nom }}
+* __flotälla: __ {{flotælla+N+Sg+Nom }}
+* __flotellas: __ {{flotælla+N+Sg+Ela }}
+
+
+
+ LEXICON TELEGRÁMMA_CMP_INFL  Recent loanwords on -ámºma with long and short compound-form
+
+
+__grámma # Even-syllable test examples:__
+* __grámma: __ {{grámma+N+Sg+Nom }}
+* __grámmas: __ {{grámma+N+Sg+Ela }}
+
+
+ LEXICON SYSTIEBMA_CMP_INFL  Recent loanwords on -ebma/-iebma with long and short compound-form. -em in NOR and SWE. See comments about the -ie/-e dialtags in ALFABIEHTTA. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
+
+
+
+__vokalsystiebma # Even-syllable test examples:__
+* __vokalsystebma: __ {{vokalsystiebma+N+Sg+Nom }}
+* __vokalsystiebma: __ {{vokalsystiebma+N+Sg+Nom }}
+* __vokalsystiemas: __ {{vokalsystiebma+N+Sg+Ela }}
+* __vokalsystemas: __ {{vokalsystiebma+N+Sg+Ela }}
+
+
+
+ LEXICON ORGÁDNA_CMP_INFL  Recent loanwords on -ádna with long and short compound-form
+
+
+
+__guovllopládna # Even-syllable test examples:__
+* __guovllopládna: __ {{guovllopládna+N+Sg+Nom }}
+* __guovlloplánav: __ {{guovllopládna+N+Sg+Acc }}
+
+
+ LEXICON KOLLÆKTA_CMP_INFL  Recent loanwords on -ækta with long and short compound-form
+
+
+__subjækta # Even-syllable test examples:__
+* __subjækta: __ {{subjækta+N+Sg+Nom }}
+* __subjäkta: __ {{subjækta+N+Sg+Nom }}
+* __subjevtas: __ {{subjækta+N+Sg+Ela }}
+
+
+ LEXICON HYDROGIEDNA_CMP_INFL  Recent loanwords on -iedna in NOR and -edna in SWE. Both long and short compound-form. Norwegian/swedish -en. The old standardization form -ena, without cg, is subtaged. See comments about the -ie/-e dialtags in ALFABIEHTTA.
+
+
+
+
  LEXICON PATÆNNTA_CMP_INFL  Recent loanwords on -ænnta with long and short compound-form. The -ennta form (used in "Ådå testamennta") is taged as sub (e always becomes æ in grade three).
 
 
@@ -2006,13 +2097,13 @@ __praktikánnta # Even-syllable test examples:__
 * __praktikántas: __ {{praktikánnta+N+Sg+Ela }}
 
 
- LEXICON KOLLÆKTA_CMP_INFL  Recent loanwords on -ækta with long and short compound-form
+ LEXICON FANATISSMA_CMP_INFL  Recent loanwords on -ssma with long and short compound-form.
 
 
-__subjækta # Even-syllable test examples:__
-* __subjækta: __ {{subjækta+N+Sg+Nom }}
-* __subjäkta: __ {{subjækta+N+Sg+Nom }}
-* __subjevtas: __ {{subjækta+N+Sg+Ela }}
+__kabbalissma # Even-syllable test examples:__
+* __kabbalissma: __ {{kabbalissma+N+Sg+Nom }}
+* __kabbalismas: __ {{kabbalissma+N+Sg+Ela }}
+
 
 
  LEXICON TURISSTA_CMP_INFL  Recent loanwords on -ssta with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
@@ -2023,13 +2114,6 @@ __journalissta # Even-syllable test examples:__
 * __journalistas: __ {{journalissta+N+Sg+Ela }}
 
 
- LEXICON ADJEKTIJVVA_CMP_INFL  Recent loanwords on -ijvva with long and short compound-form
-
-
-
-__datijvva # Even-syllable test examples:__
-* __datijvva: __ {{datijvva+N+Sg+Nom }}
-* __datijvas: __ {{datijvva+N+Sg+Ela }}
 
 !Loanwords becoming odd-syll
 
@@ -2048,7 +2132,9 @@ __priemij # Even-syllable test examples:__
 * __prebmihin: __ {{priemij+N+Ess }}
 
 
+!Loanwords becoming contracted-syll
 
+!See further down: ÅLMÅJ_LOAN
 
 ! Badly assimilated loanwords
 
@@ -2371,7 +2457,7 @@ Derived stems
 __allel # Odd-syllable test examples:__
 * __allel: __ {{allel+N+Sg+Nom }}
 * __allelis: __ {{allel+N+Sg+Ela }}
-* __allelabbo: __ {{allel+N+Der/A+A+Comp+Sg+Nom }}
+* __allelabbo: __ {{allel+N+Der/Comp+A+Sg+Nom }}
 
  LEXICON BÁRNEP  bárnep:bárnebu-. Comparisation of nouns. No -ahtá abesive.
 
@@ -2581,6 +2667,7 @@ __gistá # Contracted test examples:__
 
 
 
+
 !!!Sublexica for Verb
 
 Table of content:
@@ -2617,6 +2704,7 @@ IV means intransitive verbs, TV means transitive verbs.
 
 
  LEXICON NEG 
+
 
 
 
@@ -3396,6 +3484,11 @@ The symbols themselves are used in the following way:
  ; __Z1:0__ : TBW "i:á in Verb Derivation guollir>guollár"
  ; __Z2:0__ : e:å, o:u in -lasj der
 
+ ; __Ø1:0__ : optional Word Final Cluster Simplification. Not smj grammar, made only for Err/Orths  ! málestit : málest instead for norm máles
+ ; __Ø2:0__ : optional e:i when followed by any conc (not only j). Not smj grammar, made only for Err/Orths ! "iednida"   
+
+
+
 
 !!Morpheme boundaries:
  ; __ «  __ : Derivational prefix
@@ -3763,7 +3856,7 @@ __a-stem vowel deletion__
 For e-stems, there is e:i, e:á, e:å, e:u and e:a. Each alternation is triggered by a combination of phonological content and dummy symbols.
 
 
-__e:i in e-stems__  
+__e:i in e-stems__  								        
 
 
 * __manasseQ4j __
