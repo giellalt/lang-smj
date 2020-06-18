@@ -56,6 +56,8 @@
       # Delimiters
       # Tags and sets
       # Grammar checking rules
+      
+MAPPING-PREFIX = & ;
 
 # =============== #
 #!! !!!DELIMITERS
@@ -377,7 +379,27 @@ SET NOT-V = WORD - V ; #!! NOT-V
 
 SET REAL-NEG = Neg - Sup ; #!! REAL-NEG
 
-SET MOOD-V = Ind OR Pot OR Imprt OR ImprtII OR Cond OR (Neg Sup) ; #!! MOOD-V
+SET V-MOOD = Ind OR Pot OR Imprt OR ImprtII OR Cond OR (Neg Sup) ; 
+
+SET VFIN = V-MOOD - ConNeg ;
+
+LIST PUNCT-LEFT = (PUNCT LEFT) ;
+LIST PUNCT-RIGHT = (PUNCT RIGHT) ;
+
+SET PUNCT-LEFT-RIGHT = PUNCT-LEFT OR PUNCT-RIGHT ;
+
+
+SET GRAMCHK-VFIN = V-MOOD - ConNeg - PUNCT-LEFT-RIGHT;
+
+
+SET VFIN-POS = V-MOOD - ConNeg - Neg ;
+
+SET VFIN-NOT-IMP = VFIN - Imprt ;
+
+SET VFIN-NOT-NEG = VFIN - Neg ;
+  # this might be to strict
+
+
 
 SET NOT-PRFPRC = WORD - PrfPrc ; #!! NOT-PRFPRC
 
@@ -587,14 +609,20 @@ SET SV-BOUNDARY = S-BOUNDARY OR Inf OR Sup OR FMAINV ;
 
 SET CCCOMMA = CC OR COMMA ;
 	# remember that those are potential sentence boundaries, too
+	
+	
 
 
 
 
-#!! !Grammarchecker sets
+
+#!! Error tags
 
 LIST &msyn-sme_bastard_neg = &msyn-sme_bastard_neg ;
 LIST &msyn-sme_bastard_neg2 = &msyn-sme_bastard_neg2 ;
+LIST &msyn-soajttá-AUX = &msyn-soajttá-AUX ;
+LIST &SUGGEST = &SUGGEST ;
+
 LIST &err-agr = &err-agr ;
 LIST &err-gen-po = &err-gen-po ;
 LIST &err-no-conneg = &err-no-conneg ;
@@ -602,7 +630,6 @@ LIST &err-orrood-inf = &err-orrood-inf ;
 LIST &err-ext-agr = &err-ext-agr ;
 LIST &err-ext-vagr = &err-ext-vagr ;
 
-MAPPING-PREFIX = & ;
 
 SECTION
 
@@ -655,3 +682,16 @@ COPY:msyn-sme_bastard_neg (Prt &SUGGEST) EXCEPT (Prs) AFTER Ind TARGET (&msyn-sm
 ADD:msyn-sme_bastard_neg2 (&msyn-sme_bastard_neg2) TARGET PrfPrc IF (*-1 ("ij" Neg Ind) BARRIER NOT-ADV-PCLE - ("mige") - Acc) ;
 
 COPY:msyn-sme_bastard_neg2 (ConNeg &SUGGEST) EXCEPT (PrfPrc) TARGET (&msyn-sme_bastard_neg2) ;
+
+
+    # soajttá as an adverb
+    # --------------------
+    
+LIST soajttet-Prt-Prs-VFIN = (Ind Prs Sg2 &msyn-soajttá-AUX) (Ind Prs Sg3 &msyn-soajttá-AUX) (Ind Prs Du1 &msyn-soajttá-AUX) (Ind Prs Du2 &msyn-soajttá-AUX) (Ind Prs Du3 &msyn-soajttá-AUX) (Ind Prs Pl1 &msyn-soajttá-AUX) (Ind Prs Pl2 &msyn-soajttá-AUX) (Ind Prs Pl3 &msyn-soajttá-AUX) (Ind Prt Sg1 &msyn-soajttá-AUX) (Ind Prt Sg2 &msyn-soajttá-AUX) (Ind Prt Sg3 &msyn-soajttá-AUX) (Ind Prt Du1 &msyn-soajttá-AUX) (Ind Prt Du2 &msyn-soajttá-AUX) (Ind Prt Du3 &msyn-soajttá-AUX) (Ind Prt Pl1 &msyn-soajttá-AUX) (Ind Prt Pl2 &msyn-soajttá-AUX) (Ind Prt Pl3 &msyn-soajttá-AUX);
+    
+ADD:msyn-soajttá-AUX (&msyn-soajttá-AUX) TARGET VFIN IF (*-1 ("soajttet" Prs Sg3) BARRIER S-BOUNDARY OR CS OR CC) ;
+    ## valla soajttá tjáláv nágin bágojt gå ierit lav.
+    
+COPY:msyn-soajttá-AUX (Inf &SUGGEST) EXCEPT  soajttet-Prt-Prs-VFIN  TARGET (&msyn-soajttá-AUX) ;
+
+
