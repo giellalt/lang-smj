@@ -31,6 +31,12 @@
 # cd tools/grammarcheckers
 # make dev
 #
+# ------------------------------ #
+# TO TEST THE GRAMMARCHECKER DO:
+# ------------------------------ #
+#
+# echo "valla soajttá tjáláv nágin bágojt gå ierit lav." | tools/grammarcheckers/modes/trace-smjgram-dev.mode
+#
 # ---------------------- #
 #   Then edit/test as:   #
 # ---------------------- #
@@ -690,8 +696,18 @@ COPY:msyn-sme_bastard_neg2 (ConNeg &SUGGEST) EXCEPT (PrfPrc) TARGET (&msyn-sme_b
 LIST soajttet-Prt-Prs-VFIN = (Ind Prs Sg2 &msyn-soajttá-AUX) (Ind Prs Sg3 &msyn-soajttá-AUX) (Ind Prs Du1 &msyn-soajttá-AUX) (Ind Prs Du2 &msyn-soajttá-AUX) (Ind Prs Du3 &msyn-soajttá-AUX) (Ind Prs Pl1 &msyn-soajttá-AUX) (Ind Prs Pl2 &msyn-soajttá-AUX) (Ind Prs Pl3 &msyn-soajttá-AUX) (Ind Prt Sg1 &msyn-soajttá-AUX) (Ind Prt Sg2 &msyn-soajttá-AUX) (Ind Prt Sg3 &msyn-soajttá-AUX) (Ind Prt Du1 &msyn-soajttá-AUX) (Ind Prt Du2 &msyn-soajttá-AUX) (Ind Prt Du3 &msyn-soajttá-AUX) (Ind Prt Pl1 &msyn-soajttá-AUX) (Ind Prt Pl2 &msyn-soajttá-AUX) (Ind Prt Pl3 &msyn-soajttá-AUX);
     
 ADD:msyn-soajttá-AUX (&msyn-soajttá-AUX) TARGET VFIN IF (*-1 ("soajttet" Prs Sg3) BARRIER S-BOUNDARY OR CS OR CC) ;
-    ## valla soajttá tjáláv nágin bágojt gå ierit lav.
+    ## valla soajttá {tjáláv} nágin bágojt gå ierit lav.
+    ## EU soajttá {máhtti} mijáv viehkedit.
     
 COPY:msyn-soajttá-AUX (Inf &SUGGEST) EXCEPT  soajttet-Prt-Prs-VFIN  TARGET (&msyn-soajttá-AUX) ;
 
+    # agree with either subj or vfin pers
+    
+SET V-PERS = Sg1 OR Sg2 OR Sg3 OR Du1 OR Du2 OR Du3 OR Pl1 OR Pl2 OR Pl3 ;
+
+ADD:msyn-soajttá-agree (&msyn-soajttá-agree) TARGET ("soajttet" V IV Ind Prs Sg3) IF (*1 VFIN BARRIER S-BOUNDARY OR CS OR CC) ;
+
+COPY:msyn-soajttá-agree $$V-PERS + &SUGGEST EXCEPT (Sg3) TARGET (&msyn-soajttá-agree) IF (*1 VFIN + $$V-PERS BARRIER S-BOUNDARY OR CS OR CC) ;
+    ## valla {soajttá} tjáláv nágin bágojt gå ierit lav.
+    ## EU {soajttá} máhtti mijáv viehkedit.
 
