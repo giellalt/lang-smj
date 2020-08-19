@@ -2292,37 +2292,37 @@ LEXICON BÁRNEP !!= @CODE@ bárnep:bárnebu-. Comparisation of nouns. No -ahtá 
 !!€ iednebuv:          iednep+N+Sg+Acc
 
 LEXICON OAPPÁSJ !!= @CODE@  Like GAHPER, but for derived nouns in diminutive, have an underived form. Doesn't get abesive -ahtá or -ahtes derivation. Oddsyll, no cg, no vowchange, no short Ess. Has only one dimin derivation since these words already are dimin, ie. not double dim as in GAHPER.
-           +N:%> N-ODDCASE             ; ! no pointer to E-ODDCASE, as gahper has no short Ess
-           +N:%> OTH-ODDCASE           ;
-           +N:»  DenominalNounsOAPPÁSJ ; !Gives only one extra diminutive derivation, not triple "oappátjattjasj"
-           +N:%> ODDCmp                ;
- +N+Cmp/SgNom:%> R                     ;
+           +Gram/Dim+N:%> N-ODDCASE             ; ! no pointer to E-ODDCASE, as gahper has no short Ess
+           +Gram/Dim+N:%> OTH-ODDCASE           ;
+           +Gram/Dim+N:»  DenominalNounsOAPPÁSJ ; !Gives only one extra diminutive derivation, not triple "oappátjattjasj"
+           +Gram/Dim+N:%> ODDCmp                ;
+ +Gram/Dim+N+Cmp/SgNom:%> R                     ;
 
 !!€gt-norm: stiebil # Odd-syllable test
 !!€ oappásj:            oappásj+N+Sg+Nom
 !!€ oappátjis:          oappásj+N+Sg+Ela
 
 LEXICON FIERUN !!= @CODE@  Like GAHPER, but instruments derived from verbs. Fierrot>fierun. No short essive.
-           +N:%> N-ODDCASE         ; ! no pointer to E-ODDCASE, as gahper has no short Ess
-           +N:%> OTH-ODDCASE       ;
-           +N:»  DenominalNounsODD ; ! Gives diminutive, and double diminutive
-           +N:»  DenominalAdjsODD  ; ! makes -ahtes
-           +N:%> ODDCmp            ;
- +N+Cmp/SgNom:%> R                 ;
-           +N:   AHTÁ              ;
+           +Gram/NomTool+N:%> N-ODDCASE         ; ! no pointer to E-ODDCASE, as gahper has no short Ess
+           +Gram/NomTool+N:%> OTH-ODDCASE       ;
+           +Gram/NomTool+N:»  DenominalNounsODD ; ! Gives diminutive, and double diminutive
+           +Gram/NomTool+N:»  DenominalAdjsODD  ; ! makes -ahtes
+           +Gram/NomTool+N:%> ODDCmp            ;
+           +Gram/NomTool+N:   AHTÁ              ;
+ +Gram/NomTool+N+Cmp/SgNom:%> R                 ;
 
 !!€gt-norm: stiebil # Odd-syllable test
 !!€ fierun:            fierun+N+Sg+Nom
 !!€ fierunis:          fierun+N+Sg+Ela
 
 LEXICON GUOLLÁR !!= @CODE@ Like GAHPER, but actor derived from contracted verbs (ACTOR for evensyll verbs). Guollit>guollár. No short essive.   
-           +N:%> N-ODDCASE         ; ! no pointer to E-ODDCASE, as gahper has no short Ess
-           +N:%> OTH-ODDCASE       ;
-           +N:»  DenominalNounsODD ; ! Gives diminutive, and double diminutive
-           +N:»  DenominalAdjsODD  ; !makes -ahtes
-           +N:%> ODDCmp            ;
- +N+Cmp/SgNom:%> R                 ;
-           +N:   AHTÁ              ;
+           +Gram/NomAg+N:%> N-ODDCASE         ; ! no pointer to E-ODDCASE, as gahper has no short Ess
+           +Gram/NomAg+N:%> OTH-ODDCASE       ;
+           +Gram/NomAg+N:»  DenominalNounsODD ; ! Gives diminutive, and double diminutive
+           +Gram/NomAg+N:»  DenominalAdjsODD  ; !makes -ahtes
+           +Gram/NomAg+N:%> ODDCmp            ;
+           +Gram/NomAg+N:   AHTÁ              ;
+ +Gram/NomAg+N+Cmp/SgNom:%> R                 ;
 
 
 
@@ -3085,14 +3085,13 @@ LEXICON MUSSA
             +Abe:Q1dak K                     ;
      +Use/NG+Abe:Q1da  K                     ;
 
-LEXICON ACTOR ! bårre ulmusj> bårre is not attr to ulmusj it's a determiner.
-!                             +A+Attr:%>Y6 ATTR           ;
-                             +N+NomAg:%>Y6 NE-EVENCASE    ;
-                             +N+NomAg:%>Y6 ACTORILL       ;
-                             +N+NomAg:%>Y6 N-EVENWEAKSTEM ;
-  +N+NomAg+CmpN/SgN+CmpN/SgG+CmpN/PlG:%>Y6 ACTORCmp       ; !
-  
-                    +Err/Orth+N+NomAg:%>Q1 N-EVENWEAKSTEM ; !makes Err/Orths with weak grade, åhpadidjev... 
+LEXICON ACTOR 
+!                             +A+Attr:%>Y6 ATTR           ; ! bårre ulmusj> bårre is not attr to ulmusj it's a determiner.
+                             +Gram/NomAg+N:%>Y6 NE-EVENCASE    ;
+                             +Gram/NomAg+N:%>Y6 ACTORILL       ;
+                             +Gram/NomAg+N:%>Y6 N-EVENWEAKSTEM ;
+  +Gram/NomAg+N+CmpN/SgN+CmpN/SgG+CmpN/PlG:%>Y6 ACTORCmp       ; !
+                    +Gram/NomAg+Err/Orth+N:%>Q1 N-EVENWEAKSTEM ; !makes Err/Orths with weak grade, åhpadidjev... 
 
 LEXICON ACTORTV  !+CmpN/SgN +CmpN/SgG +CmpN/PlG +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
 ! +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+A+Attr:%>Y6 ATTR           ;
