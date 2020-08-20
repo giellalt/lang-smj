@@ -1388,12 +1388,12 @@ LEXICON BERULASJ-EVEN
 !             +Ess:n%> PxC                   ; !^P^ !No Ess+Px according to Spiik, Grundstrom
 
 LEXICON BEDNAGASJ !!= @CODE@ Like BERULASJ, but for derived nouns in diminutive. No cg, no vowchange, no short Ess. Has only one dimin derivation since these words already are dimin, ie. no double dim as for GAHPER. No abessive, not totally sure about this, I think we must use postposition dagi when it's diminutive,
-    +N+Sg+Nom:%>     K                       ;
- +N+Cmp/SgNom:%>     R                       ;
- +N+Cmp/SgGen:a%>Q1  R                       ;
- +N+Cmp/PlGen:a%>Q1j R                       ;
-           +N:a%>    BERULASJ-EVEN           ;
-           +N:a»Q1   DenominalNounsBEDNAGASJ ; ! Q1 to avoid -dtj- consonant center
+    +Gram/Dimin+N+Sg+Nom:%>     K                       ;
+ +Gram/Dimin+N+Cmp/SgNom:%>     R                       ;
+ +Gram/Dimin+N+Cmp/SgGen:a%>Q1  R                       ;
+ +Gram/Dimin+N+Cmp/PlGen:a%>Q1j R                       ;
+           +Gram/Dimin+N:a%>    BERULASJ-EVEN           ;
+           +Gram/Dimin+N:a»Q1   DenominalNounsBEDNAGASJ ; ! Q1 to avoid -dtj- consonant center
 
 !!€gt-norm: stiebil # Odd-syllable test
 !!€ bednagasj:            bednagasj+N+Sg+Nom
@@ -2324,6 +2324,28 @@ LEXICON GUOLLÁR !!= @CODE@ Like GAHPER, but actor derived from contracted verbs
            +Gram/NomAg+N:   AHTÁ              ;
  +Gram/NomAg+N+Cmp/SgNom:%> R                 ;
 
+LEXICON ACTOR 
+!                             +A+Attr:%>Y6 ATTR           ; ! bårre ulmusj> bårre is not attr to ulmusj it's a determiner.
+                             +Gram/NomAg+N:%>Y6 NE-EVENCASE    ;
+                             +Gram/NomAg+N:%>Y6 ACTORILL       ;
+                             +Gram/NomAg+N:%>Y6 N-EVENWEAKSTEM ;
+  +Gram/NomAg+N+CmpN/SgN+CmpN/SgG+CmpN/PlG:%>Y6 ACTORCmp       ; !
+                    +Gram/NomAg+Err/Orth+N:%>Q1 N-EVENWEAKSTEM ; !makes Err/Orths with weak grade, åhpadidjev... 
+
+LEXICON IELLEM !!= @CODE@ Nomen actionionis derived from even verbs. Earlier these went directly to VSBST-ODD, now they get tag Gram/NomAct before going there. Can't put it in VSBST-ODD lexicon because paths from verb lexicons.  
+
++Gram/NomAct: VSBST-ODD ;
+
+
+LEXICON TJIEKTJAMA !!= @CODE@ Pl Nomen actionionis derived from even verbs. Earlier these went directly to VSBST-ODD-PL, now they get tag Gram/NomAct before going there. Can't put it in VSBST-ODD-PL lexicon because of paths from verb lexicons.  
+
++Gram/NomAct: VSBST-ODD-PL ;
+
+
+LEXICON AKTIDIBME !!= @CODE@ Nomen actionionis derived from uneven verbs. Earlier these went directly to VSBST-EVEN, now they get tag Gram/NomAct before going there. Can't put it in VSBST-ODD lexicon because paths from verb lexicons.  
+
++Gram/NomAct: VSBST-EVEN ;
+
 
 
 !! !Plural odd-syll
@@ -3085,13 +3107,7 @@ LEXICON MUSSA
             +Abe:Q1dak K                     ;
      +Use/NG+Abe:Q1da  K                     ;
 
-LEXICON ACTOR 
-!                             +A+Attr:%>Y6 ATTR           ; ! bårre ulmusj> bårre is not attr to ulmusj it's a determiner.
-                             +Gram/NomAg+N:%>Y6 NE-EVENCASE    ;
-                             +Gram/NomAg+N:%>Y6 ACTORILL       ;
-                             +Gram/NomAg+N:%>Y6 N-EVENWEAKSTEM ;
-  +Gram/NomAg+N+CmpN/SgN+CmpN/SgG+CmpN/PlG:%>Y6 ACTORCmp       ; !
-                    +Gram/NomAg+Err/Orth+N:%>Q1 N-EVENWEAKSTEM ; !makes Err/Orths with weak grade, åhpadidjev... 
+
 
 LEXICON ACTORTV  !+CmpN/SgN +CmpN/SgG +CmpN/PlG +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
 ! +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+A+Attr:%>Y6 ATTR           ;
