@@ -31,6 +31,7 @@ while(<>) {
 	s/7 / /g ;
 	s/8 / /g ;
 	s/9 / /g ;
+	s/d9-/d-/g ;
 	s/7#/#/g ;
 	s/8#/#/g ;
 	s/([^jktsp])9#/$1#/g ; # Some X9 letters need to be simplified, others not, cf the twol alphabet
