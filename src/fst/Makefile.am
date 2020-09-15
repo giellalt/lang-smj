@@ -38,8 +38,6 @@ GT_LEXC_SRCS_L1_L2=\
 				affixes/propernouns.lexc \
 				affixes/symbols.lexc     \
 				affixes/verbs.lexc       \
-				stems/smj-acronyms.lexc  \
-				stems/smj-abbreviations.lexc \
 				stems/adjectives.lexc    \
 				stems/adpositions.lexc   \
 				stems/adverbs.lexc       \
@@ -69,8 +67,8 @@ GT_LEXC_L2_SRCS=\
 
 # Set this to the names of all generated lexc files, if any
 GENERATED_LEXC_SRCS=generated_files/smi-$(GTLANG)-propernouns.lexc \
-                    generated_files/smi-abbreviations.lexc \
-                    generated_files/smi-acronyms.lexc \
+                    generated_files/smi-$(GTLANG)-abbreviations.lexc \
+                    generated_files/smi-$(GTLANG)-acronyms.lexc \
                     generated_files/arabic_roman_digits.lexc \
                     generated_files/punctuation.lexc \
                     generated_files/smi-digits.lexc \
