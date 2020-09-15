@@ -30,7 +30,7 @@ while(<>) {
 	s/j9/j/g ;
 	s/7 / /g ;
 	s/8 / /g ;
-	s/9 / /g ;
+	s/([a-z])9 /$1 /g ;
 	s/d9-/d-/g ;
 	s/7#/#/g ;
 	s/8#/#/g ;
@@ -40,8 +40,8 @@ while(<>) {
 	s/([^jktsp])9-/$1-/g ; # Some X9 letters need to be simplified, others not, cf the twol alphabet
 
 	# SMJ escape char insertion:
-	s/ss /ss9 /g ;
-	s/st /st9 /g ;
+	s/ss ([^;])/ss9 $1/g ; # not in front of ; - then it is a contlex name
+	s/st ([^;])/st9 $1/g ;
 	s/ss#/ss9#/g ;
 	s/st#/st9#/g ;
 
