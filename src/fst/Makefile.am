@@ -25,32 +25,32 @@ GT_LEXC_ROOT=$(srcdir)/root.lexc
 
 # Set this to the names of all regular lexc source files:
 GT_LEXC_SRCS_L1_L2=\
-				clitics.lexc             \
-				compounding.lexc         \
-				prefixes.lexc            \
-				affixes/acronyms.lexc    \
-				affixes/abbreviations.lexc    \
-				affixes/adjectives.lexc  \
-				affixes/nouns.lexc       \
-				affixes/numerals.lexc    \
-				affixes/possessives.lexc \
-				affixes/pronouns.lexc    \
-				affixes/propernouns.lexc \
-				affixes/symbols.lexc     \
-				affixes/verbs.lexc       \
-				stems/smj-propernouns.lexc \
-				stems/smj-abbreviations.lexc \
-				stems/smj-acronyms.lexc  \
-				stems/adjectives.lexc    \
-				stems/adpositions.lexc   \
-				stems/adverbs.lexc       \
-				stems/conjunctions.lexc  \
-				stems/interjections.lexc \
-				stems/nouns.lexc         \
-    			stems/numerals.lexc      \
-				stems/particles.lexc     \
-				stems/pronouns.lexc      \
-				stems/subjunctions.lexc  \
+				clitics.lexc                 \
+				compounding.lexc             \
+				prefixes.lexc                \
+				affixes/acronyms.lexc        \
+				affixes/abbreviations.lexc   \
+				affixes/adjectives.lexc      \
+				affixes/nouns.lexc           \
+				affixes/numerals.lexc        \
+				affixes/possessives.lexc     \
+				affixes/pronouns.lexc        \
+				affixes/propernouns.lexc     \
+				affixes/symbols.lexc         \
+				affixes/verbs.lexc           \
+				stems/$(GTLANG)-propernouns.lexc   \
+				stems/$(GTLANG)-abbreviations.lexc \
+				stems/$(GTLANG)-acronyms.lexc      \
+				stems/adjectives.lexc        \
+				stems/adpositions.lexc       \
+				stems/adverbs.lexc           \
+				stems/conjunctions.lexc      \
+				stems/interjections.lexc     \
+				stems/nouns.lexc             \
+				stems/numerals.lexc          \
+				stems/particles.lexc         \
+				stems/pronouns.lexc          \
+				stems/subjunctions.lexc      \
 				stems/verbs.lexc
 
 # If you are building an error-detecting L2 analyser, specify the lexc files
@@ -69,12 +69,12 @@ GT_LEXC_L2_SRCS=\
 			$(L2)
 
 # Set this to the names of all generated lexc files, if any
-GENERATED_LEXC_SRCS=generated_files/smi-propernouns.lexc \
-					generated_files/smi-abbreviations.lexc \
-					generated_files/smi-acronyms.lexc \
+GENERATED_LEXC_SRCS=generated_files/smi-propernouns.lexc     \
+					generated_files/smi-abbreviations.lexc   \
+					generated_files/smi-acronyms.lexc        \
 					generated_files/arabic_roman_digits.lexc \
-					generated_files/punctuation.lexc \
-					generated_files/smi-digits.lexc \
+					generated_files/punctuation.lexc         \
+					generated_files/smi-digits.lexc          \
 					generated_files/symbols.lexc
 
 # Set this to the names of all source xml files, if any
@@ -87,8 +87,7 @@ GT_LOCAL_SRCS=
 GT_LOCAL_XFSCRIPT_SRCS=
 
 # Define here any additional sources just included in the distro:
-GT_DISTRO_SRCS=stems/$(GTLANG)-propernouns.lexc \
-               $(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl
+GT_DISTRO_SRCS=$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl
 
 ### BEGIN: Local processing: ###
 
@@ -116,7 +115,7 @@ generated_files/smi-acronyms.lexc: \
 	$(AM_V_GEN)$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl $< > $@
 
 generated_files/%.lexc: \
-			$(GIELLA_SHARED)/smi/src/fst/stems/%.lexc
+		$(GIELLA_SHARED)/smi/src/fst/stems/%.lexc
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_GEN)cp -f $< $@
 
