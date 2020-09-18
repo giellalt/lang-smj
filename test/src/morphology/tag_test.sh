@@ -13,7 +13,7 @@ trap 'rm -f "${lexctags}" "${roottags}"' EXIT
 
 # Define proper source dirs using Autotools:
 top_source_dir=../../..
-giella_shared_dir=/Users/Inga/langtech/git/giellalt/lang-smj/./../giella-shared
+giella_shared_dir=$GTLANGS/giella-shared
 
 exit 0
 
