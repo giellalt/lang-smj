@@ -169,7 +169,6 @@ LIST Pl3 = Pl3 ;
 
 LIST Inf = Inf ; 
 LIST Ger = Ger ; 
-LIST GerII = GerII ;
 LIST ConNeg = ConNeg ; 
 LIST Neg = Neg ;
 LIST PrsPrc = PrsPrc ; 
@@ -735,7 +734,7 @@ SET V-NOT-AUX = V - AUX ;  # The set of verbs that cannot be auxiliaries.
 
 SET VFIN-NOT-AUX = VFIN - AUX ;
 
-LIST GerII-V = "ájttsat" "gullat" "gullát" "mannat" "tjuodtjot" "tjåhkkåhit" "vuojnnet" "vællahit" ;
+LIST ACTIOESS-V = "ájttsat" "gullat" "gullát" "mannat" "tjuodtjot" "tjåhkkåhit" "vuojnnet" "vællahit" ;
 
 #SET V-MAIN = V - COPULAS - Neg - MOD-ASP OR ("orrut") ;  # The set of verbs that can be 
 #							# main verbs. Includes 
@@ -1183,7 +1182,7 @@ SET EOC = S-BOUNDARY OR EOS ;
 SET BOC2 = S-BOUNDARY2 OR BOS ;
 SET EOC2 = S-BOUNDARY2 OR EOS ;
 
-SET NP-BOUNDARY = BOS OR EOS OR REALCLB OR VFIN OR Inf OR GerII OR ConNeg OR VGen OR Sup OR PPRON-NOT-GEN OR Recipr OR Po OR Pr OR Pcle OR ("jed") OR Interj OR CS OR CP ;
+SET NP-BOUNDARY = BOS OR EOS OR REALCLB OR VFIN OR Inf OR (Actio Ess) OR ConNeg OR VGen OR Sup OR PPRON-NOT-GEN OR Recipr OR Po OR Pr OR Pcle OR ("jed") OR Interj OR CS OR CP ;
 
 SET SV-BOUNDARY = S-BOUNDARY OR FMAINV ; # VFIN-NOT-AUX ; # should be V-MAIN linked to VFIN-aux to the left. (cg-3)
 # This set is ment to use in rules for disambiguating due to verbs or verbsets. 
@@ -1317,7 +1316,7 @@ REMOVE (Actio N Pl Com) IF (0 (N-NOT-ACTIO Pl Com));
 
 REMOVE Der/Dimin IF (0 Sup) ;
 
-#REMOVE (N Ess) IF (NEGATE *-1 OPREDV BARRIER VERB)(0 (V GerII));
+#REMOVE (N Ess) IF (NEGATE *-1 OPREDV BARRIER VERB)(0 (V Actio Ess));
     # Do we need this? Taken from sme.    
 
 
@@ -2148,6 +2147,9 @@ SELECT (A Attr) IF (*-1 (Dem Ess) BARRIER NPNH)(*1 (N Ess) BARRIER NPNH);
 	# Other attribute rules
 	# ---------------------
 
+REMOVE:AAttr Attr IF (0 Nom LINK -1 COPULAS)(*1 Inf BARRIER S-BOUNDARY OR VERB);
+	#$ Bierita mielas la suohtas muohtavuojánav tjuovvot.
+
 # This whole chapter is taken from sme, and should be revised.
 # The rules in question have sme examples.
 
@@ -2171,6 +2173,16 @@ SELECT CAP-INITIAL IF (-1 Sem/Mal OR Sem/Fem)(0 INITIAL)(1 Sem/Sur);
     
 SELECT Adv IF (NEGATE -1 Gen)(0 ("åvddål") LINK NOT *-1 VFIN BARRIER SV-BOUNDARY OR CCCOMMA)(1 ("gå"));
     	## Ieddnes Maria lij Josefijn giláduvvam, valla åvddål gå aktan lijga viessogoahtám, de bihkusij bådij Maria lij ájlis Vuoiŋŋanisás sahkanam.
+
+
+LIST ÅLGGON = "ålggon" ;
+
+SELECT:ålggon Adv (0 ÅLGGON LINK 0 Ine) ;
+	#$ Áhttje l juo ålggon ájvijt lågŋomin muohtavuojána tjielkkáj.
+
+SELECT:juo Adv IF (0 ("juo") LINK -1 VFIN);
+
+
 
 #REMOVE Adv IF (NEGATE *-1 VERB BARRIER S-BOUNDARY2)(NEGATE 0 ("gosa") OR ("mielde"))(NEGATE 1C A)(NEGATE *1 VERB BARRIER S-BOUNDARY2);
 	## Diehtojuohkin divššohasa lagamuš oapmahažžii.
@@ -3074,12 +3086,12 @@ SELECT Inf IF (-1 CC)(-2C Inf);
 # ---------
 # Gerund II = Actio N Ess
 
-SELECT GerII (*0 AUX OR GerII-V BARRIER SV-BOUNDARY2 OR VERB)(0 Actio);
+SELECT (Actio Ess) (*0 AUX OR ACTIOESS-V BARRIER SV-BOUNDARY2 OR VERB)(0 Actio);
 	## Viehka dåbelin lij stuorra svijnneällo guohtomin.
 	## Vuojnijma suv nástev ihtemin.
     # Select because it´s the only way to get rid of (Actio Ine) when the word is lexicalized. If it makes trouble, we have to make a rule for PLACE and other possible Ine. 
 
-SELECT GerII (0 Actio OR Ess LINK *-1 BOS BARRIER WORD)(*1 COMMA BARRIER VERB OR S-BOUNDARY2 LINK 1 Nom);
+SELECT (Actio Ess) (0 Actio OR Ess LINK *-1 BOS BARRIER WORD)(*1 COMMA BARRIER VERB OR S-BOUNDARY2 LINK 1 Nom);
 
 
 # ==================== #
@@ -3199,45 +3211,45 @@ SELECT Gen (1 @CNP LINK 1C Gen)(0 Nom);
 
 MAP (@+FAUXV) TARGET Neg; #XX
 
-MAP (@+FMAINV) TARGET VFIN IF (0 ("årrot") LINK NOT *1 GerII BARRIER NOT-ADV) ; #XX
+MAP (@+FMAINV) TARGET VFIN IF (0 ("årrot") LINK NOT *1 (Actio Ess) BARRIER NOT-ADV) ; #XX
     	## Dåppe åroj dasik Herodes lij jábmám vaj luluj ålliduvvat.
 
 MAP (@-FAUXV) TARGET AUX IF (*-1 Neg BARRIER S-BOUNDARY2 OR VERB)(0 ConNeg OR PrfPrc)(*1 Inf OR Sup BARRIER VERB OR S-BOUNDARY2); #XX
 	## .., iv ga le árvvogis sujsta gábmagijt nuolatjit,..
  
 MAP (@+FAUXV) TARGET AUX (0 VFIN LINK NOT 0 ("liehket"))(*1 Inf OR Sup OR ConNeg OR PrfPrc BARRIER S-BOUNDARY2 OR VFIN); #XX
-MAP (@+FAUXV) TARGET ("liehket") (0 VFIN)(*1 PrfPrc OR GerII BARRIER S-BOUNDARY2 OR VFIN); #XX
+MAP (@+FAUXV) TARGET ("liehket") (0 VFIN)(*1 PrfPrc OR (Actio Ess) BARRIER S-BOUNDARY2 OR VFIN); #XX
 	## ... , ma uddni li tsäggot ja idet vuobnnáj bálkestuvvi, 
 
-MAP (@+FAUXV) TARGET ("liehket" Cond) (0 VFIN)(*1 Inf BARRIER S-BOUNDARY2 OR VFIN); #XX
+MAP (@+FAUXV) TARGET ("liehket") + Cond (0 VFIN)(*1 Inf BARRIER S-BOUNDARY2 OR VFIN); #XX
 
 
-MAP (@+FAUXV) TARGET COPULAS IF (0 VFIN LINK NOT 0 ("liehket"))(*1 Inf OR Sup OR PrfPrc OR GerII BARRIER S-BOUNDARY2 OR VFIN);	#XX
+MAP (@+FAUXV) TARGET COPULAS IF (0 VFIN LINK NOT 0 ("liehket"))(*1 Inf OR Sup OR PrfPrc OR (Actio Ess) BARRIER S-BOUNDARY2 OR VFIN);	#XX
 	## Härrá ieŋŋgil lij gåhttjum.
     
-MAP (@+FAUXV) TARGET COPULAS IF (*-1 Inf OR Sup OR PrfPrc OR GerII BARRIER NOT-ADV-PCLE)(0 VFIN); #XX
+MAP (@+FAUXV) TARGET COPULAS IF (*-1 Inf OR Sup OR PrfPrc OR (Actio Ess) BARRIER NOT-ADV-PCLE)(0 VFIN); #XX
 	## Ja boahtám lip suv guddnedittjat.
 	    
-MAP (@-FAUXV) TARGET AUX IF (0 PrfPrc)(*1 Inf OR Sup OR GerII BARRIER S-BOUNDARY2);	#XX
+MAP (@-FAUXV) TARGET AUX IF (0 PrfPrc)(*1 Inf OR Sup OR (Actio Ess) BARRIER S-BOUNDARY2);	#XX
    ## In leat sáhttán gáhku borrat dan rájes. 
    ## In leat leamaš mielde gáhku láibume ovdal.    
         
 MAP (@-FMAINV) TARGET ConNeg ; #XX
 	## Ittjij sidá suv hehpaduhttet.
 
-MAP (@+FMAINV) TARGET COPULAS OR AUX (NEGATE *-1 Inf OR Sup OR PrfPrc OR GerII BARRIER S-BOUNDARY2 OR VFIN OR COMMA)(0 VFIN)(NEGATE 0 Actor)(NEGATE *1 Inf OR Sup OR PrfPrc OR GerII BARRIER S-BOUNDARY2 OR VFIN OR DUOLLA OR Acc); #XX
+MAP (@+FMAINV) TARGET COPULAS OR AUX (NEGATE *-1 Inf OR Sup OR PrfPrc OR (Actio Ess) BARRIER S-BOUNDARY2 OR VFIN OR COMMA)(0 VFIN)(NEGATE 0 Actor)(NEGATE *1 Inf OR Sup OR PrfPrc OR (Actio Ess) BARRIER S-BOUNDARY2 OR VFIN OR DUOLLA OR Acc); #XX
 	## ... , gej iessne lij Tamar.
 
 MAP (@+FMAINV) TARGET ("liehket") (*-1 (A Nom) BARRIER NOT-ADV)(0 VFIN)(*1 Inf BARRIER NOT-ADV); #XX
 
 
-MAP (@+FMAINV) TARGET VFIN (*-1 ("javllat") BARRIER S-BOUNDARY2 OR VFIN OR COMMA)(NEGATE 0 Actor)(NEGATE *1 Inf OR Sup OR PrfPrc OR GerII BARRIER S-BOUNDARY2 OR VFIN OR DUOLLA); #XX
+MAP (@+FMAINV) TARGET VFIN (*-1 ("javllat") BARRIER S-BOUNDARY2 OR VFIN OR COMMA)(NEGATE 0 Actor)(NEGATE *1 Inf OR Sup OR PrfPrc OR (Actio Ess) BARRIER S-BOUNDARY2 OR VFIN OR DUOLLA); #XX
 	## Sälggagärmmahatjivga , guhtis le javllam dij boahtte moares bessabihtit ?
 
 MAP (@+FMAINV) TARGET VFIN-NOT-AUX ; #XX
 	## Peresij riegádij Hesron.
 
-MAP (@-FMAINV) TARGET PrfPrc IF (*-1 ("liehket") BARRIER PrfPrc OR GerII)(NEGATE 0 AUX LINK *1 Inf OR Sup BARRIER S-BOUNDARY2)(1 NP-BOUNDARY); #XX
+MAP (@-FMAINV) TARGET PrfPrc IF (*-1 ("liehket") BARRIER PrfPrc OR (Actio Ess))(NEGATE 0 AUX LINK *1 Inf OR Sup BARRIER S-BOUNDARY2)(1 NP-BOUNDARY); #XX
 	## Maria lij ájlis Vuojŋŋanisás sahkanam.
 	## Ieddnes Maria lij Josefijn giláduvvam.
     
@@ -3264,7 +3276,7 @@ MAP (@<ADVL) TARGET Sup (NOT *-1 AUX BARRIER VFIN); #XX
 
 
 
-MAP (@-FMAINV) TARGET GerII;  #XX
+MAP (@-FMAINV) TARGET (Actio Ess);  #XX
 
 MAP (@<ADVL) TARGET VAbess (*-1 VFIN BARRIER S-BOUNDARY2) ; #XX
 MAP (@ADVL>) TARGET VAbess (*1 VFIN BARRIER S-BOUNDARY2) ; #XX
@@ -3968,7 +3980,8 @@ SELECT Inf IF (*-1 ("makkár" Acc) BARRIER NOT-PCLE LINK -1 FMAINV);
 SELECT Inf IF (*-1 BOS LINK NOT *1 VFIN);
 	## Man diehti de sjokoládav oasstet?
 
-
+#LexSel
+REMOVE:LexSelårrut ("årrut") (0 ("årrot") LINK NEGATE 1 Ill) ;
 
 # ---- For NT
 SELECT ("tjierrot") IF (0 ("tjierrut")) ;
