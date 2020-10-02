@@ -393,6 +393,7 @@ LIST @-FMAINV = @-FMAINV ;
 LIST @-FSUBJ = @-FSUBJ ;
 
 SET FMAINV = @-FMAINV OR @+FMAINV ;
+SET FAUXV = @-FAUXV OR @+FAUXV ;
 
 LIST @ADVL = @ADVL ;
 LIST @>ADVL = @>ADVL ;
@@ -2042,7 +2043,7 @@ SELECT @CVP IF (NEGATE -1 NP-HEAD-NOM)(1 NP-HEAD-NOM LINK 1 VFIN); #XX
 SELECT @CVP IF (-1 NP-HEAD LINK *-1 VFIN BARRIER S-BOUNDARY2)(1 VFIN); #XX
 	## Bärggal de alla várráj suv doalvoj ja vuosedij sunji gájkka värálda rijkajt ja daj herlukvuodav ja javlaj.
 
-SELECT @CVP IF (*-1C VFIN BARRIER S-BOUNDARY)(*1C AUX + Prs);  #XX
+SELECT @CVP IF (*-1C VFIN BARRIER S-BOUNDARY)(*1C AUX + Prs BARRIER COMMA);  #XX
 	## Gåhtjo dan diehti hávdev gålmmå biejve váttugit gŋahttjat vaj åhpadisålmmå e besa suv suoládit ja álmmugij javllat sån le jábbmegij lussta tjuodtjelam.
 
 SELECT @CVP IF (*-1 COMMA LINK *-1C VFIN BARRIER S-BOUNDARY)(*1C AUX LINK *0 Prs BARRIER S-BOUNDARY);  #XX
@@ -2181,6 +2182,7 @@ SELECT:ålggon Adv (0 ÅLGGON LINK 0 Ine) ;
 	#$ Áhttje l juo ålggon ájvijt lågŋomin muohtavuojána tjielkkáj.
 
 SELECT:juo Adv IF (0 ("juo") LINK -1 VFIN);
+SELECT:uddni Adv IF (0 ("uddni") LINK 1 VFIN);
 
 
 
@@ -2527,7 +2529,7 @@ REMOVE (Pl Nom) IF (0 Prop)(*1 N BARRIER NOT-ADJ);
 
 # Gen before Po
 
-SELECT:GenPo Gen IF (1C Po);
+SELECT:GenPo Gen IF (1 Po); # må nok få flere betingelser
 	## Profehta baktu.
 
 SELECT:GenPoCoor Gen IF (1 CC LINK 1C Gen LINK 1 Po);
@@ -3291,8 +3293,11 @@ MAP (@ADVL>) TARGET Ger OR (V Actio Ela) (*1 FMAINV BARRIER S-BOUNDARY2);
 	## Biigá lei bassaladdame báhpa boađedettiin.
 MAP (@-FMAINV) TARGET PrfPrc ; #XX
 
-MAP (@>N) TARGET Actio (1 N) ;
+#!! * __IfonlyVerb__ selects the FMAINV reading in the cohort
+SELECT:IfonlyVerb FMAINV IF (NEGATE *0 FMAINV BARRIER S-BOUNDARY)(NOT 0 FAUXV OR (Inf @A<) OR (Inf @N<))(NEGATE *-1 ("go") LINK *-1 VFIN) ; #kopiert fra sme
 
+
+MAP (@>N) TARGET Actio (1 N) ;
 
 
 MAP (@X) TARGET VERB ; #XX
