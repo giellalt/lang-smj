@@ -144,13 +144,22 @@ analyser-gt-norm.xfst: analyser-gt-norm.tmp.xfst \
 analyser-oahpa-gt-norm.%: analyser-gt-norm.tmp.% \
 					filters/remove-derivation-position-tags.% \
 					filters/remove-norm-comp-tags.%           \
-					filters/remove-DNorm-tags.%
+					filters/remove-DNorm-tags.%               \
+					filters/convert-æae-to-area-variant.%     \
+					filters/insert-area-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 			    @\"filters/remove-derivation-position-tags.$*\" \
 			.o. @\"filters/remove-norm-comp-tags.$*\"           \
 			.o. @\"filters/remove-DNorm-tags.$*\"               \
 			.o. @\"$<\"                                         \
+			.o. @\"filters/convert-æae-to-area-variant.$*\"     \
 			;\n\
+		 define lexicon\n\
+		 read regex \
+				@\"filters/insert-area-tags.$*\"                   \
+			.o. lexicon                                            \
+			;\n\
+		 twosided flag-diacritics\n\
 		 $(INVERT_HFST)\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
@@ -165,7 +174,8 @@ analyser-pmatchdisamb-gt-desc.hfst: analyser-pmatchdisamb-gt-desc.tmp.hfst \
 				filters/remove-norm-comp-tags.hfst             \
 				filters/remove-derivation-position-tags.hfst   \
 				filters/remove-orig_lang-tags.hfst             \
-				filters/rename-POS_before_Der-tags.hfst
+				filters/rename-POS_before_Der-tags.hfst        \
+				filters/convert-æae-to-both.hfst
 	$(AM_V_HXFST)$(PRINTF) "read regex \
 		    @\"filters/remove-derivation-position-tags.hfst\" \
 		.o. @\"filters/remove-dialect-tags.hfst\"             \
@@ -174,6 +184,7 @@ analyser-pmatchdisamb-gt-desc.hfst: analyser-pmatchdisamb-gt-desc.tmp.hfst \
 		.o. @\"filters/remove-orig_lang-tags.hfst\"           \
 		.o. @\"filters/rename-POS_before_Der-tags.hfst\"      \
 		.o. @\"$<\"                                           \
+		.o. @\"filters/convert-æae-to-both.$*\"               \
 		;\n\
 	invert net\n\
 	save stack $@\n\
@@ -190,7 +201,8 @@ analyser-disamb-gt-desc.%: analyser-disamb-gt-desc.tmp.%      \
 					filters/remove-derivation-position-tags.% \
 					filters/remove-norm-comp-tags.%           \
 					filters/rename-POS_before_Der-tags.%      \
-					filters/remove-DNorm-tags.%
+					filters/remove-DNorm-tags.%               \
+					filters/convert-æae-to-both.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/remove-derivation-position-tags.$*\" \
 			.o. @\"filters/remove-homonymy-tags.$*\"            \
@@ -201,6 +213,7 @@ analyser-disamb-gt-desc.%: analyser-disamb-gt-desc.tmp.%      \
 			.o. @\"filters/rename-POS_before_Der-tags.$*\"      \
 			.o. @\"filters/remove-DNorm-tags.$*\"               \
 			.o. @\"$<\"                                         \
+			.o. @\"filters/convert-æae-to-both.$*\"             \
 			;\n\
 		 $(INVERT_HFST)\
 		 save stack $@\n\
@@ -212,7 +225,8 @@ analyser-gramcheck-gt-desc.hfst: analyser-gramcheck-gt-desc.tmp.hfst \
 				filters/remove-norm-comp-tags.hfst           \
 				filters/remove-derivation-position-tags.hfst \
 				filters/rename-POS_before_Der-tags.hfst      \
-				filters/remove-word-boundary.hfst			 \
+				filters/remove-word-boundary.hfst            \
+				filters/convert-æae-to-both.hfst             \
 				orthography/spellrelax-with-flagtags.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "\
 	set encode-weights ON\n\
@@ -222,6 +236,7 @@ analyser-gramcheck-gt-desc.hfst: analyser-gramcheck-gt-desc.tmp.hfst \
 		.o. @\"filters/remove-derivation-position-tags.hfst\" \
 		.o. @\"filters/rename-POS_before_Der-tags.hfst\"      \
 		.o. @\"$<\"                                           \
+		.o. @\"filters/convert-æae-to-both.$*\"               \
 		.o. @\"orthography/spellrelax-with-flagtags.compose.hfst\" \
 		.o. @\"filters/remove-word-boundary.hfst\"            \
 		;\n\
@@ -237,13 +252,15 @@ generator-gt-norm.xfst: generator-gt-norm.tmp.xfst                \
 					 filters/remove-norm-comp-tags.xfst           \
 					 filters/remove-illegal-derivation-strings.xfst \
 					 filters/remove-DNorm-tags.xfst               \
-					 filters/make-optional-lang_hom-tags.xfst
+					 filters/make-optional-lang_hom-tags.xfst.    \
+					 filters/convert-æae-to-both.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/make-optional-lang_hom-tags.xfst\"     \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
 			.o. @\"filters/remove-DNorm-tags.xfst\"               \
 			.o. @\"$<\"                                           \
+			.o. @\"filters/convert-æae-to-both.xfst\"             \
 			;\n\
 		 invert net\n\
 		 save stack $@\n\
