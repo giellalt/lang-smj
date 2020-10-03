@@ -122,14 +122,12 @@ generator-raw-gt-desc.hfst: generator-raw-gt-desc.tmp.hfst \
 analyser-gt-desc.%: analyser-gt-desc.tmp.% \
 					filters/remove-derivation-position-tags.% \
 					filters/remove-norm-comp-tags.%           \
-					filters/remove-DNorm-tags.%               \
-					filters/convert-æae-to-both.%
+					filters/remove-DNorm-tags.% 
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 			    @\"filters/remove-derivation-position-tags.$*\" \
 			.o. @\"filters/remove-norm-comp-tags.$*\"           \
 			.o. @\"filters/remove-DNorm-tags.$*\"               \
 			.o. @\"$<\"                                         \
-			.o. @\"filters/convert-æae-to-both.$*\"             \
 			;\n\
 		 $(INVERT_HFST)\
 		 save stack $@\n\
@@ -145,9 +143,7 @@ analyser-gt-norm.%: analyser-gt-norm.tmp.%                                 \
 					 filters/block-illegal_compound-strings.%              \
 					 filters/split-CmpN-tags.%                             \
 					 filters/convert_to_flags-CmpNP-tags.%                 \
-					 filters/split-CmpNP-tags.%                            \
-					 filters/convert-æae-to-area-variant.%                 \
-					 filters/insert-area-tags.%
+					 filters/split-CmpNP-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 			    @\"filters/remove-derivation-position-tags.$*\"             \
 			.o. @\"filters/remove-DNorm-tags.$*\"                           \
@@ -160,13 +156,6 @@ analyser-gt-norm.%: analyser-gt-norm.tmp.%                                 \
 			.o. @\"filters/split-CmpNP-tags.$*\"                            \
 			.o. @\"filters/remove-MinusSpell-strings.$*\"                   \
 			.o. @\"$<\"                                                     \
-			.o. @\"filters/convert-æae-to-area-variant.$*\"                 \
-			;\n\
-		 twosided flag-diacritics\n\
-		 define lexicon\n\
-		 read regex \
-				@\"filters/insert-area-tags.$*\"                   \
-			.o. lexicon                                            \
 			;\n\
 		 twosided flag-diacritics\n\
 		 $(INVERT_HFST)\
@@ -198,20 +187,12 @@ analyser-gt-norm.xfst: analyser-gt-norm.tmp.xfst \
 analyser-oahpa-gt-norm.%: analyser-gt-norm.tmp.% \
 					filters/remove-derivation-position-tags.% \
 					filters/remove-norm-comp-tags.%           \
-					filters/remove-DNorm-tags.%               \
-					filters/convert-æae-to-area-variant.%     \
-					filters/insert-area-tags.%
+					filters/remove-DNorm-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 			    @\"filters/remove-derivation-position-tags.$*\" \
 			.o. @\"filters/remove-norm-comp-tags.$*\"           \
 			.o. @\"filters/remove-DNorm-tags.$*\"               \
 			.o. @\"$<\"                                         \
-			.o. @\"filters/convert-æae-to-area-variant.$*\"     \
-			;\n\
-		 define lexicon\n\
-		 read regex \
-				@\"filters/insert-area-tags.$*\"                   \
-			.o. lexicon                                            \
 			;\n\
 		 twosided flag-diacritics\n\
 		 $(INVERT_HFST)\
@@ -228,8 +209,7 @@ analyser-pmatchdisamb-gt-desc.hfst: analyser-pmatchdisamb-gt-desc.tmp.hfst \
 				filters/remove-norm-comp-tags.hfst             \
 				filters/remove-derivation-position-tags.hfst   \
 				filters/remove-orig_lang-tags.hfst             \
-				filters/rename-POS_before_Der-tags.hfst        \
-				filters/convert-æae-to-both.hfst
+				filters/rename-POS_before_Der-tags.hfst
 	$(AM_V_HXFST)$(PRINTF) "read regex \
 		    @\"filters/remove-derivation-position-tags.hfst\" \
 		.o. @\"filters/remove-dialect-tags.hfst\"             \
@@ -238,7 +218,6 @@ analyser-pmatchdisamb-gt-desc.hfst: analyser-pmatchdisamb-gt-desc.tmp.hfst \
 		.o. @\"filters/remove-orig_lang-tags.hfst\"           \
 		.o. @\"filters/rename-POS_before_Der-tags.hfst\"      \
 		.o. @\"$<\"                                           \
-		.o. @\"filters/convert-æae-to-both.$*\"               \
 		;\n\
 	invert net\n\
 	save stack $@\n\
@@ -255,8 +234,7 @@ analyser-disamb-gt-desc.%: analyser-disamb-gt-desc.tmp.%      \
 					filters/remove-derivation-position-tags.% \
 					filters/remove-norm-comp-tags.%           \
 					filters/rename-POS_before_Der-tags.%      \
-					filters/remove-DNorm-tags.%               \
-					filters/convert-æae-to-both.%
+					filters/remove-DNorm-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/remove-derivation-position-tags.$*\" \
 			.o. @\"filters/remove-homonymy-tags.$*\"            \
@@ -267,7 +245,6 @@ analyser-disamb-gt-desc.%: analyser-disamb-gt-desc.tmp.%      \
 			.o. @\"filters/rename-POS_before_Der-tags.$*\"      \
 			.o. @\"filters/remove-DNorm-tags.$*\"               \
 			.o. @\"$<\"                                         \
-			.o. @\"filters/convert-æae-to-both.$*\"             \
 			;\n\
 		 $(INVERT_HFST)\
 		 save stack $@\n\
@@ -306,15 +283,13 @@ generator-gt-norm.xfst: generator-gt-norm.tmp.xfst                \
 					 filters/remove-norm-comp-tags.xfst           \
 					 filters/remove-illegal-derivation-strings.xfst \
 					 filters/remove-DNorm-tags.xfst               \
-					 filters/make-optional-lang_hom-tags.xfst.    \
-					 filters/convert-æae-to-both.xfst
+					 filters/make-optional-lang_hom-tags.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/make-optional-lang_hom-tags.xfst\"     \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
 			.o. @\"filters/remove-DNorm-tags.xfst\"               \
 			.o. @\"$<\"                                           \
-			.o. @\"filters/convert-æae-to-both.xfst\"             \
 			;\n\
 		 invert net\n\
 		 save stack $@\n\
@@ -339,8 +314,7 @@ generator-gt-norm.%: generator-gt-norm.tmp.%                   \
 					 filters/block-illegal_compound-strings.%              \
 					 filters/split-CmpN-tags.%                             \
 					 filters/convert_to_flags-CmpNP-tags.%                 \
-					 filters/split-CmpNP-tags.%                            \
-					 filters/convert-æae-to-area-variant.%
+					 filters/split-CmpNP-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/make-optional-lang_hom-tags.$*\"     \
 			.o. @\"filters/remove-derivation-position-tags.$*\" \
@@ -354,7 +328,6 @@ generator-gt-norm.%: generator-gt-norm.tmp.%                   \
 			.o. @\"filters/convert_to_flags-CmpNP-tags.$*\"                 \
 			.o. @\"filters/split-CmpNP-tags.$*\"                            \
 			.o. @\"$<\"                                          \
-			.o. @\"filters/convert-æae-to-area-variant.$*\"                 \
 			;\n\
 		 twosided flag-diacritics\n\
 		 $(INVERT_XFST)$(INVERT_FOMA)\
@@ -366,15 +339,13 @@ generator-gt-desc.%: generator-gt-desc.tmp.%                   \
 					 filters/remove-derivation-position-tags.% \
 					 filters/remove-norm-comp-tags.%           \
 					 filters/remove-DNorm-tags.%               \
-					 filters/make-optional-lang_hom-tags.%     \
-					 filters/convert-æae-to-both.%
+					 filters/make-optional-lang_hom-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/make-optional-lang_hom-tags.$*\"     \
 			.o. @\"filters/remove-derivation-position-tags.$*\" \
 			.o. @\"filters/remove-norm-comp-tags.$*\"           \
 			.o. @\"filters/remove-DNorm-tags.$*\"               \
 			.o. @\"$<\"                                         \
-			.o. @\"filters/convert-æae-to-both.$*\"             \
 			;\n\
 		 $(INVERT_XFST)$(INVERT_FOMA)\
 		 save stack $@\n\
