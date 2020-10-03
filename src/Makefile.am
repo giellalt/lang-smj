@@ -90,6 +90,23 @@ analyser-raw-gt-desc.foma: analyser-raw-gt-desc.tmp.foma \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
+generator-raw-gt-desc.hfst: generator-raw-gt-desc.tmp.hfst \
+					 filters/convert-æae-to-area-variant.hfst \
+					 filters/insert-area-tags.hfst
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex            \
+				@\"$<\"                               \
+			.o. @\"filters/convert-æae-to-area-variant.hfst\" \
+			;\n\
+		 twosided flag-diacritics\n\
+		 define lexicon\n\
+		 read regex \
+				@\"filters/insert-area-tags.hfst\" \
+			.o. lexicon                            \
+			;\n\
+		 twosided flag-diacritics\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
 # The SMJ morphology has some extra tags used for marking questionable
 # normativity and our suggested norm:
 analyser-gt-desc.%: analyser-gt-desc.tmp.% \
