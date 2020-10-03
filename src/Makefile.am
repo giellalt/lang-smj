@@ -63,6 +63,17 @@ endif # CAN_FOMA
 #################################################
 #### Add language-specific build rules here: ####
 
+# Process æ-ä early, and separately for xfst, hfst and foma:
+analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.tmp.xfst \
+					filters/convert-æae-to-both.xfst
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex            \
+				@\"$<\"                               \
+			.o. @\"filters/convert-æae-to-both.xfst\" \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+
 # The SMJ morphology has some extra tags used for marking questionable
 # normativity and our suggested norm:
 analyser-gt-desc.%: analyser-gt-desc.tmp.% \
