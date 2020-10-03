@@ -63,7 +63,10 @@ endif # CAN_FOMA
 #################################################
 #### Add language-specific build rules here: ####
 
-# Process æ-ä early, and separately for xfst, hfst and foma:
+### Process æ-ä early, and separately for xfst, hfst and foma. ###
+###
+### Xerox: can't use twosided flag-diacritics, so we'll just allow both
+### everywhere:
 analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.tmp.xfst \
 					filters/convert-æae-to-both.xfst
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex            \
@@ -73,6 +76,7 @@ analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.tmp.xfst \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
+### Foma: as Hfst, but the file is an analyser (as xfst), not generator:
 analyser-raw-gt-desc.foma: analyser-raw-gt-desc.tmp.foma \
 					 filters/convert-æae-to-area-variant.foma \
 					 filters/insert-area-tags.foma
@@ -90,6 +94,12 @@ analyser-raw-gt-desc.foma: analyser-raw-gt-desc.tmp.foma \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
+### Hfst: Add æ/ä with a flag diacritic for area, then make it double-sided,
+### then add an explicit tag, also including a (two-sided) flag diacritic. This
+### way, the æ/ä variation is explicitly tagged, and the tag is forced to follow
+### the actual surface symbol. For normative fst's only variants from the same
+### area can be combined, and with the explicit tags, the area-specific
+### analysers will actually be area-specific.
 generator-raw-gt-desc.hfst: generator-raw-gt-desc.tmp.hfst \
 					 filters/convert-æae-to-area-variant.hfst \
 					 filters/insert-area-tags.hfst
