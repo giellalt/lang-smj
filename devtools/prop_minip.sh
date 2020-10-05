@@ -9,7 +9,7 @@
 
 
 LOOKUP=$(echo $HLOOKUP)
-GTHOME=$(echo $GTHOME)
+GTLANGS=$(echo $GTLANGS)
 
 PATTERN=$1
 L_FILE="in.txt"
