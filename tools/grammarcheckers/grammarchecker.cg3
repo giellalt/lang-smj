@@ -687,7 +687,7 @@ COPY:msyn-sme_bastard_neg (Prt &SUGGEST) EXCEPT (Prs) AFTER Ind TARGET (&msyn-sm
 
 ADD:msyn-sme_bastard_neg2 (&msyn-sme_bastard_neg2) TARGET PrfPrc IF (*-1 ("ij" Neg Ind) BARRIER NOT-ADV-PCLE - ("mige") - Acc) ;
 
-COPY:msyn-sme_bastard_neg2 (ConNeg &SUGGEST) EXCEPT (PrfPrc) TARGET (&msyn-sme_bastard_neg2) ;
+COPY:msyn-sme_bastard_neg2 (ConNeg &SUGGEST) EXCEPT (PrfPrc &msyn-sme_bastard_neg2) TARGET (&msyn-sme_bastard_neg2) ;
 
 
     # soajttá as an adverb
@@ -711,3 +711,12 @@ COPY:msyn-soajttá-agree $$V-PERS + &SUGGEST EXCEPT (Sg3) TARGET (&msyn-soajttá
     ## valla {soajttá} tjáláv nágin bágojt gå ierit lav.
     ## EU {soajttá} máhtti mijáv viehkedit.
 
+
+    # Wrong Cond Sg2 instead of Pl3
+    # -----------------------------
+
+ADD:msyn-liehket-congr-condsg2-condpl3 (&msyn-liehket-congr-condsg2-condpl3) TARGET (Cond Sg2) IF (*-1 (N Nom Pl) OR (Pron Nom Pl) OR (Pron Nom Pl3) BARRIER NOT-ADV-PCLE ) ;
+
+    # vuorasulmutja lulu huvsov ja sujtov oadtjot.
+
+COPY:msyn-liehket-congr-condsg2-condpl3 (Pl3 &SUGGEST) EXCEPT (Sg2 &msyn-liehket-congr-condsg2-condpl3) TARGET (&msyn-liehket-congr-condsg2-condpl3) ;
