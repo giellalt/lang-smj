@@ -68,7 +68,7 @@ EXTEDITOR=@SEE@
 # 1. dem med hardkoding for spesielle former (K), Err/Lex (som blir filtrert bort fra normgenerator), adjektiver som bare har attributtform (ATTR|Attr| At ) , adjektiver som krever tagger for komparering (BBO |MUS |BUOREMUSS|OVDDIT |STUORIBUS|BUStem) og lemmaer som bare opptrer i sammensetninger (FINJU|Rreal | R) Lemmaene lagres som $lemmas
 @GTCORE@/scripts/extract-lemmas.sh \
 	--exclude \
-	"(LEXATTR|OANEP|NUORTTALABBO|GASSKALAMOS|TJAVGGÁMUS| At |PrfPrc_At|VINJO|DEMONSTRATIJVA|Rreal | R |ShCmp|RCmpnd|CmpN/Only|Err/Der)" \
+	"(LEXATTR|OANEP|NUORTTALABBO|GASSKALAMOS|TJAVGGÁMUS| At |PrfPrc_At|VINJO|Rreal | R |ShCmp|RCmpnd|CmpN/Only|Err/Der)" \
 	$source_file > $lemmas
 
 ## 2. for plurale lemmaer (_PL). Lemmaene lagres som $lemmas_pl
@@ -79,7 +79,7 @@ EXTEDITOR=@SEE@
 
 # 3. som bare har attributtform. Lagres i $lemmas_attr
 @GTCORE@/scripts/extract-lemmas.sh \
-	--include "( At |PrfPrc_At|LEXATTR|DEMONSTRATIJVA)" $source_file \
+	--include "( At |PrfPrc_At|LEXATTR)" $source_file \
 	> $lemmas_attr
 
 # 4. som krever komparativtagg. Lagres i $lemmas_comp
@@ -144,7 +144,7 @@ for f in $fsttype; do
             | cut -f2 | grep -v "A+" | grep -v "^$" | sort -u >> $generated_lemmas.$f.txt
 
 # 4. for lemmaer lemmaer som krever komparativtagg, med +A+Comp+Sg+Nom. Lagres i $generated_lemmas.$f.txt
-		sed 's/$/+A+Der\/Comp+A+Sg+Nom/' $lemmas_comp | $lookup_tool $generator_file.$suffix \
+		sed 's/$/+A+Der\/Comp+Af+Sg+Nom/' $lemmas_comp | $lookup_tool $generator_file.$suffix \
             | cut -f2 | grep -v "A+" | grep -v "^$" | sort -u >> $generated_lemmas.$f.txt
 
 # 5. for lemmaer lemmaer som krever superlativtagg, med +A+Superl+Sg+Nom. Lagres i $generated_lemmas.$f.txt
