@@ -7,7 +7,7 @@ if WANT_APERTIUM
 
 APERTIUM_ANALYSER_HFST+=analyser-mt-gt-desc.hfst
 APERTIUM_GENERATORS_HFST+=generator-mt-gt-norm.hfst \
-                          generator-mt-gt-norm_SW.hfst
+						  generator-mt-gt-norm_SE.hfst
 
 endif # WANT_APERTIUM
 
@@ -77,7 +77,7 @@ generator-mt-gt-norm.hfst: generator-mt-gt-norm.tmp.hfst \
 
 # TODO: How do we get this one into the build? Want to end up with 
 # apertium-smj.smj_SE.RL.att.gz
-generator-mt-gt-norm_SW.hfst: generator-mt-gt-norm.tmp.hfst \
+generator-mt-gt-norm_SE.hfst: generator-mt-gt-norm.tmp.hfst \
 			$(top_builddir)/src/filters/remove-area-tags.hfst                \
 			$(top_builddir)/src/filters/remove-all_areas_but_SE-strings.hfst \
 			$(top_builddir)/src/filters/remove-derivation-position-tags.hfst \
