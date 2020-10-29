@@ -58,8 +58,7 @@ generator-mt-gt-norm.hfst: generator-mt-gt-norm.tmp.hfst \
 			$(top_builddir)/src/filters/remove-Use_PMatch-strings.hfst       \
 			$(top_builddir)/src/filters/remove-Use_GC-strings.hfst           \
 			$(top_builddir)/src/filters/remove-Use_minusGC-tags.hfst         \
-			filters/make-optional-Attr_before_dervuota-tags.hfst             \
-			filters/remove-ae-strings.hfst
+			filters/make-optional-Attr_before_dervuota-tags.hfst
 	$(AM_V_RGX2FST)$(PRINTF) "\
 		@\"filters/make-optional-Attr_before_dervuota-tags.hfst\"             \
 	.o. @\"$(top_builddir)/src/filters/remove-area-tags.hfst\"                \
@@ -71,7 +70,6 @@ generator-mt-gt-norm.hfst: generator-mt-gt-norm.tmp.hfst \
 	.o. @\"$(top_builddir)/src/filters/remove-Use_GC-strings.hfst\"           \
 	.o. @\"$(top_builddir)/src/filters/remove-Use_minusGC-tags.hfst\"         \
    	.o. @\"$<\" \
-	.o. @\"filters/remove-ae-strings.hfst\" \
     	;" \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) $(HFST_FORMAT) \
 			-S --xerox-composition=ON \
