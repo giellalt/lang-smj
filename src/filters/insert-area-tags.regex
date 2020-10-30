@@ -12,7 +12,6 @@
 # Other licensing options are available upon request, please contact
 # giellatekno@uit.no or divvun@uit.no
 
-# This filter converts the multichars æä and ÆÄ (from twolc) into either of them:
-
  "+N" [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] <- "+N" || _ \[ "+N" ]* [ "@U.Area.NO@" | "@U.Area.SE@" ] , [ "@U.Area.NO@" | "@U.Area.SE@" ] \[ "+N" ]* _ ;
+# This filter inserts Area tags based on the presense of flag diacritics, which reflects surface æ or ä:
 
