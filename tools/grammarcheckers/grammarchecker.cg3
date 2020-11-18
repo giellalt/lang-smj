@@ -898,7 +898,15 @@ COPY:msyn-ill-com-oahpásmuvvat (Com &SUGGEST) EXCEPT (Com &msyn-ill-com-oahpás
     # Pred when should be attr
     #--------------------------
     
-ADD:msyn-pred-attr (&msyn-pred-attr) TARGET A + CASE IF (*1 N + CASE OR A + CASE BARRIER (A Attr)) ;
+ADD:msyn-pred-attr (&msyn-pred-attr) TARGET  A + CASE  IF (NEGATE 0 Attr) (*1 N + CASE OR A + CASE BARRIER (A Attr)) ;
 COPY:msyn-pred-attr (Attr &SUGGEST) EXCEPT (Sg Nom &msyn-pred-attr) TARGET (&msyn-pred-attr) ;
 
-    ## Mij tjuovojma roaŋkok  bálggáv
+    ## Mij tjuovojma {roaŋkok}  bálggáv
+
+
+
+    # Attr when should be pred
+    #--------------------------
+ADD:msyn-attr-pred (&msyn-attr-pred)  TARGET (A Attr) IF (1 EOS) ;
+
+    ## ássje l {gássjelis} munji
