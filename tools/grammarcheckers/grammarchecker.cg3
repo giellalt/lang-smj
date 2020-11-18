@@ -151,6 +151,8 @@ LIST Rom = Rom ; #!! Romertall
 LIST Nom = Nom ; #!! Nom
 LIST Acc = Acc ; #!! Acc
 LIST Gen = Gen ; #!! Gen
+LIST Ine = Ine ; #!! Gen
+LIST Ela = Ela ; #!! Gen
 LIST Ill = Ill ; #!! Ill
 LIST Loc = Loc ; #!! Loc
 LIST Com = Com ; #!! Com
@@ -489,7 +491,7 @@ SET NOT-COMMA = WORD - COMMA ;  #!! NOT-COMMA
 LIST ADVLCASE = Ill Loc Com Ess ; #!! ADLVCASE
 
 LIST CASE-AGREEMENT = Nom Acc Gen (Pl Ill) Loc Com Ess ; #!! CASE-AGREEMENT
-LIST CASE = Nom Acc Gen Ill Loc Com Ess ; #!! CASE
+LIST CASE = Nom Acc Gen Ill Ela Ine Com Ess ; #!! CASE
 
 SET NOT-NOM = CASE - Nom ; #!! NOT-NOM
 SET NOT-GEN = CASE - Gen ; #!! NOT-GEN
@@ -894,11 +896,6 @@ COPY:msyn-ill-com-oahpásmuvvat (Com &SUGGEST) EXCEPT (Com &msyn-ill-com-oahpás
 
     # Pred when should be attr
     #--------------------------
-SET CASE = Nom OR Gen OR Acc OR Ine OR Ill OR Ela OR Com OR Ess ;
     
 ADD:msyn-pred-attr (&msyn-pred-attr) TARGET  A + CASE  IF (*1 N + CASE OR A + CASE BARRIER (A Attr)) ;
 
-    # Attr when should be pred
-    #------------------------
-ADD:msyn-attr-pred (&msyn-attr-pred)  TARGET A IF (0 Nom OR Ess) (1 EOS) ;
-    ## 
