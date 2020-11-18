@@ -889,4 +889,16 @@ ADD:msyn-ill-com-oahpásmuvvat (&msyn-ill-com-oahpásmuvvat) TARGET (Ill) IF (*0
 COPY:msyn-ill-com-oahpásmuvvat (Com &SUGGEST) EXCEPT (Com &msyn-ill-com-oahpásmuvvat) TARGET (&msyn-ill-com-oahpásmuvvat) ;
 
     ## Sån la oahpástuvvam Iŋŋgáj
+    
 
+
+    # Pred when should be attr
+    #--------------------------
+SET CASE = Nom OR Gen OR Acc OR Ine OR Ill OR Ela OR Com OR Ess ;
+    
+ADD:msyn-pred-attr (&msyn-pred-attr) TARGET  A + CASE  IF (*1 N + CASE OR A + CASE BARRIER (A Attr)) ;
+
+    # Attr when should be pred
+    #------------------------
+ADD:msyn-attr-pred (&msyn-attr-pred)  TARGET A IF (0 Nom OR Ess) (1 EOS) ;
+    ## 
