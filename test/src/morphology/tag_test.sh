@@ -11,21 +11,14 @@ lexctags=$(mktemp -t giella-tag_test.XXXXXXXXXXX)
 roottags=$(mktemp -t giella-tag_test.XXXXXXXXXXX)
 trap 'rm -f "${lexctags}" "${roottags}"' EXIT
 
-# Define proper source dirs using Autotools:
-top_source_dir=../../..
-giella_shared_dir=/Users/Inga/langtech/git/giellalt/lang-smj/./../giella-shared
-
-exit 0
+# Ensure we're in langs/sme:
+# cd "$(dirname "$0")"/../../.. || exit 1
 
 if [[ $1 == "-v" ]]; then
     echo "$0: Are there tags not declared in root.lexc or misspelled?"
 fi
 
-cat $(top_source_dir)/src/morphology/clitics.lexc       \
-    $(top_source_dir)/src/morphology/compounding.lexc   \
-    $(top_source_dir)/src/morphology/affixes/*lexc      \
-    $(top_source_dir)/src/morphology/stems/*lexc        \
-    $(giella_shared_dir)/smi/src/morphology/stems/*lexc \
+sed -e '1,/LEXICON Root/ d' < ../../../src/fst/lexicon.tmp.lexc \
     | cut -d '!' -f1   \
     | grep ' ;'        \
     | cut -d ':' -f1   \
@@ -38,9 +31,10 @@ cat $(top_source_dir)/src/morphology/clitics.lexc       \
     | tr '#"%' '\n'    \
     | grep -E '(\+|@)' \
     | sort -u          \
-    | grep -E -v '^(\+|\+%|\+\/\-|\+Cmp\-|\+Cmp%\-|\@0|\@%)$' > "${lexctags}"
+    | grep -E -v '^(\+|\+%|\+\/\-|\+Cmp\-|\+Cmp%\-|\@0|\@%)$' \
+    > "${lexctags}"
 
-cut -d '!' -f1 $(top_source_dir)/src/morphology/root.lexc \
+cut -d '!' -f1 $srcdir/../../../src/fst/root.lexc \
     | cut -d ':' -f1                    \
     | sed 's/+/¢+/g'                    \
     | sed 's/@/¢@/g'                    \
@@ -59,5 +53,5 @@ elif [[ $1 == "-v" ]]; then
     echo "$0: No errors found."
 fi
 
-#cat src/morphology/clitics.lexc src/morphology/compounding.lexc src/morphology/affixes/*lexc |cut -d '!' -f1 | grep ';' |tr -s ' ' | sed 's/^ //' |grep ':' |cut -d ':' -f1 | sed 's/\+/¢+/g' | tr '¢' '\n' |sort | uniq -c |sort -n |less
-# visuell test: cat src/morphology/clitics.lexc src/morphology/compounding.lexc src/morphology/affixes/*lexc |cut -d '!' -f1 | grep ';' |tr -s ' ' | sed 's/^ //' |grep ':' |cut -d ':' -f1 | tr -d '0' | sed 's/\+/¢+/g' | tr '¢' '\n' |egrep -v '^(\+|\@|<)' |grep -v '^$' |less
+#cat src/fst/clitics.lexc src/fst/compounding.lexc src/fst/affixes/*lexc |cut -d '!' -f1 | grep ';' |tr -s ' ' | sed 's/^ //' |grep ':' |cut -d ':' -f1 | sed 's/\+/¢+/g' | tr '¢' '\n' |sort | uniq -c |sort -n |less
+# visuell test: cat src/fst/clitics.lexc src/fst/compounding.lexc src/fst/affixes/*lexc |cut -d '!' -f1 | grep ';' |tr -s ' ' | sed 's/^ //' |grep ':' |cut -d ':' -f1 | tr -d '0' | sed 's/\+/¢+/g' | tr '¢' '\n' |egrep -v '^(\+|\@|<)' |grep -v '^$' |less
