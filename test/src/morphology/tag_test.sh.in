@@ -36,7 +36,7 @@ sed -e '1,/LEXICON Root/ d' < ../../../src/fst/lexicon.tmp.lexc \
     | grep -E -v '^(\+|\+%|\+\/\-|\+Cmp\-|\+Cmp%\-|\@0|\@%)$' \
     > "${lexctags}"
 
-cut -d '!' -f1 $(top_source_dir)/src/fst/root.lexc \
+cut -d '!' -f1 $top_source_dir/src/fst/root.lexc \
     | cut -d ':' -f1                    \
     | sed 's/+/¢+/g'                    \
     | sed 's/@/¢@/g'                    \
