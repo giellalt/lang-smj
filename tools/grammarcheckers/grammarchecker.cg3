@@ -804,7 +804,7 @@ COPY:use-ellipsis ("…" &SUGGEST) EXCEPT ("...") TARGET (&ellipsis) ;
 ADD:msyn-sme_bastard_neg (&msyn-sme_bastard_neg) TARGET ("ij" Neg Ind Prs) IF (*1 PrfPrc BARRIER NOT-ADV-PCLE - ("mige") - Acc) ;
     ## Ij riek sjaddam nav ahte bloggiv åvdep vahkko.
     ## ja iv vissjam basádit  åvddål gå lidjiv biesskedam
-    ## valla danna iv dádjadum majdik ja ittjiv máhttám gähttjalimev dahkat@
+    ## valla danna iv dádjadum majdik ja ittjiv máhttám gähttjalimev dahkat
     ## Árjakluoven lij boadnjásj mij ittjij sidá hiejttet noajdástallamis ja	ij miededam	sån lij mejdek boasstot dahkam ,
     ## Gå ällobargge Jåhkåmåhkke gieldan	e adnám	vaj ålggorijkka viddnudahka ij galggam boahtet billat sijá lájddumijt
     ## Juska	ij mierredum	makkir vehkudagá máhtti ávkkiduvvat suodjalimguovlo sisbielen
@@ -846,7 +846,7 @@ COPY:msyn-soajttá-agree $$V-PERS + &SUGGEST EXCEPT (Sg3) TARGET (&msyn-soajttá
 ADD:msyn-liehket-congr-condsg2-condpl3 (&msyn-liehket-congr-condsg2-condpl3) TARGET (Cond Sg2) IF (*-1 (N Nom Pl) OR (Pron Nom Pl) OR (Pron Nom Pl3) BARRIER NOT-ADV-PCLE ) ;
 ADD:msyn-liehket-congr-condsg2-condpl3 (&msyn-liehket-congr-condsg2-condpl3) TARGET (Cond Sg2) IF (*-1 (N Nom Sg) BARRIER NOT-ADV-PCLE LINK *-1 CC BARRIER NOT-Attr LINK -1 (N Nom Sg) )  ;
     # vuorasulmutja lulu huvsov ja sujtov oadtjot.
-    ## Árran ja UiT lulu aktistattjat barggat.
+    ## Árran ja UiT lulu aktisattjat barggat.
 
 COPY:msyn-liehket-congr-condsg2-condpl3 (Pl3 &SUGGEST) EXCEPT (Sg2 &msyn-liehket-congr-condsg2-condpl3) TARGET (&msyn-liehket-congr-condsg2-condpl3) ;
 
@@ -910,3 +910,21 @@ COPY:msyn-pred-attr (Attr &SUGGEST) EXCEPT (Sg Nom &msyn-pred-attr) TARGET (&msy
 ADD:msyn-attr-pred (&msyn-attr-pred)  TARGET (A Attr) IF (1 EOS) ;
 
     ## ássje l {gássjelis} munji
+    
+    
+    
+    # mij instead of gut
+    #-------------------
+
+ADD:msyn-mij-gut (&msyn-mij-gut) TARGET ("mij") IF (*-1 (N Coll) OR (Sem/Hum) OR (Sem/Mal) OR (Sem/Fem) OR (Sem/Sur) OR (Pron Dem) OR (Pron Pers) OR (Pron Indef) BARRIER NOT-ADV-PCLE) ;
+COPY:msyn-mij-gut ("gut" &SUGGEST) EXCEPT ("mij" &msyn-mij-gut) TARGET (&msyn-mij-gut) ;  
+
+    ## Ja gåktu de manáj dáj guoktásijn {ma}£{gudi} galggin dunnuv viedtjat?
+    ## ja lidjin ájn vil tjállám bårde nali, láhpav dajda ma maŋŋela båhti.
+    ## Åja, ma fáŋŋgaj lidjin váldedum?
+    ## Dá gåjt dal moattes ma båhtin ma lidjin lahka berraha, 
+    ## Árjakluoven lij boadnjásj {mij}£{gut} ittjij sidá hiejttet noajdástallamis ja ittjij miededa sån lij mejdek boasstot dahkam.
+    ## Men de bådij dåktår badjen mij máhtij tyskav sáhkadit
+    ## lij dålåv dahkamin mij lij muv ráddna.
+    ## {”Måske-aksjåvnnå}${conc-sk-ssk|Måsske-aksjåvnnå}” åtsåj rudájt, ja biedjin {ulmutjav virggáj mij}£{x|ulmutjav virggáj gut}
+    
