@@ -742,7 +742,11 @@ SET CCCOMMA = CC OR COMMA ;
 	# remember that those are potential sentence boundaries, too
 	
 	
-
+ # Verbs
+ # -----
+ 
+# The set COPULAS is for predicative constructions
+LIST COPULAS = "liehket" "soajttet" "sjaddat" ; # more need to be added
 
 
 
@@ -913,18 +917,29 @@ ADD:msyn-attr-pred (&msyn-attr-pred)  TARGET (A Attr) IF (1 EOS) ;
     
     
     
-    # mij instead of gut
+    # mij instead of gut (all cases and persons, so also ma>gudi)
     #-------------------
+    
+    # relative use
 
 ADD:msyn-mij-gut (&msyn-mij-gut) TARGET ("mij") IF (*-1 (N Coll) OR (Sem/Hum) OR (Sem/Mal) OR (Sem/Fem) OR (Sem/Sur) OR (Pron Dem) OR (Pron Pers) OR (Pron Indef) BARRIER NOT-ADV-PCLE) ;
-COPY:msyn-mij-gut ("gut" &SUGGEST) EXCEPT ("mij" &msyn-mij-gut) TARGET (&msyn-mij-gut) ;  
-
     ## Ja gåktu de manáj dáj guoktásijn {ma}£{gudi} galggin dunnuv viedtjat?
     ## ja lidjin ájn vil tjállám bårde nali, láhpav dajda ma maŋŋela båhti.
-    ## Åja, ma fáŋŋgaj lidjin váldedum?
     ## Dá gåjt dal moattes ma båhtin ma lidjin lahka berraha, 
     ## Árjakluoven lij boadnjásj {mij}£{gut} ittjij sidá hiejttet noajdástallamis ja ittjij miededa sån lij mejdek boasstot dahkam.
     ## Men de bådij dåktår badjen mij máhtij tyskav sáhkadit
-    ## lij dålåv dahkamin mij lij muv ráddna.
     ## {”Måske-aksjåvnnå}${conc-sk-ssk|Måsske-aksjåvnnå}” åtsåj rudájt, ja biedjin {ulmutjav virggáj mij}£{x|ulmutjav virggáj gut}
+
+	# interrogative use
+	
+ADD:msyn-mij-gut (&msyn-mij-gut) TARGET ("mij" Nom) IF (*1 COPULAS BARRIER NOT-ADV-PCLE LINK *1 Sem/Hum + N BARRIER NOT-NPMOD) ;      
+    ## lij dålåv dahkamin mij lij muv ráddna. Subj-interr-hum COPULA Spred-Hum
     
+COPY:msyn-mij-gut ("guhti" &SUGGEST) EXCEPT ("mij" &msyn-mij-gut) TARGET (&msyn-mij-gut) ;  
+    
+    ## Åja, ma fáŋŋgaj lidjin váldedum? válldet fáŋŋgaj + OBJ-Hum
+    ## Åja, ma lidjin váldedum fáŋŋgaj?    
+    
+
+
+
