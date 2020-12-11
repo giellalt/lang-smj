@@ -22,5 +22,6 @@ do
  do
    echo "${lemma}${form}" | $LOOKUP $GTLANGS/lang-smj/src/generator-gt-norm.hfstol
  done
+ rm -f $L_FILE
 done
 
