@@ -78,6 +78,15 @@
 * *boassjojn:* `boassjo+N+Sg+Com`
 * *boassjop:* `boassjo+N+Der/Comp+A+Sg+Nom`
 
+ LEXICON SJIEVNNJET  Like GAHPER but with comparatives. Odd-syllable C-final noun without cg, no vowchange, no short Ess.
+
+
+*stiebil # Odd-syllable test examples:*
+* *sjievnnjet:* `sjievnnjet+N+Sg+Nom`
+* *sjievnnjedis:* `sjievnnjet+N+Sg+Ela`
+* *sjievnnjedabbo* `sjievnnje+N+Der/Comp+A+Sg+Nom`
+* *sjievnnjedamos* `sjievnnje+N+Der/Superl+A+Sg+Nom`
+
  LEXICON ÅLGGO  Like MUORRA, but with comparatives. This lexicon was previously without sg ill/ine/elat, but these nouns can be conjugated for regular location cases. However, "adverbs" like ålggot (from outside), nuorttan (at north), oarjas (to south), etc., are more commonly used to denote location/direction (should therefore maybe consider subing the regular location case forms).
 
 
@@ -108,6 +117,7 @@
 * *båvså:* `båvså+N+Pl+Nom`
 * *båvsåjt:* `båvså+N+Pl+Acc`
 
+ LEXICON LÅHTSASA  Like GAHPER, only in plural. Without derivations, these should maybe be added. 
 
 
 ### Partially assimilated loanwords. The first part of the word is "citation borrowed" and keeps its norwegian/swedish orthography, only the last two syllables are adapted to sami.
@@ -509,6 +519,17 @@
 * *grámmas:* `grámma+N+Sg+Ela`
 
 
+
+ LEXICON TOPOGRÁFFA_CMP_INFL  Recent loanwords on -áfºfa with long and short compound-form
+
+
+
+
+*grámma # Even-syllable test examples:*
+* *telegráffa:* `telegráffa+N+Sg+Nom`
+* *telegráffas:* `telegráffa+N+Sg+Ela`
+
+
  LEXICON SYSTIEBMA_CMP_INFL  Recent loanwords on -ebma/-iebma with long and short compound-form. -em in NOR and SWE. See comments about the -ie/-e dialtags in ALFABIEHTTA. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
 
@@ -556,6 +577,7 @@
 
 
  LEXICON VARIÁNNTA_CMP_INFL  Recent loanwords on -ánnta with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
+
 
 
 

@@ -530,7 +530,6 @@ The following two rules constitute a <= / => rule pair.
 
 
 
-
 **e:å in certain stem types with å as root vowel**  
 
 
