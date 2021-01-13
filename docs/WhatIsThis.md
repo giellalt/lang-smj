@@ -9,9 +9,9 @@ use in a Lule Saami spellchecker for several years.
 ----
 
 The structure of the source file catalogue is the same for all
-the languages, it is documented [here|/infra/infraremake/NewinfraCatalogues.html].
+the languages, it is documented [here](https://giellalt.uit.no/infra/infraremake/NewinfraCatalogues.html).
 
 These pages document how to build the parsers. If you want to know
 how to use them on the command line, read the
-[How to use the morphological parsers|/tools/docu-sme-manual.html] page.
+[How to use the morphological parsers](https://giellalt.uit.no//tools/docu-sme-manual.html) page.
 
