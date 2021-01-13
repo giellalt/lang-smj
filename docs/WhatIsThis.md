@@ -1,5 +1,3 @@
-
-
 This is a grammatical analyser for Lule Saami.
 
 It has a good coverage of Lule Saami, and has been in
