@@ -1,8 +1,13 @@
 
 # Lule Sámi morphological analyser
 
-
 Non-source documentation can be found [here](j-smj.md).
+
+## Projects
+
+- grammar checker
+
+## In-source documentation:
 * [root-morphology.md](root-morphology.md)
 * [acronyms-affixes.md](acronyms-affixes.md)
 * [adjectives-affixes.md](adjectives-affixes.md)
