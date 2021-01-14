@@ -1,4 +1,4 @@
-[What is this?](WhatIsThis.html)
+[What is this?](WhatIsThis.md)
 
 Dynamic documentation
 =====================
@@ -31,9 +31,9 @@ Discussions on issues common for Saami languages
 Background documentation
 ========================
 
--   [Documentation of the twol file](docu-smj-twol.html)
--   [Old documentation of the lexicon files](docu-smj-lex.html)
--   [Old documentation](docu-smj-preprocessor.html) on the preprocessor
+-   [Documentation of the twol file](docu-smj-twol.md)
+-   [Old documentation of the lexicon files](docu-smj-lex.md)
+-   [Old documentation](docu-smj-preprocessor.md) on the preprocessor
     files
--   [Lule Saami bugs and errors](docu-smj-bugs.html)
--   [Lule Saami normativity issues](normativity-issues.html)
+-   [Lule Saami bugs and errors](docu-smj-bugs.md)
+-   [Lule Saami normativity issues](normativity-issues.md)
