@@ -10,7 +10,7 @@ not complete. Status quo for the lexicon files is as follows (030310):
 
 The file structure for the lexicon files is the same as for the other
 Saami lgs, cf. the [North Sámi
-flowchart](../sme/docu-sme-flowchart.html).
+flowchart](https://giellalt.uit.no/lang/sme/docu-sme-flowchart.html).
 
 Lexicons
 ========

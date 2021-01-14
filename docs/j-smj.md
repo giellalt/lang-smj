@@ -3,17 +3,13 @@
 Dynamic documentation
 =====================
 
--   [Source file documentation](Links.html)
--   Source files:
-    [stems](https://gtsvn.uit.no/langtech/trunk/langs/smj/src/morphology/stems/)
-    /
-    [affixes](https://gtsvn.uit.no/langtech/trunk/langs/smj/src/morphology/affixes/)
-    /
-    [syntax](https://gtsvn.uit.no/langtech/trunk/langs/smj/src/syntax/)
-    /
-    [twolc](https://gtsvn.uit.no/langtech/trunk/langs/smj/src/phonology/smj-phon.twolc)
-    /
-    [yaml](https://gtsvn.uit.no/langtech/trunk/langs/smj/test/src/gt-norm-yamls/)
+-   [Source file documentation](index.md)
+-   Source files: 
+    [stems  ](https://github.com/giellalt/lang-smj/tree/develop/src/morphology/stems/) /
+    [affixes](https://github.com/giellalt/lang-smj/tree/develop/src/morphology/affixes/) /
+    [syntax ](https://github.com/giellalt/lang-smj/tree/develop/src/syntax/) /
+    [twolc  ](https://github.com/giellalt/lang-smj/tree/develop/src/phonology/smj-phon.twolc) /
+    [yaml   ](https://github.com/giellalt/lang-smj/tree/develop/test/src/gt-norm-yamls/)
 -   Generation of:
     [paradigms](http://giellatekno.uit.no/cgi/p-smj.smj.html) /
     [text](http://giellatekno.uit.no/cgi/d-smj.smj.html) /
@@ -30,7 +26,7 @@ Discussions on issues common for Saami languages
 ================================================
 
 -   [Discussions on improving our linguistic
-    analysis](../smi/index.html)
+    analysis](https://giellalt.uit.no/lang/smi/index.html)
 
 Background documentation
 ========================
