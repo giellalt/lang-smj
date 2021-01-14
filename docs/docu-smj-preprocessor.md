@@ -20,7 +20,7 @@ written in perl, `gt/script/preprocess`.
 
 Preprocessing is done by the perl script `gt/script/preprocess`, which
 is language-independent. The script is documented
-[here](../../ling/preprocessor.html). The language dependent part of the
+[here](https://giellalt.uit.no/ling/preprocessor.html). The language dependent part of the
 script shall be done via the file `smj/bin/abbr.txt`
 
 ### Handling abbreviations
@@ -52,7 +52,7 @@ Initial capitalization
 There is a language independent
 [inituppercase.regex](https://gtsvn.uit.no/langtech/trunk/gt/common/src/inituppercase.regex)
 file. Cf. [the documentation for initial
-capitalization](../sme/docu-sme-preprocessor.html#ini) written for North
+capitalization](https://giellalt.uit.no/lang/sme/docu-sme-preprocessor.html#ini) written for North
 Saami.
 
 Capitalization of whole words
