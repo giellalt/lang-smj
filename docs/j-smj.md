@@ -5,10 +5,10 @@ Dynamic documentation
 
 -   [Source file documentation](index.md)
 -   Source files: 
-    [stems  ](https://github.com/giellalt/lang-smj/tree/develop/src/morphology/stems/) /
-    [affixes](https://github.com/giellalt/lang-smj/tree/develop/src/morphology/affixes/) /
-    [syntax ](https://github.com/giellalt/lang-smj/tree/develop/src/syntax/) /
-    [twolc  ](https://github.com/giellalt/lang-smj/tree/develop/src/phonology/smj-phon.twolc) /
+    [stems  ](https://github.com/giellalt/lang-smj/tree/develop/src/fst/stems/) /
+    [affixes](https://github.com/giellalt/lang-smj/tree/develop/src/fst/affixes/) /
+    [syntax ](https://github.com/giellalt/lang-smj/tree/develop/src/cg3/) /
+    [twolc  ](https://github.com/giellalt/lang-smj/tree/develop/src/fst/smj-phon.twolc) /
     [yaml   ](https://github.com/giellalt/lang-smj/tree/develop/test/src/gt-norm-yamls/)
 -   Generation of:
     [paradigms](http://giellatekno.uit.no/cgi/p-smj.smj.html) /
