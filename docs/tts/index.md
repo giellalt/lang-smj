@@ -5,6 +5,7 @@ Mål:
 - alt som open kjeldekode
 - to røyster (mann og dame)
 - bør fungera like bra i Sverige som i Noreg
+- rameverket som vi tek fram for smj, skal nyttast for å gjenskapa sme-tts som open kjeldekode
 
 # Møte
 
