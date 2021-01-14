@@ -46,36 +46,42 @@ Test 1   lex Wf-total   Wf-tkn  %-recall Tytot  Wf-typ %-recall
       <p>Test 1 does not cover proper nouns, as they are not added to the
          lexicon yet. The commands used to get the numbers are:
       </p>
-      <dl>
-         <dt>The file command (below referred to as <em>ccat file</em></dt>
-         <dd>ccat zcorp/gt/smj/bible/nt/lule_sami_new_testament.html.xml |
+      <ul>
+         <li><strong>The file command (below referred to as <em>ccat file</em>:
+               </strong><br>ccat zcorp/gt/smj/bible/nt/lule_sami_new_testament.html.xml |
             ...
-         </dd>
-         <dt>Wftot (total number of wordform types)</dt>
-         <dd>ccat file | preprocess | grep -v '^[A-Z]' | wc -l</dd>
-         <dt>Wf-tkn (total number of wordform tokens)</dt>
-         <dd>Wftot - Non_recognised_wf</dd>
-         <dt>Non_recognised_wf:</dt>
-         <dd>ccat zcorp/gt/smj/bible/nt/lule_sami_new_testament.html.xml |
+         </li>
+         <li><strong>Wftot (total number of wordform types):
+               </strong><br>ccat file | preprocess | grep -v '^[A-Z]' | wc -l
+         </li>
+         <li><strong>Wf-tkn (total number of wordform tokens):
+               </strong><br>Wftot - Non_recognised_wf
+         </li>
+         <li><strong>Non_recognised_wf::
+               </strong><br>ccat zcorp/gt/smj/bible/nt/lule_sami_new_testament.html.xml |
             preprocess | grep -v '^[A-Z]' | lookup -flags mbTT -utf8 bin/smj.fst
             | grep '\?' | grep '[a-z]' | wc -l
-         </dd>
-         <dt>Wf-tkn =</dt>
-         <dd>Wftot - Non_recognised_wf</dd>
-         <dt>%-recall =</dt>
-         <dd>Wf-tkn * 100 / Wftot</dd>
-         <dt>Tytot (Total number of wordform types):</dt>
-         <dd>ccat file | preprocess | grep -v '^[A-Z]' | sort | uniq | wc
+         </li>
+         <li><strong>Wf-tkn =:
+               </strong><br>Wftot - Non_recognised_wf
+         </li>
+         <li><strong>%-recall =:
+               </strong><br>Wf-tkn * 100 / Wftot
+         </li>
+         <li><strong>Tytot (Total number of wordform types)::
+               </strong><br>ccat file | preprocess | grep -v '^[A-Z]' | sort | uniq | wc
             -l
-         </dd>
-         <dt>Non_recognised_wt (Number of non-analysed wordform types:</dt>
-         <dd>ccat file | preprocess | sort | uniq |lookup -flags mbTT -utf8
+         </li>
+         <li><strong>Non_recognised_wt (Number of non-analysed wordform types::
+               </strong><br>ccat file | preprocess | sort | uniq |lookup -flags mbTT -utf8
             bin/smj.fst | grep '\?' | grep -v CLB | wc -l
-         </dd>
-         <dt>Wf-typ (Number of recognised wordform types) =</dt>
-         <dd>Tytot - Non_recognised_wt</dd>
-         <dt>%-recall =</dt>
-         <dd>Wf-typ * 100 / Tytot</dd>
-      </dl>
+         </li>
+         <li><strong>Wf-typ (Number of recognised wordform types) =:
+               </strong><br>Tytot - Non_recognised_wt
+         </li>
+         <li><strong>%-recall =:
+               </strong><br>Wf-typ * 100 / Tytot
+         </li>
+      </ul>
    </body>
 </html>
