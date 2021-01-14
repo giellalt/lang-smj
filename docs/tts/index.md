@@ -8,4 +8,4 @@ Mål:
 
 # Møte
 
-- [oppstartsmøte]() med heile prosjektgruppa
+- [oppstartsmøte](meetings/2021-01-13.md) med heile prosjektgruppa
