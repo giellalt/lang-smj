@@ -1,7 +1,8 @@
 
 # Lule Sámi morphological analyser
 
-Non-source documentation can be found [here](j-smj.md).
+The main documentation can be found [here](j-smj.md), including old
+documentation that needs cleanup.
 
 ## Projects
 
