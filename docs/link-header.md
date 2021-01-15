@@ -1,4 +1,5 @@
-Non-source documentation can be found [here](j-smj.md).
+Non-source documentation can be found [here](j-smj.md), including old
+documentation that needs cleanup.
 
 ## Projects
 
