@@ -9,4 +9,5 @@ Mål:
 
 # Møte
 
-- [oppstartsmøte](meetings/2021-01-13.md) med heile prosjektgruppa
+- [oppstartsmøte ](meetings/2021-01-13.md) med heile prosjektgruppa
+- [møte 21.1.2021](meetings/2021-01-21.md)
