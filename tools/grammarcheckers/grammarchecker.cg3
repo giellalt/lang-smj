@@ -724,11 +724,15 @@ SET REAL-CLB = CLB - COMMA ;
 #!! !Border sets and their complements
 # ---------------------------------
 
+LIST MO = "gånnå" "gåggu" "goassa" "gåsi" "gåk" "gåktu" ("makkir láhkáj ládje" Adv) "makkár" "man" "makkir" Pron Rel) "manen" "man" "mav" "mat" "mavga" ("nav" @CVP) (V Qst); # add more, work with this list
+
 SET CP = (Pron Interr) OR (Pron Rel) ;
 
 LIST BOUNDARYSYMBOLS =  "\;" ":" "-" "–" ;
 
 SET S-BOUNDARY = BOUNDARYSYMBOLS OR (@CVP) ;
+
+SET S-BOUNDARY-OPEN = S-BOUNDARY OR MO OR CS OR CC OR CP ;
 
 SET BOC = S-BOUNDARY OR BOS ;
 SET BOC-PUNCT = BOC - ("-") - ("–") ;
@@ -947,4 +951,19 @@ COPY:msyn-pass-active (&SUGGEST) EXCEPT (Der/PassL &msyn-pass-active) OR (Der/Pa
 
     ## Danna ittjiv dádjaduvá majdik
     ## mån ittjiv dádjaduvá majdik
+    
+    
+    
+    # real word error, missing j for -it verbs
+    # ----------------------------------------
+    
+LIST IT-V = (".*it"r);
+
+
+ADD:real-ActioGen-PrtPl1 (&real-ActioGen-PrtPl1) TARGET IT-V - Gram/3syll IF (0 (Actio Gen)) (NEGATE *0 VFIN BARRIER S-BOUNDARY-OPEN ) ; 
+
+COPY:real-ActioGen-PrtPl1 (Ind Prt Pl1 &SUGGEST) EXCEPT (Actio Gen) TARGET (&real-ActioGen-PrtPl1) ;
+
+    # mij hábbmima ådå njuolgadusáv; uddni bájttá biejvve.
+    # viehkedima Lindav ådå goahtáj jåhtet
 
