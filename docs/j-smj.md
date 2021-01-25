@@ -8,7 +8,7 @@ Dynamic documentation
     [stems  ](https://github.com/giellalt/lang-smj/tree/develop/src/fst/stems/) /
     [affixes](https://github.com/giellalt/lang-smj/tree/develop/src/fst/affixes/) /
     [syntax ](https://github.com/giellalt/lang-smj/tree/develop/src/cg3/) /
-    [twolc  ](https://github.com/giellalt/lang-smj/tree/develop/src/fst/smj-phon.twolc) /
+    [twolc  ](https://github.com/giellalt/lang-smj/tree/develop/src/fst/phonology.twolc) /
     [yaml   ](https://github.com/giellalt/lang-smj/tree/develop/test/src/gt-norm-yamls/)
 -   Generation of:
     [paradigms](http://giellatekno.uit.no/cgi/p-smj.smj.html) /
