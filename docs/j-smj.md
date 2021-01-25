@@ -18,7 +18,7 @@ Using the analysers
 ===================
 
 -   In the terminal: analyse words by writing `usmj`, generate with
-    `dsmj`
+    `dsmj` if you use the Xerox tools; `husmj` and `hdsmj` if you are using the Hfst tools.
 -   For more info, see [How to use the morphological
     parsers](/tools/docu-sme-manual.html)
 
