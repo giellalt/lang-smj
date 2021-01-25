@@ -234,7 +234,7 @@ The first part of the component may be ..
 * **+Gram/NumNoAbbr**:  Transitive abbreviations for which numerals
 * **+Gram/TIAbbr**:  Both transitive and intransitive abbreviation
 * **+Gram/IAbbr**:  Intransitive abbreviation (it takes no argument)
-* **+Gram/3syll**: trisyllabic verbs
+* **+Gram/3syll**:  trisyllabic verbs
 * **+Gram/SentInit**:  copula verb le-
 
 ## Semantic tags to help disambiguation & syntactic analysis
@@ -545,7 +545,7 @@ These tags should always be located just before the POS tag.
  * +Sem/Group_Sign = 
  * +Sem/Group_State				 = 
  * +Sem/Group_Txt = 
- * +Sem/Hum-abtsr = 
+ * +Sem/Hum-abstr = 
  * +Sem/Hum_Lang = 
  * +Sem/Hum_Lang_Plc = 
  * +Sem/Hum_Lang_Time = 
