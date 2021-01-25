@@ -32,6 +32,7 @@ Documentation can be found at:
 
 -   <https://giellalt.uit.no/lang/smj/j-smj.html>
 -   <https://giellalt.uit.no/index.html>
+-   <https://giellalt.github.io/lang-smj>
 
 Core dependencies
 -----------------
