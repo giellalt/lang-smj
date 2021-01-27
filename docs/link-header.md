@@ -4,7 +4,7 @@ documentation that needs cleanup.
 ## Projects
 
 - [grammar checker](gramcheck/index.md)
-- [text-to-speech](tts/index.md)
+- [text-to-speech](https://giellalt.github.io/speech-smj/)
 
 ## Speller status
 
