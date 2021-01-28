@@ -18,6 +18,9 @@
 
 
 
+
+
+
  LEXICON ALMME  Same as MUORRA, but with special -LASJ derivation. For noun that have strong grade -lasj. "Almmelasj" instead of "almálasj" which is Err/Orth-taged..
 
 
@@ -123,6 +126,14 @@
 ### Partially assimilated loanwords. The first part of the word is "citation borrowed" and keeps its norwegian/swedish orthography, only the last two syllables are adapted to sami.
 
  LEXICON MUORRA_LOAN   For loan words that do not fit in a loan word lexicon because of wrong short cmp, or partially assimilated loanwords without separate lexicas (medállja), or for Err/Orths assimilated with cg but with other errors. This lexicon gives no short compound forms. Potential short cmps must therefore be hard coded into the FirstComponent lexicon. This also for compounded words with partially assimilated loan words. Examples of problem words: sirup>siráhppa og stetoskop>stetoskoahppa.
+
+
+ LEXICON MUORRA_LOAN_NO_LASJ   Like MUORRA_LOAN without -lasj derivation. This lexicon is made for Sem/Hum words like økonåvmmå, biolåvggå, agronåvmmå and so on. We don't want agronåvmålasj since it means something else than "agronomisk", the meaning of agronåvmålasj is barely used but messed up with "agronomijjalasj"
+
+
+
+
+
 
  LEXICON A_CMP_INFL   Sub-forms. Lexicon for giving sub-variation conjugation by simply adding an -a to the norwegian/swedish word. No cg. Like "alkohola" and "agronoma". These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
@@ -273,7 +284,7 @@
 
 
 
- LEXICON AGRONÅVMMÅ_CMP_INFL  Recent loanwords on -åvmma with long and short compound-form. The old stadarization form  -oma that does not follow lulesami rules is sub taged.
+ LEXICON AGRONÅVMMÅ_CMP_INFL  Recent loanwords on -åvmma with long and short compound-form. -lasj derivation is error taged. The old stadarization form  -oma that does not follow lulesami rules is sub taged.
 
 
 
@@ -283,7 +294,7 @@
 * *agronåvmås:* `agronåvmmå+N+Sg+Ela`
 
 
- LEXICON DEMAGÅVGGÅ_CMP_INFL  Recent loanwords ending on -og with long and short compound form. Assimilated to smj as -åvggå. The old stadarization -oga that does not follow lulesami rules is sub taged.
+ LEXICON DEMAGÅVGGÅ_CMP_INFL  Recent loanwords ending on -og with long and short compound form. Assimilated to smj as -åvggå. -lasj derivation is error taged. The old stadarization -oga that does not follow lulesami rules is sub taged.
 
 
 *pedagoga # Even-syllable test examples:*
@@ -596,7 +607,7 @@
 
 
 
- LEXICON TURISSTA_CMP_INFL  Recent loanwords on -ssta with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
+ LEXICON TURISSTA_CMP_INFL  Recent loanwords on -ssta with long and short compound-form. -lasj derivation is error taged.  Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
 
 
