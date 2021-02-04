@@ -1039,4 +1039,24 @@ COPY:real-ActioGen-PrtPl1 (Ind Prt Pl1 &SUGGEST) EXCEPT (Actio Gen) TARGET (&rea
 
     # mij hábbmima ådå njuolgadusáv; uddni bájttá biejvve.
     # viehkedima Lindav ådå goahtáj jåhtet
+    
+    
+    
+    # Word order, neg before subject
+    # ----------------------------------------
+    
+LIST SG-V-SUBJ = Sg Sg3 ;
+LIST PL-V-SUBJ = Pl Pl3 ;  
+    
+SET V-SUBJ-CONGR = SG-V-SUBJ OR PL-V-SUBJ ;
+    
+ADD:syn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + $$V-PERS IF (1 (Pron Nom)  + $$V-PERS ) (NEGATE *1 ("?") LINK 1 EOS)  ; 
 
+ADD:syn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + Sg3 IF (1 (N Sg Nom)) (NEGATE *1 ("?") LINK 1 EOS) ; 
+
+ADD:syn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + Pl3 IF (1 (N Pl Nom)) (NEGATE *1 ("?") LINK 1 EOS) ; 
+
+
+    ## gæhttjat vaj ittjij sámegiella tijmaj ålggolin gullu.
+    #$ Dárogiella ij ga sámegiella le anon.1
+    
