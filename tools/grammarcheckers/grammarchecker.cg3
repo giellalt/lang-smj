@@ -830,6 +830,7 @@ LIST COPULAS = "liehket" "soajttet" "sjaddat" ; # more need to be added
 
 #!! Error tags
 
+LIST &syn-subj-before-neg = &syn-subj-before-neg ;
 LIST &msyn-sme_bastard_neg = &msyn-sme_bastard_neg ;
 LIST &msyn-sme_bastard_neg2 = &msyn-sme_bastard_neg2 ;
 LIST &msyn-soajttá-AUX = &msyn-soajttá-AUX ;
@@ -837,6 +838,7 @@ LIST &msyn-liehket-congr-condsg2-condpl3 = &msyn-liehket-congr-condsg2-condpl3 ;
 LIST &msyn-congr-PrtSg3-PrsPl3 = &msyn-congr-PrtSg3-PrsPl3 ;
 LIST &msyn-pred-attr = &msyn-pred-attr ;
 LIST &SUGGEST = &SUGGEST ;
+
 
 LIST &err-agr = &err-agr ;
 LIST &err-gen-po = &err-gen-po ;
@@ -1047,16 +1049,21 @@ COPY:real-ActioGen-PrtPl1 (Ind Prt Pl1 &SUGGEST) EXCEPT (Actio Gen) TARGET (&rea
     
 LIST SG-V-SUBJ = Sg Sg3 ;
 LIST PL-V-SUBJ = Pl Pl3 ;  
+LIST NEG-PRON = Foc/Neg-k ("nágin") ;
     
 SET V-SUBJ-CONGR = SG-V-SUBJ OR PL-V-SUBJ ;
     
-ADD:syn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + $$V-PERS IF (1 (Pron Nom)  + $$V-PERS ) (NEGATE *1 ("?") LINK 1 EOS)  ; 
+ADD:syn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + $$V-PERS IF (1 (Pron Nom) + $$V-PERS LINK NOT 0 NEG-PRON OR ("ietja")) (*1 ConNeg BARRIER Rel OR Neg OR CS)  (NEGATE *1 ("?") LINK 1 EOS)  ;  
+	#$ Oahppe e ietja diede.
+    #$ Dile li sierraláhkáj, ja ij aktak åtsådallamijs máhte sirdeduvvat mekánalattjat sáme guovlojda. 
+    
 
-ADD:syn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + Sg3 IF (1 (N Sg Nom)) (NEGATE *1 ("?") LINK 1 EOS) ; 
+ADD:syn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + Sg3 IF (1 (N Sg Nom)) (*1 ConNeg BARRIER Rel OR Neg OR CS) (NEGATE *1 ("?") LINK 1 EOS) ;
+	#$ Oslon le suohkanstivrraválgga ja stádaguovlloválgga, valla 	ij fylkadiggeválgga.  
 
-ADD:syn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + Pl3 IF (1 (N Pl Nom)) (NEGATE *1 ("?") LINK 1 EOS) ; 
+ADD:syn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + Pl3 IF (1 (N Pl Nom)) (*1 ConNeg BARRIER Rel OR Neg OR CS)  (NEGATE *1 ("?") LINK 1 EOS) ; 
 
+MOVE:syn-subj-before-neg &syn-subj-before-neg AFTER (1 (N Nom) OR (Pron Nom));
 
     ## gæhttjat vaj ittjij sámegiella tijmaj ålggolin gullu.
-    #$ Dárogiella ij ga sámegiella le anon.1
-    
+    #$ Dárogiella ij ga sámegiella le anon.
