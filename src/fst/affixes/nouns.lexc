@@ -59,7 +59,6 @@ LEXICON MUORRAInfl_Err/Der_LASJ
  +Err/Orth+Err/Der:»Q1  DenominalAdjsV2      ; !-lasj weak grade but without vowel changes, makes ájgelasj 
 
 
-
 LEXICON ALMME !!= @CODE@ Same as MUORRA, but with special -LASJ derivation. For noun that have strong grade -lasj. "Almmelasj" instead of "almálasj" which is Err/Orth-taged..
 
  +N:%>   N-EVENSTRONGSTEM     ;
@@ -92,8 +91,8 @@ LEXICON NOADE !!= @CODE@ Even stem without cg. OBS: No nouns with invisible 3>2 
 
 LEXICON LINNJA !!= @CODE@ Only for the loan word "linnja". Because it's a loan word, the "nnj" is pronounced "nn-j", and therefore does not behave as the regular lule sami "nj" sound and therefore it doesn't follow the rule that makes a:á in 1. grade with short vowel in first syllable (It isn't as linnja-linjáv or birás-birrasav). This word is therefore sub taged. Norwegian/Swedish words with a short "i" followed by two different consonants are assimilated to lule sami in different manners accoring to the consonants in question, but the word is always on grade III (Morén-Duolljá 2014). Both err/orth and correct form is part of this lexicon. 
 
-                      +N:nºnja   MUORRAInfl ;
-                      +N:nºnja%> MUORRACmp  ;
+                     +OLang/NOB+N:nºnja   MUORRAInfl ;
+                     +OLang/NOB+N:nºnja%> MUORRACmp  ;
             +Err/Orth+N+OLang/NOB:nja%>  N-EVENWEAKSTEM       ; ! makes the "linja" that should become "linjá" 
             +Err/Orth+N+OLang/NOB:nja»   DenominalNounsMUORRA ;	! makes the "linja" that should become "linjá" 
             +Err/Orth+N+OLang/NOB:nja»   DenominalAdjsV1      ; ! makes the "linja" that should become "linjá" 
@@ -402,21 +401,6 @@ LEXICON MUORRA_LOAN_NO_LASJ !!= @CODE@  Like MUORRA_LOAN without -lasj derivatio
  +N+OLang/NOB+Err/Orth+Err/Der:»Q1  DenominalAdjsV2      ; !-lasj weak grade but without vowel changes, makes ájgelasj
  
  
-
-
-LEXICON A_CMP_INFL !!= @CODE@  Sub-forms. Lexicon for giving sub-variation conjugation by simply adding an -a to the norwegian/swedish word. No cg. Like "alkohola" and "agronoma". These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
-
-           :a%>  N-EVENSTRONGSTEM     ;
-           :a%>  N-EVENWEAKSTEM       ;
-           :a»   DenominalNounsMUORRA ;
-           :a»   DenominalAdjsV1      ; !-dibme adj caritive derivation
-           :a»   DenominalAdjsV2      ;
- +Cmp/SgNom:a%>  R                    ;
- +Cmp/SgGen:a%>  R                    ;
- +Cmp/PlGen:a%>j R                    ;
-
-
-
 LEXICON KAFIEDJA
  +N+OLang/NOB: KAFIEDJA_CMP_INFL ;
 
@@ -949,7 +933,6 @@ LEXICON AREÁLLA_CMP_INFL !!= @CODE@ Recent loanwords on -álla with long and sh
             :álla      MUORRACmp            ; 
    +Err/Orth:%>al      A_CMP_INFL           ; !makes old "areala"
 
-
 !!€gt-norm: gasskavokálla # Even-syllable test
 !!€ gasskavokálla:                 gasskavokálla+N+Sg+Nom
 !!€ gasskavokálas:                 gasskavokálla+N+Sg+Ela
@@ -1036,10 +1019,10 @@ LEXICON TABÆLLA
 
 LEXICON TABÆLLA_CMP_INFL !!= @CODE@ Recent loanwords on -älºla with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
- +CmpNP/Pref:ell%>      R                    ;
-            :ælºla      MUORRAInfl           ;
-            :ælºla      MUORRACmp            ;
-   +Err/Orth:%>ell      A_CMP_INFL           ; !makes old "tabella" without cg.
+          +CmpNP/Pref:ell%>      R                    ;
+                     :ælºla      MUORRAInfl           ;
+                     :ælºla      MUORRACmp            ;
+   +Err/Orth+N+Sg+Nom:%>ella     K                    ; !makes old "tabella"
 
 !!€gt-norm: flotælla # Even-syllable test
 !!€ flotælla:                 flotælla+N+Sg+Nom
@@ -1055,6 +1038,8 @@ LEXICON TELEGRÁMMA_CMP_INFL !!= @CODE@ Recent loanwords on -ámºma with long a
  +CmpNP/Pref:am%>       R                    ;
             :ámºma      MUORRAInfl           ;
             :ámºma      MUORRACmp            ;
+
+   +Err/Orth:ámma       MUORRA_ERR/ORTH      ;
    +Err/Orth:am         A_CMP_INFL           ; ! makes old telegrama
 
 !!€gt-norm: grámma # Even-syllable test
@@ -1071,8 +1056,7 @@ LEXICON TOPOGRÁFFA_CMP_INFL !!= @CODE@ Recent loanwords on -áfºfa with long a
             :áfºfa      MUORRAInfl           ;
             :áfºfa      MUORRACmp            ;
             
-   +Err/Orth:áffa       MUORRAInfl           ; ! makes telegráffa
-   +Err/Orth:áffa       MUORRACmp            ;
+   +Err/Orth:áffa       MUORRA_ERR/ORTH      ;
    +Err/Orth:af         A_CMP_INFL           ; ! makes old telegrafa
    +Err/Orth:áf         A_CMP_INFL           ; ! makes old telegráfa
 
@@ -1287,6 +1271,78 @@ LEXICON C_ILL_AJ_BADASS !!= @CODE@ Badly or wrongly assimilated words. Last lett
 !!€ kálsium        kálsium+N+Sg+Nom
 !!€ kálsiumas      kálsium+N+Sg+Ela
 !!€ kálsiumaj      kálsium+N+Sg+Ill
+
+
+!! ! Error-lexicons
+! - - - - - -
+
+LEXICON A_CMP_INFL !!= @CODE@  Sub-forms. Lexicon for giving sub-variation conjugation by simply adding an -a to the norwegian/swedish word. No cg. Like "alkohola" and "agronoma". These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
+
+           :a%>  N-EVENSTRONGSTEM     ;
+           :a%>  N-EVENWEAKSTEM       ;
+           :a»   DenominalNounsMUORRA ;
+           :a»   DenominalAdjsV1      ; !-dibme adj caritive derivation
+           :a»   DenominalAdjsV2      ;
+ +Cmp/SgNom:a%>  R                    ;
+ +Cmp/SgGen:a%>  R                    ;
+ +Cmp/PlGen:a%>j R                    ;
+
+
+LEXICON MUORRA_ERR/ORTH != @CODE@ Like MUORRA, but without nominative, illative and essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag. Entries like "ålggo" have no grade alternation, a common error is writing it like it has. 
+           :%>Q1 N-EVENWEAKSTEM       ; ! Weak grade Q1
+           :»    DenominalNounsMUORRA ;
+           :»    DenominalAdjsV1      ; !-dibme adj caritive derivation
+           :»X7  DenominalAdjsV2      ; !-lasj with weak grade and vowel changes, ájgálasj
+           :»Q1  DenominalAdjsV2      ; !-lasj weak grade but without vowel changes, makes ájgelasj 
+ +Cmp/SgGen:Q1  R ;
+ +Cmp/PlGen:Q1j R ;
+
+
+!LEXICON GAHPER_ERR/ORTH !!= @CODE@ Like GAHPER, but without nominative and essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag. 
+!          N+Sg+Gen:a       K     ;
+!          N+Sg+Acc:av      K     ;
+!          N+Sg+Ill:ij      K     ; ! Px ?? !!
+!          N+Sg+Ine:in      K     ;
+!          N+Sg+Ela:is      K     ;
+!          N+Sg+Com:ijn     K     ;
+!          N+Sg+Com:ijna    K     ; !
+!          N+Pl+Nom:a       K     ;
+!          N+Pl+Gen:ij      K     ;
+!          N+Pl+Acc:ijt     K     ;
+!          N+Pl+Ill:ijda    K     ;
+!          N+Pl+Ill:ida     K     ;
+!          N+Pl+Ine:ijn     K     ;
+!          N+Pl+Ela:ijs     K     ;
+!          N+Pl+Com:ij      K     ;
+!          N+Sg+Nom:        NPxC  ;
+!          N+Sg+Gen:        NPxC  ; !
+!          N+Sg+Acc:        NPxC  ; !
+!          N+Sg+Ill:as%>    NPxCs ; !
+!          N+Sg+Ine:in%>    NPxCs ; !
+!          N+Sg+Ela:ist%>   NPxCs ; !
+!          N+Sg+Com:ijn%>   NPxCs ; !
+!          N+Pl+Gen:ij%>    NPxCs ; !
+!          N+Pl+Acc:ijd%>   NPxCs ; !
+!          N+Pl+Ill:ijdas%> NPxC  ; !
+!          N+Pl+Ine:ijn%>   NPxCs ; !
+!          N+Pl+Ela:ijst%>  NPxCs ; !
+!          N+Pl+Com:ij%>    NPxCs ; !
+!                +N:a       DAGI_SINGULAR ;
+!                +N:i       DAGI_PLURAL   ;
+!                +N:»  DenominalNounsODD ;
+!                +N:»  DenominalAdjsODD  ;
+!                +N:%> ODDCmp            ;
+!                +N:   AHTÁ              ;
+
+LEXICON NOADE_ERR/ORTH !!= @CODE@ Like NOADE, but without nominative, illative an essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag.
+
+           +N:%>Q4  N-EVENWEAKSTEM       ; ! Q4=Stem vowel change e:i and o:u in front of j. Dipht. simpl. Like Q1 but strong grade.
+ +N+Cmp/SgGen:      R                    ;
+ +N+Cmp/PlGen:Y6j   R                    ;
+           +N:»     DenominalNounsNOADE  ;
+           +N:»     DenominalAdjsV1_1    ; !-dibme adj caritive derivation
+           +N:»Z2   DenominalAdjsV2      ; !-lasj Z2=vowel changes without WeG 
+  +Err/Orth+N:»     DenominalAdjsV2      ; !err/Orth lasj without vowel changes, gives vuodolasj. 
 
 
 !! ! Unassimilated loanwords
