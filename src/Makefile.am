@@ -138,28 +138,31 @@ generator-raw-gt-desc.hfst: generator-raw-gt-desc.tmp.hfst \
 analyser-gt-desc.%: analyser-gt-desc.tmp.% \
 					filters/remove-derivation-position-tags.% \
 					filters/remove-norm-comp-tags.%           \
+					filters/remove-use_mt-strings.%           \
 					filters/remove-DNorm-tags.% 
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 			    @\"filters/remove-derivation-position-tags.$*\" \
 			.o. @\"filters/remove-norm-comp-tags.$*\"           \
 			.o. @\"filters/remove-DNorm-tags.$*\"               \
+			.o. @\"filters/remove-use_mt-strings.$*\"           \
 			.o. @\"$<\"                                         \
 			;\n\
 		 $(INVERT_HFST)\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
-analyser-gt-norm.%: analyser-gt-norm.tmp.%                                 \
-					 filters/remove-derivation-position-tags.%             \
-					 filters/remove-DNorm-tags.%                           \
-					 filters/remove-illegal-derivation-strings-flagbased.% \
-					 filters/remove-MinusSpell-strings.%                   \
-					 filters/insert-default-compounding-tags.%             \
-					 filters/insert-default_left_compounding-tags.%        \
-					 filters/block-illegal_compound-strings.%              \
-					 filters/split-CmpN-tags.%                             \
-					 filters/convert_to_flags-CmpNP-tags.%                 \
-					 filters/split-CmpNP-tags.%
+analyser-gt-norm.%: analyser-gt-norm.tmp.%                                \
+					filters/remove-derivation-position-tags.%             \
+					filters/remove-DNorm-tags.%                           \
+					filters/remove-illegal-derivation-strings-flagbased.% \
+					filters/remove-MinusSpell-strings.%                   \
+					filters/remove-use_mt-strings.%                       \
+					filters/insert-default-compounding-tags.%             \
+					filters/insert-default_left_compounding-tags.%        \
+					filters/block-illegal_compound-strings.%              \
+					filters/split-CmpN-tags.%                             \
+					filters/convert_to_flags-CmpNP-tags.%                 \
+					filters/split-CmpNP-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 			    @\"filters/remove-derivation-position-tags.$*\"             \
 			.o. @\"filters/remove-DNorm-tags.$*\"                           \
@@ -171,6 +174,7 @@ analyser-gt-norm.%: analyser-gt-norm.tmp.%                                 \
 			.o. @\"filters/convert_to_flags-CmpNP-tags.$*\"                 \
 			.o. @\"filters/split-CmpNP-tags.$*\"                            \
 			.o. @\"filters/remove-MinusSpell-strings.$*\"                   \
+			.o. @\"filters/remove-use_mt-strings.$*\"                       \
 			.o. @\"$<\"                                                     \
 			;\n\
 		 twosided flag-diacritics\n\
@@ -179,14 +183,16 @@ analyser-gt-norm.%: analyser-gt-norm.tmp.%                                 \
 		 quit\n" | $(XFST_TOOL)
 
 analyser-gt-norm.xfst: analyser-gt-norm.tmp.xfst \
-					 filters/remove-norm-comp-tags.xfst             \
-					 filters/remove-derivation-position-tags.xfst   \
-					 filters/remove-illegal-derivation-strings.xfst \
-					 filters/remove-DNorm-tags.xfst
+					filters/remove-norm-comp-tags.xfst             \
+					filters/remove-derivation-position-tags.xfst   \
+					filters/remove-illegal-derivation-strings.xfst \
+					filters/remove-use_mt-strings.xfst             \
+					filters/remove-DNorm-tags.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
 			    @\"filters/remove-derivation-position-tags.xfst\"   \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"             \
 			.o. @\"filters/remove-DNorm-tags.xfst\"                 \
+			.o. @\"filters/remove-use_mt-strings.xfst\"             \
 			.o. @\"$<\"                                             \
 			;\n\
 		 save stack $@\n\
@@ -203,11 +209,13 @@ analyser-gt-norm.xfst: analyser-gt-norm.tmp.xfst \
 analyser-oahpa-gt-norm.%: analyser-gt-norm.tmp.% \
 					filters/remove-derivation-position-tags.% \
 					filters/remove-norm-comp-tags.%           \
+					filters/remove-use_mt-strings.%           \
 					filters/remove-DNorm-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 			    @\"filters/remove-derivation-position-tags.$*\" \
 			.o. @\"filters/remove-norm-comp-tags.$*\"           \
 			.o. @\"filters/remove-DNorm-tags.$*\"               \
+			.o. @\"filters/remove-use_mt-strings.$*\"           \
 			.o. @\"$<\"                                         \
 			;\n\
 		 twosided flag-diacritics\n\
@@ -225,6 +233,7 @@ analyser-pmatchdisamb-gt-desc.hfst: analyser-pmatchdisamb-gt-desc.tmp.hfst \
 				filters/remove-norm-comp-tags.hfst             \
 				filters/remove-derivation-position-tags.hfst   \
 				filters/remove-orig_lang-tags.hfst             \
+				filters/remove-use_mt-strings.%                \
 				filters/rename-POS_before_Der-tags.hfst
 	$(AM_V_HXFST)$(PRINTF) "read regex \
 		    @\"filters/remove-derivation-position-tags.hfst\" \
@@ -233,6 +242,7 @@ analyser-pmatchdisamb-gt-desc.hfst: analyser-pmatchdisamb-gt-desc.tmp.hfst \
 		.o. @\"filters/remove-norm-comp-tags.hfst\"           \
 		.o. @\"filters/remove-orig_lang-tags.hfst\"           \
 		.o. @\"filters/rename-POS_before_Der-tags.hfst\"      \
+		.o. @\"filters/remove-use_mt-strings.hfst\"           \
 		.o. @\"$<\"                                           \
 		;\n\
 	invert net\n\
@@ -250,6 +260,7 @@ analyser-disamb-gt-desc.%: analyser-disamb-gt-desc.tmp.%      \
 					filters/remove-derivation-position-tags.% \
 					filters/remove-norm-comp-tags.%           \
 					filters/rename-POS_before_Der-tags.%      \
+					filters/remove-use_mt-strings.%           \
 					filters/remove-DNorm-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/remove-derivation-position-tags.$*\" \
@@ -260,6 +271,7 @@ analyser-disamb-gt-desc.%: analyser-disamb-gt-desc.tmp.%      \
 			.o. @\"filters/remove-orig_lang-tags.$*\"           \
 			.o. @\"filters/rename-POS_before_Der-tags.$*\"      \
 			.o. @\"filters/remove-DNorm-tags.$*\"               \
+			.o. @\"filters/remove-use_mt-strings.$*\"           \
 			.o. @\"$<\"                                         \
 			;\n\
 		 $(INVERT_HFST)\
@@ -274,6 +286,7 @@ analyser-gramcheck-gt-desc.hfst: analyser-gramcheck-gt-desc.tmp.hfst \
 				filters/rename-POS_before_Der-tags.hfst      \
 				filters/remove-word-boundary.hfst            \
 				filters/convert-æae-to-both.hfst             \
+				filters/remove-use_mt-strings.hfst           \
 				orthography/spellrelax-with-flagtags.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "\
 	set encode-weights ON\n\
@@ -282,6 +295,7 @@ analyser-gramcheck-gt-desc.hfst: analyser-gramcheck-gt-desc.tmp.hfst \
 		.o. @\"filters/remove-norm-comp-tags.hfst\"           \
 		.o. @\"filters/remove-derivation-position-tags.hfst\" \
 		.o. @\"filters/rename-POS_before_Der-tags.hfst\"      \
+		.o. @\"filters/remove-use_mt-strings.hfst\"           \
 		.o. @\"$<\"                                           \
 		.o. @\"filters/convert-æae-to-both.hfst\"             \
 		.o. @\"orthography/spellrelax-with-flagtags.compose.hfst\" \
@@ -299,12 +313,14 @@ generator-gt-norm.xfst: generator-gt-norm.tmp.xfst                \
 					 filters/remove-norm-comp-tags.xfst           \
 					 filters/remove-illegal-derivation-strings.xfst \
 					 filters/remove-DNorm-tags.xfst               \
+					 filters/remove-use_mt-strings.xfst           \
 					 filters/make-optional-lang_hom-tags.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/make-optional-lang_hom-tags.xfst\"     \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
 			.o. @\"filters/remove-DNorm-tags.xfst\"               \
+			.o. @\"filters/remove-use_mt-strings.xfst\"           \
 			.o. @\"$<\"                                           \
 			;\n\
 		 invert net\n\
@@ -323,6 +339,7 @@ generator-gt-norm.%: generator-gt-norm.tmp.%                   \
 					 filters/remove-derivation-position-tags.% \
 					 filters/remove-norm-comp-tags.%           \
 					 filters/remove-DNorm-tags.%               \
+					 filters/remove-use_mt-strings.%           \
 					 filters/make-optional-lang_hom-tags.%     \
 					 filters/remove-illegal-derivation-strings-flagbased.% \
 					 filters/insert-default-compounding-tags.%             \
@@ -343,6 +360,7 @@ generator-gt-norm.%: generator-gt-norm.tmp.%                   \
 			.o. @\"filters/remove-illegal-derivation-strings-flagbased.$*\" \
 			.o. @\"filters/convert_to_flags-CmpNP-tags.$*\"                 \
 			.o. @\"filters/split-CmpNP-tags.$*\"                            \
+			.o. @\"filters/remove-use_mt-strings.$*\"                       \
 			.o. @\"$<\"                                          \
 			;\n\
 		 twosided flag-diacritics\n\
@@ -355,12 +373,14 @@ generator-gt-desc.%: generator-gt-desc.tmp.%                   \
 					 filters/remove-derivation-position-tags.% \
 					 filters/remove-norm-comp-tags.%           \
 					 filters/remove-DNorm-tags.%               \
+					 filters/remove-use_mt-strings.%           \
 					 filters/make-optional-lang_hom-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/make-optional-lang_hom-tags.$*\"     \
 			.o. @\"filters/remove-derivation-position-tags.$*\" \
 			.o. @\"filters/remove-norm-comp-tags.$*\"           \
 			.o. @\"filters/remove-DNorm-tags.$*\"               \
+			.o. @\"filters/remove-use_mt-strings.$*\"           \
 			.o. @\"$<\"                                         \
 			;\n\
 		 $(INVERT_XFST)$(INVERT_FOMA)\
@@ -378,6 +398,7 @@ generator-gramcheck-gt-norm.hfst: generator-gramcheck-gt-norm.tmp.hfst \
 				filters/block-illegal_compound-strings.hfst  \
 				filters/split-CmpN-tags.hfst                 \
 				filters/convert_to_flags-CmpNP-tags.hfst     \
+				filters/remove-use_mt-strings.hfst           \
 				filters/split-CmpNP-tags.hfst
 	$(AM_V_HXFST)$(PRINTF) "\
 	set encode-weights ON\n\
@@ -393,6 +414,7 @@ generator-gramcheck-gt-norm.hfst: generator-gramcheck-gt-norm.tmp.hfst \
 		.o. @\"filters/remove-illegal-derivation-strings-flagbased.hfst\" \
 		.o. @\"filters/convert_to_flags-CmpNP-tags.hfst\"            \
 		.o. @\"filters/split-CmpNP-tags.hfst\"                       \
+		.o. @\"filters/remove-use_mt-strings.hfst\"                  \
 		.o. @\"$<\"                                           \
 		;\n\
 	twosided flag-diacritics\n\
