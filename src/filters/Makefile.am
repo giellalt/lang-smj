@@ -33,6 +33,7 @@ GIELLA_FILTER_LOCAL_REGEX_SRCS=\
 					remove-derivation-position-tags.regex \
 					rename-POS_before_Der-tags.regex \
 					remove-illegal-derivation-strings-flagbased.regex \
+					remove-use_mt-strings.regex \
 					block-illegal_compound-strings.regex    \
 					insert-default-compounding-tags.regex   \
 					insert-default_left_compounding-tags.regex \
