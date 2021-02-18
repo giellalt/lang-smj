@@ -117,6 +117,7 @@ The first part of the component may be ..
                "Arbeids- og inkluderingsdepartementet" => Arbeids- = +Cmp/SplitR
  * **+Cmp/SplitL**  This is a split compound with the other part to the left
  * **+Cmp/Sh**  testing ShCmp
+ * **+Cmp/Long**  Long for om SgNom when short form is default, tjåhkaNIBMEbievddegirjje and bierjjeDAHKAiehket
 
 
  * +Sg    Singular number

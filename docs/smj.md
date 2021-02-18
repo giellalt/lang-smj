@@ -117,6 +117,7 @@ The first part of the component may be ..
                "Arbeids- og inkluderingsdepartementet" => Arbeids- = +Cmp/SplitR
  * **+Cmp/SplitL**  This is a split compound with the other part to the left
  * **+Cmp/Sh**  testing ShCmp
+ * **+Cmp/Long**  Long for om SgNom when short form is default, tjåhkaNIBMEbievddegirjje and bierjjeDAHKAiehket
 
 
  * +Sg    Singular number
@@ -1636,12 +1637,12 @@ Derivations to adjectives
 * *lådas:* `låda+N+Sg+Ela`
 
 
- LEXICON LINNJA  Only for the loan word "linnja". Because it's a loan word, the "nnj" is pronounced "nn-j", and therefore does not behave as the regular lule sami "nj" sound and therefore it doesn't follow the rule that makes a:á in 1. grade with short vowel in first syllable (It isn't as linnja-linjáv or birás-birrasav). This word is therefore sub taged. Norwegian/Swedish words with a short "i" followed by two different consonants are assimilated to lule sami in different manners accoring to the consonants in question, but the word is always on grade III (Morén-Duolljá 2014). The correctly assimilated form linºnja is added to NOADE lexicon in stems file.
+ LEXICON LINNJA  Only for the loan word "linnja". Because it's a loan word, the "nnj" is pronounced "nn-j", and therefore does not behave as the regular lule sami "nj" sound and therefore it doesn't follow the rule that makes a:á in 1. grade with short vowel in first syllable (It isn't as linnja-linjáv or birás-birrasav). This word is therefore sub taged. Norwegian/Swedish words with a short "i" followed by two different consonants are assimilated to lule sami in different manners accoring to the consonants in question, but the word is always on grade III (Morén-Duolljá 2014). Both err/orth and correct form is part of this lexicon. 
 
 
 
 *linja # Even-syllable test examples:*
-* *linnja:* `linnja+N+Sg+Nom`
+
 
  LEXICON SÁMEGIEL  Compounds on -giella, with short -giel as middle compound (sámegielåhpadiddje)
 
