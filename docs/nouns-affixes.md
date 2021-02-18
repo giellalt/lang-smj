@@ -20,7 +20,6 @@
 
 
 
-
  LEXICON ALMME  Same as MUORRA, but with special -LASJ derivation. For noun that have strong grade -lasj. "Almmelasj" instead of "almálasj" which is Err/Orth-taged..
 
 
@@ -42,6 +41,26 @@
 
 
 *linja # Even-syllable test examples:*
+
+
+ LEXICON BOAKSA  Only for word "boaksa". Both boaksa-båvsa and err/Orth boksa-båksa are part of lexicon.
+
+
+
+
+ LEXICON MIEHTAR  Only for word "miehtar". Same as SÅHKÅR but with Area-differences and a lot of Err/Orths. 
+
+
+
+
+
+*miehtar # Odd-syllable test examples:*
+* *miehtar:* `miehtar+N+Sg+Nom`
+* *mehtar:* `miehtar+N+Sg+Nom`
+* *miehttaris:* `miehtar+N+Sg+Ela`
+* *mähttaris:* `miehtar+N+Sg+Ela`
+* *mähttarin:* `miehtar+N+Ess`
+* *miehttarin:* `miehtar+N+Ess`
 
 
  LEXICON SÁMEGIEL  Compounds on -giella, with short -giel as middle compound (sámegielåhpadiddje)
@@ -129,13 +148,6 @@
 
 
  LEXICON MUORRA_LOAN_NO_LASJ   Like MUORRA_LOAN without -lasj derivation. This lexicon is made for Sem/Hum words like økonåvmmå, biolåvggå, agronåvmmå and so on. We don't want agronåvmålasj since it means something else than "agronomisk", the meaning of agronåvmålasj is barely used but messed up with "agronomijjalasj"
-
-
-
-
-
-
- LEXICON A_CMP_INFL   Sub-forms. Lexicon for giving sub-variation conjugation by simply adding an -a to the norwegian/swedish word. No cg. Like "alkohola" and "agronoma". These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
 
 
@@ -466,7 +478,6 @@
 
 
 
-
 *gasskavokálla # Even-syllable test examples:*
 * *gasskavokálla:* `gasskavokálla+N+Sg+Nom`
 * *gasskavokálas:* `gasskavokálla+N+Sg+Ela`
@@ -522,6 +533,7 @@
 
 
  LEXICON TELEGRÁMMA_CMP_INFL  Recent loanwords on -ámºma with long and short compound-form
+
 
 
 
@@ -650,8 +662,6 @@
 * *balládas* `balláda+N+Sg+Ela`
 
 
- LEXICON BOAKSA_BADASS_CMP_INFL  This is an Err/Sub, and all the words pointing to lexicon BOAKSA are therfore Err/Sub taged. Only for words "boaksa-båksav". Boaksa-båksa is assimilated wrongly, must be boaksa-båvsa if it's to follow lulesami rules.
-
  LEXICON C_ILL_IJ_BADASS  Badly or wrongly assimilated words. Last letter is consonant, no cg, no vowchange, with illative -ij. (Same as GAHPER) Assimilated in a way that isn't lulesami. Most of the words are Err/Orth tagged with a standardized lemma. Some are Err/Lex tagged, and some only recieve the +Use/-Spell tag from the lexicon.
 
 
@@ -670,6 +680,20 @@
 * *kálsium* `kálsium+N+Sg+Nom`
 * *kálsiumas* `kálsium+N+Sg+Ela`
 * *kálsiumaj* `kálsium+N+Sg+Ill`
+
+
+###  Error-lexicons
+
+ LEXICON A_CMP_INFL   Sub-forms. Lexicon for giving sub-variation conjugation by simply adding an -a to the norwegian/swedish word. No cg. Like "alkohola" and "agronoma". These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
+
+
+
+
+
+ LEXICON GAHPER_ERR/ORTH  Like GAHPER, but without nominative and essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag. 
+
+ LEXICON NOADE_ERR/ORTH  Like NOADE, but without nominative, illative an essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag.
+
 
 
 ###  Unassimilated loanwords
