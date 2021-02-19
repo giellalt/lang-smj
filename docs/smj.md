@@ -1635,6 +1635,16 @@ Derivations to adjectives
 * *låda:* `låda+N+Sg+Nom`
 * *lådas:* `låda+N+Sg+Ela`
 
+ LEXICON KÁFFA  For even-syll words with cg cg III-I: káf'fa-káfav, jáf'fo-jáfo. No vowelchanges jet, need new twolc code.
+
+
+
+
+*káffa # Even-syllable test examples:*
+* *káffa:* `káffa+N+Sg+Nom`
+* *gáffa:* `káffa+N+Sg+Nom`
+* *gáfas:* `káffa+N+Sg+Ela`
+* *káfas:* `káffa+N+Sg+Ela`
 
  LEXICON LINNJA  Only for the loan word "linnja". Because it's a loan word, the "nnj" is pronounced "nn-j", and therefore does not behave as the regular lule sami "nj" sound and therefore it doesn't follow the rule that makes a:á in 1. grade with short vowel in first syllable (It isn't as linnja-linjáv or birás-birrasav). This word is therefore sub taged. Norwegian/Swedish words with a short "i" followed by two different consonants are assimilated to lule sami in different manners accoring to the consonants in question, but the word is always on grade III (Morén-Duolljá 2014). Both err/orth and correct form is part of this lexicon. 
 
@@ -1646,21 +1656,6 @@ Derivations to adjectives
  LEXICON BOAKSA  Only for word "boaksa". Both boaksa-båvsa and err/Orth boksa-båksa are part of lexicon.
 
 
-
-
- LEXICON MIEHTAR  Only for word "miehtar". Same as SÅHKÅR but with Area-differences and a lot of Err/Orths. 
-
-
-
-
-
-*miehtar # Odd-syllable test examples:*
-* *miehtar:* `miehtar+N+Sg+Nom`
-* *mehtar:* `miehtar+N+Sg+Nom`
-* *miehttaris:* `miehtar+N+Sg+Ela`
-* *mähttaris:* `miehtar+N+Sg+Ela`
-* *mähttarin:* `miehtar+N+Ess`
-* *miehttarin:* `miehtar+N+Ess`
 
 
  LEXICON SÁMEGIEL  Compounds on -giella, with short -giel as middle compound (sámegielåhpadiddje)
@@ -1695,10 +1690,10 @@ Derivations to adjectives
 
 
 *boassjo # Even-syllable test examples:*
-* *boassjo:* `boassjo+N+Sg+Nom`
-* *båssjujn:* `boassjo+N+Sg+Com`
-* *boassjojn:* `boassjo+N+Sg+Com`
-* *boassjop:* `boassjo+N+Der/Comp+A+Sg+Nom`
+* *boassjo:* `boassjo+G3+N+Sg+Nom`
+* *båssjujn:* `boassjo+G3+N+Sg+Com`
+* *boassjojn:* `boassjo+G3+N+Sg+Com`
+* *boassjop:* `boassjo+G3+N+Der/Comp+A+Sg+Nom`
 
  LEXICON SJIEVNNJET  Like GAHPER but with comparatives. Odd-syllable C-final noun without cg, no vowchange, no short Ess.
 
@@ -1764,10 +1759,10 @@ Derivations to adjectives
 
 
 *partijja # Even-syllable test examples:*
-* *partiddja:* `partijja+N+Sg+Nom`
-* *partijja:* `partijja+N+Sg+Nom`
-* *partidjas:* `partijja+N+Sg+Ela`
-* *partijjas:* `partijja+N+Sg+Ela`
+* *akademiddja:* `akademijja+N+Sg+Nom`
+* *akademijja:* `akademijja+N+G3+Sg+Nom`
+* *akademidjas:* `akademijja+N+Sg+Ela`
+* *akademijjas:* `akademijja+N+G3+Sg+Ela`
 
 
 
@@ -2126,9 +2121,9 @@ Derivations to adjectives
 
 
 *flotælla # Even-syllable test examples:*
-* *flotælla:* `flotælla+N+Sg+Nom`
-* *flotälla:* `flotælla+N+Sg+Nom`
-* *flotellas:* `flotælla+N+Sg+Ela`
+* *flotælla:* `flotælla+N+G3+Sg+Nom`
+* *flotälla:* `flotælla+N+G3+Sg+Nom`
+* *flotellas:* `flotælla+N+G3+Sg+Ela`
 
 
 
@@ -2138,8 +2133,8 @@ Derivations to adjectives
 
 
 *grámma # Even-syllable test examples:*
-* *grámma:* `grámma+N+Sg+Nom`
-* *grámmas:* `grámma+N+Sg+Ela`
+* *grámma:* `grámma+N+G3+Sg+Nom`
+* *grámmas:* `grámma+N+G3+Sg+Ela`
 
 
 
@@ -2148,9 +2143,9 @@ Derivations to adjectives
 
 
 
-*grámma # Even-syllable test examples:*
-* *telegráffa:* `telegráffa+N+Sg+Nom`
-* *telegráffas:* `telegráffa+N+Sg+Ela`
+*telegráffa # Even-syllable test examples:*
+* *telegráffa:* `telegráffa+N+G3+Sg+Nom`
+* *telegráffas:* `telegráffa+N+G3+Sg+Ela`
 
 
  LEXICON SYSTIEBMA_CMP_INFL  Recent loanwords on -ebma/-iebma with long and short compound-form. -em in NOR and SWE. See comments about the -ie/-e dialtags in ALFABIEHTTA. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
@@ -2514,6 +2509,23 @@ Derivations to adjectives
 * *spihkárin:* `spiger+N+Ess`
 
 
+
+ LEXICON MIEHTAR  Only for word "miehtar". Same as SÅHKÅR but with Area-differences and a lot of Err/Orths. 
+
+
+
+
+
+*miehtar # Odd-syllable test examples:*
+* *miehtar:* `miehtar+N+Sg+Nom`
+* *mehtar:* `miehtar+N+Sg+Nom`
+* *miehttaris:* `miehtar+N+Sg+Ela`
+* *mähttaris:* `miehtar+N+Sg+Ela`
+* *mähttarin:* `miehtar+N+Ess`
+* *miehttarin:* `miehtar+N+Ess`
+
+
+
  LEXICON GÁMAS  Odd-syllable C-final noun with CG, no 2ndsyll vowchange (OBS: a does not change). Long and short essive. Spiik A2
 
 
@@ -2740,8 +2752,8 @@ Derived stems
 
 
 *sváles # Contracted test examples:*
-* *sváles:* `sváles+N+Sg+Nom`
-* *sválláv:* `sváles+N+Sg+Acc`
+* *sváles:* `sváles+G3+N+Sg+Nom`
+* *sválláv:* `sváles+G3+N+Sg+Acc`
 
  LEXICON GÅHKES  C-final with cg II-III with vowel harmony (a/á=å). gåhkes:gåhkkå. Presently only for "gåhkes".
 
@@ -2775,6 +2787,7 @@ Derived stems
 
 
 ## Px lexica
+
 
 
 
