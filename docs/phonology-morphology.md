@@ -75,6 +75,8 @@ The symbols themselves are used in the following way:
 * ****Y9:0****:  "Stem vowel deletion in short passives of even-syllable verbs
 * ****Z1:0** : TBW "i**: á in Verb Derivation guollir>guollár"
 * ****Z2:0** : e:å, o**: u in -lasj der
+* ****Z3:0** : weak grade trigger fºf:f. Stem vowel change e:i and o**: u in front of j.
+* ****Z4:0** : weak grade trigger fºf:f and e:á, e:å, o:á, o:u in front of diminutives, e**: å in -lasj der
 
 * ****Ø1:0** : optional Word Final Cluster Simplification. Not smj grammar, made only for Err/Orths  ! málestit**:  málest instead for norm máles
 * ****Ø2:0** : optional e**: i when followed by any conc (not only j). Not smj grammar, made only for Err/Orths ! "iednida"   
@@ -374,6 +376,7 @@ The diphthong simplification handles oa:å and æ:e. Phonologically, these are i
 
 
 **ie:æä Diphthong Simplification Part I**  
+
 
 * *ielvveY9ut*
 * *0æälvv00ut*

@@ -187,8 +187,10 @@ The first part of the component may be ..
  * ^GUESSNOUNROOT
  * **+CLBfinal**  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
 
- * +TV
- * +IV  Transitivity tags
+ * +TV !
+ * +IV !  Transitivity tags
+ * **+G3** Grade 2-3 for homonymies with grade 1-2, +N+G3
+ * **+G7** Grade 3, no consonant gradation, +N+G7
  * +Multi  Multiword phrase tag
  * +Guess  for the name guesser
  * +NomAg Actor Noun From Verb - Nomen Agentis
@@ -739,12 +741,12 @@ to split the lexical transducer in smaller ones according to langu-
 age, and apply different IPA conversion to each of them.
 The principle of tagging is that we only tag to the extent needed,
 and following a priority:
-# any untagged word is pronounced with SME orthographic conventions
-# NNO and NOB have identical pronunciation, NNO is only used if
+1. any untagged word is pronounced with SME orthographic conventions
+1. NNO and NOB have identical pronunciation, NNO is only used if
   different in spelling from NOB
-# SWE has mostly the same pronunciation as NOB, and is only used
+1. SWE has mostly the same pronunciation as NOB, and is only used
   if different in spelling from NOB
-# Occasionally even SME (the default) may be tagged, to block other
+1. Occasionally even SME (the default) may be tagged, to block other
   languages from being specified, mainly during semi-automatic
   language tagging sessions
 All in all, we want to get as much correctly transcribed to IPA

@@ -187,8 +187,10 @@ The first part of the component may be ..
  * ^GUESSNOUNROOT
  * **+CLBfinal**  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
 
- * +TV
- * +IV  Transitivity tags
+ * +TV !
+ * +IV !  Transitivity tags
+ * **+G3** Grade 2-3 for homonymies with grade 1-2, +N+G3
+ * **+G7** Grade 3, no consonant gradation, +N+G7
  * +Multi  Multiword phrase tag
  * +Guess  for the name guesser
  * +NomAg Actor Noun From Verb - Nomen Agentis
@@ -739,12 +741,12 @@ to split the lexical transducer in smaller ones according to langu-
 age, and apply different IPA conversion to each of them.
 The principle of tagging is that we only tag to the extent needed,
 and following a priority:
-# any untagged word is pronounced with SME orthographic conventions
-# NNO and NOB have identical pronunciation, NNO is only used if
+1. any untagged word is pronounced with SME orthographic conventions
+1. NNO and NOB have identical pronunciation, NNO is only used if
   different in spelling from NOB
-# SWE has mostly the same pronunciation as NOB, and is only used
+1. SWE has mostly the same pronunciation as NOB, and is only used
   if different in spelling from NOB
-# Occasionally even SME (the default) may be tagged, to block other
+1. Occasionally even SME (the default) may be tagged, to block other
   languages from being specified, mainly during semi-automatic
   language tagging sessions
 All in all, we want to get as much correctly transcribed to IPA
@@ -1641,10 +1643,10 @@ Derivations to adjectives
 
 
 *káffa # Even-syllable test examples:*
-* *káffa:* `káffa+N+Sg+Nom`
-* *gáffa:* `káffa+N+Sg+Nom`
-* *gáfas:* `káffa+N+Sg+Ela`
-* *káfas:* `káffa+N+Sg+Ela`
+* *káffa:* `káffa+N+G3+Sg+Nom`
+* *gáffa:* `káffa+N+G3+Sg+Nom`
+* *gáfas:* `káffa+N+G3+Sg+Ela`
+* *káfas:* `káffa+N+G3+Sg+Ela`
 
  LEXICON LINNJA  Only for the loan word "linnja". Because it's a loan word, the "nnj" is pronounced "nn-j", and therefore does not behave as the regular lule sami "nj" sound and therefore it doesn't follow the rule that makes a:á in 1. grade with short vowel in first syllable (It isn't as linnja-linjáv or birás-birrasav). This word is therefore sub taged. Norwegian/Swedish words with a short "i" followed by two different consonants are assimilated to lule sami in different manners accoring to the consonants in question, but the word is always on grade III (Morén-Duolljá 2014). Both err/orth and correct form is part of this lexicon. 
 
@@ -1690,10 +1692,10 @@ Derivations to adjectives
 
 
 *boassjo # Even-syllable test examples:*
-* *boassjo:* `boassjo+G3+N+Sg+Nom`
-* *båssjujn:* `boassjo+G3+N+Sg+Com`
-* *boassjojn:* `boassjo+G3+N+Sg+Com`
-* *boassjop:* `boassjo+G3+N+Der/Comp+A+Sg+Nom`
+* *boassjo:* `boassjo+N+G3+Sg+Nom`
+* *båssjujn:* `boassjo+N+G3+Sg+Com`
+* *boassjojn:* `boassjo+N+G3+Sg+Com`
+* *boassjop:* `boassjo+N+G3+Der/Comp+A+Sg+Nom`
 
  LEXICON SJIEVNNJET  Like GAHPER but with comparatives. Odd-syllable C-final noun without cg, no vowchange, no short Ess.
 
@@ -2752,8 +2754,8 @@ Derived stems
 
 
 *sváles # Contracted test examples:*
-* *sváles:* `sváles+G3+N+Sg+Nom`
-* *sválláv:* `sváles+G3+N+Sg+Acc`
+* *sváles:* `sváles+N+G3+Sg+Nom`
+* *sválláv:* `sváles+N+G3+Sg+Acc`
 
  LEXICON GÅHKES  C-final with cg II-III with vowel harmony (a/á=å). gåhkes:gåhkkå. Presently only for "gåhkes".
 
@@ -3620,6 +3622,8 @@ The symbols themselves are used in the following way:
 * ****Y9:0****:  "Stem vowel deletion in short passives of even-syllable verbs
 * ****Z1:0** : TBW "i**: á in Verb Derivation guollir>guollár"
 * ****Z2:0** : e:å, o**: u in -lasj der
+* ****Z3:0** : weak grade trigger fºf:f. Stem vowel change e:i and o**: u in front of j.
+* ****Z4:0** : weak grade trigger fºf:f and e:á, e:å, o:á, o:u in front of diminutives, e**: å in -lasj der
 
 * ****Ø1:0** : optional Word Final Cluster Simplification. Not smj grammar, made only for Err/Orths  ! málestit**:  málest instead for norm máles
 * ****Ø2:0** : optional e**: i when followed by any conc (not only j). Not smj grammar, made only for Err/Orths ! "iednida"   
@@ -3919,6 +3923,7 @@ The diphthong simplification handles oa:å and æ:e. Phonologically, these are i
 
 
 **ie:æä Diphthong Simplification Part I**  
+
 
 * *ielvveY9ut*
 * *0æälvv00ut*

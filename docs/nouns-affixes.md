@@ -41,10 +41,10 @@
 
 
 *káffa # Even-syllable test examples:*
-* *káffa:* `káffa+N+Sg+Nom`
-* *gáffa:* `káffa+N+Sg+Nom`
-* *gáfas:* `káffa+N+Sg+Ela`
-* *káfas:* `káffa+N+Sg+Ela`
+* *káffa:* `káffa+N+G3+Sg+Nom`
+* *gáffa:* `káffa+N+G3+Sg+Nom`
+* *gáfas:* `káffa+N+G3+Sg+Ela`
+* *káfas:* `káffa+N+G3+Sg+Ela`
 
  LEXICON LINNJA  Only for the loan word "linnja". Because it's a loan word, the "nnj" is pronounced "nn-j", and therefore does not behave as the regular lule sami "nj" sound and therefore it doesn't follow the rule that makes a:á in 1. grade with short vowel in first syllable (It isn't as linnja-linjáv or birás-birrasav). This word is therefore sub taged. Norwegian/Swedish words with a short "i" followed by two different consonants are assimilated to lule sami in different manners accoring to the consonants in question, but the word is always on grade III (Morén-Duolljá 2014). Both err/orth and correct form is part of this lexicon. 
 
@@ -90,10 +90,10 @@
 
 
 *boassjo # Even-syllable test examples:*
-* *boassjo:* `boassjo+G3+N+Sg+Nom`
-* *båssjujn:* `boassjo+G3+N+Sg+Com`
-* *boassjojn:* `boassjo+G3+N+Sg+Com`
-* *boassjop:* `boassjo+G3+N+Der/Comp+A+Sg+Nom`
+* *boassjo:* `boassjo+N+G3+Sg+Nom`
+* *båssjujn:* `boassjo+N+G3+Sg+Com`
+* *boassjojn:* `boassjo+N+G3+Sg+Com`
+* *boassjop:* `boassjo+N+G3+Der/Comp+A+Sg+Nom`
 
  LEXICON SJIEVNNJET  Like GAHPER but with comparatives. Odd-syllable C-final noun without cg, no vowchange, no short Ess.
 
@@ -1152,8 +1152,8 @@ Derived stems
 
 
 *sváles # Contracted test examples:*
-* *sváles:* `sváles+G3+N+Sg+Nom`
-* *sválláv:* `sváles+G3+N+Sg+Acc`
+* *sváles:* `sváles+N+G3+Sg+Nom`
+* *sválláv:* `sváles+N+G3+Sg+Acc`
 
  LEXICON GÅHKES  C-final with cg II-III with vowel harmony (a/á=å). gåhkes:gåhkkå. Presently only for "gåhkes".
 
