@@ -22,7 +22,7 @@ fi
 morf_codes="+V+Inf \
             +V+Ind+Prs+Sg3 \
             +V+Ind+Prt+Pl1 \
-            +V+ConNeg \
+            +V+Ind+ConNeg \
             +V+PrfPrc"
 
 # Lexicon source file for lexicons and lemmas:
