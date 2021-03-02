@@ -2859,25 +2859,25 @@ Derived stems
 Table of content:
 
 * The auxiliaries
-** Negation verb
-** Copula
-** Modals
+    - Negation verb
+    - Copula
+    - Modals
 * Main verbs
-** Even syllable stems
-*** Intransitives
-*** Transitives
-** Odd syllable stems
-*** Intranstives
-*** Transitives
-** Contracted stems
-*** Intransitives
-*** Transitives
-** Assimilated loan verbs
-*** Intransitives
-*** Transitives
-** Main inflectional categories
-*** suffix lexicas
-** Verb derivation
+    - Even syllable stems
+        - Intransitives
+        - Transitives
+    - Odd syllable stems
+        - Intranstives
+        - Transitives
+    - Contracted stems
+        - Intransitives
+        - Transitives
+    - Assimilated loan verbs
+        - Intransitives
+        - Transitives
+    - Main inflectional categories
+        - suffix lexicas
+    - Verb derivation
 
 
 IV means intransitive verbs, TV means transitive verbs.
