@@ -22,7 +22,7 @@ fi
 morf_codes="+V+Inf \
             +V+Ind+Prs+Sg3 \
             +V+Ind+Prt+Pl1 \
-            +V+ConNeg \
+            +V+Ind+ConNeg \
             +V+PrfPrc"
 
 # Lexicon source file for lexicons and lemmas:
@@ -35,7 +35,7 @@ exception_lexicons="(flagK)"
 generator_file=src/generator-gt-norm
 
 # How many lemmas maximally for each lexicon:
-lemmacount=10
+lemmacount=2
 
 # Specify path to the dir containing the script used for generation:
 script_dir=$giella_core/scripts

@@ -59,7 +59,6 @@ LEXICON MUORRAInfl_Err/Der_LASJ
  +Err/Orth+Err/Der:»Q1  DenominalAdjsV2      ; !-lasj weak grade but without vowel changes, makes ájgelasj 
 
 
-
 LEXICON ALMME !!= @CODE@ Same as MUORRA, but with special -LASJ derivation. For noun that have strong grade -lasj. "Almmelasj" instead of "almálasj" which is Err/Orth-taged..
 
  +N:%>   N-EVENSTRONGSTEM     ;
@@ -89,47 +88,95 @@ LEXICON NOADE !!= @CODE@ Even stem without cg. OBS: No nouns with invisible 3>2 
 !!€ låda:                 låda+N+Sg+Nom
 !!€ lådas:               låda+N+Sg+Ela
 
+LEXICON KÁFFA !!= @CODE@ For even-syll words with cg cg III-I: káf'fa-káfav, jáf'fo-jáfo. No vowelchanges jet, need new twolc code.
 
-LEXICON LINNJA !!= @CODE@ Only for the loan word "linnja". Because it's a loan word, the "nnj" is pronounced "nn-j", and therefore does not behave as the regular lule sami "nj" sound and therefore it doesn't follow the rule that makes a:á in 1. grade with short vowel in first syllable (It isn't as linnja-linjáv or birás-birrasav). This word is therefore sub taged. Norwegian/Swedish words with a short "i" followed by two different consonants are assimilated to lule sami in different manners accoring to the consonants in question, but the word is always on grade III (Morén-Duolljá 2014). The correctly assimilated form linºnja is added to NOADE lexicon in stems file.
+                                              +N:%>          N-EVENSTRONGSTEM     ;
+                                              +N:%>Z3        N-EVENWEAKSTEM       ; ! Weak grade III-I
+                             +N+Der2+Der/Dimin+N:Z4sj        N-ODDCASE            ;
+                             +N+Der2+Der/Dimin+N:Z4tj        OTH-ODDCASE          ;
+                   +N+Der2+Der/Dimin+N+Cmp/SgNom:Z4sj        R                    ;
+                   +N+Der2+Der/Dimin+N+Cmp/SgGen:Z4tja       R                    ;
+                   +N+Der2+Der/Dimin+N+Cmp/PlGen:Z4tjij      R                    ;
+      +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Sg+Nom:Z4tja»sj    K-CONS               ; !Dobbel diminutiv
+             +N+Der2+Der/Dimin+N+Der+Der/Dimin+N:Z4tja»ttja  GÅNÅGIS-EVEN         ;
+  +N+Use/-Spell+Der2+Der/Dimin+N+Der+Der/Dimin+N:Z4tja»dtja  GÅNÅGIS-EVEN         ; 
+   +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Cmp/SgNom:Z4tja»sj    R                    ;
+   +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Cmp/SgGen:Z4tja»ttja  R                    ;
+   +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Cmp/PlGen:Z4tja»ttjaj R                    ;
+                               +N+Der1+Der/Car+A:Z3          DIBME                ;
+                               +N+Der1+Der/Car+A:Z4dis%>     ATTR                 ;
+                                              +N:»Z4         DenominalAdjsV2      ; !-lasj with weak grade
+                                    +N+Cmp/SgNom:            R                    ;
+                                    +N+Cmp/SgGen:Z4          R                    ;
+                                    +N+Cmp/PlGen:Z4j         R                    ;
 
-            +N+OLang/NOB:nnja%> N-EVENSTRONGSTEM     ;
-            +N+OLang/NOB:nja%>  N-EVENWEAKSTEM       ; ! Weak grade Q1
-            +N+OLang/NOB:nja»   DenominalNounsMUORRA ;
-            +N+OLang/NOB:nja»   DenominalAdjsV1      ; !-dibme adj caritive derivation
-!                     +N:nja»   DenominalAdjsV2      ;
-  +N+OLang/NOB+Cmp/SgNom:nnja%> R                    ;
-  +N+OLang/NOB+Cmp/SgGen:nja%>  R                    ;
-  +N+OLang/NOB+Cmp/PlGen:nja%>j R                    ;
+                                     +Err/Orth+N:%>Q1        N-EVENWEAKSTEM       ; ! For III-II (káf'fa-káffav)
+                                     +Err/Orth+N:»           DenominalNounsMUORRA ; ! For III-II (káf'fa-káffav)
+                                     +Err/Orth+N:»           DenominalAdjsV1      ; ! For III-II (káf'fa-káffav)
+                                     +Err/Orth+N:»X7         DenominalAdjsV2      ; ! For III-II (káf'fa-káffav)
+
+!!€gt-norm: káffa # Even-syllable test
+!!€ káffa:                 káffa+N+G3+Sg+Nom
+!!€ gáffa:                 káffa+N+G3+Sg+Nom
+!!€ gáfas:                 káffa+N+G3+Sg+Ela
+!!€ káfas:                 káffa+N+G3+Sg+Ela
+
+LEXICON LINNJA !!= @CODE@ Only for the loan word "linnja". Because it's a loan word, the "nnj" is pronounced "nn-j", and therefore does not behave as the regular lule sami "nj" sound and therefore it doesn't follow the rule that makes a:á in 1. grade with short vowel in first syllable (It isn't as linnja-linjáv or birás-birrasav). This word is therefore sub taged. Norwegian/Swedish words with a short "i" followed by two different consonants are assimilated to lule sami in different manners accoring to the consonants in question, but the word is always on grade III (Morén-Duolljá 2014). Both err/orth and correct form is part of this lexicon. 
+
+                     +OLang/NOB+N+G3:nºnja   MUORRAInfl ;
+                     +OLang/NOB+N+G3:nºnja%> MUORRACmp  ;
+            +Err/Orth+N+OLang/NOB:nja%>  N-EVENWEAKSTEM       ; ! makes the "linja" that should become "linjá" 
+            +Err/Orth+N+OLang/NOB:nja»   DenominalNounsMUORRA ;	! makes the "linja" that should become "linjá" 
+            +Err/Orth+N+OLang/NOB:nja»   DenominalAdjsV1      ; ! makes the "linja" that should become "linjá" 
+  +Err/Orth+N+OLang/NOB+Cmp/SgGen:nja%>  R                    ;	! makes the "linja" that should become "linjá" 
+  +Err/Orth+N+OLang/NOB+Cmp/PlGen:nja%>j R                    ;	! makes the "linja" that should become "linjá" 
+!                              +N:nja»   DenominalAdjsV2      ;
 
 !!€gt-norm: linja # Even-syllable test
-!!€ linnja:                linnja+N+Sg+Nom
-! !!€ linjajn               linnja+N+Sg+Com
-! !!€ linjav                linnja+N+Sg+Acc
+ !!€ linnja:                linnja+N+Sg+Nom
+ !!€ linnjajn               linnja+N+Sg+Com
+ !!€ linnjav                linnja+N+Sg+Acc
+
+
+LEXICON BOAKSA !!= @CODE@ Only for word "boaksa". Both boaksa-båvsa and err/Orth boksa-båksa are part of lexicon.
+
++N:oaksa   MUORRAInfl ; !makes correcte boaksa-båvsa
++N:oaksa%> MUORRACmp  ; !makes correcte boaksa-båvsa
+
+           +Err/Orth+N:åkºsa%>Q1  N-EVENWEAKSTEM       ; ! Weak grade Q1 !WRONG
+           +Err/Orth+N:åkºsa»     DenominalNounsMUORRA ; !WRONG
+           +Err/Orth+N:åkºsa»     DenominalAdjsV1      ; !WRONG
+ +Err/Orth+N+Cmp/SgGen:åkºsa%>Q1  R                    ; !WRONG
+ +Err/Orth+N+Cmp/PlGen:åkºsa%>Q1j R                    ; !WRONG
+
 
 LEXICON SÁMEGIEL !!= @CODE@ Compounds on -giella, with short -giel as middle compound (sámegielåhpadiddje)
-!      +N+Attr:      K          ;
-            +N:la    MUORRAInfl ;
-     +N+Cmp/Sh:%>    Rreal      ;
-              :ag9   DER-AGAdj  ;
-! +N+Cmp/SgGen:%>Q1  Rreal      ;
-! +N+Cmp/PlGen:%>Q1j Rreal      ;
+!           +N+Attr:      K-CONS          ;
+                 +N:la    MUORRAInfl ;
+         +N+Cmp/SgNom:%>    R          ;
++N+Cmp/Long+Cmp/SgNom:la    R          ;
+         +N+Cmp/SgGen:a     R          ;
+         +N+Cmp/PlGen:aj    R          ;
+                   :ag9   DER-AGAdj  ;
+!      +N+Cmp/SgGen:%>Q1  Rreal      ;
+!      +N+Cmp/PlGen:%>Q1j Rreal      ;
 
 !!€gt-norm: rievsakgiella # Even-syllable test
 !!€ rievsakgiella:               rievsakgiella+N+Sg+Nom
 ! !!€ rievsakgiel               rievsakgiella+N+Attr
 
 LEXICON AHKA !!= @CODE@ Words like tjerastahka, with short compound form
-                   +N:ahka%>    N-EVENSTRONGSTEM     ;
-                   +N:ahka%>Q1  N-EVENWEAKSTEM       ; ! Weak grade Q1
-                   +N:ahka»     DenominalNounsMUORRA ;
-                   +N:ahka»     DenominalAdjsV1      ; !-dibme adj caritive derivation
-     +N+Sg+Nom+Use/NG:ak%>      K                    ;
-         +N+Cmp/SgNom:ahka%>    R                    ;
-         +N+Cmp/SgGen:ahka%>Q1  R                    ;
-         +N+Cmp/PlGen:ahka%>Q1j R                    ;
-            +N+Cmp/Sh:ak%>      R                    ;
-         !         +N:ahka»     DenominalAdjsV2      ;
-   !+N+Der4+Der/ahtes:» AHTES ; Only for odd-syllble stems
+                    +N:ahka%>    N-EVENSTRONGSTEM     ;
+                    +N:ahka%>Q1  N-EVENWEAKSTEM       ; ! Weak grade Q1
+                    +N:ahka»     DenominalNounsMUORRA ;
+                    +N:ahka»     DenominalAdjsV1      ; !-dibme adj caritive derivation
+      +N+Sg+Nom+Use/NG:ak%>      K-CONS                    ;
+          +N+Cmp/SgNom:ak%>      R                    ;
+ +N+Cmp/Long+Cmp/SgNom:ahka%>    R                    ;
+          +N+Cmp/SgGen:ahka%>Q1  R                    ;
+          +N+Cmp/PlGen:ahka%>Q1j R                    ;
+          !         +N:ahka»     DenominalAdjsV2      ;
+    !+N+Der4+Der/ahtes:» AHTES ; Only for odd-syllble stems
 
                    +Err/Orth+N:áhka%>    N-EVENSTRONGSTEM     ; ! Gives typos with long á when in strong grade. A common typos for these words.
                    +Err/Orth+N:áhka»     DenominalNounsMUORRA ; ! Gives typos with long á when in strong grade. A common typos for these words.
@@ -170,17 +217,17 @@ LEXICON GÁDDE !!= @CODE@ 2 syllable stems with cg (note Q1) with comparatives
                                         +N:%>          MUORRACmp            ;
                              +N+Der1+Der/Comp+A:%>Q1        BUStem               ;
                            +N+Der1+Der/Superl+A:%>Q1muss    BUOREMUS             ;
-       +N+Der1+Der/Comp+A+Der2+Der/Dimin+Sg+Nom:»Q1busj%>   K                    ;
+       +N+Der1+Der/Comp+A+Der2+Der/Dimin+Sg+Nom:»Q1busj%>   K-CONS                    ;
       +N+Der1+Der/Comp+A+Der2+Der/Dimin+Sg+Attr:»Q1busj%>   ATTR                 ;
               +N+Der1+Der/Comp+A+Der2+Der/Dimin+A:»Q1buttja%> GÅNÅGIS-EVEN         ;
 +Err/Lex+Use/-Spell+N+Der1+Der/Comp+A+Der2+Der/Dimin+A:»Q1budtja%> GÅNÅGIS-EVEN         ; !Gives gáttebudtjan and gáttebudtjaj barely not in use
 
 
 !!€gt-norm: boassjo # Even-syllable test
-!!€ boassjo:               boassjo+N+Sg+Nom
-!!€ båssjujn:               boassjo+N+Sg+Com
-!!€ boassjojn:               boassjo+N+Sg+Com
-!!€ boassjop:               boassjo+N+Der/Comp+A+Sg+Nom
+!!€ boassjo:               boassjo+N+G3+Sg+Nom
+!!€ båssjujn:              boassjo+N+G3+Sg+Com
+!!€ boassjojn:             boassjo+N+G3+Sg+Com
+!!€ boassjop:              boassjo+N+G3+Der/Comp+A+Sg+Nom
 
 LEXICON SJIEVNNJET !!= @CODE@ Like GAHPER but with comparatives. Odd-syllable C-final noun without cg, no vowchange, no short Ess.
            +N:%> N-ODDCASE             ; ! no pointer to E-ODDCASE, as gahper has no short Ess
@@ -200,22 +247,22 @@ LEXICON SJIEVNNJET !!= @CODE@ Like GAHPER but with comparatives. Odd-syllable C-
 
 LEXICON ÅLGGO !!= @CODE@ Like MUORRA, but with comparatives. This lexicon was previously without sg ill/ine/elat, but these nouns can be conjugated for regular location cases. However, "adverbs" like ålggot (from outside), nuorttan (at north), oarjas (to south), etc., are more commonly used to denote location/direction (should therefore maybe consider subing the regular location case forms).
                                          +N:%>           NE-EVENCASE          ;
-                                  +N+Sg+Gen:%>Q1         K                    ;
-                                  +N+Sg+Acc:%>Q1v        K                    ;
-                                  +N+Sg+Ill:%>X4j        K                    ; ! X4 for the e:á and e:å alternation
-                                  +N+Sg+Ine:%>Q1n        K                    ;
-                                  +N+Sg+Ela:%>Q1s        K                    ;
-                                  +N+Sg+Com:%>Q1X5jn     K                    ; ! X5 for o:u in ComSg. Note two dummies in a row!
-                                  +N+Pl+Nom:%>Q1         K                    ;
-                                  +N+Pl+Gen:%>Q1j        K                    ;
-                                  +N+Pl+Acc:%>Q1jt       K                    ;
-                                  +N+Pl+Ill:%>Q1jda      K                    ;
-                                  +N+Pl+Ine:%>Q1jn       K                    ;
-                                  +N+Pl+Ela:%>Q1js       K                    ;
-                                  +N+Pl+Com:%>Q1j        K                    ;
-                         +Err/Orth+N+Sg+Com:%>Q1X5jna    K                    ; !
-                                     +N+Abe:%>Q1dak      ENDLEX               ;
-                              +Use/NG+N+Abe:%>Q1da       ENDLEX               ;
+                                  +N+Sg+Gen:%>Q1         K-VOW                    ;
+                                  +N+Sg+Acc:%>Q1v        K-CONS                    ;
+                                  +N+Sg+Ill:%>X4j        K-CONS                    ; ! X4 for the e:á and e:å alternation
+                                  +N+Sg+Ine:%>Q1n        K-CONS                    ;
+                                  +N+Sg+Ela:%>Q1s        K-CONS                    ;
+                                  +N+Sg+Com:%>Q1X5jn     K-CONS                    ; ! X5 for o:u in ComSg. Note two dummies in a row!
+                                  +N+Pl+Nom:%>Q1         K-VOW                    ;
+                                  +N+Pl+Gen:%>Q1j        K-CONS                    ;
+                                  +N+Pl+Acc:%>Q1jt       K-CONS                    ;
+                                  +N+Pl+Ill:%>Q1jda      K-VOW                    ;
+                                  +N+Pl+Ine:%>Q1jn       K-CONS                    ;
+                                  +N+Pl+Ela:%>Q1js       K-CONS                    ;
+                                  +N+Pl+Com:%>Q1j        K-CONS                    ;
+                         +Err/Orth+N+Sg+Com:%>Q1X5jna    K-VOW                    ; !
+                                     +N+Abe:%>Q1dak      K-CONS               ;
+                              +Use/NG+N+Abe:%>Q1da       K-VOW               ;
 !                                 +N+Sg+Gen:%>Q1         PxV                  ; !Possessive suffixes
 !                                 +N+Sg+Acc:%>Q1         PxV                  ; !
 !                                 +N+Sg+Com:%>Q1X5jn%>   PxC                  ; !
@@ -236,13 +283,13 @@ LEXICON ÅLGGO !!= @CODE@ Like MUORRA, but with comparatives. This lexicon was p
                                          +N:%>Q1         BU/MUS               ;
 !                                     +N+Der1+Der/Comp+A:%>Q1        BUStem               ;
 !                                   +N+Der1+Der/Superl+A:%>Q1muss    BUOREMUS             ;
-              +N+Der1+Der/Comp+A+Der2+Der/Dimin+A+Sg+Nom:»Q1busj%>   K                    ;
+              +N+Der1+Der/Comp+A+Der2+Der/Dimin+A+Sg+Nom:»Q1busj%>   K-CONS                    ;
              +N+Der1+Der/Comp+A+Der2+Der/Dimin+A+Sg+Attr:»Q1busj%>   ATTR                 ;
                      +N+Der1+Der/Comp+A+Der2+Der/Dimin+A:»Q1buttja%> GÅNÅGIS-EVEN         ;
   +Err/Lex+Use/-Spell+N+Der1+Der/Comp+A+Der2+Der/Dimin+A:»Q1budtja%> GÅNÅGIS-EVEN         ; ! Gives ålggobudtjaj, barely not in use.
-!                                 +N+Sg+Ine:%>Q1n       K                    ;
+!                                 +N+Sg+Ine:%>Q1n       K-CONS                   ;
 !                                 +N+Sg+Ine:%>Q1n%>     PxC                  ; !^P^
-!                                 +N+Sg+Ela:%>Q1s       K                    ;
+!                                 +N+Sg+Ela:%>Q1s       K-CONS                   ;
 !                                 +N+Sg+Ela:%>Q1st%>    PxC                  ; !^P^
                                          +N:Q1          DAGI_SINGULAR                     ;
                                          +N:Q1          DAGI_PLURAL                       ;
@@ -257,17 +304,17 @@ LEXICON ÅLGGO !!= @CODE@ Like MUORRA, but with comparatives. This lexicon was p
 
 LEXICON MIEHTE !!= @CODE@ Like MUORRA but no locative/elative/illative sg. Presently no words in this lexica except for err subed nuortto
                   +N:%>         NE-EVENCASE          ;
-           +N+Sg+Gen:%>Q1       K                    ;
-           +N+Sg+Acc:%>Q1v      K                    ;
-  +Err/Orth+N+Sg+Com:%>Q1X5jna  K                    ; !
-           +N+Sg+Com:%>Q1X5jn   K                    ; ! X5 for o:u in ComSg. Note two dummies in a row!
-           +N+Pl+Nom:%>Q1       K                    ;
-           +N+Pl+Gen:%>Q1j      K                    ;
-           +N+Pl+Acc:%>Q1jt     K                    ;
-           +N+Pl+Ill:%>Q1jda    K                    ;
-           +N+Pl+Ine:%>Q1jn     K                    ;
-           +N+Pl+Ela:%>Q1js     K                    ;
-           +N+Pl+Com:%>Q1j      K                    ;
+           +N+Sg+Gen:%>Q1       K-VOW                    ;
+           +N+Sg+Acc:%>Q1v      K-CONS                   ;
+  +Err/Orth+N+Sg+Com:%>Q1X5jna  K-VOW                    ; !
+           +N+Sg+Com:%>Q1X5jn   K-CONS                   ; ! X5 for o:u in ComSg. Note two dummies in a row!
+           +N+Pl+Nom:%>Q1       K-VOW                    ;
+           +N+Pl+Gen:%>Q1j      K-CONS                   ;
+           +N+Pl+Acc:%>Q1jt     K-CONS                   ;
+           +N+Pl+Ill:%>Q1jda    K-VOW                    ;
+           +N+Pl+Ine:%>Q1jn     K-CONS                   ;
+           +N+Pl+Ela:%>Q1js     K-CONS                   ;
+           +N+Pl+Com:%>Q1j      K-CONS                   ;
            +N+Sg+Gen:%>Q1       PxV                  ; ! Possessive suffixes
            +N+Sg+Acc:%>Q1       PxV                  ; !
            +N+Sg+Com:%>Q1X5jn%> PxC                  ; !
@@ -278,8 +325,8 @@ LEXICON MIEHTE !!= @CODE@ Like MUORRA but no locative/elative/illative sg. Prese
            +N+Pl+Ine:%>Q1jn%>   PxC                  ; !
            +N+Pl+Ela:%>Q1jst%>  PxC                  ; !
            +N+Pl+Com:%>Q1j%>    PxC                  ; !
-              +N+Abe:%>Q1dak    ENDLEX               ;
-       +Use/NG+N+Abe:%>Q1da     ENDLEX               ;
+              +N+Abe:%>Q1dak    K-CONS              ;
+       +Use/NG+N+Abe:%>Q1da     K-VOW              ;
                   +N:»          DenominalNounsMUORRA ;
                   +N:»          DenominalAdjsV1      ; !-dibme adj caritive derivation
                   +N:»X7        DenominalAdjsV2      ;
@@ -287,9 +334,9 @@ LEXICON MIEHTE !!= @CODE@ Like MUORRA but no locative/elative/illative sg. Prese
                   +N:%>Q1       DAGI_SINGULAR        ;
                   +N:%>Q1       DAGI_PLURAL          ;
 
-!          +N+Sg+Ine:%>Q1n      K                    ;
+!          +N+Sg+Ine:%>Q1n      K-CONS                   ;
 !          +N+Sg+Ine:%>Q1n%>    PxC                  ; !^P^
-!          +N+Sg+Ela:%>Q1s      K                    ;
+!          +N+Sg+Ela:%>Q1s      K-CONS                   ;
 !          +N+Sg+Ela:%>Q1st%>   PxC                  ; !^P^
 
 !!€gt-norm: nuortto # Even-syllable test
@@ -303,13 +350,13 @@ LEXICON MIEHTE !!= @CODE@ Like MUORRA but no locative/elative/illative sg. Prese
 
 LEXICON BÅVSÅ !!= @CODE@ Like MUORRA, only in plural. All, except ganta, juvdá and ávta, have regular, singular stem counterparts.
                                  +N+Cmp/PlGen:%>Q1j          R        ;
-                                    +N+Pl+Nom:%>Q1           K        ;
-                                    +N+Pl+Gen:%>Q1j          K        ;
-                                    +N+Pl+Acc:%>Q1jt         K        ;
-                                    +N+Pl+Ill:%>Q1jda        K        ;
-                                    +N+Pl+Ela:%>Q1js         K        ;
-                                    +N+Pl+Ine:%>Q1jn         K        ;
-                                    +N+Pl+Com:%>Q1j          K        ;
+                                    +N+Pl+Nom:%>Q1           K-VOW        ;
+                                    +N+Pl+Gen:%>Q1j          K-CONS       ;
+                                    +N+Pl+Acc:%>Q1jt         K-CONS       ;
+                                    +N+Pl+Ill:%>Q1jda        K-VOW        ;
+                                    +N+Pl+Ela:%>Q1js         K-CONS       ;
+                                    +N+Pl+Ine:%>Q1jn         K-CONS       ;
+                                    +N+Pl+Com:%>Q1j          K-CONS       ;
                                     +N+Pl+Nom:%>Q1%>         PxNomPlV ; !
                                     +N+Pl+Gen:%>Q1j%>        PxC      ; !
                                     +N+Pl+Acc:%>Q1jd%>       PxC      ; !
@@ -317,10 +364,10 @@ LEXICON BÅVSÅ !!= @CODE@ Like MUORRA, only in plural. All, except ganta, juvd�
                                     +N+Pl+Ine:%>Q1jn%>       PxC      ; !
                                     +N+Pl+Ela:%>Q1jst%>      PxC      ; !
                                     +N+Pl+Com:%>Q1j%>        PxC      ; !
-                                       +N+Ess:%>n            K        ;
-                              +Err/Orth+N+Ess:%>Q1n          K        ; ! wrong essive like båvsån and juvdán
-                                       +N+Abe:%>Q1dak        K        ;
-                                +Use/NG+N+Abe:%>Q1da         K        ;
+                                       +N+Ess:%>n            K-CONS       ;
+                              +Err/Orth+N+Ess:%>Q1n          K-CONS       ; ! wrong essive like båvsån and juvdán
+                                       +N+Abe:%>Q1dak        K-CONS       ;
+                                +Use/NG+N+Abe:%>Q1da         K-VOW        ;
                                            +N:%>Q1           DAGI_PLURAL  ;
                           +N+Der2+Der/Dimin+N:X7tji%>        DAGI_PLURAL  ;
                             +N+Der1+Der/Car+A:»Q1            DIBME    ;
@@ -329,25 +376,25 @@ LEXICON BÅVSÅ !!= @CODE@ Like MUORRA, only in plural. All, except ganta, juvd�
 !                           +N+Der1+Der/Car+A:»Q1dis         VUOHTA   ; !moved to LEXICON VUOHTA
 ! +N+Der4+Der/ahtes:»Q1g AHTES ;Only for odd-syllble stems
 !                           +N+Der4+Der/ahtes:»Q1d           AHTES    ;
-                   +N+Der2+Der/Dimin+N+Pl+Nom:»X7tja         K        ;
-                   +N+Der2+Der/Dimin+N+Pl+Gen:»X7tjij        K        ;
-                   +N+Der2+Der/Dimin+N+Pl+Acc:»X7tjijt       K        ;
+                   +N+Der2+Der/Dimin+N+Pl+Nom:»X7tja         K-VOW        ;
+                   +N+Der2+Der/Dimin+N+Pl+Gen:»X7tjij        K-CONS       ;
+                   +N+Der2+Der/Dimin+N+Pl+Acc:»X7tjijt       K-CONS       ;
 !                  +N+Der2+Der/Dimin+N+Pl+Acc:»X7tjijd%>     PxCs     ; !
-                   +N+Der2+Der/Dimin+N+Pl+Ill:»X7tjijda      K        ;
-                   +N+Der2+Der/Dimin+N+Pl+Ine:»X7tjijn       K        ;
+                   +N+Der2+Der/Dimin+N+Pl+Ill:»X7tjijda      K-VOW        ;
+                   +N+Der2+Der/Dimin+N+Pl+Ine:»X7tjijn       K-CONS       ;
 !                  +N+Der2+Der/Dimin+N+Pl+Ine:»X7tjijn%>     PxCs     ; !
-                   +N+Der2+Der/Dimin+N+Pl+Ela:»X7tjijs       K        ;
+                   +N+Der2+Der/Dimin+N+Pl+Ela:»X7tjijs       K-CONS       ;
 !                  +N+Der2+Der/Dimin+N+Pl+Ela:»X7tjijst%>    PxCs     ; !
-                   +N+Der2+Der/Dimin+N+Pl+Com:»X7tjij        K        ;
-                      +N+Der2+Der/Dimin+N+Ess:»X7tjin        K        ;
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Nom:»X7tja»ttja    K        ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Gen:»X7tja»ttjaj   K        ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Acc:»X7tja»ttjajt  K        ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ill:»X7tja»ttjajda K        ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ine:»X7tja»ttjajn  K        ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ela:»X7tja»ttjajs  K        ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Com:»X7tja»ttjaj   K        ; !Dobbel diminutiv
-     +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Ess:»X7tja»ttjin   K        ; !Dobbel diminutiv
+                   +N+Der2+Der/Dimin+N+Pl+Com:»X7tjij        K-CONS       ;
+                      +N+Der2+Der/Dimin+N+Ess:»X7tjin        K-CONS       ;
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Nom:»X7tja»ttja    K-VOW        ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Gen:»X7tja»ttjaj   K-CONS       ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Acc:»X7tja»ttjajt  K-CONS       ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ill:»X7tja»ttjajda K-VOW        ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ine:»X7tja»ttjajn  K-CONS       ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ela:»X7tja»ttjajs  K-CONS       ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Com:»X7tja»ttjaj   K-CONS       ; !Dobbel diminutiv
+     +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Ess:»X7tja»ttjin   K-CONS       ; !Dobbel diminutiv
 
 !!€gt-norm: båvså # Even-syllable test
 !!€ båvså:               båvså+N+Pl+Nom
@@ -356,24 +403,24 @@ LEXICON BÅVSÅ !!= @CODE@ Like MUORRA, only in plural. All, except ganta, juvd�
 LEXICON LÅHTSASA !!= @CODE@ Like GAHPER, only in plural. Without derivations, these should maybe be added. 
 
      +N+Cmp/PlGen:%>ij          R        ;
-          +N+Pl+Nom:a       K     ;
-          +N+Pl+Gen:ij      K     ;
-          +N+Pl+Acc:ijt     K     ;
-          +N+Pl+Ill:ijda    K     ;
- +Err/Orth+N+Pl+Ill:ida     K     ;
-          +N+Pl+Ine:ijn     K     ;
-          +N+Pl+Ela:ijs     K     ;
-          +N+Pl+Com:ij      K     ;
+          +N+Pl+Nom:a       K-VOW     ;
+          +N+Pl+Gen:ij      K-CONS    ;
+          +N+Pl+Acc:ijt     K-CONS    ;
+          +N+Pl+Ill:ijda    K-VOW     ;
+ +Err/Orth+N+Pl+Ill:ida     K-VOW     ;
+          +N+Pl+Ine:ijn     K-CONS    ;
+          +N+Pl+Ela:ijs     K-CONS    ;
+          +N+Pl+Com:ij      K-CONS    ;
           +N+Pl+Gen:ij%>    NPxCs ; !
           +N+Pl+Acc:ijd%>   NPxCs ; !
           +N+Pl+Ill:ijdas%> NPxC  ; !
           +N+Pl+Ine:ijn%>   NPxCs ; !
           +N+Pl+Ela:ijst%>  NPxCs ; !
           +N+Pl+Com:ij%>    NPxCs ; !
-             +N+Ess:in      K     ;
-             +N+Abe:ahtá K ; !case
-      +Use/NG+N+Abe:ahti K ; !case
-    +Err/Orth+N+Abe:ahtu K ; !case
+             +N+Ess:in      K-CONS    ;
+             +N+Abe:ahtá K-VOW ; !case
+      +Use/NG+N+Abe:ahti K-VOW ; !case
+    +Err/Orth+N+Abe:ahtu K-VOW ; !case
                  +N:i       DAGI_PLURAL   ;
 
 !! !Partially assimilated loanwords. The first part of the word is "citation borrowed" and keeps its norwegian/swedish orthography, only the last two syllables are adapted to sami.
@@ -398,30 +445,15 @@ LEXICON MUORRA_LOAN_NO_LASJ !!= @CODE@  Like MUORRA_LOAN without -lasj derivatio
  +N+OLang/NOB+Err/Orth+Err/Der:»Q1  DenominalAdjsV2      ; !-lasj weak grade but without vowel changes, makes ájgelasj
  
  
-
-
-LEXICON A_CMP_INFL !!= @CODE@  Sub-forms. Lexicon for giving sub-variation conjugation by simply adding an -a to the norwegian/swedish word. No cg. Like "alkohola" and "agronoma". These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
-
-           :a%>  N-EVENSTRONGSTEM     ;
-           :a%>  N-EVENWEAKSTEM       ;
-           :a»   DenominalNounsMUORRA ;
-           :a»   DenominalAdjsV1      ; !-dibme adj caritive derivation
-           :a»   DenominalAdjsV2      ;
- +Cmp/SgNom:a%>  R                    ;
- +Cmp/SgGen:a%>  R                    ;
- +Cmp/PlGen:a%>j R                    ;
-
-
-
 LEXICON KAFIEDJA
  +N+OLang/NOB: KAFIEDJA_CMP_INFL ;
 
 LEXICON KAFIEDJA_CMP_INFL  !!= @CODE@ Recent loanwords on -edja. Ends on -é in norwegian. Short and long cmp. "Kafea" and "kaféa" are subtaged. See comments about the -ie/-e dialtags in ALFABIEHTTA.
 
-     +CmpNP/Pref:e%>    R                ;
-     +CmpNP/Pref:é%>    R                ;
- +Use/NG+Area/SE:edja   MUORRAInfl       ;
- +Use/NG+Area/SE:edja   MUORRACmp        ;
+     +CmpNP/Pref+Cmp/Unass:e%>    R                ;
+     +CmpNP/Pref+Cmp/Unass:é%>    R                ;
+ +Area/SE:edja   MUORRAInfl       ;
+ +Area/SE:edja   MUORRACmp        ;
         +Area/NO:iedja  MUORRAInfl       ;
         +Area/NO:iedja  MUORRACmp        ;
 
@@ -433,20 +465,20 @@ LEXICON ALLEGORIJJA
 
 LEXICON ALLEGORIJJA_CMP_INFL !!= @CODE@ Recent loanwords ending on -i in NOR/SWE, with long and short compound form. Standardized as-iddja (SWE) and -ijºja (NOR). Previously often assimilated as -ija (or just -ia), but both forms are ungrammatical: Short vowels cannot preceed and follow a single intervocalic consonant. -ija is thus ungrammatical as the short a would be lenghtened to á, like "idja-ijá".
     
-     +CmpNP/Pref:%>     R                   ;
- +Use/NG+Area/SE:ddja   MUORRAInfl          ;
- +Use/NG+Area/SE:ddja   MUORRACmp           ;
-        +Area/NO:jºja   MUORRAInfl          ;
-        +Area/NO:jºja   MUORRACmp           ;
+        +CmpNP/Pref+Cmp/Unass:%>     R                   ;
+    +Area/SE:ddja   MUORRAInfl          ;
+    +Area/SE:ddja   MUORRACmp           ;
+        +Area/NO+G3:jºja   MUORRAInfl          ;
+        +Area/NO+G3:jºja   MUORRACmp           ;
 
        +Err/Orth:%>       A_CMP_INFL           ; !makes the old "allegoria"
        +Err/Orth:j%>      A_CMP_INFL           ; !makes the old allegorija
 
-!!€gt-norm: partijja # Even-syllable test
-!!€ partiddja:                 partijja+N+Sg+Nom
-!!€ partijja:                  partijja+N+Sg+Nom
-!!€ partidjas:                 partijja+N+Sg+Ela
-!!€ partijjas:                 partijja+N+Sg+Ela
+!!€gakademrm: partijja # Even-syllable test
+!!€ akademiddja:                 akademijja+N+Sg+Nom
+!!€ akademijja:                  akademijja+N+G3+Sg+Nom
+!!€ akademidjas:                 akademijja+N+Sg+Ela
+!!€ akademijjas:                 akademijja+N+G3+Sg+Ela
 
 
 LEXICON TEKSTIJLLA
@@ -454,7 +486,7 @@ LEXICON TEKSTIJLLA
 
 LEXICON TEKSTIJLLA_CMP_INFL !!= @CODE@ Recent loanwords on -ijlla with long and short compound-form. . Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
  
- +CmpNP/Pref:il%>      R                    ;
+ +CmpNP/Pref+Cmp/Unass:il%>      R                    ;
             :ijlla     MUORRAInfl           ;
             :ijlla     MUORRACmp            ;
    +Err/Orth:%>il      A_CMP_INFL           ; !makes old "tekstila".
@@ -469,7 +501,7 @@ LEXICON ASIJLLA
 
 LEXICON ASIJLLA_CMP_INFL !!= @CODE@ Recent loanwords on -ijlla, from nor and swe words ending on -yl. With long and short compound-form.  Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
           
-+CmpNP/Pref:yl%>      R                    ;
++CmpNP/Pref+Cmp/Unass:yl%>      R                    ;
            :ijlla     MUORRAInfl           ;
            :ijlla     MUORRACmp            ;
   +Err/Orth:yjlla     MUORRAInfl           ;
@@ -486,7 +518,7 @@ LEXICON BENSIJNNA !!= @CODE@ Recent loanwords on -ijnna with long and short comp
 
 LEXICON BENSIJNNA_CMP_INFL !!= @CODE@ Recent loanwords on -ijnna with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
  
- +CmpNP/Pref:in%>      R                    ;
+ +CmpNP/Pref+Cmp/Unass:in%>      R                    ;
             :ijnna     MUORRAInfl           ;
             :ijnna     MUORRACmp            ;           
    +Err/Orth:in        A_CMP_INFL           ; ! makes old bensina
@@ -501,7 +533,7 @@ LEXICON MASJIJNNA
 
 LEXICON MASJIJNNA_CMP_INFL !!= @CODE@ Recent loanwords on -sjijnna with long and short compound-form: -SKIN
  
- +CmpNP/Pref:skin%>      R                    ;
+ +CmpNP/Pref+Cmp/Unass:skin%>      R                    ;
             :sjijnna     MUORRAInfl           ;
             :sjijnna     MUORRACmp            ;   
    +Err/Orth:skin        A_CMP_INFL           ; ! makes old maskina
@@ -516,7 +548,7 @@ LEXICON ADJEKTIJVVA
 
 LEXICON ADJEKTIJVVA_CMP_INFL !!= @CODE@ Recent loanwords on -ijvva with long and short compound-form
 
- +CmpNP/Pref:iv%>      R                    ;
+ +CmpNP/Pref+Cmp/Unass:iv%>      R                    ;
             :ijvva     MUORRAInfl           ;
             :ijvva     MUORRACmp            ; 
    +Err/Orth:iv        A_CMP_INFL           ; ! makes old adjektiva
@@ -531,7 +563,7 @@ LEXICON PARADIJSSA
 
 LEXICON PARADIJSSA_CMP_INFL !!= @CODE@ Recent loanwords on -ijssa with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
- +CmpNP/Pref:s%>       R                    ;
+ +CmpNP/Pref+Cmp/Unass:s%>       R                    ;
             :ijssa     MUORRAInfl           ;
             :ijssa     MUORRACmp            ; 
    +Err/Orth:isa       A_CMP_INFL           ; ! makes old paradisa
@@ -546,8 +578,8 @@ LEXICON TELEFÅVNNÅ
 
 LEXICON TELEFÅVNNÅ_CMP_INFL !!= @CODE@ Recent loanwords on -åvnnå with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
  
-  +Cmp/SgNom:åvnnå%>   R                    ;
- +CmpNP/Pref:on%>      R                    ;
+!  +Cmp/SgNom:åvnnå%>   R                    ; dublett
+ +CmpNP/Pref+Cmp/Unass:on%>      R                    ;
             :åvnnå     MUORRAInfl           ;
             :åvnnå     MUORRACmp            ; 
    +Err/Orth:on        A_CMP_INFL           ; ! makes old telefona
@@ -562,8 +594,8 @@ LEXICON INSTITUSJÅVNNÅ
  +N+OLang/NOB: INSTITUSJÅVNNÅ_CMP_INFL ;
 
 LEXICON INSTITUSJÅVNNÅ_CMP_INFL  !!= @CODE@ Recent loanwords on -sjåvnnå with long and short compound-form: -TION IN SWEDISH. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
-        +CmpNP/Pref+Area/NO:sjons%>     R                    ;
- +CmpNP/Pref+Use/NG+Area/SE:tions%>     R                    ;
+        +CmpNP/Pref+Area/NO+Cmp/Unass:sjons%>     R                    ;
+ +CmpNP/Pref+Area/SE+Cmp/Unass:tions%>     R                    ;
                            :sjåvnnå     MUORRAInfl           ;
                            :sjåvnnå     MUORRACmp            ;  
           +Err/Orth+Area/NO:sjon         A_CMP_INFL          ; ! makes old institusjona
@@ -579,8 +611,8 @@ LEXICON MISJÅVNNÅ
  +N+OLang/NOB: MISJÅVNNÅ_CMP_INFL ;
 
 LEXICON MISJÅVNNÅ_CMP_INFL !!= @CODE@ Recent loanwords on -sjåvnnå with long and short compound-form: -SSION IN SWEDISH. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
-        +CmpNP/Pref+Area/NO:sjons%>     R                    ;
- +CmpNP/Pref+Use/NG+Area/SE:ssions%>    R                    ;
+        +CmpNP/Pref+Area/NO+Cmp/Unass:sjons%>     R                    ;
+ +CmpNP/Pref+Area/SE+Cmp/Unass:ssions%>    R                    ;
                            :sjåvnnå     MUORRAInfl           ;
                            :sjåvnnå     MUORRACmp            ;  
           +Err/Orth+Area/NO:sjon        A_CMP_INFL           ; ! makes old misjona
@@ -595,8 +627,8 @@ LEXICON PENSJÅVNNÅ
  +N+OLang/NOB: PENSJÅVNNÅ_CMP_INFL ;
 
 LEXICON PENSJÅVNNÅ_CMP_INFL !!= @CODE@ Recent loanwords on -sjåvnnå with long and short compound-form: -SION IN SWEDISH. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
-        +CmpNP/Pref+Area/NO:sjons%>     R                    ;
-        +CmpNP/Pref+Area/SE:sions%>     R                    ;
+        +CmpNP/Pref+Area/NO+Cmp/Unass:sjons%>     R                    ;
+        +CmpNP/Pref+Area/SE+Cmp/Unass:sions%>     R                    ;
                            :sjåvnnå     MUORRAInfl           ;
                            :sjåvnnå     MUORRACmp            ;  
           +Err/Orth+Area/NO:sjon        A_CMP_INFL           ; ! makes old pensjona
@@ -617,8 +649,8 @@ LEXICON PARTISIHPPA_CMP_INFL !!= @CODE@ Recent loanwords from swe -cip and nor -
                    +Area/SE:sijppa     MUORRAInfl           ;
                    +Area/SE:sijppa     MUORRACmp            ;  
                            
-        +CmpNP/Pref+Area/NO:sipp%>    R                    ; 
- +CmpNP/Pref+Use/NG+Area/SE:cip%>     R                    ; 
+        +CmpNP/Pref+Area/NO+Cmp/Unass:sipp%>    R                    ; 
+ +CmpNP/Pref+Area/SE+Cmp/Unass:cip%>     R                    ; 
  
           +Err/Orth+Area/NO:%>sipp    A_CMP_INFL           ; !makes old "partisippa"
           +Err/Orth+Area/SE:%>cip     A_CMP_INFL           ; !makes old "participa"
@@ -637,7 +669,7 @@ LEXICON ALKOHÅVLLÅ
 
 LEXICON ALKOHÅVLLÅ_CMP_INFL !!= @CODE@ Recent loanwords on -åvllå with long and short compound-form. The old stadarization form "alkohola" is sub taged. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
- +CmpNP/Pref:ol%>      R                    ;
+ +CmpNP/Pref+Cmp/Unass:ol%>      R                    ;
             :åvllå     MUORRAInfl           ;
             :åvllå     MUORRACmp            ; 
    +Err/Orth:ol        A_CMP_INFL           ; ! makes old alkohola
@@ -652,7 +684,7 @@ LEXICON AGRONÅVMMÅ
 
 LEXICON AGRONÅVMMÅ_CMP_INFL !!= @CODE@ Recent loanwords on -åvmma with long and short compound-form. -lasj derivation is error taged. The old stadarization form  -oma that does not follow lulesami rules is sub taged.
 
- +CmpNP/Pref:om%>      R                                 ;
+ +CmpNP/Pref+Cmp/Unass:om%>      R                                 ;
             :åvmmå     MUORRAInfl_Err/Der_LASJ           ;
             :åvmmå     MUORRACmp                         ; 
    +Err/Orth:om        A_CMP_INFL                        ; ! To get the form found in dictioneries "agronoma"
@@ -666,7 +698,7 @@ LEXICON DEMAGÅVGGÅ
  +N+OLang/NOB: DEMAGÅVGGÅ_CMP_INFL ;
 
 LEXICON DEMAGÅVGGÅ_CMP_INFL !!= @CODE@ Recent loanwords ending on -og with long and short compound form. Assimilated to smj as -åvggå. -lasj derivation is error taged. The old stadarization -oga that does not follow lulesami rules is sub taged.
- +CmpNP/Pref:og%>      R                                 ;
+ +CmpNP/Pref+Cmp/Unass:og%>      R                                 ;
             :åvggå     MUORRAInfl_Err/Der_LASJ           ;
             :åvggå     MUORRACmp                         ; 
    +Err/Orth:og%>      A_CMP_INFL                        ; !makes the old "demagoga"
@@ -685,7 +717,7 @@ LEXICON FAKTÅVRRÅ_CMP_INFL !!= @CODE@ Recent loanwords on -åvrrå with long a
 !Words ending on -or with tonefall 2, or with stress on last syll, go to this lexicon (like kontor>kontåvrrå). If the stress is on the first syll, and tonefall 1, it goes to GAHPER (like lektor>liektur) Some words go to both because of differences in swedish and norwegian (liektur/lektåvrrå). (This system is from Morén-Duolljá 2014)
 !Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
- +CmpNP/Pref:or%>      R                    ;
+ +CmpNP/Pref+Cmp/Unass:or%>      R                    ;
             :åvrrå     MUORRAInfl           ;
             :åvrrå     MUORRACmp            ; 
    +Err/Orth:or        A_CMP_INFL           ; ! makes old faktora
@@ -697,7 +729,7 @@ LEXICON MIKROSKÅVPPÅ
 
 LEXICON MIKROSKÅVPPÅ_CMP_INFL !!= @CODE@ Recent loanwords on -åvppå (-op in NOB/SWE) with long and short compound-form.  Long vowel and short consonant is assimilated with njuoban, but somehow a lot of -op words are assimilated -oahppa (biskop is pronounced as -opp, so that's different, maybe some have used "biskop" as template), so this is Err/Orth taged. 
 
- +CmpNP/Pref:op%>      R                    ;
+ +CmpNP/Pref+Cmp/Unass:op%>      R                    ;
             :åvppå     MUORRAInfl           ;
             :åvppå     MUORRACmp            ; 
    +Err/Orth:oahppa    MUORRAInfl           ;
@@ -716,7 +748,7 @@ LEXICON KULTUVRRA
 LEXICON KULTUVRRA_CMP_INFL !!= @CODE@ Recent loanwords on -vrra with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
             :vrra     MUORRAInfl           ;
             :vrra     MUORRACmp            ; 
- +CmpNP/Pref:r%>      R                    ; !short cmp, "kulturskåvllå"
+ +CmpNP/Pref+Cmp/Unass:r%>      R                    ; !short cmp, "kulturskåvllå"
    +Err/Orth:r        A_CMP_INFL           ; ! makes old kultura
 
 
@@ -731,7 +763,7 @@ LEXICON ADVÆRBBA_CMP_INFL !!= @CODE@ Recent loanwords on -ærbba with long and 
 
             :ærbba     MUORRAInfl           ;
             :ærbba     MUORRACmp            ; 
- +CmpNP/Pref:erb%>      R                    ;
+ +CmpNP/Pref+Cmp/Unass:erb%>      R                    ;
    +Err/Orth:erb%>      A_CMP_INFL           ; !makes the old "adverba"
 
 !!€gt-norm: detransitijvvaværbba # Even-syllable test
@@ -746,7 +778,7 @@ LEXICON SUBSTÁNSSA_CMP_INFL !!= @CODE@ Recent loanwords on -ánssa with long an
 
             :ánssa     MUORRAInfl           ;
             :ánssa     MUORRACmp            ; 
- +CmpNP/Pref:ans%>     R                    ;
+ +CmpNP/Pref+Cmp/Unass:ans%>     R                    ;
    +Err/Orth:ansa      A_CMP_INFL           ; ! makes old substansa
 
 
@@ -761,7 +793,7 @@ LEXICON VALÆNSSA
 LEXICON VALÆNSSA_CMP_INFL !!= @CODE@ Recent loanwords on -ænssa with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
             :ænssa     MUORRAInfl           ;
             :ænssa     MUORRACmp            ; 
- +CmpNP/Pref:ens%>      R                    ;
+ +CmpNP/Pref+Cmp/Unass:ens%>      R                    ;
    +Err/Orth:ens        A_CMP_INFL           ; ! makes old valensa
 
 !!€gt-norm: intelligænssa # Even-syllable test
@@ -777,7 +809,7 @@ LEXICON ADVOKÁHTTA_CMP_INFL !!= @CODE@ Recent loanwords on -áhtta with long an
 
             :áhtta     MUORRAInfl           ;
             :áhtta     MUORRACmp            ; 
- +CmpNP/Pref:at%>      R                    ;
+ +CmpNP/Pref+Cmp/Unass:at%>      R                    ;
    +Err/Orth:at        A_CMP_INFL           ; ! makes old advokata
 
 
@@ -786,16 +818,19 @@ LEXICON ADVOKÁHTTA_CMP_INFL !!= @CODE@ Recent loanwords on -áhtta with long an
 !!€ klimáhtas:                 klimáhtta+N+Sg+Ela
 
 LEXICON ALFABIEHTTA
-      +OLang/NOB:       ALFABIEHTTA_CMP_INFL ;
+      +N+OLang/NOB:       ALFABIEHTTA_CMP_INFL ;
 
  LEXICON ALFABIEHTTA_CMP_INFL !!= @CODE@ Recent loanwords originally on -et both in Norway and Sweden. Assimilation differences, however, create two lule sami forms: -iehtta in NOR and -æhtta in SWE. LONG -e is assimilated in different ways in Norway and Sweden: In Norway, it becomes -ie, and in Sweden -e. Tiedja/tedja, systiebma/systebma and so on. This is especially apparent in assimilated words with long e in third grade: E becomes æ in third grade so we get "universitæhtta" in SWE, but this is very strange to people on the norwegian side of the border as they want "universitiehtta". Both -ie and -e are dialtaged in lexicons HYDROGIEDNA, APOTIEHKKA, SYSTIEBMA, KAFÉ. Previously people often wrote -ehtta in Norway, but this is incorrect as e always becomes æ in grade three.
  
-     +N+CmpNP/Pref:et%>   R                ;
-        +Area/SE:æhtta  MUORRA           ;
-        +Area/NO:iehtta MUORRA           ;
-       +Err/Orth:ehtta  MUORRA           ; ! long e should not be allowed in grade III, even though it's in dictionaries and "Ådå testamennta".
-       +N+Err/Orth:et     A_CMP_INFL       ; ! makes old alfabeta
-       +N+Err/Orth:eht    A_CMP_INFL       ; ! makes old alfabehta
+     +CmpNP/Pref+Cmp/Unass:et%>   R                ;
+        +Area/SE:æhtta  MUORRACmp           ;
+        +Area/NO:iehtta MUORRACmp           ;
+       +Err/Orth:ehtta  MUORRACmp           ; ! long e should not be allowed in grade III, even though it's in dictionaries and "Ådå testamennta".
+        +Area/SE:æhtta  MUORRAInfl           ;
+        +Area/NO:iehtta MUORRAInfl           ;
+       +Err/Orth:ehtta  MUORRAInfl           ; ! long e should not be allowed in grade III, even though it's in dictionaries and "Ådå testamennta".
+       +Err/Orth:et     A_CMP_INFL       ; ! makes old alfabeta
+       +Err/Orth:eht    A_CMP_INFL       ; ! makes old alfabehta
        
 
 !!€gt-norm: mobilitiehtta # Even-syllable test
@@ -808,8 +843,8 @@ LEXICON INTERNÆHTTA
  +N+OLang/NOB: INTERNÆHTTA_CMP_INFL ;
 
 LEXICON INTERNÆHTTA_CMP_INFL !!= @CODE@ Recent loanwords on -æhtta with long and short compound-form: -ET IN SWEDISH, -ETT in norwegian. Differs from ALFABIEHTTA because -ehtta isn't used in NOR.
-        +CmpNP/Pref+Area/NO:ett%>      R                    ;
- +CmpNP/Pref+Use/NG+Area/SE:et%>       R                    ;
+        +CmpNP/Pref+Area/NO+Cmp/Unass:ett%>      R                    ;
+ +CmpNP/Pref+Area/SE+Cmp/Unass:et%>       R                    ;
                            :æhtta      MUORRAInfl           ;
                            :æhtta      MUORRACmp            ; 
           +Err/Orth+Area/NO:ett        A_CMP_INFL           ; ! makes old internetta
@@ -827,7 +862,7 @@ LEXICON TABLÆHTTA_CMP_INFL !!= @CODE@ Recent loanwords on -æhtta with long and
 
             :æhtta      MUORRAInfl           ;
             :æhtta      MUORRACmp            ; 
- +CmpNP/Pref:ett%>      R                    ;
+ +CmpNP/Pref+Cmp/Unass:ett%>      R                    ;
    +Err/Orth:ett        A_CMP_INFL           ; ! makes old tabeletta
 
 !!€gt-norm: kvartæhtta # Even-syllable test
@@ -840,8 +875,8 @@ LEXICON INSTITUHTTA
 
 LEXICON INSTITUHTTA_CMP_INFL !!= @CODE@ Recent loanwords on -uhtta, with long and short compound-form on -utt(NOR)/-ut(SWE). The swedish -ut also gets uvtta, as ANTIHKKA-antijkka, but instituhtta is also used in sweden, so no Area/NO tag. 
 
-         +CmpNP/Pref+Area/NO:tt%>     R                    ;
-  +CmpNP/Pref+Use/NG+Area/SE:t%>      R                    ;
+         +CmpNP/Pref+Area/NO+Cmp/Unass:tt%>     R                    ;
+  +CmpNP/Pref+Area/SE+Cmp/Unass:t%>      R                    ;
                             :htta     MUORRAInfl           ;
                             :htta     MUORRACmp            ; 
                     +Area/SE:vtta     MUORRAInfl           ;
@@ -860,8 +895,8 @@ LEXICON SATELIHTTA
 
 LEXICON SATELIHTTA_CMP_INFL !!= @CODE@ Recent loanwords on -ihtta, with long and short compound-form on -itt(NOR)/-it(SWE). The swedish -it also gets ijtta, as ANTIHKKA-antijkka, but satelihtta is also used in sweden, so no Area/NO tag. 
 
-         +CmpNP/Pref+Area/NO:tt%>     R                    ;
-  +CmpNP/Pref+Use/NG+Area/SE:t%>      R                    ;
+         +CmpNP/Pref+Area/NO+Cmp/Unass:tt%>     R                    ;
+  +CmpNP/Pref+Area/SE+Cmp/Unass:t%>      R                    ;
                             :htta     MUORRAInfl           ;
                             :htta     MUORRACmp            ; 
                     +Area/SE:jtta     MUORRAInfl           ;
@@ -881,7 +916,7 @@ LEXICON APOTIEHKKA
 
 LEXICON APOTIEHKKA_CMP_INFL !!= @CODE@ Recent loanwords on -iehkka in NOR, -æhkka in SWE. -ehkka as sub. With long and short compound-form on -k. See comments about the -ie/-e dialtags in ALFABIEHTTA.
 
-               +CmpNP/Pref:eks%>      R                    ; !short cmp
+               +CmpNP/Pref+Cmp/Unass:eks%>      R                    ; !short cmp
                   +Area/NO:iehkka     MUORRAInfl           ;
                   +Area/NO:iehkka     MUORRACmp            ; 
                   +Area/SE:æhkka      MUORRAInfl           ;
@@ -905,8 +940,8 @@ LEXICON ANTIHKKA_CMP_INFL !!= @CODE@ Recent loanwords on -hkka in Norway, both -
                             :hkka     MUORRACmp            ; 
                     +Area/SE:jkka     MUORRAInfl           ;
                     +Area/SE:jkka     MUORRACmp            ;   
-         +CmpNP/Pref+Area/NO:kk%>     R                    ;
-  +CmpNP/Pref+Use/NG+Area/SE:k%>      R                    ;
+         +CmpNP/Pref+Area/NO+Cmp/Unass:kk%>     R                    ;
+  +CmpNP/Pref+Area/SE+Cmp/Unass:k%>      R                    ;
  
           +Err/Orth+Area/NO:%>kk     A_CMP_INFL           ; !makes old "antikka"
           +Err/Orth+Area/SE:%>k      A_CMP_INFL           ; !makes old "apotika"
@@ -924,7 +959,7 @@ LEXICON SEMINÁRRA
 
 LEXICON SEMINÁRRA_CMP_INFL !!= @CODE@ Recent loanwords on -árra with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
- +CmpNP/Pref:ar%>     R                    ;
+ +CmpNP/Pref+Cmp/Unass:ar%>     R                    ;
             :árra     MUORRAInfl           ;
             :árra     MUORRACmp            ; 
    +Err/Orth:ar       A_CMP_INFL           ; ! makes old seminara
@@ -940,11 +975,10 @@ LEXICON AREÁLLA
 
 LEXICON AREÁLLA_CMP_INFL !!= @CODE@ Recent loanwords on -álla with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
- +CmpNP/Pref:al%>      R                    ;
+ +CmpNP/Pref+Cmp/Unass:al%>      R                    ;
             :álla      MUORRAInfl           ;
             :álla      MUORRACmp            ; 
    +Err/Orth:%>al      A_CMP_INFL           ; !makes old "areala"
-
 
 !!€gt-norm: gasskavokálla # Even-syllable test
 !!€ gasskavokálla:                 gasskavokálla+N+Sg+Nom
@@ -956,11 +990,13 @@ LEXICON AMBASSADERRA
 
 LEXICON AMBASSADERRA_CMP_INFL !!= @CODE@ Recent loanwords on -ør with long and short compound-form. Standarized by Giellagálldo 05.05.14 as -erra. -ørra is subtaged
           
- +CmpNP/Pref:ør%>      R                    ; !short cmp, "ambassadørårrudahka"
+ +CmpNP/Pref+Cmp/Unass:ør%>      R                    ; !short cmp, "ambassadørårrudahka"
             :erra      MUORRAInfl           ;
             :erra      MUORRACmp            ;
    +Err/Orth:ørra      MUORRAInfl           ;
-   +Err/Orth:ørra      MUORRACmp            ;         
+   +Err/Orth:ørra      MUORRACmp            ;   
+   +Err/Orth:ierra      MUORRAInfl           ;
+   +Err/Orth:ierra      MUORRACmp            ;               
    +Err/Orth:ør        A_CMP_INFL           ; ! makes old observatøra
            
 
@@ -974,28 +1010,28 @@ LEXICON VETERINERRA
 
 LEXICON VETERINERRA_CMP_INFL !!= @CODE@ Recent loanwords on -erra. Words ending in -ær in both SWE and NOR. Both long and short compound-form. The old standardization form -æra, without cg, is subtaged, -also -ær'ra and -ærra.                   
  
- +CmpNP/Pref:ær%>      R                    ; !Short cmp "veterinærskåvllå"
-            :erra      MUORRAInfl           ;
-            :erra      MUORRACmp            ;
-   +Err/Orth:ærºra     MUORRAInfl           ; ! long æ assimilated to æ, but short conc dosn't assimilate to 3.grade, 2.grade changes æ to e. 
-   +Err/Orth:ærºra     MUORRACmp            ; 
-   +Err/Orth:ærra      MUORRAInfl           ; ! !Not possible with æ in second grade when vowlat is short vowel a,i og u
-   +Err/Orth:ærra      MUORRACmp            ; 
-   +Err/Orth:ær%>      A_CMP_INFL           ; !makes the old "veterinæra"
+    +CmpNP/Pref+Cmp/Unass:ær%>      R                    ; !Short cmp "veterinærskåvllå"
+               :erra      MUORRAInfl           ;
+               :erra      MUORRACmp            ;
+   +Err/Orth+G3:ærºra     MUORRAInfl           ; ! long æ assimilated to æ, but short conc dosn't assimilate to 3.grade, 2.grade changes æ to e. 
+   +Err/Orth+G3:ærºra     MUORRACmp            ; 
+      +Err/Orth:ærra      MUORRAInfl           ; ! !Not possible with æ in second grade when vowlat is short vowel a,i og u
+      +Err/Orth:ærra      MUORRACmp            ; 
+      +Err/Orth:ær%>      A_CMP_INFL           ; !makes the old "veterinæra"
        
 LEXICON ATMOSFERRA
  +N+OLang/NOB: ATMOSFERRA_CMP_INFL ;
 
 LEXICON ATMOSFERRA_CMP_INFL !!= @CODE@ Recent loanwords -on erra. But with different endings in SE and NO, ending on -ære, -ær in NOR and -är, -ära in SWE (Ingefær NO, ingefära in SE).  Only long compound-form, short form must be hardcoded in firstcompnent lexicon. The old standardization form -æra, and -era, without cg, are subtaged, -also -ær'ra and -ærra.             
 
-            :erra      MUORRAInfl           ;
-            :erra      MUORRACmp            ;
-   +Err/Orth:ærºra     MUORRAInfl           ; ! long æ assimilated to æ, but short conc dosn't assimilate to 3.grade, 2.grade changes æ to e. 
-   +Err/Orth:ærºra     MUORRACmp            ; 
-   +Err/Orth:ærra      MUORRAInfl           ; ! !Not possible with æ in second grade when vowlat is short vowel a,i og u
-   +Err/Orth:ærra      MUORRACmp            ; 
-   +Err/Orth:ær        A_CMP_INFL           ; ! makes old karriära (also for NO atmosfære)
-   +Err/Orth:er        A_CMP_INFL           ; ! makes old karriera
+               :erra      MUORRAInfl           ;
+               :erra      MUORRACmp            ;
+   +Err/Orth+G3:ærºra     MUORRAInfl           ; ! long æ assimilated to æ, but short conc dosn't assimilate to 3.grade, 2.grade changes æ to e. 
+   +Err/Orth+G3:ærºra     MUORRACmp            ; 
+      +Err/Orth:ærra      MUORRAInfl           ; ! !Not possible with æ in second grade when vowlat is short vowel a,i og u
+      +Err/Orth:ærra      MUORRACmp            ; 
+      +Err/Orth:ær        A_CMP_INFL           ; ! makes old karriära (also for NO atmosfære)
+      +Err/Orth:er        A_CMP_INFL           ; ! makes old karriera
 
 
 !!€gt-norm: observaterra # Even-syllable test
@@ -1007,16 +1043,16 @@ LEXICON KARAKTIERRA
 
 LEXICON KARAKTIERRA_CMP_INFL !!= @CODE@ Recent loanwords -on ierra in NOR, -erra in SWE, because of long e assimilates diffenrent ways. Words ending on -er in NOR, and -er or -är in SWE. Only long compound-form, short form must be hardcoded in firstcompnent lexicon.  
 
-            +Area/NO:ierra      MUORRAInfl           ;
-            +Area/NO:ierra      MUORRACmp            ;
-            +Area/SE:erra       MUORRAInfl           ; ! long æ assimilated to æ, 2.grade changes æ to e. 
-            +Area/SE:erra       MUORRACmp            ; 
-           +Err/Orth:ærra       MUORRAInfl           ; ! Not possible with æ in second grade when vowlat is short vowel a,i og u
-           +Err/Orth:ærra       MUORRACmp            ; 
-           +Err/Orth:ærºra      MUORRAInfl           ; ! long æ/e is assimilated to æ, but short conc dosn't assimilate to 3.length.  
-           +Err/Orth:ærºra      MUORRACmp            ;                   
-   +Err/Orth+Area/SE:är         A_CMP_INFL           ; ! makes old karaktära
-           +Err/Orth:er         A_CMP_INFL           ; ! makes old karaktera
+               +Area/NO:ierra      MUORRAInfl           ;
+               +Area/NO:ierra      MUORRACmp            ;
+               +Area/SE:erra       MUORRAInfl           ; ! long æ assimilated to æ, 2.grade changes æ to e. 
+               +Area/SE:erra       MUORRACmp            ; 
+              +Err/Orth:ærra       MUORRAInfl           ; ! Not possible with æ in second grade when vowlat is short vowel a,i og u
+              +Err/Orth:ærra       MUORRACmp            ; 
+           +Err/Orth+G3:ærºra      MUORRAInfl           ; ! long æ/e is assimilated to æ, but short conc dosn't assimilate to 3.length.  
+           +Err/Orth+G3:ærºra      MUORRACmp            ;                   
+      +Err/Orth+Area/SE:är         A_CMP_INFL           ; ! makes old karaktära
+              +Err/Orth:er         A_CMP_INFL           ; ! makes old karaktera
 
 !!€gt-norm: observaterra # Even-syllable test
 !!€ karaktierra:                 karaktierra+N+Sg+Nom
@@ -1030,15 +1066,15 @@ LEXICON TABÆLLA
 
 LEXICON TABÆLLA_CMP_INFL !!= @CODE@ Recent loanwords on -älºla with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
- +CmpNP/Pref:ell%>      R                    ;
-            :ælºla      MUORRAInfl           ;
-            :ælºla      MUORRACmp            ;
-   +Err/Orth:%>ell      A_CMP_INFL           ; !makes old "tabella" without cg.
+          +CmpNP/Pref+G3+Cmp/Unass:ell%>      R                    ;
+                     +G3:ælºla      MUORRAInfl           ;
+                     +G3:ælºla      MUORRACmp            ;
+      +Err/Orth+N+Sg+Nom:%>ella     K                    ; !makes old "tabella"
 
 !!€gt-norm: flotælla # Even-syllable test
-!!€ flotælla:                 flotælla+N+Sg+Nom
-!!€ flotälla:                 flotælla+N+Sg+Nom
-!!€ flotellas:                flotælla+N+Sg+Ela
+!!€ flotælla:                 flotælla+N+G3+Sg+Nom
+!!€ flotälla:                 flotælla+N+G3+Sg+Nom
+!!€ flotellas:                flotælla+N+G3+Sg+Ela
 
 
 LEXICON TELEGRÁMMA
@@ -1046,14 +1082,16 @@ LEXICON TELEGRÁMMA
 
 LEXICON TELEGRÁMMA_CMP_INFL !!= @CODE@ Recent loanwords on -ámºma with long and short compound-form
 
- +CmpNP/Pref:am%>       R                    ;
-            :ámºma      MUORRAInfl           ;
-            :ámºma      MUORRACmp            ;
-   +Err/Orth:am         A_CMP_INFL           ; ! makes old telegrama
+    +CmpNP/Pref+Cmp/Unass:am%>       R                    ;
+            +G3:ámºma      MUORRAInfl           ;
+            +G3:ámºma      MUORRACmp            ;
+
+      +Err/Orth:ámma       MUORRA_ERR/ORTH      ;
+      +Err/Orth:am         A_CMP_INFL           ; ! makes old telegrama
 
 !!€gt-norm: grámma # Even-syllable test
-!!€ grámma:                 grámma+N+Sg+Nom
-!!€ grámmas:                 grámma+N+Sg+Ela
+!!€ grámma:                 grámma+N+G3+Sg+Nom
+!!€ grámmas:                grámma+N+G3+Sg+Ela
 
 
 LEXICON TOPOGRÁFFA
@@ -1061,25 +1099,24 @@ LEXICON TOPOGRÁFFA
 
 LEXICON TOPOGRÁFFA_CMP_INFL !!= @CODE@ Recent loanwords on -áfºfa with long and short compound-form
 
- +CmpNP/Pref:af%>       R                    ;
-            :áfºfa      MUORRAInfl           ;
-            :áfºfa      MUORRACmp            ;
+    +CmpNP/Pref+Cmp/Unass:af%>       R                    ;
+            +G3:áfºfa      MUORRAInfl           ;
+            +G3:áfºfa      MUORRACmp            ;
             
-   +Err/Orth:áffa       MUORRAInfl           ; ! makes telegráffa
-   +Err/Orth:áffa       MUORRACmp            ;
-   +Err/Orth:af         A_CMP_INFL           ; ! makes old telegrafa
-   +Err/Orth:áf         A_CMP_INFL           ; ! makes old telegráfa
+      +Err/Orth:áffa       MUORRA_ERR/ORTH      ;
+      +Err/Orth:af         A_CMP_INFL           ; ! makes old telegrafa
+      +Err/Orth:áf         A_CMP_INFL           ; ! makes old telegráfa
 
-!!€gt-norm: grámma # Even-syllable test
-!!€ telegráffa:                 telegráffa+N+Sg+Nom
-!!€ telegráffas:                telegráffa+N+Sg+Ela
+!!€gt-norm: telegráffa # Even-syllable test
+!!€ telegráffa:                 telegráffa+N+G3+Sg+Nom
+!!€ telegráffas:                telegráffa+N+G3+Sg+Ela
 
 LEXICON SYSTIEBMA
  +N+OLang/NOB: SYSTIEBMA_CMP_INFL ;
 
 LEXICON SYSTIEBMA_CMP_INFL !!= @CODE@ Recent loanwords on -ebma/-iebma with long and short compound-form. -em in NOR and SWE. See comments about the -ie/-e dialtags in ALFABIEHTTA. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
          
-         +CmpNP/Pref:em%>       R                    ; !Short cmp
+         +CmpNP/Pref+Cmp/Unass:em%>       R                    ; !Short cmp
             +Area/SE:ebma       MUORRAInfl           ;
             +Area/SE:ebma       MUORRACmp            ;
             +Area/NO:iebma      MUORRAInfl           ;
@@ -1098,7 +1135,7 @@ LEXICON ORGÁDNA
 
 LEXICON ORGÁDNA_CMP_INFL !!= @CODE@ Recent loanwords on -ádna with long and short compound-form
 
- +CmpNP/Pref:an%>    R                    ;
+ +CmpNP/Pref+Cmp/Unass:an%>    R                    ;
             :ádna    MUORRAInfl           ;
             :ádna    MUORRACmp            ;
     +Area/SE:ánna    MUORRAInfl           ; !In swe both dn and nn in use
@@ -1117,7 +1154,7 @@ LEXICON KOLLÆKTA
 
 LEXICON KOLLÆKTA_CMP_INFL !!= @CODE@ Recent loanwords on -ækta with long and short compound-form
 
- +CmpNP/Pref:ekt%>     R                    ;
+ +CmpNP/Pref+Cmp/Unass:ekt%>     R                    ;
             :ækta      MUORRAInfl           ;
             :ækta      MUORRACmp            ;
    +Err/Orth:ekt       A_CMP_INFL           ; ! makes old kollekta
@@ -1132,7 +1169,7 @@ LEXICON HYDROGIEDNA
 
 LEXICON HYDROGIEDNA_CMP_INFL !!= @CODE@ Recent loanwords on -iedna in NOR and -edna in SWE. Both long and short compound-form. Norwegian/swedish -en. The old standardization form -ena, without cg, is subtaged. See comments about the -ie/-e dialtags in ALFABIEHTTA.
 
- +CmpNP/Pref:en%>       R                    ; !Short cmp "hydrogenbummba"
+ +CmpNP/Pref+Cmp/Unass:en%>       R                    ; !Short cmp "hydrogenbummba"
     +Area/SE:edna       MUORRAInfl           ; ! In swe both edna and enna in use
     +Area/SE:edna       MUORRACmp            ; ! In swe both edna and enna in use
     +Area/SE:enna       MUORRAInfl           ; ! In swe both edna and enna in use
@@ -1145,7 +1182,7 @@ LEXICON PATÆNNTA
  +N+OLang/NOB: PATÆNNTA_CMP_INFL ;
 
 LEXICON PATÆNNTA_CMP_INFL !!= @CODE@ Recent loanwords on -ænnta with long and short compound-form. The -ennta form (used in "Ådå testamennta") is taged as sub (e always becomes æ in grade three).
- +CmpNP/Pref:ent%>      R                    ;
+ +CmpNP/Pref+Cmp/Unass:ent%>      R                    ;
             :ænnta      MUORRAInfl           ;
             :ænnta      MUORRACmp            ;
    +Err/Orth:ennta      MUORRAInfl           ; !not possible with e in 3.grade!
@@ -1161,7 +1198,7 @@ LEXICON VARIÁNNTA
  +N+OLang/NOB: VARIÁNNTA_CMP_INFL ;
 
 LEXICON VARIÁNNTA_CMP_INFL !!= @CODE@ Recent loanwords on -ánnta with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
- +CmpNP/Pref:ant%>     R                    ;
+ +CmpNP/Pref+Cmp/Unass:ant%>     R                    ;
             :ánnta     MUORRAInfl           ;
             :ánnta     MUORRACmp            ;
             
@@ -1179,8 +1216,8 @@ LEXICON FANATISSMA
 
 LEXICON FANATISSMA_CMP_INFL !!= @CODE@ Recent loanwords on -ssma with long and short compound-form.
  
- +CmpNP/Pref+Use/NG+Area/SE:sm%>     R                    ;
-        +CmpNP/Pref+Area/NO:sme%>    R                    ;
+ +CmpNP/Pref+Area/SE+Cmp/Unass:sm%>     R                    ;
+        +CmpNP/Pref+Area/NO+Cmp/Unass:sme%>    R                    ;
                            :ssma     MUORRAInfl           ;
                            :ssma     MUORRACmp            ;
                   +Err/Orth:sm       A_CMP_INFL           ; ! makes old fanatisma
@@ -1195,7 +1232,7 @@ LEXICON TURISSTA
 
 LEXICON TURISSTA_CMP_INFL !!= @CODE@ Recent loanwords on -ssta with long and short compound-form. -lasj derivation is error taged.  Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
- +CmpNP/Pref:st9%>    R                                 ;
+ +CmpNP/Pref+Cmp/Unass:st9%>    R                                 ;
             :ssta     MUORRAInfl_Err/Der_LASJ           ;
             :ssta     MUORRACmp                         ;
    +Err/Orth:st       A_CMP_INFL                        ; ! makes old turista
@@ -1213,9 +1250,9 @@ LEXICON PRIEMIJ
  +N+OLang/NOB: PRIEMIJ_CMP_INFL ;
 
 LEXICON PRIEMIJ_CMP_INFL !!= @CODE@ Assimilated loanwords. on -ie/-y, like premie and bandy. Become odd syllable loan words with cg, like "riebij". Nom: premij, gen prebmiha. Long and short essive.
-    +Sg+Nom:j%>Q1 K                 ;
-       +Ess:n%>Q1 K                 ; !Short
-       +Ess:hin%> K                 ; !Long
+    +Sg+Nom:j%>Q1 K-CONS                ;
+       +Ess:n%>Q1 K-CONS                ; !Short
+       +Ess:hin%> K-CONS                ; !Long
            :h%>   OTH-ODDCASE       ;
            :h»    DenominalNounsODD ;
            :h»    DenominalAdjsODD  ;
@@ -1250,18 +1287,6 @@ LEXICON NOADE_BADASS !!= @CODE@ 2 syll stems without cg. Badly or wrongly assimi
 !!€ balláda               balláda+N+Sg+Nom
 !!€ balládas              balláda+N+Sg+Ela
 
-LEXICON BOAKSA_BADASS
- +N+OLang/NOB+Use/NotDNorm+Err/Orth: BOAKSA_BADASS_CMP_INFL ;
-
-LEXICON BOAKSA_BADASS_CMP_INFL !!= @CODE@ This is an Err/Sub, and all the words pointing to lexicon BOAKSA are therfore Err/Sub taged. Only for words "boaksa-båksav". Boaksa-båksa is assimilated wrongly, must be boaksa-båvsa if it's to follow lulesami rules.
-           :oaksa%>    N-EVENSTRONGSTEM     ;
-           :åkºsa%>Q1  N-EVENWEAKSTEM       ; ! Weak grade Q1 !WRONG
-           :åkºsa»     DenominalNounsMUORRA ; !WRONG
-           :åkºsa»     DenominalAdjsV1      ; !WRONG
-!          :åkºsa»X7   DenominalAdjsV2      ; !not plausible
- +Cmp/SgNom:oaksa%>    R                    ;
- +Cmp/SgGen:åkºsa%>Q1  R                    ; !WRONG
- +Cmp/PlGen:åkºsa%>Q1j R                    ; !WRONG
 
 LEXICON C_ILL_IJ_BADASS !!= @CODE@ Badly or wrongly assimilated words. Last letter is consonant, no cg, no vowchange, with illative -ij. (Same as GAHPER) Assimilated in a way that isn't lulesami. Most of the words are Err/Orth tagged with a standardized lemma. Some are Err/Lex tagged, and some only recieve the +Use/-Spell tag from the lexicon.
 
@@ -1281,6 +1306,78 @@ LEXICON C_ILL_AJ_BADASS !!= @CODE@ Badly or wrongly assimilated words. Last lett
 !!€ kálsium        kálsium+N+Sg+Nom
 !!€ kálsiumas      kálsium+N+Sg+Ela
 !!€ kálsiumaj      kálsium+N+Sg+Ill
+
+
+!! ! Error-lexicons
+! - - - - - -
+
+LEXICON A_CMP_INFL !!= @CODE@  Sub-forms. Lexicon for giving sub-variation conjugation by simply adding an -a to the norwegian/swedish word. No cg. Like "alkohola" and "agronoma". These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
+
+           :a%>  N-EVENSTRONGSTEM     ;
+           :a%>  N-EVENWEAKSTEM       ;
+           :a»   DenominalNounsMUORRA ;
+           :a»   DenominalAdjsV1      ; !-dibme adj caritive derivation
+           :a»   DenominalAdjsV2      ;
+ +Cmp/SgNom:a%>  R                    ;
+ +Cmp/SgGen:a%>  R                    ;
+ +Cmp/PlGen:a%>j R                    ;
+
+
+LEXICON MUORRA_ERR/ORTH != @CODE@ Like MUORRA, but without nominative, illative and essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag. Entries like "ålggo" have no grade alternation, a common error is writing it like it has. 
+           :%>Q1 N-EVENWEAKSTEM       ; ! Weak grade Q1
+           :»    DenominalNounsMUORRA ;
+           :»    DenominalAdjsV1      ; !-dibme adj caritive derivation
+           :»X7  DenominalAdjsV2      ; !-lasj with weak grade and vowel changes, ájgálasj
+           :»Q1  DenominalAdjsV2      ; !-lasj weak grade but without vowel changes, makes ájgelasj 
+ +Cmp/SgGen:Q1  R ;
+ +Cmp/PlGen:Q1j R ;
+
+
+LEXICON GAHPER_ERR/ORTH !!= @CODE@ Like GAHPER, but without nominative and essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag. 
+          N+Sg+Gen:a       K     ;
+          N+Sg+Acc:av      K     ;
+          N+Sg+Ill:ij      K     ; ! Px ?? !!
+          N+Sg+Ine:in      K     ;
+          N+Sg+Ela:is      K     ;
+          N+Sg+Com:ijn     K     ;
+          N+Sg+Com:ijna    K     ; !
+          N+Pl+Nom:a       K     ;
+          N+Pl+Gen:ij      K     ;
+          N+Pl+Acc:ijt     K     ;
+          N+Pl+Ill:ijda    K     ;
+          N+Pl+Ill:ida     K     ;
+          N+Pl+Ine:ijn     K     ;
+          N+Pl+Ela:ijs     K     ;
+          N+Pl+Com:ij      K     ;
+          N+Sg+Nom:        NPxC  ;
+          N+Sg+Gen:        NPxC  ; !
+          N+Sg+Acc:        NPxC  ; !
+          N+Sg+Ill:as%>    NPxCs ; !
+          N+Sg+Ine:in%>    NPxCs ; !
+          N+Sg+Ela:ist%>   NPxCs ; !
+          N+Sg+Com:ijn%>   NPxCs ; !
+          N+Pl+Gen:ij%>    NPxCs ; !
+          N+Pl+Acc:ijd%>   NPxCs ; !
+          N+Pl+Ill:ijdas%> NPxC  ; !
+          N+Pl+Ine:ijn%>   NPxCs ; !
+          N+Pl+Ela:ijst%>  NPxCs ; !
+          N+Pl+Com:ij%>    NPxCs ; !
+                +N:a       DAGI_SINGULAR ;
+                +N:i       DAGI_PLURAL   ;
+                +N:»  DenominalNounsODD ;
+                +N:»  DenominalAdjsODD  ;
+                +N:%> ODDCmp            ;
+                +N:   AHTÁ              ;
+
+LEXICON NOADE_ERR/ORTH !!= @CODE@ Like NOADE, but without nominative, illative an essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag.
+
+           +N:%>Q4  N-EVENWEAKSTEM       ; ! Q4=Stem vowel change e:i and o:u in front of j. Dipht. simpl. Like Q1 but strong grade.
+ +N+Cmp/SgGen:      R                    ;
+ +N+Cmp/PlGen:Y6j   R                    ;
+           +N:»     DenominalNounsNOADE  ;
+           +N:»     DenominalAdjsV1_1    ; !-dibme adj caritive derivation
+           +N:»Z2   DenominalAdjsV2      ; !-lasj Z2=vowel changes without WeG 
+  +Err/Orth+N:»     DenominalAdjsV2      ; !err/Orth lasj without vowel changes, gives vuodolasj. 
 
 
 !! ! Unassimilated loanwords
@@ -1325,16 +1422,16 @@ LEXICON C_ILL_AJ_UNASS !!= @CODE@ C-final unassimilated loanwords, gives illativ
 
 LEXICON CELSIUS_UNASS_CMP_INFL 
  
-                   +Sg+Nom:%>         K                    ;
+                   +Sg+Nom:%>         K-VOW                    ;
                           :a%>        ILL-EVENCASE         ;
                           :a%>        N-EVENWEAKSTEM       ;
-                      +Ess:an         K                    ;
+                      +Ess:an         K-CONS                   ;
                       +Ess:an%>       PxC                  ; !
                 +Cmp/SgNom:%>         R                    ;
                 +Cmp/SgGen:a%>        R                    ;
                 +Cmp/PlGen:a%>j       R                    ;
-                      +Abe:a%>dak     K                    ;
-               +Abe+Use/NG:a%>da      K                    ;
+                      +Abe:a%>dak     K-CONS                   ;
+               +Abe+Use/NG:a%>da      K-VOW                    ;
                           :a»         DenominalNounsMUORRA ;
 
 
@@ -1410,7 +1507,7 @@ LEXICON GÅNÅGIS !!= @CODE@ Standard C-final 4-syllabic stems
 !!€ rahtjamusás:                 rahtjamus+N+Sg+Ela
 
 LEXICON GÅNÅGIS-C
-                           +Sg+Nom:%>             K              ;
+                           +Sg+Nom:%>             K-CONS              ;
                         +Cmp/SgNom:%>             R              ;
                         +Cmp/SgGen:a%>Q1          R              ;
                         +Cmp/PlGen:a%>Q1j         R              ;
@@ -1429,7 +1526,7 @@ LEXICON GÅNÅGIS-C
 LEXICON GÅNÅGIS-EVEN
          :Q1  N-EVENWEAKSTEM        ;
               ILL-EVENCASE          ;
-     +Ess:n   K                     ;
+     +Ess:n   K-CONS                    ;
   +Sg+Nom:    PxV                   ; ! !Spiik not explicit here, thus guessing.
 !    +Ess:n%> PxC                   ; !^P^ !No Ess+Px according to Spiik, Grundstrom
 
@@ -1448,17 +1545,17 @@ LEXICON BERULASJ !!= @CODE@ For words ending on -asj. Same as GÅNÅGIS but with
 
 
 LEXICON BERULASJ-EVEN 
-              +Ess:Q1n K                     ; ! Q1 to avoid -dtj- consonant center
+              +Ess:Q1n K-CONS                    ; ! Q1 to avoid -dtj- consonant center
                   :Q1  ILL-EVENCASE          ; ! Q1 to avoid -dtj- consonant center
                   :Q1  N-EVENWEAKSTEM-NO-ABE ; ! Q1 to avoid -dtj- consonant center
            +Sg+Nom:Q1  PxV                   ; ! Spiik not explicit here, thus guessing.
   +Err/Orth+Sg+Nom:    PxV                   ; ! Spiik not explicit here, thus guessing.
-     +Err/Orth+Ess:n   K                     ;
+     +Err/Orth+Ess:n   K-CONS                    ;
          +Err/Orth:    ILL-EVENCASE          ;
 !             +Ess:n%> PxC                   ; !^P^ !No Ess+Px according to Spiik, Grundstrom
 
 LEXICON BEDNAGASJ !!= @CODE@ Like BERULASJ, but for derived nouns in diminutive. No cg, no vowchange, no short Ess. Has only one dimin derivation since these words already are dimin, ie. no double dim as for GAHPER. No abessive, not totally sure about this, I think we must use postposition dagi when it's diminutive,
-    +N+Gram/Dimin+Sg+Nom:%>     K                       ;
+    +N+Gram/Dimin+Sg+Nom:%>     K-VOW                       ;
  +N+Gram/Dimin+Cmp/SgNom:%>     R                       ;
  +N+Gram/Dimin+Cmp/SgGen:a%>Q1  R                       ;
  +N+Gram/Dimin+Cmp/PlGen:a%>Q1j R                       ;
@@ -1470,14 +1567,14 @@ LEXICON BEDNAGASJ !!= @CODE@ Like BERULASJ, but for derived nouns in diminutive.
 !!€ bednagattjas:         bednagasj+N+Gram/Dimin+Sg+Ela
 
 LEXICON JIHPELIJ !!= @CODE@ gen:jihpelahá
-                           +N+Sg+Nom:ij%>       K                    ;
+                           +N+Sg+Nom:ij%>       K-CONS                   ;
                            +N+Sg+Nom:ahá%>      PxV                  ; !
                                   +N:ahá%>      ILL-EVENCASE         ;
                                   +N:ahá%>      N-EVENWEAKSTEM       ;
                                   +N:ahá»       DenominalNounsMUORRA ;
-                              +N+Ess:ahá%>n     K                    ;
-                     +Err/Infl+N+Abe:ahá%>Q1dak K                    ; ! not sure this is possible, Inga 12.08.20
-                     +Err/Infl+N+Abe:ahá%>Q1da  K                    ; ! not sure this is possible, Inga 12.08.20
+                              +N+Ess:ahá%>n     K-CONS                   ;
+                     +Err/Infl+N+Abe:ahá%>Q1dak K-CONS                   ; ! not sure this is possible, Inga 12.08.20
+                     +Err/Infl+N+Abe:ahá%>Q1da  K-VOW                    ; ! not sure this is possible, Inga 12.08.20
                         +N+Cmp/SgNom:ij%>       R                    ;
                         +N+Cmp/SgGen:ahá%>Q1    R                    ;
                         +N+Cmp/PlGen:ahá%>Q1j   R                    ;
@@ -1497,14 +1594,14 @@ LEXICON JIHPELIJ !!= @CODE@ gen:jihpelahá
 !!€ gehtsulaháv:               gehtsulij+N+Sg+Acc
 
 LEXICON OARJJILIJ !!= @CODE@ gen:oarjjilihá
-                           +N+Sg+Nom:ij%>       K                    ;
+                           +N+Sg+Nom:ij%>       K-CONS                   ;
                            +N+Sg+Nom:ihá%>      PxV                  ; !
                                   +N:ihá%>      ILL-EVENCASE         ;
                                   +N:ihá%>      N-EVENWEAKSTEM       ;
                                   +N:ihá»       DenominalNounsMUORRA ;
-                              +N+Ess:ihá%>n     K                    ;
-                     +Err/Infl+N+Abe:ihá%>Q1dak K                    ; ! not sure this is possible, Inga 12.08.20
-                     +Err/Infl+N+Abe:ihá%>Q1da  K                    ; ! not sure this is possible, Inga 12.08.20
+                              +N+Ess:ihá%>n     K-CONS                   ;
+                     +Err/Infl+N+Abe:ihá%>Q1dak K-CONS                   ; ! not sure this is possible, Inga 12.08.20
+                     +Err/Infl+N+Abe:ihá%>Q1da  K-VOW                    ; ! not sure this is possible, Inga 12.08.20
                         +N+Cmp/SgNom:ij%>       R                    ;
                         +N+Cmp/SgGen:ihá%>Q1    R                    ;
                         +N+Cmp/PlGen:ihá%>Q1j   R                    ;
@@ -1524,21 +1621,21 @@ LEXICON OARJJILIJ !!= @CODE@ gen:oarjjilihá
 !!€ allilihás:                 allilij+N+Sg+Ela
 
 LEXICON VIESSOMUJ !!= @CODE@ gen:viessumuhá
-                           +N+Sg+Nom:uj%>        K                    ;
-                           +N+Sg+Gen:uhá%>       K                    ;
-                           +N+Sg+Acc:uhá%>v      K                    ;
-                           +N+Sg+Ine:uhá%>n      K                    ;
-                           +N+Sg+Ela:uhá%>s      K                    ;
-                  +Err/Orth+N+Sg+Com:uhá%>jna    K                    ; !
-                           +N+Sg+Com:uhá%>jn     K                    ;
+                           +N+Sg+Nom:uj%>        K-CONS                   ;
+                           +N+Sg+Gen:uhá%>       K-VOW                    ;
+                           +N+Sg+Acc:uhá%>v      K-CONS                   ;
+                           +N+Sg+Ine:uhá%>n      K-CONS                   ;
+                           +N+Sg+Ela:uhá%>s      K-CONS                   ;
+                  +Err/Orth+N+Sg+Com:uhá%>jna    K-VOW                    ; !
+                           +N+Sg+Com:uhá%>jn     K-CONS                   ;
                                   +N:uhá%>       ILL-EVENCASE         ;
-                           +N+Pl+Nom:uhá%>       K                    ;
-                           +N+Pl+Gen:uhá%>j      K                    ;
-                           +N+Pl+Acc:uhá%>jt     K                    ;
-                           +N+Pl+Ill:uhá%>jda    K                    ;
-                           +N+Pl+Ine:uhá%>jn     K                    ;
-                           +N+Pl+Ela:uhá%>js     K                    ;
-                           +N+Pl+Com:uhá%>j      K                    ;
+                           +N+Pl+Nom:uhá%>       K-VOW                    ;
+                           +N+Pl+Gen:uhá%>j      K-CONS                   ;
+                           +N+Pl+Acc:uhá%>jt     K-CONS                   ;
+                           +N+Pl+Ill:uhá%>jda    K-VOW                    ;
+                           +N+Pl+Ine:uhá%>jn     K-CONS                   ;
+                           +N+Pl+Ela:uhá%>js     K-CONS                   ;
+                           +N+Pl+Com:uhá%>j      K-CONS                   ;
                            +N+Sg+Nom:uhá%>       PxV                  ; !
                            +N+Sg+Gen:uhá%>       PxV                  ; !
                            +N+Sg+Acc:uhá%>       PxV                  ; !
@@ -1548,9 +1645,9 @@ LEXICON VIESSOMUJ !!= @CODE@ gen:viessumuhá
                            +N+Pl+Acc:uhá%>jd%>   PxC                  ; !
                            +N+Pl+Ine:uhá%>jn%>   PxC                  ; !
                            +N+Pl+Ela:uhá%>jst%>  PxC                  ; !
-                              +N+Ess:uhá%>n      K                    ;
-                     +Err/Infl+N+Abe:uhá%>Q1dak  K                    ;
-                     +Err/Infl+N+Abe:uhá%>Q1da   K                    ;
+                              +N+Ess:uhá%>n      K-CONS                   ;
+                     +Err/Infl+N+Abe:uhá%>Q1dak  K-CONS                   ;
+                     +Err/Infl+N+Abe:uhá%>Q1da   K-VOW                    ;
                                   +N:uhá»        DenominalNounsMUORRA ;
                         +N+Cmp/SgNom:uj%>        R                    ;
                         +N+Cmp/SgGen:uhá%>Q1     R                    ;
@@ -1581,16 +1678,16 @@ LEXICON VIESSOMUJ !!= @CODE@ gen:viessumuhá
 ! - - - - - -
 
 LEXICON OADÁDAGÁ !!= @CODE@ Plural forms of words like tjerastahka with short compound-form
-                          +N+Cmp/SgNom+Cmp/Sh:ak%>               R        ;
-                                 +N+Cmp/SgNom:ahka%>             R        ;
+                                 +N+Cmp/SgNom:ak%>               R        ;
+                        +N+Cmp/Long+Cmp/SgNom:ahka%>             R        ;
                                  +N+Cmp/PlGen:ahka%>Q1j          R        ;
-                                    +N+Pl+Nom:ahka%>Q1           K        ;
-                                    +N+Pl+Gen:ahka%>Q1j          K        ;
-                                    +N+Pl+Acc:ahka%>Q1jt         K        ;
-                                    +N+Pl+Ill:ahka%>Q1jda        K        ;
-                                    +N+Pl+Ine:ahka%>Q1jn         K        ;
-                                    +N+Pl+Ela:ahka%>Q1js         K        ;
-                                    +N+Pl+Com:ahka%>Q1j          K        ;
+                                    +N+Pl+Nom:ahka%>Q1           K-VOW        ;
+                                    +N+Pl+Gen:ahka%>Q1j          K-CONS       ;
+                                    +N+Pl+Acc:ahka%>Q1jt         K-CONS       ;
+                                    +N+Pl+Ill:ahka%>Q1jda        K-VOW        ;
+                                    +N+Pl+Ine:ahka%>Q1jn         K-CONS       ;
+                                    +N+Pl+Ela:ahka%>Q1js         K-CONS       ;
+                                    +N+Pl+Com:ahka%>Q1j          K-CONS       ;
                                     +N+Pl+Nom:ahka%>Q1           PxNomPlV ; !
                                     +N+Pl+Gen:ahka%>Q1j%>        PxC      ; !
                                     +N+Pl+Acc:ahka%>Q1jd%>       PxC      ; !
@@ -1598,9 +1695,9 @@ LEXICON OADÁDAGÁ !!= @CODE@ Plural forms of words like tjerastahka with short 
                                     +N+Pl+Ine:ahka%>Q1jn%>       PxC      ; !
                                     +N+Pl+Ela:ahka%>Q1jst%>      PxC      ; !
                                     +N+Pl+Com:ahka%>Q1j%>        PxC      ; !
-                                       +N+Ess:ahka%>n            K        ;
-                              +Err/Infl+N+Abe:ahka%>Q1dak        K        ; !Not sure this is possible
-                              +Err/Infl+N+Abe:ahka%>Q1da         K        ; !Not sure this is possible
+                                       +N+Ess:ahka%>n            K-CONS       ;
+                              +Err/Infl+N+Abe:ahka%>Q1dak        K-CONS       ; !Not sure this is possible
+                              +Err/Infl+N+Abe:ahka%>Q1da         K-VOW        ; !Not sure this is possible
                                            +N:ahka%>Q1           DAGI_PLURAL        ;
                             +N+Der2+Der/Dimin:ahka»X7tji%>       DAGI_PLURAL        ;
                             +N+Der1+Der/Car+A:ahka»Q1            DIBME    ;
@@ -1609,25 +1706,25 @@ LEXICON OADÁDAGÁ !!= @CODE@ Plural forms of words like tjerastahka with short 
                             +N+Der1+Der/Car+A:ahka»Q1d           DUVVAT   ;
 !                           +N+Der4+Der/ahtes:ahka»Q1g           AHTES    ;
 !                           +N+Der4+Der/ahtes:»                  AHTES    ;
-                   +N+Der2+Der/Dimin+N+Pl+Nom:ahka»X7tja         K        ;
-                   +N+Der2+Der/Dimin+N+Pl+Gen:ahka»X7tjij        K        ;
-                   +N+Der2+Der/Dimin+N+Pl+Acc:ahka»X7tjijt       K        ;
-                   +N+Der2+Der/Dimin+N+Pl+Ill:ahka»X7tjijda      K        ;
-                   +N+Der2+Der/Dimin+N+Pl+Ine:ahka»X7tjijn       K        ;
-                   +N+Der2+Der/Dimin+N+Pl+Ela:ahka»X7tjijs       K        ;
-                   +N+Der2+Der/Dimin+N+Pl+Com:ahka»X7tjij        K        ;
-                      +N+Der2+Der/Dimin+N+Ess:ahka»X7tjin        K        ;
+                   +N+Der2+Der/Dimin+N+Pl+Nom:ahka»X7tja         K-VOW        ;
+                   +N+Der2+Der/Dimin+N+Pl+Gen:ahka»X7tjij        K-CONS       ;
+                   +N+Der2+Der/Dimin+N+Pl+Acc:ahka»X7tjijt       K-CONS       ;
+                   +N+Der2+Der/Dimin+N+Pl+Ill:ahka»X7tjijda      K-VOW        ;
+                   +N+Der2+Der/Dimin+N+Pl+Ine:ahka»X7tjijn       K-CONS       ;
+                   +N+Der2+Der/Dimin+N+Pl+Ela:ahka»X7tjijs       K-CONS       ;
+                   +N+Der2+Der/Dimin+N+Pl+Com:ahka»X7tjij        K-CONS       ;
+                      +N+Der2+Der/Dimin+N+Ess:ahka»X7tjin        K-CONS       ;
 !                  +N+Der2+Der/Dimin+N+Pl+Acc:ahka»X7tjijd%>     PxCs     ; !
 !                  +N+Der2+Der/Dimin+N+Pl+Ine:ahka»X7tjijn%>     PxCs     ; !
 !                  +N+Der2+Der/Dimin+N+Pl+Ela:ahka»X7tjijst%>    PxCs     ; !
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Nom:ahka»X7tja»ttja    K        ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Gen:ahka»X7tja»ttjaj   K        ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Acc:ahka»X7tja»ttjajt  K        ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ill:ahka»X7tja»ttjajda K        ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ine:ahka»X7tja»ttjajn  K        ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ela:ahka»X7tja»ttjajs  K        ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Com:ahka»X7tja»ttjaj   K        ; !Dobbel diminutiv
-     +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Ess:ahka»X7tja»ttjin   K        ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Nom:ahka»X7tja»ttja    K-VOW        ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Gen:ahka»X7tja»ttjaj   K-CONS       ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Acc:ahka»X7tja»ttjajt  K-CONS       ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ill:ahka»X7tja»ttjajda K-VOW        ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ine:ahka»X7tja»ttjajn  K-CONS       ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ela:ahka»X7tja»ttjajs  K-CONS       ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Com:ahka»X7tja»ttjaj   K-CONS       ; !Dobbel diminutiv
+     +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Ess:ahka»X7tja»ttjin   K-CONS       ; !Dobbel diminutiv
 
 !!€gt-norm: látjádagá # Even-syllable test
 !!€ látjádagá:                 látjádagá+N+Pl+Nom
@@ -1637,13 +1734,13 @@ LEXICON OADÁDAGÁ !!= @CODE@ Plural forms of words like tjerastahka with short 
 LEXICON BERRAHATTJA !!= @CODE@ Plural stems. Like IEDNITJA, these do not have corresponding singular stems. Most stems here have the same form as the pl nom form of diminutive derivations, but (while it may have originated as a diminuitive derivation) it is not the same derivation (today) and it does not have a singular form.
 !                        +N+Cmp/SgNom:%>              R                    ;
                          +N+Cmp/PlGen:a%>Q1j          R                    ;
-                            +N+Pl+Nom:a%>Q1           K                    ;
-                            +N+Pl+Gen:a%>Q1j          K                    ;
-                            +N+Pl+Acc:a%>Q1jt         K                    ;
-                            +N+Pl+Ill:a%>Q1jda        K                    ;
-                            +N+Pl+Ine:a%>Q1jn         K                    ;
-                            +N+Pl+Ela:a%>Q1js         K                    ;
-                            +N+Pl+Com:a%>Q1j          K                    ;
+                            +N+Pl+Nom:a%>Q1           K-VOW                    ;
+                            +N+Pl+Gen:a%>Q1j          K-CONS                   ;
+                            +N+Pl+Acc:a%>Q1jt         K-CONS                   ;
+                            +N+Pl+Ill:a%>Q1jda        K-VOW                    ;
+                            +N+Pl+Ine:a%>Q1jn         K-CONS                   ;
+                            +N+Pl+Ela:a%>Q1js         K-CONS                   ;
+                            +N+Pl+Com:a%>Q1j          K-CONS                   ;
                             +N+Pl+Nom:a%>Q1           PxNomPlV             ; !Possessive suffixes
                             +N+Pl+Gen:a%>Q1j%>        PxC                  ; !
                             +N+Pl+Acc:a%>Q1jd%>       PxC                  ; !
@@ -1651,19 +1748,19 @@ LEXICON BERRAHATTJA !!= @CODE@ Plural stems. Like IEDNITJA, these do not have co
                             +N+Pl+Ine:a%>Q1jn%>       PxC                  ; !
                             +N+Pl+Ela:a%>Q1jst%>      PxC                  ; !
                             +N+Pl+Com:a%>Q1j%>        PxC                  ; !
-                      +Err/Orth+N+Ess:a%>n            K                    ;
-                               +N+Ess:a%>Q1n          K                    ;
-                      +Err/Infl+N+Abe:a%>Q1dak        K                    ;
-                      +Err/Infl+N+Abe:a%>Q1da         K                    ;
+                      +Err/Orth+N+Ess:a%>n            K-CONS                   ;
+                               +N+Ess:a%>Q1n          K-CONS                   ;
+                      +Err/Infl+N+Abe:a%>Q1dak        K-CONS                   ;
+                      +Err/Infl+N+Abe:a%>Q1da         K-VOW                    ;
                                    +N:a%>Q1           DAGI_PLURAL          ;
-           +N+Der2+Der/Dimin+N+Pl+Nom:a»Q1X7tja       K                    ;
-           +N+Der2+Der/Dimin+N+Pl+Gen:a»Q1X7tjij      K                    ;
-           +N+Der2+Der/Dimin+N+Pl+Acc:a»Q1X7tjijt     K                    ;
-           +N+Der2+Der/Dimin+N+Pl+Ill:a»Q1X7tjijda    K                    ;
-           +N+Der2+Der/Dimin+N+Pl+Ine:a»Q1X7tjijn     K                    ;
-           +N+Der2+Der/Dimin+N+Pl+Ela:a»Q1X7tjijs     K                    ;
-           +N+Der2+Der/Dimin+N+Pl+Com:a»Q1X7tjij      K                    ;
-              +N+Der2+Der/Dimin+N+Ess:a»Q1X7tjin      K                    ;
+           +N+Der2+Der/Dimin+N+Pl+Nom:a»Q1X7tja       K-VOW                    ;
+           +N+Der2+Der/Dimin+N+Pl+Gen:a»Q1X7tjij      K-CONS                   ;
+           +N+Der2+Der/Dimin+N+Pl+Acc:a»Q1X7tjijt     K-CONS                   ;
+           +N+Der2+Der/Dimin+N+Pl+Ill:a»Q1X7tjijda    K-VOW                    ;
+           +N+Der2+Der/Dimin+N+Pl+Ine:a»Q1X7tjijn     K-CONS                   ;
+           +N+Der2+Der/Dimin+N+Pl+Ela:a»Q1X7tjijs     K-CONS                   ;
+           +N+Der2+Der/Dimin+N+Pl+Com:a»Q1X7tjij      K-CONS                   ;
+              +N+Der2+Der/Dimin+N+Ess:a»Q1X7tjin      K-CONS                   ;
 !          +N+Der2+Der/Dimin+N+Pl+Acc:a»Q1X7tjijd%>   PxCs                 ; !Possessive suffixes
 !          +N+Der2+Der/Dimin+N+Pl+Ine:a»Q1X7tjijn%>   PxCs                 ; !
 !          +N+Der2+Der/Dimin+N+Pl+Ela:a»Q1X7tjijst%>  PxCs                 ; !
@@ -1697,39 +1794,39 @@ LEXICON BERRAHATTJA !!= @CODE@ Plural stems. Like IEDNITJA, these do not have co
 LEXICON SIJDDALAHÁ  !!= @CODE@ Plurals
                                  +N+Cmp/SgNom:ij%>              R              ;
                                  +N+Cmp/PlGen:aháj%>Q1          R              ;
-                                    +N+Pl+Nom:ahá%>             K              ;
-                                    +N+Pl+Gen:ahá%>j            K              ;
-                                    +N+Pl+Acc:ahá%>jt           K              ;
-                                    +N+Pl+Ill:ahá%>jda          K              ;
-                                    +N+Pl+Ine:ahá%>jn           K              ;
-                                    +N+Pl+Ela:ahá%>js           K              ;
-                                    +N+Pl+Com:ahá%>j            K              ;
+                                    +N+Pl+Nom:ahá%>             K-VOW              ;
+                                    +N+Pl+Gen:ahá%>j            K-CONS             ;
+                                    +N+Pl+Acc:ahá%>jt           K-CONS             ;
+                                    +N+Pl+Ill:ahá%>jda          K-VOW              ;
+                                    +N+Pl+Ine:ahá%>jn           K-CONS             ;
+                                    +N+Pl+Ela:ahá%>js           K-CONS             ;
+                                    +N+Pl+Com:ahá%>j            K-CONS             ;
                                     +N+Pl+Acc:ahá%>jd%>         PxC            ; !
                                     +N+Pl+Ine:ahá%>jn%>         PxC            ; !
                                     +N+Pl+Ela:ahá%>jst%>        PxC            ; !
-                                       +N+Ess:ahá%>n            K              ;
-                              +Err/Infl+N+Abe:ahá%>Q1dak        K              ;
-                              +Err/Infl+N+Abe:ahá%>Q1da         K              ;
-                   +N+Der2+Der/Dimin+N+Pl+Nom:ahá»tja           K              ;
-                   +N+Der2+Der/Dimin+N+Pl+Gen:ahá»tjij          K              ;
-                   +N+Der2+Der/Dimin+N+Pl+Acc:ahá»tjijt         K              ;
-                   +N+Der2+Der/Dimin+N+Pl+Ill:ahá»tjijda        K              ;
-                   +N+Der2+Der/Dimin+N+Pl+Ine:ahá»tjijn         K              ;
-                   +N+Der2+Der/Dimin+N+Pl+Ela:ahá»tjijs         K              ;
-                   +N+Der2+Der/Dimin+N+Pl+Com:ahá»tjij          K              ;
+                                       +N+Ess:ahá%>n            K-CONS             ;
+                              +Err/Infl+N+Abe:ahá%>Q1dak        K-CONS             ;
+                              +Err/Infl+N+Abe:ahá%>Q1da         K-VOW              ;
+                   +N+Der2+Der/Dimin+N+Pl+Nom:ahá»tja           K-VOW              ;
+                   +N+Der2+Der/Dimin+N+Pl+Gen:ahá»tjij          K-CONS             ;
+                   +N+Der2+Der/Dimin+N+Pl+Acc:ahá»tjijt         K-CONS             ;
+                   +N+Der2+Der/Dimin+N+Pl+Ill:ahá»tjijda        K-VOW              ;
+                   +N+Der2+Der/Dimin+N+Pl+Ine:ahá»tjijn         K-CONS             ;
+                   +N+Der2+Der/Dimin+N+Pl+Ela:ahá»tjijs         K-CONS             ;
+                   +N+Der2+Der/Dimin+N+Pl+Com:ahá»tjij          K-CONS             ;
 !                  +N+Der2+Der/Dimin+N+Pl+Acc:ahá»tjijd%>       PxCs           ; !
 !                  +N+Der2+Der/Dimin+N+Pl+Ine:ahá»tjijn%>       PxCs           ; !
 !                  +N+Der2+Der/Dimin+N+Pl+Ela:ahá»tjijst%>      PxCs           ; !
-                      +N+Der2+Der/Dimin+N+Ess:ahá»tjin          K              ;
+                      +N+Der2+Der/Dimin+N+Ess:ahá»tjin          K-CONS             ;
                           +N+Der2+Der/Dimin+N:ahá»tji           DAGI_PLURAL    ;
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Nom:ahá»X7tja»ttja    K              ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Gen:ahá»X7tja»ttjaj   K              ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Acc:ahá»X7tja»ttjajt  K              ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ill:ahá»X7tja»ttjajda K              ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ine:ahá»X7tja»ttjajn  K              ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ela:ahá»X7tja»ttjajs  K              ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Com:ahá»X7tja»ttjaj   K              ; !Dobbel diminutiv
-     +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Ess:ahá»X7tja»ttjin   K              ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Nom:ahá»X7tja»ttja    K-VOW              ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Gen:ahá»X7tja»ttjaj   K-CONS             ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Acc:ahá»X7tja»ttjajt  K-CONS             ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ill:ahá»X7tja»ttjajda K-VOW              ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ine:ahá»X7tja»ttjajn  K-CONS             ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ela:ahá»X7tja»ttjajs  K-CONS             ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Com:ahá»X7tja»ttjaj   K-CONS             ; !Dobbel diminutiv
+     +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Ess:ahá»X7tja»ttjin   K-CONS             ; !Dobbel diminutiv
                                           +N:ahá%>             DAGI_PLURAL    ;
 
 ! +N+Der4+Der/ahtes+A+Attr:#»ahtes%> ATTR ; Only for odd-syllble stems
@@ -1750,38 +1847,38 @@ LEXICON SIJDDALAHÁ  !!= @CODE@ Plurals
  LEXICON SISSNELUHÁ  !!= @CODE@ plurals. presently only for sissŋeluhá
                                  +N+Cmp/SgNom:uj%>              R              ;
                                  +N+Cmp/PlGen:uháj%>Q1          R              ;
-                                    +N+Pl+Nom:uhá%>             K              ;
-                                    +N+Pl+Gen:uhá%>j            K              ;
-                                    +N+Pl+Acc:uhá%>jt           K              ;
-                                    +N+Pl+Ill:uhá%>jda          K              ;
-                                    +N+Pl+Ine:uhá%>jn           K              ;
-                                    +N+Pl+Ela:uhá%>js           K              ;
-                                    +N+Pl+Com:uhá%>j            K              ;
+                                    +N+Pl+Nom:uhá%>             K-VOW              ;
+                                    +N+Pl+Gen:uhá%>j            K-CONS             ;
+                                    +N+Pl+Acc:uhá%>jt           K-CONS             ;
+                                    +N+Pl+Ill:uhá%>jda          K-VOW              ;
+                                    +N+Pl+Ine:uhá%>jn           K-CONS             ;
+                                    +N+Pl+Ela:uhá%>js           K-CONS             ;
+                                    +N+Pl+Com:uhá%>j            K-CONS             ;
                                     +N+Pl+Acc:uhá%>jd%>         PxC            ; !
                                     +N+Pl+Ine:uhá%>jn%>         PxC            ; !
                                     +N+Pl+Ela:uhá%>jst%>        PxC            ; !
-                                       +N+Ess:uhá%>n            K              ;
-                              +Err/Infl+N+Abe:uhá%>Q1dak        K              ;
-                              +Err/Infl+N+Abe:uhá%>Q1da         K              ;
-                   +N+Der2+Der/Dimin+N+Pl+Nom:uhá»tja           K              ;
-                   +N+Der2+Der/Dimin+N+Pl+Gen:uhá»tjij          K              ;
-                   +N+Der2+Der/Dimin+N+Pl+Acc:uhá»tjijt         K              ;
-                   +N+Der2+Der/Dimin+N+Pl+Ill:uhá»tjijda        K              ;
-                   +N+Der2+Der/Dimin+N+Pl+Ine:uhá»tjijn         K              ;
-                   +N+Der2+Der/Dimin+N+Pl+Ela:uhá»tjijs         K              ;
-                   +N+Der2+Der/Dimin+N+Pl+Com:uhá»tjij          K              ;
+                                       +N+Ess:uhá%>n            K-CONS             ;
+                              +Err/Infl+N+Abe:uhá%>Q1dak        K-CONS             ;
+                              +Err/Infl+N+Abe:uhá%>Q1da         K-VOW              ;
+                   +N+Der2+Der/Dimin+N+Pl+Nom:uhá»tja           K-VOW              ;
+                   +N+Der2+Der/Dimin+N+Pl+Gen:uhá»tjij          K-CONS             ;
+                   +N+Der2+Der/Dimin+N+Pl+Acc:uhá»tjijt         K-CONS             ;
+                   +N+Der2+Der/Dimin+N+Pl+Ill:uhá»tjijda        K-VOW              ;
+                   +N+Der2+Der/Dimin+N+Pl+Ine:uhá»tjijn         K-CONS             ;
+                   +N+Der2+Der/Dimin+N+Pl+Ela:uhá»tjijs         K-CONS             ;
+                   +N+Der2+Der/Dimin+N+Pl+Com:uhá»tjij          K-CONS             ;
 !                  +N+Der2+Der/Dimin+N+Pl+Acc:uhá»tjijd%>       PxCs           ; !
 !                  +N+Der2+Der/Dimin+N+Pl+Ine:uhá»tjijn%>       PxCs           ; !
 !                  +N+Der2+Der/Dimin+N+Pl+Ela:uhá»tjijst%>      PxCs           ; !
-                      +N+Der2+Der/Dimin+N+Ess:uhá»tjin          K              ;
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Nom:uhá»X7tja»ttja    K              ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Gen:uhá»X7tja»ttjaj   K              ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Acc:uhá»X7tja»ttjajt  K              ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ill:uhá»X7tja»ttjajda K              ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ine:uhá»X7tja»ttjajn  K              ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ela:uhá»X7tja»ttjajs  K              ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Com:uhá»X7tja»ttjaj   K              ; !Dobbel diminutiv
-     +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Ess:uhá»X7tja»ttjin   K              ; !Dobbel diminutiv
+                      +N+Der2+Der/Dimin+N+Ess:uhá»tjin          K-CONS             ;
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Nom:uhá»X7tja»ttja    K-VOW              ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Gen:uhá»X7tja»ttjaj   K-CONS             ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Acc:uhá»X7tja»ttjajt  K-CONS             ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ill:uhá»X7tja»ttjajda K-VOW              ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ine:uhá»X7tja»ttjajn  K-CONS             ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ela:uhá»X7tja»ttjajs  K-CONS             ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Com:uhá»X7tja»ttjaj   K-CONS             ; !Dobbel diminutiv
+     +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Ess:uhá»X7tja»ttjin   K-CONS             ; !Dobbel diminutiv
                                           +N:uhá%>             DAGI_PLURAL    ;
                          +N+Der2+Der/Dimin+N:uhá»tji%>         DAGI_PLURAL    ;
 
@@ -1804,24 +1901,24 @@ LEXICON SIJDDALAHÁ  !!= @CODE@ Plurals
 LEXICON DAGI_SINGULAR !!= @CODE@ Earlier we generated "bijladagi" and bijlajdagi as abbessiv. This has been fixed, but to be able to analyse what we earlier generated, we needed this lexicon. Only singular. Gives Err/tag to "bijladagi" and makes correct "bijla dagi".
 
 
-+Sg+Gen@P.Pmatch.Loc@% dagi+Po:%>@P.Pmatch.Loc@% dagi                             K   ; !Correct bijla dagi
-+Sg+Gen@P.Pmatch.Loc@% dagá+Po:%>@P.Pmatch.Loc@% dagá                             K   ; !Correct bijla dagi
-+Err/Orth+Sg+Gen@P.Pmatch.Loc@% dagá+Po:%>@P.Pmatch.Loc@% tagá                    K   ; !Correct bijla dagi
++Sg+Gen@P.Pmatch.Loc@% dagi+Po:%>@P.Pmatch.Loc@% dagi                             K-VOW   ; !Correct bijla dagi
++Sg+Gen@P.Pmatch.Loc@% dagá+Po:%>@P.Pmatch.Loc@% dagá                             K-VOW   ; !Correct bijla dagi
++Err/Orth+Sg+Gen@P.Pmatch.Loc@% dagá+Po:%>@P.Pmatch.Loc@% tagá                    K-VOW   ; !Correct bijla dagi
 																			     
-+Sg+Gen+Err/MissingSpace@P.Pmatch.Loc@% dagi+Po:%>@P.Pmatch.Loc@∑#dagi            K   ; !Wrong bijladagi
-+Sg+Gen+Err/MissingSpace@P.Pmatch.Loc@% dagá+Po:%>@P.Pmatch.Loc@∑#dagá            K   ; !Wrong bijladagi
-+Err/Orth+Sg+Gen+Err/MissingSpace@P.Pmatch.Loc@% dagá+Po:%>@P.Pmatch.Loc@∑#tagá   K   ; !Wrong bijladagi
++Sg+Gen+Err/MissingSpace@P.Pmatch.Loc@% dagi+Po:%>@P.Pmatch.Loc@∑#dagi            K-VOW   ; !Wrong bijladagi
++Sg+Gen+Err/MissingSpace@P.Pmatch.Loc@% dagá+Po:%>@P.Pmatch.Loc@∑#dagá            K-VOW   ; !Wrong bijladagi
++Err/Orth+Sg+Gen+Err/MissingSpace@P.Pmatch.Loc@% dagá+Po:%>@P.Pmatch.Loc@∑#tagá   K-VOW   ; !Wrong bijladagi
 
 
 LEXICON DAGI_PLURAL !!= @CODE@ Earlier we generated "bijladagi" and bijlajdagi as abbessiv. This has been fixed, but to be able to analyse what we earlier generated, we needed this lexicon. Only plural. Gives Err/tag to "bijlajdagi" and makes correct "bijlaj dagi".
 
-+Pl+Gen@P.Pmatch.Loc@% dagi+Po:%>j@P.Pmatch.Loc@% dagi                            K   ; !Correct bijlaj dagi
-+Pl+Gen@P.Pmatch.Loc@% dagá+Po:%>j@P.Pmatch.Loc@% dagá                            K   ; !Correct bijlaj dagi
-+Err/Orth+Pl+Gen@P.Pmatch.Loc@% dagá+Po:%>j@P.Pmatch.Loc@% tagá                   K   ; !Correct bijlaj dagi
++Pl+Gen@P.Pmatch.Loc@% dagi+Po:%>j@P.Pmatch.Loc@% dagi                            K-VOW   ; !Correct bijlaj dagi
++Pl+Gen@P.Pmatch.Loc@% dagá+Po:%>j@P.Pmatch.Loc@% dagá                            K-VOW   ; !Correct bijlaj dagi
++Err/Orth+Pl+Gen@P.Pmatch.Loc@% dagá+Po:%>j@P.Pmatch.Loc@% tagá                   K-VOW   ; !Correct bijlaj dagi
 
-+Pl+Gen+Err/MissingSpace@P.Pmatch.Loc@% dagi+Po:%>j@P.Pmatch.Loc@∑#dagi           K   ; !Wrong bijlajdagi
-+Pl+Gen+Err/MissingSpace@P.Pmatch.Loc@% dagá+Po:%>j@P.Pmatch.Loc@∑#dagá           K   ; !Wrong bijlajdagi
-+Err/Orth+Pl+Gen+Err/MissingSpace@P.Pmatch.Loc@% dagá+Po:%>j@P.Pmatch.Loc@∑#tagá  K   ; !Wrong bijlajdagi
++Pl+Gen+Err/MissingSpace@P.Pmatch.Loc@% dagi+Po:%>j@P.Pmatch.Loc@∑#dagi           K-VOW   ; !Wrong bijlajdagi
++Pl+Gen+Err/MissingSpace@P.Pmatch.Loc@% dagá+Po:%>j@P.Pmatch.Loc@∑#dagá           K-VOW   ; !Wrong bijlajdagi
++Err/Orth+Pl+Gen+Err/MissingSpace@P.Pmatch.Loc@% dagá+Po:%>j@P.Pmatch.Loc@∑#tagá  K-VOW   ; !Wrong bijlajdagi
 
 
 
@@ -1830,8 +1927,8 @@ LEXICON DAGI_PLURAL !!= @CODE@ Earlier we generated "bijladagi" and bijlajdagi a
 
 LEXICON SURGULASJ-EVEN !!= @CODE@
   +Sg+Nom+Err/Orth:    PxV               ; ! Spiik not explicit here, thus guessing.
-              +Ess:Q1n K                 ; ! Q1 to avoid -adtjan
-     +Err/Orth+Ess:n   K                 ;
+              +Ess:Q1n K-CONS                ; ! Q1 to avoid -adtjan
+     +Err/Orth+Ess:n   K-CONS                ;
 !             +Ess:n%> PxC               ; ! No Ess+Px according to Spiik, Grundstrom
                   :Q1  ILL-EVENCASEadj   ; ! Q1 to avoid -adtjaj
          +Err/Orth:    ILL-EVENCASEadj   ;
@@ -1839,7 +1936,7 @@ LEXICON SURGULASJ-EVEN !!= @CODE@
 
 LEXICON ÁRMMOGIS-EVEN
   +Sg+Nom+Err/Orth:    PxV               ; ! !Spiik not explicit here, thus guessing.
-              +Ess:n   K                 ;
+              +Ess:n   K-CONS                ;
 !             +Ess:n%> PxC               ; !^P^ !No Ess+Px according to Spiik, Grundstrom
                   :    ILL-EVENCASEadj   ;
                   :Q1  N-EVENWEAKSTEMadj ;
@@ -1858,24 +1955,24 @@ LEXICON N-EVENSTRONGSTEMadj
  :X4 ILL-EVENCASEadj ; ! X4 for the e:á and e:å alternation
 
 LEXICON NE-EVENCASE
-                +Sg+Nom:                 K       ;
+                +Sg+Nom:                 K-VOW       ;
                 +Sg+Nom:                 NPxV-12 ;
   +Sg+Nom@R.Nom3Px.add@:00@R.Nom3Px.add@ NPxV3   ;
-                   +Ess:n                K       ;
+                   +Ess:n                K-CONS       ;
 !                  +Ess:n%>              PxC     ; !^P^ ! parallel with CELCIUS above (but this shouldn´t be here(?) TO)
 
 LEXICON NE-EVENCASEadj
-           +Sg+Nom:    ENDLEX ;
+           +Sg+Nom:    K-VOW ;
   +Sg+Nom+Err/Orth:    NPxV   ;
-              +Ess:n   ENDLEX ;
+              +Ess:n   K-CONS;
 !    +Ess+Err/Orth:n%> PxC    ; !^P^ ! parallel with CELCIUS above (but this shouldn´t be here(?) TO)
 
 LEXICON ILL-EVENCASE
- +Sg+Ill:j   K     ;
+ +Sg+Ill:j   K-CONS    ;
  +Sg+Ill:s%> NPxCi ; !
 
 LEXICON ILL-EVENCASEadj
-          +Sg+Ill:j   K     ;
+          +Sg+Ill:j   K-CONS    ;
  +Sg+Ill+Err/Orth:s%> NPxCi ; !
 
 LEXICON N-EVENWEAKSTEM
@@ -1883,22 +1980,22 @@ LEXICON N-EVENWEAKSTEM
   N-EVENWEAKSTEM-SG-COM ; ! separate bec of X5
 
 LEXICON N-EVENWEAKSTEM-OTH
-          +Sg+Gen:       K         ;
-          +Sg+Acc:v      K         ;
-          +Sg+Ine:n      K         ;
-          +Sg+Ela:s      K         ;
-   +Use/NG+Sg+Com:jn     K         ; ! ælojn!
-          +Pl+Nom:       K         ;
-          +Pl+Gen:j      K         ;
-          +Pl+Acc:jt     K         ;
-          +Pl+Ill:jda    K         ;
- +Err/Orth+Pl+Ill:jde    K         ;
- +Err/Orth+Pl+Ill:Ø2da   K         ; !Ø2 makes e change to i no matter the following con. "iednida" even though the j which makes e change isn't there.
-          +Pl+Ine:jn     K         ;
-          +Pl+Ela:js     K         ;
-          +Pl+Com:j      K         ;
-             +Abe:dak    ENDLEX    ;
-      +Use/NG+Abe:da     ENDLEX    ;
+          +Sg+Gen:       K-VOW         ;
+          +Sg+Acc:v      K-CONS        ;
+          +Sg+Ine:n      K-CONS        ;
+          +Sg+Ela:s      K-CONS        ;
+   +Use/NG+Sg+Com:jn     K-CONS        ; ! ælojn!
+          +Pl+Nom:       K-VOW         ;
+          +Pl+Gen:j      K-CONS        ;
+          +Pl+Acc:jt     K-CONS        ;
+          +Pl+Ill:jda    K-VOW         ;
+ +Err/Orth+Pl+Ill:jde    K-VOW         ;
+ +Err/Orth+Pl+Ill:Ø2da   K-VOW         ; !Ø2 makes e change to i no matter the following con. "iednida" even though the j which makes e change isn't there.
+          +Pl+Ine:jn     K-CONS        ;
+          +Pl+Ela:js     K-CONS        ;
+          +Pl+Com:j      K-CONS        ;
+             +Abe:dak    K-CONS   ;
+      +Use/NG+Abe:da     K-VOW    ;
           +Sg+Gen:       NPxV      ; !
           +Sg+Acc:       NPxV      ; !
           +Sg+Ine:n%>    NPxC      ; !
@@ -1927,22 +2024,22 @@ LEXICON N-EVENWEAKSTEM-NO-ABE !!= @CODE@ same as N-EVENWEAKSTEM but without abes
   N-EVENWEAKSTEM-SG-COM        ; ! separate bec of X5
 
 LEXICON N-EVENWEAKSTEM-OTH-NO-ABE
-          +Sg+Gen:       K         ;
-          +Sg+Acc:v      K         ;
-          +Sg+Ine:n      K         ;
-          +Sg+Ela:s      K         ;
-   +Use/NG+Sg+Com:jn     K         ; ! ælojn!
-          +Pl+Nom:       K         ;
-          +Pl+Gen:j      K         ;
-          +Pl+Acc:jt     K         ;
-          +Pl+Ill:jda    K         ;
- +Err/Orth+Pl+Ill:jde    K         ;
- +Err/Orth+Pl+Ill:Ø2da   K         ; !Ø2 makes e change to i no matter the following con. "iednida" even though the j which makes e change isn't there.
-          +Pl+Ine:jn     K         ;
-          +Pl+Ela:js     K         ;
-          +Pl+Com:j      K         ;
-    +Err/Infl+Abe:dak    ENDLEX    ;
-    +Err/Infl+Abe:da     ENDLEX    ;
+          +Sg+Gen:       K-VOW        ;
+          +Sg+Acc:v      K-CONS        ;
+          +Sg+Ine:n      K-CONS        ;
+          +Sg+Ela:s      K-CONS        ;
+   +Use/NG+Sg+Com:jn     K-CONS        ; ! ælojn!
+          +Pl+Nom:       K-VOW         ;
+          +Pl+Gen:j      K-CONS        ;
+          +Pl+Acc:jt     K-CONS        ;
+          +Pl+Ill:jda    K-VOW         ;
+ +Err/Orth+Pl+Ill:jde    K-VOW         ;
+ +Err/Orth+Pl+Ill:Ø2da   K-VOW         ; !Ø2 makes e change to i no matter the following con. "iednida" even though the j which makes e change isn't there.
+          +Pl+Ine:jn     K-CONS        ;
+          +Pl+Ela:js     K-CONS        ;
+          +Pl+Com:j      K-CONS        ;
+    +Err/Infl+Abe:dak    K-CONS   ;
+    +Err/Infl+Abe:da     K-VOW    ;
           +Sg+Gen:       NPxV      ; !
           +Sg+Acc:       NPxV      ; !
           +Sg+Ine:n%>    NPxC      ; !
@@ -1958,8 +2055,8 @@ LEXICON N-EVENWEAKSTEM-OTH-NO-ABE
 
 
 LEXICON N-EVENWEAKSTEM-SG-COM
-          +Sg+Com:X5jn   K    ; ! X5 for o:u in ComSg: elujn Note two dummies in a row!
- +Sg+Com+Err/Orth:X5jna  K    ; !
+          +Sg+Com:X5jn   K-CONS   ; ! X5 for o:u in ComSg: elujn Note two dummies in a row!
+ +Sg+Com+Err/Orth:X5jna  K-VOW    ; !
    +Sg+Com+Use/NG:X5jn%> NPxC ; !
    
 
@@ -1968,19 +2065,19 @@ LEXICON N-EVENWEAKSTEMadj
   N-EVENWEAKSTEM-SG-COMadj ; ! separate bec of X5
 
 LEXICON N-EVENWEAKSTEM-OTHadj
-          +Sg+Gen:       ENDLEX    ;
-          +Sg+Acc:v      ENDLEX    ;
-          +Sg+Ine:n      ENDLEX    ;
-          +Sg+Ela:s      ENDLEX    ;
-!   +Use/NG+Sg+Com:jn     ENDLEX    ; Not needed for 4-syll, only even-syll,bágojn/bágujn
-          +Pl+Nom:       ENDLEX    ;
-          +Pl+Gen:j      ENDLEX    ;
-          +Pl+Acc:jt     ENDLEX    ;
-          +Pl+Ill:jda    ENDLEX    ;
- +Err/Orth+Pl+Ill:jde    ENDLEX    ;
-          +Pl+Ine:jn     ENDLEX    ;
-          +Pl+Ela:js     ENDLEX    ;
-          +Pl+Com:j      ENDLEX    ;
+          +Sg+Gen:       K-VOW    ;
+          +Sg+Acc:v      K-CONS   ;
+          +Sg+Ine:n      K-CONS   ;
+          +Sg+Ela:s      K-CONS   ;
+!   +Use/NG+Sg+Com:jn     K-CONS   ; Not needed for 4-syll, only even-syll,bágojn/bágujn
+          +Pl+Nom:       K-VOW    ;
+          +Pl+Gen:j      K-CONS   ;
+          +Pl+Acc:jt     K-CONS   ;
+          +Pl+Ill:jda    K-VOW    ;
+ +Err/Orth+Pl+Ill:jde    K-VOW    ;
+          +Pl+Ine:jn     K-CONS   ;
+          +Pl+Ela:js     K-CONS   ;
+          +Pl+Com:j      K-CONS   ;
  +Err/Orth+Sg+Gen:       NPxV      ; !
  +Err/Orth+Sg+Acc:       NPxV      ; !
  +Err/Orth+Sg+Ine:n%>    NPxC      ; !
@@ -2004,14 +2101,16 @@ LEXICON N-EVENWEAKSTEM-OTHadj
 ! Here we thus wait for alternative input.
 
 LEXICON N-EVENWEAKSTEM-SG-COMadj
-          +Sg+Com:X5jn   ENDLEX ; ! X5 for o:u in ComSg. Note two dummies in a row!
- +Sg+Com+Err/Orth:X5jna  ENDLEX ; !
+          +Sg+Com:X5jn   K-CONS; ! X5 for o:u in ComSg. Note two dummies in a row!
+ +Sg+Com+Err/Orth:X5jna  K-VOW ; !
  +Sg+Com+Err/Orth:X5jn%> NPxC   ; !
 
 !! !Compound lexicas
 ! ----
 
 ! These compound sublexicas are too general: Some nouns have to be in specific cases when used as first compounds for certain stems. Kintel (2012) gives a brief overview over this distribution. The full picture is however not clear as thorough research has yet to be done. Examples: mánnágæhttje, but mánájskåvllå; vuosstáhievvil, not vuostájhievvil or vuostáhievvil.
+
+
 
 LEXICON MUORRACmp
  +Cmp/SgNom:    R ;
@@ -2087,6 +2186,42 @@ LEXICON SÅHKÅR !!= @CODE@ Odd-syllable C-final noun with CG and 2ndsyll vowelc
 !!€ spihkárin:         spiger+N+Ess
 
 
+
+LEXICON MIEHTAR !!= @CODE@ Only for word "miehtar". Same as SÅHKÅR but with Area-differences and a lot of Err/Orths. 
+
+           +Area/NO+N:iehttar%>Q1 N-ODDCASE         ; ! To Nom only, since SÅHKÅR has no short essive.
+           +Area/NO+N:iehttar%>X5 OTH-ODDCASE       ;
+           +Area/NO+N:iehttar»X5  DenominalNounsODD ;
+           +Area/NO+N:iehttar»X5  DenominalAdjsODD  ;
+           +Area/NO+N:iehttar%>X5 ODDCmp            ;
+ +Area/NO+N+Cmp/SgNom:iehttar%>Q1 R                 ;
+           +Area/NO+N:iehttar%>X5 AHTÁ              ;
+
+           +Area/SE+N:æhttar%>Q1 N-ODDCASE          ; ! To Nom only, since SÅHKÅR has no short essive.
+           +Area/SE+N:æhttar%>X5 OTH-ODDCASE        ;
+           +Area/SE+N:æhttar»X5  DenominalNounsODD  ;
+           +Area/SE+N:æhttar»X5  DenominalAdjsODD   ;
+           +Area/SE+N:æhttar%>X5 ODDCmp             ;
+ +Area/SE+N+Cmp/SgNom:æhttar%>Q1 R                  ;
+           +Area/SE+N:æhttar%>X5 AHTÁ               ;
+
+            +Err/Orth:ehtar  GAHPER_ERR/ORTH        ; ! 
+            +Err/Orth:ehter  C_ILL_IJ_BADASS        ; !
+            +Err/Orth:eter   C_ILL_IJ_BADASS        ; !
+            +Err/Orth:ehttar GAHPER                 ; ! 
+            +Err/Orth:iehtar GAHPER_ERR/ORTH        ; ! 
+            +Err/Orth:iehter C_ILL_IJ_BADASS        ; !
+
+!!€gt-norm: miehtar # Odd-syllable test
+!!€ miehtar:           miehtar+N+Sg+Nom
+!!€ mehtar:            miehtar+N+Sg+Nom
+!!€ miehttaris:        miehtar+N+Sg+Ela
+!!€ mähttaris:         miehtar+N+Sg+Ela
+!!€ mähttarin:         miehtar+N+Ess
+!!€ miehttarin:        miehtar+N+Ess
+
+
+
 LEXICON GÁMAS !!= @CODE@ Odd-syllable C-final noun with CG, no 2ndsyll vowchange (OBS: a does not change). Long and short essive. Spiik A2
            +N:%>Q1 NE-ODDCASE        ;
            +N:%>   OTH-ODDCASE       ;
@@ -2121,7 +2256,7 @@ LEXICON BENA !!= @CODE@ Odd-syllable V-final noun with cg, no 2nsyll vowchange. 
 ! _________
 
 LEXICON SÁGE !!= @CODE@  gen: sáhkaha.  Presently only for "ságe". Long and short essive.
-    +N+Sg+Nom:e%>Q1 K                 ;
+    +N+Sg+Nom:e%>Q1 K-VOW                 ;
            +N:ah%>  OTH-ODDCASE       ;
            +N:ah»   DenominalNounsODD ;
            +N:ah»   DenominalAdjsODD  ;
@@ -2134,8 +2269,8 @@ LEXICON SÁGE !!= @CODE@  gen: sáhkaha.  Presently only for "ságe". Long and s
 !!€ sáhkahav:          ságe+N+Sg+Acc
 
 LEXICON BAVSEV !!= @CODE@  Ends on -v and last vowel changes to i: bavsev:baksIma. Not like gierkav gierkkAma and birev birEma.
-    +N+Sg+Nom:e%>Q1v K                 ;
-       +N+Ess:e%>Q1n K                 ;
+    +N+Sg+Nom:e%>Q1v K-CONS                ;
+       +N+Ess:e%>Q1n K-CONS                ;
            +N:im%>   OTH-ODDCASE       ;
            +N:im»    DenominalNounsODD ;
            +N:im»    DenominalAdjsODD  ;
@@ -2148,8 +2283,8 @@ LEXICON BAVSEV !!= @CODE@  Ends on -v and last vowel changes to i: bavsev:baksIm
 !!€ siektimis:          sievtev+N+Sg+Ela
 
 LEXICON RÁBEV !!= @CODE@ rábev:ráhpuga. Presently only for "rábev".
-    +N+Sg+Nom:bev%>  K                 ;
-       +N+Ess:ben%>  K                 ;
+    +N+Sg+Nom:bev%>  K-CONS                ;
+       +N+Ess:ben%>  K-CONS                ;
            +N:hpug%> OTH-ODDCASE       ;
            +N:hpug»  DenominalNounsODD ;
            +N:hpug»  DenominalAdjsODD  ;
@@ -2162,8 +2297,8 @@ LEXICON RÁBEV !!= @CODE@ rábev:ráhpuga. Presently only for "rábev".
 !!€ ráhpugis:          rábev+N+Sg+Ela
 
 LEXICON RITJAS !!!= @CODE@  Like GÁMAS but without stem a-lengthening for grade I (underlying long -i-). presently only for "ritjas".
-    +N+Sg+Nom:tjas%>    K                 ;
-       +N+Ess:tjan%>    K                 ;
+    +N+Sg+Nom:tjas%>    K-CONS                ;
+       +N+Ess:tjan%>    K-CONS                ;
            +N:htjas%>   OTH-ODDCASE       ;
            +N:htjas»X5  DenominalNounsODD ;
            +N:htjas»    DenominalAdjsODD  ;
@@ -2176,7 +2311,7 @@ LEXICON RITJAS !!!= @CODE@  Like GÁMAS but without stem a-lengthening for grade
 !!€ rihtjasis:          ritjas+N+Sg+Ela
 
 LEXICON SÅGAS !!= @CODE@  gen: sågaska. Presently only for "sågas".
-    +N+Sg+Nom:%>  K                 ;
+    +N+Sg+Nom:%>  K-CONS                ;
            +N:k%> OTH-ODDCASE       ;
            +N:k»  DenominalNounsODD ;
            +N:k»  DenominalAdjsODD  ;
@@ -2188,8 +2323,8 @@ LEXICON SÅGAS !!= @CODE@  gen: sågaska. Presently only for "sågas".
 !!€ sågaskav:          sågas+N+Sg+Acc
 
 LEXICON SJUVÁJ !!= @CODE@  Presently only for "sjuváj". sjuváj-sjuvvaga. Only this word
-    +N+Sg+Nom:áj%>  K                 ;
-       +N+Ess:án%>  K                 ;
+    +N+Sg+Nom:áj%>  K-CONS                ;
+       +N+Ess:án%>  K-CONS                ;
            +N:vag%> OTH-ODDCASE       ;
            +N:vag»  DenominalNounsODD ;
            +N:vag»  DenominalAdjsODD  ;
@@ -2202,8 +2337,8 @@ LEXICON SJUVÁJ !!= @CODE@  Presently only for "sjuváj". sjuváj-sjuvvaga. Only
 !!€ sjuvvagis:          sjuváj+N+Sg+Ela
 
 LEXICON BØSOJ !!= @CODE@ Because of bösoj in O.Korhonen, and bæsoj-bessuga. Only for these two words. J becomes g.
-    +N+Sg+Nom:%>Q1j K                 ;
-       +N+Ess:%>Q1n K                 ;
+    +N+Sg+Nom:%>Q1j K-CONS                ;
+       +N+Ess:%>Q1n K-CONS                ;
            +N:g%>X5 OTH-ODDCASE       ;
            +N:g»X5  DenominalNounsODD ;
            +N:g»X5  DenominalAdjsODD  ;
@@ -2212,8 +2347,8 @@ LEXICON BØSOJ !!= @CODE@ Because of bösoj in O.Korhonen, and bæsoj-bessuga. O
            +N:g»X5  AHTÁ              ;
 
 LEXICON GUOVSOJVUOJOJ !!= @CODE@ vuojoj:vuodjom. Presently only for "guovsojvuojoj".
-    +N+Sg+Nom:%>Q1j  K                 ;
-       +N+Ess:%>Q1n  K                 ;
+    +N+Sg+Nom:%>Q1j  K-CONS                ;
+       +N+Ess:%>Q1n  K-CONS                ;
            +N:%>m    OTH-ODDCASE       ;
            +N:%>X5m» DenominalNounsODD ;
            +N:m»     DenominalAdjsODD  ;
@@ -2226,8 +2361,8 @@ LEXICON GUOVSOJVUOJOJ !!= @CODE@ vuojoj:vuodjom. Presently only for "guovsojvuoj
 !!€ guovsojvuodjomav:          guovsojvuojoj+N+Sg+Acc
 
 LEXICON BUTJES !!= @CODE@  butjes-buttjása. Presently only for "butjes". This is an sub. Korhonen has this form but if you look in Grundstöm it's buttjes-budtjasa. Must be a typo in Korhonen, because ttj-tj dosn't exist in smj. This form is err subed in stems file.
-    +N+Sg+Nom:jes%>    K                 ;
-       +N+Ess:jen%>    K                 ; ! X1 to delete cns before short ess
+    +N+Sg+Nom:jes%>    K-CONS                ;
+       +N+Ess:jen%>    K-CONS                ; ! X1 to delete cns before short ess
            +N:tjes%>X5 OTH-ODDCASE       ; ! X5 is e:å and o:u
            +N:tjes»X5  DenominalNounsODD ;
            +N:tjes»X5  DenominalAdjsODD  ;
@@ -2237,8 +2372,8 @@ LEXICON BUTJES !!= @CODE@  butjes-buttjása. Presently only for "butjes". This i
 
 
 LEXICON TJÅLKES !!= @CODE@ tjålkes:tjoalkkas- Presently only for "tjålkes and tsålkes". This must be wrong, and it dosn't exist in Grundström. Å in 1. syll isn't possible with e in 2. syll. Must be tjoalkes-tjoalkkása or tjålkas-tjoalkkasa. This form is err subed in stems file.
-    +N+Sg+Nom:ålkes%>     K                 ;
-       +N+Ess:ålken%>     K                 ;
+    +N+Sg+Nom:ålkes%>     K-CONS                ;
+       +N+Ess:ålken%>     K-CONS                ;
            +N:oalkkas%>   OTH-ODDCASE       ;
            +N:oalkkas»X5  DenominalNounsODD ;
            +N:oalkkas»    DenominalAdjsODD  ;
@@ -2251,9 +2386,9 @@ LEXICON TJÅLKES !!= @CODE@ tjålkes:tjoalkkas- Presently only for "tjålkes and
 !!$ tsoalkkasav:          tsålkes+N+Sg+Acc
 
 LEXICON VÁJES  !!= @CODE@ vájes:vádjas- Presently only for "báhkovájes". It's a sub: 2. syll e doesn't become a. Must be vájes-vádjása or vájas-vádjasa. The second is used in NT, so I belive thats the right one. This form is err subed in stems file.
-     +N+Sg+Nom:ájes%>    K                 ;
-        +N+Ess:ájen%>    K                 ;
-        +N+Ess:ádjasin%> K                 ;
+     +N+Sg+Nom:ájes%>    K-CONS                ;
+        +N+Ess:ájen%>    K-CONS                ;
+        +N+Ess:ádjasin%> K-CONS                ;
             +N:ádjas%>   OTH-ODDCASE       ;
             +N:ádjas»X5  DenominalNounsODD ;
             +N:ádjas»    DenominalAdjsODD  ;
@@ -2287,14 +2422,14 @@ LEXICON VÁJES  !!= @CODE@ vájes:vádjas- Presently only for "báhkovájes". It
 ! _________
 
 LEXICON BADJEL !!= @CODE@ Derived nouns with acc -elav, ill -elij, elat -elas, etc. These were previously categorized as adpositions and adverbs, but according to Bruce Morén-Duolljá (2014) they are actually case forms of nouns derived from certain location nouns. Derived from even strong stems (badje -> badjel). Odd syllable inflection, but only singular nominative-elative (not clear if they take comitative and essive case). With comparatives. No Px.
-     +N+Sg+Nom:    K                 ;
-     +N+Sg+Gen:a   K                 ;
-     +N+Sg+Acc:av  K                 ;
-     +N+Sg+Ill:ij  K                 ;
-     +N+Sg+Ine:in  K                 ;
-     +N+Sg+Ela:is  K                 ;
-!    +N+Sg+Com:ijn K                 ; !
-!       +N+Ess:X1n K                 ; !
+     +N+Sg+Nom:    K-CONS                ;
+     +N+Sg+Gen:a   K-VOW                 ;
+     +N+Sg+Acc:av  K-CONS                ;
+     +N+Sg+Ill:ij  K-CONS                ;
+     +N+Sg+Ine:in  K-CONS                ;
+     +N+Sg+Ela:is  K-CONS                ;
+!    +N+Sg+Com:ijn K-CONS                ; !
+!       +N+Ess:X1n K-CONS                ; !
             +N:»   DenominalNounsODD ;
             +N:»   DenominalAdjsODD  ; ! can they be derived to adjectives?
   +N+Cmp/SgNom:    R                 ; ! oarjjelsábme
@@ -2310,23 +2445,23 @@ LEXICON BÁRNEP !!= @CODE@ bárnep:bárnebu-. Comparisation of nouns. No -ahtá 
         +N+Cmp/SgGen:bu%>       R                ;
         +N+Cmp/PlGen:bu%>j      R                ;
         +N+Cmp/SgNom:p%>        R                ;
-           +N+Sg+Nom:p%>        K                ;
-           +N+Sg+Gen:bu%>       K                ;
-           +N+Sg+Acc:bu%>v      K                ;
-           +N+Sg+Ill:bu%>j      K                ; ! Px ?? !!
-           +N+Sg+Ine:bu%>n      K                ;
-           +N+Sg+Ela:bu%>s      K                ;
-           +N+Sg+Com:bu%>jn     K                ;
-  +Err/Orth+N+Sg+Com:bu%>jna    K                ; !
-           +N+Pl+Nom:bu%>       K                ;
-           +N+Pl+Gen:bu%>j      K                ;
-           +N+Pl+Acc:bu%>jt     K                ;
-           +N+Pl+Ill:bu%>jda    K                ;
-           +N+Pl+Ine:bu%>jn     K                ;
-           +N+Pl+Ela:bu%>js     K                ;
-           +N+Pl+Com:bu%>j      K                ;
-!             +N+Ess:n%>        K                ;
-              +N+Ess:bu%>n      K                ;
+           +N+Sg+Nom:p%>        K-CONS               ;
+           +N+Sg+Gen:bu%>       K-VOW                ;
+           +N+Sg+Acc:bu%>v      K-CONS               ;
+           +N+Sg+Ill:bu%>j      K-CONS               ; ! Px ?? !!
+           +N+Sg+Ine:bu%>n      K-CONS               ;
+           +N+Sg+Ela:bu%>s      K-CONS               ;
+           +N+Sg+Com:bu%>jn     K-CONS               ;
+  +Err/Orth+N+Sg+Com:bu%>jna    K-VOW                ; !
+           +N+Pl+Nom:bu%>       K-VOW                ;
+           +N+Pl+Gen:bu%>j      K-CONS               ;
+           +N+Pl+Acc:bu%>jt     K-CONS               ;
+           +N+Pl+Ill:bu%>jda    K-VOW                ;
+           +N+Pl+Ine:bu%>jn     K-CONS               ;
+           +N+Pl+Ela:bu%>js     K-CONS               ;
+           +N+Pl+Com:bu%>j      K-CONS               ;
+!             +N+Ess:n%>        K-CONS               ;
+              +N+Ess:bu%>n      K-CONS               ;
                   +N:bu%>       DAGI_SINGULAR    ;
                   +N:bu%>       DAGI_PLURAL      ;
 !          +N+Sg+Nom:b%>        PxC              ; !^P^
@@ -2414,37 +2549,37 @@ LEXICON AKTIDIBME !!= @CODE@ Nomen actionionis derived from uneven verbs. Earlie
 LEXICON DÁRBBAGA !!= @CODE@ Like BENA, but plural. Presently only for "dárbbaga", has singular stem counterpart.
                                                               +N+Cmp/SgNom:%>X3             R                ;
                                                               +N+Cmp/PlGen:%>X5ij           R                ;
-                                                                 +N+Pl+Nom:%>X5a            K                ;
-                                                                 +N+Pl+Gen:%>X5ij           K                ;
-                                                                 +N+Pl+Acc:%>X5ijt          K                ;
-                                                                 +N+Pl+Ill:%>X5ijda         K                ;
-                                                                 +N+Pl+Ine:%>X5ijn          K                ;
-                                                                 +N+Pl+Ela:%>X5ijs          K                ;
-                                                                 +N+Pl+Com:%>X5ij           K                ;
-                                                                    +N+Ess:%>X3n            K                ;
-                                                                    +N+Ess:%>X5in           K                ;
+                                                                 +N+Pl+Nom:%>X5a            K-VOW                ;
+                                                                 +N+Pl+Gen:%>X5ij           K-CONS               ;
+                                                                 +N+Pl+Acc:%>X5ijt          K-CONS               ;
+                                                                 +N+Pl+Ill:%>X5ijda         K-VOW                ;
+                                                                 +N+Pl+Ine:%>X5ijn          K-CONS               ;
+                                                                 +N+Pl+Ela:%>X5ijs          K-CONS               ;
+                                                                 +N+Pl+Com:%>X5ij           K-CONS               ;
+                                                                    +N+Ess:%>X3n            K-CONS               ;
+                                                                    +N+Ess:%>X5in           K-CONS               ;
                                                                         +N:%>X5i            DAGI_PLURAL      ;
                                                        +N+Der2+Der/Dimin+N:»X5attja         DAGI_PLURAL      ;
-                      +N+Der2+Der/Dimin+N+Ess:»X5attja%>n      K                ;
-           +Use/-Spell+N+Der2+Der/Dimin+N+Ess:»X5adtja%>n      K                ; !Gives dárbbagadtjan, barely not used
-                   +N+Der2+Der/Dimin+N+Pl+Nom:»X5attja%>       K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Gen:»X5attja%>j      K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Acc:»X5attja%>jt     K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Ill:»X5attja%>jda    K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Ine:»X5attja%>jn     K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Ela:»X5attja%>js     K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Com:»X5attja%>j      K                ;
+                      +N+Der2+Der/Dimin+N+Ess:»X5attja%>n      K-CONS               ;
+           +Use/-Spell+N+Der2+Der/Dimin+N+Ess:»X5adtja%>n      K-CONS               ; !Gives dárbbagadtjan, barely not used
+                   +N+Der2+Der/Dimin+N+Pl+Nom:»X5attja%>       K-VOW                ;
+                   +N+Der2+Der/Dimin+N+Pl+Gen:»X5attja%>j      K-CONS               ;
+                   +N+Der2+Der/Dimin+N+Pl+Acc:»X5attja%>jt     K-CONS               ;
+                   +N+Der2+Der/Dimin+N+Pl+Ill:»X5attja%>jda    K-VOW                ;
+                   +N+Der2+Der/Dimin+N+Pl+Ine:»X5attja%>jn     K-CONS               ;
+                   +N+Der2+Der/Dimin+N+Pl+Ela:»X5attja%>js     K-CONS               ;
+                   +N+Der2+Der/Dimin+N+Pl+Com:»X5attja%>j      K-CONS               ;
 !                  +N+Der2+Der/Dimin+N+Pl+Acc:»X5attja%>jd%>   PxC              ; !
 !                  +N+Der2+Der/Dimin+N+Pl+Ine:»X5attja%>jn%>   PxC              ; !
 !                  +N+Der2+Der/Dimin+N+Pl+Ela:»X5attja%>jst%>  PxC              ; !
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Nom:»X5attja»tja     K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Gen:»X5attja»tjij    K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Acc:»X5attja»tjijt   K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ill:»X5attja»tjijda  K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ine:»X5attja»tjijn   K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ela:»X5attja»tjijs   K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Com:»X5attja»tjij    K                ; !Dobbel diminutiv
-     +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Ess:»X5attja»tjin    K                ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Nom:»X5attja»tja     K-VOW                ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Gen:»X5attja»tjij    K-CONS               ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Acc:»X5attja»tjijt   K-CONS               ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ill:»X5attja»tjijda  K-VOW                ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ine:»X5attja»tjijn   K-CONS               ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ela:»X5attja»tjijs   K-CONS               ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Com:»X5attja»tjij    K-CONS               ; !Dobbel diminutiv
+     +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Ess:»X5attja»tjin    K-CONS               ; !Dobbel diminutiv
 !                                          +N:»X5              DenominalAdjsODD ; ! Don't want plural nouns to get the ahtes derivation
 ! X5 for vow change
 
@@ -2455,15 +2590,15 @@ LEXICON DÁRBBAGA !!= @CODE@ Like BENA, but plural. Presently only for "dárbbag
 LEXICON BÆLLJASA !!= @CODE@ Like GÁMAS, but plural. These have corresponding singular stems.
                                  +N+Cmp/SgNom:%>Q1             R                ;
                                  +N+Cmp/PlGen:%>X5ij           R                ;
-                                    +N+Pl+Nom:%>X5a            K                ;
-                                    +N+Pl+Gen:%>X5ij           K                ;
-                                    +N+Pl+Acc:%>X5ijt          K                ;
-                                    +N+Pl+Ill:%>X5ijda         K                ;
-                                    +N+Pl+Ine:%>X5ijn          K                ;
-                                    +N+Pl+Ela:%>X5ijs          K                ;
-                                    +N+Pl+Com:%>X5ij           K                ;
-                                       +N+Ess:%>Q1X1n          K                ;
-                                       +N+Ess:%>X5in           K                ;
+                                    +N+Pl+Nom:%>X5a            K-VOW                ;
+                                    +N+Pl+Gen:%>X5ij           K-CONS               ;
+                                    +N+Pl+Acc:%>X5ijt          K-CONS               ;
+                                    +N+Pl+Ill:%>X5ijda         K-VOW                ;
+                                    +N+Pl+Ine:%>X5ijn          K-CONS               ;
+                                    +N+Pl+Ela:%>X5ijs          K-CONS               ;
+                                    +N+Pl+Com:%>X5ij           K-CONS               ;
+                                       +N+Ess:%>Q1X1n          K-CONS               ;
+                                       +N+Ess:%>X5in           K-CONS               ;
                                            +N:%>X5i            DAGI_PLURAL      ;
                                            +N:»X5attja         DAGI_PLURAL      ;
 !                                   +N+Pl+Acc:%>X5ijd%>        PxCs             ; !
@@ -2472,26 +2607,26 @@ LEXICON BÆLLJASA !!= @CODE@ Like GÁMAS, but plural. These have corresponding s
 !                                   +N+Pl+Gen:%>X5ij%>         PxCs             ; !^P^
 !                                   +N+Pl+Ill:%>X5ijdas%>      PxC              ; !^P^
 !                                   +N+Pl+Com:%>X5ij%>         PxCs             ; !^P^
-                   +N+Der2+Der/Dimin+N+Pl+Nom:»X5attja%>       K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Gen:»X5attja%>j      K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Acc:»X5attja%>jt     K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Ill:»X5attja%>jda    K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Ine:»X5attja%>jn     K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Ela:»X5attja%>js     K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Com:»X5attja%>j      K                ;
+                   +N+Der2+Der/Dimin+N+Pl+Nom:»X5attja%>       K-VOW                ;
+                   +N+Der2+Der/Dimin+N+Pl+Gen:»X5attja%>j      K-CONS               ;
+                   +N+Der2+Der/Dimin+N+Pl+Acc:»X5attja%>jt     K-CONS               ;
+                   +N+Der2+Der/Dimin+N+Pl+Ill:»X5attja%>jda    K-VOW                ;
+                   +N+Der2+Der/Dimin+N+Pl+Ine:»X5attja%>jn     K-CONS               ;
+                   +N+Der2+Der/Dimin+N+Pl+Ela:»X5attja%>js     K-CONS               ;
+                   +N+Der2+Der/Dimin+N+Pl+Com:»X5attja%>j      K-CONS               ;
 !                  +N+Der2+Der/Dimin+N+Pl+Acc:»X5attja%>jd%>   PxC              ; !
 !                  +N+Der2+Der/Dimin+N+Pl+Ine:»X5attja%>jn%>   PxC              ; !
 !                  +N+Der2+Der/Dimin+N+Pl+Ela:»X5attja%>jst%>  PxC              ; !
-                      +N+Der2+Der/Dimin+N+Ess:»X5attja%>n      K                ;
-   +Err/Lex+Use/-Spell+N+Der2+Der/Dimin+N+Ess:»X5adtja%>n      K                ;
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Nom:»X5attja»tja     K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Gen:»X5attja»tjij    K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Acc:»X5attja»tjijt   K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ill:»X5attja»tjijda  K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ine:»X5attja»tjijn   K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ela:»X5attja»tjijs   K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Com:»X5attja»tjij    K                ; !Dobbel diminutiv
-     +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Ess:»X5attja»tjin    K                ; !Dobbel diminutiv
+                      +N+Der2+Der/Dimin+N+Ess:»X5attja%>n      K-CONS               ;
+   +Err/Lex+Use/-Spell+N+Der2+Der/Dimin+N+Ess:»X5adtja%>n      K-CONS               ;
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Nom:»X5attja»tja     K-VOW                ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Gen:»X5attja»tjij    K-CONS               ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Acc:»X5attja»tjijt   K-CONS               ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ill:»X5attja»tjijda  K-VOW                ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ine:»X5attja»tjijn   K-CONS               ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ela:»X5attja»tjijs   K-CONS               ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Com:»X5attja»tjij    K-CONS               ; !Dobbel diminutiv
+     +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Ess:»X5attja»tjin    K-CONS               ; !Dobbel diminutiv
 !                                          +N:»                DenominalAdjsODD ; ! Don't want plural nouns to get the ahtes derivation
         ! X5 for vow change
 
@@ -2503,37 +2638,37 @@ LEXICON BÆLLJASA !!= @CODE@ Like GÁMAS, but plural. These have corresponding s
 
 LEXICON IEDNITJA !!= @CODE@ Odd syllable pluralforms only. These do not have a singular form.
                                  +N+Cmp/PlGen:%>ij           R                ;
-                                    +N+Pl+Nom:%>a            K                ;
-                                    +N+Pl+Gen:%>ij           K                ;
-                                    +N+Pl+Acc:%>ijt          K                ;
-                                    +N+Pl+Ill:%>ijda         K                ;
-                                    +N+Pl+Ine:%>ijn          K                ;
-                                    +N+Pl+Ela:%>ijs          K                ;
-                                    +N+Pl+Com:%>ij           K                ;
-                                       +N+Ess:%>in           K                ;
+                                    +N+Pl+Nom:%>a            K-VOW                ;
+                                    +N+Pl+Gen:%>ij           K-CONS               ;
+                                    +N+Pl+Acc:%>ijt          K-CONS               ;
+                                    +N+Pl+Ill:%>ijda         K-VOW                ;
+                                    +N+Pl+Ine:%>ijn          K-CONS               ;
+                                    +N+Pl+Ela:%>ijs          K-CONS               ;
+                                    +N+Pl+Com:%>ij           K-CONS               ;
+                                       +N+Ess:%>in           K-CONS               ;
                                        +N:%>a                DAGI_SINGULAR    ;
                                        +N:%>i                DAGI_PLURAL      ;
-                   +N+Der2+Der/Dimin+N+Pl+Nom:»attja%>       K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Gen:»attja%>j      K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Acc:»attja%>jt     K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Ill:»attja%>jda    K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Ine:»attja%>jn     K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Ela:»attja%>js     K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Com:»attja%>j      K                ;
+                   +N+Der2+Der/Dimin+N+Pl+Nom:»attja%>       K-VOW                ;
+                   +N+Der2+Der/Dimin+N+Pl+Gen:»attja%>j      K-CONS               ;
+                   +N+Der2+Der/Dimin+N+Pl+Acc:»attja%>jt     K-CONS               ;
+                   +N+Der2+Der/Dimin+N+Pl+Ill:»attja%>jda    K-VOW                ;
+                   +N+Der2+Der/Dimin+N+Pl+Ine:»attja%>jn     K-CONS               ;
+                   +N+Der2+Der/Dimin+N+Pl+Ela:»attja%>js     K-CONS               ;
+                   +N+Der2+Der/Dimin+N+Pl+Com:»attja%>j      K-CONS               ;
                           +N+Der2+Der/Dimin+N:attja          DAGI_PLURAL      ;
-                      +N+Der2+Der/Dimin+N+Ess:»attja%>n      K                ;
-   +Err/Lex+Use/-Spell+N+Der2+Der/Dimin+N+Ess:»adtja%>n      K                ;
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Nom:»attja»tja     K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Gen:»attja»tjij    K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Acc:»attja»tjijt   K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ill:»attja»tjijda  K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ine:»attja»tjijn   K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ela:»attja»tjijs   K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Com:»attja»tjij    K                ; !Dobbel diminutiv
-     +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Ess:»attja»tjin    K                ; !Dobbel diminutiv
+                      +N+Der2+Der/Dimin+N+Ess:»attja%>n      K-CONS               ;
+   +Err/Lex+Use/-Spell+N+Der2+Der/Dimin+N+Ess:»adtja%>n      K-CONS               ;
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Nom:»attja»tja     K-VOW                ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Gen:»attja»tjij    K-CONS               ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Acc:»attja»tjijt   K-CONS               ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ill:»attja»tjijda  K-VOW                ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ine:»attja»tjijn   K-CONS               ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ela:»attja»tjijs   K-CONS               ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Com:»attja»tjij    K-CONS               ; !Dobbel diminutiv
+     +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Ess:»attja»tjin    K-CONS               ; !Dobbel diminutiv
 !                                          +N:»              DenominalAdjsODD ; !Don't want plural nouns to get the ahtes derivation
-!                                      +N+Abe:%>adak         K                ; !Not for odd-syllable se
-!                                      +N+Abe:%>ada          K                ;
+!                                      +N+Abe:%>adak         K-CONS               ; !Not for odd-syllable se
+!                                      +N+Abe:%>ada          K-VOW                ;
 
 !!€gt-norm: jáhkoguojmitja # Odd-syllable test
 !!€ jáhkoguojmitja:            jáhkoguojmitja+N+Pl+Nom
@@ -2542,33 +2677,33 @@ LEXICON IEDNITJA !!= @CODE@ Odd syllable pluralforms only. These do not have a s
 LEXICON SNJIERÁGA !!= @CODE@ Odd syllable pluralforms only. These have corresponding singular stems.
                                  +N+Cmp/SgNom:%>             R                ;
                                  +N+Cmp/PlGen:%>ij           R                ;
-                                    +N+Pl+Nom:%>a            K                ;
-                                    +N+Pl+Gen:%>ij           K                ;
-                                    +N+Pl+Acc:%>ijt          K                ;
-                                    +N+Pl+Ill:%>ijda         K                ;
-                                    +N+Pl+Ine:%>ijn          K                ;
-                                    +N+Pl+Ela:%>ijs          K                ;
-                                    +N+Pl+Com:%>ij           K                ;
-                                       +N+Ess:%>in           K                ;
+                                    +N+Pl+Nom:%>a            K-VOW                ;
+                                    +N+Pl+Gen:%>ij           K-CONS               ;
+                                    +N+Pl+Acc:%>ijt          K-CONS               ;
+                                    +N+Pl+Ill:%>ijda         K-VOW                ;
+                                    +N+Pl+Ine:%>ijn          K-CONS               ;
+                                    +N+Pl+Ela:%>ijs          K-CONS               ;
+                                    +N+Pl+Com:%>ij           K-CONS               ;
+                                       +N+Ess:%>in           K-CONS               ;
                                            +N:%>i            DAGI_PLURAL      ;
-                   +N+Der2+Der/Dimin+N+Pl+Nom:»attja%>       K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Gen:»attja%>j      K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Acc:»attja%>jt     K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Ill:»attja%>jda    K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Ine:»attja%>jn     K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Ela:»attja%>js     K                ;
-                   +N+Der2+Der/Dimin+N+Pl+Com:»attja%>j      K                ;
+                   +N+Der2+Der/Dimin+N+Pl+Nom:»attja%>       K-VOW                ;
+                   +N+Der2+Der/Dimin+N+Pl+Gen:»attja%>j      K-CONS               ;
+                   +N+Der2+Der/Dimin+N+Pl+Acc:»attja%>jt     K-CONS               ;
+                   +N+Der2+Der/Dimin+N+Pl+Ill:»attja%>jda    K-VOW                ;
+                   +N+Der2+Der/Dimin+N+Pl+Ine:»attja%>jn     K-CONS               ;
+                   +N+Der2+Der/Dimin+N+Pl+Ela:»attja%>js     K-CONS               ;
+                   +N+Der2+Der/Dimin+N+Pl+Com:»attja%>j      K-CONS               ;
                           +N+Der2+Der/Dimin+N:»attja%>       DAGI_PLURAL      ;
-                      +N+Der2+Der/Dimin+N+Ess:»attja%>n      K                ;
-   +Err/Lex+Use/-Spell+N+Der2+Der/Dimin+N+Ess:»adtja%>n      K                ;
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Nom:»attja»tja     K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Gen:»attja»tjij    K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Acc:»attja»tjijt   K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ill:»attja»tjijda  K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ine:»attja»tjijn   K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ela:»attja»tjijs   K                ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Com:»attja»tjij    K                ; !Dobbel diminutiv
-     +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Ess:»attja»tjin    K                ; !Dobbel diminutiv
+                      +N+Der2+Der/Dimin+N+Ess:»attja%>n      K-CONS               ;
+   +Err/Lex+Use/-Spell+N+Der2+Der/Dimin+N+Ess:»adtja%>n      K-CONS               ;
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Nom:»attja»tja     K-VOW                ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Gen:»attja»tjij    K-CONS               ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Acc:»attja»tjijt   K-CONS               ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ill:»attja»tjijda  K-VOW                ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ine:»attja»tjijn   K-CONS               ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ela:»attja»tjijs   K-CONS               ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Com:»attja»tjij    K-CONS               ; !Dobbel diminutiv
+     +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Ess:»attja»tjin    K-CONS               ; !Dobbel diminutiv
 !                                          +N:»              DenominalAdjsODD ; ! Don't want plural nouns to get the ahtes derivation
 !+N+Abe:%>adak K ; Not for odd-syllable stems
 !                                      +N+Abe:%>ada          K                ;
@@ -2579,36 +2714,36 @@ LEXICON SNJIERÁGA !!= @CODE@ Odd syllable pluralforms only. These have correspo
 
 LEXICON MANEBU !!= @CODE@ oddsyllable plural only. presently only for "maŋebu".
                                  +N+Cmp/PlGen:%>j           R           ;
-                                    +N+Pl+Nom:%>            K           ;
-                                    +N+Pl+Gen:%>j           K           ;
-                                    +N+Pl+Acc:%>jt          K           ;
-                                    +N+Pl+Ill:%>jda         K           ;
-                                    +N+Pl+Ine:%>jn          K           ;
-                                    +N+Pl+Ela:%>js          K           ;
-                                    +N+Pl+Com:%>j           K           ;
-                                       +N+Ess:%>n           K           ;
+                                    +N+Pl+Nom:%>            K-VOW           ;
+                                    +N+Pl+Gen:%>j           K-CONS          ;
+                                    +N+Pl+Acc:%>jt          K-CONS          ;
+                                    +N+Pl+Ill:%>jda         K-VOW           ;
+                                    +N+Pl+Ine:%>jn          K-CONS          ;
+                                    +N+Pl+Ela:%>js          K-CONS          ;
+                                    +N+Pl+Com:%>j           K-CONS          ;
+                                       +N+Ess:%>n           K-CONS          ;
                                            +N:%>            DAGI_PLURAL ;
-                   +N+Der2+Der/Dimin+N+Sg+Gen:»ttja%>       K           ;
-                   +N+Der2+Der/Dimin+N+Pl+Nom:»ttja%>       K           ;
-                   +N+Der2+Der/Dimin+N+Pl+Gen:»ttja%>j      K           ;
-                   +N+Der2+Der/Dimin+N+Pl+Acc:»ttja%>jt     K           ;
-                   +N+Der2+Der/Dimin+N+Pl+Ill:»ttja%>jda    K           ;
-                   +N+Der2+Der/Dimin+N+Pl+Ine:»ttja%>jn     K           ;
-                   +N+Der2+Der/Dimin+N+Pl+Ela:»ttja%>js     K           ;
-                   +N+Der2+Der/Dimin+N+Pl+Com:»ttja%>j      K           ;
+                   +N+Der2+Der/Dimin+N+Sg+Gen:»ttja%>       K-VOW           ;
+                   +N+Der2+Der/Dimin+N+Pl+Nom:»ttja%>       K-VOW           ;
+                   +N+Der2+Der/Dimin+N+Pl+Gen:»ttja%>j      K-CONS          ;
+                   +N+Der2+Der/Dimin+N+Pl+Acc:»ttja%>jt     K-CONS          ;
+                   +N+Der2+Der/Dimin+N+Pl+Ill:»ttja%>jda    K-VOW           ;
+                   +N+Der2+Der/Dimin+N+Pl+Ine:»ttja%>jn     K-CONS          ;
+                   +N+Der2+Der/Dimin+N+Pl+Ela:»ttja%>js     K-CONS          ;
+                   +N+Der2+Der/Dimin+N+Pl+Com:»ttja%>j      K-CONS          ;
                           +N+Der2+Der/Dimin+N:»ttja%>      DAGI_PLURAL ;
-                      +N+Der2+Der/Dimin+N+Ess:»ttja%>n      K    ;
-   +Err/Lex+Use/-Spell+N+Der2+Der/Dimin+N+Ess:»dtja%>n      K    ;
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Nom:»ttja»tja     K    ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Gen:»ttja»tjij    K    ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Acc:»ttja»tjijt   K    ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ill:»ttja»tjijda  K    ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ine:»ttja»tjijn   K    ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ela:»ttja»tjijs   K    ; !Dobbel diminutiv
-  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Com:»ttja»tjij    K    ; !Dobbel diminutiv
-     +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Ess:»ttja»tjin    K    ; !Dobbel diminutiv
-!                                      +N+Abe:%>dak         K    ;
-!                                      +N+Abe:%>da          K    ;
+                      +N+Der2+Der/Dimin+N+Ess:»ttja%>n      K-CONS   ;
+   +Err/Lex+Use/-Spell+N+Der2+Der/Dimin+N+Ess:»dtja%>n      K-CONS   ;
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Nom:»ttja»tja     K-VOW    ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Gen:»ttja»tjij    K-CONS   ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Acc:»ttja»tjijt   K-CONS   ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ill:»ttja»tjijda  K-VOW    ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ine:»ttja»tjijn   K-CONS   ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Ela:»ttja»tjijs   K-CONS   ; !Dobbel diminutiv
+  +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Pl+Com:»ttja»tjij    K-CONS   ; !Dobbel diminutiv
+     +N+Der2+Der/Dimin+N+Der+Der/Dimin+N+Ess:»ttja»tjin    K-CONS   ; !Dobbel diminutiv
+!                                      +N+Abe:%>dak         K-CONS   ;
+!                                      +N+Abe:%>da         K-VOW   ;
 
 !!€gt-norm: maŋebu # Odd-syllable test
 !!€ maŋebu:            maŋebu+N+Pl+Nom
@@ -2622,28 +2757,28 @@ LEXICON NE-ODDCASE ! The lexicon is split bec. of gahper's missing short Ess
   E-ODDCASE ;
 
 LEXICON N-ODDCASE
- +Sg+Nom: K ;
+ +Sg+Nom: K-CONS;
 
 
 LEXICON E-ODDCASE
- +Ess+Use/NG:X1n K ; ! X1 to delete cns before short ess
+ +Ess+Use/NG:X1n K-CONS; ! X1 to delete cns before short ess
 
 LEXICON OTH-ODDCASE
-          +Sg+Gen:a       K     ;
-          +Sg+Acc:av      K     ;
-          +Sg+Ill:ij      K     ; ! Px ?? !!
-          +Sg+Ine:in      K     ;
-          +Sg+Ela:is      K     ;
-          +Sg+Com:ijn     K     ;
- +Err/Orth+Sg+Com:ijna    K     ; !
-          +Pl+Nom:a       K     ;
-          +Pl+Gen:ij      K     ;
-          +Pl+Acc:ijt     K     ;
-          +Pl+Ill:ijda    K     ;
- +Err/Orth+Pl+Ill:ida    K     ;
-          +Pl+Ine:ijn     K     ;
-          +Pl+Ela:ijs     K     ;
-          +Pl+Com:ij      K     ;
+          +Sg+Gen:a      K-VOW    ;
+          +Sg+Acc:av      K-CONS    ;
+          +Sg+Ill:ij      K-CONS    ; ! Px ?? !!
+          +Sg+Ine:in      K-CONS    ;
+          +Sg+Ela:is      K-CONS    ;
+          +Sg+Com:ijn     K-CONS    ;
+ +Err/Orth+Sg+Com:ijna    K-CONS    ; !
+          +Pl+Nom:a      K-VOW    ;
+          +Pl+Gen:ij      K-CONS    ;
+          +Pl+Acc:ijt     K-CONS    ;
+          +Pl+Ill:ijda   K-VOW    ;
+ +Err/Orth+Pl+Ill:ida   K-VOW    ;
+          +Pl+Ine:ijn     K-CONS    ;
+          +Pl+Ela:ijs     K-CONS    ;
+          +Pl+Com:ij      K-CONS    ;
           +Sg+Nom:        NPxC  ;
           +Sg+Gen:        NPxC  ; !
           +Sg+Acc:        NPxC  ; !
@@ -2657,7 +2792,7 @@ LEXICON OTH-ODDCASE
           +Pl+Ine:ijn%>   NPxCs ; !
           +Pl+Ela:ijst%>  NPxCs ; !
           +Pl+Com:ij%>    NPxCs ; !
-             +Ess:in      K     ;
+             +Ess:in      K-CONS    ;
                  :a       DAGI_SINGULAR ;
                  :i       DAGI_PLURAL   ;
 
@@ -2665,22 +2800,22 @@ LEXICON OTH-ODDCASE
 
 LEXICON OTH-ODDCASEadj
         +Sg+Nom+Err/Orth:        PxC  ; !
-                 +Sg+Gen:a       K    ;
-                 +Sg+Acc:av      K    ;
-                 +Sg+Ill:ij      K    ; ! Px ?? !!
-                 +Sg+Ine:in      K    ;
-                 +Sg+Ela:is      K    ;
-                 +Sg+Com:ijn     K    ;
-        +Err/Orth+Sg+Com:ijna    K    ; !
-                 +Pl+Nom:a       K    ;
-                 +Pl+Gen:ij      K    ;
-                 +Pl+Acc:ijt     K    ;
-                 +Pl+Ill:ijda    K    ;
-        +Err/Orth+Pl+Ill:ida     K    ;
-                 +Pl+Ine:ijn     K    ;
-                 +Pl+Ela:ijs     K    ;
-                 +Pl+Com:ij      K    ;
-                    +Ess:in      K    ;
+                 +Sg+Gen:a      K-VOW   ;
+                 +Sg+Acc:av      K-CONS   ;
+                 +Sg+Ill:ij      K-CONS   ; ! Px ?? !!
+                 +Sg+Ine:in      K-CONS   ;
+                 +Sg+Ela:is      K-CONS   ;
+                 +Sg+Com:ijn     K-CONS   ;
+        +Err/Orth+Sg+Com:ijna   K-VOW   ; !
+                 +Pl+Nom:a      K-VOW   ;
+                 +Pl+Gen:ij      K-CONS   ;
+                 +Pl+Acc:ijt     K-CONS   ;
+                 +Pl+Ill:ijda   K-VOW   ;
+        +Err/Orth+Pl+Ill:ida    K-VOW   ;
+                 +Pl+Ine:ijn     K-CONS   ;
+                 +Pl+Ela:ijs     K-CONS   ;
+                 +Pl+Com:ij      K-CONS   ;
+                    +Ess:in      K-CONS   ;
                         :a       DAGI_SINGULAR ;
                         :i        DAGI_PLURAL   ;
  +Use/SpellNoSugg+Sg+Gen:        PxC  ; !
@@ -2697,11 +2832,11 @@ LEXICON OTH-ODDCASEadj
  +Use/SpellNoSugg+Pl+Com:ij%>    PxCs ; !
 
 LEXICON BENA-NE
-                +Sg+Nom:                 K                 ; ! bena
+                +Sg+Nom:                K-VOW                ; ! bena
                 +Sg+Nom:                 NPxV-12           ; ! !benas, in Tuolja-book.
   +Sg+Nom@R.Nom3Px.add@:00@R.Nom3Px.add@ NPxV3             ;
              +Cmp/SgNom:                 R                 ;
-            +Ess+Use/NG:n                K                 ;
+            +Ess+Use/NG:n                K-CONS                ;
 
 !LEXICON BENA-OBL
 !               +Sg+Nom:00               PxC               ; !^P^
@@ -2716,9 +2851,9 @@ LEXICON BENA-NE
 !                      :i                MALLASI-          ;
 
 LEXICON AHTÁ 
-          +Abe:ahtá K ; !case
-   +Use/NG+Abe:ahti K ; !case
- +Err/Orth+Abe:ahtu K ; !case
+          +Abe:ahtá K-VOW; !case
+   +Use/NG+Abe:ahti K-VOW ; !case
+ +Err/Orth+Abe:ahtu K-VOW ; !case
 
 
 !! !!Contracted stems
@@ -2757,7 +2892,7 @@ LEXICON GUOMOJ !!= @CODE@ C-final with cg I-III: guomoj:guobbmu
            +N:%>X5 ILL-EVENCASE        ;
            +N:%>X4 N-EVENWEAKSTEM      ;
     +N+Sg+Nom:%>   PxV                 ;
-       +N+Ess:%>n  K                   ;
+       +N+Ess:%>n  K-CONS                  ;
  +N+Cmp/SgGen:%>   R                   ;
  +N+Cmp/PlGen:%>j  R                   ;
 
@@ -2785,13 +2920,13 @@ LEXICON SVÁLES !!= @CODE@ C-final with cg I-III. sváles:svállá (lºl)
            +N:%>X4  ILL-EVENCASE        ;
            +N:%>X4  N-EVENWEAKSTEM      ;
     +N+Sg+Nom:%>X4    PxV                 ; !
-       +N+Ess:%>X4n K                   ;
+       +N+Ess:%>X4n K-CONS                  ;
  +N+Cmp/SgGen:%>X4    R                   ;
  +N+Cmp/PlGen:%>X4j   R                   ;
 
 !!€gt-norm: sváles # Contracted test
-!!€ sváles:           sváles+N+Sg+Nom
-!!€ sválláv:          sváles+N+Sg+Acc
+!!€ sváles:           sváles+N+G3+Sg+Nom
+!!€ sválláv:          sváles+N+G3+Sg+Acc
 
 LEXICON GÅHKES !!= @CODE@ C-final with cg II-III with vowel harmony (a/á=å). gåhkes:gåhkkå. Presently only for "gåhkes".
  +N:e%>  SARVES-NE           ;
@@ -2814,9 +2949,9 @@ LEXICON SJUOKKAJ !!= @CODE@ sjuokkaj:sjuoggá. Presently only for "sjuokkaj".
 !!€ sjuoggáv:          sjuokkaj+N+Sg+Acc
 
 LEXICON GISTÁ !!= @CODE@ gistá:gisstá. Presently only for "gistá".
-     +N+Sg+Nom:%>Q1  K                   ;
+     +N+Sg+Nom:%>Q1  K-VOW                   ;
 !    +N+Sg+Nom:%>Q1  PxC                 ; !^P^ !Moved to CONTR-OTH
-        +N+Ess:%>Q1n K                   ;
+        +N+Ess:%>Q1n K-CONS                  ;
   +N+Cmp/SgNom:%>Q1  R                   ;
             +N:%>X4  CONTR-OTH           ;
             +N:»X4   DenominalNounsCONTR ;
@@ -2831,16 +2966,16 @@ LEXICON GISTÁ !!= @CODE@ gistá:gisstá. Presently only for "gistá".
 
 
 LEXICON SARVES-NE
-     +Sg+Nom:s   K   ;
+     +Sg+Nom:s   K-CONS  ;
 !    +Sg+Nom:s%> PxC ; !^P^ !Moved to CONTR-OTH
-        +Ess:n   K   ;
+        +Ess:n   K-CONS  ;
   +Cmp/SgNom:s   R   ;
 
 
 LEXICON ÅLMÅJ-NE
-     +Sg+Nom:j   K   ;
+     +Sg+Nom:j   K-CONS  ;
 !    +Sg+Nom:j%> PxC ; !^P^ !Moved to CONTR-OTH
- +Ess+Use/NG:n   K   ;
+ +Ess+Use/NG:n   K-CONS  ;
   +Cmp/SgNom:j   R   ;
 
 
@@ -2848,7 +2983,7 @@ LEXICON CONTR-OTH
               ILL-EVENCASE   ;
               N-EVENWEAKSTEM ;
     +Sg+Nom:  PxV            ; !
-       +Ess:n K              ;
+       +Ess:n K-CONS             ;
  +Cmp/SgGen:  R              ;
  +Cmp/PlGen:j R              ;
 
@@ -2895,7 +3030,7 @@ LEXICON DenominalNounsMUORRA !Gives diminutive, and double diminutive
                    +Der2+Der/Dimin+N+Cmp/SgNom:X7sj        R            ;
                    +Der2+Der/Dimin+N+Cmp/SgGen:X7tja       R            ;
                    +Der2+Der/Dimin+N+Cmp/PlGen:X7tjij      R            ;
-     +Der2+Der/Dimin+N+Der+Der/Dimin+N+Sg+Nom:X7tja»sj    K            ; !Dobbel diminutiv
+     +Der2+Der/Dimin+N+Der+Der/Dimin+N+Sg+Nom:X7tja»sj    K-CONS           ; !Dobbel diminutiv
             +Der2+Der/Dimin+N+Der+Der/Dimin+N:X7tja»ttja  GÅNÅGIS-EVEN ;
  +Use/-Spell+Der2+Der/Dimin+N+Der+Der/Dimin+N:X7tja»dtja  GÅNÅGIS-EVEN ; !Gives muoratjadtjaj and muoratjadtjan (ess), removed from speller since this is barely used.
   +Der2+Der/Dimin+N+Der+Der/Dimin+N+Cmp/SgNom:X7tja»sj    R            ;
@@ -2908,7 +3043,7 @@ LEXICON DenominalNounsMUORRA !Gives diminutive, and double diminutive
                    +Der2+Der/Dimin+N+Cmp/SgNom:X4sj        R            ;
                    +Der2+Der/Dimin+N+Cmp/SgGen:X4tja       R            ;
                    +Der2+Der/Dimin+N+Cmp/PlGen:X4tjij      R            ;
-     +Der2+Der/Dimin+N+Der+Der/Dimin+N+Sg+Nom:X4tja»sj    K            ; !Dobbel diminutiv
+     +Der2+Der/Dimin+N+Der+Der/Dimin+N+Sg+Nom:X4tja»sj    K-CONS           ; !Dobbel diminutiv
             +Der2+Der/Dimin+N+Der+Der/Dimin+N:X4tja»ttja  GÅNÅGIS-EVEN ;
  +Use/-Spell+Der2+Der/Dimin+N+Der+Der/Dimin+N:X4tja»dtja  GÅNÅGIS-EVEN ; !Gives muoratjadtjaj and muoratjadtjan (ess), removed from speller since this is barely used.
   +Der2+Der/Dimin+N+Der+Der/Dimin+N+Cmp/SgNom:X4tja»sj    R            ;
@@ -2924,7 +3059,7 @@ LEXICON DenominalNounsBEDNAGASJ !Only one diminutive since BEDNAGASJ already is 
 
 LEXICON DenominalNounsKINO
                              +Der2+Der/Dimin+N:tj        OTH-ODDCASE  ;
-     +Der2+Der/Dimin+N+Der+Der/Dimin+N+Sg+Nom:tja»sj    K            ; !Dobbel diminutiv
+     +Der2+Der/Dimin+N+Der+Der/Dimin+N+Sg+Nom:tja»sj    K-CONS           ; !Dobbel diminutiv
             +Der2+Der/Dimin+N+Der+Der/Dimin+N:tja»ttja  GÅNÅGIS-EVEN ;
  +Use/-Spell+Der2+Der/Dimin+N+Der+Der/Dimin+N:tja»dtja  GÅNÅGIS-EVEN ; !Gives kinotjadtjaj, removed from speller since this is barely used.
   +Der2+Der/Dimin+N+Der+Der/Dimin+N+Cmp/SgNom:tja»sj    R            ;
@@ -2933,7 +3068,7 @@ LEXICON DenominalNounsKINO
 
 
 LEXICON DenominalNounsODD ! Gives diminutive, and double diminutive
-                     +Der2+Der/Dimin+N+Sg+Nom:asj          K            ;
+                     +Der2+Der/Dimin+N+Sg+Nom:asj          K-CONS           ;
                             +Der2+Der/Dimin+N:attja        GÅNÅGIS-EVEN ;
                  +Use/-Spell+Der2+Der/Dimin+N:adtja        GÅNÅGIS-EVEN ; !Gives gahperadtjaj, removed from speller since this is barely used.
                   +Der2+Der/Dimin+N+Cmp/SgNom:asj          R            ;
@@ -2946,7 +3081,7 @@ LEXICON DenominalNounsODD ! Gives diminutive, and double diminutive
  +Der2+Der/Dimin+N+Der+Der/Dimin+N+Cmp/PlGen:adtja»X7tjij R            ;
 
 LEXICON DenominalNounsOAPPÁSJ !Only one diminutive since OAPPÁSJ already is in dimin. Isn't possible with triple dimin as "báttátjattjasj" and "oappátjattjasj"
-     +Der2+Der/Dimin+N+Sg+Nom:asj    K            ;
+     +Der2+Der/Dimin+N+Sg+Nom:asj    K-CONS           ;
             +Der2+Der/Dimin+N:attja  GÅNÅGIS-EVEN ;
  +Use/-Spell+Der2+Der/Dimin+N:adtja  GÅNÅGIS-EVEN ; !Gives gahperadtjaj, removed from speller since this is barely used.
   +Der2+Der/Dimin+N+Cmp/SgNom:asj    R            ;
@@ -2955,16 +3090,17 @@ LEXICON DenominalNounsOAPPÁSJ !Only one diminutive since OAPPÁSJ already is in
 
 LEXICON DenominalNounsCONTR
                              +Der2+Der/Dimin+N:tj        OTH-ODDCASE  ;
-                      +Der2+Der/Dimin+N+Sg+Nom:sj        K            ;
+                      +Der2+Der/Dimin+N+Sg+Nom:sj        K-CONS           ;
                    +Der2+Der/Dimin+N+Cmp/SgGen:tja       R            ;
                    +Der2+Der/Dimin+N+Cmp/PlGen:tjij      R            ;
                    +Der2+Der/Dimin+N+Cmp/SgNom:sj        R            ;
-     +Der2+Der/Dimin+N+Der+Der/Dimin+N+Sg+Nom:tja»sj    K            ; !Dobbel dimin
+     +Der2+Der/Dimin+N+Der+Der/Dimin+N+Sg+Nom:tja»sj    K-CONS           ; !Dobbel dimin
             +Der2+Der/Dimin+N+Der+Der/Dimin+N:tja»ttja  GÅNÅGIS-EVEN ;
  +Use/-Spell+Der2+Der/Dimin+N+Der+Der/Dimin+N:tja»dtja  GÅNÅGIS-EVEN ; !gives suollutjadtjaj, removed from speller since this is barely used, only sullutjattjaj in speller.
   +Der2+Der/Dimin+N+Der+Der/Dimin+N+Cmp/SgNom:tja»sj    R            ;
   +Der2+Der/Dimin+N+Der+Der/Dimin+N+Cmp/SgGen:tja»ttja  GÅNÅGIS-EVEN ;
   +Der2+Der/Dimin+N+Der+Der/Dimin+N+Cmp/PlGen:tja»ttjaj GÅNÅGIS-EVEN ;
+
 
 
 
@@ -2984,11 +3120,11 @@ LEXICON VUOHTAMORPH
           +Cmp/PlGen:Q1j   R              ;
                     :X4    ILL-EVENCASE   ;
                     :Q1    N-EVENWEAKSTEM ;
-                +Abe:Q1dak K              ;
-         +Use/NG+Abe:Q1da  K              ;
+                +Abe:Q1dak K-CONS             ;
+         +Use/NG+Abe:Q1da K-VOW             ;
 
 LEXICON LASJ !+CmpN/SgN +CmpN/SgG +CmpN/PlG !from placenames
- +Der1+Der/lasj+N+Sg+Nom:»lasj   K            ; ! XXX - SUB ?
+ +Der1+Der/lasj+N+Sg+Nom:»lasj   K-CONS           ; ! XXX - SUB ?
         +Der1+Der/lasj+N:»ladtja GÅNÅGIS-EVEN ; ! XXX - SUB ?
 
 LEXICON VUONAK !+CmpN/SgN +CmpN/SgG +CmpN/PlG !from placenames
@@ -2996,7 +3132,7 @@ LEXICON VUONAK !+CmpN/SgN +CmpN/SgG +CmpN/PlG !from placenames
            +CmpN/SgN+CmpN/SgG+CmpN/PlG+Der+Der/k+N:»g  ODDCmp              ;
  +Cmp/SgNom+CmpN/SgN+CmpN/SgG+CmpN/PlG+Der+Der/k+N:»k  R                   ;
            +CmpN/SgN+CmpN/SgG+CmpN/PlG+Der+Der/k+N:»g» DenominalNounsODD   ;
-    +CmpN/SgN+CmpN/SgG+CmpN/PlG+Der+Der/k+N+Sg+Nom:»k  K                   ; ! no pointer to E-ODDCASE, as gahper has no short Ess
+    +CmpN/SgN+CmpN/SgG+CmpN/PlG+Der+Der/k+N+Sg+Nom:»k  K-CONS                  ; ! no pointer to E-ODDCASE, as gahper has no short Ess
 
 !Sublexicas deverbal nouns
 !---------------------------
@@ -3008,7 +3144,7 @@ LEXICON VSBST-ODD
 +N:  VSBST-ODD-INFL ;
 
 LEXICON VSBST-ODD-INFL
-         +Sg+Nom:%>   K                   ;
+         +Sg+Nom:%>   K-CONS                  ;
       +Cmp/SgNom:%>   R                   ;
       +Cmp/SgGen:%>a  R                   ;
       +Cmp/PlGen:%>ij R                   ;
@@ -3019,19 +3155,19 @@ LEXICON VSBST-ODD-PL
         +Cmp/SgNom:%>      R                   ;
         +Cmp/PlGen:%>ij    R                   ;
    +Der4+Der/ahtes:»       AHTES               ;
-              +Ess:in      K                   ;
-           +Pl+Nom:a       K                   ;
-           +Pl+Gen:ij      K                   ;
+              +Ess:in      K-CONS                  ;
+           +Pl+Nom:a      K-VOW                  ;
+           +Pl+Gen:ij      K-CONS                  ;
            +Pl+Gen:ij%>    PxCs                ; !
-           +Pl+Acc:ijt     K                   ;
+           +Pl+Acc:ijt     K-CONS                  ;
            +Pl+Acc:ijd%>   PxCs                ; !
-           +Pl+Ill:ijda    K                   ;
+           +Pl+Ill:ijda   K-VOW                  ;
            +Pl+Ill:ijdas%> PxC                 ; !
-           +Pl+Ine:ijn     K                   ;
+           +Pl+Ine:ijn     K-CONS                  ;
            +Pl+Ine:ijn%>   PxCs                ; !
-           +Pl+Ela:ijs     K                   ;
+           +Pl+Ela:ijs     K-CONS                  ;
            +Pl+Ela:ijst%>  PxCs                ; !
-           +Pl+Com:ij      K                   ;
+           +Pl+Com:ij      K-CONS                  ;
            +Pl+Com:ij%>    PxCs                ; !
                   :i%>     DAGI_PLURAL         ;
 
@@ -3040,14 +3176,14 @@ LEXICON VSBST-EVEN
 +N:  VSBST-EVEN-INFL ;
 
 LEXICON VSBST-EVEN-INFL
-                 +Sg+Nom:ibme%>   K                           ;
+                 +Sg+Nom:ibme%>  K-VOW                          ;
                  +Sg+Nom:ibme%>   PxV                         ;
-                 +Cmp/Sh:im%>     R                           ;
-              +Cmp/SgNom:ibme%>   R                           ;
+              +Cmp/SgNom:im%>     R                           ;
+     +Cmp/Long+Cmp/SgNom:ibme%>   R                           ;
               +Cmp/SgGen:ime%>    R                           ;
               +Cmp/PlGen:imi%>j   R                           ;
-!                   +Ess:ibme%>Q1 K                           ; !This is actio essive not NomAct derivation essive.
-                    +Ess:ibme%>n  K                           ;
+!                   +Ess:ibme%>Q1 K-VOW                          ; !This is actio essive not NomAct derivation essive.
+                    +Ess:ibme%>n  K-CONS                          ;
                         :ibme%>X4 ILL-EVENCASE                ;
                         :ibme%>Q1 N-EVENWEAKSTEM-NO-ABE       ; !Not sure about "tjåhkanimedak", so far +Err/Infl taged.
   	     +Der4+Der/ahtes:»        AHTES                       ; ! Problematic - not all words pointing to this lexicon is ok with -ahtes, although many are. buorránahtes
@@ -3058,45 +3194,45 @@ LEXICON VSBST-EVENTV  !+CmpN/SgN  +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLef
  +CmpN/SgN+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft: VSBST-EVENTVCT ;
 
 LEXICON VSBST-EVENTVCT
-                 +N+Cmp/Sh:im%>     R                           ;
-              +N+Cmp/SgNom:ibme%>   R              ;
+              +N+Cmp/SgNom:im%>     R                           ;
+     +N+Cmp/Long+Cmp/SgNom:ibme%>   R              ;
               +N+Cmp/SgGen:ime%>    R              ;
               +N+Cmp/PlGen:imi%>j   R              ;
-                 +N+Sg+Nom:ibme%>   K              ;
+                 +N+Sg+Nom:ibme%>  K-VOW             ;
                  +N+Sg+Nom:ibme%>   PxV            ;
                         +N:ibme%>X4 ILL-EVENCASE   ;
                         +N:ibme%>Q1 N-EVENWEAKSTEM ;
-!                   +N+Ess:ibme%>Q1 K              ; !This is actio essive not NomAct derivation essive.
-                    +N+Ess:ibme%>n  K              ;
+!                   +N+Ess:ibme%>Q1  K-VOW              ; !This is actio essive not NomAct derivation essive.
+                    +N+Ess:ibme%>n  K-CONS             ;
   		 +N+Der4+Der/ahtes:»        AHTES          ;
 
 LEXICON MUJTATJIBME !+CmpN/SgN  +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
  +CmpN/SgN+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft: MUJTATJIBMECT ;
 
 LEXICON MUJTATJIBMECT
-     +N+Sg+Nom:ibme%>   K              ;
+     +N+Sg+Nom:ibme%>  K-VOW             ;
      +N+Sg+Nom:ibme%>   PxV            ;
   +N+Cmp/SgNom:im%>     R              ;
   +N+Cmp/SgGen:ime%>    R              ;
   +N+Cmp/PlGen:imi%>j   R              ;
-!       +N+Ess:ibme%>Q1 K              ; !This is actio essive not NomAct derivation essive.
-        +N+Ess:ibme%>n  K              ;
+!       +N+Ess:ibme%>Q1 K-VOW              ; !This is actio essive not NomAct derivation essive.
+        +N+Ess:ibme%>n  K-CONS             ;
             +N:ibme%>X4 ILL-EVENCASE   ;
             +N:ibme%>Q1 N-EVENWEAKSTEM ;
 
 LEXICON BEGATJIBME
-     +N+Sg+Nom:ibme%>   K              ;
+     +N+Sg+Nom:ibme%>  K-VOW             ;
      +N+Sg+Nom:ibme%>   PxV            ; !
   +N+Cmp/SgNom:im%>     R              ; !No compounds for these, but now reintroduced
   +N+Cmp/SgGen:ime%>    R              ;
   +N+Cmp/PlGen:imi%>j   R              ;
-!       +N+Ess:ibme%>Q1 K              ; !This is actio essive not NomAct derivation essive.
-        +N+Ess:ibme%>n  K              ;
+!       +N+Ess:ibme%>Q1 K-VOW              ; !This is actio essive not NomAct derivation essive.
+        +N+Ess:ibme%>n  K-CONS             ;
             +N:ibme%>X4 ILL-EVENCASE   ;
             +N:ibme%>Q1 N-EVENWEAKSTEM ;
 
 LEXICON MUS
-    +Sg+Nom:%>  K          ;
+    +Sg+Nom:%>  K-CONS         ;
  +Cmp/SgNom:%>  R          ;
            :a%> MUSSA_flag ;
 LEXICON MUSSA_flag
@@ -3106,13 +3242,13 @@ LEXICON MUSSA
          +Sg+Nom:      PxV                   ;
       +Cmp/SgGen:      R                     ;
       +Cmp/PlGen:j     R                     ;
-            +Ess:n     K                     ;
+            +Ess:n     K-CONS                    ;
                 :Q1    N-EVENWEAKSTEM-OTH    ;
                        ILL-EVENCASE          ;
                 :Q1    N-EVENWEAKSTEM-SG-COM ;
 ! +Der4+Der/ahtes:»Q1g  AHTES                 ; !makes "dahkamuságahtes". Removed by Inga 11.08.20. Very strange. Words ending on gis/dus are really even. And where does the g turn up from? shouldn't it become dahkamusahtes if it's used as uneven?
-            +Abe:Q1dak K                     ;
-     +Use/NG+Abe:Q1da  K                     ;
+            +Abe:Q1dak K-CONS                    ;
+     +Use/NG+Abe:Q1da K-VOW                    ;
 
 
 LEXICON DUOLMUN !!= @CODE@  Fierrot>fierun, instruments derived from verbs, used only for verb derivation, not for lexicalized lemmas. No short essive.
@@ -3148,7 +3284,7 @@ LEXICON ACTORTVder  !+CmpN/SgN +CmpN/SgG +CmpN/PlG +CmpN/SgNomLeft +CmpN/SgGenLe
        +CmpN/SgN+CmpN/SgG+CmpN/PlG+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N:Y6 ACTORCmp       ;
 
 LEXICON ACTORILL
- +Sg+Ill:X4j   K    ;
+ +Sg+Ill:X4j   K-CONS   ;
  +Sg+Ill:X4s%> PxCi ; !
 
 LEXICON ACTORdiehtet
@@ -3159,11 +3295,11 @@ LEXICON ACTORdiehtet
        +N:%>   ACTORCmp        ;
 
 LEXICON ACTORILLdiehtet
- +Sg+Ill:X4j   K    ;
+ +Sg+Ill:X4j   K-CONS   ;
  +Sg+Ill:X4s%> PxCi ; !
 
 LEXICON BOAHTEM
-         +N+Sg+Nom:%>   K                   ;
+         +N+Sg+Nom:%>   K-CONS                  ;
       +N+Cmp/SgNom:%>   R                   ;
       +N+Cmp/SgGen:%>a  R                   ;
       +N+Cmp/PlGen:%>ij R                   ;
@@ -3171,7 +3307,7 @@ LEXICON BOAHTEM
  +N+Der4+Der/ahtes:»    AHTES               ;
 
 LEXICON BOAHTEMTV  !+CmpN/SgN   +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
-         +CmpN/SgN+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Sg+Nom:%>   K                   ;
+         +CmpN/SgN+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Sg+Nom:%>   K-CONS                  ;
       +CmpN/SgN+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Cmp/SgNom:%>   R                   ;
       +CmpN/SgN+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Cmp/SgGen:%>a  R                   ;
       +CmpN/SgN+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Cmp/PlGen:%>ij R                   ;
@@ -3179,7 +3315,7 @@ LEXICON BOAHTEMTV  !+CmpN/SgN   +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
  +CmpN/SgN+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Der4+Der/ahtes:»    AHTES               ;
 
 LEXICON BASSALASSTEM
-         +N+Sg+Nom:%>   K           ;
+         +N+Sg+Nom:%>   K-CONS          ;
       +N+Cmp/SgNom:%>   R           ; !no compounds for these, but reintroduced
       +N+Cmp/SgGen:%>a  R           ;
       +N+Cmp/PlGen:%>ij R           ;
@@ -3187,7 +3323,7 @@ LEXICON BASSALASSTEM
  +N+Der4+Der/ahtes:»    AHTES       ;
 
 LEXICON BASSALASSTEMTV  !+CmpN/SgN   +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
-         +CmpN/SgN+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Sg+Nom:%>   K                   ;
+         +CmpN/SgN+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Sg+Nom:%>   K-CONS                  ;
       +CmpN/SgN+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Cmp/SgNom:%>   R                   ;
       +CmpN/SgN+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Cmp/SgGen:%>a  R                   ;
       +CmpN/SgN+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Cmp/PlGen:%>ij R                   ;
@@ -3196,7 +3332,7 @@ LEXICON BASSALASSTEMTV  !+CmpN/SgN   +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGen
 
 
 LEXICON OADDÁM
-         +N+Sg+Nom:%>   K           ;
+         +N+Sg+Nom:%>   K-CONS          ;
       +N+Cmp/SgNom:%>   R           ; !no compounds for these, but reintroduced
       +N+Cmp/SgGen:%>a  R           ;
       +N+Cmp/PlGen:%>ij R           ;
@@ -3204,7 +3340,7 @@ LEXICON OADDÁM
  +N+Der4+Der/ahtes:»    AHTES       ;
 
 LEXICON TJUOLLÁM  !+CmpN/SgN   +CmpN/SgNomLeft +CmpN/SgGenLeft +CmpN/PlGenLeft
-         +CmpN/SgN+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Sg+Nom:%>   K                   ;
+         +CmpN/SgN+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Sg+Nom:%>   K-CONS                  ;
       +CmpN/SgN+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Cmp/SgNom:%>   R                   ;
       +CmpN/SgN+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Cmp/SgGen:%>a  R                   ;
       +CmpN/SgN+CmpN/SgNomLeft+CmpN/SgGenLeft+CmpN/PlGenLeft+N+Cmp/PlGen:%>ij R                   ;

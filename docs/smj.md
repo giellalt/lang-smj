@@ -117,6 +117,7 @@ The first part of the component may be ..
                "Arbeids- og inkluderingsdepartementet" => Arbeids- = +Cmp/SplitR
  * **+Cmp/SplitL**  This is a split compound with the other part to the left
  * **+Cmp/Sh**  testing ShCmp
+ * **+Cmp/Long**  Long for om SgNom when short form is default, tjåhkaNIBMEbievddegirjje and bierjjeDAHKAiehket
 
 
  * +Sg    Singular number
@@ -186,8 +187,10 @@ The first part of the component may be ..
  * ^GUESSNOUNROOT
  * **+CLBfinal**  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
 
- * +TV
- * +IV  Transitivity tags
+ * +TV !
+ * +IV !  Transitivity tags
+ * **+G3** Grade 2-3 for homonymies with grade 1-2, +N+G3
+ * **+G7** Grade 3, no consonant gradation, +N+G7
  * +Multi  Multiword phrase tag
  * +Guess  for the name guesser
  * +NomAg Actor Noun From Verb - Nomen Agentis
@@ -234,7 +237,7 @@ The first part of the component may be ..
 * **+Gram/NumNoAbbr**:  Transitive abbreviations for which numerals
 * **+Gram/TIAbbr**:  Both transitive and intransitive abbreviation
 * **+Gram/IAbbr**:  Intransitive abbreviation (it takes no argument)
-* **+Gram/3syll**: trisyllabic verbs
+* **+Gram/3syll**:  trisyllabic verbs
 * **+Gram/SentInit**:  copula verb le-
 
 ## Semantic tags to help disambiguation & syntactic analysis
@@ -545,7 +548,7 @@ These tags should always be located just before the POS tag.
  * +Sem/Group_Sign = 
  * +Sem/Group_State				 = 
  * +Sem/Group_Txt = 
- * +Sem/Hum-abtsr = 
+ * +Sem/Hum-abstr = 
  * +Sem/Hum_Lang = 
  * +Sem/Hum_Lang_Plc = 
  * +Sem/Hum_Lang_Time = 
@@ -738,12 +741,12 @@ to split the lexical transducer in smaller ones according to langu-
 age, and apply different IPA conversion to each of them.
 The principle of tagging is that we only tag to the extent needed,
 and following a priority:
-# any untagged word is pronounced with SME orthographic conventions
-# NNO and NOB have identical pronunciation, NNO is only used if
+1. any untagged word is pronounced with SME orthographic conventions
+1. NNO and NOB have identical pronunciation, NNO is only used if
   different in spelling from NOB
-# SWE has mostly the same pronunciation as NOB, and is only used
+1. SWE has mostly the same pronunciation as NOB, and is only used
   if different in spelling from NOB
-# Occasionally even SME (the default) may be tagged, to block other
+1. Occasionally even SME (the default) may be tagged, to block other
   languages from being specified, mainly during semi-automatic
   language tagging sessions
 All in all, we want to get as much correctly transcribed to IPA
@@ -1617,6 +1620,8 @@ Derivations to adjectives
 
 
 
+
+
  LEXICON ALMME  Same as MUORRA, but with special -LASJ derivation. For noun that have strong grade -lasj. "Almmelasj" instead of "almálasj" which is Err/Orth-taged..
 
 
@@ -1632,13 +1637,28 @@ Derivations to adjectives
 * *låda:* `låda+N+Sg+Nom`
 * *lådas:* `låda+N+Sg+Ela`
 
+ LEXICON KÁFFA  For even-syll words with cg cg III-I: káf'fa-káfav, jáf'fo-jáfo. No vowelchanges jet, need new twolc code.
 
- LEXICON LINNJA  Only for the loan word "linnja". Because it's a loan word, the "nnj" is pronounced "nn-j", and therefore does not behave as the regular lule sami "nj" sound and therefore it doesn't follow the rule that makes a:á in 1. grade with short vowel in first syllable (It isn't as linnja-linjáv or birás-birrasav). This word is therefore sub taged. Norwegian/Swedish words with a short "i" followed by two different consonants are assimilated to lule sami in different manners accoring to the consonants in question, but the word is always on grade III (Morén-Duolljá 2014). The correctly assimilated form linºnja is added to NOADE lexicon in stems file.
+
+
+
+*káffa # Even-syllable test examples:*
+* *káffa:* `káffa+N+G3+Sg+Nom`
+* *gáffa:* `káffa+N+G3+Sg+Nom`
+* *gáfas:* `káffa+N+G3+Sg+Ela`
+* *káfas:* `káffa+N+G3+Sg+Ela`
+
+ LEXICON LINNJA  Only for the loan word "linnja". Because it's a loan word, the "nnj" is pronounced "nn-j", and therefore does not behave as the regular lule sami "nj" sound and therefore it doesn't follow the rule that makes a:á in 1. grade with short vowel in first syllable (It isn't as linnja-linjáv or birás-birrasav). This word is therefore sub taged. Norwegian/Swedish words with a short "i" followed by two different consonants are assimilated to lule sami in different manners accoring to the consonants in question, but the word is always on grade III (Morén-Duolljá 2014). Both err/orth and correct form is part of this lexicon. 
 
 
 
 *linja # Even-syllable test examples:*
-* *linnja:* `linnja+N+Sg+Nom`
+
+
+ LEXICON BOAKSA  Only for word "boaksa". Both boaksa-båvsa and err/Orth boksa-båksa are part of lexicon.
+
+
+
 
  LEXICON SÁMEGIEL  Compounds on -giella, with short -giel as middle compound (sámegielåhpadiddje)
 
@@ -1672,10 +1692,10 @@ Derivations to adjectives
 
 
 *boassjo # Even-syllable test examples:*
-* *boassjo:* `boassjo+N+Sg+Nom`
-* *båssjujn:* `boassjo+N+Sg+Com`
-* *boassjojn:* `boassjo+N+Sg+Com`
-* *boassjop:* `boassjo+N+Der/Comp+A+Sg+Nom`
+* *boassjo:* `boassjo+N+G3+Sg+Nom`
+* *båssjujn:* `boassjo+N+G3+Sg+Com`
+* *boassjojn:* `boassjo+N+G3+Sg+Com`
+* *boassjop:* `boassjo+N+G3+Der/Comp+A+Sg+Nom`
 
  LEXICON SJIEVNNJET  Like GAHPER but with comparatives. Odd-syllable C-final noun without cg, no vowchange, no short Ess.
 
@@ -1723,7 +1743,8 @@ Derivations to adjectives
 
  LEXICON MUORRA_LOAN   For loan words that do not fit in a loan word lexicon because of wrong short cmp, or partially assimilated loanwords without separate lexicas (medállja), or for Err/Orths assimilated with cg but with other errors. This lexicon gives no short compound forms. Potential short cmps must therefore be hard coded into the FirstComponent lexicon. This also for compounded words with partially assimilated loan words. Examples of problem words: sirup>siráhppa og stetoskop>stetoskoahppa.
 
- LEXICON A_CMP_INFL   Sub-forms. Lexicon for giving sub-variation conjugation by simply adding an -a to the norwegian/swedish word. No cg. Like "alkohola" and "agronoma". These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
+
+ LEXICON MUORRA_LOAN_NO_LASJ   Like MUORRA_LOAN without -lasj derivation. This lexicon is made for Sem/Hum words like økonåvmmå, biolåvggå, agronåvmmå and so on. We don't want agronåvmålasj since it means something else than "agronomisk", the meaning of agronåvmålasj is barely used but messed up with "agronomijjalasj"
 
 
 
@@ -1740,10 +1761,10 @@ Derivations to adjectives
 
 
 *partijja # Even-syllable test examples:*
-* *partiddja:* `partijja+N+Sg+Nom`
-* *partijja:* `partijja+N+Sg+Nom`
-* *partidjas:* `partijja+N+Sg+Ela`
-* *partijjas:* `partijja+N+Sg+Ela`
+* *akademiddja:* `akademijja+N+Sg+Nom`
+* *akademijja:* `akademijja+N+G3+Sg+Nom`
+* *akademidjas:* `akademijja+N+Sg+Ela`
+* *akademijjas:* `akademijja+N+G3+Sg+Ela`
 
 
 
@@ -1872,7 +1893,7 @@ Derivations to adjectives
 
 
 
- LEXICON AGRONÅVMMÅ_CMP_INFL  Recent loanwords on -åvmma with long and short compound-form. The old stadarization form  -oma that does not follow lulesami rules is sub taged.
+ LEXICON AGRONÅVMMÅ_CMP_INFL  Recent loanwords on -åvmma with long and short compound-form. -lasj derivation is error taged. The old stadarization form  -oma that does not follow lulesami rules is sub taged.
 
 
 
@@ -1882,7 +1903,7 @@ Derivations to adjectives
 * *agronåvmås:* `agronåvmmå+N+Sg+Ela`
 
 
- LEXICON DEMAGÅVGGÅ_CMP_INFL  Recent loanwords ending on -og with long and short compound form. Assimilated to smj as -åvggå. The old stadarization -oga that does not follow lulesami rules is sub taged.
+ LEXICON DEMAGÅVGGÅ_CMP_INFL  Recent loanwords ending on -og with long and short compound form. Assimilated to smj as -åvggå. -lasj derivation is error taged. The old stadarization -oga that does not follow lulesami rules is sub taged.
 
 
 *pedagoga # Even-syllable test examples:*
@@ -2054,7 +2075,6 @@ Derivations to adjectives
 
 
 
-
 *gasskavokálla # Even-syllable test examples:*
 * *gasskavokálla:* `gasskavokálla+N+Sg+Nom`
 * *gasskavokálas:* `gasskavokálla+N+Sg+Ela`
@@ -2103,9 +2123,9 @@ Derivations to adjectives
 
 
 *flotælla # Even-syllable test examples:*
-* *flotælla:* `flotælla+N+Sg+Nom`
-* *flotälla:* `flotælla+N+Sg+Nom`
-* *flotellas:* `flotælla+N+Sg+Ela`
+* *flotælla:* `flotælla+N+G3+Sg+Nom`
+* *flotälla:* `flotælla+N+G3+Sg+Nom`
+* *flotellas:* `flotælla+N+G3+Sg+Ela`
 
 
 
@@ -2113,9 +2133,10 @@ Derivations to adjectives
 
 
 
+
 *grámma # Even-syllable test examples:*
-* *grámma:* `grámma+N+Sg+Nom`
-* *grámmas:* `grámma+N+Sg+Ela`
+* *grámma:* `grámma+N+G3+Sg+Nom`
+* *grámmas:* `grámma+N+G3+Sg+Ela`
 
 
 
@@ -2124,9 +2145,9 @@ Derivations to adjectives
 
 
 
-*grámma # Even-syllable test examples:*
-* *telegráffa:* `telegráffa+N+Sg+Nom`
-* *telegráffas:* `telegráffa+N+Sg+Ela`
+*telegráffa # Even-syllable test examples:*
+* *telegráffa:* `telegráffa+N+G3+Sg+Nom`
+* *telegráffas:* `telegráffa+N+G3+Sg+Ela`
 
 
  LEXICON SYSTIEBMA_CMP_INFL  Recent loanwords on -ebma/-iebma with long and short compound-form. -em in NOR and SWE. See comments about the -ie/-e dialtags in ALFABIEHTTA. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
@@ -2195,7 +2216,7 @@ Derivations to adjectives
 
 
 
- LEXICON TURISSTA_CMP_INFL  Recent loanwords on -ssta with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
+ LEXICON TURISSTA_CMP_INFL  Recent loanwords on -ssta with long and short compound-form. -lasj derivation is error taged.  Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
 
 
@@ -2238,8 +2259,6 @@ Derivations to adjectives
 * *balládas* `balláda+N+Sg+Ela`
 
 
- LEXICON BOAKSA_BADASS_CMP_INFL  This is an Err/Sub, and all the words pointing to lexicon BOAKSA are therfore Err/Sub taged. Only for words "boaksa-båksav". Boaksa-båksa is assimilated wrongly, must be boaksa-båvsa if it's to follow lulesami rules.
-
  LEXICON C_ILL_IJ_BADASS  Badly or wrongly assimilated words. Last letter is consonant, no cg, no vowchange, with illative -ij. (Same as GAHPER) Assimilated in a way that isn't lulesami. Most of the words are Err/Orth tagged with a standardized lemma. Some are Err/Lex tagged, and some only recieve the +Use/-Spell tag from the lexicon.
 
 
@@ -2258,6 +2277,20 @@ Derivations to adjectives
 * *kálsium* `kálsium+N+Sg+Nom`
 * *kálsiumas* `kálsium+N+Sg+Ela`
 * *kálsiumaj* `kálsium+N+Sg+Ill`
+
+
+###  Error-lexicons
+
+ LEXICON A_CMP_INFL   Sub-forms. Lexicon for giving sub-variation conjugation by simply adding an -a to the norwegian/swedish word. No cg. Like "alkohola" and "agronoma". These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
+
+
+
+
+
+ LEXICON GAHPER_ERR/ORTH  Like GAHPER, but without nominative and essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag. 
+
+ LEXICON NOADE_ERR/ORTH  Like NOADE, but without nominative, illative an essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag.
+
 
 
 ###  Unassimilated loanwords
@@ -2476,6 +2509,23 @@ Derivations to adjectives
 * *spiger:* `spiger+N+Sg+Nom`
 * *spihkáris:* `spiger+N+Sg+Ela`
 * *spihkárin:* `spiger+N+Ess`
+
+
+
+ LEXICON MIEHTAR  Only for word "miehtar". Same as SÅHKÅR but with Area-differences and a lot of Err/Orths. 
+
+
+
+
+
+*miehtar # Odd-syllable test examples:*
+* *miehtar:* `miehtar+N+Sg+Nom`
+* *mehtar:* `miehtar+N+Sg+Nom`
+* *miehttaris:* `miehtar+N+Sg+Ela`
+* *mähttaris:* `miehtar+N+Sg+Ela`
+* *mähttarin:* `miehtar+N+Ess`
+* *miehttarin:* `miehtar+N+Ess`
+
 
 
  LEXICON GÁMAS  Odd-syllable C-final noun with CG, no 2ndsyll vowchange (OBS: a does not change). Long and short essive. Spiik A2
@@ -2704,8 +2754,8 @@ Derived stems
 
 
 *sváles # Contracted test examples:*
-* *sváles:* `sváles+N+Sg+Nom`
-* *sválláv:* `sváles+N+Sg+Acc`
+* *sváles:* `sváles+N+G3+Sg+Nom`
+* *sválláv:* `sváles+N+G3+Sg+Acc`
 
  LEXICON GÅHKES  C-final with cg II-III with vowel harmony (a/á=å). gåhkes:gåhkkå. Presently only for "gåhkes".
 
@@ -2739,6 +2789,7 @@ Derived stems
 
 
 ## Px lexica
+
 
 
 
@@ -3571,6 +3622,8 @@ The symbols themselves are used in the following way:
 * ****Y9:0****:  "Stem vowel deletion in short passives of even-syllable verbs
 * ****Z1:0** : TBW "i**: á in Verb Derivation guollir>guollár"
 * ****Z2:0** : e:å, o**: u in -lasj der
+* ****Z3:0** : weak grade trigger fºf:f. Stem vowel change e:i and o**: u in front of j.
+* ****Z4:0** : weak grade trigger fºf:f and e:á, e:å, o:á, o:u in front of diminutives, e**: å in -lasj der
 
 * ****Ø1:0** : optional Word Final Cluster Simplification. Not smj grammar, made only for Err/Orths  ! málestit**:  málest instead for norm máles
 * ****Ø2:0** : optional e**: i when followed by any conc (not only j). Not smj grammar, made only for Err/Orths ! "iednida"   
@@ -3870,6 +3923,7 @@ The diphthong simplification handles oa:å and æ:e. Phonologically, these are i
 
 
 **ie:æä Diphthong Simplification Part I**  
+
 
 * *ielvveY9ut*
 * *0æälvv00ut*

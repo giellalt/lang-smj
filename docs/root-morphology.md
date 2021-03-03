@@ -117,6 +117,7 @@ The first part of the component may be ..
                "Arbeids- og inkluderingsdepartementet" => Arbeids- = +Cmp/SplitR
  * **+Cmp/SplitL**  This is a split compound with the other part to the left
  * **+Cmp/Sh**  testing ShCmp
+ * **+Cmp/Long**  Long for om SgNom when short form is default, tjåhkaNIBMEbievddegirjje and bierjjeDAHKAiehket
 
 
  * +Sg    Singular number
@@ -186,8 +187,10 @@ The first part of the component may be ..
  * ^GUESSNOUNROOT
  * **+CLBfinal**  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
 
- * +TV
- * +IV  Transitivity tags
+ * +TV !
+ * +IV !  Transitivity tags
+ * **+G3** Grade 2-3 for homonymies with grade 1-2, +N+G3
+ * **+G7** Grade 3, no consonant gradation, +N+G7
  * +Multi  Multiword phrase tag
  * +Guess  for the name guesser
  * +NomAg Actor Noun From Verb - Nomen Agentis
@@ -234,7 +237,7 @@ The first part of the component may be ..
 * **+Gram/NumNoAbbr**:  Transitive abbreviations for which numerals
 * **+Gram/TIAbbr**:  Both transitive and intransitive abbreviation
 * **+Gram/IAbbr**:  Intransitive abbreviation (it takes no argument)
-* **+Gram/3syll**: trisyllabic verbs
+* **+Gram/3syll**:  trisyllabic verbs
 * **+Gram/SentInit**:  copula verb le-
 
 ## Semantic tags to help disambiguation & syntactic analysis
@@ -545,7 +548,7 @@ These tags should always be located just before the POS tag.
  * +Sem/Group_Sign = 
  * +Sem/Group_State				 = 
  * +Sem/Group_Txt = 
- * +Sem/Hum-abtsr = 
+ * +Sem/Hum-abstr = 
  * +Sem/Hum_Lang = 
  * +Sem/Hum_Lang_Plc = 
  * +Sem/Hum_Lang_Time = 
@@ -738,12 +741,12 @@ to split the lexical transducer in smaller ones according to langu-
 age, and apply different IPA conversion to each of them.
 The principle of tagging is that we only tag to the extent needed,
 and following a priority:
-# any untagged word is pronounced with SME orthographic conventions
-# NNO and NOB have identical pronunciation, NNO is only used if
+1. any untagged word is pronounced with SME orthographic conventions
+1. NNO and NOB have identical pronunciation, NNO is only used if
   different in spelling from NOB
-# SWE has mostly the same pronunciation as NOB, and is only used
+1. SWE has mostly the same pronunciation as NOB, and is only used
   if different in spelling from NOB
-# Occasionally even SME (the default) may be tagged, to block other
+1. Occasionally even SME (the default) may be tagged, to block other
   languages from being specified, mainly during semi-automatic
   language tagging sessions
 All in all, we want to get as much correctly transcribed to IPA
