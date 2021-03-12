@@ -118,6 +118,7 @@ The first part of the component may be ..
  * **+Cmp/SplitL**  This is a split compound with the other part to the left
  * **+Cmp/Sh**  testing ShCmp
  * **+Cmp/Long**  Long for om SgNom when short form is default, tjåhkaNIBMEbievddegirjje and bierjjeDAHKAiehket
+ * **+Cmp/Unass**  Unassimiled as first part of Cmp, e.g. telegram- in stead for telegrámma-
 
 
  * +Sg    Singular number
@@ -212,6 +213,7 @@ The first part of the component may be ..
 ### Question and Focus particles:
  * +Qst
  * +Clt
+ * +Cltl
  * +Foc  These two are only found in SMJ - do we need them?
 ### Focus particles:
  * +Foc/ge
