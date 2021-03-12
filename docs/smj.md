@@ -118,6 +118,7 @@ The first part of the component may be ..
  * **+Cmp/SplitL**  This is a split compound with the other part to the left
  * **+Cmp/Sh**  testing ShCmp
  * **+Cmp/Long**  Long for om SgNom when short form is default, tjåhkaNIBMEbievddegirjje and bierjjeDAHKAiehket
+ * **+Cmp/Unass**  Unassimiled as first part of Cmp, e.g. telegram- in stead for telegrámma-
 
 
  * +Sg    Singular number
@@ -212,6 +213,7 @@ The first part of the component may be ..
 ### Question and Focus particles:
  * +Qst
  * +Clt
+ * +Cltl
  * +Foc  These two are only found in SMJ - do we need them?
 ### Focus particles:
  * +Foc/ge
@@ -1379,7 +1381,7 @@ Without CG
 
 exception lexicons for odd-syll
 
- LEXICON IENNILS  no comparatives, no attr
+ LEXICON IENNILS  no comparatives, attr same as pred.
 
 
 *ieŋŋils # Odd-syllable test examples:*
@@ -2479,6 +2481,8 @@ Derivations to adjectives
 
 
 
+
+
 ## Odd-syllable stems
 
 ### without cg
@@ -2859,25 +2863,25 @@ Derived stems
 Table of content:
 
 * The auxiliaries
-** Negation verb
-** Copula
-** Modals
+    - Negation verb
+    - Copula
+    - Modals
 * Main verbs
-** Even syllable stems
-*** Intransitives
-*** Transitives
-** Odd syllable stems
-*** Intranstives
-*** Transitives
-** Contracted stems
-*** Intransitives
-*** Transitives
-** Assimilated loan verbs
-*** Intransitives
-*** Transitives
-** Main inflectional categories
-*** suffix lexicas
-** Verb derivation
+    - Even syllable stems
+        - Intransitives
+        - Transitives
+    - Odd syllable stems
+        - Intranstives
+        - Transitives
+    - Contracted stems
+        - Intransitives
+        - Transitives
+    - Assimilated loan verbs
+        - Intransitives
+        - Transitives
+    - Main inflectional categories
+        - suffix lexicas
+    - Verb derivation
 
 
 IV means intransitive verbs, TV means transitive verbs.

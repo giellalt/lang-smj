@@ -508,7 +508,7 @@ Without CG
 
 exception lexicons for odd-syll
 
- LEXICON IENNILS  no comparatives, no attr
+ LEXICON IENNILS  no comparatives, attr same as pred.
 
 
 *ieŋŋils # Odd-syllable test examples:*
