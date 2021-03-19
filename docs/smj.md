@@ -3,7 +3,7 @@
 
  Definitions for Multichar_Symbols
 
-## Tags for POS
+Tags for POS
 
  * +N Noun
  * +A Adjective
@@ -56,16 +56,18 @@ Divvun suggest that this shouldn't be normative.
  * +Use/DNorm  For words without formal normalization.
 Divvun suggest that this should be normative. Included in speller.                      
  * +Use/Derrog  Derrogatory word. Recognized, but not suggested in speller, same as SpellNoSugg
+ * **+Use/GC** only retained in the HFST Grammar Checker disambiguation analyser
+ * **+Use/-GC** never retained in the HFST Grammar Checker disambiguation analyser
 
- * +Area/SE In Sweden
- * +Area/NO In Norway
+ * +Area/SE - Used in Sweden only
+ * +Area/NO - Used in Norway only
  * +Dial/N Used in the northern areas.  Some might say that
    these words are sme-words, but they are used by lulesamis in
    the northern part of the dialect area. Words like "válmas"
  * +Dial/S Used in the southern areas
  * +Dial/SH Short forms
 
-### Compounding tags
+Compounding tags
 
 The tags are of the following form:
 * **+CmpNP/xxx** - Normative (N), Position (P), ie. the tag describes what
@@ -75,8 +77,8 @@ The tags are of the following form:
 * **+Cmp/xxx**   - Descriptive compounding tags, ie. tags that*describes*
                    what form a word actually is using in a compound
 
-Normative/prescriptive compounding tags:
-(to govern compound behaviour for the speller, ie. what a compound SHOULD BE)
+Normative/prescriptive compounding tags
+These govern compound behaviour for normative tools like the speller, ie. what a compound **SHOULD BE**.
 
 The first part of the component may be ..
  * +CmpN/Sg = Singular
@@ -103,6 +105,9 @@ The first part of the component may be ..
  * +CmpN/DefSgGen  Overrides left tag, requires SgGen form
  * +CmpN/DefPlGen  Overrides left tag, requires PlGen form
 
+Tags for compound analysis - this is what a compound actually is.
+Some of these tags are also used in combination with the
+above normative tags to actually enforce compound restrictions in the fst.
 
  * **+Cmp/Sg**  Singular
  * **+Cmp/SgNom**  Singular Nominative
@@ -110,15 +115,19 @@ The first part of the component may be ..
  * **+Cmp/PlGen**  Plural Genitiv
  * **+Cmp/PlNom**  Plural Nominative
  * **+Cmp/Attr**  Attribute
- * **+Cmp**  Dynamic compound - this tag should always be part of a
-               dynamic compound.
+
+ * **+Cmp/Sh**  testing ShCmp
+ * **+Cmp/Long**  Long for om SgNom when short form is default, tjåhkaNIBMEbievddegirjje and bierjjeDAHKAiehket
+ * **+Cmp/Unass**  Unassimiled as first part of Cmp, e.g. telegram- in stead for telegrámma-
+
+ * **+Cmp**  Dynamic compound - this tag should always be part of a dynamic compound.
                It is important for Apertium, and useful in other cases as well.
  * **+Cmp/SplitR**  This is a split compound with the other part to the right:
                "Arbeids- og inkluderingsdepartementet" => Arbeids- = +Cmp/SplitR
  * **+Cmp/SplitL**  This is a split compound with the other part to the left
- * **+Cmp/Sh**  testing ShCmp
- * **+Cmp/Long**  Long for om SgNom when short form is default, tjåhkaNIBMEbievddegirjje and bierjjeDAHKAiehket
- * **+Cmp/Unass**  Unassimiled as first part of Cmp, e.g. telegram- in stead for telegrámma-
++Cmp/Hyph  +Cmp/Hyph      Compound with (optional) hyphen, heavily weighted
++Cmp/OblHyph  +Cmp/OblHyph   Obligatory hyphen, not as badly weighed as +Cmp/Hyph
+
 
 
  * +Sg    Singular number
@@ -185,8 +194,8 @@ The first part of the component may be ..
  * +PUNCT
  * +LEFT
  * +RIGHT
- * ^GUESSNOUNROOT
  * **+CLBfinal**  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
+ * ^GUESSNOUNROOT
 
  * +TV !
  * +IV !  Transitivity tags
@@ -196,7 +205,7 @@ The first part of the component may be ..
  * +Guess  for the name guesser
  * +NomAg Actor Noun From Verb - Nomen Agentis
 
-## Lexeme disambiguation tags
+## Lexeme disambiguation = homonym tags
 * **+Hom1**:  Homonymy
 * **+Hom2**:  Homonymy
 
@@ -207,8 +216,6 @@ The first part of the component may be ..
  * +v4 - variant 4
  * +v5 - variant 5
 
-+Cmp/Hyph  +Cmp/Hyph      Compound with (optional) hyphen, heavily weighted
-+Cmp/OblHyph  +Cmp/OblHyph   Obligatory hyphen, not as badly weighed as +Cmp/Hyph
 
 ### Question and Focus particles:
  * +Qst
