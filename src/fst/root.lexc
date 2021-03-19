@@ -18,7 +18,7 @@
 
 Multichar_Symbols  !!≈ Definitions for @CODE@
 
-!! !!Tags for POS
+!! !!! Tags for POS
 
  +N      !!≈ * @CODE@ Noun
  +A      !!≈ * @CODE@ Adjective
@@ -50,7 +50,7 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
  +Arab    !!≈ * @CODE@ arabic numerals
  +Rom    !!≈ * @CODE@ remertall
  
-! Usage tags
+! !! Error tags
  +Err/Orth         !!≈ * @CODE@  Substandard. An ungrammatical, non-normative form of normative lemma.
  +Err/Lex          !!≈ * @CODE@  No normative lemma, often ungrammatical compounds like "bajásbuollda" and "songdebutierit".
  +Err/Hyph         !!≈ * @CODE@  No normative lemma
@@ -59,6 +59,7 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
  +Err/Infl         !!≈ * @CODE@  Lemmas that break with normative inflection rules, often used with morphological changes
  +Err/MissingSpace !!≈ | __@CODE@__ | in use in smi lexc. Used for "goadedagi", when it should be "goade dagi"
 
+! !! Usage restriction tags
  +Use/Marg         !!≈ * @CODE@  Marginal, but normative lemmas. Not in speller.
  +Use/-Spell       !!≈ * @CODE@  Excluded from speller
  +Use/-PLX         !!≈ * @CODE@  Excluded from PLX speller
@@ -79,16 +80,16 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
  +Use/GC          !!≈ * __@CODE@__ only retained in the HFST Grammar Checker disambiguation analyser
  +Use/-GC         !!≈ * __@CODE@__ never retained in the HFST Grammar Checker disambiguation analyser
 
-! Dialect tags:
- +Area/SE     !!≈ * @CODE@ In Sweden
- +Area/NO     !!≈ * @CODE@ In Norway
+! !! Dialect and Area tags
+ +Area/SE     !!≈ * @CODE@ - Used in Sweden only
+ +Area/NO     !!≈ * @CODE@ - Used in Norway only
  +Dial/N      !!≈ * @CODE@ Used in the northern areas.  Some might say that
               !!    these words are sme-words, but they are used by lulesamis in
               !!    the northern part of the dialect area. Words like "válmas"
  +Dial/S      !!≈ * @CODE@ Used in the southern areas
  +Dial/SH     !!≈ * @CODE@ Short forms
 
-!! !Compounding tags
+!! !!! Compounding tags
 
 !! The tags are of the following form:
 !! * __+CmpNP/xxx__ - Normative (N), Position (P), ie. the tag describes what
@@ -98,8 +99,8 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
 !! * __+Cmp/xxx__   - Descriptive compounding tags, ie. tags that''describes''
 !!                    what form a word actually is using in a compound
 
-!! Normative/prescriptive compounding tags:
-!! (to govern compound behaviour for the speller, ie. what a compound SHOULD BE)
+!! !! Normative/prescriptive compounding tags
+!! These govern compound behaviour for normative tools like the speller, ie. what a compound __SHOULD BE__.
 
 !! The first part of the component may be ..
 +CmpN/Sg          !!≈ * @CODE@ = Singular
@@ -129,28 +130,34 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
 +CmpN/DefSgGen   !!≈ * @CODE@  Overrides left tag, requires SgGen form
 +CmpN/DefPlGen   !!≈ * @CODE@  Overrides left tag, requires PlGen form
 
-! Descriptive compounding tags:
+! !! Descriptive compounding tags
+!! Tags for compound analysis - this is what a compound actually is.
+!! Some of these tags are also used in combination with the
+!! above normative tags to actually enforce compound restrictions in the fst.
 
-! Tags for compound analysis - this is what a compound actually is:
  +Cmp/Sg       !!≈ * __@CODE@__  Singular
  +Cmp/SgNom    !!≈ * __@CODE@__  Singular Nominative
  +Cmp/SgGen    !!≈ * __@CODE@__  Singular Genitive
  +Cmp/PlGen    !!≈ * __@CODE@__  Plural Genitiv
  +Cmp/PlNom    !!≈ * __@CODE@__  Plural Nominative
  +Cmp/Attr     !!≈ * __@CODE@__  Attribute
- +Cmp          !!≈ * __@CODE@__  Dynamic compound - this tag should always be part of a
-               !!                dynamic compound.
+
+ +Cmp/Sh       !!≈ * __@CODE@__  testing ShCmp
+ +Cmp/Long     !!≈ * __@CODE@__  Long for om SgNom when short form is default, tjåhkaNIBMEbievddegirjje and bierjjeDAHKAiehket
+ +Cmp/Unass    !!≈ * __@CODE@__  Unassimiled as first part of Cmp, e.g. telegram- in stead for telegrámma-
+
+ +Cmp          !!≈ * __@CODE@__  Dynamic compound - this tag should always be part of a dynamic compound.
                !!                It is important for Apertium, and useful in other cases as well.
  +Cmp/SplitR   !!≈ * __@CODE@__  This is a split compound with the other part to the right:
                !!                "Arbeids- og inkluderingsdepartementet" => Arbeids- = +Cmp/SplitR
  +Cmp/SplitL   !!≈ * __@CODE@__  This is a split compound with the other part to the left
- +Cmp/Sh       !!≈ * __@CODE@__  testing ShCmp
- +Cmp/Long     !!≈ * __@CODE@__  Long for om SgNom when short form is default, tjåhkaNIBMEbievddegirjje and bierjjeDAHKAiehket
- +Cmp/Unass     !!≈ * __@CODE@__  Unassimiled as first part of Cmp, e.g. telegram- in stead for telegrámma-
- 
-! ! ! ! === Tags for Inflection ===
+ +Cmp/Hyph    !!≈ Compound with (optional) hyphen, heavily weighted
+ +Cmp/OblHyph !!≈ Obligatory hyphen, not as badly weighed as +Cmp/Hyph
 
-! Tags for Case and Number Inflection
+
+! !!! Inflectional Tags
+
+! !! Tags for Case and Number Inflection
 +Sg  !!= * @CODE@  Singular number
 +Du  !!= * @CODE@  Dual number
 +Pl  !!= * @CODE@  Plural number
@@ -166,7 +173,7 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
 +Par !!= * @CODE@  Partitive case
 +Abe !!= * @CODE@  Abessive case
 
-! Possessive tags
+! !! Possessive tags
  +PxSg1  !!= * @CODE@ possessive suffix singular first person
  +PxSg2  !!= * @CODE@ possessive suffix singular second person
  +PxSg3  !!= * @CODE@ possessive suffix singular third person
@@ -177,15 +184,15 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
  +PxPl2  !!= * @CODE@ possessive suffix plural second person
  +PxPl3  !!= * @CODE@ possessive suffix plural plural person
 
-! Adjectives
-! +Comp   !!= * @CODE@ Comparative comparison ! Changed to Der/Comp
-! +Superl !!= * @CODE@ Superlative comparison ! Changed to Der/Superl
+! !! Adjective specific tags
+! +Comp   ! != * @CODE@ Comparative comparison ! Changed to Der/Comp
+! +Superl ! != * @CODE@ Superlative comparison ! Changed to Der/Superl
  +Attr   !!= * @CODE@ Attribute
 
  +Card   !!= * @CODE@
  +Ord !!≈ * @CODE@  CHECK THIS! In closed-sme there are +Ord entries without circ. tag
 
- ! Verbs
+ ! !! Verbal inflection
  +Ind   !!= * @CODE@ Indicative mood
  +Prs   !!= * @CODE@ Present tense
  +Prt   !!= * @CODE@ Past tense
@@ -213,16 +220,16 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
  +VAbess  !!= * @CODE@ verb abessive
  +Actio   !!= * @CODE@ Actio
 
-! Other tags
+! !! Other tags
  +ABBR !!≈ * @CODE@
-+Symbol !!≈ * @CODE@ = independent symbols in the text stream, like £, €, ©
-+ACR !!≈ * @CODE@
-+CLB !!≈ * @CODE@
-+PUNCT !!≈ * @CODE@
-+LEFT !!≈ * @CODE@
-+RIGHT !!≈ * @CODE@
-^GUESSNOUNROOT !!≈ * @CODE@
-+CLBfinal       !!≈ * __@CODE@__  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
+ +Symbol !!≈ * @CODE@ = independent symbols in the text stream, like £, €, ©
+ +ACR !!≈ * @CODE@
+ +CLB !!≈ * @CODE@
+ +PUNCT !!≈ * @CODE@
+ +LEFT !!≈ * @CODE@
+ +RIGHT !!≈ * @CODE@
+ +CLBfinal       !!≈ * __@CODE@__  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
+ ^GUESSNOUNROOT !!≈ * @CODE@
 
  +TV !    !!≈ * @CODE@
  +IV !    !!≈ * @CODE@  Transitivity tags
@@ -233,7 +240,7 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
  +NomAg   !!≈ * @CODE@ Actor Noun From Verb - Nomen Agentis
 
 !!
-!! !!Lexeme disambiguation tags
+!! !!Lexeme disambiguation = homonym tags
   +Hom1          !!≈ ; @CODE@ : Homonymy
   +Hom2          !!≈ ; @CODE@ : Homonymy
 
@@ -245,8 +252,6 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
   +v4 !!≈ * @CODE@ - variant 4
   +v5 !!≈ * @CODE@ - variant 5
 
- +Cmp/Hyph    !!≈ Compound with (optional) hyphen, heavily weighted
- +Cmp/OblHyph !!≈ Obligatory hyphen, not as badly weighed as +Cmp/Hyph
 ! +PAR ! Not in use, it seems.
 
 !! !Question and Focus particles:
