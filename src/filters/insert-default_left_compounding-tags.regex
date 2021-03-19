@@ -17,36 +17,52 @@
 
 
 ! First context: no CmpN Left tag:
-"@U.Want_Left.FALSE@" <- [..] || %#
-                                _
+"@U.Want_Left.FALSE@" <- [..] || [ .#. | %- | %# ]
 
-                               \[ "+N" | "+A" | "+PrsPrc" | %# 
-                                | "+CmpN/SgNomLeft"
+                               \[ "+CmpN/SgNomLeft"
                                 | "+CmpN/SgGenLeft"
                                 | "+CmpN/PlGenLeft"
                                 ]+
-                                
+
                                 [ "+N" | "+A" | "+PrsPrc" ]
+                                 _
+
+                               \[ "+CmpN/SgNomLeft"
+                                | "+CmpN/SgGenLeft"
+                                | "+CmpN/PlGenLeft"
+                                ]+
+
+                                [  "+Cmp"
+                                 | "+Der" | "+Der1" | "+Der2" | "+Der3" | "+Der4" | "+Der5"
+                                 | .#. | %- | %> | %# ! End of word symbols
+                                ]
 
 .o.
 
-! Second context: CmpN Left tag immediately before POS tag - insert a tag
+! Second context: CmpN Left tag immediately after POS tag - insert a tag
 ! to block regular CmpN compounding:
-"@U.Want_Left.TRUE@" <- [..] || %#
-                                _
+"@U.Want_Left.TRUE@" <- [..] || [ .#. | %- | %# ]
 
-                               \[ "+N" | "+A" | "+PrsPrc" | %# 
-                                | "+CmpN/SgNomLeft"
+                               \[ "+CmpN/SgNomLeft"
                                 | "+CmpN/SgGenLeft"
                                 | "+CmpN/PlGenLeft"
+                                ]+
+
+                                [ "+N" | "+A" | "+PrsPrc" ]
+                                _
+
+                               \[ "+CmpN/SgNomLeft"
+                                | "+CmpN/SgGenLeft"
+                                | "+CmpN/PlGenLeft"
+                                |  "+Cmp"
+                                | "+Der" | "+Der1" | "+Der2" | "+Der3" | "+Der4" | "+Der5"
+                                | .#. | %- | %> | %# ! End of word symbols
                                 ]+
 
                                 [ "+CmpN/SgNomLeft"
                                 | "+CmpN/SgGenLeft"
                                 | "+CmpN/PlGenLeft"
-                                ]^{1,3}
-                                
-                                [ "+N" | "+A" | "+PrsPrc" ]
+                                ]
 ;
 
 # In all other contexts, there is already a +CmpN/ tag, and thus we do NOT want
