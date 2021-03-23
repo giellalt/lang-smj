@@ -198,6 +198,7 @@ Intransitives
  LEXICON GUOTTEDALLAT_IV    passives on -allat - no actio as first part of compounds, but reintroduced
 
 
+
 *duolmudallat # Even-syllable test examples:*
 * *duolmudaláv:* `duolmudallat+V+IV+Ind+Prs+Sg1`
 * *duolmudalliv:* `duolmudallat+V+IV+Ind+Prt+Sg1`
