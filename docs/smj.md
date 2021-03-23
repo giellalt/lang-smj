@@ -917,7 +917,7 @@ The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
 * *uhttse:* `uhttse+A+Sg+Nom`
 * *uhtsev:* `uhttse+A+Sg+Acc`
 * *uhtsa:* `uhttse+A+Attr`
-* *uhtses:* `uhttse+A+Attr` (Eng. # gets this attr from LEXATTR)
+* *uhtses:* `uhttse+A+Attr` (Eng. # gets this attr from)
 * *uhtsep:* `uhttse+A+Der/Comp+A+Sg+Nom`
 
  LEXICON TJÁBBE   Adjectives on -e, the attribute is in WeG and e > a. Same as GALLJE only different adv derivation. Sg Acc: tjáppev, Attr: tjáppa.
@@ -1480,6 +1480,8 @@ Inherent comparatives and superlatives
 
 
 
+
+
 *ájtodamos # Even-syllable test examples:*
 * *ájtodamos:* `ájtodamos+A+Gram/Superl+Sg+Nom`
 
@@ -1525,6 +1527,7 @@ Inherent comparatives and superlatives
 
 ----
 
+
 # Comparation
 
  LEXICON BU/MUS   comparison for even-syll adjectives. Also derivates diminutive and adverbs from the comparisions.
@@ -1564,7 +1567,6 @@ Comparative and Superlative sub-lexica
 
 
 
-
  LEXICON ATTR   Sends attributes to
 
 
@@ -1588,9 +1590,17 @@ Comparative and Superlative sub-lexica
 
  LEXICON DenominalAdjsContr 
 
-Derivations to adjectives
+Derivations to adjectives, hardcoded in adjectives stems file
 
- LEXICON AHTES  ! odd syllable
+
+ LEXICON DIEHTEMAHTES  ! odd syllable For hardcoded -ahtes words.
+
+
+ LEXICON LÁGÁSJ 
+
+ LEXICON BÁJNUK  ! hardcoded denominal derivations go here, attr same as pred, no comp in this lexicon
+
+ LEXICON SJERVAK  ! hardcoded denominal derivations go here, attr -gis, attr same as pred is, err/orth taged. no comp in this lexicon
 
 
  LEXICON DIBME  ! even and contracted
@@ -1599,15 +1609,27 @@ Derivations to adjectives
  LEXICON LIS  ! Handlernomen på -is?
 
 
- LEXICON LÁGÁSJ 
-
-
- LEXICON AGAdj  ! denominal derivations go here
-
  LEXICON Ahkásasj  ! lexicalized and denominal -asj derivations
 
 
  LEXICON STÁVVAL  ! OK& Kintel: stávval attr stávvalis, also as second compound
+
+
+Derivations to adjectives, continuation lexicon not for hardcoded adjectives
+
+
+
+
+ LEXICON AHTES  ! odd syllable, only a continuation lexicon for words that are not in adjectives stems. Just as DIEHTEMAHTES, only with the +A tag that adjectives already get i stems file.
+
+
+ LEXICON AHKES   
+
+
+
+ LEXICON AGAdj  ! denominal derivations go here, attr same as pred, no comp in this lexicon
+
+
 
 
 
@@ -2626,6 +2648,7 @@ Derivations to adjectives
 
 
 
+
 Derived stems
 
  LEXICON BADJEL  Derived nouns with acc -elav, ill -elij, elat -elas, etc. These were previously categorized as adpositions and adverbs, but according to Bruce Morén-Duolljá (2014) they are actually case forms of nouns derived from certain location nouns. Derived from even strong stems (badje -> badjel). Odd syllable inflection, but only singular nominative-elative (not clear if they take comitative and essive case). With comparatives. No Px.
@@ -3060,6 +3083,7 @@ Intransitives
 
 
  LEXICON GUOTTEDALLAT_IV    passives on -allat - no actio as first part of compounds, but reintroduced
+
 
 
 *duolmudallat # Even-syllable test examples:*
