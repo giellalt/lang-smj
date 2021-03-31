@@ -1,8 +1,25 @@
 
 # Lule Sámi morphological analyser
 
-The main documentation can be found [here](j-smj.md), including old
-documentation that needs cleanup.
+This page documnets the grammatical analyser for Lule Saami, how to build them and how to use them.
+
+
+## Using the analysers
+
+-   [How to use the morphological
+    parsers](/tools/docu-sme-manual.html) (North Saami as example language)
+-   [Generation of paradigms](http://giellatekno.uit.no/cgi/p-smj.eng.html) and
+    [analysis of text](http://giellatekno.uit.no/cgi/d-smj.eng.html)
+
+
+## Linguistic documentation
+
+-   [Documentation of the twol file](docu-smj-twol.md)
+-   [Old documentation of the lexicon files](docu-smj-lex.md)
+-   [Lule Saami bugs and errors](docu-smj-bugs.md)
+-   [Lule Saami normativity issues](normativity-issues.md)
+-   [General discussions on improving our linguistic
+    analysis](https://giellalt.uit.no/lang/smi/index.html)
 
 ## Projects
 
