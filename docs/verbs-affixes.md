@@ -43,6 +43,7 @@ IV means intransitive verbs, TV means transitive verbs.
 
 
 
+
 ## Copula 
 
  LEXICON ÅRROT 

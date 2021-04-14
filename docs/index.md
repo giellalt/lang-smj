@@ -2,12 +2,12 @@
 
 This page documents the work on the **Lule Sami language model**. 
 
-<a href="https://giellalt.github.io/MaturityClassification.html"><img src="https://img.shields.io/badge/Maturity-Experiment-black.svg" height="15"/></a>
-<a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/Lic-GPLv3-blue.svg" height="15"/></a>
-<a href="https://github.com/giellalt/lang-smj/issues"><img src="https://img.shields.io/github/issues/giellalt/lang-smj" height="15"/></a>
-<a href="https://github.com/giellalt/lang-smj/actions"><img src="https://github.com/giellalt/lang-smj/workflows/Speller%20CI+CD/badge.svg" height="15"/></a>
+[![Maturity: Experiment](https://img.shields.io/badge/Maturity-Experiment-black.svg)](https://giellalt.github.io/MaturityClassification.html)
+[![License: GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Issues](https://img.shields.io/github/issues/giellalt/lang-smj)](https://github.com/giellalt/lang-smj/issues)
+[![Build status](https://github.com/giellalt/lang-smj/workflows/Speller%20CI+CD/badge.svg)](https://github.com/giellalt/lang-smj/actions)
 
-This page documnets the grammatical analyser for Lule Saami, how to build them and how to use them.
+This page documnets the grammatical analyser for Lule Saami, how to build it and how to use it.
 
 
 # Using the analysers

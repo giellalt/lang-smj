@@ -661,6 +661,7 @@ These tags should always be located just before the POS tag.
  * +Sem/Tool-music = 
 
 
+ * +Allegro from LEXICON GOADE-IU-
 
 
 ## Derivation tags
@@ -2924,6 +2925,7 @@ IV means intransitive verbs, TV means transitive verbs.
 
 
  LEXICON NEG 
+
 
 
 
