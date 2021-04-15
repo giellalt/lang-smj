@@ -1043,6 +1043,26 @@ COPY:real-ActioGen-PrtPl1 (Ind Prt Pl1 &SUGGEST) EXCEPT (Actio Gen) TARGET (&rea
     # viehkedima Lindav ådå goahtáj jåhtet
     
     
+    # real word error, missing j for -it verbs
+    # ----------------------------------------
+
+    # left subj
+    
+ADD:real-PrsPl3-PrsSg3 (&real-PrsPl3-PrsSg3) TARGET IT-V - Gram/3syll OR ( "liehket" )  IF (0 (Prs Pl3)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg))  (NEGATE *1 (Pron Nom Pl3) OR (N Nom Pl))(NEGATE 0 (Prs Sg3)) ;
+
+    ## Suv mielas sån li ilá materalistisk.
+    ## Mij juo diehtep Hamsun nasistajt bælosti nuppát værálda doaron.
+    #$ Suv mielas li skuvla ja girku ilá garrasat.
+    #$ Ulmutja vuosedi son boahtá odne.
+
+    # right subj   
+ADD:real-PrsPl3-PrsSg3 (&real-PrsPl3-PrsSg3) TARGET IT-V - Gram/3syll OR ( "liehket" )  IF (0 (Prs Pl3)) (*1 (Pron Nom Sg3) OR (N Nom Sg)  OR (Pron Nom Sg)  LINK NEGATE 1 CC LINK *1 (Nom Sg) BARRIER NOT-NPMOD)  (NEGATE *-1 (Pron Nom Pl3) OR (N Nom Pl))(NEGATE 0 (Prs Sg3));
+
+    ## Suv mielas li sån ilá materalistisk.
+    #$ Suv mielas li Inga ja suv vielja ilá materialistisk.
+    #$ Suv mielas Inga ja suv vielja li ....
+    
+    
     
     # Word order, neg before subject
     # ----------------------------------------
