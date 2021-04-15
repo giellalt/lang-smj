@@ -80,14 +80,6 @@ endif # CAN_FOMA
 #### Add language-specific build rules here: ####
 
 
-# Hfst - add weights to compounds if using tropical-semiring fst format:
-if WITH_OFST_TROPICAL
-generator-raw-gt-desc.hfst: generator-raw-gt-desc.tmp.hfst
-	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
-			-S '+Cmp' -a 10 --arcs-only -i $< \
-		> $@
-endif
-
 ### Process æ-ä early, and separately for xfst, hfst and foma. ###
 ###
 ### Xerox: can't use twosided flag-diacritics, so we'll just allow both
@@ -119,6 +111,31 @@ analyser-raw-gt-desc.foma: analyser-raw-gt-desc.tmp.foma \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
+# Hfst - add weights to compounds if using tropical-semiring fst format:
+if WITH_OFST_TROPICAL
+generator-raw-gt-desc.hfst: generator-raw-gt-desc.tmp.hfst \
+					 filters/convert-æae-to-area-variant.hfst \
+					 filters/insert-area-tags.hfst
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex            \
+				@\"$<\"                               \
+			.o. @\"filters/convert-æae-to-area-variant.hfst\" \
+			;\n\
+		 twosided flag-diacritics\n\
+		 define lexicon\n\
+		 read regex \
+				@\"filters/insert-area-tags.hfst\" \
+			.o. lexicon                            \
+			;\n\
+		 twosided flag-diacritics\n\
+		 save stack $@tmp\n\
+		 quit\n" | $(XFST_TOOL)
+	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+			-S '+Cmp' -a 10 --arcs-only -i $@tmp \
+		> $@
+	$(AM_V_at)rm -f $@tmp
+
+else !WITH_OFST_TROPICAL
+
 ### Hfst: Add æ/ä with a flag diacritic for area, then make it double-sided,
 ### then add an explicit tag, also including a (two-sided) flag diacritic. This
 ### way, the æ/ä variation is explicitly tagged, and the tag is forced to follow
@@ -141,6 +158,8 @@ generator-raw-gt-desc.hfst: generator-raw-gt-desc.tmp.hfst \
 		 twosided flag-diacritics\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
+
+endif !WITH_OFST_TROPICAL
 
 # The SMJ morphology has some extra tags used for marking questionable
 # normativity and our suggested norm:
