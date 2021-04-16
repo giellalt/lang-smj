@@ -3584,43 +3584,63 @@ contraced verbs assimilated and outside the main pattern.
 
 
 
+# Lule Sámi morphophonological rule set                    !
 
 
-# Background
+## Background
 
-The file itself is located in `langs/smj/src/phonology/smj-phon.twolc`.
+The file itself is located in `lang-smj/src/fst/phonology.twolc`.
 The file is modeled upon the corresponding file for North Sámi, but has been
 revised and differs from it on several issues. The grammatical sources are
 Spiik 1989: Lulesamisk grammatik and Nystø and Johnsen 2001: Sámásta 2.
 
-# File structure
-The rule file has the sections Alphabet, Sets, Definition and Rules. The rules are ordered thematically, 
-with 3 main sections: Consonant alternations (except cg), vowel alternations, and consonant gradation.
+The rule file has the sections **Alphabet, Sets, Definition** and **Rules**. The rules are ordered thematically, 
+with 3 main sections: Consonant alternations (except CG), vowel alternations, and consonant gradation.
 
+# Declarations and definitions
 
-# The Alphabet section
+## The Alphabet section
 
-## The real Lule Sámi Alphabet
+### The real Lule Sámi Alphabet
 
 All Lule Saami letters are listed. The Lule Sámi ENG sound is represented as ñ. 
 Lule Sámi letter repertoire is not fully standardised. In the source code we write (and you shall write!) æ; ø; ŋ, 
 but the parser tolerates input written with the the letters ä; ö; ń, ñ (cf. the 4 rules in the file smj/src/orthography/spellrelax.regex).
 
+ * **small letters =**  a á b c d e f g h i j k l m n ñ ń ŋ o p q			 
+  r s t u v w x y z æ:æä ä:æä ø ö å %-				 
+  é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý				 
+  ç č đ ð š ŧ þ ß ª									 
 
+ * **capital letters =**  A Á B C D E F G H I J K L M N Ñ Ń Ŋ O P Q			
+  R S T U V W X Y Z Æ:ÆÄ Ä:ÆÄ Ø Ö Å  	 
+  É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý	 
+  Ç Č Đ Ð Š Ŧ þ	 
 
 The 3rd degree mark º is never realized, hence declared as º:0.
   º:0   = Gradation mark
   %/    = Literal /, not the TWOLC reserved symbol
   ':'   = Apostrophe
 
+Literal quotes and angles must be escaped (cf morpheme boundaries further down):
+
+* »
+* «
+* >
+* <
 
 h2, g2 etc. are consonants deleted in the Nom. m3, d3 etc. (?) are consonants that undergo certain processes word-finally. 
 This issue should be looked into. Perhaps the two sets can be unified. 
 The reason why there are more distinctions than for sme, is that the cns deletion process is more phonological in sme.
 
+*  ':'   =  Morphophonemes  in sme, here temporarily due to common propernoun file
 
+*  ':'   =  these are deleted in nom
+*  ':'   =  these can not occur before #
+*  ':'   =  Non-sámi cons clusters
+*  ':'   =  Do not change these where they would normally undergo umlaut etc
 
-## The Dummy symbols
+### The Dummy symbols
 The Dummy symbols are taken from the sme file for convenience, only a small part of them are actually used, 
 they are defined in the Sets section along the way, included there as soon as they are used. 
 The set of actually used Dummy symbols is thus the set declared in "Dummy".
@@ -3628,6 +3648,7 @@ The Dummy symbols trigger morphophonological rules. X is used for nouns
 and adjectives, Y for verbs and Q for processes common to all
 The symbols themselves are used in the following way:
 
+OBS: the definitions are not all correct or sufficiently specific
 
 * ****X1:0****:  Deletes final consonants in short essive of odd syllables
 * ****X2:0****:  WeG and neutralization of g8, etc. (hivsik-hivsiga)
@@ -3668,7 +3689,7 @@ The symbols themselves are used in the following way:
 
 
 
-## Morpheme boundaries:
+### Morpheme boundaries:
 * ****«****:  Derivational prefix
 * ****»****:  Derivational suffix
 * ****%<****:  Inflectional prefx
@@ -3679,7 +3700,7 @@ The symbols themselves are used in the following way:
 * ****∑****:  mark before # to indicate dynamic comounds
 
 
-# The Sets section
+## The Sets section
 
 These are the sets:
 * **Vow**:  the vowels
@@ -3690,18 +3711,40 @@ These are the sets:
 * **WeG**:  the dummy symbols that trigger weak grade
 
 
+ *  Vow     = a á e i o u y æ ä ø ö å æä			   
+            A Á E I O U Y Æ Ä Ø Ä Å ÆÄ			   
+            é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý   
+            É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý   
+            a9 e9 o9 æ9 ä9						   
+
+*            a9 e9 o9 æ9 ä9						   
+            É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý ;   
+
+ *  CapCns  = B C D F G H J K L M N Ñ Ń Ŋ P Q     
+            R S T V W X Z Ç Č Đ Ð Š Ŧ þ ;    
+
+ *  Cns     = b b9 c d d9 f g g8 g9 h h8 h9 j j9 k l l9 m m8 m9 n n8 n9 ŋ ñ ń p q r r9 s t v w x z z9 º ;  = All consonants
+ *  Cns7    =      c      f         h       j      l    m       n       ŋ ñ ń p q r    s t v w x z      ;  = Surface cons excl 1st members of xx-type G3
+ *  Cns8    = b    c d    f g       h       j    k l    m       n       ŋ ñ ń p q r    s t v w x z      ;  = All surface consonants
+ *  Cns9    =   b9     d9     g8 g9   h8 h9   j9     l9   m8 m9   n8 n9             r9             º    ;  = Underlying consonants
+ *  Cns4    =             f                        l    m       n       ŋ ñ ń     r        v            ;  = Don't remember ...?
+ *  StemCns = b b9   d d9   g g8 g9 h h8 h9 j j9   l l9 m m8 m9 n n8 n9 ŋ ñ ń     r r9 s                ;  = Can occur stem-finally
+ *  DelCns  =                 g8      h8               m8      n8                                       ;  = deleted in nom...
+ *  WeG     = X2 X3 X7 Y5 Q1 Q2 Q3 Q6 Z3 Z4                                                                 ;  
+ *  Dummy   = X2 X3 X4 X5 X6 X7 X8 Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9 Q1 Q2 Q3 Q4 Q5 Q6 Q7 Z1 Z2 Z3 Z4 %> » %^           ;  
+ *  Hyph    = %-                                                                                        ;  
 
 
-
-
-
-# The Definitions section
+## The Definitions section
 
 In this section, the consonants are defined. This includes consonant clusters in the various grades and consonant alternations.
 
 
-## G3 vs G2
-The alternation patterns according to Spiik's alternations series.  
+### G3 vs G2
+The alternation patterns according to Spiik's alternations series, here named S4, S5, ... for "Spiik alternation series 4, 5, etc." as they are presented in his grammar..  
+
+|   Class | Alternation | Series
+| --- | --- | --- 
 |  S7 | kkn:k0n           | series 1
 |  S8 | fºf:f0f           | series 2
 |  S9 | jgg:j0g           | series 3
@@ -3710,6 +3753,8 @@ The alternation patterns according to Spiik's alternations series.
 |  S6 |  xx:yy (no zeros) | series 6
 |  S7 |  xy:zy (no zeros) | series 7
 |  S8 |  ----- (no cg)    | series 8
+
+Definition of gradation symbols:
 
 * **LowerG2**:  A definition of Grade2 consonant sequences referring mostly to the surface level
 * **LowerG1**:  A definition of Grade 1 consonant sequences
@@ -4238,9 +4283,9 @@ and a special Dummy (X6), not part of the ordinary WeG set.
 Note that one of the rules for t:0 refers to #: as part of its context. As soon as clitics are
 added to the word form, this rule will thus not be triggered. Look into this when the clitics are added.
 
-**Consonant gradation b:0**  
+**Consonant gradation b:0**  deletes **b** in S7 and S9 contexts
 
-**Consonant gradation d:0**  
+**Consonant gradation d:0**  ... etc.
 
 * *bednag8>X3*
 * *be0na0>0*
@@ -4331,6 +4376,8 @@ Exceptional II-III inverse gradation in present participles
 
 This gradation is only for II-I syllable verbs that get III as
 present participles.
+
+Candidates:
 
 * bbm - bm - m
 * ddn - dn - n

@@ -14,69 +14,69 @@
 
 
 ! ========================================================================== !
-!                   Lule Sámi morphophonological rule set                    !
+!!                   !!!Lule Sámi morphophonological rule set                    
 ! ========================================================================== !
 
 ! twol-smj.txt
 ! The file contains the rule set for the non-segmental
 ! Lule Sámi morphphonological rules
 
-!! !!!Background
+!! !!Background
 !! 
-!! The file itself is located in {{langs/smj/src/phonology/smj-phon.twolc}}.
+!! The file itself is located in {{lang-smj/src/fst/phonology.twolc}}.
 !! The file is modeled upon the corresponding file for North Sámi, but has been
 !! revised and differs from it on several issues. The grammatical sources are
 !! Spiik 1989: Lulesamisk grammatik and Nystø and Johnsen 2001: Sámásta 2.
 
-!! !!!File structure
-!!
-!! The rule file has the sections Alphabet, Sets, Definition and Rules. The rules are ordered thematically, 
-!! with 3 main sections: Consonant alternations (except cg), vowel alternations, and consonant gradation.
+!! The rule file has the sections __Alphabet, Sets, Definition__ and __Rules__. The rules are ordered thematically, 
+!! with 3 main sections: Consonant alternations (except CG), vowel alternations, and consonant gradation.
 
+!! !!!Declarations and definitions
 
-Alphabet !!≈ !!!The @CODE@ section
+Alphabet !!≈ !!The @CODE@ section
 
-!! !!The real Lule Sámi Alphabet
+!! !The real Lule Sámi Alphabet
 !! 
 !! All Lule Saami letters are listed. The Lule Sámi ENG sound is represented as ñ. 
 !! Lule Sámi letter repertoire is not fully standardised. In the source code we write (and you shall write!) æ; ø; ŋ, 
 !! but the parser tolerates input written with the the letters ä; ö; ń, ñ (cf. the 4 rules in the file smj/src/orthography/spellrelax.regex).
 !!
 
- a á b c d e f g h i j k l m n ñ ń ŋ o p q			! small
- r s t u v w x y z æ:æä ä:æä ø ö å %-
- é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý
- ç č đ ð š ŧ þ ß ª
+ a á b c d e f g h i j k l m n ñ ń ŋ o p q			!!= * __small letters =__ @CODE@ 
+ r s t u v w x y z æ:æä ä:æä ø ö å %-				!!= @CODE@ 
+ é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý				!!= @CODE@ 
+ ç č đ ð š ŧ þ ß ª									!!= @CODE@ 
 
- A Á B C D E F G H I J K L M N Ñ Ń Ŋ O P Q			! capital
- R S T U V W X Y Z Æ:ÆÄ Ä:ÆÄ Ø Ö Å
- É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý
- Ç Č Đ Ð Š Ŧ þ
+ A Á B C D E F G H I J K L M N Ñ Ń Ŋ O P Q			!!= * __capital letters =__ @CODE@
+ R S T U V W X Y Z Æ:ÆÄ Ä:ÆÄ Ø Ö Å  	!!= @CODE@ 
+ É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý	!!= @CODE@ 
+ Ç Č Đ Ð Š Ŧ þ	!!= @CODE@ 
 
 !! The 3rd degree mark º is never realized, hence declared as º:0.
  º:0  !!= @CODE@ = Gradation mark
  %/   !!= @CODE@ = Literal /, not the TWOLC reserved symbol
  ':'  !!= @CODE@ = Apostrophe
 
-! Literal quotes and angles must be escaped (cf morpheme boundaries further down):
- »7     ! »
- «7     ! «
- %[%>%] ! >
- %[%<%] ! <
+!! Literal quotes and angles must be escaped (cf morpheme boundaries further down):
+
+ »7     !! * »
+ «7     !! * «
+ %[%>%] !! * >
+ %[%<%] !! * <
 
 !! h2, g2 etc. are consonants deleted in the Nom. m3, d3 etc. (?) are consonants that undergo certain processes word-finally. 
 !! This issue should be looked into. Perhaps the two sets can be unified. 
 !! The reason why there are more distinctions than for sme, is that the cns deletion process is more phonological in sme.
 
- e7:e i7:i o7:o o9:o u7:u z9:z                  ! Morphophonemes  in sme, here temporarily due to common propernoun file
+ e7:e i7:i o7:o o9:o u7:u z9:z                  !! * @CODE@ =  Morphophonemes  in sme, here temporarily due to common propernoun file
 
- h8:h g8:g m8:m n8:n		                    ! these are deleted in nom
- b9:b d9:d g9:g l9:l m9:m n9:n h9:h r9:r    	! these can not occur before #
- j9:j k9:k t9:t s9:s p9:p                       ! Non-sámi cons clusters
- a9:a e9:e o9:o æ9:æ ö9:ö ä9:ä ø9:ø             ! Do not change these where they would normally undergo umlaut etc
-! Ä9:Ä Ö9:Ö Æ9:Æ Ø9:Ø                           ! Wd-final foreign vow, and non-fluctuating æ/ä
+ h8:h g8:g m8:m n8:n		                    !! * @CODE@ =  these are deleted in nom
+ b9:b d9:d g9:g l9:l m9:m n9:n h9:h r9:r    	!! * @CODE@ =  these can not occur before #
+ j9:j k9:k t9:t s9:s p9:p                       !! * @CODE@ =  Non-sámi cons clusters
+ a9:a e9:e o9:o æ9:æ ö9:ö ä9:ä ø9:ø             !! * @CODE@ =  Do not change these where they would normally undergo umlaut etc
+! Ä9:Ä Ö9:Ö Æ9:Æ Ø9:Ø                            Wd-final foreign vow, and non-fluctuating æ/ä
 
-!! !!The Dummy symbols
+!! !The Dummy symbols
 !!
 !! The Dummy symbols are taken from the sme file for convenience, only a small part of them are actually used, 
 !! they are defined in the Sets section along the way, included there as soon as they are used. 
@@ -86,7 +86,7 @@ Alphabet !!≈ !!!The @CODE@ section
 !! and adjectives, Y for verbs and Q for processes common to all
 !! The symbols themselves are used in the following way:
 
-! OBS: the definitions are not all correct or sufficiently specific
+!! OBS: the definitions are not all correct or sufficiently specific
 
  X1:0 !!≈ ; __@CODE@__ : Deletes final consonants in short essive of odd syllables
  X2:0 !!≈ ; __@CODE@__ : WeG and neutralization of g8, etc. (hivsik-hivsiga)
@@ -128,7 +128,7 @@ Alphabet !!≈ !!!The @CODE@ section
 
 
  
-!! !!Morpheme boundaries:
+!! !Morpheme boundaries:
  «  !!= ; __@CODE@__ : Derivational prefix
  »  !!= ; __@CODE@__ : Derivational suffix
  %< !!= ; __@CODE@__ : Inflectional prefx
@@ -141,7 +141,7 @@ Alphabet !!≈ !!!The @CODE@ section
 ! End of alphabet definitions
 ;
 
-Sets !!≈ !!!The @CODE@ section
+Sets !!≈ !!The @CODE@ section
 
 !! These are the sets:
 !! ;Vow     : the vowels
@@ -152,31 +152,31 @@ Sets !!≈ !!!The @CODE@ section
 !! ;WeG     : the dummy symbols that trigger weak grade
 
 
- Vow     = a á e i o u y æ ä ø ö å æä
-           A Á E I O U Y Æ Ä Ø Ä Å ÆÄ
-           é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý
-           É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý
-           a9 e9 o9 æ9 ä9
+ Vow     = a á e i o u y æ ä ø ö å æä			   !!= * @CODE@
+           A Á E I O U Y Æ Ä Ø Ä Å ÆÄ			   !!= @CODE@
+           é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý   !!= @CODE@
+           É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý   !!= @CODE@
+           a9 e9 o9 æ9 ä9						   !!= @CODE@
 !                 Æ9 Ä9
 			;
 
- CapVow  = A Á E I O U Y Æ Ä Ø Ä Å ÆÄ
-           É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý ;
+ CapVow  = A Á E I O U Y Æ Ä Ø Ä Å ÆÄ     !! * @CODE@
+           É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý ;   !!= @CODE@
 
- CapCns  = B C D F G H J K L M N Ñ Ń Ŋ P Q
-           R S T V W X Z Ç Č Đ Ð Š Ŧ þ ;
+ CapCns  = B C D F G H J K L M N Ñ Ń Ŋ P Q     !!= * @CODE@
+           R S T V W X Z Ç Č Đ Ð Š Ŧ þ ;    !!= @CODE@
 
 ! æä      = æ ä ; ! This is now a multichar alphabet symbol, see above. It is changed to either æ or ä in a later compilation stage.
- Cns     = b b9 c d d9 f g g8 g9 h h8 h9 j j9 k l l9 m m8 m9 n n8 n9 ŋ ñ ń p q r r9 s t v w x z z9 º ; ! All consonants
- Cns7    =      c      f         h       j      l    m       n       ŋ ñ ń p q r    s t v w x z      ; ! Surface cons excl 1st members of xx-type G3
- Cns8    = b    c d    f g       h       j    k l    m       n       ŋ ñ ń p q r    s t v w x z      ; ! All surface consonants
- Cns9    =   b9     d9     g8 g9   h8 h9   j9     l9   m8 m9   n8 n9             r9             º    ; ! Underlying consonants
- Cns4    =             f                        l    m       n       ŋ ñ ń     r        v            ; ! Don't remember ...?
- StemCns = b b9   d d9   g g8 g9 h h8 h9 j j9   l l9 m m8 m9 n n8 n9 ŋ ñ ń     r r9 s                ; ! Can occur stem-finally
- DelCns  =                 g8      h8               m8      n8                                       ; ! deleted in nom...
- WeG     = X2 X3 X7 Y5 Q1 Q2 Q3 Q6 Z3 Z4                                                                 ;
- Dummy   = X2 X3 X4 X5 X6 X7 X8 Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9 Q1 Q2 Q3 Q4 Q5 Q6 Q7 Z1 Z2 Z3 Z4 %> » %^           ;
- Hyph    = %-                                                                                        ;
+ Cns     = b b9 c d d9 f g g8 g9 h h8 h9 j j9 k l l9 m m8 m9 n n8 n9 ŋ ñ ń p q r r9 s t v w x z z9 º ; !!= * @CODE@ = All consonants
+ Cns7    =      c      f         h       j      l    m       n       ŋ ñ ń p q r    s t v w x z      ; !!= * @CODE@ = Surface cons excl 1st members of xx-type G3
+ Cns8    = b    c d    f g       h       j    k l    m       n       ŋ ñ ń p q r    s t v w x z      ; !!= * @CODE@ = All surface consonants
+ Cns9    =   b9     d9     g8 g9   h8 h9   j9     l9   m8 m9   n8 n9             r9             º    ; !!= * @CODE@ = Underlying consonants
+ Cns4    =             f                        l    m       n       ŋ ñ ń     r        v            ; !!= * @CODE@ = Don't remember ...?
+ StemCns = b b9   d d9   g g8 g9 h h8 h9 j j9   l l9 m m8 m9 n n8 n9 ŋ ñ ń     r r9 s                ; !!= * @CODE@ = Can occur stem-finally
+ DelCns  =                 g8      h8               m8      n8                                       ; !!= * @CODE@ = deleted in nom...
+ WeG     = X2 X3 X7 Y5 Q1 Q2 Q3 Q6 Z3 Z4                                                                 ; !!= * @CODE@ 
+ Dummy   = X2 X3 X4 X5 X6 X7 X8 Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9 Q1 Q2 Q3 Q4 Q5 Q6 Q7 Z1 Z2 Z3 Z4 %> » %^           ; !!= * @CODE@ 
+ Hyph    = %-                                                                                        ; !!= * @CODE@ 
 
 ! Various flag diacritic symbols that can intervene in certain contexts:
 ! Flags   = @P.CmpN.SgN@
@@ -198,15 +198,17 @@ Sets !!≈ !!!The @CODE@ section
 !           @C.Der_PassL@
 !           ;
 
-Definitions !!≈ !!!The @CODE@ section
+Definitions !!≈ !!The @CODE@ section
 
 !! In this section, the consonants are defined. This includes consonant clusters in the various grades and consonant alternations.
 
  LCnsPhon7 = [ :Cns7 | :n :j | :s :j | :t :j | :t :s ] ;     ! Using Cns7, excluding 1st member of two-cns G3
  LCnsPhon  = [ :Cns8 | :n :j | :s :j | :t :j | :t :s ] ;     ! Using Cns8, without the previous restriction
 
-!! !!G3 vs G2
-!! The alternation patterns according to Spiik's alternations series.  
+!! !G3 vs G2
+!! The alternation patterns according to Spiik's alternations series, here named S4, S5, ... for "Spiik alternation series 4, 5, etc." as they are presented in his grammar..  
+
+!! || Class || Alternation || Series
 !! | S7 | kkn:k0n           | series 1
 !! | S8 | fºf:f0f           | series 2
 !! | S9 | jgg:j0g           | series 3
@@ -215,6 +217,8 @@ Definitions !!≈ !!!The @CODE@ section
 !! | S6 |  xx:yy (no zeros) | series 6
 !! | S7 |  xy:zy (no zeros) | series 7
 !! | S8 |  ----- (no cg)    | series 8
+
+!! Definition of gradation symbols:
 
  LowerG2  !!≈ ; @CODE@ : A definition of Grade2 consonant sequences referring mostly to the surface level
  		   = [
@@ -1248,7 +1252,7 @@ o:u <= Cns:  _ (%>:) (»:) X4: j ; !X4 IllSg
 !! added to the word form, this rule will thus not be triggered. Look into this when the clitics are added.
 
 "Consonant gradation b:0"
-!! __@RULENAME@__  
+!! __@RULENAME@__  deletes __b__ in S7 and S9 contexts
 b:0 <=> Vow: ( [l|b] )   _    m          Vow: (StemCns:) (%>:) (»:) WeG: ; ! S7-3, S7-2 bbn:b0n, bn:0n
 !	    Vow:             _ [d|j|l|n|r|s] Vow: (StemCns:) (%>:) (»:) WeG: ; ! S7-2
 	    Vow: [ j|l|r|v ] _ b             Vow: (StemCns:) (%>:) (»:) WeG: ; ! S9-3
@@ -1256,7 +1260,7 @@ b:0 <=> Vow: ( [l|b] )   _    m          Vow: (StemCns:) (%>:) (»:) WeG: ; ! S7
 	    Vow: b:          _    m          Vow: (%>:) (»:) X6:             ; ! III-I special gradation ! bbm:m
 
 "Consonant gradation d:0"
-!! __@RULENAME@__  
+!! __@RULENAME@__  ... etc.
 d:0 <=> Vow: ( d )             _ [ n | j ] Vow: ( StemCns: ) (%>:) (»:) WeG: ; ! S7-3, S7-2 ddn:d0n, dn:0n
         Vow: ( d )             _   n   j   Vow: ( StemCns: ) (%>:) (»:) WeG: ; ! S7-4 and S7, dnj:nj
         Vow: [ b | j | r | v ] _ d         Vow: ( StemCns: ) (%>:) (»:) WeG: ; ! S9
@@ -1492,7 +1496,8 @@ d:t <=> Vow: _ d: Vow: ( StemCns: ) (%>:) (»:) WeG: ;
 !! This gradation is only for II-I syllable verbs that get III as
 !! present participles.
 
-! Candidates:
+!! Candidates:
+
 !! * bbm - bm - m
 !! * ddn - dn - n
 !! * ddnj- dnj- nj
