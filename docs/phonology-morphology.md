@@ -1,6 +1,6 @@
 
 
-# Lule Sámi morphophonological rule set                    !
+# Lule Sámi morphophonological rule set                    
 
 
 ## Background
