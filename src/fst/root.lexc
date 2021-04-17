@@ -13,12 +13,12 @@
 ! giellatekno@uit.no or feedback@divvun.no
 
 ! ========================================================================== !
-!! !!!Lule Sámi morphological analyser
+!! # Lule Sámi morphological analyser
 ! ========================================================================== !
 
 Multichar_Symbols  !!≈ Definitions for @CODE@
 
-!! !!! Tags for POS
+!! Tags for POS
 
  +N      !!≈ * @CODE@ Noun
  +A      !!≈ * @CODE@ Adjective
@@ -33,7 +33,7 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
  +Interj !!≈ * @CODE@ Interjection
  +Pcle   !!≈ * @CODE@ Particle
  +Num    !!≈ * @CODE@ Numeral
- +TODO    !!≈ * __@CODE@__ = Code for items that have not been modeled yet
+ +TODO    !!≈ * **@CODE@** = Code for items that have not been modeled yet
  +Dyn     !≈ * __@CODE@__ = Code dynamic acronyms
 ! Tags for sub-POS
  +Prop    !!≈ * @CODE@ Propernouns
@@ -57,28 +57,28 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
  +Err/SpaceCmp     !!≈ * @CODE@  No normative lemma
  +Err/Der          !!≈ * @CODE@  Lemmas that break with regular derivation rules, both morphologically and semantically
  +Err/Infl         !!≈ * @CODE@  Lemmas that break with normative inflection rules, often used with morphological changes
- +Err/MissingSpace !!≈ | __@CODE@__ | in use in smi lexc. Used for "goadedagi", when it should be "goade dagi"
+ +Err/MissingSpace !!≈ |  **@CODE@** | in use in smi lexc. Used for "goadedagi", when it should be "goade dagi"
 
 ! !! Usage restriction tags
  +Use/Marg         !!≈ * @CODE@  Marginal, but normative lemmas. Not in speller.
  +Use/-Spell       !!≈ * @CODE@  Excluded from speller
  +Use/-PLX         !!≈ * @CODE@  Excluded from PLX speller
- +Use/-PMatch      !!≈ | __@CODE@__ | Do not include in fst's made for hfst-pmatch
+ +Use/-PMatch      !!≈ |  **@CODE@** | Do not include in fst's made for hfst-pmatch
  +Use/SpellNoSugg  !!≈ * @CODE@  Recognized, but not suggested in speller
  +Use/Circ         !!≈ * @CODE@  Circular path
  +Use/CircN        !!≈ * @CODE@  Circular number path
  +Use/Ped          !!≈ * @CODE@  Remove from pedagogical speller
  +Use/NG           !!≈ * @CODE@  Do not generate, only for Oahpa and MT. In speller.
- +Use/MT           !!= * __@CODE@__ Generate for MT only, for restricting analyses needed
- +Use/NGminip      !!= * __@CODE@__ Not for miniparadigm in VD dicts
+ +Use/MT           !!= * **@CODE@** Generate for MT only, for restricting analyses needed
+ +Use/NGminip      !!= * **@CODE@** Not for miniparadigm in VD dicts
  +Use/NotDNorm     !!≈ * @CODE@  For words without formal normalization.
                    !! Divvun suggest that this shouldn't be normative.
  +Use/DNorm        !!≈ * @CODE@  For words without formal normalization.
                    !! Divvun suggest that this should be normative. Included in speller.                      
  +Use/PMatch	  
  +Use/Derrog       !!≈ * @CODE@  Derrogatory word. Recognized, but not suggested in speller, same as SpellNoSugg
- +Use/GC          !!≈ * __@CODE@__ only retained in the HFST Grammar Checker disambiguation analyser
- +Use/-GC         !!≈ * __@CODE@__ never retained in the HFST Grammar Checker disambiguation analyser
+ +Use/GC          !!≈ * **@CODE@** only retained in the HFST Grammar Checker disambiguation analyser
+ +Use/-GC         !!≈ * **@CODE@** never retained in the HFST Grammar Checker disambiguation analyser
 
 ! !! Dialect and Area tags
  +Area/SE     !!≈ * @CODE@ - Used in Sweden only
@@ -89,18 +89,18 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
  +Dial/S      !!≈ * @CODE@ Used in the southern areas
  +Dial/SH     !!≈ * @CODE@ Short forms
 
-!! !!! Compounding tags
+!! Compounding tags
 
 !! The tags are of the following form:
-!! * __+CmpNP/xxx__ - Normative (N), Position (P), ie. the tag describes what
+!! * **+CmpNP/xxx** - Normative (N), Position (P), ie. the tag describes what
 !!                    position the tagged word can be in in a compound
-!! * __+CmpN/xxx__  - Normative (N) __form__ ie. the tag describes what
+!! * **+CmpN/xxx**  - Normative (N) **form** ie. the tag describes what
 !!                    form the tagged word should use when making compounds
-!! * __+Cmp/xxx__   - Descriptive compounding tags, ie. tags that''describes''
+!! * **+Cmp/xxx**   - Descriptive compounding tags, ie. tags that*describes*
 !!                    what form a word actually is using in a compound
 
-!! !! Normative/prescriptive compounding tags
-!! These govern compound behaviour for normative tools like the speller, ie. what a compound __SHOULD BE__.
+!! Normative/prescriptive compounding tags
+!! These govern compound behaviour for normative tools like the speller, ie. what a compound **SHOULD BE**.
 
 !! The first part of the component may be ..
 +CmpN/Sg          !!≈ * @CODE@ = Singular
@@ -110,11 +110,11 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
 +CmpN/Attr        !!≈ * @CODE@ = Attributive
 
 ! This part of the component can ..
-+CmpNP/All       !!≈ * @CODE@ - ... be in all positions, __default__, this tag does not have to be written
++CmpNP/All       !!≈ * @CODE@ - ... be in all positions, **default**, this tag does not have to be written
 +CmpNP/First     !!≈ * @CODE@ - ... only be first part in a compound or alone
-+CmpNP/Pref      !!≈ * @CODE@ - ... only __first__ part in a compound, NEVER alone
++CmpNP/Pref      !!≈ * @CODE@ - ... only **first** part in a compound, NEVER alone
 +CmpNP/Last      !!≈ * @CODE@ - ... only be last part in a compound or alone
-+CmpNP/Suff      !!≈ * @CODE@ - ... only __last__ part in a compound, NEVER alone
++CmpNP/Suff      !!≈ * @CODE@ - ... only **last** part in a compound, NEVER alone
 +CmpNP/None      !!≈ * @CODE@ - ... not take part in compounds
 +CmpNP/Only      !!≈ * @CODE@ - ... only be part of a compound, i.e. can never
                  !!                 be used alone, but can appear in any position
@@ -135,22 +135,22 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
 !! Some of these tags are also used in combination with the
 !! above normative tags to actually enforce compound restrictions in the fst.
 
- +Cmp/Sg       !!≈ * __@CODE@__  Singular
- +Cmp/SgNom    !!≈ * __@CODE@__  Singular Nominative
- +Cmp/SgGen    !!≈ * __@CODE@__  Singular Genitive
- +Cmp/PlGen    !!≈ * __@CODE@__  Plural Genitiv
- +Cmp/PlNom    !!≈ * __@CODE@__  Plural Nominative
- +Cmp/Attr     !!≈ * __@CODE@__  Attribute
+ +Cmp/Sg       !!≈ * **@CODE@**  Singular
+ +Cmp/SgNom    !!≈ * **@CODE@**  Singular Nominative
+ +Cmp/SgGen    !!≈ * **@CODE@**  Singular Genitive
+ +Cmp/PlGen    !!≈ * **@CODE@**  Plural Genitiv
+ +Cmp/PlNom    !!≈ * **@CODE@**  Plural Nominative
+ +Cmp/Attr     !!≈ * **@CODE@**  Attribute
 
- +Cmp/Sh       !!≈ * __@CODE@__  testing ShCmp
- +Cmp/Long     !!≈ * __@CODE@__  Long for om SgNom when short form is default, tjåhkaNIBMEbievddegirjje and bierjjeDAHKAiehket
- +Cmp/Unass    !!≈ * __@CODE@__  Unassimiled as first part of Cmp, e.g. telegram- in stead for telegrámma-
+ +Cmp/Sh       !!≈ * **@CODE@**  testing ShCmp
+ +Cmp/Long     !!≈ * **@CODE@**  Long for om SgNom when short form is default, tjåhkaNIBMEbievddegirjje and bierjjeDAHKAiehket
+ +Cmp/Unass    !!≈ * **@CODE@**  Unassimiled as first part of Cmp, e.g. telegram- in stead for telegrámma-
 
- +Cmp          !!≈ * __@CODE@__  Dynamic compound - this tag should always be part of a dynamic compound.
+ +Cmp          !!≈ * **@CODE@**  Dynamic compound - this tag should always be part of a dynamic compound.
                !!                It is important for Apertium, and useful in other cases as well.
- +Cmp/SplitR   !!≈ * __@CODE@__  This is a split compound with the other part to the right:
+ +Cmp/SplitR   !!≈ * **@CODE@**  This is a split compound with the other part to the right:
                !!                "Arbeids- og inkluderingsdepartementet" => Arbeids- = +Cmp/SplitR
- +Cmp/SplitL   !!≈ * __@CODE@__  This is a split compound with the other part to the left
+ +Cmp/SplitL   !!≈ * **@CODE@**  This is a split compound with the other part to the left
  +Cmp/Hyph    !!≈ Compound with (optional) hyphen, heavily weighted
  +Cmp/OblHyph !!≈ Obligatory hyphen, not as badly weighed as +Cmp/Hyph
 
@@ -228,24 +228,24 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
  +PUNCT !!≈ * @CODE@
  +LEFT !!≈ * @CODE@
  +RIGHT !!≈ * @CODE@
- +CLBfinal       !!≈ * __@CODE@__  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
+ +CLBfinal       !!≈ * **@CODE@**  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
  ^GUESSNOUNROOT !!≈ * @CODE@
 
  +TV !    !!≈ * @CODE@
  +IV !    !!≈ * @CODE@  Transitivity tags
- +G3      !!≈ * __@CODE@__ Grade 2-3 for homonymies with grade 1-2, +N+G3
- +G7      !!≈ * __@CODE@__ Grade 3, no consonant gradation, +N+G7
+ +G3      !!≈ * **@CODE@** Grade 2-3 for homonymies with grade 1-2, +N+G3
+ +G7      !!≈ * **@CODE@** Grade 3, no consonant gradation, +N+G7
  +Multi   !!≈ * @CODE@  Multiword phrase tag
  +Guess   !!≈ * @CODE@  for the name guesser
  +NomAg   !!≈ * @CODE@ Actor Noun From Verb - Nomen Agentis
 
 !!
-!! !!Lexeme disambiguation = homonym tags
-  +Hom1          !!≈ ; @CODE@ : Homonymy
-  +Hom2          !!≈ ; @CODE@ : Homonymy
+!! ## Lexeme disambiguation = homonym tags
+  +Hom1          !!≈ * **@CODE@**:  Homonymy
+  +Hom2          !!≈ * **@CODE@**:  Homonymy
 
 !!
-!! !!Stem variant tags
+!! ## Stem variant tags
   +v1 !!≈ * @CODE@ - variant 1
   +v2 !!≈ * @CODE@ - variant 2
   +v3 !!≈ * @CODE@ - variant 3
@@ -254,19 +254,19 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
 
 ! +PAR ! Not in use, it seems.
 
-!! !Question and Focus particles:
+!! ### Question and Focus particles:
  +Qst !!≈ * @CODE@
  +Clt !!≈ * @CODE@
  +Cltl !!≈ * @CODE@
  +Foc !!≈ * @CODE@  These two are only found in SMJ - do we need them?
-!! !Focus particles:
+!! ### Focus particles:
  +Foc/ge  !!≈ * @CODE@
  +Foc/gen !!≈ * @CODE@
  +Foc/ga  !!≈ * @CODE@
  +Foc/Neg-k	!!≈ * @CODE@
  +Foc/Pos-k !!≈ * @CODE@
 
-!! !Other tags
+!! ### Other tags
  +MWE !!≈ * @CODE@  multi word expressions, goes to abbr
  +Sh  !!≈ * @CODE@  Short form
 
@@ -277,16 +277,16 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
   +Gram/r           !!≈ * @CODE@ = Inherent -r derivation. guollit-guollár 
   +Gram/NomAct      !!≈ * @CODE@ = Inherent Actio Noun From Verb - Nomen Actionis, lexicalized derivation 
   +Gram/NomInstr    !!≈ * @CODE@ = Inherent Intsrumental noun From Verb, Nomen instrumentalis,lexicalized derivation 
-  +Gram/TAbbr       !!≈ ; @CODE@ : Transitive abbreviation (it needs an argument)
-  +Gram/NoAbbr      !!≈ ; @CODE@ : Intransitive abbreviations that are homonymous
-  +Gram/TNumAbbr    !!≈ ; @CODE@ : Transitive abbreviation if the following
-  +Gram/NumNoAbbr   !!≈ ; @CODE@ : Transitive abbreviations for which numerals
-  +Gram/TIAbbr      !!≈ ; @CODE@ : Both transitive and intransitive abbreviation
-  +Gram/IAbbr       !!≈ ; @CODE@ : Intransitive abbreviation (it takes no argument)
-  +Gram/3syll       !!≈ ; @CODE@ : trisyllabic verbs
-  +Gram/SentInit    !!≈ ; @CODE@ : copula verb le-
+  +Gram/TAbbr       !!≈ * **@CODE@**:  Transitive abbreviation (it needs an argument)
+  +Gram/NoAbbr      !!≈ * **@CODE@**:  Intransitive abbreviations that are homonymous
+  +Gram/TNumAbbr    !!≈ * **@CODE@**:  Transitive abbreviation if the following
+  +Gram/NumNoAbbr   !!≈ * **@CODE@**:  Transitive abbreviations for which numerals
+  +Gram/TIAbbr      !!≈ * **@CODE@**:  Both transitive and intransitive abbreviation
+  +Gram/IAbbr       !!≈ * **@CODE@**:  Intransitive abbreviation (it takes no argument)
+  +Gram/3syll       !!≈ * **@CODE@**:  trisyllabic verbs
+  +Gram/SentInit    !!≈ * **@CODE@**:  copula verb le-
 
-!! !!Semantic tags to help disambiguation & syntactic analysis
+!! ## Semantic tags to help disambiguation & syntactic analysis
 
 !! These tags should always be located just before the POS tag.
 
@@ -395,7 +395,7 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
  +Sem/Year        !!= * @CODE@ = Year
 
 
-!! !Multiple Semantic tags:
+!! ### Multiple Semantic tags:
  +Sem/Ani_Group                     !!≈ * @CODE@ = 
  +Sem/Act_Clth                      !!≈ * @CODE@ = 
  +Sem/Act_Domain                    !!≈ * @CODE@ = 
@@ -702,7 +702,7 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
  +Allegro            !!≈ * @CODE@ from LEXICON GOADE-IU-
 
 
-!! !!Derivation tags
+!! ## Derivation tags
 
 !! The following tags are used to describe the dynamic derivational system in
 !! Lule Sámi as encoded in this lexical description. The tags are classified
@@ -713,8 +713,8 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
 ! Der#begin
 ! Derivation position in a derivation row:  Affix and:
 ! 1              2               3                4               5                      POS type
-+Der1           +Der2           +Der3            +Der4           +Der5      !!≈  ;@CODE@:   - positional tags, preceeds the actual der tag
-!! !Der#1 tags - tags in first position
++Der1           +Der2           +Der3            +Der4           +Der5      !!≈ * **@CODE@**:    - positional tags, preceeds the actual der tag
+!! ### Der#1 tags - tags in first position
 +Der/Caus                                                                   !!≈ * @CODE@ VV - previously Der/ahtte
 +Der/PassD                                                                  !!≈ * @CODE@ VV - dallat passive
 +Der/PassL                                                                  !!≈ * @CODE@ VV - long passive láhpeduvvat
@@ -756,13 +756,13 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
 !+Der/stával                                                                !   * @CODE@    -l derivation, deverbal?
 !+Der/A                                    								    !!≈ * @CODE@ NA  Used for oajvve-oajvep, but no longer in use after we intorduced Der/Comp and 
 
-!! !Der#2 tags - tags in second position
+!! ### Der#2 tags - tags in second position
               +Der/dahtte                                                   !!≈ * @CODE@ VV
               +Der/duhtte                                                   !!≈ * @CODE@ VV
               +Der/ahkes                                                    !!≈ * @CODE@ VA
               +Der/NomAct                                                   !!≈ * @CODE@ VN
 			  +Der/Dimin
-!! !Der#3 tags - tags in third position
+!! ### Der#3 tags - tags in third position
                                 +Der/duvva                                  !!≈ * @CODE@ VV
                                 +Der/InchL                                  !!≈ * @CODE@ VV (previosuly Der/goahte)
                                 +Der/mus                                    !!≈ * @CODE@ VN
@@ -773,12 +773,12 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
                                                                             !!≈ * @CODE@      to not define the tag twice, but kept
                                                                             !!≈ * @CODE@      here for documentation purposes.
                                 +Der/lis                                    !!≈ * @CODE@ VA
-!! !Der#4 tags - tags in fourth position
+!! ### Der#4 tags - tags in fourth position
                                                 +Der/ahtes                  !!≈ * @CODE@ NA ! Abessive. Even verbs>NomAct>ahtes and odd-syll nouns. Morén-Duolljá:Caritive
-!! !Der#5 tags - tags in fifth position
+!! ### Der#5 tags - tags in fifth position
                                                                 +Der/AAdv   !!≈ * @CODE@ NA AAdv, previously +Der/at
                                                                 +Der/vuota  !!≈ * @CODE@ NA AN (tag harmonization: previosuly Der/vuohta)
-!! !Der#other tags - tags that can be in any position
+!! ### Der#other tags - tags that can be in any position
 
 !! There are no such tags in SMJ, but for symmetry and code coherence with SME
 !! the class is still kept.
@@ -791,7 +791,7 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
 ! Der#end
 
 
-!! !!Tags for originating language
+!! ## Tags for originating language
 !!
 !! The following tags are used to guide conversion to IPA: loan words
 !! and foreign names are usually pronounced (approximately) as in the
@@ -804,12 +804,12 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
 !!
 !! The principle of tagging is that we only tag to the extent needed,
 !! and following a priority:
-!! # any untagged word is pronounced with SME orthographic conventions
-!! # NNO and NOB have identical pronunciation, NNO is only used if
+!! 1. any untagged word is pronounced with SME orthographic conventions
+!! 1. NNO and NOB have identical pronunciation, NNO is only used if
 !!   different in spelling from NOB
-!! # SWE has mostly the same pronunciation as NOB, and is only used
+!! 1. SWE has mostly the same pronunciation as NOB, and is only used
 !!   if different in spelling from NOB
-!! # Occasionally even SME (the default) may be tagged, to block other
+!! 1. Occasionally even SME (the default) may be tagged, to block other
 !!   languages from being specified, mainly during semi-automatic
 !!   language tagging sessions
 !!
@@ -854,52 +854,52 @@ Multichar_Symbols  !!≈ Definitions for @CODE@
  Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9 Z1 Z2 Z3 Z4 Ø1 Ø2 
 
 
-!! !!Flag diacritics
+!! ## Flag diacritics
 !! We have manually optimised the structure of our lexicon using following
 !! flag diacritics to restrict morhpological combinatorics - only allow compounds
 !! with verbs if the verb is further derived into a noun again:
- @P.NeedNoun.ON@    !!≈ | @CODE@ | (Dis)allow compounds with verbs unless nominalised
- @D.NeedNoun.ON@    !!≈ | @CODE@ | (Dis)allow compounds with verbs unless nominalised
- @C.NeedNoun@       !!≈ | @CODE@ | (Dis)allow compounds with verbs unless nominalised
+ @P.NeedNoun.ON@    !!≈ |  @CODE@ | (Dis)allow compounds with verbs unless nominalised
+ @D.NeedNoun.ON@    !!≈ |  @CODE@ | (Dis)allow compounds with verbs unless nominalised
+ @C.NeedNoun@       !!≈ |  @CODE@ | (Dis)allow compounds with verbs unless nominalised
  
 
- @P.Pmatch.Loc@       !!≈ | @CODE@ | Used on multi-token analyses; tell hfst-tokenise/pmatch where in the form/analysis the token should be split.
- @P.Pmatch.Backtrack@ !!≈ | @CODE@ | Used on single-token analyses; tell hfst-tokenise/pmatch to backtrack by reanalysing the substrings before and after this point in the form (to find combinations of shorter analyses that would otherwise be missed)
+ @P.Pmatch.Loc@       !!≈ |  @CODE@ | Used on multi-token analyses; tell hfst-tokenise/pmatch where in the form/analysis the token should be split.
+ @P.Pmatch.Backtrack@ !!≈ |  @CODE@ | Used on single-token analyses; tell hfst-tokenise/pmatch to backtrack by reanalysing the substrings before and after this point in the form (to find combinations of shorter analyses that would otherwise be missed)
 
 
- @D.ErrOrth.ON@      !!≈ | @CODE@ 
- @R.ErrOrth.ON@      !!≈ | @CODE@ 
- @C.ErrOrth@         !!≈ | @CODE@ 
- @P.ErrOrth.ON@      !!≈ | @CODE@ 
+ @D.ErrOrth.ON@      !!≈ |  @CODE@ 
+ @R.ErrOrth.ON@      !!≈ |  @CODE@ 
+ @C.ErrOrth@         !!≈ |  @CODE@ 
+ @P.ErrOrth.ON@      !!≈ |  @CODE@ 
 
 !!
 !! For languages that allow compounding, the following flag diacritics are needed
 !! to control position-based compounding restrictions for nominals. Their use is
 !! handled automatically if combined with +CmpN/xxx tags. If not used, they will
 !! do no harm.
- @P.CmpFrst.FALSE@ !!≈ | @CODE@ | Require that words tagged as such only appear first
- @D.CmpPref.TRUE@  !!≈ | @CODE@ | Block such words from entering ENDLEX
- @P.CmpPref.FALSE@ !!≈ | @CODE@ | Block these words from making further compounds
- @D.CmpLast.TRUE@  !!≈ | @CODE@ | Block such words from entering R
- @D.CmpNone.TRUE@  !!≈ | @CODE@ | Combines with the next tag to prohibit compounding
- @U.CmpNone.FALSE@ !!≈ | @CODE@ | Combines with the prev tag to prohibit compounding
- @U.CmpNone.TRUE@  !!≈ | @CODE@ | Combines with the two previous ones to block compounding
- @P.CmpOnly.TRUE@  !!≈ | @CODE@ | Sets a flag to indicate that the word has passed R
- @D.CmpOnly.FALSE@ !!≈ | @CODE@ | Disallow words coming directly from root.
- @U.CmpHyph.FALSE@ !!≈ | @CODE@ | Flag to control hyphenated compounds like proper nouns
- @U.CmpHyph.TRUE@  !!≈ | @CODE@ | Flag to control hyphenated compounds like proper nouns
- @C.CmpHyph@       !!≈ | @CODE@ | Flag to control hyphenated compounds like proper nouns
+ @P.CmpFrst.FALSE@ !!≈ |  @CODE@ | Require that words tagged as such only appear first
+ @D.CmpPref.TRUE@  !!≈ |  @CODE@ | Block such words from entering ENDLEX
+ @P.CmpPref.FALSE@ !!≈ |  @CODE@ | Block these words from making further compounds
+ @D.CmpLast.TRUE@  !!≈ |  @CODE@ | Block such words from entering R
+ @D.CmpNone.TRUE@  !!≈ |  @CODE@ | Combines with the next tag to prohibit compounding
+ @U.CmpNone.FALSE@ !!≈ |  @CODE@ | Combines with the prev tag to prohibit compounding
+ @U.CmpNone.TRUE@  !!≈ |  @CODE@ | Combines with the two previous ones to block compounding
+ @P.CmpOnly.TRUE@  !!≈ |  @CODE@ | Sets a flag to indicate that the word has passed R
+ @D.CmpOnly.FALSE@ !!≈ |  @CODE@ | Disallow words coming directly from root.
+ @U.CmpHyph.FALSE@ !!≈ |  @CODE@ | Flag to control hyphenated compounds like proper nouns
+ @U.CmpHyph.TRUE@  !!≈ |  @CODE@ | Flag to control hyphenated compounds like proper nouns
+ @C.CmpHyph@       !!≈ |  @CODE@ | Flag to control hyphenated compounds like proper nouns
 !!
 !! Use the following flag diacritics to control downcasing of derived proper
 !! nouns (e.g. Finnish Pariisi -> pariisilainen). See e.g. North Sámi for how to use
 !! these flags. There exists a ready-made regex that will do the actual down-casing
 !! given the proper use of these flags.
- @U.Cap.Obl@        !!≈ | @CODE@ | Disallow downcasing of names when not derived: Deatnu
- @U.Cap.Opt@        !!≈ | @CODE@ | Allowing downcasing of derived names: deatnulasj.
- @P.Px.add@	    !!≈ | @CODE@ | Giving possibility for Px-suffixes (all except from Nom 3.p)
- @R.Px.add@	    !!≈ | @CODE@ | Requiring P.Px.add-flag for Px-suffixes (all except from Nom 3.p)
- @P.Nom3Px.add@  !!≈ | @CODE@ |  Giving possibility for Px-suffixes Nom 3.p
- @R.Nom3Px.add@  !!≈ | @CODE@ | Requiring P.Nom3Px.add flag for Px-suffixes Nom 3.p
+ @U.Cap.Obl@        !!≈ |  @CODE@ | Disallow downcasing of names when not derived: Deatnu
+ @U.Cap.Opt@        !!≈ |  @CODE@ | Allowing downcasing of derived names: deatnulasj.
+ @P.Px.add@	    !!≈ |  @CODE@ | Giving possibility for Px-suffixes (all except from Nom 3.p)
+ @R.Px.add@	    !!≈ |  @CODE@ | Requiring P.Px.add-flag for Px-suffixes (all except from Nom 3.p)
+ @P.Nom3Px.add@  !!≈ |  @CODE@ |  Giving possibility for Px-suffixes Nom 3.p
+ @R.Nom3Px.add@  !!≈ |  @CODE@ | Requiring P.Nom3Px.add flag for Px-suffixes Nom 3.p
 
 
 ! =================================================
@@ -937,13 +937,13 @@ Abbreviation-smi ;
 
 
 
-LEXICON Acronym   !!= * __@CODE@__
+LEXICON Acronym   !!= * **@CODE@**
 Acronym-smi ;
 Acronym-smj ;
 
 
 
-LEXICON ProperNoun   !!= * __@CODE@__
+LEXICON ProperNoun   !!= * **@CODE@**
  @U.CmpHyph.TRUE@ ProperNoun-smj-nocomp ; ! Lexicon for SMJ short names - always require hyphen
  @U.CmpHyph.TRUE@ ProperNoun-smi-nocomp ; ! Lexicon for short names - always require hyphen
                   ProperNoun-smi        ; ! SMI proper nouns
@@ -951,11 +951,11 @@ LEXICON ProperNoun   !!= * __@CODE@__
  @U.Cap.Obl@      FirstComponentProper  ; ! Short forms
 
 LEXICON ENDLEX
-!! !!!Lexicon @LEXNAME@
+!! # Lexicon @LEXNAME@
 !! And this is the @LEXNAME@ of everything:
-!! {{{
+!! ```
    @D.CmpOnly.FALSE@@D.CmpPref.TRUE@@D.NeedNoun.ON@ # ; !!≈ @CODE@
-!! }}}
-!! The {{@D.CmpOnly.FALSE@}} flag diacritic is ued to disallow words tagged
+!! ```
+!! The `@D.CmpOnly.FALSE@` flag diacritic is ued to disallow words tagged
 !! with +CmpNP/Only to end here.
-!! The {{@D.NeedNoun.ON@}} flag diacritic is used to block illegal compounds.
+!! The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
