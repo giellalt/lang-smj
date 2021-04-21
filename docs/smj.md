@@ -5,60 +5,71 @@
 
 Tags for POS
 
- * +N Noun
- * +A Adjective
- * +Adv Adverb
- * +V Verb
- * +Pron Pronouns
- * +CS Subjunction
- * +CC Conjunction
- * +Adp Adposition
- * +Po Postposition
- * +Pr Preposition
- * +Interj Interjection
- * +Pcle Particle
- * +Num Numeral
+ * **+N** = Noun
+ * **+A** = Adjective
+ * **+Adv** = Adverb
+ * **+V** = Verb
+ * **+Pron** = Pronouns
+ * **+CS** = Subjunction
+ * **+CC** = Conjunction
+ * **+Adp** = Adposition
+ * **+Po** = Postposition
+ * **+Pr** = Preposition
+ * **+Interj** = Interjection
+ * **+Pcle** = Particle
+ * **+Num** = Numeral
  * **+TODO** = Code for items that have not been modeled yet
- * +Prop Propernouns
- * +ACR Acronym
- * +Pers Personal pronoun
- * +Dem Demonstrative pronoun
- * +Interr Interrogative pronoun
- * +Refl reflexive pronoun
- * +Recipr reciprocal pronoun
- * +Rel relative pronoun
- * +Indef indefinite pronoun
- * +Coll collective numerals
- * +Arab arabic numerals
- * +Rom remertall
+ * **+Dyn** = Code dynamic acronyms
 
- * +Err/Orth  Substandard. An ungrammatical, non-normative form of normative lemma.
- * +Err/Lex  No normative lemma, often ungrammatical compounds like "bajásbuollda" and "songdebutierit".
- * +Err/Hyph  No normative lemma
- * +Err/SpaceCmp  No normative lemma
- * +Err/Der  Lemmas that break with regular derivation rules, both morphologically and semantically
- * +Err/Infl  Lemmas that break with normative inflection rules, often used with morphological changes
-|  **+Err/MissingSpace** | in use in smi lexc. Used for "goadedagi", when it should be "goade dagi"
+Tags for sub-POS
 
- * +Use/Marg  Marginal, but normative lemmas. Not in speller.
- * +Use/-Spell  Excluded from speller
- * +Use/-PLX  Excluded from PLX speller
-|  **+Use/-PMatch** | Do not include in fst's made for hfst-pmatch
- * +Use/SpellNoSugg  Recognized, but not suggested in speller
- * +Use/Circ  Circular path
- * +Use/CircN  Circular number path
- * +Use/Ped  Remove from pedagogical speller
- * +Use/NG  Do not generate, only for Oahpa and MT. In speller.
+ * **+Prop** = Propernouns
+ * **+ACR** = Acronym
+
+Pronoun subtypes
+
+ * **+Pers** = Personal pronoun
+ * **+Dem** = Demonstrative pronoun
+ * **+Interr** = Interrogative pronoun
+ * **+Refl** = reflexive pronoun
+ * **+Recipr** = reciprocal pronoun
+ * **+Rel** = relative pronoun
+ * **+Indef** = indefinite pronoun
+ * **+Coll** = collective numerals
+ * **+Arab** = arabic numerals
+ * **+Rom** = remertall
+
+## Error tags
+
+ * **+Err/Orth** = Substandard. An ungrammatical, non-normative form of normative lemma.
+ * **+Err/Lex** = No normative lemma, often ungrammatical compounds like "bajásbuollda" and "songdebutierit".
+ * **+Err/Hyph** = No normative lemma
+ * **+Err/SpaceCmp** = No normative lemma
+ * **+Err/Der** = Lemmas that break with regular derivation rules, both morphologically and semantically
+ * **+Err/Infl** = Lemmas that break with normative inflection rules, often used with morphological changes
+ **+Err/MissingSpace** = in use in smi lexc. Used for "goadedagi", when it should be "goade dagi"
+
+## Usage restriction tags
+
+ * **+Use/Marg**  Marginal, but normative lemmas. Not in speller.
+ * **+Use/-Spell**  Excluded from speller
+ * **+Use/-PLX**  Excluded from PLX speller
+ * **+Use/-PMatch**  Do not include in fst's made for hfst-pmatch
+ * **+Use/SpellNoSugg**  Recognized, but not suggested in speller
+ * **+Use/Circ**  Circular path
+ * **+Use/CircN**  Circular number path
+ * **+Use/Ped**  Remove from pedagogical speller
+ * **+Use/NG**  Do not generate, only for Oahpa and MT. In speller.
  * **+Use/MT** Generate for MT only, for restricting analyses needed
  * **+Use/NGminip** Not for miniparadigm in VD dicts
- * +Use/NotDNorm  For words without formal normalization.
-Divvun suggest that this shouldn't be normative.
- * +Use/DNorm  For words without formal normalization.
-Divvun suggest that this should be normative. Included in speller.                      
- * +Use/Derrog  Derrogatory word. Recognized, but not suggested in speller, same as SpellNoSugg
+ * **+Use/NotDNorm**  For words without formal normalization. Divvun suggest that this shouldn't be normative.
+ * **+Use/DNorm**  For words without formal normalization.  Divvun suggest that this should be normative. Included in speller.                      
+ * **+Use/PMatch** 
+ * **+Use/Derrog**  Derrogatory word. Recognized, but not suggested in speller, same as SpellNoSugg
  * **+Use/GC** only retained in the HFST Grammar Checker disambiguation analyser
  * **+Use/-GC** never retained in the HFST Grammar Checker disambiguation analyser
 
+## Dialect and Area tags
  * +Area/SE - Used in Sweden only
  * +Area/NO - Used in Norway only
  * +Dial/N Used in the northern areas.  Some might say that
@@ -87,6 +98,8 @@ The first part of the component may be ..
  * +CmpN/PlG = Plural Genitive
  * +CmpN/Attr = Attributive
 
+This part of the component can ..
+
  * +CmpNP/All - ... be in all positions, **default**, this tag does not have to be written
  * +CmpNP/First - ... only be first part in a compound or alone
  * +CmpNP/Pref - ... only **first** part in a compound, NEVER alone
@@ -96,15 +109,20 @@ The first part of the component may be ..
  * +CmpNP/Only - ... only be part of a compound, i.e. can never
                 be used alone, but can appear in any position
 
+The second part of the compound may require that the previous (left part) is (and thus overrides the regular CmpN tags):
+
  * +CmpN/SgLeft  Singular to the left
  * +CmpN/SgNomLeft  Singular nominative to the left
  * +CmpN/SgGenLeft  Singular genitive to the left
  * +CmpN/PlGenLeft  Plural genitive to the left
 
- * +CmpN/Def  Left override
- * +CmpN/DefSgGen  Overrides left tag, requires SgGen form
- * +CmpN/DefPlGen  Overrides left tag, requires PlGen form
+But these tags can again be overriden by the first word in a compound, if this part of the compound is tagged with a def tag:
 
+ * **+CmpN/Def**  Left override
+ * **+CmpN/DefSgGen**  Overrides left tag, requires SgGen form
+ * **+CmpN/DefPlGen**  Overrides left tag, requires PlGen form
+
+## Descriptive compounding tags
 Tags for compound analysis - this is what a compound actually is.
 Some of these tags are also used in combination with the
 above normative tags to actually enforce compound restrictions in the fst.
@@ -115,11 +133,9 @@ above normative tags to actually enforce compound restrictions in the fst.
  * **+Cmp/PlGen**  Plural Genitiv
  * **+Cmp/PlNom**  Plural Nominative
  * **+Cmp/Attr**  Attribute
-
  * **+Cmp/Sh**  testing ShCmp
  * **+Cmp/Long**  Long for om SgNom when short form is default, tjåhkaNIBMEbievddegirjje and bierjjeDAHKAiehket
  * **+Cmp/Unass**  Unassimiled as first part of Cmp, e.g. telegram- in stead for telegrámma-
-
  * **+Cmp**  Dynamic compound - this tag should always be part of a dynamic compound.
                It is important for Apertium, and useful in other cases as well.
  * **+Cmp/SplitR**  This is a split compound with the other part to the right:
@@ -129,64 +145,70 @@ above normative tags to actually enforce compound restrictions in the fst.
 +Cmp/OblHyph  +Cmp/OblHyph   Obligatory hyphen, not as badly weighed as +Cmp/Hyph
 
 
+# Inflectional Tags
+## Tags for Case and Number Inflection
 
- * +Sg    Singular number
- * +Du    Dual number
- * +Pl    Plural number
- * +Ess   Essive case
- * +Nom   Nominative case
- * +Gen   Genitive case
- * +Acc   Accusative case
- * +Ill   Illative case
- * +Loc   Locative case
- * +Com   Comitative case
- * +Ine   Inesive case
- * +Ela   Elative case
- * +Par   Partitive case
- * +Abe   Abessive case
+ *  **+Sg** = Singular number
+ *  **+Du** = Dual number
+ *  **+Pl** = Plural number
+ *  **+Ess** = Essive case
+ *  **+Nom** = Nominative case
+ *  **+Gen** = Genitive case
+ *  **+Acc** = Accusative case
+ *  **+Ill** = Illative case
+ *  **+Loc** = Locative case
+ *  **+Com** = Comitative case
+ *  **+Ine** = Inesive case
+ *  **+Ela** = Elative case
+ *  **+Par** = Partitive case
+ *  **+Abe** = Abessive case
 
- *  +PxSg1   possessive suffix singular first person
- *  +PxSg2   possessive suffix singular second person
- *  +PxSg3   possessive suffix singular third person
- *  +PxDu1   possessive suffix dual first person
- *  +PxDu2   possessive suffix dual second person
- *  +PxDu3   possessive suffix dual third person
- *  +PxPl1   possessive suffix plural first person
- *  +PxPl2   possessive suffix plural second person
- *  +PxPl3   possessive suffix plural plural person
+## Possessive tags
 
- *  +Attr    Attribute
+ * **+PxSg1** possessive suffix singular first person
+ * **+PxSg2** possessive suffix singular second person
+ * **+PxSg3** possessive suffix singular third person
+ * **+PxDu1** possessive suffix dual first person
+ * **+PxDu2** possessive suffix dual second person
+ * **+PxDu3** possessive suffix dual third person
+ * **+PxPl1** possessive suffix plural first person
+ * **+PxPl2** possessive suffix plural second person
+ * **+PxPl3** possessive suffix plural plural person
 
- *  +Card   
+## Adjective specific tags
+ * +Attr Attribute
+ * +Card
  * +Ord  CHECK THIS! In closed-sme there are +Ord entries without circ. tag
 
- *  +Ind    Indicative mood
- *  +Prs    Present tense
- *  +Prt    Past tense
- *  +Pot    Potensial mood
- *  +Cond   conditional mood
- *  +Imprt  Imperative mood
- *  +Sg1    singular first person
- *  +Sg2    singular second person
- *  +Sg3    singular third person
- *  +Du1    dual first person
- *  +Du2    dual second person
- *  +Du3    dual third person
- *  +Pl1    plural first person
- *  +Pl2    plural second person
- *  +Pl3    plural plural person
- *  +Inf      infinitive
- *  +Ger       gerundium
- *  +ConNeg    the main verb form used with negation verb. Like "bårå" in "Iv bårå guolev"
- *  +Neg       negation verb
- *  +ImprtII   second imperative mood
- *  +PrsPrc    present participle
- *  +PrfPrc    past participle
- *  +Sup       supinum
- *  +VGen     verb genitive
- *  +VAbess   verb abessive
- *  +Actio    Actio
+## Verbal inflection
+ * +Ind Indicative mood
+ * +Prs Present tense
+ * +Prt Past tense
+ * +Pot Potensial mood
+ * +Cond conditional mood
+ * +Imprt Imperative mood
+ * +Sg1 singular first person
+ * +Sg2 singular second person
+ * +Sg3 singular third person
+ * +Du1 dual first person
+ * +Du2 dual second person
+ * +Du3 dual third person
+ * +Pl1 plural first person
+ * +Pl2 plural second person
+ * +Pl3 plural plural person
+ * +Inf infinitive
+ * +Ger  gerundium
+ * +ConNeg  the main verb form used with negation verb. Like "bårå" in "Iv bårå guolev"
+ * +Neg  negation verb
+ * +ImprtII  second imperative mood
+ * +PrsPrc  present participle
+ * +PrfPrc  past participle
+ * +Sup  supinum
+ * +VGen verb genitive
+ * +VAbess verb abessive
+ * +Actio Actio
 
+## Other tags
  * +ABBR
  * +Symbol = independent symbols in the text stream, like £, €, ©
  * +ACR
@@ -196,7 +218,6 @@ above normative tags to actually enforce compound restrictions in the fst.
  * +RIGHT
  * **+CLBfinal**  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
  * ^GUESSNOUNROOT
-
  * +TV !
  * +IV !  Transitivity tags
  * **+G3** Grade 2-3 for homonymies with grade 1-2, +N+G3
@@ -205,9 +226,11 @@ above normative tags to actually enforce compound restrictions in the fst.
  * +Guess  for the name guesser
  * +NomAg Actor Noun From Verb - Nomen Agentis
 
+
 ## Lexeme disambiguation = homonym tags
-* **+Hom1**:  Homonymy
-* **+Hom2**:  Homonymy
+ * **+Hom1**:  Homonymy
+ * **+Hom2**:  Homonymy
+
 
 ## Stem variant tags
  * +v1 - variant 1
@@ -222,7 +245,6 @@ above normative tags to actually enforce compound restrictions in the fst.
  * +Clt
  * +Cltl
  * +Foc  These two are only found in SMJ - do we need them?
-### Focus particles:
  * +Foc/ge
  * +Foc/gen
  * +Foc/ga
@@ -230,135 +252,135 @@ above normative tags to actually enforce compound restrictions in the fst.
  * +Foc/Pos-k
 
 ### Other tags
- * +MWE  multi word expressions, goes to abbr
- * +Sh  Short form
-
- * +Gram/Comp = Inherent comp, lexicalized derivation 
- * +Gram/Superl = Inherent superl, lexicalized derivation 
- * +Gram/Dimin = Inherent diminutive, lexicalized derivation 
- * +Gram/NomAg = Inherent Actor Noun From Verb - Nomen Agentis, lexicalized derivation 
- * +Gram/r = Inherent -r derivation. guollit-guollár 
- * +Gram/NomAct = Inherent Actio Noun From Verb - Nomen Actionis, lexicalized derivation 
- * +Gram/NomInstr = Inherent Intsrumental noun From Verb, Nomen instrumentalis,lexicalized derivation 
-* **+Gram/TAbbr**:  Transitive abbreviation (it needs an argument)
-* **+Gram/NoAbbr**:  Intransitive abbreviations that are homonymous
-* **+Gram/TNumAbbr**:  Transitive abbreviation if the following
-* **+Gram/NumNoAbbr**:  Transitive abbreviations for which numerals
-* **+Gram/TIAbbr**:  Both transitive and intransitive abbreviation
-* **+Gram/IAbbr**:  Intransitive abbreviation (it takes no argument)
-* **+Gram/3syll**:  trisyllabic verbs
-* **+Gram/SentInit**:  copula verb le-
+ * **+MWE**  multi word expressions, goes to abbr
+ * **+Sh**  Short form
+ * **+Gram/Comp** = Inherent comp, lexicalized derivation 
+ * **+Gram/Superl** = Inherent superl, lexicalized derivation 
+ * **+Gram/Dimin** = Inherent diminutive, lexicalized derivation 
+ * **+Gram/NomAg** = Inherent Actor Noun From Verb - Nomen Agentis, lexicalized derivation 
+ * **+Gram/r** = Inherent -r derivation. guollit-guollár 
+ * **+Gram/NomAct** = Inherent Actio Noun From Verb - Nomen Actionis, lexicalized derivation 
+ * **+Gram/NomInstr** = Inherent Intsrumental noun From Verb, Nomen instrumentalis,lexicalized derivation 
+ * **+Gram/TAbbr**:  Transitive abbreviation (it needs an argument)
+ * **+Gram/NoAbbr**:  Intransitive abbreviations that are homonymous
+ * **+Gram/TNumAbbr**:  Transitive abbreviation if the following
+ * **+Gram/NumNoAbbr**:  Transitive abbreviations for which numerals
+ * **+Gram/TIAbbr**:  Both transitive and intransitive abbreviation
+ * **+Gram/IAbbr**:  Intransitive abbreviation (it takes no argument)
+ * **+Gram/3syll**:  trisyllabic verbs
+ * **+Gram/SentInit**:  copula verb le-
 
 ## Semantic tags to help disambiguation & syntactic analysis
 
 These tags should always be located just before the POS tag.
 
- *  +Sem/Act          = Activity; cleaning, work, occupation, project, photosynthesis
- *  +Sem/Adr          = Webadr
- *  +Sem/Amount       = Amount; pile, amount of lynx, amount of food, one fifteenth, ten percent
- *  +Sem/Ani          = Animate; dog, reindeer, teddy bear,ndragon, lice
- * +Sem/Ani-fish = Fish
- *  +Sem/Aniprod      = Animal Product; sweat, reindeer skin, lice egg, blood for making dumplings, pee
- *  +Sem/Body         = Bodypart; ear, bone, ear canal, artificial leg, mustache, nervous system
- *  +Sem/Body-abstr   = Non-physical body part; Sjel, ånd, reason, soul, voice, eyesight, conscience
- *  +Sem/Build        = Building; house, museum, Sámi tent, nest, sandcastle
- *  +Sem/Build-room   = Room in a building, typically place to be
- *  +Sem/Buildpart    = Part of building; closet, room, door, balcony, pool, office
- *  +Sem/Cat          = Category; name, subjunction, suffix, password, existential sentence
- *  +Sem/Clth         = Clothes/Clothing; shirt, hat, theater costume, shawl, seatbelt, diaper
- *  +Sem/Clth-jewl    = Jewelery and similar; watch, sunglasses, ring, necklace, crown
- *  +Sem/Clthpart     = Part of clothes; knapp, søm, pocket (OBS! Ctain-abstr), bottom part of an article of clothing, upper part of trousers, seam, button
- *  +Sem/Ctain        = Container; suitcase, terrarium, closet, container, gas tank
- *  +Sem/Ctain-abstr  = Abstract container; bank account, fund, account, loan fund, pot, bank account
- *  +Sem/Ctain-clth   = Eks; lomme/pocket
- *  +Sem/Curr         = Currency; not money, euro, US dollar, denar, Danish crown, currency
- *  +Sem/Dance        = Dance; swing, rumba, ballet, belly dance, war dance
- *  +Sem/Date         = Date
- *  +Sem/Dir          = Direction; GPS course, stock exchange price, graph, tendency, starboard
- *  +Sem/Domain       = Domain like politics, reindeerherding (a system of actions), anthropology, punk rock, biology, linguistics, medicine
- *  +Sem/Drink        = Drink; tea, beer, UHT milk, soda, communion wine
- *  +Sem/Dummytag     = Default tag for uncategorized nouns
- *  +Sem/Edu          = Educational event; skiing high school skiing academy, course, music lesson, lesson, master
- *  +Sem/Event        = Event; wedding, meeting, competition, election, festival
- *  +Sem/Feat         = Feature; Árvu, age difference, homosexuality, femininity, identity, congruence
- *  +Sem/Feat-measr   = Measurable feature; radius, diameter, volume, circumference, perimeter, frequency
- *  +Sem/Feat-phys    = Physiological feature; size, color, height, shape, weight, horsepower
- *  +Sem/Feat-psych   = Psychological feature; authority, nature, childishness, creativity, arrogance
- *  +Sem/Fem          = Female name
- *  +Sem/Food         = Food; bread, vegetarian food, flour, tobacco, salt
- *  +Sem/Food-med     = Medicine; birth-control pill, asthma medicine, medicine, penicillin, vaccine
- *  +Sem/Fruit        = Fruit and fruit-like edibles
- *  +Sem/Furn         = Furniture; throne, chair, table, altar, trampoline
- *  +Sem/Game         = Game; biŋgo bingo, TV game, flipper, paintball, chess
- *  +Sem/Geom         = Geometrical object; triangle, triangle, tetrahedron, asymptote, star
- *  +Sem/Group        = Animal or Human Group; family, herd, group, indigenous people, delegation
- *  +Sem/Hum          = Human
- *  +Sem/Hum-abstr    = Human abstract
- *  +Sem/ID           = ID
- *  +Sem/Ideol        = Ideology; nomadism, buddhism, feminism, christianity, fanaticism
- *  +Sem/Lang         = Language; South Sámi, mother tongue, Maori, Yiddish, second language
- *  +Sem/Mal          = Male name
- *  +Sem/Mat          = Material for producing things; paper, steel, wood, leather, wool
- *  +Sem/Measr        = Measure; unit of volume, quarter meter, hour, minus degree, wátta watt
- *  +Sem/Money        = Has to do with money; wages, not Curr(ency), treasure, belongings, debt, food price, bill, pension
- *  +Sem/Obj          = Object; thing, cup, thing, toy, painting
- *  +Sem/Obj-catch    = 
- *  +Sem/Obj-clo      = Cloth; carpet, flag, curtain, silk sheets, napkin
- *  +Sem/Obj-cogn     = 
- *  +Sem/Obj-el       = (Electrical) machine or apparatus; player, lamp, TV, radio, oven
- *  +Sem/Obj-ling     = Object with something written on it
- *  +Sem/Obj-play     = Play object
- *  +Sem/Obj-rope     = flexible ropelike object; barbed wire, thread, rope, cable, dental floss
- *  +Sem/Obj-surfc    = Surface object; blackboard, drawing paper, canvas, board (for playing board games), (money) bill
- *  +Sem/Org          = Organisation; newspaper, supreme court, company, museum, administration
- *  +Sem/Part         = Feature, part of something; half, part, percent, rest, tenth
- *  +Sem/Perc-cogn    = Cloth
- *  +Sem/Perc-emo     = Emotional perception; fear, feeling of identity, empathy, sadness, working motivation
- *  +Sem/Perc-phys    = Physical perception; shoulder pain, gass smell, sleep (during the night), need of sleep, hunger
- *  +Sem/Perc-psych   = Psychic perception
- *  +Sem/Plant        = Plant; lichen, plant, cucumber, bluebell, poisonous mushroom
- *  +Sem/Plantpart    = Plant part; twig, leaf, root, seed, pine trunk
- *  +Sem/Play         = Play
- *  +Sem/Plc          = Place; world, nature, airport, workplace, fireplace
- *  +Sem/Plc-abstr    = Abstract place; bachelor level, job market, third place, Troms website, address
- *  +Sem/Plc-elevate  = Elevated place; mountain, peak, mountain top, scree, volcano
- *  +Sem/Plc-line     = Place limitations; national border, border, finish line, stop line, equator
- *  +Sem/Plc-water    = Water; river, lake, polar sea, sea, well
- *  +Sem/Pos          = Position (as in social position job); 50% position, presidency, fixed position, kindergarten place, role in society
- *  +Sem/Process      = Process
- *  +Sem/Prod         = Product
- *  +Sem/Prod-audio   = Audio product; yoik, roar, Beatles song, Bible psalm, blues
- *  +Sem/Prod-cogn    = Cognition product; thought, decision, knowledge, lack of understanding, requirement
- *  +Sem/Prod-ling    = Linguistic product; message, question, agreement, translation, criticism
- *  +Sem/Prod-vis     = Visual product; picture, film, TV series, documentary, art
- *  +Sem/Rel          = Relation; relation, dependency, subordination, analogy, equivalence
- *  +Sem/Route        = Route-like place; street, path, corridor, bridge, winter path
- *  +Sem/Rule         = Rule or convention; cultural tradition, abortion law, EU rule, law of cosines, fair play
- *  +Sem/Semcon       = Abstract semantic concept; result, objective, reason, alternative, case
- *  +Sem/Sign         = Sign (e.g. numbers, punctuation); ID number, ČSV letters, quotation mark, hieroglyph, symbol
- *  +Sem/Sport        = Sport; table tennis, judo, motor cross, ice hockey, floorball
- *  +Sem/State        = State; hurry, captivity, anarchy, biodiversity, chaos
- *  +Sem/State-sick   = Illness; allergy, cold, autism, dementia, somnambulism
- *  +Sem/Substnc      = Substance; Water, sand, air, smoke, carbohydrate, vitamin, dust
- *  +Sem/Sur          = Surname
- *  +Sem/Symbol       = Symbol
- *  +Sem/Time         = Time; áigi time, April, half an hour, Tuesday, deadline
- *  +Sem/Time-clock   = Time
- *  +Sem/Tool         = Prototypical tool for repairing things; axe, knife, fire striker, plastic hammer, wrench
- *  +Sem/Tool-catch   = Tool used for catching; artificial fly, fishing net for cod, fishing rod, lasso used in wintertime, mouse trap
- *  +Sem/Tool-clean   = Tool used for cleaning; broom, vegetable brush, toothbrush, cleaning equipment
- *  +Sem/Tool-it      = Tool used in IT/tool within IT; IT infrastructure, analyzer, searching function, computer program, browser
- *  +Sem/Tool-measr   = Tool used for measuring; barometer, hourglass, ruler, spirit level, scale
- *  +Sem/Tool-music   = Musical instrument; shaman drum, guitar, violin, musical instrument, jaw harp
- *  +Sem/Tool-write   = Writing tool; colored pen, pencil, chalk, paintbrush, paint
- *  +Sem/Txt          = Written document; paper, book, letter, e-mail, song
- *  +Sem/Veh          = Vehicle; car, boat, sled, vehicle, draft reindeer, bicycle
- *  +Sem/Wpn          = Weapon; rifle, bow, sword, arrow, war axe
- *  +Sem/Wthr         = The Weather or the state of ground; cloudy weather, wind, driving conditions, night sunlight, rain shower
- *  +Sem/Year         = Year
+ * **+Sem/Act** = Activity; cleaning, work, occupation, project, photosynthesis
+ * **+Sem/Adr** = Webadr
+ * **+Sem/Amount** = Amount; pile, amount of lynx, amount of food, one fifteenth, ten percent
+ * **+Sem/Ani** = Animate; dog, reindeer, teddy bear,ndragon, lice
+ * **+Sem/Ani-fish** = Fish
+ * **+Sem/Aniprod** = Animal Product; sweat, reindeer skin, lice egg, blood for making dumplings, pee
+ * **+Sem/Body** = Bodypart; ear, bone, ear canal, artificial leg, mustache, nervous system
+ * **+Sem/Body-abstr** = Non-physical body part; Sjel, ånd, reason, soul, voice, eyesight, conscience
+ * **+Sem/Build** = Building; house, museum, Sámi tent, nest, sandcastle
+ * **+Sem/Build-room** = Room in a building, typically place to be
+ * **+Sem/Buildpart** = Part of building; closet, room, door, balcony, pool, office
+ * **+Sem/Cat** = Category; name, subjunction, suffix, password, existential sentence
+ * **+Sem/Clth** = Clothes/Clothing; shirt, hat, theater costume, shawl, seatbelt, diaper
+ * **+Sem/Clth-jewl** = Jewelery and similar; watch, sunglasses, ring, necklace, crown
+ * **+Sem/Clthpart** = Part of clothes; knapp, søm, pocket (OBS! Ctain-abstr), bottom part of an article of clothing, upper part of trousers, seam, button
+ * **+Sem/Ctain** = Container; suitcase, terrarium, closet, container, gas tank
+ * **+Sem/Ctain-abstr** = Abstract container; bank account, fund, account, loan fund, pot, bank account
+ * **+Sem/Ctain-clth** = Eks; lomme/pocket
+ * **+Sem/Curr** = Currency; not money, euro, US dollar, denar, Danish crown, currency
+ * **+Sem/Dance** = Dance; swing, rumba, ballet, belly dance, war dance
+ * **+Sem/Date** = Date
+ * **+Sem/Dir** = Direction; GPS course, stock exchange price, graph, tendency, starboard
+ * **+Sem/Domain** = Domain like politics, reindeerherding (a system of actions), anthropology, punk rock, biology, linguistics, medicine
+ * **+Sem/Drink** = Drink; tea, beer, UHT milk, soda, communion wine
+ * **+Sem/Dummytag** = Default tag for uncategorized nouns
+ * **+Sem/Edu** = Educational event; skiing high school skiing academy, course, music lesson, lesson, master
+ * **+Sem/Event** = Event; wedding, meeting, competition, election, festival
+ * **+Sem/Feat** = Feature; Árvu, age difference, homosexuality, femininity, identity, congruence
+ * **+Sem/Feat-measr** = Measurable feature; radius, diameter, volume, circumference, perimeter, frequency
+ * **+Sem/Feat-phys** = Physiological feature; size, color, height, shape, weight, horsepower
+ * **+Sem/Feat-psych** = Psychological feature; authority, nature, childishness, creativity, arrogance
+ * **+Sem/Fem** = Female name
+ * **+Sem/Food** = Food; bread, vegetarian food, flour, tobacco, salt
+ * **+Sem/Food-med** = Medicine; birth-control pill, asthma medicine, medicine, penicillin, vaccine
+ * **+Sem/Fruit** = Fruit and fruit-like edibles
+ * **+Sem/Furn** = Furniture; throne, chair, table, altar, trampoline
+ * **+Sem/Game** = Game; biŋgo bingo, TV game, flipper, paintball, chess
+ * **+Sem/Geom** = Geometrical object; triangle, triangle, tetrahedron, asymptote, star
+ * **+Sem/Group** = Animal or Human Group; family, herd, group, indigenous people, delegation
+ * **+Sem/Hum** = Human
+ * **+Sem/Hum-abstr** = Human abstract
+ * **+Sem/ID** = ID
+ * **+Sem/Ideol** = Ideology; nomadism, buddhism, feminism, christianity, fanaticism
+ * **+Sem/Lang** = Language; South Sámi, mother tongue, Maori, Yiddish, second language
+ * **+Sem/Mal** = Male name
+ * **+Sem/Mat** = Material for producing things; paper, steel, wood, leather, wool
+ * **+Sem/Measr** = Measure; unit of volume, quarter meter, hour, minus degree, wátta watt
+ * **+Sem/Money** = Has to do with money; wages, not Curr(ency), treasure, belongings, debt, food price, bill, pension
+ * **+Sem/Obj** = Object; thing, cup, thing, toy, painting
+ * **+Sem/Obj-catch** = 
+ * **+Sem/Obj-clo** = Cloth; carpet, flag, curtain, silk sheets, napkin
+ * **+Sem/Obj-cogn** = 
+ * **+Sem/Obj-el** = (Electrical) machine or apparatus; player, lamp, TV, radio, oven
+ * **+Sem/Obj-ling** = Object with something written on it
+ * **+Sem/Obj-play** = Play object
+ * **+Sem/Obj-rope** = flexible ropelike object; barbed wire, thread, rope, cable, dental floss
+ * **+Sem/Obj-surfc** = Surface object; blackboard, drawing paper, canvas, board (for playing board games), (money) bill
+ * **+Sem/Org** = Organisation; newspaper, supreme court, company, museum, administration
+ * **+Sem/Part** = Feature, part of something; half, part, percent, rest, tenth
+ * **+Sem/Perc-cogn** = Cloth
+ * **+Sem/Perc-emo** = Emotional perception; fear, feeling of identity, empathy, sadness, working motivation
+ * **+Sem/Perc-phys** = Physical perception; shoulder pain, gass smell, sleep (during the night), need of sleep, hunger
+ * **+Sem/Perc-psych** = Psychic perception
+ * **+Sem/Plant** = Plant; lichen, plant, cucumber, bluebell, poisonous mushroom
+ * **+Sem/Plantpart** = Plant part; twig, leaf, root, seed, pine trunk
+ * **+Sem/Play** = Play
+ * **+Sem/Plc** = Place; world, nature, airport, workplace, fireplace
+ * **+Sem/Plc-abstr** = Abstract place; bachelor level, job market, third place, Troms website, address
+ * **+Sem/Plc-elevate** = Elevated place; mountain, peak, mountain top, scree, volcano
+ * **+Sem/Plc-line** = Place limitations; national border, border, finish line, stop line, equator
+ * **+Sem/Plc-water** = Water; river, lake, polar sea, sea, well
+ * **+Sem/Pos** = Position (as in social position job); 50% position, presidency, fixed position, kindergarten place, role in society
+ * **+Sem/Process** = Process
+ * **+Sem/Prod** = Product
+ * **+Sem/Prod-audio** = Audio product; yoik, roar, Beatles song, Bible psalm, blues
+ * **+Sem/Prod-cogn** = Cognition product; thought, decision, knowledge, lack of understanding, requirement
+ * **+Sem/Prod-ling** = Linguistic product; message, question, agreement, translation, criticism
+ * **+Sem/Prod-vis** = Visual product; picture, film, TV series, documentary, art
+ * **+Sem/Rel** = Relation; relation, dependency, subordination, analogy, equivalence
+ * **+Sem/Route** = Route-like place; street, path, corridor, bridge, winter path
+ * **+Sem/Rule** = Rule or convention; cultural tradition, abortion law, EU rule, law of cosines, fair play
+ * **+Sem/Semcon** = Abstract semantic concept; result, objective, reason, alternative, case
+ * **+Sem/Sign** = Sign (e.g. numbers, punctuation); ID number, ČSV letters, quotation mark, hieroglyph, symbol
+ * **+Sem/Sport** = Sport; table tennis, judo, motor cross, ice hockey, floorball
+ * **+Sem/State** = State; hurry, captivity, anarchy, biodiversity, chaos
+ * **+Sem/State-sick** = Illness; allergy, cold, autism, dementia, somnambulism
+ * **+Sem/Substnc** = Substance; Water, sand, air, smoke, carbohydrate, vitamin, dust
+ * **+Sem/Sur** = Surname
+ * **+Sem/Symbol** = Symbol
+ * **+Sem/Time** = Time; áigi time, April, half an hour, Tuesday, deadline
+ * **+Sem/Time-clock** = Time
+ * **+Sem/Tool** = Prototypical tool for repairing things; axe, knife, fire striker, plastic hammer, wrench
+ * **+Sem/Tool-catch** = Tool used for catching; artificial fly, fishing net for cod, fishing rod, lasso used in wintertime, mouse trap
+ * **+Sem/Tool-clean** = Tool used for cleaning; broom, vegetable brush, toothbrush, cleaning equipment
+ * **+Sem/Tool-it** = Tool used in IT/tool within IT; IT infrastructure, analyzer, searching function, computer program, browser
+ * **+Sem/Tool-measr** = Tool used for measuring; barometer, hourglass, ruler, spirit level, scale
+ * **+Sem/Tool-music** = Musical instrument; shaman drum, guitar, violin, musical instrument, jaw harp
+ * **+Sem/Tool-write** = Writing tool; colored pen, pencil, chalk, paintbrush, paint
+ * **+Sem/Txt** = Written document; paper, book, letter, e-mail, song
+ * **+Sem/Veh** = Vehicle; car, boat, sled, vehicle, draft reindeer, bicycle
+ * **+Sem/Wpn** = Weapon; rifle, bow, sword, arrow, war axe
+ * **+Sem/Wthr** = The Weather or the state of ground; cloudy weather, wind, driving conditions, night sunlight, rain shower
+ * **+Sem/Year** = Year
 
 
 ### Multiple Semantic tags:
+
  * +Sem/Ani_Group = 
  * +Sem/Act_Clth = 
  * +Sem/Act_Domain = 
@@ -542,7 +564,7 @@ These tags should always be located just before the POS tag.
  * +Sem/Food_Plant				 = 
  * +Sem/Food_Substnc = 
  * +Sem/Food_Time = 
- *  +Sem/Fruit_Sport				     = 
+ * +Sem/Fruit_Sport				 = 
  * +Sem/Furn_Ctain-abstr = 
  * +Sem/Game_Obj-play = 
  * +Sem/Geom_Obj = 
@@ -585,7 +607,7 @@ These tags should always be located just before the POS tag.
  * +Sem/Mat_Tool-catch = 
  * +Sem/Mat_Txt = 
  * +Sem/Measr_Plc_Time			 = 
- *  +Sem/Measr_Sign                     = 
+ * +Sem/Measr_Sign = 
  * +Sem/Measr_Time = 
  * +Sem/Money_Obj = 
  * +Sem/Money_Plc	 	 = 
@@ -661,6 +683,8 @@ These tags should always be located just before the POS tag.
  * +Sem/Tool-music = 
 
 
+Not sure which section this goes in: (before POS)
+
  * +Allegro from LEXICON GOADE-IU-
 
 
@@ -672,7 +696,7 @@ according to a positional system, where each tag can be in one and only one
 position, and can only combine with tags from an earlier / lower position.
 This is done to avoid possible overgeneration in the derivational system.
 
-* **+Der1 +Der2 +Der3 +Der4 +Der5**:    - positional tags, preceeds the actual der tag
+ * **+Der1 +Der2 +Der3 +Der4 +Der5**:    - positional tags, preceeds the actual der tag
 ### Der#1 tags - tags in first position
  * +Der/Caus VV - previously Der/ahtte
  * +Der/PassD VV - dallat passive
@@ -783,46 +807,46 @@ get the same pronunciation whether read as SME or NOB/NNO/SWE.
 We have manually optimised the structure of our lexicon using following
 flag diacritics to restrict morhpological combinatorics - only allow compounds
 with verbs if the verb is further derived into a noun again:
-|  @P.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
-|  @D.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
-|  @C.NeedNoun@ | (Dis)allow compounds with verbs unless nominalised
+ |  @P.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
+ |  @D.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
+ |  @C.NeedNoun@ | (Dis)allow compounds with verbs unless nominalised
 
 
-|  @P.Pmatch.Loc@ | Used on multi-token analyses; tell hfst-tokenise/pmatch where in the form/analysis the token should be split.
-|  @P.Pmatch.Backtrack@ | Used on single-token analyses; tell hfst-tokenise/pmatch to backtrack by reanalysing the substrings before and after this point in the form (to find combinations of shorter analyses that would otherwise be missed)
+ |  @P.Pmatch.Loc@ | Used on multi-token analyses; tell hfst-tokenise/pmatch where in the form/analysis the token should be split.
+ |  @P.Pmatch.Backtrack@ | Used on single-token analyses; tell hfst-tokenise/pmatch to backtrack by reanalysing the substrings before and after this point in the form (to find combinations of shorter analyses that would otherwise be missed)
 
 
-|  @D.ErrOrth.ON@ 
-|  @R.ErrOrth.ON@ 
-|  @C.ErrOrth@ 
-|  @P.ErrOrth.ON@ 
+ |  @D.ErrOrth.ON@ 
+ |  @R.ErrOrth.ON@ 
+ |  @C.ErrOrth@ 
+ |  @P.ErrOrth.ON@ 
 
 For languages that allow compounding, the following flag diacritics are needed
 to control position-based compounding restrictions for nominals. Their use is
 handled automatically if combined with +CmpN/xxx tags. If not used, they will
 do no harm.
-|  @P.CmpFrst.FALSE@ | Require that words tagged as such only appear first
-|  @D.CmpPref.TRUE@ | Block such words from entering ENDLEX
-|  @P.CmpPref.FALSE@ | Block these words from making further compounds
-|  @D.CmpLast.TRUE@ | Block such words from entering R
-|  @D.CmpNone.TRUE@ | Combines with the next tag to prohibit compounding
-|  @U.CmpNone.FALSE@ | Combines with the prev tag to prohibit compounding
-|  @U.CmpNone.TRUE@ | Combines with the two previous ones to block compounding
-|  @P.CmpOnly.TRUE@ | Sets a flag to indicate that the word has passed R
-|  @D.CmpOnly.FALSE@ | Disallow words coming directly from root.
-|  @U.CmpHyph.FALSE@ | Flag to control hyphenated compounds like proper nouns
-|  @U.CmpHyph.TRUE@ | Flag to control hyphenated compounds like proper nouns
-|  @C.CmpHyph@ | Flag to control hyphenated compounds like proper nouns
+ |  @P.CmpFrst.FALSE@ | Require that words tagged as such only appear first
+ |  @D.CmpPref.TRUE@ | Block such words from entering ENDLEX
+ |  @P.CmpPref.FALSE@ | Block these words from making further compounds
+ |  @D.CmpLast.TRUE@ | Block such words from entering R
+ |  @D.CmpNone.TRUE@ | Combines with the next tag to prohibit compounding
+ |  @U.CmpNone.FALSE@ | Combines with the prev tag to prohibit compounding
+ |  @U.CmpNone.TRUE@ | Combines with the two previous ones to block compounding
+ |  @P.CmpOnly.TRUE@ | Sets a flag to indicate that the word has passed R
+ |  @D.CmpOnly.FALSE@ | Disallow words coming directly from root.
+ |  @U.CmpHyph.FALSE@ | Flag to control hyphenated compounds like proper nouns
+ |  @U.CmpHyph.TRUE@ | Flag to control hyphenated compounds like proper nouns
+ |  @C.CmpHyph@ | Flag to control hyphenated compounds like proper nouns
 Use the following flag diacritics to control downcasing of derived proper
 nouns (e.g. Finnish Pariisi -> pariisilainen). See e.g. North Sámi for how to use
 these flags. There exists a ready-made regex that will do the actual down-casing
 given the proper use of these flags.
-|  @U.Cap.Obl@ | Disallow downcasing of names when not derived: Deatnu
-|  @U.Cap.Opt@ | Allowing downcasing of derived names: deatnulasj.
-|  @P.Px.add@	 | Giving possibility for Px-suffixes (all except from Nom 3.p)
-|  @R.Px.add@	 | Requiring P.Px.add-flag for Px-suffixes (all except from Nom 3.p)
-|  @P.Nom3Px.add@ |  Giving possibility for Px-suffixes Nom 3.p
-|  @R.Nom3Px.add@ | Requiring P.Nom3Px.add flag for Px-suffixes Nom 3.p
+ |  @U.Cap.Obl@ | Disallow downcasing of names when not derived: Deatnu
+ |  @U.Cap.Opt@ | Allowing downcasing of derived names: deatnulasj.
+ |  @P.Px.add@	 | Giving possibility for Px-suffixes (all except from Nom 3.p)
+ |  @R.Px.add@	 | Requiring P.Px.add-flag for Px-suffixes (all except from Nom 3.p)
+ |  @P.Nom3Px.add@ |  Giving possibility for Px-suffixes Nom 3.p
+ |  @R.Nom3Px.add@ | Requiring P.Nom3Px.add flag for Px-suffixes Nom 3.p
 
 
 
@@ -848,16 +872,16 @@ with +CmpNP/Only to end here.
 The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
 
 
- * **LEXICON UNIT**  As acro, but without paradigm
+ * **LEXICON UNIT   **  As acro, but without paradigm
 
 
 
 
 
 
- * __LEXICON ACRONOUN_cons   **is the lexicon for**nouns__ (not +Prop) like ATV
+ * **LEXICON ACRONOUN_cons   ** is the lexicon for **nouns** (not +Prop) like ATV
 
- * __LEXICON ACRONOUN_vow   **is the lexicon for**nouns__ (not +Prop) like ATV
+ * **LEXICON ACRONOUN_vow   ** is the lexicon for **nouns** (not +Prop) like ATV
 
 
 
@@ -2581,6 +2605,13 @@ Derivations to adjectives, continuation lexicon not for hardcoded adjectives
 
 
 ## Irregular stems
+
+ LEXICON SUOBDE   gen: suobddega.  Presently only for "suobde". For some reason -e dosn't become á. So not in lexicon BENA. Long and short essive.
+
+
+*ságe # Odd-syllable test examples:*
+* *ságe:* `ságe+N+Sg+Nom`
+* *sáhkahav:* `ságe+N+Sg+Acc`
 
  LEXICON SÁGE   gen: sáhkaha.  Presently only for "ságe". Long and short essive.
 
