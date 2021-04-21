@@ -1,15 +1,15 @@
 
 
- * **LEXICON UNIT**  As acro, but without paradigm
+ * **LEXICON UNIT   **  As acro, but without paradigm
 
 
 
 
 
 
- * __LEXICON ACRONOUN_cons   **is the lexicon for**nouns__ (not +Prop) like ATV
+ * **LEXICON ACRONOUN_cons   ** is the lexicon for **nouns** (not +Prop) like ATV
 
- * __LEXICON ACRONOUN_vow   **is the lexicon for**nouns__ (not +Prop) like ATV
+ * **LEXICON ACRONOUN_vow   ** is the lexicon for **nouns** (not +Prop) like ATV
 
 
 

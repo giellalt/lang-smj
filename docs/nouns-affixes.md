@@ -948,6 +948,13 @@
 
 ## Irregular stems
 
+ LEXICON SUOBDE   gen: suobddega.  Presently only for "suobde". For some reason -e dosn't become á. So not in lexicon BENA. Long and short essive.
+
+
+*ságe # Odd-syllable test examples:*
+* *ságe:* `ságe+N+Sg+Nom`
+* *sáhkahav:* `ságe+N+Sg+Acc`
+
  LEXICON SÁGE   gen: sáhkaha.  Presently only for "ságe". Long and short essive.
 
 
