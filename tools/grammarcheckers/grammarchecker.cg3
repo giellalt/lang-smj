@@ -1043,12 +1043,12 @@ COPY:real-ActioGen-PrtPl1 (Ind Prt Pl1 &SUGGEST) EXCEPT (Actio Gen) TARGET (&rea
     # viehkedima Lindav ådå goahtáj jåhtet
     
     
-    # real word error, missing j for -it verbs
+    # real word error, missing j for odd-syll -it verbs an "li"
     # ----------------------------------------
 
     # left subj
     
-ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-V - Gram/3syll OR ( "liehket" )  IF (0 (Prs Pl3)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg))  (NEGATE *1 (Pron Nom Pl3) OR (N Nom Pl))(NEGATE 0 (Prs Sg3)) ;
+ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-V + Gram/3syll OR ( "liehket" )  IF (0 (Prs Pl3)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg))  (NEGATE *1 (Pron Nom Pl3) OR (N Nom Pl))(NEGATE 0 (Prs Sg3)) ;
 
     ## Suv mielas sån li ilá materalistisk.
     ## Mij juo diehtep Hamsun nasistajt bælosti nuppát værálda doaron.
@@ -1056,15 +1056,28 @@ ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-V - Gram/3syll OR ( "lieh
     #$ Ulmutja vuosedi son boahtá odne.
 
     # right subj   
-ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-V - Gram/3syll OR ( "liehket" )  IF (0 (Prs Pl3)) (*1 (Pron Nom Sg3) OR (N Nom Sg)  OR (Pron Nom Sg)  LINK NEGATE 1 CC LINK *1 (Nom Sg) BARRIER NOT-NPMOD)  (NEGATE *-1 (Pron Nom Pl3) OR (N Nom Pl))(NEGATE 0 (Prs Sg3));
+ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-V + Gram/3syll OR ( "liehket" )  IF (0 (Prs Pl3)) (*1 (Pron Nom Sg3) OR (N Nom Sg)  OR (Pron Nom Sg)  LINK NEGATE 1 CC LINK *1 (Nom Sg) BARRIER NOT-NPMOD)  (NEGATE *-1 (Pron Nom Pl3) OR (N Nom Pl))(NEGATE 0 (Prs Sg3));
 
     ## Suv mielas li sån ilá materalistisk.
     #$ Suv mielas li Inga ja suv vielja ilá materialistisk.
     #$ Suv mielas Inga ja suv vielja li ....
     
-COPY:real-PrsPl3-PrtSg3 (Prt Sg3 &SUGGEST) EXCEPT (Prs Pl3) TARGET (&real-PrsPl3-PrtSg3) ;    
+COPY:real-PrsPl3-PrtSg3 (Prt Sg3 &SUGGEST) EXCEPT (Prs Pl3) TARGET (&real-PrsPl3-PrtSg3) ;   
 
 
+
+    
+    ##    # real word error, missing j for contracted -it verbs and "i"
+    # ----------------------------------------
+
+ADD:real-PrsSg2-PrsSg3 (&real-PrsSg2-PrsSg3) TARGET ( "ij" )  IF (0 (Prs Sg2)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg))  (NEGATE *1 (Pron Nom Sg2)) (NEGATE 0 (Prs Sg3)) ;
+
+    # Åhpadiddje i dánna vuojga tjielggi mij la barggodahkamus.
+
+COPY:real-PrsSg2-PrsSg3 (Sg3 &SUGGEST) EXCEPT (Sg2) TARGET (&real-PrsSg2-PrsSg3) ; 
+
+
+    
     # Word order, neg before subject
     # ----------------------------------------
     
