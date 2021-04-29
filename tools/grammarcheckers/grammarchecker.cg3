@@ -1066,16 +1066,49 @@ COPY:real-PrsPl3-PrtSg3 (Prt Sg3 &SUGGEST) EXCEPT (Prs Pl3) TARGET (&real-PrsPl3
 
 
 
+
+
     
-    ##    # real word error, missing j for contracted -it verbs and "i"
+    ##    # real word error, missing j for "i"
     # ----------------------------------------
+
+    # left subj
 
 ADD:real-PrsSg2-PrsSg3 (&real-PrsSg2-PrsSg3) TARGET ( "ij" )  IF (0 (Prs Sg2)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg))  (NEGATE *1 (Pron Nom Sg2)) (NEGATE 0 (Prs Sg3)) ;
 
-    # Åhpadiddje i dánna vuojga tjielggi mij la barggodahkamus.
+    ## Åhpadiddje i dánna vuojga tjielggi mij la barggodahkamus.
+    
+    # right subj 
+
+    ## i åhpadiddje dánna vuojga tjielggi mij la barggodahkamus.
+
+ADD:real-PrsSg2-PrsSg3 (&real-PrsSg2-PrsSg3) TARGET ( "ij" )  IF (0 (Prs Sg2)) (*1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) LINK NEGATE *1 CC BARRIER NOT-NPMOD LINK 1 (Nom Sg))  (NEGATE *-1 (Pron Nom Sg2)) (NEGATE 0 (Prs Sg3)) ;
 
 COPY:real-PrsSg2-PrsSg3 (Sg3 &SUGGEST) EXCEPT (Sg2) TARGET (&real-PrsSg2-PrsSg3) ; 
 
+ 
+
+
+    ##    # real word error, missing j for "ittji"
+    # ----------------------------------------
+
+    # left subj
+
+ADD:real-PrtSg2-PrtSg3 (&real-PrtSg2-PrtSg3) TARGET ( "ij" )  IF (0 (Prt Sg2)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg))  (NEGATE *1 (Pron Nom Sg2)) (NEGATE 0 (Prt Sg3)) ;
+
+    ## Hamsun ittji sámijda lijkku
+    ## valla dat ittji buoragit vuobde 
+
+    # right subj
+
+ADD:real-PrtSg2-PrtSg3 (&real-PrtSg2-PrtSg3) TARGET ( "ij" )  IF (0 (Prt Sg2)) (*1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) LINK NEGATE *1 CC BARRIER NOT-NPMOD LINK 1 (Nom Sg))  (NEGATE *-1 (Pron Nom Sg2)) (NEGATE 0 (Prt Sg3)) ;
+
+    ## ittji Hamsun sámijda lijkku
+    ## valla ittji dat buoragit vuobde 
+
+
+
+COPY:real-PrtSg2-PrtSg3 (Sg3 &SUGGEST) EXCEPT (Sg2) TARGET (&real-PrtSg2-PrtSg3) ; 
 
     
     # Word order, neg before subject
