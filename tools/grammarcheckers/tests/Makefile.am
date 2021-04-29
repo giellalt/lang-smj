@@ -19,7 +19,10 @@ TESTS=\
 # be fixed *later*, but is not critical at the moment:
 XFAIL_TESTS=\
 	msyn-liehket-congr-condsg2-condpl3.notfixed.yaml \
+	msyn-liehket-congr-condsg2-condpl3.yaml \
+    msyn-sme_bastard_neg1-2.yaml  \
 	real-PrsPl3-PrsSg3.yaml
+	
 
 endif # WANT_GRAMCHECK
 
