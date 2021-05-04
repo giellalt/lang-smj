@@ -249,7 +249,7 @@ above normative tags to actually enforce compound restrictions in the fst.
  * +Foc/ge
  * +Foc/gen
  * +Foc/ga
- * +Foc/Neg-k
+ * +Foc/Neg-k	
  * +Foc/Pos-k
 
 ### Other tags
@@ -393,8 +393,8 @@ These tags should always be located just before the POS tag.
  * **+Sem/Act_Group** = 
  * **+Sem/Act_Hum** = 
  * **+Sem/Act_Hum_Obj** = 
- * **+Sem/Act_Money** = 
- * **+Sem/Act_Obj** = 
+ * **+Sem/Act_Money 		** = 
+ * **+Sem/Act_Obj			** = 
  * **+Sem/Act_Obj-play** = 
  * **+Sem/Act_Org** = 
  * **+Sem/Act_Perc-emo** = 
@@ -403,7 +403,7 @@ These tags should always be located just before the POS tag.
  * **+Sem/Act_Prod-vis** = 
  * **+Sem/Act_Route** = Activity and Route, ie johtolat
  * **+Sem/Act_Semcon** = 
- * **+Sem/Act_State** = 
+ * **+Sem/Act_State 	** = 
  * **+Sem/Act_Time** = 
  * **+Sem/Act_Tool-it** = 
  * **+Sem/Act_Txt** = 
@@ -414,22 +414,22 @@ These tags should always be located just before the POS tag.
  * **+Sem/Ani_Build** = 
  * **+Sem/Ani_Build_Hum_Txt** = 
  * **+Sem/Ani_Buildpart** = 
- * **+Sem/Ani_Cat** = 
+ * **+Sem/Ani_Cat					** = 
  * **+Sem/Ani_Clth** = 
  * **+Sem/Ani_Feat_Hum** = 
  * **+Sem/Ani_Feat_Plant** = 
- * **+Sem/Ani_Food** = 
+ * **+Sem/Ani_Food					** = 
  * **+Sem/Ani_Group_Hum** = 
  * **+Sem/Ani_Group_Prod-vis** = 
  * **+Sem/Ani_Hum** = 
  * **+Sem/Ani_Hum_Plc** = 
  * **+Sem/Ani_Hum_Time** = 
- * **+Sem/Ani_Obj** = 
- * **+Sem/Ani_Org** = 
+ * **+Sem/Ani_Obj					** = 
+ * **+Sem/Ani_Org					** = 
  * **+Sem/Ani_Plc** = 
  * **+Sem/Ani_Plc_Txt** = 
- * **+Sem/Ani_State** = 
- * **+Sem/Ani_Substnc** = 
+ * **+Sem/Ani_State	** = 
+ * **+Sem/Ani_Substnc	** = 
  * **+Sem/Ani_Time** = 
  * **+Sem/Ani_Veh** = 
  * **+Sem/Aniprod_Hum** = 
@@ -449,24 +449,24 @@ These tags should always be located just before the POS tag.
  * **+Sem/Body_Clth** = 
  * **+Sem/Body_Clthpart** = 
  * **+Sem/Body_Food** = 
- * **+Sem/Body_Fruit** = 
+ * **+Sem/Body_Fruit 	** = 
  * **+Sem/Body_Group_Hum** = 
  * **+Sem/Body_Group_Hum_Time** = 
  * **+Sem/Body_Hum** = 
  * **+Sem/Body_Mat** = 
  * **+Sem/Body_Measr** = 
- * **+Sem/Body_Obj** = 
+ * **+Sem/Body_Obj 		** = 
  * **+Sem/Body_Obj_Tool-catch** = 
- * **+Sem/Body_Org** = 
- * **+Sem/Body_Part** = 
+ * **+Sem/Body_Org 			** = 
+ * **+Sem/Body_Part		 			** = 
  * **+Sem/Body_Plc** = 
  * **+Sem/Body_Plc-elevate** = 
  * **+Sem/Body_Plc_State** = 
  * **+Sem/Body_State** = 
  * **+Sem/Body_Time** = 
  * **+Sem/Build-room_Furn** = 
- * **+Sem/Build-room_Org** = 
- * **+Sem/Build_Build-room** = 
+ * **+Sem/Build-room_Org		** = 
+ * **+Sem/Build_Build-room 		** = 
  * **+Sem/Build_Buildpart** = 
  * **+Sem/Build_Clthpart** = 
  * **+Sem/Build_Edu_Org** = 
@@ -475,35 +475,35 @@ These tags should always be located just before the POS tag.
  * **+Sem/Build_Org** = 
  * **+Sem/Build_Plc** = 
  * **+Sem/Build_Route** = 
- * **+Sem/Build_Tool** = 
- * **+Sem/Build_Veh** = 
+ * **+Sem/Build_Tool 	** = 
+ * **+Sem/Build_Veh 	** = 
  * **+Sem/Buildpart_Ctain_Obj** = 
  * **+Sem/Buildpart_Obj** = 
  * **+Sem/Buildpart_Obj_Plc** = 
  * **+Sem/Buildpart_Part** = 
  * **+Sem/Buildpart_Plc** = 
  * **+Sem/Buildpart_Prod-audio** = 
- * **+Sem/Cat_Edu** = 
+ * **+Sem/Cat_Edu		** = 
  * **+Sem/Cat_Feat** = 
  * **+Sem/Cat_Feat-psych_Plc** = 
  * **+Sem/Cat_Group_Hum** = 
- * **+Sem/Cat_Hum** = 
- * **+Sem/Cat_Measr** = 
- * **+Sem/Cat_Obj** = 
- * **+Sem/Cat_Plantpart** = 
+ * **+Sem/Cat_Hum					** = 
+ * **+Sem/Cat_Measr			 	** = 
+ * **+Sem/Cat_Obj		** = 
+ * **+Sem/Cat_Plantpart			** = 
  * **+Sem/Cat_Plantpart_Semcon** = 
  * **+Sem/Cat_Txt** = 
  * **+Sem/Clth-jewl_Curr** = 
  * **+Sem/Clth-jewl_Fruit** = 
  * **+Sem/Clth-jewl_Money** = 
- * **+Sem/Clth-jewl_Obj** = 
+ * **+Sem/Clth-jewl_Obj				** = 
  * **+Sem/Clth-jewl_Org** = 
  * **+Sem/Clth-jewl_Plant** = 
  * **+Sem/Clth_Hum** = 
  * **+Sem/Clth_Obj** = 
  * **+Sem/Clth_Part** = 
  * **+Sem/Clth_Sur** = 
- * **+Sem/Clthpart_Plc** = 
+ * **+Sem/Clthpart_Plc	** = 
  * **+Sem/Ctain-abstr_Org** = 
  * **+Sem/Ctain-clth_Plant** = 
  * **+Sem/Ctain-clth_Veh** = 
@@ -517,16 +517,16 @@ These tags should always be located just before the POS tag.
  * **+Sem/Curr_Org** = 
  * **+Sem/Dance_Org** = 
  * **+Sem/Dance_Prod-audio** = 
- * **+Sem/Dir_Geom** = 
+ * **+Sem/Dir_Geom		 		** = 
  * **+Sem/Domain_Feat** = 
  * **+Sem/Domain_Feat-phys** = 
  * **+Sem/Domain_Food-med** = 
  * **+Sem/Domain_Hum** = 
  * **+Sem/Domain_Ideol** = 
- * **+Sem/Domain_Obj** = 
+ * **+Sem/Domain_Obj 	** = 
  * **+Sem/Domain_Org** = 
  * **+Sem/Domain_Org_Plc-abstr** = 
- * **+Sem/Domain_Perc-emo** = 
+ * **+Sem/Domain_Perc-emo 		** = 
  * **+Sem/Domain_Prod-audio** = 
  * **+Sem/Domain_State-sick** = 
  * **+Sem/Domain_Txt** = 
@@ -535,16 +535,16 @@ These tags should always be located just before the POS tag.
  * **+Sem/Drink_Plc** = 
  * **+Sem/Drink_Plc_Substnc** = 
  * **+Sem/Edu_Event** = 
- * **+Sem/Edu_Geom** = 
+ * **+Sem/Edu_Geom		** = 
  * **+Sem/Edu_Geom_Plc-line** = 
  * **+Sem/Edu_Group_Hum** = 
  * **+Sem/Edu_Hum** = 
  * **+Sem/Edu_Mat** = 
  * **+Sem/Edu_Org** = 
- * **+Sem/Edu_Txt** = 
+ * **+Sem/Edu_Txt	 	** = 
  * **+Sem/Event_Food** = 
  * **+Sem/Event_Hum** = 
- * **+Sem/Event_Org** = 
+ * **+Sem/Event_Org				** = 
  * **+Sem/Event_Plc** = 
  * **+Sem/Event_Plc-elevate** = 
  * **+Sem/Event_Time** = 
@@ -560,12 +560,12 @@ These tags should always be located just before the POS tag.
  * **+Sem/Feat-psych_Plc** = 
  * **+Sem/Feat_Hum** = 
  * **+Sem/Feat_Plant** = 
- * **+Sem/Food_Part** = 
+ * **+Sem/Food_Part		** = 
  * **+Sem/Food_Perc-phys** = 
- * **+Sem/Food_Plant** = 
+ * **+Sem/Food_Plant				** = 
  * **+Sem/Food_Substnc** = 
  * **+Sem/Food_Time** = 
- * **+Sem/Fruit_Sport** = 
+ * **+Sem/Fruit_Sport				** = 
  * **+Sem/Furn_Ctain-abstr** = 
  * **+Sem/Game_Obj-play** = 
  * **+Sem/Geom_Obj** = 
@@ -578,14 +578,14 @@ These tags should always be located just before the POS tag.
  * **+Sem/Group_Plc** = 
  * **+Sem/Group_Prod-vis_Txt_Veh** = 
  * **+Sem/Group_Sign** = 
- * **+Sem/Group_State** = 
+ * **+Sem/Group_State				** = 
  * **+Sem/Group_Txt** = 
  * **+Sem/Hum-abstr** = 
  * **+Sem/Hum_Lang** = 
  * **+Sem/Hum_Lang_Plc** = 
  * **+Sem/Hum_Lang_Time** = 
  * **+Sem/Hum_Mat_Tool** = 
- * **+Sem/Hum_Money** = 
+ * **+Sem/Hum_Money					** = 
  * **+Sem/Hum_Obj** = 
  * **+Sem/Hum_Obj_Plc** = 
  * **+Sem/Hum_Org** = 
@@ -598,8 +598,8 @@ These tags should always be located just before the POS tag.
  * **+Sem/Hum_Veh** = 
  * **+Sem/Hum_Wthr** = 
  * **+Sem/Lang_Tool** = 
- * **+Sem/Lang_Tool-catch** = 
- * **+Sem/Mat_Obj** = 
+ * **+Sem/Lang_Tool-catch 			** = 
+ * **+Sem/Mat_Obj					** = 
  * **+Sem/Mat_Part** = 
  * **+Sem/Mat_Plant** = 
  * **+Sem/Mat_Plantpart** = 
@@ -607,11 +607,11 @@ These tags should always be located just before the POS tag.
  * **+Sem/Mat_Tool** = 
  * **+Sem/Mat_Tool-catch** = 
  * **+Sem/Mat_Txt** = 
- * **+Sem/Measr_Plc_Time** = 
+ * **+Sem/Measr_Plc_Time			** = 
  * **+Sem/Measr_Sign** = 
  * **+Sem/Measr_Time** = 
  * **+Sem/Money_Obj** = 
- * **+Sem/Money_Plc** = 
+ * **+Sem/Money_Plc	 	** = 
  * **+Sem/Money_Txt** = 
  * **+Sem/Obj-ling_Obj-surfc** = 
  * **+Sem/Obj-play** = 
@@ -631,8 +631,8 @@ These tags should always be located just before the POS tag.
  * **+Sem/Obj_Tool-write** = 
  * **+Sem/Obj_Txt** = 
  * **+Sem/Obj_Veh** = 
- * **+Sem/Org_Play** = 
- * **+Sem/Org_Plc** = 
+ * **+Sem/Org_Play	 	** = 
+ * **+Sem/Org_Plc	 	** = 
  * **+Sem/Org_Prod-audio** = 
  * **+Sem/Org_Prod-cogn** = 
  * **+Sem/Org_Prod-vis** = 
@@ -641,11 +641,11 @@ These tags should always be located just before the POS tag.
  * **+Sem/Org_Txt** = 
  * **+Sem/Org_Veh** = 
  * **+Sem/Part_Plc** = 
- * **+Sem/Part_Plc_Prod-audio** = 
+ * **+Sem/Part_Plc_Prod-audio		** = 
  * **+Sem/Part_Prod-cogn** = 
  * **+Sem/Part_Substnc** = 
  * **+Sem/Part_Txt** = 
- * **+Sem/Perc-emo_Plc** = 
+ * **+Sem/Perc-emo_Plc 	** = 
  * **+Sem/Perc-emo_State** = 
  * **+Sem/Perc-emo_Wthr** = 
  * **+Sem/Plant_Plantpart** = 
@@ -655,7 +655,7 @@ These tags should always be located just before the POS tag.
  * **+Sem/Plant_Tool-measr** = 
  * **+Sem/Plc-abstr_Rel_State** = 
  * **+Sem/Plc-abstr_Route** = 
- * **+Sem/Plc-abstr_Rule** = 
+ * **+Sem/Plc-abstr_Rule	** = 
  * **+Sem/Plc-abstr_State** = 
  * **+Sem/Plc-abstr_Txt** = 
  * **+Sem/Plc_Pos** = 
@@ -672,13 +672,13 @@ These tags should always be located just before the POS tag.
  * **+Sem/Prod-audio_Substnc** = 
  * **+Sem/Prod-audio_Txt** = 
  * **+Sem/Prod-cogn_Txt** = 
- * **+Sem/Route_State** = 
+ * **+Sem/Route_State 	** = 
  * **+Sem/Route_Txt** = 
  * **+Sem/Rule_Txt** = 
- * **+Sem/Semcon_State** = 
+ * **+Sem/Semcon_State	 	** = 
  * **+Sem/Semcon_Txt** = 
  * **+Sem/State-sick_Substnc** = 
- * **+Sem/State_Veh** = 
+ * **+Sem/State_Veh		** = 
  * **+Sem/Substnc_Wthr** = 
  * **+Sem/Time_Wthr** = 
  * **+Sem/Tool-music** = 
@@ -727,13 +727,13 @@ This is done to avoid possible overgeneration in the derivational system.
  * +Der/lasj NN
  * +Der/k NN / NA
  * +Der/Car NA - abessive. Only even/contr. Morén-Duolljá:caritive 
- * +Der/ferjak NA   Adjectival -k der (from ?)
+ * +Der/ferjak																	 NA   Adjectival -k der (from ?)
  * +Der/lasj NA - dont know, guess it Tronds, ojes, I see - is this ok?jes 2 Der:lasj Noun on 1472 Adj on 2040
  * +Der/n NA. Denominal -n adjective (similar t -k adj)
  * +Der/sasj NA
- * +Der/segak NA Adj. -k der from?
- * +Der/Comp AA
- * +Der/Superl AA     
+ * +Der/segak																	 NA Adj. -k der from?
+ * +Der/Comp 									 						 AA
+ * +Der/Superl 															 AA     
 
 
 ### Der#2 tags - tags in second position
@@ -852,8 +852,8 @@ these flags. There exists a ready-made regex that will do the actual down-casing
 given the proper use of these flags.
  |  @U.Cap.Obl@ | Disallow downcasing of names when not derived: Deatnu
  |  @U.Cap.Opt@ | Allowing downcasing of derived names: deatnulasj.
- |  @P.Px.add@ | Giving possibility for Px-suffixes (all except from Nom 3.p)
- |  @R.Px.add@ | Requiring P.Px.add-flag for Px-suffixes (all except from Nom 3.p)
+ |  @P.Px.add@	 | Giving possibility for Px-suffixes (all except from Nom 3.p)
+ |  @R.Px.add@	 | Requiring P.Px.add-flag for Px-suffixes (all except from Nom 3.p)
  |  @P.Nom3Px.add@ |  Giving possibility for Px-suffixes Nom 3.p
  |  @R.Nom3Px.add@ | Requiring P.Nom3Px.add flag for Px-suffixes Nom 3.p
 
