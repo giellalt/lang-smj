@@ -70,15 +70,15 @@ Pronoun subtypes
  * **+Use/-GC** never retained in the HFST Grammar Checker disambiguation analyser
 
 ## Dialect and Area tags
- * +Area/SE - Used in Sweden only
- * +Area/NO - Used in Norway only
- * +Dial/N Used in the northern areas.  Some might say that
+ * **+Area/SE** - Used in Sweden only
+ * **+Area/NO** - Used in Norway only
+ * **+Dial/N** Used in the northern areas.  Some might say that
    these words are sme-words, but they are used by lulesamis in
    the northern part of the dialect area. Words like "válmas"
- * +Dial/S Used in the southern areas
- * +Dial/SH Short forms
+ * **+Dial/S** Used in the southern areas
+ * **+Dial/SH** Short forms
 
-Compounding tags
+## Compounding tags
 
 The tags are of the following form:
 * **+CmpNP/xxx** - Normative (N), Position (P), ie. the tag describes what
@@ -88,15 +88,16 @@ The tags are of the following form:
 * **+Cmp/xxx**   - Descriptive compounding tags, ie. tags that*describes*
                    what form a word actually is using in a compound
 
-Normative/prescriptive compounding tags
+### Normative/prescriptive compounding tags
+
 These govern compound behaviour for normative tools like the speller, ie. what a compound **SHOULD BE**.
 
 The first part of the component may be ..
- * +CmpN/Sg = Singular
- * +CmpN/SgN = Singular Nominative
- * +CmpN/SgG = Singular Genitive
- * +CmpN/PlG = Plural Genitive
- * +CmpN/Attr = Attributive
+ * **+CmpN/Sg** = Singular
+ * **+CmpN/SgN** = Singular Nominative
+ * **+CmpN/SgG** = Singular Genitive
+ * **+CmpN/PlG** = Plural Genitive
+ * **+CmpN/Attr** = Attributive
 
 This part of the component can ..
 
@@ -198,7 +199,7 @@ above normative tags to actually enforce compound restrictions in the fst.
  * +Pl3 plural plural person
  * +Inf infinitive
  * +Ger  gerundium
- * +ConNeg  the main verb form used with negation verb. Like "bårå" in "Iv bårå guolev"
+ * +ConNeg = the main verb form used with negation verb. Like *bårå* in *Iv bårå guolev*.
  * +Neg  negation verb
  * +ImprtII  second imperative mood
  * +PrsPrc  present participle
@@ -384,7 +385,7 @@ These tags should always be located just before the POS tag.
  * **+Sem/Ani_Group** = 
  * **+Sem/Act_Clth** = 
  * **+Sem/Act_Domain** = 
- * **+Sem/Act_Domain_Measr 	** = 
+ * **+Sem/Act_Domain_Measr** = 
  * **+Sem/Act_Event** = 
  * **+Sem/Act_Feat** = 
  * **+Sem/Act_Feat-psych** = 
@@ -804,22 +805,30 @@ get the same pronunciation whether read as SME or NOB/NNO/SWE.
 
 
 ## Flag diacritics
+
 We have manually optimised the structure of our lexicon using following
 flag diacritics to restrict morhpological combinatorics - only allow compounds
 with verbs if the verb is further derived into a noun again:
+
+|               Flag diacritic | Explanation
+|               :------------- |:-----------
  |  @P.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
  |  @D.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
  |  @C.NeedNoun@ | (Dis)allow compounds with verbs unless nominalised
 
 
+|               Flag diacritic | Explanation
+|               :------------- |:-----------
  |  @P.Pmatch.Loc@ | Used on multi-token analyses; tell hfst-tokenise/pmatch where in the form/analysis the token should be split.
  |  @P.Pmatch.Backtrack@ | Used on single-token analyses; tell hfst-tokenise/pmatch to backtrack by reanalysing the substrings before and after this point in the form (to find combinations of shorter analyses that would otherwise be missed)
 
 
- |  @D.ErrOrth.ON@ 
- |  @R.ErrOrth.ON@ 
- |  @C.ErrOrth@ 
- |  @P.ErrOrth.ON@ 
+|               Flag diacritic | Explanation
+|               :------------- |:-----------
+ | @D.ErrOrth.ON@ | To be written
+ | @R.ErrOrth.ON@ | To be written
+ | @C.ErrOrth@ | To be written
+ | @P.ErrOrth.ON@ | To be written
 
 For languages that allow compounding, the following flag diacritics are needed
 to control position-based compounding restrictions for nominals. Their use is
@@ -3630,7 +3639,7 @@ with 3 main sections: Consonant alternations (except CG), vowel alternations, an
 
 # Declarations and definitions
 
-## The Alphabet section
+ ## The Alphabet section
 
 ### The real Lule Sámi Alphabet
 
@@ -3681,57 +3690,57 @@ The symbols themselves are used in the following way:
 
 OBS: the definitions are not all correct or sufficiently specific
 
-* ****X1:0****:  Deletes final consonants in short essive of odd syllables
-* ****X2:0****:  WeG and neutralization of g8, etc. (hivsik-hivsiga)
-* ****X3:0****:  Weg and deletion of g8, etc. (bena-bednaga)
-* ****X4:0** : e:á and e:å in illatives and px. a:á and o**: u in Px and ill of a-stem actors and o-stems
-* ****X5:0** : e:á, e:å and o:u in odd-syllable nouns, but also for some even nouns (o**: u f.eks)
-* ****X6:0** : Deviant III-I consonant gradation (in contracted stems, guobbmu**: guomoj)
-* ****X7:0** : WeG and e:á, e:å, o:á, o:u in front of diminutives, e**: å in -lasj der
-* ****X8:0****:  Stem vowel alternations in Px
-* ****X9:0****:  Stem-vowel and central consonant shortening in first part(s) of compounds  
-* ****Q1:0** : The general weak grade trigger. Stem vowel change e:i and o**: u in front of j.
+ * ****X1:0****:  Deletes final consonants in short essive of odd syllables
+ * ****X2:0****:  WeG and neutralization of g8, etc. (hivsik-hivsiga)
+ * ****X3:0****:  Weg and deletion of g8, etc. (bena-bednaga)
+ * ****X4:0** : e:á and e:å in illatives and px. a:á and o**: u in Px and ill of a-stem actors and o-stems
+ * ****X5:0** : e:á, e:å and o:u in odd-syllable nouns, but also for some even nouns (o**: u f.eks)
+ * ****X6:0** : Deviant III-I consonant gradation (in contracted stems, guobbmu**: guomoj)
+ * ****X7:0** : WeG and e:á, e:å, o:á, o:u in front of diminutives, e**: å in -lasj der
+ * ****X8:0****:  Stem vowel alternations in Px
+ * ****X9:0****:  Stem-vowel and central consonant shortening in first part(s) of compounds  
+ * ****Q1:0** : The general weak grade trigger. Stem vowel change e:i and o**: u in front of j.
 				 Dipht. simpl.  Any environment #only# demanding WeG shall use Q1.
-* ****Q2:0** : Vowel harmony**:  2nd syll e realized as å whenever 1st syll is å.
-* ****Q3:0****:  WeG in contracted, also does not trigger Dipht simpl.
-* ****Q4:0** : Stem vowel change e:i and o**: u in front of j. Dipht. simpl. Like Q1 but strong grade.
-* ****Q5:0** : e**: á stem vowel change for word diehtet. Weak grade.
-* ****Q6:0** : e**: á stem wovel change for word diehtet. Strong grade.
-* ****Q7:0** : e**: á stem vowel change for word diehtte. Extra strong grade
-* ****Q8:0****:  Stem vowel deletion, impII of verbs.
-* ****Q9:0****:  TBW  
-* ****Y1:0****:  Stem vowel deletion, imp 3sg, 3du, 2pl, 3pl of verbs
-* ****Y2:0****:  "Indicative Present Singular 3rd Final Vowel in verbs"
-* ****Y3:0****:  PrsPrc
-* ****Y4:0****:  e &gt; u in front of dersuff, o &gt; u and e &gt; á in front of dersuffix -alla
-* ****Y5:0****:  e &gt; a, i &gt; á, o &gt; u, e &gt; å in verb derivation
-* ****Y6:0****:  "Consonant insertion as II-III strengthening gradation", verbs +PrsPrt and +Imprt+Du2
-* ****Y7:0****:  "Consonant insertion as II-III strengthening gradation", nouns and propernouns
-* ****Y8:0****:  "Stem vowel deletion in even-syllable verbs, imp 1du, 1pl"
-* ****Y9:0****:  "Stem vowel deletion in short passives of even-syllable verbs
-* ****Z1:0** : TBW "i**: á in Verb Derivation guollir>guollár"
-* ****Z2:0** : e:å, o**: u in -lasj der
-* ****Z3:0** : weak grade trigger fºf:f. Stem vowel change e:i and o**: u in front of j.
-* ****Z4:0** : weak grade trigger fºf:f and e:á, e:å, o:á, o:u in front of diminutives, e**: å in -lasj der
+ * ****Q2:0** : Vowel harmony**:  2nd syll e realized as å whenever 1st syll is å.
+ * ****Q3:0****:  WeG in contracted, also does not trigger Dipht simpl.
+ * ****Q4:0** : Stem vowel change e:i and o**: u in front of j. Dipht. simpl. Like Q1 but strong grade.
+ * ****Q5:0** : e**: á stem vowel change for word diehtet. Weak grade.
+ * ****Q6:0** : e**: á stem wovel change for word diehtet. Strong grade.
+ * ****Q7:0** : e**: á stem vowel change for word diehtte. Extra strong grade
+ * ****Q8:0****:  Stem vowel deletion, impII of verbs.
+ * ****Q9:0****:  TBW  
+ * ****Y1:0****:  Stem vowel deletion, imp 3sg, 3du, 2pl, 3pl of verbs
+ * ****Y2:0****:  "Indicative Present Singular 3rd Final Vowel in verbs"
+ * ****Y3:0****:  PrsPrc
+ * ****Y4:0****:  e &gt; u in front of dersuff, o &gt; u and e &gt; á in front of dersuffix -alla
+ * ****Y5:0****:  e &gt; a, i &gt; á, o &gt; u, e &gt; å in verb derivation
+ * ****Y6:0****:  "Consonant insertion as II-III strengthening gradation", verbs +PrsPrt and +Imprt+Du2
+ * ****Y7:0****:  "Consonant insertion as II-III strengthening gradation", nouns and propernouns
+ * ****Y8:0****:  "Stem vowel deletion in even-syllable verbs, imp 1du, 1pl"
+ * ****Y9:0****:  "Stem vowel deletion in short passives of even-syllable verbs
+ * ****Z1:0** : TBW "i**: á in Verb Derivation guollir>guollár"
+ * ****Z2:0** : e:å, o**: u in -lasj der
+ * ****Z3:0** : weak grade trigger fºf:f. Stem vowel change e:i and o**: u in front of j.
+ * ****Z4:0** : weak grade trigger fºf:f and e:á, e:å, o:á, o:u in front of diminutives, e**: å in -lasj der
 
-* ****Ø1:0** : optional Word Final Cluster Simplification. Not smj grammar, made only for Err/Orths  ! málestit**:  málest instead for norm máles
-* ****Ø2:0** : optional e**: i when followed by any conc (not only j). Not smj grammar, made only for Err/Orths ! "iednida"   
+ * ****Ø1:0** : optional Word Final Cluster Simplification. Not smj grammar, made only for Err/Orths  ! málestit**:  málest instead for norm máles
+ * ****Ø2:0** : optional e**: i when followed by any conc (not only j). Not smj grammar, made only for Err/Orths ! "iednida"   
 
 
 
 
 ### Morpheme boundaries:
-* ****«****:  Derivational prefix
-* ****»****:  Derivational suffix
-* ****%<****:  Inflectional prefx
-* ****%>****:  Inflectional suffix
-* ****#****:  Word boundary for both lexicalised and dynamic compounds
-* ****%^****:  (exceptional) soft hyphenation point
-* ****%****:  a space
-* ****∑****:  mark before # to indicate dynamic comounds
+ * **** «  ****:  Derivational prefix
+ * **** »  ****:  Derivational suffix
+ * **** %< ****:  Inflectional prefx
+ * **** %> ****:  Inflectional suffix
+ * **** #  ****:  Word boundary for both lexicalised and dynamic compounds
+ * **** %^ ****:  (exceptional) soft hyphenation point
+ * **** %  ****:  a space
+ * **** ∑  ****:  mark before # to indicate dynamic comounds
 
 
-## The Sets section
+ ## The Sets section
 
 These are the sets:
 * **Vow**:  the vowels
@@ -3766,7 +3775,7 @@ These are the sets:
  *  Hyph    = %-                                                                                        ;  
 
 
-## The Definitions section
+ ## The Definitions section
 
 In this section, the consonants are defined. This includes consonant clusters in the various grades and consonant alternations.
 
@@ -3775,6 +3784,7 @@ In this section, the consonants are defined. This includes consonant clusters in
 The alternation patterns according to Spiik's alternations series, here named S4, S5, ... for "Spiik alternation series 4, 5, etc." as they are presented in his grammar..  
 
 |   Class | Alternation | Series
+
 | --- | --- | --- 
 |  S7 | kkn:k0n           | series 1
 |  S8 | fºf:f0f           | series 2
@@ -3787,19 +3797,19 @@ The alternation patterns according to Spiik's alternations series, here named S4
 
 Definition of gradation symbols:
 
-* **LowerG2**:  A definition of Grade2 consonant sequences referring mostly to the surface level
-* **LowerG1**:  A definition of Grade 1 consonant sequences
-* **LowerG12**:  A definition of Grade 1 or 2 consonant sequences 
+ * **LowerG2**:  A definition of Grade2 consonant sequences referring mostly to the surface level
+ * **LowerG1**:  A definition of Grade 1 consonant sequences
+ * **LowerG12**:  A definition of Grade 1 or 2 consonant sequences 
 
-* **G32**:  A definition of Grade 3 or 2 consonant sequences
+ * **G32**:  A definition of Grade 3 or 2 consonant sequences
 
-* **G3**:  A definition of Grade 3 consonant sequences 
-
-
+ * **G3**:  A definition of Grade 3 consonant sequences 
 
 
 
-# The Rules section
+
+
+ # The Rules section
 
 ## Overview
 
@@ -3815,7 +3825,7 @@ All rules deal with word-final position.
 * ★*b* (is not standard language)
 
 
-**Word Final Devoicing of Certain Single Consonants d9 etc.**  
+**Word Final Devoicing of Certain Single Consonants d9 etc. **  
 * *iemed9#*
 * *iemet#*
 
@@ -3874,7 +3884,7 @@ The second syllable vowel a is lengthened to á whenever the stem consonants are
 The diphthong simplification handles oa:å and æ:e. Phonologically, these are identical processes, but since the dipthong is written by two letters in the former case and by one letter in the latter, the alternations must be handled separately. This section also handles ie:æ, these are in principle the same as oa:å, but the alternation does not occur in so many contexts. 
 
 
-**oa:å Diphtong Simplification Part I**  
+**oa:å Diphtong Simplification Part I **  
 
 
 
@@ -3999,7 +4009,7 @@ The diphthong simplification handles oa:å and æ:e. Phonologically, these are i
 
 * examples:*
 
-**æ:e Diphthong Simplification**  
+**æ:e Diphthong Simplification **  
 
 * *hærránis*
 * *hæärránis*
@@ -4035,7 +4045,7 @@ The diphthong simplification handles oa:å and æ:e. Phonologically, these are i
 * *vettsa0>0*
 
 
-**ie:æä Diphthong Simplification Part I**  
+**ie:æä Diphthong Simplification Part I **  
 
 
 * *ielvveY9ut*
