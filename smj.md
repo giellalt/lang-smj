@@ -3922,6 +3922,7 @@ This is just awaiting a manual classification
 * *boavddij:* `boavddit+V+IV+Ind+Prt+Sg3`
 
 
+
  LEXICON BASSUT_IV  Passives
 
 
