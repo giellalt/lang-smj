@@ -18,12 +18,7 @@ TESTS=\
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
 XFAIL_TESTS=\
-	msyn-liehket-congr-condsg2-condpl3.notfixed.yaml \
-	msyn-liehket-congr-condsg2-condpl3.yaml \
-	msyn-sme_bastard_neg1-2.yaml \
-	real-PrsPl3-PrsSg3.yaml \
-	real-PrsSg2-PrsSg3.yaml \
-	real-PrtSg2-PrtSg3.yaml
+	msyn-liehket-congr-condsg2-condpl3.notfixed.yaml
 
 endif # WANT_GRAMCHECK
 
