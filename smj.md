@@ -3834,7 +3834,7 @@ IV means intransitive verbs, TV means transitive verbs.
 
 
 
-## Copula 
+## Copula
 
  LEXICON ÅRROT 
 
@@ -3868,12 +3868,14 @@ IV means intransitive verbs, TV means transitive verbs.
 
 
 
+
 *soajttet # Eveb-syllable test examples:*
 * *soajtáv:* `soajttet+V+IV+Ind+Prs+Sg1`
 * *soajttiv:* `soajttet+V+IV+Ind+Prt+Sg1`
 * *såjtijma:* `soajttet+V+IV+Ind+Prt+Pl1`
 
  LEXICON VIERTTIT_IV  Contracted modal verbs.
+
 
 
 *hæhttut # Eveb-syllable test examples:*
@@ -4223,6 +4225,8 @@ This is just awaiting a manual classification
  LEXICON BASSUT_IV  Passives
 
 
+
+
 *buvvut # Contracted test examples:*
 * *buvvuv:* `buvvut+V+IV+Ind+Prs+Sg1`
 * *buvvujiv:* `buvvut+V+IV+Ind+Prt+Sg1`
@@ -4241,6 +4245,7 @@ This is just awaiting a manual classification
 * *bähkkájma:* `bæhkkát+V+IV+Ind+Prt+Pl1`
 
  LEXICON DULLUT_IV   Does not make nouns via -ár derivation. Only Sg3 passiv.
+
 
 
 *dussut # Contracted test examples:*
@@ -4352,6 +4357,9 @@ contraced verbs assimilated and outside the main pattern.
 * *abbonerijiv:* `abbonierit+V+TV+Ind+Prt+Sg1`
 * *abbonierijma:* `abbonierit+V+TV+Ind+Prt+Pl1`
 * *abbonerijma:* `abbonierit+V+TV+Ind+Prt+Pl1`
+
+
+
 
 
 
