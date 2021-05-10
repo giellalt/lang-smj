@@ -1,7 +1,7 @@
 # Lule Sami documentation
 
 [![Maturity: Experiment](https://img.shields.io/badge/Maturity-Experiment-black.svg)](https://giellalt.github.io/MaturityClassification.html)
-[![License](https://img.shields.io/github/license/giellalt/lang-smj)](https://raw.githubusercontent.com/giellalt/lang-smj/develop/LICENSE)
+[![License](https://img.shields.io/github/license/giellalt/lang-smj)](https://raw.githubusercontent.com/giellalt/lang-smj/main/LICENSE)
 [![Issues](https://img.shields.io/github/issues/giellalt/lang-smj)](https://github.com/giellalt/lang-smj/issues)
 [![Build status](https://github.com/giellalt/lang-smj/workflows/Speller%20CI+CD/badge.svg)](https://github.com/giellalt/lang-smj/actions)
 
