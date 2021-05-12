@@ -4,12 +4,15 @@
 
 ######## Test targets: ###########
 
+# Default variable for all languages
+TESTS_ENVIRONMENT = ./run_tests.sh
+
 # List here (space separated) all test scripts that should be run
 # unconditionally:
 TESTS=
 
 if WANT_TTS
-TESTS+=
+TESTS+=test_1.normaliser.txt
 endif # WANT_TTS
 
 # List tests that are presently (expected) failures here, ie things that should
