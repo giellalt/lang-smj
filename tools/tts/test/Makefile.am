@@ -12,7 +12,8 @@ TESTS_ENVIRONMENT = ./run_tests.sh
 TESTS=
 
 if WANT_TTS
-TESTS+=test_1.normaliser.txt
+TESTS+= test_1.normaliser.txt \
+		test_2.normaliser.txt
 endif # WANT_TTS
 
 # List tests that are presently (expected) failures here, ie things that should
