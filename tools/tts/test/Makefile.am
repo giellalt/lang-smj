@@ -26,4 +26,4 @@ XFAIL_TESTS=test_ordinal.normaliser.txt \
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.txt
+	-rm -f *.in *.out *.out.tmp *.expect
