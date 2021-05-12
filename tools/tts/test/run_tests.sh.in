@@ -10,6 +10,11 @@ innput=$(basename $test_file .txt).in
 output=$(basename $test_file .txt).out
 expect=$(basename $test_file .txt).expect
 
+if [[ $file =~ \.ipa\.txt$ ]]; then
+    echo "IPA conversion testing is not yet supported"
+    exit 1
+fi
+
 cut -d"#" -f1 $test_file | grep -v "^$" | head -n 1 > $innput
 cut -d"#" -f1 $test_file | grep -v "^$" | tail -n +2 | cut -f1-2 | grep -v "^:" > $expect
 
