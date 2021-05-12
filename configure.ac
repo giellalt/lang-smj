@@ -198,6 +198,9 @@ AC_CONFIG_FILES([test/src/morphology/generate-adverb-lemmas.sh], \
 AC_CONFIG_FILES([test/src/morphology/generate-adpos-lemmas.sh], \
       [chmod a+x test/src/morphology/generate-adpos-lemmas.sh])
 
+AC_CONFIG_FILES([tools/tts/test/run_tests.sh], \
+      [chmod a+x tools/tts/test/run_tests.sh])
+
 ############ END: Language-specific scripts. #############
 
 # This must be near the end of all configure.ac files:

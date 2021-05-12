@@ -1,0 +1,35 @@
+#!/bin/sh
+
+# Run normaliser tests
+
+giella_core=@GIELLA_CORE@
+tool_dir=$(pwd)/..
+
+test_file=$1
+innput=$(basename $test_file .txt).in
+output=$(basename $test_file .txt).out
+expect=$(basename $test_file .txt).expect
+
+cut -d"#" -f1 $test_file | grep -v "^$" | head -n 1 > $innput
+cut -d"#" -f1 $test_file | grep -v "^$" | tail -n +2 | cut -f1-2 | grep -v "^:" > $expect
+
+cat $innput \
+ | hfst-tokenise -g "$tool_dir/tokeniser-disamb-gt-desc.pmhfst" \
+ | divvun-blanktag "$tool_dir/analyser-gt-whitespace.hfst" \
+ | vislcg3 -g "$tool_dir/valency.bin" \
+ | vislcg3 -g "$tool_dir/mwe-dis.bin" \
+ | cg-mwesplit \
+ | vislcg3 -g "$tool_dir/disambiguator.bin" \
+ | vislcg3 -g "$tool_dir/functions.bin" \
+ | vislcg3 -g "$tool_dir/dependency.bin" \
+ | divvun-normaliser \
+    -a  "$tool_dir/analyser-gt-norm.hfstol" \
+    -g  "$tool_dir/generator-gt-norm.hfstol" \
+    -n  "$tool_dir/transcriptor-gt-desc.hfstol" \
+    -t ABBR -t Roman -t Arab \
+ | $giella_core/scripts/vislcg-convert.py -t phon -1 \
+ > $output.tmp
+
+grep -v "^:" $output.tmp | grep -v "^$" | cut -f1-2 > $output
+
+diff $output $expect
