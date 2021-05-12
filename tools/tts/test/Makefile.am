@@ -16,13 +16,17 @@ TESTS+= test_no_normalisation.normaliser.txt \
 		test_ordinal.normaliser.txt \
 		test_plain_digits.normaliser.txt \
 		test_digit_abbr.normaliser.txt \
-		test_clock_10.14.normaliser.txt
+		test_clock_10.14.normaliser.txt \
+		test_pure_date_time.normaliser.txt \
+		test_date_clock.normaliser.txt
 endif # WANT_TTS
 
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
 XFAIL_TESTS=test_ordinal.normaliser.txt \
-			test_clock_10.14.normaliser.txt
+			test_clock_10.14.normaliser.txt \
+			test_pure_date_time.normaliser.txt \
+			test_date_clock.normaliser.txt
 
 ####### Other targets: ###########
 clean-local:
