@@ -13,7 +13,8 @@ TESTS=
 
 if WANT_TTS
 TESTS+= test_1.normaliser.txt \
-		test_2.normaliser.txt
+		test_2.normaliser.txt \
+		test_plain_digits.normaliser.txt
 endif # WANT_TTS
 
 # List tests that are presently (expected) failures here, ie things that should
