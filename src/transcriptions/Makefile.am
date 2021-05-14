@@ -27,14 +27,19 @@ GT_TRANSCRIPTIONS_SRCS=\
 #! @param GT_ABBREV_SRCS required, for abbreviation expansions
 GT_ABBREV_SRCS=transcriptor-abbrevs2text.lexc
 
-transcriptor-numbers-arabic2roman.hfst: transcriptor-numbers-arabic2roman.regex
-	$(AM_V_RGX2FST)"$(HFST_REGEXP2FST)" $(HFST_FLAGS) $(HFST_FORMAT) \
-		$(HFST_REGEXP2FST_FLAGS) $(MORE_VERBOSITY) -S $< -o $@
+GT_TRANSCRIPTIONS_REGEX_SRCS=transcriptor-numbers-arabic2roman.regex
+
+GT_CUSTOM_TARGETS=transcriptor-numbers-roman2text.filtered.lookup.hfstol
+
+### BEGIN: Custom build rules: ###
+
+transcriptor-numbers-arabic2roman.filtered.lookup.hfst: transcriptor-numbers-arabic2roman.hfst
+	$(AM_V_CP)cp -f $< $@
 
 transcriptor-numbers-roman2arabic.hfst: transcriptor-numbers-arabic2roman.hfst
 	$(AM_V_INVERT)"$(HFST_INVERT)" $(HFST_FLAGS) -i $< -o $@
 
-transcriptor-numbers-roman2text.hfst: transcriptor-numbers-roman2arabic.hfst \
+transcriptor-numbers-roman2text.filtered.hfst: transcriptor-numbers-roman2arabic.hfst \
 									  transcriptor-numbers-digit2text.filtered.hfst
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"$<\" \
@@ -42,6 +47,8 @@ transcriptor-numbers-roman2text.hfst: transcriptor-numbers-roman2arabic.hfst \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
+
+### END: Custom build rules: ###
 
 include $(top_srcdir)/../giella-core/am-shared/src-transcriptions-dir-include.am
 
