@@ -18,6 +18,8 @@ fi
 cut -d"#" -f1 $test_file | grep -v "^$" | head -n 1 > $innput
 cut -d"#" -f1 $test_file | grep -v "^$" | tail -n +2 | cut -f1-2 | grep -v "^:" > $expect
 
+# Replace long pipeline with zpipe file when libdivvun is working, to ensure
+# we are testing the real thing.
 cat $innput \
  | hfst-tokenise -g "$tool_dir/tokeniser-disamb-gt-desc.pmhfst" \
  | divvun-blanktag "$tool_dir/analyser-gt-whitespace.hfst" \
