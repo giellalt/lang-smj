@@ -27,6 +27,22 @@ GT_TRANSCRIPTIONS_SRCS=\
 #! @param GT_ABBREV_SRCS required, for abbreviation expansions
 GT_ABBREV_SRCS=transcriptor-abbrevs2text.lexc
 
+transcriptor-numbers-arabic2roman.hfst: transcriptor-numbers-arabic2roman.regex
+	$(AM_V_RGX2FST)"$(HFST_REGEXP2FST)" $(HFST_FLAGS) $(HFST_FORMAT) \
+		$(HFST_REGEXP2FST_FLAGS) $(MORE_VERBOSITY) -S $< -o $@
+
+transcriptor-numbers-roman2arabic.hfst: transcriptor-numbers-arabic2roman.hfst
+	$(AM_V_INVERT)"$(HFST_INVERT)" $(HFST_FLAGS) -i $< -o $@
+
+transcriptor-numbers-roman2text.hfst: transcriptor-numbers-roman2arabic.hfst \
+									  transcriptor-numbers-digit2text.filtered.hfst
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"$<\" \
+			.o. @\"transcriptor-numbers-digit2text.filtered.hfst\" \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
 include $(top_srcdir)/../giella-core/am-shared/src-transcriptions-dir-include.am
 
 # vim: set ft=automake:

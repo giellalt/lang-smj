@@ -1,0 +1,30 @@
+# A simple regex to convert from Arabic to Roman numerals, with restrictions so that
+# it can be applied in both directions.
+# Everything is taken from The Book, except the thousand handling part.
+
+# The regex recognises integers in the range 1-3999
+# Only upper-case roman numbers are recognised presently.
+
+~$[ I | V | X | L | C | D | M ]
+
+ .o. [
+
+%0 -> 0                                || _ (?) (?) .#. ,,
+
+ 1 -> I ,    2 -> I I,     3 -> I I I,
+ 4 -> I V ,  5 -> V,       6 -> V I,
+ 7 -> V I I, 8 -> V I I I, 9 -> I X    || _       .#. ,,
+
+ 1 -> X,     2 -> X X,     3 -> X X X,
+ 4 -> X L,   5 -> L,       6 -> L X,
+ 7 -> L X X, 8 -> L X X X, 9 -> X C    || _     ? .#. ,,
+
+ 1 -> C,     2 -> C C,     3 -> C C C,
+ 4 -> C D,   5 -> D,       6 -> D C,
+ 7 -> D C C, 8 -> D C C C, 9 -> C M    || _   ? ? .#. ,,
+
+ 1 -> M,     2 -> M M,     3 -> M M M  || _ ? ? ? .#.  ]
+
+.o.
+
+~$[ %0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 ] ;
