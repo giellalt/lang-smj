@@ -3,9 +3,26 @@
 # Everything is taken from The Book, except the thousand handling part.
 
 # The regex recognises integers in the range 1-3999
-# Only upper-case roman numbers are recognised presently.
 
-~$[ I | V | X | L | C | D | M ]
+~$[ I | V | X | L | C | D | M | i | v | x | l | c | d | m ]
+
+ .o. [
+
+%0 -> 0                                || _ (?) (?) .#. ,,
+
+ 1 -> i ,    2 -> i i,     3 -> i i i,
+ 4 -> i v ,  5 -> v,       6 -> v i,
+ 7 -> v i i, 8 -> v i i i, 9 -> i x    || _       .#. ,,
+
+ 1 -> x,     2 -> x x,     3 -> x x x,
+ 4 -> x l,   5 -> l,       6 -> l x,
+ 7 -> l x x, 8 -> l x x x, 9 -> x c    || _     ? .#. ,,
+
+ 1 -> c,     2 -> c c,     3 -> c c c,
+ 4 -> c d,   5 -> d,       6 -> d c,
+ 7 -> d c c, 8 -> d c c c, 9 -> c m    || _   ? ? .#. ,,
+
+ 1 -> m,     2 -> m m,     3 -> m m m  || _ ? ? ? .#.  ]
 
  .o. [
 
