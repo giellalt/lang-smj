@@ -720,7 +720,7 @@ Derivations to adjectives, hardcoded in adjectives stems file
 
  LEXICON BÁJNUK  ! hardcoded denominal derivations go here, attr same as pred, no comp in this lexicon
 
- LEXICON SJERVAK  ! hardcoded denominal derivations go here, attr -gis, attr same as pred is, err/orth taged. no comp in this lexicon
+ LEXICON SJERVAK  ! hardcoded denominal derivations go here, attr -gis, attr same as pred is err/orth taged. no comp in this lexicon
 
 
  LEXICON DIBME  ! even and contracted
