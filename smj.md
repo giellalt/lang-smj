@@ -1366,6 +1366,8 @@ LOAN SWE altar
 
 
 
+
+
 Reciprocal pronouns as multiword expression
 
 
