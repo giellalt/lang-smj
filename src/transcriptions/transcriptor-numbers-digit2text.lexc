@@ -16,7 +16,7 @@ Multichar_Symbols
 
 +Use/NG
 
-LEXICON Root
+LEXICON NUMBERSECTION
            HUNDREDSM     ; ! 200M
  tjuohte:1 HUNDREDM      ; ! 100M
            TENSM         ; ! 20-99M
@@ -149,7 +149,7 @@ LEXICON OVERMILLIONS
      %0%0%0%0%0%0%0:        TENS          ;
      %0%0%0%0%0%0%0:        TEENS         ;
    %0%0%0%0%0%0%0%0:        ONES          ;
- %0%0%0%0%0%0%0%0%0:        #             ; !  x000000
+ %0%0%0%0%0%0%0%0%0:        COMMA         ; !  x000000
 
 LEXICON OVERTHOUSANDS
                       HUNDREDST     ; ! x00.000.000
@@ -162,7 +162,7 @@ LEXICON OVERTHOUSANDS
      %0%0%0%0:        TENS          ;
      %0%0%0%0:        TEENS         ;
    %0%0%0%0%0:        ONES          ;
- %0%0%0%0%0%0:        #             ; !  x000000
+ %0%0%0%0%0%0:        COMMA         ; !  x000000
 
 LEXICON HUNDREDST
   2:guokta  CUODIT ;
@@ -217,11 +217,11 @@ LEXICON TENST
 
 LEXICON LÅGEVT
  %0:låhke             THOUSANDS ;
-  1:låhke#akta#tuvsán THOUSAND  ;
+  1:låhke#akta#tuvsán THOUSAND  ; !OBS
    :låk               ONEST     ;
 
 LEXICON ONEST
-  1:        THOUSANDS ; ! Er dette rett, Inga? Eller skal det vera tekst for '1'?
+  1:        THOUSANDS ; ! Rett! 
   2:guokta  THOUSANDS ;
   3:gålmmå  THOUSANDS ;
   4:niellja THOUSANDS ;
@@ -233,15 +233,16 @@ LEXICON ONEST
   9:aktse   THOUSANDS ;
 
 LEXICON THOUSANDS      ! x > 1
- :tuvsán THOUSAND ;    ! XXX kva for ein variant vil vi ha i tekst-til-tale og andre normative verkty?
- :duhát  THOUSAND ;    ! XXX Kanskje denne?
+       1:tuvsán THOUSAND ;    ! Denne for tekst-til-tale og andre normative verkty
+1+Use/NG:duhát  THOUSAND ;    ! 
+1%0%0%0.:tuvsánat # ;
 
 LEXICON THOUSAND
          UNDERTHOUSAND ; ! 1100-1999
      %0: TENS          ; ! 1020-1099
      %0: TEENS         ; ! 1010-1019
    %0%0: ONES          ; ! 1001-1009
- %0%0%0: #             ; ! 1000
+ %0%0%0: COMMA         ; ! 1000
 
 !===========================
 !Here starts the 999 numbers
@@ -250,7 +251,8 @@ LEXICON THOUSAND
 LEXICON UNDERTHOUSAND
            HUNDREDS ;
  1:tjuohte HUNDRED  ;
- 1:tjuot   HUNDRED  ; ! XXX - Only in compounds? Sjekk med Inga
+ 1:tjuot   HUNDRED  ; ! XXX - Only in compounds? Sjekk med Inga. Bare i cmp med noe forann, og bare som siste ledd når tallordet er attr til noe. Feks "gålmmåtjuot bijla". Eller når det er ledd etter også. Gålmmåtjuotguoktalåkgålmmå.
+ 1:tjuodát TJUODAAT ;
 
 LEXICON HUNDREDS
   2:guokta  CUODI ;
@@ -264,17 +266,21 @@ LEXICON HUNDREDS
   9:aktse   CUODI ;
 
 LEXICON CUODI
- :tjuode HUNDRED ;
-
+ :tjuode  HUNDRED  ;
+ :tjuodát TJUODAAT ;
+ 
 LEXICON HUNDRED
        TENS  ;
        TEENS ;
    %0: ONES  ;
- %0%0: #     ;
+ %0%0: COMMA ;
+
+LEXICON TJUODAAT
+ %0%0.: COMMA ;
 
 LEXICON TEENS
  1+Use/NG:        TEEN  ;
-        1:lågenan TEEN2 ;
+        1:lågenan ONES ;
 
 LEXICON TEEN
   1:akta    LOHKAI ;
@@ -288,23 +294,12 @@ LEXICON TEEN
   8:gáktsa  LOHKAI ;
   9:aktse   LOHKAI ;
 
-LEXICON TEEN2
-  1:akta    # ;
-  2:guokta  # ;
-  3:gålmmå  # ;
-  4:niellja # ;
-! 4:niellje # ; !marg/dial
-  5:vihtta  # ;
-  6:guhtta  # ;
-  7:gietjav # ;
-  8:gáktsa  # ;
-  9:aktse   # ;
-
 LEXICON LOHKAI
- :lågenan # ;
+ :lågenan COMMA ;
 
 LEXICON TENS
-  1%0:lågev   #     ;
+  1%0:lågev   COMMA ;
+1%0%.:lågåt   COMMA ;
     2:guokta  LÅGEV ;
     3:gålmmå  LÅGEV ;
     4:niellja LÅGEV ;
@@ -316,19 +311,63 @@ LEXICON TENS
     9:aktse   LÅGEV ;
 
 LEXICON LÅGEV
- %0:låhke #    ;
- %0:låk   #    ;
-   :låk   ONES ;
+ %0:låhke COMMA    ;
+ %0:låk   COMMA    ;
+   :låk   ONES     ;
+ %.:lågåt COMMA    ;
 
 LEXICON ONES
-  1:akta    # ;
-  2:guokta  # ;
-  3:gålmmå  # ;
-  4:niellja # ;
-! 4:niellje # ; !marg/dial
-  5:vihtta  # ;
-  6:guhtta  # ;
-  7:gietjav # ;
-  8:gáktsa  # ;
-  9:aktse   # ;
+  CARDINAL ;
+  ORDINAL  ;
 
+LEXICON CARDINAL
+  1:akta    COMMA ;
+  2:guokta  COMMA ;
+  3:gålmmå  COMMA ;
+  4:niellja COMMA ;
+! 4:niellje COMMA ; !marg/dial
+  5:vihtta  COMMA ;
+  6:guhtta  COMMA ;
+  7:gietjav COMMA ;
+  8:gáktsa  COMMA ;
+  9:aktse   COMMA ;
+
+LEXICON ORDINAL
+ 1%.:vuostasj  COMMA ;
+ 2%.:nuppát    COMMA ;
+ 3%.:goalmát   COMMA ;
+ 4%.:nælját    COMMA ;
+ 5%.:vidát     COMMA ;
+ 6%.:gudát     COMMA ;
+ 7%.:giehttjit COMMA ;
+ 8%.:gávtsát   COMMA ;
+ 9%.:avtsát    COMMA ;
+ 
+ 
+ 
+! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! !!!!!!!!!!                    !!!!!!!!!!!!!!!!!!!
+! !!!!!!!!!!   Comma section    !!!!!!!!!!!!!!!!!!!
+! !!!!!!!!!!                    !!!!!!!!!!!!!!!!!!!
+! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+LEXICON COMMA
+  ENDLEX       ;
+  COMMASECTION ;
+
+LEXICON COMMASECTION
+                       ENDLEX        ;
+  ,:% tsiehkes%        NUMBERSECTION ;
+ %.:% tjuogga%         NUMBERSECTION ; ! these will overlap with dates
+  %::% gærddotjuogga%  NUMBERSECTION ;
+ %-:% tjanássáhtso%    NUMBERSECTION ;
+ %=:% la%              NUMBERSECTION ;
+ %°:% gráda%           NUMBERSECTION ;
+  §:% paragráffa%      NUMBERSECTION ;
+ %*:% násste%          NUMBERSECTION ;
+  &:% ja%              NUMBERSECTION ;
+  
+  
+LEXICON ENDLEX
+  # ;
