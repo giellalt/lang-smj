@@ -762,6 +762,9 @@
 * *bednagasj:* `bednagasj+N+Gram/Dimin+Sg+Nom`
 * *bednagattjas:* `bednagasj+N+Gram/Dimin+Sg+Ela`
 
+ LEXICON HÁVSAGUSJ  Like BEDNAGASJ, but not diminutive. No cg, no vowchange, no short Ess. Has only one dimin derivation. No abessive, not totally sure about this, I think we must use postposition dagi when it's diminutive,
+
+
  LEXICON JIHPELIJ  gen:jihpelahá
 
 
