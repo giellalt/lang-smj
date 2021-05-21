@@ -1835,6 +1835,7 @@ contraced verbs assimilated and outside the main pattern.
 
 
 
+
 *briljierit # Contracted test examples:*
 * *briljieriv:* `briljierit+V+IV+Ind+Prs+Sg1`
 * *briljeriv:* `briljierit+V+IV+Ind+Prs+Sg1`
