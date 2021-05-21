@@ -107,6 +107,7 @@ Intransitives
  LEXICON GALSSJOT_IV  Impersonal o-verbs
 
 
+
 *hærmmot # Eveb-syllable test examples:*
 * *hærmmu:* `hærmmot+V+IV+Ind+Prs+Sg3`
 * *härmmu:* `hærmmot+V+IV+Ind+Prs+Sg3`
@@ -114,6 +115,7 @@ Intransitives
 * *härmoj:* `hærmmot+V+IV+Ind+Prt+Sg3`
 
  LEXICON BÅRSSJOT_IV  o-verbs with
+
 
 
 *hæssot # Eveb-syllable test examples:*
@@ -135,6 +137,7 @@ Intransitives
 
 
 
+
 *liddet # Even-syllable test examples:*
 * *littáv:* `liddet+V+IV+Ind+Prs+Sg1`
 * *liddiv:* `liddet+V+IV+Ind+Prt+Sg1`
@@ -149,6 +152,7 @@ Intransitives
 * *bådijma:* `boahtet+V+IV+Ind+Prt+Pl1`
 
  LEXICON VIEDJET_IV   e-verbs GRADE II-I WITH IE DIPHT.
+
 
 
 *biehket # Eveb-syllable test examples:*
@@ -169,6 +173,7 @@ Intransitives
  LEXICON RAVGGAT_IV   a- and å-verbs only Sg3 passive.
 
 
+
 *bajássjaddat # Even-syllable test examples:*
 * *bajássjattav:* `bajássjaddat+V+IV+Ind+Prs+Sg1`
 * *bajássjaddiv:* `bajássjaddat+V+IV+Ind+Prt+Sg1`
@@ -183,6 +188,7 @@ Intransitives
 * *denjaj:* `dednjat+V+IV+Ind+Prt+Sg3`
 
  LEXICON RAVGGALASSTET_IV    Like RAVGGAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced
+
 
 
 *dehpudallat # Even-syllable test examples:*
@@ -321,6 +327,7 @@ Transitives
 
 
 
+
 ## Odd-syllable stems
 
 This is just awaiting a manual classification
@@ -329,6 +336,7 @@ This is just awaiting a manual classification
 
 
  LEXICON JÅRGESTIT_IV At the moment IV, we may perhaps change IV/TV. 
+
 
 
 *doalvestit # Odd-syllable test examples:*
@@ -340,6 +348,7 @@ This is just awaiting a manual classification
 
 
 
+
 *duojkkuhit # Odd-syllable test examples:*
 * *duojkkuhav:* `duojkkuhit+V+IV+Ind+Prs+Sg1`
 * *duojkkuhiv:* `duojkkuhit+V+IV+Ind+Prt+Sg1`
@@ -348,12 +357,14 @@ This is just awaiting a manual classification
  LEXICON BALÁDIT_IV   continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms, only Sg3 passive
 
 
+
 *lihtudit # Odd-syllable test examples:*
 * *lihtudav:* `lihtudit+V+IV+Ind+Prs+Sg1`
 * *lihtudiv:* `lihtudit+V+IV+Ind+Prt+Sg1`
 * *lihtudijma:* `lihtudit+V+IV+Ind+Prt+Pl1`
 
  LEXICON SUOGNALIT_IV  Trisyllabic Verbs ending -lit.  only Sg3 passive
+
 
 
 *loavkkalit # Odd-syllable test examples:*
@@ -370,6 +381,7 @@ This is just awaiting a manual classification
 * *rievddánijma:* `rievddánit+V+IV+Ind+Prt+Pl1`
 
  LEXICON BÁHTARIT_IV verbs ending -rit.  only Sg3 passive
+
 
 
 *sjtávttjurit # Odd-syllable test examples:*
@@ -426,6 +438,7 @@ This is just awaiting a manual classification
  LEXICON SJIERRIT_IV  Impersonals
 
 
+
 *boavddit # Contracted test examples:*
 * *boavddi:* `boavddit+V+IV+Ind+Prs+Sg3`
 * *boavddij:* `boavddit+V+IV+Ind+Prt+Sg3`
@@ -446,6 +459,7 @@ This is just awaiting a manual classification
 
 
 
+
 *bæhkkát # Contracted test examples:*
 * *bæhkkáv:* `bæhkkát+V+IV+Ind+Prs+Sg1`
 * *bähkkáv:* `bæhkkát+V+IV+Ind+Prs+Sg1`
@@ -455,6 +469,7 @@ This is just awaiting a manual classification
 * *bähkkájma:* `bæhkkát+V+IV+Ind+Prt+Pl1`
 
  LEXICON DULLUT_IV   Does not make nouns via -ár derivation. Only Sg3 passiv.
+
 
 
 
@@ -520,6 +535,7 @@ contraced verbs assimilated and outside the main pattern.
  LEXICON SLEDUT_IV  Intransitive Two-syll contraced words not in third grade as contraced verb have been, or in third grade but with norwegian u, or some other strange thing. Only Sg3 passiv.
 
 
+
 *håŋŋlit # Contracted test examples:*
 * *håŋŋliv:* `håŋŋlit+V+IV+Ind+Prs+Sg1`
 * *håŋŋlijiv:* `håŋŋlit+V+IV+Ind+Prt+Sg1`
@@ -548,6 +564,8 @@ contraced verbs assimilated and outside the main pattern.
 
 
 
+
+
 *briljierit # Contracted test examples:*
 * *briljieriv:* `briljierit+V+IV+Ind+Prs+Sg1`
 * *briljeriv:* `briljierit+V+IV+Ind+Prs+Sg1`
@@ -567,6 +585,8 @@ contraced verbs assimilated and outside the main pattern.
 * *abbonerijiv:* `abbonierit+V+TV+Ind+Prt+Sg1`
 * *abbonierijma:* `abbonierit+V+TV+Ind+Prt+Pl1`
 * *abbonerijma:* `abbonierit+V+TV+Ind+Prt+Pl1`
+
+
 
 
 
