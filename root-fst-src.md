@@ -724,6 +724,8 @@ This is done to avoid possible overgeneration in the derivational system.
  * +Der/r VN  - NomAg contracted verbs - guollit-guollár
  * +Der/NomInstr VN  - even verbs:fierrot-fierun
  * +Der/Dimin NN
+ * +Der/gusj Prop -I
+
  * +Der/lasj NN
  * +Der/k NN / NA
  * +Der/Car NA - abessive. Only even/contr. Morén-Duolljá:caritive 
