@@ -184,7 +184,7 @@ Loan words lexicas
 
 ###  Badly assimilated loanwords, some against norm others with no norm
 
- LEXICON MEKÁNALASJ_BADASS  LOAN! Wronly assimilated -lasj adjectives fro SE/NO -isk. Looks derived but isn't since there is no real noun to be derived from. Like mekanisk-mekánalasj, but "mekádna" is no real noun! Like  METÅVDÅLASJ, but gives the Use/-Spell tag, so it's only for these wronly/non-derived loan adjectives. 
+ LEXICON MEKÁNALASJ_BADASS  LOAN! Wronly assimilated -lasj adjectives fro SE/NO -isk. Looks derived but isn't since there is no real noun to be derived from. Like mekanisk-mekánalasj, but "mekádna" is no real noun! Like  METÅVDÅLASJ, but gives the Err/Der tag, so it's only for these wronly/non-derived loan adjectives. 
 
 
 
@@ -203,12 +203,14 @@ Loan words lexicas
  LEXICON ORÁNSSJA  Loan adjectives, not -isk. Used without the -lasj. Adjectives with attribute same as pred. So far only for oránssja.
 
 
- LEXICON DEMONSTRATIJVA_LASJ_NO_NORM  Loan adjectives from norwegian/swedish (Not adjectives ending on -isk). Words like demonstrativ, transitiv, dupleks, informativ, analog, privat. Gives both "demonstratijvva" and "demonstratijvalasj". There are two ways of adapting these adjectives, the adding of -lasj isn't okey, because that's a false derivation. But GG hasn't decided how these should be handled, so so far both ok. Looks like noun instead of adjective when adapted without the -lasj ending.  Attr is in weak grad, used in strong grad ass pred even thou this seems a little bit odd "Værbba l transitijvva". 
+ LEXICON DEMONSTRATIJVA_LASJ_NO_NORM  Loan adjectives from norwegian/swedish (Not adjectives ending on -isk). Words like demonstrativ, transitiv, dupleks, informativ, analog, privat. Gives both "demonstratijvva" and "demonstratijvalasj". Two ways of adapting these adjectives are used, the adding of -lasj isn't okey, because that's a false derivation. But GG hasn't decided how these should be handled. Looks like noun instead of adjective when adapted without the -lasj ending.  Attr is in weak grad, used in strong grad ass pred even thou this seems a little bit odd "Værbba l transitijvva". 
 
 
 
 
  LEXICON DEMONSTRATIJVA_LASJ_CMP_INFL    
+
+
 
 
 
@@ -233,12 +235,13 @@ Loan words lexicas
  LEXICON ÁLA_LASJ_INFL_CMP 
 
 
-                    +Err/Orth:álal%>         ABBO/AMOS         ;
+
 
  LEXICON ELLA_LASJ_NO_NORM  Loanwords, same as ÁLA_LASJ_NO_NORM  and  DEMONSTRANTIJVA_LASJ_NO_NORM. For NO and SE adjectives ending on -ell, eksperimentell, ideell, parallell. The short form is nom parallælla, attr, parallella The long form: paralellalasj, attr parallellalasj. Different lexicon for these -ell adjectives because of err/orth tags. OBS, "individuell", is assimilated "indivijdalasj", and goes to lexicon  METÅVDÅLASJ.
 
 
  LEXICON ELLA_LASJ_INFL_CMP  
+
 
 
 
