@@ -438,6 +438,7 @@ Words in MARJA end on vowel, with CG, even-syllable case marking. Illative chang
 
 
 
+
 Stressed last syllable
 
 These proper nouns are in essence partly assimilated loan word as foreign words with stressed last syllable are assimilated to sami by (often adapting the stressed syllable vowel, and) adding an unstressed syllable consisting of adapted (or if necesarry added) consonants and ending on vowel a (Morén-Duollja 2014). Proper nouns are only partly assimilated in that the stressed syllable vowel is not adapted in any way, neither are consonats inserted, only the final "a" remains. These proper nouns therefore work like regular a-stem nouns and get an even syllable case marking.
