@@ -5279,6 +5279,7 @@ Derivations to adjectives, continuation lexicon not for hardcoded adjectives
 
 
 
+
 *sissŋeluhá # Even-syllable test examples:*
 * *sissŋeluhá:* `sissŋeluhá+N+Pl+Nom`
 * *sissŋeluhájda:* `sissŋeluhá+N+Pl+Ill`
