@@ -1820,11 +1820,11 @@ contraced verbs assimilated and outside the main pattern.
 
 
 
- LEXICON BADASS_TV  NEW badly assimilated two syllable transitive loan verbs. Makes nouns via -ár derivation. All passives.
+ LEXICON BADASS_TV  NEW badly assimilated two syllable transitive loan verbs. Makes nouns via -ár derivation. All passives. Err/Lex-taged.
 
 
 
- LEXICON BADASS_IV   NEW badly assimilated two syllable intransitive loan verbs. Makes nouns via -ár derivation. Only Sg3 passiv.
+ LEXICON BADASS_IV   NEW badly assimilated two syllable intransitive loan verbs. Makes nouns via -ár derivation. Only Sg3 passiv. Err/Lex-taged.
 
 
 
