@@ -355,6 +355,7 @@ generator-gt-norm.xfst: generator-gt-norm.tmp.xfst                \
 					 filters/remove-norm-comp-tags.xfst           \
 					 filters/remove-illegal-derivation-strings.xfst \
 					 filters/remove-DNorm-tags.xfst               \
+					 filters/remove-MinusSpell-strings.xfst       \
 					 filters/remove-use_mt-strings.xfst           \
 					 filters/make-optional-lang_hom-tags.xfst     \
 					filters/remove-usage-tags.xfst
@@ -364,6 +365,7 @@ generator-gt-norm.xfst: generator-gt-norm.tmp.xfst                \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
 			.o. @\"filters/remove-DNorm-tags.xfst\"               \
+			.o. @\"filters/remove-MinusSpell-strings.xfst\"       \
 			.o. @\"filters/remove-use_mt-strings.xfst\"           \
 			.o. @\"$<\"                                           \
 			;\n\
@@ -383,6 +385,7 @@ generator-gt-norm.%: generator-gt-norm.tmp.%                   \
 					 filters/remove-derivation-position-tags.% \
 					 filters/remove-norm-comp-tags.%           \
 					 filters/remove-DNorm-tags.%               \
+					 filters/remove-MinusSpell-strings.%       \
 					 filters/remove-use_mt-strings.%           \
 					 filters/make-optional-lang_hom-tags.%     \
 					 filters/remove-illegal-derivation-strings-flagbased.% \
@@ -406,6 +409,7 @@ generator-gt-norm.%: generator-gt-norm.tmp.%                   \
 			.o. @\"filters/remove-illegal-derivation-strings-flagbased.$*\" \
 			.o. @\"filters/convert_to_flags-CmpNP-tags.$*\"                 \
 			.o. @\"filters/split-CmpNP-tags.$*\"                            \
+			.o. @\"filters/remove-MinusSpell-strings.$*\"                   \
 			.o. @\"filters/remove-use_mt-strings.$*\"                       \
 			.o. @\"$<\"                                          \
 			;\n\
