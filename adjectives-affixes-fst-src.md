@@ -735,7 +735,9 @@ Derivations to adjectives, hardcoded in adjectives stems file
  LEXICON Ahkásasj  ! lexicalized and denominal -asj derivations
 
 
- LEXICON STÁVVAL  ! OK& Kintel: stávval attr stávvalis, also as second compound
+ LEXICON STÁVVALIS  ! Must be "stávvalis" in bot pred and attr, as "guovddelis". OK& Kintel 2012: stávval attr stávvalis this is err/orth taged, also as second compound, this is err/orth taged. No comparison.
+
+
 
 
 Derivations to adjectives, continuation lexicon not for hardcoded adjectives
