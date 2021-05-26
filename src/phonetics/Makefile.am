@@ -21,7 +21,7 @@
 #! @param GT_PHONETICS_SUPPLEMENTS optional, other sources to distribute and
 #! 		  compile for other things
 GT_PHONETICS_MAIN=text2ipa-$(GTLANG).xfscript
-GT_PHONETICS_SUPPLEMENTS=
+GT_PHONETICS_SUPPLEMENTS=espeak-smj-rules.xfscript
 
 ##########################################
 # General build rules included from here:#
