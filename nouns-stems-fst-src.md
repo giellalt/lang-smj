@@ -24,5 +24,3 @@ LOAN
 
 LOAN SWE altar 
 
-
-
