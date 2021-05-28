@@ -6728,7 +6728,6 @@ LOAN
 
 LOAN SWE altar 
 
-
 # Lule Sámi morphological analyser
 
  Definitions for Multichar_Symbols
