@@ -3,13 +3,13 @@ The Lule Sami morphology and tools
 
 [![GitHub issues](https://img.shields.io/github/issues-raw/giellalt/lang-smj)](https://github.com/giellalt/lang-smj/issues)
 [![Build Status](https://github.com/giellalt/lang-smj/workflows/Speller%20CI+CD/badge.svg)](https://github.com/giellalt/lang-smj/actions)
-[![License](https://img.shields.io/github/license/giellalt/lang-smj)](https://raw.githubusercontent.com/giellalt/lang-smj/develop/LICENSE)
+[![License](https://img.shields.io/github/license/giellalt/lang-smj)](https://raw.githubusercontent.com/giellalt/lang-smj/main/LICENSE)
 
 This repository contains finite state source files for the Lule Sami language,
 for building morphological analysers, proofing tools
 and dictionaries. The data and implementation are licenced under __LICENCE__
 licence, also detailed in the
-[LICENCE](https://github.com/giellalt/lang-smj/blob/develop/LICENCE). The
+[LICENSE](https://github.com/giellalt/lang-smj/blob/main/LICENSE). The
 authors named in the AUTHORS file are available to grant other licencing
 choices.
 
@@ -87,7 +87,7 @@ svn checkout https://github.com/giellalt/lang-smj.git/trunk lang-smj
 Building and installation
 -------------------------
 
-[INSTALL](https://github.com/giellalt/lang-smj/blob/develop/INSTALL)
+[INSTALL](https://github.com/giellalt/lang-smj/blob/main/INSTALL)
 describes the GNU build system in detail, but for most users it is the usual:
 
 ```sh
