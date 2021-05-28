@@ -2,10 +2,13 @@
 
 # Lule Sámi morphophonological rule set                    
 
+This file documents the [phonology.twolc file](http://github.com/giellalt/lang-hun/blob/main/src/fst/phonology.twolc) 
+
+The file contains the rule set for the non-segmental
+Lule Sámi morphphonological rules
 
 ## Background
 
-The file itself is located in `lang-smj/src/fst/phonology.twolc`.
 The file is modeled upon the corresponding file for North Sámi, but has been
 revised and differs from it on several issues. The grammatical sources are
 Spiik 1989: Lulesamisk grammatik and Nystø and Johnsen 2001: Sámásta 2.
