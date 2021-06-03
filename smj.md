@@ -2472,6 +2472,9 @@ Words in MARJA end on vowel, with CG, even-syllable case marking. Illative chang
 * *Suobmaj:* `Suobma+N+Prop+Sem/Plc+Sg+Ill`
 * *Suomas:* `Suobma+N+Prop+Sem/Plc+Sg+Ela`
 
+ LEXICON SUOBMA-org  Placenames. Like MARJA but no derivation
+
+
 
 
 
