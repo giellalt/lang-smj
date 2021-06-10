@@ -40,6 +40,7 @@ LEXICON Root
      %0: smallhour ;
 +Use/NA: smallhour ;
          largehour ;
+         KLOAHKKA  ;
 
 LEXICON smallhour
   @U.TIME.1@1:@U.TIME.1@  AFTpunkt ; !01:00 - 01:19 lågenanaktse minuhta badjel avta
@@ -268,3 +269,88 @@ LEXICON ILLHOUR
  @U.TIME.10@:@U.TIME.10@låhkåj         # ;
  @U.TIME.11@:@U.TIME.11@lågenanaktaj   # ;
  @U.TIME.12@:@U.TIME.12@lågenanguoktaj # ;
+
+
+! --------------------------------------------------------------------------
+! 24 digits clock, 22:39=kloahkka guoktalåkguokta gålmmålåkaktse
+
+LEXICON KLOAHKKA 
+
+ :kloahkka%     HOUR-24 ;
+
+LEXICON HOUR-24
+  %0:nulla% nulla%  MINUTES-01-59 ; !00:00 finns ikke
+  %0:nulla%         1-9-HOUR      ;
+  %0:nulla%         1-9-HOUR      ;
+  %0:nulla%         1-9-HOUR      ;
+  %0:nulla%         1-9-HOUR      ;
+  %0:nulla%         1-9-HOUR      ;
+  %0:nulla%         1-9-HOUR      ;
+  %0:nulla%         1-9-HOUR      ;
+  %0:nulla%         1-9-HOUR      ;
+  %0:nulla%         1-9-HOUR      ;
+ 1%0:lågev          MINUTES-00-59 ;
+   1:lågenan        1-9-HOUR     ;
+   2:guoktalåk      HOUR-1-4      ;
+
+LEXICON 1-9-HOUR
+  1:akta    MINUTES-00-59 ;
+  2:guokta  MINUTES-00-59 ;
+  3:gålmmå  MINUTES-00-59 ;
+  4:niellja MINUTES-00-59 ;
+  5:vihtta  MINUTES-00-59 ;
+  6:guhtta  MINUTES-00-59 ;
+  7:gietjav MINUTES-00-59 ;
+  8:gáktsa  MINUTES-00-59 ;
+  9:aktse   MINUTES-00-59 ;
+  
+LEXICON HOUR-1-4
+  1:akta    MINUTES-00-59 ;
+  2:guokta  MINUTES-00-59 ;
+  3:gålmmå  MINUTES-00-59 ;
+  4:niellja MINUTES-00    ;
+
+  
+LEXICON MINUTES-00-59
+%:: MINUTES ;
+
+LEXICON MINUTES
+   %0:% nulla%         ONES ;
+ %0%0:% nulla% nulla   #    ;
+  1%0:% lågev          #    ;
+    1:% lågenan        ONES ;
+  2%0:% guoktalåk      #    ;
+    2:% guoktalåk      ONES ;
+    3:% gålmmålåk      ONES ;
+  3%0:% gålmmålåk      #    ;
+    4:% nielljalåk     ONES ;
+  4%0:% nielljalåk     #    ;
+    5:% vihttalåk      ONES ;
+  5%0:% vihttalåk      #    ;
+
+LEXICON MINUTES-00
+ %0%0:% nulla% nulla  #    ;
+
+LEXICON MINUTES-01-59
+   %0:% nulla          ONES ;
+  1%0:% lågev          #    ;
+    1:% lågenan        ONES ;
+  2%0:% guoktalåk      #    ;
+    2:% guoktalåk      ONES ;
+    3:% gålmmålåk      ONES ;
+  3%0:% gålmmålåk      #    ;
+    4:% nielljalåk     ONES ;
+  4%0:% nielljalåk     #    ;
+    5:% vihttalåk      ONES ;
+  5%0:% vihttalåk      #    ; 
+ 
+LEXICON ONES
+  1:akta    # ;
+  2:guokta  # ;
+  3:gålmmå  # ;
+  4:niellja # ;
+  5:vihtta  # ;
+  6:guhtta  # ;
+  7:gietjav # ;
+  8:gáktsa  # ;
+  9:aktse   # ;  
