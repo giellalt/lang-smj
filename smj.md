@@ -6658,6 +6658,7 @@ LOAN
 LOAN SWE altar 
 
 
+
 # File containing North Saami abbreviations 
 
 ## Lexica for adding tags and periods
