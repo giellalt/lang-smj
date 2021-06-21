@@ -102,17 +102,11 @@ define groupá [  á  ->  a    ||  %% CONS CONS   _  ]  ! short after Q3 consona
           .o. [  á  ->  ɑ ː  ||  CONS   _  ]  ! after Q1 (single) consonant
  ;
 !	  ä          i& ! in Sweden
-
-define groupä [  ä  ->  ɶ  ||  _   SYLL  ]
-          .o. [  ä  ->  ɶ ː  ]
-          .o. [  ä  ->  e ɶ  ]
- ;
-!	  æ          i& ! in Sweden
-
-define groupæ [  æ  ->  ɶ  ||  _   SYLL  ]
-          .o. [  æ  ->  ɶ ː  ]
-          .o. [  æ  ->  e ɶ  ]
-          .o. [  æ  ->  ɶ  ||  % CONS CONS   _  ]  ! short after Q3 consonant/cluster
+!	  æ          i& ! in Norway
+define groupæ [ [æ|ä] ->  ɶ    ||  _   SYLL  ]
+          .o. [ [æ|ä] ->  ɶ ː  ]
+          .o. [ [æ|ä] ->  e ɶ  ]
+          .o. [ [æ|ä] ->  ɶ    ||  % CONS CONS   _  ]  ! short after Q3 consonant/cluster
  ;
 
 define groupå [  å  ->  ɔ  ]
@@ -220,12 +214,8 @@ define groupo [  o    ->  o ɔ  ]
           .o. [  o a  ->  o ɑ  ||  _   SYLL  ]  !
  ;
 
-define groupö [  ö  ->  ʏ  ||  %% CONS CONS   _  ]
-          .o. [  ö  ->  ʏ ː  ]
- ;
-
-define groupø [  ø  ->  ʏ  ||  % CONS CONS   _  ]
-          .o. [  ø  ->  ʏ ː  ]
+define groupø [ [ø|ö] ->  ʏ    ||  %% CONS CONS   _  ]
+          .o. [ [ø|ö] ->  ʏ ː  ]
  ;
 
 define groupp [  p    ->  p    ]
@@ -308,7 +298,6 @@ read regex [
     toLower
 .o. groupa
 .o. groupá
-.o. groupä
 .o. groupæ
 .o. groupå
 .o. groupb
@@ -326,7 +315,6 @@ read regex [
 .o. groupn
 .o. groupŋ
 .o. groupo
-.o. groupö
 .o. groupø
 .o. groupp
 .o. groupr
