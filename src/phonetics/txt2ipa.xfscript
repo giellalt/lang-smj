@@ -89,24 +89,17 @@ define CGROUP [ .#. CONS* | CONS* .#. ] ; ! X in espeak
 ! Vowel compensation/readjustment: V1 and V2 longest in Q1, gradually decreasing in length, but differences very small/not significant.
 
 
-define groupa [  a  ->  ɑ  ]  ! back vowel
-.o.
-[  a  ->  ɑ  ||  _   SYLL  ]  ! back vowel
-.o.
-[  a  ->  a ː  ||  SYLL   _  ] ! long front in 2nd syllable
-!.o.
-![  a  ->  ɑ  ||  %% CONS CONS   _  ]  ! short after Q3 consonant/cluster
+define groupa [  a  ->  ɑ    ]  ! back vowel
+          .o. [  a  ->  ɑ    ||  _   SYLL  ]  ! back vowel
+          .o. [  a  ->  a ː  ||  SYLL   _  ] ! long front in 2nd syllable
+!          .o. [  a  ->  ɑ    ||  %% CONS CONS   _  ]  ! short after Q3 consonant/cluster
  ;
 
 define groupá [  á  ->  ɑ ː  ||  _   SYLL  ]  ! in 1st syll
-.o.
-[  á  ->  a ː  ||  SYLL   _  ]  ! in 2nd syll
-.o.
-[  á  ->  ɑ ː  ]
-.o.
-![  á  ->  a  ||  %% CONS CONS   _  ]  ! short after Q3 consonant/cluster
-!.o.
-[  á  ->  ɑ ː  ||  CONS   _  ]  ! after Q1 (single) consonant
+          .o. [  á  ->  a ː  ||  SYLL   _  ]  ! in 2nd syll
+          .o. [  á  ->  ɑ ː  ]
+          .o. [  á  ->  ɑ ː  ||  CONS   _  ]  ! after Q1 (single) consonant
+!          .o. [  á  ->  a  ||  %% CONS CONS   _  ]  ! short after Q3 consonant/cluster
  ;
 
 define groupä [  ä  ->  e æ  ||  _   SYLL  ] ! in 1st syllable
