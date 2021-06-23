@@ -2,6 +2,7 @@
 ! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
 ! http://giellatekno.uit.no & http://divvun.no
 !
+!
 ! This program is free software; you can redistribute and/or modify
 ! this file under the terms of the GNU General Public License as published by
 ! the Free Software Foundation, either version 3 of the License, or
@@ -60,8 +61,8 @@ define toLower [ A -> a,
 define CONS [ b | c | d | f | g | h | j | k | l | m | n | ñ | ń | ŋ | p | q | r | s | t | v | w | x | z ] ; ! C in espeak
 define VOW [ a | e | é | i | o | u | y | á | å | æ | ä | ø | ö ] ; ! A in espeak
 !define Diphthongs [ i e | u o | e æ | e ä | o a ] ;
-define SYLL CONS* VOW+ CONS* ; ! @ in espeak
-define USYLL CONS* VOW+ CONS* ; ! & in espeak
+define  SYLL CONS* VOW+ CONS+ ; ! @ in espeak
+define USYLL CONS* VOW+ CONS+ ; ! & in espeak
 define NVOW \VOW ; ! K in espeak
 define DIGIT [ %0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 ] ; ! D in espeak
 define CGROUP [ .#. CONS* | CONS* .#. ] ; ! X in espeak
@@ -83,7 +84,7 @@ define CGROUP [ .#. CONS* | CONS* .#. ] ; ! X in espeak
 
 !.L01 i j	! used in palatalization rules
 
-! define L01  [ b | d | g | k | p | t ] ; ! // Plosives
+define PLOS  [ b | d | g | k | p | t ] ; ! // Plosives
 
 ! define L02  [ r | l | j | v ] ; ! // Sonorants
 
@@ -112,95 +113,76 @@ define CGROUP [ .#. CONS* | CONS* .#. ] ; ! X in espeak
 ! Vowel compensation/readjustment: V1 and V2 longest in Q1, gradually decreasing in length, but differences very small/not significant.
 
 
-define groupa [  a  ->  ɑ    ]  ! back vowel
-          .o. [  a  ->  ɑ    ||  _   SYLL  ]  ! back vowel
-          .o. [  a  ->  a ː  ||  SYLL   _  ] ! long front in 2nd syllable
-!          .o. [  a  ->  ɑ    ||  %% CONS CONS   _  ]  ! short after Q3 consonant/cluster
+define groupa [  a  ->  a ː  ||  SYLL  _  ] ! long front in 2nd syllable
+          .o. [  a  ->  ɑ    ||  _   \ː  ]  ! back vowel
  ;
 
-define groupá [  á  ->  ɑ ː  ||  _   SYLL  ]  ! in 1st syll
-          .o. [  á  ->  a ː  ||  SYLL   _  ]  ! in 2nd syll
+define groupá [  á  ->  a ː  ||  SYLL   _  ]  ! in 2nd syll
           .o. [  á  ->  ɑ ː  ]
-          .o. [  á  ->  ɑ ː  ||  CONS   _  ]  ! after Q1 (single) consonant
-!          .o. [  á  ->  a  ||  %% CONS CONS   _  ]  ! short after Q3 consonant/cluster
  ;
 
 define groupæ [ [ä|æ]  ->  e æ  ||  _   SYLL  ] ! in 1st syllable
-          .o. [ [ä|æ]  ->  æ ː  ] ! in 2nd syllable 
+          .o. [ [ä|æ]  ->  æ ː  ||  SYLL   _  ] ! in 2nd syllable
           .o. [ [ä|æ]  ->  æ    ]
  ;
 
 define groupå [  å  ->  ɔ ː  ||  SYLL   _  ]  ! in 2nd syll
           .o. [  å  ->  ɔ  ]
-          .o. [  å  ->  ɔ  ||  % CONS CONS   _  ]  ! short after Q3 consonant/cluster
  ;
 
 define groupb [  b b  ->  b ː  ]
-          .o. [  b  ->  p  ]
-          .o. [  b  ->  b  ||  VOW   _   VOW  ]  ! voiced in an intervocalic position
-!          .o. [  b u s s a  ->  p ' u - s ː ɑ  ]
+          .o. [  b    ->  p    || \VOW   _  \VOW  ,  _  \ː  ]
  ;
 
-define groupc [  c  ->  k  ] ;
+define groupc [  c  ->  s  ||  _  [e|i|y|ø|ö] ]
+          .o. [  c  ->  k  ] ;
 
-define groupd [  d j    ->  ɟ    ||  VOW   _   VOW  ]  ! voiced palatal plosive between vowels
-          .o. [  d d j  ->  ɟ ː  ||  VOW   _   VOW  ]  ! voiced palatal plosive between vowels
+define groupd [  d d j  ->  ɟ ː  ||  VOW   _   VOW  ]  ! voiced palatal plosive between vowels
+          .o. [  d j    ->  ɟ    ||  VOW   _   VOW  ]  ! voiced palatal plosive between vowels
           .o. [  d t s  ->  d z  ]
           .o. [  d t j  ->  d ʒ  ]
           .o. [  d d    ->  d ː  ]
           .o. [  d j    ->  c    ]
-          .o. [  d      ->  d    ||  VOW   _   VOW  ]  ! voiced in an intervocalic position
-          .o. [  d      ->  t    ]
+          .o. [  d      ->  t    || \VOW   _  \[z|ʒ|VOW] ]
  ;
 
 define groupe [ e e  ->  ɛ ː ]
-!          .o. [  e  ->  i ɛ  ||  _   .#.  ]  ! open 2nd syll
           .o. [  e  ->  i ɛ  ||  SYLL   _  ]  ! in 2nd syll
-!          .o. [  e  ->  ɛ ː  ||  _   SYLL  ]  ! open-mid; 1st syll
+          .o. [  e  ->  ɛ ː  ||  _   SYLL  ]  ! open-mid; 1st syll
           .o. [  e  ->  ɛ  ]
  ;
- 
+
 define groupé [  é  ->  ɛ ː  ] ;
 
 define groupf [  f f  ->  f ː ]
-          .o. [  f    ->  f   ]
  ;
 
 define groupg [  g g  ->  g ː  ]
-          .o. [  g    ->  g    ||  VOW   _   VOW  ]  ! voiced in an intervocalic position
-          .o. [  g    ->  k    ]
+          .o. [  g    ->  k    || \VOW   _  \VOW  ,  _  \ː  ]
  ;
 
-define grouph [  h t t j  ->  h t ː ʃ  ]
+define grouph [  h k k    ->  k ː      ]
           .o. [  h k      ->  h k      ]
-          .o. [  h k k    ->  k ː      ]
-          .o. [  h p      ->  h p      ]
           .o. [  h p p    ->  p ː      ]
-          .o. [  h t      ->  h t      ]
-          .o. [  h t t    ->  t ː      ]
-          .o. [  h t s    ->  h t s    ]
+          .o. [  h p      ->  h p      ]
           .o. [  h t t s  ->  h ː t s  ]
+          .o. [  h t s    ->  h t s    ]
+          .o. [  h t t j  ->  h t ː ʃ  ]
           .o. [  h t j    ->  h t ʃ    ]
-          .o. [  h        ->  h        ]
+          .o. [  h t t    ->  t ː      ]
+          .o. [  h t      ->  h t      ]
  ;
 
 define groupi [ i i  ->  i ː  ]
           .o. [ i e  ->  i ɛ  ||  _   SYLL  ] ! 1st syll
-          .o. [ i    ->  i    ]
-!          .o. [ i    ->  i    ||  %% CONS CONS   _  ]  ! short after Q3 consonant
  ;
 
-define groupj [  j b b  ->  j ə b  ]
-          .o. [  j      ->  j      ]
-!          .o. [  j o u r n a l i s s t a  ->  ʃ u r %. n a l ' i s s t ɑ  ]
+define groupj [ j j  ->  j ː ]
+          .o. [ j b b  ->  j ə b  ]
  ;
 
 define groupk [  k k  ->  k ː  ]
           .o. [  k  ->  k h  ||  _   á  ]  ! Aspirated in Scandinavian loanwords
-!          .o. [  k á f f a  ->  k h ' ɑ ː f ː ɑ  ]
-!          .o. [  k á s u s  ->  k h ' ɑ ː s u - s  ]
-!          .o. [  k á s s a  ->  k h ' ɑ ː ʃ ː ɑ  ]
-          .o. [  k  ->  k  ]
  ;
 
 define groupl [  l l    ->  l ː    ]
@@ -209,13 +191,10 @@ define groupl [  l l    ->  l ː    ]
           .o. [  l p p  ->  l ə b  ]  ! Q3
           .o. [  l m m  ->  l ə m  ]  ! Q3
           .o. [  l v v  ->  l ə v  ]  ! Q3
-          .o. [  l      ->  l      ]
  ;
 
 define groupm [  m m  ->  m ː  ]
-          .o. [  m    ->  m    ]
  ;
-
 
 define groupn [  n      ->  n     ]
           .o. [  n j    ->  nʲ    ]
@@ -236,24 +215,19 @@ define groupo [  o    ->  u o  ||  SYLL   _  ]
           .o. [  o    ->  o    ]
  ;
 
-define groupö [  ö ö ->  ø ː ]
-          .o. [  ö   ->  ø   ]
-!          .o. [  ö   ->  ø   ||  %% CONS CONS   _  ]
- ;
-
-define groupø [  ø ø ->  ø ː  ]
-          .o. [  ø   ->  ø    ||  % CONS CONS   _  ]
+define groupø [  [ö ö|ø ø] ->  ø ː ]
+          .o. [  [ ö | ø ] ->  ø   ]
  ;
 
 define groupp [  p p  ->  p ː  ]
-          .o. [  p    ->  p h  ||  _   á  ]  ! Aspirated in Scandinavian loanwords
+          .o. [  p    ->  p h  ||  _  VOW ]  ! Aspirated in Scandinavian loanwords
           .o. [  p    ->  p    ]
-!         .o. [  p a r l a m æ n n t a  ->  p a r %. l ɑ m %' ɶ n t ɑ  ]
  ;
 
 !          rl         l. ! Retroflex. in Scandinavian loanwords
 !          rn         n. ! Retroflex. in Scandinavian loanwords
 !          rt         t. ! Retroflex. in Scandinavian loanwords
+
 define groupr [  r r    ->  r ː    ]
           .o. [  r g g  ->  r ə g  ]  ! Q3
           .o. [  r v v  ->  r ə v  ]  ! Q3
@@ -280,7 +254,7 @@ define groupt [  t t j  ->  t ː ʃ  ]
           .o. [  t j    ->  t ʃ    ]
           .o. [  t s    ->  t s    ]
           .o. [  t t s  ->  t s ː  ]
-          .o. [  t      ->  t      ] 
+          .o. [  t      ->  t      ]
  ;
 
 !          u          u: !
@@ -292,10 +266,9 @@ define groupu [ u u  ->  u ː ]
  ;
 
 define groupv [  v v    ->  v ː    ]
-          .o. [  v      ->  f      ||  L 0 1   _  ]  ! before a plosive
+          .o. [  v      ->  f      ||  _  PLOS  ]  ! before a plosive
           .o. [  v      ->  ʋ      ||  _   .#.  ]  ! in the end of a word, e.g. 1sg suffix
           .o. [  v d d  ->  v ə d  ]  ! Q3
-          .o. [  v      ->  v      ]
  ;
 
 define groupw [  w  ->  v  ]  ;
@@ -310,7 +283,7 @@ define groupz [  z    ->  t s    ]
           .o. [  z z  ->  t ː s  ]
           .o. [  z h  ->  ʒ      ||  NVOW   _  ]
  ;
- 
+
 read regex [
     toLower
 .o. groupa
@@ -334,7 +307,6 @@ read regex [
 .o. groupn
 .o. groupŋ
 .o. groupo
-.o. groupö
 .o. groupø
 .o. groupp
 .o. groupr
@@ -347,4 +319,3 @@ read regex [
 .o. groupy
 .o. groupz
 ] ;
-
