@@ -3146,8 +3146,6 @@ LOAN
 
 LOAN SWE altar 
 
-
-
 # Continuation lexicons for abbreviations
 
 ## Lexica for adding tags and periods
