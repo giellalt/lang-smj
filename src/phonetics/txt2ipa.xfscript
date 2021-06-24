@@ -66,6 +66,8 @@ define USYLL CONS* VOW+ CONS+ ; ! & in espeak
 define NVOW \VOW ; ! K in espeak
 define DIGIT [ %0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 ] ; ! D in espeak
 define CGROUP [ .#. CONS* | CONS* .#. ] ; ! X in espeak
+define WRDBND [ .#. | # | "-" ] ;
+
 ! SMJ translation rules
 ! This file is UTF-8 encoded
 
@@ -147,9 +149,9 @@ define groupd [  d d j  ->  ɟ ː  ||  VOW   _   VOW  ]  ! voiced palatal plosiv
  ;
 
 define groupe [ e e  ->  ɛ ː ]
-          .o. [  e  ->  i ɛ  ||  SYLL   _  ]  ! in 2nd syll
-          .o. [  e  ->  ɛ ː  ||  _   SYLL  ]  ! open-mid; 1st syll
-          .o. [  e  ->  ɛ  ]
+          .o. [  e   ->  i ɛ ||  SYLL    _  ]  ! in 2nd syll
+          .o. [  e   ->  ɛ ː || WRDBND CONS* _ \æ ]  ! open-mid; 1st syll
+          .o. [  e   ->  ɛ   ||  _ \æ       ]
  ;
 
 define groupé [  é  ->  ɛ ː  ] ;
