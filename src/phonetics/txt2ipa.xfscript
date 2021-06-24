@@ -133,7 +133,7 @@ define groupå [  å  ->  ɔ ː  ||  SYLL   _  ]  ! in 2nd syll
  ;
 
 define groupb [  b b  ->  b ː  ]
-          .o. [  b    ->  p    || \VOW   _  \VOW  ,  _  \ː  ]
+          .o. [  b    -> "p€"  || \VOW   _  \VOW  ,  _  \ː  ]
  ;
 
 define groupc [  c  ->  s  ||  _  [e|i|y|ø|ö] ]
@@ -165,8 +165,8 @@ define groupg [  g g  ->  g ː  ]
 
 define grouph [  h k k    ->  k ː      ]
           .o. [  h k      ->  h k      ]
-          .o. [  h p p    ->  p ː      ]
-          .o. [  h p      ->  h p      ]
+          .o. [  h p p    -> "p€" ː    ]
+          .o. [  h p      ->  h "p€"   ]
           .o. [  h t t s  ->  h ː t s  ]
           .o. [  h t s    ->  h t s    ]
           .o. [  h t t j  ->  h t ː ʃ  ]
@@ -218,12 +218,12 @@ define groupo [  o    ->  u o  ||  SYLL   _  ]
  ;
 
 define groupø [  [ö ö|ø ø] ->  ø ː ]
-          .o. [  [ ö | ø ] ->  ø   ]
+          .o. [      ö     ->  ø   ]
  ;
 
-define groupp [  p p  ->  p ː  ]
-          .o. [  p    ->  p h  ||  _  VOW ]  ! Aspirated in Scandinavian loanwords
-          .o. [  p    ->  p    ]
+define groupp [  p p  ->  "p€" ː  ]
+          .o. [  p    ->  "p€" h  ||  _  VOW ]  ! Aspirated in Scandinavian loanwords
+          .o. [  p    ->  "p€"    ]
  ;
 
 !          rl         l. ! Retroflex. in Scandinavian loanwords
@@ -286,6 +286,8 @@ define groupz [  z    ->  t s    ]
           .o. [  z h  ->  ʒ      ||  NVOW   _  ]
  ;
 
+define cleanup [ "p€" -> p ] ;
+
 read regex [
     toLower
 .o. groupa
@@ -319,4 +321,5 @@ read regex [
 .o. groupx
 .o. groupy
 .o. groupz
+.o. cleanup
 ] ;
