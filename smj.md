@@ -6313,7 +6313,7 @@ Loan words lexicas
 
 ###  Badly assimilated loanwords, some against norm others with no norm
 
- LEXICON MEKÁNALASJ_BADASS  LOAN! Wronly assimilated -lasj adjectives fro SE/NO -isk. Looks derived but isn't since there is no real noun to be derived from. Like mekanisk-mekánalasj, but "mekádna" is no real noun! Like  METÅVDÅLASJ, but gives the Err/Der tag, so it's only for these wronly/non-derived loan adjectives. 
+ LEXICON MEKÁNALASJ_BADASS  LOAN! Wronly assimilated -lasj adjectives from SE/NO -isk. Looks derived but isn't since there is no real noun to be derived from. Like mekanisk-mekánalasj, but "mekádna" is no real noun! Like  METÅVDÅLASJ, but gives the Err/Der tag, so it's only for these wronly/non-derived loan adjectives. 
 
 
 
@@ -6366,10 +6366,12 @@ Loan words lexicas
 
 
 
+
  LEXICON ELLA_LASJ_NO_NORM  Loanwords, same as ÁLA_LASJ_NO_NORM  and  DEMONSTRANTIJVA_LASJ_NO_NORM. For NO and SE adjectives ending on -ell, eksperimentell, ideell, parallell. The short form is nom parallælla, attr, parallella The long form: paralellalasj, attr parallellalasj. Different lexicon for these -ell adjectives because of err/orth tags. OBS, "individuell", is assimilated "indivijdalasj", and goes to lexicon  METÅVDÅLASJ.
 
 
  LEXICON ELLA_LASJ_INFL_CMP  
+
 
 
 
