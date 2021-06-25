@@ -1296,11 +1296,12 @@ Pronoun subtypes
 
  * **+Err/Orth** = Substandard. An ungrammatical, non-normative form of normative lemma.
  * **+Err/Lex** = No normative lemma, often ungrammatical compounds like "bajásbuollda" and "songdebutierit".
+ * **+Err/Cmp** = No normative compound, often wrong first part of cmp (in other case than nom or gen, or adv og pronoun)
  * **+Err/Hyph** = No normative lemma
  * **+Err/SpaceCmp** = No normative lemma
  * **+Err/Der** = Lemmas that break with regular derivation rules, both morphologically and semantically
  * **+Err/Infl** = Lemmas that break with normative inflection rules, often used with morphological changes
- **+Err/MissingSpace** = in use in smi lexc. Used for "goadedagi", when it should be "goade dagi"
+ **+Err/MissingSpace** = in use in smj lexc. Used for "goadedagi", when it should be "goade dagi"
 
 ## Usage restriction tags
 
