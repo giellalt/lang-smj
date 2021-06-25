@@ -5935,6 +5935,7 @@ Derived stems
  LEXICON DÁRBBAGA  Like BENA, but plural. Presently only for "dárbbaga", has singular stem counterpart.
 
 
+
 *dárbbaga # Odd-syllable test examples:*
 * *dárbbaga:* `dárbbaga+N+Pl+Nom`
 * *dárbbagijt:* `dárbbaga+N+Pl+Acc`
