@@ -17,6 +17,7 @@
 
 
 
+
  +Use/NG+Gen:n      NAMÁK ; ! adjectival -k derivation does not take pronouns
 +Use/NG+Ela:sstága K ; !Can't find this anywhere. Maybe this is really dástága/dastagá? in "dáhtakcas"
 
