@@ -218,10 +218,7 @@ Loan words lexicas
 
 *aktijvva # Even-syllable test examples:*
 * *aktijva:* `aktijvva+A+Attr`
-* *aktijvalasj:* `aktijvva+A+Attr`
 * *aktijvva:* `aktijvva+A+Sg+Nom`
-* *aktijvalasj:* `aktijvva+A+Sg+Nom`
-* *aktijvalattjav:* `aktijvva+A+Sg+Acc`
 * *aktijvav:* `aktijvva+A+Sg+Acc`
 
 
