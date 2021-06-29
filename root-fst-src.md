@@ -74,8 +74,8 @@ Pronoun subtypes
  * **+Area/SE** - Used in Sweden only
  * **+Area/NO** - Used in Norway only
  * **+Dial/N** Used in the northern areas.  Some might say that
-   these words are sme-words, but they are used by lulesamis in
-   the northern part of the dialect area. Words like "válmas"
+these words are sme-words, but they are used by lulesamis in
+the northern part of the dialect area. Words like "válmas"
  * **+Dial/S** Used in the southern areas
  * **+Dial/SH** Short forms
 
@@ -83,11 +83,11 @@ Pronoun subtypes
 
 The tags are of the following form:
 * **+CmpNP/xxx** - Normative (N), Position (P), ie. the tag describes what
-                   position the tagged word can be in in a compound
+position the tagged word can be in in a compound
 * **+CmpN/xxx**  - Normative (N) **form** ie. the tag describes what
-                   form the tagged word should use when making compounds
+form the tagged word should use when making compounds
 * **+Cmp/xxx**   - Descriptive compounding tags, ie. tags that*describes*
-                   what form a word actually is using in a compound
+what form a word actually is using in a compound
 
 ### Normative/prescriptive compounding tags
 
@@ -109,7 +109,7 @@ This part of the component can ..
  * +CmpNP/Suff - ... only **last** part in a compound, NEVER alone
  * +CmpNP/None - ... not take part in compounds
  * +CmpNP/Only - ... only be part of a compound, i.e. can never
-                be used alone, but can appear in any position
+be used alone, but can appear in any position
 
 The second part of the compound may require that the previous (left part) is (and thus overrides the regular CmpN tags):
 
@@ -139,9 +139,9 @@ above normative tags to actually enforce compound restrictions in the fst.
  * **+Cmp/Long**  Long for om SgNom when short form is default, tjåhkaNIBMEbievddegirjje and bierjjeDAHKAiehket
  * **+Cmp/Unass**  Unassimiled as first part of Cmp, e.g. telegram- in stead for telegrámma-
  * **+Cmp**  Dynamic compound - this tag should always be part of a dynamic compound.
-               It is important for Apertium, and useful in other cases as well.
+It is important for Apertium, and useful in other cases as well.
  * **+Cmp/SplitR**  This is a split compound with the other part to the right:
-               "Arbeids- og inkluderingsdepartementet" => Arbeids- = +Cmp/SplitR
+"Arbeids- og inkluderingsdepartementet" => Arbeids- = +Cmp/SplitR
  * **+Cmp/SplitL**  This is a split compound with the other part to the left
 +Cmp/Hyph  +Cmp/Hyph      Compound with (optional) hyphen, heavily weighted
 +Cmp/OblHyph  +Cmp/OblHyph   Obligatory hyphen, not as badly weighed as +Cmp/Hyph
@@ -781,12 +781,12 @@ The principle of tagging is that we only tag to the extent needed,
 and following a priority:
 1. any untagged word is pronounced with SME orthographic conventions
 1. NNO and NOB have identical pronunciation, NNO is only used if
-  different in spelling from NOB
+different in spelling from NOB
 1. SWE has mostly the same pronunciation as NOB, and is only used
-  if different in spelling from NOB
+if different in spelling from NOB
 1. Occasionally even SME (the default) may be tagged, to block other
-  languages from being specified, mainly during semi-automatic
-  language tagging sessions
+languages from being specified, mainly during semi-automatic
+language tagging sessions
 All in all, we want to get as much correctly transcribed to IPA
 with as little work as possible. On the other hand, if more words
 are tagged than strictly needed, this should pose no problem as
@@ -882,3 +882,5 @@ And this is the ENDLEX of everything:
 The `@D.CmpOnly.FALSE@` flag diacritic is ued to disallow words tagged
 with +CmpNP/Only to end here.
 The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
+* * *
+<small>This (part of) documentation was generated from [../src/fst/root.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/root.lexc)</small>

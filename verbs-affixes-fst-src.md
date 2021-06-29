@@ -6,25 +6,25 @@
 Table of content:
 
 * The auxiliaries
-    - Negation verb
-    - Copula
-    - Modals
+- Negation verb
+- Copula
+- Modals
 * Main verbs
-    - Even syllable stems
-        - Intransitives
-        - Transitives
-    - Odd syllable stems
-        - Intranstives
-        - Transitives
-    - Contracted stems
-        - Intransitives
-        - Transitives
-    - Assimilated loan verbs
-        - Intransitives
-        - Transitives
-    - Main inflectional categories
-        - suffix lexicas
-    - Verb derivation
+- Even syllable stems
+- Intransitives
+- Transitives
+- Odd syllable stems
+- Intranstives
+- Transitives
+- Contracted stems
+- Intransitives
+- Transitives
+- Assimilated loan verbs
+- Intransitives
+- Transitives
+- Main inflectional categories
+- suffix lexicas
+- Verb derivation
 
 
 IV means intransitive verbs, TV means transitive verbs.
@@ -724,3 +724,5 @@ contraced verbs assimilated and outside the main pattern.
 
 
 
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/verbs.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/verbs.lexc)</small>

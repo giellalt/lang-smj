@@ -1251,6 +1251,8 @@
 
 
 
+* * *
+<small>This (part of) documentation was generated from [../src/cg3/disambiguator.cg3](http://github.com/giellalt/lang-smj/blob/main/../src/cg3/disambiguator.cg3)</small>
 
 
 
@@ -1270,12 +1272,11 @@
 
 
 
-
- +Use/NG+Gen:n      NAMÁK ; ! adjectival -k derivation does not take pronouns
++Use/NG+Gen:n      NAMÁK ; ! adjectival -k derivation does not take pronouns
 +Use/NG+Ela:sstága K ; !Can't find this anywhere. Maybe this is really dástága/dastagá? in "dáhtakcas"
 
 
- +Use/NG+Gen:      NAMÁK ; ! adjectival -k derivation does not take pronouns
++Use/NG+Gen:      NAMÁK ; ! adjectival -k derivation does not take pronouns
 
 
 
@@ -1308,7 +1309,7 @@
 
 
 +Use/NG+Gen:aj      NAMÁK ; ! adjectival -k derivation does not take pronouns
-      +Ine:a%>jna  K-s ;
++Ine:a%>jna  K-s ;
 +Abe+Use/NG:a%>jdak  K ;  ! covered in non-idiosync   
 +Abe+Use/NG:a%>jdagi  K ; ! covered in non-idiosync   
 +Abe+Use/NG:a%>jdagá  K ; ! covered in non-idiosync   
@@ -1368,7 +1369,8 @@
 
 
 
-
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/pronouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/pronouns.lexc)</small>
 # Symbol affixes
 
 
@@ -1376,7 +1378,8 @@
 
 
 
-
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/symbols.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/symbols.lexc)</small>
 # Continuation lexicons for abbreviations
 
 ## Lexica for adding tags and periods
@@ -1445,7 +1448,8 @@
  * **LEXICON DOT   ** - Adds the dot to dotted abbreviations.
 
 
-
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/abbreviations.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/abbreviations.lexc)</small>
 
 
 
@@ -1618,7 +1622,8 @@
 
 
 
-
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/numerals.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/numerals.lexc)</small>
 
 
 # Sublexica for Verb
@@ -1626,25 +1631,25 @@
 Table of content:
 
 * The auxiliaries
-    - Negation verb
-    - Copula
-    - Modals
+- Negation verb
+- Copula
+- Modals
 * Main verbs
-    - Even syllable stems
-        - Intransitives
-        - Transitives
-    - Odd syllable stems
-        - Intranstives
-        - Transitives
-    - Contracted stems
-        - Intransitives
-        - Transitives
-    - Assimilated loan verbs
-        - Intransitives
-        - Transitives
-    - Main inflectional categories
-        - suffix lexicas
-    - Verb derivation
+- Even syllable stems
+- Intransitives
+- Transitives
+- Odd syllable stems
+- Intranstives
+- Transitives
+- Contracted stems
+- Intransitives
+- Transitives
+- Assimilated loan verbs
+- Intransitives
+- Transitives
+- Main inflectional categories
+- suffix lexicas
+- Verb derivation
 
 
 IV means intransitive verbs, TV means transitive verbs.
@@ -2344,7 +2349,8 @@ contraced verbs assimilated and outside the main pattern.
 
 
 
-
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/verbs.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/verbs.lexc)</small>
 
 
 # Sublexica for Noun
@@ -3610,7 +3616,8 @@ Derived stems
 
 
 
-
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/nouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/nouns.lexc)</small>
 
 
 # Sublexica for Adjective
@@ -4374,7 +4381,8 @@ Derivations to adjectives, continuation lexicon not for hardcoded adjectives
 
 
 
-
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/adjectives.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/adjectives.lexc)</small>
 # Lule Sáme Proper noun morphology !
 
 
@@ -5723,7 +5731,8 @@ HANNOLA is the same as ACCRA
 
 
 
-
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/propernouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/propernouns.lexc)</small>
 
 # Lule Sámi morphophonological rule set                    
 
@@ -6555,7 +6564,8 @@ Debugging of twol-rules
 All rule conflicts have been successfully resolved. The rule file
 should be kept that way. Look out for conflicts in the compilation
 process, and resolve them as they appear!
-
+* * *
+<small>This (part of) documentation was generated from [../src/fst/phonology.twolc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/phonology.twolc)</small>
 
 
 
@@ -6632,7 +6642,8 @@ Reciprocal pronouns as multiword expression
 
 
 
-
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/pronouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/pronouns.lexc)</small>
 
 
 
@@ -6657,7 +6668,8 @@ LOAN
 LOAN
 
 LOAN SWE altar 
-
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/nouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/nouns.lexc)</small>
 # File containing North Saami abbreviations 
 
 ## Lexica for adding tags and periods
@@ -6718,7 +6730,8 @@ which numerals are complements and normal words. The abbreviation usage
 is less common and thus only the occurences in the middle of
 the sentence can be considered as true cases.
 
-
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/smj-abbreviations.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/smj-abbreviations.lexc)</small>
 # Lule Sámi morphological analyser
 
  Definitions for Multichar_Symbols
@@ -6794,8 +6807,8 @@ Pronoun subtypes
  * **+Area/SE** - Used in Sweden only
  * **+Area/NO** - Used in Norway only
  * **+Dial/N** Used in the northern areas.  Some might say that
-   these words are sme-words, but they are used by lulesamis in
-   the northern part of the dialect area. Words like "válmas"
+these words are sme-words, but they are used by lulesamis in
+the northern part of the dialect area. Words like "válmas"
  * **+Dial/S** Used in the southern areas
  * **+Dial/SH** Short forms
 
@@ -6803,11 +6816,11 @@ Pronoun subtypes
 
 The tags are of the following form:
 * **+CmpNP/xxx** - Normative (N), Position (P), ie. the tag describes what
-                   position the tagged word can be in in a compound
+position the tagged word can be in in a compound
 * **+CmpN/xxx**  - Normative (N) **form** ie. the tag describes what
-                   form the tagged word should use when making compounds
+form the tagged word should use when making compounds
 * **+Cmp/xxx**   - Descriptive compounding tags, ie. tags that*describes*
-                   what form a word actually is using in a compound
+what form a word actually is using in a compound
 
 ### Normative/prescriptive compounding tags
 
@@ -6829,7 +6842,7 @@ This part of the component can ..
  * +CmpNP/Suff - ... only **last** part in a compound, NEVER alone
  * +CmpNP/None - ... not take part in compounds
  * +CmpNP/Only - ... only be part of a compound, i.e. can never
-                be used alone, but can appear in any position
+be used alone, but can appear in any position
 
 The second part of the compound may require that the previous (left part) is (and thus overrides the regular CmpN tags):
 
@@ -6859,9 +6872,9 @@ above normative tags to actually enforce compound restrictions in the fst.
  * **+Cmp/Long**  Long for om SgNom when short form is default, tjåhkaNIBMEbievddegirjje and bierjjeDAHKAiehket
  * **+Cmp/Unass**  Unassimiled as first part of Cmp, e.g. telegram- in stead for telegrámma-
  * **+Cmp**  Dynamic compound - this tag should always be part of a dynamic compound.
-               It is important for Apertium, and useful in other cases as well.
+It is important for Apertium, and useful in other cases as well.
  * **+Cmp/SplitR**  This is a split compound with the other part to the right:
-               "Arbeids- og inkluderingsdepartementet" => Arbeids- = +Cmp/SplitR
+"Arbeids- og inkluderingsdepartementet" => Arbeids- = +Cmp/SplitR
  * **+Cmp/SplitL**  This is a split compound with the other part to the left
 +Cmp/Hyph  +Cmp/Hyph      Compound with (optional) hyphen, heavily weighted
 +Cmp/OblHyph  +Cmp/OblHyph   Obligatory hyphen, not as badly weighed as +Cmp/Hyph
@@ -7501,12 +7514,12 @@ The principle of tagging is that we only tag to the extent needed,
 and following a priority:
 1. any untagged word is pronounced with SME orthographic conventions
 1. NNO and NOB have identical pronunciation, NNO is only used if
-  different in spelling from NOB
+different in spelling from NOB
 1. SWE has mostly the same pronunciation as NOB, and is only used
-  if different in spelling from NOB
+if different in spelling from NOB
 1. Occasionally even SME (the default) may be tagged, to block other
-  languages from being specified, mainly during semi-automatic
-  language tagging sessions
+languages from being specified, mainly during semi-automatic
+language tagging sessions
 All in all, we want to get as much correctly transcribed to IPA
 with as little work as possible. On the other hand, if more words
 are tagged than strictly needed, this should pose no problem as
@@ -7602,6 +7615,8 @@ And this is the ENDLEX of everything:
 The `@D.CmpOnly.FALSE@` flag diacritic is ued to disallow words tagged
 with +CmpNP/Only to end here.
 The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
+* * *
+<small>This (part of) documentation was generated from [../src/fst/root.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/root.lexc)</small>
 
 
 
@@ -7617,8 +7632,8 @@ The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
 
 
 
-
-
+* * *
+<small>This (part of) documentation was generated from [../src/fst/compounding.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/compounding.lexc)</small>
 
 
 We describe here how abbreviations in Lule Sami are read out, e.g.
@@ -7651,7 +7666,8 @@ Emojies
 
 * Paired punctuation marks
 
-
+* * *
+<small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-abbrevs2text.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/transcriptions/transcriptor-abbrevs2text.lexc)</small>
 
 This is still a dummy file.
 
@@ -7683,6 +7699,8 @@ This is still a dummy file.
 
 
 
+* * *
+<small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-date-digit2text.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/transcriptions/transcriptor-date-digit2text.lexc)</small>
 
 
 
@@ -7735,8 +7753,8 @@ This is still a dummy file.
 
 
 
-
-
+* * *
+<small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-numbers-digit2text.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
 
 
 
@@ -7783,8 +7801,9 @@ lågenanguovte
 
 
 
-
-      L U L E   S A A M I   G R A M M A R   C H E C K E R
+* * *
+<small>This (part of) documentation was generated from [../src/transcriptions/clock-from-old-infra.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/transcriptions/clock-from-old-infra.lexc)</small>
+L U L E   S A A M I   G R A M M A R   C H E C K E R
 
 
 
@@ -8364,3 +8383,5 @@ Error tags
 
 
 
+* * *
+<small>This (part of) documentation was generated from [../tools/grammarcheckers/grammarchecker.cg3](http://github.com/giellalt/lang-smj/blob/main/../tools/grammarcheckers/grammarchecker.cg3)</small>

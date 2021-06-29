@@ -830,3 +830,5 @@ Debugging of twol-rules
 All rule conflicts have been successfully resolved. The rule file
 should be kept that way. Look out for conflicts in the compilation
 process, and resolve them as they appear!
+* * *
+<small>This (part of) documentation was generated from [../src/fst/phonology.twolc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/phonology.twolc)</small>

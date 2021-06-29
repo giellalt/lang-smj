@@ -762,3 +762,5 @@ Derivations to adjectives, continuation lexicon not for hardcoded adjectives
 
 
 
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/adjectives.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/adjectives.lexc)</small>
