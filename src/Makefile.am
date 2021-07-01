@@ -49,7 +49,7 @@ GT_ANALYSERS+=
 GT_GENERATORS+=
 
 if WANT_CUSTOM_FSTS
-CUSTOM_FSTS+=
+CUSTOM_FSTS+=analyser-tts-gt-output.xfst analyser-tts-gt-input.xfst
 endif # WANT_CUSTOM_FSTS
 
 endif # CAN_XFST
@@ -60,7 +60,7 @@ GT_ANALYSERS+=
 GT_GENERATORS+=
 
 if WANT_CUSTOM_FSTS
-CUSTOM_FSTS+=
+CUSTOM_FSTS+=analyser-tts-gt-output.hfstol analyser-tts-gt-input.hfstol
 endif # WANT_CUSTOM_FSTS
 
 endif # CAN_HFST
@@ -71,7 +71,7 @@ GT_ANALYSERS+=
 GT_GENERATORS+=
 
 if WANT_CUSTOM_FSTS
-CUSTOM_FSTS+=
+CUSTOM_FSTS+=analyser-tts-gt-output.foma analyser-tts-gt-input.foma
 endif # WANT_CUSTOM_FSTS
 
 endif # CAN_FOMA
@@ -160,6 +160,113 @@ generator-raw-gt-desc.hfst: generator-raw-gt-desc.tmp.hfst \
 		 quit\n" | $(XFST_TOOL)
 
 endif !WITH_OFST_TROPICAL
+
+# For TTS processing, we want two cascaded transducers: a slightly filtered lexicon,
+# and the lower/input side of the lexicon + twolc rules.
+#
+# The following is a list of filters we might want to consider:
+#					filters/remove-area-tags.%                
+#					filters/remove-dialect-tags.%             
+#					filters/remove-number-string-tags.%       
+#					filters/remove-semantic-tags.%            
+#					filters/remove-hyphenation-marks.%        
+#					filters/remove-infl_deriv-borders.%       
+#					filters/remove-word-boundary.%            
+#					filters/remove-orthography-tags.%         
+#					filters/remove-Orth_IPA-strings.%         
+#					filters/remove-orig_lang-tags.%           
+#					filters/remove-Use_GC-strings.%           
+#					filters/remove-Use_minusGC-tags.%         
+#					filters/remove-Use_minus_PMatch-tags.%    
+#					filters/remove-Use_PMatch-strings.%       
+#					filters/remove-mwe-tags.%                 
+#					orthography/inituppercase.compose.%       
+#					orthography/spellrelax.compose.%          
+#
+# First we create the filtered lexicon, ie the analysis/output part of the cascade:
+analyser-tts-gt-output.tmp.%: fst/lexicon.% \
+					filters/remove-derivation-position-tags.% \
+					filters/remove-norm-comp-tags.%           \
+					filters/remove-use_mt-strings.%           \
+					filters/remove-DNorm-tags.% \
+					filters/remove-usage-tags.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/remove-usage-tags.$*\"               \
+			.o. @\"filters/remove-derivation-position-tags.$*\" \
+			.o. @\"filters/remove-norm-comp-tags.$*\"           \
+			.o. @\"filters/remove-DNorm-tags.$*\"               \
+			.o. @\"filters/remove-use_mt-strings.$*\"           \
+			.o. @\"$<\"                                         \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+# Then we create the filtered lexicon:
+# HFST
+if WANT_REVERSED_INTERSECT
+# Do this is reversed intersect is enabled:
+analyser-tts-gt-input.tmp.hfst: analyser-tts-gt-output.tmp.hfst \
+					 fst/phonology.rev.hfst
+	$(AM_V_INTRSCT)\
+		  $(HFST_PROJECT) $(MORE_VERBOSITY) $(HFST_FLAGS) -p output $< \
+		| $(HFST_REVERSE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		| $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
+			$(MORE_VERBOSITY) $(HFST_FLAGS) \
+			-2 fst/phonology.rev.hfst \
+		| $(HFST_REVERSE) \
+		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		-o $@
+
+else
+# Otherwise do this:
+analyser-tts-gt-input.tmp.hfst: analyser-tts-gt-output.tmp.hfst \
+					 fst/phonology.compose.hfst
+	$(AM_V_INTRSCT)\
+		  $(HFST_PROJECT) $(MORE_VERBOSITY) $(HFST_FLAGS) -p output $< \
+		| $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
+			$(MORE_VERBOSITY) $(HFST_FLAGS) \
+			-2 fst/phonology.compose.hfst \
+		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		-o $@
+endif # WANT_REVERSED_INTERSECT
+
+# XEROX
+analyser-tts-gt-output.tmp.xfst: fst/lexicon.xfst \
+			 fst/phonology.compose.xfst
+	$(AM_V_LEXC)$(PRINTF) \
+		"read-source fst/lexicon.xfst\nread-rules fst/phonology.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
+		| $(LEXC) $(VERBOSITY)
+
+analyser-tts-gt-input.hfst  \
+analyser-tts-gt-input.xfst  \
+analyser-tts-gt-input.foma: \
+analyser-tts-gt-input.%: analyser-tts-gt-input.tmp.%          \
+					filters/remove-hyphenation-marks.%        \
+					filters/remove-infl_deriv-borders.%       \
+					filters/remove-word-boundary.%            \
+					orthography/inituppercase.compose.%       \
+					orthography/spellrelax.compose.%          \
+					$(GLT_DOWNCASE_FILTER)
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+			    @\"$<\" \
+			    $(GLT_DOWNCASE_COMPOSE) \
+			.o. @\"filters/remove-hyphenation-marks.$*\"        \
+			.o. @\"filters/remove-infl_deriv-borders.$*\"       \
+			.o. @\"filters/remove-word-boundary.$*\"            \
+			; \n\
+			define fst \n\
+			set flag-is-epsilon ON\n\
+			read regex fst \
+			.o. @\"orthography/inituppercase.compose.$*\"       \
+			.o. @\"orthography/spellrelax.compose.$*\"          \
+			;\n\
+		 $(INVERT_HFST)\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
 
 # The SMJ morphology has some extra tags used for marking questionable
 # normativity and our suggested norm:
