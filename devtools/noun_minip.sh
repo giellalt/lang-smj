@@ -4,10 +4,10 @@
 # command:
 # sh generate_contlex_para.sh PATTERN
 # example, when you are in smj:
-# sh devtools/noun_minip.sh LAAVU | less
-# sh devtools/noun_minip.sh smiergâs 
+# sh devtools/noun_minip.sh GÅNÅGIS | less
+# sh devtools/noun_minip.sh tjielggidus 
 # Only get the lemma you ask for:
-# sh devtools/noun_minip.sh '^smiergâs[:+]' 
+# sh devtools/noun_minip.sh '^tjielggidus[:+]' 
 
 
 LOOKUP=$(echo $HLOOKUP)
