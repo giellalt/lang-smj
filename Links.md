@@ -1,6 +1,7 @@
 * [disambiguator-cg3-src.md](disambiguator-cg3-src.md)
 * [smj-abbreviations-stems-fst-src.md](smj-abbreviations-stems-fst-src.md)
 * [pronouns-stems-fst-src.md](pronouns-stems-fst-src.md)
+* [adjectives-stems-fst-src.md](adjectives-stems-fst-src.md)
 * [nouns-stems-fst-src.md](nouns-stems-fst-src.md)
 * [compounding-fst-src.md](compounding-fst-src.md)
 * [root-fst-src.md](root-fst-src.md)
