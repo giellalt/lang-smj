@@ -1,4 +1,5 @@
 * [disambiguator-cg3-src.md](disambiguator-cg3-src.md)
+* [adverbs-stems-fst-src.md](adverbs-stems-fst-src.md)
 * [smj-abbreviations-stems-fst-src.md](smj-abbreviations-stems-fst-src.md)
 * [pronouns-stems-fst-src.md](pronouns-stems-fst-src.md)
 * [adjectives-stems-fst-src.md](adjectives-stems-fst-src.md)

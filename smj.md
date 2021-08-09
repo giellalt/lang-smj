@@ -1253,6 +1253,21 @@
 
 * * *
 <small>This (part of) documentation was generated from [../src/cg3/disambiguator.cg3](http://github.com/giellalt/lang-smj/blob/main/../src/cg3/disambiguator.cg3)</small>
+
+
+
+
+
+
+
+
+
+
+
+
+sme mojonjálmmiid
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/adverbs.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/adverbs.lexc)</small>
 # File containing North Saami abbreviations 
 
 ## Lexica for adding tags and periods
