@@ -35,9 +35,11 @@
 set need-separators off
 
 Define  inputlexmorph @bin"analyser_relabelled-tts-cggt-input.hfst" ;
-Define outputlexmorph @bin"analyser_relabelled-tts-cggt-output.hfst" ;
+Define outputlexmorph [ @bin"analyser_relabelled-tts-cggt-output.hfst" ].i ;
 
-Define morphology [ inputlexmorph | UpCase(inputlexmorph, U) ] ;
+Define inmorphology [ inputlexmorph | UpCase(inputlexmorph, U) ] ;
+Define outmorphology [ outputlexmorph | UpCase(outputlexmorph, U) ] ;
+Define morphology [ inmorphology .o. outmorphology ] ;
 
 Define url @bin"analyser-url-gt-desc.hfst" ;
 
@@ -83,7 +85,8 @@ Define any          [ ? | nonprintable ];
 
 Define incondword       morphology & [ any* incondform:[?*] nonprintable* ] ; ! Ends in punctuation – no context condition
 
-Define morphoword       morphology                   LC([blank | #]) RC([blank | # ]);
+Define morphoword       Uncompose(morphology, inmorphology, outmorphology)
+                        LC([blank | #]) RC([blank | # ]);
 Define urlword          url                          LC([blank | #]) RC([blank | # ]);
 
 !! Apart from what's in our morphology, there are
@@ -178,6 +181,7 @@ Define unknownwordEmpty unknownform:0 LC([blank | #]) RC([[blank ] | # ]);
 !! Needs hfst-tokenise to output things differently depending on the tag they get
 
 
+! Define token [ Uncompose(morphoword, inmorphology, outmorphology, phon) | unknownwordEmpty | incondword | Ins(urlword) ] EndTag(token);
 Define token [ morphoword | unknownwordEmpty | incondword | Ins(urlword) ] EndTag(token);
 
 regex token ;
