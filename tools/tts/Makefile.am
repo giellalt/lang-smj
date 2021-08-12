@@ -22,9 +22,13 @@ GIELLA_ANL_REMOVE_TRANSCRIPTORS=
 
 # If there are additional, language specific files used in the GC archive,
 # specify here:
-LOCAL_ANL_ZIP_FILES=
+LOCAL_ANL_ZIP_FILES=tokeniser-tts-cggt-desc.pmhfst
 
 #### BEGIN: Local build targets: ####
+
+# Temporary target until we have settled the three-tape text processing:
+tokeniser-tts-cggt-desc.pmhfst: ../tokenisers/tokeniser-tts-cggt-desc.pmhfst
+	$(AM_V_CP)cp -f $< $@
 
 #### END: Local build targets:   ####
 
