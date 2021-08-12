@@ -517,7 +517,7 @@ This is just awaiting a manual classification
 
 contraced verbs assimilated and outside the main pattern.
 
- LEXICON JÁGIT_TV  Transitive Two-syll contraced words not in third grade as contraced verb have been, or in third grade but with norwegian u, or some other strange thing. Two syllable transitive NEW loan verbs. Makes nouns via -ár derivation. All passives.
+ LEXICON PLÁNIT_TV  Transitive Two-syll contraced words not in third grade as contraced verb have been. Two syllable transitive NEW loan verbs. Makes nouns via -ár derivation. All passives.
 
 
 *hinnit # Contracted test examples:*
@@ -532,7 +532,7 @@ contraced verbs assimilated and outside the main pattern.
 
 
 
- LEXICON SLEDUT_IV  Intransitive Two-syll contraced words not in third grade as contraced verb have been, or in third grade but with norwegian u, or some other strange thing. Only Sg3 passiv.
+ LEXICON SLEDUT_IV  Intransitive Two-syll contraced words not in third grade as contraced verb have been. Only Sg3 passiv.
 
 
 
@@ -543,20 +543,20 @@ contraced verbs assimilated and outside the main pattern.
 
 
 
+ LEXICON BADASS_TV  NEW badly assimilated two syllable transitive loan verbs. Makes nouns via -ár derivation. All passives. Err/orth taged in stem file
+
+
+
+ LEXICON BADASS_IV   NEW badly assimilated two syllable intransitive loan verbs. Makes nouns via -ár derivation. Only Sg3 passiv. Err/orth taged in stem file.
+
+
+
+
  LEXICON ABBONERE_TV   Transitive loan words with more than two syllables with -rit endings. Duvvat passives. Does not make nouns via -ár derivation. Only the two last syllables are assimilated to sami. LONG -e is assimilated in different ways in Norway and Sweden: In Norway, it becomes -ie, and in Sweden -e.
 
 
 
  LEXICON BRILJERE_IV   Intransitive loan words with more than two syllables with -rit endings. Does not make nouns via -ár derivation. Only the two last syllables are assimilated to sami. Long -e is assimilated in different ways in dialects in Norway and Sweden: In Norway it often becomes -ie, while in Sweden itºs usually -e.  
-
-
-
- LEXICON BADASS_TV  NEW badly assimilated two syllable transitive loan verbs. Makes nouns via -ár derivation. All passives. Err/Lex-taged.
-
-
-
- LEXICON BADASS_IV   NEW badly assimilated two syllable intransitive loan verbs. Makes nouns via -ár derivation. Only Sg3 passiv. Err/Lex-taged.
-
 
 
 
