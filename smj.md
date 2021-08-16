@@ -6355,14 +6355,14 @@ Derivations to adjectives, hardcoded in adjectives stems file
 
  LEXICON BÁJNUK  ! hardcoded denominal derivations, latus has changed from o>u, a>a, e>á (Bájnno>bájnuk, juolgge>juolgák, giella>gielak.  Attr same as pred, no comp in this lexicon. 
 
- LEXICON TSÅHPÅK  ! hardcoded denominal derivations latus has changed from o>u, a>a, e>á AND -GIS attr. Attr same as pred is err/orth taged. no comp in this lexicon
+ LEXICON TSÅHPÅK  ! hardcoded denominal derivations latus has changed from o>u, a>a, e>á AND -GIS attr. Attr same as pred is err/orth taged. no comp in this lexicon. 
 
 
- LEXICON GIEVLEK  ! hardcoded denominal derivations, not same as BÁJNUK since latus has unexpected vowel. Latus hasn't changed o>u, a>a, e>á. Goes directly to BÁJNUK, only made to sort these different kinds of derivations.
+ LEXICON GIEVLEK  ! hardcoded derivations, not same as BÁJNUK since latus has unexpected vowel. Latus hasn't changed o>u, a>a, e>á. Goes directly to BÁJNUK, only made to sort these different kinds of derivations. Many of these may be derivated from verbs or other adjectives.
 
 
 
- LEXICON SJERVAK  ! hardcoded denominal derivations, not same as TSÅHPÅK since latus has unexpected vowel. Latus hasn't changed o>u, a>a, e>á. Goes directly to TSÅHPÅK, only made to sort these different kinds of derivations.
+ LEXICON SJERVAK  ! hardcoded derivations, not same as TSÅHPÅK since latus has unexpected vowel. Latus hasn't changed o>u, a>a, e>á. Goes directly to TSÅHPÅK, only made to sort these different kinds of derivations. Many of these may be derivated from verbs or other adjectives.
 
 
  LEXICON DIBME  ! even and contracted
