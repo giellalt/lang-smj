@@ -41,14 +41,17 @@ Pronoun subtypes
 
 ## Error tags
 
+All Err-tags must have normative form as lemma except Err/Lex
+
  * **+Err/Orth** = Substandard. An ungrammatical, non-normative form of normative lemma.
- * **+Err/Lex** = No normative lemma, often ungrammatical compounds like "bajásbuollda" and "songdebutierit".
+ * **+Err/Lex** = No normative lemma
  * **+Err/Cmp** = No normative compound, often wrong first part of cmp (in other case than nom or gen, or adv og pronoun)
- * **+Err/Hyph** = No normative lemma
- * **+Err/SpaceCmp** = No normative lemma
  * **+Err/Der** = Lemmas that break with regular derivation rules, both morphologically and semantically
  * **+Err/Infl** = Lemmas that break with normative inflection rules, often used with morphological changes
- **+Err/MissingSpace** = in use in smj lexc. Used for "goadedagi", when it should be "goade dagi"
+ * **+Err/MissingSpace** = indicates that there is a missing space, causing an orthographic error. Used for "goadedagi", when it should be "goade dagi"
+ * **+Err/Hyph** = when there is a hyphen where none should have been
+ * **+Err/SpaceCmp** = used for compounds written apart - only retained in the HFST Grammar Checker disambiguation analyser
+
 
 ## Usage restriction tags
 
