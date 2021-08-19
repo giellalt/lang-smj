@@ -20,8 +20,7 @@ cut -d"#" -f1 $test_file | grep -v "^$" | tail -n +2 | cut -f1-2 | grep -v "^:" 
 
 # Replace long pipeline with zpipe file when libdivvun is working, to ensure
 # we are testing the real thing.
-cat $innput \
- | hfst-tokenise -g "$tool_dir/tokeniser-disamb-gt-desc.pmhfst" \
+hfst-tokenise -g "$tool_dir/tokeniser-disamb-gt-desc.pmhfst" < $innput \
  | divvun-blanktag "$tool_dir/analyser-gt-whitespace.hfst" \
  | vislcg3 -g "$tool_dir/valency.bin" \
  | vislcg3 -g "$tool_dir/mwe-dis.bin" \
@@ -35,8 +34,9 @@ cat $innput \
     -n  "$tool_dir/transcriptor-gt-desc.hfstol" \
     -t ABBR -t Num \
  | $giella_core/scripts/vislcg-convert.py -t phon -1 \
- > $output.tmp
-
-grep -v "^:" $output.tmp | grep -v "^$" | cut -f1-2 > $output
+ | grep -v "^:" \
+ | grep -v "^$" \
+ | cut -f1-2 \
+ > $output
 
 diff $output $expect
