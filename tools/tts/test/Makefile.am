@@ -13,6 +13,7 @@ TESTS=
 
 if WANT_TTS
 TESTS+= test_no_normalisation.normaliser.txt \
+		test_no_normalisation.normaliser.ipa.txt \
 		test_ordinal.normaliser.txt \
 		test_plain_digits.normaliser.txt \
 		test_digit_abbr.normaliser.txt \
