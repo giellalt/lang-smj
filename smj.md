@@ -3360,9 +3360,9 @@ Intransitives
 
 
 *bajássjaddat # Even-syllable test examples:*
-* *bajássjattav:* `bajássjaddat+V+IV+Ind+Prs+Sg1`
-* *bajássjaddiv:* `bajássjaddat+V+IV+Ind+Prt+Sg1`
-* *bajássjattajma:* `bajássjaddat+V+IV+Ind+Prt+Pl1`
+* *biváv* `bivvat+V+IV+Ind+Prs+Sg1`
+* *bivviv* `bivvat+V+IV+Ind+Prt+Sg1`
+* *bivájma:* `bivvat+V+IV+Ind+Prt+Pl1`
 
  LEXICON BIEGGAT_IV  Impersonals
 
