@@ -372,7 +372,6 @@ Words in MARJA end on vowel, with CG, even-syllable case marking. Illative chang
 
 
 
- LEXICON MARJA-event  Organizations
 
 
  LEXICON MARJA-plc  Vowel final names with Gradation and Ill change (place names)
