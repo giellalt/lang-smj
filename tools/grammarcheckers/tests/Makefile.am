@@ -23,7 +23,8 @@ XFAIL_TESTS=\
 	msyn-liehket-congr-condsg2-condpl3.notfixed.yaml \
 	real-PrsPl3-PrsSg3.yaml \
 	real-NegSg3-NegSg2.yaml \
-	real-PrtSg3-PrsPl3.yaml
+	real-PrtSg3-PrsPl3.yaml \
+	msyn-congr-mij-ma.yaml
 
 endif # WANT_GRAMCHECK
 
