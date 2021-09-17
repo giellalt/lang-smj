@@ -19,4 +19,5 @@
 * [transcriptor-abbrevs2text-transcriptions-src.md](transcriptor-abbrevs2text-transcriptions-src.md)
 * [transcriptor-date-digit2text-transcriptions-src.md](transcriptor-date-digit2text-transcriptions-src.md)
 * [transcriptor-numbers-digit2text-transcriptions-src.md](transcriptor-numbers-digit2text-transcriptions-src.md)
+* [grc-disambiguator-grammarcheckers-tools.md](grc-disambiguator-grammarcheckers-tools.md)
 * [grammarchecker-grammarcheckers-tools.md](grammarchecker-grammarcheckers-tools.md)
