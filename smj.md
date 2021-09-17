@@ -1255,6 +1255,198 @@
 * * *
 <small>This (part of) documentation was generated from [../src/cg3/disambiguator.cg3](http://github.com/giellalt/lang-smj/blob/main/../src/cg3/disambiguator.cg3)</small>
 
+
+
+
+
+
+
+
+
+
+
+
+ * **LEXICON Noun  ** dividing in NounNoPx, NounPx (with a P.Px.add flag)  and NounPxKin (with a P.Nom3Px.add flag)
+
+
+
+
+
+
+LOAN
+LOAN
+LOAN
+LOAN SWE altar
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/nouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/nouns.lexc)</small>
+# File containing North Saami abbreviations 
+
+## Lexica for adding tags and periods
+
+Splitting in 4 + 1 groups, because of the preprocessor
+
+ * **LEXICON Abbreviation-smj **
+ 1. The ITRAB ;	   lexicon (intransitive abbrs)
+ 1. The TRNUMAB ;  lexicon (abbrs trans wrt. numberals)
+ 1. The TRAB ;	   lexicon (transitive abbrs)
+ 1. The NOAB ;	   lexicon (not really abbrs)
+ 1. The NUMNOAB ;  lexicon (not behaving as abbr before num)
+
+
+## The abbreviation lexicon itself
+
+
+
+ * **LEXICON ITRAB ** are intransitive abbreviations, A.S. etc.
+
+
+
+
+ * **LEXICON NOAB ** du, gen, jur
+
+This class contains homonyms, which are both intransitive
+abbreviations and normal words. The abbreviation usage
+is less common and thus only the occurences in the middle of
+the sentnece (when next word has small letters) can be 
+considered as true cases.
+
+
+
+
+
+ * **LEXICON TRNUMAB ** contains abbreviations who are transitive in front of numerals 
+
+For abbrs for which numerals are complements, but other
+words not necessarily are. This group treats arabic numerals as
+if it were transitive but letters as if it were intransitive.
+
+
+
+
+
+
+
+ * **LEXICON TRAB ** contains transitive abbreviations
+
+This lexicon is for abbrs that always have a constituent following it.
+
+
+
+ * **LEXICON NUMNOAB ** su, dii
+
+This class contains homonyms, which are both abbrs for 
+which numerals are complements and normal words. The abbreviation usage
+is less common and thus only the occurences in the middle of
+the sentence can be considered as true cases.
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/smj-abbreviations.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/smj-abbreviations.lexc)</small>
+
+
+
+
+
+
+
+
+
+
+
+sme mojonjálmmiid
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/adverbs.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/adverbs.lexc)</small>
+
+
+
+
+
+vájnno
+vájnno
+vájnno
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/adjectives.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/adjectives.lexc)</small>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Reciprocal pronouns as multiword expression
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/pronouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/pronouns.lexc)</small>
+
 # Lule Sámi morphophonological rule set                    
 
 This file documents the [phonology.twolc file](http://github.com/giellalt/lang-hun/blob/main/src/fst/phonology.twolc) 
@@ -2087,6 +2279,23 @@ should be kept that way. Look out for conflicts in the compilation
 process, and resolve them as they appear!
 * * *
 <small>This (part of) documentation was generated from [../src/fst/phonology.twolc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/phonology.twolc)</small>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/compounding.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/compounding.lexc)</small>
 
 
 # Sublexica for Noun
@@ -3354,6 +3563,1751 @@ Derived stems
 
 * * *
 <small>This (part of) documentation was generated from [../src/fst/affixes/nouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/nouns.lexc)</small>
+# Continuation lexicons for abbreviations
+
+## Lexica for adding tags and periods
+
+## The sublexica
+
+### Continuation lexicons for abbrs both with and witout final period
+
+
+ * **LEXICON ab-noun   **
+
+ * **LEXICON ab-adj   **
+
+ * **LEXICON ab-adv   **
+
+ * **LEXICON ab-num   **
+
+### Lexicons without final period
+
+ * **LEXICON ab-nodot-noun   **  The bulk
+
+ * **LEXICON ab-nodot-adj   **
+
+ * **LEXICON ab-nodot-adv   **
+
+ * **LEXICON ab-nodot-num   **
+
+### Lexicons with final period
+
+ * **LEXICON ab-dot-noun   **  This is the lexicon for abbrs that must have a period.
+
+ * **LEXICON ab-dot-adj   **  This is the lexicon for abbrs that must have a period.
+
+ * **LEXICON ab-dot-adv   **  This is the lexicon for abbrs that must have a period.
+
+ * **LEXICON ab-dot-num   **  This is the lexicon for abbrs that must have a period.
+
+ * **LEXICON ab-dot-cc   **
+
+
+
+
+
+ * **LEXICON ab-dot-verb   **
+
+ * **LEXICON ab-nodot-verb   **
+
+
+ * **LEXICON ab-dot-IVprfprc   **
+
+
+ * **LEXICON nodot-attrnomaccgen-infl   **
+
+ * **LEXICON nodot-attr-infl   **
+
+ * **LEXICON nodot-nomaccgen-infl   **
+
+
+ * **LEXICON dot-attrnomaccgen-infl   **
+
+ * **LEXICON dot-attr   **
+
+ * **LEXICON dot-nomaccgen-infl   **
+
+
+ * **LEXICON DOT   ** - Adds the dot to dotted abbreviations.
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/abbreviations.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/abbreviations.lexc)</small>
+# Symbol affixes
+
+
+
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/symbols.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/symbols.lexc)</small>
+
+
+# Sublexica for Adjective
+
+## Even-syllable stems
+
+
+
+ LEXICON GIEVRRA  Adjectives with attribute in WeG and -s. As 1a in Spiik. Sg Acc: gievrav, Attr: gievras.
+
+
+
+*gárttje # Even-syllable test examples:*
+* *gárttje:* `gárttje+A+Sg+Nom`
+* *gártjev:* `gárttje+A+Sg+Acc`
+* *gártjes:* `gárttje+A+Attr`
+* *gártjep:* `gárttje+A+Der/Comp+A+Sg+Nom`
+
+
+
+ LEXICON NUORRA   Adjectives with attribute same as pred. As 1b in Spiik. Sg Acc: nuorav, Attr: nuorra.
+
+
+*visská # Even-syllable test examples:*
+* *visská:* `visská+A+Sg+Nom`
+* *viskáv:* `visská+A+Sg+Acc`
+* *visská:* `visská+A+Attr`
+* *viskáp:* `visská+A+Der/Comp+A+Sg+Nom`
+
+
+
+ LEXICON GALLJE   Adjectives on -e, the attribute is in WeG and e > a. As 1d in Spiik. Sg Acc: galjev, Attr: galja.
+
+
+*uhttse # Even-syllable test examples:*
+* *uhttse:* `uhttse+A+Sg+Nom`
+* *uhtsev:* `uhttse+A+Sg+Acc`
+* *uhtsa:* `uhttse+A+Attr`
+* *uhtses:* `uhttse+A+Attr` (Eng. # gets this attr from)
+* *uhtsep:* `uhttse+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON TJÁBBE   Adjectives on -e, the attribute is in WeG and e > a. Same as GALLJE only different adv derivation. Sg Acc: tjáppev, Attr: tjáppa.
+
+
+*njálgge # Even-syllable test examples:*
+* *njálgge:* `njálgge+A+Sg+Nom`
+* *njálgev:* `njálgge+A+Sg+Acc`
+* *njálga:* `njálgge+A+Attr`
+* *njálgep:* `njálgge+A+Der/Comp+A+Sg+Nom`
+
+
+
+
+
+ LEXICON VILLDA   Adjectives with attribute same as pred, without CG. As 1b in Spiik. Sg Acc: nuorav, Attr: nuorra.
+
+
+*frisska # Even-syllable test examples:*
+* *frisska:* `frisska+A+Sg+Nom`
+* *frisskav:* `frisska+A+Sg+Acc`
+* *frisska:* `frisska+A+Attr`
+* *frisskap:* `frisska+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON HÁVSSKE   Adjectives with attribute -s, without WeG. As 1c in Spiik. Sg Acc: hávsskev, Attr: hávsskes.
+
+
+*hoallá # Even-syllable test examples:*
+* *hoallá:* `hoallá+A+Sg+Nom`
+* *hoalláv:* `hoallá+A+Sg+Acc`
+* *hoallás:* `hoallá+A+Attr`
+* *hoalláp:* `hoallá+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON TJUODDJE  Adjectives with attribute -is, without WeG. presently only "Tjuoddje" Sg Acc: tjuoddjev, Attr: tjuoddjis.
+
+
+
+*tjuoddje # Even-syllable test examples:*
+* *tjuoddje:* `tjuoddje+A+Sg+Nom`
+* *tjuoddjev:* `tjuoddje+A+Sg+Acc`
+* *tjuoddjis:* `tjuoddje+A+Attr`
+* *tjuoddjep:* `tjuoddje+A+Der/Comp+A+Sg+Nom`
+
+
+
+Pres.participles 
+
+ LEXICON SÁVADAHTTE   Causative-participles. No attribute. No comparision. As 1e in Spiik. Sg Acc: sávadahttev. PrsPrc of causative verbs "uttrykker at handlingen lar seg gjøre eller er verdt å gjøre" (Kintel 1991).
+
+
+*vuojedahtte # Even-syllable test examples:*
+* *vuojedahtte:* `vuojedahtte+A+Sg+Nom`
+* *vuojedahttev:* `vuojedahtte+A+Sg+Acc`
+
+ LEXICON JUHKKE   participles with -s attributive. No comparision As 1e in Spiik. Sg Acc: juhkkev, Attr: juhkkes. Spiik: presens particip har med den attributive formen på -s betydelsen "någon som är duktig i, snabb til att, begiven att utföra handlingen".
+
+
+*vuohttje # Even-syllable test examples:*
+* *vuohttje:* `vuohttje+A+Sg+Nom`
+* *vuohttjev:* `vuohttje+A+Sg+Acc`
+* *vuohttjes:* `vuohttje+A+Attr`
+
+ LEXICON BÅRRE   participles without the -s attributive. As 1e in Spiik. Sg Acc: bårrev, Attr: bårre. Spiik: presens particip har med den attributiva formen utan -s betydelsen ºdem  som utför handlingenº.
+
+
+*ednabårre # Even-syllable test examples:*
+* *ednabårre:* `ednabårre+A+Sg+Nom`
+* *ednabårrev:* `ednabårre+A+Sg+Acc`
+* *ednabårre:* `ednabårre+A+Attr`
+
+
+
+Test data:
+
+
+Loan words lexicas
+
+
+###  Correctly assimilated loanwords, derived from real noun.
+
+
+ LEXICON METÅVDÅLASJ  LOAN! Foreign -isk adjectives adapted in updated normative way. To smj ending -alasj, adjective is truly derived from a noun. Mekanisk-mekanihkka-mekanihkalasj, instead of mekánalasj that goes to MEKÁNALASJ_BADASS. Pred and attr are both -alasj. Attr same as pred. With comparatives. 
+
+
+
+ LEXICON METÅVDÅLASJ_CMP_INFL 
+
+
+
+
+
+*kapitalismalasj # Even-syllable test examples:*
+* *kapitalismalasj:* `kapitalismalasj+A+Sg+Nom`
+* *kapitalismalattjav:* `kapitalismalasj+A+Sg+Acc`
+* *kapitalismalasj:* `kapitalismalasj+A+Attr`
+* *kapitalismalabbo:* `kapitalismalasj+A+Der/Comp+A+Sg+Nom`
+
+
+ LEXICON MEKANIHKA_MEKANIJKA_LASJ  LOAN! Same type of adjectives as METÅVDÅLASJ, only for adjektives that become mekanihkalasj in norway and mekanijkalasj in sweden, because of differences mekanik vs mekanikk>mekanijkka vs mekanihkka.  Attr same as pred. With comparatives. 
+
+
+
+ LEXICON IJJALASJ  Just lik  METÅVDÅLASJ only for words ending on ijjalasj/iddjalasj, so that we don't need a lot of Area and Err tags in stems file.
+
+
+ LEXICON IJJALASJ_CMP_INFL 
+
+
+
+ LEXICON OGIJJALASJ  Just like IJJALASJ only for words ending on ogijjalasj/ogiddjalasj, so that we don't need a lot of err tags in stems files. For words like "pedagogijjalasj" which also have "pedagåvgålasj" (not really a wrong derivation, but doesn't mean pedagogisk) and "pedagogalasj" err taged.  
+
+
+ LEXICON OGIJJALASJ_CMP_INFL  
+
+
+ LEXICON SJÅNÅLASJ_SJONAL  -sjonal/sjonell and -tional/tionel loanwords. Only for words that work as nouns, so that they are REAL dervations, as nasjonal-nasjåvnnå-nasjåvnålasj. NOT for words like "rasjonell", with no real noun. Words as "rasjonell>rasjonálla-rasjonálalasj" go to lexicon ÁLLA.  The fake derivation "nasjonálalasj" is err taged, so is the strange "nasjonálla/nasjunálla". 
+
+
+ LEXICON SJÅNÅLASJ_SJONAL_CMP_INFL  
+
+
+
+
+
+*konstitusjåvnålasj # Even-syllable test examples:*
+* *nasjåvnålasj:* `nasjåvnålasj+A+Sg+Nom`
+* *nasjåvnålattjav:* `nasjåvnålasj+A+Sg+Acc`
+* *nasjåvnålasj:* `nasjåvnålasj+A+Attr`
+
+
+
+ LEXICON SJÅNÅLASJ_SJONELL  -sjonal/sjonell and -tional/tionel loanwords. Only for words that work as nouns, so that they are REAL dervations, as nasjonal-nasjåvnnå-nasjåvnålasj. NOT for words like "rasjonell", with no real noun. Words as "rasjonell>rasjonálla-rasjonálalasj" go to lexicon ÁLLA.  The fake derivation "nasjonálalasj" is err taged, so is the strange "nasjonálla/nasjunálla". 
+
+
+ LEXICON SJÅNÅLASJ_SJONELL_CMP_INFL  
+
+
+
+*konstitusjåvnålasj # Even-syllable test examples:*
+* *konstitusjåvnålasj:* `konstitusjåvnålasj+A+Sg+Nom`
+* *konstitusjåvnålattjav:* `konstitusjåvnålasj+A+Sg+Acc`
+* *konstitusjåvnålasj:* `konstitusjåvnålasj+A+Attr`
+
+
+###  Badly assimilated loanwords, some against norm others with no norm
+
+ LEXICON MEKÁNALASJ_BADASS  LOAN! Wronly assimilated -lasj adjectives from SE/NO -isk. Looks derived but isn't since there is no real noun to be derived from. Like mekanisk-mekánalasj, but "mekádna" is no real noun! Like  METÅVDÅLASJ, but gives the Err/Der tag, so it's only for these wronly/non-derived loan adjectives. 
+
+
+
+
+
+ LEXICON ARKTALASJ_CMP_INFL  Foreign -isk, that are not real derivations. Same as MEKÁNALASJ_BADASS, but no +Use/-Spell tag since ther is no "right" way to assimilate these. This is a question for GG. Adapted to smj by simply adding -alasj in place of -isk. These are not real derivations, but sitation borrowed loan adjectives. Only words without a noun base, like arktisk and syntetisk. Pred and attr are both -lasj. No comparatives. 
+
+
+
+
+*syntetalasj # Even-syllable test examples:*
+* *syntetalasj:* `syntetalasj+A+Sg+Nom`
+* *syntetalattjav:* `syntetalasj+A+Sg+Acc`
+* *syntetalasj:* `syntetalasj+A+Attr`
+
+ LEXICON ORÁNSSJA  Loan adjectives, not -isk. Used without the -lasj. Adjectives with attribute same as pred. So far only for oránssja.
+
+
+ LEXICON DEMONSTRATIJVA_LASJ_NO_NORM  Loan adjectives from norwegian/swedish (Not adjectives ending on -isk). Words like demonstrativ, transitiv, dupleks, informativ, analog, privat. Gives both "demonstratijvva" and "demonstratijvalasj". Two ways of adapting these adjectives are used, the adding of -lasj isn't okey, because that's a false derivation. But GG hasn't decided how these should be handled. Looks like noun instead of adjective when adapted without the -lasj ending.  Attr is in weak grad, used in strong grad ass pred even thou this seems a little bit odd "Værbba l transitijvva". 
+
+
+
+
+ LEXICON DEMONSTRATIJVA_LASJ_CMP_INFL    
+
+
+
+
+
+
+
+*aktijvva # Even-syllable test examples:*
+* *aktijva:* `aktijvva+A+Attr`
+* *aktijvva:* `aktijvva+A+Sg+Nom`
+* *aktijvav:* `aktijvva+A+Sg+Acc`
+
+
+
+
+
+
+ LEXICON ÁLA_LASJ_NO_NORM  Same as DEMONSTRATIJVA_LASJ_NO_NORM. Only for adjectives ending on -al. Words like digital,liberal, lokal.  Gives both "eksponentiálla" and "eksponentiálalasj". Different lexicon for these -al adjectives because of Err/Orth tags. OBS, "dialektal", is assimilated "dialevtalasj", and goes to lexicon  METÅVDÅLASJ.
+
+
+ LEXICON ÁLA_LASJ_INFL_CMP 
+
+
+
+
+
+ LEXICON ELLA_LASJ_NO_NORM  Loanwords, same as ÁLA_LASJ_NO_NORM  and  DEMONSTRANTIJVA_LASJ_NO_NORM. For NO and SE adjectives ending on -ell, eksperimentell, ideell, parallell. The short form is nom parallælla, attr, parallella The long form: paralellalasj, attr parallellalasj. Different lexicon for these -ell adjectives because of err/orth tags. OBS, "individuell", is assimilated "indivijdalasj", and goes to lexicon  METÅVDÅLASJ.
+
+
+ LEXICON ELLA_LASJ_INFL_CMP  
+
+
+
+
+
+ LEXICON ÁLLA-ÆLLA 
+
+ LEXICON MEKÁNALASJ_CMP_INFL  Same as  METÅVDÅLASJ only without vuohta. 
+
+
+
+
+
+
+
+
+
+
+Inherent comparatives and superlatives lexica
+
+ LEXICON OANEP   Inherent comparatives, gives comp and superl. There are two main groups of word here: Adjectives that are lexicalized in their comparative (and superlative) forms, like sisŋep, bárep. And Nouns that can be compared, like nuortap, gáttep, oarjep (some of these are compared from their noun lexicas and thus are found twice). Some entries are likely incorrect compared forms of other adjectives, like ådåp and ruvvap (more research needed).
+
+
+
+
+
+*lagáp # Even-syllable test examples:*
+* *lagáp:* `lagáp+A+Gram/Comp+Sg+Nom`
+* *lagámus:* `lagáp+A+Der/Superl+A+Sg+Nom`
+
+
+ LEXICON TJAVGGÁMUS    Inherent superlatives, only gives superl. Some words are lexicalized in their superlative forms, like dájvvámus. Some are likely incorrect superlative forms, like tjábbámus (more research is needed)
+
+
+
+*dájvvámus # Even-syllable test examples:*
+* *dájvvámus:* `dájvvámus+A+Gram/Superl+Sg+Nom`
+
+4-syllable miscellanious stems
+
+ LEXICON ÁRMMOGIS  Adjectives on -is, attribute same as pred. Odd-syllable comparison. As 2 in Spiik. Sg Acc: ármmogisáv, Attr: ármmogis. 
+
+
+*bahágis # Even-syllable test examples:*
+* *bahágis:* `bahágis+A+Sg+Nom`
+* *bahágisáv:* `bahágis+A+Sg+Acc`
+* *bahágis:* `bahágis+A+Attr`
+* *bahágabbo:* `bahágis+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON SÆHKÁLAK  Adjectives on -álak, attribute same as pred. Odd-syllable comparison. So far only for "sæhkálak".
+
+
+*sæhkálak # Even-syllable test examples:*
+* *sæhkálak:* `sæhkálak+A+Sg+Nom`
+* *sähkálak:* `sæhkálak+A+Sg+Nom`
+* *sæhkálagáv:* `sæhkálak+A+Sg+Acc`
+* *sähkálagáv:* `sæhkálak+A+Sg+Acc`
+* *sæhkálak:* `sæhkálak+A+Attr`
+* *sähkálak:* `sæhkálak+A+Attr`
+* *sæhkálabbo:* `sæhkálak+A+Der/Comp+A+Sg+Nom`
+* *sähkálabbo:* `sæhkálak+A+Der/Comp+A+Sg+Nom`
+
+
+ LEXICON ÅLLAGSJ_CMP_INFL  Adjectives on -asj, attribute same as pred.  No comparatives. 2 in Spiik. Sg Acc: ållagattjav, Attr: ållagasj.
+
+
+*belulasj # Even-syllable test examples:*
+* *belulasj:* `belulasj+A+Sg+Nom`
+* *belulattjav:* `belulasj+A+Sg+Acc`
+* *belulasj:* `belulasj+A+Attr`
+
+
+ LEXICON DÁRBULASJ_CMP_INFL  Adjectives on -asj, attribute same as pred. Odd-syllable comparison. Sg Acc: dárbulattjav, Attr: dárbulasj. Essive -attjan, -adtjan is subtaged. Err/Orth also -ahttja.  
+
+
+
+
+
+*dábálasj # Even-syllable test examples:*
+* *dábálasj:* `dábálasj+A+Sg+Nom`
+* *dábálattjav:* `dábálasj+A+Sg+Acc`
+* *dábálasj:* `dábálasj+A+Attr`
+* *dábális:* `dábálasj+A+Attr`
+* *dábálabbo:* `dábálasj+A+Der/Comp+A+Sg+Nom`
+
+
+
+ LEXICON ASIDASJ_CMP_INFL  Adjectives on -asj, -is attr. Odd-syllable comparison. Sg Acc: asidattjav, Attr: asidis.
+
+
+*gågulasj # Even-syllable test examples:*
+* *gågulasj:* `gågulasj+A+Sg+Nom`
+* *gågulattjav:* `gågulasj+A+Sg+Acc`
+* *gågulis:* `gågulasj+A+Attr`
+* *gågulabbo:* `gågulasj+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON UDNODIBME  Adjectives on -dibme, attribute on -is. Odd-syllable comparison. Sg Acc: udnodimev, Attr: udnodis.
+
+
+*gælvodibme # Even-syllable test examples:*
+* *gælvodibme:* `gælvodibme+A+Sg+Nom`
+* *gälvodibme:* `gælvodibme+A+Sg+Nom`
+* *gælvodimev:* `gælvodibme+A+Sg+Acc`
+* *gälvodimev:* `gælvodibme+A+Sg+Acc`
+* *gælvodis:* `gælvodibme+A+Attr`
+* *gälvodis:* `gælvodibme+A+Attr`
+* *gælvodabbo:* `gælvodibme+A+Der/Comp+A+Sg+Nom`
+* *gälvodabbo:* `gælvodibme+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON TJALMEDIBME   Like UDNODIBME but no comparatives. Sg Acc: tjalmedimev, Attr: tjalmedis.
+
+
+*huvsodibme # Even-syllable test examples:*
+* *huvsodibme:* `huvsodibme+A+Sg+Nom`
+* *huvsodimev:* `huvsodibme+A+Sg+Acc`
+* *huvsodis:* `huvsodibme+A+Attr`
+
+ LEXICON SUOLASIEHKE  -siehke. Sg Acc: suolasiegev, attr: suolasiek
+
+
+*hánessiehke # Even-syllable test examples:*
+* *hánessiehke:* `hánessiehke+A+Sg+Nom`
+* *hánessiegev:* `hánessiehke+A+Sg+Acc`
+* *hánessiek:* `hánessiehke+A+Attr`
+
+
+
+
+
+
+
+
+## Odd-syllable stems
+###  With CG Sorted by attr
+
+
+ LEXICON TJIEGOS  Attr same as pred. For adjectives with -e in second syllable e>á: divtes>diktásav in StrG. As a. in Spiik.  Sg Acc: tjiehkusav, Attr: tjiegos. Consonant gradation. 
+
+
+*hánes # Odd-syllable test examples:*
+* *måskas:* `måskas+A+Sg+Nom`
+* *moasskasav:* `måskas+A+Sg+Acc`
+* *måskas:* `måskas+A+Attr`
+* *moasskasabbo:* `måskas+A+Der/Comp+A+Sg+Nom`
+* *bihtja:* `bihtja+A+Sg+Nom`
+* *bihttjagav:* `bihtja+A+Sg+Acc`
+* *bihtja:* `bihtja+A+Attr`
+* *bihttjagabbo:* `bihtja+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON LINES  Attr ending on -a. Adjektives ending on -es. Does same as TJIEGOS, but with attr -a.   As g. in Spiik.  lines, Sg Acc: lidnásav, attr: lidna. Consonant gradation.
+
+
+*lines # Odd-syllable test examples:*
+* *lines:* `lines+A+Sg+Nom`
+* *lidnásav:* `lines+A+Sg+Acc`
+* *lidna:* `lines+A+Attr`
+* *lidnásabbo:* `lines+A+Der/Comp+A+Sg+Nom`
+
+
+ LEXICON GALMAS   Attr ending on -a or -å. Adjectives on -as, ås- and ás. As e. in Spiik. Sg Acc: galmmasav, attr: galmma, Consonant gradation.
+
+
+*njuoskas # Odd-syllable test examples:*
+* *njuoskas:* `njuoskas+A+Sg+Nom`
+* *njuosskasav:* `njuoskas+A+Sg+Acc`
+* *njuosska:* `njuoskas+A+Attr`
+* *njuosskasabbo:* `njuoskas+A+Der/Comp+A+Sg+Nom`
+
+
+
+ LEXICON OAMES  Attr ending on -e. Adjectives on -es with attribute -e. As g2. in Spiik. Sg Acc: oabmásav, Attr: oabme. Consonant gradation.
+
+
+*goastes # Odd-syllable test examples:*
+* *goastes:* `goastes+A+Sg+Nom`
+* *goasstásav:* `goastes+A+Sg+Acc`
+* *goasste:* `goastes+A+Attr`
+* *goasstásabbo:* `goastes+A+Der/Comp+A+Sg+Nom`
+
+
+ LEXICON SUOHKAT  Attr III -is, not suohkkadis but SUOHKKIS. With CG to attr, not from nom to Acc. Same as JALGGAT only with this CG. SUOHKKIS. Without CG between nom and acc. Adjectives on -at and -åt, with attribute III -is. As f. in Spiik. Sg Acc: suohkadav, attr: suohkkis,
+
+
+*rávvat # Odd-syllable test examples:*
+* *rávvat:* `rávvat+A+Sg+Nom`
+* *rávvadav:* `rávvat+A+Sg+Acc`
+* *rávvis:* `rávvat+A+Attr`
+* *rávvadabbo:* `rávvat+A+Der/Comp+A+Sg+Nom`
+
+
+ LEXICON MÅJDÅS  Adjectives with no attr. With CG. Sg Acc: måjddåsav. If there is an attribute that dosn't fit to any lexicon it mus be hardcoded.
+
+
+*rávdes # Odd-syllable test examples:*
+* *rávdes:* `rávdes+A+Sg+Nom`
+* *rávddásav:* `rávdes+A+Sg+Acc`
+* *rávddásabbo:* `rávdes+A+Der/Comp+A+Sg+Nom`
+
+
+
+
+Without CG
+
+ LEXICON VIEKSES  Attr same as pred. Without CG, but With vowel changes.  Sg Acc: væksásav, Attr: viekses. Like TJIEGOS only without the CG but with vowel changes. Mayby change this to a lexicon withput attr and then hardcode attr?
+
+
+ LEXICON ALEK  Attr same as pred. Without CG, without any vowel changes. Like TJIEGOS only without the CG an vowelchanges. 
+
+
+
+*purpur # Odd-syllable test examples:*
+* *purpur:* `purpur+A+Sg+Nom`
+* *purpurav:* `purpur+A+Sg+Acc`
+* *purpur:* `purpur+A+Attr`
+* *purpurabbo:* `purpur+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON BASSTEL   Attr ening on -is. Without CG. Adjs on -et, -l, -r, sm om -k, -sj with attr -is and no consonant gradation. As b. in Spiik. Sg Acc: basstelav, Attr: basstelis. Many of these entries might be instances of derivations, like belak, deblak, and maybe also basstel, bargán.
+
+
+*goavrret # Odd-syllable test examples:*
+* *goavrret:* `goavrret+A+Sg+Nom`
+* *goavrredav:* `goavrret+A+Sg+Acc`
+* *goavrredis:* `goavrret+A+Attr`
+* *goavrredabbo:* `goavrret+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON MUTTÁK  Two attr enings -is and same as pred. Without CG. Adjs on -ák/-ak/-ek, two attr: -is and same as pred. As c. in Spiik. Sg Acc: muttágav, Attr: muttágis and mutták. These seem to be instances of the adjectival -k derivation. Unclear whether such derivation have different attr forms or not, and thats maybe why some of these derivations are found in BASSTEL lexicon.
+
+
+*bárvak # Odd-syllable test examples:*
+* *bárvak:* `bárvak+A+Sg+Nom`
+* *bárvagav:* `bárvak+A+Sg+Acc`
+* *bárvak:* `bárvak+A+Attr`
+* *bárvagis:* `bárvak+A+Attr`
+* *bárvagabbo:* `bárvak+A+Der/Comp+A+Sg+Nom`
+
+
+ LEXICON JALGGAT  Attr III -is, not jalggadis but JALGGIS. Without CG.  Adjectives on -at, with attribute III -is. As f. in Spiik. Sg Acc: jalggadav, attr: jalggis,
+
+
+
+*russjkat # Odd-syllable test examples:*
+* *russjkat:* `russjkat+A+Sg+Nom`
+* *russjkadav:* `russjkat+A+Sg+Acc`
+* *russjkis:* `russjkat+A+Attr`
+* *russjkadabbo:* `russjkat+A+Der/Comp+A+Sg+Nom`
+
+
+ LEXICON TJÅRGGÅT  Attr III -is, not tjårggådis but tjårggis. Without CG. Same as JALGGAT only for adjectives ending ot -åt. Adjectives on -åt, with attribute III -is. As f. in Spiik. Sg Acc: jalggadav, attr: jalggis,
+
+
+
+*russjkat # Odd-syllable test examples:*
+* *russjkat:* `russjkat+A+Sg+Nom`
+* *russjkadav:* `russjkat+A+Sg+Acc`
+* *russjkis:* `russjkat+A+Attr`
+* *russjkadabbo:* `russjkat+A+Der/Comp+A+Sg+Nom`
+
+
+
+ LEXICON RIHTSOK  No attr, without CG and also without any vowelchanges. The lexicon gives no attribute, either because the adjective dosnºt have attr, because there is stemvowel change in attr that the lexicon canºt handle or because there are strange atrributes that donºt fit to any other lexicon (these attributes are hardcoded). Sg Acc: rihtsogav. 
+
+
+*rihtsok # Odd-syllable test examples:*
+* *rihtsok:* `rihtsok+A+Sg+Nom`
+* *rihtsogav:* `rihtsok+A+Sg+Acc`
+* *rihtsogabbo:* `rihtsok+A+Der/Comp+A+Sg+Nom`
+
+
+
+exception lexicons for odd-syll
+
+ LEXICON IENNILS  no comparatives, attr same as pred.
+
+
+*ieŋŋils # Odd-syllable test examples:*
+* *ieŋŋils:* `ieŋŋils+A+Sg+Nom`
+* *ieŋŋilsav:* `ieŋŋils+A+Sg+Acc`
+
+
+ LEXICON RÁDAS   Presently only used for "rádas". This word has special consonant gradation d>dd. Attr same as pred. Sg Acc: ráddasav, Attr: rádas. Consonant gradation.
+
+
+*rádas # Odd-syllable test examples:*
+* *rádas:* `rádas+A+Sg+Nom`
+* *ráddasav:* `rádas+A+Sg+Acc`
+* *rádas:* `rádas+A+Attr`
+* *ráda:* `rádas+A+Attr` (Eng. # from LEXATTR)
+* *ráddasabbo:* `rádas+A+Der/Comp+A+Sg+Nom`
+
+
+ LEXICON LUOBES   Err/Orth lexicon! Does the same as TJIEGOS only e>a instead of usuall e>á, must be some err/orth. Sg Acc: luohpasav, Attr: luobes. Consonant gradation. NO Attr, must be hardcoded
+
+
+
+
+
+
+ LEXICON LÅSSÅT  Two attr, two comp. As f3. in Spiik. So far the only word i this lexicon i "låssåt", because both låssis and låsså are attr and comparative is both låsep(hybrid?) and låssådabbo.
+
+
+*låssåt # Odd-syllable test examples:*
+* *låssåt:* `låssåt+A+Sg+Nom`
+* *låssådav:* `låssåt+A+Sg+Acc`
+* *låssis:* `låssåt+A+Attr`
+* *låsså:* `låssåt+A+Attr`
+* *låssådabbo:* `låssåt+A+Der/Comp+A+Sg+Nom`
+* *låsep:* `låssåt+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON STUORAK   Only for stuorak. It hase two attributes. Has even-syllable comparison: stuoráp and stuorámus.Sg Acc: stuoragav, attr: stuor and stuorra. This might be a -k derivation of adjective stuorre attr stuor(ra). The comparison is thus based on the original adjective and thus it naturally is an even syll comparison.
+
+
+*stuorak # Odd-syllable test examples:*
+* *stuorak:* `stuorak+A+Sg+Nom`
+* *stuoragav:* `stuorak+A+Sg+Acc`
+* *stuorra:* `stuorak+A+Attr`
+* *stuor:* `stuorak+A+Attr`
+* *stuoráp:* `stuorak+A+Der/Comp+A+Sg+Nom`
+
+
+ LEXICON ALLAK  Adjs on -ak, attr.on -a. Have both gasep/gaggagabbo and alep/allagabbo as comparatives. As d. in Spiik. So far only the adjectives "allak" and "gassak" go to this lexicon.
+
+
+*gassak # Odd-syllable test examples:*
+* *gassak:* `gassak+A+Sg+Nom`
+* *gassagav:* `gassak+A+Sg+Acc`
+* *gassa:* `gassak+A+Attr`
+* *gassagabbo:* `gassak+A+Der/Comp+A+Sg+Nom`
+* *gasep:* `gassak+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON GÅBDDÅK   Adjs on -åk, attr. on -å. Has even-syllable comparison: gåbdep and gåbdemus. So far "gåbddåk" is the only word in this lexicon. As d2. in Spiik. Sg Acc: gåbddågav, Attr: gåbddå.
+
+
+
+*gåbddåk # Odd-syllable test examples:*
+* *gåbddåk:* `gåbddåk+A+Sg+Nom`
+* *gåbddågav:* `gåbddåk+A+Sg+Acc`
+* *gåbddå:* `gåbddåk+A+Attr`
+* *gåbdep:* `gåbddåk+A+Der/Comp+A+Sg+Nom`
+
+
+
+
+Inherent comparatives and superlatives
+
+ LEXICON NUORTTALABBO    Inherent comparatives, gives both comp and superl. Most of the words are the compared forms of -el(a) words, like nuorttal, lullel.
+
+
+
+
+
+*guddnelabbo # Even-syllable test examples:*
+* *guddnelabbo:* `guddnelabbo+A+Gram/Comp+Sg+Nom`
+* *guddnelamos:* `guddnelabbo+A+Der/Superl+A+Sg+Nom`
+* *guddnelap:* `guddnelabbo+A+Gram/Comp+Attr`
+* *guddnelup:* `guddnelabbo+A+Gram/Comp+Attr`
+
+ LEXICON GASSKALAMOS    Inherent superlatives, gives onlys superl. Words that are lexicalized in their superlative forms. 
+
+
+
+
+
+
+
+
+*ájtodamos # Even-syllable test examples:*
+* *ájtodamos:* `ájtodamos+A+Gram/Superl+Sg+Nom`
+
+
+## Contracted stems
+
+ LEXICON SÁDNES   Attr same as pred. Sg Acc: sáddnáv, Attr: sádnes.
+
+
+*hávres # Contracted test examples:*
+* *hávres:* `hávres+A+Sg+Nom`
+* *hávrráv:* `hávres+A+Sg+Acc`
+* *hávres:* `hávres+A+Attr`
+* *hávrráp:* `hávres+A+Der/Comp+A+Sg+Nom`
+
+
+
+ LEXICON GOAVSOS   Attr same as pred. Sg Acc: goaksuv, Attr: goavsos.(goavsos is so far the only word in this lexicon)
+
+
+*goavsos # Contracted test examples:*
+* *goavsos:* `goavsos+A+Sg+Nom`
+* *goaksuv:* `goavsos+A+Sg+Acc`
+* *goaksusav:* `goavsos+A+Sg+Acc` (Eng. # From lexicon TJIEGOS)
+* *goavsos:* `goavsos+A+Attr`
+* *goaksup:* `goavsos+A+Der/Comp+A+Sg+Nom`
+* *goaksusabbo:* `goavsos+A+Der/Comp+A+Sg+Nom` (Eng. # from lexicon TJIEGOS)
+
+ LEXICON SUVRES   Sg Acc: suvrráv, Attr: suvra.
+
+
+*suvres # Contracted test examples:*
+* *suvres:* `suvres+A+Sg+Nom`
+* *suvrráv:* `suvres+A+Sg+Acc`
+* *suvrrásav:* `suvres+A+Sg+Acc` (Eng. # From lexicon SJÆVNNJAT)
+* *suvra:* `suvres+A+Attr`
+* *suvrráp:* `suvres+A+Der/Comp+A+Sg+Nom`
+* *suvrrásabbo:* `suvres+A+Der/Comp+A+Sg+Nom` (Eng. # from LINES)
+
+ LEXICON GÅLMAKTES   Attr same as pred. without cg but with vowel changes. Sg Acc: gålmaktáv, Attr: gålmaktes. VIEKSES makes odd-syll same thing. 
+
+
+
+----
+
+
+# Comparation
+
+ LEXICON BU/MUS   comparison for even-syll adjectives. Also derivates diminutive and adverbs from the comparisions.
+
+
+ LEXICON ABBO/AMOS   comparison for odd-syll adjectives.  Also derivates diminutive and adverbs from the comparisions.
+
+
+
+
+
+
+
+ LEXICON BUStem  Comparative even-syll, case and attr.
+
+ LEXICON ABBO  Comparative odd-syll, get case and attr. With the dialect differences "-ubbo" and "-æbbo".
+
+
+## Superlative
+
+ LEXICON BUOREMUS  Superlative even-syll, get attr and nom case.
+
+
+ LEXICON AMOS  Superlative odd-syll, get case and attr. With the dialect differences "-umos" and "-æmos".
+
+
+
+
+Comparative and Superlative sub-lexica
+
+ LEXICON CompSup-EVEN 
+
+ LEXICON CompSup-EVENWEAKSTEM  
+
+
+
+
+
+
+ LEXICON ATTR   Sends attributes to
+
+
+ LEXICON ATTR_PrsPrc   Attr without -vuohta derivation.
+
+
+
+## Derivation of adjectives
+
+ LEXICON DenominalAdjsV1  ! even noun stems are sent here
+
+ LEXICON DenominalAdjsV1_1  ! even noun stems without grade alternation are sent here
+
+ LEXICON DenominalAdjsV2  ! even noun stems are sent here. -asj derivation
+
+
+ LEXICON DenominalAdjsKINO  ! unassimilated nouns are sent here
+
+
+ LEXICON DenominalAdjsODD   ! gives derivation -ahtes
+
+ LEXICON DenominalAdjsContr 
+
+Derivations to adjectives, hardcoded in adjectives stems file
+
+
+ LEXICON DIEHTEMAHTES  ! odd syllable For hardcoded -ahtes words.
+
+
+ LEXICON LÁGÁSJ 
+
+ LEXICON BÁJNUK  ! hardcoded denominal derivations, latus has changed from o>u, a>a, e>á (Bájnno>bájnuk, juolgge>juolgák, giella>gielak.  Attr same as pred, no comp in this lexicon. 
+
+ LEXICON TSÅHPÅK  ! hardcoded denominal derivations latus has changed from o>u, a>a, e>á AND -GIS attr. Attr same as pred is err/orth taged. no comp in this lexicon. 
+
+
+ LEXICON GIEVLEK  ! hardcoded derivations, not same as BÁJNUK since latus has unexpected vowel. Latus hasn't changed o>u, a>a, e>á. Goes directly to BÁJNUK, only made to sort these different kinds of derivations. Many of these may be derivated from verbs or other adjectives.
+
+
+
+ LEXICON SJERVAK  ! hardcoded derivations, not same as TSÅHPÅK since latus has unexpected vowel. Latus hasn't changed o>u, a>a, e>á. Goes directly to TSÅHPÅK, only made to sort these different kinds of derivations. Many of these may be derivated from verbs or other adjectives.
+
+
+ LEXICON DIBME  ! even and contracted
+
+
+ LEXICON LIS  ! Handlernomen på -is?
+
+
+ LEXICON Ahkásasj  ! lexicalized and denominal -asj derivations
+
+
+ LEXICON STÁVVALIS  ! Must be "stávvalis" in bot pred and attr, as "guovddelis". OK& Kintel 2012: stávval attr stávvalis this is err/orth taged, also as second compound, this is err/orth taged. No comparison.
+
+
+
+
+Derivations to adjectives, continuation lexicon not for hardcoded adjectives
+
+
+
+
+ LEXICON AHTES  ! odd syllable, only a continuation lexicon for words that are not in adjectives stems. Just as DIEHTEMAHTES, only with the +A tag that adjectives already get i stems file.
+
+
+ LEXICON AHKES   
+
+
+
+ LEXICON AGAdj  ! denominal derivations go here, attr same as pred, no comp in this lexicon
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/adjectives.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/adjectives.lexc)</small>
+
+
+# Sublexica for Verb
+
+Table of content:
+
+* The auxiliaries
+- Negation verb
+- Copula
+- Modals
+* Main verbs
+- Even syllable stems
+- Intransitives
+- Transitives
+- Odd syllable stems
+- Intranstives
+- Transitives
+- Contracted stems
+- Intransitives
+- Transitives
+- Assimilated loan verbs
+- Intransitives
+- Transitives
+- Main inflectional categories
+- suffix lexicas
+- Verb derivation
+
+
+IV means intransitive verbs, TV means transitive verbs.
+
+
+# Auxiliary verbs
+
+
+## Negation verb 
+
+
+ LEXICON NEG 
+
+
+
+
+
+
+
+## Copula
+
+ LEXICON ÅRROT 
+
+ LEXICON LIEHKET 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ LEXICON LULU 
+
+
+
+
+
+
+## Modals
+
+ LEXICON GALGGAT_IV  even-syllable modal verbs.
+
+
+
+
+
+*soajttet # Eveb-syllable test examples:*
+* *soajtáv:* `soajttet+V+IV+Ind+Prs+Sg1`
+* *soajttiv:* `soajttet+V+IV+Ind+Prt+Sg1`
+* *såjtijma:* `soajttet+V+IV+Ind+Prt+Pl1`
+
+ LEXICON VIERTTIT_IV  Contracted modal verbs.
+
+
+
+*hæhttut # Eveb-syllable test examples:*
+* *hæhttut:* `hæhttut+V+IV+Inf`
+* *hähttut:* `hæhttut+V+IV+Inf`
+* *hæhttuv:* `hæhttut+V+IV+Ind+Prs+Sg1`
+* *hähttuv:* `hæhttut+V+IV+Ind+Prs+Sg1`
+* *hæhttujma:* `hæhttut+V+IV+Ind+Prt+Pl1`
+* *hähttujma:* `hæhttut+V+IV+Ind+Prt+Pl1`
+
+
+
+# Ordinary main verbs
+
+
+## Even-syllable stems
+Intransitives
+
+ LEXICON GALSSJOT_IV  Impersonal o-verbs
+
+
+
+*hærmmot # Eveb-syllable test examples:*
+* *hærmmu:* `hærmmot+V+IV+Ind+Prs+Sg3`
+* *härmmu:* `hærmmot+V+IV+Ind+Prs+Sg3`
+* *hærmoj:* `hærmmot+V+IV+Ind+Prt+Sg3`
+* *härmoj:* `hærmmot+V+IV+Ind+Prt+Sg3`
+
+ LEXICON BÅRSSJOT_IV  o-verbs with
+
+
+
+*hæssot # Eveb-syllable test examples:*
+* *hæsov:* `hæssot+V+IV+Ind+Prs+Sg1`
+* *häsov:* `hæssot+V+IV+Ind+Prs+Sg1`
+* *hessuv:* `hæssot+V+IV+Ind+Prt+Sg1`
+* *hæsojma:* `hæssot+V+IV+Ind+Prt+Pl1`
+* *häsojma:* `hæssot+V+IV+Ind+Prt+Pl1`
+
+ LEXICON VILSSJOT_IV  o-verbs as BÅRSSJOT but without derivations -stit, -stallat, -stahtte, - stasste.  With dim -astit that are hardcoded
+
+
+*libjjot # Eveb-syllable test examples:*
+* *libjov:* `libjjot+V+IV+Ind+Prs+Sg1`
+* *libjjuv:* `libjjot+V+IV+Ind+Prt+Sg1`
+* *libjojma:* `libjjot+V+IV+Ind+Prt+Pl1`
+
+ LEXICON BUOLLET_IV   e-verbs
+
+
+
+
+*liddet # Even-syllable test examples:*
+* *littáv:* `liddet+V+IV+Ind+Prs+Sg1`
+* *liddiv:* `liddet+V+IV+Ind+Prt+Sg1`
+* *littijma:* `liddet+V+IV+Ind+Prt+Pl1`
+
+ LEXICON BOAHTET_IV  e-verbs like BUOLLET_IV without passive
+
+
+*boahtet # Even-syllable test examples:*
+* *boadáv:* `boahtet+V+IV+Ind+Prs+Sg1`
+* *båhtiv:* `boahtet+V+IV+Ind+Prt+Sg1`
+* *bådijma:* `boahtet+V+IV+Ind+Prt+Pl1`
+
+ LEXICON VIEDJET_IV   e-verbs GRADE II-I WITH IE DIPHT.
+
+
+
+*biehket # Eveb-syllable test examples:*
+* *bægáv:* `biehket+V+IV+Ind+Prs+Sg1`
+* *bägáv:* `biehket+V+IV+Ind+Prs+Sg1`
+* *biehkiv:* `biehket+V+IV+Ind+Prt+Sg1`
+* *biegijma:* `biehket+V+IV+Ind+Prt+Pl1`
+
+ LEXICON ASSTAT_IV   only for asstat, no passive
+
+
+
+*asstat # Even-syllable test examples:*
+* *astav:* `asstat+V+IV+Ind+Prs+Sg1`
+* *asstiv:* `asstat+V+IV+Ind+Prt+Sg1`
+* *astajma:* `asstat+V+IV+Ind+Prt+Pl1`
+
+ LEXICON RAVGGAT_IV   a- and å-verbs only Sg3 passive.
+
+
+
+*bajássjaddat # Even-syllable test examples:*
+* *biváv* `bivvat+V+IV+Ind+Prs+Sg1`
+* *bivviv* `bivvat+V+IV+Ind+Prt+Sg1`
+* *bivájma:* `bivvat+V+IV+Ind+Prt+Pl1`
+
+ LEXICON BIEGGAT_IV  Impersonals
+
+
+*dednjat # Even-syllable test examples:*
+* *dædnjá:* `dednjat+V+IV+Ind+Prs+Sg3`
+* *dädnjá:* `dednjat+V+IV+Ind+Prs+Sg3`
+* *denjaj:* `dednjat+V+IV+Ind+Prt+Sg3`
+
+ LEXICON RAVGGALASSTET_IV    Like RAVGGAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced
+
+
+
+*dehpudallat # Even-syllable test examples:*
+* *dehpudaláv:* `dehpudallat+V+IV+Ind+Prs+Sg1`
+* *dehpudalliv:* `dehpudallat+V+IV+Ind+Prt+Sg1`
+* *dehpudalájma:* `dehpudallat+V+IV+Ind+Prt+Pl1`
+
+ LEXICON BIEKKASTALLAT_IV  Already derived impersonals
+
+
+*dehpudallat # Even-syllable test examples:*
+* *duhpárasstá:* `duhpárasstet+V+IV+Ind+Prs+Sg3`
+* *duhpárastij:* `duhpárasstet+V+IV+Ind+Prt+Sg3`
+
+
+ LEXICON GUOTTEDALLAT_IV    passives on -allat - no actio as first part of compounds, but reintroduced
+
+
+
+*duolmudallat # Even-syllable test examples:*
+* *duolmudaláv:* `duolmudallat+V+IV+Ind+Prs+Sg1`
+* *duolmudalliv:* `duolmudallat+V+IV+Ind+Prt+Sg1`
+* *duolmudalájma:* `duolmudallat+V+IV+Ind+Prt+Pl1`
+
+ LEXICON HIEBADUVVAT_IV   passives on -uvvat - no actio as first part of compounds, but reintroduced
+
+*duostoduvvat # Even-syllable test examples:*
+* *duostoduváv:* `duostoduvvat+V+IV+Ind+Prs+Sg1`
+* *duostoduvviv:* `duostoduvvat+V+IV+Ind+Prt+Sg1`
+* *duostoduvájma:* `duostoduvvat+V+IV+Ind+Prt+Pl1`
+
+Transitives
+ LEXICON MÁHTTET_TV    verbs without personal passive
+
+
+*jáhkket # Even-syllable test examples:*
+* *jáhkáv:* `jáhkket+V+TV+Ind+Prs+Sg1`
+* *jáhkkiv:* `jáhkket+V+TV+Ind+Prt+Sg1`
+* *jáhkijma:* `jáhkket+V+TV+Ind+Prt+Pl1`
+
+ LEXICON BASSAT_TV   a- and å-verbs. Three passives
+
+
+*jåksåt # Even-syllable test examples:*
+* *jåvsåv:* `jåksåt+V+TV+Ind+Prs+Sg1`
+* *jåksiv:* `jåksåt+V+TV+Ind+Prt+Sg1`
+* *jåvsåjma:* `jåksåt+V+TV+Ind+Prt+Pl1`
+
+ LEXICON BASSALASSTET_TV   Like BASSAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced. Three passives
+
+
+*jårgudallat # Even-syllable test examples:*
+* *jårgudaláv:* `jårgudallat+V+TV+Ind+Prs+Sg1`
+* *jårgudalliv:* `jårgudallat+V+TV+Ind+Prt+Sg1`
+* *jårgudalájma:* `jårgudallat+V+TV+Ind+Prt+Pl1`
+
+ LEXICON JUHKAT_TV   a-verbs like BASSAT_TV but but without derivations -stit, -stallat, -stahtte, - stasste. Dim -istit that are hardcoded. Three passives
+
+
+*njammat # Even-syllable test examples:*
+* *njamáv:* `njammat+V+TV+Ind+Prs+Sg1`
+* *njammiv:* `njammat+V+TV+Ind+Prt+Sg1`
+* *njamájma:* `njammat+V+TV+Ind+Prt+Pl1`
+
+ LEXICON LÁHPPET_TV   e-verbs. Three passives
+
+
+*oajttet # Even-syllable test examples:*
+* *oajtáv:* `oajttet+V+TV+Ind+Prs+Sg1`
+* *oajttiv:* `oajttet+V+TV+Ind+Prt+Sg1`
+* *åjtijma:* `oajttet+V+TV+Ind+Prt+Pl1`
+
+ LEXICON JIEHKET_TV   e-verbs GRADE II-I WITH IE DIPHT. Three passives
+
+
+*sievvet # Even-syllable test examples:*
+* *sæváv:* `sievvet+V+TV+Ind+Prs+Sg1`
+* *säváv:* `sievvet+V+TV+Ind+Prs+Sg1`
+* *sievviv:* `sievvet+V+TV+Ind+Prt+Sg1`
+* *sievijma:* `sievvet+V+TV+Ind+Prt+Pl1`
+
+ LEXICON DIEHTET_TV   Only this one word, unusual diphtong behavior. No passive
+
+
+*diehtet # Even-syllable test examples:*
+* *diedáv:* `diehtet+V+TV+Ind+Prs+Sg1`
+* *diehtiv:* `diehtet+V+TV+Ind+Prt+Sg1`
+* *diedijma:* `diehtet+V+TV+Ind+Prt+Pl1`
+
+ LEXICON GÁDJOT_TV  o-verbs. only duvvat passive.
+
+
+
+*sjpædtjot # Even-syllable test examples:*
+* *sjpættjov:* `sjpædtjot+V+TV+Ind+Prs+Sg1`
+* *sjpättjov:* `sjpædtjot+V+TV+Ind+Prs+Sg1`
+* *sjpædtjuv:* `sjpædtjot+V+TV+Ind+Prt+Sg1`
+* *sjpädtjuv:* `sjpædtjot+V+TV+Ind+Prt+Sg1`
+* *sjpættjojma:* `sjpædtjot+V+TV+Ind+Prt+Pl1`
+* *sjpättjojma:* `sjpædtjot+V+TV+Ind+Prt+Pl1`
+
+
+ LEXICON JÅRGGOT_TV  o-verbs with dim -astit that are hardcoded.  Duvvat and dallat passive.
+
+*boarkkot # Even-syllable test examples:*
+* *boarkov:* `boarkkot+V+TV+Ind+Prs+Sg1`
+* *boarkkuv:* `boarkkot+V+TV+Ind+Prt+Sg1`
+* *boarkojma:* `boarkkot+V+TV+Ind+Prt+Pl1`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Odd-syllable stems
+
+This is just awaiting a manual classification
+
+ LEXICON BIEKKASTIT_IV  Impersonals, only Sg3
+
+
+ LEXICON JÅRGESTIT_IV At the moment IV, we may perhaps change IV/TV. 
+
+
+
+*doalvestit # Odd-syllable test examples:*
+* *doalvestav:* `doalvestit+V+IV+Ind+Prs+Sg1`
+* *doalvestiv:* `doalvestit+V+IV+Ind+Prt+Sg1`
+* *doalvestijma:* `doalvestit+V+IV+Ind+Prt+Pl1`
+
+ LEXICON BEGATJIT_IV   Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but  only Sg3 passivereintroduced
+
+
+
+
+*duojkkuhit # Odd-syllable test examples:*
+* *duojkkuhav:* `duojkkuhit+V+IV+Ind+Prs+Sg1`
+* *duojkkuhiv:* `duojkkuhit+V+IV+Ind+Prt+Sg1`
+* *duojkkuhijma:* `duojkkuhit+V+IV+Ind+Prt+Pl1`
+
+ LEXICON BALÁDIT_IV   continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms, only Sg3 passive
+
+
+
+*lihtudit # Odd-syllable test examples:*
+* *lihtudav:* `lihtudit+V+IV+Ind+Prs+Sg1`
+* *lihtudiv:* `lihtudit+V+IV+Ind+Prt+Sg1`
+* *lihtudijma:* `lihtudit+V+IV+Ind+Prt+Pl1`
+
+ LEXICON SUOGNALIT_IV  Trisyllabic Verbs ending -lit.  only Sg3 passive
+
+
+
+*loavkkalit # Odd-syllable test examples:*
+* *loavkkalav:* `loavkkalit+V+IV+Ind+Prs+Sg1`
+* *loavkkaliv:* `loavkkalit+V+IV+Ind+Prt+Sg1`
+* *loavkkalijma:* `loavkkalit+V+IV+Ind+Prt+Pl1`
+
+ LEXICON LASSÁNIT_IV  verbs ending -nit, -sit, no passive
+
+
+*rievddánit # Odd-syllable test examples:*
+* *rievddánav:* `rievddánit+V+IV+Ind+Prs+Sg1`
+* *rievddániv:* `rievddánit+V+IV+Ind+Prt+Sg1`
+* *rievddánijma:* `rievddánit+V+IV+Ind+Prt+Pl1`
+
+ LEXICON BÁHTARIT_IV verbs ending -rit.  only Sg3 passive
+
+
+
+*sjtávttjurit # Odd-syllable test examples:*
+* *sjtávttjurav:* `sjtávttjurit+V+IV+Ind+Prs+Sg1`
+* *sjtávttjuriv:* `sjtávttjurit+V+IV+Ind+Prt+Sg1`
+* *sjtávttjurijma:* `sjtávttjurit+V+IV+Ind+Prt+Pl1`
+
+ LEXICON UNNEDIT_TV   All -uvvat passives.
+
+
+*nuoledit # Odd-syllable test examples:*
+* *nuoledav:* `nuoledit+V+TV+Ind+Prs+Sg1`
+* *nuolediv:* `nuoledit+V+TV+Ind+Prt+Sg1`
+* *nuoledijma:* `nuoledit+V+TV+Ind+Prt+Pl1`
+
+ LEXICON MUJTATJIT_TV   Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but reintroduced. All -uvvat passives
+
+
+*nårddådit # Odd-syllable test examples:*
+* *nårddådav:* `nårddådit+V+TV+Ind+Prs+Sg1`
+* *nårddådiv:* `nårddådit+V+TV+Ind+Prt+Sg1`
+* *nårddådijma:* `nårddådit+V+TV+Ind+Prt+Pl1`
+
+ LEXICON BÅNJÅDIT_TV   continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms. All -uvvat  passives.
+
+
+*tsirggalit # Odd-syllable test examples:*
+* *tsirggalav:* `tsirggalit+V+TV+Ind+Prs+Sg1`
+* *tsirggaliv:* `tsirggalit+V+TV+Ind+Prt+Sg1`
+* *tsirggalijma:* `tsirggalit+V+TV+Ind+Prt+Pl1`
+
+ LEXICON VUORDDELIT_TV  Trisyllabic Verbs ending -lit. All -uvvat passives
+
+
+*tsåggålit # Odd-syllable test examples:*
+* *tsåggålav:* `tsåggålit+V+TV+Ind+Prs+Sg1`
+* *tsåggåliv:* `tsåggålit+V+TV+Ind+Prt+Sg1`
+* *tsåggålijma:* `tsåggålit+V+TV+Ind+Prt+Pl1`
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Contracted stems
+
+ LEXICON SJIERRIT_IV  Impersonals
+
+
+
+*boavddit # Contracted test examples:*
+* *boavddi:* `boavddit+V+IV+Ind+Prs+Sg3`
+* *boavddij:* `boavddit+V+IV+Ind+Prt+Sg3`
+
+
+
+ LEXICON BASSUT_IV  Passives
+
+
+
+
+*buvvut # Contracted test examples:*
+* *buvvuv:* `buvvut+V+IV+Ind+Prs+Sg1`
+* *buvvujiv:* `buvvut+V+IV+Ind+Prt+Sg1`
+* *buvvujma:* `buvvut+V+IV+Ind+Prt+Pl1`
+
+ LEXICON OADDÁT_IV    Incoative, (doarrut,jåhttåt). Only Sg3 passive. Does not make nouns via -ár derivation.
+
+
+
+
+*bæhkkát # Contracted test examples:*
+* *bæhkkáv:* `bæhkkát+V+IV+Ind+Prs+Sg1`
+* *bähkkáv:* `bæhkkát+V+IV+Ind+Prs+Sg1`
+* *bæhkkájiv:* `bæhkkát+V+IV+Ind+Prt+Sg1`
+* *bähkkájiv:* `bæhkkát+V+IV+Ind+Prt+Sg1`
+* *bæhkkájma:* `bæhkkát+V+IV+Ind+Prt+Pl1`
+* *bähkkájma:* `bæhkkát+V+IV+Ind+Prt+Pl1`
+
+ LEXICON DULLUT_IV   Does not make nouns via -ár derivation. Only Sg3 passiv.
+
+
+
+
+*dussut # Contracted test examples:*
+* *dussuv:* `dussut+V+IV+Ind+Prs+Sg1`
+* *dussujiv:* `dussut+V+IV+Ind+Prt+Sg1`
+* *dussujma:* `dussut+V+IV+Ind+Prt+Pl1`
+
+ LEXICON TJUOLLÁT_TV    Incoativ. All passive. Does not make nouns via -ár derivation,  (gullát, bårråt)
+
+
+*gajkkát # Contracted test examples:*
+* *gajkkáv:* `gajkkát+V+TV+Ind+Prs+Sg1`
+* *gajkkájiv:* `gajkkát+V+TV+Ind+Prt+Sg1`
+* *gajkkájma:* `gajkkát+V+TV+Ind+Prt+Pl1`
+
+
+ LEXICON STRÁFFUT_TV    Does not make nouns via -ár derivation. All duvvat passives. 
+
+
+*gáhpput # Contracted test examples:*
+* *gáhppuv:* `gáhpput+V+TV+Ind+Prs+Sg1`
+* *gáhppujiv:* `gáhpput+V+TV+Ind+Prt+Sg1`
+* *gáhppujma:* `gáhpput+V+TV+Ind+Prt+Pl1`
+
+ LEXICON TSIEGGIT_TV   Makes nouns via -ár derivation. All duvvat passives. 
+
+
+*gámmpit # Contracted test examples:*
+* *gámmpiv:* `gámmpit+V+TV+Ind+Prs+Sg1`
+* *gámmpijiv:* `gámmpit+V+TV+Ind+Prt+Sg1`
+* *gámmpijma:* `gámmpit+V+TV+Ind+Prt+Pl1`
+* *gámmpár:* `gámmpit+V+TV+Der/r+N+Sg+Nom`
+
+ LEXICON VALLIT_TV  Makes nouns via -ár derivation. Gets only passive Sg3
+
+
+*hinnit # Contracted test examples:*
+* *hinniv:* `hinnit+V+TV+Ind+Prs+Sg1`
+* *hinnijiv:* `hinnit+V+TV+Ind+Prt+Sg1`
+* *hinnijma:* `hinnit+V+TV+Ind+Prt+Pl1`
+* *hinnár:* `hinnit+V+TV+Der/r+N+Sg+Nom`
+
+
+
+contraced verbs assimilated and outside the main pattern.
+
+ LEXICON PLÁNIT_TV  Transitive Two-syll contraced words not in third grade as contraced verb have been. Two syllable transitive NEW loan verbs. Makes nouns via -ár derivation. All passives.
+
+
+*hinnit # Contracted test examples:*
+* *bloaggiv:* `bloaggit+V+TV+Ind+Prs+Sg1`
+* *blåggiv:* `bloaggit+V+TV+Ind+Prs+Sg1`
+* *bloaggijiv:* `bloaggit+V+TV+Ind+Prt+Sg1`
+* *blåggijiv:* `bloaggit+V+TV+Ind+Prt+Sg1`
+* *bloaggijma:* `bloaggit+V+TV+Ind+Prt+Pl1`
+* *blåggijma:* `bloaggit+V+TV+Ind+Prt+Pl1`
+* *bloaggár:* `bloaggit+V+TV+Der/r+N+Sg+Nom`
+* *blåggår:* `bloaggit+V+TV+Der/r+N+Sg+Nom`
+
+
+
+ LEXICON SLEDUT_IV  Intransitive Two-syll contraced words not in third grade as contraced verb have been. Only Sg3 passiv.
+
+
+
+*håŋŋlit # Contracted test examples:*
+* *håŋŋliv:* `håŋŋlit+V+IV+Ind+Prs+Sg1`
+* *håŋŋlijiv:* `håŋŋlit+V+IV+Ind+Prt+Sg1`
+* *håŋŋlijma:* `håŋŋlit+V+IV+Ind+Prt+Pl1`
+
+
+
+ LEXICON BADASS_TV  NEW badly assimilated two syllable transitive loan verbs. Makes nouns via -ár derivation. All passives. Err/orth taged in stem file
+
+
+
+ LEXICON BADASS_IV   NEW badly assimilated two syllable intransitive loan verbs. Makes nouns via -ár derivation. Only Sg3 passiv. Err/orth taged in stem file.
+
+
+
+
+ LEXICON ABBONERE_TV   Transitive loan words with more than two syllables with -rit endings. Duvvat passives. Does not make nouns via -ár derivation. Only the two last syllables are assimilated to sami. LONG -e is assimilated in different ways in Norway and Sweden: In Norway, it becomes -ie, and in Sweden -e.
+
+
+
+ LEXICON BRILJERE_IV   Intransitive loan words with more than two syllables with -rit endings. Does not make nouns via -ár derivation. Only the two last syllables are assimilated to sami. Long -e is assimilated in different ways in dialects in Norway and Sweden: In Norway it often becomes -ie, while in Sweden itºs usually -e.  
+
+
+
+ LEXICON BRILJERE_IV_INFL   
+
+
+
+
+
+
+*briljierit # Contracted test examples:*
+* *briljieriv:* `briljierit+V+IV+Ind+Prs+Sg1`
+* *briljeriv:* `briljierit+V+IV+Ind+Prs+Sg1`
+* *briljierijiv:* `briljierit+V+IV+Ind+Prt+Sg1`
+* *briljerijiv:* `briljierit+V+IV+Ind+Prt+Sg1`
+* *briljierijma:* `briljierit+V+IV+Ind+Prt+Pl1`
+* *briljerijma:* `briljierit+V+IV+Ind+Prt+Pl1`
+
+
+ LEXICON ABBONERE_TV_INFL   
+
+
+*abbonierit # Contracted test examples:*
+* *abbonieriv:* `abbonierit+V+TV+Ind+Prs+Sg1`
+* *abboneriv:* `abbonierit+V+TV+Ind+Prs+Sg1`
+* *abbonierijiv:* `abbonierit+V+TV+Ind+Prt+Sg1`
+* *abbonerijiv:* `abbonierit+V+TV+Ind+Prt+Sg1`
+* *abbonierijma:* `abbonierit+V+TV+Ind+Prt+Pl1`
+* *abbonerijma:* `abbonierit+V+TV+Ind+Prt+Pl1`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/verbs.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/verbs.lexc)</small>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ * **LEXICON ARABICCOMPOUNDS**  ! arabic as first part, 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ * **LEXICON ARABICCASES**  adds +Arab
+
+ * **LEXICON ARABICCASE**  adds +Arab
+
+ * **LEXICON ARABICCASE0**  adds +Arab
+
+
+ * **LEXICON DIGITCASES**  to distinguish between 0 and oblique
+
+ * **LEXICON DIGITCASE0**
+
+
+
+
+
+
+
++Num:   ROMNUMTAGOBL ;
+
+
+
+
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/numerals.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/numerals.lexc)</small>
 # Lule Sáme Proper noun morphology !
 
 
@@ -4705,1751 +6659,6 @@ HANNOLA is the same as ACCRA
 <small>This (part of) documentation was generated from [../src/fst/affixes/propernouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/propernouns.lexc)</small>
 
 
-# Sublexica for Verb
-
-Table of content:
-
-* The auxiliaries
-- Negation verb
-- Copula
-- Modals
-* Main verbs
-- Even syllable stems
-- Intransitives
-- Transitives
-- Odd syllable stems
-- Intranstives
-- Transitives
-- Contracted stems
-- Intransitives
-- Transitives
-- Assimilated loan verbs
-- Intransitives
-- Transitives
-- Main inflectional categories
-- suffix lexicas
-- Verb derivation
-
-
-IV means intransitive verbs, TV means transitive verbs.
-
-
-# Auxiliary verbs
-
-
-## Negation verb 
-
-
- LEXICON NEG 
-
-
-
-
-
-
-
-## Copula
-
- LEXICON ÅRROT 
-
- LEXICON LIEHKET 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- LEXICON LULU 
-
-
-
-
-
-
-## Modals
-
- LEXICON GALGGAT_IV  even-syllable modal verbs.
-
-
-
-
-
-*soajttet # Eveb-syllable test examples:*
-* *soajtáv:* `soajttet+V+IV+Ind+Prs+Sg1`
-* *soajttiv:* `soajttet+V+IV+Ind+Prt+Sg1`
-* *såjtijma:* `soajttet+V+IV+Ind+Prt+Pl1`
-
- LEXICON VIERTTIT_IV  Contracted modal verbs.
-
-
-
-*hæhttut # Eveb-syllable test examples:*
-* *hæhttut:* `hæhttut+V+IV+Inf`
-* *hähttut:* `hæhttut+V+IV+Inf`
-* *hæhttuv:* `hæhttut+V+IV+Ind+Prs+Sg1`
-* *hähttuv:* `hæhttut+V+IV+Ind+Prs+Sg1`
-* *hæhttujma:* `hæhttut+V+IV+Ind+Prt+Pl1`
-* *hähttujma:* `hæhttut+V+IV+Ind+Prt+Pl1`
-
-
-
-# Ordinary main verbs
-
-
-## Even-syllable stems
-Intransitives
-
- LEXICON GALSSJOT_IV  Impersonal o-verbs
-
-
-
-*hærmmot # Eveb-syllable test examples:*
-* *hærmmu:* `hærmmot+V+IV+Ind+Prs+Sg3`
-* *härmmu:* `hærmmot+V+IV+Ind+Prs+Sg3`
-* *hærmoj:* `hærmmot+V+IV+Ind+Prt+Sg3`
-* *härmoj:* `hærmmot+V+IV+Ind+Prt+Sg3`
-
- LEXICON BÅRSSJOT_IV  o-verbs with
-
-
-
-*hæssot # Eveb-syllable test examples:*
-* *hæsov:* `hæssot+V+IV+Ind+Prs+Sg1`
-* *häsov:* `hæssot+V+IV+Ind+Prs+Sg1`
-* *hessuv:* `hæssot+V+IV+Ind+Prt+Sg1`
-* *hæsojma:* `hæssot+V+IV+Ind+Prt+Pl1`
-* *häsojma:* `hæssot+V+IV+Ind+Prt+Pl1`
-
- LEXICON VILSSJOT_IV  o-verbs as BÅRSSJOT but without derivations -stit, -stallat, -stahtte, - stasste.  With dim -astit that are hardcoded
-
-
-*libjjot # Eveb-syllable test examples:*
-* *libjov:* `libjjot+V+IV+Ind+Prs+Sg1`
-* *libjjuv:* `libjjot+V+IV+Ind+Prt+Sg1`
-* *libjojma:* `libjjot+V+IV+Ind+Prt+Pl1`
-
- LEXICON BUOLLET_IV   e-verbs
-
-
-
-
-*liddet # Even-syllable test examples:*
-* *littáv:* `liddet+V+IV+Ind+Prs+Sg1`
-* *liddiv:* `liddet+V+IV+Ind+Prt+Sg1`
-* *littijma:* `liddet+V+IV+Ind+Prt+Pl1`
-
- LEXICON BOAHTET_IV  e-verbs like BUOLLET_IV without passive
-
-
-*boahtet # Even-syllable test examples:*
-* *boadáv:* `boahtet+V+IV+Ind+Prs+Sg1`
-* *båhtiv:* `boahtet+V+IV+Ind+Prt+Sg1`
-* *bådijma:* `boahtet+V+IV+Ind+Prt+Pl1`
-
- LEXICON VIEDJET_IV   e-verbs GRADE II-I WITH IE DIPHT.
-
-
-
-*biehket # Eveb-syllable test examples:*
-* *bægáv:* `biehket+V+IV+Ind+Prs+Sg1`
-* *bägáv:* `biehket+V+IV+Ind+Prs+Sg1`
-* *biehkiv:* `biehket+V+IV+Ind+Prt+Sg1`
-* *biegijma:* `biehket+V+IV+Ind+Prt+Pl1`
-
- LEXICON ASSTAT_IV   only for asstat, no passive
-
-
-
-*asstat # Even-syllable test examples:*
-* *astav:* `asstat+V+IV+Ind+Prs+Sg1`
-* *asstiv:* `asstat+V+IV+Ind+Prt+Sg1`
-* *astajma:* `asstat+V+IV+Ind+Prt+Pl1`
-
- LEXICON RAVGGAT_IV   a- and å-verbs only Sg3 passive.
-
-
-
-*bajássjaddat # Even-syllable test examples:*
-* *biváv* `bivvat+V+IV+Ind+Prs+Sg1`
-* *bivviv* `bivvat+V+IV+Ind+Prt+Sg1`
-* *bivájma:* `bivvat+V+IV+Ind+Prt+Pl1`
-
- LEXICON BIEGGAT_IV  Impersonals
-
-
-*dednjat # Even-syllable test examples:*
-* *dædnjá:* `dednjat+V+IV+Ind+Prs+Sg3`
-* *dädnjá:* `dednjat+V+IV+Ind+Prs+Sg3`
-* *denjaj:* `dednjat+V+IV+Ind+Prt+Sg3`
-
- LEXICON RAVGGALASSTET_IV    Like RAVGGAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced
-
-
-
-*dehpudallat # Even-syllable test examples:*
-* *dehpudaláv:* `dehpudallat+V+IV+Ind+Prs+Sg1`
-* *dehpudalliv:* `dehpudallat+V+IV+Ind+Prt+Sg1`
-* *dehpudalájma:* `dehpudallat+V+IV+Ind+Prt+Pl1`
-
- LEXICON BIEKKASTALLAT_IV  Already derived impersonals
-
-
-*dehpudallat # Even-syllable test examples:*
-* *duhpárasstá:* `duhpárasstet+V+IV+Ind+Prs+Sg3`
-* *duhpárastij:* `duhpárasstet+V+IV+Ind+Prt+Sg3`
-
-
- LEXICON GUOTTEDALLAT_IV    passives on -allat - no actio as first part of compounds, but reintroduced
-
-
-
-*duolmudallat # Even-syllable test examples:*
-* *duolmudaláv:* `duolmudallat+V+IV+Ind+Prs+Sg1`
-* *duolmudalliv:* `duolmudallat+V+IV+Ind+Prt+Sg1`
-* *duolmudalájma:* `duolmudallat+V+IV+Ind+Prt+Pl1`
-
- LEXICON HIEBADUVVAT_IV   passives on -uvvat - no actio as first part of compounds, but reintroduced
-
-*duostoduvvat # Even-syllable test examples:*
-* *duostoduváv:* `duostoduvvat+V+IV+Ind+Prs+Sg1`
-* *duostoduvviv:* `duostoduvvat+V+IV+Ind+Prt+Sg1`
-* *duostoduvájma:* `duostoduvvat+V+IV+Ind+Prt+Pl1`
-
-Transitives
- LEXICON MÁHTTET_TV    verbs without personal passive
-
-
-*jáhkket # Even-syllable test examples:*
-* *jáhkáv:* `jáhkket+V+TV+Ind+Prs+Sg1`
-* *jáhkkiv:* `jáhkket+V+TV+Ind+Prt+Sg1`
-* *jáhkijma:* `jáhkket+V+TV+Ind+Prt+Pl1`
-
- LEXICON BASSAT_TV   a- and å-verbs. Three passives
-
-
-*jåksåt # Even-syllable test examples:*
-* *jåvsåv:* `jåksåt+V+TV+Ind+Prs+Sg1`
-* *jåksiv:* `jåksåt+V+TV+Ind+Prt+Sg1`
-* *jåvsåjma:* `jåksåt+V+TV+Ind+Prt+Pl1`
-
- LEXICON BASSALASSTET_TV   Like BASSAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced. Three passives
-
-
-*jårgudallat # Even-syllable test examples:*
-* *jårgudaláv:* `jårgudallat+V+TV+Ind+Prs+Sg1`
-* *jårgudalliv:* `jårgudallat+V+TV+Ind+Prt+Sg1`
-* *jårgudalájma:* `jårgudallat+V+TV+Ind+Prt+Pl1`
-
- LEXICON JUHKAT_TV   a-verbs like BASSAT_TV but but without derivations -stit, -stallat, -stahtte, - stasste. Dim -istit that are hardcoded. Three passives
-
-
-*njammat # Even-syllable test examples:*
-* *njamáv:* `njammat+V+TV+Ind+Prs+Sg1`
-* *njammiv:* `njammat+V+TV+Ind+Prt+Sg1`
-* *njamájma:* `njammat+V+TV+Ind+Prt+Pl1`
-
- LEXICON LÁHPPET_TV   e-verbs. Three passives
-
-
-*oajttet # Even-syllable test examples:*
-* *oajtáv:* `oajttet+V+TV+Ind+Prs+Sg1`
-* *oajttiv:* `oajttet+V+TV+Ind+Prt+Sg1`
-* *åjtijma:* `oajttet+V+TV+Ind+Prt+Pl1`
-
- LEXICON JIEHKET_TV   e-verbs GRADE II-I WITH IE DIPHT. Three passives
-
-
-*sievvet # Even-syllable test examples:*
-* *sæváv:* `sievvet+V+TV+Ind+Prs+Sg1`
-* *säváv:* `sievvet+V+TV+Ind+Prs+Sg1`
-* *sievviv:* `sievvet+V+TV+Ind+Prt+Sg1`
-* *sievijma:* `sievvet+V+TV+Ind+Prt+Pl1`
-
- LEXICON DIEHTET_TV   Only this one word, unusual diphtong behavior. No passive
-
-
-*diehtet # Even-syllable test examples:*
-* *diedáv:* `diehtet+V+TV+Ind+Prs+Sg1`
-* *diehtiv:* `diehtet+V+TV+Ind+Prt+Sg1`
-* *diedijma:* `diehtet+V+TV+Ind+Prt+Pl1`
-
- LEXICON GÁDJOT_TV  o-verbs. only duvvat passive.
-
-
-
-*sjpædtjot # Even-syllable test examples:*
-* *sjpættjov:* `sjpædtjot+V+TV+Ind+Prs+Sg1`
-* *sjpättjov:* `sjpædtjot+V+TV+Ind+Prs+Sg1`
-* *sjpædtjuv:* `sjpædtjot+V+TV+Ind+Prt+Sg1`
-* *sjpädtjuv:* `sjpædtjot+V+TV+Ind+Prt+Sg1`
-* *sjpættjojma:* `sjpædtjot+V+TV+Ind+Prt+Pl1`
-* *sjpättjojma:* `sjpædtjot+V+TV+Ind+Prt+Pl1`
-
-
- LEXICON JÅRGGOT_TV  o-verbs with dim -astit that are hardcoded.  Duvvat and dallat passive.
-
-*boarkkot # Even-syllable test examples:*
-* *boarkov:* `boarkkot+V+TV+Ind+Prs+Sg1`
-* *boarkkuv:* `boarkkot+V+TV+Ind+Prt+Sg1`
-* *boarkojma:* `boarkkot+V+TV+Ind+Prt+Pl1`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Odd-syllable stems
-
-This is just awaiting a manual classification
-
- LEXICON BIEKKASTIT_IV  Impersonals, only Sg3
-
-
- LEXICON JÅRGESTIT_IV At the moment IV, we may perhaps change IV/TV. 
-
-
-
-*doalvestit # Odd-syllable test examples:*
-* *doalvestav:* `doalvestit+V+IV+Ind+Prs+Sg1`
-* *doalvestiv:* `doalvestit+V+IV+Ind+Prt+Sg1`
-* *doalvestijma:* `doalvestit+V+IV+Ind+Prt+Pl1`
-
- LEXICON BEGATJIT_IV   Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but  only Sg3 passivereintroduced
-
-
-
-
-*duojkkuhit # Odd-syllable test examples:*
-* *duojkkuhav:* `duojkkuhit+V+IV+Ind+Prs+Sg1`
-* *duojkkuhiv:* `duojkkuhit+V+IV+Ind+Prt+Sg1`
-* *duojkkuhijma:* `duojkkuhit+V+IV+Ind+Prt+Pl1`
-
- LEXICON BALÁDIT_IV   continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms, only Sg3 passive
-
-
-
-*lihtudit # Odd-syllable test examples:*
-* *lihtudav:* `lihtudit+V+IV+Ind+Prs+Sg1`
-* *lihtudiv:* `lihtudit+V+IV+Ind+Prt+Sg1`
-* *lihtudijma:* `lihtudit+V+IV+Ind+Prt+Pl1`
-
- LEXICON SUOGNALIT_IV  Trisyllabic Verbs ending -lit.  only Sg3 passive
-
-
-
-*loavkkalit # Odd-syllable test examples:*
-* *loavkkalav:* `loavkkalit+V+IV+Ind+Prs+Sg1`
-* *loavkkaliv:* `loavkkalit+V+IV+Ind+Prt+Sg1`
-* *loavkkalijma:* `loavkkalit+V+IV+Ind+Prt+Pl1`
-
- LEXICON LASSÁNIT_IV  verbs ending -nit, -sit, no passive
-
-
-*rievddánit # Odd-syllable test examples:*
-* *rievddánav:* `rievddánit+V+IV+Ind+Prs+Sg1`
-* *rievddániv:* `rievddánit+V+IV+Ind+Prt+Sg1`
-* *rievddánijma:* `rievddánit+V+IV+Ind+Prt+Pl1`
-
- LEXICON BÁHTARIT_IV verbs ending -rit.  only Sg3 passive
-
-
-
-*sjtávttjurit # Odd-syllable test examples:*
-* *sjtávttjurav:* `sjtávttjurit+V+IV+Ind+Prs+Sg1`
-* *sjtávttjuriv:* `sjtávttjurit+V+IV+Ind+Prt+Sg1`
-* *sjtávttjurijma:* `sjtávttjurit+V+IV+Ind+Prt+Pl1`
-
- LEXICON UNNEDIT_TV   All -uvvat passives.
-
-
-*nuoledit # Odd-syllable test examples:*
-* *nuoledav:* `nuoledit+V+TV+Ind+Prs+Sg1`
-* *nuolediv:* `nuoledit+V+TV+Ind+Prt+Sg1`
-* *nuoledijma:* `nuoledit+V+TV+Ind+Prt+Pl1`
-
- LEXICON MUJTATJIT_TV   Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but reintroduced. All -uvvat passives
-
-
-*nårddådit # Odd-syllable test examples:*
-* *nårddådav:* `nårddådit+V+TV+Ind+Prs+Sg1`
-* *nårddådiv:* `nårddådit+V+TV+Ind+Prt+Sg1`
-* *nårddådijma:* `nårddådit+V+TV+Ind+Prt+Pl1`
-
- LEXICON BÅNJÅDIT_TV   continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms. All -uvvat  passives.
-
-
-*tsirggalit # Odd-syllable test examples:*
-* *tsirggalav:* `tsirggalit+V+TV+Ind+Prs+Sg1`
-* *tsirggaliv:* `tsirggalit+V+TV+Ind+Prt+Sg1`
-* *tsirggalijma:* `tsirggalit+V+TV+Ind+Prt+Pl1`
-
- LEXICON VUORDDELIT_TV  Trisyllabic Verbs ending -lit. All -uvvat passives
-
-
-*tsåggålit # Odd-syllable test examples:*
-* *tsåggålav:* `tsåggålit+V+TV+Ind+Prs+Sg1`
-* *tsåggåliv:* `tsåggålit+V+TV+Ind+Prt+Sg1`
-* *tsåggålijma:* `tsåggålit+V+TV+Ind+Prt+Pl1`
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Contracted stems
-
- LEXICON SJIERRIT_IV  Impersonals
-
-
-
-*boavddit # Contracted test examples:*
-* *boavddi:* `boavddit+V+IV+Ind+Prs+Sg3`
-* *boavddij:* `boavddit+V+IV+Ind+Prt+Sg3`
-
-
-
- LEXICON BASSUT_IV  Passives
-
-
-
-
-*buvvut # Contracted test examples:*
-* *buvvuv:* `buvvut+V+IV+Ind+Prs+Sg1`
-* *buvvujiv:* `buvvut+V+IV+Ind+Prt+Sg1`
-* *buvvujma:* `buvvut+V+IV+Ind+Prt+Pl1`
-
- LEXICON OADDÁT_IV    Incoative, (doarrut,jåhttåt). Only Sg3 passive. Does not make nouns via -ár derivation.
-
-
-
-
-*bæhkkát # Contracted test examples:*
-* *bæhkkáv:* `bæhkkát+V+IV+Ind+Prs+Sg1`
-* *bähkkáv:* `bæhkkát+V+IV+Ind+Prs+Sg1`
-* *bæhkkájiv:* `bæhkkát+V+IV+Ind+Prt+Sg1`
-* *bähkkájiv:* `bæhkkát+V+IV+Ind+Prt+Sg1`
-* *bæhkkájma:* `bæhkkát+V+IV+Ind+Prt+Pl1`
-* *bähkkájma:* `bæhkkát+V+IV+Ind+Prt+Pl1`
-
- LEXICON DULLUT_IV   Does not make nouns via -ár derivation. Only Sg3 passiv.
-
-
-
-
-*dussut # Contracted test examples:*
-* *dussuv:* `dussut+V+IV+Ind+Prs+Sg1`
-* *dussujiv:* `dussut+V+IV+Ind+Prt+Sg1`
-* *dussujma:* `dussut+V+IV+Ind+Prt+Pl1`
-
- LEXICON TJUOLLÁT_TV    Incoativ. All passive. Does not make nouns via -ár derivation,  (gullát, bårråt)
-
-
-*gajkkát # Contracted test examples:*
-* *gajkkáv:* `gajkkát+V+TV+Ind+Prs+Sg1`
-* *gajkkájiv:* `gajkkát+V+TV+Ind+Prt+Sg1`
-* *gajkkájma:* `gajkkát+V+TV+Ind+Prt+Pl1`
-
-
- LEXICON STRÁFFUT_TV    Does not make nouns via -ár derivation. All duvvat passives. 
-
-
-*gáhpput # Contracted test examples:*
-* *gáhppuv:* `gáhpput+V+TV+Ind+Prs+Sg1`
-* *gáhppujiv:* `gáhpput+V+TV+Ind+Prt+Sg1`
-* *gáhppujma:* `gáhpput+V+TV+Ind+Prt+Pl1`
-
- LEXICON TSIEGGIT_TV   Makes nouns via -ár derivation. All duvvat passives. 
-
-
-*gámmpit # Contracted test examples:*
-* *gámmpiv:* `gámmpit+V+TV+Ind+Prs+Sg1`
-* *gámmpijiv:* `gámmpit+V+TV+Ind+Prt+Sg1`
-* *gámmpijma:* `gámmpit+V+TV+Ind+Prt+Pl1`
-* *gámmpár:* `gámmpit+V+TV+Der/r+N+Sg+Nom`
-
- LEXICON VALLIT_TV  Makes nouns via -ár derivation. Gets only passive Sg3
-
-
-*hinnit # Contracted test examples:*
-* *hinniv:* `hinnit+V+TV+Ind+Prs+Sg1`
-* *hinnijiv:* `hinnit+V+TV+Ind+Prt+Sg1`
-* *hinnijma:* `hinnit+V+TV+Ind+Prt+Pl1`
-* *hinnár:* `hinnit+V+TV+Der/r+N+Sg+Nom`
-
-
-
-contraced verbs assimilated and outside the main pattern.
-
- LEXICON PLÁNIT_TV  Transitive Two-syll contraced words not in third grade as contraced verb have been. Two syllable transitive NEW loan verbs. Makes nouns via -ár derivation. All passives.
-
-
-*hinnit # Contracted test examples:*
-* *bloaggiv:* `bloaggit+V+TV+Ind+Prs+Sg1`
-* *blåggiv:* `bloaggit+V+TV+Ind+Prs+Sg1`
-* *bloaggijiv:* `bloaggit+V+TV+Ind+Prt+Sg1`
-* *blåggijiv:* `bloaggit+V+TV+Ind+Prt+Sg1`
-* *bloaggijma:* `bloaggit+V+TV+Ind+Prt+Pl1`
-* *blåggijma:* `bloaggit+V+TV+Ind+Prt+Pl1`
-* *bloaggár:* `bloaggit+V+TV+Der/r+N+Sg+Nom`
-* *blåggår:* `bloaggit+V+TV+Der/r+N+Sg+Nom`
-
-
-
- LEXICON SLEDUT_IV  Intransitive Two-syll contraced words not in third grade as contraced verb have been. Only Sg3 passiv.
-
-
-
-*håŋŋlit # Contracted test examples:*
-* *håŋŋliv:* `håŋŋlit+V+IV+Ind+Prs+Sg1`
-* *håŋŋlijiv:* `håŋŋlit+V+IV+Ind+Prt+Sg1`
-* *håŋŋlijma:* `håŋŋlit+V+IV+Ind+Prt+Pl1`
-
-
-
- LEXICON BADASS_TV  NEW badly assimilated two syllable transitive loan verbs. Makes nouns via -ár derivation. All passives. Err/orth taged in stem file
-
-
-
- LEXICON BADASS_IV   NEW badly assimilated two syllable intransitive loan verbs. Makes nouns via -ár derivation. Only Sg3 passiv. Err/orth taged in stem file.
-
-
-
-
- LEXICON ABBONERE_TV   Transitive loan words with more than two syllables with -rit endings. Duvvat passives. Does not make nouns via -ár derivation. Only the two last syllables are assimilated to sami. LONG -e is assimilated in different ways in Norway and Sweden: In Norway, it becomes -ie, and in Sweden -e.
-
-
-
- LEXICON BRILJERE_IV   Intransitive loan words with more than two syllables with -rit endings. Does not make nouns via -ár derivation. Only the two last syllables are assimilated to sami. Long -e is assimilated in different ways in dialects in Norway and Sweden: In Norway it often becomes -ie, while in Sweden itºs usually -e.  
-
-
-
- LEXICON BRILJERE_IV_INFL   
-
-
-
-
-
-
-*briljierit # Contracted test examples:*
-* *briljieriv:* `briljierit+V+IV+Ind+Prs+Sg1`
-* *briljeriv:* `briljierit+V+IV+Ind+Prs+Sg1`
-* *briljierijiv:* `briljierit+V+IV+Ind+Prt+Sg1`
-* *briljerijiv:* `briljierit+V+IV+Ind+Prt+Sg1`
-* *briljierijma:* `briljierit+V+IV+Ind+Prt+Pl1`
-* *briljerijma:* `briljierit+V+IV+Ind+Prt+Pl1`
-
-
- LEXICON ABBONERE_TV_INFL   
-
-
-*abbonierit # Contracted test examples:*
-* *abbonieriv:* `abbonierit+V+TV+Ind+Prs+Sg1`
-* *abboneriv:* `abbonierit+V+TV+Ind+Prs+Sg1`
-* *abbonierijiv:* `abbonierit+V+TV+Ind+Prt+Sg1`
-* *abbonerijiv:* `abbonierit+V+TV+Ind+Prt+Sg1`
-* *abbonierijma:* `abbonierit+V+TV+Ind+Prt+Pl1`
-* *abbonerijma:* `abbonierit+V+TV+Ind+Prt+Pl1`
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/verbs.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/verbs.lexc)</small>
-
-
-# Sublexica for Adjective
-
-## Even-syllable stems
-
-
-
- LEXICON GIEVRRA  Adjectives with attribute in WeG and -s. As 1a in Spiik. Sg Acc: gievrav, Attr: gievras.
-
-
-
-*gárttje # Even-syllable test examples:*
-* *gárttje:* `gárttje+A+Sg+Nom`
-* *gártjev:* `gárttje+A+Sg+Acc`
-* *gártjes:* `gárttje+A+Attr`
-* *gártjep:* `gárttje+A+Der/Comp+A+Sg+Nom`
-
-
-
- LEXICON NUORRA   Adjectives with attribute same as pred. As 1b in Spiik. Sg Acc: nuorav, Attr: nuorra.
-
-
-*visská # Even-syllable test examples:*
-* *visská:* `visská+A+Sg+Nom`
-* *viskáv:* `visská+A+Sg+Acc`
-* *visská:* `visská+A+Attr`
-* *viskáp:* `visská+A+Der/Comp+A+Sg+Nom`
-
-
-
- LEXICON GALLJE   Adjectives on -e, the attribute is in WeG and e > a. As 1d in Spiik. Sg Acc: galjev, Attr: galja.
-
-
-*uhttse # Even-syllable test examples:*
-* *uhttse:* `uhttse+A+Sg+Nom`
-* *uhtsev:* `uhttse+A+Sg+Acc`
-* *uhtsa:* `uhttse+A+Attr`
-* *uhtses:* `uhttse+A+Attr` (Eng. # gets this attr from)
-* *uhtsep:* `uhttse+A+Der/Comp+A+Sg+Nom`
-
- LEXICON TJÁBBE   Adjectives on -e, the attribute is in WeG and e > a. Same as GALLJE only different adv derivation. Sg Acc: tjáppev, Attr: tjáppa.
-
-
-*njálgge # Even-syllable test examples:*
-* *njálgge:* `njálgge+A+Sg+Nom`
-* *njálgev:* `njálgge+A+Sg+Acc`
-* *njálga:* `njálgge+A+Attr`
-* *njálgep:* `njálgge+A+Der/Comp+A+Sg+Nom`
-
-
-
-
-
- LEXICON VILLDA   Adjectives with attribute same as pred, without CG. As 1b in Spiik. Sg Acc: nuorav, Attr: nuorra.
-
-
-*frisska # Even-syllable test examples:*
-* *frisska:* `frisska+A+Sg+Nom`
-* *frisskav:* `frisska+A+Sg+Acc`
-* *frisska:* `frisska+A+Attr`
-* *frisskap:* `frisska+A+Der/Comp+A+Sg+Nom`
-
- LEXICON HÁVSSKE   Adjectives with attribute -s, without WeG. As 1c in Spiik. Sg Acc: hávsskev, Attr: hávsskes.
-
-
-*hoallá # Even-syllable test examples:*
-* *hoallá:* `hoallá+A+Sg+Nom`
-* *hoalláv:* `hoallá+A+Sg+Acc`
-* *hoallás:* `hoallá+A+Attr`
-* *hoalláp:* `hoallá+A+Der/Comp+A+Sg+Nom`
-
- LEXICON TJUODDJE  Adjectives with attribute -is, without WeG. presently only "Tjuoddje" Sg Acc: tjuoddjev, Attr: tjuoddjis.
-
-
-
-*tjuoddje # Even-syllable test examples:*
-* *tjuoddje:* `tjuoddje+A+Sg+Nom`
-* *tjuoddjev:* `tjuoddje+A+Sg+Acc`
-* *tjuoddjis:* `tjuoddje+A+Attr`
-* *tjuoddjep:* `tjuoddje+A+Der/Comp+A+Sg+Nom`
-
-
-
-Pres.participles 
-
- LEXICON SÁVADAHTTE   Causative-participles. No attribute. No comparision. As 1e in Spiik. Sg Acc: sávadahttev. PrsPrc of causative verbs "uttrykker at handlingen lar seg gjøre eller er verdt å gjøre" (Kintel 1991).
-
-
-*vuojedahtte # Even-syllable test examples:*
-* *vuojedahtte:* `vuojedahtte+A+Sg+Nom`
-* *vuojedahttev:* `vuojedahtte+A+Sg+Acc`
-
- LEXICON JUHKKE   participles with -s attributive. No comparision As 1e in Spiik. Sg Acc: juhkkev, Attr: juhkkes. Spiik: presens particip har med den attributive formen på -s betydelsen "någon som är duktig i, snabb til att, begiven att utföra handlingen".
-
-
-*vuohttje # Even-syllable test examples:*
-* *vuohttje:* `vuohttje+A+Sg+Nom`
-* *vuohttjev:* `vuohttje+A+Sg+Acc`
-* *vuohttjes:* `vuohttje+A+Attr`
-
- LEXICON BÅRRE   participles without the -s attributive. As 1e in Spiik. Sg Acc: bårrev, Attr: bårre. Spiik: presens particip har med den attributiva formen utan -s betydelsen ºdem  som utför handlingenº.
-
-
-*ednabårre # Even-syllable test examples:*
-* *ednabårre:* `ednabårre+A+Sg+Nom`
-* *ednabårrev:* `ednabårre+A+Sg+Acc`
-* *ednabårre:* `ednabårre+A+Attr`
-
-
-
-Test data:
-
-
-Loan words lexicas
-
-
-###  Correctly assimilated loanwords, derived from real noun.
-
-
- LEXICON METÅVDÅLASJ  LOAN! Foreign -isk adjectives adapted in updated normative way. To smj ending -alasj, adjective is truly derived from a noun. Mekanisk-mekanihkka-mekanihkalasj, instead of mekánalasj that goes to MEKÁNALASJ_BADASS. Pred and attr are both -alasj. Attr same as pred. With comparatives. 
-
-
-
- LEXICON METÅVDÅLASJ_CMP_INFL 
-
-
-
-
-
-*kapitalismalasj # Even-syllable test examples:*
-* *kapitalismalasj:* `kapitalismalasj+A+Sg+Nom`
-* *kapitalismalattjav:* `kapitalismalasj+A+Sg+Acc`
-* *kapitalismalasj:* `kapitalismalasj+A+Attr`
-* *kapitalismalabbo:* `kapitalismalasj+A+Der/Comp+A+Sg+Nom`
-
-
- LEXICON MEKANIHKA_MEKANIJKA_LASJ  LOAN! Same type of adjectives as METÅVDÅLASJ, only for adjektives that become mekanihkalasj in norway and mekanijkalasj in sweden, because of differences mekanik vs mekanikk>mekanijkka vs mekanihkka.  Attr same as pred. With comparatives. 
-
-
-
- LEXICON IJJALASJ  Just lik  METÅVDÅLASJ only for words ending on ijjalasj/iddjalasj, so that we don't need a lot of Area and Err tags in stems file.
-
-
- LEXICON IJJALASJ_CMP_INFL 
-
-
-
- LEXICON OGIJJALASJ  Just like IJJALASJ only for words ending on ogijjalasj/ogiddjalasj, so that we don't need a lot of err tags in stems files. For words like "pedagogijjalasj" which also have "pedagåvgålasj" (not really a wrong derivation, but doesn't mean pedagogisk) and "pedagogalasj" err taged.  
-
-
- LEXICON OGIJJALASJ_CMP_INFL  
-
-
- LEXICON SJÅNÅLASJ_SJONAL  -sjonal/sjonell and -tional/tionel loanwords. Only for words that work as nouns, so that they are REAL dervations, as nasjonal-nasjåvnnå-nasjåvnålasj. NOT for words like "rasjonell", with no real noun. Words as "rasjonell>rasjonálla-rasjonálalasj" go to lexicon ÁLLA.  The fake derivation "nasjonálalasj" is err taged, so is the strange "nasjonálla/nasjunálla". 
-
-
- LEXICON SJÅNÅLASJ_SJONAL_CMP_INFL  
-
-
-
-
-
-*konstitusjåvnålasj # Even-syllable test examples:*
-* *nasjåvnålasj:* `nasjåvnålasj+A+Sg+Nom`
-* *nasjåvnålattjav:* `nasjåvnålasj+A+Sg+Acc`
-* *nasjåvnålasj:* `nasjåvnålasj+A+Attr`
-
-
-
- LEXICON SJÅNÅLASJ_SJONELL  -sjonal/sjonell and -tional/tionel loanwords. Only for words that work as nouns, so that they are REAL dervations, as nasjonal-nasjåvnnå-nasjåvnålasj. NOT for words like "rasjonell", with no real noun. Words as "rasjonell>rasjonálla-rasjonálalasj" go to lexicon ÁLLA.  The fake derivation "nasjonálalasj" is err taged, so is the strange "nasjonálla/nasjunálla". 
-
-
- LEXICON SJÅNÅLASJ_SJONELL_CMP_INFL  
-
-
-
-*konstitusjåvnålasj # Even-syllable test examples:*
-* *konstitusjåvnålasj:* `konstitusjåvnålasj+A+Sg+Nom`
-* *konstitusjåvnålattjav:* `konstitusjåvnålasj+A+Sg+Acc`
-* *konstitusjåvnålasj:* `konstitusjåvnålasj+A+Attr`
-
-
-###  Badly assimilated loanwords, some against norm others with no norm
-
- LEXICON MEKÁNALASJ_BADASS  LOAN! Wronly assimilated -lasj adjectives from SE/NO -isk. Looks derived but isn't since there is no real noun to be derived from. Like mekanisk-mekánalasj, but "mekádna" is no real noun! Like  METÅVDÅLASJ, but gives the Err/Der tag, so it's only for these wronly/non-derived loan adjectives. 
-
-
-
-
-
- LEXICON ARKTALASJ_CMP_INFL  Foreign -isk, that are not real derivations. Same as MEKÁNALASJ_BADASS, but no +Use/-Spell tag since ther is no "right" way to assimilate these. This is a question for GG. Adapted to smj by simply adding -alasj in place of -isk. These are not real derivations, but sitation borrowed loan adjectives. Only words without a noun base, like arktisk and syntetisk. Pred and attr are both -lasj. No comparatives. 
-
-
-
-
-*syntetalasj # Even-syllable test examples:*
-* *syntetalasj:* `syntetalasj+A+Sg+Nom`
-* *syntetalattjav:* `syntetalasj+A+Sg+Acc`
-* *syntetalasj:* `syntetalasj+A+Attr`
-
- LEXICON ORÁNSSJA  Loan adjectives, not -isk. Used without the -lasj. Adjectives with attribute same as pred. So far only for oránssja.
-
-
- LEXICON DEMONSTRATIJVA_LASJ_NO_NORM  Loan adjectives from norwegian/swedish (Not adjectives ending on -isk). Words like demonstrativ, transitiv, dupleks, informativ, analog, privat. Gives both "demonstratijvva" and "demonstratijvalasj". Two ways of adapting these adjectives are used, the adding of -lasj isn't okey, because that's a false derivation. But GG hasn't decided how these should be handled. Looks like noun instead of adjective when adapted without the -lasj ending.  Attr is in weak grad, used in strong grad ass pred even thou this seems a little bit odd "Værbba l transitijvva". 
-
-
-
-
- LEXICON DEMONSTRATIJVA_LASJ_CMP_INFL    
-
-
-
-
-
-
-
-*aktijvva # Even-syllable test examples:*
-* *aktijva:* `aktijvva+A+Attr`
-* *aktijvva:* `aktijvva+A+Sg+Nom`
-* *aktijvav:* `aktijvva+A+Sg+Acc`
-
-
-
-
-
-
- LEXICON ÁLA_LASJ_NO_NORM  Same as DEMONSTRATIJVA_LASJ_NO_NORM. Only for adjectives ending on -al. Words like digital,liberal, lokal.  Gives both "eksponentiálla" and "eksponentiálalasj". Different lexicon for these -al adjectives because of Err/Orth tags. OBS, "dialektal", is assimilated "dialevtalasj", and goes to lexicon  METÅVDÅLASJ.
-
-
- LEXICON ÁLA_LASJ_INFL_CMP 
-
-
-
-
-
- LEXICON ELLA_LASJ_NO_NORM  Loanwords, same as ÁLA_LASJ_NO_NORM  and  DEMONSTRANTIJVA_LASJ_NO_NORM. For NO and SE adjectives ending on -ell, eksperimentell, ideell, parallell. The short form is nom parallælla, attr, parallella The long form: paralellalasj, attr parallellalasj. Different lexicon for these -ell adjectives because of err/orth tags. OBS, "individuell", is assimilated "indivijdalasj", and goes to lexicon  METÅVDÅLASJ.
-
-
- LEXICON ELLA_LASJ_INFL_CMP  
-
-
-
-
-
- LEXICON ÁLLA-ÆLLA 
-
- LEXICON MEKÁNALASJ_CMP_INFL  Same as  METÅVDÅLASJ only without vuohta. 
-
-
-
-
-
-
-
-
-
-
-Inherent comparatives and superlatives lexica
-
- LEXICON OANEP   Inherent comparatives, gives comp and superl. There are two main groups of word here: Adjectives that are lexicalized in their comparative (and superlative) forms, like sisŋep, bárep. And Nouns that can be compared, like nuortap, gáttep, oarjep (some of these are compared from their noun lexicas and thus are found twice). Some entries are likely incorrect compared forms of other adjectives, like ådåp and ruvvap (more research needed).
-
-
-
-
-
-*lagáp # Even-syllable test examples:*
-* *lagáp:* `lagáp+A+Gram/Comp+Sg+Nom`
-* *lagámus:* `lagáp+A+Der/Superl+A+Sg+Nom`
-
-
- LEXICON TJAVGGÁMUS    Inherent superlatives, only gives superl. Some words are lexicalized in their superlative forms, like dájvvámus. Some are likely incorrect superlative forms, like tjábbámus (more research is needed)
-
-
-
-*dájvvámus # Even-syllable test examples:*
-* *dájvvámus:* `dájvvámus+A+Gram/Superl+Sg+Nom`
-
-4-syllable miscellanious stems
-
- LEXICON ÁRMMOGIS  Adjectives on -is, attribute same as pred. Odd-syllable comparison. As 2 in Spiik. Sg Acc: ármmogisáv, Attr: ármmogis. 
-
-
-*bahágis # Even-syllable test examples:*
-* *bahágis:* `bahágis+A+Sg+Nom`
-* *bahágisáv:* `bahágis+A+Sg+Acc`
-* *bahágis:* `bahágis+A+Attr`
-* *bahágabbo:* `bahágis+A+Der/Comp+A+Sg+Nom`
-
- LEXICON SÆHKÁLAK  Adjectives on -álak, attribute same as pred. Odd-syllable comparison. So far only for "sæhkálak".
-
-
-*sæhkálak # Even-syllable test examples:*
-* *sæhkálak:* `sæhkálak+A+Sg+Nom`
-* *sähkálak:* `sæhkálak+A+Sg+Nom`
-* *sæhkálagáv:* `sæhkálak+A+Sg+Acc`
-* *sähkálagáv:* `sæhkálak+A+Sg+Acc`
-* *sæhkálak:* `sæhkálak+A+Attr`
-* *sähkálak:* `sæhkálak+A+Attr`
-* *sæhkálabbo:* `sæhkálak+A+Der/Comp+A+Sg+Nom`
-* *sähkálabbo:* `sæhkálak+A+Der/Comp+A+Sg+Nom`
-
-
- LEXICON ÅLLAGSJ_CMP_INFL  Adjectives on -asj, attribute same as pred.  No comparatives. 2 in Spiik. Sg Acc: ållagattjav, Attr: ållagasj.
-
-
-*belulasj # Even-syllable test examples:*
-* *belulasj:* `belulasj+A+Sg+Nom`
-* *belulattjav:* `belulasj+A+Sg+Acc`
-* *belulasj:* `belulasj+A+Attr`
-
-
- LEXICON DÁRBULASJ_CMP_INFL  Adjectives on -asj, attribute same as pred. Odd-syllable comparison. Sg Acc: dárbulattjav, Attr: dárbulasj. Essive -attjan, -adtjan is subtaged. Err/Orth also -ahttja.  
-
-
-
-
-
-*dábálasj # Even-syllable test examples:*
-* *dábálasj:* `dábálasj+A+Sg+Nom`
-* *dábálattjav:* `dábálasj+A+Sg+Acc`
-* *dábálasj:* `dábálasj+A+Attr`
-* *dábális:* `dábálasj+A+Attr`
-* *dábálabbo:* `dábálasj+A+Der/Comp+A+Sg+Nom`
-
-
-
- LEXICON ASIDASJ_CMP_INFL  Adjectives on -asj, -is attr. Odd-syllable comparison. Sg Acc: asidattjav, Attr: asidis.
-
-
-*gågulasj # Even-syllable test examples:*
-* *gågulasj:* `gågulasj+A+Sg+Nom`
-* *gågulattjav:* `gågulasj+A+Sg+Acc`
-* *gågulis:* `gågulasj+A+Attr`
-* *gågulabbo:* `gågulasj+A+Der/Comp+A+Sg+Nom`
-
- LEXICON UDNODIBME  Adjectives on -dibme, attribute on -is. Odd-syllable comparison. Sg Acc: udnodimev, Attr: udnodis.
-
-
-*gælvodibme # Even-syllable test examples:*
-* *gælvodibme:* `gælvodibme+A+Sg+Nom`
-* *gälvodibme:* `gælvodibme+A+Sg+Nom`
-* *gælvodimev:* `gælvodibme+A+Sg+Acc`
-* *gälvodimev:* `gælvodibme+A+Sg+Acc`
-* *gælvodis:* `gælvodibme+A+Attr`
-* *gälvodis:* `gælvodibme+A+Attr`
-* *gælvodabbo:* `gælvodibme+A+Der/Comp+A+Sg+Nom`
-* *gälvodabbo:* `gælvodibme+A+Der/Comp+A+Sg+Nom`
-
- LEXICON TJALMEDIBME   Like UDNODIBME but no comparatives. Sg Acc: tjalmedimev, Attr: tjalmedis.
-
-
-*huvsodibme # Even-syllable test examples:*
-* *huvsodibme:* `huvsodibme+A+Sg+Nom`
-* *huvsodimev:* `huvsodibme+A+Sg+Acc`
-* *huvsodis:* `huvsodibme+A+Attr`
-
- LEXICON SUOLASIEHKE  -siehke. Sg Acc: suolasiegev, attr: suolasiek
-
-
-*hánessiehke # Even-syllable test examples:*
-* *hánessiehke:* `hánessiehke+A+Sg+Nom`
-* *hánessiegev:* `hánessiehke+A+Sg+Acc`
-* *hánessiek:* `hánessiehke+A+Attr`
-
-
-
-
-
-
-
-
-## Odd-syllable stems
-###  With CG Sorted by attr
-
-
- LEXICON TJIEGOS  Attr same as pred. For adjectives with -e in second syllable e>á: divtes>diktásav in StrG. As a. in Spiik.  Sg Acc: tjiehkusav, Attr: tjiegos. Consonant gradation. 
-
-
-*hánes # Odd-syllable test examples:*
-* *måskas:* `måskas+A+Sg+Nom`
-* *moasskasav:* `måskas+A+Sg+Acc`
-* *måskas:* `måskas+A+Attr`
-* *moasskasabbo:* `måskas+A+Der/Comp+A+Sg+Nom`
-* *bihtja:* `bihtja+A+Sg+Nom`
-* *bihttjagav:* `bihtja+A+Sg+Acc`
-* *bihtja:* `bihtja+A+Attr`
-* *bihttjagabbo:* `bihtja+A+Der/Comp+A+Sg+Nom`
-
- LEXICON LINES  Attr ending on -a. Adjektives ending on -es. Does same as TJIEGOS, but with attr -a.   As g. in Spiik.  lines, Sg Acc: lidnásav, attr: lidna. Consonant gradation.
-
-
-*lines # Odd-syllable test examples:*
-* *lines:* `lines+A+Sg+Nom`
-* *lidnásav:* `lines+A+Sg+Acc`
-* *lidna:* `lines+A+Attr`
-* *lidnásabbo:* `lines+A+Der/Comp+A+Sg+Nom`
-
-
- LEXICON GALMAS   Attr ending on -a or -å. Adjectives on -as, ås- and ás. As e. in Spiik. Sg Acc: galmmasav, attr: galmma, Consonant gradation.
-
-
-*njuoskas # Odd-syllable test examples:*
-* *njuoskas:* `njuoskas+A+Sg+Nom`
-* *njuosskasav:* `njuoskas+A+Sg+Acc`
-* *njuosska:* `njuoskas+A+Attr`
-* *njuosskasabbo:* `njuoskas+A+Der/Comp+A+Sg+Nom`
-
-
-
- LEXICON OAMES  Attr ending on -e. Adjectives on -es with attribute -e. As g2. in Spiik. Sg Acc: oabmásav, Attr: oabme. Consonant gradation.
-
-
-*goastes # Odd-syllable test examples:*
-* *goastes:* `goastes+A+Sg+Nom`
-* *goasstásav:* `goastes+A+Sg+Acc`
-* *goasste:* `goastes+A+Attr`
-* *goasstásabbo:* `goastes+A+Der/Comp+A+Sg+Nom`
-
-
- LEXICON SUOHKAT  Attr III -is, not suohkkadis but SUOHKKIS. With CG to attr, not from nom to Acc. Same as JALGGAT only with this CG. SUOHKKIS. Without CG between nom and acc. Adjectives on -at and -åt, with attribute III -is. As f. in Spiik. Sg Acc: suohkadav, attr: suohkkis,
-
-
-*rávvat # Odd-syllable test examples:*
-* *rávvat:* `rávvat+A+Sg+Nom`
-* *rávvadav:* `rávvat+A+Sg+Acc`
-* *rávvis:* `rávvat+A+Attr`
-* *rávvadabbo:* `rávvat+A+Der/Comp+A+Sg+Nom`
-
-
- LEXICON MÅJDÅS  Adjectives with no attr. With CG. Sg Acc: måjddåsav. If there is an attribute that dosn't fit to any lexicon it mus be hardcoded.
-
-
-*rávdes # Odd-syllable test examples:*
-* *rávdes:* `rávdes+A+Sg+Nom`
-* *rávddásav:* `rávdes+A+Sg+Acc`
-* *rávddásabbo:* `rávdes+A+Der/Comp+A+Sg+Nom`
-
-
-
-
-Without CG
-
- LEXICON VIEKSES  Attr same as pred. Without CG, but With vowel changes.  Sg Acc: væksásav, Attr: viekses. Like TJIEGOS only without the CG but with vowel changes. Mayby change this to a lexicon withput attr and then hardcode attr?
-
-
- LEXICON ALEK  Attr same as pred. Without CG, without any vowel changes. Like TJIEGOS only without the CG an vowelchanges. 
-
-
-
-*purpur # Odd-syllable test examples:*
-* *purpur:* `purpur+A+Sg+Nom`
-* *purpurav:* `purpur+A+Sg+Acc`
-* *purpur:* `purpur+A+Attr`
-* *purpurabbo:* `purpur+A+Der/Comp+A+Sg+Nom`
-
- LEXICON BASSTEL   Attr ening on -is. Without CG. Adjs on -et, -l, -r, sm om -k, -sj with attr -is and no consonant gradation. As b. in Spiik. Sg Acc: basstelav, Attr: basstelis. Many of these entries might be instances of derivations, like belak, deblak, and maybe also basstel, bargán.
-
-
-*goavrret # Odd-syllable test examples:*
-* *goavrret:* `goavrret+A+Sg+Nom`
-* *goavrredav:* `goavrret+A+Sg+Acc`
-* *goavrredis:* `goavrret+A+Attr`
-* *goavrredabbo:* `goavrret+A+Der/Comp+A+Sg+Nom`
-
- LEXICON MUTTÁK  Two attr enings -is and same as pred. Without CG. Adjs on -ák/-ak/-ek, two attr: -is and same as pred. As c. in Spiik. Sg Acc: muttágav, Attr: muttágis and mutták. These seem to be instances of the adjectival -k derivation. Unclear whether such derivation have different attr forms or not, and thats maybe why some of these derivations are found in BASSTEL lexicon.
-
-
-*bárvak # Odd-syllable test examples:*
-* *bárvak:* `bárvak+A+Sg+Nom`
-* *bárvagav:* `bárvak+A+Sg+Acc`
-* *bárvak:* `bárvak+A+Attr`
-* *bárvagis:* `bárvak+A+Attr`
-* *bárvagabbo:* `bárvak+A+Der/Comp+A+Sg+Nom`
-
-
- LEXICON JALGGAT  Attr III -is, not jalggadis but JALGGIS. Without CG.  Adjectives on -at, with attribute III -is. As f. in Spiik. Sg Acc: jalggadav, attr: jalggis,
-
-
-
-*russjkat # Odd-syllable test examples:*
-* *russjkat:* `russjkat+A+Sg+Nom`
-* *russjkadav:* `russjkat+A+Sg+Acc`
-* *russjkis:* `russjkat+A+Attr`
-* *russjkadabbo:* `russjkat+A+Der/Comp+A+Sg+Nom`
-
-
- LEXICON TJÅRGGÅT  Attr III -is, not tjårggådis but tjårggis. Without CG. Same as JALGGAT only for adjectives ending ot -åt. Adjectives on -åt, with attribute III -is. As f. in Spiik. Sg Acc: jalggadav, attr: jalggis,
-
-
-
-*russjkat # Odd-syllable test examples:*
-* *russjkat:* `russjkat+A+Sg+Nom`
-* *russjkadav:* `russjkat+A+Sg+Acc`
-* *russjkis:* `russjkat+A+Attr`
-* *russjkadabbo:* `russjkat+A+Der/Comp+A+Sg+Nom`
-
-
-
- LEXICON RIHTSOK  No attr, without CG and also without any vowelchanges. The lexicon gives no attribute, either because the adjective dosnºt have attr, because there is stemvowel change in attr that the lexicon canºt handle or because there are strange atrributes that donºt fit to any other lexicon (these attributes are hardcoded). Sg Acc: rihtsogav. 
-
-
-*rihtsok # Odd-syllable test examples:*
-* *rihtsok:* `rihtsok+A+Sg+Nom`
-* *rihtsogav:* `rihtsok+A+Sg+Acc`
-* *rihtsogabbo:* `rihtsok+A+Der/Comp+A+Sg+Nom`
-
-
-
-exception lexicons for odd-syll
-
- LEXICON IENNILS  no comparatives, attr same as pred.
-
-
-*ieŋŋils # Odd-syllable test examples:*
-* *ieŋŋils:* `ieŋŋils+A+Sg+Nom`
-* *ieŋŋilsav:* `ieŋŋils+A+Sg+Acc`
-
-
- LEXICON RÁDAS   Presently only used for "rádas". This word has special consonant gradation d>dd. Attr same as pred. Sg Acc: ráddasav, Attr: rádas. Consonant gradation.
-
-
-*rádas # Odd-syllable test examples:*
-* *rádas:* `rádas+A+Sg+Nom`
-* *ráddasav:* `rádas+A+Sg+Acc`
-* *rádas:* `rádas+A+Attr`
-* *ráda:* `rádas+A+Attr` (Eng. # from LEXATTR)
-* *ráddasabbo:* `rádas+A+Der/Comp+A+Sg+Nom`
-
-
- LEXICON LUOBES   Err/Orth lexicon! Does the same as TJIEGOS only e>a instead of usuall e>á, must be some err/orth. Sg Acc: luohpasav, Attr: luobes. Consonant gradation. NO Attr, must be hardcoded
-
-
-
-
-
-
- LEXICON LÅSSÅT  Two attr, two comp. As f3. in Spiik. So far the only word i this lexicon i "låssåt", because both låssis and låsså are attr and comparative is both låsep(hybrid?) and låssådabbo.
-
-
-*låssåt # Odd-syllable test examples:*
-* *låssåt:* `låssåt+A+Sg+Nom`
-* *låssådav:* `låssåt+A+Sg+Acc`
-* *låssis:* `låssåt+A+Attr`
-* *låsså:* `låssåt+A+Attr`
-* *låssådabbo:* `låssåt+A+Der/Comp+A+Sg+Nom`
-* *låsep:* `låssåt+A+Der/Comp+A+Sg+Nom`
-
- LEXICON STUORAK   Only for stuorak. It hase two attributes. Has even-syllable comparison: stuoráp and stuorámus.Sg Acc: stuoragav, attr: stuor and stuorra. This might be a -k derivation of adjective stuorre attr stuor(ra). The comparison is thus based on the original adjective and thus it naturally is an even syll comparison.
-
-
-*stuorak # Odd-syllable test examples:*
-* *stuorak:* `stuorak+A+Sg+Nom`
-* *stuoragav:* `stuorak+A+Sg+Acc`
-* *stuorra:* `stuorak+A+Attr`
-* *stuor:* `stuorak+A+Attr`
-* *stuoráp:* `stuorak+A+Der/Comp+A+Sg+Nom`
-
-
- LEXICON ALLAK  Adjs on -ak, attr.on -a. Have both gasep/gaggagabbo and alep/allagabbo as comparatives. As d. in Spiik. So far only the adjectives "allak" and "gassak" go to this lexicon.
-
-
-*gassak # Odd-syllable test examples:*
-* *gassak:* `gassak+A+Sg+Nom`
-* *gassagav:* `gassak+A+Sg+Acc`
-* *gassa:* `gassak+A+Attr`
-* *gassagabbo:* `gassak+A+Der/Comp+A+Sg+Nom`
-* *gasep:* `gassak+A+Der/Comp+A+Sg+Nom`
-
- LEXICON GÅBDDÅK   Adjs on -åk, attr. on -å. Has even-syllable comparison: gåbdep and gåbdemus. So far "gåbddåk" is the only word in this lexicon. As d2. in Spiik. Sg Acc: gåbddågav, Attr: gåbddå.
-
-
-
-*gåbddåk # Odd-syllable test examples:*
-* *gåbddåk:* `gåbddåk+A+Sg+Nom`
-* *gåbddågav:* `gåbddåk+A+Sg+Acc`
-* *gåbddå:* `gåbddåk+A+Attr`
-* *gåbdep:* `gåbddåk+A+Der/Comp+A+Sg+Nom`
-
-
-
-
-Inherent comparatives and superlatives
-
- LEXICON NUORTTALABBO    Inherent comparatives, gives both comp and superl. Most of the words are the compared forms of -el(a) words, like nuorttal, lullel.
-
-
-
-
-
-*guddnelabbo # Even-syllable test examples:*
-* *guddnelabbo:* `guddnelabbo+A+Gram/Comp+Sg+Nom`
-* *guddnelamos:* `guddnelabbo+A+Der/Superl+A+Sg+Nom`
-* *guddnelap:* `guddnelabbo+A+Gram/Comp+Attr`
-* *guddnelup:* `guddnelabbo+A+Gram/Comp+Attr`
-
- LEXICON GASSKALAMOS    Inherent superlatives, gives onlys superl. Words that are lexicalized in their superlative forms. 
-
-
-
-
-
-
-
-
-*ájtodamos # Even-syllable test examples:*
-* *ájtodamos:* `ájtodamos+A+Gram/Superl+Sg+Nom`
-
-
-## Contracted stems
-
- LEXICON SÁDNES   Attr same as pred. Sg Acc: sáddnáv, Attr: sádnes.
-
-
-*hávres # Contracted test examples:*
-* *hávres:* `hávres+A+Sg+Nom`
-* *hávrráv:* `hávres+A+Sg+Acc`
-* *hávres:* `hávres+A+Attr`
-* *hávrráp:* `hávres+A+Der/Comp+A+Sg+Nom`
-
-
-
- LEXICON GOAVSOS   Attr same as pred. Sg Acc: goaksuv, Attr: goavsos.(goavsos is so far the only word in this lexicon)
-
-
-*goavsos # Contracted test examples:*
-* *goavsos:* `goavsos+A+Sg+Nom`
-* *goaksuv:* `goavsos+A+Sg+Acc`
-* *goaksusav:* `goavsos+A+Sg+Acc` (Eng. # From lexicon TJIEGOS)
-* *goavsos:* `goavsos+A+Attr`
-* *goaksup:* `goavsos+A+Der/Comp+A+Sg+Nom`
-* *goaksusabbo:* `goavsos+A+Der/Comp+A+Sg+Nom` (Eng. # from lexicon TJIEGOS)
-
- LEXICON SUVRES   Sg Acc: suvrráv, Attr: suvra.
-
-
-*suvres # Contracted test examples:*
-* *suvres:* `suvres+A+Sg+Nom`
-* *suvrráv:* `suvres+A+Sg+Acc`
-* *suvrrásav:* `suvres+A+Sg+Acc` (Eng. # From lexicon SJÆVNNJAT)
-* *suvra:* `suvres+A+Attr`
-* *suvrráp:* `suvres+A+Der/Comp+A+Sg+Nom`
-* *suvrrásabbo:* `suvres+A+Der/Comp+A+Sg+Nom` (Eng. # from LINES)
-
- LEXICON GÅLMAKTES   Attr same as pred. without cg but with vowel changes. Sg Acc: gålmaktáv, Attr: gålmaktes. VIEKSES makes odd-syll same thing. 
-
-
-
-----
-
-
-# Comparation
-
- LEXICON BU/MUS   comparison for even-syll adjectives. Also derivates diminutive and adverbs from the comparisions.
-
-
- LEXICON ABBO/AMOS   comparison for odd-syll adjectives.  Also derivates diminutive and adverbs from the comparisions.
-
-
-
-
-
-
-
- LEXICON BUStem  Comparative even-syll, case and attr.
-
- LEXICON ABBO  Comparative odd-syll, get case and attr. With the dialect differences "-ubbo" and "-æbbo".
-
-
-## Superlative
-
- LEXICON BUOREMUS  Superlative even-syll, get attr and nom case.
-
-
- LEXICON AMOS  Superlative odd-syll, get case and attr. With the dialect differences "-umos" and "-æmos".
-
-
-
-
-Comparative and Superlative sub-lexica
-
- LEXICON CompSup-EVEN 
-
- LEXICON CompSup-EVENWEAKSTEM  
-
-
-
-
-
-
- LEXICON ATTR   Sends attributes to
-
-
- LEXICON ATTR_PrsPrc   Attr without -vuohta derivation.
-
-
-
-## Derivation of adjectives
-
- LEXICON DenominalAdjsV1  ! even noun stems are sent here
-
- LEXICON DenominalAdjsV1_1  ! even noun stems without grade alternation are sent here
-
- LEXICON DenominalAdjsV2  ! even noun stems are sent here. -asj derivation
-
-
- LEXICON DenominalAdjsKINO  ! unassimilated nouns are sent here
-
-
- LEXICON DenominalAdjsODD   ! gives derivation -ahtes
-
- LEXICON DenominalAdjsContr 
-
-Derivations to adjectives, hardcoded in adjectives stems file
-
-
- LEXICON DIEHTEMAHTES  ! odd syllable For hardcoded -ahtes words.
-
-
- LEXICON LÁGÁSJ 
-
- LEXICON BÁJNUK  ! hardcoded denominal derivations, latus has changed from o>u, a>a, e>á (Bájnno>bájnuk, juolgge>juolgák, giella>gielak.  Attr same as pred, no comp in this lexicon. 
-
- LEXICON TSÅHPÅK  ! hardcoded denominal derivations latus has changed from o>u, a>a, e>á AND -GIS attr. Attr same as pred is err/orth taged. no comp in this lexicon. 
-
-
- LEXICON GIEVLEK  ! hardcoded derivations, not same as BÁJNUK since latus has unexpected vowel. Latus hasn't changed o>u, a>a, e>á. Goes directly to BÁJNUK, only made to sort these different kinds of derivations. Many of these may be derivated from verbs or other adjectives.
-
-
-
- LEXICON SJERVAK  ! hardcoded derivations, not same as TSÅHPÅK since latus has unexpected vowel. Latus hasn't changed o>u, a>a, e>á. Goes directly to TSÅHPÅK, only made to sort these different kinds of derivations. Many of these may be derivated from verbs or other adjectives.
-
-
- LEXICON DIBME  ! even and contracted
-
-
- LEXICON LIS  ! Handlernomen på -is?
-
-
- LEXICON Ahkásasj  ! lexicalized and denominal -asj derivations
-
-
- LEXICON STÁVVALIS  ! Must be "stávvalis" in bot pred and attr, as "guovddelis". OK& Kintel 2012: stávval attr stávvalis this is err/orth taged, also as second compound, this is err/orth taged. No comparison.
-
-
-
-
-Derivations to adjectives, continuation lexicon not for hardcoded adjectives
-
-
-
-
- LEXICON AHTES  ! odd syllable, only a continuation lexicon for words that are not in adjectives stems. Just as DIEHTEMAHTES, only with the +A tag that adjectives already get i stems file.
-
-
- LEXICON AHKES   
-
-
-
- LEXICON AGAdj  ! denominal derivations go here, attr same as pred, no comp in this lexicon
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/adjectives.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/adjectives.lexc)</small>
-# Continuation lexicons for abbreviations
-
-## Lexica for adding tags and periods
-
-## The sublexica
-
-### Continuation lexicons for abbrs both with and witout final period
-
-
- * **LEXICON ab-noun   **
-
- * **LEXICON ab-adj   **
-
- * **LEXICON ab-adv   **
-
- * **LEXICON ab-num   **
-
-### Lexicons without final period
-
- * **LEXICON ab-nodot-noun   **  The bulk
-
- * **LEXICON ab-nodot-adj   **
-
- * **LEXICON ab-nodot-adv   **
-
- * **LEXICON ab-nodot-num   **
-
-### Lexicons with final period
-
- * **LEXICON ab-dot-noun   **  This is the lexicon for abbrs that must have a period.
-
- * **LEXICON ab-dot-adj   **  This is the lexicon for abbrs that must have a period.
-
- * **LEXICON ab-dot-adv   **  This is the lexicon for abbrs that must have a period.
-
- * **LEXICON ab-dot-num   **  This is the lexicon for abbrs that must have a period.
-
- * **LEXICON ab-dot-cc   **
-
-
-
-
-
- * **LEXICON ab-dot-verb   **
-
- * **LEXICON ab-nodot-verb   **
-
-
- * **LEXICON ab-dot-IVprfprc   **
-
-
- * **LEXICON nodot-attrnomaccgen-infl   **
-
- * **LEXICON nodot-attr-infl   **
-
- * **LEXICON nodot-nomaccgen-infl   **
-
-
- * **LEXICON dot-attrnomaccgen-infl   **
-
- * **LEXICON dot-attr   **
-
- * **LEXICON dot-nomaccgen-infl   **
-
-
- * **LEXICON DOT   ** - Adds the dot to dotted abbreviations.
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/abbreviations.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/abbreviations.lexc)</small>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- * **LEXICON ARABICCOMPOUNDS**  ! arabic as first part, 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- * **LEXICON ARABICCASES**  adds +Arab
-
- * **LEXICON ARABICCASE**  adds +Arab
-
- * **LEXICON ARABICCASE0**  adds +Arab
-
-
- * **LEXICON DIGITCASES**  to distinguish between 0 and oblique
-
- * **LEXICON DIGITCASE0**
-
-
-
-
-
-
-
-+Num:   ROMNUMTAGOBL ;
-
-
-
-
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/numerals.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/numerals.lexc)</small>
-# Symbol affixes
-
-
-
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/symbols.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/symbols.lexc)</small>
-
-
 
 
 
@@ -7465,9 +7674,6 @@ The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
 
 
 
-sme mojonjálmmiid
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/adverbs.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/adverbs.lexc)</small>
 
 
 
@@ -7480,172 +7686,35 @@ sme mojonjálmmiid
 
 
 
- * **LEXICON Noun  ** dividing in NounNoPx, NounPx (with a P.Px.add flag)  and NounPxKin (with a P.Nom3Px.add flag)
 
 
 
 
 
+At some points we will need the genitives, for
+approximate numbers. Here they are.
 
-LOAN
-LOAN
-LOAN
-LOAN SWE altar
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/nouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/nouns.lexc)</small>
-# File containing North Saami abbreviations 
-
-## Lexica for adding tags and periods
-
-Splitting in 4 + 1 groups, because of the preprocessor
-
- * **LEXICON Abbreviation-smj **
- 1. The ITRAB ;	   lexicon (intransitive abbrs)
- 1. The TRNUMAB ;  lexicon (abbrs trans wrt. numberals)
- 1. The TRAB ;	   lexicon (transitive abbrs)
- 1. The NOAB ;	   lexicon (not really abbrs)
- 1. The NUMNOAB ;  lexicon (not behaving as abbr before num)
-
-
-## The abbreviation lexicon itself
-
-
-
- * **LEXICON ITRAB ** are intransitive abbreviations, A.S. etc.
-
-
-
-
- * **LEXICON NOAB ** du, gen, jur
-
-This class contains homonyms, which are both intransitive
-abbreviations and normal words. The abbreviation usage
-is less common and thus only the occurences in the middle of
-the sentnece (when next word has small letters) can be 
-considered as true cases.
-
-
-
-
-
- * **LEXICON TRNUMAB ** contains abbreviations who are transitive in front of numerals 
-
-For abbrs for which numerals are complements, but other
-words not necessarily are. This group treats arabic numerals as
-if it were transitive but letters as if it were intransitive.
-
-
-
-
-
-
-
- * **LEXICON TRAB ** contains transitive abbreviations
-
-This lexicon is for abbrs that always have a constituent following it.
-
-
-
- * **LEXICON NUMNOAB ** su, dii
-
-This class contains homonyms, which are both abbrs for 
-which numerals are complements and normal words. The abbreviation usage
-is less common and thus only the occurences in the middle of
-the sentence can be considered as true cases.
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/smj-abbreviations.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/smj-abbreviations.lexc)</small>
-
-
-
-
-
-vájnno
-vájnno
-vájnno
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/adjectives.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/adjectives.lexc)</small>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Reciprocal pronouns as multiword expression
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+avta
+guovte
+gålmå
+nielje
+vidá
+gudá
+gietja
+gávtse
+avtse
+låge
+lågenanavta
+lågenanguovte
 
 
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/pronouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/pronouns.lexc)</small>
+<small>This (part of) documentation was generated from [../src/transcriptions/clock-from-old-infra.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/transcriptions/clock-from-old-infra.lexc)</small>
+
+
+We describe here how abbreviations in Lule Sami are read out, e.g.
+for text-to-speech systems.
 
 
 
@@ -7660,9 +7729,24 @@ Reciprocal pronouns as multiword expression
 
 
 
+
+Miscellaneous symbols
+
+Smileys
+
+Emojies
+
+
+* Clause boundary symbols
+
+
+* Single punctuation marks
+
+
+* Paired punctuation marks
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/compounding.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/compounding.lexc)</small>
+<small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-abbrevs2text.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/transcriptions/transcriptor-abbrevs2text.lexc)</small>
 
 This is still a dummy file.
 
@@ -7724,54 +7808,6 @@ This is still a dummy file.
 
 
 
-At some points we will need the genitives, for
-approximate numbers. Here they are.
-
-avta
-guovte
-gålmå
-nielje
-vidá
-gudá
-gietja
-gávtse
-avtse
-låge
-lågenanavta
-lågenanguovte
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/transcriptions/clock-from-old-infra.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/transcriptions/clock-from-old-infra.lexc)</small>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -7798,42 +7834,6 @@ lågenanguovte
 
 * * *
 <small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-numbers-digit2text.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
-
-
-We describe here how abbreviations in Lule Sami are read out, e.g.
-for text-to-speech systems.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Miscellaneous symbols
-
-Smileys
-
-Emojies
-
-
-* Clause boundary symbols
-
-
-* Single punctuation marks
-
-
-* Paired punctuation marks
-
-* * *
-<small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-abbrevs2text.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/transcriptions/transcriptor-abbrevs2text.lexc)</small>
 L U L E   S A A M I   G R A M M A R   C H E C K E R
 
 
