@@ -1303,6 +1303,8 @@ Splitting in 4 + 1 groups, because of the preprocessor
 
 
 
+
+
  * **LEXICON NOAB ** du, gen, jur
 
 This class contains homonyms, which are both intransitive
@@ -1330,6 +1332,8 @@ if it were transitive but letters as if it were intransitive.
  * **LEXICON TRAB ** contains transitive abbreviations
 
 This lexicon is for abbrs that always have a constituent following it.
+
+
 
 
 
