@@ -1266,190 +1266,899 @@
 
 
 
- * **LEXICON Noun  ** dividing in NounNoPx, NounPx (with a P.Px.add flag)  and NounPxKin (with a P.Nom3Px.add flag)
-
-
-
-
-
-
-LOAN
-LOAN
-LOAN
-LOAN SWE altar
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/nouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/nouns.lexc)</small>
-# File containing North Saami abbreviations 
-
-## Lexica for adding tags and periods
-
-Splitting in 4 + 1 groups, because of the preprocessor
-
- * **LEXICON Abbreviation-smj **
- 1. The ITRAB ;	   lexicon (intransitive abbrs)
- 1. The TRNUMAB ;  lexicon (abbrs trans wrt. numberals)
- 1. The TRAB ;	   lexicon (transitive abbrs)
- 1. The NOAB ;	   lexicon (not really abbrs)
- 1. The NUMNOAB ;  lexicon (not behaving as abbr before num)
-
-
-## The abbreviation lexicon itself
-
-
-
- * **LEXICON ITRAB ** are intransitive abbreviations, A.S. etc.
-
-
-
-
-
-
- * **LEXICON NOAB ** du, gen, jur
-
-This class contains homonyms, which are both intransitive
-abbreviations and normal words. The abbreviation usage
-is less common and thus only the occurences in the middle of
-the sentnece (when next word has small letters) can be 
-considered as true cases.
-
-
-
-
-
- * **LEXICON TRNUMAB ** contains abbreviations who are transitive in front of numerals 
-
-For abbrs for which numerals are complements, but other
-words not necessarily are. This group treats arabic numerals as
-if it were transitive but letters as if it were intransitive.
-
-
-
-
-
-
-
- * **LEXICON TRAB ** contains transitive abbreviations
-
-This lexicon is for abbrs that always have a constituent following it.
-
-
-
-
-
- * **LEXICON NUMNOAB ** su, dii
-
-This class contains homonyms, which are both abbrs for 
-which numerals are complements and normal words. The abbreviation usage
-is less common and thus only the occurences in the middle of
-the sentence can be considered as true cases.
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/smj-abbreviations.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/smj-abbreviations.lexc)</small>
-
-
-
-
-
-
-
-
-
-
-
-sme mojonjálmmiid
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/adverbs.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/adverbs.lexc)</small>
-
-
-
-
-
-vájnno
-vájnno
-vájnno
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/adjectives.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/adjectives.lexc)</small>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Reciprocal pronouns as multiword expression
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/pronouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/pronouns.lexc)</small>
+<small>This (part of) documentation was generated from [../src/fst/compounding.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/compounding.lexc)</small>
+# Lule Sámi morphological analyser
+
+ Definitions for Multichar_Symbols
+
+Tags for POS
+
+ * **+N** = Noun
+ * **+A** = Adjective
+ * **+Adv** = Adverb
+ * **+V** = Verb
+ * **+Pron** = Pronouns
+ * **+CS** = Subjunction
+ * **+CC** = Conjunction
+ * **+Adp** = Adposition
+ * **+Po** = Postposition
+ * **+Pr** = Preposition
+ * **+Interj** = Interjection
+ * **+Pcle** = Particle
+ * **+Num** = Numeral
+ * **+TODO** = Code for items that have not been modeled yet
+ * **+Dyn** = Code dynamic acronyms
+
+Tags for sub-POS
+
+ * **+Prop** = Propernouns
+ * **+ACR** = Acronym
+
+Pronoun subtypes
+
+ * **+Pers** = Personal pronoun
+ * **+Dem** = Demonstrative pronoun
+ * **+Interr** = Interrogative pronoun
+ * **+Refl** = reflexive pronoun
+ * **+Recipr** = reciprocal pronoun
+ * **+Rel** = relative pronoun
+ * **+Indef** = indefinite pronoun
+ * **+Coll** = collective numerals
+ * **+Arab** = arabic numerals
+ * **+Rom** = remertall
+
+## Error tags
+
+All Err-tags must have normative form as lemma except Err/Lex
+
+ * **+Err/Orth** = Substandard. An ungrammatical, non-normative form of normative lemma.
+ * **+Err/Lex** = No normative lemma
+ * **+Err/Cmp** = No normative compound, often wrong first part of cmp (in other case than nom or gen, or adv og pronoun)
+ * **+Err/Der** = Lemmas that break with regular derivation rules, both morphologically and semantically
+ * **+Err/Infl** = Lemmas that break with normative inflection rules, often used with morphological changes
+ * **+Err/MissingSpace** = indicates that there is a missing space, causing an orthographic error. Used for "goadedagi", when it should be "goade dagi"
+ * **+Err/Hyph** = when there is a hyphen where none should have been
+ * **+Err/SpaceCmp** = used for compounds written apart - only retained in the HFST Grammar Checker disambiguation analyser
+
+
+## Usage restriction tags
+
+ * **+Use/Marg**  Marginal, but normative lemmas. Not in speller.
+ * **+Use/-Spell**  Excluded from speller
+ * **+Use/-PLX**  Excluded from PLX speller
+ * **+Use/-PMatch**  Do not include in fst's made for hfst-pmatch
+ * **+Use/SpellNoSugg**  Recognized, but not suggested in speller
+ * **+Use/Circ**  Circular path
+ * **+Use/CircN**  Circular number path
+ * **+Use/Ped**  Remove from pedagogical speller
+ * **+Use/NG**  Do not generate, only for Oahpa and MT. In speller.
+ * **+Use/MT** Generate for MT only, for restricting analyses needed
+ * **+Use/NGminip** Not for miniparadigm in VD dicts
+ * **+Use/NotDNorm**  For words without formal normalization. Divvun suggest that this shouldn't be normative.
+ * **+Use/DNorm**  For words without formal normalization.  Divvun suggest that this should be normative. Included in speller.                      
+ * **+Use/PMatch** 
+ * **+Use/Derrog**  Derrogatory word. Recognized, but not suggested in speller, same as SpellNoSugg
+ * **+Use/GC** only retained in the HFST Grammar Checker disambiguation analyser
+ * **+Use/-GC** never retained in the HFST Grammar Checker disambiguation analyser
+
+## Dialect and Area tags
+ * **+Area/SE** - Used in Sweden only
+ * **+Area/NO** - Used in Norway only
+ * **+Dial/N** Used in the northern areas.  Some might say that
+these words are sme-words, but they are used by lulesamis in
+the northern part of the dialect area. Words like "válmas"
+ * **+Dial/S** Used in the southern areas
+ * **+Dial/SH** Short forms
+
+## Compounding tags
+
+The tags are of the following form:
+* **+CmpNP/xxx** - Normative (N), Position (P), ie. the tag describes what
+position the tagged word can be in in a compound
+* **+CmpN/xxx**  - Normative (N) **form** ie. the tag describes what
+form the tagged word should use when making compounds
+* **+Cmp/xxx**   - Descriptive compounding tags, ie. tags that*describes*
+what form a word actually is using in a compound
+
+### Normative/prescriptive compounding tags
+
+These govern compound behaviour for normative tools like the speller, ie. what a compound **SHOULD BE**.
+
+The first part of the component may be ..
+ * **+CmpN/Sg** = Singular
+ * **+CmpN/SgN** = Singular Nominative
+ * **+CmpN/SgG** = Singular Genitive
+ * **+CmpN/PlG** = Plural Genitive
+ * **+CmpN/Attr** = Attributive
+
+This part of the component can ..
+
+ * +CmpNP/All - ... be in all positions, **default**, this tag does not have to be written
+ * +CmpNP/First - ... only be first part in a compound or alone
+ * +CmpNP/Pref - ... only **first** part in a compound, NEVER alone
+ * +CmpNP/Last - ... only be last part in a compound or alone
+ * +CmpNP/Suff - ... only **last** part in a compound, NEVER alone
+ * +CmpNP/None - ... not take part in compounds
+ * +CmpNP/Only - ... only be part of a compound, i.e. can never
+be used alone, but can appear in any position
+
+The second part of the compound may require that the previous (left part) is (and thus overrides the regular CmpN tags):
+
+ * +CmpN/SgLeft  Singular to the left
+ * +CmpN/SgNomLeft  Singular nominative to the left
+ * +CmpN/SgGenLeft  Singular genitive to the left
+ * +CmpN/PlGenLeft  Plural genitive to the left
+
+But these tags can again be overriden by the first word in a compound, if this part of the compound is tagged with a def tag:
+
+ * **+CmpN/Def**  Left override
+ * **+CmpN/DefSgGen**  Overrides left tag, requires SgGen form
+ * **+CmpN/DefPlGen**  Overrides left tag, requires PlGen form
+
+## Descriptive compounding tags
+Tags for compound analysis - this is what a compound actually is.
+Some of these tags are also used in combination with the
+above normative tags to actually enforce compound restrictions in the fst.
+
+ * **+Cmp/Sg**  Singular
+ * **+Cmp/SgNom**  Singular Nominative
+ * **+Cmp/SgGen**  Singular Genitive
+ * **+Cmp/PlGen**  Plural Genitiv
+ * **+Cmp/PlNom**  Plural Nominative
+ * **+Cmp/Attr**  Attribute
+ * **+Cmp/Sh**  testing ShCmp
+ * **+Cmp/Long**  Long for om SgNom when short form is default, tjåhkaNIBMEbievddegirjje and bierjjeDAHKAiehket
+ * **+Cmp/Unass**  Unassimiled as first part of Cmp, e.g. telegram- in stead for telegrámma-
+ * **+Cmp**  Dynamic compound - this tag should always be part of a dynamic compound.
+It is important for Apertium, and useful in other cases as well.
+ * **+Cmp/SplitR**  This is a split compound with the other part to the right:
+"Arbeids- og inkluderingsdepartementet" => Arbeids- = +Cmp/SplitR
+ * **+Cmp/SplitL**  This is a split compound with the other part to the left
++Cmp/Hyph  +Cmp/Hyph      Compound with (optional) hyphen, heavily weighted
++Cmp/OblHyph  +Cmp/OblHyph   Obligatory hyphen, not as badly weighed as +Cmp/Hyph
+
+
+# Inflectional Tags
+## Tags for Case and Number Inflection
+
+ *  **+Sg** = Singular number
+ *  **+Du** = Dual number
+ *  **+Pl** = Plural number
+ *  **+Ess** = Essive case
+ *  **+Nom** = Nominative case
+ *  **+Gen** = Genitive case
+ *  **+Acc** = Accusative case
+ *  **+Ill** = Illative case
+ *  **+Loc** = Locative case
+ *  **+Com** = Comitative case
+ *  **+Ine** = Inesive case
+ *  **+Ela** = Elative case
+ *  **+Par** = Partitive case
+ *  **+Abe** = Abessive case
+
+## Possessive tags
+
+ * **+PxSg1** possessive suffix singular first person
+ * **+PxSg2** possessive suffix singular second person
+ * **+PxSg3** possessive suffix singular third person
+ * **+PxDu1** possessive suffix dual first person
+ * **+PxDu2** possessive suffix dual second person
+ * **+PxDu3** possessive suffix dual third person
+ * **+PxPl1** possessive suffix plural first person
+ * **+PxPl2** possessive suffix plural second person
+ * **+PxPl3** possessive suffix plural plural person
+
+## Adjective specific tags
+ * +Attr Attribute
+ * +Card
+ * +Ord  CHECK THIS! In closed-sme there are +Ord entries without circ. tag
+
+## Verbal inflection
+ * +Ind Indicative mood
+ * +Prs Present tense
+ * +Prt Past tense
+ * +Pot Potensial mood
+ * +Cond conditional mood
+ * +Imprt Imperative mood
+ * +Sg1 singular first person
+ * +Sg2 singular second person
+ * +Sg3 singular third person
+ * +Du1 dual first person
+ * +Du2 dual second person
+ * +Du3 dual third person
+ * +Pl1 plural first person
+ * +Pl2 plural second person
+ * +Pl3 plural plural person
+ * +Inf infinitive
+ * +Ger  gerundium
+ * +ConNeg = the main verb form used with negation verb. Like *bårå* in *Iv bårå guolev*.
+ * +Neg  negation verb
+ * +ImprtII  second imperative mood
+ * +PrsPrc  present participle
+ * +PrfPrc  past participle
+ * +Sup  supinum
+ * +VGen verb genitive
+ * +VAbess verb abessive
+ * +Actio Actio
+
+## Other tags
+ * +ABBR
+ * +Symbol = independent symbols in the text stream, like £, €, ©
+ * +ACR
+ * +CLB
+ * +PUNCT
+ * +LEFT
+ * +RIGHT
+ * **+CLBfinal**  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
+ * ^GUESSNOUNROOT
+ * +TV !
+ * +IV !  Transitivity tags
+ * **+G3** Grade 2-3 for homonymies with grade 1-2, +N+G3
+ * **+G7** Grade 3, no consonant gradation, +N+G7
+ * +Multi  Multiword phrase tag
+ * +Guess  for the name guesser
+ * +NomAg Actor Noun From Verb - Nomen Agentis
+
+
+## Lexeme disambiguation = homonym tags
+ * **+Hom1**:  Homonymy
+ * **+Hom2**:  Homonymy
+
+
+## Stem variant tags
+ * +v1 - variant 1
+ * +v2 - variant 2
+ * +v3 - variant 3
+ * +v4 - variant 4
+ * +v5 - variant 5
+
+
+### Question and Focus particles:
+ * +Qst
+ * +Clt
+ * +Cltl
+ * +Foc  These two are only found in SMJ - do we need them?
+ * +Foc/ge
+ * +Foc/gen
+ * +Foc/ga
+ * +Foc/Neg-k
+ * +Foc/Pos-k
+
+### Other tags
+ * **+MWE**  multi word expressions, goes to abbr
+ * **+Sh**  Short form
+ * **+Gram/Comp** = Inherent comp, lexicalized derivation 
+ * **+Gram/Superl** = Inherent superl, lexicalized derivation 
+ * **+Gram/Dimin** = Inherent diminutive, lexicalized derivation 
+ * **+Gram/NomAg** = Inherent Actor Noun From Verb - Nomen Agentis, lexicalized derivation 
+ * **+Gram/r** = Inherent -r derivation. guollit-guollár 
+ * **+Gram/NomAct** = Inherent Actio Noun From Verb - Nomen Actionis, lexicalized derivation 
+ * **+Gram/NomInstr** = Inherent Intsrumental noun From Verb, Nomen instrumentalis,lexicalized derivation 
+ * **+Gram/TAbbr**:  Transitive abbreviation (it needs an argument)
+ * **+Gram/NoAbbr**:  Intransitive abbreviations that are homonymous
+ * **+Gram/TNumAbbr**:  Transitive abbreviation if the following
+ * **+Gram/NumNoAbbr**:  Transitive abbreviations for which numerals
+ * **+Gram/TIAbbr**:  Both transitive and intransitive abbreviation
+ * **+Gram/IAbbr**:  Intransitive abbreviation (it takes no argument)
+ * **+Gram/3syll**:  trisyllabic verbs
+ * **+Gram/SentInit**:  copula verb le-
+
+## Semantic tags to help disambiguation & syntactic analysis
+
+These tags should always be located just before the POS tag.
+
+ * **+Sem/Act** = Activity; cleaning, work, occupation, project, photosynthesis
+ * **+Sem/Adr** = Webadr
+ * **+Sem/Amount** = Amount; pile, amount of lynx, amount of food, one fifteenth, ten percent
+ * **+Sem/Ani** = Animate; dog, reindeer, teddy bear,ndragon, lice
+ * **+Sem/Ani-fish** = Fish
+ * **+Sem/Aniprod** = Animal Product; sweat, reindeer skin, lice egg, blood for making dumplings, pee
+ * **+Sem/Body** = Bodypart; ear, bone, ear canal, artificial leg, mustache, nervous system
+ * **+Sem/Body-abstr** = Non-physical body part; Sjel, ånd, reason, soul, voice, eyesight, conscience
+ * **+Sem/Build** = Building; house, museum, Sámi tent, nest, sandcastle
+ * **+Sem/Build-room** = Room in a building, typically place to be
+ * **+Sem/Buildpart** = Part of building; closet, room, door, balcony, pool, office
+ * **+Sem/Cat** = Category; name, subjunction, suffix, password, existential sentence
+ * **+Sem/Clth** = Clothes/Clothing; shirt, hat, theater costume, shawl, seatbelt, diaper
+ * **+Sem/Clth-jewl** = Jewelery and similar; watch, sunglasses, ring, necklace, crown
+ * **+Sem/Clthpart** = Part of clothes; knapp, søm, pocket (OBS! Ctain-abstr), bottom part of an article of clothing, upper part of trousers, seam, button
+ * **+Sem/Ctain** = Container; suitcase, terrarium, closet, container, gas tank
+ * **+Sem/Ctain-abstr** = Abstract container; bank account, fund, account, loan fund, pot, bank account
+ * **+Sem/Ctain-clth** = Eks; lomme/pocket
+ * **+Sem/Curr** = Currency; not money, euro, US dollar, denar, Danish crown, currency
+ * **+Sem/Dance** = Dance; swing, rumba, ballet, belly dance, war dance
+ * **+Sem/Date** = Date
+ * **+Sem/Dir** = Direction; GPS course, stock exchange price, graph, tendency, starboard
+ * **+Sem/Domain** = Domain like politics, reindeerherding (a system of actions), anthropology, punk rock, biology, linguistics, medicine
+ * **+Sem/Drink** = Drink; tea, beer, UHT milk, soda, communion wine
+ * **+Sem/Dummytag** = Default tag for uncategorized nouns
+ * **+Sem/Edu** = Educational event; skiing high school skiing academy, course, music lesson, lesson, master
+ * **+Sem/Event** = Event; wedding, meeting, competition, election, festival
+ * **+Sem/Feat** = Feature; Árvu, age difference, homosexuality, femininity, identity, congruence
+ * **+Sem/Feat-measr** = Measurable feature; radius, diameter, volume, circumference, perimeter, frequency
+ * **+Sem/Feat-phys** = Physiological feature; size, color, height, shape, weight, horsepower
+ * **+Sem/Feat-psych** = Psychological feature; authority, nature, childishness, creativity, arrogance
+ * **+Sem/Fem** = Female name
+ * **+Sem/Food** = Food; bread, vegetarian food, flour, tobacco, salt
+ * **+Sem/Food-med** = Medicine; birth-control pill, asthma medicine, medicine, penicillin, vaccine
+ * **+Sem/Fruit** = Fruit and fruit-like edibles
+ * **+Sem/Furn** = Furniture; throne, chair, table, altar, trampoline
+ * **+Sem/Game** = Game; biŋgo bingo, TV game, flipper, paintball, chess
+ * **+Sem/Geom** = Geometrical object; triangle, triangle, tetrahedron, asymptote, star
+ * **+Sem/Group** = Animal or Human Group; family, herd, group, indigenous people, delegation
+ * **+Sem/Hum** = Human
+ * **+Sem/Hum-abstr** = Human abstract
+ * **+Sem/ID** = ID
+ * **+Sem/Ideol** = Ideology; nomadism, buddhism, feminism, christianity, fanaticism
+ * **+Sem/Lang** = Language; South Sámi, mother tongue, Maori, Yiddish, second language
+ * **+Sem/Mal** = Male name
+ * **+Sem/Mat** = Material for producing things; paper, steel, wood, leather, wool
+ * **+Sem/Measr** = Measure; unit of volume, quarter meter, hour, minus degree, wátta watt
+ * **+Sem/Money** = Has to do with money; wages, not Curr(ency), treasure, belongings, debt, food price, bill, pension
+ * **+Sem/Obj** = Object; thing, cup, thing, toy, painting
+ * **+Sem/Obj-catch** = 
+ * **+Sem/Obj-clo** = Cloth; carpet, flag, curtain, silk sheets, napkin
+ * **+Sem/Obj-cogn** = 
+ * **+Sem/Obj-el** = (Electrical) machine or apparatus; player, lamp, TV, radio, oven
+ * **+Sem/Obj-ling** = Object with something written on it
+ * **+Sem/Obj-play** = Play object
+ * **+Sem/Obj-rope** = flexible ropelike object; barbed wire, thread, rope, cable, dental floss
+ * **+Sem/Obj-surfc** = Surface object; blackboard, drawing paper, canvas, board (for playing board games), (money) bill
+ * **+Sem/Org** = Organisation; newspaper, supreme court, company, museum, administration
+ * **+Sem/Part** = Feature, part of something; half, part, percent, rest, tenth
+ * **+Sem/Perc-cogn** = Cloth
+ * **+Sem/Perc-emo** = Emotional perception; fear, feeling of identity, empathy, sadness, working motivation
+ * **+Sem/Perc-phys** = Physical perception; shoulder pain, gass smell, sleep (during the night), need of sleep, hunger
+ * **+Sem/Perc-psych** = Psychic perception
+ * **+Sem/Plant** = Plant; lichen, plant, cucumber, bluebell, poisonous mushroom
+ * **+Sem/Plantpart** = Plant part; twig, leaf, root, seed, pine trunk
+ * **+Sem/Play** = Play
+ * **+Sem/Plc** = Place; world, nature, airport, workplace, fireplace
+ * **+Sem/Plc-abstr** = Abstract place; bachelor level, job market, third place, Troms website, address
+ * **+Sem/Plc-elevate** = Elevated place; mountain, peak, mountain top, scree, volcano
+ * **+Sem/Plc-line** = Place limitations; national border, border, finish line, stop line, equator
+ * **+Sem/Plc-water** = Water; river, lake, polar sea, sea, well
+ * **+Sem/Pos** = Position (as in social position job); 50% position, presidency, fixed position, kindergarten place, role in society
+ * **+Sem/Process** = Process
+ * **+Sem/Prod** = Product
+ * **+Sem/Prod-audio** = Audio product; yoik, roar, Beatles song, Bible psalm, blues
+ * **+Sem/Prod-cogn** = Cognition product; thought, decision, knowledge, lack of understanding, requirement
+ * **+Sem/Prod-ling** = Linguistic product; message, question, agreement, translation, criticism
+ * **+Sem/Prod-vis** = Visual product; picture, film, TV series, documentary, art
+ * **+Sem/Rel** = Relation; relation, dependency, subordination, analogy, equivalence
+ * **+Sem/Route** = Route-like place; street, path, corridor, bridge, winter path
+ * **+Sem/Rule** = Rule or convention; cultural tradition, abortion law, EU rule, law of cosines, fair play
+ * **+Sem/Semcon** = Abstract semantic concept; result, objective, reason, alternative, case
+ * **+Sem/Sign** = Sign (e.g. numbers, punctuation); ID number, ČSV letters, quotation mark, hieroglyph, symbol
+ * **+Sem/Sport** = Sport; table tennis, judo, motor cross, ice hockey, floorball
+ * **+Sem/State** = State; hurry, captivity, anarchy, biodiversity, chaos
+ * **+Sem/State-sick** = Illness; allergy, cold, autism, dementia, somnambulism
+ * **+Sem/Substnc** = Substance; Water, sand, air, smoke, carbohydrate, vitamin, dust
+ * **+Sem/Sur** = Surname
+ * **+Sem/Symbol** = Symbol
+ * **+Sem/Time** = Time; áigi time, April, half an hour, Tuesday, deadline
+ * **+Sem/Time-clock** = Time
+ * **+Sem/Tool** = Prototypical tool for repairing things; axe, knife, fire striker, plastic hammer, wrench
+ * **+Sem/Tool-catch** = Tool used for catching; artificial fly, fishing net for cod, fishing rod, lasso used in wintertime, mouse trap
+ * **+Sem/Tool-clean** = Tool used for cleaning; broom, vegetable brush, toothbrush, cleaning equipment
+ * **+Sem/Tool-it** = Tool used in IT/tool within IT; IT infrastructure, analyzer, searching function, computer program, browser
+ * **+Sem/Tool-measr** = Tool used for measuring; barometer, hourglass, ruler, spirit level, scale
+ * **+Sem/Tool-music** = Musical instrument; shaman drum, guitar, violin, musical instrument, jaw harp
+ * **+Sem/Tool-write** = Writing tool; colored pen, pencil, chalk, paintbrush, paint
+ * **+Sem/Txt** = Written document; paper, book, letter, e-mail, song
+ * **+Sem/Veh** = Vehicle; car, boat, sled, vehicle, draft reindeer, bicycle
+ * **+Sem/Wpn** = Weapon; rifle, bow, sword, arrow, war axe
+ * **+Sem/Wthr** = The Weather or the state of ground; cloudy weather, wind, driving conditions, night sunlight, rain shower
+ * **+Sem/Year** = Year
+
+
+### Multiple Semantic tags:
+
+ * **+Sem/Ani_Group** = 
+ * **+Sem/Act_Clth** = 
+ * **+Sem/Act_Domain** = 
+ * **+Sem/Act_Domain_Measr** = 
+ * **+Sem/Act_Event** = 
+ * **+Sem/Act_Feat** = 
+ * **+Sem/Act_Feat-psych** = 
+ * **+Sem/Act_Fruit** = 
+ * **+Sem/Act_Group** = 
+ * **+Sem/Act_Hum** = 
+ * **+Sem/Act_Hum_Obj** = 
+ * **+Sem/Act_Money** = 
+ * **+Sem/Act_Obj** = 
+ * **+Sem/Act_Obj-play** = 
+ * **+Sem/Act_Org** = 
+ * **+Sem/Act_Perc-emo** = 
+ * **+Sem/Act_Plc** = A persons job is an activity, and a place as well
+ * **+Sem/Act_Prod-audio** = 
+ * **+Sem/Act_Prod-vis** = 
+ * **+Sem/Act_Route** = Activity and Route, ie johtolat
+ * **+Sem/Act_Semcon** = 
+ * **+Sem/Act_State** = 
+ * **+Sem/Act_Time** = 
+ * **+Sem/Act_Tool-it** = 
+ * **+Sem/Act_Txt** = 
+ * **+Sem/Amount_Build** = 
+ * **+Sem/Amount_Semcon** = 
+ * **+Sem/Ani_Body** = 
+ * **+Sem/Ani_Body-abstr_Hum** = 
+ * **+Sem/Ani_Build** = 
+ * **+Sem/Ani_Build_Hum_Txt** = 
+ * **+Sem/Ani_Buildpart** = 
+ * **+Sem/Ani_Cat** = 
+ * **+Sem/Ani_Clth** = 
+ * **+Sem/Ani_Feat_Hum** = 
+ * **+Sem/Ani_Feat_Plant** = 
+ * **+Sem/Ani_Food** = 
+ * **+Sem/Ani_Group_Hum** = 
+ * **+Sem/Ani_Group_Prod-vis** = 
+ * **+Sem/Ani_Hum** = 
+ * **+Sem/Ani_Hum_Plc** = 
+ * **+Sem/Ani_Hum_Time** = 
+ * **+Sem/Ani_Obj** = 
+ * **+Sem/Ani_Org** = 
+ * **+Sem/Ani_Plc** = 
+ * **+Sem/Ani_Plc_Txt** = 
+ * **+Sem/Ani_State** = 
+ * **+Sem/Ani_Substnc** = 
+ * **+Sem/Ani_Time** = 
+ * **+Sem/Ani_Veh** = 
+ * **+Sem/Aniprod_Hum** = 
+ * **+Sem/Aniprod_Mat** = 
+ * **+Sem/Aniprod_Obj** = 
+ * **+Sem/Aniprod_Obj-clo** = 
+ * **+Sem/Aniprod_Perc-phys** = 
+ * **+Sem/Aniprod_Plant** = 
+ * **+Sem/Aniprod_Plc** = 
+ * **+Sem/Aniprod_Plc_Route** = 
+ * **+Sem/Aniprod_Substnc** = 
+ * **+Sem/Aniprod_Substnc_Wthr** = 
+ * **+Sem/Body-abstr_Feat-psych** = 
+ * **+Sem/Body-abstr_Prod-audio_Semcon** = 
+ * **+Sem/Body_Body-abstr** = 
+ * **+Sem/Body_Buildpart** = 
+ * **+Sem/Body_Clth** = 
+ * **+Sem/Body_Clthpart** = 
+ * **+Sem/Body_Food** = 
+ * **+Sem/Body_Fruit** = 
+ * **+Sem/Body_Group_Hum** = 
+ * **+Sem/Body_Group_Hum_Time** = 
+ * **+Sem/Body_Hum** = 
+ * **+Sem/Body_Mat** = 
+ * **+Sem/Body_Measr** = 
+ * **+Sem/Body_Obj** = 
+ * **+Sem/Body_Obj_Tool-catch** = 
+ * **+Sem/Body_Org** = 
+ * **+Sem/Body_Part** = 
+ * **+Sem/Body_Plc** = 
+ * **+Sem/Body_Plc-elevate** = 
+ * **+Sem/Body_Plc_State** = 
+ * **+Sem/Body_State** = 
+ * **+Sem/Body_Time** = 
+ * **+Sem/Build-room_Furn** = 
+ * **+Sem/Build-room_Org** = 
+ * **+Sem/Build_Build-room** = 
+ * **+Sem/Build_Buildpart** = 
+ * **+Sem/Build_Clthpart** = 
+ * **+Sem/Build_Edu_Org** = 
+ * **+Sem/Build_Event_Org** = 
+ * **+Sem/Build_Obj** = 
+ * **+Sem/Build_Org** = 
+ * **+Sem/Build_Plc** = 
+ * **+Sem/Build_Route** = 
+ * **+Sem/Build_Tool** = 
+ * **+Sem/Build_Veh** = 
+ * **+Sem/Buildpart_Ctain_Obj** = 
+ * **+Sem/Buildpart_Obj** = 
+ * **+Sem/Buildpart_Obj_Plc** = 
+ * **+Sem/Buildpart_Part** = 
+ * **+Sem/Buildpart_Plc** = 
+ * **+Sem/Buildpart_Prod-audio** = 
+ * **+Sem/Cat_Edu** = 
+ * **+Sem/Cat_Feat** = 
+ * **+Sem/Cat_Feat-psych_Plc** = 
+ * **+Sem/Cat_Group_Hum** = 
+ * **+Sem/Cat_Hum** = 
+ * **+Sem/Cat_Measr** = 
+ * **+Sem/Cat_Obj** = 
+ * **+Sem/Cat_Plantpart** = 
+ * **+Sem/Cat_Plantpart_Semcon** = 
+ * **+Sem/Cat_Txt** = 
+ * **+Sem/Clth-jewl_Curr** = 
+ * **+Sem/Clth-jewl_Fruit** = 
+ * **+Sem/Clth-jewl_Money** = 
+ * **+Sem/Clth-jewl_Obj** = 
+ * **+Sem/Clth-jewl_Org** = 
+ * **+Sem/Clth-jewl_Plant** = 
+ * **+Sem/Clth_Hum** = 
+ * **+Sem/Clth_Obj** = 
+ * **+Sem/Clth_Part** = 
+ * **+Sem/Clth_Sur** = 
+ * **+Sem/Clthpart_Plc** = 
+ * **+Sem/Ctain-abstr_Org** = 
+ * **+Sem/Ctain-clth_Plant** = 
+ * **+Sem/Ctain-clth_Veh** = 
+ * **+Sem/Ctain_Feat-phys** = 
+ * **+Sem/Ctain_Furn** = 
+ * **+Sem/Ctain_Obj-surfc** = 
+ * **+Sem/Ctain_Plc** = 
+ * **+Sem/Ctain_Txt** = 
+ * **+Sem/Ctain_Tool** = 
+ * **+Sem/Ctain_Tool-measr** = 
+ * **+Sem/Curr_Org** = 
+ * **+Sem/Dance_Org** = 
+ * **+Sem/Dance_Prod-audio** = 
+ * **+Sem/Dir_Geom** = 
+ * **+Sem/Domain_Feat** = 
+ * **+Sem/Domain_Feat-phys** = 
+ * **+Sem/Domain_Food-med** = 
+ * **+Sem/Domain_Hum** = 
+ * **+Sem/Domain_Ideol** = 
+ * **+Sem/Domain_Obj** = 
+ * **+Sem/Domain_Org** = 
+ * **+Sem/Domain_Org_Plc-abstr** = 
+ * **+Sem/Domain_Perc-emo** = 
+ * **+Sem/Domain_Prod-audio** = 
+ * **+Sem/Domain_State-sick** = 
+ * **+Sem/Domain_Txt** = 
+ * **+Sem/Domain_Edu** = 
+ * **+Sem/Drink_Plant** = 
+ * **+Sem/Drink_Plc** = 
+ * **+Sem/Drink_Plc_Substnc** = 
+ * **+Sem/Edu_Event** = 
+ * **+Sem/Edu_Geom** = 
+ * **+Sem/Edu_Geom_Plc-line** = 
+ * **+Sem/Edu_Group_Hum** = 
+ * **+Sem/Edu_Hum** = 
+ * **+Sem/Edu_Mat** = 
+ * **+Sem/Edu_Org** = 
+ * **+Sem/Edu_Txt** = 
+ * **+Sem/Event_Food** = 
+ * **+Sem/Event_Hum** = 
+ * **+Sem/Event_Org** = 
+ * **+Sem/Event_Plc** = 
+ * **+Sem/Event_Plc-elevate** = 
+ * **+Sem/Event_Time** = 
+ * **+Sem/Feat-measr_Plc** = 
+ * **+Sem/Feat-phys_Food_State** = 
+ * **+Sem/Feat-phys_Hum** = 
+ * **+Sem/Feat-phys_Obj** = 
+ * **+Sem/Feat-phys_Plc-line** = 
+ * **+Sem/Feat-phys_Tool-write** = 
+ * **+Sem/Feat-phys_Veh** = 
+ * **+Sem/Feat-phys_Wthr** = 
+ * **+Sem/Feat-psych_Hum** = 
+ * **+Sem/Feat-psych_Plc** = 
+ * **+Sem/Feat_Hum** = 
+ * **+Sem/Feat_Plant** = 
+ * **+Sem/Food_Part** = 
+ * **+Sem/Food_Perc-phys** = 
+ * **+Sem/Food_Plant** = 
+ * **+Sem/Food_Substnc** = 
+ * **+Sem/Food_Time** = 
+ * **+Sem/Fruit_Sport** = 
+ * **+Sem/Furn_Ctain-abstr** = 
+ * **+Sem/Game_Obj-play** = 
+ * **+Sem/Geom_Obj** = 
+ * **+Sem/Geom_Plc** = 
+ * **+Sem/Group_Hum** = 
+ * **+Sem/Group_Hum_Org** = 
+ * **+Sem/Group_Hum_Plc** = 
+ * **+Sem/Group_Hum_Prod-vis** = 
+ * **+Sem/Group_Org** = 
+ * **+Sem/Group_Plc** = 
+ * **+Sem/Group_Prod-vis_Txt_Veh** = 
+ * **+Sem/Group_Sign** = 
+ * **+Sem/Group_State** = 
+ * **+Sem/Group_Txt** = 
+ * **+Sem/Hum-abstr** = 
+ * **+Sem/Hum_Lang** = 
+ * **+Sem/Hum_Lang_Plc** = 
+ * **+Sem/Hum_Lang_Time** = 
+ * **+Sem/Hum_Mat_Tool** = 
+ * **+Sem/Hum_Money** = 
+ * **+Sem/Hum_Obj** = 
+ * **+Sem/Hum_Obj_Plc** = 
+ * **+Sem/Hum_Org** = 
+ * **+Sem/Hum_Part** = 
+ * **+Sem/Hum_Plant** = 
+ * **+Sem/Hum_Plc** = 
+ * **+Sem/Hum_State** = 
+ * **+Sem/Hum_Tool** = 
+ * **+Sem/Hum_Tool-catch** = 
+ * **+Sem/Hum_Veh** = 
+ * **+Sem/Hum_Wthr** = 
+ * **+Sem/Lang_Tool** = 
+ * **+Sem/Lang_Tool-catch** = 
+ * **+Sem/Mat_Obj** = 
+ * **+Sem/Mat_Part** = 
+ * **+Sem/Mat_Plant** = 
+ * **+Sem/Mat_Plantpart** = 
+ * **+Sem/Mat_Plc** = 
+ * **+Sem/Mat_Tool** = 
+ * **+Sem/Mat_Tool-catch** = 
+ * **+Sem/Mat_Txt** = 
+ * **+Sem/Measr_Plc_Time** = 
+ * **+Sem/Measr_Sign** = 
+ * **+Sem/Measr_Time** = 
+ * **+Sem/Money_Obj** = 
+ * **+Sem/Money_Plc** = 
+ * **+Sem/Money_Txt** = 
+ * **+Sem/Obj-ling_Obj-surfc** = 
+ * **+Sem/Obj-play** = 
+ * **+Sem/Obj-play_Sport** = 
+ * **+Sem/Obj_Part_Sign** = 
+ * **+Sem/Obj_Perc-emo** = 
+ * **+Sem/Obj_Plantpart** = 
+ * **+Sem/Obj_Plc** = 
+ * **+Sem/Obj_Plc-abstr** = 
+ * **+Sem/Obj_Plc_Semcon** = 
+ * **+Sem/Obj_Process** = 
+ * **+Sem/Obj_Prod-audio** = 
+ * **+Sem/Obj_Semcon** = 
+ * **+Sem/Obj_Sign** = 
+ * **+Sem/Obj_State** = 
+ * **+Sem/Obj_Tool-music** = 
+ * **+Sem/Obj_Tool-write** = 
+ * **+Sem/Obj_Txt** = 
+ * **+Sem/Obj_Veh** = 
+ * **+Sem/Org_Play** = 
+ * **+Sem/Org_Plc** = 
+ * **+Sem/Org_Prod-audio** = 
+ * **+Sem/Org_Prod-cogn** = 
+ * **+Sem/Org_Prod-vis** = 
+ * **+Sem/Org_Rule** = 
+ * **+Sem/Org_State** = 
+ * **+Sem/Org_Txt** = 
+ * **+Sem/Org_Veh** = 
+ * **+Sem/Part_Plc** = 
+ * **+Sem/Part_Plc_Prod-audio** = 
+ * **+Sem/Part_Prod-cogn** = 
+ * **+Sem/Part_Substnc** = 
+ * **+Sem/Part_Txt** = 
+ * **+Sem/Perc-emo_Plc** = 
+ * **+Sem/Perc-emo_State** = 
+ * **+Sem/Perc-emo_Wthr** = 
+ * **+Sem/Plant_Plantpart** = 
+ * **+Sem/Plant_Plc** = 
+ * **+Sem/Plant_Time_Wthr** = 
+ * **+Sem/Plant_Tool** = 
+ * **+Sem/Plant_Tool-measr** = 
+ * **+Sem/Plc-abstr_Rel_State** = 
+ * **+Sem/Plc-abstr_Route** = 
+ * **+Sem/Plc-abstr_Rule** = 
+ * **+Sem/Plc-abstr_State** = 
+ * **+Sem/Plc-abstr_Txt** = 
+ * **+Sem/Plc_Pos** = 
+ * **+Sem/Plc_Route** = 
+ * **+Sem/Plc_State** = 
+ * **+Sem/Plc_Substnc** = 
+ * **+Sem/Plc_Substnc_Wthr** = 
+ * **+Sem/Plc_Time** = 
+ * **+Sem/Plc_Time_Wthr** = 
+ * **+Sem/Plc_Tool-catch** = 
+ * **+Sem/Plc_Txt** = 
+ * **+Sem/Plc_Wthr** = 
+ * **+Sem/Prod-audio_Prod-vis** = 
+ * **+Sem/Prod-audio_Substnc** = 
+ * **+Sem/Prod-audio_Txt** = 
+ * **+Sem/Prod-cogn_Txt** = 
+ * **+Sem/Route_State** = 
+ * **+Sem/Route_Txt** = 
+ * **+Sem/Rule_Txt** = 
+ * **+Sem/Semcon_State** = 
+ * **+Sem/Semcon_Txt** = 
+ * **+Sem/State-sick_Substnc** = 
+ * **+Sem/State_Veh** = 
+ * **+Sem/Substnc_Wthr** = 
+ * **+Sem/Time_Wthr** = 
+ * **+Sem/Tool-music** = 
+
+
+Not sure which section this goes in: (before POS)
+
+ * +Allegro from LEXICON GOADE-IU-
+
+
+## Derivation tags
+
+The following tags are used to describe the dynamic derivational system in
+Lule Sámi as encoded in this lexical description. The tags are classified
+according to a positional system, where each tag can be in one and only one
+position, and can only combine with tags from an earlier / lower position.
+This is done to avoid possible overgeneration in the derivational system.
+
+ * **+Der1 +Der2 +Der3 +Der4 +Der5**:    - positional tags, preceeds the actual der tag
+### Der#1 tags - tags in first position
+ * +Der/Caus VV - previously Der/ahtte
+ * +Der/PassD VV - dallat passive
+ * +Der/PassL VV - long passive láhpeduvvat
+ * +Der/PassS VV - Short passive láhpput
+ * +Der/adda VV
+ * +Der/ahtja VV - only odd syll verbs take this der
+ * +Der/ahttjá VV - only odd syll verbs take this der
+ * +Der/alla VV
+ * +Der/asste VV
+ * +Der/d VV
+ * +Der/dalla VV
+ * +Der/dasste VV
+ * +Der/l VV
+ * +Der/ladda VV
+ * +Der/lahtte VV
+ * +Der/lasste VV
+ * +Der/st VV
+ * +Der/stahtte VV
+ * +Der/stalla VV
+ * +Der/stasste VV
+ * +Der/tj VV
+ * +Der/u/a/åd VV
+ * +Der/r VN  - NomAg contracted verbs - guollit-guollár
+ * +Der/NomInstr VN  - even verbs:fierrot-fierun
+ * +Der/Dimin NN
+ * +Der/gusj Prop -I
+
+ * +Der/lasj NN
+ * +Der/k NN / NA
+ * +Der/Car NA - abessive. Only even/contr. Morén-Duolljá:caritive 
+ * +Der/ferjak NA   Adjectival -k der (from ?)
+ * +Der/lasj NA - dont know, guess it Tronds, ojes, I see - is this ok?jes 2 Der:lasj Noun on 1472 Adj on 2040
+ * +Der/n NA. Denominal -n adjective (similar t -k adj)
+ * +Der/sasj NA
+ * +Der/segak NA Adj. -k der from?
+ * +Der/Comp AA
+ * +Der/Superl AA     
+
+
+### Der#2 tags - tags in second position
+ * +Der/dahtte VV
+ * +Der/duhtte VV
+ * +Der/ahkes VA
+ * +Der/NomAct VN
+### Der#3 tags - tags in third position
+ * +Der/duvva VV
+ * +Der/InchL VV (previosuly Der/goahte)
+ * +Der/mus VN
+ * +Der/NomAg VN -diddje
+ * +Der/dahka VN
+ * +Der/NomAct VN   Realised in two different ways.
+ *       This realisation is Der3. Outcommented
+ *       to not define the tag twice, but kept
+ *       here for documentation purposes.
+ * +Der/lis VA
+### Der#4 tags - tags in fourth position
+ * +Der/ahtes NA ! Abessive. Even verbs>NomAct>ahtes and odd-syll nouns. Morén-Duolljá:Caritive
+### Der#5 tags - tags in fifth position
+ * +Der/AAdv NA AAdv, previously +Der/at
+ * +Der/vuota NA AN (tag harmonization: previosuly Der/vuohta)
+### Der#other tags - tags that can be in any position
+
+There are no such tags in SMJ, but for symmetry and code coherence with SME
+the class is still kept.
+
+
+
+
+## Tags for originating language
+The following tags are used to guide conversion to IPA: loan words
+and foreign names are usually pronounced (approximately) as in the
+originating (majority) language. Instead of trying to identify the
+correct pronunciation based on phonotactics (orthotactics actually),
+we tag all words that can't be correctly transcribed using the SME
+transcriber with source language codes. Once tagged, it is possible
+to split the lexical transducer in smaller ones according to langu-
+age, and apply different IPA conversion to each of them.
+The principle of tagging is that we only tag to the extent needed,
+and following a priority:
+1. any untagged word is pronounced with SME orthographic conventions
+1. NNO and NOB have identical pronunciation, NNO is only used if
+different in spelling from NOB
+1. SWE has mostly the same pronunciation as NOB, and is only used
+if different in spelling from NOB
+1. Occasionally even SME (the default) may be tagged, to block other
+languages from being specified, mainly during semi-automatic
+language tagging sessions
+All in all, we want to get as much correctly transcribed to IPA
+with as little work as possible. On the other hand, if more words
+are tagged than strictly needed, this should pose no problem as
+long as the IPA conversion is correct - at least some words will
+get the same pronunciation whether read as SME or NOB/NNO/SWE.
+ * +OLang/SME - North Sámi
+ * +OLang/SMA - South Sámi
+ * +OLang/FIN - Finnish
+ * +OLang/SWE - Swedish
+ * +OLang/NOB - Norw. bokmål
+ * +OLang/NNO - Norw. nynorsk
+ * +OLang/ENG - English
+ * +OLang/RUS - Russian
+ * +OLang/UND - Undefined
+
+
+
+
+
+
+## Flag diacritics
+
+We have manually optimised the structure of our lexicon using following
+flag diacritics to restrict morhpological combinatorics - only allow compounds
+with verbs if the verb is further derived into a noun again:
+
+|               Flag diacritic | Explanation
+|               :------------- |:-----------
+ |  @P.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
+ |  @D.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
+ |  @C.NeedNoun@ | (Dis)allow compounds with verbs unless nominalised
+
+
+|               Flag diacritic | Explanation
+|               :------------- |:-----------
+ |  @P.Pmatch.Loc@ | Used on multi-token analyses; tell hfst-tokenise/pmatch where in the form/analysis the token should be split.
+ |  @P.Pmatch.Backtrack@ | Used on single-token analyses; tell hfst-tokenise/pmatch to backtrack by reanalysing the substrings before and after this point in the form (to find combinations of shorter analyses that would otherwise be missed)
+
+
+|               Flag diacritic | Explanation
+|               :------------- |:-----------
+ | @D.ErrOrth.ON@ | To be written
+ | @R.ErrOrth.ON@ | To be written
+ | @C.ErrOrth@ | To be written
+ | @P.ErrOrth.ON@ | To be written
+
+For languages that allow compounding, the following flag diacritics are needed
+to control position-based compounding restrictions for nominals. Their use is
+handled automatically if combined with +CmpN/xxx tags. If not used, they will
+do no harm.
+ |  @P.CmpFrst.FALSE@ | Require that words tagged as such only appear first
+ |  @D.CmpPref.TRUE@ | Block such words from entering ENDLEX
+ |  @P.CmpPref.FALSE@ | Block these words from making further compounds
+ |  @D.CmpLast.TRUE@ | Block such words from entering R
+ |  @D.CmpNone.TRUE@ | Combines with the next tag to prohibit compounding
+ |  @U.CmpNone.FALSE@ | Combines with the prev tag to prohibit compounding
+ |  @U.CmpNone.TRUE@ | Combines with the two previous ones to block compounding
+ |  @P.CmpOnly.TRUE@ | Sets a flag to indicate that the word has passed R
+ |  @D.CmpOnly.FALSE@ | Disallow words coming directly from root.
+ |  @U.CmpHyph.FALSE@ | Flag to control hyphenated compounds like proper nouns
+ |  @U.CmpHyph.TRUE@ | Flag to control hyphenated compounds like proper nouns
+ |  @C.CmpHyph@ | Flag to control hyphenated compounds like proper nouns
+Use the following flag diacritics to control downcasing of derived proper
+nouns (e.g. Finnish Pariisi -> pariisilainen). See e.g. North Sámi for how to use
+these flags. There exists a ready-made regex that will do the actual down-casing
+given the proper use of these flags.
+ |  @U.Cap.Obl@ | Disallow downcasing of names when not derived: Deatnu
+ |  @U.Cap.Opt@ | Allowing downcasing of derived names: deatnulasj.
+ |  @P.Px.add@ | Giving possibility for Px-suffixes (all except from Nom 3.p)
+ |  @R.Px.add@ | Requiring P.Px.add-flag for Px-suffixes (all except from Nom 3.p)
+ |  @P.Nom3Px.add@ |  Giving possibility for Px-suffixes Nom 3.p
+ |  @R.Nom3Px.add@ | Requiring P.Nom3Px.add flag for Px-suffixes Nom 3.p
+
+
+
+
+
+
+
+
+
+ * **LEXICON Acronym**
+
+
+
+ * **LEXICON ProperNoun**
+
+# Lexicon ENDLEX
+And this is the ENDLEX of everything:
+```
+ @D.CmpOnly.FALSE@@D.CmpPref.TRUE@@D.NeedNoun.ON@ # ;
+```
+The `@D.CmpOnly.FALSE@` flag diacritic is ued to disallow words tagged
+with +CmpNP/Only to end here.
+The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
+* * *
+<small>This (part of) documentation was generated from [../src/fst/root.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/root.lexc)</small>
 
 # Lule Sámi morphophonological rule set                    
 
@@ -2283,23 +2992,6 @@ should be kept that way. Look out for conflicts in the compilation
 process, and resolve them as they appear!
 * * *
 <small>This (part of) documentation was generated from [../src/fst/phonology.twolc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/phonology.twolc)</small>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/compounding.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/compounding.lexc)</small>
 
 
 # Sublexica for Noun
@@ -3567,850 +4259,6 @@ Derived stems
 
 * * *
 <small>This (part of) documentation was generated from [../src/fst/affixes/nouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/nouns.lexc)</small>
-# Continuation lexicons for abbreviations
-
-## Lexica for adding tags and periods
-
-## The sublexica
-
-### Continuation lexicons for abbrs both with and witout final period
-
-
- * **LEXICON ab-noun   **
-
- * **LEXICON ab-adj   **
-
- * **LEXICON ab-adv   **
-
- * **LEXICON ab-num   **
-
-### Lexicons without final period
-
- * **LEXICON ab-nodot-noun   **  The bulk
-
- * **LEXICON ab-nodot-adj   **
-
- * **LEXICON ab-nodot-adv   **
-
- * **LEXICON ab-nodot-num   **
-
-### Lexicons with final period
-
- * **LEXICON ab-dot-noun   **  This is the lexicon for abbrs that must have a period.
-
- * **LEXICON ab-dot-adj   **  This is the lexicon for abbrs that must have a period.
-
- * **LEXICON ab-dot-adv   **  This is the lexicon for abbrs that must have a period.
-
- * **LEXICON ab-dot-num   **  This is the lexicon for abbrs that must have a period.
-
- * **LEXICON ab-dot-cc   **
-
-
-
-
-
- * **LEXICON ab-dot-verb   **
-
- * **LEXICON ab-nodot-verb   **
-
-
- * **LEXICON ab-dot-IVprfprc   **
-
-
- * **LEXICON nodot-attrnomaccgen-infl   **
-
- * **LEXICON nodot-attr-infl   **
-
- * **LEXICON nodot-nomaccgen-infl   **
-
-
- * **LEXICON dot-attrnomaccgen-infl   **
-
- * **LEXICON dot-attr   **
-
- * **LEXICON dot-nomaccgen-infl   **
-
-
- * **LEXICON DOT   ** - Adds the dot to dotted abbreviations.
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/abbreviations.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/abbreviations.lexc)</small>
-# Symbol affixes
-
-
-
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/symbols.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/symbols.lexc)</small>
-
-
-# Sublexica for Adjective
-
-## Even-syllable stems
-
-
-
- LEXICON GIEVRRA  Adjectives with attribute in WeG and -s. As 1a in Spiik. Sg Acc: gievrav, Attr: gievras.
-
-
-
-*gárttje # Even-syllable test examples:*
-* *gárttje:* `gárttje+A+Sg+Nom`
-* *gártjev:* `gárttje+A+Sg+Acc`
-* *gártjes:* `gárttje+A+Attr`
-* *gártjep:* `gárttje+A+Der/Comp+A+Sg+Nom`
-
-
-
- LEXICON NUORRA   Adjectives with attribute same as pred. As 1b in Spiik. Sg Acc: nuorav, Attr: nuorra.
-
-
-*visská # Even-syllable test examples:*
-* *visská:* `visská+A+Sg+Nom`
-* *viskáv:* `visská+A+Sg+Acc`
-* *visská:* `visská+A+Attr`
-* *viskáp:* `visská+A+Der/Comp+A+Sg+Nom`
-
-
-
- LEXICON GALLJE   Adjectives on -e, the attribute is in WeG and e > a. As 1d in Spiik. Sg Acc: galjev, Attr: galja.
-
-
-*uhttse # Even-syllable test examples:*
-* *uhttse:* `uhttse+A+Sg+Nom`
-* *uhtsev:* `uhttse+A+Sg+Acc`
-* *uhtsa:* `uhttse+A+Attr`
-* *uhtses:* `uhttse+A+Attr` (Eng. # gets this attr from)
-* *uhtsep:* `uhttse+A+Der/Comp+A+Sg+Nom`
-
- LEXICON TJÁBBE   Adjectives on -e, the attribute is in WeG and e > a. Same as GALLJE only different adv derivation. Sg Acc: tjáppev, Attr: tjáppa.
-
-
-*njálgge # Even-syllable test examples:*
-* *njálgge:* `njálgge+A+Sg+Nom`
-* *njálgev:* `njálgge+A+Sg+Acc`
-* *njálga:* `njálgge+A+Attr`
-* *njálgep:* `njálgge+A+Der/Comp+A+Sg+Nom`
-
-
-
-
-
- LEXICON VILLDA   Adjectives with attribute same as pred, without CG. As 1b in Spiik. Sg Acc: nuorav, Attr: nuorra.
-
-
-*frisska # Even-syllable test examples:*
-* *frisska:* `frisska+A+Sg+Nom`
-* *frisskav:* `frisska+A+Sg+Acc`
-* *frisska:* `frisska+A+Attr`
-* *frisskap:* `frisska+A+Der/Comp+A+Sg+Nom`
-
- LEXICON HÁVSSKE   Adjectives with attribute -s, without WeG. As 1c in Spiik. Sg Acc: hávsskev, Attr: hávsskes.
-
-
-*hoallá # Even-syllable test examples:*
-* *hoallá:* `hoallá+A+Sg+Nom`
-* *hoalláv:* `hoallá+A+Sg+Acc`
-* *hoallás:* `hoallá+A+Attr`
-* *hoalláp:* `hoallá+A+Der/Comp+A+Sg+Nom`
-
- LEXICON TJUODDJE  Adjectives with attribute -is, without WeG. presently only "Tjuoddje" Sg Acc: tjuoddjev, Attr: tjuoddjis.
-
-
-
-*tjuoddje # Even-syllable test examples:*
-* *tjuoddje:* `tjuoddje+A+Sg+Nom`
-* *tjuoddjev:* `tjuoddje+A+Sg+Acc`
-* *tjuoddjis:* `tjuoddje+A+Attr`
-* *tjuoddjep:* `tjuoddje+A+Der/Comp+A+Sg+Nom`
-
-
-
-Pres.participles 
-
- LEXICON SÁVADAHTTE   Causative-participles. No attribute. No comparision. As 1e in Spiik. Sg Acc: sávadahttev. PrsPrc of causative verbs "uttrykker at handlingen lar seg gjøre eller er verdt å gjøre" (Kintel 1991).
-
-
-*vuojedahtte # Even-syllable test examples:*
-* *vuojedahtte:* `vuojedahtte+A+Sg+Nom`
-* *vuojedahttev:* `vuojedahtte+A+Sg+Acc`
-
- LEXICON JUHKKE   participles with -s attributive. No comparision As 1e in Spiik. Sg Acc: juhkkev, Attr: juhkkes. Spiik: presens particip har med den attributive formen på -s betydelsen "någon som är duktig i, snabb til att, begiven att utföra handlingen".
-
-
-*vuohttje # Even-syllable test examples:*
-* *vuohttje:* `vuohttje+A+Sg+Nom`
-* *vuohttjev:* `vuohttje+A+Sg+Acc`
-* *vuohttjes:* `vuohttje+A+Attr`
-
- LEXICON BÅRRE   participles without the -s attributive. As 1e in Spiik. Sg Acc: bårrev, Attr: bårre. Spiik: presens particip har med den attributiva formen utan -s betydelsen ºdem  som utför handlingenº.
-
-
-*ednabårre # Even-syllable test examples:*
-* *ednabårre:* `ednabårre+A+Sg+Nom`
-* *ednabårrev:* `ednabårre+A+Sg+Acc`
-* *ednabårre:* `ednabårre+A+Attr`
-
-
-
-Test data:
-
-
-Loan words lexicas
-
-
-###  Correctly assimilated loanwords, derived from real noun.
-
-
- LEXICON METÅVDÅLASJ  LOAN! Foreign -isk adjectives adapted in updated normative way. To smj ending -alasj, adjective is truly derived from a noun. Mekanisk-mekanihkka-mekanihkalasj, instead of mekánalasj that goes to MEKÁNALASJ_BADASS. Pred and attr are both -alasj. Attr same as pred. With comparatives. 
-
-
-
- LEXICON METÅVDÅLASJ_CMP_INFL 
-
-
-
-
-
-*kapitalismalasj # Even-syllable test examples:*
-* *kapitalismalasj:* `kapitalismalasj+A+Sg+Nom`
-* *kapitalismalattjav:* `kapitalismalasj+A+Sg+Acc`
-* *kapitalismalasj:* `kapitalismalasj+A+Attr`
-* *kapitalismalabbo:* `kapitalismalasj+A+Der/Comp+A+Sg+Nom`
-
-
- LEXICON MEKANIHKA_MEKANIJKA_LASJ  LOAN! Same type of adjectives as METÅVDÅLASJ, only for adjektives that become mekanihkalasj in norway and mekanijkalasj in sweden, because of differences mekanik vs mekanikk>mekanijkka vs mekanihkka.  Attr same as pred. With comparatives. 
-
-
-
- LEXICON IJJALASJ  Just lik  METÅVDÅLASJ only for words ending on ijjalasj/iddjalasj, so that we don't need a lot of Area and Err tags in stems file.
-
-
- LEXICON IJJALASJ_CMP_INFL 
-
-
-
- LEXICON OGIJJALASJ  Just like IJJALASJ only for words ending on ogijjalasj/ogiddjalasj, so that we don't need a lot of err tags in stems files. For words like "pedagogijjalasj" which also have "pedagåvgålasj" (not really a wrong derivation, but doesn't mean pedagogisk) and "pedagogalasj" err taged.  
-
-
- LEXICON OGIJJALASJ_CMP_INFL  
-
-
- LEXICON SJÅNÅLASJ_SJONAL  -sjonal/sjonell and -tional/tionel loanwords. Only for words that work as nouns, so that they are REAL dervations, as nasjonal-nasjåvnnå-nasjåvnålasj. NOT for words like "rasjonell", with no real noun. Words as "rasjonell>rasjonálla-rasjonálalasj" go to lexicon ÁLLA.  The fake derivation "nasjonálalasj" is err taged, so is the strange "nasjonálla/nasjunálla". 
-
-
- LEXICON SJÅNÅLASJ_SJONAL_CMP_INFL  
-
-
-
-
-
-*konstitusjåvnålasj # Even-syllable test examples:*
-* *nasjåvnålasj:* `nasjåvnålasj+A+Sg+Nom`
-* *nasjåvnålattjav:* `nasjåvnålasj+A+Sg+Acc`
-* *nasjåvnålasj:* `nasjåvnålasj+A+Attr`
-
-
-
- LEXICON SJÅNÅLASJ_SJONELL  -sjonal/sjonell and -tional/tionel loanwords. Only for words that work as nouns, so that they are REAL dervations, as nasjonal-nasjåvnnå-nasjåvnålasj. NOT for words like "rasjonell", with no real noun. Words as "rasjonell>rasjonálla-rasjonálalasj" go to lexicon ÁLLA.  The fake derivation "nasjonálalasj" is err taged, so is the strange "nasjonálla/nasjunálla". 
-
-
- LEXICON SJÅNÅLASJ_SJONELL_CMP_INFL  
-
-
-
-*konstitusjåvnålasj # Even-syllable test examples:*
-* *konstitusjåvnålasj:* `konstitusjåvnålasj+A+Sg+Nom`
-* *konstitusjåvnålattjav:* `konstitusjåvnålasj+A+Sg+Acc`
-* *konstitusjåvnålasj:* `konstitusjåvnålasj+A+Attr`
-
-
-###  Badly assimilated loanwords, some against norm others with no norm
-
- LEXICON MEKÁNALASJ_BADASS  LOAN! Wronly assimilated -lasj adjectives from SE/NO -isk. Looks derived but isn't since there is no real noun to be derived from. Like mekanisk-mekánalasj, but "mekádna" is no real noun! Like  METÅVDÅLASJ, but gives the Err/Der tag, so it's only for these wronly/non-derived loan adjectives. 
-
-
-
-
-
- LEXICON ARKTALASJ_CMP_INFL  Foreign -isk, that are not real derivations. Same as MEKÁNALASJ_BADASS, but no +Use/-Spell tag since ther is no "right" way to assimilate these. This is a question for GG. Adapted to smj by simply adding -alasj in place of -isk. These are not real derivations, but sitation borrowed loan adjectives. Only words without a noun base, like arktisk and syntetisk. Pred and attr are both -lasj. No comparatives. 
-
-
-
-
-*syntetalasj # Even-syllable test examples:*
-* *syntetalasj:* `syntetalasj+A+Sg+Nom`
-* *syntetalattjav:* `syntetalasj+A+Sg+Acc`
-* *syntetalasj:* `syntetalasj+A+Attr`
-
- LEXICON ORÁNSSJA  Loan adjectives, not -isk. Used without the -lasj. Adjectives with attribute same as pred. So far only for oránssja.
-
-
- LEXICON DEMONSTRATIJVA_LASJ_NO_NORM  Loan adjectives from norwegian/swedish (Not adjectives ending on -isk). Words like demonstrativ, transitiv, dupleks, informativ, analog, privat. Gives both "demonstratijvva" and "demonstratijvalasj". Two ways of adapting these adjectives are used, the adding of -lasj isn't okey, because that's a false derivation. But GG hasn't decided how these should be handled. Looks like noun instead of adjective when adapted without the -lasj ending.  Attr is in weak grad, used in strong grad ass pred even thou this seems a little bit odd "Værbba l transitijvva". 
-
-
-
-
- LEXICON DEMONSTRATIJVA_LASJ_CMP_INFL    
-
-
-
-
-
-
-
-*aktijvva # Even-syllable test examples:*
-* *aktijva:* `aktijvva+A+Attr`
-* *aktijvva:* `aktijvva+A+Sg+Nom`
-* *aktijvav:* `aktijvva+A+Sg+Acc`
-
-
-
-
-
-
- LEXICON ÁLA_LASJ_NO_NORM  Same as DEMONSTRATIJVA_LASJ_NO_NORM. Only for adjectives ending on -al. Words like digital,liberal, lokal.  Gives both "eksponentiálla" and "eksponentiálalasj". Different lexicon for these -al adjectives because of Err/Orth tags. OBS, "dialektal", is assimilated "dialevtalasj", and goes to lexicon  METÅVDÅLASJ.
-
-
- LEXICON ÁLA_LASJ_INFL_CMP 
-
-
-
-
-
- LEXICON ELLA_LASJ_NO_NORM  Loanwords, same as ÁLA_LASJ_NO_NORM  and  DEMONSTRANTIJVA_LASJ_NO_NORM. For NO and SE adjectives ending on -ell, eksperimentell, ideell, parallell. The short form is nom parallælla, attr, parallella The long form: paralellalasj, attr parallellalasj. Different lexicon for these -ell adjectives because of err/orth tags. OBS, "individuell", is assimilated "indivijdalasj", and goes to lexicon  METÅVDÅLASJ.
-
-
- LEXICON ELLA_LASJ_INFL_CMP  
-
-
-
-
-
- LEXICON ÁLLA-ÆLLA 
-
- LEXICON MEKÁNALASJ_CMP_INFL  Same as  METÅVDÅLASJ only without vuohta. 
-
-
-
-
-
-
-
-
-
-
-Inherent comparatives and superlatives lexica
-
- LEXICON OANEP   Inherent comparatives, gives comp and superl. There are two main groups of word here: Adjectives that are lexicalized in their comparative (and superlative) forms, like sisŋep, bárep. And Nouns that can be compared, like nuortap, gáttep, oarjep (some of these are compared from their noun lexicas and thus are found twice). Some entries are likely incorrect compared forms of other adjectives, like ådåp and ruvvap (more research needed).
-
-
-
-
-
-*lagáp # Even-syllable test examples:*
-* *lagáp:* `lagáp+A+Gram/Comp+Sg+Nom`
-* *lagámus:* `lagáp+A+Der/Superl+A+Sg+Nom`
-
-
- LEXICON TJAVGGÁMUS    Inherent superlatives, only gives superl. Some words are lexicalized in their superlative forms, like dájvvámus. Some are likely incorrect superlative forms, like tjábbámus (more research is needed)
-
-
-
-*dájvvámus # Even-syllable test examples:*
-* *dájvvámus:* `dájvvámus+A+Gram/Superl+Sg+Nom`
-
-4-syllable miscellanious stems
-
- LEXICON ÁRMMOGIS  Adjectives on -is, attribute same as pred. Odd-syllable comparison. As 2 in Spiik. Sg Acc: ármmogisáv, Attr: ármmogis. 
-
-
-*bahágis # Even-syllable test examples:*
-* *bahágis:* `bahágis+A+Sg+Nom`
-* *bahágisáv:* `bahágis+A+Sg+Acc`
-* *bahágis:* `bahágis+A+Attr`
-* *bahágabbo:* `bahágis+A+Der/Comp+A+Sg+Nom`
-
- LEXICON SÆHKÁLAK  Adjectives on -álak, attribute same as pred. Odd-syllable comparison. So far only for "sæhkálak".
-
-
-*sæhkálak # Even-syllable test examples:*
-* *sæhkálak:* `sæhkálak+A+Sg+Nom`
-* *sähkálak:* `sæhkálak+A+Sg+Nom`
-* *sæhkálagáv:* `sæhkálak+A+Sg+Acc`
-* *sähkálagáv:* `sæhkálak+A+Sg+Acc`
-* *sæhkálak:* `sæhkálak+A+Attr`
-* *sähkálak:* `sæhkálak+A+Attr`
-* *sæhkálabbo:* `sæhkálak+A+Der/Comp+A+Sg+Nom`
-* *sähkálabbo:* `sæhkálak+A+Der/Comp+A+Sg+Nom`
-
-
- LEXICON ÅLLAGSJ_CMP_INFL  Adjectives on -asj, attribute same as pred.  No comparatives. 2 in Spiik. Sg Acc: ållagattjav, Attr: ållagasj.
-
-
-*belulasj # Even-syllable test examples:*
-* *belulasj:* `belulasj+A+Sg+Nom`
-* *belulattjav:* `belulasj+A+Sg+Acc`
-* *belulasj:* `belulasj+A+Attr`
-
-
- LEXICON DÁRBULASJ_CMP_INFL  Adjectives on -asj, attribute same as pred. Odd-syllable comparison. Sg Acc: dárbulattjav, Attr: dárbulasj. Essive -attjan, -adtjan is subtaged. Err/Orth also -ahttja.  
-
-
-
-
-
-*dábálasj # Even-syllable test examples:*
-* *dábálasj:* `dábálasj+A+Sg+Nom`
-* *dábálattjav:* `dábálasj+A+Sg+Acc`
-* *dábálasj:* `dábálasj+A+Attr`
-* *dábális:* `dábálasj+A+Attr`
-* *dábálabbo:* `dábálasj+A+Der/Comp+A+Sg+Nom`
-
-
-
- LEXICON ASIDASJ_CMP_INFL  Adjectives on -asj, -is attr. Odd-syllable comparison. Sg Acc: asidattjav, Attr: asidis.
-
-
-*gågulasj # Even-syllable test examples:*
-* *gågulasj:* `gågulasj+A+Sg+Nom`
-* *gågulattjav:* `gågulasj+A+Sg+Acc`
-* *gågulis:* `gågulasj+A+Attr`
-* *gågulabbo:* `gågulasj+A+Der/Comp+A+Sg+Nom`
-
- LEXICON UDNODIBME  Adjectives on -dibme, attribute on -is. Odd-syllable comparison. Sg Acc: udnodimev, Attr: udnodis.
-
-
-*gælvodibme # Even-syllable test examples:*
-* *gælvodibme:* `gælvodibme+A+Sg+Nom`
-* *gälvodibme:* `gælvodibme+A+Sg+Nom`
-* *gælvodimev:* `gælvodibme+A+Sg+Acc`
-* *gälvodimev:* `gælvodibme+A+Sg+Acc`
-* *gælvodis:* `gælvodibme+A+Attr`
-* *gälvodis:* `gælvodibme+A+Attr`
-* *gælvodabbo:* `gælvodibme+A+Der/Comp+A+Sg+Nom`
-* *gälvodabbo:* `gælvodibme+A+Der/Comp+A+Sg+Nom`
-
- LEXICON TJALMEDIBME   Like UDNODIBME but no comparatives. Sg Acc: tjalmedimev, Attr: tjalmedis.
-
-
-*huvsodibme # Even-syllable test examples:*
-* *huvsodibme:* `huvsodibme+A+Sg+Nom`
-* *huvsodimev:* `huvsodibme+A+Sg+Acc`
-* *huvsodis:* `huvsodibme+A+Attr`
-
- LEXICON SUOLASIEHKE  -siehke. Sg Acc: suolasiegev, attr: suolasiek
-
-
-*hánessiehke # Even-syllable test examples:*
-* *hánessiehke:* `hánessiehke+A+Sg+Nom`
-* *hánessiegev:* `hánessiehke+A+Sg+Acc`
-* *hánessiek:* `hánessiehke+A+Attr`
-
-
-
-
-
-
-
-
-## Odd-syllable stems
-###  With CG Sorted by attr
-
-
- LEXICON TJIEGOS  Attr same as pred. For adjectives with -e in second syllable e>á: divtes>diktásav in StrG. As a. in Spiik.  Sg Acc: tjiehkusav, Attr: tjiegos. Consonant gradation. 
-
-
-*hánes # Odd-syllable test examples:*
-* *måskas:* `måskas+A+Sg+Nom`
-* *moasskasav:* `måskas+A+Sg+Acc`
-* *måskas:* `måskas+A+Attr`
-* *moasskasabbo:* `måskas+A+Der/Comp+A+Sg+Nom`
-* *bihtja:* `bihtja+A+Sg+Nom`
-* *bihttjagav:* `bihtja+A+Sg+Acc`
-* *bihtja:* `bihtja+A+Attr`
-* *bihttjagabbo:* `bihtja+A+Der/Comp+A+Sg+Nom`
-
- LEXICON LINES  Attr ending on -a. Adjektives ending on -es. Does same as TJIEGOS, but with attr -a.   As g. in Spiik.  lines, Sg Acc: lidnásav, attr: lidna. Consonant gradation.
-
-
-*lines # Odd-syllable test examples:*
-* *lines:* `lines+A+Sg+Nom`
-* *lidnásav:* `lines+A+Sg+Acc`
-* *lidna:* `lines+A+Attr`
-* *lidnásabbo:* `lines+A+Der/Comp+A+Sg+Nom`
-
-
- LEXICON GALMAS   Attr ending on -a or -å. Adjectives on -as, ås- and ás. As e. in Spiik. Sg Acc: galmmasav, attr: galmma, Consonant gradation.
-
-
-*njuoskas # Odd-syllable test examples:*
-* *njuoskas:* `njuoskas+A+Sg+Nom`
-* *njuosskasav:* `njuoskas+A+Sg+Acc`
-* *njuosska:* `njuoskas+A+Attr`
-* *njuosskasabbo:* `njuoskas+A+Der/Comp+A+Sg+Nom`
-
-
-
- LEXICON OAMES  Attr ending on -e. Adjectives on -es with attribute -e. As g2. in Spiik. Sg Acc: oabmásav, Attr: oabme. Consonant gradation.
-
-
-*goastes # Odd-syllable test examples:*
-* *goastes:* `goastes+A+Sg+Nom`
-* *goasstásav:* `goastes+A+Sg+Acc`
-* *goasste:* `goastes+A+Attr`
-* *goasstásabbo:* `goastes+A+Der/Comp+A+Sg+Nom`
-
-
- LEXICON SUOHKAT  Attr III -is, not suohkkadis but SUOHKKIS. With CG to attr, not from nom to Acc. Same as JALGGAT only with this CG. SUOHKKIS. Without CG between nom and acc. Adjectives on -at and -åt, with attribute III -is. As f. in Spiik. Sg Acc: suohkadav, attr: suohkkis,
-
-
-*rávvat # Odd-syllable test examples:*
-* *rávvat:* `rávvat+A+Sg+Nom`
-* *rávvadav:* `rávvat+A+Sg+Acc`
-* *rávvis:* `rávvat+A+Attr`
-* *rávvadabbo:* `rávvat+A+Der/Comp+A+Sg+Nom`
-
-
- LEXICON MÅJDÅS  Adjectives with no attr. With CG. Sg Acc: måjddåsav. If there is an attribute that dosn't fit to any lexicon it mus be hardcoded.
-
-
-*rávdes # Odd-syllable test examples:*
-* *rávdes:* `rávdes+A+Sg+Nom`
-* *rávddásav:* `rávdes+A+Sg+Acc`
-* *rávddásabbo:* `rávdes+A+Der/Comp+A+Sg+Nom`
-
-
-
-
-Without CG
-
- LEXICON VIEKSES  Attr same as pred. Without CG, but With vowel changes.  Sg Acc: væksásav, Attr: viekses. Like TJIEGOS only without the CG but with vowel changes. Mayby change this to a lexicon withput attr and then hardcode attr?
-
-
- LEXICON ALEK  Attr same as pred. Without CG, without any vowel changes. Like TJIEGOS only without the CG an vowelchanges. 
-
-
-
-*purpur # Odd-syllable test examples:*
-* *purpur:* `purpur+A+Sg+Nom`
-* *purpurav:* `purpur+A+Sg+Acc`
-* *purpur:* `purpur+A+Attr`
-* *purpurabbo:* `purpur+A+Der/Comp+A+Sg+Nom`
-
- LEXICON BASSTEL   Attr ening on -is. Without CG. Adjs on -et, -l, -r, sm om -k, -sj with attr -is and no consonant gradation. As b. in Spiik. Sg Acc: basstelav, Attr: basstelis. Many of these entries might be instances of derivations, like belak, deblak, and maybe also basstel, bargán.
-
-
-*goavrret # Odd-syllable test examples:*
-* *goavrret:* `goavrret+A+Sg+Nom`
-* *goavrredav:* `goavrret+A+Sg+Acc`
-* *goavrredis:* `goavrret+A+Attr`
-* *goavrredabbo:* `goavrret+A+Der/Comp+A+Sg+Nom`
-
- LEXICON MUTTÁK  Two attr enings -is and same as pred. Without CG. Adjs on -ák/-ak/-ek, two attr: -is and same as pred. As c. in Spiik. Sg Acc: muttágav, Attr: muttágis and mutták. These seem to be instances of the adjectival -k derivation. Unclear whether such derivation have different attr forms or not, and thats maybe why some of these derivations are found in BASSTEL lexicon.
-
-
-*bárvak # Odd-syllable test examples:*
-* *bárvak:* `bárvak+A+Sg+Nom`
-* *bárvagav:* `bárvak+A+Sg+Acc`
-* *bárvak:* `bárvak+A+Attr`
-* *bárvagis:* `bárvak+A+Attr`
-* *bárvagabbo:* `bárvak+A+Der/Comp+A+Sg+Nom`
-
-
- LEXICON JALGGAT  Attr III -is, not jalggadis but JALGGIS. Without CG.  Adjectives on -at, with attribute III -is. As f. in Spiik. Sg Acc: jalggadav, attr: jalggis,
-
-
-
-*russjkat # Odd-syllable test examples:*
-* *russjkat:* `russjkat+A+Sg+Nom`
-* *russjkadav:* `russjkat+A+Sg+Acc`
-* *russjkis:* `russjkat+A+Attr`
-* *russjkadabbo:* `russjkat+A+Der/Comp+A+Sg+Nom`
-
-
- LEXICON TJÅRGGÅT  Attr III -is, not tjårggådis but tjårggis. Without CG. Same as JALGGAT only for adjectives ending ot -åt. Adjectives on -åt, with attribute III -is. As f. in Spiik. Sg Acc: jalggadav, attr: jalggis,
-
-
-
-*russjkat # Odd-syllable test examples:*
-* *russjkat:* `russjkat+A+Sg+Nom`
-* *russjkadav:* `russjkat+A+Sg+Acc`
-* *russjkis:* `russjkat+A+Attr`
-* *russjkadabbo:* `russjkat+A+Der/Comp+A+Sg+Nom`
-
-
-
- LEXICON RIHTSOK  No attr, without CG and also without any vowelchanges. The lexicon gives no attribute, either because the adjective dosnºt have attr, because there is stemvowel change in attr that the lexicon canºt handle or because there are strange atrributes that donºt fit to any other lexicon (these attributes are hardcoded). Sg Acc: rihtsogav. 
-
-
-*rihtsok # Odd-syllable test examples:*
-* *rihtsok:* `rihtsok+A+Sg+Nom`
-* *rihtsogav:* `rihtsok+A+Sg+Acc`
-* *rihtsogabbo:* `rihtsok+A+Der/Comp+A+Sg+Nom`
-
-
-
-exception lexicons for odd-syll
-
- LEXICON IENNILS  no comparatives, attr same as pred.
-
-
-*ieŋŋils # Odd-syllable test examples:*
-* *ieŋŋils:* `ieŋŋils+A+Sg+Nom`
-* *ieŋŋilsav:* `ieŋŋils+A+Sg+Acc`
-
-
- LEXICON RÁDAS   Presently only used for "rádas". This word has special consonant gradation d>dd. Attr same as pred. Sg Acc: ráddasav, Attr: rádas. Consonant gradation.
-
-
-*rádas # Odd-syllable test examples:*
-* *rádas:* `rádas+A+Sg+Nom`
-* *ráddasav:* `rádas+A+Sg+Acc`
-* *rádas:* `rádas+A+Attr`
-* *ráda:* `rádas+A+Attr` (Eng. # from LEXATTR)
-* *ráddasabbo:* `rádas+A+Der/Comp+A+Sg+Nom`
-
-
- LEXICON LUOBES   Err/Orth lexicon! Does the same as TJIEGOS only e>a instead of usuall e>á, must be some err/orth. Sg Acc: luohpasav, Attr: luobes. Consonant gradation. NO Attr, must be hardcoded
-
-
-
-
-
-
- LEXICON LÅSSÅT  Two attr, two comp. As f3. in Spiik. So far the only word i this lexicon i "låssåt", because both låssis and låsså are attr and comparative is both låsep(hybrid?) and låssådabbo.
-
-
-*låssåt # Odd-syllable test examples:*
-* *låssåt:* `låssåt+A+Sg+Nom`
-* *låssådav:* `låssåt+A+Sg+Acc`
-* *låssis:* `låssåt+A+Attr`
-* *låsså:* `låssåt+A+Attr`
-* *låssådabbo:* `låssåt+A+Der/Comp+A+Sg+Nom`
-* *låsep:* `låssåt+A+Der/Comp+A+Sg+Nom`
-
- LEXICON STUORAK   Only for stuorak. It hase two attributes. Has even-syllable comparison: stuoráp and stuorámus.Sg Acc: stuoragav, attr: stuor and stuorra. This might be a -k derivation of adjective stuorre attr stuor(ra). The comparison is thus based on the original adjective and thus it naturally is an even syll comparison.
-
-
-*stuorak # Odd-syllable test examples:*
-* *stuorak:* `stuorak+A+Sg+Nom`
-* *stuoragav:* `stuorak+A+Sg+Acc`
-* *stuorra:* `stuorak+A+Attr`
-* *stuor:* `stuorak+A+Attr`
-* *stuoráp:* `stuorak+A+Der/Comp+A+Sg+Nom`
-
-
- LEXICON ALLAK  Adjs on -ak, attr.on -a. Have both gasep/gaggagabbo and alep/allagabbo as comparatives. As d. in Spiik. So far only the adjectives "allak" and "gassak" go to this lexicon.
-
-
-*gassak # Odd-syllable test examples:*
-* *gassak:* `gassak+A+Sg+Nom`
-* *gassagav:* `gassak+A+Sg+Acc`
-* *gassa:* `gassak+A+Attr`
-* *gassagabbo:* `gassak+A+Der/Comp+A+Sg+Nom`
-* *gasep:* `gassak+A+Der/Comp+A+Sg+Nom`
-
- LEXICON GÅBDDÅK   Adjs on -åk, attr. on -å. Has even-syllable comparison: gåbdep and gåbdemus. So far "gåbddåk" is the only word in this lexicon. As d2. in Spiik. Sg Acc: gåbddågav, Attr: gåbddå.
-
-
-
-*gåbddåk # Odd-syllable test examples:*
-* *gåbddåk:* `gåbddåk+A+Sg+Nom`
-* *gåbddågav:* `gåbddåk+A+Sg+Acc`
-* *gåbddå:* `gåbddåk+A+Attr`
-* *gåbdep:* `gåbddåk+A+Der/Comp+A+Sg+Nom`
-
-
-
-
-Inherent comparatives and superlatives
-
- LEXICON NUORTTALABBO    Inherent comparatives, gives both comp and superl. Most of the words are the compared forms of -el(a) words, like nuorttal, lullel.
-
-
-
-
-
-*guddnelabbo # Even-syllable test examples:*
-* *guddnelabbo:* `guddnelabbo+A+Gram/Comp+Sg+Nom`
-* *guddnelamos:* `guddnelabbo+A+Der/Superl+A+Sg+Nom`
-* *guddnelap:* `guddnelabbo+A+Gram/Comp+Attr`
-* *guddnelup:* `guddnelabbo+A+Gram/Comp+Attr`
-
- LEXICON GASSKALAMOS    Inherent superlatives, gives onlys superl. Words that are lexicalized in their superlative forms. 
-
-
-
-
-
-
-
-
-*ájtodamos # Even-syllable test examples:*
-* *ájtodamos:* `ájtodamos+A+Gram/Superl+Sg+Nom`
-
-
-## Contracted stems
-
- LEXICON SÁDNES   Attr same as pred. Sg Acc: sáddnáv, Attr: sádnes.
-
-
-*hávres # Contracted test examples:*
-* *hávres:* `hávres+A+Sg+Nom`
-* *hávrráv:* `hávres+A+Sg+Acc`
-* *hávres:* `hávres+A+Attr`
-* *hávrráp:* `hávres+A+Der/Comp+A+Sg+Nom`
-
-
-
- LEXICON GOAVSOS   Attr same as pred. Sg Acc: goaksuv, Attr: goavsos.(goavsos is so far the only word in this lexicon)
-
-
-*goavsos # Contracted test examples:*
-* *goavsos:* `goavsos+A+Sg+Nom`
-* *goaksuv:* `goavsos+A+Sg+Acc`
-* *goaksusav:* `goavsos+A+Sg+Acc` (Eng. # From lexicon TJIEGOS)
-* *goavsos:* `goavsos+A+Attr`
-* *goaksup:* `goavsos+A+Der/Comp+A+Sg+Nom`
-* *goaksusabbo:* `goavsos+A+Der/Comp+A+Sg+Nom` (Eng. # from lexicon TJIEGOS)
-
- LEXICON SUVRES   Sg Acc: suvrráv, Attr: suvra.
-
-
-*suvres # Contracted test examples:*
-* *suvres:* `suvres+A+Sg+Nom`
-* *suvrráv:* `suvres+A+Sg+Acc`
-* *suvrrásav:* `suvres+A+Sg+Acc` (Eng. # From lexicon SJÆVNNJAT)
-* *suvra:* `suvres+A+Attr`
-* *suvrráp:* `suvres+A+Der/Comp+A+Sg+Nom`
-* *suvrrásabbo:* `suvres+A+Der/Comp+A+Sg+Nom` (Eng. # from LINES)
-
- LEXICON GÅLMAKTES   Attr same as pred. without cg but with vowel changes. Sg Acc: gålmaktáv, Attr: gålmaktes. VIEKSES makes odd-syll same thing. 
-
-
-
-----
-
-
-# Comparation
-
- LEXICON BU/MUS   comparison for even-syll adjectives. Also derivates diminutive and adverbs from the comparisions.
-
-
- LEXICON ABBO/AMOS   comparison for odd-syll adjectives.  Also derivates diminutive and adverbs from the comparisions.
-
-
-
-
-
-
-
- LEXICON BUStem  Comparative even-syll, case and attr.
-
- LEXICON ABBO  Comparative odd-syll, get case and attr. With the dialect differences "-ubbo" and "-æbbo".
-
-
-## Superlative
-
- LEXICON BUOREMUS  Superlative even-syll, get attr and nom case.
-
-
- LEXICON AMOS  Superlative odd-syll, get case and attr. With the dialect differences "-umos" and "-æmos".
-
-
-
-
-Comparative and Superlative sub-lexica
-
- LEXICON CompSup-EVEN 
-
- LEXICON CompSup-EVENWEAKSTEM  
-
-
-
-
-
-
- LEXICON ATTR   Sends attributes to
-
-
- LEXICON ATTR_PrsPrc   Attr without -vuohta derivation.
-
-
-
-## Derivation of adjectives
-
- LEXICON DenominalAdjsV1  ! even noun stems are sent here
-
- LEXICON DenominalAdjsV1_1  ! even noun stems without grade alternation are sent here
-
- LEXICON DenominalAdjsV2  ! even noun stems are sent here. -asj derivation
-
-
- LEXICON DenominalAdjsKINO  ! unassimilated nouns are sent here
-
-
- LEXICON DenominalAdjsODD   ! gives derivation -ahtes
-
- LEXICON DenominalAdjsContr 
-
-Derivations to adjectives, hardcoded in adjectives stems file
-
-
- LEXICON DIEHTEMAHTES  ! odd syllable For hardcoded -ahtes words.
-
-
- LEXICON LÁGÁSJ 
-
- LEXICON BÁJNUK  ! hardcoded denominal derivations, latus has changed from o>u, a>a, e>á (Bájnno>bájnuk, juolgge>juolgák, giella>gielak.  Attr same as pred, no comp in this lexicon. 
-
- LEXICON TSÅHPÅK  ! hardcoded denominal derivations latus has changed from o>u, a>a, e>á AND -GIS attr. Attr same as pred is err/orth taged. no comp in this lexicon. 
-
-
- LEXICON GIEVLEK  ! hardcoded derivations, not same as BÁJNUK since latus has unexpected vowel. Latus hasn't changed o>u, a>a, e>á. Goes directly to BÁJNUK, only made to sort these different kinds of derivations. Many of these may be derivated from verbs or other adjectives.
-
-
-
- LEXICON SJERVAK  ! hardcoded derivations, not same as TSÅHPÅK since latus has unexpected vowel. Latus hasn't changed o>u, a>a, e>á. Goes directly to TSÅHPÅK, only made to sort these different kinds of derivations. Many of these may be derivated from verbs or other adjectives.
-
-
- LEXICON DIBME  ! even and contracted
-
-
- LEXICON LIS  ! Handlernomen på -is?
-
-
- LEXICON Ahkásasj  ! lexicalized and denominal -asj derivations
-
-
- LEXICON STÁVVALIS  ! Must be "stávvalis" in bot pred and attr, as "guovddelis". OK& Kintel 2012: stávval attr stávvalis this is err/orth taged, also as second compound, this is err/orth taged. No comparison.
-
-
-
-
-Derivations to adjectives, continuation lexicon not for hardcoded adjectives
-
-
-
-
- LEXICON AHTES  ! odd syllable, only a continuation lexicon for words that are not in adjectives stems. Just as DIEHTEMAHTES, only with the +A tag that adjectives already get i stems file.
-
-
- LEXICON AHKES   
-
-
-
- LEXICON AGAdj  ! denominal derivations go here, attr same as pred, no comp in this lexicon
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/adjectives.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/adjectives.lexc)</small>
 
 
 # Sublexica for Verb
@@ -5138,180 +4986,6 @@ contraced verbs assimilated and outside the main pattern.
 
 * * *
 <small>This (part of) documentation was generated from [../src/fst/affixes/verbs.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/verbs.lexc)</small>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- * **LEXICON ARABICCOMPOUNDS**  ! arabic as first part, 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- * **LEXICON ARABICCASES**  adds +Arab
-
- * **LEXICON ARABICCASE**  adds +Arab
-
- * **LEXICON ARABICCASE0**  adds +Arab
-
-
- * **LEXICON DIGITCASES**  to distinguish between 0 and oblique
-
- * **LEXICON DIGITCASE0**
-
-
-
-
-
-
-
-+Num:   ROMNUMTAGOBL ;
-
-
-
-
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/numerals.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/numerals.lexc)</small>
 # Lule Sáme Proper noun morphology !
 
 
@@ -6661,6 +6335,1015 @@ HANNOLA is the same as ACCRA
 
 * * *
 <small>This (part of) documentation was generated from [../src/fst/affixes/propernouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/propernouns.lexc)</small>
+# Continuation lexicons for abbreviations
+
+## Lexica for adding tags and periods
+
+## The sublexica
+
+### Continuation lexicons for abbrs both with and witout final period
+
+
+ * **LEXICON ab-noun   **
+
+ * **LEXICON ab-adj   **
+
+ * **LEXICON ab-adv   **
+
+ * **LEXICON ab-num   **
+
+### Lexicons without final period
+
+ * **LEXICON ab-nodot-noun   **  The bulk
+
+ * **LEXICON ab-nodot-adj   **
+
+ * **LEXICON ab-nodot-adv   **
+
+ * **LEXICON ab-nodot-num   **
+
+### Lexicons with final period
+
+ * **LEXICON ab-dot-noun   **  This is the lexicon for abbrs that must have a period.
+
+ * **LEXICON ab-dot-adj   **  This is the lexicon for abbrs that must have a period.
+
+ * **LEXICON ab-dot-adv   **  This is the lexicon for abbrs that must have a period.
+
+ * **LEXICON ab-dot-num   **  This is the lexicon for abbrs that must have a period.
+
+ * **LEXICON ab-dot-cc   **
+
+
+
+
+
+ * **LEXICON ab-dot-verb   **
+
+ * **LEXICON ab-nodot-verb   **
+
+
+ * **LEXICON ab-dot-IVprfprc   **
+
+
+ * **LEXICON nodot-attrnomaccgen-infl   **
+
+ * **LEXICON nodot-attr-infl   **
+
+ * **LEXICON nodot-nomaccgen-infl   **
+
+
+ * **LEXICON dot-attrnomaccgen-infl   **
+
+ * **LEXICON dot-attr   **
+
+ * **LEXICON dot-nomaccgen-infl   **
+
+
+ * **LEXICON DOT   ** - Adds the dot to dotted abbreviations.
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/abbreviations.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/abbreviations.lexc)</small>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ * **LEXICON ARABICCOMPOUNDS**  ! arabic as first part, 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ * **LEXICON ARABICCASES**  adds +Arab
+
+ * **LEXICON ARABICCASE**  adds +Arab
+
+ * **LEXICON ARABICCASE0**  adds +Arab
+
+
+ * **LEXICON DIGITCASES**  to distinguish between 0 and oblique
+
+ * **LEXICON DIGITCASE0**
+
+
+
+
+
+
+
++Num:   ROMNUMTAGOBL ;
+
+
+
+
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/numerals.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/numerals.lexc)</small>
+
+
+# Sublexica for Adjective
+
+## Even-syllable stems
+
+
+
+ LEXICON GIEVRRA  Adjectives with attribute in WeG and -s. As 1a in Spiik. Sg Acc: gievrav, Attr: gievras.
+
+
+
+*gárttje # Even-syllable test examples:*
+* *gárttje:* `gárttje+A+Sg+Nom`
+* *gártjev:* `gárttje+A+Sg+Acc`
+* *gártjes:* `gárttje+A+Attr`
+* *gártjep:* `gárttje+A+Der/Comp+A+Sg+Nom`
+
+
+
+ LEXICON NUORRA   Adjectives with attribute same as pred. As 1b in Spiik. Sg Acc: nuorav, Attr: nuorra.
+
+
+*visská # Even-syllable test examples:*
+* *visská:* `visská+A+Sg+Nom`
+* *viskáv:* `visská+A+Sg+Acc`
+* *visská:* `visská+A+Attr`
+* *viskáp:* `visská+A+Der/Comp+A+Sg+Nom`
+
+
+
+ LEXICON GALLJE   Adjectives on -e, the attribute is in WeG and e > a. As 1d in Spiik. Sg Acc: galjev, Attr: galja.
+
+
+*uhttse # Even-syllable test examples:*
+* *uhttse:* `uhttse+A+Sg+Nom`
+* *uhtsev:* `uhttse+A+Sg+Acc`
+* *uhtsa:* `uhttse+A+Attr`
+* *uhtses:* `uhttse+A+Attr` (Eng. # gets this attr from)
+* *uhtsep:* `uhttse+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON TJÁBBE   Adjectives on -e, the attribute is in WeG and e > a. Same as GALLJE only different adv derivation. Sg Acc: tjáppev, Attr: tjáppa.
+
+
+*njálgge # Even-syllable test examples:*
+* *njálgge:* `njálgge+A+Sg+Nom`
+* *njálgev:* `njálgge+A+Sg+Acc`
+* *njálga:* `njálgge+A+Attr`
+* *njálgep:* `njálgge+A+Der/Comp+A+Sg+Nom`
+
+
+
+
+
+ LEXICON VILLDA   Adjectives with attribute same as pred, without CG. As 1b in Spiik. Sg Acc: nuorav, Attr: nuorra.
+
+
+*frisska # Even-syllable test examples:*
+* *frisska:* `frisska+A+Sg+Nom`
+* *frisskav:* `frisska+A+Sg+Acc`
+* *frisska:* `frisska+A+Attr`
+* *frisskap:* `frisska+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON HÁVSSKE   Adjectives with attribute -s, without WeG. As 1c in Spiik. Sg Acc: hávsskev, Attr: hávsskes.
+
+
+*hoallá # Even-syllable test examples:*
+* *hoallá:* `hoallá+A+Sg+Nom`
+* *hoalláv:* `hoallá+A+Sg+Acc`
+* *hoallás:* `hoallá+A+Attr`
+* *hoalláp:* `hoallá+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON TJUODDJE  Adjectives with attribute -is, without WeG. presently only "Tjuoddje" Sg Acc: tjuoddjev, Attr: tjuoddjis.
+
+
+
+*tjuoddje # Even-syllable test examples:*
+* *tjuoddje:* `tjuoddje+A+Sg+Nom`
+* *tjuoddjev:* `tjuoddje+A+Sg+Acc`
+* *tjuoddjis:* `tjuoddje+A+Attr`
+* *tjuoddjep:* `tjuoddje+A+Der/Comp+A+Sg+Nom`
+
+
+
+Pres.participles 
+
+ LEXICON SÁVADAHTTE   Causative-participles. No attribute. No comparision. As 1e in Spiik. Sg Acc: sávadahttev. PrsPrc of causative verbs "uttrykker at handlingen lar seg gjøre eller er verdt å gjøre" (Kintel 1991).
+
+
+*vuojedahtte # Even-syllable test examples:*
+* *vuojedahtte:* `vuojedahtte+A+Sg+Nom`
+* *vuojedahttev:* `vuojedahtte+A+Sg+Acc`
+
+ LEXICON JUHKKE   participles with -s attributive. No comparision As 1e in Spiik. Sg Acc: juhkkev, Attr: juhkkes. Spiik: presens particip har med den attributive formen på -s betydelsen "någon som är duktig i, snabb til att, begiven att utföra handlingen".
+
+
+*vuohttje # Even-syllable test examples:*
+* *vuohttje:* `vuohttje+A+Sg+Nom`
+* *vuohttjev:* `vuohttje+A+Sg+Acc`
+* *vuohttjes:* `vuohttje+A+Attr`
+
+ LEXICON BÅRRE   participles without the -s attributive. As 1e in Spiik. Sg Acc: bårrev, Attr: bårre. Spiik: presens particip har med den attributiva formen utan -s betydelsen ºdem  som utför handlingenº.
+
+
+*ednabårre # Even-syllable test examples:*
+* *ednabårre:* `ednabårre+A+Sg+Nom`
+* *ednabårrev:* `ednabårre+A+Sg+Acc`
+* *ednabårre:* `ednabårre+A+Attr`
+
+
+
+Test data:
+
+
+Loan words lexicas
+
+
+###  Correctly assimilated loanwords, derived from real noun.
+
+
+ LEXICON METÅVDÅLASJ  LOAN! Foreign -isk adjectives adapted in updated normative way. To smj ending -alasj, adjective is truly derived from a noun. Mekanisk-mekanihkka-mekanihkalasj, instead of mekánalasj that goes to MEKÁNALASJ_BADASS. Pred and attr are both -alasj. Attr same as pred. With comparatives. 
+
+
+
+ LEXICON METÅVDÅLASJ_CMP_INFL 
+
+
+
+
+
+*kapitalismalasj # Even-syllable test examples:*
+* *kapitalismalasj:* `kapitalismalasj+A+Sg+Nom`
+* *kapitalismalattjav:* `kapitalismalasj+A+Sg+Acc`
+* *kapitalismalasj:* `kapitalismalasj+A+Attr`
+* *kapitalismalabbo:* `kapitalismalasj+A+Der/Comp+A+Sg+Nom`
+
+
+ LEXICON MEKANIHKA_MEKANIJKA_LASJ  LOAN! Same type of adjectives as METÅVDÅLASJ, only for adjektives that become mekanihkalasj in norway and mekanijkalasj in sweden, because of differences mekanik vs mekanikk>mekanijkka vs mekanihkka.  Attr same as pred. With comparatives. 
+
+
+
+ LEXICON IJJALASJ  Just lik  METÅVDÅLASJ only for words ending on ijjalasj/iddjalasj, so that we don't need a lot of Area and Err tags in stems file.
+
+
+ LEXICON IJJALASJ_CMP_INFL 
+
+
+
+ LEXICON OGIJJALASJ  Just like IJJALASJ only for words ending on ogijjalasj/ogiddjalasj, so that we don't need a lot of err tags in stems files. For words like "pedagogijjalasj" which also have "pedagåvgålasj" (not really a wrong derivation, but doesn't mean pedagogisk) and "pedagogalasj" err taged.  
+
+
+ LEXICON OGIJJALASJ_CMP_INFL  
+
+
+ LEXICON SJÅNÅLASJ_SJONAL  -sjonal/sjonell and -tional/tionel loanwords. Only for words that work as nouns, so that they are REAL dervations, as nasjonal-nasjåvnnå-nasjåvnålasj. NOT for words like "rasjonell", with no real noun. Words as "rasjonell>rasjonálla-rasjonálalasj" go to lexicon ÁLLA.  The fake derivation "nasjonálalasj" is err taged, so is the strange "nasjonálla/nasjunálla". 
+
+
+ LEXICON SJÅNÅLASJ_SJONAL_CMP_INFL  
+
+
+
+
+
+*konstitusjåvnålasj # Even-syllable test examples:*
+* *nasjåvnålasj:* `nasjåvnålasj+A+Sg+Nom`
+* *nasjåvnålattjav:* `nasjåvnålasj+A+Sg+Acc`
+* *nasjåvnålasj:* `nasjåvnålasj+A+Attr`
+
+
+
+ LEXICON SJÅNÅLASJ_SJONELL  -sjonal/sjonell and -tional/tionel loanwords. Only for words that work as nouns, so that they are REAL dervations, as nasjonal-nasjåvnnå-nasjåvnålasj. NOT for words like "rasjonell", with no real noun. Words as "rasjonell>rasjonálla-rasjonálalasj" go to lexicon ÁLLA.  The fake derivation "nasjonálalasj" is err taged, so is the strange "nasjonálla/nasjunálla". 
+
+
+ LEXICON SJÅNÅLASJ_SJONELL_CMP_INFL  
+
+
+
+*konstitusjåvnålasj # Even-syllable test examples:*
+* *konstitusjåvnålasj:* `konstitusjåvnålasj+A+Sg+Nom`
+* *konstitusjåvnålattjav:* `konstitusjåvnålasj+A+Sg+Acc`
+* *konstitusjåvnålasj:* `konstitusjåvnålasj+A+Attr`
+
+
+###  Badly assimilated loanwords, some against norm others with no norm
+
+ LEXICON MEKÁNALASJ_BADASS  LOAN! Wronly assimilated -lasj adjectives from SE/NO -isk. Looks derived but isn't since there is no real noun to be derived from. Like mekanisk-mekánalasj, but "mekádna" is no real noun! Like  METÅVDÅLASJ, but gives the Err/Der tag, so it's only for these wronly/non-derived loan adjectives. 
+
+
+
+
+
+ LEXICON ARKTALASJ_CMP_INFL  Foreign -isk, that are not real derivations. Same as MEKÁNALASJ_BADASS, but no +Use/-Spell tag since ther is no "right" way to assimilate these. This is a question for GG. Adapted to smj by simply adding -alasj in place of -isk. These are not real derivations, but sitation borrowed loan adjectives. Only words without a noun base, like arktisk and syntetisk. Pred and attr are both -lasj. No comparatives. 
+
+
+
+
+*syntetalasj # Even-syllable test examples:*
+* *syntetalasj:* `syntetalasj+A+Sg+Nom`
+* *syntetalattjav:* `syntetalasj+A+Sg+Acc`
+* *syntetalasj:* `syntetalasj+A+Attr`
+
+ LEXICON ORÁNSSJA  Loan adjectives, not -isk. Used without the -lasj. Adjectives with attribute same as pred. So far only for oránssja.
+
+
+ LEXICON DEMONSTRATIJVA_LASJ_NO_NORM  Loan adjectives from norwegian/swedish (Not adjectives ending on -isk). Words like demonstrativ, transitiv, dupleks, informativ, analog, privat. Gives both "demonstratijvva" and "demonstratijvalasj". Two ways of adapting these adjectives are used, the adding of -lasj isn't okey, because that's a false derivation. But GG hasn't decided how these should be handled. Looks like noun instead of adjective when adapted without the -lasj ending.  Attr is in weak grad, used in strong grad ass pred even thou this seems a little bit odd "Værbba l transitijvva". 
+
+
+
+
+ LEXICON DEMONSTRATIJVA_LASJ_CMP_INFL    
+
+
+
+
+
+
+
+*aktijvva # Even-syllable test examples:*
+* *aktijva:* `aktijvva+A+Attr`
+* *aktijvva:* `aktijvva+A+Sg+Nom`
+* *aktijvav:* `aktijvva+A+Sg+Acc`
+
+
+
+
+
+
+ LEXICON ÁLA_LASJ_NO_NORM  Same as DEMONSTRATIJVA_LASJ_NO_NORM. Only for adjectives ending on -al. Words like digital,liberal, lokal.  Gives both "eksponentiálla" and "eksponentiálalasj". Different lexicon for these -al adjectives because of Err/Orth tags. OBS, "dialektal", is assimilated "dialevtalasj", and goes to lexicon  METÅVDÅLASJ.
+
+
+ LEXICON ÁLA_LASJ_INFL_CMP 
+
+
+
+
+
+ LEXICON ELLA_LASJ_NO_NORM  Loanwords, same as ÁLA_LASJ_NO_NORM  and  DEMONSTRANTIJVA_LASJ_NO_NORM. For NO and SE adjectives ending on -ell, eksperimentell, ideell, parallell. The short form is nom parallælla, attr, parallella The long form: paralellalasj, attr parallellalasj. Different lexicon for these -ell adjectives because of err/orth tags. OBS, "individuell", is assimilated "indivijdalasj", and goes to lexicon  METÅVDÅLASJ.
+
+
+ LEXICON ELLA_LASJ_INFL_CMP  
+
+
+
+
+
+ LEXICON ÁLLA-ÆLLA 
+
+ LEXICON MEKÁNALASJ_CMP_INFL  Same as  METÅVDÅLASJ only without vuohta. 
+
+
+
+
+
+
+
+
+
+
+Inherent comparatives and superlatives lexica
+
+ LEXICON OANEP   Inherent comparatives, gives comp and superl. There are two main groups of word here: Adjectives that are lexicalized in their comparative (and superlative) forms, like sisŋep, bárep. And Nouns that can be compared, like nuortap, gáttep, oarjep (some of these are compared from their noun lexicas and thus are found twice). Some entries are likely incorrect compared forms of other adjectives, like ådåp and ruvvap (more research needed).
+
+
+
+
+
+*lagáp # Even-syllable test examples:*
+* *lagáp:* `lagáp+A+Gram/Comp+Sg+Nom`
+* *lagámus:* `lagáp+A+Der/Superl+A+Sg+Nom`
+
+
+ LEXICON TJAVGGÁMUS    Inherent superlatives, only gives superl. Some words are lexicalized in their superlative forms, like dájvvámus. Some are likely incorrect superlative forms, like tjábbámus (more research is needed)
+
+
+
+*dájvvámus # Even-syllable test examples:*
+* *dájvvámus:* `dájvvámus+A+Gram/Superl+Sg+Nom`
+
+4-syllable miscellanious stems
+
+ LEXICON ÁRMMOGIS  Adjectives on -is, attribute same as pred. Odd-syllable comparison. As 2 in Spiik. Sg Acc: ármmogisáv, Attr: ármmogis. 
+
+
+*bahágis # Even-syllable test examples:*
+* *bahágis:* `bahágis+A+Sg+Nom`
+* *bahágisáv:* `bahágis+A+Sg+Acc`
+* *bahágis:* `bahágis+A+Attr`
+* *bahágabbo:* `bahágis+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON SÆHKÁLAK  Adjectives on -álak, attribute same as pred. Odd-syllable comparison. So far only for "sæhkálak".
+
+
+*sæhkálak # Even-syllable test examples:*
+* *sæhkálak:* `sæhkálak+A+Sg+Nom`
+* *sähkálak:* `sæhkálak+A+Sg+Nom`
+* *sæhkálagáv:* `sæhkálak+A+Sg+Acc`
+* *sähkálagáv:* `sæhkálak+A+Sg+Acc`
+* *sæhkálak:* `sæhkálak+A+Attr`
+* *sähkálak:* `sæhkálak+A+Attr`
+* *sæhkálabbo:* `sæhkálak+A+Der/Comp+A+Sg+Nom`
+* *sähkálabbo:* `sæhkálak+A+Der/Comp+A+Sg+Nom`
+
+
+ LEXICON ÅLLAGSJ_CMP_INFL  Adjectives on -asj, attribute same as pred.  No comparatives. 2 in Spiik. Sg Acc: ållagattjav, Attr: ållagasj.
+
+
+*belulasj # Even-syllable test examples:*
+* *belulasj:* `belulasj+A+Sg+Nom`
+* *belulattjav:* `belulasj+A+Sg+Acc`
+* *belulasj:* `belulasj+A+Attr`
+
+
+ LEXICON DÁRBULASJ_CMP_INFL  Adjectives on -asj, attribute same as pred. Odd-syllable comparison. Sg Acc: dárbulattjav, Attr: dárbulasj. Essive -attjan, -adtjan is subtaged. Err/Orth also -ahttja.  
+
+
+
+
+
+*dábálasj # Even-syllable test examples:*
+* *dábálasj:* `dábálasj+A+Sg+Nom`
+* *dábálattjav:* `dábálasj+A+Sg+Acc`
+* *dábálasj:* `dábálasj+A+Attr`
+* *dábális:* `dábálasj+A+Attr`
+* *dábálabbo:* `dábálasj+A+Der/Comp+A+Sg+Nom`
+
+
+
+ LEXICON ASIDASJ_CMP_INFL  Adjectives on -asj, -is attr. Odd-syllable comparison. Sg Acc: asidattjav, Attr: asidis.
+
+
+*gågulasj # Even-syllable test examples:*
+* *gågulasj:* `gågulasj+A+Sg+Nom`
+* *gågulattjav:* `gågulasj+A+Sg+Acc`
+* *gågulis:* `gågulasj+A+Attr`
+* *gågulabbo:* `gågulasj+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON UDNODIBME  Adjectives on -dibme, attribute on -is. Odd-syllable comparison. Sg Acc: udnodimev, Attr: udnodis.
+
+
+*gælvodibme # Even-syllable test examples:*
+* *gælvodibme:* `gælvodibme+A+Sg+Nom`
+* *gälvodibme:* `gælvodibme+A+Sg+Nom`
+* *gælvodimev:* `gælvodibme+A+Sg+Acc`
+* *gälvodimev:* `gælvodibme+A+Sg+Acc`
+* *gælvodis:* `gælvodibme+A+Attr`
+* *gälvodis:* `gælvodibme+A+Attr`
+* *gælvodabbo:* `gælvodibme+A+Der/Comp+A+Sg+Nom`
+* *gälvodabbo:* `gælvodibme+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON TJALMEDIBME   Like UDNODIBME but no comparatives. Sg Acc: tjalmedimev, Attr: tjalmedis.
+
+
+*huvsodibme # Even-syllable test examples:*
+* *huvsodibme:* `huvsodibme+A+Sg+Nom`
+* *huvsodimev:* `huvsodibme+A+Sg+Acc`
+* *huvsodis:* `huvsodibme+A+Attr`
+
+ LEXICON SUOLASIEHKE  -siehke. Sg Acc: suolasiegev, attr: suolasiek
+
+
+*hánessiehke # Even-syllable test examples:*
+* *hánessiehke:* `hánessiehke+A+Sg+Nom`
+* *hánessiegev:* `hánessiehke+A+Sg+Acc`
+* *hánessiek:* `hánessiehke+A+Attr`
+
+
+
+
+
+
+
+
+## Odd-syllable stems
+###  With CG Sorted by attr
+
+
+ LEXICON TJIEGOS  Attr same as pred. For adjectives with -e in second syllable e>á: divtes>diktásav in StrG. As a. in Spiik.  Sg Acc: tjiehkusav, Attr: tjiegos. Consonant gradation. 
+
+
+*hánes # Odd-syllable test examples:*
+* *måskas:* `måskas+A+Sg+Nom`
+* *moasskasav:* `måskas+A+Sg+Acc`
+* *måskas:* `måskas+A+Attr`
+* *moasskasabbo:* `måskas+A+Der/Comp+A+Sg+Nom`
+* *bihtja:* `bihtja+A+Sg+Nom`
+* *bihttjagav:* `bihtja+A+Sg+Acc`
+* *bihtja:* `bihtja+A+Attr`
+* *bihttjagabbo:* `bihtja+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON LINES  Attr ending on -a. Adjektives ending on -es. Does same as TJIEGOS, but with attr -a.   As g. in Spiik.  lines, Sg Acc: lidnásav, attr: lidna. Consonant gradation.
+
+
+*lines # Odd-syllable test examples:*
+* *lines:* `lines+A+Sg+Nom`
+* *lidnásav:* `lines+A+Sg+Acc`
+* *lidna:* `lines+A+Attr`
+* *lidnásabbo:* `lines+A+Der/Comp+A+Sg+Nom`
+
+
+ LEXICON GALMAS   Attr ending on -a or -å. Adjectives on -as, ås- and ás. As e. in Spiik. Sg Acc: galmmasav, attr: galmma, Consonant gradation.
+
+
+*njuoskas # Odd-syllable test examples:*
+* *njuoskas:* `njuoskas+A+Sg+Nom`
+* *njuosskasav:* `njuoskas+A+Sg+Acc`
+* *njuosska:* `njuoskas+A+Attr`
+* *njuosskasabbo:* `njuoskas+A+Der/Comp+A+Sg+Nom`
+
+
+
+ LEXICON OAMES  Attr ending on -e. Adjectives on -es with attribute -e. As g2. in Spiik. Sg Acc: oabmásav, Attr: oabme. Consonant gradation.
+
+
+*goastes # Odd-syllable test examples:*
+* *goastes:* `goastes+A+Sg+Nom`
+* *goasstásav:* `goastes+A+Sg+Acc`
+* *goasste:* `goastes+A+Attr`
+* *goasstásabbo:* `goastes+A+Der/Comp+A+Sg+Nom`
+
+
+ LEXICON SUOHKAT  Attr III -is, not suohkkadis but SUOHKKIS. With CG to attr, not from nom to Acc. Same as JALGGAT only with this CG. SUOHKKIS. Without CG between nom and acc. Adjectives on -at and -åt, with attribute III -is. As f. in Spiik. Sg Acc: suohkadav, attr: suohkkis,
+
+
+*rávvat # Odd-syllable test examples:*
+* *rávvat:* `rávvat+A+Sg+Nom`
+* *rávvadav:* `rávvat+A+Sg+Acc`
+* *rávvis:* `rávvat+A+Attr`
+* *rávvadabbo:* `rávvat+A+Der/Comp+A+Sg+Nom`
+
+
+ LEXICON MÅJDÅS  Adjectives with no attr. With CG. Sg Acc: måjddåsav. If there is an attribute that dosn't fit to any lexicon it mus be hardcoded.
+
+
+*rávdes # Odd-syllable test examples:*
+* *rávdes:* `rávdes+A+Sg+Nom`
+* *rávddásav:* `rávdes+A+Sg+Acc`
+* *rávddásabbo:* `rávdes+A+Der/Comp+A+Sg+Nom`
+
+
+
+
+Without CG
+
+ LEXICON VIEKSES  Attr same as pred. Without CG, but With vowel changes.  Sg Acc: væksásav, Attr: viekses. Like TJIEGOS only without the CG but with vowel changes. Mayby change this to a lexicon withput attr and then hardcode attr?
+
+
+ LEXICON ALEK  Attr same as pred. Without CG, without any vowel changes. Like TJIEGOS only without the CG an vowelchanges. 
+
+
+
+*purpur # Odd-syllable test examples:*
+* *purpur:* `purpur+A+Sg+Nom`
+* *purpurav:* `purpur+A+Sg+Acc`
+* *purpur:* `purpur+A+Attr`
+* *purpurabbo:* `purpur+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON BASSTEL   Attr ening on -is. Without CG. Adjs on -et, -l, -r, sm om -k, -sj with attr -is and no consonant gradation. As b. in Spiik. Sg Acc: basstelav, Attr: basstelis. Many of these entries might be instances of derivations, like belak, deblak, and maybe also basstel, bargán.
+
+
+*goavrret # Odd-syllable test examples:*
+* *goavrret:* `goavrret+A+Sg+Nom`
+* *goavrredav:* `goavrret+A+Sg+Acc`
+* *goavrredis:* `goavrret+A+Attr`
+* *goavrredabbo:* `goavrret+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON MUTTÁK  Two attr enings -is and same as pred. Without CG. Adjs on -ák/-ak/-ek, two attr: -is and same as pred. As c. in Spiik. Sg Acc: muttágav, Attr: muttágis and mutták. These seem to be instances of the adjectival -k derivation. Unclear whether such derivation have different attr forms or not, and thats maybe why some of these derivations are found in BASSTEL lexicon.
+
+
+*bárvak # Odd-syllable test examples:*
+* *bárvak:* `bárvak+A+Sg+Nom`
+* *bárvagav:* `bárvak+A+Sg+Acc`
+* *bárvak:* `bárvak+A+Attr`
+* *bárvagis:* `bárvak+A+Attr`
+* *bárvagabbo:* `bárvak+A+Der/Comp+A+Sg+Nom`
+
+
+ LEXICON JALGGAT  Attr III -is, not jalggadis but JALGGIS. Without CG.  Adjectives on -at, with attribute III -is. As f. in Spiik. Sg Acc: jalggadav, attr: jalggis,
+
+
+
+*russjkat # Odd-syllable test examples:*
+* *russjkat:* `russjkat+A+Sg+Nom`
+* *russjkadav:* `russjkat+A+Sg+Acc`
+* *russjkis:* `russjkat+A+Attr`
+* *russjkadabbo:* `russjkat+A+Der/Comp+A+Sg+Nom`
+
+
+ LEXICON TJÅRGGÅT  Attr III -is, not tjårggådis but tjårggis. Without CG. Same as JALGGAT only for adjectives ending ot -åt. Adjectives on -åt, with attribute III -is. As f. in Spiik. Sg Acc: jalggadav, attr: jalggis,
+
+
+
+*russjkat # Odd-syllable test examples:*
+* *russjkat:* `russjkat+A+Sg+Nom`
+* *russjkadav:* `russjkat+A+Sg+Acc`
+* *russjkis:* `russjkat+A+Attr`
+* *russjkadabbo:* `russjkat+A+Der/Comp+A+Sg+Nom`
+
+
+
+ LEXICON RIHTSOK  No attr, without CG and also without any vowelchanges. The lexicon gives no attribute, either because the adjective dosnºt have attr, because there is stemvowel change in attr that the lexicon canºt handle or because there are strange atrributes that donºt fit to any other lexicon (these attributes are hardcoded). Sg Acc: rihtsogav. 
+
+
+*rihtsok # Odd-syllable test examples:*
+* *rihtsok:* `rihtsok+A+Sg+Nom`
+* *rihtsogav:* `rihtsok+A+Sg+Acc`
+* *rihtsogabbo:* `rihtsok+A+Der/Comp+A+Sg+Nom`
+
+
+
+exception lexicons for odd-syll
+
+ LEXICON IENNILS  no comparatives, attr same as pred.
+
+
+*ieŋŋils # Odd-syllable test examples:*
+* *ieŋŋils:* `ieŋŋils+A+Sg+Nom`
+* *ieŋŋilsav:* `ieŋŋils+A+Sg+Acc`
+
+
+ LEXICON RÁDAS   Presently only used for "rádas". This word has special consonant gradation d>dd. Attr same as pred. Sg Acc: ráddasav, Attr: rádas. Consonant gradation.
+
+
+*rádas # Odd-syllable test examples:*
+* *rádas:* `rádas+A+Sg+Nom`
+* *ráddasav:* `rádas+A+Sg+Acc`
+* *rádas:* `rádas+A+Attr`
+* *ráda:* `rádas+A+Attr` (Eng. # from LEXATTR)
+* *ráddasabbo:* `rádas+A+Der/Comp+A+Sg+Nom`
+
+
+ LEXICON LUOBES   Err/Orth lexicon! Does the same as TJIEGOS only e>a instead of usuall e>á, must be some err/orth. Sg Acc: luohpasav, Attr: luobes. Consonant gradation. NO Attr, must be hardcoded
+
+
+
+
+
+
+ LEXICON LÅSSÅT  Two attr, two comp. As f3. in Spiik. So far the only word i this lexicon i "låssåt", because both låssis and låsså are attr and comparative is both låsep(hybrid?) and låssådabbo.
+
+
+*låssåt # Odd-syllable test examples:*
+* *låssåt:* `låssåt+A+Sg+Nom`
+* *låssådav:* `låssåt+A+Sg+Acc`
+* *låssis:* `låssåt+A+Attr`
+* *låsså:* `låssåt+A+Attr`
+* *låssådabbo:* `låssåt+A+Der/Comp+A+Sg+Nom`
+* *låsep:* `låssåt+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON STUORAK   Only for stuorak. It hase two attributes. Has even-syllable comparison: stuoráp and stuorámus.Sg Acc: stuoragav, attr: stuor and stuorra. This might be a -k derivation of adjective stuorre attr stuor(ra). The comparison is thus based on the original adjective and thus it naturally is an even syll comparison.
+
+
+*stuorak # Odd-syllable test examples:*
+* *stuorak:* `stuorak+A+Sg+Nom`
+* *stuoragav:* `stuorak+A+Sg+Acc`
+* *stuorra:* `stuorak+A+Attr`
+* *stuor:* `stuorak+A+Attr`
+* *stuoráp:* `stuorak+A+Der/Comp+A+Sg+Nom`
+
+
+ LEXICON ALLAK  Adjs on -ak, attr.on -a. Have both gasep/gaggagabbo and alep/allagabbo as comparatives. As d. in Spiik. So far only the adjectives "allak" and "gassak" go to this lexicon.
+
+
+*gassak # Odd-syllable test examples:*
+* *gassak:* `gassak+A+Sg+Nom`
+* *gassagav:* `gassak+A+Sg+Acc`
+* *gassa:* `gassak+A+Attr`
+* *gassagabbo:* `gassak+A+Der/Comp+A+Sg+Nom`
+* *gasep:* `gassak+A+Der/Comp+A+Sg+Nom`
+
+ LEXICON GÅBDDÅK   Adjs on -åk, attr. on -å. Has even-syllable comparison: gåbdep and gåbdemus. So far "gåbddåk" is the only word in this lexicon. As d2. in Spiik. Sg Acc: gåbddågav, Attr: gåbddå.
+
+
+
+*gåbddåk # Odd-syllable test examples:*
+* *gåbddåk:* `gåbddåk+A+Sg+Nom`
+* *gåbddågav:* `gåbddåk+A+Sg+Acc`
+* *gåbddå:* `gåbddåk+A+Attr`
+* *gåbdep:* `gåbddåk+A+Der/Comp+A+Sg+Nom`
+
+
+
+
+Inherent comparatives and superlatives
+
+ LEXICON NUORTTALABBO    Inherent comparatives, gives both comp and superl. Most of the words are the compared forms of -el(a) words, like nuorttal, lullel.
+
+
+
+
+
+*guddnelabbo # Even-syllable test examples:*
+* *guddnelabbo:* `guddnelabbo+A+Gram/Comp+Sg+Nom`
+* *guddnelamos:* `guddnelabbo+A+Der/Superl+A+Sg+Nom`
+* *guddnelap:* `guddnelabbo+A+Gram/Comp+Attr`
+* *guddnelup:* `guddnelabbo+A+Gram/Comp+Attr`
+
+ LEXICON GASSKALAMOS    Inherent superlatives, gives onlys superl. Words that are lexicalized in their superlative forms. 
+
+
+
+
+
+
+
+
+*ájtodamos # Even-syllable test examples:*
+* *ájtodamos:* `ájtodamos+A+Gram/Superl+Sg+Nom`
+
+
+## Contracted stems
+
+ LEXICON SÁDNES   Attr same as pred. Sg Acc: sáddnáv, Attr: sádnes.
+
+
+*hávres # Contracted test examples:*
+* *hávres:* `hávres+A+Sg+Nom`
+* *hávrráv:* `hávres+A+Sg+Acc`
+* *hávres:* `hávres+A+Attr`
+* *hávrráp:* `hávres+A+Der/Comp+A+Sg+Nom`
+
+
+
+ LEXICON GOAVSOS   Attr same as pred. Sg Acc: goaksuv, Attr: goavsos.(goavsos is so far the only word in this lexicon)
+
+
+*goavsos # Contracted test examples:*
+* *goavsos:* `goavsos+A+Sg+Nom`
+* *goaksuv:* `goavsos+A+Sg+Acc`
+* *goaksusav:* `goavsos+A+Sg+Acc` (Eng. # From lexicon TJIEGOS)
+* *goavsos:* `goavsos+A+Attr`
+* *goaksup:* `goavsos+A+Der/Comp+A+Sg+Nom`
+* *goaksusabbo:* `goavsos+A+Der/Comp+A+Sg+Nom` (Eng. # from lexicon TJIEGOS)
+
+ LEXICON SUVRES   Sg Acc: suvrráv, Attr: suvra.
+
+
+*suvres # Contracted test examples:*
+* *suvres:* `suvres+A+Sg+Nom`
+* *suvrráv:* `suvres+A+Sg+Acc`
+* *suvrrásav:* `suvres+A+Sg+Acc` (Eng. # From lexicon SJÆVNNJAT)
+* *suvra:* `suvres+A+Attr`
+* *suvrráp:* `suvres+A+Der/Comp+A+Sg+Nom`
+* *suvrrásabbo:* `suvres+A+Der/Comp+A+Sg+Nom` (Eng. # from LINES)
+
+ LEXICON GÅLMAKTES   Attr same as pred. without cg but with vowel changes. Sg Acc: gålmaktáv, Attr: gålmaktes. VIEKSES makes odd-syll same thing. 
+
+
+
+----
+
+
+# Comparation
+
+ LEXICON BU/MUS   comparison for even-syll adjectives. Also derivates diminutive and adverbs from the comparisions.
+
+
+ LEXICON ABBO/AMOS   comparison for odd-syll adjectives.  Also derivates diminutive and adverbs from the comparisions.
+
+
+
+
+
+
+
+ LEXICON BUStem  Comparative even-syll, case and attr.
+
+ LEXICON ABBO  Comparative odd-syll, get case and attr. With the dialect differences "-ubbo" and "-æbbo".
+
+
+## Superlative
+
+ LEXICON BUOREMUS  Superlative even-syll, get attr and nom case.
+
+
+ LEXICON AMOS  Superlative odd-syll, get case and attr. With the dialect differences "-umos" and "-æmos".
+
+
+
+
+Comparative and Superlative sub-lexica
+
+ LEXICON CompSup-EVEN 
+
+ LEXICON CompSup-EVENWEAKSTEM  
+
+
+
+
+
+
+ LEXICON ATTR   Sends attributes to
+
+
+ LEXICON ATTR_PrsPrc   Attr without -vuohta derivation.
+
+
+
+## Derivation of adjectives
+
+ LEXICON DenominalAdjsV1  ! even noun stems are sent here
+
+ LEXICON DenominalAdjsV1_1  ! even noun stems without grade alternation are sent here
+
+ LEXICON DenominalAdjsV2  ! even noun stems are sent here. -asj derivation
+
+
+ LEXICON DenominalAdjsKINO  ! unassimilated nouns are sent here
+
+
+ LEXICON DenominalAdjsODD   ! gives derivation -ahtes
+
+ LEXICON DenominalAdjsContr 
+
+Derivations to adjectives, hardcoded in adjectives stems file
+
+
+ LEXICON DIEHTEMAHTES  ! odd syllable For hardcoded -ahtes words.
+
+
+ LEXICON LÁGÁSJ 
+
+ LEXICON BÁJNUK  ! hardcoded denominal derivations, latus has changed from o>u, a>a, e>á (Bájnno>bájnuk, juolgge>juolgák, giella>gielak.  Attr same as pred, no comp in this lexicon. 
+
+ LEXICON TSÅHPÅK  ! hardcoded denominal derivations latus has changed from o>u, a>a, e>á AND -GIS attr. Attr same as pred is err/orth taged. no comp in this lexicon. 
+
+
+ LEXICON GIEVLEK  ! hardcoded derivations, not same as BÁJNUK since latus has unexpected vowel. Latus hasn't changed o>u, a>a, e>á. Goes directly to BÁJNUK, only made to sort these different kinds of derivations. Many of these may be derivated from verbs or other adjectives.
+
+
+
+ LEXICON SJERVAK  ! hardcoded derivations, not same as TSÅHPÅK since latus has unexpected vowel. Latus hasn't changed o>u, a>a, e>á. Goes directly to TSÅHPÅK, only made to sort these different kinds of derivations. Many of these may be derivated from verbs or other adjectives.
+
+
+ LEXICON DIBME  ! even and contracted
+
+
+ LEXICON LIS  ! Handlernomen på -is?
+
+
+ LEXICON Ahkásasj  ! lexicalized and denominal -asj derivations
+
+
+ LEXICON STÁVVALIS  ! Must be "stávvalis" in bot pred and attr, as "guovddelis". OK& Kintel 2012: stávval attr stávvalis this is err/orth taged, also as second compound, this is err/orth taged. No comparison.
+
+
+
+
+Derivations to adjectives, continuation lexicon not for hardcoded adjectives
+
+
+
+
+ LEXICON AHTES  ! odd syllable, only a continuation lexicon for words that are not in adjectives stems. Just as DIEHTEMAHTES, only with the +A tag that adjectives already get i stems file.
+
+
+ LEXICON AHKES   
+
+
+
+ LEXICON AGAdj  ! denominal derivations go here, attr same as pred, no comp in this lexicon
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/adjectives.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/adjectives.lexc)</small>
 
 
 
@@ -6779,894 +7462,298 @@ HANNOLA is the same as ACCRA
 
 * * *
 <small>This (part of) documentation was generated from [../src/fst/affixes/pronouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/pronouns.lexc)</small>
-# Lule Sámi morphological analyser
+# Symbol affixes
 
- Definitions for Multichar_Symbols
 
-Tags for POS
 
- * **+N** = Noun
- * **+A** = Adjective
- * **+Adv** = Adverb
- * **+V** = Verb
- * **+Pron** = Pronouns
- * **+CS** = Subjunction
- * **+CC** = Conjunction
- * **+Adp** = Adposition
- * **+Po** = Postposition
- * **+Pr** = Preposition
- * **+Interj** = Interjection
- * **+Pcle** = Particle
- * **+Num** = Numeral
- * **+TODO** = Code for items that have not been modeled yet
- * **+Dyn** = Code dynamic acronyms
 
-Tags for sub-POS
 
- * **+Prop** = Propernouns
- * **+ACR** = Acronym
 
-Pronoun subtypes
-
- * **+Pers** = Personal pronoun
- * **+Dem** = Demonstrative pronoun
- * **+Interr** = Interrogative pronoun
- * **+Refl** = reflexive pronoun
- * **+Recipr** = reciprocal pronoun
- * **+Rel** = relative pronoun
- * **+Indef** = indefinite pronoun
- * **+Coll** = collective numerals
- * **+Arab** = arabic numerals
- * **+Rom** = remertall
-
-## Error tags
-
-All Err-tags must have normative form as lemma except Err/Lex
-
- * **+Err/Orth** = Substandard. An ungrammatical, non-normative form of normative lemma.
- * **+Err/Lex** = No normative lemma
- * **+Err/Cmp** = No normative compound, often wrong first part of cmp (in other case than nom or gen, or adv og pronoun)
- * **+Err/Der** = Lemmas that break with regular derivation rules, both morphologically and semantically
- * **+Err/Infl** = Lemmas that break with normative inflection rules, often used with morphological changes
- * **+Err/MissingSpace** = indicates that there is a missing space, causing an orthographic error. Used for "goadedagi", when it should be "goade dagi"
- * **+Err/Hyph** = when there is a hyphen where none should have been
- * **+Err/SpaceCmp** = used for compounds written apart - only retained in the HFST Grammar Checker disambiguation analyser
-
-
-## Usage restriction tags
-
- * **+Use/Marg**  Marginal, but normative lemmas. Not in speller.
- * **+Use/-Spell**  Excluded from speller
- * **+Use/-PLX**  Excluded from PLX speller
- * **+Use/-PMatch**  Do not include in fst's made for hfst-pmatch
- * **+Use/SpellNoSugg**  Recognized, but not suggested in speller
- * **+Use/Circ**  Circular path
- * **+Use/CircN**  Circular number path
- * **+Use/Ped**  Remove from pedagogical speller
- * **+Use/NG**  Do not generate, only for Oahpa and MT. In speller.
- * **+Use/MT** Generate for MT only, for restricting analyses needed
- * **+Use/NGminip** Not for miniparadigm in VD dicts
- * **+Use/NotDNorm**  For words without formal normalization. Divvun suggest that this shouldn't be normative.
- * **+Use/DNorm**  For words without formal normalization.  Divvun suggest that this should be normative. Included in speller.                      
- * **+Use/PMatch** 
- * **+Use/Derrog**  Derrogatory word. Recognized, but not suggested in speller, same as SpellNoSugg
- * **+Use/GC** only retained in the HFST Grammar Checker disambiguation analyser
- * **+Use/-GC** never retained in the HFST Grammar Checker disambiguation analyser
-
-## Dialect and Area tags
- * **+Area/SE** - Used in Sweden only
- * **+Area/NO** - Used in Norway only
- * **+Dial/N** Used in the northern areas.  Some might say that
-these words are sme-words, but they are used by lulesamis in
-the northern part of the dialect area. Words like "válmas"
- * **+Dial/S** Used in the southern areas
- * **+Dial/SH** Short forms
-
-## Compounding tags
-
-The tags are of the following form:
-* **+CmpNP/xxx** - Normative (N), Position (P), ie. the tag describes what
-position the tagged word can be in in a compound
-* **+CmpN/xxx**  - Normative (N) **form** ie. the tag describes what
-form the tagged word should use when making compounds
-* **+Cmp/xxx**   - Descriptive compounding tags, ie. tags that*describes*
-what form a word actually is using in a compound
-
-### Normative/prescriptive compounding tags
-
-These govern compound behaviour for normative tools like the speller, ie. what a compound **SHOULD BE**.
-
-The first part of the component may be ..
- * **+CmpN/Sg** = Singular
- * **+CmpN/SgN** = Singular Nominative
- * **+CmpN/SgG** = Singular Genitive
- * **+CmpN/PlG** = Plural Genitive
- * **+CmpN/Attr** = Attributive
-
-This part of the component can ..
-
- * +CmpNP/All - ... be in all positions, **default**, this tag does not have to be written
- * +CmpNP/First - ... only be first part in a compound or alone
- * +CmpNP/Pref - ... only **first** part in a compound, NEVER alone
- * +CmpNP/Last - ... only be last part in a compound or alone
- * +CmpNP/Suff - ... only **last** part in a compound, NEVER alone
- * +CmpNP/None - ... not take part in compounds
- * +CmpNP/Only - ... only be part of a compound, i.e. can never
-be used alone, but can appear in any position
-
-The second part of the compound may require that the previous (left part) is (and thus overrides the regular CmpN tags):
-
- * +CmpN/SgLeft  Singular to the left
- * +CmpN/SgNomLeft  Singular nominative to the left
- * +CmpN/SgGenLeft  Singular genitive to the left
- * +CmpN/PlGenLeft  Plural genitive to the left
-
-But these tags can again be overriden by the first word in a compound, if this part of the compound is tagged with a def tag:
-
- * **+CmpN/Def**  Left override
- * **+CmpN/DefSgGen**  Overrides left tag, requires SgGen form
- * **+CmpN/DefPlGen**  Overrides left tag, requires PlGen form
-
-## Descriptive compounding tags
-Tags for compound analysis - this is what a compound actually is.
-Some of these tags are also used in combination with the
-above normative tags to actually enforce compound restrictions in the fst.
-
- * **+Cmp/Sg**  Singular
- * **+Cmp/SgNom**  Singular Nominative
- * **+Cmp/SgGen**  Singular Genitive
- * **+Cmp/PlGen**  Plural Genitiv
- * **+Cmp/PlNom**  Plural Nominative
- * **+Cmp/Attr**  Attribute
- * **+Cmp/Sh**  testing ShCmp
- * **+Cmp/Long**  Long for om SgNom when short form is default, tjåhkaNIBMEbievddegirjje and bierjjeDAHKAiehket
- * **+Cmp/Unass**  Unassimiled as first part of Cmp, e.g. telegram- in stead for telegrámma-
- * **+Cmp**  Dynamic compound - this tag should always be part of a dynamic compound.
-It is important for Apertium, and useful in other cases as well.
- * **+Cmp/SplitR**  This is a split compound with the other part to the right:
-"Arbeids- og inkluderingsdepartementet" => Arbeids- = +Cmp/SplitR
- * **+Cmp/SplitL**  This is a split compound with the other part to the left
-+Cmp/Hyph  +Cmp/Hyph      Compound with (optional) hyphen, heavily weighted
-+Cmp/OblHyph  +Cmp/OblHyph   Obligatory hyphen, not as badly weighed as +Cmp/Hyph
-
-
-# Inflectional Tags
-## Tags for Case and Number Inflection
-
- *  **+Sg** = Singular number
- *  **+Du** = Dual number
- *  **+Pl** = Plural number
- *  **+Ess** = Essive case
- *  **+Nom** = Nominative case
- *  **+Gen** = Genitive case
- *  **+Acc** = Accusative case
- *  **+Ill** = Illative case
- *  **+Loc** = Locative case
- *  **+Com** = Comitative case
- *  **+Ine** = Inesive case
- *  **+Ela** = Elative case
- *  **+Par** = Partitive case
- *  **+Abe** = Abessive case
-
-## Possessive tags
-
- * **+PxSg1** possessive suffix singular first person
- * **+PxSg2** possessive suffix singular second person
- * **+PxSg3** possessive suffix singular third person
- * **+PxDu1** possessive suffix dual first person
- * **+PxDu2** possessive suffix dual second person
- * **+PxDu3** possessive suffix dual third person
- * **+PxPl1** possessive suffix plural first person
- * **+PxPl2** possessive suffix plural second person
- * **+PxPl3** possessive suffix plural plural person
-
-## Adjective specific tags
- * +Attr Attribute
- * +Card
- * +Ord  CHECK THIS! In closed-sme there are +Ord entries without circ. tag
-
-## Verbal inflection
- * +Ind Indicative mood
- * +Prs Present tense
- * +Prt Past tense
- * +Pot Potensial mood
- * +Cond conditional mood
- * +Imprt Imperative mood
- * +Sg1 singular first person
- * +Sg2 singular second person
- * +Sg3 singular third person
- * +Du1 dual first person
- * +Du2 dual second person
- * +Du3 dual third person
- * +Pl1 plural first person
- * +Pl2 plural second person
- * +Pl3 plural plural person
- * +Inf infinitive
- * +Ger  gerundium
- * +ConNeg = the main verb form used with negation verb. Like *bårå* in *Iv bårå guolev*.
- * +Neg  negation verb
- * +ImprtII  second imperative mood
- * +PrsPrc  present participle
- * +PrfPrc  past participle
- * +Sup  supinum
- * +VGen verb genitive
- * +VAbess verb abessive
- * +Actio Actio
-
-## Other tags
- * +ABBR
- * +Symbol = independent symbols in the text stream, like £, €, ©
- * +ACR
- * +CLB
- * +PUNCT
- * +LEFT
- * +RIGHT
- * **+CLBfinal**  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
- * ^GUESSNOUNROOT
- * +TV !
- * +IV !  Transitivity tags
- * **+G3** Grade 2-3 for homonymies with grade 1-2, +N+G3
- * **+G7** Grade 3, no consonant gradation, +N+G7
- * +Multi  Multiword phrase tag
- * +Guess  for the name guesser
- * +NomAg Actor Noun From Verb - Nomen Agentis
-
-
-## Lexeme disambiguation = homonym tags
- * **+Hom1**:  Homonymy
- * **+Hom2**:  Homonymy
-
-
-## Stem variant tags
- * +v1 - variant 1
- * +v2 - variant 2
- * +v3 - variant 3
- * +v4 - variant 4
- * +v5 - variant 5
-
-
-### Question and Focus particles:
- * +Qst
- * +Clt
- * +Cltl
- * +Foc  These two are only found in SMJ - do we need them?
- * +Foc/ge
- * +Foc/gen
- * +Foc/ga
- * +Foc/Neg-k
- * +Foc/Pos-k
-
-### Other tags
- * **+MWE**  multi word expressions, goes to abbr
- * **+Sh**  Short form
- * **+Gram/Comp** = Inherent comp, lexicalized derivation 
- * **+Gram/Superl** = Inherent superl, lexicalized derivation 
- * **+Gram/Dimin** = Inherent diminutive, lexicalized derivation 
- * **+Gram/NomAg** = Inherent Actor Noun From Verb - Nomen Agentis, lexicalized derivation 
- * **+Gram/r** = Inherent -r derivation. guollit-guollár 
- * **+Gram/NomAct** = Inherent Actio Noun From Verb - Nomen Actionis, lexicalized derivation 
- * **+Gram/NomInstr** = Inherent Intsrumental noun From Verb, Nomen instrumentalis,lexicalized derivation 
- * **+Gram/TAbbr**:  Transitive abbreviation (it needs an argument)
- * **+Gram/NoAbbr**:  Intransitive abbreviations that are homonymous
- * **+Gram/TNumAbbr**:  Transitive abbreviation if the following
- * **+Gram/NumNoAbbr**:  Transitive abbreviations for which numerals
- * **+Gram/TIAbbr**:  Both transitive and intransitive abbreviation
- * **+Gram/IAbbr**:  Intransitive abbreviation (it takes no argument)
- * **+Gram/3syll**:  trisyllabic verbs
- * **+Gram/SentInit**:  copula verb le-
-
-## Semantic tags to help disambiguation & syntactic analysis
-
-These tags should always be located just before the POS tag.
-
- * **+Sem/Act** = Activity; cleaning, work, occupation, project, photosynthesis
- * **+Sem/Adr** = Webadr
- * **+Sem/Amount** = Amount; pile, amount of lynx, amount of food, one fifteenth, ten percent
- * **+Sem/Ani** = Animate; dog, reindeer, teddy bear,ndragon, lice
- * **+Sem/Ani-fish** = Fish
- * **+Sem/Aniprod** = Animal Product; sweat, reindeer skin, lice egg, blood for making dumplings, pee
- * **+Sem/Body** = Bodypart; ear, bone, ear canal, artificial leg, mustache, nervous system
- * **+Sem/Body-abstr** = Non-physical body part; Sjel, ånd, reason, soul, voice, eyesight, conscience
- * **+Sem/Build** = Building; house, museum, Sámi tent, nest, sandcastle
- * **+Sem/Build-room** = Room in a building, typically place to be
- * **+Sem/Buildpart** = Part of building; closet, room, door, balcony, pool, office
- * **+Sem/Cat** = Category; name, subjunction, suffix, password, existential sentence
- * **+Sem/Clth** = Clothes/Clothing; shirt, hat, theater costume, shawl, seatbelt, diaper
- * **+Sem/Clth-jewl** = Jewelery and similar; watch, sunglasses, ring, necklace, crown
- * **+Sem/Clthpart** = Part of clothes; knapp, søm, pocket (OBS! Ctain-abstr), bottom part of an article of clothing, upper part of trousers, seam, button
- * **+Sem/Ctain** = Container; suitcase, terrarium, closet, container, gas tank
- * **+Sem/Ctain-abstr** = Abstract container; bank account, fund, account, loan fund, pot, bank account
- * **+Sem/Ctain-clth** = Eks; lomme/pocket
- * **+Sem/Curr** = Currency; not money, euro, US dollar, denar, Danish crown, currency
- * **+Sem/Dance** = Dance; swing, rumba, ballet, belly dance, war dance
- * **+Sem/Date** = Date
- * **+Sem/Dir** = Direction; GPS course, stock exchange price, graph, tendency, starboard
- * **+Sem/Domain** = Domain like politics, reindeerherding (a system of actions), anthropology, punk rock, biology, linguistics, medicine
- * **+Sem/Drink** = Drink; tea, beer, UHT milk, soda, communion wine
- * **+Sem/Dummytag** = Default tag for uncategorized nouns
- * **+Sem/Edu** = Educational event; skiing high school skiing academy, course, music lesson, lesson, master
- * **+Sem/Event** = Event; wedding, meeting, competition, election, festival
- * **+Sem/Feat** = Feature; Árvu, age difference, homosexuality, femininity, identity, congruence
- * **+Sem/Feat-measr** = Measurable feature; radius, diameter, volume, circumference, perimeter, frequency
- * **+Sem/Feat-phys** = Physiological feature; size, color, height, shape, weight, horsepower
- * **+Sem/Feat-psych** = Psychological feature; authority, nature, childishness, creativity, arrogance
- * **+Sem/Fem** = Female name
- * **+Sem/Food** = Food; bread, vegetarian food, flour, tobacco, salt
- * **+Sem/Food-med** = Medicine; birth-control pill, asthma medicine, medicine, penicillin, vaccine
- * **+Sem/Fruit** = Fruit and fruit-like edibles
- * **+Sem/Furn** = Furniture; throne, chair, table, altar, trampoline
- * **+Sem/Game** = Game; biŋgo bingo, TV game, flipper, paintball, chess
- * **+Sem/Geom** = Geometrical object; triangle, triangle, tetrahedron, asymptote, star
- * **+Sem/Group** = Animal or Human Group; family, herd, group, indigenous people, delegation
- * **+Sem/Hum** = Human
- * **+Sem/Hum-abstr** = Human abstract
- * **+Sem/ID** = ID
- * **+Sem/Ideol** = Ideology; nomadism, buddhism, feminism, christianity, fanaticism
- * **+Sem/Lang** = Language; South Sámi, mother tongue, Maori, Yiddish, second language
- * **+Sem/Mal** = Male name
- * **+Sem/Mat** = Material for producing things; paper, steel, wood, leather, wool
- * **+Sem/Measr** = Measure; unit of volume, quarter meter, hour, minus degree, wátta watt
- * **+Sem/Money** = Has to do with money; wages, not Curr(ency), treasure, belongings, debt, food price, bill, pension
- * **+Sem/Obj** = Object; thing, cup, thing, toy, painting
- * **+Sem/Obj-catch** = 
- * **+Sem/Obj-clo** = Cloth; carpet, flag, curtain, silk sheets, napkin
- * **+Sem/Obj-cogn** = 
- * **+Sem/Obj-el** = (Electrical) machine or apparatus; player, lamp, TV, radio, oven
- * **+Sem/Obj-ling** = Object with something written on it
- * **+Sem/Obj-play** = Play object
- * **+Sem/Obj-rope** = flexible ropelike object; barbed wire, thread, rope, cable, dental floss
- * **+Sem/Obj-surfc** = Surface object; blackboard, drawing paper, canvas, board (for playing board games), (money) bill
- * **+Sem/Org** = Organisation; newspaper, supreme court, company, museum, administration
- * **+Sem/Part** = Feature, part of something; half, part, percent, rest, tenth
- * **+Sem/Perc-cogn** = Cloth
- * **+Sem/Perc-emo** = Emotional perception; fear, feeling of identity, empathy, sadness, working motivation
- * **+Sem/Perc-phys** = Physical perception; shoulder pain, gass smell, sleep (during the night), need of sleep, hunger
- * **+Sem/Perc-psych** = Psychic perception
- * **+Sem/Plant** = Plant; lichen, plant, cucumber, bluebell, poisonous mushroom
- * **+Sem/Plantpart** = Plant part; twig, leaf, root, seed, pine trunk
- * **+Sem/Play** = Play
- * **+Sem/Plc** = Place; world, nature, airport, workplace, fireplace
- * **+Sem/Plc-abstr** = Abstract place; bachelor level, job market, third place, Troms website, address
- * **+Sem/Plc-elevate** = Elevated place; mountain, peak, mountain top, scree, volcano
- * **+Sem/Plc-line** = Place limitations; national border, border, finish line, stop line, equator
- * **+Sem/Plc-water** = Water; river, lake, polar sea, sea, well
- * **+Sem/Pos** = Position (as in social position job); 50% position, presidency, fixed position, kindergarten place, role in society
- * **+Sem/Process** = Process
- * **+Sem/Prod** = Product
- * **+Sem/Prod-audio** = Audio product; yoik, roar, Beatles song, Bible psalm, blues
- * **+Sem/Prod-cogn** = Cognition product; thought, decision, knowledge, lack of understanding, requirement
- * **+Sem/Prod-ling** = Linguistic product; message, question, agreement, translation, criticism
- * **+Sem/Prod-vis** = Visual product; picture, film, TV series, documentary, art
- * **+Sem/Rel** = Relation; relation, dependency, subordination, analogy, equivalence
- * **+Sem/Route** = Route-like place; street, path, corridor, bridge, winter path
- * **+Sem/Rule** = Rule or convention; cultural tradition, abortion law, EU rule, law of cosines, fair play
- * **+Sem/Semcon** = Abstract semantic concept; result, objective, reason, alternative, case
- * **+Sem/Sign** = Sign (e.g. numbers, punctuation); ID number, ČSV letters, quotation mark, hieroglyph, symbol
- * **+Sem/Sport** = Sport; table tennis, judo, motor cross, ice hockey, floorball
- * **+Sem/State** = State; hurry, captivity, anarchy, biodiversity, chaos
- * **+Sem/State-sick** = Illness; allergy, cold, autism, dementia, somnambulism
- * **+Sem/Substnc** = Substance; Water, sand, air, smoke, carbohydrate, vitamin, dust
- * **+Sem/Sur** = Surname
- * **+Sem/Symbol** = Symbol
- * **+Sem/Time** = Time; áigi time, April, half an hour, Tuesday, deadline
- * **+Sem/Time-clock** = Time
- * **+Sem/Tool** = Prototypical tool for repairing things; axe, knife, fire striker, plastic hammer, wrench
- * **+Sem/Tool-catch** = Tool used for catching; artificial fly, fishing net for cod, fishing rod, lasso used in wintertime, mouse trap
- * **+Sem/Tool-clean** = Tool used for cleaning; broom, vegetable brush, toothbrush, cleaning equipment
- * **+Sem/Tool-it** = Tool used in IT/tool within IT; IT infrastructure, analyzer, searching function, computer program, browser
- * **+Sem/Tool-measr** = Tool used for measuring; barometer, hourglass, ruler, spirit level, scale
- * **+Sem/Tool-music** = Musical instrument; shaman drum, guitar, violin, musical instrument, jaw harp
- * **+Sem/Tool-write** = Writing tool; colored pen, pencil, chalk, paintbrush, paint
- * **+Sem/Txt** = Written document; paper, book, letter, e-mail, song
- * **+Sem/Veh** = Vehicle; car, boat, sled, vehicle, draft reindeer, bicycle
- * **+Sem/Wpn** = Weapon; rifle, bow, sword, arrow, war axe
- * **+Sem/Wthr** = The Weather or the state of ground; cloudy weather, wind, driving conditions, night sunlight, rain shower
- * **+Sem/Year** = Year
-
-
-### Multiple Semantic tags:
-
- * **+Sem/Ani_Group** = 
- * **+Sem/Act_Clth** = 
- * **+Sem/Act_Domain** = 
- * **+Sem/Act_Domain_Measr** = 
- * **+Sem/Act_Event** = 
- * **+Sem/Act_Feat** = 
- * **+Sem/Act_Feat-psych** = 
- * **+Sem/Act_Fruit** = 
- * **+Sem/Act_Group** = 
- * **+Sem/Act_Hum** = 
- * **+Sem/Act_Hum_Obj** = 
- * **+Sem/Act_Money** = 
- * **+Sem/Act_Obj** = 
- * **+Sem/Act_Obj-play** = 
- * **+Sem/Act_Org** = 
- * **+Sem/Act_Perc-emo** = 
- * **+Sem/Act_Plc** = A persons job is an activity, and a place as well
- * **+Sem/Act_Prod-audio** = 
- * **+Sem/Act_Prod-vis** = 
- * **+Sem/Act_Route** = Activity and Route, ie johtolat
- * **+Sem/Act_Semcon** = 
- * **+Sem/Act_State** = 
- * **+Sem/Act_Time** = 
- * **+Sem/Act_Tool-it** = 
- * **+Sem/Act_Txt** = 
- * **+Sem/Amount_Build** = 
- * **+Sem/Amount_Semcon** = 
- * **+Sem/Ani_Body** = 
- * **+Sem/Ani_Body-abstr_Hum** = 
- * **+Sem/Ani_Build** = 
- * **+Sem/Ani_Build_Hum_Txt** = 
- * **+Sem/Ani_Buildpart** = 
- * **+Sem/Ani_Cat** = 
- * **+Sem/Ani_Clth** = 
- * **+Sem/Ani_Feat_Hum** = 
- * **+Sem/Ani_Feat_Plant** = 
- * **+Sem/Ani_Food** = 
- * **+Sem/Ani_Group_Hum** = 
- * **+Sem/Ani_Group_Prod-vis** = 
- * **+Sem/Ani_Hum** = 
- * **+Sem/Ani_Hum_Plc** = 
- * **+Sem/Ani_Hum_Time** = 
- * **+Sem/Ani_Obj** = 
- * **+Sem/Ani_Org** = 
- * **+Sem/Ani_Plc** = 
- * **+Sem/Ani_Plc_Txt** = 
- * **+Sem/Ani_State** = 
- * **+Sem/Ani_Substnc** = 
- * **+Sem/Ani_Time** = 
- * **+Sem/Ani_Veh** = 
- * **+Sem/Aniprod_Hum** = 
- * **+Sem/Aniprod_Mat** = 
- * **+Sem/Aniprod_Obj** = 
- * **+Sem/Aniprod_Obj-clo** = 
- * **+Sem/Aniprod_Perc-phys** = 
- * **+Sem/Aniprod_Plant** = 
- * **+Sem/Aniprod_Plc** = 
- * **+Sem/Aniprod_Plc_Route** = 
- * **+Sem/Aniprod_Substnc** = 
- * **+Sem/Aniprod_Substnc_Wthr** = 
- * **+Sem/Body-abstr_Feat-psych** = 
- * **+Sem/Body-abstr_Prod-audio_Semcon** = 
- * **+Sem/Body_Body-abstr** = 
- * **+Sem/Body_Buildpart** = 
- * **+Sem/Body_Clth** = 
- * **+Sem/Body_Clthpart** = 
- * **+Sem/Body_Food** = 
- * **+Sem/Body_Fruit** = 
- * **+Sem/Body_Group_Hum** = 
- * **+Sem/Body_Group_Hum_Time** = 
- * **+Sem/Body_Hum** = 
- * **+Sem/Body_Mat** = 
- * **+Sem/Body_Measr** = 
- * **+Sem/Body_Obj** = 
- * **+Sem/Body_Obj_Tool-catch** = 
- * **+Sem/Body_Org** = 
- * **+Sem/Body_Part** = 
- * **+Sem/Body_Plc** = 
- * **+Sem/Body_Plc-elevate** = 
- * **+Sem/Body_Plc_State** = 
- * **+Sem/Body_State** = 
- * **+Sem/Body_Time** = 
- * **+Sem/Build-room_Furn** = 
- * **+Sem/Build-room_Org** = 
- * **+Sem/Build_Build-room** = 
- * **+Sem/Build_Buildpart** = 
- * **+Sem/Build_Clthpart** = 
- * **+Sem/Build_Edu_Org** = 
- * **+Sem/Build_Event_Org** = 
- * **+Sem/Build_Obj** = 
- * **+Sem/Build_Org** = 
- * **+Sem/Build_Plc** = 
- * **+Sem/Build_Route** = 
- * **+Sem/Build_Tool** = 
- * **+Sem/Build_Veh** = 
- * **+Sem/Buildpart_Ctain_Obj** = 
- * **+Sem/Buildpart_Obj** = 
- * **+Sem/Buildpart_Obj_Plc** = 
- * **+Sem/Buildpart_Part** = 
- * **+Sem/Buildpart_Plc** = 
- * **+Sem/Buildpart_Prod-audio** = 
- * **+Sem/Cat_Edu** = 
- * **+Sem/Cat_Feat** = 
- * **+Sem/Cat_Feat-psych_Plc** = 
- * **+Sem/Cat_Group_Hum** = 
- * **+Sem/Cat_Hum** = 
- * **+Sem/Cat_Measr** = 
- * **+Sem/Cat_Obj** = 
- * **+Sem/Cat_Plantpart** = 
- * **+Sem/Cat_Plantpart_Semcon** = 
- * **+Sem/Cat_Txt** = 
- * **+Sem/Clth-jewl_Curr** = 
- * **+Sem/Clth-jewl_Fruit** = 
- * **+Sem/Clth-jewl_Money** = 
- * **+Sem/Clth-jewl_Obj** = 
- * **+Sem/Clth-jewl_Org** = 
- * **+Sem/Clth-jewl_Plant** = 
- * **+Sem/Clth_Hum** = 
- * **+Sem/Clth_Obj** = 
- * **+Sem/Clth_Part** = 
- * **+Sem/Clth_Sur** = 
- * **+Sem/Clthpart_Plc** = 
- * **+Sem/Ctain-abstr_Org** = 
- * **+Sem/Ctain-clth_Plant** = 
- * **+Sem/Ctain-clth_Veh** = 
- * **+Sem/Ctain_Feat-phys** = 
- * **+Sem/Ctain_Furn** = 
- * **+Sem/Ctain_Obj-surfc** = 
- * **+Sem/Ctain_Plc** = 
- * **+Sem/Ctain_Txt** = 
- * **+Sem/Ctain_Tool** = 
- * **+Sem/Ctain_Tool-measr** = 
- * **+Sem/Curr_Org** = 
- * **+Sem/Dance_Org** = 
- * **+Sem/Dance_Prod-audio** = 
- * **+Sem/Dir_Geom** = 
- * **+Sem/Domain_Feat** = 
- * **+Sem/Domain_Feat-phys** = 
- * **+Sem/Domain_Food-med** = 
- * **+Sem/Domain_Hum** = 
- * **+Sem/Domain_Ideol** = 
- * **+Sem/Domain_Obj** = 
- * **+Sem/Domain_Org** = 
- * **+Sem/Domain_Org_Plc-abstr** = 
- * **+Sem/Domain_Perc-emo** = 
- * **+Sem/Domain_Prod-audio** = 
- * **+Sem/Domain_State-sick** = 
- * **+Sem/Domain_Txt** = 
- * **+Sem/Domain_Edu** = 
- * **+Sem/Drink_Plant** = 
- * **+Sem/Drink_Plc** = 
- * **+Sem/Drink_Plc_Substnc** = 
- * **+Sem/Edu_Event** = 
- * **+Sem/Edu_Geom** = 
- * **+Sem/Edu_Geom_Plc-line** = 
- * **+Sem/Edu_Group_Hum** = 
- * **+Sem/Edu_Hum** = 
- * **+Sem/Edu_Mat** = 
- * **+Sem/Edu_Org** = 
- * **+Sem/Edu_Txt** = 
- * **+Sem/Event_Food** = 
- * **+Sem/Event_Hum** = 
- * **+Sem/Event_Org** = 
- * **+Sem/Event_Plc** = 
- * **+Sem/Event_Plc-elevate** = 
- * **+Sem/Event_Time** = 
- * **+Sem/Feat-measr_Plc** = 
- * **+Sem/Feat-phys_Food_State** = 
- * **+Sem/Feat-phys_Hum** = 
- * **+Sem/Feat-phys_Obj** = 
- * **+Sem/Feat-phys_Plc-line** = 
- * **+Sem/Feat-phys_Tool-write** = 
- * **+Sem/Feat-phys_Veh** = 
- * **+Sem/Feat-phys_Wthr** = 
- * **+Sem/Feat-psych_Hum** = 
- * **+Sem/Feat-psych_Plc** = 
- * **+Sem/Feat_Hum** = 
- * **+Sem/Feat_Plant** = 
- * **+Sem/Food_Part** = 
- * **+Sem/Food_Perc-phys** = 
- * **+Sem/Food_Plant** = 
- * **+Sem/Food_Substnc** = 
- * **+Sem/Food_Time** = 
- * **+Sem/Fruit_Sport** = 
- * **+Sem/Furn_Ctain-abstr** = 
- * **+Sem/Game_Obj-play** = 
- * **+Sem/Geom_Obj** = 
- * **+Sem/Geom_Plc** = 
- * **+Sem/Group_Hum** = 
- * **+Sem/Group_Hum_Org** = 
- * **+Sem/Group_Hum_Plc** = 
- * **+Sem/Group_Hum_Prod-vis** = 
- * **+Sem/Group_Org** = 
- * **+Sem/Group_Plc** = 
- * **+Sem/Group_Prod-vis_Txt_Veh** = 
- * **+Sem/Group_Sign** = 
- * **+Sem/Group_State** = 
- * **+Sem/Group_Txt** = 
- * **+Sem/Hum-abstr** = 
- * **+Sem/Hum_Lang** = 
- * **+Sem/Hum_Lang_Plc** = 
- * **+Sem/Hum_Lang_Time** = 
- * **+Sem/Hum_Mat_Tool** = 
- * **+Sem/Hum_Money** = 
- * **+Sem/Hum_Obj** = 
- * **+Sem/Hum_Obj_Plc** = 
- * **+Sem/Hum_Org** = 
- * **+Sem/Hum_Part** = 
- * **+Sem/Hum_Plant** = 
- * **+Sem/Hum_Plc** = 
- * **+Sem/Hum_State** = 
- * **+Sem/Hum_Tool** = 
- * **+Sem/Hum_Tool-catch** = 
- * **+Sem/Hum_Veh** = 
- * **+Sem/Hum_Wthr** = 
- * **+Sem/Lang_Tool** = 
- * **+Sem/Lang_Tool-catch** = 
- * **+Sem/Mat_Obj** = 
- * **+Sem/Mat_Part** = 
- * **+Sem/Mat_Plant** = 
- * **+Sem/Mat_Plantpart** = 
- * **+Sem/Mat_Plc** = 
- * **+Sem/Mat_Tool** = 
- * **+Sem/Mat_Tool-catch** = 
- * **+Sem/Mat_Txt** = 
- * **+Sem/Measr_Plc_Time** = 
- * **+Sem/Measr_Sign** = 
- * **+Sem/Measr_Time** = 
- * **+Sem/Money_Obj** = 
- * **+Sem/Money_Plc** = 
- * **+Sem/Money_Txt** = 
- * **+Sem/Obj-ling_Obj-surfc** = 
- * **+Sem/Obj-play** = 
- * **+Sem/Obj-play_Sport** = 
- * **+Sem/Obj_Part_Sign** = 
- * **+Sem/Obj_Perc-emo** = 
- * **+Sem/Obj_Plantpart** = 
- * **+Sem/Obj_Plc** = 
- * **+Sem/Obj_Plc-abstr** = 
- * **+Sem/Obj_Plc_Semcon** = 
- * **+Sem/Obj_Process** = 
- * **+Sem/Obj_Prod-audio** = 
- * **+Sem/Obj_Semcon** = 
- * **+Sem/Obj_Sign** = 
- * **+Sem/Obj_State** = 
- * **+Sem/Obj_Tool-music** = 
- * **+Sem/Obj_Tool-write** = 
- * **+Sem/Obj_Txt** = 
- * **+Sem/Obj_Veh** = 
- * **+Sem/Org_Play** = 
- * **+Sem/Org_Plc** = 
- * **+Sem/Org_Prod-audio** = 
- * **+Sem/Org_Prod-cogn** = 
- * **+Sem/Org_Prod-vis** = 
- * **+Sem/Org_Rule** = 
- * **+Sem/Org_State** = 
- * **+Sem/Org_Txt** = 
- * **+Sem/Org_Veh** = 
- * **+Sem/Part_Plc** = 
- * **+Sem/Part_Plc_Prod-audio** = 
- * **+Sem/Part_Prod-cogn** = 
- * **+Sem/Part_Substnc** = 
- * **+Sem/Part_Txt** = 
- * **+Sem/Perc-emo_Plc** = 
- * **+Sem/Perc-emo_State** = 
- * **+Sem/Perc-emo_Wthr** = 
- * **+Sem/Plant_Plantpart** = 
- * **+Sem/Plant_Plc** = 
- * **+Sem/Plant_Time_Wthr** = 
- * **+Sem/Plant_Tool** = 
- * **+Sem/Plant_Tool-measr** = 
- * **+Sem/Plc-abstr_Rel_State** = 
- * **+Sem/Plc-abstr_Route** = 
- * **+Sem/Plc-abstr_Rule** = 
- * **+Sem/Plc-abstr_State** = 
- * **+Sem/Plc-abstr_Txt** = 
- * **+Sem/Plc_Pos** = 
- * **+Sem/Plc_Route** = 
- * **+Sem/Plc_State** = 
- * **+Sem/Plc_Substnc** = 
- * **+Sem/Plc_Substnc_Wthr** = 
- * **+Sem/Plc_Time** = 
- * **+Sem/Plc_Time_Wthr** = 
- * **+Sem/Plc_Tool-catch** = 
- * **+Sem/Plc_Txt** = 
- * **+Sem/Plc_Wthr** = 
- * **+Sem/Prod-audio_Prod-vis** = 
- * **+Sem/Prod-audio_Substnc** = 
- * **+Sem/Prod-audio_Txt** = 
- * **+Sem/Prod-cogn_Txt** = 
- * **+Sem/Route_State** = 
- * **+Sem/Route_Txt** = 
- * **+Sem/Rule_Txt** = 
- * **+Sem/Semcon_State** = 
- * **+Sem/Semcon_Txt** = 
- * **+Sem/State-sick_Substnc** = 
- * **+Sem/State_Veh** = 
- * **+Sem/Substnc_Wthr** = 
- * **+Sem/Time_Wthr** = 
- * **+Sem/Tool-music** = 
-
-
-Not sure which section this goes in: (before POS)
-
- * +Allegro from LEXICON GOADE-IU-
-
-
-## Derivation tags
-
-The following tags are used to describe the dynamic derivational system in
-Lule Sámi as encoded in this lexical description. The tags are classified
-according to a positional system, where each tag can be in one and only one
-position, and can only combine with tags from an earlier / lower position.
-This is done to avoid possible overgeneration in the derivational system.
-
- * **+Der1 +Der2 +Der3 +Der4 +Der5**:    - positional tags, preceeds the actual der tag
-### Der#1 tags - tags in first position
- * +Der/Caus VV - previously Der/ahtte
- * +Der/PassD VV - dallat passive
- * +Der/PassL VV - long passive láhpeduvvat
- * +Der/PassS VV - Short passive láhpput
- * +Der/adda VV
- * +Der/ahtja VV - only odd syll verbs take this der
- * +Der/ahttjá VV - only odd syll verbs take this der
- * +Der/alla VV
- * +Der/asste VV
- * +Der/d VV
- * +Der/dalla VV
- * +Der/dasste VV
- * +Der/l VV
- * +Der/ladda VV
- * +Der/lahtte VV
- * +Der/lasste VV
- * +Der/st VV
- * +Der/stahtte VV
- * +Der/stalla VV
- * +Der/stasste VV
- * +Der/tj VV
- * +Der/u/a/åd VV
- * +Der/r VN  - NomAg contracted verbs - guollit-guollár
- * +Der/NomInstr VN  - even verbs:fierrot-fierun
- * +Der/Dimin NN
- * +Der/gusj Prop -I
-
- * +Der/lasj NN
- * +Der/k NN / NA
- * +Der/Car NA - abessive. Only even/contr. Morén-Duolljá:caritive 
- * +Der/ferjak NA   Adjectival -k der (from ?)
- * +Der/lasj NA - dont know, guess it Tronds, ojes, I see - is this ok?jes 2 Der:lasj Noun on 1472 Adj on 2040
- * +Der/n NA. Denominal -n adjective (similar t -k adj)
- * +Der/sasj NA
- * +Der/segak NA Adj. -k der from?
- * +Der/Comp AA
- * +Der/Superl AA     
-
-
-### Der#2 tags - tags in second position
- * +Der/dahtte VV
- * +Der/duhtte VV
- * +Der/ahkes VA
- * +Der/NomAct VN
-### Der#3 tags - tags in third position
- * +Der/duvva VV
- * +Der/InchL VV (previosuly Der/goahte)
- * +Der/mus VN
- * +Der/NomAg VN -diddje
- * +Der/dahka VN
- * +Der/NomAct VN   Realised in two different ways.
- *       This realisation is Der3. Outcommented
- *       to not define the tag twice, but kept
- *       here for documentation purposes.
- * +Der/lis VA
-### Der#4 tags - tags in fourth position
- * +Der/ahtes NA ! Abessive. Even verbs>NomAct>ahtes and odd-syll nouns. Morén-Duolljá:Caritive
-### Der#5 tags - tags in fifth position
- * +Der/AAdv NA AAdv, previously +Der/at
- * +Der/vuota NA AN (tag harmonization: previosuly Der/vuohta)
-### Der#other tags - tags that can be in any position
-
-There are no such tags in SMJ, but for symmetry and code coherence with SME
-the class is still kept.
-
-
-
-
-## Tags for originating language
-The following tags are used to guide conversion to IPA: loan words
-and foreign names are usually pronounced (approximately) as in the
-originating (majority) language. Instead of trying to identify the
-correct pronunciation based on phonotactics (orthotactics actually),
-we tag all words that can't be correctly transcribed using the SME
-transcriber with source language codes. Once tagged, it is possible
-to split the lexical transducer in smaller ones according to langu-
-age, and apply different IPA conversion to each of them.
-The principle of tagging is that we only tag to the extent needed,
-and following a priority:
-1. any untagged word is pronounced with SME orthographic conventions
-1. NNO and NOB have identical pronunciation, NNO is only used if
-different in spelling from NOB
-1. SWE has mostly the same pronunciation as NOB, and is only used
-if different in spelling from NOB
-1. Occasionally even SME (the default) may be tagged, to block other
-languages from being specified, mainly during semi-automatic
-language tagging sessions
-All in all, we want to get as much correctly transcribed to IPA
-with as little work as possible. On the other hand, if more words
-are tagged than strictly needed, this should pose no problem as
-long as the IPA conversion is correct - at least some words will
-get the same pronunciation whether read as SME or NOB/NNO/SWE.
- * +OLang/SME - North Sámi
- * +OLang/SMA - South Sámi
- * +OLang/FIN - Finnish
- * +OLang/SWE - Swedish
- * +OLang/NOB - Norw. bokmål
- * +OLang/NNO - Norw. nynorsk
- * +OLang/ENG - English
- * +OLang/RUS - Russian
- * +OLang/UND - Undefined
-
-
-
-
-
-
-## Flag diacritics
-
-We have manually optimised the structure of our lexicon using following
-flag diacritics to restrict morhpological combinatorics - only allow compounds
-with verbs if the verb is further derived into a noun again:
-
-|               Flag diacritic | Explanation
-|               :------------- |:-----------
- |  @P.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
- |  @D.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
- |  @C.NeedNoun@ | (Dis)allow compounds with verbs unless nominalised
-
-
-|               Flag diacritic | Explanation
-|               :------------- |:-----------
- |  @P.Pmatch.Loc@ | Used on multi-token analyses; tell hfst-tokenise/pmatch where in the form/analysis the token should be split.
- |  @P.Pmatch.Backtrack@ | Used on single-token analyses; tell hfst-tokenise/pmatch to backtrack by reanalysing the substrings before and after this point in the form (to find combinations of shorter analyses that would otherwise be missed)
-
-
-|               Flag diacritic | Explanation
-|               :------------- |:-----------
- | @D.ErrOrth.ON@ | To be written
- | @R.ErrOrth.ON@ | To be written
- | @C.ErrOrth@ | To be written
- | @P.ErrOrth.ON@ | To be written
-
-For languages that allow compounding, the following flag diacritics are needed
-to control position-based compounding restrictions for nominals. Their use is
-handled automatically if combined with +CmpN/xxx tags. If not used, they will
-do no harm.
- |  @P.CmpFrst.FALSE@ | Require that words tagged as such only appear first
- |  @D.CmpPref.TRUE@ | Block such words from entering ENDLEX
- |  @P.CmpPref.FALSE@ | Block these words from making further compounds
- |  @D.CmpLast.TRUE@ | Block such words from entering R
- |  @D.CmpNone.TRUE@ | Combines with the next tag to prohibit compounding
- |  @U.CmpNone.FALSE@ | Combines with the prev tag to prohibit compounding
- |  @U.CmpNone.TRUE@ | Combines with the two previous ones to block compounding
- |  @P.CmpOnly.TRUE@ | Sets a flag to indicate that the word has passed R
- |  @D.CmpOnly.FALSE@ | Disallow words coming directly from root.
- |  @U.CmpHyph.FALSE@ | Flag to control hyphenated compounds like proper nouns
- |  @U.CmpHyph.TRUE@ | Flag to control hyphenated compounds like proper nouns
- |  @C.CmpHyph@ | Flag to control hyphenated compounds like proper nouns
-Use the following flag diacritics to control downcasing of derived proper
-nouns (e.g. Finnish Pariisi -> pariisilainen). See e.g. North Sámi for how to use
-these flags. There exists a ready-made regex that will do the actual down-casing
-given the proper use of these flags.
- |  @U.Cap.Obl@ | Disallow downcasing of names when not derived: Deatnu
- |  @U.Cap.Opt@ | Allowing downcasing of derived names: deatnulasj.
- |  @P.Px.add@ | Giving possibility for Px-suffixes (all except from Nom 3.p)
- |  @R.Px.add@ | Requiring P.Px.add-flag for Px-suffixes (all except from Nom 3.p)
- |  @P.Nom3Px.add@ |  Giving possibility for Px-suffixes Nom 3.p
- |  @R.Nom3Px.add@ | Requiring P.Nom3Px.add flag for Px-suffixes Nom 3.p
-
-
-
-
-
-
-
-
-
- * **LEXICON Acronym**
-
-
-
- * **LEXICON ProperNoun**
-
-# Lexicon ENDLEX
-And this is the ENDLEX of everything:
-```
- @D.CmpOnly.FALSE@@D.CmpPref.TRUE@@D.NeedNoun.ON@ # ;
-```
-The `@D.CmpOnly.FALSE@` flag diacritic is ued to disallow words tagged
-with +CmpNP/Only to end here.
-The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
 * * *
-<small>This (part of) documentation was generated from [../src/fst/root.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/root.lexc)</small>
+<small>This (part of) documentation was generated from [../src/fst/affixes/symbols.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/symbols.lexc)</small>
+
+
+
+
+
+
+
+
+
+
+
+
+ * **LEXICON Noun  ** dividing in NounNoPx, NounPx (with a P.Px.add flag)  and NounPxKin (with a P.Nom3Px.add flag)
+
+
+
+
+
+
+LOAN
+LOAN
+LOAN
+LOAN SWE altar
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/nouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/nouns.lexc)</small>
+
+
+
+
+
+
+
+
+
+
+
+sme mojonjálmmiid
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/adverbs.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/adverbs.lexc)</small>
+# File containing North Saami abbreviations 
+
+## Lexica for adding tags and periods
+
+Splitting in 4 + 1 groups, because of the preprocessor
+
+ * **LEXICON Abbreviation-smj **
+ 1. The ITRAB ;	   lexicon (intransitive abbrs)
+ 1. The TRNUMAB ;  lexicon (abbrs trans wrt. numberals)
+ 1. The TRAB ;	   lexicon (transitive abbrs)
+ 1. The NOAB ;	   lexicon (not really abbrs)
+ 1. The NUMNOAB ;  lexicon (not behaving as abbr before num)
+
+
+## The abbreviation lexicon itself
+
+
+
+ * **LEXICON ITRAB ** are intransitive abbreviations, A.S. etc.
+
+
+
+
+
+
+ * **LEXICON NOAB ** du, gen, jur
+
+This class contains homonyms, which are both intransitive
+abbreviations and normal words. The abbreviation usage
+is less common and thus only the occurences in the middle of
+the sentnece (when next word has small letters) can be 
+considered as true cases.
+
+
+
+
+
+ * **LEXICON TRNUMAB ** contains abbreviations who are transitive in front of numerals 
+
+For abbrs for which numerals are complements, but other
+words not necessarily are. This group treats arabic numerals as
+if it were transitive but letters as if it were intransitive.
+
+
+
+
+
+
+
+ * **LEXICON TRAB ** contains transitive abbreviations
+
+This lexicon is for abbrs that always have a constituent following it.
+
+
+
+
+
+ * **LEXICON NUMNOAB ** su, dii
+
+This class contains homonyms, which are both abbrs for 
+which numerals are complements and normal words. The abbreviation usage
+is less common and thus only the occurences in the middle of
+the sentence can be considered as true cases.
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/smj-abbreviations.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/smj-abbreviations.lexc)</small>
+
+
+
+
+
+vájnno
+vájnno
+vájnno
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/adjectives.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/adjectives.lexc)</small>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Reciprocal pronouns as multiword expression
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/pronouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/pronouns.lexc)</small>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-numbers-digit2text.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
+
+This is still a dummy file.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-date-digit2text.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/transcriptions/transcriptor-date-digit2text.lexc)</small>
 
 
 
@@ -7751,8 +7838,575 @@ Emojies
 
 * * *
 <small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-abbrevs2text.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/transcriptions/transcriptor-abbrevs2text.lexc)</small>
+L U L E   S A A M I   G R A M M A R   C H E C K E R
 
-This is still a dummy file.
+
+
+
+
+
+
+# DELIMITERS
+
+
+# TAGS AND SETS
+
+
+
+## Tags
+
+
+This section lists all the tags inherited from the fst, and used as tags
+in the syntactic analysis. The next section, **Sets**, contains sets defined
+on the basis of the tags listed here, those set names are not visible in the output.
+
+
+
+
+### Beginning and end of sentence
+BOS
+EOS
+
+
+
+### Parts of speech tags
+
+N
+A
+Adv
+V
+Pron
+CS
+CC
+CC-CS
+Po
+Pr
+Pcle
+Num
+Interj
+ABBR
+ACR
+CLB
+LEFT
+RIGHT
+WEB
+QMARK
+PPUNCT
+PUNCT
+
+COMMA
+¶
+
+
+
+### Tags for POS sub-categories
+
+Pers
+Dem
+Interr
+Indef
+Recipr
+Refl
+Rel
+Coll
+NomAg
+Prop
+Allegro
+Arab
+Romertall
+
+
+
+
+
+
+
+
+
+
+
+
+### Tags for morphosyntactic properties
+
+Nom
+Acc
+Gen
+Gen
+Gen
+Ill
+Loc
+Com
+Ess
+Ess
+Sg
+Du
+Pl
+Cmp/SplitR
+Cmp/SgNom Cmp/SgGen
+Cmp/SgGen
+PxSg1
+PxSg2
+PxSg3
+PxDu1
+PxDu2
+PxDu3
+PxPl1
+PxPl2
+PxPl3
+Px
+
+Comp, both for adverbs and adjectives
+Superl, both for adverbs and adjectives
+Attr
+Ord
+Qst
+IV
+TV
+Prt
+Prs
+Ind
+Pot
+Cond
+Imprt
+ImprtII
+Sg1
+Sg2
+Sg3
+Du1
+Du2
+Du3
+Pl1
+Pl2
+Pl3
+Inf
+ConNeg
+Neg
+PrfPrc
+VGen
+PrsPrc
+Ger
+Sup
+Actio
+VAbess
+
+
+
+Err/Orth
+
+
+
+### Semantic tags
+
+Sem/Act
+Sem/Ani
+Sem/Atr
+Sem/Body
+Sem/Clth
+Sem/Domain
+Sem/Feat-phys
+Sem/Fem
+Sem/Group
+Sem/Lang
+Sem/Mal
+Sem/Measr
+Sem/Money
+Sem/Obj
+Sem/Obj-el
+Sem/Org
+Sem/Perc-emo
+Sem/Plc
+Sem/Sign
+Sem/State-sick
+Sem/Sur
+Sem/Time
+Sem/Txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+HUMAN
+
+HAB-ACTOR
+HAB-ACTOR-NOT-HUMAN
+
+
+PROP-ATTR
+PROP-SUR
+
+
+
+TIME-N-SET
+
+
+###  Syntactic tags
+
+@+FAUXV
+@+FMAINV
+@-FAUXV
+@-FMAINV
+@-FSUBJ>
+@-F<OBJ
+@-FOBJ>
+@-FSPRED<OBJ
+@-F<ADVL
+@-FADVL>
+@-F<SPRED
+@-F<OPRED
+@-FSPRED>
+@-FOPRED>
+@>ADVL
+@ADVL<
+@<ADVL
+@ADVL>
+@ADVL
+@HAB>
+@<HAB
+@>N
+@Interj
+@N<
+@>A
+@P<
+@>P
+@HNOUN
+@INTERJ
+@>Num
+@Pron<
+@>Pron
+@Num<
+@OBJ
+@<OBJ
+@OBJ>
+@OPRED
+@<OPRED
+@OPRED>
+@PCLE
+@COMP-CS<
+@SPRED
+@<SPRED
+@SPRED>
+@SUBJ
+@<SUBJ
+@SUBJ>
+SUBJ
+SPRED
+OPRED
+@PPRED
+@APP
+@APP-N<
+@APP-Pron<
+@APP>Pron
+@APP-Num<
+@APP-ADVL<
+@VOC
+@CVP
+@CNP
+OBJ
+<OBJ
+OBJ>
+<OBJ-OTHERS
+OBJ>-OTHERS
+SYN-V
+@X
+
+
+
+
+
+## Sets containing sets of lists and tags
+
+This part of the file lists a large number of sets based partly upon the tags defined above, and
+partly upon lexemes drawn from the lexicon.
+See the sourcefile itself to inspect the sets, what follows here is an overview of the set types.
+
+
+
+### Sets for Single-word sets
+
+INITIAL
+
+
+### Sets for word or not
+
+WORD
+REAL-WORD
+REAL-WORD-NOT-ABBR
+NOT-COMMA
+
+
+### Case sets
+
+ADLVCASE
+
+CASE-AGREEMENT
+CASE
+
+NOT-NOM
+NOT-GEN
+NOT-ACC
+
+### Verb sets
+
+
+NOT-V
+
+### Sets for finiteness and mood
+
+REAL-NEG
+
+
+
+
+
+
+
+
+
+
+
+
+
+NOT-PRFPRC
+
+
+### Sets for person
+
+SG1-V
+SG2-V
+SG3-V
+DU1-V
+DU2-V
+DU3-V
+PL1-V
+PL2-V
+PL3-V
+
+
+
+
+
+### Pronoun sets
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Adjectival sets and their complements
+
+
+
+
+### Adverbial sets and their complements
+
+
+
+
+### Sets of elements with common syntactic behaviour
+
+
+### NP sets defined according to their morphosyntactic features
+
+
+
+
+
+
+
+
+### The PRE-NP-HEAD family of sets
+
+These sets model noun phrases (NPs). The idea is to first define whatever can
+occur in front of the head of the NP, and thereafter negate that with the
+expression **WORD - premodifiers**.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Border sets and their complements
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Error tags
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -7783,61 +8437,7 @@ This is still a dummy file.
 
 
 * * *
-<small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-date-digit2text.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/transcriptions/transcriptor-date-digit2text.lexc)</small>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-numbers-digit2text.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
+<small>This (part of) documentation was generated from [../tools/grammarcheckers/grammarchecker.cg3](http://github.com/giellalt/lang-smj/blob/main/../tools/grammarcheckers/grammarchecker.cg3)</small>
 
 
 
@@ -9093,603 +9693,3 @@ This is still a dummy file.
 
 * * *
 <small>This (part of) documentation was generated from [../tools/grammarcheckers/grc-disambiguator.cg3](http://github.com/giellalt/lang-smj/blob/main/../tools/grammarcheckers/grc-disambiguator.cg3)</small>
-L U L E   S A A M I   G R A M M A R   C H E C K E R
-
-
-
-
-
-
-
-# DELIMITERS
-
-
-# TAGS AND SETS
-
-
-
-## Tags
-
-
-This section lists all the tags inherited from the fst, and used as tags
-in the syntactic analysis. The next section, **Sets**, contains sets defined
-on the basis of the tags listed here, those set names are not visible in the output.
-
-
-
-
-### Beginning and end of sentence
-BOS
-EOS
-
-
-
-### Parts of speech tags
-
-N
-A
-Adv
-V
-Pron
-CS
-CC
-CC-CS
-Po
-Pr
-Pcle
-Num
-Interj
-ABBR
-ACR
-CLB
-LEFT
-RIGHT
-WEB
-QMARK
-PPUNCT
-PUNCT
-
-COMMA
-¶
-
-
-
-### Tags for POS sub-categories
-
-Pers
-Dem
-Interr
-Indef
-Recipr
-Refl
-Rel
-Coll
-NomAg
-Prop
-Allegro
-Arab
-Romertall
-
-
-
-
-
-
-
-
-
-
-
-
-### Tags for morphosyntactic properties
-
-Nom
-Acc
-Gen
-Gen
-Gen
-Ill
-Loc
-Com
-Ess
-Ess
-Sg
-Du
-Pl
-Cmp/SplitR
-Cmp/SgNom Cmp/SgGen
-Cmp/SgGen
-PxSg1
-PxSg2
-PxSg3
-PxDu1
-PxDu2
-PxDu3
-PxPl1
-PxPl2
-PxPl3
-Px
-
-Comp, both for adverbs and adjectives
-Superl, both for adverbs and adjectives
-Attr
-Ord
-Qst
-IV
-TV
-Prt
-Prs
-Ind
-Pot
-Cond
-Imprt
-ImprtII
-Sg1
-Sg2
-Sg3
-Du1
-Du2
-Du3
-Pl1
-Pl2
-Pl3
-Inf
-ConNeg
-Neg
-PrfPrc
-VGen
-PrsPrc
-Ger
-Sup
-Actio
-VAbess
-
-
-
-Err/Orth
-
-
-
-### Semantic tags
-
-Sem/Act
-Sem/Ani
-Sem/Atr
-Sem/Body
-Sem/Clth
-Sem/Domain
-Sem/Feat-phys
-Sem/Fem
-Sem/Group
-Sem/Lang
-Sem/Mal
-Sem/Measr
-Sem/Money
-Sem/Obj
-Sem/Obj-el
-Sem/Org
-Sem/Perc-emo
-Sem/Plc
-Sem/Sign
-Sem/State-sick
-Sem/Sur
-Sem/Time
-Sem/Txt
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-HUMAN
-
-HAB-ACTOR
-HAB-ACTOR-NOT-HUMAN
-
-
-PROP-ATTR
-PROP-SUR
-
-
-
-TIME-N-SET
-
-
-###  Syntactic tags
-
-@+FAUXV
-@+FMAINV
-@-FAUXV
-@-FMAINV
-@-FSUBJ>
-@-F<OBJ
-@-FOBJ>
-@-FSPRED<OBJ
-@-F<ADVL
-@-FADVL>
-@-F<SPRED
-@-F<OPRED
-@-FSPRED>
-@-FOPRED>
-@>ADVL
-@ADVL<
-@<ADVL
-@ADVL>
-@ADVL
-@HAB>
-@<HAB
-@>N
-@Interj
-@N<
-@>A
-@P<
-@>P
-@HNOUN
-@INTERJ
-@>Num
-@Pron<
-@>Pron
-@Num<
-@OBJ
-@<OBJ
-@OBJ>
-@OPRED
-@<OPRED
-@OPRED>
-@PCLE
-@COMP-CS<
-@SPRED
-@<SPRED
-@SPRED>
-@SUBJ
-@<SUBJ
-@SUBJ>
-SUBJ
-SPRED
-OPRED
-@PPRED
-@APP
-@APP-N<
-@APP-Pron<
-@APP>Pron
-@APP-Num<
-@APP-ADVL<
-@VOC
-@CVP
-@CNP
-OBJ
-<OBJ
-OBJ>
-<OBJ-OTHERS
-OBJ>-OTHERS
-SYN-V
-@X
-
-
-
-
-
-## Sets containing sets of lists and tags
-
-This part of the file lists a large number of sets based partly upon the tags defined above, and
-partly upon lexemes drawn from the lexicon.
-See the sourcefile itself to inspect the sets, what follows here is an overview of the set types.
-
-
-
-### Sets for Single-word sets
-
-INITIAL
-
-
-### Sets for word or not
-
-WORD
-REAL-WORD
-REAL-WORD-NOT-ABBR
-NOT-COMMA
-
-
-### Case sets
-
-ADLVCASE
-
-CASE-AGREEMENT
-CASE
-
-NOT-NOM
-NOT-GEN
-NOT-ACC
-
-### Verb sets
-
-
-NOT-V
-
-### Sets for finiteness and mood
-
-REAL-NEG
-
-
-
-
-
-
-
-
-
-
-
-
-
-NOT-PRFPRC
-
-
-### Sets for person
-
-SG1-V
-SG2-V
-SG3-V
-DU1-V
-DU2-V
-DU3-V
-PL1-V
-PL2-V
-PL3-V
-
-
-
-
-
-### Pronoun sets
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Adjectival sets and their complements
-
-
-
-
-### Adverbial sets and their complements
-
-
-
-
-### Sets of elements with common syntactic behaviour
-
-
-### NP sets defined according to their morphosyntactic features
-
-
-
-
-
-
-
-
-### The PRE-NP-HEAD family of sets
-
-These sets model noun phrases (NPs). The idea is to first define whatever can
-occur in front of the head of the NP, and thereafter negate that with the
-expression **WORD - premodifiers**.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Border sets and their complements
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Error tags
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../tools/grammarcheckers/grammarchecker.cg3](http://github.com/giellalt/lang-smj/blob/main/../tools/grammarcheckers/grammarchecker.cg3)</small>
