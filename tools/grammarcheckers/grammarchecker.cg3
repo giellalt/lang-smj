@@ -1257,18 +1257,23 @@ MOVE:syn-subj-before-neg &syn-subj-before-neg AFTER (*1 (N Nom) OR (Pron Nom) BA
 
 	 # Sg1 SUBJ
 
-ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg OR (V Ind Prt) - ConNeg OR (V Cond) OR (V Neg Ind) IF (*-1 (Pron Sem/Hum Pers Sg1 Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 @COMP-CS< LINK *-1 BOS OR (":") OR (";") OR ("/") OR ("‹") OR ("–") OR COMMA OR CS OR (Adv Subqst) OR (Pron Rel Sg) BARRIER NOT-ADV-PCLE)(NEGATE 0 Sg1 OR &real OR (N Sg) - Px OR Adv);
+ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg OR (V Ind Prt) - ConNeg OR (V Cond) OR (V Neg Ind) IF (*-1 (Pron Pers Sg1 Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 @COMP-CS< LINK *-1 BOS OR (":") OR (";") OR ("/") OR ("‹") OR ("–") OR COMMA OR CS OR (Adv Subqst) OR (Pron Rel Sg) BARRIER NOT-ADV-PCLE)(NEGATE 0 Sg1 OR &real OR (N Sg) - Px OR Adv);
 	## Mun leat boaris.
 	## Mun it 	leat sordojuvvon, muhto mun jáhkan ahte mu sámevuohta lea dan”
 	## – Mun barggat 	hirbmat olu, muhttun váhkkuid sáhtan roahkka bargat 40-50 diimmu, muitala Per Vidar.
 	#$  Mun oainnát 	ballen dan áhkus, dat lávii ovtto bahádallat.
 	## Mun boahtá deike.
 
-COPY:syn-number_congruence-subj-verb (Sg1 &SUGGEST) EXCEPT Sg2 OR Sg3 OR Du1 OR Du2 OR Du3 OR Pl1 OR Pl2 OR Pl3 TARGET (V Neg Ind &syn-number_congruence-subj-verb) OR (V Ind Prs &syn-number_congruence-subj-verb)  OR (V Ind Prt &syn-number_congruence-subj-verb) IF (*-1 (Pron Sem/Hum Pers Sg1 Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 @COMP-CS< LINK *-1 BOS OR (":") OR (";") OR ("/") OR ("‹") OR ("–") OR COMMA OR CS OR (Adv Subqst) OR (Pron Rel Sg) BARRIER NOT-ADV-PCLE)(NEGATE 0 Sg1 OR &real OR (N Sg) - Px OR Adv);
+COPY:syn-number_congruence-subj-verb (Sg1 &SUGGEST) EXCEPT Sg2 OR Sg3 OR Du1 OR Du2 OR Du3 OR Pl1 OR Pl2 OR Pl3 TARGET (V Neg Ind &syn-number_congruence-subj-verb) OR (V Ind Prs &syn-number_congruence-subj-verb)  OR (V Ind Prt &syn-number_congruence-subj-verb) IF (*-1 (Pron Pers Sg1 Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 @COMP-CS< LINK *-1 BOS OR (":") OR (";") OR ("/") OR ("‹") OR ("–") OR COMMA OR CS OR (Adv Subqst) OR (Pron Rel Sg) BARRIER NOT-ADV-PCLE)(NEGATE 0 Sg1 OR &real OR (N Sg) - Px OR Adv);
+
+	# post subj
+
+ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg OR (V Ind Prt) - ConNeg OR (V Cond) OR (V Neg Ind) IF (*-1 (Pron Pers Sg1 Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 @COMP-CS< LINK *-1 BOS OR (":") OR (";") OR ("/") OR ("‹") OR ("–") OR COMMA OR CS OR (Adv Subqst) OR (Pron Rel Sg) BARRIER NOT-ADV-PCLE)(NEGATE 0 Sg1 OR &real OR (N Sg) - Px OR Adv);	
+	
 
 	 # Sg2 SUBJ
 
-ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg OR (V Ind Prt) - ConNeg OR (V Cond) OR (V Neg Ind) IF (*-1 (Pron Sem/Hum Pers Sg2 Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 @COMP-CS< LINK *-1 BOS OR (":") OR (";")  OR ("/") OR ("‹") OR ("–") OR COMMA OR CS OR CC OR (Adv Subqst) OR (Pron Rel Sg) BARRIER NOT-ADV-PCLE)(NEGATE 0 Sg2 OR ("leat" Pl1) OR &real OR (N Sg) - Px OR Adv);
+ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg OR (V Ind Prt) - ConNeg OR (V Cond) OR (V Neg Ind) IF (*-1 (Pron Pers Sg2 Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 @COMP-CS< LINK *-1 BOS OR (":") OR (";")  OR ("/") OR ("‹") OR ("–") OR COMMA OR CS OR CC OR (Adv Subqst) OR (Pron Rel Sg) BARRIER NOT-ADV-PCLE)(NEGATE 0 Sg2 OR ("leat" Pl1) OR &real OR (N Sg) - Px OR Adv);
 	## Don boahtá deike.
 	## Movt 	don lea 	vásihan ohppiid sámegielgeavaheami sin astoáiggis ja go ovttastallet ustibiiguin?
 	##“ Gosa 	don lea 	vuolgán?
@@ -1293,25 +1298,18 @@ ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V
 	## Juste dat ii oro nu váttis, go 	don lea 	čeahppi humahallat earáid dál.
 	## Movt don čoavddát dán, lea dan duohken man duhtavaš 	don lea 	eallimiin ja man ollu návccaid don bijat dasa.
 
-COPY:syn-number_congruence-subj-verb (Sg2 &SUGGEST) EXCEPT Sg1 OR Sg3 OR Du1 OR Du2 OR Du3 OR Pl1 OR Pl2 OR Pl3 OR ConNeg TARGET (V Neg Ind &syn-number_congruence-subj-verb) OR (V Ind Prs &syn-number_congruence-subj-verb)  OR (V Ind Prt &syn-number_congruence-subj-verb) OR (V Cond &syn-number_congruence-subj-verb) OR (V Neg Ind &syn-number_congruence-subj-verb)  IF (*-1 (Pron Sem/Hum Pers Sg2 Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 @COMP-CS< LINK *-1 BOS OR (":") OR (";")  OR ("/") OR ("‹") OR ("–") OR COMMA OR CS OR CC OR (Adv Subqst) OR (Pron Rel Sg) BARRIER NOT-ADV-PCLE)(NEGATE 0 Sg2 OR ("leat" Pl1) OR &real OR (N Sg) - Px OR Adv);
+COPY:syn-number_congruence-subj-verb (Sg2 &SUGGEST) EXCEPT Sg1 OR Sg3 OR Du1 OR Du2 OR Du3 OR Pl1 OR Pl2 OR Pl3 OR ConNeg TARGET (V Neg Ind &syn-number_congruence-subj-verb) OR (V Ind Prs &syn-number_congruence-subj-verb)  OR (V Ind Prt &syn-number_congruence-subj-verb) OR (V Cond &syn-number_congruence-subj-verb) OR (V Neg Ind &syn-number_congruence-subj-verb)  IF (*-1 (Pron Pers Sg2 Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 @COMP-CS< LINK *-1 BOS OR (":") OR (";")  OR ("/") OR ("‹") OR ("–") OR COMMA OR CS OR CC OR (Adv Subqst) OR (Pron Rel Sg) BARRIER NOT-ADV-PCLE)(NEGATE 0 Sg2 OR ("leat" Pl1) OR &real OR (N Sg) - Px OR Adv);
 
 
 	# Adpostitional phrase/object/genitive modifier sentence-initially
 
-ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg OR (V Ind Prt) - ConNeg OR (V Cond) OR (V Neg Ind) IF (*-1 (Pron Sem/Hum Pers Sg2 Nom) BARRIER NOT-ADV-PCLE LINK -1 Po LINK -1 @>P LINK -1 BOS)(NEGATE 0 Sg2 OR ("leat" Pl1) OR &real OR (N Sg) - Px OR Adv);
+ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg OR (V Ind Prt) - ConNeg OR (V Cond) OR (V Neg Ind) IF (*-1 (Pron Pers Sg2 Nom) BARRIER NOT-ADV-PCLE LINK -1 Po LINK -1 @>P LINK -1 BOS)(NEGATE 0 Sg2 OR ("leat" Pl1) OR &real OR (N Sg) - Px OR Adv);
 	## Dan maŋŋá 	don fárrii 	fas Eŋglándii.
 
-ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg OR (V Ind Prt) - ConNeg OR (V Cond) OR (V Neg Ind) IF (*-1 (Pron Sem/Hum Pers Sg2 Nom) BARRIER NOT-ADV-PCLE LINK -1 @OBJ> LINK *-1 BOS BARRIER NOT-NPMOD)(NEGATE 0 Sg2 OR ("leat" Pl1) OR &real OR (N Sg) - Px OR Adv);
+ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg OR (V Ind Prt) - ConNeg OR (V Cond) OR (V Neg Ind) IF (*-1 (Pron Pers Sg2 Nom) BARRIER NOT-ADV-PCLE LINK -1 @OBJ> LINK *-1 BOS BARRIER NOT-NPMOD)(NEGATE 0 Sg2 OR ("leat" Pl1) OR &real OR (N Sg) - Px OR Adv);
 	## Daid 	don bargá 	.
 	## Maid 	don lea 	totne?
 
 
-	#testing those kind of rules
-#ADD:punct-aistton-siste (&punct-aistton-siste) TARGET (Pron Sem/Hum Pers Sg2 Nom) IF (1 (V Sg3) LINK NEGATE 0 Sg2 OR ("leat" Pl1) OR &real OR (N Sg) - Px)(-1 @SUBJ> + Sg LINK *-1 BOS BARRIER NOT-NPMOD);
-#ADD:punct-aistton-siste (&punct-aistton-siste) TARGET (Pron Sem/Hum Pers Sg2 Nom) IF (1 (V Pl3) LINK NEGATE 0 Sg2 OR ("leat" Pl1) OR &real OR (N Sg) - Px)(-1 @SUBJ> + Pl LINK *-1 BOS BARRIER NOT-NPMOD);
-	## Subjeakta {don} ii kontrollere dilálašvuođa masa
-	#TOD DO:
-	## {Digitála gálggat} mearkkaša ovdánahttit máhtu dahkkivuoigatvuođa ja personsuodjalusa birra dárkkisdahtti gáldočujuhusaid bokte.
-
-COPY:syn-number_congruence-subj-verb (Sg2 &SUGGEST) EXCEPT Sg1 OR Sg3 OR Du1 OR Du2 OR Du3 OR Pl1 OR Pl2 OR Pl3 TARGET (V Neg Ind &syn-number_congruence-subj-verb) OR (V Ind Prs &syn-number_congruence-subj-verb) OR (V Ind Prt &syn-number_congruence-subj-verb) OR (V Cond &syn-number_congruence-subj-verb) OR (V Neg Ind &syn-number_congruence-subj-verb)  IF (*-1 (Pron Sem/Hum Pers Sg2 Nom) BARRIER NOT-ADV-PCLE LINK -1 Po LINK -1 @>P LINK -1 BOS)(NEGATE 0 Sg2 OR ("leat" Pl1) OR &real);
+COPY:syn-number_congruence-subj-verb (Sg2 &SUGGEST) EXCEPT Sg1 OR Sg3 OR Du1 OR Du2 OR Du3 OR Pl1 OR Pl2 OR Pl3 TARGET (V Neg Ind &syn-number_congruence-subj-verb) OR (V Ind Prs &syn-number_congruence-subj-verb) OR (V Ind Prt &syn-number_congruence-subj-verb) OR (V Cond &syn-number_congruence-subj-verb) OR (V Neg Ind &syn-number_congruence-subj-verb)  IF (*-1 (Pron Pers Sg2 Nom) BARRIER NOT-ADV-PCLE LINK -1 Po LINK -1 @>P LINK -1 BOS)(NEGATE 0 Sg2 OR ("leat" Pl1) OR &real);
 
