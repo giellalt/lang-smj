@@ -1268,7 +1268,13 @@ COPY:syn-number_congruence-subj-verb (Sg1 &SUGGEST) EXCEPT Sg2 OR Sg3 OR Du1 OR 
 
 	# post subj
 
-ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg OR (V Ind Prt) - ConNeg OR (V Cond) OR (V Neg Ind) IF (*-1 (Pron Pers Sg1 Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 @COMP-CS< LINK *-1 BOS OR (":") OR (";") OR ("/") OR ("‹") OR ("–") OR COMMA OR CS OR (Adv Subqst) OR (Pron Rel Sg) BARRIER NOT-ADV-PCLE)(NEGATE 0 Sg1 OR &real OR (N Sg) - Px OR Adv);	
+ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg OR (V Ind Prt) - ConNeg OR (V Cond) OR (V Neg Ind) IF (*1 (Pron Pers Sg1 Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 @COMP-CS<)(NEGATE 0 Sg1 OR &real OR (N Sg) - Px OR Adv)(NEGATE *-1 (Pron Pers) - Sg1);	
+	## 
+
+ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Neg Ind) IF (*1 (Pron Pers Sg1 Nom) BARRIER NOT-ADV-PCLE - ConNeg LINK NOT 0 @COMP-CS<)(NEGATE 0 Sg1 OR &real OR (N Sg) - Px OR Adv)(NEGATE *-1 (Pron Pers) - Sg1);	
+	## Valla ij la mån moaren dan diehti!
+	
+COPY:syn-number_congruence-subj-verb (Sg1 &SUGGEST) EXCEPT Sg2 OR Sg3 OR Du1 OR Du2 OR Du3 OR Pl1 OR Pl2 OR Pl3 TARGET (V Neg Ind &syn-number_congruence-subj-verb) OR (V Ind Prs &syn-number_congruence-subj-verb)  OR (V Ind Prt &syn-number_congruence-subj-verb) IF (*1 (Pron Pers Sg1 Nom) BARRIER NOT-ADV-PCLE - ConNeg LINK NOT 0 @COMP-CS<)(NEGATE 0 Sg1 OR &real OR (N Sg) - Px OR Adv)(NEGATE *-1 (Pron Pers) - Sg1);
 	
 
 	 # Sg2 SUBJ
