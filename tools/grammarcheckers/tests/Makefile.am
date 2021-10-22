@@ -15,7 +15,8 @@ TESTS=\
 	real-PrsSg2-PrsSg3.yaml \
 	real-PrtSg2-PrtSg3.yaml \
 	real-NegSg3-NegSg2.yaml \
-	real-PrtSg3-PrsPl3.yaml
+	real-PrtSg3-PrsPl3.yaml \
+	msyn-congr-mij-ma.yaml
 
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
