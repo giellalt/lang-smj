@@ -101,15 +101,16 @@ define letter-with-case [
   B -> b || _ [ ">" | ":" ]
 ] ;
 
-define case [
- v     -> a v ,
- j     -> a j ,
- n     -> a n ,
- s     -> a s ,
- j n   -> a i n ,
- j t   -> a i t ,
- j d a -> a i d a ,
- j s   -> a i s || [ ">" | ":" ] _
+define case [            ! No nom - they are both suffix-less
+ v     -> a v ,          ! Sg Acc
+ j     -> a j ,          ! Sg Ill, Pl Gen, Pl Com
+ n     -> a n ,          ! Sg Ine, Ess
+ s     -> a s ,          ! Sg Ela
+ j n   -> a i n ,        ! Sg Com, Pl Ine
+ j t   -> a i t ,        ! Pl Acc
+ j d a -> a i d a ,      ! Pl Ill
+ j s   -> a i s          ! Pl Ela
+       || [ ">" | ":" ] _ .#.
 ] ;
 
 define cleanup [
