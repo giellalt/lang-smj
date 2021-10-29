@@ -1,0 +1,113 @@
+! Divvun & Giellatekno - open source grammars for Sámi and other languages
+! Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
+! http://giellatekno.uit.no & http://divvun.no
+!
+!
+! This program is free software; you can redistribute and/or modify
+! this file under the terms of the GNU General Public License as published by
+! the Free Software Foundation, either version 3 of the License, or
+! (at your option) any later version. The GNU General Public License
+! is found at http://www.gnu.org/licenses/gpl.html. It is
+! also available in the file LICENSE.txt.
+!
+! Other licensing options are available upon request, please contact
+! giellatekno@hum.uit.no or feedback@divvun.no
+
+!  ==========================================
+!! Phonological ACRO converter for Julev Sámi
+!! ==========================================
+
+!! Converts ACROS to IPA. Intended for use with TTS.
+!!
+!! `>` marks undlying morpheme boundary between lemma and inflectional suffix,
+!! `:` is the same, but in the surface orthography. The idea is that the
+!! pronunciation of the last letter sound (like `e:` when reading the letter
+!! `P`) can be different when followed by a case ending compared to when not.
+!! If that is not true, the system can be simplified.
+
+
+define letter2sound [
+  A -> a ː   ,
+  a -> a ː   ,
+  Á -> ɑ ː   ,
+  á -> ɑ ː   ,
+  B -> b e ː ,
+  b -> b e ː ,
+  C -> c e ː ,
+  c -> c e ː ,
+  D -> d e ː ,
+  d -> d e ː ,
+  E -> e ː   ,
+  e -> e ː   ,
+  F -> æ f ː ,
+  f -> æ f ː ,
+  G -> g e ː ,
+  g -> g e ː ,
+  H -> h ɔ ː ,
+  h -> h ɔ ː ,
+  I -> i ː   ,
+  i -> i ː   ,
+  J -> j e ː ,
+  j -> j e ː ,
+  K -> k ɔ ː ,
+  k -> k ɔ ː ,
+  L -> æ l ː ,
+  l -> æ l ː ,
+  M -> æ m ː ,
+  m -> æ m ː ,
+  N -> æ n ː ,
+  n -> æ n ː ,
+  Ŋ -> æ ŋ ː ,
+  ŋ -> æ ŋ ː ,
+  O -> u ː   ,
+  o -> u ː   ,
+  P -> p e ː ,
+  p -> p e ː ,
+  Q -> q ʉ ː ,
+  q -> q ʉ ː ,
+  R -> æ r ː ,
+  r -> æ r ː ,
+  S -> æ s ː ,
+  s -> æ s ː ,
+  T -> t e ː ,
+  t -> t e ː ,
+  U -> u ː   ,
+  u -> u ː   ,
+  V -> v e ː ,
+  v -> v e ː ,
+  W -> d ɔ bː e l t v e ː ,
+  w -> d ɔ bː e l t v e ː ,
+  X -> æ k s ,
+  x -> æ k s ,
+  Y -> y ː ,
+  y -> y ː ,
+  Z -> s æ t ː ,
+  z -> s æ t ː ,
+  Æ -> æ ː ,
+  æ -> æ ː ,
+  Ä -> æ ː ,
+  ä -> æ ː ,
+  Ø -> ø ː ,
+  ø -> ø ː ,
+  Ö -> ø ː ,
+  ö -> ø ː ,
+  Å -> å ː ,
+  å -> å ː
+] ;
+
+define letter-with-case [
+  A -> a,
+  Á -> á,
+  B -> b || _ [ ">" | ":" ]
+] ;
+
+define case [
+ v -> a v ,
+ s -> a s || [ ">" | ":" ] _
+] ;
+
+read regex [
+     letter2sound
+!  .o. letter-with-case ! blocks lookup for some reason
+!  .o. case
+] ;
