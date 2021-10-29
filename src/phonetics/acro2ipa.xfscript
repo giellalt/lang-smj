@@ -92,7 +92,7 @@ define letter2sound [
   Ö -> ø ː ,
   ö -> ø ː ,
   Å -> ɔ ː ,
-  å -> ɔ ː
+  å -> ɔ ː || _ ?* [ ">" | ":" ]
 ] ;
 
 define letter-with-case [
@@ -102,12 +102,27 @@ define letter-with-case [
 ] ;
 
 define case [
- v -> a v ,
- s -> a s || [ ">" | ":" ] _
+ v     -> a v ,
+ j     -> a j ,
+ n     -> a n ,
+ s     -> a s ,
+ j n   -> a i n ,
+ j t   -> a i t ,
+ j d a -> a i d a ,
+ j s   -> a i s || [ ">" | ":" ] _
+] ;
+
+define cleanup [
+ ">" -> 0,
+ ":" -> 0
 ] ;
 
 read regex [
      letter2sound
 !  .o. letter-with-case ! blocks lookup for some reason
-!  .o. case
+  .o. case
+  .o. cleanup
 ] ;
+
+
+! KS>:av
