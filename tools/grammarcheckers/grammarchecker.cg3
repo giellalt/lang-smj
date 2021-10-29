@@ -1078,13 +1078,14 @@ COPY:msyn-pass-active (&SUGGEST) EXCEPT (Der/PassL &msyn-pass-active) OR (Der/Pa
  
  SET NOT-BEFORE-REL = (*) - Inf - VFIN - COMMA - Po ;
  
-ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NEGATE -1 VFIN LINK -1 (N Sg) OR (Pron Sg));
+ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NEGATE -1 VFIN OR Inf LINK -1 (N Sg) OR (Pron Sg));
  
     ## Valla mij gut lijma Vuonas vuolggám ejma davdiede. 
     ## Da gut ásadin æjvvalimev, lidjin dudálattja.
     ## Ulmutjijda guhti doarjodi báhtariddjijt.
     ## Galggi aj ájggeguovddelis ássjijt åvddånbuktet mij guosská vuorrasij iellemdilláj ja álkkádussaj
     ## Lejga giehttomin M.Gånågis Haraldij dajhásstalusáj birra mij duosstu vuoras sámijt.
+    #$ Galggi aj ájggeguovddelis ássjev åvddånbuktet oajválattjajda mij guosská vuorrasij iellemdilláj ja álkkádussaj.
     
 ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Sg) BARRIER NOT-BEFORE-REL LINK *-1 Num - ("akta") BARRIER NOT-NPMOD ) ;
     
@@ -1255,6 +1256,7 @@ MOVE:syn-subj-before-neg &syn-subj-before-neg AFTER (*1 (N Nom) OR (Pron Nom) BA
 
 SET v = v1 OR v2 OR v3  ;
 
+
     # congruence case/ number
     # -----------------------
 
@@ -1266,7 +1268,9 @@ ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V
 	## – Mån bargaMun barggat 	hirbmat olu, muhttun váhkkuid sáhtan roahkka bargat 40-50 diimmu, muitala Per Vidar.
 	#$  Mun oainnát 	ballen dan áhkus, dat lávii ovtto bahádallat.
 	## Mun boahtá deike.
-
+    ## Valla ij la mån moaren dan diehti.
+    ## Mån ij lav basádam ienep på gålmmå-niellji.
+    
 COPY:syn-number_congruence-subj-verb (Sg1 &SUGGEST) EXCEPT Sg2 OR Sg3 OR Du1 OR Du2 OR Du3 OR Pl1 OR Pl2 OR Pl3 BEFORE v TARGET (V Neg Ind &syn-number_congruence-subj-verb) OR (V Ind Prs &syn-number_congruence-subj-verb) OR (V Ind Prt &syn-number_congruence-subj-verb) IF (*-1 (Pron Pers Sg1 Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 @COMP-CS< LINK *-1 BOS OR (":") OR (";") OR ("/") OR ("‹") OR ("–") OR COMMA OR CS OR (Adv Subqst) OR (Pron Rel Sg) BARRIER NOT-ADV-PCLE)(NEGATE 0 Sg1 OR &real OR (N Sg) - Px OR Adv);
 
 	# post subj
