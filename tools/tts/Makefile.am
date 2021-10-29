@@ -22,13 +22,17 @@ GIELLA_ANL_REMOVE_TRANSCRIPTORS=
 
 # If there are additional, language specific files used in the GC archive,
 # specify here:
-LOCAL_ANL_ZIP_FILES=tokeniser-tts-cggt-desc.pmhfst
+LOCAL_ANL_ZIP_FILES=tokeniser-tts-cggt-desc.pmhfst \
+					acro2ipa.hfstol
 
 #### BEGIN: Local build targets: ####
 
 # Temporary target until we have settled the three-tape text processing:
 tokeniser-tts-cggt-desc.pmhfst: ../tokenisers/tokeniser-tts-cggt-desc.pmhfst
 	$(AM_V_CP)cp -f $< $@
+
+acro2ipa.hfstol: ../../src/phonetics/acro2ipa.lookup.hfst
+	$(AM_V_FST2FST)$(HFST_FST2FST) -w < $< > $@
 
 #### END: Local build targets:   ####
 
