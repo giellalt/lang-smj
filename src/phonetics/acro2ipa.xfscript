@@ -44,8 +44,11 @@
 ! Problem-acroar:
 ! - dynamisk samansetjing; IKT-ådåstuhttemij, AN-jådeduvvam
 
-! Consonants
-define CONS [ b | c | d | f | g | h | j | k | l | m | n | ñ | ń | ŋ | p | q | r | s | t | v | w | x | z ] ; ! C in espeak
+! IPA consonants
+define ICONS [ b | d | f | g | h | j | k | l | m | n | ŋ | p | r | s | t | v ] ;
+
+! IPA vowels
+define IVOWS [ i | y | e | æ | a | ɔ | o | ø | u | ʉ ] ;
 
 !! Default, letter by letter pronunciation
 define letter2sound [
@@ -132,7 +135,7 @@ define Ccase [            ! No nom - they are both suffix-less
  j t   -> a i t ,        ! Pl Acc
  j d a -> a i d a ,      ! Pl Ill
  j s   -> a i s          ! Pl Ela
-       ||   CONS [ ">" | ":" ] _ .#.
+       || ICONS (ː) [ ">" | ":" ] _ .#.
 ] ;
 
 define Vcase [            ! No nom - they are both suffix-less
@@ -144,7 +147,7 @@ define Vcase [            ! No nom - they are both suffix-less
  j t   -> i t ,        ! Pl Acc
  j d a -> i d a ,      ! Pl Ill
  j s   -> i s          ! Pl Ela
-       || \CONS [ ">" | ":" ] _ .#.
+       || IVOWS (ː) [ ">" | ":" ] _ .#.
 ] ;
 
 define cleanup [
