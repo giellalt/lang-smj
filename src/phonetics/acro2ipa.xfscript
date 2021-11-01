@@ -101,7 +101,7 @@ define letter-with-case [
   B -> b || _ [ ">" | ":" ]
 ] ;
 
-define case [            ! No nom - they are both suffix-less
+define Ccase [            ! No nom - they are both suffix-less
  v     -> a v ,          ! Sg Acc
  j     -> a j ,          ! Sg Ill, Pl Gen, Pl Com
  n     -> a n ,          ! Sg Ine, Ess
@@ -110,7 +110,19 @@ define case [            ! No nom - they are both suffix-less
  j t   -> a i t ,        ! Pl Acc
  j d a -> a i d a ,      ! Pl Ill
  j s   -> a i s          ! Pl Ela
-       || [ ">" | ":" ] _ .#.
+       || CONS [ ">" (":") | ":" ] _ .#.
+] ;
+
+define Vcase [            ! No nom - they are both suffix-less
+ v     -> v ,          ! Sg Acc
+ j     -> j ,          ! Sg Ill, Pl Gen, Pl Com
+ n     -> n ,          ! Sg Ine, Ess
+ s     -> s ,          ! Sg Ela
+ j n   -> i n ,        ! Sg Com, Pl Ine
+ j t   -> i t ,        ! Pl Acc
+ j d a -> i d a ,      ! Pl Ill
+ j s   -> i s          ! Pl Ela
+       || \CONS [ ">" (":") | ":" ] _ .#.
 ] ;
 
 define cleanup [
@@ -121,7 +133,8 @@ define cleanup [
 read regex [
      letter2sound
 !  .o. letter-with-case ! blocks lookup for some reason
-  .o. case
+  .o. Ccase
+  .o. Vcase
   .o. cleanup
 ] ;
 
