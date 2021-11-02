@@ -59,6 +59,26 @@ define OCONS [ B | C | D | F | G | H | J | K | L | M | N | Ŋ | P | Q  R | S | T
 define OVOWS [ A | E | I | O | U | Y | Æ | Ø | Å 
              | a | e | i | o | u | y | æ | ø | å ] ;
 
+define CVC [ OCONS OVOWS OCONS ] ;
+
+define CCVC [ OCONS CVC ] ;
+
+define VCVCCV [ VCV (OCONS) OCONS OVOWS ] ;
+
+define VCV [ OVOWS OCONS OVOWS ] ;
+
+define VCVC [ VCV OCONS ] ;
+define CVCV [ OCONS VCV ] ;
+
+define wordacromarker [ [..] -> "WORD" || .#. [ CVC
+                                              | CCVC
+                                              | VCV
+                                              | VCVC
+                                              | CVCV
+                                              | VCVCCV
+                                              ] _ .#.
+] ;
+
 !! Default, letter by letter pronunciation
 define letter2sound [
   A -> a ː   ,
@@ -126,7 +146,76 @@ define letter2sound [
   Ö -> ø ː ,
   ö -> ø ː ,
   Å -> ɔ ː ,
-  å -> ɔ ː || .#. \[ ">" | ":" ]* _ \[ ">" | ":" ]* [ ">" | ":" | .#. ]
+  å -> ɔ ː || .#. \[ ">" | ":" ]* _ \[ ">" | ":" ]* [ ">" | ":" ] \"WORD" .#.
+] ;
+
+define word2sound [
+  A -> a ,
+  a -> a ,
+  Á -> ɑ ,
+  á -> ɑ ,
+  B -> b ,
+  b -> b ,
+  C -> c ,
+  c -> c ,
+  D -> d ,
+  d -> d ,
+  E -> e ,
+  e -> e ,
+  F -> f ,
+  f -> f ,
+  G -> g ,
+  g -> g ,
+  H -> h ,
+  h -> h ,
+  I -> i ,
+  i -> i ,
+  J -> j ,
+  j -> j ,
+  K -> k ,
+  k -> k ,
+  L -> l ,
+  l -> l ,
+  M -> m ,
+  m -> m ,
+  N -> n ,
+  n -> n ,
+  Ŋ -> ŋ ,
+  ŋ -> ŋ ,
+  O -> u ,
+  o -> u ,
+  P -> p ,
+  p -> p ,
+  Q -> q ,
+  q -> q ,
+  R -> r ,
+  r -> r ,
+  S -> s ,
+  s -> s ,
+  T -> t ,
+  t -> t ,
+  U -> u ,
+  u -> u ,
+  V -> v ,
+  v -> v ,
+  W -> d ,
+  w -> d ,
+  X -> k s ,
+  x -> k s ,
+  Y -> y ,
+  y -> y ,
+  Z -> s ,
+  z -> s ,
+  Æ -> æ ,
+  æ -> æ ,
+  Ä -> æ ,
+  ä -> æ ,
+  Ø -> ø ,
+  ø -> ø ,
+  Ö -> ø ,
+  ö -> ø ,
+  Å -> ɔ ,
+  å -> ɔ ː ||  _ \[ ">" | ":" ]* ( [ ">" | ":" ] \[ ">" | ":" ]* ) "WORD" .#. 
 ] ;
 
 define letter-with-case [
@@ -165,7 +254,9 @@ define cleanup [
 ] ;
 
 read regex [
-     letter2sound
+      wordacromarker
+  .o. letter2sound
+  .o. word2sound
 !  .o. letter-with-case ! blocks lookup for some reason
   .o. Ccase
   .o. Vcase
