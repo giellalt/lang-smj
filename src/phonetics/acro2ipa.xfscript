@@ -70,13 +70,13 @@ define VCV [ OVOWS OCONS OVOWS ] ;
 define VCVC [ VCV OCONS ] ;
 define CVCV [ OCONS VCV ] ;
 
-define wordacromarker [ [..] -> "WORD" || .#. [ CVC
+define wordacromarker [ [..] -> "_WORD" || .#. [ CVC
                                               | CCVC
                                               | VCV
                                               | VCVC
                                               | CVCV
                                               | VCVCCV
-                                              ] _ .#.
+                                              ] ( [ ">" | ":" ] \[ ">" | ":" ]+ ) _ .#.
 ] ;
 
 !! Default, letter by letter pronunciation
@@ -146,30 +146,30 @@ define letter2sound [
   Ö -> ø ː ,
   ö -> ø ː ,
   Å -> ɔ ː ,
-  å -> ɔ ː || .#. \[ ">" | ":" ]* _ \[ ">" | ":" ]* [ ">" | ":" ] \"WORD" .#.
+  å -> ɔ ː || .#. \[ ">" | ":" ]* _ \[ ">" | ":" ]* [ ">" | ":" ] \"_WORD" .#.
 ] ;
 
 define word2sound [
-  A -> a ,
-  a -> a ,
-  Á -> ɑ ,
-  á -> ɑ ,
+  A -> a ː ,
+  a -> a ː ,
+  Á -> ɑ ː ,
+  á -> ɑ ː ,
   B -> b ,
   b -> b ,
   C -> c ,
   c -> c ,
   D -> d ,
   d -> d ,
-  E -> e ,
-  e -> e ,
+  E -> e ː ,
+  e -> e ː ,
   F -> f ,
   f -> f ,
   G -> g ,
   g -> g ,
   H -> h ,
   h -> h ,
-  I -> i ,
-  i -> i ,
+  I -> i ː ,
+  i -> i ː ,
   J -> j ,
   j -> j ,
   K -> k ,
@@ -182,8 +182,8 @@ define word2sound [
   n -> n ,
   Ŋ -> ŋ ,
   ŋ -> ŋ ,
-  O -> u ,
-  o -> u ,
+  O -> u ː ,
+  o -> u ː ,
   P -> p ,
   p -> p ,
   Q -> q ,
@@ -194,28 +194,29 @@ define word2sound [
   s -> s ,
   T -> t ,
   t -> t ,
-  U -> u ,
-  u -> u ,
+  U -> u ː ,
+  u -> u ː ,
   V -> v ,
   v -> v ,
   W -> d ,
   w -> d ,
   X -> k s ,
   x -> k s ,
-  Y -> y ,
-  y -> y ,
+  Y -> y ː ,
+  y -> y ː ,
   Z -> s ,
   z -> s ,
-  Æ -> æ ,
-  æ -> æ ,
-  Ä -> æ ,
-  ä -> æ ,
-  Ø -> ø ,
-  ø -> ø ,
-  Ö -> ø ,
-  ö -> ø ,
-  Å -> ɔ ,
-  å -> ɔ ː ||  _ \[ ">" | ":" ]* ( [ ">" | ":" ] \[ ">" | ":" ]* ) "WORD" .#. 
+  Æ -> æ ː ,
+  æ -> æ ː ,
+  Ä -> æ ː ,
+  ä -> æ ː ,
+  Ø -> ø ː ,
+  ø -> ø ː ,
+  Ö -> ø ː ,
+  ö -> ø ː ,
+  Å -> ɔ ː ,
+  å -> ɔ ː || .#. \[ ">" | ":" ]* _ \[ ">" | ":" ]*                               "_WORD" .#. ,
+                                  _ \[ ">" | ":" ]* [ ">" | ":" ] \[ ">" | ":" ]+ "_WORD" .#. 
 ] ;
 
 define letter-with-case [
@@ -233,7 +234,7 @@ define Ccase [            ! No nom - they are both suffix-less
  j t   -> a i t ,        ! Pl Acc
  j d a -> a i d a ,      ! Pl Ill
  j s   -> a i s          ! Pl Ela
-       || ICONS (ː) [ ">" | ":" ] _ .#.
+       || ICONS (ː) [ ">" | ":" ] _ ( "_WORD" ) .#.
 ] ;
 
 define Vcase [            ! No nom - they are both suffix-less
@@ -245,12 +246,13 @@ define Vcase [            ! No nom - they are both suffix-less
  j t   -> i t ,        ! Pl Acc
  j d a -> i d a ,      ! Pl Ill
  j s   -> i s          ! Pl Ela
-       || IVOWS (ː) [ ">" | ":" ] _ .#.
+       || IVOWS (ː) [ ">" | ":" ] _ ( "_WORD" ) .#.
 ] ;
 
 define cleanup [
  ">" -> 0,
- ":" -> 0
+ ":" -> 0,
+ "_WORD" -> 0
 ] ;
 
 read regex [
