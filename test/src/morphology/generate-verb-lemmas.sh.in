@@ -101,14 +101,14 @@ for f in $fsttype; do
 # Generer infitivsformen av verblemmaene, fjern dem som ikke gir analyse
 # (de har V+ i output), lagres som fil som har blitt deklarert oppe.
 		sed 's/$/+V+Inf/' $lemmas | $lookup_tool $generator_file.$suffix \
-            | cut -f2 | grep -v "V+" | grep -v "^$" | sort -u \
+            | cut -f2 | grep -v "V+" | grep -v "^$"  \
             > $generated_lemmas.$f.txt 
 
 # Om det ikkje funkar, prøv med TODO-analyse:
 		sed 's/$/+V+Inf/' $lemmas | $lookup_tool $generator_file.$suffix \
             | fgrep "+?" | cut -d "+" -f1 | sed 's/$/+V+TODO/' \
             | $lookup_tool $generator_file.$suffix \
-            | cut -f2 | grep -v "V+" | grep -v "^$" | sort -u \
+            | cut -f2 | grep -v "V+" | grep -v "^$"  \
             >> $generated_lemmas.$f.txt 
 
 ###### Collect results: #######
@@ -119,7 +119,8 @@ for f in $fsttype; do
 # Formene som er i verblemmalista, men ikke i den genererte lista, kopieres til
 # missingverbLemmas.txt. Formene generes med  +V+Inf for lettere debugging.
 
-        sort -u -o $generated_lemmas.$f.txt $generated_lemmas.$f.txt 
+        LC_ALL=C sort -u -o $generated_lemmas.$f.txt $generated_lemmas.$f.txt 
+        LC_ALL=C sort -u -o $lemmas $lemmas 
 		comm -23 $lemmas $generated_lemmas.$f.txt \
 		     | grep -v '^$' | sed 's/$/+V+Inf/' \
 		     | $lookup_tool $generator_file.$suffix > $result_file.$f.txt
