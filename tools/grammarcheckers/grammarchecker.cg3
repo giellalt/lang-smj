@@ -1328,3 +1328,21 @@ ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V
 
 COPY:syn-number_congruence-subj-verb (Sg2 &SUGGEST) EXCEPT Sg1 OR Sg3 OR Du1 OR Du2 OR Du3 OR Pl1 OR Pl2 OR Pl3  BEFORE v TARGET (V Neg Ind &syn-number_congruence-subj-verb) OR (V Ind Prs &syn-number_congruence-subj-verb) OR (V Ind Prt &syn-number_congruence-subj-verb) OR (V Cond &syn-number_congruence-subj-verb) OR (V Neg Ind &syn-number_congruence-subj-verb)  IF (*-1 (Pron Pers Sg2 Nom) BARRIER NOT-ADV-PCLE LINK -1 Po LINK -1 @>P LINK -1 BOS)(NEGATE 0 Sg2 OR ("leat" Pl1) OR &real);
 
+
+
+# numerals used as attributive adjectives
+# ---------------------
+
+ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (N Pl) IF (*-1 Num BARRIER (*) - (A Attr)) ;
+
+
+COPY:msyn-numeral-attr (Sg &SUGGEST) EXCEPT (Pl &msyn-numeral-attr) BEFORE CASE TARGET (&msyn-numeral-attr) ;
+
+## Mån lav åhtsåm guokta universitehtajda = guovte universitiehttaj
+## Ælla des dagu åvddål guovte sierra skåvllåhuodnahijda sieradum. = guovte sierra skåvllåhuodnahij
+## Sån gatjádij låge ulmutjijs sijá alkohåvlådábij birra.
+#$ De vuolggeba da guovtes stuorra universitehtajda.
+
+# Numeral case congruense
+
+# ADD:msyn-numeral-ill-casecongr (&msyn-numeral-ill-casecongr) TARGET (
