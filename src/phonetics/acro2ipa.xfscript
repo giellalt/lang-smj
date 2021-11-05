@@ -219,12 +219,23 @@ define word2sound [
                                   _ \[ ">" | ":" ]* [ ">" | ":" ] \[ ">" | ":" ]+ "_WORD" .#. 
 ] ;
 
-define letter-with-case [
+define vowelBeforeCase [
   A -> a,
-  Á -> á,
-  B -> b || _ [ ">" | ":" ]
+  Á -> ɑ,
+  á -> ɑ,
+  E -> e,
+  I -> i,
+  O -> u,
+  o -> u,
+  U -> ʉ,
+  Y -> y,
+  Æ -> æ,
+  Ø -> ø,
+  Å -> ɔ || _ [ ">" | ":" ]   ,
+              [ ">" | ":" ] _
 ] ;
 
+! Acronyms ending in a consonant, old spelling
 define Ccase [            ! No nom - they are both suffix-less
  v     -> a v ,          ! Sg Acc
  j     -> a j ,          ! Sg Ill, Pl Gen, Pl Com
@@ -237,6 +248,7 @@ define Ccase [            ! No nom - they are both suffix-less
        || ICONS (ː) [ ">" | ":" ] _ ( "_WORD" ) .#.
 ] ;
 
+! Acronyms ending in a vowel, old spelling
 define Vcase [            ! No nom - they are both suffix-less
  v     -> v ,          ! Sg Acc
  j     -> j ,          ! Sg Ill, Pl Gen, Pl Com
@@ -249,6 +261,19 @@ define Vcase [            ! No nom - they are both suffix-less
        || IVOWS (ː) [ ">" | ":" ] _ ( "_WORD" ) .#.
 ] ;
 
+! Acronyms with new spelling - the binding vowel is spelled out:
+define Newcase [            ! No nom - they are both suffix-less
+ v     -> v ,          ! Sg Acc
+ j     -> j ,          ! Sg Ill, Pl Gen, Pl Com
+ n     -> n ,          ! Sg Ine, Ess
+ s     -> s ,          ! Sg Ela
+ j n   -> i n ,        ! Sg Com, Pl Ine
+ j t   -> i t ,        ! Pl Acc
+ j d a -> i d a ,      ! Pl Ill
+ j s   -> i s          ! Pl Ela
+       || [ ">" | ":" ] IVOWS _ ( "_WORD" ) .#.
+] ;
+
 define cleanup [
  ">" -> 0,
  ":" -> 0,
@@ -259,9 +284,10 @@ read regex [
       wordacromarker
   .o. letter2sound
   .o. word2sound
-!  .o. letter-with-case ! blocks lookup for some reason
+  .o. vowelBeforeCase
   .o. Ccase
   .o. Vcase
+  .o. Newcase
   .o. cleanup
 ] ;
 
