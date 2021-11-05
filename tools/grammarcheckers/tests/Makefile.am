@@ -16,7 +16,9 @@ TESTS=\
 	real-PrtSg2-PrtSg3.yaml \
 	real-NegSg3-NegSg2.yaml \
 	real-PrtSg3-PrsPl3.yaml \
-	msyn-congr-mij-ma.yaml
+	msyn-congr-mij-ma.yaml \
+	msyn-congr.yaml \
+	msyn-numeral-attr.yaml
 
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
@@ -25,7 +27,9 @@ XFAIL_TESTS=\
 	real-PrsPl3-PrsSg3.yaml \
 	real-NegSg3-NegSg2.yaml \
 	real-PrtSg3-PrsPl3.yaml \
-	msyn-congr-mij-ma.yaml
+	msyn-congr-mij-ma.yaml \
+    msyn-congr.yaml \
+	msyn-numeral-attr.yaml
 
 endif # WANT_GRAMCHECK
 
