@@ -70,9 +70,14 @@ LEXICON acroconnector_vow ! Here comes a set of possible symbols to put between 
  +Err/Orth:     R             ; ! Without hyphen, not normative:  NRK23
 
 LEXICON acronull_vow 
-         +Sg+Nom: A-VOW ;
-         +Sg+Gen: A-VOW ;
-         +Pl+Nom: A-VOW ;
+ +Sg+Nom:      A-VOW  ;
+ +Sg+Gen:      A-VOW  ;
+ +Sg+Acc:%>%:v A-CONS ;
+ +Pl+Nom:      A-VOW  ;
+
+
+
+
 
 
 LEXICON acrosuff_vow 
@@ -80,7 +85,6 @@ LEXICON acrosuff_vow
 +Err/Orth:a acrosuff ;
 
 LEXICON acrosuff
- +Sg+Acc:v   A-CONS ;
  +Sg+Ill:j   A-CONS ;
  +Sg+Ine:n   A-CONS ; ! NRK:n
  +Sg+Ela:s   A-CONS ; ! NRK:s
@@ -94,7 +98,7 @@ LEXICON acrosuff
  +Pl+Com:j   A-CONS ;
 
 
-LEXICON ACRO_cons  !!= @CODE@ Mostly acronyms ending in consonants, but also acronyms ending in vowels which are not pronounced as words, like LO and CV (Giellagálldo bievddegirjje 2/2016). These get case endings like a regular a-stem noun with both the vowel and case ending: LO:av, LO:an, etc. 
+LEXICON ACRO_cons  !!= @CODE@ "Even-syll" acronyms ending on consonants, but also acronyms ending in vowels which are not pronounced as words, like LO and CV (Giellagálldo bievddegirjje 2/2016). These get case endings like a regular a-stem noun with both the vowel and case ending: LO:av, LO:an, etc. 
  acroconnector_cons ;
 
 LEXICON acroconnector_cons ! Here comes a set of possible symbols to put between the abbreviation and its suffix. 
@@ -110,9 +114,11 @@ LEXICON acroconnector_cons ! Here comes a set of possible symbols to put between
 
 
 LEXICON acronull_cons
-          +Sg+Nom:      A-CONS ;
-          +Sg+Gen:%>%:a A-VOW ;
-          +Pl+Nom:%>%:a A-VOW ;
+ +Sg+Nom:       A-CONS ;
+ +Sg+Gen:%>%:a  A-VOW  ;
+ +Sg+Acc:%>%:av A-CONS ;
+ +Pl+Nom:%>%:a  A-VOW  ;
+
  +Sg+Gen+Err/Orth:      A-CONS ;
  +Pl+Nom+Err/Orth:      A-CONS ;
  +Sg+Gen+Err/Orth:%>a   A-VOW ;
@@ -121,6 +127,38 @@ LEXICON acronull_cons
 LEXICON acrosuff_cons
 +Err/Orth:  acrosuff ;
          :a acrosuff ;
+
+
+LEXICON ACRO_oddcons  !!= @CODE@ "Odd-syll" acronyms ending in consonants.  These get case endings like odd syllable nouns, with both the vowel and case ending: SÁNAG:av, SÁNAG:ij, instead of SÁNAG:aj. 
+ acroconnector_oddcons ;
+
+LEXICON acroconnector_oddcons ! Here comes a set of possible symbols to put between the abbreviation and its suffix. 
+                acronull_oddcons  ;
+          :%>%: acrosuff_oddcons  ; 
+                RHyph          ; ! Acro compounds: CD-2
+          
+ +Err/Orth:     acrosuff_oddcons  ; ! The lexica are split in order to avoid the POS
+ +Err/Orth:%>'  acrosuff_oddcons  ; ! tag for other symbols using the acroconnector
+ +Err/Orth:%>%` acrosuff_oddcons  ; ! lexicon. (cf. the punct-sme-lex.txt file)
+ +Err/Orth:%>%´ acrosuff_oddcons  ;
+ +Err/Orth:     R                  ; ! Without hyphen, not normative:  NRK23
+
+
+LEXICON acronull_oddcons
+          +Sg+Nom:       A-CONS ;
+          +Sg+Gen:%>%:a  A-VOW  ;
+          +Pl+Nom:%>%:a  A-VOW  ;
+          +Sg+Acc:%>%:av A-CONS ;
+ +Sg+Gen+Err/Orth:       A-CONS ;
+ +Pl+Nom+Err/Orth:       A-CONS ;
+ +Sg+Gen+Err/Orth:%>a    A-VOW  ;
+ +Pl+Nom+Err/Orth:%>a    A-VOW  ;
+
+
+LEXICON acrosuff_oddcons
++Err/Orth:  acrosuff ;
+         :i acrosuff ;
+
 
 
 !------Der/r------
