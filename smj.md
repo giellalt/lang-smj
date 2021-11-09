@@ -3552,6 +3552,9 @@ contraced verbs assimilated and outside the main pattern.
 
 
 
+
+
+
 *populasjåvnnå # Even-syllable test examples:*
 * *populasjåvnnå:* `populasjåvnnå+N+Sg+Nom`
 * *populasjåvnås:* `populasjåvnnå+N+Sg+Ela`
@@ -3562,12 +3565,16 @@ contraced verbs assimilated and outside the main pattern.
 
 
 
+
+
 *sesjåvnnå # Even-syllable test examples:*
 * *sesjåvnnå:* `sesjåvnnå+N+Sg+Nom`
 * *sesjåvnås:* `sesjåvnnå+N+Sg+Ela`
 
 
  LEXICON PENSJÅVNNÅ_CMP_INFL  Recent loanwords on -sjåvnnå with long and short compound-form: -SION IN SWEDISH. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
+
+
 
 
 
@@ -3595,6 +3602,7 @@ contraced verbs assimilated and outside the main pattern.
 
 
 
+
 *parabåvllå # Even-syllable test examples:*
 * *parabåvllå:* `parabåvllå+N+Sg+Nom`
 * *parabåvlås:* `parabåvllå+N+Sg+Ela`
@@ -3606,12 +3614,14 @@ contraced verbs assimilated and outside the main pattern.
 
 
 
+
 *agronåvmmå # Even-syllable test examples:*
 * *agronåvmmå:* `agronåvmmå+N+Sg+Nom`
 * *agronåvmås:* `agronåvmmå+N+Sg+Ela`
 
 
  LEXICON DEMAGÅVGGÅ_CMP_INFL  Recent loanwords ending on -og with long and short compound form. Assimilated to smj as -åvggå. -lasj derivation is error taged. The old stadarization -oga that does not follow lulesami rules is sub taged.
+
 
 
 *pedagoga # Even-syllable test examples:*
@@ -3627,9 +3637,7 @@ contraced verbs assimilated and outside the main pattern.
 
 
 
-
  LEXICON MIKROSKÅVPPÅ_CMP_INFL  Recent loanwords on -åvppå (-op in NOB/SWE) with long and short compound-form.  Long vowel and short consonant is assimilated with njuoban, but somehow a lot of -op words are assimilated -oahppa (biskop is pronounced as -opp, so that's different, maybe some have used "biskop" as template), so this is Err/Orth taged. 
-
 
 
 
