@@ -79,17 +79,20 @@ EXTEDITOR=@SEE@
 
 # 3. som bare har attributtform. Lagres i $lemmas_attr
 @GTCORE@/scripts/extract-lemmas.sh \
-	--include "( At |PrfPrc_At|LEXATTR)" $source_file \
+	--include "( At |PrfPrc_At|LEXATTR)" \
+    --exclude "(\+Use\/MT|Err\/Der|Err\/Cmp)" $source_file \
 	> $lemmas_attr
 
 # 4. som krever komparativtagg. Lagres i $lemmas_comp
 @GTCORE@/scripts/extract-lemmas.sh \
-	--include "(OANEP|NUORTTALABBO)" $source_file \
+	--include "(OANEP|NUORTTALABBO)" \
+    --exclude "(\+Use\/MT|Err\/Der|Err\/Cmp)" $source_file \
 	> $lemmas_comp
 
 # 5. som krever superlativtagg. Lagres i $lemmas_super
 @GTCORE@/scripts/extract-lemmas.sh \
-	--include "(GASSKALAMOS|TJAVGGÁMUS)" $source_file \
+	--include "(GASSKALAMOS|TJAVGGÁMUS)" \
+    --exclude "(\+Use\/MT|Err\/Der|Err\/Cmp)" $source_file \
 	> $lemmas_super
 
 #### Adjectives that only compounds:
@@ -143,12 +146,12 @@ for f in $fsttype; do
 		sed 's/$/+A+Attr/' $lemmas_attr | $lookup_tool $generator_file.$suffix \
             | cut -f2 | grep -v "A+" | grep -v "^$" | sort -u >> $generated_lemmas.$f.txt
 
-# 4. for lemmaer lemmaer som krever komparativtagg, med +A+Comp+Sg+Nom. Lagres i $generated_lemmas.$f.txt
-		sed 's/$/+A+Der\/Comp+Af+Sg+Nom/' $lemmas_comp | $lookup_tool $generator_file.$suffix \
+# 4. for lemmaer som krever komparativtagg, med +A+Gram/Comp+Sg+Nom. Lagres i $generated_lemmas.$f.txt
+		sed 's/$/+A+Gram\/Comp+Sg+Nom/' $lemmas_comp | $lookup_tool $generator_file.$suffix \
             | cut -f2 | grep -v "A+" | grep -v "^$" | sort -u >> $generated_lemmas.$f.txt
 
-# 5. for lemmaer lemmaer som krever superlativtagg, med +A+Superl+Sg+Nom. Lagres i $generated_lemmas.$f.txt
-		sed 's/$/+A+Der\/Superl+A+Sg+Nom/' $lemmas_super | $lookup_tool $generator_file.$suffix \
+# 5. for lemmaer som krever superlativtagg, med +A+Gram/Superl+Sg+Nom. Lagres i $generated_lemmas.$f.txt
+		sed 's/$/+A+Gram\/Superl+Sg+Nom/' $lemmas_super | $lookup_tool $generator_file.$suffix \
             | cut -f2 | grep -v "A+" | grep -v "^$" | sort -u >> $generated_lemmas.$f.txt
 
 ###### Collect results: #######
@@ -158,7 +161,6 @@ for f in $fsttype; do
 # Samle alle lemmaer i en fil, sorter, unifiser
 cat $lemmas $lemmas_attr $lemmas_super $lemmas_comp > $all_adjs
 LC_ALL=no_NO.UTF-8 sort -u -o $all_adjs $all_adjs 
-LC_ALL=no_NO.UTF-8 sort -u -o $lemmas $lemmas
 
 # Alle genererte former sorteres og unifiseres.
 LC_ALL=no_NO.UTF-8 sort -u -o $generated_lemmas.$f.txt $generated_lemmas.$f.txt 
@@ -167,7 +169,7 @@ LC_ALL=no_NO.UTF-8 sort -u -o $generated_lemmas.$f.txt $generated_lemmas.$f.txt
 # Formene som er i adjektivlemmalista, men ikke i den genererte lista, kopieres til
 # missing_adjectives_lemmas.{FST}.txt. Formene genereres med +A+Sg+Nom for lettere debugging.
 
-		LC_ALL=no_NO.UTF-8 comm -23 $lemmas $generated_lemmas.$f.txt \
+		LC_ALL=no_NO.UTF-8 comm -23 $all_adjs $generated_lemmas.$f.txt \
 		     | grep -v '^$' | sed 's/$/+A+Sg+Nom/' \
 		     | $lookup_tool $generator_file.$suffix > $result_file.$f.txt
 
