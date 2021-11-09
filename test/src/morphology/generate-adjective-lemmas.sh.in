@@ -162,11 +162,11 @@ LC_ALL=no_NO.UTF-8 sort -u -o $all_adjs $all_adjs
 # Alle genererte former sorteres og unifiseres.
 LC_ALL=no_NO.UTF-8 sort -u -o $generated_lemmas.$f.txt $generated_lemmas.$f.txt 
 		
-# Sammenlikne lista med verblemmaer med den genererte lista med infinitivsformer.
-# Formene som er i verblemmalista, men ikke i den genererte lista, kopieres til
-# missingverbLemmas.txt. Formene generes med  +V+Inf for lettere debugging.
+# Sammenlikne lista med adjektivlemmaer med den genererte lista med nominativ singularformer
+# Formene som er i adjektivlemmalista, men ikke i den genererte lista, kopieres til
+# missing_adjectives_lemmas.{FST}.txt. Formene genereres med +A+Sg+Nom for lettere debugging.
 
-		comm -23 $lemmas $generated_lemmas.$f.txt \
+		LC_ALL=no_NO.UTF-8 comm -23 $all_adjs $generated_lemmas.$f.txt \
 		     | grep -v '^$' | sed 's/$/+A+Sg+Nom/' \
 		     | $lookup_tool $generator_file.$suffix > $result_file.$f.txt
 

@@ -147,7 +147,7 @@ cat $padv_lemmas $cadv_lemmas $sadv_lemmas $todo_lemmas | LC_ALL=no_NO.UTF-8 sor
 #Adverblemmaer som ikke er i den genererte lista, kopieres til missing_adverb_lemmas.txt.
 # Formene generes med  +Adv for enklere debugging. 
 
-		comm -23 $all_adv $generated_lemmas.$f.txt \
+		LC_ALL=no_NO.UTF-8 comm -23 $all_adv $generated_lemmas.$f.txt \
 		     | grep -v '^$' | sed 's/$/+Adv/' \
 		     | $lookup_tool $generator_file.$suffix > $result_file.$f.txt
 
