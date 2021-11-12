@@ -852,7 +852,9 @@ LIST &msyn-soajttá-AUX = &msyn-soajttá-AUX ;
 LIST &msyn-liehket-congr-condsg2-condpl3 = &msyn-liehket-congr-condsg2-condpl3 ;
 LIST &msyn-congr-PrtSg3-PrsPl3 = &msyn-congr-PrtSg3-PrsPl3 ;
 LIST &msyn-pred-attr = &msyn-pred-attr ;
+LIST &msyn-numeral-attr = &msyn-numeral-attr ; 
 LIST &msyn-numeral-accattr = &msyn-numeral-accattr ;
+LIST &msyn-numeral-casecongr  = &msyn-numeral-casecongr ;
 LIST &SUGGEST = &SUGGEST ;
 
 
@@ -1358,17 +1360,22 @@ COPY:msyn-numeral-attr (Sg &SUGGEST) EXCEPT (Pl &msyn-numeral-attr) BEFORE CASE 
 
 
 
-# Numeral case congruense
-# ---------------------
+# Numeral case congruence
+# -----------------------
+
+ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (*1 (N Pl) +  &msyn-numeral-attr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
+
+COPY:msyn-numeral-casecongr (Sg Gen &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-casecongr) OR (Sg Acc &msyn-numeral-casecongr)  TARGET (&msyn-numeral-casecongr) IF (*1 (N Pl Ill) +  &msyn-numeral-attr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
+
 
 # ADD:msyn-numeral-ill-casecongr (&msyn-numeral-ill-casecongr) TARGET (
 
-Guokta gusá li fievsen
-guovte gusá fiekse
-*vuojnáv guokta gusá
-*vattáv suojnijt guovte gussaj>guokta gusájda
-*oattjov mielkev guovtet gusás> guokta gusájs
-manáv judosdåktårij guovtijn guosájn
+	## Guokta gusá li fievsen
+	##  guovte gusá fiekse
+	## *vuojnáv guokta gusá
+	## *vattáv suojnijt guovte gussaj>guokta gusájda
+	## *oattjov mielkev guovtet gusás> guokta gusájs
+	## manáv judosdåktårij guovtijn guosájn
 
 ## guokta gusáj giekse >guovte guosá fiekse 
 ## ill guovte, ela guovtet,
