@@ -852,6 +852,7 @@ LIST &msyn-soajttá-AUX = &msyn-soajttá-AUX ;
 LIST &msyn-liehket-congr-condsg2-condpl3 = &msyn-liehket-congr-condsg2-condpl3 ;
 LIST &msyn-congr-PrtSg3-PrsPl3 = &msyn-congr-PrtSg3-PrsPl3 ;
 LIST &msyn-pred-attr = &msyn-pred-attr ;
+LIST &msyn-numeral-accattr = &msyn-numeral-accattr ;
 LIST &SUGGEST = &SUGGEST ;
 
 
@@ -1333,16 +1334,43 @@ COPY:syn-number_congruence-subj-verb (Sg2 &SUGGEST) EXCEPT Sg1 OR Sg3 OR Du1 OR 
 # numerals used as attributive adjectives
 # ---------------------
 
-ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (N Pl) IF (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) ) ;
+ADD:msyn-numeral-accattr (&msyn-numeral-accattr) TARGET (N Pl Acc) IF (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) ) ;
 
+ADD:msyn-numeral-accattr (&msyn-numeral-accattr) TARGET (N Pl Acc) IF (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 Num) ;
+
+COPY:msyn-numeral-accattr (Sg Gen &SUGGEST) EXCEPT (Pl Acc &msyn-numeral-attr) TARGET (&msyn-numeral-accattr) ;
+
+    ## vuojnáv guokta gusájt > vuojnáv guokta gusá insead of vuojnáv guokta guosáv
+
+ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (N Pl) IF (NOT 0 &msyn-numeral-accattr) (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
+
+    ## Mån lav åhtsåm guokta universitehtajda = guovte universitiehttaj
+    ## Ælla des dagu åvddål guovte sierra skåvllåhuodnahijda sieradum. = guovte sierra skåvllåhuodnahij
+    ## Sån gatjádij låge ulmutjijs sijá alkohåvlådábij birra.
+    #$ De vuolggeba da guovtes stuorra universitehtajda.
+
+ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (N Pl) IF (NOT 0 &msyn-numeral-accattr) (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 Num) ;
+
+    ## Mån lav åhtsåm guokta ruoppsis ja fijna universitehtajda.
 
 COPY:msyn-numeral-attr (Sg &SUGGEST) EXCEPT (Pl &msyn-numeral-attr) BEFORE CASE TARGET (&msyn-numeral-attr)  ;
 
-## Mån lav åhtsåm guokta universitehtajda = guovte universitiehttaj
-## Ælla des dagu åvddål guovte sierra skåvllåhuodnahijda sieradum. = guovte sierra skåvllåhuodnahij
-## Sån gatjádij låge ulmutjijs sijá alkohåvlådábij birra.
-#$ De vuolggeba da guovtes stuorra universitehtajda.
+
+
 
 # Numeral case congruense
+# ---------------------
 
 # ADD:msyn-numeral-ill-casecongr (&msyn-numeral-ill-casecongr) TARGET (
+
+Guokta gusá li fievsen
+guovte gusá fiekse
+*vuojnáv guokta gusá
+*vattáv suojnijt guovte gussaj>guokta gusájda
+*oattjov mielkev guovtet gusás> guokta gusájs
+manáv judosdåktårij guovtijn guosájn
+
+## guokta gusáj giekse >guovte guosá fiekse 
+## ill guovte, ela guovtet,
+
+#$ vuojnáv guokta gusá
