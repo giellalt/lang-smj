@@ -28,7 +28,9 @@ endif # WANT_TTS
 XFAIL_TESTS=test_ordinal.normaliser.txt \
 			test_pure_date_time.normaliser.txt \
 			test_clock_10.14.normaliser.txt \
-			test_date_clock.normaliser.txt
+			test_date_clock.normaliser.txt \
+			test_regular_text_skaavlaan.ipa.txt \
+			test_no_normalisation.normaliser.ipa.txt
 
 ####### Other targets: ###########
 clean-local:
