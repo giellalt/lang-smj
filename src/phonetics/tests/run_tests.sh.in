@@ -1,0 +1,52 @@
+#!/bin/bash
+## Process this file with configure to produce the actual shell script
+## Copyright: Sámediggi/Divvun/UiT
+## Licence: GPL v3+
+
+# Test runner to test conversion to IPA.
+
+# Use autotools mechanisms to only run the configured fst types in the tests:
+fsttype=
+@CAN_HFST_TRUE@fsttype="$fsttype hfst"
+@CAN_XFST_TRUE@fsttype="$fsttype xfst"
+@CAN_FOMA_TRUE@fsttype="$fsttype foma"
+
+# Exit if all fst types have been shut off:
+if [[ "x$fsttype" == "x" ]]; then
+    echo "All transducer types have been shut off at configure time."
+    echo "Nothing to test. SKIPPED."
+    exit 77
+fi
+
+fst=$(grep -v '^#' $1 | grep -v '^\s*$' | grep 'fst' | cut -f2)
+
+echo FST: $fst
+
+grep -v '^#' $1 | grep -v '^\s*$' | tail -n +2 | cut -f1 > innput.txt
+grep -v '^#' $1 | grep -v '^\s*$' | tail -n +2 | cut -f2 > expect.txt
+
+###### Start testing: #######
+transducer_found=0
+fails=0
+
+# Loop over the transducer types first - we test both hfst, xfst and foma
+# according to the configuration:
+for f in $fsttype; do
+    # DEBUG: echo "Fst loop 187: $f"
+    # Remember to empty the variables between each for loop:
+    analyser=""
+    if test $f == "xfst"; then
+        lookuptool="@LOOKUP@ -flags mbTT"
+    elif test $f == "foma"; then
+        lookuptool="@FLOOKUP@"
+    elif test $f == "hfst"; then
+        lookuptool="@HFST_LOOKUP@"
+    else
+        let "Fail += 1"
+        echo "FAIL: Unknown fst type! FST=$f"
+        continue
+    fi
+    lookuptool $fst < innput.txt > output.${f}.txt
+done
+
+exit $fails
