@@ -26,10 +26,10 @@ XFAIL_TESTS=\
 	real-PrsPl3-PrsSg3.yaml \
 	real-NegSg3-NegSg2.yaml \
 	real-PrtSg3-PrsPl3.yaml \
-	msyn-congr-mij-ma.yaml \
+	msyn-congr-mij-ma.yaml  \
 	real-PrsSg2-PrsSg3.yaml \
 	real-PrtSg2-PrtSg3.yaml \
-    msyn-congr.yaml \
+	msyn-congr.yaml         \
 	msyn-sme_bastard_neg1-2.yaml \
 	msyn-liehket-congr-condsg2-condpl3.yaml \
 	msyn-numeral-attr.yaml
