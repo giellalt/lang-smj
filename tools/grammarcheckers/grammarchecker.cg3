@@ -1340,7 +1340,7 @@ ADD:msyn-numeral-accattr (&msyn-numeral-accattr) TARGET (N Pl Acc) IF (*-1 Num B
 
 ADD:msyn-numeral-accattr (&msyn-numeral-accattr) TARGET (N Pl Acc) IF (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 Num) ;
 
-COPY:msyn-numeral-accattr (Sg Gen &SUGGEST) EXCEPT (Pl Acc &msyn-numeral-attr) TARGET (&msyn-numeral-accattr) ;
+COPY:msyn-numeral-accattr (Sg Gen &SUGGEST) EXCEPT (Pl Acc &msyn-numeral-accattr) TARGET (&msyn-numeral-accattr) ;
 
     ## vuojnáv guokta gusájt > vuojnáv guokta gusá insead of vuojnáv guokta guosáv
 
@@ -1363,7 +1363,7 @@ COPY:msyn-numeral-attr (Sg &SUGGEST) EXCEPT (Pl &msyn-numeral-attr) BEFORE CASE 
 # Numeral case congruence
 # -----------------------
 
-ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (*1 (N Pl) +  &msyn-numeral-attr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
+ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (*1 (N Pl) +  &msyn-numeral-attr OR (N Pl) +  &msyn-numeral-accattr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
 
 COPY:msyn-numeral-casecongr (Sg Gen &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-casecongr) OR (Sg Acc &msyn-numeral-casecongr)  TARGET (&msyn-numeral-casecongr) IF (*1 (N Pl Ill) +  &msyn-numeral-attr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
 
@@ -1383,13 +1383,13 @@ COPY:msyn-numeral-casecongr (Sg Ine &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-casec
     # guokta gusájn li báktjasa
 
 
-COPY:msyn-numeral-casecongr (Sg Nom &SUGGEST) EXCEPT (Sg Acc &msyn-numeral-casecongr) OR (Sg Gen &msyn-numeral-casecongr)  TARGET (&msyn-numeral-casecongr) IF (*1 (N Pl Com) +  &msyn-numeral-attr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
+COPY:msyn-numeral-casecongr (Sg Nom &SUGGEST) EXCEPT (Sg Acc &msyn-numeral-casecongr) OR (Sg Gen &msyn-numeral-casecongr)  TARGET (&msyn-numeral-casecongr) + ("<.*v>"r) IF (*1 (N Pl Acc) +  &msyn-numeral-accattr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
 
     # vuojnáv guovtev gusájt
-    > vuojnáv guovtev gusá
-    > vuojnáv guokta guosá
+    #> vuojnáv guovtev gusá
+    #> vuojnáv guokta guosá
     
-    almma gen: guovte gusá fiekse
+    #almma gen: guovte gusá fiekse
     
 
 
@@ -1404,3 +1404,5 @@ COPY:msyn-numeral-casecongr (Sg Nom &SUGGEST) EXCEPT (Sg Acc &msyn-numeral-casec
 ## ill guovte, ela guovtet,
 
 #$ vuojnáv guokta gusá
+
+	## Magdalena Normann fotoateliajt Korsnesan dåjmadij 	1910-20 jagijn, ja sjattaj viehka dåbdos gåvvår. 
