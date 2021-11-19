@@ -28,6 +28,7 @@ XFAIL_TESTS=\
     msyn-numeral-attr.yaml \
 	real-NegSg3-NegSg2.yaml \
 	real-PrsPl3-PrsSg3.yaml \
+	real-PrsSg2-PrsSg3.yaml \
 	real-PrtSg3-PrsPl3.yaml
 
 endif # WANT_GRAMCHECK
