@@ -1366,11 +1366,14 @@ COPY:msyn-numeral-attr (Sg &SUGGEST) EXCEPT (Pl &msyn-numeral-attr) BEFORE CASE 
 ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (*1 (N Pl) +  &msyn-numeral-attr OR (N Pl) +  &msyn-numeral-accattr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) LINK NOT 0 Acc) ;
 
 COPY:msyn-numeral-casecongr (Sg Gen &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-casecongr) OR (Sg Acc &msyn-numeral-casecongr)  TARGET (&msyn-numeral-casecongr) IF (*1 (N Pl Ill) +  &msyn-numeral-attr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
-
     ## Vattáv suojnijt guokta gusájda
+    
+    # Partitive and more
+    # - - - - - - - - - -
 
-COPY:msyn-numeral-casecongr (Sg Par &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-casecongr) OR (Sg Gen &msyn-numeral-casecongr)  TARGET (&msyn-numeral-casecongr) IF (*1 (N Pl Ela) +  &msyn-numeral-attr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
+ADD:msyn-numeral-parcasecongr (&msyn-numeral-parcasecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) OR (Num Pl Nom) OR (Num Sg Gen) IF (*1 (N Pl) +  &msyn-numeral-attr OR (N Pl) +  &msyn-numeral-accattr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) LINK NOT 0 Acc) ;
 
+COPY:msyn-numeral-parcasecongr (Sg Par &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-parcasecongr) OR (Pl Nom &msyn-numeral-parcasecongr) OR (Sg Gen &msyn-numeral-parcasecongr) TARGET (&msyn-numeral-parcasecongr) IF (*1 (N Pl Ela) +  &msyn-numeral-attr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
     ## Oattjov mielkev guokta/guovte gusájs
 
 
