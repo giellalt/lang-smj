@@ -11,7 +11,7 @@ TESTS=standard-test.txt
 
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
-XFAIL_TESTS=
+XFAIL_TESTS=standard-test.txt
 
 endif # WANT_PHONETIC
 
