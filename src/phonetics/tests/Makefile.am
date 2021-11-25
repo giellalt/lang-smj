@@ -7,11 +7,13 @@
 if WANT_PHONETIC
 
 # List here (space separated) all yaml files to be run as part of make check:
-TESTS=standard-test.txt
+TESTS=txt2ipa-tests.txt \
+	  acro-tests.txt
 
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
-XFAIL_TESTS=standard-test.txt
+XFAIL_TESTS=txt2ipa-tests.txt \
+			acro-tests.txt
 
 endif # WANT_PHONETIC
 
