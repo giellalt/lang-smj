@@ -1345,12 +1345,13 @@ COPY:msyn-numeral-accattr (Sg Gen &SUGGEST) EXCEPT (Pl Acc &msyn-numeral-accattr
 
     ## vuojnáv guokta gusájt > vuojnáv guokta gusá insead of vuojnáv guokta guosáv
 
-ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (N Pl) IF (NOT 0 &msyn-numeral-accattr) (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
+ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (N Pl) IF (NOT 0 &msyn-numeral-accattr) (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock) ;
 
     ## Mån lav åhtsåm guokta universitehtajda = guovte universitiehttaj
     ## Ælla des dagu åvddål guovte sierra skåvllåhuodnahijda sieradum. = guovte sierra skåvllåhuodnahij
     ## Sån gatjádij låge ulmutjijs sijá alkohåvlådábij birra.
     #$ De vuolggeba da guovtes stuorra universitehtajda.
+    #$ Dále lij muhtem subtsas gå russtijin 1930- jagijn náv:
 
 ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (N Pl) IF (NOT 0 &msyn-numeral-accattr) (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 Num) ;
 
@@ -1398,3 +1399,7 @@ COPY:msyn-numeral-parcasecongr (Sg Par &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-pa
     ## Oattjov mielkev guokta/guovte>guovtet gusájs
 
 	#$ Magdalena Normann fotoateliajt Korsnesan dåjmadij 1910-20 jagijn, ja sjattaj viehka dåbdos gåvvår. 
+	
+	# special only wrong number
+	# -------------------------
+ADD:msyn-numeral-spec-wrong-number (&msyn-numeral-spec-wrong-number) TARGE
