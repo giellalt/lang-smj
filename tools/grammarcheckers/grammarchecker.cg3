@@ -1402,3 +1402,10 @@ COPY:msyn-numeral-parcasecongr (Sg Par &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-pa
 	
 	# special only wrong number
 	# -------------------------
+
+ADD:msyn-numeral-comcasecongr (&msyn-numeral-comcasecongr) TARGET (Num Sg Gen) OR (Num Pl Nom) IF (*1 (N Pl Ine) OR (N Sg Com) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) LINK NOT 0 Acc)(NEGATE 0 Arab OR Sem/Year OR Sem/Time-clock) ;
+	## Sievedusnummar mij e-faktura-sjiehtadussaj aneduvvá le divutmáksenummar   {gudá} tállajn. --- what still needs to be fixed is that  if there are two alternative fixes, we fix them separately, maybe by using LINK and ADDRELATION
+
+COPY:msyn-numeral-comcasecongr (Sg Com &SUGGEST) EXCEPT (Sg Gen &msyn-numeral-comcasecongr) OR (Pl Nom &msyn-numeral-comcasecongr) TARGET (&msyn-numeral-comcasecongr) ;
+
+
