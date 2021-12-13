@@ -14,6 +14,7 @@ TESTS=\
 	msyn-liehket-congr-condsg2-condpl3.yaml \
 	msyn-numeral-attr.yaml \
 	msyn-sme_bastard_neg1-2.yaml \
+	msyn-soajtta.yaml \
 	real-NegSg3-NegSg2.yaml \
 	real-PrsPl3-PrsSg3.yaml \
 	real-PrsSg2-PrsSg3.yaml \
@@ -26,6 +27,7 @@ XFAIL_TESTS=\
 	msyn-congr-mij-ma.yaml  \
 	msyn-congr.yaml         \
     msyn-numeral-attr.yaml \
+    msyn-soajtta.yaml \
 	real-NegSg3-NegSg2.yaml \
 	real-PrsPl3-PrsSg3.yaml \
 	real-PrsSg2-PrsSg3.yaml \
