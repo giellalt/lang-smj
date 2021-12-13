@@ -8,6 +8,7 @@ if WANT_GRAMCHECK
 
 # List here (space separated) all yaml files to be run as part of make check:
 TESTS=\
+	lex-oahpasmuvvat-oahpastuvvat.yaml \
 	msyn-congr-mij-ma.yaml \
 	msyn-congr.yaml \
 	msyn-liehket-congr-condsg2-condpl3.notfixed.yaml \
@@ -24,6 +25,7 @@ TESTS=\
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
 XFAIL_TESTS=\
+	lex-oahpasmuvvat-oahpastuvvat.yaml \
 	msyn-congr-mij-ma.yaml  \
 	msyn-congr.yaml         \
     msyn-numeral-attr.yaml \
