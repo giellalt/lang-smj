@@ -2105,11 +2105,11 @@ process, and resolve them as they appear!
 
 
 
+
 LOAN
 LOAN
 LOAN
 LOAN SWE altar
-
 * * *
 <small>This (part of) documentation was generated from [../src/fst/stems/nouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/nouns.lexc)</small>
 
@@ -2134,7 +2134,6 @@ sme mojonjálmmiid
 vájnno
 vájnno
 vájnno
-
 * * *
 <small>This (part of) documentation was generated from [../src/fst/stems/adjectives.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/adjectives.lexc)</small>
 # File containing North Saami abbreviations 
