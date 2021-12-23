@@ -7141,11 +7141,6 @@ Words in lexicon ALEUHTAT even-syllables assimilated plurals.
  LEXICON ALEUHTAT-plc  Plural names, not sami names. like -váre, -gårtje
 
 
-*Filippijna #  test examples:*
-* ★*Filippijnna:* `Filippijna+N+Prop+Sem/Plc+Sg+Nom` (is not standard language)
-* *Filippijna:* `Filippijna+N+Prop+Sem/Plc+Pl+Nom`
-* *Filippijnajda:* `Filippijna+N+Prop+Sem/Plc+Pl+Ill`
-* *Filippijnajs:* `Filippijna+N+Prop+Sem/Plc+Pl+Ela`
 
 
 
@@ -7482,11 +7477,6 @@ Words in lexicon DUORTNUS end on conconant, have cg and second syllable vowel ch
 
  LEXICON DUORTNUS-org  Odd-syllable ending on consonant, with cg. Organizations
 
-
-*Europarádeministarjuogos # Odd-syllable test examples:*
-* *Europarádeministarjuogos:* `Europarádeministarjuogos+N+Prop+Sem/Org+Sg+Nom`
-* *Europarádeministarjuohkusij:* `Europarádeministarjuogos+N+Prop+Sem/Org+Sg+Ill`
-* *Europarádeministarjuohkusis:* `Europarádeministarjuogos+N+Prop+Sem/Org+Sg+Ela`
 
  LEXICON DUORTNUS-plc  Odd-syllable ending on consonant, with cg.Placenames
 
