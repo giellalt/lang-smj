@@ -1199,6 +1199,16 @@ Words in lexicon DUORTNUS end on conconant, have cg and second syllable vowel ch
 * *Artemistiemmpelin:* `Artemistiempel+N+Prop+Sem/Obj+Sg+Ine`
 * *Artemistiemmpelis:* `Artemistiempel+N+Prop+Sem/Obj+Sg+Ela`
 
+ LEXICON TIEMPEL-org  Same as DUORTNUS, only without second syll vowel change. Odd syllanle case marking Lexicon presently only for two -tiempel-final words. Lule sami stems.
+
+
+*Artemistiempel # Odd-syllable test  examples:*
+* *Samovarteáhtar:* `Samovarteáhtar+N+Prop+Sem/Org+Sg+Nom`
+* *Samovarteáhttarij:* `Samovarteáhtar+N+Prop+Sem/Org+Sg+Ill`
+* *Samovarteáhttarin:* `Samovarteáhtar+N+Prop+Sem/Org+Sg+Ine`
+* *Samovarteáhttaris:* `Samovarteáhtar+N+Prop+Sem/Org+Sg+Ela`
+
+
 
 
 
