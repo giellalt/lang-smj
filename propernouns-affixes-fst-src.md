@@ -1212,6 +1212,12 @@ Words in lexicon DUORTNUS end on conconant, have cg and second syllable vowel ch
 
 
 
+
+
+
+
+
+
 Lexicon HEANDARAT is not in use in smj
 
 
