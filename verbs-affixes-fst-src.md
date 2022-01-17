@@ -36,7 +36,7 @@ IV means intransitive verbs, TV means transitive verbs.
 ## Negation verb 
 
 
- LEXICON NEG 
+LEXICON NEG 
 
 
 
@@ -46,11 +46,9 @@ IV means intransitive verbs, TV means transitive verbs.
 
 ## Copula
 
- LEXICON ÅRROT 
+LEXICON ÅRROT 
 
- LEXICON LIEHKET 
-
-
+LEXICON LIEHKET 
 
 
 
@@ -64,7 +62,9 @@ IV means intransitive verbs, TV means transitive verbs.
 
 
 
- LEXICON LULU 
+
+
+LEXICON LULU 
 
 
 
@@ -73,7 +73,7 @@ IV means intransitive verbs, TV means transitive verbs.
 
 ## Modals
 
- LEXICON GALGGAT_IV  even-syllable modal verbs.
+LEXICON GALGGAT_IV  even-syllable modal verbs.
 
 
 
@@ -84,7 +84,7 @@ IV means intransitive verbs, TV means transitive verbs.
 * *soajttiv:* `soajttet+V+IV+Ind+Prt+Sg1`
 * *såjtijma:* `soajttet+V+IV+Ind+Prt+Pl1`
 
- LEXICON VIERTTIT_IV  Contracted modal verbs.
+LEXICON VIERTTIT_IV  Contracted modal verbs.
 
 
 
@@ -104,7 +104,7 @@ IV means intransitive verbs, TV means transitive verbs.
 ## Even-syllable stems
 Intransitives
 
- LEXICON GALSSJOT_IV  Impersonal o-verbs
+LEXICON GALSSJOT_IV  Impersonal o-verbs
 
 
 
@@ -114,7 +114,7 @@ Intransitives
 * *hærmoj:* `hærmmot+V+IV+Ind+Prt+Sg3`
 * *härmoj:* `hærmmot+V+IV+Ind+Prt+Sg3`
 
- LEXICON BÅRSSJOT_IV  o-verbs with
+LEXICON BÅRSSJOT_IV  o-verbs with
 
 
 
@@ -125,7 +125,7 @@ Intransitives
 * *hæsojma:* `hæssot+V+IV+Ind+Prt+Pl1`
 * *häsojma:* `hæssot+V+IV+Ind+Prt+Pl1`
 
- LEXICON VILSSJOT_IV  o-verbs as BÅRSSJOT but without derivations -stit, -stallat, -stahtte, - stasste.  With dim -astit that are hardcoded
+LEXICON VILSSJOT_IV  o-verbs as BÅRSSJOT but without derivations -stit, -stallat, -stahtte, - stasste.  With dim -astit that are hardcoded
 
 
 *libjjot # Eveb-syllable test examples:*
@@ -133,7 +133,7 @@ Intransitives
 * *libjjuv:* `libjjot+V+IV+Ind+Prt+Sg1`
 * *libjojma:* `libjjot+V+IV+Ind+Prt+Pl1`
 
- LEXICON BUOLLET_IV   e-verbs
+LEXICON BUOLLET_IV   e-verbs
 
 
 
@@ -143,7 +143,7 @@ Intransitives
 * *liddiv:* `liddet+V+IV+Ind+Prt+Sg1`
 * *littijma:* `liddet+V+IV+Ind+Prt+Pl1`
 
- LEXICON BOAHTET_IV  e-verbs like BUOLLET_IV without passive
+LEXICON BOAHTET_IV  e-verbs like BUOLLET_IV without passive
 
 
 *boahtet # Even-syllable test examples:*
@@ -151,7 +151,7 @@ Intransitives
 * *båhtiv:* `boahtet+V+IV+Ind+Prt+Sg1`
 * *bådijma:* `boahtet+V+IV+Ind+Prt+Pl1`
 
- LEXICON VIEDJET_IV   e-verbs GRADE II-I WITH IE DIPHT.
+LEXICON VIEDJET_IV   e-verbs GRADE II-I WITH IE DIPHT.
 
 
 
@@ -161,7 +161,7 @@ Intransitives
 * *biehkiv:* `biehket+V+IV+Ind+Prt+Sg1`
 * *biegijma:* `biehket+V+IV+Ind+Prt+Pl1`
 
- LEXICON ASSTAT_IV   only for asstat, no passive
+LEXICON ASSTAT_IV   only for asstat, no passive
 
 
 
@@ -170,7 +170,7 @@ Intransitives
 * *asstiv:* `asstat+V+IV+Ind+Prt+Sg1`
 * *astajma:* `asstat+V+IV+Ind+Prt+Pl1`
 
- LEXICON RAVGGAT_IV   a- and å-verbs only Sg3 passive.
+LEXICON RAVGGAT_IV   a- and å-verbs only Sg3 passive.
 
 
 
@@ -179,7 +179,7 @@ Intransitives
 * *bivviv* `bivvat+V+IV+Ind+Prt+Sg1`
 * *bivájma:* `bivvat+V+IV+Ind+Prt+Pl1`
 
- LEXICON BIEGGAT_IV  Impersonals
+LEXICON BIEGGAT_IV  Impersonals
 
 
 *dednjat # Even-syllable test examples:*
@@ -187,7 +187,7 @@ Intransitives
 * *dädnjá:* `dednjat+V+IV+Ind+Prs+Sg3`
 * *denjaj:* `dednjat+V+IV+Ind+Prt+Sg3`
 
- LEXICON RAVGGALASSTET_IV    Like RAVGGAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced
+LEXICON RAVGGALASSTET_IV    Like RAVGGAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced
 
 
 
@@ -196,7 +196,7 @@ Intransitives
 * *dehpudalliv:* `dehpudallat+V+IV+Ind+Prt+Sg1`
 * *dehpudalájma:* `dehpudallat+V+IV+Ind+Prt+Pl1`
 
- LEXICON BIEKKASTALLAT_IV  Already derived impersonals
+LEXICON BIEKKASTALLAT_IV  Already derived impersonals
 
 
 *dehpudallat # Even-syllable test examples:*
@@ -204,7 +204,7 @@ Intransitives
 * *duhpárastij:* `duhpárasstet+V+IV+Ind+Prt+Sg3`
 
 
- LEXICON GUOTTEDALLAT_IV    passives on -allat - no actio as first part of compounds, but reintroduced
+LEXICON GUOTTEDALLAT_IV    passives on -allat - no actio as first part of compounds, but reintroduced
 
 
 
@@ -213,7 +213,7 @@ Intransitives
 * *duolmudalliv:* `duolmudallat+V+IV+Ind+Prt+Sg1`
 * *duolmudalájma:* `duolmudallat+V+IV+Ind+Prt+Pl1`
 
- LEXICON HIEBADUVVAT_IV   passives on -uvvat - no actio as first part of compounds, but reintroduced
+LEXICON HIEBADUVVAT_IV   passives on -uvvat - no actio as first part of compounds, but reintroduced
 
 *duostoduvvat # Even-syllable test examples:*
 * *duostoduváv:* `duostoduvvat+V+IV+Ind+Prs+Sg1`
@@ -221,7 +221,7 @@ Intransitives
 * *duostoduvájma:* `duostoduvvat+V+IV+Ind+Prt+Pl1`
 
 Transitives
- LEXICON MÁHTTET_TV    verbs without personal passive
+LEXICON MÁHTTET_TV    verbs without personal passive
 
 
 *jáhkket # Even-syllable test examples:*
@@ -229,7 +229,7 @@ Transitives
 * *jáhkkiv:* `jáhkket+V+TV+Ind+Prt+Sg1`
 * *jáhkijma:* `jáhkket+V+TV+Ind+Prt+Pl1`
 
- LEXICON BASSAT_TV   a- and å-verbs. Three passives
+LEXICON BASSAT_TV   a- and å-verbs. Three passives
 
 
 *jåksåt # Even-syllable test examples:*
@@ -237,7 +237,7 @@ Transitives
 * *jåksiv:* `jåksåt+V+TV+Ind+Prt+Sg1`
 * *jåvsåjma:* `jåksåt+V+TV+Ind+Prt+Pl1`
 
- LEXICON BASSALASSTET_TV   Like BASSAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced. Three passives
+LEXICON BASSALASSTET_TV   Like BASSAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced. Three passives
 
 
 *jårgudallat # Even-syllable test examples:*
@@ -245,7 +245,7 @@ Transitives
 * *jårgudalliv:* `jårgudallat+V+TV+Ind+Prt+Sg1`
 * *jårgudalájma:* `jårgudallat+V+TV+Ind+Prt+Pl1`
 
- LEXICON JUHKAT_TV   a-verbs like BASSAT_TV but but without derivations -stit, -stallat, -stahtte, - stasste. Dim -istit that are hardcoded. Three passives
+LEXICON JUHKAT_TV   a-verbs like BASSAT_TV but but without derivations -stit, -stallat, -stahtte, - stasste. Dim -istit that are hardcoded. Three passives
 
 
 *njammat # Even-syllable test examples:*
@@ -253,7 +253,7 @@ Transitives
 * *njammiv:* `njammat+V+TV+Ind+Prt+Sg1`
 * *njamájma:* `njammat+V+TV+Ind+Prt+Pl1`
 
- LEXICON LÁHPPET_TV   e-verbs. Three passives
+LEXICON LÁHPPET_TV   e-verbs. Three passives
 
 
 *oajttet # Even-syllable test examples:*
@@ -261,7 +261,7 @@ Transitives
 * *oajttiv:* `oajttet+V+TV+Ind+Prt+Sg1`
 * *åjtijma:* `oajttet+V+TV+Ind+Prt+Pl1`
 
- LEXICON JIEHKET_TV   e-verbs GRADE II-I WITH IE DIPHT. Three passives
+LEXICON JIEHKET_TV   e-verbs GRADE II-I WITH IE DIPHT. Three passives
 
 
 *sievvet # Even-syllable test examples:*
@@ -270,7 +270,7 @@ Transitives
 * *sievviv:* `sievvet+V+TV+Ind+Prt+Sg1`
 * *sievijma:* `sievvet+V+TV+Ind+Prt+Pl1`
 
- LEXICON DIEHTET_TV   Only this one word, unusual diphtong behavior. No passive
+LEXICON DIEHTET_TV   Only this one word, unusual diphtong behavior. No passive
 
 
 *diehtet # Even-syllable test examples:*
@@ -278,7 +278,7 @@ Transitives
 * *diehtiv:* `diehtet+V+TV+Ind+Prt+Sg1`
 * *diedijma:* `diehtet+V+TV+Ind+Prt+Pl1`
 
- LEXICON GÁDJOT_TV  o-verbs. only duvvat passive.
+LEXICON GÁDJOT_TV  o-verbs. only duvvat passive.
 
 
 
@@ -291,7 +291,7 @@ Transitives
 * *sjpättjojma:* `sjpædtjot+V+TV+Ind+Prt+Pl1`
 
 
- LEXICON JÅRGGOT_TV  o-verbs with dim -astit that are hardcoded.  Duvvat and dallat passive.
+LEXICON JÅRGGOT_TV  o-verbs with dim -astit that are hardcoded.  Duvvat and dallat passive.
 
 *boarkkot # Even-syllable test examples:*
 * *boarkov:* `boarkkot+V+TV+Ind+Prs+Sg1`
@@ -332,10 +332,10 @@ Transitives
 
 This is just awaiting a manual classification
 
- LEXICON BIEKKASTIT_IV  Impersonals, only Sg3
+LEXICON BIEKKASTIT_IV  Impersonals, only Sg3
 
 
- LEXICON JÅRGESTIT_IV At the moment IV, we may perhaps change IV/TV. 
+LEXICON JÅRGESTIT_IV At the moment IV, we may perhaps change IV/TV. 
 
 
 
@@ -344,7 +344,7 @@ This is just awaiting a manual classification
 * *doalvestiv:* `doalvestit+V+IV+Ind+Prt+Sg1`
 * *doalvestijma:* `doalvestit+V+IV+Ind+Prt+Pl1`
 
- LEXICON BEGATJIT_IV   Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but  only Sg3 passivereintroduced
+LEXICON BEGATJIT_IV   Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but  only Sg3 passivereintroduced
 
 
 
@@ -354,7 +354,7 @@ This is just awaiting a manual classification
 * *duojkkuhiv:* `duojkkuhit+V+IV+Ind+Prt+Sg1`
 * *duojkkuhijma:* `duojkkuhit+V+IV+Ind+Prt+Pl1`
 
- LEXICON BALÁDIT_IV   continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms, only Sg3 passive
+LEXICON BALÁDIT_IV   continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms, only Sg3 passive
 
 
 
@@ -363,7 +363,7 @@ This is just awaiting a manual classification
 * *lihtudiv:* `lihtudit+V+IV+Ind+Prt+Sg1`
 * *lihtudijma:* `lihtudit+V+IV+Ind+Prt+Pl1`
 
- LEXICON SUOGNALIT_IV  Trisyllabic Verbs ending -lit.  only Sg3 passive
+LEXICON SUOGNALIT_IV  Trisyllabic Verbs ending -lit.  only Sg3 passive
 
 
 
@@ -372,7 +372,7 @@ This is just awaiting a manual classification
 * *loavkkaliv:* `loavkkalit+V+IV+Ind+Prt+Sg1`
 * *loavkkalijma:* `loavkkalit+V+IV+Ind+Prt+Pl1`
 
- LEXICON LASSÁNIT_IV  verbs ending -nit, -sit, no passive
+LEXICON LASSÁNIT_IV  verbs ending -nit, -sit, no passive
 
 
 *rievddánit # Odd-syllable test examples:*
@@ -380,7 +380,7 @@ This is just awaiting a manual classification
 * *rievddániv:* `rievddánit+V+IV+Ind+Prt+Sg1`
 * *rievddánijma:* `rievddánit+V+IV+Ind+Prt+Pl1`
 
- LEXICON BÁHTARIT_IV verbs ending -rit.  only Sg3 passive
+LEXICON BÁHTARIT_IV verbs ending -rit.  only Sg3 passive
 
 
 
@@ -389,7 +389,7 @@ This is just awaiting a manual classification
 * *sjtávttjuriv:* `sjtávttjurit+V+IV+Ind+Prt+Sg1`
 * *sjtávttjurijma:* `sjtávttjurit+V+IV+Ind+Prt+Pl1`
 
- LEXICON UNNEDIT_TV   All -uvvat passives.
+LEXICON UNNEDIT_TV   All -uvvat passives.
 
 
 *nuoledit # Odd-syllable test examples:*
@@ -397,7 +397,7 @@ This is just awaiting a manual classification
 * *nuolediv:* `nuoledit+V+TV+Ind+Prt+Sg1`
 * *nuoledijma:* `nuoledit+V+TV+Ind+Prt+Pl1`
 
- LEXICON MUJTATJIT_TV   Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but reintroduced. All -uvvat passives
+LEXICON MUJTATJIT_TV   Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but reintroduced. All -uvvat passives
 
 
 *nårddådit # Odd-syllable test examples:*
@@ -405,7 +405,7 @@ This is just awaiting a manual classification
 * *nårddådiv:* `nårddådit+V+TV+Ind+Prt+Sg1`
 * *nårddådijma:* `nårddådit+V+TV+Ind+Prt+Pl1`
 
- LEXICON BÅNJÅDIT_TV   continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms. All -uvvat  passives.
+LEXICON BÅNJÅDIT_TV   continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms. All -uvvat  passives.
 
 
 *tsirggalit # Odd-syllable test examples:*
@@ -413,7 +413,7 @@ This is just awaiting a manual classification
 * *tsirggaliv:* `tsirggalit+V+TV+Ind+Prt+Sg1`
 * *tsirggalijma:* `tsirggalit+V+TV+Ind+Prt+Pl1`
 
- LEXICON VUORDDELIT_TV  Trisyllabic Verbs ending -lit. All -uvvat passives
+LEXICON VUORDDELIT_TV  Trisyllabic Verbs ending -lit. All -uvvat passives
 
 
 *tsåggålit # Odd-syllable test examples:*
@@ -435,7 +435,7 @@ This is just awaiting a manual classification
 
 ## Contracted stems
 
- LEXICON SJIERRIT_IV  Impersonals
+LEXICON SJIERRIT_IV  Impersonals
 
 
 
@@ -445,7 +445,7 @@ This is just awaiting a manual classification
 
 
 
- LEXICON BASSUT_IV  Passives
+LEXICON BASSUT_IV  Passives
 
 
 
@@ -455,7 +455,7 @@ This is just awaiting a manual classification
 * *buvvujiv:* `buvvut+V+IV+Ind+Prt+Sg1`
 * *buvvujma:* `buvvut+V+IV+Ind+Prt+Pl1`
 
- LEXICON OADDÁT_IV    Incoative, (doarrut,jåhttåt). Only Sg3 passive. Does not make nouns via -ár derivation.
+LEXICON OADDÁT_IV    Incoative, (doarrut,jåhttåt). Only Sg3 passive. Does not make nouns via -ár derivation.
 
 
 
@@ -468,7 +468,7 @@ This is just awaiting a manual classification
 * *bæhkkájma:* `bæhkkát+V+IV+Ind+Prt+Pl1`
 * *bähkkájma:* `bæhkkát+V+IV+Ind+Prt+Pl1`
 
- LEXICON DULLUT_IV   Does not make nouns via -ár derivation. Only Sg3 passiv.
+LEXICON DULLUT_IV   Does not make nouns via -ár derivation. Only Sg3 passiv.
 
 
 
@@ -478,7 +478,7 @@ This is just awaiting a manual classification
 * *dussujiv:* `dussut+V+IV+Ind+Prt+Sg1`
 * *dussujma:* `dussut+V+IV+Ind+Prt+Pl1`
 
- LEXICON TJUOLLÁT_TV    Incoativ. All passive. Does not make nouns via -ár derivation,  (gullát, bårråt)
+LEXICON TJUOLLÁT_TV    Incoativ. All passive. Does not make nouns via -ár derivation,  (gullát, bårråt)
 
 
 *gajkkát # Contracted test examples:*
@@ -487,7 +487,7 @@ This is just awaiting a manual classification
 * *gajkkájma:* `gajkkát+V+TV+Ind+Prt+Pl1`
 
 
- LEXICON STRÁFFUT_TV    Does not make nouns via -ár derivation. All duvvat passives. 
+LEXICON STRÁFFUT_TV    Does not make nouns via -ár derivation. All duvvat passives. 
 
 
 *gáhpput # Contracted test examples:*
@@ -495,7 +495,7 @@ This is just awaiting a manual classification
 * *gáhppujiv:* `gáhpput+V+TV+Ind+Prt+Sg1`
 * *gáhppujma:* `gáhpput+V+TV+Ind+Prt+Pl1`
 
- LEXICON TSIEGGIT_TV   Makes nouns via -ár derivation. All duvvat passives. 
+LEXICON TSIEGGIT_TV   Makes nouns via -ár derivation. All duvvat passives. 
 
 
 *gámmpit # Contracted test examples:*
@@ -504,7 +504,7 @@ This is just awaiting a manual classification
 * *gámmpijma:* `gámmpit+V+TV+Ind+Prt+Pl1`
 * *gámmpár:* `gámmpit+V+TV+Der/r+N+Sg+Nom`
 
- LEXICON VALLIT_TV  Makes nouns via -ár derivation. Gets only passive Sg3
+LEXICON VALLIT_TV  Makes nouns via -ár derivation. Gets only passive Sg3
 
 
 *hinnit # Contracted test examples:*
@@ -517,7 +517,7 @@ This is just awaiting a manual classification
 
 contraced verbs assimilated and outside the main pattern.
 
- LEXICON PLÁNIT_TV  Transitive Two-syll contraced words not in third grade as contraced verb have been. Two syllable transitive NEW loan verbs. Makes nouns via -ár derivation. All passives.
+LEXICON PLÁNIT_TV  Transitive Two-syll contraced words not in third grade as contraced verb have been. Two syllable transitive NEW loan verbs. Makes nouns via -ár derivation. All passives.
 
 
 *hinnit # Contracted test examples:*
@@ -532,7 +532,7 @@ contraced verbs assimilated and outside the main pattern.
 
 
 
- LEXICON SLEDUT_IV  Intransitive Two-syll contraced words not in third grade as contraced verb have been. Only Sg3 passiv.
+LEXICON SLEDUT_IV  Intransitive Two-syll contraced words not in third grade as contraced verb have been. Only Sg3 passiv.
 
 
 
@@ -543,24 +543,24 @@ contraced verbs assimilated and outside the main pattern.
 
 
 
- LEXICON BADASS_TV  NEW badly assimilated two syllable transitive loan verbs. Makes nouns via -ár derivation. All passives. Err/orth taged in stem file
+LEXICON BADASS_TV  NEW badly assimilated two syllable transitive loan verbs. Makes nouns via -ár derivation. All passives. Err/orth taged in stem file
 
 
 
- LEXICON BADASS_IV   NEW badly assimilated two syllable intransitive loan verbs. Makes nouns via -ár derivation. Only Sg3 passiv. Err/orth taged in stem file.
+LEXICON BADASS_IV   NEW badly assimilated two syllable intransitive loan verbs. Makes nouns via -ár derivation. Only Sg3 passiv. Err/orth taged in stem file.
 
 
 
 
- LEXICON ABBONERE_TV   Transitive loan words with more than two syllables with -rit endings. Duvvat passives. Does not make nouns via -ár derivation. Only the two last syllables are assimilated to sami. LONG -e is assimilated in different ways in Norway and Sweden: In Norway, it becomes -ie, and in Sweden -e.
+LEXICON ABBONERE_TV   Transitive loan words with more than two syllables with -rit endings. Duvvat passives. Does not make nouns via -ár derivation. Only the two last syllables are assimilated to sami. LONG -e is assimilated in different ways in Norway and Sweden: In Norway, it becomes -ie, and in Sweden -e.
 
 
 
- LEXICON BRILJERE_IV   Intransitive loan words with more than two syllables with -rit endings. Does not make nouns via -ár derivation. Only the two last syllables are assimilated to sami. Long -e is assimilated in different ways in dialects in Norway and Sweden: In Norway it often becomes -ie, while in Sweden itºs usually -e.  
+LEXICON BRILJERE_IV   Intransitive loan words with more than two syllables with -rit endings. Does not make nouns via -ár derivation. Only the two last syllables are assimilated to sami. Long -e is assimilated in different ways in dialects in Norway and Sweden: In Norway it often becomes -ie, while in Sweden itºs usually -e.  
 
 
 
- LEXICON BRILJERE_IV_INFL   
+LEXICON BRILJERE_IV_INFL   
 
 
 
@@ -576,7 +576,7 @@ contraced verbs assimilated and outside the main pattern.
 * *briljerijma:* `briljierit+V+IV+Ind+Prt+Pl1`
 
 
- LEXICON ABBONERE_TV_INFL   
+LEXICON ABBONERE_TV_INFL   
 
 
 *abbonierit # Contracted test examples:*

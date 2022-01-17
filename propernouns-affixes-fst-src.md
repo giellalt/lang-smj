@@ -13,7 +13,7 @@ Unstressed last syllable
 
 Words in ACCRA lexicons end on vowel, have no CG and get "even-syllable" case marking where case suffixes are added directly. Illative e:i, but not o:u. Last syllable is unstressed. Both non-assimilated and assmilated stems (although not all are fully, or correctly, assmilated)
 
- LEXICON ACCRA-ani   Vowel-final names where case endings are added directly, no cg. Illative e changes to i. Animales.
+LEXICON ACCRA-ani   Vowel-final names where case endings are added directly, no cg. Illative e changes to i. Animales.
 
 
 *Tjuorri # Even-syllable test examples:*
@@ -21,7 +21,7 @@ Words in ACCRA lexicons end on vowel, have no CG and get "even-syllable" case ma
 * *Tjuorrij:* `Tjuorri+N+Prop+Sem/Ani+Sg+Ill`
 * *Tjuorris:* `Tjuorri+N+Prop+Sem/Ani+Sg+Ela`
 
- LEXICON ACCRA-obj  Vowel-final names where case endings are added directly, no cg. Object names
+LEXICON ACCRA-obj  Vowel-final names where case endings are added directly, no cg. Object names
 
 
 *Gestapo # Even-syllable test examples:*
@@ -29,7 +29,7 @@ Words in ACCRA lexicons end on vowel, have no CG and get "even-syllable" case ma
 * *Gestapoj:* `Gestapo+N+Prop+Sem/Obj+Sg+Ill`
 * *Gestapos:* `Gestapo+N+Prop+Sem/Obj+Sg+Ela`
 
- LEXICON ACCRA-org  Vowel-final names where caseendings are added directly, no cg. organizations
+LEXICON ACCRA-org  Vowel-final names where caseendings are added directly, no cg. organizations
 
 
 *Giellatekno # Even-syllable test examples:*
@@ -37,7 +37,7 @@ Words in ACCRA lexicons end on vowel, have no CG and get "even-syllable" case ma
 * *Giellateknoj:* `Giellatekno+N+Prop+Sem/Org+Sg+Ill`
 * *Giellateknos:* `Giellatekno+N+Prop+Sem/Org+Sg+Ela`
 
- LEXICON ACCRA-mal  Vowel-final names where case are added directly, no cg. Male names
+LEXICON ACCRA-mal  Vowel-final names where case are added directly, no cg. Male names
 
 
 
@@ -49,7 +49,7 @@ Words in ACCRA lexicons end on vowel, have no CG and get "even-syllable" case ma
 
 
 
- LEXICON ACCRA-fem  Vowel-final names where case endings are added directly, no cg. Female names
+LEXICON ACCRA-fem  Vowel-final names where case endings are added directly, no cg. Female names
 
 
 
@@ -58,7 +58,7 @@ Words in ACCRA lexicons end on vowel, have no CG and get "even-syllable" case ma
 * *Barbroj:* `Barbro+N+Prop+Sem/Fem+Sg+Ill`
 * *Barbros:* `Barbro+N+Prop+Sem/Fem+Sg+Ela`
 
- LEXICON ACCRA-femsur  Vowel-final names where case endings are added directly, no cg. Female names also used as surnames
+LEXICON ACCRA-femsur  Vowel-final names where case endings are added directly, no cg. Female names also used as surnames
 
 
 
@@ -68,7 +68,7 @@ Words in ACCRA lexicons end on vowel, have no CG and get "even-syllable" case ma
 * *Saraj:* `Sara+N+Prop+Sem/Sur+Sg+Ill`
 * *Saras:* `Sara+N+Prop+Sem/Fem+Sg+Ela`
 
- LEXICON ACCRA-malfem  Vowel-final names where case endings are added directly, no cg. Names that can be both female and male names
+LEXICON ACCRA-malfem  Vowel-final names where case endings are added directly, no cg. Names that can be both female and male names
 
 
 
@@ -78,7 +78,7 @@ Words in ACCRA lexicons end on vowel, have no CG and get "even-syllable" case ma
 * *Jannij:* `Janne+N+Prop+Sem/Mal+Sg+Ill`
 * *Jannes:* `Janne+N+Prop+Sem/Mal+Sg+Ela`
 
- LEXICON ACCRA-objplc  Vowel-final names where case endings are added directly, no cg. Names that can be both objects and place names
+LEXICON ACCRA-objplc  Vowel-final names where case endings are added directly, no cg. Names that can be both objects and place names
 
 
 
@@ -91,7 +91,7 @@ Words in ACCRA lexicons end on vowel, have no CG and get "even-syllable" case ma
 * *soria-morialasj:* `Soria-Moria+N+Prop+Sem/Plc+Der/lasj+N+Sg+Nom`
 
 
- LEXICON ACCRA-femplc  Vowel-final names where case endings are added directly, no cg. Names that can be both female and place names
+LEXICON ACCRA-femplc  Vowel-final names where case endings are added directly, no cg. Names that can be both female and place names
 
 
 
@@ -103,7 +103,7 @@ Words in ACCRA lexicons end on vowel, have no CG and get "even-syllable" case ma
 * *sallak:* `Salla+N+Prop+Sem/Plc+Der/k+N+Sg+Nom`
 * *sallalasj:* `Salla+N+Prop+Sem/Plc+Der/lasj+N+Sg+Nom`
 
- LEXICON ACCRA-sur  Vowel-final names where case endings are added directly, no cg. Surnames
+LEXICON ACCRA-sur  Vowel-final names where case endings are added directly, no cg. Surnames
 
 
 *Tønne # Even-syllable test examples:*
@@ -111,7 +111,7 @@ Words in ACCRA lexicons end on vowel, have no CG and get "even-syllable" case ma
 * *Tønnij:* `Tønne+N+Prop+Sem/Sur+Sg+Ill`
 * *Tønnes:* `Tønne+N+Prop+Sem/Sur+Sg+Ela`
 
- LEXICON ACCRA-malsur   Vowel-final names where case endings are added directly, no cg. Names that can be both male- and surnames
+LEXICON ACCRA-malsur   Vowel-final names where case endings are added directly, no cg. Names that can be both male- and surnames
 
 
 
@@ -127,7 +127,7 @@ Words in ACCRA lexicons end on vowel, have no CG and get "even-syllable" case ma
 
 
 
- LEXICON ACCRA-plc  Vowel-final names where caseendings are added directly, no cg. Place names
+LEXICON ACCRA-plc  Vowel-final names where caseendings are added directly, no cg. Place names
 
 
 *Burma # Even-syllable test examples:*
@@ -137,13 +137,13 @@ Words in ACCRA lexicons end on vowel, have no CG and get "even-syllable" case ma
 * *burmak:* `Burma+N+Prop+Sem/Plc+Der/k+N+Sg+Nom`
 * *burmalasj:* `Burma+N+Prop+Sem/Plc+Der/lasj+N+Sg+Nom`
 
- LEXICON ACCRA_MWE-plc  Vowel-final names where caseendings are added directly, no cg. Place names
+LEXICON ACCRA_MWE-plc  Vowel-final names where caseendings are added directly, no cg. Place names
 
 
 
 
 
- LEXICON GIRUNA-plc  For proper Kiruna. Same as ACCRA. Different lexicon because of sma.
+LEXICON GIRUNA-plc  For proper Kiruna. Same as ACCRA. Different lexicon because of sma.
 
 
 
@@ -155,21 +155,21 @@ Words in ACCRA lexicons end on vowel, have no CG and get "even-syllable" case ma
 * *veitsiluotok:* `Veitsiluoto+N+Prop+Sem/Plc+Der/k+N+Sg+Nom`
 * *veitsiluotolasj:* `Veitsiluoto+N+Prop+Sem/Plc+Der/lasj+N+Sg+Nom`
 
- LEXICON ACCRA-LOAN-org  Only nominatives. Vowel-final names where case endings are added directly, no cg. organizations
+LEXICON ACCRA-LOAN-org  Only nominatives. Vowel-final names where case endings are added directly, no cg. organizations
 
 
 *Samenes Idrettsforbund-Norge # Even-syllable test examples:*
 * *Samenes* `Idrettsforbund-Norge:` (Eng. Samenes Idrettsforbund-Norge+N+Prop+Sem/Org+Sg+Nom)
 * ★*Samenes* `Idrettsforbund-Norge:` (is not standard language Samenes Idrettsforbund-Norge+N+Prop+Sem/Org+Sg+Ela # negative test)
 
- LEXICON ACCRA-LOAN-obj  Only nominatives. Vowel-final names where case endings are added directly, no cg. Object names
+LEXICON ACCRA-LOAN-obj  Only nominatives. Vowel-final names where case endings are added directly, no cg. Object names
 
 
 *The Norwegian Sami Experience # Even-syllable test examples:*
 * *The* `Norwegian` (Eng. Sami Experience: The Norwegian Sami Experience+N+Prop+Sem/Obj+Sg+Nom)
 * ★*The* `Norwegian` (is not standard language Sami Experience: The Norwegian Sami Experience+N+Prop+Sem/Obj+Sg+Ill # Negative test)
 
- LEXICON ACCRA-LOAN-plc  Only nominatives. Vowel-final names where case endings are added directly, no cg.Place names
+LEXICON ACCRA-LOAN-plc  Only nominatives. Vowel-final names where case endings are added directly, no cg.Place names
 
 
 *Kautokeino # Even-syllable test examples:*
@@ -208,7 +208,7 @@ Words in ACCRA lexicons end on vowel, have no CG and get "even-syllable" case ma
 In smj RONDANE is same as ACCRA, in use in smi because of diffrences in sme. No -lasj or -k. Last syllable is unstressed. Non-assimilated-stems.
 
 
- LEXICON RONDANE-plc  E-final names, with no cg. elative -s, ill -ij. Place names
+LEXICON RONDANE-plc  E-final names, with no cg. elative -s, ill -ij. Place names
 
 
 
@@ -225,7 +225,7 @@ In smj RONDANE is same as ACCRA, in use in smi because of diffrences in sme. No 
 * ★*bakkanek:* `Bakkane+N+Prop+Sem/Plc+Der/k+N+Sg+Nom` (is not standard language)
 * ★*bakkanelasj:* `Bakkane+N+Prop+Sem/Plc+Der/lasj+N+Sg+Nom` (is not standard language)
 
- LEXICON RONDANE-SG-plc  E-final names, with no cg. elative -s, ill -ij. Place names
+LEXICON RONDANE-SG-plc  E-final names, with no cg. elative -s, ill -ij. Place names
 
 
 *Bakkane # Even-syllable test examples:*
@@ -235,7 +235,7 @@ In smj RONDANE is same as ACCRA, in use in smi because of diffrences in sme. No 
 
 
 
- LEXICON RONDANE-LOAN  Only nominative.Place names
+LEXICON RONDANE-LOAN  Only nominative.Place names
 
 
 *Azorene # Even-syllable test examples:*
@@ -243,10 +243,10 @@ In smj RONDANE is same as ACCRA, in use in smi because of diffrences in sme. No 
 * ★*Azorenij:* `Azorene+N+Prop+Sem/Plc+Sg+Ill` (is not standard language # Negative test)
 
 
- LEXICON RONDANE-SG-LOAN  Only nominative. Place names
+LEXICON RONDANE-SG-LOAN  Only nominative. Place names
 
 
- LEXICON RONDANE-sur  Surnames
+LEXICON RONDANE-sur  Surnames
 
 
 *Benneche # Even-syllable test examples:*
@@ -254,7 +254,7 @@ In smj RONDANE is same as ACCRA, in use in smi because of diffrences in sme. No 
 * *Bennechij:* `Benneche+N+Prop+Sem/Sur+Sg+Ill`
 * *Benneches:* `Benneche+N+Prop+Sem/Sur+Sg+Ela`
 
- LEXICON RONDANE-obj  Objects
+LEXICON RONDANE-obj  Objects
 
 
 *Office # Even-syllable test examples:*
@@ -266,7 +266,7 @@ In smj RONDANE is same as ACCRA, in use in smi because of diffrences in sme. No 
 * *Offices:* `Office+N+Prop+Sem/Obj+Sg+Ela`
 * *Officijn:* `Office+N+Prop+Sem/Obj+Sg+Com`
 
- LEXICON RONDANE-org  Organizations
+LEXICON RONDANE-org  Organizations
 
 
 *Picture # Even-syllable test examples:*
@@ -274,7 +274,7 @@ In smj RONDANE is same as ACCRA, in use in smi because of diffrences in sme. No 
 * *Picturij:* `Picture+N+Prop+Sem/Org+Sg+Ill`
 * *Pictures:* `Picture+N+Prop+Sem/Org+Sg+Ela`
 
- LEXICON RONDANE-mal  Male names
+LEXICON RONDANE-mal  Male names
 
 
 *Lawrence # Even-syllable test examples:*
@@ -282,7 +282,7 @@ In smj RONDANE is same as ACCRA, in use in smi because of diffrences in sme. No 
 * *Lawrencij:* `Lawrence+N+Prop+Sem/Mal+Sg+Ill`
 * *Lawrences:* `Lawrence+N+Prop+Sem/Mal+Sg+Ela`
 
- LEXICON RONDANE-fem  Female names
+LEXICON RONDANE-fem  Female names
 
 
 *Jannike # Even-syllable test examples:*
@@ -305,7 +305,7 @@ for the sake of the lexicon MARJA
 
 GATA are Norwegian place names that end on -gata. Gets even-syllable casemarking. Last syllable is unstressed. Non-assimilated stems.
 
- LEXICON GATA-plc   Norwegian place names that end on -gata. Gets even-syllable casemarking. Last syllable is unstressed.
+LEXICON GATA-plc   Norwegian place names that end on -gata. Gets even-syllable casemarking. Last syllable is unstressed.
 
 
 *Munkegata # Even-syllable test examples:*
@@ -315,7 +315,7 @@ GATA are Norwegian place names that end on -gata. Gets even-syllable casemarking
 
 Words in MARJA end on vowel, with CG, even-syllable case marking. Illative change e to á, illative i stays i. Last syllable is unstressed. Real lule sami stems.
 
- LEXICON MARJA-fem  Odd-syllable with cg. Female names
+LEXICON MARJA-fem  Odd-syllable with cg. Female names
 
 
 
@@ -329,7 +329,7 @@ Words in MARJA end on vowel, with CG, even-syllable case marking. Illative chang
 
 
 
- LEXICON MARJA-ani  Animal names
+LEXICON MARJA-ani  Animal names
 
 
 *Vilge # Even-syllable test  examples:*
@@ -338,7 +338,7 @@ Words in MARJA end on vowel, with CG, even-syllable case marking. Illative chang
 * *Gávráskis:* `Gávrásski+N+Prop+Sem/Ani+Sg+Ela`
 
 
- LEXICON MARJA-mal  Male names
+LEXICON MARJA-mal  Male names
 
 
 
@@ -350,7 +350,7 @@ Words in MARJA end on vowel, with CG, even-syllable case marking. Illative chang
 
 
 
- LEXICON MARJA-obj  Objects
+LEXICON MARJA-obj  Objects
 
 
 *Bern-Konvensjåvnnå # Even-syllable test examples:*
@@ -361,7 +361,7 @@ Words in MARJA end on vowel, with CG, even-syllable case marking. Illative chang
 
 
 
- LEXICON MARJA-org  Organizations
+LEXICON MARJA-org  Organizations
 
 
 *Domænadoajmma # Even-syllable test examples:*
@@ -374,7 +374,7 @@ Words in MARJA end on vowel, with CG, even-syllable case marking. Illative chang
 
 
 
- LEXICON MARJA-plc  Vowel final names with Gradation and Ill change (place names)
+LEXICON MARJA-plc  Vowel final names with Gradation and Ill change (place names)
 
 
 *Dundarevuobme # Even-syllable test examples:*
@@ -385,7 +385,7 @@ Words in MARJA end on vowel, with CG, even-syllable case marking. Illative chang
 
 
 
- LEXICON MARJA-sur  Surnames
+LEXICON MARJA-sur  Surnames
 
 
 *Skálltje # Even-syllable test examples:*
@@ -397,9 +397,9 @@ Words in MARJA end on vowel, with CG, even-syllable case marking. Illative chang
 
 
 
- LEXICON MARJA-plc-der  = place name derivations and corresponding flag. Presently not used in SMJ.
+LEXICON MARJA-plc-der  = place name derivations and corresponding flag. Presently not used in SMJ.
 
- LEXICON SUOBMA-plc  Placenames. Like MARJA but no derivation
+LEXICON SUOBMA-plc  Placenames. Like MARJA but no derivation
 
 
 *Suobma # Even-syllable test examples:*
@@ -407,7 +407,7 @@ Words in MARJA end on vowel, with CG, even-syllable case marking. Illative chang
 * *Suobmaj:* `Suobma+N+Prop+Sem/Plc+Sg+Ill`
 * *Suomas:* `Suobma+N+Prop+Sem/Plc+Sg+Ela`
 
- LEXICON SUOBMA-org  Placenames. Like MARJA but no derivation
+LEXICON SUOBMA-org  Placenames. Like MARJA but no derivation
 
 
 
@@ -449,7 +449,7 @@ These proper nouns are in essence partly assimilated loan word as foreign words 
 Words in lexicon NYSTØ end on vowel, no cg. Non-assimilated stems
 
 
- LEXICON NYSTØ-fem  Femal names
+LEXICON NYSTØ-fem  Femal names
 
 
 *Britney # Even-syllable test examples:*
@@ -459,7 +459,7 @@ Words in lexicon NYSTØ end on vowel, no cg. Non-assimilated stems
 * *Britneyas:* `Britney+N+Prop+Sem/Fem+Sg+Ela`
 
 
- LEXICON NYSTØ-mal  Male name
+LEXICON NYSTØ-mal  Male name
 
 
 
@@ -469,7 +469,7 @@ Words in lexicon NYSTØ end on vowel, no cg. Non-assimilated stems
 * *Taneliaj:* `Taneli+N+Prop+Sem/Mal+Sg+Ill`
 * *Tanelias:* `Taneli+N+Prop+Sem/Mal+Sg+Ela`
 
- LEXICON NYSTØ-obj  Objects
+LEXICON NYSTØ-obj  Objects
 
 
 *Infiniti # Even-syllable test examples:*
@@ -478,7 +478,7 @@ Words in lexicon NYSTØ end on vowel, no cg. Non-assimilated stems
 * *Infinitiaj:* `Infiniti+N+Prop+Sem/Obj+Sg+Ill`
 * *Infinitias:* `Infiniti+N+Prop+Sem/Obj+Sg+Ela`
 
- LEXICON NYSTØ-org   Organizations
+LEXICON NYSTØ-org   Organizations
 
 
 *Kulturby # Even-syllable test examples:*
@@ -487,7 +487,7 @@ Words in lexicon NYSTØ end on vowel, no cg. Non-assimilated stems
 * *Kulturbyaj:* `Kulturby+N+Prop+Sem/Org+Sg+Ill`
 * *Kulturbyas:* `Kulturby+N+Prop+Sem/Org+Sg+Ela`
 
- LEXICON NYSTØ-LOAN-org  Organizations loan
+LEXICON NYSTØ-LOAN-org  Organizations loan
 
 
 *Sameby # Even-syllable test examples:*
@@ -495,7 +495,7 @@ Words in lexicon NYSTØ end on vowel, no cg. Non-assimilated stems
 * ★*Samebyaj:* `Sameby+N+Prop+Sem/Org+Sg+Ill` (is not standard language)
 * ★*Samebyas:* `Sameby+N+Prop+Sem/Org+Sg+Ela` (is not standard language)
 
- LEXICON NYSTØ-sur  Sur names
+LEXICON NYSTØ-sur  Sur names
 
 
 *Sandoz # Even-syllable test examples:*
@@ -512,7 +512,7 @@ Words in lexicon NYSTØ end on vowel, no cg. Non-assimilated stems
 * *Teigmoaj:* `Teigmo+N+Prop+Sem/Plc+Sg+Ill`
 * *Teigmoas:* `Teigmo+N+Prop+Sem/Plc+Sg+Ela`
 
- LEXICON NYSTØ-LOAN-plc  Place names loan
+LEXICON NYSTØ-LOAN-plc  Place names loan
 
 
 *Bodø # Even-syllable test examples:*
@@ -520,7 +520,7 @@ Words in lexicon NYSTØ end on vowel, no cg. Non-assimilated stems
 * ★*Bodøaj:* `Bodø+N+Prop+Sem/Plc+Sg+Ill` (is not standard language)
 * ★*Bodøas:* `Bodø+N+Prop+Sem/Plc+Sg+Ela` (is not standard language)
 
- LEXICON NYSTØ-plc  Place names
+LEXICON NYSTØ-plc  Place names
 
 
 *Borgå # Even-syllable test examples:*
@@ -529,7 +529,7 @@ Words in lexicon NYSTØ end on vowel, no cg. Non-assimilated stems
 * *Borgåaj:* `Borgå+N+Prop+Sem/Plc+Sg+Ill`
 * *Borgåas:* `Borgå+N+Prop+Sem/Plc+Sg+Ela`
 
- LEXICON NYSTØ_MWE-plc  Place names
+LEXICON NYSTØ_MWE-plc  Place names
 
 
 
@@ -555,7 +555,7 @@ Words in lexicon NYSTØ end on vowel, no cg. Non-assimilated stems
 
 Words in DUBAI lexicon end on vowel+vowel and have no cg. Last syllable is stressed. Get even syllable case marking. Non-assimilated stems. Not sure if this lexicon is necessary, at least for smj's sake.
 
- LEXICON DUBAI-fem  I-final names. No cg. Female names
+LEXICON DUBAI-fem  I-final names. No cg. Female names
 
 
 
@@ -565,7 +565,7 @@ Words in DUBAI lexicon end on vowel+vowel and have no cg. Last syllable is stres
 * *Maias:* `Mai+N+Prop+Sem/Fem+Sg+Ela`
 
 
- LEXICON DUBAI-obj  I-final names. No cg. Object names
+LEXICON DUBAI-obj  I-final names. No cg. Object names
 
 
 *Hyundai  # Even-syllable test examples:*
@@ -573,7 +573,7 @@ Words in DUBAI lexicon end on vowel+vowel and have no cg. Last syllable is stres
 * *Hyundaiaj:* `Hyundai+N+Prop+Sem/Obj+Sg+Ill`
 * *Hyundaias:* `Hyundai+N+Prop+Sem/Obj+Sg+Ela`
 
- LEXICON DUBAI-org  Organizations
+LEXICON DUBAI-org  Organizations
 
 
 *Khoi # Even-syllable test examples:*
@@ -581,7 +581,7 @@ Words in DUBAI lexicon end on vowel+vowel and have no cg. Last syllable is stres
 * *Khoiaj:* `Khoi+N+Prop+Sem/Org+Sg+Ill`
 * *Khoias:* `Khoi+N+Prop+Sem/Org+Sg+Ela`
 
- LEXICON DUBAI-mal  Male names
+LEXICON DUBAI-mal  Male names
 
 
 
@@ -590,7 +590,7 @@ Words in DUBAI lexicon end on vowel+vowel and have no cg. Last syllable is stres
 * *Kublaiaj:* `Kublai+N+Prop+Sem/Mal+Sg+Ill`
 * *Kublaias:* `Kublai+N+Prop+Sem/Mal+Sg+Ela`
 
- LEXICON DUBAI-sur  Surnames
+LEXICON DUBAI-sur  Surnames
 
 
 *Maarthai # Even-syllable test examples:*
@@ -598,7 +598,7 @@ Words in DUBAI lexicon end on vowel+vowel and have no cg. Last syllable is stres
 * *Maarthaiaj:* `Maarthai+N+Prop+Sem/Sur+Sg+Ill`
 * *Maarthaias:* `Maarthai+N+Prop+Sem/Sur+Sg+Ela`
 
- LEXICON DUBAI-plc  Place names
+LEXICON DUBAI-plc  Place names
 
 
 *Madurai # Even-syllable test examples:*
@@ -621,7 +621,7 @@ Words in DUBAI lexicon end on vowel+vowel and have no cg. Last syllable is stres
 
 Words in lexicon BERN end on conconant, no cg, even syllable case marking with -av, -aj, -as, etc. Last syllable is stressed. Both assimilated and non-assmilated stems.
 
- LEXICON BERN-ani   Animals
+LEXICON BERN-ani   Animals
 
 
 *Lillemor # Even-syllable test examples:*
@@ -629,7 +629,7 @@ Words in lexicon BERN end on conconant, no cg, even syllable case marking with -
 * *Lillemoraj:* `Lillemor+N+Prop+Sem/Ani+Sg+Ill`
 * *Lillemoras:* `Lillemor+N+Prop+Sem/Ani+Sg+Ela`
 
- LEXICON BERN-mal   Male names
+LEXICON BERN-mal   Male names
 
 
 
@@ -639,7 +639,7 @@ Words in lexicon BERN end on conconant, no cg, even syllable case marking with -
 * *Eysteinas:* `Eystein+N+Prop+Sem/Mal+Sg+Ela`
 
 
- LEXICON BERN-surmal   name that are both sur- and male names
+LEXICON BERN-surmal   name that are both sur- and male names
 
 
 *Pipin # Even-syllable test examples:*
@@ -648,7 +648,7 @@ Words in lexicon BERN end on conconant, no cg, even syllable case marking with -
 * *Pipinas:* `Pipin+N+Prop+Sem/Sur+Sg+Ela`
 
 
- LEXICON BERN-fem   Female name
+LEXICON BERN-fem   Female name
 
 
 
@@ -660,7 +660,7 @@ Words in lexicon BERN end on conconant, no cg, even syllable case marking with -
 Different lexicon for female persons. Audhild.
 
 
- LEXICON BERN-sur  Surnames
+LEXICON BERN-sur  Surnames
 
 
 *Lind # Even-syllable test examples:*
@@ -670,7 +670,7 @@ Different lexicon for female persons. Audhild.
 
 
 
- LEXICON BERN-plc  Placenames
+LEXICON BERN-plc  Placenames
 
 
 *Beijing # Even-syllable test examples:*
@@ -678,9 +678,9 @@ Different lexicon for female persons. Audhild.
 * *Beijingaj:* `Beijing+N+Prop+Sem/Plc+Sg+Ill`
 * *Beijingas:* `Beijing+N+Prop+Sem/Plc+Sg+Ela`
 
- LEXICON BERN_MWE-plc  Placenames
+LEXICON BERN_MWE-plc  Placenames
 
- LEXICON BERN-objsur   Names used as both objects and surnames. 
+LEXICON BERN-objsur   Names used as both objects and surnames. 
 
 
 *Stenbukk # Even-syllable test examples:*
@@ -688,7 +688,7 @@ Different lexicon for female persons. Audhild.
 * *Stenbukkaj:* `Stenbukk+N+Prop+Sem/Obj+Sg+Ill`
 * *Stenbukkas:* `Stenbukk+N+Prop+Sem/Obj+Sg+Ela`
 
- LEXICON BERN-orgsur  Names used for both organizations and surnames. 
+LEXICON BERN-orgsur  Names used for both organizations and surnames. 
 
 
 *Nord # Even-syllable test examples:*
@@ -696,7 +696,7 @@ Different lexicon for female persons. Audhild.
 * *Nordaj:* `Nord+N+Prop+Sem/Org+Sg+Ill`
 * *Nordas:* `Nord+N+Prop+Sem/Org+Sg+Ela`
 
- LEXICON BERN-obj  Objects. Obs: Different lexicon for organisations. Microsoft.
+LEXICON BERN-obj  Objects. Obs: Different lexicon for organisations. Microsoft.
 
 
 *Sult # Even-syllable test examples:*
@@ -704,7 +704,7 @@ Different lexicon for female persons. Audhild.
 * *Sultaj:* `Sult+N+Prop+Sem/Obj+Sg+Ill`
 * *Sultas:* `Sult+N+Prop+Sem/Obj+Sg+Ela`
 
- LEXICON BERN-org  Organizations
+LEXICON BERN-org  Organizations
 
 
 *Laks # Even-syllable test examples:*
@@ -712,7 +712,7 @@ Different lexicon for female persons. Audhild.
 * *Laksaj:* `Laks+N+Prop+Sem/Org+Sg+Ill`
 * *Laksas:* `Laks+N+Prop+Sem/Org+Sg+Ela`
 
- LEXICON BERN-LOAN-org  Organizations loan.  
+LEXICON BERN-LOAN-org  Organizations loan.  
 
 
 *Reinsamelag # Even-syllable test examples:*
@@ -720,7 +720,7 @@ Different lexicon for female persons. Audhild.
 * ★*Reinsamelagaj:* `Reinsamelag+N+Prop+Sem/Org+Sg+Ill` (is not standard language)
 * ★*Reinsamelagas:* `Reinsamelag+N+Prop+Sem/Org+Sg+Ela` (is not standard language)
 
- LEXICON BERN-LOAN-plc  Placenames loan. 
+LEXICON BERN-LOAN-plc  Placenames loan. 
 
 
 *Mehamn # Even-syllable test examples:*
@@ -728,7 +728,7 @@ Different lexicon for female persons. Audhild.
 * ★*Mehamnaj:* `Mehamn+N+Prop+Sem/Plc+Sg+Ill` (is not standard language)
 * ★*Mehamnas:* `Mehamn+N+Prop+Sem/Plc+Sg+Ela` (is not standard language)
 
- LEXICON BERN-LOAN-obj  Objects loan. 
+LEXICON BERN-LOAN-obj  Objects loan. 
 
 
 *Verneplan # Even-syllable test examples:*
@@ -762,7 +762,7 @@ Words in LONDONBERN are sent to both LONDON and BERN lexicons. Non-assmilated st
 
 Words in lexicon BASUDIS are trisyllabic in sg nom, and work like standard 4-syllable nouns. End on conconant and have cg. Even syllable case marking with acc -áv, ill -áj, ela -ás, etc. Real lule sami stems.
 
- LEXICON BASUDIS-org  Only singular. Placenames
+LEXICON BASUDIS-org  Only singular. Placenames
 
 
 *Ádjagas # 4-syllable test examples:*
@@ -770,7 +770,7 @@ Words in lexicon BASUDIS are trisyllabic in sg nom, and work like standard 4-syl
 * *Ádjagassaj:* `Ádjagas+N+Prop+Sem/Org+Sg+Ill`
 * *Ádjagasás:* `Ádjagas+N+Prop+Sem/Org+Sg+Ela`
 
- LEXICON BASUDIS-mal   Male names
+LEXICON BASUDIS-mal   Male names
 
 
 *Ájluhasj # 4-syllable test examples:*
@@ -778,7 +778,7 @@ Words in lexicon BASUDIS are trisyllabic in sg nom, and work like standard 4-syl
 * *Ájluhadtjaj:* `Ájluhasj+N+Prop+Sem/Mal+Sg+Ill` (Eng. !should add dummy to prevent unusual dtj-stem?)
 * *Ájluhattjas:* `Ájluhasj+N+Prop+Sem/Mal+Sg+Ela`
 
- LEXICON BASUDIS-fem  Female names
+LEXICON BASUDIS-fem  Female names
 
 
 *Magdalas # 4-syllable test examples:*
@@ -787,7 +787,7 @@ Words in lexicon BASUDIS are trisyllabic in sg nom, and work like standard 4-syl
 * *Magdalasás:* `Magdalas+N+Prop+Sem/Fem+Sg+Ela`
 
 
- LEXICON BASUDIS-plc  Place names
+LEXICON BASUDIS-plc  Place names
 
 
 *Ulldevis # 4-syllable test examples:*
@@ -809,10 +809,10 @@ Plurals
 
 Words in lexicon VARGGAT even-syllable sámi plurals .
 
- LEXICON VARGGAT-plc   Plural stems, sáme names.  Place names
+LEXICON VARGGAT-plc   Plural stems, sáme names.  Place names
 
 
- LEXICON VARGGAT-org   Plural stems, sáme names. 
+LEXICON VARGGAT-org   Plural stems, sáme names. 
 
 
 
@@ -831,7 +831,7 @@ Words in lexicon VARGGAT even-syllable sámi plurals .
 
 Words in lexicon ALEUHTAT even-syllables assimilated plurals.
 
- LEXICON ALEUHTAT-plc  Plural names, not sami names. like -váre, -gårtje
+LEXICON ALEUHTAT-plc  Plural names, not sami names. like -váre, -gårtje
 
 
 
@@ -847,7 +847,7 @@ Words in lexicon ALEUHTAT even-syllables assimilated plurals.
 Words in lexicon LONDON end on conconant, no cg, case marking with -av, -ij, -is, etc. Last syllable is unstressed. Gets a regular odd syllable case marking. Both real lule sami stems, assimilated stems and non-assimilated stems
 
 
- LEXICON LONDON-sur  Odd-syllable. Surnames. Final foot structure (X.) and (X..) => Loc:%>is
+LEXICON LONDON-sur  Odd-syllable. Surnames. Final foot structure (X.) and (X..) => Loc:%>is
 
 
 *Åstot # Odd-syllable test examples:*
@@ -855,14 +855,14 @@ Words in lexicon LONDON end on conconant, no cg, case marking with -av, -ij, -is
 * *Åstodij:* `Åstot+N+Prop+Sem/Sur+Sg+Ill`
 * *Åstodis:* `Åstot+N+Prop+Sem/Sur+Sg+Ela`
 
- LEXICON LONDON-ani  Animals
+LEXICON LONDON-ani  Animals
 
 *Jubmel # Odd-syllable test examples:*
 * *Jubmel:* `Jubmel+N+Prop+Sem/Ani+Sg+Nom`
 * *Jubmelij:* `Jubmel+N+Prop+Sem/Ani+Sg+Ill`
 * *Jubmelis:* `Jubmel+N+Prop+Sem/Ani+Sg+Ela`
 
- LEXICON LONDON-org   Only singular Organizations
+LEXICON LONDON-org   Only singular Organizations
 
 
 *Klassekampen # Odd-syllable test examples:*
@@ -871,7 +871,7 @@ Words in lexicon LONDON end on conconant, no cg, case marking with -av, -ij, -is
 * *Klassekampenis:* `Klassekampen+N+Prop+Sem/Org+Sg+Ela`
 
 
- LEXICON LONDON-mal  Male names
+LEXICON LONDON-mal  Male names
 
 
 
@@ -880,7 +880,7 @@ Words in lexicon LONDON end on conconant, no cg, case marking with -av, -ij, -is
 * *Matteusij:* `Matteus+N+Prop+Sem/Mal+Sg+Ill`
 * *Matteusis:* `Matteus+N+Prop+Sem/Mal+Sg+Ela`
 
- LEXICON LONDON-malsur  Names that can be both male- and surnames. Not used in smj-propernouns
+LEXICON LONDON-malsur  Names that can be both male- and surnames. Not used in smj-propernouns
 
 
 
@@ -889,7 +889,7 @@ Words in lexicon LONDON end on conconant, no cg, case marking with -av, -ij, -is
 * *Timeusij:* `Timeus+N+Prop+Sem/Mal+Sg+Ill`
 * *Timeusis:* `Timeus+N+Prop+Sem/Mal+Sg+Ela`
 
- LEXICON LONDON-fem  Female names
+LEXICON LONDON-fem  Female names
 
 
 
@@ -898,7 +898,7 @@ Words in lexicon LONDON end on conconant, no cg, case marking with -av, -ij, -is
 * *Luhtágij:* `Luhták+N+Prop+Sem/Fem+Sg+Ill`
 * *Luhtágis:* `Luhták+N+Prop+Sem/Fem+Sg+Ela`
 
- LEXICON LONDON-malfem  Names that can be both male and female names.Not used in smj-propernouns
+LEXICON LONDON-malfem  Names that can be both male and female names.Not used in smj-propernouns
 
 
 *Robin # Odd-syllable test examples:*
@@ -906,7 +906,7 @@ Words in lexicon LONDON end on conconant, no cg, case marking with -av, -ij, -is
 * *Robinij:* `Robin+N+Prop+Sem/Fem+Sg+Ill`
 * *Robinis:* `Robin+N+Prop+Sem/Fem+Sg+Ela`
 
- LEXICON LONDON-malplc  Names that can be both male- and placenames.Not used in smj-propernouns
+LEXICON LONDON-malplc  Names that can be both male- and placenames.Not used in smj-propernouns
 
 
 
@@ -915,7 +915,7 @@ Words in lexicon LONDON end on conconant, no cg, case marking with -av, -ij, -is
 * *Jergolij:* `Jergol+N+Prop+Sem/Mal+Sg+Ill`
 * *Jergolis:* `Jergol+N+Prop+Sem/Mal+Sg+Ela`
 
- LEXICON LONDON-plc  Only singular. Placenames
+LEXICON LONDON-plc  Only singular. Placenames
 
 
 *Njierek # Odd-syllable test examples:*
@@ -924,7 +924,7 @@ Words in lexicon LONDON end on conconant, no cg, case marking with -av, -ij, -is
 * *Njieregis:* `Njierek+N+Prop+Sem/Plc+Sg+Ela`
 
 
- LEXICON LONDON-orgsur  Names that can be both organizations and surnames.Not used in Smj-propernouns
+LEXICON LONDON-orgsur  Names that can be both organizations and surnames.Not used in Smj-propernouns
 
 
 *Rieser # Odd-syllable test examples:*
@@ -932,7 +932,7 @@ Words in lexicon LONDON end on conconant, no cg, case marking with -av, -ij, -is
 * *Rieserij:* `Rieser+N+Prop+Sem/Sur+Sg+Ill`
 * *Rieseris:* `Rieser+N+Prop+Sem/Sur+Sg+Ela`
 
- LEXICON LONDON-obj  Objects. 
+LEXICON LONDON-obj  Objects. 
 
 
 *Rovdjursutredningen # Odd-syllable test examples:*
@@ -940,7 +940,7 @@ Words in lexicon LONDON end on conconant, no cg, case marking with -av, -ij, -is
 * *Rovdjursutredningenij:* `Rovdjursutredningen+N+Prop+Sem/Obj+Sg+Ill`
 * *Rovdjursutredningenis:* `Rovdjursutredningen+N+Prop+Sem/Obj+Sg+Ela`
 
- LEXICON LONDON-LOAN-obj  Objects loan. Not used in smj-propernouns
+LEXICON LONDON-LOAN-obj  Objects loan. Not used in smj-propernouns
 
 
 *Sameloven # Odd-syllable test examples:*
@@ -948,7 +948,7 @@ Words in lexicon LONDON end on conconant, no cg, case marking with -av, -ij, -is
 * ★*Samelovenij:* `Sameloven+N+Prop+Sem/Obj+Sg+Ill` (is not standard language)
 * ★*Samelovenis:* `Sameloven+N+Prop+Sem/Obj+Sg+Ela` (is not standard language)
 
- LEXICON LONDON-LOAN-plc  Only nominatives. Placenames loan. Not used in Smj-propernouns
+LEXICON LONDON-LOAN-plc  Only nominatives. Placenames loan. Not used in Smj-propernouns
 
 
 *Jordandalen # Odd-syllable test examples:*
@@ -956,7 +956,7 @@ Words in lexicon LONDON end on conconant, no cg, case marking with -av, -ij, -is
 * ★*Jordandalenij:* `Jordandalen+N+Prop+Sem/Plc+Sg+Ill` (is not standard language)
 * ★*Jordandalenis:* `Jordandalen+N+Prop+Sem/Plc+Sg+Ela` (is not standard language)
 
- LEXICON LONDON-LOAN-org   Only nominative. Organizations loan.Not used in smj-propernouns
+LEXICON LONDON-LOAN-org   Only nominative. Organizations loan.Not used in smj-propernouns
 
 
 *Samfunnsavdelingen # Odd-syllable test examples:*
@@ -979,7 +979,7 @@ Words in lexicon LONDON end on conconant, no cg, case marking with -av, -ij, -is
 
 JOKULL-plc are placenames. Lexicon added to make the code compile (?)
 
-  +N+Prop+Sem/Plc: LONDONDECL-PLC-SUR ;  Placenames. NB added to make the code compile, needs revision. Gets an odd syllable case marking. Non-assimilated stems.
+ +N+Prop+Sem/Plc: LONDONDECL-PLC-SUR ;  Placenames. NB added to make the code compile, needs revision. Gets an odd syllable case marking. Non-assimilated stems.
 
 
 *Drangajökull # Even-syllable test examples:*
@@ -993,7 +993,7 @@ Words in lexicon ANAR  end on conconant, no cg, case marking with ill -ij, ela -
 
 
 
- LEXICON ANAR-mal  Male names. 
+LEXICON ANAR-mal  Male names. 
 
 
 *Jusát # Odd-syllable test examples:*
@@ -1003,7 +1003,7 @@ Words in lexicon ANAR  end on conconant, no cg, case marking with ill -ij, ela -
 
 
 
- LEXICON ANAR-plc   Place names
+LEXICON ANAR-plc   Place names
 
 
 *Guhttás # Odd-syllable test examples:*
@@ -1020,7 +1020,7 @@ Words in lexicon ANAR  end on conconant, no cg, case marking with ill -ij, ela -
 Words in PIPPI lexicons are i-final, have no cg, no second syllable vowel change, and get odd syllable case marking with acc -hav, ill -hij, elat -his, etc. Works as "riebij", but without the -j in nominative (it should maybe be Sirij and Pippij in nom?) and without cg. The last syllable is unstressed. Non-assimilated stems. 
 
 
- LEXICON PIPPI-ani  IVowel-final names where case endings are added directly, no cg. Animals.
+LEXICON PIPPI-ani  IVowel-final names where case endings are added directly, no cg. Animals.
 
 
 *Rullahuuli # Even-syllable test examples:*
@@ -1029,7 +1029,7 @@ Words in PIPPI lexicons are i-final, have no cg, no second syllable vowel change
 * *Rullahuulihis:* `Rullahuuli+N+Prop+Sem/Ani+Sg+Ela`
 
 
- LEXICON PIPPI-obj  Vowel-final names where case endings are added directly, no cg. Object names
+LEXICON PIPPI-obj  Vowel-final names where case endings are added directly, no cg. Object names
 
 
 *Audi # Even-syllable test examples:*
@@ -1037,7 +1037,7 @@ Words in PIPPI lexicons are i-final, have no cg, no second syllable vowel change
 * *Audihij:* `Audi+N+Prop+Sem/Obj+Sg+Ill`
 * *Audihis:* `Audi+N+Prop+Sem/Obj+Sg+Ela`
 
- LEXICON PIPPI-org  Vowel-final names where caseendings are added directly, no cg. organizations
+LEXICON PIPPI-org  Vowel-final names where caseendings are added directly, no cg. organizations
 
 
 *Kon-Tiki # Even-syllable test examples:*
@@ -1045,7 +1045,7 @@ Words in PIPPI lexicons are i-final, have no cg, no second syllable vowel change
 * *Kon-Tikihij:* `Kon-Tiki+N+Prop+Sem/Org+Sg+Ill`
 * *Kon-Tikihis:* `Kon-Tiki+N+Prop+Sem/Org+Sg+Ela`
 
- LEXICON PIPPI-mal  Vowel-final names where case are added directly, no cg. Male names
+LEXICON PIPPI-mal  Vowel-final names where case are added directly, no cg. Male names
 
 
 *Gianni # Even-syllable test examples:*
@@ -1053,7 +1053,7 @@ Words in PIPPI lexicons are i-final, have no cg, no second syllable vowel change
 * *Giannihij:* `Gianni+N+Prop+Sem/Mal+Sg+Ill`
 * *Giannihis:* `Gianni+N+Prop+Sem/Mal+Sg+Ela`
 
- LEXICON PIPPI-fem  Vowel-final names where case endings are added directly, no cg. Female names
+LEXICON PIPPI-fem  Vowel-final names where case endings are added directly, no cg. Female names
 
 
 
@@ -1062,7 +1062,7 @@ Words in PIPPI lexicons are i-final, have no cg, no second syllable vowel change
 * *Gurihij:* `Guri+N+Prop+Sem/Fem+Sg+Ill`
 * *Gurihis:* `Guri+N+Prop+Sem/Fem+Sg+Ela`
 
- LEXICON PIPPI-femsur  Vowel-final names where case endings are added directly, no cg. Female names also used as surnames
+LEXICON PIPPI-femsur  Vowel-final names where case endings are added directly, no cg. Female names also used as surnames
 
 
 
@@ -1072,7 +1072,7 @@ Words in PIPPI lexicons are i-final, have no cg, no second syllable vowel change
 * *Turihij:* `Turi+N+Prop+Sem/Sur+Sg+Ill`
 * *Turihis:* `Turi+N+Prop+Sem/Fem+Sg+Ela`
 
- LEXICON PIPPI-malfem  Vowel-final names where case endings are added directly, no cg. Names that can be both female and male names
+LEXICON PIPPI-malfem  Vowel-final names where case endings are added directly, no cg. Names that can be both female and male names
 
 
 *Kari # Even-syllable test examples:*
@@ -1091,7 +1091,7 @@ Words in PIPPI lexicons are i-final, have no cg, no second syllable vowel change
 *# Even-syllable test examples:*
 
 
- LEXICON PIPPI-sur  Vowel-final names where case endings are added directly, no cg. Surnames
+LEXICON PIPPI-sur  Vowel-final names where case endings are added directly, no cg. Surnames
 
 
 *Sammallahti # Even-syllable test examples:*
@@ -1103,7 +1103,7 @@ Words in PIPPI lexicons are i-final, have no cg, no second syllable vowel change
 
 *# Even-syllable test examples:*
 
- LEXICON PIPPI-plc  Vowel-final names where caseendings are added directly, no cg. Place names
+LEXICON PIPPI-plc  Vowel-final names where caseendings are added directly, no cg. Place names
 
 
 *Lapinlampi # Even-syllable test examples:*
@@ -1116,7 +1116,7 @@ Words in PIPPI lexicons are i-final, have no cg, no second syllable vowel change
 
 *# Even-syllable test examples:*
 
- LEXICON PIPPI-LOAN-plc  Only nominatives. Vowel-final names where case endings are added directly, no cg.Place names
+LEXICON PIPPI-LOAN-plc  Only nominatives. Vowel-final names where case endings are added directly, no cg.Place names
 
 
 *Haltiatunturi # Even-syllable test examples:*
@@ -1150,7 +1150,7 @@ Words in PIPPI lexicons are i-final, have no cg, no second syllable vowel change
 
 Words in lexicon DUORTNUS end on conconant, have cg and second syllable vowel change o:u, e:á. Odd syllable case marking. Real lule sami or one non-assimilated stem.
 
- LEXICON DUORTNUS-mal  Male names
+LEXICON DUORTNUS-mal  Male names
 
 
 
@@ -1159,7 +1159,7 @@ Words in lexicon DUORTNUS end on conconant, have cg and second syllable vowel ch
 * *Mihkkalij:* `Mihkal+N+Prop+Sem/Mal+Sg+Ill`
 * *Mihkkalis:* `Mihkal+N+Prop+Sem/Mal+Sg+Ela`
 
- LEXICON DUORTNUS-sur  Male names
+LEXICON DUORTNUS-sur  Male names
 
 
 *Vándar # Odd-syllable test examples:*
@@ -1168,10 +1168,10 @@ Words in lexicon DUORTNUS end on conconant, have cg and second syllable vowel ch
 * *Vánndaris:* `Vándar+N+Prop+Sem/Sur+Sg+Ela`
 
 
- LEXICON DUORTNUS-org  Odd-syllable ending on consonant, with cg. Organizations
+LEXICON DUORTNUS-org  Odd-syllable ending on consonant, with cg. Organizations
 
 
- LEXICON DUORTNUS-plc  Odd-syllable ending on consonant, with cg.Placenames
+LEXICON DUORTNUS-plc  Odd-syllable ending on consonant, with cg.Placenames
 
 
 *Hardangerduottar # Odd-syllable test examples:*
@@ -1190,7 +1190,7 @@ Words in lexicon DUORTNUS end on conconant, have cg and second syllable vowel ch
 
 
 
- LEXICON TIEMPEL-obj  Same as DUORTNUS, only without second syll vowel change. Odd syllanle case marking Lexicon presently only for two -tiempel-final words. Lule sami stems.
+LEXICON TIEMPEL-obj  Same as DUORTNUS, only without second syll vowel change. Odd syllanle case marking Lexicon presently only for two -tiempel-final words. Lule sami stems.
 
 
 *Artemistiempel # Odd-syllable test  examples:*
@@ -1199,7 +1199,7 @@ Words in lexicon DUORTNUS end on conconant, have cg and second syllable vowel ch
 * *Artemistiemmpelin:* `Artemistiempel+N+Prop+Sem/Obj+Sg+Ine`
 * *Artemistiemmpelis:* `Artemistiempel+N+Prop+Sem/Obj+Sg+Ela`
 
- LEXICON TIEMPEL-org  Same as DUORTNUS, only without second syll vowel change. Odd syllanle case marking Lexicon presently only for two -tiempel-final words. Lule sami stems.
+LEXICON TIEMPEL-org  Same as DUORTNUS, only without second syll vowel change. Odd syllanle case marking Lexicon presently only for two -tiempel-final words. Lule sami stems.
 
 
 *Artemistiempel # Odd-syllable test  examples:*
@@ -1241,7 +1241,7 @@ Lexicon HEANDARAT is not in use in smj
 
 Words in lexicon EATNAMAT are odd-syllable plurals. Lule sami stems and non-assimilated stems.
 
- LEXICON EATNAMAT-plc   Place names. Presently only for Vuolleednama
+LEXICON EATNAMAT-plc   Place names. Presently only for Vuolleednama
 
 
 *Vuolleednama # Contrcted test examples:*
@@ -1250,7 +1250,7 @@ Words in lexicon EATNAMAT are odd-syllable plurals. Lule sami stems and non-assi
 * *Vuolleednamijda:* `Vuolleednama+N+Prop+Sem/Plc+Pl+Ill`
 * *Vuolleednamijs:* `Vuolleednama+N+Prop+Sem/Plc+Pl+Ela`
 
- LEXICON EATNAMAT-org   Organizations
+LEXICON EATNAMAT-org   Organizations
 
 
 *Vuorká-Dávvira # Contrcted test examples:*
@@ -1269,7 +1269,7 @@ Words in lexicon EATNAMAT are odd-syllable plurals. Lule sami stems and non-assi
 
 Words in lexicon DAVVISUOLLU are contracted propernouns ending on -åj/-oj. Lule sami stems
 
- LEXICON DAVVISUOLU-plc  Contracted stems ending on -oj. Place names.
+LEXICON DAVVISUOLU-plc  Contracted stems ending on -oj. Place names.
 
 
 *Victoriasuoloj # Contracted test examples:*
@@ -1287,7 +1287,7 @@ Words in lexicon GEAVNNIS are contracted propernouns ending on -s.
 
 
 
- LEXICON GEAVNNIS-plc   Contracted stems ending on -es. Place names. Lule sami stems.
+LEXICON GEAVNNIS-plc   Contracted stems ending on -es. Place names. Lule sami stems.
 
 
 *Gaza-Sárges # Contracted test examples:*
@@ -1305,7 +1305,7 @@ Words in lexicon GEAVNNIS are contracted propernouns ending on -s.
 
 Words in lexicon SUOLLOT are contracted plurals. Lule sami stems.
 
- LEXICON SULLOT-plc  Plural names, only names ending on -suollu.
+LEXICON SULLOT-plc  Plural names, only names ending on -suollu.
 
 
 *Falklandsuollu #  test examples:*

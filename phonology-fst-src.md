@@ -18,7 +18,7 @@ with 3 main sections: Consonant alternations (except CG), vowel alternations, an
 
 # Declarations and definitions
 
- ## The Alphabet section
+## The Alphabet section
 
 ### The real Lule Sámi Alphabet
 
@@ -26,20 +26,20 @@ All Lule Saami letters are listed. The Lule Sámi ENG sound is represented as ñ
 Lule Sámi letter repertoire is not fully standardised. In the source code we write (and you shall write!) æ; ø; ŋ, 
 but the parser tolerates input written with the the letters ä; ö; ń, ñ (cf. the 4 rules in the file smj/src/orthography/spellrelax.regex).
 
- * **small letters =**  a á b c d e f g h i j k l m n ñ ń ŋ o p q			 
-  r s t u v w x y z æ:æä ä:æä ø ö å %-				 
-  é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý				 
-  ç č đ ð š ŧ þ ß ª									 
+* **small letters =**  a á b c d e f g h i j k l m n ñ ń ŋ o p q			 
+ r s t u v w x y z æ:æä ä:æä ø ö å %-				 
+ é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý				 
+ ç č đ ð š ŧ þ ß ª									 
 
- * **capital letters =**  A Á B C D E F G H I J K L M N Ñ Ń Ŋ O P Q			
-  R S T U V W X Y Z Æ:ÆÄ Ä:ÆÄ Ø Ö Å  	 
-  É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý	 
-  Ç Č Đ Ð Š Ŧ þ	 
+* **capital letters =**  A Á B C D E F G H I J K L M N Ñ Ń Ŋ O P Q			
+ R S T U V W X Y Z Æ:ÆÄ Ä:ÆÄ Ø Ö Å  	 
+ É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý	 
+ Ç Č Đ Ð Š Ŧ þ	 
 
 The 3rd degree mark º is never realized, hence declared as º:0.
-  º:0   = Gradation mark
-  %/    = Literal /, not the TWOLC reserved symbol
-  ':'   = Apostrophe
+ º:0   = Gradation mark
+ %/    = Literal /, not the TWOLC reserved symbol
+ ':'   = Apostrophe
 
 Literal quotes and angles must be escaped (cf morpheme boundaries further down):
 
@@ -69,57 +69,57 @@ The symbols themselves are used in the following way:
 
 OBS: the definitions are not all correct or sufficiently specific
 
- * ****X1:0****:  Deletes final consonants in short essive of odd syllables
- * ****X2:0****:  WeG and neutralization of g8, etc. (hivsik-hivsiga)
- * ****X3:0****:  Weg and deletion of g8, etc. (bena-bednaga)
- * ****X4:0** : e:á and e:å in illatives and px. a:á and o**: u in Px and ill of a-stem actors and o-stems
- * ****X5:0** : e:á, e:å and o:u in odd-syllable nouns, but also for some even nouns (o**: u f.eks)
- * ****X6:0** : Deviant III-I consonant gradation (in contracted stems, guobbmu**: guomoj)
- * ****X7:0** : WeG and e:á, e:å, o:á, o:u in front of diminutives, e**: å in -lasj der
- * ****X8:0****:  Stem vowel alternations in Px
- * ****X9:0****:  Stem-vowel and central consonant shortening in first part(s) of compounds  
- * ****Q1:0** : The general weak grade trigger. Stem vowel change e:i and o**: u in front of j.
+* ****X1:0****:  Deletes final consonants in short essive of odd syllables
+* ****X2:0****:  WeG and neutralization of g8, etc. (hivsik-hivsiga)
+* ****X3:0****:  Weg and deletion of g8, etc. (bena-bednaga)
+* ****X4:0** : e:á and e:å in illatives and px. a:á and o**: u in Px and ill of a-stem actors and o-stems
+* ****X5:0** : e:á, e:å and o:u in odd-syllable nouns, but also for some even nouns (o**: u f.eks)
+* ****X6:0** : Deviant III-I consonant gradation (in contracted stems, guobbmu**: guomoj)
+* ****X7:0** : WeG and e:á, e:å, o:á, o:u in front of diminutives, e**: å in -lasj der
+* ****X8:0****:  Stem vowel alternations in Px
+* ****X9:0****:  Stem-vowel and central consonant shortening in first part(s) of compounds  
+* ****Q1:0** : The general weak grade trigger. Stem vowel change e:i and o**: u in front of j.
 				 Dipht. simpl.  Any environment #only# demanding WeG shall use Q1.
- * ****Q2:0** : Vowel harmony**:  2nd syll e realized as å whenever 1st syll is å.
- * ****Q3:0****:  WeG in contracted, also does not trigger Dipht simpl.
- * ****Q4:0** : Stem vowel change e:i and o**: u in front of j. Dipht. simpl. Like Q1 but strong grade.
- * ****Q5:0** : e**: á stem vowel change for word diehtet. Weak grade.
- * ****Q6:0** : e**: á stem wovel change for word diehtet. Strong grade.
- * ****Q7:0** : e**: á stem vowel change for word diehtte. Extra strong grade
- * ****Q8:0****:  Stem vowel deletion, impII of verbs.
- * ****Q9:0****:  TBW  
- * ****Y1:0****:  Stem vowel deletion, imp 3sg, 3du, 2pl, 3pl of verbs
- * ****Y2:0****:  "Indicative Present Singular 3rd Final Vowel in verbs"
- * ****Y3:0****:  PrsPrc
- * ****Y4:0****:  e &gt; u in front of dersuff, o &gt; u and e &gt; á in front of dersuffix -alla
- * ****Y5:0****:  e &gt; a, i &gt; á, o &gt; u, e &gt; å in verb derivation
- * ****Y6:0****:  "Consonant insertion as II-III strengthening gradation", verbs +PrsPrt and +Imprt+Du2
- * ****Y7:0****:  "Consonant insertion as II-III strengthening gradation", nouns and propernouns
- * ****Y8:0****:  "Stem vowel deletion in even-syllable verbs, imp 1du, 1pl"
- * ****Y9:0****:  "Stem vowel deletion in short passives of even-syllable verbs
- * ****Z1:0** : TBW "i**: á in Verb Derivation guollir>guollár"
- * ****Z2:0** : e:å, o**: u in -lasj der
- * ****Z3:0** : weak grade trigger fºf:f. Stem vowel change e:i and o**: u in front of j.
- * ****Z4:0** : weak grade trigger fºf:f and e:á, e:å, o:á, o:u in front of diminutives, e**: å in -lasj der
+* ****Q2:0** : Vowel harmony**:  2nd syll e realized as å whenever 1st syll is å.
+* ****Q3:0****:  WeG in contracted, also does not trigger Dipht simpl.
+* ****Q4:0** : Stem vowel change e:i and o**: u in front of j. Dipht. simpl. Like Q1 but strong grade.
+* ****Q5:0** : e**: á stem vowel change for word diehtet. Weak grade.
+* ****Q6:0** : e**: á stem wovel change for word diehtet. Strong grade.
+* ****Q7:0** : e**: á stem vowel change for word diehtte. Extra strong grade
+* ****Q8:0****:  Stem vowel deletion, impII of verbs.
+* ****Q9:0****:  TBW  
+* ****Y1:0****:  Stem vowel deletion, imp 3sg, 3du, 2pl, 3pl of verbs
+* ****Y2:0****:  "Indicative Present Singular 3rd Final Vowel in verbs"
+* ****Y3:0****:  PrsPrc
+* ****Y4:0****:  e &gt; u in front of dersuff, o &gt; u and e &gt; á in front of dersuffix -alla
+* ****Y5:0****:  e &gt; a, i &gt; á, o &gt; u, e &gt; å in verb derivation
+* ****Y6:0****:  "Consonant insertion as II-III strengthening gradation", verbs +PrsPrt and +Imprt+Du2
+* ****Y7:0****:  "Consonant insertion as II-III strengthening gradation", nouns and propernouns
+* ****Y8:0****:  "Stem vowel deletion in even-syllable verbs, imp 1du, 1pl"
+* ****Y9:0****:  "Stem vowel deletion in short passives of even-syllable verbs
+* ****Z1:0** : TBW "i**: á in Verb Derivation guollir>guollár"
+* ****Z2:0** : e:å, o**: u in -lasj der
+* ****Z3:0** : weak grade trigger fºf:f. Stem vowel change e:i and o**: u in front of j.
+* ****Z4:0** : weak grade trigger fºf:f and e:á, e:å, o:á, o:u in front of diminutives, e**: å in -lasj der
 
- * ****Ø1:0** : optional Word Final Cluster Simplification. Not smj grammar, made only for Err/Orths  ! málestit**:  málest instead for norm máles
- * ****Ø2:0** : optional e**: i when followed by any conc (not only j). Not smj grammar, made only for Err/Orths ! "iednida"   
+* ****Ø1:0** : optional Word Final Cluster Simplification. Not smj grammar, made only for Err/Orths  ! málestit**:  málest instead for norm máles
+* ****Ø2:0** : optional e**: i when followed by any conc (not only j). Not smj grammar, made only for Err/Orths ! "iednida"   
 
 
 
 
 ### Morpheme boundaries:
- * **** «  ****:  Derivational prefix
- * **** »  ****:  Derivational suffix
- * **** %< ****:  Inflectional prefx
- * **** %> ****:  Inflectional suffix
- * **** #  ****:  Word boundary for both lexicalised and dynamic compounds
- * **** %^ ****:  (exceptional) soft hyphenation point
- * **** %  ****:  a space
- * **** ∑  ****:  mark before # to indicate dynamic comounds
+* **** «  ****:  Derivational prefix
+* **** »  ****:  Derivational suffix
+* **** %< ****:  Inflectional prefx
+* **** %> ****:  Inflectional suffix
+* **** #  ****:  Word boundary for both lexicalised and dynamic compounds
+* **** %^ ****:  (exceptional) soft hyphenation point
+* **** %  ****:  a space
+* **** ∑  ****:  mark before # to indicate dynamic comounds
 
 
- ## The Sets section
+## The Sets section
 
 These are the sets:
 * **Vow**:  the vowels
@@ -130,31 +130,31 @@ These are the sets:
 * **WeG**:  the dummy symbols that trigger weak grade
 
 
- *  Vow     = a á e i o u y æ ä ø ö å æä			   
-            A Á E I O U Y Æ Ä Ø Ä Å ÆÄ			   
-            é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý   
-            É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý   
-            a9 e9 o9 æ9 ä9						   
+*  Vow     = a á e i o u y æ ä ø ö å æä			   
+           A Á E I O U Y Æ Ä Ø Ä Å ÆÄ			   
+           é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý   
+           É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý   
+           a9 e9 o9 æ9 ä9						   
 
 *            a9 e9 o9 æ9 ä9						   
-            É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý ;   
+           É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý ;   
 
- *  CapCns  = B C D F G H J K L M N Ñ Ń Ŋ P Q     
-            R S T V W X Z Ç Č Đ Ð Š Ŧ þ ;    
+*  CapCns  = B C D F G H J K L M N Ñ Ń Ŋ P Q     
+           R S T V W X Z Ç Č Đ Ð Š Ŧ þ ;    
 
- *  Cns     = b b9 c d d9 f g g8 g9 h h8 h9 j j9 k l l9 m m8 m9 n n8 n9 ŋ ñ ń p q r r9 s t v w x z z9 º ;  = All consonants
- *  Cns7    =      c      f         h       j      l    m       n       ŋ ñ ń p q r    s t v w x z      ;  = Surface cons excl 1st members of xx-type G3
- *  Cns8    = b    c d    f g       h       j    k l    m       n       ŋ ñ ń p q r    s t v w x z      ;  = All surface consonants
- *  Cns9    =   b9     d9     g8 g9   h8 h9   j9     l9   m8 m9   n8 n9             r9             º    ;  = Underlying consonants
- *  Cns4    =             f                        l    m       n       ŋ ñ ń     r        v            ;  = Don't remember ...?
- *  StemCns = b b9   d d9   g g8 g9 h h8 h9 j j9   l l9 m m8 m9 n n8 n9 ŋ ñ ń     r r9 s                ;  = Can occur stem-finally
- *  DelCns  =                 g8      h8               m8      n8                                       ;  = deleted in nom...
- *  WeG     = X2 X3 X7 Y5 Q1 Q2 Q3 Q6 Z3 Z4                                                                 ;  
- *  Dummy   = X2 X3 X4 X5 X6 X7 X8 Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9 Q1 Q2 Q3 Q4 Q5 Q6 Q7 Z1 Z2 Z3 Z4 %> » %^           ;  
- *  Hyph    = %-                                                                                        ;  
+*  Cns     = b b9 c d d9 f g g8 g9 h h8 h9 j j9 k l l9 m m8 m9 n n8 n9 ŋ ñ ń p q r r9 s t v w x z z9 º ;  = All consonants
+*  Cns7    =      c      f         h       j      l    m       n       ŋ ñ ń p q r    s t v w x z      ;  = Surface cons excl 1st members of xx-type G3
+*  Cns8    = b    c d    f g       h       j    k l    m       n       ŋ ñ ń p q r    s t v w x z      ;  = All surface consonants
+*  Cns9    =   b9     d9     g8 g9   h8 h9   j9     l9   m8 m9   n8 n9             r9             º    ;  = Underlying consonants
+*  Cns4    =             f                        l    m       n       ŋ ñ ń     r        v            ;  = Don't remember ...?
+*  StemCns = b b9   d d9   g g8 g9 h h8 h9 j j9   l l9 m m8 m9 n n8 n9 ŋ ñ ń     r r9 s                ;  = Can occur stem-finally
+*  DelCns  =                 g8      h8               m8      n8                                       ;  = deleted in nom...
+*  WeG     = X2 X3 X7 Y5 Q1 Q2 Q3 Q6 Z3 Z4                                                                 ;  
+*  Dummy   = X2 X3 X4 X5 X6 X7 X8 Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9 Q1 Q2 Q3 Q4 Q5 Q6 Q7 Z1 Z2 Z3 Z4 %> » %^           ;  
+*  Hyph    = %-                                                                                        ;  
 
 
- ## The Definitions section
+## The Definitions section
 
 In this section, the consonants are defined. This includes consonant clusters in the various grades and consonant alternations.
 
@@ -176,19 +176,19 @@ The alternation patterns according to Spiik's alternations series, here named S4
 
 Definition of gradation symbols:
 
- * **LowerG2**:  A definition of Grade2 consonant sequences referring mostly to the surface level
- * **LowerG1**:  A definition of Grade 1 consonant sequences
- * **LowerG12**:  A definition of Grade 1 or 2 consonant sequences 
+* **LowerG2**:  A definition of Grade2 consonant sequences referring mostly to the surface level
+* **LowerG1**:  A definition of Grade 1 consonant sequences
+* **LowerG12**:  A definition of Grade 1 or 2 consonant sequences 
 
- * **G32**:  A definition of Grade 3 or 2 consonant sequences
+* **G32**:  A definition of Grade 3 or 2 consonant sequences
 
- * **G3**:  A definition of Grade 3 consonant sequences 
-
-
+* **G3**:  A definition of Grade 3 consonant sequences 
 
 
 
- # The Rules section
+
+
+# The Rules section
 
 ## Overview
 
