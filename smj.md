@@ -6045,11 +6045,6 @@ Words in lexicon BASUDIS are trisyllabic in sg nom, and work like standard 4-syl
 LEXICON BASUDIS-org  Only singular. Placenames
 
 
-*Ádjagas # 4-syllable test examples:*
-* *Ádjagas:* `Ádjagas+N+Prop+Sem/Org+Sg+Nom`
-* *Ádjagassaj:* `Ádjagas+N+Prop+Sem/Org+Sg+Ill`
-* *Ádjagasás:* `Ádjagas+N+Prop+Sem/Org+Sg+Ela`
-
 LEXICON BASUDIS-mal   Male names
 
 
@@ -6058,13 +6053,6 @@ LEXICON BASUDIS-mal   Male names
 * *Ájluhadtjaj:* `Ájluhasj+N+Prop+Sem/Mal+Sg+Ill` (Eng. !should add dummy to prevent unusual dtj-stem?)
 * *Ájluhattjas:* `Ájluhasj+N+Prop+Sem/Mal+Sg+Ela`
 
-LEXICON BASUDIS-fem  Female names
-
-
-*Magdalas # 4-syllable test examples:*
-* *Magdalas:* `Magdalas+N+Prop+Sem/Fem+Sg+Nom`
-* *Magdalassaj:* `Magdalas+N+Prop+Sem/Fem+Sg+Ill`
-* *Magdalasás:* `Magdalas+N+Prop+Sem/Fem+Sg+Ela`
 
 
 LEXICON BASUDIS-plc  Place names
@@ -6530,14 +6518,6 @@ LEXICON EATNAMAT-plc   Place names. Presently only for Vuolleednama
 * *Vuolleednamijda:* `Vuolleednama+N+Prop+Sem/Plc+Pl+Ill`
 * *Vuolleednamijs:* `Vuolleednama+N+Prop+Sem/Plc+Pl+Ela`
 
-LEXICON EATNAMAT-org   Organizations
-
-
-*Vuorká-Dávvira # Contrcted test examples:*
-* ★*Vuorká-Dávvir:* `Vuorká-Dávvira+N+Prop+Sem/Org+Sg+Nom` (is not standard language)
-* *Vuorká-Dávvira:* `Vuorká-Dávvira+N+Prop+Sem/Org+Pl+Nom`
-* *Vuorká-Dávvirijda:* `Vuorká-Dávvira+N+Prop+Sem/Org+Pl+Ill`
-* *Vuorká-Dávvirijs:* `Vuorká-Dávvira+N+Prop+Sem/Org+Pl+Ela`
 
 
 
