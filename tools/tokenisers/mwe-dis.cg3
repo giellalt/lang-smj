@@ -370,6 +370,8 @@ LIST Err/HyphSub	= Err/HyphSub ;
 LIST Err/SpaceCmp	= Err/SpaceCmp ;
 LIST Err/Spellrelax = Err/Spellrelax ;
 
+LIST CLBfinal = CLBfinal ;
+
 # Dialect tags
 # -------------
 
@@ -2000,8 +2002,10 @@ SELECT:sentenceboundary ("." CLB) IF ( 0 ABBR ) (1*> (>>>) BARRIER (>>>) LINK 1 
    ## Dåhku jåhtet lij ållu ietjálágásj ja vehik gássjel danen gå divna lij ådå. Ájluokta le fijna bájkke.
    ## Jus prosjækta gærggá ådå. Iŋŋgá máhttá dasi sæbrrat. - ABBR
 
-
-
+#!! The CLBfinal reading is only possible if directly followed by a full stop.
+#!! Needs a rewrite, as the CLB reading is still within the same cohort, not the
+#!! next, if present, since we haven't done the mwe-rewrite yet.
+REMOVE:spurious-adj-reading CLBfinal IF (NOT 1 ("." CLB) );
 
 
 REMOVE:mielde (Err/SpaceCmp) (0/1 ("mielde"))(0 Allegro) ;
