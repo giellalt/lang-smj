@@ -13,7 +13,7 @@ TESTS=\
 	msyn-congr-gænna-gejn.yaml \
 	msyn-congr-mij-ma.yaml \
 	msyn-congr.yaml \
-	msyn-liehket-congr-condsg2-condpl3.notfixed.yaml \
+	msyn-liehket-congr-condsg2-condsg3.yaml \
 	msyn-liehket-congr-condsg2-condpl3.yaml \
 	msyn-lulujin.yaml \
 	msyn-numeral-attr.yaml \
@@ -40,7 +40,7 @@ XFAIL_TESTS=\
 	real-PrsPl3-PrsSg3.yaml \
 	real-PrsSg2-PrsSg3.yaml \
 	real-PrtSg3-PrsPl3.yaml \
-    msyn-liehket-congr-condsg2-condpl3.notfixed.yaml \
+    msyn-liehket-congr-condsg2-condsg3.yaml \
     msyn-liehket-congr-condsg2-condpl3.yaml \
     msyn-numeral-attr.yaml \
     msyn-soajtta.yaml 
