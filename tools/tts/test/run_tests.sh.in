@@ -31,7 +31,9 @@ hfst-tokenise -g "$tool_dir/tokeniser-disamb-gt-desc.pmhfst" < $innput \
     -a  "$tool_dir/analyser-gt-norm.hfstol" \
     -g  "$tool_dir/generator-gt-norm.hfstol" \
     -n  "$tool_dir/transcriptor-gt-desc.hfstol" \
-    -t ABBR -t Num \
+    -t ABBR \
+    -t Num \
+    -t Ord \
  | if [ -n "$IPA" ]; then divvun-phon -p $tool_dir/txt2ipa.lookup.hfstol; else cat; fi \
  | $giella_core/scripts/vislcg-convert.py -t phon -1 \
  | grep -v "^:" \
