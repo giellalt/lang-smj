@@ -147,7 +147,7 @@ LIST Prop = Prop ;	    #!! Prop
 LIST Allegro = Allegro ; #!! Allegro
 LIST Arab = Arab ; #!! Arab
 LIST Rom = Rom ; #!! Romertall
-LIST Subqst = OR Subqst ; #!! 
+LIST Subqst = Subqst ; #!! 
 
 # Derivation
 # ----------
@@ -1146,7 +1146,17 @@ ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Sg) BA
  
 COPY:msyn-congr-mij-ma (Pl &SUGGEST) EXCEPT (Sg &msyn-congr-mij-ma) AFTER Rel TARGET (&msyn-congr-mij-ma) ;
      
+     # Verb congr with relative pron
+     # -----------------------------
+     
+ADD:msyn-verb-cong-rel (&msyn-verb-cong-rel) TARGET (V Sg3) IF (-1 (Rel Nom) + (&msyn-congr-mij-ma)) ;
 
+COPY:msyn-verb-cong-rel (Pl3 &SUGGEST) EXCEPT (Sg3 &msyn-verb-cong-rel) TARGET (&msyn-verb-cong-rel) ;
+
+    ## Mij lip tjoaggám gåvåjt, girjijt, filmajt, jienajt, oahppamnævojt ja digitála ressursajt {mij} {giehpet} bargov dunji sáme åhpadiddjen
+    ## Galggap ásadit dåjmajt {mij} sihke {gåtset} ja {åvddånahttá} Rádjebálggáv.
+    ## Girjen vuojná aj tjáhppis ja biedjis gåvåjt {mij} munji {gåvåstahttá} tjáhppis ja biedjis máhtudagáv jali ájádusájt - jábma gávne histåvrå dagá
+    ## Mij lip tjoaggám gåvåjt, girjijt, filmajt, jienajt, oahppamnævojt ja digitála ressursajt {mij} {giehpet} bargov dunji sáme åhpadiddjen
     
 
     
