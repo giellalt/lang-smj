@@ -934,7 +934,7 @@ COPY:msyn-sme_bastard_neg2 (Ind ConNeg &SUGGEST) EXCEPT (PrfPrc &msyn-sme_bastar
     # soajttá as an adverb
     # --------------------
 
-ADD:msyn-soajttá-adv (&msyn-soajttá-adv) TARGET ("soajttet" V IV Ind Prs Sg3) IF (NEGATE *1 Inf OR PrfPrc BARRIER NOT-NPMODADVPCLE - (A Sg Nom) - Acc - (N Nom) - (N Com) - (N Ill) - (N Ela) - (N Ine)) ;
+ADD:msyn-soajttá-adv (&msyn-soajttá-adv) TARGET ("soajttet" V IV Ind Prs Sg3) IF (NEGATE *1 Inf OR PrfPrc BARRIER NOT-NPMODADVPCLE - (A Sg Nom) - Acc - (N Nom) - (N Com) - (N Ill) - (N Ela) - (N Ine)) (NEGATE *1 ( "liehket" V IV Ind Prs Sg3) BARRIER NOT-ADV-PCLE) ;
 
 COPY:msyn-soajttá-adv ("ihkap" Adv &SUGGEST ) EXCEPT ("soajttet" V IV Ind Prs Sg3 &msyn-soajttá-adv) TARGET (&msyn-soajttá-adv) ;
 
@@ -944,14 +944,17 @@ COPY:msyn-soajttá-adv ("ihkap" Adv &SUGGEST ) EXCEPT ("soajttet" V IV Ind Prs S
     #$ Hæhkkat giehpesvihke jali dahpaldahka mij gájbbet oksygenviehkev soajttá værámus dilijn sjaddat.
     #$ Muhttijn soajttá aj gássjel mánájda vuojnnet aktijvuodav sivá ja vájkkudusá gaskan gå li iehtjádij siegen.
 
-    # Not le/li before soajttá
+    # Not le/li when soajttá
     #----------------------
     
-ADD:msyn-soajttá-le (&msyn-soajttá-le) TARGET ("liehket" V V IV Ind Prs Sg3) OR ("liehket" V V IV Ind Prs Pl3 ) IF (1 ("soajttet" V IV Ind Prs Sg3)) (*2 Inf OR PrfPrc BARRIER NOT-ADV-PCLE - ( A Sg Nom)) ;
+    #le before soajttá
+    
+ADD:msyn-soajttá-le (&msyn-soajttá-le) TARGET ("liehket" V IV Ind Prs Sg3) OR ("liehket" V IV Ind Prs Pl3 ) IF (1 ("soajttet" V IV Ind Prs Sg3)) (*2 Inf OR PrfPrc BARRIER NOT-ADV-PCLE - ( A Sg Nom) - (N Ine) - (N Ill) - ( N Ela)) ;
 
     ## Dajn gielajn gånnå le riek friddja báhkogárges le soajttá vehik gássjel mierredit mij le vuodobáhkogárges.
-
-ADD:msyn-soajttá-le (&msyn-soajttá-le) TARGET ("liehket" V V IV Ind Prs Sg3) OR ("liehket" V V IV Ind Prs Pl3 ) IF (-1 ("soajttet" V IV Ind Prs Sg3)) (*2 Inf OR PrfPrc BARRIER NOT-ADV-PCLE - ( A Sg Nom)) ;
+    
+    #le after soajttá
+ADD:msyn-soajttá-le (&msyn-soajttá-le) TARGET ("liehket" V IV Ind Prs Sg3) OR ("liehket" V IV Ind Prs Pl3 ) IF (-1 ("soajttet" V IV Ind Prs Sg3)) (*1 Inf OR PrfPrc BARRIER NOT-ADV-PCLE - ( A Sg Nom) - (N Ine) - (N Ill) - ( N Ela)) ;
 
     ## Jus illa válggakårtåv oadtjum, de soajttá la påstan láhppum, jali dån la sirddemav maŋŋela biehtsemáno 30. biejve diededam.
 
