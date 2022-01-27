@@ -147,6 +147,7 @@ LIST Prop = Prop ;	    #!! Prop
 LIST Allegro = Allegro ; #!! Allegro
 LIST Arab = Arab ; #!! Arab
 LIST Rom = Rom ; #!! Romertall
+LIST Subqst = OR Subqst ; #!! 
 
 # Derivation
 # ----------
@@ -776,15 +777,16 @@ LIST PUNCT-RIGHT = (PUNCT RIGHT) ;
 
 
 
-SET NOT-NPMOD     = WORD - PRE-NP-HEAD OR ABBR OR @CVP ;
+SET NOT-NPMOD     = WORD - PRE-NP-HEAD OR ABBR OR @CVP  OR (Adv Subqst) ;
 # This is the previous NPNH (npnh) set.
 # NOT-NPMOD  = "NOT-PRE-NP-HEAD"
 
-SET NOT-NPMOD-ACC     = NOT-NPMOD - Acc OR ABBR ;
-SET NOT-NPMOD-ACC-ADV     = NOT-NPMOD - Acc - Adv OR ABBR ;
+SET NOT-NPMOD-ACC     = NOT-NPMOD - Acc OR ABBR  OR (Adv Subqst);
+SET NOT-NPMOD-ACC-ADV     = NOT-NPMOD - Acc - Adv OR ABBR  OR (Adv Subqst);
 
-SET NOT-NPMODADV    = WORD - PRE-NP-HEAD - Adv ;
-SET NOT-NPMODADV-INDEF   = WORD - PRE-NP-HEAD - Adv - Indef ;
+SET NOT-NPMODADV    = WORD - PRE-NP-HEAD - Adv  OR (Adv Subqst) ;
+SET NOT-NPMODADV-INDEF   = WORD - PRE-NP-HEAD - Adv - Indef  OR (Adv Subqst) ;
+SET NOT-NPMODADVPCLE = WORD - PRE-NP-HEAD - Adv - Pcle OR (Adv Subqst) ;
 
 
 SET NOT-N = WORD - N ;
@@ -932,13 +934,12 @@ COPY:msyn-sme_bastard_neg2 (Ind ConNeg &SUGGEST) EXCEPT (PrfPrc &msyn-sme_bastar
     # soajttá as an adverb
     # --------------------
 
-ADD:msyn-soajttá-adv (&msyn-soajttá-adv) TARGET ("soajttet" V IV Ind Prs Sg3) IF (NEGATE *1 Inf OR PrfPrc BARRIER NOT-ADV-PCLE - (A Sg Nom) - Acc ) ;
+ADD:msyn-soajttá-adv (&msyn-soajttá-adv) TARGET ("soajttet" V IV Ind Prs Sg3) IF (NEGATE *1 Inf OR PrfPrc BARRIER NOT-NPMODADVPCLE - (A Sg Nom) - Acc - (N Nom) - (N Com) - (N Ill) - (N Ela) - (N Ine)) ;
 
 COPY:msyn-soajttá-adv ("ihkap" Adv &SUGGEST ) EXCEPT ("soajttet" V IV Ind Prs Sg3 &msyn-soajttá-adv) TARGET (&msyn-soajttá-adv) ;
 
-    ## 
     #$ Oasse sisbåhtusis soajttá aj almulasj doarjjagis jali ietjá dårjas boahtet.
-    #$ Ietjá bájkijn soajttá sámeslávggá jurra de vil vuojnnut."
+    #$ Ietjá bájkijn soajttá sámeslávggá jurra de vil vuojnnut.
     #$ Åhttse oajvvebessamij sjaddi vuodon jus soajttá dárbbo liehket ienep sajijda.
     #$ Hæhkkat giehpesvihke jali dahpaldahka mij gájbbet oksygenviehkev soajttá værámus dilijn sjaddat.
     #$ Muhttijn soajttá aj gássjel mánájda vuojnnet aktijvuodav sivá ja vájkkudusá gaskan gå li iehtjádij siegen.
@@ -948,11 +949,16 @@ COPY:msyn-soajttá-adv ("ihkap" Adv &SUGGEST ) EXCEPT ("soajttet" V IV Ind Prs S
     
 ADD:msyn-soajttá-le (&msyn-soajttá-le) TARGET ("liehket" V V IV Ind Prs Sg3) OR ("liehket" V V IV Ind Prs Pl3 ) IF (1 ("soajttet" V IV Ind Prs Sg3)) (*2 Inf OR PrfPrc BARRIER NOT-ADV-PCLE - ( A Sg Nom)) ;
 
+    ## Dajn gielajn gånnå le riek friddja báhkogárges le soajttá vehik gássjel mierredit mij le vuodobáhkogárges.
+
+ADD:msyn-soajttá-le (&msyn-soajttá-le) TARGET ("liehket" V V IV Ind Prs Sg3) OR ("liehket" V V IV Ind Prs Pl3 ) IF (-1 ("soajttet" V IV Ind Prs Sg3)) (*2 Inf OR PrfPrc BARRIER NOT-ADV-PCLE - ( A Sg Nom)) ;
+
+    ## Jus illa válggakårtåv oadtjum, de soajttá la påstan láhppum, jali dån la sirddemav maŋŋela biehtsemáno 30. biejve diededam.
+
 COPY:msyn-soajttá-le &DELETE EXCEPT ("liehket" V V IV Ind Prs Sg3 &msyn-soajttá-le) TARGET (&msyn-soajttá-le) ;
 
-    ## Dajn gielajn gånnå le riek friddja báhkogárges le soajttá vehik gássjel mierredit mij le vuodobáhkogárges.
-    
-    ## Jus illa válggakårtåv oadtjum, de soajttá la påstan láhppum, jali dån la sirddemav maŋŋela biehtsemáno 30. biejve diededam.
+
+
     
 # LIST soajttet-Prt-Prs-VFIN = (Ind Prs Sg2 &msyn-soajttá-AUX) (Ind Prs Sg3 &msyn-soajttá-AUX) (Ind Prs Du1 &msyn-soajttá-AUX) (Ind Prs Du2 &msyn-soajttá-AUX) (Ind Prs Du3 &msyn-soajttá-AUX) (Ind Prs Pl1 &msyn-soajttá-AUX) (Ind Prs Pl2 &msyn-soajttá-AUX) (Ind Prs Pl3 &msyn-soajttá-AUX) (Ind Prt Sg1 &msyn-soajttá-AUX) (Ind Prt Sg2 &msyn-soajttá-AUX) (Ind Prt Sg3 &msyn-soajttá-AUX) (Ind Prt Du1 &msyn-soajttá-AUX) (Ind Prt Du2 &msyn-soajttá-AUX) (Ind Prt Du3 &msyn-soajttá-AUX) (Ind Prt Pl1 &msyn-soajttá-AUX) (Ind Prt Pl2 &msyn-soajttá-AUX) (Ind Prt Pl3 &msyn-soajttá-AUX);
 #     
