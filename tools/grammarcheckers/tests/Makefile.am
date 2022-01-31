@@ -10,9 +10,9 @@ if WANT_GRAMCHECK
 TESTS=\
 	lex-oahpasmuvvat-oahpastuvvat.yaml \
 	msyn-attr-pred.yaml \
-	msyn-congr-gænna-gejn.yaml \
 	msyn-congr-mij-ma.yaml \
 	msyn-congr.yaml \
+	msyn-genna-gejn.yaml \
 	msyn-liehket-congr-condsg2-condsg3.yaml \
 	msyn-liehket-congr-condsg2-condpl3.yaml \
 	msyn-lulujin.yaml \
@@ -31,11 +31,12 @@ TESTS=\
 XFAIL_TESTS=\
 	lex-oahpasmuvvat-oahpastuvvat.yaml \
 	msyn-attr-pred.yaml \
-	msyn-congr-gænna-gejn.yaml \
 	msyn-congr-mij-ma.yaml  \
 	msyn-congr.yaml         \
 	msyn-lulujin.yaml \
 	msyn-pred-attr.yaml \
+	msyn-sme_bastard_neg1-2.yaml \
+	msyn-genna-gejn.yaml \
 	real-NegSg3-NegSg2.yaml \
 	real-PrsPl3-PrsSg3.yaml \
 	real-PrsSg2-PrsSg3.yaml \
