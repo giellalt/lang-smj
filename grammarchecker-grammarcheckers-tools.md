@@ -87,6 +87,7 @@ Romertall
 
 
 
+
 ### Tags for morphosyntactic properties
 
 Nom
@@ -359,6 +360,10 @@ PL3-V
 
 
 
+
+
+
+
 ### Pronoun sets
 
 
@@ -446,6 +451,15 @@ expression **WORD - premodifiers**.
 
 
 Error tags
+
+
+
+
+
+
+
+
+
 
 
 

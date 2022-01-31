@@ -14,14 +14,13 @@ This page documents the work on the [Lule Sami language model](http://github.com
 -   [Generation of paradigms](http://giellatekno.uit.no/cgi/p-smj.eng.html) and
     [analysis of text](http://giellatekno.uit.no/cgi/d-smj.eng.html)
 
-
 # Linguistic documentation
 
 -   [Documentation of the twol file](docu-smj-twol.md)
 -   [Old documentation of the lexicon files](docu-smj-lex.md)
 -   [Lule Saami bugs and errors](docu-smj-bugs.md)
 -   [Lule Saami normativity issues](normativity-issues.md)
--   [General discussions on improving our linguistic
+-   General discussions on [improving our linguistic
     analysis](https://giellalt.uit.no/lang/smi/index.html)
 
 # Projects
