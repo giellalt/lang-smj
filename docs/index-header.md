@@ -14,7 +14,6 @@ This page documents the work on the [Lule Sami language model](http://github.com
 -   [Generation of paradigms](http://giellatekno.uit.no/cgi/p-smj.eng.html) and
     [analysis of text](http://giellatekno.uit.no/cgi/d-smj.eng.html)
 
-
 # Linguistic documentation
 
 -   [Documentation of the twol file](docu-smj-twol.md)
