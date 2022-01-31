@@ -20,7 +20,7 @@ This page documents the work on the [Lule Sami language model](http://github.com
 -   [Old documentation of the lexicon files](docu-smj-lex.md)
 -   [Lule Saami bugs and errors](docu-smj-bugs.md)
 -   [Lule Saami normativity issues](normativity-issues.md)
--   [General discussions on improving our linguistic
+-   General discussions on [improving our linguistic
     analysis](https://giellalt.uit.no/lang/smi/index.html)
 
 # Projects
