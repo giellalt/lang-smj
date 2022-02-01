@@ -862,6 +862,7 @@ LIST &msyn-pred-attr = &msyn-pred-attr ;
 LIST &msyn-numeral-attr = &msyn-numeral-attr ;
 LIST &msyn-numeral-accattr = &msyn-numeral-accattr ;
 LIST &msyn-numeral-casecongr  = &msyn-numeral-casecongr ;
+LIST &msyn-verb-cong-rel = &msyn-verb-cong-rel ;
 LIST &SUGGEST = &SUGGEST ;
 
 
@@ -1074,10 +1075,13 @@ ADD:msyn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF (NEGATE 0 Attr) (*1 N +
 COPY:msyn-pred-attr (Attr &SUGGEST) EXCEPT (Sg Nom &msyn-pred-attr) TARGET (&msyn-pred-attr) ;
 
     ## Mij tjuovojma {roaŋkok}  bálggáv
-    #$ Galggi aj ájggeguovddelis ássjev åvddånbuktet {oajválattjajda} mij guosská vuorrasij iellemdilláj ja álkkádussaj.
-    #$ Mån lav ávon ja mihá gå miján li dájddára guhti åvddånbukti mijá histåvråv.
-    #$ Soajttá liehket {gássjel} bágov mujttet jali diehtet makkir bágov goassa galggá adnet, gå sámegielav tjálá.
+    ## HLF Gullamvádnásij Rijkalihtto le berustiddje organisásjåvnnå dájda; gullamvádnasijda, bieljedis tjalmedimijda, CI-operidum ulmutjijda, virggeulmutjijda, ja æjgádijda gullamvánes mánájda, ulmutjijda gænna li tinnitus-vájve ja méniér-skihppijda.
+    #$ Soajttá liehket gássjel bágov mujttet jali diehtet makkir bágov goassa galggá adnet, gå sámegielav tjálá.
     #$ Muhttijn soajttá aj {gássjel} mánájda vuojnnet aktijvuodav sivá ja vájkkudusá gaskan gå li iehtjádij siegen.
+    #$ Galggi aj ájggeguovddelis ássjev åvddånbuktet {oajválattjajda} mij guosská vuorrasij iellemdilláj ja álkkádussaj.
+
+    
+    #$ Jus sámegiella li ienep vuojnnuj boahtet duola dagu mediagåvån, de jáhkáv sámegiela stáhtus li dalága lassánit.
 
 
     # Attr when should be pred
@@ -1150,14 +1154,25 @@ COPY:msyn-congr-mij-ma (Pl &SUGGEST) EXCEPT (Sg &msyn-congr-mij-ma) AFTER Rel TA
      # Verb congr with relative pron
      # -----------------------------
 
-ADD:msyn-verb-cong-rel (&msyn-verb-cong-rel) TARGET (V Sg3) IF (-1 (Rel Nom) + (&msyn-congr-mij-ma)) ;
+ADD:msyn-verb-cong-rel (&msyn-verb-cong-rel) TARGET (V Sg3) IF (*-1 (Rel Nom) + (&msyn-congr-mij-ma) BARRIER NOT-ADV-PCLE - Ill - Ela - Ine) ;
 
+    ##  Galggap ásadit dåjmajt {mij} {gåtset}
+    ## Mij lip tjoaggám gåvåjt, girjijt, filmajt, jienajt, oahppamnævojt ja digitála ressursajt {mij} {giehpet} bargov dunji sáme åhpadiddjen
+    ## Mij lip tjoaggám gåvåjt, girjijt, filmajt, jienajt, oahppamnævojt ja digitála ressursajt {mij} {giehpet} bargov dunji sáme åhpadiddjen
+    ## Girjen vuojná aj tjáhppis ja biedjis gåvåjt {mij} munji {gåvåstahttá} tjáhppis ja biedjis máhtudagáv jali ájádusájt - jábma gávne histåvrå dagá
+    
+ADD:msyn-verb-cong-rel (&msyn-verb-cong-rel) TARGET (V Sg3) IF (-1 CC LINK -1 (&msyn-verb-cong-rel)) ;
+
+   ## Galggap ásadit dåjmajt mij sihke gåtset ja åvddånahttá Rádjebálggáv.
+   
 COPY:msyn-verb-cong-rel (Pl3 &SUGGEST) EXCEPT (Sg3 &msyn-verb-cong-rel) TARGET (&msyn-verb-cong-rel) ;
 
-    ## Mij lip tjoaggám gåvåjt, girjijt, filmajt, jienajt, oahppamnævojt ja digitála ressursajt {mij} {giehpet} bargov dunji sáme åhpadiddjen
-    ## Galggap ásadit dåjmajt {mij} sihke {gåtset} ja {åvddånahttá} Rádjebálggáv.
-    ## Girjen vuojná aj tjáhppis ja biedjis gåvåjt {mij} munji {gåvåstahttá} tjáhppis ja biedjis máhtudagáv jali ájádusájt - jábma gávne histåvrå dagá
-    ## Mij lip tjoaggám gåvåjt, girjijt, filmajt, jienajt, oahppamnævojt ja digitála ressursajt {mij} {giehpet} bargov dunji sáme åhpadiddjen
+
+  
+
+
+ 
+
 
 
      # Congr error with relative pron gænna-gejn
@@ -1212,22 +1227,30 @@ COPY:real-ActioGen-PrtPl1 (Ind Prt Pl1 &SUGGEST) EXCEPT (Actio Gen) TARGET (&rea
     # ----------------------------------------
 
     # left subj
+SET PLURAL-QUANTIFIERS = ("moadda" Nom) OR ("moattes" Nom) OR (Num Sg Nom) - ("akta") ;
 
-ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-V + Gram/3syll OR ( "liehket" )  IF (0 (Prs Pl3)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg))  (NEGATE *1 (Pron Nom Pl3) OR (N Nom Pl))(NEGATE 0 (Prs Sg3)) ;
+ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-V + Gram/3syll OR ( "liehket" )  IF (0 (Prs Pl3)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) - PLURAL-QUANTIFIERS BARRIER NOT-ADV-PCLE LINK NOT 0 (Pl Nom) LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg) OR (Nom Pl))  (NEGATE *1 (Pron Nom Pl3) OR (N Nom Pl))(NEGATE 0 (Prs Sg3)) ;
 
     ## Suv mielas sån li ilá materalistisk.
     ## Mij juo diehtep Hamsun nasistajt bælosti nuppát værálda doaron.
     #$ Suv mielas li skuvla ja girku ilá garrasat.
     #$ Ulmutja vuosedi son boahtá odne.
+    #$ Fáhkaulmutja ja bulkke li oassálasstám ájnas jienaj diedádusán.
+    #$ Sån aj vuosedij dajda guhti hæhttuji niedastuvvat, ja moattes li aj ájteklándas vuojeduvvam
+  
 
     # right subj
+    
 
-ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-V + Gram/3syll OR ( "liehket" )  IF (0 (Prs Pl3)) (*1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) BARRIER NOT-NPMOD - Adv - Pcle LINK NEGATE 1 CC LINK *1 (Nom Sg) BARRIER NOT-NPMOD)  (NEGATE *-1 (Pron Nom Pl3) OR (N Nom Pl))(NEGATE 0 (Prs Sg3));
+
+ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-V + Gram/3syll OR ( "liehket" )  IF (0 (Prs Pl3)) (*1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) - PLURAL-QUANTIFIERS BARRIER NOT-NPMOD - Adv - Pcle OR PLURAL-QUANTIFIERS LINK NOT 0 (Pl Nom) LINK NEGATE 1 CC LINK *1 (Nom Sg) BARRIER NOT-NPMOD)  (NEGATE *-1 (Pron Nom Pl3) OR (N Nom Pl) OR (Pron Nom Pl))(NEGATE 0 (Prs Sg3));
 
     ## Suv mielas li sån ilá materalistisk.
+    #$ Soajttá bágon li moadda sisano, ja jus da li nammadum alfabeehtalattjat, de ij agev enemus dábálasj báhko tjuottjo vuostak.
     #$ Suv mielas li Inga ja suv vielja ilá materialistisk.
     #$ Suv mielas Inga ja suv vielja li ....
     #$ Mån lav ávon ja mihá gå miján li dájddára guhti iåvddånbukti mijá histåvråv.
+    #$ Gájka li buorisboathem, ållagasj báhtariddjijdoalvvo mañeldisbuolva.
 
 COPY:real-PrsPl3-PrtSg3 (Prt Sg3 &SUGGEST) EXCEPT (Prs Pl3) TARGET (&real-PrsPl3-PrtSg3) ;
 
