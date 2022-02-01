@@ -2101,7 +2101,7 @@ SELECT (A Attr) IF (-1 V-NOT-AUX OR N)(1 N LINK NOT 0 VFIN);
 REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NEGATE 1 N);
 #REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NEGATE 1 A LINK *1 N BARRIER NOT-ADJ);
 
-REMOVE Attr IF (*1 VFIN BARRIER N);
+REMOVE Attr IF (*1 VFIN BARRIER N)(NEGATE 1 N);
 	## Josef lij rievtesmielak, ittjij sidá suv hehpaduttet.
 
 REMOVE Adv IF (-1 (Dem Com))(0 (A Attr))(1 (N Com));
@@ -3196,7 +3196,7 @@ REMOVE Sem/Sur IF (0 (Sem/Plc Prop) + $$CASE) (1 CC LINK 1C (Sem/Plc Prop) + $$C
 
 # Attr
 # ----
-IFF Attr IF (0 (Prop Sem/Mal Nom) OR (Prop Sem/Fem Nom))(*1 (N Prop Sem/Sur) OR (N Prop Sem/Fem) OR (N Prop Sem/Mal) BARRIER NOT-ABBR); # (NEGATE 0 (@OBJ) LINK *1 (@OPRED) BARRIER NOT-NP); 
+IFF Attr IF (0 (Prop Sem/Mal Nom) OR (Prop Sem/Fem Nom))(*1 (N Prop Sem/Sur) OR (N Prop Sem/Fem) OR (N Prop Sem/Mal) BARRIER NOT-ABBR)(NEGATE 1 N); # (NEGATE 0 (@OBJ) LINK *1 (@OPRED) BARRIER NOT-NP); 
 #REMOVE Attr IF (0 (Prop Sem/Mal) OR (Prop Sem/Fem))(0 Nom)(NEGATE *1 (N Prop Sem/Sur) OR (N Prop Sem/Fem) OR (N Prop Sem/Mal) BARRIER NOT-ABBR); # (NEGATE 0 (@OBJ) LINK *1 (@OPRED) BARRIER NOT-NP); 
 
 REMOVE (A Attr) (0 ("duolla" Adv) LINK *-1 ("liehket") BARRIER NOT-PCLE)(1 Gen LINK 1 N) ;
