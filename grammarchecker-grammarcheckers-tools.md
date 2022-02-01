@@ -87,7 +87,6 @@ Romertall
 
 
 
-
 ### Tags for morphosyntactic properties
 
 Nom
@@ -451,6 +450,19 @@ expression **WORD - premodifiers**.
 
 
 Error tags
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
