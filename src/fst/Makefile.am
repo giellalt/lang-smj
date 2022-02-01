@@ -16,7 +16,8 @@
 ## along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Add language-specific flags for hfst-lexc compilation here:
-HFST_LEXC_LOCAL_FLAGS=--Werror
+HFST_LEXC_LOCAL_FLAGS=  # --Werror
+# XXX: disabled while hacking propn copying, might delete later ^^
 
 ####### Morphology source file defs: ########
 
@@ -67,6 +68,8 @@ GT_LEXC_L2_SRCS=\
 
 # Set this to the names of all generated lexc files, if any
 GENERATED_LEXC_SRCS=generated_files/smi-$(GTLANG)-propernouns.lexc   \
+					generated_files/sme-$(GTLANG)-propernouns.lexc   \
+					generated_files/sma-$(GTLANG)-propernouns.lexc   \
 					generated_files/smi-$(GTLANG)-abbreviations.lexc \
 					generated_files/smi-$(GTLANG)-acronyms.lexc      \
 					generated_files/arabic_roman_digits.lexc \
@@ -128,6 +131,33 @@ generated_files/%.lexc: \
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_GEN)cp -f $< $@
 
+.PHONY: try-regenerate
+
+generated_files/sme-$(GTLANG)-propernouns.lexc: try-regenerate
+	$(AM_V_GEN)if test -f $(top_srcdir)/../lang-sme/src/fst/stems/sme-propernouns.lexc ; then \
+		if test $(top_srcdir)/../lang-sma/src/fst/stems/sme-propernouns.lexc -nt $@ ; then \
+			$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl \
+				$(top_srcdir)/../lang-sma/src/fst/stems/sme-propernouns.lexc > $@ ; \
+		fi ; \
+	else \
+		echo "MISSING $(top_srcdir)/../lang-sma/fst/stems/sme-propernouns.lexc" ;\
+		if ! test -f $@ ; then \
+			echo "! MISSING $(top_srcdir)/../lang-sma/fst/stems/sme-propernouns.lexc" > $@ ;\
+		fi ; \
+	fi
+
+generated_files/sma-$(GTLANG)-propernouns.lexc: try-regenerate
+	$(AM_V_GEN)if test -f $(top_srcdir)/../lang-sma/src/fst/stems/sma-propernouns.lexc ; then \
+		if test $(top_srcdir)/../lang-sma/src/fst/stems/sma-propernouns.lexc -nt $@ ; then \
+			$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl \
+				$(top_srcdir)/../lang-sma/src/fst/stems/sma-propernouns.lexc > $@ ; \
+		fi ; \
+	else \
+		echo "MISSING $(top_srcdir)/../lang-sma/fst/stems/sma-propernouns.lexc" ;\
+		if ! test -f $@ ; then \
+			echo "! MISSING $(top_srcdir)/../lang-sma/fst/stems/sma-propernouns.lexc" > $@ ;\
+		fi ; \
+	fi
 
 ### END: Local processing: ###
 
