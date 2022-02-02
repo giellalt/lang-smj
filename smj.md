@@ -3971,11 +3971,6 @@ Words in lexicon ANAR  end on conconant, no cg, case marking with ill -ij, ela -
 LEXICON ANAR-mal  Male names. 
 
 
-*Jusát # Odd-syllable test examples:*
-* *Jusát:* `Jusát+N+Prop+Sem/Mal+Sg+Nom`
-* *Jusádij:* `Jusát+N+Prop+Sem/Mal+Sg+Ill`
-* *Jusádis:* `Jusát+N+Prop+Sem/Mal+Sg+Ela`
-
 
 
 LEXICON ANAR-plc   Place names
