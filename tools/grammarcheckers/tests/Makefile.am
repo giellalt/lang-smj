@@ -30,7 +30,6 @@ TESTS=\
 # be fixed *later*, but is not critical at the moment:
 XFAIL_TESTS=\
 	lex-oahpasmuvvat-oahpastuvvat.yaml \
-	msyn-attr-pred.yaml \
 	msyn-congr-mij-ma.yaml  \
 	msyn-congr.yaml         \
 	msyn-lulujin.yaml \
