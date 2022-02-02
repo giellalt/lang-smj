@@ -2896,6 +2896,9 @@ get the same pronunciation whether read as SME or NOB/NNO/SWE.
 
 
 
+## Flag diacritics
+Tags from SME, coming to smj by propernouns.
+
 
 ## Flag diacritics
 
