@@ -135,14 +135,14 @@ generated_files/%.lexc: \
 
 generated_files/sme-$(GTLANG)-propernouns.lexc: try-regenerate
 	$(AM_V_GEN)if test -f $(top_srcdir)/../lang-sme/src/fst/stems/sme-propernouns.lexc ; then \
-		if test $(top_srcdir)/../lang-sma/src/fst/stems/sme-propernouns.lexc -nt $@ ; then \
+		if test $(top_srcdir)/../lang-sme/src/fst/stems/sme-propernouns.lexc -nt $@ ; then \
 			$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl \
-				$(top_srcdir)/../lang-sma/src/fst/stems/sme-propernouns.lexc > $@ ; \
+				$(top_srcdir)/../lang-sme/src/fst/stems/sme-propernouns.lexc > $@ ; \
 		fi ; \
 	else \
-		echo "MISSING $(top_srcdir)/../lang-sma/fst/stems/sme-propernouns.lexc" ;\
+		echo "MISSING $(top_srcdir)/../lang-sme/fst/stems/sme-propernouns.lexc" ;\
 		if ! test -f $@ ; then \
-			echo "! MISSING $(top_srcdir)/../lang-sma/fst/stems/sme-propernouns.lexc" > $@ ;\
+			echo "! MISSING $(top_srcdir)/../lang-sme/fst/stems/sme-propernouns.lexc" > $@ ;\
 		fi ; \
 	fi
 
