@@ -1144,8 +1144,8 @@ COPY:msyn-pass-active (&SUGGEST) EXCEPT (Der/PassL &msyn-pass-active) OR (Der/Pa
 
  SET NOT-BEFORE-REL = (*) - Inf - VFIN - COMMA - Po ;
 
-ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NEGATE -1 VFIN OR Inf LINK -1 (N Sg) OR (Pron Sg));
-
+ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NEGATE -1 VFIN OR Inf LINK -1 (N Sg) OR (Pron Sg))(NEGATE *-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK -1 ("akta") OR ("1" Num));
+   #$  Låhkåm le akta vuodomáhtudagájs {mij} tjalmostuvvá Máhtudaklåpptimin, oahppoplánaj sihke vuodo- ja jårggåskåvlån.
     ## Valla mij gut lijma Vuonas vuolggám ejma davdiede.
     ## Da gut ásadin æjvvalimev, lidjin dudálattja.
     ## Ulmutjijda guhti doarjodi báhtariddjijt.
@@ -1543,10 +1543,10 @@ COPY:msyn-numeral-acccasecongr (Sg Nom &SUGGEST) EXCEPT (Sg Acc &msyn-numeral-ac
     # special case Par
     # - - - - - - - - -
 
-ADD:msyn-numeral-parcasecongr (&msyn-numeral-parcasecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) OR (Num Pl Nom) OR (Num Sg Gen) IF (*1 (N Pl) +  &msyn-numeral-attr OR (N Pl) +  &msyn-numeral-accattr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) LINK NOT 0 Acc)(NEGATE 0 ("akta" Sg Nom) LINK 1 (Pl Ela))(NEGATE 0 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 1 (Pl Ela) LINK 1 ("liehket") LINK 0 Pl3) ;
+ADD:msyn-numeral-parcasecongr (&msyn-numeral-parcasecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) OR (Num Pl Nom) OR (Num Sg Gen) IF (*1 (N Pl) +  &msyn-numeral-attr OR (N Pl) + &msyn-numeral-accattr OR (N Sg Ela) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) LINK NOT 0 Acc)(NEGATE 0 ("akta" Sg Nom) LINK 1 (Pl Ela))(NEGATE 0 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 1 (Pl Ela) LINK 1 ("liehket") LINK 0 Pl3) ;
 
-COPY:msyn-numeral-parcasecongr (Sg Par &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-parcasecongr) OR (Pl Nom &msyn-numeral-parcasecongr) OR (Sg Gen &msyn-numeral-parcasecongr) TARGET (&msyn-numeral-parcasecongr) IF (*1 (N Pl Ela) +  &msyn-numeral-attr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
-
+COPY:msyn-numeral-parcasecongr (Sg Par &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-parcasecongr) OR (Pl Nom &msyn-numeral-parcasecongr) OR (Sg Gen &msyn-numeral-parcasecongr) TARGET (&msyn-numeral-parcasecongr) IF (*1 (N Pl Ela) +  &msyn-numeral-attr OR (Sg Ela) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
+	## {Låge} åhtsåmusás li gietjav åhtsåmusá árbbedábálasj juojggusav almodittjat.
     ## Oattjov mielkev guokta/guovte>guovtet gusájs
 
 	#$ Magdalena Normann fotoateliajt Korsnesan dåjmadij 1910-20 jagijn, ja sjattaj viehka dåbdos gåvvår.
@@ -1580,11 +1580,11 @@ COPY:msyn-numeral-comcasecongr (Sg Com &SUGGEST) EXCEPT (Sg Gen &msyn-numeral-co
    ## Sáme Giellagálldo tjoahkki sámegiela ássjediehttijt Anárij, gålgådismáno 6. biejve ja gåhttju giellaaddnijt seminárraj Sajosij ságastalátjit makkár rahtjamusá li nielje sámegielajn mij gullu giellasuodjalibmáj, normerimij ja moallánakbargguj.
    ## Guovlo gånnå li gaskan guokta jali niellja mandáhta galggi tjáledahttet avtse kandidáhtajt lisstaoajvvadussajv
    ## Låge åhtsåmusás li gietjav åhtsåmusá árbbedábálasj juojggusav almodittjat.NOT
-   ## Nammadit gålmmå ájrrasa gudát ájrrasijs Finnmárkoåbmudahkaj mij háldat ednamijt ja resursajt Finnmárkon finnmárkolága milta.NOT
-   ## Javllá Adrian Nystø Mikkelsen akta studentajs gut uddni álggin bacheloråhpadussaj julevsámegielan.NOT
+   ## Nammadit {gålmmå} ájrrasa gudát ájrrasijs Finnmárkoåbmudahkaj mij háldat ednamijt ja resursajt Finnmárkon finnmárkolága milta.
+   #$ Javllá Adrian Nystø Mikkelsen {akta} studentajs gut uddni álggin bacheloråhpadussaj julevsámegielan.
    
-   #$ Akta rádevaddijs lij Lars Theodor Kintel gænna li åtsådallama viddnudakásadimijs Divtasvuonan.NOT
-   #$ Akta dåjmajs le	doajmmaruhtadårjav lasedit ja giellakursajda stuoves ruhtadimev gávnnat .
+   #$ Akta rádevaddijs lij Lars Theodor Kintel gænna li åtsådallama viddnudakásadimijs Divtasvuonan.
+   #$ Akta dåjmajs le	doajmmaruhtadårjav lasedit ja giellakursajda stuoves ruhtadimev gávnnat.
    #$  Låhkåm le akta vuodomáhtudagájs mij tjalmostuvvá Máhtudaklåpptimin, oahppoplánaj sihke vuodo- ja jårggåskåvlån. NOT
    
    
