@@ -1485,7 +1485,8 @@ COPY:msyn-numeral-accattr (Sg Gen &SUGGEST) EXCEPT (Pl Acc &msyn-numeral-accattr
 
     ## vuojnáv guokta gusájt > vuojnáv guokta gusá insead of vuojnáv guokta guosáv
 
-ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (N Pl) IF (NOT 0 &msyn-numeral-accattr) (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock)(NEGATE 0 (N Sg)) ;
+ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (N Pl) IF (NOT 0 &msyn-numeral-accattr) (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock)(NEGATE 0 (N Sg))
+(NEGATE 0 (Pl Ela) LINK -1 ("akta" Sg Nom))(NEGATE 0 (Pl Ela) LINK -1 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 2 ("liehket" Pl3)) ;
 
     ## Mån lav åhtsåm guokta universitehtajda = guovte universitiehttaj
     ## Ælla des dagu åvddål guovte sierra skåvllåhuodnahijda sieradum. = guovte sierra skåvllåhuodnahij
@@ -1542,7 +1543,7 @@ COPY:msyn-numeral-acccasecongr (Sg Nom &SUGGEST) EXCEPT (Sg Acc &msyn-numeral-ac
     # special case Par
     # - - - - - - - - -
 
-ADD:msyn-numeral-parcasecongr (&msyn-numeral-parcasecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) OR (Num Pl Nom) OR (Num Sg Gen) IF (*1 (N Pl) +  &msyn-numeral-attr OR (N Pl) +  &msyn-numeral-accattr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) LINK NOT 0 Acc) ;
+ADD:msyn-numeral-parcasecongr (&msyn-numeral-parcasecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) OR (Num Pl Nom) OR (Num Sg Gen) IF (*1 (N Pl) +  &msyn-numeral-attr OR (N Pl) +  &msyn-numeral-accattr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) LINK NOT 0 Acc)(NEGATE 0 ("akta" Sg Nom) LINK 1 (Pl Ela))(NEGATE 0 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 1 (Pl Ela) LINK 1 ("liehket") LINK 0 Pl3) ;
 
 COPY:msyn-numeral-parcasecongr (Sg Par &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-parcasecongr) OR (Pl Nom &msyn-numeral-parcasecongr) OR (Sg Gen &msyn-numeral-parcasecongr) TARGET (&msyn-numeral-parcasecongr) IF (*1 (N Pl Ela) +  &msyn-numeral-attr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
 
@@ -1550,10 +1551,10 @@ COPY:msyn-numeral-parcasecongr (Sg Par &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-pa
 
 	#$ Magdalena Normann fotoateliajt Korsnesan dåjmadij 1910-20 jagijn, ja sjattaj viehka dåbdos gåvvår.
 	
-    ## Akta dåjmajs le	doajmmaruhtadårjav lasedit ja giellakursajda stuoves ruhtadimev gávnnat ."
-    ## Akta oajvveságajs giellalåpptimin	la , nanos låpptim sámegielaj gáktuj hæhttu sáme sebrudahka aktan dahkat ."
-    ## Akta oajvvesivájs Áltá-tjátjádagá	dulvvadime vuosstálasstemijda lej gå sámij ednam- ja resurssarievtesvuoda ællim dåhkkiduvvam ."
-    ## Akta sivájs lassenibmáj	kulturæládusán le Sámedikke ruhtadoarjjaårnik , javllá Balto ."
+    ## Akta dåjmajs le	doajmmaruhtadårjav lasedit ja giellakursajda stuoves ruhtadimev gávnnat.
+    ## Akta oajvveságajs giellalåpptimin	la , nanos låpptim sámegielaj gáktuj hæhttu sáme sebrudahka aktan dahkat.
+    ## Akta oajvvesivájs Áltá-tjátjádagá	dulvvadime vuosstálasstemijda lej gå sámij ednam- ja resurssarievtesvuoda ællim dåhkkiduvvam.
+    ## Akta sivájs lassenibmáj	kulturæládusán le Sámedikke ruhtadoarjjaårnik , javllá Balto.
 
 	# special only wrong number
 	# -------------------------
