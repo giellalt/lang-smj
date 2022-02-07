@@ -18,7 +18,7 @@
 # ==================================================================== #
 # ====================================================================
 
-#  Sámi language technology 2000-2020, UiT The arctic University of Norway #
+#  Sámi language technology 2000-2022, UiT The arctic University of Norway #
 
 # ---------------------- #
 #   Development setup:   #
@@ -841,6 +841,13 @@ SET CCCOMMA = CC OR COMMA ;
 LIST COPULAS = "liehket" "soajttet" "sjaddat" ; # more need to be added
 
 
+ #Semantic sets
+ # -----------
+ 
+LIST DOPPE = "badjin" "bajil" "dakko" "dá" "dákko" "dáppe" "dás" "diekko" "dieppe" "do" "dokko" "doppe" "duo" "duokko" "duoppe" "olgun" ;
+# Adverbs with a locativic form, but don´t get Loc as a tag.
+
+
 
 
 #!! Error tags
@@ -1505,7 +1512,10 @@ COPY:msyn-numeral-attr (Sg &SUGGEST) EXCEPT (Pl &msyn-numeral-attr) BEFORE CASE 
 	# -----------------------
 	# fixes case of the numerals
 
-ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (*1 (N Pl) +  &msyn-numeral-attr OR (N Pl) +  &msyn-numeral-accattr OR (Sg Ill) OR (Sg Gen) OR (Sg Com) OR (Sg Ine)  BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) LINK NOT 0 Acc) ;
+ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (*1 (N Pl) +  &msyn-numeral-attr OR (N Pl) +  &msyn-numeral-accattr OR (Sg Ill) OR (Sg Gen) OR (Sg Com) OR (Sg Ine)  BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) LINK NOT 0 Acc LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc)(NEGATE *-1 ("liehket" Pl3) BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN);
+	#$ Duola degu de li dåssju guokta stádasuohkana.
+	#$ Arktalasjráde le avtamielakvuohtaorgádna gånnå da {guhtta} álggoálmmukorganisasjåvnå bessi ságastit ja oajvvadit sæmmi láhkáj dagu da gáktsa stáhta.
+	#$ Dá {lågev} giellaguovdátja li álgaduvvam iesjgeŋga ájggegávdan
 
 COPY:msyn-numeral-casecongr (Sg Gen &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-casecongr) OR (Sg Acc &msyn-numeral-casecongr) TARGET (&msyn-numeral-casecongr) IF (NEGATE *1 (N Pl Com) +  &msyn-numeral-attr OR (N Sg Com) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom))  ;
 
