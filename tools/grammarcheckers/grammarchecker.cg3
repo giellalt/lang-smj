@@ -1591,8 +1591,42 @@ COPY:msyn-numeral-comcasecongr (Sg Com &SUGGEST) EXCEPT (Sg Gen &msyn-numeral-co
    # demonstrativ pronoun with attributive numerals
    # -------------------------------------------
 
-ADD:msyn-numerals-with-demopron (&msyn-numerals-with-demopron) TARGET (Dem Pron Pl) IF (1 (Num Sg) LINK 1 (N Sg)) ;
-COPY:msyn-numerals-with-demopron (Sg &SUGGEST) EXCEPT (Pl &msyn-numerals-with-demopron) BEFORE CASE TARGET (&msyn-numerals-with-demopron) ;
+ADD:msyn-numerals-with-demopron (&msyn-numerals-with-demopron) TARGET (Pron Dem Pl) - (Pron Dem Pl Nom) IF (1 (Num Sg) LINK *1 (N Sg)) ;
 
+
+   #da
+
+COPY:msyn-numerals-with-demopron (Pl Nom &SUGGEST) EXCEPT (Pl Acc Attr &msyn-numerals-with-demopron) TARGET (&msyn-numerals-with-demopron) IF (1 (Num Sg Nom))  ;
+
+   ## Iv háhppida dajt guhtta girjijt låhkåt dan ájgen.
+
+   # dan
+
+COPY:msyn-numerals-with-demopron (Sg Gen &SUGGEST) EXCEPT (Pl Com Attr &msyn-numerals-with-demopron) TARGET (&msyn-numerals-with-demopron) IF (1 (Num Sg Gen) LINK 1 (N Sg Gen))  ;
+
+   # Tjállagin li artihkkala daj gålmmå tiemáj birra.
+
+COPY:msyn-numerals-with-demopron (Sg Gen &SUGGEST) EXCEPT (Pl Com Attr &msyn-numerals-with-demopron) TARGET (&msyn-numerals-with-demopron) IF (2 (N Sg Ill) )  ;
 
   ## juogos la mierredam dájda gålmmå suohkanijda dahkat aktisasj plánav rumálasj dåjmajda ja luonndoåtsådallamijda. 
+
+COPY:msyn-numerals-with-demopron (Sg Gen &SUGGEST) EXCEPT (Pl Com Attr &msyn-numerals-with-demopron)  TARGET (&msyn-numerals-with-demopron) IF (2 (N Sg Ine) ) ;
+
+
+  #dat
+
+COPY:msyn-numerals-with-demopron (Sg Ela Attr &SUGGEST) EXCEPT (Pl Com Attr &msyn-numerals-with-demopron) OR (Pl Ela Attr &msyn-numerals-with-demopron) TARGET (&msyn-numerals-with-demopron) IF (2 (N Sg Ela) )  ;
+
+  ## Divtasvuona suohkan ásadij fåndav mij rudájt oadtju daj guokta luossabiebbmamvidnudagájs.
+  ## Gájka dajs gietjav rabdaguovlos la edna jåhtålibme ålgus
+  ## Dajs vihtta ulmutjijs gudi dáj suohkanijn årrun 15-jagágin
+  ## Dajs 22997 ulmutjijs gudi dáj suohkanijn årrun 15-jagágin. NOT
+  
+  #dajna
+
+COPY:msyn-numerals-with-demopron (Sg Com &SUGGEST) EXCEPT (Pl Gen &msyn-numerals-with-demopron) TARGET (&msyn-numerals-with-demopron) IF (2 (N Sg Com) )  ;
+
+
+
+
+  
