@@ -871,6 +871,7 @@ LIST &msyn-numeral-accattr = &msyn-numeral-accattr ;
 LIST &msyn-numeral-casecongr  = &msyn-numeral-casecongr ;
 LIST &msyn-verb-cong-rel = &msyn-verb-cong-rel ;
 LIST &msyn-numeral-acccasecongr-akta = &msyn-numeral-acccasecongr-akta ;
+LIST &msyn-numeral-attr-pl-ine =&msyn-numeral-attr-pl-ine ;
 LIST &SUGGEST = &SUGGEST ;
 
 
@@ -1492,18 +1493,15 @@ COPY:msyn-numeral-accattr (Sg Gen &SUGGEST) EXCEPT (Pl Acc &msyn-numeral-accattr
 
     ## vuojnáv guokta gusájt > vuojnáv guokta gusá insead of vuojnáv guokta guosáv
 
-ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (N Pl) IF (NOT 0 &msyn-numeral-accattr) (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock)(NEGATE 0 (N Sg))
-(NEGATE 0 (Pl Ela) LINK -1 ("akta" Sg Nom))(NEGATE 0 (Pl Ela) LINK -1 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 2 ("liehket" Pl3)) ;
+ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (N Pl) IF (NOT 0 &msyn-numeral-accattr) (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock)(NEGATE 0 (N Sg))(NEGATE 0 (Pl Ela) LINK -1 ("akta" Sg Nom))(NEGATE 0 (Pl Ela) LINK -1 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 2 ("liehket" Pl3)) ;
 
-    ## Mån lav åhtsåm guokta universitehtajda = guovte universitiehttaj
+    ## Mån lav åhtsåm guokta {universitehtajda}  
     ## Ælla des dagu åvddål guovte sierra skåvllåhuodnahijda sieradum. = guovte sierra skåvllåhuodnahij
     ## Sån gatjádij låge ulmutjijs sijá alkohåvlådábij birra.
     #$ De vuolggeba da guovtes stuorra universitehtajda.
     #$ Dále lij muhtem subtsas gå russtijin 1930- jagijn náv:
-    ## Dán aktisasjbargon li gudán {álggoálmmukorganisasjåvnåjn} sadje stuoves oassálassten. NOT
-    ## Nammadit gålmmå ájrrasa gudát ájrrasijs Finnmárkoåbmudahkaj mij háldat ednamijt ja resursajt Finnmárkon finnmárkolága milta. NOT
-    ##  makkár rahtjamusá li nielje {sámegielajn} NOT
-    ##Sámedikken li aktisasjbarggosjiehtadusá lågij suohkanij ja nieljij fylkkasuohkanij. NOT
+    ## Nammadit gålmmå ájrrasa gudát ájrrasijs Finnmárkoåbmudahkaj mij háldat ednamijt ja resursajt Finnmárkon finnmárkolága milta. DOES NOT WORK  gudát bli ordenstall
+
 
 ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (N Pl) IF (NOT 0 &msyn-numeral-accattr) (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 Num)(NEGATE 0 (N Sg)) ;
 
@@ -1513,36 +1511,61 @@ ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (N Pl) IF (NOT 0 &msyn-numeral
 COPY:msyn-numeral-attr (Sg &SUGGEST) EXCEPT (Pl &msyn-numeral-attr) BEFORE CASE TARGET (&msyn-numeral-attr)  ;
 
 
+    # homonomy beetween pl ine and sg com
+ADD:msyn-numeral-attr-pl-ine (&msyn-numeral-attr-pl-ine) TARGET (N Pl Ine) IF (*-1 (Num Sg Ine) OR (Num Arab Ine) BARRIER NOT-NPMOD) ;
+COPY:msyn-numeral-attr-pl-ine (Sg Ine &SUGGEST) EXCEPT (Pl Ine) TARGET (&msyn-numeral-attr-pl-ine) ;
+ 
+    ## Dán aktisasjbargon li gudán {álggoálmmukorganisasjåvnåjn} sadje stuoves oassálassten.
+    ##  makkár rahtjamusá li nielje {sámegielajn} NOT
+
+    # homonomy beetween pl com and sg ill
+ADD:msyn-numeral-attr-pl-com (&msyn-numeral-attr-pl-com) TARGET (N Sg Ill) IF (*-1 (Num Pl Gen) BARRIER NOT-NPMOD) ;
+COPY:msyn-numeral-attr-pl-com (Sg Com &SUGGEST) EXCEPT (Sg Ill) TARGET (&msyn-numeral-attr-pl-com) ;
+
+    ## Sámedikken li aktisasjbarggosjiehtadusá lågij {suohkanij} ja nieljij {fylkkasuohkanij}.
+    
+    
+    
 	# Numeral case congruence
 	# -----------------------
 	# fixes case of the numerals
 
-ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (*1 (N Pl) +  &msyn-numeral-attr OR (N Pl) +  &msyn-numeral-accattr OR (Sg Ill) OR (Sg Gen) OR (Sg Com) OR (Sg Ine) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Acc LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc)(NEGATE *-1 ("liehket" Pl3) BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)(NEGATE 0 Acc LINK *-1 TV BARRIER NOT-ADV-PCLE);
+ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (*1 (N Pl) + &msyn-numeral-attr OR (N Pl) +  &msyn-numeral-accattr OR (Sg Ill) OR (Sg Gen) OR (Sg Com) OR (Sg Ine) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Acc LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc)(NEGATE *-1 ("liehket" Pl3) BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)(NEGATE 0 Acc LINK *-1 TV BARRIER NOT-ADV-PCLE);
+
+
 	#$ Duola degu de li dåssju guokta stádasuohkana.
 	#$ Arktalasjráde le avtamielakvuohtaorgádna gånnå da {guhtta} álggoálmmukorganisasjåvnå bessi ságastit ja oajvvadit sæmmi láhkáj dagu da gáktsa stáhta.
 	#$ Dá {lågev} giellaguovdátja li álgaduvvam iesjgeŋga ájggegávdan
 	#$ Sámedikkeráde doarjju {guokta} julevsáme giellaprosjevta rudáj.
+	#$ Arktalasjráde le avtamielakvuohtaorgádna gånnå da {guhtta} álggoálmmukorganisasjåvnå bessi ságastit ja oajvvadit sæmmi láhkáj dagu da {gáktsa} stáhta, valla e besa jienastit. DOES NOT WORK
+	#$ Dat tjoahkki ienep gå {300.000} guosse badjelasj 100 rijkas, 7000 almmudagás ja 10.000 journalista .
 
 COPY:msyn-numeral-casecongr (Sg Gen &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-casecongr) OR (Sg Acc &msyn-numeral-casecongr) TARGET (&msyn-numeral-casecongr) IF (NEGATE *1 (N Pl Com) +  &msyn-numeral-attr OR (N Sg Com) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom))  ;
 
     ## Vattáv suojnijt guokta>guovte gusájda
     ## Gå lijma gärggam de vuoddjájma vantsajn akta rájggáj
-    ##  Mån lav åhtsåm {guokta} universitehtajda. NOT
-    ## Suohkana juogeduvvin gietja sáme rabdaguovlojda NOT
-
+    ## Mån lav åhtsåm {guokta} universitehtajda .DOES NOT WORK MYSTISK
+    #$ Suohkana juogeduvvin {gietja} sáme rabdaguovlojda DOES NOT WORK 
+    ## Foanndaj la jahkásattjat lasedibme kapitálas guovte miljåvnåjn {gålmmå} jahkáj.
+    
 
 COPY:msyn-numeral-casecongr (Sg Com &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-casecongr) OR (Sg Gen &msyn-numeral-casecongr)  TARGET (&msyn-numeral-casecongr) IF (*1 (N Pl Com) +  &msyn-numeral-attr OR (N Sg Com) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
 
     ## manáv judosdåktårij guokta>guovtijn gusáj
     ## Akta nuvtagijn gærggi, ja nuppijn uddni gergav> avtajn nuvtagijn
-    ## Foanndaj la jahkásattjat lasedibme kapitálas {guovte} miljåvnåjn gålmmå jahkáj. NOT
+
+    ## Sámedikken li aktisasjbarggosjiehtadusá {lågij} suohkanij ja {nieljij} fylkkasuohkanij. NOT
 
 COPY:msyn-numeral-casecongr (Sg Ine &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-casecongr) OR (Sg Gen &msyn-numeral-casecongr)  TARGET (&msyn-numeral-casecongr) IF (*1 (N Pl Ine) +  &msyn-numeral-attr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
 
-    ## guokta>guovten gusájn li báktjasa
-    ## makkár rahtjamusá li nielje sámegielajn NOT
-    ## Sámedikken li aktisasjbarggosjiehtadusá lågij suohkanij ja nieljij fylkkasuohkanij. NOT
+    ## {guokta} gusájn li báktjasa
+    ## makkár rahtjamusá li nielje sámegielajn
+
     
+ADD:msyn-numeral-casecongr-guovte-com (&msyn-numeral-casecongr-guovte-com) TARGET (Num Sg Gen) IF (*1 (Num Sg Com) BARRIER NOT-NPMOD) ;
+COPY:msyn-numeral-casecongr-guovte-com (Com &SUGGEST) EXCEPT (Gen) TARGET (&msyn-numeral-casecongr-guovte-com) ;
+
+    ## Foanndaj la jahkásattjat lasedibme kapitálas {guovte} miljåvnåjn gålmmå jahkáj.
 
 	# special case Acc
 	# - - - - - - - - -
@@ -1662,7 +1685,7 @@ COPY:msyn-numerals-with-demopron (Sg Ela Attr &SUGGEST) EXCEPT (Pl Com Attr &msy
   ## Divtasvuona suohkan ásadij fåndav mij rudájt oadtju daj guokta luossabiebbmamvidnudagájs.
   ## Gájka dajs gietjav rabdaguovlos la edna jåhtålibme ålgus
   ## Dajs vihtta ulmutjijs gudi dáj suohkanijn årrun 15-jagágin
-  ## Dajs 22997 ulmutjijs gudi dáj suohkanijn årrun 15-jagágin. NOT
+  ## {Dajs} 22997 ulmutjijs gudi dáj suohkanijn årrun 15-jagágin. DOES NOT WORK 
   
   #dajna
 
