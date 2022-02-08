@@ -9,29 +9,7 @@ pronunciation of the last letter sound (like `e:` when reading the letter
 `P`) can be different when followed by a case ending compared to when not.
 If that is not true, the system can be simplified.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Default, letter by letter pronunciation
-
-
-
-
-
-
-
-
 
 * * *
 <small>This (part of) documentation was generated from [../src/phonetics/acro2ipa.xfscript](http://github.com/giellalt/lang-smj/blob/main/../src/phonetics/acro2ipa.xfscript)</small>

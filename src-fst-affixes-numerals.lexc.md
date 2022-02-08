@@ -1,150 +1,6 @@
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 * **LEXICON ARABICCOMPOUNDS**  ! arabic as first part, 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 * **LEXICON ARABICCASES**  adds +Arab
 
@@ -152,24 +8,11 @@
 
 * **LEXICON ARABICCASE0**  adds +Arab
 
-
 * **LEXICON DIGITCASES**  to distinguish between 0 and oblique
 
 * **LEXICON DIGITCASE0**
 
-
-
-
-
-
-
 +Num:   ROMNUMTAGOBL ;
-
-
-
-
-
-
 
 * * *
 <small>This (part of) documentation was generated from [../src/fst/affixes/numerals.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/numerals.lexc)</small>

@@ -105,9 +105,6 @@ OBS: the definitions are not all correct or sufficiently specific
 * ****Ø1:0** : optional Word Final Cluster Simplification. Not smj grammar, made only for Err/Orths  ! málestit**:  málest instead for norm máles
 * ****Ø2:0** : optional e**: i when followed by any conc (not only j). Not smj grammar, made only for Err/Orths ! "iednida"   
 
-
-
-
 ### Morpheme boundaries:
 * **** «  ****:  Derivational prefix
 * **** »  ****:  Derivational suffix
@@ -118,7 +115,6 @@ OBS: the definitions are not all correct or sufficiently specific
 * **** %  ****:  a space
 * **** ∑  ****:  mark before # to indicate dynamic comounds
 
-
 ## The Sets section
 
 These are the sets:
@@ -128,7 +124,6 @@ These are the sets:
 * **DelCns**:  the consonants that are deleted in nominative
 * **Dummy**:  the set of dummy symbols, they are there to trigger certain morphophonological symbols
 * **WeG**:  the dummy symbols that trigger weak grade
-
 
 *  Vow     = a á e i o u y æ ä ø ö å æä			   
            A Á E I O U Y Æ Ä Ø Ä Å ÆÄ			   
@@ -153,11 +148,9 @@ These are the sets:
 *  Dummy   = X2 X3 X4 X5 X6 X7 X8 Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9 Q1 Q2 Q3 Q4 Q5 Q6 Q7 Z1 Z2 Z3 Z4 %> » %^           ;  
 *  Hyph    = %-                                                                                        ;  
 
-
 ## The Definitions section
 
 In this section, the consonants are defined. This includes consonant clusters in the various grades and consonant alternations.
-
 
 ### G3 vs G2
 The alternation patterns according to Spiik's alternations series, here named S4, S5, ... for "Spiik alternation series 4, 5, etc." as they are presented in his grammar..  
@@ -184,32 +177,24 @@ Definition of gradation symbols:
 
 * **G3**:  A definition of Grade 3 consonant sequences 
 
-
-
-
-
 # The Rules section
 
 ## Overview
 
 The rules section has the following chapters: Consonant alternations in certain pos, vowel lengthening, diphthong simplification, stem vowel alternations, consonant gradation rules
 
-
 ## Consonant alternations in certain pos
 
 All rules deal with word-final position.
 
-
 * ★*a* (is not standard language)
 * ★*b* (is not standard language)
-
 
 **Word Final Devoicing of Certain Single Consonants d9 etc. **  
 * *iemed9#*
 * *iemet#*
 
 **Word final weakening -tj and -ttj to -sj part 1**  
-
 
 **Word final weakening -tj and -ttj to -sj part 2**  
 * *jågåtj*
@@ -218,16 +203,12 @@ All rules deal with word-final position.
 * *gålºleX7tj*
 * *gål0lå0sj*
 
-
 **Word Final Deletion of n8 m8 g8 h8**  
 
 * *loavddag8X3#*
 * *l0åv0da00#*
 
-
 **Word Final Neutralization of g8, h8, m8**  
-
-
 
 **Deleting Final h9 in Short Essive of Uneven Syllables**  
 
@@ -239,12 +220,8 @@ All rules deal with word-final position.
 
 **Deleting Final r9 in Short Essive of Uneven Syllables**  
 
-
-
-
 * *málest#*
 * *máles0#*
-
 
 ## Vowel lengthening
 
@@ -257,19 +234,13 @@ The second syllable vowel a is lengthened to á whenever the stem consonants are
 * *skihpaQ1s#*
 * *ski0bá0s#*
 
-
 ## Diphtong simplification
 
 The diphthong simplification handles oa:å and æ:e. Phonologically, these are identical processes, but since the dipthong is written by two letters in the former case and by one letter in the latter, the alternations must be handled separately. This section also handles ie:æ, these are in principle the same as oa:å, but the alternation does not occur in so many contexts. 
 
-
 **oa:å Diphtong Simplification Part I **  
 
-
-
 **oa:å Diphtong Simplification Part II**  
-
-
 
 * *toahkkeY6X5jn*
 * *toahkki00jn*
@@ -324,7 +295,6 @@ The diphthong simplification handles oa:å and æ:e. Phonologically, these are i
 * ★*goarºroY5d9it* (is not standard language)
 * ★*goar0ru0dit* (is not standard language)
 
-
 * *toab0moY6X4j*
 * *toabbmu00j*
 
@@ -360,29 +330,21 @@ The diphthong simplification handles oa:å and æ:e. Phonologically, these are i
 * ★*boaggoQ1X5jn* (is not standard language)
 * ★*boakku00jn* (is not standard language)
 
+* examples:*
 
-
-
+* examples:*
 
 * examples:*
 
 * examples:*
 
-
 * examples:*
-
-* examples:*
-
 
 * examples:*
 
 * examples:*
 
-
 * examples:*
-
-* examples:*
-
 
 * examples:*
 
@@ -417,15 +379,10 @@ The diphthong simplification handles oa:å and æ:e. Phonologically, these are i
 * ★*a^dræssa#sáhtso>* (is not standard language)
 * ★*a^dressa#sáhtso>* (is not standard language)
 
-
-
-
 * *vædtsag8>X3*
 * *vettsa0>0*
 
-
 **ie:æä Diphthong Simplification Part I **  
-
 
 * *ielvveY9ut*
 * *0æälvv00ut*
@@ -438,7 +395,6 @@ The diphthong simplification handles oa:å and æ:e. Phonologically, these are i
 
 **ie:æä Diphthong Simplification Part II** The multichar æä is always the only option
 
-
 * *jeht0sa>Y6*
 * *jæähttse>0*
 
@@ -448,15 +404,10 @@ The diphthong simplification handles oa:å and æ:e. Phonologically, these are i
 * *gierre»X7dalla>t*
 * *g0æä0rá»0dalla>t*
 
-
 * *boarkkaQ1*
 * *b0år0ka0*
 * *loavddag8X3#*
 * *l0åv0da00#*
-
-
-
-
 
 **Vowel-change oa:å for verbs part I**  
 
@@ -474,7 +425,6 @@ The diphthong simplification handles oa:å and æ:e. Phonologically, these are i
 * *gå0ht0saY6*
 * *goahttse0*
 
-
 ## Stem vowel alternations
 
 This section is divided according to stem vowels: a-, e-, o-, å-stems.
@@ -484,7 +434,6 @@ This section is divided according to stem vowels: a-, e-, o-, å-stems.
 For a-stems, there is a:e and a:i.  Each alternation is triggered by a combination of phonological content and dummy symbols.
 
 **a:e in Present Participle of even-syllable verbs**  
-
 
 * *bassa>Y6*
 * *basse>0*
@@ -496,7 +445,6 @@ For a-stems, there is a:e and a:i.  Each alternation is triggered by a combinati
 
 **a-stem vowel deletion**  
 
-
 * *giedjeg9>a#*
 * *giedjeg>a#*
 
@@ -504,9 +452,7 @@ For a-stems, there is a:e and a:i.  Each alternation is triggered by a combinati
 
 For e-stems, there is e:i, e:á, e:å, e:u and e:a. Each alternation is triggered by a combination of phonological content and dummy symbols.
 
-
 **e:i in e-stems**  								        
-
 
 * *manasseQ4j*
 * *manassi0j*
@@ -544,8 +490,6 @@ For e-stems, there is e:i, e:á, e:å, e:u and e:a. Each alternation is triggere
 * *gierre>Q1tj*
 * *gie0ri>0sj*
 
-
-
 The following two rules constitute a <= / => rule pair.
 
 **e:á in certain stem types 1**  
@@ -567,8 +511,6 @@ The following two rules constitute a <= / => rule pair.
 * ★*goahteX7tj#* (is not standard language)
 * ★*go00dá0sj#* (is not standard language)
 
-
-
 **e:á in certain stem types 2**  
 
 * *bárnneX4m*
@@ -577,13 +519,7 @@ The following two rules constitute a <= / => rule pair.
 * ★*bárnneX4m* (is not standard language)
 * ★*bárnne0m* (is not standard language)
 
-
-
-
-
-
 **e:å in certain stem types with å as root vowel**  
-
 
 * *gådeQ2v*
 * *gådå0v*
@@ -601,21 +537,10 @@ The following two rules constitute a <= / => rule pair.
 * *låhkkeY7tj#*
 * *låhkkå0sj#*
 
-
-
-
-
-
-
-
-
 **e-stem vowel deletion**  
 
 * *ielvveY9ut*
 * *0æälvv00ut*
-
-
-
 
 ### i-stem alternations
 
@@ -623,20 +548,14 @@ For i-stems, there is i:á. The alternation is triggered by a combination of pho
 
 **i:á in Verb Derivation**
 
-
 ### o-stem alternations
-
 
 The duplicates of the three lines of the two following rules are
 there to resolve the => conflict between the two rules.
 
 **o:u in certain stem types 1**  
 
-
 **o:u in certain stem types 2**  
-
-
-
 
 **u:o in contracted nouns**  
 
@@ -646,10 +565,7 @@ there to resolve the => conflict between the two rules.
 
 **å:e in Present Participle of even-syllable verbs**  
 
-
-
 **å:i in Actor nouns of even-syllable verbs**  
-
 
 **å-stem vowel deletion**  
 
@@ -665,8 +581,6 @@ there to resolve the => conflict between the two rules.
 
 * *bårråY1up*
 * *bårr00up*
-
-
 
 ## Consonant gradation rules
 
@@ -691,7 +605,6 @@ revisions to decide.
 
 The rules are divided in two subsections, deletion rules and
 change (alternation) rules.
-
 
 ### Deletion rules
 
@@ -730,14 +643,9 @@ added to the word form, this rule will thus not be triggered. Look into this whe
 * ★*russjpeQ1* (is not standard language)
 * ★*russjpe0* (is not standard language)
 
-
-
 **Consonant gradation ŋ:0**  
 
-
-
 **Consonant gradation f:0**  
-
 
 **Consonant gradation r:0**  
 
@@ -750,11 +658,7 @@ added to the word form, this rule will thus not be triggered. Look into this whe
 * *oajváladtj#*
 * *oajvála0sj#*
 
-
 **Gradation Series 4, II-I, tj and ts**  
-
-
-
 
 ### Change rules
 
@@ -765,9 +669,7 @@ The bb:pp, gg:kk, dd:tt alternations were split into three rules,
 since keeping them in one Cx:Cy rule created compilation conflicts. 
 Also, d:t contain a rule not found for the other two...
 
-
 **Gradation Series 4, II-I**  
-
 
 **bb:pp**  
 
@@ -782,13 +684,9 @@ Also, d:t contain a rule not found for the other two...
 * ★*vággeQ1* (is not standard language)
 * ★*vágge0* (is not standard language)
 
-
 **g:k change for clitic -ge**  
 
 **dd:tt and dtj, dts**  
-
-
-
 
 **Gradation Series 7, III-II, ks(t), kt, ktj, kts**  
 
@@ -821,9 +719,6 @@ Strategy: Do insertion rule for the initial element.
 **Consonant insertion as II-III strengthening gradation with hk, hp,**  
 
 **Consonant insertion as II-III strengthening gradation with htt(j/s)**  
-
-
-
 
 Debugging of twol-rules
 

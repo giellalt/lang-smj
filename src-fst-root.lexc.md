@@ -52,7 +52,6 @@ All Err-tags must have normative form as lemma except Err/Lex
 * **+Err/Hyph** = when there is a hyphen where none should have been
 * **+Err/SpaceCmp** = used for compounds written apart - only retained in the HFST Grammar Checker disambiguation analyser
 
-
 ## Usage restriction tags
 
 * **+Use/Marg**  Marginal, but normative lemmas. Not in speller.
@@ -149,7 +148,6 @@ It is important for Apertium, and useful in other cases as well.
 +Cmp/Hyph  +Cmp/Hyph     Compound with (optional) hyphen, heavily weighted
 +Cmp/OblHyph  +Cmp/OblHyph  Obligatory hyphen, not as badly weighed as +Cmp/Hyph
 
-
 # Inflectional Tags
 ## Tags for Case and Number Inflection
 
@@ -231,11 +229,9 @@ It is important for Apertium, and useful in other cases as well.
 * +Guess  for the name guesser
 * +NomAg Actor Noun From Verb - Nomen Agentis
 
-
 ## Lexeme disambiguation = homonym tags
 * **+Hom1**:  Homonymy
 * **+Hom2**:  Homonymy
-
 
 ## Stem variant tags
 * +v1 - variant 1
@@ -243,7 +239,6 @@ It is important for Apertium, and useful in other cases as well.
 * +v3 - variant 3
 * +v4 - variant 4
 * +v5 - variant 5
-
 
 ### Question and Focus particles:
 * +Qst
@@ -382,7 +377,6 @@ These tags should always be located just before the POS tag.
 * **+Sem/Wpn** = Weapon; rifle, bow, sword, arrow, war axe
 * **+Sem/Wthr** = The Weather or the state of ground; cloudy weather, wind, driving conditions, night sunlight, rain shower
 * **+Sem/Year** = Year
-
 
 ### Multiple Semantic tags:
 
@@ -687,11 +681,9 @@ These tags should always be located just before the POS tag.
 * **+Sem/Time_Wthr** =
 * **+Sem/Tool-music** =
 
-
 Not sure which section this goes in: (before POS)
 
 * +Allegro from LEXICON GOADE-IU-
-
 
 ## Derivation tags
 
@@ -741,7 +733,6 @@ This is done to avoid possible overgeneration in the derivational system.
 * +Der/Comp AA
 * +Der/Superl AA
 
-
 ### Der#2 tags - tags in second position
 * +Der/dahtte VV
 * +Der/duhtte VV
@@ -767,9 +758,6 @@ This is done to avoid possible overgeneration in the derivational system.
 
 There are no such tags in SMJ, but for symmetry and code coherence with SME
 the class is still kept.
-
-
-
 
 ## Tags for originating language
 The following tags are used to guide conversion to IPA: loan words
@@ -805,13 +793,8 @@ get the same pronunciation whether read as SME or NOB/NNO/SWE.
 * +OLang/RUS - Russian
 * +OLang/UND - Undefined
 
-
-
-
-
 ## Flag diacritics
 Tags from SME, coming to smj by propernouns.
-
 
 ## Flag diacritics
 
@@ -825,12 +808,10 @@ with verbs if the verb is further derived into a noun again:
 |  @D.NeedNoun.ON@ | (Dis)allow compounds with verbs unless nominalised
 |  @C.NeedNoun@ | (Dis)allow compounds with verbs unless nominalised
 
-
 |               Flag diacritic | Explanation
 |               :------------- |:-----------
 |  @P.Pmatch.Loc@ | Used on multi-token analyses; tell hfst-tokenise/pmatch where in the form/analysis the token should be split.
 |  @P.Pmatch.Backtrack@ | Used on single-token analyses; tell hfst-tokenise/pmatch to backtrack by reanalysing the substrings before and after this point in the form (to find combinations of shorter analyses that would otherwise be missed)
-
 
 |               Flag diacritic | Explanation
 |               :------------- |:-----------
@@ -866,17 +847,7 @@ given the proper use of these flags.
 |  @P.Nom3Px.add@ |  Giving possibility for Px-suffixes Nom 3.p
 |  @R.Nom3Px.add@ | Requiring P.Nom3Px.add flag for Px-suffixes Nom 3.p
 
-
-
-
-
-
-
-
-
 * **LEXICON Acronym**
-
-
 
 * **LEXICON ProperNoun**
 

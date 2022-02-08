@@ -1,9 +1,5 @@
 
 
-
-
-
-
 vájnno
 vájnno
 vájnno
