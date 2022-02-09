@@ -48,4 +48,8 @@ no tag to check, so it's safer to let hfst-tokenise handle them.
 Needs hfst-tokenise to output things differently depending on the tag they get
 
 * * *
-<small>This (part of) documentation was generated from [../tools/tokenisers/tokeniser-tts-cggt-desc.pmscript](http://github.com/giellalt/lang-smj/blob/main/../tools/tokenisers/tokeniser-tts-cggt-desc.pmscript)</small>
+
+<small>This (part of) documentation was generated from [tools/tokenisers/tokeniser-tts-cggt-desc.pmscript](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/tokeniser-tts-cggt-desc.pmscript)</small>
+
+---
+

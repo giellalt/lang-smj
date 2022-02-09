@@ -849,4 +849,8 @@ MAKI and NIEMI is only used in smi-propenouns. Maki names are even-syllable finn
 HANNOLA is the same as ACCRA
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/propernouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/propernouns.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/affixes/propernouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/propernouns.lexc)</small>
+
+---
+

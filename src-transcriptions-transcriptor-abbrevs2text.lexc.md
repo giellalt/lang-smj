@@ -33,4 +33,8 @@ Emojies
 * Paired punctuation marks
 
 * * *
-<small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-abbrevs2text.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/transcriptions/transcriptor-abbrevs2text.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-abbrevs2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-abbrevs2text.lexc)</small>
+
+---
+

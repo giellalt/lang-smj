@@ -785,4 +785,8 @@ LEXICON GISTÁ  gistá:gisstá. Presently only for "gistá".
 LEXICON DUOLMUN   Fierrot>fierun, instruments derived from verbs, used only for verb derivation, not for lexicalized lemmas. No short essive.
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/nouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/nouns.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/affixes/nouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/nouns.lexc)</small>
+
+---
+

@@ -158,4 +158,8 @@ advanced tongue root				_A
 retracted tongue root			_q
 
 * * *
-<small>This (part of) documentation was generated from [../src/phonetics/smj2sampa-from-old-infra.xfscript](http://github.com/giellalt/lang-smj/blob/main/../src/phonetics/smj2sampa-from-old-infra.xfscript)</small>
+
+<small>This (part of) documentation was generated from [src/phonetics/smj2sampa-from-old-infra.xfscript](https://github.com/giellalt/lang-smj/blob/main/src/phonetics/smj2sampa-from-old-infra.xfscript)</small>
+
+---
+

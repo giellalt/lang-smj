@@ -17,4 +17,8 @@ lågenanavta
 lågenanguovte
 
 * * *
-<small>This (part of) documentation was generated from [../src/transcriptions/clock-from-old-infra.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/transcriptions/clock-from-old-infra.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/transcriptions/clock-from-old-infra.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/clock-from-old-infra.lexc)</small>
+
+---
+

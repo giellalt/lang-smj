@@ -1,3 +1,7 @@
+# Lule Sami description 
+
+All documents in one file
+
 
 
 ### Semantic tags
@@ -9,10 +13,20 @@
 # Removing Err/Orth
 
 * * *
-<small>This (part of) documentation was generated from [../src/cg3/disambiguator.cg3](http://github.com/giellalt/lang-smj/blob/main/../src/cg3/disambiguator.cg3)</small>
+
+<small>This (part of) documentation was generated from [src/cg3/disambiguator.cg3](https://github.com/giellalt/lang-smj/blob/main/src/cg3/disambiguator.cg3)</small>
+
+---
+
+
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/compounding.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/compounding.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/compounding.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/compounding.lexc)</small>
+
+---
+
+
 
 # Lule Sámi morphophonological rule set                    
 
@@ -739,8 +753,14 @@ Debugging of twol-rules
 All rule conflicts have been successfully resolved. The rule file
 should be kept that way. Look out for conflicts in the compilation
 process, and resolve them as they appear!
+
 * * *
-<small>This (part of) documentation was generated from [../src/fst/phonology.twolc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/phonology.twolc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/phonology.twolc](https://github.com/giellalt/lang-smj/blob/main/src/fst/phonology.twolc)</small>
+
+---
+
+
 
 * **LEXICON Noun  ** dividing in NounNoPx, NounPx (with a P.Px.add flag)  and NounPxKin (with a P.Nom3Px.add flag)
 
@@ -748,23 +768,46 @@ LOAN
 LOAN
 LOAN
 LOAN SWE altar
+
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/nouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/nouns.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/stems/nouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/stems/nouns.lexc)</small>
+
+---
+
+
 
 sme mojonjálmmiid
+
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/adverbs.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/adverbs.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/stems/adverbs.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/stems/adverbs.lexc)</small>
+
+---
+
+
 
 Reciprocal pronouns as multiword expression
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/pronouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/pronouns.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/stems/pronouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/stems/pronouns.lexc)</small>
+
+---
+
+
 
 vájnno
 vájnno
 vájnno
+
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/adjectives.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/adjectives.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/stems/adjectives.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/stems/adjectives.lexc)</small>
+
+---
+
+
 # File containing North Saami abbreviations 
 
 ## Lexica for adding tags and periods
@@ -808,7 +851,12 @@ is less common and thus only the occurences in the middle of
 the sentence can be considered as true cases.
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/stems/smj-abbreviations.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/stems/smj-abbreviations.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/stems/smj-abbreviations.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/stems/smj-abbreviations.lexc)</small>
+
+---
+
+
 
 # Sublexica for Noun
 
@@ -1595,7 +1643,12 @@ LEXICON GISTÁ  gistá:gisstá. Presently only for "gistá".
 LEXICON DUOLMUN   Fierrot>fierun, instruments derived from verbs, used only for verb derivation, not for lexicalized lemmas. No short essive.
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/nouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/nouns.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/affixes/nouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/nouns.lexc)</small>
+
+---
+
+
 
 +Use/NG+Gen:n      NAMÁK ; ! adjectival -k derivation does not take pronouns
 +Use/NG+Ela:sstága K ; !Can't find this anywhere. Maybe this is really dástága/dastagá? in "dáhtakcas"
@@ -1610,7 +1663,12 @@ LEXICON DUOLMUN   Fierrot>fierun, instruments derived from verbs, used only for 
 +Abe+Use/NG:a%>jtagá  K ; ! covered in non-idiosync   
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/pronouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/pronouns.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/affixes/pronouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/pronouns.lexc)</small>
+
+---
+
+
 
 * **LEXICON ARABICCOMPOUNDS**  ! arabic as first part, 
 
@@ -1627,7 +1685,12 @@ LEXICON DUOLMUN   Fierrot>fierun, instruments derived from verbs, used only for 
 +Num:   ROMNUMTAGOBL ;
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/numerals.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/numerals.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/affixes/numerals.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/numerals.lexc)</small>
+
+---
+
+
 # Lule Sáme Proper noun morphology !
 
 ## Even syllable proper nouns
@@ -2478,7 +2541,12 @@ MAKI and NIEMI is only used in smi-propenouns. Maki names are even-syllable finn
 HANNOLA is the same as ACCRA
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/propernouns.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/propernouns.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/affixes/propernouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/propernouns.lexc)</small>
+
+---
+
+
 
 # Sublexica for Adjective
 
@@ -3007,7 +3075,12 @@ LEXICON AHKES
 LEXICON AGAdj  ! denominal derivations go here, attr same as pred, no comp in this lexicon
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/adjectives.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/adjectives.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/affixes/adjectives.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/adjectives.lexc)</small>
+
+---
+
+
 
 # Sublexica for Verb
 
@@ -3424,11 +3497,21 @@ LEXICON ABBONERE_TV_INFL
 * *abbonerijma:* `abbonierit+V+TV+Ind+Prt+Pl1`
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/verbs.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/verbs.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/affixes/verbs.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/verbs.lexc)</small>
+
+---
+
+
 # Symbol affixes
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/symbols.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/symbols.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/affixes/symbols.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/symbols.lexc)</small>
+
+---
+
+
 # Continuation lexicons for abbreviations
 
 ## Lexica for adding tags and periods
@@ -3488,7 +3571,12 @@ LEXICON ABBONERE_TV_INFL
 * **LEXICON DOT   ** - Adds the dot to dotted abbreviations.
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/abbreviations.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/abbreviations.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/affixes/abbreviations.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/abbreviations.lexc)</small>
+
+---
+
+
 # Lule Sámi morphological analyser
 
 Definitions for Multichar_Symbols
@@ -4349,8 +4437,14 @@ And this is the ENDLEX of everything:
 The `@D.CmpOnly.FALSE@` flag diacritic is ued to disallow words tagged
 with +CmpNP/Only to end here.
 The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
+
 * * *
-<small>This (part of) documentation was generated from [../src/fst/root.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/root.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/root.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/root.lexc)</small>
+
+---
+
+
 Phonological ACRO converter for Julev Sámi
 ==========================================
 
@@ -4364,14 +4458,24 @@ If that is not true, the system can be simplified.
 Default, letter by letter pronunciation
 
 * * *
-<small>This (part of) documentation was generated from [../src/phonetics/acro2ipa.xfscript](http://github.com/giellalt/lang-smj/blob/main/../src/phonetics/acro2ipa.xfscript)</small>
+
+<small>This (part of) documentation was generated from [src/phonetics/acro2ipa.xfscript](https://github.com/giellalt/lang-smj/blob/main/src/phonetics/acro2ipa.xfscript)</small>
+
+---
+
+
 Phonological converter for Julev Sámi
 =====================================
 
 Converts to IPA. Mainly intended for use with TTS.
 
 * * *
-<small>This (part of) documentation was generated from [../src/phonetics/txt2ipa.xfscript](http://github.com/giellalt/lang-smj/blob/main/../src/phonetics/txt2ipa.xfscript)</small>
+
+<small>This (part of) documentation was generated from [src/phonetics/txt2ipa.xfscript](https://github.com/giellalt/lang-smj/blob/main/src/phonetics/txt2ipa.xfscript)</small>
+
+---
+
+
 
 retroflex plosive, voiceless		t`  ʈ	    0288, 648 (` = ASCII 096)
 retroflex plosive, voiced		d`	ɖ		0256, 598
@@ -4531,7 +4635,12 @@ advanced tongue root				_A
 retracted tongue root			_q
 
 * * *
-<small>This (part of) documentation was generated from [../src/phonetics/smj2sampa-from-old-infra.xfscript](http://github.com/giellalt/lang-smj/blob/main/../src/phonetics/smj2sampa-from-old-infra.xfscript)</small>
+
+<small>This (part of) documentation was generated from [src/phonetics/smj2sampa-from-old-infra.xfscript](https://github.com/giellalt/lang-smj/blob/main/src/phonetics/smj2sampa-from-old-infra.xfscript)</small>
+
+---
+
+
 
 At some points we will need the genitives, for
 approximate numbers. Here they are.
@@ -4550,15 +4659,30 @@ lågenanavta
 lågenanguovte
 
 * * *
-<small>This (part of) documentation was generated from [../src/transcriptions/clock-from-old-infra.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/transcriptions/clock-from-old-infra.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/transcriptions/clock-from-old-infra.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/clock-from-old-infra.lexc)</small>
+
+---
+
+
 
 * * *
-<small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-numbers-digit2text.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-numbers-digit2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
+
+---
+
+
 
 This is still a dummy file.
 
 * * *
-<small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-date-digit2text.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/transcriptions/transcriptor-date-digit2text.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-date-digit2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-date-digit2text.lexc)</small>
+
+---
+
+
 
 We describe here how abbreviations in Lule Sami are read out, e.g.
 for text-to-speech systems.
@@ -4593,7 +4717,12 @@ Emojies
 * Paired punctuation marks
 
 * * *
-<small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-abbrevs2text.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/transcriptions/transcriptor-abbrevs2text.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-abbrevs2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-abbrevs2text.lexc)</small>
+
+---
+
+
 L U L E   S A A M I   G R A M M A R   C H E C K E R
 
 # DELIMITERS
@@ -4896,7 +5025,12 @@ expression **WORD - premodifiers**.
 Error tags
 
 * * *
-<small>This (part of) documentation was generated from [../tools/grammarcheckers/grammarchecker.cg3](http://github.com/giellalt/lang-smj/blob/main/../tools/grammarcheckers/grammarchecker.cg3)</small>
+
+<small>This (part of) documentation was generated from [tools/grammarcheckers/grammarchecker.cg3](https://github.com/giellalt/lang-smj/blob/main/tools/grammarcheckers/grammarchecker.cg3)</small>
+
+---
+
+
 
 ### Semantic tags
 
@@ -4907,7 +5041,12 @@ Error tags
 # Removing Err/Orth
 
 * * *
-<small>This (part of) documentation was generated from [../tools/grammarcheckers/grc-disambiguator.cg3](http://github.com/giellalt/lang-smj/blob/main/../tools/grammarcheckers/grc-disambiguator.cg3)</small>Requires a recent version of HFST (3.10.0 / git revision>=3aecdbc)
+
+<small>This (part of) documentation was generated from [tools/grammarcheckers/grc-disambiguator.cg3](https://github.com/giellalt/lang-smj/blob/main/tools/grammarcheckers/grc-disambiguator.cg3)</small>
+
+---
+
+Requires a recent version of HFST (3.10.0 / git revision>=3aecdbc)
 Then just:
 $ make
 $ echo "ja, ja" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
@@ -4957,46 +5096,41 @@ no tag to check, so it's safer to let hfst-tokenise handle them.
 Needs hfst-tokenise to output things differently depending on the tag they get
 
 * * *
-<small>This (part of) documentation was generated from [../tools/tokenisers/tokeniser-tts-cggt-desc.pmscript](http://github.com/giellalt/lang-smj/blob/main/../tools/tokenisers/tokeniser-tts-cggt-desc.pmscript)</small>
+
+<small>This (part of) documentation was generated from [tools/tokenisers/tokeniser-tts-cggt-desc.pmscript](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/tokeniser-tts-cggt-desc.pmscript)</small>
+
+---
+
+
 
 The CLBfinal reading is only possible if directly followed by a full stop.
 Needs a rewrite, as the CLB reading is still within the same cohort, not the
 next, if present, since we haven't done the mwe-rewrite yet.
 
 * * *
-<small>This (part of) documentation was generated from [../tools/tokenisers/mwe-dis.cg3](http://github.com/giellalt/lang-smj/blob/main/../tools/tokenisers/mwe-dis.cg3)</small>Requires a recent version of HFST (3.10.0 / git revision>=3aecdbc)
+
+<small>This (part of) documentation was generated from [tools/tokenisers/mwe-dis.cg3](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/mwe-dis.cg3)</small>
+
+---
+
+# Grammar checker tokenisation for smj
+
+Requires a recent version of HFST (3.10.0 / git revision>=3aecdbc)
 Then just:
+```
 $ make
 $ echo "ja, ja" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
-
-Issues:
-- [X] Ambiguous input
-- Seems to work fine
-- [X] Ambiguous multiword expessions with ambiguous tokenisation
-- Seems to work – represented within lexc now; hfst-tokenise also
-supports forms on the analyses now
-- [X] Ambiguous multiword expessions need reorganising after CG
-- The module cg-mwesplit takes wordforms from readings and turns them into
-new cohorts
-- [X] Unknown words
-- The set-difference method only works for words without
-flag diacritics (even though we should be working only on the form-side?)
-and leads to binary blow-up: With only lower unknowns, we get 45M;
-lower+upper gives 67M, while no unknowns gives 27M
-- Fixed instead by treating empty analyses as unknown-tokens in
-hfst-tokenise, and outputting unmatched strings with a prefix
-- [ ] Treat input that's within superblanks as unmatched
-- probably requires a change in hfst-tokenise itself
-- [X] Try >1 space for ambiguous MWE's? – represented within lexc now
-- [ ] Try set-difference-unknowns method with regular hfst commands?
+```
 
 More usage examples:
+```
 $ echo "Juos gorreválggain lea (dárbbašlaš) deavdit gáibádusa boasttu olmmoš, man mielde lahtuid." | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
 $ echo "(gáfe) 'ja' ja 3. ja? ц jaja ukjend \"ukjend\"" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
 $ echo "márffibiillagáffe" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
+```
 
 Pmatch documentation:
-https://kitwiki.csc.fi/twiki/bin/view/KitWiki/HfstPmatch
+<https://kitwiki.csc.fi/twiki/bin/view/KitWiki/HfstPmatch>
 
 Characters which have analyses in the lexicon, but can appear without spaces
 before/after, that is, with no context conditions, and adjacent to words:
@@ -5037,7 +5171,12 @@ Finally we mark as a token any sequence making up a:
 * URL in context
 
 * * *
-<small>This (part of) documentation was generated from [../tools/tokenisers/tokeniser-gramcheck-gt-desc.pmscript](http://github.com/giellalt/lang-smj/blob/main/../tools/tokenisers/tokeniser-gramcheck-gt-desc.pmscript)</small># Tokeniser for smj
+
+<small>This (part of) documentation was generated from [tools/tokenisers/tokeniser-gramcheck-gt-desc.pmscript](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/tokeniser-gramcheck-gt-desc.pmscript)</small>
+
+---
+
+# Tokeniser for smj
 
 Usage:
 ```
@@ -5049,7 +5188,7 @@ $ echo "márffibiillagáffe" | hfst-tokenise --giella-cg tokeniser-disamb-gt-des
 ```
 
 Pmatch documentation:
-https://kitwiki.csc.fi/twiki/bin/view/KitWiki/HfstPmatch
+<https://kitwiki.csc.fi/twiki/bin/view/KitWiki/HfstPmatch>
 
 Characters which have analyses in the lexicon, but can appear without spaces
 before/after, that is, with no context conditions, and adjacent to words:
@@ -5095,4 +5234,8 @@ Finally we mark as a token any sequence making up a:
 * URL in context
 
 * * *
-<small>This (part of) documentation was generated from [../tools/tokenisers/tokeniser-disamb-gt-desc.pmscript](http://github.com/giellalt/lang-smj/blob/main/../tools/tokenisers/tokeniser-disamb-gt-desc.pmscript)</small>
+
+<small>This (part of) documentation was generated from [tools/tokenisers/tokeniser-disamb-gt-desc.pmscript](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/tokeniser-disamb-gt-desc.pmscript)</small>
+
+---
+

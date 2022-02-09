@@ -527,4 +527,8 @@ LEXICON AHKES
 LEXICON AGAdj  ! denominal derivations go here, attr same as pred, no comp in this lexicon
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/adjectives.lexc](http://github.com/giellalt/lang-smj/blob/main/../src/fst/affixes/adjectives.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/fst/affixes/adjectives.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/adjectives.lexc)</small>
+
+---
+
