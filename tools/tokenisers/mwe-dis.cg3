@@ -362,14 +362,26 @@ SET OBJ>-OTHERS = OBJ> OR (Gen) OR (Nom) OR (Ess) OR (Loc) OR (Adv) ;
 
 LIST @X = @X ;
 
-LIST Err/Orth 		= Err/Orth ;
-LIST Err/Lex        = Err/Lex ; 
-LIST Err/DerSub		= Err/DerSub ;
-LIST Err/CmpSub		= Err/CmpSub ;
-LIST Err/HyphSub	= Err/HyphSub ;
-LIST Err/SpaceCmp	= Err/SpaceCmp ;
-LIST Err/Spellrelax = Err/Spellrelax ;
-
+LIST Err/Orth 			= Err/Orth ;
+LIST Err/Orth-a-á 		= Err/Orth-a-á ;
+LIST Err/Orth-nom-gen 	= Err/Orth-nom-gen ;
+LIST Err/Orth-nom-acc 	= Err/Orth-nom-acc ;
+LIST Err/Orth-any 		= Err/Orth Err/Orth-a-á Err/Orth-nom-gen Err/Orth-nom-acc ;
+LIST Err/Confused		= Err/Confused Err/Confused-Ess Err/Confused-ASgNom Err/Confused-NomAgIll Err/Confused-DerPassPrsSg3 ;
+LIST Err/Confused-Ess	= Err/Confused-Ess ;
+LIST Err/Confused-ASgNom = Err/Confused-ASgNom ;
+LIST Err/Confused-NomAgIll = Err/Confused-NomAgIll ;
+LIST Err/Confused-DerPassPrsSg3 = Err/Confused-DerPassPrsSg3 ;
+LIST Err/Lex        	= Err/Lex ; 
+LIST Err/DerSub			= Err/DerSub ;
+LIST Err/CmpSub			= Err/CmpSub ;
+LIST Err/HyphSub		= Err/HyphSub ;
+LIST Err/SpaceCmp		= Err/SpaceCmp ;
+LIST Err/Spellrelax 	= Err/Spellrelax ;
+LIST Err/MissingHyph 	= Err/MissingHyph ;
+LIST Err/MissingSpace 	= Err/MissingSpace ;
+LIST Err/Any			= Err/Orth Err/Orth-a-á Err/Orth-nom-gen Err/Orth-nom-acc Err/Confused Err/Confused-Ess Err/Confused-ASgNom Err/Confused-NomAgIll Err/Confused-DerPassPrsSg3 Err/Lex Err/DerSub Err/CmpSub Err/HyphSub Err/SpaceCmp Err/Spellrelax Err/MissingHyph Err/MissingSpace ;
+LIST Err/Any-NotSpace   = Err/Orth Err/Orth-a-á Err/Orth-nom-gen Err/Orth-nom-acc Err/Confused Err/Confused-Ess Err/Confused-ASgNom Err/Confused-NomAgIll Err/Confused-DerPassPrsSg3 Err/Lex Err/DerSub Err/CmpSub Err/HyphSub Err/Spellrelax Err/MissingHyph Err/MissingSpace ;
 LIST CLBfinal = CLBfinal ;
 
 # Dialect tags
@@ -2036,7 +2048,26 @@ REMOVE (Err/SpaceCmp) (0/0 (TODO));
 
 
 # If no rule above chose spacecmp, we assume it was *not* a compounding error:
-REMOVE:fallback SUB:* (Err/SpaceCmp) ;
+REMOVE:fallback SUB:* (Err/SpaceCmp)(NEGATE 0/* Err/Spellrelax OR Err/MissingSpace OR Ess)(NEGATE 0 Err/Orth) ;
+
+SELECT (*) - Err/Any OR Err/SpaceCmp IF (0 Err/SpaceCmp);
+	#Tino's rule so the next ones will work 
+
 
 # If we still have reanalyses, choose the longest tokenisation:
-REMOVE:longest-match SUB:1 ("<.*>"r);
+	# Altså, først fjern alt som har fem nivå med subreadings, så med fire, så med tre etc.
+REMOVE:longest-match SUB:4 ("<.*>"r) (NEGATE 0t Err/Any ^ Err/SpaceCmp);
+REMOVE:longest-match SUB:3 ("<.*>"r) (NEGATE 0t Err/Any ^ Err/SpaceCmp);
+REMOVE:longest-match SUB:2 ("<.*>"r) (NEGATE 0t Err/Any ^ Err/SpaceCmp);
+REMOVE:longest-match SUB:1 ("<.*>"r) (NEGATE 0t Err/Any ^ Err/SpaceCmp ^ Prop);
+	## 2.8.6 Mariidna ealáhusat ¶					
+	#$ Finnmárkkukommišuvnnas
+		
+	#Remove a reading that includes any errortag that is not Err/SpaceCmp except for the readings that include Err/SpaceCmp in addition to it
+	
+	# IF all readings are Err/Orth, choose the longest tokenisation:
+REMOVE:longest-match SUB:4 ("<.*>"r) + Err/Any (0t Err/Any ^ Err/SpaceCmp);
+REMOVE:longest-match SUB:3 ("<.*>"r) + Err/Any (0t Err/Any ^ Err/SpaceCmp);
+REMOVE:longest-match SUB:2 ("<.*>"r) + Err/Any (0t Err/Any ^ Err/SpaceCmp);
+REMOVE:longest-match SUB:1 ("<.*>"r) + Err/Any (0t Err/Any ^ Err/SpaceCmp ^ Prop);
+	## Álttá oahpaheaddjiskuvla ii gal lean beare guhká doaimmas, dat heaittihuvvui juo 1870:s, danin go dat ii heiven dáruiduhttinpolitihkkii, mii juste dieid áiggiid sákka garai.
