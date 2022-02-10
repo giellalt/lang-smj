@@ -1,6 +1,4 @@
 * `src/`
-    * `cg3/`
-        * [disambiguator.cg3](src-cg3-disambiguator.cg3.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/cg3/disambiguator.cg3))
     * `fst/`
         * [compounding.lexc](src-fst-compounding.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/compounding.lexc))
         * [phonology.twolc](src-fst-phonology.twolc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/phonology.twolc))
@@ -30,11 +28,16 @@
         * [transcriptor-date-digit2text.lexc](src-transcriptions-transcriptor-date-digit2text.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-date-digit2text.lexc))
         * [transcriptor-abbrevs2text.lexc](src-transcriptions-transcriptor-abbrevs2text.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-abbrevs2text.lexc))
 * `tools/`
+    * `tokenisers/`
+        * [tokeniser-tts-cggt-desc.pmscript](tools-tokenisers-tokeniser-tts-cggt-desc.pmscript.html) ([src](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/tokeniser-tts-cggt-desc.pmscript))
+        * [tokeniser-gramcheck-gt-desc.pmscript](tools-tokenisers-tokeniser-gramcheck-gt-desc.pmscript.html) ([src](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/tokeniser-gramcheck-gt-desc.pmscript))
+        * [tokeniser-disamb-gt-desc.pmscript](tools-tokenisers-tokeniser-disamb-gt-desc.pmscript.html) ([src](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/tokeniser-disamb-gt-desc.pmscript))
+* `src/`
+    * `cg3/`
+        * [disambiguator.cg3](src-cg3-disambiguator.cg3.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/cg3/disambiguator.cg3))
+* `tools/`
     * `grammarcheckers/`
         * [grammarchecker.cg3](tools-grammarcheckers-grammarchecker.cg3.html) ([src](https://github.com/giellalt/lang-smj/blob/main/tools/grammarcheckers/grammarchecker.cg3))
         * [grc-disambiguator.cg3](tools-grammarcheckers-grc-disambiguator.cg3.html) ([src](https://github.com/giellalt/lang-smj/blob/main/tools/grammarcheckers/grc-disambiguator.cg3))
     * `tokenisers/`
-        * [tokeniser-tts-cggt-desc.pmscript](tools-tokenisers-tokeniser-tts-cggt-desc.pmscript.html) ([src](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/tokeniser-tts-cggt-desc.pmscript))
         * [mwe-dis.cg3](tools-tokenisers-mwe-dis.cg3.html) ([src](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/mwe-dis.cg3))
-        * [tokeniser-gramcheck-gt-desc.pmscript](tools-tokenisers-tokeniser-gramcheck-gt-desc.pmscript.html) ([src](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/tokeniser-gramcheck-gt-desc.pmscript))
-        * [tokeniser-disamb-gt-desc.pmscript](tools-tokenisers-tokeniser-disamb-gt-desc.pmscript.html) ([src](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/tokeniser-disamb-gt-desc.pmscript))

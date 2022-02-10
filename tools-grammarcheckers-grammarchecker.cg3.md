@@ -36,7 +36,6 @@ CLB
 LEFT
 RIGHT
 WEB
-QMARK
 PPUNCT
 PUNCT
 
@@ -126,34 +125,7 @@ Err/Orth
 
 ### Semantic tags
 
-Sem/Act
-Sem/Ani
-Sem/Atr
-Sem/Body
-Sem/Clth
-Sem/Domain
-Sem/Feat-phys
-Sem/Fem
-Sem/Group
-Sem/Lang
-Sem/Mal
-Sem/Measr
-Sem/Money
-Sem/Obj
-Sem/Obj-el
-Sem/Org
-Sem/Perc-emo
-Sem/Plc
-Sem/Sign
-Sem/State-sick
-Sem/Sur
-Sem/Time
-Sem/Txt
-
 HUMAN
-
-HAB-ACTOR
-HAB-ACTOR-NOT-HUMAN
 
 PROP-ATTR
 PROP-SUR
@@ -243,8 +215,6 @@ INITIAL
 ### Sets for word or not
 
 WORD
-REAL-WORD
-REAL-WORD-NOT-ABBR
 NOT-COMMA
 
 ### Case sets
@@ -301,8 +271,4 @@ expression **WORD - premodifiers**.
 Error tags
 
 * * *
-
 <small>This (part of) documentation was generated from [tools/grammarcheckers/grammarchecker.cg3](https://github.com/giellalt/lang-smj/blob/main/tools/grammarcheckers/grammarchecker.cg3)</small>
-
----
-
