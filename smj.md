@@ -4,839 +4,611 @@ All documents in one file
 
 
 
-* * *
+### Semantic tags
 
-<small>This (part of) documentation was generated from [src/fst/compounding.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/compounding.lexc)</small>
+* Rules for removing some Props which are identical to common nouns
 
----
+* **IfonlyVerb** selects the FMAINV reading in the cohort
 
-
-
-# Lule Sámi morphophonological rule set                    
-
-This file documents the [phonology.twolc file](http://github.com/giellalt/lang-hun/blob/main/src/fst/phonology.twolc) 
-
-The file contains the rule set for the non-segmental
-Lule Sámi morphphonological rules
-
-## Background
-
-The file is modeled upon the corresponding file for North Sámi, but has been
-revised and differs from it on several issues. The grammatical sources are
-Spiik 1989: Lulesamisk grammatik and Nystø and Johnsen 2001: Sámásta 2.
-
-The rule file has the sections **Alphabet, Sets, Definition** and **Rules**. The rules are ordered thematically, 
-with 3 main sections: Consonant alternations (except CG), vowel alternations, and consonant gradation.
-
-# Declarations and definitions
-
-## The Alphabet section
-
-### The real Lule Sámi Alphabet
-
-All Lule Saami letters are listed. The Lule Sámi ENG sound is represented as ñ. 
-Lule Sámi letter repertoire is not fully standardised. In the source code we write (and you shall write!) æ; ø; ŋ, 
-but the parser tolerates input written with the the letters ä; ö; ń, ñ (cf. the 4 rules in the file smj/src/orthography/spellrelax.regex).
-
-* **small letters =**  a á b c d e f g h i j k l m n ñ ń ŋ o p q			 
- r s t u v w x y z æ:æä ä:æä ø ö å %-				 
- é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý				 
- ç č đ ð š ŧ þ ß ª									 
-
-* **capital letters =**  A Á B C D E F G H I J K L M N Ñ Ń Ŋ O P Q			
- R S T U V W X Y Z Æ:ÆÄ Ä:ÆÄ Ø Ö Å  	 
- É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý	 
- Ç Č Đ Ð Š Ŧ þ	 
-
-The 3rd degree mark º is never realized, hence declared as º:0.
- º:0   = Gradation mark
- %/    = Literal /, not the TWOLC reserved symbol
- ':'   = Apostrophe
-
-Literal quotes and angles must be escaped (cf morpheme boundaries further down):
-
-* »
-* «
-* >
-* <
-
-h2, g2 etc. are consonants deleted in the Nom. m3, d3 etc. (?) are consonants that undergo certain processes word-finally. 
-This issue should be looked into. Perhaps the two sets can be unified. 
-The reason why there are more distinctions than for sme, is that the cns deletion process is more phonological in sme.
-
-*  ':'   =  Morphophonemes  in sme, here temporarily due to common propernoun file
-
-*  ':'   =  these are deleted in nom
-*  ':'   =  these can not occur before #
-*  ':'   =  Non-sámi cons clusters
-*  ':'   =  Do not change these where they would normally undergo umlaut etc
-
-### The Dummy symbols
-The Dummy symbols are taken from the sme file for convenience, only a small part of them are actually used, 
-they are defined in the Sets section along the way, included there as soon as they are used. 
-The set of actually used Dummy symbols is thus the set declared in "Dummy".
-The Dummy symbols trigger morphophonological rules. X is used for nouns
-and adjectives, Y for verbs and Q for processes common to all
-The symbols themselves are used in the following way:
-
-OBS: the definitions are not all correct or sufficiently specific
-
-* ****X1:0****:  Deletes final consonants in short essive of odd syllables
-* ****X2:0****:  WeG and neutralization of g8, etc. (hivsik-hivsiga)
-* ****X3:0****:  Weg and deletion of g8, etc. (bena-bednaga)
-* ****X4:0** : e:á and e:å in illatives and px. a:á and o**: u in Px and ill of a-stem actors and o-stems
-* ****X5:0** : e:á, e:å and o:u in odd-syllable nouns, but also for some even nouns (o**: u f.eks)
-* ****X6:0** : Deviant III-I consonant gradation (in contracted stems, guobbmu**: guomoj)
-* ****X7:0** : WeG and e:á, e:å, o:á, o:u in front of diminutives, e**: å in -lasj der
-* ****X8:0****:  Stem vowel alternations in Px
-* ****X9:0****:  Stem-vowel and central consonant shortening in first part(s) of compounds  
-* ****Q1:0** : The general weak grade trigger. Stem vowel change e:i and o**: u in front of j.
-				 Dipht. simpl.  Any environment #only# demanding WeG shall use Q1.
-* ****Q2:0** : Vowel harmony**:  2nd syll e realized as å whenever 1st syll is å.
-* ****Q3:0****:  WeG in contracted, also does not trigger Dipht simpl.
-* ****Q4:0** : Stem vowel change e:i and o**: u in front of j. Dipht. simpl. Like Q1 but strong grade.
-* ****Q5:0** : e**: á stem vowel change for word diehtet. Weak grade.
-* ****Q6:0** : e**: á stem wovel change for word diehtet. Strong grade.
-* ****Q7:0** : e**: á stem vowel change for word diehtte. Extra strong grade
-* ****Q8:0****:  Stem vowel deletion, impII of verbs.
-* ****Q9:0****:  TBW  
-* ****Y1:0****:  Stem vowel deletion, imp 3sg, 3du, 2pl, 3pl of verbs
-* ****Y2:0****:  "Indicative Present Singular 3rd Final Vowel in verbs"
-* ****Y3:0****:  PrsPrc
-* ****Y4:0****:  e &gt; u in front of dersuff, o &gt; u and e &gt; á in front of dersuffix -alla
-* ****Y5:0****:  e &gt; a, i &gt; á, o &gt; u, e &gt; å in verb derivation
-* ****Y6:0****:  "Consonant insertion as II-III strengthening gradation", verbs +PrsPrt and +Imprt+Du2
-* ****Y7:0****:  "Consonant insertion as II-III strengthening gradation", nouns and propernouns
-* ****Y8:0****:  "Stem vowel deletion in even-syllable verbs, imp 1du, 1pl"
-* ****Y9:0****:  "Stem vowel deletion in short passives of even-syllable verbs
-* ****Z1:0** : TBW "i**: á in Verb Derivation guollir>guollár"
-* ****Z2:0** : e:å, o**: u in -lasj der
-* ****Z3:0** : weak grade trigger fºf:f. Stem vowel change e:i and o**: u in front of j.
-* ****Z4:0** : weak grade trigger fºf:f and e:á, e:å, o:á, o:u in front of diminutives, e**: å in -lasj der
-
-* ****Ø1:0** : optional Word Final Cluster Simplification. Not smj grammar, made only for Err/Orths  ! málestit**:  málest instead for norm máles
-* ****Ø2:0** : optional e**: i when followed by any conc (not only j). Not smj grammar, made only for Err/Orths ! "iednida"   
-
-### Morpheme boundaries:
-* **** «  ****:  Derivational prefix
-* **** »  ****:  Derivational suffix
-* **** %< ****:  Inflectional prefx
-* **** %> ****:  Inflectional suffix
-* **** #  ****:  Word boundary for both lexicalised and dynamic compounds
-* **** %^ ****:  (exceptional) soft hyphenation point
-* **** %  ****:  a space
-* **** ∑  ****:  mark before # to indicate dynamic comounds
-
-## The Sets section
-
-These are the sets:
-* **Vow**:  the vowels
-* **Cns**:  the consonants
-* **StemCns**:  consonants that may occur in stem-final position
-* **DelCns**:  the consonants that are deleted in nominative
-* **Dummy**:  the set of dummy symbols, they are there to trigger certain morphophonological symbols
-* **WeG**:  the dummy symbols that trigger weak grade
-
-*  Vow     = a á e i o u y æ ä ø ö å æä			   
-           A Á E I O U Y Æ Ä Ø Ä Å ÆÄ			   
-           é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý   
-           É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý   
-           a9 e9 o9 æ9 ä9						   
-
-*            a9 e9 o9 æ9 ä9						   
-           É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý ;   
-
-*  CapCns  = B C D F G H J K L M N Ñ Ń Ŋ P Q     
-           R S T V W X Z Ç Č Đ Ð Š Ŧ þ ;    
-
-*  Cns     = b b9 c d d9 f g g8 g9 h h8 h9 j j9 k l l9 m m8 m9 n n8 n9 ŋ ñ ń p q r r9 s t v w x z z9 º ;  = All consonants
-*  Cns7    =      c      f         h       j      l    m       n       ŋ ñ ń p q r    s t v w x z      ;  = Surface cons excl 1st members of xx-type G3
-*  Cns8    = b    c d    f g       h       j    k l    m       n       ŋ ñ ń p q r    s t v w x z      ;  = All surface consonants
-*  Cns9    =   b9     d9     g8 g9   h8 h9   j9     l9   m8 m9   n8 n9             r9             º    ;  = Underlying consonants
-*  Cns4    =             f                        l    m       n       ŋ ñ ń     r        v            ;  = Don't remember ...?
-*  StemCns = b b9   d d9   g g8 g9 h h8 h9 j j9   l l9 m m8 m9 n n8 n9 ŋ ñ ń     r r9 s                ;  = Can occur stem-finally
-*  DelCns  =                 g8      h8               m8      n8                                       ;  = deleted in nom...
-*  WeG     = X2 X3 X7 Y5 Q1 Q2 Q3 Q6 Z3 Z4                                                                 ;  
-*  Dummy   = X2 X3 X4 X5 X6 X7 X8 Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9 Q1 Q2 Q3 Q4 Q5 Q6 Q7 Z1 Z2 Z3 Z4 %> » %^           ;  
-*  Hyph    = %-                                                                                        ;  
-
-## The Definitions section
-
-In this section, the consonants are defined. This includes consonant clusters in the various grades and consonant alternations.
-
-### G3 vs G2
-The alternation patterns according to Spiik's alternations series, here named S4, S5, ... for "Spiik alternation series 4, 5, etc." as they are presented in his grammar..  
-
-|   Class | Alternation | Series
-
-| --- | --- | --- 
-|  S7 | kkn:k0n           | series 1
-|  S8 | fºf:f0f           | series 2
-|  S9 | jgg:j0g           | series 3
-|  S4 | hkk:h0k           | series 4
-|  S5 |  xy:zy (no zeros) | series 5
-|  S6 |  xx:yy (no zeros) | series 6
-|  S7 |  xy:zy (no zeros) | series 7
-|  S8 |  ----- (no cg)    | series 8
-
-Definition of gradation symbols:
-
-* **LowerG2**:  A definition of Grade2 consonant sequences referring mostly to the surface level
-* **LowerG1**:  A definition of Grade 1 consonant sequences
-* **LowerG12**:  A definition of Grade 1 or 2 consonant sequences 
-
-* **G32**:  A definition of Grade 3 or 2 consonant sequences
-
-* **G3**:  A definition of Grade 3 consonant sequences 
-
-# The Rules section
-
-## Overview
-
-The rules section has the following chapters: Consonant alternations in certain pos, vowel lengthening, diphthong simplification, stem vowel alternations, consonant gradation rules
-
-## Consonant alternations in certain pos
-
-All rules deal with word-final position.
-
-* ★*a* (is not standard language)
-* ★*b* (is not standard language)
-
-**Word Final Devoicing of Certain Single Consonants d9 etc. **  
-* *iemed9#*
-* *iemet#*
-
-**Word final weakening -tj and -ttj to -sj part 1**  
-
-**Word final weakening -tj and -ttj to -sj part 2**  
-* *jågåtj*
-* *jågåsj*
-
-* *gålºleX7tj*
-* *gål0lå0sj*
-
-**Word Final Deletion of n8 m8 g8 h8**  
-
-* *loavddag8X3#*
-* *l0åv0da00#*
-
-**Word Final Neutralization of g8, h8, m8**  
-
-**Deleting Final h9 in Short Essive of Uneven Syllables**  
-
-**Deleting Final l9 in Short Essive of Uneven Syllables**  
-
-**Deleting Final m9 in Short Essive of Uneven Syllables**  
-
-**Deleting Final n9 in Short Essive of Uneven Syllables**  
-
-**Deleting Final r9 in Short Essive of Uneven Syllables**  
-
-* *málest#*
-* *máles0#*
-
-## Vowel lengthening
-
-The second syllable vowel a is lengthened to á whenever the stem consonants are in grade 1 and the first syllable vowel is short. Short vowels cannot preceed and follow a single intervocalic consonant.
-
-**Compulsatory lengthening in grade I even-syllables**  
-
-* *gussaQ1#*
-* *gu0sá0#*
-* *skihpaQ1s#*
-* *ski0bá0s#*
-
-## Diphtong simplification
-
-The diphthong simplification handles oa:å and æ:e. Phonologically, these are identical processes, but since the dipthong is written by two letters in the former case and by one letter in the latter, the alternations must be handled separately. This section also handles ie:æ, these are in principle the same as oa:å, but the alternation does not occur in so many contexts. 
-
-**oa:å Diphtong Simplification Part I **  
-
-**oa:å Diphtong Simplification Part II**  
-
-* *toahkkeY6X5jn*
-* *toahkki00jn*
-
-* ★*toahkkeY6X5jn* (is not standard language)
-* ★*t0åhkki00jn* (is not standard language)
-
-* *boalloX4j*
-* *b0ållu0j*
-
-* *roavggoX4j*
-* *roavggu0j*
-* ★*roavggoX4j* (is not standard language)
-* ★*r0åvggu0j* (is not standard language)
-
-* *toasºsoQ1X5jn*
-* *t0ås0su00jn*
-
-* ★*toasºsoQ1X5jn* (is not standard language)
-* ★*toas0su00jn* (is not standard language)
-
-* ★*moasºsoX5jn* (is not standard language)
-* ★*m0ås0su0jn* (is not standard language)
-
-* *moasºsoX5jn*
-* *moas0su0jn*
-
-* *goarºroY6X5jn*
-* *goar0ru00jn*
-
-* *goarroY6X5jn*
-* *goarru00jn*
-
-* ★*goarºroY6X5jn* (is not standard language)
-* ★*g0år0ru00jn* (is not standard language)
-
-* ★*goarºroY2* (is not standard language)
-* ★*g0år0ru0* (is not standard language)
-
-* *goarroY2*
-* *g0årru0*
-
-* *doad0jeY6*
-* *doaddje0*
-
-* ★*doad0jeY6* (is not standard language)
-* ★*d0åddje0* (is not standard language)
-
-* *goarºroY5d9it*
-* *g0år0ru0dit*
-
-* ★*goarºroY5d9it* (is not standard language)
-* ★*goar0ru0dit* (is not standard language)
-
-* *toab0moY6X4j*
-* *toabbmu00j*
-
-* *toabmoX4j*
-* *t0åbmu0j*
-
-* ★*toa0mboY6X4j* (is not standard language)
-* ★*t0åbbmu00j* (is not standard language)
-
-* *toabmoX7dallat*
-* *t0å0mu0dallat*
-* ★*toabmoX7dallat* (is not standard language)
-* ★*toa0mu0dallat* (is not standard language)
-
-* *oaddoY6X4j*
-* *oaddu00j*
-
-* *boassjkoQ1X5jn*
-* *b0å0sjku00jn*
-
-* ★*boassjkoQ1X5jn* (is not standard language)
-* ★*boas0jku00jn* (is not standard language)
-
-* *boajsstoQ1X5jn*
-* *b0åj0stu00jn*
-
-* ★*boajsstoQ1X5jn* (is not standard language)
-* ★*boaj0stu00jn* (is not standard language)
-
-* *boaggoQ1X5jn*
-* *b0åkku00jn*
-
-* ★*boaggoQ1X5jn* (is not standard language)
-* ★*boakku00jn* (is not standard language)
-
-* examples:*
-
-* examples:*
-
-* examples:*
-
-* examples:*
-
-* examples:*
-
-* examples:*
-
-* examples:*
-
-* examples:*
-
-* examples:*
-
-* examples:*
-
-**æ:e Diphthong Simplification **  
-
-* *hærránis*
-* *hæärránis*
-
-* *hærránis#gæhttjalibme>*
-* *hæärránis#gæähttjalibme>*
-
-* *pasiænnta>Q1*
-* *pasien0ta>0*
-
-* *patænnta>Q1*
-* *paten0ta>0*
-
-* *kvotiænnta>Q1*
-* *kvotien0ta>0*
-
-* *kliænnta>Q1*
-* *klien0ta>0*
-
-* *Lævnnja>Q1*
-* *Lev0nja>0*
-
-* *a^dræssa#sáhtso>*
-* *a^dræässa#sáhtso>*
-
-* ★*a^dræssa#sáhtso>* (is not standard language)
-* ★*a^dressa#sáhtso>* (is not standard language)
-
-* *vædtsag8>X3*
-* *vettsa0>0*
-
-**ie:æä Diphthong Simplification Part I **  
-
-* *ielvveY9ut*
-* *0æälvv00ut*
-
-* *iehttseY1up*
-* *0æähtts00up*
-
-* *giesseQ8us*
-* *g0ess00us*
-
-**ie:æä Diphthong Simplification Part II** The multichar æä is always the only option
-
-* *jeht0sa>Y6*
-* *jæähttse>0*
-
-* *jeht0sa>Y6*
-* *jæähttse>0*
-
-* *gierre»X7dalla>t*
-* *g0æä0rá»0dalla>t*
-
-* *boarkkaQ1*
-* *b0år0ka0*
-* *loavddag8X3#*
-* *l0åv0da00#*
-
-**Vowel-change oa:å for verbs part I**  
-
-**Vowel-change oa:å for verbs part II**  
-
-* *hå0llaY2*
-* *hoallá0*
-
-* *gå0d0naY6*
-* *goaddne0*
-
-* ★*hållaY2* (is not standard language)
-* ★*hållá0* (is not standard language)
-
-* *gå0ht0saY6*
-* *goahttse0*
-
-## Stem vowel alternations
-
-This section is divided according to stem vowels: a-, e-, o-, å-stems.
-
-### a-stem alternations
-
-For a-stems, there is a:e and a:i.  Each alternation is triggered by a combination of phonological content and dummy symbols.
-
-**a:e in Present Participle of even-syllable verbs**  
-
-* *bassa>Y6*
-* *basse>0*
-
-**a:i in Prs Prc of even-syllable verbs**  
-
-* *basºsaY6jt#*
-* *bas0si0jt#*
-
-**a-stem vowel deletion**  
-
-* *giedjeg9>a#*
-* *giedjeg>a#*
-
-### e-stem alternations
-
-For e-stems, there is e:i, e:á, e:å, e:u and e:a. Each alternation is triggered by a combination of phonological content and dummy symbols.
-
-**e:i in e-stems**  								        
-
-* *manasseQ4j*
-* *manassi0j*
-
-* *biesseQ1j*
-* *bie0si0j*
-
-* *boaht0eY6j*
-* *boahtti0j*
-
-* *gálleQ1tj*
-* *gá0li0sj*
-
-* *gálleQ1tjav*
-* *gá0li0tjav*
-
-* *gálleQ1tjin*
-* *gá0li0tjin*
-
-* *gálleQ1tjihpit*
-* *gá0li0tjihpit*
-
-* *gálleQ1tjibá*
-* *gá0li0tjibá*
-
-* *gálleQ1tjip*
-* *gá0li0tjip*
-
-* *gálleQ1tja*
-* *gá0li0tja*
-
-* *gierre>Q1tja*
-* *gie0ri>0tja*
-
-* *gierre>Q1tj*
-* *gie0ri>0sj*
-
-The following two rules constitute a <= / => rule pair.
-
-**e:á in certain stem types 1**  
-* *bálggeX4v*
-* *bálggá0v*
-
-* *gálleY3m#*
-* *gállá0m#*
-
-* *gálleQ2v#*
-* *gá0lá0v#*
-
-* *báhkoX7tj#*
-* *bá0gu0sj#*
-
-* *goahteX7tj#*
-* *goa0dá0sj#*
-
-* ★*goahteX7tj#* (is not standard language)
-* ★*go00dá0sj#* (is not standard language)
-
-**e:á in certain stem types 2**  
-
-* *bárnneX4m*
-* *bárnná0m*
-
-* ★*bárnneX4m* (is not standard language)
-* ★*bárnne0m* (is not standard language)
-
-**e:å in certain stem types with å as root vowel**  
-
-* *gådeQ2v*
-* *gådå0v*
-* *jåhteQ2v*
-* *jå0då0v*
-
-* *gådeY2*
-* *gådå0*
-* *jåhteY2*
-* *jåhtå0*
-
-* *jåhteY3m*
-* *jåhtå0m*
-
-* *låhkkeY7tj#*
-* *låhkkå0sj#*
-
-**e-stem vowel deletion**  
-
-* *ielvveY9ut*
-* *0æälvv00ut*
-
-### i-stem alternations
-
-For i-stems, there is i:á. The alternation is triggered by a combination of phonological content and dummy symbols.
-
-**i:á in Verb Derivation**
-
-### o-stem alternations
-
-The duplicates of the three lines of the two following rules are
-there to resolve the => conflict between the two rules.
-
-**o:u in certain stem types 1**  
-
-**o:u in certain stem types 2**  
-
-**u:o in contracted nouns**  
-
-**o-stem vowel deletion**  
-
-### For å-stems there is å:e and å:i and vowel deletion.  Each alternation is triggered by a combination of phonological content and dummy symbols.
-
-**å:e in Present Participle of even-syllable verbs**  
-
-**å:i in Actor nouns of even-syllable verbs**  
-
-**å-stem vowel deletion**  
-
-### alternations valid for several stem types
-
-**Stem vowel deletion in even-syllable verbs, imp 3sg, 3du, 2pl, 3pl**  
-
-* *ielvveY1up*
-* *0æälvv00up*
-
-* *giessaY1up*
-* *giess00up*
-
-* *bårråY1up*
-* *bårr00up*
-
-## Consonant gradation rules
-
-The consonant gradation rules differ considerably from the corresponding rules for North Sámi. 
-Instead of generalizing oversets of consonants (Cx:Cy &lt;=&gt; ...), each rule contains the
-alternation for one consonant only, and to the right of the
-&lt;=&gt; arrow is listed all the contexts where the relevant
-alternation appears. The disadvantage with this method is that the
-same context must be written several times, if e.g. both p, t and k
-are deleted in the same contexts, each of these contexts must be
-written several times, one for each consonant. The advantage is that
-there are no conflicts during compilation, compilation takes 10
-seconds rather than 3 minutes. The earlier North-Sámi-style rule
-set was ordered according to CG pattern. This pattern is still
-visible in the new rules, via the reference S1-3 etc. (Spiik's
-Series 1, 3-letter pattern, etc) behind each subrule.
-
-This actually opens up for a migration to an xfst rule file
-instead of the current twolc format, since what xfst really cannot
-do is generalize over sets (Cx:Cy etc.). This is an issue for future
-revisions to decide.
-
-The rules are divided in two subsections, deletion rules and
-change (alternation) rules.
-
-### Deletion rules
-
-The b, d, g deletion rules are similar, via the optional ( b ) etc. in front of the "_" symbol, both
-bm:m and bbm:bm alternations are covered. The contexts differ to a certain extent. For
-b and d, the III-I special gradation bbm:m is covered by two separate rules,
-and a special Dummy (X6), not part of the ordinary WeG set.
-
-Note that one of the rules for t:0 refers to #: as part of its context. As soon as clitics are
-added to the word form, this rule will thus not be triggered. Look into this when the clitics are added.
-
-**Consonant gradation b:0**  deletes **b** in S7 and S9 contexts
-
-**Consonant gradation d:0**  ... etc.
-
-* *bednag8>X3*
-* *be0na0>0*
-
-**Consonant gradation g:0**  
-
-**Consonant gradation k:0**  
-
-**Consonant gradation l:0**  
-
-**Consonant gradation m:0**  
-
-**Consonant gradation n:0**  
-
-**Consonant gradation p:0**  
-
-**Consonant gradation s:0**  
-
-* *russjpeQ1*
-* *ru0sjpe0*
-
-* ★*russjpeQ1* (is not standard language)
-* ★*russjpe0* (is not standard language)
-
-**Consonant gradation ŋ:0**  
-
-**Consonant gradation f:0**  
-
-**Consonant gradation r:0**  
-
-**Consonant gradation v:0**  
-
-**Consonant gradation j:0**  
-
-**Consonant gradation t:0**  
-
-* *oajváladtj#*
-* *oajvála0sj#*
-
-**Gradation Series 4, II-I, tj and ts**  
-
-### Change rules
-
-The Cx:Cy format was kept for hk:g, hp:b, ht:d, since the left context h:0 was unique, 
-and no compilation conflict thus arose.
-
-The bb:pp, gg:kk, dd:tt alternations were split into three rules, 
-since keeping them in one Cx:Cy rule created compilation conflicts. 
-Also, d:t contain a rule not found for the other two...
-
-**Gradation Series 4, II-I**  
-
-**bb:pp**  
-
-* *oabbáQ1*
-* *oappá0*
-
-**gg:kk**  
-
-* *vággeQ1*
-* *vákke0*
-
-* ★*vággeQ1* (is not standard language)
-* ★*vágge0* (is not standard language)
-
-**g:k change for clitic -ge**  
-
-**dd:tt and dtj, dts**  
-
-**Gradation Series 7, III-II, ks(t), kt, ktj, kts**  
-
-Exceptional II-III inverse gradation in present participles
-
-This gradation is only for II-I syllable verbs that get III as
-present participles.
-
-Candidates:
-
-* bbm - bm - m
-* ddn - dn - n
-* ddnj- dnj- nj
-* ggŋ - gŋ - ŋ
-* ddj - dj - dj
-
-* hkk - hk - g
-* hpp - hp - b
-
-* htt - ht - d
-* httj- htj- tj
-* htts- hts- ts
-
-Strategy: Do insertion rule for the initial element.
-
-**Consonant insertion as II-III strengthening gradation with bm, gŋ**  
-
-**Consonant insertion as II-III strengthening gradation with dn/j + as I-III strengthening gradation with d**  
-
-**Consonant insertion as II-III strengthening gradation with hk, hp,**  
-
-**Consonant insertion as II-III strengthening gradation with htt(j/s)**  
-
-Debugging of twol-rules
-
-All rule conflicts have been successfully resolved. The rule file
-should be kept that way. Look out for conflicts in the compilation
-process, and resolve them as they appear!
+# Removing Err/Orth
 
 * * *
-
-<small>This (part of) documentation was generated from [src/fst/phonology.twolc](https://github.com/giellalt/lang-smj/blob/main/src/fst/phonology.twolc)</small>
-
----
-
-
-
-* **LEXICON Noun  ** dividing in NounNoPx, NounPx (with a P.Px.add flag)  and NounPxKin (with a P.Nom3Px.add flag)
-
-LOAN
-LOAN
-LOAN
-LOAN SWE altar
-
-* * *
-
-<small>This (part of) documentation was generated from [src/fst/stems/nouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/stems/nouns.lexc)</small>
-
----
-
-
-
-sme mojonjálmmiid
-
-* * *
-
-<small>This (part of) documentation was generated from [src/fst/stems/adverbs.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/stems/adverbs.lexc)</small>
-
----
-
-
-
-Reciprocal pronouns as multiword expression
-
-* * *
-
-<small>This (part of) documentation was generated from [src/fst/stems/pronouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/stems/pronouns.lexc)</small>
-
----
-
-
-
-vájnno
-vájnno
-vájnno
-
-* * *
-
-<small>This (part of) documentation was generated from [src/fst/stems/adjectives.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/stems/adjectives.lexc)</small>
-
----
-
-
-# File containing North Saami abbreviations 
+<small>This (part of) documentation was generated from [src/cg3/disambiguator.cg3](https://github.com/giellalt/lang-smj/blob/main/src/cg3/disambiguator.cg3)</small>
+# Continuation lexicons for abbreviations
 
 ## Lexica for adding tags and periods
 
-Splitting in 4 + 1 groups, because of the preprocessor
+## The sublexica
 
-* **LEXICON Abbreviation-smj **
-1. The ITRAB ;	   lexicon (intransitive abbrs)
-1. The TRNUMAB ;  lexicon (abbrs trans wrt. numberals)
-1. The TRAB ;	   lexicon (transitive abbrs)
-1. The NOAB ;	   lexicon (not really abbrs)
-1. The NUMNOAB ;  lexicon (not behaving as abbr before num)
+### Continuation lexicons for abbrs both with and witout final period
 
-## The abbreviation lexicon itself
+* **LEXICON ab-noun   **
 
-* **LEXICON ITRAB ** are intransitive abbreviations, A.S. etc.
+* **LEXICON ab-adj   **
 
-* **LEXICON NOAB ** du, gen, jur
+* **LEXICON ab-adv   **
 
-This class contains homonyms, which are both intransitive
-abbreviations and normal words. The abbreviation usage
-is less common and thus only the occurences in the middle of
-the sentnece (when next word has small letters) can be 
-considered as true cases.
+* **LEXICON ab-num   **
 
-* **LEXICON TRNUMAB ** contains abbreviations who are transitive in front of numerals 
+### Lexicons without final period
 
-For abbrs for which numerals are complements, but other
-words not necessarily are. This group treats arabic numerals as
-if it were transitive but letters as if it were intransitive.
+* **LEXICON ab-nodot-noun   **  The bulk
 
-* **LEXICON TRAB ** contains transitive abbreviations
+* **LEXICON ab-nodot-adj   **
 
-This lexicon is for abbrs that always have a constituent following it.
+* **LEXICON ab-nodot-adv   **
 
-* **LEXICON NUMNOAB ** su, dii
+* **LEXICON ab-nodot-num   **
 
-This class contains homonyms, which are both abbrs for 
-which numerals are complements and normal words. The abbreviation usage
-is less common and thus only the occurences in the middle of
-the sentence can be considered as true cases.
+### Lexicons with final period
+
+* **LEXICON ab-dot-noun   **  This is the lexicon for abbrs that must have a period.
+
+* **LEXICON ab-dot-adj   **  This is the lexicon for abbrs that must have a period.
+
+* **LEXICON ab-dot-adv   **  This is the lexicon for abbrs that must have a period.
+
+* **LEXICON ab-dot-num   **  This is the lexicon for abbrs that must have a period.
+
+* **LEXICON ab-dot-cc   **
+
+* **LEXICON ab-dot-verb   **
+
+* **LEXICON ab-nodot-verb   **
+
+* **LEXICON ab-dot-IVprfprc   **
+
+* **LEXICON nodot-attrnomaccgen-infl   **
+
+* **LEXICON nodot-attr-infl   **
+
+* **LEXICON nodot-nomaccgen-infl   **
+
+* **LEXICON dot-attrnomaccgen-infl   **
+
+* **LEXICON dot-attr   **
+
+* **LEXICON dot-nomaccgen-infl   **
+
+* **LEXICON DOT   ** - Adds the dot to dotted abbreviations.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/smj-abbreviations.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/stems/smj-abbreviations.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/affixes/abbreviations.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/abbreviations.lexc)</small>
+
+---
+
+
+
+# Sublexica for Adjective
+
+## Even-syllable stems
+
+LEXICON GIEVRRA  Adjectives with attribute in WeG and -s. As 1a in Spiik. Sg Acc: gievrav, Attr: gievras.
+
+*gárttje # Even-syllable test examples:*
+* *gárttje:* `gárttje+A+Sg+Nom`
+* *gártjev:* `gárttje+A+Sg+Acc`
+* *gártjes:* `gárttje+A+Attr`
+* *gártjep:* `gárttje+A+Der/Comp+A+Sg+Nom`
+
+LEXICON NUORRA   Adjectives with attribute same as pred. As 1b in Spiik. Sg Acc: nuorav, Attr: nuorra.
+
+*visská # Even-syllable test examples:*
+* *visská:* `visská+A+Sg+Nom`
+* *viskáv:* `visská+A+Sg+Acc`
+* *visská:* `visská+A+Attr`
+* *viskáp:* `visská+A+Der/Comp+A+Sg+Nom`
+
+LEXICON GALLJE   Adjectives on -e, the attribute is in WeG and e > a. As 1d in Spiik. Sg Acc: galjev, Attr: galja.
+
+*uhttse # Even-syllable test examples:*
+* *uhttse:* `uhttse+A+Sg+Nom`
+* *uhtsev:* `uhttse+A+Sg+Acc`
+* *uhtsa:* `uhttse+A+Attr`
+* *uhtses:* `uhttse+A+Attr` (Eng. # gets this attr from)
+* *uhtsep:* `uhttse+A+Der/Comp+A+Sg+Nom`
+
+LEXICON TJÁBBE   Adjectives on -e, the attribute is in WeG and e > a. Same as GALLJE only different adv derivation. Sg Acc: tjáppev, Attr: tjáppa.
+
+*njálgge # Even-syllable test examples:*
+* *njálgge:* `njálgge+A+Sg+Nom`
+* *njálgev:* `njálgge+A+Sg+Acc`
+* *njálga:* `njálgge+A+Attr`
+* *njálgep:* `njálgge+A+Der/Comp+A+Sg+Nom`
+
+LEXICON VILLDA   Adjectives with attribute same as pred, without CG. As 1b in Spiik. Sg Acc: nuorav, Attr: nuorra.
+
+*frisska # Even-syllable test examples:*
+* *frisska:* `frisska+A+Sg+Nom`
+* *frisskav:* `frisska+A+Sg+Acc`
+* *frisska:* `frisska+A+Attr`
+* *frisskap:* `frisska+A+Der/Comp+A+Sg+Nom`
+
+LEXICON HÁVSSKE   Adjectives with attribute -s, without WeG. As 1c in Spiik. Sg Acc: hávsskev, Attr: hávsskes.
+
+*hoallá # Even-syllable test examples:*
+* *hoallá:* `hoallá+A+Sg+Nom`
+* *hoalláv:* `hoallá+A+Sg+Acc`
+* *hoallás:* `hoallá+A+Attr`
+* *hoalláp:* `hoallá+A+Der/Comp+A+Sg+Nom`
+
+LEXICON TJUODDJE  Adjectives with attribute -is, without WeG. presently only "Tjuoddje" Sg Acc: tjuoddjev, Attr: tjuoddjis.
+
+*tjuoddje # Even-syllable test examples:*
+* *tjuoddje:* `tjuoddje+A+Sg+Nom`
+* *tjuoddjev:* `tjuoddje+A+Sg+Acc`
+* *tjuoddjis:* `tjuoddje+A+Attr`
+* *tjuoddjep:* `tjuoddje+A+Der/Comp+A+Sg+Nom`
+
+Pres.participles 
+
+LEXICON SÁVADAHTTE   Causative-participles. No attribute. No comparision. As 1e in Spiik. Sg Acc: sávadahttev. PrsPrc of causative verbs "uttrykker at handlingen lar seg gjøre eller er verdt å gjøre" (Kintel 1991).
+
+*vuojedahtte # Even-syllable test examples:*
+* *vuojedahtte:* `vuojedahtte+A+Sg+Nom`
+* *vuojedahttev:* `vuojedahtte+A+Sg+Acc`
+
+LEXICON JUHKKE   participles with -s attributive. No comparision As 1e in Spiik. Sg Acc: juhkkev, Attr: juhkkes. Spiik: presens particip har med den attributive formen på -s betydelsen "någon som är duktig i, snabb til att, begiven att utföra handlingen".
+
+*vuohttje # Even-syllable test examples:*
+* *vuohttje:* `vuohttje+A+Sg+Nom`
+* *vuohttjev:* `vuohttje+A+Sg+Acc`
+* *vuohttjes:* `vuohttje+A+Attr`
+
+LEXICON BÅRRE   participles without the -s attributive. As 1e in Spiik. Sg Acc: bårrev, Attr: bårre. Spiik: presens particip har med den attributiva formen utan -s betydelsen ºdem  som utför handlingenº.
+
+*ednabårre # Even-syllable test examples:*
+* *ednabårre:* `ednabårre+A+Sg+Nom`
+* *ednabårrev:* `ednabårre+A+Sg+Acc`
+* *ednabårre:* `ednabårre+A+Attr`
+
+Test data:
+
+Loan words lexicas
+
+###  Correctly assimilated loanwords, derived from real noun.
+
+LEXICON METÅVDÅLASJ  LOAN! Foreign -isk adjectives adapted in updated normative way. To smj ending -alasj, adjective is truly derived from a noun. Mekanisk-mekanihkka-mekanihkalasj, instead of mekánalasj that goes to MEKÁNALASJ_BADASS. Pred and attr are both -alasj. Attr same as pred. With comparatives. 
+
+LEXICON METÅVDÅLASJ_CMP_INFL 
+
+*kapitalismalasj # Even-syllable test examples:*
+* *kapitalismalasj:* `kapitalismalasj+A+Sg+Nom`
+* *kapitalismalattjav:* `kapitalismalasj+A+Sg+Acc`
+* *kapitalismalasj:* `kapitalismalasj+A+Attr`
+* *kapitalismalabbo:* `kapitalismalasj+A+Der/Comp+A+Sg+Nom`
+
+LEXICON MEKANIHKA_MEKANIJKA_LASJ  LOAN! Same type of adjectives as METÅVDÅLASJ, only for adjektives that become mekanihkalasj in norway and mekanijkalasj in sweden, because of differences mekanik vs mekanikk>mekanijkka vs mekanihkka.  Attr same as pred. With comparatives. 
+
+LEXICON IJJALASJ  Just lik  METÅVDÅLASJ only for words ending on ijjalasj/iddjalasj, so that we don't need a lot of Area and Err tags in stems file.
+
+LEXICON IJJALASJ_CMP_INFL 
+
+LEXICON OGIJJALASJ  Just like IJJALASJ only for words ending on ogijjalasj/ogiddjalasj, so that we don't need a lot of err tags in stems files. For words like "pedagogijjalasj" which also have "pedagåvgålasj" (not really a wrong derivation, but doesn't mean pedagogisk) and "pedagogalasj" err taged.  
+
+LEXICON OGIJJALASJ_CMP_INFL  
+
+LEXICON SJÅNÅLASJ_SJONAL  -sjonal/sjonell and -tional/tionel loanwords. Only for words that work as nouns, so that they are REAL dervations, as nasjonal-nasjåvnnå-nasjåvnålasj. NOT for words like "rasjonell", with no real noun. Words as "rasjonell>rasjonálla-rasjonálalasj" go to lexicon ÁLLA.  The fake derivation "nasjonálalasj" is err taged, so is the strange "nasjonálla/nasjunálla". 
+
+LEXICON SJÅNÅLASJ_SJONAL_CMP_INFL  
+
+*konstitusjåvnålasj # Even-syllable test examples:*
+* *nasjåvnålasj:* `nasjåvnålasj+A+Sg+Nom`
+* *nasjåvnålattjav:* `nasjåvnålasj+A+Sg+Acc`
+* *nasjåvnålasj:* `nasjåvnålasj+A+Attr`
+
+LEXICON SJÅNÅLASJ_SJONELL  -sjonal/sjonell and -tional/tionel loanwords. Only for words that work as nouns, so that they are REAL dervations, as nasjonal-nasjåvnnå-nasjåvnålasj. NOT for words like "rasjonell", with no real noun. Words as "rasjonell>rasjonálla-rasjonálalasj" go to lexicon ÁLLA.  The fake derivation "nasjonálalasj" is err taged, so is the strange "nasjonálla/nasjunálla". 
+
+LEXICON SJÅNÅLASJ_SJONELL_CMP_INFL  
+
+*konstitusjåvnålasj # Even-syllable test examples:*
+* *konstitusjåvnålasj:* `konstitusjåvnålasj+A+Sg+Nom`
+* *konstitusjåvnålattjav:* `konstitusjåvnålasj+A+Sg+Acc`
+* *konstitusjåvnålasj:* `konstitusjåvnålasj+A+Attr`
+
+###  Badly assimilated loanwords, some against norm others with no norm
+
+LEXICON MEKÁNALASJ_BADASS  LOAN! Wronly assimilated -lasj adjectives from SE/NO -isk. Looks derived but isn't since there is no real noun to be derived from. Like mekanisk-mekánalasj, but "mekádna" is no real noun! Like  METÅVDÅLASJ, but gives the Err/Der tag, so it's only for these wronly/non-derived loan adjectives. 
+
+LEXICON ARKTALASJ_CMP_INFL  Foreign -isk, that are not real derivations. Same as MEKÁNALASJ_BADASS, but no +Use/-Spell tag since ther is no "right" way to assimilate these. This is a question for GG. Adapted to smj by simply adding -alasj in place of -isk. These are not real derivations, but sitation borrowed loan adjectives. Only words without a noun base, like arktisk and syntetisk. Pred and attr are both -lasj. No comparatives. 
+
+*syntetalasj # Even-syllable test examples:*
+* *syntetalasj:* `syntetalasj+A+Sg+Nom`
+* *syntetalattjav:* `syntetalasj+A+Sg+Acc`
+* *syntetalasj:* `syntetalasj+A+Attr`
+
+LEXICON ORÁNSSJA  Loan adjectives, not -isk. Used without the -lasj. Adjectives with attribute same as pred. So far only for oránssja.
+
+LEXICON DEMONSTRATIJVA_LASJ_NO_NORM  Loan adjectives from norwegian/swedish (Not adjectives ending on -isk). Words like demonstrativ, transitiv, dupleks, informativ, analog, privat. Gives both "demonstratijvva" and "demonstratijvalasj". Two ways of adapting these adjectives are used, the adding of -lasj isn't okey, because that's a false derivation. But GG hasn't decided how these should be handled. Looks like noun instead of adjective when adapted without the -lasj ending.  Attr is in weak grad, used in strong grad ass pred even thou this seems a little bit odd "Værbba l transitijvva". 
+
+LEXICON DEMONSTRATIJVA_LASJ_CMP_INFL    
+
+*aktijvva # Even-syllable test examples:*
+* *aktijva:* `aktijvva+A+Attr`
+* *aktijvva:* `aktijvva+A+Sg+Nom`
+* *aktijvav:* `aktijvva+A+Sg+Acc`
+
+LEXICON ÁLA_LASJ_NO_NORM  Same as DEMONSTRATIJVA_LASJ_NO_NORM. Only for adjectives ending on -al. Words like digital,liberal, lokal.  Gives both "eksponentiálla" and "eksponentiálalasj". Different lexicon for these -al adjectives because of Err/Orth tags. OBS, "dialektal", is assimilated "dialevtalasj", and goes to lexicon  METÅVDÅLASJ.
+
+LEXICON ÁLA_LASJ_INFL_CMP 
+
+LEXICON ELLA_LASJ_NO_NORM  Loanwords, same as ÁLA_LASJ_NO_NORM  and  DEMONSTRANTIJVA_LASJ_NO_NORM. For NO and SE adjectives ending on -ell, eksperimentell, ideell, parallell. The short form is nom parallælla, attr, parallella The long form: paralellalasj, attr parallellalasj. Different lexicon for these -ell adjectives because of err/orth tags. OBS, "individuell", is assimilated "indivijdalasj", and goes to lexicon  METÅVDÅLASJ.
+
+LEXICON ELLA_LASJ_INFL_CMP  
+
+LEXICON ÁLLA-ÆLLA 
+
+LEXICON MEKÁNALASJ_CMP_INFL  Same as  METÅVDÅLASJ only without vuohta. 
+
+Inherent comparatives and superlatives lexica
+
+LEXICON OANEP   Inherent comparatives, gives comp and superl. There are two main groups of word here: Adjectives that are lexicalized in their comparative (and superlative) forms, like sisŋep, bárep. And Nouns that can be compared, like nuortap, gáttep, oarjep (some of these are compared from their noun lexicas and thus are found twice). Some entries are likely incorrect compared forms of other adjectives, like ådåp and ruvvap (more research needed).
+
+*lagáp # Even-syllable test examples:*
+* *lagáp:* `lagáp+A+Gram/Comp+Sg+Nom`
+* *lagámus:* `lagáp+A+Der/Superl+A+Sg+Nom`
+
+LEXICON TJAVGGÁMUS    Inherent superlatives, only gives superl. Some words are lexicalized in their superlative forms, like dájvvámus. Some are likely incorrect superlative forms, like tjábbámus (more research is needed)
+
+*dájvvámus # Even-syllable test examples:*
+* *dájvvámus:* `dájvvámus+A+Gram/Superl+Sg+Nom`
+
+4-syllable miscellanious stems
+
+LEXICON ÁRMMOGIS  Adjectives on -is, attribute same as pred. Odd-syllable comparison. As 2 in Spiik. Sg Acc: ármmogisáv, Attr: ármmogis. 
+
+*bahágis # Even-syllable test examples:*
+* *bahágis:* `bahágis+A+Sg+Nom`
+* *bahágisáv:* `bahágis+A+Sg+Acc`
+* *bahágis:* `bahágis+A+Attr`
+* *bahágabbo:* `bahágis+A+Der/Comp+A+Sg+Nom`
+
+LEXICON SÆHKÁLAK  Adjectives on -álak, attribute same as pred. Odd-syllable comparison. So far only for "sæhkálak".
+
+*sæhkálak # Even-syllable test examples:*
+* *sæhkálak:* `sæhkálak+A+Sg+Nom`
+* *sähkálak:* `sæhkálak+A+Sg+Nom`
+* *sæhkálagáv:* `sæhkálak+A+Sg+Acc`
+* *sähkálagáv:* `sæhkálak+A+Sg+Acc`
+* *sæhkálak:* `sæhkálak+A+Attr`
+* *sähkálak:* `sæhkálak+A+Attr`
+* *sæhkálabbo:* `sæhkálak+A+Der/Comp+A+Sg+Nom`
+* *sähkálabbo:* `sæhkálak+A+Der/Comp+A+Sg+Nom`
+
+LEXICON ÅLLAGSJ_CMP_INFL  Adjectives on -asj, attribute same as pred.  No comparatives. 2 in Spiik. Sg Acc: ållagattjav, Attr: ållagasj.
+
+*belulasj # Even-syllable test examples:*
+* *belulasj:* `belulasj+A+Sg+Nom`
+* *belulattjav:* `belulasj+A+Sg+Acc`
+* *belulasj:* `belulasj+A+Attr`
+
+LEXICON DÁRBULASJ_CMP_INFL  Adjectives on -asj, attribute same as pred. Odd-syllable comparison. Sg Acc: dárbulattjav, Attr: dárbulasj. Essive -attjan, -adtjan is subtaged. Err/Orth also -ahttja.  
+
+*dábálasj # Even-syllable test examples:*
+* *dábálasj:* `dábálasj+A+Sg+Nom`
+* *dábálattjav:* `dábálasj+A+Sg+Acc`
+* *dábálasj:* `dábálasj+A+Attr`
+* *dábális:* `dábálasj+A+Attr`
+* *dábálabbo:* `dábálasj+A+Der/Comp+A+Sg+Nom`
+
+LEXICON ASIDASJ_CMP_INFL  Adjectives on -asj, -is attr. Odd-syllable comparison. Sg Acc: asidattjav, Attr: asidis.
+
+*gågulasj # Even-syllable test examples:*
+* *gågulasj:* `gågulasj+A+Sg+Nom`
+* *gågulattjav:* `gågulasj+A+Sg+Acc`
+* *gågulis:* `gågulasj+A+Attr`
+* *gågulabbo:* `gågulasj+A+Der/Comp+A+Sg+Nom`
+
+LEXICON UDNODIBME  Adjectives on -dibme, attribute on -is. Odd-syllable comparison. Sg Acc: udnodimev, Attr: udnodis.
+
+*gælvodibme # Even-syllable test examples:*
+* *gælvodibme:* `gælvodibme+A+Sg+Nom`
+* *gälvodibme:* `gælvodibme+A+Sg+Nom`
+* *gælvodimev:* `gælvodibme+A+Sg+Acc`
+* *gälvodimev:* `gælvodibme+A+Sg+Acc`
+* *gælvodis:* `gælvodibme+A+Attr`
+* *gälvodis:* `gælvodibme+A+Attr`
+* *gælvodabbo:* `gælvodibme+A+Der/Comp+A+Sg+Nom`
+* *gälvodabbo:* `gælvodibme+A+Der/Comp+A+Sg+Nom`
+
+LEXICON TJALMEDIBME   Like UDNODIBME but no comparatives. Sg Acc: tjalmedimev, Attr: tjalmedis.
+
+*huvsodibme # Even-syllable test examples:*
+* *huvsodibme:* `huvsodibme+A+Sg+Nom`
+* *huvsodimev:* `huvsodibme+A+Sg+Acc`
+* *huvsodis:* `huvsodibme+A+Attr`
+
+LEXICON SUOLASIEHKE  -siehke. Sg Acc: suolasiegev, attr: suolasiek
+
+*hánessiehke # Even-syllable test examples:*
+* *hánessiehke:* `hánessiehke+A+Sg+Nom`
+* *hánessiegev:* `hánessiehke+A+Sg+Acc`
+* *hánessiek:* `hánessiehke+A+Attr`
+
+## Odd-syllable stems
+###  With CG Sorted by attr
+
+LEXICON TJIEGOS  Attr same as pred. For adjectives with -e in second syllable e>á: divtes>diktásav in StrG. As a. in Spiik.  Sg Acc: tjiehkusav, Attr: tjiegos. Consonant gradation. 
+
+*hánes # Odd-syllable test examples:*
+* *måskas:* `måskas+A+Sg+Nom`
+* *moasskasav:* `måskas+A+Sg+Acc`
+* *måskas:* `måskas+A+Attr`
+* *moasskasabbo:* `måskas+A+Der/Comp+A+Sg+Nom`
+* *bihtja:* `bihtja+A+Sg+Nom`
+* *bihttjagav:* `bihtja+A+Sg+Acc`
+* *bihtja:* `bihtja+A+Attr`
+* *bihttjagabbo:* `bihtja+A+Der/Comp+A+Sg+Nom`
+
+LEXICON LINES  Attr ending on -a. Adjektives ending on -es. Does same as TJIEGOS, but with attr -a.   As g. in Spiik.  lines, Sg Acc: lidnásav, attr: lidna. Consonant gradation.
+
+*lines # Odd-syllable test examples:*
+* *lines:* `lines+A+Sg+Nom`
+* *lidnásav:* `lines+A+Sg+Acc`
+* *lidna:* `lines+A+Attr`
+* *lidnásabbo:* `lines+A+Der/Comp+A+Sg+Nom`
+
+LEXICON GALMAS   Attr ending on -a or -å. Adjectives on -as, ås- and ás. As e. in Spiik. Sg Acc: galmmasav, attr: galmma, Consonant gradation.
+
+*njuoskas # Odd-syllable test examples:*
+* *njuoskas:* `njuoskas+A+Sg+Nom`
+* *njuosskasav:* `njuoskas+A+Sg+Acc`
+* *njuosska:* `njuoskas+A+Attr`
+* *njuosskasabbo:* `njuoskas+A+Der/Comp+A+Sg+Nom`
+
+LEXICON OAMES  Attr ending on -e. Adjectives on -es with attribute -e. As g2. in Spiik. Sg Acc: oabmásav, Attr: oabme. Consonant gradation.
+
+*goastes # Odd-syllable test examples:*
+* *goastes:* `goastes+A+Sg+Nom`
+* *goasstásav:* `goastes+A+Sg+Acc`
+* *goasste:* `goastes+A+Attr`
+* *goasstásabbo:* `goastes+A+Der/Comp+A+Sg+Nom`
+
+LEXICON SUOHKAT  Attr III -is, not suohkkadis but SUOHKKIS. With CG to attr, not from nom to Acc. Same as JALGGAT only with this CG. SUOHKKIS. Without CG between nom and acc. Adjectives on -at and -åt, with attribute III -is. As f. in Spiik. Sg Acc: suohkadav, attr: suohkkis,
+
+*rávvat # Odd-syllable test examples:*
+* *rávvat:* `rávvat+A+Sg+Nom`
+* *rávvadav:* `rávvat+A+Sg+Acc`
+* *rávvis:* `rávvat+A+Attr`
+* *rávvadabbo:* `rávvat+A+Der/Comp+A+Sg+Nom`
+
+LEXICON MÅJDÅS  Adjectives with no attr. With CG. Sg Acc: måjddåsav. If there is an attribute that dosn't fit to any lexicon it mus be hardcoded.
+
+*rávdes # Odd-syllable test examples:*
+* *rávdes:* `rávdes+A+Sg+Nom`
+* *rávddásav:* `rávdes+A+Sg+Acc`
+* *rávddásabbo:* `rávdes+A+Der/Comp+A+Sg+Nom`
+
+Without CG
+
+LEXICON VIEKSES  Attr same as pred. Without CG, but With vowel changes.  Sg Acc: væksásav, Attr: viekses. Like TJIEGOS only without the CG but with vowel changes. Mayby change this to a lexicon withput attr and then hardcode attr?
+
+LEXICON ALEK  Attr same as pred. Without CG, without any vowel changes. Like TJIEGOS only without the CG an vowelchanges. 
+
+*purpur # Odd-syllable test examples:*
+* *purpur:* `purpur+A+Sg+Nom`
+* *purpurav:* `purpur+A+Sg+Acc`
+* *purpur:* `purpur+A+Attr`
+* *purpurabbo:* `purpur+A+Der/Comp+A+Sg+Nom`
+
+LEXICON BASSTEL   Attr ening on -is. Without CG. Adjs on -et, -l, -r, sm om -k, -sj with attr -is and no consonant gradation. As b. in Spiik. Sg Acc: basstelav, Attr: basstelis. Many of these entries might be instances of derivations, like belak, deblak, and maybe also basstel, bargán.
+
+*goavrret # Odd-syllable test examples:*
+* *goavrret:* `goavrret+A+Sg+Nom`
+* *goavrredav:* `goavrret+A+Sg+Acc`
+* *goavrredis:* `goavrret+A+Attr`
+* *goavrredabbo:* `goavrret+A+Der/Comp+A+Sg+Nom`
+
+LEXICON MUTTÁK  Two attr enings -is and same as pred. Without CG. Adjs on -ák/-ak/-ek, two attr: -is and same as pred. As c. in Spiik. Sg Acc: muttágav, Attr: muttágis and mutták. These seem to be instances of the adjectival -k derivation. Unclear whether such derivation have different attr forms or not, and thats maybe why some of these derivations are found in BASSTEL lexicon.
+
+*bárvak # Odd-syllable test examples:*
+* *bárvak:* `bárvak+A+Sg+Nom`
+* *bárvagav:* `bárvak+A+Sg+Acc`
+* *bárvak:* `bárvak+A+Attr`
+* *bárvagis:* `bárvak+A+Attr`
+* *bárvagabbo:* `bárvak+A+Der/Comp+A+Sg+Nom`
+
+LEXICON JALGGAT  Attr III -is, not jalggadis but JALGGIS. Without CG.  Adjectives on -at, with attribute III -is. As f. in Spiik. Sg Acc: jalggadav, attr: jalggis,
+
+*russjkat # Odd-syllable test examples:*
+* *russjkat:* `russjkat+A+Sg+Nom`
+* *russjkadav:* `russjkat+A+Sg+Acc`
+* *russjkis:* `russjkat+A+Attr`
+* *russjkadabbo:* `russjkat+A+Der/Comp+A+Sg+Nom`
+
+LEXICON TJÅRGGÅT  Attr III -is, not tjårggådis but tjårggis. Without CG. Same as JALGGAT only for adjectives ending ot -åt. Adjectives on -åt, with attribute III -is. As f. in Spiik. Sg Acc: jalggadav, attr: jalggis,
+
+*russjkat # Odd-syllable test examples:*
+* *russjkat:* `russjkat+A+Sg+Nom`
+* *russjkadav:* `russjkat+A+Sg+Acc`
+* *russjkis:* `russjkat+A+Attr`
+* *russjkadabbo:* `russjkat+A+Der/Comp+A+Sg+Nom`
+
+LEXICON RIHTSOK  No attr, without CG and also without any vowelchanges. The lexicon gives no attribute, either because the adjective dosnºt have attr, because there is stemvowel change in attr that the lexicon canºt handle or because there are strange atrributes that donºt fit to any other lexicon (these attributes are hardcoded). Sg Acc: rihtsogav. 
+
+*rihtsok # Odd-syllable test examples:*
+* *rihtsok:* `rihtsok+A+Sg+Nom`
+* *rihtsogav:* `rihtsok+A+Sg+Acc`
+* *rihtsogabbo:* `rihtsok+A+Der/Comp+A+Sg+Nom`
+
+exception lexicons for odd-syll
+
+LEXICON IENNILS  no comparatives, attr same as pred.
+
+*ieŋŋils # Odd-syllable test examples:*
+* *ieŋŋils:* `ieŋŋils+A+Sg+Nom`
+* *ieŋŋilsav:* `ieŋŋils+A+Sg+Acc`
+
+LEXICON RÁDAS   Presently only used for "rádas". This word has special consonant gradation d>dd. Attr same as pred. Sg Acc: ráddasav, Attr: rádas. Consonant gradation.
+
+*rádas # Odd-syllable test examples:*
+* *rádas:* `rádas+A+Sg+Nom`
+* *ráddasav:* `rádas+A+Sg+Acc`
+* *rádas:* `rádas+A+Attr`
+* *ráda:* `rádas+A+Attr` (Eng. # from LEXATTR)
+* *ráddasabbo:* `rádas+A+Der/Comp+A+Sg+Nom`
+
+LEXICON LUOBES   Err/Orth lexicon! Does the same as TJIEGOS only e>a instead of usuall e>á, must be some err/orth. Sg Acc: luohpasav, Attr: luobes. Consonant gradation. NO Attr, must be hardcoded
+
+LEXICON LÅSSÅT  Two attr, two comp. As f3. in Spiik. So far the only word i this lexicon i "låssåt", because both låssis and låsså are attr and comparative is both låsep(hybrid?) and låssådabbo.
+
+*låssåt # Odd-syllable test examples:*
+* *låssåt:* `låssåt+A+Sg+Nom`
+* *låssådav:* `låssåt+A+Sg+Acc`
+* *låssis:* `låssåt+A+Attr`
+* *låsså:* `låssåt+A+Attr`
+* *låssådabbo:* `låssåt+A+Der/Comp+A+Sg+Nom`
+* *låsep:* `låssåt+A+Der/Comp+A+Sg+Nom`
+
+LEXICON STUORAK   Only for stuorak. It hase two attributes. Has even-syllable comparison: stuoráp and stuorámus.Sg Acc: stuoragav, attr: stuor and stuorra. This might be a -k derivation of adjective stuorre attr stuor(ra). The comparison is thus based on the original adjective and thus it naturally is an even syll comparison.
+
+*stuorak # Odd-syllable test examples:*
+* *stuorak:* `stuorak+A+Sg+Nom`
+* *stuoragav:* `stuorak+A+Sg+Acc`
+* *stuorra:* `stuorak+A+Attr`
+* *stuor:* `stuorak+A+Attr`
+* *stuoráp:* `stuorak+A+Der/Comp+A+Sg+Nom`
+
+LEXICON ALLAK  Adjs on -ak, attr.on -a. Have both gasep/gaggagabbo and alep/allagabbo as comparatives. As d. in Spiik. So far only the adjectives "allak" and "gassak" go to this lexicon.
+
+*gassak # Odd-syllable test examples:*
+* *gassak:* `gassak+A+Sg+Nom`
+* *gassagav:* `gassak+A+Sg+Acc`
+* *gassa:* `gassak+A+Attr`
+* *gassagabbo:* `gassak+A+Der/Comp+A+Sg+Nom`
+* *gasep:* `gassak+A+Der/Comp+A+Sg+Nom`
+
+LEXICON GÅBDDÅK   Adjs on -åk, attr. on -å. Has even-syllable comparison: gåbdep and gåbdemus. So far "gåbddåk" is the only word in this lexicon. As d2. in Spiik. Sg Acc: gåbddågav, Attr: gåbddå.
+
+*gåbddåk # Odd-syllable test examples:*
+* *gåbddåk:* `gåbddåk+A+Sg+Nom`
+* *gåbddågav:* `gåbddåk+A+Sg+Acc`
+* *gåbddå:* `gåbddåk+A+Attr`
+* *gåbdep:* `gåbddåk+A+Der/Comp+A+Sg+Nom`
+
+Inherent comparatives and superlatives
+
+LEXICON NUORTTALABBO    Inherent comparatives, gives both comp and superl. Most of the words are the compared forms of -el(a) words, like nuorttal, lullel.
+
+*guddnelabbo # Even-syllable test examples:*
+* *guddnelabbo:* `guddnelabbo+A+Gram/Comp+Sg+Nom`
+* *guddnelamos:* `guddnelabbo+A+Der/Superl+A+Sg+Nom`
+* *guddnelap:* `guddnelabbo+A+Gram/Comp+Attr`
+* *guddnelup:* `guddnelabbo+A+Gram/Comp+Attr`
+
+LEXICON GASSKALAMOS    Inherent superlatives, gives onlys superl. Words that are lexicalized in their superlative forms. 
+
+*ájtodamos # Even-syllable test examples:*
+* *ájtodamos:* `ájtodamos+A+Gram/Superl+Sg+Nom`
+
+## Contracted stems
+
+LEXICON SÁDNES   Attr same as pred. Sg Acc: sáddnáv, Attr: sádnes.
+
+*hávres # Contracted test examples:*
+* *hávres:* `hávres+A+Sg+Nom`
+* *hávrráv:* `hávres+A+Sg+Acc`
+* *hávres:* `hávres+A+Attr`
+* *hávrráp:* `hávres+A+Der/Comp+A+Sg+Nom`
+
+LEXICON GOAVSOS   Attr same as pred. Sg Acc: goaksuv, Attr: goavsos.(goavsos is so far the only word in this lexicon)
+
+*goavsos # Contracted test examples:*
+* *goavsos:* `goavsos+A+Sg+Nom`
+* *goaksuv:* `goavsos+A+Sg+Acc`
+* *goaksusav:* `goavsos+A+Sg+Acc` (Eng. # From lexicon TJIEGOS)
+* *goavsos:* `goavsos+A+Attr`
+* *goaksup:* `goavsos+A+Der/Comp+A+Sg+Nom`
+* *goaksusabbo:* `goavsos+A+Der/Comp+A+Sg+Nom` (Eng. # from lexicon TJIEGOS)
+
+LEXICON SUVRES   Sg Acc: suvrráv, Attr: suvra.
+
+*suvres # Contracted test examples:*
+* *suvres:* `suvres+A+Sg+Nom`
+* *suvrráv:* `suvres+A+Sg+Acc`
+* *suvrrásav:* `suvres+A+Sg+Acc` (Eng. # From lexicon SJÆVNNJAT)
+* *suvra:* `suvres+A+Attr`
+* *suvrráp:* `suvres+A+Der/Comp+A+Sg+Nom`
+* *suvrrásabbo:* `suvres+A+Der/Comp+A+Sg+Nom` (Eng. # from LINES)
+
+LEXICON GÅLMAKTES   Attr same as pred. without cg but with vowel changes. Sg Acc: gålmaktáv, Attr: gålmaktes. VIEKSES makes odd-syll same thing. 
+
+----
+
+# Comparation
+
+LEXICON BU/MUS   comparison for even-syll adjectives. Also derivates diminutive and adverbs from the comparisions.
+
+LEXICON ABBO/AMOS   comparison for odd-syll adjectives.  Also derivates diminutive and adverbs from the comparisions.
+
+LEXICON BUStem  Comparative even-syll, case and attr.
+
+LEXICON ABBO  Comparative odd-syll, get case and attr. With the dialect differences "-ubbo" and "-æbbo".
+
+## Superlative
+
+LEXICON BUOREMUS  Superlative even-syll, get attr and nom case.
+
+LEXICON AMOS  Superlative odd-syll, get case and attr. With the dialect differences "-umos" and "-æmos".
+
+Comparative and Superlative sub-lexica
+
+LEXICON CompSup-EVEN 
+
+LEXICON CompSup-EVENWEAKSTEM  
+
+LEXICON ATTR   Sends attributes to
+
+LEXICON ATTR_PrsPrc   Attr without -vuohta derivation.
+
+## Derivation of adjectives
+
+LEXICON DenominalAdjsV1  ! even noun stems are sent here
+
+LEXICON DenominalAdjsV1_1  ! even noun stems without grade alternation are sent here
+
+LEXICON DenominalAdjsV2  ! even noun stems are sent here. -asj derivation
+
+LEXICON DenominalAdjsKINO  ! unassimilated nouns are sent here
+
+LEXICON DenominalAdjsODD   ! gives derivation -ahtes
+
+LEXICON DenominalAdjsContr 
+
+Derivations to adjectives, hardcoded in adjectives stems file
+
+LEXICON DIEHTEMAHTES  ! odd syllable For hardcoded -ahtes words.
+
+LEXICON LÁGÁSJ 
+
+LEXICON BÁJNUK  ! hardcoded denominal derivations, latus has changed from o>u, a>a, e>á (Bájnno>bájnuk, juolgge>juolgák, giella>gielak.  Attr same as pred, no comp in this lexicon. 
+
+LEXICON TSÅHPÅK  ! hardcoded denominal derivations latus has changed from o>u, a>a, e>á AND -GIS attr. Attr same as pred is err/orth taged. no comp in this lexicon. 
+
+LEXICON GIEVLEK  ! hardcoded derivations, not same as BÁJNUK since latus has unexpected vowel. Latus hasn't changed o>u, a>a, e>á. Goes directly to BÁJNUK, only made to sort these different kinds of derivations. Many of these may be derivated from verbs or other adjectives.
+
+LEXICON SJERVAK  ! hardcoded derivations, not same as TSÅHPÅK since latus has unexpected vowel. Latus hasn't changed o>u, a>a, e>á. Goes directly to TSÅHPÅK, only made to sort these different kinds of derivations. Many of these may be derivated from verbs or other adjectives.
+
+LEXICON DIBME  ! even and contracted
+
+LEXICON LIS  ! Handlernomen på -is?
+
+LEXICON Ahkásasj  ! lexicalized and denominal -asj derivations
+
+LEXICON STÁVVALIS  ! Must be "stávvalis" in bot pred and attr, as "guovddelis". OK& Kintel 2012: stávval attr stávvalis this is err/orth taged, also as second compound, this is err/orth taged. No comparison.
+
+Derivations to adjectives, continuation lexicon not for hardcoded adjectives
+
+LEXICON AHTES  ! odd syllable, only a continuation lexicon for words that are not in adjectives stems. Just as DIEHTEMAHTES, only with the +A tag that adjectives already get i stems file.
+
+LEXICON AHKES   
+
+LEXICON AGAdj  ! denominal derivations go here, attr same as pred, no comp in this lexicon
+
+* * *
+
+<small>This (part of) documentation was generated from [src/fst/affixes/adjectives.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/adjectives.lexc)</small>
 
 ---
 
@@ -1634,26 +1406,6 @@ LEXICON DUOLMUN   Fierrot>fierun, instruments derived from verbs, used only for 
 
 
 
-+Use/NG+Gen:n      NAMÁK ; ! adjectival -k derivation does not take pronouns
-+Use/NG+Ela:sstága K ; !Can't find this anywhere. Maybe this is really dástága/dastagá? in "dáhtakcas"
-
-+Use/NG+Gen:      NAMÁK ; ! adjectival -k derivation does not take pronouns
-
-+Use/NG+Gen:aj      NAMÁK ; ! adjectival -k derivation does not take pronouns
-+Ine:a%>jna  K-s ;
-+Abe+Use/NG:a%>jdak  K ;  ! covered in non-idiosync   
-+Abe+Use/NG:a%>jdagi  K ; ! covered in non-idiosync   
-+Abe+Use/NG:a%>jdagá  K ; ! covered in non-idiosync   
-+Abe+Use/NG:a%>jtagá  K ; ! covered in non-idiosync   
-
-* * *
-
-<small>This (part of) documentation was generated from [src/fst/affixes/pronouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/pronouns.lexc)</small>
-
----
-
-
-
 * **LEXICON ARABICCOMPOUNDS**  ! arabic as first part, 
 
 * **LEXICON ARABICCASES**  adds +Arab
@@ -1671,6 +1423,26 @@ LEXICON DUOLMUN   Fierrot>fierun, instruments derived from verbs, used only for 
 * * *
 
 <small>This (part of) documentation was generated from [src/fst/affixes/numerals.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/numerals.lexc)</small>
+
+---
+
+
+
++Use/NG+Gen:n      NAMÁK ; ! adjectival -k derivation does not take pronouns
++Use/NG+Ela:sstága K ; !Can't find this anywhere. Maybe this is really dástága/dastagá? in "dáhtakcas"
+
++Use/NG+Gen:      NAMÁK ; ! adjectival -k derivation does not take pronouns
+
++Use/NG+Gen:aj      NAMÁK ; ! adjectival -k derivation does not take pronouns
++Ine:a%>jna  K-s ;
++Abe+Use/NG:a%>jdak  K ;  ! covered in non-idiosync   
++Abe+Use/NG:a%>jdagi  K ; ! covered in non-idiosync   
++Abe+Use/NG:a%>jdagá  K ; ! covered in non-idiosync   
++Abe+Use/NG:a%>jtagá  K ; ! covered in non-idiosync   
+
+* * *
+
+<small>This (part of) documentation was generated from [src/fst/affixes/pronouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/pronouns.lexc)</small>
 
 ---
 
@@ -2531,536 +2303,11 @@ HANNOLA is the same as ACCRA
 ---
 
 
-
-# Sublexica for Adjective
-
-## Even-syllable stems
-
-LEXICON GIEVRRA  Adjectives with attribute in WeG and -s. As 1a in Spiik. Sg Acc: gievrav, Attr: gievras.
-
-*gárttje # Even-syllable test examples:*
-* *gárttje:* `gárttje+A+Sg+Nom`
-* *gártjev:* `gárttje+A+Sg+Acc`
-* *gártjes:* `gárttje+A+Attr`
-* *gártjep:* `gárttje+A+Der/Comp+A+Sg+Nom`
-
-LEXICON NUORRA   Adjectives with attribute same as pred. As 1b in Spiik. Sg Acc: nuorav, Attr: nuorra.
-
-*visská # Even-syllable test examples:*
-* *visská:* `visská+A+Sg+Nom`
-* *viskáv:* `visská+A+Sg+Acc`
-* *visská:* `visská+A+Attr`
-* *viskáp:* `visská+A+Der/Comp+A+Sg+Nom`
-
-LEXICON GALLJE   Adjectives on -e, the attribute is in WeG and e > a. As 1d in Spiik. Sg Acc: galjev, Attr: galja.
-
-*uhttse # Even-syllable test examples:*
-* *uhttse:* `uhttse+A+Sg+Nom`
-* *uhtsev:* `uhttse+A+Sg+Acc`
-* *uhtsa:* `uhttse+A+Attr`
-* *uhtses:* `uhttse+A+Attr` (Eng. # gets this attr from)
-* *uhtsep:* `uhttse+A+Der/Comp+A+Sg+Nom`
-
-LEXICON TJÁBBE   Adjectives on -e, the attribute is in WeG and e > a. Same as GALLJE only different adv derivation. Sg Acc: tjáppev, Attr: tjáppa.
-
-*njálgge # Even-syllable test examples:*
-* *njálgge:* `njálgge+A+Sg+Nom`
-* *njálgev:* `njálgge+A+Sg+Acc`
-* *njálga:* `njálgge+A+Attr`
-* *njálgep:* `njálgge+A+Der/Comp+A+Sg+Nom`
-
-LEXICON VILLDA   Adjectives with attribute same as pred, without CG. As 1b in Spiik. Sg Acc: nuorav, Attr: nuorra.
-
-*frisska # Even-syllable test examples:*
-* *frisska:* `frisska+A+Sg+Nom`
-* *frisskav:* `frisska+A+Sg+Acc`
-* *frisska:* `frisska+A+Attr`
-* *frisskap:* `frisska+A+Der/Comp+A+Sg+Nom`
-
-LEXICON HÁVSSKE   Adjectives with attribute -s, without WeG. As 1c in Spiik. Sg Acc: hávsskev, Attr: hávsskes.
-
-*hoallá # Even-syllable test examples:*
-* *hoallá:* `hoallá+A+Sg+Nom`
-* *hoalláv:* `hoallá+A+Sg+Acc`
-* *hoallás:* `hoallá+A+Attr`
-* *hoalláp:* `hoallá+A+Der/Comp+A+Sg+Nom`
-
-LEXICON TJUODDJE  Adjectives with attribute -is, without WeG. presently only "Tjuoddje" Sg Acc: tjuoddjev, Attr: tjuoddjis.
-
-*tjuoddje # Even-syllable test examples:*
-* *tjuoddje:* `tjuoddje+A+Sg+Nom`
-* *tjuoddjev:* `tjuoddje+A+Sg+Acc`
-* *tjuoddjis:* `tjuoddje+A+Attr`
-* *tjuoddjep:* `tjuoddje+A+Der/Comp+A+Sg+Nom`
-
-Pres.participles 
-
-LEXICON SÁVADAHTTE   Causative-participles. No attribute. No comparision. As 1e in Spiik. Sg Acc: sávadahttev. PrsPrc of causative verbs "uttrykker at handlingen lar seg gjøre eller er verdt å gjøre" (Kintel 1991).
-
-*vuojedahtte # Even-syllable test examples:*
-* *vuojedahtte:* `vuojedahtte+A+Sg+Nom`
-* *vuojedahttev:* `vuojedahtte+A+Sg+Acc`
-
-LEXICON JUHKKE   participles with -s attributive. No comparision As 1e in Spiik. Sg Acc: juhkkev, Attr: juhkkes. Spiik: presens particip har med den attributive formen på -s betydelsen "någon som är duktig i, snabb til att, begiven att utföra handlingen".
-
-*vuohttje # Even-syllable test examples:*
-* *vuohttje:* `vuohttje+A+Sg+Nom`
-* *vuohttjev:* `vuohttje+A+Sg+Acc`
-* *vuohttjes:* `vuohttje+A+Attr`
-
-LEXICON BÅRRE   participles without the -s attributive. As 1e in Spiik. Sg Acc: bårrev, Attr: bårre. Spiik: presens particip har med den attributiva formen utan -s betydelsen ºdem  som utför handlingenº.
-
-*ednabårre # Even-syllable test examples:*
-* *ednabårre:* `ednabårre+A+Sg+Nom`
-* *ednabårrev:* `ednabårre+A+Sg+Acc`
-* *ednabårre:* `ednabårre+A+Attr`
-
-Test data:
-
-Loan words lexicas
-
-###  Correctly assimilated loanwords, derived from real noun.
-
-LEXICON METÅVDÅLASJ  LOAN! Foreign -isk adjectives adapted in updated normative way. To smj ending -alasj, adjective is truly derived from a noun. Mekanisk-mekanihkka-mekanihkalasj, instead of mekánalasj that goes to MEKÁNALASJ_BADASS. Pred and attr are both -alasj. Attr same as pred. With comparatives. 
-
-LEXICON METÅVDÅLASJ_CMP_INFL 
-
-*kapitalismalasj # Even-syllable test examples:*
-* *kapitalismalasj:* `kapitalismalasj+A+Sg+Nom`
-* *kapitalismalattjav:* `kapitalismalasj+A+Sg+Acc`
-* *kapitalismalasj:* `kapitalismalasj+A+Attr`
-* *kapitalismalabbo:* `kapitalismalasj+A+Der/Comp+A+Sg+Nom`
-
-LEXICON MEKANIHKA_MEKANIJKA_LASJ  LOAN! Same type of adjectives as METÅVDÅLASJ, only for adjektives that become mekanihkalasj in norway and mekanijkalasj in sweden, because of differences mekanik vs mekanikk>mekanijkka vs mekanihkka.  Attr same as pred. With comparatives. 
-
-LEXICON IJJALASJ  Just lik  METÅVDÅLASJ only for words ending on ijjalasj/iddjalasj, so that we don't need a lot of Area and Err tags in stems file.
-
-LEXICON IJJALASJ_CMP_INFL 
-
-LEXICON OGIJJALASJ  Just like IJJALASJ only for words ending on ogijjalasj/ogiddjalasj, so that we don't need a lot of err tags in stems files. For words like "pedagogijjalasj" which also have "pedagåvgålasj" (not really a wrong derivation, but doesn't mean pedagogisk) and "pedagogalasj" err taged.  
-
-LEXICON OGIJJALASJ_CMP_INFL  
-
-LEXICON SJÅNÅLASJ_SJONAL  -sjonal/sjonell and -tional/tionel loanwords. Only for words that work as nouns, so that they are REAL dervations, as nasjonal-nasjåvnnå-nasjåvnålasj. NOT for words like "rasjonell", with no real noun. Words as "rasjonell>rasjonálla-rasjonálalasj" go to lexicon ÁLLA.  The fake derivation "nasjonálalasj" is err taged, so is the strange "nasjonálla/nasjunálla". 
-
-LEXICON SJÅNÅLASJ_SJONAL_CMP_INFL  
-
-*konstitusjåvnålasj # Even-syllable test examples:*
-* *nasjåvnålasj:* `nasjåvnålasj+A+Sg+Nom`
-* *nasjåvnålattjav:* `nasjåvnålasj+A+Sg+Acc`
-* *nasjåvnålasj:* `nasjåvnålasj+A+Attr`
-
-LEXICON SJÅNÅLASJ_SJONELL  -sjonal/sjonell and -tional/tionel loanwords. Only for words that work as nouns, so that they are REAL dervations, as nasjonal-nasjåvnnå-nasjåvnålasj. NOT for words like "rasjonell", with no real noun. Words as "rasjonell>rasjonálla-rasjonálalasj" go to lexicon ÁLLA.  The fake derivation "nasjonálalasj" is err taged, so is the strange "nasjonálla/nasjunálla". 
-
-LEXICON SJÅNÅLASJ_SJONELL_CMP_INFL  
-
-*konstitusjåvnålasj # Even-syllable test examples:*
-* *konstitusjåvnålasj:* `konstitusjåvnålasj+A+Sg+Nom`
-* *konstitusjåvnålattjav:* `konstitusjåvnålasj+A+Sg+Acc`
-* *konstitusjåvnålasj:* `konstitusjåvnålasj+A+Attr`
-
-###  Badly assimilated loanwords, some against norm others with no norm
-
-LEXICON MEKÁNALASJ_BADASS  LOAN! Wronly assimilated -lasj adjectives from SE/NO -isk. Looks derived but isn't since there is no real noun to be derived from. Like mekanisk-mekánalasj, but "mekádna" is no real noun! Like  METÅVDÅLASJ, but gives the Err/Der tag, so it's only for these wronly/non-derived loan adjectives. 
-
-LEXICON ARKTALASJ_CMP_INFL  Foreign -isk, that are not real derivations. Same as MEKÁNALASJ_BADASS, but no +Use/-Spell tag since ther is no "right" way to assimilate these. This is a question for GG. Adapted to smj by simply adding -alasj in place of -isk. These are not real derivations, but sitation borrowed loan adjectives. Only words without a noun base, like arktisk and syntetisk. Pred and attr are both -lasj. No comparatives. 
-
-*syntetalasj # Even-syllable test examples:*
-* *syntetalasj:* `syntetalasj+A+Sg+Nom`
-* *syntetalattjav:* `syntetalasj+A+Sg+Acc`
-* *syntetalasj:* `syntetalasj+A+Attr`
-
-LEXICON ORÁNSSJA  Loan adjectives, not -isk. Used without the -lasj. Adjectives with attribute same as pred. So far only for oránssja.
-
-LEXICON DEMONSTRATIJVA_LASJ_NO_NORM  Loan adjectives from norwegian/swedish (Not adjectives ending on -isk). Words like demonstrativ, transitiv, dupleks, informativ, analog, privat. Gives both "demonstratijvva" and "demonstratijvalasj". Two ways of adapting these adjectives are used, the adding of -lasj isn't okey, because that's a false derivation. But GG hasn't decided how these should be handled. Looks like noun instead of adjective when adapted without the -lasj ending.  Attr is in weak grad, used in strong grad ass pred even thou this seems a little bit odd "Værbba l transitijvva". 
-
-LEXICON DEMONSTRATIJVA_LASJ_CMP_INFL    
-
-*aktijvva # Even-syllable test examples:*
-* *aktijva:* `aktijvva+A+Attr`
-* *aktijvva:* `aktijvva+A+Sg+Nom`
-* *aktijvav:* `aktijvva+A+Sg+Acc`
-
-LEXICON ÁLA_LASJ_NO_NORM  Same as DEMONSTRATIJVA_LASJ_NO_NORM. Only for adjectives ending on -al. Words like digital,liberal, lokal.  Gives both "eksponentiálla" and "eksponentiálalasj". Different lexicon for these -al adjectives because of Err/Orth tags. OBS, "dialektal", is assimilated "dialevtalasj", and goes to lexicon  METÅVDÅLASJ.
-
-LEXICON ÁLA_LASJ_INFL_CMP 
-
-LEXICON ELLA_LASJ_NO_NORM  Loanwords, same as ÁLA_LASJ_NO_NORM  and  DEMONSTRANTIJVA_LASJ_NO_NORM. For NO and SE adjectives ending on -ell, eksperimentell, ideell, parallell. The short form is nom parallælla, attr, parallella The long form: paralellalasj, attr parallellalasj. Different lexicon for these -ell adjectives because of err/orth tags. OBS, "individuell", is assimilated "indivijdalasj", and goes to lexicon  METÅVDÅLASJ.
-
-LEXICON ELLA_LASJ_INFL_CMP  
-
-LEXICON ÁLLA-ÆLLA 
-
-LEXICON MEKÁNALASJ_CMP_INFL  Same as  METÅVDÅLASJ only without vuohta. 
-
-Inherent comparatives and superlatives lexica
-
-LEXICON OANEP   Inherent comparatives, gives comp and superl. There are two main groups of word here: Adjectives that are lexicalized in their comparative (and superlative) forms, like sisŋep, bárep. And Nouns that can be compared, like nuortap, gáttep, oarjep (some of these are compared from their noun lexicas and thus are found twice). Some entries are likely incorrect compared forms of other adjectives, like ådåp and ruvvap (more research needed).
-
-*lagáp # Even-syllable test examples:*
-* *lagáp:* `lagáp+A+Gram/Comp+Sg+Nom`
-* *lagámus:* `lagáp+A+Der/Superl+A+Sg+Nom`
-
-LEXICON TJAVGGÁMUS    Inherent superlatives, only gives superl. Some words are lexicalized in their superlative forms, like dájvvámus. Some are likely incorrect superlative forms, like tjábbámus (more research is needed)
-
-*dájvvámus # Even-syllable test examples:*
-* *dájvvámus:* `dájvvámus+A+Gram/Superl+Sg+Nom`
-
-4-syllable miscellanious stems
-
-LEXICON ÁRMMOGIS  Adjectives on -is, attribute same as pred. Odd-syllable comparison. As 2 in Spiik. Sg Acc: ármmogisáv, Attr: ármmogis. 
-
-*bahágis # Even-syllable test examples:*
-* *bahágis:* `bahágis+A+Sg+Nom`
-* *bahágisáv:* `bahágis+A+Sg+Acc`
-* *bahágis:* `bahágis+A+Attr`
-* *bahágabbo:* `bahágis+A+Der/Comp+A+Sg+Nom`
-
-LEXICON SÆHKÁLAK  Adjectives on -álak, attribute same as pred. Odd-syllable comparison. So far only for "sæhkálak".
-
-*sæhkálak # Even-syllable test examples:*
-* *sæhkálak:* `sæhkálak+A+Sg+Nom`
-* *sähkálak:* `sæhkálak+A+Sg+Nom`
-* *sæhkálagáv:* `sæhkálak+A+Sg+Acc`
-* *sähkálagáv:* `sæhkálak+A+Sg+Acc`
-* *sæhkálak:* `sæhkálak+A+Attr`
-* *sähkálak:* `sæhkálak+A+Attr`
-* *sæhkálabbo:* `sæhkálak+A+Der/Comp+A+Sg+Nom`
-* *sähkálabbo:* `sæhkálak+A+Der/Comp+A+Sg+Nom`
-
-LEXICON ÅLLAGSJ_CMP_INFL  Adjectives on -asj, attribute same as pred.  No comparatives. 2 in Spiik. Sg Acc: ållagattjav, Attr: ållagasj.
-
-*belulasj # Even-syllable test examples:*
-* *belulasj:* `belulasj+A+Sg+Nom`
-* *belulattjav:* `belulasj+A+Sg+Acc`
-* *belulasj:* `belulasj+A+Attr`
-
-LEXICON DÁRBULASJ_CMP_INFL  Adjectives on -asj, attribute same as pred. Odd-syllable comparison. Sg Acc: dárbulattjav, Attr: dárbulasj. Essive -attjan, -adtjan is subtaged. Err/Orth also -ahttja.  
-
-*dábálasj # Even-syllable test examples:*
-* *dábálasj:* `dábálasj+A+Sg+Nom`
-* *dábálattjav:* `dábálasj+A+Sg+Acc`
-* *dábálasj:* `dábálasj+A+Attr`
-* *dábális:* `dábálasj+A+Attr`
-* *dábálabbo:* `dábálasj+A+Der/Comp+A+Sg+Nom`
-
-LEXICON ASIDASJ_CMP_INFL  Adjectives on -asj, -is attr. Odd-syllable comparison. Sg Acc: asidattjav, Attr: asidis.
-
-*gågulasj # Even-syllable test examples:*
-* *gågulasj:* `gågulasj+A+Sg+Nom`
-* *gågulattjav:* `gågulasj+A+Sg+Acc`
-* *gågulis:* `gågulasj+A+Attr`
-* *gågulabbo:* `gågulasj+A+Der/Comp+A+Sg+Nom`
-
-LEXICON UDNODIBME  Adjectives on -dibme, attribute on -is. Odd-syllable comparison. Sg Acc: udnodimev, Attr: udnodis.
-
-*gælvodibme # Even-syllable test examples:*
-* *gælvodibme:* `gælvodibme+A+Sg+Nom`
-* *gälvodibme:* `gælvodibme+A+Sg+Nom`
-* *gælvodimev:* `gælvodibme+A+Sg+Acc`
-* *gälvodimev:* `gælvodibme+A+Sg+Acc`
-* *gælvodis:* `gælvodibme+A+Attr`
-* *gälvodis:* `gælvodibme+A+Attr`
-* *gælvodabbo:* `gælvodibme+A+Der/Comp+A+Sg+Nom`
-* *gälvodabbo:* `gælvodibme+A+Der/Comp+A+Sg+Nom`
-
-LEXICON TJALMEDIBME   Like UDNODIBME but no comparatives. Sg Acc: tjalmedimev, Attr: tjalmedis.
-
-*huvsodibme # Even-syllable test examples:*
-* *huvsodibme:* `huvsodibme+A+Sg+Nom`
-* *huvsodimev:* `huvsodibme+A+Sg+Acc`
-* *huvsodis:* `huvsodibme+A+Attr`
-
-LEXICON SUOLASIEHKE  -siehke. Sg Acc: suolasiegev, attr: suolasiek
-
-*hánessiehke # Even-syllable test examples:*
-* *hánessiehke:* `hánessiehke+A+Sg+Nom`
-* *hánessiegev:* `hánessiehke+A+Sg+Acc`
-* *hánessiek:* `hánessiehke+A+Attr`
-
-## Odd-syllable stems
-###  With CG Sorted by attr
-
-LEXICON TJIEGOS  Attr same as pred. For adjectives with -e in second syllable e>á: divtes>diktásav in StrG. As a. in Spiik.  Sg Acc: tjiehkusav, Attr: tjiegos. Consonant gradation. 
-
-*hánes # Odd-syllable test examples:*
-* *måskas:* `måskas+A+Sg+Nom`
-* *moasskasav:* `måskas+A+Sg+Acc`
-* *måskas:* `måskas+A+Attr`
-* *moasskasabbo:* `måskas+A+Der/Comp+A+Sg+Nom`
-* *bihtja:* `bihtja+A+Sg+Nom`
-* *bihttjagav:* `bihtja+A+Sg+Acc`
-* *bihtja:* `bihtja+A+Attr`
-* *bihttjagabbo:* `bihtja+A+Der/Comp+A+Sg+Nom`
-
-LEXICON LINES  Attr ending on -a. Adjektives ending on -es. Does same as TJIEGOS, but with attr -a.   As g. in Spiik.  lines, Sg Acc: lidnásav, attr: lidna. Consonant gradation.
-
-*lines # Odd-syllable test examples:*
-* *lines:* `lines+A+Sg+Nom`
-* *lidnásav:* `lines+A+Sg+Acc`
-* *lidna:* `lines+A+Attr`
-* *lidnásabbo:* `lines+A+Der/Comp+A+Sg+Nom`
-
-LEXICON GALMAS   Attr ending on -a or -å. Adjectives on -as, ås- and ás. As e. in Spiik. Sg Acc: galmmasav, attr: galmma, Consonant gradation.
-
-*njuoskas # Odd-syllable test examples:*
-* *njuoskas:* `njuoskas+A+Sg+Nom`
-* *njuosskasav:* `njuoskas+A+Sg+Acc`
-* *njuosska:* `njuoskas+A+Attr`
-* *njuosskasabbo:* `njuoskas+A+Der/Comp+A+Sg+Nom`
-
-LEXICON OAMES  Attr ending on -e. Adjectives on -es with attribute -e. As g2. in Spiik. Sg Acc: oabmásav, Attr: oabme. Consonant gradation.
-
-*goastes # Odd-syllable test examples:*
-* *goastes:* `goastes+A+Sg+Nom`
-* *goasstásav:* `goastes+A+Sg+Acc`
-* *goasste:* `goastes+A+Attr`
-* *goasstásabbo:* `goastes+A+Der/Comp+A+Sg+Nom`
-
-LEXICON SUOHKAT  Attr III -is, not suohkkadis but SUOHKKIS. With CG to attr, not from nom to Acc. Same as JALGGAT only with this CG. SUOHKKIS. Without CG between nom and acc. Adjectives on -at and -åt, with attribute III -is. As f. in Spiik. Sg Acc: suohkadav, attr: suohkkis,
-
-*rávvat # Odd-syllable test examples:*
-* *rávvat:* `rávvat+A+Sg+Nom`
-* *rávvadav:* `rávvat+A+Sg+Acc`
-* *rávvis:* `rávvat+A+Attr`
-* *rávvadabbo:* `rávvat+A+Der/Comp+A+Sg+Nom`
-
-LEXICON MÅJDÅS  Adjectives with no attr. With CG. Sg Acc: måjddåsav. If there is an attribute that dosn't fit to any lexicon it mus be hardcoded.
-
-*rávdes # Odd-syllable test examples:*
-* *rávdes:* `rávdes+A+Sg+Nom`
-* *rávddásav:* `rávdes+A+Sg+Acc`
-* *rávddásabbo:* `rávdes+A+Der/Comp+A+Sg+Nom`
-
-Without CG
-
-LEXICON VIEKSES  Attr same as pred. Without CG, but With vowel changes.  Sg Acc: væksásav, Attr: viekses. Like TJIEGOS only without the CG but with vowel changes. Mayby change this to a lexicon withput attr and then hardcode attr?
-
-LEXICON ALEK  Attr same as pred. Without CG, without any vowel changes. Like TJIEGOS only without the CG an vowelchanges. 
-
-*purpur # Odd-syllable test examples:*
-* *purpur:* `purpur+A+Sg+Nom`
-* *purpurav:* `purpur+A+Sg+Acc`
-* *purpur:* `purpur+A+Attr`
-* *purpurabbo:* `purpur+A+Der/Comp+A+Sg+Nom`
-
-LEXICON BASSTEL   Attr ening on -is. Without CG. Adjs on -et, -l, -r, sm om -k, -sj with attr -is and no consonant gradation. As b. in Spiik. Sg Acc: basstelav, Attr: basstelis. Many of these entries might be instances of derivations, like belak, deblak, and maybe also basstel, bargán.
-
-*goavrret # Odd-syllable test examples:*
-* *goavrret:* `goavrret+A+Sg+Nom`
-* *goavrredav:* `goavrret+A+Sg+Acc`
-* *goavrredis:* `goavrret+A+Attr`
-* *goavrredabbo:* `goavrret+A+Der/Comp+A+Sg+Nom`
-
-LEXICON MUTTÁK  Two attr enings -is and same as pred. Without CG. Adjs on -ák/-ak/-ek, two attr: -is and same as pred. As c. in Spiik. Sg Acc: muttágav, Attr: muttágis and mutták. These seem to be instances of the adjectival -k derivation. Unclear whether such derivation have different attr forms or not, and thats maybe why some of these derivations are found in BASSTEL lexicon.
-
-*bárvak # Odd-syllable test examples:*
-* *bárvak:* `bárvak+A+Sg+Nom`
-* *bárvagav:* `bárvak+A+Sg+Acc`
-* *bárvak:* `bárvak+A+Attr`
-* *bárvagis:* `bárvak+A+Attr`
-* *bárvagabbo:* `bárvak+A+Der/Comp+A+Sg+Nom`
-
-LEXICON JALGGAT  Attr III -is, not jalggadis but JALGGIS. Without CG.  Adjectives on -at, with attribute III -is. As f. in Spiik. Sg Acc: jalggadav, attr: jalggis,
-
-*russjkat # Odd-syllable test examples:*
-* *russjkat:* `russjkat+A+Sg+Nom`
-* *russjkadav:* `russjkat+A+Sg+Acc`
-* *russjkis:* `russjkat+A+Attr`
-* *russjkadabbo:* `russjkat+A+Der/Comp+A+Sg+Nom`
-
-LEXICON TJÅRGGÅT  Attr III -is, not tjårggådis but tjårggis. Without CG. Same as JALGGAT only for adjectives ending ot -åt. Adjectives on -åt, with attribute III -is. As f. in Spiik. Sg Acc: jalggadav, attr: jalggis,
-
-*russjkat # Odd-syllable test examples:*
-* *russjkat:* `russjkat+A+Sg+Nom`
-* *russjkadav:* `russjkat+A+Sg+Acc`
-* *russjkis:* `russjkat+A+Attr`
-* *russjkadabbo:* `russjkat+A+Der/Comp+A+Sg+Nom`
-
-LEXICON RIHTSOK  No attr, without CG and also without any vowelchanges. The lexicon gives no attribute, either because the adjective dosnºt have attr, because there is stemvowel change in attr that the lexicon canºt handle or because there are strange atrributes that donºt fit to any other lexicon (these attributes are hardcoded). Sg Acc: rihtsogav. 
-
-*rihtsok # Odd-syllable test examples:*
-* *rihtsok:* `rihtsok+A+Sg+Nom`
-* *rihtsogav:* `rihtsok+A+Sg+Acc`
-* *rihtsogabbo:* `rihtsok+A+Der/Comp+A+Sg+Nom`
-
-exception lexicons for odd-syll
-
-LEXICON IENNILS  no comparatives, attr same as pred.
-
-*ieŋŋils # Odd-syllable test examples:*
-* *ieŋŋils:* `ieŋŋils+A+Sg+Nom`
-* *ieŋŋilsav:* `ieŋŋils+A+Sg+Acc`
-
-LEXICON RÁDAS   Presently only used for "rádas". This word has special consonant gradation d>dd. Attr same as pred. Sg Acc: ráddasav, Attr: rádas. Consonant gradation.
-
-*rádas # Odd-syllable test examples:*
-* *rádas:* `rádas+A+Sg+Nom`
-* *ráddasav:* `rádas+A+Sg+Acc`
-* *rádas:* `rádas+A+Attr`
-* *ráda:* `rádas+A+Attr` (Eng. # from LEXATTR)
-* *ráddasabbo:* `rádas+A+Der/Comp+A+Sg+Nom`
-
-LEXICON LUOBES   Err/Orth lexicon! Does the same as TJIEGOS only e>a instead of usuall e>á, must be some err/orth. Sg Acc: luohpasav, Attr: luobes. Consonant gradation. NO Attr, must be hardcoded
-
-LEXICON LÅSSÅT  Two attr, two comp. As f3. in Spiik. So far the only word i this lexicon i "låssåt", because both låssis and låsså are attr and comparative is both låsep(hybrid?) and låssådabbo.
-
-*låssåt # Odd-syllable test examples:*
-* *låssåt:* `låssåt+A+Sg+Nom`
-* *låssådav:* `låssåt+A+Sg+Acc`
-* *låssis:* `låssåt+A+Attr`
-* *låsså:* `låssåt+A+Attr`
-* *låssådabbo:* `låssåt+A+Der/Comp+A+Sg+Nom`
-* *låsep:* `låssåt+A+Der/Comp+A+Sg+Nom`
-
-LEXICON STUORAK   Only for stuorak. It hase two attributes. Has even-syllable comparison: stuoráp and stuorámus.Sg Acc: stuoragav, attr: stuor and stuorra. This might be a -k derivation of adjective stuorre attr stuor(ra). The comparison is thus based on the original adjective and thus it naturally is an even syll comparison.
-
-*stuorak # Odd-syllable test examples:*
-* *stuorak:* `stuorak+A+Sg+Nom`
-* *stuoragav:* `stuorak+A+Sg+Acc`
-* *stuorra:* `stuorak+A+Attr`
-* *stuor:* `stuorak+A+Attr`
-* *stuoráp:* `stuorak+A+Der/Comp+A+Sg+Nom`
-
-LEXICON ALLAK  Adjs on -ak, attr.on -a. Have both gasep/gaggagabbo and alep/allagabbo as comparatives. As d. in Spiik. So far only the adjectives "allak" and "gassak" go to this lexicon.
-
-*gassak # Odd-syllable test examples:*
-* *gassak:* `gassak+A+Sg+Nom`
-* *gassagav:* `gassak+A+Sg+Acc`
-* *gassa:* `gassak+A+Attr`
-* *gassagabbo:* `gassak+A+Der/Comp+A+Sg+Nom`
-* *gasep:* `gassak+A+Der/Comp+A+Sg+Nom`
-
-LEXICON GÅBDDÅK   Adjs on -åk, attr. on -å. Has even-syllable comparison: gåbdep and gåbdemus. So far "gåbddåk" is the only word in this lexicon. As d2. in Spiik. Sg Acc: gåbddågav, Attr: gåbddå.
-
-*gåbddåk # Odd-syllable test examples:*
-* *gåbddåk:* `gåbddåk+A+Sg+Nom`
-* *gåbddågav:* `gåbddåk+A+Sg+Acc`
-* *gåbddå:* `gåbddåk+A+Attr`
-* *gåbdep:* `gåbddåk+A+Der/Comp+A+Sg+Nom`
-
-Inherent comparatives and superlatives
-
-LEXICON NUORTTALABBO    Inherent comparatives, gives both comp and superl. Most of the words are the compared forms of -el(a) words, like nuorttal, lullel.
-
-*guddnelabbo # Even-syllable test examples:*
-* *guddnelabbo:* `guddnelabbo+A+Gram/Comp+Sg+Nom`
-* *guddnelamos:* `guddnelabbo+A+Der/Superl+A+Sg+Nom`
-* *guddnelap:* `guddnelabbo+A+Gram/Comp+Attr`
-* *guddnelup:* `guddnelabbo+A+Gram/Comp+Attr`
-
-LEXICON GASSKALAMOS    Inherent superlatives, gives onlys superl. Words that are lexicalized in their superlative forms. 
-
-*ájtodamos # Even-syllable test examples:*
-* *ájtodamos:* `ájtodamos+A+Gram/Superl+Sg+Nom`
-
-## Contracted stems
-
-LEXICON SÁDNES   Attr same as pred. Sg Acc: sáddnáv, Attr: sádnes.
-
-*hávres # Contracted test examples:*
-* *hávres:* `hávres+A+Sg+Nom`
-* *hávrráv:* `hávres+A+Sg+Acc`
-* *hávres:* `hávres+A+Attr`
-* *hávrráp:* `hávres+A+Der/Comp+A+Sg+Nom`
-
-LEXICON GOAVSOS   Attr same as pred. Sg Acc: goaksuv, Attr: goavsos.(goavsos is so far the only word in this lexicon)
-
-*goavsos # Contracted test examples:*
-* *goavsos:* `goavsos+A+Sg+Nom`
-* *goaksuv:* `goavsos+A+Sg+Acc`
-* *goaksusav:* `goavsos+A+Sg+Acc` (Eng. # From lexicon TJIEGOS)
-* *goavsos:* `goavsos+A+Attr`
-* *goaksup:* `goavsos+A+Der/Comp+A+Sg+Nom`
-* *goaksusabbo:* `goavsos+A+Der/Comp+A+Sg+Nom` (Eng. # from lexicon TJIEGOS)
-
-LEXICON SUVRES   Sg Acc: suvrráv, Attr: suvra.
-
-*suvres # Contracted test examples:*
-* *suvres:* `suvres+A+Sg+Nom`
-* *suvrráv:* `suvres+A+Sg+Acc`
-* *suvrrásav:* `suvres+A+Sg+Acc` (Eng. # From lexicon SJÆVNNJAT)
-* *suvra:* `suvres+A+Attr`
-* *suvrráp:* `suvres+A+Der/Comp+A+Sg+Nom`
-* *suvrrásabbo:* `suvres+A+Der/Comp+A+Sg+Nom` (Eng. # from LINES)
-
-LEXICON GÅLMAKTES   Attr same as pred. without cg but with vowel changes. Sg Acc: gålmaktáv, Attr: gålmaktes. VIEKSES makes odd-syll same thing. 
-
-----
-
-# Comparation
-
-LEXICON BU/MUS   comparison for even-syll adjectives. Also derivates diminutive and adverbs from the comparisions.
-
-LEXICON ABBO/AMOS   comparison for odd-syll adjectives.  Also derivates diminutive and adverbs from the comparisions.
-
-LEXICON BUStem  Comparative even-syll, case and attr.
-
-LEXICON ABBO  Comparative odd-syll, get case and attr. With the dialect differences "-ubbo" and "-æbbo".
-
-## Superlative
-
-LEXICON BUOREMUS  Superlative even-syll, get attr and nom case.
-
-LEXICON AMOS  Superlative odd-syll, get case and attr. With the dialect differences "-umos" and "-æmos".
-
-Comparative and Superlative sub-lexica
-
-LEXICON CompSup-EVEN 
-
-LEXICON CompSup-EVENWEAKSTEM  
-
-LEXICON ATTR   Sends attributes to
-
-LEXICON ATTR_PrsPrc   Attr without -vuohta derivation.
-
-## Derivation of adjectives
-
-LEXICON DenominalAdjsV1  ! even noun stems are sent here
-
-LEXICON DenominalAdjsV1_1  ! even noun stems without grade alternation are sent here
-
-LEXICON DenominalAdjsV2  ! even noun stems are sent here. -asj derivation
-
-LEXICON DenominalAdjsKINO  ! unassimilated nouns are sent here
-
-LEXICON DenominalAdjsODD   ! gives derivation -ahtes
-
-LEXICON DenominalAdjsContr 
-
-Derivations to adjectives, hardcoded in adjectives stems file
-
-LEXICON DIEHTEMAHTES  ! odd syllable For hardcoded -ahtes words.
-
-LEXICON LÁGÁSJ 
-
-LEXICON BÁJNUK  ! hardcoded denominal derivations, latus has changed from o>u, a>a, e>á (Bájnno>bájnuk, juolgge>juolgák, giella>gielak.  Attr same as pred, no comp in this lexicon. 
-
-LEXICON TSÅHPÅK  ! hardcoded denominal derivations latus has changed from o>u, a>a, e>á AND -GIS attr. Attr same as pred is err/orth taged. no comp in this lexicon. 
-
-LEXICON GIEVLEK  ! hardcoded derivations, not same as BÁJNUK since latus has unexpected vowel. Latus hasn't changed o>u, a>a, e>á. Goes directly to BÁJNUK, only made to sort these different kinds of derivations. Many of these may be derivated from verbs or other adjectives.
-
-LEXICON SJERVAK  ! hardcoded derivations, not same as TSÅHPÅK since latus has unexpected vowel. Latus hasn't changed o>u, a>a, e>á. Goes directly to TSÅHPÅK, only made to sort these different kinds of derivations. Many of these may be derivated from verbs or other adjectives.
-
-LEXICON DIBME  ! even and contracted
-
-LEXICON LIS  ! Handlernomen på -is?
-
-LEXICON Ahkásasj  ! lexicalized and denominal -asj derivations
-
-LEXICON STÁVVALIS  ! Must be "stávvalis" in bot pred and attr, as "guovddelis". OK& Kintel 2012: stávval attr stávvalis this is err/orth taged, also as second compound, this is err/orth taged. No comparison.
-
-Derivations to adjectives, continuation lexicon not for hardcoded adjectives
-
-LEXICON AHTES  ! odd syllable, only a continuation lexicon for words that are not in adjectives stems. Just as DIEHTEMAHTES, only with the +A tag that adjectives already get i stems file.
-
-LEXICON AHKES   
-
-LEXICON AGAdj  ! denominal derivations go here, attr same as pred, no comp in this lexicon
+# Symbol affixes
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/adjectives.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/adjectives.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/affixes/symbols.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/symbols.lexc)</small>
 
 ---
 
@@ -3487,76 +2734,744 @@ LEXICON ABBONERE_TV_INFL
 ---
 
 
-# Symbol affixes
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/symbols.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/symbols.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/compounding.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/compounding.lexc)</small>
 
 ---
 
 
-# Continuation lexicons for abbreviations
 
-## Lexica for adding tags and periods
+# Lule Sámi morphophonological rule set                    
 
-## The sublexica
+This file documents the [phonology.twolc file](http://github.com/giellalt/lang-hun/blob/main/src/fst/phonology.twolc) 
 
-### Continuation lexicons for abbrs both with and witout final period
+The file contains the rule set for the non-segmental
+Lule Sámi morphphonological rules
 
-* **LEXICON ab-noun   **
+## Background
 
-* **LEXICON ab-adj   **
+The file is modeled upon the corresponding file for North Sámi, but has been
+revised and differs from it on several issues. The grammatical sources are
+Spiik 1989: Lulesamisk grammatik and Nystø and Johnsen 2001: Sámásta 2.
 
-* **LEXICON ab-adv   **
+The rule file has the sections **Alphabet, Sets, Definition** and **Rules**. The rules are ordered thematically, 
+with 3 main sections: Consonant alternations (except CG), vowel alternations, and consonant gradation.
 
-* **LEXICON ab-num   **
+# Declarations and definitions
 
-### Lexicons without final period
+## The Alphabet section
 
-* **LEXICON ab-nodot-noun   **  The bulk
+### The real Lule Sámi Alphabet
 
-* **LEXICON ab-nodot-adj   **
+All Lule Saami letters are listed. The Lule Sámi ENG sound is represented as ñ. 
+Lule Sámi letter repertoire is not fully standardised. In the source code we write (and you shall write!) æ; ø; ŋ, 
+but the parser tolerates input written with the the letters ä; ö; ń, ñ (cf. the 4 rules in the file smj/src/orthography/spellrelax.regex).
 
-* **LEXICON ab-nodot-adv   **
+* **small letters =**  a á b c d e f g h i j k l m n ñ ń ŋ o p q			 
+ r s t u v w x y z æ:æä ä:æä ø ö å %-				 
+ é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý				 
+ ç č đ ð š ŧ þ ß ª									 
 
-* **LEXICON ab-nodot-num   **
+* **capital letters =**  A Á B C D E F G H I J K L M N Ñ Ń Ŋ O P Q			
+ R S T U V W X Y Z Æ:ÆÄ Ä:ÆÄ Ø Ö Å  	 
+ É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý	 
+ Ç Č Đ Ð Š Ŧ þ	 
 
-### Lexicons with final period
+The 3rd degree mark º is never realized, hence declared as º:0.
+ º:0   = Gradation mark
+ %/    = Literal /, not the TWOLC reserved symbol
+ ':'   = Apostrophe
 
-* **LEXICON ab-dot-noun   **  This is the lexicon for abbrs that must have a period.
+Literal quotes and angles must be escaped (cf morpheme boundaries further down):
 
-* **LEXICON ab-dot-adj   **  This is the lexicon for abbrs that must have a period.
+* »
+* «
+* >
+* <
 
-* **LEXICON ab-dot-adv   **  This is the lexicon for abbrs that must have a period.
+h2, g2 etc. are consonants deleted in the Nom. m3, d3 etc. (?) are consonants that undergo certain processes word-finally. 
+This issue should be looked into. Perhaps the two sets can be unified. 
+The reason why there are more distinctions than for sme, is that the cns deletion process is more phonological in sme.
 
-* **LEXICON ab-dot-num   **  This is the lexicon for abbrs that must have a period.
+*  ':'   =  Morphophonemes  in sme, here temporarily due to common propernoun file
 
-* **LEXICON ab-dot-cc   **
+*  ':'   =  these are deleted in nom
+*  ':'   =  these can not occur before #
+*  ':'   =  Non-sámi cons clusters
+*  ':'   =  Do not change these where they would normally undergo umlaut etc
 
-* **LEXICON ab-dot-verb   **
+### The Dummy symbols
+The Dummy symbols are taken from the sme file for convenience, only a small part of them are actually used, 
+they are defined in the Sets section along the way, included there as soon as they are used. 
+The set of actually used Dummy symbols is thus the set declared in "Dummy".
+The Dummy symbols trigger morphophonological rules. X is used for nouns
+and adjectives, Y for verbs and Q for processes common to all
+The symbols themselves are used in the following way:
 
-* **LEXICON ab-nodot-verb   **
+OBS: the definitions are not all correct or sufficiently specific
 
-* **LEXICON ab-dot-IVprfprc   **
+* ****X1:0****:  Deletes final consonants in short essive of odd syllables
+* ****X2:0****:  WeG and neutralization of g8, etc. (hivsik-hivsiga)
+* ****X3:0****:  Weg and deletion of g8, etc. (bena-bednaga)
+* ****X4:0** : e:á and e:å in illatives and px. a:á and o**: u in Px and ill of a-stem actors and o-stems
+* ****X5:0** : e:á, e:å and o:u in odd-syllable nouns, but also for some even nouns (o**: u f.eks)
+* ****X6:0** : Deviant III-I consonant gradation (in contracted stems, guobbmu**: guomoj)
+* ****X7:0** : WeG and e:á, e:å, o:á, o:u in front of diminutives, e**: å in -lasj der
+* ****X8:0****:  Stem vowel alternations in Px
+* ****X9:0****:  Stem-vowel and central consonant shortening in first part(s) of compounds  
+* ****Q1:0** : The general weak grade trigger. Stem vowel change e:i and o**: u in front of j.
+				 Dipht. simpl.  Any environment #only# demanding WeG shall use Q1.
+* ****Q2:0** : Vowel harmony**:  2nd syll e realized as å whenever 1st syll is å.
+* ****Q3:0****:  WeG in contracted, also does not trigger Dipht simpl.
+* ****Q4:0** : Stem vowel change e:i and o**: u in front of j. Dipht. simpl. Like Q1 but strong grade.
+* ****Q5:0** : e**: á stem vowel change for word diehtet. Weak grade.
+* ****Q6:0** : e**: á stem wovel change for word diehtet. Strong grade.
+* ****Q7:0** : e**: á stem vowel change for word diehtte. Extra strong grade
+* ****Q8:0****:  Stem vowel deletion, impII of verbs.
+* ****Q9:0****:  TBW  
+* ****Y1:0****:  Stem vowel deletion, imp 3sg, 3du, 2pl, 3pl of verbs
+* ****Y2:0****:  "Indicative Present Singular 3rd Final Vowel in verbs"
+* ****Y3:0****:  PrsPrc
+* ****Y4:0****:  e &gt; u in front of dersuff, o &gt; u and e &gt; á in front of dersuffix -alla
+* ****Y5:0****:  e &gt; a, i &gt; á, o &gt; u, e &gt; å in verb derivation
+* ****Y6:0****:  "Consonant insertion as II-III strengthening gradation", verbs +PrsPrt and +Imprt+Du2
+* ****Y7:0****:  "Consonant insertion as II-III strengthening gradation", nouns and propernouns
+* ****Y8:0****:  "Stem vowel deletion in even-syllable verbs, imp 1du, 1pl"
+* ****Y9:0****:  "Stem vowel deletion in short passives of even-syllable verbs
+* ****Z1:0** : TBW "i**: á in Verb Derivation guollir>guollár"
+* ****Z2:0** : e:å, o**: u in -lasj der
+* ****Z3:0** : weak grade trigger fºf:f. Stem vowel change e:i and o**: u in front of j.
+* ****Z4:0** : weak grade trigger fºf:f and e:á, e:å, o:á, o:u in front of diminutives, e**: å in -lasj der
 
-* **LEXICON nodot-attrnomaccgen-infl   **
+* ****Ø1:0** : optional Word Final Cluster Simplification. Not smj grammar, made only for Err/Orths  ! málestit**:  málest instead for norm máles
+* ****Ø2:0** : optional e**: i when followed by any conc (not only j). Not smj grammar, made only for Err/Orths ! "iednida"   
 
-* **LEXICON nodot-attr-infl   **
+### Morpheme boundaries:
+* **** «  ****:  Derivational prefix
+* **** »  ****:  Derivational suffix
+* **** %< ****:  Inflectional prefx
+* **** %> ****:  Inflectional suffix
+* **** #  ****:  Word boundary for both lexicalised and dynamic compounds
+* **** %^ ****:  (exceptional) soft hyphenation point
+* **** %  ****:  a space
+* **** ∑  ****:  mark before # to indicate dynamic comounds
 
-* **LEXICON nodot-nomaccgen-infl   **
+## The Sets section
 
-* **LEXICON dot-attrnomaccgen-infl   **
+These are the sets:
+* **Vow**:  the vowels
+* **Cns**:  the consonants
+* **StemCns**:  consonants that may occur in stem-final position
+* **DelCns**:  the consonants that are deleted in nominative
+* **Dummy**:  the set of dummy symbols, they are there to trigger certain morphophonological symbols
+* **WeG**:  the dummy symbols that trigger weak grade
 
-* **LEXICON dot-attr   **
+*  Vow     = a á e i o u y æ ä ø ö å æä			   
+           A Á E I O U Y Æ Ä Ø Ä Å ÆÄ			   
+           é ó ú í à è ò ù ì ë ü ï â ê ô û î ã ý   
+           É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý   
+           a9 e9 o9 æ9 ä9						   
 
-* **LEXICON dot-nomaccgen-infl   **
+*            a9 e9 o9 æ9 ä9						   
+           É Ó Ú Í À È Ò Ù Ì Ë Ü Ï Â Ê Ô Û Î Ã Ý ;   
 
-* **LEXICON DOT   ** - Adds the dot to dotted abbreviations.
+*  CapCns  = B C D F G H J K L M N Ñ Ń Ŋ P Q     
+           R S T V W X Z Ç Č Đ Ð Š Ŧ þ ;    
+
+*  Cns     = b b9 c d d9 f g g8 g9 h h8 h9 j j9 k l l9 m m8 m9 n n8 n9 ŋ ñ ń p q r r9 s t v w x z z9 º ;  = All consonants
+*  Cns7    =      c      f         h       j      l    m       n       ŋ ñ ń p q r    s t v w x z      ;  = Surface cons excl 1st members of xx-type G3
+*  Cns8    = b    c d    f g       h       j    k l    m       n       ŋ ñ ń p q r    s t v w x z      ;  = All surface consonants
+*  Cns9    =   b9     d9     g8 g9   h8 h9   j9     l9   m8 m9   n8 n9             r9             º    ;  = Underlying consonants
+*  Cns4    =             f                        l    m       n       ŋ ñ ń     r        v            ;  = Don't remember ...?
+*  StemCns = b b9   d d9   g g8 g9 h h8 h9 j j9   l l9 m m8 m9 n n8 n9 ŋ ñ ń     r r9 s                ;  = Can occur stem-finally
+*  DelCns  =                 g8      h8               m8      n8                                       ;  = deleted in nom...
+*  WeG     = X2 X3 X7 Y5 Q1 Q2 Q3 Q6 Z3 Z4                                                                 ;  
+*  Dummy   = X2 X3 X4 X5 X6 X7 X8 Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9 Q1 Q2 Q3 Q4 Q5 Q6 Q7 Z1 Z2 Z3 Z4 %> » %^           ;  
+*  Hyph    = %-                                                                                        ;  
+
+## The Definitions section
+
+In this section, the consonants are defined. This includes consonant clusters in the various grades and consonant alternations.
+
+### G3 vs G2
+The alternation patterns according to Spiik's alternations series, here named S4, S5, ... for "Spiik alternation series 4, 5, etc." as they are presented in his grammar..  
+
+|   Class | Alternation | Series
+
+| --- | --- | --- 
+|  S7 | kkn:k0n           | series 1
+|  S8 | fºf:f0f           | series 2
+|  S9 | jgg:j0g           | series 3
+|  S4 | hkk:h0k           | series 4
+|  S5 |  xy:zy (no zeros) | series 5
+|  S6 |  xx:yy (no zeros) | series 6
+|  S7 |  xy:zy (no zeros) | series 7
+|  S8 |  ----- (no cg)    | series 8
+
+Definition of gradation symbols:
+
+* **LowerG2**:  A definition of Grade2 consonant sequences referring mostly to the surface level
+* **LowerG1**:  A definition of Grade 1 consonant sequences
+* **LowerG12**:  A definition of Grade 1 or 2 consonant sequences 
+
+* **G32**:  A definition of Grade 3 or 2 consonant sequences
+
+* **G3**:  A definition of Grade 3 consonant sequences 
+
+# The Rules section
+
+## Overview
+
+The rules section has the following chapters: Consonant alternations in certain pos, vowel lengthening, diphthong simplification, stem vowel alternations, consonant gradation rules
+
+## Consonant alternations in certain pos
+
+All rules deal with word-final position.
+
+* ★*a* (is not standard language)
+* ★*b* (is not standard language)
+
+**Word Final Devoicing of Certain Single Consonants d9 etc. **  
+* *iemed9#*
+* *iemet#*
+
+**Word final weakening -tj and -ttj to -sj part 1**  
+
+**Word final weakening -tj and -ttj to -sj part 2**  
+* *jågåtj*
+* *jågåsj*
+
+* *gålºleX7tj*
+* *gål0lå0sj*
+
+**Word Final Deletion of n8 m8 g8 h8**  
+
+* *loavddag8X3#*
+* *l0åv0da00#*
+
+**Word Final Neutralization of g8, h8, m8**  
+
+**Deleting Final h9 in Short Essive of Uneven Syllables**  
+
+**Deleting Final l9 in Short Essive of Uneven Syllables**  
+
+**Deleting Final m9 in Short Essive of Uneven Syllables**  
+
+**Deleting Final n9 in Short Essive of Uneven Syllables**  
+
+**Deleting Final r9 in Short Essive of Uneven Syllables**  
+
+* *málest#*
+* *máles0#*
+
+## Vowel lengthening
+
+The second syllable vowel a is lengthened to á whenever the stem consonants are in grade 1 and the first syllable vowel is short. Short vowels cannot preceed and follow a single intervocalic consonant.
+
+**Compulsatory lengthening in grade I even-syllables**  
+
+* *gussaQ1#*
+* *gu0sá0#*
+* *skihpaQ1s#*
+* *ski0bá0s#*
+
+## Diphtong simplification
+
+The diphthong simplification handles oa:å and æ:e. Phonologically, these are identical processes, but since the dipthong is written by two letters in the former case and by one letter in the latter, the alternations must be handled separately. This section also handles ie:æ, these are in principle the same as oa:å, but the alternation does not occur in so many contexts. 
+
+**oa:å Diphtong Simplification Part I **  
+
+**oa:å Diphtong Simplification Part II**  
+
+* *toahkkeY6X5jn*
+* *toahkki00jn*
+
+* ★*toahkkeY6X5jn* (is not standard language)
+* ★*t0åhkki00jn* (is not standard language)
+
+* *boalloX4j*
+* *b0ållu0j*
+
+* *roavggoX4j*
+* *roavggu0j*
+* ★*roavggoX4j* (is not standard language)
+* ★*r0åvggu0j* (is not standard language)
+
+* *toasºsoQ1X5jn*
+* *t0ås0su00jn*
+
+* ★*toasºsoQ1X5jn* (is not standard language)
+* ★*toas0su00jn* (is not standard language)
+
+* ★*moasºsoX5jn* (is not standard language)
+* ★*m0ås0su0jn* (is not standard language)
+
+* *moasºsoX5jn*
+* *moas0su0jn*
+
+* *goarºroY6X5jn*
+* *goar0ru00jn*
+
+* *goarroY6X5jn*
+* *goarru00jn*
+
+* ★*goarºroY6X5jn* (is not standard language)
+* ★*g0år0ru00jn* (is not standard language)
+
+* ★*goarºroY2* (is not standard language)
+* ★*g0år0ru0* (is not standard language)
+
+* *goarroY2*
+* *g0årru0*
+
+* *doad0jeY6*
+* *doaddje0*
+
+* ★*doad0jeY6* (is not standard language)
+* ★*d0åddje0* (is not standard language)
+
+* *goarºroY5d9it*
+* *g0år0ru0dit*
+
+* ★*goarºroY5d9it* (is not standard language)
+* ★*goar0ru0dit* (is not standard language)
+
+* *toab0moY6X4j*
+* *toabbmu00j*
+
+* *toabmoX4j*
+* *t0åbmu0j*
+
+* ★*toa0mboY6X4j* (is not standard language)
+* ★*t0åbbmu00j* (is not standard language)
+
+* *toabmoX7dallat*
+* *t0å0mu0dallat*
+* ★*toabmoX7dallat* (is not standard language)
+* ★*toa0mu0dallat* (is not standard language)
+
+* *oaddoY6X4j*
+* *oaddu00j*
+
+* *boassjkoQ1X5jn*
+* *b0å0sjku00jn*
+
+* ★*boassjkoQ1X5jn* (is not standard language)
+* ★*boas0jku00jn* (is not standard language)
+
+* *boajsstoQ1X5jn*
+* *b0åj0stu00jn*
+
+* ★*boajsstoQ1X5jn* (is not standard language)
+* ★*boaj0stu00jn* (is not standard language)
+
+* *boaggoQ1X5jn*
+* *b0åkku00jn*
+
+* ★*boaggoQ1X5jn* (is not standard language)
+* ★*boakku00jn* (is not standard language)
+
+* examples:*
+
+* examples:*
+
+* examples:*
+
+* examples:*
+
+* examples:*
+
+* examples:*
+
+* examples:*
+
+* examples:*
+
+* examples:*
+
+* examples:*
+
+**æ:e Diphthong Simplification **  
+
+* *hærránis*
+* *hæärránis*
+
+* *hærránis#gæhttjalibme>*
+* *hæärránis#gæähttjalibme>*
+
+* *pasiænnta>Q1*
+* *pasien0ta>0*
+
+* *patænnta>Q1*
+* *paten0ta>0*
+
+* *kvotiænnta>Q1*
+* *kvotien0ta>0*
+
+* *kliænnta>Q1*
+* *klien0ta>0*
+
+* *Lævnnja>Q1*
+* *Lev0nja>0*
+
+* *a^dræssa#sáhtso>*
+* *a^dræässa#sáhtso>*
+
+* ★*a^dræssa#sáhtso>* (is not standard language)
+* ★*a^dressa#sáhtso>* (is not standard language)
+
+* *vædtsag8>X3*
+* *vettsa0>0*
+
+**ie:æä Diphthong Simplification Part I **  
+
+* *ielvveY9ut*
+* *0æälvv00ut*
+
+* *iehttseY1up*
+* *0æähtts00up*
+
+* *giesseQ8us*
+* *g0ess00us*
+
+**ie:æä Diphthong Simplification Part II** The multichar æä is always the only option
+
+* *jeht0sa>Y6*
+* *jæähttse>0*
+
+* *jeht0sa>Y6*
+* *jæähttse>0*
+
+* *gierre»X7dalla>t*
+* *g0æä0rá»0dalla>t*
+
+* *boarkkaQ1*
+* *b0år0ka0*
+* *loavddag8X3#*
+* *l0åv0da00#*
+
+**Vowel-change oa:å for verbs part I**  
+
+**Vowel-change oa:å for verbs part II**  
+
+* *hå0llaY2*
+* *hoallá0*
+
+* *gå0d0naY6*
+* *goaddne0*
+
+* ★*hållaY2* (is not standard language)
+* ★*hållá0* (is not standard language)
+
+* *gå0ht0saY6*
+* *goahttse0*
+
+## Stem vowel alternations
+
+This section is divided according to stem vowels: a-, e-, o-, å-stems.
+
+### a-stem alternations
+
+For a-stems, there is a:e and a:i.  Each alternation is triggered by a combination of phonological content and dummy symbols.
+
+**a:e in Present Participle of even-syllable verbs**  
+
+* *bassa>Y6*
+* *basse>0*
+
+**a:i in Prs Prc of even-syllable verbs**  
+
+* *basºsaY6jt#*
+* *bas0si0jt#*
+
+**a-stem vowel deletion**  
+
+* *giedjeg9>a#*
+* *giedjeg>a#*
+
+### e-stem alternations
+
+For e-stems, there is e:i, e:á, e:å, e:u and e:a. Each alternation is triggered by a combination of phonological content and dummy symbols.
+
+**e:i in e-stems**  								        
+
+* *manasseQ4j*
+* *manassi0j*
+
+* *biesseQ1j*
+* *bie0si0j*
+
+* *boaht0eY6j*
+* *boahtti0j*
+
+* *gálleQ1tj*
+* *gá0li0sj*
+
+* *gálleQ1tjav*
+* *gá0li0tjav*
+
+* *gálleQ1tjin*
+* *gá0li0tjin*
+
+* *gálleQ1tjihpit*
+* *gá0li0tjihpit*
+
+* *gálleQ1tjibá*
+* *gá0li0tjibá*
+
+* *gálleQ1tjip*
+* *gá0li0tjip*
+
+* *gálleQ1tja*
+* *gá0li0tja*
+
+* *gierre>Q1tja*
+* *gie0ri>0tja*
+
+* *gierre>Q1tj*
+* *gie0ri>0sj*
+
+The following two rules constitute a <= / => rule pair.
+
+**e:á in certain stem types 1**  
+* *bálggeX4v*
+* *bálggá0v*
+
+* *gálleY3m#*
+* *gállá0m#*
+
+* *gálleQ2v#*
+* *gá0lá0v#*
+
+* *báhkoX7tj#*
+* *bá0gu0sj#*
+
+* *goahteX7tj#*
+* *goa0dá0sj#*
+
+* ★*goahteX7tj#* (is not standard language)
+* ★*go00dá0sj#* (is not standard language)
+
+**e:á in certain stem types 2**  
+
+* *bárnneX4m*
+* *bárnná0m*
+
+* ★*bárnneX4m* (is not standard language)
+* ★*bárnne0m* (is not standard language)
+
+**e:å in certain stem types with å as root vowel**  
+
+* *gådeQ2v*
+* *gådå0v*
+* *jåhteQ2v*
+* *jå0då0v*
+
+* *gådeY2*
+* *gådå0*
+* *jåhteY2*
+* *jåhtå0*
+
+* *jåhteY3m*
+* *jåhtå0m*
+
+* *låhkkeY7tj#*
+* *låhkkå0sj#*
+
+**e-stem vowel deletion**  
+
+* *ielvveY9ut*
+* *0æälvv00ut*
+
+### i-stem alternations
+
+For i-stems, there is i:á. The alternation is triggered by a combination of phonological content and dummy symbols.
+
+**i:á in Verb Derivation**
+
+### o-stem alternations
+
+The duplicates of the three lines of the two following rules are
+there to resolve the => conflict between the two rules.
+
+**o:u in certain stem types 1**  
+
+**o:u in certain stem types 2**  
+
+**u:o in contracted nouns**  
+
+**o-stem vowel deletion**  
+
+### For å-stems there is å:e and å:i and vowel deletion.  Each alternation is triggered by a combination of phonological content and dummy symbols.
+
+**å:e in Present Participle of even-syllable verbs**  
+
+**å:i in Actor nouns of even-syllable verbs**  
+
+**å-stem vowel deletion**  
+
+### alternations valid for several stem types
+
+**Stem vowel deletion in even-syllable verbs, imp 3sg, 3du, 2pl, 3pl**  
+
+* *ielvveY1up*
+* *0æälvv00up*
+
+* *giessaY1up*
+* *giess00up*
+
+* *bårråY1up*
+* *bårr00up*
+
+## Consonant gradation rules
+
+The consonant gradation rules differ considerably from the corresponding rules for North Sámi. 
+Instead of generalizing oversets of consonants (Cx:Cy &lt;=&gt; ...), each rule contains the
+alternation for one consonant only, and to the right of the
+&lt;=&gt; arrow is listed all the contexts where the relevant
+alternation appears. The disadvantage with this method is that the
+same context must be written several times, if e.g. both p, t and k
+are deleted in the same contexts, each of these contexts must be
+written several times, one for each consonant. The advantage is that
+there are no conflicts during compilation, compilation takes 10
+seconds rather than 3 minutes. The earlier North-Sámi-style rule
+set was ordered according to CG pattern. This pattern is still
+visible in the new rules, via the reference S1-3 etc. (Spiik's
+Series 1, 3-letter pattern, etc) behind each subrule.
+
+This actually opens up for a migration to an xfst rule file
+instead of the current twolc format, since what xfst really cannot
+do is generalize over sets (Cx:Cy etc.). This is an issue for future
+revisions to decide.
+
+The rules are divided in two subsections, deletion rules and
+change (alternation) rules.
+
+### Deletion rules
+
+The b, d, g deletion rules are similar, via the optional ( b ) etc. in front of the "_" symbol, both
+bm:m and bbm:bm alternations are covered. The contexts differ to a certain extent. For
+b and d, the III-I special gradation bbm:m is covered by two separate rules,
+and a special Dummy (X6), not part of the ordinary WeG set.
+
+Note that one of the rules for t:0 refers to #: as part of its context. As soon as clitics are
+added to the word form, this rule will thus not be triggered. Look into this when the clitics are added.
+
+**Consonant gradation b:0**  deletes **b** in S7 and S9 contexts
+
+**Consonant gradation d:0**  ... etc.
+
+* *bednag8>X3*
+* *be0na0>0*
+
+**Consonant gradation g:0**  
+
+**Consonant gradation k:0**  
+
+**Consonant gradation l:0**  
+
+**Consonant gradation m:0**  
+
+**Consonant gradation n:0**  
+
+**Consonant gradation p:0**  
+
+**Consonant gradation s:0**  
+
+* *russjpeQ1*
+* *ru0sjpe0*
+
+* ★*russjpeQ1* (is not standard language)
+* ★*russjpe0* (is not standard language)
+
+**Consonant gradation ŋ:0**  
+
+**Consonant gradation f:0**  
+
+**Consonant gradation r:0**  
+
+**Consonant gradation v:0**  
+
+**Consonant gradation j:0**  
+
+**Consonant gradation t:0**  
+
+* *oajváladtj#*
+* *oajvála0sj#*
+
+**Gradation Series 4, II-I, tj and ts**  
+
+### Change rules
+
+The Cx:Cy format was kept for hk:g, hp:b, ht:d, since the left context h:0 was unique, 
+and no compilation conflict thus arose.
+
+The bb:pp, gg:kk, dd:tt alternations were split into three rules, 
+since keeping them in one Cx:Cy rule created compilation conflicts. 
+Also, d:t contain a rule not found for the other two...
+
+**Gradation Series 4, II-I**  
+
+**bb:pp**  
+
+* *oabbáQ1*
+* *oappá0*
+
+**gg:kk**  
+
+* *vággeQ1*
+* *vákke0*
+
+* ★*vággeQ1* (is not standard language)
+* ★*vágge0* (is not standard language)
+
+**g:k change for clitic -ge**  
+
+**dd:tt and dtj, dts**  
+
+**Gradation Series 7, III-II, ks(t), kt, ktj, kts**  
+
+Exceptional II-III inverse gradation in present participles
+
+This gradation is only for II-I syllable verbs that get III as
+present participles.
+
+Candidates:
+
+* bbm - bm - m
+* ddn - dn - n
+* ddnj- dnj- nj
+* ggŋ - gŋ - ŋ
+* ddj - dj - dj
+
+* hkk - hk - g
+* hpp - hp - b
+
+* htt - ht - d
+* httj- htj- tj
+* htts- hts- ts
+
+Strategy: Do insertion rule for the initial element.
+
+**Consonant insertion as II-III strengthening gradation with bm, gŋ**  
+
+**Consonant insertion as II-III strengthening gradation with dn/j + as I-III strengthening gradation with d**  
+
+**Consonant insertion as II-III strengthening gradation with hk, hp,**  
+
+**Consonant insertion as II-III strengthening gradation with htt(j/s)**  
+
+Debugging of twol-rules
+
+All rule conflicts have been successfully resolved. The rule file
+should be kept that way. Look out for conflicts in the compilation
+process, and resolve them as they appear!
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/abbreviations.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/abbreviations.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/phonology.twolc](https://github.com/giellalt/lang-smj/blob/main/src/fst/phonology.twolc)</small>
 
 ---
 
@@ -4429,6 +4344,102 @@ The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
 ---
 
 
+
+vájnno
+vájnno
+vájnno
+
+* * *
+
+<small>This (part of) documentation was generated from [src/fst/stems/adjectives.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/stems/adjectives.lexc)</small>
+
+---
+
+
+
+sme mojonjálmmiid
+
+* * *
+
+<small>This (part of) documentation was generated from [src/fst/stems/adverbs.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/stems/adverbs.lexc)</small>
+
+---
+
+
+
+* **LEXICON Noun  ** dividing in NounNoPx, NounPx (with a P.Px.add flag)  and NounPxKin (with a P.Nom3Px.add flag)
+
+LOAN
+LOAN
+LOAN
+LOAN SWE altar
+
+* * *
+
+<small>This (part of) documentation was generated from [src/fst/stems/nouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/stems/nouns.lexc)</small>
+
+---
+
+
+
+Reciprocal pronouns as multiword expression
+
+* * *
+
+<small>This (part of) documentation was generated from [src/fst/stems/pronouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/stems/pronouns.lexc)</small>
+
+---
+
+
+# File containing North Saami abbreviations 
+
+## Lexica for adding tags and periods
+
+Splitting in 4 + 1 groups, because of the preprocessor
+
+* **LEXICON Abbreviation-smj **
+1. The ITRAB ;	   lexicon (intransitive abbrs)
+1. The TRNUMAB ;  lexicon (abbrs trans wrt. numberals)
+1. The TRAB ;	   lexicon (transitive abbrs)
+1. The NOAB ;	   lexicon (not really abbrs)
+1. The NUMNOAB ;  lexicon (not behaving as abbr before num)
+
+## The abbreviation lexicon itself
+
+* **LEXICON ITRAB ** are intransitive abbreviations, A.S. etc.
+
+* **LEXICON NOAB ** du, gen, jur
+
+This class contains homonyms, which are both intransitive
+abbreviations and normal words. The abbreviation usage
+is less common and thus only the occurences in the middle of
+the sentnece (when next word has small letters) can be 
+considered as true cases.
+
+* **LEXICON TRNUMAB ** contains abbreviations who are transitive in front of numerals 
+
+For abbrs for which numerals are complements, but other
+words not necessarily are. This group treats arabic numerals as
+if it were transitive but letters as if it were intransitive.
+
+* **LEXICON TRAB ** contains transitive abbreviations
+
+This lexicon is for abbrs that always have a constituent following it.
+
+* **LEXICON NUMNOAB ** su, dii
+
+This class contains homonyms, which are both abbrs for 
+which numerals are complements and normal words. The abbreviation usage
+is less common and thus only the occurences in the middle of
+the sentence can be considered as true cases.
+
+* * *
+
+<small>This (part of) documentation was generated from [src/fst/stems/smj-abbreviations.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/stems/smj-abbreviations.lexc)</small>
+
+---
+
+
 Phonological ACRO converter for Julev Sámi
 ==========================================
 
@@ -4444,18 +4455,6 @@ Default, letter by letter pronunciation
 * * *
 
 <small>This (part of) documentation was generated from [src/phonetics/acro2ipa.xfscript](https://github.com/giellalt/lang-smj/blob/main/src/phonetics/acro2ipa.xfscript)</small>
-
----
-
-
-Phonological converter for Julev Sámi
-=====================================
-
-Converts to IPA. Mainly intended for use with TTS.
-
-* * *
-
-<small>This (part of) documentation was generated from [src/phonetics/txt2ipa.xfscript](https://github.com/giellalt/lang-smj/blob/main/src/phonetics/txt2ipa.xfscript)</small>
 
 ---
 
@@ -4625,6 +4624,18 @@ retracted tongue root			_q
 ---
 
 
+Phonological converter for Julev Sámi
+=====================================
+
+Converts to IPA. Mainly intended for use with TTS.
+
+* * *
+
+<small>This (part of) documentation was generated from [src/phonetics/txt2ipa.xfscript](https://github.com/giellalt/lang-smj/blob/main/src/phonetics/txt2ipa.xfscript)</small>
+
+---
+
+
 
 At some points we will need the genitives, for
 approximate numbers. Here they are.
@@ -4645,24 +4656,6 @@ lågenanguovte
 * * *
 
 <small>This (part of) documentation was generated from [src/transcriptions/clock-from-old-infra.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/clock-from-old-infra.lexc)</small>
-
----
-
-
-
-* * *
-
-<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-numbers-digit2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
-
----
-
-
-
-This is still a dummy file.
-
-* * *
-
-<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-date-digit2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-date-digit2text.lexc)</small>
 
 ---
 
@@ -4706,199 +4699,25 @@ Emojies
 
 ---
 
-Requires a recent version of HFST (3.10.0 / git revision>=3aecdbc)
-Then just:
-$ make
-$ echo "ja, ja" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
 
-Issues:
-- [X] Ambiguous input
-- Seems to work fine
-- [X] Ambiguous multiword expessions with ambiguous tokenisation
-- Seems to work – represented within lexc now; hfst-tokenise also
-supports forms on the analyses now
-- [X] Ambiguous multiword expessions need reorganising after CG
-- The module cg-mwesplit takes wordforms from readings and turns them into
-new cohorts
-- [X] Unknown words
-- The set-difference method only works for words without
-flag diacritics (even though we should be working only on the form-side?)
-and leads to binary blow-up: With only lower unknowns, we get 45M;
-lower+upper gives 67M, while no unknowns gives 27M
-- Fixed instead by treating empty analyses as unknown-tokens in
-hfst-tokenise, and outputting unmatched strings with a prefix
-- [ ] Treat input that's within superblanks as unmatched
-- probably requires a change in hfst-tokenise itself
-- [X] Try >1 space for ambiguous MWE's? – represented within lexc now
-- [ ] Try set-difference-unknowns method with regular hfst commands?
 
-More usage examples:
-$ echo "Juos gorreválggain lea (dárbbašlaš) deavdit gáibádusa boasttu olmmoš, man mielde lahtuid." | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
-$ echo "(gáfe) 'ja' ja 3. ja? ц jaja ukjend \"ukjend\"" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
-$ echo "márffibiillagáffe" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
-
-Pmatch documentation:
-https://kitwiki.csc.fi/twiki/bin/view/KitWiki/HfstPmatch
-
-Apart from what's in our morphology, there are
-1) unknown word-like forms, and
-2) unmatched strings
-We want to give 1) a match, but let 2) be treated specially by hfst-tokenise -a
-
-TODO: Could use something like this, but built-in's don't include šžđčŋ:
-
-Simply give an empty reading when something is unknown:
-hfst-tokenise --giella-cg will treat such empty analyses as unknowns, and
-remove empty analyses from other readings. Empty readings are also
-legal in CG, they get a default baseform equal to the wordform, but
-no tag to check, so it's safer to let hfst-tokenise handle them.
-
-Needs hfst-tokenise to output things differently depending on the tag they get
+This is still a dummy file.
 
 * * *
 
-<small>This (part of) documentation was generated from [tools/tokenisers/tokeniser-tts-cggt-desc.pmscript](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/tokeniser-tts-cggt-desc.pmscript)</small>
-
----
-
-# Grammar checker tokenisation for smj
-
-Requires a recent version of HFST (3.10.0 / git revision>=3aecdbc)
-Then just:
-```
-$ make
-$ echo "ja, ja" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
-```
-
-More usage examples:
-```
-$ echo "Juos gorreválggain lea (dárbbašlaš) deavdit gáibádusa boasttu olmmoš, man mielde lahtuid." | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
-$ echo "(gáfe) 'ja' ja 3. ja? ц jaja ukjend \"ukjend\"" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
-$ echo "márffibiillagáffe" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
-```
-
-Pmatch documentation:
-<https://kitwiki.csc.fi/twiki/bin/view/KitWiki/HfstPmatch>
-
-Characters which have analyses in the lexicon, but can appear without spaces
-before/after, that is, with no context conditions, and adjacent to words:
-* Punct contains ASCII punctuation marks
-* The symbol after m-dash is soft-hyphen `U+00AD`
-* The symbol following {•} is byte-order-mark / zero-width no-break space
-`U+FEFF`.
-
-Whitespace contains ASCII white space and
-the List contains some unicode white space characters
-* En Quad U+2000 to Zero-Width Joiner U+200d'
-* Narrow No-Break Space U+202F
-* Medium Mathematical Space U+205F
-* Word joiner U+2060
-
-Apart from what's in our morphology, there are
-1) unknown word-like forms, and
-2) unmatched strings
-We want to give 1) a match, but let 2) be treated specially by hfst-tokenise -a
-* select extended latin symbols
-* select symbols
-* various symbols from Private area (probably Microsoft),
-so far:
-* U+F0B7 for "x in box"
-
-TODO: Could use something like this, but built-in's don't include šžđčŋ:
-
-Simply give an empty reading when something is unknown:
-hfst-tokenise --giella-cg will treat such empty analyses as unknowns, and
-remove empty analyses from other readings. Empty readings are also
-legal in CG, they get a default baseform equal to the wordform, but
-no tag to check, so it's safer to let hfst-tokenise handle them.
-
-Finally we mark as a token any sequence making up a:
-* known word in context
-* unknown (OOV) token in context
-* sequence of word and punctuation
-* URL in context
-
-* * *
-
-<small>This (part of) documentation was generated from [tools/tokenisers/tokeniser-gramcheck-gt-desc.pmscript](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/tokeniser-gramcheck-gt-desc.pmscript)</small>
-
----
-
-# Tokeniser for smj
-
-Usage:
-```
-$ make
-$ echo "ja, ja" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
-$ echo "Juos gorreválggain lea (dárbbašlaš) deavdit gáibádusa boasttu olmmoš, man mielde lahtuid." | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
-$ echo "(gáfe) 'ja' ja 3. ja? ц jaja ukjend \"ukjend\"" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
-$ echo "márffibiillagáffe" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
-```
-
-Pmatch documentation:
-<https://kitwiki.csc.fi/twiki/bin/view/KitWiki/HfstPmatch>
-
-Characters which have analyses in the lexicon, but can appear without spaces
-before/after, that is, with no context conditions, and adjacent to words:
-* Punct contains ASCII punctuation marks
-* The symbol after m-dash is soft-hyphen `U+00AD`
-* The symbol following {•} is byte-order-mark / zero-width no-break space
-`U+FEFF`.
-
-Whitespace contains ASCII white space and
-the List contains some unicode white space characters
-* En Quad U+2000 to Zero-Width Joiner U+200d'
-* Narrow No-Break Space U+202F
-* Medium Mathematical Space U+205F
-* Word joiner U+2060
-
-Apart from what's in our morphology, there are
-1. unknown word-like forms, and
-2. unmatched strings
-We want to give 1) a match, but let 2) be treated specially by
-`hfst-tokenise -a`
-Unknowns are made of:
-* lower-case ASCII
-* upper-case ASCII
-* select extended latin symbols
-ASCII digits
-* select symbols
-* Combining diacritics as individual symbols,
-* various symbols from Private area (probably Microsoft),
-so far:
-* U+F0B7 for "x in box"
-
-## Unknown handling
-Unknowns are tagged ?? and treated specially with `hfst-tokenise`
-hfst-tokenise --giella-cg will treat such empty analyses as unknowns, and
-remove empty analyses from other readings. Empty readings are also
-legal in CG, they get a default baseform equal to the wordform, but
-no tag to check, so it's safer to let hfst-tokenise handle them.
-
-Finally we mark as a token any sequence making up a:
-* known word in context
-* unknown (OOV) token in context
-* sequence of word and punctuation
-* URL in context
-
-* * *
-
-<small>This (part of) documentation was generated from [tools/tokenisers/tokeniser-disamb-gt-desc.pmscript](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/tokeniser-disamb-gt-desc.pmscript)</small>
+<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-date-digit2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-date-digit2text.lexc)</small>
 
 ---
 
 
 
-### Semantic tags
-
-* Rules for removing some Props which are identical to common nouns
-
-* **IfonlyVerb** selects the FMAINV reading in the cohort
-
-# Removing Err/Orth
-
 * * *
-<small>This (part of) documentation was generated from [src/cg3/disambiguator.cg3](https://github.com/giellalt/lang-smj/blob/main/src/cg3/disambiguator.cg3)</small>
+
+<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-numbers-digit2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
+
+---
+
+
 L U L E   S A A M I   G R A M M A R   C H E C K E R
 
 # DELIMITERS
@@ -5189,4 +5008,184 @@ Needs a rewrite, as the CLB reading is still within the same cohort, not the
 next, if present, since we haven't done the mwe-rewrite yet.
 
 * * *
-<small>This (part of) documentation was generated from [tools/tokenisers/mwe-dis.cg3](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/mwe-dis.cg3)</small>
+<small>This (part of) documentation was generated from [tools/tokenisers/mwe-dis.cg3](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/mwe-dis.cg3)</small># Tokeniser for smj
+
+Usage:
+```
+$ make
+$ echo "ja, ja" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
+$ echo "Juos gorreválggain lea (dárbbašlaš) deavdit gáibádusa boasttu olmmoš, man mielde lahtuid." | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
+$ echo "(gáfe) 'ja' ja 3. ja? ц jaja ukjend \"ukjend\"" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
+$ echo "márffibiillagáffe" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
+```
+
+Pmatch documentation:
+<https://kitwiki.csc.fi/twiki/bin/view/KitWiki/HfstPmatch>
+
+Characters which have analyses in the lexicon, but can appear without spaces
+before/after, that is, with no context conditions, and adjacent to words:
+* Punct contains ASCII punctuation marks
+* The symbol after m-dash is soft-hyphen `U+00AD`
+* The symbol following {•} is byte-order-mark / zero-width no-break space
+`U+FEFF`.
+
+Whitespace contains ASCII white space and
+the List contains some unicode white space characters
+* En Quad U+2000 to Zero-Width Joiner U+200d'
+* Narrow No-Break Space U+202F
+* Medium Mathematical Space U+205F
+* Word joiner U+2060
+
+Apart from what's in our morphology, there are
+1. unknown word-like forms, and
+2. unmatched strings
+We want to give 1) a match, but let 2) be treated specially by
+`hfst-tokenise -a`
+Unknowns are made of:
+* lower-case ASCII
+* upper-case ASCII
+* select extended latin symbols
+ASCII digits
+* select symbols
+* Combining diacritics as individual symbols,
+* various symbols from Private area (probably Microsoft),
+so far:
+* U+F0B7 for "x in box"
+
+## Unknown handling
+Unknowns are tagged ?? and treated specially with `hfst-tokenise`
+hfst-tokenise --giella-cg will treat such empty analyses as unknowns, and
+remove empty analyses from other readings. Empty readings are also
+legal in CG, they get a default baseform equal to the wordform, but
+no tag to check, so it's safer to let hfst-tokenise handle them.
+
+Finally we mark as a token any sequence making up a:
+* known word in context
+* unknown (OOV) token in context
+* sequence of word and punctuation
+* URL in context
+
+* * *
+
+<small>This (part of) documentation was generated from [tools/tokenisers/tokeniser-disamb-gt-desc.pmscript](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/tokeniser-disamb-gt-desc.pmscript)</small>
+
+---
+
+# Grammar checker tokenisation for smj
+
+Requires a recent version of HFST (3.10.0 / git revision>=3aecdbc)
+Then just:
+```
+$ make
+$ echo "ja, ja" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
+```
+
+More usage examples:
+```
+$ echo "Juos gorreválggain lea (dárbbašlaš) deavdit gáibádusa boasttu olmmoš, man mielde lahtuid." | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
+$ echo "(gáfe) 'ja' ja 3. ja? ц jaja ukjend \"ukjend\"" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
+$ echo "márffibiillagáffe" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
+```
+
+Pmatch documentation:
+<https://kitwiki.csc.fi/twiki/bin/view/KitWiki/HfstPmatch>
+
+Characters which have analyses in the lexicon, but can appear without spaces
+before/after, that is, with no context conditions, and adjacent to words:
+* Punct contains ASCII punctuation marks
+* The symbol after m-dash is soft-hyphen `U+00AD`
+* The symbol following {•} is byte-order-mark / zero-width no-break space
+`U+FEFF`.
+
+Whitespace contains ASCII white space and
+the List contains some unicode white space characters
+* En Quad U+2000 to Zero-Width Joiner U+200d'
+* Narrow No-Break Space U+202F
+* Medium Mathematical Space U+205F
+* Word joiner U+2060
+
+Apart from what's in our morphology, there are
+1) unknown word-like forms, and
+2) unmatched strings
+We want to give 1) a match, but let 2) be treated specially by hfst-tokenise -a
+* select extended latin symbols
+* select symbols
+* various symbols from Private area (probably Microsoft),
+so far:
+* U+F0B7 for "x in box"
+
+TODO: Could use something like this, but built-in's don't include šžđčŋ:
+
+Simply give an empty reading when something is unknown:
+hfst-tokenise --giella-cg will treat such empty analyses as unknowns, and
+remove empty analyses from other readings. Empty readings are also
+legal in CG, they get a default baseform equal to the wordform, but
+no tag to check, so it's safer to let hfst-tokenise handle them.
+
+Finally we mark as a token any sequence making up a:
+* known word in context
+* unknown (OOV) token in context
+* sequence of word and punctuation
+* URL in context
+
+* * *
+
+<small>This (part of) documentation was generated from [tools/tokenisers/tokeniser-gramcheck-gt-desc.pmscript](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/tokeniser-gramcheck-gt-desc.pmscript)</small>
+
+---
+
+Requires a recent version of HFST (3.10.0 / git revision>=3aecdbc)
+Then just:
+$ make
+$ echo "ja, ja" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
+
+Issues:
+- [X] Ambiguous input
+- Seems to work fine
+- [X] Ambiguous multiword expessions with ambiguous tokenisation
+- Seems to work – represented within lexc now; hfst-tokenise also
+supports forms on the analyses now
+- [X] Ambiguous multiword expessions need reorganising after CG
+- The module cg-mwesplit takes wordforms from readings and turns them into
+new cohorts
+- [X] Unknown words
+- The set-difference method only works for words without
+flag diacritics (even though we should be working only on the form-side?)
+and leads to binary blow-up: With only lower unknowns, we get 45M;
+lower+upper gives 67M, while no unknowns gives 27M
+- Fixed instead by treating empty analyses as unknown-tokens in
+hfst-tokenise, and outputting unmatched strings with a prefix
+- [ ] Treat input that's within superblanks as unmatched
+- probably requires a change in hfst-tokenise itself
+- [X] Try >1 space for ambiguous MWE's? – represented within lexc now
+- [ ] Try set-difference-unknowns method with regular hfst commands?
+
+More usage examples:
+$ echo "Juos gorreválggain lea (dárbbašlaš) deavdit gáibádusa boasttu olmmoš, man mielde lahtuid." | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
+$ echo "(gáfe) 'ja' ja 3. ja? ц jaja ukjend \"ukjend\"" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
+$ echo "márffibiillagáffe" | hfst-tokenise --giella-cg tokeniser-disamb-gt-desc.pmhfst
+
+Pmatch documentation:
+https://kitwiki.csc.fi/twiki/bin/view/KitWiki/HfstPmatch
+
+Apart from what's in our morphology, there are
+1) unknown word-like forms, and
+2) unmatched strings
+We want to give 1) a match, but let 2) be treated specially by hfst-tokenise -a
+
+TODO: Could use something like this, but built-in's don't include šžđčŋ:
+
+Simply give an empty reading when something is unknown:
+hfst-tokenise --giella-cg will treat such empty analyses as unknowns, and
+remove empty analyses from other readings. Empty readings are also
+legal in CG, they get a default baseform equal to the wordform, but
+no tag to check, so it's safer to let hfst-tokenise handle them.
+
+Needs hfst-tokenise to output things differently depending on the tag they get
+
+* * *
+
+<small>This (part of) documentation was generated from [tools/tokenisers/tokeniser-tts-cggt-desc.pmscript](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/tokeniser-tts-cggt-desc.pmscript)</small>
+
+---
+
