@@ -3478,9 +3478,9 @@ process, and resolve them as they appear!
 
 # Lule Sámi morphological analyser
 
-Definitions for Multichar_Symbols
+# Definitions for Multichar_Symbols
 
-Tags for POS
+## Tags for POS
 
 * **+N** = Noun
 * **+A** = Adjective
@@ -3498,12 +3498,12 @@ Tags for POS
 * **+TODO** = Code for items that have not been modeled yet
 * **+Dyn** = Code dynamic acronyms
 
-Tags for sub-POS
+### Tags for sub-POS
 
 * **+Prop** = Propernouns
 * **+ACR** = Acronym
 
-Pronoun subtypes
+### Pronoun subtypes
 
 * **+Pers** = Personal pronoun
 * **+Dem** = Demonstrative pronoun
@@ -3518,7 +3518,7 @@ Pronoun subtypes
 
 ## Error tags
 
-All Err-tags must have normative form as lemma except Err/Lex
+All Err-tags must have a normative form as lemma except Err/Lex
 
 * **+Err/Orth** = Substandard. An ungrammatical, non-normative form of normative lemma.
 * **+Err/Lex** = No normative lemma
