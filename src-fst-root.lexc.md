@@ -380,7 +380,6 @@ These tags should always be located just before the POS tag.
 
 ### Multiple Semantic tags:
 
-* **+Sem/Ani_Group** =
 * **+Sem/Act_Clth** =
 * **+Sem/Act_Domain** =
 * **+Sem/Act_Domain_Measr** =
@@ -417,6 +416,7 @@ These tags should always be located just before the POS tag.
 * **+Sem/Ani_Feat_Hum** =
 * **+Sem/Ani_Feat_Plant** =
 * **+Sem/Ani_Food** =
+* **+Sem/Ani_Group** =
 * **+Sem/Ani_Group_Hum** =
 * **+Sem/Ani_Group_Prod-vis** =
 * **+Sem/Ani_Hum** =
@@ -509,13 +509,14 @@ These tags should always be located just before the POS tag.
 * **+Sem/Ctain_Furn** =
 * **+Sem/Ctain_Obj-surfc** =
 * **+Sem/Ctain_Plc** =
-* **+Sem/Ctain_Txt** =
 * **+Sem/Ctain_Tool** =
 * **+Sem/Ctain_Tool-measr** =
+* **+Sem/Ctain_Txt** =
 * **+Sem/Curr_Org** =
 * **+Sem/Dance_Org** =
 * **+Sem/Dance_Prod-audio** =
 * **+Sem/Dir_Geom** =
+* **+Sem/Domain_Edu** =
 * **+Sem/Domain_Feat** =
 * **+Sem/Domain_Feat-phys** =
 * **+Sem/Domain_Food-med** =
@@ -528,7 +529,6 @@ These tags should always be located just before the POS tag.
 * **+Sem/Domain_Prod-audio** =
 * **+Sem/Domain_State-sick** =
 * **+Sem/Domain_Txt** =
-* **+Sem/Domain_Edu** =
 * **+Sem/Drink_Plant** =
 * **+Sem/Drink_Plc** =
 * **+Sem/Drink_Plc_Substnc** =
