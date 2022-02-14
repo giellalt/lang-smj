@@ -200,6 +200,7 @@ analyser-tts-gt-output.tmp.%: fst/lexicon.% \
 			.o. @\"$<\"                                         \
 			.o. @\"filters/backtrack-on-hyphens.$*\"            \
 			;\n\
+		 twosided flag-diacritics\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
@@ -269,7 +270,6 @@ analyser-tts-gt-input.%: analyser-tts-gt-input.tmp.%          \
 			.o. @\"orthography/spellrelax.compose.$*\"          \
 			;\n\
 		 $(INVERT_HFST)\
-		 twosided flag-diacritics\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
