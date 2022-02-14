@@ -248,12 +248,14 @@ analyser-tts-gt-input.%: analyser-tts-gt-input.tmp.%          \
 					filters/remove-hyphenation-marks.%        \
 					filters/remove-infl_deriv-borders.%       \
 					filters/remove-word-boundary.%            \
+					filters/backtrack-on-hyphens.%            \
 					orthography/inituppercase.compose.%       \
 					orthography/spellrelax.compose.%          \
 					$(GLT_DOWNCASE_FILTER)
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 			    @\"$<\" \
 			    $(GLT_DOWNCASE_COMPOSE) \
+			.o. @\"filters/backtrack-on-hyphens.$*\"            \
 			.o. @\"filters/remove-hyphenation-marks.$*\"        \
 			.o. @\"filters/remove-infl_deriv-borders.$*\"       \
 			.o. @\"filters/remove-word-boundary.$*\"            \
