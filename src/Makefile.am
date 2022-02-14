@@ -168,20 +168,13 @@ endif !WITH_OFST_TROPICAL
 #					filters/remove-area-tags.%                
 #					filters/remove-dialect-tags.%             
 #					filters/remove-number-string-tags.%       
-#					filters/remove-semantic-tags.%            
 #					filters/remove-hyphenation-marks.%        
-#					filters/remove-infl_deriv-borders.%       
-#					filters/remove-word-boundary.%            
 #					filters/remove-orthography-tags.%         
-#					filters/remove-Orth_IPA-strings.%         
-#					filters/remove-orig_lang-tags.%           
 #					filters/remove-Use_GC-strings.%           
 #					filters/remove-Use_minusGC-tags.%         
 #					filters/remove-Use_minus_PMatch-tags.%    
 #					filters/remove-Use_PMatch-strings.%       
 #					filters/remove-mwe-tags.%                 
-#					orthography/inituppercase.compose.%       
-#					orthography/spellrelax.compose.%          
 #
 # First we create the filtered lexicon, ie the analysis/output part of the cascade:
 analyser-tts-gt-output.tmp.%: fst/lexicon.% \
