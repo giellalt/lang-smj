@@ -45,7 +45,8 @@ GIELLA_FILTER_LOCAL_REGEX_SRCS=\
 					remove-dynamic_compound-char.regex \
 					convert-æae-to-area-variant.regex \
 					convert-æae-to-both.regex \
-					insert-area-tags.regex
+					insert-area-tags.regex \
+					backtrack-on-hyphens.regex
 
 # List any local filter xfscript files here:
 GIELLA_FILTER_LOCAL_XFSCRIPT_SRCS=
