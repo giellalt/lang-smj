@@ -854,6 +854,11 @@ given the proper use of these flags.
 |  @P.Nom3Px.add@ | Giving possibility for Px-suffixes Nom 3.p
 |  @R.Nom3Px.add@ | Requiring P.Nom3Px.add flag for Px-suffixes Nom 3.p
 
+# Lexicon `Root`
+
+The beginning of everything. Every FST defined in LexC must start with the
+reserved lexicon name `Root`.
+
 * **LEXICON Acronym**
 
 * **LEXICON ProperNoun**
