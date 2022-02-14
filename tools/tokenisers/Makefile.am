@@ -55,9 +55,9 @@ analyser-tts-cggt-input.hfst: $(top_builddir)/src/analyser-tts-gt-input.hfst
 analyser_relabelled-tts-cggt-%.hfst: analyser-tts-cggt-%.hfst \
 						 btrelabeller.hfst \
 						 relabeller.hfst
-	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) \
+	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(MORE_VERBOSITY) \
 		-f '@P.Pmatch.Backtrack@' -T btrelabeller.hfst $< \
-		| $(HFST_SUBSTITUTE) \
+		| $(HFST_SUBSTITUTE) $(MORE_VERBOSITY) \
 		-f '@P.Pmatch.Loc@'       -T   relabeller.hfst \
 		-o $@
 
