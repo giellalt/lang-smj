@@ -188,8 +188,9 @@ analyser-tts-gt-output.tmp.%: fst/lexicon.% \
 					filters/remove-derivation-position-tags.% \
 					filters/remove-norm-comp-tags.%           \
 					filters/remove-use_mt-strings.%           \
-					filters/remove-DNorm-tags.% \
-					filters/remove-usage-tags.%
+					filters/remove-DNorm-tags.%               \
+					filters/remove-usage-tags.%               \
+					filters/backtrack-on-hyphens.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/remove-usage-tags.$*\"               \
 			.o. @\"filters/remove-derivation-position-tags.$*\" \
@@ -197,6 +198,7 @@ analyser-tts-gt-output.tmp.%: fst/lexicon.% \
 			.o. @\"filters/remove-DNorm-tags.$*\"               \
 			.o. @\"filters/remove-use_mt-strings.$*\"           \
 			.o. @\"$<\"                                         \
+			.o. @\"filters/backtrack-on-hyphens.$*\"            \
 			;\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
@@ -267,6 +269,7 @@ analyser-tts-gt-input.%: analyser-tts-gt-input.tmp.%          \
 			.o. @\"orthography/spellrelax.compose.$*\"          \
 			;\n\
 		 $(INVERT_HFST)\
+		 twosided flag-diacritics\n\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
