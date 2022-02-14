@@ -91,7 +91,8 @@ Define alphabet "a-z"
                | {}
                ;
 
-Define alphamiddle {'}|{-} ; ! Treat foo-bar as one big unknown, but -foo (or bar-) as two tokens
+!Define alphamiddle {'}|{-} ; ! Treat foo-bar as one big unknown, but -foo (or bar-) as two tokens
+Define alphamiddle {'} ; ! Treat foo'bar as one big unknown, but 'foo (or bar') as two tokens
 Define alphaword alphabet+ ( alphamiddle alphabet+ );
 !! TODO: Could use something like this, but built-in's don't include šžđčŋ:
 ! Define MixCase(X) [OptCap(X) | UpCase(X)];
