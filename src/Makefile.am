@@ -210,15 +210,15 @@ if WANT_REVERSED_INTERSECT
 analyser-tts-gt-input.tmp.hfst: analyser-tts-gt-output.tmp.hfst \
 					 fst/phonology.rev.hfst
 	$(AM_V_INTRSCT)\
-		  $(HFST_PROJECT) $(MORE_VERBOSITY) $(HFST_FLAGS) -p output $< \
-		| $(HFST_REVERSE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		  $(HFST_PROJECT)     $(MORE_VERBOSITY) $(HFST_FLAGS) -p output $< \
+		| $(HFST_REVERSE)     $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
-		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		| $(HFST_MINIMIZE)    $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
-			$(MORE_VERBOSITY) $(HFST_FLAGS) \
+							  $(MORE_VERBOSITY) $(HFST_FLAGS) \
 			-2 fst/phonology.rev.hfst \
-		| $(HFST_REVERSE) \
-		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		| $(HFST_REVERSE)     $(MORE_VERBOSITY) \
+		| $(HFST_MINIMIZE)    $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-o $@
 
 else
@@ -226,13 +226,13 @@ else
 analyser-tts-gt-input.tmp.hfst: analyser-tts-gt-output.tmp.hfst \
 					 fst/phonology.compose.hfst
 	$(AM_V_INTRSCT)\
-		  $(HFST_PROJECT) $(MORE_VERBOSITY) $(HFST_FLAGS) -p output $< \
+		  $(HFST_PROJECT)     $(MORE_VERBOSITY) $(HFST_FLAGS) -p output $< \
 		| $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
-		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		| $(HFST_MINIMIZE)    $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
-			$(MORE_VERBOSITY) $(HFST_FLAGS) \
+							  $(MORE_VERBOSITY) $(HFST_FLAGS) \
 			-2 fst/phonology.compose.hfst \
-		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		| $(HFST_MINIMIZE)    $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-o $@
 endif # WANT_REVERSED_INTERSECT
 
