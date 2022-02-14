@@ -824,6 +824,9 @@ For languages that allow compounding, the following flag diacritics are needed
 to control position-based compounding restrictions for nominals. Their use is
 handled automatically if combined with +CmpN/xxx tags. If not used, they will
 do no harm.
+
+|              Flag diacritic | Explanation
+|              :------------- |:-----------
 |  @P.CmpFrst.FALSE@ | Require that words tagged as such only appear first
 |  @D.CmpPref.TRUE@ | Block such words from entering ENDLEX
 |  @P.CmpPref.FALSE@ | Block these words from making further compounds
@@ -836,15 +839,19 @@ do no harm.
 |  @U.CmpHyph.FALSE@ | Flag to control hyphenated compounds like proper nouns
 |  @U.CmpHyph.TRUE@ | Flag to control hyphenated compounds like proper nouns
 |  @C.CmpHyph@ | Flag to control hyphenated compounds like proper nouns
+
 Use the following flag diacritics to control downcasing of derived proper
 nouns (e.g. Finnish Pariisi -> pariisilainen). See e.g. North Sámi for how to use
 these flags. There exists a ready-made regex that will do the actual down-casing
 given the proper use of these flags.
+
+|           Flag diacritic | Explanation
+|           :------------- |:-----------
 |  @U.Cap.Obl@ | Disallow downcasing of names when not derived: Deatnu
 |  @U.Cap.Opt@ | Allowing downcasing of derived names: deatnulasj.
 |  @P.Px.add@ | Giving possibility for Px-suffixes (all except from Nom 3.p)
 |  @R.Px.add@ | Requiring P.Px.add-flag for Px-suffixes (all except from Nom 3.p)
-|  @P.Nom3Px.add@ |  Giving possibility for Px-suffixes Nom 3.p
+|  @P.Nom3Px.add@ | Giving possibility for Px-suffixes Nom 3.p
 |  @R.Nom3Px.add@ | Requiring P.Nom3Px.add flag for Px-suffixes Nom 3.p
 
 * **LEXICON Acronym**
