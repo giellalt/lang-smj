@@ -1204,7 +1204,7 @@ COPY:msyn-pron-ill-com-oahpástuvvat2 (Com &SUGGEST) EXCEPT (Ill &msyn-proncom-i
     # Pred when should be attr
     #--------------------------
 
-ADD:msyn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF (NEGATE 0 Attr) (*1 N + CASE OR A + CASE BARRIER (*) - (A Attr))
+ADD:msyn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF (NEGATE 0 Attr OR (V Sg3)) (*1 N + CASE OR A + CASE BARRIER (*) - (A Attr))
 (NEGATE *-1 COPULAS BARRIER NOT-ADV-PCLE LINK *2 Inf BARRIER NOT-NPMODADV - Acc - (A Sg Nom));
 
 COPY:msyn-pred-attr (Attr &SUGGEST) EXCEPT (Sg Nom &msyn-pred-attr) TARGET (&msyn-pred-attr) ;
@@ -1214,6 +1214,7 @@ COPY:msyn-pred-attr (Attr &SUGGEST) EXCEPT (Sg Nom &msyn-pred-attr) TARGET (&msy
     #$ Soajttá liehket gássjel bágov mujttet jali diehtet makkir bágov goassa galggá adnet, gå sámegielav tjálá.
     #$ Muhttijn soajttá aj {gássjel} mánájda vuojnnet aktijvuodav sivá ja vájkkudusá gaskan gå li iehtjádij siegen.
     #$ Galggi aj ájggeguovddelis ássjev åvddånbuktet {oajválattjajda} mij guosská vuorrasij iellemdilláj ja álkkádussaj.
+    #$ Mån lav duojt slávggárájdojt ja nástijt gahtsum, {huomáhahttá} Arne.
 
     
     #$ Jus sámegiella li ienep vuojnnuj boahtet duola dagu mediagåvån, de jáhkáv sámegiela stáhtus li dalága lassánit.
@@ -1466,7 +1467,7 @@ COPY:real-PrtSg2-PrtSg3 (Sg3 &SUGGEST) EXCEPT (Sg2) TARGET (&real-PrtSg2-PrtSg3)
 
     # left subj
 
-ADD:real-negSg3-negSg2 (&real-negSg3-negSg2) TARGET ( "ij" )  IF (0 (Sg3)) (*-1 (Pron Nom Sg2) BARRIER S-BOUNDARY OR CS OR CC OR VFIN) ;
+ADD:real-negSg3-negSg2 (&real-negSg3-negSg2) TARGET ("ij") IF (0 (Sg3)) (*-1 (Pron Nom Sg2) BARRIER S-BOUNDARY OR CS OR CC OR VFIN) ;
 
     ## dån ij galga iehtjádij sáhkadit hielles jali negatijva priváhta ássjij birra , ietján_gå lagámus fámilljaj .
 
@@ -1482,7 +1483,7 @@ ADD:real-negSg3-negSg2 (&real-negSg3-negSg2) TARGET ( "ij" )  IF (0 (Sg3)) (*-1 
 
     # right subj
 
-ADD:real-negSg3-negSg2 (&real-negSg3-negSg2) TARGET ( "ij" )  IF (0 (Sg3)) (*1 (Pron Nom Sg2) BARRIER S-BOUNDARY OR CS OR CC OR VFIN) ;
+ADD:real-negSg3-negSg2 (&real-negSg3-negSg2) TARGET ("ij")  IF (0 (Sg3)) (*1 (Pron Nom Sg2) BARRIER S-BOUNDARY OR CS OR CC OR VFIN) ;
 
 
 COPY:real-negSg3-negSg2 (Sg2 &SUGGEST) EXCEPT (Sg3) TARGET  (&real-negSg3-negSg2) ;
