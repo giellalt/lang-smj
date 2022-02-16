@@ -34,7 +34,10 @@ hfst-tokenise -g "$tool_dir/tokeniser-disamb-gt-desc.pmhfst" < $innput \
     -t ABBR \
     -t Num \
     -t Ord \
- | if [ -n "$IPA" ]; then divvun-phon -p $tool_dir/txt2ipa.lookup.hfstol; else cat; fi \
+ | if [ -n "$IPA" ]; then \
+     divvun-phon -p $tool_dir/txt2ipa.lookup.hfstol \
+     -a ACR=$tool_dir/acro2ipa.lookup.hfstol ; \
+     else cat; fi \
  | $giella_core/scripts/vislcg-convert.py -t phon -1 \
  | grep -v "^:" \
  | grep -v "^$" \
