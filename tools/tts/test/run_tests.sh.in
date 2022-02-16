@@ -3,7 +3,9 @@
 # Run normaliser tests
 
 giella_core=@GIELLA_CORE@
+glang=@GLANG@
 tool_dir=$(pwd)/..
+script_dir=${tool_dir}/modes
 
 test_file=$1
 innput=$(basename $test_file .txt).in
@@ -17,24 +19,15 @@ fi
 cut -d"#" -f1 $test_file | grep -v "^$" | head -n 1 > $innput
 cut -d"#" -f1 $test_file | grep -v "^$" | tail -n +2 | cut -f1-2 | grep -v "^:" > $expect
 
-# Replace long pipeline with zpipe file when libdivvun is working, to ensure
-# we are testing the real thing.
-hfst-tokenise -g "$tool_dir/tokeniser-disamb-gt-desc.pmhfst" < $innput \
- | divvun-blanktag "$tool_dir/analyser-gt-whitespace.hfst" \
- | vislcg3 -g "$tool_dir/valency.bin" \
- | vislcg3 -g "$tool_dir/mwe-dis.bin" \
- | cg-mwesplit \
- | vislcg3 -g "$tool_dir/disambiguator.bin" \
- | vislcg3 -g "$tool_dir/functions.bin" \
- | vislcg3 -g "$tool_dir/dependency.bin" \
- | divvun-normaliser \
-    -a  "$tool_dir/analyser-gt-norm.hfstol" \
-    -g  "$tool_dir/generator-gt-norm.hfstol" \
-    -n  "$tool_dir/transcriptor-gt-desc.hfstol" \
-    -t ABBR \
-    -t Num \
-    -t Ord \
- | if [ -n "$IPA" ]; then divvun-phon -p $tool_dir/txt2ipa.lookup.hfstol; else cat; fi \
+# Replace use of mode files with zpipe file when libdivvun is working.
+# The mode files require a manual run of `cd tools/tts/ && make dev` before
+# working, and that's no good for `make check`
+if [ -n "$IPA" ]; then
+    testscript=${glang}-txt2ipa.mode
+else
+    testscript=${glang}-normaliser.mode
+fi
+"${script_dir}/${testscript}" < $innput \
  | $giella_core/scripts/vislcg-convert.py -t phon -1 \
  | grep -v "^:" \
  | grep -v "^$" \
