@@ -15,6 +15,9 @@ GIELLA_ANL_DISAMBIGUATOR_SRC=disambiguator.cg3
 GIELLA_ANL_FUNCTIONS_SRC=functions.cg3
 GIELLA_ANL_DEPENDENCY_SRC=dependency.cg3
 
+# Tokeniser:
+GIELLA_ANL_TOKENISER=tokeniser-tts-cggt-desc.pmhfst
+
 # List transcriptor source files from src/transcriptions/ (without extension)
 # that should NOT be included in the tts text processing (by default everything
 # is included):
@@ -22,15 +25,10 @@ GIELLA_ANL_REMOVE_TRANSCRIPTORS=
 
 # If there are additional, language specific files used in the GC archive,
 # specify here:
-LOCAL_ANL_ZIP_FILES=tokeniser-tts-cggt-desc.pmhfst \
-					generated-remove-lexicalised-compounds.bin \
+LOCAL_ANL_ZIP_FILES=generated-remove-lexicalised-compounds.bin \
 					acro2ipa.hfstol
 
 #### BEGIN: Local build targets: ####
-
-# Temporary target until we have settled the three-tape text processing:
-tokeniser-tts-cggt-desc.pmhfst: ../tokenisers/tokeniser-tts-cggt-desc.pmhfst
-	$(AM_V_CP)cp -f $< $@
 
 # Copy special FST for acro to IPA conversion:
 acro2ipa.hfstol: ../../src/phonetics/acro2ipa.lookup.hfst
