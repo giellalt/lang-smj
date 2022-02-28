@@ -32,6 +32,7 @@ LOCAL_ANL_ZIP_FILES=tokeniser-tts-cggt-desc.pmhfst \
 tokeniser-tts-cggt-desc.pmhfst: ../tokenisers/tokeniser-tts-cggt-desc.pmhfst
 	$(AM_V_CP)cp -f $< $@
 
+# Copy special FST for acro to IPA conversion:
 acro2ipa.hfstol: ../../src/phonetics/acro2ipa.lookup.hfst
 	$(AM_V_FST2FST)$(HFST_FST2FST) -w < $< > $@
 
