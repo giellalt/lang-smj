@@ -23,6 +23,7 @@ GIELLA_ANL_REMOVE_TRANSCRIPTORS=
 # If there are additional, language specific files used in the GC archive,
 # specify here:
 LOCAL_ANL_ZIP_FILES=tokeniser-tts-cggt-desc.pmhfst \
+					generated-remove-lexicalised-compounds.bin \
 					acro2ipa.hfstol
 
 #### BEGIN: Local build targets: ####
@@ -33,6 +34,10 @@ tokeniser-tts-cggt-desc.pmhfst: ../tokenisers/tokeniser-tts-cggt-desc.pmhfst
 
 acro2ipa.hfstol: ../../src/phonetics/acro2ipa.lookup.hfst
 	$(AM_V_FST2FST)$(HFST_FST2FST) -w < $< > $@
+
+# Copy to file with another name, to work around VPATH / CG3 INCLUDE incomps:
+generated-remove-lexicalised-compounds.cg3: remove-lexicalised-compounds.cg3
+	$(AM_V_CP)cp -f $< $@
 
 #### END: Local build targets:   ####
 
