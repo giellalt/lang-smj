@@ -971,6 +971,8 @@ COPY:msyn-sme_bastard_neg2 (Ind ConNeg &SUGGEST) EXCEPT (PrfPrc &msyn-sme_bastar
 ADD:msyn-soajttá-adv (&msyn-soajttá-adv) TARGET ("soajttet" V IV Ind Prs Sg3) IF (NEGATE *1 Inf OR PrfPrc BARRIER NOT-NPMODADVPCLE - (A Sg Nom) - Acc - (N Nom) - (N Com) - (N Ill) - (N Ela) - (N Ine)) (NEGATE *1 ( "liehket" V IV Ind Prs Sg3) BARRIER NOT-ADV-PCLE) ;
 	## - {Soajttá} fáhtsa nali sæjvvu, javllá Ánni ja giedav gadtsabiddjáj gálggi. 
 	## {Soajttá} soames áddjá lev. 
+	## Jali {soajttá} iv riekta mujte; ihkap akta (1) ulmusj munji juojddájt javlaj, dav 27 - 28 jage dán åvddåla… #Inga #NEW
+	## Valla iv diede jus gávnnu nágin sláj sáme vuodovuojnno, valla {soajttá} lijma álgget ájádallat dan guovlluj, gávnadime diehti jus dákkár vuodovuojnnu åvvånis gávnnu.
 
 COPY:msyn-soajttá-adv ("ihkap" Adv &SUGGEST ) EXCEPT ("soajttet" V IV Ind Prs Sg3 &msyn-soajttá-adv) TARGET (&msyn-soajttá-adv) ;
 
@@ -1250,8 +1252,8 @@ ADD:msyn-mij-gut (&msyn-mij-gut) TARGET ("mij") IF (*-1 (N Coll) OR (Sem/Hum) OR
     ## Men de bådij dåktår badjen mij máhtij tyskav sáhkadit OK
     ## {”Måske-aksjåvnnå}${conc-sk-ssk|Måsske-aksjåvnnå}” åtsåj rudájt, ja biedjin {ulmutjav virggáj mij}£{x|ulmutjav virggáj gut}
     #$  Sij galggi oahpástuvvat fágajn dan láhkáj vaj oadtju mielav bargatjit vijdábut ienemus abstrákta åsijn matematihkan, dajna {mij} ij njuolgga tjanáduvá iellemij skåvlå ålggolin. DNW 
-
-
+	#$ Ij la våjn ávkke, jus dagu ”dålusj ájgge-luodjomav” biebbmagoahtep, valla ulmme mijá siebrudahkabargoj viertti farra årrot, bajás låggñit davva {mij} duodalattjat la buorren åvddåla årrum. #Inga NEW - riekta vai boasttut?
+	#$ Ja duohta le, miján li moadda buorre ja hávsskes oase, man nali lulujma tsieggigoahtet, davva {majt} lidjiv dánna sihtat gåhttjot ”sáme vuodovuojnnon”. #Inga NEW - riekta vai boasttut?
 	# interrogative use
 
 ADD:msyn-mij-gut (&msyn-mij-gut) TARGET ("mij" Nom) IF (*1 COPULAS BARRIER NOT-ADV-PCLE LINK *1 Sem/Hum + N BARRIER NOT-NPMOD) ;
@@ -1277,7 +1279,7 @@ COPY:msyn-pass-active (&SUGGEST) EXCEPT (Der/PassL &msyn-pass-active) OR (Der/Pa
 
  SET NOT-BEFORE-REL = (*) - Inf - VFIN - COMMA - Po ;
 
-ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NEGATE -1 VFIN OR Inf LINK -1 (N Sg) OR (Pron Sg))(NEGATE *-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK -1 ("akta") OR ("1" Num));
+ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NEGATE -1 VFIN OR Inf LINK -1 (N Sg) OR (Pron Sg))(NEGATE *-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK -1 ("akta") OR ("1" Num))(NEGATE -1 Po LINK -1 (Gen Pl) LINK -1 (N Sg));
     ## Valla mij gut lijma Vuonas vuolggám ejma davdiede.
     ## Da gut ásadin æjvvalimev, lidjin dudálattja.
     ## Ulmutjijda guhti doarjodi báhtariddjijt.
@@ -1296,8 +1298,9 @@ ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Pl) OR
     #$ Máná sujttoaddne gut gálggá miededit sujttuj mij mánnáj fáladuvvá.
     #$ Aktisasjbarggo Jielleváre ja Divtasvuona  suohkanij gaskan le konkrehta aktisasjbarggo suohkanij gaskan mij buoragit hiehpá nuorttaguovllovuorodibmáj.
     #$ Jus dån aj dán biejve lulu dádjadit, mij dunji ráfev vaddá! NOT
+    #$ Aktisasjbarggo Jielleváre ja Divtasvuona  suohkanij gaskan le konkrehta aktisasjbarggo suohkanij gaskan {mij} buoragit hiehpá nuorttaguovllovuorodibmáj.
 
-ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Sg) BARRIER NOT-BEFORE-REL LINK *-1 Num - ("akta") BARRIER NOT-NPMOD ) ;
+ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Sg) BARRIER NOT-BEFORE-REL LINK *-1 Num - ("akta") BARRIER NOT-NPMOD) ;
 
     ## Mij lip vihtta nuora guhti vuolggep dåhku.
     ## Da li gålmmå nuora gut
@@ -1657,11 +1660,14 @@ COPY:msyn-numeral-attr-pl-com (Sg Com &SUGGEST) EXCEPT (Sg Ill) TARGET (&msyn-nu
 	
 	# with genitive nouns
 
-ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (*1 (N Pl Nom) + &msyn-numeral-attr OR (N Pl Nom) +  &msyn-numeral-accattr OR (Sg Gen) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Acc LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc)(NEGATE *-1 ("liehket" Pl3) BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)(NEGATE 0 Acc LINK *-1 TV BARRIER NOT-ADV-PCLE);
+ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (*1 (N Pl Nom) + &msyn-numeral-attr OR (N Pl Nom) +  &msyn-numeral-accattr OR (Sg Gen) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Acc LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc)(NEGATE *-1 ("liehket" Pl3) BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)(NEGATE 0 Acc LINK *-1 TV BARRIER NOT-ADV-PCLE)(NEGATE 0 Arab);
+	## Birrusin {guokta} vahko dás åvddåla mierredij avtajienalasj Sámedigge nuorttarijkalasj sáme dutkam- ja fáhka/ressursa guovdátjav ásadit. #NEW INGA
+	#$ Dálla li {29} jage gållåm dalutjis gå månnå dáv bargov álggiv, valla ij la aktak mujna ságastam, ietjam julevsáme guojmijs, ja majdik moalkedam dán ájnas bargo birra.   #NEW INGA
 
 	# with other cases
 
-ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (*1 (N Pl) + &msyn-numeral-attr OR (N Pl) +  &msyn-numeral-accattr OR (Sg Ill) OR (Sg Com) OR (Sg Ine) BARRIER (*) - (A Attr) LINK NOT 0 (N Pl Nom) OR (N Coll Nom) OR Acc LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc)(NEGATE *-1 ("liehket" Pl3) BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN);
+ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (*1 (N Pl) + &msyn-numeral-attr OR (N Pl) +  &msyn-numeral-accattr OR (Sg Ill) OR (Sg Com) OR (Sg Ine) BARRIER (*) - (A Attr) LINK NOT 0 (N Pl Nom) OR (N Coll Nom) OR Acc LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc)(NEGATE *-1 ("liehket" Pl3) BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)(NEGATE 0 Arab);
+	## Mij lip NSRan  guhkev juo berustam, ja ájn berustip, nannit aktijvuodav sámij gaskan divna {niellja} rijkajn duola degu konkrehtalasj aktisasjbargo baktu.  #NEW INGA
 
 
 	#$ Duola degu de li dåssju guokta stádasuohkana.
@@ -1693,7 +1699,7 @@ COPY:msyn-numeral-casecongr (Sg Ine &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-casec
     ## makkár rahtjamusá li nielje sámegielajn
 
     
-ADD:msyn-numeral-casecongr-guovte-com (&msyn-numeral-casecongr-guovte-com) TARGET (Num Sg Gen) IF (*1 (Num Sg Com) BARRIER NOT-NPMOD) ;
+ADD:msyn-numeral-casecongr-guovte-com (&msyn-numeral-casecongr-guovte-com) TARGET (Num Sg Gen) IF (*1 (Num Sg Com) BARRIER NOT-NPMOD)(NEGATE 0 Arab) ;
 COPY:msyn-numeral-casecongr-guovte-com (Com &SUGGEST) EXCEPT (Gen) TARGET (&msyn-numeral-casecongr-guovte-com) ;
 
     ## Foanndaj la jahkásattjat lasedibme kapitálas {guovte} miljåvnåjn gålmmå jahkáj.
@@ -1701,7 +1707,7 @@ COPY:msyn-numeral-casecongr-guovte-com (Com &SUGGEST) EXCEPT (Gen) TARGET (&msyn
 	# special case Acc
 	# - - - - - - - - -
 
-ADD:msyn-numeral-acccasecongr-akta (&msyn-numeral-acccasecongr-akta) TARGET ("akta" Num Sg Nom) OR ("akta" Num Sg Gen) OR ("1" Num Arab) IF (*1 (N Sg Acc) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) ) ;
+ADD:msyn-numeral-acccasecongr-akta (&msyn-numeral-acccasecongr-akta) TARGET ("akta" Num Sg Nom) OR ("akta" Num Sg Gen) OR ("1" Num Arab) IF (*1 (N Sg Acc) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
 
     ## mån vuojnáv akta gusáv.
     ## mån vuojnáv avta gusáv.
@@ -1709,7 +1715,7 @@ ADD:msyn-numeral-acccasecongr-akta (&msyn-numeral-acccasecongr-akta) TARGET ("ak
  
 COPY:msyn-numeral-acccasecongr-akta (Sg Acc &SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) TARGET (&msyn-numeral-acccasecongr-akta) ;
 
-ADD:msyn-numeral-acccasecongr (&msyn-numeral-acccasecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (0 ("<.*v>"r))(*1 (N Pl Acc) +  &msyn-numeral-attr OR (N Pl Acc) +  &msyn-numeral-accattr OR (A Pl Acc) +  &msyn-numeral-accattr OR (N Pl Nom) OR ( A Pl Nom)  BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) (NEGATE 0 ("akta" Num) OR ("1" Num)) ;
+ADD:msyn-numeral-acccasecongr (&msyn-numeral-acccasecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (0 ("<.*v>"r))(*1 (N Pl Acc) +  &msyn-numeral-attr OR (N Pl Acc) +  &msyn-numeral-accattr OR (A Pl Acc) +  &msyn-numeral-accattr OR (N Pl Nom) OR ( A Pl Nom)  BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) (NEGATE 0 ("akta" Num) OR ("1" Num))(NEGATE 0 Arab) ;
 
 COPY:msyn-numeral-acccasecongr (Sg Nom &SUGGEST) EXCEPT (Sg Acc &msyn-numeral-acccasecongr) OR (Sg Gen &msyn-numeral-acccasecongr)  TARGET (&msyn-numeral-acccasecongr) + ("<.*v>"r) IF (*1 (N Pl Acc) +  &msyn-numeral-accattr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
 
