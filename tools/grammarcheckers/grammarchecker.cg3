@@ -972,7 +972,10 @@ ADD:msyn-soajttá-adv (&msyn-soajttá-adv) TARGET ("soajttet" V IV Ind Prs Sg3) 
 	## - {Soajttá} fáhtsa nali sæjvvu, javllá Ánni ja giedav gadtsabiddjáj gálggi. 
 	## {Soajttá} soames áddjá lev. 
 	## Jali {soajttá} iv riekta mujte; ihkap akta (1) ulmusj munji juojddájt javlaj, dav 27 - 28 jage dán åvddåla… #Inga #NEW
-	## Valla iv diede jus gávnnu nágin sláj sáme vuodovuojnno, valla {soajttá} lijma álgget ájádallat dan guovlluj, gávnadime diehti jus dákkár vuodovuojnnu åvvånis gávnnu.
+	## Valla iv diede jus gávnnu nágin sláj sáme vuodovuojnno, valla {soajttá} lijma álgget ájádallat dan guovlluj, gávnadime diehti jus dákkár vuodovuojnnu åvvånis gávnnu.  #Inga #NEW
+	## Ja {soajttá} dáhta ij la nav nievrren sáme siebrudahkaj?   #Inga #NEW
+	## Ij la álkke diehtet mij la sivvan, valla {soajttá} divna dá bierikvuoda ma li årrum Sámedikken, bájnni Rádedusá luohtadusáv Sámediggáj?  #Inga #NEW
+	## Rijdo li agev årrum sámij gaskan, ja {soajttá} mij dagu romantiserip sáme iellemav?!  #Inga #NEW
 
 COPY:msyn-soajttá-adv ("ihkap" Adv &SUGGEST ) EXCEPT ("soajttet" V IV Ind Prs Sg3 &msyn-soajttá-adv) TARGET (&msyn-soajttá-adv) ;
 
@@ -1202,7 +1205,8 @@ COPY:msyn-pron-ill-com-oahpástuvvat (Com &SUGGEST) EXCEPT (Gen &msyn-pron-ill-c
 
     ## Maŋenagi gå oahppe oahpásmuvvi {dán} ulmutjij. 
     
-ADD:msyn-pron-ill-com-oahpástuvvat2 (&msyn-pron-ill-com-oahpástuvvat2) TARGET (N Ill) IF (-1 (Pron Dem Pl Ill) OR (Pron Dem Sg Gen) + (&msyn-pron-ill-com-oahpástuvvat))  ;
+ADD:msyn-pron-ill-com-oahpástuvvat2 (&msyn-pron-ill-com-oahpástuvvat2) TARGET (N Ill) IF (-1 (Pron Dem Pl Ill)  + (&msyn-pron-ill-com-oahpástuvvat) OR (Pron Dem Sg Gen) + (&msyn-pron-ill-com-oahpástuvvat))  ;
+	#$ Sámedigge ij nagá Rádedusáv jåhtuj oadtjot, biednigijt juollodittjat dajda dárbojda ma duodalattjat li sáme siebrudagán.
 
 COPY:msyn-pron-ill-com-oahpástuvvat2 (Com &SUGGEST) EXCEPT (Ill &msyn-proncom-ill-oahpástuvvat2) TARGET (&msyn-pron-ill-com-oahpástuvvat2) ;
     ## Maŋenagi gå oahppe oahpástuvvi dájda {ulmutjijda}
@@ -1214,6 +1218,7 @@ COPY:msyn-pron-ill-com-oahpástuvvat2 (Com &SUGGEST) EXCEPT (Ill &msyn-proncom-i
 ADD:msyn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF (NEGATE 0 Attr OR (V Sg3)) (*1 N + CASE OR A + CASE BARRIER (*) - (A Attr))
 (NEGATE *-1 COPULAS BARRIER NOT-ADV-PCLE LINK *2 Inf BARRIER NOT-NPMODADV - Acc - (A Sg Nom));
 	#$ Valla hæhkkat la gåjt de {nubbe} áddjá aj goaden. #NEW INGA FEIL
+	## Iv javla biedniga älla {ájnnasa} sáme siebrudagán aj, valla alodav mijá álmmukválljidum åvdåsvásstediddjijt, ienebut barggagoahtet prinsihpalasj ja vuodolasj ájádusáj, vaj boahtteájgge ij släbbon boade.  #NEW INGA
 
 COPY:msyn-pred-attr (Attr &SUGGEST) EXCEPT (Sg Nom &msyn-pred-attr) TARGET (&msyn-pred-attr) ;
 
@@ -1244,7 +1249,7 @@ ADD:msyn-attr-pred (&msyn-attr-pred)  TARGET (A Attr) IF (1 EOS) ;
     # relative use, gut for persons, mij for things
 
 ADD:msyn-mij-gut (&msyn-mij-gut) TARGET ("mij") IF (*-1 (N Coll) OR (Sem/Hum) OR (Sem/Mal) OR (Sem/Fem) OR (Sem/Sur) OR (Pron Dem) OR (Pron Pers) OR (Pron Indef) BARRIER NOT-ADV-PCLE) ;
-
+	#$ Dat {mij} vájllu udnásj sáme politihkalasj bargon, la guoradallat mij ”sáme viellde” lulu årrot.
     ## Ja gåktu de manáj dáj guoktásijn {ma}£{gudi} galggin dunnuv viedtjat? OK
     ## ja lidjin ájn vil tjállám bårde nali, láhpav dajda ma maŋŋela båhti. OK
     ## Dá gåjt dal moattes ma båhtin ma lidjin lahka berraha,  OK
@@ -1616,6 +1621,7 @@ COPY:syn-number_congruence-subj-verb (Sg2 &SUGGEST) EXCEPT Sg1 OR Sg3 OR Du1 OR 
 ADD:msyn-numeral-accattr (&msyn-numeral-accattr) TARGET (N Pl Acc) IF (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom))(NEGATE 0 (N Sg)) ;
 
 ADD:msyn-numeral-accattr (&msyn-numeral-accattr) TARGET (N Pl Acc) IF (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 Num)(NEGATE 0 (N Sg)) ;
+	## Valla vuojnnet ”sáme” viellde vájllu divna dáj gålmmå {rijkajn}.
 
 COPY:msyn-numeral-accattr (Sg Gen &SUGGEST) EXCEPT (Pl Acc &msyn-numeral-accattr) TARGET (&msyn-numeral-accattr) ;
 
@@ -1663,6 +1669,7 @@ COPY:msyn-numeral-attr-pl-com (Sg Com &SUGGEST) EXCEPT (Sg Ill) TARGET (&msyn-nu
 ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (*1 (N Pl Nom) + &msyn-numeral-attr OR (N Pl Nom) +  &msyn-numeral-accattr OR (Sg Gen) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Acc LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc)(NEGATE *-1 ("liehket" Pl3) BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)(NEGATE 0 Acc LINK *-1 TV BARRIER NOT-ADV-PCLE)(NEGATE 0 Arab);
 	## Birrusin {guokta} vahko dás åvddåla mierredij avtajienalasj Sámedigge nuorttarijkalasj sáme dutkam- ja fáhka/ressursa guovdátjav ásadit. #NEW INGA
 	#$ Dálla li {29} jage gållåm dalutjis gå månnå dáv bargov álggiv, valla ij la aktak mujna ságastam, ietjam julevsáme guojmijs, ja majdik moalkedam dán ájnas bargo birra.   #NEW INGA
+	## Valla vuojnnet ”sáme” viellde vájllu divna dáj {gålmmå} rijkajn.
 
 	# with other cases
 
@@ -1726,6 +1733,7 @@ COPY:msyn-numeral-acccasecongr (Sg Nom &SUGGEST) EXCEPT (Sg Acc &msyn-numeral-ac
     # - - - - - - - - -
 
 ADD:msyn-numeral-parcasecongr (&msyn-numeral-parcasecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) OR (Num Pl Nom) OR (Num Sg Gen) IF (*1 (N Pl) +  &msyn-numeral-attr OR (N Pl) + &msyn-numeral-accattr OR (N Sg Ela) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) LINK NOT 0 Acc)(NEGATE 0 ("akta" Sg Nom) LINK 1 (Pl Ela))(NEGATE 0 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 1 (Pl Ela) LINK 1 ("liehket") LINK 0 Pl3) ;
+	#$ Valla vuojnnet ”sáme” viellde vájllu divna dáj {gålmmå} rijkajn. #FIX
 
 COPY:msyn-numeral-parcasecongr (Sg Par &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-parcasecongr) OR (Pl Nom &msyn-numeral-parcasecongr) OR (Sg Gen &msyn-numeral-parcasecongr) OR (Sg Acc &msyn-numeral-parcasecongr) TARGET (&msyn-numeral-parcasecongr) IF (*1 (N Pl Ela) +  &msyn-numeral-attr OR (Sg Ela) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
 	## {Låge} åhtsåmusás li gietjav åhtsåmusá árbbedábálasj juojggusav almodittjat.
@@ -1743,6 +1751,7 @@ COPY:msyn-numeral-parcasecongr (Sg Par &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-pa
 
 ADD:msyn-numeral-comcasecongr (&msyn-numeral-comcasecongr) TARGET (Num Sg Gen) OR (Num Pl Nom) IF (*1 (N Pl Ine) OR (N Sg Com) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) LINK NOT 0 Acc)(NEGATE 0 Arab OR Sem/Year OR Sem/Time-clock) ;
 	## Sievedusnummar mij e-faktura-sjiehtadussaj aneduvvá le divutmáksenummar   {gudá} tállajn. --- what still needs to be fixed is that  if there are two alternative fixes, we fix them separately, maybe by using LINK and ADDRELATION
+	## Valla jus ”Sáme Goadev” galggap tsieggigoahtet, ålles dáj {nielje} rijkajn, de diedon diehtet vierttip, makkár dähkága ja ådnårisá dasi buoremusát hiehpi.
 
 COPY:msyn-numeral-comcasecongr (Sg Com &SUGGEST) EXCEPT (Sg Gen &msyn-numeral-comcasecongr) OR (Pl Nom &msyn-numeral-comcasecongr) TARGET (&msyn-numeral-comcasecongr) ;
 
@@ -1790,7 +1799,9 @@ COPY:msyn-numeral-comcasecongr (Sg Com &SUGGEST) EXCEPT (Sg Gen &msyn-numeral-co
    # demonstrativ pronoun with attributive numerals
    # -------------------------------------------
 
-ADD:msyn-numerals-with-demopron (&msyn-numerals-with-demopron) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) LINK *1 (N Sg) BARRIER NOT-NPMOD - CC ) ;
+ADD:msyn-numerals-with-demopron (&msyn-numerals-with-demopron) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) LINK *1 (N Sg) BARRIER NOT-NPMOD - CC) ;
+	## Valla jus ”Sáme Goadev” galggap tsieggigoahtet, ålles {dáj} nielje rijkajn, de diedon diehtet vierttip, makkár dähkága ja ådnårisá dasi buoremusát hiehpi. #Inga #NEW
+	## Valla vuojnnet ”sáme” viellde vájllu divna {dáj} gålmmå rijkajn.  #Inga #NEW
 
 #pl nom      sg nom          pl nom/sg gen
 #dá          guokta          gusá
