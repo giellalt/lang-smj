@@ -137,7 +137,7 @@ generated_files/sme-$(GTLANG)-propernouns.lexc: try-regenerate
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_GEN)if test -f $(top_srcdir)/../lang-sme/src/fst/stems/sme-propernouns.lexc ; then \
 		if test $(top_srcdir)/../lang-sme/src/fst/stems/sme-propernouns.lexc -nt $@ ; then \
-			$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl \
+			$(top_srcdir)/src/scripts/sme-$(GTLANG)-conversion.bash \
 				$(top_srcdir)/../lang-sme/src/fst/stems/sme-propernouns.lexc > $@ ; \
 		fi ; \
 	else \
