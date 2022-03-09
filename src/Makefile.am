@@ -177,7 +177,7 @@ endif !WITH_OFST_TROPICAL
 #					filters/remove-mwe-tags.%                 
 #
 # First we create the filtered lexicon, ie the analysis/output part of the cascade:
-analyser-tts-gt-output.tmp.%: fst/lexicon.% \
+analyser-tts-gt-output.tmp1.%: fst/lexicon.% \
 					filters/remove-derivation-position-tags.% \
 					filters/remove-norm-comp-tags.%           \
 					filters/remove-use_mt-strings.%           \
@@ -197,12 +197,32 @@ analyser-tts-gt-output.tmp.%: fst/lexicon.% \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
+analyser-tts-gt-output.tmp.hfst: analyser-tts-gt-output.tmp1.hfst \
+					 filters/insert-æae-area-flags.hfst \
+					 filters/insert-area-tags.hfst
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex            \
+				@\"$<\"                               \
+			.o. @\"filters/insert-æae-area-flags.hfst\" \
+			;\n\
+		 twosided flag-diacritics\n\
+		 define lexicon\n\
+		 read regex      \
+				@\"filters/insert-area-tags.hfst\" \
+			.o. lexicon                     \
+			;\n\
+		 twosided flag-diacritics\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+
 # Then we create the filtered lexicon:
 # HFST
 if WANT_REVERSED_INTERSECT
 # Do this is reversed intersect is enabled:
-analyser-tts-gt-input.tmp.hfst: analyser-tts-gt-output.tmp.hfst \
-					 fst/phonology.rev.hfst
+analyser-tts-gt-input.tmp1.hfst: analyser-tts-gt-output.tmp1.hfst \
+					 fst/phonology.rev.hfst \
+					 filters/convert-æae-to-area-variant.hfst \
+					 filters/insert-area-tags.hfst
 	$(AM_V_INTRSCT)\
 		  $(HFST_PROJECT)     $(MORE_VERBOSITY) $(HFST_FLAGS) -p output $< \
 		| $(HFST_REVERSE)     $(MORE_VERBOSITY) $(HFST_FLAGS) \
@@ -217,7 +237,7 @@ analyser-tts-gt-input.tmp.hfst: analyser-tts-gt-output.tmp.hfst \
 
 else
 # Otherwise do this:
-analyser-tts-gt-input.tmp.hfst: analyser-tts-gt-output.tmp.hfst \
+analyser-tts-gt-input.tmp1.hfst: analyser-tts-gt-output.tmp1.hfst \
 					 fst/phonology.compose.hfst
 	$(AM_V_INTRSCT)\
 		  $(HFST_PROJECT)     $(MORE_VERBOSITY) $(HFST_FLAGS) -p output $< \
@@ -229,6 +249,17 @@ analyser-tts-gt-input.tmp.hfst: analyser-tts-gt-output.tmp.hfst \
 		| $(HFST_MINIMIZE)    $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-o $@
 endif # WANT_REVERSED_INTERSECT
+
+analyser-tts-gt-input.tmp.hfst: analyser-tts-gt-input.tmp1.hfst \
+					 filters/convert-æae-to-area-variant.hfst \
+					 filters/insert-area-tags.hfst
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex            \
+				@\"$<\"                               \
+			.o. @\"filters/convert-æae-to-area-variant.hfst\" \
+			;\n\
+		 twosided flag-diacritics\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
 
 # XEROX
 analyser-tts-gt-output.tmp.xfst: fst/lexicon.xfst \
