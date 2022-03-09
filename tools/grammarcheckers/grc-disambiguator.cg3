@@ -1,6 +1,6 @@
 # -*- cg-pre-pipe: "$GTHOME/giella-core/scripts/preprocess --abbr=$GTHOME/langs/smj/tools/preprocess/abbr.txt | hfst-optimised-lookup  $GTHOME/langs/smj/src/analyser-disamb-gt-desc.hfstol | $GTHOME/giella-core/scripts/lookup2cg" -*-
 # Divvun & Giellatekno - open source grammars for Sámi and other languages
-# Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
+# Copyright © 2000-2022 The University of Tromsø & the Norwegian Sámi Parliament
 # http://giellatekno.uit.no & http://divvun.no
 #
 # This program is free software; you can redistribute and/or modify
@@ -2361,20 +2361,20 @@ REMOVE Nom IF (0 Der/Comp)(*1 HNOUN BARRIER NPNH OR PUNCT LINK 0 NOT-NOM LINK NO
 	# Adjectives as predicates
 	# ========================
 
-SELECT (A Pl Nom) IF (*-1 COPULAS BARRIER NOT-ADV-PCLE LINK *-1 (N Pl Nom) OR (Pron Pl Nom) OR (Pl1 Nom) OR (Pl2 Nom) OR (Pl3 Nom) BARRIER S-BOUNDARY2 OR (Sg Nom))(NEGATE 0 N)(NEGATE 1 A)(NEGATE 1 Adv LINK 1 A);
+SELECT (A Pl Nom) IF (*-1 COPULAS BARRIER NOT-ADV-PCLE LINK *-1 (N Pl Nom) OR (Pron Pl Nom) OR (Pl1 Nom) OR (Pl2 Nom) OR (Pl3 Nom) BARRIER S-BOUNDARY2 OR (Sg Nom))(NEGATE 0 N)(NEGATE 1 A)(NEGATE 1 Adv LINK 1 A)(NEGATE 0 Attr LINK 1 N);
 	## ...ja dan golut leat govttolaččat veahki ektui.
 
-SELECT (A Pl Nom) IF (*-1 COPULAS BARRIER NOT-ADV-PCLE LINK *-1 (Du1 Nom) OR (Du2 Nom) OR (Du3 Nom) BARRIER S-BOUNDARY2)(NEGATE 0 N)(NEGATE 1 VERB OR A);
+SELECT (A Pl Nom) IF (*-1 COPULAS BARRIER NOT-ADV-PCLE LINK *-1 (Du1 Nom) OR (Du2 Nom) OR (Du3 Nom) BARRIER S-BOUNDARY2)(NEGATE 0 N)(NEGATE 1 VERB OR A)(NEGATE 0 Attr LINK 1 N);
 	## I have found no examples, but the rule should work! 
 
-SELECT (A Pl Nom) IF (*-1 COPULAS BARRIER NOT-ADV-PCLE LINK *-1 Nom BARRIER S-BOUNDARY2 LINK *-1 CC BARRIER NPNH LINK -1 Nom)(NEGATE 0 N)(NEGATE 1 VERB OR A);
+SELECT (A Pl Nom) IF (*-1 COPULAS BARRIER NOT-ADV-PCLE LINK *-1 Nom BARRIER S-BOUNDARY2 LINK *-1 CC BARRIER NPNH LINK -1 Nom)(NEGATE 0 N)(NEGATE 1 VERB OR A)(NEGATE 0 Attr LINK 1 N);
 	## Sámegiella ja dárogiella leat ovttaárvvosaččat. 
 
 SELECT (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-ADV-PCLE LINK *-1 (Sg Nom) BARRIER NOT-ADV-PCLE LINK *-1 BOS OR CS OR (":" CLB) OR CP BARRIER NOT-ADV-PCLE) (1 CLB OR EOS);
 	## Jos viessu lea dohkálaš, de ráfi orru dan badjel.
 	## Vuoigŋa gal lea geargat, muhto oažži lea headju.
 
-SELECT (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-ADV-PCLE LINK *-1 (Sg Nom) BARRIER NOT-ADV-PCLE LINK *-1 BOS OR CS OR (":" CLB) OR CP BARRIER NOT-ADV-PCLE) (*1 COPULAS BARRIER NOT-ADV-PCLE LINK *1 CLB OR EOS BARRIER NOT-ADV-PCLE);
+SELECT (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-ADV-PCLE LINK *-1 (Sg Nom) BARRIER NOT-ADV-PCLE LINK *-1 BOS OR CS OR (":" CLB) OR CP BARRIER NOT-ADV-PCLE) (*1 COPULAS BARRIER NOT-ADV-PCLE LINK *1 CLB OR EOS BARRIER NOT-ADV-PCLE)(NEGATE 0 Attr LINK 1 N);
 	## ...dan dihte go geassegollebivdu lei áibbas heittot leamaš,...
 
 SELECT (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-ADV-PCLE LINK *-1 (N Sg Nom) OR (Pron Sg Nom) OR (Sg1 Nom) OR (Sg2 Nom) OR (Sg3 Nom) BARRIER S-BOUNDARY2 LINK NOT 0 Ess)(NEGATE 0 N OR Inf OR Adv)(NEGATE 1 VERB)(NEGATE 1 CC LINK 1 Adv) (NEGATE *1 N BARRIER NPNH);	## Mun in leat dohkálaš ahte don boađášit mu vissui.
@@ -2389,7 +2389,7 @@ SELECT (A Sg Nom) IF (*-1 COPULAS BARRIER Nom OR PrfPrc OR CS OR MANNE LINK 0 Sg
 SELECT (A Sg Nom) IF (*-1 COPULAS BARRIER SV-BOUNDARY2 LINK *-1 (Neg Sg1) OR (Neg Sg2) OR (Neg Sg3) BARRIER NOT-ADV-PCLE)(NEGATE 0 N)(NEGATE 1 N OR A) (NEGATE 1 ("nu") OR ("hui") LINK 1 A);
 	## Ii leat vuogas geavahit hálduiváldima dálá fásta opmodagaide.
 
-SELECT (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-AA LINK 0 Sg3)(NEGATE 0 Inf) (0 (N Sg Ine) OR Actor OR NA-DER)(*1 EOS OR CLB BARRIER NOT-ADV-PCLE); 
+SELECT (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-AA LINK 0 Sg3)(NEGATE 0 Inf) (0 (N Sg Ine) OR Actor OR NA-DER)(*1 EOS OR CLB BARRIER NOT-ADV-PCLE)(NEGATE 0 Attr LINK 1 N); 
 	## Lea veahá eahpidahtti, ahte eanaš oassi ođđa govvadáidagis,... 
 	## Dávjá lea lunddolaš, ahte doaktáris lea vástádusrolla.
 
@@ -2397,19 +2397,19 @@ SELECT (A Sg Nom) IF (-1 NP-HEAD-SG-NOM)(*-2 COPULAS BARRIER NOT-ADV-PCLE) (NEGA
 	## Dábálaččat lea čuollu guhkit, golbma, njellja firbmebaji guhku.
 
 
-SELECT (A Pl Nom) IF (*-1 (N Pl Nom) BARRIER NOT-ADV-PCLE OR CLB LINK *-1 COPULAS BARRIER SV-BOUNDARY2);
+SELECT (A Pl Nom) IF (*-1 (N Pl Nom) BARRIER NOT-ADV-PCLE OR CLB LINK *-1 COPULAS BARRIER SV-BOUNDARY2)(NEGATE 0 Attr LINK 1 N);
 	## Mánnáguoddi-spagáin leat spahká-oaivvit sakka guhkibut.
 	## Dán oktavuođas leat dološ geavahusa njuolggadusat miellagiddevaččat.
 
-SELECT (A Pl Nom) IF (*-1 COPULAS BARRIER SV-BOUNDARY2 LINK *-1 (V Neg) BARRIER NOT-ADV-PCLE LINK 0 V-DU-PL)(NEGATE 0 N)(NEGATE 1 VERB OR A); #(NEGATE 1 N);
+SELECT (A Pl Nom) IF (*-1 COPULAS BARRIER SV-BOUNDARY2 LINK *-1 (V Neg) BARRIER NOT-ADV-PCLE LINK 0 V-DU-PL)(NEGATE 0 N)(NEGATE 1 VERB OR A)(NEGATE 0 Attr LINK 1 N); #(NEGATE 1 N);
 	## Sis-Finnmárkku dikkit maŋŋilgo Norga badjelasas válddii sorjjas-
 	## meahttunvuođa dán guovllus, eai šat lean seamma dehálaččat 
 	## sápmelaččaid gaskkas go ovdal.
 
-SELECT (A Sg Nom) IF (*-1 BOS OR REALCLB BARRIER NOT-CC) (1 (Dem Sg Nom) OR MUN OR DON OR SON); 
+SELECT (A Sg Nom) IF (*-1 BOS OR REALCLB BARRIER NOT-CC) (1 (Dem Sg Nom) OR MUN OR DON OR SON)(NEGATE 0 Attr LINK 1 N); 
 	## Ja ávdugas son guhte oskkui.
  
-SELECT (A Pl Nom) IF (*-1 BOS OR REALCLB BARRIER NOT-CC) (*1 NP-HEAD-PL-NOM BARRIER NPNH);
+SELECT (A Pl Nom) IF (*-1 BOS OR REALCLB BARRIER NOT-CC) (*1 NP-HEAD-PL-NOM BARRIER NPNH)(NEGATE 0 Attr LINK 1 N);
 	## Ávdugasat sii geat moraštit.
 
 REMOVE VERB IF (-1 COPULAS)(0 Nom)(NEGATE 0 PrfPrc)(1C (Pron Interr));
