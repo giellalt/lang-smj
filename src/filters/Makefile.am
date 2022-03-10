@@ -46,7 +46,8 @@ GIELLA_FILTER_LOCAL_REGEX_SRCS=\
 					convert-æae-to-both.regex \
 					insert-area-tags.regex \
 					backtrack-on-hyphens.regex \
-					insert-æae-area-flags.regex
+					insert-æae-area-flags.regex \
+					remove-æae-flags-after-æae.regex
 
 # List any local filter xfscript files here:
 GIELLA_FILTER_LOCAL_XFSCRIPT_SRCS=
@@ -69,12 +70,16 @@ GIELLA_FILTER_LOCAL_GENERATED_LEXC_SRCS=
 EXTRA_SRCS=
 
 ########## Add local build rules below here: ############
-all-local: change-optionally-word_boundary_to_hyphen.whfst
+all-local: change-optionally-word_boundary_to_hyphen.whfst \
+		   remove-æae-flags-after-æae.inverted.hfst
 
 change-optionally-word_boundary_to_hyphen.whfst: \
 		change-optionally-word_boundary_to_hyphen.hfst
 	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-a10000 --symbol="@C.LexComp@" --arcs-only < $< > $@
+
+remove-æae-flags-after-æae.inverted.hfst: remove-æae-flags-after-æae.hfst
+	$(AM_V_INVERT)$(HFST_INVERT) $< > $@
 
 ############### END: Local modifications ################
 #########################################################
