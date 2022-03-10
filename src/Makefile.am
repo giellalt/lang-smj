@@ -177,7 +177,7 @@ endif !WITH_OFST_TROPICAL
 #					filters/remove-mwe-tags.%                 
 #
 # First we create the filtered lexicon, ie the analysis/output part of the cascade:
-analyser-tts-gt-output.tmp.%: fst/lexicon.% \
+analyser-tts-gt-output.tmp1.%: fst/lexicon.% \
 					filters/remove-derivation-position-tags.% \
 					filters/remove-norm-comp-tags.%           \
 					filters/remove-use_mt-strings.%           \
@@ -197,7 +197,7 @@ analyser-tts-gt-output.tmp.%: fst/lexicon.% \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
-analyser-tts-gt-output.hfst: analyser-tts-gt-output.tmp.hfst \
+analyser-tts-gt-output.tmp.hfst: analyser-tts-gt-output.tmp1.hfst \
 					 filters/insert-æae-area-flags.hfst \
 					 filters/insert-area-tags.hfst
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex            \
@@ -214,12 +214,18 @@ analyser-tts-gt-output.hfst: analyser-tts-gt-output.tmp.hfst \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
+analyser-tts-gt-output.hfst: analyser-tts-gt-output.tmp.hfst
+	$(AM_V_XFST_TOOL)$(PRINTF) "\
+		 load stack $<\n\
+		 $(INVERT_HFST)\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
 
 # Then we create the filtered lexicon:
 # HFST
 if WANT_REVERSED_INTERSECT
 # Do this is reversed intersect is enabled:
-analyser-tts-gt-input.tmp1.hfst: analyser-tts-gt-output.hfst \
+analyser-tts-gt-input.tmp1.hfst: analyser-tts-gt-output.tmp.hfst \
 					 fst/phonology.rev.hfst \
 					 filters/remove-æae-flags-after-æae.hfst \
 					 filters/remove-æae-flags-after-æae.inverted.hfst
