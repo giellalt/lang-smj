@@ -221,10 +221,12 @@ if WANT_REVERSED_INTERSECT
 # Do this is reversed intersect is enabled:
 analyser-tts-gt-input.tmp1.hfst: analyser-tts-gt-output.hfst \
 					 fst/phonology.rev.hfst \
-					 filters/convert-æae-to-area-variant.hfst \
-					 filters/insert-area-tags.hfst
+					 filters/remove-æae-flags-after-æae.hfst \
+					 filters/remove-æae-flags-after-æae.inverted.hfst
 	$(AM_V_INTRSCT)\
 		  $(HFST_PROJECT)     $(MORE_VERBOSITY) $(HFST_FLAGS) -p output $< \
+		| $(HFST_COMPOSE) --xerox-composition=ON -2 filters/remove-æae-flags-after-æae.hfst \
+		| $(HFST_COMPOSE) --xerox-composition=ON -1 filters/remove-æae-flags-after-æae.inverted.hfst \
 		| $(HFST_REVERSE)     $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_MINIMIZE)    $(MORE_VERBOSITY) $(HFST_FLAGS) \
@@ -238,9 +240,13 @@ analyser-tts-gt-input.tmp1.hfst: analyser-tts-gt-output.hfst \
 else
 # Otherwise do this:
 analyser-tts-gt-input.tmp1.hfst: analyser-tts-gt-output.tmp1.hfst \
-					 fst/phonology.compose.hfst
+					 fst/phonology.compose.hfst \
+					 filters/remove-æae-flags-after-æae.hfst \
+					 filters/remove-æae-flags-after-æae.inverted.hfst
 	$(AM_V_INTRSCT)\
 		  $(HFST_PROJECT)     $(MORE_VERBOSITY) $(HFST_FLAGS) -p output $< \
+		| $(HFST_COMPOSE) --xerox-composition=ON -2 filters/remove-æae-flags-after-æae.hfst \
+		| $(HFST_COMPOSE) --xerox-composition=ON -1 filters/remove-æae-flags-after-æae.inverted.hfst \
 		| $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_MINIMIZE)    $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
