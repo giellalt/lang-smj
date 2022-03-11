@@ -1337,10 +1337,10 @@ REMOVE N-DER IF (0 N-DER LINK 0 Ess)(0 LEX-N LINK 0 Ess)(NEGATE 0 Actio);
  # Removes N-DER if O is also a lexical noun, and both nouns are essive.
  # Check!!!
 
-REMOVE A-DER IF (0 LEX-A);
-REMOVE (A* Adv) IF (0 LEX-ADV) ;
-REMOVE (V-DER Inf) IF (0 (NOT-DER Inf));
-REMOVE V-DER IF (0 LEX-V) ;
+#REMOVE A-DER IF (0 LEX-A);
+#REMOVE (A* Adv) IF (0 LEX-ADV) ;
+#REMOVE (V-DER Inf) IF (0 (NOT-DER Inf));
+#REMOVE V-DER IF (0 LEX-V) ;
 
  
 REMOVE Imprt (0 Der/vuota OR (".*#.*t"r)) ; 
@@ -1397,7 +1397,8 @@ SELECT:ArabNomPlc (Arab Nom) (-1 Sem/Plc)(NEGATE 1 Po) ;
 
 SELECT:Arab Arab  ; # In Apertium we get analysis both with and without the tag.
 
-SELECT VFIN IF (*-1 S-BOUNDARY OR BOS OR (":") BARRIER VERB) (*1 S-BOUNDARY OR BOS OR (":") BARRIER VFIN) ;   
+#SELECT VFIN IF (*-1 S-BOUNDARY OR BOS OR (":") BARRIER VERB) (*1 S-BOUNDARY OR BOS OR (":") BARRIER VFIN) ; 
+	#$GRAM Ietjá bájkijn soajttá sámeslávgga jurra de vil vuojnnut.  
 
 SELECT VFIN IF (*-1 ("de") BARRIER VERB LINK -1 COMMA) (*1 S-BOUNDARY OR BOS BARRIER VFIN) ;    
  
@@ -3324,8 +3325,8 @@ MAP (@ADVL>) TARGET Ger OR (V Actio Ela) (*1 FMAINV BARRIER S-BOUNDARY2);
 MAP (@-FMAINV) TARGET PrfPrc ; #XX
 
 #!! * **IfonlyVerb** selects the FMAINV reading in the cohort
-SELECT:IfonlyVerb FMAINV IF (NEGATE *0 FMAINV BARRIER S-BOUNDARY)(NOT 0 FAUXV OR (Inf @A<) OR (Inf @N<))(NEGATE *-1 ("go") LINK *-1 VFIN) ; #kopiert fra sme
-
+#SELECT:IfonlyVerb FMAINV IF (NEGATE *0 FMAINV BARRIER S-BOUNDARY)(NOT 0 FAUXV OR (Inf @A<) OR (Inf @N<))(NEGATE *-1 ("go") LINK *-1 VFIN) ; #kopiert fra sme
+	#$GRAM Ietjá bájkijn soajttá sámeslávgga jurra de vil vuojnnut. #Too much of a default rule
 
 MAP (@>N) TARGET Actio (1 N) ;
 
