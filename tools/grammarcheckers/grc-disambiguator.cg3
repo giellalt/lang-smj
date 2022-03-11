@@ -2107,8 +2107,9 @@ REMOVE Attr IF (-1 ("Johannes"))(0 ("gástadiddje")) ;
 SELECT (Prop Attr) IF (1 Sem/Mal OR Sem/Fem OR Sem/Sur);
 	## Jesus Kristus
 
-SELECT (A Attr) IF (-1 V-NOT-AUX OR N)(1 N LINK NOT 0 VFIN);
+SELECT (A Attr) IF (-1 V-NOT-AUX OR N)(1 N LINK NOT 0 VFIN)(NEGATE 0 (Num Attr));
 	## Æjgádijda vaddá buorep diedojt.
+	#$GRAM Nammadit gålmmå ájrrasa {gudát} ájrrasijs Finnmárkoåbmudahkaj mij háldat ednamijt ja resursajt Finnmárkon finnmárkolága milta.
 
 REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NEGATE 1 N);
 #REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NEGATE 1 A LINK *1 N BARRIER NOT-ADJ);
@@ -2220,10 +2221,11 @@ SELECT (A Attr) IF (-1 COPULAS)(1 A OR N LINK NOT *1 Po OR Ine OR Ela OR Inf BAR
 SELECT (A Attr) IF (*-1 COPULAS BARRIER NOT-ADV-PCLE LINK *-1C NP-HEAD-NOM BARRIER NOT-ADV-PCLE)(NEGATE 1 CLB LINK 1 N)(*1 N BARRIER NPNH LINK NOT 1 Po OR Ine OR Ela);  
 	## Dieđuid diehtogieđahallama ovddasvástideaddjin leat guovlluguovdasaš dearvvašvuođadoaimmat.
 
-SELECT (A Attr) IF (*-1 Num BARRIER NPNH)(*1 N BARRIER NPNH)(NEGATE 0 Prop LINK 1 CC)(NEGATE 0 ("kr") LINK -1 CARDINALS);
+SELECT (A Attr) IF (*-1 Num BARRIER NPNH)(*1 N BARRIER NPNH)(NEGATE 0 Prop LINK 1 CC)(NEGATE 0 ("kr") LINK -1 CARDINALS)(NEGATE 0 (Num Attr));
 	## Dan dihte ohcat guokte lassi stipendiáhttavirggi sámi/eamiálbmot-
 	## guoskevaš dutkamiidda.
-
+	#$GRAM Nammadit gålmmå ájrrasa {gudát} ájrrasijs Finnmárkoåbmudahkaj mij háldat ednamijt ja resursajt Finnmárkon finnmárkolága milta.
+	
 SELECT (A Attr) IF (-1 Adv)(NEGATE 0 Inf)(*1C N BARRIER NPNH)(NEGATE 1 CLB LINK 1 N) (NEGATE 1 Prop);
 	## Mánná viehkalii olggos álás julggiid.
 	## Universitehtas lea maiddái čielga nášunála ovddasvástádus...
