@@ -2,7 +2,7 @@ The Lule Sami morphology and tools
 ==========================================
 
 [![GitHub issues](https://img.shields.io/github/issues-raw/giellalt/lang-smj)](https://github.com/giellalt/lang-smj/issues)
-[![Build Status](https://github.com/giellalt/lang-smj/workflows/Speller%20CI+CD/badge.svg)](https://github.com/giellalt/lang-smj/actions)
+[![Build Status](https://divvun-tc.thetc.se/api/github/v1/repository/giellalt/lang-smj/main/badge.svg)](https://github.com/giellalt/lang-smj/actions)
 [![License](https://img.shields.io/github/license/giellalt/lang-smj)](https://github.com/giellalt/lang-smj/blob/main/LICENSE)
 
 This repository contains finite state source files for the Lule Sami language,
