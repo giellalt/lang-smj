@@ -1001,6 +1001,7 @@ COPY:msyn-soajttá-adv ("ihkap" Adv &SUGGEST ) EXCEPT ("soajttet" V IV Ind Prs S
 ADD:msyn-soajttá-le (&msyn-soajttá-le) TARGET ("liehket" V IV Ind Prs Sg3) OR ("liehket" V IV Ind Prs Pl3 ) IF (1 ("soajttet" V IV Ind Prs Sg3)) (*2 Inf OR PrfPrc BARRIER NOT-ADV-PCLE - ( A Sg Nom) - (N Ine) - (N Ill) - ( N Ela)) ;
 
     ## Dajn gielajn gånnå le riek friddja báhkogárges le soajttá vehik gássjel mierredit mij le vuodobáhkogárges.
+    ## Dajn gielajn gånnå le riek friddja báhkogárges le soajttá vehik gássjel mierredit mij le vuodobáhkogárges. #NEW INGA
 
     #le after soajttá
 ADD:msyn-soajttá-le (&msyn-soajttá-le) TARGET ("liehket" V IV Ind Prs Sg3) OR ("liehket" V IV Ind Prs Pl3 ) IF (-1 ("soajttet" V IV Ind Prs Sg3)) (*1 Inf OR PrfPrc BARRIER NOT-ADV-PCLE - ( A Sg Nom) - (N Ine) - (N Ill) - ( N Ela)) ;
@@ -1230,6 +1231,10 @@ COPY:msyn-pron-ill-com-oahpástuvvat2 (Com &SUGGEST) EXCEPT (Ill &msyn-proncom-i
 ADD:msyn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF (NEGATE 0 Attr OR (V Sg3)) (*1 N + CASE OR A + CASE BARRIER (*) - (A Attr))
 (NEGATE *-1 COPULAS BARRIER NOT-ADV-PCLE LINK *2 Inf OR Ine BARRIER NOT-NPMODADV - Acc - (A Sg Nom));
 	## Objevta sadje gárgadisájn gånnå le ditransitijvva værbba
+	#$ Dássta le tjielgas julevsámegiela báhkogárges juogu dal SVO jali SOV. #INGA NEW
+	#$ La tjielgas OSV dagu ( 14 ) ja VSO dagu ( 17) e tjuovo vuodobáhkkogárggáv julevsámegielan, dájn gárgadisájn le sierra dæddo ja intonasjåvnnå. #INGA NEW
+	#$ Generatijvva grammatihkka le gielladiedalasj teorija majt Noam Chomsky vuododij 1950 jagijn.  #INGA NEW
+	#$ Generatijvva grammatihkka le vuododuvvam dan vuojno milta ahte máná li riegádam sissŋálasj grammatihkajn, majt Noam Chomsky gåhtjut The Universal Grammar , sámegiellaj universálla grammatihkka, (dássta duohku UG).  #INGA NEW
 
 # North sámi
 #ADD:msyn-attr-not-pred (&msyn-attr-not-pred) TARGET A IF (NOT 0 Attr OR (N Gen) OR @<SPRED LINK NEGATE 0 (Sg Nom) LINK 0 ADJ_ATTR/NOM OR Comp OR Superl)(*1 CNOUN OR A BARRIER NOT-ADJ-CC OR ("go"))(NOT 1 Rel) (NEGATE 0 ("buorre") OR ("riekta") OR ("duođas") OR Ord - ("nubbi")) (NEGATE *0 MODALS BARRIER GRAMCHK-S-BOUNDARY OR GRAMCHK-VFIN OR Rel) (NEGATE 0 A LINK 1 COMMA OR CC LINK NOT 1 Attr OR Gen) (NEGATE 0 Ess LINK NOT *0 GRAMCHK-VFIN BARRIER GRAMCHK-S-BOUNDARY OR CLB)(NEGATE 0 Superl LINK 0 (Adv Superl))(NEGATE 0 Attr LINK NOT 0 Attr)(NEGATE 1 EOS)(NEGATE 0 (N Sg Ill));
@@ -1671,11 +1676,12 @@ COPY:msyn-numeral-attr (Sg &SUGGEST) EXCEPT (Pl &msyn-numeral-attr) BEFORE CASE 
 
 
     # homonomy beetween pl ine and sg com
-ADD:msyn-numeral-attr-pl-ine (&msyn-numeral-attr-pl-ine) TARGET (N Pl Ine) IF (*-1 (Num Sg Ine) OR (Num Arab Ine) BARRIER NOT-NPMOD) ;
+ADD:msyn-numeral-attr-pl-ine (&msyn-numeral-attr-pl-ine) TARGET (N Pl Ine) IF (*-1 (Num Sg Ine) - Sem/Year OR (Num Arab Ine) BARRIER NOT-NPMOD) ;
 COPY:msyn-numeral-attr-pl-ine (Sg Ine &SUGGEST) EXCEPT (Pl Ine) TARGET (&msyn-numeral-attr-pl-ine) ;
  
     ## Dán aktisasjbargon li gudán {álggoálmmukorganisasjåvnåjn} sadje stuoves oassálassten.
     ##  makkár rahtjamusá li nielje {sámegielajn} NOT
+    #$ 1679
 
     # homonomy beetween pl com and sg ill
 ADD:msyn-numeral-attr-pl-com (&msyn-numeral-attr-pl-com) TARGET (N Sg Ill) IF (*-1 (Num Pl Gen) BARRIER NOT-NPMOD) ;
@@ -1703,7 +1709,7 @@ ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num
 	
 	# with other cases
 
-ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) OR (Num Sg Gen) IF (*1 (N Pl) + &msyn-numeral-attr OR (N Pl) +  &msyn-numeral-accattr OR (Sg Ill) OR (Sg Com) OR (Sg Ine) BARRIER (*) - (A Attr) LINK NOT 0 (N Pl Nom) OR (N Coll Nom) OR Acc LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc)(NEGATE *-1 ("liehket" Pl3) BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)(NEGATE 0 Arab OR Sem/Date);
+ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) OR (Num Sg Gen) IF (*1 (N Pl) + &msyn-numeral-attr OR (N Pl) +  &msyn-numeral-accattr OR (Sg Ill) OR (Sg Com) OR (Sg Ine) BARRIER (*) - (A Attr) LINK NOT 0 (N Pl Nom) OR (N Coll Nom) OR Acc LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc)(NEGATE *-1 ("liehket" Pl3) BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)(NEGATE 0 Arab OR Sem/Date OR Sem/Year);
 	## {Gålmmå} vuostasj kapihttalij tjielggiv duogátjav master-dahkamussaj. #NEW INGA
 	## Mij lip NSRan  guhkev juo berustam, ja ájn berustip, nannit aktijvuodav sámij gaskan divna niellja rijkajn duola degu konkrehtalasj aktisasjbargo baktu.
     ## Valla vuojnnet ”sáme” viellde vájllu divna dáj gålmmå rijkajn.
@@ -1715,6 +1721,7 @@ ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num
 	#$ Arktalasjráde le avtamielakvuohtaorgádna gånnå da {guhtta} álggoálmmukorganisasjåvnå bessi ságastit ja oajvvadit sæmmi láhkáj dagu da {gáktsa} stáhta, valla e besa jienastit.  DNW
 	#$ Dat tjoahkki ienep gå {300.000} guosse 
 	#$ Dajna de viertti Sámedigge aktan Nordlánda fylkkadikkijn goabbák 500.000 kråvnå juollodit rahteplánajda Måsskåj, nav vaj tjoahkkáj sjaddá akta millijåvnå kråvnå, javllá presidænntaævtodus Aili Keskitalo (VSR/NSR). 
+	#$ Generatijvva grammatihkka le gielladiedalasj teorija majt Noam Chomsky vuododij 1950 jagijn.  #NEW INGA
 
 COPY:msyn-numeral-casecongr (Sg Gen &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-casecongr) OR (Sg Acc &msyn-numeral-casecongr) TARGET (&msyn-numeral-casecongr) IF (NEGATE *1 (N Pl Com) +  &msyn-numeral-attr OR (N Sg Com) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) LINK NEGATE 0 (Pl Gen) LINK 1 N OR Po )  ;
 
