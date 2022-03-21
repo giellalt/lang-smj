@@ -4771,7 +4771,6 @@ PPUNCT
 PUNCT
 
 COMMA
-¶
 
 ### Tags for POS sub-categories
 
