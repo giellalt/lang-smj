@@ -27,6 +27,9 @@ endif # WANT_SYNTAX
 %.cg3: $(GIELLA_SHARED)/smi/src/cg3/%.cg3
 	$(AM_V_GEN)cp -f $< $@
 
+# Make sure functions.cg3 is available before trying to build korp.cg3:
+korp.cg3: functions.cg3
+
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######
 ##################################################################
