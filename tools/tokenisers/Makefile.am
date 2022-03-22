@@ -45,8 +45,8 @@ analyser-tts-cggt-output.hfst: $(top_builddir)/src/analyser-tts-gt-output.hfst \
 				@\"$<\" \
 			.o. @\"filters/make-disamb-CG-tags.hfst\".i   \
 			;\n\
-		 save stack $@\n\
-		 quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
+		save stack $@\n\
+		quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
 
 analyser-tts-cggt-input.hfst: $(top_builddir)/src/analyser-tts-gt-input.hfst
 	$(AM_V_CP)cp -f $< $@
