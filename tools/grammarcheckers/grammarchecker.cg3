@@ -2247,6 +2247,11 @@ MOVE:syn-subj-before-neg &syn-subj-before-neg AFTER (*1 (N Nom) OR (Pron Nom) BA
 
 SET v = v1 OR v2 OR v3  ;
 
+	# li not le
+	# ---------
+	
+ADD:sentence-init-copula (&msyn-sentence-init-copula) TARGET (V Ind Prs) ;
+
 
     # congruence case/ number
     # -----------------------
@@ -2627,6 +2632,7 @@ ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V
 	# capital letter subject
 
 ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg OR (V Ind Prt) - ConNeg OR (V Cond) OR (V Neg Ind) IF (*-1 (Pron Sem/Hum Pers Pl3 Nom) OR (N Pl Nom) - Err/Lex BARRIER NOT-ADV-PCLE OR (Adv Subqst) OR (N Sg Loc Sem/Plc) OR CS LINK 0 ("<[A-ZČŠÁ].*>"r) - Prop LINK NOT 0 (N Sg Nom) OR @COMP-CS< OR VFIN)(NEGATE 0 (Prt Sg2) OR  &real OR (N Sg) - Px OR Adv OR ("leat" Prs Pl1))(NEGATE 0 PrfPrc)(*-1 (Pron Sem/Hum Pers Pl3 Nom) OR (N Pl Nom) BARRIER NOT-ADV-PCLE - (N Sg Loc Sem/Plc) OR CS LINK NOT 0 @COMP-CS< OR VFIN LINK NEGATE *-1 (Pron Sem/Hum Pers Pl1 Nom) OR (Pron Sem/Hum Pers Du1 Nom))(NEGATE 0 Sg3 LINK *-1 (N Pl Nom) + (Prop Sem/Org) OR (N Pl Nom) + (Prop Sem/Obj) OR (N Pl Nom) + (Prop Sem/Plc) BARRIER NOT-ADV-PCLE - (N Sg Loc Sem/Plc) OR CS)(NEGATE 0 Du3 LINK *1 Sem/Human BARRIER NOT-ADV-PCLE LINK 1 CC LINK 1 Sem/Human)(NEGATE 0 Adv)(NEGATE *1 (Pron Pers Sg1 Nom) BARRIER NOT-ADV-PCLE - CC - COMMA - (N Nom) - (Prop Gen) - (Prop Acc) - (Prop Attr))
+(NEGATE 0 (V Pl3))
 (NEGATE 0 N + Err/Orth) # mánaide
 (NEGATE 0 NUMCONGR-EXCEPT) # erret
 (NEGATE 0 Sg3 + COPULAS LINK *1 (N Nom Sg) + Sem/Group + Sem/Hum OR (N Nom Sg) + Sem/Rule BARRIER NOT-NPMODADV  - (N Acc)) # Astoáiggeveahkit lea buorre ortnet
