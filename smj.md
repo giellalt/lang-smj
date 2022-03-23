@@ -86,7 +86,7 @@ All documents in one file
 
 LEXICON GIEVRRA  Adjectives with attribute in WeG and -s. As 1a in Spiik. Sg Acc: gievrav, Attr: gievras.
 
-*gárttje # Even-syllable test examples:*
+* gárttje # Even-syllable test examples:*
 * *gárttje:* `gárttje+A+Sg+Nom`
 * *gártjev:* `gárttje+A+Sg+Acc`
 * *gártjes:* `gárttje+A+Attr`
@@ -94,7 +94,7 @@ LEXICON GIEVRRA  Adjectives with attribute in WeG and -s. As 1a in Spiik. Sg Acc
 
 LEXICON NUORRA   Adjectives with attribute same as pred. As 1b in Spiik. Sg Acc: nuorav, Attr: nuorra.
 
-*visská # Even-syllable test examples:*
+* visská # Even-syllable test examples:*
 * *visská:* `visská+A+Sg+Nom`
 * *viskáv:* `visská+A+Sg+Acc`
 * *visská:* `visská+A+Attr`
@@ -102,7 +102,7 @@ LEXICON NUORRA   Adjectives with attribute same as pred. As 1b in Spiik. Sg Acc:
 
 LEXICON GALLJE   Adjectives on -e, the attribute is in WeG and e > a. As 1d in Spiik. Sg Acc: galjev, Attr: galja.
 
-*uhttse # Even-syllable test examples:*
+* uhttse # Even-syllable test examples:*
 * *uhttse:* `uhttse+A+Sg+Nom`
 * *uhtsev:* `uhttse+A+Sg+Acc`
 * *uhtsa:* `uhttse+A+Attr`
@@ -111,7 +111,7 @@ LEXICON GALLJE   Adjectives on -e, the attribute is in WeG and e > a. As 1d in S
 
 LEXICON TJÁBBE   Adjectives on -e, the attribute is in WeG and e > a. Same as GALLJE only different adv derivation. Sg Acc: tjáppev, Attr: tjáppa.
 
-*njálgge # Even-syllable test examples:*
+* njálgge # Even-syllable test examples:*
 * *njálgge:* `njálgge+A+Sg+Nom`
 * *njálgev:* `njálgge+A+Sg+Acc`
 * *njálga:* `njálgge+A+Attr`
@@ -119,7 +119,7 @@ LEXICON TJÁBBE   Adjectives on -e, the attribute is in WeG and e > a. Same as G
 
 LEXICON VILLDA   Adjectives with attribute same as pred, without CG. As 1b in Spiik. Sg Acc: nuorav, Attr: nuorra.
 
-*frisska # Even-syllable test examples:*
+* frisska # Even-syllable test examples:*
 * *frisska:* `frisska+A+Sg+Nom`
 * *frisskav:* `frisska+A+Sg+Acc`
 * *frisska:* `frisska+A+Attr`
@@ -127,7 +127,7 @@ LEXICON VILLDA   Adjectives with attribute same as pred, without CG. As 1b in Sp
 
 LEXICON HÁVSSKE   Adjectives with attribute -s, without WeG. As 1c in Spiik. Sg Acc: hávsskev, Attr: hávsskes.
 
-*hoallá # Even-syllable test examples:*
+* hoallá # Even-syllable test examples:*
 * *hoallá:* `hoallá+A+Sg+Nom`
 * *hoalláv:* `hoallá+A+Sg+Acc`
 * *hoallás:* `hoallá+A+Attr`
@@ -135,7 +135,7 @@ LEXICON HÁVSSKE   Adjectives with attribute -s, without WeG. As 1c in Spiik. Sg
 
 LEXICON TJUODDJE  Adjectives with attribute -is, without WeG. presently only "Tjuoddje" Sg Acc: tjuoddjev, Attr: tjuoddjis.
 
-*tjuoddje # Even-syllable test examples:*
+* tjuoddje # Even-syllable test examples:*
 * *tjuoddje:* `tjuoddje+A+Sg+Nom`
 * *tjuoddjev:* `tjuoddje+A+Sg+Acc`
 * *tjuoddjis:* `tjuoddje+A+Attr`
@@ -145,20 +145,20 @@ Pres.participles
 
 LEXICON SÁVADAHTTE   Causative-participles. No attribute. No comparision. As 1e in Spiik. Sg Acc: sávadahttev. PrsPrc of causative verbs "uttrykker at handlingen lar seg gjøre eller er verdt å gjøre" (Kintel 1991).
 
-*vuojedahtte # Even-syllable test examples:*
+* vuojedahtte # Even-syllable test examples:*
 * *vuojedahtte:* `vuojedahtte+A+Sg+Nom`
 * *vuojedahttev:* `vuojedahtte+A+Sg+Acc`
 
 LEXICON JUHKKE   participles with -s attributive. No comparision As 1e in Spiik. Sg Acc: juhkkev, Attr: juhkkes. Spiik: presens particip har med den attributive formen på -s betydelsen "någon som är duktig i, snabb til att, begiven att utföra handlingen".
 
-*vuohttje # Even-syllable test examples:*
+* vuohttje # Even-syllable test examples:*
 * *vuohttje:* `vuohttje+A+Sg+Nom`
 * *vuohttjev:* `vuohttje+A+Sg+Acc`
 * *vuohttjes:* `vuohttje+A+Attr`
 
 LEXICON BÅRRE   participles without the -s attributive. As 1e in Spiik. Sg Acc: bårrev, Attr: bårre. Spiik: presens particip har med den attributiva formen utan -s betydelsen ºdem  som utför handlingenº.
 
-*ednabårre # Even-syllable test examples:*
+* ednabårre # Even-syllable test examples:*
 * *ednabårre:* `ednabårre+A+Sg+Nom`
 * *ednabårrev:* `ednabårre+A+Sg+Acc`
 * *ednabårre:* `ednabårre+A+Attr`
@@ -173,7 +173,7 @@ LEXICON METÅVDÅLASJ  LOAN! Foreign -isk adjectives adapted in updated normativ
 
 LEXICON METÅVDÅLASJ_CMP_INFL 
 
-*kapitalismalasj # Even-syllable test examples:*
+* kapitalismalasj # Even-syllable test examples:*
 * *kapitalismalasj:* `kapitalismalasj+A+Sg+Nom`
 * *kapitalismalattjav:* `kapitalismalasj+A+Sg+Acc`
 * *kapitalismalasj:* `kapitalismalasj+A+Attr`
@@ -193,7 +193,7 @@ LEXICON SJÅNÅLASJ_SJONAL  -sjonal/sjonell and -tional/tionel loanwords. Only f
 
 LEXICON SJÅNÅLASJ_SJONAL_CMP_INFL  
 
-*konstitusjåvnålasj # Even-syllable test examples:*
+* konstitusjåvnålasj # Even-syllable test examples:*
 * *nasjåvnålasj:* `nasjåvnålasj+A+Sg+Nom`
 * *nasjåvnålattjav:* `nasjåvnålasj+A+Sg+Acc`
 * *nasjåvnålasj:* `nasjåvnålasj+A+Attr`
@@ -202,7 +202,7 @@ LEXICON SJÅNÅLASJ_SJONELL  -sjonal/sjonell and -tional/tionel loanwords. Only 
 
 LEXICON SJÅNÅLASJ_SJONELL_CMP_INFL  
 
-*konstitusjåvnålasj # Even-syllable test examples:*
+* konstitusjåvnålasj # Even-syllable test examples:*
 * *konstitusjåvnålasj:* `konstitusjåvnålasj+A+Sg+Nom`
 * *konstitusjåvnålattjav:* `konstitusjåvnålasj+A+Sg+Acc`
 * *konstitusjåvnålasj:* `konstitusjåvnålasj+A+Attr`
@@ -213,7 +213,7 @@ LEXICON MEKÁNALASJ_BADASS  LOAN! Wronly assimilated -lasj adjectives from SE/NO
 
 LEXICON ARKTALASJ_CMP_INFL  Foreign -isk, that are not real derivations. Same as MEKÁNALASJ_BADASS, but no +Use/-Spell tag since ther is no "right" way to assimilate these. This is a question for GG. Adapted to smj by simply adding -alasj in place of -isk. These are not real derivations, but sitation borrowed loan adjectives. Only words without a noun base, like arktisk and syntetisk. Pred and attr are both -lasj. No comparatives. 
 
-*syntetalasj # Even-syllable test examples:*
+* syntetalasj # Even-syllable test examples:*
 * *syntetalasj:* `syntetalasj+A+Sg+Nom`
 * *syntetalattjav:* `syntetalasj+A+Sg+Acc`
 * *syntetalasj:* `syntetalasj+A+Attr`
@@ -224,7 +224,7 @@ LEXICON DEMONSTRATIJVA_LASJ_NO_NORM  Loan adjectives from norwegian/swedish (Not
 
 LEXICON DEMONSTRATIJVA_LASJ_CMP_INFL    
 
-*aktijvva # Even-syllable test examples:*
+* aktijvva # Even-syllable test examples:*
 * *aktijva:* `aktijvva+A+Attr`
 * *aktijvva:* `aktijvva+A+Sg+Nom`
 * *aktijvav:* `aktijvva+A+Sg+Acc`
@@ -245,20 +245,20 @@ Inherent comparatives and superlatives lexica
 
 LEXICON OANEP   Inherent comparatives, gives comp and superl. There are two main groups of word here: Adjectives that are lexicalized in their comparative (and superlative) forms, like sisŋep, bárep. And Nouns that can be compared, like nuortap, gáttep, oarjep (some of these are compared from their noun lexicas and thus are found twice). Some entries are likely incorrect compared forms of other adjectives, like ådåp and ruvvap (more research needed).
 
-*lagáp # Even-syllable test examples:*
+* lagáp # Even-syllable test examples:*
 * *lagáp:* `lagáp+A+Gram/Comp+Sg+Nom`
 * *lagámus:* `lagáp+A+Der/Superl+A+Sg+Nom`
 
 LEXICON TJAVGGÁMUS    Inherent superlatives, only gives superl. Some words are lexicalized in their superlative forms, like dájvvámus. Some are likely incorrect superlative forms, like tjábbámus (more research is needed)
 
-*dájvvámus # Even-syllable test examples:*
+* dájvvámus # Even-syllable test examples:*
 * *dájvvámus:* `dájvvámus+A+Gram/Superl+Sg+Nom`
 
 4-syllable miscellanious stems
 
 LEXICON ÁRMMOGIS  Adjectives on -is, attribute same as pred. Odd-syllable comparison. As 2 in Spiik. Sg Acc: ármmogisáv, Attr: ármmogis. 
 
-*bahágis # Even-syllable test examples:*
+* bahágis # Even-syllable test examples:*
 * *bahágis:* `bahágis+A+Sg+Nom`
 * *bahágisáv:* `bahágis+A+Sg+Acc`
 * *bahágis:* `bahágis+A+Attr`
@@ -266,7 +266,7 @@ LEXICON ÁRMMOGIS  Adjectives on -is, attribute same as pred. Odd-syllable compa
 
 LEXICON SÆHKÁLAK  Adjectives on -álak, attribute same as pred. Odd-syllable comparison. So far only for "sæhkálak".
 
-*sæhkálak # Even-syllable test examples:*
+* sæhkálak # Even-syllable test examples:*
 * *sæhkálak:* `sæhkálak+A+Sg+Nom`
 * *sähkálak:* `sæhkálak+A+Sg+Nom`
 * *sæhkálagáv:* `sæhkálak+A+Sg+Acc`
@@ -278,14 +278,14 @@ LEXICON SÆHKÁLAK  Adjectives on -álak, attribute same as pred. Odd-syllable c
 
 LEXICON ÅLLAGSJ_CMP_INFL  Adjectives on -asj, attribute same as pred.  No comparatives. 2 in Spiik. Sg Acc: ållagattjav, Attr: ållagasj.
 
-*belulasj # Even-syllable test examples:*
+* belulasj # Even-syllable test examples:*
 * *belulasj:* `belulasj+A+Sg+Nom`
 * *belulattjav:* `belulasj+A+Sg+Acc`
 * *belulasj:* `belulasj+A+Attr`
 
 LEXICON DÁRBULASJ_CMP_INFL  Adjectives on -asj, attribute same as pred. Odd-syllable comparison. Sg Acc: dárbulattjav, Attr: dárbulasj. Essive -attjan, -adtjan is subtaged. Err/Orth also -ahttja.  
 
-*dábálasj # Even-syllable test examples:*
+* dábálasj # Even-syllable test examples:*
 * *dábálasj:* `dábálasj+A+Sg+Nom`
 * *dábálattjav:* `dábálasj+A+Sg+Acc`
 * *dábálasj:* `dábálasj+A+Attr`
@@ -294,7 +294,7 @@ LEXICON DÁRBULASJ_CMP_INFL  Adjectives on -asj, attribute same as pred. Odd-syl
 
 LEXICON ASIDASJ_CMP_INFL  Adjectives on -asj, -is attr. Odd-syllable comparison. Sg Acc: asidattjav, Attr: asidis.
 
-*gågulasj # Even-syllable test examples:*
+* gågulasj # Even-syllable test examples:*
 * *gågulasj:* `gågulasj+A+Sg+Nom`
 * *gågulattjav:* `gågulasj+A+Sg+Acc`
 * *gågulis:* `gågulasj+A+Attr`
@@ -302,7 +302,7 @@ LEXICON ASIDASJ_CMP_INFL  Adjectives on -asj, -is attr. Odd-syllable comparison.
 
 LEXICON UDNODIBME  Adjectives on -dibme, attribute on -is. Odd-syllable comparison. Sg Acc: udnodimev, Attr: udnodis.
 
-*gælvodibme # Even-syllable test examples:*
+* gælvodibme # Even-syllable test examples:*
 * *gælvodibme:* `gælvodibme+A+Sg+Nom`
 * *gälvodibme:* `gælvodibme+A+Sg+Nom`
 * *gælvodimev:* `gælvodibme+A+Sg+Acc`
@@ -314,14 +314,14 @@ LEXICON UDNODIBME  Adjectives on -dibme, attribute on -is. Odd-syllable comparis
 
 LEXICON TJALMEDIBME   Like UDNODIBME but no comparatives. Sg Acc: tjalmedimev, Attr: tjalmedis.
 
-*huvsodibme # Even-syllable test examples:*
+* huvsodibme # Even-syllable test examples:*
 * *huvsodibme:* `huvsodibme+A+Sg+Nom`
 * *huvsodimev:* `huvsodibme+A+Sg+Acc`
 * *huvsodis:* `huvsodibme+A+Attr`
 
 LEXICON SUOLASIEHKE  -siehke. Sg Acc: suolasiegev, attr: suolasiek
 
-*hánessiehke # Even-syllable test examples:*
+* hánessiehke # Even-syllable test examples:*
 * *hánessiehke:* `hánessiehke+A+Sg+Nom`
 * *hánessiegev:* `hánessiehke+A+Sg+Acc`
 * *hánessiek:* `hánessiehke+A+Attr`
@@ -331,7 +331,7 @@ LEXICON SUOLASIEHKE  -siehke. Sg Acc: suolasiegev, attr: suolasiek
 
 LEXICON TJIEGOS  Attr same as pred. For adjectives with -e in second syllable e>á: divtes>diktásav in StrG. As a. in Spiik.  Sg Acc: tjiehkusav, Attr: tjiegos. Consonant gradation. 
 
-*hánes # Odd-syllable test examples:*
+* hánes # Odd-syllable test examples:*
 * *måskas:* `måskas+A+Sg+Nom`
 * *moasskasav:* `måskas+A+Sg+Acc`
 * *måskas:* `måskas+A+Attr`
@@ -343,7 +343,7 @@ LEXICON TJIEGOS  Attr same as pred. For adjectives with -e in second syllable e>
 
 LEXICON LINES  Attr ending on -a. Adjektives ending on -es. Does same as TJIEGOS, but with attr -a.   As g. in Spiik.  lines, Sg Acc: lidnásav, attr: lidna. Consonant gradation.
 
-*lines # Odd-syllable test examples:*
+* lines # Odd-syllable test examples:*
 * *lines:* `lines+A+Sg+Nom`
 * *lidnásav:* `lines+A+Sg+Acc`
 * *lidna:* `lines+A+Attr`
@@ -351,7 +351,7 @@ LEXICON LINES  Attr ending on -a. Adjektives ending on -es. Does same as TJIEGOS
 
 LEXICON GALMAS   Attr ending on -a or -å. Adjectives on -as, ås- and ás. As e. in Spiik. Sg Acc: galmmasav, attr: galmma, Consonant gradation.
 
-*njuoskas # Odd-syllable test examples:*
+* njuoskas # Odd-syllable test examples:*
 * *njuoskas:* `njuoskas+A+Sg+Nom`
 * *njuosskasav:* `njuoskas+A+Sg+Acc`
 * *njuosska:* `njuoskas+A+Attr`
@@ -359,7 +359,7 @@ LEXICON GALMAS   Attr ending on -a or -å. Adjectives on -as, ås- and ás. As e
 
 LEXICON OAMES  Attr ending on -e. Adjectives on -es with attribute -e. As g2. in Spiik. Sg Acc: oabmásav, Attr: oabme. Consonant gradation.
 
-*goastes # Odd-syllable test examples:*
+* goastes # Odd-syllable test examples:*
 * *goastes:* `goastes+A+Sg+Nom`
 * *goasstásav:* `goastes+A+Sg+Acc`
 * *goasste:* `goastes+A+Attr`
@@ -367,7 +367,7 @@ LEXICON OAMES  Attr ending on -e. Adjectives on -es with attribute -e. As g2. in
 
 LEXICON SUOHKAT  Attr III -is, not suohkkadis but SUOHKKIS. With CG to attr, not from nom to Acc. Same as JALGGAT only with this CG. SUOHKKIS. Without CG between nom and acc. Adjectives on -at and -åt, with attribute III -is. As f. in Spiik. Sg Acc: suohkadav, attr: suohkkis,
 
-*rávvat # Odd-syllable test examples:*
+* rávvat # Odd-syllable test examples:*
 * *rávvat:* `rávvat+A+Sg+Nom`
 * *rávvadav:* `rávvat+A+Sg+Acc`
 * *rávvis:* `rávvat+A+Attr`
@@ -375,7 +375,7 @@ LEXICON SUOHKAT  Attr III -is, not suohkkadis but SUOHKKIS. With CG to attr, not
 
 LEXICON MÅJDÅS  Adjectives with no attr. With CG. Sg Acc: måjddåsav. If there is an attribute that dosn't fit to any lexicon it mus be hardcoded.
 
-*rávdes # Odd-syllable test examples:*
+* rávdes # Odd-syllable test examples:*
 * *rávdes:* `rávdes+A+Sg+Nom`
 * *rávddásav:* `rávdes+A+Sg+Acc`
 * *rávddásabbo:* `rávdes+A+Der/Comp+A+Sg+Nom`
@@ -386,7 +386,7 @@ LEXICON VIEKSES  Attr same as pred. Without CG, but With vowel changes.  Sg Acc:
 
 LEXICON ALEK  Attr same as pred. Without CG, without any vowel changes. Like TJIEGOS only without the CG an vowelchanges. 
 
-*purpur # Odd-syllable test examples:*
+* purpur # Odd-syllable test examples:*
 * *purpur:* `purpur+A+Sg+Nom`
 * *purpurav:* `purpur+A+Sg+Acc`
 * *purpur:* `purpur+A+Attr`
@@ -394,7 +394,7 @@ LEXICON ALEK  Attr same as pred. Without CG, without any vowel changes. Like TJI
 
 LEXICON BASSTEL   Attr ening on -is. Without CG. Adjs on -et, -l, -r, sm om -k, -sj with attr -is and no consonant gradation. As b. in Spiik. Sg Acc: basstelav, Attr: basstelis. Many of these entries might be instances of derivations, like belak, deblak, and maybe also basstel, bargán.
 
-*goavrret # Odd-syllable test examples:*
+* goavrret # Odd-syllable test examples:*
 * *goavrret:* `goavrret+A+Sg+Nom`
 * *goavrredav:* `goavrret+A+Sg+Acc`
 * *goavrredis:* `goavrret+A+Attr`
@@ -402,7 +402,7 @@ LEXICON BASSTEL   Attr ening on -is. Without CG. Adjs on -et, -l, -r, sm om -k, 
 
 LEXICON MUTTÁK  Two attr enings -is and same as pred. Without CG. Adjs on -ák/-ak/-ek, two attr: -is and same as pred. As c. in Spiik. Sg Acc: muttágav, Attr: muttágis and mutták. These seem to be instances of the adjectival -k derivation. Unclear whether such derivation have different attr forms or not, and thats maybe why some of these derivations are found in BASSTEL lexicon.
 
-*bárvak # Odd-syllable test examples:*
+* bárvak # Odd-syllable test examples:*
 * *bárvak:* `bárvak+A+Sg+Nom`
 * *bárvagav:* `bárvak+A+Sg+Acc`
 * *bárvak:* `bárvak+A+Attr`
@@ -411,7 +411,7 @@ LEXICON MUTTÁK  Two attr enings -is and same as pred. Without CG. Adjs on -ák/
 
 LEXICON JALGGAT  Attr III -is, not jalggadis but JALGGIS. Without CG.  Adjectives on -at, with attribute III -is. As f. in Spiik. Sg Acc: jalggadav, attr: jalggis,
 
-*russjkat # Odd-syllable test examples:*
+* russjkat # Odd-syllable test examples:*
 * *russjkat:* `russjkat+A+Sg+Nom`
 * *russjkadav:* `russjkat+A+Sg+Acc`
 * *russjkis:* `russjkat+A+Attr`
@@ -419,7 +419,7 @@ LEXICON JALGGAT  Attr III -is, not jalggadis but JALGGIS. Without CG.  Adjective
 
 LEXICON TJÅRGGÅT  Attr III -is, not tjårggådis but tjårggis. Without CG. Same as JALGGAT only for adjectives ending ot -åt. Adjectives on -åt, with attribute III -is. As f. in Spiik. Sg Acc: jalggadav, attr: jalggis,
 
-*russjkat # Odd-syllable test examples:*
+* russjkat # Odd-syllable test examples:*
 * *russjkat:* `russjkat+A+Sg+Nom`
 * *russjkadav:* `russjkat+A+Sg+Acc`
 * *russjkis:* `russjkat+A+Attr`
@@ -427,7 +427,7 @@ LEXICON TJÅRGGÅT  Attr III -is, not tjårggådis but tjårggis. Without CG. Sa
 
 LEXICON RIHTSOK  No attr, without CG and also without any vowelchanges. The lexicon gives no attribute, either because the adjective dosnºt have attr, because there is stemvowel change in attr that the lexicon canºt handle or because there are strange atrributes that donºt fit to any other lexicon (these attributes are hardcoded). Sg Acc: rihtsogav. 
 
-*rihtsok # Odd-syllable test examples:*
+* rihtsok # Odd-syllable test examples:*
 * *rihtsok:* `rihtsok+A+Sg+Nom`
 * *rihtsogav:* `rihtsok+A+Sg+Acc`
 * *rihtsogabbo:* `rihtsok+A+Der/Comp+A+Sg+Nom`
@@ -436,13 +436,13 @@ exception lexicons for odd-syll
 
 LEXICON IENNILS  no comparatives, attr same as pred.
 
-*ieŋŋils # Odd-syllable test examples:*
+* ieŋŋils # Odd-syllable test examples:*
 * *ieŋŋils:* `ieŋŋils+A+Sg+Nom`
 * *ieŋŋilsav:* `ieŋŋils+A+Sg+Acc`
 
 LEXICON RÁDAS   Presently only used for "rádas". This word has special consonant gradation d>dd. Attr same as pred. Sg Acc: ráddasav, Attr: rádas. Consonant gradation.
 
-*rádas # Odd-syllable test examples:*
+* rádas # Odd-syllable test examples:*
 * *rádas:* `rádas+A+Sg+Nom`
 * *ráddasav:* `rádas+A+Sg+Acc`
 * *rádas:* `rádas+A+Attr`
@@ -453,7 +453,7 @@ LEXICON LUOBES   Err/Orth lexicon! Does the same as TJIEGOS only e>a instead of 
 
 LEXICON LÅSSÅT  Two attr, two comp. As f3. in Spiik. So far the only word i this lexicon i "låssåt", because both låssis and låsså are attr and comparative is both låsep(hybrid?) and låssådabbo.
 
-*låssåt # Odd-syllable test examples:*
+* låssåt # Odd-syllable test examples:*
 * *låssåt:* `låssåt+A+Sg+Nom`
 * *låssådav:* `låssåt+A+Sg+Acc`
 * *låssis:* `låssåt+A+Attr`
@@ -463,7 +463,7 @@ LEXICON LÅSSÅT  Two attr, two comp. As f3. in Spiik. So far the only word i th
 
 LEXICON STUORAK   Only for stuorak. It hase two attributes. Has even-syllable comparison: stuoráp and stuorámus.Sg Acc: stuoragav, attr: stuor and stuorra. This might be a -k derivation of adjective stuorre attr stuor(ra). The comparison is thus based on the original adjective and thus it naturally is an even syll comparison.
 
-*stuorak # Odd-syllable test examples:*
+* stuorak # Odd-syllable test examples:*
 * *stuorak:* `stuorak+A+Sg+Nom`
 * *stuoragav:* `stuorak+A+Sg+Acc`
 * *stuorra:* `stuorak+A+Attr`
@@ -472,7 +472,7 @@ LEXICON STUORAK   Only for stuorak. It hase two attributes. Has even-syllable co
 
 LEXICON ALLAK  Adjs on -ak, attr.on -a. Have both gasep/gaggagabbo and alep/allagabbo as comparatives. As d. in Spiik. So far only the adjectives "allak" and "gassak" go to this lexicon.
 
-*gassak # Odd-syllable test examples:*
+* gassak # Odd-syllable test examples:*
 * *gassak:* `gassak+A+Sg+Nom`
 * *gassagav:* `gassak+A+Sg+Acc`
 * *gassa:* `gassak+A+Attr`
@@ -481,7 +481,7 @@ LEXICON ALLAK  Adjs on -ak, attr.on -a. Have both gasep/gaggagabbo and alep/alla
 
 LEXICON GÅBDDÅK   Adjs on -åk, attr. on -å. Has even-syllable comparison: gåbdep and gåbdemus. So far "gåbddåk" is the only word in this lexicon. As d2. in Spiik. Sg Acc: gåbddågav, Attr: gåbddå.
 
-*gåbddåk # Odd-syllable test examples:*
+* gåbddåk # Odd-syllable test examples:*
 * *gåbddåk:* `gåbddåk+A+Sg+Nom`
 * *gåbddågav:* `gåbddåk+A+Sg+Acc`
 * *gåbddå:* `gåbddåk+A+Attr`
@@ -491,7 +491,7 @@ Inherent comparatives and superlatives
 
 LEXICON NUORTTALABBO    Inherent comparatives, gives both comp and superl. Most of the words are the compared forms of -el(a) words, like nuorttal, lullel.
 
-*guddnelabbo # Even-syllable test examples:*
+* guddnelabbo # Even-syllable test examples:*
 * *guddnelabbo:* `guddnelabbo+A+Gram/Comp+Sg+Nom`
 * *guddnelamos:* `guddnelabbo+A+Der/Superl+A+Sg+Nom`
 * *guddnelap:* `guddnelabbo+A+Gram/Comp+Attr`
@@ -499,14 +499,14 @@ LEXICON NUORTTALABBO    Inherent comparatives, gives both comp and superl. Most 
 
 LEXICON GASSKALAMOS    Inherent superlatives, gives onlys superl. Words that are lexicalized in their superlative forms. 
 
-*ájtodamos # Even-syllable test examples:*
+* ájtodamos # Even-syllable test examples:*
 * *ájtodamos:* `ájtodamos+A+Gram/Superl+Sg+Nom`
 
 ## Contracted stems
 
 LEXICON SÁDNES   Attr same as pred. Sg Acc: sáddnáv, Attr: sádnes.
 
-*hávres # Contracted test examples:*
+* hávres # Contracted test examples:*
 * *hávres:* `hávres+A+Sg+Nom`
 * *hávrráv:* `hávres+A+Sg+Acc`
 * *hávres:* `hávres+A+Attr`
@@ -514,7 +514,7 @@ LEXICON SÁDNES   Attr same as pred. Sg Acc: sáddnáv, Attr: sádnes.
 
 LEXICON GOAVSOS   Attr same as pred. Sg Acc: goaksuv, Attr: goavsos.(goavsos is so far the only word in this lexicon)
 
-*goavsos # Contracted test examples:*
+* goavsos # Contracted test examples:*
 * *goavsos:* `goavsos+A+Sg+Nom`
 * *goaksuv:* `goavsos+A+Sg+Acc`
 * *goaksusav:* `goavsos+A+Sg+Acc` (Eng. # From lexicon TJIEGOS)
@@ -524,7 +524,7 @@ LEXICON GOAVSOS   Attr same as pred. Sg Acc: goaksuv, Attr: goavsos.(goavsos is 
 
 LEXICON SUVRES   Sg Acc: suvrráv, Attr: suvra.
 
-*suvres # Contracted test examples:*
+* suvres # Contracted test examples:*
 * *suvres:* `suvres+A+Sg+Nom`
 * *suvrráv:* `suvres+A+Sg+Acc`
 * *suvrrásav:* `suvres+A+Sg+Acc` (Eng. # From lexicon SJÆVNNJAT)
@@ -622,7 +622,7 @@ LEXICON AGAdj  ! denominal derivations go here, attr same as pred, no comp in th
 
 LEXICON MUORRA  Standard even stems with cg (note Q1). OBS: Nouns with invisible 3>2 cg (as busºsa) go to this lexicon.
 
-*# Even-syllable test examples:*
+* # Even-syllable test examples:*
 * *kártta:* `kártta+N+Sg+Nom`
 * *kártajn:* `kártta+N+Sg+Com`
 
@@ -630,13 +630,13 @@ LEXICON ALMME  Same as MUORRA, but with special -LASJ derivation. For noun that 
 
 LEXICON NOADE  Even stem without cg. OBS: No nouns with invisible 3>2 cg (as busºsa) in this lexicon. OBS: Because of denominal nouns taking a weak grade stem, entries in grade 3 are given the gradation mark º in order to prevent alternation to weak grade. We should consider creating a separate denominal nouns lexicon for NOADE instead.
 
-*låda # Even-syllable test examples:*
+* låda # Even-syllable test examples:*
 * *låda:* `låda+N+Sg+Nom`
 * *lådas:* `låda+N+Sg+Ela`
 
 LEXICON KÁFFA  For even-syll words with cg cg III-I: káf'fa-káfav, jáf'fo-jáfo. No vowelchanges jet, need new twolc code.
 
-*káffa # Even-syllable test examples:*
+* káffa # Even-syllable test examples:*
 * *káffa:* `káffa+N+G3+Sg+Nom`
 * *gáffa:* `káffa+N+G3+Sg+Nom`
 * *gáfas:* `káffa+N+G3+Sg+Ela`
@@ -644,25 +644,25 @@ LEXICON KÁFFA  For even-syll words with cg cg III-I: káf'fa-káfav, jáf'fo-j�
 
 LEXICON LINNJA  Only for the loan word "linnja". Because it's a loan word, the "nnj" is pronounced "nn-j", and therefore does not behave as the regular lule sami "nj" sound and therefore it doesn't follow the rule that makes a:á in 1. grade with short vowel in first syllable (It isn't as linnja-linjáv or birás-birrasav). This word is therefore sub taged. Norwegian/Swedish words with a short "i" followed by two different consonants are assimilated to lule sami in different manners accoring to the consonants in question, but the word is always on grade III (Morén-Duolljá 2014). Both err/orth and correct form is part of this lexicon. 
 
-*linja # Even-syllable test examples:*
+* linja # Even-syllable test examples:*
 
 LEXICON BOAKSA  Only for word "boaksa". Both boaksa-båvsa and err/Orth boksa-båksa are part of lexicon.
 
 LEXICON SÁMEGIEL  Compounds on -giella, with short -giel as middle compound (sámegielåhpadiddje)
 
-*rievsakgiella # Even-syllable test examples:*
+* rievsakgiella # Even-syllable test examples:*
 * *rievsakgiella:* `rievsakgiella+N+Sg+Nom`
 
 LEXICON AHKA  Words like tjerastahka, with short compound form
 
-*báládahka # Even-syllable test examples:*
+* báládahka # Even-syllable test examples:*
 * *báládahka:* `báládahka+N+Sg+Nom`
 * *báládak:* `báládahka+N+Sg+Nom`
 * *báládagáv:* `báládahka+N+Sg+Acc`
 
 LEXICON DARRHA  Only for "darrha" or compounds that end on "darrha".
 
-*báktedarrha # Even-syllable test examples:*
+* báktedarrha # Even-syllable test examples:*
 * *báktedarrha:* `báktedarrha+N+Sg+Nom`
 * *báktedarháv:* `báktedarrha+N+Sg+Acc`
 
@@ -670,7 +670,7 @@ LEXICON DARRHA  Only for "darrha" or compounds that end on "darrha".
 
 LEXICON GÁDDE  2 syllable stems with cg (note Q1) with comparatives
 
-*boassjo # Even-syllable test examples:*
+* boassjo # Even-syllable test examples:*
 * *boassjo:* `boassjo+N+G3+Sg+Nom`
 * *båssjujn:* `boassjo+N+G3+Sg+Com`
 * *boassjojn:* `boassjo+N+G3+Sg+Com`
@@ -678,7 +678,7 @@ LEXICON GÁDDE  2 syllable stems with cg (note Q1) with comparatives
 
 LEXICON SJIEVNNJET  Like GAHPER but with comparatives. Odd-syllable C-final noun without cg, no vowchange, no short Ess.
 
-*stiebil # Odd-syllable test examples:*
+* stiebil # Odd-syllable test examples:*
 * *sjievnnjet:* `sjievnnjet+N+Sg+Nom`
 * *sjievnnjedis:* `sjievnnjet+N+Sg+Ela`
 * *sjievnnjedabbo* `sjievnnje+N+Der/Comp+A+Sg+Nom`
@@ -686,14 +686,14 @@ LEXICON SJIEVNNJET  Like GAHPER but with comparatives. Odd-syllable C-final noun
 
 LEXICON ÅLGGO  Like MUORRA, but with comparatives. This lexicon was previously without sg ill/ine/elat, but these nouns can be conjugated for regular location cases. However, "adverbs" like ålggot (from outside), nuorttan (at north), oarjas (to south), etc., are more commonly used to denote location/direction (should therefore maybe consider subing the regular location case forms).
 
-*lulle # Even-syllable test examples:*
+* lulle # Even-syllable test examples:*
 * *lulle:* `lulle+N+Sg+Nom`
 * *lulev:* `lulle+N+Sg+Acc`
 * *lulep:* `lulle+N+Der/Comp+A+Sg+Nom`
 
 LEXICON MIEHTE  Like MUORRA but no locative/elative/illative sg. Presently no words in this lexica except for err subed nuortto
 
-*nuortto # Even-syllable test examples:*
+* nuortto # Even-syllable test examples:*
 * *nuortto:* `nuortto+N+Sg+Nom`
 * *nuortov:* `nuortto+N+Sg+Acc`
 
@@ -701,7 +701,7 @@ LEXICON MIEHTE  Like MUORRA but no locative/elative/illative sg. Presently no wo
 
 LEXICON BÅVSÅ  Like MUORRA, only in plural. All, except ganta, juvdá and ávta, have regular, singular stem counterparts.
 
-*båvså # Even-syllable test examples:*
+* båvså # Even-syllable test examples:*
 * *båvså:* `båvså+N+Pl+Nom`
 * *båvsåjt:* `båvså+N+Pl+Acc`
 
@@ -717,7 +717,7 @@ LEXICON KAFIEDJA_CMP_INFL   Recent loanwords on -edja. Ends on -é in norwegian.
 
 LEXICON ALLEGORIJJA_CMP_INFL  Recent loanwords ending on -i in NOR/SWE, with long and short compound form. Standardized as-iddja (SWE) and -ijºja (NOR). Previously often assimilated as -ija (or just -ia), but both forms are ungrammatical: Short vowels cannot preceed and follow a single intervocalic consonant. -ija is thus ungrammatical as the short a would be lenghtened to á, like "idja-ijá".
 
-*partijja # Even-syllable test examples:*
+* partijja # Even-syllable test examples:*
 * *akademiddja:* `akademijja+N+Sg+Nom`
 * *akademijja:* `akademijja+N+G3+Sg+Nom`
 * *akademidjas:* `akademijja+N+Sg+Ela`
@@ -725,13 +725,13 @@ LEXICON ALLEGORIJJA_CMP_INFL  Recent loanwords ending on -i in NOR/SWE, with lon
 
 LEXICON TEKSTIJLLA_CMP_INFL  Recent loanwords on -ijlla with long and short compound-form. . Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-*tekstijlla # Even-syllable test examples:*
+* tekstijlla # Even-syllable test examples:*
 * *tekstijlla:* `tekstijlla+N+Sg+Nom`
 * *tekstijlas:* `tekstijlla+N+Sg+Ela`
 
 LEXICON ASIJLLA_CMP_INFL  Recent loanwords on -ijlla, from nor and swe words ending on -yl. With long and short compound-form.  Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-*asijlla # Even-syllable test examples:*
+* asijlla # Even-syllable test examples:*
 * *asijlla:* `asijlla+N+Sg+Nom`
 * *asijlas:* `asijlla+N+Sg+Ela`
 
@@ -739,55 +739,55 @@ LEXICON BENSIJNNA  Recent loanwords on -ijnna with long and short compound-form
 
 LEXICON BENSIJNNA_CMP_INFL  Recent loanwords on -ijnna with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-*tamburijnna # Even-syllable test examples:*
+* tamburijnna # Even-syllable test examples:*
 * *tamburijnna:* `tamburijnna+N+Sg+Nom`
 * *tamburijnas:* `tamburijnna+N+Sg+Ela`
 
 LEXICON MASJIJNNA_CMP_INFL  Recent loanwords on -sjijnna with long and short compound-form: -SKIN
 
-*bivtasmasjijnna # Even-syllable test examples:*
+* bivtasmasjijnna # Even-syllable test examples:*
 * *bivtasmasjijnna:* `bivtasmasjijnna+N+Sg+Nom`
 * *bivtasmasjijnas:* `bivtasmasjijnna+N+Sg+Ela`
 
 LEXICON ADJEKTIJVVA_CMP_INFL  Recent loanwords on -ijvva with long and short compound-form
 
-*datijvva # Even-syllable test examples:*
+* datijvva # Even-syllable test examples:*
 * *datijvva:* `datijvva+N+Sg+Nom`
 * *datijvas:* `datijvva+N+Sg+Ela`
 
 LEXICON PARADIJSSA_CMP_INFL  Recent loanwords on -ijssa with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-*servijssa # Even-syllable test examples:*
+* servijssa # Even-syllable test examples:*
 * *servijssa:* `servijssa+N+Sg+Nom`
 * *servijsas:* `servijssa+N+Sg+Ela`
 
 LEXICON TELEFÅVNNÅ_CMP_INFL  Recent loanwords on -åvnnå with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-*persåvnnå # Even-syllable test examples:*
+* persåvnnå # Even-syllable test examples:*
 * *persåvnnå:* `persåvnnå+N+Sg+Nom`
 * *persåvnås:* `persåvnnå+N+Sg+Ela`
 
 LEXICON INSTITUSJÅVNNÅ_CMP_INFL   Recent loanwords on -sjåvnnå with long and short compound-form: -TION IN SWEDISH. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-*populasjåvnnå # Even-syllable test examples:*
+* populasjåvnnå # Even-syllable test examples:*
 * *populasjåvnnå:* `populasjåvnnå+N+Sg+Nom`
 * *populasjåvnås:* `populasjåvnnå+N+Sg+Ela`
 
 LEXICON MISJÅVNNÅ_CMP_INFL  Recent loanwords on -sjåvnnå with long and short compound-form: -SSION IN SWEDISH. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-*sesjåvnnå # Even-syllable test examples:*
+* sesjåvnnå # Even-syllable test examples:*
 * *sesjåvnnå:* `sesjåvnnå+N+Sg+Nom`
 * *sesjåvnås:* `sesjåvnnå+N+Sg+Ela`
 
 LEXICON PENSJÅVNNÅ_CMP_INFL  Recent loanwords on -sjåvnnå with long and short compound-form: -SION IN SWEDISH. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-*suspensjåvnnå # Even-syllable test examples:*
+* suspensjåvnnå # Even-syllable test examples:*
 * *suspensjåvnnå:* `suspensjåvnnå+N+Sg+Nom`
 * *suspensjåvnås:* `suspensjåvnnå+N+Sg+Ela`
 
 LEXICON PARTISIHPPA_CMP_INFL  Recent loanwords from swe -cip and nor -sipp, becoming -sihppa in Norway, both -sijppa and -sihppa are used in Sweden (Particip vs partisipp). Short and long compound-form. 
 
-*partisihppa # Even-syllable test examples:*
+* partisihppa # Even-syllable test examples:*
 * *partisihppa:* `partisihppa+N+Sg+Nom`
 * *partisihpas:* `partisihppa+N+Sg+Ela`
 * *partisijppa:* `partisihppa+N+Sg+Nom`
@@ -795,19 +795,19 @@ LEXICON PARTISIHPPA_CMP_INFL  Recent loanwords from swe -cip and nor -sipp, beco
 
 LEXICON ALKOHÅVLLÅ_CMP_INFL  Recent loanwords on -åvllå with long and short compound-form. The old stadarization form "alkohola" is sub taged. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-*parabåvllå # Even-syllable test examples:*
+* parabåvllå # Even-syllable test examples:*
 * *parabåvllå:* `parabåvllå+N+Sg+Nom`
 * *parabåvlås:* `parabåvllå+N+Sg+Ela`
 
 LEXICON AGRONÅVMMÅ_CMP_INFL  Recent loanwords on -åvmma with long and short compound-form. -lasj derivation is error taged. The old stadarization form  -oma that does not follow lulesami rules is sub taged.
 
-*agronåvmmå # Even-syllable test examples:*
+* agronåvmmå # Even-syllable test examples:*
 * *agronåvmmå:* `agronåvmmå+N+Sg+Nom`
 * *agronåvmås:* `agronåvmmå+N+Sg+Ela`
 
 LEXICON DEMAGÅVGGÅ_CMP_INFL  Recent loanwords ending on -og with long and short compound form. Assimilated to smj as -åvggå. -lasj derivation is error taged. The old stadarization -oga that does not follow lulesami rules is sub taged.
 
-*pedagoga # Even-syllable test examples:*
+* pedagoga # Even-syllable test examples:*
 * *pedagåvggå:* `pedagåvggå+N+Sg+Nom`
 * *pedagåvggå:* `pedagåvggå+N+Sg+Nom`
 * *pedagåvgås:* `pedagåvggå+N+Sg+Ela`
@@ -816,45 +816,45 @@ LEXICON FAKTÅVRRÅ_CMP_INFL  Recent loanwords on -åvrrå with long and short c
 
 LEXICON MIKROSKÅVPPÅ_CMP_INFL  Recent loanwords on -åvppå (-op in NOB/SWE) with long and short compound-form.  Long vowel and short consonant is assimilated with njuoban, but somehow a lot of -op words are assimilated -oahppa (biskop is pronounced as -opp, so that's different, maybe some have used "biskop" as template), so this is Err/Orth taged. 
 
-*oajvvekontåvrrå # Even-syllable test examples:*
+* oajvvekontåvrrå # Even-syllable test examples:*
 * *oajvvekontåvrrå:* `oajvvekontåvrrå+N+Sg+Nom`
 * *oajvvekontåvrås:* `oajvvekontåvrrå+N+Sg+Ela`
 
 LEXICON KULTUVRRA_CMP_INFL  Recent loanwords on -vrra with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-*muvrra # Even-syllable test examples:*
+* muvrra # Even-syllable test examples:*
 * *muvrra:* `muvrra+N+Sg+Nom`
 * *muvrajn:* `muvrra+N+Sg+Com`
 
 LEXICON ADVÆRBBA_CMP_INFL  Recent loanwords on -ærbba with long and short compound-form
 
-*detransitijvvaværbba # Even-syllable test examples:*
+* detransitijvvaværbba # Even-syllable test examples:*
 * *detransitijvvaværbba:* `detransitijvvaværbba+N+Sg+Nom`
 * *detransitijvvavärbba:* `detransitijvvaværbba+N+Sg+Nom`
 * *detransitijvvaverbas:* `detransitijvvaværbba+N+Sg+Ela`
 
 LEXICON SUBSTÁNSSA_CMP_INFL  Recent loanwords on -ánssa with long and short compound-form. Originally -ans in SWE and NOR. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-*instánssa # Even-syllable test examples:*
+* instánssa # Even-syllable test examples:*
 * *instánssa:* `instánssa+N+Sg+Nom`
 * *instánsas:* `instánssa+N+Sg+Ela`
 
 LEXICON VALÆNSSA_CMP_INFL  Recent loanwords on -ænssa with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-*intelligænssa # Even-syllable test examples:*
+* intelligænssa # Even-syllable test examples:*
 * *intelligænssa:* `intelligænssa+N+Sg+Nom`
 * *intelligänssa:* `intelligænssa+N+Sg+Nom`
 * *intelligensav:* `intelligænssa+N+Sg+Acc`
 
 LEXICON ADVOKÁHTTA_CMP_INFL  Recent loanwords on -áhtta with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-*klimáhtta # Even-syllable test examples:*
+* klimáhtta # Even-syllable test examples:*
 * *klimáhtta:* `klimáhtta+N+Sg+Nom`
 * *klimáhtas:* `klimáhtta+N+Sg+Ela`
 
  LEXICON ALFABIEHTTA_CMP_INFL  Recent loanwords originally on -et both in Norway and Sweden. Assimilation differences, however, create two lule sami forms: -iehtta in NOR and -æhtta in SWE. LONG -e is assimilated in different ways in Norway and Sweden: In Norway, it becomes -ie, and in Sweden -e. Tiedja/tedja, systiebma/systebma and so on. This is especially apparent in assimilated words with long e in third grade: E becomes æ in third grade so we get "universitæhtta" in SWE, but this is very strange to people on the norwegian side of the border as they want "universitiehtta". Both -ie and -e are dialtaged in lexicons HYDROGIEDNA, APOTIEHKKA, SYSTIEBMA, KAFÉ. Previously people often wrote -ehtta in Norway, but this is incorrect as e always becomes æ in grade three.
 
-*mobilitiehtta # Even-syllable test examples:*
+* mobilitiehtta # Even-syllable test examples:*
 * *mobilitähtta:* `mobilitiehtta+N+Sg+Nom`
 * *mobilitiehtta:* `mobilitiehtta+N+Sg+Nom`
 * *mobilitehtav:* `mobilitiehtta+N+Sg+Acc`
@@ -862,21 +862,21 @@ LEXICON ADVOKÁHTTA_CMP_INFL  Recent loanwords on -áhtta with long and short co
 
 LEXICON INTERNÆHTTA_CMP_INFL  Recent loanwords on -æhtta with long and short compound-form: -ET IN SWEDISH, -ETT in norwegian. Differs from ALFABIEHTTA because -ehtta isn't used in NOR.
 
-*intranæhtta # Even-syllable test examples:*
+* intranæhtta # Even-syllable test examples:*
 * *intranæhtta:* `intranæhtta+N+Sg+Nom`
 * *intranähtta:* `intranæhtta+N+Sg+Nom`
 * *intranehtas:* `intranæhtta+N+Sg+Ela`
 
 LEXICON TABLÆHTTA_CMP_INFL  Recent loanwords on -æhtta with long and short compound-form. -ETT in both norwegian and in swedish.
 
-*kvartæhtta # Even-syllable test examples:*
+* kvartæhtta # Even-syllable test examples:*
 * *kvartæhtta:* `kvartæhtta+N+Sg+Nom`
 * *kvartähtta:* `kvartæhtta+N+Sg+Nom`
 * *kvartehtas:* `kvartæhtta+N+Sg+Ela`
 
 LEXICON INSTITUHTTA_CMP_INFL  Recent loanwords on -uhtta, with long and short compound-form on -utt(NOR)/-ut(SWE). The swedish -ut also gets uvtta, as ANTIHKKA-antijkka, but instituhtta is also used in sweden, so no Area/NO tag. 
 
-*minuhtta # Even-syllable test examples:*
+* minuhtta # Even-syllable test examples:*
 * *minuhtta:* `minuhtta+N+Sg+Nom`
 * *minuvtta:* `minuhtta+N+Sg+Nom`
 * *minuhtas:* `minuhtta+N+Sg+Ela`
@@ -884,7 +884,7 @@ LEXICON INSTITUHTTA_CMP_INFL  Recent loanwords on -uhtta, with long and short co
 
 LEXICON SATELIHTTA_CMP_INFL  Recent loanwords on -ihtta, with long and short compound-form on -itt(NOR)/-it(SWE). The swedish -it also gets ijtta, as ANTIHKKA-antijkka, but satelihtta is also used in sweden, so no Area/NO tag. 
 
-*inuihtta # Even-syllable test examples:*
+* inuihtta # Even-syllable test examples:*
 * *inuihtta:* `inuihtta+N+Sg+Nom`
 * *inuijtta:* `inuihtta+N+Sg+Nom`
 * *inuihtas:* `inuihtta+N+Sg+Ela`
@@ -892,7 +892,7 @@ LEXICON SATELIHTTA_CMP_INFL  Recent loanwords on -ihtta, with long and short com
 
 LEXICON APOTIEHKKA_CMP_INFL  Recent loanwords on -iehkka in NOR, -æhkka in SWE. -ehkka as sub. With long and short compound-form on -k. See comments about the -ie/-e dialtags in ALFABIEHTTA.
 
-*kartotiehkka # Even-syllable test examples:*
+* kartotiehkka # Even-syllable test examples:*
 * *kartotähkka:* `kartotiehkka+N+Sg+Nom`
 * *kartotehkas:* `kartotiehkka+N+Sg+Ela`
 * *kartotiehkka:* `kartotiehkka+N+Sg+Nom`
@@ -900,7 +900,7 @@ LEXICON APOTIEHKKA_CMP_INFL  Recent loanwords on -iehkka in NOR, -æhkka in SWE.
 
 LEXICON ANTIHKKA_CMP_INFL  Recent loanwords on -hkka in Norway, both -ijkka and -hkka are used in Sweden (Antik vs antikk). With long and short compound-form on -kk/-k. The swedish forms were earlier added to stems for the Swedish version, but now added here.
 
-*dialektihkka # Even-syllable test examples:*
+* dialektihkka # Even-syllable test examples:*
 * *dialektihkka:* `dialektihkka+N+Sg+Nom`
 * *dialektihkas:* `dialektihkka+N+Sg+Ela`
 * *dialektijkka:* `dialektihkka+N+Sg+Nom`
@@ -908,19 +908,19 @@ LEXICON ANTIHKKA_CMP_INFL  Recent loanwords on -hkka in Norway, both -ijkka and 
 
 LEXICON SEMINÁRRA_CMP_INFL  Recent loanwords on -árra with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-*hektárra # Even-syllable test examples:*
+* hektárra # Even-syllable test examples:*
 * *hektárra:* `hektárra+N+Sg+Nom`
 * *hektáras:* `hektárra+N+Sg+Ela`
 
 LEXICON AREÁLLA_CMP_INFL  Recent loanwords on -álla with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-*gasskavokálla # Even-syllable test examples:*
+* gasskavokálla # Even-syllable test examples:*
 * *gasskavokálla:* `gasskavokálla+N+Sg+Nom`
 * *gasskavokálas:* `gasskavokálla+N+Sg+Ela`
 
 LEXICON AMBASSADERRA_CMP_INFL  Recent loanwords on -ør with long and short compound-form. Standarized by Giellagálldo 05.05.14 as -erra. -ørra is subtaged
 
-*observaterra # Even-syllable test examples:*
+* observaterra # Even-syllable test examples:*
 * *observaterra:* `observaterra+N+Sg+Nom`
 * *observateras:* `observaterra+N+Sg+Ela`
 
@@ -928,13 +928,13 @@ LEXICON VETERINERRA_CMP_INFL  Recent loanwords on -erra. Words ending in -ær in
 
 LEXICON ATMOSFERRA_CMP_INFL  Recent loanwords -on erra. But with different endings in SE and NO, ending on -ære, -ær in NOR and -är, -ära in SWE (Ingefær NO, ingefära in SE).  Only long compound-form, short form must be hardcoded in firstcompnent lexicon. The old standardization form -æra, and -era, without cg, are subtaged, -also -ær'ra and -ærra.             
 
-*observaterra # Even-syllable test examples:*
+* observaterra # Even-syllable test examples:*
 * *atmosferra:* `atmosferra+N+Sg+Nom`
 * *atmosferas:* `atmosferra+N+Sg+Ela`
 
 LEXICON KARAKTIERRA_CMP_INFL  Recent loanwords -on ierra in NOR, -erra in SWE, because of long e assimilates diffenrent ways. Words ending on -er in NOR, and -er or -är in SWE. Only long compound-form, short form must be hardcoded in firstcompnent lexicon.  
 
-*observaterra # Even-syllable test examples:*
+* observaterra # Even-syllable test examples:*
 * *karaktierra:* `karaktierra+N+Sg+Nom`
 * *karaktieras:* `karaktierra+N+Sg+Ela`
 * *karakterra:* `karaktierra+N+Sg+Nom`
@@ -942,26 +942,26 @@ LEXICON KARAKTIERRA_CMP_INFL  Recent loanwords -on ierra in NOR, -erra in SWE, b
 
 LEXICON TABÆLLA_CMP_INFL  Recent loanwords on -älºla with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-*flotælla # Even-syllable test examples:*
+* flotælla # Even-syllable test examples:*
 * *flotælla:* `flotælla+N+G3+Sg+Nom`
 * *flotälla:* `flotælla+N+G3+Sg+Nom`
 * *flotellas:* `flotælla+N+G3+Sg+Ela`
 
 LEXICON TELEGRÁMMA_CMP_INFL  Recent loanwords on -ámºma with long and short compound-form
 
-*grámma # Even-syllable test examples:*
+* grámma # Even-syllable test examples:*
 * *grámma:* `grámma+N+G3+Sg+Nom`
 * *grámmas:* `grámma+N+G3+Sg+Ela`
 
 LEXICON TOPOGRÁFFA_CMP_INFL  Recent loanwords on -áfºfa with long and short compound-form
 
-*telegráffa # Even-syllable test examples:*
+* telegráffa # Even-syllable test examples:*
 * *telegráffa:* `telegráffa+N+G3+Sg+Nom`
 * *telegráffas:* `telegráffa+N+G3+Sg+Ela`
 
 LEXICON SYSTIEBMA_CMP_INFL  Recent loanwords on -ebma/-iebma with long and short compound-form. -em in NOR and SWE. See comments about the -ie/-e dialtags in ALFABIEHTTA. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-*vokalsystiebma # Even-syllable test examples:*
+* vokalsystiebma # Even-syllable test examples:*
 * *vokalsystebma:* `vokalsystiebma+N+Sg+Nom`
 * *vokalsystiebma:* `vokalsystiebma+N+Sg+Nom`
 * *vokalsystiemas:* `vokalsystiebma+N+Sg+Ela`
@@ -969,14 +969,14 @@ LEXICON SYSTIEBMA_CMP_INFL  Recent loanwords on -ebma/-iebma with long and short
 
 LEXICON ORGÁDNA_CMP_INFL  Recent loanwords on -ádna with long and short compound-form
 
-*doarjjaorgádna # Even-syllable test examples:*
+* doarjjaorgádna # Even-syllable test examples:*
 * *doarjjaorgádna:* `doarjjaorgádna+N+Sg+Nom`
 * *doarjjaorgánna:* `doarjjaorgádna+N+Sg+Nom`
 * *doarjjaorgánav:* `doarjjaorgádna+N+Sg+Acc`
 
 LEXICON KOLLÆKTA_CMP_INFL  Recent loanwords on -ækta with long and short compound-form
 
-*subjækta # Even-syllable test examples:*
+* subjækta # Even-syllable test examples:*
 * *subjækta:* `subjækta+N+Sg+Nom`
 * *subjäkta:* `subjækta+N+Sg+Nom`
 * *subjevtas:* `subjækta+N+Sg+Ela`
@@ -985,26 +985,26 @@ LEXICON HYDROGIEDNA_CMP_INFL  Recent loanwords on -iedna in NOR and -edna in SWE
 
 LEXICON PATÆNNTA_CMP_INFL  Recent loanwords on -ænnta with long and short compound-form. The -ennta form (used in "Ådå testamennta") is taged as sub (e always becomes æ in grade three).
 
-*patænnta # Even-syllable test examples:*
+* patænnta # Even-syllable test examples:*
 * *patænnta:* `patænnta+N+Sg+Nom`
 * *patännta:* `patænnta+N+Sg+Nom`
 * *patentas:* `patænnta+N+Sg+Ela`
 
 LEXICON VARIÁNNTA_CMP_INFL  Recent loanwords on -ánnta with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-*praktikánnta # Even-syllable test examples:*
+* praktikánnta # Even-syllable test examples:*
 * *praktikánnta:* `praktikánnta+N+Sg+Nom`
 * *praktikántas:* `praktikánnta+N+Sg+Ela`
 
 LEXICON FANATISSMA_CMP_INFL  Recent loanwords on -ssma with long and short compound-form.
 
-*kabbalissma # Even-syllable test examples:*
+* kabbalissma # Even-syllable test examples:*
 * *kabbalissma:* `kabbalissma+N+Sg+Nom`
 * *kabbalismas:* `kabbalissma+N+Sg+Ela`
 
 LEXICON TURISSTA_CMP_INFL  Recent loanwords on -ssta with long and short compound-form. -lasj derivation is error taged.  Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-*journalissta # Even-syllable test examples:*
+* journalissta # Even-syllable test examples:*
 * *journalissta:* `journalissta+N+Sg+Nom`
 * *journalistas:* `journalissta+N+Sg+Ela`
 
@@ -1012,7 +1012,7 @@ LEXICON TURISSTA_CMP_INFL  Recent loanwords on -ssta with long and short compoun
 
 LEXICON PRIEMIJ_CMP_INFL  Assimilated loanwords. on -ie/-y, like premie and bandy. Become odd syllable loan words with cg, like "riebij". Nom: premij, gen prebmiha. Long and short essive.
 
-*priemij # Even-syllable test examples:*
+* priemij # Even-syllable test examples:*
 * *priemij:* `priemij+N+Sg+Nom`
 * *premij:* `priemij+N+Sg+Nom`
 * *priebmihis:* `priemij+N+Sg+Ela`
@@ -1030,20 +1030,20 @@ LEXICON PRIEMIJ_CMP_INFL  Assimilated loanwords. on -ie/-y, like premie and band
 
 LEXICON NOADE_BADASS  2 syll stems without cg. Badly or wrongly assimilated words, ie. assimilated in a way that isn't lulesami. (Same as NOADE) Most of the words are Err/Orth tagged with a standardized lemma. Some are Err/Lex tagged, 5.9.2019: EJP/SNM: fjerna +Use/-Spell - sjølv om vi ikkje likar orda, så vil vi sjå til at dei blir skrive rett etter smj-ortografien! Dei fleste orda er uansett merka med +Err/Orth :)
 
-*balláda # Even-syllable test examples:*
+* balláda # Even-syllable test examples:*
 * *balláda* `balláda+N+Sg+Nom`
 * *balládas* `balláda+N+Sg+Ela`
 
 LEXICON C_ILL_IJ_BADASS  Badly or wrongly assimilated words. Last letter is consonant, no cg, no vowchange, with illative -ij. (Same as GAHPER) Assimilated in a way that isn't lulesami. Most of the words are Err/Orth tagged with a standardized lemma. Some are Err/Lex tagged, and some only recieve the +Use/-Spell tag from the lexicon.
 
-*sentimehter # Odd-syllable test examples:*
+* sentimehter # Odd-syllable test examples:*
 * *sentimehter* `sentimehter+N+Sg+Nom`
 * *sentimehteris* `sentimehter+N+Sg+Ela`
 * *sentimehterij* `sentimehter+N+Sg+Ill`
 
 LEXICON C_ILL_AJ_BADASS  Badly or wrongly assimilated words. Last letter in consonant, no cg, no vowchange, with illative -aj. Should have been assimilated to even-syll, but are used as odd-syll, and mostly just assimilated with changing to letter á. So almosed same as CELSIUS_UNASS.
 
-*kálsium # Odd-syllable test examples:*
+* kálsium # Odd-syllable test examples:*
 * *kálsium* `kálsium+N+Sg+Nom`
 * *kálsiumas* `kálsium+N+Sg+Ela`
 * *kálsiumaj* `kálsium+N+Sg+Ill`
@@ -1060,20 +1060,20 @@ LEXICON NOADE_ERR/ORTH  Like NOADE, but without nominative, illative an essive. 
 
 LEXICON KINO_UNASS_CMP_INFL  V-final unassimilated loanwords. Not lulesami. No diacritics whatsoever. Words that aren't assimilated at all. Really just norwegian words with a kind of sami inflection. Get even syllable case marking. Are part of the spell checker.
 
-*netto # Even-syllable test examples:*
+* netto # Even-syllable test examples:*
 * *netto:* `netto+N+Sg+Nom`
 * *nettos:* `netto+N+Sg+Ela`
 
 LEXICON C_ILL_IJ_UNASS  C-final unassimilated loanwords, gives illative- ij. Not lulesami. No diacritics whatsoever. Really just foreign words with a kind of sami inflection. Odd syllable case marking (like GAHPER). Are part of the spell checker. 
 
-*sirkus # Even-syllable test examples:*
+* sirkus # Even-syllable test examples:*
 * *sirkus:* `sirkus+N+Sg+Nom`
 * *sirkusij:* `sirkus+N+Sg+Ill`
 * *sirkusis:* `sirkus+N+Sg+Ela`
 
 LEXICON C_ILL_AJ_UNASS  C-final unassimilated loanwords, gives illativ -aj. Also odd-syll words ending on letter i, as selleri. Not lulesami. No diacritics whatsoever. Really just norwegian words with a kind of sami inflection. Case marking like standard even 4 syllable stems (see proper nouns file on the case marking of foreign words with stressed last syllable). Are part of the spell checker. 
 
-*aids # Even-syllable test examples:*
+* aids # Even-syllable test examples:*
 * *aids:* `aids+N+Sg+Nom`
 * *aidsaj:* `aids+N+Sg+Ill`
 * *aidsas:* `aids+N+Sg+Ela`
@@ -1088,7 +1088,7 @@ LEXICON C_ILL_AJ_UNASS  C-final unassimilated loanwords, gives illativ -aj. Also
 
 LEXICON GÅNÅGIS  Standard C-final 4-syllabic stems
 
-*rahtjamus # Even-syllable test examples:*
+* rahtjamus # Even-syllable test examples:*
 * *rahtjamus:* `rahtjamus+N+Sg+Nom`
 * *rahtjamussaj:* `rahtjamus+N+Sg+Ill`
 * *rahtjamusás:* `rahtjamus+N+Sg+Ela`
@@ -1097,7 +1097,7 @@ LEXICON BERULASJ  For words ending on -asj. Same as GÅNÅGIS but with strong es
 
 LEXICON BEDNAGASJ  Like BERULASJ, but for derived nouns in diminutive. No cg, no vowchange, no short Ess. Has only one dimin derivation since these words already are dimin, ie. no double dim as for GAHPER. No abessive, not totally sure about this, I think we must use postposition dagi when it's diminutive,
 
-*stiebil # Odd-syllable test examples:*
+* stiebil # Odd-syllable test examples:*
 * *bednagasj:* `bednagasj+N+Gram/Dimin+Sg+Nom`
 * *bednagattjas:* `bednagasj+N+Gram/Dimin+Sg+Ela`
 
@@ -1105,19 +1105,19 @@ LEXICON HÁVSAGUSJ  Like BEDNAGASJ, but not diminutive. No cg, no vowchange, no 
 
 LEXICON JIHPELIJ  gen:jihpelahá
 
-*gehtsulij # Even-syllable test examples:*
+* gehtsulij # Even-syllable test examples:*
 * *gehtsulij:* `gehtsulij+N+Sg+Nom`
 * *gehtsulaháv:* `gehtsulij+N+Sg+Acc`
 
 LEXICON OARJJILIJ  gen:oarjjilihá
 
-*allilij # Even-syllable test examples:*
+* allilij # Even-syllable test examples:*
 * *allilij:* `allilij+N+Sg+Nom`
 * *allilihás:* `allilij+N+Sg+Ela`
 
 LEXICON VIESSOMUJ  gen:viessumuhá
 
-*bårråmuj # Even-syllable test examples:*
+* bårråmuj # Even-syllable test examples:*
 * *bårråmuj:* `bårråmuj+N+Sg+Nom`
 * *bårråmuháj:* `bårråmuj+N+Sg+Ill`
 
@@ -1125,26 +1125,26 @@ LEXICON VIESSOMUJ  gen:viessumuhá
 
 LEXICON OADÁDAGÁ  Plural forms of words like tjerastahka with short compound-form
 
-*látjádagá # Even-syllable test examples:*
+* látjádagá # Even-syllable test examples:*
 * *látjádagá:* `látjádagá+N+Pl+Nom`
 * *látjádagájs:* `látjádagá+N+Pl+Ela`
 
 LEXICON BERRAHATTJA  Plural stems. Like IEDNITJA, these do not have corresponding singular stems. Most stems here have the same form as the pl nom form of diminutive derivations, but (while it may have originated as a diminuitive derivation) it is not the same derivation (today) and it does not have a singular form.
 
-*gahpanisá # Even-syllable test examples:*
+* gahpanisá # Even-syllable test examples:*
 * *gahpanisá:* `gahpanisá+N+Pl+Nom`
 * *gahpanisájda:* `gahpanisá+N+Pl+Ill`
 * *gahpanisájs:* `gahpanisá+N+Pl+Ela`
 
 LEXICON SIJDDALAHÁ   Plurals
 
-*lullelahá # Even-syllable test examples:*
+* lullelahá # Even-syllable test examples:*
 * *lullelahá:* `lullelahá+N+Pl+Nom`
 * *lullelahájt:* `lullelahá+N+Pl+Acc`
 
  LEXICON SISSNELUHÁ   plurals. presently only for sissŋeluhá
 
-*sissŋeluhá # Even-syllable test examples:*
+* sissŋeluhá # Even-syllable test examples:*
 * *sissŋeluhá:* `sissŋeluhá+N+Pl+Nom`
 * *sissŋeluhájda:* `sissŋeluhá+N+Pl+Ill`
 
@@ -1166,7 +1166,7 @@ LEXICON N-EVENWEAKSTEM-NO-ABE  same as N-EVENWEAKSTEM but without abessive (abes
 
 LEXICON GAHPER  Odd-syllable C-final noun without cg, no vowchange, no short Ess. Spiik A3
 
-*stiebil # Odd-syllable test examples:*
+* stiebil # Odd-syllable test examples:*
 * *stiebil:* `stiebil+N+Sg+Nom`
 * *stiebilis:* `stiebil+N+Sg+Ela`
 
@@ -1174,7 +1174,7 @@ LEXICON GAHPER  Odd-syllable C-final noun without cg, no vowchange, no short Ess
 
 LEXICON ÅRES  Odd-syllable C-final noun with CG, 2ndsyll vowchange. Long and short essive. Spiik A1
 
-*sjattos # Odd-syllable test examples:*
+* sjattos # Odd-syllable test examples:*
 * *sjattos:* `sjattos+N+Sg+Nom`
 * *sjaddusis:* `sjattos+N+Sg+Ela`
 * *sjaddusin:* `sjattos+N+Ess`
@@ -1182,14 +1182,14 @@ LEXICON ÅRES  Odd-syllable C-final noun with CG, 2ndsyll vowchange. Long and sh
 
 LEXICON SÅHKÅR  Odd-syllable C-final noun with CG and 2ndsyll vowelchange. Has only long essive. Spiik 2b
 
-*spiger # Odd-syllable test examples:*
+* spiger # Odd-syllable test examples:*
 * *spiger:* `spiger+N+Sg+Nom`
 * *spihkáris:* `spiger+N+Sg+Ela`
 * *spihkárin:* `spiger+N+Ess`
 
 LEXICON MIEHTAR  Only for word "miehtar". Same as SÅHKÅR but with Area-differences and a lot of Err/Orths. 
 
-*miehtar # Odd-syllable test examples:*
+* miehtar # Odd-syllable test examples:*
 * *miehtar:* `miehtar+N+Sg+Nom`
 * *mehtar:* `miehtar+N+Sg+Nom`
 * *miehttaris:* `miehtar+N+Sg+Ela`
@@ -1199,13 +1199,13 @@ LEXICON MIEHTAR  Only for word "miehtar". Same as SÅHKÅR but with Area-differe
 
 LEXICON GÁMAS  Odd-syllable C-final noun with CG, no 2ndsyll vowchange (OBS: a does not change). Long and short essive. Spiik A2
 
-*sjábtjas # Odd-syllable test examples:*
+* sjábtjas # Odd-syllable test examples:*
 * *sjábtjas:* `sjábtjas+N+Sg+Nom`
 * *sjábttjasis:* `sjábtjas+N+Sg+Ela`
 
 LEXICON BENA  Odd-syllable V-final noun with cg, no 2nsyll vowchange. Deletes g. Long and short essive. Spiik 2a
 
-*galma # Odd-syllable test examples:*
+* galma # Odd-syllable test examples:*
 * *galma:* `galma+N+Sg+Nom`
 * *galmmagis:* `galma+N+Sg+Ela`
 
@@ -1213,43 +1213,43 @@ LEXICON BENA  Odd-syllable V-final noun with cg, no 2nsyll vowchange. Deletes g.
 
 LEXICON SUOBDE   gen: suobddega.  Presently only for "suobde". For some reason -e dosn't become á. So not in lexicon BENA. Long and short essive.
 
-*ságe # Odd-syllable test examples:*
+* ságe # Odd-syllable test examples:*
 * *ságe:* `ságe+N+Sg+Nom`
 * *sáhkahav:* `ságe+N+Sg+Acc`
 
 LEXICON SÁGE   gen: sáhkaha.  Presently only for "ságe". Long and short essive.
 
-*ságe # Odd-syllable test examples:*
+* ságe # Odd-syllable test examples:*
 * *ságe:* `ságe+N+Sg+Nom`
 * *sáhkahav:* `ságe+N+Sg+Acc`
 
 LEXICON BAVSEV   Ends on -v and last vowel changes to i: bavsev:baksIma. Not like gierkav gierkkAma and birev birEma.
 
-*sievtev # Odd-syllable test examples:*
+* sievtev # Odd-syllable test examples:*
 * *sievtev:* `sievtev+N+Sg+Nom`
 * *siektimis:* `sievtev+N+Sg+Ela`
 
 LEXICON RÁBEV  rábev:ráhpuga. Presently only for "rábev".
 
-*rábev # Odd-syllable test examples:*
+* rábev # Odd-syllable test examples:*
 * *rábev:* `rábev+N+Sg+Nom`
 * *ráhpugis:* `rábev+N+Sg+Ela`
 
 LEXICON RITJAS !  Like GÁMAS but without stem a-lengthening for grade I (underlying long -i-). presently only for "ritjas".
 
-*ritjas # Odd-syllable test examples:*
+* ritjas # Odd-syllable test examples:*
 * *ritjas:* `ritjas+N+Sg+Nom`
 * *rihtjasis:* `ritjas+N+Sg+Ela`
 
 LEXICON SÅGAS   gen: sågaska. Presently only for "sågas".
 
-*sågas # Odd-syllable test examples:*
+* sågas # Odd-syllable test examples:*
 * *sågas:* `sågas+N+Sg+Nom`
 * *sågaskav:* `sågas+N+Sg+Acc`
 
 LEXICON SJUVÁJ   Presently only for "sjuváj". sjuváj-sjuvvaga. Only this word
 
-*sjuváj # Odd-syllable test examples:*
+* sjuváj # Odd-syllable test examples:*
 * *sjuváj:* `sjuváj+N+Sg+Nom`
 * *sjuvvagis:* `sjuváj+N+Sg+Ela`
 
@@ -1257,7 +1257,7 @@ LEXICON BØSOJ  Because of bösoj in O.Korhonen, and bæsoj-bessuga. Only for th
 
 LEXICON GUOVSOJVUOJOJ  vuojoj:vuodjom. Presently only for "guovsojvuojoj".
 
-*guovsojvuojoj # Odd-syllable test examples:*
+* guovsojvuojoj # Odd-syllable test examples:*
 * *guovsojvuojoj:* `guovsojvuojoj+N+Sg+Nom`
 * *guovsojvuodjomav:* `guovsojvuojoj+N+Sg+Acc`
 
@@ -1265,7 +1265,7 @@ LEXICON BUTJES   butjes-buttjása. Presently only for "butjes". This is an sub. 
 
 LEXICON TJÅLKES  tjålkes:tjoalkkas- Presently only for "tjålkes and tsålkes". This must be wrong, and it dosn't exist in Grundström. Å in 1. syll isn't possible with e in 2. syll. Must be tjoalkes-tjoalkkása or tjålkas-tjoalkkasa. This form is err subed in stems file.
 
-*tsålkes # Odd-syllable test examples:*
+* tsålkes # Odd-syllable test examples:*
 * ★*tsålkes:* `tsålkes+N+Sg+Nom` (is not standard language)
 * ★*tsoalkkasav:* `tsålkes+N+Sg+Acc` (is not standard language)
 
@@ -1275,26 +1275,26 @@ Derived stems
 
 LEXICON BADJEL  Derived nouns with acc -elav, ill -elij, elat -elas, etc. These were previously categorized as adpositions and adverbs, but according to Bruce Morén-Duolljá (2014) they are actually case forms of nouns derived from certain location nouns. Derived from even strong stems (badje -> badjel). Odd syllable inflection, but only singular nominative-elative (not clear if they take comitative and essive case). With comparatives. No Px.
 
-*allel # Odd-syllable test examples:*
+* allel # Odd-syllable test examples:*
 * *allel:* `allel+N+Sg+Nom`
 * *allelis:* `allel+N+Sg+Ela`
 * *allelabbo:* `allel+N+Der/Comp+A+Sg+Nom`
 
 LEXICON BÁRNEP  bárnep:bárnebu-. Comparisation of nouns. No -ahtá abesive.
 
-*iednep # Odd-syllable test examples:*
+* iednep # Odd-syllable test examples:*
 * *iednep:* `iednep+N+Sg+Nom`
 * *iednebuv:* `iednep+N+Sg+Acc`
 
 LEXICON OAPPÁSJ   Like GAHPER, but for derived nouns in diminutive, have an underived form. Doesn't get abesive -ahtá or -ahtes derivation. Oddsyll, no cg, no vowchange, no short Ess. Has only one dimin derivation since these words already are dimin, ie. not double dim as in GAHPER.
 
-*stiebil # Odd-syllable test examples:*
+* stiebil # Odd-syllable test examples:*
 * *oappásj:* `oappásj+N+Gram/Dimin+Sg+Nom`
 * *oappátjis:* `oappásj+N+Gram/Dimin+Sg+Ela`
 
 LEXICON FIERUN   Like GAHPER, but instruments derived from verbs. Fierrot>fierun. No short essive.
 
-*stiebil # Odd-syllable test examples:*
+* stiebil # Odd-syllable test examples:*
 * *fierun:* `fierun+N+Gram/NomInstr+Sg+Nom`
 * *fierunis:* `fierun+N+Gram/NomInstr+Sg+Ela`
 
@@ -1310,13 +1310,13 @@ LEXICON AKTIDIBME  Nomen actionionis derived from uneven verbs. Earlier these we
 
 LEXICON DÁRBBAGA  Like BENA, but plural. Presently only for "dárbbaga", has singular stem counterpart.
 
-*dárbbaga # Odd-syllable test examples:*
+* dárbbaga # Odd-syllable test examples:*
 * *dárbbaga:* `dárbbaga+N+Pl+Nom`
 * *dárbbagijt:* `dárbbaga+N+Pl+Acc`
 
 LEXICON BÆLLJASA  Like GÁMAS, but plural. These have corresponding singular stems.
 
-*jiednabælljasa # Odd-syllable test examples:*
+* jiednabælljasa # Odd-syllable test examples:*
 * *jiednabælljasa:* `jiednabælljasa+N+Pl+Nom`
 * *jiednabälljasa:* `jiednabælljasa+N+Pl+Nom`
 * *jiednabælljasijt:* `jiednabælljasa+N+Pl+Acc`
@@ -1324,19 +1324,19 @@ LEXICON BÆLLJASA  Like GÁMAS, but plural. These have corresponding singular st
 
 LEXICON IEDNITJA  Odd syllable pluralforms only. These do not have a singular form.
 
-*jáhkoguojmitja # Odd-syllable test examples:*
+* jáhkoguojmitja # Odd-syllable test examples:*
 * *jáhkoguojmitja:* `jáhkoguojmitja+N+Pl+Nom`
 * *jáhkoguojmitjijt:* `jáhkoguojmitja+N+Pl+Acc`
 
 LEXICON SNJIERÁGA  Odd syllable pluralforms only. These have corresponding singular stems.
 
-*guovlloådåsa # Odd-syllable test examples:*
+* guovlloådåsa # Odd-syllable test examples:*
 * *guovlloådåsa:* `guovlloådåsa+N+Pl+Nom`
 * *guovlloådåsijt:* `guovlloådåsa+N+Pl+Acc`
 
 LEXICON MANEBU  oddsyllable plural only. presently only for "maŋebu".
 
-*maŋebu # Odd-syllable test examples:*
+* maŋebu # Odd-syllable test examples:*
 * *maŋebu:* `maŋebu+N+Pl+Nom`
 * *maŋebujt:* `maŋebu+N+Pl+Acc`
 
@@ -1344,19 +1344,19 @@ LEXICON MANEBU  oddsyllable plural only. presently only for "maŋebu".
 
 LEXICON SUOLOJ  C-final with cg II-III: ålmåj:ålmmå
 
-*njurgoj # Contracted test examples:*
+* njurgoj # Contracted test examples:*
 * *njurgoj:* `njurgoj+N+Sg+Nom`
 * *njurgguv:* `njurgoj+N+Sg+Acc`
 
 LEXICON ÅLMÅJ_LOAN  Same as SUOLOJ, only for loan words. Follows Ráhka/Mikkelsen's Bårjås 2014. C-final with cg II-III: ålmåj:ålmmå
 
-*bistroj # Contracted test examples:*
+* bistroj # Contracted test examples:*
 * *bistroj:* `bistroj+N+Sg+Nom`
 * *bisstruv:* `bistroj+N+Sg+Acc`
 
 LEXICON GUOMOJ  C-final with cg I-III: guomoj:guobbmu
 
-*ænoj # Contracted test examples:*
+* ænoj # Contracted test examples:*
 * *ænoj:* `ænoj+N+Sg+Nom`
 * *æddnuv:* `ænoj+N+Sg+Acc`
 * *änoj:* `ænoj+N+Sg+Nom`
@@ -1364,31 +1364,31 @@ LEXICON GUOMOJ  C-final with cg I-III: guomoj:guobbmu
 
 LEXICON SARVES  C-final with cg II-III. sarves:sarvvá
 
-*moarmes # Contracted test examples:*
+* moarmes # Contracted test examples:*
 * *moarmes:* `moarmes+N+Sg+Nom`
 * *moarmmáv:* `moarmes+N+Sg+Acc`
 
 LEXICON SVÁLES  C-final with cg I-III. sváles:svállá (lºl)
 
-*sváles # Contracted test examples:*
+* sváles # Contracted test examples:*
 * *sváles:* `sváles+N+G3+Sg+Nom`
 * *sválláv:* `sváles+N+G3+Sg+Acc`
 
 LEXICON GÅHKES  C-final with cg II-III with vowel harmony (a/á=å). gåhkes:gåhkkå. Presently only for "gåhkes".
 
-*gåhkes # Contracted test examples:*
+* gåhkes # Contracted test examples:*
 * *gåhkes:* `gåhkes+N+Sg+Nom`
 * *gåhkkåv:* `gåhkes+N+Sg+Acc`
 
 LEXICON SJUOKKAJ  sjuokkaj:sjuoggá. Presently only for "sjuokkaj".
 
-*sjuokkaj # Contracted test examples:*
+* sjuokkaj # Contracted test examples:*
 * *sjuokkaj:* `sjuokkaj+N+Sg+Nom`
 * *sjuoggáv:* `sjuokkaj+N+Sg+Acc`
 
 LEXICON GISTÁ  gistá:gisstá. Presently only for "gistá".
 
-*gistá # Contracted test examples:*
+* gistá # Contracted test examples:*
 * *gistá:* `gistá+N+Sg+Nom`
 * *gisstáv:* `gistá+N+Sg+Acc`
 
@@ -1457,42 +1457,42 @@ Words in ACCRA lexicons end on vowel, have no CG and get "even-syllable" case ma
 
 LEXICON ACCRA-ani   Vowel-final names where case endings are added directly, no cg. Illative e changes to i. Animales.
 
-*Tjuorri # Even-syllable test examples:*
+* Tjuorri # Even-syllable test examples:*
 * *Tjuorri:* `Tjuorri+N+Prop+Sem/Ani+Sg+Nom`
 * *Tjuorrij:* `Tjuorri+N+Prop+Sem/Ani+Sg+Ill`
 * *Tjuorris:* `Tjuorri+N+Prop+Sem/Ani+Sg+Ela`
 
 LEXICON ACCRA-obj  Vowel-final names where case endings are added directly, no cg. Object names
 
-*Gestapo # Even-syllable test examples:*
+* Gestapo # Even-syllable test examples:*
 * *Gestapo:* `Gestapo+N+Prop+Sem/Obj+Sg+Nom`
 * *Gestapoj:* `Gestapo+N+Prop+Sem/Obj+Sg+Ill`
 * *Gestapos:* `Gestapo+N+Prop+Sem/Obj+Sg+Ela`
 
 LEXICON ACCRA-org  Vowel-final names where caseendings are added directly, no cg. organizations
 
-*Giellatekno # Even-syllable test examples:*
+* Giellatekno # Even-syllable test examples:*
 * *Giellatekno:* `Giellatekno+N+Prop+Sem/Org+Sg+Nom`
 * *Giellateknoj:* `Giellatekno+N+Prop+Sem/Org+Sg+Ill`
 * *Giellateknos:* `Giellatekno+N+Prop+Sem/Org+Sg+Ela`
 
 LEXICON ACCRA-mal  Vowel-final names where case are added directly, no cg. Male names
 
-*Antonio # Even-syllable test examples:*
+* Antonio # Even-syllable test examples:*
 * *Antonio:* `Antonio+N+Prop+Sem/Mal+Sg+Nom`
 * *Antonioj:* `Antonio+N+Prop+Sem/Mal+Sg+Ill`
 * *Antonios:* `Antonio+N+Prop+Sem/Mal+Sg+Ela`
 
 LEXICON ACCRA-fem  Vowel-final names where case endings are added directly, no cg. Female names
 
-*Barbro # Even-syllable test examples:*
+* Barbro # Even-syllable test examples:*
 * *Barbro:* `Barbro+N+Prop+Sem/Fem+Sg+Nom`
 * *Barbroj:* `Barbro+N+Prop+Sem/Fem+Sg+Ill`
 * *Barbros:* `Barbro+N+Prop+Sem/Fem+Sg+Ela`
 
 LEXICON ACCRA-femsur  Vowel-final names where case endings are added directly, no cg. Female names also used as surnames
 
-*Sara # Even-syllable test examples:*
+* Sara # Even-syllable test examples:*
 * *Sara:* `Sara+N+Prop+Sem/Fem+Sg+Nom`
 * *Saraj:* `Sara+N+Prop+Sem/Fem+Sg+Ill`
 * *Saraj:* `Sara+N+Prop+Sem/Sur+Sg+Ill`
@@ -1500,7 +1500,7 @@ LEXICON ACCRA-femsur  Vowel-final names where case endings are added directly, n
 
 LEXICON ACCRA-malfem  Vowel-final names where case endings are added directly, no cg. Names that can be both female and male names
 
-*Janne # Even-syllable test examples:*
+* Janne # Even-syllable test examples:*
 * *Janne:* `Janne+N+Prop+Sem/Mal+Sg+Nom`
 * *Janne:* `Janne+N+Prop+Sem/Fem+Sg+Nom`
 * *Jannij:* `Janne+N+Prop+Sem/Mal+Sg+Ill`
@@ -1508,7 +1508,7 @@ LEXICON ACCRA-malfem  Vowel-final names where case endings are added directly, n
 
 LEXICON ACCRA-objplc  Vowel-final names where case endings are added directly, no cg. Names that can be both objects and place names
 
-*Soria-Moria # Even-syllable test examples:*
+* Soria-Moria # Even-syllable test examples:*
 * *Soria-Moria:* `Soria-Moria+N+Prop+Sem/Obj+Sg+Nom`
 * *Soria-Moriaj:* `Soria-Moria+N+Prop+Sem/Obj+Sg+Ill`
 * *Soria-Morias:* `Soria-Moria+N+Prop+Sem/Obj+Sg+Ela`
@@ -1518,7 +1518,7 @@ LEXICON ACCRA-objplc  Vowel-final names where case endings are added directly, n
 
 LEXICON ACCRA-femplc  Vowel-final names where case endings are added directly, no cg. Names that can be both female and place names
 
-*Salla # Even-syllable test examples:*
+* Salla # Even-syllable test examples:*
 * *Salla:* `Salla+N+Prop+Sem/Fem+Sg+Nom`
 * *Salla:* `Salla+N+Prop+Sem/Plc+Pl+Nom`
 * *Sallaj:* `Salla+N+Prop+Sem/Fem+Sg+Ill`
@@ -1528,14 +1528,14 @@ LEXICON ACCRA-femplc  Vowel-final names where case endings are added directly, n
 
 LEXICON ACCRA-sur  Vowel-final names where case endings are added directly, no cg. Surnames
 
-*Tønne # Even-syllable test examples:*
+* Tønne # Even-syllable test examples:*
 * *Tønne:* `Tønne+N+Prop+Sem/Sur+Sg+Nom`
 * *Tønnij:* `Tønne+N+Prop+Sem/Sur+Sg+Ill`
 * *Tønnes:* `Tønne+N+Prop+Sem/Sur+Sg+Ela`
 
 LEXICON ACCRA-malsur   Vowel-final names where case endings are added directly, no cg. Names that can be both male- and surnames
 
-*Valio # Even-syllable test examples:*
+* Valio # Even-syllable test examples:*
 * *Valio:* `Valio+N+Prop+Sem/Sur+Sg+Nom`
 * *Valio:* `Valio+N+Prop+Sem/Mal+Sg+Nom`
 * *Valioj:* `Valio+N+Prop+Sem/Sur+Sg+Ill`
@@ -1543,7 +1543,7 @@ LEXICON ACCRA-malsur   Vowel-final names where case endings are added directly, 
 
 LEXICON ACCRA-plc  Vowel-final names where caseendings are added directly, no cg. Place names
 
-*Burma # Even-syllable test examples:*
+* Burma # Even-syllable test examples:*
 * *Burma:* `Burma+N+Prop+Sem/Plc+Sg+Nom`
 * *Burmaj:* `Burma+N+Prop+Sem/Plc+Sg+Ill`
 * *Burmas:* `Burma+N+Prop+Sem/Plc+Sg+Ela`
@@ -1554,7 +1554,7 @@ LEXICON ACCRA_MWE-plc  Vowel-final names where caseendings are added directly, n
 
 LEXICON GIRUNA-plc  For proper Kiruna. Same as ACCRA. Different lexicon because of sma.
 
-*Veitsiluoto # Even-syllable test examples:*
+* Veitsiluoto # Even-syllable test examples:*
 * *Veitsiluoto:* `Veitsiluoto+N+Prop+Sem/Plc+Sg+Nom`
 * *Veitsiluoto:* `Veitsiluoto+N+Prop+Sem/Plc+Sg+Nom`
 * *Veitsiluotoj:* `Veitsiluoto+N+Prop+Sem/Plc+Sg+Ill`
@@ -1564,19 +1564,19 @@ LEXICON GIRUNA-plc  For proper Kiruna. Same as ACCRA. Different lexicon because 
 
 LEXICON ACCRA-LOAN-org  Only nominatives. Vowel-final names where case endings are added directly, no cg. organizations
 
-*Samenes Idrettsforbund-Norge # Even-syllable test examples:*
+* Samenes Idrettsforbund-Norge # Even-syllable test examples:*
 * *Samenes* `Idrettsforbund-Norge:` (Eng. Samenes Idrettsforbund-Norge+N+Prop+Sem/Org+Sg+Nom)
 * ★*Samenes* `Idrettsforbund-Norge:` (is not standard language Samenes Idrettsforbund-Norge+N+Prop+Sem/Org+Sg+Ela # negative test)
 
 LEXICON ACCRA-LOAN-obj  Only nominatives. Vowel-final names where case endings are added directly, no cg. Object names
 
-*The Norwegian Sami Experience # Even-syllable test examples:*
+* The Norwegian Sami Experience # Even-syllable test examples:*
 * *The* `Norwegian` (Eng. Sami Experience: The Norwegian Sami Experience+N+Prop+Sem/Obj+Sg+Nom)
 * ★*The* `Norwegian` (is not standard language Sami Experience: The Norwegian Sami Experience+N+Prop+Sem/Obj+Sg+Ill # Negative test)
 
 LEXICON ACCRA-LOAN-plc  Only nominatives. Vowel-final names where case endings are added directly, no cg.Place names
 
-*Kautokeino # Even-syllable test examples:*
+* Kautokeino # Even-syllable test examples:*
 * *Kautokeino:* `Kautokeino+N+Prop+Sem/Plc+Sg+Nom`
 * ★*Kautokeinos:* `Kautokeino+N+Prop+Sem/Org+Sg+Ela` (is not standard language # negative test)
 
@@ -1584,7 +1584,7 @@ In smj RONDANE is same as ACCRA, in use in smi because of diffrences in sme. No 
 
 LEXICON RONDANE-plc  E-final names, with no cg. elative -s, ill -ij. Place names
 
-*Bakkane # Even-syllable test examples:*
+* Bakkane # Even-syllable test examples:*
 * *Bakkane:* `Bakkane+N+Prop+Sem/Plc+Sg+Nom`
 * *Bakkane:* `Bakkane+N+Prop+Sem/Plc+Sg+Gen`
 * *Bakkanev:* `Bakkane+N+Prop+Sem/Plc+Sg+Acc`
@@ -1599,14 +1599,14 @@ LEXICON RONDANE-plc  E-final names, with no cg. elative -s, ill -ij. Place names
 
 LEXICON RONDANE-SG-plc  E-final names, with no cg. elative -s, ill -ij. Place names
 
-*Bakkane # Even-syllable test examples:*
+* Bakkane # Even-syllable test examples:*
 * *Bakkane:* `Bakkane+N+Prop+Sem/Plc+Sg+Nom`
 * *Bakkane:* `Bakkane+N+Prop+Sem/Plc+Sg+Gen`
 * *Bakkanev:* `Bakkane+N+Prop+Sem/Plc+Sg+Acc`
 
 LEXICON RONDANE-LOAN  Only nominative.Place names
 
-*Azorene # Even-syllable test examples:*
+* Azorene # Even-syllable test examples:*
 * *Azorene:* `Azorene+N+Prop+Sem/Plc+Sg+Nom`
 * ★*Azorenij:* `Azorene+N+Prop+Sem/Plc+Sg+Ill` (is not standard language # Negative test)
 
@@ -1614,14 +1614,14 @@ LEXICON RONDANE-SG-LOAN  Only nominative. Place names
 
 LEXICON RONDANE-sur  Surnames
 
-*Benneche # Even-syllable test examples:*
+* Benneche # Even-syllable test examples:*
 * *Benneche:* `Benneche+N+Prop+Sem/Sur+Sg+Nom`
 * *Bennechij:* `Benneche+N+Prop+Sem/Sur+Sg+Ill`
 * *Benneches:* `Benneche+N+Prop+Sem/Sur+Sg+Ela`
 
 LEXICON RONDANE-obj  Objects
 
-*Office # Even-syllable test examples:*
+* Office # Even-syllable test examples:*
 * *Office:* `Office+N+Prop+Sem/Obj+Sg+Nom`
 * *Office:* `Office+N+Prop+Sem/Obj+Sg+Gen`
 * *Officev:* `Office+N+Prop+Sem/Obj+Sg+Acc`
@@ -1632,21 +1632,21 @@ LEXICON RONDANE-obj  Objects
 
 LEXICON RONDANE-org  Organizations
 
-*Picture # Even-syllable test examples:*
+* Picture # Even-syllable test examples:*
 * *Picture:* `Picture+N+Prop+Sem/Org+Sg+Nom`
 * *Picturij:* `Picture+N+Prop+Sem/Org+Sg+Ill`
 * *Pictures:* `Picture+N+Prop+Sem/Org+Sg+Ela`
 
 LEXICON RONDANE-mal  Male names
 
-*Lawrence # Even-syllable test examples:*
+* Lawrence # Even-syllable test examples:*
 * *Lawrence:* `Lawrence+N+Prop+Sem/Mal+Sg+Nom`
 * *Lawrencij:* `Lawrence+N+Prop+Sem/Mal+Sg+Ill`
 * *Lawrences:* `Lawrence+N+Prop+Sem/Mal+Sg+Ela`
 
 LEXICON RONDANE-fem  Female names
 
-*Jannike # Even-syllable test examples:*
+* Jannike # Even-syllable test examples:*
 * *Jannike:* `Jannike+N+Prop+Sem/Fem+Sg+Nom`
 * *Jannikij:* `Jannike+N+Prop+Sem/Fem+Sg+Ill`
 * *Jannikes:* `Jannike+N+Prop+Sem/Fem+Sg+Ela`
@@ -1658,7 +1658,7 @@ GATA are Norwegian place names that end on -gata. Gets even-syllable casemarking
 
 LEXICON GATA-plc   Norwegian place names that end on -gata. Gets even-syllable casemarking. Last syllable is unstressed.
 
-*Munkegata # Even-syllable test examples:*
+* Munkegata # Even-syllable test examples:*
 * *Munkegata:* `Munkegata+N+Prop+Sem/Plc+Sg+Nom`
 * *Munkegataj:* `Munkegata+N+Prop+Sem/Plc+Sg+Ill`
 * *Munkegatas:* `Munkegata+N+Prop+Sem/Plc+Sg+Ela`
@@ -1667,49 +1667,49 @@ Words in MARJA end on vowel, with CG, even-syllable case marking. Illative chang
 
 LEXICON MARJA-fem  Odd-syllable with cg. Female names
 
-*Gáddjá # Even-syllable test examples:*
+* Gáddjá # Even-syllable test examples:*
 * *Gáddjá:* `Gáddjá+N+Prop+Sem/Fem+Sg+Nom`
 * *Gáddjáj:* `Gáddjá+N+Prop+Sem/Fem+Sg+Ill`
 * *Gádjás:* `Gáddjá+N+Prop+Sem/Fem+Sg+Ela`
 
 LEXICON MARJA-ani  Animal names
 
-*Vilge # Even-syllable test  examples:*
+* Vilge # Even-syllable test  examples:*
 * *Gávrásski:* `Gávrásski+N+Prop+Sem/Ani+Sg+Nom`
 * *Gávrásskij:* `Gávrásski+N+Prop+Sem/Ani+Sg+Ill`
 * *Gávráskis:* `Gávrásski+N+Prop+Sem/Ani+Sg+Ela`
 
 LEXICON MARJA-mal  Male names
 
-*Biet-Ánnda # Even-syllable test examples:*
+* Biet-Ánnda # Even-syllable test examples:*
 * *Biet-Ánnda:* `Biet-Ánnda+N+Prop+Sem/Mal+Sg+Nom`
 * *Biet-Ánndaj:* `Biet-Ánnda+N+Prop+Sem/Mal+Sg+Ill`
 * *Biet-Ándas:* `Biet-Ánnda+N+Prop+Sem/Mal+Sg+Ela`
 
 LEXICON MARJA-obj  Objects
 
-*Bern-Konvensjåvnnå # Even-syllable test examples:*
+* Bern-Konvensjåvnnå # Even-syllable test examples:*
 * *Bern-Konvensjåvnnå:* `Bern-Konvensjåvnnå+N+Prop+Sem/Obj+Sg+Nom`
 * *Bern-Konvensjåvnnåj:* `Bern-Konvensjåvnnå+N+Prop+Sem/Obj+Sg+Ill`
 * *Bern-Konvensjåvnås:* `Bern-Konvensjåvnnå+N+Prop+Sem/Obj+Sg+Ela`
 
 LEXICON MARJA-org  Organizations
 
-*Domænadoajmma # Even-syllable test examples:*
+* Domænadoajmma # Even-syllable test examples:*
 * *Domænadoajmma:* `Domænadoajmma+N+Prop+Sem/Org+Sg+Nom`
 * *Domænadoajmmaj:* `Domænadoajmma+N+Prop+Sem/Org+Sg+Ill`
 * *Domænadåjmas:* `Domænadoajmma+N+Prop+Sem/Org+Sg+Ela`
 
 LEXICON MARJA-plc  Vowel final names with Gradation and Ill change (place names)
 
-*Dundarevuobme # Even-syllable test examples:*
+* Dundarevuobme # Even-syllable test examples:*
 * *Dundarevuobme:* `Dundarevuobme+N+Prop+Sem/Plc+Sg+Nom`
 * *Dundarevuobmáj:* `Dundarevuobme+N+Prop+Sem/Plc+Sg+Ill`
 * *Dundarevuomes:* `Dundarevuobme+N+Prop+Sem/Plc+Sg+Ela`
 
 LEXICON MARJA-sur  Surnames
 
-*Skálltje # Even-syllable test examples:*
+* Skálltje # Even-syllable test examples:*
 * *Skálltje:* `Skálltje+N+Prop+Sem/Sur+Sg+Nom`
 * *Skálltjáj:* `Skálltje+N+Prop+Sem/Sur+Sg+Ill`
 * *Skáltjes:* `Skálltje+N+Prop+Sem/Sur+Sg+Ela`
@@ -1718,7 +1718,7 @@ LEXICON MARJA-plc-der  = place name derivations and corresponding flag. Presentl
 
 LEXICON SUOBMA-plc  Placenames. Like MARJA but no derivation
 
-*Suobma # Even-syllable test examples:*
+* Suobma # Even-syllable test examples:*
 * *Suobma:* `Suobma+N+Prop+Sem/Plc+Sg+Nom`
 * *Suobmaj:* `Suobma+N+Prop+Sem/Plc+Sg+Ill`
 * *Suomas:* `Suobma+N+Prop+Sem/Plc+Sg+Ela`
@@ -1733,7 +1733,7 @@ Words in lexicon NYSTØ end on vowel, no cg. Non-assimilated stems
 
 LEXICON NYSTØ-fem  Femal names
 
-*Britney # Even-syllable test examples:*
+* Britney # Even-syllable test examples:*
 * *Britney:* `Britney+N+Prop+Sem/Fem+Sg+Nom`
 * *Britneyav:* `Britney+N+Prop+Sem/Fem+Sg+Acc`
 * *Britneyaj:* `Britney+N+Prop+Sem/Fem+Sg+Ill`
@@ -1741,7 +1741,7 @@ LEXICON NYSTØ-fem  Femal names
 
 LEXICON NYSTØ-mal  Male name
 
-*Taneli # Even-syllable test examples:*
+* Taneli # Even-syllable test examples:*
 * *Taneli:* `Taneli+N+Prop+Sem/Mal+Sg+Nom`
 * *Taneliav:* `Taneli+N+Prop+Sem/Mal+Sg+Acc`
 * *Taneliaj:* `Taneli+N+Prop+Sem/Mal+Sg+Ill`
@@ -1749,7 +1749,7 @@ LEXICON NYSTØ-mal  Male name
 
 LEXICON NYSTØ-obj  Objects
 
-*Infiniti # Even-syllable test examples:*
+* Infiniti # Even-syllable test examples:*
 * *Infiniti:* `Infiniti+N+Prop+Sem/Obj+Sg+Nom`
 * *Infinitiav:* `Infiniti+N+Prop+Sem/Obj+Sg+Acc`
 * *Infinitiaj:* `Infiniti+N+Prop+Sem/Obj+Sg+Ill`
@@ -1757,7 +1757,7 @@ LEXICON NYSTØ-obj  Objects
 
 LEXICON NYSTØ-org   Organizations
 
-*Kulturby # Even-syllable test examples:*
+* Kulturby # Even-syllable test examples:*
 * *Kulturby:* `Kulturby+N+Prop+Sem/Org+Sg+Nom`
 * *Kulturbyav:* `Kulturby+N+Prop+Sem/Org+Sg+Acc`
 * *Kulturbyaj:* `Kulturby+N+Prop+Sem/Org+Sg+Ill`
@@ -1765,20 +1765,20 @@ LEXICON NYSTØ-org   Organizations
 
 LEXICON NYSTØ-LOAN-org  Organizations loan
 
-*Sameby # Even-syllable test examples:*
+* Sameby # Even-syllable test examples:*
 * *Sameby:* `Sameby+N+Prop+Sem/Org+Sg+Nom`
 * ★*Samebyaj:* `Sameby+N+Prop+Sem/Org+Sg+Ill` (is not standard language)
 * ★*Samebyas:* `Sameby+N+Prop+Sem/Org+Sg+Ela` (is not standard language)
 
 LEXICON NYSTØ-sur  Sur names
 
-*Sandoz # Even-syllable test examples:*
+* Sandoz # Even-syllable test examples:*
 * *Sandoz:* `Sandoz+N+Prop+Sem/Sur+Sg+Nom`
 * *Sandozav:* `Sandoz+N+Prop+Sem/Sur+Sg+Acc`
 * *Sandozaj:* `Sandoz+N+Prop+Sem/Sur+Sg+Ill`
 * *Sandozas:* `Sandoz+N+Prop+Sem/Sur+Sg+Ela`
 
-*Teigmo # Even-syllable test examples:*
+* Teigmo # Even-syllable test examples:*
 * *Teigmo:* `Teigmo+N+Prop+Sem/Plc+Sg+Nom`
 * *Teigmoav:* `Teigmo+N+Prop+Sem/Plc+Sg+Acc`
 * *Teigmoaj:* `Teigmo+N+Prop+Sem/Plc+Sg+Ill`
@@ -1786,14 +1786,14 @@ LEXICON NYSTØ-sur  Sur names
 
 LEXICON NYSTØ-LOAN-plc  Place names loan
 
-*Bodø # Even-syllable test examples:*
+* Bodø # Even-syllable test examples:*
 * *Bodø:* `Bodø+N+Prop+Sem/Plc+Sg+Nom`
 * ★*Bodøaj:* `Bodø+N+Prop+Sem/Plc+Sg+Ill` (is not standard language)
 * ★*Bodøas:* `Bodø+N+Prop+Sem/Plc+Sg+Ela` (is not standard language)
 
 LEXICON NYSTØ-plc  Place names
 
-*Borgå # Even-syllable test examples:*
+* Borgå # Even-syllable test examples:*
 * *Borgå:* `Borgå+N+Prop+Sem/Plc+Sg+Nom`
 * *Borgåav:* `Borgå+N+Prop+Sem/Plc+Sg+Acc`
 * *Borgåaj:* `Borgå+N+Prop+Sem/Plc+Sg+Ill`
@@ -1805,42 +1805,42 @@ Words in DUBAI lexicon end on vowel+vowel and have no cg. Last syllable is stres
 
 LEXICON DUBAI-fem  I-final names. No cg. Female names
 
-*Mai  # Even-syllable test examples:*
+* Mai  # Even-syllable test examples:*
 * *Mai:* `Mai+N+Prop+Sem/Fem+Sg+Nom`
 * *Maiaj:* `Mai+N+Prop+Sem/Fem+Sg+Ill`
 * *Maias:* `Mai+N+Prop+Sem/Fem+Sg+Ela`
 
 LEXICON DUBAI-obj  I-final names. No cg. Object names
 
-*Hyundai  # Even-syllable test examples:*
+* Hyundai  # Even-syllable test examples:*
 * *Hyundai:* `Hyundai+N+Prop+Sem/Obj+Sg+Nom`
 * *Hyundaiaj:* `Hyundai+N+Prop+Sem/Obj+Sg+Ill`
 * *Hyundaias:* `Hyundai+N+Prop+Sem/Obj+Sg+Ela`
 
 LEXICON DUBAI-org  Organizations
 
-*Khoi # Even-syllable test examples:*
+* Khoi # Even-syllable test examples:*
 * *Khoi:* `Khoi+N+Prop+Sem/Org+Sg+Nom`
 * *Khoiaj:* `Khoi+N+Prop+Sem/Org+Sg+Ill`
 * *Khoias:* `Khoi+N+Prop+Sem/Org+Sg+Ela`
 
 LEXICON DUBAI-mal  Male names
 
-*Kublai # Even-syllable test examples:*
+* Kublai # Even-syllable test examples:*
 * *Kublai:* `Kublai+N+Prop+Sem/Mal+Sg+Nom`
 * *Kublaiaj:* `Kublai+N+Prop+Sem/Mal+Sg+Ill`
 * *Kublaias:* `Kublai+N+Prop+Sem/Mal+Sg+Ela`
 
 LEXICON DUBAI-sur  Surnames
 
-*Maarthai # Even-syllable test examples:*
+* Maarthai # Even-syllable test examples:*
 * *Maarthai:* `Maarthai+N+Prop+Sem/Sur+Sg+Nom`
 * *Maarthaiaj:* `Maarthai+N+Prop+Sem/Sur+Sg+Ill`
 * *Maarthaias:* `Maarthai+N+Prop+Sem/Sur+Sg+Ela`
 
 LEXICON DUBAI-plc  Place names
 
-*Madurai # Even-syllable test examples:*
+* Madurai # Even-syllable test examples:*
 * *Madurai:* `Madurai+N+Prop+Sem/Plc+Sg+Nom`
 * *Maduraiaj:* `Madurai+N+Prop+Sem/Plc+Sg+Ill`
 * *Maduraias:* `Madurai+N+Prop+Sem/Plc+Sg+Ela`
@@ -1850,28 +1850,28 @@ Words in lexicon BERN end on conconant, no cg, even syllable case marking with -
 
 LEXICON BERN-ani   Animals
 
-*Lillemor # Even-syllable test examples:*
+* Lillemor # Even-syllable test examples:*
 * *Lillemor:* `Lillemor+N+Prop+Sem/Ani+Sg+Nom`
 * *Lillemoraj:* `Lillemor+N+Prop+Sem/Ani+Sg+Ill`
 * *Lillemoras:* `Lillemor+N+Prop+Sem/Ani+Sg+Ela`
 
 LEXICON BERN-mal   Male names
 
-*Eystein # Even-syllable test examples:*
+* Eystein # Even-syllable test examples:*
 * *Eystein:* `Eystein+N+Prop+Sem/Mal+Sg+Nom`
 * *Eysteinaj:* `Eystein+N+Prop+Sem/Mal+Sg+Ill`
 * *Eysteinas:* `Eystein+N+Prop+Sem/Mal+Sg+Ela`
 
 LEXICON BERN-surmal   name that are both sur- and male names
 
-*Pipin # Even-syllable test examples:*
+* Pipin # Even-syllable test examples:*
 * *Pipin:* `Pipin+N+Prop+Sem/Sur+Sg+Nom`
 * *Pipinaj:* `Pipin+N+Prop+Sem/Sur+Sg+Ill`
 * *Pipinas:* `Pipin+N+Prop+Sem/Sur+Sg+Ela`
 
 LEXICON BERN-fem   Female name
 
-*Ragnfrid # Even-syllable test examples:*
+* Ragnfrid # Even-syllable test examples:*
 * *Ragnfrid:* `Ragnfrid+N+Prop+Sem/Fem+Sg+Nom`
 * *Ragnfridaj:* `Ragnfrid+N+Prop+Sem/Fem+Sg+Ill`
 * *Ragnfridas:* `Ragnfrid+N+Prop+Sem/Fem+Sg+Ela`
@@ -1880,14 +1880,14 @@ Different lexicon for female persons. Audhild.
 
 LEXICON BERN-sur  Surnames
 
-*Lind # Even-syllable test examples:*
+* Lind # Even-syllable test examples:*
 * *Lind:* `Lind+N+Prop+Sem/Sur+Sg+Nom`
 * *Lindaj:* `Lind+N+Prop+Sem/Sur+Sg+Ill`
 * *Lindas:* `Lind+N+Prop+Sem/Sur+Sg+Ela`
 
 LEXICON BERN-plc  Placenames
 
-*Beijing # Even-syllable test examples:*
+* Beijing # Even-syllable test examples:*
 * *Beijing:* `Beijing+N+Prop+Sem/Plc+Sg+Nom`
 * *Beijingaj:* `Beijing+N+Prop+Sem/Plc+Sg+Ill`
 * *Beijingas:* `Beijing+N+Prop+Sem/Plc+Sg+Ela`
@@ -1896,49 +1896,49 @@ LEXICON BERN_MWE-plc  Placenames
 
 LEXICON BERN-objsur   Names used as both objects and surnames. 
 
-*Stenbukk # Even-syllable test examples:*
+* Stenbukk # Even-syllable test examples:*
 * *Stenbukk:* `Stenbukk+N+Prop+Sem/Obj+Sg+Nom`
 * *Stenbukkaj:* `Stenbukk+N+Prop+Sem/Obj+Sg+Ill`
 * *Stenbukkas:* `Stenbukk+N+Prop+Sem/Obj+Sg+Ela`
 
 LEXICON BERN-orgsur  Names used for both organizations and surnames. 
 
-*Nord # Even-syllable test examples:*
+* Nord # Even-syllable test examples:*
 * *Nord:* `Nord+N+Prop+Sem/Org+Sg+Nom`
 * *Nordaj:* `Nord+N+Prop+Sem/Org+Sg+Ill`
 * *Nordas:* `Nord+N+Prop+Sem/Org+Sg+Ela`
 
 LEXICON BERN-obj  Objects. Obs: Different lexicon for organisations. Microsoft.
 
-*Sult # Even-syllable test examples:*
+* Sult # Even-syllable test examples:*
 * *Sult:* `Sult+N+Prop+Sem/Obj+Sg+Nom`
 * *Sultaj:* `Sult+N+Prop+Sem/Obj+Sg+Ill`
 * *Sultas:* `Sult+N+Prop+Sem/Obj+Sg+Ela`
 
 LEXICON BERN-org  Organizations
 
-*Laks # Even-syllable test examples:*
+* Laks # Even-syllable test examples:*
 * *Laks:* `Laks+N+Prop+Sem/Org+Sg+Nom`
 * *Laksaj:* `Laks+N+Prop+Sem/Org+Sg+Ill`
 * *Laksas:* `Laks+N+Prop+Sem/Org+Sg+Ela`
 
 LEXICON BERN-LOAN-org  Organizations loan.  
 
-*Reinsamelag # Even-syllable test examples:*
+* Reinsamelag # Even-syllable test examples:*
 * *Reinsamelag:* `Reinsamelag+N+Prop+Sem/Org+Sg+Nom`
 * ★*Reinsamelagaj:* `Reinsamelag+N+Prop+Sem/Org+Sg+Ill` (is not standard language)
 * ★*Reinsamelagas:* `Reinsamelag+N+Prop+Sem/Org+Sg+Ela` (is not standard language)
 
 LEXICON BERN-LOAN-plc  Placenames loan. 
 
-*Mehamn # Even-syllable test examples:*
+* Mehamn # Even-syllable test examples:*
 * *Mehamn:* `Mehamn+N+Prop+Sem/Plc+Sg+Nom`
 * ★*Mehamnaj:* `Mehamn+N+Prop+Sem/Plc+Sg+Ill` (is not standard language)
 * ★*Mehamnas:* `Mehamn+N+Prop+Sem/Plc+Sg+Ela` (is not standard language)
 
 LEXICON BERN-LOAN-obj  Objects loan. 
 
-*Verneplan # Even-syllable test examples:*
+* Verneplan # Even-syllable test examples:*
 * *Verneplan:* `Verneplan+N+Prop+Sem/Obj+Sg+Nom`
 * ★*Verneplanaj:* `Verneplan+N+Prop+Sem/Obj+Sg+Ill` (is not standard language)
 * ★*Verneplanas:* `Verneplan+N+Prop+Sem/Obj+Sg+Ela` (is not standard language)
@@ -1957,14 +1957,14 @@ LEXICON BASUDIS-org  Only singular. Placenames
 
 LEXICON BASUDIS-mal   Male names
 
-*Ájluhasj # 4-syllable test examples:*
+* Ájluhasj # 4-syllable test examples:*
 * *Ájluhasj:* `Ájluhasj+N+Prop+Sem/Mal+Sg+Nom`
 * *Ájluhadtjaj:* `Ájluhasj+N+Prop+Sem/Mal+Sg+Ill` (Eng. !should add dummy to prevent unusual dtj-stem?)
 * *Ájluhattjas:* `Ájluhasj+N+Prop+Sem/Mal+Sg+Ela`
 
 LEXICON BASUDIS-plc  Place names
 
-*Ulldevis # 4-syllable test examples:*
+* Ulldevis # 4-syllable test examples:*
 * *Ulldevis:* `Ulldevis+N+Prop+Sem/Plc+Sg+Nom`
 * *Ulldevissaj:* `Ulldevis+N+Prop+Sem/Plc+Sg+Ill`
 * *Ulldevisás:* `Ulldevis+N+Prop+Sem/Plc+Sg+Ela`
@@ -1977,7 +1977,7 @@ LEXICON VARGGAT-plc   Plural stems, sáme names.  Place names
 
 LEXICON VARGGAT-org   Plural stems, sáme names. 
 
-*Bieva #  test examples:*
+* Bieva #  test examples:*
 * ★*Bievva:* `Bieva+N+Prop+Sem/Plc+Sg+Nom` (is not standard language)
 * *Bieva:* `Bieva+N+Prop+Sem/Plc+Pl+Nom`
 * *Bievajda:* `Bieva+N+Prop+Sem/Plc+Pl+Ill`
@@ -1993,98 +1993,98 @@ Words in lexicon LONDON end on conconant, no cg, case marking with -av, -ij, -is
 
 LEXICON LONDON-sur  Odd-syllable. Surnames. Final foot structure (X.) and (X..) => Loc:%>is
 
-*Åstot # Odd-syllable test examples:*
+* Åstot # Odd-syllable test examples:*
 * *Åstot:* `Åstot+N+Prop+Sem/Sur+Sg+Nom`
 * *Åstodij:* `Åstot+N+Prop+Sem/Sur+Sg+Ill`
 * *Åstodis:* `Åstot+N+Prop+Sem/Sur+Sg+Ela`
 
 LEXICON LONDON-ani  Animals
 
-*Jubmel # Odd-syllable test examples:*
+* Jubmel # Odd-syllable test examples:*
 * *Jubmel:* `Jubmel+N+Prop+Sem/Ani+Sg+Nom`
 * *Jubmelij:* `Jubmel+N+Prop+Sem/Ani+Sg+Ill`
 * *Jubmelis:* `Jubmel+N+Prop+Sem/Ani+Sg+Ela`
 
 LEXICON LONDON-org   Only singular Organizations
 
-*Klassekampen # Odd-syllable test examples:*
+* Klassekampen # Odd-syllable test examples:*
 * *Klassekampen:* `Klassekampen+N+Prop+Sem/Org+Sg+Nom`
 * *Klassekampenij:* `Klassekampen+N+Prop+Sem/Org+Sg+Ill`
 * *Klassekampenis:* `Klassekampen+N+Prop+Sem/Org+Sg+Ela`
 
 LEXICON LONDON-mal  Male names
 
-*Mátteus # Odd-syllable test examples:*
+* Mátteus # Odd-syllable test examples:*
 * *Matteus:* `Matteus+N+Prop+Sem/Mal+Sg+Nom`
 * *Matteusij:* `Matteus+N+Prop+Sem/Mal+Sg+Ill`
 * *Matteusis:* `Matteus+N+Prop+Sem/Mal+Sg+Ela`
 
 LEXICON LONDON-malsur  Names that can be both male- and surnames. Not used in smj-propernouns
 
-*Timeus # Odd-syllable test examples:*
+* Timeus # Odd-syllable test examples:*
 * *Timeus:* `Timeus+N+Prop+Sem/Mal+Sg+Nom`
 * *Timeusij:* `Timeus+N+Prop+Sem/Mal+Sg+Ill`
 * *Timeusis:* `Timeus+N+Prop+Sem/Mal+Sg+Ela`
 
 LEXICON LONDON-fem  Female names
 
-*Luhták # Odd-syllable test examples:*
+* Luhták # Odd-syllable test examples:*
 * *Luhták:* `Luhták+N+Prop+Sem/Fem+Sg+Nom`
 * *Luhtágij:* `Luhták+N+Prop+Sem/Fem+Sg+Ill`
 * *Luhtágis:* `Luhták+N+Prop+Sem/Fem+Sg+Ela`
 
 LEXICON LONDON-malfem  Names that can be both male and female names.Not used in smj-propernouns
 
-*Robin # Odd-syllable test examples:*
+* Robin # Odd-syllable test examples:*
 * *Robin:* `Robin+N+Prop+Sem/Fem+Sg+Nom`
 * *Robinij:* `Robin+N+Prop+Sem/Fem+Sg+Ill`
 * *Robinis:* `Robin+N+Prop+Sem/Fem+Sg+Ela`
 
 LEXICON LONDON-malplc  Names that can be both male- and placenames.Not used in smj-propernouns
 
-*Jergol # Odd-syllable test examples:*
+* Jergol # Odd-syllable test examples:*
 * *Jergol:* `Jergol+N+Prop+Sem/Mal+Sg+Nom`
 * *Jergolij:* `Jergol+N+Prop+Sem/Mal+Sg+Ill`
 * *Jergolis:* `Jergol+N+Prop+Sem/Mal+Sg+Ela`
 
 LEXICON LONDON-plc  Only singular. Placenames
 
-*Njierek # Odd-syllable test examples:*
+* Njierek # Odd-syllable test examples:*
 * *Njierek:* `Njierek+N+Prop+Sem/Plc+Sg+Nom`
 * *Njieregij:* `Njierek+N+Prop+Sem/Plc+Sg+Ill`
 * *Njieregis:* `Njierek+N+Prop+Sem/Plc+Sg+Ela`
 
 LEXICON LONDON-orgsur  Names that can be both organizations and surnames.Not used in Smj-propernouns
 
-*Rieser # Odd-syllable test examples:*
+* Rieser # Odd-syllable test examples:*
 * *Rieser:* `Rieser+N+Prop+Sem/Sur+Sg+Nom`
 * *Rieserij:* `Rieser+N+Prop+Sem/Sur+Sg+Ill`
 * *Rieseris:* `Rieser+N+Prop+Sem/Sur+Sg+Ela`
 
 LEXICON LONDON-obj  Objects. 
 
-*Rovdjursutredningen # Odd-syllable test examples:*
+* Rovdjursutredningen # Odd-syllable test examples:*
 * *Rovdjursutredningen:* `Rovdjursutredningen+N+Prop+Sem/Obj+Sg+Nom`
 * *Rovdjursutredningenij:* `Rovdjursutredningen+N+Prop+Sem/Obj+Sg+Ill`
 * *Rovdjursutredningenis:* `Rovdjursutredningen+N+Prop+Sem/Obj+Sg+Ela`
 
 LEXICON LONDON-LOAN-obj  Objects loan. Not used in smj-propernouns
 
-*Sameloven # Odd-syllable test examples:*
+* Sameloven # Odd-syllable test examples:*
 * *Sameloven:* `Sameloven+N+Prop+Sem/Obj+Sg+Nom`
 * ★*Samelovenij:* `Sameloven+N+Prop+Sem/Obj+Sg+Ill` (is not standard language)
 * ★*Samelovenis:* `Sameloven+N+Prop+Sem/Obj+Sg+Ela` (is not standard language)
 
 LEXICON LONDON-LOAN-plc  Only nominatives. Placenames loan. Not used in Smj-propernouns
 
-*Jordandalen # Odd-syllable test examples:*
+* Jordandalen # Odd-syllable test examples:*
 * *Jordandalen:* `Jordandalen+N+Prop+Sem/Plc+Sg+Nom`
 * ★*Jordandalenij:* `Jordandalen+N+Prop+Sem/Plc+Sg+Ill` (is not standard language)
 * ★*Jordandalenis:* `Jordandalen+N+Prop+Sem/Plc+Sg+Ela` (is not standard language)
 
 LEXICON LONDON-LOAN-org   Only nominative. Organizations loan.Not used in smj-propernouns
 
-*Samfunnsavdelingen # Odd-syllable test examples:*
+* Samfunnsavdelingen # Odd-syllable test examples:*
 * *Samfunnsavdelingen:* `Samfunnsavdelingen+N+Prop+Sem/Org+Sg+Nom`
 * ★*Samfunnsavdelingenij:* `Samfunnsavdelingen+N+Prop+Sem/Org+Sg+Ill` (is not standard language)
 * ★*Samfunnsavdelingenis:* `Samfunnsavdelingen+N+Prop+Sem/Org+Sg+Ela` (is not standard language)
@@ -2093,7 +2093,7 @@ JOKULL-plc are placenames. Lexicon added to make the code compile (?)
 
  +N+Prop+Sem/Plc: LONDONDECL-PLC-SUR ;  Placenames. NB added to make the code compile, needs revision. Gets an odd syllable case marking. Non-assimilated stems.
 
-*Drangajökull # Even-syllable test examples:*
+* Drangajökull # Even-syllable test examples:*
 * *Drangajökull:* `Drangajökull+N+Prop+Sem/Plc+Sg+Nom`
 * *Drangajökullij:* `Drangajökull+N+Prop+Sem/Plc+Sg+Ill`
 * *Drangajökullis:* `Drangajökull+N+Prop+Sem/Plc+Sg+Ela`
@@ -2104,7 +2104,7 @@ LEXICON ANAR-mal  Male names.
 
 LEXICON ANAR-plc   Place names
 
-*Guhttás # Odd-syllable test examples:*
+* Guhttás # Odd-syllable test examples:*
 * *Guhttás:* `Guhttás+N+Prop+Sem/Plc+Sg+Nom`
 * *Guhttásij:* `Guhttás+N+Prop+Sem/Plc+Sg+Ill`
 * *Guhttásis:* `Guhttás+N+Prop+Sem/Plc+Sg+Ela`
@@ -2113,42 +2113,42 @@ Words in PIPPI lexicons are i-final, have no cg, no second syllable vowel change
 
 LEXICON PIPPI-ani  IVowel-final names where case endings are added directly, no cg. Animals.
 
-*Rullahuuli # Even-syllable test examples:*
+* Rullahuuli # Even-syllable test examples:*
 * *Rullahuuli:* `Rullahuuli+N+Prop+Sem/Ani+Sg+Nom`
 * *Rullahuulihij:* `Rullahuuli+N+Prop+Sem/Ani+Sg+Ill`
 * *Rullahuulihis:* `Rullahuuli+N+Prop+Sem/Ani+Sg+Ela`
 
 LEXICON PIPPI-obj  Vowel-final names where case endings are added directly, no cg. Object names
 
-*Audi # Even-syllable test examples:*
+* Audi # Even-syllable test examples:*
 * *Audi:* `Audi+N+Prop+Sem/Obj+Sg+Nom`
 * *Audihij:* `Audi+N+Prop+Sem/Obj+Sg+Ill`
 * *Audihis:* `Audi+N+Prop+Sem/Obj+Sg+Ela`
 
 LEXICON PIPPI-org  Vowel-final names where caseendings are added directly, no cg. organizations
 
-*Kon-Tiki # Even-syllable test examples:*
+* Kon-Tiki # Even-syllable test examples:*
 * *Kon-Tiki:* `Kon-Tiki+N+Prop+Sem/Org+Sg+Nom`
 * *Kon-Tikihij:* `Kon-Tiki+N+Prop+Sem/Org+Sg+Ill`
 * *Kon-Tikihis:* `Kon-Tiki+N+Prop+Sem/Org+Sg+Ela`
 
 LEXICON PIPPI-mal  Vowel-final names where case are added directly, no cg. Male names
 
-*Gianni # Even-syllable test examples:*
+* Gianni # Even-syllable test examples:*
 * *Gianni:* `Gianni+N+Prop+Sem/Mal+Sg+Nom`
 * *Giannihij:* `Gianni+N+Prop+Sem/Mal+Sg+Ill`
 * *Giannihis:* `Gianni+N+Prop+Sem/Mal+Sg+Ela`
 
 LEXICON PIPPI-fem  Vowel-final names where case endings are added directly, no cg. Female names
 
-*Guri # Even-syllable test examples:*
+* Guri # Even-syllable test examples:*
 * *Guri:* `Guri+N+Prop+Sem/Fem+Sg+Nom`
 * *Gurihij:* `Guri+N+Prop+Sem/Fem+Sg+Ill`
 * *Gurihis:* `Guri+N+Prop+Sem/Fem+Sg+Ela`
 
 LEXICON PIPPI-femsur  Vowel-final names where case endings are added directly, no cg. Female names also used as surnames
 
-*Turi # Even-syllable test examples:*
+* Turi # Even-syllable test examples:*
 * *Turi:* `Turi+N+Prop+Sem/Fem+Sg+Nom`
 * *Turihij:* `Turi+N+Prop+Sem/Fem+Sg+Ill`
 * *Turihij:* `Turi+N+Prop+Sem/Sur+Sg+Ill`
@@ -2156,57 +2156,57 @@ LEXICON PIPPI-femsur  Vowel-final names where case endings are added directly, n
 
 LEXICON PIPPI-malfem  Vowel-final names where case endings are added directly, no cg. Names that can be both female and male names
 
-*Kari # Even-syllable test examples:*
+* Kari # Even-syllable test examples:*
 * *Kari:* `Kari+N+Prop+Sem/Mal+Sg+Nom`
 * *Kari:* `Kari+N+Prop+Sem/Fem+Sg+Nom`
 * *Karihij:* `Kari+N+Prop+Sem/Mal+Sg+Ill`
 * *Karihis:* `Kari+N+Prop+Sem/Mal+Sg+Ela`
 
-*# Even-syllable test examples:*
+* # Even-syllable test examples:*
 
-*# Even-syllable test examples:*
+* # Even-syllable test examples:*
 
 LEXICON PIPPI-sur  Vowel-final names where case endings are added directly, no cg. Surnames
 
-*Sammallahti # Even-syllable test examples:*
+* Sammallahti # Even-syllable test examples:*
 * *Sammallahti:* `Sammallahti+N+Prop+Sem/Sur+Sg+Nom`
 * *Sammallahtihij:* `Sammallahti+N+Prop+Sem/Sur+Sg+Ill`
 * *Sammallahtihis:* `Sammallahti+N+Prop+Sem/Sur+Sg+Ela`
 
-*# Even-syllable test examples:*
+* # Even-syllable test examples:*
 
 LEXICON PIPPI-plc  Vowel-final names where caseendings are added directly, no cg. Place names
 
-*Lapinlampi # Even-syllable test examples:*
+* Lapinlampi # Even-syllable test examples:*
 * *Lapinlampi:* `Lapinlampi+N+Prop+Sem/Plc+Sg+Nom`
 * *Lapinlampihij:* `Lapinlampi+N+Prop+Sem/Plc+Sg+Ill`
 * *Lapinlampihis:* `Lapinlampi+N+Prop+Sem/Plc+Sg+Ela`
 
-*# Even-syllable test examples:*
+* # Even-syllable test examples:*
 
 LEXICON PIPPI-LOAN-plc  Only nominatives. Vowel-final names where case endings are added directly, no cg.Place names
 
-*Haltiatunturi # Even-syllable test examples:*
+* Haltiatunturi # Even-syllable test examples:*
 * *Haltiatunturi:* `Haltiatunturi+N+Prop+Sem/Plc+Sg+Nom`
 * ★*Haltiatunturijij:* `Haltiatunturi+N+Prop+Sem/Plc+Sg+Ill` (is not standard language)
 * ★*Haltiatunturijis:* `Haltiatunturi+N+Prop+Sem/Plc+Sg+Ela` (is not standard language)
 
-*# Even-syllable test examples:*
+* # Even-syllable test examples:*
 
-*# Even-syllable test examples:*
+* # Even-syllable test examples:*
 
 Words in lexicon DUORTNUS end on conconant, have cg and second syllable vowel change o:u, e:á. Odd syllable case marking. Real lule sami or one non-assimilated stem.
 
 LEXICON DUORTNUS-mal  Male names
 
-*Mihkal # Odd-syllable test examples:*
+* Mihkal # Odd-syllable test examples:*
 * *Mihkal:* `Mihkal+N+Prop+Sem/Mal+Sg+Nom`
 * *Mihkkalij:* `Mihkal+N+Prop+Sem/Mal+Sg+Ill`
 * *Mihkkalis:* `Mihkal+N+Prop+Sem/Mal+Sg+Ela`
 
 LEXICON DUORTNUS-sur  Male names
 
-*Vándar # Odd-syllable test examples:*
+* Vándar # Odd-syllable test examples:*
 * *Vándar:* `Vándar+N+Prop+Sem/Sur+Sg+Nom`
 * *Vánndarij:* `Vándar+N+Prop+Sem/Sur+Sg+Ill`
 * *Vánndaris:* `Vándar+N+Prop+Sem/Sur+Sg+Ela`
@@ -2215,7 +2215,7 @@ LEXICON DUORTNUS-org  Odd-syllable ending on consonant, with cg. Organizations
 
 LEXICON DUORTNUS-plc  Odd-syllable ending on consonant, with cg.Placenames
 
-*Hardangerduottar # Odd-syllable test examples:*
+* Hardangerduottar # Odd-syllable test examples:*
 * *Hardangerduottar:* `Hardangerduottar+N+Prop+Sem/Plc+Sg+Nom`
 * *Hardangerduoddara:* `Hardangerduottar+N+Prop+Sem/Plc+Sg+Gen`
 * *Hardangerduoddarij:* `Hardangerduottar+N+Prop+Sem/Plc+Sg+Ill`
@@ -2223,7 +2223,7 @@ LEXICON DUORTNUS-plc  Odd-syllable ending on consonant, with cg.Placenames
 
 LEXICON TIEMPEL-obj  Same as DUORTNUS, only without second syll vowel change. Odd syllanle case marking Lexicon presently only for two -tiempel-final words. Lule sami stems.
 
-*Artemistiempel # Odd-syllable test  examples:*
+* Artemistiempel # Odd-syllable test  examples:*
 * *Artemistiempel:* `Artemistiempel+N+Prop+Sem/Obj+Sg+Nom`
 * *Artemistiemmpelij:* `Artemistiempel+N+Prop+Sem/Obj+Sg+Ill`
 * *Artemistiemmpelin:* `Artemistiempel+N+Prop+Sem/Obj+Sg+Ine`
@@ -2231,7 +2231,7 @@ LEXICON TIEMPEL-obj  Same as DUORTNUS, only without second syll vowel change. Od
 
 LEXICON TIEMPEL-org  Same as DUORTNUS, only without second syll vowel change. Odd syllanle case marking Lexicon presently only for two -tiempel-final words. Lule sami stems.
 
-*Artemistiempel # Odd-syllable test  examples:*
+* Artemistiempel # Odd-syllable test  examples:*
 * *Samovarteáhtar:* `Samovarteáhtar+N+Prop+Sem/Org+Sg+Nom`
 * *Samovarteáhttarij:* `Samovarteáhtar+N+Prop+Sem/Org+Sg+Ill`
 * *Samovarteáhttarin:* `Samovarteáhtar+N+Prop+Sem/Org+Sg+Ine`
@@ -2252,7 +2252,7 @@ Words in lexicon EATNAMAT are odd-syllable plurals. Lule sami stems and non-assi
 
 LEXICON EATNAMAT-plc   Place names. Presently only for Vuolleednama
 
-*Vuolleednama # Contrcted test examples:*
+* Vuolleednama # Contrcted test examples:*
 * ★*Vuolleednam:* `Vuolleednama+N+Prop+Sem/Plc+Sg+Nom` (is not standard language)
 * *Vuolleednama:* `Vuolleednama+N+Prop+Sem/Plc+Pl+Nom`
 * *Vuolleednamijda:* `Vuolleednama+N+Prop+Sem/Plc+Pl+Ill`
@@ -2264,7 +2264,7 @@ Words in lexicon DAVVISUOLLU are contracted propernouns ending on -åj/-oj. Lule
 
 LEXICON DAVVISUOLU-plc  Contracted stems ending on -oj. Place names.
 
-*Victoriasuoloj # Contracted test examples:*
+* Victoriasuoloj # Contracted test examples:*
 * *Victoriasuoloj:* `Victoriasuoloj+N+Prop+Sem/Plc+Sg+Nom`
 * *Victoriasuolluj:* `Victoriasuoloj+N+Prop+Sem/Plc+Sg+Ill`
 * *Victoriasuollus:* `Victoriasuoloj+N+Prop+Sem/Plc+Sg+Ela`
@@ -2273,7 +2273,7 @@ Words in lexicon GEAVNNIS are contracted propernouns ending on -s.
 
 LEXICON GEAVNNIS-plc   Contracted stems ending on -es. Place names. Lule sami stems.
 
-*Gaza-Sárges # Contracted test examples:*
+* Gaza-Sárges # Contracted test examples:*
 * *Gaza-Sárges:* `Gaza-Sárges+N+Prop+Sem/Plc+Sg+Nom`
 * *Gaza-Sárggáj:* `Gaza-Sárges+N+Prop+Sem/Plc+Sg+Ill`
 * *Gaza-Sárggás:* `Gaza-Sárges+N+Prop+Sem/Plc+Sg+Ela`
@@ -2282,7 +2282,7 @@ Words in lexicon SUOLLOT are contracted plurals. Lule sami stems.
 
 LEXICON SULLOT-plc  Plural names, only names ending on -suollu.
 
-*Falklandsuollu #  test examples:*
+* Falklandsuollu #  test examples:*
 * ★*Falklandsuoloj:* `Falklandsuollu+N+Prop+Sem/Plc+Sg+Nom` (is not standard language)
 * *Falklandsuollu:* `Falklandsuollu+N+Prop+Sem/Plc+Pl+Nom`
 * *Falklandsuollujda:* `Falklandsuollu+N+Prop+Sem/Plc+Pl+Ill`
@@ -2358,14 +2358,14 @@ LEXICON LULU
 
 LEXICON GALGGAT_IV  even-syllable modal verbs.
 
-*soajttet # Eveb-syllable test examples:*
+* soajttet # Eveb-syllable test examples:*
 * *soajtáv:* `soajttet+V+IV+Ind+Prs+Sg1`
 * *soajttiv:* `soajttet+V+IV+Ind+Prt+Sg1`
 * *såjtijma:* `soajttet+V+IV+Ind+Prt+Pl1`
 
 LEXICON VIERTTIT_IV  Contracted modal verbs.
 
-*hæhttut # Eveb-syllable test examples:*
+* hæhttut # Eveb-syllable test examples:*
 * *hæhttut:* `hæhttut+V+IV+Inf`
 * *hähttut:* `hæhttut+V+IV+Inf`
 * *hæhttuv:* `hæhttut+V+IV+Ind+Prs+Sg1`
@@ -2380,7 +2380,7 @@ Intransitives
 
 LEXICON GALSSJOT_IV  Impersonal o-verbs
 
-*hærmmot # Eveb-syllable test examples:*
+* hærmmot # Eveb-syllable test examples:*
 * *hærmmu:* `hærmmot+V+IV+Ind+Prs+Sg3`
 * *härmmu:* `hærmmot+V+IV+Ind+Prs+Sg3`
 * *hærmoj:* `hærmmot+V+IV+Ind+Prt+Sg3`
@@ -2388,7 +2388,7 @@ LEXICON GALSSJOT_IV  Impersonal o-verbs
 
 LEXICON BÅRSSJOT_IV  o-verbs with
 
-*hæssot # Eveb-syllable test examples:*
+* hæssot # Eveb-syllable test examples:*
 * *hæsov:* `hæssot+V+IV+Ind+Prs+Sg1`
 * *häsov:* `hæssot+V+IV+Ind+Prs+Sg1`
 * *hessuv:* `hæssot+V+IV+Ind+Prt+Sg1`
@@ -2397,28 +2397,28 @@ LEXICON BÅRSSJOT_IV  o-verbs with
 
 LEXICON VILSSJOT_IV  o-verbs as BÅRSSJOT but without derivations -stit, -stallat, -stahtte, - stasste.  With dim -astit that are hardcoded
 
-*libjjot # Eveb-syllable test examples:*
+* libjjot # Eveb-syllable test examples:*
 * *libjov:* `libjjot+V+IV+Ind+Prs+Sg1`
 * *libjjuv:* `libjjot+V+IV+Ind+Prt+Sg1`
 * *libjojma:* `libjjot+V+IV+Ind+Prt+Pl1`
 
 LEXICON BUOLLET_IV   e-verbs
 
-*liddet # Even-syllable test examples:*
+* liddet # Even-syllable test examples:*
 * *littáv:* `liddet+V+IV+Ind+Prs+Sg1`
 * *liddiv:* `liddet+V+IV+Ind+Prt+Sg1`
 * *littijma:* `liddet+V+IV+Ind+Prt+Pl1`
 
 LEXICON BOAHTET_IV  e-verbs like BUOLLET_IV without passive
 
-*boahtet # Even-syllable test examples:*
+* boahtet # Even-syllable test examples:*
 * *boadáv:* `boahtet+V+IV+Ind+Prs+Sg1`
 * *båhtiv:* `boahtet+V+IV+Ind+Prt+Sg1`
 * *bådijma:* `boahtet+V+IV+Ind+Prt+Pl1`
 
 LEXICON VIEDJET_IV   e-verbs GRADE II-I WITH IE DIPHT.
 
-*biehket # Eveb-syllable test examples:*
+* biehket # Eveb-syllable test examples:*
 * *bægáv:* `biehket+V+IV+Ind+Prs+Sg1`
 * *bägáv:* `biehket+V+IV+Ind+Prs+Sg1`
 * *biehkiv:* `biehket+V+IV+Ind+Prt+Sg1`
@@ -2426,48 +2426,48 @@ LEXICON VIEDJET_IV   e-verbs GRADE II-I WITH IE DIPHT.
 
 LEXICON ASSTAT_IV   only for asstat, no passive
 
-*asstat # Even-syllable test examples:*
+* asstat # Even-syllable test examples:*
 * *astav:* `asstat+V+IV+Ind+Prs+Sg1`
 * *asstiv:* `asstat+V+IV+Ind+Prt+Sg1`
 * *astajma:* `asstat+V+IV+Ind+Prt+Pl1`
 
 LEXICON RAVGGAT_IV   a- and å-verbs only Sg3 passive.
 
-*bajássjaddat # Even-syllable test examples:*
+* bajássjaddat # Even-syllable test examples:*
 * *biváv* `bivvat+V+IV+Ind+Prs+Sg1`
 * *bivviv* `bivvat+V+IV+Ind+Prt+Sg1`
 * *bivájma:* `bivvat+V+IV+Ind+Prt+Pl1`
 
 LEXICON BIEGGAT_IV  Impersonals
 
-*dednjat # Even-syllable test examples:*
+* dednjat # Even-syllable test examples:*
 * *dædnjá:* `dednjat+V+IV+Ind+Prs+Sg3`
 * *dädnjá:* `dednjat+V+IV+Ind+Prs+Sg3`
 * *denjaj:* `dednjat+V+IV+Ind+Prt+Sg3`
 
 LEXICON RAVGGALASSTET_IV    Like RAVGGAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced
 
-*dehpudallat # Even-syllable test examples:*
+* dehpudallat # Even-syllable test examples:*
 * *dehpudaláv:* `dehpudallat+V+IV+Ind+Prs+Sg1`
 * *dehpudalliv:* `dehpudallat+V+IV+Ind+Prt+Sg1`
 * *dehpudalájma:* `dehpudallat+V+IV+Ind+Prt+Pl1`
 
 LEXICON BIEKKASTALLAT_IV  Already derived impersonals
 
-*dehpudallat # Even-syllable test examples:*
+* dehpudallat # Even-syllable test examples:*
 * *duhpárasstá:* `duhpárasstet+V+IV+Ind+Prs+Sg3`
 * *duhpárastij:* `duhpárasstet+V+IV+Ind+Prt+Sg3`
 
 LEXICON GUOTTEDALLAT_IV    passives on -allat - no actio as first part of compounds, but reintroduced
 
-*duolmudallat # Even-syllable test examples:*
+* duolmudallat # Even-syllable test examples:*
 * *duolmudaláv:* `duolmudallat+V+IV+Ind+Prs+Sg1`
 * *duolmudalliv:* `duolmudallat+V+IV+Ind+Prt+Sg1`
 * *duolmudalájma:* `duolmudallat+V+IV+Ind+Prt+Pl1`
 
 LEXICON HIEBADUVVAT_IV   passives on -uvvat - no actio as first part of compounds, but reintroduced
 
-*duostoduvvat # Even-syllable test examples:*
+* duostoduvvat # Even-syllable test examples:*
 * *duostoduváv:* `duostoduvvat+V+IV+Ind+Prs+Sg1`
 * *duostoduvviv:* `duostoduvvat+V+IV+Ind+Prt+Sg1`
 * *duostoduvájma:* `duostoduvvat+V+IV+Ind+Prt+Pl1`
@@ -2475,42 +2475,42 @@ LEXICON HIEBADUVVAT_IV   passives on -uvvat - no actio as first part of compound
 Transitives
 LEXICON MÁHTTET_TV    verbs without personal passive
 
-*jáhkket # Even-syllable test examples:*
+* jáhkket # Even-syllable test examples:*
 * *jáhkáv:* `jáhkket+V+TV+Ind+Prs+Sg1`
 * *jáhkkiv:* `jáhkket+V+TV+Ind+Prt+Sg1`
 * *jáhkijma:* `jáhkket+V+TV+Ind+Prt+Pl1`
 
 LEXICON BASSAT_TV   a- and å-verbs. Three passives
 
-*jåksåt # Even-syllable test examples:*
+* jåksåt # Even-syllable test examples:*
 * *jåvsåv:* `jåksåt+V+TV+Ind+Prs+Sg1`
 * *jåksiv:* `jåksåt+V+TV+Ind+Prt+Sg1`
 * *jåvsåjma:* `jåksåt+V+TV+Ind+Prt+Pl1`
 
 LEXICON BASSALASSTET_TV   Like BASSAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced. Three passives
 
-*jårgudallat # Even-syllable test examples:*
+* jårgudallat # Even-syllable test examples:*
 * *jårgudaláv:* `jårgudallat+V+TV+Ind+Prs+Sg1`
 * *jårgudalliv:* `jårgudallat+V+TV+Ind+Prt+Sg1`
 * *jårgudalájma:* `jårgudallat+V+TV+Ind+Prt+Pl1`
 
 LEXICON JUHKAT_TV   a-verbs like BASSAT_TV but but without derivations -stit, -stallat, -stahtte, - stasste. Dim -istit that are hardcoded. Three passives
 
-*njammat # Even-syllable test examples:*
+* njammat # Even-syllable test examples:*
 * *njamáv:* `njammat+V+TV+Ind+Prs+Sg1`
 * *njammiv:* `njammat+V+TV+Ind+Prt+Sg1`
 * *njamájma:* `njammat+V+TV+Ind+Prt+Pl1`
 
 LEXICON LÁHPPET_TV   e-verbs. Three passives
 
-*oajttet # Even-syllable test examples:*
+* oajttet # Even-syllable test examples:*
 * *oajtáv:* `oajttet+V+TV+Ind+Prs+Sg1`
 * *oajttiv:* `oajttet+V+TV+Ind+Prt+Sg1`
 * *åjtijma:* `oajttet+V+TV+Ind+Prt+Pl1`
 
 LEXICON JIEHKET_TV   e-verbs GRADE II-I WITH IE DIPHT. Three passives
 
-*sievvet # Even-syllable test examples:*
+* sievvet # Even-syllable test examples:*
 * *sæváv:* `sievvet+V+TV+Ind+Prs+Sg1`
 * *säváv:* `sievvet+V+TV+Ind+Prs+Sg1`
 * *sievviv:* `sievvet+V+TV+Ind+Prt+Sg1`
@@ -2518,14 +2518,14 @@ LEXICON JIEHKET_TV   e-verbs GRADE II-I WITH IE DIPHT. Three passives
 
 LEXICON DIEHTET_TV   Only this one word, unusual diphtong behavior. No passive
 
-*diehtet # Even-syllable test examples:*
+* diehtet # Even-syllable test examples:*
 * *diedáv:* `diehtet+V+TV+Ind+Prs+Sg1`
 * *diehtiv:* `diehtet+V+TV+Ind+Prt+Sg1`
 * *diedijma:* `diehtet+V+TV+Ind+Prt+Pl1`
 
 LEXICON GÁDJOT_TV  o-verbs. only duvvat passive.
 
-*sjpædtjot # Even-syllable test examples:*
+* sjpædtjot # Even-syllable test examples:*
 * *sjpættjov:* `sjpædtjot+V+TV+Ind+Prs+Sg1`
 * *sjpättjov:* `sjpædtjot+V+TV+Ind+Prs+Sg1`
 * *sjpædtjuv:* `sjpædtjot+V+TV+Ind+Prt+Sg1`
@@ -2535,7 +2535,7 @@ LEXICON GÁDJOT_TV  o-verbs. only duvvat passive.
 
 LEXICON JÅRGGOT_TV  o-verbs with dim -astit that are hardcoded.  Duvvat and dallat passive.
 
-*boarkkot # Even-syllable test examples:*
+* boarkkot # Even-syllable test examples:*
 * *boarkov:* `boarkkot+V+TV+Ind+Prs+Sg1`
 * *boarkkuv:* `boarkkot+V+TV+Ind+Prt+Sg1`
 * *boarkojma:* `boarkkot+V+TV+Ind+Prt+Pl1`
@@ -2548,70 +2548,70 @@ LEXICON BIEKKASTIT_IV  Impersonals, only Sg3
 
 LEXICON JÅRGESTIT_IV At the moment IV, we may perhaps change IV/TV. 
 
-*doalvestit # Odd-syllable test examples:*
+* doalvestit # Odd-syllable test examples:*
 * *doalvestav:* `doalvestit+V+IV+Ind+Prs+Sg1`
 * *doalvestiv:* `doalvestit+V+IV+Ind+Prt+Sg1`
 * *doalvestijma:* `doalvestit+V+IV+Ind+Prt+Pl1`
 
 LEXICON BEGATJIT_IV   Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but  only Sg3 passivereintroduced
 
-*duojkkuhit # Odd-syllable test examples:*
+* duojkkuhit # Odd-syllable test examples:*
 * *duojkkuhav:* `duojkkuhit+V+IV+Ind+Prs+Sg1`
 * *duojkkuhiv:* `duojkkuhit+V+IV+Ind+Prt+Sg1`
 * *duojkkuhijma:* `duojkkuhit+V+IV+Ind+Prt+Pl1`
 
 LEXICON BALÁDIT_IV   continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms, only Sg3 passive
 
-*lihtudit # Odd-syllable test examples:*
+* lihtudit # Odd-syllable test examples:*
 * *lihtudav:* `lihtudit+V+IV+Ind+Prs+Sg1`
 * *lihtudiv:* `lihtudit+V+IV+Ind+Prt+Sg1`
 * *lihtudijma:* `lihtudit+V+IV+Ind+Prt+Pl1`
 
 LEXICON SUOGNALIT_IV  Trisyllabic Verbs ending -lit.  only Sg3 passive
 
-*loavkkalit # Odd-syllable test examples:*
+* loavkkalit # Odd-syllable test examples:*
 * *loavkkalav:* `loavkkalit+V+IV+Ind+Prs+Sg1`
 * *loavkkaliv:* `loavkkalit+V+IV+Ind+Prt+Sg1`
 * *loavkkalijma:* `loavkkalit+V+IV+Ind+Prt+Pl1`
 
 LEXICON LASSÁNIT_IV  verbs ending -nit, -sit, no passive
 
-*rievddánit # Odd-syllable test examples:*
+* rievddánit # Odd-syllable test examples:*
 * *rievddánav:* `rievddánit+V+IV+Ind+Prs+Sg1`
 * *rievddániv:* `rievddánit+V+IV+Ind+Prt+Sg1`
 * *rievddánijma:* `rievddánit+V+IV+Ind+Prt+Pl1`
 
 LEXICON BÁHTARIT_IV verbs ending -rit.  only Sg3 passive
 
-*sjtávttjurit # Odd-syllable test examples:*
+* sjtávttjurit # Odd-syllable test examples:*
 * *sjtávttjurav:* `sjtávttjurit+V+IV+Ind+Prs+Sg1`
 * *sjtávttjuriv:* `sjtávttjurit+V+IV+Ind+Prt+Sg1`
 * *sjtávttjurijma:* `sjtávttjurit+V+IV+Ind+Prt+Pl1`
 
 LEXICON UNNEDIT_TV   All -uvvat passives.
 
-*nuoledit # Odd-syllable test examples:*
+* nuoledit # Odd-syllable test examples:*
 * *nuoledav:* `nuoledit+V+TV+Ind+Prs+Sg1`
 * *nuolediv:* `nuoledit+V+TV+Ind+Prt+Sg1`
 * *nuoledijma:* `nuoledit+V+TV+Ind+Prt+Pl1`
 
 LEXICON MUJTATJIT_TV   Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but reintroduced. All -uvvat passives
 
-*nårddådit # Odd-syllable test examples:*
+* nårddådit # Odd-syllable test examples:*
 * *nårddådav:* `nårddådit+V+TV+Ind+Prs+Sg1`
 * *nårddådiv:* `nårddådit+V+TV+Ind+Prt+Sg1`
 * *nårddådijma:* `nårddådit+V+TV+Ind+Prt+Pl1`
 
 LEXICON BÅNJÅDIT_TV   continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms. All -uvvat  passives.
 
-*tsirggalit # Odd-syllable test examples:*
+* tsirggalit # Odd-syllable test examples:*
 * *tsirggalav:* `tsirggalit+V+TV+Ind+Prs+Sg1`
 * *tsirggaliv:* `tsirggalit+V+TV+Ind+Prt+Sg1`
 * *tsirggalijma:* `tsirggalit+V+TV+Ind+Prt+Pl1`
 
 LEXICON VUORDDELIT_TV  Trisyllabic Verbs ending -lit. All -uvvat passives
 
-*tsåggålit # Odd-syllable test examples:*
+* tsåggålit # Odd-syllable test examples:*
 * *tsåggålav:* `tsåggålit+V+TV+Ind+Prs+Sg1`
 * *tsåggåliv:* `tsåggålit+V+TV+Ind+Prt+Sg1`
 * *tsåggålijma:* `tsåggålit+V+TV+Ind+Prt+Pl1`
@@ -2620,20 +2620,20 @@ LEXICON VUORDDELIT_TV  Trisyllabic Verbs ending -lit. All -uvvat passives
 
 LEXICON SJIERRIT_IV  Impersonals
 
-*boavddit # Contracted test examples:*
+* boavddit # Contracted test examples:*
 * *boavddi:* `boavddit+V+IV+Ind+Prs+Sg3`
 * *boavddij:* `boavddit+V+IV+Ind+Prt+Sg3`
 
 LEXICON BASSUT_IV  Passives
 
-*buvvut # Contracted test examples:*
+* buvvut # Contracted test examples:*
 * *buvvuv:* `buvvut+V+IV+Ind+Prs+Sg1`
 * *buvvujiv:* `buvvut+V+IV+Ind+Prt+Sg1`
 * *buvvujma:* `buvvut+V+IV+Ind+Prt+Pl1`
 
 LEXICON OADDÁT_IV    Incoative, (doarrut,jåhttåt). Only Sg3 passive. Does not make nouns via -ár derivation.
 
-*bæhkkát # Contracted test examples:*
+* bæhkkát # Contracted test examples:*
 * *bæhkkáv:* `bæhkkát+V+IV+Ind+Prs+Sg1`
 * *bähkkáv:* `bæhkkát+V+IV+Ind+Prs+Sg1`
 * *bæhkkájiv:* `bæhkkát+V+IV+Ind+Prt+Sg1`
@@ -2643,28 +2643,28 @@ LEXICON OADDÁT_IV    Incoative, (doarrut,jåhttåt). Only Sg3 passive. Does not
 
 LEXICON DULLUT_IV   Does not make nouns via -ár derivation. Only Sg3 passiv.
 
-*dussut # Contracted test examples:*
+* dussut # Contracted test examples:*
 * *dussuv:* `dussut+V+IV+Ind+Prs+Sg1`
 * *dussujiv:* `dussut+V+IV+Ind+Prt+Sg1`
 * *dussujma:* `dussut+V+IV+Ind+Prt+Pl1`
 
 LEXICON TJUOLLÁT_TV    Incoativ. All passive. Does not make nouns via -ár derivation,  (gullát, bårråt)
 
-*gajkkát # Contracted test examples:*
+* gajkkát # Contracted test examples:*
 * *gajkkáv:* `gajkkát+V+TV+Ind+Prs+Sg1`
 * *gajkkájiv:* `gajkkát+V+TV+Ind+Prt+Sg1`
 * *gajkkájma:* `gajkkát+V+TV+Ind+Prt+Pl1`
 
 LEXICON STRÁFFUT_TV    Does not make nouns via -ár derivation. All duvvat passives. 
 
-*gáhpput # Contracted test examples:*
+* gáhpput # Contracted test examples:*
 * *gáhppuv:* `gáhpput+V+TV+Ind+Prs+Sg1`
 * *gáhppujiv:* `gáhpput+V+TV+Ind+Prt+Sg1`
 * *gáhppujma:* `gáhpput+V+TV+Ind+Prt+Pl1`
 
 LEXICON TSIEGGIT_TV   Makes nouns via -ár derivation. All duvvat passives. 
 
-*gámmpit # Contracted test examples:*
+* gámmpit # Contracted test examples:*
 * *gámmpiv:* `gámmpit+V+TV+Ind+Prs+Sg1`
 * *gámmpijiv:* `gámmpit+V+TV+Ind+Prt+Sg1`
 * *gámmpijma:* `gámmpit+V+TV+Ind+Prt+Pl1`
@@ -2672,7 +2672,7 @@ LEXICON TSIEGGIT_TV   Makes nouns via -ár derivation. All duvvat passives.
 
 LEXICON VALLIT_TV  Makes nouns via -ár derivation. Gets only passive Sg3
 
-*hinnit # Contracted test examples:*
+* hinnit # Contracted test examples:*
 * *hinniv:* `hinnit+V+TV+Ind+Prs+Sg1`
 * *hinnijiv:* `hinnit+V+TV+Ind+Prt+Sg1`
 * *hinnijma:* `hinnit+V+TV+Ind+Prt+Pl1`
@@ -2682,7 +2682,7 @@ contraced verbs assimilated and outside the main pattern.
 
 LEXICON PLÁNIT_TV  Transitive Two-syll contraced words not in third grade as contraced verb have been. Two syllable transitive NEW loan verbs. Makes nouns via -ár derivation. All passives.
 
-*hinnit # Contracted test examples:*
+* hinnit # Contracted test examples:*
 * *bloaggiv:* `bloaggit+V+TV+Ind+Prs+Sg1`
 * *blåggiv:* `bloaggit+V+TV+Ind+Prs+Sg1`
 * *bloaggijiv:* `bloaggit+V+TV+Ind+Prt+Sg1`
@@ -2694,7 +2694,7 @@ LEXICON PLÁNIT_TV  Transitive Two-syll contraced words not in third grade as co
 
 LEXICON SLEDUT_IV  Intransitive Two-syll contraced words not in third grade as contraced verb have been. Only Sg3 passiv.
 
-*håŋŋlit # Contracted test examples:*
+* håŋŋlit # Contracted test examples:*
 * *håŋŋliv:* `håŋŋlit+V+IV+Ind+Prs+Sg1`
 * *håŋŋlijiv:* `håŋŋlit+V+IV+Ind+Prt+Sg1`
 * *håŋŋlijma:* `håŋŋlit+V+IV+Ind+Prt+Pl1`
@@ -2709,7 +2709,7 @@ LEXICON BRILJERE_IV   Intransitive loan words with more than two syllables with 
 
 LEXICON BRILJERE_IV_INFL   
 
-*briljierit # Contracted test examples:*
+* briljierit # Contracted test examples:*
 * *briljieriv:* `briljierit+V+IV+Ind+Prs+Sg1`
 * *briljeriv:* `briljierit+V+IV+Ind+Prs+Sg1`
 * *briljierijiv:* `briljierit+V+IV+Ind+Prt+Sg1`
@@ -2719,7 +2719,7 @@ LEXICON BRILJERE_IV_INFL
 
 LEXICON ABBONERE_TV_INFL   
 
-*abbonierit # Contracted test examples:*
+* abbonierit # Contracted test examples:*
 * *abbonieriv:* `abbonierit+V+TV+Ind+Prs+Sg1`
 * *abboneriv:* `abbonierit+V+TV+Ind+Prs+Sg1`
 * *abbonierijiv:* `abbonierit+V+TV+Ind+Prt+Sg1`
@@ -3073,25 +3073,25 @@ The diphthong simplification handles oa:å and æ:e. Phonologically, these are i
 * ★*boaggoQ1X5jn* (is not standard language)
 * ★*boakku00jn* (is not standard language)
 
-* examples:*
+*  examples:*
 
-* examples:*
+*  examples:*
 
-* examples:*
+*  examples:*
 
-* examples:*
+*  examples:*
 
-* examples:*
+*  examples:*
 
-* examples:*
+*  examples:*
 
-* examples:*
+*  examples:*
 
-* examples:*
+*  examples:*
 
-* examples:*
+*  examples:*
 
-* examples:*
+*  examples:*
 
 **æ:e Diphthong Simplification **  
 
@@ -3622,8 +3622,8 @@ It is important for Apertium, and useful in other cases as well.
 * **+Cmp/SplitR**  This is a split compound with the other part to the right:
 "Arbeids- og inkluderingsdepartementet" => Arbeids- = +Cmp/SplitR
 * **+Cmp/SplitL**  This is a split compound with the other part to the left
-+Cmp/Hyph  +Cmp/Hyph     Compound with (optional) hyphen, heavily weighted
-+Cmp/OblHyph  +Cmp/OblHyph  Obligatory hyphen, not as badly weighed as +Cmp/Hyph
+Compound with (optional) hyphen, heavily weighted
+Obligatory hyphen, not as badly weighed as +Cmp/Hyph
 
 # Inflectional Tags
 ## Tags for Case and Number Inflection

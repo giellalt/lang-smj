@@ -330,25 +330,25 @@ The diphthong simplification handles oa:å and æ:e. Phonologically, these are i
 * ★*boaggoQ1X5jn* (is not standard language)
 * ★*boakku00jn* (is not standard language)
 
-* examples:*
+*  examples:*
 
-* examples:*
+*  examples:*
 
-* examples:*
+*  examples:*
 
-* examples:*
+*  examples:*
 
-* examples:*
+*  examples:*
 
-* examples:*
+*  examples:*
 
-* examples:*
+*  examples:*
 
-* examples:*
+*  examples:*
 
-* examples:*
+*  examples:*
 
-* examples:*
+*  examples:*
 
 **æ:e Diphthong Simplification **  
 

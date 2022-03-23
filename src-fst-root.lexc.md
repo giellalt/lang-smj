@@ -145,8 +145,8 @@ It is important for Apertium, and useful in other cases as well.
 * **+Cmp/SplitR**  This is a split compound with the other part to the right:
 "Arbeids- og inkluderingsdepartementet" => Arbeids- = +Cmp/SplitR
 * **+Cmp/SplitL**  This is a split compound with the other part to the left
-+Cmp/Hyph  +Cmp/Hyph     Compound with (optional) hyphen, heavily weighted
-+Cmp/OblHyph  +Cmp/OblHyph  Obligatory hyphen, not as badly weighed as +Cmp/Hyph
+Compound with (optional) hyphen, heavily weighted
+Obligatory hyphen, not as badly weighed as +Cmp/Hyph
 
 # Inflectional Tags
 ## Tags for Case and Number Inflection

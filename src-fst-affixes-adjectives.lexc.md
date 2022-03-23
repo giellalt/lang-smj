@@ -6,7 +6,7 @@
 
 LEXICON GIEVRRA  Adjectives with attribute in WeG and -s. As 1a in Spiik. Sg Acc: gievrav, Attr: gievras.
 
-*gárttje # Even-syllable test examples:*
+* gárttje # Even-syllable test examples:*
 * *gárttje:* `gárttje+A+Sg+Nom`
 * *gártjev:* `gárttje+A+Sg+Acc`
 * *gártjes:* `gárttje+A+Attr`
@@ -14,7 +14,7 @@ LEXICON GIEVRRA  Adjectives with attribute in WeG and -s. As 1a in Spiik. Sg Acc
 
 LEXICON NUORRA   Adjectives with attribute same as pred. As 1b in Spiik. Sg Acc: nuorav, Attr: nuorra.
 
-*visská # Even-syllable test examples:*
+* visská # Even-syllable test examples:*
 * *visská:* `visská+A+Sg+Nom`
 * *viskáv:* `visská+A+Sg+Acc`
 * *visská:* `visská+A+Attr`
@@ -22,7 +22,7 @@ LEXICON NUORRA   Adjectives with attribute same as pred. As 1b in Spiik. Sg Acc:
 
 LEXICON GALLJE   Adjectives on -e, the attribute is in WeG and e > a. As 1d in Spiik. Sg Acc: galjev, Attr: galja.
 
-*uhttse # Even-syllable test examples:*
+* uhttse # Even-syllable test examples:*
 * *uhttse:* `uhttse+A+Sg+Nom`
 * *uhtsev:* `uhttse+A+Sg+Acc`
 * *uhtsa:* `uhttse+A+Attr`
@@ -31,7 +31,7 @@ LEXICON GALLJE   Adjectives on -e, the attribute is in WeG and e > a. As 1d in S
 
 LEXICON TJÁBBE   Adjectives on -e, the attribute is in WeG and e > a. Same as GALLJE only different adv derivation. Sg Acc: tjáppev, Attr: tjáppa.
 
-*njálgge # Even-syllable test examples:*
+* njálgge # Even-syllable test examples:*
 * *njálgge:* `njálgge+A+Sg+Nom`
 * *njálgev:* `njálgge+A+Sg+Acc`
 * *njálga:* `njálgge+A+Attr`
@@ -39,7 +39,7 @@ LEXICON TJÁBBE   Adjectives on -e, the attribute is in WeG and e > a. Same as G
 
 LEXICON VILLDA   Adjectives with attribute same as pred, without CG. As 1b in Spiik. Sg Acc: nuorav, Attr: nuorra.
 
-*frisska # Even-syllable test examples:*
+* frisska # Even-syllable test examples:*
 * *frisska:* `frisska+A+Sg+Nom`
 * *frisskav:* `frisska+A+Sg+Acc`
 * *frisska:* `frisska+A+Attr`
@@ -47,7 +47,7 @@ LEXICON VILLDA   Adjectives with attribute same as pred, without CG. As 1b in Sp
 
 LEXICON HÁVSSKE   Adjectives with attribute -s, without WeG. As 1c in Spiik. Sg Acc: hávsskev, Attr: hávsskes.
 
-*hoallá # Even-syllable test examples:*
+* hoallá # Even-syllable test examples:*
 * *hoallá:* `hoallá+A+Sg+Nom`
 * *hoalláv:* `hoallá+A+Sg+Acc`
 * *hoallás:* `hoallá+A+Attr`
@@ -55,7 +55,7 @@ LEXICON HÁVSSKE   Adjectives with attribute -s, without WeG. As 1c in Spiik. Sg
 
 LEXICON TJUODDJE  Adjectives with attribute -is, without WeG. presently only "Tjuoddje" Sg Acc: tjuoddjev, Attr: tjuoddjis.
 
-*tjuoddje # Even-syllable test examples:*
+* tjuoddje # Even-syllable test examples:*
 * *tjuoddje:* `tjuoddje+A+Sg+Nom`
 * *tjuoddjev:* `tjuoddje+A+Sg+Acc`
 * *tjuoddjis:* `tjuoddje+A+Attr`
@@ -65,20 +65,20 @@ Pres.participles
 
 LEXICON SÁVADAHTTE   Causative-participles. No attribute. No comparision. As 1e in Spiik. Sg Acc: sávadahttev. PrsPrc of causative verbs "uttrykker at handlingen lar seg gjøre eller er verdt å gjøre" (Kintel 1991).
 
-*vuojedahtte # Even-syllable test examples:*
+* vuojedahtte # Even-syllable test examples:*
 * *vuojedahtte:* `vuojedahtte+A+Sg+Nom`
 * *vuojedahttev:* `vuojedahtte+A+Sg+Acc`
 
 LEXICON JUHKKE   participles with -s attributive. No comparision As 1e in Spiik. Sg Acc: juhkkev, Attr: juhkkes. Spiik: presens particip har med den attributive formen på -s betydelsen "någon som är duktig i, snabb til att, begiven att utföra handlingen".
 
-*vuohttje # Even-syllable test examples:*
+* vuohttje # Even-syllable test examples:*
 * *vuohttje:* `vuohttje+A+Sg+Nom`
 * *vuohttjev:* `vuohttje+A+Sg+Acc`
 * *vuohttjes:* `vuohttje+A+Attr`
 
 LEXICON BÅRRE   participles without the -s attributive. As 1e in Spiik. Sg Acc: bårrev, Attr: bårre. Spiik: presens particip har med den attributiva formen utan -s betydelsen ºdem  som utför handlingenº.
 
-*ednabårre # Even-syllable test examples:*
+* ednabårre # Even-syllable test examples:*
 * *ednabårre:* `ednabårre+A+Sg+Nom`
 * *ednabårrev:* `ednabårre+A+Sg+Acc`
 * *ednabårre:* `ednabårre+A+Attr`
@@ -93,7 +93,7 @@ LEXICON METÅVDÅLASJ  LOAN! Foreign -isk adjectives adapted in updated normativ
 
 LEXICON METÅVDÅLASJ_CMP_INFL 
 
-*kapitalismalasj # Even-syllable test examples:*
+* kapitalismalasj # Even-syllable test examples:*
 * *kapitalismalasj:* `kapitalismalasj+A+Sg+Nom`
 * *kapitalismalattjav:* `kapitalismalasj+A+Sg+Acc`
 * *kapitalismalasj:* `kapitalismalasj+A+Attr`
@@ -113,7 +113,7 @@ LEXICON SJÅNÅLASJ_SJONAL  -sjonal/sjonell and -tional/tionel loanwords. Only f
 
 LEXICON SJÅNÅLASJ_SJONAL_CMP_INFL  
 
-*konstitusjåvnålasj # Even-syllable test examples:*
+* konstitusjåvnålasj # Even-syllable test examples:*
 * *nasjåvnålasj:* `nasjåvnålasj+A+Sg+Nom`
 * *nasjåvnålattjav:* `nasjåvnålasj+A+Sg+Acc`
 * *nasjåvnålasj:* `nasjåvnålasj+A+Attr`
@@ -122,7 +122,7 @@ LEXICON SJÅNÅLASJ_SJONELL  -sjonal/sjonell and -tional/tionel loanwords. Only 
 
 LEXICON SJÅNÅLASJ_SJONELL_CMP_INFL  
 
-*konstitusjåvnålasj # Even-syllable test examples:*
+* konstitusjåvnålasj # Even-syllable test examples:*
 * *konstitusjåvnålasj:* `konstitusjåvnålasj+A+Sg+Nom`
 * *konstitusjåvnålattjav:* `konstitusjåvnålasj+A+Sg+Acc`
 * *konstitusjåvnålasj:* `konstitusjåvnålasj+A+Attr`
@@ -133,7 +133,7 @@ LEXICON MEKÁNALASJ_BADASS  LOAN! Wronly assimilated -lasj adjectives from SE/NO
 
 LEXICON ARKTALASJ_CMP_INFL  Foreign -isk, that are not real derivations. Same as MEKÁNALASJ_BADASS, but no +Use/-Spell tag since ther is no "right" way to assimilate these. This is a question for GG. Adapted to smj by simply adding -alasj in place of -isk. These are not real derivations, but sitation borrowed loan adjectives. Only words without a noun base, like arktisk and syntetisk. Pred and attr are both -lasj. No comparatives. 
 
-*syntetalasj # Even-syllable test examples:*
+* syntetalasj # Even-syllable test examples:*
 * *syntetalasj:* `syntetalasj+A+Sg+Nom`
 * *syntetalattjav:* `syntetalasj+A+Sg+Acc`
 * *syntetalasj:* `syntetalasj+A+Attr`
@@ -144,7 +144,7 @@ LEXICON DEMONSTRATIJVA_LASJ_NO_NORM  Loan adjectives from norwegian/swedish (Not
 
 LEXICON DEMONSTRATIJVA_LASJ_CMP_INFL    
 
-*aktijvva # Even-syllable test examples:*
+* aktijvva # Even-syllable test examples:*
 * *aktijva:* `aktijvva+A+Attr`
 * *aktijvva:* `aktijvva+A+Sg+Nom`
 * *aktijvav:* `aktijvva+A+Sg+Acc`
@@ -165,20 +165,20 @@ Inherent comparatives and superlatives lexica
 
 LEXICON OANEP   Inherent comparatives, gives comp and superl. There are two main groups of word here: Adjectives that are lexicalized in their comparative (and superlative) forms, like sisŋep, bárep. And Nouns that can be compared, like nuortap, gáttep, oarjep (some of these are compared from their noun lexicas and thus are found twice). Some entries are likely incorrect compared forms of other adjectives, like ådåp and ruvvap (more research needed).
 
-*lagáp # Even-syllable test examples:*
+* lagáp # Even-syllable test examples:*
 * *lagáp:* `lagáp+A+Gram/Comp+Sg+Nom`
 * *lagámus:* `lagáp+A+Der/Superl+A+Sg+Nom`
 
 LEXICON TJAVGGÁMUS    Inherent superlatives, only gives superl. Some words are lexicalized in their superlative forms, like dájvvámus. Some are likely incorrect superlative forms, like tjábbámus (more research is needed)
 
-*dájvvámus # Even-syllable test examples:*
+* dájvvámus # Even-syllable test examples:*
 * *dájvvámus:* `dájvvámus+A+Gram/Superl+Sg+Nom`
 
 4-syllable miscellanious stems
 
 LEXICON ÁRMMOGIS  Adjectives on -is, attribute same as pred. Odd-syllable comparison. As 2 in Spiik. Sg Acc: ármmogisáv, Attr: ármmogis. 
 
-*bahágis # Even-syllable test examples:*
+* bahágis # Even-syllable test examples:*
 * *bahágis:* `bahágis+A+Sg+Nom`
 * *bahágisáv:* `bahágis+A+Sg+Acc`
 * *bahágis:* `bahágis+A+Attr`
@@ -186,7 +186,7 @@ LEXICON ÁRMMOGIS  Adjectives on -is, attribute same as pred. Odd-syllable compa
 
 LEXICON SÆHKÁLAK  Adjectives on -álak, attribute same as pred. Odd-syllable comparison. So far only for "sæhkálak".
 
-*sæhkálak # Even-syllable test examples:*
+* sæhkálak # Even-syllable test examples:*
 * *sæhkálak:* `sæhkálak+A+Sg+Nom`
 * *sähkálak:* `sæhkálak+A+Sg+Nom`
 * *sæhkálagáv:* `sæhkálak+A+Sg+Acc`
@@ -198,14 +198,14 @@ LEXICON SÆHKÁLAK  Adjectives on -álak, attribute same as pred. Odd-syllable c
 
 LEXICON ÅLLAGSJ_CMP_INFL  Adjectives on -asj, attribute same as pred.  No comparatives. 2 in Spiik. Sg Acc: ållagattjav, Attr: ållagasj.
 
-*belulasj # Even-syllable test examples:*
+* belulasj # Even-syllable test examples:*
 * *belulasj:* `belulasj+A+Sg+Nom`
 * *belulattjav:* `belulasj+A+Sg+Acc`
 * *belulasj:* `belulasj+A+Attr`
 
 LEXICON DÁRBULASJ_CMP_INFL  Adjectives on -asj, attribute same as pred. Odd-syllable comparison. Sg Acc: dárbulattjav, Attr: dárbulasj. Essive -attjan, -adtjan is subtaged. Err/Orth also -ahttja.  
 
-*dábálasj # Even-syllable test examples:*
+* dábálasj # Even-syllable test examples:*
 * *dábálasj:* `dábálasj+A+Sg+Nom`
 * *dábálattjav:* `dábálasj+A+Sg+Acc`
 * *dábálasj:* `dábálasj+A+Attr`
@@ -214,7 +214,7 @@ LEXICON DÁRBULASJ_CMP_INFL  Adjectives on -asj, attribute same as pred. Odd-syl
 
 LEXICON ASIDASJ_CMP_INFL  Adjectives on -asj, -is attr. Odd-syllable comparison. Sg Acc: asidattjav, Attr: asidis.
 
-*gågulasj # Even-syllable test examples:*
+* gågulasj # Even-syllable test examples:*
 * *gågulasj:* `gågulasj+A+Sg+Nom`
 * *gågulattjav:* `gågulasj+A+Sg+Acc`
 * *gågulis:* `gågulasj+A+Attr`
@@ -222,7 +222,7 @@ LEXICON ASIDASJ_CMP_INFL  Adjectives on -asj, -is attr. Odd-syllable comparison.
 
 LEXICON UDNODIBME  Adjectives on -dibme, attribute on -is. Odd-syllable comparison. Sg Acc: udnodimev, Attr: udnodis.
 
-*gælvodibme # Even-syllable test examples:*
+* gælvodibme # Even-syllable test examples:*
 * *gælvodibme:* `gælvodibme+A+Sg+Nom`
 * *gälvodibme:* `gælvodibme+A+Sg+Nom`
 * *gælvodimev:* `gælvodibme+A+Sg+Acc`
@@ -234,14 +234,14 @@ LEXICON UDNODIBME  Adjectives on -dibme, attribute on -is. Odd-syllable comparis
 
 LEXICON TJALMEDIBME   Like UDNODIBME but no comparatives. Sg Acc: tjalmedimev, Attr: tjalmedis.
 
-*huvsodibme # Even-syllable test examples:*
+* huvsodibme # Even-syllable test examples:*
 * *huvsodibme:* `huvsodibme+A+Sg+Nom`
 * *huvsodimev:* `huvsodibme+A+Sg+Acc`
 * *huvsodis:* `huvsodibme+A+Attr`
 
 LEXICON SUOLASIEHKE  -siehke. Sg Acc: suolasiegev, attr: suolasiek
 
-*hánessiehke # Even-syllable test examples:*
+* hánessiehke # Even-syllable test examples:*
 * *hánessiehke:* `hánessiehke+A+Sg+Nom`
 * *hánessiegev:* `hánessiehke+A+Sg+Acc`
 * *hánessiek:* `hánessiehke+A+Attr`
@@ -251,7 +251,7 @@ LEXICON SUOLASIEHKE  -siehke. Sg Acc: suolasiegev, attr: suolasiek
 
 LEXICON TJIEGOS  Attr same as pred. For adjectives with -e in second syllable e>á: divtes>diktásav in StrG. As a. in Spiik.  Sg Acc: tjiehkusav, Attr: tjiegos. Consonant gradation. 
 
-*hánes # Odd-syllable test examples:*
+* hánes # Odd-syllable test examples:*
 * *måskas:* `måskas+A+Sg+Nom`
 * *moasskasav:* `måskas+A+Sg+Acc`
 * *måskas:* `måskas+A+Attr`
@@ -263,7 +263,7 @@ LEXICON TJIEGOS  Attr same as pred. For adjectives with -e in second syllable e>
 
 LEXICON LINES  Attr ending on -a. Adjektives ending on -es. Does same as TJIEGOS, but with attr -a.   As g. in Spiik.  lines, Sg Acc: lidnásav, attr: lidna. Consonant gradation.
 
-*lines # Odd-syllable test examples:*
+* lines # Odd-syllable test examples:*
 * *lines:* `lines+A+Sg+Nom`
 * *lidnásav:* `lines+A+Sg+Acc`
 * *lidna:* `lines+A+Attr`
@@ -271,7 +271,7 @@ LEXICON LINES  Attr ending on -a. Adjektives ending on -es. Does same as TJIEGOS
 
 LEXICON GALMAS   Attr ending on -a or -å. Adjectives on -as, ås- and ás. As e. in Spiik. Sg Acc: galmmasav, attr: galmma, Consonant gradation.
 
-*njuoskas # Odd-syllable test examples:*
+* njuoskas # Odd-syllable test examples:*
 * *njuoskas:* `njuoskas+A+Sg+Nom`
 * *njuosskasav:* `njuoskas+A+Sg+Acc`
 * *njuosska:* `njuoskas+A+Attr`
@@ -279,7 +279,7 @@ LEXICON GALMAS   Attr ending on -a or -å. Adjectives on -as, ås- and ás. As e
 
 LEXICON OAMES  Attr ending on -e. Adjectives on -es with attribute -e. As g2. in Spiik. Sg Acc: oabmásav, Attr: oabme. Consonant gradation.
 
-*goastes # Odd-syllable test examples:*
+* goastes # Odd-syllable test examples:*
 * *goastes:* `goastes+A+Sg+Nom`
 * *goasstásav:* `goastes+A+Sg+Acc`
 * *goasste:* `goastes+A+Attr`
@@ -287,7 +287,7 @@ LEXICON OAMES  Attr ending on -e. Adjectives on -es with attribute -e. As g2. in
 
 LEXICON SUOHKAT  Attr III -is, not suohkkadis but SUOHKKIS. With CG to attr, not from nom to Acc. Same as JALGGAT only with this CG. SUOHKKIS. Without CG between nom and acc. Adjectives on -at and -åt, with attribute III -is. As f. in Spiik. Sg Acc: suohkadav, attr: suohkkis,
 
-*rávvat # Odd-syllable test examples:*
+* rávvat # Odd-syllable test examples:*
 * *rávvat:* `rávvat+A+Sg+Nom`
 * *rávvadav:* `rávvat+A+Sg+Acc`
 * *rávvis:* `rávvat+A+Attr`
@@ -295,7 +295,7 @@ LEXICON SUOHKAT  Attr III -is, not suohkkadis but SUOHKKIS. With CG to attr, not
 
 LEXICON MÅJDÅS  Adjectives with no attr. With CG. Sg Acc: måjddåsav. If there is an attribute that dosn't fit to any lexicon it mus be hardcoded.
 
-*rávdes # Odd-syllable test examples:*
+* rávdes # Odd-syllable test examples:*
 * *rávdes:* `rávdes+A+Sg+Nom`
 * *rávddásav:* `rávdes+A+Sg+Acc`
 * *rávddásabbo:* `rávdes+A+Der/Comp+A+Sg+Nom`
@@ -306,7 +306,7 @@ LEXICON VIEKSES  Attr same as pred. Without CG, but With vowel changes.  Sg Acc:
 
 LEXICON ALEK  Attr same as pred. Without CG, without any vowel changes. Like TJIEGOS only without the CG an vowelchanges. 
 
-*purpur # Odd-syllable test examples:*
+* purpur # Odd-syllable test examples:*
 * *purpur:* `purpur+A+Sg+Nom`
 * *purpurav:* `purpur+A+Sg+Acc`
 * *purpur:* `purpur+A+Attr`
@@ -314,7 +314,7 @@ LEXICON ALEK  Attr same as pred. Without CG, without any vowel changes. Like TJI
 
 LEXICON BASSTEL   Attr ening on -is. Without CG. Adjs on -et, -l, -r, sm om -k, -sj with attr -is and no consonant gradation. As b. in Spiik. Sg Acc: basstelav, Attr: basstelis. Many of these entries might be instances of derivations, like belak, deblak, and maybe also basstel, bargán.
 
-*goavrret # Odd-syllable test examples:*
+* goavrret # Odd-syllable test examples:*
 * *goavrret:* `goavrret+A+Sg+Nom`
 * *goavrredav:* `goavrret+A+Sg+Acc`
 * *goavrredis:* `goavrret+A+Attr`
@@ -322,7 +322,7 @@ LEXICON BASSTEL   Attr ening on -is. Without CG. Adjs on -et, -l, -r, sm om -k, 
 
 LEXICON MUTTÁK  Two attr enings -is and same as pred. Without CG. Adjs on -ák/-ak/-ek, two attr: -is and same as pred. As c. in Spiik. Sg Acc: muttágav, Attr: muttágis and mutták. These seem to be instances of the adjectival -k derivation. Unclear whether such derivation have different attr forms or not, and thats maybe why some of these derivations are found in BASSTEL lexicon.
 
-*bárvak # Odd-syllable test examples:*
+* bárvak # Odd-syllable test examples:*
 * *bárvak:* `bárvak+A+Sg+Nom`
 * *bárvagav:* `bárvak+A+Sg+Acc`
 * *bárvak:* `bárvak+A+Attr`
@@ -331,7 +331,7 @@ LEXICON MUTTÁK  Two attr enings -is and same as pred. Without CG. Adjs on -ák/
 
 LEXICON JALGGAT  Attr III -is, not jalggadis but JALGGIS. Without CG.  Adjectives on -at, with attribute III -is. As f. in Spiik. Sg Acc: jalggadav, attr: jalggis,
 
-*russjkat # Odd-syllable test examples:*
+* russjkat # Odd-syllable test examples:*
 * *russjkat:* `russjkat+A+Sg+Nom`
 * *russjkadav:* `russjkat+A+Sg+Acc`
 * *russjkis:* `russjkat+A+Attr`
@@ -339,7 +339,7 @@ LEXICON JALGGAT  Attr III -is, not jalggadis but JALGGIS. Without CG.  Adjective
 
 LEXICON TJÅRGGÅT  Attr III -is, not tjårggådis but tjårggis. Without CG. Same as JALGGAT only for adjectives ending ot -åt. Adjectives on -åt, with attribute III -is. As f. in Spiik. Sg Acc: jalggadav, attr: jalggis,
 
-*russjkat # Odd-syllable test examples:*
+* russjkat # Odd-syllable test examples:*
 * *russjkat:* `russjkat+A+Sg+Nom`
 * *russjkadav:* `russjkat+A+Sg+Acc`
 * *russjkis:* `russjkat+A+Attr`
@@ -347,7 +347,7 @@ LEXICON TJÅRGGÅT  Attr III -is, not tjårggådis but tjårggis. Without CG. Sa
 
 LEXICON RIHTSOK  No attr, without CG and also without any vowelchanges. The lexicon gives no attribute, either because the adjective dosnºt have attr, because there is stemvowel change in attr that the lexicon canºt handle or because there are strange atrributes that donºt fit to any other lexicon (these attributes are hardcoded). Sg Acc: rihtsogav. 
 
-*rihtsok # Odd-syllable test examples:*
+* rihtsok # Odd-syllable test examples:*
 * *rihtsok:* `rihtsok+A+Sg+Nom`
 * *rihtsogav:* `rihtsok+A+Sg+Acc`
 * *rihtsogabbo:* `rihtsok+A+Der/Comp+A+Sg+Nom`
@@ -356,13 +356,13 @@ exception lexicons for odd-syll
 
 LEXICON IENNILS  no comparatives, attr same as pred.
 
-*ieŋŋils # Odd-syllable test examples:*
+* ieŋŋils # Odd-syllable test examples:*
 * *ieŋŋils:* `ieŋŋils+A+Sg+Nom`
 * *ieŋŋilsav:* `ieŋŋils+A+Sg+Acc`
 
 LEXICON RÁDAS   Presently only used for "rádas". This word has special consonant gradation d>dd. Attr same as pred. Sg Acc: ráddasav, Attr: rádas. Consonant gradation.
 
-*rádas # Odd-syllable test examples:*
+* rádas # Odd-syllable test examples:*
 * *rádas:* `rádas+A+Sg+Nom`
 * *ráddasav:* `rádas+A+Sg+Acc`
 * *rádas:* `rádas+A+Attr`
@@ -373,7 +373,7 @@ LEXICON LUOBES   Err/Orth lexicon! Does the same as TJIEGOS only e>a instead of 
 
 LEXICON LÅSSÅT  Two attr, two comp. As f3. in Spiik. So far the only word i this lexicon i "låssåt", because both låssis and låsså are attr and comparative is both låsep(hybrid?) and låssådabbo.
 
-*låssåt # Odd-syllable test examples:*
+* låssåt # Odd-syllable test examples:*
 * *låssåt:* `låssåt+A+Sg+Nom`
 * *låssådav:* `låssåt+A+Sg+Acc`
 * *låssis:* `låssåt+A+Attr`
@@ -383,7 +383,7 @@ LEXICON LÅSSÅT  Two attr, two comp. As f3. in Spiik. So far the only word i th
 
 LEXICON STUORAK   Only for stuorak. It hase two attributes. Has even-syllable comparison: stuoráp and stuorámus.Sg Acc: stuoragav, attr: stuor and stuorra. This might be a -k derivation of adjective stuorre attr stuor(ra). The comparison is thus based on the original adjective and thus it naturally is an even syll comparison.
 
-*stuorak # Odd-syllable test examples:*
+* stuorak # Odd-syllable test examples:*
 * *stuorak:* `stuorak+A+Sg+Nom`
 * *stuoragav:* `stuorak+A+Sg+Acc`
 * *stuorra:* `stuorak+A+Attr`
@@ -392,7 +392,7 @@ LEXICON STUORAK   Only for stuorak. It hase two attributes. Has even-syllable co
 
 LEXICON ALLAK  Adjs on -ak, attr.on -a. Have both gasep/gaggagabbo and alep/allagabbo as comparatives. As d. in Spiik. So far only the adjectives "allak" and "gassak" go to this lexicon.
 
-*gassak # Odd-syllable test examples:*
+* gassak # Odd-syllable test examples:*
 * *gassak:* `gassak+A+Sg+Nom`
 * *gassagav:* `gassak+A+Sg+Acc`
 * *gassa:* `gassak+A+Attr`
@@ -401,7 +401,7 @@ LEXICON ALLAK  Adjs on -ak, attr.on -a. Have both gasep/gaggagabbo and alep/alla
 
 LEXICON GÅBDDÅK   Adjs on -åk, attr. on -å. Has even-syllable comparison: gåbdep and gåbdemus. So far "gåbddåk" is the only word in this lexicon. As d2. in Spiik. Sg Acc: gåbddågav, Attr: gåbddå.
 
-*gåbddåk # Odd-syllable test examples:*
+* gåbddåk # Odd-syllable test examples:*
 * *gåbddåk:* `gåbddåk+A+Sg+Nom`
 * *gåbddågav:* `gåbddåk+A+Sg+Acc`
 * *gåbddå:* `gåbddåk+A+Attr`
@@ -411,7 +411,7 @@ Inherent comparatives and superlatives
 
 LEXICON NUORTTALABBO    Inherent comparatives, gives both comp and superl. Most of the words are the compared forms of -el(a) words, like nuorttal, lullel.
 
-*guddnelabbo # Even-syllable test examples:*
+* guddnelabbo # Even-syllable test examples:*
 * *guddnelabbo:* `guddnelabbo+A+Gram/Comp+Sg+Nom`
 * *guddnelamos:* `guddnelabbo+A+Der/Superl+A+Sg+Nom`
 * *guddnelap:* `guddnelabbo+A+Gram/Comp+Attr`
@@ -419,14 +419,14 @@ LEXICON NUORTTALABBO    Inherent comparatives, gives both comp and superl. Most 
 
 LEXICON GASSKALAMOS    Inherent superlatives, gives onlys superl. Words that are lexicalized in their superlative forms. 
 
-*ájtodamos # Even-syllable test examples:*
+* ájtodamos # Even-syllable test examples:*
 * *ájtodamos:* `ájtodamos+A+Gram/Superl+Sg+Nom`
 
 ## Contracted stems
 
 LEXICON SÁDNES   Attr same as pred. Sg Acc: sáddnáv, Attr: sádnes.
 
-*hávres # Contracted test examples:*
+* hávres # Contracted test examples:*
 * *hávres:* `hávres+A+Sg+Nom`
 * *hávrráv:* `hávres+A+Sg+Acc`
 * *hávres:* `hávres+A+Attr`
@@ -434,7 +434,7 @@ LEXICON SÁDNES   Attr same as pred. Sg Acc: sáddnáv, Attr: sádnes.
 
 LEXICON GOAVSOS   Attr same as pred. Sg Acc: goaksuv, Attr: goavsos.(goavsos is so far the only word in this lexicon)
 
-*goavsos # Contracted test examples:*
+* goavsos # Contracted test examples:*
 * *goavsos:* `goavsos+A+Sg+Nom`
 * *goaksuv:* `goavsos+A+Sg+Acc`
 * *goaksusav:* `goavsos+A+Sg+Acc` (Eng. # From lexicon TJIEGOS)
@@ -444,7 +444,7 @@ LEXICON GOAVSOS   Attr same as pred. Sg Acc: goaksuv, Attr: goavsos.(goavsos is 
 
 LEXICON SUVRES   Sg Acc: suvrráv, Attr: suvra.
 
-*suvres # Contracted test examples:*
+* suvres # Contracted test examples:*
 * *suvres:* `suvres+A+Sg+Nom`
 * *suvrráv:* `suvres+A+Sg+Acc`
 * *suvrrásav:* `suvres+A+Sg+Acc` (Eng. # From lexicon SJÆVNNJAT)
