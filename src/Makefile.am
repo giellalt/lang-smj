@@ -182,8 +182,7 @@ analyser-tts-gt-output.tmp1.%: fst/lexicon.% \
 					filters/remove-norm-comp-tags.%           \
 					filters/remove-use_mt-strings.%           \
 					filters/remove-DNorm-tags.%               \
-					filters/remove-usage-tags.%               \
-					filters/backtrack-on-hyphens.%
+					filters/remove-usage-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/remove-usage-tags.$*\"               \
 			.o. @\"filters/remove-derivation-position-tags.$*\" \
@@ -191,7 +190,6 @@ analyser-tts-gt-output.tmp1.%: fst/lexicon.% \
 			.o. @\"filters/remove-DNorm-tags.$*\"               \
 			.o. @\"filters/remove-use_mt-strings.$*\"           \
 			.o. @\"$<\"                                         \
-			.o. @\"filters/backtrack-on-hyphens.$*\"            \
 			;\n\
 		 twosided flag-diacritics\n\
 		 save stack $@\n\
@@ -287,14 +285,12 @@ analyser-tts-gt-input.%: analyser-tts-gt-input.tmp.%          \
 					filters/remove-hyphenation-marks.%        \
 					filters/remove-infl_deriv-borders.%       \
 					filters/remove-word-boundary.%            \
-					filters/backtrack-on-hyphens.%            \
 					orthography/inituppercase.compose.%       \
 					orthography/spellrelax.compose.%          \
 					$(GLT_DOWNCASE_FILTER)
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-			    @\"$<\" \
-			    $(GLT_DOWNCASE_COMPOSE) \
-			.o. @\"filters/backtrack-on-hyphens.$*\"            \
+				@\"$<\" \
+				$(GLT_DOWNCASE_COMPOSE) \
 			.o. @\"filters/remove-hyphenation-marks.$*\"        \
 			.o. @\"filters/remove-infl_deriv-borders.$*\"       \
 			.o. @\"filters/remove-word-boundary.$*\"            \
