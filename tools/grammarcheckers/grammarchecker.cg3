@@ -1633,7 +1633,6 @@ COPY:msyn-soajttá-adv ("ihkap" Adv &SUGGEST ) EXCEPT ("soajttet" V IV Ind Prs S
 ADD:msyn-soajttá-le (&msyn-soajttá-le) TARGET ("liehket" V IV Ind Prs Sg3) OR ("liehket" V IV Ind Prs Pl3 ) IF (1 ("soajttet" V IV Ind Prs Sg3)) (*2 Inf OR PrfPrc BARRIER NOT-ADV-PCLE - ( A Sg Nom) - (N Ine) - (N Ill) - ( N Ela)) ;
 
     ## Dajn gielajn gånnå le riek friddja báhkogárges le soajttá vehik gássjel mierredit mij le vuodobáhkogárges.
-    ## Dajn gielajn gånnå le riek friddja báhkogárges le soajttá vehik gássjel mierredit mij le vuodobáhkogárges. #NEW INGA
 
     #le after soajttá
 ADD:msyn-soajttá-le (&msyn-soajttá-le) TARGET ("liehket" V IV Ind Prs Sg3) OR ("liehket" V IV Ind Prs Pl3 ) IF (-1 ("soajttet" V IV Ind Prs Sg3)) (*1 Inf OR PrfPrc BARRIER NOT-ADV-PCLE - ( A Sg Nom) - (N Ine) - (N Ill) - ( N Ela)) ;
@@ -1932,7 +1931,7 @@ ADD:msyn-mij-gut (&msyn-mij-gut) TARGET ("mij") IF (*-1 (N Coll) OR (Sem/Hum) OR
     #$  Sij galggi oahpástuvvat fágajn dan láhkáj vaj oadtju mielav bargatjit vijdábut ienemus abstrákta åsijn matematihkan, dajna mij ij njuolgga tjanáduvá iellemij skåvlå ålggolin.
 	#$ Ij la våjn ávkke, jus dagu ”dålusj ájgge-luodjomav” biebbmagoahtep, valla ulmme mijá siebrudahkabargoj viertti farra årrot, bajás låggñit davva mij duodalattjat la buorren åvddåla årrum. 
     #$ Ja duohta le, miján li moadda buorre ja hávsskes oase, man nali lulujma tsieggigoahtet, davva majt lidjiv dánna sihtat gåhttjot ”sáme vuodovuojnnon”.
-    #$ Sámedigge ij nagá Rádedusáv jåhtuj oadtjot, biednigijt juollodittjat dajda dárbojda ma duodalattjat li sáme siebrudagán NEW DNW
+    #$ Sámedigge ij nagá Rádedusáv jåhtuj oadtjot, biednigijt juollodittjat dajda dárbojda ma duodalattjat li sáme siebrudagán
     #$ Dát le ienemusát tjasskam dajt vantsajt ma lahka merragáttijn ja vuonajn li guollim, valla dát le vájkkudam juohkkahattjaj guhti nuores le iellemlájbev viedtjam, vájku dal man ålov li guolástussaj tjanáduvvam.  DNW NEW
     ## Dån le akta sijájs guhti le vuorbeduvvam. DNW NEW
     ## Javllá Adrian Nystø Mikkelsen akta studentajs gut uddni álggin bacheloråhpadussaj julevsámegielan. NEW DNW
@@ -1948,9 +1947,9 @@ ADD:msyn-mij-gut (&msyn-mij-gut) TARGET ("mij") IF (*-1 (N Coll) OR (Sem/Hum) OR
 
 	# interrogative use
 
-ADD:msyn-mij-gut (&msyn-mij-gut) TARGET ("mij" Nom) IF (*1 COPULAS BARRIER NOT-ADV-PCLE LINK *1 Sem/Hum + N BARRIER NOT-NPMOD) ;
+ADD:msyn-mij-gut (&msyn-mij-gut) TARGET ("mij" Nom) IF (*1 COPULAS BARRIER NOT-ADV-PCLE LINK *1 Sem/Hum + N BARRIER NOT-NPMOD LINK NEGATE 0 Gen OR Attr LINK 1 N) ;
     ## lij dålåv dahkamin mij lij muv ráddna. Subj-interr-hum COPULA Spred-Hum
-
+    #$ Sámedigge ij nagá Rádedusáv jåhtuj oadtjot, biednigijt juollodittjat dajda dárbojda ma duodalattjat li sáme siebrudagán
 COPY:msyn-mij-gut ("guhti" &SUGGEST) EXCEPT ("mij" &msyn-mij-gut) TARGET (&msyn-mij-gut) ;
 
     ## Åja, ma fáŋŋgaj lidjin váldedum? válldet fáŋŋgaj + OBJ-Hum
@@ -2106,7 +2105,7 @@ COPY:real-ActioGen-PrtPl1 (Ind Prt Pl1 &SUGGEST) EXCEPT (Actio Gen) TARGET (&rea
     # left subj
 SET PLURAL-QUANTIFIERS = ("moadda" Nom) OR ("moattes" Nom) OR (Num Sg Nom) - ("akta") ;
 
-ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-V + Gram/3syll OR ( "liehket" )  IF (0 (Prs Pl3)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) - PLURAL-QUANTIFIERS BARRIER NOT-ADV-PCLE LINK NOT 0 (Pl Nom) LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg) OR (Nom Pl))  (NEGATE *1 (Pron Nom Pl3) OR (N Nom Pl))(NEGATE 0 (Prs Sg3)) ;
+ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-V + Gram/3syll OR ( "liehket" )  IF (0 (Prs Pl3)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) - PLURAL-QUANTIFIERS BARRIER NOT-ADV-PCLE LINK NOT 0 (Pl Nom) LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg) OR (Nom Pl))  (NEGATE *1 (Pron Nom Pl3) OR (N Nom Pl) BARRIER S-BOUNDARY)(NEGATE 0 (Prs Sg3)) ;
 
     ## Suv mielas sån li ilá materalistisk.
     ## Mij juo diehtep Hamsun nasistajt bælosti nuppát værálda doaron.
@@ -2115,10 +2114,7 @@ ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-V + Gram/3syll OR ( "lieh
     #$ Ulmutja vuosedi son boahtá odne.
     #$ Fáhkaulmutja ja bulkke li oassálasstám ájnas jienaj diedádusán.
     #$ Sån aj vuosedij dajda guhti hæhttuji niedastuvvat, ja moattes li aj ájteklándas vuojeduvvam
-
-ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-V + Gram/3syll OR ( "liehket" )  IF (0 (Prs Pl3)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) - PLURAL-QUANTIFIERS BARRIER NOT-ADV-PCLE LINK NOT 0 (Pl Nom) LINK *-1 ("jus") BARRIER NOT-NPMOD) ; 
-
-    ## Jus sámegiella {li} ienep vuojnnuj boahtet duola dagu mediagåvån, de jáhkáv sámegiela stáhtus li dalága lassánit. NEW Doajmmá, valla lej dát sluogas vuohke?
+    ## Jus sámegiella li ienep vuojnnuj boahtet duola dagu mediagåvån, de jáhkáv sámegiela stáhtus li dalága lassánit. NEW Doajmmá, valla lej dát sluogas vuohke?
     
     # right subj
 
