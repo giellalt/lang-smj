@@ -97,7 +97,8 @@ analyser-raw-gt-desc.xfst: analyser-raw-gt-desc.tmp.xfst \
 analyser-raw-gt-desc.foma: analyser-raw-gt-desc.tmp.foma \
 					 filters/convert-æae-to-area-variant.foma \
 					 filters/insert-area-tags.foma
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex            \
+	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon OFF\n\
+			read regex            \
 				@\"$<\"                               \
 			.o. @\"filters/convert-æae-to-area-variant.foma\" \
 			;\n\
@@ -116,7 +117,8 @@ if WITH_OFST_TROPICAL
 generator-raw-gt-desc.hfst: generator-raw-gt-desc.tmp.hfst \
 					 filters/convert-æae-to-area-variant.hfst \
 					 filters/insert-area-tags.hfst
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex            \
+	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon OFF\n\
+			read regex            \
 				@\"$<\"                               \
 			.o. @\"filters/convert-æae-to-area-variant.hfst\" \
 			;\n\
@@ -145,7 +147,8 @@ else !WITH_OFST_TROPICAL
 generator-raw-gt-desc.hfst: generator-raw-gt-desc.tmp.hfst \
 					 filters/convert-æae-to-area-variant.hfst \
 					 filters/insert-area-tags.hfst
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex            \
+	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon OFF\n\
+			read regex            \
 				@\"$<\"                               \
 			.o. @\"filters/convert-æae-to-area-variant.hfst\" \
 			;\n\
@@ -198,7 +201,8 @@ analyser-tts-gt-output.tmp1.%: fst/lexicon.% \
 analyser-tts-gt-output.tmp.hfst: analyser-tts-gt-output.tmp1.hfst \
 					 filters/insert-æae-area-flags.hfst \
 					 filters/insert-area-tags.hfst
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex            \
+	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon OFF\n\
+			read regex            \
 				@\"$<\"                               \
 			.o. @\"filters/insert-æae-area-flags.hfst\" \
 			;\n\
@@ -263,7 +267,8 @@ endif # WANT_REVERSED_INTERSECT
 analyser-tts-gt-input.tmp.hfst: analyser-tts-gt-input.tmp1.hfst \
 					 filters/convert-æae-to-area-variant.hfst \
 					 filters/insert-area-tags.hfst
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex            \
+	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon OFF\n\
+			read regex            \
 				@\"$<\"                               \
 			.o. @\"filters/convert-æae-to-area-variant.hfst\" \
 			;\n\
