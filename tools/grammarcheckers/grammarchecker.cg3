@@ -1518,7 +1518,6 @@ LIST &msyn-numeral-parcasecongr = &msyn-numeral-parcasecongr ;
 LIST &msyn-numerals-with-demopron = &msyn-numerals-with-demopron ;
 LIST &msyn-pass-active = &msyn-pass-active ;
 LIST &msyn-pred-attr = &msyn-pred-attr ;
-LIST &msyn-sentence-init-copula = &msyn-sentence-init-copula ;
 LIST &msyn-sme_bastard_neg = &msyn-sme_bastard_neg ;
 LIST &msyn-sme_bastard_neg2 = &msyn-sme_bastard_neg2 ;
 LIST &msyn-soajttá-AUX = &msyn-soajttá-AUX ;
@@ -1544,6 +1543,8 @@ LIST &real-negSg3-negSg2 = &real-negSg3-negSg2 ;
 
 LIST &syn-number_congruence-subj-verb = &syn-number_congruence-subj-verb ;
 LIST &syn-subj-before-neg = &syn-subj-before-neg ;
+LIST &syn-from-sentence-init-copula = &syn-from-sentence-init-copula ;
+LIST &syn-to-sentence-init-copula = &syn-to-sentence-init-copula ;
 
 SET &real = &real-ActioGen-PrtPl1 OR &real-PrsPl3-PrtSg3 OR &real-PrsSg2-PrsSg3 OR &real-PrtSg2-PrtSg3 OR &real-negSg3-negSg2 ; 
 
@@ -2251,17 +2252,27 @@ MOVE:syn-subj-before-neg &syn-subj-before-neg AFTER (*1 (N Nom) OR (Pron Nom) BA
 
 SET v = v1 OR v2 OR v3  ;
 
-	# li not le
-	# ---------
+	# Correct copula form, not congruence
+	# --------------
 	
-ADD:sentence-init-copula (&msyn-sentence-init-copula) TARGET Gram/SentInit IF (NEGATE -1 BOS);
+	# Should not be sentence initial copula: from le, to la or l
+ADD:from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET Gram/SentInit IF (NEGATE -1 BOS);
 	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
+	## Såj læbá boahtám sijddaj
 	
-COPY:sentence-init-copula (Clt &SUGGEST) EXCEPT (Gram/SentInit v2 &msyn-sentence-init-copula) TARGET &msyn-sentence-init-copula IF (-1 ("<.*[aeiouáå]>"r));
+COPY:from-sentence-init-copula (Clt &SUGGEST) EXCEPT (Gram/SentInit &syn-from-sentence-init-copula) TARGET &syn-from-sentence-init-copula IF (-1 ("<.*[aeiouáå]>"r));
+    ## Áddjá {le} vuoras >l
 
-COPY:sentence-init-copula (v1 &SUGGEST) EXCEPT (Gram/SentInit &msyn-sentence-init-copula) TARGET &msyn-sentence-init-copula IF (NEGATE -1 ("<.*[aeiouáå]>"r));
-	## Árvustallam viertti dáhpáduvvat dajna elementajn manna le sæmmi lágásj dåbddomærkka ja mij {le} lagámus, ij dåhkki dåbddomerkajt árvustallat ietjá elementajn jus gávnnu elemænnta manna le sæmmi lágásj dåbddomerka lagábun. 
+COPY:from-sentence-init-copula (&syn-from-sentence-init-copula &SUGGEST) EXCEPT (Gram/SentInit &syn-from-sentence-init-copula) TARGET &syn-from-sentence-init-copula IF (NEGATE -1 ("<.*[aeiouáå]>"r));
+	## Árvustallam viertti dáhpáduvvat dajna elementajn manna le sæmmi lágásj dåbddomærkka ja mij {le} lagámus, ij dåhkki dåbddomerkajt árvustallat ietjá elementajn jus gávnnu elemænnta manna le sæmmi lágásj dåbddomerka lagábun. >l a
 	
+    # Should be sentence initial copula: from la to le. 
+ADD:to-sentence-init-copula (&syn-to-sentence-init-copula) TARGET ("liehket") IF (-1 BOS LINK NEGATE 1 Gram/SentInit) ;
+
+COPY:to-sentence-init-copula (&syn-to-sentence-init-copula &SUGGEST) EXCEPT (Gram/SentInit &syn-to-sentence-init-copula) TARGET (&syn-to-sentence-init-copula) ;
+
+
+	# la to l after vowel
 ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" v1) IF (-1 ("<.*[aeiouáå]>"r));
 	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
 
