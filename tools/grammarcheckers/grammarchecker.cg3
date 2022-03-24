@@ -2269,7 +2269,7 @@ COPY:from-sentence-init-copula (&syn-from-sentence-init-copula &SUGGEST) EXCEPT 
     # Should be sentence initial copula: from la to le. 
 ADD:to-sentence-init-copula (&syn-to-sentence-init-copula) TARGET ("liehket") IF (-1 BOS LINK NEGATE 1 Gram/SentInit) ;
 
-COPY:to-sentence-init-copula (&syn-to-sentence-init-copula &SUGGEST) EXCEPT (Gram/SentInit &syn-to-sentence-init-copula) TARGET (&syn-to-sentence-init-copula) ;
+COPY:to-sentence-init-copula (Gram/SentInit &SUGGEST) EXCEPT (&syn-to-sentence-init-copula) TARGET (&syn-to-sentence-init-copula) ;
 
 
 	# la to l after vowel
