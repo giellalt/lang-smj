@@ -208,8 +208,10 @@ analyser-tts-gt-output.tmp.hfst: analyser-tts-gt-output.tmp1.hfst \
 				@\"$<\"                               \
 			.o. @\"filters/insert-æae-area-flags.hfst\" \
 			;\n\
+		 set flag-is-epsilon ON\n\
 		 twosided flag-diacritics\n\
 		 define lexicon\n\
+		 set flag-is-epsilon OFF\n\
 		 read regex      \
 				@\"filters/insert-area-tags.hfst\" \
 			.o. lexicon                     \
