@@ -198,6 +198,8 @@ analyser-tts-gt-output.tmp1.%: fst/lexicon.% \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
+# In the second part of the first step, we add flags and tags for æ variation.
+# The output of this is also used as base for the input analyser.
 analyser-tts-gt-output.tmp.hfst: analyser-tts-gt-output.tmp1.hfst \
 					 filters/insert-æae-area-flags.hfst \
 					 filters/insert-area-tags.hfst
