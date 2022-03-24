@@ -33,4 +33,4 @@ XFAIL_TESTS=test_pure_date_time.normaliser.txt \
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.in *.out *.out.tmp *.expect
+	-rm -f Makefile.in *.out *.out.tmp *.expect
