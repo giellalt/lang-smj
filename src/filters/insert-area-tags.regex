@@ -15,17 +15,19 @@
 # This filter inserts Area tags based on the presense of flag diacritics, which reflects surface æ or ä:
 
 [
-  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+N"      <- "+N"      || _ \[ "+N"      ]* [ "@U.Area.NO@" | "@U.Area.SE@" ] , [ "@U.Area.NO@" | "@U.Area.SE@" ] \[ "+N"      ]* _ ,,
-  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+A"      <- "+A"      || _ \[ "+A"      ]* [ "@U.Area.NO@" | "@U.Area.SE@" ] , [ "@U.Area.NO@" | "@U.Area.SE@" ] \[ "+A"      ]* _ ,,
-  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+V"      <- "+V"      || _ \[ "+V"      ]* [ "@U.Area.NO@" | "@U.Area.SE@" ] , [ "@U.Area.NO@" | "@U.Area.SE@" ] \[ "+V"      ]* _ ,,
-  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+Adv"    <- "+Adv"    || _ \[ "+Adv"    ]* [ "@U.Area.NO@" | "@U.Area.SE@" ] , [ "@U.Area.NO@" | "@U.Area.SE@" ] \[ "+Adv"    ]* _ ,,
-  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+Pron"   <- "+Pron"   || _ \[ "+Pron"   ]* [ "@U.Area.NO@" | "@U.Area.SE@" ] , [ "@U.Area.NO@" | "@U.Area.SE@" ] \[ "+Pron"   ]* _ ,,
-  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+CS"     <- "+CS"     || _ \[ "+CS"     ]* [ "@U.Area.NO@" | "@U.Area.SE@" ] , [ "@U.Area.NO@" | "@U.Area.SE@" ] \[ "+CS"     ]* _ ,,
-  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+CC"     <- "+CC"     || _ \[ "+CC"     ]* [ "@U.Area.NO@" | "@U.Area.SE@" ] , [ "@U.Area.NO@" | "@U.Area.SE@" ] \[ "+CC"     ]* _ ,,
-  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+Adp"    <- "+Adp"    || _ \[ "+Adp"    ]* [ "@U.Area.NO@" | "@U.Area.SE@" ] , [ "@U.Area.NO@" | "@U.Area.SE@" ] \[ "+Adp"    ]* _ ,,
-  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+Po"     <- "+Po"     || _ \[ "+Po"     ]* [ "@U.Area.NO@" | "@U.Area.SE@" ] , [ "@U.Area.NO@" | "@U.Area.SE@" ] \[ "+Po"     ]* _ ,,
-  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+Pr"     <- "+Pr"     || _ \[ "+Pr"     ]* [ "@U.Area.NO@" | "@U.Area.SE@" ] , [ "@U.Area.NO@" | "@U.Area.SE@" ] \[ "+Pr"     ]* _ ,,
-  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+Interj" <- "+Interj" || _ \[ "+Interj" ]* [ "@U.Area.NO@" | "@U.Area.SE@" ] , [ "@U.Area.NO@" | "@U.Area.SE@" ] \[ "+Interj" ]* _ ,,
-  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+Pcle"   <- "+Pcle"   || _ \[ "+Pcle"   ]* [ "@U.Area.NO@" | "@U.Area.SE@" ] , [ "@U.Area.NO@" | "@U.Area.SE@" ] \[ "+Pcle"   ]* _ ,,
-  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+Num"    <- "+Num"    || _ \[ "+Num"    ]* [ "@U.Area.NO@" | "@U.Area.SE@" ] , [ "@U.Area.NO@" | "@U.Area.SE@" ] \[ "+Num"    ]* _
+  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+N"      <- "+N"      ,
+  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+A"      <- "+A"      ,
+  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+V"      <- "+V"      ,
+  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+Adv"    <- "+Adv"    ,
+  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+Pron"   <- "+Pron"   ,
+  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+CS"     <- "+CS"     ,
+  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+CC"     <- "+CC"     ,
+  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+Adp"    <- "+Adp"    ,
+  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+Po"     <- "+Po"     ,
+  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+Pr"     <- "+Pr"     ,
+  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+Interj" <- "+Interj" ,
+  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+Pcle"   <- "+Pcle"   ,
+  [ "+Area/SE" "@U.Area.SE@" | "+Area/NO" "@U.Area.NO@" ] "+Num"    <- "+Num"    ||
+    _                              \[ "+N" |  "+A" | "+V" | "+Adv" | "+Pron" | "+CS" | "+CC" | "+Adp" | "+Po" | "+Pr" | "+Interj" | "+Pcle" | "+Num" ]* [ "@U.Area.NO@" | "@U.Area.SE@" ] ,
+ [ "@U.Area.NO@" | "@U.Area.SE@" ] \[ "+N" |  "+A" | "+V" | "+Adv" | "+Pron" | "+CS" | "+CC" | "+Adp" | "+Po" | "+Pr" | "+Interj" | "+Pcle" | "+Num" ]* _ 
 ] ;
