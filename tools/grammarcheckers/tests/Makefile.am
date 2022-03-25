@@ -32,16 +32,16 @@ XFAIL_TESTS=\
 	lex-oahpasmuvvat-oahpastuvvat.yaml \
 	msyn-congr-mij-ma.yaml  \
 	msyn-congr.yaml         \
+	msyn-genna-gejn.yaml \
 	msyn-lulujin.yaml \
 	msyn-pred-attr.yaml \
 	msyn-sme_bastard_neg1-2.yaml \
-	msyn-genna-gejn.yaml \
 	real-NegSg3-NegSg2.yaml \
 	real-PrsPl3-PrsSg3.yaml \
 	real-PrsSg2-PrsSg3.yaml \
 	real-PrtSg3-PrsPl3.yaml \
-    msyn-liehket-congr-condsg2-condsg3.yaml \
     msyn-liehket-congr-condsg2-condpl3.yaml \
+    msyn-liehket-congr-condsg2-condsg3.yaml \
     msyn-numeral-attr.yaml \
     msyn-soajtta.yaml 
 
