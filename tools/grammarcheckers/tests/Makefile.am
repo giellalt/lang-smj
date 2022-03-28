@@ -13,8 +13,8 @@ TESTS=\
 	msyn-congr-mij-ma.yaml \
 	msyn-congr.yaml \
 	msyn-genna-gejn.yaml \
-	msyn-gut-mij-gut.yaml
-	msyn-iesj-ietja.yaml
+	msyn-gut-mij-gut.yaml \
+	msyn-iesj-ietja.yaml \
 	msyn-liehket-congr-condsg2-condsg3.yaml \
 	msyn-liehket-congr-condsg2-condpl3.yaml \
 	msyn-lulujin.yaml \
