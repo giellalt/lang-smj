@@ -34,10 +34,12 @@ TESTS=\
 # be fixed *later*, but is not critical at the moment:
 XFAIL_TESTS=\
 	lex-oahpasmuvvat-oahpastuvvat.yaml \
+	msyn-attr-pred.yaml \
 	msyn-congr-mij-ma.yaml  \
 	msyn-congr.yaml         \
 	msyn-genna-gejn.yaml \
 	msyn-gut-mij-gut.yaml \
+	msyn-iesj-ietja.yaml \
 	msyn-lulujin.yaml \
 	msyn-pred-attr.yaml \
 	msyn-sme_bastard_neg1-2.yaml \
@@ -48,7 +50,8 @@ XFAIL_TESTS=\
     msyn-liehket-congr-condsg2-condpl3.yaml \
     msyn-liehket-congr-condsg2-condsg3.yaml \
     msyn-numeral-attr.yaml \
-    msyn-soajtta.yaml
+    msyn-soajtta.yaml \
+	syn-correct-form-liehket.yaml
 
 endif # WANT_GRAMCHECK
 
