@@ -2335,8 +2335,8 @@ COPY:syn-number_congruence-subj-verb (Sg1 &SUGGEST) EXCEPT Sg2 OR Sg3 OR Du1 OR 
 
 	# post subj
 
-ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg OR (V Ind Prt) - ConNeg OR (V Cond) OR (V Neg Ind) IF (*1 (Pron Pers Sg1 Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 @COMP-CS<)(NEGATE 0 Sg1 OR &real OR (N Sg) - Px OR Adv)(NEGATE *-1 (Pron Pers) - Sg1);
-	##
+ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg OR (V Ind Prt) - ConNeg OR (V Cond) OR (V Neg Ind) IF (*1 (Pron Pers Sg1 Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 @COMP-CS< LINK NEGATE *1 (V Sg1) BARRIER NOT-ADV)(NEGATE 0 Sg1 OR &real OR (N Sg) - Px OR Adv)(NEGATE *-1 (Pron Pers) - Sg1);
+	#$ Juska dáj gárgadisájn ij le ålgoldisargumænnta vuojnnusin, de låhkke huoman diehtá mån lav agænnta, gå dát boahtá åvddån verbas danen gå finihtta verba julevsámegielan lihtut subjevtajn.
 
 ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Neg Ind) IF (*1 (Pron Pers Sg1 Nom) BARRIER NOT-ADV-PCLE - ConNeg LINK NOT 0 @COMP-CS<)(NEGATE 0 Sg1 OR &real OR (N Sg) - Px OR Adv)(NEGATE *-1 (Pron Pers) - Sg1);
 	## Valla ij la mån moaren dan diehti!
@@ -2630,6 +2630,7 @@ ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V
 (NEGATE 0 <vdic> LINK *1 (Sem/Hum Nom Sg) BARRIER NOT-NPMODADV); #speaker of the indirect clause
 	#$ Generatijva grammatihkka le ådåstuhtedum moaddi 1950 lågo rájes, dallutjis gå Chomsky teorijav vuostasj bále åvddånbuvtij.
 	## Dádjadahtes dåbddomerka máhttá liehket árvodibme, ja dá vierttiji árvustaláduvvat.
+	## Jus paramehter ij tjielggasit åvdån boade, de máná {ij} nagá rievtes paramehterav oahppat. #INGA NEW
 	
 	## Sii boahtit skuvlii muitalit mo jienastit, ja váldin skoviid mielde go nuorat leat daid gárvásit deavdán.
 	#$ Go joatkkaoahpahusláhka biddjui doibmii 1.1.1976, de galge buot ovddeš gymnásat, fidnoskuvllat ja gávpeskuvllat {gohčoduvvot} joatkkaskuvlan.
@@ -2907,6 +2908,7 @@ COPY:syn-number_congruence-subj-verb (Ind Prs Pl3 &SUGGEST) EXCEPT (Imprt Sg1) O
 COPY:syn-number_congruence-subj-verb (Pl3 &SUGGEST) EXCEPT Sg1 OR Sg2 OR Sg3 OR Du1 OR Du2 OR Du3 OR Pl1 OR Pl2 OR (Sg3 Gram/SentInit) BEFORE v TARGET (V Ind Prs &syn-number_congruence-subj-verb)  OR (V Ind Prt &syn-number_congruence-subj-verb) OR (V Cond &syn-number_congruence-subj-verb) OR (V Neg Ind &syn-number_congruence-subj-verb) IF (*-1 (N Nom) - (Prop Sem/Org) - (Prop Sem/Obj) BARRIER NOT-ADV-PCLE LINK NOT 0 @COMP-CS< LINK -1 CC LINK -1 (N Nom) LINK *-1 BOS OR (":") OR (";") OR ("/") OR ("‹") OR ("–") OR COMMA OR CS OR (Adv Subqst) OR (Pron Rel Sg) OR (N Ess) OR (N Loc) OR @ADVL> BARRIER NOT-ADV-PCLE)(NEGATE 0 (Prt Sg2) OR Pl3 OR (Prs Pl1) OR &real)(NEGATE *-1 (V Pl3) BARRIER NOT-ADV-PCLE - ("go") - (Sg3 Nom) - (N Sg Nom));
 
 COPY:syn-number_congruence-subj-verb (Pl3 &SUGGEST) EXCEPT Sg1 OR Sg2 OR Sg3 OR Du1 OR Du2 OR Du3 OR Pl1 OR Pl2 BEFORE v TARGET (V Ind Prs &syn-number_congruence-subj-verb) OR (V Ind Prt &syn-number_congruence-subj-verb) OR (V Cond &syn-number_congruence-subj-verb) OR (V Neg Ind &syn-number_congruence-subj-verb) IF (*1 (Pron Sem/Hum Pers Pl3 Nom) OR (N Pl Nom) - (Prop Sem/Org) - (Prop Sem/Obj) OR (A Pl Nom @<SPRED) BARRIER NOT-NPMODADV  OR COMMA OR MO LINK NOT 0 @COMP-CS< OR (V &SUGGEST) OR Inf OR <spelled>)(*-1 BOS OR (":") OR (";") OR ("/") OR COMMA OR CS OR (Adv Subqst) OR (Pron Rel Sg) OR (N Ess) OR (N Loc) OR @ADVL> BARRIER NOT-ADV-PCLE - @ADVL>  - (N Prop Sg Nom) - @>N)(NEGATE 0 (Prt Sg2) OR Pl3 OR &real OR ("liehket" Inf) OR ("liehket" Prs Sg2) OR ("liehket" Prs Pl1) OR (N Sg) - Px OR (A Attr))(NEGATE 0 Du3 LINK *1 Sem/Human + Nom LINK *1 CC LINK *1 Sem/Human + Nom)(NEGATE 0 Du3 LINK *1 Sem/Human + (Pl Nom))(NEGATE 0 COPULAS + Du1 OR COPULAS + Du2 OR COPULAS + Pl1 OR COPULAS + Pl2 LINK *1 Sem/Human + (Pl Nom))(NEGATE 0 <TH-ahte> LINK 1 (N Pl Nom));
+	## Árvustallam viertti dáhpáduvvat dajna elementajn manna le sæmmi lágásj dåbddomærkka ja mij le lagámus, ij dåhkki dåbddomerkajt árvustallat ietjá elementajn jus gávnnu elemænnta manna le sæmmi lágásj dåbddomerka lagábun. #problems with this one
 
 COPY:syn-number_congruence-subj-verb (Pl3 &SUGGEST) EXCEPT Sg1 OR Sg2 OR Sg3 OR Du1 OR Du2 OR Du3 OR Pl1 OR Pl2 BEFORE v TARGET (V Ind Prs &syn-number_congruence-subj-verb)  OR (V Ind Prt &syn-number_congruence-subj-verb) OR (V Cond &syn-number_congruence-subj-verb) OR (V Neg Ind &syn-number_congruence-subj-verb) IF (1 Attr OR @>N LINK 1 (N Pl Nom) - (Prop Sem/Org) - (Prop Sem/Obj) OR (A Pl Nom @<SPRED) LINK NOT 0 @COMP-CS< OR (V &SUGGEST) OR Inf OR <spelled>)(*-1 BOS OR (":") OR (";") OR ("/") OR COMMA OR CS OR (Adv Subqst) OR (Pron Rel Sg) OR (N Ess) OR (N Loc) OR @ADVL> BARRIER NOT-ADV-PCLE - @ADVL>  - (N Prop Sg Nom) - @>N)(NEGATE 0 (Prt Sg2) OR Pl3 OR &real OR ("liehket" Inf) OR ("liehket" Prs Sg2) OR ("liehket" Prs Pl1) OR (N Sg) - Px OR (A Attr))(NEGATE 0 Du3 LINK *1 Sem/Human + Nom LINK *1 CC LINK *1 Sem/Human + Nom)(NEGATE 0 Du3 LINK *1 Sem/Human + (Pl Nom))(NEGATE 0 COPULAS + Du1 OR COPULAS + Du2 OR COPULAS + Pl1 OR COPULAS + Pl2 LINK *1 Sem/Human + (Pl Nom))(NEGATE 0 <TH-ahte> LINK 1 (N Pl Nom));
 
