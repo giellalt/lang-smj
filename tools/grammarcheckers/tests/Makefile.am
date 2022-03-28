@@ -48,7 +48,7 @@ XFAIL_TESTS=\
     msyn-liehket-congr-condsg2-condpl3.yaml \
     msyn-liehket-congr-condsg2-condsg3.yaml \
     msyn-numeral-attr.yaml \
-    msyn-soajtta.yaml 
+    msyn-soajtta.yaml
 
 endif # WANT_GRAMCHECK
 
