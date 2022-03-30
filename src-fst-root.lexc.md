@@ -243,6 +243,7 @@ Obligatory hyphen, not as badly weighed as +Cmp/Hyph
 ### Question and Focus particles:
 * +Qst
 * +Clt
+* +SentInit Sentence initial form of "liehket"
 * +Cltl
 * +Foc  These two are only found in SMJ - do we need them?
 * +Foc/ge
@@ -268,7 +269,7 @@ Obligatory hyphen, not as badly weighed as +Cmp/Hyph
 * **+Gram/TIAbbr**:  Both transitive and intransitive abbreviation
 * **+Gram/IAbbr**:  Intransitive abbreviation (it takes no argument)
 * **+Gram/3syll**:  trisyllabic verbs
-* **+Gram/SentInit**:  copula verb le-
+* **!+Gram/SentInit**:  copula verb le-, tag is replaced by +SentInit
 
 ## Semantic tags to help disambiguation & syntactic analysis
 
