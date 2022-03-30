@@ -637,10 +637,10 @@ LEXICON NOADE  Even stem without cg. OBS: No nouns with invisible 3>2 cg (as bus
 LEXICON KÁFFA  For even-syll words with cg cg III-I: káf'fa-káfav, jáf'fo-jáfo. No vowelchanges jet, need new twolc code.
 
 * káffa # Even-syllable test examples:*
-* *káffa:* `káffa+N+Sg+Nom`
-* *gáffa:* `káffa+N+Sg+Nom`
-* *gáfas:* `káffa+N+Sg+Ela`
-* *káfas:* `káffa+N+Sg+Ela`
+* *káffa:* `káffa+N+G3+Sg+Nom`
+* *gáffa:* `káffa+N+G3+Sg+Nom`
+* *gáfas:* `káffa+N+G3+Sg+Ela`
+* *káfas:* `káffa+N+G3+Sg+Ela`
 
 LEXICON LINNJA  Only for the loan word "linnja". Because it's a loan word, the "nnj" is pronounced "nn-j", and therefore does not behave as the regular lule sami "nj" sound and therefore it doesn't follow the rule that makes a:á in 1. grade with short vowel in first syllable (It isn't as linnja-linjáv or birás-birrasav). This word is therefore sub taged. Norwegian/Swedish words with a short "i" followed by two different consonants are assimilated to lule sami in different manners accoring to the consonants in question, but the word is always on grade III (Morén-Duolljá 2014). Both err/orth and correct form is part of this lexicon. 
 
@@ -671,10 +671,10 @@ LEXICON DARRHA  Only for "darrha" or compounds that end on "darrha".
 LEXICON GÁDDE  2 syllable stems with cg (note Q1) with comparatives
 
 * boassjo # Even-syllable test examples:*
-* *boassjo:* `boassjo+N+Sg+Nom`
-* *båssjujn:* `boassjo+N+Sg+Com`
-* *boassjojn:* `boassjo+N+Sg+Com`
-* *boassjop:* `boassjo+N+Der/Comp+A+Sg+Nom`
+* *boassjo:* `boassjo+N+G3+Sg+Nom`
+* *båssjujn:* `boassjo+N+G3+Sg+Com`
+* *boassjojn:* `boassjo+N+G3+Sg+Com`
+* *boassjop:* `boassjo+N+G3+Der/Comp+A+Sg+Nom`
 
 LEXICON SJIEVNNJET  Like GAHPER but with comparatives. Odd-syllable C-final noun without cg, no vowchange, no short Ess.
 
@@ -719,9 +719,9 @@ LEXICON ALLEGORIJJA_CMP_INFL  Recent loanwords ending on -i in NOR/SWE, with lon
 
 * partijja # Even-syllable test examples:*
 * *akademiddja:* `akademijja+N+Sg+Nom`
-* *akademijja:* `akademijja+N+Sg+Nom`
+* *akademijja:* `akademijja+N+G3+Sg+Nom`
 * *akademidjas:* `akademijja+N+Sg+Ela`
-* *akademijjas:* `akademijja+N+Sg+Ela`
+* *akademijjas:* `akademijja+N+G3+Sg+Ela`
 
 LEXICON TEKSTIJLLA_CMP_INFL  Recent loanwords on -ijlla with long and short compound-form. . Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
@@ -943,21 +943,21 @@ LEXICON KARAKTIERRA_CMP_INFL  Recent loanwords -on ierra in NOR, -erra in SWE, b
 LEXICON TABÆLLA_CMP_INFL  Recent loanwords on -älºla with long and short compound-form. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
 * flotælla # Even-syllable test examples:*
-* *flotælla:* `flotælla+N+Sg+Nom`
-* *flotälla:* `flotælla+N+Sg+Nom`
-* *flotellas:* `flotælla+N+Sg+Ela`
+* *flotælla:* `flotælla+N+G3+Sg+Nom`
+* *flotälla:* `flotælla+N+G3+Sg+Nom`
+* *flotellas:* `flotælla+N+G3+Sg+Ela`
 
 LEXICON TELEGRÁMMA_CMP_INFL  Recent loanwords on -ámºma with long and short compound-form
 
 * grámma # Even-syllable test examples:*
-* *grámma:* `grámma+N+Sg+Nom`
-* *grámmas:* `grámma+N+Sg+Ela`
+* *grámma:* `grámma+N+G3+Sg+Nom`
+* *grámmas:* `grámma+N+G3+Sg+Ela`
 
 LEXICON TOPOGRÁFFA_CMP_INFL  Recent loanwords on -áfºfa with long and short compound-form
 
 * telegráffa # Even-syllable test examples:*
-* *telegráffa:* `telegráffa+N+Sg+Nom`
-* *telegráffas:* `telegráffa+N+Sg+Ela`
+* *telegráffa:* `telegráffa+N+G3+Sg+Nom`
+* *telegráffas:* `telegráffa+N+G3+Sg+Ela`
 
 LEXICON SYSTIEBMA_CMP_INFL  Recent loanwords on -ebma/-iebma with long and short compound-form. -em in NOR and SWE. See comments about the -ie/-e dialtags in ALFABIEHTTA. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
@@ -1371,8 +1371,8 @@ LEXICON SARVES  C-final with cg II-III. sarves:sarvvá
 LEXICON SVÁLES  C-final with cg I-III. sváles:svállá (lºl)
 
 * sváles # Contracted test examples:*
-* *sváles:* `sváles+N+Sg+Nom`
-* *sválláv:* `sváles+N+Sg+Acc`
+* *sváles:* `sváles+N+G3+Sg+Nom`
+* *sválláv:* `sváles+N+G3+Sg+Acc`
 
 LEXICON GÅHKES  C-final with cg II-III with vowel harmony (a/á=å). gåhkes:gåhkkå. Presently only for "gåhkes".
 
