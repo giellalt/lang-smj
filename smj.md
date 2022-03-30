@@ -646,7 +646,7 @@ LEXICON LINNJA  Only for the loan word "linnja". Because it's a loan word, the "
 
 * linja # Even-syllable test examples:*
 
-LEXICON BOAKSA  Only for word "boaksa". Both boaksa-båvsa and err/Orth boksa-båksa are part of lexicon.
+LEXICON BOAKSA  Only for word "boaksa". Both boaksa-båvsa and Err/Orth boaksa-båksa are part of lexicon.
 
 LEXICON SÁMEGIEL  Compounds on -giella, with short -giel as middle compound (sámegielåhpadiddje)
 
