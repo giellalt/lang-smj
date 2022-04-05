@@ -131,9 +131,9 @@ generated_files/%.lexc: \
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_GEN)cp -f $< $@
 
-# .PHONY: try-regenerate
+.PHONY: try-regenerate
 
-generated_files/sme-$(GTLANG)-propernouns.lexc:
+generated_files/sme-$(GTLANG)-propernouns.lexc: try-regenerate
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_GEN)if test -f $(top_srcdir)/../lang-sme/src/fst/stems/sme-propernouns.lexc ; then \
 		if test $(top_srcdir)/../lang-sme/src/fst/stems/sme-propernouns.lexc -nt $@ ; then \
@@ -147,11 +147,11 @@ generated_files/sme-$(GTLANG)-propernouns.lexc:
 		fi ; \
 	fi
 
-generated_files/sma-$(GTLANG)-propernouns.lexc:
+generated_files/sma-$(GTLANG)-propernouns.lexc: try-regenerate
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_GEN)if test -f $(top_srcdir)/../lang-sma/src/fst/stems/sma-propernouns.lexc ; then \
 		if test $(top_srcdir)/../lang-sma/src/fst/stems/sma-propernouns.lexc -nt $@ ; then \
-			$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl \
+			$(top_srcdir)/src/scripts/sma-$(GTLANG)-conversion.py \
 				$(top_srcdir)/../lang-sma/src/fst/stems/sma-propernouns.lexc > $@ ; \
 		fi ; \
 	else \

@@ -66,7 +66,7 @@ def main():
                 right = fields[0].replace("___", "% ")
             rest = "  ".join(fields[1:]).rstrip()
             right = left.replace("ä", "ä9").replace("æ", "æ9")
-            left = left + "+OLang/SME"
+            left = left + "+OLang/SMA"
             print(f"{left}:{right} {rest[:]}")
 
 
