@@ -44,10 +44,10 @@ def main():
             elif not line.strip():
                 print()
                 continue
-            elif ';' not in line:
+            elif ";" not in line:
                 print(line.rstrip())
                 continue
-            elif line.startswith('<'):
+            elif line.startswith("<"):
                 # skip regexes
                 continue
             line = xxxescape(line)
