@@ -3,9 +3,22 @@
 # orig. from:
 # smi-smj-conversion.pl
 # Convert names in the SMI propernoun lexicon to smj.
-
+"""
+Converter tool for GiellaLT North Sámi proper nouns in lexc format to Lule
+Sámi.
+"""
 from sys import argv
 import re
+
+
+def xxxescape(s):
+    """hide lexc spaces and colons from split"""
+    return s.replace("% ", "___").replace("%:", "@KOOLON@")
+
+
+def xxxunescape(s):
+    """unhide lexc spaces and colons"""
+    return s.replace("___", "% ").replace("@KOOLON@", "%:")
 
 
 def main():
@@ -37,7 +50,7 @@ def main():
             elif line.startswith('<'):
                 # skip regexes
                 continue
-            line = line.replace("% ", "___")
+            line = xxxescape(line)
             line = line.replace(" C-FI-NEN", "nen LONDON").replace("SUND",
                     "BERN").replace("HEIM",
                     "BERN").replace("NIKOSIIJA",
@@ -59,11 +72,11 @@ def main():
             line = stuff.sub("\\1i\\2:\\3\\4i\\5", line)
             fields = line.split()
             if ":" in fields[0]:
-                left = fields[0].split(":")[0].replace("___", "% ")
-                right = fields[0].split(":")[1].replace("___", "% ")
+                left = xxxunescape(fields[0].split(":")[0])
+                right = xxxunescape(fields[0].split(":")[1])
             else:
-                left = fields[0].replace("___", "% ")
-                right = fields[0].replace("___", "% ")
+                left = xxxunescape(fields[0])
+                right = xxxunescape(fields[0])
             rest = "  ".join(fields[1:]).rstrip()
             right = left.replace("ä", "ä9").replace("æ", "æ9")
             left = left + "+OLang/SME"
