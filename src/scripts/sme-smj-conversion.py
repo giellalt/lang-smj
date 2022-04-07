@@ -78,9 +78,9 @@ def main():
                 left = xxxunescape(fields[0])
                 right = xxxunescape(fields[0])
             rest = "  ".join(fields[1:]).rstrip()
-            right = left.replace("ä", "ä9").replace("æ", "æ9")
+            left = left.replace("ä", "ä9").replace("æ", "æ9")
             left = left + "+OLang/SME"
-            print(f"{left}:{right} {rest[:]}")
+            print(f"{left}:{right} {rest}")
 
 
 if __name__ == "__main__":
