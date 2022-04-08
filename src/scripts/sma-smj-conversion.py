@@ -31,10 +31,10 @@ def main():
             elif not line.strip():
                 print()
                 continue
-            elif ';' not in line:
+            elif ";" not in line:
                 print(line.rstrip())
                 continue
-            elif line.startswith('<'):
+            elif line.startswith("<"):
                 # skip regexes
                 continue
             line = line.replace("% ", "___")
@@ -65,9 +65,9 @@ def main():
                 left = fields[0].replace("___", "% ")
                 right = fields[0].replace("___", "% ")
             rest = "  ".join(fields[1:]).rstrip()
-            right = left.replace("ä", "ä9").replace("æ", "æ9")
+            left = left.replace("ä", "ä9").replace("æ", "æ9")
             left = left + "+OLang/SMA"
-            print(f"{left}:{right} {rest[:]}")
+            print(f"{left}:{right} {rest}")
 
 
 if __name__ == "__main__":
