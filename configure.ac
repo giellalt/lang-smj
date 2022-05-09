@@ -185,6 +185,12 @@ gt_ENABLE_TARGETS
 # Call a function that lists all files that should be processed by autoconf:
 gt_CONFIG_FILES
 
+# subscribe to shared stuff here:
+gt_USE_SHARED([sme], [lang-sme])
+AM_CONDITIONAL([HAVE_SHARED_SME], [test x$gt_SHARED_sme != false])
+gt_USE_SHARED([sma], [lang-sma])
+AM_CONDITIONAL([HAVE_SHARED_SMA], [test x$gt_SHARED_sma != false])
+
 ##########################################################
 ##### BEGIN: Add language-specific list of files to ######
 ########## be processed by autoconf below here: ##########
