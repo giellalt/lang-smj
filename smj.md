@@ -3531,23 +3531,25 @@ All Err-tags must have a normative form as lemma except Err/Lex
 
 ## Usage restriction tags
 
-* **+Use/Marg**  Marginal, but normative lemmas. Not in speller.
-* **+Use/-Spell**  Excluded from speller
-* **+Use/-PLX**  Excluded from PLX speller
-* **+Use/-PMatch**  Do not include in fst's made for hfst-pmatch
-* **+Use/SpellNoSugg**  Recognized, but not suggested in speller
-* **+Use/Circ**  Circular path
-* **+Use/CircN**  Circular number path
-* **+Use/Ped**  Remove from pedagogical speller
-* **+Use/NG**  Do not generate, only for Oahpa and MT. In speller.
-* **+Use/MT** Generate for MT only, for restricting analyses needed
-* **+Use/NGminip** Not for miniparadigm in VD dicts
-* **+Use/NotDNorm**  For words without formal normalization. Divvun suggest that this shouldn't be normative.
-* **+Use/DNorm**  For words without formal normalization.  Divvun suggest that this should be normative. Included in speller.
-* **+Use/PMatch**
-* **+Use/Derrog**  Derrogatory word. Recognized, but not suggested in speller, same as SpellNoSugg
-* **+Use/GC** only retained in the HFST Grammar Checker disambiguation analyser
-* **+Use/-GC** never retained in the HFST Grammar Checker disambiguation analyser
+* **+Use/Marg** – Marginal, but normative lemmas. Not in speller.
+* **+Use/-Spell** – Excluded from speller
+* **+Use/-PLX** – Excluded from PLX speller
+* **+Use/-PMatch** – Do not include in fst's made for hfst-pmatch
+* **+Use/SpellNoSugg** – Recognized, but not suggested in speller
+* **+Use/Circ** – Circular path
+* **+Use/CircN** – Circular number path
+* **+Use/Ped** – Remove from pedagogical speller
+* **+Use/NG** – Do not generate, only for Oahpa and MT. In speller.
+* **+Use/MT** – Generate for MT only, for restricting analyses needed
+* **+Use/NGminip** – Not for miniparadigm in VD dicts
+* **+Use/NotDNorm** – For words without formal normalization. Divvun suggest that this shouldn't be normative.
+* **+Use/DNorm** – For words without formal normalization.  Divvun suggest that this should be normative. Included in speller.
+* **+Use/PMatch** – Only use in fst's targeted for `hfst-pmatch`
+* **+Use/Derrog** – Derrogatory word. Recognized, but not suggested in speller, same as SpellNoSugg
+* **+Use/GC** – **only** retained in the HFST Grammar Checker disambiguation analyser
+* **+Use/-GC** – **never** retained in the HFST Grammar Checker disambiguation analyser
+* **+Use/TTS** – **only** retained in the HFST Text-To-Speech disambiguation analyser
+* **+Use/-TTS** – **never** retained in the HFST Text-To-Speech disambiguation analyser
 
 ## Dialect and Area tags
 * **+Area/SE** - Used in Sweden only
