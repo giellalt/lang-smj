@@ -131,38 +131,29 @@ generated_files/%.lexc: \
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_GEN)cp -f $< $@
 
-.PHONY: try-regenerate
-
+if HAVE_SHARED_SME
 generated_files/sme-$(GTLANG)-propernouns.lexc: \
-			$(top_srcdir)/../lang-sme/src/fst/stems/sme-propernouns.lexc
+			$(gt_SHARED_sme)/src/fst/stems/sme-propernouns.lexc
 	$(AM_V_at)$(MKDIR_P) generated_files
-	$(AM_V_GEN)if test -f $(top_srcdir)/../lang-sme/src/fst/stems/sme-propernouns.lexc ; then \
-		if test $(top_srcdir)/../lang-sme/src/fst/stems/sme-propernouns.lexc -nt $@ ; then \
-			$(top_srcdir)/src/scripts/sme-$(GTLANG)-conversion.py \
-				$(top_srcdir)/../lang-sme/src/fst/stems/sme-propernouns.lexc > $@ ; \
-		fi ; \
-	else \
-		echo "MISSING $(top_srcdir)/../lang-sme/fst/stems/sme-propernouns.lexc" ;\
-		if ! test -f $@ ; then \
-			echo "! MISSING $(top_srcdir)/../lang-sme/fst/stems/sme-propernouns.lexc" > $@ ;\
-		fi ; \
-	fi
+	$(AM_V_GEN)$(top_srcdir)/src/scripts/sme-$(GTLANG)-conversion.py $< > $@
+else
+generated_files/sme-$(GTLANG)-propernouns.lexc:
+	echo "Shared North Sami disabled: $(gt_SHARED_sme), words may be missing"
+	$(AM_V_GEN)echo \
+		"! MISSING $(gt_SHARED_sme)/src/fst/stems/sme-propernouns.lexc" > $@
+endif
 
+if HAVE_SHARED_SMA
 generated_files/sma-$(GTLANG)-propernouns.lexc: \
-			$(top_srcdir)/../lang-sma/src/fst/stems/sma-propernouns.lexc
+			$(gt_SHARED_sma)/src/fst/stems/sma-propernouns.lexc
 	$(AM_V_at)$(MKDIR_P) generated_files
-	$(AM_V_GEN)if test -f $(top_srcdir)/../lang-sma/src/fst/stems/sma-propernouns.lexc ; then \
-		if test $(top_srcdir)/../lang-sma/src/fst/stems/sma-propernouns.lexc -nt $@ ; then \
-			$(top_srcdir)/src/scripts/sma-$(GTLANG)-conversion.py \
-				$(top_srcdir)/../lang-sma/src/fst/stems/sma-propernouns.lexc > $@ ; \
-		fi ; \
-	else \
-		echo "MISSING $(top_srcdir)/../lang-sma/fst/stems/sma-propernouns.lexc" ;\
-		if ! test -f $@ ; then \
-			echo "! MISSING $(top_srcdir)/../lang-sma/fst/stems/sma-propernouns.lexc" > $@ ;\
-		fi ; \
-	fi
-
+	$(AM_V_GEN)$(top_srcdir)/src/scripts/sma-$(GTLANG)-conversion.py $< > $@
+else
+generated_files/sma-$(GTLANG)-propernouns.lexc:
+	echo "Shared South Sami disabled: $(gt_SHARED_sma), words may be missing"
+	$(AM_V_GEN)echo \
+		"! MISSING $(gt_SHARED_sma)/src/fst/stems/sma-propernouns.lexc" > $@
+endif
 ### END: Local processing: ###
 
 ####### Other targets: ###########
