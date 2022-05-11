@@ -102,8 +102,9 @@ GT_DISTRO_SRCS=$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl \
 
 GIELLA_LOCAL_TARGETS=
 
+if HAVE_SHARED_SMI
 generated_files/smi-$(GTLANG)-propernouns.lexc: \
-		$(GIELLA_SHARED)/smi/src/fst/stems/smi-propernouns.lexc \
+		$(gt_SHARED_smi)/src/fst/stems/smi-propernouns.lexc \
 		$(srcdir)/stems/$(GTLANG)-propernouns.lexc
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_GEN)cp -f $(srcdir)/stems/$(GTLANG)-propernouns.lexc $@
@@ -111,7 +112,7 @@ generated_files/smi-$(GTLANG)-propernouns.lexc: \
 	$(AM_V_GEN)$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl $< >> $@
 
 generated_files/smi-$(GTLANG)-abbreviations.lexc: \
-		$(GIELLA_SHARED)/smi/src/fst/stems/smi-abbreviations.lexc \
+		$(gt_SHARED_smi)/src/fst/stems/smi-abbreviations.lexc \
 		$(srcdir)/stems/$(GTLANG)-abbreviations.lexc
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_GEN)cp -f $(srcdir)/stems/$(GTLANG)-abbreviations.lexc $@
@@ -119,17 +120,44 @@ generated_files/smi-$(GTLANG)-abbreviations.lexc: \
 	$(AM_V_GEN)$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl $< >> $@
 
 generated_files/smi-$(GTLANG)-acronyms.lexc: \
-		$(GIELLA_SHARED)/smi/src/fst/stems/smi-acronyms.lexc \
+		$(gt_SHARED_smi)/src/fst/stems/smi-acronyms.lexc \
 		$(srcdir)/stems/$(GTLANG)-acronyms.lexc
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_GEN)cp -f $(srcdir)/stems/$(GTLANG)-acronyms.lexc $@
 	$(AM_V_at)echo "! <--- Dump from SMI starting here: -->" >> $@ 
 	$(AM_V_GEN)$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl $< >> $@
 
-generated_files/%.lexc: \
-		$(GIELLA_SHARED)/smi/src/fst/stems/%.lexc
+generated_files/smi-digits.lexc: \
+		$(gt_SHARED_smi)/src/fst/stems/smi-digits.lexc
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_GEN)cp -f $< $@
+
+generated_files/arabic_roman_digits.lexc: \
+		$(gt_SHARED_smi)/src/fst/stems/arabic_roman_digits.lexc
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)cp -f $< $@
+else
+generated_files/smi-$(GTLANG)-propernouns.lexc:
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)echo "! Missing shared smi data" > $@ 
+
+generated_files/smi-$(GTLANG)-abbreviations.lexc:
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)echo "! Missing shared smi data" > $@ 
+
+generated_files/smi-$(GTLANG)-acronyms.lexc:
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)echo "! Missing shared smi data" > $@ 
+
+generated_files/arabic_roman_digits.lexc:
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)echo "! Missing shared smi data" > $@ 
+
+generated_files/smi-digits.lexc:
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)echo "! Missing shared smi data" > $@ 
+
+endif
 
 if HAVE_SHARED_SME
 generated_files/sme-$(GTLANG)-propernouns.lexc: \
@@ -150,7 +178,7 @@ generated_files/sma-$(GTLANG)-propernouns.lexc: \
 	$(AM_V_GEN)$(top_srcdir)/src/scripts/sma-$(GTLANG)-conversion.py $< > $@
 else
 generated_files/sma-$(GTLANG)-propernouns.lexc:
-	echo "Shared South Sami disabled: $(gt_SHARED_sma), words may be missing"
+	$(AM_V_at)echo "Shared South Sami disabled: $(gt_SHARED_sma), words may be missing"
 	$(AM_V_GEN)echo \
 		"! MISSING $(gt_SHARED_sma)/src/fst/stems/sma-propernouns.lexc" > $@
 endif

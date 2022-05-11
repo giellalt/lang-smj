@@ -186,6 +186,8 @@ gt_ENABLE_TARGETS
 gt_CONFIG_FILES
 
 # subscribe to shared stuff here:
+gt_USE_SHARED([smi], [shared-smi])
+AM_CONDITIONAL([HAVE_SHARED_SMI], [test x$gt_SHARED_smi != xfalse])
 gt_USE_SHARED([sme], [lang-sme])
 AM_CONDITIONAL([HAVE_SHARED_SME], [test x$gt_SHARED_sme != xfalse])
 gt_USE_SHARED([sma], [lang-sma])
