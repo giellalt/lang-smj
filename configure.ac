@@ -186,11 +186,11 @@ gt_ENABLE_TARGETS
 gt_CONFIG_FILES
 
 # subscribe to shared stuff here:
-gt_USE_SHARED([smi], [shared-smi])
+gt_USE_SHARED([smi], [shared-smi], [giella-shared-smi])
 AM_CONDITIONAL([HAVE_SHARED_SMI], [test x$gt_SHARED_smi != xfalse])
-gt_USE_SHARED([sme], [lang-sme])
+gt_USE_SHARED([sme], [lang-sme], [giella-sme])
 AM_CONDITIONAL([HAVE_SHARED_SME], [test x$gt_SHARED_sme != xfalse])
-gt_USE_SHARED([sma], [lang-sma])
+gt_USE_SHARED([sma], [lang-sma], [giella-sma])
 AM_CONDITIONAL([HAVE_SHARED_SMA], [test x$gt_SHARED_sma != xfalse])
 
 ##########################################################
