@@ -1,3 +1,4 @@
+
 ## Process this file with autoconf to produce configure script
 
 ## Copyright (C) 2017 Samediggi/Divvun/UiT
@@ -182,11 +183,13 @@ gt_PROG_SAXON
 # to the enable checks
 gt_ENABLE_TARGETS
 
-# Add usage of optional shared data here
-# Comment out if shared punctuation not in use!
+# Add usage of optional shared data here.
+# By default, all languages have shared symbols and punctuation.
+# One language repo can even share / use data from another language repo!
+# See lang-smj for an example.
+# Add locally used shares below this line:
 gt_USE_SHARED([common], [shared-mul], [giella-shared-mul])
 AM_CONDITIONAL([HAVE_SHARED_COMMON], [test x$gt_SHARED_common != xfalse])
-# Add locally used shares below this line:
 gt_USE_SHARED([smi], [shared-smi], [giella-shared-smi])
 AM_CONDITIONAL([HAVE_SHARED_SMI], [test x$gt_SHARED_smi != xfalse])
 gt_USE_SHARED([sme], [lang-sme], [giella-sme])
