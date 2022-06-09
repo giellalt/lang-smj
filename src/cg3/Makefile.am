@@ -24,8 +24,13 @@ endif # WANT_SYNTAX
 
 #################################################
 #### Add language-specific build rules here: ####
-%.cg3: $(GIELLA_SHARED)/smi/src/cg3/%.cg3
+if HAVE_SHARED_SMI
+%.cg3: $(gt_SHARED_smi)/src/cg3/%.cg3
 	$(AM_V_GEN)cp -f $< $@
+else
+%.cg3:
+	$(AM_V_GEN)echo "! missing dependency $@" > $@
+endif
 
 # Make sure functions.cg3 is available before trying to build korp.cg3:
 korp.cg3: functions.cg3
