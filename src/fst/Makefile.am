@@ -72,8 +72,6 @@ GT_LEXC_L2_SRCS=\
 
 # Set this to the names of all generated lexc files, if any
 GENERATED_LEXC_SRCS=generated_files/smi-$(GTLANG)-propernouns.lexc   \
-					generated_files/sme-$(GTLANG)-propernouns.lexc   \
-					generated_files/sma-$(GTLANG)-propernouns.lexc   \
 					generated_files/smi-$(GTLANG)-abbreviations.lexc \
 					generated_files/smi-$(GTLANG)-acronyms.lexc      \
 					generated_files/smi-$(GLANG)-arabic_roman_digits.lexc \
@@ -81,6 +79,8 @@ GENERATED_LEXC_SRCS=generated_files/smi-$(GTLANG)-propernouns.lexc   \
 					generated_files/mul-$(GLANG)-punctuation.lexc         \
 					generated_files/mul-$(GLANG)-symbols.lexc
 
+#					generated_files/sme-$(GTLANG)-propernouns.lexc   
+#					generated_files/sma-$(GTLANG)-propernouns.lexc   
 
 
 # change handling of shared lexical data here:
