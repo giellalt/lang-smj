@@ -2007,18 +2007,27 @@ ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Pl) OR
     ## Galggi aj ájggeguovddelis ássjijt åvvånbuktet mij guosská vuorrasij iellemdilláj ja álkkádussaj. NEW DNW
     #$ Njuolgadusáj ulmmen le nannit jut konsultasjåvnå galggi liehket buorre jáhkujn ja ulmijn guorrasittjat gasskala stáhtta avta bielen ja Sámedigge, sáme berustimij organisásjåvnå ja sáme rievtesvuoda æjgáda nuppe bielen, {gájkka} oajvvadusáj birra mij gullu suodjalusájda luondomoattebelakvuohtalága milta sáme guovloj. DNW NEW
     ## Oassekapihtal vaddá prinsihpalasj refleksjåvnåjt mij le vuodon sáme-girkkolasj demokratijaj Vuona girkkon, ja tjielggi oanegattjat barggojuohkusa bargo birra, ja dan låhpadahtte rádegiehtadallama birra. DNW NEW
-    
+    ## Oahppe guhti e gæhttjalimijt mierredimbæjvváj tjadáda.
     ##  Tjielggidus vuoset oajvvehásstalusájda mij gullu giellaj. NEW DNW
     #$ Áhttje mijá guhti le almen. DNW NEW
 
 ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Sg) BARRIER NOT-BEFORE-REL LINK *-1 Num - ("akta") BARRIER NOT-NPMOD) ;
 
     ## Mij lip vihtta nuora guhti vuolggep dåhku.
-    ## Da li gålmmå nuora gut
+    ## Da li gålmmå nuora 
     ## Galggi aj ájggeguovddelis ássjev åvddånbuktet oajválattjajda mij guosská vuorrasij iellemdilláj ja álkkádussaj
     ## Lejga giehttomin M.Gånågis Haraldij daj hásstalusáj birra mij duosstu vuoras sámijt
     ## Valla ietja vierttip plánajt dahkat mij vuoset majt ájggop dáj rudáj.
     ## Valla l aj ájnas duosstot dajt hásstalusájt mij varresvuodan ja máhtsastimen lulun gå ulmusj la sábme.
+
+ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (-1 Ela LINK -1 (Nom Pl)) ;
+
+    ## Da Ájluovtas gut ásadin konferánsav.
+    
+ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (-1 Ela LINK -1 (Gen Sg) LINK -1 (Num Arab)) ;
+
+    ## Mij lip 10 nuora Sáminuorras (sámenuora organisasjåvnnå) guhti vuolggep.
+    ## Sij li 3 åhpadiddje Ájluovtas gut vuolggi. 
 
 COPY:msyn-congr-mij-ma (Pl &SUGGEST) EXCEPT (Sg &msyn-congr-mij-ma) AFTER Rel TARGET (&msyn-congr-mij-ma) ;
 
@@ -2282,10 +2291,12 @@ COPY:to-sentence-init-copula (Gram/SentInit &SUGGEST) EXCEPT (&syn-to-sentence-i
 
 
 	# la to l after vowel
-ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" Ind Prs Sg2) IF (NEGATE 0 Clt) (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 CC OR ("de" Adv) ) ;
+ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" Ind Prs Sg2) IF (NEGATE 0 Clt) (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 CC OR ("de" Adv) OR (Ill Pl)) (NEGATE 1 EOS) ;
 	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
-    #$Sidáv dav ja la buorre dav dalá dahkat. 
+    #$ Sidáv dav ja la buorre dav dalá dahkat. 
     #$ Dát ja la buorre dav dalá dahkat. 
+    #$ Mánájda la buorre dav åhpadit. 
+    #$ Danna gånnå bijlla la. 
     ## Jus árvodimes dåbddomerka galggi árvustaláduvvat viertti dat elementa manna le sæmmi lágásj dåbddomærkka ja manna {le} árvvo aj liehket dádjadahtes váj dát aj sihtá dárkestuvvat. #NEW INGA
         
 COPY:msyn-l-not-la (Clt &SUGGEST) EXCEPT (&msyn-l-not-la) TARGET (&msyn-l-not-la) ;
@@ -2899,11 +2910,13 @@ ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V
 
 	# after a relative pronoun
 
-ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg - Du3 - Pl2 OR (V Ind Prt) - ConNeg - Du3 - Pl2 OR (V Cond) - Du3 - Pl2 OR (V Neg Ind) - Du3 - Pl2 IF (-1 ("guhti" Pl Nom) LINK NEGATE -1 (Pron Pers Pl1) OR (Pron Pers Pl2) OR (Pron Pers Du1) OR (Pron Pers Du2) OR (Pron Pers Du3))(NEGATE 0 ("liehket" Prs Pl1) OR &real OR (N Sg))(NEGATE 0 Du3 LINK *0 (Pron Du3) BARRIER NOT-ADV-PCLE)(NEGATE 0 Du3 LINK *1 Sem/Human BARRIER NOT-ADV-PCLE LINK 1 CC LINK 1 Sem/Human)(NEGATE 0 PrfPrc OR Adv)(NEGATE 0 NUMCONGR-EXCEPT)(NEGATE 0 Du2 OR Pl2 LINK *-1 (Imprt Du2) OR (Imprt Pl2))
+ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg - Du3 - Pl2 OR (V Ind Prt) - ConNeg - Du3 - Pl2 OR (V Cond) - Du3 - Pl2 OR (V Neg Ind) - Du3 - Pl2 IF (-1 ("guhti" Pl Nom) LINK NEGATE -1 (Pron Pers Pl1) OR (Pron Pers Pl2) OR (Pron Pers Du1) OR (Pron Pers Du2) OR (Pron Pers Du3))(NEGATE 0 ("liehket" Prs Pl1) OR &real OR (N Sg))(NEGATE 0 Du3 LINK *0 (Pron Du3) BARRIER NOT-ADV-PCLE)(NEGATE 0 Pl3)(NEGATE 0 Du3 LINK *1 Sem/Human BARRIER NOT-ADV-PCLE LINK 1 CC LINK 1 Sem/Human)(NEGATE 0 PrfPrc OR Adv)(NEGATE 0 NUMCONGR-EXCEPT)(NEGATE 0 Du2 OR Pl2 LINK *-1 (Imprt Du2) OR (Imprt Pl2))
 (NEGATE 0 Du2 LINK -1 ("guhti" Pl Nom) LINK *-1 ("dåj" Nom) OR ("dån" Nom) BARRIER VFIN OR S-BOUNDARY  LINK -1 CC LINK -1 Sem/Human + (Nom Sg))
 (NEGATE 0 $$PERSON LINK -1 ("guhti" Pl Nom) LINK -1 Nom + Sem/Hum LINK *-1 COPULAS + VFIN BARRIER NOT-NPMODADV  LINK *-1 (Pers Nom) + $$PERSON BARRIER NOT-NPMODADV)
 (NEGATE 0 $$PERSON LINK -1 ("guhti" Pl Nom) LINK -1 Po LINK *-1 (Pers Gen) + $$PERSON BARRIER NOT-NPMODADV)
 (NEGATE 0 (Ind Prt Sg2) - ("liehket"));
+    #$ Mij lip moattes gudi barggap.
+    ## Mij lip moattes gudi barggi. 
 	#$ Mii leat máŋggas geat {dovdat} dárbbu dánlágan čállosii, ja leamaš ge ollu doarjja ja movttiidahttinprošeavtta duohken.
 	#$ Dale oainnát nu ahte sihke mánná ja don, fuolaheaddjin, geat {galgabeahtti} oažžut dieđu ja vejolašvuođa beali váldit ovdamearkka dihte dikšunvuogis.
 	#$ Šaddet ieža nai ealli geađgin geat {huksejuvvobehtet} vuoiŋŋalaš viessun ja bassi báhppagoddin, ja buktet ovdan vuoiŋŋalaš oaffariid mat leat dohkálaččat Ipmilii Jesus Kristusa dihtii.
