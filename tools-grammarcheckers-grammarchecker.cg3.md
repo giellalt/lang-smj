@@ -64,8 +64,8 @@ Romertall
 Nom
 Acc
 Gen
-Gen
-Gen
+Ine
+Ela
 Ill
 Loc
 Com
