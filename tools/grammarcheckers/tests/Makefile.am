@@ -50,6 +50,7 @@ XFAIL_TESTS=\
     msyn-liehket-congr-condsg2-condsg3.yaml \
     msyn-numeral-attr.yaml \
     msyn-soajtta.yaml \
+    msyn-attr-pred.yaml \
 	syn-correct-form-liehket.yaml
 
 endif # WANT_GRAMCHECK
