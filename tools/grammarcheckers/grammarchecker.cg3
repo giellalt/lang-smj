@@ -1671,10 +1671,11 @@ COPY:msyn-soajttá-le &DELETE EXCEPT ("liehket" V V IV Ind Prs Sg3 &msyn-soajtt�
     ## ---------------------------
     
 ADD:msyn-soajttá-not-adv (&msyn-soajttá-not-adv) TARGET VFIN + Prt OR VFIN + Prs IF (*-1 ("soajttet") - (Prs Sg3) BARRIER S-BOUNDARY OR CS OR CC OR VFIN );
-COPY:msyn-soajttá-not-adv (Inf &SUGGEST) EXCEPT (Ind Prs Sg1) OR (Ind Prs Sg2) OR (Ind Prs Sg3) OR (Ind Prs Du1) OR (Ind Prs Du2) OR (Ind Prs Du3) OR (Ind Prs Pl1) OR (Ind Prs Pl2) OR (Ind Prs Pl3) OR (Ind Prt Sg1) OR (Ind Prt Sg2) OR (Ind Prt Sg3) OR (Ind Prt Du1) OR (Ind Prt Du2) OR (Ind Prt Du3) OR (Ind Prt Pl1) OR (Ind Prt Pl2) OR (Ind Prt Pl3) TARGET (&msyn-soajttá-not-adv) ;
+
 
     ## Ållessjattuga ja bargge mánáv iejvviji ienemus oassáj mánáv iesjguhtiga arenan ja aktijvuodan, ja danen soajtti mánáv vehi ietjáláhkáj dåbddi.
 
+COPY:msyn-soajttá-not-adv (Inf &SUGGEST) EXCEPT (Ind Prs Sg1) OR (Ind Prs Sg2) OR (Ind Prs Sg3) OR (Ind Prs Du1) OR (Ind Prs Du2) OR (Ind Prs Du3) OR (Ind Prs Pl1) OR (Ind Prs Pl2) OR (Ind Prs Pl3) OR (Ind Prt Sg1) OR (Ind Prt Sg2) OR (Ind Prt Sg3) OR (Ind Prt Du1) OR (Ind Prt Du2) OR (Ind Prt Du3) OR (Ind Prt Pl1) OR (Ind Prt Pl2) OR (Ind Prt Pl3) TARGET (&msyn-soajttá-not-adv) ;
 
     # Wrong Cond Sg2 instead of Pl3
     # -----------------------------
@@ -2934,7 +2935,7 @@ COPY:syn-number_congruence-subj-verb (Pl3 &SUGGEST) EXCEPT Sg1 OR Sg2 OR (Sg2 Se
 	# -----------------------------------
 	
 	# Should not be sentence initial copula: from le, to la or l
-ADD:from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentInit IF (NEGATE -1 BOS)(NEGATE 0 &syn-number_congruence-subj-verb) (NEGATE 0 &msyn-verb-cong-rel) ;
+ADD:from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentInit IF (NEGATE -1 BOS)(NEGATE 0 &syn-number_congruence-subj-verb) (NEGATE 0 &msyn-verb-cong-rel) (NEGATE 0 &msyn-soajttá-le) ;
 	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
 	## Såj læbá boahtám sijddaj
 
@@ -2952,13 +2953,13 @@ COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-i
 	
 	
     # Should be sentence initial copula: from la to le. 
-ADD:to-sentence-init-copula (&syn-to-sentence-init-copula) TARGET ("liehket") IF (-1 BOS LINK NEGATE 1 SentInit)(NEGATE 0 &syn-from-sentence-init-copula) (NEGATE 0 ("liehket" Inf)) ;
+ADD:to-sentence-init-copula (&syn-to-sentence-init-copula) TARGET ("liehket") IF (-1 BOS LINK NEGATE 1 SentInit)(NEGATE 0 &syn-from-sentence-init-copula) (NEGATE 0 ("liehket" Inf)) (NEGATE 0 &msyn-soajttá-le) ;
 
 COPY:to-sentence-init-copula (SentInit &SUGGEST) EXCEPT (&syn-to-sentence-init-copula) TARGET (&syn-to-sentence-init-copula) ;
 
 
 	# la/le to l after vowel
-ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" Ind Prs Sg2) IF (NEGATE 0 Clt) (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 CC OR ("de" Adv) OR (Ill Pl)) (NEGATE 1 EOS)(NEGATE 0 (Pl3 &SUGGEST)) ;
+ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" Ind Prs Sg2) IF (NEGATE 0 Clt) (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 CC OR ("de" Adv) OR (Ill Pl)) (NEGATE 1 EOS)(NEGATE 0 (Pl3 &SUGGEST)) (NEGATE 0 &msyn-soajttá-le) ;
 	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
     #$ Sidáv dav ja la buorre dav dalá dahkat. 
     #$ Dát ja la buorre dav dalá dahkat. 
