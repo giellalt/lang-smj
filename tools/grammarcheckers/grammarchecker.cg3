@@ -1503,7 +1503,7 @@ LIST &msyn-congr-gænna-gejn = &msyn-congr-gænna-gejn ;
 LIST &msyn-congr-iesj-ietja = &msyn-congr-iesj-ietja ;
 LIST &msyn-congr-mij-ma = &msyn-congr-mij-ma ;
 LIST &msyn-ill-com-oahpásmuvvat = &msyn-ill-com-oahpásmuvvat ;
-LIST &msyn-liehket-congr-condsg2-condpl3 = &msyn-liehket-congr-condsg2-condpl3 ;
+LIST &msyn-liehket-congr-condsg2-condpl3 = &msyn-liehket-congr-condsg2-condpl3 ; 
 LIST &msyn-mij-gut = &msyn-mij-gut ;
 LIST &msyn-l-not-la = &msyn-l-not-la ;
 LIST &msyn-numeral-accattr = &msyn-numeral-accattr ;
@@ -1670,7 +1670,7 @@ COPY:msyn-soajttá-le &DELETE EXCEPT ("liehket" V V IV Ind Prs Sg3 &msyn-soajtt�
     ## Soajttet not used as adverb
     ## ---------------------------
     
-ADD:msyn-soajttá-not-adv (&msyn-soajttá-not-adv) TARGET VFIN + Prt OR VFIN + Prs IF (*-1 ("soajttet") - (Prs Sg3) BARRIER S-BOUNDARY OR CS OR CC OR VFIN );
+ADD:msyn-soajttá-not-adv (&msyn-soajttá-not-adv) TARGET VFIN + Prt OR VFIN + Prs IF (*-1 ("soajttet") - (Prs Sg3) BARRIER S-BOUNDARY OR CS OR CC OR VFIN OR Inf );
 
 
     ## Ållessjattuga ja bargge mánáv iejvviji ienemus oassáj mánáv iesjguhtiga arenan ja aktijvuodan, ja danen soajtti mánáv vehi ietjáláhkáj dåbddi.
@@ -1923,7 +1923,7 @@ ADD:msyn-attr-pred (&msyn-attr-pred)  TARGET (A Attr) IF (1 EOS) ;
 
     # relative use, gut for persons, mij for things
 
-ADD:msyn-mij-gut (&msyn-mij-gut) TARGET ("mij") IF (*-1 (N Coll) OR (Sem/Hum) OR (Sem/Mal) OR (Sem/Fem) OR (Sem/Sur) OR (Pron Pers) OR (Pron Indef) - ("nubbe") BARRIER NOT-ADV-PCLE LINK NEGATE -1 ("/") LINK -1 Dem)(NEGATE -1 ("/") OR CC LINK -1 (Pron Rel)) (NEGATE -1 ("juoga") ) ; #OR (Pron Dem)
+ADD:msyn-mij-gut (&msyn-mij-gut) TARGET ("mij") IF (*-1 (N Coll) OR (Sem/Hum) OR (Sem/Mal) OR (Sem/Fem) OR (Sem/Sur) OR (Pron Pers) OR (Pron Indef) - ("nubbe") BARRIER NOT-ADV-PCLE LINK NEGATE -1 ("/") LINK -1 Dem)(NEGATE -1 ("/") OR CC LINK -1 (Pron Rel)) (NEGATE -1 ("juoga") ) (NEGATE -1 ("iesj" Sg Nom)) ; #OR (Pron Dem)
 	#$ Sidáv aj nammadit GB teorijav (ieŋŋils giellaj Government and binding ) mij le teorija generatijva grammatihkan mij li anon Minimalissta prográmma åvddåla.
 	#$ Objækta le dat jali dat/sån mij/gut vájkkuduvvá dáhpádusás mij boahtá åvddån verban.
 	#$ Dat {mij} vájllu udnásj sáme politihkalasj bargon, la guoradallat mij ”sáme viellde” lulu årrot.
