@@ -1583,8 +1583,12 @@ COPY:right-guillemet ("»" &SUGGEST) EXCEPT ("\"") TARGET (&guillemets) ;
 ADD:use-ellipsis (&ellipsis) TARGET ("...");
 COPY:use-ellipsis ("…" &SUGGEST) EXCEPT ("...") TARGET (&ellipsis) ;
 
+
+
 	# negation (sme pattern)
-	# ----------------------
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
 	# ittjiv diehtám/iv diehtám -> ittjiv diede
 
 ADD:msyn-sme_bastard_neg (&msyn-sme_bastard_neg) TARGET ("ij" Neg Ind Prs) IF (*1 PrfPrc BARRIER NOT-ADV-PCLE - ("mige") - Acc) ;
@@ -1607,7 +1611,9 @@ COPY:msyn-sme_bastard_neg2 (Ind ConNeg &SUGGEST) EXCEPT (PrfPrc &msyn-sme_bastar
 
 
     # soajttá as an adverb
-    # --------------------
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
 
 ADD:msyn-soajttá-adv (&msyn-soajttá-adv) TARGET ("soajttet" V IV Ind Prs Sg3) IF (NEGATE *1 Inf OR PrfPrc BARRIER NOT-NPMODADVPCLE - (A Sg Nom) - Acc - (N Nom) - (N Com) - (N Ill) - (N Ela) - (N Ine)) (NEGATE *1 ( "liehket" V IV Ind Prs Sg3) BARRIER NOT-ADV-PCLE) ;
 	## Ja gut diehtá; Udnásj sáme siebrudagáj gierragijs soajttá muhtem oasse boahtte ájge sámeviessoma vuodo luorkijdit.
@@ -1668,7 +1674,7 @@ COPY:msyn-soajttá-le &DELETE EXCEPT ("liehket" V V IV Ind Prs Sg3 &msyn-soajtt�
 #
 
     ## Soajttet not used as adverb
-    ## ---------------------------
+    # ---------------------------
     
 ADD:msyn-soajttá-not-adv (&msyn-soajttá-not-adv) TARGET VFIN + Prt OR VFIN + Prs IF (*-1 ("soajttet") - (Prs Sg3) BARRIER S-BOUNDARY OR CS OR CC OR VFIN OR Inf );
 
@@ -1700,8 +1706,8 @@ ADD:msyn-congr-PrtSg3-PrsPl3 (&msyn-congr-PrtSg3-PrsPl3) TARGET (Prt Sg3) IF (*-
 	## Nubbe le tjielggit mij generatijva grammatihkka le, ja aj tjielggit dajt åsijt minimalissta prográmmas ma li anon ja ma {vájkudij} muv bargguj.
 	## Reksjåvnåverba li verba ma gájbbedij adverbiálav visses kásushámen, ja dát adverbiálla le de oadtju namáv reksjåvnnåadverbiálla (Magga).
 	## Syntávsalasj kásusa li kásusa ma e vájkkuda semantihkkaj, syntávsalasj kásusa {subtsastij} gåktu bágo majn le syntávsalasj kásus doajmmi gárgadisán, dá kásusa li nominatijvva, akkusatijvva ja álu aj genitijvva.
-	#$ Generatijva grammatihkka le ådåstuhtedum moaddi 1950 lågo rájes, dallutjis gå Chomsky teorijav vuostasj bále åvddånbuvtij. # INGA NEW
-	#$ Dánna gávna tjállagijt ja tjåhkanimgirjijt mij guosská Vuona ja Svieriga ælloguohtomkonvensjåvnå bargguj. #INGA NEW
+	#$ Generatijva grammatihkka le ådåstuhtedum moaddi 1950 lågo rájes, dallutjis gå Chomsky teorijav vuostasj bále åvddånbuvtij.
+	#$ Dánna gávna tjállagijt ja tjåhkanimgirjijt mij guosská Vuona ja Svieriga ælloguohtomkonvensjåvnå bargguj. #DNW LINDA DISAMB problems: barggo not barggat
 	
 ADD:msyn-congr-PrtSg3-PrsPl3 (&msyn-congr-PrtSg3-PrsPl3) TARGET (Prt Sg3) IF (*-1 (Nom Sg) BARRIER NOT-ADV-PCLE LINK *-1 CC BARRIER NOT-Attr LINK -1 (Nom Sg) LINK *-1 (",") BARRIER NOT-Attr LINK -1 (Nom Sg)) ;
 
@@ -1736,7 +1742,9 @@ COPY:msyn-congr-PrtSg3-PrsPl3 (Prs Pl3 &SUGGEST) EXCEPT (Prt Sg3 &msyn-congr-Prt
    # lexical errors
 
    # Wrong use of oahpástuvvat with things and oahpásmuvvat with living creatures.
-   #-------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
 
 ADD:lex-oahpástuvvat-oahpásmuvvat (&lex-oahpástuvvat-oahpásmuvvat) TARGET ("oahpástuvvat") + VFIN IF (NEGATE *0 Sem/AnimateNotOrg + Com OR Sem/AnimateNotOrg + Ill OR (Pron Pers) + Com OR (Pron Pers) + Ill OR (Pron Recipr) + Com OR (Pron Recipr) + Ill BARRIER NOT-NPMODADVPCLE - (Nom N) - (Pron Nom)) ;
 
@@ -1747,12 +1755,12 @@ ADD:lex-oahpástuvvat-oahpásmuvvat (&lex-oahpástuvvat-oahpásmuvvat) TARGET ("
     ## Sån la oahpástuvvam bijlajn
     ## Iŋŋgá l Cg3:ajn oahpástuvvam
     ## Ibbá l uddni åvddåskåvlåjn oahpástuvvam.
-    ## Oahppe galggi oahpástuvvat  tállarájdujn gitta 20:j, ja máhttet låhkåt vuolus ja bájas. NEW DNW
+    ## Oahppe galggi oahpástuvvat tállarájdujn gitta 20:j, ja máhttet låhkåt vuolus ja bájas.
     
-    #$ Ja ienebut oahpástuvvin da divtasvuonaga gaskanisá.NEW DNW
+    #$ Ja ienebut oahpástuvvin da divtasvuonaga gaskanisá. DNW LINDA
     #$ Oahpástuvviv báhtjajn
     #$ valla oahpástuvvin måj sijájn gå de dåhku båhtin. 
-    #$ Tjåhkalvisbálij ulmutja oahpástuvvin ja rádnastallin. NEW DNW
+    #$ Tjåhkalvisbálij ulmutja oahpástuvvin ja rádnastallin. NEW LINDA
     
 ADD:lex-oahpástuvvat-oahpásmuvvat (&lex-oahpástuvvat-oahpásmuvvat) TARGET ("oahpástuvvat")  IF (*0 (N Com) - Sem/Animate OR (N Ill) - Sem/Animate OR ( N Pl Ine) - Sem/Animate BARRIER NOT-NPMODADV ) ;
 
@@ -1770,8 +1778,6 @@ COPY:lex-oahpástuvvat-oahpásmuvvat ("oahpásmuvvat" &SUGGEST) EXCEPT ("oahpás
       #$ Valla ienemusát sihtap dåssju æjvvalit ja ienebut oahpástuvvat. 
       #$ Sárnnediddje lidjin vuojnunagá boahtám oahpástuvátjit.
       #$ Dálla ávvudallá buorebut oahpástuvvat ietjas fuolkijn rijkarájá dá bielen. 
-      #$ Tjåhkalvisbálij ulmutja oahpástuvvin ja rádnastallin. DNW
-      #$ Ja ienebut oahpástuvvin da divtasvuonaga gaskanisá DNW
 
 
 ADD:lex-oahpásmuvvat-oahpástuvvat (&lex-oahpásmuvvat-oahpástuvvat) TARGET ("oahpásmuvvat") IF (*0 Sem/AnimateNotOrg + Ill OR Sem/AnimateNotOrg + Com BARRIER NOT-NPMODADVPCLE LINK NOT 0 <spelled>) ;
@@ -1790,30 +1796,34 @@ COPY:lex-oahpásmuvvat-oahpástuvvat ("oahpástuvvat" &SUGGEST) EXCEPT ("oahpás
     # ------------------------------
 ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*0 ("oahpásmuvvat") BARRIER NOT-NPMODADV LINK NEGATE 1 (Pron Dem) LINK 1 (N Com) ) ;
 
-    #$ Ja de oahpástuvviv avtav prográmmaj DNW Prográmmaj le sihke ill sg ja com pl danen gå la m'm. Majt de dahká?
-    ## Dá bále bessin oahppe vehi oahpásmuvvat {doarromuseajn} Narvijkan  DNW
+    ## Ja de oahpástuvviv avta prográmmaj DNW LINDA, rievddá "avta prográmmaj" juska dát la riekta
+    ## Dá bále bessin oahppe vehi oahpásmuvvat {doarromusiejajn} Narvijkan 
 
-    ## Oahpásmuvvat oanes suohtas prosájn ja vájkkudusáj ma li anon DNW
+    ## Oahpásmuvvat oanes suohtas {prosájn} ja vájkkudusáj ma li anon DNW LINDA, ij rievda illatijvaj. Gå la "prosájn" la err/orth, berustin gus måj dássta?  
+    ## Oahpásmuvvat oanes suohtas {pruvsájn} ja vájkkudusáj ma li anon. DNW LINDA, gå li guokta adjektijva "pruvásjn" ja "oahpásmuvvat" gaskan.
     ## Sån la oahpásmuvvam {skåvlåjn}
     ## li buoragit oahpásmuvvam ájnas {åsijn} dan lahka kultuvras ja histåvrås.
     ## Åhpadiddje váksjut ja ságas oahppij gå låhki tevstav oahpástuvátjit sisanojn åvddåla gå álggi jårggålit.
     ## váj máná ja nuora juo álgos oadtju máhttelisvuodav girkkolanjájn oahpástuvvat
     ## De vuostak oahpástuvvi {namáj} bájken gånnå sij årru.
-    ## Oadtjot oahppijt oahpásmuvátjit sáme girjálasjvuodajn ja girjálasjvuoda histåvråjn. NEW DNW
-    ##  Oahpásmuvvat oanes suohtas prosájn ja vájkkudusáj ma li anon NEW DNW
 
-    #$  gå låhki tevstav oahpástuvátjit ulmutjij. NEW DNW
+    #$ Gå låhki tevstav oahpástuvátjit ulmutjij. DNW LINDA, galggá gus dákkirijt divvot?
     #$ Dákkir juohkusa bierriji vihpat muhtem ájge vaj mánná nubbe nuppijn oahpástuvvi.
+    
  
 ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 (Pron Pers Nom) BARRIER NOT-NPMODADV LINK -1 ("oahpásmuvvat")) ;
 
     ## valla oahpástuvvin (måj bájkijn} gå de dåhku båhtin.
     ## Valla oahpásmuvájma måj buorre prográmmajn 
-
-ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 CC OR COMMA BARRIER NOT-NPMOD LINK -1 (&msyn-com-ill-oahpástuvvat) ) ;
     
-    ## Oadtjot oahppijt oahpásmuvátjit sáme girjálasjvuodajn ja girjálasjvuoda histåvråjn DNW
+    # com and com to ill when oahpásmuvvat 
+    # ------------------------------
+
+ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 CC OR COMMA BARRIER NOT-NPMOD LINK -1 (&msyn-com-ill-oahpástuvvat) OR (&msyn-proncom-ill-oahpástuvvat) OR (&msyn-proncom-ill-oahpástuvvat2) ) ;
+    
+    ## Oadtjot oahppijt oahpásmuvátjit sáme girjálasjvuodajn ja girjálasjvuoda {histåvråjn} DNW LINDA, "histåvråjn" ij sjatta illatijvva. Ihkap gå NOT-NPMOD ij dádjada "girjálasjvuoda"
     ## ja bessi oahpásmuvvat sáme kultuvrajn, {histåvråjn ja sebrudakiellemijn.}
+    ## Maŋenagi gå oahppe oahpásmuvvi dájna teknihkajn ja {bijlajn}. DNW LINDA
 
 COPY:msyn-com-ill-oahpástuvvat (Ill &SUGGEST) EXCEPT (Com &msyn-com-ill-oahpástuvvat) TARGET (Com &msyn-com-ill-oahpástuvvat) ;
 
@@ -1835,20 +1845,18 @@ COPY:msyn-proncom-ill-oahpástuvvat2 (Ill &SUGGEST) EXCEPT (Com &msyn-proncom-il
 
 
 
+
     # Ill to com when oahpástuvvat 
     # ------------------------------
 
 ADD:msyn-ill-com-oahpásmuvvat (&msyn-ill-com-oahpásmuvvat) TARGET (Ill) IF (*0 ("oahpástuvvat") BARRIER NOT-NPMODADV LINK NEGATE 1 (Pron Dem) LINK *1 (N Ill) BARRIER NOT-NPMODADV ) ;
 
-    #$ Oahppe de oahpásmuvvi dajda ådå bágojda ja moallánagájda ma tebmáj gulluji DNW hvorfor Linda??? Oahpástuvvat blir jo byttet til oahpásmuvvat så 1190 skal jo ikke funke?
-
-COPY:msyn-ill-com-oahpásmuvvat (Com &SUGGEST) EXCEPT (Ill &msyn-ill-com-oahpásmuvvat) TARGET (&msyn-ill-com-oahpásmuvvat) ;
+    #$ Oahppe de oahpásmuvvi dajda ådå bágojda ja moallánagájda ma tebmáj gulluji DNW  Linda??? Oahpástuvvat blir jo byttet til oahpásmuvvat så 1190 skal jo ikke funke?
 
     ## Sån la oahpástuvvam {Iŋŋgáj}
     ## Elena ådå {ulmutjijda} oahpástuváj, 
     ## ja suv mielas lij riek suohtas Eskilij oahpástuvvat
-    ##  Oadtjot oahppijt oahpásmuvátjit sáme girjálasjvuodajn ja girjálasjvuoda histåvråjn.  DNW
-    ## ja lip aj oahpástuvvam ietjá sáme nuorajda. DNW
+    ## ja lip aj oahpástuvvam ietjá sáme nuorajda. DNW LINDA "ietjá" dahká jut ij dåjma
     ## Oahpástuvvup sunji
     ## Ulmusj lagábut oahpástuvvá ulmutjijda
     ## Gehtjat nuorajt ja vuojnná sijá duojkev gå dal galggi oahpástuvvat nuppijda.
@@ -1859,14 +1867,23 @@ COPY:msyn-ill-com-oahpásmuvvat (Com &SUGGEST) EXCEPT (Ill &msyn-ill-com-oahpás
     ## Åhpadiddje váksjut ja ságas oahppij gå låhki tevstav oahpástuvátjit sisanojn åvddåla gå álggi jårggålit.
     ## Ulmusj lagábut oahpástuvvá ulmutjijda ja diehtá gut juohkkahasj le, javllá sån.
 
+    # Ill and ill to com when oahpástuvvat
+    # ------------------------------
+
+ADD:msyn-ill-com-oahpásmuvvat (&msyn-ill-com-oahpásmuvvat) TARGET (Ill) IF (*-1 CC OR COMMA BARRIER NOT-NPMOD LINK -1 (&msyn-ill-com-oahpásmuvvat) OR (&msyn-pron-ill-com-oahpástuvvat2) OR (&msyn-pron-ill-com-oahpástuvvat)) ;
+
+    ## ja bessi oahpástuvvat sáme kultuvrraj, histåvrråj ja sebrudakiellemij.}
+    ## Maŋenagi gå oahppe oahpástuvvi dán teknihkkaj ja {bijllaj}. DNW LINDA
+
+COPY:msyn-ill-com-oahpásmuvvat (Com &SUGGEST) EXCEPT (Ill &msyn-ill-com-oahpásmuvvat) TARGET (&msyn-ill-com-oahpásmuvvat) ;
 
     # demonstartive + ill to com when oahpástuvvat
 ADD:msyn-pron-ill-com-oahpástuvvat (&msyn-pron-ill-com-oahpástuvvat) TARGET (Pron Dem Pl Ill) OR (Pron Dem Sg Gen) IF (*0 ("oahpástuvvat") BARRIER NOT-NPMODADV) (*1 (N Ill) BARRIER NOT-NPMOD) ;
 
 COPY:msyn-pron-ill-com-oahpástuvvat (Com &SUGGEST) EXCEPT (Ill &msyn-pron-ill-com-oahpástuvvat) TARGET (&msyn-pron-ill-com-oahpástuvvat) ;
 
-    ## Maŋenagi gå oahppe oahpásmuvvi {dájda} ulmutjijda.
-    #$  Oahppe de oahpástuvvi {dajda} ådå bágojda ja moallánagájda ma tebmáj gulluji. NEW DNW
+    ## Maŋenagi gå oahppe oahpásmuvvi {dájda} {ulmutjijda}.
+    #$  Oahppe de {oahpástuvvi} dajda ådå bágojda ja moallánagájda ma tebmáj gulluji.  DNW LINDA
 
 COPY:msyn-pron-ill-com-oahpástuvvat (Com &SUGGEST) EXCEPT (Gen &msyn-pron-ill-com-oahpástuvvat) TARGET (&msyn-pron-ill-com-oahpástuvvat) ; 
 
@@ -1880,15 +1897,18 @@ COPY:msyn-pron-ill-com-oahpástuvvat2 (Com &SUGGEST) EXCEPT (Ill &msyn-proncom-i
 
 
     # Pred when should be attr
-    #--------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    
 
 ADD:msyn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF (NEGATE 0 Attr OR (V Sg3)) (*1 N + CASE OR A + CASE BARRIER (*) - (A Attr))
 (NEGATE *-1 COPULAS BARRIER NOT-ADV-PCLE LINK *2 Inf OR Ine BARRIER NOT-NPMODADV - Acc - (A Sg Nom) - CASE);
 	## Objevta sadje gárgadisájn gånnå le ditransitijvva værbba
-	#$ Dássta le tjielgas julevsámegiela báhkogárges juogu dal SVO jali SOV. #INGA NEW
-	#$ La tjielgas OSV dagu ( 14 ) ja VSO dagu ( 17) e tjuovo vuodobáhkkogárggáv julevsámegielan, dájn gárgadisájn le sierra dæddo ja intonasjåvnnå. #INGA NEW
-	#$ Generatijvva grammatihkka le gielladiedalasj teorija majt Noam Chomsky vuododij 1950 jagijn.  #INGA NEW
-	#$ {Generatijvva} grammatihkka le vuododuvvam dan vuojno milta ahte máná li riegádam sissŋálasj grammatihkajn, majt Noam Chomsky gåhtjut The Universal Grammar , sámegiellaj {universálla} grammatihkka, (dássta duohku UG).  #INGA NEW
+	#$ Dássta le tjielgas julevsámegiela báhkogárges juogu dal SVO jali SOV. # DNW LINDA
+	#$ La tjielgas OSV dagu ( 14 ) ja VSO dagu ( 17) e tjuovo vuodobáhkkogárggáv julevsámegielan, dájn gárgadisájn le sierra dæddo ja intonasjåvnnå. # DNW LINDA
+	## {Generatijvva} grammatihkka le gielladiedalasj teorija majt Noam Chomsky vuododij 1950 jagijn. 
+	## {Generatijvva} grammatihkka le vuododuvvam dan vuojno milta ahte máná li riegádam sissŋálasj grammatihkajn, majt Noam Chomsky gåhtjut The Universal Grammar , sámegiellaj {universálla} grammatihkka, (dássta duohku UG). 
 
 # North sámi
 #ADD:msyn-attr-not-pred (&msyn-attr-not-pred) TARGET A IF (NOT 0 Attr OR (N Gen) OR @<SPRED LINK NEGATE 0 (Sg Nom) LINK 0 ADJ_ATTR/NOM OR Comp OR Superl)(*1 CNOUN OR A BARRIER NOT-ADJ-CC OR ("gå"))(NOT 1 Rel) (NEGATE 0 ("buorre") OR ("riekta") OR ("duođas") OR Ord - ("nubbi")) (NEGATE *0 MODALS BARRIER GRAMCHK-S-BOUNDARY OR GRAMCHK-VFIN OR Rel) (NEGATE 0 A LINK 1 COMMA OR CC LINK NOT 1 Attr OR Gen) (NEGATE 0 Ess LINK NOT *0 GRAMCHK-VFIN BARRIER GRAMCHK-S-BOUNDARY OR CLB)(NEGATE 0 Superl LINK 0 (Adv Superl))(NEGATE 0 Attr LINK NOT 0 Attr)(NEGATE 1 EOS)(NEGATE 0 (N Sg Ill));
@@ -1919,37 +1939,44 @@ ADD:msyn-attr-pred (&msyn-attr-pred)  TARGET (A Attr) IF (1 EOS) ;
 
 
     # mij instead of gut (all cases and persons, so also ma>gudi)
-    #-------------------
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
 
     # relative use, gut for persons, mij for things
 
 ADD:msyn-mij-gut (&msyn-mij-gut) TARGET ("mij") IF (*-1 (N Coll) OR (Sem/Hum) OR (Sem/Mal) OR (Sem/Fem) OR (Sem/Sur) OR (Pron Pers) OR (Pron Indef) - ("nubbe") BARRIER NOT-ADV-PCLE LINK NEGATE -1 ("/") LINK -1 Dem)(NEGATE -1 ("/") OR CC LINK -1 (Pron Rel)) (NEGATE -1 ("juoga") ) (NEGATE -1 ("iesj" Sg Nom)) ; #OR (Pron Dem)
-	#$ Sidáv aj nammadit GB teorijav (ieŋŋils giellaj Government and binding ) mij le teorija generatijva grammatihkan mij li anon Minimalissta prográmma åvddåla.
+
+    ## Ja gåktu de manáj dáj guoktásijn {ma} galggin dunnuv viedtjat? 
+    ## ja lidjin ájn vil tjállám bårde nali, láhpav dajda {ma} maŋŋela båhti. 
+    ## Dá gåjt dal moattes {ma} båhtin ma lidjin lahka berraha, 
+    ## Árjakluoven lij boadnjásj {mij} ittjij sidá hiejttet noajdástallamis ja ittjij miededa sån lij mejdek boasstot dahkam.
+    ## Men de bådij dåktår badjen mij máhtij tyskav sáhkadit
+    ## ”Måske-aksjåvnnå” åtsåj rudájt, ja biedjin ulmutjav virggáj {mij} galggá prosjevtajn barggat.
+    
+    #$ Valla dat {mij} le stuorámus gássjelisvuohta, le gávnnat dájt låhkkijt.
+    #$ Sidáv aj nammadit GB teorijav (ieŋŋils giellaj Government and binding ) mij le teorija generatijva grammatihkan mij li anon Minimalissta prográmma åvddåla.
 	#$ Objækta le dat jali dat/sån mij/gut vájkkuduvvá dáhpádusás mij boahtá åvddån verban.
 	#$ Dat {mij} vájllu udnásj sáme politihkalasj bargon, la guoradallat mij ”sáme viellde” lulu årrot.
 	#$ Nubbe {mav} la luondulasj nammadit la Bájkkeávijssa Nuortta-Sáltov, mij muhtem jagev la almmudam avta ávijssabielev vahkkuj, valla dát bájkkálasj ávijssa ij tjále oalle sáme journálistihkalasj prinsihpaj milta, dat dåssju jårggål dárogielak ássjijt sámegiellaj.
-	#$ Valla dat {mij} le stuorámus gássjelisvuohta, le gávnnat dájt låhkkijt.
-    ## Ja gåktu de manáj dáj guoktásijn {ma}£{gudi} galggin dunnuv viedtjat? OK
-    ## ja lidjin ájn vil tjállám bårde nali, láhpav dajda ma maŋŋela båhti. OK
-    ## Dá gåjt dal moattes ma båhtin ma lidjin lahka berraha,  OK
-    ## Árjakluoven lij boadnjásj {mij}£{gut} ittjij sidá hiejttet noajdástallamis ja ittjij miededa sån lij mejdek boasstot dahkam. OK
-    ## Men de bådij dåktår badjen mij máhtij tyskav sáhkadit OK
-    ## {”Måske-aksjåvnnå}${conc-sk-ssk|Måsske-aksjåvnnå}” åtsåj rudájt, ja biedjin {ulmutjav virggáj mij}£{x|ulmutjav virggáj gut}
     #$  Sij galggi oahpástuvvat fágajn dan láhkáj vaj oadtju mielav bargatjit vijdábut ienemus abstrákta åsijn matematihkan, dajna mij ij njuolgga tjanáduvá iellemij skåvlå ålggolin.
 	#$ Ij la våjn ávkke, jus dagu ”dålusj ájgge-luodjomav” biebbmagoahtep, valla ulmme mijá siebrudahkabargoj viertti farra årrot, bajás låggñit davva mij duodalattjat la buorren åvddåla årrum. 
     #$ Ja duohta le, miján li moadda buorre ja hávsskes oase, man nali lulujma tsieggigoahtet, davva majt lidjiv dánna sihtat gåhttjot ”sáme vuodovuojnnon”.
     #$ Sámedigge ij nagá Rádedusáv jåhtuj oadtjot, biednigijt juollodittjat dajda dárbojda ma duodalattjat li sáme siebrudagán
-    #$ Dát le ienemusát tjasskam dajt vantsajt ma lahka merragáttijn ja vuonajn li guollim, valla dát le vájkkudam juohkkahattjaj guhti nuores le iellemlájbev viedtjam, vájku dal man ålov li guolástussaj tjanáduvvam.  DNW NEW
-    ## Dån le akta sijájs guhti le vuorbeduvvam. DNW NEW
-    ## Javllá Adrian Nystø Mikkelsen akta studentajs gut uddni álggin bacheloråhpadussaj julevsámegielan. NEW DNW
-    ## Juohkkahasj dijás guhti sámegielav adná jali ratjás gielav oahppat le ájnas ássjev åvdedime. NEW DNW
-    ## Mij lip 10 nuora Sáminuorras (sámenuora organisasjåvnnå) guhti vuolggep. DNW NEW
-    ## Moaddása li nammadam Biemmo Mihkkil ( Mikkel Pedersen Kuoljok ) 6 lij akta dajs guhti álgon risstalasjvuodav Divtasvuodnaj buvtij. DNW NEW
-    ## Olsen, guhti iesj la akta sijájs gut la gielav massám dárojduhttema diehti, oattjoj åvdåsvásstádusáv dárojduhttemássjij åvdås sámediggeráden 2016:n ja jåhtuj biejaj dav mij dálla sjattaj mærrádussan Stuorradikken jut duohtavuohtakommisjåvnåv oadtjop. NEW DNW
-    ## Sån la akta ájnegattjajs guhti várajda válldá gåvvåtjuolldemteknihkav ja dán dábijt ja dan diehti lip ávon. DNW NEW
+    #$ Dát le ienemusát tjasskam dajt vantsajt ma lahka merragáttijn ja vuonajn li guollim, valla dát le vájkkudam juohkkahattjaj guhti nuores le iellemlájbev viedtjam, vájku dal man ålov li guolástussaj tjanáduvvam.  DNW LINDA, juohkkahattjaj ja ill sg, dárbaj disambiguierit váj vállji sg.  
+    #$ dási gulluji aj rievtesvuoda ma li ANa álggoálmmugij rievtesvuoda tjielggidusán. 
+    #$ Boatsojmärkka le sárgij låhko rievtes ja gåro bieljen ma giehttu {gut} boahttsuv {äjggu}. DNW LINDA
+    
+    # DNW LINDA, divna dá e dåjma, del av. 
+    ## Dån le akta sijájs guhti le vuorbeduvvam. DNW 
+    ## Akta sijájs guhti lij boahtám subtsastij sån sámegielav åhpaj esski 10. klássan. DNW 
+    ## Javllá Adrian Nystø Mikkelsen akta studentajs gut uddni álggin bacheloråhpadussaj julevsámegielan. DNW
+    ## Juohkkahasj dijás guhti sámegielav adná jali ratjás gielav oahppat le ájnas ássjev åvdedime.  DNW
+    ## Mij lip 10 nuora Sáminuorras (sámenuora organisasjåvnnå) guhti vuolggep. DNW 
+    ## Moaddása li nammadam Biemmo Mihkkil ( Mikkel Pedersen Kuoljok ) 6 lij akta dajs guhti álgon risstalasjvuodav Divtasvuodnaj buvtij. DNW 
+    ## Olsen, guhti iesj la akta sijájs gut la gielav massám dárojduhttema diehti, oattjoj åvdåsvásstádusáv dárojduhttemássjij åvdås sámediggeráden 2016:n ja jåhtuj biejaj dav mij dálla sjattaj mærrádussan Stuorradikken jut duohtavuohtakommisjåvnåv oadtjop.  DNW
+    ## Sån la akta ájnegattjajs guhti várajda válldá gåvvåtjuolldemteknihkav ja dán dábijt ja dan diehti lip ávon. DNW 
     ## Uhtsvuon-Máhttu ( Mathias Nilsen Tjihkkom, 1858-1952 ) lej Nihkola ( Nikolaus Anundsson Tjihkkom ) bárnne guhti lij akta dajs guhti læstadiánalasj gåhttsåmijn bådij rája badjel.
-    #$ dási gulluji aj rievtesvuoda ma li ANa álggoálmmugij rievtesvuoda tjielggidusán. DNW NEW
-
 
 
 	# interrogative use
@@ -1957,6 +1984,7 @@ ADD:msyn-mij-gut (&msyn-mij-gut) TARGET ("mij") IF (*-1 (N Coll) OR (Sem/Hum) OR
 ADD:msyn-mij-gut (&msyn-mij-gut) TARGET ("mij" Nom) IF (*1 COPULAS BARRIER NOT-ADV-PCLE LINK *1 Sem/Hum + N BARRIER NOT-NPMOD LINK NEGATE 0 Gen OR Attr LINK 1 N) ;
     ## lij dålåv dahkamin mij lij muv ráddna. Subj-interr-hum COPULA Spred-Hum
     #$ Sámedigge ij nagá Rádedusáv jåhtuj oadtjot, biednigijt juollodittjat dajda dárbojda ma duodalattjat li sáme siebrudagán
+    
 COPY:msyn-mij-gut ("guhti" &SUGGEST) EXCEPT ("mij" &msyn-mij-gut) TARGET (&msyn-mij-gut) ;
 
     ## Åja, ma fáŋŋgaj lidjin váldedum? válldet fáŋŋgaj + OBJ-Hum
@@ -1968,28 +1996,37 @@ COPY:msyn-pass-active (&SUGGEST) EXCEPT (Der/PassL &msyn-pass-active) OR (Der/Pa
     ## Danna ittjiv dádjaduvá majdik
     ## mån ittjiv dádjaduvá majdik
 
-    #$Dat la juoga majt viertti oahppat,
-    #$Jågŋå lij biebbmo valla aj juoga majt divna oasstin.
+    #$ Dat la juoga majt viertti oahppat,
+    #$ Jågŋå lij biebbmo valla aj juoga majt divna oasstin.
 
 
-     # Congr error with relative pron
-     # -----------------------------
 
+
+    # Congr error with relative pron
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    
  SET NOT-BEFORE-REL = (*) - Inf - VFIN - COMMA - Po ;
 
 ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NOT 0 (N Sg) LINK NEGATE -1 VFIN OR Inf LINK -1 (N Sg) OR (Pron Sg))(NEGATE *-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK -1 ("akta") OR ("1" Num))(NEGATE -1 Po LINK -1 (Gen Pl) LINK -1 (N Sg))(NEGATE -1 (V <TH-FS-Qpron>));
-	#$ Ådåsamos teorija mij tjielggi generatijva grammatihkav le Minimalissta prográmma (Ieŋŋilsgiellaj Minimalist program).
-	#$ Sij hæhttuji diehtet {mij} la dárbulasj ietjasa álmmugij ja dan milta politihkalattjat válljit.
+
     ## Valla mij gut lijma Vuonas vuolggám ejma davdiede.
     ## Da gut ásadin æjvvalimev, lidjin dudálattja.
     ## Ulmutjijda guhti doarjodi báhtariddjijt.
     ## Galggi aj ájggeguovddelis ássjijt åvddånbuktet mij guosská vuorrasij iellemdilláj ja álkkádussaj
     ## Lejga giehttomin M.Gånågis Haraldij dajhásstalusáj birra mij duosstu vuoras sámijt.
+    ## Ednama goage badjelin sån tjåhkkåj, sij li degu gårkå {guhti} danna årru. 
+    ## Da guhti lájddijin dáv álmmugav sijáv mållådin, da guhti lájddiduvvin sij tjádjánin. 
+    ## Da gut ásadin æjvvalimev, lidjin dudálattja. 
+    ## Njuolgadusáj ulmmen le nannit jut konsultasjåvnå galggi liehket buorre jáhkujn ja ulmijn guorrasittjat gasskala stáhtta avta bielen ja Sámedigge, sáme berustimij organisásjåvnå ja sáme rievtesvuoda æjgáda nuppe bielen, gájkkaoajvvadusáj birra {mij} gullu suodjalusájda luondomoattebelakvuohtalága milta sáme guovloj. 
+    
+	#$ Ådåsamos teorija mij tjielggi generatijva grammatihkav le Minimalissta prográmma (Ieŋŋilsgiellaj Minimalist program).
+	#$ Sij hæhttuji diehtet {mij} la dárbulasj ietjasa álmmugij ja dan milta politihkalattjat válljit.
     #$  Låhkåm le akta vuodomáhtudagájs {mij} tjalmostuvvá Máhtudaklåpptimin, oahppoplánaj sihke vuodo- ja jårggåskåvlån.
     #$ Galggi aj ájggeguovddelis ássjev åvddånbuktet oajválattjajda mij guosská vuorrasij iellemdilláj ja álkkádussaj.
-    #$ Bargadahttijn tjielggi ja subtsas oahppijda mij dáhpáduvvá, ja gåktu dagáduvvá. NOT
-    #$ Boatsojmärkka le sárgij låhko rievtes ja gåro bieljen ma giehttu gut boahttsuv äjggu.NOT
-    #$ Gávnnu agev ulmusj guhti dárbaj liegga giedav, ja agev ássje mij dárbaj vájmov mij svahtjá ja berus.NOT
+    #$ Bargadahttijn tjielggi ja subtsas oahppijda mij dáhpáduvvá, ja gåktu dagáduvvá. DNW LINDA
+    #$ Gávnnu agev ulmusj guhti dárbaj liegga giedav, ja agev ássje mij dárbaj vájmov mij svahtjá ja berus. 
     #$ Gávnnu aj impregnerim biktasijda mij snjibttjojt jáddi.
     #$ Ij la nav imálasj gå oattjov gatjálvisájt mij la sierralágásj sáme árkitektuvrajn.
     #$ Maŋŋela gulldali divna mij la maŋemus jiedna stávvalin.
@@ -1997,20 +2034,17 @@ ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Pl) OR
     #$ Muhtem guosse guhti dáv guláj, javlaj: ” Sálugin guhti mállásijda Jubmela rijkan bässá tjåhkkidit.
     #$ Máná sujttoaddne gut gálggá miededit sujttuj mij mánnáj fáladuvvá.
     #$ Aktisasjbarggo Jielleváre ja Divtasvuona  suohkanij gaskan le konkrehta aktisasjbarggo suohkanij gaskan mij buoragit hiehpá nuorttaguovllovuorodibmáj.
-    #$ Jus dån aj dán biejve lulu dádjadit, mij dunji ráfev vaddá! NOT
     #$ Aktisasjbarggo Jielleváre ja Divtasvuona  suohkanij gaskan le konkrehta aktisasjbarggo suohkanij gaskan {mij} buoragit hiehpá nuorttaguovllovuorodibmáj.
-    #$ Ådåsamos teorija {mij} tjielggi generatijva grammatihkav le Minimalissta prográmma (Ieŋŋilsgiellaj Minimalist program ). #INGA NEW
-    ## Akta sijájs guhti lij boahtám subtsastij sån sámegielav åhpaj esski 10. klássan. DNW NEW
-    ## Da guhti lájddijin dáv álmmugav sijáv mållådin, da guhti lájddiduvvin sij tjádjánin. NEW DNW
-    ## Da gut arrangerijn dajt gilpojt mierredin sirddet 5 km tjuojggusav ájllegij. NEW DNW
-    ## Da gut ásadin æjvvalimev, lidjin dudálattja. NEW DNW
-    #$ Ednama goage badjelin sån tjåhkkåj, sij li degu gårkå guhti danna årru. NEW DNW
-    ## Galggi aj ájggeguovddelis ássjijt åvvånbuktet mij guosská vuorrasij iellemdilláj ja álkkádussaj. NEW DNW
-    #$ Njuolgadusáj ulmmen le nannit jut konsultasjåvnå galggi liehket buorre jáhkujn ja ulmijn guorrasittjat gasskala stáhtta avta bielen ja Sámedigge, sáme berustimij organisásjåvnå ja sáme rievtesvuoda æjgáda nuppe bielen, {gájkka} oajvvadusáj birra mij gullu suodjalusájda luondomoattebelakvuohtalága milta sáme guovloj. DNW NEW
-    ## Oassekapihtal vaddá prinsihpalasj refleksjåvnåjt mij le vuodon sáme-girkkolasj demokratijaj Vuona girkkon, ja tjielggi oanegattjat barggojuohkusa bargo birra, ja dan låhpadahtte rádegiehtadallama birra. DNW NEW
-    ## Oahppe guhti e gæhttjalimijt mierredimbæjvváj tjadáda.
-    ##  Tjielggidus vuoset oajvvehásstalusájda mij gullu giellaj. NEW DNW
-    #$ Áhttje mijá guhti le almen. DNW NEW
+    #$ Ådåsamos teorija {mij} tjielggi generatijva grammatihkav le Minimalissta prográmma (Ieŋŋilsgiellaj Minimalist program ).
+    
+
+
+    ## Galggi aj åvddånbuktet ájggeguovddelis ássjijt {mij} guosská vuorrasij iellemdilláj ja álkkádussaj. 
+    ## Galggi aj ájggeguovddelis ássjijt åvddånbuktet {mij} guosská vuorrasij iellemdilláj ja álkkádussaj. DNW LINDA, fordi infinitiven kommer etter acc. 
+
+    
+    ##  Tjielggidus vuoset oajvvehásstalusájda mij gullu giellaj. DNW LINDA, fordi det er illativ pl om bestemmer, og vanligvis er jo ill adverbial. 
+    #$ Áhttje mijá guhti le almen. DNW LINDA, fordi mijá kommer etter subjektet, skal egentlig vær før, men siden det er oversatt "fadervår" så er det rart. Kanskje vi må skrive regel for WO først :)
 
 ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Sg) BARRIER NOT-BEFORE-REL LINK *-1 Num - ("akta") BARRIER NOT-NPMOD) ;
 
@@ -2030,7 +2064,9 @@ ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (-1 Ela LINK -
 
 ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3)) ;
     ## Mij lip 10 nuora Sáminuorras (sámenuora organisasjåvnnå) guhti vuolggep.
-    ## Stáhtta ja Sámedigge galggi gæhttjalit semadit mandáhta birra , ja	gut galggi	tjielggidusáv tjadádit .
+    ## Stáhtta ja Sámedigge galggi gæhttjalit semadit mandáhta birra, ja gut galggi tjielggidusáv tjadádit .
+    ## Oahppe {guhti} e gæhttjalimijt mierredimbæjvváj tjadáda.
+
     
 COPY:msyn-congr-mij-ma (Pl &SUGGEST) EXCEPT (Sg &msyn-congr-mij-ma) AFTER Rel TARGET (&msyn-congr-mij-ma) ;
 
@@ -2045,19 +2081,24 @@ ADD:msyn-verb-cong-rel (&msyn-verb-cong-rel) TARGET (V Sg3) IF (*-1 (Rel Nom) + 
     ## Mij lip tjoaggám gåvåjt, girjijt, filmajt, jienajt, oahppamnævojt ja digitála ressursajt {mij} {giehpet} bargov dunji sáme åhpadiddjen
     ## Girjen vuojná aj tjáhppis ja biedjis gåvåjt {mij} munji {gåvåstahttá} tjáhppis ja biedjis máhtudagáv jali ájádusájt - jábma gávne histåvrå dagá
     ## Vars ja Karlsen lijga Slåhtan giehttomin M.Gånågis Haraldij daj hásstalusáj birra mij duosstu vuoras sámijt uddni.
-    ## Dánna gávna tjállagijt ja tjåhkanimgirjijt mij guosská Vuona ja Svieriga ælloguohtomkonvensjåvnå bargguj. NOT
-    ## Liehket konsultasjåvnabiellen ráddidussaj mierredattijn lágav mij sihkarasstá sámij rievtesvuodajt ednamijda ja resursajda mij le tjanádum almasjrievtesvuodajda ja histåvrålasj adnuj. NOT
-    ## Euråvppåráderesolusjåvnnå Vuona Unneplåhkogiellalihto tjuovvolime birra 2007as vaddá konkrehta ávttjimusájt mij guosská dájda NOT
+    ## Dánna gávna tjállagijt ja tjåhkanimgirjijt {mij} {guosská} Vuona ja Svieriga ælloguohtomkonvensjåvnå bargguj.
+    ## Liehket konsultasjåvnabiellen ráddidussaj mierredattijn lágav mij sihkarasstá sámij rievtesvuodajt ednamijda ja resursajda mij le tjanádum almasjrievtesvuodajda ja histåvrålasj adnuj.
+    ## Euråvppåráderesolusjåvnnå Vuona Unneplåhkogiellalihto tjuovvolime birra 2007as vaddá konkrehta ávttjimusájt mij guosská dájda.
     ## Oassekapihtal vaddá prinsihpalasj refleksjåvnåjt mij le vuodon
+    ## Liehket konsultasjåvnabiellen ráddidussaj mierredattijn lágav mij sihkarasstá sámij rievtesvuodajt ednamijda ja resursajda mij {le} tjanádum almasjrievtesvuodajda ja histåvrålasj adnuj. 
+
+    
     #$ Sij hæhttuji diehtet {mij} la dárbulasj ietjasa álmmugij ja dan milta politihkalattjat válljit.
     #$ Lejga giehttomin M.Gånågis Haraldij daj hásstalusáj birra mij {duosstu} vuoras sámijt.
-    ## Liehket konsultasjåvnabiellen ráddidussaj mierredattijn lágav mij sihkarasstá sámij rievtesvuodajt ednamijda ja resursajda mij {le} tjanádum almasjrievtesvuodajda ja histåvrålasj adnuj. NEW DNW
-    #$ Vars ja Karlsen lijga Slåhtan giehttomin M.Gånågis Haraldij daj hásstalusáj birra mij duosstu vuoras sámijt uddni. DNW
+    #$ Vars ja Karlsen lijga Slåhtan giehttomin M.Gånågis Haraldij daj hásstalusáj birra mij {duosstu} vuoras sámijt uddni. DNW LINDA, får feiltag selv om "duosstu" er rett. Gjelder alle -ot verb. 
 
     
 ADD:msyn-verb-cong-rel (&msyn-verb-cong-rel) TARGET (V Sg3) IF (-1 CC LINK -1 (&msyn-verb-cong-rel)) ;
 
-   ## Galggap ásadit dåjmajt mij sihke {gåtset} ja {åvddånahttá Rádjebálggáv}.
+    ## Galggap ásadit dåjmajt mij sihke {gåtset} ja {åvddånahttá} Rádjebálggáv.
+    ## Sån vaddá rádijt mij tjielggi ja {vájkkut} rievddadusájda. 
+    ## Oassekapihtal vaddá prinsihpalasj refleksjåvnåjt mij le vuodon sáme-girkkolasj demokratijaj Vuona girkkon, ja {tjielggi} oanegattjat barggojuohkusa bargo birra, ja dan låhpadahtte rádegiehtadallama birra. # DNW LINDA, "tjielggi" la ilá guhken ierit
+
    
 COPY:msyn-verb-cong-rel (Pl3 &SUGGEST) EXCEPT (Sg3 &msyn-verb-cong-rel) OR (Sg3 SentInit &msyn-verb-cong-rel) TARGET (&msyn-verb-cong-rel) ;
 
@@ -2065,12 +2106,12 @@ COPY:msyn-verb-cong-rel (Pl3 &SUGGEST) EXCEPT (Sg3 &msyn-verb-cong-rel) OR (Sg3 
   
 
 
- 
 
 
-
-     # Congr error with relative pron gænna-gejn
-     # -----------------------------
+    # Congr error with relative pron gænna-gejn
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
 
 ADD:msyn-congr-gænna-gejn (&msyn-congr-gænna-gejn) TARGET (Rel Ine Sg) IF (*-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NEGATE -1 VFIN OR Inf LINK -1 (N Sg) OR (Pron Sg));
 
@@ -2081,19 +2122,24 @@ COPY:msyn-congr-gænna-gejn (Pl &SUGGEST) EXCEPT (Sg &msyn-congr-gænna-gejn Are
    ## Oahppijn {gænna} la buorre giella.
 
 
-     # Congr error with iesj-ietja
-     # -----------------------------
 
+    # Congr error with iesj-ietja
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    
 ADD:msyn-congr-iesj-ietja (&msyn-congr-iesj-ietja) TARGET ("iesj" Pron Refl Sg Nom) IF (-1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3)) (NEGATE 1 (Pron Indef) ) ;
 
 
    ##  Suv mielas åvdemusát vierttip {iesj} sámástit nuppe nubbáj.
    ##  Dá e galla máhte tjoavdeduvvat dåssju doarrodievnujn aktu, ja vierttiji {iesj} gávnnat tjoavddusijt gássjelisvuodajda.
+   
    #$ Oahppijn li iesj gænnanik vuohke mij vájkkut gåktu sij ja man ålov sij oahppi.
    #$ Juska tjehpudagá li iesj geŋga fágajn moatten láhkáj åvddånbuvtedum, de båhtusa li guoskavattja gájkka åhpadiddjijda ja ij dåssju dárogiela / sámegiela ja matemátihka åhpadiddjijda.
    #$ Duodden hæhttu liehket duodje majt le iesj dahkam.
 
-    # verb on right side of iesj
+
+    #  Congr verb on right side of iesj
     #----------------------------
 ADD:msyn-congr-iesj-ietja (&msyn-congr-iesj-ietja) TARGET ("iesj" Pron Refl Sg Nom) IF (1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3)) ;
 
@@ -2102,10 +2148,17 @@ ADD:msyn-congr-iesj-ietja (&msyn-congr-iesj-ietja) TARGET ("iesj" Pron Refl Sg N
 
 COPY:msyn-congr-iesj-ietja (Pl &SUGGEST) EXCEPT (Sg &msyn-congr-iesj-ietja) AFTER Refl TARGET (&msyn-congr-iesj-ietja) ;
 
+    
+    
+    
+    # real word error missing j or extra j
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
 
     # real word error, missing j for -it verbs
     # ----------------------------------------
-
+    
 LIST IT-V = (".*it"r);
 
 
@@ -2127,12 +2180,13 @@ ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-V + Gram/3syll OR ("liehk
 
     ## Suv mielas sån li ilá materalistisk.
     ## Mij juo diehtep Hamsun nasistajt bælosti nuppát værálda doaron.
+    ## Jus sámegiella li ienep vuojnnuj boahtet duola dagu mediagåvån, de jáhkáv sámegiela stáhtus li dalága lassánit. #NEW Doajmmá, valla lej dát sluogas vuohke?
+
 
     #$ Suv mielas li skuvla ja girku ilá garrasat.
     #$ Ulmutja vuosedi son boahtá odne.
     #$ Fáhkaulmutja ja bulkke li oassálasstám ájnas jienaj diedádusán.
     #$ Sån aj vuosedij dajda guhti hæhttuji niedastuvvat, ja moattes li aj ájteklándas vuojeduvvam
-    ## Jus sámegiella li ienep vuojnnuj boahtet duola dagu mediagåvån, de jáhkáv sámegiela stáhtus li dalága lassánit. #NEW Doajmmá, valla lej dát sluogas vuohke?
     #$ Gájtsa máhtti nåv jasska guodudit ja livvadit sjaljon valla gå ulmutja gajkkum {li} låvdagoadev ja gálvov guottadam jåhtemvadnasij, de gájtsa li gáhtum saje dagi.
     
     # right subj
@@ -2140,12 +2194,13 @@ ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-V + Gram/3syll OR ("liehk
 ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-V + Gram/3syll OR ( "liehket" )  IF (0 (Prs Pl3)) (*1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) - PLURAL-QUANTIFIERS BARRIER NOT-NPMOD - Adv - Pcle OR PLURAL-QUANTIFIERS LINK NOT 0 (Pl Nom) LINK NEGATE 1 CC LINK *1 (Nom Sg) BARRIER NOT-NPMOD)  (NEGATE *-1 (Pron Nom Pl3) OR (N Nom Pl) OR (Pron Nom Pl))(NEGATE 0 (Prs Sg3));
 
     ## Suv mielas li sån ilá materalistisk.
+    ## Mijá sáme åvdåstiddjijn {li} mierredimfábmo.
+
     #$ Soajttá bágon li moadda sisano, ja jus da li nammadum alfabeehtalattjat, de ij agev enemus dábálasj báhko tjuottjo vuostak.
     #$ Suv mielas li Inga ja suv vielja ilá materialistisk.
     #$ Suv mielas Inga ja suv vielja li ....
     #$ Mån lav ávon ja mihá gå miján li dájddára guhti iåvddånbukti mijá histåvråv.
     #$ Gájka li buorisboathem, ållagasj báhtariddjijdoalvvo mañeldisbuolva.
-    ## Mijá sáme åvdåstiddjijn {li} mierredimfábmo.
 
 COPY:real-PrsPl3-PrtSg3 (Prt Sg3 &SUGGEST) EXCEPT (Prs Pl3) TARGET (&real-PrsPl3-PrtSg3) ;
 
@@ -2231,8 +2286,10 @@ COPY:real-negSg3-negSg2 (Sg2 &SUGGEST) EXCEPT (Sg3) TARGET  (&real-negSg3-negSg2
 
 
     # Word order, neg before subject
-    # ----------------------------------------
-
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    
 LIST SG-V-SUBJ = Sg Sg3 ;
 LIST PL-V-SUBJ = Pl Pl3 ;
 LIST NEG-PRON = Foc/Neg-k ("nágin") ;
@@ -2272,6 +2329,9 @@ SET v = v1 OR v2 OR v3  ;
 
     # congruence case/ number
     # -----------------------
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
 
 LIST IT-VERBS = (".*it"r V) (".*it"r Ex/V) ;
 SET IT-EVEN-VERBS = IT-VERBS - Gram/3syll - Der/h - Der/d - Der/st - Der/l - Der/Caus - Der/huvva - Der/stuvva - Der/PassS - Der/adda - Der/alla - Der/easti - Der/InchL ;
@@ -2319,10 +2379,12 @@ ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V
 	## Mån la vuoras.
 	## Mån ij la illastuvvam, valla jáhkáv muv sámevuohta l. Mun it 	leat sordojuvvon, muhto mun jáhkan ahte mu sámevuohta lea dan”
 	## – Mån bargaMun barggat 	hirbmat olu, muhttun váhkkuid sáhtan roahkka bargat 40-50 diimmu, muitala Per Vidar.
-	#$  Mun oainnát 	ballen dan áhkus, dat lávii ovtto bahádallat.
-	## Mun boahtá deike.
+    ## Mun boahtá deike.
     ## Valla ij la mån moaren dan diehti.
     ## Mån ij lav basádam ienep gå gålmmi-niellji.
+    
+	#$  Mun oainnát 	ballen dan áhkus, dat lávii ovtto bahádallat.
+
 
 
 COPY:syn-number_congruence-subj-verb (Sg1 &SUGGEST) EXCEPT Sg2 OR Sg3 OR (Sg3 Clt) OR Du1 OR Du2 OR Du3 OR Pl1 OR Pl2 OR Pl3 AFTER TENSE-MARKER TARGET (V Neg Ind &syn-number_congruence-subj-verb) OR (V Ind Prs &syn-number_congruence-subj-verb) OR (V Ind Prt &syn-number_congruence-subj-verb) IF (*-1 (Pron Pers Sg1 Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 @COMP-CS< LINK *-1 BOS OR (":") OR (";") OR ("/") OR ("‹") OR ("–") OR COMMA OR CS OR (Adv Subqst) OR (Pron Rel Sg) BARRIER NOT-ADV-PCLE)(NEGATE 0 Sg1 OR &real OR (N Sg) - Px OR Adv);
@@ -2934,10 +2996,15 @@ COPY:syn-number_congruence-subj-verb (Pl3 &SUGGEST) EXCEPT Sg1 OR Sg2 OR (Sg2 Se
 (NEGATE 0 Du1 LINK -1 Sem/Human + (Nom Sg) LINK *-1 CC BARRIER NOT-NPMODADV  LINK -1 ("måj" Nom))
 (NEGATE 0 Du2 LINK -1 Sem/Human + (Nom Sg) LINK *-1 CC BARRIER NOT-NPMODADV  LINK *-1 ("dåj" Nom));
 
+
 	# Correct copula form, not congruence (after congruence-subj-verb rules)
-	# -----------------------------------
-	
+	# ---------------------------------------------------------------------------------------------------------
+	# ---------------------------------------------------------------------------------------------------------
+	# ---------------------------------------------------------------------------------------------------------
+
+
 	# Should not be sentence initial copula: from le, to la or l
+    # ----------------------------------------------------------------------
 ADD:from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentInit IF (NEGATE -1 BOS)(NEGATE 0 &syn-number_congruence-subj-verb) (NEGATE 0 &msyn-verb-cong-rel) (NEGATE 0 &msyn-soajttá-le) ;
 	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
 	## Såj læbá boahtám sijddaj
@@ -2947,7 +3014,7 @@ COPY:from-sentence-init-copula (Clt &SUGGEST) EXCEPT (SentInit &syn-from-sentenc
 
 COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET &syn-from-sentence-init-copula IF (-1 CC OR ("de" Adv)); # LINDA ÅDÅ, gåk dáv biedjá vuolep njuolgadussaj?
 	## ja {le} akta dajs ájnnasamos>la
-	  ## jus boadá de {le} buorre> la
+    ## jus boadá de {le} buorre> la
 
 COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET &syn-from-sentence-init-copula IF (NEGATE -1 ("<.*[aeiouáå]>"r));
 	## Árvustallam viertti dáhpáduvvat dajna elementajn manna le sæmmi lágásj dåbddomærkka ja mij {le} lagámus, ij dåhkki dåbddomerkajt árvustallat ietjá elementajn jus gávnnu elemænnta manna le sæmmi lágásj dåbddomerka lagábun. >l 
@@ -2956,28 +3023,37 @@ COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-i
 	
 	
     # Should be sentence initial copula: from la to le. 
+    # ----------------------------------------------------------------------
 ADD:to-sentence-init-copula (&syn-to-sentence-init-copula) TARGET ("liehket" Ind) IF (-1 BOS LINK NEGATE 1 SentInit) (NEGATE 0 &syn-from-sentence-init-copula) (NEGATE 0 &msyn-soajttá-le) (NEGATE 0 ("liehket" Neg)) ;
 
 COPY:to-sentence-init-copula (SentInit &SUGGEST) EXCEPT (&syn-to-sentence-init-copula) TARGET (&syn-to-sentence-init-copula) ;
 
 
 	# la/le to l after vowel
+    # ----------------------------------------------------------------------
 ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" Ind Prs Sg2) IF (NEGATE 0 Clt) (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 CC OR CS OR ("de" Adv) OR (Ill Pl)) (NEGATE 1 EOS)(NEGATE 0 (Pl3 &SUGGEST)) (NEGATE 0 &msyn-soajttá-le) ;
 	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
+    ## Jus árvodimes dåbddomerka galggi árvustaláduvvat viertti dat elementa manna le sæmmi lágásj dåbddomærkka ja manna {le} árvvo aj liehket dádjadahtes váj dát aj sihtá dárkestuvvat. #NEW INGA
+
     #$ Sidáv dav ja la buorre dav dalá dahkat. 
     #$ Dát ja la buorre dav dalá dahkat. 
     #$ Mánájda la buorre dav åhpadit. 
     #$ Danna gånnå bijlla la. 
-    ## Jus árvodimes dåbddomerka galggi árvustaláduvvat viertti dat elementa manna le sæmmi lágásj dåbddomærkka ja manna {le} árvvo aj liehket dádjadahtes váj dát aj sihtá dárkestuvvat. #NEW INGA
     #$ Dá {la} viehka gássjelis gatjálvisá.
         
 COPY:msyn-l-not-la (Clt &SUGGEST) EXCEPT (SentInit &msyn-l-not-la) TARGET (&msyn-l-not-la) ;
 	## Linda la buorre.
 
-# numerals used as attributive adjectives
-# --------------------------------------
-# the noun from pl to sg.
 
+
+    # numerals used as attributive adjectives
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    
+    # the noun from pl to sg.
+    # -----------------------
+    
 LIST NUMBER-EXCEPT = ("miljåvnnå") ;
 
 
@@ -2991,14 +3067,15 @@ COPY:msyn-numeral-accattr (Sg Gen &SUGGEST) EXCEPT (Pl Acc &msyn-numeral-accattr
     ## vuojnáv guokta gusájt > vuojnáv guokta gusá insead of vuojnáv guokta guosáv
 
 ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (N Pl) IF (NOT 0 &msyn-numeral-accattr) (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock LINK NEGATE 0 NUMBER-EXCEPT LINK -1 Num OR ("moadda"))(NEGATE 0 (N Sg))(NEGATE 0 (Pl Ela) LINK -1 ("akta" Sg Nom))(NEGATE 0 (Pl Ela) LINK -1 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 2 ("liehket" Pl3))(NEGATE 0 (N Pl Nom) LINK -1 (Num Sg Nom)) ;
-	#$ Sáme gielladutkij gaskan li guokta {vuojno} dasi mij máhttá doajmmat objæktan sámegielan. 
     ## Mån lav åhtsåm guokta {universitehtajda}  
+    ## Sámedigge le juo juollodam moadda miljåvnå {gielladåjmajda}, valla ulmutja e åhpa sámegielav ietjas årrombájken.
     ## Ælla des dagu åvddål guovte sierra skåvllåhuodnahijda sieradum. = guovte sierra skåvllåhuodnahij
+    ## Nammadit gålmmå ájrrasa gudát {ájrrasijs} Finnmárkoåbmudahkaj mij háldat ednamijt ja resursajt Finnmárkon finnmárkolága milta.  
     ## Sån gatjádij låge ulmutjijs sijá alkohåvlådábij birra.
+    
     #$ De vuolggeba da guovtes stuorra universitehtajda.
     #$ Dále lij muhtem subtsas gå russtijin 1930- jagijn náv:
-    ## Nammadit gålmmå ájrrasa gudát {ájrrasijs} Finnmárkoåbmudahkaj mij háldat ednamijt ja resursajt Finnmárkon finnmárkolága milta.  
-	## Sámedigge le juo juollodam moadda miljåvnå {gielladåjmajda}, valla ulmutja e åhpa sámegielav ietjas årrombájken.
+	#$ Sáme gielladutkij gaskan li guokta {vuojno} dasi mij máhttá doajmmat objæktan sámegielan. 
 	#$ Vuojnniv gålmmå gusá #NEW INGA
 	#$ Iejvvijma guokta ulmutja guhti barggi minoritehtaj miehtá Europa. DNW NEW
 
@@ -3180,28 +3257,28 @@ COPY:msyn-numeral-comcasecongr (Sg Com &SUGGEST) EXCEPT (Sg Gen &msyn-numeral-co
 ADD:msyn-numerals-with-demopron (&msyn-numerals-with-demopron) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) LINK *1 (N Sg) BARRIER NOT-NPMOD - CC) ;
 
 
-#pl nom      sg nom          pl nom/sg gen
-#dá          guokta          gusá
-#
-#sg gen      sg gen  
-#dán         guovte gusá
-#
-#pl nom      sg nom
-#dá          guokta gusá
-#
-#sg gen      sg gen
-#dán         guovte gussaj
-#
-#sg gen      sg ine
-#dán         guovten gusán
-#
-#sg par      sg par
-#dat         guovtet gusás
-#
-#sg com  sg com
-#dajn        guovtijn gusájn
-#
-   #da
+    #pl nom      sg nom          pl nom/sg gen
+    #dá          guokta          gusá
+
+    #sg gen      sg gen  
+    #dán         guovte gusá
+
+    #pl nom      sg nom
+    #dá          guokta gusá
+
+    #sg gen      sg gen
+    #dán         guovte gussaj
+   
+    #sg gen      sg ine
+    #dán         guovten gusán
+
+    #sg par      sg par
+    #dat         guovtet gusás
+
+    #sg com  sg com
+    #dajn        guovtijn gusájn
+
+    #da
 
 COPY:msyn-numerals-with-demopron (Pl Nom &SUGGEST) EXCEPT (Pl Acc Attr &msyn-numerals-with-demopron) TARGET (&msyn-numerals-with-demopron) IF (1 (Num Sg Nom))  ;
 
@@ -3237,6 +3314,11 @@ COPY:msyn-numerals-with-demopron (Sg Ela Attr &SUGGEST) EXCEPT (Pl Com Attr &msy
 COPY:msyn-numerals-with-demopron (Sg Com &SUGGEST) EXCEPT (Pl Gen &msyn-numerals-with-demopron) OR (Pl Gen Attr &msyn-numerals-with-demopron)OR (Pl Com &msyn-numerals-with-demopron) OR (Pl Com Attr &msyn-numerals-with-demopron) TARGET (&msyn-numerals-with-demopron) IF (2 (N Sg Com) )  ;
 
 
+
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    
 	# 1. Add error tags:
 #ADD:punct-aistton       (&punct-aistton)       TARGET (""") ;  # Delayed til later
 MAP:punct-aistton-both  (&punct-aistton-both)  TARGET ("«" PUNCT LEFT)  OR ("“" PUNCT LEFT) OR ("\"") OR ("„") OR ("‟") OR ("'") OR ("‹") OR ("‘") OR ("‚") OR ("‛") OR ("❛") OR ("❝") OR ("❮") OR ("〝") OR ("〟")
