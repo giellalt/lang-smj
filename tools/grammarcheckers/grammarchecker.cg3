@@ -1794,13 +1794,12 @@ COPY:lex-oahpásmuvvat-oahpástuvvat ("oahpástuvvat" &SUGGEST) EXCEPT ("oahpás
 
     # com to ill when oahpásmuvvat 
     # ------------------------------
-ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*0 ("oahpásmuvvat") BARRIER NOT-NPMODADV LINK NEGATE 1 (Pron Dem) LINK 1 (N Com) ) ;
+ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*0 ("oahpásmuvvat") BARRIER NOT-NPMODADV LINK NEGATE 1 (Pron Dem) LINK 1 (N Com) ) (NEGATE (*0 &lex-oahpásmuvvat-oahpástuvvat)) ;
 
-    ## Ja de oahpástuvviv avta prográmmaj. DNW LINDA, rievddá "avta prográmmaj" juska dát la riekta
+    ## Ja de oahpástuvviv avta prográmmaj.
     ## Dá bále bessin oahppe vehi oahpásmuvvat {doarromusiejajn} Narvijkan 
 
-    ## Oahpásmuvvat oanes suohtas {prosájn} ja vájkkudusáj ma li anon DNW LINDA, ij rievda illatijvaj. Gå la "prosájn" la err/orth, berustin gus måj dássta?  
-    ## Oahpásmuvvat oanes suohtas {pruvsájn} ja vájkkudusáj ma li anon. DNW LINDA, gå li guokta adjektijva "pruvásjn" ja "oahpásmuvvat" gaskan.
+    ## Oahpásmuvvat oanes suohtas {pruvsájn} ja vájkkudusáj ma li anon. DNW LINDA, gå li guokta adjektijva "pruvásjn" åvddåla de ij rievda illatijvaj..
     ## Sån la oahpásmuvvam {skåvlåjn}
     ## li buoragit oahpásmuvvam ájnas {åsijn} dan lahka kultuvras ja histåvrås.
     ## Åhpadiddje váksjut ja ságas oahppij gå låhki tevstav oahpástuvátjit sisanojn åvddåla gå álggi jårggålit.
@@ -1811,7 +1810,7 @@ ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl
     #$ Dákkir juohkusa bierriji vihpat muhtem ájge vaj mánná nubbe nuppijn oahpástuvvi.
     
  
-ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 (Pron Pers Nom) BARRIER NOT-NPMODADV LINK -1 ("oahpásmuvvat")) ;
+ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 (Pron Pers Nom) BARRIER NOT-NPMODADV LINK -1 ("oahpásmuvvat")) (NEGATE (*0 &lex-oahpásmuvvat-oahpástuvvat)) ;
 
     ## valla oahpástuvvin (måj bájkijn} gå de dåhku båhtin.
     ## Valla oahpásmuvájma måj buorre prográmmajn 
@@ -1820,24 +1819,24 @@ ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl
     # ------------------------------
 
     # demonstartive + com to ill when oahpásmuvvat
-ADD:msyn-proncom-ill-oahpástuvvat (&msyn-proncom-ill-oahpástuvvat) TARGET (Pron Dem Com) IF (*0 ("oahpásmuvvat") BARRIER NOT-NPMODADV) (*1 (N Com) BARRIER NOT-NPMOD)  ;
+ADD:msyn-proncom-ill-oahpástuvvat (&msyn-proncom-ill-oahpástuvvat) TARGET (Pron Dem Com) IF (*0 ("oahpásmuvvat") BARRIER NOT-NPMODADV) (*1 (N Com) BARRIER NOT-NPMOD)(NEGATE (*0 &lex-oahpásmuvvat-oahpástuvvat))  ;
 
 COPY:msyn-proncom-ill-oahpástuvvat (Ill Attr &SUGGEST) EXCEPT (Com &msyn-proncom-ill-oahpástuvvat) TARGET (&msyn-proncom-ill-oahpástuvvat) ;
 
-ADD:msyn-proncom-ill-oahpástuvvat2 (&msyn-proncom-ill-oahpástuvvat2) TARGET (N Com) IF (-1 (Pron Dem Com) + (&msyn-proncom-ill-oahpástuvvat))  ;
+ADD:msyn-proncom-ill-oahpástuvvat2 (&msyn-proncom-ill-oahpástuvvat2) TARGET (N Com) IF (-1 (Pron Dem Com) + (&msyn-proncom-ill-oahpástuvvat))(NEGATE (*0 &lex-oahpásmuvvat-oahpástuvvat))  ;
 
 COPY:msyn-proncom-ill-oahpástuvvat2 (Ill &SUGGEST) EXCEPT (Com &msyn-proncom-ill-oahpástuvvat2) TARGET (&msyn-proncom-ill-oahpástuvvat2) ;
 
     ## Maŋenagi gå oahppe oahpásmuvvi dájna teknihkajn
 
 
-ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 CC OR COMMA BARRIER NOT-NPMOD LINK -1 (&msyn-com-ill-oahpástuvvat) OR (&msyn-proncom-ill-oahpástuvvat) OR (&msyn-proncom-ill-oahpástuvvat2) ) ;
+ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 CC OR COMMA BARRIER NOT-NPMOD LINK -1 (&msyn-com-ill-oahpástuvvat) OR (&msyn-proncom-ill-oahpástuvvat) OR (&msyn-proncom-ill-oahpástuvvat2) ) (NEGATE (*0 &lex-oahpásmuvvat-oahpástuvvat)) ;
     
-    ## Oadtjot oahppijt oahpásmuvátjit sáme girjálasjvuodajn ja girjálasjvuoda {histåvråjn} DNW LINDA, "histåvråjn" ij sjatta illatijvva. Ihkap gå NOT-NPMOD ij dádjada "girjálasjvuoda"
+    ## Oadtjot oahppijt oahpásmuvátjit sáme girjálasjvuodajn ja girjálasjvuoda {histåvråjn}. DNW LINDA, "histåvråjn" ij sjatta illatijvva. Ihkap gå NOT-NPMOD ij dádjada "girjálasjvuoda"
     ## ja bessi oahpásmuvvat sáme kultuvrajn, {histåvråjn ja sebrudakiellemijn.}
-    ## Maŋenagi gå oahppe oahpásmuvvi dájna teknihkajn ja {bijlajn}. DNW LINDA, ij rievda maŋŋel "ja"
+    ## Maŋenagi gå oahppe oahpásmuvvi dájna teknihkajn ja {bijlajn}.
 
-COPY:msyn-com-ill-oahpástuvvat (Ill &SUGGEST) EXCEPT (Com &msyn-com-ill-oahpástuvvat) TARGET (Com &msyn-com-ill-oahpástuvvat) ;
+COPY:msyn-com-ill-oahpástuvvat (Ill &SUGGEST) EXCEPT (Com &msyn-com-ill-oahpástuvvat) TARGET (Com &msyn-com-ill-oahpástuvvat)  ;
 
 COPY:msyn-com-ill-oahpástuvvat (Sg Ill &SUGGEST) EXCEPT (Pl Ine &msyn-com-ill-oahpástuvvat) TARGET (Pl Ine &msyn-com-ill-oahpástuvvat) ;
 
@@ -1847,9 +1846,8 @@ COPY:msyn-com-ill-oahpástuvvat (Pl Ill &SUGGEST) EXCEPT (Pl Gen &msyn-com-ill-o
     # Ill to com when oahpástuvvat 
     # ------------------------------
 
-ADD:msyn-ill-com-oahpásmuvvat (&msyn-ill-com-oahpásmuvvat) TARGET (Ill) IF (*0 ("oahpástuvvat") BARRIER NOT-NPMODADV LINK NEGATE 1 (Pron Dem) LINK *1 (N Ill) BARRIER NOT-NPMODADV ) ;
+ADD:msyn-ill-com-oahpásmuvvat (&msyn-ill-com-oahpásmuvvat) TARGET (Ill) IF (*0 ("oahpástuvvat") BARRIER NOT-NPMODADV LINK NEGATE 1 (Pron Dem) LINK *1 (N Ill) BARRIER NOT-NPMODADV ) (NEGATE (*0 &lex-oahpástuvvat-oahpásmuvvat));
 
-    #$ Oahppe de oahpásmuvvi dajda ådå bágojda ja moallánagájda ma tebmáj gulluji DNW  Linda??? Oahpástuvvat blir jo byttet til oahpásmuvvat så 1190 skal jo ikke funke?
 
     ## Sån la oahpástuvvam {Iŋŋgáj}
     ## Elena ådå {ulmutjijda} oahpástuváj, 
@@ -1858,39 +1856,40 @@ ADD:msyn-ill-com-oahpásmuvvat (&msyn-ill-com-oahpásmuvvat) TARGET (Ill) IF (*0
     ## Oahpástuvvup sunji
     ## Ulmusj lagábut oahpástuvvá ulmutjijda
     ## Gehtjat nuorajt ja vuojnná sijá duojkev gå dal galggi oahpástuvvat nuppijda.
-
     ## Mánájgárddeåhpadiddje oahppe oadtju aj máhtudagáv ja bessi oahpásmuvvat sáme kultuvrajn, histåvråjn ja sebrudakiellemijn. 
     ## Lågådallamij, låhkåma, ságastallamij, dahkamusáj, ja praktihkalasj dåjmaj baktu li buoragit oahpásmuvvam ájnas åsijn dan lahka kultuvras ja histåvrås
     ## De vuostak oahpástuvvi namáj bájken gånnå sij årru.
     ## Åhpadiddje váksjut ja ságas oahppij gå låhki tevstav oahpástuvátjit sisanojn åvddåla gå álggi jårggålit.
     ## Ulmusj lagábut oahpástuvvá ulmutjijda ja diehtá gut juohkkahasj le, javllá sån.
 
+    #$ Oahppe de oahpásmuvvi dajda ådå bágojda ja moallánagájda ma tebmáj gulluji. 
+
     # Ill and ill to com when oahpástuvvat
     # ------------------------------
 
-ADD:msyn-ill-com-oahpásmuvvat (&msyn-ill-com-oahpásmuvvat) TARGET (Ill) IF (*-1 CC OR COMMA BARRIER NOT-NPMOD LINK -1 (&msyn-ill-com-oahpásmuvvat) OR (&msyn-pron-ill-com-oahpástuvvat2) OR (&msyn-pron-ill-com-oahpástuvvat)) ;
+ADD:msyn-ill-com-oahpásmuvvat (&msyn-ill-com-oahpásmuvvat) TARGET (Ill) IF (*-1 CC OR COMMA BARRIER NOT-NPMOD LINK -1 (&msyn-ill-com-oahpásmuvvat) OR (&msyn-pron-ill-com-oahpástuvvat2) OR (&msyn-pron-ill-com-oahpástuvvat))(NEGATE (*0 &lex-oahpástuvvat-oahpásmuvvat)) ;
 
     ## ja bessi oahpástuvvat sáme kultuvrraj, histåvrråj ja sebrudakiellemij.}
-    ## Maŋenagi gå oahppe oahpástuvvi dán teknihkkaj ja {bijllaj}. DNW LINDA
 
 COPY:msyn-ill-com-oahpásmuvvat (Com &SUGGEST) EXCEPT (Ill &msyn-ill-com-oahpásmuvvat) TARGET (&msyn-ill-com-oahpásmuvvat) ;
 
+
     # demonstartive + ill to com when oahpástuvvat
-ADD:msyn-pron-ill-com-oahpástuvvat (&msyn-pron-ill-com-oahpástuvvat) TARGET (Pron Dem Pl Ill) OR (Pron Dem Sg Gen) IF (*0 ("oahpástuvvat") BARRIER NOT-NPMODADV) (*1 (N Ill) BARRIER NOT-NPMOD) ;
+ADD:msyn-pron-ill-com-oahpástuvvat (&msyn-pron-ill-com-oahpástuvvat) TARGET (Pron Dem Pl Ill) OR (Pron Dem Sg Ill Attr) IF (*0 ("oahpástuvvat") BARRIER NOT-NPMODADV) (*1 (N Ill) BARRIER NOT-NPMOD) (NEGATE (*0 &lex-oahpástuvvat-oahpásmuvvat));
 
-COPY:msyn-pron-ill-com-oahpástuvvat (Com &SUGGEST) EXCEPT (Ill &msyn-pron-ill-com-oahpástuvvat) TARGET (&msyn-pron-ill-com-oahpástuvvat) ;
-
+COPY:msyn-pron-ill-com-oahpástuvvat (Com &SUGGEST) EXCEPT (Ill &msyn-pron-ill-com-oahpástuvvat) OR (Ill Attr &msyn-pron-ill-com-oahpástuvvat) TARGET (&msyn-pron-ill-com-oahpástuvvat) ;
     ## Maŋenagi gå oahppe oahpásmuvvi {dájda} {ulmutjijda}.
-    #$  Oahppe de {oahpástuvvi} dajda ådå bágojda ja moallánagájda ma tebmáj gulluji.  DNW LINDA
-
-COPY:msyn-pron-ill-com-oahpástuvvat (Com &SUGGEST) EXCEPT (Gen &msyn-pron-ill-com-oahpástuvvat) TARGET (&msyn-pron-ill-com-oahpástuvvat) ; 
-
     ## Maŋenagi gå oahppe oahpásmuvvi {dán} ulmutjij. 
+    ## Maŋenagi gå oahppe oahpástuvvi dán ulmutjij. 
+
+    #$ Maŋenagi gå oahppe oahpástuvvi {dán teknihkkaj} ja {bijllaj}. 
+    #$  Oahppe de oahpástuvvi dajda ådå bágojda ja moallánagájda ma tebmáj gulluji.
+
     
-ADD:msyn-pron-ill-com-oahpástuvvat2 (&msyn-pron-ill-com-oahpástuvvat2) TARGET (N Ill) IF (-1 (Pron Dem Pl Ill)  + (&msyn-pron-ill-com-oahpástuvvat) OR (Pron Dem Sg Gen) + (&msyn-pron-ill-com-oahpástuvvat))  ;
+ADD:msyn-pron-ill-com-oahpástuvvat2 (&msyn-pron-ill-com-oahpástuvvat2) TARGET (N Ill) IF (-1 (Pron Dem Pl Ill)  + (&msyn-pron-ill-com-oahpástuvvat) OR (Pron Dem Sg Ill Attr) + (&msyn-pron-ill-com-oahpástuvvat)) (NEGATE (*0 &lex-oahpástuvvat-oahpásmuvvat)) ;
 	#$ Sámedigge ij nagá Rádedusáv jåhtuj oadtjot, biednigijt juollodittjat dajda dárbojda ma duodalattjat li sáme siebrudagán.
 
-COPY:msyn-pron-ill-com-oahpástuvvat2 (Com &SUGGEST) EXCEPT (Ill &msyn-proncom-ill-oahpástuvvat2) TARGET (&msyn-pron-ill-com-oahpástuvvat2) ;
+COPY:msyn-pron-ill-com-oahpástuvvat2 (Com &SUGGEST) EXCEPT (Ill &msyn-proncom-ill-oahpástuvvat2) OR (Ill Attr &msyn-proncom-ill-oahpástuvvat2)  TARGET (&msyn-pron-ill-com-oahpástuvvat2) (NEGATE (*0 &lex-oahpástuvvat-oahpásmuvvat)) ;
     ## Maŋenagi gå oahppe oahpástuvvi dájda {ulmutjijda}
 
 
@@ -3132,6 +3131,7 @@ ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num
 	#$ Dat tjoahkki ienep gå {300.000} guosse 
 	#$ Dajna de viertti Sámedigge aktan Nordlánda fylkkadikkijn goabbák 500.000 kråvnå juollodit rahteplánajda Måsskåj, nav vaj tjoahkkáj sjaddá akta millijåvnå kråvnå, javllá presidænntaævtodus Aili Keskitalo (VSR/NSR). 
 	#$ Generatijvva grammatihkka le gielladiedalasj teorija majt Noam Chomsky vuododij 1950 jagijn.  #NEW INGA
+	#$ Ja de oahpásmuvviv avta prográmmaj. DNW LINDA, rievddá "avta" juska dát la riekta. 
 
 COPY:msyn-numeral-casecongr (Sg Gen &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-casecongr) OR (Sg Acc &msyn-numeral-casecongr) TARGET (&msyn-numeral-casecongr) IF (NEGATE *1 (N Pl Com) +  &msyn-numeral-attr OR (N Sg Com) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) LINK NEGATE 0 (Pl Gen) LINK 1 N OR Po )  ;
 
