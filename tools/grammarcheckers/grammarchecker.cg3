@@ -1591,10 +1591,11 @@ COPY:use-ellipsis ("…" &SUGGEST) EXCEPT ("...") TARGET (&ellipsis) ;
     # ---------------------------------------------------------------------------------------------------------
 	# ittjiv diehtám/iv diehtám -> ittjiv diede
 
+    # for Neg
+    # --------
 ADD:msyn-sme_bastard_neg (&msyn-sme_bastard_neg) TARGET ("ij" Neg Ind Prs) IF (*1 PrfPrc BARRIER NOT-ADV-PCLE - ("mige") - Acc) ;
-    ## Ij riek sjaddam nav ahte bloggiv åvdep vahkko.
+    ## {Ij} riek sjaddam nav ahte bloggiv åvdep vahkko.
     ## ja iv vissjam basádit  åvddål gå lidjiv biesskedam
-    ## valla danna iv dádjadum majdik ja ittjiv máhttám gähttjalimev dahkat
     ## Árjakluoven lij boadnjásj mij ittjij sidá hiejttet noajdástallamis ja	ij miededam	sån lij mejdek boasstot dahkam ,
     ## Gå ällobargge Jåhkåmåhkke gieldan	e adnám	vaj ålggorijkka viddnudahka ij galggam boahtet billat sijá lájddumijt
     ## Juska	ij mierredum	makkir vehkudagá máhtti ávkkiduvvat suodjalimguovlo sisbielen
@@ -1603,7 +1604,16 @@ ADD:msyn-sme_bastard_neg (&msyn-sme_bastard_neg) TARGET ("ij" Neg Ind Prs) IF (*
 
 COPY:msyn-sme_bastard_neg (Prt &SUGGEST) EXCEPT (Prs) AFTER Ind TARGET (&msyn-sme_bastard_neg) ;
 
+    # for PrfPrc
+    #-----------
 ADD:msyn-sme_bastard_neg2 (&msyn-sme_bastard_neg2) TARGET PrfPrc IF (*-1 ("ij" Neg Ind) BARRIER NOT-ADV-PCLE - ("mige") - Acc) ;
+    ## valla danna iv {dádjadum} majdik ja ittjiv {máhttám} gähttjalimev dahkat
+
+ADD:msyn-sme_bastard_neg2 (&msyn-sme_bastard_neg2) TARGET PrfPrc IF (*-1 CC OR COMMA LINK -1 (&msyn-sme_bastard_neg2)) ;
+
+# ij gullum jali {vuojnnum}.
+# ij gullum, {vuojnnum} jalik {happsum}. 
+
 
 COPY:msyn-sme_bastard_neg2 (Der/PassL Ind ConNeg &SUGGEST) EXCEPT (Der/PassS PrfPrc &msyn-sme_bastard_neg2) TARGET (Der/PassS &msyn-sme_bastard_neg2) ;
 
@@ -1815,8 +1825,7 @@ ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl
     ## valla oahpástuvvin (måj bájkijn} gå de dåhku båhtin.
     ## Valla oahpásmuvájma måj buorre prográmmajn 
     
-    # com and com to ill when oahpásmuvvat 
-    # ------------------------------
+
 
     # demonstartive + com to ill when oahpásmuvvat
 ADD:msyn-proncom-ill-oahpástuvvat (&msyn-proncom-ill-oahpástuvvat) TARGET (Pron Dem Com) IF (*0 ("oahpásmuvvat") BARRIER NOT-NPMODADV) (*1 (N Com) BARRIER NOT-NPMOD)(NEGATE (*0 &lex-oahpásmuvvat-oahpástuvvat))  ;
@@ -1829,6 +1838,9 @@ COPY:msyn-proncom-ill-oahpástuvvat2 (Ill &SUGGEST) EXCEPT (Com &msyn-proncom-il
 
     ## Maŋenagi gå oahppe oahpásmuvvi dájna teknihkajn
 
+
+    # com and com to ill when oahpásmuvvat 
+    # ------------------------------
 
 ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 CC OR COMMA BARRIER NOT-NPMOD LINK -1 (&msyn-com-ill-oahpástuvvat) OR (&msyn-proncom-ill-oahpástuvvat) OR (&msyn-proncom-ill-oahpástuvvat2) ) (NEGATE (*0 &lex-oahpásmuvvat-oahpástuvvat)) ;
     
