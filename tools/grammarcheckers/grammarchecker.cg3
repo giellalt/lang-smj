@@ -2307,8 +2307,10 @@ ADD:syn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + $$V-PERS IF (*1 (Pro
     ## ij nieidda áddjá --- N Gen
     ## ij váiban áddjá --- PrfPrc
 
-ADD:syn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + Sg3 IF (*1 (N Sg Nom) BARRIER NOT-NPMOD OR CC) (*1 ConNeg BARRIER Rel OR Neg OR CS) (*-1 CS OR Rel OR MO OR ("váj")) (NEGATE *1 ("?") LINK 1 EOS) ;
+ADD:syn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + Sg3 IF (*1 (N Sg Nom) BARRIER NOT-NPMOD OR CC) (*1 ConNeg BARRIER Rel OR Neg OR CS) (*-1 CS OR Rel OR MO OR ("váj")) (NEGATE *1 ("?") LINK 1 EOS) (NEGATE 1 PrfPrc ) ;
 	#$ Oslon le suohkanstivrraválgga ja stádaguovlloválgga, valla 	ij fylkadiggeválgga.
+    #$ Báhttja buolvav gihpo vuosstij diebttjij ja gákkaj majt nagáj, valla gihppo ittjij doaddjum. 
+
 
 ADD:syn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + Pl3 IF (*1 (N Pl Nom) BARRIER NOT-NPMOD OR CC ) (*1 ConNeg BARRIER Rel OR Neg OR CS) (*-1 CS OR Rel OR MO OR ("váj")) (NEGATE *1 ("?") LINK 1 EOS) ;
 
@@ -2319,6 +2321,7 @@ MOVE:syn-subj-before-neg &syn-subj-before-neg AFTER (*1 (N Nom) OR (Pron Nom) BA
     ## Sån lej sijdan gånnå ij áhttje málesta biebmov.
     #$ sån lej sijdan gånnå ij lim ållo biebbmo.
     #$ Dárogiella ij ga sámegiella le anon.
+    
 
 SET v = v1 OR v2 OR v3  ;
 
@@ -2390,7 +2393,7 @@ COPY:syn-number_congruence-subj-verb (Sg1 &SUGGEST) EXCEPT Sg2 OR Sg3 OR (Sg3 Cl
 
 ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg OR (V Ind Prt) - ConNeg OR (V Cond) OR (V Neg Ind) IF (*1 (Pron Pers Sg1 Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 @COMP-CS< LINK NEGATE *1 (V Sg1) BARRIER NOT-ADV)(NEGATE 0 Sg1 OR &real OR (N Sg) - Px OR Adv)(NEGATE *-1 (Pron Pers) - Sg1);
 	#$ Juska dáj gárgadisájn ij le ålgoldisargumænnta vuojnnusin, de låhkke huoman diehtá mån lav agænnta, gå dát boahtá åvddån verbas danen gå finihtta verba julevsámegielan lihtut subjevtajn.
-	## Jus TP le oajvve-maŋemus ja sárggu muorradiagrámmav gånnå le sihke vuornnomværbba, viehkkeværbba ja modálla viehkkeværbba de {sjaddá} mån girjev låhkåt máhttám le iv ja dát le má iehpegiellaåhpalasj gárgadis . #INGA NEW??
+
 	
 ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Neg Ind) IF (*1 (Pron Pers Sg1 Nom) BARRIER NOT-ADV-PCLE - ConNeg LINK NOT 0 @COMP-CS<)(NEGATE 0 Sg1 OR &real OR (N Sg) - Px OR Adv)(NEGATE *-1 (Pron Pers) - Sg1);
 	## Valla ij la mån moaren dan diehti!
@@ -2685,15 +2688,16 @@ ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V
 (NEGATE 0 <vdic> LINK *1 (Sem/Hum Nom Sg) BARRIER NOT-NPMODADV); #speaker of the indirect clause
 	#$ Generatijva grammatihkka le ådåstuhtedum moaddi 1950 lågo rájes, dallutjis gå Chomsky teorijav vuostasj bále åvddånbuvtij.
 	## Dádjadahtes dåbddomerka máhttá liehket árvodibme, ja dá vierttiji árvustaláduvvat.
-	## Jus paramehter ij tjielggasit åvdån boade, de máná {ij} nagá rievtes paramehterav oahppat. #INGA NEW
-	## Sivva manen Kaynea mielas le sæmmi álggo struktuvrra, spesifikáhtor-oajvve-komplemænnta, divna værálda gielajn le LCA(Linear Correspondedence Axiom) diehti, gånnå báhkogárggá {mierreduvvá} iehpesymmetralasj c-kommanderima baktu. #INGA NEW
+	## Jus paramehter ij tjielggasit åvdån boade, de máná {ij} nagá rievtes paramehterav oahppat. 
+	## Sivva manen Kaynea mielas le sæmmi álggo struktuvrra, spesifikáhtor-oajvve-komplemænnta, divna værálda gielajn le LCA(Linear Correspondedence Axiom) diehti, gånnå báhkogárggá {mierreduvvá} iehpesymmetralasj c-kommanderima baktu.
 	#$ Vuojnnet Kayne:a sirddemhypotesa {hiehpá} buorebun julevsámegiellaj, ja dajnas de válljiv dáv adnet, gå sárgov muorrastruktuvrajt. Li gal muhtem gássjelisvuoda Kayne:a vuogijn aj. #INGA NEW - boasttut dahje riekta?
 	#$ Kayne:a sirddemhypotesa aj {hiehpá} buoragijt muv teorijan gånnå julevsáme vuodobáhkogárges le rievddamin, gievras EPP dåbddomærkka mij sirddá objevtav verba åvddåj ij le gievras dárogielan ja ij ga nuorttasámegielan. #INGA NEW - boasttut dahje riekta?
-	## Juska muorrastruktuvra {måttsoduvvá} de le huoman sæmmi gárges danen gå dat mij asymmetrisk c-commanderij agev boahtá vuostak. #NEW INGA
-	## Generatijva grammatihka ij gæhttjala tjielggit gielav nav gåktu mij usjudallap giela birra. #NEW INGA
-	## Kayne:a sirddemhypotesa {hiehpá} buorebun julevsámegiellaj, ja dajnas de válljiv dáv adnet, gå sárgov muorrastruktuvrajt. #NEW INGA
+    ## Kayne:a sirddemhypotesa {hiehpá} buorebun julevsámegiellaj, ja dajnas de válljiv dáv adnet, gå sárgov muorrastruktuvrajt. #NEW INGA
 	## Kayne:a sirddemhypotesa aj hiehpá buoragijt muv teorijan gånnå julevsáme vuodobáhkogárges le rievddamin, gievras EPP dåbddomærkka mij sirddá objevtav verba åvddåj ij le gievras dárogielan ja ij ga nuorttasámegielan. #NEW INGA
-	##  X ”Dalloj gå luossakonsesjåvnå bådijga” Tjoahkkájgæsos #NEW INGA
+	## Juska muorrastruktuvra {måttsoduvvá} de le huoman sæmmi gárges danen gå dat mij asymmetrisk c-commanderij agev boahtá vuostak. 
+	## Generatijva grammatihka {ij} gæhttjala tjielggit gielav nav gåktu mij usjudallap giela birra. 
+
+	##  ”Dalloj gå luossakonsesjåvnå bådijga”  #DNW LINDA
 	
 	## Sii boahtit skuvlii muitalit mo jienastit, ja váldin skoviid mielde go nuorat leat daid gárvásit deavdán.
 	#$ Go joatkkaoahpahusláhka biddjui doibmii 1.1.1976, de galge buot ovddeš gymnásat, fidnoskuvllat ja gávpeskuvllat {gohčoduvvot} joatkkaskuvlan.
@@ -2893,7 +2897,7 @@ ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V
 	#$ Navti gåk la dálkádakrievddamij, la værálda iemeálmmuga rassje dávda båhtusijs.
 	## Boahtte ájllega de manáv aj ierit, de {la} vas gilbbusa Haparandan. 
 	## Jus árvodimes dåbddomerka galggi árvustaláduvvat viertti dat elementa manna {le} sæmmi lágásj dåbddomærkka ja manna le árvvo aj liehket dádjadahtes váj dát aj sihtá dárkestuvvat.
-	## Dan diehti gå divna gárgadisá li oasen CP gihpos, {ij} dåssju ladásgárgadisá, de dát sihtá javllat C máhttá liehket guoros. #NEW INGA
+	## Dan diehti gå divna gárgadisá li oasen CP gihpos, {ij} dåssju ladásgárgadisá, de dát sihtá javllat C máhttá liehket guoros. 
 	
 	#$ Iežamet ulbmil lea čohket nu ollu olbmuid go vejolaš Lavttejotnjárgii, ja jus {bohtet} eanet olbmot go diibmá, de leat mii hirbmat duhtavaččat, lohká festiválabuohtalastti Olsen.
 	## Nu go teáhterbihtás maid bođii ovdan, de {lea} juovllat áigi váldit vára nubbi nuppis, ja veahkehit sin geat dárbbašit.
@@ -2980,7 +2984,7 @@ COPY:syn-number_congruence-subj-verb (Pl3 &SUGGEST) EXCEPT Sg1 OR Sg2 OR (Sg2 Se
 
 COPY:syn-number_congruence-subj-verb (Pl3 &SUGGEST) EXCEPT Sg1 OR Sg2 OR (Sg2 SentInit) OR Sg3 OR (Sg3 SentInit) OR (Sg3 Clt) OR Du1 OR Du2 OR Du3 OR Pl1 OR Pl2 AFTER TENSE-MARKER TARGET (V Ind Prs &syn-number_congruence-subj-verb) OR (V Ind Prt &syn-number_congruence-subj-verb) OR (V Cond &syn-number_congruence-subj-verb) OR (V Neg Ind &syn-number_congruence-subj-verb) IF (*1 (Pron Sem/Hum Pers Pl3 Nom) OR (N Pl Nom) - (Prop Sem/Org) - (Prop Sem/Obj) OR (A Pl Nom @<SPRED) BARRIER NOT-NPMODADV  OR COMMA OR MO LINK NOT 0 @COMP-CS< OR (V &SUGGEST) OR Inf OR <spelled>)(*-1 BOS OR (":") OR (";") OR ("/") OR ("de") OR COMMA OR CS OR (Adv Subqst) OR (Pron Rel Sg) OR (N Ess) OR (N Ine) OR (N Ela) OR @ADVL> BARRIER NOT-ADV-PCLE - @ADVL>  - (N Prop Sg Nom) - @>N)(NEGATE 0 (Prt Sg2) OR Pl3 OR &real OR ("liehket" Inf) OR ("liehket" Prs Pl1) OR (N Sg) - Px OR (A Attr))(NEGATE 0 Du3 LINK *1 Sem/Human + Nom LINK *1 CC LINK *1 Sem/Human + Nom)(NEGATE 0 Du3 LINK *1 Sem/Human + (Pl Nom))(NEGATE 0 COPULAS + Du1 OR COPULAS + Du2 OR COPULAS + Pl1 OR COPULAS + Pl2 LINK *1 Sem/Human + (Pl Nom))(NEGATE 0 <TH-ahte> LINK 1 (N Pl Nom));
 	## Árvustallam viertti dáhpáduvvat dajna elementajn manna le sæmmi lágásj dåbddomærkka ja mij le lagámus, ij dåhkki dåbddomerkajt árvustallat ietjá elementajn jus gávnnu elemænnta manna le sæmmi lágásj dåbddomerka lagábun. #problems with this one
-	## Dan diehti gå divna gárgadisá li oasen CP gihpos, {ij} dåssju ladásgárgadisá, de dát sihtá javllat C máhttá liehket guoros. #NEW INGA
+
 
 COPY:syn-number_congruence-subj-verb (Pl3 &SUGGEST) EXCEPT Sg1 OR (Sg2 SentInit) OR Sg2 OR (Sg3 SentInit) OR (Sg3 Clt) OR Sg3 OR Du1 OR Du2 OR Du3 OR Pl1 OR Pl2 OR (Pl3 SentInit) TARGET (V Ind Prs &syn-number_congruence-subj-verb)  OR (V Ind Prt &syn-number_congruence-subj-verb) OR (V Cond &syn-number_congruence-subj-verb) OR (V Neg Ind &syn-number_congruence-subj-verb) IF (*1 Attr OR @>N BARRIER (*) - GRADE-ADV LINK 1 (N Pl Nom) - (Prop Sem/Org) - (Prop Sem/Obj) OR (A Pl Nom @<SPRED) LINK NOT 0 @COMP-CS< OR (V &SUGGEST) OR Inf OR <spelled>)(*-1 BOS OR (":") OR (";") OR ("/") OR COMMA OR CS OR (Adv Subqst) OR (Pron Rel Sg) OR (N Ess) OR (N Ine) OR @ADVL> BARRIER NOT-ADV-PCLE - @ADVL>  - (N Prop Sg Nom) - @>N)(NEGATE 0 (Prt Sg2) OR Pl3 - SentInit OR &real OR ("liehket" Inf) OR ("liehket" Prs Pl1) OR (N Sg) - Px OR (A Attr))(NEGATE 0 Du3 LINK *1 Sem/Human + Nom LINK *1 CC LINK *1 Sem/Human + Nom)(NEGATE 0 Du3 LINK *1 Sem/Human + (Pl Nom))(NEGATE 0 COPULAS + Du1 OR COPULAS + Du2 OR COPULAS + Pl1 OR COPULAS + Pl2 LINK *1 Sem/Human + (Pl Nom))(NEGATE 0 <TH-ahte> LINK 1 (N Pl Nom));
 
@@ -3030,7 +3034,7 @@ COPY:to-sentence-init-copula (SentInit &SUGGEST) EXCEPT (&syn-to-sentence-init-c
     # ----------------------------------------------------------------------
 ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" Ind Prs Sg2) IF (NEGATE 0 Clt) (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 CC OR CS OR ("de" Adv) OR (Ill Pl)) (NEGATE 1 EOS)(NEGATE 0 (Pl3 &SUGGEST)) (NEGATE 0 &msyn-soajttá-le) ;
 	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
-    ## Jus árvodimes dåbddomerka galggi árvustaláduvvat viertti dat elementa manna le sæmmi lágásj dåbddomærkka ja manna {le} árvvo aj liehket dádjadahtes váj dát aj sihtá dárkestuvvat. #NEW INGA
+    ## Jus árvodimes dåbddomerka galggi árvustaláduvvat viertti dat elementa manna le sæmmi lágásj dåbddomærkka ja manna {le} árvvo aj liehket dádjadahtes váj dát aj sihtá dárkestuvvat. 
 
     #$ Sidáv dav ja la buorre dav dalá dahkat. 
     #$ Dát ja la buorre dav dalá dahkat. 
@@ -3073,8 +3077,8 @@ ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (N Pl) IF (NOT 0 &msyn-numeral
     #$ De vuolggeba da guovtes stuorra universitehtajda.
     #$ Dále lij muhtem subtsas gå russtijin 1930- jagijn náv:
 	#$ Sáme gielladutkij gaskan li guokta {vuojno} dasi mij máhttá doajmmat objæktan sámegielan. 
-	#$ Vuojnniv gålmmå gusá #NEW INGA
-	#$ Iejvvijma guokta ulmutja guhti barggi minoritehtaj miehtá Europa. DNW NEW
+	#$ Vuojnniv gålmmå gusá #DNW LINDA
+	#$ Iejvvijma guokta ulmutja guhti barggi minoritehtaj miehtá Europa. DNW LINDA
 
 ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (N Pl) IF (NOT 0 &msyn-numeral-accattr) (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 Num)(NEGATE 0 (N Sg)) ;
 
@@ -3119,7 +3123,7 @@ ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num
 	# with other cases
 
 ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) OR (Num Sg Gen) IF (*1 (N Pl) + &msyn-numeral-attr OR (N Pl) +  &msyn-numeral-accattr OR (Sg Ill) OR (Sg Com) OR (Sg Ine) BARRIER (*) - (A Attr) LINK NOT 0 (N Pl Nom) OR (N Coll Nom) OR Acc LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc)(NEGATE *-1 ("liehket" Pl3) BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)(NEGATE 0 Arab OR Sem/Date OR Sem/Year);
-	## {Gålmmå} vuostasj kapihttalij tjielggiv duogátjav master-dahkamussaj. #NEW INGA
+	## {Gålmmå vuostasj kapihttalij tjielggiv duogátjav master-dahkamussaj. #NEW LINDA
 	## Mij lip NSRan  guhkev juo berustam, ja ájn berustip, nannit aktijvuodav sámij gaskan divna niellja rijkajn duola degu konkrehtalasj aktisasjbargo baktu.
     ## Valla vuojnnet ”sáme” viellde vájllu divna dáj gålmmå rijkajn.
 	## Valla jus ”Sáme Goadev” galggap tsieggigoahtet, ålles dáj {nielje} rijkajn, de diedon diehtet vierttip, makkár dähkága ja ådnårisá dasi buoremusát hiehpi.
@@ -3130,7 +3134,7 @@ ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num
 	#$ Arktalasjráde le avtamielakvuohtaorgádna gånnå da {guhtta} álggoálmmukorganisasjåvnå bessi ságastit ja oajvvadit sæmmi láhkáj dagu da {gáktsa} stáhta, valla e besa jienastit.  DNW
 	#$ Dat tjoahkki ienep gå {300.000} guosse 
 	#$ Dajna de viertti Sámedigge aktan Nordlánda fylkkadikkijn goabbák 500.000 kråvnå juollodit rahteplánajda Måsskåj, nav vaj tjoahkkáj sjaddá akta millijåvnå kråvnå, javllá presidænntaævtodus Aili Keskitalo (VSR/NSR). 
-	#$ Generatijvva grammatihkka le gielladiedalasj teorija majt Noam Chomsky vuododij 1950 jagijn.  #NEW INGA
+	#$ Generatijvva grammatihkka le gielladiedalasj teorija majt Noam Chomsky vuododij 1950 jagijn. 
 	#$ Ja de oahpásmuvviv avta prográmmaj. DNW LINDA, rievddá "avta" juska dát la riekta. 
 
 COPY:msyn-numeral-casecongr (Sg Gen &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-casecongr) OR (Sg Acc &msyn-numeral-casecongr) TARGET (&msyn-numeral-casecongr) IF (NEGATE *1 (N Pl Com) +  &msyn-numeral-attr OR (N Sg Com) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) LINK NEGATE 0 (Pl Gen) LINK 1 N OR Po )  ;
@@ -3532,7 +3536,7 @@ ADD:no-space-after-punct (&no-space-after-punct-mark) TARGET (<NoSpaceAfterPunct
 
 	# 2. Add error tag + &LINK on the following word (part 1 of extending the blue underline to the following word):
 
-ADD:no-space-after-punct-link (&no-space-after-punct-mark &LINK) TARGET (*) IF (T:prevWordCrossSent LINK 0 (&no-space-after-punct-mark) LINK NOT 0 (&LINK))(NEGATE 1 (Num Arab Sg) OR (Num Sem/ID) LINK -1 (";") LINK -1 (Num Arab Sg) LINK *-1 ("ahki") BARRIER (*) - (Num Arab Sg) - (Num Sem/ID) - (";"))(NEGATE 0 (Num Arab Sg) OR (Num Sem/ID) LINK -1 (";") LINK -1 (Num Arab Sg) OR (Num Sem/ID) LINK -1 ("ahki"))(NEGATE 0 COMMA LINK -1 (ABBR Gram/IAbbr))(NEGATE 0 ("!") LINK 1 ("!")) ;
+ADD:no-space-after-punct-link (&no-space-after-punct-mark &LINK) TARGET (*) IF (T:prevWordCrossSent LINK 0 (&no-space-after-punct-mark) LINK NOT 0 (&LINK))(NEGATE 1 (Num Arab Sg) OR (Num Sem/ID) LINK -1 (";") LINK -1 (Num Arab Sg) LINK *-1 ("ahke") BARRIER (*) - (Num Arab Sg) - (Num Sem/ID) - (";"))(NEGATE 0 (Num Arab Sg) OR (Num Sem/ID) LINK -1 (";") LINK -1 (Num Arab Sg) OR (Num Sem/ID) LINK -1 ("ahke"))(NEGATE 0 COMMA LINK -1 (ABBR Gram/IAbbr))(NEGATE 0 ("!") LINK 1 ("!")) ;
 	#$ Agi 2;0 rájes guorahallanáigodaga loahpageahčai, ahkkái 2;10, mánná geavaha 3. persovnna hámis muhtumin geahnohisdásat máddaga.
 
 	# 3. Add RIGHT relation on the punctuation (part 2 of extending the blue underline to the following word,
