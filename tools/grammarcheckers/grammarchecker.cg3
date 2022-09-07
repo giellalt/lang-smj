@@ -1584,6 +1584,8 @@ ADD:use-ellipsis (&ellipsis) TARGET ("...");
 COPY:use-ellipsis ("…" &SUGGEST) EXCEPT ("...") TARGET (&ellipsis) ;
 
 
+ 
+
 
 	# negation (sme pattern)
     # ---------------------------------------------------------------------------------------------------------
@@ -1999,11 +2001,20 @@ COPY:msyn-mij-gut ("guhti" &SUGGEST) EXCEPT ("mij" &msyn-mij-gut) TARGET (&msyn-
     ## Åja, ma fáŋŋgaj lidjin váldedum? válldet fáŋŋgaj + OBJ-Hum
     ## Åja, ma lidjin váldedum fáŋŋgaj?
 
-ADD:msyn-pass-active (&msyn-pass-active) TARGET (Der/PassL) OR (Der/PassS) IF (1 ("mige" Acc));
-COPY:msyn-pass-active (&SUGGEST) EXCEPT (Der/PassL &msyn-pass-active) OR (Der/PassS &msyn-pass-active) TARGET (&msyn-pass-active);
 
-    ## Danna ittjiv dádjaduvá majdik
-    ## mån ittjiv dádjaduvá majdik
+    ## PASSIVE VERB should be active
+    ## ------------
+
+
+ADD:msyn-pass-active (&msyn-pass-active) TARGET (Der/PassL) OR (Der/PassS) IF (-1 Acc) ; 
+    ## Ådå teknologijja galggá sámegielav {gájoduvvat}
+
+ADD:msyn-pass-active (&msyn-pass-active) TARGET (Der/PassL) OR (Der/PassS) IF (1 Acc) ; 
+    ## Ådå teknologijja galggá {gájoduvvat} sámegielav 
+    ## Danna ittjiv {dádjaduvá} majdik
+    ## mån ittjiv {dádjaduvá} majdik
+    
+COPY:msyn-pass-active (TV &SUGGEST) EXCEPT (IV Ex/V Ex/TV Der/PassL  &msyn-pass-active) OR (IV Ex/V Ex/TV Der/PassS &msyn-pass-active) BEFORE Inf TARGET (&msyn-pass-active) ;
 
     #$ Dat la juoga majt viertti oahppat,
     #$ Jågŋå lij biebbmo valla aj juoga majt divna oasstin.
