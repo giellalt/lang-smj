@@ -1496,7 +1496,7 @@ LIST &err-orrood-inf = &err-orrood-inf ;
 
 LIST &lex-oahpásmuvvat-oahpástuvvat = &lex-oahpásmuvvat-oahpástuvvat ;
 LIST &lex-oahpástuvvat-oahpásmuvvat = &lex-oahpástuvvat-oahpásmuvvat ;
-LIST &msyn-attr-pred = &msyn-attr-pred ;
+LIST &syn-attr-pred = &syn-attr-pred ;
 LIST &msyn-com-ill-oahpástuvvat = &msyn-com-ill-oahpástuvvat ;
 LIST &msyn-congr-PrtSg3-PrsPl3 = &msyn-congr-PrtSg3-PrsPl3 ;
 LIST &msyn-congr-gænna-gejn = &msyn-congr-gænna-gejn ;
@@ -1518,7 +1518,7 @@ LIST &msyn-numeral-comcasecongr = &msyn-numeral-comcasecongr ;
 LIST &msyn-numeral-parcasecongr = &msyn-numeral-parcasecongr ;
 LIST &msyn-numerals-with-demopron = &msyn-numerals-with-demopron ;
 LIST &msyn-pass-active = &msyn-pass-active ;
-LIST &msyn-pred-attr = &msyn-pred-attr ;
+LIST &syn-pred-attr = &syn-pred-attr ;
 LIST &msyn-sme_bastard_neg = &msyn-sme_bastard_neg ;
 LIST &msyn-sme_bastard_neg2 = &msyn-sme_bastard_neg2 ;
 LIST &msyn-soajttá-AUX = &msyn-soajttá-AUX ;
@@ -1913,7 +1913,7 @@ COPY:msyn-pron-ill-com-oahpástuvvat2 (Com &SUGGEST) EXCEPT (Ill &msyn-proncom-i
     # ---------------------------------------------------------------------------------------------------------
     
 
-ADD:msyn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF (NEGATE 0 Attr OR (V Sg3)) (*1 N + CASE OR A + CASE BARRIER (*) - (A Attr))
+ADD:syn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF (NEGATE 0 Attr OR (V Sg3)) (*1 N + CASE OR A + CASE BARRIER (*) - (A Attr))
 (NEGATE *-1 COPULAS BARRIER NOT-ADV-PCLE LINK *2 Inf OR Ine BARRIER NOT-NPMODADV - Acc - (A Sg Nom) - CASE);
 	## Objevta sadje gárgadisájn gånnå le ditransitijvva værbba
 	#$ Dássta le tjielgas julevsámegiela báhkogárges juogu dal SVO jali SOV. # DNW LINDA
@@ -1925,7 +1925,7 @@ ADD:msyn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF (NEGATE 0 Attr OR (V Sg
 #ADD:msyn-attr-not-pred (&msyn-attr-not-pred) TARGET A IF (NOT 0 Attr OR (N Gen) OR @<SPRED LINK NEGATE 0 (Sg Nom) LINK 0 ADJ_ATTR/NOM OR Comp OR Superl)(*1 CNOUN OR A BARRIER NOT-ADJ-CC OR ("gå"))(NOT 1 Rel) (NEGATE 0 ("buorre") OR ("riekta") OR ("duođas") OR Ord - ("nubbi")) (NEGATE *0 MODALS BARRIER GRAMCHK-S-BOUNDARY OR GRAMCHK-VFIN OR Rel) (NEGATE 0 A LINK 1 COMMA OR CC LINK NOT 1 Attr OR Gen) (NEGATE 0 Ess LINK NOT *0 GRAMCHK-VFIN BARRIER GRAMCHK-S-BOUNDARY OR CLB)(NEGATE 0 Superl LINK 0 (Adv Superl))(NEGATE 0 Attr LINK NOT 0 Attr)(NEGATE 1 EOS)(NEGATE 0 (N Sg Ill));
   
 
-COPY:msyn-pred-attr (Attr &SUGGEST) EXCEPT (Sg Nom &msyn-pred-attr) TARGET (&msyn-pred-attr) ;
+COPY:syn-pred-attr (Attr &SUGGEST) EXCEPT (Sg Nom &msyn-pred-attr) TARGET (&msyn-pred-attr) ;
 
     ## Mij tjuovojma {roaŋkok}  bálggáv
     ## HLF Gullamvádnásij Rijkalihtto le berustiddje organisásjåvnnå dájda; gullamvádnasijda, bieljedis tjalmedimijda, CI-operidum ulmutjijda, virggeulmutjijda, ja æjgádijda gullamvánes mánájda, ulmutjijda gænna li tinnitus-vájve ja méniér-skihppijda.
@@ -1943,7 +1943,7 @@ COPY:msyn-pred-attr (Attr &SUGGEST) EXCEPT (Sg Nom &msyn-pred-attr) TARGET (&msy
 
     # Attr when should be pred
     #--------------------------
-ADD:msyn-attr-pred (&msyn-attr-pred)  TARGET (A Attr) IF (1 EOS) ;
+ADD:syn-attr-pred (&msyn-attr-pred)  TARGET (A Attr) IF (1 EOS) ;
 
     ## ássje l {gássjelis} munji
 
