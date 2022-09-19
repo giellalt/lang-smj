@@ -2114,8 +2114,7 @@ ADD:msyn-verb-cong-rel (&msyn-verb-cong-rel) TARGET (V Sg3) IF (*-1 (Rel Nom) + 
     
     #$ Sij hæhttuji diehtet {mij} la dárbulasj ietjasa álmmugij ja dan milta politihkalattjat válljit.
     #$ Lejga giehttomin M.Gånågis Haraldij daj hásstalusáj birra mij {duosstu} vuoras sámijt.
-    #$ Vars ja Karlsen lijga Slåhtan giehttomin M.Gånågis Haraldij daj hásstalusáj birra mij {duosstu} vuoras sámijt uddni. DNW LINDA, får feiltag selv om "duosstu" er rett. Gjelder alle -ot verb. 
-
+    #$ Vars ja Karlsen lijga Slåhtan giehttomin M.Gånågis Haraldij daj hásstalusáj birra mij {duosstu} vuoras sámijt uddni. 
     
 ADD:msyn-verb-cong-rel (&msyn-verb-cong-rel) TARGET (V Sg3) IF (-1 CC LINK -1 (&msyn-verb-cong-rel)) ;
 
@@ -2260,20 +2259,20 @@ COPY:real-PrsSg2-PrsSg3 (Sg3 &SUGGEST) EXCEPT (Sg2) TARGET (&real-PrsSg2-PrsSg3)
 
     # left subj
 
-ADD:real-PrtSg2-PrtSg3 (&real-PrtSg2-PrtSg3) TARGET ( "ij" )  IF (0 (Prt Sg2)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg))  (NEGATE *1 (Pron Nom Sg2)) (NEGATE 0 (Prt Sg3)) ;
+ADD:real-PrtSg2-PrtSg3 (&real-PrtSg2-PrtSg3) TARGET ( "ij" )  IF (0 (Prt Sg2)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) BARRIER S-BOUNDARY OR VFIN LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg))  (NEGATE *1 (Pron Nom Sg2)) (NEGATE 0 (Prt Sg3)) ;
 
     ## Hamsun ittji sámijda lijkku
     ## valla dat ittji buoragit vuobde
     
-    #$ Manen giesen ittji tjoakke bierggimnárev, gatjádij gårkkå. DNW LINDA
+
 
     # right subj
 
-ADD:real-PrtSg2-PrtSg3 (&real-PrtSg2-PrtSg3) TARGET ( "ij" )  IF (0 (Prt Sg2)) (*1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) LINK NEGATE *1 CC BARRIER NOT-NPMOD LINK 1 (Nom Sg))  (NEGATE *-1 (Pron Nom Sg2)) (NEGATE 0 (Prt Sg3)) ;
+ADD:real-PrtSg2-PrtSg3 (&real-PrtSg2-PrtSg3) TARGET ( "ij" )  IF (0 (Prt Sg2)) (*1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) BARRIER S-BOUNDARY OR VFIN LINK NEGATE *1 CC BARRIER NOT-NPMOD LINK 1 (Nom Sg))  (NEGATE *-1 (Pron Nom Sg2)) (NEGATE 0 (Prt Sg3)) ;
 
     ## ittji Hamsun sámijda lijkku
     ## valla ittji dat buoragit vuobde
-
+    #$ Manen giesen ittji tjoakke bierggimnárev, gatjádij gårkkå. 
 
 
 COPY:real-PrtSg2-PrtSg3 (Sg3 &SUGGEST) EXCEPT (Sg2) TARGET (&real-PrtSg2-PrtSg3) ;
