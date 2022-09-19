@@ -15,10 +15,12 @@ TESTS=\
 	msyn-genna-gejn.yaml \
 	msyn-gut-mij-gut.yaml \
 	msyn-iesj-ietja.yaml \
+	msyn-liba-li.yaml \
 	msyn-liehket-congr-condsg2-condpl3.yaml \
 	msyn-liehket-congr-condsg2-condsg3.yaml \
 	msyn-lulujin.yaml \
 	msyn-numeral-attr.yaml \
+	msyn-oadjot-kausative.yaml \
 	msyn-pass-active.yaml \
 	msyn-sme_bastard_neg1-2.yaml \
 	msyn-soajtta.yaml \
@@ -42,10 +44,12 @@ XFAIL_TESTS=\
     msyn-genna-gejn.yaml \
     msyn-gut-mij-gut.yaml \
     msyn-iesj-ietja.yaml \
+    msyn-liba-li.yaml \
     msyn-liehket-congr-condsg2-condpl3.yaml \
     msyn-liehket-congr-condsg2-condsg3.yaml \
     msyn-lulujin.yaml \
     msyn-numeral-attr.yaml \
+    msyn-oadjot-kausative.yaml \
     msyn-pass-active.yaml \
     msyn-sme_bastard_neg1-2.yaml \
     msyn-soajtta.yaml \
