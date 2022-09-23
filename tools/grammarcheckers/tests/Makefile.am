@@ -34,6 +34,7 @@ TESTS=\
 	syn-correct-form-liehket.yaml \
 	syn-pred-attr.yaml 
 
+
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
 XFAIL_TESTS=\
@@ -56,11 +57,11 @@ XFAIL_TESTS=\
     real-NegSg3-NegSg2.yaml \
     real-PrsPl3-PrsSg3.yaml \
     real-PrsSg2-PrsSg3.yaml \
-    real-PrtSg2-PrtSg3.yaml \
     real-PrtSg3-PrsPl3.yaml \
     syn-attr-pred.yaml \
     syn-correct-form-liehket.yaml \
     syn-pred-attr.yaml 
+   
 
 endif # WANT_GRAMCHECK
 
