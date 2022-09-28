@@ -32,9 +32,12 @@ TESTS=\
 	real-habbmim.yaml \
 	syn-attr-pred.yaml \
 	syn-correct-form-liehket.yaml \
-	syn-pred-attr.yaml 
-
-
+	syn-pred-attr.yaml \
+	DEV-msyn-numeral-attr-FAIL.yaml \
+	DEV-msyn-numeral-attr-PASS.yaml \
+    DEV-lex-oahpasmuvvat-oahpastuvvat-PASS.yaml \
+    DEV-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml
+    
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
 XFAIL_TESTS=\
@@ -60,8 +63,9 @@ XFAIL_TESTS=\
     real-PrtSg3-PrsPl3.yaml \
     syn-attr-pred.yaml \
     syn-correct-form-liehket.yaml \
-    syn-pred-attr.yaml 
-   
+    syn-pred-attr.yaml \
+    DEV-msyn-numeral-attr-FAIL.yaml \
+    DEV-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml
 
 endif # WANT_GRAMCHECK
 
