@@ -33,14 +33,28 @@ TESTS=\
 	syn-attr-pred.yaml \
 	syn-correct-form-liehket.yaml \
 	syn-pred-attr.yaml \
-	DEV-msyn-numeral-attr-FAIL.yaml \
-	DEV-msyn-numeral-attr-PASS.yaml \
+    DEV-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml \
     DEV-lex-oahpasmuvvat-oahpastuvvat-PASS.yaml \
-    DEV-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml
+    DEV-msyn-congr-mij-ma-FAIL.yaml \
+    DEV-msyn-congr-mij-ma-PASS.yaml \
+    DEV-msyn-genna-gejn-FAIL.yaml \
+    DEV-msyn-genna-gejn-PASS.yaml \
+    DEV-msyn-gut-mij-gut-FAIL.yaml \
+    DEV-msyn-gut-mij-gut-PASS.yaml \
+    DEV-msyn-numeral-attr-FAIL.yaml \
+    DEV-msyn-numeral-attr-PASS.yaml \
+    DEV-msyn-soajtta-FAIL.yaml \
+    DEV-msyn-soajtta-PASS.yaml
     
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
 XFAIL_TESTS=\
+    DEV-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml \
+    DEV-msyn-congr-mij-ma-FAIL.yaml \
+    DEV-msyn-genna-gejn-FAIL.yaml \
+    DEV-msyn-gut-mij-gut-FAIL.yaml \
+    DEV-msyn-numeral-attr-FAIL.yaml \
+    DEV-msyn-soajtta-FAIL.yaml \
     lex-oahpasmuvvat-oahpastuvvat.yaml \
     msyn-IV-with-object.yaml \
     msyn-congr-mij-ma.yaml  \
@@ -57,15 +71,14 @@ XFAIL_TESTS=\
     msyn-pass-active.yaml \
     msyn-sme_bastard_neg1-2.yaml \
     msyn-soajtta.yaml \
+    real-habbmim.yaml \
     real-NegSg3-NegSg2.yaml \
     real-PrsPl3-PrsSg3.yaml \
     real-PrsSg2-PrsSg3.yaml \
     real-PrtSg3-PrsPl3.yaml \
     syn-attr-pred.yaml \
     syn-correct-form-liehket.yaml \
-    syn-pred-attr.yaml \
-    DEV-msyn-numeral-attr-FAIL.yaml \
-    DEV-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml
+    syn-pred-attr.yaml 
 
 endif # WANT_GRAMCHECK
 
