@@ -1759,9 +1759,9 @@ COPY:msyn-congr-PrtSg3-PrsPl3 (Prs Pl3 &SUGGEST) EXCEPT (Prt Sg3 &msyn-congr-Prt
     # ---------------------------------------------------------------------------------------------------------
     # ---------------------------------------------------------------------------------------------------------
 
-ADD:lex-oahpástuvvat-oahpásmuvvat (&lex-oahpástuvvat-oahpásmuvvat) TARGET ("oahpástuvvat") + VFIN IF (NEGATE *0 Sem/AnimateNotOrg + Com OR Sem/AnimateNotOrg + Ill OR (Pron Pers) + Com OR (Pron Pers) + Ill OR (Pron Recipr) + Com OR (Pron Recipr) + Ill BARRIER NOT-NPMODADVPCLE - (Nom N) - (Pron Nom)) ;
+ADD:lex-oahpástuvvat-oahpásmuvvat (&lex-oahpástuvvat-oahpásmuvvat) TARGET ("oahpástuvvat") + VFIN OR ("oahpástuvvat")+ Actio IF (NEGATE *0 Sem/AnimateNotOrg + Com OR Sem/AnimateNotOrg + Ill OR (Pron Pers) + Com OR (Pron Pers) + Ill OR (Pron Recipr) + Com OR (Pron Recipr) + Ill BARRIER NOT-NPMODADVPCLE - (Nom N) - (Pron Nom)) (NEGATE 0 PrfPrc LINK 1 Acc OR Nom OR Ela OR Gen OR Ess OR Com);
 
-   
+    ## Ibbá l uddni åvddåskåvlåjn oahpástuvvam(in).
     ## váj máná ja nuora juo álgos oadtju máhttelisvuodav girkkolanjájn oahpástuvvat 
     ## Oahpástuvviv bijlajn
     ## dajna de la oahpástuvvam barggoiellemijn
@@ -1793,7 +1793,7 @@ COPY:lex-oahpástuvvat-oahpásmuvvat ("oahpásmuvvat" &SUGGEST) EXCEPT ("oahpás
       #$ Dálla ávvudallá buorebut oahpástuvvat ietjas fuolkijn rijkarájá dá bielen. 
 
 
-ADD:lex-oahpásmuvvat-oahpástuvvat (&lex-oahpásmuvvat-oahpástuvvat) TARGET ("oahpásmuvvat") IF (*0 Sem/AnimateNotOrg + Ill OR Sem/AnimateNotOrg + Com BARRIER NOT-NPMODADVPCLE LINK NOT 0 <spelled>) ;
+ADD:lex-oahpásmuvvat-oahpástuvvat (&lex-oahpásmuvvat-oahpástuvvat) TARGET ("oahpásmuvvat") IF (*0 Sem/AnimateNotOrg + Ill OR Sem/AnimateNotOrg + Com BARRIER NOT-NPMODADVPCLE LINK NOT 0 <spelled>) (NEGATE 0 PrfPrc LINK 1 Acc OR Nom OR Ela OR Gen OR Ess OR Com) ;
 	#$ Gijtáv Mikael Svonniav guhti l muv bagádallam, Lene Antonsenav guhti l viehkedam muv korusij oahpásmuvvat ja diedon aj informántajt.
 
 COPY:lex-oahpásmuvvat-oahpástuvvat ("oahpástuvvat" &SUGGEST) EXCEPT ("oahpásmuvvat" &lex-oahpásmuvvat-oahpástuvvat) TARGET (&lex-oahpásmuvvat-oahpástuvvat) ;
