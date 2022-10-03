@@ -1477,6 +1477,7 @@ LIST HUMAN-LIKE = "bærggal" "ieŋŋgil" "hállde" "hærrá" "jubmel" "stállo" 
 
 SET HUMAN-INDIVIDUAL = HUMAN-LIKE OR FAMILY OR NON-FAMILY ;
 
+LIST PLURAL-NOUNS = "sabek" "fáhtsa" "guohpá" "vuotta" "skuovva" "nuvtak" "tjátjek" ; #TODO Inga, fleire typiske par må legges til her
 
 #!! Error tags
 
@@ -1844,8 +1845,8 @@ COPY:msyn-proncom-ill-oahpástuvvat2 (Ill &SUGGEST) EXCEPT (Com &msyn-proncom-il
     # com and com to ill when oahpásmuvvat 
     # ------------------------------
 
-ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 CC OR COMMA BARRIER NOT-NPMOD LINK -1 (&msyn-com-ill-oahpástuvvat) OR (&msyn-proncom-ill-oahpástuvvat) OR (&msyn-proncom-ill-oahpástuvvat2) ) (NEGATE (*0 &lex-oahpásmuvvat-oahpástuvvat)) ;
-    
+ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 CC OR COMMA BARRIER NOT-NPMOD LINK *-1 (&msyn-com-ill-oahpástuvvat) OR (&msyn-proncom-ill-oahpástuvvat) OR (&msyn-proncom-ill-oahpástuvvat2) BARRIER (*) - (Sem/Plc Sg Ine)) (NEGATE (*0 &lex-oahpásmuvvat-oahpástuvvat)) ;
+    ## Dá bále bessin oahppe vehi oahpásmuvvat doarromusiejajn Narvijkan ja sáme ásadusáj Jåhkåmåhken åvdås vádtsájin
     ## Oadtjot oahppijt oahpásmuvátjit sáme girjálasjvuodajn ja girjálasjvuoda {histåvråjn}. DNW LINDA, "histåvråjn" ij sjatta illatijvva. Ihkap gå NOT-NPMOD ij dádjada "girjálasjvuoda"
     ## ja bessi oahpásmuvvat sáme kultuvrajn, {histåvråjn ja sebrudakiellemijn.}
     ## Maŋenagi gå oahppe oahpásmuvvi dájna teknihkajn ja {bijlajn}.
@@ -2094,6 +2095,9 @@ ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (1 (V Pl1) OR 
     
 COPY:msyn-congr-mij-ma (Pl &SUGGEST) EXCEPT (Sg &msyn-congr-mij-ma) AFTER Rel TARGET (&msyn-congr-mij-ma) ;
 
+    #$ Maŋenagi gå oahppe oahpásmuvvi dájna teknihkajn, sjaddá aj álkkebu sidjij gulldalit {makkir} dássemålssusibme le duon dán bágon ja soajttá buohtastahttet minimála párajn. DNW linda
+
+
 
      # Verb congr with relative pron
      # -----------------------------
@@ -2160,6 +2164,7 @@ ADD:msyn-congr-iesj-ietja (&msyn-congr-iesj-ietja) TARGET ("iesj" Pron Refl Sg N
    #$ Oahppijn li iesj gænnanik vuohke mij vájkkut gåktu sij ja man ålov sij oahppi.
    #$ Juska tjehpudagá li iesj geŋga fágajn moatten láhkáj åvddånbuvtedum, de båhtusa li guoskavattja gájkka åhpadiddjijda ja ij dåssju dárogiela / sámegiela ja matemátihka åhpadiddjijda.
    #$ Duodden hæhttu liehket duodje majt le iesj dahkam.
+   ## Sámedigge le juo juollodam moadda miljåvnå gielladåjmajda, valla ulmutja e åhpa sámegielav {ietjas} årrombájken. DNW LINDA, "ulmutja" ilá guhkken ierit.
 
 
     #  Congr verb on right side of iesj
@@ -2189,9 +2194,9 @@ ADD:real-ActioGen-PrtPl1 (&real-ActioGen-PrtPl1) TARGET IT-V - Gram/3syll IF (0 
 
 COPY:real-ActioGen-PrtPl1 (Ind Prt Pl1 &SUGGEST) EXCEPT (Actio Gen) TARGET (&real-ActioGen-PrtPl1) ;
 
-    # mij hábbmima ådå njuolgadusáv; uddni bájttá biejvve.
-    # viehkedima Lindav ådå goahtáj jåhtet
-
+    ## mij hábbmima ådå njuolgadusáv; uddni bájttá biejvve.
+    ## viehkedima Lindav ådå goahtáj jåhtet
+    #$  Bulkke avtadagájn sáme guovdásjguovlojn vierttiji liehket bargge gænna li dålkkum ja tjálalasj jårggålim máhtudahka DNW LINDA, manen "- Gram/3syll" ij dåjma?
 
     # real word error, missing j for odd-syll -it verbs an "li"
     # ----------------------------------------
@@ -3051,7 +3056,7 @@ COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-i
 COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET &syn-from-sentence-init-copula IF (NEGATE -1 ("<.*[aeiouáå]>"r));
 	## Árvustallam viertti dáhpáduvvat dajna elementajn manna le sæmmi lágásj dåbddomærkka ja mij {le} lagámus, ij dåhkki dåbddomerkajt árvustallat ietjá elementajn jus gávnnu elemænnta manna le sæmmi lágásj dåbddomerka lagábun. >l 
 
-
+    ## Aktisasjbarggo Jielleváre ja Divtasvuona suohkanij gaskan {le} konkrehta aktisasjbarggo suohkanij gaskan mij buoragit hiehpá nuorttaguovllovuorodibmáj. DNW LINDA
 	
 	
     # Should be sentence initial copula: from la to le. 
@@ -3072,10 +3077,13 @@ ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" 
     #$ Mánájda la buorre dav åhpadit. 
     #$ Danna gånnå bijlla la. 
     #$ Dá {la} viehka gássjelis gatjálvisá.
+    
+    ## Tjuottjodum la, Vuona stáhtta {la} ásaduvvam guovte álmmuga ednamij nali – dáttja ja sábmelattja. DNW LINDA Sg2 ij ane clt. Disamb viertti fiksiduvvat ja kanskje válldet ierit Sg2 dánna.
         
 COPY:msyn-l-not-la (Clt &SUGGEST) EXCEPT (SentInit &msyn-l-not-la) TARGET (&msyn-l-not-la) ;
 	## Linda la buorre.
 
+    #$ 8. kapihttalin tjielggiduvvá nammadusá oajvvadus ådå organiserimij giellaguovloj ja suohkankategoriajda mij juo {la} åvddån biejaduvvam oasserapportan. DNW LINDA
 
 
     # numerals used as attributive adjectives
@@ -3121,6 +3129,11 @@ COPY:msyn-numeral-attr (Sg &SUGGEST) EXCEPT (Pl &msyn-numeral-attr) BEFORE CASE 
 
     # homonomy beetween pl ine and sg com
 ADD:msyn-numeral-attr-pl-ine (&msyn-numeral-attr-pl-ine) TARGET (N Pl Ine) IF (*-1 (Num Sg Ine) - Sem/Year OR (Num Arab Ine) BARRIER NOT-NPMOD) ;
+
+    # numeral is alos wrong, habitive "la/li" shows that it must be sg ine. 
+ADD:msyn-numeral-attr-pl-ine (&msyn-numeral-attr-pl-ine) TARGET (N Pl Ine) IF (*-1 (Num Sg Acc) - Sem/Year OR (Num Arab Ine) BARRIER NOT-NPMOD LINK *-1 ("liehket" Ind) BARRIER (*) - Num - Dem) ;
+
+
 COPY:msyn-numeral-attr-pl-ine (Sg Ine &SUGGEST) EXCEPT (Pl Ine) TARGET (&msyn-numeral-attr-pl-ine) ;
  
     ## Dán aktisasjbargon li gudán {álggoálmmukorganisasjåvnåjn} sadje stuoves oassálassten.
@@ -3143,6 +3156,7 @@ COPY:msyn-numeral-attr-pl-com (Sg Com &SUGGEST) EXCEPT (Sg Ill) TARGET (&msyn-nu
 	# before nouns or postpositions
 
 ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (*1 (N Pl Nom) + &msyn-numeral-attr OR (N Pl Nom) +  &msyn-numeral-accattr OR (N Gen) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Acc LINK 1 N OR Po LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc)(NEGATE *-1 ("liehket" Pl3) BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)(NEGATE 0 Acc LINK *-1 TV BARRIER NOT-ADV-PCLE - (Pron Attr)) (NEGATE 0 Arab OR Sem/Date OR Sem/Year);
+
 	## Guokta gusá fiekse
 	## Guokta gusáj fiekse 
 	
@@ -3162,6 +3176,9 @@ ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num
 	#$ Sæmmi gåktu lej vargga {30} jage dán åvddåla, de la julevsámegiella ávijsajn biebbmománnán.
 	
     #$ Iv mån vajálduhte da {guokta} báhtja Måsken.
+
+    ##
+ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Pl Com) OR (Num Pl Gen) IF (*1 (N Pl Nom) + &msyn-numeral-attr OR (N Pl Nom) +  &msyn-numeral-accattr OR (N Gen) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PLURAL-NOUNS OR Acc LINK 1 N OR Po LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc)(NEGATE *-1 ("liehket" Pl3) BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)(NEGATE 0 Acc LINK *-1 TV BARRIER NOT-ADV-PCLE - (Pron Attr)) (NEGATE 0 Arab OR Sem/Date OR Sem/Year) ;
 
 	
 	# with other cases
@@ -3184,7 +3201,7 @@ ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num
 	#$ Ja de oahpásmuvviv avta prográmmaj. 
     #$ Suohkana juogeduvvin {gietja} sáme rabdaguovlojda  
     
-COPY:msyn-numeral-casecongr (Sg Gen &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-casecongr) OR (Sg Acc &msyn-numeral-casecongr) OR (Sg Gen &msyn-numeral-casecongr) TARGET (&msyn-numeral-casecongr) IF (NEGATE *1 (N Pl Com) +  &msyn-numeral-attr OR (N Sg Com) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) LINK NEGATE 0 (Pl Gen) LINK 1 N OR Po )  ;
+COPY:msyn-numeral-casecongr (Sg Gen &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-casecongr) OR (Sg Acc &msyn-numeral-casecongr) OR (Sg Gen &msyn-numeral-casecongr) OR (Pl Com &msyn-numeral-casecongr) OR (Pl Gen &msyn-numeral-casecongr)TARGET (&msyn-numeral-casecongr) IF (NEGATE *1 (N Pl Com) +  &msyn-numeral-attr OR (N Sg Com) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) LINK NEGATE 0 (Pl Gen) LINK 1 N OR Po )  ;
 
     ## Vattáv suojnijt guokta>guovte gusájda
     ## Gå lijma gärggam de vuoddjájma vantsajn akta rájggáj
@@ -3199,7 +3216,7 @@ COPY:msyn-numeral-casecongr (Sg Com &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-casec
 
     ## Sámedikken li aktisasjbarggosjiehtadusá {lågij} suohkanij ja {nieljij} fylkkasuohkanij. NOT
 
-COPY:msyn-numeral-casecongr (Sg Ine &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-casecongr) OR (Sg Gen &msyn-numeral-casecongr)  TARGET (&msyn-numeral-casecongr) IF (*1 (N Pl Ine) +  &msyn-numeral-attr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
+COPY:msyn-numeral-casecongr (Sg Ine &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-casecongr) OR (Sg Gen &msyn-numeral-casecongr)  TARGET (&msyn-numeral-casecongr) IF (*1 (N Pl Ine) +  &msyn-numeral-attr OR (N Sg Ine) + &SUGGEST BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
 
     ## {guokta} gusájn li báktjasa
     ## makkár rahtjamusá li nielje sámegielajn
@@ -3303,6 +3320,7 @@ COPY:msyn-numeral-comcasecongr (Sg Com &SUGGEST) EXCEPT (Sg Gen &msyn-numeral-co
 ADD:msyn-numerals-with-demopron (&msyn-numerals-with-demopron) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) LINK *1 (N Sg) BARRIER NOT-NPMOD - CC) ;
 
 
+
     #pl nom      sg nom          pl nom/sg gen
     #dá          guokta          gusá
 
@@ -3326,8 +3344,8 @@ ADD:msyn-numerals-with-demopron (&msyn-numerals-with-demopron) TARGET (Pron Dem 
 
     #da
 
-COPY:msyn-numerals-with-demopron (Pl Nom &SUGGEST) EXCEPT (Pl Acc Attr &msyn-numerals-with-demopron) TARGET (&msyn-numerals-with-demopron) IF (1 (Num Sg Nom) LINK 1 (Pl Nom) ) ;
-
+COPY:msyn-numerals-with-demopron (Pl Nom &SUGGEST) EXCEPT (Pl Acc Attr &msyn-numerals-with-demopron) TARGET (&msyn-numerals-with-demopron) IF (1 (Num Sg Nom) LINK 1 (Pl Nom) OR (Sg Gen)) ;
+    ## Duodden dåjmadittjat dájt>dá guokta ásadusájt Divtasvuona Dávvervuorkká galggá ásadit ja åvddånbuktet máhtudagáv almatjijt dåjmajt, dat rájes gå vuostasj ulmutja Divtasvuodnaj båhtin ja udnátjij.
    ## Iv háhppida dajt guhtta ruoppsis bårådum oappá girjijt låhkåt dan ájgen.
    ## Juogos la mierredam {dájda} gålmmå suohkanijda dahkat aktisasj plánav rumálasj dåjmajda ja luonndoåtsådallamijda. DNW LINDA
    # dan
