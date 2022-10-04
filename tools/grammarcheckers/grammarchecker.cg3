@@ -1809,7 +1809,7 @@ COPY:lex-oahpásmuvvat-oahpástuvvat ("oahpástuvvat" &SUGGEST) EXCEPT ("oahpás
 
     # com to ill when oahpásmuvvat 
     # ------------------------------
-ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 ("oahpásmuvvat") BARRIER NOT-NPMODADV LINK NEGATE 1 (Pron Dem) LINK 1 (N Com) ) (NEGATE (*0 &lex-oahpásmuvvat-oahpástuvvat))(NEGATE 0 (Sg Ill)) ;
+ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*0 ("oahpásmuvvat") BARRIER NOT-NPMODADV LINK NEGATE 1 (Pron Dem) LINK 1 (N Com) ) (NEGATE (*0 &lex-oahpásmuvvat-oahpástuvvat))(NEGATE 0 (Sg Ill)) ;
 
     ## Ja de oahpástuvviv avta prográmmaj.
     ## Dá bále bessin oahppe vehi oahpásmuvvat {doarromusiejajn} Narvijkan 
@@ -2094,12 +2094,30 @@ ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (1 (V Pl1) OR 
     ## Stáhtta ja Sámedigge galggi gæhttjalit semadit mandáhta birra, ja gut galggi tjielggidusáv tjadádit .
     ## Oahppe {guhti} e gæhttjalimijt mierredimbæjvváj tjadáda.
 
-    
+
+ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (-1 (N Pl Ela) OR (N Pl Ill)) (NEGATE -2 Inf) (NEGATE -1 (N Pl Ela) LINK -1 ("akta")) ;
+
+    ## Tjielggidus vuoset oajvvehásstalusájda {mij} gullu giellaj.
+    ## Automatihkalattjat ráfájduhtedum kulturmujto li automatihkalattjat suodjaluvvam mij sihtá javllat suodjaluvvam divna dåjmajs {mij} bæjsstá jali vahágahttá, jådedime, ietjájduhttema, gåbttjåma jali hiebalgahtes biledime, dáj gaskan aj dåjmajs ma ietjájduhtti gåktu kulturmujto vuojnnu.
+    #$ Galggi aj ájggeguovddelis ássjev åvddånbuktet oajválattjajda {mij} guosská vuorrasij iellemdilláj ja álkkádussaj.
+     #$ Låhkåm le akta vuodomáhtudagájs {mij} tjalmostuvvá Máhtudaklåpptimin, oahppoplánaj sihke vuodo- ja jårggåskåvlån.
+
+
 COPY:msyn-congr-mij-ma (Pl &SUGGEST) EXCEPT (Sg &msyn-congr-mij-ma) AFTER Rel TARGET (&msyn-congr-mij-ma) ;
 
     #$ Maŋenagi gå oahppe oahpásmuvvi dájna teknihkajn, sjaddá aj álkkebu sidjij gulldalit {makkir} dássemålssusibme le duon dán bágon ja soajttá buohtastahttet minimála párajn. DNW linda
 
 
+    # From pl>sg
+    #-----------
+ADD:msyn-congr-ma-mij (&msyn-congr-ma-mij) TARGET (Rel Nom Pl) IF (*-1 (N Sg) OR (Pron Sg) OR Pers - Pl1 - Pl2 - Pl3 - Du1 - Du2 - Du3 BARRIER NOT-BEFORE-REL LINK NOT 0 (N Pl) LINK NEGATE -1 VFIN OR Inf LINK -1 (N Pl) OR (Pron Pl)) (NEGATE -1 (Indef Sg Nom)) (NEGATE -1 (Sg Ine) LINK -1 (N Pl)) (NEGATE -1 (N Sg) LINK -1 Num) ;
+    ## Miján la viehka stuorra nággo dálla guollebiebmadimæládusás {ma} sihti mierdijt biedjat duon dán vuodnaj ja dát båktå rijdojt.
+    #$Giellamåvtåstuhttemstipænnda oahppijda joarkkaskåvlån {gudi} sámegielåhpadusáv válljiji.
+    #$  Galggi aj ájggeguovddelis ássjev åvddånbuktet oajválattjajda mij guosská vuorrasij iellemdilláj ja álkkádussaj.Vuordedahtte de li ålos {gudi} dasi ávvudalli.
+    #$   Guovtet álmmugis gudi lijga miellusa guorrasittjat tjoavddusijda, ienni gå rijdojda ja niejddemijda boahtte ájgen."
+
+    
+COPY:msyn-congr-mij-ma (Sg &SUGGEST) EXCEPT (Pl &msyn-congr-ma-mij) AFTER Rel TARGET (&msyn-congr-ma-mij) ;
 
      # Verb congr with relative pron
      # -----------------------------
@@ -2118,7 +2136,7 @@ ADD:msyn-verb-cong-rel (&msyn-verb-cong-rel) TARGET (V Sg3) IF (*-1 (Rel Nom) + 
     ## Euråvppåráderesolusjåvnnå Vuona Unneplåhkogiellalihto tjuovvolime birra 2007as vaddá konkrehta ávttjimusájt mij guosská dájda.
     ## Oassekapihtal vaddá prinsihpalasj refleksjåvnåjt mij le vuodon
     ## Liehket konsultasjåvnabiellen ráddidussaj mierredattijn lágav mij sihkarasstá sámij rievtesvuodajt ednamijda ja resursajda mij {le} tjanádum almasjrievtesvuodajda ja histåvrålasj adnuj. 
-
+    ## Automatihkalattjat ráfájduhtedum kulturmujto li automatihkalattjat suodjaluvvam mij sihtá javllat suodjaluvvam divna dåjmajs mij {bæjsstá} jali vahágahttá, jådedime, ietjájduhttema, gåbttjåma jali hiebalgahtes biledime, dáj gaskan aj dåjmajs ma ietjájduhtti gåktu kulturmujto vuojnnu. DNW NEW LINDA, Area/tags are messing up
     
     #$ Sij hæhttuji diehtet {mij} la dárbulasj ietjasa álmmugij ja dan milta politihkalattjat válljit.
     #$ Lejga giehttomin M.Gånågis Haraldij daj hásstalusáj birra mij {duosstu} vuoras sámijt.
@@ -2133,11 +2151,12 @@ ADD:msyn-verb-cong-rel (&msyn-verb-cong-rel) TARGET (V Sg3) IF (-1 CC LINK -1 (&
    
 COPY:msyn-verb-cong-rel (Pl3 &SUGGEST) EXCEPT (Sg3 &msyn-verb-cong-rel) OR (Sg3 SentInit &msyn-verb-cong-rel) TARGET (&msyn-verb-cong-rel) ;
 
+    # from pl>sg
+    #-------------
+ADD:msyn-verb-cong-rel (&msyn-verb-cong-rel) TARGET (V Pl3) IF (*-1 (Rel Nom) + (&msyn-congr-ma-mij) BARRIER NOT-ADV-PCLE - Ill - Ela - Ine) (NEGATE 0 OT-VERBS + Prs)  ;
 
-  
-
-
-
+    ## Miján la viehka stuorra nággo dálla guollebiebmadimæládusás ma {sihti} mierdijt biedjat duon dán vuodnaj ja dát båktå rijdojt.
+COPY:msyn-verb-cong-rel (Sg3 &SUGGEST) EXCEPT (Pl3 &msyn-verb-cong-rel) OR (Pl3 SentInit &msyn-verb-cong-rel) TARGET (&msyn-verb-cong-rel) ;
 
     # Congr error with relative pron gænna-gejn
     # ---------------------------------------------------------------------------------------------------------
@@ -3132,9 +3151,9 @@ COPY:msyn-numeral-attr (Sg &SUGGEST) EXCEPT (Pl &msyn-numeral-attr) BEFORE CASE 
 
 
     # homonomy beetween pl ine and sg com
-ADD:msyn-numeral-attr-pl-ine (&msyn-numeral-attr-pl-ine) TARGET (N Pl Ine) IF (*-1 (Num Sg Ine) - Sem/Year OR (Num Arab Ine) BARRIER NOT-NPMOD LINK 0 Sem/Time) ;
+ADD:msyn-numeral-attr-pl-ine (&msyn-numeral-attr-pl-ine) TARGET (N Pl Ine) IF (*-1 (Num Sg Ine) - Sem/Year OR (Num Arab Ine) BARRIER NOT-Attr) ;
 
-#$ lijma nåv árrat smáredam ja vuodjám 6-7 tijma {bijlajn}
+#$ lijma nåv árrat smáredam ja vuodjám 6-7 tijma bijlajn DNW NEW LINDA
 
     # numeral is alos wrong, habitive "la/li" shows that it must be sg ine. 
 ADD:msyn-numeral-attr-pl-ine (&msyn-numeral-attr-pl-ine) TARGET (N Pl Ine) IF (*-1 (Num Sg Acc) - Sem/Year OR (Num Arab Ine) BARRIER NOT-NPMOD LINK *-1 ("liehket" Ind) BARRIER (*) - Num - Dem) ;
