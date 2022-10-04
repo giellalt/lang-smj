@@ -1759,7 +1759,7 @@ COPY:msyn-congr-PrtSg3-PrsPl3 (Prs Pl3 &SUGGEST) EXCEPT (Prt Sg3 &msyn-congr-Prt
     # ---------------------------------------------------------------------------------------------------------
     # ---------------------------------------------------------------------------------------------------------
 
-ADD:lex-oahpástuvvat-oahpásmuvvat (&lex-oahpástuvvat-oahpásmuvvat) TARGET ("oahpástuvvat") + VFIN OR ("oahpástuvvat")+ Actio IF (NEGATE *0 Sem/AnimateNotOrg + Com OR Sem/AnimateNotOrg + Ill OR (Pron Pers) + Com OR (Pron Pers) + Ill OR (Pron Recipr) + Com OR (Pron Recipr) + Ill BARRIER NOT-NPMODADVPCLE - (Nom N) - (Pron Nom)) ;
+ADD:lex-oahpástuvvat-oahpásmuvvat (&lex-oahpástuvvat-oahpásmuvvat) TARGET ("oahpástuvvat") + VFIN OR ("oahpástuvvat")+ Actio IF (NEGATE *0 Sem/AnimateNotOrg + Com OR Sem/AnimateNotOrg + Ill OR (Pron Pers) + Com OR (Pron Pers) + Ill OR (Pron Recipr) + Com OR (Pron Recipr) + Ill BARRIER NOT-NPMODADVPCLE - (Nom N) - (Pron Nom));
     ## Iŋŋgá l NRK:ajn oahpástuvvam. DNW NEW LINDA
     ## Ibbá l uddni åvddåskåvlåjn oahpástuvvam(in).
     ## váj máná ja nuora juo álgos oadtju máhttelisvuodav girkkolanjájn oahpástuvvat 
@@ -1893,7 +1893,7 @@ COPY:msyn-ill-com-oahpásmuvvat (Com &SUGGEST) EXCEPT (Ill &msyn-ill-com-oahpás
 ADD:msyn-pron-ill-com-oahpástuvvat (&msyn-pron-ill-com-oahpástuvvat) TARGET (Pron Dem Pl Ill) OR (Pron Dem Sg Ill Attr) IF (*0 ("oahpástuvvat") BARRIER NOT-NPMODADV) (*1 (N Ill) BARRIER NOT-NPMOD) (NEGATE (*0 &lex-oahpástuvvat-oahpásmuvvat));
 
 COPY:msyn-pron-ill-com-oahpástuvvat (Com &SUGGEST) EXCEPT (Ill &msyn-pron-ill-com-oahpástuvvat) OR (Ill Attr &msyn-pron-ill-com-oahpástuvvat) TARGET (&msyn-pron-ill-com-oahpástuvvat) ;
-    ## Maŋenagi gå oahppe oahpásmuvvi {dájda} {ulmutjijda}.
+    ## Maŋenagi gå oahppe oahpásmuvvi {dájda} {ulmutjijda}. DNW NEW LINDA, disamb must be fixed for "dajda" and "dájda"
     ## Maŋenagi gå oahppe oahpásmuvvi {dán} ulmutjij. 
     ## Maŋenagi gå oahppe oahpástuvvi dán ulmutjij. 
 
@@ -2101,8 +2101,10 @@ COPY:msyn-congr-mij-ma (Pl &SUGGEST) EXCEPT (Sg &msyn-congr-mij-ma) AFTER Rel TA
 
      # Verb congr with relative pron
      # -----------------------------
+LIST OT-VERBS = (".*ot"r V) (".*ot"r V*) ;
 
-ADD:msyn-verb-cong-rel (&msyn-verb-cong-rel) TARGET (V Sg3) IF (*-1 (Rel Nom) + (&msyn-congr-mij-ma) BARRIER NOT-ADV-PCLE - Ill - Ela - Ine) ;
+
+ADD:msyn-verb-cong-rel (&msyn-verb-cong-rel) TARGET (V Sg3) IF (*-1 (Rel Nom) + (&msyn-congr-mij-ma) BARRIER NOT-ADV-PCLE - Ill - Ela - Ine) (NEGATE 0 OT-VERBS + Prs)  ;
 
     ##  Galggap ásadit dåjmajt {mij} {gåtset}
     ## Mij lip tjoaggám gåvåjt, girjijt, filmajt, jienajt, oahppamnævojt ja digitála ressursajt {mij} {giehpet} bargov dunji sáme åhpadiddjen
@@ -2370,6 +2372,9 @@ SET v = v1 OR v2 OR v3  ;
     # ---------------------------------------------------------------------------------------------------------
 
 LIST IT-VERBS = (".*it"r V) (".*it"r Ex/V) ;
+LIST ET-VERBS = (".*et"r V) (".*et"r V*) ;
+LIST ÁT-VERBS = (".*át"r V) (".*át"r V*) ;
+LIST ÅT-VERBS = (".*åt"r V) (".*åt"r V*) ;
 SET IT-EVEN-VERBS = IT-VERBS - Gram/3syll - Der/h - Der/d - Der/st - Der/l - Der/Caus - Der/huvva - Der/stuvva - Der/PassS - Der/adda - Der/alla - Der/easti - Der/InchL ;
 SET IT-UNEVEN-VERBS-RAW = IT-VERBS + Gram/3syll OR (Der/h V) OR (Der/l V);
 SET IT-UNEVEN-VERBS = IT-UNEVEN-VERBS-RAW - Der/Pass - Der/alla - Der/adda ;
@@ -2377,13 +2382,10 @@ LIST AT-BASE = (".*at"r V) (".*at"r Ex/V) ;
 SET AT-VERBS = AT-BASE - Der/h - Der/d - Der/st - Der/l - Der/Caus - Der/huvva - Der/stuvva - Der/PassS - Der/adda - Der/alla - Der/easti - Der/InchL ;
 LIST UT-BASE = (".*ut"r V) (".*ut"r Ex/V) ;
 SET UT-VERBS = UT-BASE - Der/h - Der/d - Der/st - Der/l - Der/Caus - Der/huvva - Der/stuvva - Der/PassS - Der/adda - Der/alla - Der/easti - Der/InchL ;
-SET EVEN-VERBS = IT-EVEN-VERBS OR AT-VERBS OR UT-VERBS ;
+SET EVEN-VERBS = ET-VERBS OR AT-VERBS OR ÅT-VERBS OR OT-VERBS ;
 SET IT-AT-VERBS = AT-VERBS OR IT-EVEN-VERBS ;
 
-LIST ET-VERBS = (".*et"r V) (".*et"r V*) ;
-LIST ÁT-VERBS = (".*át"r V) (".*át"r V*) ;
-LIST OT-VERBS = (".*ot"r V) (".*ot"r V*) ;
-LIST ÅT-VERBS = (".*åt"r V) (".*åt"r V*) ;
+
 
 #LIST UT-VERBS = (".*ut"r V) (".*ut"r Ex/V) ;
 
