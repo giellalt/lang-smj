@@ -1338,6 +1338,8 @@ SET NOT-NPMOD     = WORD - PRE-NP-HEAD OR ABBR OR @CVP  OR (Adv Subqst) ;
 # This is the previous NPNH (npnh) set.
 # NOT-NPMOD  = "NOT-PRE-NP-HEAD"
 
+SET NOT-NPMOD-NOMPL     = WORD - PRE-NP-HEAD - (Nom Pl) OR ABBR OR @CVP  OR (Adv Subqst) ;
+
 SET NOT-NPMOD-ACC     = NOT-NPMOD - Acc OR ABBR  OR (Adv Subqst);
 SET NOT-NPMOD-ACC-ADV     = NOT-NPMOD - Acc - Adv OR ABBR  OR (Adv Subqst);
 
@@ -1807,7 +1809,7 @@ COPY:lex-oahpásmuvvat-oahpástuvvat ("oahpástuvvat" &SUGGEST) EXCEPT ("oahpás
 
     # com to ill when oahpásmuvvat 
     # ------------------------------
-ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*0 ("oahpásmuvvat") BARRIER NOT-NPMODADV LINK NEGATE 1 (Pron Dem) LINK 1 (N Com) ) (NEGATE (*0 &lex-oahpásmuvvat-oahpástuvvat))(NEGATE 0 (Sg Ill)) ;
+ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 ("oahpásmuvvat") BARRIER NOT-NPMODADV LINK NEGATE 1 (Pron Dem) LINK 1 (N Com) ) (NEGATE (*0 &lex-oahpásmuvvat-oahpástuvvat))(NEGATE 0 (Sg Ill)) ;
 
     ## Ja de oahpástuvviv avta prográmmaj.
     ## Dá bále bessin oahppe vehi oahpásmuvvat {doarromusiejajn} Narvijkan 
@@ -1845,7 +1847,7 @@ COPY:msyn-proncom-ill-oahpástuvvat2 (Ill &SUGGEST) EXCEPT (Com &msyn-proncom-il
     # com and com to ill when oahpásmuvvat 
     # ------------------------------
 
-ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 CC OR COMMA BARRIER NOT-NPMOD LINK *-1 (&msyn-com-ill-oahpástuvvat) OR (&msyn-proncom-ill-oahpástuvvat) OR (&msyn-proncom-ill-oahpástuvvat2) BARRIER (*) - (Sem/Plc Sg Ine)) (NEGATE (*0 &lex-oahpásmuvvat-oahpástuvvat)) ;
+ADD:msyn-com-ill-oahpástuvvat (&msyn-com-ill-oahpástuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 CC OR COMMA BARRIER NOT-NPMOD-NOMPL LINK *-1 (&msyn-com-ill-oahpástuvvat) OR (&msyn-proncom-ill-oahpástuvvat) OR (&msyn-proncom-ill-oahpástuvvat2) BARRIER (*) - (Sem/Plc Sg Ine)) (NEGATE (*0 &lex-oahpásmuvvat-oahpástuvvat)) ;
     ## Dá bále bessin oahppe vehi oahpásmuvvat doarromusiejajn Narvijkan ja sáme ásadusáj Jåhkåmåhken åvdås vádtsájin
     ## Oadtjot oahppijt oahpásmuvátjit sáme girjálasjvuodajn ja girjálasjvuoda {histåvråjn}. DNW LINDA, "histåvråjn" ij sjatta illatijvva. Ihkap gå NOT-NPMOD ij dádjada "girjálasjvuoda"
     ## ja bessi oahpásmuvvat sáme kultuvrajn, {histåvråjn ja sebrudakiellemijn.}
@@ -3130,7 +3132,9 @@ COPY:msyn-numeral-attr (Sg &SUGGEST) EXCEPT (Pl &msyn-numeral-attr) BEFORE CASE 
 
 
     # homonomy beetween pl ine and sg com
-ADD:msyn-numeral-attr-pl-ine (&msyn-numeral-attr-pl-ine) TARGET (N Pl Ine) IF (*-1 (Num Sg Ine) - Sem/Year OR (Num Arab Ine) BARRIER NOT-NPMOD) ;
+ADD:msyn-numeral-attr-pl-ine (&msyn-numeral-attr-pl-ine) TARGET (N Pl Ine) IF (*-1 (Num Sg Ine) - Sem/Year OR (Num Arab Ine) BARRIER NOT-NPMOD LINK 0 Sem/Time) ;
+
+#$ lijma nåv árrat smáredam ja vuodjám 6-7 tijma {bijlajn}
 
     # numeral is alos wrong, habitive "la/li" shows that it must be sg ine. 
 ADD:msyn-numeral-attr-pl-ine (&msyn-numeral-attr-pl-ine) TARGET (N Pl Ine) IF (*-1 (Num Sg Acc) - Sem/Year OR (Num Arab Ine) BARRIER NOT-NPMOD LINK *-1 ("liehket" Ind) BARRIER (*) - Num - Dem) ;
