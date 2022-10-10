@@ -1762,7 +1762,7 @@ COPY:msyn-congr-PrtSg3-PrsPl3 (Prs Pl3 &SUGGEST) EXCEPT (Prt Sg3 &msyn-congr-Prt
     # ---------------------------------------------------------------------------------------------------------
     # ---------------------------------------------------------------------------------------------------------
 
-ADD:lex-oahpástuvvat-oahpásmuvvat (&lex-oahpástuvvat-oahpásmuvvat) TARGET ("oahpástuvvat") + VFIN OR ("oahpástuvvat")+ Actio IF (NEGATE *0 Sem/AnimateNotOrg + Com OR Sem/AnimateNotOrg + Ill OR (Pron Pers) + Com OR (Pron Pers) + Ill OR (Pron Recipr) + Com OR (Pron Recipr) + Ill BARRIER NOT-NPMODADVPCLE - (Nom N) - (Pron Nom));
+ADD:lex-oahpástuvvat-oahpásmuvvat (&lex-oahpástuvvat-oahpásmuvvat) TARGET ("oahpástuvvat") + VFIN OR ("oahpástuvvat") + Actio IF (NEGATE *0 Sem/AnimateNotOrg + Com OR Sem/AnimateNotOrg + Ill OR (Pron Pers) + Com OR (Pron Pers) + Ill OR (Pron Recipr) + Com OR (Pron Recipr) + Ill BARRIER NOT-NPMODADVPCLE - (Nom N) - (Pron Nom));
     ## Iŋŋgá l NRK:ajn oahpástuvvam. DNW NEW LINDA
     ## Ibbá l uddni åvddåskåvlåjn oahpástuvvam(in).
     ## váj máná ja nuora juo álgos oadtju máhttelisvuodav girkkolanjájn oahpástuvvat 
@@ -1778,7 +1778,7 @@ ADD:lex-oahpástuvvat-oahpásmuvvat (&lex-oahpástuvvat-oahpásmuvvat) TARGET ("
     #$ valla oahpástuvvin måj sijájn gå de dåhku båhtin. 
     #$ Tjåhkalvisbálij ulmutja oahpástuvvin ja rádnastallin. NEW LINDA
     
-ADD:lex-oahpástuvvat-oahpásmuvvat (&lex-oahpástuvvat-oahpásmuvvat) TARGET ("oahpástuvvat")  IF (*0 (N Com) - Sem/Animate OR (N Ill) - Sem/Animate OR ( N Pl Ine) - Sem/Animate BARRIER NOT-NPMODADV ) ;
+ADD:lex-oahpástuvvat-oahpásmuvvat (&lex-oahpástuvvat-oahpásmuvvat) TARGET ("oahpástuvvat")  IF (*0 (N Com) - Sem/AnimateNotOrg OR (N Ill) - Sem/AnimateNotOrg OR (N Pl Ine) - Sem/AnimateNotOrg BARRIER NOT-NPMODADV ) ;
 
     ## gå låhki tevstav oahpástuvátjit sisanojn  
     #$ gå låhki tevstav oahpástuvátjit ulmutjij  
@@ -1864,7 +1864,7 @@ COPY:msyn-com-ill-oahpástuvvat (Pl Ill &SUGGEST) EXCEPT (Pl Gen &msyn-com-ill-o
     # Ill to com when oahpástuvvat 
     # ------------------------------
 
-ADD:msyn-ill-com-oahpásmuvvat (&msyn-ill-com-oahpásmuvvat) TARGET (Ill) IF (*0 ("oahpástuvvat") BARRIER NOT-NPMODADV LINK NEGATE 1 (Pron Dem) LINK *1 (N Ill) BARRIER NOT-NPMODADV ) (NEGATE (*0 &lex-oahpástuvvat-oahpásmuvvat));
+ADD:msyn-ill-com-oahpásmuvvat (&msyn-ill-com-oahpásmuvvat) TARGET (Ill) IF (*0 ("oahpástuvvat") BARRIER NOT-NPMODADV LINK NEGATE 1 (Pron Dem) LINK *1 (N Ill) BARRIER NOT-NPMODADV-INDEF ) (NEGATE (*0 &lex-oahpástuvvat-oahpásmuvvat));
 
 
     ## Sån la oahpástuvvam {Iŋŋgáj}
@@ -1896,7 +1896,7 @@ COPY:msyn-ill-com-oahpásmuvvat (Com &SUGGEST) EXCEPT (Ill &msyn-ill-com-oahpás
 ADD:msyn-pron-ill-com-oahpástuvvat (&msyn-pron-ill-com-oahpástuvvat) TARGET (Pron Dem Pl Ill) OR (Pron Dem Sg Ill Attr) IF (*0 ("oahpástuvvat") BARRIER NOT-NPMODADV) (*1 (N Ill) BARRIER NOT-NPMOD) (NEGATE (*0 &lex-oahpástuvvat-oahpásmuvvat));
 
 COPY:msyn-pron-ill-com-oahpástuvvat (Com &SUGGEST) EXCEPT (Ill &msyn-pron-ill-com-oahpástuvvat) OR (Ill Attr &msyn-pron-ill-com-oahpástuvvat) TARGET (&msyn-pron-ill-com-oahpástuvvat) ;
-    ## Maŋenagi gå oahppe oahpásmuvvi {dájda} {ulmutjijda}. DNW NEW LINDA, disamb must be fixed for "dajda" and "dájda"
+    ## Maŋenagi gå oahppe oahpásmuvvi {dájda} {ulmutjijda}."
     ## Maŋenagi gå oahppe oahpásmuvvi {dán} ulmutjij. 
     ## Maŋenagi gå oahppe oahpástuvvi dán ulmutjij. 
 
@@ -1947,10 +1947,15 @@ COPY:syn-pred-attr (Attr &SUGGEST) EXCEPT (Sg Nom &msyn-pred-attr) TARGET (&msyn
 
     # Attr when should be pred
     #--------------------------
-ADD:syn-attr-pred (&msyn-attr-pred)  TARGET (A Attr) IF (1 EOS) ;
-
+ADD:syn-attr-pred (&msyn-attr-pred) TARGET (A Attr) IF (1 EOS) ; 
+    ## ássje l {gássjelis}
+ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 ("liehket" Sg1) OR ("liehket" Sg2) OR ("liehket" Sg3) BARRIER NOT-ADV) ;
     ## ássje l {gássjelis} munji
-
+ADD:syn-attr-pred-pl (&msyn-attr-pred-pl) TARGET (A Attr) IF (*-1 ("liehket" Du1) OR ("liehket" Du2) OR ("liehket" Du3) OR ("liehket" Pl1) OR ("liehket" Pl2) OR ("liehket" Pl3) BARRIER NOT-ADV) ;
+    ## ássje l {gássjelis} munji
+    
+COPY:syn-attr-pred-sg (Sg Nom &SUGGEST) EXCEPT (Attr &msyn-attr-pred) TARGET (&msyn-attr-pred-sg) ;
+COPY:syn-attr-pred-pl (Pl Nom &SUGGEST) EXCEPT (Attr &msyn-attr-pred) TARGET (&msyn-attr-pred-pl) ;
 
 
     # mij instead of gut (all cases and persons, so also ma>gudi)
@@ -2009,7 +2014,7 @@ COPY:msyn-mij-gut ("guhti" &SUGGEST) EXCEPT ("mij" &msyn-mij-gut) TARGET (&msyn-
      # relative use gut>mij
     # ----------------------
 
-ADD:msyn-gut-mij (&msyn-gut-mij) TARGET ("gut") IF (-1 ( NOT Sem/AnimateNotOrg)) ;# BARRIER NOT-ADV-PCLE LINK NEGATE -1 ("/") LINK -1 Dem) (NEGATE -1 ("/") OR CC LINK -1 (Pron Rel)) ; #DNW LINDA NEW
+ADD:msyn-gut-mij (&msyn-gut-mij) TARGET ("gut") IF (NOT -1 Sem/AnimateNotOrg) ;# BARRIER NOT-ADV-PCLE LINK NEGATE -1 ("/") LINK -1 Dem) (NEGATE -1 ("/") OR CC LINK -1 (Pron Rel)) ; #DNW LINDA NEW
 
     
 COPY:msyn-gut-mij ("mij" &SUGGEST) EXCEPT ("guhti" &msyn-mij-gut) TARGET (&msyn-gut-mij) ;
