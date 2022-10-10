@@ -648,6 +648,7 @@ SET NOT-ADJ = WORD - A ;
 SET NOT-Attr = WORD - Attr ;
 SET NOT-AA = WORD - A - Adv ;
 SET NOT-AAPCLE = WORD - A - Adv - Pcle ;
+SET NOT-A-PCLE = (*) - A - Pcle ;
 
 
 # Adverbial sets and their complements
@@ -2262,6 +2263,9 @@ REMOVE V IF (NEGATE -1 (N Nom))(0 (A Attr))(*1 N BARRIER NOT-ADJ LINK NOT 1 Po) 
 
 REMOVE N IF (0 (A Attr))(NEGATE 1 VFIN OR PrfPrc OR CLB)(NEGATE 0 (Sg Nom) LINK *-1 (V Sg3) BARRIER NOT-ADV-PCLE LINK NOT *-1 Nom BARRIER S-BOUNDARY2 OR CC) (NEGATE 0 (Pl Nom) LINK *-1 (V Pl3) BARRIER NOT-ADV-PCLE LINK NOT *-1 Nom BARRIER S-BOUNDARY2 OR CC) (*1 N BARRIER NOT-ADJ LINK NOT 0 ADVLCASE LINK NOT 1 Po);
 	## ...muhto dakkár radikála rievdadus eahpitkeahttá buktá garra reakšuvnnaid,...
+	
+REMOVE N IF (0 (A Attr))(NEGATE 1 VFIN OR PrfPrc OR CLB)(NEGATE 0 (Sg Nom) LINK *-1 (V Sg3) BARRIER NOT-ADV-PCLE LINK NOT *-1 Nom BARRIER S-BOUNDARY2 OR CC) (NEGATE 0 (Pl Nom) LINK *-1 (V Pl3) BARRIER NOT-ADV-PCLE LINK NOT *-1 Nom BARRIER S-BOUNDARY2 OR CC) (*1 N BARRIER NOT-ADJ)(0 Sem/Hum + Sem/Lang);
+    ## Mijá mielas lip oahppam ålov, ja lip aj oahpástuvvam ietjá {sáme} nuorajda.
 
 SELECT (A Attr) IF (NEGATE *-1 COPULAS BARRIER NP-HEAD-NOM OR V-NOT-AUX)(NEGATE 0 Num OR Inf OR Der/Comp OR ("nubbi") OR Gen)(NEGATE 0 Adv LINK 1 Gen LINK 1 N)(1 N)(NEGATE 1 VFIN OR Inf) (NEGATE 0 (N Sg Nom) LINK *-1 V-SG3 BARRIER NPNHA LINK NOT *-1 NP-HEAD-NOM BARRIER S-BOUNDARY2) (NEGATE *-1 ("gus") BARRIER NOT-NP LINK NOT -1 VFIN LINK NOT 1 EOS); 
 	## Gonagas sáhttá mearridit sierranaš njuolggadusaid báikkalaš dilálašvuođaid ektui.
@@ -2975,6 +2979,13 @@ SELECT Acc (0 Num LINK 1 (N Sg Gen))(*-0 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY
 SELECT:sgnum Sg (0 Num LINK 1 ("jagák")) ;
 	#$ Bierit la nielje jagák.
 
+SELECT (Indef Attr) IF (0C Pron - ("nubbe"))(NOT 0 Ill OR Ela OR Ine) (*1 N - Prop BARRIER NOT-A-PCLE - Indef) ;
+## Dan muitalii muhtin mátkkošteaddji gean namma lei Keilhau.
+## Njuolggadusain ledje eará ge mearrádusat.
+#$ Dattetge ii leat muitaluvvon makkárge namahan veara geavahanriiddu birra dálolaččaid ja boazodoalu gaskkas.
+
+SELECT:r1570 (Indef Attr) IF (1 (A Attr))(*2 HNOUN BARRIER NP-BOUNDARY);
+## ...ja eará almmolaš dahje priváhta doaibma.
 
 # ========================= #
 # Disambiguating adjectives #
