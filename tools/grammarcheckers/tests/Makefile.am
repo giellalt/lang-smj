@@ -76,7 +76,6 @@ XFAIL_TESTS=\
     real-PrsPl3-PrsSg3.yaml \
     real-PrsSg2-PrsSg3.yaml \
     real-PrtSg3-PrsPl3.yaml \
-    syn-attr-pred.yaml \
     syn-correct-form-liehket.yaml \
     syn-pred-attr.yaml 
 
