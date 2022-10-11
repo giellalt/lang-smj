@@ -1918,12 +1918,14 @@ COPY:msyn-pron-ill-com-oahpástuvvat2 (Com &SUGGEST) EXCEPT (Ill &msyn-proncom-i
     
 
 ADD:syn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF (NEGATE 0 Attr OR (V Sg3)) (*1 N + CASE OR A + CASE BARRIER (*) - (A Attr))
-(NEGATE *-1 COPULAS BARRIER NOT-ADV-PCLE LINK *2 Inf OR Ine BARRIER NOT-NPMODADV - Acc - (A Sg Nom) - CASE);
+(NEGATE *-1 COPULAS BARRIER NOT-ADV-PCLE LINK *2 Inf OR Ine BARRIER NOT-NPMODADV - Acc - (A Sg Nom) - CASE) (NEGATE 1 (N Nom) OR (Pron Nom) LINK 1 ("liehket" Ind));
 	## Objevta sadje gárgadisájn gånnå le ditransitijvva værbba
+	## Sån ham ij diede man gievrra Pippi la.
 	#$ Dássta le tjielgas julevsámegiela báhkogárges juogu dal SVO jali SOV. # DNW LINDA
 	#$ La tjielgas OSV dagu ( 14 ) ja VSO dagu ( 17) e tjuovo vuodobáhkkogárggáv julevsámegielan, dájn gárgadisájn le sierra dæddo ja intonasjåvnnå. # DNW LINDA
 	## {Generatijvva} grammatihkka le gielladiedalasj teorija majt Noam Chomsky vuododij 1950 jagijn. 
 	## {Generatijvva} grammatihkka le vuododuvvam dan vuojno milta ahte máná li riegádam sissŋálasj grammatihkajn, majt Noam Chomsky gåhtjut The Universal Grammar , sámegiellaj {universálla} grammatihkka, (dássta duohku UG). 
+	#$ Sån ham ij diede man gievrra Pippi la.
 
 # North sámi
 #ADD:msyn-attr-not-pred (&msyn-attr-not-pred) TARGET A IF (NOT 0 Attr OR (N Gen) OR @<SPRED LINK NEGATE 0 (Sg Nom) LINK 0 ADJ_ATTR/NOM OR Comp OR Superl)(*1 CNOUN OR A BARRIER NOT-ADJ-CC OR ("gå"))(NOT 1 Rel) (NEGATE 0 ("buorre") OR ("riekta") OR ("duođas") OR Ord - ("nubbi")) (NEGATE *0 MODALS BARRIER GRAMCHK-S-BOUNDARY OR GRAMCHK-VFIN OR Rel) (NEGATE 0 A LINK 1 COMMA OR CC LINK NOT 1 Attr OR Gen) (NEGATE 0 Ess LINK NOT *0 GRAMCHK-VFIN BARRIER GRAMCHK-S-BOUNDARY OR CLB)(NEGATE 0 Superl LINK 0 (Adv Superl))(NEGATE 0 Attr LINK NOT 0 Attr)(NEGATE 1 EOS)(NEGATE 0 (N Sg Ill));
@@ -1947,11 +1949,13 @@ COPY:syn-pred-attr (Attr &SUGGEST) EXCEPT (Sg Nom &msyn-pred-attr) TARGET (&msyn
 
     # Attr when should be pred
     #--------------------------
-ADD:syn-attr-pred (&msyn-attr-pred) TARGET (A Attr) IF (1 EOS) ; 
+    
+ADD:syn-attr-pred (&msyn-attr-pred) TARGET (A Attr) IF (NEGATE 0 (A Nom)) (1 EOS) ; 
     ## ássje l {gássjelis}
-ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 ("liehket" Sg1) OR ("liehket" Sg2) OR ("liehket" Sg3) BARRIER NOT-ADV) ;
+ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 ("liehket" Sg1) OR ("liehket" Sg2) OR ("liehket" Sg3) BARRIER NOT-ADV) (NEGATE 0 (A Nom)) (NEGATE *1 N + CASE BARRIER NOT-Attr) ;
     ## ássje l {gássjelis} munji
-ADD:syn-attr-pred-pl (&msyn-attr-pred-pl) TARGET (A Attr) IF (*-1 ("liehket" Du1) OR ("liehket" Du2) OR ("liehket" Du3) OR ("liehket" Pl1) OR ("liehket" Pl2) OR ("liehket" Pl3) BARRIER NOT-ADV) ;
+ADD:syn-attr-pred-pl (&msyn-attr-pred-pl) TARGET (A Attr) IF (*-1 ("liehket" Du1) OR ("liehket" Du2) OR ("liehket" Du3) OR ("liehket" Pl1) OR ("liehket" Pl2) OR ("liehket" Pl3) BARRIER NOT-ADV) (NEGATE 0 (A Nom)) (NEGATE *1 N + CASE BARRIER  NOT-Attr);
+ 
     ## ássje l {gássjelis} munji
     
 COPY:syn-attr-pred-sg (Sg Nom &SUGGEST) EXCEPT (Attr &msyn-attr-pred) TARGET (&msyn-attr-pred-sg) ;
