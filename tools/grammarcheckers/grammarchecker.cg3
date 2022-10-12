@@ -251,6 +251,7 @@ LIST Der/vuollai = Der/vuollai ;
 LIST Der/vuolde = Der/vuolde ;
 
 LIST Der/NomAg = Der/NomAg ;
+LIST Gram/NomAg = Gram/NomAg ;
 SET NOMAG = NomAg OR Der/NomAg ;
 LIST G3 = G3 ;
 LIST Gram/3syll = Gram/3syll ;
@@ -1969,7 +1970,7 @@ COPY:syn-attr-pred-pl (Pl Nom &SUGGEST) EXCEPT (Attr &msyn-attr-pred) TARGET (&m
 
     # relative use, mij>gut
 
-ADD:msyn-mij-gut (&msyn-mij-gut) TARGET ("mij") IF (*-1 (N Coll) OR NomAg OR (Sem/Hum) OR (Sem/Mal) OR (Sem/Fem) OR (Sem/Sur) OR (Pron Pers) OR (Pron Indef) - ("nubbe") OR ("moattes") BARRIER NOT-ADV-PCLE LINK NEGATE -1 ("/") LINK -1 Dem)(NEGATE -1 ("/") OR CC LINK -1 (Pron Rel)) (NEGATE -1 ("juoga") ) (NEGATE -1 ("iesj" Sg Nom)) ; #OR (Pron Dem)
+ADD:msyn-mij-gut (&msyn-mij-gut) TARGET ("mij") IF (*-1 (N Coll) OR Der/NomAg OR Gram/NomAg OR (Sem/Hum) OR (Sem/Mal) OR (Sem/Fem) OR (Sem/Sur) OR (Pron Pers) OR (Pron Indef) - ("nubbe") OR ("moattes") BARRIER NOT-ADV-PCLE LINK NEGATE -1 ("/") LINK -1 Dem)(NEGATE -1 ("/") OR CC LINK -1 (Pron Rel)) (NEGATE -1 ("juoga") ) (NEGATE -1 ("iesj" Sg Nom)) ; #OR (Pron Dem)
 
     ## Ja gåktu de manáj dáj guoktásijn {ma} galggin dunnuv viedtjat? 
     ## ja lidjin ájn vil tjállám bårde nali, láhpav dajda {ma} maŋŋela båhti. 
@@ -2018,10 +2019,10 @@ COPY:msyn-mij-gut ("guhti" &SUGGEST) EXCEPT ("mij" &msyn-mij-gut) TARGET (&msyn-
      # relative use gut>mij
     # ----------------------
 
-ADD:msyn-gut-mij (&msyn-gut-mij) TARGET ("gut") IF (NOT -1 Sem/AnimateNotOrg) ;# BARRIER NOT-ADV-PCLE LINK NEGATE -1 ("/") LINK -1 Dem) (NEGATE -1 ("/") OR CC LINK -1 (Pron Rel)) ; #DNW LINDA NEW
+ADD:msyn-gut-mij (&msyn-gut-mij) TARGET ("guhti") IF (NOT -1 (Sem/AnimateNotOrg) OR ("avtak") OR ("akta" Foc/Pos-k) OR (Pron Pers) OR ("moattes") OR ("ålos") OR ("iesj") OR ("soames") OR ("juohkkahasj") OR ("muhtem" Pl Nom)) ;  # BARRIER NOT-ADV-PCLE LINK NEGATE -1 ("/") LINK -1 Dem) (NEGATE -1 ("/") OR CC LINK -1 (Pron Rel)) ; #DNW LINDA NEW
 
     
-COPY:msyn-gut-mij ("mij" &SUGGEST) EXCEPT ("guhti" &msyn-mij-gut) TARGET (&msyn-gut-mij) ;
+COPY:msyn-gut-mij ("mij" &SUGGEST) EXCEPT ("guhti" &msyn-mij-gut Area/NO Area/SE) TARGET (&msyn-gut-mij) ;
 
 
 
@@ -2278,7 +2279,7 @@ ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-V + Gram/3syll OR ("liehk
     
     # right subj
 
-ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-V + Gram/3syll OR ( "liehket" )  IF (0 (Prs Pl3)) (*1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) - PLURAL-QUANTIFIERS BARRIER NOT-NPMOD - Adv - Pcle OR PLURAL-QUANTIFIERS LINK NOT 0 (Pl Nom) LINK NEGATE 1 CC LINK *1 (Nom Sg) BARRIER NOT-NPMOD)  (NEGATE *-1 (Pron Nom Pl3) OR (N Nom Pl) OR (Pron Nom Pl))(NEGATE 0 (Prs Sg3));
+ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-V + Gram/3syll OR ( "liehket" )  IF (0 (Prs Pl3)) (*1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Pers Nom Sg) - PLURAL-QUANTIFIERS BARRIER NOT-NPMOD - Adv - Pcle OR PLURAL-QUANTIFIERS LINK NOT 0 (Pl Nom) LINK NEGATE 1 CC LINK *1 (Nom Sg) BARRIER NOT-NPMOD)  (NEGATE *-1 (Pron Nom Pl3) OR (N Nom Pl) OR (Pron Nom Pl))(NEGATE 0 (Prs Sg3));
 
     ## Suv mielas li sån ilá materalistisk.
     ## Mijá sáme åvdåstiddjijn {li} mierredimfábmo.
