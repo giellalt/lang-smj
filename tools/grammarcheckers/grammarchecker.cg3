@@ -2025,14 +2025,14 @@ COPY:msyn-mij-gut ("guhti" &SUGGEST) EXCEPT ("mij" &msyn-mij-gut) TARGET (&msyn-
      # relative use gut>mij
     # ----------------------
 
-ADD:msyn-gut-mij (&msyn-gut-mij) TARGET ("guhti") IF (-1 N LINK NOT 0 Sem/AnimateNotOrg) (NEGATE -1 ("avtak") OR ("akta" Foc/Pos-k) OR (Pron Pers) OR ("moattes") OR ("ålos") OR ("iesj") OR ("soames") OR ("juohkkahasj") OR ("muhtem" Pl Nom)) (NEGATE -3 ("guhti") LINK 1 ("liehket" Ind Sg3) OR ("liehket" Ind Sg3) LINK 1 (N Nom) OR (Dem Nom)) (NEGATE -1 (N Ine) LINK (-1 (N Ill) OR (Pron Ill))) ;  
+ADD:msyn-gut-mij (&msyn-gut-mij) TARGET ("guhti") IF (-1 N LINK NOT 0 Sem/AnimateNotOrg) (NEGATE -1 ("avtak") OR ("akta" Foc/Pos-k) OR (Pron Pers) OR ("moattes") OR ("ålos") OR ("iesj") OR ("soames") OR ("juohkkahasj") OR ("muhtem" Pl Nom)) (NEGATE *-1 (N Nom) + Sem/Hum OR (Dem Nom) BARRIER (*) - (N Ine) - (Pron Ine) LINK *-1 ("liehket" Ind Sg3) OR ("liehket" Ind Sg3) BARRIER NOT-NPMOD LINK -1 ("guhti")) (NEGATE -1 (N Ine) LINK (-1 (N Ill) OR (Pron Ill))) ;  
 
     #$ Gut la dån?
     #$ Ulmusj lagábut oahpástuvvá ja diehtá gut juohkkahasj la, javllá sån."
-    #$ Eira, gut la dat Sámedikkeráden gænna l åvdåsvásstádus. LINDA UDDNI gut la dat ulmusj? ja barrier? Vuollelin aj
+    #$ Eira, gut la dat (ulmusj) Sámedikkeráden gænna l åvdåsvásstádus.
     #$ Giellamåvtåstuhttemstipænnda oahppijda joarkkaskåvlån gudi sámegielåhpadusáv válljiji.
 
-ADD:msyn-gut-mij (&msyn-gut-mij) TARGET ("guhti") IF (-3 ("mij" Nom) LINK 1 ("liehket" Ind Sg3) OR ("liehket" Ind Sg3) LINK 1 (N Nom) OR (Dem Nom)) ;
+ADD:msyn-gut-mij (&msyn-gut-mij) TARGET ("guhti") IF (*-1 (N Nom) - Sem/Hum OR (Dem Nom) BARRIER (*) - (N Ine) - (Pron Ine) LINK *-1 ("liehket" Ind Sg3) OR ("liehket" Ind Sg3) BARRIER NOT-NPMOD LINK -1 ("mij" Nom)) ;
     ## Mij la dat {gænna} l guhka siejbbe, ja la jårbbåt gå biejvve ja tjáhppat gå ednam?
 
 COPY:msyn-gut-mij ("mij" &SUGGEST) EXCEPT ("guhti" &msyn-mij-gut Area/NO Area/SE) TARGET (&msyn-gut-mij) ;
