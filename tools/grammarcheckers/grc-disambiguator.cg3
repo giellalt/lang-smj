@@ -2280,7 +2280,14 @@ REMOVE Adv IF (-2 A OR N)(-1 ("gus" Pcle))(*1 N BARRIER NPNH);
 
 REMOVE PrsPrc IF (0 (A Attr))(1 N);
     	## Sidjiide maid lei guollerikkis Ruija geasuheaddji guovlu.
- 
+
+SELECT (Der/NomAg N Sg Nom) IF (0 PrsPrc) (1 (Rel Sg Nom)); 
+    	## Skåvllåæjgádin gænna ij la åhpadiddje mij máhttá sámev åhpadit #DNW LINDA
+
+REMOVE PrsPrc IF (0 (Der/NomAg N Sg Nom) OR (Der/NomAg N Pl Nom)) (1 (Rel Nom));
+     	## Skåvllåæjgádin gænna ij la åhpadiddje mij máhttá sámev åhpadit #DNW LINDA
+
+
 REMOVE (A Ine) IF (0 Attr)(1 N);
 	## Olggosaddin sáhttá liikká dáhpáhuvvat jos gávdnojit dasa beaktilis sivat.
 
@@ -3543,6 +3550,9 @@ SELECT (Sg Gen) IF (*-1C (Dem Sg Gen) BARRIER NOT-ADJ)(NEGATE 0 VFIN)(0 N);
     
 SELECT (Sg Gen) IF (0 Prop)(1 (N Nom) LINK NOT 0 Prop);
 	## Josef la Maria ålmåj.
+
+SELECT (N Sg Nom) IF (0 ImprtII LINK -1 A) ;
+    ## Sámedikkepresidænnta, Aili Keskitalo la ávon gå dal vuododuvvá almulasj nammadus gut galggá guoradallat láhkatjuohkkev dåjmajt ja årnigijt sámegielaj hárráj
     
 REMOVE Nom IF (NEGATE 0 TITLE)(0 N)(1C Nom);
 	## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj:
