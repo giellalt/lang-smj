@@ -213,6 +213,7 @@ LIST Der/hudda = Der/hudda ;
 LIST Der/huhtti = Der/huhtti ;
 LIST Der/huvva = Der/huvva ;
 LIST Der/halla = Der/halla ;
+LIST Der/k = Der/k ;
 LIST Der/j = Der/j ;
 LIST Der/l = Der/l ;
 LIST Der/lasj = Der/lasj ;
@@ -1462,6 +1463,10 @@ LIST HUM-PRON = "divna" "gájka" "ietjes" "guoktása" ("juohkkahasj" Pron Indef)
 LIST HUM-A = ("vuostasj" A Ord Pl Nom);
 
 SUBSTITUTE Pron (Pron Sem/Hum) TARGET HUM-PRON (NEGATE 0 Sem/Hum);
+SUBSTITUTE N (N Sem/Hum) TARGET Der/NomAg OR Gram/NomAg (NEGATE 0 Sem/Hum);
+SUBSTITUTE (N Sem/Plc) (N Sem/Hum) TARGET Der/k (NEGATE 0 Sem/Hum);
+SUBSTITUTE A (A Sem/Hum) TARGET HUM-A - Attr (NEGATE 0 Sem/Hum);
+
  
 LIST DOPPE = "badjen" "dáppe" "duoppe" "dåppe" "dággu" "daggu" "duoggu" "dåggu" "dánna" "danna" "duonna" "dånna" "dåhku" "duohku" "ålggon" ;
 # Adverbs with a locativic form, but don´t get Loc as a tag.
