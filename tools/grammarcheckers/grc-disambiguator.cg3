@@ -1309,9 +1309,9 @@ REMOVE:Prop=noun Prop IF (0 NOT-PROP LINK *-1 BOS OR (":") BARRIER WORD) ;
 # -----------------------
 # SELECT instead of REMOVE if one wants to investigate word structure.
 
-REMOVE (Der/lasj A Attr) IF (0 NOT-DER LINK 0 (A Attr));
-REMOVE (Der/lasj A Attr) IF (0 NOT-DER LINK 0 (N));
-REMOVE N-DER IF (0 LEX-N LINK NOT 0 Ess OR Actor);
+#REMOVE (Der/lasj A Attr) IF (0 NOT-DER LINK 0 (A Attr));
+#REMOVE (Der/lasj A Attr) IF (0 NOT-DER LINK 0 (N));
+#REMOVE N-DER IF (0 LEX-N LINK NOT 0 Ess OR Actor); #Too dangerous for grc
 REMOVE (Actor N Sg Nom) IF (0 NOT-ACTOR);
 REMOVE (Actor N) IF (0 NOT-ACTOR);  # A try
 
@@ -2281,11 +2281,8 @@ REMOVE Adv IF (-2 A OR N)(-1 ("gus" Pcle))(*1 N BARRIER NPNH);
 REMOVE PrsPrc IF (0 (A Attr))(1 N);
     	## Sidjiide maid lei guollerikkis Ruija geasuheaddji guovlu.
 
-SELECT (Der/NomAg N Sg Nom) IF (0 PrsPrc) (1 (Rel Sg Nom)); 
-    	## Skåvllåæjgádin gænna ij la åhpadiddje mij máhttá sámev åhpadit #DNW LINDA
-
 REMOVE PrsPrc IF (0 (Der/NomAg N Sg Nom) OR (Der/NomAg N Pl Nom)) (1 (Rel Nom));
-     	## Skåvllåæjgádin gænna ij la åhpadiddje mij máhttá sámev åhpadit #DNW LINDA
+     	## Skåvllåæjgádin gænna ij la åhpadiddje mij máhttá sámev åhpadit 
 
 
 REMOVE (A Ine) IF (0 Attr)(1 N);
@@ -3971,10 +3968,10 @@ SELECT Pl3 IF (*-1C (N Pl Nom) BARRIER (Pron Pers Sg2 Nom) OR (Pron Pers Sg3 Nom
 SELECT Pl3 IF (*-1 (N Sg Nom) BARRIER (Pron Pers Sg2 Nom) OR  (Pron Pers Sg3 Nom) OR (N Sg Nom) LINK *-1 CC BARRIER NPNH LINK -1 (N Sg Nom));
 	## Anne ja Berit le jåhtemin.
     
-REMOVE Sg2 IF (*-1 (N Sg Nom) OR (Rel Sg Nom) BARRIER (Pron Pers Sg2 Nom) OR COMMA OR VFIN)(NEGATE 0 Neg);
-REMOVE Pl3 IF (NEGATE *-1 (N Pl Nom))(*-1 (N Sg Nom) LINK NOT *-1 CC BARRIER NPNH LINK -1 (N Sg Nom))(0 ("liehket"));
+REMOVE Sg2 IF (*-1 (N Sg Nom) OR (Rel Sg Nom) BARRIER (Pron Pers Sg2 Nom) OR COMMA OR VFIN)(NEGATE 0 Neg)(0 VFIN - Sg2);
+REMOVE Pl3 IF (NEGATE *-1 (N Pl Nom))(*-1 (N Sg Nom) LINK NOT *-1 CC BARRIER NPNH LINK -1 (N Sg Nom))(0 ("liehket"))(0 VFIN - Sg2);
 
-SELECT (V Du3)(*0 (N Pl Nom) OR (A Pl Nom) BARRIER (Pron Pers Sg2 Nom) OR (Pron Pers Sg3 Nom) OR (N Sg Nom));
+SELECT (V Du3)(*0 (N Pl Nom) OR (A Pl Nom) BARRIER (Pron Pers Sg2 Nom) OR (Pron Pers Sg3 Nom) OR (N Sg Nom))(0 VFIN - Sg2);
 
 
 
