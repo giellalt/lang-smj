@@ -1941,8 +1941,11 @@ COPY:msyn-plcom-sgcom-oahpástuvvat2 (Com &SUGGEST) EXCEPT (Ill Attr &msyn-plcom
     # ---------------------------------------------------------------------------------------------------------
     
 
-ADD:syn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF (NEGATE 0 Attr OR (V Sg3)) (*1 N + CASE OR A + CASE BARRIER (*) - (A Attr))
-(NEGATE *-1 COPULAS BARRIER NOT-ADV-PCLE LINK *2 Inf OR Ine BARRIER NOT-NPMODADV - Acc - (A Sg Nom) - CASE) (NEGATE 1 (N Nom) OR (Pron Nom) LINK 1 ("liehket" Ind));
+ADD:syn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF 
+(NEGATE 0 Attr OR (V Sg3)) (*1 N + CASE OR A + CASE BARRIER (*) - (A Attr))
+(NEGATE *-1 COPULAS BARRIER NOT-ADV-PCLE LINK *2 Inf OR Ine BARRIER NOT-NPMODADV - Acc - (A Sg Nom) - CASE) (NEGATE 1 (N Nom) OR (Pron Nom) LINK 1 ("liehket" Ind))
+(NEGATE 0 (Der/Car))
+(NEGATE -1 CC LINK -1 (A Sg) OR (A Pl))  ;
 	## Objevta sadje gárgadisájn gånnå le ditransitijvva værbba
 	## Sån ham ij diede man gievrra Pippi la.
 	#$ Dássta le tjielgas julevsámegiela báhkogárges juogu dal SVO jali SOV. # DNW LINDA
@@ -1974,7 +1977,7 @@ COPY:syn-pred-attr (Attr &SUGGEST) EXCEPT (Sg Nom &msyn-pred-attr) TARGET (&msyn
     # Attr when should be pred
     #--------------------------
     
-ADD:syn-attr-pred (&msyn-attr-pred) TARGET (A Attr) IF (NEGATE 0 (A Nom)) (1 EOS) ; 
+#ADD:syn-attr-pred (&msyn-attr-pred) TARGET (A Attr) IF (NEGATE 0 (A Nom)) (1 EOS) ; 
     ## ássje l {gássjelis}
 ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 ("liehket" Sg1) OR ("liehket" Sg2) OR ("liehket" Sg3) BARRIER NOT-ADV) (NEGATE 0 (A Nom)) (NEGATE *1 N + CASE BARRIER NOT-Attr) ;
     ## ássje l {gássjelis} munji
@@ -2286,7 +2289,7 @@ COPY:msyn-congr-iesj-ietja (Pl &SUGGEST) EXCEPT (Sg &msyn-congr-iesj-ietja) AFTE
 LIST IT-V = (".*it"r);
 
 
-ADD:real-ActioGen-PrtPl1 (&real-ActioGen-PrtPl1) TARGET IT-V - Gram/3syll IF (0 (Actio Gen)) (NEGATE *0 VFIN BARRIER S-BOUNDARY-OPEN ) ;
+ADD:real-ActioGen-PrtPl1 (&real-ActioGen-PrtPl1) TARGET IT-V - Gram/3syll IF (0 (Actio Gen)) (NEGATE *0 VFIN BARRIER S-BOUNDARY-OPEN ) ; ## LINDA ájnas
 
 COPY:real-ActioGen-PrtPl1 (Ind Prt Pl1 &SUGGEST) EXCEPT (Actio Gen) TARGET (&real-ActioGen-PrtPl1) ;
 
