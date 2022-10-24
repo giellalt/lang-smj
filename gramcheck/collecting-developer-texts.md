@@ -1,9 +1,11 @@
 Collecting developer texts
 ==========================
 
-In order to test precision, we need texts for development. The procedure for generating sentences with error alarms is described [here](https://giellalt.github.io/proof/gramcheck/GrammarCheckerDocumentation.html).
+In order to test precision, we need texts for development. is described [here](https://giellalt.github.io/proof/gramcheck/GrammarCheckerDocumentation.html).
 
-The Lule Saami development sentences should be taken from corpus texts not in use for gold corpus:
+The Lule Saami development sentences should be taken from corpus texts not in use for gold corpus. The following texts are available (remove the newlines and collect the result as one file (`corpustext.txt`) of appr. 750000 words). Then, analyse the file as explained [in this document](https://giellalt.github.io/proof/gramcheck/extracting-precision-sentences.html). The result will be files containing sentences with error alarms.
+
+The files reserved for developer test corpus are listed here. These should **not** be used for gold corpus annotation. Gold corpus files are listed at the end of this document.
 
 ```
 ccat -l smj 
@@ -51,7 +53,7 @@ ccat -l smj
 ```
 
 
-Available for goldcorpus
+The second half of the corpus is the files available for making goldcorpus texts. Some of the catalogues below already contain goldcorpus files (marked *\*.correct.txt.xsl*), the rest may potentially  be used as such, as they are not part of the developer corpus.
 
 ```
 converted/admin/depts/regjeringen.no
@@ -72,7 +74,5 @@ converted/news/NRK/2007
 converted/news/NRK/2012
 converted/news/NRK/2013
 concverted/news/lokalavisa_nordsalten/
-
-
 ```
 
