@@ -1600,23 +1600,32 @@ COPY:use-ellipsis ("…" &SUGGEST) EXCEPT ("...") TARGET (&ellipsis) ;
 	# ---------------------------------------------------------------------------------------------------------
 
 
-	# Should not be sentence initial copula: from le, to la or l
+	# Should not be sentence initial copula: from le, to la or l or li
     # ----------------------------------------------------------------------
 ADD:from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentInit IF (NEGATE -1 BOS)(NEGATE 0 &syn-number_congruence-subj-verb) (NEGATE 0 &msyn-verb-cong-rel) (NEGATE 0 &msyn-soajttá-le) ;
+
+
+COPY:from-sentence-init-copula (Clt &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 CC OR CS OR ("de" Adv)) (NEGATE 0 Pl3) ;
+    ## Áddjá {le} vuoras > l
 	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
+
+
+COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (-1 (Pl Nom) OR (Pl3 Nom));
+
+    # Bijla le buore > li
+
+COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 CC OR CS OR ("de" Adv))(-1 (Sg Nom) OR (Sg3 Nom) OR ( "ij" Neg Ind Prs Sg3));
+
+    # Ieŋŋgil le buorre > la
+
+COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula Area/NO Area/SE) TARGET (Sg1 &syn-from-sentence-init-copula) OR (Sg2 &syn-from-sentence-init-copula) OR (Du1 &syn-from-sentence-init-copula) OR (Du2 &syn-from-sentence-init-copula) OR (Du3 &syn-from-sentence-init-copula) OR (Pl1 &syn-from-sentence-init-copula) OR (Pl2 &syn-from-sentence-init-copula) ; 
+
 	## Såj læbá boahtám sijddaj
-
-COPY:from-sentence-init-copula (Clt &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET &syn-from-sentence-init-copula IF (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 CC OR ("de" Adv)) ;
-    ## Áddjá {le} vuoras >l
-
-COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 CC OR ("de" Adv))(-1 (Sg Nom) OR (Sg3 Nom) OR ( "ij" Neg Ind Prs Sg3));
-
-COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 CC OR ("de" Adv))(-1 (Pl Nom) OR (Pl3 Nom));
-
+	
 COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET &syn-from-sentence-init-copula IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 CC OR ("de" Adv))(NEGATE -1 (Sg Nom) OR (Sg3 Nom) OR ( "ij" Neg Ind Prs Sg3) OR (Pl Nom) OR (Pl3 Nom)) ;
+	## ja {le} akta dajs ájnnasamos > la
+    ## jus boadá de {le} buorr e> la 
 
-	## ja {le} akta dajs ájnnasamos>la
-    ## jus boadá de {le} buorre> la
 
 	## Árvustallam viertti dáhpáduvvat dajna elementajn manna le sæmmi lágásj dåbddomærkka ja mij {le} lagámus, ij dåhkki dåbddomerkajt árvustallat ietjá elementajn jus gávnnu elemænnta manna le sæmmi lágásj dåbddomerka lagábun. >l 
 
