@@ -2643,6 +2643,7 @@ SELECT Po (-1 NP-HEAD + Gen)(0 ("åvddåj"));
 SELECT Adv IF (0 ("ållu"))(1 (A Der/Superl)) ;
 	## Iv la gåjt mån ållu værámus.
 
+SELECT Adv IF (0 ("ållu")) (1 A) (*-1 VFIN OR PrfPrc OR Inf BARRIER NOT-ADV-PCLE) ;
 
 # Proper nouns
 # - - - - - - 
@@ -2725,7 +2726,7 @@ SELECT (Ind Sg3) IF (NEGATE -1 V)(1 CC LINK *1 (Ind Sg3) BARRIER NOT-ADV);
 	## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj:
 	## Valla Johannes nádoj ja javlaj:
 
-SELECT (N Pl Nom) IF (NEGATE *-1 (Pl Nom) BARRIER S-BOUNDARY2)(NOT 0 CC OR Po)(NEGATE 0 Gen LINK 1 Po)(*1 (Ind Pl3) BARRIER NP-BOUNDARY OR (Pl Nom) OR COMMA)(NEGATE 0 Pron)(NEGATE *1 N BARRIER (*) - Attr);
+SELECT (N Pl Nom) IF (NEGATE *-1 (Pl Nom) BARRIER S-BOUNDARY2)(NOT 0 CC OR Po)(NEGATE 0 Gen LINK 1 Po)(*1 (Ind Pl3) BARRIER NP-BOUNDARY OR (Pl Nom) OR COMMA LINK NEGATE 0 Sg3) (NEGATE 0 Pron)(NEGATE *1 N BARRIER (*) - Attr);
 	## Valla stádaj årro dav gullájin.
 	#$ Ja gåktu de manáj dáj guoktásijn {ma} galggin dunnuv viedtjat?
 	#$GRAM Jus buohtastahttep dán {nuorttasáme} Ådå Testamentajn de le danna 11, 4 % OV ja 88,6 % VO.
@@ -3957,7 +3958,9 @@ SELECT (Ind Pl1) IF (*-1 (Pers Pl1 Nom) BARRIER NOT-ADV-PCLE);
 SELECT HABEO-SG3 (-1 HAB-ACTOR + Ine)(*1 (Sg Nom) BARRIER NPNH) ; ;
 SELECT HABEO-PL3 (-1 HAB-ACTOR + Ine)(*1 (Pl Nom) BARRIER NPNH) ; ;
 
-SELECT Sg2 IF ((*-1 (Pron Pers Sg2 Nom) BARRIER (N Nom) OR S-BOUNDARY2) OR (*-1 Sg2 BARRIER Pron OR VFIN OR S-BOUNDARY2)) ;
+SELECT Sg2 IF ((*-1 (Pron Pers Sg2 Nom) BARRIER (N Nom) OR S-BOUNDARY2)) ; 
+    #Gram 
+
 SELECT Sg3 IF (*-1 (Pron Pers Sg3 Nom) BARRIER (N Nom));
 SELECT Pl3 IF (*-1 (Pron Pers Pl3 Nom) BARRIER (N Nom));
 	## Sij le jåhtemin.
@@ -3967,7 +3970,7 @@ SELECT Sg3 IF (*1 (Pron Pers Sg3 Nom) BARRIER N);
 SELECT Pl3 IF (*1 (Pron Pers Pl3 Nom) BARRIER N);
 	## -Man huohppelasj la dån Tore, javlaj Ámmá munji. 
     
-SELECT Pl3 IF (*-1C (N Pl Nom) BARRIER (Pron Pers Sg2 Nom) OR (Pron Pers Sg3 Nom) OR (N Sg Nom));  
+SELECT Pl3 IF (*-1C (N Pl Nom) BARRIER (Pron Pers Sg2 Nom) OR (Pron Pers Sg3 Nom) OR (N Sg Nom) OR (Pron Rel Sg) OR S-BOUNDARY) (NEGATE *1 (N Sg Nom) BARRIER S-BOUNDARY);  
 SELECT Pl3 IF (*-1 (N Sg Nom) BARRIER (Pron Pers Sg2 Nom) OR  (Pron Pers Sg3 Nom) OR (N Sg Nom) LINK *-1 CC BARRIER NPNH LINK -1 (N Sg Nom));
 	## Anne ja Berit le jåhtemin.
     
@@ -3998,7 +4001,7 @@ SELECT (V Sg2) IF (-1 BOS)(1 ("gus" Pcle))(2 (Pron Pers Sg2 Nom));
 SELECT (V Sg3) IF (-1 BOS)(1 ("gus" Pcle))(2 (Pron Pers Sg3 Nom));
 	## Le gus sån oahpes dán bájkkáj?
 
-REMOVE (V Sg3) IF (-1 (N Pl Nom) OR (Pron Pl Nom) LINK NOT 0 Pr OR Po)(0 (V Pl3));
+REMOVE (V Sg3) IF (-1 (N Pl Nom) OR (Pron Pl Nom) LINK NOT 0 Pr OR Po OR (Sg Nom))(0 (V Pl3));
 
 REMOVE (V Pl3) IF (-1 (Sg Nom) LINK *-1 SV-BOUNDARY BARRIER CC LINK -1 (Sg Nom));
 	## Dáhta l navti.
@@ -4046,7 +4049,8 @@ SELECT (V Pl3) IF (*-2 BOS OR CS BARRIER NPNH)(-1 (N Pl Nom))(0 VFIN);
 SELECT (V Pl3) IF (*-1 (Rel Pl Nom) BARRIER VFIN OR S-BOUNDARY2)(0 VFIN);
 	## Hárjjánam lij báhtjajda gudi biebbmosjokoládav ádnu.	
 
-SELECT (V Pl3) IF (*-1C (Pl Nom) OR (Pl3 Nom) BARRIER (V Pl3) OR CC OR S-BOUNDARY2);
+SELECT (V Pl3) IF (*-1C (Pl Nom) OR (Pl3 Nom) BARRIER (V Pl3) OR CC OR S-BOUNDARY2) (NEGATE *0 (N Sg Nom) BARRIER S-BOUNDARY);
+    #Gram
 
 SELECT Prs (0 Prt)(*-1C Prs BARRIER VFIN) ;
 SELECT Prt (0 Prt)(*-1C Prt BARRIER VFIN) ;
