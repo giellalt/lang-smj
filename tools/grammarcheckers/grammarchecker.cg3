@@ -1594,7 +1594,62 @@ ADD:use-ellipsis (&ellipsis) TARGET ("...");
 COPY:use-ellipsis ("…" &SUGGEST) EXCEPT ("...") TARGET (&ellipsis) ;
 
 
- 
+ 	# Correct copula form, not congruence (after congruence-subj-verb rules)
+	# ---------------------------------------------------------------------------------------------------------
+	# ---------------------------------------------------------------------------------------------------------
+	# ---------------------------------------------------------------------------------------------------------
+
+
+	# Should not be sentence initial copula: from le, to la or l
+    # ----------------------------------------------------------------------
+ADD:from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentInit IF (NEGATE -1 BOS)(NEGATE 0 &syn-number_congruence-subj-verb) (NEGATE 0 &msyn-verb-cong-rel) (NEGATE 0 &msyn-soajttá-le) ;
+	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
+	## Såj læbá boahtám sijddaj
+
+COPY:from-sentence-init-copula (Clt &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET &syn-from-sentence-init-copula IF (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 CC OR ("de" Adv)) ;
+    ## Áddjá {le} vuoras >l
+
+COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 CC OR ("de" Adv))(-1 (Sg Nom) OR (Sg3 Nom) OR ( "ij" Neg Ind Prs Sg3));
+
+COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 CC OR ("de" Adv))(-1 (Pl Nom) OR (Pl3 Nom));
+
+COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET &syn-from-sentence-init-copula IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 CC OR ("de" Adv))(NEGATE -1 (Sg Nom) OR (Sg3 Nom) OR ( "ij" Neg Ind Prs Sg3) OR (Pl Nom) OR (Pl3 Nom)) ;
+
+	## ja {le} akta dajs ájnnasamos>la
+    ## jus boadá de {le} buorre> la
+
+	## Árvustallam viertti dáhpáduvvat dajna elementajn manna le sæmmi lágásj dåbddomærkka ja mij {le} lagámus, ij dåhkki dåbddomerkajt árvustallat ietjá elementajn jus gávnnu elemænnta manna le sæmmi lágásj dåbddomerka lagábun. >l 
+
+    ## Aktisasjbarggo Jielleváre ja Divtasvuona suohkanij gaskan {le} konkrehta aktisasjbarggo suohkanij gaskan mij buoragit hiehpá nuorttaguovllovuorodibmáj. DNW LINDA
+	
+	
+    # Should be sentence initial copula: from la to le. 
+    # ----------------------------------------------------------------------
+ADD:to-sentence-init-copula (&syn-to-sentence-init-copula) TARGET ("liehket" Ind) IF (-1 BOS LINK NEGATE 1 SentInit) (NEGATE 0 &syn-from-sentence-init-copula) (NEGATE 0 &msyn-soajttá-le) (NEGATE 0 ("liehket" Neg)) ;
+
+COPY:to-sentence-init-copula (SentInit &SUGGEST) EXCEPT (&syn-to-sentence-init-copula) TARGET (&syn-to-sentence-init-copula) ;
+
+
+	# la/le to l after vowel
+    # ----------------------------------------------------------------------
+ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" Ind Prs Sg2) IF (NEGATE 0 Clt) (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 CC OR CS OR ("de" Adv) OR (Ill Pl)) (NEGATE 1 EOS)(NEGATE 0 (Pl3 &SUGGEST)) (NEGATE 0 &msyn-soajttá-le) ;
+	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
+    ## Jus árvodimes dåbddomerka galggi árvustaláduvvat viertti dat elementa manna le sæmmi lágásj dåbddomærkka ja manna {le} árvvo aj liehket dádjadahtes váj dát aj sihtá dárkestuvvat. 
+
+    #$ Sidáv dav ja la buorre dav dalá dahkat. 
+    #$ Dát ja la buorre dav dalá dahkat. 
+    #$ Mánájda la buorre dav åhpadit. 
+    #$ Danna gånnå bijlla la. 
+    #$ Dá {la} viehka gássjelis gatjálvisá.
+    
+    ## Tjuottjodum la, Vuona stáhtta {la} ásaduvvam guovte álmmuga ednamij nali – dáttja ja sábmelattja. DNW LINDA Sg2 ij ane clt. Disamb viertti fiksiduvvat ja kanskje válldet ierit Sg2 dánna.
+        
+COPY:msyn-l-not-la (Clt &SUGGEST) EXCEPT (SentInit &msyn-l-not-la) TARGET (&msyn-l-not-la) ;
+	## Linda la buorre.
+
+    #$ 8. kapihttalin tjielggiduvvá nammadusá oajvvadus ådå organiserimij giellaguovloj ja suohkankategoriajda mij juo {la} åvddån biejaduvvam oasserapportan. DNW LINDA
+
+
 
 
 	# negation (sme pattern)
@@ -2149,7 +2204,7 @@ ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (-1 Ela LINK -
 ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (-1 Ela LINK -1 (Gen Sg) LINK -1 (Num Arab)) ;
     ## Sij li 3 åhpadiddje Ájluovtas gut vuolggi. 
 
-ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (1 (Ind V Pl1) OR (Ind V Pl2) OR (Ind V Pl3) OR (Ind V Du1) OR (Ind V Du2) OR (Ind V Du3)) ;
+ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (1 (Ind V Pl1) OR (Ind V Pl2) OR (Ind V Pl3) OR (Ind V Du1) OR (Ind V Du2) OR (Ind V Du3) LINK NEGATE 0 SentInit) ;
     ## Mij lip 10 nuora Sáminuorras (sámenuora organisasjåvnnå) guhti vuolggep.
     ## Stáhtta ja Sámedigge galggi gæhttjalit semadit mandáhta birra, ja gut galggi tjielggidusáv tjadádit .
     ## Oahppe {guhti} e gæhttjalimijt mierredimbæjvváj tjadáda.
@@ -3132,57 +3187,6 @@ COPY:syn-number_congruence-subj-verb (Pl3 &SUGGEST) EXCEPT Sg1 OR Sg2 OR (Sg2 Se
 (NEGATE 0 Du1 LINK -1 Sem/Human + (Nom Sg) LINK *-1 CC BARRIER NOT-NPMODADV  LINK -1 ("måj" Nom))
 (NEGATE 0 Du2 LINK -1 Sem/Human + (Nom Sg) LINK *-1 CC BARRIER NOT-NPMODADV  LINK *-1 ("dåj" Nom));
 
-
-	# Correct copula form, not congruence (after congruence-subj-verb rules)
-	# ---------------------------------------------------------------------------------------------------------
-	# ---------------------------------------------------------------------------------------------------------
-	# ---------------------------------------------------------------------------------------------------------
-
-
-	# Should not be sentence initial copula: from le, to la or l
-    # ----------------------------------------------------------------------
-ADD:from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentInit IF (NEGATE -1 BOS)(NEGATE 0 &syn-number_congruence-subj-verb) (NEGATE 0 &msyn-verb-cong-rel) (NEGATE 0 &msyn-soajttá-le) ;
-	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
-	## Såj læbá boahtám sijddaj
-
-COPY:from-sentence-init-copula (Clt &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET &syn-from-sentence-init-copula IF (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 CC OR ("de" Adv)) ;
-    ## Áddjá {le} vuoras >l
-
-COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET &syn-from-sentence-init-copula IF (-1 CC OR ("de" Adv)); # LINDA ÅDÅ, gåk dáv biedjá vuolep njuolgadussaj?
-	## ja {le} akta dajs ájnnasamos>la
-    ## jus boadá de {le} buorre> la
-
-COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET &syn-from-sentence-init-copula IF (NEGATE -1 ("<.*[aeiouáå]>"r));
-	## Árvustallam viertti dáhpáduvvat dajna elementajn manna le sæmmi lágásj dåbddomærkka ja mij {le} lagámus, ij dåhkki dåbddomerkajt árvustallat ietjá elementajn jus gávnnu elemænnta manna le sæmmi lágásj dåbddomerka lagábun. >l 
-
-    ## Aktisasjbarggo Jielleváre ja Divtasvuona suohkanij gaskan {le} konkrehta aktisasjbarggo suohkanij gaskan mij buoragit hiehpá nuorttaguovllovuorodibmáj. DNW LINDA
-	
-	
-    # Should be sentence initial copula: from la to le. 
-    # ----------------------------------------------------------------------
-ADD:to-sentence-init-copula (&syn-to-sentence-init-copula) TARGET ("liehket" Ind) IF (-1 BOS LINK NEGATE 1 SentInit) (NEGATE 0 &syn-from-sentence-init-copula) (NEGATE 0 &msyn-soajttá-le) (NEGATE 0 ("liehket" Neg)) ;
-
-COPY:to-sentence-init-copula (SentInit &SUGGEST) EXCEPT (&syn-to-sentence-init-copula) TARGET (&syn-to-sentence-init-copula) ;
-
-
-	# la/le to l after vowel
-    # ----------------------------------------------------------------------
-ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" Ind Prs Sg2) IF (NEGATE 0 Clt) (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 CC OR CS OR ("de" Adv) OR (Ill Pl)) (NEGATE 1 EOS)(NEGATE 0 (Pl3 &SUGGEST)) (NEGATE 0 &msyn-soajttá-le) ;
-	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
-    ## Jus árvodimes dåbddomerka galggi árvustaláduvvat viertti dat elementa manna le sæmmi lágásj dåbddomærkka ja manna {le} árvvo aj liehket dádjadahtes váj dát aj sihtá dárkestuvvat. 
-
-    #$ Sidáv dav ja la buorre dav dalá dahkat. 
-    #$ Dát ja la buorre dav dalá dahkat. 
-    #$ Mánájda la buorre dav åhpadit. 
-    #$ Danna gånnå bijlla la. 
-    #$ Dá {la} viehka gássjelis gatjálvisá.
-    
-    ## Tjuottjodum la, Vuona stáhtta {la} ásaduvvam guovte álmmuga ednamij nali – dáttja ja sábmelattja. DNW LINDA Sg2 ij ane clt. Disamb viertti fiksiduvvat ja kanskje válldet ierit Sg2 dánna.
-        
-COPY:msyn-l-not-la (Clt &SUGGEST) EXCEPT (SentInit &msyn-l-not-la) TARGET (&msyn-l-not-la) ;
-	## Linda la buorre.
-
-    #$ 8. kapihttalin tjielggiduvvá nammadusá oajvvadus ådå organiserimij giellaguovloj ja suohkankategoriajda mij juo {la} åvddån biejaduvvam oasserapportan. DNW LINDA
 
 
     # numerals used as attributive adjectives
