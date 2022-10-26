@@ -61,7 +61,6 @@ TESTS=\
 # be fixed *later*, but is not critical at the moment:
 XFAIL_TESTS=\
     DEV-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml \
-	DEV-lex-oahpasmuvvat-oahpastuvvat-PASS.yaml \
     DEV-msyn-congr-mij-ma-FAIL.yaml             \
     DEV-msyn-genna-gejn-FAIL.yaml               \
     DEV-msyn-gut-mij-gut-FAIL.yaml              \
@@ -70,6 +69,7 @@ XFAIL_TESTS=\
     DEV-msyn-sme_bastard_neg1-2-FAIL.yaml       \
     DEV-msyn-soajtta-FAIL.yaml                  \
     DEV-syn-pred-attr-FAIL.yaml                 \
+    format-missing-comma.yaml \
     lex-oahpasmuvvat-oahpastuvvat.yaml          \
     msyn-IV-with-object.yaml                    \
     msyn-IV-with-object.yaml                    \
