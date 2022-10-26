@@ -1528,6 +1528,7 @@ LIST &msyn-numeral-comcasecongr = &msyn-numeral-comcasecongr ;
 LIST &msyn-numeral-parcasecongr = &msyn-numeral-parcasecongr ;
 LIST &msyn-numerals-with-demopron = &msyn-numerals-with-demopron ;
 LIST &msyn-pass-active = &msyn-pass-active ;
+LIST &msyn-nom-gen-Po = &msyn-nom-gen-Po ;
 LIST &syn-pred-attr = &syn-pred-attr ;
 LIST &msyn-sme_bastard_neg = &msyn-sme_bastard_neg ;
 LIST &msyn-sme_bastard_neg2 = &msyn-sme_bastard_neg2 ;
@@ -3196,7 +3197,15 @@ COPY:syn-number_congruence-subj-verb (Pl3 &SUGGEST) EXCEPT Sg1 OR Sg2 OR (Sg2 Se
 (NEGATE 0 Du1 LINK -1 Sem/Human + (Nom Sg) LINK *-1 CC BARRIER NOT-NPMODADV  LINK -1 ("måj" Nom))
 (NEGATE 0 Du2 LINK -1 Sem/Human + (Nom Sg) LINK *-1 CC BARRIER NOT-NPMODADV  LINK *-1 ("dåj" Nom));
 
+    # case error
+    # nominative before Po
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
+    
+ADD:msyn-nom-gen-Po (&msyn-nom-gen-Po) TARGET (Sg Nom) IF (1 Po) ;
 
+COPY:msyn-nom-gen-Po (Gen &SUGGEST) EXCEPT (Nom &msyn-nom-gen-Po) TARGET (&msyn-nom-gen-Po) ;  
 
     # numerals used as attributive adjectives
     # ---------------------------------------------------------------------------------------------------------
