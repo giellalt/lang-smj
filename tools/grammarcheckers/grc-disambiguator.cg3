@@ -2109,6 +2109,8 @@ SELECT @CNP ;
 # Attr pre-N
 # ----------
 
+LIST ATTR-A-S = ("<.*s>"r) ("<.*[áåæøäöŋ].*s>"r) ;
+
 SELECT (Prop Attr) IF (0 ("Johannes"))(1 ("gástadiddje")) ;
 REMOVE Attr IF (-1 ("Johannes"))(0 ("gástadiddje")) ;
 
@@ -2121,12 +2123,14 @@ SELECT (A Attr) IF (-1 V-NOT-AUX OR N)(*1 N BARRIER (*) - (A Attr) LINK NOT 0 VF
 	#$GRAM Nammadit gålmmå ájrrasa {gudát} ájrrasijs Finnmárkoåbmudahkaj mij háldat ednamijt ja resursajt Finnmárkon finnmárkolága milta.
 	## Oahpásmuvvat oanes suohtas pruvsájn ja vájkkudusáj ma li anon
 
-REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NEGATE 1 N);
+REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NEGATE 1 N)(NEGATE 0 ATTR-A-S);
 #REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NEGATE 1 A LINK *1 N BARRIER NOT-ADJ);
+	#$GRAM
 
-REMOVE Attr IF (*1 VFIN BARRIER N)(NEGATE 1 N OR Attr OR A);
+REMOVE Attr IF (*1 VFIN BARRIER N)(NEGATE 1 N OR Attr OR A)(NEGATE 0 ATTR-A-S);
 	## Josef lij rievtesmielak, ittjij sidá suv hehpaduttet.
 	#$ Manen val de binnep ja {binnep} sámegielaga sjaddap?
+	#GRAM
 
 REMOVE Adv IF (-1 (Dem Com))(0 (A Attr))(1 (N Com));
 	## dajna gjielgga rájájn.
@@ -2447,14 +2451,16 @@ SELECT A IF (*-1 COPULAS BARRIER NOT-ADV-INDEF)(NEGATE 0 VERB OR Ord OR N) (1 N 
 SELECT A IF (-2 (N Sg Nom))(-1 ("leat" Sg3))(NEGATE 0 N OR PrfPrc OR Inf) (NEGATE 0 Ill LINK 1 PrfPrc)(NEGATE 0 Adv LINK 1 A); 
 	## Sin váilevaš oahppu ja giellamáhttu lea guhkit áiggi leamaš
 	## heađušteaddjin. 	
+	
 
-REMOVE (A Attr) IF (0 A)(1 COMMA)(NEGATE 2 A OR PrsPrc)(NEGATE 2 CC LINK 1 Attr);
+REMOVE (A Attr) IF (0 A)(1 COMMA)(NEGATE 2 A OR PrsPrc)(NEGATE 2 CC LINK 1 Attr)(NEGATE 0 ATTR-A-S);
 	## Jos dat ii leat vejolaš, de mii fertet mannat.
+	#$GRAM Morálla subttsasin de máhttá liehket rádna vierttiji liehket {váges} nubbe nuppijn jus rádnastallam galggá bissut.
 
-REMOVE (A Attr) IF (0 A)(NEGATE 0 Indef)(NEGATE 1 A OR N OR Num OR Actio OR PrfPrc OR PrsPrc OR CC OR COMMA); 
+REMOVE (A Attr) IF (0 A)(NEGATE 0 Indef)(NEGATE 1 A OR N OR Num OR Actio OR PrfPrc OR PrsPrc OR CC OR COMMA)(NEGATE 0 ATTR-A-S); 
 	## Dat galgá čuovvoluvvot nu guhkás go vejolaš.
 
-REMOVE (A Attr) IF (0 A-CASE OR Adv)(1 CC)(NEGATE *2 N BARRIER NP-BOUNDARY);
+REMOVE (A Attr) IF (0 A-CASE OR Adv)(1 CC)(NEGATE *2 N BARRIER NP-BOUNDARY)(NEGATE 0 ATTR-A-S);
 	## ...berre mearridanváldi leat nu viiddis go vejolaš ja nu
 	## čadni go vejolaš.
 
