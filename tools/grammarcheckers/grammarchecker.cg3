@@ -1595,6 +1595,9 @@ ADD:use-ellipsis (&ellipsis) TARGET ("...");
 COPY:use-ellipsis ("…" &SUGGEST) EXCEPT ("...") TARGET (&ellipsis) ;
 
 
+
+
+
  	# Correct copula form, not congruence (after congruence-subj-verb rules)
 	# ---------------------------------------------------------------------------------------------------------
 	# ---------------------------------------------------------------------------------------------------------
@@ -1642,7 +1645,7 @@ COPY:to-sentence-init-copula (SentInit &SUGGEST) EXCEPT (&syn-to-sentence-init-c
 
 	# la/le to l after vowel
     # ----------------------------------------------------------------------
-ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" Ind Prs Sg2) IF (NEGATE 0 Clt) (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 CC OR CS OR ("de" Adv) OR (Ill Pl)) (NEGATE 1 EOS)(NEGATE 0 (Pl3 &SUGGEST)) (NEGATE 0 &msyn-soajttá-le) ;
+ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" Ind Prs Sg2) IF (NEGATE 0 Clt) (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 &SUGGEST OR CC OR CS OR ("de" Adv) OR (Ill Pl)) (NEGATE 1 EOS)(NEGATE 0 (Pl3 &SUGGEST)) (NEGATE 0 &msyn-soajttá-le) ;
 	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
     ## Jus árvodimes dåbddomerka galggi árvustaláduvvat viertti dat elementa manna le sæmmi lágásj dåbddomærkka ja manna {le} árvvo aj liehket dádjadahtes váj dát aj sihtá dárkestuvvat. 
 
@@ -1659,8 +1662,11 @@ COPY:msyn-l-not-la (Clt &SUGGEST) EXCEPT (SentInit &msyn-l-not-la) TARGET (&msyn
 
     #$ 8. kapihttalin tjielggiduvvá nammadusá oajvvadus ådå organiserimij giellaguovloj ja suohkankategoriajda mij juo {la} åvddån biejaduvvam oasserapportan. DNW LINDA
 
-
-
+	#  l to la/le to after consonant
+    # ----------------------------------------------------------------------
+ADD:msyn-la-not-l (&msyn-la-not-l) TARGET ("liehket" Clt) IF (NEGATE -1 ("<.*[aeiouáå]>"r) OR BOS) ;
+COPY:msyn-la-not-l (&SUGGEST) EXCEPT (Clt &msyn-la-not-l) TARGET (&msyn-la-not-l) ;
+    # Dát ságastallamstasjåvnnå hiehpá oahppijda gejn l buorre sámegiella
 
 	# negation (sme pattern)
     # ---------------------------------------------------------------------------------------------------------
@@ -2044,9 +2050,10 @@ COPY:syn-pred-attr (Attr &SUGGEST) EXCEPT (Sg Nom &msyn-pred-attr) TARGET (&msyn
     
 #ADD:syn-attr-pred (&msyn-attr-pred) TARGET (A Attr) IF (NEGATE 0 (A Nom)) (1 EOS) ; 
     ## ássje l {gássjelis}
-ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 ("liehket" Sg1) OR ("liehket" Sg2) OR ("liehket" Sg3) BARRIER NOT-ADV) (NEGATE 0 (A Nom)) (NEGATE *1 N + CASE OR (Cmp/SplitR) BARRIER NOT-Attr) ;
+ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 ("liehket" Sg1) OR ("liehket" Sg2) OR ("liehket" Sg3) BARRIER NOT-ADV) (NEGATE 0 (A Nom)) (NEGATE *1 N + CASE OR (Cmp/SplitR) BARRIER NOT-Attr) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr);
     ## ássje l {gássjelis} munji
-ADD:syn-attr-pred-pl (&msyn-attr-pred-pl) TARGET (A Attr) IF (*-1 ("liehket" Du1) OR ("liehket" Du2) OR ("liehket" Du3) OR ("liehket" Pl1) OR ("liehket" Pl2) OR ("liehket" Pl3) BARRIER NOT-ADV) (NEGATE 0 (A Nom)) (NEGATE *1 N + CASE OR (Cmp/SplitR) BARRIER  NOT-Attr);
+    
+ADD:syn-attr-pred-pl (&msyn-attr-pred-pl) TARGET (A Attr) IF (*-1 ("liehket" Du1) OR ("liehket" Du2) OR ("liehket" Du3) OR ("liehket" Pl1) OR ("liehket" Pl2) OR ("liehket" Pl3) BARRIER NOT-ADV) (NEGATE 0 (A Nom)) (NEGATE *1 N + CASE OR (Cmp/SplitR) BARRIER NOT-Attr) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr) ;
  
     ## ássje l {gássjelis} munji
     
@@ -2159,7 +2166,6 @@ COPY:msyn-pass-active (TV &SUGGEST) EXCEPT (IV Ex/V Ex/TV Der/PassL  &msyn-pass-
     # ---------------------------------------------------------------------------------------------------------
     # ---------------------------------------------------------------------------------------------------------
     
- SET NOT-BEFORE-REL = (*) - Inf - VFIN - COMMA - Po ;
 
 ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NOT 0 (N Sg) LINK NEGATE -1 VFIN OR Inf LINK -1 (N Sg) OR (Pron Sg))(NEGATE *-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK -1 ("akta") OR ("1" Num))(NEGATE -1 Po LINK -1 (Gen Pl) LINK -1 (N Sg))(NEGATE -1 (V <TH-FS-Qpron>))  ;
 
@@ -2283,14 +2289,18 @@ ADD:msyn-verb-cong-rel (&msyn-verb-cong-rel) TARGET (V Pl3) IF (*-1 (Rel Nom) + 
     ## Miján la viehka stuorra nággo dálla guollebiebmadimæládusás ma {sihti} mierdijt biedjat duon dán vuodnaj ja dát båktå rijdojt.
 COPY:msyn-verb-cong-rel (Sg3 &SUGGEST) EXCEPT (Pl3 &msyn-verb-cong-rel) OR (Pl3 SentInit &msyn-verb-cong-rel) TARGET (&msyn-verb-cong-rel) ;
 
-    # Congr error with relative pron gænna-gejn
+
+# Congr error with relative pron gænna-gejn
     # ---------------------------------------------------------------------------------------------------------
     # ---------------------------------------------------------------------------------------------------------
     # ---------------------------------------------------------------------------------------------------------
+SET NOT-BEFORE-REL = (*) - Inf - VFIN - COMMA - Po ;
+
 
 ADD:msyn-congr-gænna-gejn (&msyn-congr-gænna-gejn) TARGET (Rel Ine Sg) IF (*-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NEGATE -1 VFIN OR Inf LINK -1 (N Sg) OR (Pron Sg));
     ## Oahppijn {gænna} la buorre giella.
-   
+
+    
 ADD:msyn-congr-gænna-gejn (&msyn-congr-gænna-gejn) TARGET (Rel Ine Sg) IF (-1 (N Pl Ill) OR (Pron Pl Ill) OR (Pl1 Ill) OR (Pl2 Ill) OR (Pl3 Ill) OR (Du1 Ill) OR (Du2 Ill) OR (Du3 Ill) OR (N Pl Ela) OR (Pron Pl Ela) OR (Pl1 Ela) OR (Pl2 Ela) OR (Pl3 Ela) OR (Du1 Ela) OR (Du2 Ela) OR (Du3 Ela) OR (Indef Pl Nom) OR ("juohkkahasj") OR ("moattes")) ;
     ## Dát ságastallamstasjåvnnå hiehpá oahppijda gænna l buorre sámegiella, ja vuorrasap oahppijda gudi tjuovvu sáme oahppamplánav
     ## ja stuorra lassánibme l mánájs gænna li sáme mánájgárddefálaldagá
