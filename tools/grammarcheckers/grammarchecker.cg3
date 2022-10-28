@@ -2055,8 +2055,16 @@ ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 ("liehket" Sg1
     
 ADD:syn-attr-pred-pl (&msyn-attr-pred-pl) TARGET (A Attr) IF (*-1 ("liehket" Du1) OR ("liehket" Du2) OR ("liehket" Du3) OR ("liehket" Pl1) OR ("liehket" Pl2) OR ("liehket" Pl3) BARRIER NOT-ADV) (NEGATE 0 (A Nom)) (NEGATE *1 N + CASE OR (Cmp/SplitR) BARRIER NOT-Attr) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr) ;
  
-    ## ássje l {gássjelis} munji
-    
+    ## ássje li {gássjelis} munji
+
+ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 ("liehket" Inf) BARRIER NOT-ADV LINK -1 (V Ind Sg1) OR (V Ind Sg2) OR (V Ind Sg2)) (NEGATE 0 (A Nom)) (NEGATE *1 N + CASE OR (Cmp/SplitR) BARRIER NOT-Attr) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr) ;
+
+
+
+ADD:syn-attr-pred-pl (&msyn-attr-pred-pl) TARGET (A Attr) IF (*-1 ("liehket" Inf) BARRIER NOT-ADV LINK -1 (V Ind Du1) OR (V Ind Du2) OR (V Ind Du3) OR (V Ind Pl1) OR (V Ind Pl2) OR (V Ind Pl3)) (NEGATE 0 (A Nom)) (NEGATE *1 N + CASE OR (Cmp/SplitR) BARRIER NOT-Attr) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr) ;
+
+    # rádna vierttiji liehket váges nubbe nuppijn jus rádnastallam galggá bissut
+
 COPY:syn-attr-pred-sg (Sg Nom &SUGGEST) EXCEPT (Attr &msyn-attr-pred) TARGET (&msyn-attr-pred-sg) ;
 COPY:syn-attr-pred-pl (Pl Nom &SUGGEST) EXCEPT (Attr &msyn-attr-pred) TARGET (&msyn-attr-pred-pl) ;
 
@@ -2165,7 +2173,7 @@ COPY:msyn-pass-active (TV &SUGGEST) EXCEPT (IV Ex/V Ex/TV Der/PassL  &msyn-pass-
     # ---------------------------------------------------------------------------------------------------------
     # ---------------------------------------------------------------------------------------------------------
     # ---------------------------------------------------------------------------------------------------------
-    
+SET NOT-BEFORE-REL = (*) - Inf - VFIN - COMMA - Po ;    
 
 ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NOT 0 (N Sg) LINK NEGATE -1 VFIN OR Inf LINK -1 (N Sg) OR (Pron Sg))(NEGATE *-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK -1 ("akta") OR ("1" Num))(NEGATE -1 Po LINK -1 (Gen Pl) LINK -1 (N Sg))(NEGATE -1 (V <TH-FS-Qpron>))  ;
 
@@ -2294,7 +2302,6 @@ COPY:msyn-verb-cong-rel (Sg3 &SUGGEST) EXCEPT (Pl3 &msyn-verb-cong-rel) OR (Pl3 
     # ---------------------------------------------------------------------------------------------------------
     # ---------------------------------------------------------------------------------------------------------
     # ---------------------------------------------------------------------------------------------------------
-SET NOT-BEFORE-REL = (*) - Inf - VFIN - COMMA - Po ;
 
 
 ADD:msyn-congr-gænna-gejn (&msyn-congr-gænna-gejn) TARGET (Rel Ine Sg) IF (*-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NEGATE -1 VFIN OR Inf LINK -1 (N Sg) OR (Pron Sg));
