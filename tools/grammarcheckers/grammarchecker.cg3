@@ -1610,7 +1610,7 @@ COPY:use-ellipsis ("…" &SUGGEST) EXCEPT ("...") TARGET (&ellipsis) ;
 
 	# Should not be sentence initial copula: from le, to la or l or li
     # ----------------------------------------------------------------------
-ADD:from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentInit IF (NEGATE -1 BOS)(NEGATE 0 &syn-number_congruence-subj-verb) (NEGATE 0 &msyn-verb-cong-rel) (NEGATE 0 &msyn-soajttá-le) ;
+ADD:from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentInit IF (NEGATE -1 BOS) (NEGATE 0 &syn-number_congruence-subj-verb) (NEGATE 0 &msyn-verb-cong-rel) (NEGATE 0 &msyn-soajttá-le) ;
 
 
 COPY:from-sentence-init-copula (Clt &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 CC OR CS OR ("de" Adv)) (NEGATE 0 Pl3) ;
@@ -1622,22 +1622,20 @@ COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-i
 
     # Bijla le buore > li
 
-COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 CC OR CS OR ("de" Adv))(-1 (Sg Nom) OR (Sg3 Nom) OR ( "ij" Neg Ind Prs Sg3));
+COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 CC OR CS OR ("de" Adv)) (-1 (Sg Nom) OR (Sg3 Nom) OR ( "ij" Neg Ind Prs Sg3));
 
-    # Ieŋŋgil le buorre > la
+    ## Ieŋŋgil le buorre > la
+	## Árvustallam viertti dáhpáduvvat dajna elementajn manna le sæmmi lágásj dåbddomærkka ja mij {le} lagámus, ij dåhkki dåbddomerkajt árvustallat ietjá elementajn jus gávnnu elemænnta manna le sæmmi lágásj dåbddomerka lagábun. 
 
 COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula Area/NO Area/SE) TARGET (Sg1 &syn-from-sentence-init-copula) OR (Sg2 &syn-from-sentence-init-copula) OR (Du1 &syn-from-sentence-init-copula) OR (Du2 &syn-from-sentence-init-copula) OR (Du3 &syn-from-sentence-init-copula) OR (Pl1 &syn-from-sentence-init-copula) OR (Pl2 &syn-from-sentence-init-copula) ; 
 
 	## Såj læbá boahtám sijddaj
 	
-COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET &syn-from-sentence-init-copula IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 CC OR ("de" Adv))(NEGATE -1 (Sg Nom) OR (Sg3 Nom) OR ( "ij" Neg Ind Prs Sg3) OR (Pl Nom) OR (Pl3 Nom)) ;
+COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET &syn-from-sentence-init-copula IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 CC OR ("de" Adv) OR ("juo"))(NEGATE -1 (Sg Nom) OR (Sg3 Nom) OR ( "ij" Neg Ind Prs Sg3) OR (Pl Nom) OR (Pl3 Nom)) ;
 	## ja {le} akta dajs ájnnasamos > la
-    ## jus boadá de {le} buorr e> la 
-
-
-	## Árvustallam viertti dáhpáduvvat dajna elementajn manna le sæmmi lágásj dåbddomærkka ja mij {le} lagámus, ij dåhkki dåbddomerkajt árvustallat ietjá elementajn jus gávnnu elemænnta manna le sæmmi lágásj dåbddomerka lagábun. >l 
-
-    ## Aktisasjbarggo Jielleváre ja Divtasvuona suohkanij gaskan {le} konkrehta aktisasjbarggo suohkanij gaskan mij buoragit hiehpá nuorttaguovllovuorodibmáj. DNW LINDA
+    ## jus boadá de {le} buorre> la 
+    # mij juo {le} Mortensnesan
+    ## Aktisasjbarggo Jielleváre ja Divtasvuona suohkanij gaskan {le} konkrehta aktisasjbarggo suohkanij gaskan mij buoragit hiehpá nuorttaguovllovuorodibmáj. 
 	
 	
     # Should be sentence initial copula: from la to le. 
@@ -1649,7 +1647,7 @@ COPY:to-sentence-init-copula (SentInit &SUGGEST) EXCEPT (&syn-to-sentence-init-c
 
 	# la/le to l after vowel
     # ----------------------------------------------------------------------
-ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" Ind Prs Sg2) IF (NEGATE 0 Clt) (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 &SUGGEST OR CC OR CS OR ("de" Adv) OR (Ill Pl)) (NEGATE 1 EOS)(NEGATE 0 (Pl3 &SUGGEST)) (NEGATE 0 &msyn-soajttá-le) ;
+ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" Ind Prs Sg2) IF (NEGATE 0 Clt) (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 &SUGGEST OR CC OR CS OR ("de" Adv) OR ("juo") OR (Ill Pl)) (NEGATE 1 EOS)(NEGATE 0 (Pl3 &SUGGEST)) (NEGATE 0 &msyn-soajttá-le) ;
 	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
     ## Jus árvodimes dåbddomerka galggi árvustaláduvvat viertti dat elementa manna le sæmmi lágásj dåbddomærkka ja manna {le} árvvo aj liehket dádjadahtes váj dát aj sihtá dárkestuvvat. 
 
@@ -3376,6 +3374,10 @@ COPY:msyn-numeral-casecongr-guovte-com (Com &SUGGEST) EXCEPT (Gen) TARGET (&msyn
 
     ## Foanndaj la jahkásattjat lasedibme kapitálas {guovte} miljåvnåjn gålmmå jahkáj.
 
+ADD:msyn-numeral-casecongr2 (&msyn-numeral-casecongr2) TARGET (Num Pl Ine) OR (Num Sg Com) IF (*1 (N Sg Ine) BARRIER NOT-NPMOD) ;
+COPY:msyn-numeral-casecongr2 (Sg Ine &SUGGEST) EXCEPT (Pl Ine) OR (Sg Com) TARGET (&msyn-numeral-casecongr2) ;
+    ## Iv diede jus nagáv dáv kursav dåssju {åvtåjn} termijnan låhkåt
+
 	# special case Acc
 	# - - - - - - - - -
 
@@ -3389,16 +3391,24 @@ ADD:msyn-numeral-acccasecongr-akta (&msyn-numeral-acccasecongr-akta) TARGET ("ak
  
 COPY:msyn-numeral-acccasecongr-akta (Sg Acc &SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) TARGET (&msyn-numeral-acccasecongr-akta) ;
 
-ADD:msyn-numeral-acccasecongr (&msyn-numeral-acccasecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (0 ("<.*v>"r))(*1 (N Pl Acc) +  &msyn-numeral-attr OR (N Pl Acc) +  &msyn-numeral-accattr OR (A Pl Acc) +  &msyn-numeral-accattr OR (N Pl Nom) OR ( A Pl Nom)  BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) (NEGATE 0 ("akta" Num) OR ("1" Num))(NEGATE 0 Arab) ;
+ADD:msyn-numeral-acccasecongr (&msyn-numeral-acccasecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (0 ("<.*v>"r) LINK NEGATE 0 ("låhke")) (*1 (N Pl Acc) +  &msyn-numeral-attr OR (N Pl Acc) +  &msyn-numeral-accattr OR (A Pl Acc) +  &msyn-numeral-accattr OR (N Pl Nom) OR ( A Pl Nom)  BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) (NEGATE 0 ("akta" Num) OR ("1" Num))(NEGATE 0 Arab) ;
+
+    # vuojnáv guovtev>guokta gusájt
+    #$ Dá lågev giela li juogedum guovte oajvvejuohkusij
 
 COPY:msyn-numeral-acccasecongr (Sg Nom &SUGGEST) EXCEPT (Sg Acc &msyn-numeral-acccasecongr) OR (Sg Gen &msyn-numeral-acccasecongr)  TARGET (&msyn-numeral-acccasecongr) + ("<.*v>"r) IF (*1 (N Pl Acc) +  &msyn-numeral-accattr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
 
-ADD:msyn-numeral-acccasecongr (&msyn-numeral-acccasecongr) TARGET (Num Pl Acc) IF (*1 (N Pl Acc) +  &msyn-numeral-attr OR (N Pl Acc) +  &msyn-numeral-accattr OR (A Pl Acc) +  &msyn-numeral-accattr OR (N Pl Nom) OR ( A Pl Nom) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N ) (NEGATE 0 Arab) ;
+
+ADD:msyn-numeral-acccasecongr (&msyn-numeral-acccasecongr) TARGET (Num Pl Acc) OR (Num Sg Gen) IF (*1 (N Pl Acc) +  &msyn-numeral-attr OR (N Pl Acc) +  &msyn-numeral-accattr OR (A Pl Acc) +  &msyn-numeral-accattr OR (N Pl Nom) OR ( A Pl Nom) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N ) (NEGATE 0 Arab) ;
     ##  E gávnu buorre lågo galles sáhkadi, låhki jali dádjadi dajt {gålmåjt} almulasj sámegielajt Vuonan uddni.
+    ## Guovlo gånnå li gaskan guokta jali niellja mandáhta galggi tjáledahttet {avtse} kandidáhtajt lisstaoajvvadussaj
 
 COPY:msyn-numeral-acccasecongr (Sg Nom &SUGGEST) EXCEPT (Pl Acc &msyn-numeral-acccasecongr) OR (Sg Gen &msyn-numeral-acccasecongr) TARGET (&msyn-numeral-acccasecongr) IF (*1 (N Pl Acc) +  &msyn-numeral-accattr BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
  
-    # vuojnáv guovtev>guokta gusájt
+
+    
+    
+    
 
     # special case Par
     # - - - - - - - - -
@@ -3472,7 +3482,9 @@ COPY:msyn-numeral-comcasecongr (Sg Com &SUGGEST) EXCEPT (Sg Gen &msyn-numeral-co
 
 ADD:msyn-numerals-with-demopron (&msyn-numerals-with-demopron) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) LINK *1 (N Sg) BARRIER NOT-NPMOD - CC) ;
 
+ADD:msyn-numerals-with-demopron (&msyn-numerals-with-demopron) TARGET (Pron Dem Pl Nom) IF (1 (Num Sg) - Nom LINK *1 (N Sg) BARRIER NOT-NPMOD - CC) ;
 
+    ## Sáme skihppijsujttáråhpadus ja sáme åhpadiddjeåhpadusá vaddi {da} guovte nuorttalamos universitiehttaj ájn nannusap guovlolasj ja hiebalgis profijlav
 
     #pl nom      sg nom          pl nom/sg gen
     #dá          guokta          gusá
@@ -3507,7 +3519,7 @@ COPY:msyn-numerals-with-demopron (Sg Gen &SUGGEST) EXCEPT (Pl Com Attr &msyn-num
 
    # Tjállagin li artihkkala daj gålmmå tiemáj birra.
 
-COPY:msyn-numerals-with-demopron (Sg Gen &SUGGEST) EXCEPT (Pl Com Attr &msyn-numerals-with-demopron) OR (Pl Gen Attr &msyn-numerals-with-demopron) OR (Pl Com &msyn-numerals-with-demopron) OR (Pl Gen &msyn-numerals-with-demopron) TARGET (&msyn-numerals-with-demopron) IF (*2 (N Sg Ill) BARRIER NOT-NPMOD )  ;
+COPY:msyn-numerals-with-demopron (Sg Ill Attr &SUGGEST) EXCEPT (Pl Com Attr &msyn-numerals-with-demopron) OR (Pl Gen Attr &msyn-numerals-with-demopron) OR (Pl Com &msyn-numerals-with-demopron) OR (Pl Gen &msyn-numerals-with-demopron) OR (Pl Ill &msyn-numerals-with-demopron) OR (Pl Nom &msyn-numerals-with-demopron) TARGET (&msyn-numerals-with-demopron) IF (*2 (N Sg Ill) BARRIER NOT-NPMOD )  ;
 
     ## juogos la mierredam {dájda} gålmmå suohkanijda dahkat aktisasj plánav rumálasj dåjmajda ja luonndoåtsådallamijda.
     ##  Sáme skihppijsujttáråhpadus ja sáme åhpadiddjeåhpadusá vaddi {da} guovte nuorttalamos universitiehttaj ájn nannusap guovlulasj ja hiebalgis profijlav.  DNW
