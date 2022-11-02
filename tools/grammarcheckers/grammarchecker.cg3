@@ -2354,7 +2354,9 @@ ADD:msyn-congr-iesj-ietja (&msyn-congr-iesj-ietja) TARGET ("iesj" Pron Refl Sg N
    #$ Oahppijn li iesj gænnanik vuohke mij vájkkut gåktu sij ja man ålov sij oahppi.
    #$ Juska tjehpudagá li iesj geŋga fágajn moatten láhkáj åvddånbuvtedum, de båhtusa li guoskavattja gájkka åhpadiddjijda ja ij dåssju dárogiela / sámegiela ja matemátihka åhpadiddjijda.
    #$ Duodden hæhttu liehket duodje majt le iesj dahkam.
-   ## Sámedigge le juo juollodam moadda miljåvnå gielladåjmajda, valla ulmutja e åhpa sámegielav {ietjas} årrombájken. DNW LINDA, "ulmutja" ilá guhkken ierit.
+
+ADD:msyn-congr-iesj-ietja (&msyn-congr-iesj-ietja) TARGET ("iesj" Pron Refl Sg Nom) IF (-1 (N Pl Nom) LINK NEGATE *0 (N Sg Nom)) (NEGATE 1 (Pron Indef) ) ;
+   ## Valla ælla gus rievddama iesj allasisá buore?
 
 
     #  Congr verb on right side of iesj
@@ -2366,9 +2368,17 @@ ADD:msyn-congr-iesj-ietja (&msyn-congr-iesj-ietja) TARGET ("iesj" Pron Refl Sg N
 
 COPY:msyn-congr-iesj-ietja (Pl &SUGGEST) EXCEPT (Sg &msyn-congr-iesj-ietja) AFTER Refl TARGET (&msyn-congr-iesj-ietja) ;
 
-    
-    
-    
+ADD:msyn-congr-ietjas-ietjasa (&msyn-congr-ietjas-ietjasa) TARGET ("iesj" Pron Refl PxSg3) OR ("iesj" Pron Refl PxSg2) OR ("iesj" Pron Refl PxSg1) IF (-1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3)) (NEGATE 1 (Pron Indef) ) ; 
+
+COPY:msyn-congr-iesj-ietja (PxPl3 &SUGGEST) EXCEPT (PxSg3 &msyn-congr-ietjas-ietjasa) TARGET (&msyn-congr-ietjas-ietjasa) IF (-1 (V Pl3)) ;    
+COPY:msyn-congr-iesj-ietja (PxDu3 &SUGGEST) EXCEPT (PxSg3 &msyn-congr-ietjas-ietjasa) TARGET (&msyn-congr-ietjas-ietjasa) IF (-1 (V Du3)) ;    
+COPY:msyn-congr-iesj-ietja (PxPl1 &SUGGEST) EXCEPT (PxSg1 &msyn-congr-ietjas-ietjasa) TARGET (&msyn-congr-ietjas-ietjasa) IF (-1 (V Pl1) OR (V Du1)) ; 
+COPY:msyn-congr-iesj-ietja (PxPl2 &SUGGEST) EXCEPT (PxSg2 &msyn-congr-ietjas-ietjasa) TARGET (&msyn-congr-ietjas-ietjasa) IF (-1 (V Pl2) OR (V Du2)) ; 
+
+    ## Suohkanij ietjas dåjmaj baktu
+    ## Vuorrasa ma årru sierra vuorrasijhuvson jali idjadi {ietjas} årudagán adni riektáv ságastit ietjas giellaj.
+    ## Sámedigge le juo juollodam moadda miljåvnå gielladåjmajda, valla ulmutja e åhpa sámegielav {ietjas} årrombájken. DNW LINDA, "ulmutja" ilá guhkken ierit.
+
     # real word error missing j or extra j
     # ---------------------------------------------------------------------------------------------------------
     # ---------------------------------------------------------------------------------------------------------
@@ -3397,7 +3407,7 @@ ADD:msyn-numeral-acccasecongr-akta (&msyn-numeral-acccasecongr-akta) TARGET ("ak
  
 COPY:msyn-numeral-acccasecongr-akta (Sg Acc &SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) TARGET (&msyn-numeral-acccasecongr-akta) ;
 
-ADD:msyn-numeral-acccasecongr (&msyn-numeral-acccasecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (0 ("<.*v>"r) LINK NEGATE 0 ("låhke")) (*1 (N Pl Acc) +  &msyn-numeral-attr OR (N Pl Acc) +  &msyn-numeral-accattr OR (A Pl Acc) +  &msyn-numeral-accattr OR (N Pl Nom) OR ( A Pl Nom)  BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) (NEGATE 0 ("akta" Num) OR ("1" Num))(NEGATE 0 Arab) ;
+ADD:msyn-numeral-acccasecongr (&msyn-numeral-acccasecongr) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (0 ("<.*v>"r) LINK NEGATE 0 ("låhke") OR ("giehtja")) (*1 (N Pl Acc) +  &msyn-numeral-attr OR (N Pl Acc) +  &msyn-numeral-accattr OR (A Pl Acc) +  &msyn-numeral-accattr OR (N Pl Nom) OR ( A Pl Nom)  BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) (NEGATE 0 ("akta" Num) OR ("1" Num))(NEGATE 0 Arab) ;
 
     # vuojnáv guovtev>guokta gusájt
     #$ Dá lågev giela li juogedum guovte oajvvejuohkusij
