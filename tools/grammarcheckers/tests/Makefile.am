@@ -94,6 +94,7 @@ XFAIL_TESTS=\
     real-PrsPl3-PrsSg3.yaml                     \
     real-PrsSg2-PrsSg3.yaml                     \
     real-PrtSg3-PrsPl3.yaml                     \
+	real-PrtSg2-PrtSg3.yaml                     \
     real-gæhppat-alkke.yaml                     \
     real-habbmim.yaml                           \
     syn-correct-form-liehket.yaml               \
