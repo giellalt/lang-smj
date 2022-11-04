@@ -2440,50 +2440,29 @@ COPY:real-PrsPl3-PrtSg3 (Prt Sg3 &SUGGEST) EXCEPT (Prs Pl3) TARGET (&real-PrsPl3
 
 
 
-    ##    # real word error, missing j for "i"
+    ##    # real word error, missing j for "i" and "ittji"
     # -------------------------------------------------------------------
 
     # left subj
 
-ADD:real-PrsSg2-PrsSg3 (&real-PrsSg2-PrsSg3) TARGET ( "ij" ) IF (0 (Prs Sg2)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Dem Nom Sg) LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg))  (NEGATE *1 (Pron Nom Sg2)) (NEGATE 0 (Prs Sg3)) ;
+ADD:real-PrsSg2-PrsSg3 (&real-PrsSg2-PrsSg3) TARGET ( "ij" Sg2) IF (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Dem Nom Sg) BARRIER S-BOUNDARY OR VFIN LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg))  (NEGATE *1 (Pron Nom Sg2)) (NEGATE 0 (Sg3)) ;
 
     ## Åhpadiddje i dánna vuojga tjielggi mij la barggodahkamus.
-
+    ## Hamsun ittji sámijda lijkku
+    ## valla dat ittji buoragit vuobde
+    
     # right subj
+    
+ADD:real-PrsSg2-PrsSg3 (&real-PrsSg2-PrsSg3) TARGET ( "ij" Sg2 )  IF (*1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Dem Nom Sg) BARRIER NOT-NPMOD - Adv OR S-BOUNDARY OR VFIN  LINK NOT 0 Adv LINK NEGATE *1 CC BARRIER NOT-NPMOD LINK 1 (Nom Sg))  (NEGATE *-1 (Pron Nom Sg2)) (NEGATE 0 (Sg3)) ;
 
     ## i åhpadiddje dánna vuojga tjielggi mij la barggodahkamus.
-
-ADD:real-PrsSg2-PrsSg3 (&real-PrsSg2-PrsSg3) TARGET ( "ij" )  IF (0 (Prs Sg2)) (*1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Dem Nom Sg) BARRIER NOT-NPMOD - Adv LINK NOT 0 Adv LINK NEGATE *1 CC BARRIER NOT-NPMOD LINK 1 (Nom Sg))  (NEGATE *-1 (Pron Nom Sg2)) (NEGATE 0 (Prs Sg3)) ;
+    ## ittji Hamsun sámijda lijkku
+    ## valla ittji dat buoragit vuobde
+    #$ Manen giesen ittji tjoakke bierggimnárev, gatjádij gårkkå. 
 	#$ {I} galla, valla galga dal dån gut la sunnus stuorábusj ságastit sunnujn, ja gåhttjot hiejttet doarromis. 
 	#$ – {I} galga gåddet, i galga gåddet…
 
 COPY:real-PrsSg2-PrsSg3 (Sg3 &SUGGEST) EXCEPT (Sg2) TARGET (&real-PrsSg2-PrsSg3) ;
-
-
-
-
-    ##    # real word error, missing j for "ittji"
-    # ----------------------------------------
-
-    # left subj
-
-ADD:real-PrtSg2-PrtSg3 (&real-PrtSg2-PrtSg3) TARGET ( "ij" )  IF (0 (Prt Sg2)) (*-1 (Pers Pron Nom Sg3) OR (N Nom Sg) OR (Pron Dem Nom Sg) BARRIER S-BOUNDARY OR VFIN LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg))  (NEGATE *1 (Pron Nom Sg2)) (NEGATE 0 (Prt Sg3)) ;
-
-    ## Hamsun ittji sámijda lijkku
-    ## valla dat ittji buoragit vuobde
-    
-
-
-    # right subj
-
-ADD:real-PrtSg2-PrtSg3 (&real-PrtSg2-PrtSg3) TARGET ( "ij" )  IF (0 (Prt Sg2)) (*1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Dem Nom Sg) BARRIER S-BOUNDARY OR VFIN LINK NEGATE *1 CC BARRIER NOT-NPMOD LINK 1 (Nom Sg))  (NEGATE *-1 (Pron Nom Sg2)) (NEGATE 0 (Prt Sg3)) ;
-
-    ## ittji Hamsun sámijda lijkku
-    ## valla ittji dat buoragit vuobde
-    #$ Manen giesen ittji tjoakke bierggimnárev, gatjádij gårkkå. 
-
-
-COPY:real-PrtSg2-PrtSg3 (Sg3 &SUGGEST) EXCEPT (Sg2) TARGET (&real-PrtSg2-PrtSg3) ;
 
 
 
@@ -2539,7 +2518,7 @@ COPY:real-PrtSg3-PrsPl3 (Prs Pl3 &SUGGEST) EXCEPT (Prt Sg3 &real-PrtSg3-PrsPl3) 
 
     # left subj
 
-ADD:real-negSg3-negSg2 (&real-negSg3-negSg2) TARGET ("ij") IF (0 (Sg3)) (*-1 (Pron Nom Sg2) BARRIER S-BOUNDARY OR CS OR CC OR VFIN) ;
+ADD:real-negSg3-negSg2 (&real-negSg3-negSg2) TARGET ("ij" Sg3) IF (*-1 (Pron Nom Sg2) BARRIER S-BOUNDARY OR CS OR CC OR VFIN) ;
 
     ## dån ij galga iehtjádij sáhkadit hielles jali negatijva priváhta ássjij birra , ietján_gå lagámus fámilljaj .
 
