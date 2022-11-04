@@ -1594,16 +1594,16 @@ LIST &no-space-after-parent-end = &no-space-after-parent-end ;
 
 LIST &real-ActioGen-PrtPl1 = &real-ActioGen-PrtPl1 ;
 LIST &real-PrsPl3-PrtSg3 = &real-PrsPl3-PrtSg3 ;
-LIST &real-PrsSg2-PrsSg3 = &real-PrsSg2-PrsSg3 ;
+LIST &real-NegSg2-NegSg3 = &real-NegSg2-NegSg3 ;
 LIST &real-PrtSg2-PrtSg3 = &real-PrtSg2-PrtSg3 ;
-LIST &real-negSg3-negSg2 = &real-negSg3-negSg2 ;
+LIST &real-NegSg3-NegSg2 = &real-NegSg3-NegSg2 ;
 
 LIST &syn-number_congruence-subj-verb = &syn-number_congruence-subj-verb ;
 LIST &syn-subj-before-neg = &syn-subj-before-neg ;
 LIST &syn-from-sentence-init-copula = &syn-from-sentence-init-copula ;
 LIST &syn-to-sentence-init-copula = &syn-to-sentence-init-copula ;
 
-SET &real = &real-ActioGen-PrtPl1 OR &real-PrsPl3-PrtSg3 OR &real-PrsSg2-PrsSg3 OR &real-PrtSg2-PrtSg3 OR &real-negSg3-negSg2 ; 
+SET &real = &real-ActioGen-PrtPl1 OR &real-PrsPl3-PrtSg3 OR &real-NegSg2-NegSg3 OR &real-PrtSg2-PrtSg3 OR &real-NegSg3-NegSg2 ; 
 
 LIST &DELETE = &DELETE ;
 
@@ -2389,7 +2389,7 @@ COPY:msyn-congr-iesj-ietja (PxPl2 &SUGGEST) EXCEPT (PxSg2 &msyn-congr-ietjas-iet
 
 
 
-    # real word error, missing j for -it verbs
+    # real word error, missing j for ActioGen -it verbs
     # ----------------------------------------
     
 
@@ -2400,11 +2400,17 @@ COPY:real-ActioGen-PrtPl1 (Ind Prt Pl1 &SUGGEST) EXCEPT (Actio Gen) TARGET (&rea
     ## mij hábbmima ådå njuolgadusáv; uddni bájttá biejvve.
     #$ Åhpadime modælla, manna unneplåhkogiela oahppe ieneplåhkogiellaj åhpaduvvá, máhttá Bakera milta gåhtjoduvvat giellahávkkam.
 
-    
-    # real word error, missing j for odd-syll -it verbs an "li"
-    # ----------------------------------------
 
+
+
+    
+    # real word error, missing j for odd-syll -it verbs an "lij"
+    # ----------------------------------------
+    # li > lij
+    # viehkedi > viehkedij
+    
     # left subj
+    
 SET PLURAL-QUANTIFIERS = ("moadda" Nom) OR ("moattes" Nom) OR (Num Sg Nom) - ("akta") ;
 
 ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-UNEVEN-VERBS OR ("liehket")  IF (0 (Prs Pl3)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) - PLURAL-QUANTIFIERS BARRIER NOT-ADV-PCLE LINK NOT 0 (Pl Nom) LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg) OR (Nom Pl))  (NEGATE *1 (Pron Nom Pl3) OR (N Nom Pl) BARRIER S-BOUNDARY)(NEGATE 0 (Prs Sg3))(NEGATE -1 PrfPrc LINK *-1 (N Pl Nom) OR (Pers Pl3 Nom) BARRIER NOT-ADV-PCLE) ;
@@ -2436,43 +2442,11 @@ ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-UNEVEN-VERBS OR ( "liehke
 COPY:real-PrsPl3-PrtSg3 (Prt Sg3 &SUGGEST) EXCEPT (Prs Pl3) TARGET (&real-PrsPl3-PrtSg3) ;
 
 
-
-
-
-
-    ##    # real word error, missing j for "i" and "ittji"
-    # -------------------------------------------------------------------
-
-    # left subj
-
-ADD:real-PrsSg2-PrsSg3 (&real-PrsSg2-PrsSg3) TARGET ( "ij" Sg2) IF (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Dem Nom Sg) BARRIER S-BOUNDARY OR VFIN LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg))  (NEGATE *1 (Pron Nom Sg2)) (NEGATE 0 (Sg3)) ;
-
-    ## Åhpadiddje i dánna vuojga tjielggi mij la barggodahkamus.
-    ## Hamsun ittji sámijda lijkku
-    ## valla dat ittji buoragit vuobde
-    
-    # right subj
-    
-ADD:real-PrsSg2-PrsSg3 (&real-PrsSg2-PrsSg3) TARGET ( "ij" Sg2 )  IF (*1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Dem Nom Sg) BARRIER NOT-NPMOD - Adv OR S-BOUNDARY OR VFIN  LINK NOT 0 Adv LINK NEGATE *1 CC BARRIER NOT-NPMOD LINK 1 (Nom Sg))  (NEGATE *-1 (Pron Nom Sg2)) (NEGATE 0 (Sg3)) ;
-
-    ## i åhpadiddje dánna vuojga tjielggi mij la barggodahkamus.
-    ## ittji Hamsun sámijda lijkku
-    ## valla ittji dat buoragit vuobde
-    #$ Manen giesen ittji tjoakke bierggimnárev, gatjádij gårkkå. 
-	#$ {I} galla, valla galga dal dån gut la sunnus stuorábusj ságastit sunnujn, ja gåhttjot hiejttet doarromis. 
-	#$ – {I} galga gåddet, i galga gåddet…
-
-COPY:real-PrsSg2-PrsSg3 (Sg3 &SUGGEST) EXCEPT (Sg2) TARGET (&real-PrsSg2-PrsSg3) ;
-
-
-
-    ##    # real word error, extra j 
+    # real word error, extra j for odd-syll -it verbs an "li"
     # ----------------------------------------
-    
-    # Wrong Prt Sg3 instead of Prs Pl3
     # --------------------------------
-    #Sij viehkedij mijáv dehkajt målssot
-    #viehkedij > viehkedi
+    # lij > li
+    # viehkedij > viehkedi
 
 
 ADD:real-PrtSg3-PrsPl3 (&real-PrtSg3-PrsPl3) TARGET ("liehket" Prt Sg3) OR IT-UNEVEN-VERBS + (Prt Sg3) IF (*-1 (N Nom Pl) OR (Pron Nom Pl) OR (Pron Nom Pl3) BARRIER NOT-ADV-PCLE LINK NOT 0 (Pron Nom Sg3) OR (N Nom Sg) OR Sem/Time + (Sg Gen)) ;
@@ -2511,14 +2485,42 @@ COPY:real-PrtSg3-PrsPl3 (Prs Pl3 &SUGGEST) EXCEPT (Prt Sg3 &real-PrtSg3-PrsPl3) 
 
 
 
-    ##    # real word error, extra j for neg
+    ##    # NEG- real word error, missing j for "ij" and "ittjij"
+    # -------------------------------------------------------------------
+
+    # left subj
+
+ADD:real-NegSg2-NegSg3 (&real-NegSg2-NegSg3) TARGET ( "ij" Sg2) IF (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Dem Nom Sg) BARRIER S-BOUNDARY OR VFIN LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg))  (NEGATE *1 (Pron Nom Sg2)) (NEGATE 0 (Sg3)) ;
+
+    ## Åhpadiddje i dánna vuojga tjielggi mij la barggodahkamus.
+    ## Hamsun ittji sámijda lijkku
+    ## valla dat ittji buoragit vuobde
+    
+    # right subj
+    
+ADD:real-NegSg2-NegSg3 (&real-NegSg2-NegSg3) TARGET ( "ij" Sg2 )  IF (*1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Dem Nom Sg) BARRIER NOT-NPMOD - Adv OR S-BOUNDARY OR VFIN  LINK NOT 0 Adv LINK NEGATE *1 CC BARRIER NOT-NPMOD LINK 1 (Nom Sg))  (NEGATE *-1 (Pron Nom Sg2)) (NEGATE 0 (Sg3)) ;
+
+    ## i åhpadiddje dánna vuojga tjielggi mij la barggodahkamus.
+    ## ittji Hamsun sámijda lijkku
+    ## valla ittji dat buoragit vuobde
+    #$ Manen giesen ittji tjoakke bierggimnárev, gatjádij gårkkå. 
+	#$ {I} galla, valla galga dal dån gut la sunnus stuorábusj ságastit sunnujn, ja gåhttjot hiejttet doarromis. 
+	#$ – {I} galga gåddet, i galga gåddet…
+
+COPY:real-NegSg2-NegSg3 (Sg3 &SUGGEST) EXCEPT (Sg2) TARGET (&real-NegSg2-NegSg3) ;
+
+
+
+
+
+    ##    # NEG- real word error, extra j for "i" and "ittji"
 
 
     # ----------------------------------------
 
     # left subj
 
-ADD:real-negSg3-negSg2 (&real-negSg3-negSg2) TARGET ("ij" Sg3) IF (*-1 (Pron Nom Sg2) BARRIER S-BOUNDARY OR CS OR CC OR VFIN) ;
+ADD:real-NegSg3-NegSg2 (&real-NegSg3-NegSg2) TARGET ("ij" Sg3) IF (*-1 (Pron Nom Sg2) BARRIER S-BOUNDARY OR CS OR CC OR VFIN) ;
 
     ## dån ij galga iehtjádij sáhkadit hielles jali negatijva priváhta ássjij birra , ietján_gå lagámus fámilljaj .
 
@@ -2534,10 +2536,10 @@ ADD:real-negSg3-negSg2 (&real-negSg3-negSg2) TARGET ("ij" Sg3) IF (*-1 (Pron Nom
 
     # right subj
 
-ADD:real-negSg3-negSg2 (&real-negSg3-negSg2) TARGET ("ij")  IF (0 (Sg3)) (*1 (Pron Nom Sg2) BARRIER S-BOUNDARY OR CS OR CC OR VFIN) ;
+ADD:real-NegSg3-NegSg2 (&real-NegSg3-NegSg2) TARGET ("ij")  IF (0 (Sg3)) (*1 (Pron Nom Sg2) BARRIER S-BOUNDARY OR CS OR CC OR VFIN) ;
 
 
-COPY:real-negSg3-negSg2 (Sg2 &SUGGEST) EXCEPT (Sg3) TARGET  (&real-negSg3-negSg2) ;
+COPY:real-NegSg3-NegSg2 (Sg2 &SUGGEST) EXCEPT (Sg3) TARGET  (&real-NegSg3-NegSg2) ;
 
 
 
