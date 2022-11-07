@@ -1644,9 +1644,9 @@ COPY:use-ellipsis ("…" &SUGGEST) EXCEPT ("...") TARGET (&ellipsis) ;
 
 
  	# Correct copula form, not congruence (after congruence-subj-verb rules)
-	# ---------------------------------------------------------------------------------------------------------
-	# ---------------------------------------------------------------------------------------------------------
-	# ---------------------------------------------------------------------------------------------------------
+    # ===================================================================================================
+    # ===================================================================================================
+    # ===================================================================================================
 
 
 	# Should not be sentence initial copula: from le, to la or l or li
@@ -1654,7 +1654,7 @@ COPY:use-ellipsis ("…" &SUGGEST) EXCEPT ("...") TARGET (&ellipsis) ;
 ADD:from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentInit IF (NEGATE -1 BOS) (NEGATE 0 &syn-number_congruence-subj-verb) (NEGATE 0 &msyn-verb-cong-rel) (NEGATE 0 &msyn-soajttá-le) ;
 
 
-COPY:from-sentence-init-copula (Clt &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 CC OR CS OR ("de" Adv)) (NEGATE 0 Pl3) ;
+COPY:from-sentence-init-copula (Clt &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 CC OR CS OR ("de" Adv)) ;
     ## Áddjá {le} vuoras > l
 	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
 
@@ -1748,9 +1748,9 @@ COPY:msyn-sme_bastard_neg2 (Ind ConNeg &SUGGEST) EXCEPT (PrfPrc &msyn-sme_bastar
 
 
     # soajttá as an adverb
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
+    # ===================================================================================================
+    # ===================================================================================================
+    # ===================================================================================================
 
 ADD:msyn-soajttá-adv (&msyn-soajttá-adv) TARGET ("soajttet" V IV Ind Prs Sg3) IF (NEGATE *1 Inf OR PrfPrc BARRIER NOT-NPMODADVPCLE - (A Sg Nom) - Acc - (N Nom) - (N Com) - (N Ill) - (N Ela) - (N Ine)) (NEGATE *1 ( "liehket" V IV Ind Prs Sg3) BARRIER NOT-ADV-PCLE) ;
 	## Ja gut diehtá; Udnásj sáme siebrudagáj gierragijs soajttá muhtem oasse boahtte ájge sámeviessoma vuodo luorkijdit.
@@ -1820,25 +1820,14 @@ ADD:msyn-soajttá-not-adv (&msyn-soajttá-not-adv) TARGET VFIN + Prt OR VFIN + P
 
 COPY:msyn-soajttá-not-adv (Inf &SUGGEST) EXCEPT (Ind Prs Sg1) OR (Ind Prs Sg2) OR (Ind Prs Sg3) OR (Ind Prs Du1) OR (Ind Prs Du2) OR (Ind Prs Du3) OR (Ind Prs Pl1) OR (Ind Prs Pl2) OR (Ind Prs Pl3) OR (Ind Prt Sg1) OR (Ind Prt Sg2) OR (Ind Prt Sg3) OR (Ind Prt Du1) OR (Ind Prt Du2) OR (Ind Prt Du3) OR (Ind Prt Pl1) OR (Ind Prt Pl2) OR (Ind Prt Pl3) TARGET (&msyn-soajttá-not-adv) ;
 
-    # Wrong Cond Sg2 instead of Pl3
-    # -----------------------------
-
-ADD:msyn-liehket-congr-condsg2-condpl3 (&msyn-liehket-congr-condsg2-condpl3) TARGET (Cond Sg2) IF (*-1 (N Nom Pl) OR (Pron Nom Pl) OR (Pron Nom Pl3) BARRIER NOT-ADV-PCLE ) ;
-ADD:msyn-liehket-congr-condsg2-condpl3 (&msyn-liehket-congr-condsg2-condpl3) TARGET (Cond Sg2) IF (*-1 (N Nom Sg) BARRIER NOT-ADV-PCLE LINK *-1 CC BARRIER NOT-Attr LINK -1 (N Nom Sg) )  ;
-
-    # vuorasulmutja lulu huvsov ja sujtov oadtjot.
-    ## Árran ja UiT lulu aktisattjat barggat.
-
-COPY:msyn-liehket-congr-condsg2-condpl3 (Pl3 &SUGGEST) EXCEPT (Sg2 &msyn-liehket-congr-condsg2-condpl3) TARGET (&msyn-liehket-congr-condsg2-condpl3) ;
-
 
 
    # lexical errors
 
    # Wrong use of oahpástuvvat with things and oahpásmuvvat with living creatures.
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
+    # ===================================================================================================
+    # ===================================================================================================
+    # ===================================================================================================
 
 ADD:lex-oahpástuvvat-oahpásmuvvat (&lex-oahpástuvvat-oahpásmuvvat) TARGET ("oahpástuvvat") + VFIN OR ("oahpástuvvat") + Actio IF (*0 Com OR Ill BARRIER NOT-NPMOD-NOMPL - Adv - Pcle - (Nom N) - (Pron Nom) - Ine LINK NEGATE 0 Sem/AnimateNotOrg OR (Pron Recipr) OR (Pron Pers)) ;
 #ADD:lex-oahpástuvvat-oahpásmuvvat (&lex-oahpástuvvat-oahpásmuvvat) TARGET ("oahpástuvvat") + VFIN OR ("oahpástuvvat") + Actio IF (NEGATE *0 Sem/AnimateNotOrg + Com OR Sem/AnimateNotOrg + Ill OR (Pron Pers) + Com OR (Pron Pers) + Ill OR (Pron Recipr) + Com OR (Pron Recipr) + Ill BARRIER NOT-NPMOD-NOMPL - Adv - Pcle - (Nom N) - (Pron Nom)) (NEGATE *0 ("gaskan" Adv) + Px OR ("gaskka") + Px);
@@ -2007,12 +1996,14 @@ ADD:msyn-plcom-sgcom-oahpástuvvat2 (&msyn-plcom-sgcom-oahpástuvvat2) TARGET (P
 COPY:msyn-plcom-sgcom-oahpástuvvat2 (Com &SUGGEST) EXCEPT (Ill Attr &msyn-plcom-sgcom-oahpástuvvat2) TARGET (&msyn-plcom-sgcom-oahpástuvvat2) ;
     ## Maŋenagi gå oahppe dán {ulmutjij} oahpásmuvvi.
    
+    # Pred/Attr errors
+    # ===================================================================================================
+    # ===================================================================================================
+    # ===================================================================================================
+  
     # Pred when should be attr
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
-    
-
+    #--------------------------
+      
 ADD:syn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF 
 (NEGATE 0 Attr OR (V Sg3)) (*1 N + CASE OR A + CASE BARRIER (*) - (A Attr))
 (NEGATE *-1 COPULAS BARRIER NOT-ADV-PCLE LINK *2 Inf OR Ine BARRIER NOT-NPMODADV - Acc - (A Sg Nom) - CASE) (NEGATE 1 (N Nom) OR (Pron Nom) LINK 1 ("liehket" Ind))
@@ -2075,9 +2066,9 @@ COPY:syn-attr-pred-pl (Pl Nom &SUGGEST) EXCEPT (Attr &msyn-attr-pred) TARGET (&m
 
 
     # mij instead of gut (all cases and persons, so also ma>gudi)
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
+    # ===================================================================================================
+    # ===================================================================================================
+    # ===================================================================================================
 
     # relative use, mij>gut
 
@@ -2151,7 +2142,9 @@ COPY:msyn-gut-mij ("mij" &SUGGEST) EXCEPT ("guhti" &msyn-mij-gut Area/NO Area/SE
 
 
     ## PASSIVE VERB should be active
-    ## ------------
+    # ===================================================================================================
+    # ===================================================================================================
+    # ===================================================================================================
 
 
 ADD:msyn-pass-active (&msyn-pass-active) TARGET (Der/PassL) OR (Der/PassS) IF (-1 Acc)(NEGATE 0 PrfPrc) ; 
@@ -2175,9 +2168,10 @@ COPY:msyn-pass-active (TV &SUGGEST) EXCEPT (IV Ex/V Ex/TV Der/PassL  &msyn-pass-
 
 
     # Congr error with relative pron
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
+    # ===================================================================================================
+    # ===================================================================================================
+    # ===================================================================================================
+    
 SET NOT-BEFORE-REL = (*) - Inf - VFIN - COMMA - Po ;    
 
 ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NOT 0 (N Sg) LINK NEGATE -1 VFIN OR Inf LINK -1 (N Sg) OR (Pron Sg))(NEGATE *-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK -1 ("akta") OR ("1" Num))(NEGATE -1 Po LINK -1 (Gen Pl) LINK -1 (N Sg))(NEGATE -1 (V <TH-FS-Qpron>))  ;
@@ -2304,9 +2298,9 @@ COPY:msyn-verb-cong-rel (Sg3 &SUGGEST) EXCEPT (Pl3 &msyn-verb-cong-rel) OR (Pl3 
 
 
 # Congr error with relative pron gænna-gejn
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
+    # ===================================================================================================
+    # ===================================================================================================
+    # ===================================================================================================
 
 
 ADD:msyn-congr-gænna-gejn (&msyn-congr-gænna-gejn) TARGET (Rel Ine Sg) IF (*-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NEGATE -1 VFIN OR Inf LINK -1 (N Sg) OR (Pron Sg));
@@ -2338,9 +2332,9 @@ COPY:msyn-congr-gænna-gejn (Pl &SUGGEST) EXCEPT (Sg &msyn-congr-gænna-gejn Are
 
 
     # Congr error with iesj-ietja
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
+    # ===================================================================================================
+    # ===================================================================================================
+    # ===================================================================================================
     
 ADD:msyn-congr-iesj-ietja (&msyn-congr-iesj-ietja) TARGET ("iesj" Pron Refl Sg Nom) IF (-1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3)) (NEGATE 1 (Pron Indef) ) ;
 
@@ -2382,9 +2376,9 @@ COPY:msyn-congr-iesj-ietja (PxPl2 &SUGGEST) EXCEPT (PxSg2 &msyn-congr-ietjas-iet
 
 
     # real word error missing j or extra j
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
+    # ==================================================================================================
+    # ==================================================================================================
+    # ==================================================================================================
 
 
 
@@ -2548,9 +2542,9 @@ COPY:real-NegSg3-NegSg2 (Sg2 &SUGGEST) EXCEPT (Sg3) TARGET  (&real-NegSg3-NegSg2
 
 
     # Word order, neg before subject
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
+    # ===================================================================================================
+    # ===================================================================================================
+    # ===================================================================================================
     
 LIST SG-V-SUBJ = Sg Sg3 ;
 LIST PL-V-SUBJ = Pl Pl3 ;
@@ -2595,14 +2589,27 @@ SET v = v1 OR v2 OR v3  ;
 
 
 
+    # Wrong Cond Sg2 instead of Pl3
+    # lulu > lulun
+    # ===================================================================================================
+    # ===================================================================================================
+    # ===================================================================================================
+
+ADD:msyn-liehket-congr-condsg2-condpl3 (&msyn-liehket-congr-condsg2-condpl3) TARGET (Cond Sg2) IF (*-1 (N Nom Pl) OR (Pron Nom Pl) OR (Pron Nom Pl3) BARRIER NOT-ADV-PCLE ) ;
+ADD:msyn-liehket-congr-condsg2-condpl3 (&msyn-liehket-congr-condsg2-condpl3) TARGET (Cond Sg2) IF (*-1 (N Nom Sg) BARRIER NOT-ADV-PCLE LINK *-1 CC BARRIER NOT-Attr LINK -1 (N Nom Sg) )  ;
+
+    # vuorasulmutja lulu huvsov ja sujtov oadtjot.
+    ## Árran ja UiT lulu aktisattjat barggat.
+
+COPY:msyn-liehket-congr-condsg2-condpl3 (Pl3 &SUGGEST) EXCEPT (Sg2 &msyn-liehket-congr-condsg2-condpl3) TARGET (&msyn-liehket-congr-condsg2-condpl3) ;
+
+
+
     # congruence case/ number
-    # -----------------------
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
-
-
-
+    # ===================================================================================================
+    # ===================================================================================================
+    # ===================================================================================================
+    
 	 # Sg1 SUBJ
 
 ADD:syn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg OR (V Ind Prt) - ConNeg OR (V Cond) OR (V Neg Ind) IF (*-1 (Pron Pers Sg1 Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 @COMP-CS< LINK *-1 BOS OR (":") OR (";") OR ("/") OR ("‹") OR ("–") OR COMMA OR CS OR (Adv Subqst) OR (Pron Rel Sg) BARRIER NOT-ADV-PCLE)(NEGATE 0 Sg1 OR &real OR (N Sg) - Px OR Adv);
@@ -3227,20 +3234,24 @@ COPY:syn-number_congruence-subj-verb (Pl3 &SUGGEST) EXCEPT Sg1 OR Sg2 OR (Sg2 Se
 (NEGATE 0 Du1 LINK -1 Sem/Human + (Nom Sg) LINK *-1 CC BARRIER NOT-NPMODADV  LINK -1 ("måj" Nom))
 (NEGATE 0 Du2 LINK -1 Sem/Human + (Nom Sg) LINK *-1 CC BARRIER NOT-NPMODADV  LINK *-1 ("dåj" Nom));
 
+
+
     # case error
     # nominative before Po
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
+    # ===================================================================================================
+    # ===================================================================================================
+    # ===================================================================================================
     
-ADD:msyn-nom-gen-Po (&msyn-nom-gen-Po) TARGET (Sg Nom) IF (1 Po) (NEGATE 0 (Dem Sg Nom) LINK 1 ("rájes")) (NEGATE 0 Refl) ;
+ADD:msyn-nom-gen-Po (&msyn-nom-gen-Po) TARGET (Sg Nom) IF (1 Po) (NEGATE 0 (Dem Sg Nom) LINK 1 ("rájes")) (NEGATE 0 Refl) (NEGATE 1 ("åvddålij") LINK 1 (Sem/Plc Ill)) (NEGATE 1 ("ietján gå")) ;
 
 COPY:msyn-nom-gen-Po (Gen &SUGGEST) EXCEPT (Nom &msyn-nom-gen-Po) TARGET (&msyn-nom-gen-Po) ;  
 
+    #$ Diedádus åvddålij guovlluj.
+
     # numerals used as attributive adjectives
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
+    # ===================================================================================================
+    # ===================================================================================================
+    # ===================================================================================================
     
     # the noun from pl to sg.
     # -----------------------
@@ -3558,9 +3569,14 @@ COPY:msyn-numerals-with-demopron (Sg Gen &SUGGEST)  EXCEPT (Pl Ine &msyn-numeral
 
     ## Barggo dåjmaduvvá {dajn} gudá stuoves barggojuohkusij tjadá masi tjuovvovasj prográmmasuorge gulluji
 
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
-    # ---------------------------------------------------------------------------------------------------------
+
+
+
+
+
+    # ===================================================================================================
+    # ===================================================================================================
+    # ===================================================================================================
     
 	# 1. Add error tags:
 #ADD:punct-aistton       (&punct-aistton)       TARGET (""") ;  # Delayed til later
