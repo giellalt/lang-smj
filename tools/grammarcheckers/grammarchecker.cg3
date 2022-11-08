@@ -3256,10 +3256,10 @@ COPY:msyn-nom-gen-Po (Gen &SUGGEST) EXCEPT (Nom &msyn-nom-gen-Po) TARGET (&msyn-
     # the noun from pl to sg.
     # -----------------------
     
-LIST NUMBER-EXCEPT = ("miljåvnnå") ;
+LIST NUMBER-EXCEPT = ("miljåvnnå") ("millijåvnnå") ("miljárdda") ;
 
 
-ADD:msyn-numeral-accattr (&msyn-numeral-accattr) TARGET (N Pl Acc) IF (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom))(NEGATE 0 (N Sg)) ;
+ADD:msyn-numeral-accattr (&msyn-numeral-accattr) TARGET (Pl Acc) IF (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom))(NEGATE 0 (N Sg))((0 N) OR (0 NUMBER-EXCEPT LINK NOT 1 N)) ;
 
 ADD:msyn-numeral-accattr (&msyn-numeral-accattr) TARGET (N Pl Acc) IF (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 Num)(NEGATE 0 (N Sg)) ;
 	## Valla vuojnnet ”sáme” viellde vájllu divna dáj gålmmå {rijkajn}.
@@ -3268,7 +3268,7 @@ COPY:msyn-numeral-accattr (Sg Gen &SUGGEST) EXCEPT (Pl Acc &msyn-numeral-accattr
 
     ## vuojnáv guokta gusájt > vuojnáv guokta gusá insead of vuojnáv guokta guosáv
 
-ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (N Pl) IF (NOT 0 &msyn-numeral-accattr) (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock LINK NEGATE 0 NUMBER-EXCEPT LINK -1 Num OR ("moadda"))(NEGATE 0 (N Sg) OR (N Pl Nom))(NEGATE 0 (Pl Ela) LINK -1 ("akta" Sg Nom))(NEGATE 0 (Pl Ela) LINK -1 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 2 ("liehket" Pl3))(NEGATE 0 (N Pl Nom) LINK -1 (Num Sg Nom)) ;
+ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (Pl) IF ((0 N) OR (0 NUMBER-EXCEPT LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numeral-accattr) (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock LINK NEGATE 0 NUMBER-EXCEPT LINK -1 Num OR ("moadda"))(NEGATE 0 (N Sg) OR (N Pl Nom))(NEGATE 0 (Pl Ela) LINK -1 ("akta" Sg Nom))(NEGATE 0 (Pl Ela) LINK -1 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 2 ("liehket" Pl3))(NEGATE 0 (N Pl Nom) LINK -1 (Num Sg Nom)) ;
     ## Mån lav åhtsåm guokta {universitehtajda}  
     ## Sámedigge le juo juollodam moadda miljåvnå {gielladåjmajda}, valla ulmutja e åhpa sámegielav ietjas årrombájken.
     ## Ælla des dagu åvddål guovte sierra skåvllåhuodnahijda sieradum. = guovte sierra skåvllåhuodnahij
