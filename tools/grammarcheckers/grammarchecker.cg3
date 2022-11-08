@@ -3344,6 +3344,13 @@ ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Sg Nom) OR (Num
     ##
 ADD:msyn-numeral-casecongr (&msyn-numeral-casecongr) TARGET (Num Pl Com) OR (Num Pl Gen) IF (*1 (N Pl Nom) + &msyn-numeral-attr OR (N Pl Nom) +  &msyn-numeral-accattr OR (N Gen) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N OR Acc LINK 1 N OR Po LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc)(NEGATE *-1 ("liehket" Pl3) BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)(NEGATE 0 Acc LINK *-1 TV BARRIER NOT-ADV-PCLE - (Pron Attr)) (NEGATE 0 Arab OR Sem/Date OR Sem/Year) ;
 
+
+SETCHILD N TO (-1 (A Attr));
+SETCHILD N TO (-1 (A Attr) LINK -1 CC LINK -1 (A Attr));
+SETCHILD N TO (-1 (A Attr) LINK -1 CC LINK -1 (A Attr) LINK -1 COMMA OR CC LINK -1 (A Attr));
+SETPARENT CC OR COMMA (-1 (A Attr)) TO (1 (A Attr));
+	## Mån lav åhtsåm guokta ruoppsis ja fijna universitehtajda.
+	## Mån lav åhtsåm guokta stuorra, ruoppsis ja fijna universitehtajda.
 	
 	# with other cases
 
