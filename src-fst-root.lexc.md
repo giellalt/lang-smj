@@ -756,6 +756,7 @@ This is done to avoid possible overgeneration in the derivational system.
 * +Der/ahtes NA ! Abessive. Even verbs>NomAct>ahtes and odd-syll nouns. Morén-Duolljá:Caritive
 ### Der#5 tags - tags in fifth position
 * +Der/AAdv NA AAdv, previously +Der/at
+* +Der/akti NumAdv Adv
 * +Der/vuota NA AN (tag harmonization: previosuly Der/vuohta)
 ### Der#other tags - tags that can be in any position
 
