@@ -2549,72 +2549,72 @@ LEXICON BIEKKASTIT_IV  Impersonals, only Sg3
 LEXICON JÅRGESTIT_IV At the moment IV, we may perhaps change IV/TV. 
 
 * doalvestit # Odd-syllable test examples:*
-* *doalvestav:* `doalvestit+V+IV+Ind+Prs+Sg1`
-* *doalvestiv:* `doalvestit+V+IV+Ind+Prt+Sg1`
-* *doalvestijma:* `doalvestit+V+IV+Ind+Prt+Pl1`
+* *doalvestav:* `doalvestit+V+IV+Gram/3syll+Ind+Prs+Sg1`
+* *doalvestiv:* `doalvestit+V+IV+Gram/3syll+Ind+Prt+Sg1`
+* *doalvestijma:* `doalvestit+V+IV+Gram/3syll+Ind+Prt+Pl1`
 
 LEXICON BEGATJIT_IV   Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but  only Sg3 passivereintroduced
 
 * duojkkuhit # Odd-syllable test examples:*
-* *duojkkuhav:* `duojkkuhit+V+IV+Ind+Prs+Sg1`
-* *duojkkuhiv:* `duojkkuhit+V+IV+Ind+Prt+Sg1`
-* *duojkkuhijma:* `duojkkuhit+V+IV+Ind+Prt+Pl1`
+* *duojkkuhav:* `duojkkuhit+V+IV+Gram/3syll+Ind+Prs+Sg1`
+* *duojkkuhiv:* `duojkkuhit+V+IV+Gram/3syll+Ind+Prt+Sg1`
+* *duojkkuhijma:* `duojkkuhit+V+IV+Gram/3syll+Ind+Prt+Pl1`
 
 LEXICON BALÁDIT_IV   continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms, only Sg3 passive
 
 * lihtudit # Odd-syllable test examples:*
-* *lihtudav:* `lihtudit+V+IV+Ind+Prs+Sg1`
-* *lihtudiv:* `lihtudit+V+IV+Ind+Prt+Sg1`
-* *lihtudijma:* `lihtudit+V+IV+Ind+Prt+Pl1`
+* *lihtudav:* `lihtudit+V+IV+Gram/3syll+Ind+Prs+Sg1`
+* *lihtudiv:* `lihtudit+V+IV+Gram/3syll+Ind+Prt+Sg1`
+* *lihtudijma:* `lihtudit+V+IV+Gram/3syll+Ind+Prt+Pl1`
 
 LEXICON SUOGNALIT_IV  Trisyllabic Verbs ending -lit.  only Sg3 passive
 
 * loavkkalit # Odd-syllable test examples:*
-* *loavkkalav:* `loavkkalit+V+IV+Ind+Prs+Sg1`
-* *loavkkaliv:* `loavkkalit+V+IV+Ind+Prt+Sg1`
-* *loavkkalijma:* `loavkkalit+V+IV+Ind+Prt+Pl1`
+* *loavkkalav:* `loavkkalit+V+IV+Gram/3syll+Ind+Prs+Sg1`
+* *loavkkaliv:* `loavkkalit+V+IV+Gram/3syll+Ind+Prt+Sg1`
+* *loavkkalijma:* `loavkkalit+V+IV+Gram/3syll+Ind+Prt+Pl1`
 
 LEXICON LASSÁNIT_IV  verbs ending -nit, -sit, no passive
 
 * rievddánit # Odd-syllable test examples:*
-* *rievddánav:* `rievddánit+V+IV+Ind+Prs+Sg1`
-* *rievddániv:* `rievddánit+V+IV+Ind+Prt+Sg1`
-* *rievddánijma:* `rievddánit+V+IV+Ind+Prt+Pl1`
+* *rievddánav:* `rievddánit+V+IV+Gram/3syll+Ind+Prs+Sg1`
+* *rievddániv:* `rievddánit+V+IV+Gram/3syll+Ind+Prt+Sg1`
+* *rievddánijma:* `rievddánit+V+IV+Gram/3syll+Ind+Prt+Pl1`
 
 LEXICON BÁHTARIT_IV verbs ending -rit.  only Sg3 passive
 
 * sjtávttjurit # Odd-syllable test examples:*
-* *sjtávttjurav:* `sjtávttjurit+V+IV+Ind+Prs+Sg1`
-* *sjtávttjuriv:* `sjtávttjurit+V+IV+Ind+Prt+Sg1`
-* *sjtávttjurijma:* `sjtávttjurit+V+IV+Ind+Prt+Pl1`
+* *sjtávttjurav:* `sjtávttjurit+V+IV+Gram/3syll+Ind+Prs+Sg1`
+* *sjtávttjuriv:* `sjtávttjurit+V+IV+Gram/3syll+Ind+Prt+Sg1`
+* *sjtávttjurijma:* `sjtávttjurit+V+IV+Gram/3syll+Ind+Prt+Pl1`
 
 LEXICON UNNEDIT_TV   All -uvvat passives.
 
 * nuoledit # Odd-syllable test examples:*
-* *nuoledav:* `nuoledit+V+TV+Ind+Prs+Sg1`
-* *nuolediv:* `nuoledit+V+TV+Ind+Prt+Sg1`
-* *nuoledijma:* `nuoledit+V+TV+Ind+Prt+Pl1`
+* *nuoledav:* `nuoledit+V+TV+Gram/3syll+Ind+Prs+Sg1`
+* *nuolediv:* `nuoledit+V+TV+Gram/3syll+Ind+Prt+Sg1`
+* *nuoledijma:* `nuoledit+V+TV+Gram/3syll+Ind+Prt+Pl1`
 
 LEXICON MUJTATJIT_TV   Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but reintroduced. All -uvvat passives
 
 * nårddådit # Odd-syllable test examples:*
-* *nårddådav:* `nårddådit+V+TV+Ind+Prs+Sg1`
-* *nårddådiv:* `nårddådit+V+TV+Ind+Prt+Sg1`
-* *nårddådijma:* `nårddådit+V+TV+Ind+Prt+Pl1`
+* *nårddådav:* `nårddådit+V+TV+Gram/3syll+Ind+Prs+Sg1`
+* *nårddådiv:* `nårddådit+V+TV+Gram/3syll+Ind+Prt+Sg1`
+* *nårddådijma:* `nårddådit+V+TV+Gram/3syll+Ind+Prt+Pl1`
 
 LEXICON BÅNJÅDIT_TV   continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms. All -uvvat  passives.
 
 * tsirggalit # Odd-syllable test examples:*
-* *tsirggalav:* `tsirggalit+V+TV+Ind+Prs+Sg1`
-* *tsirggaliv:* `tsirggalit+V+TV+Ind+Prt+Sg1`
-* *tsirggalijma:* `tsirggalit+V+TV+Ind+Prt+Pl1`
+* *tsirggalav:* `tsirggalit+V+TV+Gram/3syll+Ind+Prs+Sg1`
+* *tsirggaliv:* `tsirggalit+V+TV+Gram/3syll+Ind+Prt+Sg1`
+* *tsirggalijma:* `tsirggalit+V+TV+Gram/3syll+Ind+Prt+Pl1`
 
 LEXICON VUORDDELIT_TV  Trisyllabic Verbs ending -lit. All -uvvat passives
 
 * tsåggålit # Odd-syllable test examples:*
-* *tsåggålav:* `tsåggålit+V+TV+Ind+Prs+Sg1`
-* *tsåggåliv:* `tsåggålit+V+TV+Ind+Prt+Sg1`
-* *tsåggålijma:* `tsåggålit+V+TV+Ind+Prt+Pl1`
+* *tsåggålav:* `tsåggålit+V+TV+Gram/3syll+Ind+Prs+Sg1`
+* *tsåggåliv:* `tsåggålit+V+TV+Gram/3syll+Ind+Prt+Sg1`
+* *tsåggålijma:* `tsåggålit+V+TV+Gram/3syll+Ind+Prt+Pl1`
 
 ## Contracted stems
 
