@@ -182,6 +182,7 @@ endif !WITH_OFST_TROPICAL
 # First we create the filtered lexicon, ie the analysis/output part of the cascade:
 analyser-tts-gt-output.tmp1.%: fst/lexicon.% \
 					filters/remove-derivation-position-tags.% \
+					filters/rename-POS_before_Der-tags.%      \
 					filters/remove-norm-comp-tags.%           \
 					filters/remove-use_mt-strings.%           \
 					filters/remove-DNorm-tags.%               \
@@ -189,6 +190,7 @@ analyser-tts-gt-output.tmp1.%: fst/lexicon.% \
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/remove-usage-tags.$*\"               \
 			.o. @\"filters/remove-derivation-position-tags.$*\" \
+			.o. @\"filters/rename-POS_before_Der-tags.$*\"      \
 			.o. @\"filters/remove-norm-comp-tags.$*\"           \
 			.o. @\"filters/remove-DNorm-tags.$*\"               \
 			.o. @\"filters/remove-use_mt-strings.$*\"           \
@@ -593,7 +595,7 @@ generator-gt-desc.%: generator-gt-desc.tmp.%                   \
 		 quit\n" | $(XFST_TOOL)
 
 # Special treatment of the HFST Grammar Checker generator:
-generator-gramcheck-gt-norm.hfst: generator-gramcheck-gt-norm.tmp.hfst \
+generator-gramcheck-gt-nor%.hfst: generator-gramcheck-gt-nor%.tmp.hfst \
 				filters/remove-norm-comp-tags.hfst           \
 				filters/remove-derivation-position-tags.hfst \
 				filters/make-optional-grammatical-tags.hfst  \
