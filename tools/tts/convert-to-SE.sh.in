@@ -1,21 +1,26 @@
 #!/bin/sh
 
-hfst-tokenise -g   'tokeniser-tts-cggt-desc.pmhfst'        \
- | divvun-blanktag 'analyser-gt-whitespace.hfst'           \
- | vislcg3 -g 'generated-remove-lexicalised-compounds.bin' \
- | vislcg3 -g 'valency.bin'                                \
- | vislcg3 -g 'mwe-dis.bin'                                \
- | vislcg3 -g 'disambiguator.bin'                          \
- | vislcg3 -g 'functions.bin'                              \
- | vislcg3 -g 'dependency.bin'                             \
- | cut -d'"' -f1-3                                         \
- | sed 's/Area\/NO/Area\/SE/g'                             \
- | sed 's/ *$//'                                           \
- | sed 's/ OLang\/...//g'                                  \
- | sed 's/ [IT]V//g'                                       \
- | sed 's/ Ex\/[TI]V//g'                                   \
- | uniq                                                    \
- | divvun-suggest                                          \
-   -g ../grammarcheckers/generator-gramcheck-gt-norm.hfstol\
-   -m ../grammarcheckers/errors.xml                        \
-   -l smj -A
+set -x
+
+hfst-tokenise -g   'tokeniser-tts-cggt-desc.pmhfst'         \
+ | divvun-blanktag 'analyser-gt-whitespace.hfst'            \
+ | vislcg3 -g 'generated-remove-lexicalised-compounds.bin'  \
+ | vislcg3 -g 'valency.bin'                                 \
+ | vislcg3 -g 'mwe-dis.bin'                                 \
+ | vislcg3 -g 'disambiguator.bin'                           \
+ | vislcg3 -g 'functions.bin'                               \
+ | vislcg3 -g 'dependency.bin'                              \
+ | cut -d'"' -f1-3                                          \
+ | sed 's/Area\/NO/Area\/SE/g'                              \
+ | sed 's/ *$//'                                            \
+ | sed 's/ OLang\/...//g'                                   \
+ | sed 's/ [IT]V//g'                                        \
+ | sed 's/ Ex\/[TI]V//g'                                    \
+ | uniq                                                     \
+ | divvun-suggest                                           \
+   -m ../grammarcheckers/errors.xml                         \
+   -g ../grammarcheckers/generator-gramcheck-gt-norm.hfstol \
+   -l smj -A                                                \
+ | grep -v '^[[:space:]]'
+ 
+ # | grep -v '^"<' | cut -f2 | tr ',' '\n' | uniq | sed 's/^:$/: /' | sed 's/^://' | tr -d '\n' | sed 's/\\n/|/g' | tr '|' '\n' 
