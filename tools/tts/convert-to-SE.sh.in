@@ -1,6 +1,18 @@
 #!/bin/sh
 
-set -x
+# Converts SMJ texts written following NO conventions and variants to one which
+# follows SE conventions and variants. It uses the TTS text processing pipeline
+# in combination with the grammar checker generator. To run it, you need to
+# build SMJ with the following configuration:
+#
+# ./configure --enable-tokenisers --enable-tts --enable-phonetic --enable-grammarchecker
+#
+# Two bugs left to fix:
+# - unknowns should just copy the input word form
+# - when multiple variants are generated, pick the one identical or closest to
+#   the input, if no match found, pick the first one
+
+# set -x
 
 hfst-tokenise -g   'tokeniser-tts-cggt-desc.pmhfst'         \
  | divvun-blanktag 'analyser-gt-whitespace.hfst'            \
@@ -21,6 +33,13 @@ hfst-tokenise -g   'tokeniser-tts-cggt-desc.pmhfst'         \
    -m ../grammarcheckers/errors.xml                         \
    -g ../grammarcheckers/generator-gramcheck-gt-norm.hfstol \
    -l smj -A                                                \
- | grep -v '^[[:space:]]'
- 
- # | grep -v '^"<' | cut -f2 | tr ',' '\n' | uniq | sed 's/^:$/: /' | sed 's/^://' | tr -d '\n' | sed 's/\\n/|/g' | tr '|' '\n' 
+ | grep -v '^[[:space:]]' \
+ | grep -v '^"<'          \
+ | cut -f2                \
+ | tr ',' '\n'            \
+ | uniq                   \
+ | sed 's/^:$/: /'        \
+ | sed 's/^://'           \
+ | tr -d '\n'             \
+ | sed 's/\\n/|/g'        \
+ | tr '|' '\n' 
