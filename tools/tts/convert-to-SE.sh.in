@@ -48,6 +48,7 @@ hfst-tokenise -g   'tokeniser-tts-cggt-desc.pmhfst'         \
  | gawk -f @GIELLA_CORE@/scripts/convert-divvunsuggest-to-almostplain.awk \
  | tr '_' ' '             \
  | grep -v '^\\n$'        \
+ | grep -v '"<>"'         \
  | uniq                   \
  | sed 's/^:$/: /'        \
  | sed 's/^://'           \
