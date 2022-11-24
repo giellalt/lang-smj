@@ -44,7 +44,9 @@ hfst-tokenise -g   'tokeniser-tts-cggt-desc.pmhfst'         \
    -m ../grammarcheckers/errors.xml                         \
    -g ../grammarcheckers/generator-gramcheck-gt-norm.hfstol \
    -l smj -A                                                \
+ | tr ' ' '_'                                               \
  | gawk -f @GIELLA_CORE@/scripts/convert-divvunsuggest-to-almostplain.awk \
+ | tr '_' ' '             \
  | grep -v '^\\n$'        \
  | uniq                   \
  | sed 's/^:$/: /'        \
