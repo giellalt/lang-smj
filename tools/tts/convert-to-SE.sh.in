@@ -44,6 +44,7 @@ hfst-tokenise -g   'tokeniser-tts-cggt-desc.pmhfst'         \
    -g ../grammarcheckers/generator-gramcheck-gt-norm.hfstol \
    -l smj -A                                                \
  | gawk -f @srcdir@/convert-helper.awk                               \
+ | grep -v '^\\n$'        \
  | uniq                   \
  | sed 's/^:$/: /'        \
  | sed 's/^://'           \
