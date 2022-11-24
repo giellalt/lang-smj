@@ -16,6 +16,14 @@
 
 # set -x
 
+# Comments about the processing after the analysis:
+# - get rid of irrelevant data
+# - replace Area/NO with Area/SE (our target)
+# - various clean operations (partly due to bugs in the fsts)
+# - generate word forms using divvun-suggest + grammar checker generator - divvun suggest handles the CG format natively
+# - clean the output using external AWK script
+# - regenerate input format with new word forms using data escaped on `:` lines
+
 hfst-tokenise -g   'tokeniser-tts-cggt-desc.pmhfst'         \
  | divvun-blanktag 'analyser-gt-whitespace.hfst'            \
  | vislcg3 -g 'generated-remove-lexicalised-compounds.bin'  \
