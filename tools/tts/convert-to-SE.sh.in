@@ -6,53 +6,45 @@
 # build SMJ with the following configuration:
 #
 # ./configure --enable-tokenisers --enable-tts --enable-phonetic --enable-grammarchecker
-#
-# Two bugs left to fix:
-# - unknowns should just copy the input word form
-# - when multiple variants are generated, pick the one identical or closest to
-#   the input, if no match found, pick the first one
-#
-# see https://github.com/giellalt/lang-smj/issues/22
 
 # set -x
 
-# Comments about the processing after the analysis:
-# - get rid of irrelevant data
-# - replace Area/NO with Area/SE (our target)
+
 # - various clean operations (partly due to bugs in the fsts)
-# - generate word forms using divvun-suggest + grammar checker generator - divvun suggest handles the CG format natively
+# - generate word forms using divvun-suggest + grammar checker generator -
+#   divvun suggest handles the CG format natively
 # - clean the output using external AWK script
 # - regenerate input format with new word forms using data escaped on `:` lines
 
-hfst-tokenise -g   'tokeniser-tts-cggt-desc.pmhfst'         \
- | divvun-blanktag 'analyser-gt-whitespace.hfst'            \
- | vislcg3 -g 'generated-remove-lexicalised-compounds.bin'  \
- | vislcg3 -g 'valency.bin'                                 \
- | vislcg3 -g 'mwe-dis.bin'                                 \
- | vislcg3 -g 'disambiguator.bin'                           \
- | vislcg3 -g 'functions.bin'                               \
- | vislcg3 -g 'dependency.bin'                              \
- | cut -d'"' -f1-3                                          \
- | sed 's/Area\/NO/Area\/SE/g'                              \
- | sed 's/ *$//'                                            \
- | sed 's/ OLang\/...//g'                                   \
- | sed 's/ Err\/Orth//g'                                    \
- | sed 's/ [IT]V//g'                                        \
- | sed 's/ Ex\/[TI]V//g'                                    \
- | uniq                                                     \
- | divvun-suggest                                           \
+hfst-tokenise -g   'tokeniser-tts-cggt-desc.pmhfst'        |
+  divvun-blanktag 'analyser-gt-whitespace.hfst'            | # tag whitespace on nearest cohort
+  vislcg3 -g 'generated-remove-lexicalised-compounds.bin'  | # remove lexicalised compounds? Do we want that in the conversion?
+  vislcg3 -g 'valency.bin'                                 | # add valency
+  vislcg3 -g 'mwe-dis.bin'                                 | # disambiguate ambiguous tokenisation
+  vislcg3 -g 'disambiguator.bin'                           | # regular disambiguation
+  vislcg3 -g 'functions.bin'                               | # add functions - needed?
+  vislcg3 -g 'dependency.bin'                              | # add dependencies - needed?
+  cut -d'"' -f1-3                                          | # get rid of irrelevant data
+  sed 's/Area\/NO/Area\/SE/g'                              | # replace Area/NO with Area/SE (our target)
+  sed 's/ *$//'                                            | # remove final spaces (some analyses differs only in that)
+  sed 's/ OLang\/...//g'                                   | # remove OLang/xxx tags
+  sed 's/ Err\/Orth//g'                                    | # remove Err/Orth tags
+  sed 's/ [IT]V//g'                                        | # remove transitivity tags
+  sed 's/ Ex\/[TI]V//g'                                    | # remove Ex/ trans. tags
+  uniq                                                     | # uniq all analyses
+  divvun-suggest                                            \
    -m ../grammarcheckers/errors.xml                         \
    -g ../grammarcheckers/generator-gramcheck-gt-norm.hfstol \
-   -l smj -A                                                \
- | tr ' ' '_'                                               \
- | gawk -f @GIELLA_CORE@/scripts/convert-divvunsuggest-to-almostplain.awk \
- | tr '_' ' '             \
- | grep -v '^\\n$'        \
- | grep -v '"<>"'         \
- | uniq                   \
- | sed 's/^:$/: /'        \
- | sed 's/^://'           \
- | sed 's/@COLON@/:/g'    \
- | tr -d '\n'             \
- | sed 's/\\n/|/g'        \
- | tr '|' '\n' 
+   -l smj -A                                               | # generate SE wordforms
+  tr ' ' '_'                                               | # protect spaces
+  gawk -f @GIELLA_CORE@/scripts/convert-divvunsuggest-to-almostplain.awk | # cleanup script
+  tr '_' ' '             | # reinstate spaces
+  grep -v '^\\n$'        | # remove bare newlines (introduced by the awk script?)
+  grep -v '"<>"'         | # remove empty wordforms
+  uniq                   | # unique remaining word forms
+  sed 's/^:$/: /'        | # add back escaped spaces removed earlier
+  sed 's/^://'           | # remove CG stream escape symbol
+  sed 's/@COLON@/:/g'    | # reinstate protected colons (from awk script)
+  tr -d '\n'             | # remove real newlines
+  sed 's/\\n/|/g'        | # prepare escaped (original) newlines for recovery
+  tr '|' '\n'            | # reinstated original newlines
