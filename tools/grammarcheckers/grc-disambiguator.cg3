@@ -1279,6 +1279,12 @@ SELECT ("dåssju" Adv) IF (0 ("dåssjåt" V ImprtII Sg2));
 	## Duola degu de li dåssju guokta stádasuohkana. 
 
 
+	# muhttijn vs. muhttet
+	# - - - - - - - - - -
+SELECT ("muhttijn" Adv) IF (0 ("muhttet" Der/NomAg N));
+	## Moattegielaga muhttijn aj moadda giela adni sæmmi gárgadisánN. Navti gåk la dálkádakrievddamij, la værálda iemeálmmuga rasje dávda båhtusijda.
+	
+
 	# Da vs. dat Pl Nom
 	# - - - - - - - - - -
 SELECT ("dat" Pl Nom) IF (0 ("Da"));
@@ -3561,8 +3567,9 @@ SELECT (Sg Gen) IF (0 Prop)(1 (N Nom) LINK NOT 0 Prop);
 SELECT (N Sg Nom) IF (0 ImprtII LINK -1 A) ;
     ## Sámedikkepresidænnta, Aili Keskitalo la ávon gå dal vuododuvvá almulasj nammadus gut galggá guoradallat láhkatjuohkkev dåjmajt ja årnigijt sámegielaj hárráj
     
-REMOVE Nom IF (NEGATE 0 TITLE)(0 N)(1C Nom);
+REMOVE Nom IF (NEGATE 0 TITLE)(0 N)(1C Nom LINK NOT 0 A);
 	## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj:
+	#$GRAM Navti gåk la dálkádakrievddamij, la værálda {iemeálmmuga} rasje dávda båhtusijda. 
         
 SELECT (Sg Gen) IF (-1C Gen)(0C N)(1 N);
 SELECT (Sg Gen) IF (-1C Gen)(0C N)(1 COMMA)(*2 N BARRIER NOT-ADJ);
