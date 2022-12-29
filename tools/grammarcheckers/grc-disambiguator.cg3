@@ -455,6 +455,12 @@ LIST @VOC = @VOC ;
 LIST @X = @X ;
 
 
+# Secondary tags
+# --------------
+
+LIST <AttrPred> = <AttrPred> ;
+
+
 # Semantic tags
 # -------------
 
@@ -486,7 +492,14 @@ LIST CAP-INITIAL = "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M"
         "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"
         "Á" "Æ" "Ø" "Å" "Ö" "Ä" ;
 
+# ======== #
 
+BEFORE-SECTIONS
+
+# ======== #
+
+SUBSTITUTE (A) (A <AttrPred>) TARGET A IF (0 Attr LINK 0 (A Nom));
+	## T:an le aj dádjadahtes 50 phi-dåbddomærkka (ø).
 
 
 # ======== #
