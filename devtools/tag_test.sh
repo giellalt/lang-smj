@@ -12,7 +12,7 @@ echo 'Checking for double semicolon in stem files:'
 cat src/fst/stems/*lexc |cut -d '!' -f1 |grep ';.*;'
 
 echo 'Checking for missing Der-tags:'
-cat src/fst/stems/*lexc |cut -d '!' -f1 |grep '\+Der/.*;' |egrep -v 'Der([1234]|\+)'
+cat src/fst/stems/*lexc |cut -d '!' -f1 |grep '\+Der/.*;' |egrep -v 'Der([12345]|\+)'
 
 echo 'Checking for double Sem-tags:'
 cat src/fst/stems/*lexc |cut -d '!' -f1 |grep '+Sem.*+Sem' 
