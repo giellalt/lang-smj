@@ -301,7 +301,7 @@ LIST Sem/Feat-measr =  Sem/Feat-measr Sem/Feat-measr_Plc ;
 LIST Sem/Feat-phys =  Sem/Ctain_Feat-phys Sem/Domain_Feat-phys Sem/Feat-phys Sem/Feat-phys_Food_State Sem/Feat-phys_Hum Sem/Feat-phys_Obj Sem/Feat-phys_Plc-line Sem/Feat-phys_Tool-write Sem/Feat-phys_Veh Sem/Feat-phys_Wthr  ;
 LIST Sem/Feat-psych = Sem/Act_Feat-psych Sem/Body-abstr_Feat-psych Sem/Cat_Feat-psych_Plc Sem/Feat-psych Sem/Feat-psych_Hum Sem/Feat-psych_Plc ;
 LIST Sem/Fem = Sem/Fem ;
-LIST Sem/Food = Sem/Ani_Food Sem/Body_Food Sem/Domain_Food-med Sem/Event_Food Sem/Feat-phys_Food_State Sem/Food Sem/Food-med Sem/Food_Obj-surfc Sem/Food_Part Sem/Food_Perc-phys Sem/Food_Plant Sem/Food_Sign Sem/Food_Substnc Sem/Food_Times ;
+LIST Sem/Food = Sem/Ani_Food Sem/Body_Food Sem/Domain_Food-med Sem/Event_Food Sem/Feat-phys_Food_State Sem/Food Sem/Food-med Sem/Food_Obj-surfc Sem/Food_Part Sem/Food_Perc-phys Sem/Food_Plant Sem/Food_Sign Sem/Food_Substnc Sem/Food_Time ;
 LIST Sem/Food-med =  Sem/Domain_Food-med  Sem/Food-med ;
 LIST Sem/Fruit = Sem/Act_Fruit Sem/Body_Fruit Sem/Clth-jewl_Fruit Sem/Fruit Sem/Fruit_Hum Sem/Fruit_Sport  ;
 LIST Sem/Furn = Sem/Build-room_Furn Sem/Ctain_Furn Sem/Furn Sem/Furn_Ctain-abstr Sem/Furn_Time ;
@@ -361,7 +361,7 @@ LIST Sem/State-sick = Sem/State-sick Sem/State-sick_Substnc ;
 LIST Sem/Substnc = Sem/Ani_Substnc Sem/Aniprod_Substnc Sem/Aniprod_Substnc_Wthr Sem/Drink_Plc_Substnc Sem/Food_Substnc Sem/Part_Substnc Sem/Plc_Substnc Sem/Plc_Substnc_Wthr Sem/Prod-audio_Substnc Sem/State-sick_Substnc Sem/Substnc Sem/Substnc_Wthr ;
 LIST Sem/Sur = Sem/Sur ;
 LIST Sem/Symbol = Sem/Obj_Symbol Sem/Symbol ;
-LIST Sem/Time = Sem/Act_Time Sem/Ani_Hum_Time Sem/Ani_Time Sem/Body_Group_Hum_Time Sem/Body_Time Sem/Event_Time Sem/Food_Time Sem/Furn_Time Sem/Group_Hum_Time Sem/Hum_Lang_Time Sem/Measr_Obj_Time Sem/Measr_Plc_Time Sem/Measr_Time Sem/Plant_Time_Wthr Sem/Plc_Time Sem/Plc_Time_Wthr Sem/Time Sem/Time-clock Sem/Time_Wthr  ;
+LIST Sem/Time = Sem/Act_Time Sem/Ani_Hum_Time Sem/Ani_Time Sem/Body_Group_Hum_Time Sem/Body_Time Sem/Event_Time Sem/Food_Time Sem/Food_Time Sem/Furn_Time Sem/Group_Hum_Time Sem/Hum_Lang_Time Sem/Measr_Obj_Time Sem/Measr_Plc_Time Sem/Measr_Time Sem/Plant_Time_Wthr Sem/Plc_Time Sem/Plc_Time_Wthr Sem/Time Sem/Time-clock Sem/Time_Wthr  ;
 LIST Sem/Time-clock =  Sem/Time-clock ;
 LIST Sem/Tool = Sem/Act_Tool-it Sem/Ani_Tool Sem/Body_Obj_Tool-catch Sem/Build_Tool Sem/Ctain_Tool Sem/Ctain_Tool-measr Sem/Feat-phys_Tool-write Sem/Hum_Mat_Tool Sem/Hum_Tool Sem/Hum_Tool-catch Sem/Hum_Tool-it Sem/Lang_Tool Sem/Lang_Tool-catch Sem/Mat_Tool Sem/Mat_Tool-catch Sem/Obj_Tool-music Sem/Obj_Tool-write Sem/Plant_Tool Sem/Plant_Tool-measr Sem/Plc_Tool-catch Sem/Tool Sem/Tool-catch Sem/Tool-clean Sem/Tool-it Sem/Tool-measr Sem/Tool-music Sem/Tool-write ;
 LIST Sem/Tool-catch = Sem/Body_Obj_Tool-catch Sem/Hum_Tool-catch Sem/Lang_Tool-catch Sem/Mat_Tool-catch Sem/Plc_Tool-catch Sem/Tool-catch ;
@@ -3478,8 +3478,9 @@ REMOVE Ine IF (-1 N LINK 0 ADVLCASE)(0 Prop LINK 0 Sem/Mal OR Sem/Fem OR Sem/Sur
 	## ., Elasaraj Mattan, ....       
 
 # These are not safe:    
-SELECT Nom IF (-1 HUMAN-INDIVIDUAL)(0 (Prop Nom) LINK 0 Sem/Mal OR Sem/Fem)(NEGATE 1 N);
+SELECT Nom IF (-1 HUMAN-INDIVIDUAL)(0 (Prop Nom) LINK 0 Sem/Mal OR Sem/Fem)(NEGATE 1 N)(NEGATE 0 Sem/Time OR Sem/Plc);
 	## vielljas Andreas
+	#$GRAM 
 SELECT Nom IF (-2 Nom LINK NOT *-1 Nom)(-1 (@CNP))(0 N)(NEGATE 1 N);
 	## vieljatja Andreas ja Johannes
 SELECT Nom IF (NOT *-1 Nom)(0 N)(1 (@CNP))(2 Nom)(NEGATE 3 N);    
@@ -3493,7 +3494,7 @@ SELECT Nom IF (0 N)(1 (@CNP))(2 TITLE)(3 Nom)(NEGATE 4 N);
 SELECT (Plc Gen) (0 (Prop Nom) OR Refl LINK 1 GEOGRAPHICAL-PLACE) ;
 SELECT (Plc Gen) (0 (Prop Nom) LINK 1 CC LINK 1 Gen LINK 1 GEOGRAPHICAL-PLACE) ;
 
-REMOVE Gen IF (NEGATE 0 TIME OR ROUTE)(0 N)(NEGATE 1 N OR A OR Gen OR (Pron Indef) OR Num OR Po OR CC OR COMMA OR Ger) ;
+REMOVE Gen IF (NEGATE 0 Sem/Time OR ROUTE)(0 N)(NEGATE 1 N OR A OR Gen OR (Pron Indef) OR Num OR Po OR CC OR COMMA OR Ger) ;
 	## Nåv li divna buolva.
     
 REMOVE (N Sg Gen) IF (0 (N Pl Nom) LINK NOT 0 TIME OR ROUTE LINK *-1 COPULAS BARRIER Nom OR S-BOUNDARY2 OR VERB)(1 CC OR COMMA LINK NOT 1 Gen) ;
