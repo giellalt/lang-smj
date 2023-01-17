@@ -209,9 +209,6 @@ gt_CONFIG_FILES
 ########## be processed by autoconf below here: ##########
 
 # Tag test file:
-AC_CONFIG_FILES([test/src/morphology/tag_test.sh], \
-      [chmod a+x test/src/morphology/tag_test.sh])
-
 AC_CONFIG_FILES([test/src/morphology/generate-adverb-lemmas.sh], \
       [chmod a+x test/src/morphology/generate-adverb-lemmas.sh])
 AC_CONFIG_FILES([test/src/morphology/generate-adpos-lemmas.sh], \
