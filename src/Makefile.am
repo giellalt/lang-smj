@@ -320,6 +320,7 @@ analyser-tts-gt-input.%: analyser-tts-gt-input.tmp.%          \
 # normativity and our suggested norm:
 analyser-gt-desc.%: analyser-gt-desc.tmp.% \
 					filters/remove-derivation-position-tags.% \
+					filters/remove-grammatical-tags.%         \
 					filters/remove-norm-comp-tags.%           \
 					filters/remove-use_mt-strings.%           \
 					filters/remove-DNorm-tags.% \
@@ -327,6 +328,7 @@ analyser-gt-desc.%: analyser-gt-desc.tmp.% \
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/remove-usage-tags.$*\"               \
 			.o. @\"filters/remove-derivation-position-tags.$*\" \
+			.o. @\"filters/remove-grammatical-tags.$*\"         \
 			.o. @\"filters/remove-norm-comp-tags.$*\"           \
 			.o. @\"filters/remove-DNorm-tags.$*\"               \
 			.o. @\"filters/remove-use_mt-strings.$*\"           \
@@ -339,6 +341,7 @@ analyser-gt-desc.%: analyser-gt-desc.tmp.% \
 analyser-gt-norm.%: analyser-gt-norm.tmp.%                                \
 					filters/remove-derivation-position-tags.%             \
 					filters/remove-DNorm-tags.%                           \
+					filters/remove-grammatical-tags.%                     \
 					filters/remove-illegal-derivation-strings-flagbased.% \
 					filters/remove-MinusSpell-strings.%                   \
 					filters/remove-use_mt-strings.%                       \
@@ -353,6 +356,7 @@ analyser-gt-norm.%: analyser-gt-norm.tmp.%                                \
 			    @\"filters/remove-usage-tags.$*\"                           \
 			.o. @\"filters/remove-derivation-position-tags.$*\"             \
 			.o. @\"filters/remove-DNorm-tags.$*\"                           \
+			.o. @\"filters/remove-grammatical-tags.$*\"                     \
 			.o. @\"filters/block-illegal_compound-strings.$*\"              \
 			.o. @\"filters/split-CmpN-tags.$*\"                             \
 			.o. @\"filters/insert-default_left_compounding-tags.$*\"        \
@@ -372,6 +376,7 @@ analyser-gt-norm.%: analyser-gt-norm.tmp.%                                \
 analyser-gt-norm.xfst: analyser-gt-norm.tmp.xfst \
 					filters/remove-norm-comp-tags.xfst             \
 					filters/remove-derivation-position-tags.xfst   \
+					filters/remove-grammatical-tags.xfst           \
 					filters/remove-illegal-derivation-strings.xfst \
 					filters/remove-use_mt-strings.xfst             \
 					filters/remove-DNorm-tags.xfst \
@@ -379,6 +384,7 @@ analyser-gt-norm.xfst: analyser-gt-norm.tmp.xfst \
 	$(AM_V_XFST)$(PRINTF) "read regex \
 			    @\"filters/remove-usage-tags.xfst\"                 \
 			.o. @\"filters/remove-derivation-position-tags.xfst\"   \
+			.o. @\"filters/remove-grammatical-tags.xfst\"           \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"             \
 			.o. @\"filters/remove-DNorm-tags.xfst\"                 \
 			.o. @\"filters/remove-use_mt-strings.xfst\"             \
@@ -397,6 +403,7 @@ analyser-gt-norm.xfst: analyser-gt-norm.tmp.xfst \
 # ... and also in the Oahpa analyser:
 analyser-oahpa-gt-norm.%: analyser-gt-norm.tmp.% \
 					filters/remove-derivation-position-tags.% \
+					filters/remove-grammatical-tags.%         \
 					filters/remove-norm-comp-tags.%           \
 					filters/remove-use_mt-strings.%           \
 					filters/remove-DNorm-tags.% \
@@ -404,6 +411,7 @@ analyser-oahpa-gt-norm.%: analyser-gt-norm.tmp.% \
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 			    @\"filters/remove-usage-tags.$*\"               \
 			.o. @\"filters/remove-derivation-position-tags.$*\" \
+			.o. @\"filters/remove-grammatical-tags.$*\"         \
 			.o. @\"filters/remove-norm-comp-tags.$*\"           \
 			.o. @\"filters/remove-DNorm-tags.$*\"               \
 			.o. @\"filters/remove-use_mt-strings.$*\"           \
@@ -513,9 +521,11 @@ generator-gt-norm.xfst: generator-gt-norm.tmp.xfst                \
 					 filters/remove-MinusSpell-strings.xfst       \
 					 filters/remove-use_mt-strings.xfst           \
 					 filters/make-optional-lang_hom-tags.xfst     \
+					 filters/make-optional-grammatical-tags.xfst  \
 					filters/remove-usage-tags.xfst
 	$(AM_V_XFST)$(PRINTF) "read regex \
 				@\"filters/remove-usage-tags.xfst\"               \
+			.o. @\"filters/make-optional-grammatical-tags.xfst\"  \
 			.o. @\"filters/make-optional-lang_hom-tags.xfst\"     \
 			.o. @\"filters/remove-derivation-position-tags.xfst\" \
 			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
@@ -542,6 +552,7 @@ generator-gt-norm.%: generator-gt-norm.tmp.%                   \
 					 filters/remove-DNorm-tags.%               \
 					 filters/remove-MinusSpell-strings.%       \
 					 filters/remove-use_mt-strings.%           \
+					 filters/make-optional-grammatical-tags.%  \
 					 filters/make-optional-lang_hom-tags.%     \
 					 filters/remove-illegal-derivation-strings-flagbased.% \
 					 filters/insert-default-compounding-tags.%             \
@@ -553,6 +564,7 @@ generator-gt-norm.%: generator-gt-norm.tmp.%                   \
 					filters/remove-usage-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/remove-usage-tags.$*\"               \
+			.o. @\"filters/make-optional-grammatical-tags.$*\"  \
 			.o. @\"filters/make-optional-lang_hom-tags.$*\"     \
 			.o. @\"filters/remove-derivation-position-tags.$*\" \
 			.o. @\"filters/remove-norm-comp-tags.$*\"           \
@@ -580,9 +592,11 @@ generator-gt-desc.%: generator-gt-desc.tmp.%                   \
 					 filters/remove-DNorm-tags.%               \
 					 filters/remove-use_mt-strings.%           \
 					 filters/make-optional-lang_hom-tags.%     \
+					 filters/make-optional-grammatical-tags.%  \
 					filters/remove-usage-tags.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/remove-usage-tags.$*\"               \
+			.o. @\"filters/make-optional-grammatical-tags.$*\"  \
 			.o. @\"filters/make-optional-lang_hom-tags.$*\"     \
 			.o. @\"filters/remove-derivation-position-tags.$*\" \
 			.o. @\"filters/remove-norm-comp-tags.$*\"           \
