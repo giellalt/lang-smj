@@ -4734,17 +4734,6 @@ This is still a dummy file.
 ---
 
 
-
-### Semantic tags
-
-* Rules for removing some Props which are identical to common nouns
-
-* **IfonlyVerb** selects the FMAINV reading in the cohort
-
-# Removing Err/Orth
-
-* * *
-<small>This (part of) documentation was generated from [tools/grammarcheckers/after-speller-disambiguator.cg3](https://github.com/giellalt/lang-smj/blob/main/tools/grammarcheckers/after-speller-disambiguator.cg3)</small>
 L U L E   S A A M I   G R A M M A R   C H E C K E R
 
 # DELIMITERS
