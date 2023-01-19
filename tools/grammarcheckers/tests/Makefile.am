@@ -10,6 +10,8 @@ if WANT_GRAMCHECK
 TESTS=\
 	DEV-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
 	DEV-lex-oahpasmuvvat-oahpastuvvat-PASS.yaml   \
+    DEV-msyn-attr-pred-FAIL.yaml                  \
+    DEV-msyn-attr-pred-PASS.yaml                  \
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
 	DEV-msyn-congr-mij-ma-PASS.yaml               \
 	DEV-msyn-genna-gejn-FAIL.yaml                 \
@@ -69,7 +71,6 @@ TESTS=\
     real-PrtSg3-PrsPl3.yaml                       \
 	real-gæhppat-alkke.yaml                       \
 	real-habbmim.yaml                             \
-	syn-attr-pred.yaml                            \
 	syn-correct-form-liehket.yaml                 \
 	syn-nom-nom.yaml                              \
 	syn-number_congruence-subj-verb.yaml          \
@@ -80,6 +81,7 @@ TESTS=\
 # be fixed *later*, but is not critical at the moment:
 XFAIL_TESTS=\
 	DEV-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
+    DEV-msyn-attr-pred-FAIL.yaml                  \
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
 	DEV-msyn-genna-gejn-FAIL.yaml                 \
 	DEV-msyn-gut-mij-gut-FAIL.yaml                \
@@ -121,6 +123,7 @@ XFAIL_TESTS=\
     real-PrtSg3-PrsPl3.yaml                       \
     real-gæhppat-alkke.yaml                       \
     real-habbmim.yaml                             \
+	syn-attr-pred.yaml                            \
     syn-correct-form-liehket.yaml                 \
     syn-nom-nom.yaml                              \
 	syn-number_congruence-subj-verb.yaml          \
