@@ -484,8 +484,8 @@ LEXICON BERULASJ  For words ending on -asj. Same as GÅNÅGIS but with strong es
 LEXICON BEDNAGASJ  Like BERULASJ, but for derived nouns in diminutive. No cg, no vowchange, no short Ess. Has only one dimin derivation since these words already are dimin, ie. no double dim as for GAHPER. No abessive, not totally sure about this, I think we must use postposition dagi when it's diminutive,
 
 * stiebil # Odd-syllable test examples:*
-* *bednagasj:* `bednagasj+N+Gram/Dimin+Sg+Nom`
-* *bednagattjas:* `bednagasj+N+Gram/Dimin+Sg+Ela`
+* *bednagasj:* `bednagasj+N+Sg+Nom`
+* *bednagattjas:* `bednagasj+N+Sg+Ela`
 
 LEXICON HÁVSAGUSJ  Like BEDNAGASJ, but not diminutive. No cg, no vowchange, no short Ess. Has only one dimin derivation. No abessive, not totally sure about this, I think we must use postposition dagi when it's diminutive,
 
@@ -675,14 +675,14 @@ LEXICON BÁRNEP  bárnep:bárnebu-. Comparisation of nouns. No -ahtá abesive.
 LEXICON OAPPÁSJ   Like GAHPER, but for derived nouns in diminutive, have an underived form. Doesn't get abesive -ahtá or -ahtes derivation. Oddsyll, no cg, no vowchange, no short Ess. Has only one dimin derivation since these words already are dimin, ie. not double dim as in GAHPER.
 
 * stiebil # Odd-syllable test examples:*
-* *oappásj:* `oappásj+N+Gram/Dimin+Sg+Nom`
-* *oappátjis:* `oappásj+N+Gram/Dimin+Sg+Ela`
+* *oappásj:* `oappásj+N+Sg+Nom`
+* *oappátjis:* `oappásj+N+Sg+Ela`
 
 LEXICON FIERUN   Like GAHPER, but instruments derived from verbs. Fierrot>fierun. No short essive.
 
 * stiebil # Odd-syllable test examples:*
-* *fierun:* `fierun+N+Gram/NomInstr+Sg+Nom`
-* *fierunis:* `fierun+N+Gram/NomInstr+Sg+Ela`
+* *fierun:* `fierun+N+Sg+Nom`
+* *fierunis:* `fierun+N+Sg+Ela`
 
 LEXICON GUOLLÁR  Like GAHPER, but actor derived from contracted verbs (ACTOR for evensyll verbs). Guollit>guollár. No short essive.   
 

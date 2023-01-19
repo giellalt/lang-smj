@@ -166,13 +166,13 @@ Inherent comparatives and superlatives lexica
 LEXICON OANEP   Inherent comparatives, gives comp and superl. There are two main groups of word here: Adjectives that are lexicalized in their comparative (and superlative) forms, like sisŋep, bárep. And Nouns that can be compared, like nuortap, gáttep, oarjep (some of these are compared from their noun lexicas and thus are found twice). Some entries are likely incorrect compared forms of other adjectives, like ådåp and ruvvap (more research needed).
 
 * lagáp # Even-syllable test examples:*
-* *lagáp:* `lagáp+A+Gram/Comp+Sg+Nom`
+* *lagáp:* `lagáp+A+Sg+Nom`
 * *lagámus:* `lagáp+A+Der/Superl+A+Sg+Nom`
 
 LEXICON TJAVGGÁMUS    Inherent superlatives, only gives superl. Some words are lexicalized in their superlative forms, like dájvvámus. Some are likely incorrect superlative forms, like tjábbámus (more research is needed)
 
 * dájvvámus # Even-syllable test examples:*
-* *dájvvámus:* `dájvvámus+A+Gram/Superl+Sg+Nom`
+* *dájvvámus:* `dájvvámus+A+Sg+Nom`
 
 4-syllable miscellanious stems
 
@@ -412,15 +412,15 @@ Inherent comparatives and superlatives
 LEXICON NUORTTALABBO    Inherent comparatives, gives both comp and superl. Most of the words are the compared forms of -el(a) words, like nuorttal, lullel.
 
 * guddnelabbo # Even-syllable test examples:*
-* *guddnelabbo:* `guddnelabbo+A+Gram/Comp+Sg+Nom`
+* *guddnelabbo:* `guddnelabbo+A+Sg+Nom`
 * *guddnelamos:* `guddnelabbo+A+Der/Superl+A+Sg+Nom`
-* *guddnelap:* `guddnelabbo+A+Gram/Comp+Attr`
-* *guddnelup:* `guddnelabbo+A+Gram/Comp+Attr`
+* *guddnelap:* `guddnelabbo+A+Attr`
+* *guddnelup:* `guddnelabbo+A+Attr`
 
 LEXICON GASSKALAMOS    Inherent superlatives, gives onlys superl. Words that are lexicalized in their superlative forms. 
 
 * ájtodamos # Even-syllable test examples:*
-* *ájtodamos:* `ájtodamos+A+Gram/Superl+Sg+Nom`
+* *ájtodamos:* `ájtodamos+A+Sg+Nom`
 
 ## Contracted stems
 
