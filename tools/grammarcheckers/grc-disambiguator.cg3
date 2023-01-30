@@ -3456,15 +3456,17 @@ SELECT (N Sg Nom) IF (*-1 COPULAS BARRIER NOT-AAPCLE LINK 0 Sg3 LINK -1 Ine LINK
 	## Sujna le goajvvo giedan.  
 	## Sujna le bahás vuojŋŋanis. 
      
-REMOVE (Pl Nom) IF (0 (Sg Nom) LINK 0 N OR (Pron Pers))(1 VFIN LINK 0 Sg3);  
+REMOVE (Pl Nom) IF (0 (Sg Nom) LINK 0 N OR (Pron Pers))(1 VFIN LINK 0 Sg3 LINK NEGATE 0 Pl3);  
 	## ... mav profehta Jeremia lij javllam. 
 	## Härrá lij profehta baktu javllam. 
+	#$Gram Åhpadiddje gudi lij dibddám oahppijt ságastallamav jådedit, li åtsådallam oahppe {le} ålov oahppam.
     
-REMOVE (Sg Nom) IF (NEGATE *-1 ("ja") OR COMMA BARRIER NOT-AA LINK -1 Nom)(0 (Pl Nom) LINK 0 N OR (Pron Pers))(*1 VFIN BARRIER S-BOUNDARY2 OR Nom OR CLB LINK 0 Pl3 OR Du3);    
+REMOVE (Sg Nom) IF (NEGATE *-1 ("ja") OR COMMA BARRIER NOT-AA LINK -1 Nom)(0 (Pl Nom) LINK 0 N OR (Pron Pers))(*1 VFIN BARRIER S-BOUNDARY2 OR Nom OR CLB LINK 0 Pl3 OR Du3 LINK NEGATE 0 Sg3);    
 	## Biekka garrasit huodnahis vuosstij båssun ja huonaj alvvásláhkáj vieraj.
 	## De lullet muhtem násstedåbdde Betlehemaj båhtin ja gahtjin.
 	## Guollebivdde vuojn lijga.
-
+	#$Gram Åhpadiddje gudi lij dibddám oahppijt ságastallamav jådedit, li åtsådallam oahppe {le} ålov oahppam.
+	
 SELECT Pl (0 Sg LINK 0 N OR (Pron Pers))(*1C (Pron Rel Pl) BARRIER WORD);
 	## Allit fásstudattijn hådjen vuojnnu nåv gåk vilpástalle, gudi tsusskaha fásstudi almatjij vuojnedijn. 
     
@@ -3503,8 +3505,9 @@ REMOVE Gen IF (NEGATE 0 Sem/Time OR ROUTE)(0 N)(NEGATE 1 N OR A OR Gen OR (Pron 
 REMOVE (N Sg Gen) IF (0 (N Pl Nom) LINK NOT 0 TIME OR ROUTE LINK *-1 COPULAS BARRIER Nom OR S-BOUNDARY2 OR VERB)(1 CC OR COMMA LINK NOT 1 Gen) ;
 	## Nåv li buolva, lågenanniellja buolva Abrahama rájes Davida rádjáj.
     
-REMOVE (N Sg Gen) IF (-2 Ine)(-1 COPULAS LINK 0 Pl3)(0 (N Pl Nom))(NEGATE 1 (Pl Nom));
+REMOVE (N Sg Gen) IF (-2 Ine)(-1 COPULAS LINK 0 Pl3 LINK NEGATE 0 (Sg3 SentInit))(0 (N Pl Nom))(NEGATE 1 (Pl Nom));
 	## Johannesin lidjin biktasa kamelaguolgajs. 
+	#$Gram Lasedit almulasj barggij lågov gejn {le} sámegiela máhtudahka gájbbet buorre årnigijt sámegiela åhpadusájda ja buorre årnigijt lasse- ja joarkkaåhpadusájda sámegielan.
     
 REMOVE (N Sg Gen) IF (-2 Ess)(-1 COPULAS)(0 (N Pl Nom))(NEGATE 1 (Pl Nom));
 	## .. ja bårråmussan lij rássegahpana ja miehttsemieda.    
