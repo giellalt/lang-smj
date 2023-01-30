@@ -3433,6 +3433,9 @@ REMOVE Gen IF (-1 BOS OR PUNCT OR CLB)(1 COMMA);
 SELECT (Sg Nom) IF (NEGATE *-1 Sg3 BARRIER SV-BOUNDARY2 OR Nom)(0 HUMAN)(1 (V Sg3));
 	## Fáŋŋgagoaden Johannes guláj Kristusa dagoj birra.
 	## Johannes bådij ja sån ittjij bårå.
+	
+SELECT:Gen-before-mielas (N Sg Gen) IF (0 (N Pl Nom))(1 ("miella" Sg Ela)) ;
+	##Gram {Suohkana} mielas le dákkir rádnastallam viehka ájnas. 	
 
 REMOVE (N Pl Nom) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
 REMOVE (N Sg Gen) IF (*-1 BOS OR CLB OR CS BARRIER NPNH)(0 (N Sg Nom))(1 (V Sg3)) ;
@@ -3528,7 +3531,8 @@ SELECT (N Sg Nom) IF (*-1 Rel BARRIER NPNH)(*1 V-SG3 BARRIER NOT-ADV-PCLE LINK *
 #REMOVE (N Sg Gen) IF (*-1 BOS OR CS BARRIER NPNH)(1 (V Ind Pl3) LINK NOT 0 Imprt OR ImprtII);
 	## dan dihti go profehta le náv tjállám.
 
-REMOVE (N Sg Gen) IF (*-1 BOS OR CS BARRIER (Pron Pers Du1))(0 (N Pl Nom))(*1 (V Ind Pl3)  BARRIER S-BOUNDARY2 LINK NOT 0 Imprt OR ImprtII);
+REMOVE (N Sg Gen) IF (*-1 BOS OR CS BARRIER (Pron Pers Du1))(0 (N Pl Nom))(*1 (V Ind Pl3) BARRIER S-BOUNDARY2 LINK NOT 0 Imprt OR ImprtII OR Sg3 OR Sg2);
+	#$Gram {Suohkana} mielas le dákkir rádnastallam viehka ájnas.
 
 # Oppramsing
 # - - - - - - 
@@ -4040,6 +4044,10 @@ REMOVE (V Pl3) IF (-1 (Sg Nom) LINK *-1 SV-BOUNDARY BARRIER CC LINK -1 (Sg Nom))
 SELECT (V Sg3) IF (-1 (N Pl Acc) LINK *-1 ("mij" Pron Interr Sg Nom) BARRIER NOT-ADJ);
 	## Mij dahkamusájt le dujna munnujn?	
 
+SELECT (V Sg3 SentInit)(1 (Dem Sg Nom) OR (N Sg Nom) OR (Pron Sg3 Nom) LINK NEGATE 0 Pl OR Pl3)(NEGATE *-1 (N Pl Nom) OR (Pron Pl3) OR (Pron Pl Nom) BARRIER NOT-ADV-PCLE - Ela - Ine - Po);
+	##Gram Suohkana mielas {le} dákkir rádnastallam viehka ájnas.
+
+
 # First person dual - Du1
 # -----------------------
     # Prs Du1 = Prt Pl3 "bårråt" "juhkat"
@@ -4080,8 +4088,8 @@ SELECT (V Pl3) IF (*-2 BOS OR CS BARRIER NPNH)(-1 (N Pl Nom))(0 VFIN);
 SELECT (V Pl3) IF (*-1 (Rel Pl Nom) BARRIER VFIN OR S-BOUNDARY2)(0 VFIN);
 	## Hárjjánam lij báhtjajda gudi biebbmosjokoládav ádnu.	
 
-SELECT (V Pl3) IF (*-1C (Pl Nom) OR (Pl3 Nom) BARRIER (V Pl3) OR CC OR S-BOUNDARY2) (NEGATE *0 (N Sg Nom) BARRIER S-BOUNDARY);
-    #Gram
+SELECT (V Pl3) IF (*-1C (Pl Nom) OR (Pl3 Nom) BARRIER (V Pl3) OR CC OR S-BOUNDARY2 LINK NEGATE 1 N) (NEGATE *0 (N Sg Nom) BARRIER S-BOUNDARY);
+    #Gram Suohkana mielas {le} dákkir rádnastallam viehka ájnas.
 
 SELECT Prs (0 Prt)(*-1C Prs BARRIER VFIN) ;
 SELECT Prt (0 Prt)(*-1C Prt BARRIER VFIN) ;
