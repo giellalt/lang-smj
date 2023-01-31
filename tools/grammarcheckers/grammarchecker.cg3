@@ -1684,7 +1684,7 @@ COPY:from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-i
 	
     # Should be sentence initial copula: from la to le. 
     # ----------------------------------------------------------------------
-ADD:to-sentence-init-copula (&syn-to-sentence-init-copula) TARGET ("liehket" Ind) IF (-1 BOS OR COMMA OR (";") OR (":") OR CITATION OR HYPHEN LINK NEGATE 1 SentInit) (NEGATE 0 &syn-from-sentence-init-copula) (NEGATE 0 &msyn-soajttá-le) (NEGATE 0 ("liehket" Neg)) ;
+ADD:to-sentence-init-copula (&syn-to-sentence-init-copula) TARGET ("liehket" Ind) IF (-1 BOS OR (":") OR CITATION OR HYPHEN LINK NEGATE 1 SentInit) (NEGATE 0 &syn-from-sentence-init-copula) (NEGATE 0 &msyn-soajttá-le) (NEGATE 0 ("liehket" Neg)) ;
 
 COPY:to-sentence-init-copula (SentInit &SUGGEST) EXCEPT (&syn-to-sentence-init-copula) TARGET (&syn-to-sentence-init-copula) ;
 
