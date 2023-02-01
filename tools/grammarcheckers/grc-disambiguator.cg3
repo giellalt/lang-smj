@@ -477,7 +477,11 @@ LIST ACR = ACR ;
 # ----------------
  
 LIST COMMA = "," ; 
+LIST CITATION = "«" "“" "\"" "„" "‟" "'" "‹" "‘" "‚" "‛" "❛" "❝" "❮" "〝" "〟" "»" "“" "\"" "'" "›" "’" "❜" "❞" "❯" "〞" "＂" ; 
+LIST HYPHEN = "-" ;
 LIST ¶ = ¶;
+LIST LEFT-QUOT = "«" "“" "„"  "‟" "‹" "‘" "‚" "‛" "❛" "❝" "❮" "〝" "〟"; 
+
 
 #LIST OKTA = "okta"; LIST gå = "gå" ;
 
@@ -1285,6 +1289,10 @@ SELECT:Sem/Date  Sem/Date + Nom ; #foreløpig, for MT
 SELECT Ill IF (0 ("gártjes" Ill));
 	## gárttjásij boahtet     
 
+	# Hearrá Sg vs. Pl Nom
+	# - - - - - - - - - -
+SELECT ("Hærrá" Sg Nom) IF (0 ("<Hærrá>") LINK NOT -1 BOS OR (":") OR CITATION OR HYPHEN);
+	##Gram Vuorbálasj gen vælgojt {Hærrá} le rihpam, gen miella le bæhttogisvuoda dagi!
 
 	# dåssju vs. dåssjåt
 	# - - - - - - - - - -
