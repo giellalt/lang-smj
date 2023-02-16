@@ -194,13 +194,29 @@ LIST Foc/s           = Foc/s ;
 
 LIST Der/adda = Der/adda ;
 LIST Der/ahtti = Der/ahtti ;
+LIST Der/ahtja = Der/ahtja ;
+LIST Der/ahttjá = Der/ahttjá ;
 LIST Der/alla = Der/alla ;
 LIST Der/asti = Der/asti ;
+LIST Der/asste = Der/asste ;
 LIST Der/easti = Der/easti ;
 LIST Der/d = Der/d ;
+LIST Der/dasste = Der/dasste ;
+LIST Der/dalla = Der/dalla ;
 LIST Der/eaddji = Der/eaddji ;
 LIST Der/eamoš = Der/eamoš ;
 LIST Der/amoš = Der/amoš ;
+LIST Der/ladda = Der/ladda ;
+LIST Der/stahtte = Der/stahtte ;
+LIST Der/stalla = Der/stalla ;
+LIST Der/stasste  = Der/stasste ;
+LIST Der/tj  = Der/tj ;
+LIST Der/u/a/åd  = Der/u/a/åd ;
+LIST Der/dahtte  = Der/dahtte ;
+LIST Der/duhtte = Der/duhtte ;
+LIST Der/duvva = Der/duvva ;
+LIST Der/lahtte = Der/lahtte ;
+LIST Der/lasste = Der/lasste ;
 LIST Der/NomAct = Der/NomAct ;
 LIST Der/geahtes = Der/geahtes ;
 LIST Der/gielat = Der/gielat ;
@@ -264,6 +280,7 @@ LIST Der/Superl = Der/Superl ;
 LIST Der/Pass = Der/PassL Der/PassS ;
 LIST Der/PassL = Der/PassL ;
 LIST Der/PassS = Der/PassS ;
+LIST Der/PassD = Der/PassD ;
 
 # Derivational affixes
 # --------------------
@@ -1224,6 +1241,10 @@ SET 1-2-V = SG1-V OR SG2-V OR DU1-V OR DU2-V OR PL1-V OR PL2-V ;
 
 SET V-PERS = Sg1 OR Sg2 OR Sg3 OR Du1 OR Du2 OR Du3 OR Pl1 OR Pl2 OR Pl3 ;
 
+SET V-V-DERIVATION = Der/PassD OR Der/PassL OR Der/PassS OR Der/adda OR Der/ahtja OR Der/ahttjá  OR Der/alla OR Der/asste OR Der/d OR Der/dalla OR Der/dasste OR Der/l OR Der/ladda OR Der/lahtte OR Der/lasste OR Der/st OR Der/stahtte OR Der/stalla OR Der/stasste OR Der/tj OR Der/u/a/åd OR Der/dahtte OR Der/duhtte OR Der/duvva OR Der/InchL ;
+
+#SET V-V-EVEN-AT-DERIVATION =
+
 LIST AT-BASE  = (".*at"r V) (".*at"r Ex/V) ; # even
 LIST ET-VERBS = (".*et"r V) (".*et"r V*)   ; # even
 LIST IT-VERBS = (".*it"r V) (".*it"r Ex/V) ; # contract or uneven
@@ -1231,12 +1252,12 @@ LIST UT-BASE  = (".*ut"r V) (".*ut"r Ex/V) ; # contract
 LIST ÁT-VERBS = (".*át"r V) (".*át"r V*)   ; # contract
 LIST ÅT-VERBS = (".*åt"r V) (".*åt"r V*)   ; # even, but some are also contract 
 LIST OT-VERBS = (".*ot"r V) (".*ot"r V*)   ; # even
-SET AT-VERBS = AT-BASE - Der/h - Der/d - Der/st - Der/l - Der/Caus - Der/huvva - Der/stuvva - Der/PassS - Der/adda - Der/alla - Der/easti - Der/InchL ;
+SET AT-VERBS = AT-BASE - V-V-DERIVATION ;
 SET EVEN-VERBS = ET-VERBS OR AT-BASE OR ÅT-VERBS OR OT-VERBS ;
-SET IT-CONTRACT-VERBS = IT-VERBS - Gram/3syll - (Der/h V) - (Der/l V) - Der/st - Der/d ; 
+SET IT-CONTRACT-VERBS = IT-VERBS - Gram/3syll - V-V-DERIVATION ; 
 SET IT-UNEVEN-VERBS-RAW = IT-VERBS + Gram/3syll OR (Der/h V) OR (Der/l V);
 SET IT-UNEVEN-VERBS = IT-UNEVEN-VERBS-RAW - Der/Pass - Der/alla - Der/adda ;
-SET UT-VERBS = UT-BASE - Der/h - Der/d - Der/st - Der/l - Der/Caus - Der/huvva - Der/stuvva - Der/PassS - Der/adda - Der/alla - Der/easti - Der/InchL ;
+SET UT-VERBS = UT-BASE - V-V-DERIVATION ;
 SET CONTRACTED-VERBS = IT-CONTRACT-VERBS OR ÁT-VERBS OR UT-BASE ;
 
 
