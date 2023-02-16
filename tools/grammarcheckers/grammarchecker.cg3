@@ -1243,27 +1243,39 @@ SET V-PERS = Sg1 OR Sg2 OR Sg3 OR Du1 OR Du2 OR Du3 OR Pl1 OR Pl2 OR Pl3 ;
 
 SET V-V-DERIVATION = Der/PassD OR Der/PassL OR Der/PassS OR Der/adda OR Der/ahtja OR Der/ahttjá  OR Der/alla OR Der/asste OR Der/d OR Der/dalla OR Der/dasste OR Der/l OR Der/ladda OR Der/lahtte OR Der/lasste OR Der/st OR Der/stahtte OR Der/stalla OR Der/stasste OR Der/tj OR Der/u/a/åd OR Der/dahtte OR Der/duhtte OR Der/duvva OR Der/InchL ;
 
-#SET V-V-EVEN-AT-DERIVATION =
+SET ET-DERIVATION = Der/asste OR Der/dasste OR Der/lahtte OR Der/lasste OR Der/stahtte OR Der/stasste OR Der/dahtte OR Der/duhtte OR Der/InchL ;
+SET AT-DERIVATION = Der/PassD OR Der/PassL OR Der/adda OR Der/ahtja OR Der/alla OR Der/dalla OR Der/ladda OR Der/stalla OR Der/duvva ;
+SET UT-DERIVATION = Der/PassS ;
+SET ÁT-DERIVATION = Der/ahttjá ;
+SET UNEVEN-DERIVATION = Der/d OR Der/l OR Der/st OR Der/tj OR Der/u/a/åd ;
 
 LIST AT-BASE  = (".*at"r V) (".*at"r Ex/V) ; # even
-LIST ET-VERBS = (".*et"r V) (".*et"r V*)   ; # even
-LIST IT-VERBS = (".*it"r V) (".*it"r Ex/V) ; # contract or uneven
+LIST ET-BASE = (".*et"r V) (".*et"r V*)   ; # even
+LIST OT-BASE = (".*ot"r V) (".*ot"r V*)   ; # even
+LIST ÅT-BASE = (".*åt"r V) (".*åt"r V*)   ; # even, but some are also contract 
+
 LIST UT-BASE  = (".*ut"r V) (".*ut"r Ex/V) ; # contract
-LIST ÁT-VERBS = (".*át"r V) (".*át"r V*)   ; # contract
-LIST ÅT-VERBS = (".*åt"r V) (".*åt"r V*)   ; # even, but some are also contract 
-LIST OT-VERBS = (".*ot"r V) (".*ot"r V*)   ; # even
-SET AT-VERBS = AT-BASE - V-V-DERIVATION ;
+LIST ÁT-BASE = (".*át"r V) (".*át"r V*)   ; # contract
+LIST IT-BASE = (".*it"r V) (".*it"r Ex/V) ; # contract or uneven
+
+SET AT-VERBS = AT-BASE OR AT-DERIVATION - ET-DERIVATION - UT-DERIVATION - ÁT-DERIVATION - UNEVEN-DERIVATION ;
+SET ET-VERBS = ET-BASE OR ET-DERIVATION - AT-DERIVATION - UT-DERIVATION - ÁT-DERIVATION - UNEVEN-DERIVATION  ;
+SET OT-VERBS = OT-BASE - V-V-DERIVATION ;
+SET ÅT-VERBS = ÅT-BASE - V-V-DERIVATION ; 
+
+SET ÁT-VERBS = ÁT-BASE OR ÁT-DERIVATION - ET-DERIVATION - AT-DERIVATION - UT-DERIVATION - UNEVEN-DERIVATION ; 
+SET UT-VERBS = UT-BASE OR UT-DERIVATION - AT-DERIVATION - ET-DERIVATION - ÁT-DERIVATION - UNEVEN-DERIVATION ;
+SET IT-CONTRACT-VERBS = IT-BASE - Gram/3syll - V-V-DERIVATION ; 
+
+SET IT-UNEVEN-VERBS = IT-BASE + Gram/3syll OR UNEVEN-DERIVATION ;
+
 SET EVEN-VERBS = ET-VERBS OR AT-BASE OR ÅT-VERBS OR OT-VERBS ;
-SET IT-CONTRACT-VERBS = IT-VERBS - Gram/3syll - V-V-DERIVATION ; 
-SET IT-UNEVEN-VERBS-RAW = IT-VERBS + Gram/3syll OR (Der/h V) OR (Der/l V);
-SET IT-UNEVEN-VERBS = IT-UNEVEN-VERBS-RAW - Der/Pass - Der/alla - Der/adda ;
-SET UT-VERBS = UT-BASE - V-V-DERIVATION ;
-SET CONTRACTED-VERBS = IT-CONTRACT-VERBS OR ÁT-VERBS OR UT-BASE ;
+SET CONTRACTED-VERBS = IT-CONTRACT-VERBS OR ÁT-VERBS OR UT-VERBS ;
 
 
 #LIST UT-VERBS = (".*ut"r V) (".*ut"r Ex/V) ;
 
-SET Inf-Pl-V = ("liehket") OR IT-VERBS + Gram/3syll ;
+SET Inf-Pl-V = ("liehket") OR IT-UNEVEN-VERBS ;
 
 
 
@@ -2305,8 +2317,6 @@ COPY:msyn-congr-mij-ma (Sg &SUGGEST) EXCEPT (Pl &msyn-congr-ma-mij) AFTER Rel TA
 
      # Verb congr with relative pron
      # -----------------------------
-LIST OT-VERBS = (".*ot"r V) (".*ot"r V*) ;
-
 
 ADD:msyn-verb-cong-rel (&msyn-verb-cong-rel) TARGET (V Sg3) IF (*-1 (Rel Nom) + (&msyn-congr-mij-ma) BARRIER NOT-ADV-PCLE - Ill - Ela - Ine) (NEGATE 0 OT-VERBS + Prs)  ;
 
