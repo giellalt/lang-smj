@@ -2101,20 +2101,22 @@ COPY:syn-pred-attr (Attr &SUGGEST) EXCEPT (Sg Nom &msyn-pred-attr) OR (Pl Nom &m
 #ADD:syn-attr-pred (&msyn-attr-pred) TARGET (A Attr) IF (NEGATE 0 (A Nom)) (1 EOS) ; 
     ## ássje l {gássjelis}
     
+SET ATTR-ELA-A = ("<.*s>"r) + (Sg Ela) ;
+    
     # liehket before
     
-ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 ("liehket" Sg1) OR ("liehket" Sg2) OR ("liehket" Sg3) BARRIER NOT-ADV) (NEGATE 0 (A Nom) OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR) OR (A Sg Nom) OR A + Sem/Hum BARRIER NOT-Attr-Abe) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe) (NEGATE 0 (A Nom)) ;
+ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 ("liehket" Sg1) OR ("liehket" Sg2) OR ("liehket" Sg3) BARRIER NOT-ADV) (NEGATE 0 (A Nom) OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR) OR (A Sg Nom) OR A + Sem/Hum BARRIER NOT-Attr-Abe - ATTR-ELA-A) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe - ATTR-ELA-A) (NEGATE 0 (A Nom)) ;
     ## ássje l {gássjelis} munji
     
-ADD:syn-attr-pred-pl (&msyn-attr-pred-pl) TARGET (A Attr) IF (*-1 ("liehket" Du1) OR ("liehket" Du2) OR ("liehket" Du3) OR ("liehket" Pl1) OR ("liehket" Pl2) OR ("liehket" Pl3) BARRIER NOT-ADV) (NEGATE 0 (A Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR)  OR (A Sg Nom) OR A + Sem/Hum BARRIER NOT-Attr-Abe) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe) ;
+ADD:syn-attr-pred-pl (&msyn-attr-pred-pl) TARGET (A Attr) IF (*-1 ("liehket" Du1) OR ("liehket" Du2) OR ("liehket" Du3) OR ("liehket" Pl1) OR ("liehket" Pl2) OR ("liehket" Pl3) BARRIER NOT-ADV) (NEGATE 0 (A Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A - ATTR-ELA-A) (NEGATE *1 N + CASE OR (Cmp/SplitR)  OR (A Sg Nom) OR A + Sem/Hum BARRIER NOT-Attr-Abe - ATTR-ELA-A) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe - ATTR-ELA-A) ;
  
     ## ássje li {gássjelis} munji
 
-ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 ("liehket" Inf) BARRIER NOT-ADV LINK -1 (V Ind Sg1) OR (V Ind Sg2) OR (V Ind Sg2)) (NEGATE 0 (A Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR) OR (A Sg Nom) BARRIER NOT-Attr-Abe) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe) ;
+ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 ("liehket" Inf) BARRIER NOT-ADV LINK -1 (V Ind Sg1) OR (V Ind Sg2) OR (V Ind Sg2)) (NEGATE 0 (A Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR) OR (A Sg Nom) BARRIER NOT-Attr-Abe - ATTR-ELA-A) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe - ATTR-ELA-A) ;
 
     ## Dån viertti liehket {duosstelis} uddni.  
 
-ADD:syn-attr-pred-pl (&msyn-attr-pred-pl) TARGET (A Attr) IF (*-1 ("liehket" Inf) BARRIER NOT-ADV LINK -1 (V Ind Du1) OR (V Ind Du2) OR (V Ind Du3) OR (V Ind Pl1) OR (V Ind Pl2) OR (V Ind Pl3)) (NEGATE 0 (A Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR)  OR (A Sg Nom) BARRIER NOT-Attr-Abe) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe) ;
+ADD:syn-attr-pred-pl (&msyn-attr-pred-pl) TARGET (A Attr) IF (*-1 ("liehket" Inf) BARRIER NOT-ADV LINK -1 (V Ind Du1) OR (V Ind Du2) OR (V Ind Du3) OR (V Ind Pl1) OR (V Ind Pl2) OR (V Ind Pl3)) (NEGATE 0 (A Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR)  OR (A Sg Nom) BARRIER NOT-Attr-Abe - ATTR-ELA-A) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe - ATTR-ELA-A) ;
 
     ## rádna vierttiji liehket {váges} nubbe nuppijn jus rádnastallam galggá bissut
     
