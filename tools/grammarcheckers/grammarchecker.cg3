@@ -18,7 +18,7 @@
 # ==================================================================== #
 # ====================================================================
 
-#  Sámi language technology 2000-2022, UiT The arctic University of Norway #
+#  Sámi language technology 2000-2023, UiT The arctic University of Norway #
 
 # ---------------------- #
 #   Development setup:   #
@@ -2099,22 +2099,26 @@ COPY:syn-pred-attr (Attr &SUGGEST) EXCEPT (Sg Nom &msyn-pred-attr) OR (Pl Nom &m
 #ADD:syn-attr-pred (&msyn-attr-pred) TARGET (A Attr) IF (NEGATE 0 (A Nom)) (1 EOS) ; 
     ## ássje l {gássjelis}
     
-ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 ("liehket" Sg1) OR ("liehket" Sg2) OR ("liehket" Sg3) BARRIER NOT-ADV) (NEGATE 0 (A Nom) OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR) OR (A Sg Nom) BARRIER NOT-Attr) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr) (NEGATE 0 (A Nom)) ;
+    # liehket before
+    
+ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 ("liehket" Sg1) OR ("liehket" Sg2) OR ("liehket" Sg3) BARRIER NOT-ADV) (NEGATE 0 (A Nom) OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR) OR (A Sg Nom) OR A + Sem/Hum BARRIER NOT-Attr) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr) (NEGATE 0 (A Nom)) ;
     ## ássje l {gássjelis} munji
     
-ADD:syn-attr-pred-pl (&msyn-attr-pred-pl) TARGET (A Attr) IF (*-1 ("liehket" Du1) OR ("liehket" Du2) OR ("liehket" Du3) OR ("liehket" Pl1) OR ("liehket" Pl2) OR ("liehket" Pl3) BARRIER NOT-ADV) (NEGATE 0 (A Nom) OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR)  OR (A Sg Nom) BARRIER NOT-Attr) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr) ;
+ADD:syn-attr-pred-pl (&msyn-attr-pred-pl) TARGET (A Attr) IF (*-1 ("liehket" Du1) OR ("liehket" Du2) OR ("liehket" Du3) OR ("liehket" Pl1) OR ("liehket" Pl2) OR ("liehket" Pl3) BARRIER NOT-ADV) (NEGATE 0 (A Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR)  OR (A Sg Nom) OR A + Sem/Hum BARRIER NOT-Attr) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr) ;
  
     ## ássje li {gássjelis} munji
 
-ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 ("liehket" Inf) BARRIER NOT-ADV LINK -1 (V Ind Sg1) OR (V Ind Sg2) OR (V Ind Sg2)) (NEGATE 0 (A Nom) OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR) OR (A Sg Nom) BARRIER NOT-Attr) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr) ;
+ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 ("liehket" Inf) BARRIER NOT-ADV LINK -1 (V Ind Sg1) OR (V Ind Sg2) OR (V Ind Sg2)) (NEGATE 0 (A Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR) OR (A Sg Nom) BARRIER NOT-Attr) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr) ;
 
     ## Dån viertti liehket {duosstelis} uddni.  
 
-ADD:syn-attr-pred-pl (&msyn-attr-pred-pl) TARGET (A Attr) IF (*-1 ("liehket" Inf) BARRIER NOT-ADV LINK -1 (V Ind Du1) OR (V Ind Du2) OR (V Ind Du3) OR (V Ind Pl1) OR (V Ind Pl2) OR (V Ind Pl3)) (NEGATE 0 (A Nom) OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR)  OR (A Sg Nom) BARRIER NOT-Attr) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr) ;
+ADD:syn-attr-pred-pl (&msyn-attr-pred-pl) TARGET (A Attr) IF (*-1 ("liehket" Inf) BARRIER NOT-ADV LINK -1 (V Ind Du1) OR (V Ind Du2) OR (V Ind Du3) OR (V Ind Pl1) OR (V Ind Pl2) OR (V Ind Pl3)) (NEGATE 0 (A Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR)  OR (A Sg Nom) BARRIER NOT-Attr) (NEGATE 1 CC LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr) ;
 
     ## rádna vierttiji liehket {váges} nubbe nuppijn jus rádnastallam galggá bissut
     
-ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (1 ("liehket" Sg3)) (NEGATE 0 (A Sg Nom) OR <AttrPred> OR ONLY-ATTR-A) ;      
+    # liehket after
+    
+ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (1 ("liehket" Sg3)) (NEGATE 0 (A Sg Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A) ;      
     ## Soajttá {gássjelis} la buohtastahttet tsuovkajt duojna dájna nammadiddjijn
 
 COPY:syn-attr-pred-sg (Sg Nom &SUGGEST) EXCEPT (Attr &msyn-attr-pred) TARGET (&msyn-attr-pred-sg) ;
