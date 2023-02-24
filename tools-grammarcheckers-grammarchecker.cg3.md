@@ -62,6 +62,7 @@ Romertall
 ### Tags for morphosyntactic properties
 
 Nom
+Abe
 Acc
 Gen
 Ine
