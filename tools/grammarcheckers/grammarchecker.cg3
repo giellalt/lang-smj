@@ -2201,12 +2201,13 @@ COPY:msyn-mij-gut ("guhti" &SUGGEST) EXCEPT ("mij" &msyn-mij-gut) TARGET (&msyn-
      # relative use gut>mij
     # ----------------------
 
-ADD:msyn-gut-mij (&msyn-gut-mij) TARGET ("guhti") IF (-1 N LINK NOT 0 Sem/AnimateNotOrg) (NEGATE -1 ("avtak") OR ("akta" Foc/Pos-k) OR (Pron Pers) OR (Pron Indef) + Sem/Hum OR Coll) (NEGATE *-1 (N Nom) + Sem/Hum OR (Dem Nom) BARRIER (*) - (N Ine) - (Pron Ine) LINK *-1 ("liehket" Ind Sg3) OR ("liehket" Ind Sg3) BARRIER NOT-NPMOD LINK -1 ("guhti")) (NEGATE -1 (N Ine) LINK (-1 (N Ill) OR (Pron Ill))) ;  
+ADD:msyn-gut-mij (&msyn-gut-mij) TARGET ("guhti") IF (-1 N LINK NOT 0 Sem/AnimateNotOrg LINK NEGATE -1 Sem/Hum + Gen) (NEGATE -1 ("avtak") OR ("akta" Foc/Pos-k) OR (Pron Pers) OR (Pron Indef) + Sem/Hum OR Coll) (NEGATE *-1 (N Nom) + Sem/Hum OR (Dem Nom) BARRIER (*) - (N Ine) - (Pron Ine) LINK *-1 ("liehket" Ind Sg3) OR ("liehket" Ind Sg3) BARRIER NOT-NPMOD LINK -1 ("guhti")) (NEGATE -1 (N Ine) LINK (-1 (N Ill) OR (Pron Ill))) ;  
 
     #$ Gut la dån?
     #$ Ulmusj lagábut oahpástuvvá ja diehtá gut juohkkahasj la, javllá sån."
     #$ Eira, gut la dat (ulmusj) Sámedikkeráden gænna l åvdåsvásstádus.
     #$ Giellamåvtåstuhttemstipænnda oahppijda joarkkaskåvlån gudi sámegielåhpadusáv válljiji.
+    #$ hæjoj dilev buoredit, ja sijáj dilev gudi e gallev biebmojs ja rájnna tjátjes oattjo, mánáj dilev gudi e skåvlån oattjo vádtset, ja fuolkij dilev {gænna} ælla årromsaje ja bargo.
 
 ADD:msyn-gut-mij (&msyn-gut-mij) TARGET ("guhti") IF (*-1 (N Nom) - Sem/Hum OR (Dem Nom) BARRIER (*) - (N Ine) - (Pron Ine) LINK *-1 ("liehket" Ind Sg3) OR ("liehket" Ind Sg3) BARRIER NOT-NPMOD LINK -1 ("mij" Nom)) ;
     ## Mij la dat {gænna} l guhka siejbbe, ja la jårbbåt gå biejvve ja tjáhppat gå ednam?
@@ -2246,7 +2247,7 @@ COPY:msyn-pass-active (TV &SUGGEST) EXCEPT (IV Ex/V Ex/TV Der/PassL  &msyn-pass-
     # ===================================================================================================
     # ===================================================================================================
     
-SET NOT-BEFORE-REL = (*) - Inf - VFIN - COMMA - Po ;    
+SET NOT-BEFORE-REL = (*) - Inf - VFIN - COMMA - Po - ("(") ;    
 
 ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NOT 0 (N Sg) LINK NEGATE -1 VFIN OR Inf LINK -1 (N Sg) OR (Pron Sg))(NEGATE *-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK -1 ("akta") OR ("1" Num))(NEGATE -1 Po LINK -1 (Gen Pl) LINK -1 (N Sg))(NEGATE -1 (V <TH-FS-Qpron>))(NEGATE *1 <TH-Nom-Any> + Sg3 BARRIER NOT-ADV-PCLE LINK NOT 1 (Pron Sg3) OR (N Nom Sg))  ;
 
