@@ -2159,10 +2159,10 @@ REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NEGATE 1 N)(NEGATE 0 ATTR-A-S);
 #REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NEGATE 1 A LINK *1 N BARRIER NOT-ADJ);
 	#$GRAM
 
-REMOVE Attr IF (*1 VFIN BARRIER N)(NEGATE 1 N OR Attr OR A)(NEGATE 0 ATTR-A-S);
+REMOVE Attr IF (*1 VFIN BARRIER N)(NEGATE 1 N OR Attr OR A)(NEGATE 0 ATTR-A-S)(NEGATE 0 Attr LINK *-1 ("liehket") BARRIER S-BOUNDARY);
 	## Josef lij rievtesmielak, ittjij sidá suv hehpaduttet.
 	#$ Manen val de binnep ja {binnep} sámegielaga sjaddap?
-	#GRAM
+	#$GRAM Álmmugam oadtju ráfálasj rijkan årrot, viesojn gånnå li {jasska} ja jaskugit oadtju vuojŋastit.
 
 REMOVE Adv IF (-1 (Dem Com))(0 (A Attr))(1 (N Com));
 	## dajna gjielgga rájájn.
@@ -2494,12 +2494,14 @@ REMOVE (A Attr) IF (0 A)(1 COMMA)(NEGATE 2 A OR PrsPrc)(NEGATE 2 CC LINK 1 Attr)
 	## Jos dat ii leat vejolaš, de mii fertet mannat.
 	#$GRAM Morálla subttsasin de máhttá liehket rádna vierttiji liehket {váges} nubbe nuppijn jus rádnastallam galggá bissut.
 
-REMOVE (A Attr) IF (0 A)(NEGATE 0 Indef)(NEGATE 1 A OR N OR Num OR Actio OR PrfPrc OR PrsPrc OR CC OR COMMA)(NEGATE 0 ATTR-A-S); 
+REMOVE (A Attr) IF (0 A)(NEGATE 0 Indef)(NEGATE 1 A OR N OR Num OR Actio OR PrfPrc OR PrsPrc OR CC OR COMMA)(NEGATE 0 ATTR-A-S)(NEGATE 0 Attr LINK *-1 ("liehket") BARRIER S-BOUNDARY); 
 	## Dat galgá čuovvoluvvot nu guhkás go vejolaš.
+	#$GRAM
 
-REMOVE (A Attr) IF (0 A-CASE OR Adv)(1 CC)(NEGATE *2 N BARRIER NP-BOUNDARY)(NEGATE 0 ATTR-A-S);
+REMOVE (A Attr) IF (0 A-CASE OR Adv)(1 CC)(NEGATE *2 N BARRIER NP-BOUNDARY)(NEGATE 0 ATTR-A-S)(NEGATE 0 Attr LINK *-1 ("liehket") BARRIER S-BOUNDARY);
 	## ...berre mearridanváldi leat nu viiddis go vejolaš ja nu
 	## čadni go vejolaš.
+	#$GRAM Dijáj siegen galggá siján hukso- ja oahppambirás mij le {jasska} ja mij sæmmi båttå hásstal sijájt ådå lávkijda ja væráldav guoradallat.
     ## Gram
     
 REMOVE (A Gen) IF (*-1 COPULAS BARRIER NOT-ADV-PCLE)(1 Inf); 
@@ -2573,9 +2575,10 @@ SELECT Adv IF (-2C Adv)(-1 CC)(0 A);
 	## Maŋŋá soađi lea sámi álbmot rahčan ollu vai dat adnojuvvošii
 	## seammá dássásažžan, sihke duođalaččat ja rievttálaččat.
 
-SELECT Adv IF (0 A)(1 CC)(2C Adv);
+SELECT Adv IF (0 A)(1 CC)(2C Adv)(NEGATE 0 Attr LINK *-1 ("liehket") BARRIER S-BOUNDARY);
 	## ...dan muddui go dat lea geavatlaččat ja ruđalaččat vejolaš.
-
+	#$GRAM Dijáj siegen galggá siján hukso- ja oahppambirás mij le {jasska} ja mij sæmmi båttå hásstal sijájt ådå lávkijda ja væráldav guoradallat.
+	
 # End of adjective copy from sme
 
 SELECT Adv (0 ("man"))(1 A);	
