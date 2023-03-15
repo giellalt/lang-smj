@@ -2107,16 +2107,18 @@ COPY:syn-pred-attr (Attr &SUGGEST) EXCEPT (Sg Nom &msyn-pred-attr) OR (Pl Nom &m
 #ADD:syn-attr-pred (&msyn-attr-pred) TARGET (A Attr) IF (NEGATE 0 (A Nom)) (1 EOS) ; 
     ## ássje l {gássjelis}
     
-SET ATTR-ELA-A = ("<.*s>"r) + (Sg Ela) ;
+SET ATTR-ELA-A = ("<.*s>"r) + (Sg Ela) OR ("smidá" A Sg Ela) ;
     
     # liehket before
     
-ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 ("liehket" Sg1) OR ("liehket" Sg2) OR ("liehket" Sg3) BARRIER NOT-ADV) (NEGATE 0 (A Nom) OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR) OR (A Nom) OR A + Sem/Hum BARRIER NOT-Attr-Abe - ATTR-ELA-A) (NEGATE 1 CC OR COMMA LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe - ATTR-ELA-A - COMMA - CC) ;
+ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 ("liehket" Sg1) OR ("liehket" Sg2) OR ("liehket" Sg3) BARRIER NOT-ADV) (NEGATE 0 (A Nom) OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR) OR (A Nom) OR A + Sem/Hum BARRIER NOT-Attr-Abe - ATTR-ELA-A - (A Attr)) (NEGATE *1 CC OR COMMA BARRIER (*) - (A Attr) LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe - ATTR-ELA-A - COMMA - CC) ;
     ## ássje l {gássjelis} munji
+    #$ Ja suv muohto lij degu biejvve ja suv juolge degu dållåtjuolda, ja giedanis lij {unna} rabás girjjegoabrásj.
     
-ADD:syn-attr-pred-pl (&msyn-attr-pred-pl) TARGET (A Attr) IF (*-1 ("liehket" Du1) OR ("liehket" Du2) OR ("liehket" Du3) OR ("liehket" Pl1) OR ("liehket" Pl2) OR ("liehket" Pl3) BARRIER NOT-ADV) (NEGATE 0 (A Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A - ATTR-ELA-A) (NEGATE *1 N + CASE OR (Cmp/SplitR)  OR (A Nom) OR A + Sem/Hum BARRIER NOT-Attr-Abe - ATTR-ELA-A) (NEGATE *1 CC OR COMMA BARRIER (*) - (A Attr) LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe - ATTR-ELA-A - COMMA - CC) ;
+ADD:syn-attr-pred-pl (&msyn-attr-pred-pl) TARGET (A Attr) IF (*-1 ("liehket" Du1) OR ("liehket" Du2) OR ("liehket" Du3) OR ("liehket" Pl1) OR ("liehket" Pl2) OR ("liehket" Pl3) BARRIER NOT-ADV) (NEGATE 0 (A Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A - ATTR-ELA-A) (NEGATE *1 N + CASE OR (Cmp/SplitR)  OR (A Sg) + CASE OR A + Sem/Hum BARRIER NOT-Attr-Abe - ATTR-ELA-A - (A Attr)) (NEGATE *1 CC OR COMMA BARRIER (*) - (A Attr) - ATTR-ELA-A LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe - ATTR-ELA-A - COMMA - CC) ;
  
     ## ássje li {gássjelis} munji
+    #$ Dunji lip edna baháv dahkam.
 
 ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 ("liehket" Inf) BARRIER NOT-ADV LINK -1 (V Ind Sg1) OR (V Ind Sg2) OR (V Ind Sg2)) (NEGATE 0 (A Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A) (NEGATE 1 CC OR COMMA LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe - ATTR-ELA-A - COMMA - CC) (NEGATE *1 CC OR COMMA BARRIER (*) - (A Attr) LINK *1 N BARRIER NOT-Attr-Abe - ATTR-ELA-A) ;
 
