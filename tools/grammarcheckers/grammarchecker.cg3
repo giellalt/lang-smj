@@ -1708,18 +1708,23 @@ COPY:from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-in
 
 	# la
 	# --
-COPY:from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 ("ja") OR ("de" Adv) OR ("de" CC) OR ("gå") OR ("valla")) (-1 (Sg Nom) OR (Sg3 Nom) OR ("ij" Neg Ind Prs Sg3));
+COPY:from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 ("ja") OR ("de" Adv) OR ("de" CC) OR ("gå") OR ("valla")) (-1 (Sg Nom) OR (Sg3 Nom) OR ("ij" Neg Ind Prs Sg3)) ;
 
     ## Ieŋŋgil le buorre > la
 	## Árvustallam viertti dáhpáduvvat dajna elementajn manna le sæmmi lágásj dåbddomærkka ja mij {le} lagámus, ij dåhkki dåbddomerkajt árvustallat ietjá elementajn jus gávnnu elemænnta manna le sæmmi lágásj dåbddomerka lagábun. 
 	#$ Avtaárvvusasj sosiáldievnastus sáme álmmugij man vuodo {le} sámegiella ja kultuvrra.
 	
 COPY:from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 (V Prt) OR (V Prs)) (NEGATE -1 N OR A) ; 
-
     ## dagu sálmmagirjje suláj 1890-rájes majt sån jáhkká {le} ájnna mij Divtasvuonan vilák gávnnu.
+
+COPY:from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (1 COMMA OR EOS) ;
+
+    ## Valljudagáv oadtju juohkkahasj gänna {le}, valla gänna ij le, sujsta váldeduvvá aj dat mij sujna le.
+
 
 COPY:from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 ("gå") OR ("valla")) (1 (Sg Nom) OR (Sg3 Nom));
 	## Valla lav gåjt gärggam niellja bargoj, buorre l dat, de iv dárbaha barggat gå {le} loahpe.
+	
 COPY:from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 ("gå") OR ("valla") LINK *-1 (V Sg3) BARRIER S-BOUNDARY - ("ja") LINK NOT 0 Pl3) ;
 	## Dårjav vuostak åhtså ja gå {le} ållidam dago åsijt jali ållåsit de dårja máksusav åhtså.
 
@@ -2400,7 +2405,6 @@ ADD:msyn-congr-gænna-gejn (&msyn-congr-gænna-gejn) TARGET (Rel Ine Sg) IF (-1 
 ADD:msyn-congr-gænna-gejn (&msyn-congr-gænna-gejn) TARGET (Rel Ine Sg) IF (-1 (Pl Acc) LINK -1 Inf OR Ind) ;
     ## Fágalasj máhtudahka l ájnas ja sávvi virggáj biedjat ulmutjijt gænna le sáme giella- ja kultuvrramáhtudahka
     ## Mij dárbahip njunnjutjit gænna li visjåvnå, dåmadimfábmo, gudi ållåsit ájádalli ja gájk åvdemusát boahtteájgev ájadalli.
-
     
 COPY:msyn-congr-gænna-gejn (Pl &SUGGEST) EXCEPT (Sg &msyn-congr-gænna-gejn Area/NO Area/SE) AFTER Rel TARGET (&msyn-congr-gænna-gejn) ;
 
