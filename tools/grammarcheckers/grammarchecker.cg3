@@ -1689,7 +1689,8 @@ COPY:use-ellipsis ("…" &SUGGEST) EXCEPT ("...") TARGET (&ellipsis) ;
 
 	# Should not be sentence initial copula: from le, to la or l or li
     # ----------------------------------------------------------------------
-ADD:from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentInit IF (NEGATE -1 BOS OR COMMA OR (";") OR (":") OR CITATION OR HYPHEN) (NEGATE 0 &syn-number_congruence-subj-verb) (NEGATE 0 &msyn-verb-cong-rel) (NEGATE 0 &msyn-soajttá-le) ;
+ADD:from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentInit IF (NEGATE -1 BOS OR COMMA OR (";") OR (":") OR CITATION OR HYPHEN) (NEGATE 0 &syn-number_congruence-subj-verb) (NEGATE 0 &msyn-verb-cong-rel) (NEGATE 0 &msyn-soajttá-le)(NEGATE 1 ("soajttet" V Ind Prs Sg3)) ;
+	#$ Dajn gielajn gånnå le riek friddja báhkogárges {le} soajttá vehik gássjel mierredit mij la vuodobáhkogárges.
 
 	# l
 	# --
@@ -1807,7 +1808,7 @@ COPY:msyn-sme_bastard_neg2 (Ind ConNeg &SUGGEST) EXCEPT (PrfPrc &msyn-sme_bastar
     # ===================================================================================================
     # ===================================================================================================
 
-ADD:msyn-soajttá-adv (&msyn-soajttá-adv) TARGET ("soajttet" V IV Ind Prs Sg3) IF (NEGATE *1 Inf OR PrfPrc BARRIER NOT-NPMODADVPCLE - (A Sg Nom) - Acc - (N Nom) - (N Com) - (N Ill) - (N Ela) - (N Ine)) (NEGATE *1 ( "liehket" V IV Ind Prs Sg3) BARRIER NOT-ADV-PCLE) ;
+ADD:msyn-soajttá-adv (&msyn-soajttá-adv) TARGET ("soajttet" V IV Ind Prs Sg3) IF (NEGATE *1 Inf OR PrfPrc BARRIER NOT-NPMODADVPCLE - (A Sg Nom) - Acc - (N Nom) - (N Com) - (N Ill) - (N Ela) - (N Ine)) (NEGATE *1 ( "liehket" V IV Ind Prs Sg3) BARRIER NOT-ADV-PCLE)(NEGATE *1 (A Sg Nom) BARRIER (*) - GRADE-ADV LINK 1 CS OR EOS) ;
 	## Ja gut diehtá; Udnásj sáme siebrudagáj gierragijs soajttá muhtem oasse boahtte ájge sámeviessoma vuodo luorkijdit.
 	## - {Soajttá} fáhtsa nali sæjvvu, javllá Ánni ja giedav gadtsabiddjáj gálggi. 
 	## {Soajttá} soames áddjá lev. 
@@ -1818,8 +1819,8 @@ ADD:msyn-soajttá-adv (&msyn-soajttá-adv) TARGET ("soajttet" V IV Ind Prs Sg3) 
 	## Rijdo li agev årrum sámij gaskan, ja {soajttá} mij dagu romantiserip sáme iellemav?! 
 	## {Soajttá} dát aj la ilá gæhppat?
 	## {Soajttá} Stáhtta (diedon stuorra S-ajn) galgaj bálkkit sámegiella åhpadiddjev, mij galggá mannat dåbij gaskan, duola degu Ájluovtan, ja hasodit same æjgádijt sámástittjat? 
-#$ Ietjá bájkijn soajttá sámeslávgga jurra de vil vuojnnut.
-
+	#$ Ietjá bájkijn soajttá sámeslávgga jurra de vil vuojnnut.
+	#$ Sámegielak varresvuodabargge jali dålkkå {soajttá} dárbulasj jus galggá dáv riektáv ållidit sidjij gejn la sáme kultuvrra- ja gielladuogásj.
 
 COPY:msyn-soajttá-adv ("ihkap" Adv &SUGGEST ) EXCEPT ("soajttet" V IV Ind Prs Sg3 &msyn-soajttá-adv) TARGET (&msyn-soajttá-adv) ;
 
@@ -1829,16 +1830,17 @@ COPY:msyn-soajttá-adv ("ihkap" Adv &SUGGEST ) EXCEPT ("soajttet" V IV Ind Prs S
     #$ Hæhkkat giehpesvihke jali dahpaldahka mij gájbbet oksygenviehkev soajttá værámus dilijn sjaddat.
     #$ Muhttijn soajttá aj gássjel mánájda vuojnnet aktijvuodav sivá ja vájkkudusá gaskan gå li iehtjádij siegen.
 
-    # Not le/li when soajttá
-    #----------------------
+    # EARLY RULE: Not le/li when soajttá
+    #-----------------------------------
+    # Before real-Pl3-Sg3
 
-    #le before soajttá
+    # le before soajttá
 
 ADD:msyn-soajttá-le (&msyn-soajttá-le) TARGET ("liehket" V IV Ind Prs Sg3) OR ("liehket" V IV Ind Prs Pl3 ) IF (1 ("soajttet" V IV Ind Prs Sg3)) (*2 Inf OR PrfPrc BARRIER NOT-ADV-PCLE - ( A Sg Nom) - (N Ine) - (N Ill) - ( N Ela)) ;
 
     ## Dajn gielajn gånnå le riek friddja báhkogárges le soajttá vehik gássjel mierredit mij le vuodobáhkogárges.
 
-    #le after soajttá
+    # le after soajttá
 ADD:msyn-soajttá-le (&msyn-soajttá-le) TARGET ("liehket" V IV Ind Prs Sg3) OR ("liehket" V IV Ind Prs Pl3 ) IF (-1 ("soajttet" V IV Ind Prs Sg3)) (*1 Inf OR PrfPrc BARRIER NOT-ADV-PCLE - ( A Sg Nom) - (N Ine) - (N Ill) - ( N Ela)) ;
 
     ## Jus illa válggakårtåv oadtjum, de soajttá la påstan láhppum, jali dån la sirddemav maŋŋela biehtsemáno 30. biejve diededam.
@@ -1868,10 +1870,9 @@ COPY:msyn-soajttá-le &DELETE EXCEPT ("liehket" V V IV Ind Prs Sg3 &msyn-soajtt�
     ## Soajttet not used as adverb
     # ---------------------------
     
-ADD:msyn-soajttá-not-adv (&msyn-soajttá-not-adv) TARGET VFIN + Prt OR VFIN + Prs IF (*-1 ("soajttet") - (Prs Sg3) BARRIER S-BOUNDARY OR CS OR CC OR VFIN OR Inf );
-
-
+ADD:msyn-soajttá-not-adv (&msyn-soajttá-not-adv) TARGET VFIN + Prt OR VFIN + Prs IF (*-1 ("soajttet") - (Prs Sg3) BARRIER S-BOUNDARY OR CS OR CC OR VFIN OR Inf OR Rel);
     ## Ållessjattuga ja bargge mánáv iejvviji ienemus oassáj mánáv iesjguhtiga arenan ja aktijvuodan, ja danen soajtti mánáv vehi ietjáláhkáj dåbddi.
+    #$ De såjtij nágin rájadus sárnnediddje gænna {lij} alla giella tjuorvvot vantsas ja javllat: Gijtto gájkka buorrevuoda åvdås!
 
 COPY:msyn-soajttá-not-adv (Inf &SUGGEST) EXCEPT (Ind Prs Sg1) OR (Ind Prs Sg2) OR (Ind Prs Sg3) OR (Ind Prs Du1) OR (Ind Prs Du2) OR (Ind Prs Du3) OR (Ind Prs Pl1) OR (Ind Prs Pl2) OR (Ind Prs Pl3) OR (Ind Prt Sg1) OR (Ind Prt Sg2) OR (Ind Prt Sg3) OR (Ind Prt Du1) OR (Ind Prt Du2) OR (Ind Prt Du3) OR (Ind Prt Pl1) OR (Ind Prt Pl2) OR (Ind Prt Pl3) TARGET (&msyn-soajttá-not-adv) ;
 
@@ -2303,11 +2304,12 @@ ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (-1 Ela LINK -
 ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (-1 Ela LINK -1 (Gen Sg) LINK -1 (Num Arab)) ;
     ## Sij li 3 åhpadiddje Ájluovtas gut vuolggi. 
 
-ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (1 (Ind V Pl1) OR (Ind V Pl2) OR (Ind V Pl3) OR (Ind V Du1) OR (Ind V Du2) OR (Ind V Du3) LINK NEGATE 0 SentInit) ;
+ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (1 (Ind V Pl1) OR (Ind V Pl2) OR (Ind V Pl3) OR (Ind V Du1) OR (Ind V Du2) OR (Ind V Du3) LINK NEGATE 0 SentInit OR &DELETE) ;
     ## Mij lip 10 nuora Sáminuorras (sámenuora organisasjåvnnå) guhti vuolggep.
     ## Stáhtta ja Sámedigge galggi gæhttjalit semadit mandáhta birra, ja gut galggi tjielggidusáv tjadádit .
     ## Oahppe {guhti} e gæhttjalimijt mierredimbæjvváj tjadáda.
     #$ Aktan oajvvadusájn sihtap oanegis tevstav {mij} oajvvadusá hábbmimav tjielggi.
+    #$ Gárdij hábme, {mij} li soajttá anedum guhkep ájggegávdajn dålen, vuosedi åvddålijguovlluj ja geldulasj aktijvuodajda gåddebivddema ja ællosujto gaskan.
 
 ADD:msyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (-1 (N Pl Ela) OR (N Pl Ill)) (NEGATE -2 Inf) (NEGATE -1 (N Pl Ela) LINK -1 ("akta"))(NEGATE *1 <TH-Nom-Any> + Sg3 BARRIER NOT-ADV-PCLE LINK NOT 1 (Pron Sg3) OR (N Nom Sg)) ;
 
@@ -2483,11 +2485,11 @@ COPY:real-ActioGen-PrtPl1 (Ind Prt Pl1 &SUGGEST) EXCEPT (Actio Gen) TARGET (&rea
     
 SET PLURAL-QUANTIFIERS = ("moadda" Nom) OR ("moattes" Nom) OR (Num Sg Nom) - ("akta") ;
 
-ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-UNEVEN-VERBS OR ("liehket")  IF (0 (Prs Pl3)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) - PLURAL-QUANTIFIERS BARRIER NOT-ADV-PCLE LINK NOT 0 (Pl Nom) LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg) OR (Nom Pl))  (NEGATE *1 (Pron Nom Pl3) OR (N Nom Pl) BARRIER S-BOUNDARY)(NEGATE 0 (Prs Sg3))(NEGATE -1 PrfPrc LINK *-1 (N Pl Nom) OR (Pers Pl3 Nom) BARRIER NOT-ADV-PCLE) ;
-
+ADD:real-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-UNEVEN-VERBS OR ("liehket")  IF (0 (Prs Pl3)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) - PLURAL-QUANTIFIERS BARRIER NOT-ADV-PCLE LINK NOT 0 (Pl Nom) LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg) OR (Nom Pl))  (NEGATE *1 (Pron Nom Pl3) OR (N Nom Pl) BARRIER S-BOUNDARY)(NEGATE 0 (Prs Sg3) OR &DELETE)(NEGATE -1 PrfPrc LINK *-1 (N Pl Nom) OR (Pers Pl3 Nom) BARRIER NOT-ADV-PCLE) ;
     ## Suv mielas sån li ilá materalistisk.
     ## Mij juo diehtep Hamsun nasistajt bælosti nuppát værálda doaron.
     ## Jus sámegiella li ienep vuojnnuj boahtet duola dagu mediagåvån, de jáhkáv sámegiela stáhtus li dalága lassánit. #NEW Doajmmá, valla lej dát sluogas vuohke?
+    #$ Gárdij hábme, mij {li} soajttá anedum guhkep ájggegávdajn dålen, vuosedi åvddålijguovlluj ja geldulasj aktijvuodajda gåddebivddema ja ællosujto gaskan.
 
 
     #$ Suv mielas li skuvla ja girku ilá garrasat.
