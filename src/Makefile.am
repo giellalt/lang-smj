@@ -644,6 +644,84 @@ generator-gramcheck-gt-nor%.hfst: generator-gramcheck-gt-nor%.tmp.hfst \
 	save stack $@\n\
 	quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
 
+# processing of AREA fst's - only Foma and Hfst because of twosided flag-diacritics:
+define area_fsts
+analyser-gt-norm_%.$(1): analyser-gt-norm_%.tmp.$(1)                         \
+					filters/remove-derivation-position-tags.$(1)             \
+					filters/remove-DNorm-tags.$(1)                           \
+					filters/remove-grammatical-tags.$(1)                     \
+					filters/remove-illegal-derivation-strings-flagbased.$(1) \
+					filters/remove-MinusSpell-strings.$(1)                   \
+					filters/remove-use_mt-strings.$(1)                       \
+					filters/insert-default-compounding-tags.$(1)             \
+					filters/insert-default_left_compounding-tags.$(1)        \
+					filters/block-illegal_compound-strings.$(1)              \
+					filters/split-CmpN-tags.$(1)                             \
+					filters/convert_to_flags-CmpNP-tags.$(1)                 \
+					filters/split-CmpNP-tags.$(1) \
+					filters/remove-usage-tags.$(1)
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+			    @\"filters/remove-usage-tags.$(1)\"                           \
+			.o. @\"filters/remove-derivation-position-tags.$(1)\"             \
+			.o. @\"filters/remove-DNorm-tags.$(1)\"                           \
+			.o. @\"filters/remove-grammatical-tags.$(1)\"                     \
+			.o. @\"filters/block-illegal_compound-strings.$(1)\"              \
+			.o. @\"filters/split-CmpN-tags.$(1)\"                             \
+			.o. @\"filters/insert-default_left_compounding-tags.$(1)\"        \
+			.o. @\"filters/insert-default-compounding-tags.$(1)\"             \
+			.o. @\"filters/remove-illegal-derivation-strings-flagbased.$(1)\" \
+			.o. @\"filters/convert_to_flags-CmpNP-tags.$(1)\"                 \
+			.o. @\"filters/split-CmpNP-tags.$(1)\"                            \
+			.o. @\"filters/remove-MinusSpell-strings.$(1)\"                   \
+			.o. @\"filters/remove-use_mt-strings.$(1)\"                       \
+			.o. @\"$$<\"                                                      \
+			;\n\
+		 twosided flag-diacritics\n\
+		 $$(INVERT_XFST)$$(INVERT_FOMA)\
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+
+generator-gt-norm_%.$(1): generator-gt-norm_%.tmp.$(1) \
+					 filters/remove-derivation-position-tags.$(1) \
+					 filters/remove-norm-comp-tags.$(1)           \
+					 filters/remove-DNorm-tags.$(1)               \
+					 filters/remove-MinusSpell-strings.$(1)       \
+					 filters/remove-use_mt-strings.$(1)           \
+					 filters/make-optional-grammatical-tags.$(1)  \
+					 filters/make-optional-lang_hom-tags.$(1)     \
+					 filters/remove-illegal-derivation-strings-flagbased.$(1) \
+					 filters/insert-default-compounding-tags.$(1)             \
+					 filters/insert-default_left_compounding-tags.$(1)        \
+					 filters/block-illegal_compound-strings.$(1)              \
+					 filters/split-CmpN-tags.$(1)                             \
+					 filters/convert_to_flags-CmpNP-tags.$(1)                 \
+					 filters/split-CmpNP-tags.$(1)                            \
+					filters/remove-usage-tags.$(1)
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/remove-usage-tags.$(1)\"               \
+			.o. @\"filters/make-optional-grammatical-tags.$(1)\"  \
+			.o. @\"filters/make-optional-lang_hom-tags.$(1)\"     \
+			.o. @\"filters/remove-derivation-position-tags.$(1)\" \
+			.o. @\"filters/remove-norm-comp-tags.$(1)\"           \
+			.o. @\"filters/remove-DNorm-tags.$(1)\"               \
+			.o. @\"filters/block-illegal_compound-strings.$(1)\"              \
+			.o. @\"filters/split-CmpN-tags.$(1)\"                             \
+			.o. @\"filters/insert-default_left_compounding-tags.$(1)\"        \
+			.o. @\"filters/insert-default-compounding-tags.$(1)\"             \
+			.o. @\"filters/remove-illegal-derivation-strings-flagbased.$(1)\" \
+			.o. @\"filters/convert_to_flags-CmpNP-tags.$(1)\"                 \
+			.o. @\"filters/split-CmpNP-tags.$(1)\"                            \
+			.o. @\"filters/remove-MinusSpell-strings.$(1)\"                   \
+			.o. @\"filters/remove-use_mt-strings.$(1)\"                       \
+			.o. @\"$$<\"                                              \
+			;\n\
+		 twosided flag-diacritics\n\
+		 $$(INVERT_XFST)$$(INVERT_FOMA)\
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+endef
+$(foreach fst,hfst foma,$(eval $(call area_fsts,$(fst))))
+
 # Include the scripts file in the distro to ensure we can convert the smi
 # propernouns file:
 EXTRA_DIST=scripts/smi-smj-conversion.pl
