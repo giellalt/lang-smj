@@ -2786,6 +2786,7 @@ SELECT (N Pl Nom) IF (NEGATE *-1 (Pl Nom) BARRIER S-BOUNDARY2)(NOT 0 CC OR Po)(N
 	#$GRAM Jus buohtastahttep dán {nuorttasáme} Ådå Testamentajn de le danna 11, 4 % OV ja 88,6 % VO.
 
 SELECT (N Pl Nom) IF (NEGATE *-1 (Pl Nom) BARRIER S-BOUNDARY2)(NOT 0 CC OR Po)(NEGATE 0 Gen LINK 1 Po)(*-1 (Ind Pl3) BARRIER NP-BOUNDARY OR (Pl Nom) OR COMMA LINK NEGATE 0 Sg3) (NEGATE 0 Pron)(NEGATE *1 N BARRIER (*) - Attr);
+	##GRAM: Dille, mij guosská åhpadiddjijda, la buorránam, valla vájlluji {åhpadiddje} gænna la dagu ieŋŋilsgiella fáhkan, javllá Skjelnes.
 
 
 # ====================== #
@@ -3567,6 +3568,13 @@ SELECT (N Sg Nom) IF (*-1 Rel BARRIER NPNH)(*1 V-SG3 BARRIER NOT-ADV-PCLE LINK *
 
 REMOVE (N Sg Gen) IF (*-1 BOS OR CS BARRIER (Pron Pers Du1))(0 (N Pl Nom))(*1 (V Ind Pl3) BARRIER S-BOUNDARY2 LINK NOT 0 Imprt OR ImprtII OR Sg3 OR Sg2);
 	#$Gram {Suohkana} mielas le dákkir rádnastallam viehka ájnas.
+	
+# N Sg Ill = N Pl Com
+# ------------------- 
+
+SELECT (N Pl Com) IF (-1 (<.*-Com-.*>r) LINK NOT 0 (<.*-Ill-.*>r))(NEGATE *1 V + (<.*-Ill-.*>r) BARRIER NOT-ADV-PCLE);
+
+	##GRAM Divtavuona suohkana báhtariddjijkonsulænnta Birgit Trondsen ja birásterapevtta Laila Adolfsen sihtaba aktavuodav ulmutjij gænna li goade lájggitjit Gásluovtan.
 
 # Oppramsing
 # - - - - - - 
