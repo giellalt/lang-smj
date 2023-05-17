@@ -78,6 +78,10 @@
     </suggest>
   </pipeline>
 
+  <!-- This one is meant for developer use directly, via the modes/ shell script. It is
+       NOT meant for use in automated processes; in such cases use @GLANG@gram above.
+       Reason: it points to source files to avoid unnecessary recompilation during work,
+       which at the same time renders the path invalid when called from e.g. an archive. -->
   <pipeline name="@GLANG@gram-dev"
             language="@GLANG2@"
             type="Grammar error, dev (source) version">
