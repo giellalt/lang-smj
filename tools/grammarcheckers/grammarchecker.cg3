@@ -1694,9 +1694,10 @@ ADD:from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentInit I
 
 	# l
 	# --
-COPY:from-sentence-init-copula (Clt &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Prs Sg3 &syn-from-sentence-init-copula) IF (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 ("ja") OR ("de" Adv) OR ("de" CC) OR ("jali") OR (V Prs) OR (V Prt)) (NEGATE -1 (N Pl Nom) LINK NOT 0 (N Sg Nom)) ;
+COPY:from-sentence-init-copula (Clt &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Prs Sg3 &syn-from-sentence-init-copula) IF (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 ("ja") OR ("de" Adv) OR ("de" CC) OR ("jali") OR (V Prs) OR (V Prt)) (NEGATE -1 (N Pl Nom) LINK NOT 0 (N Sg Nom)) (NEGATE -1 ("guhti") LINK -1 ("mån" Pl1 Gen) LINK -1 ("áhttje" Sg Nom));
     ## Áddjá {le} vuoras > l
 	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
+	#$ Áhttje mijá guhti {le} almen
 
 	# li
 	# --
@@ -1721,12 +1722,15 @@ COPY:from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-in
 
     ## Valljudagáv oadtju juohkkahasj gänna {le}, valla gänna ij le, sujsta váldeduvvá aj dat mij sujna le.
 
-
 COPY:from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 ("gå") OR ("valla")) (1 (Sg Nom) OR (Sg3 Nom));
 	## Valla lav gåjt gärggam niellja bargoj, buorre l dat, de iv dárbaha barggat gå {le} loahpe.
 	
 COPY:from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 ("gå") OR ("valla") LINK *-1 (V Sg3) BARRIER S-BOUNDARY - ("ja") LINK NOT 0 Pl3) ;
 	## Dårjav vuostak åhtså ja gå {le} ållidam dago åsijt jali ållåsit de dårja máksusav åhtså.
+
+COPY:from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 ("guhti") LINK -1 ("mån" Pl1 Gen) LINK -1 ("áhttje" Sg Nom)) ;
+
+    ## Áhttje mijá guhti {le} almen
 
 COPY:from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula Area/NO Area/SE) TARGET (Sg1 &syn-from-sentence-init-copula) OR (Sg2 &syn-from-sentence-init-copula) OR (Prt Sg3 &syn-from-sentence-init-copula) OR (Du1 &syn-from-sentence-init-copula) OR (Du2 &syn-from-sentence-init-copula) OR (Du3 &syn-from-sentence-init-copula) OR (Pl1 &syn-from-sentence-init-copula) OR (Pl2 &syn-from-sentence-init-copula) ; 
 
@@ -1761,8 +1765,9 @@ ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" 
     
     ## Tjuottjodum la, Vuona stáhtta {la} ásaduvvam guovte álmmuga ednamij nali – dáttja ja sábmelattja. DNW LINDA Sg2 ij ane clt. Disamb viertti fiksiduvvat ja kanskje válldet ierit Sg2 dánna.
         
-COPY:msyn-l-not-la (Sg3 Clt &SUGGEST) EXCEPT (Sg2 SentInit &msyn-l-not-la) OR (Sg3 SentInit &msyn-l-not-la) OR (Sg3 &msyn-l-not-la) OR (Sg2 &msyn-l-not-la) TARGET (&msyn-l-not-la) ;
+COPY:msyn-l-not-la (Sg3 Clt &SUGGEST) EXCEPT (Sg2 SentInit &msyn-l-not-la) OR (Sg3 SentInit &msyn-l-not-la) OR (Sg3 &msyn-l-not-la) OR (Sg2 &msyn-l-not-la) TARGET (&msyn-l-not-la) (NEGATE -1 ("guhti") LINK -1 ("mån" Pl1 Gen) LINK -1 ("áhttje" Sg Nom)) ;
 	## Linda la buorre.
+	## Áhttje mijá guhti {le/la} almen
 
     #$ 8. kapihttalin tjielggiduvvá nammadusá oajvvadus ådå organiserimij giellaguovloj ja suohkankategoriajda mij juo {la} åvddån biejaduvvam oasserapportan. DNW LINDA
 
@@ -2257,7 +2262,7 @@ COPY:msyn-pass-active (TV &SUGGEST) EXCEPT (IV Ex/V Ex/TV Der/PassL  &msyn-pass-
     
 SET NOT-BEFORE-REL = (*) - Inf - VFIN - COMMA - Po - ("(") ;    
 
-ADD:xmsyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NOT 0 (N Sg) LINK NEGATE -1 VFIN OR Inf LINK -1 (N Sg) OR (Pron Sg))(NEGATE *-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK -1 ("akta") OR ("1" Num))(NEGATE -1 Po LINK -1 (Gen Pl) LINK -1 (N Sg))(NEGATE -1 (V <TH-FS-Qpron>))(NEGATE *1 <TH-Nom-Any> + Sg3 BARRIER NOT-ADV-PCLE LINK NOT 1 (Pron Sg3) OR (N Nom Sg))  ;
+ADD:xmsyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NOT 0 (N Sg) LINK NEGATE -1 VFIN OR Inf LINK -1 (N Sg) OR (Pron Sg))(NEGATE *-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK -1 ("akta") OR ("1" Num))(NEGATE -1 Po LINK -1 (Gen Pl) LINK -1 (N Sg))(NEGATE -1 (V <TH-FS-Qpron>))(NEGATE *1 <TH-Nom-Any> + Sg3 BARRIER NOT-ADV-PCLE LINK NOT 1 (Pron Sg3) OR (N Nom Sg)) (NEGATE 0 ("guhti") LINK -1 ("mån" Pl1 Gen) LINK -1 ("áhttje" Sg Nom)) ;
 
     ## Valla mij gut lijma Vuonas vuolggám ejma davdiede.
     ## Da gut ásadin æjvvalimev, lidjin dudálattja.
@@ -2284,7 +2289,7 @@ ADD:xmsyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Pl) O
     #$ Aktisasjbarggo Jielleváre ja Divtasvuona  suohkanij gaskan le konkrehta aktisasjbarggo suohkanij gaskan mij buoragit hiehpá nuorttaguovllovuorodibmáj.
     #$ Aktisasjbarggo Jielleváre ja Divtasvuona  suohkanij gaskan le konkrehta aktisasjbarggo suohkanij gaskan {mij} buoragit hiehpá nuorttaguovllovuorodibmáj.
     #$ Ådåsamos teorija {mij} tjielggi generatijva grammatihkav le Minimalissta prográmma (Ieŋŋilsgiellaj Minimalist program ).
-    
+    #$ Áhttje mijá {guhti} le almen    
 
 
     ## Galggi aj åvddånbuktet ájggeguovddelis ássjijt {mij} guosská vuorrasij iellemdilláj ja álkkádussaj. 
@@ -2445,7 +2450,6 @@ ADD:msyn-congr-iesj-ietja (&msyn-congr-iesj-ietja) TARGET ("iesj" Pron Refl Sg N
 
 COPY:msyn-congr-iesj-ietja (Pl &SUGGEST) EXCEPT (Sg &msyn-congr-iesj-ietja) AFTER Refl TARGET (&msyn-congr-iesj-ietja) ;
 
-ADD:msyn-congr-ietjas-ietjasa (&msyn-congr-ietjas-ietjasa) TARGET ("iesj" Pron Refl PxSg3) OR ("iesj" Pron Refl PxSg2) OR ("iesj" Pron Refl PxSg1) IF (-1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3)) (NEGATE 1 (Pron Indef) ) ; 
 ADD:msyn-congr-ietjas-ietjasa (&msyn-congr-ietjas-ietjasa) TARGET ("iesj" Pron Refl PxSg3) OR ("iesj" Pron Refl PxSg2) OR ("iesj" Pron Refl PxSg1) IF (-1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3)) (NEGATE 1 (Pron Indef) ) (NEGATE -1 (V Prs Sg3) LINK -1 (Sg Nom)) ; 
 
 COPY:msyn-congr-iesj-ietja (PxPl3 &SUGGEST) EXCEPT (PxSg3 &msyn-congr-ietjas-ietjasa) TARGET (&msyn-congr-ietjas-ietjasa) IF (-1 (V Pl3)) ;    
@@ -2456,7 +2460,6 @@ COPY:msyn-congr-iesj-ietja (PxPl2 &SUGGEST) EXCEPT (PxSg2 &msyn-congr-ietjas-iet
     ## Suohkanij ietjas dåjmaj baktu
     ## Vuorrasa ma årru sierra vuorrasijhuvson jali idjadi {ietjas} årudagán adni riektáv ságastit ietjas giellaj.
     ## Sámedigge le juo juollodam moadda miljåvnå gielladåjmajda, valla ulmutja e åhpa sámegielav {ietjas} årrombájken. DNW LINDA, "ulmutja" ilá guhkken ierit.
-
 
     #$ Tom-Ivar Bern giehttu {ietjas} siebre ja Státtá birra.
 
