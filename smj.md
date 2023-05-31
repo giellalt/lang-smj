@@ -3489,7 +3489,6 @@ process, and resolve them as they appear!
 * **+Pron** = Pronouns
 * **+CS** = Subjunction
 * **+CC** = Conjunction
-* **+Adp** = Adposition
 * **+Po** = Postposition
 * **+Pr** = Preposition
 * **+Interj** = Interjection
