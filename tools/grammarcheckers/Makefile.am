@@ -28,11 +28,16 @@ LOCAL_GC_ZIP_FILES=after-speller-disambiguator.bin \
 
 #### BEGIN: Local build targets: ####
 
+if HAVE_VISLCG_FILTER
+grammarchecker-release.bin: grammarchecker.cg3
+	$(AM_V_CGCOMP)"$(VISLCG3)" --grammar $< --grammar-bin $@ --grammar-only --nrules-v "^X"
+else
 grammarchecker-release.cg3: $(srcdir)/grammarchecker.cg3 \
 							$(GIELLA_CORE)/scripts/gc-release.awk
 	$(AM_V_GEN)$(GAWK) -f $(GIELLA_CORE)/scripts/gc-release.awk $< > $@
 
 CLEANFILES=grammarchecker-release.cg3
+endif
 
 # Copy the standard disambiguator file as the grc version, but without
 # protecting the speller suggestions. This one is applied after the regular
