@@ -1720,8 +1720,9 @@ COPY:syn-from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentenc
 
     ## Valljudagáv oadtju juohkkahasj gänna {le}, valla gänna ij le, sujsta váldeduvvá aj dat mij sujna le.
 
-COPY:syn-from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 ("gå") OR ("valla")) (1 (Sg Nom) OR (Sg3 Nom));
+COPY:syn-from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 ("gå") OR ("valla") OR ("åvddåla")) (1 (Sg Nom) OR (Sg3 Nom) OR (PrfPrc));
 	## Valla lav gåjt gärggam niellja bargoj, buorre l dat, de iv dárbaha barggat gå {le} loahpe.
+	## Gájkka mij åvddåla {le} tjáleduvvam
 	
 COPY:syn-from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 ("gå") OR ("valla") LINK *-1 (V Sg3) BARRIER S-BOUNDARY - ("ja") LINK NOT 0 Pl3) ;
 	## Dårjav vuostak åhtså ja gå {le} ållidam dago åsijt jali ållåsit de dårja máksusav åhtså.
