@@ -892,6 +892,8 @@ LEXICON SATELIHTTA_CMP_INFL  Recent loanwords on -ihtta, with long and short com
 
 LEXICON APOTIEHKKA_CMP_INFL  Recent loanwords on -iehkka in NOR, -æhkka in SWE. -ehkka as sub. With long and short compound-form on -k. See comments about the -ie/-e dialtags in ALFABIEHTTA.
 
+old "apotehkka" (long e not allowed in grad III, even though it's in dictionaries it's wrong)
+
 * kartotiehkka # Even-syllable test examples:*
 * *kartotähkka:* `kartotiehkka+N+Sg+Nom`
 * *kartotehkas:* `kartotiehkka+N+Sg+Ela`
