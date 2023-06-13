@@ -440,9 +440,9 @@ LEXICON C_ILL_AJ_BADASS  Badly or wrongly assimilated words. Last letter in cons
 
 LEXICON A_CMP_INFL   Sub-forms. Lexicon for giving sub-variation conjugation by simply adding an -a to the norwegian/swedish word. No cg. Like "alkohola" and "agronoma". These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-LEXICON GAHPER_ERR/ORTH  Like GAHPER, but without nominative and essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag. 
+LEXICON ERR/ORTH_GAHPER  Like GAHPER, but without nominative and essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag. bålstår nom is not here, but bålstårav since it should be bålssårav.
 
-LEXICON NOADE_ERR/ORTH  Like NOADE, but without nominative, illative an essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag.
+LEXICON ERR/ORTH_NOADE  Like NOADE, but without nominative, illative an essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag.
 
 ###  Unassimilated loanwords
 
