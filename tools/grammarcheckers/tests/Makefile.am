@@ -81,7 +81,7 @@ TESTS=\
 # be fixed *later*, but is not critical at the moment:
 XFAIL_TESTS=\
 	DEV-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
-    DEV-msyn-attr-pred-FAIL.yaml                  \
+	DEV-msyn-attr-pred-FAIL.yaml                  \
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
 	DEV-msyn-genna-gejn-FAIL.yaml                 \
 	DEV-msyn-gut-mij-gut-FAIL.yaml                \
@@ -98,37 +98,37 @@ XFAIL_TESTS=\
 	DEV-syn-number_congruence-subj-verb-FAIL.yaml \
 	DEV-syn-pred-attr-FAIL.yaml                   \
 	format-missing-comma.yaml                     \
-    lex-oahpasmuvvat-oahpastuvvat.yaml            \
-    msyn-IV-with-object.yaml                      \
-    msyn-IV-with-object.yaml                      \
-    msyn-acc-nom.yaml                             \
-    msyn-congr-mij-ma.yaml                        \
-    msyn-congr.yaml                               \
-    msyn-genna-gejn.yaml                          \
-    msyn-gut-mij-gut.yaml                         \
-    msyn-iesj-ietja.yaml                          \
-    msyn-liba-li.yaml                             \
-    msyn-liehket-congr-condsg2-condpl3.yaml       \
-    msyn-liehket-congr-condsg2-condsg3.yaml       \
-    msyn-lulujin.yaml                             \
-    msyn-nom-gen-PP.yaml                          \
-    msyn-numeral-attr.yaml                        \
-    msyn-oadjot-kausative.yaml                    \
-    msyn-pass-active.yaml                         \
-    msyn-sme_bastard_neg1-2.yaml                  \
-    msyn-soajtta.yaml                             \
-    real-NegSg3-NegSg2.yaml                       \
-    real-NegSg2-NegSg3.yaml                       \
-    real-PrsPl3-PrtSg3.yaml                       \
-    real-PrtSg3-PrsPl3.yaml                       \
-    real-gæhppat-alkke.yaml                       \
-    real-habbmim.yaml                             \
+	lex-oahpasmuvvat-oahpastuvvat.yaml            \
+	msyn-IV-with-object.yaml                      \
+	msyn-IV-with-object.yaml                      \
+	msyn-acc-nom.yaml                             \
+	msyn-congr-mij-ma.yaml                        \
+	msyn-congr.yaml                               \
+	msyn-genna-gejn.yaml                          \
+	msyn-gut-mij-gut.yaml                         \
+	msyn-iesj-ietja.yaml                          \
+	msyn-liba-li.yaml                             \
+	msyn-liehket-congr-condsg2-condpl3.yaml       \
+	msyn-liehket-congr-condsg2-condsg3.yaml       \
+	msyn-lulujin.yaml                             \
+	msyn-nom-gen-PP.yaml                          \
+	msyn-numeral-attr.yaml                        \
+	msyn-oadjot-kausative.yaml                    \
+	msyn-pass-active.yaml                         \
+	msyn-sme_bastard_neg1-2.yaml                  \
+	msyn-soajtta.yaml                             \
+	real-NegSg3-NegSg2.yaml                       \
+	real-NegSg2-NegSg3.yaml                       \
+	real-PrsPl3-PrtSg3.yaml                       \
+	real-PrtSg3-PrsPl3.yaml                       \
+	real-gæhppat-alkke.yaml                       \
+	real-habbmim.yaml                             \
 	syn-attr-pred.yaml                            \
-    syn-correct-form-liehket.yaml                 \
-    syn-nom-nom.yaml                              \
+	syn-correct-form-liehket.yaml                 \
+	syn-nom-nom.yaml                              \
 	syn-number_congruence-subj-verb.yaml          \
-    syn-pred-attr.yaml                            \
-    syn-wo-neg-before-subj.yaml                   \
+	syn-pred-attr.yaml                            \
+	syn-wo-neg-before-subj.yaml                   \
 	FAIL: DEV-msyn-attr-pred-PASS.yaml            \
 	FAIL: DEV-msyn-genna-gejn-PASS.yaml           \
 	FAIL: DEV-msyn-soajtta-PASS.yaml              \
