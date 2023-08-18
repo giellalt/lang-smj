@@ -2075,7 +2075,7 @@ LIST ATTR-PRED-A = ("dádjadahtes") ("ájnas") ("nanos") ; # jus lea goallosátn
 LIST ONLY-ATTR-A = ("ájnna") ("ájggeguovddelis") ("njuolgga") ("sáme") ; # adjectives that do not have a nominative form
       
 ADD:xsyn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF 
-(NEGATE 0 Attr OR (V Sg3) OR ONLY-ATTR-A OR <AttrPred>) 
+(NEGATE 0 Attr OR (V Sg3) OR ONLY-ATTR-A OR <AttrPred>) (NEGATE 0 Sem/Hum + (Pl Nom) LINK *0 (V Pl3) OR (V Pl1) OR (V Pl2))
 (*1 N + CASE OR A + CASE BARRIER (*) - (A Attr))
 (NEGATE *-1 COPULAS BARRIER NOT-ADV-PCLE LINK *2 Inf OR Ine OR Ill OR Adv OR Po BARRIER NOT-NPMODADV - Acc - (A Sg Nom) - CASE) (NEGATE 1 (N Nom) OR (Pron Nom) LINK 1 ("liehket" Ind))
 (NEGATE -1 (N Nom) OR (Pron Nom) LINK *-1 COPULAS BARRIER NOT-NPMODADV - (Pl Nom))
@@ -2158,7 +2158,7 @@ COPY:syn-attr-pred-pl (Pl Nom &SUGGEST) EXCEPT (Attr &msyn-attr-pred) TARGET (&m
 
     # relative use, mij>gut
 
-ADD:xmsyn-mij-gut (&msyn-mij-gut) TARGET ("mij") IF (*-1 (N Coll) OR Der/NomAg OR Gram/NomAg OR (Sem/Hum) OR (Sem/Mal) OR (Sem/Fem) OR (Sem/Sur) OR (Pron Pers) OR (Pron Indef) + Sem/Hum BARRIER NOT-ADV-PCLE LINK NOT 0 (Err/Orth PxSg1) LINK NEGATE -1 ("/") LINK -1 Dem)(NEGATE -1 ("/") OR CC LINK -1 (Pron Rel))(NEGATE -1 ("iesj" Sg Nom)) (NEGATE 1 <TH-Nom-Any> + Sg3 OR <TH-Nom-Any> + Pl3)  ; #OR (Pron Dem)
+ADD:xmsyn-mij-gut (&msyn-mij-gut) TARGET ("mij") IF (*-1 (N Coll) OR Der/NomAg OR Gram/NomAg OR (Sem/Hum) - Sem/Org OR (Sem/Mal) OR (Sem/Fem) OR (Sem/Sur) OR (Pron Pers) OR (Pron Indef) + Sem/Hum BARRIER NOT-ADV-PCLE LINK NOT 0 (Err/Orth PxSg1) LINK NEGATE -1 ("/") LINK -1 Dem)(NEGATE -1 ("/") OR CC LINK -1 (Pron Rel))(NEGATE -1 ("iesj" Sg Nom)) (NEGATE 1 <TH-Nom-Any> + Sg3 OR <TH-Nom-Any> + Pl3)  ; #OR (Pron Dem)
 #- ("nubbe") - ("moattes") - ("juoga") - ("gájkka" Sg) - ("gájkka" Attr)
 
     ## Ja gåktu de manáj dáj guoktásijn {ma} galggin dunnuv viedtjat? 
