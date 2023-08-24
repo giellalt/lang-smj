@@ -8,28 +8,16 @@ if WANT_GRAMCHECK
 
 # List here (space separated) all yaml files to be run as part of make check:
 TESTS=\
-	DEV-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
-	DEV-lex-oahpasmuvvat-oahpastuvvat-PASS.yaml   \
-    DEV-msyn-attr-pred-FAIL.yaml                  \
-    DEV-msyn-attr-pred-PASS.yaml                  \
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
 	DEV-msyn-congr-mij-ma-PASS.yaml               \
-	DEV-msyn-genna-gejn-FAIL.yaml                 \
-	DEV-msyn-genna-gejn-PASS.yaml                 \
 	DEV-msyn-gut-mij-gut-FAIL.yaml                \
 	DEV-msyn-gut-mij-gut-PASS.yaml                \
-	DEV-msyn-iesj-ietja-FAIL.yaml                 \
-	DEV-msyn-iesj-ietja-PASS.yaml                 \
 	DEV-msyn-nom-gen-PP-FAIL.yaml                 \
 	DEV-msyn-nom-gen-PP-PASS.yaml                 \
 	DEV-msyn-numeral-attr-FAIL.yaml               \
 	DEV-msyn-numeral-attr-PASS.yaml               \
 	DEV-msyn-sme_bastard_neg1-2-FAIL.yaml         \
 	DEV-msyn-sme_bastard_neg1-2-PASS.yaml         \
-	DEV-msyn-soajtta-FAIL.yaml                    \
-	DEV-msyn-soajtta-PASS.yaml                    \
-	DEV-real-habbmim-FAIL.yaml                    \
-	DEV-real-habbmim-PASS.yaml                    \
 	DEV-real-NegSg2-NegSg3-FAIL.yaml              \
 	DEV-real-NegSg2-NegSg3-PASS.yaml              \
 	DEV-real-NegSg3-NegSg2-FAIL.yaml              \
@@ -38,12 +26,24 @@ TESTS=\
 	DEV-real-PrsPl3-PrtSg3-PASS.yaml              \
 	DEV-real-PrtSg3-PrsPl3-FAIL.yaml              \
 	DEV-real-PrtSg3-PrsPl3-PASS.yaml              \
-	DEV-syn-correct-form-liehket-FAIL.yaml        \
-	DEV-syn-correct-form-liehket-PASS.yaml        \
+	DEV-real-habbmim-FAIL.yaml                    \
+	DEV-real-habbmim-PASS.yaml                    \
 	DEV-syn-number_congruence-subj-verb-FAIL.yaml \
 	DEV-syn-number_congruence-subj-verb-PASS.yaml \
 	DEV-syn-pred-attr-FAIL.yaml                   \
 	DEV-syn-pred-attr-PASS.yaml                   \
+	REL-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
+	REL-lex-oahpasmuvvat-oahpastuvvat-PASS.yaml   \
+	REL-msyn-attr-pred-FAIL.yaml                  \
+	REL-msyn-attr-pred-PASS.yaml                  \
+	REL-msyn-genna-gejn-FAIL.yaml                 \
+	REL-msyn-genna-gejn-PASS.yaml                 \
+	REL-msyn-iesj-ietja-FAIL.yaml                 \
+	REL-msyn-iesj-ietja-PASS.yaml                 \
+	REL-msyn-soajtta-FAIL.yaml                    \
+	REL-msyn-soajtta-PASS.yaml                    \
+	REL-syn-correct-form-liehket-FAIL.yaml        \
+	REL-syn-correct-form-liehket-PASS.yaml        \
 	format-missing-comma.yaml                     \
 	lex-oahpasmuvvat-oahpastuvvat.yaml            \
 	msyn-IV-with-object.yaml                      \
@@ -63,13 +63,13 @@ TESTS=\
 	msyn-pass-active.yaml                         \
 	msyn-sme_bastard_neg1-2.yaml                  \
 	msyn-soajtta.yaml                             \
-	real-habbmim.yaml                             \
-	real-gæhppat-alkke.yaml                       \
+	real-NegSg2-NegSg3.yaml                       \
 	real-NegSg3-NegSg2.yaml                       \
-    real-NegSg2-NegSg3.yaml                       \
-    real-PrsPl3-PrtSg3.yaml                       \
-    real-PrtSg3-PrsPl3.yaml                       \
+	real-PrsPl3-PrtSg3.yaml                       \
+	real-PrtSg3-PrsPl3.yaml                       \
 	real-gæhppat-alkke.yaml                       \
+	real-gæhppat-alkke.yaml                       \
+	real-habbmim.yaml                             \
 	real-habbmim.yaml                             \
 	syn-correct-form-liehket.yaml                 \
 	syn-nom-nom.yaml                              \
@@ -80,25 +80,16 @@ TESTS=\
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
 XFAIL_TESTS=\
-	DEV-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
-	DEV-lex-oahpasmuvvat-oahpastuvvat-PASS.yaml   \
-	DEV-msyn-attr-pred-FAIL.yaml                  \
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
 	DEV-msyn-congr-mij-ma-PASS.yaml               \
-	DEV-msyn-genna-gejn-FAIL.yaml                 \
-	DEV-msyn-genna-gejn-PASS.yaml                 \
 	DEV-msyn-gut-mij-gut-FAIL.yaml                \
 	DEV-msyn-gut-mij-gut-PASS.yaml                \
-	DEV-msyn-iesj-ietja-FAIL.yaml                 \
-	DEV-msyn-iesj-ietja-PASS.yaml                 \
 	DEV-msyn-nom-gen-PP-FAIL.yaml                 \
 	DEV-msyn-nom-gen-PP-PASS.yaml                 \
 	DEV-msyn-numeral-attr-FAIL.yaml               \
 	DEV-msyn-numeral-attr-PASS.yaml               \
 	DEV-msyn-sme_bastard_neg1-2-FAIL.yaml         \
 	DEV-msyn-sme_bastard_neg1-2-PASS.yaml         \
-	DEV-msyn-soajtta-FAIL.yaml                    \
-	DEV-msyn-soajtta-PASS.yaml                    \
 	DEV-real-NegSg2-NegSg3-FAIL.yaml              \
 	DEV-real-NegSg2-NegSg3-PASS.yaml              \
 	DEV-real-NegSg3-NegSg2-FAIL.yaml              \
@@ -109,17 +100,24 @@ XFAIL_TESTS=\
 	DEV-real-PrtSg3-PrsPl3-PASS.yaml              \
 	DEV-real-habbmim-FAIL.yaml                    \
 	DEV-real-habbmim-PASS.yaml                    \
-	DEV-syn-correct-form-liehket-FAIL.yaml        \
-	DEV-syn-correct-form-liehket-PASS.yaml        \
 	DEV-syn-number_congruence-subj-verb-FAIL.yaml \
 	DEV-syn-number_congruence-subj-verb-PASS.yaml \
 	DEV-syn-pred-attr-FAIL.yaml                   \
 	DEV-syn-pred-attr-PASS.yaml                   \
-    DEV-msyn-attr-pred-FAIL.yaml                  \
-    DEV-msyn-attr-pred-PASS.yaml                  \
+	REL-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
+	REL-lex-oahpasmuvvat-oahpastuvvat-PASS.yaml   \
+	REL-msyn-attr-pred-FAIL.yaml                  \
+	REL-msyn-attr-pred-PASS.yaml                  \
+	REL-msyn-genna-gejn-FAIL.yaml                 \
+	REL-msyn-genna-gejn-PASS.yaml                 \
+	REL-msyn-iesj-ietja-FAIL.yaml                 \
+	REL-msyn-iesj-ietja-PASS.yaml                 \
+	REL-msyn-soajtta-FAIL.yaml                    \
+	REL-msyn-soajtta-PASS.yaml                    \
+	REL-syn-correct-form-liehket-FAIL.yaml        \
+	REL-syn-correct-form-liehket-PASS.yaml        \
 	format-missing-comma.yaml                     \
 	lex-oahpasmuvvat-oahpastuvvat.yaml            \
-	msyn-IV-with-object.yaml                      \
 	msyn-IV-with-object.yaml                      \
 	msyn-acc-nom.yaml                             \
 	msyn-congr-mij-ma.yaml                        \
@@ -137,23 +135,19 @@ XFAIL_TESTS=\
 	msyn-pass-active.yaml                         \
 	msyn-sme_bastard_neg1-2.yaml                  \
 	msyn-soajtta.yaml                             \
-	real-NegSg3-NegSg2.yaml                       \
 	real-NegSg2-NegSg3.yaml                       \
+	real-NegSg3-NegSg2.yaml                       \
 	real-PrsPl3-PrtSg3.yaml                       \
 	real-PrtSg3-PrsPl3.yaml                       \
 	real-gæhppat-alkke.yaml                       \
+	real-gæhppat-alkke.yaml                       \
 	real-habbmim.yaml                             \
-	syn-attr-pred.yaml                            \
+	real-habbmim.yaml                             \
 	syn-correct-form-liehket.yaml                 \
 	syn-nom-nom.yaml                              \
 	syn-number_congruence-subj-verb.yaml          \
 	syn-pred-attr.yaml                            \
-	syn-wo-neg-before-subj.yaml                   \
-	FAIL: DEV-msyn-attr-pred-PASS.yaml            \
-	FAIL: DEV-msyn-genna-gejn-PASS.yaml           \
-	FAIL: DEV-msyn-soajtta-PASS.yaml              \
-	FAIL: DEV-real-habbmim-FAIL.yaml
-
+	syn-wo-neg-before-subj.yaml
 endif # WANT_GRAMCHECK
 
 #### Do NOT edit below here: ####
