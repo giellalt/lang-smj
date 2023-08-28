@@ -3559,13 +3559,16 @@ COPY:msyn-numeral-casecongr (Sg Ine &SUGGEST) EXCEPT (Sg Nom &msyn-numeral-casec
     ## makkár rahtjamusá li nielje sámegielajn
 
     
-ADD:xmsyn-numeral-casecongr-com (&msyn-numeral-casecongr-com) TARGET (Num Sg Gen) OR (Num Pl Gen) IF (*1 (N Sg Com) OR (N Pl Gen &msyn-numeral-attr-pl-com) OR (N Pl Com &msyn-numeral-attr-pl-com) BARRIER NOT-NPMOD)(NEGATE 0 Arab) ;
-COPY:msyn-numeral-casecongr-com (Sg Com &SUGGEST) EXCEPT (Sg Gen) OR (Pl Gen) TARGET (&msyn-numeral-casecongr-com) ;
+ADD:xmsyn-numeral-casecongr-com (&msyn-numeral-casecongr-com) TARGET (Num Sg Gen) OR (Num Pl Gen) OR (Num Sg Acc) IF (*1 (N Sg Com) OR (N Pl Ine) OR (N Pl Gen &msyn-numeral-attr-pl-com) OR (N Pl Com &msyn-numeral-attr-pl-com) BARRIER NOT-NPMOD)(NEGATE 0 Arab) ;
+	## Åtsålvisáv dahká {guokta} dagojn. 
+
+COPY:msyn-numeral-casecongr-com (Sg Com &SUGGEST) EXCEPT (Sg Gen) OR (Pl Gen) OR (Sg Acc) OR (Pl Ine) TARGET (&msyn-numeral-casecongr-com) ;
 
     ## Foanndaj la jahkásattjat lasedibme kapitálas {guovte} miljåvnåjn gålmmå jahkáj.
     ## Sámedikken li aktisasjbarggosjiehtadusá {lågij} suohkanij ja nieljij fylkkasuohkanij.
 
 ADD:xmsyn-numeral-casecongr-ine (&msyn-numeral-casecongr-ine) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) IF (*1 (N Sg Ine) BARRIER NOT-NPMOD) ;
+	# those two rules belong together: xmsyn-numeral-casecongr-com and xmsyn-numeral-casecongr-ine
 
 COPY:msyn-numeral-casecongr-ine (Sg Ine &SUGGEST) EXCEPT (Pl Ine) OR (Sg Com) OR (Pl Nom) OR (Sg Acc) TARGET (&msyn-numeral-casecongr-ine) ;
 	## Guokta gusájn li báktjasa. 
