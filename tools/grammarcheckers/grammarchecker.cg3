@@ -3415,16 +3415,16 @@ COPY:msyn-nom-gen-Po (Gen &SUGGEST) EXCEPT (Nom &msyn-nom-gen-Po) TARGET (&msyn-
     # -----------------------
     
 
-ADD:xmsyn-numeral-accattr (&msyn-numeral-accattr) TARGET (Pl Acc) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date)(NEGATE 0 (N Sg)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) ;
+ADD:xmsyn-numeral-accattr (&msyn-numeral-accattr) TARGET (Pl Acc) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date LINK NEGATE -1 Sem/Curr)(NEGATE 0 (N Sg))  (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) ;
 
-ADD:xmsyn-numeral-accattr (&msyn-numeral-accattr) TARGET (Pl Acc) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 Num)(NEGATE 0 (N Sg)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) ;
+ADD:xmsyn-numeral-accattr (&msyn-numeral-accattr) TARGET (Pl Acc) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 Num LINK NEGATE -1 Sem/Curr)(NEGATE 0 (N Sg)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) ;
 	## Valla vuojnnet ”sáme” viellde vájllu divna dáj gålmmå {rijkajn}.
 
 COPY:msyn-numeral-accattr (Sg Gen &SUGGEST) EXCEPT (Pl Acc &msyn-numeral-accattr) TARGET (&msyn-numeral-accattr) ;
 
     ## vuojnáv guokta gusájt > vuojnáv guokta gusá insead of vuojnáv guokta guosáv
 
-ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (Pl) IF ((0 N) OR (0 NUMUNIT - Com LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numeral-accattr) (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock OR Sem/Time OR Sem/Date LINK NEGATE 0 NUMUNIT LINK -1 Num OR ("moadda"))(NEGATE 0 (N Sg) - Ill OR (N Pl Nom))(NEGATE 0 (Pl Ela) LINK -1 ("akta" Sg Nom))(NEGATE 0 (Pl Ela) LINK -1 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 2 ("liehket" Pl3))(NEGATE 0 (N Pl Nom) LINK -1 (Num Sg Nom))(NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr - Gen) ;
+ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (Pl) IF ((0 N) OR (0 NUMUNIT - Com LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numeral-accattr) (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock OR Sem/Time OR Sem/Date LINK NOT -1 Sem/Curr LINK NEGATE 0 NUMUNIT LINK -1 Num OR ("moadda"))(NEGATE 0 (N Sg) - Ill OR (N Pl Nom))(NEGATE 0 (Pl Ela) LINK -1 ("akta" Sg Nom))(NEGATE 0 (Pl Ela) LINK -1 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 2 ("liehket" Pl3))(NEGATE 0 (N Pl Nom) LINK -1 (Num Sg Nom))(NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr - Gen) ;
     ## Mån lav åhtsåm guokta {universitehtajda}  
     #$ Sámedigge le juo juollodam moadda miljåvnå {gielladåjmajda}, valla ulmutja e åhpa sámegielav ietjas årrombájken.
     ## Ælla des dagu åvddål guovte sierra skåvllåhuodnahijda sieradum. = guovte sierra skåvllåhuodnahij
@@ -3436,8 +3436,9 @@ ADD:msyn-numeral-attr (&msyn-numeral-attr) TARGET (Pl) IF ((0 N) OR (0 NUMUNIT -
 	#$ Sáme gielladutkij gaskan li guokta {vuojno} dasi mij máhttá doajmmat objæktan sámegielan. 
 	#$ Vuojnniv gålmmå gusá 
 	#$ Iejvvijma guokta {ulmutja} guhti barggi minoritehtaj miehtá Europa. 
+	#$ Rudá aneduvvi dá guokta ássjijda: Kr 100 000 stipænnda tjáppagirjálasjvuoda tjállijda ja kr 150 000 {arvusmahttemrudájda} nuorttalijvuona tjállijt nasjåvnålasj arienájn låpptit.
 
-ADD:xmsyn-numeral-attr (&msyn-numeral-attr) TARGET (Pl) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (NOT 0 &msyn-numeral-accattr) (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 Num)(NEGATE 0 (N Sg)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) ;
+ADD:xmsyn-numeral-attr (&msyn-numeral-attr) TARGET (Pl) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (NOT 0 &msyn-numeral-accattr) (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 Num LINK NEGATE -1 Sem/Curr)(NEGATE 0 (N Sg)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) ;
 
     ## Mån lav åhtsåm guokta ruoppsis ja fijna universitehtajda.
     ## Vuona stáhtta le vuododuvvam guovte álmmuga duobddágijda NOT
@@ -3446,14 +3447,14 @@ COPY:msyn-numeral-attr (Sg &SUGGEST) EXCEPT (Pl &msyn-numeral-attr) BEFORE CASE 
 
 
     # homonomy beetween pl ine and sg com
-ADD:xmsyn-numeral-attr-pl-ine (&msyn-numeral-attr-pl-ine) TARGET (Pl Ine) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Ine) OR (Num Arab Ine) OR (Num Pl Nom) OR (Num Sg Acc) BARRIER NOT-Attr - Gen LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) ;
+ADD:xmsyn-numeral-attr-pl-ine (&msyn-numeral-attr-pl-ine) TARGET (Pl Ine) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Ine) OR (Num Arab Ine) OR (Num Pl Nom) OR (Num Sg Acc) BARRIER NOT-Attr - Gen LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date LINK NEGATE -1 Sem/Curr) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) ;
 	## Sámegiella mánájgárdijn ja skåvlåjn guovte ietjá {sámediggediedádusájn} giehtadaláduvvi, ja danen ep galga dáppe dáj guokta sebrudakásadusáj rollav snivva guoradit.
 	## Merustallamvædtsak VUK le adnuj váldeduvvam juohkka skåvlån daj guokta {suohkanijn} ja le ájnas oasse åvddånahttemságastallamij vuodos.
 	#$ lijma nåv árrat smáredam ja vuodjám 6-7 tijma bijlajn DNW NEW LINDA
 
     # numeral is alos wrong, habitive "la/li" shows that it must be sg ine. 
     
-ADD:xmsyn-numeral-attr-pl-ine (&msyn-numeral-attr-pl-ine) TARGET (Pl Ine) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Acc) OR (Num Arab Ine) BARRIER NOT-NPMOD LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date LINK *-1 ("liehket" Ind) BARRIER (*) - Num - Dem) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) ;
+ADD:xmsyn-numeral-attr-pl-ine (&msyn-numeral-attr-pl-ine) TARGET (Pl Ine) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Acc) OR (Num Arab Ine) BARRIER NOT-NPMOD LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date LINK NOT -1 Sem/Curr LINK *-1 ("liehket" Ind) BARRIER (*) - Num - Dem)(NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) ;
 	# this rule may go to a copy rule that suggests both Sg Ine and Sg Com
 
 
@@ -3465,7 +3466,7 @@ COPY:msyn-numeral-attr-pl-ine-suggesting-com (Sg Com &SUGGEST) EXCEPT (Pl Ine) T
     #$ 1679
 
     # homonomy beetween pl com and sg ill
-ADD:xmsyn-numeral-attr-pl-com (&msyn-numeral-attr-pl-com) TARGET (Sg Ill) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Pl Gen) BARRIER NOT-NPMOD LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) ;
+ADD:xmsyn-numeral-attr-pl-com (&msyn-numeral-attr-pl-com) TARGET (Sg Ill) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Pl Gen) BARRIER NOT-NPMOD LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date LINK NEGATE -1 Sem/Curr) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) ;
 
 
 COPY:msyn-numeral-attr-pl-com (Sg Com &SUGGEST) EXCEPT (Sg Ill) TARGET (&msyn-numeral-attr-pl-com) ;
@@ -3746,7 +3747,7 @@ COPY:msyn-numerals-with-demopron (Sg Ela Attr &SUGGEST) EXCEPT (Pl Com Attr &msy
 COPY:msyn-numerals-with-demopron (Sg Com &SUGGEST) EXCEPT (Pl Gen &msyn-numerals-with-demopron) OR (Pl Gen Attr &msyn-numerals-with-demopron) OR (Pl Com &msyn-numerals-with-demopron) OR (Pl Com Attr &msyn-numerals-with-demopron) OR (Pl Nom &msyn-numerals-with-demopron) TARGET (&msyn-numerals-with-demopron) IF (*2 (N Sg Com) BARRIER NOT-Attr LINK NOT 0 (&msyn-numeral-attr-pl-ine))  ;
 	## Mujna li buorre vuorddemusá {då} guovte ráddidusbelludagájn aktan barggat. 
 
-COPY:msyn-numerals-with-demopron (Sg Gen &SUGGEST)  EXCEPT (Pl Ine &msyn-numerals-with-demopron) OR (Pl Ine Attr &msyn-numerals-with-demopron) TARGET (&msyn-numerals-with-demopron) IF (1 (Num Sg Gen) LINK (*2 Po BARRIER NOT-NPMOD)) ; 
+COPY:msyn-numerals-with-demopron (Sg Gen &SUGGEST)  EXCEPT (Pl Ine &msyn-numerals-with-demopron) OR (Pl Ine Attr &msyn-numerals-with-demopron) OR (Pl Nom &msyn-numerals-with-demopron) TARGET (&msyn-numerals-with-demopron) IF (1 (Num Sg Gen) LINK (*2 Po BARRIER NOT-NPMOD)) ; 
 
     ## Barggo dåjmaduvvá {dajn} gudá stuoves barggojuohkusij tjadá masi tjuovvovasj prográmmasuorge gulluji
 
