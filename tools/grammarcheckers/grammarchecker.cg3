@@ -3682,7 +3682,9 @@ COPY:msyn-numeral-comcasecongr (Sg Com &SUGGEST) EXCEPT (Sg Gen &msyn-numeral-co
 
 ADD:xmsyn-numerals-with-demopron (&msyn-numerals-with-demopron) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) LINK *1 (N Sg) BARRIER NOT-NPMOD - CC) ;
 
-ADD:xmsyn-numerals-with-demopron (&msyn-numerals-with-demopron) TARGET (Pron Dem Pl Nom) IF (1 (Num Sg) - Nom LINK *1 (N Sg) BARRIER NOT-NPMOD - CC) ;
+ADD:xmsyn-numerals-with-demopron (&msyn-numerals-with-demopron) TARGET (Pron Dem Pl Nom) IF (1 (Num Sg) LINK NOT 0 (Num Sg Nom) LINK *1 (N Sg) BARRIER NOT-NPMOD - CC) ;
+
+ADD:xmsyn-numerals-with-demopron (&msyn-numerals-with-demopron) TARGET (Pron Dem Pl Nom) IF (1 (Gen &SUGGEST) LINK *1 (N Sg) BARRIER NOT-NPMOD - CC) ;
 
     ## Sáme skihppijsujttáråhpadus ja sáme åhpadiddjeåhpadusá vaddi {da} guovte nuorttalamos universitiehttaj ájn nannusap guovlolasj ja hiebalgis profijlav
 
@@ -3708,14 +3710,16 @@ ADD:xmsyn-numerals-with-demopron (&msyn-numerals-with-demopron) TARGET (Pron Dem
     #dajn        guovtijn gusájn
 
     #da
+    
 
-COPY:msyn-numerals-with-demopron (Pl Nom &SUGGEST) EXCEPT (Pl Acc Attr &msyn-numerals-with-demopron) OR (Pl Com &msyn-numerals-with-demopron) OR (Pl Gen &msyn-numerals-with-demopron) TARGET (&msyn-numerals-with-demopron) IF (1 (Num Sg Nom) OR (&msyn-numeral-acccasecongr) LINK *1 (Pl Nom) OR (Sg Gen) BARRIER NOT-NPMOD) ;
+
+COPY:msyn-numerals-with-demopron (Pl Nom &SUGGEST) EXCEPT (Pl Acc Attr &msyn-numerals-with-demopron) OR (Pl Com &msyn-numerals-with-demopron) OR (Pl Gen &msyn-numerals-with-demopron) OR (Pl Nom &msyn-numerals-with-demopron)  TARGET (&msyn-numerals-with-demopron) IF (1 (Num Sg Nom) OR (&msyn-numeral-acccasecongr) LINK *1 (Pl Nom) OR (Sg Gen) BARRIER NOT-NPMOD LINK NOT 0 (Gen &SUGGEST)) ;
     ## Duodden dåjmadittjat dájt>dá guokta ásadusájt Divtasvuona Dávvervuorkká galggá ásadit ja åvddånbuktet máhtudagáv almatjijt dåjmajt, dat rájes gå vuostasj ulmutja Divtasvuodnaj båhtin ja udnátjij.
    ## Iv háhppida dajt guhtta ruoppsis bårådum oappá girjijt låhkåt dan ájgen.
    ## Juogos la mierredam {dájda} gålmmå suohkanijda dahkat aktisasj plánav rumálasj dåjmajda ja luonndoåtsådallamijda. DNW LINDA
    # dan
 
-COPY:msyn-numerals-with-demopron (Sg Gen &SUGGEST) EXCEPT (Pl Com Attr &msyn-numerals-with-demopron) OR (Pl Gen Attr &msyn-numerals-with-demopron) OR (Pl Com &msyn-numerals-with-demopron) OR (Pl Gen &msyn-numerals-with-demopron) TARGET (&msyn-numerals-with-demopron) IF (1 (Num Sg Gen) LINK 1 (N Sg Gen))  ;
+COPY:msyn-numerals-with-demopron (Sg Gen &SUGGEST) EXCEPT (Pl Com Attr &msyn-numerals-with-demopron) OR (Pl Gen Attr &msyn-numerals-with-demopron) OR (Pl Com &msyn-numerals-with-demopron) OR (Pl Gen &msyn-numerals-with-demopron) OR (Pl Nom &msyn-numerals-with-demopron) TARGET (&msyn-numerals-with-demopron) IF (1 (Num Sg Gen) LINK *1 (N Sg Gen) BARRIER NOT-Attr - <AttrPred>)  ;
 
    # Tjállagin li artihkkala daj gålmmå tiemáj birra.
 
