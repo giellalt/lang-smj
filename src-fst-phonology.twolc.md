@@ -104,6 +104,7 @@ OBS: the definitions are not all correct or sufficiently specific
 
 * ****Ø1:0** : optional Word Final Cluster Simplification. Not smj grammar, made only for Err/Orths  ! málestit**:  málest instead for norm máles
 * ****Ø2:0** : optional e**: i when followed by any conc (not only j). Not smj grammar, made only for Err/Orths ! "iednida"   
+* ****Ø3:0** : Not smj grammar, made only for nominative Err/Orths: málles>mállás e:á, e:å, o:u, 
 
 ### Morpheme boundaries:
 * **** «  ****:  Derivational prefix
@@ -493,6 +494,7 @@ For e-stems, there is e:i, e:á, e:å, e:u and e:a. Each alternation is triggere
 The following two rules constitute a <= / => rule pair.
 
 **e:á in certain stem types 1**  
+
 * *bálggeX4v*
 * *bálggá0v*
 

@@ -1050,13 +1050,16 @@ LEXICON C_ILL_AJ_BADASS  Badly or wrongly assimilated words. Last letter in cons
 * *kálsiumas* `kálsium+N+Sg+Ela`
 * *kálsiumaj* `kálsium+N+Sg+Ill`
 
-###  Error-lexicons
+###  Error-lexicons, made to not get too many entries with both Err/Orth and correct
 
 LEXICON A_CMP_INFL   Sub-forms. Lexicon for giving sub-variation conjugation by simply adding an -a to the norwegian/swedish word. No cg. Like "alkohola" and "agronoma". These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
-LEXICON ERR/ORTH_GAHPER  Like GAHPER, but without nominative and essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag. bålstår nom is not here, but bålstårav since it should be bålssårav.
+LEXICON ERR/ORTH_ODD  Err/Orth lexicon doing the opposit of what odd-syllable nouns do. Strong grade in nom and weak in all other.
 
-LEXICON ERR/ORTH_NOADE  Like NOADE, but without nominative, illative an essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag.
+* dálkas # Even-syllable test examples:*
+* *dálkkas* `dálkas+N+Err/Orth+Sg+Nom`
+* *dálkasav* `dálkas+N+Err/Orth+Sg+Acc`
+* *dálkasasj* `dálkas+N+Err/Orth+Der/Dimin+N+Sg+Nom`
 
 ###  Unassimilated loanwords
 
@@ -2849,6 +2852,7 @@ OBS: the definitions are not all correct or sufficiently specific
 
 * ****Ø1:0** : optional Word Final Cluster Simplification. Not smj grammar, made only for Err/Orths  ! málestit**:  málest instead for norm máles
 * ****Ø2:0** : optional e**: i when followed by any conc (not only j). Not smj grammar, made only for Err/Orths ! "iednida"   
+* ****Ø3:0** : Not smj grammar, made only for nominative Err/Orths: málles>mállás e:á, e:å, o:u, 
 
 ### Morpheme boundaries:
 * **** «  ****:  Derivational prefix
@@ -3238,6 +3242,7 @@ For e-stems, there is e:i, e:á, e:å, e:u and e:a. Each alternation is triggere
 The following two rules constitute a <= / => rule pair.
 
 **e:á in certain stem types 1**  
+
 * *bálggeX4v*
 * *bálggá0v*
 
