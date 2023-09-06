@@ -2853,6 +2853,7 @@ OBS: the definitions are not all correct or sufficiently specific
 * ****Ø1:0** : optional Word Final Cluster Simplification. Not smj grammar, made only for Err/Orths  ! málestit**:  málest instead for norm máles
 * ****Ø2:0** : optional e**: i when followed by any conc (not only j). Not smj grammar, made only for Err/Orths ! "iednida"   
 * ****Ø3:0** : Not smj grammar, made only for nominative Err/Orths: málles>mállás e:á, e:å, o:u, 
+* ****Ø4:0** : Not smj grammar, made only for nominative Err/Orths: málles>mállás e:á, e:å, o:u, 
 
 ### Morpheme boundaries:
 * **** «  ****:  Derivational prefix
