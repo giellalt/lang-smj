@@ -660,7 +660,7 @@ analyser-gt-norm_%.$(1): analyser-gt-norm_%.tmp.$(1)                         \
 					filters/convert_to_flags-CmpNP-tags.$(1)                 \
 					filters/split-CmpNP-tags.$(1) \
 					filters/remove-usage-tags.$(1)
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 			    @\"filters/remove-usage-tags.$(1)\"                           \
 			.o. @\"filters/remove-derivation-position-tags.$(1)\"             \
 			.o. @\"filters/remove-DNorm-tags.$(1)\"                           \
@@ -697,7 +697,7 @@ generator-gt-norm_%.$(1): generator-gt-norm_%.tmp.$(1) \
 					 filters/convert_to_flags-CmpNP-tags.$(1)                 \
 					 filters/split-CmpNP-tags.$(1)                            \
 					filters/remove-usage-tags.$(1)
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
 				@\"filters/remove-usage-tags.$(1)\"               \
 			.o. @\"filters/make-optional-grammatical-tags.$(1)\"  \
 			.o. @\"filters/make-optional-lang_hom-tags.$(1)\"     \
