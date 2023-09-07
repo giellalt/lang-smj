@@ -33,7 +33,9 @@ LEXICON Root
    1+Use/NG:duhát   THOUSAND      ; ! 1000-1999 - ikkje-normativ
         1% :tuvsán  THOUSAND      ; ! 1 000-1 999 - for tekst-til-tale og andre normative verkty
  1% +Use/NG:duhát   THOUSAND      ; ! 1 000-1 999 - ikkje-normativ
-                    UNDERTHOUSAND ; ! 100-999
+                    UNDERTHOUSAND ; ! 200-999
+          1:tjuohte HUNDRED       ; ! 101-199
+      1%0%0:tjuohte COMMA         ; ! 100
                     TENS          ; ! 20-99
                     TEENS         ; ! 10-19
                     ONES          ; ! 1-9
@@ -273,8 +275,8 @@ LEXICON THOUSAND
 
 LEXICON UNDERTHOUSAND
            HUNDREDS ;
- 1:tjuohte HUNDRED  ;
- 1:tjuot   HUNDRED  ; ! XXX - Only in compounds? Sjekk med Inga. Bare i cmp med noe forann, og bare som siste ledd når tallordet er attr til noe. Feks "gålmmåtjuot bijla". Eller når det er ledd etter også. Gålmmåtjuotguoktalåkgålmmå.
+! 1:tjuohte HUNDRED  ;
+! 1:tjuot   HUNDRED  ; ! XXX - Only in compounds? Sjekk med Inga. Bare i cmp med noe forann, og bare som siste ledd når tallordet er attr til noe. Feks "gålmmåtjuot bijla". Eller når det er ledd etter også. Gålmmåtjuotguoktalåkgålmmå.
  1:tjuodát TJUODAAT ;
 
 LEXICON HUNDREDS
@@ -289,14 +291,15 @@ LEXICON HUNDREDS
         9:aktse   CUODI ;
 
 LEXICON CUODI
- :tjuode  HUNDRED  ;
+ +Use/NG:tjuode  HUNDRED  ;
  :tjuodát TJUODAAT ;
+ :tjuot   HUNDRED  ;
+ %0%0:tjuohte COMMA ;
 
 LEXICON HUNDRED
        TENS  ;
        TEENS ;
    %0: ONES  ;
- %0%0: COMMA ;
 
 LEXICON TJUODAAT
  %0%0.: COMMA ;
