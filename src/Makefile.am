@@ -186,7 +186,8 @@ analyser-tts-gt-output.tmp1.%: fst/lexicon.% \
 					filters/remove-norm-comp-tags.%           \
 					filters/remove-use_mt-strings.%           \
 					filters/remove-DNorm-tags.%               \
-					filters/remove-usage-tags.%
+					filters/remove-usage-tags.%               \
+					filters/remove-Use_minusTTS-strings.%
 	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
 				@\"filters/remove-usage-tags.$*\"               \
 			.o. @\"filters/remove-derivation-position-tags.$*\" \
@@ -194,6 +195,7 @@ analyser-tts-gt-output.tmp1.%: fst/lexicon.% \
 			.o. @\"filters/remove-norm-comp-tags.$*\"           \
 			.o. @\"filters/remove-DNorm-tags.$*\"               \
 			.o. @\"filters/remove-use_mt-strings.$*\"           \
+			.o. @\"filters/remove-Use_minusTTS-strings.$*\"     \
 			.o. @\"$<\"                                         \
 			;\n\
 		 twosided flag-diacritics\n\
