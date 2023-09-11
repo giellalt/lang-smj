@@ -210,8 +210,8 @@ analyser-tts-gt-input.hfst: analyser-tts-gt-input.tmp.hfst \
 					 filters/convert-æae-to-area-variant.hfst
 	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon OFF\n\
 			read regex            \
-				@\"$<\"                               \
-			.o. @\"filters/convert-æae-to-area-variant.hfst\" \
+			    @\"filters/convert-æae-to-area-variant.hfst\".i \
+			.o. @\"$<\"                               \
 			;\n\
 		 twosided flag-diacritics\n\
 		 save stack $@\n\
