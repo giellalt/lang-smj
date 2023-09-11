@@ -170,7 +170,7 @@ endif !WITH_OFST_TROPICAL
 
 # In the second part of the first step, we add flags and tags for æ variation.
 # The output of this is also used as base for the input analyser.
-analyser-tts-gt-output.hfst: analyser-tts-gt-output.tmp1.hfst \
+analyser-tts-gt-output.hfst: analyser-tts-gt-output.tmp.hfst \
 					 filters/insert-æae-area-flags.hfst \
 					 filters/insert-area-tags.hfst
 	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon OFF\n\
