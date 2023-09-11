@@ -204,33 +204,6 @@ analyser-tts-gt-input.pretmp.hfst: analyser-tts-gt-output.hfst \
 		| $(HFST_MINIMIZE)    $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-o $@
 
-# HFST
-if WANT_REVERSED_INTERSECT
-# Do this if reversed intersect is enabled:
-analyser-tts-gt-input.tmp1.hfst: analyser-tts-gt-input.pretmp.hfst \
-					 fst/phonology.rev.hfst
-	$(AM_V_INTRSCT)\
-		  $(HFST_REVERSE)     $(MORE_VERBOSITY) $(HFST_FLAGS) $< \
-		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
-							  $(MORE_VERBOSITY) $(HFST_FLAGS) \
-			-2 fst/phonology.rev.hfst \
-		| $(HFST_REVERSE)     $(MORE_VERBOSITY) \
-		| $(HFST_MINIMIZE)    $(MORE_VERBOSITY) $(HFST_FLAGS) \
-		-o $@
-
-else
-# Otherwise do this:
-analyser-tts-gt-input.tmp1.hfst: analyser-tts-gt-input.pretmp.hfst \
-					 fst/phonology.compose.hfst
-	$(AM_V_INTRSCT)\
-		  $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) $< \
-							  $(MORE_VERBOSITY) $(HFST_FLAGS) \
-			-1 $<
-			-2 fst/phonology.compose.hfst \
-		| $(HFST_MINIMIZE)    $(MORE_VERBOSITY) $(HFST_FLAGS) \
-		-o $@
-endif # WANT_REVERSED_INTERSECT
-
 analyser-tts-gt-input.tmp.hfst: analyser-tts-gt-input.tmp1.hfst \
 					 filters/convert-æae-to-area-variant.hfst \
 					 filters/insert-area-tags.hfst
