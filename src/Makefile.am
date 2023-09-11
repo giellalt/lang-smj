@@ -207,8 +207,7 @@ analyser-tts-gt-input.pretmp.hfst: analyser-tts-gt-output.hfst \
 
 # Language specific postprocessing after TWOLC rules have been applied:
 analyser-tts-gt-input.tmp.hfst: analyser-tts-gt-input.tmp1.hfst \
-					 filters/convert-æae-to-area-variant.hfst \
-					 filters/insert-area-tags.hfst
+					 filters/convert-æae-to-area-variant.hfst
 	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon OFF\n\
 			read regex            \
 				@\"$<\"                               \
