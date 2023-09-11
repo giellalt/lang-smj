@@ -192,6 +192,7 @@ analyser-tts-gt-output.hfst: analyser-tts-gt-output.tmp.hfst \
 		 quit\n" | $(XFST_TOOL)
 
 # Then we create the input side - lower side of lexicon + twolc/phonology:
+# Language specific override/preprocessing, due to ÆÄ variation.
 analyser-tts-gt-input.pretmp.hfst: analyser-tts-gt-output.hfst \
 					 filters/remove-æae-flags-after-æae.hfst \
 					 filters/remove-æae-flags-after-æae.inverted.hfst
@@ -204,6 +205,7 @@ analyser-tts-gt-input.pretmp.hfst: analyser-tts-gt-output.hfst \
 		| $(HFST_MINIMIZE)    $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-o $@
 
+# Language specific postprocessing after TWOLC rules have been applied:
 analyser-tts-gt-input.tmp.hfst: analyser-tts-gt-input.tmp1.hfst \
 					 filters/convert-æae-to-area-variant.hfst \
 					 filters/insert-area-tags.hfst
