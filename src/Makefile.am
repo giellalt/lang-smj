@@ -206,7 +206,7 @@ analyser-tts-gt-input.pretmp.hfst: analyser-tts-gt-output.hfst \
 		-o $@
 
 # Language specific postprocessing after TWOLC rules have been applied:
-analyser-tts-gt-input.tmp.hfst: analyser-tts-gt-input.tmp1.hfst \
+analyser-tts-gt-input.hfst: analyser-tts-gt-input.tmp.hfst \
 					 filters/convert-æae-to-area-variant.hfst
 	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon OFF\n\
 			read regex            \
@@ -214,33 +214,6 @@ analyser-tts-gt-input.tmp.hfst: analyser-tts-gt-input.tmp1.hfst \
 			.o. @\"filters/convert-æae-to-area-variant.hfst\" \
 			;\n\
 		 twosided flag-diacritics\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST_TOOL)
-
-analyser-tts-gt-input.hfst  \
-analyser-tts-gt-input.xfst  \
-analyser-tts-gt-input.foma: \
-analyser-tts-gt-input.%: analyser-tts-gt-input.tmp.%          \
-					filters/remove-hyphenation-marks.%        \
-					filters/remove-infl_deriv-borders.%       \
-					filters/remove-word-boundary.%            \
-					orthography/inituppercase.compose.%       \
-					orthography/spellrelax.compose.%          \
-					$(GLT_DOWNCASE_FILTER)
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-				@\"$<\" \
-				$(GLT_DOWNCASE_COMPOSE) \
-			.o. @\"filters/remove-hyphenation-marks.$*\"        \
-			.o. @\"filters/remove-infl_deriv-borders.$*\"       \
-			.o. @\"filters/remove-word-boundary.$*\"            \
-			; \n\
-			define fst \n\
-			set flag-is-epsilon ON\n\
-			read regex fst \
-			.o. @\"orthography/inituppercase.compose.$*\"       \
-			.o. @\"orthography/spellrelax.compose.$*\"          \
-			;\n\
-		 $(INVERT_HFST)\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
