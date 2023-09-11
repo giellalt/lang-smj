@@ -217,13 +217,6 @@ analyser-tts-gt-input.tmp.hfst: analyser-tts-gt-input.tmp1.hfst \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
-# XEROX
-analyser-tts-gt-output.tmp.xfst: fst/lexicon.xfst \
-			 fst/phonology.compose.xfst
-	$(AM_V_LEXC)$(PRINTF) \
-		"read-source fst/lexicon.xfst\nread-rules fst/phonology.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
-		| $(LEXC) $(VERBOSITY)
-
 analyser-tts-gt-input.hfst  \
 analyser-tts-gt-input.xfst  \
 analyser-tts-gt-input.foma: \
