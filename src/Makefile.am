@@ -244,6 +244,9 @@ analyser-tts-gt-input.%: analyser-tts-gt-input.tmp.%          \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
+#################################################
+#### Other language specific build rules:    ####
+
 # The SMJ morphology has some extra tags used for marking questionable
 # normativity and our suggested norm:
 analyser-gt-desc.%: analyser-gt-desc.tmp.% \
