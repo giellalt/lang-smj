@@ -170,7 +170,7 @@ endif !WITH_OFST_TROPICAL
 
 # In the second part of the first step, we add flags and tags for æ variation.
 # The output of this is also used as base for the input analyser.
-analyser-tts-gt-output.tmp.hfst: analyser-tts-gt-output.tmp1.hfst \
+analyser-tts-gt-output.hfst: analyser-tts-gt-output.tmp1.hfst \
 					 filters/insert-æae-area-flags.hfst \
 					 filters/insert-area-tags.hfst
 	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon OFF\n\
@@ -187,22 +187,17 @@ analyser-tts-gt-output.tmp.hfst: analyser-tts-gt-output.tmp1.hfst \
 			.o. lexicon                     \
 			;\n\
 		 twosided flag-diacritics\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST_TOOL)
-
-analyser-tts-gt-output.hfst: analyser-tts-gt-output.tmp.hfst
-	$(AM_V_XFST_TOOL)$(PRINTF) "\
-		 load stack $<\n\
 		 $(INVERT_HFST)\
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
 # Then we create the input side - lower side of lexicon + twolc/phonology:
-analyser-tts-gt-input.pretmp.hfst: analyser-tts-gt-output.tmp.hfst \
+analyser-tts-gt-input.pretmp.hfst: analyser-tts-gt-output.hfst \
 					 filters/remove-æae-flags-after-æae.hfst \
 					 filters/remove-æae-flags-after-æae.inverted.hfst
 	$(AM_V_COMPOSE)\
-		  $(HFST_PROJECT)     $(MORE_VERBOSITY) $(HFST_FLAGS) -p output $< \
+		  $(HFST_INVERT)      $(MORE_VERBOSITY) $(HFST_FLAGS) $< \
+		| $(HFST_PROJECT)     $(MORE_VERBOSITY) $(HFST_FLAGS) -p output \
 		| $(HFST_COMPOSE) --xerox-composition=ON -2 filters/remove-æae-flags-after-æae.hfst \
 		| $(HFST_COMPOSE) --xerox-composition=ON -1 filters/remove-æae-flags-after-æae.inverted.hfst \
 		| $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
