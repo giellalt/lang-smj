@@ -164,43 +164,9 @@ generator-raw-gt-desc.hfst: generator-raw-gt-desc.tmp.hfst \
 
 endif !WITH_OFST_TROPICAL
 
-# For TTS processing, we want two cascaded transducers: a slightly filtered lexicon,
-# and the lower/input side of the lexicon + twolc rules.
-#
-# The following is a list of filters we might want to consider:
-#					filters/remove-area-tags.%                
-#					filters/remove-dialect-tags.%             
-#					filters/remove-number-string-tags.%       
-#					filters/remove-hyphenation-marks.%        
-#					filters/remove-orthography-tags.%         
-#					filters/remove-Use_GC-strings.%           
-#					filters/remove-Use_minusGC-tags.%         
-#					filters/remove-Use_minus_PMatch-tags.%    
-#					filters/remove-Use_PMatch-strings.%       
-#					filters/remove-mwe-tags.%                 
-#
-# First we create the filtered lexicon, ie the analysis/output part of the cascade:
-analyser-tts-gt-output.tmp1.%: fst/lexicon.% \
-					filters/remove-derivation-position-tags.% \
-					filters/rename-POS_before_Der-tags.%      \
-					filters/remove-norm-comp-tags.%           \
-					filters/remove-use_mt-strings.%           \
-					filters/remove-DNorm-tags.%               \
-					filters/remove-usage-tags.%               \
-					filters/remove-Use_minusTTS-strings.%
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
-				@\"filters/remove-usage-tags.$*\"               \
-			.o. @\"filters/remove-derivation-position-tags.$*\" \
-			.o. @\"filters/rename-POS_before_Der-tags.$*\"      \
-			.o. @\"filters/remove-norm-comp-tags.$*\"           \
-			.o. @\"filters/remove-DNorm-tags.$*\"               \
-			.o. @\"filters/remove-use_mt-strings.$*\"           \
-			.o. @\"filters/remove-Use_minusTTS-strings.$*\"     \
-			.o. @\"$<\"                                         \
-			;\n\
-		 twosided flag-diacritics\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST_TOOL)
+
+#################################################
+#### TTS specific build rules:               ####
 
 # In the second part of the first step, we add flags and tags for æ variation.
 # The output of this is also used as base for the input analyser.
