@@ -197,21 +197,25 @@ analyser-tts-gt-output.hfst: analyser-tts-gt-output.tmp.hfst
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
-# Then we create the filtered lexicon:
-# HFST
-if WANT_REVERSED_INTERSECT
-# Do this is reversed intersect is enabled:
-analyser-tts-gt-input.tmp1.hfst: analyser-tts-gt-output.tmp.hfst \
-					 fst/phonology.rev.hfst \
+# Then we create the input side - lower side of lexicon + twolc/phonology:
+analyser-tts-gt-input.pretmp.hfst: analyser-tts-gt-output.tmp.hfst \
 					 filters/remove-æae-flags-after-æae.hfst \
 					 filters/remove-æae-flags-after-æae.inverted.hfst
-	$(AM_V_INTRSCT)\
+	$(AM_V_COMPOSE)\
 		  $(HFST_PROJECT)     $(MORE_VERBOSITY) $(HFST_FLAGS) -p output $< \
 		| $(HFST_COMPOSE) --xerox-composition=ON -2 filters/remove-æae-flags-after-æae.hfst \
 		| $(HFST_COMPOSE) --xerox-composition=ON -1 filters/remove-æae-flags-after-æae.inverted.hfst \
-		| $(HFST_REVERSE)     $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		| $(HFST_MINIMIZE)    $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		-o $@
+
+# HFST
+if WANT_REVERSED_INTERSECT
+# Do this if reversed intersect is enabled:
+analyser-tts-gt-input.tmp1.hfst: analyser-tts-gt-input.pretmp.hfst \
+					 fst/phonology.rev.hfst
+	$(AM_V_INTRSCT)\
+		  $(HFST_REVERSE)     $(MORE_VERBOSITY) $(HFST_FLAGS) $< \
 		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
 							  $(MORE_VERBOSITY) $(HFST_FLAGS) \
 			-2 fst/phonology.rev.hfst \
@@ -221,18 +225,12 @@ analyser-tts-gt-input.tmp1.hfst: analyser-tts-gt-output.tmp.hfst \
 
 else
 # Otherwise do this:
-analyser-tts-gt-input.tmp1.hfst: analyser-tts-gt-output.tmp1.hfst \
-					 fst/phonology.compose.hfst \
-					 filters/remove-æae-flags-after-æae.hfst \
-					 filters/remove-æae-flags-after-æae.inverted.hfst
+analyser-tts-gt-input.tmp1.hfst: analyser-tts-gt-input.pretmp.hfst \
+					 fst/phonology.compose.hfst
 	$(AM_V_INTRSCT)\
-		  $(HFST_PROJECT)     $(MORE_VERBOSITY) $(HFST_FLAGS) -p output $< \
-		| $(HFST_COMPOSE) --xerox-composition=ON -2 filters/remove-æae-flags-after-æae.hfst \
-		| $(HFST_COMPOSE) --xerox-composition=ON -1 filters/remove-æae-flags-after-æae.inverted.hfst \
-		| $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
-		| $(HFST_MINIMIZE)    $(MORE_VERBOSITY) $(HFST_FLAGS) \
-		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
+		  $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) $< \
 							  $(MORE_VERBOSITY) $(HFST_FLAGS) \
+			-1 $<
 			-2 fst/phonology.compose.hfst \
 		| $(HFST_MINIMIZE)    $(MORE_VERBOSITY) $(HFST_FLAGS) \
 		-o $@
