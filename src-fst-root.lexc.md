@@ -70,8 +70,8 @@ All Err-tags must have a normative form as lemma except Err/Lex
 * **+Use/Derrog** – Derrogatory word. Recognized, but not suggested in speller, same as SpellNoSugg
 * **+Use/GC** – **only** retained in the HFST Grammar Checker disambiguation analyser
 * **+Use/-GC** – **never** retained in the HFST Grammar Checker disambiguation analyser
-* **+Use/TTS** – **only** retained in the HFST Text-To-Speech disambiguation analyser
-* **+Use/-TTS** – **never** retained in the HFST Text-To-Speech disambiguation analyser
+* **+Use/TTS** – **only** retained in the HFST Text-To-Speech disambiguation tokeniser
+* **+Use/-TTS** – **never** retained in the HFST Text-To-Speech disambiguation tokeniser
 
 ## Dialect and Area tags
 * **+Area/SE** - Used in Sweden only
