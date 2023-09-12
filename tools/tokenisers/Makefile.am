@@ -31,43 +31,13 @@ if CAN_HFST
 # Only build the pmatch/hfst-proc2 fst if analysers are enabled.
 if WANT_MORPHOLOGY
 if WANT_TOKENISERS
-GIELLA_CUSTOM_PMHFSTS=tokeniser-tts-cggt-desc.pmhfst
+GIELLA_CUSTOM_PMHFSTS=
 endif # WANT_TOKENISERS
 endif # WANT_MORPHOLOGY
 endif # CAN_HFST
 
 #################################################
 #### Add language-specific build rules here: ####
-
-analyser-tts-cggt-output.hfst: $(top_builddir)/src/analyser-tts-gt-output.hfst \
-						 filters/make-disamb-CG-tags.hfst
-	$(AM_V_HXFST)$(PRINTF) "read regex \
-				@\"$<\" \
-			.o. @\"filters/make-disamb-CG-tags.hfst\".i   \
-			;\n\
-		save stack $@\n\
-		quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
-
-analyser-tts-cggt-input.hfst: $(top_builddir)/src/analyser-tts-gt-input.hfst
-	$(AM_V_CP)cp -f $< $@
-
-# Prepare analysers used for building the tokenisers:
-analyser_relabelled-tts-cggt-%.hfst: analyser-tts-cggt-%.hfst \
-						 btrelabeller.hfst \
-						 relabeller.hfst
-	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(MORE_VERBOSITY) \
-		-f '@P.Pmatch.Backtrack@' -T btrelabeller.hfst $< \
-		| $(HFST_SUBSTITUTE) $(MORE_VERBOSITY) \
-		-f '@P.Pmatch.Loc@'       -T   relabeller.hfst \
-		-o $@
-
-# This is the real tokeniser build target:
-tokeniser-tts-cggt-desc.pmhfst: tokeniser-tts-cggt-desc.pmscript \
-					analyser_relabelled-tts-cggt-input.hfst \
-					analyser_relabelled-tts-cggt-output.hfst \
-					analyser-url-gt-desc.hfst
-	$(AM_V_PM2FST)$(HFST_PMATCH2FST) < $< > $@.tmp
-	$(AM_V_at)mv -f $@.tmp $@
 
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######
