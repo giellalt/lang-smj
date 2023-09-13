@@ -49,7 +49,7 @@ GT_ANALYSERS+=
 GT_GENERATORS+=
 
 if WANT_CUSTOM_FSTS
-CUSTOM_FSTS+=analyser-tts-gt-output.xfst analyser-tts-gt-input.xfst
+CUSTOM_FSTS+=
 endif # WANT_CUSTOM_FSTS
 
 endif # CAN_XFST
@@ -60,7 +60,7 @@ GT_ANALYSERS+=
 GT_GENERATORS+=
 
 if WANT_CUSTOM_FSTS
-CUSTOM_FSTS+=analyser-tts-gt-output.hfstol analyser-tts-gt-input.hfstol
+CUSTOM_FSTS+=
 endif # WANT_CUSTOM_FSTS
 
 endif # CAN_HFST
@@ -71,7 +71,7 @@ GT_ANALYSERS+=
 GT_GENERATORS+=
 
 if WANT_CUSTOM_FSTS
-CUSTOM_FSTS+=analyser-tts-gt-output.foma analyser-tts-gt-input.foma
+CUSTOM_FSTS+=
 endif # WANT_CUSTOM_FSTS
 
 endif # CAN_FOMA
