@@ -1028,6 +1028,17 @@ LEXICON PRIEMIJ_CMP_INFL  Assimilated loanwords. on -ie/-y, like premie and band
 
 ### See further down: ÅLMÅJ_LOAN
 
+###  Error-lexicons, made to not get too many entries with both Err/Orth and correct
+
+LEXICON A_CMP_INFL   Sub-forms. Lexicon for giving sub-variation conjugation by simply adding an -a to the norwegian/swedish word. No cg. Like "alkohola" and "agronoma". These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
+
+LEXICON ERR/ORTH_ODD  Err/Orth lexicon doing the opposit of what odd-syllable nouns do. Strong grade in nom and weak in all other.
+
+* dálkas # Even-syllable test examples:*
+* *dálkkas* `dálkas+N+Err/Orth+Sg+Nom`
+* *dálkasav* `dálkas+N+Err/Orth+Sg+Acc`
+* *dálkasasj* `dálkas+N+Err/Orth+Der/Dimin+N+Sg+Nom`
+
 ###  Badly assimilated loanwords
 
 LEXICON NOADE_BADASS  2 syll stems without cg. Badly or wrongly assimilated words, ie. assimilated in a way that isn't lulesami. (Same as NOADE) Most of the words are Err/Orth tagged with a standardized lemma. Some are Err/Lex tagged, 5.9.2019: EJP/SNM: fjerna +Use/-Spell - sjølv om vi ikkje likar orda, så vil vi sjå til at dei blir skrive rett etter smj-ortografien! Dei fleste orda er uansett merka med +Err/Orth :)
@@ -1049,17 +1060,6 @@ LEXICON C_ILL_AJ_BADASS  Badly or wrongly assimilated words. Last letter in cons
 * *kálsium* `kálsium+N+Sg+Nom`
 * *kálsiumas* `kálsium+N+Sg+Ela`
 * *kálsiumaj* `kálsium+N+Sg+Ill`
-
-###  Error-lexicons, made to not get too many entries with both Err/Orth and correct
-
-LEXICON A_CMP_INFL   Sub-forms. Lexicon for giving sub-variation conjugation by simply adding an -a to the norwegian/swedish word. No cg. Like "alkohola" and "agronoma". These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
-
-LEXICON ERR/ORTH_ODD  Err/Orth lexicon doing the opposit of what odd-syllable nouns do. Strong grade in nom and weak in all other.
-
-* dálkas # Even-syllable test examples:*
-* *dálkkas* `dálkas+N+Err/Orth+Sg+Nom`
-* *dálkasav* `dálkas+N+Err/Orth+Sg+Acc`
-* *dálkasasj* `dálkas+N+Err/Orth+Der/Dimin+N+Sg+Nom`
 
 ###  Unassimilated loanwords
 
@@ -2943,6 +2943,12 @@ All rules deal with word-final position.
 **Word Final Devoicing of Certain Single Consonants d9 etc. **  
 * *iemed9#*
 * *iemet#*
+
+**Word Final Devoicing of Certain Single Consonants d9 etc. **  ! Spilt up because of err/orths ending on v, gierkav> we wnt err/orth gierkkam 
+* *gierkkam9#*
+* *gierkav#*
+
+**Word Final Devoicing of Certain Single Consonants d9 etc. **  ! Err/orth rule making v>m in nominatives
 
 **Err/Orths. **  
 

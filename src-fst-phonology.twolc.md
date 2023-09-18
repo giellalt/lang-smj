@@ -196,6 +196,12 @@ All rules deal with word-final position.
 * *iemed9#*
 * *iemet#*
 
+**Word Final Devoicing of Certain Single Consonants d9 etc. **  ! Spilt up because of err/orths ending on v, gierkav> we wnt err/orth gierkkam 
+* *gierkkam9#*
+* *gierkav#*
+
+**Word Final Devoicing of Certain Single Consonants d9 etc. **  ! Err/orth rule making v>m in nominatives
+
 **Err/Orths. **  
 
 **Word final weakening -tj and -ttj to -sj part 1**  
