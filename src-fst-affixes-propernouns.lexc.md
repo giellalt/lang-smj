@@ -810,6 +810,8 @@ LEXICON EATNAMAT-plc   Place names. Presently only for Vuolleednama
 * *Vuolleednamijda:* `Vuolleednama+N+Prop+Sem/Plc+Pl+Ill`
 * *Vuolleednamijs:* `Vuolleednama+N+Prop+Sem/Plc+Pl+Ela`
 
+LEXICON EATNAMAT-org   Organizations
+
 ## Contracted proper nouns
 
 Words in lexicon DAVVISUOLLU are contracted propernouns ending on -åj/-oj. Lule sami stems
