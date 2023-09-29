@@ -3,7 +3,7 @@
 [![Maturity: Experiment](https://img.shields.io/badge/Maturity-Experiment-black.svg)](https://giellalt.github.io/MaturityClassification.html)
 [![License](https://img.shields.io/github/license/giellalt/lang-smj)](https://github.com/giellalt/lang-smj/blob/main/LICENSE)
 [![Issues](https://img.shields.io/github/issues/giellalt/lang-smj)](https://github.com/giellalt/lang-smj/issues)
-[![Build Status](https://divvun-tc.thetc.se/api/github/v1/repository/giellalt/lang-smj/main/badge.svg)](https://github.com/giellalt/lang-smj/actions)
+[![Build Status](https://divvun-tc.giellalt.org/api/github/v1/repository/giellalt/lang-smj/main/badge.svg)](https://github.com/giellalt/lang-smj/actions)
 
 This page documents the work on the [Lule Sami language model](http://github.com/giellalt/lang-smj), how to build it and how to use it.
 
