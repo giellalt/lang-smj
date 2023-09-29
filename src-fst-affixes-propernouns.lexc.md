@@ -245,8 +245,6 @@ LEXICON MARJA-obj  Objects
 * *Bern-Konvensjåvnnåj:* `Bern-Konvensjåvnnå+N+Prop+Sem/Obj+Sg+Ill`
 * *Bern-Konvensjåvnås:* `Bern-Konvensjåvnnå+N+Prop+Sem/Obj+Sg+Ela`
 
-LEXICON MARJA-A-obj  Objectes ending on a. Presently not used in SMJ.
-
 LEXICON MARJA-org  Organizations
 
 * Domænadoajmma # Even-syllable test examples:*
