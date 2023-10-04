@@ -1032,6 +1032,10 @@ LEXICON PRIEMIJ_CMP_INFL  Assimilated loanwords. on -ie/-y, like premie and band
 
 LEXICON A_CMP_INFL   Sub-forms. Lexicon for giving sub-variation conjugation by simply adding an -a to the norwegian/swedish word. No cg. Like "alkohola" and "agronoma". These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
+LEXICON ERR/ORTH_EVEN_WEAK_CASES  Even stem Err/orth lexicon without nominative, illative and essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag. Entries like "ålggo" have no grade alternation, a common error is writing it like it has, ålggo>ålgov. tálla>tálav, klimáksa>klimáksav, prefiksa>prefiksav, barggo>barggov
+
+LEXICON ERR/ORTH_EVEN_STRONG_CASES   Even stem Err/orth lexicon with only nominative, illative and essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag. Hydrogena is used as nom and is err/orth, hydrogena>hydrogenav is not err/orth. marináda-nom, banána-nom
+
 LEXICON ERR/ORTH_ODD  Err/Orth lexicon doing the opposit of what odd-syllable nouns do. Strong grade in nom and weak in all other.
 
 * dálkas # Even-syllable test examples:*
