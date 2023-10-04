@@ -820,6 +820,8 @@ LEXICON VALÆNSSA_CMP_INFL !!= @CODE@ Recent loanwords on -ænssa with long and 
             :ænssa     MUORRACmp            ; 
  +CmpNP/Pref+Cmp/Unass:ens%>      R                    ;
               +Err/Orth:ensa        ERR/ORTH_EVEN_STRONG_CASES                 ; !make old valensa in nom
+              +Err/Orth:enssa       ERR/ORTH_EVEN_STRONG_CASES                 ; !not possible wit "e" in third grad
+
 
 !!€gt-norm: intelligænssa # Even-syllable test
 !!€ intelligænssa:                 intelligænssa+N+Sg+Nom
@@ -1211,9 +1213,9 @@ LEXICON PATÆNNTA_CMP_INFL !!= @CODE@ Recent loanwords on -ænnta with long and 
  +CmpNP/Pref+Cmp/Unass:ent%>      R                    ;
                       :ænnta      MUORRAInfl           ;
                       :ænnta      MUORRACmp            ;
-             +Err/Orth:ennta      MUORRAInfl           ; !not possible with e in 3.grade!
-             +Err/Orth:ennta      MUORRACmp            ;     
-      +Err/Orth:enta       ERR/ORTH_EVEN_STRONG_CASES                  ; !make old pasienta in nom
+            
+             +Err/Orth:ennta      ERR/ORTH_EVEN_STRONG_CASES           ; !not possible with e in 3.grade!
+             +Err/Orth:enta       ERR/ORTH_EVEN_STRONG_CASES           ; !make old pasienta in nom
  
 !!€gt-norm: patænnta # Even-syllable test
 !!€ patænnta:                 patænnta+N+Sg+Nom
@@ -1317,7 +1319,7 @@ LEXICON A_CMP_INFL !!= @CODE@  Sub-forms. Lexicon for giving sub-variation conju
  +Cmp/PlGen:a%>j R                    ;
 
 
-LEXICON ERR/ORTH_EVEN_WEAK_CASES != @CODE@ Even stem Err/orth lexicon without nominative, illative and essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag. Entries like "ålggo" have no grade alternation, a common error is writing it like it has, ålggo>ålgov. tálla>tálav, klimáksa>klimáksav, prefiksa>prefiksav, barggo>barggov
+LEXICON ERR/ORTH_EVEN_WEAK_CASES !!= @CODE@ Even stem Err/orth lexicon without nominative, illative and essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag. Entries like "ålggo" have no grade alternation, a common error is writing it like it has, ålggo>ålgov. tálla>tálav, klimáksa>klimáksav, prefiksa>prefiksav, barggo>barggov
 
           :%>Q4  N-EVENWEAKSTEM       ; ! Q4=Stem vowel change e:i and o:u in front of j. Dipht. simpl. Like Q1 but strong grade.          
 +Cmp/SgGen:      R ;
@@ -1326,7 +1328,7 @@ LEXICON ERR/ORTH_EVEN_WEAK_CASES != @CODE@ Even stem Err/orth lexicon without no
           :»Z2   DenominalAdjsV2      ; !-lasj Z2=vowel changes without WeG 
           
 
-LEXICON ERR/ORTH_EVEN_STRONG_CASES!= @CODE@ Even stem Err/orth lexicon with only nominative, illative and essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag. Hydrogena is used as nom and is err/orth, hydrogena>hydrogenav is not err/orth. marináda-nom, banána-nom
+LEXICON ERR/ORTH_EVEN_STRONG_CASES  !!= @CODE@ Even stem Err/orth lexicon with only nominative, illative and essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag. Hydrogena is used as nom and is err/orth, hydrogena>hydrogenav is not err/orth. marináda-nom, banána-nom
           :%>   N-EVENSTRONGSTEM     ;
 
 
@@ -2556,7 +2558,8 @@ LEXICON ACTOR
                              +Gram/NomAg:%>Y6 ACTORILL       ;
                              +Gram/NomAg:%>Y6 N-EVENWEAKSTEM ;
   +Gram/NomAg+CmpN/SgN+CmpN/SgG+CmpN/PlG:%>Y6 ACTORCmp       ; !
-                    +Gram/NomAg+Err/Orth:%>Q1 N-EVENWEAKSTEM ; !makes Err/Orths with weak grade, åhpadidjev... 
+  
+                    +Err/Orth+Gram/NomAg:%>Q1 N-EVENWEAKSTEM ; !makes Err/Orths with weak grade, åhpadidjev... 
 
 LEXICON IELLEM !!= @CODE@ Nomen actionionis derived from even verbs. Earlier these went directly to VSBST-ODD, now they get tag Gram/NomAct before going there. Can't put it in VSBST-ODD lexicon because paths from verb lexicons.  
 
