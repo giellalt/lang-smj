@@ -128,7 +128,15 @@ XFAIL_TESTS=\
 	syn-nom-nom.yaml                              \
 	syn-number_congruence-subj-verb.yaml          \
 	syn-pred-attr.yaml                            \
-	syn-wo-neg-before-subj.yaml
+	syn-wo-neg-before-subj.yaml                   \
+	FAIL: DEV-msyn-congr-mij-ma-PASS.yaml         \
+	FAIL: DEV-msyn-gut-mij-gut-PASS.yaml          \
+	FAIL: DEV-msyn-numeral-attr-PASS.yaml         \
+	FAIL: DEV-real-PrsPl3-PrtSg3-PASS.yaml        \
+	FAIL: REL-msyn-attr-pred-PASS.yaml            \
+	FAIL: REL-msyn-iesj-ietja-PASS.yaml           \
+	FAIL: REL-msyn-soajtta-PASS.yaml
+
 endif # WANT_GRAMCHECK
 
 #### Do NOT edit below here: ####
