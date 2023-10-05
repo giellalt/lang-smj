@@ -47,17 +47,6 @@ LEXICON MUORRAInfl
  +Err/Orth:»Z2  DenominalAdjsV2      ; !-lasj strong grade and with vowel changes, makes ájggálasj
  +Err/Orth:»Q1  DenominalAdjsV2      ; !-lasj weak grade but without vowel changes, makes ájgelasj 
 
-LEXICON MUORRAInfl_Err/Der_LASJ
-          :%>   N-EVENSTRONGSTEM     ;
-          :%>Q1 N-EVENWEAKSTEM       ; ! Weak grade Q1
-          :»    DenominalNounsMUORRA ;
-          :»    DenominalAdjsV1      ; !-dibme adj caritive derivation
-  +Err/Der:»X7  DenominalAdjsV2      ; !-lasj with weak grade and vowel changes, ájgálasj
- 
- +Err/Orth+Err/Der:»    DenominalAdjsV2      ; !-lasj strong grade and without vowel changes, makes ájggelasj
- +Err/Orth+Err/Der:»Z2  DenominalAdjsV2      ; !-lasj strong grade and with vowel changes, makes ájggálasj
- +Err/Orth+Err/Der:»Q1  DenominalAdjsV2      ; !-lasj weak grade but without vowel changes, makes ájgelasj 
-
 
 LEXICON ALMME !!= @CODE@ Same as MUORRA, but with special -LASJ derivation. For noun that have strong grade -lasj. "Almmelasj" instead of "almálasj" which is Err/Orth-taged..
 
@@ -702,11 +691,9 @@ LEXICON AGRONÅVMMÅ
 LEXICON AGRONÅVMMÅ_CMP_INFL !!= @CODE@ Recent loanwords on -åvmma with long and short compound-form. -lasj derivation is error taged. The old stadarization form  -oma that does not follow lulesami rules is sub taged.
 
  +CmpNP/Pref+Cmp/Unass:om%>      R                                 ;
-            :åvmmå     MUORRAInfl_Err/Der_LASJ           ;
-            :åvmmå     MUORRACmp                         ; 
-    
-   +Err/Orth:åvmma     MUORRAInfl_Err/Der_LASJ           ; !without vowharmony
-   +Err/Orth:åvmma     MUORRACmp                         ; !without vowharmony 
+            :åvmmå    MUORRA_LOAN_NO_LASJ           ;
+                
+   +Err/Orth:åvmma     MUORRA_LOAN_NO_LASJ           ; !without vowharmony
    +Err/Orth:om        A_CMP_INFL                        ; ! To get the form found in dictioneries "agronoma"
    
 
@@ -719,11 +706,9 @@ LEXICON DEMAGÅVGGÅ
 
 LEXICON DEMAGÅVGGÅ_CMP_INFL !!= @CODE@ Recent loanwords ending on -og with long and short compound form. Assimilated to smj as -åvggå. -lasj derivation is error taged. The old stadarization -oga that does not follow lulesami rules is sub taged.
  +CmpNP/Pref+Cmp/Unass:og%>      R                                 ;
-            :åvggå     MUORRAInfl_Err/Der_LASJ           ;
-            :åvggå     MUORRACmp                         ; 
+            :åvggå     MUORRA_LOAN_NO_LASJ           ;
 
-            +Err/Orth:åvgga   MUORRAInfl_Err/Der_LASJ    ; !Without vowharmony, used in northern areas
-            +Err/Orth:åvgga   MUORRACmp                  ; !Without vowharmony, used in northern areas
+            +Err/Orth:åvgga   MUORRA_LOAN_NO_LASJ; !Without vowharmony, used in northern areas
             +Err/Orth:og%>    A_CMP_INFL                 ; !makes the old "demagoga"
 
 !!€gt-norm: pedagoga # Even-syllable test
@@ -1140,19 +1125,19 @@ LEXICON TELEGRÁMMA_CMP_INFL !!= @CODE@ Recent loanwords on -ámºma with long a
 LEXICON TOPOGRÁFFA
  +OLang/NOB: TOPOGRÁFFA_CMP_INFL ;
 
-LEXICON TOPOGRÁFFA_CMP_INFL !!= @CODE@ Recent loanwords on -áfºfa with long and short compound-form
+LEXICON TOPOGRÁFFA_CMP_INFL !!= @CODE@ Recent loanwords on -áfºfa with long and short compound-form, no -lasj derivation since most of these words are humans. 
 
   +CmpNP/Pref+Cmp/Unass:af%>  R               ;
-                       :áfºfa MUORRAInfl      ;
-                       :áfºfa MUORRACmp       ;
+                       :áffa MUORRA_LOAN_NO_LASJ      ;
 
-!             +Err/Orth:áffa  MUORRA_ERR/ORTH ;
-              +Err/Orth:af    A_CMP_INFL      ; ! makes old telegrafa
-              +Err/Orth:áf    A_CMP_INFL      ; ! makes old telegráfa
+  +Err/Orth:af     A_CMP_INFL                 ; ! makes old telegrafa
+  +Err/Orth:áf     ERR/ORTH_EVEN_STRONG_CASES ; ! makes old telegráfa
+  +Err/Orth:áffa   ERR/ORTH_EVEN_WEAK_CASES   ; ! in dicts these words are often marked with f'f-ff
+
 
 !!€gt-norm: telegráffa # Even-syllable test
 !!€ telegráffa:                 telegráffa+N+Sg+Nom
-!!€ telegráffas:                telegráffa+N+Sg+Ela
+!!€ telegráfas:                telegráffa+N+Sg+Ela
 
 LEXICON SYSTIEBMA
  +OLang/NOB: SYSTIEBMA_CMP_INFL ;
@@ -1285,8 +1270,7 @@ LEXICON TURISSTA
 LEXICON TURISSTA_CMP_INFL !!= @CODE@ Recent loanwords on -ssta with long and short compound-form. -lasj derivation is error taged.  Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
  +CmpNP/Pref+Cmp/Unass:st9%> R                          ;
-                      :ssta  MUORRAInfl_Err/Der_LASJ    ;
-                      :ssta  MUORRACmp                  ;
+                      :ssta  MUORRA_LOAN_NO_LASJ    ;
                       
              +Err/Orth:ista  ERR/ORTH_EVEN_STRONG_CASES ; !make old turista in nom
 
