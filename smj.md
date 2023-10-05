@@ -955,11 +955,11 @@ LEXICON TELEGRÁMMA_CMP_INFL  Recent loanwords on -ámºma with long and short c
 * *grámma:* `grámma+N+Sg+Nom`
 * *grámmas:* `grámma+N+Sg+Ela`
 
-LEXICON TOPOGRÁFFA_CMP_INFL  Recent loanwords on -áfºfa with long and short compound-form
+LEXICON TOPOGRÁFFA_CMP_INFL  Recent loanwords on -áfºfa with long and short compound-form, no -lasj derivation since most of these words are humans. 
 
 * telegráffa # Even-syllable test examples:*
 * *telegráffa:* `telegráffa+N+Sg+Nom`
-* *telegráffas:* `telegráffa+N+Sg+Ela`
+* *telegráfas:* `telegráffa+N+Sg+Ela`
 
 LEXICON SYSTIEBMA_CMP_INFL  Recent loanwords on -ebma/-iebma with long and short compound-form. -em in NOR and SWE. See comments about the -ie/-e dialtags in ALFABIEHTTA. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
@@ -4410,6 +4410,7 @@ sme mojonjálmmiid
 LOAN
 LOAN
 LOAN
+
 LOAN SWE altar
 
 * * *
