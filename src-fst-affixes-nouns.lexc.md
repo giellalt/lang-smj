@@ -198,6 +198,12 @@ LEXICON DEMAGÅVGGÅ_CMP_INFL  Recent loanwords ending on -og with long and shor
 * *pedagåvggå:* `pedagåvggå+N+Sg+Nom`
 * *pedagåvgås:* `pedagåvggå+N+Sg+Ela`
 
+LEXICON LAKTÅVSSÅ_CMP_INFL  Recent loanwords ending on -ose in nrowegian and -os in swedish, with long and short compound form. Assimilated to smj as -åvsså. The old stadarization -oga that does not follow lulesami rules is sub taged.
+
+* pedagoga # Even-syllable test examples:*
+* *laktåvsså:* `laktåvsså+N+Sg+Nom`
+* *laktåvsås:* `laktåvsså+N+Sg+Ela`
+
 LEXICON FAKTÅVRRÅ_CMP_INFL  Recent loanwords on -åvrrå with long and short compound-form.
 
 LEXICON MIKROSKÅVPPÅ_CMP_INFL  Recent loanwords on -åvppå (-op in NOB/SWE) with long and short compound-form.  Long vowel and short consonant is assimilated with njuoban, but somehow a lot of -op words are assimilated -oahppa (biskop is pronounced as -opp, so that's different, maybe some have used "biskop" as template), so this is Err/Orth taged. 
