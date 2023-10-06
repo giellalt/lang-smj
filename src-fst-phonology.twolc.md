@@ -196,7 +196,7 @@ All rules deal with word-final position.
 * *iemed9#*
 * *iemet#*
 
-**Word Final Devoicing of Certain Single Consonants m9-v **  ! Spilt up because of err/orths ending on v, gierkav> we wnt err/orth gierkkam 
+**Word Final Devoicing of Certain Single Consonants m9-v **  ! Spilt up because of err/orths ending on v, gierkav> we want err/orth gierkkam 
 
 * *gierkkam9>Q1*
 * *gier0kav>0*
