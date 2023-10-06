@@ -2957,10 +2957,9 @@ All rules deal with word-final position.
 * *iemet#*
 
 **Word Final Devoicing of Certain Single Consonants m9-v **  ! Spilt up because of err/orths ending on v, gierkav> we wnt err/orth gierkkam 
+
 * *gierkkam9>Q1*
 * *gier0kav>0*
-
-**Word Final Devoicing of Certain Single Consonants m9-m **  ! Err/orth rule making v>m in nominatives
 
 **Err/Orths. **  
 
