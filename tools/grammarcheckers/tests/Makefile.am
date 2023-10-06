@@ -133,7 +133,6 @@ XFAIL_TESTS=\
 	FAIL: DEV-msyn-gut-mij-gut-PASS.yaml          \
 	FAIL: DEV-msyn-numeral-attr-PASS.yaml         \
 	FAIL: DEV-real-PrsPl3-PrtSg3-PASS.yaml        \
-	FAIL: REL-msyn-attr-pred-PASS.yaml            \
 	FAIL: REL-msyn-iesj-ietja-PASS.yaml           \
 	FAIL: REL-msyn-soajtta-PASS.yaml
 
