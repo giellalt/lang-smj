@@ -1389,6 +1389,8 @@ SET NOT-ADV-INDEF      = NOT-ADV - Indef ;
 SET NOT-ADV-PCLE-ILL-LOC-COM = WORD - Adv - Pcle - Ill - Ine - Ela - Com;
 SET NOT-A-ADV-PCLE = WORD - Pcle - A - Adv ; #
 
+#!! ### Relations
+
 
 
 #!! ### Sets of elements with common syntactic behaviour
@@ -3445,8 +3447,17 @@ ADD:xmsyn-numeral-attr (&msyn-numeral-attr) TARGET (Pl) IF ((0 N) OR (0 NUMUNIT 
 COPY:msyn-numeral-attr (Sg &SUGGEST) EXCEPT (Pl &msyn-numeral-attr) BEFORE CASE TARGET (&msyn-numeral-attr)  ;
 
 LIST NUM-PHRASE = NUM-PHRASE ;
+LIST NP-AFTER-NUM = NP-AFTER-NUM ;
     
-ADDRELATION  NUM-PHRASE &msyn-numeral-attr TO (*-1 Num BARRIER (*) - (A Attr)) ;
+ADDRELATIONS (NUM-PHRASE) (NP-AFTER-NUM) &msyn-numeral-attr TO (*-1 Num BARRIER (*) - (A Attr)) ;
+
+ADD:num-phrase  (&LINK)  TARGET (*) IF (r:NP-AFTER-NUM (&msyn-numeral-attr));
+		
+		# FROM THE MANUAL: 
+		# ----------------
+		# ADDRELATIONS (name) (name) targetset (-1* ("someword"))
+		#        TO (1* (@candidate)) (2 SomeSet) ;
+
 
     # homonomy beetween pl ine and sg com
 ADD:xmsyn-numeral-attr-pl-ine (&msyn-numeral-attr-pl-ine) TARGET (Pl Ine) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Ine) OR (Num Arab Ine) OR (Num Pl Nom) OR (Num Sg Acc) BARRIER NOT-Attr - Gen LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date LINK NEGATE -1 Sem/Curr) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) ;
