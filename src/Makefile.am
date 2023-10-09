@@ -225,6 +225,9 @@ analyser-tts-gt-input.hfst: analyser-tts-gt-input.tmp.hfst \
 
 # The SMJ morphology has some extra tags used for marking questionable
 # normativity and our suggested norm:
+analyser-gt-desc.hfst\
+analyser-gt-desc.foma\
+analyser-gt-desc.xfst: \
 analyser-gt-desc.%: analyser-gt-desc.tmp.% \
 					filters/remove-derivation-position-tags.% \
 					filters/remove-grammatical-tags.%         \
@@ -245,6 +248,8 @@ analyser-gt-desc.%: analyser-gt-desc.tmp.% \
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
+analyser-gt-norm.hfst\
+analyser-gt-norm.foma: \
 analyser-gt-norm.%: analyser-gt-norm.tmp.%                                \
 					filters/remove-derivation-position-tags.%             \
 					filters/remove-DNorm-tags.%                           \
@@ -308,6 +313,9 @@ analyser-gt-norm.xfst: analyser-gt-norm.tmp.xfst \
 #
 
 # ... and also in the Oahpa analyser:
+analyser-oahpa-gt-norm.hfst\
+analyser-oahpa-gt-norm.foma\
+analyser-oahpa-gt-norm.xfst: \
 analyser-oahpa-gt-norm.%: analyser-gt-norm.tmp.% \
 					filters/remove-derivation-position-tags.% \
 					filters/remove-grammatical-tags.%         \
@@ -360,6 +368,9 @@ analyser-pmatchdisamb-gt-desc.hfst: analyser-pmatchdisamb-gt-desc.tmp.hfst \
 
 
 # ... as well as in the disambiguation analyser:
+analyser-disamb-gt-desc.hfst \
+analyser-disamb-gt-desc.foma \
+analyser-disamb-gt-desc.xfst:\
 analyser-disamb-gt-desc.%: analyser-disamb-gt-desc.tmp.%      \
 				    filters/remove-dialect-tags.%             \
 				    filters/remove-area-tags.%                \
@@ -453,6 +464,8 @@ generator-gt-norm.xfst: generator-gt-norm.tmp.xfst                \
 #
 
 # gt-norm for Foma and Hfst:
+generator-gt-norm.hfst\
+generator-gt-norm.foma: \
 generator-gt-norm.%: generator-gt-norm.tmp.%                   \
 					 filters/remove-derivation-position-tags.% \
 					 filters/remove-norm-comp-tags.%           \
@@ -493,6 +506,9 @@ generator-gt-norm.%: generator-gt-norm.tmp.%                   \
 		 quit\n" | $(XFST_TOOL)
 
 # Descriptive generators:
+generator-gt-desc.hfst\
+generator-gt-desc.foma\
+generator-gt-desc.xfst:\
 generator-gt-desc.%: generator-gt-desc.tmp.%                   \
 					 filters/remove-derivation-position-tags.% \
 					 filters/remove-norm-comp-tags.%           \
