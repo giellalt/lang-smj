@@ -218,6 +218,13 @@ LEXICON KULTUVRRA_CMP_INFL  Recent loanwords on -vrra with long and short compou
 * *muvrra:* `muvrra+N+Sg+Nom`
 * *muvrajn:* `muvrra+N+Sg+Com`
 
+LEXICON TERAPÆVTTA_CMP_INFL  Recent loanwords on -ævtta/ievtta with long and short compound-form. No -lasj derivation. Frequently typos that does not follow lulesami rules are sub taged; These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
+
+* muvrra # Even-syllable test examples:*
+* *terapævtta:* `terapævtta+N+Sg+Nom`
+* *terapievtta:* `terapævtta+N+Sg+Nom`
+* *terapevtajn:* `terapævtta+N+Sg+Com`
+
 LEXICON ADVÆRBBA_CMP_INFL  Recent loanwords on -ærbba with long and short compound-form
 
 * detransitijvvaværbba # Even-syllable test examples:*
