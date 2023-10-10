@@ -2961,6 +2961,15 @@ All rules deal with word-final position.
 * *gierkkam9>Q1*
 * *gier0kav>0*
 
+* *gierkkam9>a*
+* *gierkkam>a*
+
+* *gierkkam9>ij*
+* *gierkkam>ij*
+
+* *gierkkam9>Q1X1n*
+* *gier0ka0>00n*
+
 **Err/Orths. **  
 
 **Word final weakening -tj and -ttj to -sj part 1**  
