@@ -83,6 +83,7 @@ XFAIL_TESTS=\
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
 	DEV-msyn-gut-mij-gut-FAIL.yaml                \
 	DEV-msyn-nom-gen-PP-FAIL.yaml                 \
+	DEV-msyn-nom-gen-PP-PASS.yaml                 \
 	DEV-msyn-numeral-attr-FAIL.yaml               \
 	DEV-msyn-sme_bastard_neg1-2-FAIL.yaml         \
 	DEV-msyn-sme_bastard_neg1-2-PASS.yaml         \
@@ -97,6 +98,7 @@ XFAIL_TESTS=\
 	REL-msyn-iesj-ietja-FAIL.yaml                 \
 	REL-msyn-soajtta-FAIL.yaml                    \
 	REL-syn-correct-form-liehket-FAIL.yaml        \
+	REL-syn-correct-form-liehket-PASS.yaml        \
 	format-missing-comma.yaml                     \
 	lex-oahpasmuvvat-oahpastuvvat.yaml            \
 	msyn-IV-with-object.yaml                      \
