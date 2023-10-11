@@ -222,8 +222,10 @@ LEXICON TERAPÆVTTA_CMP_INFL  Recent loanwords on -ævtta/ievtta with long and s
 
 * muvrra # Even-syllable test examples:*
 * *terapævtta:* `terapævtta+N+Sg+Nom`
+* *terapävtta:* `terapævtta+N+Sg+Nom`
 * *terapievtta:* `terapævtta+N+Sg+Nom`
 * *terapevtajn:* `terapævtta+N+Sg+Com`
+* *terapievtajn:* `terapævtta+N+Sg+Com`
 
 LEXICON ADVÆRBBA_CMP_INFL  Recent loanwords on -ærbba with long and short compound-form
 

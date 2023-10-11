@@ -836,8 +836,10 @@ LEXICON TERAPÆVTTA_CMP_INFL  Recent loanwords on -ævtta/ievtta with long and s
 
 * muvrra # Even-syllable test examples:*
 * *terapævtta:* `terapævtta+N+Sg+Nom`
+* *terapävtta:* `terapævtta+N+Sg+Nom`
 * *terapievtta:* `terapævtta+N+Sg+Nom`
 * *terapevtajn:* `terapævtta+N+Sg+Com`
+* *terapievtajn:* `terapævtta+N+Sg+Com`
 
 LEXICON ADVÆRBBA_CMP_INFL  Recent loanwords on -ærbba with long and short compound-form
 
@@ -2873,6 +2875,7 @@ OBS: the definitions are not all correct or sufficiently specific
 * ****Ø2:0** : optional e**: i when followed by any conc (not only j). Not smj grammar, made only for Err/Orths ! "iednida"   
 * ****Ø3:0** : Not smj grammar, made only for nominative Err/Orths: málles>mállás e:á, e:å, o:u, 
 * ****Ø4:0** : Not smj grammar, made only for Err/Orths: changes h:j, b:p, t:d, m:v in contexts where it isn't supposed to change making err/orths as "årojij" (not g:k because og BENA lexicon)
+* ****Ø5:0****:  Same as Q3, but without WeG. For contraced stems. 
 
 ### Morpheme boundaries:
 * **** «  ****:  Derivational prefix
@@ -4431,7 +4434,6 @@ sme mojonjálmmiid
 LOAN
 LOAN
 LOAN
-
 LOAN SWE altar
 
 * * *

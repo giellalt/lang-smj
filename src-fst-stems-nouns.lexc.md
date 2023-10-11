@@ -5,7 +5,6 @@
 LOAN
 LOAN
 LOAN
-
 LOAN SWE altar
 
 * * *
