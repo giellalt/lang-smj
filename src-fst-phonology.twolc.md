@@ -106,7 +106,6 @@ OBS: the definitions are not all correct or sufficiently specific
 * ****Ø2:0** : optional e**: i when followed by any conc (not only j). Not smj grammar, made only for Err/Orths ! "iednida"   
 * ****Ø3:0** : Not smj grammar, made only for nominative Err/Orths: málles>mállás e:á, e:å, o:u, 
 * ****Ø4:0** : Not smj grammar, made only for Err/Orths: changes h:j, b:p, t:d, m:v in contexts where it isn't supposed to change making err/orths as "årojij" (not g:k because og BENA lexicon)
-* ****Ø5:0****:  Same as Q3, but without WeG. For contraced stems. 
 
 ### Morpheme boundaries:
 * **** «  ****:  Derivational prefix
