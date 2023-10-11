@@ -763,6 +763,7 @@ LEXICON ÅLMÅJ_LOAN  Same as SUOLOJ, only for loan words. Follows Ráhka/Mikkel
 * bistroj # Contracted test examples:*
 * *bistroj:* `bistroj+N+Sg+Nom`
 * *bisstruv:* `bistroj+N+Sg+Acc`
+* *bisstruhav:* `bistroj+N+Sg+Acc`
 
 LEXICON GUOMOJ  C-final with cg I-III: guomoj:guobbmu
 
