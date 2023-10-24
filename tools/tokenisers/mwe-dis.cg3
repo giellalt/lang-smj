@@ -20,6 +20,13 @@ LIST EOS = (<<<) (</s>);
 # Tags declared as single-membered LISTs 
 # ======================================
 
+LIST Gram/IAbbr = Gram/IAbbr ;
+LIST Gram/TAbbr = Gram/TAbbr ;
+LIST Gram/NoAbbr = Gram/NoAbbr ;
+LIST Gram/TNumAbbr = Gram/TNumAbbr ;
+LIST Gram/TIAbbr = Gram/TIAbbr ;
+LIST Gram/3syll = Gram/3syll ;
+
 # Parts of speech
 # ---------------
 
@@ -1460,6 +1467,17 @@ LIST INITIAL = "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m"
 LIST CAP-INITIAL = "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M"
         "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z"
         "Á" "Æ" "Ø" "Å" "Ö" "Ä" ;
+        
+# Whitespace tags
+# ---------------
+
+LIST <doubleSpaceBefore> = <doubleSpaceBefore> ;
+LIST <firstWordOfParagraph> = <firstWordOfParagraph> ;
+LIST <spaceAfterParenBeg> = <spaceAfterParenBeg> ;
+LIST <spaceBeforeParenEnd> = <spaceBeforeParenEnd> ;
+LIST <SpaceBeforePunctMark> = <SpaceBeforePunctMark> ;
+LIST <NoSpaceAfterPunctMark> = <NoSpaceAfterPunctMark> ;
+
 
 # Tag sets
 # ========
@@ -1996,6 +2014,35 @@ SECTION
 #
 #   (1*> (>>>) BARRIER (>>>) LINK 1 <firstWordOfFollowingSentence>)
 #
+
+	# currency
+	
+	
+REMOVE:num-before-curr ("." CLB) IF (0 Num)(1*> (>>>) BARRIER (>>>) LINK 1 Sem/Curr OR ("kr")); 	
+	## Máhttu davviguovlluid birra ja davviguovlluid várás deattuhuvvo ja danne lea ráđđehus jagi 2007 duppalastán juolludemiid Barents 2020 jahkái 20 milj. ruvnno rádjái.
+	## Sámi dáiddamuseii lea 2006:s biddjon 1 mill. kr. plánendoarjjan ja 10 mill. kr. 2007:s.
+	
+
+REMOVE ("." CLB) IF (0 Sem/Curr OR ("kr"))(1*> (>>>) BARRIER (>>>) LINK 1 Sem/Curr); 	
+	## 1900-logu álggu rájes lea universitehtain leamaš dálá grádavuogádat, mas leat vuođđofága, gaskafága ja váldofága ja grádat nugo cand.mag. ja cand.real{.} Dan sadjái galget dál šaddat riikkaidgaskasaš grádat Bachelor (BA) ja Master MA).
+
+# Ruđalaččat lea dus buorre dilli , ja oaččut áinnas udno alccet juoidá maid guhká leat áibbašan
+REMOVE (Err/SpaceCmp) (0/1 ("buorre") + $$CASE)(0 $$CASE);
+REMOVE (Err/SpaceCmp) (0/1 ("buorre"));
+
+SELECT:before-paragraph ("." CLB) IF (1*> (>>>) BARRIER (>>>) LINK 1 <firstWordOfParagraph>);
+	## Dat lea eanet go 10.  <linjeshift> Dat lei boahtán.
+
+
+# Preprocessing (testing for now)
+
+SELECT:iabbr PUNCT IF (0 Gram/IAbbr)(1 Prop);
+
+REMOVE:tabbr PUNCT IF (0 Gram/TAbbr)(1 Prop);
+
+	# Merethe A. Hanssen lea boahtán.
+	# Bođii Merethe A. Hansen lea boahtán.
+
 
 	# some initials
 
