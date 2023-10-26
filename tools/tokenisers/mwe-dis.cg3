@@ -2056,7 +2056,7 @@ REMOVE:sentenceboundary ("." CLB) IF (0 ABBR OR Num) (1*> (>>>) BARRIER (>>>) LI
 SELECT:sentenceboundary ("." CLB) IF (0 ABBR) (1*> (>>>) BARRIER (>>>) LINK 1 ("<[A-ZÅÁØ].*>"r) LINK NOT 0 Prop) ;
     ## Dåhku jåhtet lij ållu ietjálágásj ja vehik gássjel danen gå divna lij ådå. Ja diedon riek geldulasj aj.
 
-SELECT:sentenceboundary ("." CLB) IF ( 0 ABBR ) (1*> (>>>) BARRIER (>>>) LINK 1 ("<[A-ZÅÁØ].*>"r) + (Prop Nom) ) (NEGATE *-1 BOS LINK 1  CS ) ;
+SELECT:sentenceboundary ("." CLB) IF (0 ABBR LINK NOT 0 Gram/TAbbr) (1*> (>>>) BARRIER (>>>) LINK 1 ("<[A-ZÅÁØ].*>"r) + (Prop Nom) ) (NEGATE *-1 BOS LINK 1  CS ) ;
     ## Dåhku jåhtet lij ållu ietjálágásj ja vehik gássjel danen gå divna lij ådå. Valla diedon riek geldulasj aj.
    ## Dåhku jåhtet lij ållu ietjálágásj ja vehik gássjel danen gå divna lij ådå. Ájluokta le fijna bájkke.
    ## Jus prosjækta gærggá ådå. Iŋŋgá máhttá dasi sæbrrat. - ABBR
