@@ -260,6 +260,7 @@ LIST Err/Orth-any = Err/Infl Err/Lex Err/Der Err/Orth Err/Orth-a-á Err/Orth-nom
 LIST Err/Orth-spes = Err/Orth-a-á Err/Orth-nom-gen Err/Orth-nom-acc Err/DerSub Err/CmpSub Err/UnspaceCmp Err/HyphSub Err/SpaceCmp Err/Spellrelax err_orth_a_á_mt err_orth_nom_acc_mt err_orth_nom_gen_mt  ;
 # The last tags in Err/Orth sets are for Apertium
 
+
 # Noun tags
 
 LIST LOC = Ine Ela ; # This set since we imported sme rules, all LOCs must be revised.
@@ -3325,7 +3326,8 @@ SELECT Gen (-1 Indef OR Adv OR V-TRANS-ACT-NOT-ACT)(0 Nom LINK 1 CC LINK 1 Gen L
 	## Áhttje , hievedav alme ja ednama härráv.
 
 #SELECT Gen (-1 COMMA LINK -1C Acc)(0 Nom LINK 1 CC LINK 1 Gen LINK *1 Acc BARRIER NPNH) ;
-SELECT Gen (0 Nom LINK 1 (N Acc) LINK 1 COMMA OR EOC);
+SELECT Gen (0 Nom LINK 1 (N Acc) LINK 1 COMMA OR EOC)(NEGATE 0 (Ind Sg3));
+	#$GRAM Pivotmetåvdå baktu li 40% nuorttasámegielbágojs oadtjum julevsáme jårggålusáv, dájs ælla gal divna buore gå visses bágo máhtti oadtjot moadda sierra jårggålusá ja daj gaskan li aj boastojårggålusá gå pivotmetåvddå {buvtat} báhkopárajt ma e duodaj gávnnu gielaj gaskan.
 SELECT Gen (1 @CNP LINK 1C Gen)(0 Nom);
 	## Áhttje , hievedav duv , alme ja ednama härráv.
 
@@ -3676,19 +3678,19 @@ SELECT (Gen) IF (*-1 VFIN)(0C N LINK 0 Com OR Ill)(1C N);
 
 # Sg Ill = Pl Com =  Pl Gen (if no CG)
 
-SELECT Ill IF (*-1 ILL-ADJ BARRIER NOT-ADJ)(0 N);
-SELECT Ill IF (0 N)(*1 ILL-ADJ BARRIER NOT-ADJ-PCLE);
+SELECT Ill - Err/Orth-any IF (*-1 ILL-ADJ BARRIER NOT-ADJ)(0 N);
+SELECT Ill - Err/Orth-any IF (0 N)(*1 ILL-ADJ BARRIER NOT-ADJ-PCLE);
 
-SELECT (N Ill) IF (*-1C (Num Gen))(NEGATE 0 Gen);
+SELECT (N Ill) - Err/Orth-any IF (*-1C (Num Gen))(NEGATE 0 Gen);
 
-SELECT Ill IF (*-1 ILLV BARRIER SV-BOUNDARY2 OR Ill LINK NOT -1 Ill);
-SELECT Ill IF (*1 ILLV BARRIER SV-BOUNDARY2 OR Ill)(NOT -1 Ill);
+SELECT Ill - Err/Orth-any IF (*-1 ILLV BARRIER SV-BOUNDARY2 OR Ill LINK NOT -1 Ill);
+SELECT Ill - Err/Orth-any IF (*1 ILLV BARRIER SV-BOUNDARY2 OR Ill)(NOT -1 Ill);
 	## Habssa dabrijdij njunnjáj.
-SELECT Ill IF (*-1 CC BARRIER NPNH LINK -1 Ill LINK -1* ILLV BARRIER SV-BOUNDARY2);
+SELECT Ill - Err/Orth-any IF (*-1 CC BARRIER NPNH LINK -1 Ill LINK -1* ILLV BARRIER SV-BOUNDARY2);
 	## Åhpadus sámegielan galggá viehkedit mánájt ja nuorajt oassálastátjit sáme kultuvrraj ja sebrudakiellemij.
 
 
-SELECT Ill IF (*-1 TV + Der/Pass BARRIER SV-BOUNDARY2);   
+SELECT Ill - Err/Orth-any IF (*-1 TV + Der/Pass BARRIER SV-BOUNDARY2);   
 	## Mån bårådalliv bednagij.
     
 
