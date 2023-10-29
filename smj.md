@@ -10,6 +10,9 @@ All documents in one file
 
 * **IfonlyVerb** selects the FMAINV reading in the cohort
 
+Go for minimal weight (requires --with-backend-format=openfst-tropical)
+* @NO CODE@
+
 # Removing Err/Orth
 
 * * *
