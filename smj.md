@@ -4746,21 +4746,20 @@ which numerals are complements and normal words. The abbreviation usage
 is less common and thus only the occurences in the middle of
 the sentence can be considered as true cases.
 
-Miscellaneous symbols
-
-Smileys
-
-Emojies
-
-* Clause boundary symbols
-
-* Single punctuation marks
-
-* Paired punctuation marks
-
 * * *
 
 <small>This (part of) documentation was generated from [src/transcriptions/transcriptor-abbrevs2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-abbrevs2text.lexc)</small>
+
+---
+
+
+
+We describe here how abbreviations in Lule Sami are read out, e.g.
+for text-to-speech systems.
+
+* * *
+
+<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-acro2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-acro2text.lexc)</small>
 
 ---
 
@@ -4779,6 +4778,29 @@ This is still a dummy file.
 * * *
 
 <small>This (part of) documentation was generated from [src/transcriptions/transcriptor-numbers-digit2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
+
+---
+
+
+
+We describe here how abbreviations in Lule Sami are read out, e.g.
+for text-to-speech systems.
+
+Miscellaneous symbols
+
+Smileys
+
+Emojies
+
+* Clause boundary symbols
+
+* Single punctuation marks
+
+* Paired punctuation marks
+
+* * *
+
+<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-symbols2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-symbols2text.lexc)</small>
 
 ---
 

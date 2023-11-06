@@ -27,8 +27,10 @@
     * `transcriptions/`
         * [clock-from-old-infra.lexc](src-transcriptions-clock-from-old-infra.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/clock-from-old-infra.lexc))
         * [transcriptor-abbrevs2text.lexc](src-transcriptions-transcriptor-abbrevs2text.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-abbrevs2text.lexc))
+        * [transcriptor-acro2text.lexc](src-transcriptions-transcriptor-acro2text.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-acro2text.lexc))
         * [transcriptor-date-digit2text.lexc](src-transcriptions-transcriptor-date-digit2text.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-date-digit2text.lexc))
         * [transcriptor-numbers-digit2text.lexc](src-transcriptions-transcriptor-numbers-digit2text.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-numbers-digit2text.lexc))
+        * [transcriptor-symbols2text.lexc](src-transcriptions-transcriptor-symbols2text.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-symbols2text.lexc))
 * `tools/`
     * `grammarcheckers/`
         * [grammarchecker.cg3](tools-grammarcheckers-grammarchecker.cg3.html) ([src](https://github.com/giellalt/lang-smj/blob/main/tools/grammarcheckers/grammarchecker.cg3))
