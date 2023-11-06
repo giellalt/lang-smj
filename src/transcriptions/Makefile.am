@@ -24,8 +24,11 @@ GT_TRANSCRIPTIONS_SRCS=\
 		transcriptor-clock-digit2text.lexc \
 		transcriptor-date-digit2text.lexc \
 		transcriptor-numbers-digit2text.lexc
-#! @param GT_ABBREV_SRCS required, for abbreviation expansions
-GT_ABBREV_SRCS=transcriptor-abbrevs2text.lexc
+#! @param GT_ABBREV_SRCS required, for abbreviation and other string expansions
+GT_ABBREV_SRCS=\
+		transcriptor-abbrevs2text.lexc \
+		transcriptor-acro2text.lexc \
+		transcriptor-symbols2text.lexc
 
 GT_TRANSCRIPTIONS_REGEX_SRCS=transcriptor-numbers-arabic2roman.regex
 
