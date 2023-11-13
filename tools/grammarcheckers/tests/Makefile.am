@@ -78,15 +78,13 @@ TESTS=\
 	syn-wo-neg-before-subj.yaml
 
 # List tests that are presently (expected) failures here, ie things that should
-# be fixed *later*, but is not critical at the moment:
+# be fixed *later*, but is not cDEV-msyn-gut-mij-gut-FAIL.yamlritical at the moment:
 XFAIL_TESTS=\
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
 	DEV-msyn-gut-mij-gut-FAIL.yaml                \
 	DEV-msyn-nom-gen-PP-FAIL.yaml                 \
-	DEV-msyn-nom-gen-PP-PASS.yaml                 \
 	DEV-msyn-numeral-attr-FAIL.yaml               \
 	DEV-msyn-sme_bastard_neg1-2-FAIL.yaml         \
-	DEV-msyn-sme_bastard_neg1-2-PASS.yaml         \
 	DEV-real-PrsPl3-PrtSg3-FAIL.yaml              \
 	DEV-real-PrtSg3-PrsPl3-FAIL.yaml              \
 	DEV-real-habbmim-FAIL.yaml                    \
@@ -98,7 +96,6 @@ XFAIL_TESTS=\
 	REL-msyn-iesj-ietja-FAIL.yaml                 \
 	REL-msyn-soajtta-FAIL.yaml                    \
 	REL-syn-correct-form-liehket-FAIL.yaml        \
-	REL-syn-correct-form-liehket-PASS.yaml        \
 	format-missing-comma.yaml                     \
 	lex-oahpasmuvvat-oahpastuvvat.yaml            \
 	msyn-IV-with-object.yaml                      \
@@ -130,13 +127,7 @@ XFAIL_TESTS=\
 	syn-nom-nom.yaml                              \
 	syn-number_congruence-subj-verb.yaml          \
 	syn-pred-attr.yaml                            \
-	syn-wo-neg-before-subj.yaml                   \
-	FAIL: DEV-msyn-congr-mij-ma-PASS.yaml         \
-	FAIL: DEV-msyn-gut-mij-gut-PASS.yaml          \
-	FAIL: DEV-msyn-numeral-attr-PASS.yaml         \
-	FAIL: DEV-real-PrsPl3-PrtSg3-PASS.yaml        \
-	FAIL: REL-msyn-iesj-ietja-PASS.yaml           \
-	FAIL: REL-msyn-soajtta-PASS.yaml
+	syn-wo-neg-before-subj.yaml                   
 
 endif # WANT_GRAMCHECK
 
