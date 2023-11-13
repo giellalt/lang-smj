@@ -275,7 +275,7 @@ expression **WORD - premodifiers**.
 
 Error tags
 
-## moadde kerdi > moddii
+## moadda bále > moaddi
 
 * * *
 <small>This (part of) documentation was generated from [tools/grammarcheckers/grammarchecker.cg3](https://github.com/giellalt/lang-smj/blob/main/tools/grammarcheckers/grammarchecker.cg3)</small>
