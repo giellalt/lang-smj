@@ -84,6 +84,8 @@ XFAIL_TESTS=\
 	DEV-msyn-nom-gen-PP-FAIL.yaml                 \
 	DEV-msyn-numeral-attr-FAIL.yaml               \
 	DEV-msyn-sme_bastard_neg1-2-FAIL.yaml         \
+	DEV-real-NegSg3-NegSg2-FAIL.yaml              \
+	DEV-real-NegSg2-NegSg3-FAIL.yaml              \
 	DEV-real-PrsPl3-PrtSg3-FAIL.yaml              \
 	DEV-real-PrtSg3-PrsPl3-FAIL.yaml              \
 	DEV-syn-number_congruence-subj-verb-FAIL.yaml \
