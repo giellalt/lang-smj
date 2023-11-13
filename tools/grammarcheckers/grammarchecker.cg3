@@ -1842,19 +1842,31 @@ COPY:msyn-sme_bastard_neg2 (Der/PassL Ind ConNeg &SUGGEST) EXCEPT (Der/PassS Prf
 COPY:msyn-sme_bastard_neg2 (Ind ConNeg &SUGGEST) EXCEPT (PrfPrc &msyn-sme_bastard_neg2) TARGET (&msyn-sme_bastard_neg2) ;
 
 
-	#!! ## moadde kerdi > moddii
+	#!! ## moadda bále > moaddi
 
-ADD:xmsyn-moddii (&msyn-moddii) TARGET (Num Sg Nom) OR (Num Sg Gen) IF	(1 ("kerdi" N Sg Nom) OR ("kerdi" N Sg Gen));
-ADDRELATION (DELETE1) (Num &msyn-moddii) TO (1 ("kerdi" N Sg Nom) OR ("kerdi" N Sg Gen)) ;
+ADD:xmsyn-moaddi (&msyn-moaddi) TARGET ("moadda" Pron Indef Sg) OR (Num Sg Nom) OR (Num Sg Gen) OR (Num Sg Acc) IF (1 ("bálle" N Sg Gen));
 
-COPY:xmsyn-moddii ("moddii" Adv &SUGGEST) EXCEPT ("muáddi" Num Sg Nom &msyn-moddii) TARGET ("muáddi" &msyn-moddii);
+ADDRELATION (DELETE1) (Num &msyn-moaddi) TO (1 ("bálle" N Sg Gen)) ;
+
+COPY:xmsyn-moaddi ("moaddi" Adv &SUGGEST) EXCEPT ("moadda" Pron Indef Sg Nom &msyn-moaddi) OR ("moadda" Pron Indef Sg Acc &msyn-moaddi) OR ("moadda" Pron Indef Sg Gen &msyn-moaddi) OR ("moadda" Pron Indef Sg Ill Attr &msyn-moaddi) TARGET ("moadda" &msyn-moaddi);
+
 	## uáčču uáiniđ moolâviermi hiáilumin muáddi kerdi.
 
-COPY:xmsyn-moddii ("maŋgii" Adv &SUGGEST) EXCEPT ("maŋgâ" Num Sg Nom &msyn-moddii) TARGET ("maŋgâ" &msyn-moddii);
 
-COPY:xmsyn-moddii ("ohtii" Adv &SUGGEST) EXCEPT ("oovtâ" Num Sg Nom &msyn-moddii) TARGET ("oovtâ" &msyn-moddii);
+COPY:xmsyn-akti ("akta" Num Der/akti Adv &SUGGEST) EXCEPT ("akta" Num Sg Gen &msyn-moaddi) OR ("gålmmå" Num Sg Acc &msyn-moaddi) OR ("gålmmå" Num Sg Nom &msyn-moaddi) TARGET ("akta" Num &msyn-moaddi);
 
+COPY:xmsyn-guokti (Num Der/akti Adv &SUGGEST) EXCEPT (Num Sg Nom &msyn-moaddi) OR (Num Sg Acc &msyn-moaddi) TARGET (Num &msyn-moaddi) - ("akta") ;
 
+  ## Guovte bále la aj vuolev tsoabbmudam gå áhkásj , organissta Valborg Mangs Märak , la konsertav adnám Julevu Duobmogirkkon .
+  ## Sån juojgaj ja giehtoj  åvtå bále   .
+  
+  #$ Luondov galga tjábbát háldadit , ja ij divna guolev avta bále,  buojkut Jernsletten .
+  
+  #$ Mun borren guoli DUŠŠE oktii.
+  #$ Boran OLLES/VISOT/BUOT guoli oktanaga.
+  #$ Oktii EALLIMIS/JAGIS/MÁNUS boran guoli.
+  #$ ALE bora guoli oktanaga.
+  #$ ALE daga dan II oktiiGE.
 
     # soajttá as an adverb
     # ===================================================================================================
