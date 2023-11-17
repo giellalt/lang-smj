@@ -645,6 +645,49 @@ generator-gt-norm_%.$(1): generator-gt-norm_%.tmp.$(1) \
 endef
 $(foreach fst,hfst foma,$(eval $(call area_fsts,$(fst))))
 
+# Normative generator for TTS use:
+generator-tts-gt-norm.hfst\
+generator-tts-gt-norm.foma: \
+generator-tts-gt-norm.%: generator-tts-gt-norm.tmp.%                   \
+					 filters/remove-derivation-position-tags.% \
+					 filters/remove-norm-comp-tags.%           \
+					 filters/remove-DNorm-tags.%               \
+					 filters/remove-MinusSpell-strings.%       \
+					 filters/remove-use_mt-strings.%           \
+					 filters/make-optional-grammatical-tags.%  \
+					 filters/make-optional-lang_hom-tags.%     \
+					 filters/remove-illegal-derivation-strings-flagbased.% \
+					 filters/insert-default-compounding-tags.%             \
+					 filters/insert-default_left_compounding-tags.%        \
+					 filters/block-illegal_compound-strings.%              \
+					 filters/split-CmpN-tags.%                             \
+					 filters/convert_to_flags-CmpNP-tags.%                 \
+					 filters/split-CmpNP-tags.%                            \
+					filters/remove-usage-tags.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/remove-usage-tags.$*\"               \
+			.o. @\"filters/make-optional-grammatical-tags.$*\"  \
+			.o. @\"filters/make-optional-lang_hom-tags.$*\"     \
+			.o. @\"filters/remove-derivation-position-tags.$*\" \
+			.o. @\"filters/remove-norm-comp-tags.$*\"           \
+			.o. @\"filters/remove-DNorm-tags.$*\"               \
+			.o. @\"filters/block-illegal_compound-strings.$*\"              \
+			.o. @\"filters/split-CmpN-tags.$*\"                             \
+			.o. @\"filters/insert-default_left_compounding-tags.$*\"        \
+			.o. @\"filters/insert-default-compounding-tags.$*\"             \
+			.o. @\"filters/remove-illegal-derivation-strings-flagbased.$*\" \
+			.o. @\"filters/convert_to_flags-CmpNP-tags.$*\"                 \
+			.o. @\"filters/split-CmpNP-tags.$*\"                            \
+			.o. @\"filters/remove-MinusSpell-strings.$*\"                   \
+			.o. @\"filters/remove-use_mt-strings.$*\"                       \
+			.o. @\"$<\"                                          \
+			;\n\
+		 twosided flag-diacritics\n\
+		 $(INVERT_XFST)$(INVERT_FOMA)\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+
 # Include the scripts file in the distro to ensure we can convert the smi
 # propernouns file:
 EXTRA_DIST=scripts/smi-smj-conversion.pl
