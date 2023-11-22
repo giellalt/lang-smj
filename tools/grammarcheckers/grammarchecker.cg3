@@ -3608,8 +3608,10 @@ COPY:msyn-numeral-casecongr-com (Sg Com &SUGGEST) EXCEPT (Sg Gen) OR (Pl Gen) OR
     ## Foanndaj la jahkásattjat lasedibme kapitálas {guovte} miljåvnåjn gålmmå jahkáj.
     ## Sámedikken li aktisasjbarggosjiehtadusá {lågij} suohkanij ja nieljij fylkkasuohkanij.
 
-ADD:xmsyn-numeral-casecongr-ine (&msyn-numeral-casecongr-ine) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) IF (*1 (N Sg Ine) BARRIER NOT-NPMOD)(NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) ;
+ADD:xmsyn-numeral-casecongr-ine (&COERROR &msyn-numeral-casecongr-ine) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) IF (*1 (N Sg Ine) BARRIER NOT-NPMOD)(NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) ;
 	# those two rules belong together: xmsyn-numeral-casecongr-com and xmsyn-numeral-casecongr-ine
+
+ADDRELATION ($2) (&msyn-numeral-casecongr-ine) TO (*1 &msyn-numeral-attr-pl-ine);
 
 COPY:msyn-numeral-casecongr-ine (Sg Ine &SUGGEST) EXCEPT (Pl Ine) OR (Sg Com) OR (Pl Nom) OR (Sg Acc) TARGET (&msyn-numeral-casecongr-ine) ;
 	## Guokta gusájn li báktjasa. 
@@ -3721,7 +3723,9 @@ COPY:msyn-numeral-comcasecongr (Sg Com &SUGGEST) EXCEPT (Sg Gen &msyn-numeral-co
    # demonstrativ pronoun with attributive numerals
    # -------------------------------------------
 
-ADD:xmsyn-numerals-with-demopron (&msyn-numerals-with-demopron) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) LINK *1 (N Sg) BARRIER NOT-NPMOD - CC) ;
+ADD:xmsyn-numerals-with-demopron (&COERROR &msyn-numerals-with-demopron) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) LINK *1 (N Sg) BARRIER NOT-NPMOD - CC) ;
+
+ADDRELATION ($3) &msyn-numerals-with-demopron TO (*1 &msyn-numeral-attr-pl-ine);
 
 ADD:xmsyn-numerals-with-demopron (&msyn-numerals-with-demopron) TARGET (Pron Dem Pl Nom) IF (1 (Num Sg) LINK NOT 0 (Num Sg Nom) LINK *1 (N Sg) BARRIER NOT-NPMOD - CC) ;
 
@@ -3772,6 +3776,45 @@ COPY:msyn-numerals-with-demopron (Sg Ill Attr &SUGGEST) EXCEPT (Pl Com Attr &msy
   
 
 COPY:msyn-numerals-with-demopron-sgine (Sg Ine Attr &SUGGEST) EXCEPT (Pl Com Attr &msyn-numerals-with-demopron) OR (Pl Gen Attr &msyn-numerals-with-demopron) OR (Pl Com &msyn-numerals-with-demopron) OR (Pl Gen &msyn-numerals-with-demopron) OR (Pl Nom &msyn-numerals-with-demopron) OR (Pl Ine &msyn-numerals-with-demopron) OR (Pl Ine Attr &msyn-numerals-with-demopron) TARGET (&msyn-numerals-with-demopron) IF (*2 (N Sg Ine) OR (&msyn-numeral-attr-pl-ine) BARRIER NOT-NPMOD) ;
+
+	# Error with three parts and two correction alternatives:
+	## Gasskogárggásij tjálli oahppe mij la sæmmilágásj {dajn guovte kultuvrajn}. 
+	# alternative 1 > {dajna} {guovtijn} kultuvrajn (COM-variant)
+	# alternative 2 > {dan} {guovten} {kultuvran} (INE-variant)
+	# process: 1. mark and fix N -- ADD:3491:xmsyn-numeral-attr-pl-ine, COPY:3502:msyn-numeral-attr-pl-ine, COPY:3503:msyn-numeral-attr-pl-ine-suggesting-com
+	# 2. mark and fix Num -- ADD:3611:xmsyn-numeral-casecongr-ine COPY:3614:msyn-numeral-casecongr-ine ADD:3679:xmsyn-numeral-comcasecongr COPY:3683:msyn-numeral-comcasecongr
+	# 3. mark and fix Dem -- ADD:3724:xmsyn-numerals-with-demopron COPY:3774:msyn-numerals-with-demopron-sgine COPY:3776:msyn-numerals-with-demopron-sgcom
+	
+# "<dajn>"
+# ADD:3724:xmsyn-numerals-with-demopron 
+# COPY:3774:msyn-numerals-with-demopron-sgine 
+# COPY:3776:msyn-numerals-with-demopron-sgcom
+# dat+Pron+Dem+Sg+Ine+Attr        dan
+# dat+Pron+Dem+Sg+Com     dajna
+# : 
+# "<guovte>"
+# ADD:3611:xmsyn-numeral-casecongr-ine 
+# COPY:3614:msyn-numeral-casecongr-ine 
+# ADD:3679:xmsyn-numeral-comcasecongr 
+# COPY:3683:msyn-numeral-comcasecongr
+# msyn-numeral-comcasecongr
+# guokta+Num+Sg+Com       guovtijn
+# guokta+Num+Sg+Com       guovtijn
+# 
+# ADD:3561:xmsyn-numeral-casecongr 
+# COPY:3597:msyn-numeral-casecongr 
+# ADD:3603:xmsyn-numeral-casecongr-com 
+# guokta+Num+Sg+Com       guovtijn
+# guokta+Num+Sg+Ine       guovten,guovten
+# : 
+# "<kultuvrajn>"
+# ADD:3491:xmsyn-numeral-attr-pl-ine 
+# COPY:3502:msyn-numeral-attr-pl-ine 
+# COPY:3503:msyn-numeral-attr-pl-ine-suggesting-com
+# kultuvrra+N+Sg+Ine      kultuvran
+# kultuvrra+N+Sg+Com      kultuvrajn
+
+
 
 COPY:msyn-numerals-with-demopron-sgcom (Sg Com &SUGGEST) EXCEPT (Pl Com Attr &msyn-numerals-with-demopron) OR (Pl Gen Attr &msyn-numerals-with-demopron) OR (Pl Com &msyn-numerals-with-demopron) OR (Pl Gen &msyn-numerals-with-demopron) OR (Pl Nom &msyn-numerals-with-demopron) OR (Pl Ine &msyn-numerals-with-demopron) OR (Pl Ine Attr &msyn-numerals-with-demopron) TARGET (&msyn-numerals-with-demopron) IF (*2 (N Sg Ine) OR (&msyn-numeral-attr-pl-ine) BARRIER NOT-NPMOD) ;
 	#msyn-numerals-with-demopron-sgine and msyn-numerals-with-demopron-sgcom belong together
