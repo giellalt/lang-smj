@@ -82,20 +82,26 @@ XFAIL_TESTS=\
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
 	DEV-msyn-gut-mij-gut-FAIL.yaml                \
 	DEV-msyn-nom-gen-PP-FAIL.yaml                 \
+	DEV-msyn-nom-gen-PP-PASS.yaml                 \
 	DEV-msyn-numeral-attr-FAIL.yaml               \
+	DEV-msyn-numeral-attr-PASS.yaml				  \
 	DEV-msyn-sme_bastard_neg1-2-FAIL.yaml         \
 	DEV-real-NegSg3-NegSg2-FAIL.yaml              \
 	DEV-real-NegSg2-NegSg3-FAIL.yaml              \
 	DEV-real-PrsPl3-PrtSg3-FAIL.yaml              \
 	DEV-real-PrtSg3-PrsPl3-FAIL.yaml              \
+	DEV-real-PrtSg3-PrsPl3-PASS.yaml              \
 	DEV-syn-number_congruence-subj-verb-FAIL.yaml \
 	DEV-syn-pred-attr-FAIL.yaml                   \
+	DEV-syn-pred-attr-PASS.yaml                   \
 	REL-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
 	REL-msyn-attr-pred-FAIL.yaml                  \
+	REL-msyn-attr-pred-PASS.yaml				  \
 	REL-msyn-genna-gejn-FAIL.yaml                 \
 	REL-msyn-iesj-ietja-FAIL.yaml                 \
 	REL-msyn-soajtta-FAIL.yaml                    \
 	REL-syn-correct-form-liehket-FAIL.yaml        \
+	REL-syn-correct-form-liehket-PASS.yaml        \
 	format-missing-comma.yaml                     \
 	lex-oahpasmuvvat-oahpastuvvat.yaml            \
 	msyn-IV-with-object.yaml                      \
