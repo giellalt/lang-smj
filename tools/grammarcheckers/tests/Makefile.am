@@ -93,7 +93,6 @@ XFAIL_TESTS=\
 	DEV-real-PrtSg3-PrsPl3-PASS.yaml              \
 	DEV-syn-number_congruence-subj-verb-FAIL.yaml \
 	DEV-syn-pred-attr-FAIL.yaml                   \
-	DEV-syn-pred-attr-PASS.yaml                   \
 	REL-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
 	REL-msyn-attr-pred-FAIL.yaml                  \
 	REL-msyn-attr-pred-PASS.yaml				  \
