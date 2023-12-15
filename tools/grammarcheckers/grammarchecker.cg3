@@ -2113,6 +2113,32 @@ ADD:msyn-plcom-sgcom-oahpastuvvat2 (&msyn-plcom-sgcom-oahpastuvvat2) TARGET (Pro
 COPY:msyn-plcom-sgcom-oahpastuvvat2 (Com &SUGGEST) EXCEPT (Ill Attr &msyn-plcom-sgcom-oahpastuvvat2) TARGET (&msyn-plcom-sgcom-oahpastuvvat2) ;
     ## Maŋenagi gå oahppe dán {ulmutjij} oahpásmuvvi.
    
+   
+    # Nominative + nominative errors
+    # ===================================================================================================
+    # ===================================================================================================
+    # ===================================================================================================
+  
+ADD:xsyn-nom+nom (&syn-nom+nom) TARGET (Nom) IF (1 (Nom)) (NEGATE 0 (Gen)) ;
+
+    # nom+nom = Should be gen
+    #--------------------------
+
+COPY:syn-nom+nom (Gen &SUGGEST) EXCEPT (Nom &syn-nom+nom) TARGET (&syn-nom+nom) ;   
+   
+    ## Ájluokta skåvllå, Ájluovtan
+
+
+    # nom+nom = Should be cmp
+    #--------------------------
+   
+    # nom+nom = Should get comma
+    #--------------------------
+COPY:syn-nom+nom (COMMA &SUGGEST) TARGET (&syn-nom+nom) IF (2 (CC) LINK 1 (Nom)) ;      
+   
+    ## Dan maŋŋela la Sámedigge giellastivrra ja fylkka bálkáv vaddám.
+   
+   
     # Pred/Attr errors
     # ===================================================================================================
     # ===================================================================================================
@@ -2204,7 +2230,7 @@ COPY:syn-attr-pred-pl (Pl Nom &SUGGEST) EXCEPT (Attr &msyn-attr-pred) TARGET (&m
 
 #!! ## Diminutive after unna rules
 
-ADD:msyn-dimin-after-unna (&msyn-dimin-after-unna) TARGET N IF (NEGATE 0 Der/Dimin)(-1 ("unne" A Attr) )	;
+ADD:xmsyn-dimin-after-unna (&msyn-dimin-after-unna) TARGET N IF (NEGATE 0 Der/Dimin)(*-1 ("unne" A Attr) BARRIER NOT-Attr)	;
 	## Suv unna niejdda
 
 
