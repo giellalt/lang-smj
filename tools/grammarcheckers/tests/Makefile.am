@@ -10,6 +10,8 @@ if WANT_GRAMCHECK
 TESTS=\
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
 	DEV-msyn-congr-mij-ma-PASS.yaml               \
+	DEV-msyn-dimin-after-unna-FAIL.yaml           \
+	DEV-msyn-dimin-after-unna-PASS.yaml           \
 	DEV-msyn-gut-mij-gut-FAIL.yaml                \
 	DEV-msyn-gut-mij-gut-PASS.yaml                \
 	DEV-msyn-nom-gen-PP-FAIL.yaml                 \
@@ -27,6 +29,8 @@ TESTS=\
 	DEV-real-PrtSg3-PrsPl3-FAIL.yaml              \
 	DEV-real-PrtSg3-PrsPl3-PASS.yaml              \
 	DEV-real-habbmim-PASS.yaml                    \
+	DEV-syn-nom-nom-FAIL.yaml                     \
+	DEV-syn-nom-nom-FAIL.yaml                     \
 	DEV-syn-number_congruence-subj-verb-FAIL.yaml \
 	DEV-syn-number_congruence-subj-verb-PASS.yaml \
 	DEV-syn-pred-attr-FAIL.yaml                   \
@@ -80,6 +84,7 @@ TESTS=\
 # be fixed *later*, but is not cDEV-msyn-gut-mij-gut-FAIL.yamlritical at the moment:
 XFAIL_TESTS=\
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
+	DEV-msyn-dimin-after-unna-FAIL.yaml           \
 	DEV-msyn-gut-mij-gut-FAIL.yaml                \
 	DEV-msyn-nom-gen-PP-FAIL.yaml                 \
 	DEV-msyn-nom-gen-PP-PASS.yaml                 \
@@ -91,6 +96,7 @@ XFAIL_TESTS=\
 	DEV-real-PrsPl3-PrtSg3-FAIL.yaml              \
 	DEV-real-PrtSg3-PrsPl3-FAIL.yaml              \
 	DEV-real-PrtSg3-PrsPl3-PASS.yaml              \
+    DEV-syn-nom-nom-FAIL.yaml                     \
 	DEV-syn-number_congruence-subj-verb-FAIL.yaml \
 	DEV-syn-pred-attr-FAIL.yaml                   \
 	REL-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
