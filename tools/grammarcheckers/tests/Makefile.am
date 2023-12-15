@@ -20,6 +20,10 @@ TESTS=\
 	DEV-msyn-numeral-attr-PASS.yaml               \
 	DEV-msyn-sme_bastard_neg1-2-FAIL.yaml         \
 	DEV-msyn-sme_bastard_neg1-2-PASS.yaml         \
+	DEV-msyn-nom-nom-FAIL.yaml                    \
+	DEV-msyn-nom-nom-PASS.yaml                    \
+	DEV-msyn-moadda-bale-FAIL.yaml                \
+	DEV-msyn-moadda-bale-PASS.yaml                \
 	DEV-real-NegSg2-NegSg3-FAIL.yaml              \
 	DEV-real-NegSg2-NegSg3-PASS.yaml              \
 	DEV-real-NegSg3-NegSg2-FAIL.yaml              \
@@ -29,8 +33,6 @@ TESTS=\
 	DEV-real-PrtSg3-PrsPl3-FAIL.yaml              \
 	DEV-real-PrtSg3-PrsPl3-PASS.yaml              \
 	DEV-real-habbmim-PASS.yaml                    \
-	DEV-syn-nom-nom-FAIL.yaml                     \
-	DEV-syn-nom-nom-FAIL.yaml                     \
 	DEV-syn-number_congruence-subj-verb-FAIL.yaml \
 	DEV-syn-number_congruence-subj-verb-PASS.yaml \
 	DEV-syn-pred-attr-FAIL.yaml                   \
@@ -91,12 +93,13 @@ XFAIL_TESTS=\
 	DEV-msyn-numeral-attr-FAIL.yaml               \
 	DEV-msyn-numeral-attr-PASS.yaml				  \
 	DEV-msyn-sme_bastard_neg1-2-FAIL.yaml         \
+	DEV-msyn-moadda-bale-FAIL.yaml                \
+    DEV-msyn-nom-nom-FAIL.yaml                     \
 	DEV-real-NegSg3-NegSg2-FAIL.yaml              \
 	DEV-real-NegSg2-NegSg3-FAIL.yaml              \
 	DEV-real-PrsPl3-PrtSg3-FAIL.yaml              \
 	DEV-real-PrtSg3-PrsPl3-FAIL.yaml              \
 	DEV-real-PrtSg3-PrsPl3-PASS.yaml              \
-    DEV-syn-nom-nom-FAIL.yaml                     \
 	DEV-syn-number_congruence-subj-verb-FAIL.yaml \
 	DEV-syn-pred-attr-FAIL.yaml                   \
 	REL-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
