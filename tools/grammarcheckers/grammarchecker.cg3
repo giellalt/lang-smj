@@ -2119,7 +2119,7 @@ COPY:msyn-plcom-sgcom-oahpastuvvat2 (Com &SUGGEST) EXCEPT (Ill Attr &msyn-plcom-
     # ===================================================================================================
     # ===================================================================================================
   
-ADD:xsyn-nom+nom (&syn-nom+nom) TARGET (N Nom) OR (A Nom) OR (Actio Nom) IF (1 (N Nom) OR (A Nom) OR (Actio Nom)) (NEGATE 0 (Gen) OR (Pl Nom))  ;
+ADD:xsyn-nom+nom (&syn-nom+nom) TARGET (N Sg Nom) OR (Actio Nom) IF (1 (N Sg Nom) OR (A Sg Nom) OR (Actio Nom)) (NEGATE 0 (Gen)) (NEGATE 0 ("nubbe"))  ;
 
     # nom+nom = Should be gen
     #--------------------------
@@ -2137,7 +2137,12 @@ COPY:syn-nom+nom (Gen &SUGGEST) EXCEPT (Nom &syn-nom+nom) TARGET (&syn-nom+nom) 
 COPY:syn-nom+nom (COMMA &SUGGEST) TARGET (&syn-nom+nom) IF (2 (CC) LINK 1 (Nom)) ;      
    
     ## Dan maŋŋela la Sámedigge giellastivrra ja fylkka bálkáv vaddám.
+
+    # nom+nom = missing copula
+    #--------------------------
+COPY:syn-nom+nom (COMMA &SUGGEST) TARGET (&syn-nom+nom) IF (1 (A Sg Nom)) ;      
    
+    ## Bálges buorak.   
    
     # Pred/Attr errors
     # ===================================================================================================
