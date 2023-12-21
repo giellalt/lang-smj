@@ -858,6 +858,14 @@ given the proper use of these flags.
 |  @P.Nom3Px.add@ | Giving possibility for Px-suffixes Nom 3.p
 |  @R.Nom3Px.add@ | Requiring P.Nom3Px.add flag for Px-suffixes Nom 3.p
 
+* **@R.SpellRlx.ON@** Flag used to tag spell-relax-analysed strings (and only those).
+* **@D.SpellRlx.ON@** Flag used to tag spell-relax-analysed strings (and only those).
+* **@C.SpellRlx@** Flag used to tag spell-relax-analysed strings (and only those).
+
+* **@R.SpaceCmp.ON@** Flag to tag compounds written with a space
+* **@D.SpaceCmp.ON@** Flag to tag compounds written with a space
+* **@C.SpaceCmp@** Flag to tag compounds written with a space+
+
 # Lexicon `Root`
 
 The beginning of everything. Every FST defined in LexC must start with the
@@ -870,11 +878,17 @@ reserved lexicon name `Root`.
 # Lexicon ENDLEX
 And this is the ENDLEX of everything:
 ```
-@D.CmpOnly.FALSE@@D.CmpPref.TRUE@@D.NeedNoun.ON@ # ;
+@D.CmpOnly.FALSE@@D.CmpPref.TRUE@@D.NeedNoun.ON@ ENDLEX2 ;
 ```
 The `@D.CmpOnly.FALSE@` flag diacritic is ued to disallow words tagged
 with +CmpNP/Only to end here.
 The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
+
+**ENDLEX2**
+
+**ENDLEX3**
+
+**ENDLEX4**
 
 * * *
 
