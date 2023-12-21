@@ -1,6 +1,6 @@
 # -*- cg-pre-pipe: "hfst-tokenise -g ../../tools/tokenisers/tokeniser-gramcheck-gt-desc.pmhfst" -*-
 # Divvun & Giellatekno - open source grammars for Sámi and other languages
-# Copyright © 2000-2020 UiT The arctic University of Norway
+# Copyright © 2000-2023 UiT The arctic University of Norway
 # http://giellatekno.uit.no & http://divvun.no
 #
 # This program is free software; you can redistribute and/or modify
@@ -1659,6 +1659,9 @@ LIST &real-PrtSg2-PrtSg3 = &real-PrtSg2-PrtSg3 ;
 
 LIST &syn-attr-pred = &syn-attr-pred ;
 LIST &syn-pred-attr = &syn-pred-attr ;
+LIST &syn-missing-copula = &syn-missing-copula ;
+LIST &syn-nom-nom = &syn-nom-nom ;
+LIST &syn-nom-nom-comma = &syn-nom-nom-comma ;
 LIST &syn-number_congruence-subj-verb = &syn-number_congruence-subj-verb ;
 LIST &syn-subj-before-neg = &syn-subj-before-neg ;
 LIST &syn-from-sentence-init-copula = &syn-from-sentence-init-copula ;
@@ -2128,34 +2131,50 @@ COPY:msyn-plcom-sgcom-oahpastuvvat2 (Com &SUGGEST) EXCEPT (Ill Attr &msyn-plcom-
     # ===================================================================================================
     # ===================================================================================================
     # ===================================================================================================
-  
-ADD:xsyn-nom+nom (&syn-nom+nom) TARGET (Gram/3syll Actio Nom) OR (N Sg Nom) IF (1 (N Sg Nom) OR (A Sg Nom) OR (Actio Nom)) (NEGATE 0 (Gen)) (NEGATE 1 (V Ind)) (NEGATE 0 (EVEN-VERBS + Der/NomAct)) (NEGATE *-1 ("liehket") BARRIER NOT-NPMOD) (NEGATE 1 (Gram/TAbbr)) (NEGATE 0 (A Sg Nom)) (NEGATE 1 ("jurra") LINK *1 (V Ind) BARRIER NOT-CC - Adv) (NEGATE -1 (N Sg Nom) LINK 1 (Actio Nom)) (NEGATE -1 ("liehket" Sg3) LINK -1 (N Sg Nom)) (NEGATE 1 (Prop Sg Nom))  ;
-
-    # nom+nom = Should be gen
+    # nom-nom = Should be gen
     #--------------------------
+      
+ADD:xsyn-nom_nom-gen_nom (&syn-nom_nom-gen_nom) TARGET (Gram/3syll Actio Nom) OR (N Sg Nom) IF (1 (N Sg Nom) OR (Actio Nom)) (NEGATE 0 (Gen)) (NEGATE 1 (V Ind) OR Adv OR Po) (NEGATE 0 EVEN-VERBS + Der/NomAct) (NEGATE *-1 ("liehket") BARRIER NOT-NPMOD) (NEGATE 1 (Gram/TAbbr)) (NEGATE 0 (A Sg Nom)) (NEGATE 1 ("jurra") LINK *1 (V Ind) BARRIER NOT-CC - Adv) (NEGATE -1 (N Sg Nom) LINK 1 (Actio Nom)) (NEGATE -1 ("liehket" Sg3) LINK -1 (N Sg Nom)) (NEGATE 1 (Prop Sg Nom))  ;
 
-COPY:syn-nom+nom (Gen &SUGGEST) EXCEPT (Nom &syn-nom+nom) TARGET (&syn-nom+nom) ;   
+
+COPY:syn-nom_nom-gen_nom (Gen &SUGGEST) EXCEPT (Nom &syn-nom_nom-gen_nom) TARGET (&syn-nom_nom-gen_nom) ;   
    
     ## Ájluokta skåvllå, Ájluovtan
     #$ Nágin biejve sállten, de lij háhka sjaddam spihkkaháhka majt ij dárbaham málestit.
     #$ Sån ham ij diede man gievrra Pippi la.
     #$ de la ájnna værjjo buollemsláŋŋa.
 
-    # nom+nom = Should be cmp
+    # nom-nom = Should be cmp
     #--------------------------
 
     ## De såjtij nágin rájadus sárnnediddje gænna lij alla giella tjuorvvot 
 
 
-    # nom+nom = Should get comma
+    # nom-nom = Should get comma
     #--------------------------
-COPY:syn-nom+nom (COMMA &SUGGEST) TARGET (&syn-nom+nom) IF (2 (CC) LINK 1 (Nom)) ;      
+    
+#To add a word as a suggestion, use ADDCOHORT, adding both reading tags (lemma, part-of-speech etc.), a wordform tag (including a space) and &ADDED to mark it as something that didn't appear in the input; and then a LEFT or RIGHT relation from the central cohort of the error to the added word:
+
+#ADD (&msyn-valency-go-not-fs) IF (…);
+#ADDCOHORT ("<go >" "go" CS &ADDED &msyn-valency-go-not-fs) BEFORE &msyn-valency-go-not-fs;
+#ADDRELATION (LEFT) (&msyn-valency-go-not-fs) TO (-1 (&ADDED)) ;
+
+#COPY:syn-nom-nom (COMMA &SUGGEST) TARGET (&syn-nom-nom) IF  ; 
+
+ADD:xsyn-nom-nom-comma (&syn-nom-nom-comma) TARGET (Gram/3syll Actio Nom) OR (N Sg Nom) IF (1 (N Sg Nom) OR (Actio Nom))(2 (CC) LINK 1 (Nom)) (NEGATE 0 (Gen)) (NEGATE 1 (V Ind) OR Adv OR Po) (NEGATE 0 EVEN-VERBS + Der/NomAct) (NEGATE 1 (Gram/TAbbr)) (NEGATE 0 (A Sg Nom)) (NEGATE 1 ("jurra") LINK *1 (V Ind) BARRIER NOT-CC - Adv) (NEGATE -1 (N Sg Nom) LINK 1 (Actio Nom)) (NEGATE 1 (Prop Sg Nom))  ;
+   
+#ADDCOHORT  ("<,>" "," CLB &ADDED &syn-nom-nom-comma) AFTER &syn-nom-nom-comma;
+ADDRELATION (RIGHT) (&syn-nom-nom-comma) TO (1 (&ADDED)) ;
    
     ## Dan maŋŋela la Sámedigge giellastivrra ja fylkka bálkáv vaddám.
 
-    # nom+nom = missing copula
-    #--------------------------
-COPY:syn-nom+nom ("liehket" Ind Prs &SUGGEST) TARGET (&syn-nom+nom) IF (1 (A Sg Nom)) ;      
+    # nom-nom = missing copula in SPRED combinations
+    #-----------------------------------------------
+ADD:xsyn-missing-copula (&syn-missing-copula) TARGET (Gram/3syll Actio Nom) OR (N Sg Nom) IF (1 (A Sg Nom) LINK NOT 0 Attr OR (V Ind) OR Adv OR Po OR (Gram/TAbbr)) (NEGATE 0 (Gen) OR EVEN-VERBS + Der/NomAct OR (A Sg Nom)) (NEGATE *0 ("liehket" Sg3) BARRIER S-BOUNDARY)  ;
+
+COPY:syn-missing-copula ("liehket" Ind Prs &SUGGEST) TARGET (&syn-nom-nom) IF (1 (A Sg Nom)) ;
+#ADDCOHORT  ("<la>" "liehket" Ind Prs Sg3 &ADDED syn-missing-copula) AFTER &syn-missing-copula;
+#ADDRELATION (RIGHT) (&syn-missing-copula) TO (1 (&ADDED)) ;      
    
     ## Bálges buorak.   
    
