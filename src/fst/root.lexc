@@ -941,6 +941,13 @@ Multichar_Symbols  !!≈ # Definitions for @CODE@
  @P.Nom3Px.add@ !!≈ |  @CODE@ | Giving possibility for Px-suffixes Nom 3.p
  @R.Nom3Px.add@ !!≈ |  @CODE@ | Requiring P.Nom3Px.add flag for Px-suffixes Nom 3.p
 
+@R.SpellRlx.ON@ !!≈ * **@CODE@** Flag used to tag spell-relax-analysed strings (and only those).
+@D.SpellRlx.ON@ !!≈ * **@CODE@** Flag used to tag spell-relax-analysed strings (and only those).
+@C.SpellRlx@    !!≈ * **@CODE@** Flag used to tag spell-relax-analysed strings (and only those).
+
+@R.SpaceCmp.ON@ !!≈ * **@CODE@** Flag to tag compounds written with a space
+@D.SpaceCmp.ON@ !!≈ * **@CODE@** Flag to tag compounds written with a space
+@C.SpaceCmp@    !!≈ * **@CODE@** Flag to tag compounds written with a space+
 
 ! =================================================
 ! Basic lexica, pointing to the other lexicon files
@@ -1009,8 +1016,24 @@ LEXICON ENDLEX
 !! # Lexicon @LEXNAME@
 !! And this is the @LEXNAME@ of everything:
 !! ```
-   @D.CmpOnly.FALSE@@D.CmpPref.TRUE@@D.NeedNoun.ON@ # ; !!≈ @CODE@
+   @D.CmpOnly.FALSE@@D.CmpPref.TRUE@@D.NeedNoun.ON@ ENDLEX2 ; !!≈ @CODE@
 !! ```
 !! The `@D.CmpOnly.FALSE@` flag diacritic is ued to disallow words tagged
 !! with +CmpNP/Only to end here.
 !! The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
+
+LEXICON ENDLEX2
+!! **@LEXNAME@**
+ @R.SpellRlx.ON@+Err/Spellrelax@C.SpellRlx@:@R.SpellRlx.ON@@C.SpellRlx@ ENDLEX3 ;
+ @D.SpellRlx.ON@@C.SpellRlx@                                            ENDLEX3 ;
+
+LEXICON ENDLEX3
+!! **@LEXNAME@**
+< "@R.SpaceCmp.ON@" "+Err/SpaceCmp":0 "+Use/GC":0 "@C.SpaceCmp@" > ENDLEX4 ;
+   @D.SpaceCmp.ON@@C.SpaceCmp@                                     ENDLEX4 ;
+
+LEXICON ENDLEX4
+!! **@LEXNAME@**
+ +Use/SpellNoSugg+Cmp/Cit+Cmp/Hyph+Cmp#:∑-# NounRoot ;
+!       +Err/Orth+Cmp/Cit+Cmp/SplitR+Cmp:∑-   #        ; ! ovttas- Árbbolaččat-
+                                            #        ;
