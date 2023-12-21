@@ -409,7 +409,8 @@ analyser-gramcheck-gt-desc.hfst: analyser-gramcheck-gt-desc.tmp.hfst \
 				filters/convert-æae-to-both.hfst             \
 				filters/remove-use_mt-strings.hfst           \
 				filters/remove-usage-tags.hfst               \
-				orthography/spellrelax-with-flagtags.compose.hfst
+				orthography/spellrelax-with-flagtags.compose.hfst \
+				orthography/comprelax-with-flagtags.compose.hfst
 	$(AM_V_HXFST)$(PRINTF) "\
 	set encode-weights ON\n\
 	read regex \
@@ -422,6 +423,7 @@ analyser-gramcheck-gt-desc.hfst: analyser-gramcheck-gt-desc.tmp.hfst \
 		.o. @\"$<\"                                           \
 		.o. @\"filters/convert-æae-to-both.hfst\"             \
 		.o. @\"orthography/spellrelax-with-flagtags.compose.hfst\" \
+		.o. @\"orthography/comprelax-with-flagtags.compose.hfst\"  \
 		.o. @\"filters/remove-word-boundary.hfst\"            \
 		;\n\
 	twosided flag-diacritics\n\
