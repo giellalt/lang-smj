@@ -1587,7 +1587,7 @@ LIST HUMAN-LIKE = "bærggal" "ieŋŋgil" "hállde" "hærrá" "jubmel" "stállo" 
 
 SET HUMAN-INDIVIDUAL = HUMAN-LIKE OR FAMILY OR NON-FAMILY ;
 
-LIST PL-PAIR-N = "sabek" "fáhtsa" "guohpá" "vuotta" "skuovva" "nuvtak" "tjátjek" "båvså" "siebak" "guobak" "tjalmmeglása" "fiehtarbåvså" "loamssjebåvså" "sisbåvså" "ålgoldisbåvså" "ájrro" "stiebil" "gáma" "hullofáhtsa" "rabo" "hulloguohpá" ; #TODO Inga, fleire typiske par må legges til her
+LIST PL-PAIR-N = "sabek" "fáhtsa" "guohpá" "vuotta" "skuovva" "nuvtak" "tjátjek" "båvså" "siebak" "guobak" "tjalmmeglása" "fiehtarbåvså" "loamssjebåvså" "sisbåvså" "ålgoldisbåvså" "ájrro" "stiebil" "gáma" "hullofáhtsa" "rabo" "hulloguohpá" "luodda"; #TODO Inga, fleire typiske par må legges til her
 
 LIST PL-NONPAIR-N = "áiru" "beaivvaščalbmeláset" "beassážat" "biddu" "čalbmeláset" "čázet" "fáhcca" "gállot" "gálssot" "gáma" "gistta" "goikket" "gummestevvel" "heajat" "hellodagat" "juovllat" "mállásat" "nagir" "njealljejuvllat" "njuorjjot" "nuhtat" "nuvttat" "nuvttot" "sabet" "sáppat" "sisttet" "skárrit" "skierat" "skuovva" "stevvel" "suohkku" "suorbmafáhcca" "suorpmahat" "ullofáhcca" "ullosuohkku" "viljjit" "vuotta" ("[0-9]-jahki"r) ("[0-9]-[0-9]-jahki"r) ("[0-9]-jahki"r) ;
 
@@ -2629,7 +2629,7 @@ COPY:real-ActioGen-PrtPl1 (Ind Prt Pl1 &SUGGEST) EXCEPT (Actio Gen) TARGET (&rea
     
     # left subj
     
-SET PLURAL-QUANTIFIERS = ("moadda" Nom) OR ("moattes" Nom) OR (Num Sg Nom) - ("akta") ;
+SET PLURAL-QUANTIFIERS = ("moadda" Nom) OR ("moadda" Indef Sg Acc) OR ("moattes" Nom) OR (Num Sg Nom) - ("akta") ;
 
 ADD:xreal-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-UNEVEN-VERBS OR ("liehket")  IF (0 (Prs Pl3)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) - PLURAL-QUANTIFIERS BARRIER NOT-ADV-PCLE LINK NOT 0 (Pl Nom) LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg) OR (Nom Pl))  (NEGATE *1 (Pron Nom Pl3) OR (N Nom Pl) BARRIER S-BOUNDARY)(NEGATE 0 (Prs Sg3) OR &DELETE)(NEGATE -1 PrfPrc LINK *-1 (N Pl Nom) OR (Pers Pl3 Nom) BARRIER NOT-ADV-PCLE) ;
     ## Suv mielas sån li ilá materalistisk.
@@ -3530,7 +3530,7 @@ COPY:msyn-numeral-accattr (Sg Gen &SUGGEST) EXCEPT (Pl Acc &msyn-numeral-accattr
     
 
 
-ADD:xmsyn-numeral-attr (&msyn-numeral-attr) TARGET (Pl) IF ((0 N) OR (0 NUMUNIT - Com LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numeral-accattr) (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock OR Sem/Time OR Sem/Date LINK NOT -1 Sem/Curr LINK NEGATE 0 NUMUNIT LINK -1 Num OR ("moadda"))(NEGATE 0 (N Sg) - Ill OR (N Pl Nom))(NEGATE 0 (Pl Ela) LINK -1 ("akta" Sg Nom))(NEGATE 0 (Pl Ela) LINK -1 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 2 ("liehket" Pl3))(NEGATE 0 (N Pl Nom) LINK -1 (Num Sg Nom))(NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr - Gen) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) ;
+ADD:xmsyn-numeral-attr (&msyn-numeral-attr) TARGET (Pl) IF ((0 N) OR (0 NUMUNIT - Com LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numeral-accattr) (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock OR Sem/Time OR Sem/Date LINK NOT -1 Sem/Curr LINK NEGATE 0 NUMUNIT LINK -1 Num OR PLURAL-QUANTIFIERS) (NEGATE 0 (N Sg) - Ill OR (N Pl Nom))(NEGATE 0 (Pl Ela) LINK -1 ("akta" Sg Nom))(NEGATE 0 (Pl Ela) LINK -1 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 2 ("liehket" Pl3))(NEGATE 0 (N Pl Nom) LINK -1 (Num Sg Nom))(NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr - Gen) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE -1 NUMUNIT LINK -1 PLURAL-QUANTIFIERS OR Num) ;
     ## Mån lav åhtsåm guokta {universitehtajda}  
     #$ Sámedigge le juo juollodam moadda miljåvnå {gielladåjmajda}, valla ulmutja e åhpa sámegielav ietjas årrombájken.
     ## Ælla des dagu åvddål guovte sierra skåvllåhuodnahijda sieradum. = guovte sierra skåvllåhuodnahij
