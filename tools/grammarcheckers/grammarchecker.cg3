@@ -1825,22 +1825,28 @@ ADD:xmsyn-sme_bastard_neg (&msyn-sme_bastard_neg) TARGET ("ij" Neg Ind Prs) IF (
     ## Muv plána lij Vuodnaj mannat bállov tjievtjatjit, valla ij navti sjaddam.
     ## Basecampa ij álggám nav buoret.
 
-COPY:msyn-sme_bastard_neg (Prt &SUGGEST) EXCEPT (Prs) AFTER Ind TARGET (&msyn-sme_bastard_neg) ;
+COPY:msyn-sme_bastard_neg (Prt &SUGGEST) EXCEPT (Prs) AFTER Ind TARGET (Neg &msyn-sme_bastard_neg) ;
 
     # for PrfPrc
     #-----------
-ADD:xmsyn-sme_bastard_neg2 (&msyn-sme_bastard_neg2) TARGET PrfPrc IF (*-1 ("ij" Neg Ind) BARRIER NOT-ADV-PCLE - ("mige") - Acc) ;
+    
+    # To refer to other words, you add relations named $2 and so on:
+    # ADDRELATION ($2) Ess TO (*-1 ("dego" &syn-not-dego) BARRIER Ess);
+    
+    
+ADD:xmsyn-sme_bastard_neg (&COERROR &msyn-sme_bastard_neg) TARGET PrfPrc IF (*-1 ("ij" Neg Ind) BARRIER NOT-ADV-PCLE - ("mige") - Acc) ;
     ## valla danna iv {dádjadum} majdik ja ittjiv {máhttám} gähttjalimev dahkat
 
-ADD:xmsyn-sme_bastard_neg2 (&msyn-sme_bastard_neg2) TARGET PrfPrc IF (*-1 CC OR COMMA LINK -1 (&msyn-sme_bastard_neg2)) ;
+ADD:xmsyn-sme_bastard_neg (&COERROR &msyn-sme_bastard_neg) TARGET PrfPrc IF (*-1 CC OR COMMA LINK -1 (&msyn-sme_bastard_neg)) ;
+
+ADDRELATION ($2) (PrfPrc &msyn-sme_bastard_neg) TO (*-1 (Neg &msyn-sme_bastard_neg));
 
 # ij gullum jali {vuojnnum}.
 # ij gullum, {vuojnnum} jalik {happsum}. 
 
+COPY:msyn-sme_bastard_neg (Der/PassL Ind ConNeg &SUGGEST) EXCEPT (Der/PassS PrfPrc &msyn-sme_bastard_neg) TARGET (PrfPrc Der/PassS &msyn-sme_bastard_neg) ;
 
-COPY:msyn-sme_bastard_neg2 (Der/PassL Ind ConNeg &SUGGEST) EXCEPT (Der/PassS PrfPrc &msyn-sme_bastard_neg2) TARGET (Der/PassS &msyn-sme_bastard_neg2) ;
-
-COPY:msyn-sme_bastard_neg2 (Ind ConNeg &SUGGEST) EXCEPT (PrfPrc &msyn-sme_bastard_neg2) TARGET (&msyn-sme_bastard_neg2) ;
+COPY:msyn-sme_bastard_neg (Ind ConNeg &SUGGEST) EXCEPT (PrfPrc &msyn-sme_bastard_neg) TARGET (PrfPrc &msyn-sme_bastard_neg)(NOT 0 Der/Pass) ;
 
 
 
