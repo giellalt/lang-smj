@@ -4948,8 +4948,6 @@ Err/Orth
 
 ### Semantic tags
 
-HUMAN
-
 PROP-ATTR
 PROP-SUR
 
