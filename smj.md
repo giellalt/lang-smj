@@ -3295,6 +3295,12 @@ The following two rules constitute a <= / => rule pair.
 
 **e:á in certain stem types 1**  
 
+* *oasºsje»Ø5sj*
+* *oa0ºsjá»0sj*
+
+* *biesºse»Ø5lasj*
+* *b0æ0ºsá»0lasj*
+
 * *bálggeX4v*
 * *bálggá0v*
 
