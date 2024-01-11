@@ -43,24 +43,20 @@ LEXICON MUORRAInfl
           :»    DenominalAdjsV1      ; !-dibme adj caritive derivation
           :»X7  DenominalAdjsV2      ; !-lasj with weak grade and vowel changes, ájgálasj
 
- +Err/Orth:%> N-EVENWEAKSTEM       ; ! Err/Orth "muorrav"
- +Err/Orth:»    DenominalAdjsV2      ; !-lasj strong grade and without vowel changes, makes ájggelasj
- +Err/Orth:»Z2  DenominalAdjsV2      ; !-lasj strong grade and with vowel changes, makes ájggálasj
- +Err/Orth:»Q1  DenominalAdjsV2      ; !-lasj weak grade but without vowel changes, makes ájgelasj 
-
+ +Err/Orth:%> ERR/ORTH_EVEN_WEAK_CASES2     ; ! Err/Orth "muorrav"
 
 LEXICON TÁLLA !!= @CODE@ Same as MUORRA, but for words with º (extra length). Not in MUORRA because of other err/orths
 
  :%>   N-EVENSTRONGSTEM     ;
  :%>Q1 N-EVENWEAKSTEM       ; ! Weak grade Q1
- :»    DenominalNounsMUORRA ;
+ :»    DenominalNounsMUORRA ; ! tállasj
  :»    DenominalAdjsV1      ; !-dibme adj caritive derivation
  :»X7  DenominalAdjsV2      ; !-lasj with weak grade and vowel changes, ájgálasj
  :%>   MUORRACmp            ;
 
-+Err/Orth:%>Z3        N-EVENWEAKSTEM       ; ! Err/orth Weak grade III-I, tálav
-+Err/Orth:»Z3         DenominalAdjsV2      ; !Err/orth tálalasj
-
++Err/Orth:%>Ø5        N-EVENWEAKSTEM       ; !Err/orth Weak grade III-I, tálav
++Err/Orth:»Ø5         DenominalAdjsV2      ; !Err/orth tálalasj
++Err/Orth:»Ø5         DenominalNounsKINO   ; !Err/Orth tálasj
                         
 
 LEXICON ALMME !!= @CODE@ Same as MUORRA, but with special -LASJ derivation. For noun that have strong grade -lasj. "Almmelasj" instead of "almálasj" which is Err/Orth-taged..
@@ -445,10 +441,10 @@ LEXICON MUORRA_LOAN_NO_LASJ !!= @CODE@  Like MUORRA_LOAN without -lasj derivatio
                   +OLang/NOB:»    DenominalNounsMUORRA ;
                   +OLang/NOB:»    DenominalAdjsV1      ; !-dibme adj caritive derivation
 
-          +OLang/NOB+Err/Der:»X7  DenominalAdjsV2      ; !-lasj with weak grade and vowel changes, ájgálasj
- +OLang/NOB+Err/Orth+Err/Der:»    DenominalAdjsV2      ; !-lasj strong grade and without vowel changes, makes ájggelasj
- +OLang/NOB+Err/Orth+Err/Der:»Z2  DenominalAdjsV2      ; !-lasj strong grade and with vowel changes, makes ájggálasj
- +OLang/NOB+Err/Orth+Err/Der:»Q1  DenominalAdjsV2      ; !-lasj weak grade but without vowel changes, makes ájgelasj
+          +OLang/NOB+Err/Der:»X7 DenominalAdjsV2           ; !-lasj with weak grade and vowel changes, ájgálasj
+ +OLang/NOB+Err/Orth+Err/Der:»Q1 DenominalAdjsV2           ; !-lasj weak grade but without vowel changes, makes ájgelasj
+                   +Err/Orth:    ERR/ORTH_EVEN_WEAK_CASES2 ;
+
 
 LEXICON MUORRA_LOAN_EXTRA_LENGTH !!= @CODE@  Same as MUORRA_LOAN just for words with º (extra length). 
 
@@ -1408,6 +1404,27 @@ LEXICON ERR/ORTH_EVEN_WEAK_CASES !!= @CODE@ Even stem Err/orth lexicon without n
           :»     DenominalNounsNOADE  ;
           :»Z2   DenominalAdjsV2      ; !-lasj Z2=vowel changes without WeG 
           
+LEXICON ERR/ORTH_EVEN_WEAK_CASES2 !!= @CODE@ Even stem Err/orth lexicon without nominative, illative and essive, AND ALSO  Sg+Gen, Sg+Ine, Pl+Nom, Pl+Com and Pl+Gen (to not get homonemies.
+          +Sg+Acc:Q4v      K-CONS               ;
+          +Sg+Ine:Q4n      K-CONS               ;
+          +Sg+Ela:Q4s      K-CONS               ;
+   +Use/NG+Sg+Com:Q4jn     K-CONS               ; ! ælojn!
+          +Pl+Acc:Q4jt     K-CONS               ;
+          +Pl+Ill:Q4jda    K-VOW                ;
+ +Err/Orth+Pl+Ill:Q4jde    K-VOW                ;
+ +Err/Orth+Pl+Ill:Q4Ø2da   K-VOW                ; !Ø2 makes e change to i no matter the following con. "iednida" even though the j which makes e change isn't there.
+          +Pl+Ine:Q4jn     K-CONS               ;
+          +Pl+Ela:Q4js     K-CONS               ;
+             +Abe:Q4dak    K-CONS               ;
+      +Use/NG+Abe:Q4da     K-VOW                ;
+          +Sg+Com:Q4X5jn   K-CONS               ; ! X5 for o:u in ComSg: elujn Note two dummies in a row!
+ +Sg+Com+Err/Orth:Q4X5jna  K-VOW                ; !
+   +Sg+Com+Use/NG:Q4X5jn%> NPxC                 ; !
+                 :»        DenominalAdjsV2      ; !-lasj strong grade and without vowel changes, makes ájggelasj
+                 :»Z2      DenominalAdjsV2      ; !-lasj strong grade and with vowel changes, makes ájggálasj
+                 :»        DenominalNounsNOADE  ; ! diminutive without weak grade
+
+
 
 LEXICON ERR/ORTH_EVEN_STRONG_CASES  !!= @CODE@ Even stem Err/orth lexicon with only nominative, illative and essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag. Hydrogena is used as nom and is err/orth, hydrogena>hydrogenav is not err/orth. marináda-nom, banána-nom
           :%>   N-EVENSTRONGSTEM     ;
