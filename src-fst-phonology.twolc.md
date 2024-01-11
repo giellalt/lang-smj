@@ -106,6 +106,7 @@ OBS: the definitions are not all correct or sufficiently specific
 * ****Ø2:0** : optional e**: i when followed by any conc (not only j). Not smj grammar, made only for Err/Orths ! "iednida"   
 * ****Ø3:0** : Not smj grammar, made only for nominative Err/Orths: málles>mállás e:á, e:å, o:u, 
 * ****Ø4:0** : Not smj grammar, made only for Err/Orths: changes h:j, b:p, t:d, m:v in contexts where it isn't supposed to change making err/orths as "årojij" (not g:k because og BENA lexicon)
+* ****Ø5:0** : Not smj grammar, made only for Err/Orths: third extra long grade to first grad: l'l>l, m'm>m and so on
 
 ### Morpheme boundaries:
 * **** «  ****:  Derivational prefix
@@ -146,8 +147,9 @@ These are the sets:
 *  Cns4    =             f                        l    m       n       ŋ ñ ń     r        v            ;  = Don't remember ...?
 *  StemCns = b b9   d d9   g g8 g9 h h8 h9 j j9   l l9 m m8 m9 n n8 n9 ŋ ñ ń     r r9 s                ;  = Can occur stem-finally
 *  DelCns  =                 g8      h8               m8      n8                                       ;  = deleted in nom...
-*  WeG     = X2 X3 X7 Y5 Q1 Q2 Q3 Q6 Z3 Z4                                                                 ;  
-*  Dummy   = X2 X3 X4 X5 X6 X7 X8 Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9 Q1 Q2 Q3 Q4 Q5 Q6 Q7 Z1 Z2 Z3 Z4 %> » %^           ;  
+*  WeG     = X2 X3 X7 Y5 Q1 Q2 Q3 Q6 Z3 Z4                                                             ;  
+*  Dummy   = X2 X3 X4 X5 X6 X7 X8 Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9 Q1 Q2 Q3 Q4 Q5 Q6 Q7 Z1 Z2 Z3 Z4 %> » %^  ;  
+*  Err     = Ø1 Ø2 Ø3 Ø4 Ø5                                                                            ;  Only for making err/orth inflections that don't follow smj-rules
 *  Hyph    = %-                                                                                        ;  
 
 ## The Definitions section
@@ -176,6 +178,8 @@ Definition of gradation symbols:
 * **LowerG12**:  A definition of Grade 1 or 2 consonant sequences 
 
 * **G32**:  A definition of Grade 3 or 2 consonant sequences
+
+* **G31**:  A definition of Grade 3 or 1 consonant sequences which is not SMJ-grammar only for err/orths
 
 * **G3**:  A definition of Grade 3 consonant sequences 
 

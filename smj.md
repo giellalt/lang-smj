@@ -629,6 +629,8 @@ LEXICON MUORRA  Standard even stems with cg (note Q1). OBS: Nouns with invisible
 * *kártta:* `kártta+N+Sg+Nom`
 * *kártajn:* `kártta+N+Sg+Com`
 
+LEXICON TÁLLA  Same as MUORRA, but for words with º (extra length). Not in MUORRA because of other err/orths
+
 LEXICON ALMME  Same as MUORRA, but with special -LASJ derivation. For noun that have strong grade -lasj. "Almmelasj" instead of "almálasj" which is Err/Orth-taged..
 
 LEXICON NOADE  Even stem without cg. OBS: No nouns with invisible 3>2 cg (as busºsa) in this lexicon. OBS: Because of denominal nouns taking a weak grade stem, entries in grade 3 are given the gradation mark º in order to prevent alternation to weak grade. We should consider creating a separate denominal nouns lexicon for NOADE instead.
@@ -715,6 +717,8 @@ LEXICON LÅHTSASA  Like GAHPER, only in plural. Without derivations, these shoul
 LEXICON MUORRA_LOAN   For loan words that do not fit in a loan word lexicon because of wrong short cmp, or partially assimilated loanwords without separate lexicas (medállja), or for Err/Orths assimilated with cg but with other errors. This lexicon gives no short compound forms. Potential short cmps must therefore be hard coded into the FirstComponent lexicon. This also for compounded words with partially assimilated loan words. Examples of problem words: sirup>siráhppa og stetoskop>stetoskoahppa.
 
 LEXICON MUORRA_LOAN_NO_LASJ   Like MUORRA_LOAN without -lasj derivation. This lexicon is made for Sem/Hum words like økonåvmmå, biolåvggå, agronåvmmå and so on. We don't want agronåvmålasj since it means something else than "agronomisk", the meaning of agronåvmålasj is barely used but messed up with "agronomijjalasj"
+
+LEXICON MUORRA_LOAN_EXTRA_LENGTH   Same as MUORRA_LOAN just for words with º (extra length). 
 
 LEXICON KAFIEDJA_CMP_INFL   Recent loanwords on -edja. Ends on -é in norwegian. Short and long cmp. "Kafea" and "kaféa" are subtaged. See comments about the -ie/-e dialtags in ALFABIEHTTA.
 
@@ -1051,6 +1055,8 @@ LEXICON PRIEMIJ_CMP_INFL  Assimilated loanwords. on -ie/-y, like premie and band
 LEXICON A_CMP_INFL   Sub-forms. Lexicon for giving sub-variation conjugation by simply adding an -a to the norwegian/swedish word. No cg. Like "alkohola" and "agronoma". These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
 LEXICON ERR/ORTH_EVEN_WEAK_CASES  Even stem Err/orth lexicon without nominative, illative and essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag. Entries like "ålggo" have no grade alternation, a common error is writing it like it has, ålggo>ålgov. tálla>tálav, klimáksa>klimáksav, prefiksa>prefiksav, barggo>barggov
+
+LEXICON ERR/ORTH_EVEN_WEAK_CASES2  Even stem Err/orth lexicon without nominative, illative and essive, AND ALSO  Sg+Gen, Sg+Ine, Pl+Nom, Pl+Com and Pl+Gen (to not get homonemies.
 
 LEXICON ERR/ORTH_EVEN_STRONG_CASES   Even stem Err/orth lexicon with only nominative, illative and essive. Only for entries with ERR/ORTH tag. Made so that we don't get entries that are both norm and with error tag. Hydrogena is used as nom and is err/orth, hydrogena>hydrogenav is not err/orth. marináda-nom, banána-nom
 
@@ -2879,6 +2885,7 @@ OBS: the definitions are not all correct or sufficiently specific
 * ****Ø2:0** : optional e**: i when followed by any conc (not only j). Not smj grammar, made only for Err/Orths ! "iednida"   
 * ****Ø3:0** : Not smj grammar, made only for nominative Err/Orths: málles>mállás e:á, e:å, o:u, 
 * ****Ø4:0** : Not smj grammar, made only for Err/Orths: changes h:j, b:p, t:d, m:v in contexts where it isn't supposed to change making err/orths as "årojij" (not g:k because og BENA lexicon)
+* ****Ø5:0** : Not smj grammar, made only for Err/Orths: third extra long grade to first grad: l'l>l, m'm>m and so on
 
 ### Morpheme boundaries:
 * **** «  ****:  Derivational prefix
@@ -2919,8 +2926,9 @@ These are the sets:
 *  Cns4    =             f                        l    m       n       ŋ ñ ń     r        v            ;  = Don't remember ...?
 *  StemCns = b b9   d d9   g g8 g9 h h8 h9 j j9   l l9 m m8 m9 n n8 n9 ŋ ñ ń     r r9 s                ;  = Can occur stem-finally
 *  DelCns  =                 g8      h8               m8      n8                                       ;  = deleted in nom...
-*  WeG     = X2 X3 X7 Y5 Q1 Q2 Q3 Q6 Z3 Z4                                                                 ;  
-*  Dummy   = X2 X3 X4 X5 X6 X7 X8 Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9 Q1 Q2 Q3 Q4 Q5 Q6 Q7 Z1 Z2 Z3 Z4 %> » %^           ;  
+*  WeG     = X2 X3 X7 Y5 Q1 Q2 Q3 Q6 Z3 Z4                                                             ;  
+*  Dummy   = X2 X3 X4 X5 X6 X7 X8 Y1 Y2 Y3 Y4 Y5 Y6 Y7 Y8 Y9 Q1 Q2 Q3 Q4 Q5 Q6 Q7 Z1 Z2 Z3 Z4 %> » %^  ;  
+*  Err     = Ø1 Ø2 Ø3 Ø4 Ø5                                                                            ;  Only for making err/orth inflections that don't follow smj-rules
 *  Hyph    = %-                                                                                        ;  
 
 ## The Definitions section
@@ -2949,6 +2957,8 @@ Definition of gradation symbols:
 * **LowerG12**:  A definition of Grade 1 or 2 consonant sequences 
 
 * **G32**:  A definition of Grade 3 or 2 consonant sequences
+
+* **G31**:  A definition of Grade 3 or 1 consonant sequences which is not SMJ-grammar only for err/orths
 
 * **G3**:  A definition of Grade 3 consonant sequences 
 
