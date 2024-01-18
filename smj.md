@@ -1337,7 +1337,9 @@ LEXICON IELLEM  Nomen actionionis derived from even verbs. Earlier these went di
 
 LEXICON TJIEKTJAMA  Pl Nomen actionionis derived from even verbs. Earlier these went directly to VSBST-ODD-PL, now they get tag Gram/NomAct before going there. Can't put it in VSBST-ODD-PL lexicon because of paths from verb lexicons.  
 
-LEXICON AKTIDIBME  Nomen actionionis derived from uneven verbs. Earlier these went directly to VSBST-EVEN, now they get tag Gram/NomAct before going there. Can't put it in VSBST-ODD lexicon because paths from verb lexicons.  
+LEXICON AKTIDIBME  Nomen actionionis derived from uneven verbs, ending DIBME. Earlier these went directly to VSBST-EVEN, now they get tag Gram/NomAct before going there. Can't put it in VSBST-ODD lexicon because paths from verb lexicons.  
+
+LEXICON BERUSTIBME  Nomen actionionis derived from uneven verbs, ending STIBME and DIBME is Err/orth-taged. Earlier these went directly to VSBST-EVEN, now they get tag Gram/NomAct before going there. Can't put it in VSBST-ODD lexicon because paths from verb lexicons.  
 
 ### Plural odd-syll
 
@@ -3294,12 +3296,6 @@ For e-stems, there is e:i, e:á, e:å, e:u and e:a. Each alternation is triggere
 The following two rules constitute a <= / => rule pair.
 
 **e:á in certain stem types 1**  
-
-* *oasºsje»Ø5sj*
-* *oa0ºsjá»0sj*
-
-* *biesºse»Ø5lasj*
-* *b0æ0ºsá»0lasj*
 
 * *bálggeX4v*
 * *bálggá0v*

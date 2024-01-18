@@ -720,7 +720,9 @@ LEXICON IELLEM  Nomen actionionis derived from even verbs. Earlier these went di
 
 LEXICON TJIEKTJAMA  Pl Nomen actionionis derived from even verbs. Earlier these went directly to VSBST-ODD-PL, now they get tag Gram/NomAct before going there. Can't put it in VSBST-ODD-PL lexicon because of paths from verb lexicons.  
 
-LEXICON AKTIDIBME  Nomen actionionis derived from uneven verbs. Earlier these went directly to VSBST-EVEN, now they get tag Gram/NomAct before going there. Can't put it in VSBST-ODD lexicon because paths from verb lexicons.  
+LEXICON AKTIDIBME  Nomen actionionis derived from uneven verbs, ending DIBME. Earlier these went directly to VSBST-EVEN, now they get tag Gram/NomAct before going there. Can't put it in VSBST-ODD lexicon because paths from verb lexicons.  
+
+LEXICON BERUSTIBME  Nomen actionionis derived from uneven verbs, ending STIBME and DIBME is Err/orth-taged. Earlier these went directly to VSBST-EVEN, now they get tag Gram/NomAct before going there. Can't put it in VSBST-ODD lexicon because paths from verb lexicons.  
 
 ### Plural odd-syll
 
