@@ -516,6 +516,14 @@ The following two rules constitute a <= / => rule pair.
 
 **e:á in certain stem types 1**  
 
+**e:á in certain stem types 2**  
+
+* *bárnneX4m*
+* *bárnná0m*
+
+* ★*bárnneX4m* (is not standard language)
+* ★*bárnne0m* (is not standard language)
+
 * *bálggeX4v*
 * *bálggá0v*
 
@@ -533,14 +541,6 @@ The following two rules constitute a <= / => rule pair.
 
 * ★*goahteX7tj#* (is not standard language)
 * ★*go00dá0sj#* (is not standard language)
-
-**e:á in certain stem types 2**  
-
-* *bárnneX4m*
-* *bárnná0m*
-
-* ★*bárnneX4m* (is not standard language)
-* ★*bárnne0m* (is not standard language)
 
 **e:å in certain stem types with å as root vowel**  
 
