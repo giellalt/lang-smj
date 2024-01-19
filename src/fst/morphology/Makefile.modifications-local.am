@@ -1,0 +1,100 @@
+## Process this file with automake to produce Makefile.in
+
+## Copyright (C) 2011 Samediggi
+
+## This program is free software: you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation, either version 3 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Add local build rules and shared here...
+
+if HAVE_SHARED_SMI
+generated_files/smi-$(GTLANG)-propernouns.lexc: \
+		$(gt_SHARED_smi)/src/fst/stems/smi-propernouns.lexc \
+		$(srcdir)/stems/$(GTLANG)-propernouns.lexc
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)cp -f $(srcdir)/stems/$(GTLANG)-propernouns.lexc $@
+	$(AM_V_at)echo "! <--- Dump from SMI starting here: -->" >> $@ 
+	$(AM_V_GEN)$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl $< >> $@
+
+generated_files/smi-$(GTLANG)-abbreviations.lexc: \
+		$(gt_SHARED_smi)/src/fst/stems/smi-abbreviations.lexc \
+		$(srcdir)/stems/$(GTLANG)-abbreviations.lexc
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)cp -f $(srcdir)/stems/$(GTLANG)-abbreviations.lexc $@
+	$(AM_V_at)echo "! <--- Dump from SMI starting here: -->" >> $@ 
+	$(AM_V_GEN)$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl $< >> $@
+
+generated_files/smi-$(GTLANG)-acronyms.lexc: \
+		$(gt_SHARED_smi)/src/fst/stems/smi-acronyms.lexc \
+		$(srcdir)/stems/$(GTLANG)-acronyms.lexc
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)cp -f $(srcdir)/stems/$(GTLANG)-acronyms.lexc $@
+	$(AM_V_at)echo "! <--- Dump from SMI starting here: -->" >> $@ 
+	$(AM_V_GEN)$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl $< >> $@
+
+generated_files/smi-$(GLANG)-digits.lexc: \
+		$(gt_SHARED_smi)/src/fst/stems/smi-digits.lexc
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)cp -f $< $@
+
+generated_files/smi-$(GLANG)-arabic_roman_digits.lexc: \
+		$(gt_SHARED_smi)/src/fst/stems/arabic_roman_digits.lexc
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)cp -f $< $@
+else
+generated_files/smi-$(GTLANG)-propernouns.lexc:
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)echo "! Missing shared smi data" > $@ 
+
+generated_files/smi-$(GTLANG)-abbreviations.lexc:
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)echo "! Missing shared smi data" > $@ 
+
+generated_files/smi-$(GTLANG)-acronyms.lexc:
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)echo "! Missing shared smi data" > $@ 
+
+generated_files/arabic_roman_digits.lexc:
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)echo "! Missing shared smi data" > $@ 
+
+generated_files/smi-digits.lexc:
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)echo "! Missing shared smi data" > $@ 
+
+endif
+
+if HAVE_SHARED_SME
+generated_files/sme-$(GTLANG)-propernouns.lexc: \
+			$(gt_SHARED_sme)/src/fst/stems/sme-propernouns.lexc
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)$(top_srcdir)/src/scripts/sme-$(GTLANG)-conversion.py $< > $@
+else
+generated_files/sme-$(GTLANG)-propernouns.lexc:
+	echo "Shared North Sami disabled: $(gt_SHARED_sme), words may be missing"
+	$(AM_V_GEN)echo \
+		"! MISSING $(gt_SHARED_sme)/src/fst/stems/sme-propernouns.lexc" > $@
+endif
+
+if HAVE_SHARED_SMA
+generated_files/sma-$(GTLANG)-propernouns.lexc: \
+			$(gt_SHARED_sma)/src/fst/stems/sma-propernouns.lexc
+	$(AM_V_at)$(MKDIR_P) generated_files
+	$(AM_V_GEN)$(top_srcdir)/src/scripts/sma-$(GTLANG)-conversion.py $< > $@
+else
+generated_files/sma-$(GTLANG)-propernouns.lexc:
+	$(AM_V_at)echo "Shared South Sami disabled: $(gt_SHARED_sma), words may be missing"
+	$(AM_V_GEN)echo \
+		"! MISSING $(gt_SHARED_sma)/src/fst/stems/sma-propernouns.lexc" > $@
+endif
+

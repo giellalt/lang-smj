@@ -1,225 +1,651 @@
 ## Process this file with automake to produce Makefile.in
+## Copyright: Sámediggi/Divvun/UiT
+## Licence: GPL v3+
 
-## Copyright (C) 2011 Samediggi
+# always build . last here, and tagsets have to be built after morphology
+SUBDIRS = morphology filters phonetics syllabification orthography transcriptions tagsets .
 
-## This program is free software: you can redistribute it and/or modify
-## it under the terms of the GNU General Public License as published by
-## the Free Software Foundation, either version 3 of the License, or
-## (at your option) any later version.
+####### Automake targets: ########
 
-## This program is distributed in the hope that it will be useful,
-## but WITHOUT ANY WARRANTY; without even the implied warranty of
-## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-## GNU General Public License for more details.
+# Define target variables first, before assigning to them:
+GT_ANALYSERS=
+GT_GENERATORS=
+CUSTOM_FSTS=
 
-## You should have received a copy of the GNU General Public License
-## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#### Local modifications in *fst processing: ####
+####
+#### Copy the fallback targets, and rename them to the desired targets. Then:
+#### Replace the 'cp' command (Xerox) / Prepend the hfst-invert command (Hfst -
+#### remember to move the $<) with whatever you need to complete
+#### the processing to get the final target transducer.
+#### Remember to add the dependencies as well.
+#### Also make sure that HFST and Xerox processing are the same.
+####
+#### If you add new transducers to be built, you need to add them to the
+#### relevant variable, e.g.:
+####
+#### if CAN_HFST
+#### GT_GENERATORS+=generator-oahpa-gt-norm.hfst
+#### endif
+####
+#### NB!!!! The HFST targets should get a hyphen after 'analyser'/'generator'
+#### respectively, to make the local targets minimally different from and
+#### slightly more specific than the fallback targets. This is to avoid warnings
+#### about duplicate targets. That is, the local targets should looke like:
+####
+#### analyser-%.hfst: analyser-%.tmp.hfst
+#### generator-%.hfst: generator-%.tmp.hfst
 
-# Add language-specific flags for hfst-lexc compilation here:
-if HAVE_SHARED_COMMON
-HFST_LEXC_LOCAL_FLAGS=--Werror # uncomment if lexc is good enough
-else
-HFST_LEXC_LOCAL_FLAGS=  # No --Werror if deps are missing !
-endif
+##################################################################
+#### BEGIN: Add local processing instructions BELOW this line ####
+##################################################################
 
-
-####### Morphology source file defs: ########
-
-# Set this to name of lexc file containing Multichar_Symbols and LEXICON Root
-GT_LEXC_ROOT=$(srcdir)/root.lexc
-
-# Set this to the names of all regular lexc source files:
-GT_LEXC_SRCS_L1_L2=\
-				clitics.lexc                 \
-				compounding.lexc             \
-				prefixes.lexc                \
-				affixes/acronyms.lexc        \
-				affixes/abbreviations.lexc   \
-				affixes/adjectives.lexc      \
-				affixes/nouns.lexc           \
-				affixes/numerals.lexc        \
-				affixes/possessives.lexc     \
-				affixes/pronouns.lexc        \
-				affixes/propernouns.lexc     \
-				affixes/symbols.lexc         \
-				affixes/verbs.lexc           \
-				stems/adjectives.lexc        \
-				stems/adpositions.lexc       \
-				stems/adverbs.lexc           \
-				stems/conjunctions.lexc      \
-				stems/interjections.lexc     \
-				stems/nouns.lexc             \
-				stems/numerals.lexc          \
-				stems/particles.lexc         \
-				stems/pronouns.lexc          \
-				stems/subjunctions.lexc      \
-				stems/verbs.lexc
-
-# If you are building an error-detecting L2 analyser, specify the lexc files
-# that differ between the regular L1 and the L2 analysers below, in L1 and
-# L2 respectively. L2 files must end in "*-L2.lexc". See SME for an example.
-L1=
-
-L2=
-
-GT_LEXC_SRCS=\
-			$(GT_LEXC_SRCS_L1_L2) \
-			$(L1)
-
-GT_LEXC_L2_SRCS=\
-			$(GT_LEXC_SRCS_L1_L2) \
-			$(L2)
-
-# Set this to the names of all generated lexc files, if any
-GENERATED_LEXC_SRCS=generated_files/smi-$(GTLANG)-propernouns.lexc   \
-					generated_files/smi-$(GTLANG)-abbreviations.lexc \
-					generated_files/smi-$(GTLANG)-acronyms.lexc      \
-					generated_files/smi-$(GLANG)-arabic_roman_digits.lexc \
-					generated_files/smi-$(GLANG)-digits.lexc          \
-					generated_files/mul-$(GLANG)-punctuation.lexc         \
-					generated_files/mul-$(GLANG)-symbols.lexc
-
-#					generated_files/sme-$(GTLANG)-propernouns.lexc   
-#					generated_files/sma-$(GTLANG)-propernouns.lexc   
+########################################################
+#### Add language-specific transducer targets here: ####
 
 
-# change handling of shared lexical data here:
-if HAVE_SHARED_COMMON
-url.tmp.lexc: $(gt_SHARED_common)/src/fst/url.lexc
-	$(AM_V_CP)cp -f $< $@
-
-generated_files/mul-$(GLANG)-%.lexc: $(gt_SHARED_common)/src/fst/stems/%.lexc
-	$(AM_V_at)$(MKDIR_P) generated_files
-	$(AM_V_CP)cp -f $< $@
-else
-# this is "safe" fallback (compiles but you miss everything)
-url.tmp.lexc:
-	echo "LEXICON Root" > $@
-	echo "< h t t p (s) %: %/ %/ ?*> # ;" >> $@
-
-generated_files/mul-$(GLANG)-%.lexc:
-	$(AM_V_at)$(MKDIR_P) generated_files
-	echo "! Missing shared common data" > $@
-endif
-# add other lexical shared data handling here
+#################################################
+#### Add language-specific build rules here: ####
 
 
-# Set this to the names of all source xml files, if any
-GT_XML_SRCS=
+### Process æ-ä early, and separately for xfst, hfst and foma. ###
+###
+### Xerox: can't use twosided flag-diacritics, so we'll just allow both
+### everywhere:
+.generated/analyser-raw-gt-desc.xfst: .generated/analyser-raw-gt-desc.tmp.xfst \
+					filters/convert-æae-to-both.xfst
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex            \
+				@\"$<\"                               \
+			.o. @\"filters/convert-æae-to-both.xfst\" \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
 
-# Define any additional lexc sources here (compiled on their own):
-GT_LOCAL_SRCS=
+### Foma: as Hfst, but the file is an analyser (as xfst), not generator:
+.generated/analyser-raw-gt-desc.foma: .generated/analyser-raw-gt-desc.tmp.foma \
+					 filters/convert-æae-to-area-variant.foma \
+					 filters/insert-area-tags.foma
+	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon OFF\n\
+			read regex            \
+				@\"$<\"                               \
+			.o. @\"filters/convert-æae-to-area-variant.foma\" \
+			;\n\
+		 twosided flag-diacritics\n\
+		 define lexicon\n\
+		 read regex \
+				@\"filters/insert-area-tags.foma\" \
+			.o. lexicon                            \
+			;\n\
+		 twosided flag-diacritics\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
 
-# Define local xfscripts here:
-GT_LOCAL_XFSCRIPT_SRCS=
+# Hfst - add weights to compounds if using tropical-semiring fst format:
+if WITH_OFST_TROPICAL
+.generated/generator-raw-gt-desc.hfst: .generated/generator-raw-gt-desc.tmp.hfst \
+					 filters/convert-æae-to-area-variant.hfst \
+					 filters/insert-area-tags.hfst
+	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon OFF\n\
+			read regex            \
+				@\"$<\"                               \
+			.o. @\"filters/convert-æae-to-area-variant.hfst\" \
+			;\n\
+		 twosided flag-diacritics\n\
+		 define lexicon\n\
+		 read regex \
+				@\"filters/insert-area-tags.hfst\" \
+			.o. lexicon                            \
+			;\n\
+		 twosided flag-diacritics\n\
+		 save stack $@tmp\n\
+		 quit\n" | $(XFST_TOOL)
+	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+			-S '+Cmp' -a 10 --arcs-only -i $@tmp \
+		> $@
+	$(AM_V_at)rm -f $@tmp
 
-# Define here any additional sources just included in the distro:
-GT_DISTRO_SRCS=$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl \
-				$(srcdir)/stems/$(GTLANG)-propernouns.lexc   \
-				$(srcdir)/stems/$(GTLANG)-abbreviations.lexc \
-				$(srcdir)/stems/$(GTLANG)-acronyms.lexc
+else !WITH_OFST_TROPICAL
 
-### BEGIN: Local processing: ###
+### Hfst: Add æ/ä with a flag diacritic for area, then make it double-sided,
+### then add an explicit tag, also including a (two-sided) flag diacritic. This
+### way, the æ/ä variation is explicitly tagged, and the tag is forced to follow
+### the actual surface symbol. For normative fst's only variants from the same
+### area can be combined, and with the explicit tags, the area-specific
+### analysers will actually be area-specific.
+.generated/generator-raw-gt-desc.hfst: .generated/generator-raw-gt-desc.tmp.hfst \
+					 filters/convert-æae-to-area-variant.hfst \
+					 filters/insert-area-tags.hfst
+	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon OFF\n\
+			read regex            \
+				@\"$<\"                               \
+			.o. @\"filters/convert-æae-to-area-variant.hfst\" \
+			;\n\
+		 twosided flag-diacritics\n\
+		 define lexicon\n\
+		 read regex \
+				@\"filters/insert-area-tags.hfst\" \
+			.o. lexicon                            \
+			;\n\
+		 twosided flag-diacritics\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
 
-### List additional targets in the following variable, for build targets not
-### covered by other means. This comes ***in addition to*** what you can do by
-### just targeting lexicon.*: lexicon.tmp.*, and is useful if you want to build
-### separate fst's that need further treatment in the src/ dir. See the language
-### gle/ for an example of how this is used.
+endif !WITH_OFST_TROPICAL
 
-GIELLA_LOCAL_TARGETS=
 
-if HAVE_SHARED_SMI
-generated_files/smi-$(GTLANG)-propernouns.lexc: \
-		$(gt_SHARED_smi)/src/fst/stems/smi-propernouns.lexc \
-		$(srcdir)/stems/$(GTLANG)-propernouns.lexc
-	$(AM_V_at)$(MKDIR_P) generated_files
-	$(AM_V_GEN)cp -f $(srcdir)/stems/$(GTLANG)-propernouns.lexc $@
-	$(AM_V_at)echo "! <--- Dump from SMI starting here: -->" >> $@ 
-	$(AM_V_GEN)$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl $< >> $@
+#################################################
+#### TTS specific build rules:               ####
 
-generated_files/smi-$(GTLANG)-abbreviations.lexc: \
-		$(gt_SHARED_smi)/src/fst/stems/smi-abbreviations.lexc \
-		$(srcdir)/stems/$(GTLANG)-abbreviations.lexc
-	$(AM_V_at)$(MKDIR_P) generated_files
-	$(AM_V_GEN)cp -f $(srcdir)/stems/$(GTLANG)-abbreviations.lexc $@
-	$(AM_V_at)echo "! <--- Dump from SMI starting here: -->" >> $@ 
-	$(AM_V_GEN)$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl $< >> $@
+# In the second part of the first step, we add flags and tags for æ variation.
+# The output of this is also used as base for the input analyser.
+.generated/analyser-tts-gt-output.hfst: .generated/analyser-tts-gt-output.tmp.hfst \
+					 filters/insert-æae-area-flags.hfst \
+					 filters/insert-area-tags.hfst
+	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon OFF\n\
+			read regex            \
+				@\"$<\"                               \
+			.o. @\"filters/insert-æae-area-flags.hfst\" \
+			;\n\
+		 set flag-is-epsilon ON\n\
+		 twosided flag-diacritics\n\
+		 define lexicon\n\
+		 set flag-is-epsilon OFF\n\
+		 read regex      \
+				@\"filters/insert-area-tags.hfst\" \
+			.o. lexicon                     \
+			;\n\
+		 twosided flag-diacritics\n\
+		 $(INVERT_HFST)\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
 
-generated_files/smi-$(GTLANG)-acronyms.lexc: \
-		$(gt_SHARED_smi)/src/fst/stems/smi-acronyms.lexc \
-		$(srcdir)/stems/$(GTLANG)-acronyms.lexc
-	$(AM_V_at)$(MKDIR_P) generated_files
-	$(AM_V_GEN)cp -f $(srcdir)/stems/$(GTLANG)-acronyms.lexc $@
-	$(AM_V_at)echo "! <--- Dump from SMI starting here: -->" >> $@ 
-	$(AM_V_GEN)$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl $< >> $@
+# Then we create the input side - lower side of lexicon + twolc/phonology:
+# Language specific override/preprocessing, due to ÆÄ variation.
+.generated/analyser-tts-gt-input.pretmp.hfst: ,generated/analyser-tts-gt-output.hfst \
+					 filters/remove-æae-flags-after-æae.hfst \
+					 filters/remove-æae-flags-after-æae.inverted.hfst
+	$(AM_V_COMPOSE)\
+		  $(HFST_INVERT)      $(MORE_VERBOSITY) $(HFST_FLAGS) $< \
+		| $(HFST_PROJECT)     $(MORE_VERBOSITY) $(HFST_FLAGS) -p output \
+		| $(HFST_COMPOSE) --xerox-composition=ON -2 filters/remove-æae-flags-after-æae.hfst \
+		| $(HFST_COMPOSE) --xerox-composition=ON -1 filters/remove-æae-flags-after-æae.inverted.hfst \
+		| $(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		| $(HFST_MINIMIZE)    $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		-o $@
 
-generated_files/smi-$(GLANG)-digits.lexc: \
-		$(gt_SHARED_smi)/src/fst/stems/smi-digits.lexc
-	$(AM_V_at)$(MKDIR_P) generated_files
-	$(AM_V_GEN)cp -f $< $@
+# Language specific postprocessing after TWOLC rules have been applied:
+.generated/analyser-tts-gt-input.hfst: .generated/analyser-tts-gt-input.tmp.hfst \
+					 filters/convert-æae-to-area-variant.hfst
+	$(AM_V_XFST_TOOL)$(PRINTF) "set flag-is-epsilon OFF\n\
+			read regex            \
+				@\"$<\"                               \
+			.o. @\"filters/convert-æae-to-area-variant.hfst\" \
+			;\n\
+		 twosided flag-diacritics\n\
+		 $(INVERT_HFST)\
+		 determinize\n\
+		 minimize\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
 
-generated_files/smi-$(GLANG)-arabic_roman_digits.lexc: \
-		$(gt_SHARED_smi)/src/fst/stems/arabic_roman_digits.lexc
-	$(AM_V_at)$(MKDIR_P) generated_files
-	$(AM_V_GEN)cp -f $< $@
-else
-generated_files/smi-$(GTLANG)-propernouns.lexc:
-	$(AM_V_at)$(MKDIR_P) generated_files
-	$(AM_V_GEN)echo "! Missing shared smi data" > $@ 
+#################################################
+#### Other language specific build rules:    ####
 
-generated_files/smi-$(GTLANG)-abbreviations.lexc:
-	$(AM_V_at)$(MKDIR_P) generated_files
-	$(AM_V_GEN)echo "! Missing shared smi data" > $@ 
+# The SMJ morphology has some extra tags used for marking questionable
+# normativity and our suggested norm:
+.generated/analyser-gt-desc.%: .generated/analyser-gt-desc.tmp.% \
+					filters/remove-derivation-position-tags.% \
+					filters/remove-grammatical-tags.%         \
+					filters/remove-norm-comp-tags.%           \
+					filters/remove-use_mt-strings.%           \
+					filters/remove-DNorm-tags.% \
+					filters/remove-usage-tags.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/remove-usage-tags.$*\"               \
+			.o. @\"filters/remove-derivation-position-tags.$*\" \
+			.o. @\"filters/remove-grammatical-tags.$*\"         \
+			.o. @\"filters/remove-norm-comp-tags.$*\"           \
+			.o. @\"filters/remove-DNorm-tags.$*\"               \
+			.o. @\"filters/remove-use_mt-strings.$*\"           \
+			.o. @\"$<\"                                         \
+			;\n\
+		 $(INVERT_HFST)\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
 
-generated_files/smi-$(GTLANG)-acronyms.lexc:
-	$(AM_V_at)$(MKDIR_P) generated_files
-	$(AM_V_GEN)echo "! Missing shared smi data" > $@ 
+.generated/analyser-gt-norm.%: .generated/analyser-gt-norm.tmp.%                                \
+					filters/remove-derivation-position-tags.%             \
+					filters/remove-DNorm-tags.%                           \
+					filters/remove-grammatical-tags.%                     \
+					filters/remove-illegal-derivation-strings-flagbased.% \
+					filters/remove-MinusSpell-strings.%                   \
+					filters/remove-use_mt-strings.%                       \
+					filters/insert-default-compounding-tags.%             \
+					filters/insert-default_left_compounding-tags.%        \
+					filters/block-illegal_compound-strings.%              \
+					filters/split-CmpN-tags.%                             \
+					filters/convert_to_flags-CmpNP-tags.%                 \
+					filters/split-CmpNP-tags.% \
+					filters/remove-usage-tags.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+			    @\"filters/remove-usage-tags.$*\"                           \
+			.o. @\"filters/remove-derivation-position-tags.$*\"             \
+			.o. @\"filters/remove-DNorm-tags.$*\"                           \
+			.o. @\"filters/remove-grammatical-tags.$*\"                     \
+			.o. @\"filters/block-illegal_compound-strings.$*\"              \
+			.o. @\"filters/split-CmpN-tags.$*\"                             \
+			.o. @\"filters/insert-default_left_compounding-tags.$*\"        \
+			.o. @\"filters/insert-default-compounding-tags.$*\"             \
+			.o. @\"filters/remove-illegal-derivation-strings-flagbased.$*\" \
+			.o. @\"filters/convert_to_flags-CmpNP-tags.$*\"                 \
+			.o. @\"filters/split-CmpNP-tags.$*\"                            \
+			.o. @\"filters/remove-MinusSpell-strings.$*\"                   \
+			.o. @\"filters/remove-use_mt-strings.$*\"                       \
+			.o. @\"$<\"                                                     \
+			;\n\
+		 twosided flag-diacritics\n\
+		 $(INVERT_HFST)\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
 
-generated_files/arabic_roman_digits.lexc:
-	$(AM_V_at)$(MKDIR_P) generated_files
-	$(AM_V_GEN)echo "! Missing shared smi data" > $@ 
+.generated/analyser-gt-norm.xfst: .generated/analyser-gt-norm.tmp.xfst \
+					filters/remove-norm-comp-tags.xfst             \
+					filters/remove-derivation-position-tags.xfst   \
+					filters/remove-grammatical-tags.xfst           \
+					filters/remove-illegal-derivation-strings.xfst \
+					filters/remove-use_mt-strings.xfst             \
+					filters/remove-DNorm-tags.xfst \
+					filters/remove-usage-tags.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+			    @\"filters/remove-usage-tags.xfst\"                 \
+			.o. @\"filters/remove-derivation-position-tags.xfst\"   \
+			.o. @\"filters/remove-grammatical-tags.xfst\"           \
+			.o. @\"filters/remove-norm-comp-tags.xfst\"             \
+			.o. @\"filters/remove-DNorm-tags.xfst\"                 \
+			.o. @\"filters/remove-use_mt-strings.xfst\"             \
+			.o. @\"$<\"                                             \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
 
-generated_files/smi-digits.lexc:
-	$(AM_V_at)$(MKDIR_P) generated_files
-	$(AM_V_GEN)echo "! Missing shared smi data" > $@ 
+# This does not work -  the filter in its present form blocks too much because
+# it crosses word boundaries, and restricting the filter by disallowing
+# word boundaries makes it uncompilable when using Xerox. Another version makes
+# Hfst crash!
+#			.o. @\"filters/remove-illegal-derivation-strings.xfst\" \
+#
 
-endif
+# ... and also in the Oahpa analyser:
+.generated/analyser-oahpa-gt-norm.%: .generated/analyser-gt-norm.tmp.% \
+					filters/remove-derivation-position-tags.% \
+					filters/remove-grammatical-tags.%         \
+					filters/remove-norm-comp-tags.%           \
+					filters/remove-use_mt-strings.%           \
+					filters/remove-DNorm-tags.% \
+					filters/remove-usage-tags.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+			    @\"filters/remove-usage-tags.$*\"               \
+			.o. @\"filters/remove-derivation-position-tags.$*\" \
+			.o. @\"filters/remove-grammatical-tags.$*\"         \
+			.o. @\"filters/remove-norm-comp-tags.$*\"           \
+			.o. @\"filters/remove-DNorm-tags.$*\"               \
+			.o. @\"filters/remove-use_mt-strings.$*\"           \
+			.o. @\"$<\"                                         \
+			;\n\
+		 twosided flag-diacritics\n\
+		 $(INVERT_HFST)\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
 
-if HAVE_SHARED_SME
-generated_files/sme-$(GTLANG)-propernouns.lexc: \
-			$(gt_SHARED_sme)/src/fst/stems/sme-propernouns.lexc
-	$(AM_V_at)$(MKDIR_P) generated_files
-	$(AM_V_GEN)$(top_srcdir)/src/scripts/sme-$(GTLANG)-conversion.py $< > $@
-else
-generated_files/sme-$(GTLANG)-propernouns.lexc:
-	echo "Shared North Sami disabled: $(gt_SHARED_sme), words may be missing"
-	$(AM_V_GEN)echo \
-		"! MISSING $(gt_SHARED_sme)/src/fst/stems/sme-propernouns.lexc" > $@
-endif
 
-if HAVE_SHARED_SMA
-generated_files/sma-$(GTLANG)-propernouns.lexc: \
-			$(gt_SHARED_sma)/src/fst/stems/sma-propernouns.lexc
-	$(AM_V_at)$(MKDIR_P) generated_files
-	$(AM_V_GEN)$(top_srcdir)/src/scripts/sma-$(GTLANG)-conversion.py $< > $@
-else
-generated_files/sma-$(GTLANG)-propernouns.lexc:
-	$(AM_V_at)echo "Shared South Sami disabled: $(gt_SHARED_sma), words may be missing"
-	$(AM_V_GEN)echo \
-		"! MISSING $(gt_SHARED_sma)/src/fst/stems/sma-propernouns.lexc" > $@
-endif
-### END: Local processing: ###
+# We need special treatment of the disamb fst going to further pmatch processing
+# mainly due to the target pattern, thus listed here. The rule body and the
+# dependencies should be the same as the regular disamb analysers below:
+.generated/analyser-pmatchdisamb-gt-desc.hfst: .generated/analyser-pmatchdisamb-gt-desc.tmp.hfst \
+				filters/remove-dialect-tags.hfst               \
+				filters/remove-area-tags.hfst                  \
+				filters/remove-norm-comp-tags.hfst             \
+				filters/remove-derivation-position-tags.hfst   \
+				filters/remove-orig_lang-tags.hfst             \
+				filters/remove-use_mt-strings.hfst             \
+				filters/rename-POS_before_Der-tags.hfst \
+				filters/remove-usage-tags.hfst
+	$(AM_V_HXFST)$(PRINTF) "read regex \
+		    @\"filters/remove-usage-tags.hfst\"               \
+		.o. @\"filters/remove-derivation-position-tags.hfst\" \
+		.o. @\"filters/remove-dialect-tags.hfst\"             \
+		.o. @\"filters/remove-area-tags.hfst\"                \
+		.o. @\"filters/remove-norm-comp-tags.hfst\"           \
+		.o. @\"filters/remove-orig_lang-tags.hfst\"           \
+		.o. @\"filters/rename-POS_before_Der-tags.hfst\"      \
+		.o. @\"filters/remove-use_mt-strings.hfst\"           \
+		.o. @\"$<\"                                           \
+		;\n\
+	invert net\n\
+	save stack $@\n\
+	quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
 
-####### Other targets: ###########
-# Clean: add local clean targets on separate lines, so that the first line can
-# easily get updates from the template dir through svn merge.
-clean-local:
-	-rm -f *.all.* *fst *.foma *.script generated_files/*.lexc lexicon.*
-	-rm -f url.lexc *.tmp*
-	-rm -f *.relabel lexicon-tags.* lexicon-sigma.*
 
-include $(srcdir)/Makefile.modifications-phon.am
-include $(top_srcdir)/../giella-core/am-shared/src-morphology-dir-include.am
 
-# vim: set ft=automake:
+# ... as well as in the disambiguation analyser:
+.generatd/analyser-disamb-gt-desc.%: .generated/analyser-disamb-gt-desc.tmp.%      \
+				    filters/remove-dialect-tags.%             \
+				    filters/remove-area-tags.%                \
+					filters/remove-homonymy-tags.%			  \
+					filters/remove-orig_lang-tags.%           \
+					filters/remove-derivation-position-tags.% \
+					filters/remove-norm-comp-tags.%           \
+					filters/rename-POS_before_Der-tags.%      \
+					filters/remove-use_mt-strings.%           \
+					filters/remove-DNorm-tags.% \
+					filters/remove-usage-tags.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/remove-usage-tags.$*\"               \
+			.o. @\"filters/remove-derivation-position-tags.$*\" \
+			.o. @\"filters/remove-homonymy-tags.$*\"            \
+	  		.o. @\"filters/remove-dialect-tags.$*\"             \
+	  		.o. @\"filters/remove-area-tags.$*\"                \
+			.o. @\"filters/remove-norm-comp-tags.$*\"           \
+			.o. @\"filters/remove-orig_lang-tags.$*\"           \
+			.o. @\"filters/rename-POS_before_Der-tags.$*\"      \
+			.o. @\"filters/remove-DNorm-tags.$*\"               \
+			.o. @\"filters/remove-use_mt-strings.$*\"           \
+			.o. @\"$<\"                                         \
+			;\n\
+		 $(INVERT_HFST)\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+# The HFST Grammar Checker analyser (keep the Err/SpaceCmp strings):
+.generated/analyser-gramcheck-gt-desc.hfst: .generated/analyser-gramcheck-gt-desc.tmp.hfst \
+				filters/remove-dialect-tags.hfst             \
+				filters/remove-norm-comp-tags.hfst           \
+				filters/remove-derivation-position-tags.hfst \
+				filters/rename-POS_before_Der-tags.hfst      \
+				filters/remove-word-boundary.hfst            \
+				filters/convert-æae-to-both.hfst             \
+				filters/remove-use_mt-strings.hfst           \
+				filters/remove-usage-tags.hfst               \
+				orthography/spellrelax-with-flagtags.compose.hfst \
+				orthography/comprelax-with-flagtags.compose.hfst
+	$(AM_V_HXFST)$(PRINTF) "\
+	set encode-weights ON\n\
+	read regex \
+			@\"filters/remove-usage-tags.hfst\"               \
+		.o. @\"filters/remove-dialect-tags.hfst\"             \
+		.o. @\"filters/remove-norm-comp-tags.hfst\"           \
+		.o. @\"filters/remove-derivation-position-tags.hfst\" \
+		.o. @\"filters/rename-POS_before_Der-tags.hfst\"      \
+		.o. @\"filters/remove-use_mt-strings.hfst\"           \
+		.o. @\"$<\"                                           \
+		.o. @\"filters/convert-æae-to-both.hfst\"             \
+		.o. @\"orthography/spellrelax-with-flagtags.compose.hfst\" \
+		.o. @\"orthography/comprelax-with-flagtags.compose.hfst\"  \
+		.o. @\"filters/remove-word-boundary.hfst\"            \
+		;\n\
+	twosided flag-diacritics\n\
+	invert net\n\
+	save stack $@\n\
+	quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
+
+# We need to add processing of language-specific tags in the generator:
+# Xerox processing due to bug in the operation twosided flag-diacritics:
+.generated/generator-gt-norm.xfst: .generated/generator-gt-norm.tmp.xfst                \
+					 filters/remove-derivation-position-tags.xfst \
+					 filters/remove-norm-comp-tags.xfst           \
+					 filters/remove-illegal-derivation-strings.xfst \
+					 filters/remove-DNorm-tags.xfst               \
+					 filters/remove-MinusSpell-strings.xfst       \
+					 filters/remove-use_mt-strings.xfst           \
+					 filters/make-optional-lang_hom-tags.xfst     \
+					 filters/make-optional-grammatical-tags.xfst  \
+					filters/remove-usage-tags.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+				@\"filters/remove-usage-tags.xfst\"               \
+			.o. @\"filters/make-optional-grammatical-tags.xfst\"  \
+			.o. @\"filters/make-optional-lang_hom-tags.xfst\"     \
+			.o. @\"filters/remove-derivation-position-tags.xfst\" \
+			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
+			.o. @\"filters/remove-DNorm-tags.xfst\"               \
+			.o. @\"filters/remove-MinusSpell-strings.xfst\"       \
+			.o. @\"filters/remove-use_mt-strings.xfst\"           \
+			.o. @\"$<\"                                           \
+			;\n\
+		 invert net\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
+# This does not work -  the filter in its present form blocks too much because
+# it crosses word boundaries, and restricting the filter by disallowing
+# word boundaries makes it uncompilable when using Xerox. Another version makes
+# Hfst crash!
+#			.o. @\"filters/remove-illegal-derivation-strings.xfst\" \
+#
+
+# gt-norm for Foma and Hfst:
+.generated/generator-gt-norm.%: .generated/generator-gt-norm.tmp.%                   \
+					 filters/remove-derivation-position-tags.% \
+					 filters/remove-norm-comp-tags.%           \
+					 filters/remove-DNorm-tags.%               \
+					 filters/remove-MinusSpell-strings.%       \
+					 filters/remove-use_mt-strings.%           \
+					 filters/make-optional-grammatical-tags.%  \
+					 filters/make-optional-lang_hom-tags.%     \
+					 filters/remove-illegal-derivation-strings-flagbased.% \
+					 filters/insert-default-compounding-tags.%             \
+					 filters/insert-default_left_compounding-tags.%        \
+					 filters/block-illegal_compound-strings.%              \
+					 filters/split-CmpN-tags.%                             \
+					 filters/convert_to_flags-CmpNP-tags.%                 \
+					 filters/split-CmpNP-tags.%                            \
+					filters/remove-usage-tags.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/remove-usage-tags.$*\"               \
+			.o. @\"filters/make-optional-grammatical-tags.$*\"  \
+			.o. @\"filters/make-optional-lang_hom-tags.$*\"     \
+			.o. @\"filters/remove-derivation-position-tags.$*\" \
+			.o. @\"filters/remove-norm-comp-tags.$*\"           \
+			.o. @\"filters/remove-DNorm-tags.$*\"               \
+			.o. @\"filters/block-illegal_compound-strings.$*\"              \
+			.o. @\"filters/split-CmpN-tags.$*\"                             \
+			.o. @\"filters/insert-default_left_compounding-tags.$*\"        \
+			.o. @\"filters/insert-default-compounding-tags.$*\"             \
+			.o. @\"filters/remove-illegal-derivation-strings-flagbased.$*\" \
+			.o. @\"filters/convert_to_flags-CmpNP-tags.$*\"                 \
+			.o. @\"filters/split-CmpNP-tags.$*\"                            \
+			.o. @\"filters/remove-MinusSpell-strings.$*\"                   \
+			.o. @\"filters/remove-use_mt-strings.$*\"                       \
+			.o. @\"$<\"                                          \
+			;\n\
+		 twosided flag-diacritics\n\
+		 $(INVERT_XFST)$(INVERT_FOMA)\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+# Descriptive generators:
+.generated/generator-gt-desc.%: .generated/generator-gt-desc.tmp.%                   \
+					 filters/remove-derivation-position-tags.% \
+					 filters/remove-norm-comp-tags.%           \
+					 filters/remove-DNorm-tags.%               \
+					 filters/remove-use_mt-strings.%           \
+					 filters/make-optional-lang_hom-tags.%     \
+					 filters/make-optional-grammatical-tags.%  \
+					filters/remove-usage-tags.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/remove-usage-tags.$*\"               \
+			.o. @\"filters/make-optional-grammatical-tags.$*\"  \
+			.o. @\"filters/make-optional-lang_hom-tags.$*\"     \
+			.o. @\"filters/remove-derivation-position-tags.$*\" \
+			.o. @\"filters/remove-norm-comp-tags.$*\"           \
+			.o. @\"filters/remove-DNorm-tags.$*\"               \
+			.o. @\"filters/remove-use_mt-strings.$*\"           \
+			.o. @\"$<\"                                         \
+			;\n\
+		 $(INVERT_XFST)$(INVERT_FOMA)\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+# Special treatment of the HFST Grammar Checker generator:
+.generated/generator-gramcheck-gt-nor%.hfst: .generated/generator-gramcheck-gt-nor%.tmp.hfst \
+				filters/remove-norm-comp-tags.hfst           \
+				filters/remove-derivation-position-tags.hfst \
+				filters/make-optional-grammatical-tags.hfst  \
+				filters/rename-POS_before_Der-tags.hfst      \
+				filters/insert-default-compounding-tags.hfst \
+				filters/insert-default_left_compounding-tags.hfst \
+				filters/block-illegal_compound-strings.hfst  \
+				filters/split-CmpN-tags.hfst                 \
+				filters/convert_to_flags-CmpNP-tags.hfst     \
+				filters/remove-use_mt-strings.hfst           \
+				filters/split-CmpNP-tags.hfst                \
+				filters/remove-usage-tags.hfst
+	$(AM_V_HXFST)$(PRINTF) "\
+	set encode-weights ON\n\
+	read regex \
+			@\"filters/remove-usage-tags.hfst\"               \
+		.o. @\"filters/remove-norm-comp-tags.hfst\"           \
+		.o. @\"filters/remove-derivation-position-tags.hfst\" \
+		.o. @\"filters/make-optional-grammatical-tags.hfst\"  \
+		.o. @\"filters/rename-POS_before_Der-tags.hfst\"      \
+		.o. @\"filters/block-illegal_compound-strings.hfst\"         \
+		.o. @\"filters/split-CmpN-tags.hfst\"                        \
+		.o. @\"filters/insert-default_left_compounding-tags.hfst\"   \
+		.o. @\"filters/insert-default-compounding-tags.hfst\"        \
+		.o. @\"filters/remove-illegal-derivation-strings-flagbased.hfst\" \
+		.o. @\"filters/convert_to_flags-CmpNP-tags.hfst\"            \
+		.o. @\"filters/split-CmpNP-tags.hfst\"                       \
+		.o. @\"filters/remove-use_mt-strings.hfst\"                  \
+		.o. @\"$<\"                                           \
+		;\n\
+	twosided flag-diacritics\n\
+	save stack $@\n\
+	quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
+
+# processing of AREA fst's - only Foma and Hfst because of twosided flag-diacritics:
+define area_fsts
+.generated/analyser-gt-norm_%.$(1): .generated/analyser-gt-norm_%.tmp.$(1)                         \
+					filters/remove-derivation-position-tags.$(1)             \
+					filters/remove-DNorm-tags.$(1)                           \
+					filters/remove-grammatical-tags.$(1)                     \
+					filters/remove-illegal-derivation-strings-flagbased.$(1) \
+					filters/remove-MinusSpell-strings.$(1)                   \
+					filters/remove-use_mt-strings.$(1)                       \
+					filters/insert-default-compounding-tags.$(1)             \
+					filters/insert-default_left_compounding-tags.$(1)        \
+					filters/block-illegal_compound-strings.$(1)              \
+					filters/split-CmpN-tags.$(1)                             \
+					filters/convert_to_flags-CmpNP-tags.$(1)                 \
+					filters/split-CmpNP-tags.$(1) \
+					filters/remove-usage-tags.$(1)
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
+			    @\"filters/remove-usage-tags.$(1)\"                           \
+			.o. @\"filters/remove-derivation-position-tags.$(1)\"             \
+			.o. @\"filters/remove-DNorm-tags.$(1)\"                           \
+			.o. @\"filters/remove-grammatical-tags.$(1)\"                     \
+			.o. @\"filters/block-illegal_compound-strings.$(1)\"              \
+			.o. @\"filters/split-CmpN-tags.$(1)\"                             \
+			.o. @\"filters/insert-default_left_compounding-tags.$(1)\"        \
+			.o. @\"filters/insert-default-compounding-tags.$(1)\"             \
+			.o. @\"filters/remove-illegal-derivation-strings-flagbased.$(1)\" \
+			.o. @\"filters/convert_to_flags-CmpNP-tags.$(1)\"                 \
+			.o. @\"filters/split-CmpNP-tags.$(1)\"                            \
+			.o. @\"filters/remove-MinusSpell-strings.$(1)\"                   \
+			.o. @\"filters/remove-use_mt-strings.$(1)\"                       \
+			.o. @\"$$<\"                                                      \
+			;\n\
+		 twosided flag-diacritics\n\
+		 $$(INVERT_XFST)$$(INVERT_FOMA)\
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+
+.generated/generator-gt-norm_%.$(1): .generated/generator-gt-norm_%.tmp.$(1) \
+					 filters/remove-derivation-position-tags.$(1) \
+					 filters/remove-norm-comp-tags.$(1)           \
+					 filters/remove-DNorm-tags.$(1)               \
+					 filters/remove-MinusSpell-strings.$(1)       \
+					 filters/remove-use_mt-strings.$(1)           \
+					 filters/make-optional-grammatical-tags.$(1)  \
+					 filters/make-optional-lang_hom-tags.$(1)     \
+					 filters/remove-illegal-derivation-strings-flagbased.$(1) \
+					 filters/insert-default-compounding-tags.$(1)             \
+					 filters/insert-default_left_compounding-tags.$(1)        \
+					 filters/block-illegal_compound-strings.$(1)              \
+					 filters/split-CmpN-tags.$(1)                             \
+					 filters/convert_to_flags-CmpNP-tags.$(1)                 \
+					 filters/split-CmpNP-tags.$(1)                            \
+					filters/remove-usage-tags.$(1)
+	$$(AM_V_XFST_TOOL)$$(PRINTF) "read regex \
+				@\"filters/remove-usage-tags.$(1)\"               \
+			.o. @\"filters/make-optional-grammatical-tags.$(1)\"  \
+			.o. @\"filters/make-optional-lang_hom-tags.$(1)\"     \
+			.o. @\"filters/remove-derivation-position-tags.$(1)\" \
+			.o. @\"filters/remove-norm-comp-tags.$(1)\"           \
+			.o. @\"filters/remove-DNorm-tags.$(1)\"               \
+			.o. @\"filters/block-illegal_compound-strings.$(1)\"              \
+			.o. @\"filters/split-CmpN-tags.$(1)\"                             \
+			.o. @\"filters/insert-default_left_compounding-tags.$(1)\"        \
+			.o. @\"filters/insert-default-compounding-tags.$(1)\"             \
+			.o. @\"filters/remove-illegal-derivation-strings-flagbased.$(1)\" \
+			.o. @\"filters/convert_to_flags-CmpNP-tags.$(1)\"                 \
+			.o. @\"filters/split-CmpNP-tags.$(1)\"                            \
+			.o. @\"filters/remove-MinusSpell-strings.$(1)\"                   \
+			.o. @\"filters/remove-use_mt-strings.$(1)\"                       \
+			.o. @\"$$<\"                                              \
+			;\n\
+		 twosided flag-diacritics\n\
+		 $$(INVERT_XFST)$$(INVERT_FOMA)\
+		 save stack $$@\n\
+		 quit\n" | $$(XFST_TOOL)
+endef
+$(foreach fst,hfst foma,$(eval $(call area_fsts,$(fst))))
+
+# Normative generator for TTS use:
+.generated/generator-tts-gt-norm.%: .generated/generator-tts-gt-norm.tmp.%                   \
+					 filters/remove-derivation-position-tags.% \
+					 filters/remove-norm-comp-tags.%           \
+					 filters/remove-DNorm-tags.%               \
+					 filters/remove-MinusSpell-strings.%       \
+					 filters/remove-use_mt-strings.%           \
+					 filters/make-optional-grammatical-tags.%  \
+					 filters/make-optional-lang_hom-tags.%     \
+					 filters/remove-illegal-derivation-strings-flagbased.% \
+					 filters/insert-default-compounding-tags.%             \
+					 filters/insert-default_left_compounding-tags.%        \
+					 filters/block-illegal_compound-strings.%              \
+					 filters/split-CmpN-tags.%                             \
+					 filters/convert_to_flags-CmpNP-tags.%                 \
+					 filters/split-CmpNP-tags.%                            \
+					filters/remove-usage-tags.%
+	$(AM_V_XFST_TOOL)$(PRINTF) "read regex \
+				@\"filters/remove-usage-tags.$*\"               \
+			.o. @\"filters/make-optional-grammatical-tags.$*\"  \
+			.o. @\"filters/make-optional-lang_hom-tags.$*\"     \
+			.o. @\"filters/remove-derivation-position-tags.$*\" \
+			.o. @\"filters/remove-norm-comp-tags.$*\"           \
+			.o. @\"filters/remove-DNorm-tags.$*\"               \
+			.o. @\"filters/block-illegal_compound-strings.$*\"              \
+			.o. @\"filters/split-CmpN-tags.$*\"                             \
+			.o. @\"filters/insert-default_left_compounding-tags.$*\"        \
+			.o. @\"filters/insert-default-compounding-tags.$*\"             \
+			.o. @\"filters/remove-illegal-derivation-strings-flagbased.$*\" \
+			.o. @\"filters/convert_to_flags-CmpNP-tags.$*\"                 \
+			.o. @\"filters/split-CmpNP-tags.$*\"                            \
+			.o. @\"filters/remove-MinusSpell-strings.$*\"                   \
+			.o. @\"filters/remove-use_mt-strings.$*\"                       \
+			.o. @\"$<\"                                          \
+			;\n\
+		 twosided flag-diacritics\n\
+		 $(INVERT_XFST)$(INVERT_FOMA)\
+		 save stack $@\n\
+		 quit\n" | $(XFST_TOOL)
+
+
+# Include the scripts file in the distro to ensure we can convert the smi
+# propernouns file:
+EXTRA_DIST=scripts/smi-smj-conversion.pl
+
+##################################################################
+#### END: Add local processing instructions ABOVE this line ######
+##################################################################
+
+include $(top_srcdir)/../giella-core/am-shared/src-fst-dir-include.am

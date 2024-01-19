@@ -23,7 +23,7 @@ SUBDIRS = . tests
 #! @param GT_PHONETICS_SUPPLEMENTS optional, other sources to distribute and
 #! 		  compile for other things
 GT_PHONETICS_MAIN=txt2ipa.xfscript
-GT_PHONETICS_SUPPLEMENTS=acro2ipa.xfscript
+GT_PHONETICS_SUPPLEMENTS=
 
 ##########################################
 # General build rules included from here:#

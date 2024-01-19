@@ -17,36 +17,14 @@
 
 #########################################################
 ############## BEGIN: Local modifications ###############
+
 # List any local filter regex files here:
 GIELLA_FILTER_LOCAL_REGEX_SRCS=\
-					downcase_UCletters.regex \
-					remove-norm-comp-tags.regex \
-					reorder-tags.$(GTLANG).regex \
-					remove-rel_focus-strings.regex \
-					remove-illegal-derivation-strings.regex \
-					remove-Dial_-NOR-strings.regex \
-					remove-Dial_-SW-strings.regex \
-					remove-DNorm-tags.regex \
-					remove-area-tags.regex \
-					remove-homonymy-tags.regex \
-					remove-dialect-tags.regex \
-					make-optional-lang_hom-tags.regex \
+					downcase_UCletters.regex\
 					remove-derivation-position-tags.regex \
-					rename-POS_before_Der-tags.regex \
-					remove-illegal-derivation-strings-flagbased.regex \
-					block-illegal_compound-strings.regex    \
-					insert-default-compounding-tags.regex   \
-					insert-default_left_compounding-tags.regex \
-					split-CmpN-tags.regex \
-					split-CmpNP-tags.regex \
-					convert_to_flags-CmpNP-tags.regex \
-					change-optionally-word_boundary_to_hyphen.regex \
-					remove-dynamic_compound-char.regex \
-					convert-æae-to-area-variant.regex \
-					convert-æae-to-both.regex \
-					insert-area-tags.regex \
-					insert-æae-area-flags.regex \
-					remove-æae-flags-after-æae.regex
+					remove-DNorm-tags.regex \
+					remove-norm-comp-tags.regex \
+					rename-POS_before_Der-tags.regex
 
 # List any local filter xfscript files here:
 GIELLA_FILTER_LOCAL_XFSCRIPT_SRCS=
@@ -69,16 +47,6 @@ GIELLA_FILTER_LOCAL_GENERATED_LEXC_SRCS=
 EXTRA_SRCS=
 
 ########## Add local build rules below here: ############
-all-local: change-optionally-word_boundary_to_hyphen.whfst \
-		   remove-æae-flags-after-æae.inverted.hfst
-
-change-optionally-word_boundary_to_hyphen.whfst: \
-		change-optionally-word_boundary_to_hyphen.hfst
-	$(AM_V_REWEIGHT)$(HFST_REWEIGHT) $(MORE_VERBOSITY) $(HFST_FLAGS) \
-		-a10000 --symbol="@C.LexComp@" --arcs-only < $< > $@
-
-remove-æae-flags-after-æae.inverted.hfst: remove-æae-flags-after-æae.hfst
-	$(AM_V_INVERT)$(HFST_INVERT) $< > $@
 
 ############### END: Local modifications ################
 #########################################################
