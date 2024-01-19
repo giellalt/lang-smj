@@ -1836,7 +1836,9 @@ ADDRELATION ($2) (PrfPrc &msyn-sme_bastard_neg) TO (*-1 (Neg &msyn-sme_bastard_n
 # ij gullum jali {vuojnnum}.
 # ij gullum, {vuojnnum} jalik {happsum}. 
 
-COPY:msyn-sme_bastard_neg (Der/PassL Ind ConNeg &SUGGEST) EXCEPT (Der/PassS PrfPrc &msyn-sme_bastard_neg) TARGET (PrfPrc Der/PassS &msyn-sme_bastard_neg) ;
+COPY:msyn-sme_bastard_neg (Der/PassL V IV Ind ConNeg &SUGGEST) EXCEPT (Der/PassL V IV PrfPrc &msyn-sme_bastard_neg) TARGET (PrfPrc Der/PassL &msyn-sme_bastard_neg) ;
+COPY:msyn-sme_bastard_neg (Der/PassS V IV Ind ConNeg &SUGGEST) EXCEPT (Der/PassS V IV PrfPrc &msyn-sme_bastard_neg) TARGET (PrfPrc Der/PassS &msyn-sme_bastard_neg) ;
+
 
 COPY:msyn-sme_bastard_neg (Ind ConNeg &SUGGEST) EXCEPT (PrfPrc &msyn-sme_bastard_neg) TARGET (PrfPrc &msyn-sme_bastard_neg)(NOT 0 Der/Pass) ;
 
@@ -2137,7 +2139,7 @@ ADD:xsyn-nom_nom-gen_nom (&syn-nom_nom-gen_nom) TARGET (Gram/3syll Actio Nom) OR
 
 COPY:syn-nom_nom-gen_nom (Gen &SUGGEST) EXCEPT (Nom &syn-nom_nom-gen_nom) TARGET (&syn-nom_nom-gen_nom) ;   
    
-    ## Ájluokta skåvllå, Ájluovtan
+    ## {Ájluokta} skåvllå, Ájluovtan
     #$ Nágin biejve sállten, de lij háhka sjaddam spihkkaháhka majt ij dárbaham málestit.
     #$ Sån ham ij diede man gievrra Pippi la.
     #$ de la ájnna værjjo buollemsláŋŋa.
@@ -2154,10 +2156,10 @@ COPY:syn-nom_nom-gen_nom (Gen &SUGGEST) EXCEPT (Nom &syn-nom_nom-gen_nom) TARGET
 
 #COPY:syn-nom-nom (COMMA &SUGGEST) TARGET (&syn-nom-nom) IF  ; 
 
-ADD:xsyn-nom-nom-comma (&syn-nom-nom-comma) TARGET (Gram/3syll Actio Nom) OR (N Sg Nom) IF (1 (N Sg Nom) OR (Actio Nom))(2 (CC) LINK 1 (Nom)) (NEGATE 0 (Gen)) (NEGATE 1 (V Ind) OR Adv OR Po) (NEGATE 0 EVEN-VERBS + Der/NomAct) (NEGATE 1 (Gram/TAbbr)) (NEGATE 0 (A Sg Nom)) (NEGATE 1 ("jurra") LINK *1 (V Ind) BARRIER NOT-CC - Adv) (NEGATE -1 (N Sg Nom) LINK 1 (Actio Nom)) (NEGATE 1 (Prop Sg Nom))  ;
+ADD:xpunct-nom-nom-comma (&punct-nom-nom-comma) TARGET (Gram/3syll Actio Nom) OR (N Sg Nom) IF (1 (N Sg Nom) OR (Actio Nom))(2 (CC) LINK 1 (Nom)) (NEGATE 0 (Gen)) (NEGATE 1 (V Ind) OR Adv OR Po) (NEGATE 0 EVEN-VERBS + Der/NomAct) (NEGATE 1 (Gram/TAbbr)) (NEGATE 0 (A Sg Nom)) (NEGATE 1 ("jurra") LINK *1 (V Ind) BARRIER NOT-CC - Adv) (NEGATE -1 (N Sg Nom) LINK 1 (Actio Nom)) (NEGATE 1 (Prop Sg Nom))  ;
    
-#ADDCOHORT  ("<,>" "," CLB &ADDED &syn-nom-nom-comma) AFTER &syn-nom-nom-comma;
-ADDRELATION (RIGHT) (&syn-nom-nom-comma) TO (1 (&ADDED)) ;
+#ADDCOHORT  ("<,>" "," CLB &ADDED &syn-nom-nom-comma) AFTER &punct-nom-nom-comma;
+ADDRELATION (RIGHT) (&punct-nom-nom-comma) TO (1 (&ADDED)) ;
    
     ## Dan maŋŋela la Sámedigge giellastivrra ja fylkka bálkáv vaddám.
     
