@@ -1,6 +1,6 @@
 # -*- cg-pre-pipe: "hfst-tokenise -g ../../tools/tokenisers/tokeniser-gramcheck-gt-desc.pmhfst" -*-
 # Divvun & Giellatekno - open source grammars for Sámi and other languages
-# Copyright © 2000-2023 UiT The arctic University of Norway
+# Copyright © 2000-2024 UiT The arctic University of Norway
 # http://giellatekno.uit.no & http://divvun.no
 #
 # This program is free software; you can redistribute and/or modify
@@ -18,7 +18,7 @@
 # ==================================================================== #
 # ====================================================================
 
-#  Sámi language technology 2000-2023, UiT The arctic University of Norway #
+#  Sámi language technology 2000-2024, UiT The arctic University of Norway #
 
 # ---------------------- #
 #   Development setup:   #
@@ -2388,7 +2388,7 @@ COPY:msyn-pass-active (TV &SUGGEST) EXCEPT (IV Ex/V Ex/TV Der/PassL  &msyn-pass-
     #$ Medijá	bivddiduvvi mijáv	æjvvalittjat Kalleholmenin kloahkka 14.00 sæmmi biejve .
 
 
-    # Congr error with relative pron
+    # Congruence error with relative pronoun
     # ===================================================================================================
     # ===================================================================================================
     # ===================================================================================================
@@ -3005,13 +3005,16 @@ COPY:syn-number_congruence-subj-verb (Du2 &SUGGEST) EXCEPT Sg1 OR Sg2 OR Sg3 OR 
 
 COPY:syn-number_congruence-subj-verb (Du2 &SUGGEST) EXCEPT Sg1 OR Sg2 OR Sg3 OR (Sg3 Clt) OR Du1 OR Du3 OR Pl1 OR Pl2 OR Pl3 TARGET (V Ind Prs &syn-number_congruence-subj-verb) OR (V Ind Prt &syn-number_congruence-subj-verb) OR (V Cond &syn-number_congruence-subj-verb) OR (V Neg Ind &syn-number_congruence-subj-verb) IF (*1 (Pron Sem/Hum Pers Du2 Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 @COMP-CS<)(*-1 BOS OR (":") OR (";") OR ("/") OR ("‹") OR ("–") OR COMMA OR CS OR (Adv Subqst) OR ("de") BARRIER NOT-ADV-PCLE)(NEGATE 0 Du2 OR &real OR (N Sg) - Px)(NEGATE *-1 (V Du2) BARRIER NOT-ADV-PCLE - ("gå") - (Sg3 Nom) - (N Sg Nom))(NEGATE 0 Adv);
 
-	 # Du3 SUBJ
+	 # Du3 SUBJ - 19.01.2024
 
 ADD:xsyn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg OR (V Ind Prt) - ConNeg OR (V Cond) OR (V Neg Ind) IF (*-1 (Pron Sem/Hum Pers Du3 Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 @COMP-CS< LINK *-1 BOS OR (":") OR (";") OR ("/") OR ("‹") OR ("–") OR COMMA OR CS OR MO OR ("de") OR (Adv Subqst) OR (Pron Rel Sg) BARRIER NOT-ADV-PCLE)(NEGATE 0 Du3 OR &real OR (N Sg) - Px)(NEGATE *-1 (V Du3) BARRIER NOT-ADV-PCLE - ("gå") - (Sg3 Nom) - (N Sg Nom))(NEGATE 0 Adv);
+	
 	## Soai boahtit
 	#$ Go de čuđit bohtet sudno vissui, ferteba 	soai čiehkádit.
 	#$ Ánnes goas soai vuoiŋŋasteaba, de son muitala ahte gal 	soai geassit 	váldiba friddja ja vuoddjába Deatnogáddái Niljotnjálbmái, bivdiba doppe luosa dahje mannaba Várjavutnii bivdit sáiddi ja dorski.
 	## 	Ávvir čálii ovdal dán vahkkus ahte Odd Erling ja su searvvi stivrajođiheaddji Mikhail Pogodaev mátkkošteaba Amerihká New_York gávpogii, gos 	soai galgá 	oassálastit ON čoahkkimis.
+	
+	## Jørgensen ja sámediggepresidænnta Aili	Keskitalo oassálassti.
 
 
 	# post SUBJ
