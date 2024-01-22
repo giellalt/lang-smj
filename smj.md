@@ -77,7 +77,7 @@ Go for minimal weight (requires --with-backend-format=openfst-tropical)
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/abbreviations.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/abbreviations.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/affixes/abbreviations.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/abbreviations.lexc)</small>
 
 ---
 
@@ -611,7 +611,7 @@ LEXICON AGAdj  ! denominal derivations go here, attr same as pred, no comp in th
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/adjectives.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/adjectives.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/affixes/adjectives.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/adjectives.lexc)</small>
 
 ---
 
@@ -1436,7 +1436,7 @@ LEXICON DUOLMUN   Fierrot>fierun, instruments derived from verbs, used only for 
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/nouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/nouns.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/affixes/nouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/nouns.lexc)</small>
 
 ---
 
@@ -1458,7 +1458,7 @@ LEXICON DUOLMUN   Fierrot>fierun, instruments derived from verbs, used only for 
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/numerals.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/numerals.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/affixes/numerals.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/numerals.lexc)</small>
 
 ---
 
@@ -1478,7 +1478,7 @@ LEXICON DUOLMUN   Fierrot>fierun, instruments derived from verbs, used only for 
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/pronouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/pronouns.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/affixes/pronouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/pronouns.lexc)</small>
 
 ---
 
@@ -2336,7 +2336,7 @@ HANNOLA is the same as ACCRA
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/propernouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/propernouns.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/affixes/propernouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/propernouns.lexc)</small>
 
 ---
 
@@ -2345,7 +2345,7 @@ HANNOLA is the same as ACCRA
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/symbols.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/symbols.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/affixes/symbols.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/symbols.lexc)</small>
 
 ---
 
@@ -2767,7 +2767,7 @@ LEXICON ABBONERE_TV_INFL
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/verbs.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/affixes/verbs.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/affixes/verbs.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/verbs.lexc)</small>
 
 ---
 
@@ -2775,7 +2775,7 @@ LEXICON ABBONERE_TV_INFL
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/compounding.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/compounding.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/compounding.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/compounding.lexc)</small>
 
 ---
 
@@ -3532,7 +3532,7 @@ process, and resolve them as they appear!
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/phonology.twolc](https://github.com/giellalt/lang-smj/blob/main/src/fst/phonology.twolc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/phonology.twolc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/phonology.twolc)</small>
 
 ---
 
@@ -4430,7 +4430,7 @@ The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/root.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/root.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/root.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/root.lexc)</small>
 
 ---
 
@@ -4442,7 +4442,7 @@ vájnno
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/adjectives.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/stems/adjectives.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/adjectives.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/stems/adjectives.lexc)</small>
 
 ---
 
@@ -4452,7 +4452,7 @@ sme mojonjálmmiid
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/adverbs.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/stems/adverbs.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/adverbs.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/stems/adverbs.lexc)</small>
 
 ---
 
@@ -4467,7 +4467,7 @@ LOAN SWE altar
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/nouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/stems/nouns.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/nouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/stems/nouns.lexc)</small>
 
 ---
 
@@ -4477,7 +4477,7 @@ Reciprocal pronouns as multiword expression
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/pronouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/stems/pronouns.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/pronouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/stems/pronouns.lexc)</small>
 
 ---
 
@@ -4526,7 +4526,7 @@ the sentence can be considered as true cases.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/smj-abbreviations.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/stems/smj-abbreviations.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/smj-abbreviations.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/stems/smj-abbreviations.lexc)</small>
 
 ---
 
@@ -4545,7 +4545,7 @@ Default, letter by letter pronunciation
 
 * * *
 
-<small>This (part of) documentation was generated from [src/phonetics/acro2ipa.xfscript](https://github.com/giellalt/lang-smj/blob/main/src/phonetics/acro2ipa.xfscript)</small>
+<small>This (part of) documentation was generated from [src/fst/phonetics/acro2ipa.xfscript](https://github.com/giellalt/lang-smj/blob/main/src/fst/phonetics/acro2ipa.xfscript)</small>
 
 ---
 
@@ -4710,7 +4710,7 @@ retracted tongue root			_q
 
 * * *
 
-<small>This (part of) documentation was generated from [src/phonetics/smj2sampa-from-old-infra.xfscript](https://github.com/giellalt/lang-smj/blob/main/src/phonetics/smj2sampa-from-old-infra.xfscript)</small>
+<small>This (part of) documentation was generated from [src/fst/phonetics/smj2sampa-from-old-infra.xfscript](https://github.com/giellalt/lang-smj/blob/main/src/fst/phonetics/smj2sampa-from-old-infra.xfscript)</small>
 
 ---
 
@@ -4722,7 +4722,7 @@ Converts to IPA. Mainly intended for use with TTS.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/phonetics/txt2ipa.xfscript](https://github.com/giellalt/lang-smj/blob/main/src/phonetics/txt2ipa.xfscript)</small>
+<small>This (part of) documentation was generated from [src/fst/phonetics/txt2ipa.xfscript](https://github.com/giellalt/lang-smj/blob/main/src/fst/phonetics/txt2ipa.xfscript)</small>
 
 ---
 
@@ -4746,7 +4746,7 @@ lågenanguovte
 
 * * *
 
-<small>This (part of) documentation was generated from [src/transcriptions/clock-from-old-infra.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/clock-from-old-infra.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/transcriptions/clock-from-old-infra.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/transcriptions/clock-from-old-infra.lexc)</small>
 
 ---
 
@@ -4774,7 +4774,7 @@ the sentence can be considered as true cases.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-abbrevs2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-abbrevs2text.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/transcriptions/transcriptor-abbrevs2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/transcriptions/transcriptor-abbrevs2text.lexc)</small>
 
 ---
 
@@ -4785,7 +4785,7 @@ for text-to-speech systems.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-acro2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-acro2text.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/transcriptions/transcriptor-acro2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/transcriptions/transcriptor-acro2text.lexc)</small>
 
 ---
 
@@ -4795,7 +4795,7 @@ This is still a dummy file.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-date-digit2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-date-digit2text.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/transcriptions/transcriptor-date-digit2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/transcriptions/transcriptor-date-digit2text.lexc)</small>
 
 ---
 
@@ -4803,7 +4803,7 @@ This is still a dummy file.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-numbers-digit2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/transcriptions/transcriptor-numbers-digit2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
 
 ---
 
@@ -4826,7 +4826,7 @@ Emojies
 
 * * *
 
-<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-symbols2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-symbols2text.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/transcriptions/transcriptor-symbols2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/transcriptions/transcriptor-symbols2text.lexc)</small>
 
 ---
 

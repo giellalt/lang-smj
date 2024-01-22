@@ -13,7 +13,7 @@ Default, letter by letter pronunciation
 
 * * *
 
-<small>This (part of) documentation was generated from [src/phonetics/acro2ipa.xfscript](https://github.com/giellalt/lang-smj/blob/main/src/phonetics/acro2ipa.xfscript)</small>
+<small>This (part of) documentation was generated from [src/fst/phonetics/acro2ipa.xfscript](https://github.com/giellalt/lang-smj/blob/main/src/fst/phonetics/acro2ipa.xfscript)</small>
 
 ---
 

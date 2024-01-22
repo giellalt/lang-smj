@@ -17,7 +17,7 @@ Emojies
 
 * * *
 
-<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-symbols2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/transcriptions/transcriptor-symbols2text.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/transcriptions/transcriptor-symbols2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/transcriptions/transcriptor-symbols2text.lexc)</small>
 
 ---
 
