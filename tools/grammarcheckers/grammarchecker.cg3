@@ -1589,6 +1589,7 @@ SET PL-N = PL-PAIR-N OR PL-NONPAIR-N;
 
 #!! Error tags
 
+LIST &ADDED = &ADDED ;
 LIST &SUGGEST = &SUGGEST ;
 LIST &SUGGESTWF = &SUGGESTWF ; #Suggestion from the speller
 LIST &DELETE = &DELETE ;
@@ -2170,7 +2171,7 @@ ADDRELATION (RIGHT) (&punct-nom-nom-comma) TO (1 (&ADDED)) ;
 ADD:xsyn-missing-copula (&syn-missing-copula) TARGET (Gram/3syll Actio Nom) OR (N Sg Nom) IF (1 (A Sg Nom) LINK NOT 0 Attr OR (V Ind) OR Adv OR Po OR (Gram/TAbbr)) (NEGATE 0 (Gen) OR EVEN-VERBS + Der/NomAct OR (A Sg Nom)) (NEGATE *0 ("liehket" Sg3) OR ("sjaddat" Sg3) BARRIER S-BOUNDARY) (NEGATE 1 ("ájnas") OR ("binnep") OR ("ienep")) ;
 
 COPY:syn-missing-copula ("liehket" Ind Prs &SUGGEST) TARGET (&syn-nom-nom) IF (1 (A Sg Nom)) ;
-ADDCOHORT  ("<la>" "liehket" Ind Prs Sg3 &ADDED syn-missing-copula) AFTER &syn-missing-copula;
+ADDCOHORT  ("<la>" "liehket" Ind Prs Sg3 &ADDED &syn-missing-copula) AFTER &syn-missing-copula (NEGATE 0 &ADDED);
 ADDRELATION (RIGHT) (&syn-missing-copula) TO (1 (&ADDED)) ;      
    
     ## Bálges buorak.   
