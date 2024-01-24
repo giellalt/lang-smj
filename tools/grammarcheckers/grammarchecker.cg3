@@ -1881,8 +1881,21 @@ COPY:xmsyn-guokti (Num Der/akti Adv &SUGGEST) EXCEPT (Num Sg Nom &msyn-moaddi) O
     # ===================================================================================================
     # ===================================================================================================
     # ===================================================================================================
+    
+LIST MAYBE-V-smj = "soajttet" ;
+LIST MAYBE-V-sma = "sååjhtedh" ;
+LIST MAYBE-V-sme = "soaitit" ;
+LIST MAYBE-V-smn = "sättiđ" ;
+SET MAYBE-V = MAYBE-V-smj OR MAYBE-V-sma OR MAYBE-V-sme OR MAYBE-V-smn ;
 
-ADD:msyn-soajtta-adv (&msyn-soajtta-adv) TARGET ("soajttet" V IV Ind Prs Sg3) IF (NEGATE *1 Inf OR PrfPrc BARRIER NOT-NPMODADVPCLE - (A Sg Nom) - Acc - (N Nom) - (N Com) - (N Ill) - (N Ela) - (N Ine)) (NEGATE *1 ( "liehket" V IV Ind Prs Sg3) BARRIER NOT-ADV-PCLE)(NEGATE *1 (A Sg Nom) BARRIER (*) - GRADE-ADV LINK 1 CS OR EOS) ;
+LIST BE-smj = "liehket" ;
+LIST BE-sma = "leah" ;
+LIST BE-sme = "leat" ;
+LIST BE-smn = "leđe" ;
+SET BE = BE-smj OR BE-sma OR BE-sme OR BE-smn ;
+
+
+ADD:msyn-soajtta-adv (&msyn-soajtta-adv) TARGET MAYBE-V + (V IV Ind Prs Sg3) IF (NEGATE *1 Inf OR PrfPrc BARRIER NOT-NPMODADVPCLE - (A Sg Nom) - Acc - (N Nom) - (N Com) - (N Ill) - (N Ela) - (N Ine)) (NEGATE *1 BE + (V IV Ind Prs Sg3) BARRIER NOT-ADV-PCLE)(NEGATE *1 (A Sg Nom) BARRIER (*) - GRADE-ADV LINK 1 CS OR EOS) ;
 	## Ja gut diehtá; Udnásj sáme siebrudagáj gierragijs soajttá muhtem oasse boahtte ájge sámeviessoma vuodo luorkijdit.
 	## - {Soajttá} fáhtsa nali sæjvvu, javllá Ánni ja giedav gadtsabiddjáj gálggi. 
 	## {Soajttá} soames áddjá lev. 
@@ -1911,12 +1924,12 @@ COPY:msyn-soajtta-adv ("márjju" Adv &SUGGEST ) EXCEPT ("soajttet" V IV Ind Prs 
 
     # le before soajttá
 
-ADD:msyn-soajtta-le (&msyn-soajtta-le) TARGET ("liehket" V IV Ind Prs Sg3) OR ("liehket" V IV Ind Prs Pl3 ) IF (1 ("soajttet" V IV Ind Prs Sg3)) (*2 Inf OR PrfPrc BARRIER NOT-ADV-PCLE - ( A Sg Nom) - (N Ine) - (N Ill) - ( N Ela)) ;
+ADD:msyn-soajtta-le (&msyn-soajtta-le) TARGET BE + (V IV Ind Prs Sg3) OR BE + (V IV Ind Prs Pl3) IF (1 MAYBE-V + (V IV Ind Prs Sg3)) (*2 Inf OR PrfPrc BARRIER NOT-ADV-PCLE - ( A Sg Nom) - (N Ine) - (N Ill) - ( N Ela)) ;
 
     ## Dajn gielajn gånnå le riek friddja báhkogárges le soajttá vehik gássjel mierredit mij le vuodobáhkogárges.
 
     # le after soajtta
-ADD:msyn-soajtta-le (&msyn-soajtta-le) TARGET ("liehket" V IV Ind Prs Sg3) OR ("liehket" V IV Ind Prs Pl3 ) IF (-1 ("soajttet" V IV Ind Prs Sg3)) (*1 Inf OR PrfPrc BARRIER NOT-ADV-PCLE - ( A Sg Nom) - (N Ine) - (N Ill) - ( N Ela)) ;
+ADD:msyn-soajtta-le (&msyn-soajtta-le) TARGET BE + (V IV Ind Prs Sg3) OR BE + (V IV Ind Prs Pl3 ) IF (-1 MAYBE-V + (V IV Ind Prs Sg3)) (*1 Inf OR PrfPrc BARRIER NOT-ADV-PCLE - ( A Sg Nom) - (N Ine) - (N Ill) - ( N Ela)) ;
 
     ## Jus illa válggakårtåv oadtjum, de soajttá la påstan láhppum, jali dån la sirddemav maŋŋela biehtsemáno 30. biejve diededam.
 
@@ -1945,7 +1958,7 @@ COPY:msyn-soajtta-le &DELETE EXCEPT ("liehket" V V IV Ind Prs Sg3 &msyn-soajtta-
     ## Soajttet not used as adverb
     # ---------------------------
     
-ADD:msyn-soajtta-not-adv (&msyn-soajtta-not-adv) TARGET VFIN + Prt OR VFIN + Prs IF (*-1 ("soajttet") - (Prs Sg3) BARRIER S-BOUNDARY OR CS OR CC OR VFIN OR Inf OR Rel);
+ADD:msyn-soajtta-not-adv (&msyn-soajtta-not-adv) TARGET VFIN + Prt OR VFIN + Prs IF (*-1 MAYBE-V - (Prs Sg3) BARRIER S-BOUNDARY OR CS OR CC OR VFIN OR Inf OR Rel);
     ## Ållessjattuga ja bargge mánáv iejvviji ienemus oassáj mánáv iesjguhtiga arenan ja aktijvuodan, ja danen soajtti mánáv vehi ietjáláhkáj dåbddi.
     #$ De såjtij nágin rájadus sárnnediddje gænna {lij} alla giella tjuorvvot vantsas ja javllat: Gijtto gájkka buorrevuoda åvdås!
 
@@ -2087,7 +2100,7 @@ ADD:msyn-ill-com-oahpastuvvat (&msyn-ill-com-oahpatmuvvat) TARGET (Ill) IF (*0 (
 
 ADD:msyn-ill-com-oahpatmuvvat (&msyn-ill-com-oahpatmuvvat) TARGET (Ill) IF (*-1 CC OR COMMA BARRIER NOT-NPMOD LINK -1 (&msyn-ill-com-oahpatmuvvat) OR (&msyn-pron-ill-com-oahpastuvvat2) OR (&msyn-pron-ill-com-oahpastuvvat))(NEGATE (*0 &lex-oahpastuvvat-oahpasmuvvat)) ;
 
-    ## ja bessi oahpástuvvat sáme kultuvrraj, histåvrråj ja sebrudakiellemij.}
+    ## ja bessi oahpástuvvat sáme kultuvrraj, histåvrråj ja sebrudakiellemij.
 
 COPY:msyn-ill-com-oahpatmuvvat (Com &SUGGEST) EXCEPT (Ill &msyn-ill-com-oahpatmuvvat) TARGET (&msyn-ill-com-oahpatmuvvat) ;
 
@@ -2572,7 +2585,7 @@ COPY:msyn-congr-gænna-gejn (Pl &SUGGEST) EXCEPT (Sg &msyn-congr-gænna-gejn Are
     # ===================================================================================================
     
 LIST REFL-PRON-smj = "iesj" ;
-LIST REFL-PRON-sma = "ieš" ;
+LIST REFL-PRON-sma = "jïjtje" ;
 LIST REFL-PRON-sme = "ieš" ;
 LIST REFL-PRON-smn = "jieš" ;
 SET REFL-PRON = REFL-PRON-smj OR REFL-PRON-sma OR REFL-PRON-sme OR REFL-PRON-smn ;
@@ -2647,7 +2660,11 @@ COPY:real-ActioGen-PrtPl1 (Ind Prt Pl1 &SUGGEST) EXCEPT (Actio Gen) TARGET (&rea
     
     # left subj
     
-SET PLURAL-QUANTIFIERS = ("moadda" Nom) OR ("moadda" Indef Sg Acc) OR ("moattes" Nom) OR (Num Sg Nom) - ("akta") ;
+SET PLURAL-QUANTIFIERS-smj = ("moadda" Nom) OR ("moadda" Indef Sg Acc) OR ("moattes" Nom) OR (Num Sg Nom) - ("akta") ;
+SET PLURAL-QUANTIFIERS-sme = ("moadde" Nom) OR ("moadde" Indef Sg Acc) OR ("moattes" Nom) OR (Num Sg Nom) - ("okta") ;
+SET PLURAL-QUANTIFIERS-sma = ("måedtie" Nom) OR ("måedtie" Indef Sg Acc) OR ("moattes" Nom) OR (Num Sg Nom) - ("akte") ;
+SET PLURAL-QUANTIFIERS-smn = ("moadda" Nom) OR ("moadda" Indef Sg Acc) OR ("moattes" Nom) OR (Num Sg Nom) - ("akta") ;
+SET PLURAL-QUANTIFIERS = PLURAL-QUANTIFIERS-smj OR PLURAL-QUANTIFIERS-sme OR PLURAL-QUANTIFIERS-sma OR PLURAL-QUANTIFIERS-smn ;
 
 ADD:xreal-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-UNEVEN-VERBS OR ("liehket")  IF (0 (Prs Pl3)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) - PLURAL-QUANTIFIERS BARRIER NOT-ADV-PCLE LINK NOT 0 (Pl Nom) LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg) OR (Nom Pl))  (NEGATE *1 (Pron Nom Pl3) OR (N Nom Pl) BARRIER S-BOUNDARY)(NEGATE 0 (Prs Sg3) OR SentInit OR &DELETE)(NEGATE -1 PrfPrc LINK *-1 (N Pl Nom) OR (Pers Pl3 Nom) BARRIER NOT-ADV-PCLE) ;
     ## Suv mielas sån li ilá materalistisk.
@@ -2663,8 +2680,8 @@ ADD:xreal-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-UNEVEN-VERBS OR ("liehke
     #$ Gájtsa máhtti nåv jasska guodudit ja livvadit sjaljon valla gå ulmutja gajkkum {li} låvdagoadev ja gálvov guottadam jåhtemvadnasij, de gájtsa li gáhtum saje dagi.
     
     # right subj
-
-ADD:xreal-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-UNEVEN-VERBS OR ( "liehket" )  IF (0 (Prs Pl3)) (*1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Pers Nom Sg) - PLURAL-QUANTIFIERS BARRIER NOT-NPMOD - Adv - Pcle OR PLURAL-QUANTIFIERS LINK NOT 0 (Pl Nom) LINK NEGATE 1 CC LINK *1 (Nom Sg) BARRIER NOT-NPMOD)  (NEGATE *-1 (Pron Nom Pl3) OR (N Nom Pl) OR (A Nom Pl) OR (Pron Nom Pl))(NEGATE 0 (Prs Sg3) OR SentInit) (NEGATE -1 &msyn-congr-gænna-gejn);
+    
+ADD:xreal-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-UNEVEN-VERBS OR BE IF (0 (Prs Pl3)) (*1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Pers Nom Sg) - PLURAL-QUANTIFIERS BARRIER NOT-NPMOD - Adv - Pcle OR PLURAL-QUANTIFIERS LINK NOT 0 (Pl Nom) LINK NEGATE 1 CC LINK *1 (Nom Sg) BARRIER NOT-NPMOD)  (NEGATE *-1 (Pron Nom Pl3) OR (N Nom Pl) OR (A Nom Pl) OR (Pron Nom Pl))(NEGATE 0 (Prs Sg3) OR SentInit) (NEGATE -1 &msyn-congr-gænna-gejn);
 
     ## Suv mielas li sån ilá materalistisk.
     ## Mijá sáme åvdåstiddjijn {li} mierredimfábmo.
@@ -2680,18 +2697,18 @@ COPY:real-PrsPl3-PrtSg3 (Prt Sg3 &SUGGEST) EXCEPT (Prs Pl3) TARGET (&real-PrsPl3
 
 
     # real word error, extra j for odd-syll -it verbs an "li"
-    # ----------------------------------------
+    # ------------------------------------------------------
     # --------------------------------
     # lij > li
     # viehkedij > viehkedi
 
 
-ADD:xreal-PrtSg3-PrsPl3 (&real-PrtSg3-PrsPl3) TARGET ("liehket" Prt Sg3) OR IT-UNEVEN-VERBS + (Prt Sg3) IF (*-1 (N Nom Pl) OR (Pron Nom Pl) OR (Pron Nom Pl3) BARRIER NOT-ADV-PCLE LINK NOT 0 (Pron Nom Sg3) OR (N Nom Sg) OR Sem/Time + (Sg Gen)) ;
+ADD:xreal-PrtSg3-PrsPl3 (&real-PrtSg3-PrsPl3) TARGET BE + (Prt Sg3) OR IT-UNEVEN-VERBS + (Prt Sg3) IF (*-1 (N Nom Pl) OR (Pron Nom Pl) OR (Pron Nom Pl3) BARRIER NOT-ADV-PCLE LINK NOT 0 (Pron Nom Sg3) OR (N Nom Sg) OR Sem/Time + (Sg Gen)) ;
 	## Nubbe le tjielggit mij generatijva grammatihkka le, ja aj tjielggit dajt åsijt minimalissta prográmmas ma li anon ja ma {vájkudij} muv bargguj.
 	## Reksjåvnåverba li verba ma {gájbbedij} adverbiálav visses kásushámen, ja dát adverbiálla le de oadtju namáv reksjåvnnåadverbiálla (Magga).
 	## Syntávsalasj kásusa li kásusa ma e vájkkuda semantihkkaj, syntávsalasj kásusa {subtsastij} gåktu bágo majn le syntávsalasj kásus doajmmi gárgadisán, dá kásusa li nominatijvva, akkusatijvva ja álu aj genitijvva.
 	
-ADD:xreal-PrtSg3-PrsPl3 (&real-PrtSg3-PrsPl3) TARGET ("liehket" Prt Sg3) OR IT-UNEVEN-VERBS + (Prt Sg3) IF (*-1 (Nom Sg) BARRIER NOT-ADV-PCLE LINK *-1 CC BARRIER NOT-Attr LINK -1 (Nom Sg) LINK *-1 (",") BARRIER NOT-Attr LINK -1 (Nom Sg)) ;
+ADD:xreal-PrtSg3-PrsPl3 (&real-PrtSg3-PrsPl3) TARGET BE + (Prt Sg3) OR IT-UNEVEN-VERBS + (Prt Sg3) IF (*-1 (Nom Sg) BARRIER NOT-ADV-PCLE LINK *-1 CC BARRIER NOT-Attr LINK -1 (Nom Sg) LINK *-1 (",") BARRIER NOT-Attr LINK -1 (Nom Sg)) ;
 
     ## Sij {viehkedij} mijáv dehkajt målssot
     ## Iŋŋgá, Linga ja Piera {viehkedij} mijáv dehkajt målssot
@@ -2726,8 +2743,14 @@ COPY:real-PrtSg3-PrsPl3 (Prs Pl3 &SUGGEST) EXCEPT (Prt Sg3 &real-PrtSg3-PrsPl3) 
     # -------------------------------------------------------------------
 
     # left subj
+    
+LIST NEG-V-smj = "ij" ;
+LIST NEG-V-sme = "ii" ;
+LIST NEG-V-sma = "ij" ;
+LIST NEG-V-smn = "ij" ;
+SET NEG-V = NEG-V-smj OR NEG-V-sme OR NEG-V-sma OR NEG-V-smn ;
 
-ADD:xreal-NegSg2-NegSg3 (&real-NegSg2-NegSg3) TARGET ( "ij" Sg2) IF (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Dem Nom Sg) BARRIER S-BOUNDARY OR VFIN LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg))  (NEGATE *1 (Pron Nom Sg2)) (NEGATE 0 (Sg3)) ;
+ADD:xreal-NegSg2-NegSg3 (&real-NegSg2-NegSg3) TARGET NEG-V + Sg2 IF (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Dem Nom Sg) BARRIER S-BOUNDARY OR VFIN LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg))  (NEGATE *1 (Pron Nom Sg2)) (NEGATE 0 (Sg3)) ;
 
     ## Åhpadiddje i dánna vuojga tjielggi mij la barggodahkamus.
     ## Hamsun ittji sámijda lijkku
@@ -2735,7 +2758,7 @@ ADD:xreal-NegSg2-NegSg3 (&real-NegSg2-NegSg3) TARGET ( "ij" Sg2) IF (*-1 (Pron N
     
     # right subj
     
-ADD:xreal-NegSg2-NegSg3 (&real-NegSg2-NegSg3) TARGET ( "ij" Sg2 )  IF (*1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Dem Nom Sg) BARRIER NOT-NPMOD - Adv OR S-BOUNDARY OR VFIN  LINK NOT 0 Adv LINK NEGATE *1 CC BARRIER NOT-NPMOD LINK 1 (Nom Sg))  (NEGATE *-1 (Pron Nom Sg2)) (NEGATE 0 (Sg3)) ;
+ADD:xreal-NegSg2-NegSg3 (&real-NegSg2-NegSg3) TARGET NEG-V + Sg2  IF (*1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Dem Nom Sg) BARRIER NOT-NPMOD - Adv OR S-BOUNDARY OR VFIN  LINK NOT 0 Adv LINK NEGATE *1 CC BARRIER NOT-NPMOD LINK 1 (Nom Sg))  (NEGATE *-1 (Pron Nom Sg2)) (NEGATE 0 (Sg3)) ;
 
     ## i åhpadiddje dánna vuojga tjielggi mij la barggodahkamus.
     ## ittji Hamsun sámijda lijkku
@@ -2757,7 +2780,7 @@ COPY:real-NegSg2-NegSg3 (Sg3 &SUGGEST) EXCEPT (Sg2) TARGET (&real-NegSg2-NegSg3)
 
     # left subj
 
-ADD:xreal-NegSg3-NegSg2 (&real-NegSg3-NegSg2) TARGET ("ij" Sg3) IF (*-1 (Pron Nom Sg2) BARRIER S-BOUNDARY OR CS OR CC OR VFIN) ;
+ADD:xreal-NegSg3-NegSg2 (&real-NegSg3-NegSg2) TARGET NEG-V + Sg3 IF (*-1 (Pron Nom Sg2) BARRIER S-BOUNDARY OR CS OR CC OR VFIN) ;
 
     ## dån ij galga iehtjádij sáhkadit hielles jali negatijva priváhta ássjij birra , ietján_gå lagámus fámilljaj .
 
@@ -2773,7 +2796,7 @@ ADD:xreal-NegSg3-NegSg2 (&real-NegSg3-NegSg2) TARGET ("ij" Sg3) IF (*-1 (Pron No
 
     # right subj
 
-ADD:xreal-NegSg3-NegSg2 (&real-NegSg3-NegSg2) TARGET ("ij")  IF (0 (Sg3)) (*1 (Pron Nom Sg2) BARRIER S-BOUNDARY OR CS OR CC OR VFIN) ;
+ADD:xreal-NegSg3-NegSg2 (&real-NegSg3-NegSg2) TARGET NEG-V  IF (0 (Sg3)) (*1 (Pron Nom Sg2) BARRIER S-BOUNDARY OR CS OR CC OR VFIN) ;
 
 
 COPY:real-NegSg3-NegSg2 (Sg2 &SUGGEST) EXCEPT (Sg3) TARGET  (&real-NegSg3-NegSg2) ;
