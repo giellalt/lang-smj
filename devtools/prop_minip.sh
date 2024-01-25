@@ -13,7 +13,7 @@ GTLANGS=$(echo $GTLANGS)
 
 PATTERN=$1
 L_FILE="in.txt"
-cut -d '!' -f1 src/fst/stems/smj-propernouns.lexc | grep $PATTERN | cut -d ':' -f1 | tr -d '%'>$L_FILE
+cut -d '!' -f1 src/fst/morphology/stems/smj-propernouns.lexc | grep $PATTERN | grep -v Err | cut -d ':' -f1 | tr -d '%'>$L_FILE
 
 P_FILE="test/data/testpropparadigm.txt"
 
@@ -21,7 +21,7 @@ for lemma in $(cat $L_FILE);
 do
  for form in $(cat $P_FILE);
  do
-   echo "${lemma}${form}" | $LOOKUP $GTLANGS/lang-smj/src/generator-gt-norm.hfstol
+   echo "${lemma}${form}" | $LOOKUP $GTLANGS/lang-smj/src/fst/generator-gt-norm.hfstol
  done
  rm -f $L_FILE
 done
