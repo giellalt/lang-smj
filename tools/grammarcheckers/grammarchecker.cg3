@@ -187,6 +187,7 @@ LIST Foc/beson       = Foc/beson ;
 LIST Foc/mat         = Foc/mat ;
 LIST Foc/mis         = Foc/mis ;
 LIST Foc/s           = Foc/s ;
+LIST Foc/Pos-k		 = Foc/Pos-k ;
 
 
 # Derivation
@@ -1873,7 +1874,7 @@ COPY:msyn-sme_bastard_neg (Ind ConNeg &SUGGEST) EXCEPT (PrfPrc &msyn-sme_bastard
     
 LIST TIMES-ADV-smn = ("kerdi" N Sg Nom) ("kerdi" N Sg Gen)  ;
 LIST TIMES-ADV-sme = ("geardde" Adv) ;
-LISTE TIMES-ADV-sma = ("aejkie" N Sg Gen) ;
+LIST TIMES-ADV-sma = ("aejkie" N Sg Gen) ;
 LIST TIMES-ADV-smj = ("bálle" N Sg Gen) ;
 SET TIMES-ADV = TIMES-ADV-smn OR TIMES-ADV-sme OR TIMES-ADV-sma OR TIMES-ADV-smj ;
 
@@ -2169,7 +2170,7 @@ COPY:msyn-plcom-sgcom-oahpastuvvat2 (Com &SUGGEST) EXCEPT (Ill Attr &msyn-plcom-
     # nom-nom = Should be gen
     #--------------------------
       
-ADD:xsyn-nom_nom-gen_nom (&syn-nom_nom-gen_nom) TARGET (Gram/3syll Actio Nom) OR (N Sg Nom) IF (1 (N Sg Nom) OR (Actio Nom)) (NEGATE 0 (Gen)) (NEGATE 1 (V Ind) OR Adv OR Po) (NEGATE 0 EVEN-VERBS + Der/NomAct) (NEGATE *-1 BE BARRIER NOT-NPMOD) (NEGATE 1 (Gram/TAbbr)) (NEGATE 0 (A Sg Nom)) (NEGATE 1 ("jurra") LINK *1 (V Ind) BARRIER NOT-CC - Adv) (NEGATE -1 (N Sg Nom) LINK 1 (Actio Nom)) (NEGATE -1 BE + Sg3) LINK -1 (N Sg Nom)) (NEGATE 1 (Prop Sg Nom) OR ("liehke" PxSg1))  ;
+ADD:xsyn-nom_nom-gen_nom (&syn-nom_nom-gen_nom) TARGET (Gram/3syll Actio Nom) OR (N Sg Nom) IF (1 (N Sg Nom) OR (Actio Nom)) (NEGATE 0 (Gen)) (NEGATE 1 (V Ind) OR Adv OR Po) (NEGATE 0 EVEN-VERBS + Der/NomAct) (NEGATE *-1 BE BARRIER NOT-NPMOD) (NEGATE 1 (Gram/TAbbr)) (NEGATE 0 (A Sg Nom)) (NEGATE 1 ("jurra") LINK *1 (V Ind) BARRIER NOT-CC - Adv) (NEGATE -1 (N Sg Nom) LINK 1 (Actio Nom)) (NEGATE -1 BE + Sg3 LINK -1 (N Sg Nom)) (NEGATE 1 (Prop Sg Nom) OR ("liehke" PxSg1))  ;
 
 
 COPY:syn-nom_nom-gen_nom (Gen &SUGGEST) EXCEPT (Nom &syn-nom_nom-gen_nom) TARGET (&syn-nom_nom-gen_nom) ;   
@@ -2402,6 +2403,12 @@ COPY:msyn-mij-gut ("guhti" &SUGGEST) EXCEPT ("mij" &msyn-mij-gut) TARGET (&msyn-
     
      # relative use gut>mij
     # ----------------------
+    
+LIST ONE-smn = "ohtâ" ;
+LIST ONE-sme = "okta" ;
+LIST ONE-sma = "akte" ;
+LIST ONE-smj = "akta" ;
+SET ONE = ONE-smn OR ONE-sme OR ONE-sma OR ONE-smj ;   
 
 ADD:xmsyn-gut-mij (&msyn-gut-mij) TARGET WHO IF (-1 N LINK NOT 0 Sem/AnimateNotOrg LINK NEGATE -1 Sem/Hum + Gen) (NEGATE -1 ("avtak") OR ONE + Foc/Pos-k OR (Pron Pers) OR (Pron Indef) + Sem/Hum OR Coll) (NEGATE *-1 (N Nom) + Sem/Hum OR (Dem Nom) BARRIER (*) - (N Ine) - (Pron Ine) LINK *-1 BE + (Ind Sg3) OR BE + (Ind Sg3) BARRIER NOT-NPMOD LINK -1 WHO) (NEGATE -1 (N Ine) LINK -1 (N Ill) OR (Pron Ill)) ;  
 
@@ -2452,12 +2459,7 @@ COPY:msyn-pass-active (TV &SUGGEST) EXCEPT (IV Ex/V Ex/TV Der/PassL  &msyn-pass-
     
 SET NOT-BEFORE-REL = (*) - Inf - VFIN - COMMA - Po - ("(") ; 
 
-LIST ONE-smn = "ohtâ" ;
-LIST ONE-sme = "okta" ;
-LIST ONE-sma = "akte" ;
-LIST ONE-smj = "akta" ;
 
-SET ONE = ONE-smn OR ONE-sme OR ONE-sma OR ONE-smj ;   
 
 ADD:xmsyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NOT 0 (N Sg) LINK NEGATE -1 VFIN OR Inf LINK -1 (N Sg) OR (Pron Sg))(NEGATE *-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK -1 ONE OR ("1" Num))(NEGATE -1 Po LINK -1 (Gen Pl) LINK -1 (N Sg))(NEGATE -1 (V <TH-FS-Qpron>))(NEGATE *1 <TH-Nom-Any> + Sg3 BARRIER NOT-ADV-PCLE LINK NOT 1 (Pron Sg3) OR (N Nom Sg)) (NEGATE 0 WHO LINK -1 ("mån" Pl1 Gen) LINK -1 ("áhttje" Sg Nom)) ;
 
@@ -3316,8 +3318,8 @@ ADD:xsyn-number_congruence-subj-verb SUB:1 (&syn-number_congruence-subj-verb) TA
 LIST AND-CC-smj = "ja" ;
 LIST AND-CC-sme = "ja" ;
 LIST AND-CC-sma = "jïh" ;
-LIST AND-CC-smj = "já" ;
-SET AND-CC = AND-CC-smj OR AND-CC-sme OR AND-CC-sma OR AND-CC-smj ;
+LIST AND-CC-smn = "já" ;
+SET AND-CC = AND-CC-smj OR AND-CC-sme OR AND-CC-sma OR AND-CC-smn ;
 
 ADD:xsyn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg OR (V Ind Prt) - ConNeg OR (V Cond) OR (V Neg Ind) IF (*-1 (N Nom) + HUMAN-INDIVIDUAL OR (N Nom) + Sem/Hum-prop BARRIER NOT-ADV-PCLE - @>N OR (Adv Subqst) OR ("dat" Pcle) OR ("de") LINK NOT 0 @COMP-CS< OR (N Sg Gen) - Sem/Hum LINK *-1 AND-CC BARRIER NOT-NPMOD - Sem/Hum-prop LINK -1 (N Nom) + HUMAN-INDIVIDUAL OR (N Nom) + Sem/Hum-prop LINK *-1 AND-CC OR COMMA BARRIER NOT-NPMOD - Sem/Hum-prop LINK -1 (N Nom) + HUMAN-INDIVIDUAL OR (N Nom) + Sem/Hum-prop) (NEGATE *1 (A Sg Nom) + @<SPRED BARRIER NOT-ADV-PCLE)(NEGATE -1 Ess LINK -1 CC LINK -1 Ess)
 (NEGATE *-1 (N Nom) + Sem/Abstract OR (N Nom) + Sem/Substnc OR (N Nom) + Sem/Ani BARRIER NOT-ADV-PCLE - @>N LINK *-1 AND-CC BARRIER NOT-ADV-PCLE LINK -1 (N Nom) + Sem/Abstract OR (N Nom) + Sem/Substnc OR (N Nom) + Sem/Ani)
