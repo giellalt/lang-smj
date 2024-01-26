@@ -31,7 +31,7 @@ LOCAL_ANL_ZIP_FILES=generated-remove-lexicalised-compounds.bin \
 #### BEGIN: Local build targets: ####
 
 # Copy special FST for acro to IPA conversion:
-acro2ipa.hfstol: ../../src/phonetics/acro2ipa.lookup.hfst
+acro2ipa.hfstol: ../../src/fst/phonetics/acro2ipa.lookup.hfst
 	$(AM_V_FST2FST)$(HFST_FST2FST) -w < $< > $@
 
 # Copy to file with another name, to work around VPATH / CG3 INCLUDE incomps:
