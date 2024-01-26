@@ -1708,7 +1708,13 @@ COPY:use-ellipsis ("…" &SUGGEST) EXCEPT ("...") TARGET (&ellipsis) ;
 
 	# Should not be sentence initial copula: from le, to la or l or li
     # ----------------------------------------------------------------------
-ADD:syn-from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentInit IF (NEGATE -1 BOS OR COMMA OR (";") OR (":") OR CITATION OR HYPHEN) (NEGATE 0 &syn-number_congruence-subj-verb) (NEGATE 0 &msyn-verb-cong-rel) (NEGATE 0 &msyn-soajtta-le)(NEGATE 1 ("soajttet" V Ind Prs Sg3)) ;
+LIST MAYBE-V-smj = "soajttet" ;
+LIST MAYBE-V-sma = "sååjhtedh" ;
+LIST MAYBE-V-sme = "soaitit" ;
+LIST MAYBE-V-smn = "sättiđ" ;
+SET MAYBE-V = MAYBE-V-smj OR MAYBE-V-sma OR MAYBE-V-sme OR MAYBE-V-smn ;
+
+ADD:syn-from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentInit IF (NEGATE -1 BOS OR COMMA OR (";") OR (":") OR CITATION OR HYPHEN) (NEGATE 0 &syn-number_congruence-subj-verb) (NEGATE 0 &msyn-verb-cong-rel) (NEGATE 0 &msyn-soajtta-le)(NEGATE 1 MAYBE-V + (V Ind Prs Sg3)) ;
 	#$ Dajn gielajn gånnå le riek friddja báhkogárges {le} soajttá vehik gássjel mierredit mij la vuodobáhkogárges.
 
 	# l
@@ -1882,11 +1888,6 @@ COPY:xmsyn-guokti (Num Der/akti Adv &SUGGEST) EXCEPT (Num Sg Nom &msyn-moaddi) O
     # ===================================================================================================
     # ===================================================================================================
     
-LIST MAYBE-V-smj = "soajttet" ;
-LIST MAYBE-V-sma = "sååjhtedh" ;
-LIST MAYBE-V-sme = "soaitit" ;
-LIST MAYBE-V-smn = "sättiđ" ;
-SET MAYBE-V = MAYBE-V-smj OR MAYBE-V-sma OR MAYBE-V-sme OR MAYBE-V-smn ;
 
 LIST BE-smj = "liehket" ;
 LIST BE-sma = "leah" ;
