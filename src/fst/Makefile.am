@@ -161,7 +161,7 @@ endif !WITH_OFST_TROPICAL
 
 # Then we create the input side - lower side of lexicon + twolc/phonology:
 # Language specific override/preprocessing, due to ÆÄ variation.
-.generated/analyser-tts-gt-input.pretmp.hfst: ,generated/analyser-tts-gt-output.hfst \
+.generated/analyser-tts-gt-input.pretmp.hfst: .generated/analyser-tts-gt-output.hfst \
 					 filters/remove-æae-flags-after-æae.hfst \
 					 filters/remove-æae-flags-after-æae.inverted.hfst
 	$(AM_V_COMPOSE)\
