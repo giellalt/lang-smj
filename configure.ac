@@ -45,9 +45,6 @@ AM_INIT_AUTOMAKE(
   m4_ifndef([AM_PROG_CC_STDC], [serial-tests])
 )
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
-### typically spellers are released more often than the language package):
-### package, and also different from the speller release version):
-AC_SUBST([GRAMCHECKVERSION], [1.0.0])
 
 ########## LANGUAGE SPECIFIC SETTINGS ##########
 # GLANG is the language code used to identify this project; it is the
