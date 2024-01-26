@@ -49,16 +49,17 @@ functions-mt-gt.cg3: $(topsrcdir)/src/cg3/functions.cg3
 endif
 
 # We want to make semantic tags optional for the apertium-targeted analyser:
-analyser-mt-gt-desc.%.hfst: analyser-mt-gt-desc.%.tmp.hfst \
-			$(top_builddir)/src/filters/make-optional-semantic-tags.hfst
+.generated/analyser-mt-gt-desc.%.hfst: .generated/analyser-mt-gt-desc.%.tmp.hfst \
+			$(top_builddir)/src/fst/filters/make-optional-semantic-tags.hfst \
+			$(top_builddir)/src/fst/orthography/spellrelax.compose.hfst
 	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) $(HFST_FORMAT) $< -o $<.tmp
 	$(AM_V_RGX2FST)$(PRINTF) "\
-		@\"$(top_builddir)/src/filters/make-optional-semantic-tags.hfst\" \
+		@\"$(top_builddir)/src/fst/filters/make-optional-semantic-tags.hfst\" \
    	.o. @\"$<.tmp\" \
     	;" \
 		| $(HFST_REGEXP2FST) $(HFST_FLAGS) $(HFST_FORMAT) \
 			-S --xerox-composition=ON \
-		| hfst-compose-intersect -1 - -2 $(top_builddir)/src/orthography/spellrelax.compose.hfst \
+		| hfst-compose-intersect -1 - -2 $(top_builddir)/src/fst/orthography/spellrelax.compose.hfst \
 		| $(HFST_INVERT) $(HFSTFLAGS) \
 		| $(HFST_FST2FST) $(HFSTFLAGS) -t \
 		-o $@
