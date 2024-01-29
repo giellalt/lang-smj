@@ -94,7 +94,7 @@ XFAIL_TESTS=\
 	DEV-msyn-numeral-attr-PASS.yaml				  \
 	DEV-msyn-sme_bastard_neg1-2-FAIL.yaml         \
 	DEV-msyn-moadda-bale-FAIL.yaml                \
-    DEV-msyn-nom-nom-FAIL.yaml                     \
+    DEV-msyn-nom-nom-FAIL.yaml                    \
 	DEV-real-NegSg3-NegSg2-FAIL.yaml              \
 	DEV-real-NegSg2-NegSg3-FAIL.yaml              \
 	DEV-real-PrsPl3-PrtSg3-FAIL.yaml              \
@@ -141,19 +141,8 @@ XFAIL_TESTS=\
 	syn-nom-nom.yaml                              \
 	syn-number_congruence-subj-verb.yaml          \
 	syn-pred-attr.yaml                            \
-	syn-wo-neg-before-subj.yaml                   \
-	DEV-msyn-gut-mij-gut-PASS.yaml                \
-	DEV-msyn-sme_bastard_neg1-2-PASS.yaml         \
-	DEV-msyn-nom-nom-PASS.yaml                    \
-	DEV-msyn-moadda-bale-PASS.yaml                \
-	DEV-real-NegSg2-NegSg3-PASS.yaml              \
-	DEV-real-PrsPl3-PrtSg3-PASS.yaml              \
-	DEV-syn-number_congruence-subj-verb-PASS.yaml \
-	DEV-syn-pred-attr-PASS.yaml                   \
-	REL-lex-oahpasmuvvat-oahpastuvvat-PASS.yaml   \
-	REL-msyn-genna-gejn-PASS.yaml                 \
-	REL-msyn-iesj-ietja-PASS.yaml                 \
-	REL-msyn-soajtta-PASS.yaml
+	syn-wo-neg-before-subj.yaml                   
+
 
 endif # WANT_GRAMCHECK
 
