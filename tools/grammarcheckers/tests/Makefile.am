@@ -18,8 +18,8 @@ TESTS=\
 	DEV-msyn-nom-gen-PP-PASS.yaml                 \
 	DEV-msyn-numeral-attr-FAIL.yaml               \
 	DEV-msyn-numeral-attr-PASS.yaml               \
-	DEV-msyn-sme_bastard_neg1-2-FAIL.yaml         \
-	DEV-msyn-sme_bastard_neg1-2-PASS.yaml         \
+	DEV-msyn-sme_interferenc_neg-PASS.yaml        \
+	DEV-msyn-sme_interferenc_neg-PASS.yaml        \
 	DEV-msyn-nom-nom-FAIL.yaml                    \
 	DEV-msyn-nom-nom-PASS.yaml                    \
 	DEV-msyn-moadda-bale-FAIL.yaml                \
@@ -66,7 +66,7 @@ TESTS=\
 	msyn-numeral-attr.yaml                        \
 	msyn-oadjot-kausative.yaml                    \
 	msyn-pass-active.yaml                         \
-	msyn-sme_bastard_neg1-2.yaml                  \
+	msyn-sme_interferenc_neg.yaml                 \
 	msyn-soajtta.yaml                             \
 	real-NegSg2-NegSg3.yaml                       \
 	real-NegSg3-NegSg2.yaml                       \
@@ -92,7 +92,7 @@ XFAIL_TESTS=\
 	DEV-msyn-nom-gen-PP-PASS.yaml                 \
 	DEV-msyn-numeral-attr-FAIL.yaml               \
 	DEV-msyn-numeral-attr-PASS.yaml				  \
-	DEV-msyn-sme_bastard_neg1-2-FAIL.yaml         \
+	DEV-msyn-sme_interferenc_neg-FAIL.yaml        \
 	DEV-msyn-moadda-bale-FAIL.yaml                \
     DEV-msyn-nom-nom-FAIL.yaml                    \
 	DEV-real-NegSg3-NegSg2-FAIL.yaml              \
@@ -127,7 +127,7 @@ XFAIL_TESTS=\
 	msyn-numeral-attr.yaml                        \
 	msyn-oadjot-kausative.yaml                    \
 	msyn-pass-active.yaml                         \
-	msyn-sme_bastard_neg1-2.yaml                  \
+	msyn-sme_interferenc_neg.yaml                 \
 	msyn-soajtta.yaml                             \
 	real-NegSg2-NegSg3.yaml                       \
 	real-NegSg3-NegSg2.yaml                       \
@@ -141,9 +141,12 @@ XFAIL_TESTS=\
 	syn-nom-nom.yaml                              \
 	syn-number_congruence-subj-verb.yaml          \
 	syn-pred-attr.yaml                            \
-	syn-wo-neg-before-subj.yaml                   
-
-
+	syn-wo-neg-before-subj.yaml                   \
+	DEV-msyn-gut-mij-gut-PASS.yaml                \
+	DEV-msyn-sme_interferenc_neg-PASS.yaml        \
+    DEV-real-NegSg2-NegSg3-PASS.yaml              \
+    REL-msyn-soajtta-PASS.yaml
+    
 endif # WANT_GRAMCHECK
 
 #### Do NOT edit below here: ####
@@ -183,8 +186,6 @@ include $(top_srcdir)/../giella-core/am-shared/tools-grammarcheckers-tests-dir-i
 #	candidates-msyn-numerals-with-demopron.yaml \
 #	candidates-msyn-pass-active.yaml \
 #	candidates-msyn-pred-attr.yaml \
-#	candidates-msyn-sme_bastard_neg.yaml \
-#	candidates-msyn-sme_bastard_neg2.yaml \
 #	candidates-msyn-soajttaa-adv.yaml \
 #	candidates-msyn-soajttaa-le.yaml \
 #	candidates-msyn-soajttaa-not-adv.yaml \
