@@ -2042,7 +2042,7 @@ COPY:lex-oahpasmuvvat-oahpastuvvat ("oahpástuvvat" &SUGGEST) EXCEPT ("oahpásmu
 
     # com to ill when oahpásmuvvat 
     # ------------------------------
-ADD:msyn-com-ill-oahpasmuvvat (&msyn-com-ill-oahpasmuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*0 ("oahpásmuvvat") BARRIER NOT-NPMODADV LINK NEGATE 1 (Pron Dem) LINK 1 (N Com) ) (NEGATE *0 &lex-oahpasmuvvat-oahpastuvvat)(NEGATE 0 (Sg Ill)) (NEGATE 0 (Pl Gen) LINK 1 Ill) ;
+ADD:msyn-com-ill-oahpasmuvvat (&msyn-com-ill-oahpasmuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*0 ("oahpásmuvvat") BARRIER NOT-NPMODADV LINK NOT 0 ("oahpástuvvat" &SUGGEST) LINK NEGATE 1 (Pron Dem) LINK 1 (N Com)) (NEGATE *0 &lex-oahpasmuvvat-oahpastuvvat)(NEGATE 0 (Sg Ill)) (NEGATE 0 (Pl Gen) LINK 1 Ill) ;
 
     ## Ja de oahpástuvviv avta prográmmaj.
     ## Dá bále bessin oahppe vehi oahpásmuvvat {doarromusiejajn} Narvijkan 
@@ -2058,14 +2058,14 @@ ADD:msyn-com-ill-oahpasmuvvat (&msyn-com-ill-oahpasmuvvat) TARGET (Com) OR (Pl I
     #$ Dákkir juohkusa bierriji vihpat muhtem ájge vaj mánná nubbe nuppijn oahpástuvvi.
     #$  Oahppe galggi oahpásmuvvat girjálasjvuoda ja subtsastimdábij valjesvuohtaj Sámen. 
  
-ADD:msyn-com-ill-oahpasmuvvat (&msyn-com-ill-oahpasmuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 (Pron Pers Nom) BARRIER NOT-NPMODADV LINK -1 ("oahpásmuvvat")) (NEGATE *0 &lex-oahpasmuvvat-oahpastuvvat)  ;
+ADD:msyn-com-ill-oahpasmuvvat (&msyn-com-ill-oahpasmuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 (Pron Pers Nom) BARRIER NOT-NPMODADV LINK -1 ("oahpásmuvvat") LINK NOT 0 ("oahpástuvvat" &SUGGEST)) (NEGATE *0 &lex-oahpasmuvvat-oahpastuvvat)  ;
 
     ## valla oahpástuvvin (måj bájkijn} gå de dåhku båhtin.
     ## Valla oahpásmuvájma måj buorre prográmmajn 
     
 
     # demonstartive + com to ill when oahpásmuvvat
-ADD:msyn-proncom-ill-oahpasmuvvat (&msyn-proncom-ill-oahpasmuvvat) TARGET (Pron Dem Com) IF (*0 ("oahpásmuvvat") BARRIER NOT-NPMODADV) (*1 (N Com) BARRIER NOT-NPMOD)(NEGATE *0 &lex-oahpasmuvvat-oahpastuvvat)  ;
+ADD:msyn-proncom-ill-oahpasmuvvat (&msyn-proncom-ill-oahpasmuvvat) TARGET (Pron Dem Com) IF (*0 ("oahpásmuvvat") BARRIER NOT-NPMODADV LINK NOT 0 ("oahpástuvvat" &SUGGEST)) (*1 (N Com) BARRIER NOT-NPMOD)(NEGATE *0 &lex-oahpasmuvvat-oahpastuvvat)  ;
 
 COPY:msyn-proncom-ill-oahpasmuvvat (Ill Attr &SUGGEST) EXCEPT (Com &msyn-proncom-ill-oahpasmuvvat) TARGET (&msyn-proncom-ill-oahpasmuvvat) ;
 
@@ -2078,7 +2078,7 @@ COPY:msyn-proncom-ill-oahpasmuvvat2 (Ill &SUGGEST) EXCEPT (Com &msyn-proncom-ill
 
 
     # com and com to ill when oahpásmuvvat 
-    # ------------------------------
+    # ------------------------------------
 
 ADD:msyn-com-ill-oahpasmuvvat (&msyn-com-ill-oahpasmuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 CC OR COMMA BARRIER NOT-NPMOD-NOMPL LINK *-1 (&msyn-com-ill-oahpasmuvvat) OR (&msyn-proncom-ill-oahpasmuvvat) OR (&msyn-proncom-ill-oahpasmuvvat2) BARRIER (*) - (Sem/Plc Sg Ine)) (NEGATE *0 &lex-oahpasmuvvat-oahpastuvvat) ;
     ## Dá bále bessin oahppe vehi oahpásmuvvat doarromusiejajn Narvijkan ja sáme ásadusáj Jåhkåmåhken åvdås vádtsájin
@@ -2096,7 +2096,7 @@ COPY:msyn-com-ill-oahpasmuvvat (Pl Ill &SUGGEST) EXCEPT (Pl Gen &msyn-com-ill-oa
     # Ill to com when oahpástuvvat 
     # ------------------------------
 
-ADD:msyn-ill-com-oahpastuvvat (&msyn-ill-com-oahpatmuvvat) TARGET (Ill) IF (*0 ("oahpástuvvat") BARRIER NOT-NPMODADV LINK NEGATE 1 (Pron Dem) LINK *1 (N Ill) BARRIER NOT-NPMODADV-INDEF)(NEGATE 0 Com)(NEGATE (*0 &lex-oahpastuvvat-oahpasmuvvat));
+ADD:msyn-ill-com-oahpastuvvat (&msyn-ill-com-oahpatmuvvat) TARGET (Ill) IF (*0 ("oahpástuvvat") BARRIER NOT-NPMODADV LINK NOT 0 ("oahpásmuvvat" &SUGGEST) LINK NEGATE 1 (Pron Dem) LINK *1 (N Ill) BARRIER NOT-NPMODADV-INDEF)(NEGATE 0 Com)(NEGATE (*0 &lex-oahpastuvvat-oahpasmuvvat));
 
 
     ## Sån la oahpástuvvam {Iŋŋgáj}
@@ -2127,7 +2127,7 @@ COPY:msyn-ill-com-oahpatmuvvat (Com &SUGGEST) EXCEPT (Ill &msyn-ill-com-oahpatmu
 
 
     # demonstartive + ill to com when oahpástuvvat
-ADD:msyn-pron-ill-com-oahpastuvvat (&msyn-pron-ill-com-oahpastuvvat) TARGET (Pron Dem Pl Ill) OR (Pron Dem Sg Ill Attr) IF (*0 ("oahpástuvvat") BARRIER NOT-NPMODADV) (*1 (N Ill) BARRIER NOT-NPMOD) (NEGATE (*0 &lex-oahpastuvvat-oahpasmuvvat));
+ADD:msyn-pron-ill-com-oahpastuvvat (&msyn-pron-ill-com-oahpastuvvat) TARGET (Pron Dem Pl Ill) OR (Pron Dem Sg Ill Attr) IF (*0 ("oahpástuvvat") BARRIER NOT-NPMODADV LINK NOT 0 ("oahpásmuvvat" &SUGGEST)) (*1 (N Ill) BARRIER NOT-NPMOD) (NEGATE (*0 &lex-oahpastuvvat-oahpasmuvvat));
 
 COPY:msyn-pron-ill-com-oahpastuvvat (Com &SUGGEST) EXCEPT (Ill &msyn-pron-ill-com-oahpastuvvat) OR (Ill Attr &msyn-pron-ill-com-oahpastuvvat) TARGET (&msyn-pron-ill-com-oahpastuvvat) ;
     ## Maŋenagi gå oahppe oahpásmuvvi {dájda} {ulmutjijda}."
@@ -2145,7 +2145,7 @@ COPY:msyn-pron-ill-com-oahpastuvvat2 (Com &SUGGEST) EXCEPT (Ill &msyn-proncom-il
     ## Maŋenagi gå oahppe oahpástuvvi dájda {ulmutjijda}
 
 
-    # Homonemy between pl com an sg ill
+    # Homonymy between pl com an sg ill
     # -------------------------------
 ADD:msyn-plcom-sgcom-oahpastuvvat (&msyn-plcom-sgcom-oahpastuvvat) TARGET (Pl Com) IF (*0 ("oahpásmuvvat") OR (&lex-oahpasmuvvat-oahpastuvvat) BARRIER NOT-NPMODADV) (*-1 (Pron Dem Ill Attr) BARRIER NOT-Attr) (0 (Sg Ill)) ;
    
@@ -2153,7 +2153,7 @@ COPY:msyn-plcom-sgcom-oahpastuvvat (Sg Com &SUGGEST) EXCEPT (Pl Com &msyn-plcom-
     ## Maŋenagi gå oahppe dán {ulmutjij} oahpásmuvvi.
 
 
-    #changes demonstrative pronoun
+    # changes demonstrative pronoun
 ADD:msyn-plcom-sgcom-oahpastuvvat2 (&msyn-plcom-sgcom-oahpastuvvat2) TARGET (Pron Dem Sg Ill Attr) IF (*0 ("oahpástuvvat") OR (&msyn-plcom-sgcom-oahpastuvvat) BARRIER NOT-NPMODADV);
 
 COPY:msyn-plcom-sgcom-oahpastuvvat2 (Com &SUGGEST) EXCEPT (Ill Attr &msyn-plcom-sgcom-oahpastuvvat2) TARGET (&msyn-plcom-sgcom-oahpastuvvat2) ;
