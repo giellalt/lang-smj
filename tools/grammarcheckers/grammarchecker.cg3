@@ -2842,9 +2842,16 @@ ADD:xreal-NegSg3-NegSg2 (&real-NegSg3-NegSg2) TARGET NEG-V  IF (0 (Sg3)) (*1 (Pr
 COPY:real-NegSg3-NegSg2 (Sg2 &SUGGEST) EXCEPT (Sg3) TARGET  (&real-NegSg3-NegSg2) ;
 
 
+    # missing "gus" 
+    #-----------------
+
+ADD:xsyn-missing-gus (&syn-missing-gus) TARGET ("liehket" Ind) IF (-1 BOS) (*1 ("?")) ;
+
+ADDCOHORT  ("<gus>" "gus" Pcle Qst &ADDED &syn-missing-gus) AFTER &syn-missing-gus (NEGATE 0 &ADDED);
+ADDRELATION (RIGHT) (&syn-missing-gus) TO (1 (&ADDED)) ;  
 
 
-
+    ## Le giella njálmálasj? > Le gus
 
 
     # Word order, neg before subject
