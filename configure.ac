@@ -234,6 +234,9 @@ AC_CONFIG_FILES([tools/tts/test/run_tests.sh], \
 AC_CONFIG_FILES([tools/tts/convert-to-SE.sh], \
       [chmod a+x tools/tts/convert-to-SE.sh])
 
+AC_CONFIG_FILES([tools/spellcheckers/index.NO.xml \
+                 tools/spellcheckers/index.SE.xml ])
+
 ############ END: Language-specific scripts. #############
 
 # This must be near the end of all configure.ac files:
