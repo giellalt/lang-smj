@@ -2839,7 +2839,7 @@ LIST BECOME-smj = "sjaddat" ;
 LIST BECOME-smn = "šoddâđ" ;
 SET BECOME = BECOME-sma OR BECOME-sme OR BECOME-smj OR BECOME-smn ;
 
-ADD:xsyn-missing-copula (&syn-missing-copula) TARGET (Gram/3syll Actio Nom) OR (N Nom) IF (*1 (A Nom) BARRIER NOT-ADV LINK NOT 0 Attr OR (V Ind) OR Adv OR Po OR (Gram/TAbbr)) (NEGATE 0 (Gen) OR EVEN-VERBS + Der/NomAct OR (A Nom)) (NEGATE *0 BE + ConNeg OR BECOME + ConNeg OR (V Inf) OR (Pl3 &real-PrsPl3-PrtSg3) BARRIER S-BOUNDARY) (NEGATE 1 ("ájnas") OR ("binnep") OR ("ienep") OR (V Ind)) (NEGATE 1 (A Nom) LINK 1 BE + Inf OR BECOME + Inf) (NEGATE 1 (A Nom &syn-pred-attr)) (NEGATE *1 (A Pl Nom) BARRIER NOT-ADV LINK *0 BE + Pl3 OR BECOME + Pl3 BARRIER S-BOUNDARY) (NEGATE *1 (A Sg Nom) BARRIER NOT-ADV LINK *0 BE + Sg3 OR BECOME + Sg3 BARRIER S-BOUNDARY) ;
+ADD:xsyn-missing-copula (&syn-missing-copula) TARGET (Gram/3syll Actio Nom) OR (N Nom) IF (*1 (A Nom) BARRIER NOT-ADV LINK NOT 0 Attr OR (V Ind) OR Adv OR Po OR (Gram/TAbbr)) (NEGATE 0 (Gen) OR EVEN-VERBS + Der/NomAct OR (A Nom)) (NEGATE *0 BE + ConNeg OR BECOME + ConNeg OR (V Inf) OR (Pl3 &real-PrsPl3-PrtSg3) BARRIER S-BOUNDARY) (NEGATE 1 ("ájnas") OR ("binnep") OR ("ienep") OR (V Ind)) (NEGATE 1 (A Nom) LINK 1 BE + Inf OR BECOME + Inf) (NEGATE 1 (A Nom &syn-pred-attr)) (NEGATE *1 (A Pl Nom) BARRIER NOT-ADV LINK *0 BE + Pl3 OR BECOME + Pl3 BARRIER S-BOUNDARY) (NEGATE *1 (A Sg Nom) BARRIER NOT-ADV LINK *0 BE + Sg3 OR BECOME + Sg3 BARRIER S-BOUNDARY) (NEGATE 0 (Der/NomInstr) OR (V "liehket") ) ;
 
 
 ADDCOHORT  ("<la>" "liehket" Ind Prs Sg3 &ADDED &syn-missing-copula) AFTER &syn-missing-copula (NEGATE 0 &ADDED OR ("<.*[aeiouáå]>"r));
@@ -2859,7 +2859,7 @@ ADDRELATION (RIGHT) (&syn-missing-copula) TO (1 (&ADDED)) ;
     # missing "gus" 
     #-----------------
 
-ADD:xsyn-missing-gus (&syn-missing-gus) TARGET ("liehket" Ind) IF (-1 BOS) (*1 ("?")) ;
+ADD:xsyn-missing-gus (&syn-missing-gus) TARGET ("liehket" Ind) IF (-1 BOS) (*1 ("?")) (NEGATE 1 (Pcle "gus")) ;
 
 ADDCOHORT  ("<gus>" "gus" Pcle Qst &ADDED &syn-missing-gus) AFTER &syn-missing-gus (NEGATE 0 &ADDED);
 ADDRELATION (RIGHT) (&syn-missing-gus) TO (1 (&ADDED)) ;  
