@@ -14,16 +14,16 @@ TESTS=\
 	DEV-msyn-dimin-after-unna-PASS.yaml           \
 	DEV-msyn-gut-mij-gut-FAIL.yaml                \
 	DEV-msyn-gut-mij-gut-PASS.yaml                \
+	DEV-msyn-moadda-bale-FAIL.yaml                \
+	DEV-msyn-moadda-bale-PASS.yaml                \
 	DEV-msyn-nom-gen-PP-FAIL.yaml                 \
 	DEV-msyn-nom-gen-PP-PASS.yaml                 \
-	DEV-msyn-numeral-attr-FAIL.yaml               \
+	DEV-msyn-nom-nom-gen-PASS.yaml                    \
+    DEV-msyn-numeral-attr-FAIL.yaml               \
 	DEV-msyn-numeral-attr-PASS.yaml               \
 	DEV-msyn-sme_interferenc_neg-PASS.yaml        \
 	DEV-msyn-sme_interferenc_neg-PASS.yaml        \
-	DEV-msyn-nom-nom-FAIL.yaml                    \
-	DEV-msyn-nom-nom-PASS.yaml                    \
-	DEV-msyn-moadda-bale-FAIL.yaml                \
-	DEV-msyn-moadda-bale-PASS.yaml                \
+    DEV-punct-nom-nom-comma-FAIL.yaml             \
 	DEV-real-NegSg2-NegSg3-FAIL.yaml              \
 	DEV-real-NegSg2-NegSg3-PASS.yaml              \
 	DEV-real-NegSg3-NegSg2-FAIL.yaml              \
@@ -33,6 +33,10 @@ TESTS=\
 	DEV-real-PrtSg3-PrsPl3-FAIL.yaml              \
 	DEV-real-PrtSg3-PrsPl3-PASS.yaml              \
 	DEV-real-habbmim-PASS.yaml                    \
+    DEV-syn-akta-FAIL.yaml                        \
+    DEV-syn-gus-FAIL.yaml                         \
+    DEV-syn-missing-copula-FAIL.yaml              \
+    DEV-syn-missing-copula-PASS.yaml            \
 	DEV-syn-number_congruence-subj-verb-FAIL.yaml \
 	DEV-syn-number_congruence-subj-verb-PASS.yaml \
 	DEV-syn-pred-attr-FAIL.yaml                   \
@@ -58,6 +62,7 @@ TESTS=\
 	msyn-genna-gejn.yaml                          \
 	msyn-gut-mij-gut.yaml                         \
 	msyn-iesj-ietja.yaml                          \
+    msyn-IV-with-object.yaml                    \
 	msyn-liba-li.yaml                             \
 	msyn-liehket-congr-condsg2-condpl3.yaml       \
 	msyn-liehket-congr-condsg2-condsg3.yaml       \
@@ -68,6 +73,8 @@ TESTS=\
 	msyn-pass-active.yaml                         \
 	msyn-sme_interferenc_neg.yaml                 \
 	msyn-soajtta.yaml                             \
+    msyn-valens.yaml                                \
+    real-adjective-adverb.yaml                      \
 	real-NegSg2-NegSg3.yaml                       \
 	real-NegSg3-NegSg2.yaml                       \
 	real-PrsPl3-PrtSg3.yaml                       \
@@ -76,10 +83,11 @@ TESTS=\
 	real-gæhppat-alkke.yaml                       \
 	real-habbmim.yaml                             \
 	real-habbmim.yaml                             \
+    syn-attr-pred.yaml                          \
 	syn-correct-form-liehket.yaml                 \
-	syn-nom-nom.yaml                              \
 	syn-number_congruence-subj-verb.yaml          \
 	syn-pred-attr.yaml                            \
+    syn-should-be-cmp.yaml                       \
 	syn-wo-neg-before-subj.yaml
 
 # List tests that are presently (expected) failures here, ie things that should
@@ -88,28 +96,27 @@ XFAIL_TESTS=\
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
 	DEV-msyn-dimin-after-unna-FAIL.yaml           \
 	DEV-msyn-gut-mij-gut-FAIL.yaml                \
-	DEV-msyn-nom-gen-PP-FAIL.yaml                 \
-	DEV-msyn-nom-gen-PP-PASS.yaml                 \
-	DEV-msyn-numeral-attr-FAIL.yaml               \
-	DEV-msyn-numeral-attr-PASS.yaml				  \
-	DEV-msyn-sme_interferenc_neg-FAIL.yaml        \
 	DEV-msyn-moadda-bale-FAIL.yaml                \
-    DEV-msyn-nom-nom-FAIL.yaml                    \
-	DEV-real-NegSg3-NegSg2-FAIL.yaml              \
+	DEV-msyn-nom-gen-PP-FAIL.yaml                 \
+	DEV-msyn-nom-nom-gen-FAIL.yaml                    \
+	DEV-msyn-numeral-attr-FAIL.yaml               \
+	DEV-msyn-sme_interferenc_neg-FAIL.yaml        \
 	DEV-real-NegSg2-NegSg3-FAIL.yaml              \
+	DEV-real-NegSg3-NegSg2-FAIL.yaml              \
 	DEV-real-PrsPl3-PrtSg3-FAIL.yaml              \
 	DEV-real-PrtSg3-PrsPl3-FAIL.yaml              \
-	DEV-real-PrtSg3-PrsPl3-PASS.yaml              \
 	DEV-syn-number_congruence-subj-verb-FAIL.yaml \
 	DEV-syn-pred-attr-FAIL.yaml                   \
+    DEV-punct-nom-nom-comma-FAIL.yaml             \
+    DEV-syn-akta-FAIL.yaml                        \
+    DEV-syn-gus-FAIL.yaml                         \
+    DEV-syn-missing-copula-FAIL.yaml              \
 	REL-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
 	REL-msyn-attr-pred-FAIL.yaml                  \
-	REL-msyn-attr-pred-PASS.yaml				  \
 	REL-msyn-genna-gejn-FAIL.yaml                 \
 	REL-msyn-iesj-ietja-FAIL.yaml                 \
 	REL-msyn-soajtta-FAIL.yaml                    \
 	REL-syn-correct-form-liehket-FAIL.yaml        \
-	REL-syn-correct-form-liehket-PASS.yaml        \
 	format-missing-comma.yaml                     \
 	lex-oahpasmuvvat-oahpastuvvat.yaml            \
 	msyn-IV-with-object.yaml                      \
@@ -129,6 +136,8 @@ XFAIL_TESTS=\
 	msyn-pass-active.yaml                         \
 	msyn-sme_interferenc_neg.yaml                 \
 	msyn-soajtta.yaml                             \
+    msyn-valens.yaml                                \
+    real-adjective-adverb.yaml                      \
 	real-NegSg2-NegSg3.yaml                       \
 	real-NegSg3-NegSg2.yaml                       \
 	real-PrsPl3-PrtSg3.yaml                       \
@@ -137,15 +146,16 @@ XFAIL_TESTS=\
 	real-gæhppat-alkke.yaml                       \
 	real-habbmim.yaml                             \
 	real-habbmim.yaml                             \
+    syn-attr-pred.yaml                          \
 	syn-correct-form-liehket.yaml                 \
-	syn-nom-nom.yaml                              \
 	syn-number_congruence-subj-verb.yaml          \
 	syn-pred-attr.yaml                            \
 	syn-wo-neg-before-subj.yaml                   \
-	DEV-msyn-gut-mij-gut-PASS.yaml                \
+    syn-should-be-cmp.yaml                       \
+	DEV-msyn-numeral-attr-PASS.yaml				  \
 	DEV-msyn-sme_interferenc_neg-PASS.yaml        \
-    DEV-real-NegSg2-NegSg3-PASS.yaml              \
-    REL-msyn-soajtta-PASS.yaml
+	REL-msyn-attr-pred-PASS.yaml				  \
+	REL-syn-correct-form-liehket-PASS.yaml        
     
 endif # WANT_GRAMCHECK
 
@@ -155,46 +165,3 @@ include $(top_srcdir)/../giella-core/am-shared/tools-grammarcheckers-tests-dir-i
 
 
 # Here are the candidate files to be considered.
-
-#	candidates-ellipsis.yaml \
-#	candidates-lex-oahpaasmuvvat-oahpaastuvvat.yaml \
-#	candidates-lex-oahpaastuvvat-oahpaasmuvvat.yaml \
-#	candidates-msyn-attr-pred-pl.yaml \
-#	candidates-msyn-attr-pred-sg.yaml \
-#	candidates-msyn-attr-pred.yaml \
-#	candidates-msyn-com-ill-oahpaastuvvat.yaml \
-#	candidates-msyn-congr-PrtSg3-PrsPl3.yaml \
-#	candidates-msyn-congr-gaenna-gejn.yaml \
-#	candidates-msyn-congr-iesj-ietja.yaml \
-#	candidates-msyn-congr-ma-mij.yaml \
-#	candidates-msyn-congr-mij-ma.yaml \
-#	candidates-msyn-gut-mij.yaml \
-#	candidates-msyn-ill-com-oahpaasmuvvat.yaml \
-#	candidates-msyn-l-not-la.yaml \
-#	candidates-msyn-liehket-congr-condsg2-condpl3.yaml \
-#	candidates-msyn-mij-gut.yaml \
-#	candidates-msyn-numeral-accattr.yaml \
-#	candidates-msyn-numeral-acccasecongr-akta.yaml \
-#	candidates-msyn-numeral-acccasecongr.yaml \
-#	candidates-msyn-numeral-attr-pl-com.yaml \
-#	candidates-msyn-numeral-attr-pl-ine.yaml \
-#	candidates-msyn-numeral-attr.yaml \
-#	candidates-msyn-numeral-casecongr-guovte-com.yaml \
-#	candidates-msyn-numeral-casecongr.yaml \
-#	candidates-msyn-numeral-comcasecongr.yaml \
-#	candidates-msyn-numeral-parcasecongr.yaml \
-#	candidates-msyn-numerals-with-demopron.yaml \
-#	candidates-msyn-pass-active.yaml \
-#	candidates-msyn-pred-attr.yaml \
-#	candidates-msyn-soajttaa-adv.yaml \
-#	candidates-msyn-soajttaa-le.yaml \
-#	candidates-msyn-soajttaa-not-adv.yaml \
-#	candidates-real-ActioGen-PrtPl1.yaml \
-#	candidates-real-PrsPl3-PrtSg3.yaml \
-#	candidates-real-PrsSg2-PrsSg3.yaml \
-#	candidates-real-PrtSg2-PrtSg3.yaml \
-#	candidates-real-negSg3-negSg2.yaml \
-#	candidates-syn-from-sentence-init-copula.yaml \
-#	candidates-syn-number_congruence-subj-verb.yaml \
-#	candidates-syn-subj-before-neg.yaml \
-#	candidates-syn-to-sentence-init-copula.yaml 
