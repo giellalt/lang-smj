@@ -34,7 +34,7 @@ TESTS=\
 	DEV-real-PrtSg3-PrsPl3-PASS.yaml              \
 	DEV-real-habbmim-PASS.yaml                    \
     DEV-syn-akta-FAIL.yaml                        \
-    DEV-syn-gus-FAIL.yaml                         \
+    DEV-syn-missing-gus-FAIL.yaml                         \
     DEV-syn-missing-copula-FAIL.yaml              \
     DEV-syn-missing-copula-PASS.yaml            \
 	DEV-syn-number_congruence-subj-verb-FAIL.yaml \
@@ -109,7 +109,7 @@ XFAIL_TESTS=\
 	DEV-syn-pred-attr-FAIL.yaml                   \
     DEV-punct-nom-nom-comma-FAIL.yaml             \
     DEV-syn-akta-FAIL.yaml                        \
-    DEV-syn-gus-FAIL.yaml                         \
+    DEV-syn-missing-gus-FAIL.yaml                         \
     DEV-syn-missing-copula-FAIL.yaml              \
 	REL-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
 	REL-msyn-attr-pred-FAIL.yaml                  \
