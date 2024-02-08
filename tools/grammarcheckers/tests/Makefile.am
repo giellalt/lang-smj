@@ -21,8 +21,8 @@ TESTS=\
 	DEV-msyn-nom-nom-gen-PASS.yaml                    \
     DEV-msyn-numeral-attr-FAIL.yaml               \
 	DEV-msyn-numeral-attr-PASS.yaml               \
-	DEV-msyn-sme_interferenc_neg-PASS.yaml        \
-	DEV-msyn-sme_interferenc_neg-PASS.yaml        \
+	DEV-msyn-sme_interference_neg-PASS.yaml        \
+	DEV-msyn-sme_interference_neg-FAIL.yaml        \
     DEV-punct-nom-nom-comma-FAIL.yaml             \
 	DEV-real-NegSg2-NegSg3-FAIL.yaml              \
 	DEV-real-NegSg2-NegSg3-PASS.yaml              \
@@ -71,7 +71,7 @@ TESTS=\
 	msyn-numeral-attr.yaml                        \
 	msyn-oadjot-kausative.yaml                    \
 	msyn-pass-active.yaml                         \
-	msyn-sme_interferenc_neg.yaml                 \
+	msyn-sme_interference_neg.yaml                 \
 	msyn-soajtta.yaml                             \
     msyn-valens.yaml                                \
     real-adjective-adverb.yaml                      \
@@ -100,7 +100,7 @@ XFAIL_TESTS=\
 	DEV-msyn-nom-gen-PP-FAIL.yaml                 \
 	DEV-msyn-nom-nom-gen-FAIL.yaml                    \
 	DEV-msyn-numeral-attr-FAIL.yaml               \
-	DEV-msyn-sme_interferenc_neg-FAIL.yaml        \
+	DEV-msyn-sme_interference_neg-FAIL.yaml        \
 	DEV-real-NegSg2-NegSg3-FAIL.yaml              \
 	DEV-real-NegSg3-NegSg2-FAIL.yaml              \
 	DEV-real-PrsPl3-PrtSg3-FAIL.yaml              \
@@ -134,7 +134,7 @@ XFAIL_TESTS=\
 	msyn-numeral-attr.yaml                        \
 	msyn-oadjot-kausative.yaml                    \
 	msyn-pass-active.yaml                         \
-	msyn-sme_interferenc_neg.yaml                 \
+	msyn-sme_interference_neg.yaml                 \
 	msyn-soajtta.yaml                             \
     msyn-valens.yaml                                \
     real-adjective-adverb.yaml                      \
@@ -153,7 +153,7 @@ XFAIL_TESTS=\
 	syn-wo-neg-before-subj.yaml                   \
     syn-should-be-cmp.yaml                       \
 	DEV-msyn-numeral-attr-PASS.yaml				  \
-	DEV-msyn-sme_interferenc_neg-PASS.yaml        \
+	DEV-msyn-sme_interference_neg-PASS.yaml        \
 	REL-msyn-attr-pred-PASS.yaml				  \
 	REL-syn-correct-form-liehket-PASS.yaml        
     
