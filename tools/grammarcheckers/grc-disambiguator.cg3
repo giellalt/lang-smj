@@ -2628,12 +2628,13 @@ REMOVE V (NOT *-1 VFIN BARRIER S-BOUNDARY2)(0 Gen LINK NEGATE 0 VFIN LINK *-1 NP
 
 # Gen after Num
 
-SELECT (Sg Gen) IF (*-1 Num BARRIER NPNH LINK 0 Gen)(NEGATE 0 Po OR CC OR PxSg3 OR Ill);
+SELECT (Sg Gen) IF (*-1 Num BARRIER NPNH LINK 0 Gen)(NEGATE 0 Po OR CC OR PxSg3 OR Ill)(NEGATE 1 Sem/Plc OR (Prop Ine));
 	## Aktat ij buvte guokta härrä dievnnut.
 	#$GRAM Birrusin guokta {vahko} dás åvddåla mierredij avtajienalasj Sámedigge nuorttarijkalasj sáme dutkam- ja fáhka/ressursa guovdátjav ásadit.
 	##GRAM Varresvuohta ja skihpasujtto l mávsodis vargga gájkka lánndadikkijn ja dajvajn jus ij la 20 {jage} dävddám.
 
-SELECT (Sg Gen) IF (*-1 Num BARRIER NPNH LINK 0 Acc LINK NOT 0 Nom)(NEGATE 0 Po OR CC OR PxSg3);
+SELECT (Sg Gen) IF (*-1 Num BARRIER NPNH LINK 0 Acc LINK NOT 0 Nom)(NEGATE 0 Po OR CC OR PxSg3)(NEGATE 1 Sem/Plc OR (Prop Ine));
+	#$GRAM Iv mån vajálduhte da guokta báhtja {Måsken}. 
 
 # Gen in Spec
 #REMOVE (Pl Nom) IF (0 Prop)(*1 N BARRIER NOT-ADJ);
@@ -3632,9 +3633,10 @@ SELECT Gen (-1 ILLV)(0 Nom LINK 1 Ill);
 SELECT Gen IF (NEGATE -1 COPULAS LINK 0 Pl)(-1 ("soames"))(0 TIME)(NEGATE 1 COPULAS  LINK 0 Pl);
 	## .., javlaj Ámmá munji soames biejve.
 
-SELECT Gen IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER NPNH)(0 (N Sg))(NEGATE 0 VFIN)(*1 N BARRIER NOT-ADJ OR COMMA LINK 1 NP-BOUNDARY);
+SELECT Gen IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER NPNH)(0 (N Sg))(NEGATE 0 VFIN)(*1 N - (Prop Ine) - Sem/Plc - Sem/Time BARRIER NOT-ADJ OR COMMA LINK 1 NP-BOUNDARY);
 	## Gullam gånågisá bágojt, vuolggin.
-	## Áhttje , hievedav alme ja ednama härráv.
+	## Áhttje, hievedav alme ja ednama härráv.
+	#$ Iv mån vajálduhte da guokta báhtja Måsken.
     
     
 SELECT (Sg Gen) IF (*-1C (Dem Sg Gen) BARRIER NOT-ADJ)(NEGATE 0 VFIN)(0 N);
