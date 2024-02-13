@@ -2805,7 +2805,7 @@ COPY:real-NegSg3-NegSg2 (Sg2 &SUGGEST) EXCEPT (Sg3) TARGET  (&real-NegSg3-NegSg2
     # nom-nom = Should be gen
     #--------------------------
       
-ADD:xsyn-nom_nom-gen_nom (&syn-nom_nom-gen_nom) TARGET (Gram/3syll Actio Nom) OR (N Sg Nom) IF (1 (N Sg Nom) OR (Actio Nom)) (NEGATE 0 (Gen)) (NEGATE 1 (V Ind) OR Adv OR Po) (NEGATE 0 EVEN-VERBS + Der/NomAct) (NEGATE *-1 BE BARRIER NOT-NPMOD) (NEGATE 1 (Gram/TAbbr)) (NEGATE 0 (A Sg Nom)) (NEGATE 1 ("jurra") LINK *1 (V Ind) BARRIER NOT-CC - Adv) (NEGATE -1 (N Sg Nom) LINK 1 (Actio Nom)) (NEGATE -1 BE + Sg3 LINK -1 (N Sg Nom)) (NEGATE 1 (Prop Sg Nom) OR ("liehke" PxSg1))  ;
+ADD:xsyn-nom_nom-gen_nom (&syn-nom_nom-gen_nom) TARGET (Gram/3syll Actio Nom) OR (N Sg Nom) IF (1 (N Sg Nom) OR (Actio Nom)) (NEGATE 0 (Gen)) (NEGATE 1 (V Ind) OR Adv OR Po) (NEGATE 0 EVEN-VERBS + Der/NomAct) (NEGATE *-1 BE BARRIER NOT-NPMOD) (NEGATE 1 (Gram/TAbbr)) (NEGATE 0 (A Sg Nom) OR (N Pl Nom) OR ("Hærrá" N)) (NEGATE 1 ("jurra") LINK *1 (V Ind) BARRIER NOT-CC - Adv) (NEGATE -1 (N Sg Nom) LINK 1 (Actio Nom)) (NEGATE -1 BE + Sg3 LINK -1 (N Sg Nom)) (NEGATE 1 (Prop Sg Nom) OR ("liehke" PxSg1) OR ("nr" ABBR)) (NEGATE 1 PrsPrc LINK 1 N ) ;
 
 
 COPY:syn-nom_nom-gen_nom (Gen &SUGGEST) EXCEPT (Nom &syn-nom_nom-gen_nom) TARGET (&syn-nom_nom-gen_nom) ;   
@@ -2827,7 +2827,7 @@ COPY:syn-nom_nom-gen_nom (Gen &SUGGEST) EXCEPT (Nom &syn-nom_nom-gen_nom) TARGET
 
 #COPY:syn-nom-nom (COMMA &SUGGEST) TARGET (&syn-nom-nom) IF  ; 
 
-ADD:xpunct-nom-nom-comma (&punct-nom-nom-comma) TARGET (Gram/3syll Actio Nom) OR (N Sg Nom) IF (1 (N Sg Nom) OR (Actio Nom))(2 (CC) LINK 1 (Nom)) (NEGATE 0 (Gen)) (NEGATE 1 (V Ind) OR Adv OR Po) (NEGATE 0 EVEN-VERBS + Der/NomAct) (NEGATE 1 (Gram/TAbbr)) (NEGATE 0 (A Sg Nom)) (NEGATE 1 ("jurra") LINK *1 (V Ind) BARRIER NOT-CC - Adv) (NEGATE -1 (N Sg Nom) LINK 1 (Actio Nom)) (NEGATE 1 (Prop Sg Nom))  ;
+ADD:xpunct-nom-nom-comma (&punct-nom-nom-comma) TARGET (Gram/3syll Actio Nom) OR (N Sg Nom) IF (1 (N Sg Nom) OR (Actio Nom))(2 (CC) LINK 1 (Nom)) (NEGATE 0 (Gen) OR ("Hærrá" N) OR (N Pl Nom) OR (A Sg Nom)) (NEGATE 1 (V Ind) OR Adv OR Po) (NEGATE 0 EVEN-VERBS + Der/NomAct) (NEGATE 1 (Gram/TAbbr)) (NEGATE 1 ("jurra") LINK *1 (V Ind) BARRIER NOT-CC - Adv) (NEGATE -1 (N Sg Nom) LINK 1 (Actio Nom)) (NEGATE 1 (Prop Sg Nom))  ;
    
 #ADDCOHORT  ("<,>" "," CLB &ADDED &syn-nom-nom-comma) AFTER &punct-nom-nom-comma;
 ADDRELATION (RIGHT) (&punct-nom-nom-comma) TO (1 (&ADDED)) ;
@@ -2843,7 +2843,7 @@ ADDRELATION (RIGHT) (&punct-nom-nom-comma) TO (1 (&ADDED)) ;
     #-----------------------------------------------
     
 
-ADD:xsyn-missing-copula (&syn-missing-copula) TARGET (Gram/3syll Actio Nom) OR (N Nom) IF (*1 (A Nom) BARRIER NOT-ADV LINK NOT 0 Attr OR (V Ind) OR Adv OR Po OR (Gram/TAbbr)) (NEGATE 0 (Gen) OR EVEN-VERBS + Der/NomAct OR (A Nom)) (NEGATE *0 BE + ConNeg OR BECOME + ConNeg OR (V Inf) OR (Pl3 &real-PrsPl3-PrtSg3) BARRIER S-BOUNDARY) (NEGATE 1 ("ájnas") OR ("binnep") OR ("ienep") OR (V Ind)) (NEGATE 1 (A Nom) LINK 1 BE + Inf OR BECOME + Inf) (NEGATE 1 (A Nom &syn-pred-attr)) (NEGATE *1 (A Pl Nom) BARRIER NOT-ADV LINK *0 BE + Pl3 OR BECOME + Pl3 BARRIER S-BOUNDARY) (NEGATE *1 (A Sg Nom) BARRIER NOT-ADV LINK *0 BE + Sg3 OR BECOME + Sg3 BARRIER S-BOUNDARY) (NEGATE 0 (Der/NomInstr) OR (V "liehket") ) ;
+ADD:xsyn-missing-copula (&syn-missing-copula) TARGET (Gram/3syll Actio Nom) OR (N Nom) IF (*1 (A Nom) OR (Pron Indef Nom) BARRIER NOT-ADV LINK NOT 0 Attr OR (V Ind) OR Adv OR Po OR (Gram/TAbbr)) (NEGATE 0 (Gen) OR EVEN-VERBS + Der/NomAct OR (A Nom)) (NEGATE *0 BE + ConNeg OR BECOME + ConNeg OR (V Inf) OR (Pl3 &real-PrsPl3-PrtSg3) BARRIER S-BOUNDARY) (NEGATE 1 ("ájnas") OR ("binnep") OR ("ienep") OR (V Ind)) (NEGATE 1 (A Nom) LINK 1 BE + Inf OR BECOME + Inf) (NEGATE 1 (A Nom &syn-pred-attr)) (NEGATE *1 (A Pl Nom) BARRIER NOT-ADV LINK *0 BE + Pl3 OR BECOME + Pl3 BARRIER S-BOUNDARY) (NEGATE *1 (A Sg Nom) BARRIER NOT-ADV LINK *0 BE + Sg3 OR BECOME + Sg3 BARRIER S-BOUNDARY) (NEGATE 0 (Der/NomInstr) OR (V "liehket") ) ;
 
 
 ADDCOHORT  ("<la>" "liehket" Ind Prs Sg3 &ADDED &syn-missing-copula) AFTER &syn-missing-copula (NEGATE 0 &ADDED OR ("<.*[aeiouáå]>"r));
