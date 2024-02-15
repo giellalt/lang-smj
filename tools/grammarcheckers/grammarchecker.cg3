@@ -3720,7 +3720,7 @@ COPY:msyn-numphrase-sgacc (Sg Nom &SUGGEST) EXCEPT (Sg Acc &msyn-numphrase-sgacc
 
 COPY:msyn-numphrase-sgacc (Sg Nom &SUGGEST) EXCEPT (Pl Acc &msyn-numphrase-sgacc) OR (Sg Gen &msyn-numphrase-sgacc) TARGET (Num &msyn-numphrase-sgacc) IF (*1 (N Pl Acc) +  &msyn-numphrase-sgacc BARRIER (*) - PRE-NP-HEAD LINK NOT 0 (N Coll Nom)) ;
 
-ADDRELATIONS ($2)(RIGHT) (N &msyn-numphrase-sgacc) TO (*-1 (Num &msyn-numphrase-sgacc)); 
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgacc) TO (*-1 (Num &msyn-numphrase-sgacc)); 
 
 # Dem
 
@@ -3736,8 +3736,7 @@ COPY:msyn-numphrase-sgacc (Pl Nom &SUGGEST) EXCEPT (Pl Acc Attr &msyn-numphrase-
  
    
 	
-#ADDRELATIONS ($3)(RIGHT) (N &msyn-numphrase-sgacc) TO (*-1 (Dem &msyn-numphrase-sgacc));
-ADDRELATIONS ($3)(RIGHT) (N &msyn-numphrase-sgacc) TO (*-1 (Dem &SUGGEST));
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgacc) TO (*-1 (Dem &SUGGEST));
 
 
 
@@ -3850,7 +3849,7 @@ COPY:msyn-numphrase-sgela (Sg Par &SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sgela
     #$ Akta oajvvesivájs Áltá-tjátjádagá	dulvvadime vuosstálasstemijda lej gå sámij ednam- ja resurssarievtesvuoda ællim dåhkkiduvvam.
     #$ Akta sivájs lassenibmáj	kulturæládusán le Sámedikke ruhtadoarjjaårnik , javllá Balto.
 
-ADDRELATIONS ($2) (RIGHT) (N &msyn-numphrase-sgela) TO (*-1 Num BARRIER (*) - (A Attr)) ;
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgela) TO (*-1 Num BARRIER (*) - (A Attr)) ;
 
 ADD:num-phrase (COERROR) TARGET (Num &msyn-numphrase-sgela) IF (*1 (&msyn-numphrase-sgela) BARRIER (*) - (A Attr));
 
@@ -3866,7 +3865,7 @@ COPY:msyn-numphrase-sgela (Sg Ela Attr &SUGGEST) EXCEPT (Pl Com Attr &msyn-numph
     ## {Dajs} 22997 ulmutjijs gudi dáj suohkanijn årrun 15-jagágin.  DNW
 
 
-ADDRELATIONS ($3)(RIGHT) (N &msyn-numphrase-sgela) TO (*-1 (Dem &msyn-numphrase-sgela));
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgela) TO (*-1 (Dem &msyn-numphrase-sgela));
 
 
 
@@ -3905,7 +3904,7 @@ ADD:xmsyn-numphrase-pline-sgine (COERROR &msyn-numphrase-pline-sgine) TARGET (Nu
 ADD:xmsyn-numphrase-pline-sgine (&msyn-numphrase-pline-sgine COERROR) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) IF (*1 PRE-NP-HEAD BARRIER NOT-ADV LINK 1 CC LINK 1 PRE-NP-HEAD LINK *1 (N Pl Ine) + &msyn-numphrase-pline-sgine OR (N Sg Com) + &msyn-numphrase-pline-sgine BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) ;
 	## Tjoahkkáj li dájn {niellja} buorre ja stuor sajijn, Mortensnesajn oajvvebájkken, sierralágásj buojkulvisá årromij, bivddemij ja åsskuj Arktalasj guovlojn 12000 jagij tjadá.
 
-ADDRELATIONS ($2)(RIGHT) (N &msyn-numphrase-pline-sgine) TO (*-1 (Num &msyn-numphrase-pline-sgine)); # LINK *1 (N &msyn-numphrase-pline-sgine));
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-pline-sgine) TO (*-1 (Num &msyn-numphrase-pline-sgine)); # LINK *1 (N &msyn-numphrase-pline-sgine));
 
 
 
@@ -3927,7 +3926,7 @@ ADD:xmsyn-numphrase-pline-sgine (COERROR &msyn-numphrase-pline-sgine) TARGET (Pr
 COPY:msyn-numerals-with-demopron-sgine (Sg Ine Attr &SUGGEST) EXCEPT (Pl Com &msyn-numphrase-pline-sgine) OR (Pl Gen Attr &msyn-numphrase-pline-sgine) OR (Pl Com &msyn-numphrase-pline-sgine) OR (Pl Gen &msyn-numphrase-pline-sgine) OR (Pl Nom &msyn-numphrase-pline-sgine) OR (Pl Ine &msyn-numphrase-pline-sgine) OR (Pl Ine Attr &msyn-numphrase-pline-sgine) TARGET (Dem &msyn-numphrase-pline-sgine) ;
 
 
-ADDRELATIONS ($3)(RIGHT) (N &msyn-numphrase-pline-sgine) TO (*-1 (Dem &msyn-numphrase-pline-sgine));
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-pline-sgine) TO (*-1 (Dem &msyn-numphrase-pline-sgine));
 
 
 
@@ -3988,7 +3987,7 @@ COPY:msyn-numphrase-something-sgcom (Sg Com &SUGGEST) EXCEPT (Sg Gen &msyn-numph
     ## Foanndaj la jahkásattjat lasedibme kapitálas {guovte} miljåvnåjn gålmmå jahkáj.
     ## Sámedikken li aktisasjbarggosjiehtadusá {lågij} suohkanij ja nieljij fylkkasuohkanij.
 
-ADDRELATIONS ($2)(RIGHT) (N &msyn-numphrase-something-sgcom) TO (*1 (Num &msyn-numphrase-something-sgcom) LINK *1 (N &msyn-numphrase-something-sgcom));
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-something-sgcom) TO (*-1 (Num &msyn-numphrase-something-sgcom) LINK *-1 (N &msyn-numphrase-something-sgcom));
 
 # Dem
 
@@ -4002,7 +4001,7 @@ COPY:msyn-numphrase-something-sgcom (Sg Com &SUGGEST) EXCEPT (Pl Com Attr &msyn-
     ## Divna {daj} 23 tjuoldedum suohkanijn li stuorra oasse álmmugis sáme.
     ## Duodden tjiegŋodibmáj ja duoddimij dan årrom- ja åsskohiståvrråj mij juo le Mortensnesan, li {dájn} gålmmå duobddágijn sierra kulturhiståvrålasj kvalitehta.
 
-ADDRELATIONS ($3)(RIGHT) (N &msyn-numphrase-something-sgcom) TO (*-1 (Dem &msyn-numphrase-something-sgcom));
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-something-sgcom) TO (*-1 (Dem &msyn-numphrase-something-sgcom));
 
     # Genitive numeral phrases
     # ===================================================================================================
@@ -4030,7 +4029,7 @@ ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen COERROR) TARGET (Num Sg Nom) OR
 
 COPY:msyn-numphrase-sggen (Sg Gen &SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sggen) OR (Sg Acc &msyn-numphrase-sggen) TARGET (Num &msyn-numphrase-sggen) IF (0 (Sg Nom) OR (Sg Acc)) ;
 
-ADDRELATIONS ($2)(RIGHT) (N &msyn-numphrase-sggen) TO (*-1 (Num &msyn-numphrase-sggen));
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sggen) TO (*-1 (Num &msyn-numphrase-sggen));
 
 
 # Dem
@@ -4053,7 +4052,7 @@ ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen COERROR) TARGET (Pron Dem Pl) I
 
 COPY:msyn-numphrase-sggen (Sg Gen &SUGGEST) EXCEPT (Pl Gen &msyn-numphrase-sggen) OR (Pl Ine Attr &msyn-numphrase-sggen) TARGET (Dem &msyn-numphrase-sggen) ;
 
-ADDRELATIONS ($3)(RIGHT) (N &msyn-numphrase-sggen) TO (*-2 (Dem &msyn-numphrase-sggen));
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sggen) TO (*-2 (Dem &msyn-numphrase-sggen));
 
 
 	#$ Dálla li {29} jage gållåm dalutjis gå månnå dáv bargov álggiv, valla ij la aktak mujna ságastam, ietjam julevsáme guojmijs, ja majdik moalkedam dán ájnas bargo birra.   
