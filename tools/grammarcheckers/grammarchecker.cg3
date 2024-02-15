@@ -1607,7 +1607,7 @@ LIST &ADDED = &ADDED ;
 LIST &SUGGEST = &SUGGEST ;
 LIST &SUGGESTWF = &SUGGESTWF ; #Suggestion from the speller
 LIST &DELETE = &DELETE ;
-LIST &COERROR = &COERROR ;
+LIST COERROR = COERROR ;
 
 
 
@@ -1858,10 +1858,10 @@ COPY:msyn-sme_interference_neg (Prt &SUGGEST) EXCEPT (Prs &msyn-sme_interference
     # ADDRELATION ($2) Ess TO (*-1 ("dego" &syn-not-dego) BARRIER Ess);
     
     
-ADD:xmsyn-sme_interference_neg (&COERROR &msyn-sme_interference_neg) TARGET PrfPrc IF (*-1 NEG-V + (Neg Ind) BARRIER NOT-ADV-PCLE - ("mige") - Acc) ;
+ADD:xmsyn-sme_interference_neg (COERROR &msyn-sme_interference_neg) TARGET PrfPrc IF (*-1 NEG-V + (Neg Ind) BARRIER NOT-ADV-PCLE - ("mige") - Acc) ;
     ## valla danna iv {dádjadum} majdik ja ittjiv {máhttám} gähttjalimev dahkat
 
-ADD:xmsyn-sme_interference_neg (&COERROR &msyn-sme_interference_neg) TARGET PrfPrc IF (*-1 CC OR COMMA LINK -1 (&msyn-sme_interference_neg)) ;
+ADD:xmsyn-sme_interference_neg (COERROR &msyn-sme_interference_neg) TARGET PrfPrc IF (*-1 CC OR COMMA LINK -1 (&msyn-sme_interference_neg)) ;
 
 ADDRELATION ($2) (Neg &msyn-sme_interference_neg) TO (*1 (PrfPrc &msyn-sme_interference_neg));
 ADDRELATION (RIGHT) (PrfPrc &msyn-sme_interference_neg) TO (*-1 (Neg &msyn-sme_interference_neg));
@@ -3706,12 +3706,12 @@ ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Num Sg Acc) IF (0 ("<.
 
 
 # pl + wrong/right case
-ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc &COERROR) TARGET (Num Pl Acc) OR (Num Sg Gen) IF (*1 (N Pl Acc) +  &msyn-numphrase-sgacc OR (A Pl Acc) +  &msyn-numphrase-sgacc OR (N Pl Nom) OR (A Pl Nom) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N ) (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) ;
+ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc COERROR) TARGET (Num Pl Acc) OR (Num Sg Gen) IF (*1 (N Pl Acc) +  &msyn-numphrase-sgacc OR (A Pl Acc) +  &msyn-numphrase-sgacc OR (N Pl Nom) OR (A Pl Nom) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N ) (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) ;
     ##  E gávnu buorre lågo galles sáhkadi, låhki jali dádjadi dajt {gålmåjt} almulasj sámegielajt Vuonan uddni. OK
     ## Guovlo gånnå li gaskan guokta jali niellja mandáhta galggi tjáledahttet {avtse} kandidáhtajt lisstaoajvvadussaj OK
 
 # coordination
-ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc &COERROR) TARGET (Num Pl Acc) OR (Num Sg Gen) IF (*1 PRE-NP-HEAD BARRIER NOT-ADV LINK 1 CC LINK 1 PRE-NP-HEAD LINK *1 (N Pl Acc) + &msyn-numeral-attr OR (N Pl Acc) + &msyn-numphrase-sgacc OR (A Pl Acc) +  &msyn-numphrase-sgacc OR (N Pl Nom) OR (A Pl Nom) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) ;
+ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc COERROR) TARGET (Num Pl Acc) OR (Num Sg Gen) IF (*1 PRE-NP-HEAD BARRIER NOT-ADV LINK 1 CC LINK 1 PRE-NP-HEAD LINK *1 (N Pl Acc) + &msyn-numeral-attr OR (N Pl Acc) + &msyn-numphrase-sgacc OR (A Pl Acc) +  &msyn-numphrase-sgacc OR (N Pl Nom) OR (A Pl Nom) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) ;
 	## mån vuojnáv {avtse} buorre ja stuor gusájt OK
 
 COPY:msyn-numphrase-sgacc (Sg Nom &SUGGEST) EXCEPT (Sg Acc &msyn-numphrase-sgacc) OR (Sg Gen &msyn-numphrase-sgacc)  TARGET (Num &msyn-numphrase-sgacc) + ("<.*v>"r) IF (*1 (N Pl Acc) + &msyn-numphrase-sgacc BARRIER (*) - PRE-NP-HEAD LINK NOT 0 (N Coll Nom)) ;
@@ -3722,7 +3722,7 @@ ADDRELATIONS ($2)(RIGHT) (N &msyn-numphrase-sgacc) TO (*-1 (Num &msyn-numphrase-
 
 # Dem
 
-ADD:xmsyn-numphrase-sgacc (&COERROR &msyn-numphrase-sgacc) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) LINK *1 (N &msyn-numphrase-sgacc) OR (N Pl Nom) OR (N Sg Gen) BARRIER NOT-NPMOD - CC) ;
+ADD:xmsyn-numphrase-sgacc (COERROR &msyn-numphrase-sgacc) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) LINK *1 (N &msyn-numphrase-sgacc) OR (N Pl Nom) OR (N Sg Gen) BARRIER NOT-NPMOD - CC) ;
 	# OR (N Pl Nom) OR (N Sg Gen) can be a bit tricky, maybe we have to refer to the numeral
 
     ## Duodden dåjmadittjat dájt>dá guokta ásadusájt Divtasvuona Dávvervuorkká galggá ásadit ja åvddånbuktet máhtudagáv almatjijt dåjmajt, dat rájes gå vuostasj ulmutja Divtasvuodnaj båhtin ja udnátjij.
@@ -3771,7 +3771,7 @@ COPY:msyn-numphrase-sgill (Sg &SUGGEST) EXCEPT (Pl &msyn-numphrase-sgill) BEFORE
 	
 ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Num Sg Nom) OR (Num Sg Acc) OR (Num Sg Gen) IF (*1 (N Pl) + &msyn-numphrase-sgill OR (Sg Ill) BARRIER (*) - (A Attr) - (Dem Attr) - CC LINK NOT 0 (N Pl Nom) OR (N Coll Nom) OR Acc LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc)(NEGATE *-1 BE + Pl3 BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)(NEGATE 0 Arab OR Sem/Date OR (N Coll Nom) OR Sem/Year OR Sem/Time-clock) (NEGATE 0 (Num Sg Gen) LINK *1 Ill BARRIER NOT-NPMOD) (NEGATE 0 (Num Sg Gen) LINK *1 Gen BARRIER NOT-NPMOD);
 
-ADD:num-phrase  (&COERROR)  TARGET (Num &msyn-numphrase-sgill) IF (*1 (&msyn-numphrase-sgill) BARRIER (*) - (A Attr));
+ADD:num-phrase  (COERROR)  TARGET (Num &msyn-numphrase-sgill) IF (*1 (&msyn-numphrase-sgill) BARRIER (*) - (A Attr));
 	
 COPY:msyn-numphrase-sgill (Sg Gen &SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sgill) OR (Sg Acc &msyn-numphrase-sgill) OR (Sg Gen &msyn-numphrase-sgill) OR (Pl Com &msyn-numphrase-sgill) OR (Pl Gen &msyn-numphrase-sgill) TARGET (Num &msyn-numphrase-sgill) IF (NEGATE *1 (N Pl Com) +  &msyn-numeral-attr OR (N Sg Com) OR NUMUNIT + (Num Pl Com) OR NUMUNIT + (Num Sg Com) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) LINK NEGATE 0 (Pl Gen) LINK 1 N OR Po)  ;
 	## Gå lijma gärggam de vuoddjájma vantsajn akta rájggáj.  OK
@@ -3786,7 +3786,7 @@ ADDRELATIONS ($2) (RIGHT) (N &msyn-numphrase-sgill) TO (*-1 Num BARRIER (*) - (A
 
 # Dem
 
-ADD:xmsyn-numphrase-sgill (&COERROR &msyn-numphrase-sgill) TARGET (Pron Dem Pl) IF (1 (Num Sg) LINK *1 (N &msyn-numphrase-sgill) OR (N Sg Ill) BARRIER NOT-NPMOD - CC) ;
+ADD:xmsyn-numphrase-sgill (COERROR &msyn-numphrase-sgill) TARGET (Pron Dem Pl) IF (1 (Num Sg) LINK *1 (N &msyn-numphrase-sgill) OR (N Sg Ill) BARRIER NOT-NPMOD - CC) ;
 	#$ Rudá aneduvvi {dá} guokta ássjijda: 
 	## juogos la mierredam {dájda} gålmmå suohkanijda dahkat aktisasj plánav rumálasj dåjmajda ja luonndoåtsådallamijda.
     ##  Sáme skihppijsujttáråhpadus ja sáme åhpadiddjeåhpadusá vaddi {da} guovte nuorttalamos universitiehttaj ájn nannusap guovlulasj ja hiebalgis profijlav. 
@@ -3850,12 +3850,12 @@ COPY:msyn-numphrase-sgela (Sg Par &SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sgela
 
 ADDRELATIONS ($2) (RIGHT) (N &msyn-numphrase-sgela) TO (*-1 Num BARRIER (*) - (A Attr)) ;
 
-ADD:num-phrase (&COERROR) TARGET (Num &msyn-numphrase-sgela) IF (*1 (&msyn-numphrase-sgela) BARRIER (*) - (A Attr));
+ADD:num-phrase (COERROR) TARGET (Num &msyn-numphrase-sgela) IF (*1 (&msyn-numphrase-sgela) BARRIER (*) - (A Attr));
 
 
 # Dem
 
-ADD:xmsyn-numphrase-sgela (&COERROR &msyn-numphrase-sgela) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) LINK *1 (N &msyn-numphrase-sgela) OR (N Sg Ela) BARRIER NOT-NPMOD - CC) ;
+ADD:xmsyn-numphrase-sgela (COERROR &msyn-numphrase-sgela) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) LINK *1 (N &msyn-numphrase-sgela) OR (N Sg Ela) BARRIER NOT-NPMOD - CC) ;
 
 COPY:msyn-numphrase-sgela (Sg Ela Attr &SUGGEST) EXCEPT (Pl Com Attr &msyn-numphrase-sgela) OR (Pl Gen Attr &msyn-numphrase-sgela) OR (Pl Com &msyn-numphrase-sgela) OR (Pl Gen &msyn-numphrase-sgela) OR (Pl Ela Attr &msyn-numphrase-sgela) OR (Pl Ela &msyn-numphrase-sgela) OR (Pl Nom &msyn-numphrase-sgela) TARGET (Dem &msyn-numphrase-sgela) IF (*2 (N Sg Ela) BARRIER NOT-Attr)  ;
     ## Divtasvuona suohkan ásadij fåndav mij rudájt oadtju daj guokta luossabiebbmamvidnudagájs.
@@ -3892,7 +3892,7 @@ COPY:msyn-numphrase-pline-sgine (Sg Ine &SUGGEST) EXCEPT (Pl Ine &msyn-numphrase
 
 # Num
 
-ADD:xmsyn-numphrase-pline-sgine (&COERROR &msyn-numphrase-pline-sgine) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) IF (*1 (N Sg Ine) BARRIER NOT-NPMOD)(NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 NUMUNIT LINK 1 ("kråvnnå"))  ;
+ADD:xmsyn-numphrase-pline-sgine (COERROR &msyn-numphrase-pline-sgine) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) IF (*1 (N Sg Ine) BARRIER NOT-NPMOD)(NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 NUMUNIT LINK 1 ("kråvnnå"))  ;
 	# those two rules belong together: xmsyn-numeral-casecongr-com and xmsyn-numeral-casecongr-ine
 	## Mij lip NSRan  guhkev juo berustam, ja ájn berustip, nannit aktijvuodav sámij gaskan divna niellja rijkajn duola degu konkrehtalasj aktisasjbargo baktu.
     ## makkár rahtjamusá li nielje sámegielajn
@@ -3900,7 +3900,7 @@ ADD:xmsyn-numphrase-pline-sgine (&COERROR &msyn-numphrase-pline-sgine) TARGET (N
     #$ Foanndan la jahkásattjat 2 millijåvnå kråvnå gålmån jagen.
     
 # coordination
-ADD:xmsyn-numphrase-pline-sgine (&msyn-numphrase-pline-sgine &COERROR) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) IF (*1 PRE-NP-HEAD BARRIER NOT-ADV LINK 1 CC LINK 1 PRE-NP-HEAD LINK *1 (N Pl Ine) + &msyn-numphrase-pline-sgine OR (N Sg Com) + &msyn-numphrase-pline-sgine BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) ;
+ADD:xmsyn-numphrase-pline-sgine (&msyn-numphrase-pline-sgine COERROR) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) IF (*1 PRE-NP-HEAD BARRIER NOT-ADV LINK 1 CC LINK 1 PRE-NP-HEAD LINK *1 (N Pl Ine) + &msyn-numphrase-pline-sgine OR (N Sg Com) + &msyn-numphrase-pline-sgine BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) ;
 	## Tjoahkkáj li dájn {niellja} buorre ja stuor sajijn, Mortensnesajn oajvvebájkken, sierralágásj buojkulvisá årromij, bivddemij ja åsskuj Arktalasj guovlojn 12000 jagij tjadá.
 
 ADDRELATIONS ($2)(RIGHT) (N &msyn-numphrase-pline-sgine) TO (*-1 (Num &msyn-numphrase-pline-sgine)); # LINK *1 (N &msyn-numphrase-pline-sgine));
@@ -3915,7 +3915,7 @@ COPY:xmsyn-numphrase-pline-sgine (Sg Ine &SUGGEST) EXCEPT (Pl Ine &msyn-numphras
 
 # Dem
 
-ADD:xmsyn-numphrase-pline-sgine (&COERROR &msyn-numphrase-pline-sgine) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) OR (Gen &SUGGEST) LINK *1 (N &msyn-numphrase-pline-sgine) OR (N Sg Ine) BARRIER NOT-NPMOD - CC) ;
+ADD:xmsyn-numphrase-pline-sgine (COERROR &msyn-numphrase-pline-sgine) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) OR (Gen &SUGGEST) LINK *1 (N &msyn-numphrase-pline-sgine) OR (N Sg Ine) BARRIER NOT-NPMOD - CC) ;
     ## Valla vuojnnet ”sáme” viellde vájllu divna dáj gålmmå rijkajn.
 	## Valla jus ”Sáme Goadev” galggap tsieggigoahtet, ålles dáj {nielje} rijkajn, de diedon diehtet vierttip, makkár dähkága ja ådnårisá dasi buoremusát hiehpi.
    ## Organisasjåvnå mandáhtta le barggat ráfe ja sihkarvuoda vuoksjuj aktisasjbargo åvddånahttema baktu nasjåvnåj gaskan daj nieljijn fáhkasuorgijn
@@ -3961,7 +3961,7 @@ COPY:msyn-numphrase-something-sgcom (Sg Com &SUGGEST) EXCEPT (Sg Ill &msyn-numph
 
 
 # Num
-ADD:xmsyn-numphrase-something-sgcom (&COERROR &msyn-numphrase-something-sgcom) TARGET (Num Sg Gen) OR (Num Pl Nom) IF (*1 (N Pl Ine) OR (N Sg Com) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) LINK NOT 0 Acc)(NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 &msyn-numeral-parcasecongr)  ;
+ADD:xmsyn-numphrase-something-sgcom (COERROR &msyn-numphrase-something-sgcom) TARGET (Num Sg Gen) OR (Num Pl Nom) IF (*1 (N Pl Ine) OR (N Sg Com) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) LINK NOT 0 Acc)(NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 &msyn-numeral-parcasecongr)  ;
 	## Sievedusnummar mij e-faktura-sjiehtadussaj aneduvvá le divutmáksenummar   {gudá} tállajn. --- what still needs to be fixed is that  if there are two alternative fixes, we fix them separately, maybe by using LINK and ADDRELATION
 	## Valla jus ”Sáme Goadev” galggap tsieggigoahtet, ålles dáj {nielje} rijkajn, de diedon diehtet vierttip, makkár dähkága ja ådnårisá dasi buoremusát hiehpi.
     ## Akta nuvtagijn gærggi, ja nuppijn uddni gergav> avtajn nuvtagijn
@@ -3972,7 +3972,7 @@ ADD:xmsyn-numphrase-something-sgcom (&COERROR &msyn-numphrase-something-sgcom) T
     ## {guokta} gusájn li báktjasa
     
 # coordination
-ADD:xmsyn-numphrase-something-sgcom (&msyn-numphrase-something-sgcom &COERROR) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) IF (*1 PRE-NP-HEAD BARRIER NOT-ADV LINK 1 CC LINK 1 PRE-NP-HEAD LINK *1 (N Pl Ine) + &msyn-numphrase-something-sgcom OR (N Sg Com) + &msyn-numphrase-something-sgcom BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) ;
+ADD:xmsyn-numphrase-something-sgcom (&msyn-numphrase-something-sgcom COERROR) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) IF (*1 PRE-NP-HEAD BARRIER NOT-ADV LINK 1 CC LINK 1 PRE-NP-HEAD LINK *1 (N Pl Ine) + &msyn-numphrase-something-sgcom OR (N Sg Com) + &msyn-numphrase-something-sgcom BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) ;
 	## Tjoahkkáj li dájn {niellja} buorre ja stuor sajijn, Mortensnesajn oajvvebájkken, sierralágásj buojkulvisá årromij, bivddemij ja åsskuj Arktalasj guovlojn 12000 jagij tjadá.
 
 COPY:msyn-numphrase-something-sgcom (Sg Com &SUGGEST) EXCEPT (Sg Gen &msyn-numphrase-something-sgcom) OR (Pl Nom &msyn-numphrase-something-sgcom) TARGET (Num &msyn-numphrase-something-sgcom) IF (0 (Sg Gen) OR (Pl Nom)) ;
@@ -3991,7 +3991,7 @@ ADDRELATIONS ($2)(RIGHT) (N &msyn-numphrase-something-sgcom) TO (*1 (Num &msyn-n
 # Dem
 
     
-ADD:xmsyn-numphrase-something-sgcom (&COERROR &msyn-numphrase-something-sgcom) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) OR (Gen &SUGGEST) LINK *1 (N &msyn-numphrase-something-sgcom) OR (N Sg Com) OR (N Sg Ine) BARRIER NOT-NPMOD - CC) ;
+ADD:xmsyn-numphrase-something-sgcom (COERROR &msyn-numphrase-something-sgcom) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) OR (Gen &SUGGEST) LINK *1 (N &msyn-numphrase-something-sgcom) OR (N Sg Com) OR (N Sg Ine) BARRIER NOT-NPMOD - CC) ;
 
 
 COPY:msyn-numphrase-something-sgcom (Sg Com &SUGGEST) EXCEPT (Pl Com Attr &msyn-numphrase-something-sgcom) OR (Pl Gen Attr &msyn-numphrase-something-sgcom) OR (Pl Com &msyn-numphrase-something-sgcom) OR (Pl Gen &msyn-numphrase-something-sgcom) OR (Pl Nom &msyn-numphrase-something-sgcom) OR (Pl Ine &msyn-numphrase-something-sgcom) OR (Pl Ine Attr &msyn-numphrase-something-sgcom) TARGET (Dem &msyn-numphrase-something-sgcom) IF (*2 (N Sg Com) OR (&msyn-numphrase-something-sgcom) BARRIER NOT-NPMOD) ;
@@ -4015,7 +4015,7 @@ COPY:msyn-numphrase-sggen (Sg Gen &SUGGEST) EXCEPT (Pl Gen &msyn-numphrase-sggen
 
 # Num
 
-ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen &COERROR) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (*1 (N Pl Nom) + &msyn-numphrase-sggen OR (N Gen) OR (N Pl Nom) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Acc LINK 1 N - Sem/Plc - (Prop Ine) OR Po LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc)(NEGATE *-1 BE + Pl3 OR BE + (Prs Sg3) BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)(NEGATE 0 Acc LINK *-1 TV BARRIER NOT-ADV-PCLE - (Pron Attr)) (NEGATE 0 Arab OR Sem/Date OR (N Coll Nom) OR Sem/Year) (NEGATE 1 Sem/Time LINK 1 N) ;
+ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen COERROR) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (*1 (N Pl Nom) + &msyn-numphrase-sggen OR (N Gen) OR (N Pl Nom) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Acc LINK 1 N - Sem/Plc - (Prop Ine) OR Po LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc)(NEGATE *-1 BE + Pl3 OR BE + (Prs Sg3) BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)(NEGATE 0 Acc LINK *-1 TV BARRIER NOT-ADV-PCLE - (Pron Attr)) (NEGATE 0 Arab OR Sem/Date OR (N Coll Nom) OR Sem/Year) (NEGATE 1 Sem/Time LINK 1 N) ;
 
 	## {Guokta} gusá fiekse > Guovte gusá fiekse # only numeral error
     ##  Dá vidjura muhtem mudduj máhtti tjielggit ieridisájt {guokta} ájnas dáhtágáldo gaskan.
@@ -4023,7 +4023,7 @@ ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen &COERROR) TARGET (Num Sg Nom) O
 
 
 # coordination
-ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen &COERROR) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (*1 PRE-NP-HEAD BARRIER NOT-ADV LINK 1 CC LINK 1 PRE-NP-HEAD LINK *1 (N Pl Nom) + &msyn-numphrase-sggen OR (N Gen) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) ;
+ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen COERROR) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (*1 PRE-NP-HEAD BARRIER NOT-ADV LINK 1 CC LINK 1 PRE-NP-HEAD LINK *1 (N Pl Nom) + &msyn-numphrase-sggen OR (N Gen) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) ;
 	## Jus baldeduvvá giddiduvvá {guokta} stuor ja buorre væráldij gaskan.
 
 COPY:msyn-numphrase-sggen (Sg Gen &SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sggen) OR (Sg Acc &msyn-numphrase-sggen) TARGET (Num &msyn-numphrase-sggen) IF (0 (Sg Nom) OR (Sg Acc)) ;
@@ -4033,7 +4033,7 @@ ADDRELATIONS ($2)(RIGHT) (N &msyn-numphrase-sggen) TO (*-1 (Num &msyn-numphrase-
 
 # Dem
 
-ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen &COERROR) TARGET (Pron Dem Pl) IF (1 (Num Sg) OR (Gen &SUGGEST) LINK *1 (N &msyn-numphrase-sggen) BARRIER NOT-NPMOD - CC) ;
+ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen COERROR) TARGET (Pron Dem Pl) IF (1 (Num Sg) OR (Gen &SUGGEST) LINK *1 (N &msyn-numphrase-sggen) BARRIER NOT-NPMOD - CC) ;
 
     ## Tjåhkanimij gåhttjom ja jådedibme målssu daj {gålmåj} rijkaj gaskan. # GENITIVE
     ## Dát aktisasjbarggoorgádna le læhkám aktisasjvuohtaorgádnan ámmátdásen daj {gålmåj} lándaj ráddidusáj gaskan diehton ja dagástallamin. # Genitive
@@ -4139,72 +4139,72 @@ ADD:punct-aistton-right (&punct-aistton-right) TARGET ("'" PUNCT) OR ("\"" PUNCT
 ADD:punct-aistton-right (&punct-aistton-right) TARGET ("'" PUNCT) OR ("\"" PUNCT) OR ("＂") OR ("»") OR ("“") (1 ("." CLB) OR ("!" CLB) OR ("?" CLB) OR COMMA OR (":" CLB) OR (";" CLB) OR ("-" PUNCT));
 	## Doppe biddjui ovdan nu ahte sápmelaččaide mearkkaša dát: «leat dahje ii leat{»}.
 
-	# 2. Add &COERROR tags to the preceding/following word (depending on LEFT or RIGHT quotation marks), to handle overlapping errors:
-MAP:punct-aistton-both-link  (&punct-aistton-both &COERROR )  TARGET (*) IF (-2 (&punct-aistton-both) LINK NOT 0 (&COERROR)) ;
-ADD:punct-aistton-left-link  (&punct-aistton-left &COERROR )  TARGET (*) IF (-1 (&punct-aistton-left) LINK NOT 0 (&COERROR)) ;
-#ADD:punct-aistton-left-link  (&punct-aistton-left &COERROR )  TARGET (*) IF (-*<1 (>>>) BARRIER (>>>) (&punct-aistton-left) LINK NOT 0 (&COERROR)) ;
+	# 2. Add COERROR tags to the preceding/following word (depending on LEFT or RIGHT quotation marks), to handle overlapping errors:
+MAP:punct-aistton-both-link  (&punct-aistton-both COERROR )  TARGET (*) IF (-2 (&punct-aistton-both) LINK NOT 0 (COERROR)) ;
+ADD:punct-aistton-left-link  (&punct-aistton-left COERROR )  TARGET (*) IF (-1 (&punct-aistton-left) LINK NOT 0 (COERROR)) ;
+#ADD:punct-aistton-left-link  (&punct-aistton-left COERROR )  TARGET (*) IF (-*<1 (>>>) BARRIER (>>>) (&punct-aistton-left) LINK NOT 0 (COERROR)) ;
 	# when it follows the next window
 
-ADD:punct-aistton-right-link (&punct-aistton-right &COERROR ) TARGET (*) IF (1 (&punct-aistton-right) LINK NOT 0 (&COERROR)) ;
+ADD:punct-aistton-right-link (&punct-aistton-right COERROR ) TARGET (*) IF (1 (&punct-aistton-right) LINK NOT 0 (COERROR)) ;
 
-ADD:punct-aistton-right-link (&punct-aistton-right &COERROR) TARGET ("." CLB) OR ("!" CLB) OR ("?" CLB) IF (1*> (>>>) BARRIER (>>>) LINK 1 ("'" PUNCT <SpaceOnRightSide>) OR ("\"" PUNCT <SpaceOnRightSide>) OR ("＂" PUNCT <SpaceOnRightSide>) OR ("»" PUNCT <SpaceOnRightSide>) LINK NOT 0 (&COERROR)) ;
+ADD:punct-aistton-right-link (&punct-aistton-right COERROR) TARGET ("." CLB) OR ("!" CLB) OR ("?" CLB) IF (1*> (>>>) BARRIER (>>>) LINK 1 ("'" PUNCT <SpaceOnRightSide>) OR ("\"" PUNCT <SpaceOnRightSide>) OR ("＂" PUNCT <SpaceOnRightSide>) OR ("»" PUNCT <SpaceOnRightSide>) LINK NOT 0 (COERROR)) ;
 	# when  jumping  to the next window
 
 	# 3. Add relation RIGHT/LEFT from the sentral cohort to the LINKed cohort for extended underline:
-ADDRELATION:punct-aistton-both-rel  (RIGHT) (&punct-aistton-both)  TO (2  &COERROR LINK 0 (&punct-aistton-both) );
-ADDRELATION:punct-aistton-left-rel  (RIGHT) (&punct-aistton-left)  TO (1  &COERROR LINK 0 (&punct-aistton-left) );
-ADDRELATION:punct-aistton-left-rel  (RIGHT) (&punct-aistton-left)  TO (1*> (>>>) BARRIER (>>>) LINK 1 &COERROR  LINK 0 (&punct-aistton-left) );
+ADDRELATION:punct-aistton-both-rel  (RIGHT) (&punct-aistton-both)  TO (2  COERROR LINK 0 (&punct-aistton-both) );
+ADDRELATION:punct-aistton-left-rel  (RIGHT) (&punct-aistton-left)  TO (1  COERROR LINK 0 (&punct-aistton-left) );
+ADDRELATION:punct-aistton-left-rel  (RIGHT) (&punct-aistton-left)  TO (1*> (>>>) BARRIER (>>>) LINK 1 COERROR  LINK 0 (&punct-aistton-left) );
 	## Jos boađát dakko, go boađát stálu goahtái, de mon galggan neavvut du.{"} Sápmelaš vulggii ruoktot.
-ADDRELATION:punct-aistton-right-rel (LEFT)  (&punct-aistton-right) TO (-1 &COERROR LINK 0 (&punct-aistton-right));
-ADDRELATION:punct-aistton-right-rel (LEFT)  (&punct-aistton-right) TO (-1*< (<<<) BARRIER (<<<) LINK 0 &COERROR LINK 0 (&punct-aistton-right));
+ADDRELATION:punct-aistton-right-rel (LEFT)  (&punct-aistton-right) TO (-1 COERROR LINK 0 (&punct-aistton-right));
+ADDRELATION:punct-aistton-right-rel (LEFT)  (&punct-aistton-right) TO (-1*< (<<<) BARRIER (<<<) LINK 0 COERROR LINK 0 (&punct-aistton-right));
 
 	# 4. Generate suggestions including the following/preceeding word (ie matching underline):
 	# Generer forslag for hermeteikn på _begge_ sider viss me har feilen på eitt og same ord:
 COPY:punct-aistton-both-sugg KEEPORDER (VSTR:"”$1”"S &SUGGESTWF) TARGET (&punct-aistton-both) IF
-        (NOT 0 (&COERROR))
+        (NOT 0 (COERROR))
         (2 &punct-aistton-both)
-        (2 &COERROR)
+        (2 COERROR)
         (1 ("<(.*)>"r))
         (NOT 0 &SUGGESTWF)      # don't COPY more than once
         ;
 
 	# Generer forslag for doble hermeteikn på _venstre_ side:
 COPY:punct-aistton-left-sugg KEEPORDER (VSTR:"”$1"S &SUGGESTWF) TARGET (&punct-aistton-left) IF
-        (NOT 0 (&COERROR))
+        (NOT 0 (COERROR))
         (NOT 0 ("'" PUNCT) OR ("‚") OR ("‛") OR ("❛") OR ("‘"))
-        (1 &punct-aistton-left LINK 0 &COERROR LINK 0 ("<(.*)>"r))
+        (1 &punct-aistton-left LINK 0 COERROR LINK 0 ("<(.*)>"r))
         (NOT 0 &SUGGESTWF)      # don't COPY more than once
         ;
 
 	# Generer forslag for enkle hermeteikn på _venstre_ side:
 COPY:punct-aistton-left-sugg KEEPORDER (VSTR:"’$1"S &SUGGESTWF) TARGET (&punct-aistton-left) IF
 		(0 ("'" PUNCT) OR ("‚") OR ("‛") OR ("❛") OR ("‘"))
-        (NOT 0 (&COERROR))
-        (1 &punct-aistton-left LINK 0 &COERROR LINK 0 ("<(.*)>"r))
+        (NOT 0 (COERROR))
+        (1 &punct-aistton-left LINK 0 COERROR LINK 0 ("<(.*)>"r))
         (NOT 0 &SUGGESTWF)      # don't COPY more than once
         ;
 
 	# Generer forslag for hermeteikn på _høgre_ side:
 COPY:punct-aistton-right-sugg KEEPORDER (VSTR:"$1”"S &SUGGESTWF) TARGET (&punct-aistton-right) IF
-        (NOT 0 (&COERROR))
+        (NOT 0 (COERROR))
         (NOT 0 ("'" PUNCT))
-        (-1 &punct-aistton-right LINK 0 &COERROR LINK 0 ("<(.*)>"r))
+        (-1 &punct-aistton-right LINK 0 COERROR LINK 0 ("<(.*)>"r))
         (NOT 0 &SUGGESTWF)      # don't COPY more than once
         ;
 	# this one is after a clause/window boundary
 COPY:punct-aistton-right-sugg KEEPORDER (VSTR:"$1”"S &SUGGESTWF) TARGET (&punct-aistton-right) IF
-        (NOT 0 (&COERROR))
+        (NOT 0 (COERROR))
         (NOT 0 ("'" PUNCT))
-        (-1*< (<<<) BARRIER (<<<) LINK 0 &punct-aistton-right LINK 0 &COERROR LINK 0 ("<(.*)>"r))
+        (-1*< (<<<) BARRIER (<<<) LINK 0 &punct-aistton-right LINK 0 COERROR LINK 0 ("<(.*)>"r))
         (NOT 0 &SUGGESTWF)      # don't COPY more than once
         ;
    ## Jos boađát dakko, go boađát stálu goahtái, de mon galggan neavvut du{."} Sápmelaš vulggii ruoktot.
 
 	# Generer forslag for hermeteikn på _høgre_ side:
 COPY:punct-aistton-right-sugg KEEPORDER (VSTR:"$1’"S &SUGGESTWF) TARGET (&punct-aistton-right) IF
-        (NOT 0 (&COERROR))
+        (NOT 0 (COERROR))
         (0 ("'" PUNCT))
-        (-1 &punct-aistton-right LINK 0 &COERROR LINK 0 ("<(.*)>"r))
+        (-1 &punct-aistton-right LINK 0 COERROR LINK 0 ("<(.*)>"r))
         (NOT 0 &SUGGESTWF)      # don't COPY more than once
         ;
 
@@ -4261,32 +4261,32 @@ SUBSTITUTE:RemoveNoSpaceAfterPunctMark (<NoSpaceAfterPunctMark>) (*) TARGET ("?"
 	# -----------------------------------------------------
 
 ADD:space-after-paren-beg      (&space-after-paren-beg)       TARGET (<spaceAfterParenBeg>) ;
-ADD:space-after-paren-beg-link (&space-after-paren-beg &COERROR) TARGET (*) IF (-1 (<spaceAfterParenBeg>) ) ;
-ADDRELATION:space-after-paren-beg-rel (RIGHT) (&space-after-paren-beg) TO (1 (&COERROR) LINK 0 (&space-after-paren-beg)) ;
+ADD:space-after-paren-beg-link (&space-after-paren-beg COERROR) TARGET (*) IF (-1 (<spaceAfterParenBeg>) ) ;
+ADDRELATION:space-after-paren-beg-rel (RIGHT) (&space-after-paren-beg) TO (1 (COERROR) LINK 0 (&space-after-paren-beg)) ;
 COPY:space-after-paren-beg-sugg (VSTR:"$1$2"S &SUGGESTWF) TARGET ("<(.*)>"r &space-after-paren-beg) IF
         (1 ("<(.*)>"r))
-        (NOT 0 (&COERROR))
+        (NOT 0 (COERROR))
         (NOT 0 &SUGGESTWF)      # don't COPY more than once
         ;
 	## áddejumi )
 
 ADD:space-before-paren-end      (&space-before-paren-end)       TARGET (<spaceBeforeParenEnd>);
-ADD:space-before-paren-end-link (&space-before-paren-end &COERROR) TARGET (*) IF (1 (<spaceBeforeParenEnd>) );
-ADDRELATION:space-before-paren-end-rel (LEFT) (&space-before-paren-end) TO (-1 (&COERROR) LINK 0 (&space-before-paren-end) );
+ADD:space-before-paren-end-link (&space-before-paren-end COERROR) TARGET (*) IF (1 (<spaceBeforeParenEnd>) );
+ADDRELATION:space-before-paren-end-rel (LEFT) (&space-before-paren-end) TO (-1 (COERROR) LINK 0 (&space-before-paren-end) );
 COPY:space-before-paren-end-sugg (VSTR:"$2$1"S &SUGGESTWF) TARGET ("<(.*)>"r &space-before-paren-end) IF
         (-1 ("<(.*)>"r))
-        (NOT 0 (&COERROR))
+        (NOT 0 (COERROR))
         (NOT 0 &SUGGESTWF)      # don't COPY more than once
         ;
 	## Son gii njeaidá skáluid šaddá eret vuolgit . De galgá fas cegget skáluid ja álgit gaikut.
 
 ADD:space-before-punct-mark (&space-before-punct-mark) TARGET (<SpaceBeforePunctMark>)(NEGATE -1 <SpaceOnRightSide>);
 	#$ Paltto (s. 37) «mánát sturrot/mun ieš boarásmuvan» {?}?
-ADD:space-before-punct-mark-link (&space-before-punct-mark &COERROR) TARGET (*) IF (1 (<SpaceBeforePunctMark>) );
-ADDRELATION:space-before-punct-mark-rel (LEFT) (&space-before-punct-mark) TO (-1 (&COERROR) LINK 0 (&space-before-punct-mark) );
+ADD:space-before-punct-mark-link (&space-before-punct-mark COERROR) TARGET (*) IF (1 (<SpaceBeforePunctMark>) );
+ADDRELATION:space-before-punct-mark-rel (LEFT) (&space-before-punct-mark) TO (-1 (COERROR) LINK 0 (&space-before-punct-mark) );
 COPY:space-before-punct-mark-sugg (VSTR:"$2$1"S &SUGGESTWF) TARGET ("<(.*)>"r &space-before-punct-mark) IF
         (-1 ("<(.*)>"r))
-        (NOT 0 (&COERROR))
+        (NOT 0 (COERROR))
         (NOT 0 (&SUGGESTWF))    # don't COPY more than once
         ;
 	## vuosttu  ceggejit
@@ -4294,9 +4294,9 @@ COPY:space-before-punct-mark-sugg (VSTR:"$2$1"S &SUGGESTWF) TARGET ("<(.*)>"r &s
 	## maid lea bargu.  – Mun barggan
 
 ADD:double-space-before (&double-space-before)     (<doubleSpaceBefore>);
-ADD:double-space-before-link (&double-space-before &COERROR) TARGET (*) IF (T:nextWordCrossSent LINK 0 (<doubleSpaceBefore>)) ;
+ADD:double-space-before-link (&double-space-before COERROR) TARGET (*) IF (T:nextWordCrossSent LINK 0 (<doubleSpaceBefore>)) ;
 ADDRELATION:double-space-before-rel ($2) (*) FROM (T:nextWordCrossSent LINK 0 (<doubleSpaceBefore>)) ;
-ADDRELATION:double-space-before-rel (LEFT) (&COERROR) FROM (T:nextWordCrossSent LINK 0 (<doubleSpaceBefore>)) ;
+ADDRELATION:double-space-before-rel (LEFT) (COERROR) FROM (T:nextWordCrossSent LINK 0 (<doubleSpaceBefore>)) ;
 COPY:double-space-before (VSTR:"$2\ $1"S &SUGGESTWF) TARGET ("<(.*)>"r &double-space-before) IF
         (T:prevWordCrossSent LINK 0 ("<(.*)>"r))
         (NOT 0 (&LINK))
