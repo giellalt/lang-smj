@@ -1864,7 +1864,9 @@ ADD:xmsyn-sme_interference_neg (COERROR &msyn-sme_interference_neg) TARGET PrfPr
 ADD:xmsyn-sme_interference_neg (COERROR &msyn-sme_interference_neg) TARGET PrfPrc IF (*-1 CC OR COMMA LINK -1 (&msyn-sme_interference_neg)) ;
 
 ADDRELATION ($2) (Neg &msyn-sme_interference_neg) TO (*1 (PrfPrc &msyn-sme_interference_neg));
-ADDRELATION (RIGHT) (PrfPrc &msyn-sme_interference_neg) TO (*-1 (Neg &msyn-sme_interference_neg));
+#ADDRELATION (RIGHT) (PrfPrc &msyn-sme_interference_neg) TO (*-1 (Neg &msyn-sme_interference_neg));
+ADDRELATION (RIGHT) (Neg &msyn-sme_interference_neg) TO (*1 (PrfPrc &msyn-sme_interference_neg));
+
 
 # ij gullum jali {vuojnnum}.
 # ij gullum, {vuojnnum} jalik {happsum}. 
@@ -3781,7 +3783,7 @@ COPY:msyn-numphrase-sgill (Sg Gen &SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sgill
     ## Mån lav åhtsåm {guokta} universitehtajda . OK
     ## Vattáv suojnijt guokta>guovte gusájda #LINDA
 
-ADDRELATIONS ($2) (RIGHT) (N &msyn-numphrase-sgill) TO (*-1 Num BARRIER (*) - (A Attr)) ;
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgill) TO (*-1 (Num &msyn-numphrase-sgill) BARRIER (*) - (A Attr)) ;
 
 
 # Dem
@@ -3796,7 +3798,7 @@ COPY:msyn-numphrase-sgill (Sg Ill Attr &SUGGEST) EXCEPT (Pl Com Attr &msyn-numph
 
 
 
-ADDRELATIONS ($3)(RIGHT) (N &msyn-numphrase-sgill) TO (*-1 (Dem &msyn-numphrase-sgill));
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgill) TO (*-1 (Dem &msyn-numphrase-sgill));
 
 
 
