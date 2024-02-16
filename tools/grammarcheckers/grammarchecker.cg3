@@ -1448,7 +1448,7 @@ SET NOT-PRE-A-N = WORD - PRE-A-N ;
 
 
 
-SET NOT-NPMOD     = WORD - PRE-NP-HEAD OR ABBR OR @CVP  OR (Adv Subqst) ;
+SET NOT-NPMOD     = WORD - PRE-NP-HEAD OR ABBR OR @CVP OR (Adv Subqst) ;
 # This is the previous NPNH (npnh) set.
 # NOT-NPMOD  = "NOT-PRE-NP-HEAD"
 
@@ -3675,9 +3675,11 @@ COPY:msyn-nom-gen-Po (Gen &SUGGEST) EXCEPT (Nom &msyn-nom-gen-Po) TARGET (&msyn-
 
 # Noun
 
-ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date LINK NEGATE -1 Sem/Curr)(NEGATE 0 (N Sg))  (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) ;
+ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 Num BARRIER (*) - PRE-NP-HEAD LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date LINK NEGATE -1 Sem/Curr)(NEGATE 0 (N Sg))  (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) ;
 
-ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 Num LINK NEGATE -1 Sem/Curr)(NEGATE 0 (N Sg)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) ;
+# coordination
+
+ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 $$PRE-NP-HEAD LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 $$PRE-NP-HEAD LINK NOT 0 (N Coll Nom) LINK -1 Num LINK NEGATE -1 Sem/Curr)(NEGATE 0 (N Sg)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) ;
 	#$ Vuojnniv gålmmå gusá #accusative OK
 	#$ Iejvvijma guokta {ulmutja} guhti barggi minoritehtaj miehtá Europa. OK 
     ## Guovlo gånnå li gaskan guokta jali niellja mandáhta galggi tjáledahttet avtse kandidáhtajt lisstaoajvvadussaj. OK
