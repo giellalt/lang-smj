@@ -3675,7 +3675,7 @@ COPY:msyn-nom-gen-Po (Gen &SUGGEST) EXCEPT (Nom &msyn-nom-gen-Po) TARGET (&msyn-
 
 # Noun
 
-ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 Num BARRIER (*) - PRE-NP-HEAD LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date LINK NEGATE -1 Sem/Curr)(NEGATE 0 (N Sg))  (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) ;
+ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 Num BARRIER (*) - PRE-NP-HEAD OR Gen + Sem/Hum LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date LINK NEGATE -1 Sem/Curr)(NEGATE 0 (N Sg)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) ;
 
 # coordination
 
@@ -3710,7 +3710,9 @@ ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Num Sg Acc) IF (0 ("<.
 
 
 # pl + wrong/right case
-ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc COERROR) TARGET (Num Pl Acc) OR (Num Sg Gen) IF (*1 (N Pl Acc) +  &msyn-numphrase-sgacc OR (A Pl Acc) +  &msyn-numphrase-sgacc OR (N Pl Nom) OR (A Pl Nom) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N ) (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) ;
+ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc COERROR) TARGET (Num Pl Acc) OR (Num Sg Gen) IF (*1 (N Pl Acc) +  &msyn-numphrase-sgacc OR (A Pl Acc) + &msyn-numphrase-sgacc OR (N Pl Nom) OR (A Pl Nom) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N)
+(NEGATE *1 (N Pl Nom) OR (N Sg Gen) BARRIER (*) - (A Attr) LINK 1 N)
+ (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) ;
     ##  E gávnu buorre lågo galles sáhkadi, låhki jali dádjadi dajt {gålmåjt} almulasj sámegielajt Vuonan uddni. OK
     ## Guovlo gånnå li gaskan guokta jali niellja mandáhta galggi tjáledahttet {avtse} kandidáhtajt lisstaoajvvadussaj OK
 
@@ -3726,15 +3728,16 @@ ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgacc) TO (*-1 (Num &msyn-numphrase-sga
 
 # Dem
 
-ADD:xmsyn-numphrase-sgacc (COERROR &msyn-numphrase-sgacc) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) LINK *1 (N &msyn-numphrase-sgacc) OR (N Pl Nom) OR (N Sg Gen) BARRIER NOT-NPMOD - CC) ;
+ADD:xmsyn-numphrase-sgacc (COERROR &msyn-numphrase-sgacc) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) LINK *1 (N &msyn-numphrase-sgacc) OR (N Pl Nom) OR (N Sg Gen) BARRIER NOT-NPMOD - CC)(NEGATE *1 (N Pl Nom) OR (N Sg Gen) BARRIER (*) - (A Attr) LINK 1 N) ;
 	# OR (N Pl Nom) OR (N Sg Gen) can be a bit tricky, maybe we have to refer to the numeral
+	# last condition in case the numeral modifies a real genitive
 
     ## Duodden dåjmadittjat dájt>dá guokta ásadusájt Divtasvuona Dávvervuorkká galggá ásadit ja åvddånbuktet máhtudagáv almatjijt dåjmajt, dat rájes gå vuostasj ulmutja Divtasvuodnaj båhtin ja udnátjij.
-    ## Iv háhppida dajt guhtta ruoppsis bårådum oappá girjijt låhkåt dan ájgen. LINDA
+    ## Iv háhppida dajt guhtta ruoppsis bårådum oappá girjijt låhkåt dan ájgen. 
     ## E gávnu buorre lågo galles sáhkadi, låhki jali dádjadi dajt gålmåjt almulasj sámegielajt Vuonan uddni. OBS flertall er ok, selv om det er feil her.
 
 	
-COPY:msyn-numphrase-sgacc (Pl Nom &SUGGEST) EXCEPT (Pl Acc Attr &msyn-numphrase-sgacc) OR (Pl Gen &msyn-numphrase-sgacc) OR (Pl Nom &msyn-numphrase-sgacc) TARGET (Dem &msyn-numphrase-sgacc) IF (1 (Num Sg Nom) OR (Num &msyn-numphrase-sgacc) LINK *1 (Pl Nom) OR (Sg Gen) BARRIER NOT-NPMOD OR (Gen &SUGGEST)) ;
+COPY:msyn-numphrase-sgacc (Pl Nom &SUGGEST) EXCEPT (Pl Acc Attr &msyn-numphrase-sgacc) OR (Pl Acc &msyn-numphrase-sgacc) OR (Pl Gen &msyn-numphrase-sgacc) OR (Pl Nom &msyn-numphrase-sgacc) TARGET (Dem &msyn-numphrase-sgacc) IF (1 (Num Sg) OR (Num &msyn-numphrase-sgacc) LINK *1 (Pl Nom) OR (Sg Gen) BARRIER NOT-NPMOD - Num OR (Gen &SUGGEST)) ;
  
    
 	
