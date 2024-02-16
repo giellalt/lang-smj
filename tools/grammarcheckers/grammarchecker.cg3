@@ -1666,7 +1666,7 @@ LIST &real-PrtSg3-PrsPl3 = &real-PrtSg3-PrsPl3 ;
 LIST &syn-attr-pred = &syn-attr-pred ;
 LIST &syn-pred-attr = &syn-pred-attr ;
 LIST &syn-missing-copula = &syn-missing-copula ;
-LIST &syn-missing-gus =&syn-missing-gus ;
+LIST &syn-missing-gus = &syn-missing-gus ;
 LIST &syn-nom_nom-gen_nom = &syn-nom_nom-gen_nom ;
 LIST &syn-number_congruence-subj-verb = &syn-number_congruence-subj-verb ;
 LIST &syn-subj-before-neg = &syn-subj-before-neg ;
@@ -2873,13 +2873,13 @@ ADD:xsyn-missing-copula (&syn-missing-copula) TARGET (Gram/3syll Actio Nom) OR (
 
 
 ADDCOHORT  ("<la>" "liehket" Ind Prs Sg3 &ADDED &syn-missing-copula) AFTER &syn-missing-copula (NEGATE 0 &ADDED OR ("<.*[aeiouáå]>"r));
-ADDRELATION (RIGHT) (&syn-missing-copula) TO (1 (&ADDED)) ;      
+ADDRELATION ($2 RIGHT) (N &syn-missing-copula) TO (1 (&ADDED)) ;      
 
 ADDCOHORT  ("<l>" "liehket" Ind Prs Sg3 Clt &ADDED &syn-missing-copula) AFTER &syn-missing-copula IF (0 ("<.*[aeiouáå]>"r)) (NEGATE 0 &ADDED OR (N Pl Nom));
-ADDRELATION (RIGHT) (&syn-missing-copula) TO (1 (&ADDED)) ; 
+ADDRELATION ($2 RIGHT) (N &syn-missing-copula) TO (1 (&ADDED)) ; 
 
 ADDCOHORT  ("<li>" "liehket" Ind Prs Pl3 &ADDED &syn-missing-copula) AFTER &syn-missing-copula IF (0 (N Pl Nom) LINK *1 (A Pl Nom) BARRIER NOT-ADV) (NEGATE 0 &ADDED);
-ADDRELATION (RIGHT) (&syn-missing-copula) TO (1 (&ADDED)) ; 
+ADDRELATION ($2 RIGHT) (N &syn-missing-copula) TO (1 (&ADDED)) ; 
    
     ## Bálges buorak.   
     #$ gålldåsámij árbbedábálasj viessomvuohke gássjel sjattaj .
@@ -2902,7 +2902,7 @@ ADD:xsyn-missing-gus (&syn-missing-gus) TARGET (V) IF (-1 BOS) (*1 ("?") BARRIER
     #$ Ij så vil?
 
 ADDCOHORT  ("<gus>" "gus" Pcle Qst &ADDED &syn-missing-gus) AFTER &syn-missing-gus (NEGATE 0 &ADDED);
-ADDRELATION (RIGHT) (&syn-missing-gus) TO (1 (&ADDED)) ;  
+ADDRELATION ($2 RIGHT) (V &syn-missing-gus) TO (1 (&ADDED)) ;  
 
 
     ## Le giella njálmálasj? > Le gus
