@@ -4052,6 +4052,9 @@ ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen COERROR) TARGET (Pron Dem Pl) I
     ## Mån ávvudaláv dat aktisasjbargos mij la boahtemin daj gålmå institusjåvnåj gaskan, ja ávos vuordáv dajt boahtte sáme åhpadusájt ma sadjihij båhtali. #genitive
     ## Tjállagin li artihkkala daj gålmmå tiemáj birra.
    ## Barggo dåjmaduvvá {dajn} gudá stuoves barggojuohkusij tjadá masi tjuovvovasj prográmmasuorge gulluji
+   
+ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen COERROR) TARGET (Pron Dem Pl) IF (1 (Num Sg) OR (Gen &SUGGEST) LINK *1C (N Sg Gen) BARRIER NOT-NPMOD - CC) ;
+	## sáme ja dáro fágajn li moadda aktisasjoasse, ja danen la ájnas lahka aktisasjbargojn {dá} guovte fága gaskal.
       
       
    	#$ Birrusin guokta vahko dás åvddåla mierredij avtajienalasj Sámedigge nuorttarijkalasj sáme dutkam- ja fáhka/ressursa guovdátjav ásadit.
@@ -4059,7 +4062,7 @@ ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen COERROR) TARGET (Pron Dem Pl) I
 	#$ Sæmmi gåktu lej vargga {30} jage dán åvddåla, de la julevsámegiella ávijsajn biebbmománnán.
 
 
-COPY:msyn-numphrase-sggen (Sg Gen &SUGGEST) EXCEPT (Pl Gen &msyn-numphrase-sggen) OR (Pl Ine Attr &msyn-numphrase-sggen) TARGET (Dem &msyn-numphrase-sggen) ;
+COPY:msyn-numphrase-sggen (Sg Gen &SUGGEST) EXCEPT (Pl Gen &msyn-numphrase-sggen) OR (Pl Ine Attr &msyn-numphrase-sggen) OR (Pl Nom &msyn-numphrase-sggen) TARGET (Dem &msyn-numphrase-sggen) ;
 
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sggen) TO (*-2 (Dem &msyn-numphrase-sggen));
 
