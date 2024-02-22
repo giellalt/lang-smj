@@ -1634,7 +1634,7 @@ LIST &msyn-numphrase-sgela = &msyn-numphrase-sgela ;
 LIST &msyn-numphrase-sgill = &msyn-numphrase-sgill ;
 LIST &msyn-numphrase-sggen = &msyn-numphrase-sggen ;
 LIST &msyn-numphrase-sgcom = &msyn-numphrase-sgcom ;
-LIST &msyn-numphrase-pline-sgine = &msyn-numphrase-pline-sgine ;
+LIST &msyn-numphrase-sgine = &msyn-numphrase-sgine ;
 
 LIST &msyn-numeral-attr = &msyn-numeral-attr ;
 LIST &msyn-numeral-attr-pl-ine = &msyn-numeral-attr-pl-ine ;
@@ -3886,7 +3886,7 @@ ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgela) TO (*-1 (Dem &msyn-numphrase-sge
     # ===================================================================================================
 
 # Noun
-ADD:xmsyn-numphrase-pline-sgine (&msyn-numphrase-pline-sgine &msyn-numphrase-sgcom) TARGET (Pl Ine) OR (Sg Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Ine) OR (Num Arab Ine) OR (Num Pl Nom) OR (Num Sg Acc) BARRIER NOT-Attr - Gen LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date LINK NEGATE -1 Sem/Curr) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N);
+ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine &msyn-numphrase-sgcom) TARGET (Pl Ine) OR (Sg Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Ine) OR (Num Arab Ine) OR (Num Pl Nom) OR (Num Sg Acc) BARRIER NOT-Attr - Gen LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date LINK NEGATE -1 Sem/Curr) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N);
 	## Sámegiella mánájgárdijn ja skåvlåjn guovte ietjá {sámediggediedádusájn} giehtadaláduvvi, ja danen ep galga dáppe dáj guokta sebrudakásadusáj rollav snivva guoradit.
 	## Merustallamvædtsak VUK le adnuj váldeduvvam juohkka skåvlån daj guokta {suohkanijn} ja le ájnas oasse åvddånahttemságastallamij vuodos.
 	#$ lijma nåv árrat smáredam ja vuodjám 6-7 tijma bijlajn 
@@ -3894,16 +3894,16 @@ ADD:xmsyn-numphrase-pline-sgine (&msyn-numphrase-pline-sgine &msyn-numphrase-sgc
 	## Mij lip NSRan  guhkev juo berustam, ja ájn berustip, nannit aktijvuodav sámij gaskan divna niellja rijkajn duola degu konkrehtalasj aktisasjbargo baktu.
     ## makkár rahtjamusá li nielje sámegielajn
 
-ADD:xmsyn-numphrase-pline-sgine (&msyn-numphrase-pline-sgine &msyn-numphrase-sgcom) TARGET (Pl Ine) OR (Sg Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Acc) OR (Num Arab Ine) BARRIER NOT-NPMOD LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date LINK NOT -1 Sem/Curr LINK *-1 ("liehket" Ind) BARRIER (*) - Num - Dem)(NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) ;
+ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine &msyn-numphrase-sgcom) TARGET (Pl Ine) OR (Sg Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Acc) OR (Num Arab Ine) BARRIER NOT-NPMOD LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date LINK NOT -1 Sem/Curr LINK *-1 ("liehket" Ind) BARRIER (*) - Num - Dem)(NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) ;
 	# this rule may go to a copy rule that suggests both Sg Ine and Sg Com
 
     # numeral is also wrong, habitive "la/li" shows that it must be sg ine. # LINDA/INGA make an extra rule
-COPY:msyn-numphrase-pline-sgine (Sg Ine &SUGGEST) EXCEPT (Pl Ine &msyn-numphrase-pline-sgine) TARGET (Ine &msyn-numphrase-pline-sgine) IF (0 N OR NUMUNIT) ;
+COPY:msyn-numphrase-sgine (Sg Ine &SUGGEST) EXCEPT (Pl Ine &msyn-numphrase-sgine) TARGET (Ine &msyn-numphrase-sgine) IF (0 N OR NUMUNIT) ;
 
 
 # Num
 
-ADD:xmsyn-numphrase-pline-sgine (COERROR &msyn-numphrase-pline-sgine) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) IF (*1 (N Sg Ine) BARRIER NOT-NPMOD)(NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 NUMUNIT LINK 1 ("kråvnnå"))  ;
+ADD:xmsyn-numphrase-sgine (COERROR &msyn-numphrase-sgine) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) IF (*1 (N Sg Ine) BARRIER NOT-NPMOD)(NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 NUMUNIT LINK 1 ("kråvnnå"))  ;
 	# those two rules belong together: xmsyn-numeral-casecongr-com and xmsyn-numeral-casecongr-ine
 	## Mij lip NSRan  guhkev juo berustam, ja ájn berustip, nannit aktijvuodav sámij gaskan divna niellja rijkajn duola degu konkrehtalasj aktisasjbargo baktu.
     ## makkár rahtjamusá li nielje sámegielajn
@@ -3911,14 +3911,14 @@ ADD:xmsyn-numphrase-pline-sgine (COERROR &msyn-numphrase-pline-sgine) TARGET (Nu
     #$ Foanndan la jahkásattjat 2 millijåvnå kråvnå gålmån jagen.
     
 # coordination
-ADD:xmsyn-numphrase-pline-sgine (&msyn-numphrase-pline-sgine COERROR) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) IF (*1 PRE-NP-HEAD BARRIER NOT-ADV LINK 1 CC LINK 1 PRE-NP-HEAD LINK *1 (N Pl Ine) + &msyn-numphrase-pline-sgine OR (N Sg Com) + &msyn-numphrase-pline-sgine BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) ;
+ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine COERROR) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) IF (*1 PRE-NP-HEAD BARRIER NOT-ADV LINK 1 CC LINK 1 PRE-NP-HEAD LINK *1 (N Pl Ine) + &msyn-numphrase-sgine OR (N Sg Com) + &msyn-numphrase-sgine BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) ;
 	## Tjoahkkáj li dájn {niellja} buorre ja stuor sajijn, Mortensnesajn oajvvebájkken, sierralágásj buojkulvisá årromij, bivddemij ja åsskuj Arktalasj guovlojn 12000 jagij tjadá.
 
-ADDRELATION ($2 LEFT) (N &msyn-numphrase-pline-sgine) TO (*-1 (Num &msyn-numphrase-pline-sgine)); # LINK *1 (N &msyn-numphrase-pline-sgine));
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgine) TO (*-1 (Num &msyn-numphrase-sgine)); # LINK *1 (N &msyn-numphrase-sgine));
 
 
 
-COPY:xmsyn-numphrase-pline-sgine (Sg Ine &SUGGEST) EXCEPT (Pl Ine &msyn-numphrase-pline-sgine) OR (Sg Com &msyn-numphrase-pline-sgine) OR (Pl Nom &msyn-numphrase-pline-sgine) OR (Sg Acc &msyn-numphrase-pline-sgine) TARGET (Num &msyn-numphrase-pline-sgine) ;
+COPY:xmsyn-numphrase-sgine (Sg Ine &SUGGEST) EXCEPT (Pl Ine &msyn-numphrase-sgine) OR (Sg Com &msyn-numphrase-sgine) OR (Pl Nom &msyn-numphrase-sgine) OR (Sg Acc &msyn-numphrase-sgine) TARGET (Num &msyn-numphrase-sgine) ;
 	## Guokta gusájn li báktjasa. 
     ## Iv diede jus nagáv dáv kursav dåssju {åvtåjn} termijnan låhkåt
     ## Sámegiella mánájgárdijn ja skåvlåjn guovte ietjá sámediggediedádusájn giehtadaláduvvi, ja danen ep galga dáppe dáj guokta sebrudakásadusáj rollav snivva guoradit.
@@ -3926,17 +3926,17 @@ COPY:xmsyn-numphrase-pline-sgine (Sg Ine &SUGGEST) EXCEPT (Pl Ine &msyn-numphras
 
 # Dem
 
-ADD:xmsyn-numphrase-pline-sgine (COERROR &msyn-numphrase-pline-sgine) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) OR (Gen &SUGGEST) LINK *1 (N &msyn-numphrase-pline-sgine) OR (N Sg Ine) BARRIER NOT-NPMOD - CC) ;
+ADD:xmsyn-numphrase-sgine (COERROR &msyn-numphrase-sgine) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) OR (Gen &SUGGEST) LINK *1 (N &msyn-numphrase-sgine) OR (N Sg Ine) BARRIER NOT-NPMOD - CC) ;
     ## Valla vuojnnet ”sáme” viellde vájllu divna dáj gålmmå rijkajn.
 	## Valla jus ”Sáme Goadev” galggap tsieggigoahtet, ålles dáj {nielje} rijkajn, de diedon diehtet vierttip, makkár dähkága ja ådnårisá dasi buoremusát hiehpi.
    ## Organisasjåvnå mandáhtta le barggat ráfe ja sihkarvuoda vuoksjuj aktisasjbargo åvddånahttema baktu nasjåvnåj gaskan daj nieljijn fáhkasuorgijn
    ## Duodden tjiegŋodibmáj ja duoddimij dan årrom- ja åsskohiståvrråj mij juo le Mortensnesan, li dájn gålmmå duobddágijn sierra kulturhiståvrålasj kvalitehta.
 	## Valla vuojnnet ”sáme” viellde vájllu divna dáj gålmmå {rijkajn}.
 
-COPY:msyn-numerals-with-demopron-sgine (Sg Ine Attr &SUGGEST) EXCEPT (Pl Com &msyn-numphrase-pline-sgine) OR (Pl Gen Attr &msyn-numphrase-pline-sgine) OR (Pl Com &msyn-numphrase-pline-sgine) OR (Pl Gen &msyn-numphrase-pline-sgine) OR (Pl Nom &msyn-numphrase-pline-sgine) OR (Pl Ine &msyn-numphrase-pline-sgine) OR (Pl Ine Attr &msyn-numphrase-pline-sgine) TARGET (Dem &msyn-numphrase-pline-sgine) ;
+COPY:msyn-numerals-with-demopron-sgine (Sg Ine Attr &SUGGEST) EXCEPT (Pl Com &msyn-numphrase-sgine) OR (Pl Gen Attr &msyn-numphrase-sgine) OR (Pl Com &msyn-numphrase-sgine) OR (Pl Gen &msyn-numphrase-sgine) OR (Pl Nom &msyn-numphrase-sgine) OR (Pl Ine &msyn-numphrase-sgine) OR (Pl Ine Attr &msyn-numphrase-sgine) TARGET (Dem &msyn-numphrase-sgine) ;
 
 
-ADDRELATION ($3 LEFT) (N &msyn-numphrase-pline-sgine) TO (*-1 (Dem &msyn-numphrase-pline-sgine));
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgine) TO (*-1 (Dem &msyn-numphrase-sgine));
 
 
 
@@ -4018,7 +4018,7 @@ ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgcom) TO (*-1 (Dem &msyn-numphrase-sgc
 
 # Noun 
 
-ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Pl Gen) IF ((0 N) OR (0 NUMUNIT - Com LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numphrase-sgacc OR &msyn-numphrase-sgill OR &msyn-numphrase-sgcom OR &msyn-numphrase-pline-sgine OR &msyn-numphrase-sgela)(*-1 Num BARRIER NOT-NPMOD OR COMMA LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock OR Sem/Time OR Sem/Date OR &msyn-numphrase-sgacc OR &msyn-numphrase-sgill OR &msyn-numphrase-sgcom OR &msyn-numphrase-pline-sgine OR &msyn-numphrase-sgela LINK NOT -1 Sem/Curr LINK NEGATE 0 NUMUNIT LINK -1 Num OR PLURAL-QUANTIFIERS) (NEGATE 0 (N Sg) - Ill OR (N Pl Nom))(NEGATE 0 (Pl Ela) LINK -1 ("akta" Sg Nom))(NEGATE 0 (Pl Ela) LINK -1 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 2 BE + Pl3)(NEGATE 0 (N Pl Nom) LINK -1 (Num Sg Nom))(NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr - Gen) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE -1 NUMUNIT LINK -1 PLURAL-QUANTIFIERS OR Num)(NEGATE 0 (Ill) OR (Ela)) ;
+ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Pl Gen) IF ((0 N) OR (0 NUMUNIT - Com LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numphrase-sgacc OR &msyn-numphrase-sgill OR &msyn-numphrase-sgcom OR &msyn-numphrase-sgine OR &msyn-numphrase-sgela)(*-1 Num BARRIER NOT-NPMOD OR COMMA LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock OR Sem/Time OR Sem/Date OR &msyn-numphrase-sgacc OR &msyn-numphrase-sgill OR &msyn-numphrase-sgcom OR &msyn-numphrase-sgine OR &msyn-numphrase-sgela LINK NOT -1 Sem/Curr LINK NEGATE 0 NUMUNIT LINK -1 Num OR PLURAL-QUANTIFIERS) (NEGATE 0 (N Sg) - Ill OR (N Pl Nom))(NEGATE 0 (Pl Ela) LINK -1 ("akta" Sg Nom))(NEGATE 0 (Pl Ela) LINK -1 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 2 BE + Pl3)(NEGATE 0 (N Pl Nom) LINK -1 (Num Sg Nom))(NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr - Gen) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE -1 NUMUNIT LINK -1 PLURAL-QUANTIFIERS OR Num)(NEGATE 0 (Ill) OR (Ela)) ;
 
 COPY:msyn-numphrase-sggen (Sg Gen &SUGGEST) EXCEPT (Pl Gen &msyn-numphrase-sggen) TARGET (N &msyn-numphrase-sggen) ;
 	## Guokta {gusáj}  fiekse 
@@ -4084,12 +4084,12 @@ ADDRELATION ($3 LEFT) (N &msyn-numphrase-sggen) TO (*-2 (Dem &msyn-numphrase-sgg
 
 # only noun number is wrong
 
-ADD:xmsyn-numeral-attr (&msyn-numeral-attr) TARGET (Pl) IF ((0 N) OR (0 NUMUNIT - Com LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numphrase-sgacc OR &msyn-numphrase-sggen OR &msyn-numphrase-sgill OR &msyn-numphrase-sgcom OR &msyn-numphrase-pline-sgine OR &msyn-numphrase-sgela) (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock OR Sem/Time OR Sem/Date LINK NOT -1 Sem/Curr LINK NEGATE 0 NUMUNIT LINK -1 Num OR PLURAL-QUANTIFIERS) (NEGATE 0 (N Sg) - Ill OR (N Pl Nom))(NEGATE 0 (Pl Ela) LINK -1 ("akta" Sg Nom))(NEGATE 0 (Pl Ela) LINK -1 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 2 BE + Pl3)(NEGATE 0 (N Pl Nom) LINK -1 (Num Sg Nom))(NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr - Gen) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE -1 NUMUNIT LINK -1 PLURAL-QUANTIFIERS OR Num)(NEGATE 0 (Ill) OR (Ela)) ;    
+ADD:xmsyn-numeral-attr (&msyn-numeral-attr) TARGET (Pl) IF ((0 N) OR (0 NUMUNIT - Com LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numphrase-sgacc OR &msyn-numphrase-sggen OR &msyn-numphrase-sgill OR &msyn-numphrase-sgcom OR &msyn-numphrase-sgine OR &msyn-numphrase-sgela) (*-1 Num BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock OR Sem/Time OR Sem/Date LINK NOT -1 Sem/Curr LINK NEGATE 0 NUMUNIT LINK -1 Num OR PLURAL-QUANTIFIERS) (NEGATE 0 (N Sg) - Ill OR (N Pl Nom))(NEGATE 0 (Pl Ela) LINK -1 ("akta" Sg Nom))(NEGATE 0 (Pl Ela) LINK -1 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 2 BE + Pl3)(NEGATE 0 (N Pl Nom) LINK -1 (Num Sg Nom))(NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr - Gen) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE -1 NUMUNIT LINK -1 PLURAL-QUANTIFIERS OR Num)(NEGATE 0 (Ill) OR (Ela)) ;    
     #$ Dále lij muhtem subtsas gå russtijin 1930- jagijn náv:
 	#$ Sáme gielladutkij gaskan li guokta {vuojno} dasi mij máhttá doajmmat objæktan sámegielan. #nominative
 
 
-ADD:xmsyn-numeral-attr (&msyn-numeral-attr) TARGET (Pl) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 Num LINK NEGATE -1 Sem/Curr)(NEGATE 0 (N Sg)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N)(NEGATE 0 (Ill) OR (Ela))(NOT 0 &msyn-numphrase-sgacc OR &msyn-numphrase-sggen OR &msyn-numphrase-sgill OR &msyn-numphrase-sgcom OR &msyn-numphrase-pline-sgine OR &msyn-numphrase-sgela)  ;
+ADD:xmsyn-numeral-attr (&msyn-numeral-attr) TARGET (Pl) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 Num LINK NEGATE -1 Sem/Curr)(NEGATE 0 (N Sg)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N)(NEGATE 0 (Ill) OR (Ela))(NOT 0 &msyn-numphrase-sgacc OR &msyn-numphrase-sggen OR &msyn-numphrase-sgill OR &msyn-numphrase-sgcom OR &msyn-numphrase-sgine OR &msyn-numphrase-sgela)  ;
     ## Mån lav åhtsåm guokta ruoppsis ja fijna universitehtajda.
     ## Vuona stáhtta le vuododuvvam guovte álmmuga duobddágijda NOT
 
