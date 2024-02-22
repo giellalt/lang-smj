@@ -1595,7 +1595,7 @@ LIST HUMAN-LIKE = "bærggal" "ieŋŋgil" "hállde" "hærrá" "jubmel" "stállo" 
 
 SET HUMAN-INDIVIDUAL = HUMAN-LIKE OR FAMILY OR NON-FAMILY ;
 
-LIST PL-PAIR-N = "sabek" "fáhtsa" "guohpá" "vuotta" "skuovva" "nuvtak" "tjátjek" "båvså" "siebak" "guobak" "tjalmmeglása" "fiehtarbåvså" "loamssjebåvså" "sisbåvså" "ålgoldisbåvså" "ájrro" "stiebil" "gáma" "hullofáhtsa" "rabo" "hulloguohpá" "luodda"; #TODO Inga, fleire typiske par må legges til her
+LIST PL-PAIR-N = "sabek" "fáhtsa" "guohpá" "vuotta" "skuovva" "nuvtak" "tjátjek" "båvså" "siebak" "guobak" "tjalmmeglása" "fiehtarbåvså" "loamssjebåvså" "sisbåvså" "ålgoldisbåvså" "ájrro" "stiebil" "gáma" "hullofáhtsa" "rabo" "hulloguohpá" "luodda" "jahke" ; #TODO Inga, fleire typiske par må legges til her
 
 LIST PL-NONPAIR-N = "áiru" "beaivvaščalbmeláset" "beassážat" "biddu" "čalbmeláset" "čázet" "fáhcca" "gállot" "gálssot" "gáma" "gistta" "goikket" "gummestevvel" "heajat" "hellodagat" "juovllat" "mállásat" "nagir" "njealljejuvllat" "njuorjjot" "nuhtat" "nuvttat" "nuvttot" "sabet" "sáppat" "sisttet" "skárrit" "skierat" "skuovva" "stevvel" "suohkku" "suorbmafáhcca" "suorpmahat" "ullofáhcca" "ullosuohkku" "viljjit" "vuotta" ("[0-9]-jahki"r) ("[0-9]-[0-9]-jahki"r) ("[0-9]-jahki"r) ;
 
@@ -3689,7 +3689,7 @@ ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF ((0 N) OR (
 	#$ Iejvvijma guokta {ulmutja} guhti barggi minoritehtaj miehtá Europa. OK 
     ## Guovlo gånnå li gaskan guokta jali niellja mandáhta galggi tjáledahttet avtse kandidáhtajt lisstaoajvvadussaj. OK
 
-COPY:mmsyn-numphrase-sgacc (Sg Gen &SUGGEST) EXCEPT (Pl Acc &msyn-numphrase-sgacc) TARGET (N &msyn-numphrase-sgacc) ;
+COPY:msyn-numphrase-sgacc (Sg Gen &SUGGEST) EXCEPT (Pl Acc &msyn-numphrase-sgacc) TARGET (N &msyn-numphrase-sgacc) ;
 
     ## vuojnáv guokta gusájt > vuojnáv guokta gusá insead of vuojnáv guokta guosáv OK
 
@@ -3747,6 +3747,24 @@ COPY:msyn-numphrase-sgacc (Pl Nom &SUGGEST) EXCEPT (Pl Acc Attr &msyn-numphrase-
    
 	
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgacc) OR NUMUNIT + &msyn-numphrase-sgacc TO (*-1 (Dem &SUGGEST));
+
+
+	# plural nouns
+	
+# Num
+
+ADD:xmsyn-numphrase-placc (&msyn-numphrase-placc) TARGET (Num Sg Acc) OR (Num Sg Gen) IF (*1 (N Pl Acc) +  PL-PAIR-N BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) (NEGATE 0 ("akta" Num) OR ("1" Num))(NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date) (NEGATE 1 ("jahke" Sg Gen) LINK 1 ("vuoras" Nom)) ;
+	## Mij gullu julevsámegiellaj ja oarjjelsámegiellaj le dá dájt maŋemus låge jagijt åvddånahttem læhkám.
+
+COPY:msyn-numphrase-placc (Pl Acc &SUGGEST) EXCEPT (Sg Acc &msyn-numphrase-placc) OR (Sg Gen &msyn-numphrase-placc) TARGET (Num &msyn-numphrase-placc) IF (*1 (N Pl Acc) BARRIER (*) - PRE-NP-HEAD LINK NOT 0 (N Coll Nom)) ;
+
+# Dem
+
+ADD:xmsyn-numphrase-placc (COERROR &msyn-numphrase-placc) TARGET (Pron Dem Pl) IF (NOT 0 (Dem Pl Acc))(*1 (Num &msyn-numphrase-placc) OR (Num Pl Acc) BARRIER NOT-NPMOD - Adv LINK 1 (N Pl Acc) +  PL-PAIR-N) ;
+    ## Daj maŋemus lågijt jagijt le ulmutjij miella luojvojbargguj unnum, ja da gudi ienep dåjmaj barggi vierttiji mávso oadtjot bargoj åvdås.
+
+	
+COPY:msyn-numphrase-placc (Pl Acc &SUGGEST) EXCEPT (Pl Gen &msyn-numphrase-placc) TARGET (Dem &msyn-numphrase-placc) IF (*1 (Num &msyn-numphrase-placc) OR (Num Pl Acc) BARRIER NOT-NPMOD - Adv LINK 1 (N Pl Acc) +  PL-PAIR-N) ;
 
 
 
