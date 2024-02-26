@@ -2890,15 +2890,29 @@ ADDRELATION ($2 RIGHT) (N &syn-missing-copula) TO (1 (&ADDED)) ;
     #$ gålldåsámij árbbedábálasj viessomvuohke gássjel sjattaj .
     #$ Árranin la årrum giellaguovdásj moadda jage   
 
+    
+    # Gus, missing and word order
+    # ===================================================================================================
+    # ===================================================================================================
+    
+    ## word order gus
+    #-----------------    
+
+ADD:xsyn-gus-before-pron (&syn-gus-before-pron) TARGET ("gus" Qst) IF (-1 (Pron) LINK -1 V LINK -1 BOS) (*1 ("?") BARRIER COMMA) ; 
+
+MOVE:xsyn-gus-before-pron (&syn-gus-before-pron) AFTER (-2 V BARRIER NOT-NPMOD OR CC);
+
+    ## Dádjadi sij gus man birra tæksta la?
+
+
 
     # missing "gus" 
-    #-----------------
-
-ADD:xsyn-missing-gus (&syn-missing-gus) TARGET BE IF (-1 (V "ij") LINK -1 BOS) (*1 ("?") BARRIER COMMA) (NEGATE 1 (Pcle "gus") OR (Pcle "má")) (NEGATE 0 (Imprt)) ;
+    #-----------------    
+ADD:xsyn-missing-gus (&syn-missing-gus) TARGET BE IF (-1 (V "ij") LINK -1 BOS) (*1 ("?") BARRIER COMMA) (NEGATE 1 (Pcle "gus") OR (Pcle "má")) (NEGATE 0 (Imprt)) (NEGATE *0 (syn-gus-before-pron)) ;
 
     ## Ij la dujna bijlla?
 
-ADD:xsyn-missing-gus (&syn-missing-gus) TARGET (V) IF (-1 BOS) (*1 ("?") BARRIER COMMA) (NEGATE 1 (Pcle "gus") OR (Pcle "má") OR (Adv "gåjt")) (NEGATE 0 (Imprt) OR (Qst) OR N OR (PrsPrc) OR ("soajttet" &msyn-soajtta-adv)) (NEGATE 0 (V "ij") LINK 1 BE) (NEGATE 0 (V "ij") LINK 1 (Pcle "så") LINK 1 (Pcle "vil"))  ;
+ADD:xsyn-missing-gus (&syn-missing-gus) TARGET (V) IF (-1 BOS) (*1 ("?") BARRIER COMMA) (NEGATE 1 (Pcle "gus") OR (Pcle "má") OR (Adv "gåjt")) (NEGATE 0 (Imprt) OR (Qst) OR N OR (PrsPrc) OR ("soajttet" &msyn-soajtta-adv)) (NEGATE 0 (V "ij") LINK 1 BE) (NEGATE 0 (V "ij") LINK 1 (Pcle "så") LINK 1 (Pcle "vil")) (NEGATE *0 (syn-gus-before-pron))  ;
 
     ## Boahtá sån sijddaj?
     #$ Boahtá gåjt/má sijddaj?
