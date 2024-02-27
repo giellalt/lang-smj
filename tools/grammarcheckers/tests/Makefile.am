@@ -88,7 +88,8 @@ TESTS=\
 	syn-number_congruence-subj-verb.yaml          \
 	syn-pred-attr.yaml                            \
     syn-should-be-cmp.yaml                       \
-	syn-wo-neg-before-subj.yaml
+	syn-wo-neg-before-subj-PASS.yaml			\
+	syn-wo-neg-before-subj-FAIL.yaml
 
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not cDEV-msyn-gut-mij-gut-FAIL.yamlritical at the moment:
@@ -151,7 +152,7 @@ XFAIL_TESTS=\
 	syn-correct-form-liehket.yaml                 \
 	syn-number_congruence-subj-verb.yaml          \
 	syn-pred-attr.yaml                            \
-	syn-wo-neg-before-subj.yaml                   \
+	syn-wo-neg-before-subj-FAIL.yaml                   \
     syn-should-be-cmp.yaml                       
     
 endif # WANT_GRAMCHECK
