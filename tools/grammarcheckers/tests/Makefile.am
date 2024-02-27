@@ -84,9 +84,12 @@ TESTS=\
 	real-habbmim.yaml                             \
 	real-habbmim.yaml                             \
     syn-attr-pred.yaml                          \
-	syn-correct-form-liehket.yaml                 \
-	syn-number_congruence-subj-verb.yaml          \
-	syn-pred-attr.yaml                            \
+	syn-correct-form-liehket-PASS.yaml            \
+	syn-correct-form-liehket-FAIL.yaml            \
+	syn-number_congruence-subj-verb-PASS.yaml     \
+	syn-number_congruence-subj-verb-FAIL.yaml     \
+	syn-pred-attr-PASS.yaml                       \
+	syn-pred-attr-FAIL.yaml                       \
     syn-should-be-cmp.yaml                       \
 	syn-wo-neg-before-subj-PASS.yaml			\
 	syn-wo-neg-before-subj-FAIL.yaml
@@ -149,10 +152,10 @@ XFAIL_TESTS=\
 	real-habbmim.yaml                             \
 	real-habbmim.yaml                             \
     syn-attr-pred.yaml                          \
-	syn-correct-form-liehket.yaml                 \
-	syn-number_congruence-subj-verb.yaml          \
-	syn-pred-attr.yaml                            \
-	syn-wo-neg-before-subj-FAIL.yaml                   \
+	syn-correct-form-liehket-FAIL.yaml            \
+	syn-number_congruence-subj-verb-FAIL.yaml     \
+	syn-pred-attr-FAIL.yaml                       \
+	syn-wo-neg-before-subj-FAIL.yaml              \
     syn-should-be-cmp.yaml                       
     
 endif # WANT_GRAMCHECK
