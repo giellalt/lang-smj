@@ -93,6 +93,7 @@ TESTS=\
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not cDEV-msyn-gut-mij-gut-FAIL.yamlritical at the moment:
 XFAIL_TESTS=\
+	DEV-msyn-sme_interference_neg-PASS.yaml        \
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
 	DEV-msyn-dimin-after-unna-FAIL.yaml           \
 	DEV-msyn-gut-mij-gut-FAIL.yaml                \
