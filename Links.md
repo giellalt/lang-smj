@@ -4,10 +4,23 @@
     * `fst/`
         * `morphology/`
             * `affixes/`
+                * [abbreviations.lexc](src-fst-morphology-affixes-abbreviations.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/abbreviations.lexc))
+                * [adjectives.lexc](src-fst-morphology-affixes-adjectives.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/adjectives.lexc))
+                * [nouns.lexc](src-fst-morphology-affixes-nouns.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/nouns.lexc))
+                * [numerals.lexc](src-fst-morphology-affixes-numerals.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/numerals.lexc))
+                * [pronouns.lexc](src-fst-morphology-affixes-pronouns.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/pronouns.lexc))
+                * [propernouns.lexc](src-fst-morphology-affixes-propernouns.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/propernouns.lexc))
+                * [symbols.lexc](src-fst-morphology-affixes-symbols.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/symbols.lexc))
+                * [verbs.lexc](src-fst-morphology-affixes-verbs.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/verbs.lexc))
             * [compounding.lexc](src-fst-morphology-compounding.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/compounding.lexc))
             * [phonology.twolc](src-fst-morphology-phonology.twolc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/phonology.twolc))
             * [root.lexc](src-fst-morphology-root.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/root.lexc))
             * `stems/`
+                * [adjectives.lexc](src-fst-morphology-stems-adjectives.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/stems/adjectives.lexc))
+                * [adverbs.lexc](src-fst-morphology-stems-adverbs.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/stems/adverbs.lexc))
+                * [nouns.lexc](src-fst-morphology-stems-nouns.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/stems/nouns.lexc))
+                * [pronouns.lexc](src-fst-morphology-stems-pronouns.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/stems/pronouns.lexc))
+                * [smj-abbreviations.lexc](src-fst-morphology-stems-smj-abbreviations.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/stems/smj-abbreviations.lexc))
         * `phonetics/`
             * [acro2ipa.xfscript](src-fst-phonetics-acro2ipa.xfscript.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/phonetics/acro2ipa.xfscript))
             * [smj2sampa-from-old-infra.xfscript](src-fst-phonetics-smj2sampa-from-old-infra.xfscript.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/phonetics/smj2sampa-from-old-infra.xfscript))
