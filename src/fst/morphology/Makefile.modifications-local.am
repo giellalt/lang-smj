@@ -20,27 +20,30 @@
 if HAVE_SHARED_SMI
 generated_files/smi-$(GTLANG)-propernouns.lexc: \
 		$(gt_SHARED_smi)/src/fst/stems/smi-propernouns.lexc \
-		$(srcdir)/stems/$(GTLANG)-propernouns.lexc
+		$(srcdir)/stems/$(GTLANG)-propernouns.lexc \
+		$(top_srcdir)/src/fst/scripts/smi-$(GTLANG)-conversion.pl
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_GEN)cp -f $(srcdir)/stems/$(GTLANG)-propernouns.lexc $@
 	$(AM_V_at)echo "! <--- Dump from SMI starting here: -->" >> $@ 
-	$(AM_V_GEN)$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl $< >> $@
+	$(AM_V_GEN)$(top_srcdir)/src/fst/scripts/smi-$(GTLANG)-conversion.pl $< >> $@
 
 generated_files/smi-$(GTLANG)-abbreviations.lexc: \
 		$(gt_SHARED_smi)/src/fst/stems/smi-abbreviations.lexc \
-		$(srcdir)/stems/$(GTLANG)-abbreviations.lexc
+		$(srcdir)/stems/$(GTLANG)-abbreviations.lexc \
+		$(top_srcdir)/src/fst/scripts/smi-$(GTLANG)-conversion.pl
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_GEN)cp -f $(srcdir)/stems/$(GTLANG)-abbreviations.lexc $@
 	$(AM_V_at)echo "! <--- Dump from SMI starting here: -->" >> $@ 
-	$(AM_V_GEN)$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl $< >> $@
+	$(AM_V_GEN)$(top_srcdir)/src/fst/scripts/smi-$(GTLANG)-conversion.pl $< >> $@
 
 generated_files/smi-$(GTLANG)-acronyms.lexc: \
 		$(gt_SHARED_smi)/src/fst/stems/smi-acronyms.lexc \
-		$(srcdir)/stems/$(GTLANG)-acronyms.lexc
+		$(srcdir)/stems/$(GTLANG)-acronyms.lexc \
+		$(top_srcdir)/src/fst/scripts/smi-$(GTLANG)-conversion.pl
 	$(AM_V_at)$(MKDIR_P) generated_files
 	$(AM_V_GEN)cp -f $(srcdir)/stems/$(GTLANG)-acronyms.lexc $@
 	$(AM_V_at)echo "! <--- Dump from SMI starting here: -->" >> $@ 
-	$(AM_V_GEN)$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl $< >> $@
+	$(AM_V_GEN)$(top_srcdir)/src/fst/scripts/smi-$(GTLANG)-conversion.pl $< >> $@
 
 generated_files/smi-$(GLANG)-digits.lexc: \
 		$(gt_SHARED_smi)/src/fst/stems/smi-digits.lexc
@@ -76,9 +79,10 @@ endif
 
 if HAVE_SHARED_SME
 generated_files/sme-$(GTLANG)-propernouns.lexc: \
-			$(gt_SHARED_sme)/src/fst/stems/sme-propernouns.lexc
+			$(gt_SHARED_sme)/src/fst/stems/sme-propernouns.lexc \
+			$(top_srcdir)/src/fst/scripts/sme-$(GTLANG)-conversion.py
 	$(AM_V_at)$(MKDIR_P) generated_files
-	$(AM_V_GEN)$(top_srcdir)/src/scripts/sme-$(GTLANG)-conversion.py $< > $@
+	$(AM_V_GEN)$(top_srcdir)/src/fst/scripts/sme-$(GTLANG)-conversion.py $< > $@
 else
 generated_files/sme-$(GTLANG)-propernouns.lexc:
 	echo "Shared North Sami disabled: $(gt_SHARED_sme), words may be missing"
@@ -88,9 +92,10 @@ endif
 
 if HAVE_SHARED_SMA
 generated_files/sma-$(GTLANG)-propernouns.lexc: \
-			$(gt_SHARED_sma)/src/fst/stems/sma-propernouns.lexc
+			$(gt_SHARED_sma)/src/fst/stems/sma-propernouns.lexc \
+			$(top_srcdir)/src/fst/scripts/sma-$(GTLANG)-conversion.py
 	$(AM_V_at)$(MKDIR_P) generated_files
-	$(AM_V_GEN)$(top_srcdir)/src/scripts/sma-$(GTLANG)-conversion.py $< > $@
+	$(AM_V_GEN)$(top_srcdir)/src/fst/scripts/sma-$(GTLANG)-conversion.py $< > $@
 else
 generated_files/sma-$(GTLANG)-propernouns.lexc:
 	$(AM_V_at)echo "Shared South Sami disabled: $(gt_SHARED_sma), words may be missing"
