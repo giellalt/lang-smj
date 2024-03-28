@@ -19,6 +19,7 @@
                 * [adjectives.lexc](src-fst-morphology-stems-adjectives.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/stems/adjectives.lexc))
                 * [adverbs.lexc](src-fst-morphology-stems-adverbs.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/stems/adverbs.lexc))
                 * [nouns.lexc](src-fst-morphology-stems-nouns.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/stems/nouns.lexc))
+                * [numerals.lexc](src-fst-morphology-stems-numerals.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/stems/numerals.lexc))
                 * [pronouns.lexc](src-fst-morphology-stems-pronouns.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/stems/pronouns.lexc))
                 * [smj-abbreviations.lexc](src-fst-morphology-stems-smj-abbreviations.lexc.html) ([src](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/stems/smj-abbreviations.lexc))
         * `phonetics/`
