@@ -36,7 +36,6 @@
 * `tools/`
     * `grammarcheckers/`
         * [grammarchecker.cg3](tools-grammarcheckers-grammarchecker.cg3.html) ([src](https://github.com/giellalt/lang-smj/blob/main/tools/grammarcheckers/grammarchecker.cg3))
-            * `/`
         * [grc-disambiguator.cg3](tools-grammarcheckers-grc-disambiguator.cg3.html) ([src](https://github.com/giellalt/lang-smj/blob/main/tools/grammarcheckers/grc-disambiguator.cg3))
     * `tokenisers/`
         * [mwe-dis.cg3](tools-tokenisers-mwe-dis.cg3.html) ([src](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/mwe-dis.cg3))
