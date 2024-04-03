@@ -1989,7 +1989,7 @@ COPY:msyn-soajtta-le &DELETE EXCEPT ("liehket" V V IV Ind Prs Sg3 &msyn-soajtta-
     ## Soajttet not used as adverb
     # ---------------------------
     
-ADD:msyn-soajtta-not-adv (&msyn-soajtta-not-adv) TARGET VFIN + Prt OR VFIN + Prs IF (*-1 MAYBE-V - (Prs Sg3) BARRIER S-BOUNDARY OR CS OR CC OR VFIN OR Inf OR Rel);
+ADD:msyn-soajtta-not-adv (&msyn-soajtta-not-adv) TARGET VFIN + Prt OR VFIN + Prs IF (*-1 MAYBE-V - (Prs Sg3) BARRIER S-BOUNDARY OR CS OR CC OR VFIN OR Inf OR Rel)(NEGATE 0 Adv);
     ## Ållessjattuga ja bargge mánáv iejvviji ienemus oassáj mánáv iesjguhtiga arenan ja aktijvuodan, ja danen soajtti mánáv vehi ietjáláhkáj dåbddi.
     #$ De såjtij nágin rájadus sárnnediddje gænna {lij} alla giella tjuorvvot vantsas ja javllat: Gijtto gájkka buorrevuoda åvdås!
 
@@ -2479,7 +2479,7 @@ ADD:xmsyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Pl) O
     ##  Tjielggidus vuoset oajvvehásstalusájda mij gullu giellaj. DNW LINDA, fordi det er illativ pl om bestemmer, og vanligvis er jo ill adverbial. 
     #$ Áhttje mijá guhti le almen. DNW LINDA, fordi mijá kommer etter subjektet, skal egentlig vær før, men siden det er oversatt "fadervår" så er det rart. Kanskje vi må skrive regel for WO først :)
 
-ADD:xmsyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Sg) BARRIER NOT-BEFORE-REL LINK *-1 Num - ONE BARRIER NOT-NPMOD) ;
+ADD:xmsyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Sg) BARRIER NOT-BEFORE-REL LINK NOT 0 (N Pl) LINK *-1 Num - ONE BARRIER NOT-NPMOD) ;
 
     ## Mij lip vihtta nuora guhti vuolggep dåhku.
     ## Da li gålmmå nuora 
