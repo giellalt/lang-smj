@@ -1442,6 +1442,43 @@ LEXICON DUOLMUN   Fierrot>fierun, instruments derived from verbs, used only for 
 
 
 
++Sg+Com:%>jn K ;           
++Ess:n K ;                 
++Sg+Com:jn K ;             
++Sg+Com+Attr:jn     K ;  
++Pl+Nom:    K ;                
++Pl+Gen:j   K ;               
++Pl+Acc:jt  K ;              
++Pl+Ill:jda K ;             
++Pl+Ine:jn  K ;              
++Pl+Ela:js  K ;              
++Pl+Com:j   K ;               
+
++Ess:a%>n  K ;   
++Ess+Use/NG:e%>n  K ; ! not sure about the e-ending, dont think its standardized
++Sg+Gen:%- K ; ! ???            
++Sg+Com:jn K ;                        
+
++Ess:n K ; 
++Sg+Com:jn K ;          
+
++Ess:n K ;
++Sg+Nom+Use/NG:v  K ;
++Sg+Com:jn K ;             
++Sg+Com+Attr:jn K ;    
+
++Sg+Nom:%>a K ;   
++Sg+Nom+Use/NG:%>e K ;                         
++Ess:a%>n K ;   
++Ess+Use/NG:e%>n K ;   
+
++Sg+Nom:e%>  K ;          
++Ess:e%>n K ;     
++Pl+Nom:   K ;          
++Sg+Com:jn  K ;
++Sg+Com+Attr:jn  K ;   
++Pl+Com:j   K ;         
+
 * **LEXICON ARABICCOMPOUNDS**  ! arabic as first part, 
 
 * **LEXICON ARABICCASES**  adds +Arab
@@ -4472,6 +4509,10 @@ LOAN SWE altar
 ---
 
 
+
+XXXtuvsánat
+
+XXXtuvsánat
 
 * * *
 
