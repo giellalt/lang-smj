@@ -529,6 +529,3 @@ LEXICON AGAdj  ! denominal derivations go here, attr same as pred, no comp in th
 * * *
 
 <small>This (part of) documentation was generated from [src/fst/morphology/affixes/adjectives.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/adjectives.lexc)</small>
-
----
-

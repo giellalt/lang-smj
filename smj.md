@@ -1,6 +1,10 @@
-# Lule Sami description 
+# Lule Sami language model documentation
 
-All documents in one file
+All doc-comment documentation in one large file.
+
+---
+
+# src-cg3-disambiguator.cg3.md 
 
 
 
@@ -16,7 +20,14 @@ Go for minimal weight (requires --with-backend-format=openfst-tropical)
 # Removing Err/Orth
 
 * * *
+
 <small>This (part of) documentation was generated from [src/cg3/disambiguator.cg3](https://github.com/giellalt/lang-smj/blob/main/src/cg3/disambiguator.cg3)</small>
+
+---
+
+# src-fst-morphology-affixes-abbreviations.lexc.md 
+
+
 # Continuation lexicons for abbreviations
 
 ## Lexica for adding tags and periods
@@ -80,6 +91,8 @@ Go for minimal weight (requires --with-backend-format=openfst-tropical)
 <small>This (part of) documentation was generated from [src/fst/morphology/affixes/abbreviations.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/abbreviations.lexc)</small>
 
 ---
+
+# src-fst-morphology-affixes-adjectives.lexc.md 
 
 
 
@@ -614,6 +627,8 @@ LEXICON AGAdj  ! denominal derivations go here, attr same as pred, no comp in th
 <small>This (part of) documentation was generated from [src/fst/morphology/affixes/adjectives.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/adjectives.lexc)</small>
 
 ---
+
+# src-fst-morphology-affixes-nouns.lexc.md 
 
 
 
@@ -1440,6 +1455,8 @@ LEXICON DUOLMUN   Fierrot>fierun, instruments derived from verbs, used only for 
 
 ---
 
+# src-fst-morphology-affixes-numerals.lexc.md 
+
 
 
 +Sg+Com:%>jn K ;           
@@ -1499,6 +1516,8 @@ LEXICON DUOLMUN   Fierrot>fierun, instruments derived from verbs, used only for 
 
 ---
 
+# src-fst-morphology-affixes-pronouns.lexc.md 
+
 
 
 +Use/NG+Gen:n      NAMÁK ; ! adjectival -k derivation does not take pronouns
@@ -1518,6 +1537,8 @@ LEXICON DUOLMUN   Fierrot>fierun, instruments derived from verbs, used only for 
 <small>This (part of) documentation was generated from [src/fst/morphology/affixes/pronouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/pronouns.lexc)</small>
 
 ---
+
+# src-fst-morphology-affixes-propernouns.lexc.md 
 
 
 # Lule Sáme Proper noun morphology !
@@ -2377,6 +2398,8 @@ HANNOLA is the same as ACCRA
 
 ---
 
+# src-fst-morphology-affixes-symbols.lexc.md 
+
 
 # Symbol affixes
 
@@ -2385,6 +2408,8 @@ HANNOLA is the same as ACCRA
 <small>This (part of) documentation was generated from [src/fst/morphology/affixes/symbols.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/affixes/symbols.lexc)</small>
 
 ---
+
+# src-fst-morphology-affixes-verbs.lexc.md 
 
 
 
@@ -2808,6 +2833,8 @@ LEXICON ABBONERE_TV_INFL
 
 ---
 
+# src-fst-morphology-compounding.lexc.md 
+
 
 
 * * *
@@ -2815,6 +2842,8 @@ LEXICON ABBONERE_TV_INFL
 <small>This (part of) documentation was generated from [src/fst/morphology/compounding.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/compounding.lexc)</small>
 
 ---
+
+# src-fst-morphology-phonology.twolc.md 
 
 
 
@@ -3572,6 +3601,8 @@ process, and resolve them as they appear!
 <small>This (part of) documentation was generated from [src/fst/morphology/phonology.twolc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/phonology.twolc)</small>
 
 ---
+
+# src-fst-morphology-root.lexc.md 
 
 
 # Lule Sámi morphological analyser
@@ -4471,6 +4502,8 @@ The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
 
 ---
 
+# src-fst-morphology-stems-adjectives.lexc.md 
+
 
 
 vájnno
@@ -4483,6 +4516,8 @@ vájnno
 
 ---
 
+# src-fst-morphology-stems-adverbs.lexc.md 
+
 
 
 sme mojonjálmmiid
@@ -4492,6 +4527,8 @@ sme mojonjálmmiid
 <small>This (part of) documentation was generated from [src/fst/morphology/stems/adverbs.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/stems/adverbs.lexc)</small>
 
 ---
+
+# src-fst-morphology-stems-nouns.lexc.md 
 
 
 
@@ -4508,6 +4545,8 @@ LOAN SWE altar
 
 ---
 
+# src-fst-morphology-stems-numerals.lexc.md 
+
 
 
 XXXtuvsánat
@@ -4520,6 +4559,8 @@ XXXtuvsánat
 
 ---
 
+# src-fst-morphology-stems-pronouns.lexc.md 
+
 
 
 Reciprocal pronouns as multiword expression
@@ -4529,6 +4570,8 @@ Reciprocal pronouns as multiword expression
 <small>This (part of) documentation was generated from [src/fst/morphology/stems/pronouns.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/stems/pronouns.lexc)</small>
 
 ---
+
+# src-fst-morphology-stems-smj-abbreviations.lexc.md 
 
 
 # File containing North Saami abbreviations 
@@ -4579,6 +4622,8 @@ the sentence can be considered as true cases.
 
 ---
 
+# src-fst-phonetics-acro2ipa.xfscript.md 
+
 
 Phonological ACRO converter for Julev Sámi
 ==========================================
@@ -4597,6 +4642,8 @@ Default, letter by letter pronunciation
 <small>This (part of) documentation was generated from [src/fst/phonetics/acro2ipa.xfscript](https://github.com/giellalt/lang-smj/blob/main/src/fst/phonetics/acro2ipa.xfscript)</small>
 
 ---
+
+# src-fst-phonetics-smj2sampa-from-old-infra.xfscript.md 
 
 
 
@@ -4763,6 +4810,8 @@ retracted tongue root			_q
 
 ---
 
+# src-fst-phonetics-txt2ipa.xfscript.md 
+
 
 Phonological converter for Julev Sámi
 =====================================
@@ -4774,6 +4823,8 @@ Converts to IPA. Mainly intended for use with TTS.
 <small>This (part of) documentation was generated from [src/fst/phonetics/txt2ipa.xfscript](https://github.com/giellalt/lang-smj/blob/main/src/fst/phonetics/txt2ipa.xfscript)</small>
 
 ---
+
+# src-fst-transcriptions-clock-from-old-infra.lexc.md 
 
 
 
@@ -4798,6 +4849,8 @@ lågenanguovte
 <small>This (part of) documentation was generated from [src/fst/transcriptions/clock-from-old-infra.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/transcriptions/clock-from-old-infra.lexc)</small>
 
 ---
+
+# src-fst-transcriptions-transcriptor-abbrevs2text.lexc.md 
 
 
 
@@ -4827,6 +4880,8 @@ the sentence can be considered as true cases.
 
 ---
 
+# src-fst-transcriptions-transcriptor-acro2text.lexc.md 
+
 
 
 We describe here how abbreviations in Lule Sami are read out, e.g.
@@ -4838,6 +4893,8 @@ for text-to-speech systems.
 
 ---
 
+# src-fst-transcriptions-transcriptor-date-digit2text.lexc.md 
+
 
 
 This is still a dummy file.
@@ -4848,6 +4905,8 @@ This is still a dummy file.
 
 ---
 
+# src-fst-transcriptions-transcriptor-numbers-digit2text.lexc.md 
+
 
 
 * * *
@@ -4855,6 +4914,8 @@ This is still a dummy file.
 <small>This (part of) documentation was generated from [src/fst/transcriptions/transcriptor-numbers-digit2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
 
 ---
+
+# src-fst-transcriptions-transcriptor-symbols2text.lexc.md 
 
 
 
@@ -4878,6 +4939,8 @@ Emojies
 <small>This (part of) documentation was generated from [src/fst/transcriptions/transcriptor-symbols2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/transcriptions/transcriptor-symbols2text.lexc)</small>
 
 ---
+
+# tools-grammarcheckers-grammarchecker.cg3.md 
 
 
 L U L E   S A A M I   G R A M M A R   C H E C K E R
@@ -5155,7 +5218,14 @@ expression **WORD - premodifiers**.
 Error tags
 
 * * *
+
 <small>This (part of) documentation was generated from [tools/grammarcheckers/grammarchecker.cg3](https://github.com/giellalt/lang-smj/blob/main/tools/grammarcheckers/grammarchecker.cg3)</small>
+
+---
+
+# tools-grammarcheckers-grc-disambiguator.cg3.md 
+
+
 
 ### Semantic tags
 
@@ -5166,14 +5236,28 @@ Error tags
 # Removing Err/Orth
 
 * * *
+
 <small>This (part of) documentation was generated from [tools/grammarcheckers/grc-disambiguator.cg3](https://github.com/giellalt/lang-smj/blob/main/tools/grammarcheckers/grc-disambiguator.cg3)</small>
+
+---
+
+# tools-tokenisers-mwe-dis.cg3.md 
+
+
 
 The CLBfinal reading is only possible if directly followed by a full stop.
 Needs a rewrite, as the CLB reading is still within the same cohort, not the
 next, if present, since we haven't done the mwe-rewrite yet.
 
 * * *
-<small>This (part of) documentation was generated from [tools/tokenisers/mwe-dis.cg3](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/mwe-dis.cg3)</small># Tokeniser for smj
+
+<small>This (part of) documentation was generated from [tools/tokenisers/mwe-dis.cg3](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/mwe-dis.cg3)</small>
+
+---
+
+# tools-tokenisers-tokeniser-disamb-gt-desc.pmscript.md 
+
+# Tokeniser for smj
 
 Usage:
 ```
@@ -5235,6 +5319,8 @@ Finally we mark as a token any sequence making up a:
 <small>This (part of) documentation was generated from [tools/tokenisers/tokeniser-disamb-gt-desc.pmscript](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/tokeniser-disamb-gt-desc.pmscript)</small>
 
 ---
+
+# tools-tokenisers-tokeniser-gramcheck-gt-desc.pmscript.md 
 
 # Grammar checker tokenisation for smj
 
@@ -5304,6 +5390,8 @@ Finally we mark as a token any sequence making up a:
 
 ---
 
+# tools-tokenisers-tokeniser-tts-cggt-desc.pmscript.md 
+
 # TTS tokenisation for smj
 
 Requires a recent version of HFST (3.10.0 / git revision>=3aecdbc)
@@ -5365,6 +5453,3 @@ Needs hfst-tokenise to output things differently depending on the tag they get
 * * *
 
 <small>This (part of) documentation was generated from [tools/tokenisers/tokeniser-tts-cggt-desc.pmscript](https://github.com/giellalt/lang-smj/blob/main/tools/tokenisers/tokeniser-tts-cggt-desc.pmscript)</small>
-
----
-

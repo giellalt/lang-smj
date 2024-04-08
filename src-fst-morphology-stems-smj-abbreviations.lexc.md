@@ -44,6 +44,3 @@ the sentence can be considered as true cases.
 * * *
 
 <small>This (part of) documentation was generated from [src/fst/morphology/stems/smj-abbreviations.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/morphology/stems/smj-abbreviations.lexc)</small>
-
----
-

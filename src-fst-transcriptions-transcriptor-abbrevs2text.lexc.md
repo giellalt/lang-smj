@@ -23,6 +23,3 @@ the sentence can be considered as true cases.
 * * *
 
 <small>This (part of) documentation was generated from [src/fst/transcriptions/transcriptor-abbrevs2text.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/transcriptions/transcriptor-abbrevs2text.lexc)</small>
-
----
-

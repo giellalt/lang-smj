@@ -19,6 +19,3 @@ lågenanguovte
 * * *
 
 <small>This (part of) documentation was generated from [src/fst/transcriptions/clock-from-old-infra.lexc](https://github.com/giellalt/lang-smj/blob/main/src/fst/transcriptions/clock-from-old-infra.lexc)</small>
-
----
-
