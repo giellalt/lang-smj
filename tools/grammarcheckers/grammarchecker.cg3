@@ -2184,9 +2184,15 @@ COPY:msyn-plcom-sgcom-oahpastuvvat2 (Com &SUGGEST) EXCEPT (Ill Attr &msyn-plcom-
 LIST ATTR-PRED-A = ("dádjadahtes") ("ájnas") ("nanos") ; # jus lea goallosátni de ráhkat regexa (".*ladtje"r)
 
 LIST ONLY-ATTR-A = ("ájnna") ("ájggeguovddelis") ("njuolgga") ("sáme") ; # adjectives that do not have a nominative form
+
+LIST CONGRUENCE-A-sma = (Der/Comp A) (Der/Superl A) "væjkeles";
+LIST CONGRUENCE-A-smj = "buorre" ;
+LIST CONGRUENCE-A-sme = "buorre" "fuotni" ;
+LIST CONGRUENCE-A-smn = "pyeri" (Der/Comp A) (Der/Superl A) (".*vâš"r) (".*lâš"r) (".*sâš"r) (".*gâš"r) (".*bâš"r) ;
+SET CONGRUENCE-A = CONGRUENCE-A-sma OR CONGRUENCE-A-smj OR CONGRUENCE-A-sme OR CONGRUENCE-A-smn ;
       
 ADD:xsyn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF 
-(NEGATE 0 Attr OR (V Sg3) OR ONLY-ATTR-A OR <AttrPred>) (NEGATE 0 Sem/Hum + (Pl Nom) LINK *0 (V Pl3) OR (V Pl1) OR (V Pl2))
+(NEGATE 0 Attr OR (V Sg3) OR ONLY-ATTR-A OR <AttrPred> OR CONGRUENCE-A) (NEGATE 0 Sem/Hum + (Pl Nom) LINK *0 (V Pl3) OR (V Pl1) OR (V Pl2))
 (*1 N + CASE OR A + CASE BARRIER (*) - (A Attr) LINK NOT 0 Dem OR VFIN)
 (NEGATE *-1 COPULAS BARRIER NOT-ADV-PCLE LINK *2 Inf OR Ine OR Ill OR Sem/Time + Gen OR Sem/Time + Acc OR Adv OR Po BARRIER NOT-NPMODADV - Acc - (A Sg Nom) - CASE) (NEGATE 1 (N Nom) OR (Pron Nom) LINK 1 ("liehket" Ind))
 (NEGATE -1 (N Nom) OR (Pron Nom) LINK *-1 COPULAS BARRIER NOT-NPMODADV - (Pl Nom))
@@ -2195,6 +2201,9 @@ ADD:xsyn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF
 (NEGATE 0 <TH-Inf> LINK *1 (N Acc) BARRIER NOT-NPMOD LINK *1 (TV Inf) BARRIER NOT-ADV-PCLE)
 (NEGATE -1 CC LINK -1 (A Sg) OR (A Pl))
 (NEGATE 1 BE)  ;
+	#$ {Buorijn} mielajn	vuordáv snivva tjadádit dåjmajt ja rapportan oajvvaduvvi ja sidáv ráddidusájn vuogas láhkáj guládallat ja aktan barggat váj iesjguhtik dåjma lulujin jåhtuj biejaduvvat.
+	#$ Dákkir sebradahtte birrasav dahkat {buorij} avtastallamvuogij soajttá sisadnet ájnegis máná , juohkusa mánájs jali ålles mánájgárddebirrasav.
+	#$ Jur dán sihkarasstem diehti hæhttu unneplåhkogiela dásse bajeduvvat ienemus máhttelis sebrudaksuorgijn ja nav dahkat dav {buorren} ulmutjijda válljit.
 	#$ Svieriga bieles li {nuora} æjvvalimijda sæbrram, ja nælját giellabæssáj aj ásadibmáj sæbrrin.
 	## Objevta sadje gárgadisájn gånnå le ditransitijvva værbba
 	## Sån ham ij diede man gievrra Pippi la.
