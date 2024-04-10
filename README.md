@@ -1,5 +1,4 @@
-The Lule Sami morphology and tools
-==========================================
+# The Lule Sami morphology and tools
 
 [![Maturity](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgiellalt%2Flang-smj%2Fgh-pages%2Fmaturity.json)](https://giellalt.github.io/MaturityClassification.html)
 ![Lemma count](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgiellalt%2Flang-smj%2Fgh-pages%2Flemmacount.json)
@@ -29,8 +28,7 @@ Accuracy](https://img.shields.io/badge/Speller_Accuracy-84_%25-green.svg)](https
 [![Spell-checking accuracy development
 graph](https://giellalt.github.io/lang-smj/speller-report.svg)](https://giellalt.github.io/lang-smj/speller-report.svg)
 
-Download and test speller files
--------------------------------
+## Download and test speller files
 
 The speller files downloadable at the top of this page (the `*.bhfst` files) can
 be used with [divvunspell](https://github.com/divvun/divvunspell), to test their
@@ -38,16 +36,14 @@ performance. These files are the exact same ones as installed on users' computer
 and mobile phones. Desktop and mobile speller files differ from each other in the
 error model and should be tested separately — thus also two different downloads.
 
-Documentation
--------------
+## Documentation
 
 Documentation can be found at:
 
 - [Language specific documentation](https://giellalt.github.io/lang-smj/)
 - [General documentation](https://giellalt.github.io/)
 
-Core dependencies
------------------
+## Core dependencies
 
 In order to compile and use Lule Sami language morphology and
 dictionaries, you need:
@@ -82,21 +78,21 @@ linux](https://wiki.apertium.org/wiki/Installation_of_grammar_libraries)
 
 Further details and dependencies are described on the GiellaLT [Getting Started](https://giellalt.uit.no/infra/GettingStarted.html) pages.
 
-Downloading
------------
+## Downloading
 
 Using Git:
+
 ```
 git clone https://github.com/giellalt/lang-smj
 ```
 
 Using Subversion:
+
 ```
 svn checkout https://github.com/giellalt/lang-smj.git/trunk lang-smj
 ```
 
-Building and installation
--------------------------
+## Building and installation
 
 [INSTALL](https://github.com/giellalt/lang-smj/blob/main/INSTALL)
 describes the GNU build system in detail, but for most users it is the usual:
@@ -108,8 +104,7 @@ make
 (as root) make install
 ```
 
-Citing
-------
+## Citing
 
 <!-- Add language specific citation stuff here and to the CITATION.cff -->
 
@@ -118,11 +113,11 @@ If you use language data from more than one GiellaLT language, consider citing
 infra](https://aclanthology.org/2022.lrec-1.125/):
 
 > Linda Wiechetek, Katri Hiovain-Asikainen, Inga Lill Sigga Mikkelsen,
-  Sjur Moshagen, Flammie Pirinen, Trond Trosterud, and Børre Gaup. 2022.
-  *Unmasking the Myth of Effortless Big Data - Making an Open Source
-  Multi-lingual Infrastructure and Building Language Resources from Scratch*.
-  In Proceedings of the Thirteenth Language Resources and Evaluation Conference,
-  pages 1167–1177, Marseille, France. European Language Resources Association.
+> Sjur Moshagen, Flammie Pirinen, Trond Trosterud, and Børre Gaup. 2022.
+> _Unmasking the Myth of Effortless Big Data - Making an Open Source
+> Multi-lingual Infrastructure and Building Language Resources from Scratch_.
+> In Proceedings of the Thirteenth Language Resources and Evaluation Conference,
+> pages 1167–1177, Marseille, France. European Language Resources Association.
 
 If you use bibtex, following is as it is on ACL anthology:
 
