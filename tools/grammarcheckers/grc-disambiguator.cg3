@@ -1552,8 +1552,19 @@ SELECT:liehket ("liehket" V SentInit) IF (0 Sg3 OR Pl3)(NEGATE *1 (V Sg3) BARRIE
 	
 SELECT:gittaAdv ("gitta" Adv) IF (0 ("gitta" N Sg Nom))(NEGATE -1 BOS);
 	## Máná giellabiessemánájgárdijs máhtti dákkárijda álgget, ja danen oadtju vijddábut åvddånahttet ietjasa guovte gielajt gitta allaskåvlå dássáj.
+
+
+# dagá Po vs. dahkat Ind Prs Sg2
+# - - - - - - - - - - - - - - -
 	
+SELECT:dagaPo ("dagá" Po) IF (-1 (N Sg Nom) OR (N Sg Gen) LINK NEGATE *1 (Pron Sg2 Nom))(NEGATE *-1 (Pron Sg2 Nom) OR (V Neg));
+	## Mánná ittjij máhte ienep gå 8 biejve liehket gássta dagá.
 	
+SELECT:dahkatPrsSg2 ("dahkat") IF (0 (Ind Prs Sg2))(0* (Pron Sg2 Nom))(0 ("dagá" Po));
+	## 
+
+SELECT:dahkatConNeg ("dahkat") IF (0 (Ind Prs Sg2))(*-1 ("ij") BARRIER NOT-ADV-PCLE - Nom - Attr - Gen)(0 ("dagá" Po));
+	##	Ij gus Linda dagá majdik?
 
 # Neg forms
 # ---------
