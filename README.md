@@ -26,6 +26,7 @@ for the Lule Sami language by using the [Divvun Installer](http://divvun.no)
 [![Speller
 Accuracy](https://img.shields.io/badge/Speller_Accuracy-84_%25-green.svg)](https://giellalt.github.io/lang-smj/speller-report.html)
 
+
 [![Spell-checking accuracy development
 graph](https://giellalt.github.io/lang-smj/speller-report.svg)](https://giellalt.github.io/lang-smj/speller-report.svg)
 
