@@ -1732,11 +1732,12 @@ ADD:syn-from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentIn
 
 	# l
 	# --
-COPY:syn-from-sentence-init-copula (Clt &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Prs Sg3 &syn-from-sentence-init-copula) IF (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 ("ja") OR ("de" Adv) OR ("de" CC) OR ("jali") OR (V Prs) OR (V Prt)) (NEGATE -1 (N Pl Nom) LINK NOT 0 (N Sg Nom)) (NEGATE -1 ("guhti") LINK -1 ("mån" Pl1 Gen) LINK -1 ("áhttje" Sg Nom)) (NEGATE *-1 (N Sg Nom) BARRIER NOT-ADV-PCLE - Ela - Ine - Po LINK *-1 CC BARRIER NOT-NPMOD LINK -1 (N Nom))  ;
+COPY:syn-from-sentence-init-copula (Clt &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Prs Sg3 &syn-from-sentence-init-copula) IF (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 ("ja") OR ("de" Adv) OR ("de" CC) OR ("jali") OR (V Prs) OR (V Prt)) (NEGATE -1 (N Pl Nom) LINK NOT 0 (N Sg Nom)) (NEGATE -1 ("guhti") LINK -1 ("mån" Pl1 Gen) LINK -1 ("áhttje" Sg Nom)) (NEGATE *-1 (N Sg Nom) BARRIER NOT-ADV-PCLE - Ela - Ine - Po LINK *-1 CC BARRIER NOT-NPMOD LINK -1 (N Nom)) (NEGATE *1 (N Pl Nom) BARRIER NOT-NPMOD)  ;
     ## Áddjá {le} vuoras > l
 	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
 	#$ Áhttje mijá guhti {le} almen
-
+    #$ Jus galggap vuorbástuvvat hæhttup aktan barggat, dádjadusájn juhti {le} nasjåvnålasj fálaldagá ma galggi ásaduvvat
+    
 	# li
 	# --
 COPY:syn-from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (-1 (Pl Nom) OR (Pl3 Nom)) ;
@@ -1744,6 +1745,13 @@ COPY:syn-from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentenc
 COPY:syn-from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (-1 (Sg Nom) LINK -1 ("ja") OR ("jali") LINK -1 (Nom) ) ;
 
     # Bijla le buore > li
+
+COPY:syn-from-sentence-init-copula (Pl3 &SUGGEST) EXCEPT (Sg3 SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (1 (Pl Nom) LINK -2 ("de")) ;
+    ## Vájku dat rádje sjattaj de {le} ulmutja sässtám ietjasa dábijt ja kultuvrav. 
+    
+COPY:syn-from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (*1 (N Pl Nom) BARRIER NOT-NPMOD) (NEGATE -1 (N Sg Nom)) ;
+    ## Jus galggap vuorbástuvvat hæhttup aktan barggat, dádjadusájn juhti {le} nasjåvnålasj fálaldagá ma galggi ásaduvvat.
+    
     
 LIST GO-PCLE-smj = "gå" ;
 LIST GO-PCLE-sme = "go" ;
@@ -1777,11 +1785,12 @@ COPY:syn-from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentenc
 
     ## Áhttje mijá guhti {le} almen
 
-COPY:syn-from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula Area/NO Area/SE) TARGET (Sg1 &syn-from-sentence-init-copula) OR (Sg2 &syn-from-sentence-init-copula) OR (Prt Sg3 &syn-from-sentence-init-copula) OR (Du1 &syn-from-sentence-init-copula) OR (Du2 &syn-from-sentence-init-copula) OR (Du3 &syn-from-sentence-init-copula) OR (Pl1 &syn-from-sentence-init-copula) OR (Pl2 &syn-from-sentence-init-copula) ; 
+COPY:syn-from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula Area/NO Area/SE) TARGET (Sg1 &syn-from-sentence-init-copula) OR (Sg2 &syn-from-sentence-init-copula) OR (Prt Sg3 &syn-from-sentence-init-copula) OR (Du1 &syn-from-sentence-init-copula) OR (Du2 &syn-from-sentence-init-copula) OR (Du3 &syn-from-sentence-init-copula) OR (Pl1 &syn-from-sentence-init-copula) OR (Pl2 &syn-from-sentence-init-copula) (NEGATE *1 (N Pl Nom) BARRIER NOT-NPMOD)  ; 
 
 	## Såj læbá boahtám sijddaj
+	#$ Jus galggap vuorbástuvvat hæhttup aktan barggat, dádjadusájn juhti {le} nasjåvnålasj fálaldagá ma galggi ásaduvvat
 	
-COPY:syn-from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET &syn-from-sentence-init-copula IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 ("ja") OR ("de" Adv) OR ("de" CC) OR ("jali") OR ("juo"))(NEGATE -1 (Sg Nom) OR (Sg3 Nom) OR ( "ij" Neg Ind Prs Sg3) OR (Pl Nom) OR (Pl3 Nom)) ;
+COPY:syn-from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET &syn-from-sentence-init-copula IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 ("ja") OR ("de" Adv) OR ("de" CC) OR ("jali") OR ("juo"))(NEGATE -1 (Sg Nom) OR (Sg3 Nom) OR ( "ij" Neg Ind Prs Sg3) OR (Pl Nom) OR (Pl3 Nom)) (NEGATE 1 (N Pl Nom));
 	## ja {le} akta dajs ájnnasamos > la
     ## jus boadá de {le} buorre> la 
     # mij juo {le} Mortensnesan
