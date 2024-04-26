@@ -136,7 +136,7 @@ LIST PPUNCT = PUNCT ;   #!! PPUNCT
 SET PUNCT = PPUNCT - QMARK ;  #!! PUNCT
 
 LIST COMMA = "," ;  #!! COMMA
-LIST CITATION = "«" "“" "\"" "„" "‟" "'" "‹" "‘" "‚" "‛" "❛" "❝" "❮" "〝" "〟" "»" "“" "\"" "'" "›" "’" "❜" "❞" "❯" "〞" "＂" ; 
+LIST CITATION = "«" "“" "\"" "„" "‟" "'" "‹" "‘" "‚" "‛" "❛" "❝" "❮" "〝" "〟" "»" "“" "\"" "'" "›" "’" "❜" "❞" "❯" "〞" "＂" "”" ; 
 LIST HYPHEN = "-" ;
 LIST ¶ = ¶;
 LIST LEFT-QUOT = "«" "“" "„"  "‟" "‹" "‘" "‚" "‛" "❛" "❝" "❮" "〝" "〟"; 
@@ -1797,7 +1797,7 @@ LIST MAYBE-V-sme = "soaitit" ;
 LIST MAYBE-V-smn = "sättiđ" ;
 SET MAYBE-V = MAYBE-V-smj OR MAYBE-V-sma OR MAYBE-V-sme OR MAYBE-V-smn ;
 
-ADD:syn-from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentInit IF (NEGATE -1 BOS OR COMMA OR (";") OR (":") OR CITATION OR HYPHEN) (NEGATE 0 &syn-number_congruence-subj-verb) (NEGATE 0 &msyn-verb-cong-rel) (NEGATE 0 &msyn-soajtta-le)(NEGATE 1 MAYBE-V + (V Ind Prs Sg3)) ;
+ADD:syn-from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentInit IF (NEGATE -1 BOS OR COMMA OR (";") OR (":") OR CITATION OR HYPHEN) (NEGATE 0 &syn-number_congruence-subj-verb) (NEGATE 0 &msyn-verb-cong-rel) (NEGATE 0 &msyn-soajtta-le) (NEGATE 1 MAYBE-V + (V Ind Prs Sg3)) ;
 	#$ Dajn gielajn gånnå le riek friddja báhkogárges {le} soajttá vehik gássjel mierredit mij la vuodobáhkogárges.
 
 	# l
