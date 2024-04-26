@@ -2985,11 +2985,13 @@ MOVE:syn-gus-before-pron (&syn-gus-before-pron) AFTER (*-2 V BARRIER NOT-NPMOD O
 
     # missing "gus" 
     #-----------------    
-ADD:xsyn-missing-gus (&syn-missing-gus) TARGET BE IF (-1 (V "ij") LINK -1 BOS) (*1 ("?") BARRIER COMMA) (NEGATE 1 (Pcle "gus") OR (Pcle "má")) (NEGATE 0 (Imprt)) (NEGATE *0 (syn-gus-before-pron) BARRIER S-BOUNDARY) (NEGATE 1 ("då" Pcle) OR ("så" Pcle)) ;
+ADD:xsyn-missing-gus (&syn-missing-gus) TARGET BE IF (-1 (V "ij") LINK -1 BOS) (*1 ("?") BARRIER COMMA OR (":") OR (";")) (NEGATE 1 (Pcle "gus") OR (Pcle "má")) (NEGATE 0 (Imprt)) (NEGATE *0 (syn-gus-before-pron) BARRIER S-BOUNDARY) (NEGATE 1 ("då" Pcle) OR ("så" Pcle)) ;
 
     ## Ij la dujna bijlla?
 
-ADD:xsyn-missing-gus (&syn-missing-gus) TARGET (V Ind) OR (V Pot) OR (V Cond)  IF (-1 BOS) (*1 ("?") BARRIER COMMA) (NEGATE 1 (Pcle "gus") OR (Pcle "má") OR (Adv "gåjt")) (NEGATE 0 (Qst) OR N OR (PrsPrc) OR ("soajttet" &msyn-soajtta-adv)) (NEGATE 0 (V "ij") LINK 1 BE) (NEGATE 0 (V "ij") LINK 1 (Pcle "så") LINK 1 (Pcle "vil")) (NEGATE *0 (syn-gus-before-pron) BARRIER S-BOUNDARY) (NEGATE 1 ("då" Pcle) OR ("så" Pcle))  ;
+ADD:xsyn-missing-gus (&syn-missing-gus) TARGET (V Ind) OR (V Pot) OR (V Cond)  IF (-1 BOS) (*1 ("?") BARRIER COMMA OR (":") OR (";")) (NEGATE 1 (Pcle "gus") OR (Pcle "má") OR (Adv "gåjt")) (NEGATE 0 (Qst) OR N OR (PrsPrc) OR ("soajttet" &msyn-soajtta-adv)) (NEGATE 0 (V "ij") LINK 1 BE) (NEGATE 0 (V "ij") LINK 1 (Pcle "så") LINK 1 (Pcle "vil")) (NEGATE *0 (syn-gus-before-pron) BARRIER S-BOUNDARY) (NEGATE 1 ("då" Pcle) OR ("så" Pcle)) ;
+
+#(NEGATE 1 ":" OR ";")  ;
 
     ## Boahtá sån sijddaj?
     #$ Boahtá gåjt/má sijddaj?
