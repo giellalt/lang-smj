@@ -3143,17 +3143,19 @@ REMOVE ConNeg IF (*-1 BOC2 LINK *1 EOC2 BARRIER Neg);
 SELECT (V Sg2) (NOT *-1 NP-HEAD-NOM OR Ine)(*1 @CVP BARRIER NP-HEAD-NOM OR S-BOUNDARY2 LINK *1 (V Sg2) BARRIER VERB) ;
 	## Jus värroálltárij le vattáldagáv guoddemin ja dalloj huomaha vieljanat le juoga duv vuosstij , de álltára åvddåj vattáldagát guode ja maná suv lusi såbadittjat.
 
+SELECT Ind IF (-1 BOS LINK *1 ("?")) ;
+    ## Gehtja báhkogirjen?
+
 # Imperative
 # ----------
 
     #  V TV Ind ConNeg=V TV Imprt ConNeg=V TV VGen=V TV Imprt Sg2
     # = V TV Ind Prs Sg2
     
-SELECT Imprt (-1 BOS)(0 ("gæhttjat")) ;
+SELECT Imprt (-1 BOS)(0 ("gæhttjat")) (NEGATE *1 ("?")) ;
 REMOVE Imprt (-1 VFIN) ;
 
-
-SELECT (Imprt Sg2) IF (*-1 BOS OR (":") BARRIER WORD)(NEGATE 0 ("duohta") LINK 1 COMMA)(NOT *1 (Pers Sg2) BARRIER SV-BOUNDARY2); 
+SELECT (Imprt Sg2) IF (*-1 BOS OR (":") BARRIER WORD)(NEGATE 0 ("duohta") LINK 1 COMMA)(NOT *1 (Pers Sg2) BARRIER SV-BOUNDARY2) (NEGATE *1 ("?")) ; 
 	## Åro sjávot desik lav tjielggim.
 
 SELECT (Imprt Sg2) IF (*1 Prop BARRIER WORD LINK 0 Sem/Mal OR Sem/Fem LINK 1 COMMA);
