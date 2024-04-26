@@ -2316,14 +2316,16 @@ LIST CONGRUENCE-A-smn = "pyeri" (Der/Comp A) (Der/Superl A) (".*vâš"r) (".*lâ
 SET CONGRUENCE-A = CONGRUENCE-A-sma OR CONGRUENCE-A-smj OR CONGRUENCE-A-sme OR CONGRUENCE-A-smn ;
       
 ADD:xsyn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF 
-(NEGATE 0 Attr OR (V Sg3) OR ONLY-ATTR-A OR <AttrPred> OR CONGRUENCE-A) (NEGATE 0 Sem/Hum + (Pl Nom) LINK *0 (V Pl3) OR (V Pl1) OR (V Pl2))
 (*1 N + CASE OR A + CASE BARRIER (*) - (A Attr) LINK NOT 0 Dem OR VFIN)
+(NEGATE 0 <TH-Inf> LINK *1 (N Acc) BARRIER NOT-NPMOD LINK *1 (TV Inf) BARRIER NOT-ADV-PCLE)
+(NEGATE 0 Attr OR (V Sg3) OR ONLY-ATTR-A OR <AttrPred> OR CONGRUENCE-A) 
+(NEGATE 0 Sem/Hum + (Pl Nom) LINK *0 (V Pl3) OR (V Pl1) OR (V Pl2))
+(NEGATE 0 (Der/Car) OR Ord)(NEGATE 0 Sem/Hum LINK *1 Ine OR Ill OR Ela OR Com OR Adv OR Po BARRIER NOT-NPMODADV)
 (NEGATE *-1 COPULAS BARRIER NOT-ADV-PCLE LINK *2 Inf OR Ine OR Ill OR Sem/Time + Gen OR Sem/Time + Acc OR Adv OR Po BARRIER NOT-NPMODADV - Acc - (A Sg Nom) - CASE) (NEGATE 1 (N Nom) OR (Pron Nom) LINK 1 ("liehket" Ind))
 (NEGATE -1 (N Nom) OR (Pron Nom) LINK *-1 COPULAS BARRIER NOT-NPMODADV - (Pl Nom))
-(NEGATE 0 (Der/Car) OR Ord)(NEGATE 0 Sem/Hum LINK *1 Ine OR Ill OR Ela OR Com OR Adv OR Po BARRIER NOT-NPMODADV)
 (NEGATE -1 COPULAS + Sg3 OR COPULAS + (Prs Sg2) LINK *-1 BOS BARRIER NOT-ADV - Ine - Ela LINK *1 (N Nom) OR (Pron Nom) BARRIER NOT-NPMODADV - A - COPULAS)
-(NEGATE 0 <TH-Inf> LINK *1 (N Acc) BARRIER NOT-NPMOD LINK *1 (TV Inf) BARRIER NOT-ADV-PCLE)
 (NEGATE -1 CC LINK -1 (A Sg) OR (A Pl))
+(NEGATE -1 ("man") LINK 1 (A) LINK 1 Nom LINK *1 ("liehket" Ind) BARRIER NOT-CC - Nom)  
 (NEGATE 1 BE)  ;
 	#$ {Buorijn} mielajn	vuordáv snivva tjadádit dåjmajt ja rapportan oajvvaduvvi ja sidáv ráddidusájn vuogas láhkáj guládallat ja aktan barggat váj iesjguhtik dåjma lulujin jåhtuj biejaduvvat.
 	#$ Dákkir sebradahtte birrasav dahkat {buorij} avtastallamvuogij soajttá sisadnet ájnegis máná , juohkusa mánájs jali ålles mánájgárddebirrasav.
@@ -2337,6 +2339,7 @@ ADD:xsyn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF
 	## {Generatijvva} grammatihkka le vuododuvvam dan vuojno milta ahte máná li riegádam sissŋálasj grammatihkajn, majt Noam Chomsky gåhtjut The Universal Grammar , sámegiellaj {universálla} grammatihkka, (dássta duohku UG). 
 	#$ Sån ham ij diede man gievrra Pippi la.
 	#$ Verba soajtti årrot kårtå ma lij {alega} biráldis jali kårtå máhtti lijmmiduvvat alek páhppárij.
+	#$ Imájdallin gå vuojnnin man jálo Petrus ja Johannes lijga ja árvvedin lijga sahte, åhpadak ålmmå.
 
 # North sámi
 #ADD:msyn-attr-not-pred (&msyn-attr-not-pred) TARGET A IF (NOT 0 Attr OR (N Gen) OR @<SPRED LINK NEGATE 0 (Sg Nom) LINK 0 ADJ_ATTR/NOM OR Comp OR Superl)(*1 CNOUN OR A BARRIER NOT-ADJ-CC OR  GO-PCLE)(NOT 1 Rel) (NEGATE 0 ("buorre") OR ("riekta") OR ("duođas") OR Ord - ("nubbi")) (NEGATE *0 MODALS BARRIER GRAMCHK-S-BOUNDARY OR GRAMCHK-VFIN OR Rel) (NEGATE 0 A LINK 1 COMMA OR CC LINK NOT 1 Attr OR Gen) (NEGATE 0 Ess LINK NOT *0 GRAMCHK-VFIN BARRIER GRAMCHK-S-BOUNDARY OR CLB)(NEGATE 0 Superl LINK 0 (Adv Superl))(NEGATE 0 Attr LINK NOT 0 Attr)(NEGATE 1 EOS)(NEGATE 0 (N Sg Ill));
