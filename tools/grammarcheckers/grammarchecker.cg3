@@ -1802,7 +1802,7 @@ ADD:syn-from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentIn
 
 	# l
 	# --
-COPY:syn-from-sentence-init-copula (Clt &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Prs Sg3 &syn-from-sentence-init-copula) IF (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 ("ja") OR ("de" Adv) OR ("de" CC) OR ("jali") OR (V Prs) OR (V Prt)) (NEGATE -1 (N Pl Nom) LINK NOT 0 (N Sg Nom)) (NEGATE -1 ("guhti") LINK -1 ("mån" Pl1 Gen) LINK -1 ("áhttje" Sg Nom)) (NEGATE *-1 (N Sg Nom) BARRIER NOT-ADV-PCLE - Ela - Ine - Po LINK *-1 CC BARRIER NOT-NPMOD LINK -1 (N Nom)) (NEGATE *1 (N Pl Nom) BARRIER NOT-NPMOD)  ;
+COPY:syn-from-sentence-init-copula (Clt &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Prs Sg3 &syn-from-sentence-init-copula) IF (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 ("ja") OR ("de" Adv) OR ("de" CC) OR ("jali") OR (V Prs) OR (V Prt)) (NEGATE -1 (N Pl Nom) LINK NOT 0 (N Sg Nom)) (NEGATE -1 ("guhti") LINK -1 ("mån" Pl1 Gen) LINK -1 ("áhttje" Sg Nom)) (NEGATE *-1 (N Sg Nom) BARRIER NOT-ADV-PCLE - Ela - Ine - Po LINK *-1 CC BARRIER NOT-NPMOD LINK -1 (N Nom)) (NEGATE *1 (N Pl Nom) BARRIER NOT-NPMOD) (NEGATE 1 CC LINK NOT 0 ("de" CC)) ;
     ## Áddjá {le} vuoras > l
 	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
 	#$ Áhttje mijá guhti {le} almen
@@ -1868,7 +1868,20 @@ COPY:syn-from-sentence-init-copula ( &SUGGEST) EXCEPT (SentInit &syn-from-senten
     # mij juo {le} Mortensnesan
     ## Aktisasjbarggo Jielleváre ja Divtasvuona suohkanij gaskan {le} konkrehta aktisasjbarggo suohkanij gaskan mij buoragit hiehpá nuorttaguovllovuorodibmáj. 
     ## Galggá val javllat ij le dåhkkidahtte gå iehtjádij vuosstij bahájt dahki, ja dættoda juohkkahattja duogen {le} máná mánájgárden soapptsu.
-	
+
+COPY:syn-from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (1 CC)  ;
+    ## Vuojŋadik idja biejvve javlli: Ájlis, ájlis, ájlis le Härrá Jubmel, gájkviekses, guhti lij, guhti {le} ja guhti boahtá.
+
+COPY:syn-from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (1 (<spelled>)) (NEGATE -1 ("<.*[aeiouáå]>"r))   ;
+    ## Duodden le posjekta hæhttum dahkat ådå termajt ma e julevsámegielan gávnnu.
+
+	#  Le after gænna> gejna/gejn (suggestes both)
+    # ----------------------------------------------------------------------    
+
+COPY:syn-from-sentence-init-copula (&SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 &msyn-congr-gænna-gejn)  ;
+
+COPY:syn-from-sentence-init-copula (Clt &SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 &msyn-congr-gænna-gejn) ;
+
 	
     # Should be sentence initial copula: from la to le. 
     # ----------------------------------------------------------------------
@@ -1898,6 +1911,7 @@ COPY:msyn-l-not-la (Sg3 Clt &SUGGEST) EXCEPT (Sg2 SentInit &msyn-l-not-la) OR (S
 	## Áhttje mijá guhti {le/la} almen
 
     #$ 8. kapihttalin tjielggiduvvá nammadusá oajvvadus ådå organiserimij giellaguovloj ja suohkankategoriajda mij juo {la} åvddån biejaduvvam oasserapportan. DNW LINDA
+
 
 	#  l to la/le to after consonant
     # ----------------------------------------------------------------------
@@ -2920,7 +2934,6 @@ ADD:xsyn-nom_nom-gen_nom (&syn-nom_nom-gen_nom) TARGET (Gram/3syll Actio Nom) OR
 (NEGATE 1 ("jurra") LINK *1 (V Ind) BARRIER NOT-CC - Adv) 
 (NEGATE 1 (N Sg Nom) LINK 1 ("AS")) 
 (NEGATE 1 <spelled>)  
-(NEGATE 1 (Der/NomAct Nom) LINK 1 ("liehket" Ind)) ;
 (NEGATE 1 (Der/NomAct Nom) LINK 1 ("liehket" Ind)) 
 (NEGATE *-1 ("liehket" Ind) BARRIER S-BOUNDARY LINK 1 ("gus")) ;
 
@@ -2931,7 +2944,6 @@ COPY:syn-nom_nom-gen_nom (Gen &SUGGEST) EXCEPT (Nom &syn-nom_nom-gen_nom) TARGET
     #$ Nágin biejve sállten, de lij háhka sjaddam spihkkaháhka majt ij dárbaham málestit.
     #$ Sån ham ij diede man gievrra Pippi la.
     #$ de la ájnna værjjo buollemsláŋŋa.
-
     #$ Le gus lávlla råhkådallamvuohke?
 
     # nom-nom = Should get comma
