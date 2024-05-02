@@ -4180,7 +4180,16 @@ ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgc
 
 # Noun 
 
-ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Pl Gen) IF ((0 N) OR (0 NUMUNIT - Com LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numphrase-sgacc OR &msyn-numphrase-sgill OR &msyn-numphrase-sgcom OR &msyn-numphrase-sgine OR &msyn-numphrase-sgela)(*-1 Num BARRIER NOT-NPMOD OR COMMA LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock OR Sem/Time OR Sem/Date OR &msyn-numphrase-sgacc OR &msyn-numphrase-sgill OR &msyn-numphrase-sgcom OR &msyn-numphrase-sgine OR &msyn-numphrase-sgela LINK NOT -1 Sem/Curr LINK NEGATE 0 NUMUNIT LINK -1 Num OR PLURAL-QUANTIFIERS) (NEGATE 0 (N Sg) - Ill OR (N Pl Nom))(NEGATE 0 (Pl Ela) LINK -1 ("akta" Sg Nom))(NEGATE 0 (Pl Ela) LINK -1 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 2 BE + Pl3)(NEGATE 0 (N Pl Nom) LINK -1 (Num Sg Nom))(NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr - Gen) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE -1 NUMUNIT LINK -1 PLURAL-QUANTIFIERS OR Num)(NEGATE 0 (Ill) OR (Ela)) (NEGATE -1 &msyn-numphrase-sggen OR (N Sg Gen)) ;
+ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Pl Gen) IF ((0 N) OR (0 NUMUNIT - Com LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numphrase-sgacc OR &msyn-numphrase-sgill OR &msyn-numphrase-sgcom OR &msyn-numphrase-sgine OR &msyn-numphrase-sgela)(*-1 Num OR (A Arab) BARRIER NOT-NPMOD OR COMMA LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock OR Sem/Time OR Sem/Date OR &msyn-numphrase-sgacc OR &msyn-numphrase-sgill OR &msyn-numphrase-sgcom OR &msyn-numphrase-sgine OR &msyn-numphrase-sgela LINK NOT -1 Sem/Curr LINK NEGATE 0 NUMUNIT LINK -1 Num OR PLURAL-QUANTIFIERS) 
+(NEGATE 0 (N Sg) - Ill OR (N Pl Nom))
+(NEGATE 0 (Pl Ela) LINK -1 ("akta" Sg Nom))
+(NEGATE 0 (Pl Ela) LINK -1 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 2 BE + Pl3)
+(NEGATE 0 (N Pl Nom) LINK -1 (Num Sg Nom))
+(NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr - Gen) 
+(NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) 
+(NEGATE -1 NUMUNIT LINK -1 PLURAL-QUANTIFIERS OR Num)
+(NEGATE 0 (Ill) OR (Ela)) 
+(NEGATE -1 &msyn-numphrase-sggen OR (N Sg Gen)) ;
 
 COPY:msyn-numphrase-sggen (Sg Gen &SUGGEST) EXCEPT (Pl Gen &msyn-numphrase-sggen) TARGET (N &msyn-numphrase-sggen) ;
 	## Guokta {gusáj}  fiekse 
@@ -4206,7 +4215,7 @@ ADDRELATION ($2 LEFT) (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sgg
 
 # Dem
 
-ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen COERROR) TARGET (Pron Dem Pl) IF (1 (Num Sg) OR (Gen &SUGGEST) LINK *1 (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen BARRIER NOT-NPMOD - CC) ;
+ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen COERROR) TARGET (Pron Dem Pl) IF (1 (Num Sg) OR (Gen &SUGGEST) OR (A Arab) LINK *1 (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen BARRIER NOT-NPMOD - CC) ;
 
     ## Tjåhkanimij gåhttjom ja jådedibme målssu daj {gålmåj} rijkaj gaskan. # GENITIVE
     ## Dát aktisasjbarggoorgádna le læhkám aktisasjvuohtaorgádnan ámmátdásen daj {gålmåj} lándaj ráddidusáj gaskan diehton ja dagástallamin. # Genitive
@@ -4225,7 +4234,7 @@ ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen COERROR) TARGET (Pron Dem Pl) I
 	#$ Sæmmi gåktu lej vargga {30} jage dán åvddåla, de la julevsámegiella ávijsajn biebbmománnán.
 
 
-COPY:msyn-numphrase-sggen (Sg Gen &SUGGEST) EXCEPT (Pl Gen &msyn-numphrase-sggen) OR (Pl Ine Attr &msyn-numphrase-sggen) OR (Pl Nom &msyn-numphrase-sggen) TARGET (Dem &msyn-numphrase-sggen) ;
+COPY:msyn-numphrase-sggen (Sg Gen &SUGGEST) EXCEPT (Pl Gen &msyn-numphrase-sggen) OR (Pl Com &msyn-numphrase-sggen) OR (Pl Ine Attr &msyn-numphrase-sggen) OR (Pl Nom &msyn-numphrase-sggen) TARGET (Dem &msyn-numphrase-sggen) ;
 
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen TO (*-2 (Dem &msyn-numphrase-sggen));
 
