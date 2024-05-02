@@ -4208,7 +4208,7 @@ ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen COERROR) TARGET (Num Sg Nom) OR
 ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen COERROR) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (*1 PRE-NP-HEAD BARRIER NOT-ADV LINK 1 CC LINK 1 PRE-NP-HEAD LINK *1 (N Pl Nom) + &msyn-numphrase-sggen OR (N Gen) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) ;
 	## Jus baldeduvvá giddiduvvá {guokta} stuor ja buorre væráldij gaskan.
 
-COPY:msyn-numphrase-sggen (Sg Gen &SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sggen) OR (Sg Acc &msyn-numphrase-sggen) TARGET (Num &msyn-numphrase-sggen) IF (0 (Sg Nom) OR (Sg Acc)) ;
+COPY:msyn-numphrase-sggen (Sg Gen &SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sggen) OR (Sg Acc &msyn-numphrase-sggen) OR (Pl Com &msyn-numphrase-sggen) TARGET (Num &msyn-numphrase-sggen) IF (0 (Sg Nom) OR (Sg Acc) OR (Pl Com)) ;
 
 ADDRELATION ($2 LEFT) (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen TO (*-1 (Num &msyn-numphrase-sggen));
 
