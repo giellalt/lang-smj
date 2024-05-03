@@ -4146,13 +4146,14 @@ COPY:msyn-numphrase-sgcom (Sg Com &SUGGEST) EXCEPT (Sg Ill &msyn-numphrase-sgcom
 
 
     # Pl Com not same as sg ill (words as oassálasste)
-ADD:msyn-numphrase-plcom (&msyn-numphrase-plcom) TARGET (Pl Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (-1 (Num Sg Ine) OR (Num Arab) OR (Num Pl Nom) OR (Num Sg Acc) OR ("moadda" Indef Acc)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE 0 (Sg Ill));
+ADD:msyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Pl Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (-1 (Num Sg Ine) OR (Num Arab) OR (Num Pl Nom) OR (Num Sg Acc) OR ("moadda" Indef Acc)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE 0 (Sg Ill));
 
-COPY:msyn-numphrase-plcom (Sg Com &SUGGEST) EXCEPT (Pl Com &msyn-numphrase-sgcom) TARGET (&msyn-numphrase-plcom) IF (0 N OR NUMUNIT) ; 
+COPY:msyn-numphrase-sgcom (Sg Com &SUGGEST) EXCEPT (Pl Com &msyn-numphrase-sgcom) TARGET (&msyn-numphrase-sgcom) IF (0 N OR NUMUNIT) ; 
+	## Manáv judosdåktårij guokta gusáj.
 
 
 # Num
-ADD:xmsyn-numphrase-sgcom (COERROR &msyn-numphrase-sgcom) TARGET (Num Sg Gen) OR (Num Pl Nom) OR ("moadda" Indef Acc) OR (Num Arab) IF (*1 (N Pl Ine) OR (N Sg Com) OR NUMUNIT + &msyn-numphrase-sgcom BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) LINK NOT 0 Acc)(NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 &msyn-numeral-parcasecongr)  ;
+ADD:xmsyn-numphrase-sgcom (COERROR &msyn-numphrase-sgcom) TARGET (Num Sg Gen) OR (Num Pl Nom) OR (Num Sg Nom) OR ("moadda" Indef Acc) OR (Num Arab) IF (*1 (N Pl Ine) OR (N Sg Com) OR (N Pl Com &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom BARRIER (*) - (A Attr) LINK NEGATE 0 (N Coll Nom) LINK NOT 0 Acc)(NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 &msyn-numeral-parcasecongr)  ;
 	## Sievedusnummar mij e-faktura-sjiehtadussaj aneduvvá le divutmáksenummar   {gudá} tállajn. --- what still needs to be fixed is that  if there are two alternative fixes, we fix them separately, maybe by using LINK and ADDRELATION
 	## Valla jus ”Sáme Goadev” galggap tsieggigoahtet, ålles dáj {nielje} rijkajn, de diedon diehtet vierttip, makkár dähkága ja ådnårisá dasi buoremusát hiehpi.
     ## Akta nuvtagijn gærggi, ja nuppijn uddni gergav> avtajn nuvtagijn
@@ -4162,8 +4163,16 @@ ADD:xmsyn-numphrase-sgcom (COERROR &msyn-numphrase-sgcom) TARGET (Num Sg Gen) OR
     ## manáv judosdåktårij guokta>guovtijn gusáj
     ## {guokta} gusájn li báktjasa
     
-ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgcom) OR (N &msyn-numphrase-plcom)  OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom));
-    
+ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Num Sg Gen) OR (Num Pl Gen) OR (Num Sg Acc) IF (*1 (N Sg Com) OR (N Pl Ine) OR (N Pl Gen &msyn-numphrase-sgcom) OR (N Pl Com &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom OR NUMUNIT + &msyn-numphrase-sgcom BARRIER NOT-NPMOD)(NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) ;
+	## Åtsålvisáv dahká {guokta} dagojn. 
+	
+
+COPY:msyn-numphrase-sgcom (Sg Com &SUGGEST) EXCEPT (Sg Gen &msyn-numphrase-sgcom) OR (Pl Nom &msyn-numphrase-sgcom)  OR (Pl Gen &msyn-numphrase-sgcom) OR (Sg Acc &msyn-numphrase-sgcom) OR (Pl Ine &msyn-numphrase-sgcom) OR (Sg Ill Attr) TARGET (Num &msyn-numphrase-sgcom) ;
+
+    ## Foanndaj la jahkásattjat lasedibme kapitálas {guovte} miljåvnåjn gålmmå jahkáj.
+    ## Sámedikken li aktisasjbarggosjiehtadusá {lågij} suohkanij ja nieljij fylkkasuohkanij.
+
+        
 # coordination
 ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom COERROR) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) IF (*1 PRE-NP-HEAD BARRIER NOT-ADV LINK 1 CC LINK 1 PRE-NP-HEAD LINK *1 (N Pl Ine) + &msyn-numphrase-sgcom OR (N Sg Com) + &msyn-numphrase-sgcom BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) ;
 	## Tjoahkkáj li dájn {niellja} buorre ja stuor sajijn, Mortensnesajn oajvvebájkken, sierralágásj buojkulvisá årromij, bivddemij ja åsskuj Arktalasj guovlojn 12000 jagij tjadá.
@@ -4172,15 +4181,10 @@ COPY:msyn-numphrase-sgcom (Sg Com &SUGGEST) EXCEPT (Sg Gen &msyn-numphrase-sgcom
 COPY:msyn-numphrase-sgcom (Sg Com &SUGGEST) EXCEPT (Sg Acc &msyn-numphrase-sgcom) OR (Sg Nom &msyn-numphrase-sgcom) TARGET ("moadda" Indef &msyn-numphrase-sgcom) ;
 
     
-ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Num Sg Gen) OR (Num Pl Gen) OR (Num Sg Acc) IF (*1 (N Sg Com) OR (N Pl Ine) OR (N Pl Gen &msyn-numphrase-sgcom) OR (N Pl Com &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom OR NUMUNIT + &msyn-numphrase-sgcom BARRIER NOT-NPMOD)(NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) ;
-	## Åtsålvisáv dahká {guokta} dagojn. 
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgcom) OR (N &msyn-numphrase-plcom)  OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom));
 
-COPY:msyn-numphrase-sgcom (Sg Com &SUGGEST) EXCEPT (Sg Gen &msyn-numphrase-sgcom) OR (Pl Nom &msyn-numphrase-sgcom)  OR (Pl Gen &msyn-numphrase-sgcom) OR (Sg Acc &msyn-numphrase-sgcom) OR (Pl Ine &msyn-numphrase-sgcom) OR (Sg Ill Attr) TARGET (Num &msyn-numphrase-sgcom) ;
 
-    ## Foanndaj la jahkásattjat lasedibme kapitálas {guovte} miljåvnåjn gålmmå jahkáj.
-    ## Sámedikken li aktisasjbarggosjiehtadusá {lågij} suohkanij ja nieljij fylkkasuohkanij.
-
-ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgcom) OR (N &msyn-numphrase-plcom)  OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom) LINK *-1 (N &msyn-numphrase-sgcom));
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgcom) OR (N &msyn-numphrase-plcom)  OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom) LINK *-1 (Num &msyn-numphrase-sgcom));
 
 # Dem
 
