@@ -1962,8 +1962,12 @@ ADD:xmsyn-sme_interference_neg (COERROR &msyn-sme_interference_neg) TARGET PrfPr
 ADD:xmsyn-sme_interference_neg (COERROR &msyn-sme_interference_neg) TARGET PrfPrc IF (*-1 CC OR COMMA LINK -1 (&msyn-sme_interference_neg)) ;
 
 ADDRELATION ($2) (Neg &msyn-sme_interference_neg) TO (*1 (PrfPrc &msyn-sme_interference_neg));
-#ADDRELATION (RIGHT) (PrfPrc &msyn-sme_interference_neg) TO (*-1 (Neg &msyn-sme_interference_neg));
 ADDRELATION (RIGHT) (Neg &msyn-sme_interference_neg) TO (*1 (PrfPrc &msyn-sme_interference_neg));
+
+	# If only PrfPrc gets the error tag and Neg is correct
+	
+ADDRELATION (LEFT) (PrfPrc &msyn-sme_interference_neg) TO (*-1 Neg);
+	## 
 
 
 # ij gullum jali {vuojnnum}.
