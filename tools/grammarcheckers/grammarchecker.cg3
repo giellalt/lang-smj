@@ -4162,6 +4162,8 @@ ADD:xmsyn-numphrase-sgcom (COERROR &msyn-numphrase-sgcom) TARGET (Num Sg Gen) OR
     ## manáv judosdåktårij guokta>guovtijn gusáj
     ## {guokta} gusájn li báktjasa
     
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgcom) OR (N &msyn-numphrase-plcom)  OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom));
+    
 # coordination
 ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom COERROR) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) IF (*1 PRE-NP-HEAD BARRIER NOT-ADV LINK 1 CC LINK 1 PRE-NP-HEAD LINK *1 (N Pl Ine) + &msyn-numphrase-sgcom OR (N Sg Com) + &msyn-numphrase-sgcom BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) ;
 	## Tjoahkkáj li dájn {niellja} buorre ja stuor sajijn, Mortensnesajn oajvvebájkken, sierralágásj buojkulvisá årromij, bivddemij ja åsskuj Arktalasj guovlojn 12000 jagij tjadá.
@@ -4178,7 +4180,7 @@ COPY:msyn-numphrase-sgcom (Sg Com &SUGGEST) EXCEPT (Sg Gen &msyn-numphrase-sgcom
     ## Foanndaj la jahkásattjat lasedibme kapitálas {guovte} miljåvnåjn gålmmå jahkáj.
     ## Sámedikken li aktisasjbarggosjiehtadusá {lågij} suohkanij ja nieljij fylkkasuohkanij.
 
-ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgcom) OR (N msyn-numphrase-plcom)  OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom) LINK *-1 (N &msyn-numphrase-sgcom));
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgcom) OR (N &msyn-numphrase-plcom)  OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom) LINK *-1 (N &msyn-numphrase-sgcom));
 
 # Dem
 
