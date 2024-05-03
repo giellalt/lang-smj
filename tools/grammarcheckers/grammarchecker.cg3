@@ -3947,7 +3947,7 @@ COPY:msyn-numphrase-sgill (Sg &SUGGEST) EXCEPT (Pl &msyn-numphrase-sgill) BEFORE
 
 # Num
 	
-ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Num Sg Nom) OR (Num Sg Acc) OR (Num Sg Gen) IF (*1 (N Pl) + &msyn-numphrase-sgill OR (N Sg Ill) OR (A Sg Ill) BARRIER (*) - (A Attr) - (Dem Attr) - CC LINK NOT 0 (N Pl Nom) OR (N Coll Nom) OR Acc LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc )(NEGATE *-1 BE + Pl3 BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)(NEGATE 0 Arab OR Sem/Date OR (N Coll Nom) OR Sem/Year OR Sem/Time-clock) (NEGATE 0 (Num Sg Gen) LINK *1 Ill BARRIER NOT-NPMOD) (NEGATE 0 (Num Sg Gen) LINK *1 Gen BARRIER NOT-NPMOD);
+ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Num Sg Nom) OR (Num Sg Acc) OR (Num Sg Gen) IF (*1 (N Pl) + &msyn-numphrase-sgill OR (N Sg Ill) OR (A Sg Ill) OR NUMUNIT + &msyn-numphrase-sgill BARRIER (*) - (A Attr) - (Dem Attr) - CC LINK NOT 0 (N Pl Nom) OR (N Coll Nom) OR Acc LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc ) (NEGATE *-1 BE + Pl3 BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)(NEGATE 0 Arab OR Sem/Date OR (N Coll Nom) OR Sem/Year OR Sem/Time-clock) (NEGATE 0 (Num Sg Gen) LINK *1 Ill BARRIER NOT-NPMOD) (NEGATE 0 (Num Sg Gen) LINK *1 Gen BARRIER NOT-NPMOD);
 
 ADD:num-phrase  (COERROR)  TARGET (Num &msyn-numphrase-sgill) IF (*1 (&msyn-numphrase-sgill) BARRIER (*) - (A Attr));
 	
