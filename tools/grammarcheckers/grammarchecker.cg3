@@ -1938,7 +1938,7 @@ LIST NEG-V-sma = "ij" ;
 LIST NEG-V-smn = "ij" ;
 SET NEG-V = NEG-V-smj OR NEG-V-sme OR NEG-V-sma OR NEG-V-smn ;
 
-ADD:xmsyn-sme_interference_neg (&msyn-sme_interference_neg) TARGET NEG-V + (Neg Ind Prs) IF (*1 PrfPrc BARRIER NOT-ADV-PCLE - ("mige") - Acc) ;
+ADD:xmsyn-sme_interference_neg (&msyn-sme_interference_neg) TARGET NEG-V + (Neg Ind Prs) IF (*1 PrfPrc BARRIER NOT-ADV-PCLE - ("mige") - Acc - (N Nom) - (Dem Nom)) ;
     ## {Ij} riek sjaddam nav ahte bloggiv åvdep vahkko.
     ## ja iv vissjam basádit  åvddål gå lidjiv biesskedam
     ## Árjakluoven lij boadnjásj mij ittjij sidá hiejttet noajdástallamis ja ij miededam sån lij mejdek boasstot dahkam ,
@@ -1956,8 +1956,13 @@ COPY:msyn-sme_interference_neg (Prt &SUGGEST) EXCEPT (Prs &msyn-sme_interference
     # ADDRELATION ($2) Ess TO (*-1 ("dego" &syn-not-dego) BARRIER Ess);
     
     
-ADD:xmsyn-sme_interference_neg (&msyn-sme_interference_neg) TARGET PrfPrc IF (*-1 NEG-V + (Neg Ind) BARRIER NOT-ADV-PCLE - ("mige") - Acc) ;
+ADD:xmsyn-sme_interference_neg (&msyn-sme_interference_neg) TARGET PrfPrc IF (*-1 NEG-V + (Neg Ind) BARRIER NOT-ADV-PCLE - ("mige") - Acc) (NEGATE 1 ConNeg LINK NOT 0 ("hevvat")) ;
     ## valla danna iv {dádjadum} majdik ja ittjiv {máhttám} gähttjalimev dahkat
+    #$ Bátsij akta gårot majt ettjin {vuobdedum} oattjo
+
+ADD:xmsyn-sme_interference_neg (&msyn-sme_interference_neg) TARGET PrfPrc IF (*-1 NEG-V + (Neg Ind Sg3) LINK *1 (N Sg Nom) OR (Dem Sg Nom)) (NEGATE 1 ConNeg) ;
+ADD:xmsyn-sme_interference_neg (&msyn-sme_interference_neg) TARGET PrfPrc IF (*-2 NEG-V + (Neg Ind Pl3) BARRIER NOT-ADV-PCLE LINK *1 (N Pl Nom) OR (Dem Pl Nom) BARRIER NOT-ADV-PCLE) (NEGATE 1 ConNeg) ;
+
 
 # coordination
 
@@ -1976,12 +1981,8 @@ ADDRELATION ($2 LEFT) (PrfPrc &msyn-sme_interference_neg) TO (*-1 Neg);
 # ij gullum, {vuojnnum} jalik {happsum}. 
 
 
-
-COPY:msyn-sme_interference_neg (Der/PassL V IV Ind ConNeg &SUGGEST) EXCEPT (Der/PassL V IV PrfPrc &msyn-sme_interference_neg) TARGET (PrfPrc Der/PassL &msyn-sme_interference_neg) ;
-COPY:msyn-sme_interference_neg (Der/PassS V IV Ind ConNeg &SUGGEST) EXCEPT (Der/PassS V IV PrfPrc &msyn-sme_interference_neg) TARGET (PrfPrc Der/PassS &msyn-sme_interference_neg) ;
-
-COPY:msyn-sme_interference_neg (Ind ConNeg &SUGGEST) EXCEPT (PrfPrc &msyn-sme_interference_neg) TARGET (PrfPrc &msyn-sme_interference_neg)(NOT 0 Der/Pass) ;
-
+COPY:msyn-sme_interference_neg (Ind ConNeg &SUGGEST) EXCEPT (PrfPrc Sh &msyn-sme_interference_neg) OR (PrfPrc &msyn-sme_interference_neg) TARGET (PrfPrc &msyn-sme_interference_neg) ;
+#COPY:msyn-sme_interference_neg (Ind ConNeg &SUGGEST) EXCEPT (PrfPrc &msyn-sme_interference_neg) TARGET (PrfPrc &msyn-sme_interference_neg)(NOT 0 Der/Pass) ;
 
 
     # moadda bále > moaddi
@@ -2957,7 +2958,8 @@ ADD:xsyn-nom_nom-gen_nom (&syn-nom_nom-gen_nom) TARGET (Gram/3syll Actio Nom) OR
 (NEGATE 1 (N Sg Nom) LINK 1 ("AS")) 
 (NEGATE 1 <spelled>)  
 (NEGATE 1 (Der/NomAct Nom) LINK 1 ("liehket" Ind)) 
-(NEGATE *-1 ("liehket" Ind) BARRIER S-BOUNDARY LINK 1 ("gus")) ;
+(NEGATE *-1 ("liehket" Ind) BARRIER S-BOUNDARY LINK 1 ("gus"))
+(NEGATE -1 ("ij" Ind) LINK 1 Nom LINK 1 PrfPrc) ;
 
 
 COPY:syn-nom_nom-gen_nom (Gen &SUGGEST) EXCEPT (Nom &syn-nom_nom-gen_nom) TARGET (&syn-nom_nom-gen_nom) ;   
@@ -3077,7 +3079,7 @@ ADD:xsyn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + $$V-PERS IF (*1 (Pr
     ## ij váiban áddjá --- PrfPrc
    
 
-ADD:xsyn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + Sg3 IF (*1 (N Sg Nom) BARRIER NOT-NPMOD OR CC) (*1 ConNeg BARRIER Rel OR Neg OR CS) (*-1 CS OR Rel OR MO OR ("váj") OR BOS BARRIER S-BOUNDARY) (NEGATE *1 ("?") LINK 1 EOS) (NEGATE 1 PrfPrc ) ;
+ADD:xsyn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + Sg3 IF (*1 (N Sg Nom) BARRIER NOT-NPMOD OR CC) (*1 ConNeg BARRIER Rel OR Neg OR CS) (*-1 CS OR Rel OR MO OR ("váj") OR BOS BARRIER S-BOUNDARY) (NEGATE *1 ("?") LINK 1 EOS) (NEGATE 1 PrfPrc ) (NEGATE -1 ("javllat" Ind)) ;
     ## ij áddjá boade
 	#$ Oslon le suohkanstivrraválgga ja stádaguovlloválgga, valla {ij} fylkadiggeválgga.
     #$ Báhttja buolvav gihpo vuosstij diebttjij ja gákkaj majt nagáj, valla gihppo {ittjij} doaddjum. 
