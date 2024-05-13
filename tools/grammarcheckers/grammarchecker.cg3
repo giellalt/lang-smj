@@ -2814,7 +2814,7 @@ SET PLURAL-QUANTIFIERS-sma = ("måedtie" Nom) OR ("måedtie" Indef Sg Acc) OR 
 SET PLURAL-QUANTIFIERS-smn = ("moadda" Nom) OR ("moadda" Indef Sg Acc) OR ("moattes" Nom) OR (Num Sg Nom) - ("akta") ;
 SET PLURAL-QUANTIFIERS = PLURAL-QUANTIFIERS-smj OR PLURAL-QUANTIFIERS-sme OR PLURAL-QUANTIFIERS-sma OR PLURAL-QUANTIFIERS-smn ;
 
-ADD:xreal-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-UNEVEN-VERBS OR BE IF (0 (Prs Pl3)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) - PLURAL-QUANTIFIERS BARRIER NOT-ADV-PCLE LINK NOT 0 (Pl Nom) LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg) OR (Nom Pl))  (NEGATE *1 (Pron Nom Pl3) OR (N Nom Pl) BARRIER S-BOUNDARY)(NEGATE 0 (Prs Sg3) OR SentInit OR &DELETE)(NEGATE -1 PrfPrc LINK *-1 (N Pl Nom) OR (Pers Pl3 Nom) BARRIER NOT-ADV-PCLE) ;
+ADD:xreal-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-UNEVEN-VERBS OR BE IF (0 (Prs Pl3)) (*-1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Nom Sg) - PLURAL-QUANTIFIERS BARRIER NOT-ADV-PCLE LINK NOT 0 (Pl Nom) LINK NEGATE *-1 CC BARRIER NOT-NPMOD LINK -1 (Nom Sg) OR (Nom Pl))  (NEGATE *1 (Pron Nom Pl3) OR (N Nom Pl) BARRIER S-BOUNDARY)(NEGATE 0 (Prs Sg3) OR SentInit OR &DELETE)(NEGATE -1 PrfPrc LINK *-1 (N Pl Nom) OR (Pers Pl3 Nom) BARRIER NOT-ADV-PCLE) (NEGATE -1 (Indef Sg Nom));
     ## Suv mielas sån li ilá materalistisk.
     ## Mij juo diehtep Hamsun nasistajt bælosti nuppát værálda doaron.
     ## Jus sámegiella li ienep vuojnnuj boahtet duola dagu mediagåvån, de jáhkáv sámegiela stáhtus li dalága lassánit. #NEW Doajmmá, valla lej dát sluogas vuohke?
@@ -3783,7 +3783,7 @@ LIST NOM-SG-PL-PRON = "dat" "dát" "duot" "dåt" "die-dat" "do-dot" "dá-dát" "
 ADD:xsyn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (V Ind Prs) - ConNeg OR (V Ind Prt) - ConNeg OR (V Neg Ind) IF (0 COPULAS)(*1 (Pron Sem/Hum Pers Pl3 Nom) OR (N Pl Nom) - (Prop Sem/Org) - (Prop Sem/Obj) OR (A Pl Nom @<SPRED) BARRIER NOT-NPMODADV  OR COMMA OR (Adv Subqst) OR MO LINK NOT 0 @COMP-CS< OR (V SUGGEST) OR Inf OR <spelled> LINK NEGATE 0 Attr LINK 1 (N Sg Nom))(*-1 (N Ess) OR (N Pl Nom) OR (Dem Pl Nom) OR NOM-SG-PL-PRON + (Sg Nom) BARRIER NOT-ADV-PCLE - @ADVL>)
 (NEGATE 0 Sg3 LINK -1 (Pron Nom Sg) OR (N Nom Sg) OR (Pron Nom Sg3))
 (NEGATE 0 NUMCONGR-EXCEPT) # erret
-(NEGATE 0 (Prt Sg2) OR Pl3 OR (Prs Pl1) OR &real OR BE + Inf OR BE + (Prs Sg2) OR (N Sg) - Px)(NEGATE 0 Du3 LINK *1 Sem/Human + Nom LINK *1 CC LINK *1 Sem/Human + Nom)(NEGATE 0 Du3 LINK *1 Sem/Human + (Pl Nom))(NEGATE 0 COPULAS + Du1 OR COPULAS + Du2 OR COPULAS + Pl1 OR COPULAS + Pl2 LINK *1 Sem/Human + (Pl Nom))(NEGATE 0 <TH-ahte> LINK 1 (N Pl Nom))(NEGATE -1 (N Sg Nom) OR (N <NomGenSg> Sg Acc) OR (N <NomGenSg> Sg Gen));
+(NEGATE 0 (Prt Sg2) OR Pl3 OR (Prs Pl1) OR &real OR BE + Inf OR BE + (Prs Sg2) OR (N Sg) - Px)(NEGATE 0 Du3 LINK *1 Sem/Human + Nom LINK *1 CC LINK *1 Sem/Human + Nom)(NEGATE 0 Du3 LINK *1 Sem/Human + (Pl Nom))(NEGATE 0 COPULAS + Du1 OR COPULAS + Du2 OR COPULAS + Pl1 OR COPULAS + Pl2 LINK *1 Sem/Human + (Pl Nom))(NEGATE 0 <TH-ahte> LINK 1 (N Pl Nom))(NEGATE -1 (N Sg Nom) OR (N <NomGenSg> Sg Acc) OR (N <NomGenSg> Sg Gen)) ;
 	#$ Balto muitala čuovžžaid nuohttun {lei} dološ olbmot árbevirolaš birgenvuohki.
 	## Dieđusge lea hui šállošahtti go dát áššit muitaluvvojit dávjá dainnalágiin, ahte dát {lea} riiddut sápmelaččaid ja earáid gaskkas, vaikke ii heađisge leat dainnalágiin, go luovosbeanaváttisvuohta guoská buohkaide.
 	#$ Ja de doivo dat {orru} sámit, ahte dat suoládedje sin bohccuid — ja gal dat soames reanggat suoládedjege, muhto ii leat diehtu leago jur nu stuoris go lea guottehuvvon. #Haven't figured out how to fix it yet
@@ -4089,7 +4089,7 @@ COPY:msyn-numphrase-sgine (Sg Ine SUGGEST) EXCEPT (Pl Ine) TARGET (Ine &msyn-num
 
 # Num
 
-ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) OR (Num Sg Gen) OR (Num Sg Nom) OR ("moadda" Indef Acc) IF (*1 (N Sg Ine) OR NUMUNIT + &msyn-numphrase-sgine BARRIER NOT-NPMOD)(NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 NUMUNIT LINK 1 ("kråvnnå"))  ;
+ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) OR (Num Sg Gen) OR (Num Sg Nom) OR ("moadda" Indef Acc) IF (*1 (N Sg Ine) OR NUMUNIT + &msyn-numphrase-sgine BARRIER NOT-NPMOD OR Num)(NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 NUMUNIT LINK 1 ("kråvnnå"))  ;
 	# those two rules belong together: xmsyn-numeral-casecongr-com and xmsyn-numeral-casecongr-ine
 	## Mij lip NSRan  guhkev juo berustam, ja ájn berustip, nannit aktijvuodav sámij gaskan divna niellja rijkajn duola degu konkrehtalasj aktisasjbargo baktu.
     ## makkár rahtjamusá li nielje sámegielajn
