@@ -1628,6 +1628,7 @@ LIST &msyn-ill-com-oahpastuvvat = &msyn-ill-com-oahpastuvvat ;
 LIST &msyn-l-not-la = &msyn-l-not-la ;
 LIST &msyn-liehket-congr-condsg2-condpl3 = &msyn-liehket-congr-condsg2-condpl3 ; 
 LIST &msyn-mij-gut = &msyn-mij-gut ;
+LIST &msyn-gut-mij = &msyn-gut-mij ;
 LIST &msyn-nom-gen-Po = &msyn-nom-gen-Po ;
 LIST &msyn-numphrase-sgacc = &msyn-numphrase-sgacc ;
 LIST &msyn-numphrase-sgela = &msyn-numphrase-sgela ;
@@ -2622,8 +2623,8 @@ ADD:xmsyn-mij-gut (&msyn-mij-gut) TARGET WHAT IF (*-1 (N Coll) OR Der/NomAg OR G
 (NEGATE -1 ("/") OR CC LINK -1 (Pron Rel))
 (NEGATE -1 ("iesj" Sg Nom)) (NEGATE 1 <TH-Nom-Any> + Sg3 OR <TH-Nom-Any> + Pl3)  
 (NEGATE -1 Nom LINK *-1 <RE-Ill-Ani><TH-Acc-*Ani> BARRIER NOT-ADV-PCLE - Ine - Ela - Attr - Dem)
-(NEGATE 1 ("liehket" Sg3) LINK *1 (N Sg Nom) BARRIER NOT-NPMOD) ; #OR (Pron Dem)
-#- ("nubbe") - ("moattes") - ("juoga") - ("gájkka" Sg) - ("gájkka" Attr)
+(NEGATE 1 ("liehket" Sg3) LINK *1 (N Sg Nom) BARRIER NOT-NPMOD) 
+(NEGATE 0 &msyn-gut-mij) ; 
 
     ## Ja gåktu de manáj dáj guoktásijn {ma} galggin dunnuv viedtjat? 
     #$ Gárggájj tjálli oahppe {mij} la sæmmilágásj dajn guovte kultuvrajn. # TV human subject, non-human object <RE-Ill-Ani><TH-Acc-*Ani>
@@ -2680,7 +2681,7 @@ COPY:msyn-mij-gut ("guhti" SUGGEST) EXCEPT ("mij" &msyn-mij-gut) TARGET (&msyn-m
     # ----------------------
     
 
-ADD:xmsyn-gut-mij (&msyn-gut-mij) TARGET WHO IF (-1 N LINK NOT 0 Sem/AnimateNotOrg LINK NEGATE -1 Sem/Hum + Gen) (NEGATE -1 ("avtak") OR ONE + Foc/Pos-k OR (Pron Pers) OR (Pron Indef) + Sem/Hum OR Coll) (NEGATE *-1 (N Nom) + Sem/Hum OR (Dem Nom) BARRIER (*) - (N Ine) - (Pron Ine) LINK *-1 BE + (Ind Sg3) OR BE + (Ind Sg3) BARRIER NOT-NPMOD LINK -1 WHO) (NEGATE -1 (N Ine) LINK -1 (N Ill) OR (Pron Ill)) ;  
+ADD:xmsyn-gut-mij (&msyn-gut-mij) TARGET WHO IF (-1 N LINK NOT 0 Sem/AnimateNotOrg LINK NEGATE -1 Sem/Hum + Gen) (NEGATE -1 ("avtak") OR ONE + Foc/Pos-k OR (Pron Pers) OR (Pron Indef) + Sem/Hum OR Coll) (NEGATE *-1 (N Nom) + Sem/Hum OR (Dem Nom) BARRIER (*) - (N Ine) - (Pron Ine) LINK *-1 BE + (Ind Sg3) OR BE + (Ind Sg3) BARRIER NOT-NPMOD LINK -1 WHO) (NEGATE -1 (N Ine) LINK -1 (N Ill) OR (Pron Ill)) (NEGATE 0 &msyn-mij-gut) ;  
 
     #$ Gut la dån?
     #$ Ulmusj lagábut oahpástuvvá ja diehtá gut juohkkahasj la, javllá sån."
