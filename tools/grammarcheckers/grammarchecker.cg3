@@ -1213,6 +1213,8 @@ LIST BECOME-smj = "sjaddat" ;
 LIST BECOME-smn = "šoddâđ" ;
 SET BECOME = BECOME-sma OR BECOME-sme OR BECOME-smj OR BECOME-smn ;
 
+LIST REK-ILL = "boadádallat" "báddnut" "bårrut" "dabrijdit" "dihpput" "dæhppot" "gierrot" "guosskat" "lijkkut" "sjiehttat" "snårrut" "suhttat" "suogŋat" "tjuokkudallat" "tjágŋat" "tjárggat" "årrut" "åskeldit" ;
+
 # Verbs and their complements
 # - - - - - - - - - - - - - -
 
@@ -1817,8 +1819,8 @@ ADD:xmsyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (*-1 (N Pl) O
 (NEGATE -1 ("mige" Pron Indef Pl Acc)) 
 (NEGATE 1 ("liehket" Sg3) LINK *1 ("sjaddat") BARRIER NOT-ADV-PCLE) 
 (NEGATE *1 (V Pl1) BARRIER NOT-NPMOD - Acc) 
-(NEGATE 0 &msyn-congr-ma-mij) ;
-
+(NEGATE 0 &msyn-congr-ma-mij) 
+(NEGATE -1 N LINK NOT 0 Acc LINK 1 (Rel Nom Sg) LINK 1 (TV Ind Sg3) OR REK-ILL + (Ind Sg3) LINK *1 (Sg Acc) BARRIER NOT-NPMOD)
     ## Valla mij gut lijma Vuonas vuolggám ejma davdiede.
     #$ Gárggájj tjálli oahppe mij la sæmmilágásj dajn guovte kultuvrajn.
     ## Da gut ásadin æjvvalimev, lidjin dudálattja.
@@ -1878,7 +1880,7 @@ ADD:xmsyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (1 (Ind V Pl1
     #$ Aktan oajvvadusájn sihtap oanegis tevstav {mij} oajvvadusá hábbmimav tjielggi.
     #$ Gárdij hábme, {mij} li soajttá anedum guhkep ájggegávdajn dålen, vuosedi åvddålijguovlluj ja geldulasj aktijvuodajda gåddebivddema ja ællosujto gaskan.
 
-ADD:xmsyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (-1 (N Pl Ela) OR (N Pl Ill)) (NEGATE -2 Inf) (NEGATE -1 (N Pl Ela) LINK -1 ONE)(NEGATE *1 <TH-Nom-Any> + Sg3 BARRIER NOT-ADV-PCLE LINK NOT 1 (Pron Sg3) OR (N Nom Sg)) (NEGATE -1 Ill LINK -1 (N Nom)) ;
+ADD:xmsyn-congr-mij-ma (&msyn-congr-mij-ma) TARGET (Rel Nom Sg) IF (-1 (N Pl Ela) OR (N Pl Ill)) (NEGATE -2 Inf) (NEGATE -1 (N Pl Ela) LINK -1 ONE)(NEGATE *1 <TH-Nom-Any> + Sg3 BARRIER NOT-ADV-PCLE LINK NOT 1 (Pron Sg3) OR (N Nom Sg)) (NEGATE -1 Ill LINK -1 (N Nom)) (NEGATE -1 N LINK NOT 0 Acc LINK 1 (Rel Nom Sg) LINK 1 (TV Ind Sg3) OR REK-ILL + (Ind Sg3) LINK *1 (Sg Acc) BARRIER NOT-NPMOD) ;
 
     ## Tjielggidus vuoset oajvvehásstalusájda {mij} gullu giellaj.
     ## Automatihkalattjat ráfájduhtedum kulturmujto li automatihkalattjat suodjaluvvam mij sihtá javllat suodjaluvvam divna dåjmajs {mij} bæjsstá jali vahágahttá, jådedime, ietjájduhttema, gåbttjåma jali hiebalgahtes biledime, dáj gaskan aj dåjmajs ma ietjájduhtti gåktu kulturmujto vuojnnu.
@@ -2330,7 +2332,10 @@ COPY:lex-oahpasmuvvat-oahpastuvvat ("oahpástuvvat" SUGGEST) EXCEPT ("oahpásmuv
 
     # Case errors in valency settings
     # -------------------------------
-
+    # -------------------------------
+    # -------------------------------
+    
+    
     # com to ill when oahpásmuvvat 
     # ------------------------------
 ADD:msyn-com-ill-oahpasmuvvat (&msyn-com-ill-oahpasmuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*0 ("oahpásmuvvat") BARRIER NOT-NPMODADV LINK NOT 0 ("oahpástuvvat" SUGGEST) LINK NEGATE 1 (Pron Dem) LINK 1 (N Com)) (NEGATE *0 &lex-oahpasmuvvat-oahpastuvvat)(NEGATE 0 (Sg Ill)) (NEGATE 0 (Pl Gen) LINK 1 Ill) (NEGATE 0 Num LINK *1 (N Com) BARRIER NOT-NPMOD);
@@ -2491,6 +2496,15 @@ ADD:msyn-plcom-sgcom-oahpastuvvat2 (&msyn-plcom-sgcom-oahpastuvvat2) TARGET (Pro
 COPY:msyn-plcom-sgcom-oahpastuvvat2 (Com SUGGEST) EXCEPT (Ill Attr &msyn-plcom-sgcom-oahpastuvvat2) TARGET (&msyn-plcom-sgcom-oahpastuvvat2) ;
     ## Maŋenagi gå oahppe {dán} ulmutjij oahpásmuvvi.
    
+   
+    # Acc to ill for reksjåvnnåverba
+    # ------------------------------   
+   
+ADD:xmsyn-reksjon-acc-ill (&msyn-reksjon-acc-ill) TARGET (N Acc) OR (Dem Acc) OR (Pers Acc) OR (A Acc) IF (*0 REK-ILL + Ind BARRIER NOT-NPMODADV OR S-BOUNDARY OR COMMA) (NEGATE 0* Inf BARRIER NOT-NPMODADV OR S-BOUNDARY OR COMMA) ;
+
+COPY:msyn-reksjon-acc-ill (Ill SUGGEST) EXCEPT (Acc &msyn-reksjon-acc-ill) TARGET (&msyn-reksjon-acc-ill) ;
+   
+    ## Dá vidjura biedji sierra vásstádusáv guovddooajválattjajda mij guosská sámepolitihka hábmedimev.   
 
 
     # Pred/Attr errors
