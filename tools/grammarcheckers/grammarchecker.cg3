@@ -3889,7 +3889,8 @@ ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Pl Gen) IF ((0 N) OR (
 (NEGATE -1 NUMUNIT LINK -1 PLURAL-QUANTIFIERS OR Num)
 (NEGATE 0 (Ill) OR (Ela)) 
 (NEGATE -1 &msyn-numphrase-sggen OR (N Sg Gen)) 
-(NEGATE 1 (V Ind)) ;
+(NEGATE 1 (V Ind)) 
+(NEGATE *1 PrfPrc LINK *-1 BE ) ;
 
 COPY:msyn-numphrase-sggen (Sg Gen SUGGEST) EXCEPT (Pl Gen &msyn-numphrase-sggen) TARGET (N &msyn-numphrase-sggen) ;
 	## Guokta {gusáj}  fiekse 
@@ -3897,7 +3898,7 @@ COPY:msyn-numphrase-sggen (Sg Gen SUGGEST) EXCEPT (Pl Gen &msyn-numphrase-sggen)
 
 # Num
 
-ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num Sg Acc) OR (Num Pl Com) OR (Num Pl Gen) OR ("moadda" Indef Acc) IF (*1 (N Pl Nom) + &msyn-numphrase-sggen OR (N Pl Gen) + &msyn-numphrase-sggen OR (N Sg Gen) OR (N Pl Nom) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Acc LINK 1 N OR Po LINK NOT 0 Sem/Plc - Ess OR (Prop Ine)  LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc) (NEGATE *-1 BE + Pl3 OR BE + (Prs Sg3) BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)(NEGATE 0 Acc LINK *-1 TV BARRIER NOT-ADV-PCLE - (Pron Attr)) (NEGATE 0 Arab OR Sem/Date OR (N Coll Nom) OR Sem/Year) (NEGATE 1 Sem/Time LINK 1 N) ;
+ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num Sg Acc) OR (Num Pl Com) OR (Num Pl Gen) OR ("moadda" Indef Acc) IF (*1 (N Pl Nom) + &msyn-numphrase-sggen OR (N Pl Gen) + &msyn-numphrase-sggen OR (N Sg Gen) OR (N Pl Nom) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Acc LINK 1 N OR Po LINK NOT 0 Sem/Plc - Ess OR (Prop Ine)  LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc) (NEGATE *-1 BE + Pl3 OR BE + (Prs Sg3) BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))(NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)(NEGATE 0 Acc LINK *-1 TV BARRIER NOT-ADV-PCLE - (Pron Attr)) (NEGATE 0 Arab OR Sem/Date OR (N Coll Nom) OR Sem/Year) (NEGATE 1 Sem/Time LINK 1 N);
 
 	## {Guokta} gusá fiekse > Guovte gusá fiekse # only numeral error
     ##  Dá vidjura muhtem mudduj máhtti tjielggit ieridisájt {guokta} ájnas dáhtágáldo gaskan.
@@ -3973,6 +3974,11 @@ ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF ((0 N) OR (
 COPY:msyn-numphrase-sgacc (Sg Gen SUGGEST) EXCEPT (Pl Acc &msyn-numphrase-sgacc) TARGET (&msyn-numphrase-sgacc) IF (0 N OR NUMUNIT) ;
 
     ## vuojnáv guokta gusájt > vuojnáv guokta gusá insead of vuojnáv guokta guosáv OK
+
+# akta
+ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (N Sg Gen) IF (*-1 ONE + (Num Sg Acc) BARRIER NOT-NPMOD );
+
+COPY:msyn-numphrase-sgacc (Sg Acc SUGGEST) EXCEPT (Sg Gen &msyn-numphrase-sgacc) TARGET (&msyn-numphrase-sgacc) IF (0 N OR NUMUNIT LINK *-1 ONE BARRIER NOT-NPMOD) ;
 
 # Num
 
@@ -4175,7 +4181,7 @@ COPY:msyn-numphrase-sgela (Sg Par SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sgela)
 
 # Dem
 
-ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) LINK *1 (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela OR (N Sg Ela) BARRIER NOT-NPMOD - CC) (NEGATE 1 (Pron Dem)) ;
+ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Pron Dem Pl) - (Sg Nom) IF (1 (Num Sg) LINK *1 (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela OR (N Sg Ela) BARRIER NOT-NPMOD - CC) (NEGATE 1 (Pron Dem)) ;
 
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela TO (*-1 (Dem &msyn-numphrase-sgela));
 
