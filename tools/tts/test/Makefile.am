@@ -34,3 +34,5 @@ XFAIL_TESTS=test_pure_date_time.normaliser.txt \
 ####### Other targets: ###########
 clean-local:
 	-rm -f *.out *.out.tmp *.expect
+
+include $(top_srcdir)/../giella-core/am-shared/devtest-include.am

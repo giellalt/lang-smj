@@ -87,3 +87,4 @@ remove-æae-flags-after-æae.inverted.hfst: remove-æae-flags-after-æae.hfst
 include $(top_srcdir)/../giella-core/am-shared/src-filters-dir-include.am
 
 # vim: set ft=automake:
+include $(top_srcdir)/../giella-core/am-shared/devtest-include.am

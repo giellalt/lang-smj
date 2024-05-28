@@ -649,3 +649,4 @@ EXTRA_DIST=scripts/smi-smj-conversion.pl
 ##################################################################
 
 include $(top_srcdir)/../giella-core/am-shared/src-fst-dir-include.am
+include $(top_srcdir)/../giella-core/am-shared/devtest-include.am

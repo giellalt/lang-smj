@@ -170,7 +170,4 @@ endif # WANT_GRAMCHECK
 
 #### Do NOT edit below here: ####
 include $(top_srcdir)/../giella-core/am-shared/tools-grammarcheckers-tests-dir-include.am
-
-
-
-# Here are the candidate files to be considered.
+include $(top_srcdir)/../giella-core/am-shared/devtest-include.am
