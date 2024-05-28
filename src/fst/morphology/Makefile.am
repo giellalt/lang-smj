@@ -113,7 +113,7 @@ GT_LOCAL_SRCS=
 GT_LOCAL_XFSCRIPT_SRCS=
 
 # Define here any additional sources just included in the distro:
-GT_DISTRO_SRCS=$(top_srcdir)/src/scripts/smi-$(GTLANG)-conversion.pl \
+GT_DISTRO_SRCS=$(top_srcdir)/src/fst/scripts/smi-$(GTLANG)-conversion.pl \
 				$(srcdir)/stems/$(GTLANG)-propernouns.lexc   \
 				$(srcdir)/stems/$(GTLANG)-abbreviations.lexc \
 				$(srcdir)/stems/$(GTLANG)-acronyms.lexc
