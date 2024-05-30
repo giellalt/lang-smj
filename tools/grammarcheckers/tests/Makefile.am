@@ -41,7 +41,6 @@ TESTS=\
 	DEV-syn-number_congruence-subj-verb-PASS.yaml \
 	DEV-syn-pred-attr-FAIL.yaml                   \
 	DEV-syn-pred-attr-PASS.yaml                   \
-	REL-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
 	REL-lex-oahpasmuvvat-oahpastuvvat-PASS.yaml   \
 	REL-msyn-attr-pred-FAIL.yaml                  \
 	REL-msyn-attr-pred-PASS.yaml                  \
@@ -126,7 +125,6 @@ XFAIL_TESTS=\
     DEV-syn-akta-FAIL.yaml                        \
     DEV-syn-missing-gus-FAIL.yaml                         \
     DEV-syn-missing-copula-FAIL.yaml              \
-	REL-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
 	REL-msyn-attr-pred-FAIL.yaml                  \
 	REL-msyn-genna-gejn-FAIL.yaml                 \
 	REL-msyn-iesj-ietja-FAIL.yaml                 \
