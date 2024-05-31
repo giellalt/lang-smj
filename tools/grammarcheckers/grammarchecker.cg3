@@ -1440,7 +1440,7 @@ SET NP-HEAD-GEN    = (Pron Gen) OR (N Gen) OR (A Gen) - Cmp/SplitR - (Dem Attr) 
 SET PRE-NP-HEAD = (Prop Attr) OR (Prop @>N) OR (A Attr) OR (ABBR Attr)
          OR (Pron Pers Gen) OR (N Gen) OR
          Num OR Cmp/SplitR OR (CC @CNP) OR (Pron Dem) OR (Pron Refl Gen) OR (Indef Attr) OR
-         (PrfPrc @>N) OR PrsPrc OR (A Ord) ;
+         (PrfPrc @>N) OR PrsPrc OR (A Ord)  ;
          # The strict version of items that can only be premodifiers, not parts of the predicate
 
 SET PRE-A-N     = (Pron Pers Gen) OR (Pron Pers Acc) OR (Pron Indef) OR Num OR (A Ord) OR (Pron Dem) OR (Pron Refl Gen) OR (Pron Refl Acc) ;
@@ -4168,13 +4168,13 @@ COPY:msyn-numphrase-sgela (Sg SUGGEST) EXCEPT (Pl &msyn-numphrase-sgela) BEFORE 
 
 # Num
 
-ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Num Sg Nom) OR (Num Sg Acc) OR (Num Pl Nom) OR (Num Sg Gen) OR (Num Sem/ID) IF (*1 (N Pl) +  &msyn-numphrase-sgela OR (N Sg Ela) OR NUMUNIT + &msyn-numphrase-sgela BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom))
+ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Num Sg Nom) OR (Num Sg Acc) OR (Num Pl Nom) OR (Num Sg Gen) OR (Num Sem/ID) IF (*1 (N Pl) +  &msyn-numphrase-sgela OR (N Sg Ela) OR NUMUNIT + &msyn-numphrase-sgela BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) 
 (NEGATE 0 ("akta" Sg Nom) LINK 1 (Pl Ela))
 (NEGATE 0 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 1 (Pl Ela) LINK 1 ("liehket") LINK 0 Pl3)
-(NEGATE 0 NUMUNIT LINK -1 Num OR ("moadda"))
+(NEGATE 0 NUMUNIT LINK -1 Num OR ("moadda")) 
 (NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date) 
-(NEGATE 0 (Num Sg Gen) LINK *1 Ill BARRIER NOT-NPMOD)
-(NEGATE 0 (Num Sg Gen) LINK *1 Gen BARRIER NOT-NPMOD) ;
+(NEGATE 0 (Num Sg Gen) LINK *1 Ill BARRIER NOT-NPMOD) 
+(NEGATE 0 (Num Sg Gen) LINK *1 Gen BARRIER NOT-NPMOD LINK NOT 0 Px ) ;
 
     ## Alvos státtáv  máhtá vuojnnet gåjt gietjav báhppagieldajs.
     ## Låge åhtsåmusás li gietjav åhtsåmusá árbbedábálasj juojggusav almodittjat.NOT
