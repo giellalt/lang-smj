@@ -3815,9 +3815,9 @@ SELECT (Gen) IF (*-1 VFIN)(0C N LINK 0 Com OR Ill)(1C N);
 SELECT Ill - Err/Orth-any IF (*-1 ILL-ADJ BARRIER NOT-ADJ)(0 N);
 SELECT Ill - Err/Orth-any IF (0 N)(*1 ILL-ADJ BARRIER NOT-ADJ-PCLE);
 
-SELECT (N Ill) - Err/Orth-any IF (*-1C (Num Gen))(NEGATE 0 Gen);
+SELECT (N Ill) - Err/Orth-any IF (*-1C (Num Gen))(NEGATE 0 Gen) (NEGATE -1 (Num Pl Gen) OR (Num Pl Com));
 
-SELECT Ill - Err/Orth-any IF (*-1 ILLV BARRIER SV-BOUNDARY2 OR Ill LINK NOT -1 Ill);
+SELECT Ill - Err/Orth-any IF (*-1 ILLV BARRIER SV-BOUNDARY2 OR Ill LINK NOT -1 Ill) (NEGATE 0 (Num Arab));
 SELECT Ill - Err/Orth-any IF (*1 ILLV BARRIER SV-BOUNDARY2 OR Ill)(NOT -1 Ill);
 	## Habssa dabrijdij njunnjáj.
 SELECT Ill - Err/Orth-any IF (*-1 CC BARRIER NPNH LINK -1 Ill LINK -1* ILLV BARRIER SV-BOUNDARY2);
@@ -3829,7 +3829,7 @@ SELECT Ill - Err/Orth-any IF (*-1 TV + Der/Pass BARRIER SV-BOUNDARY2);
     
 
 # Coordination:
-SELECT Ill IF (1 @CNP)(*2C Ill BARRIER NOT-ADJ);
+SELECT Ill IF (1 @CNP)(*2C Ill BARRIER NOT-ADJ) (NEGATE -1 (Num Pl Gen) OR (Num Pl Com)) ;
 	## Guovtij guovtij sijáv ietjas åvdån rájadij juohkka stádaj ja bájkkáj gåsi iesj ájgoj.
 
 
@@ -4036,16 +4036,17 @@ SELECT Ine IF (0 (N Sem/Plc Ess));
 SELECT (N Ine) IF (0 VAHKKU OR MANNU)(*1 VFIN BARRIER NP-BOUNDARY);
 	## Gidán máhttá oaggut.         
 
-SELECT Ine IF (1 COPULAS)(*2 (N Nom) BARRIER VERB);
+SELECT Ine IF (1 COPULAS)(*2 (N Nom) BARRIER VERB) (NEGATE *-1 Num BARRIER NPNH);
 	## Sujna le goajvvo giedan.
 	## Juohkka biejven li ietjas vájve.
+    #$GRAM Divna daj tjuoldeduvvam 23 {suohkanijn} li stuorra oasse álmmugis sáme.
     
 SELECT Ine IF (0 Com)(1 (@CNP))(*2 Ine BARRIER NPNH LINK 1 COPULAS);    
 	## Gå mijájn ja fariseajn li fásto.  
 
-SELECT Ine IF (0 N OR (Pron Pers) LINK 0 Com)(1 COPULAS LINK NOT 1 FMAINV LINK NOT 0 COPULAS);    
+SELECT Ine IF (0 N OR (Pron Pers) LINK 0 Com)(1 COPULAS LINK NOT 1 FMAINV LINK NOT 0 COPULAS) (NEGATE *-1 Num BARRIER NPNH);    
 	## Sujsta váldeduvvá aj mij sujna le.
-   
+    #$GRAM Divna daj tjuoldeduvvam 23 {suohkanijn} li stuorra oasse álmmugis sáme.
     
 SELECT Ine IF (-1 COPULAS LINK -1 (N Pl Acc) LINK -1 ("mij" Pron Interr Sg Nom));  
 	## Mij dahkamusájt le dujna munnujn?  
@@ -4279,8 +4280,8 @@ SELECT (V Pl3) IF (*-1C (Pl Nom) OR (Pl3 Nom) BARRIER (V Pl3) OR CC OR S-BOUNDAR
     #Gram Suohkana mielas {le} dákkir rádnastallam viehka ájnas.
 
 SELECT Prs (0 Prt)(*-1C Prs BARRIER VFIN) ;
-SELECT Prt (0 Prt)(*-1C Prt BARRIER VFIN) ;
-
+SELECT Prt (0 Prt)(*-1C Prt BARRIER VFIN) (NEGATE -1 Num)  ;
+    #$GRAM Jus organisasjåvnnå oattjoj oassálasstemav binnemusát 60 {jienaj} válggaguovlon
               SECTION            #
 
 # Rules for a special infinitive construction
