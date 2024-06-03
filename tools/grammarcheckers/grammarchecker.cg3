@@ -2346,7 +2346,7 @@ COPY:lex-oahpasmuvvat-oahpastuvvat ("oahpástuvvat" SUGGEST) EXCEPT ("oahpásmuv
     
     # com to ill when oahpásmuvvat 
     # ------------------------------
-ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*0 ("oahpásmuvvat") BARRIER NOT-NPMODADV LINK NOT 0 ("oahpástuvvat" SUGGEST) LINK NEGATE 1 (Pron Dem) LINK 1 (N Com)) (NEGATE *0 &lex-oahpasmuvvat-oahpastuvvat)(NEGATE 0 (Sg Ill)) (NEGATE 0 (Pl Gen) LINK 1 Ill) (NEGATE 0 Num LINK *1 (N Com) BARRIER NOT-NPMOD);
+ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*0 ("oahpásmuvvat") BARRIER NOT-NPMODADV LINK NOT 0 ("oahpástuvvat" SUGGEST)) (NEGATE *0 &lex-oahpasmuvvat-oahpastuvvat)(NEGATE 0 (Sg Ill)) (NEGATE 0 Dem) (NEGATE 0 (Pl Gen) LINK 1 Ill) (NEGATE 0 Num LINK *1 (N Com) BARRIER NOT-NPMOD);
 
     ## Ja de oahpástuvviv avta prográmmaj.
     ## Dá bále bessin oahppe vehi oahpásmuvvat {doarromusiejajn} Narvijkan 
@@ -2377,7 +2377,7 @@ ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET (Com) 
     ## ja bessi oahpásmuvvat sáme kultuvrajn, {histåvråjn ja sebrudakiellemijn.}
     ## Maŋenagi gå oahppe oahpásmuvvi dájna teknihkajn ja {bijlajn}.
 
-COPY:lex-oahpastuvvat-oahpasmuvvat (Ill SUGGEST) EXCEPT (Com &lex-oahpastuvvat-oahpasmuvvat) TARGET (Com &lex-oahpastuvvat-oahpasmuvvat)  ;
+COPY:lex-oahpastuvvat-oahpasmuvvat (Ill SUGGEST) EXCEPT (Com &lex-oahpastuvvat-oahpasmuvvat) TARGET (Com &lex-oahpastuvvat-oahpasmuvvat) (NEGATE 0 Actio)  ;
 
 COPY:lex-oahpastuvvat-oahpasmuvvatt (Sg Ill SUGGEST) EXCEPT (Pl Ine &lex-oahpastuvvat-oahpasmuvvat) TARGET (Pl Ine &lex-oahpastuvvat-oahpasmuvvat) ;
 
@@ -2401,9 +2401,6 @@ ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET (Pron 
     
 COPY:lex-oahpastuvvat-oahpasmuvvat (Ill Attr SUGGEST) EXCEPT (Com &lex-oahpastuvvat-oahpasmuvvat) TARGET (Dem &lex-oahpastuvvat-oahpasmuvvat) ;
 
-ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET (N Com) IF (-1 (Pron Dem Com) + (&lex-oahpastuvvat-oahpasmuvvat))(NEGATE *0 &lex-oahpasmuvvat-oahpastuvvat)  ;
-
-COPY:lex-oahpastuvvat-oahpasmuvvat (Ill SUGGEST) EXCEPT (Com &lex-oahpastuvvat-oahpasmuvvat) TARGET (N &lex-oahpastuvvat-oahpasmuvvat) ;
 
 
 ADDRELATION ($3 LEFT) (V &lex-oahpastuvvat-oahpasmuvvat) OR ("oahpásmuvvat" V) TO (*-1 (Dem &lex-oahpastuvvat-oahpasmuvvat));
