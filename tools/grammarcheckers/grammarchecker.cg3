@@ -3990,7 +3990,7 @@ COPY:msyn-numphrase-sgacc (Sg Acc SUGGEST) EXCEPT (Sg Gen &msyn-numphrase-sgacc)
 # Num
 
 # akta
-ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET ONE + (Num Sg Nom) OR ONE + (Num Sg Gen) OR ("1" Num Arab) IF (*1 (N Sg Acc) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom)) ;
+ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET ONE + (Num Sg Nom) OR ONE + (Num Sg Gen) OR ("1" Num Arab) IF (*1 (N Sg Acc) BARRIER (*) - (A Attr) LINK NOT 0 (N Coll Nom) OR Px) ;
 
     ## mån vuojnáv akta gusáv. OK
     ## Tyrkian lijma åvtå vahkov. OK
@@ -4018,7 +4018,7 @@ ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Num Pl Acc) OR (Num Sg
 ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgacc) OR NUMUNIT + &msyn-numphrase-sgacc TO (*-1 (Num &msyn-numphrase-sgacc)); 
 
 
-COPY:msyn-numphrase-sgacc (Sg Acc SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sgacc) OR (Sg Gen &msyn-numphrase-sgacc) TARGET ("akta" Num &msyn-numphrase-sgacc) ;
+COPY:msyn-numphrase-sgacc (Sg Acc SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sgacc) OR (Sg Gen &msyn-numphrase-sgacc) TARGET ("akta" Num &msyn-numphrase-sgacc) OR ("1" Num &msyn-numphrase-sgacc);
 
 COPY:msyn-numphrase-sgacc (Sg Nom SUGGEST) EXCEPT (Sg Acc &msyn-numphrase-sgacc) OR (Sg Gen &msyn-numphrase-sgacc)  TARGET (Num &msyn-numphrase-sgacc) + ("<.*v>"r) IF (*1 (N Pl Acc) + &msyn-numphrase-sgacc BARRIER (*) - PRE-NP-HEAD LINK NOT 0 (N Coll Nom)) ;
 
@@ -4174,7 +4174,9 @@ ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Num Sg Nom) OR (Num Sg
 (NEGATE 0 NUMUNIT LINK -1 Num OR ("moadda")) 
 (NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date) 
 (NEGATE 0 (Num Sg Gen) LINK *1 Ill BARRIER NOT-NPMOD) 
-(NEGATE 0 (Num Sg Gen) LINK *1 Gen BARRIER NOT-NPMOD LINK NOT 0 Px ) ;
+(NEGATE 0 (Num Sg Gen) LINK *1 Gen BARRIER NOT-NPMOD LINK NOT 0 Px )
+(NEGATE 1 (N Sg Nom))
+(NEGATE 0 ("akta" Num Sg Nom) LINK -1 (Dem Pl Ela)) ;
 
     ## Alvos státtáv  máhtá vuojnnet gåjt gietjav báhppagieldajs.
     ## Låge åhtsåmusás li gietjav åhtsåmusá árbbedábálasj juojggusav almodittjat.NOT
@@ -4200,7 +4202,7 @@ COPY:msyn-numphrase-sgela (Sg Par SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sgela)
 
 # Dem
 
-ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Pron Dem Pl) - (Sg Nom) IF (1 (Num Sg) LINK *1 (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela OR (N Sg Ela) BARRIER NOT-NPMOD - CC) (NEGATE 1 (Pron Dem)) ;
+ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Pron Dem Pl) - (Sg Nom) IF (1 (Num Sg) LINK *1 (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela OR (N Sg Ela) BARRIER NOT-NPMOD - CC) (NEGATE 1 (Pron Dem)) (NEGATE 1 ("akta" Num Sg Nom));
 
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela TO (*-1 (Dem &msyn-numphrase-sgela));
 
