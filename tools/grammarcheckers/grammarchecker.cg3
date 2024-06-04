@@ -4198,7 +4198,7 @@ COPY:msyn-nom-numeral-jagák (Num Sg Gen SUGGEST) EXCEPT (Num v1 Sg Nom &msyn-no
     # oahpásmuvvat > oahpásmuvvat
     # ---------------------------
     
-ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET ("oahpástuvvat") + VFIN OR ("oahpástuvvat") + Actio IF (*0 Com OR Ill BARRIER NOT-NPMOD-NOMPL - Adv - Pcle - (Nom N) - (Pron Nom) - Ine LINK NEGATE 0 Sem/AnimateNotOrg OR (Pron Recipr) OR (Pron Pers)) ;
+ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET ("oahpástuvvat") + VFIN OR ("oahpástuvvat") + Actio IF (*0 Com OR Ill BARRIER NOT-NPMOD-NOMPL - Adv - Pcle - (Nom N) - (Pron Nom) - Ine LINK NEGATE 0 Sem/AnimateNotOrg OR (Pron Recipr) OR (Pron Pers)) (NEGATE 0 ("oahpástuvvat" SUGGEST)) (NEGATE *1 Num BARRIER NOT-NPMOD) ;
 #ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET ("oahpástuvvat") + VFIN OR ("oahpástuvvat") + Actio IF (NEGATE *0 Sem/AnimateNotOrg + Com OR Sem/AnimateNotOrg + Ill OR (Pron Pers) + Com OR (Pron Pers) + Ill OR (Pron Recipr) + Com OR (Pron Recipr) + Ill BARRIER NOT-NPMOD-NOMPL - Adv - Pcle - (Nom N) - (Pron Nom)) (NEGATE *0 ("gaskan" Adv) + Px OR ("gaskka") + Px);
     ## Iŋŋgá l NRK:ajn oahpástuvvam.
     ## Ibbá l uddni åvddåskåvlåjn oahpástuvvam(in).
@@ -4215,8 +4215,9 @@ ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET ("oahp
     #$ valla oahpástuvvin måj sijájn gå de dåhku båhtin. 
     #$ Tjåhkalvisbálij ulmutja oahpástuvvin ja rádnastallin. 
 
+ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET ("oahpástuvvat") + VFIN OR ("oahpástuvvat") + Actio IF (*0 Num LINK *1 Com OR Ill BARRIER NOT-NPMOD LINK NEGATE 0 Sem/AnimateNotOrg OR (Pron Recipr) OR (Pron Pers)) (NEGATE 0 ("oahpástuvvat" SUGGEST)) ;
 
-ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET ("oahpástuvvat")  IF (*0 (N Com) - Sem/AnimateNotOrg OR (N Ill) - Sem/AnimateNotOrg OR (N Pl Ine) - Sem/AnimateNotOrg BARRIER NOT-NPMODADV ) ;
+ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET ("oahpástuvvat")  IF (*0 (N Com) - Sem/AnimateNotOrg OR (N Ill) - Sem/AnimateNotOrg OR (N Pl Ine) - Sem/AnimateNotOrg BARRIER NOT-NPMODADV) (NEGATE 0 ("oahpástuvvat" SUGGEST)) ;
 
     ## gå låhki tevstav oahpástuvátjit sisanojn  
     #$ gå låhki tevstav oahpástuvátjit ulmutjij  
@@ -4237,7 +4238,7 @@ COPY:lex-oahpastuvvat-oahpasmuvvat ("oahpásmuvvat" SUGGEST) EXCEPT ("oahpástuv
     # oahpásmuvvat > oahpásmuvvat 
     # ---------------------------
 
-ADD:lex-oahpasmuvvat-oahpastuvvat (&lex-oahpasmuvvat-oahpastuvvat) TARGET ("oahpásmuvvat") IF (*0 Sem/AnimateNotOrg + Ill OR Sem/AnimateNotOrg + Com BARRIER NOT-NPMODADVPCLE LINK NOT 0 <spelled>) ;
+ADD:lex-oahpasmuvvat-oahpastuvvat (&lex-oahpasmuvvat-oahpastuvvat) TARGET ("oahpásmuvvat") IF (*0 Sem/AnimateNotOrg + Ill OR Sem/AnimateNotOrg + Com BARRIER NOT-NPMODADVPCLE LINK NOT 0 <spelled>) (NEGATE 0 ("oahpásmuvvat" SUGGEST)) ;
 	#$ Gijtáv Mikael Svonniav guhti l muv bagádallam, Lene Antonsenav guhti l viehkedam muv korusij oahpásmuvvat ja diedon aj informántajt.
 
 COPY:lex-oahpasmuvvat-oahpastuvvat ("oahpástuvvat" SUGGEST) EXCEPT ("oahpásmuvvat" &lex-oahpasmuvvat-oahpastuvvat) TARGET (&lex-oahpasmuvvat-oahpastuvvat) ;
@@ -4250,7 +4251,7 @@ COPY:lex-oahpasmuvvat-oahpastuvvat ("oahpástuvvat" SUGGEST) EXCEPT ("oahpásmuv
     
     # com to ill when oahpásmuvvat 
     # ------------------------------
-ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*0 ("oahpásmuvvat") BARRIER NOT-NPMODADV LINK NOT 0 ("oahpástuvvat" SUGGEST)) (NEGATE *0 &lex-oahpasmuvvat-oahpastuvvat)(NEGATE 0 (Sg Ill)) (NEGATE 0 Dem) (NEGATE 0 (Pl Gen) LINK 1 Ill) (NEGATE 0 Num LINK *1 (N Com) BARRIER NOT-NPMOD) (NEGATE -1 Num);
+ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*0 ("oahpásmuvvat") BARRIER NOT-NPMODADV LINK NOT 0 ("oahpástuvvat" SUGGEST)) (NEGATE *0 &lex-oahpasmuvvat-oahpastuvvat)(NEGATE 0 (Sg Ill)) (NEGATE 0 Dem) (NEGATE 0 (Pl Gen) LINK 1 Ill) (NEGATE 0 Num LINK *1 (N Com) BARRIER NOT-NPMOD) (NEGATE 0 Num) (NEGATE 0 Dem) (NEGATE -1 Num);
 
     ## Ja de oahpástuvviv avta prográmmaj.
     ## Dá bále bessin oahppe vehi oahpásmuvvat {doarromusiejajn} Narvijkan 
@@ -4266,7 +4267,7 @@ ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET (Com) 
     #$ Dákkir juohkusa bierriji vihpat muhtem ájge vaj mánná nubbe nuppijn oahpástuvvi.
     #$  Oahppe galggi oahpásmuvvat girjálasjvuoda ja subtsastimdábij valjesvuohtaj Sámen. 
  
-ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 (Pron Pers Nom) BARRIER NOT-NPMODADV LINK -1 ("oahpásmuvvat") LINK NOT 0 ("oahpástuvvat" SUGGEST)) (NEGATE *0 &lex-oahpasmuvvat-oahpastuvvat) (NEGATE -1 Num) ;
+ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 (Pron Pers Nom) BARRIER NOT-NPMODADV LINK -1 ("oahpásmuvvat") LINK NOT 0 ("oahpástuvvat" SUGGEST)) (NEGATE *0 &lex-oahpasmuvvat-oahpastuvvat) (NEGATE 0 Num) (NEGATE 0 Dem ) (NEGATE -1 Num) ;
 
     ## valla oahpástuvvin (måj bájkijn} gå de dåhku båhtin.
     ## Valla oahpásmuvájma måj buorre prográmmajn 
@@ -4275,7 +4276,7 @@ ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET (Com) 
     # com and com to ill when oahpásmuvvat 
     # ------------------------------------
 
-ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 CC OR COMMA BARRIER NOT-NPMOD-NOMPL LINK *-1 (&lex-oahpastuvvat-oahpasmuvvat) BARRIER (*) - (Sem/Plc Sg Ine)) (NEGATE *0 &lex-oahpasmuvvat-oahpastuvvat) ;
+ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*-1 CC OR COMMA BARRIER NOT-NPMOD-NOMPL LINK *-1 (&lex-oahpastuvvat-oahpasmuvvat) BARRIER (*) - (Sem/Plc Sg Ine)) (NEGATE *0 &lex-oahpasmuvvat-oahpastuvvat) (NEGATE 0 Num) (NEGATE 0 Dem) ;
     ## Dá bále bessin oahppe vehi oahpásmuvvat doarromusiejajn Narvijkan ja sáme ásadusáj Jåhkåmåhken åvdås vádtsájin
     ## Oadtjot oahppijt oahpásmuvátjit sáme girjálasjvuodajn ja girjálasjvuoda {histåvråjn}. DNW LINDA, "histåvråjn" ij sjatta illatijvva. Ihkap gå NOT-NPMOD ij dádjada "girjálasjvuoda"
     ## ja bessi oahpásmuvvat sáme kultuvrajn, {histåvråjn ja sebrudakiellemijn.}
@@ -4354,7 +4355,7 @@ SUBSTITUTE (&lex-oahpastuvvat-oahpasmuvvat) (co&lex-oahpastuvvat-oahpasmuvvat) T
     # Ill to com when oahpástuvvat 
     # ------------------------------
 
-ADD:lex-oahpasmuvvat-oahpastuvvat (&lex-oahpasmuvvat-oahpastuvvat) TARGET (Ill) IF (*0 ("oahpástuvvat") BARRIER NOT-NPMODADV LINK NOT 0 ("oahpásmuvvat" SUGGEST)) (NEGATE 0 Com OR Dem)(NEGATE (*0 &lex-oahpastuvvat-oahpasmuvvat)) (NEGATE *-1 Num BARRIER NOT-NPMOD);
+ADD:lex-oahpasmuvvat-oahpastuvvat (&lex-oahpasmuvvat-oahpastuvvat) TARGET (Ill) IF (*0 ("oahpástuvvat") BARRIER NOT-NPMODADV LINK NOT 0 ("oahpásmuvvat" SUGGEST)) (NEGATE 0 Com OR Dem OR Num)(NEGATE (*0 &lex-oahpastuvvat-oahpasmuvvat)) (NEGATE *-1 Num BARRIER NOT-NPMOD) ;
 
 
     ## Sån la oahpástuvvam {Iŋŋgáj}
@@ -4375,12 +4376,12 @@ ADD:lex-oahpasmuvvat-oahpastuvvat (&lex-oahpasmuvvat-oahpastuvvat) TARGET (Ill) 
     # Ill and ill to com when oahpástuvvat
     # ------------------------------
 
-ADD:lex-oahpasmuvvat-oahpastuvvat (&lex-oahpasmuvvat-oahpastuvvat) TARGET (Ill) IF (*-1 CC OR COMMA BARRIER NOT-NPMOD LINK -1 (&lex-oahpasmuvvat-oahpastuvvat))(NEGATE (*0 &lex-oahpastuvvat-oahpasmuvvat)) ;
+ADD:lex-oahpasmuvvat-oahpastuvvat (&lex-oahpasmuvvat-oahpastuvvat) TARGET (Ill) IF (*-1 CC OR COMMA BARRIER NOT-NPMOD LINK -1 (&lex-oahpasmuvvat-oahpastuvvat))(NEGATE (*0 &lex-oahpastuvvat-oahpasmuvvat)) (NEGATE 0 Num) (NEGATE 0 Dem) ;
 
     ## ja bessi oahpástuvvat sáme kultuvrraj, histåvrråj ja sebrudakiellemij.
 
 
-ADD:lex-oahpasmuvvat-oahpastuvvat (&lex-oahpasmuvvat-oahpastuvvat) TARGET (N Ill) IF (-1 (Pron Dem Pl Ill) + (&lex-oahpasmuvvat-oahpastuvvat) OR (Pron Dem Sg Ill Attr) + (&lex-oahpasmuvvat-oahpastuvvat)) (NEGATE (*0 &lex-oahpastuvvat-oahpasmuvvat)) (NEGATE *-1 Num BARRIER NOT-NPMOD) ;
+ADD:lex-oahpasmuvvat-oahpastuvvat (&lex-oahpasmuvvat-oahpastuvvat) TARGET (N Ill) IF (-1 (Pron Dem Pl Ill) + (&lex-oahpasmuvvat-oahpastuvvat) OR (Pron Dem Sg Ill Attr) + (&lex-oahpasmuvvat-oahpastuvvat)) (NEGATE (*0 &lex-oahpastuvvat-oahpasmuvvat)) (NEGATE *-1 Num BARRIER NOT-NPMOD) (NEGATE 0 Num) (NEGATE 0 Dem) ;
 	#$ Sámedigge ij nagá Rádedusáv jåhtuj oadtjot, biednigijt juollodittjat dajda dárbojda ma duodalattjat li sáme siebrudagán.
     ## Maŋenagi gå oahppe oahpástuvvi dájda {ulmutjijda}
     ## Maŋenagi gå oahppe oahpásmuvvi dán {ulmutjij}. 
@@ -4388,10 +4389,10 @@ ADD:lex-oahpasmuvvat-oahpastuvvat (&lex-oahpasmuvvat-oahpastuvvat) TARGET (N Ill
 
     # Homonymy between pl com an sg ill
     # -------------------------------
-ADD:lex-oahpasmuvvat-oahpastuvvat (&lex-oahpasmuvvat-oahpastuvvat) TARGET (Pl Com) IF (*0 ("oahpástuvvat") OR (&lex-oahpasmuvvat-oahpastuvvat) BARRIER NOT-NPMODADV) (*-1 (Pron Dem Ill Attr) BARRIER NOT-Attr) (0 (Sg Ill)) (NEGATE *-1 Num BARRIER NOT-NPMOD) ;
+ADD:lex-oahpasmuvvat-oahpastuvvat (&lex-oahpasmuvvat-oahpastuvvat) TARGET (Pl Com) IF (*0 ("oahpástuvvat") OR (&lex-oahpasmuvvat-oahpastuvvat) BARRIER NOT-NPMODADV) (*-1 (Pron Dem Ill Attr) BARRIER NOT-Attr) (0 (Sg Ill)) (NEGATE *-1 Num BARRIER NOT-NPMOD) (NEGATE 0 Num) (NEGATE 0 Dem);
     ## Maŋenagi gå oahppe dán {ulmutjij} oahpásmuvvi.
 
-ADD:lex-oahpasmuvvat-oahpastuvvat (&lex-oahpasmuvvat-oahpastuvvat) TARGET (Prop Pl Com) IF (*0 ("oahpástuvvat") OR (&lex-oahpasmuvvat-oahpastuvvat) BARRIER NOT-NPMODADV) (0 (Sg Ill)) (NEGATE *-1 Num BARRIER NOT-NPMOD) ;
+ADD:lex-oahpasmuvvat-oahpastuvvat (&lex-oahpasmuvvat-oahpastuvvat) TARGET (Prop Pl Com) IF (*0 ("oahpástuvvat") OR (&lex-oahpasmuvvat-oahpastuvvat) BARRIER NOT-NPMODADV) (0 (Sg Ill)) (NEGATE *-1 Num BARRIER NOT-NPMOD) (NEGATE 0 Num) (NEGATE 0 Dem) ;
     ## Ieŋŋilsgiellaåhpådiddje diedij binnáv sámij birra åvdutjis, ja suv mielas lij riek suohtas {Eskilij} oahpástuvvat
 
 COPY:lex-oahpasmuvvat-oahpastuvvat (Com SUGGEST) EXCEPT (Ill &lex-oahpasmuvvat-oahpastuvvat) TARGET (Ill &lex-oahpasmuvvat-oahpastuvvat) ;
