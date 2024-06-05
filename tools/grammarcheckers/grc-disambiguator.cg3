@@ -1450,6 +1450,9 @@ SELECT:ArabNomPlc (Arab Nom) (-1 Sem/Plc)(NEGATE 1 Po) ;
 
 SELECT:Arab Arab  ; # In Apertium we get analysis both with and without the tag.
 
+SELECT Nom IF (0 (Num Arab)) ;
+    #GRAM Lulujma gal 30 oassálasstij nagádit
+
 #SELECT VFIN IF (*-1 S-BOUNDARY OR BOS OR (":") BARRIER VERB) (*1 S-BOUNDARY OR BOS OR (":") BARRIER VFIN) ; 
 	#$GRAM Ietjá bájkijn soajttá sámeslávgga jurra de vil vuojnnut.  
 
@@ -3631,8 +3634,9 @@ REMOVE (Sg Nom) IF (NEGATE *-1 ("ja") OR COMMA BARRIER NOT-AA LINK -1 Nom)(0 (Pl
 	## Guollebivdde vuojn lijga.
 	#$Gram Åhpadiddje gudi lij dibddám oahppijt ságastallamav jådedit, li åtsådallam oahppe {le} ålov oahppam.
 	
-SELECT Pl (0 Sg LINK 0 N OR (Pron Pers))(*1C (Pron Rel Pl) BARRIER WORD);
+SELECT Pl (0 Sg LINK 0 N OR (Pron Pers))(*1C (Pron Rel Pl) BARRIER WORD) (NEGATE 0 (Sg Ill));
 	## Allit fásstudattijn hådjen vuojnnu nåv gåk vilpástalle, gudi tsusskaha fásstudi almatjij vuojnedijn. 
+	#$ GRAM Surggojuogos la unna juogos vidájn gitta gávtse {sebrulattjaj} gudi gávnadi juogadittjat ájádusájt ja dåbdojt birra gåktu l masset lagámusáv.
     
 SELECT Sg (0 Pl LINK 0 N OR (Pron Pers))(*1C (Pron Rel Sg) BARRIER WORD LINK 1 N)(NEGATE 0 Nom LINK *-1 COPULAS + Pl3);  
 	## Ja dåppe årruj stádaj man namma le Nasaret.  
