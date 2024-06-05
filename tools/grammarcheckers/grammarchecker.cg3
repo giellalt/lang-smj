@@ -4004,7 +4004,10 @@ ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Pl Ine) OR (Sg Com) IF
 	## Mij lip NSRan  guhkev juo berustam, ja ájn berustip, nannit aktijvuodav sámij gaskan divna niellja rijkajn duola degu konkrehtalasj aktisasjbargo baktu.
     ## makkár rahtjamusá li nielje sámegielajn
     
-ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgcom) TARGET (Pl Ine) OR (Sg Com) OR (Pl Gen) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Ine) OR (Num Arab Ine) OR (Num Pl Nom) OR (Num Sg Acc) OR (Num Sg Nom) OR (Num Sg Gen) OR ("moadda" Indef Acc) BARRIER NOT-Attr - Gen LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date LINK NEGATE -1 Sem/Curr) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE *-1 (Num Sg Ine) BARRIER NOT-NPMOD) (NEGATE 1 Po OR (N Ill) OR (N Nom)) (NEGATE 1 (N Gen) LINK 1 Po) (NEGATE *1 Po BARRIER (*) - CC - Gen - (N Pl Nom));
+ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgcom) TARGET (Pl Ine) OR (Sg Com) OR (Pl Gen) OR (Pl Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Ine) OR (Num Arab Ine) OR (Num Pl Nom) OR (Num Sg Acc) OR (Num Sg Nom) OR (Num Sg Gen) OR ("moadda" Indef Acc) BARRIER NOT-Attr - Gen LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date LINK NEGATE -1 Sem/Curr) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE *-1 (Num Sg Ine) BARRIER NOT-NPMOD) (NEGATE 1 Po OR (N Ill) OR (N Nom)) (NEGATE 1 (N Gen) LINK 1 Po) (NEGATE *1 Po BARRIER (*) - CC - Gen - (N Pl Nom)) (NEGATE 0 (Pl Com) LINK -1 (Sg Gen) LINK *-1 (Num Sg Nom) OR (Num Sg Acc) BARRIER NOT-NPMOD);
+    #$ Sámedikkeráde doarjju guokta julevsáme giellaprosjevta {rudáj}.
+
+ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgcom) TARGET (Pl Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Com) BARRIER NOT-Attr - Gen LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date LINK NEGATE -1 Sem/Curr) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE *-1 (Num Sg Ine) BARRIER NOT-NPMOD) (NEGATE 1 Po OR (N Ill) OR (N Nom)) (NEGATE 1 (N Gen) LINK 1 Po) (NEGATE *1 Po BARRIER (*) - CC - Gen - (N Pl Nom));
 
 ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine &msyn-numphrase-sgcom) TARGET (Pl Ine) OR (Sg Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Acc) OR (Num Arab Ine) BARRIER NOT-NPMOD LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date LINK NOT -1 Sem/Curr LINK *-1 ("liehket" Ind) BARRIER (*) - Num - Dem)(NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE 1 Po) ;
 	# this rule may go to a copy rule that suggests both Sg Ine and Sg Com
@@ -4085,7 +4088,7 @@ ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Sg Ill) IF (0 N - Á-A
 
 
     # Pl Com not same as sg ill (words as oassálasste)
-ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Pl Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Ine) OR (Num Arab) OR (Num Pl Nom) OR (Num Sg Acc) OR ("moadda" Indef Acc) BARRIER NOT-NPMOD) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE 0 (Sg Ill));
+#ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Pl Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Ine) OR (Num Arab) OR (Num Pl Nom) OR (Num Sg Acc) OR ("moadda" Indef Acc) BARRIER NOT-NPMOD) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE 0 (Sg Ill)) ;
 
 
 
@@ -4251,7 +4254,7 @@ COPY:lex-oahpasmuvvat-oahpastuvvat ("oahpástuvvat" SUGGEST) EXCEPT ("oahpásmuv
     
     # com to ill when oahpásmuvvat 
     # ------------------------------
-ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*0 ("oahpásmuvvat") BARRIER NOT-NPMODADV LINK NOT 0 ("oahpástuvvat" SUGGEST)) (NEGATE *0 &lex-oahpasmuvvat-oahpastuvvat)(NEGATE 0 (Sg Ill)) (NEGATE 0 Dem) (NEGATE 0 (Pl Gen) LINK 1 Ill) (NEGATE 0 Num LINK *1 (N Com) BARRIER NOT-NPMOD) (NEGATE 0 Num) (NEGATE 0 Dem) (NEGATE -1 Num);
+ADD:lex-oahpastuvvat-oahpasmuvvat (&lex-oahpastuvvat-oahpasmuvvat) TARGET (Com) OR (Pl Ine) OR (Pl Gen) IF (*0 ("oahpásmuvvat") BARRIER NOT-NPMODADV LINK NOT 0 ("oahpástuvvat" SUGGEST)) (NEGATE *0 &lex-oahpasmuvvat-oahpastuvvat)(NEGATE 0 (Sg Ill)) (NEGATE 0 Dem) (NEGATE 0 (Pl Gen) LINK 1 Ill) (NEGATE 0 Num LINK *1 (N Com) BARRIER NOT-NPMOD) (NEGATE 0 Num) (NEGATE 0 Dem) (NEGATE -1 Num) ;
 
     ## Ja de oahpástuvviv avta prográmmaj.
     ## Dá bále bessin oahppe vehi oahpásmuvvat {doarromusiejajn} Narvijkan 
