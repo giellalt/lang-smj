@@ -42,6 +42,7 @@ TESTS=\
 	DEV-syn-pred-attr-FAIL.yaml                   \
 	DEV-syn-pred-attr-PASS.yaml                   \
 	REL-lex-oahpasmuvvat-oahpastuvvat-PASS.yaml   \
+	REL-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
 	REL-msyn-attr-pred-FAIL.yaml                  \
 	REL-msyn-attr-pred-PASS.yaml                  \
 	REL-msyn-genna-gejn-FAIL.yaml                 \
