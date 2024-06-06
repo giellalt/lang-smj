@@ -102,6 +102,7 @@ TESTS=\
 	syn-pred-attr-FAIL.yaml                       \
 	syn-pred-attr-PASS.yaml                       \
     syn-should-be-cmp-FAIL.yaml                   \
+    syn-should-be-cmp-PASS.yaml                   \
 	syn-wo-neg-before-subj-FAIL.yaml			\
 	syn-wo-neg-before-subj-PASS.yaml
 
