@@ -131,7 +131,7 @@ XFAIL_TESTS=\
 	REL-msyn-iesj-ietja-FAIL.yaml                 \
 	REL-msyn-soajtta-FAIL.yaml                    \
 	REL-syn-correct-form-liehket-FAIL.yaml        \
-	REL-syn-correct-form-liehket-FAIL.yaml        \
+	REL-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
 	format-missing-comma.yaml                     \
 	lex-oahpasmuvvat-oahpastuvvat.yaml            \
 	msyn-IV-with-object.yaml                      \
