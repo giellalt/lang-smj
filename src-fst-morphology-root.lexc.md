@@ -256,6 +256,7 @@ Obligatory hyphen, not as badly weighed as +Cmp/Hyph
 ### Other tags
 * **+MWE**  multi word expressions, goes to abbr
 * **+Sh**  Short form
+* **+Long**  Long form
 * **+Gram/Comp** = Inherent comp, lexicalized derivation
 * **+Gram/Superl** = Inherent superl, lexicalized derivation
 * **+Gram/Dimin** = Inherent diminutive, lexicalized derivation
