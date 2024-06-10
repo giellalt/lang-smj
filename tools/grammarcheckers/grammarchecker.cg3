@@ -528,10 +528,10 @@ LIST Sem/Year = Sem/Year ;
 LIST Sem/Sur = Sem/Sur ;
 #LIST Tit = Tit ;
 
-SET Sem/Human = Sem/Hum OR Sem/Hum-prof OR Sem/Sur OR Sem/Mal OR Sem/Fem OR Sem/Org ;
-SET Sem/Animate = Sem/Hum OR Sem/Ani OR Sem/Sur OR Sem/Mal OR Sem/Fem OR Sem/Org ;
+SET Sem/Human = Sem/Hum OR Sem/Hum-prof OR Sem/Sur OR Sem/Mal OR Sem/Fem OR Sem/Org OR Der/NomAg OR Gram/NomAg;
+SET Sem/Animate = Sem/Hum OR Sem/Ani OR Sem/Sur OR Sem/Mal OR Sem/Fem OR Sem/Org OR Der/NomAg OR Gram/NomAg;
 	# Has to be a set so that multiple tags are included
-SET Sem/AnimateNotOrg = Sem/Hum OR Sem/Ani OR Sem/Sur OR Sem/Mal OR Sem/Fem ;
+SET Sem/AnimateNotOrg = Sem/Hum OR Sem/Ani OR Sem/Sur OR Sem/Mal OR Sem/Fem OR Der/NomAg OR Gram/NomAg ;
 LIST Sem/Concrete-NotAnimate-NotPlace = Sem/Clth Sem/Clth-jewl Sem/Clthpart Sem/Ctain Sem/Drink Sem/Food Sem/Food-med Sem/Mat Sem/Money Sem/Obj Sem/Obj-clo Sem/Obj-el Sem/Substnc Sem/Tool Sem/Tool-catch Sem/Tool-measr Sem/Tool-music  Sem/Tool-write  Sem/Txt  Sem/Veh Sem/Wpn ;
 SET Sem/Place = Sem/Plc OR Sem/Plc-water OR Sem/Plc-elevate OR Sem/Plc-line OR Sem/Build OR Sem/Buildpart OR Sem/Org ;
 
@@ -542,7 +542,10 @@ SET Sem/Abstract = Sem/Act OR Sem/Amount OR Sem/Body-abstr OR Sem/Domain OR Sem/
 
 SET HAB-ACTOR-NOT-HUMAN = Sem/Org ; # make this like the sme one #!! HAB-ACTOR-NOT-HUMAN
 
+SET NOT-Sem/Human = Sem/Abstract OR Sem/Place OR Sem/Concrete-NotAnimate-NotPlace OR Sem/Act OR Sem/Adr OR Sem/Amount OR Sem/Body OR Sem/Body-abstr OR Sem/Build OR Sem/Build-room OR 
+Sem/Buildpart OR Sem/Cat OR Sem/Clth OR Sem/Clthpart OR Sem/Ctain OR Sem/Ctain-abstr OR Sem/Curr OR Sem/Date OR Sem/Dance OR Sem/Dir OR Sem/Domain OR Sem/Drink OR Sem/Dummytag OR Sem/Edu OR Sem/Event OR Sem/Feat OR Sem/Feat-measr OR Sem/Feat-phys OR Sem/Feat-psych OR Sem/Food OR Sem/Food-med OR Sem/Fruit OR Sem/Furn OR Sem/Game OR Sem/Geom OR Sem/ID OR Sem/Ideol OR Sem/Lang OR Sem/Mat OR Sem/Measr OR Sem/Money OR Sem/Obj OR Sem/Obj-clo OR Sem/Obj-el OR Sem/Obj-ling OR Sem/Obj-play OR Sem/Obj-rope OR Sem/Obj-surfc OR Sem/Org OR Sem/Part OR Sem/Perc-emo OR Sem/Perc-phys OR Sem/Plant OR Sem/Plantpart OR Sem/Plc OR Sem/Plc-abstr OR Sem/Plc-elevate OR Sem/Plc-line OR Sem/Plc-water OR Sem/Pos OR Sem/Prod OR Sem/Prod-audio OR Sem/Prod-cogn OR Sem/Prod-ling OR Sem/Prod-vis OR Sem/Rel OR Sem/Route OR Sem/Rule OR Sem/Semcon OR Sem/Sign OR Sem/Sport OR Sem/State OR Sem/State-sick OR Sem/Substnc OR Sem/Time OR Sem/Time-clock OR Sem/Tool OR Sem/Tool-catch OR Sem/Tool-clean OR Sem/Tool-it OR Sem/Tool-measr OR Sem/Tool-music OR Sem/Tool-write OR Sem/Txt OR Sem/Veh OR Sem/Wthr OR Sem/Wpn OR Sem/Year ;
 
+ 
 LIST PROP-ATTR = Sem/Mal Sem/Sur Sem/Fem ; #!! PROP-ATTR
 LIST PROP-SUR = Sem/Sur Sem/Mal Sem/Fem ; #!! PROP-SUR
 
@@ -1753,7 +1756,7 @@ LIST WHICH-OF-TWO-smn = "kuábbáš" ;
 SET WHICH-OF-TWO = WHICH-OF-TWO-sma OR WHICH-OF-TWO-sme OR WHICH-OF-TWO-smj OR WHICH-OF-TWO-smn ;
 
 
-ADD:msyn-congr-gænna-gejn (&msyn-congr-gænna-gejn) TARGET (Rel Ine Sg) IF (*-1 (N Pl) OR (Pron Pl) OR (A Pl) + Sem/Hum OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NOT 0 (N Sg) LINK NEGATE -1 VFIN OR Inf OR (ImprtII Sg3) LINK -1 (N Sg) OR (Pron Sg) OR BOS OR CS OR (";") LINK NOT 0 Sem/Perc-emo) (NEGATE 0 WHICH-OF-TWO);
+ADD:msyn-congr-gænna-gejn (&msyn-congr-gænna-gejn) TARGET (Rel Ine Sg) IF (*-1 (N Pl) OR (Pron Pl) OR (A Pl) + Sem/Hum OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NOT 0 (N Sg) LINK NEGATE -1 VFIN OR Inf OR (ImprtII Sg3) LINK -1 (N Sg) OR (Pron Sg) OR BOS OR CS OR (";") LINK NOT 0 Sem/Perc-emo) (NEGATE 0 WHICH-OF-TWO) (NEGATE 0 Attr);
     ## Oahppijn {gænna} la buorre giella.
     ## Girjijn {manna} la buorre 
     #$ Ja ålmmåjdises javlaj: Válldit sujsta buttev ja vaddit ålmmåj {gänna} li lågev butte.
@@ -1764,7 +1767,7 @@ LIST SOME-PL-sme = ("juohkehaš" Pl) "moattis" ("soames" Pron Indef Sg Nom) ;
 LIST SOME-PL-sma = "fïerhte" "måedtie" "såemies" ;
 SET SOME-PL = SOME-PL-smj OR SOME-PL-sme OR SOME-PL-sma ;
     
-ADD:msyn-congr-gænna-gejn (&msyn-congr-gænna-gejn) TARGET (Rel Ine Sg) IF (-1 (N Pl Ill) OR (Pron Pl Ill) OR (A Pl Ill) + Sem/Hum OR (Pl1 Ill) OR (Pl2 Ill) OR (Pl3 Ill) OR (Du1 Ill) OR (Du2 Ill) OR (Du3 Ill) OR (N Pl Ela) OR (Pron Pl Ela) OR (Pl1 Ela) OR (Pl2 Ela) OR (Pl3 Ela) OR (Du1 Ela) OR (Du2 Ela) OR (Du3 Ela) OR (Indef Pl Nom) OR SOME-PL LINK NEGATE *-1 (ImprtII Sg3) BARRIER NOT-ADV-PCLE) ;
+ADD:msyn-congr-gænna-gejn (&msyn-congr-gænna-gejn) TARGET (Rel Ine Sg) IF (-1 (N Pl Ill) OR (Pron Pl Ill) OR (A Pl Ill) + Sem/Hum OR (Pl1 Ill) OR (Pl2 Ill) OR (Pl3 Ill) OR (Du1 Ill) OR (Du2 Ill) OR (Du3 Ill) OR (N Pl Ela) OR (Pron Pl Ela) OR (Pl1 Ela) OR (Pl2 Ela) OR (Pl3 Ela) OR (Du1 Ela) OR (Du2 Ela) OR (Du3 Ela) OR (Indef Pl Nom) OR SOME-PL LINK NEGATE *-1 (ImprtII Sg3) BARRIER NOT-ADV-PCLE) (NEGATE 0 Attr) ;
     ## Dát ságastallamstasjåvnnå hiehpá oahppijda gænna l buorre sámegiella, ja vuorrasap oahppijda gudi tjuovvu sáme oahppamplánav
     ## ja stuorra lassánibme l mánájs gænna li sáme mánájgárddefálaldagá
     ## Buoremus le jus duodje dagáduvvá ulmutjijs {gænna} histåvrålasj tjanos bájkkáj.
@@ -1773,10 +1776,10 @@ ADD:msyn-congr-gænna-gejn (&msyn-congr-gænna-gejn) TARGET (Rel Ine Sg) IF (-1 
     #$ Didjij javlav: juohkkahattjan {gänna} le sån oadtju, valla gänna ij le, sujsta váldeduvvá aj mij le.
     #$ 
 
-ADD:msyn-congr-gænna-gejn (&msyn-congr-gænna-gejn) TARGET (Rel Ine Sg) IF (-1 Po LINK -1 (Pl Gen)) ;
+ADD:msyn-congr-gænna-gejn (&msyn-congr-gænna-gejn) TARGET (Rel Ine Sg) IF (-1 Po LINK -1 (Pl Gen)) (NEGATE 0 Attr) ;
     ## Dáv vuojnnin ulmutjij gaskan gænna ij lim tjielgga ájádus Jubmelis, ja gudi álu máhttsin noajddudahkaj gå niedaj boadádallin. # LINDA gåk biedjat dáv ja bajep njuolgadusáv aktij?? -- maybe WITH
 
-ADD:msyn-congr-gænna-gejn (&msyn-congr-gænna-gejn) TARGET (Rel Ine Sg) IF (-1 (Pl Acc) LINK -1 Inf OR Ind) ;
+ADD:msyn-congr-gænna-gejn (&msyn-congr-gænna-gejn) TARGET (Rel Ine Sg) IF (-1 (Pl Acc) LINK -1 Inf OR Ind) (NEGATE 0 Attr);
     ## Fágalasj máhtudahka l ájnas ja sávvi virggáj biedjat ulmutjijt gænna le sáme giella- ja kultuvrramáhtudahka
     ## Mij dárbahip njunnjutjit gænna li visjåvnå, dåmadimfábmo, gudi ållåsit ájádalli ja gájk åvdemusát boahtteájgev ájadalli.
     
@@ -1821,6 +1824,7 @@ ADD:xmsyn-congr-mij-ma+verb (&msyn-congr-mij-ma+verb) TARGET (Rel Nom Sg) IF (*-
 (NEGATE -1 ("divna" Pl Nom))
 (NEGATE -1 N LINK NOT 0 Acc LINK 1 (Rel Nom Sg) LINK 1 (TV Ind Sg3) OR REK-ILL + (Ind Sg3) LINK *1 (Sg Acc) BARRIER NOT-NPMOD)
 (NEGATE -1 (ImprtII Sg1) OR (ImprtII Sg2) OR (ImprtII Sg3))
+(NEGATE -1 ("muhtem" Indef Pl Ine))
 (NEGATE 0 WHO LINK -1 I + ( Pl1 Gen) LINK -1 ("áhttje" Sg Nom)) 
 (NEGATE 0 &msyn-congr-ma-mij+verb) 
 (NEGATE 0 ("mån" Pers Pl1 Nom))
@@ -1997,7 +2001,12 @@ LIST MAYBE-V-sme = "soaitit" ;
 LIST MAYBE-V-smn = "sättiđ" ;
 SET MAYBE-V = MAYBE-V-smj OR MAYBE-V-sma OR MAYBE-V-sme OR MAYBE-V-smn ;
 
-ADD:syn-from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentInit IF (NEGATE -1 BOS OR COMMA OR (";") OR (":") OR CITATION OR HYPHEN) (NEGATE 0 &syn-number_congruence-subj-verb) (NEGATE 0 &msyn-verb-cong-rel) (NEGATE 0 &msyn-soajtta-le) (NEGATE 1 MAYBE-V + (V Ind Prs Sg3)) (NEGATE 0 &msyn-congr-mij-ma+verb OR &msyn-congr-ma-mij+verb) ;
+ADD:syn-from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentInit IF (NEGATE -1 BOS OR COMMA OR (";") OR (":") OR CITATION OR HYPHEN) 
+(NEGATE 0 &syn-number_congruence-subj-verb) 
+(NEGATE 0 &msyn-verb-cong-rel) 
+(NEGATE 0 &msyn-soajtta-le) 
+(NEGATE 0 &msyn-congr-mij-ma+verb OR &msyn-congr-ma-mij+verb)
+(NEGATE 1 MAYBE-V + (V Ind Prs Sg3))  ;
 	#$ Dajn gielajn gånnå le riek friddja báhkogárges {le} soajttá vehik gássjel mierredit mij la vuodobáhkogárges.
 
 	# l
@@ -2035,7 +2044,7 @@ SET GO-PCLE = GO-PCLE-smj OR GO-PCLE-sme OR GO-PCLE-sma OR GO-PCLE-smn ;
 
 	# la
 	# --
-COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 ("ja") OR ("de" Adv) OR ("de" CC) OR  GO-PCLE OR ("valla") OR ConNeg) (-1 (Sg Nom) OR (Sg3 Nom) OR ("ij" Neg Ind Prs Sg3)) ;
+COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 ("ja") OR ("de" Adv) OR ("de" CC) OR GO-PCLE OR ("valla") OR ConNeg) (-1 (Sg) OR (Sg3 Nom) OR ("ij" Neg Ind Prs Sg3)) ;
 
     ## Ieŋŋgil le buorre > la
 	## Árvustallam viertti dáhpáduvvat dajna elementajn manna le sæmmi lágásj dåbddomærkka ja mij {le} lagámus, ij dåhkki dåbddomerkajt árvustallat ietjá elementajn jus gávnnu elemænnta manna le sæmmi lágásj dåbddomerka lagábun. 
@@ -2448,8 +2457,13 @@ ADD:xmsyn-mij-gut (&msyn-mij-gut) TARGET WHAT IF (*-1 (N Coll) OR Der/NomAg OR G
 (NEGATE -1 ("iesj" Sg Nom)) (NEGATE 1 <TH-Nom-Any> + Sg3 OR <TH-Nom-Any> + Pl3)  
 (NEGATE -1 Nom LINK *-1 <RE-Ill-Ani><TH-Acc-*Ani> BARRIER NOT-ADV-PCLE - Ine - Ela - Attr - Dem)
 (NEGATE -1 ("divna" Pl Nom))
+(NEGATE -1 (Pron Ill))
+(NEGATE -1 Der/NomAg OR Gram/NomAg LINK 0 NOT-Sem/Human OR (V Imprt) OR (V ImprtII))
 (NEGATE 1 ("liehket" Sg3) LINK *1 (N Sg Nom) BARRIER NOT-NPMOD) 
-(NEGATE 0 &msyn-gut-mij) ; 
+(NEGATE 0 &msyn-gut-mij) 
+(NEGATE 0 (Rel Acc) LINK NOT -1 (N Nom)) 
+(NEGATE 0 ("mån" Pl1 Nom))
+(NEGATE *1 ("liehket" Sg3) BARRIER S-BOUNDARY LINK *1 PrfPrc BARRIER NOT-ADV-PCLE) ; 
 
     ## Ja gåktu de manáj dáj guoktásijn {ma} galggin dunnuv viedtjat? 
     #$ Gárggájj tjálli oahppe {mij} la sæmmilágásj dajn guovte kultuvrajn. # TV human subject, non-human object <RE-Ill-Ani><TH-Acc-*Ani>
@@ -2492,7 +2506,12 @@ ADD:xmsyn-mij-gut (&msyn-mij-gut) TARGET WHAT IF (-2 (N Coll Acc) OR (Der/NomAg 
 
 	# interrogative use
 
-ADD:xmsyn-mij-gut (&msyn-mij-gut) TARGET WHAT + Nom IF (*1 COPULAS BARRIER NOT-ADV-PCLE LINK *1 Sem/Hum + N BARRIER NOT-NPMOD LINK NEGATE 0 Gen OR Attr LINK 1 N) (NEGATE -1 ("gájkka" Nom)) (NEGATE *1 Sem/Hum LINK 1 PrfPrc) (NEGATE *1 Sem/Hum LINK 1 Po) ;
+ADD:xmsyn-mij-gut (&msyn-mij-gut) TARGET WHAT + Nom IF (*1 COPULAS BARRIER NOT-ADV-PCLE LINK *1 Sem/Hum + N BARRIER NOT-NPMOD LINK NEGATE 0 Gen OR Attr LINK 1 N) 
+(NEGATE -1 ("gájkka" Nom)) 
+(NEGATE -1 (Sg Nom) + NOT-Sem/Human)
+(NEGATE -1 BOS OR (":") LINK 2 ("liehket" Sg3))
+(NEGATE *1 Sem/Hum LINK 1 PrfPrc) 
+(NEGATE *1 Sem/Hum LINK 1 Po) ;
     ## lij dålåv dahkamin mij lij muv ráddna. Subj-interr-hum COPULA Spred-Hum
     #$ Sámedigge ij nagá Rádedusáv jåhtuj oadtjot, biednigijt juollodittjat dajda dárbojda ma duodalattjat li sáme siebrudagán
     
@@ -2506,7 +2525,13 @@ COPY:msyn-mij-gut ("guhti" SUGGEST) EXCEPT ("mij" &msyn-mij-gut) TARGET (&msyn-m
     # ----------------------
     
 
-ADD:xmsyn-gut-mij (&msyn-gut-mij) TARGET WHO IF (-1 N LINK NOT 0 Sem/AnimateNotOrg LINK NEGATE -1 Sem/Hum + Gen) (NEGATE -1 ("avtak") OR ONE + Foc/Pos-k OR (Pron Pers) OR (Pron Indef) + Sem/Hum OR Coll) (NEGATE *-1 (N Nom) + Sem/Hum OR (Dem Nom) BARRIER (*) - (N Ine) - (Pron Ine) LINK *-1 BE + (Ind Sg3) OR BE + (Ind Sg3) BARRIER NOT-NPMOD LINK -1 WHO) (NEGATE -1 (N Ine) LINK -1 (N Ill) OR (Pron Ill)) (NEGATE 0 &msyn-mij-gut) ;  
+ADD:xmsyn-gut-mij (&msyn-gut-mij) TARGET WHO IF (-1 N LINK NOT 0 Sem/AnimateNotOrg LINK NEGATE -1 Sem/Hum + Gen) 
+(NEGATE -1 ("avtak") OR ONE + Foc/Pos-k OR (Pron Pers) OR (Pron Indef) + Sem/Hum OR Coll) 
+(NEGATE *-1 (N Nom) + Sem/Hum OR (Dem Nom) BARRIER (*) - (N Ine) - (Pron Ine) LINK *-1 BE + (Ind Sg3) OR BE + (Ind Sg3) BARRIER NOT-NPMOD LINK -1 WHO) 
+(NEGATE -1 (N Ine) LINK -1 (N Ill) OR (Pron Ill)) 
+(NEGATE -1 Ess LINK -1 Sem/AnimateNotOrg)
+(NEGATE 0 &msyn-mij-gut) 
+(NEGATE 0 ("guhti" Foc/Neg-k)) ;  
 
     #$ Gut la dån?
     #$ Ulmusj lagábut oahpástuvvá ja diehtá gut juohkkahasj la, javllá sån."
