@@ -2658,7 +2658,7 @@ SELECT Pcle IF (*-1 BOS BARRIER NOT-PCLE)(1 ("dal"));
 # ========
 
 # Gen as modifier
-REMOVE V (NOT *-1 VFIN BARRIER S-BOUNDARY2)(0 Gen LINK NEGATE 0 VFIN LINK *-1 NP-HEAD-NOM BARRIER NOT-ADV)(*1 (N Nom) BARRIER NPNH OR CC OR COMMA LINK *1 VFIN BARRIER V OR S-BOUNDARY2) ;
+REMOVE V (NOT *-1 VFIN BARRIER S-BOUNDARY2)(0 Gen LINK NEGATE 0 VFIN LINK *-1 NP-HEAD-NOM BARRIER NOT-ADV)(*1 (N Nom) BARRIER NPNH OR CC OR COMMA LINK *1 VFIN BARRIER V OR S-BOUNDARY2) (NEGATE 0 PxSg1 LINK 0 PrfPrc);
 	## Giela árvo le bájnnám sámij giellamáhtov. 
 #REMOVE Nom (NOT *-1 VFIN BARRIER S-BOUNDARY)(0 Gen)(*1 (N Nom) BARRIER NPNH OR CC OR COMMA LINK *1 VFIN BARRIER V OR S-BOUNDARY) ;
 	
@@ -4226,6 +4226,8 @@ SELECT PrfPrc IF (-1 BOS)(*1 ("liehket") BARRIER NOT-ADV-PCLE) ;
 SELECT (V Sg2) IF (-1 BOS)(1 ("gus" Pcle))(2 (Pron Pers Sg2 Nom));
 	## Le gus dån oahpes dán bájkkáj?
 
+SELECT PrfPrc IF (0 PxSg1) (*0 ("liehket" V) BARRIER Ind) ;
+    ##GRAM  Guhtis le sunji majdik {vaddám} massta viertti mákset?
 # Third person singular - Sg3
 # ---------------------------
     # Copula le is Sg3 = Sg2 = Pl3.
