@@ -2452,7 +2452,7 @@ COPY:msyn-dimin-after-unna (Ex/N Der/Dimin SUGGEST) EXCEPT (&msyn-dimin-after-un
     # relative use, mij>gut
     
 
-ADD:xmsyn-mij-gut (&msyn-mij-gut) TARGET WHAT IF (*-1 (N Coll) OR Der/NomAg OR Gram/NomAg OR (Sem/Hum) - Sem/Org OR (Sem/Mal) OR (Sem/Fem) OR (Sem/Sur) OR (Pron Pers) OR (Pron Indef) + Sem/Hum BARRIER NOT-ADV-PCLE LINK NOT 0 (Err/Orth PxSg1) LINK NEGATE -1 ("/") LINK -1 Dem)
+ADD:xmsyn-mij-gut (&msyn-mij-gut) TARGET WHAT IF (*-1 (N Coll) OR Der/NomAg OR Gram/NomAg OR (Sem/Hum) - Sem/Org OR (Sem/Mal) OR (Sem/Fem) OR (Sem/Sur) OR (Pron Pers) OR (Pron Indef) + Sem/Hum BARRIER (*) - COMMA - NOT-ADV-PCLE LINK NOT 0 (Err/Orth PxSg1) LINK NEGATE -1 ("/") LINK -1 Dem)
 (NEGATE -1 ("/") OR CC LINK -1 (Pron Rel))
 (NEGATE -1 ("iesj" Sg Nom)) (NEGATE 1 <TH-Nom-Any> + Sg3 OR <TH-Nom-Any> + Pl3)  
 (NEGATE -1 Nom LINK *-1 <RE-Ill-Ani><TH-Acc-*Ani> BARRIER NOT-ADV-PCLE - Ine - Ela - Attr - Dem)
@@ -2525,7 +2525,7 @@ COPY:msyn-mij-gut ("guhti" SUGGEST) EXCEPT ("mij" &msyn-mij-gut) TARGET (&msyn-m
     # ----------------------
     
 
-ADD:xmsyn-gut-mij (&msyn-gut-mij) TARGET WHO IF (-1 N LINK NOT 0 Sem/AnimateNotOrg LINK NEGATE -1 Sem/Hum + Gen) 
+ADD:xmsyn-gut-mij (&msyn-gut-mij) TARGET WHO IF (*-1 N BARRIER (*) - COMMA LINK NOT 0 Sem/AnimateNotOrg LINK NEGATE -1 Sem/Hum + Gen ) 
 (NEGATE -1 ("avtak") OR ONE + Foc/Pos-k OR (Pron Pers) OR (Pron Indef) + Sem/Hum OR Coll) 
 (NEGATE *-1 (N Nom) + Sem/Hum OR (Dem Nom) BARRIER (*) - (N Ine) - (Pron Ine) LINK *-1 BE + (Ind Sg3) OR BE + (Ind Sg3) BARRIER NOT-NPMOD LINK -1 WHO) 
 (NEGATE -1 (N Ine) LINK -1 (N Ill) OR (Pron Ill)) 
@@ -2677,7 +2677,11 @@ ADD:xreal-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-UNEVEN-VERBS OR BE IF (0
     
     # right subj
     
-ADD:xreal-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-UNEVEN-VERBS OR BE IF (0 (Prs Pl3)) (*1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Pers Nom Sg) - PLURAL-QUANTIFIERS BARRIER NOT-NPMOD - Adv - Pcle OR PLURAL-QUANTIFIERS LINK NOT 0 (Pl Nom) LINK NEGATE 1 CC LINK *1 (Nom Sg) BARRIER NOT-NPMOD)  (NEGATE *-1 (Pron Nom Pl3) OR (N Nom Pl) OR (A Nom Pl) OR (Pron Nom Pl))(NEGATE 0 (Prs Sg3) OR SentInit) (NEGATE -1 &msyn-congr-gænna-gejn);
+ADD:xreal-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-UNEVEN-VERBS OR BE IF (0 (Prs Pl3)) (*1 (Pron Nom Sg3) OR (N Nom Sg) OR (Pron Pers Nom Sg) - PLURAL-QUANTIFIERS BARRIER NOT-NPMOD - Adv - Pcle OR PLURAL-QUANTIFIERS LINK NOT 0 (Pl Nom) LINK NEGATE 1 CC LINK *1 (Nom Sg) BARRIER NOT-NPMOD)  
+(NEGATE *-1 (Pron Nom Pl3) OR (N Nom Pl) OR (A Nom Pl) OR (Pron Nom Pl)) 
+(NEGATE -1 &msyn-congr-gænna-gejn)
+(NEGATE 0 (Prs Sg3) OR SentInit)
+(NEGATE 1 ("moattes" Coll)) ;
 
     ## Suv mielas li sån ilá materalistisk.
     ## Mijá sáme åvdåstiddjijn {li} mierredimfábmo.
@@ -2688,7 +2692,8 @@ ADD:xreal-PrsPl3-PrtSg3 (&real-PrsPl3-PrtSg3) TARGET IT-UNEVEN-VERBS OR BE IF (0
     #$ Mån lav ávon ja mihá gå miján li dájddára guhti iåvddånbukti mijá histåvråv.
     #$ Gájka li buorisboathem, ållagasj báhtariddjijdoalvvo mañeldisbuolva.
     #$ Dan diehti gå sámegiella aneduvvá dakkár sajijn gånnå åvddåla ij gullum jali vuojnnum {le} dárbbo gielav ådåstuhttet ja dahkat ådå bágojt.
-
+    #$ Duon dán guovlojn Sámen {li} moattes ållessjattugijs ma åvdeå dárojduhttempolitihkas li ietjasa iednegielav massám.
+    
 COPY:real-PrsPl3-PrtSg3 (Prt Sg3 SUGGEST) EXCEPT (Prs Pl3) TARGET (&real-PrsPl3-PrtSg3) ;
 
 
