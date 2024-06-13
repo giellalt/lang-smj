@@ -593,6 +593,7 @@ These tags should always be located just before the POS tag.
 * **+Sem/Hum_Part** =
 * **+Sem/Hum_Plant** =
 * **+Sem/Hum_Plc** =
+* **+Sem/Hum_Rule** =
 * **+Sem/Hum_State** =
 * **+Sem/Hum_Tool** =
 * **+Sem/Hum_Tool-catch** =
