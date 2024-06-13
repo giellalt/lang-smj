@@ -2452,13 +2452,14 @@ COPY:msyn-dimin-after-unna (Ex/N Der/Dimin SUGGEST) EXCEPT (&msyn-dimin-after-un
     # relative use, mij>gut
     
 
-ADD:xmsyn-mij-gut (&msyn-mij-gut) TARGET WHAT IF (*-1 (N Coll) OR Der/NomAg OR Gram/NomAg OR (Sem/Hum) - Sem/Org OR (Sem/Mal) OR (Sem/Fem) OR (Sem/Sur) OR (Pron Pers) OR (Pron Indef) + Sem/Hum BARRIER (*) - COMMA - NOT-ADV-PCLE LINK NOT 0 (Err/Orth PxSg1) LINK NEGATE -1 ("/") LINK -1 Dem)
+ADD:xmsyn-mij-gut (&msyn-mij-gut) TARGET WHAT IF (*-1 (N Coll) OR Der/NomAg OR Gram/NomAg OR (Sem/Hum) - Sem/Org OR (Sem/Mal) OR (Sem/Fem) OR (Sem/Sur) OR (Pron Pers) OR (Pron Indef) + Sem/Hum BARRIER NOT-ADV-PCLE LINK NOT 0 (Err/Orth PxSg1) LINK NEGATE -1 ("/") LINK -1 Dem) 
 (NEGATE -1 ("/") OR CC LINK -1 (Pron Rel))
-(NEGATE -1 ("iesj" Sg Nom)) (NEGATE 1 <TH-Nom-Any> + Sg3 OR <TH-Nom-Any> + Pl3)  
-(NEGATE -1 Nom LINK *-1 <RE-Ill-Ani><TH-Acc-*Ani> BARRIER NOT-ADV-PCLE - Ine - Ela - Attr - Dem)
+(NEGATE -1 ("iesj" Sg Nom)) 
+(NEGATE -1 Nom LINK *-1 <RE-Ill-Ani><TH-Acc-*Ani> BARRIER NOT-ADV-PCLE - Ine - Ela - Attr - Dem LINK NOT *-1 Nom)
 (NEGATE -1 ("divna" Pl Nom))
 (NEGATE -1 (Pron Ill))
 (NEGATE -1 Der/NomAg OR Gram/NomAg LINK 0 NOT-Sem/Human OR (V Imprt) OR (V ImprtII))
+(NEGATE 1 <TH-Nom-Any> + Sg3 OR <TH-Nom-Any> + Pl3)  
 (NEGATE 1 ("liehket" Sg3) LINK *1 (N Sg Nom) BARRIER NOT-NPMOD) 
 (NEGATE 0 &msyn-gut-mij) 
 (NEGATE 0 (Rel Acc) LINK NOT -1 (N Nom)) 
@@ -2514,6 +2515,14 @@ ADD:xmsyn-mij-gut (&msyn-mij-gut) TARGET WHAT + Nom IF (*1 COPULAS BARRIER NOT-A
 (NEGATE *1 Sem/Hum LINK 1 Po) ;
     ## lij dålåv dahkamin mij lij muv ráddna. Subj-interr-hum COPULA Spred-Hum
     #$ Sámedigge ij nagá Rádedusáv jåhtuj oadtjot, biednigijt juollodittjat dajda dárbojda ma duodalattjat li sáme siebrudagán
+
+    # Comma
+ADD:xmsyn-mij-gut (&msyn-mij-gut) TARGET WHAT IF (-1 COMMA LINK -1 (N Coll) OR Der/NomAg OR Gram/NomAg OR (Sem/Hum) - Sem/Org OR (Sem/Mal) OR (Sem/Fem) OR (Sem/Sur) OR (Pron Pers) OR (Pron Indef) + Sem/Hum) 
+(NEGATE 0 (Rel Acc) LINK NOT -1 (N Nom)) 
+(NEGATE 0 Nom LINK *1 BE + Sg3 BARRIER S-BOUNDARY) 
+(NEGATE 1 ("ávkke" Pl Acc)) ;
+    #$  Muv vielja, {mij} ávkijt, jus guhtik javllá sujna l jáhkko, valla dago älle?
+    #$ Åhpadiddje, {mij} la lága budájs stuorámus?
     
 COPY:msyn-mij-gut ("guhti" SUGGEST) EXCEPT ("mij" &msyn-mij-gut) TARGET (&msyn-mij-gut) ;
 
@@ -2525,7 +2534,7 @@ COPY:msyn-mij-gut ("guhti" SUGGEST) EXCEPT ("mij" &msyn-mij-gut) TARGET (&msyn-m
     # ----------------------
     
 
-ADD:xmsyn-gut-mij (&msyn-gut-mij) TARGET WHO IF (*-1 N BARRIER (*) - COMMA LINK NOT 0 Sem/AnimateNotOrg LINK NEGATE -1 Sem/Hum + Gen ) 
+ADD:xmsyn-gut-mij (&msyn-gut-mij) TARGET WHO IF (-1 N LINK NOT 0 Sem/AnimateNotOrg LINK NEGATE -1 Sem/Hum + Gen ) 
 (NEGATE -1 ("avtak") OR ONE + Foc/Pos-k OR (Pron Pers) OR (Pron Indef) + Sem/Hum OR Coll) 
 (NEGATE *-1 (N Nom) + Sem/Hum OR (Dem Nom) BARRIER (*) - (N Ine) - (Pron Ine) LINK *-1 BE + (Ind Sg3) OR BE + (Ind Sg3) BARRIER NOT-NPMOD LINK -1 WHO) 
 (NEGATE -1 (N Ine) LINK -1 (N Ill) OR (Pron Ill)) 
@@ -2541,6 +2550,16 @@ ADD:xmsyn-gut-mij (&msyn-gut-mij) TARGET WHO IF (*-1 N BARRIER (*) - COMMA LINK 
 
 ADD:xmsyn-gut-mij (&msyn-gut-mij) TARGET WHO IF (*-1 (N Nom) - Sem/Hum OR (Dem Nom) BARRIER (*) - (N Ine) - (Pron Ine) LINK *-1 BE + (Ind Sg3) OR BE + (Ind Sg3) BARRIER NOT-NPMOD LINK -1 WHAT + Nom) ;
     ## Mij la dat {gænna} l guhka siejbbe, ja la jårbbåt gå biejvve ja tjáhppat gå ednam?
+
+    # Comma
+ADD:xmsyn-gut-mij (&msyn-gut-mij) TARGET WHO IF (-1 COMMA LINK -1 N LINK NOT 0 Sem/AnimateNotOrg)
+(NEGATE -2 V)
+(NEGATE -2 ("gijtto"))
+(NEGATE -2 Ine OR Ela LINK NOT 2 Ine OR Ela) ;
+
+    ## Ålggorijkkadepartementan, gænna l åvdåsvásstádus nuorttaguovlloássjijs Ráddidusán, le biellejahkásattjat tjåhkanime Sámedikkijn.
+    #$ Jubmelij gijtto, {guhti} Kristusa baktu agev muv vuojttofárrusis válldá, ja juohkka bájken muv miedet kristusdiedo njálga hapsav bigodit.
+    #$ Iv mån vajálduhte da guokta báhtja Måsken, {gudi} ejga máhttám goappátja boahtet skåvllåj juohkka biejve.
 
 COPY:msyn-gut-mij ("mij" SUGGEST) EXCEPT ("guhti" &msyn-mij-gut Area/NO Area/SE) TARGET (&msyn-gut-mij) ;
 
