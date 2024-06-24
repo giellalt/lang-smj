@@ -5,7 +5,6 @@
 ######## Test targets: ###########
 
 # Default variable for all languages
-TESTS_ENVIRONMENT = ./run_tests.sh
 
 # List here (space separated) all test scripts that should be run
 # unconditionally:
@@ -36,3 +35,4 @@ clean-local:
 	-rm -f *.out *.out.tmp *.expect
 
 include $(top_srcdir)/../giella-core/am-shared/devtest-include.am
+include $(top_srcdir)/../giella-core/am-shared/tools-tts-test-include.am
