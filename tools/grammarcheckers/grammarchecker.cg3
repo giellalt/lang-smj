@@ -3769,7 +3769,7 @@ COPY:msyn-numphrase-sggen (Sg Gen SUGGEST) EXCEPT (Pl Gen &msyn-numphrase-sggen)
 
 # Num
 
-ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num Sg Acc) OR (Num Pl Com) OR (Num Pl Gen) OR ("moadda" Indef Acc) IF (*1 (N Pl Nom) + &msyn-numphrase-sggen OR (N Pl Gen) + &msyn-numphrase-sggen OR (N Sg Gen) OR (N Pl Nom) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) OR Acc LINK 1 N OR Po OR CC LINK NOT 0 Sem/Plc - Ess OR (Prop Ine) LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc) 
+ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num Sg Acc) OR (Num Pl Com) OR (Num Pl Gen) OR ("moadda" Indef Acc) IF (*1 (N Pl Nom) + &msyn-numphrase-sggen OR (N Pl Gen) + &msyn-numphrase-sggen OR (N Sg Gen) OR (N Pl Nom) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) OR Acc LINK 1 N OR Po OR CC LINK NOT 0 Sem/Plc - Ess OR (Prop Ine) LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc)
 (NEGATE 1 COMMA)
 (NEGATE *-1 BE + Pl3 OR BE + (Prs Sg3) BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))
 (NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)
@@ -3792,7 +3792,7 @@ ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num Sg
 ADDRELATION ($2 LEFT) (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen TO (*-1 (Num &msyn-numphrase-sggen) OR ("moadda" Indef &msyn-numphrase-sggen));
 
 
-COPY:msyn-numphrase-sggen (Sg Gen SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sggen) OR (Sg Acc &msyn-numphrase-sggen) OR (Pl Com &msyn-numphrase-sggen) TARGET (Num &msyn-numphrase-sggen) IF (0 (Sg Nom) OR (Sg Acc) OR (Pl Com)) ;
+COPY:msyn-numphrase-sggen (Sg Gen SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sggen) OR (Sg Acc &msyn-numphrase-sggen) OR (Pl Gen &msyn-numphrase-sggen) OR (Pl Com &msyn-numphrase-sggen) TARGET (Num &msyn-numphrase-sggen) IF (0 (Sg Nom) OR (Sg Acc) OR (Pl Com) OR (Pl Gen)) ;
 
 
 # Dem
@@ -4122,7 +4122,7 @@ COPY:msyn-numphrase-sgine (Sg Ine SUGGEST) EXCEPT (Pl Ine) OR (Sg Com) TARGET (I
 
 # Num
 
-ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) OR (Num Sg Gen) OR (Num Sg Nom) OR ("moadda" Indef Acc) IF (*1 (N Sg Ine) OR NUMUNIT + &msyn-numphrase-sgine BARRIER NOT-NPMOD OR Num)(NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 NUMUNIT LINK 1 ("kråvnnå"))  ;
+ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) OR (Num Sg Gen) OR  (Num Sg Nom) OR ("moadda" Indef Acc) IF (*1 (N Sg Ine) OR NUMUNIT + &msyn-numphrase-sgine BARRIER NOT-NPMOD OR Num)(NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) (NEGATE 0 NUMUNIT LINK 1 ("kråvnnå"))  ;
 	# those two rules belong together: xmsyn-numeral-casecongr-com and xmsyn-numeral-casecongr-ine
 	## Mij lip NSRan  guhkev juo berustam, ja ájn berustip, nannit aktijvuodav sámij gaskan divna niellja rijkajn duola degu konkrehtalasj aktisasjbargo baktu.
     ## makkár rahtjamusá li nielje sámegielajn
