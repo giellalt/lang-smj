@@ -2339,15 +2339,15 @@ ADD:xsyn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF
 (NEGATE 0 Attr OR (V Sg3) OR ONLY-ATTR-A OR <AttrPred> OR CONGRUENCE-A-smj)  
 (NEGATE 0 Sem/Hum + (Pl Nom) LINK *0 (V Pl3) OR (V Pl1) OR (V Pl2))
 (NEGATE 0 (Der/Car) OR Ord)(NEGATE 0 Sem/Hum LINK *1 Ine OR Ill OR Ela OR Com OR Adv OR Po BARRIER NOT-NPMODADV)
+(NEGATE 0 Gen) 
+(NEGATE 0 (Pl Nom))
 (NEGATE *-1 COPULAS BARRIER NOT-ADV-PCLE LINK *2 Inf OR Ine OR Ill OR Sem/Time + Gen OR Sem/Time + Acc OR Adv OR Po BARRIER NOT-NPMODADV - Acc - (A Sg Nom) - CASE) (NEGATE 1 (N Nom) OR (Pron Nom) LINK 1 ("liehket" Ind))
 (NEGATE -1 (N Nom) OR (Pron Nom) LINK *-1 COPULAS BARRIER NOT-NPMODADV - (Pl Nom))
 (NEGATE -1 COPULAS + Sg3 OR COPULAS + (Prs Sg2) LINK *-1 BOS BARRIER NOT-ADV - Ine - Ela LINK *1 (N Nom) OR (Pron Nom) BARRIER NOT-NPMODADV - A - COPULAS)
 (NEGATE -1 CC LINK -1 (A Sg) OR (A Pl))
 (NEGATE -1 ("man") LINK 1 (A) LINK 1 Nom LINK *1 ("liehket" Ind) BARRIER NOT-CC - Nom)  
 (NEGATE 1 BE)  
-(NEGATE 1 Pr) 
-(NEGATE 0 Gen) 
-(NEGATE 0 (Pl Nom)) ;
+(NEGATE 1 Pr)  ;
 	#$ {Buorijn} mielajn	vuordáv snivva tjadádit dåjmajt ja rapportan oajvvaduvvi ja sidáv ráddidusájn vuogas láhkáj guládallat ja aktan barggat váj iesjguhtik dåjma lulujin jåhtuj biejaduvvat.
 	#$ Dákkir sebradahtte birrasav dahkat {buorij} avtastallamvuogij soajttá sisadnet ájnegis máná , juohkusa mánájs jali ålles mánájgárddebirrasav.
 	#$ Jur dán sihkarasstem diehti hæhttu unneplåhkogiela dásse bajeduvvat ienemus máhttelis sebrudaksuorgijn ja nav dahkat dav {buorren} ulmutjijda válljit.
@@ -2893,7 +2893,14 @@ ADDRELATION (RIGHT) (&punct-nom-nom-comma) TO (1 (&ADDED)) ;
     #-----------------------------------------------
     
 
-ADD:xsyn-missing-copula (&syn-missing-copula) TARGET (Gram/3syll Actio Nom) OR (N Nom) IF (*1 (A Nom) OR (Pron Indef Nom) BARRIER NOT-ADV LINK NOT 0 Attr OR (V Ind) OR Adv OR Po OR (Gram/TAbbr)) (NEGATE 0 (Gen) OR EVEN-VERBS + Der/NomAct OR (A Nom)) (NEGATE *0 BE + ConNeg OR BECOME + ConNeg OR (V Inf) OR (Pl3 &real-PrsPl3-PrtSg3) BARRIER S-BOUNDARY) (NEGATE 1 ("ájnas") OR ("binnep") OR ("ienep") OR (V Ind)) (NEGATE 1 (A Nom) LINK 1 BE + Inf OR BECOME + Inf) (NEGATE 1 (A Nom &syn-pred-attr) OR ("muhtem")) (NEGATE *1 (A Pl Nom) BARRIER NOT-ADV LINK *0 BE + Pl3 OR BECOME + Pl3 BARRIER S-BOUNDARY) (NEGATE *1 (A Sg Nom) BARRIER NOT-ADV LINK *0 BE + Sg3 OR BECOME + Sg3 BARRIER S-BOUNDARY) (NEGATE 0 (Der/NomInstr) OR (V "liehket") ) (NEGATE *0 (PrfPrc) BARRIER S-BOUNDARY LINK -1 BE)  ;
+ADD:xsyn-missing-copula (&syn-missing-copula) TARGET (Gram/3syll Actio Nom) OR (N Nom) IF (*1 (A Nom) OR (Pron Indef Nom) BARRIER NOT-ADV LINK NOT 0 Attr OR (V Ind) OR Adv OR Po OR (Gram/TAbbr)) (NEGATE 0 (Gen) OR EVEN-VERBS + Der/NomAct OR (A Nom)) (NEGATE *0 BE + ConNeg OR BECOME + ConNeg OR (V Inf) OR (Pl3 &real-PrsPl3-PrtSg3) BARRIER S-BOUNDARY) 
+(NEGATE 1 ("ájnas") OR ("binnep") OR ("ienep") OR (V Ind)) 
+(NEGATE 1 (A Nom) LINK 1 BE + Inf OR BECOME + Inf) 
+(NEGATE 1 (A Nom &syn-pred-attr) OR ("muhtem")) 
+(NEGATE *1 (A Pl Nom) BARRIER NOT-ADV LINK *0 BE + Pl3 OR BECOME + Pl3 BARRIER S-BOUNDARY) 
+(NEGATE *1 (A Sg Nom) BARRIER NOT-ADV LINK *0 BE + Sg3 OR BECOME + Sg3 BARRIER S-BOUNDARY) 
+(NEGATE 0 (Der/NomInstr) OR (V "liehket") OR ("gijtto") ) 
+(NEGATE *0 (PrfPrc) BARRIER S-BOUNDARY LINK -1 BE)  ;
 
 
 ADDCOHORT  ("<la>" "liehket" Ind Prs Sg3 &ADDED &syn-missing-copula) AFTER &syn-missing-copula (NEGATE 0 &ADDED OR ("<.*[aeiouáå]>"r));
