@@ -193,6 +193,7 @@ LIST Foc/Pos-k		 = Foc/Pos-k ;
 # Derivation
 # ----------
 
+LIST Der/akti = Der/akti ; 
 LIST Der/adda = Der/adda ;
 LIST Der/ahtti = Der/ahtti ;
 LIST Der/ahtja = Der/ahtja ;
@@ -3755,7 +3756,8 @@ ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Pl Gen) IF ((0 N) OR (
 (NEGATE 0 (N Pl Nom) LINK -1 (Num Sg Nom))
 (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr - Gen - PrfPrc)  
 (NEGATE 0 NUMUNIT LINK 1 N) 
-(NEGATE -1 Sem/Time)  
+(NEGATE -1 Sem/Time) 
+(NEGATE *-1 Der/akti BARRIER NOT-NPMOD) 
 (NEGATE -1 NUMUNIT LINK -1 PLURAL-QUANTIFIERS OR Num)
 (NEGATE -1 &msyn-numphrase-sggen OR (N Sg Gen)) 
 (NEGATE -1 (Num "<[§].*>"r) OR (Num "<.*%>"r))
@@ -3854,6 +3856,7 @@ SUBSTITUTE (&msyn-numphrase-sggen) (co&msyn-numphrase-sggen) TARGET (SUGGEST);
 ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 Num BARRIER (*) - PRE-NP-HEAD OR Gen + Sem/Hum LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date LINK NEGATE -1 Sem/Curr)
 (NEGATE -1 Sem/Time) 
 (NEGATE -1 (Num "<[§].*>"r) OR (Num "<.*%>"r))
+(NEGATE *-1 (Der/akti) BARRIER NOT-NPMOD) 
 (NEGATE 0 (N Sg)) 
 (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) 
 (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE -1 (Sg Gen) LINK *-1 (Num SUGGEST) BARRIER (*) - PRE-NP-HEAD OR Gen + Sem/Hum ) ;
@@ -3988,6 +3991,7 @@ ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Pl Ill) IF ((0 N) OR (
 (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) 
 (NEGATE -1 (Num "<[§].*>"r) OR (Num "<.*%>"r))
 (NEGATE -1 NUMUNIT LINK -1 PLURAL-QUANTIFIERS OR Num) 
+(NEGATE *-1 Der/akti BARRIER NOT-NPMOD) 
 (NEGATE *1 Po BARRIER (*) - CC - Gen - (N Pl Nom)) ;
     ## Duodden álgadim mærrádusájda minerállalágan, de le dát tjanádum nielje oajvvedásijda minerálladåjmajn. OK
     ## Mån lav åhtsåm guokta {universitehtajda} #illative OK
@@ -4071,7 +4075,8 @@ ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Pl Ela) IF ((0 N) OR (
 (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr - Gen - PrfPrc) 
 (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) 
 (NEGATE -1 NUMUNIT LINK -1 PLURAL-QUANTIFIERS OR Num) 
-(NEGATE -1 (Num "<[§].*>"r) OR (Num "<.*%>"r)) ;
+(NEGATE -1 (Num "<[§].*>"r) OR (Num "<.*%>"r))
+(NEGATE *-1 Der/akti BARRIER NOT-NPMOD) ;
     ## Nammadit gålmmå ájrrasa gudát {ájrrasijs} Finnmárkoåbmudahkaj mij háldat ednamijt ja resursajt Finnmárkon finnmárkolága milta.  
     ## Sån gatjádij låge ulmutjijs sijá alkohåvlådábij birra.
     ## Alvos státtáv  máhtá vuojnnet gåjt gietjav báhppagieldajs.
@@ -4158,7 +4163,8 @@ ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Pl Ine) OR (Sg Com) IF
 (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) 
 (NEGATE -1 (Num "<[§].*>"r) OR (Num "<.*%>"r))
 (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) 
-(NEGATE 0 (Sg Com) LINK -1 (Num Sg Com) LINK NOT -1 Dem);
+(NEGATE 0 (Sg Com) LINK -1 (Num Sg Com) LINK NOT -1 Dem)
+(NEGATE *-1 Der/akti BARRIER NOT-NPMOD) ;
 	## Sámegiella mánájgárdijn ja skåvlåjn guovte ietjá {sámediggediedádusájn} giehtadaláduvvi, ja danen ep galga dáppe dáj guokta sebrudakásadusáj rollav snivva guoradit.
 	## Merustallamvædtsak VUK le adnuj váldeduvvam juohkka skåvlån daj guokta {suohkanijn} ja le ájnas oasse åvddånahttemságastallamij vuodos.
 	#$ lijma nåv árrat smáredam ja vuodjám 6-7 tijma bijlajn 
