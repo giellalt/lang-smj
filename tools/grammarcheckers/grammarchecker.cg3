@@ -2037,7 +2037,7 @@ COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence
 COPY:syn-from-sentence-init-copula (Pl3 SUGGEST) EXCEPT (Sg3 SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (1 (Pl Nom) LINK -2 ("de")) ;
     ## Vájku dat rádje sjattaj de {le} ulmutja sässtám ietjasa dábijt ja kultuvrav. 
     
-COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (*1 (N Pl Nom) BARRIER NOT-NPMOD) (NEGATE -1 (N Sg Nom)) (NEGATE *1 (V Pl3) BARRIER S-BOUNDARY)   ;
+COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (*1 (N Pl Nom) BARRIER NOT-NPMOD) (NEGATE -1 (N Sg Nom)) (NEGATE *1 (V Pl3) BARRIER S-BOUNDARY) (NEGATE -1 (Pers Sg2) OR (Pers Sg3)) (NEGATE -1 ("guhti" Sg Nom) LINK -1 (Pers Sg2) OR (Pers Sg3))  ;
     ## Jus galggap vuorbástuvvat hæhttup aktan barggat, dádjadusájn juhti {le} nasjåvnålasj fálaldagá ma galggi ásaduvvat.
     
 LIST GO-PCLE-smj = "gå" ;
@@ -2053,7 +2053,10 @@ COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence
     ## Ieŋŋgil le buorre > la
 	## Árvustallam viertti dáhpáduvvat dajna elementajn manna le sæmmi lágásj dåbddomærkka ja mij {le} lagámus, ij dåhkki dåbddomerkajt árvustallat ietjá elementajn jus gávnnu elemænnta manna le sæmmi lágásj dåbddomerka lagábun. 
 	#$ Avtaárvvusasj sosiáldievnastus sáme álmmugij man vuodo {le} sámegiella ja kultuvrra.
-	
+
+COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) OR (Sg2 &syn-from-sentence-init-copula) IF (-1 ("guhti" Sg Nom) LINK -1 ("dån")) ;
+
+
 COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 (V Prt) OR (V Prs)) (NEGATE -1 N OR A) ; 
     ## dagu sálmmagirjje suláj 1890-rájes majt sån jáhkká {le} ájnna mij Divtasvuonan vilák gávnnu.
 
@@ -2114,7 +2117,16 @@ COPY:syn-to-sentence-init-copula (SentInit SUGGEST) EXCEPT (&syn-to-sentence-ini
 
 	# la to l after vowel
     # ----------------------------------------------------------------------
-ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" Ind Prs Sg2) IF (NEGATE 0 Clt OR Neg) (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 SUGGEST OR CC OR CS OR ("de" Adv) OR ("juo") OR (Ill Pl) OR V) (NEGATE 1 EOS) (NEGATE 1 COMMA) (NEGATE 0 (Pl3 SUGGEST) OR (Sg3 SUGGEST)) (NEGATE -1 &msyn-congr-gænna-gejn) (NEGATE 0 &msyn-soajtta-le) (NEGATE -1 (Dem Pl Nom)) (NEGATE -1 ("guhti") LINK -1 ("mån" Pl1 Gen) LINK -1 ("áhttje" Sg Nom)) (NEGATE -1 (Dem Pl Nom) LINK -1 BOS)  ;
+ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" Ind Prs Sg2) IF (NEGATE 0 Clt OR Neg) (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 SUGGEST OR CC OR CS OR ("de" Adv) OR ("juo") OR (Ill Pl) OR V) 
+(NEGATE -1 &msyn-congr-gænna-gejn) 
+(NEGATE -1 (Dem Pl Nom)) 
+(NEGATE -1 ("guhti") LINK -1 ("mån" Pl1 Gen) LINK -1 ("áhttje" Sg Nom)) 
+(NEGATE -1 ("guhti" Sg Nom) LINK -1 ("dån" Pers Sg2))
+(NEGATE -1 (Dem Pl Nom) LINK -1 BOS)
+(NEGATE 0 (Pl3 SUGGEST) OR (Sg3 SUGGEST)) 
+(NEGATE 0 &msyn-soajtta-le) 
+(NEGATE 1 EOS) 
+(NEGATE 1 COMMA)   ;
 
 	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
     ## Jus árvodimes dåbddomerka galggi árvustaláduvvat viertti dat elementa manna le sæmmi lágásj dåbddomærkka ja manna {le} árvvo aj liehket dádjadahtes váj dát aj sihtá dárkestuvvat. 
