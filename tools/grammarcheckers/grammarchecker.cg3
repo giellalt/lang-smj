@@ -1644,6 +1644,7 @@ LIST &msyn-numphrase-sgill = &msyn-numphrase-sgill ;
 LIST &msyn-numphrase-sggen = &msyn-numphrase-sggen ;
 LIST &msyn-numphrase-sgcom = &msyn-numphrase-sgcom ;
 LIST &msyn-numphrase-sgine = &msyn-numphrase-sgine ;
+LIST &msyn-numphrase-ess = &msyn-numphrase-ess ;
 
 LIST &msyn-numeral-attr = &msyn-numeral-attr ;
 LIST &msyn-numeral-attr-pl-ine = &msyn-numeral-attr-pl-ine ;
@@ -4480,6 +4481,48 @@ COPY:msyn-numphrase-sgcom (Sg Com SUGGEST) EXCEPT (Pl Com Attr) OR (Pl Gen Attr)
 
 SUBSTITUTE (&msyn-numphrase-sgcom) (co&msyn-numphrase-sgcom) TARGET (SUGGEST);
 MAP:LOCK_READING (SUGGEST) (SUGGEST);
+
+
+
+	# essive numeral phrases
+    # ===================================================================================================
+
+# Num
+
+ADD:xmsyn-numphrase-ess (&msyn-numphrase-ess) TARGET (Num Sg Nom) IF (*1 (N Ess) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom)) 
+(NEGATE -1 ("kl"))
+(NEGATE 0 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 1 (Pl Ela) LINK 1 BE + Pl3 LINK NOT 1 Num) 
+(NEGATE 0 NUMUNIT LINK -1 Num OR ("moadda")) 
+(NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date) 
+(NEGATE 0 ("<.*%>"r)) 
+(NEGATE 0 (Num Rom)) 
+(NEGATE 1 ("vahkkusasj" Attr) OR ("mánnusasj" Attr) OR ("bæjvvásasj" Attr) OR ("tijmmasasj" Attr) OR ("jahkasasj" Attr))  
+(NEGATE 1 Num OR ("moadda") LINK NOT 0 NUMUNIT)
+(NEGATE 1 Dem) 
+(NEGATE 1 (N Sg Nom)) ;
+
+
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-ess) OR NUMUNIT + &msyn-numphrase-ess TO (*-1 Num BARRIER NOT-Attr - PrfPrc) ;
+
+COPY:msyn-numphrase-ess (Ess SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-ess) OR (v2 Sg Nom &msyn-numphrase-ess) TARGET (Num &msyn-numphrase-ess) IF (*1 (N Ess) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom)) ;
+
+# Dem
+
+ADD:xmsyn-numphrase-ess (&msyn-numphrase-ess) TARGET (Pron Dem) IF (1 (Num Ess) LINK *1 (N Ess) BARRIER NOT-NPMOD - CC) (NEGATE 1 (Pron Dem)) (NEGATE 1 ("akta" Num Sg Nom));
+
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-ess) OR NUMUNIT + &msyn-numphrase-ess TO (*-1 (Dem &msyn-numphrase-ess));
+
+
+COPY:msyn-numphrase-ess (Ess SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-ess) OR (Sg Gen &msyn-numphrase-ess) OR (Sg Ill Attr &msyn-numphrase-ess) TARGET (Dem &msyn-numphrase-ess) IF (*2 (N Ess) OR NUMUNIT + (Ess) BARRIER NOT-Attr)  ;
+    ## Divtasvuona suohkan ásadij fåndav mij rudájt oadtju daj guokta luossabiebbmamvidnudagájs.
+    ## Gájka dajs gietjav rabdaguovlos la edna jåhtålibme ålgus
+    ## Dajs vihtta ulmutjijs gudi dáj suohkanijn årrun 15-jagágin
+    ## {Dajs} 22997 ulmutjijs gudi dáj suohkanijn årrun 15-jagágin.  DNW
+
+
+SUBSTITUTE (&msyn-numphrase-ess) (co&msyn-numphrase-ess) TARGET (SUGGEST);
+
+
 
 
 
