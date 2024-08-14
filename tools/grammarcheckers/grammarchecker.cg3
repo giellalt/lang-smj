@@ -4159,7 +4159,7 @@ ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Pl Ela) IF ((0 N) OR (
 (NEGATE -1 NUMUNIT LINK -1 PLURAL-QUANTIFIERS OR Num) 
 (NEGATE -1 (Num "<[§].*>"r) OR (Num "<.*%>"r) OR ("%")) 
 (NEGATE -1 ("vahkkusasj") OR ("mánnusasj") OR ("bæjvvásasj") OR ("tijmmasasj") OR ("jahkasasj") LINK -1 (Num))
-(NEGATE *-1 ("akta" Sg Nom) BARRIER NOT-Attr LINK *1 (Pl Ela) BARRIER NOT-Attr)
+(NEGATE *-1 ("akta" Sg Nom) BARRIER NOT-Attr LINK NOT 1 ("moadda") LINK *1 (Pl Ela) BARRIER NOT-Attr)
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 0 ("aktan" Adv))
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 1 Dem)
 (NEGATE *-1 Der/akti BARRIER NOT-NPMOD) ;
@@ -4319,7 +4319,8 @@ ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Num Pl Ine) OR (Num Sg
 (NEGATE 1 Num LINK NOT 0 NUMUNIT)
 (NEGATE 1 Dem) 
 (NEGATE 0 (Sg Nom) LINK 1 (Sg Gen) LINK 1 Sem/Plc)
-(NEGATE *1 (N Ess) BARRIER NOT-NPMOD);
+(NEGATE *1 (N Ess) BARRIER NOT-NPMOD)
+(NEGATE *1 (N <spelled>)) ;
 	# those two rules belong together: xmsyn-numeral-casecongr-com and xmsyn-numeral-casecongr-ine
 	## Mij lip NSRan  guhkev juo berustam, ja ájn berustip, nannit aktijvuodav sámij gaskan divna niellja rijkajn duola degu konkrehtalasj aktisasjbargo baktu.
     ## makkár rahtjamusá li nielje sámegielajn
@@ -4423,7 +4424,8 @@ ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Num Sg Gen) OR (Num Pl
 (NEGATE 0 (Sg Com) LINK *1 (N Sg Com) BARRIER NOT-NPMOD LINK NOT -2 Dem)
 (NEGATE 1 ("vahkkusasj" Attr) OR ("mánnusasj" Attr) OR ("bæjvvásasj" Attr) OR ("tijmmasasj" Attr) OR ("jahkasasj" Attr))  
 (NEGATE 1 Dem) 
-(NEGATE 1 Num LINK NOT 0 NUMUNIT);
+(NEGATE 1 Num LINK NOT 0 NUMUNIT)
+(NEGATE *1 (N <spelled>)) ;
 	## Sievedusnummar mij e-faktura-sjiehtadussaj aneduvvá le divutmáksenummar   {gudá} tállajn. --- what still needs to be fixed is that  if there are two alternative fixes, we fix them separately, maybe by using LINK and ADDRELATION
 	## Valla jus ”Sáme Goadev” galggap tsieggigoahtet, ålles dáj {nielje} rijkajn, de diedon diehtet vierttip, makkár dähkága ja ådnårisá dasi buoremusát hiehpi.
     ## Akta nuvtagijn gærggi, ja nuppijn uddni gergav> avtajn nuvtagijn
