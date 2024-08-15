@@ -3829,7 +3829,8 @@ ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num Sg
 (NEGATE 1 Dem) 
 (NEGATE 1 COMMA) 
 (NEGATE 1 ("ja"))
-(NEGATE 1 Ela LINK 0 PxSg3) ;
+(NEGATE 1 Ela LINK 0 PxSg3) 
+(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
 
 	## {Guokta} gusá fiekse > Guovte gusá fiekse # only numeral error
     ##  Dá vidjura muhtem mudduj máhtti tjielggit ieridisájt {guokta} ájnas dáhtágáldo gaskan.
@@ -3846,7 +3847,8 @@ ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num Sg
 (NEGATE -1 (Dem Acc))
 (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) 
 (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) 
-(NEGATE 1 Attr OR (N Sg Gen) LINK 1 CC LINK 1 (Num Acc) LINK *1 (N Acc) BARRIER NOT-NPMOD);
+(NEGATE 1 Attr OR (N Sg Gen) LINK 1 CC LINK 1 (Num Acc) LINK *1 (N Acc) BARRIER NOT-NPMOD)
+(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
 	## Jus baldeduvvá giddiduvvá {guokta} stuor ja buorre væráldij gaskan.
 
 ADDRELATION ($2 LEFT) (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen TO (*-1 (Num &msyn-numphrase-sggen) OR ("moadda" Indef &msyn-numphrase-sggen));
@@ -3953,7 +3955,8 @@ ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET ONE + (Num Sg Nom) OR O
 (NEGATE 1 Dem) 
 (NEGATE 1 ("ja"))
 (NEGATE 1 COMMA)
-(NEGATE 1 Num LINK NOT 0 NUMUNIT);
+(NEGATE 1 Num LINK NOT 0 NUMUNIT)
+(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
 
     ## mån vuojnáv akta gusáv. OK
     ## Tyrkian lijma åvtå vahkov. OK
@@ -3971,7 +3974,8 @@ ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Num Sg Acc) IF (0 ("<.
 (NEGATE 1 COMMA)
 (NEGATE 1 ("ja"))
 (NEGATE 1 Dem) 
-(NEGATE 1 Num LINK NOT 0 NUMUNIT);
+(NEGATE 1 Num LINK NOT 0 NUMUNIT)
+(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
 
     # vuojnáv guovtev>guokta gusájt OK
     #$ Dá lågev giela li gullum.  OK
@@ -3989,7 +3993,8 @@ ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Num Pl Acc) OR (Num Sg
 (NEGATE 1 Dem) 
 (NEGATE 1 ("ja"))
 (NEGATE 1 COMMA)
-(NEGATE 1 (N Sem/Time)) ;
+(NEGATE 1 (N Sem/Time)) 
+(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
     ##  E gávnu buorre lågo galles sáhkadi, låhki jali dádjadi dajt {gålmåjt} almulasj sámegielajt Vuonan uddni. OK
     ## Guovlo gånnå li gaskan guokta jali niellja mandáhta galggi tjáledahttet {avtse} kandidáhtajt lisstaoajvvadussaj OK
 
@@ -3997,7 +4002,8 @@ ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Num Pl Acc) OR (Num Sg
 ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Num Pl Acc) OR (Num Sg Gen) IF (*1 PRE-NP-HEAD BARRIER NOT-ADV LINK 1 CC LINK 1 PRE-NP-HEAD LINK *1 (N Pl Acc) + &msyn-numeral-attr OR (N Pl Acc) + &msyn-numphrase-sgacc OR (A Pl Acc) +  &msyn-numphrase-sgacc OR (N Pl Nom) OR (A Pl Nom) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) 
 (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) 
 (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras"))
-(NEGATE 1 Dem)  ;
+(NEGATE 1 Dem)  
+(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
 	## mån vuojnáv {avtse} buorre ja stuor gusájt OK
 
 
@@ -4050,7 +4056,8 @@ ADD:xmsyn-numphrase-placc (&msyn-numphrase-placc) TARGET (Num Sg Acc) OR (Num Sg
 (NEGATE 1 Dem) 
 (NEGATE 1 ("ja"))
 (NEGATE 1 COMMA)
-(NEGATE 1 Num LINK NOT 0 NUMUNIT);
+(NEGATE 1 Num LINK NOT 0 NUMUNIT)
+(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
 
 	## Mij gullu julevsámegiellaj ja oarjjelsámegiellaj le dá dájt maŋemus låge jagijt åvddånahttem læhkám.
 
@@ -4132,7 +4139,8 @@ ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Num Sg Nom) OR (Num Sg
 (NEGATE 1 Num LINK NOT 0 NUMUNIT)
 (NEGATE 1 Dem) 
 (NEGATE 1 ("vahkkusasj" Attr) OR ("mánnusasj" Attr) OR ("bæjvvásasj" Attr) OR ("tijmmasasj" Attr) OR ("jahkasasj" Attr))  
-(NEGATE *1 (N Sg Ill) BARRIER NOT-NPMOD LINK *1 Po BARRIER (*) - CC - Gen - (N Pl Nom)) ;
+(NEGATE *1 (N Sg Ill) BARRIER NOT-NPMOD LINK *1 Po BARRIER (*) - CC - Gen - (N Pl Nom)) 
+(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
 
 ADD:num-phrase  (COERROR)  TARGET (Num &msyn-numphrase-sgill) IF (*1 (&msyn-numphrase-sgill) BARRIER NOT-Attr - PrfPrc);
 
@@ -4230,7 +4238,8 @@ ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Num Sg Nom) OR (Num Sg
 (NEGATE 1 ("vahkkusasj" Attr) OR ("mánnusasj" Attr) OR ("bæjvvásasj" Attr) OR ("tijmmasasj" Attr) OR ("jahkasasj" Attr))  
 (NEGATE 1 Num OR ("moadda") LINK NOT 0 NUMUNIT)
 (NEGATE 1 Dem) 
-(NEGATE 1 (N Sg Nom)) ;
+(NEGATE 1 (N Sg Nom)) 
+(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
 
     ## Alvos státtáv  máhtá vuojnnet gåjt gietjav báhppagieldajs.
     ## Låge åhtsåmusás li gietjav åhtsåmusá árbbedábálasj juojggusav almodittjat.NOT
@@ -4371,7 +4380,8 @@ ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Num Pl Ine) OR (Num Sg
 ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) IF (*1 PRE-NP-HEAD BARRIER NOT-ADV LINK 1 CC LINK 1 PRE-NP-HEAD LINK *1 (N Pl Ine) + &msyn-numphrase-sgine OR (N Sg Com) + &msyn-numphrase-sgine BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) 
 (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) 
 (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) 
-(NEGATE 1 Dem) ;
+(NEGATE 1 Dem) 
+(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
 	## Tjoahkkáj li dájn {niellja} buorre ja stuor sajijn, Mortensnesajn oajvvebájkken, sierralágásj buojkulvisá årromij, bivddemij ja åsskuj Arktalasj guovlojn 12000 jagij tjadá.
 
 ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgine) OR NUMUNIT + &msyn-numphrase-sgine TO (*-1 (Num &msyn-numphrase-sgine) OR ("moadda" Indef &msyn-numphrase-sgine)); # LINK *1 (N &msyn-numphrase-sgine));s
@@ -4489,7 +4499,9 @@ ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Num Sg Gen) OR (Num Pl
 (NEGATE 1 ("ja"))
 (NEGATE 1 ("vahkkusasj" Attr) OR ("mánnusasj" Attr) OR ("bæjvvásasj" Attr) OR ("tijmmasasj" Attr) OR ("jahkasasj" Attr))  
 (NEGATE 1 Num LINK NOT 0 NUMUNIT)
-(NEGATE 1 Dem) ;
+(NEGATE 1 Dem) 
+(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD)  ;
+
 	## Åtsålvisáv dahká {guokta} dagojn. 
 	
     ## Foanndaj la jahkásattjat lasedibme kapitálas {guovte} miljåvnåjn gålmmå jahkáj.
@@ -4500,7 +4512,8 @@ ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Num Sg Gen) OR (Num Pl
 ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) IF (*1 PRE-NP-HEAD BARRIER NOT-ADV LINK 1 CC LINK 1 PRE-NP-HEAD LINK *1 (N Pl Ine) + &msyn-numphrase-sgcom OR (N Sg Com) + &msyn-numphrase-sgcom BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) 
 (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) 
 (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras"))
-(NEGATE 1 Dem) ;
+(NEGATE 1 Dem) 
+(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
 	## Tjoahkkáj li dájn {niellja} buorre ja stuor sajijn, Mortensnesajn oajvvebájkken, sierralágásj buojkulvisá årromij, bivddemij ja åsskuj Arktalasj guovlojn 12000 jagij tjadá.
 
 
@@ -4553,7 +4566,8 @@ ADD:xmsyn-numphrase-ess (&msyn-numphrase-ess) TARGET (Num Sg Nom) IF (*1 (N Ess)
 (NEGATE 1 ("vahkkusasj" Attr) OR ("mánnusasj" Attr) OR ("bæjvvásasj" Attr) OR ("tijmmasasj" Attr) OR ("jahkasasj" Attr))  
 (NEGATE 1 Num OR ("moadda") LINK NOT 0 NUMUNIT)
 (NEGATE 1 Dem) 
-(NEGATE 1 (N Sg Nom)) ;
+(NEGATE 1 (N Sg Nom)) 
+(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
 
 
 ADDRELATION ($2 LEFT) (N &msyn-numphrase-ess) OR NUMUNIT + &msyn-numphrase-ess TO (*-1 Num BARRIER NOT-Attr - PrfPrc) ;
