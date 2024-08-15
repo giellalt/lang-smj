@@ -82,7 +82,7 @@ LEXICON BÅRSSJOT_IV  o-verbs with
 * *hæsojma:* `hæssot+V+IV+Ind+Prt+Pl1`
 * *häsojma:* `hæssot+V+IV+Ind+Prt+Pl1`
 
-LEXICON VILSSJOT_IV  o-verbs as BÅRSSJOT but without derivations -stit, -stallat, -stahtte, - stasste.  With dim -astit that are hardcoded
+LEXICON VILSSJOT_IV  o-verbs as BÅRSSJOT but without derivations -stit, -stallat, -stahttet, - stasstet.  With dim -astit that are hardcoded
 
 * libjjot # Eveb-syllable test examples:*
 * *libjov:* `libjjot+V+IV+Ind+Prs+Sg1`
@@ -181,7 +181,14 @@ LEXICON BASSALASSTET_TV   Like BASSAT for already derived words (except words en
 * *jårgudalliv:* `jårgudallat+V+TV+Ind+Prt+Sg1`
 * *jårgudalájma:* `jårgudallat+V+TV+Ind+Prt+Pl1`
 
-LEXICON JUHKAT_TV   a-verbs like BASSAT_TV but but without derivations -stit, -stallat, -stahtte, - stasste. Dim -istit that are hardcoded. Three passives
+LEXICON HIEJTEDAHTTET_TV   Like BASSALASSTET_TV, but for words ending on -ahttet. Diffrence is Use/NG an Use/-Spell for NomAg "hiejedahttijn", since this is rearly used an is mixed up with gerundium "hiejtedattijn". Like BASSAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced. Three passives
+
+* jårgudallat # Even-syllable test examples:*
+* *jårgudaláv:* `jårgudallat+V+TV+Ind+Prs+Sg1`
+* *jårgudalliv:* `jårgudallat+V+TV+Ind+Prt+Sg1`
+* *jårgudalájma:* `jårgudallat+V+TV+Ind+Prt+Pl1`
+
+LEXICON JUHKAT_TV   a-verbs like BASSAT_TV but but without derivations -stit, -stallat, -stahttet, - stasstet. Dim -istit that are hardcoded. Three passives
 
 * njammat # Even-syllable test examples:*
 * *njamáv:* `njammat+V+TV+Ind+Prs+Sg1`
