@@ -1601,7 +1601,7 @@ LIST HUMAN-LIKE = "bærggal" "ieŋŋgil" "hállde" "hærrá" "jubmel" "stállo" 
 
 SET HUMAN-INDIVIDUAL = HUMAN-LIKE OR FAMILY OR NON-FAMILY ;
 
-LIST PL-PAIR-N = "sabek" "fáhtsa" "guohpá" "vuotta" "skuovva" "nuvtak" "tjátjek" "båvså" "siebak" "guobak" "tjalmmeglása" "fiehtarbåvså" "loamssjebåvså" "sisbåvså" "ålgoldisbåvså" "ájrro" "stiebil" "gáma" "hullofáhtsa" "rabo" "hulloguohpá" "luodda" "jahke" ; #TODO Inga, fleire typiske par må legges til her
+LIST PL-PAIR-N = "sabek" "fáhtsa" "guohpá" "vuotta" "skuovva" "nuvtak" "tjátjek" "båvså" "siebak" "guobak" "tjalmmeglása" "fiehtarbåvså" "loamssjebåvså" "sisbåvså" "ålgoldisbåvså" "ájrro" "stiebil" "gáma" "hullofáhtsa" "rabo" "hulloguohpá" "luodda" ; #TODO Inga, fleire typiske par må legges til her
 
 LIST PL-NONPAIR-N = "áiru" "beaivvaščalbmeláset" "beassážat" "biddu" "čalbmeláset" "čázet" "fáhcca" "gállot" "gálssot" "gáma" "gistta" "goikket" "gummestevvel" "heajat" "hellodagat" "juovllat" "mállásat" "nagir" "njealljejuvllat" "njuorjjot" "nuhtat" "nuvttat" "nuvttot" "sabet" "sáppat" "sisttet" "skárrit" "skierat" "skuovva" "stevvel" "suohkku" "suorbmafáhcca" "suorpmahat" "ullofáhcca" "ullosuohkku" "viljjit" "vuotta" ("[0-9]-jahki"r) ("[0-9]-[0-9]-jahki"r) ("[0-9]-jahki"r) ;
 
@@ -3918,7 +3918,8 @@ ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF ((0 N) OR (
 (NEGATE 0 (N Sg)) 
 (NEGATE 0 Err/Orth)
 (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) 
-(NEGATE 0 PL-PAIR-N LINK *-1 (Num Sg) BARRIER NOT-Attr LINK -1 (Indef Pl Acc)) 
+(NEGATE 0 PL-PAIR-N LINK *-1 (Num Sg) BARRIER NOT-Attr LINK -1 (Indef Pl Acc))
+(NEGATE 0 (N Pl Acc) + Sem/Time OR (Pl Acc) + NUMUNIT LINK *-1 (Num Pl Acc) BARRIER NOT-NPMOD) 
 (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE -1 (Sg Gen) LINK *-1 (Num SUGGEST) BARRIER (*) - PRE-NP-HEAD OR Gen + Sem/Hum ) ;
 
 	#$ Vuojnniv gålmmå gusá #accusative OK
@@ -3996,7 +3997,8 @@ ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Num Pl Acc) OR (Num Sg
 (NEGATE 1 ("ja"))
 (NEGATE 1 COMMA)
 (NEGATE 1 (N Sem/Time)) 
-(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
+(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) 
+(NEGATE 0 (Num Pl Acc)  LINK *1 (N Pl Acc) + Sem/Time BARRIER NOT-NPMOD)  ;
     ##  E gávnu buorre lågo galles sáhkadi, låhki jali dádjadi dajt {gålmåjt} almulasj sámegielajt Vuonan uddni. OK
     ## Guovlo gånnå li gaskan guokta jali niellja mandáhta galggi tjáledahttet {avtse} kandidáhtajt lisstaoajvvadussaj OK
 
@@ -4024,7 +4026,9 @@ COPY:msyn-numphrase-sgacc (Sg Nom SUGGEST) EXCEPT (Pl Acc &msyn-numphrase-sgacc)
 ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) LINK *1 (N &msyn-numphrase-sgacc) OR NUMUNIT + &msyn-numphrase-sgacc OR (N Pl Nom) OR (N Sg Gen) BARRIER NOT-NPMOD - CC)(NEGATE *1 (N Pl Nom) OR (N Sg Gen) BARRIER NOT-Attr - PrfPrc LINK 1 N) 
 (NEGATE *1 (N Pl Gen) OR (N Pl Com) BARRIER NOT-NPMOD - CC) 
 (NEGATE 1 (Pron Dem))
-(NEGATE 0 (Pl Ela) LINK 1 ("akta" Num Sg Nom));
+(NEGATE 0 (Pl Ela) LINK 1 ("akta" Num Sg Nom))
+(NEGATE 0 (Pron Pl Acc) LINK 1 (Num Pl Acc)  LINK *1 (N Pl Acc) + Sem/Time BARRIER NOT-NPMOD)  ;
+;
 	# OR (N Pl Nom) OR (N Sg Gen) can be a bit tricky, maybe we have to refer to the numeral
 	# last condition in case the numeral modifies a real genitive
 
@@ -4046,7 +4050,7 @@ SUBSTITUTE (&msyn-numphrase-sgacc) (co&msyn-numphrase-sgacc) TARGET (SUGGEST);
 	
 # Num
 
-ADD:xmsyn-numphrase-placc (&msyn-numphrase-placc) TARGET (Num Sg Acc) OR (Num Sg Gen) IF (*1 (N Pl Acc) +  PL-PAIR-N BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom)) 
+ADD:xmsyn-numphrase-placc (&msyn-numphrase-placc) TARGET (Num Sg Acc) OR (Num Sg Gen) IF (*1 (N Pl Acc) + PL-PAIR-N BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom)) 
 (NEGATE -1 ("kl"))
 (NEGATE 0 ("akta" Num) OR ("1" Num))
 (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date) 
