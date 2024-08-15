@@ -601,6 +601,16 @@ LEXICON BASSALASSTET_TV  !!= @CODE@ Like BASSAT for already derived words (excep
 !!€ jårgudalliv:          jårgudallat+V+TV+Ind+Prt+Sg1
 !!€ jårgudalájma:         jårgudallat+V+TV+Ind+Prt+Pl1
 
+LEXICON HIEJTEDAHTTET_TV  !!= @CODE@ Like BASSALASSTET_TV, but for words ending on -ahttet. Diffrence is Use/NG an Use/-Spell for NomAg "hiejedahttijn", since this is rearly used an is mixed up with gerundium "hiejtedattijn". Like BASSAT for already derived words (except words ending -uššat) - no actio as first part of compounds, but reintroduced. Three passives
+            +TV:%>          HIEJTEDAHTTETStem ;
+            +TV:            EVEN-PASSIVE     ;
+       +IV+Cond:%>»Q2lulu   V-ODD-PRET       ;
+
+!!€gt-norm: jårgudallat # Even-syllable test
+!!€ jårgudaláv:           jårgudallat+V+TV+Ind+Prs+Sg1
+!!€ jårgudalliv:          jårgudallat+V+TV+Ind+Prt+Sg1
+!!€ jårgudalájma:         jårgudallat+V+TV+Ind+Prt+Pl1
+
 LEXICON JUHKAT_TV  !!= @CODE@ a-verbs like BASSAT_TV but but without derivations -stit, -stallat, -stahttet, - stasstet. Dim -istit that are hardcoded. Three passives
             +TV:%>          BASSATStem          ;
             +TV:            DeverbalVerbsJUHKAT ;
@@ -780,6 +790,9 @@ LEXICON JIEHKETStem
 LEXICON BASSALASSTETStem
    BASSALASSTETINCH ;
 
+LEXICON HIEJTEDAHTTETStem
+   DAHTTEINCH ;
+
 LEXICON RAVGGALASSTETStem
    RAVGGALASSTETINCH ;
 
@@ -816,14 +829,18 @@ LEXICON JIEHKETINCH
                               INFL-VIEDJETEVEN    ;
                               DeverbalNounsBASSAT ;
 
-
 LEXICON BASSALASSTETINCH
- +Der3+Der/InchL+V:»goahte%> INFL-EVEN                 ;
+ +Der3+Der/InchL+V:»goahte%> INFL-EVEN                  ;
                               INFL-EVEN                 ;
                               DeverbalNounsBASSALASSTET ;
 
+LEXICON DAHTTEINCH ! Almost same as BASSALASSTETINCH, but Special lexicon for -DAHTTE because if NomAG bargadahttijn is common typo of bargadattijn. Som this path leads to lexicon where "bargadahttijn" is not generated and not in speller
+ +Der3+Der/InchL+V:»goahte%> INFL-EVEN           ;
+                             INFL-EVEN           ;
+                             DeverbalNounsDAHTTE ;
+
 LEXICON RAVGGALASSTETINCH
- +Der3+Der/InchL+V:»goahte%> INFL-EVEN                  ;
+ +Der3+Der/InchL+V:»goahte%> INFL-EVEN                   ;
                               INFL-EVEN                  ;
                               DeverbalNounsRAVGGALASSTET ;
 
@@ -2014,7 +2031,7 @@ LEXICON DUVVAT !deadjectival verbs from -dibme, outcommented in adj file
 LEXICON DeverbalVerbsBASSAT
        +Der1+Der/d+V:»Q1d9        JÅRGESTITINCH    ; !Causative/refl/resipr/mom/sub/dim/frekv/kont/kona.
    +Der1+Der/dalla+V:»X7dalla%>   BASSALASSTETINCH ; !Caus-Freq
-  +Der2+Der/dahtte+V:»Q1dahtte%>  BASSALASSTETINCH ; !Double Caus
+  +Der2+Der/dahtte+V:»Q1dahtte%>  DAHTTEINCH ; !Double Caus
   +Der1+Der/dasste+V:»Q1dasste%>  BASSALASSTETINCH ; !Caus-Dim
        +Der1+Der/l+V:»l           JÅRGESTITINCH    ; !Subitive/refl/resip/mom/frekv
    +Der1+Der/ladda+V:»Y3ladda%>   BASSALASSTETINCH ; !Subitive-Freq
@@ -2029,7 +2046,7 @@ LEXICON DeverbalVerbsBASSAT
 LEXICON DeverbalVerbsJUHKAT
       +Der1+Der/d+V:»Q1d9       JÅRGESTITINCH    ; !Causative/refl/resipr/mom/sub/dim/frekv/kont/kona.
   +Der1+Der/dalla+V:»X7dalla%>  BASSALASSTETINCH ; !Caus-Freq
- +Der2+Der/dahtte+V:»Q1dahtte%> BASSALASSTETINCH ; !Double Caus
+ +Der2+Der/dahtte+V:»Q1dahtte%> DAHTTEINCH ; !Double Caus
  +Der1+Der/dasste+V:»Q1dasste%> BASSALASSTETINCH ; !Caus-Dim
       +Der1+Der/l+V:»l          JÅRGESTITINCH    ; !Subitive/refl/resip/mom/frekv
   +Der1+Der/ladda+V:»Y3ladda%>  BASSALASSTETINCH ; !Subitive-Freq
@@ -2041,7 +2058,7 @@ LEXICON DeverbalVerbsJUHKAT
 LEXICON DeverbalVerbsLÁHPPET
        +Der1+Der/d+V:»Q1d9        JÅRGESTITINCH    ; !Causative/refl/resipr/mom/sub/dim/frekv/kont/kona.
    +Der1+Der/dalla+V:»X7dalla%>   BASSALASSTETINCH ; !Caus-Freq
-  +Der2+Der/dahtte+V:»Q1dahtte%>  BASSALASSTETINCH ; !Double Caus
+  +Der2+Der/dahtte+V:»Q1dahtte%>  DAHTTEINCH ; !Double Caus
   +Der1+Der/dasste+V:»Q1dasste%>  BASSALASSTETINCH ; !Caus-Dim
        +Der1+Der/l+V:»l           JÅRGESTITINCH    ; !Subitive/refl/resip/mom/frekv
    +Der1+Der/ladda+V:»Y3ladda%>   BASSALASSTETINCH ; !Subitive-Freq
@@ -2057,6 +2074,7 @@ LEXICON DeverbalVerbsLÁHPPET
 LEXICON DeverbalNounsBASSAT
   +Der3+Der/lis+A:»Y3liss           LIS        ;
       @C.NeedNoun@ DeverbalNounsBASSAT_flagged ;
+      
 LEXICON DeverbalNounsBASSAT_flagged
   +Der2+Der/NomAg:»     ACTORTVder ;
 ! +Der2+Der/NomAg+N:»@C.NeedNoun@ DenominalNounsActor ;    !not usual
@@ -2069,6 +2087,7 @@ LEXICON DeverbalNounsBASSAT_flagged
 LEXICON DeverbalNounsRAVGGAT
   +Der3+Der/lis+A:»Y3liss           LIS      ;
     @C.NeedNoun@ DeverbalNounsRAVGGAT_flagged ;
+    
 LEXICON DeverbalNounsRAVGGAT_flagged
   +Der2+Der/NomAg:»     ACTORder ;
 ! +Der2+Der/NomAg+N:»@C.NeedNoun@ DenominalNounsActor ;    !not usual
@@ -2081,6 +2100,7 @@ LEXICON DeverbalNounsRAVGGAT_flagged
 LEXICON DeverbalNounsASSTAT
   +Der3+Der/lis+A:»Y3liss           LIS      ;
     @C.NeedNoun@ DeverbalNounsASSTAT_flagged ;
+    
 LEXICON DeverbalNounsASSTAT_flagged
 ! +Der2+Der/NomAg:»@C.NeedNoun@  ACTORder ; !because of compounds like tjikar+ asstet
 ! +Der2+Der/NomAg+N:»@C.NeedNoun@ DenominalNounsActor ;    !not usual
@@ -2091,12 +2111,23 @@ LEXICON DeverbalNounsASSTAT_flagged
 ! +Der3+Der/dahka+N:»X7dahka%> N-EVENSTRONGSTEM ; !does not seem usual (TO)
 ! +Der3+Der/dahka+N:»X7dahka%>Q1 N-EVENWEAKSTEM ; !does not seem usual (TO)
 
-
 LEXICON DeverbalNounsBASSALASSTET
   +Der3+Der/lis+A:»Y3liss           LIS      ;
     @C.NeedNoun@ DeverbalNounsBASSALASSTET_flagged ;
+    
 LEXICON DeverbalNounsBASSALASSTET_flagged
   +Der2+Der/NomAg:»     ACTORTVder     ;
+ +Der3+Der/NomAct:»m    BASSALASSTEMTV ;
+  +Der3+Der/mus+N:»muss MUS            ;
+! +Der3+Der/dahka+N:»X7dahka%> N-EVENSTRONGSTEM ; !does not seem usual (TO)
+! +Der3+Der/dahka+N:»X7dahka%>Q1 N-EVENWEAKSTEM ; !does not seem usual (TO)
+
+LEXICON DeverbalNounsDAHTTE
+  +Der3+Der/lis+A:»Y3liss           LIS      ;
+    @C.NeedNoun@ DeverbalNounsDAHTTE_flagged ;
+    
+LEXICON DeverbalNounsDAHTTE_flagged
+  +Der2+Der/NomAg:»     ACTORTVderDAHTTE     ;
  +Der3+Der/NomAct:»m    BASSALASSTEMTV ;
   +Der3+Der/mus+N:»muss MUS            ;
 ! +Der3+Der/dahka+N:»X7dahka%> N-EVENSTRONGSTEM ; !does not seem usual (TO)
@@ -2105,6 +2136,7 @@ LEXICON DeverbalNounsBASSALASSTET_flagged
 LEXICON DeverbalNounsRAVGGALASSTET
  +Der3+Der/lis+A:»Y3liss           LIS             ;
     @C.NeedNoun@ DeverbalNounsRAVGGALASSTET_flagged ;
+    
 LEXICON DeverbalNounsRAVGGALASSTET_flagged
   +Der2+Der/NomAg:»     ACTORder     ;
  +Der3+Der/NomAct:»m    BASSALASSTEM ;
@@ -2126,7 +2158,7 @@ LEXICON DeverbalVerbsBIEGGAT
 LEXICON DeverbalVerbsDIEHTET
        +Der1+Der/d+V:e»Q1d9        JÅRGESTITINCH    ; !Causative/refl/resipr/mom/sub/dim/frekv/kont/kona.
    +Der1+Der/dalla+V:á»Q1dalla%>   BASSALASSTETINCH ; !Caus-Freq
-  +Der2+Der/dahtte+V:e»Q1dahtte%>  BASSALASSTETINCH ; !Double Caus
+  +Der2+Der/dahtte+V:e»Q1dahtte%>  DAHTTEINCH ; !Double Caus
   +Der1+Der/dasste+V:e»Q1dasste%>  BASSALASSTETINCH ; !Caus-Dim
        +Der1+Der/l+V:e»l           JÅRGESTITINCH    ; !Subitive
    +Der1+Der/ladda+V:á»ladda%>     BASSALASSTETINCH ; !Subitive-Freq
@@ -2149,7 +2181,7 @@ LEXICON DeverbalNounsDIEHTET_flagged
 !---------------------
 
 LEXICON DeverbalVerbsJÅLLÅRIT
-  +Der1+Der/Caus+V:»ahtte%>  BASSALASSTETINCH          ; !Caus
+  +Der1+Der/Caus+V:»ahtte%>  DAHTTEINCH          ; !Caus
    +Der1+Der/alla+V:»Y4alla%> BASSALASSTETINCH          ; !Freq-cont
   +Der1+Der/asste+V:»asste%>  BASSALASSTETINCH          ; !Dim
   +Der1+Der/ahtja+V:»ahtja%>  INFL-EVEN                 ; !Inchoative
@@ -2266,7 +2298,7 @@ LEXICON DeverbalNounsOADDÁDIT_flaggged
 LEXICON DeverbalVerbsOADDÁT
        +Der1+Der/d+V:»d9        OADDÁDITINCH     ; !Causative/refl/resipr/mom/sub/dim/frekv/kont/kona.
    +Der1+Der/dalla+V:»dalla%>   BASSALASSTETINCH ; !Caus-Freq
-  +Der2+Der/dahtte+V:»dahtte%>  BASSALASSTETINCH ; !Double Caus
+  +Der2+Der/dahtte+V:»dahtte%>  DAHTTEINCH ; !Double Caus
   +Der1+Der/dasste+V:»dasste%>  BASSALASSTETINCH ; !Caus-Dim
       +Der1+Der/st+V:»st        JÅRGESTITINCH    ; !Dim/mom/sub
   +Der1+Der/stalla+V:»stalla%>  BASSALASSTETINCH ; !Dim-Freq
