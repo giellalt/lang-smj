@@ -3859,7 +3859,7 @@ COPY:msyn-numphrase-sggen (Sg Gen SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sggen)
 
 # Dem
 
-ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Pron Dem Pl) IF (1 (Num Sg) OR (Gen SUGGEST) OR (A Arab) LINK *1 (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen BARRIER NOT-NPMOD - CC) (NEGATE 1 (Pron Dem)) ;
+ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Pron Dem Pl) IF (*1 (Num Sg) OR (Gen SUGGEST) OR (A Arab) BARRIER (*) - ("maŋemus") - ("maŋep" Der/Superl <AttrPred>) - ("maŋŋe" Der/Superl <AttrPred>) LINK *1 (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen BARRIER NOT-NPMOD - CC) (NEGATE 1 (Pron Dem)) ;
 
     ## Tjåhkanimij gåhttjom ja jådedibme målssu daj {gålmåj} rijkaj gaskan. # GENITIVE
     ## Dát aktisasjbarggoorgádna le læhkám aktisasjvuohtaorgádnan ámmátdásen daj {gålmåj} lándaj ráddidusáj gaskan diehton ja dagástallamin. # Genitive
@@ -3982,21 +3982,22 @@ ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Num Sg Acc) IF (0 ("<.
 
     # vuojnáv guovtev>guokta gusájt OK
     #$ Dá lågev giela li gullum.  OK
+	## Mij gullu julevsámegiellaj ja oarjjelsámegiellaj le dá dájt maŋemus låge jagijt åvddånahttem læhkám.
 
 
 # pl + wrong/right case
-ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Num Pl Acc) OR (Num Sg Gen) IF (*1 (N Pl Acc) +  &msyn-numphrase-sgacc OR (A Pl Acc) + &msyn-numphrase-sgacc OR (N Pl Nom) OR (A Pl Nom) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) OR PL-PAIR-N)
+ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Num Pl Acc) OR (Num Sg Gen) OR (Num Pl Gen) IF (*1 (N Pl Acc) +  &msyn-numphrase-sgacc OR (A Pl Acc) + &msyn-numphrase-sgacc OR (N Pl Nom) OR (A Pl Nom) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) 
 (NEGATE *1 (N Pl Nom) OR (N Sg Gen) - SUGGEST BARRIER NOT-Attr - PrfPrc LINK 1 N)
 (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) 
 (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras"))
 (NEGATE 0 ("<.*%>"r))
 (NEGATE 0 ("<guokta>")) 
+(NEGATE 0 (Num Sg Gen) LINK *1 (N Pl Nom) BARRIER NOT-NPMOD)
 (NEGATE 0 (Num Sg Nom) LINK -1 BE + Sg3 OR BE + Du3 OR BE + Pl3 LINK -1 (Dem Pl Ela) OR (Pers Pl3 Ela) OR (Pers Pl2 Ela) OR (Pers Pl1 Ela)) 
 (NEGATE 1 Num LINK NOT 0 NUMUNIT)
 (NEGATE 1 Dem) 
 (NEGATE 1 ("ja"))
 (NEGATE 1 COMMA)
-(NEGATE 1 (N Sem/Time)) 
 (NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) 
 (NEGATE 0 (Num Pl Acc)  LINK *1 (N Pl Acc) + Sem/Time BARRIER NOT-NPMOD)  ;
     ##  E gávnu buorre lågo galles sáhkadi, låhki jali dádjadi dajt {gålmåjt} almulasj sámegielajt Vuonan uddni. OK
@@ -4023,12 +4024,12 @@ COPY:msyn-numphrase-sgacc (Sg Nom SUGGEST) EXCEPT (Pl Acc &msyn-numphrase-sgacc)
 
 # Dem
 
-ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pron Dem Pl) - Nom IF (1 (Num Sg) LINK *1 (N &msyn-numphrase-sgacc) OR NUMUNIT + &msyn-numphrase-sgacc OR (N Pl Nom) OR (N Sg Gen) BARRIER NOT-NPMOD - CC)(NEGATE *1 (N Pl Nom) OR (N Sg Gen) BARRIER NOT-Attr - PrfPrc LINK 1 N) 
+ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pron Dem Pl) - Nom IF (*1 (Num Sg) BARRIER (*) - ("maŋemus") - ("maŋep" Der/Superl <AttrPred>) - ("maŋŋe" Der/Superl <AttrPred>) LINK *1 (N &msyn-numphrase-sgacc) OR NUMUNIT + &msyn-numphrase-sgacc OR (N Pl Nom) OR (N Sg Gen) BARRIER NOT-NPMOD - CC)(NEGATE *1 (N Pl Nom) OR (N Sg Gen) BARRIER NOT-Attr - PrfPrc LINK 1 N) 
 (NEGATE *1 (N Pl Gen) OR (N Pl Com) BARRIER NOT-NPMOD - CC) 
 (NEGATE 1 (Pron Dem))
 (NEGATE 0 (Pl Ela) LINK 1 ("akta" Num Sg Nom))
 (NEGATE 0 (Pron Pl Acc) LINK 1 (Num Pl Acc)  LINK *1 (N Pl Acc) + Sem/Time BARRIER NOT-NPMOD)  ;
-;
+
 	# OR (N Pl Nom) OR (N Sg Gen) can be a bit tricky, maybe we have to refer to the numeral
 	# last condition in case the numeral modifies a real genitive
 
@@ -4040,13 +4041,13 @@ ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pron Dem Pl) - Nom IF 
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgacc) OR NUMUNIT + &msyn-numphrase-sgacc TO (*-1 (Dem &msyn-numphrase-sgacc));
 
 	
-COPY:msyn-numphrase-sgacc (Pl Nom SUGGEST) EXCEPT (Pl Acc Attr &msyn-numphrase-sgacc) OR (Pl Acc &msyn-numphrase-sgacc) OR (Pl Gen &msyn-numphrase-sgacc) OR (Pl Nom &msyn-numphrase-sgacc) TARGET (Dem &msyn-numphrase-sgacc) IF (1 (Num Sg) OR (Num &msyn-numphrase-sgacc) LINK *1 (Pl Nom) OR (Sg Gen) BARRIER NOT-NPMOD - Num OR (Gen SUGGEST)) ;
+COPY:msyn-numphrase-sgacc (Pl Nom SUGGEST) EXCEPT (Pl Acc Attr &msyn-numphrase-sgacc) OR (Pl Acc &msyn-numphrase-sgacc) OR (Pl Gen &msyn-numphrase-sgacc) OR (Pl Nom &msyn-numphrase-sgacc) TARGET (Dem &msyn-numphrase-sgacc) IF (*1 (Num Sg) OR (Num &msyn-numphrase-sgacc) BARRIER (*) - ("maŋemus") - ("maŋep" Der/Superl <AttrPred>) - ("maŋŋe" Der/Superl <AttrPred>) LINK *1 (Pl Nom) OR (Sg Gen) BARRIER NOT-NPMOD - Num OR (Gen SUGGEST)) ;
 
 
 SUBSTITUTE (&msyn-numphrase-sgacc) (co&msyn-numphrase-sgacc) TARGET (SUGGEST);
 
 
-	# plural nouns
+	# plural nouns (pairs)
 	
 # Num
 
@@ -4065,19 +4066,15 @@ ADD:xmsyn-numphrase-placc (&msyn-numphrase-placc) TARGET (Num Sg Acc) OR (Num Sg
 (NEGATE 1 Num LINK NOT 0 NUMUNIT)
 (NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
 
-	## Mij gullu julevsámegiellaj ja oarjjelsámegiellaj le dá dájt maŋemus låge jagijt åvddånahttem læhkám.
 
 COPY:msyn-numphrase-placc (Pl Acc SUGGEST) EXCEPT (Sg Acc &msyn-numphrase-placc) OR (Sg Gen &msyn-numphrase-placc) TARGET (Num &msyn-numphrase-placc) IF (*1 (N Pl Acc) BARRIER (*) - PRE-NP-HEAD LINK NOT 0 (N Coll Nom)) ;
 
 # Dem
 
-ADD:xmsyn-numphrase-placc (&msyn-numphrase-placc) TARGET (Pron Dem Pl) IF (NOT 0 (Dem Pl Acc))(*1 (Num &msyn-numphrase-placc) OR (Num Pl Acc) BARRIER NOT-NPMOD - Adv LINK 1 (N Pl Acc) +  PL-PAIR-N) (NEGATE 1 (Pron Dem)) (NEGATE 1 (Pron Dem)) ;
+ADD:xmsyn-numphrase-placc (&msyn-numphrase-placc) TARGET (Pron Dem Pl) IF (NOT 0 (Dem Pl Acc)) (*1 (Num &msyn-numphrase-placc) OR (Num Pl Acc) BARRIER (*) - ("maŋemus") - ("maŋep" Der/Superl <AttrPred>) - ("maŋŋe" Der/Superl <AttrPred>) LINK 1 (N Pl Acc)) (NEGATE 1 (Pron Dem)) ;
     ## Daj maŋemus lågijt jagijt le ulmutjij miella luojvojbargguj unnum, ja da gudi ienep dåjmaj barggi vierttiji mávso oadtjot bargoj åvdås.
 
-ADDRELATION ($3 LEFT) (N &msyn-numphrase-placc) OR NUMUNIT + &msyn-numphrase-placc TO (*-1 (Dem &msyn-numphrase-placc));
-
-
-COPY:msyn-numphrase-placc (Pl Acc SUGGEST) EXCEPT (Pl Gen &msyn-numphrase-placc) OR (Pl Com) TARGET (Dem &msyn-numphrase-placc) IF (*1 (Num &msyn-numphrase-placc) OR (Num Pl Acc) BARRIER NOT-NPMOD - Adv LINK 1 (N Pl Acc) +  PL-PAIR-N) ;
+COPY:msyn-numphrase-placc (Pl Acc SUGGEST) EXCEPT (Pl Gen &msyn-numphrase-placc) OR (Pl Com) TARGET (Dem &msyn-numphrase-placc) IF (*1 (Num &msyn-numphrase-placc) OR (Num Pl Acc) BARRIER NOT-NPMOD - Adv LINK 1 (N Pl Acc) + PL-PAIR-N OR (N Pl Acc) + Sem/Time)  ;
 
 SUBSTITUTE (&msyn-numphrase-placc) (co&msyn-numphrase-placc) TARGET (SUGGEST);
 
@@ -4165,7 +4162,7 @@ COPY:msyn-numphrase-sgill (Sg Gen SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sgill)
 
 # Dem
 
-ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Pron Dem Pl) IF (1 (Num Sg) LINK *1 (N &msyn-numphrase-sgill) OR NUMUNIT + &msyn-numphrase-sgill OR (N Sg Ill) BARRIER NOT-NPMOD - CC) (NEGATE 1 (Pron Dem)) (NEGATE *2 (N Sg Ill) BARRIER NOT-NPMOD - Num LINK *1 Po BARRIER (*) - CC - Gen - (N Pl Nom));
+ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Pron Dem Pl) IF (*1 (Num Sg) BARRIER (*) - ("maŋemus") - ("maŋep" Der/Superl <AttrPred>) - ("maŋŋe" Der/Superl <AttrPred>) LINK *1 (N &msyn-numphrase-sgill) OR NUMUNIT + &msyn-numphrase-sgill OR (N Sg Ill) BARRIER NOT-NPMOD - CC) (NEGATE 1 (Pron Dem)) (NEGATE *2 (N Sg Ill) BARRIER NOT-NPMOD - Num LINK *1 Po BARRIER (*) - CC - Gen - (N Pl Nom));
 	#$ Rudá aneduvvi {dá} guokta ássjijda: 
 	## juogos la mierredam {dájda} gålmmå suohkanijda dahkat aktisasj plánav rumálasj dåjmajda ja luonndoåtsådallamijda.
     ##  Sáme skihppijsujttáråhpadus ja sáme åhpadiddjeåhpadusá vaddi {da} guovte nuorttalamos universitiehttaj ájn nannusap guovlulasj ja hiebalgis profijlav. 
@@ -4273,7 +4270,7 @@ COPY:msyn-numphrase-sgela (Sg Par SUGGEST) EXCEPT (Sg Ill Attr &msyn-numphrase-s
 
 # Dem
 
-ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Pron Dem Pl) - (Sg Nom) IF (1 (Num Sg) LINK *1 (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela OR (N Sg Ela) BARRIER NOT-NPMOD - CC) (NEGATE 1 (Pron Dem)) (NEGATE 1 ("akta" Num Sg Nom));
+ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Pron Dem Pl) - (Sg Nom) IF (*1 (Num Sg) BARRIER (*) - ("maŋemus") - ("maŋep" Der/Superl <AttrPred>) - ("maŋŋe" Der/Superl <AttrPred>) LINK *1 (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela OR (N Sg Ela) BARRIER NOT-NPMOD - CC) (NEGATE 1 (Pron Dem)) (NEGATE 1 ("akta" Num Sg Nom));
 
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela TO (*-1 (Dem &msyn-numphrase-sgela));
 
@@ -4406,7 +4403,7 @@ COPY:xmsyn-numphrase-sgine (Sg Ine SUGGEST) EXCEPT (Sg Acc) OR (Sg Nom) TARGET (
     
 # Dem
 
-ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Pron Dem Pl) IF (1 (Num Sg) OR (Gen SUGGEST) LINK *1 (N &msyn-numphrase-sgine) OR NUMUNIT + &msyn-numphrase-sgine OR (N Sg Ine) BARRIER NOT-NPMOD - CC) (NEGATE 1 (Pron Dem)) ;
+ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Pron Dem Pl) IF (*1 (Num Sg) OR (Gen SUGGEST) BARRIER (*) - ("maŋemus") - ("maŋep" Der/Superl <AttrPred>) - ("maŋŋe" Der/Superl <AttrPred>) LINK *1 (N &msyn-numphrase-sgine) OR NUMUNIT + &msyn-numphrase-sgine OR (N Sg Ine) BARRIER NOT-NPMOD - CC) (NEGATE 1 (Pron Dem)) ;
     ## Valla vuojnnet ”sáme” viellde vájllu divna dáj gålmmå rijkajn.
 	## Valla jus ”Sáme Goadev” galggap tsieggigoahtet, ålles dáj {nielje} rijkajn, de diedon diehtet vierttip, makkár dähkága ja ådnårisá dasi buoremusát hiehpi.
    ## Organisasjåvnå mandáhtta le barggat ráfe ja sihkarvuoda vuoksjuj aktisasjbargo åvddånahttema baktu nasjåvnåj gaskan daj nieljijn fáhkasuorgijn
@@ -4537,7 +4534,7 @@ COPY:msyn-numphrase-sgcom (Sg Com SUGGEST) EXCEPT (Sg Acc) OR (Sg Nom) TARGET ("
 # Dem
 
     
-ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Pron Dem Pl) IF (1 (Num Sg) OR (Gen SUGGEST) LINK *1 (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom OR (N Sg Com) OR (N Sg Ine) BARRIER NOT-NPMOD - CC) (NEGATE 1 (Pron Dem)) (NEGATE 1 (Num Sg Ine) - SUGGEST LINK NOT 0 &msyn-numphrase-sgcom OR Arab) ;
+ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Pron Dem Pl) IF (*1 (Num Sg) OR (Gen SUGGEST) BARRIER (*) - ("maŋemus") - ("maŋep" Der/Superl <AttrPred>) - ("maŋŋe" Der/Superl <AttrPred>) LINK *1 (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom OR (N Sg Com) OR (N Sg Ine) BARRIER NOT-NPMOD - CC) (NEGATE 1 (Pron Dem)) (NEGATE 1 (Num Sg Ine) - SUGGEST LINK NOT 0 &msyn-numphrase-sgcom OR Arab) ;
 
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Dem &msyn-numphrase-sgcom));
 
@@ -4582,17 +4579,11 @@ COPY:msyn-numphrase-ess (Ess SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-ess) OR (v2
 
 # Dem
 
-ADD:xmsyn-numphrase-ess (&msyn-numphrase-ess) TARGET (Pron Dem) IF (1 (Num Ess) LINK *1 (N Ess) BARRIER NOT-NPMOD - CC) (NEGATE 1 (Pron Dem)) (NEGATE 1 ("akta" Num Sg Nom));
+ADD:xmsyn-numphrase-ess (&msyn-numphrase-ess) TARGET (Pron Dem) IF (*1 (Num Ess) BARRIER (*) - ("maŋemus") - ("maŋep" Der/Superl <AttrPred>) - ("maŋŋe" Der/Superl <AttrPred>) LINK *1 (N Ess) BARRIER NOT-NPMOD - CC) (NEGATE 1 (Pron Dem)) (NEGATE 1 ("akta" Num Sg Nom));
 
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-ess) OR NUMUNIT + &msyn-numphrase-ess TO (*-1 (Dem &msyn-numphrase-ess));
 
-
 COPY:msyn-numphrase-ess (Ess SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-ess) OR (Sg Gen &msyn-numphrase-ess) OR (Sg Ill Attr &msyn-numphrase-ess) TARGET (Dem &msyn-numphrase-ess) IF (*2 (N Ess) OR NUMUNIT + (Ess) BARRIER NOT-Attr)  ;
-    ## Divtasvuona suohkan ásadij fåndav mij rudájt oadtju daj guokta luossabiebbmamvidnudagájs.
-    ## Gájka dajs gietjav rabdaguovlos la edna jåhtålibme ålgus
-    ## Dajs vihtta ulmutjijs gudi dáj suohkanijn årrun 15-jagágin
-    ## {Dajs} 22997 ulmutjijs gudi dáj suohkanijn årrun 15-jagágin.  DNW
-
 
 SUBSTITUTE (&msyn-numphrase-ess) (co&msyn-numphrase-ess) TARGET (SUGGEST);
 
