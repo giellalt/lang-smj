@@ -2968,7 +2968,7 @@ ADDRELATION ($2 RIGHT) (N &syn-missing-copula) TO (1 (&ADDED)) ;
 
 ADD:xsyn-gus-before-pron (&syn-gus-before-pron) TARGET ("gus" Qst) IF (-1 (Pron) LINK -1 V LINK -1 BOS) (*1 ("?") BARRIER COMMA) ; 
 
-MOVE:syn-gus-before-pron (&syn-gus-before-pron) AFTER (*-2 V BARRIER NOT-NPMOD OR CC);
+#MOVE:syn-gus-before-pron (&syn-gus-before-pron) AFTER (*-2 V BARRIER NOT-NPMOD OR CC);
 
     ## Dádjadi sij gus man birra tæksta la?
 
@@ -3033,7 +3033,7 @@ ADD:xsyn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + Sg3 IF (*1 (N Sg No
 
 ADD:xsyn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + Pl3 IF (*1 (N Pl Nom) BARRIER NOT-NPMOD OR CC LINK NEGATE 1 N) (*1 ConNeg BARRIER Rel OR Neg OR CS) (*-1 CS OR Rel OR MO OR ("váj") OR BOS BARRIER S-BOUNDARY) (NEGATE *1 ("?") LINK 1 EOS) ;
 
-MOVE:syn-subj-before-neg &syn-subj-before-neg AFTER (*1 (N Nom) OR (Pron Nom) BARRIER NOT-NPMOD OR CC);
+#MOVE:syn-subj-before-neg &syn-subj-before-neg AFTER (*1 (N Nom) OR (Pron Nom) BARRIER NOT-NPMOD OR CC);
 
     ## gæhttjat vaj ittjij sámegiella tijmaj ålggolin gullu.
     ## sujna lej bierggo majna ittjij sån sidá dahkat gasskabiejvev.
@@ -4197,6 +4197,7 @@ ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Num Sg Nom) OR (Num Sg
 (NEGATE 1 Dem) 
 (NEGATE 1 Prop)
 (NEGATE 1 ("vahkkusasj" Attr) OR ("mánnusasj" Attr) OR ("bæjvvásasj" Attr) OR ("tijmmasasj" Attr) OR ("jahkasasj" Attr))  
+(NEGATE 1 Sem/Time LINK 1 (N Ill))
 (NEGATE *1 (N Sg Ill) BARRIER NOT-NPMOD LINK *1 Po BARRIER (*) - CC - Gen - (N Pl Nom)) 
 (NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
 
@@ -4301,6 +4302,7 @@ ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Num Sg Nom) OR (Num Sg
 (NEGATE 1 Num OR ("moadda") LINK NOT 0 NUMUNIT)
 (NEGATE 1 Dem) 
 (NEGATE 1 (N Sg Nom)) 
+(NEGATE 1 Sem/Time LINK 1 (N Ela))
 (NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
 
     ## Alvos státtáv  máhtá vuojnnet gåjt gietjav báhppagieldajs.
@@ -4421,6 +4423,7 @@ ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Num Pl Ine) OR (Num Sg
 (NEGATE 1 Dem) 
 (NEGATE 1 COMMA)
 (NEGATE 1 ("ja"))
+(NEGATE 1 Sem/Time LINK 1 (N Ine))
 (NEGATE *1 (N Ess) BARRIER NOT-NPMOD)
 (NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
 	# those two rules belong together: xmsyn-numeral-casecongr-com and xmsyn-numeral-casecongr-ine
