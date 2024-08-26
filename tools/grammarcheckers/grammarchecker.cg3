@@ -1447,6 +1447,11 @@ SET PRE-NP-HEAD = (Prop Attr) OR (Prop @>N) OR (A Attr) OR (ABBR Attr)
          (PrfPrc @>N) OR PrsPrc OR (A Ord)  ;
          # The strict version of items that can only be premodifiers, not parts of the predicate
 
+SET PRE-NP-HEAD-WITHOUT-NUM  = (Prop Attr) OR (Prop @>N) OR (A Attr) OR (ABBR Attr)
+         OR (Pron Pers Gen) OR (N Gen) OR Cmp/SplitR OR (CC @CNP) OR (Pron Dem) OR (Pron Refl Gen) OR (Indef Attr) OR
+         (PrfPrc @>N) OR PrsPrc OR (A Ord)  ;
+
+
 SET PRE-A-N     = (Pron Pers Gen) OR (Pron Pers Acc) OR (Pron Indef) OR Num OR (A Ord) OR (Pron Dem) OR (Pron Refl Gen) OR (Pron Refl Acc) ;
 
 SET NOT-PRE-A-N = WORD - PRE-A-N ;
@@ -1457,6 +1462,8 @@ SET NOT-PRE-A-N = WORD - PRE-A-N ;
 SET NOT-NPMOD     = WORD - PRE-NP-HEAD OR ABBR OR @CVP OR (Adv Subqst) ;
 # This is the previous NPNH (npnh) set.
 # NOT-NPMOD  = "NOT-PRE-NP-HEAD"
+
+SET NOT-NPMOD-WITHOUT-NUM   = WORD - PRE-NP-HEAD-WITHOUT-NUM OR ABBR OR @CVP OR (Adv Subqst) ;
 
 SET NOT-NPMOD-NOMPL     = WORD - PRE-NP-HEAD - (Nom Pl) OR ABBR OR @CVP  OR (Adv Subqst) ;
 
@@ -3786,10 +3793,10 @@ ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Pl Gen) IF ((0 N) OR (
 (NEGATE *-1 Der/akti BARRIER NOT-NPMOD) 
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 0 ("aktan" Adv))
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 1 Dem)
-(NEGATE *-1 (Num "<[§].*>"r) OR (Num "<.*%>"r) OR ("%") BARRIER NOT-NPMOD)
+(NEGATE *-1 (Num "<[§].*>"r) OR (Num "<.*%>"r) OR ("%") BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE *-1 (Num Sg Nom) BARRIER NOT-NPMOD LINK -1 BE + Sg3 OR BE + Du3 OR BE + Pl3 LINK -1 (Dem Pl Ela) OR (Pers Pl3 Ela) OR (Pers Pl2 Ela) OR (Pers Pl1 Ela)) 
-(NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD)
-(NEGATE *-1 (Num Sem/ID) BARRIER NOT-NPMOD)
+(NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE *-1 (Num Sem/ID) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE -1 NUMUNIT LINK -1 PLURAL-QUANTIFIERS OR Num)
 (NEGATE -1 &msyn-numphrase-sggen OR (N Sg Gen)) 
 (NEGATE -1 Sem/Time) 
@@ -3866,7 +3873,8 @@ ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num Sg
 (NEGATE *1 (N Sg Gen) OR (N Pl Nom) BARRIER NOT-Attr LINK 1 V)
 (NEGATE 1 Ela LINK 0 PxSg3) 
 (NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD)
-(NEGATE *1 ("mánno") OR ("biejvve") OR ("jahke") OR ("minuhtta") OR ("sekunnda") BARRIER NOT-NPMOD LINK NEGATE 1 Po) ;
+(NEGATE *1 ("mánno") OR ("biejvve") OR ("jahke") OR ("minuhtta") OR ("sekunnda") BARRIER NOT-NPMOD LINK NEGATE 1 Po) 
+(NEGATE *1 (N Sg Gen) OR (N Pl Nom) BARRIER NOT-Attr - PrfPrc LINK 1 (N Sg Ill)) ;
 
 
 ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num Sg Acc) IF (1 ("vahkkusasj" Attr) OR ("mánnusasj" Attr) OR ("bæjvvásasj" Attr) OR ("tijmmasasj" Attr) OR ("jahkasasj" Attr)) 
@@ -3943,9 +3951,9 @@ ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF ((0 N) OR (
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 0 ("aktan" Adv))
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 1 Dem)
 (NEGATE *-1 (Num Sg Nom) BARRIER NOT-NPMOD LINK -1 BE + Sg3 OR BE + Du3 OR BE + Pl3 LINK -1 (Dem Pl Ela) OR (Pers Pl3 Ela) OR (Pers Pl2 Ela) OR (Pers Pl1 Ela)) 
-(NEGATE *-1 (Num "<[§].*>"r) OR (Num "<.*%>"r) OR ("%") BARRIER NOT-NPMOD) 
-(NEGATE *-1 (Num Sem/ID) BARRIER NOT-NPMOD)
-(NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD)
+(NEGATE *-1 (Num "<[§].*>"r) OR (Num "<.*%>"r) OR ("%") BARRIER NOT-NPMOD-WITHOUT-NUM)  
+(NEGATE *-1 (Num Sem/ID) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE -1 Sem/Time) 
 (NEGATE -1 COMMA)
 (NEGATE -1 CLB)
@@ -4124,11 +4132,11 @@ SUBSTITUTE (&msyn-numphrase-placc) (co&msyn-numphrase-placc) TARGET (SUGGEST);
 ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Pl Ill) IF ((0 N) OR (0 NUMUNIT - Com LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numphrase-sgacc) (*-1 Num OR ("moadda" Sg) BARRIER NOT-Attr - PrfPrc - (N Pl Nom) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock OR Sem/Time OR Sem/Date OR (Num Rom) LINK NOT -1 Sem/Curr LINK NEGATE 0 NUMUNIT LINK -1 Num OR PLURAL-QUANTIFIERS) 
 (NEGATE *-1 Der/akti BARRIER NOT-NPMOD) 
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 0 ("aktan" Adv))
-(NEGATE *-1 (Num "<[§].*>"r) OR (Num "<.*%>"r) OR ("%") BARRIER NOT-NPMOD)
+(NEGATE *-1 (Num "<[§].*>"r) OR (Num "<.*%>"r) OR ("%") BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 1 Dem)
 (NEGATE *-1 (Num Sg Nom) BARRIER NOT-NPMOD LINK -1 BE + Sg3 OR BE + Du3 OR BE + Pl3 LINK -1 (Dem Pl Ela) OR (Pers Pl3 Ela) OR (Pers Pl2 Ela) OR (Pers Pl1 Ela)) 
-(NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD)
-(NEGATE *-1 (Num Sem/ID) BARRIER NOT-NPMOD)
+(NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE *-1 (Num Sem/ID) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE -1 COMMA)
 (NEGATE -1 CLB)
 (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) 
@@ -4227,11 +4235,11 @@ ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Pl Ela) IF ((0 N) OR (
 (NEGATE *-1 ("akta" Sg Nom) BARRIER NOT-Attr LINK NOT 1 ("moadda") LINK *1 (Pl Ela) BARRIER NOT-Attr)
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 0 ("aktan" Adv))
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 1 Dem)
-(NEGATE *-1 (Num "<[§].*>"r) OR (Num "<.*%>"r) OR ("%") BARRIER NOT-NPMOD) 
+(NEGATE *-1 (Num "<[§].*>"r) OR (Num "<.*%>"r) OR ("%") BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE *-1 (Num Sg Nom) BARRIER NOT-NPMOD LINK -1 BE + Sg3 OR BE + Du3 OR BE + Pl3 LINK -1 (Dem Pl Ela) OR (Pers Pl3 Ela) OR (Pers Pl2 Ela) OR (Pers Pl1 Ela)) 
-(NEGATE *-1 (Num Sem/ID) BARRIER NOT-NPMOD)
-(NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD)
-(NEGATE *-1 Der/akti BARRIER NOT-NPMOD) 
+(NEGATE *-1 (Num Sem/ID) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE *-1 Der/akti BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE -1 COMMA)
 (NEGATE -1 CLB)
 (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) 
@@ -4337,16 +4345,16 @@ SUBSTITUTE (&msyn-numphrase-sgela) (co&msyn-numphrase-sgela) TARGET (SUGGEST);
 # Noun
 ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Pl Ine) OR (Sg Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Ine) OR (Num Arab Ine) OR (Num Pl Nom) OR (Num Pl Com) OR (Num Sg Acc) OR (Num Sg Nom) OR (Num Sg Gen) OR (Num Sg Com) OR ("moadda" Indef Acc) OR ("moadda" Sg Gen) OR ("moadda" Sg Ill Attr) BARRIER NOT-Attr - Gen - PrfPrc LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date OR (Num Rom) LINK NEGATE -1 Sem/Curr) 
 (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) 
-(NEGATE *-1 (Num "<[§].*>"r) OR (Num "<.*%>"r) OR ("%") BARRIER NOT-NPMOD) 
+(NEGATE *-1 (Num "<[§].*>"r) OR (Num "<.*%>"r) OR ("%") BARRIER NOT-NPMOD-WITHOUT-NUM)  
 (NEGATE -1 ("vahkkusasj") OR ("mánnusasj") OR ("bæjvvásasj") OR ("tijmmasasj") OR ("jahkasasj") LINK -1 (Num)) 
 (NEGATE -1 COMMA)
 (NEGATE -1 CLB)
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 0 ("aktan" Adv))
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 1 Dem)
 (NEGATE *-1 (Num Sg Nom) BARRIER NOT-NPMOD LINK -1 BE + Sg3 OR BE + Du3 OR BE + Pl3 LINK -1 (Dem Pl Ela) OR (Pers Pl3 Ela) OR (Pers Pl2 Ela) OR (Pers Pl1 Ela)) 
-(NEGATE *-1 (Num Sem/ID) BARRIER NOT-NPMOD)
-(NEGATE *-1 Der/akti BARRIER NOT-NPMOD)
-(NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD)
+(NEGATE *-1 (Num Sem/ID) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE *-1 Der/akti BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE 0 <spelled>)
 (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) 
 (NEGATE 0 (Sg Com) LINK *-1 (Num Sg Com) BARRIER NOT-NPMOD LINK NOT -1 Dem) ;
@@ -4364,9 +4372,9 @@ ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgcom) TARGET (Pl Com) IF ((0 N) OR (
 (NEGATE -1 CLB)
 (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) 
 (NEGATE -1 (Num "<[§].*>"r) OR (Num "<.*[%]>"r) OR ("%")) 
-(NEGATE *-1 (Num Sg Ine) BARRIER NOT-NPMOD) 
-(NEGATE *-1 (Num Sem/ID) BARRIER NOT-NPMOD)
-(NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD)
+(NEGATE *-1 (Num Sg Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE *-1 (Num Sem/ID) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE 1 Po OR (N Ill) OR (N Nom)) 
 (NEGATE 1 (N Gen) LINK 1 Po) 
 (NEGATE *1 Po BARRIER (*) - CC - Gen - (N Pl Nom));
@@ -4468,11 +4476,11 @@ ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Pl Ine) OR (Sg Com) OR
 (NEGATE -1 ("vahkkusasj") OR ("mánnusasj") OR ("bæjvvásasj") OR ("tijmmasasj") OR ("jahkasasj") LINK -1 (Num)) 
 (NEGATE -1 COMMA)
 (NEGATE -1 CLB)
-(NEGATE *-1 (Num Sg Ine) BARRIER NOT-NPMOD) 
+(NEGATE *-1 (Num Sg Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 1 Dem)
-(NEGATE *-1 (Num Sem/ID) BARRIER NOT-NPMOD)
+(NEGATE *-1 (Num Sem/ID) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE -1 (Num "<[§].*>"r) OR (Num "<.*[%]>"r) OR ("%")) 
-(NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD)
+(NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) 
 (NEGATE 0 (Pl Com) LINK -1 (Sg Gen) LINK *-1 (Num Sg Nom) OR (Num Sg Acc) BARRIER NOT-NPMOD) 
 (NEGATE 0 (Sg Com) LINK *-1 (Num Sg Com) BARRIER NOT-NPMOD LINK NOT -1 Dem)
