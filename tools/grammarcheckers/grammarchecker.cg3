@@ -2037,7 +2037,7 @@ COPY:syn-from-sentence-init-copula (Clt SUGGEST) EXCEPT (SentInit &syn-from-sent
     
 	# li
 	# --
-COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (-1 (Pl Nom) OR (Pl3 Nom)) ;
+COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (-1 (Pl Nom) OR (Pl3 Nom)) (NEGATE 1 Ess LINK -2 (Sem/Time Pl Nom) LINK -1 ("udnásj") OR ("ihttásj") OR ("boahtte") OR (Dem Sg Gen)) ;
 
 COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (-1 (Sg Nom) LINK -1 ("ja") OR ("jali") LINK -1 (Nom) ) ;
 
@@ -2103,7 +2103,11 @@ COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence
     ## Vuojŋadik idja biejvve javlli: Ájlis, ájlis, ájlis le Härrá Jubmel, gájkviekses, guhti lij, guhti {le} ja guhti boahtá.
 
 COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (1 (<spelled>)) (NEGATE -1 ("<.*[aeiouáå]>"r))   ;
+
     ## Duodden le posjekta hæhttum dahkat ådå termajt ma e julevsámegielan gávnnu.
+
+COPY:syn-from-sentence-init-copula (SUGGEST Sg3) EXCEPT (Pl3 SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (1 Ess LINK -2 (Sem/Time Pl Nom) LINK -1 ("udnásj") OR ("ihttásj") OR ("boahtte") OR (Dem Sg Gen)) ;
+    ## Udnásj ájge {le} hásstalussan rekrutterit nuoges dievnastiddjijt dan guovte giddagisájda Tråmsån ja Finnmárkon.
 
 	#  Le after gænna> gejna/gejn (suggestes both)
     # ----------------------------------------------------------------------    
