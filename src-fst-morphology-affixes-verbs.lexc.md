@@ -397,9 +397,9 @@ LEXICON BADASS_TV  NEW badly assimilated two syllable transitive loan verbs. Mak
 
 LEXICON BADASS_IV   NEW badly assimilated two syllable intransitive loan verbs. Makes nouns via -ár derivation. Only Sg3 passiv. Err/orth taged in stem file.
 
-LEXICON ABBONERE_TV   Transitive loan words with more than two syllables with -rit endings. Duvvat passives. Does not make nouns via -ár derivation. Only the two last syllables are assimilated to sami. LONG -e is assimilated in different ways in Norway and Sweden: In Norway, it becomes -ie, and in Sweden -e.
+LEXICON ABBONERE_TV   Transitive loan words with more than two syllables with -erit/ierit endings. Duvvat passives. Does not make nouns via -ár derivation. Only the two last syllables are assimilated to sami. LONG -e is assimilated in different ways in Norway and Sweden: In Norway, it becomes -ie, and in Sweden -e.
 
-LEXICON BRILJERE_IV   Intransitive loan words with more than two syllables with -rit endings. Does not make nouns via -ár derivation. Only the two last syllables are assimilated to sami. Long -e is assimilated in different ways in dialects in Norway and Sweden: In Norway it often becomes -ie, while in Sweden itºs usually -e.  
+LEXICON BRILJERE_IV   Intransitive loan words with more than two syllables with -erit/ierit endings. Does not make nouns via -ár derivation. Only the two last syllables are assimilated to sami. Long -e is assimilated in different ways in dialects in Norway and Sweden: In Norway it often becomes -ie, while in Sweden itºs usually -e.  
 
 LEXICON BRILJERE_IV_INFL   
 

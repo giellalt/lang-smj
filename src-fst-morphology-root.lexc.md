@@ -789,6 +789,7 @@ are tagged than strictly needed, this should pose no problem as
 long as the IPA conversion is correct - at least some words will
 get the same pronunciation whether read as SME or NOB/NNO/SWE.
 * +OLang/SME - North Sámi
+* +OLang/SMS - Skolt Sámi
 * +OLang/SMA - South Sámi
 * +OLang/FIN - Finnish
 * +OLang/SWE - Swedish
