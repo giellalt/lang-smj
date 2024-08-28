@@ -4422,7 +4422,7 @@ COPY:msyn-numphrase-sgine (Sg Ine SUGGEST) EXCEPT (Pl Ine) OR (Sg Com) TARGET (I
 
 # Num
 
-ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Pl Com) OR (Num Sg Acc) OR (Num Sg Gen) OR  (Num Sg Nom) OR ("moadda" Indef Acc) IF (*1 (N Sg Ine) OR NUMUNIT + &msyn-numphrase-sgine BARRIER NOT-NPMOD OR Num) 
+ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Pl Com) OR (Num Sg Acc) OR (Num Sg Gen) OR (Num Sg Nom) OR ("moadda" Indef Acc) IF (*1 (N Sg Ine) OR NUMUNIT + &msyn-numphrase-sgine BARRIER NOT-NPMOD OR Num) 
 (NEGATE -1 ("kl"))
 (NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) 
 (NEGATE 0 (Sg Nom) LINK 1 (Sg Gen) LINK 1 Sem/Plc)
@@ -4656,8 +4656,8 @@ MAP:LOCK_READING (SUGGEST) (SUGGEST);
 
 # Num
 
-ADD:xmsyn-numphrase-ess (&msyn-numphrase-ess) TARGET (Num Sg Nom) OR (Num Sg Ine) IF (*1 (N Ess) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom)) 
-(NEGATE -1 ("kl"))
+ADD:xmsyn-numphrase-ess (&msyn-numphrase-ess) TARGET (Num Sg Nom) OR (Num Sg Ine) OR (Num Pl Nom) IF (*1 (N Ess) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom)) 
+(NEGATE -1 ("kl")) 
 (NEGATE 0 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 1 (Pl Ela) LINK 1 BE + Pl3 LINK NOT 1 Num) 
 (NEGATE 0 NUMUNIT LINK -1 Num OR ("moadda")) 
 (NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date) 
@@ -4665,7 +4665,7 @@ ADD:xmsyn-numphrase-ess (&msyn-numphrase-ess) TARGET (Num Sg Nom) OR (Num Sg Ine
 (NEGATE 0 (Num "<biel.*>"r))
 (NEGATE 0 (Num Rom))
 (NEGATE 0 (Num Sg Nom) LINK -1 BE + Sg3 OR BE + Du3 OR BE + Pl3 LINK -1 (Dem Pl Ela) OR (Pers Pl3 Ela) OR (Pers Pl2 Ela) OR (Pers Pl1 Ela)) 
-(NEGATE 0 (Num Sg Ine) LINK NEGATE 0 &msyn-numphrase-sgine LINK *1 (N Sg Ine) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE 0 (Num Sg Ine) LINK NOT 0 &msyn-numphrase-sgine LINK *1 (N Sg Ine) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE 1 COMMA)
 (NEGATE 1 ("ja"))
 (NEGATE 1 ("vahkkusasj" Attr) OR ("mánnusasj" Attr) OR ("bæjvvásasj" Attr) OR ("tijmmasasj" Attr) OR ("jahkásasj" Attr))  
@@ -4678,7 +4678,7 @@ ADD:xmsyn-numphrase-ess (&msyn-numphrase-ess) TARGET (Num Sg Nom) OR (Num Sg Ine
 
 ADDRELATION ($2 LEFT) (N &msyn-numphrase-ess) OR NUMUNIT + &msyn-numphrase-ess TO (*-1 Num BARRIER NOT-Attr - PrfPrc) ;
 
-COPY:msyn-numphrase-ess (Ess SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-ess) OR (v2 Sg Nom &msyn-numphrase-ess) OR (Sg Ine &msyn-numphrase-ess) TARGET (Num &msyn-numphrase-ess) IF (*1 (N Ess) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom)) ;
+COPY:msyn-numphrase-ess (Ess SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-ess) OR (v2 Sg Nom &msyn-numphrase-ess) OR (Sg Ine &msyn-numphrase-ess) OR (Pl Nom &msyn-numphrase-ess) TARGET (Num &msyn-numphrase-ess) IF (*1 (N Ess) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom)) ;
 
 # Dem
 
