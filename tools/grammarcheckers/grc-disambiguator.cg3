@@ -232,6 +232,7 @@ LIST  Der/mus = Der/mus ;
 LIST  Der/dahka = Der/dahka ;
 LIST  Der/lis = Der/lis ;
 LIST  Der/NomAg = Der/NomAg ;
+LIST  Gram/NomAg = Gram/NomAg ;
 LIST  Der/ahtes = Der/ahtes ;
 LIST  Der/AAdv = Der/AAdv ;
 LIST  Der/vuota = Der/vuota ;
@@ -260,6 +261,7 @@ LIST Err/Der = Err/Der ;
 LIST Err/Orth-any = Err/Infl Err/Lex Err/Der Err/Orth Err/Orth-a-á Err/Orth-nom-gen Err/Orth-nom-acc Err/DerSub Err/CmpSub Err/UnspaceCmp Err/HyphSub Err/SpaceCmp Err/Spellrelax err_orth_mt ;
 LIST Err/Orth-spes = Err/Orth-a-á Err/Orth-nom-gen Err/Orth-nom-acc Err/DerSub Err/CmpSub Err/UnspaceCmp Err/HyphSub Err/SpaceCmp Err/Spellrelax err_orth_a_á_mt err_orth_nom_acc_mt err_orth_nom_gen_mt  ;
 # The last tags in Err/Orth sets are for Apertium
+
 
 
 # Noun tags
@@ -1737,7 +1739,7 @@ SELECT VGen IF (NEGATE *-2 Neg BARRIER VERB OR SV-BOUNDARY)(-1 ("lahka"))(NEGATE
 	## Son lei lahka jámi.
 	## Dál mun lean lahka geargga.
 
-SELECT VGen (0 VGENV LINK *1 VFIN BARRIER SV-BOUNDARY LINK NOT 0 AUX) ;
+SELECT VGen (0 VGENV LINK *1 VFIN BARRIER SV-BOUNDARY LINK NOT 0 AUX) (NEGATE -1 BOS) ;
 	## Valla stádaj årro dav gullájin ja váttse suv maŋelt vuolggin .
 	## Allit fásstudattijn hådjen vuojnnu nåv gåk vilpástalle, gudi tsusskaha fásstudi almatjij vuojnedijn. 
 
@@ -1764,7 +1766,7 @@ SELECT VGen (0 VGENV LINK *1 VFIN BARRIER SV-BOUNDARY LINK NOT 0 AUX) ;
 
 # 2. Done that, now we remove whatever VGen was left.
 
-REMOVE VGen IF (0 (VGen));
+REMOVE VGen IF (0 (VGen)) (NEGATE 0 ConNeg LINK NOT *0 Neg) (NEGATE -1 ConNeg);
 
 
 
@@ -4340,6 +4342,8 @@ LIST WORDLEMMA = (".*"r) ;
 
 REMOVE:errsub $$WORDLEMMA + Err/Orth-any (0 $$WORDLEMMA - Err/Orth-any ) ;   
 REMOVE:errsub2 $$WORDLEMMA + Err/Orth-spes (0 $$WORDLEMMA - Err/Orth-spes ) ; 
+
+REMOVE Err/Orth IF (0 Gram/NomAg LINK 0 V) ;
 
 
 #Disse kommenteres inn når analysen skal brukes i functions.cg3   
