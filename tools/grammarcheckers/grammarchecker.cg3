@@ -1652,7 +1652,7 @@ LIST &msyn-numphrase-sggen = &msyn-numphrase-sggen ;
 LIST &msyn-numphrase-sgcom = &msyn-numphrase-sgcom ;
 LIST &msyn-numphrase-sgine = &msyn-numphrase-sgine ;
 LIST &msyn-numphrase-ess = &msyn-numphrase-ess ;
-
+LIST &msyn-numphrase-sgnom = &msyn-numphrase-sgnom ;
 LIST &msyn-numeral-attr = &msyn-numeral-attr ;
 LIST &msyn-numeral-attr-pl-ine = &msyn-numeral-attr-pl-ine ;
 LIST &msyn-numeral-casecongr = &msyn-numeral-casecongr ;
@@ -3789,6 +3789,14 @@ COPY:msyn-nom-gen-Po (Gen SUGGEST) EXCEPT (Nom &msyn-nom-gen-Po) TARGET (&msyn-n
     # ===================================================================================================
     # ===================================================================================================
 
+    # Nominative numeral phrases
+    # ===================================================================================================
+
+# millijåvnnå
+
+ADD:xmsyn-numphrase-sgnom (&msyn-numphrase-sgnom) TARGET NUMUNIT + (Sg Nom) IF (-1 Num) (1 (N Sg Gen) OR (N Pl Nom)) ;
+
+COPY:msyn-numphrase-sgnom (Sg Gen SUGGEST) EXCEPT (Sg Nom) TARGET (&msyn-numphrase-sgnom) ;
 
     # Genitive numeral phrases
     # ===================================================================================================
