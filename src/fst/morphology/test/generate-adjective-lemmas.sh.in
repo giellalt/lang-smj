@@ -68,7 +68,7 @@ EXTEDITOR=@SEE@
 # 1. dem med hardkoding for spesielle former (K), Err/Lex (som blir filtrert bort fra normgenerator), adjektiver som bare har attributtform (ATTR|Attr| At ) , adjektiver som krever tagger for komparering (BBO |MUS |BUOREMUSS|OVDDIT |STUORIBUS|BUStem) og lemmaer som bare opptrer i sammensetninger (FINJU|Rreal | R) Lemmaene lagres som $lemmas
 @GTCORE@/scripts/extract-lemmas.sh \
 	--exclude \
-	"(LEXATTR|OANEP|NUORTTALABBO|GASSKALAMOS|TJAVGGÁMUS|\+Use\/MT| At |PrfPrc_At|VINJO|Rreal | R |ShCmp|RCmpnd|CmpN\/Only|Err\/Der|Err\/Cmp)" \
+	"(LEXATTR|OANEP|NUORTTALABBO|GASSKALAMOS|TJAVGGÁMUS|\+Use/MT| At |PrfPrc_At|VINJO|Rreal | R |ShCmp|RCmpnd|CmpN/Only|Err/Der|Err/Cmp)" \
 	$source_file > $lemmas
 
 ## 2. for plurale lemmaer (_PL). Lemmaene lagres som $lemmas_pl
@@ -80,19 +80,19 @@ EXTEDITOR=@SEE@
 # 3. som bare har attributtform. Lagres i $lemmas_attr
 @GTCORE@/scripts/extract-lemmas.sh \
 	--include "( At |PrfPrc_At|LEXATTR)" \
-    --exclude "(\+Use\/MT|Err\/Der|Err\/Cmp)" $source_file \
+    --exclude "(\+Use/MT|Err/Der|Err/Cmp)" $source_file \
 	> $lemmas_attr
 
 # 4. som krever komparativtagg. Lagres i $lemmas_comp
 @GTCORE@/scripts/extract-lemmas.sh \
 	--include "(OANEP|NUORTTALABBO)" \
-    --exclude "(\+Use\/MT|Err\/Der|Err\/Cmp)" $source_file \
+    --exclude "(\+Use/MT|Err/Der|Err/Cmp)" $source_file \
 	> $lemmas_comp
 
 # 5. som krever superlativtagg. Lagres i $lemmas_super
 @GTCORE@/scripts/extract-lemmas.sh \
 	--include "(GASSKALAMOS|TJAVGGÁMUS)" \
-    --exclude "(\+Use\/MT|Err\/Der|Err\/Cmp)" $source_file \
+    --exclude "(\+Use/MT|Err/Der|Err/Cmp)" $source_file \
 	> $lemmas_super
 
 #### Adjectives that only compounds:

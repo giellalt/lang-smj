@@ -21,8 +21,8 @@
 
 ###### Variables: #######
 ### in ###
-source_file=${srcdir}/../../../src/fst/morphology/stems/adverbs.lexc
-generator_file=./../../../src/fst/generator-gt-norm
+source_file=${srcdir}/../stems/adverbs.lexc
+generator_file=./../../generator-gt-norm
 
 ### out ###
 padv_lemmas=./filtered_p-adverbs
@@ -64,7 +64,7 @@ EXTEDITOR=@SEE@
 # Hent ut lemmaer, bortsett lemmaer som krever Px eller kompareringstagg.
 # Lemmaene lagres som filtered_p-adverbs
 @GTCORE@/scripts/extract-lemmas.sh \
-	--exclude "(-comp| LE|-sup |SUP|\+Use\/MT| Px|NOTLEMMA|Adv-TODO|Err\/Cmp)" \
+	--exclude "(-comp| LE|-sup |SUP|\+Use/MT| Px|NOTLEMMA|Adv-TODO|Err/Cmp)" \
      $source_file > $padv_lemmas
 
 # Hent ut lemmaer som krever Comp-tag. Lagres som filtered_c-adverbs
