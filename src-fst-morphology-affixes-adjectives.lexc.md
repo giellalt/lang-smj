@@ -163,7 +163,7 @@ LEXICON MEKÁNALASJ_CMP_INFL  Same as  METÅVDÅLASJ only without vuohta.
 
 Inherent comparatives and superlatives lexica
 
-LEXICON OANEP   Inherent comparatives, gives comp and superl. There are two main groups of word here: Adjectives that are lexicalized in their comparative (and superlative) forms, like sisŋep, bárep. And Nouns that can be compared, like nuortap, gáttep, oarjep (some of these are compared from their noun lexicas and thus are found twice). Some entries are likely incorrect compared forms of other adjectives, like ådåp and ruvvap (more research needed).
+LEXICON OANEP   Inherent comparatives, gives comp and superl.  Adjectives that are lexicalized in their comparative (and superlative) forms, like sisŋep, bárep.  Some entries are likely incorrect compared forms of other adjectives, like ådåp and ruvvap (more research needed).
 
 * lagáp # Even-syllable test examples:*
 * *lagáp:* `lagáp+A+Sg+Nom`
@@ -498,7 +498,7 @@ LEXICON DenominalAdjsContr
 
 Derivations to adjectives, hardcoded in adjectives stems file
 
-LEXICON DIEHTEMAHTES  ! odd syllable For hardcoded -ahtes words.
+LEXICON DIEHTEMAHTES  ! odd syllable For hardcoded -ahtes words. Derived from odd-syll NomAct (Bårråt>bårråm-bårråmahtes), or from odd-syll verbs as buorránit>buorránahtes. Migth want to split lexicon in two.
 
 LEXICON LÁGÁSJ 
 
