@@ -2978,7 +2978,28 @@ ADD:xsyn-gus-before-pron (&syn-gus-before-pron) TARGET ("gus" Qst) IF (-1 (Pron)
 
 #MOVE:syn-gus-before-pron (&syn-gus-before-pron) AFTER (*-2 V BARRIER NOT-NPMOD OR CC);
 
-    ## Dádjadi sij gus man birra tæksta la?
+#SPLITCOHORT ("<$1>"v "$1"v * &ADDED co&syn-gus-before-pron "<$1>"v "$1"v * DELETE) TARGET ("<(.)>"r "([^<].)"r &syn-gus-before-pron) - (&ADDED) - (DELETE) ;
+#
+#MOVE:syn-gus-before-pron (&syn-gus-before-pron &ADDED) AFTER
+#(*-2 V BARRIER NOT-NPMOD OR CC) ;
+#
+#ADDRELATION ($2 LEFT) (&syn-gus-before-pron) TO (*-1 (co&syn-gus-before-pron));
+#
+#    ## Dádjadi sij gus man birra tæksta la?
+#    #$ Dádjadi gus sij man birra tæksta la?
+#
+#
+#WITH 
+#
+#ADD:syn-gus-before-pron (&syn-gus-before-pron DELETE) ();
+#
+#COPYCOHORT:syn-gus-before-pron (&ADDED co&syn-gus-before-pron) # These tags will be added to the copy
+#EXCEPT (DELETE &ssyn-gus-before-pron) # We don't include this tag in the copy
+#TARGET () # Copy from the main WITH target
+#TO AFTER (jC1 ()) # The copy ends up before the first WITH context
+#;
+#
+#ADDRELATION:syn-gus-before-pron ($2 LEFT) () TO (jC1 ());
 
 
 
