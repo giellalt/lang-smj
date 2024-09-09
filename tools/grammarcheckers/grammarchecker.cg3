@@ -2974,32 +2974,26 @@ ADDRELATION ($2 RIGHT) (N &syn-missing-copula) TO (1 (&ADDED)) ;
     ## word order gus
     #-----------------    
 
-ADD:xsyn-gus-before-pron (&syn-gus-before-pron) TARGET ("gus" Qst) IF (-1 (Pron) LINK -1 V LINK -1 BOS) (*1 ("?") BARRIER COMMA) ; 
+WITH ("gus" Qst) IF
+    (-1 (Pron) LINK -1 V)
+    (-3 BOS) 
+    (*1 ("?") BARRIER COMMA) 
+{
+	ADD:xsyn-gus-before-pron (&syn-gus-before-pron DELETE)(*);
+	
+COPYCOHORT:syn-gus-before-pron (&ADDED co&syn-gus-before-pron) # These tags will be added to the copy
+      EXCEPT (DELETE &syn-gus-before-pron) # We don't include this tag in the copy
+      TARGET (*) # Copy from the main WITH target
+      TO AFTER (jC1 (*)) # The copy ends up before the first WITH context
+      ;
+      
+ADDRELATION:syn-gus-before-pron ($3 LEFT) (*) TO (jC1 (*) LINK -1 (&ADDED));
+};
 
-#MOVE:syn-gus-before-pron (&syn-gus-before-pron) AFTER (*-2 V BARRIER NOT-NPMOD OR CC);
+    ## Dádjadi sij gus man birra tæksta la?
+    #$ Dádjadi gus sij man birra tæksta la?
 
-#SPLITCOHORT ("<$1>"v "$1"v * &ADDED co&syn-gus-before-pron "<$1>"v "$1"v * DELETE) TARGET ("<(.)>"r "([^<].)"r &syn-gus-before-pron) - (&ADDED) - (DELETE) ;
-#
-#MOVE:syn-gus-before-pron (&syn-gus-before-pron &ADDED) AFTER
-#(*-2 V BARRIER NOT-NPMOD OR CC) ;
-#
-#ADDRELATION ($2 LEFT) (&syn-gus-before-pron) TO (*-1 (co&syn-gus-before-pron));
-#
-#    ## Dádjadi sij gus man birra tæksta la?
-#    #$ Dádjadi gus sij man birra tæksta la?
-#
-#
-#WITH 
-#
-#ADD:syn-gus-before-pron (&syn-gus-before-pron DELETE) ();
-#
-#COPYCOHORT:syn-gus-before-pron (&ADDED co&syn-gus-before-pron) # These tags will be added to the copy
-#EXCEPT (DELETE &ssyn-gus-before-pron) # We don't include this tag in the copy
-#TARGET () # Copy from the main WITH target
-#TO AFTER (jC1 ()) # The copy ends up before the first WITH context
-#;
-#
-#ADDRELATION:syn-gus-before-pron ($2 LEFT) () TO (jC1 ());
+
 
 
 
@@ -3031,7 +3025,7 @@ ADD:xsyn-missing-gus (&syn-missing-gus) TARGET (V Ind) OR (V Pot) OR (V Cond)  I
     #$ I då dádjada?
 
 ADDCOHORT  ("<gus>" "gus" Pcle Qst &ADDED &syn-missing-gus) AFTER &syn-missing-gus (NEGATE 0 &ADDED);
-ADDRELATION ($2 RIGHT) (V &syn-missing-gus) TO (1 (&ADDED)) ;  
+ADDRELATION ($2 RIGHT) (V &syn-missing-gus) TO (1 &ADDED) ;  
 
 
     ## Le giella njálmálasj? > Le gus
