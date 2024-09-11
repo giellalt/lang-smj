@@ -3644,6 +3644,7 @@ process, and resolve them as they appear!
 
 * **+Prop** = Propernouns
 * **+ACR** = Acronym
+`@CODE` = telephone number (beta testings)
 
 ### Pronoun subtypes
 

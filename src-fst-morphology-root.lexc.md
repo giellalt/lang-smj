@@ -24,6 +24,7 @@
 
 * **+Prop** = Propernouns
 * **+ACR** = Acronym
+`@CODE` = telephone number (beta testings)
 
 ### Pronoun subtypes
 
