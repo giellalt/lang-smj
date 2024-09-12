@@ -3865,6 +3865,11 @@ COPY:msyn-numphrase-sggen (Sg Gen SUGGEST) EXCEPT (Pl Gen &msyn-numphrase-sggen)
 	## Guokta {gusáj}  fiekse 
     ## Jus baldeduvvá giddiduvvá {guokta} væráldij gaskan.
 
+
+#Coordinated nouns after moadda
+ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Pl Gen) IF (*-1 COMMA OR CC BARRIER NOT-Attr - PrfPrc LINK -1 N + &msyn-numphrase-sggen) ;
+    ## Moadda guosaj ja bietsij duogen.
+
 # Num
 
 ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num v2 Sg Acc) OR (Num Pl Com) OR (Num Pl Gen) OR ("moadda" Indef Acc) IF (*1 (N Pl Nom) + &msyn-numphrase-sggen OR (N Pl Gen) + &msyn-numphrase-sggen BARRIER NOT-Attr - PrfPrc) 
@@ -3937,7 +3942,7 @@ ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num v2
 (NEGATE 0 Arab OR (N Coll Nom) OR (Num Rom) OR ("<.*%>"r) OR (Num "<biel.*>"r));
     ## Máhttelis le sæbrrat {guokta} vahkkusasj giesselejrajda Europan. 
 
-# coordinated nouns
+# coordinated adjectives
 # to the right
 ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num v2 Sg Acc) IF (*1 PRE-NP-HEAD BARRIER NOT-ADV LINK 1 CC LINK 1 PRE-NP-HEAD LINK *1 (N Pl Nom) + &msyn-numphrase-sggen BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) 
 (NEGATE -1 ("nr"))
@@ -3949,7 +3954,7 @@ ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num v2
 (NEGATE 1 Attr OR (N Sg Gen) LINK 1 CC LINK 1 (Num Acc) LINK *1 (N Acc) BARRIER NOT-NPMOD)
 (NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
 	## Jus baldeduvvá giddiduvvá {guokta} stuor ja buorre væráldij gaskan.
-	
+
 # coordinated numerals
 ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num v2 Sg Acc) IF (1 CC LINK *1 Num + &msyn-numphrase-sggen OR (Num Sg Gen) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) 
 (NEGATE -1 ("nr"))
@@ -3967,6 +3972,8 @@ ADDRELATION ($2 LEFT) (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sgg
 
 
 COPY:msyn-numphrase-sggen (Sg Gen SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sggen) OR (v2 Sg Nom &msyn-numphrase-sggen) OR (v2 Sg Acc &msyn-numphrase-sggen) OR (Pl Gen &msyn-numphrase-sggen) OR (Pl Com &msyn-numphrase-sggen) TARGET (Num &msyn-numphrase-sggen) IF (0 (Sg Nom) OR (Sg Acc) OR (Pl Com) OR (Pl Gen)) ;
+
+COPY:msyn-numphrase-sggen (Sg Gen SUGGEST) EXCEPT (Sg Acc &msyn-numphrase-sggen) TARGET (Pron &msyn-numphrase-sggen) ;
 
 
 # Dem
@@ -4264,17 +4271,21 @@ ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Pl Ill) IF ((0 N) OR (
 	#$ Ja de oahpásmuvviv avta prográmmaj. OK
 
 
-# coordination
+# coordination of adjectives
 ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Pl Ill) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (NOT 0 &msyn-numphrase-sgacc) (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) OR (Num Rom) LINK -1 Num LINK NEGATE -1 Sem/Curr)(NEGATE 0 (N Sg)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) ;
     ## Mån lav åhtsåm guokta ruoppsis ja fijna universitehtajda. ok
 	## Mån lav åhtsåm guokta stuorra, ruoppsis ja fijna universitehtajda. LINDA
+
+#Coordinated nouns after moadda
+ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Pl Ill) IF (*-1 COMMA OR CC BARRIER NOT-Attr - PrfPrc LINK -1 N + &msyn-numphrase-sgill) ;
+    ## Moadda guosajda ja bietsijda gehtjaj.
 
 COPY:msyn-numphrase-sgill (Sg SUGGEST) EXCEPT (Pl &msyn-numphrase-sgill) BEFORE CASE TARGET (Ill &msyn-numphrase-sgill) IF (0 N OR NUMUNIT)   ;
 
 
 # Num
 
-ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Num Sg Nom) OR (Num Sg Gen) OR (Num Sg Ill) OR (Num v2 Sg Acc) IF (*1 (N Pl) + &msyn-numphrase-sgill OR (N Sg Ill) OR (A Sg Ill) OR NUMUNIT + &msyn-numphrase-sgill BARRIER NOT-Attr - PrfPrc - (Dem Attr) - CC LINK NOT 0 (N Pl Nom) OR (N Coll Nom) OR Acc LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc) 
+ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Num Sg Nom) OR (Num Sg Gen) OR (Num Sg Ill) OR (Num v2 Sg Acc) OR ("moadda" Indef Acc) IF (*1 (N Pl) + &msyn-numphrase-sgill OR (N Sg Ill) OR (A Sg Ill) OR NUMUNIT + &msyn-numphrase-sgill BARRIER NOT-Attr - PrfPrc - (Dem Attr) - CC LINK NOT 0 (N Pl Nom) OR (N Coll Nom) OR Acc LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc) 
 (NEGATE *-1 BE + Pl3 BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))
 (NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)
 (NEGATE -1 ("kl"))
@@ -4300,10 +4311,13 @@ ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Num Sg Nom) OR (Num Sg
 
 ADD:num-phrase  (COERROR)  TARGET (Num &msyn-numphrase-sgill) IF (*1 (&msyn-numphrase-sgill) BARRIER NOT-Attr - PrfPrc);
 
-ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgill) OR NUMUNIT + &msyn-numphrase-sgill TO (*-1 (Num &msyn-numphrase-sgill) BARRIER NOT-Attr - PrfPrc) ;
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgill) OR NUMUNIT + &msyn-numphrase-sgill TO (*-1 (Num &msyn-numphrase-sgill) OR ("moadda" Indef &msyn-numphrase-sgill) BARRIER NOT-Attr - PrfPrc) ;
 
 
 COPY:msyn-numphrase-sgill (Sg Gen SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sgill) OR (v2 Sg Nom &msyn-numphrase-sgill) OR (v2 Sg Acc &msyn-numphrase-sgill) OR (Sg Gen &msyn-numphrase-sgill) OR (Pl Com &msyn-numphrase-sgill) OR (Pl Gen &msyn-numphrase-sgill) OR (Sg Ill &msyn-numphrase-sgill)  TARGET (Num &msyn-numphrase-sgill) IF (NEGATE *1 (N Pl Com) +  &msyn-numeral-attr OR (N Sg Com) OR NUMUNIT + (Num Pl Com) OR NUMUNIT + (Num Sg Com) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) LINK NEGATE 0 (Pl Gen) LINK 1 N OR Po)  ;
+
+COPY:msyn-numphrase-sgill (Sg Gen SUGGEST) EXCEPT (Sg Acc) TARGET (Pron &msyn-numphrase-sgill) ;
+
 	## Gå lijma gärggam de vuoddjájma vantsajn akta rájggáj.  OK
     ## Mån lav åhtsåm {guokta} universitehtajda #illative #LINDA
 	## Mån lav åhtsåm guokta ruoppsis ja fijna universitehtajda. OK
@@ -4362,6 +4376,7 @@ ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Pl Ela) IF ((0 N) OR (
     ## Sån gatjádij låge ulmutjijs sijá alkohåvlådábij birra.
     ## Alvos státtáv  máhtá vuojnnet gåjt gietjav báhppagieldajs.
     ## Nammadit gålmmå ájrrasa gudát ájrrasijs Finnmárkoåbmudahkaj mij háldat ednamijt ja resursajt Finnmárkon finnmárkolága milta.
+    ## Vuona stáhtta le vuododuvvam guovte álmmuga duobddágijda NOT
 
    #$ Javllá Adrian Nystø Mikkelsen {akta} studentajs gut uddni álggin bacheloråhpadussaj julevsámegielan.
    #$ Akta rádevaddijs lij Lars Theodor Kintel gænna li åtsådallama viddnudakásadimijs Divtasvuonan.  
@@ -4369,17 +4384,20 @@ ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Pl Ela) IF ((0 N) OR (
    #$  Låhkåm le akta vuodomáhtudagájs mij tjalmostuvvá Máhtudaklåpptimin, oahppoplánaj sihke vuodo- ja jårggåskåvlån.
 
 
-# coordination    
+#Coordinated nouns after moadda
+ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Pl Ela) IF (*-1 COMMA OR CC BARRIER NOT-Attr - PrfPrc LINK -1 N + &msyn-numphrase-sgela) ;
+    ## Moadda guosajs ja bietsijs.
+
+# Coordinated nouns adjectives    
 ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Pl Ela) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (NOT 0 &msyn-numphrase-sgacc) (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 Num LINK NEGATE -1 Sem/Curr)(NEGATE 0 (N Sg)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) ;
     ## Mån lav åhtsåm guokta ruoppsis ja fijna universitehtajda.
-    ## Vuona stáhtta le vuododuvvam guovte álmmuga duobddágijda NOT
 
 COPY:msyn-numphrase-sgela (Sg SUGGEST) EXCEPT (Pl &msyn-numphrase-sgela) BEFORE CASE TARGET (&msyn-numphrase-sgela) IF (0 N OR NUMUNIT) ;
 
 
 # Num
 
-ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Num Sg Nom) OR (Num v2 Sg Acc) OR (Num Pl Nom) OR (Num Sg Gen) OR (Num Pl Ela) OR (Num Sem/ID) OR ("moadda" Sg Gen) OR ("moadda" Ill Attr) IF (*1 (N Pl) +  &msyn-numphrase-sgela OR (N Sg Ela) OR NUMUNIT + &msyn-numphrase-sgela BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom)) 
+ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Num Sg Nom) OR (Num v2 Sg Acc) OR (Num Pl Nom) OR (Num Sg Gen) OR (Num Pl Ela) OR (Num Sem/ID) OR ("moadda" Sg Gen) OR ("moadda" Ill Attr) OR ("moadda" Sg Acc) IF (*1 (N Pl) +  &msyn-numphrase-sgela OR (N Sg Ela) OR NUMUNIT + &msyn-numphrase-sgela BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom)) 
 (NEGATE -1 ("kl"))
 (NEGATE -1 ("nr"))
 (NEGATE -1 (Pers Pl1 Ela) OR (Pers Pl2 Ela) OR (Pers Pl3 Ela) OR (Pers Du1 Ela) OR (Pers Du2 Ela) OR (Pers Du3 Ela) LINK *1 (Num Sg Nom) BARRIER NOT-ADV-PCLE)
@@ -4412,15 +4430,14 @@ ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Num Sg Nom) OR (Num v2
 	#$ ”Kultuvrralåpptim” le 15 almma luohtádusá gånnå ájnnasabmusin le {1 %} stáhtabudsjehtas galggá aneduvvat kultuvrrasuorgen åvddål 2014.
 
 
-ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela TO (*-1 Num BARRIER NOT-Attr - PrfPrc) ;
-ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela TO (*-1 ("moadda") BARRIER NOT-Attr - PrfPrc) ;
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela TO (*-1 Num OR ("moadda" Indef) BARRIER NOT-Attr - PrfPrc) ;
 
 COPY:msyn-numphrase-sgela (Sg Par SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sgela) OR (v2 Sg Nom &msyn-numphrase-sgela) OR (Pl Nom &msyn-numphrase-sgela) OR (Pl Ela &msyn-numphrase-sgela) OR (Sg Gen &msyn-numphrase-sgela) OR (v2 Sg Acc &msyn-numphrase-sgela) TARGET (Num &msyn-numphrase-sgela) IF (*1 (N Pl Ela) + &msyn-numphrase-sgela OR (Sg Ela) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom)) ;
 	## {Låge} åhtsåmusás li gietjav åhtsåmusá árbbedábálasj juojggusav almodittjat.
     ## Oattjov mielkev guokta/guovte>guovtet gusájs
 	#$ Magdalena Normann fotoateliajt Korsnesan dåjmadij 1910-20 jagijn, ja sjattaj viehka dåbdos gåvvår.
 
-COPY:msyn-numphrase-sgela (Sg Par SUGGEST) EXCEPT (Sg Ill Attr &msyn-numphrase-sgela) OR (Sg Gen &msyn-numphrase-sgela) TARGET ("moadda" &msyn-numphrase-sgela) IF (*1 (N Pl Ela) + &msyn-numphrase-sgela OR (Sg Ela) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom)) ;
+COPY:msyn-numphrase-sgela (Sg Par SUGGEST) EXCEPT (Sg Ill Attr &msyn-numphrase-sgela) OR (Sg Gen &msyn-numphrase-sgela) OR (Sg Acc &msyn-numphrase-sgela) TARGET ("moadda" &msyn-numphrase-sgela) IF (*1 (N Pl Ela) + &msyn-numphrase-sgela OR (Sg Ela) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom)) ;
 
 	
     #$ Akta dåjmajs le	doajmmaruhtadårjav lasedit ja giellakursajda stuoves ruhtadimev gávnnat.
@@ -4505,8 +4522,13 @@ ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine &msyn-numphrase-sgcom) TARGET (
 (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE 1 Po) ;
 	# this rule may go to a copy rule that suggests both Sg Ine and Sg Com
 
+#Coordinated nouns after moadda
+ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Pl Ine) OR (Sg Com) OR (Pl Com) IF (*-1 COMMA OR CC BARRIER NOT-Attr - PrfPrc LINK -1 N + &msyn-numphrase-sgine ) ;
+    ## Moadda {tjijnnujn, girkkojn ja almulasj bájkijn} li dákkár teleslivŋŋasa.
+    
     # numeral is also wrong, habitive "la/li" shows that it must be sg ine. # LINDA/INGA make an extra rule
 COPY:msyn-numphrase-sgine (Sg Ine SUGGEST) EXCEPT (Pl Ine) OR (Sg Com) TARGET (Ine &msyn-numphrase-sgine) OR (Sg Com &msyn-numphrase-sgine) IF (0 N OR NUMUNIT) ;
+
 
 
 # Num
@@ -4641,7 +4663,9 @@ ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Sg Ill) IF (0 N - Á-A
     # Pl Com not same as sg ill (words as oassálasste)
 #ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Pl Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Ine) OR (Num Arab) OR (Num Pl Nom) OR (Num Sg Acc) OR ("moadda" Indef Acc) BARRIER NOT-NPMOD) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE 0 (Sg Ill)) ;
 
-
+#Coordinated nouns after moadda
+ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Pl Ine) OR (Sg Com) OR (Pl Com) OR (PL Gen) IF (*-1 COMMA OR CC BARRIER NOT-Attr - PrfPrc LINK -1 N + &msyn-numphrase-sgcom ) ;
+    ## Ietjas {moadda tjuorggasij ja hiervvimij ja stuorra berustimijn} le sån luottajt miehtáj Ruonasednamav guodám..
 
 COPY:msyn-numphrase-sgcom (Sg Com SUGGEST) EXCEPT (Pl Ine) TARGET (Ine &msyn-numphrase-sgcom) IF (0 N OR NUMUNIT) (NEGATE *-1 (Num Sg Ine) OR (Num Sg Ine Attr) BARRIER NOT-NPMOD) ; 
 
