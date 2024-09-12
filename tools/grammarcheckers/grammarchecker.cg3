@@ -4751,9 +4751,10 @@ ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Num Pl Ine) OR (Num Sg
 (NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
 	## Goalmádis dal dijá lusi boadáv: guovte jali gålmå vihtana bágoj juohkka ássje nanniduvvá.
 
-ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgcom) OR (N &msyn-numphrase-plcom) OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom));
-
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgcom) OR (N &msyn-numphrase-plcom) OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom) LINK -1 CC LINK *-1 (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom));
+
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgcom) OR (N &msyn-numphrase-plcom) OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom)) (NEGATE *1 (co&msyn-numphrase-sgcom)) ;
+
 
 
 COPY:msyn-numphrase-sgcom (Sg Com SUGGEST) EXCEPT (Pl Gen) OR (Sg Acc) OR (Sg Nom) OR (v2 Sg Nom) OR (Pl Ine) OR (Sg Ill Attr) OR (Pl Com) TARGET (Num &msyn-numphrase-sgcom)(NEGATE 0 (Sg Com)) ;
