@@ -1614,6 +1614,9 @@ LIST PL-NONPAIR-N = "áiru" "beaivvaščalbmeláset" "beassážat" "biddu" "čal
 
 SET PL-N = PL-PAIR-N OR PL-NONPAIR-N;
 
+LIST POST-N-NUM = "sijddo" "kapihtal" "konvensjåvnnå" "sámegiella" "julevsámegiella" "SAMINOR" "§" "nr" (".*nummar"r) "kl" ;
+
+
 #!! Error tags
 
 LIST &ADDED = &ADDED ;
@@ -3833,7 +3836,7 @@ COPY:msyn-numphrase-nom (Sg Gen SUGGEST) EXCEPT (Sg Nom) TARGET (&msyn-numphrase
 
 # Noun 
 
-ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Pl Gen) IF ((0 N) OR (0 NUMUNIT - Com LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numphrase-sgacc OR &msyn-numphrase-sgill OR &msyn-numphrase-sgcom OR &msyn-numphrase-sgine OR &msyn-numphrase-sgela)(*-1 Num OR (A Arab) OR ("moadda" Sg) BARRIER NOT-NPMOD OR COMMA LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock OR Sem/Time OR Sem/Date OR (Num Rom) OR &msyn-numphrase-sgacc OR &msyn-numphrase-sgill OR &msyn-numphrase-sgcom OR &msyn-numphrase-sgine OR &msyn-numphrase-sgela LINK NOT -1 Sem/Curr LINK NEGATE 0 NUMUNIT LINK -1 Num OR PLURAL-QUANTIFIERS)
+ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Pl Gen) IF ((0 N) OR (0 NUMUNIT - Com LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numphrase-sgacc OR &msyn-numphrase-sgill OR &msyn-numphrase-sgcom OR &msyn-numphrase-sgine OR &msyn-numphrase-sgela)(*-1 Num OR (A Arab) OR ("moadda" Sg) BARRIER NOT-NPMOD OR COMMA LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock OR Sem/Time OR Sem/Date OR (Num Rom) OR &msyn-numphrase-sgacc OR &msyn-numphrase-sgill OR &msyn-numphrase-sgcom OR &msyn-numphrase-sgine OR &msyn-numphrase-sgela LINK NOT -1 Sem/Curr OR POST-N-NUM + (Sg Nom) LINK NEGATE 0 NUMUNIT LINK -1 Num OR PLURAL-QUANTIFIERS)
 (1 N OR Po OR CC LINK NOT 0 Sem/Plc - Ess OR (Prop Ine) LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc) # THIS IS CRITICAL - WE NEED TO SEE IF IT IS TOO STRICT 
 (NEGATE *-1 Der/akti BARRIER NOT-NPMOD) 
 (NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD-WITHOUT-NUM)
@@ -3877,8 +3880,8 @@ ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num v2
 (NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)
 (NEGATE *-1 (Pron Dem Acc) BARRIER NOT-NPMOD)
 (NEGATE -1 ("goabbá" Foc/Neg-k))
-(NEGATE -1 ("kl"))
-(NEGATE -1 ("nr"))
+(NEGATE -1 POST-N-NUM + (Sg Nom))
+(NEGATE -1 CC LINK -1 Num LINK -1 POST-N-NUM + (Sg Nom))
 (NEGATE 0 ("<.*%>"r)) 
 (NEGATE 0 (Num "<biel.*>"r))
 (NEGATE 0 Acc LINK *-1 TV BARRIER NOT-ADV-PCLE - (Pron Attr) LINK NEGATE *1 Po) 
@@ -3910,8 +3913,8 @@ ADD:xmsyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num v2
 (NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)
 (NEGATE *-1 (Pron Dem Acc) BARRIER NOT-NPMOD)
 (NEGATE -1 ("goabbá" Foc/Neg-k))
-(NEGATE -1 ("kl"))
-(NEGATE -1 ("nr"))
+(NEGATE -1 POST-N-NUM + (Sg Nom))
+(NEGATE -1 CC LINK -1 Num LINK -1 POST-N-NUM + (Sg Nom))
 (NEGATE 0 ("<.*%>"r)) 
 (NEGATE 0 Acc LINK *-1 TV BARRIER NOT-ADV-PCLE - (Pron Attr)) 
 (NEGATE 0 Arab OR Sem/Date OR (N Coll Nom) OR Sem/Year) 
@@ -4026,7 +4029,7 @@ SUBSTITUTE (&msyn-numphrase-sggen) (co&msyn-numphrase-sggen) TARGET (SUGGEST);
 
 # Noun
 
-ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 Num OR ("moadda" Sg) BARRIER (*) - PRE-NP-HEAD OR Gen + Sem/Hum LINK NOT 0 (N Coll Nom) OR (A Ord) OR Sem/Year OR Sem/Time OR Sem/Date OR (Num Rom) LINK NEGATE -1 Sem/Curr)
+ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 Num OR ("moadda" Sg) BARRIER (*) - PRE-NP-HEAD OR Gen + Sem/Hum LINK NOT 0 (N Coll Nom) OR (A Ord) OR Sem/Year OR Sem/Time OR Sem/Date OR (Num Rom) LINK NEGATE -1 Sem/Curr OR POST-N-NUM + (Sg Nom))
 (NEGATE *-1 (Der/akti) BARRIER NOT-NPMOD) 
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 0 ("aktan" Adv))
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 1 Dem)
@@ -4053,7 +4056,7 @@ ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF ((0 N) OR (
 
 # coordinated nouns
 
-ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (-1 CC LINK -1 N + &msyn-numphrase-sgacc LINK *-1 Num OR ("moadda" Pron Acc) BARRIER NOT-Attr LINK NEGATE -1 Sem/Curr)
+ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (-1 CC LINK -1 N + &msyn-numphrase-sgacc LINK *-1 Num OR ("moadda" Pron Acc) BARRIER NOT-Attr LINK NEGATE -1 Sem/Curr OR POST-N-NUM + (Sg Nom))
 (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N)
 (NEGATE 0 (N Sg)) 
 (NEGATE 0 <spelled>)
@@ -4062,7 +4065,7 @@ ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF ((0 N) OR (
 
 # coordinated noun modifiers
 
-ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 $$PRE-NP-HEAD LINK NOT 0 (N Coll Nom) OR (Num Rom) LINK -1 CC LINK -1 $$PRE-NP-HEAD LINK NOT 0 (N Coll Nom) OR (Num Rom) LINK -1 Num LINK NEGATE -1 Sem/Curr)
+ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 $$PRE-NP-HEAD LINK NOT 0 (N Coll Nom) OR (Num Rom) LINK -1 CC LINK -1 $$PRE-NP-HEAD LINK NOT 0 (N Coll Nom) OR (Num Rom) LINK -1 Num LINK NEGATE -1 Sem/Curr OR POST-N-NUM + (Sg Nom))
 (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N)
 (NEGATE 0 (N Sg)) 
 (NEGATE 0 <spelled>)
@@ -4106,8 +4109,8 @@ ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET ONE + (Num Sg Nom) OR O
 
 # sg + wrong case 
 ADD:xmsyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Num Sg Acc) IF (0 ("<.*v>"r) LINK NEGATE 0 ("låhke") OR ("giehtja")) (*1 (N Pl Acc) +  &msyn-numeral-attr OR (N Pl Acc) +  &msyn-numphrase-sgacc OR (A Pl Acc) +  &msyn-numphrase-sgacc OR (N Pl Nom) OR (A Pl Nom)  BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom)) 
-(NEGATE -1 ("kl"))
-(NEGATE -1 ("nr"))
+(NEGATE -1 POST-N-NUM + (Sg Nom))
+(NEGATE -1 CC LINK -1 Num LINK -1 POST-N-NUM + (Sg Nom))
 (NEGATE 0 ("akta" Num) OR ("1" Num))
 (NEGATE 0 ("<.*%>"r))
 (NEGATE 0 (Num "<biel.*>"r))
@@ -4201,8 +4204,8 @@ SUBSTITUTE (&msyn-numphrase-sgacc) (co&msyn-numphrase-sgacc) TARGET (SUGGEST);
 # Num
 
 ADD:xmsyn-numphrase-placc (&msyn-numphrase-placc) TARGET (Num Sg Acc) OR (Num Sg Gen) IF (*1 (N Pl Acc) + PL-PAIR-N BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom)) 
-(NEGATE -1 ("kl"))
-(NEGATE -1 ("nr"))
+(NEGATE -1 POST-N-NUM + (Sg Nom))
+(NEGATE -1 CC LINK -1 Num LINK -1 POST-N-NUM + (Sg Nom))
 (NEGATE 0 ("akta" Num) OR ("1" Num))
 (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date) 
 (NEGATE 0 (Num "<biel.*>"r))
@@ -4237,7 +4240,7 @@ SUBSTITUTE (&msyn-numphrase-placc) (co&msyn-numphrase-placc) TARGET (SUGGEST);
 # Noun
 
 # simple
-ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Pl Ill) IF ((0 N) OR (0 NUMUNIT - Com LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numphrase-sgacc) (*-1 Num OR ("moadda" Sg) BARRIER NOT-Attr - PrfPrc - (N Pl Nom) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock OR Sem/Time OR Sem/Date OR (Num Rom) LINK NOT -1 Sem/Curr LINK NEGATE 0 NUMUNIT LINK -1 Num OR PLURAL-QUANTIFIERS) 
+ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Pl Ill) IF ((0 N) OR (0 NUMUNIT - Com LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numphrase-sgacc) (*-1 Num OR ("moadda" Sg) BARRIER NOT-Attr - PrfPrc - (N Pl Nom) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock OR Sem/Time OR Sem/Date OR (Num Rom) LINK NOT -1 Sem/Curr OR POST-N-NUM + (Sg Nom) LINK NEGATE 0 NUMUNIT LINK -1 Num OR PLURAL-QUANTIFIERS) 
 (NEGATE *-1 Der/akti BARRIER NOT-NPMOD) 
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 0 ("aktan" Adv))
 (NEGATE *-1 (Num "<[§].*>"r) OR (Num "<.*%>"r) OR ("%") BARRIER NOT-NPMOD-WITHOUT-NUM) 
@@ -4272,7 +4275,7 @@ ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Pl Ill) IF ((0 N) OR (
 
 
 # coordination of adjectives
-ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Pl Ill) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (NOT 0 &msyn-numphrase-sgacc) (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) OR (Num Rom) LINK -1 Num LINK NEGATE -1 Sem/Curr)(NEGATE 0 (N Sg)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) ;
+ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Pl Ill) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (NOT 0 &msyn-numphrase-sgacc) (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) OR (Num Rom) LINK -1 Num LINK NEGATE -1 Sem/Curr OR POST-N-NUM + (Sg Nom))(NEGATE 0 (N Sg)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) ;
     ## Mån lav åhtsåm guokta ruoppsis ja fijna universitehtajda. ok
 	## Mån lav åhtsåm guokta stuorra, ruoppsis ja fijna universitehtajda. LINDA
 
@@ -4288,8 +4291,8 @@ COPY:msyn-numphrase-sgill (Sg SUGGEST) EXCEPT (Pl &msyn-numphrase-sgill) BEFORE 
 ADD:xmsyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Num Sg Nom) OR (Num Sg Gen) OR (Num Sg Ill) OR (Num v2 Sg Acc) OR ("moadda" Indef Acc) IF (*1 (N Pl) + &msyn-numphrase-sgill OR (N Sg Ill) OR (A Sg Ill) OR NUMUNIT + &msyn-numphrase-sgill BARRIER NOT-Attr - PrfPrc - (Dem Attr) - CC LINK NOT 0 (N Pl Nom) OR (N Coll Nom) OR Acc LINK NEGATE *1 Der/Pass + Pl3 BARRIER  NOT-NPMODADVPCLE - Ine - Ela - Ill - Acc) 
 (NEGATE *-1 BE + Pl3 BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))
 (NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)
-(NEGATE -1 ("kl"))
-(NEGATE -1 ("nr"))
+(NEGATE -1 POST-N-NUM + (Sg Nom))
+(NEGATE -1 CC LINK -1 Num LINK -1 POST-N-NUM + (Sg Nom))
 (NEGATE 0 Arab OR Sem/Date OR (N Coll Nom) OR Sem/Year OR Sem/Time-clock) 
 (NEGATE 0 (Num Sg Gen) LINK *1 Ill BARRIER NOT-NPMOD) 
 (NEGATE 0 (Num Sg Gen) LINK *1 Gen BARRIER NOT-NPMOD)
@@ -4351,7 +4354,7 @@ SUBSTITUTE (&msyn-numphrase-sgill) (co&msyn-numphrase-sgill) TARGET (SUGGEST);
     # ===================================================================================================
 
 # Noun
-ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Pl Ela) IF ((0 N) OR (0 NUMUNIT - Com LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numphrase-sgacc) (*-1 Num OR ("moadda" Sg) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock OR Sem/Time OR Sem/Date OR (Num Rom) LINK NOT -1 Sem/Curr LINK NEGATE 0 NUMUNIT LINK 1 N LINK -2 Num OR PLURAL-QUANTIFIERS) 
+ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Pl Ela) IF ((0 N) OR (0 NUMUNIT - Com LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numphrase-sgacc) (*-1 Num OR ("moadda" Sg) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock OR Sem/Time OR Sem/Date OR (Num Rom) LINK NOT -1 Sem/Curr OR POST-N-NUM + (Sg Nom) LINK NEGATE 0 NUMUNIT LINK 1 N LINK -2 Num OR PLURAL-QUANTIFIERS) 
 (NEGATE *-1 ("akta" Sg Nom) BARRIER NOT-Attr LINK NOT 1 ("moadda") LINK *1 (Pl Ela) BARRIER NOT-Attr)
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 0 ("aktan" Adv))
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 1 Dem)
@@ -4389,7 +4392,7 @@ ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Pl Ela) IF (*-1 COMMA 
     ## Moadda guosajs ja bietsijs.
 
 # Coordinated nouns adjectives    
-ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Pl Ela) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (NOT 0 &msyn-numphrase-sgacc) (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 Num LINK NEGATE -1 Sem/Curr)(NEGATE 0 (N Sg)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) ;
+ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Pl Ela) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (NOT 0 &msyn-numphrase-sgacc) (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 Num LINK NEGATE -1 Sem/Curr OR POST-N-NUM + (Sg Nom))(NEGATE 0 (N Sg)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) ;
     ## Mån lav åhtsåm guokta ruoppsis ja fijna universitehtajda.
 
 COPY:msyn-numphrase-sgela (Sg SUGGEST) EXCEPT (Pl &msyn-numphrase-sgela) BEFORE CASE TARGET (&msyn-numphrase-sgela) IF (0 N OR NUMUNIT) ;
@@ -4398,8 +4401,8 @@ COPY:msyn-numphrase-sgela (Sg SUGGEST) EXCEPT (Pl &msyn-numphrase-sgela) BEFORE 
 # Num
 
 ADD:xmsyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Num Sg Nom) OR (Num v2 Sg Acc) OR (Num Pl Nom) OR (Num Sg Gen) OR (Num Pl Ela) OR (Num Sem/ID) OR ("moadda" Sg Gen) OR ("moadda" Ill Attr) OR ("moadda" Sg Acc) IF (*1 (N Pl) +  &msyn-numphrase-sgela OR (N Sg Ela) OR NUMUNIT + &msyn-numphrase-sgela BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom)) 
-(NEGATE -1 ("kl"))
-(NEGATE -1 ("nr"))
+(NEGATE -1 POST-N-NUM + (Sg Nom))
+(NEGATE -1 CC LINK -1 Num LINK -1 POST-N-NUM + (Sg Nom))
 (NEGATE -1 (Pers Pl1 Ela) OR (Pers Pl2 Ela) OR (Pers Pl3 Ela) OR (Pers Du1 Ela) OR (Pers Du2 Ela) OR (Pers Du3 Ela) LINK *1 (Num Sg Nom) BARRIER NOT-ADV-PCLE)
 (NEGATE 0 ("akta" Sg Nom) LINK *1 (Pl Ela) BARRIER NOT-NPMOD)
 (NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date) 
@@ -4471,7 +4474,7 @@ SUBSTITUTE (&msyn-numphrase-sgela) (co&msyn-numphrase-sgela) TARGET (SUGGEST);
     # ===================================================================================================
 
 # Noun
-ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Pl Ine) OR (Sg Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Ine) OR (Num Arab Ine) OR (Num Pl Nom) OR (Num Pl Com) OR (Num v2 Sg Acc) OR (Num Sg Nom) OR (Num Sg Gen) OR (Num Sg Com) OR ("moadda" Indef Acc) OR ("moadda" Sg Gen) OR ("moadda" Sg Ill Attr) BARRIER NOT-Attr - Gen - PrfPrc LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date OR (Num Rom) LINK NEGATE -1 Sem/Curr) 
+ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Pl Ine) OR (Sg Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Ine) OR (Num Arab Ine) OR (Num Pl Nom) OR (Num Pl Com) OR (Num v2 Sg Acc) OR (Num Sg Nom) OR (Num Sg Gen) OR (Num Sg Com) OR ("moadda" Indef Acc) OR ("moadda" Sg Gen) OR ("moadda" Sg Ill Attr) BARRIER NOT-Attr - Gen - PrfPrc LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date OR (Num Rom) LINK NEGATE -1 Sem/Curr OR POST-N-NUM + (Sg Nom)) 
 (NEGATE *-1 (Num "<[§].*>"r) OR (Num "<.*%>"r) OR ("%") BARRIER NOT-NPMOD-WITHOUT-NUM)  
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 0 ("aktan" Adv))
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 1 Dem)
@@ -4494,7 +4497,7 @@ ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Pl Ine) OR (Sg Com) IF
 	## Mij lip NSRan  guhkev juo berustam, ja ájn berustip, nannit aktijvuodav sámij gaskan divna niellja rijkajn duola degu konkrehtalasj aktisasjbargo baktu.
     ## makkár rahtjamusá li nielje sámegielajn
     
-ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgcom) TARGET (Pl Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Com) BARRIER NOT-Attr - Gen - PrfPrc LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date OR (Num Rom) LINK NEGATE -1 Sem/Curr) 
+ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgcom) TARGET (Pl Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Com) BARRIER NOT-Attr - Gen - PrfPrc LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date OR (Num Rom) LINK NEGATE -1 Sem/Curr OR POST-N-NUM + (Sg Nom)) 
 (NEGATE *-1 (Num Sg Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE *-1 (Num Sem/ID) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD-WITHOUT-NUM)(NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) 
@@ -4508,7 +4511,7 @@ ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgcom) TARGET (Pl Com) IF ((0 N) OR (
 (NEGATE 1 (N Gen) LINK 1 Po) 
 (NEGATE *1 Po BARRIER (*) - CC - Gen - (N Pl Nom));
 
-ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine &msyn-numphrase-sgcom) TARGET (Pl Ine) OR (Sg Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num v2 Sg Acc) OR (Num Arab Ine) BARRIER NOT-NPMOD LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date OR (Num Rom) LINK NOT -1 Sem/Curr LINK *-1 ("liehket" Ind) BARRIER (*) - Num - Dem)
+ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine &msyn-numphrase-sgcom) TARGET (Pl Ine) OR (Sg Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num v2 Sg Acc) OR (Num Arab Ine) BARRIER NOT-NPMOD LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date OR (Num Rom) LINK NOT -1 Sem/Curr OR POST-N-NUM + (Sg Nom) LINK *-1 ("liehket" Ind) BARRIER (*) - Num - Dem)
 (NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD)
 (NEGATE *-1 (Num Sem/ID) BARRIER NOT-NPMOD)
 (NEGATE -1 COMMA)
@@ -4534,8 +4537,8 @@ COPY:msyn-numphrase-sgine (Sg Ine SUGGEST) EXCEPT (Pl Ine) OR (Sg Com) TARGET (I
 # Num
 
 ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Pl Com) OR (Num v2 Sg Acc) OR (Num Sg Gen) OR (Num Sg Nom) OR ("moadda" Indef Acc) IF (*1 (N Sg Ine) OR NUMUNIT + &msyn-numphrase-sgine BARRIER NOT-NPMOD OR Num) 
-(NEGATE -1 ("kl"))
-(NEGATE -1 ("nr"))
+(NEGATE -1 POST-N-NUM + (Sg Nom))
+(NEGATE -1 CC LINK -1 Num LINK -1 POST-N-NUM + (Sg Nom))
 (NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) 
 (NEGATE 0 (Sg Nom) LINK 1 (Sg Gen) LINK 1 Sem/Plc)
 (NEGATE 0 NUMUNIT LINK -1 Num OR ("moadda")) 
@@ -4615,7 +4618,7 @@ MAP:LOCK_READING (SUGGEST) (SUGGEST);
 #OUTPUT1 dajna guokta gusájn  > dajna guovtijn gusájn (Com)
 #OUTPUT2 Da guovten gusájn    > dan guovten gusán (Ine)
 
-ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Pl Ine) OR (Sg Com) OR (Pl Gen) OR (Pl Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Ine) OR (Num Arab Ine) OR (Num Pl Nom) OR (Num Pl Com) OR (Num v2 Sg Acc) OR (Num Sg Nom) OR (Num Sg Gen) OR (Num Sg Com) OR ("moadda" Indef Acc) OR ("moadda" Sg Gen) OR ("moadda" Sg Ill Attr) BARRIER NOT-Attr - Gen - PrfPrc LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date OR (Num Rom) LINK NEGATE -1 Sem/Curr) 
+ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Pl Ine) OR (Sg Com) OR (Pl Gen) OR (Pl Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Ine) OR (Num Arab Ine) OR (Num Pl Nom) OR (Num Pl Com) OR (Num v2 Sg Acc) OR (Num Sg Nom) OR (Num Sg Gen) OR (Num Sg Com) OR ("moadda" Indef Acc) OR ("moadda" Sg Gen) OR ("moadda" Sg Ill Attr) BARRIER NOT-Attr - Gen - PrfPrc LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date OR (Num Rom) LINK NEGATE -1 Sem/Curr OR POST-N-NUM + (Sg Nom)) 
 (NEGATE -2 ("gitta" Adv))
 (NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE *-1 (Num Sg Ine) - SUGGEST BARRIER NOT-NPMOD-WITHOUT-NUM) 
@@ -4647,7 +4650,7 @@ ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Pl Ine) OR (Sg Com) OR
 
 
     # homonomy beetween pl com and sg ill
-ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Sg Ill) IF (0 N - Á-A-E-O-U-I-Å-NOUNS OR NUMUNIT LINK NOT 1 N - Sem/Plc) (0 (N Pl Com)) (*-1 (Num Pl Gen) OR (Num Sg Nom) OR ("moadda" Sg Acc) BARRIER NOT-NPMOD LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date OR (Num Rom) LINK NEGATE -1 Sem/Curr) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) 
+ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Sg Ill) IF (0 N - Á-A-E-O-U-I-Å-NOUNS OR NUMUNIT LINK NOT 1 N - Sem/Plc) (0 (N Pl Com)) (*-1 (Num Pl Gen) OR (Num Sg Nom) OR ("moadda" Sg Acc) BARRIER NOT-NPMOD LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time OR Sem/Date OR (Num Rom) LINK NEGATE -1 Sem/Curr OR POST-N-NUM + (Sg Nom)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) 
 (NEGATE *-1 (Num Sem/ID) BARRIER NOT-NPMOD)
 (NEGATE *-1 Num BARRIER NOT-NPMOD LINK 0 ("aktan" Adv))
 (NEGATE *-1 (Num Sg Nom) BARRIER NOT-NPMOD LINK -1 BE + Sg3 OR BE + Du3 OR BE + Pl3 LINK -1 (Dem Pl Ela) OR (Pers Pl3 Ela) OR (Pers Pl2 Ela) OR (Pers Pl1 Ela)) 
@@ -4682,8 +4685,8 @@ COPY:msyn-numphrase-sgcom (Sg Com SUGGEST) EXCEPT (Sg Com) TARGET (Sg Com &msyn-
 
 # Num
 ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Num Sg Gen) OR (Num Pl Nom) OR (Num Pl Com) OR (Num Sg Nom) OR (Num Sg Com) OR ("moadda" Indef Acc) OR (Num Arab) IF (*1 (N Pl Ine) OR (N Sg Com) OR (N Pl Com &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom BARRIER NOT-Attr - PrfPrc LINK NEGATE 0 (N Coll Nom) LINK NOT 0 Acc) 
-(NEGATE -1 ("kl"))
-(NEGATE -1 ("nr"))
+(NEGATE -1 POST-N-NUM + (Sg Nom))
+(NEGATE -1 CC LINK -1 Num LINK -1 POST-N-NUM + (Sg Nom))
 (NEGATE 0 &msyn-numeral-parcasecongr)  
 (NEGATE 0 ("<.*%>"r))
 (NEGATE 0 ("akta" Sg Nom) LINK *1 (V Sg3) BARRIER NOT-ADV-PCLE)
@@ -4710,8 +4713,8 @@ ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Num Sg Gen) OR (Num Pl
     ## {guokta} gusájn li báktjasa
     
 ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Num Sg Gen) OR (Num Pl Gen) OR (Num v2 Sg Acc) OR (Num Sg Com) IF (*1 (N Sg Com) OR (N Pl Ine) OR (N Pl Gen &msyn-numphrase-sgcom) OR (N Pl Com &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom OR NUMUNIT + &msyn-numphrase-sgcom BARRIER NOT-NPMOD)
-(NEGATE -1 ("kl"))
-(NEGATE -1 ("nr"))
+(NEGATE -1 POST-N-NUM + (Sg Nom))
+(NEGATE -1 CC LINK -1 Num LINK -1 POST-N-NUM + (Sg Nom))
 (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock)  
 (NEGATE 0 (Sg Com) LINK *1 (N Sg Com) BARRIER NOT-NPMOD LINK NOT -2 Dem)
 (NEGATE 0 (Num Sg Nom) LINK -1 BE + Sg3 OR BE + Du3 OR BE + Pl3 LINK -1 (Dem Pl Ela) OR (Pers Pl3 Ela) OR (Pers Pl2 Ela) OR (Pers Pl1 Ela)) 
@@ -4733,8 +4736,8 @@ ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Num Sg Gen) OR (Num Pl
         
 # coordination of nouns
 ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num v2 Sg Acc) IF (*1 PRE-NP-HEAD BARRIER NOT-ADV LINK 1 CC LINK 1 PRE-NP-HEAD LINK *1 (N Pl Ine) + &msyn-numphrase-sgcom OR (N Sg Com) + &msyn-numphrase-sgcom BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) 
-(NEGATE -1 ("kl"))
-(NEGATE -1 ("nr"))
+(NEGATE -1 POST-N-NUM + (Sg Nom))
+(NEGATE -1 CC LINK -1 Num LINK -1 POST-N-NUM + (Sg Nom))
 (NEGATE 0 (Num "<biel.*>"r))
 (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) 
 (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras"))
@@ -4744,8 +4747,8 @@ ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Num Pl Ine) OR (Num Sg
 	
 # coordinated numerals
 ADD:xmsyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num v2 Sg Acc) IF (1 CC LINK *1 Num + &msyn-numphrase-sgcom OR Num + &msyn-numphrase-sgcom BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) 
-(NEGATE -1 ("kl"))
-(NEGATE -1 ("nr"))
+(NEGATE -1 POST-N-NUM + (Sg Nom))
+(NEGATE -1 CC LINK -1 Num LINK -1 POST-N-NUM + (Sg Nom))
 (NEGATE 0 (Num "<biel.*>"r))
 (NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) 
 (NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras"))
@@ -4837,12 +4840,12 @@ SUBSTITUTE (&msyn-numphrase-ess) (co&msyn-numphrase-ess) TARGET (SUGGEST);
 
 # OLD!! only noun number is wrong
 
-#ADD:xmsyn-numeral-attr (&msyn-numeral-attr) TARGET (Pl) IF ((0 N) OR (0 NUMUNIT - Com LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numphrase-sgacc OR &msyn-numphrase-sggen OR &msyn-numphrase-sgill OR &msyn-numphrase-sgcom OR &msyn-numphrase-sgine OR &msyn-numphrase-sgela) (*-1 Num BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock OR Sem/Time OR Sem/Date LINK NOT -1 Sem/Curr LINK NEGATE 0 NUMUNIT LINK -1 Num OR PLURAL-QUANTIFIERS) (NEGATE 0 (N Sg) - Ill OR (N Pl Nom))(NEGATE 0 (Pl Ela) LINK -1 ("akta" Sg Nom))(NEGATE 0 (Pl Ela) LINK -1 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 2 BE + Pl3)(NEGATE 0 (N Pl Nom) LINK -1 (Num Sg Nom))(NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr - Gen - PrfPrc) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE -1 NUMUNIT LINK -1 PLURAL-QUANTIFIERS OR Num)(NEGATE 0 (Ill) OR (Ela)) ;    
+#ADD:xmsyn-numeral-attr (&msyn-numeral-attr) TARGET (Pl) IF ((0 N) OR (0 NUMUNIT - Com LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numphrase-sgacc OR &msyn-numphrase-sggen OR &msyn-numphrase-sgill OR &msyn-numphrase-sgcom OR &msyn-numphrase-sgine OR &msyn-numphrase-sgela) (*-1 Num BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock OR Sem/Time OR Sem/Date LINK NOT -1 Sem/Curr OR POST-N-NUM + (Sg Nom) LINK NEGATE 0 NUMUNIT LINK -1 Num OR PLURAL-QUANTIFIERS) (NEGATE 0 (N Sg) - Ill OR (N Pl Nom))(NEGATE 0 (Pl Ela) LINK -1 ("akta" Sg Nom))(NEGATE 0 (Pl Ela) LINK -1 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 2 BE + Pl3)(NEGATE 0 (N Pl Nom) LINK -1 (Num Sg Nom))(NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr - Gen - PrfPrc) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE -1 NUMUNIT LINK -1 PLURAL-QUANTIFIERS OR Num)(NEGATE 0 (Ill) OR (Ela)) ;    
 #    #$ Dále lij muhtem subtsas gå russtijin 1930- jagijn náv:
 #	#$ Sáme gielladutkij gaskan li guokta {vuojno} dasi mij máhttá doajmmat objæktan sámegielan. #nominative
 #
 #
-#ADD:xmsyn-numeral-attr (&msyn-numeral-attr) TARGET (Pl) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 Num LINK NEGATE -1 Sem/Curr)(NEGATE 0 (N Sg)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N)(NEGATE 0 (Ill) OR (Ela))(NOT 0 &msyn-numphrase-sgacc OR &msyn-numphrase-sggen OR &msyn-numphrase-sgill OR &msyn-numphrase-sgcom OR &msyn-numphrase-sgine OR &msyn-numphrase-sgela)  ;
+#ADD:xmsyn-numeral-attr (&msyn-numeral-attr) TARGET (Pl) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 Num LINK NEGATE -1 Sem/Curr OR POST-N-NUM + (Sg Nom))(NEGATE 0 (N Sg)) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N)(NEGATE 0 (Ill) OR (Ela))(NOT 0 &msyn-numphrase-sgacc OR &msyn-numphrase-sggen OR &msyn-numphrase-sgill OR &msyn-numphrase-sgcom OR &msyn-numphrase-sgine OR &msyn-numphrase-sgela)  ;
 #    ## Mån lav åhtsåm guokta ruoppsis ja fijna universitehtajda.
 #    ## Vuona stáhtta le vuododuvvam guovte álmmuga duobddágijda NOT
 #
