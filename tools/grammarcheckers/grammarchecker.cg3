@@ -2057,9 +2057,6 @@ COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence
 
     # Bijla le buore > li
 
-COPY:syn-from-sentence-init-copula (Pl3 SUGGEST) EXCEPT (Sg3 SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (1 (Pl Nom) LINK -2 ("de")) ;
-    ## Vájku dat rádje sjattaj de {le} ulmutja sässtám ietjasa dábijt ja kultuvrav. 
-    
 COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (*1 (N Pl Nom) BARRIER NOT-NPMOD) 
 (NEGATE -1 (N Sg Nom)) 
 (NEGATE -1 (Pers Sg2) OR (Pers Sg3)) 
@@ -2067,6 +2064,13 @@ COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence
 (NEGATE 2 CC)
 (NEGATE *1 (V Pl3) BARRIER S-BOUNDARY) ;
     ## Jus galggap vuorbástuvvat hæhttup aktan barggat, dádjadusájn juhti {le} nasjåvnålasj fálaldagá ma galggi ásaduvvat.
+
+COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (1 (N Pl)) (NEGATE -1 (Sg Nom)) ;
+
+COPY:syn-from-sentence-init-copula (Pl3 SUGGEST) EXCEPT (Sg3 SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (1 (Pl Nom) LINK -2 ("de")) ;
+    ## Vájku dat rádje sjattaj de {le} ulmutja sässtám ietjasa dábijt ja kultuvrav. 
+    
+
     
 LIST GO-PCLE-smj = "gå" ;
 LIST GO-PCLE-sme = "go" ;
@@ -2578,6 +2582,7 @@ ADD:xmsyn-mij-gut (&msyn-mij-gut) TARGET WHAT + Nom IF (*1 COPULAS BARRIER NOT-A
     # Comma
 ADD:xmsyn-mij-gut (&msyn-mij-gut) TARGET WHAT IF (-1 COMMA LINK -1 (N Coll) OR Der/NomAg OR Gram/NomAg OR (Sem/Hum) - Sem/Org OR (Sem/Mal) OR (Sem/Fem) OR (Sem/Sur) OR (Pron Pers) OR (Pron Indef) + Sem/Hum) 
 (NEGATE 0 (Rel Acc) LINK NOT -1 (N Nom)) 
+(NEGATE 0 (Rel Sg Gen))
 (NEGATE 0 Nom LINK *1 BE + Sg3 BARRIER S-BOUNDARY) 
 (NEGATE 1 ("ávkke" Pl Acc)) ;
     #$  Muv vielja, {mij} ávkijt, jus guhtik javllá sujna l jáhkko, valla dago älle?
