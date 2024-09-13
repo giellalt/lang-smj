@@ -2031,6 +2031,7 @@ ADD:syn-from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentIn
 COPY:syn-from-sentence-init-copula (Clt SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Prs Sg3 &syn-from-sentence-init-copula) IF (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 ("ja") OR ("de" Adv) OR ("de" CC) OR ("jali") OR (V Prs) OR (V Prt))
 (NEGATE -1 (N Pl Nom) LINK NOT 0 (N Sg Nom)) 
 (NEGATE -1 ("guhti") LINK -1 ("mån" Pl1 Gen) LINK -1 ("áhttje" Sg Nom)) 
+(NEGATE -1 &msyn-congr-gænna-gejn)
 (NEGATE *-1 (N Sg Nom) BARRIER NOT-ADV-PCLE - Ela - Ine - Po LINK *-1 CC BARRIER NOT-NPMOD LINK -1 (N Nom)) 
 (NEGATE *1 (N Pl Nom) BARRIER NOT-NPMOD) 
 (NEGATE 1 CC LINK NOT 0 ("de" CC) OR ("juogu" CC)) ;
@@ -2096,6 +2097,8 @@ COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence
 COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula Area/NO Area/SE) TARGET (Sg2 &syn-from-sentence-init-copula) (NEGATE *1 (N Pl Nom) BARRIER NOT-NPMOD)  ; 
 
     ## Áhttje mijá guhti {le} almen
+
+COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1  &msyn-congr-gænna-gejn) ;
 
 COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula Area/NO Area/SE) TARGET (Sg1 &syn-from-sentence-init-copula) OR (Prt Sg3 &syn-from-sentence-init-copula) OR (Du1 &syn-from-sentence-init-copula) OR (Du2 &syn-from-sentence-init-copula) OR (Du3 &syn-from-sentence-init-copula) OR (Pl1 &syn-from-sentence-init-copula) OR (Pl2 &syn-from-sentence-init-copula)  ; 
 
