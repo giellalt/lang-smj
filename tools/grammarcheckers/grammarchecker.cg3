@@ -2045,12 +2045,19 @@ COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence
 
 COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (-1 (Sg Nom) LINK -1 ("ja") OR ("jali") LINK -1 (Nom) ) ;
 
+COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (-1 ("guhti" Rel Pl)) (1 (N Pl) LINK NOT 1 CC) (NEGATE 2 (N Sg Nom))  ;
+
     # Bijla le buore > li
 
 COPY:syn-from-sentence-init-copula (Pl3 SUGGEST) EXCEPT (Sg3 SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (1 (Pl Nom) LINK -2 ("de")) ;
     ## Vájku dat rádje sjattaj de {le} ulmutja sässtám ietjasa dábijt ja kultuvrav. 
     
-COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (*1 (N Pl Nom) BARRIER NOT-NPMOD) (NEGATE -1 (N Sg Nom)) (NEGATE *1 (V Pl3) BARRIER S-BOUNDARY) (NEGATE -1 (Pers Sg2) OR (Pers Sg3)) (NEGATE -1 ("guhti" Sg Nom) LINK -1 (Pers Sg2) OR (Pers Sg3))  ;
+COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (*1 (N Pl Nom) BARRIER NOT-NPMOD) 
+(NEGATE -1 (N Sg Nom)) 
+(NEGATE -1 (Pers Sg2) OR (Pers Sg3)) 
+(NEGATE -1 ("guhti" Sg Nom) LINK -1 (Pers Sg2) OR (Pers Sg3))
+(NEGATE 2 CC)
+(NEGATE *1 (V Pl3) BARRIER S-BOUNDARY) ;
     ## Jus galggap vuorbástuvvat hæhttup aktan barggat, dádjadusájn juhti {le} nasjåvnålasj fálaldagá ma galggi ásaduvvat.
     
 LIST GO-PCLE-smj = "gå" ;
@@ -2112,13 +2119,16 @@ COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence
 
 COPY:syn-from-sentence-init-copula (SUGGEST Sg3) EXCEPT (Pl3 SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (1 Ess LINK -2 (Sem/Time Pl Nom) LINK -1 ("udnásj") OR ("ihttásj") OR ("boahtte") OR (Dem Sg Gen)) ;
     ## Udnásj ájge {le} hásstalussan rekrutterit nuoges dievnastiddjijt dan guovte giddagisájda Tråmsån ja Finnmárkon.
+    
+COPY:syn-from-sentence-init-copula (SUGGEST Sg3) EXCEPT (Pl3 SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (1 (N Pl Nom) OR (N Sg Gen) LINK 1 CC LINK 1 (N Sg Gen) OR (N Pl Nom) LINK 1 (Sg Nom));
+    ## Sámedigge ja institusjåvnå gænna {le} sámegiela ja kultuvra máhtudahka, galggi aktan ietjá åhpadusinstitusjåvnåj barggat ja ásadit åhpadusplánajt ma guosski sámijda ja sáme ássjijda.
 
 	#  Le after gænna> gejna/gejn (suggestes both)
     # ----------------------------------------------------------------------    
 
-COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 &msyn-congr-gænna-gejn)  ;
+#COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 &msyn-congr-gænna-gejn)  ;
 
-COPY:syn-from-sentence-init-copula (Clt SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 &msyn-congr-gænna-gejn) ;
+#COPY:syn-from-sentence-init-copula (Clt SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 &msyn-congr-gænna-gejn) ;
 
 	
     # Should be sentence initial copula: from la to le. 
