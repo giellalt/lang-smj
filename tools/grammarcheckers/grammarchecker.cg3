@@ -1614,7 +1614,7 @@ LIST PL-NONPAIR-N = "áiru" "beaivvaščalbmeláset" "beassážat" "biddu" "čal
 
 SET PL-N = PL-PAIR-N OR PL-NONPAIR-N;
 
-LIST POST-N-NUM = "sijddo" "kapihtal" "konvensjåvnnå" "sámegiella" "julevsámegiella" "SAMINOR" "§" "nr" (".*nummar"r) "kl" ;
+LIST POST-N-NUM = "sijddo" "kapihtal" "konvensjåvnnå" "sámegiella" "julevsámegiella" "SAMINOR" "§" "nr" (".*nummar"r) "kl" "kloahkko" "kloahkka" (".*konvensjåvnnå"r) ;
 
 
 #!! Error tags
@@ -4580,7 +4580,8 @@ ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Num Pl Ine) OR (Num Sg
 (NEGATE 1 ("ja"))
 (NEGATE 1 Sem/Time LINK 1 (N Ine))
 (NEGATE *1 (N Ess) BARRIER NOT-NPMOD LINK NOT 0 (Sg Ine))
-(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
+(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD)
+(NEGATE *2 ("gaskan") BARRIER NOT-Attr - PrfPrc) ;
 	# those two rules belong together: xmsyn-numeral-casecongr-com and xmsyn-numeral-casecongr-ine
 	## Mij lip NSRan  guhkev juo berustam, ja ájn berustip, nannit aktijvuodav sámij gaskan divna niellja rijkajn duola degu konkrehtalasj aktisasjbargo baktu.
     ## makkár rahtjamusá li nielje sámegielajn
@@ -4596,7 +4597,8 @@ ADD:xmsyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Num Pl Ine) OR (Num Sg
 (NEGATE 0 NUMUNIT LINK -1 Num OR ("moadda")) 
 (NEGATE 1 Dem) 
 (NEGATE 1 Prop)
-(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
+(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) 
+(NEGATE *2 ("gaskan") BARRIER NOT-Attr - PrfPrc) ;
 	## Tjoahkkáj li dájn {niellja} buorre ja stuor sajijn, Mortensnesajn oajvvebájkken, sierralágásj buojkulvisá årromij, bivddemij ja åsskuj Arktalasj guovlojn 12000 jagij tjadá.
 
 ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgine) OR NUMUNIT + &msyn-numphrase-sgine TO (*-1 CC OR COMMA LINK *-1 (Num &msyn-numphrase-sgine) OR ("moadda" Indef &msyn-numphrase-sgine)); 
@@ -4825,8 +4827,7 @@ MAP:LOCK_READING (SUGGEST) (SUGGEST);
 # Num
 
 ADD:xmsyn-numphrase-ess (&msyn-numphrase-ess) TARGET (Num Sg Nom) OR (Num Sg Ine) OR (Num Pl Nom) IF (*1 (N Ess) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom)) 
-(NEGATE -1 ("kl")) 
-(NEGATE -1 ("nr"))
+(NEGATE -1 POST-N-NUM + (Sg Nom))
 (NEGATE 0 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 1 (Pl Ela) LINK 1 BE + Pl3 LINK NOT 1 Num) 
 (NEGATE 0 NUMUNIT LINK -1 Num OR ("moadda")) 
 (NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date) 
