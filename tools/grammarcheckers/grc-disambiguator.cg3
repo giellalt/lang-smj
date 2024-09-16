@@ -4345,8 +4345,10 @@ REMOVE Cmp/SgGen (0 Cmp/SgNom) ;
 
 LIST WORDLEMMA = (".*"r) ;
 
-REMOVE:errsub $$WORDLEMMA + Err/Orth-any (0 $$WORDLEMMA - Err/Orth-any ) ;   
-REMOVE:errsub2 $$WORDLEMMA + Err/Orth-spes (0 $$WORDLEMMA - Err/Orth-spes ) ; 
+LIST &SUGGEST = &SUGGEST ;
+
+REMOVE:errsub $$WORDLEMMA + Err/Orth-any (0 $$WORDLEMMA - Err/Orth-any)(NEGATE 0t Err/Orth-any OR &SUGGEST) ;   
+REMOVE:errsub2 $$WORDLEMMA + Err/Orth-spes (0 $$WORDLEMMA - Err/Orth-spes)(NEGATE 0t Err/Orth-any OR &SUGGEST) ; 
 
 REMOVE Err/Orth IF (0 Gram/NomAg LINK 0 V) ;
 
