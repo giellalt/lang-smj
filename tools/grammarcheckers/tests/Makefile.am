@@ -18,11 +18,11 @@ TESTS=\
 	DEV-msyn-moadda-bale-PASS.yaml                \
 	DEV-msyn-nom-gen-PP-FAIL.yaml                 \
 	DEV-msyn-nom-gen-PP-PASS.yaml                 \
-	DEV-msyn-nom-nom-gen-PASS.yaml                    \
-	DEV-msyn-numphrase-FAIL.yaml               \
-    DEV-msyn-numphrase-PASS.yaml              \
-	DEV-msyn-sme_interference_neg-FAIL.yaml        \
-	DEV-msyn-sme_interference_neg-PASS.yaml        \
+	DEV-msyn-nom-nom-gen-PASS.yaml                \
+	DEV-msyn-numphrase-FAIL.yaml                  \
+    DEV-msyn-numphrase-PASS.yaml                  \
+	DEV-msyn-sme_interference_neg-FAIL.yaml       \
+	DEV-msyn-sme_interference_neg-PASS.yaml       \
     DEV-punct-nom-nom-comma-FAIL.yaml             \
 	DEV-real-NegSg2-NegSg3-FAIL.yaml              \
 	DEV-real-NegSg2-NegSg3-PASS.yaml              \
@@ -41,6 +41,7 @@ TESTS=\
 	DEV-syn-number_congruence-subj-verb-PASS.yaml \
 	DEV-syn-pred-attr-FAIL.yaml                   \
 	DEV-syn-pred-attr-PASS.yaml                   \
+	DEV-style-short-long-FAIL.yaml                \
 	REL-lex-oahpasmuvvat-oahpastuvvat-PASS.yaml   \
 	REL-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
 	REL-msyn-attr-pred-FAIL.yaml                  \
@@ -62,7 +63,7 @@ TESTS=\
 	msyn-genna-gejn.yaml                          \
 	msyn-gut-mij-gut.yaml                         \
 	msyn-iesj-ietja.yaml                          \
-    msyn-IV-with-object.yaml                    \
+    msyn-IV-with-object.yaml                      \
 	msyn-liba-li.yaml                             \
 	msyn-liehket-congr-condsg2-condpl3.yaml       \
 	msyn-liehket-congr-condsg2-condsg3.yaml       \
@@ -103,7 +104,7 @@ TESTS=\
 	syn-pred-attr-PASS.yaml                       \
     syn-should-be-cmp-FAIL.yaml                   \
     syn-should-be-cmp-PASS.yaml                   \
-	syn-wo-neg-before-subj-FAIL.yaml			\
+	syn-wo-neg-before-subj-FAIL.yaml			  \
 	syn-wo-neg-before-subj-PASS.yaml
 
 # List tests that are presently (expected) failures here, ie things that should
@@ -114,9 +115,9 @@ XFAIL_TESTS=\
 	DEV-msyn-gut-mij-gut-FAIL.yaml                \
 	DEV-msyn-moadda-bale-FAIL.yaml                \
 	DEV-msyn-nom-gen-PP-FAIL.yaml                 \
-	DEV-msyn-nom-nom-gen-FAIL.yaml                    \
-	DEV-msyn-numphrase-FAIL.yaml               \
-	DEV-msyn-sme_interference_neg-FAIL.yaml        \
+	DEV-msyn-nom-nom-gen-FAIL.yaml                \
+	DEV-msyn-numphrase-FAIL.yaml                  \
+	DEV-msyn-sme_interference_neg-FAIL.yaml       \
 	DEV-real-NegSg2-NegSg3-FAIL.yaml              \
 	DEV-real-NegSg3-NegSg2-FAIL.yaml              \
 	DEV-real-PrsPl3-PrtSg3-FAIL.yaml              \
@@ -125,8 +126,9 @@ XFAIL_TESTS=\
 	DEV-syn-pred-attr-FAIL.yaml                   \
     DEV-punct-nom-nom-comma-FAIL.yaml             \
     DEV-syn-akta-FAIL.yaml                        \
-    DEV-syn-missing-gus-FAIL.yaml                         \
+    DEV-syn-missing-gus-FAIL.yaml                 \
     DEV-syn-missing-copula-FAIL.yaml              \
+	DEV-style-short-long-FAIL.yaml                \
 	REL-msyn-attr-pred-FAIL.yaml                  \
 	REL-msyn-genna-gejn-FAIL.yaml                 \
 	REL-msyn-iesj-ietja-FAIL.yaml                 \
