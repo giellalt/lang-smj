@@ -1614,7 +1614,7 @@ LIST PL-NONPAIR-N = "áiru" "beaivvaščalbmeláset" "beassážat" "biddu" "čal
 
 SET PL-N = PL-PAIR-N OR PL-NONPAIR-N;
 
-LIST POST-N-NUM = "sijddo" "kapihtal" "konvensjåvnnå" "sámegiella" "julevsámegiella" "SAMINOR" "§" "nr" (".*nummar"r) "kl" "kloahkko" "kloahkka" (".*konvensjåvnnå"r) ;
+LIST POST-N-NUM = "sijddo" "kapihtal" "konvensjåvnnå" "sámegiella" "julevsámegiella" "SAMINOR" "§" "nr" (".*nummar"r) "kl" "kloahkko" "kloahkka" (".*konvensjåvnnå"r) "kr" ;
 
 
 #!! Error tags
@@ -3873,6 +3873,7 @@ ADD:xmsyn-numphrase-nom (&msyn-numphrase-nom) TARGET NUMUNIT + (Sg Nom) IF (-1 N
 
 ADD:xmsyn-numphrase-nom  (&msyn-numphrase-nom) TARGET (N Sg Nom) IF (*-1 (Num Sg Nom) BARRIER NOT-Attr - PrfPrc) 
 (NEGATE *-1 ("akta"))
+(NEGATE *-1 Num LINK -1 POST-N-NUM)
 (NEGATE *-1 Der/akti BARRIER NOT-NPMOD) 
 (NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE *-1 (Num Sem/ID) BARRIER NOT-NPMOD-WITHOUT-NUM)
