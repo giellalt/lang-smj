@@ -1636,7 +1636,7 @@ LIST &err-orrood-inf = &err-orrood-inf ;
 
 LIST &lex-oahpasmuvvat-oahpastuvvat = &lex-oahpasmuvvat-oahpastuvvat ;
 LIST &lex-oahpastuvvat-oahpasmuvvat = &lex-oahpastuvvat-oahpasmuvvat ;
-LIST &lex-short-long = &lex-short-long ;
+LIST &style-short-long = &style-short-long ;
 LIST &msyn-congr-gænna-gejn = &msyn-congr-gænna-gejn ;
 LIST &msyn-congr-iesj-ietja = &msyn-congr-iesj-ietja ;
 LIST &msyn-congr-mij-ma+verb = &msyn-congr-mij-ma+verb ;
@@ -1677,7 +1677,9 @@ LIST &real-NegSg3-NegSg2 = &real-NegSg3-NegSg2 ;
 LIST &real-PrsPl3-PrtSg3 = &real-PrsPl3-PrtSg3 ;
 LIST &real-PrtSg3-PrsPl3 = &real-PrtSg3-PrsPl3 ;
 
-LIST &syn-attr-pred = &syn-attr-pred ;
+LIST &syn-attr-pred-sg = &syn-attr-pred-sg ;
+LIST &syn-attr-pred-pl = &syn-attr-pred-pl ;
+
 LIST &syn-pred-attr = &syn-pred-attr ;
 LIST &syn-missing-copula = &syn-missing-copula ;
 LIST &syn-missing-gus = &syn-missing-gus ;
@@ -2445,38 +2447,38 @@ COPY:syn-pred-attr (Attr SUGGEST) EXCEPT (Sg Nom &msyn-pred-attr) OR (Pl Nom &ms
     # Attr when should be pred
     #--------------------------
     
-#ADD:syn-attr-pred (&msyn-attr-pred) TARGET (A Attr) IF (NEGATE 0 (A Nom)) (1 EOS) ; 
+#ADD:syn-attr-pred (&syn-attr-pred) TARGET (A Attr) IF (NEGATE 0 (A Nom)) (1 EOS) ; 
     ## ássje l {gássjelis}
     
 SET ATTR-ELA-A = ("<.*s>"r) + (Sg Ela) OR ("smidá" A Sg Ela) ;
     
     # liehket before
     
-ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 BE + Sg1 OR BE + Sg2 OR BE + Sg3 BARRIER NOT-ADV) (NEGATE 0 (A Nom) OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR) OR (A Nom) OR A + Sem/Hum BARRIER NOT-Attr-Abe - ATTR-ELA-A - (A Attr)) (NEGATE *1 CC OR COMMA BARRIER NOT-Attr LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe - ATTR-ELA-A - COMMA - CC) (NEGATE 0 ("ållo")) (NEGATE 1 (PrfPrc) LINK 1 N)  ;
+ADD:syn-attr-pred-sg (&syn-attr-pred-sg) TARGET (A Attr) IF (*-1 BE + Sg1 OR BE + Sg2 OR BE + Sg3 BARRIER NOT-ADV) (NEGATE 0 (A Nom) OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR) OR (A Nom) OR A + Sem/Hum BARRIER NOT-Attr-Abe - ATTR-ELA-A - (A Attr)) (NEGATE *1 CC OR COMMA BARRIER NOT-Attr LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe - ATTR-ELA-A - COMMA - CC) (NEGATE 0 ("ållo")) (NEGATE 1 (PrfPrc) LINK 1 N)  ;
     ## ássje l {gássjelis} munji
     #$ Ja suv muohto lij degu biejvve ja suv juolge degu dållåtjuolda, ja giedanis lij {unna} rabás girjjegoabrásj.
     
-ADD:syn-attr-pred-pl (&msyn-attr-pred-pl) TARGET (A Attr) IF (*-1 BE + Du1 OR BE + Du2 OR BE + Du3 OR BE + Pl1 OR BE + Pl2 OR BE + Pl3 BARRIER NOT-ADV) (NEGATE 0 (A Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A - ATTR-ELA-A) (NEGATE *1 N + CASE OR (Cmp/SplitR)  OR (A Sg) + CASE OR A + Sem/Hum BARRIER NOT-Attr-Abe - ATTR-ELA-A - (A Attr)) (NEGATE *1 CC OR COMMA BARRIER NOT-Attr - ATTR-ELA-A LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe - ATTR-ELA-A - COMMA - CC) (NEGATE 1 (PrfPrc) LINK 1 N) (NEGATE -1 (Sg3 SUGGEST)) ;
+ADD:syn-attr-pred-pl (&syn-attr-pred-pl) TARGET (A Attr) IF (*-1 BE + Du1 OR BE + Du2 OR BE + Du3 OR BE + Pl1 OR BE + Pl2 OR BE + Pl3 BARRIER NOT-ADV) (NEGATE 0 (A Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A - ATTR-ELA-A) (NEGATE *1 N + CASE OR (Cmp/SplitR)  OR (A Sg) + CASE OR A + Sem/Hum BARRIER NOT-Attr-Abe - ATTR-ELA-A - (A Attr)) (NEGATE *1 CC OR COMMA BARRIER NOT-Attr - ATTR-ELA-A LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe - ATTR-ELA-A - COMMA - CC) (NEGATE 1 (PrfPrc) LINK 1 N) (NEGATE -1 (Sg3 SUGGEST)) ;
  
     ## ássje li {gássjelis} munji
     #$ Dunji lip edna baháv dahkam.
 
-ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (*-1 BE + Inf BARRIER NOT-ADV LINK -1 (V Ind Sg1) OR (V Ind Sg2) OR (V Ind Sg2)) (NEGATE 0 (A Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A) (NEGATE 1 CC OR COMMA LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe - ATTR-ELA-A - COMMA - CC) (NEGATE *1 CC OR COMMA BARRIER NOT-Attr LINK *1 N BARRIER NOT-Attr-Abe - ATTR-ELA-A)(NEGATE 1 N) ;
+ADD:syn-attr-pred-sg (&syn-attr-pred-sg) TARGET (A Attr) IF (*-1 BE + Inf BARRIER NOT-ADV LINK -1 (V Ind Sg1) OR (V Ind Sg2) OR (V Ind Sg2)) (NEGATE 0 (A Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A) (NEGATE 1 CC OR COMMA LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe - ATTR-ELA-A - COMMA - CC) (NEGATE *1 CC OR COMMA BARRIER NOT-Attr LINK *1 N BARRIER NOT-Attr-Abe - ATTR-ELA-A)(NEGATE 1 N) ;
 
     ## Dån viertti liehket {duosstelis} uddni.  
     #$ Li {stuora} gielalasj ja kultuvralasj sieradusá sámij gaskan Nuorttarijkajn, ja inuihta duola degu viessu sihke smáves sebrudagájn Ruonáednamin ja Københámnan.
 
-ADD:syn-attr-pred-pl (&msyn-attr-pred-pl) TARGET (A Attr) IF (*-1 BE + Inf BARRIER NOT-ADV LINK -1 (V Ind Du1) OR (V Ind Du2) OR (V Ind Du3) OR (V Ind Pl1) OR (V Ind Pl2) OR (V Ind Pl3)) (NEGATE 0 (A Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR)  OR (A Sg Nom) BARRIER NOT-Attr-Abe - ATTR-ELA-A) (NEGATE 1 CC OR COMMA LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe - ATTR-ELA-A - COMMA - CC) ;
+ADD:syn-attr-pred-pl (&syn-attr-pred-pl) TARGET (A Attr) IF (*-1 BE + Inf BARRIER NOT-ADV LINK -1 (V Ind Du1) OR (V Ind Du2) OR (V Ind Du3) OR (V Ind Pl1) OR (V Ind Pl2) OR (V Ind Pl3)) (NEGATE 0 (A Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A) (NEGATE *1 N + CASE OR (Cmp/SplitR)  OR (A Sg Nom) BARRIER NOT-Attr-Abe - ATTR-ELA-A) (NEGATE 1 CC OR COMMA LINK 1 (A Attr) LINK *1 N BARRIER NOT-Attr-Abe - ATTR-ELA-A - COMMA - CC) ;
 
     ## rádna vierttiji liehket {váges} nubbe nuppijn jus rádnastallam galggá bissut
     
     # liehket after
     
-ADD:syn-attr-pred-sg (&msyn-attr-pred-sg) TARGET (A Attr) IF (1 BE + Sg3) (NEGATE 0 (A Sg Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A) ;      
+ADD:syn-attr-pred-sg (&syn-attr-pred-sg) TARGET (A Attr) IF (1 BE + Sg3) (NEGATE 0 (A Sg Nom) OR A + Sem/Hum OR <AttrPred> OR ONLY-ATTR-A) ;      
     ## Soajttá {gássjelis} la buohtastahttet tsuovkajt duojna dájna nammadiddjijn
 
-COPY:syn-attr-pred-sg (Sg Nom SUGGEST) EXCEPT (Attr &msyn-attr-pred) TARGET (&msyn-attr-pred-sg) ;
-COPY:syn-attr-pred-pl (Pl Nom SUGGEST) EXCEPT (Attr &msyn-attr-pred) TARGET (&msyn-attr-pred-pl) ;
+COPY:syn-attr-pred-sg (Sg Nom SUGGEST) EXCEPT (Attr &syn-attr-pred) TARGET (&syn-attr-pred-sg) ;
+COPY:syn-attr-pred-pl (Pl Nom SUGGEST) EXCEPT (Attr &syn-attr-pred) TARGET (&syn-attr-pred-pl) ;
 
 
 
