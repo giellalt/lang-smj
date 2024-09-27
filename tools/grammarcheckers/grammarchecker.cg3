@@ -4835,8 +4835,8 @@ ADD:msyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Sg Ill) IF (0 N - Á-A-
     # Pl Com not same as sg ill (words as oassálasste)
 #ADD:msyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Pl Com) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (*-1 (Num Sg Ine) OR (Num Arab) OR (Num Pl Nom) OR (Num Sg Acc) OR ("moadda" Indef Acc) BARRIER NOT-NPMOD) (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) (NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) (NEGATE 0 (Sg Ill)) ;
 
-#Coordinated nouns after moadda
-ADD:msyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Pl Ine) OR (Sg Com) OR (Pl Com) OR (PL Gen) IF (*-1 COMMA OR CC BARRIER NOT-Attr - PrfPrc LINK -1 N + &msyn-numphrase-sgcom LINK *-1 ("moadda") BARRIER NOT-Attr - PrfPrc) ;
+# Coordinated nouns after moadda
+ADD:msyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Pl Ine) OR (Sg Com) OR (Pl Com) OR (PL Gen) IF (*-1 COMMA OR CC BARRIER NOT-Attr - PrfPrc LINK -1 N + &msyn-numphrase-sgcom OR N + (co&msyn-numphrase-sgcom) LINK *-1 ("moadda") BARRIER NOT-Attr - PrfPrc - CC - COMMA - (co&msyn-numphrase-sgcom) - &msyn-numphrase-sgcom - (co&msyn-numphrase-sgine) - &msyn-numphrase-sgine) ;
     ## Ietjas {moadda tjuorggasij ja hiervvimij ja stuorra berustimijn} le sån luottajt miehtáj Ruonasednamav guodám..
 
 COPY:msyn-numphrase-sgcom (Sg Com SUGGEST) EXCEPT (Pl Ine) TARGET (Ine &msyn-numphrase-sgcom) IF (0 N OR NUMUNIT) (NEGATE *-1 (Num Sg Ine) OR (Num Sg Ine Attr) BARRIER NOT-NPMOD) ; 
