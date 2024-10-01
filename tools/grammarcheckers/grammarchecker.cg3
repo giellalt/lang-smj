@@ -1638,7 +1638,8 @@ LIST &lex-oahpasmuvvat-oahpastuvvat = &lex-oahpasmuvvat-oahpastuvvat ;
 LIST &lex-oahpastuvvat-oahpasmuvvat = &lex-oahpastuvvat-oahpasmuvvat ;
 LIST &style-short-long = &style-short-long ;
 LIST &msyn-congr-gænna-gejn = &msyn-congr-gænna-gejn ;
-LIST &msyn-congr-iesj-ietja = &msyn-congr-iesj-ietja ;
+LIST &msyn-congr-refl-iesj-ietja = &msyn-congr-refl-iesj-ietja ;
+LIST &msyn-congr-refl-ietjas-ietjasa = &msyn-congr-refl-ietjas-ietjasa ;
 LIST &msyn-congr-mij-ma+verb = &msyn-congr-mij-ma+verb ;
 LIST &msyn-congr-ma-mij+verb = &msyn-congr-ma-mij+verb;
 LIST &msyn-l-not-la = &msyn-l-not-la ;
@@ -1660,7 +1661,6 @@ LIST &msyn-sme_interference_neg = &msyn-sme_interference_neg ;
 LIST &msyn-soajtta-AUX = &msyn-soajtta-AUX ;
 LIST &msyn-soajtta-adv = &msyn-soajtta-adv ;
 LIST &msyn-soajtta-le = &msyn-soajtta-le ;
-LIST &msyn-verb-cong-rel = &msyn-verb-cong-rel ;
 
 LIST &punct-aistton = &punct-aistton ;
 LIST &punct-aistton-both = &punct-aistton-both ;
@@ -1679,7 +1679,6 @@ LIST &real-PrtSg3-PrsPl3 = &real-PrtSg3-PrsPl3 ;
 
 LIST &syn-attr-pred-sg = &syn-attr-pred-sg ;
 LIST &syn-attr-pred-pl = &syn-attr-pred-pl ;
-
 LIST &syn-pred-attr = &syn-pred-attr ;
 LIST &syn-missing-copula = &syn-missing-copula ;
 LIST &syn-missing-gus = &syn-missing-gus ;
@@ -2022,7 +2021,7 @@ SET MAYBE-V = MAYBE-V-smj OR MAYBE-V-sma OR MAYBE-V-sme OR MAYBE-V-smn ;
 
 ADD:syn-from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentInit IF (NEGATE -1 BOS OR COMMA OR (";") OR (":") OR CITATION OR HYPHEN) 
 (NEGATE 0 &syn-number_congruence-subj-verb) 
-(NEGATE 0 &msyn-verb-cong-rel) 
+(NEGATE 0 &msyn-congr-mij-ma+verb OR &msyn-congr-ma-mij+verb) 
 (NEGATE 0 &msyn-soajtta-le) 
 (NEGATE 0 &msyn-congr-mij-ma+verb OR &msyn-congr-ma-mij+verb)
 (NEGATE 1 MAYBE-V + (V Ind Prs Sg3))  ;
@@ -2675,7 +2674,7 @@ LIST REFL-PRON-sme = "ieš" ;
 LIST REFL-PRON-smn = "jieš" ;
 SET REFL-PRON = REFL-PRON-smj OR REFL-PRON-sma OR REFL-PRON-sme OR REFL-PRON-smn ;
     
-ADD:msyn-congr-iesj-ietja (&msyn-congr-iesj-ietja) TARGET REFL-PRON + (Pron Refl Sg Nom) IF (-1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3) LINK NOT 0 (N Nom) OR (V Sg1) OR (V Prs Sg2) OR (V Sg3)) 
+ADD:msyn-congr-refl-iesj-ietja (&msyn-congr-refl-iesj-ietja) TARGET REFL-PRON + (Pron Refl Sg Nom) IF (-1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3) LINK NOT 0 (N Nom) OR (V Sg1) OR (V Prs Sg2) OR (V Sg3)) 
 (NEGATE 1 (Pron Indef)) 
 (NEGATE -1 (V Prt Sg2) LINK NOT *-2 (Pl Nom) BARRIER S-BOUNDARY) ;
 
@@ -2686,7 +2685,7 @@ ADD:msyn-congr-iesj-ietja (&msyn-congr-iesj-ietja) TARGET REFL-PRON + (Pron Refl
    #$ Juska tjehpudagá li iesj geŋga fágajn moatten láhkáj åvddånbuvtedum, de båhtusa li guoskavattja gájkka åhpadiddjijda ja ij dåssju dárogiela / sámegiela ja matemátihka åhpadiddjijda.
    #$ Duodden hæhttu liehket duodje majt le iesj dahkam.
 
-ADD:msyn-congr-iesj-ietja (&msyn-congr-iesj-ietja) TARGET REFL-PRON + (Pron Refl Sg Nom) IF (-1 (N Pl Nom) LINK NEGATE 0 (N Sg Nom) LINK *1 (V Sg3) OR (V Prs Sg2) OR (V Sg1) BARRIER NOT-ADV-PCLE - Refl - Ine)
+ADD:msyn-congr-refl-iesj-ietja (&msyn-congr-refl-iesj-ietja) TARGET REFL-PRON + (Pron Refl Sg Nom) IF (-1 (N Pl Nom) LINK NEGATE 0 (N Sg Nom) LINK *1 (V Sg3) OR (V Prs Sg2) OR (V Sg1) BARRIER NOT-ADV-PCLE - Refl - Ine)
 (NEGATE *0 (N Sg Nom) BARRIER S-BOUNDARY) 
 (NEGATE 1 (Pron Indef)) ;
    ## Valla ælla gus rievddama iesj allasisá buore?
@@ -2695,7 +2694,7 @@ ADD:msyn-congr-iesj-ietja (&msyn-congr-iesj-ietja) TARGET REFL-PRON + (Pron Refl
 
     #  Congr verb on right side of iesj
     #----------------------------------
-ADD:msyn-congr-iesj-ietja (&msyn-congr-iesj-ietja) TARGET REFL-PRON + (Pron Refl Sg Nom) IF (1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3) LINK NEGATE 0 (N Nom) OR (N Acc) OR (N Gen) OR (V Sg1) OR (V Prs Sg2) OR (V Sg3) OR A)
+ADD:msyn-congr-refl-iesj-ietja (&msyn-congr-refl-iesj-ietja) TARGET REFL-PRON + (Pron Refl Sg Nom) IF (1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3) LINK NEGATE 0 (N Nom) OR (N Acc) OR (N Gen) OR (V Sg1) OR (V Prs Sg2) OR (V Sg3) OR A)
 (NEGATE 1 (V Prt Sg2) LINK NOT *-2 (Pl Nom) BARRIER S-BOUNDARY)
 (NEGATE -1 (V Sg1) OR (V Sg2) OR (V Sg3)) ;
 
@@ -2703,17 +2702,17 @@ ADD:msyn-congr-iesj-ietja (&msyn-congr-iesj-ietja) TARGET REFL-PRON + (Pron Refl
   ## Ulmme prosjevtajn la máná galggi sámástit, gånnå máná iesj válljiji sámegielav guládallamgiellan.
   #$ Tjále dålusj subttsasav jali subttsasav majt la gullam, dagá jus sidá {iesj} mujtalusáv mij tjielggi muhtem luonndofenomienav ja gåk dát la nammaduvvam. 
 
-COPY:msyn-congr-iesj-ietja (Pl SUGGEST) EXCEPT (Sg &msyn-congr-iesj-ietja) AFTER Refl TARGET (&msyn-congr-iesj-ietja) ;
+COPY:msyn-congr-refl-iesj-ietja (Pl SUGGEST) EXCEPT (Sg &msyn-congr-refl-iesj-ietja) AFTER Refl TARGET (&msyn-congr-refl-iesj-ietja) ;
 
-ADD:msyn-congr-ietjas-ietjasa (&msyn-congr-ietjas-ietjasa) TARGET REFL-PRON + (Pron Refl PxSg3) OR REFL-PRON + (Pron Refl PxSg2) OR REFL-PRON + (Pron Refl PxSg1) IF (-1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3) LINK NOT 0 Sg3 OR Sg2 OR Sg1) 
+ADD:msyn-congr-refl-ietjas-ietjasa (&msyn-congr-refl-ietjas-ietjasa) TARGET REFL-PRON + (Pron Refl PxSg3) OR REFL-PRON + (Pron Refl PxSg2) OR REFL-PRON + (Pron Refl PxSg1) IF (-1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3) LINK NOT 0 Sg3 OR Sg2 OR Sg1) 
 (NEGATE 1 (Pron Indef) ) 
 (NEGATE 1 (V Sg2) LINK NOT *-2 (Pl Nom) BARRIER S-BOUNDARY)
 (NEGATE -1 (V Prs Sg3) LINK -1 (Sg Nom)) ; 
 
-COPY:msyn-congr-iesj-ietja (PxPl3 SUGGEST) EXCEPT (PxSg3 &msyn-congr-ietjas-ietjasa) TARGET (&msyn-congr-ietjas-ietjasa) IF (-1 (V Pl3)) ;    
-COPY:msyn-congr-iesj-ietja (PxDu3 SUGGEST) EXCEPT (PxSg3 &msyn-congr-ietjas-ietjasa) TARGET (&msyn-congr-ietjas-ietjasa) IF (-1 (V Du3)) ;    
-COPY:msyn-congr-iesj-ietja (PxPl1 SUGGEST) EXCEPT (PxSg1 &msyn-congr-ietjas-ietjasa) TARGET (&msyn-congr-ietjas-ietjasa) IF (-1 (V Pl1) OR (V Du1)) ; 
-COPY:msyn-congr-iesj-ietja (PxPl2 SUGGEST) EXCEPT (PxSg2 &msyn-congr-ietjas-ietjasa) TARGET (&msyn-congr-ietjas-ietjasa) IF (-1 (V Pl2) OR (V Du2)) ; 
+COPY:msyn-congr-refl-ietjas-ietjasa (PxPl3 SUGGEST) EXCEPT (PxSg3 &msyn-congr-refl-ietjas-ietjasa) TARGET (&msyn-congr-refl-ietjas-ietjasa) IF (-1 (V Pl3)) ;    
+COPY:msyn-congr-refl-ietjas-ietjasa (PxDu3 SUGGEST) EXCEPT (PxSg3 &msyn-congr-refl-ietjas-ietjasa) TARGET (&msyn-congr-refl-ietjas-ietjasa) IF (-1 (V Du3)) ;    
+COPY:msyn-congr-refl-ietjas-ietjasa (PxPl1 SUGGEST) EXCEPT (PxSg1 &msyn-congr-refl-ietjas-ietjasa) TARGET (&msyn-congr-refl-ietjas-ietjasa) IF (-1 (V Pl1) OR (V Du1)) ; 
+COPY:msyn-congr-refl-ietjas-ietjasa (PxPl2 SUGGEST) EXCEPT (PxSg2 &msyn-congr-refl-ietjas-ietjasa) TARGET (&msyn-congr-refl-ietjas-ietjasa) IF (-1 (V Pl2) OR (V Du2)) ; 
 
     ## Suohkanij ietjas dåjmaj baktu
     ## Vuorrasa ma årru sierra vuorrasijhuvson jali idjadi {ietjas} årudagán adni riektáv ságastit ietjas giellaj.
@@ -5380,14 +5379,14 @@ COPY:msyn-reksjon-acc-ill (Ill SUGGEST) EXCEPT (Acc &msyn-reksjon-acc-ill) TARGE
     # Style long forms instead of short
     # =================================
     # =================================
-    # =================================
-    
-LIST Sh = Sh ;
-LIST Long = Long ;
-
-ADD:style-short-long (&style-short-long) TARGET Sh ;
-
-COPY:style-short-long (SUGGEST) EXCEPT (Sh &lstyle-short-long) TARGET (&style-short-long) ;
+#    # =================================
+#    
+#LIST Sh = Sh ;
+#LIST Long = Long ;
+#
+#ADD:style-short-long (&style-short-long) TARGET Sh ;
+#
+#COPY:style-short-long (SUGGEST) EXCEPT (Sh &lstyle-short-long) TARGET (&style-short-long) ;
 
 
 
@@ -5579,11 +5578,11 @@ COPY:space-before-punct-mark-sugg (VSTR:"$2$1"S SUGGESTWF) TARGET ("<(.*)>"r &sp
 	## álgit gaikut.  Stoagus joatká
 	## maid lea bargu.  – Mun barggan
 
-ADD:double-space-before (&double-space-before)     (<doubleSpaceBefore>);
-ADD:double-space-before-link (co&double-space-before) TARGET (*) IF (T:nextWordCrossSent LINK 0 (<doubleSpaceBefore>)) ;
-ADDRELATION:double-space-before-rel ($2) (*) FROM (T:nextWordCrossSent LINK 0 (<doubleSpaceBefore>)) ;
-ADDRELATION:double-space-before-rel (LEFT) (COERROR) FROM (T:nextWordCrossSent LINK 0 (<doubleSpaceBefore>)) ;
-COPY:double-space-before (VSTR:"$2\ $1"S SUGGESTWF) TARGET ("<(.*)>"r &double-space-before) IF
+ADD:space-double-before (&space-double-before)     (<doubleSpaceBefore>);
+ADD:space-double-before-link (co&space-double-before) TARGET (*) IF (T:nextWordCrossSent LINK 0 (<doubleSpaceBefore>)) ;
+ADDRELATION:space-double-before-rel ($2) (*) FROM (T:nextWordCrossSent LINK 0 (<doubleSpaceBefore>)) ;
+ADDRELATION:space-double-before-rel (LEFT) (COERROR) FROM (T:nextWordCrossSent LINK 0 (<doubleSpaceBefore>)) ;
+COPY:space-double-before (VSTR:"$2\ $1"S SUGGESTWF) TARGET ("<(.*)>"r &space-double-before) IF
         (T:prevWordCrossSent LINK 0 ("<(.*)>"r))
         (NOT 0 (&LINK))
         (NOT 0 (SUGGESTWF))    # don't COPY more than once
