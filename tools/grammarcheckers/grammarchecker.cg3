@@ -4161,9 +4161,15 @@ ADD:msyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF ((0 N) OR (0
 (NEGATE 0 <spelled>)
 (NEGATE 0 PL-PAIR-N LINK *-1 (Num Pl) BARRIER NOT-Attr) ;
 
+# Coordinated nouns after moadda
+ADD:msyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pl Acc) IF (*-1 COMMA OR CC BARRIER NOT-Attr - PrfPrc LINK -1 N + &msyn-numphrase-sgacc LINK *-1 ("moadda") BARRIER NOT-Attr - PrfPrc) ;
+    ## Moadda guosajda ja bietsijda gehtjaj.
+    
 COPY:msyn-numphrase-sgacc (Sg Gen SUGGEST) EXCEPT (Pl Acc &msyn-numphrase-sgacc) TARGET (&msyn-numphrase-sgacc) IF (0 N OR NUMUNIT) ;
 
     ## vuojnáv guokta gusájt > vuojnáv guokta gusá insead of vuojnáv guokta guosáv OK
+    
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgacc) OR NUMUNIT + &msyn-numphrase-sgacc TO (*-1 CC OR COMMA LINK *-1 (Num &msyn-numphrase-sgacc) OR ("moadda" Indef &msyn-numphrase-sgacc));
 
 # akta
 ADD:msyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (N Sg Gen) IF (*-1 ONE + (Num Sg Acc) BARRIER NOT-Attr - PrfPrc LINK NEGATE 1 Num) 
@@ -4400,7 +4406,7 @@ ADD:msyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Pl Ill) IF ((0 N) OR (0
     ## Mån lav åhtsåm guokta ruoppsis ja fijna universitehtajda. ok
 	## Mån lav åhtsåm guokta stuorra, ruoppsis ja fijna universitehtajda. LINDA
 
-#Coordinated nouns after moadda
+# Coordinated nouns after moadda
 ADD:msyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Pl Ill) IF (*-1 COMMA OR CC BARRIER NOT-Attr - PrfPrc LINK -1 N + &msyn-numphrase-sgill LINK *-1 ("moadda") BARRIER NOT-Attr - PrfPrc) ;
     ## Moadda guosajda ja bietsijda gehtjaj.
 
