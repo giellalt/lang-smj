@@ -3976,6 +3976,9 @@ ADD:msyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num v2 
     #$ Jesus dajt {vihtta} lájbe ja guokta guolátja váldij ja almmáj gehtjadijn gijtulvisáv råhkålij.
     #$ {Guokta} vahko maŋŋela de måj Ámmájn Gårttjesijddaj vádtsájma.
 
+ADD:msyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num v2 Sg Acc) OR (Num Pl Com) OR (Num Pl Gen) OR ("moadda" Indef Acc) IF (*1 (N Sg Gen) BARRIER NOT-Attr - PrfPrc) (-1 (Dem Sg Gen) OR (Dem Sg Gen Attr))  ;
+    ## Moaddása divtasvuonagijs li jagij miehtáj guossidam dájt guokta ráddnastádajt jali iejvvim dan {guokta} stáda viesajdiddjijt
+
 ADD:msyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num v2 Sg Acc) OR (Num Pl Com) OR (Num Pl Gen) OR ("moadda" Indef Acc) IF (*1 (N Sg Gen) OR (N Pl Nom) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) OR Acc LINK 1 (N Nom) OR (N Gen) OR (N Com) OR (N Ess) OR Po)
 (NEGATE *-1 BE + Pl3 OR BE + (Prs Sg3) BARRIER NOT-ADV-PCLE - Dem LINK -1 (Dem Pl Nom) OR Ine OR DOPPE OR ("de"))
 (NEGATE *-1 (Adv Subqst) OR BOS BARRIER NOT-ADV-PCLE - Dem LINK *3 (V Pl3) BARRIER S-BOUNDARY - CC - VFIN)
@@ -5378,13 +5381,13 @@ COPY:msyn-reksjon-acc-ill (Ill SUGGEST) EXCEPT (Acc &msyn-reksjon-acc-ill) TARGE
     # =================================
     # =================================
     
-LIST Sh = Sh ;
-LIST Long = Long ;
-
-ADD:style-short-long (&style-short-long) TARGET Sh ;
-
-COPY:style-short-long (SUGGEST) EXCEPT (Sh &lstyle-short-long) TARGET (&style-short-long) ;
-
+#LIST Sh = Sh ;
+#LIST Long = Long ;
+#
+#ADD:style-short-long (&style-short-long) TARGET Sh ;
+#
+#COPY:style-short-long (SUGGEST) EXCEPT (Sh &lstyle-short-long) TARGET (&style-short-long) ;
+#
 
 
     # ===================================================================================================
