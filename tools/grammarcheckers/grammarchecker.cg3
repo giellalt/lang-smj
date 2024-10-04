@@ -2025,6 +2025,7 @@ ADD:syn-from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentIn
 (NEGATE 0 &msyn-verb-cong-rel) 
 (NEGATE 0 &msyn-soajtta-le) 
 (NEGATE 0 &msyn-congr-mij-ma+verb OR &msyn-congr-ma-mij+verb)
+(NEGATE 1 ("gus"))
 (NEGATE 1 MAYBE-V + (V Ind Prs Sg3))  ;
 	#$ Dajn gielajn gånnå le riek friddja báhkogárges {le} soajttá vehik gássjel mierredit mij la vuodobáhkogárges.
 
@@ -2144,6 +2145,9 @@ COPY:syn-from-sentence-init-copula (SUGGEST Sg3) EXCEPT (Pl3 SentInit &syn-from-
     # Should be sentence initial copula: from la to le. 
     # ----------------------------------------------------------------------
 ADD:syn-to-sentence-init-copula (&syn-to-sentence-init-copula) TARGET ("liehket" Ind) IF (-1 BOS OR (":") OR HYPHEN LINK NEGATE 1 SentInit) (NEGATE 0 &syn-from-sentence-init-copula) (NEGATE 0 &msyn-soajtta-le) (NEGATE 0 ("liehket" Neg)) ;
+
+ADD:syn-to-sentence-init-copula (&syn-to-sentence-init-copula) TARGET ("liehket" Ind) IF (1 ("gus" ) LINK NEGATE -1 SentInit) (NEGATE 0 &syn-from-sentence-init-copula) (NEGATE 0 &msyn-soajtta-le) (NEGATE 0 ("liehket" Neg)) ;
+
 
 ADD:syn-to-sentence-init-copula (&syn-to-sentence-init-copula) TARGET ("liehket" Ind) IF (-1 CITATION LINK NEGATE 1 SentInit) (NEGATE 0 &syn-from-sentence-init-copula) (NEGATE 0 &msyn-soajtta-le) (NEGATE 0 ("liehket" Neg)) (NEGATE -1 CITATION LINK *-1 CITATION BARRIER S-BOUNDARY) ;
     #$ Prosjækta ”ressursa nuorttan ja iemeálmmuga” la akta 11 diedádusá ævtodum prosjevtajs.
@@ -5378,14 +5382,14 @@ COPY:msyn-reksjon-acc-ill (Ill SUGGEST) EXCEPT (Acc &msyn-reksjon-acc-ill) TARGE
     # =================================
     # =================================
     
-LIST Sh = Sh ;
-LIST Long = Long ;
-
-ADD:style-short-long (&style-short-long) TARGET Sh ;
-
-COPY:style-short-long (SUGGEST) EXCEPT (Sh &lstyle-short-long) TARGET (&style-short-long) ;
-
-
+#LIST Sh = Sh ;
+#LIST Long = Long ;
+#
+#ADD:style-short-long (&style-short-long) TARGET Sh ;
+#
+#COPY:style-short-long (SUGGEST) EXCEPT (Sh &lstyle-short-long) TARGET (&style-short-long) ;
+#
+#
 
     # ===================================================================================================
     # ===================================================================================================
