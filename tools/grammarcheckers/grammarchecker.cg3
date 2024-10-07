@@ -1614,7 +1614,7 @@ LIST PL-NONPAIR-N = "áiru" "beaivvaščalbmeláset" "beassážat" "biddu" "čal
 
 SET PL-N = PL-PAIR-N OR PL-NONPAIR-N;
 
-LIST POST-N-NUM = "sijddo" "kapihtal" "konvensjåvnnå" "sámegiella" "julevsámegiella" "SAMINOR" "§" "nr" (".*nummar"r) "kl" "kloahkko" "kloahkka" (".*konvensjåvnnå"r) "kr" "rr" "rijkkarahte" ;
+LIST POST-N-NUM = "sijddo" "kapihtal" "kap" "konvensjåvnnå" "sámegiella" "julevsámegiella" "SAMINOR" "§" "nr" (".*nummar"r) "kl" "kloahkko" "kloahkka" (".*konvensjåvnnå"r) "kr" "rr" "rijkkarahte" "artihkal" ;
 
 
 #!! Error tags
@@ -1888,7 +1888,9 @@ ADD:xmsyn-congr-mij-ma+verb (&msyn-congr-mij-ma+verb) TARGET (Rel Nom Sg) IF (*-
     #$ Áhttje mijá guhti le almen. DNW LINDA, fordi mijá kommer etter subjektet, skal egentlig vær før, men siden det er oversatt "fadervår" så er det rart. Kanskje vi må skrive regel for WO først :)
 
 ADD:xmsyn-congr-mij-ma+verb (&msyn-congr-mij-ma+verb) TARGET (Rel Nom Sg) IF (*-1 (N Sg) BARRIER NOT-BEFORE-REL LINK NOT 0 (N Pl) LINK *-1 Num - ONE BARRIER NOT-NPMOD) 
-(NEGATE -1 Po LINK -1 (Sg Gen)) (NEGATE -1 (N Sg Ill) OR (N Sg Ela) OR (N Sg Ine));
+(NEGATE *-1 (N ABBR)) 
+(NEGATE -1 Po LINK -1 (Sg Gen)) 
+(NEGATE -1 (N Sg Ill) OR (N Sg Ela) OR (N Sg Ine));
 
     ## Mij lip vihtta nuora guhti vuolggep dåhku.
     ## Da li gålmmå nuora 
@@ -3875,6 +3877,7 @@ ADD:msyn-numphrase-nom (&msyn-numphrase-nom) TARGET NUMUNIT + (Sg Nom) IF (-1 Nu
 
 ADD:msyn-numphrase-nom  (&msyn-numphrase-nom) TARGET (N Sg Nom) IF (*-1 (Num Sg Nom) BARRIER NOT-Attr - PrfPrc) 
 (NEGATE *-1 ("akta"))
+(NEGATE *-1 (Num Rom))
 (NEGATE *-1 Num LINK -1 POST-N-NUM)
 (NEGATE *-1 Der/akti BARRIER NOT-NPMOD) 
 (NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD-WITHOUT-NUM)
@@ -4004,6 +4007,7 @@ ADD:msyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num v2 
 (NEGATE 0 (Num Sg Nom) OR (Num v2 Sg Acc) LINK -1 (Sg Ela) LINK *-1 (Num Ela Attr) OR (Num Par) BARRIER NOT-NPMOD)   
 (NEGATE 0 ("akta" Num Sg Nom))
 (NEGATE 0 NUMUNIT LINK -1 Num OR ("moadda")) 
+(NEGATE 1 ("sáme") LINK 1 (N Sg Nom)) 
 (NEGATE 1 Sem/Time LINK 1 N) (NEGATE 1 (&syn-nom_nom-gen_nom))
 (NEGATE 1 Prop)
 (NEGATE 1 Num LINK NOT 0 NUMUNIT)
