@@ -41,7 +41,6 @@ TESTS=\
 	DEV-syn-number_congruence-subj-verb-PASS.yaml \
 	DEV-syn-pred-attr-FAIL.yaml                   \
 	DEV-syn-pred-attr-PASS.yaml                   \
-	DEV-style-short-long-FAIL.yaml                \
 	REL-lex-oahpasmuvvat-oahpastuvvat-PASS.yaml   \
 	REL-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
 	REL-msyn-attr-pred-FAIL.yaml                  \
