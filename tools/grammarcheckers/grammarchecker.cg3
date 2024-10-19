@@ -1647,6 +1647,9 @@ LIST &msyn-liehket-congr-condsg2-condpl3 = &msyn-liehket-congr-condsg2-condpl3 ;
 LIST &msyn-mij-gut = &msyn-mij-gut ;
 LIST &msyn-gut-mij = &msyn-gut-mij ;
 LIST &msyn-nom-gen-Po = &msyn-nom-gen-Po ;
+LIST &msyn-msyn-dates-month-from-nom-to-gen = &msyn-msyn-dates-month-from-nom-to-gen ;
+LIST &msyn-msyn-dates-month-from-ine-to-gen = &msyn-msyn-dates-month-from-ine-to-gen ;
+LIST &msyn-msyn-dates-from-arab-num-to-ord = &msyn-msyn-dates-from-arab-num-to-ord ;
 LIST &msyn-numphrase-sgacc = &msyn-numphrase-sgacc ;
 LIST &msyn-numphrase-placc = &msyn-numphrase-placc ;
 LIST &msyn-numphrase-sgela = &msyn-numphrase-sgela ;
@@ -3855,10 +3858,50 @@ COPY:msyn-nom-gen-Po (Gen SUGGEST) EXCEPT (Nom &msyn-nom-gen-Po) TARGET (&msyn-n
     #$ Diedádus åvddålij guovlluj.
 
 
+    # DATES: From nominative/inessive to genitive
+    # ===================================================================================================
+    # ===================================================================================================
+    # ===================================================================================================
+    # ===================================================================================================
+
+LIST MONTHS = "ådåjakmánno" "guovvamánno" "snjuktjamánno" "vuoratjismánno" "moarmesmánno" "biehtsemánno" "snjilltjamánno" "bårggemánno" "ragátmánno" "gålgådismánno" "ragátmánno" "gålgådismánno" "basádismánno" "javllamánno" ;
+
+	#from nominative to genitive
+	
+ADD:xmsyn-msyn-dates-month-from-nom-to-gen (&msyn-msyn-dates-month-from-nom-to-gen) TARGET MONTHS + (Sg Nom) IF (1 (Arab Num Nom) OR (A Arab Ord Attr) LINK 1 ("biejvve") OR  ("b" ABBR Gram/IAbbr)) ;
+
+COPY:msyn-msyn-dates-month-from-nom-to-gen (Gen SUGGEST) EXCEPT (Nom) TARGET (&msyn-msyn-dates-month-from-nom-to-gen) ;
+
+	## {Javllamánno} 5. b.
+
+	# from inessive to genitive 
+ADD:xmsyn-msyn-dates-month-from-ine-to-gen (&msyn-msyn-dates-month-from-ine-to-gen) TARGET MONTHS + (Sg Ine) IF (-1 ("biejvve") OR ("b" ABBR Gram/IAbbr) LINK -1 (Arab Num Nom) OR (A Arab Ord Attr) );
+
+COPY:msyn-msyn-dates-month-from-ine-to-gen (Gen SUGGEST) EXCEPT (Ine) TARGET (&msyn-msyn-dates-month-from-ine-to-gen) ;
+
+
+#MOVE:msyn-msyn-dates-month-from-ine-to-gen &msyn-msyn-dates-month-from-ine-to-gen BEFORE (-2 (Arab Num Nom) OR (A Arab Ord Attr));
+
+
+    # DATES: From arab number to ord
+    # ===================================================================================================
+    # ===================================================================================================
+
+
+ADD:xmsyn-msyn-dates-from-arab-num-to-ord (&msyn-msyn-dates-from-arab-num-to-ord) TARGET (Arab Num Nom) IF (-1 MONTHS) (1 ("biejvve" Sg Gen) OR ("biejvve" Pl Nom)) ;
+
+ADD:msyn-msyn-dates-from-arab-num-to-ord (&msyn-msyn-dates-from-arab-num-to-ord) TARGET (Arab Num Nom) IF (1 ("biejvve" Sg Gen) OR ("biejvve" Pl Nom) LINK 1 MONTHS + (Sg Ine)) ;
+
+COPY:msyn-msyn-dates-from-arab-num-to-ord (A Arab Ord Attr SUGGEST) EXCEPT (Num Arab Sg Nom) TARGET (&msyn-msyn-dates-from-arab-num-to-ord) ; 
+
+	## Åtså maŋemusát moarmesmáno {15} biejve
 
 
 
 
+
+
+	
     # Numeral phrases, numerals used as attributive adjectives
     # ===================================================================================================
     # ===================================================================================================
@@ -3878,6 +3921,7 @@ ADD:msyn-numphrase-nom (&msyn-numphrase-nom) TARGET NUMUNIT + (Sg Nom) IF (-1 Nu
 
 
 ADD:msyn-numphrase-nom  (&msyn-numphrase-nom) TARGET (N Sg Nom) IF (*-1 (Num Sg Nom) BARRIER NOT-Attr - PrfPrc) 
+(NEGATE -2 &msyn-msyn-dates-month-from-nom-to-gen)	
 (NEGATE *-1 ("akta"))
 (NEGATE *-1 (Num Sem/Year))
 (NEGATE *-1 (Num Rom))
@@ -3897,11 +3941,14 @@ ADD:msyn-numphrase-nom  (&msyn-numphrase-nom) TARGET (N Sg Nom) IF (*-1 (Num Sg 
 (NEGATE -1 COMMA)
 (NEGATE -1 CLB)
 (NEGATE -1 (PUNCT RIGHT) LINK -1 Num) 
+(NEGATE -1 &msyn-msyn-dates-from-arab-num-to-ord)
+(NEGATE 0 ("b" ABBR Gram/IAbbr))
 (NEGATE 0 <spelled>)
 (NEGATE 0 Symbol)
 (NEGATE 0 Gram/NomAg OR Der/NomAg)
 (NEGATE 0 (Sg Gen) OR (Pl Nom))
-(NEGATE 0 Px LINK NOT 0 (Sg Acc PxSg3) OR (Sg Nom PxSg3) OR (Sg Gen PxSg3)) ;
+(NEGATE 0 Px LINK NOT 0 (Sg Acc PxSg3) OR (Sg Nom PxSg3) OR (Sg Gen PxSg3)) 
+(NEGATE 1 &msyn-msyn-dates-month-from-ine-to-gen) ;
 
     ##Ja dunji le dárbbo – danen gå dat le muv garra miella vaj tuvsán {tjalmme} dahki mijáv tuvsán gärddáj gievrabu
 
