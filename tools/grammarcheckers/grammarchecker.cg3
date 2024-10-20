@@ -4538,7 +4538,7 @@ ADD:msyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Num Sg Nom) OR (Num Sg 
 (NEGATE 1 ("vahkkusasj" Attr) OR ("mánnusasj" Attr) OR ("bæjvvásasj" Attr) OR ("tijmmasasj" Attr) OR ("jahkásasj" Attr))  
 (NEGATE 1 Sem/Time LINK 1 (N Ill))
 (NEGATE *1 Px BARRIER NOT-Attr - PrfPrc LINK NOT 0 (Sg Acc PxSg3) OR (Sg Nom PxSg3) OR (Sg Gen PxSg3))
-(NEGATE *1 (N Sg Ill) BARRIER NOT-NPMOD LINK *1 Po BARRIER (*) - CC - Gen - (N Pl Nom)) 
+(NEGATE *1 (N Sg Ill) LINK 0 (Pl Gen) BARRIER NOT-NPMOD LINK 1 Po) 
 (NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
 
 ADD:num-phrase  (co&msyn-numphrase-sgill)  TARGET (Num &msyn-numphrase-sgill) IF (*1 (&msyn-numphrase-sgill) BARRIER NOT-Attr - PrfPrc);
@@ -4548,7 +4548,8 @@ ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgill) OR NUMUNIT + &msyn-numphrase-sgi
 ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgill) OR NUMUNIT + &msyn-numphrase-sgill TO (*-1 (Num &msyn-numphrase-sgill) OR ("moadda" Indef &msyn-numphrase-sgill)); 
 
 
-COPY:msyn-numphrase-sgill (Sg Gen SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sgill) OR (v2 Sg Nom &msyn-numphrase-sgill) OR (v2 Sg Acc &msyn-numphrase-sgill) OR (Sg Gen &msyn-numphrase-sgill) OR (Pl Com &msyn-numphrase-sgill) OR (Pl Gen &msyn-numphrase-sgill) OR (Sg Ill &msyn-numphrase-sgill)  TARGET (Num &msyn-numphrase-sgill) IF (NEGATE *1 (N Sg Com) OR NUMUNIT + (Num Pl Com) OR NUMUNIT + (Num Sg Com) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) LINK NEGATE 0 (Pl Gen) LINK 1 N OR Po)  ;
+COPY:msyn-numphrase-sgill (Sg Gen SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sgill) OR (v2 Sg Nom &msyn-numphrase-sgill) OR (v2 Sg Acc &msyn-numphrase-sgill) OR (Sg Gen &msyn-numphrase-sgill) OR (Pl Com &msyn-numphrase-sgill) OR (Pl Gen &msyn-numphrase-sgill) OR (Sg Ill &msyn-numphrase-sgill)  TARGET (Num &msyn-numphrase-sgill) IF (NEGATE *1 (N Sg Com) OR NUMUNIT + (Num Pl Com) OR NUMUNIT + (Num Sg Com) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) LINK NEGATE 0 (Pl Gen) LINK 1 N OR Po)  
+(NEGATE 0 Num LINK -1 Num);
 
 COPY:msyn-numphrase-sgill (Sg Gen SUGGEST) EXCEPT (Sg Acc) TARGET (Pron &msyn-numphrase-sgill) ;
 
