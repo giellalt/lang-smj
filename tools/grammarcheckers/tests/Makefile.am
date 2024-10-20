@@ -11,6 +11,7 @@ TESTS=\
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
 	DEV-msyn-congr-mij-ma-PASS.yaml               \
 	DEV-msyn-dates-FAIL.yaml				      \
+	DEV-msyn-dates-PASS.yaml				      \
 	DEV-msyn-dimin-after-unna-FAIL.yaml           \
 	DEV-msyn-dimin-after-unna-PASS.yaml           \
 	DEV-msyn-gut-mij-gut-FAIL.yaml                \
