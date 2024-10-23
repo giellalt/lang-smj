@@ -3891,9 +3891,12 @@ COPY:msyn-msyn-dates-month-from-ine-to-gen (Gen SUGGEST) EXCEPT (Ine) TARGET (&m
     # ===================================================================================================
 
 
-ADD:xmsyn-msyn-dates-from-arab-num-to-ord (&msyn-msyn-dates-from-arab-num-to-ord) TARGET (Arab Num Nom) IF (-1 MONTHS) (1 ("biejvve") OR ("b" ABBR Gram/IAbbr)) ;
+ADD:xmsyn-msyn-dates-from-arab-num-to-ord (&msyn-msyn-dates-from-arab-num-to-ord) TARGET (Num Arab Nom) IF (-1 MONTHS) (1 ("biejvve") OR ("b" ABBR Gram/IAbbr)) ;
 
-ADD:msyn-msyn-dates-from-arab-num-to-ord (&msyn-msyn-dates-from-arab-num-to-ord) TARGET (Arab Num Nom) IF (1 ("biejvve") OR ("b" ABBR Gram/IAbbr) LINK 1 MONTHS + (Sg Ine)) ;
+ADD:msyn-msyn-dates-from-arab-num-to-ord (&msyn-msyn-dates-from-arab-num-to-ord) TARGET (Num Arab Nom) IF (1 ("biejvve") OR ("b" ABBR Gram/IAbbr) LINK 1 MONTHS + (Sg Ine)) ;
+
+ADD:msyn-msyn-dates-from-arab-num-to-ord (&msyn-msyn-dates-from-arab-num-to-ord) TARGET (Num Arab Nom) IF (1 ("<.*vahkon>"r) OR ("<.*vahkos>"r) OR ("<.*vahkkuj>"r) OR ("<.*vahkko>"r)) ;
+
 
 COPY:msyn-msyn-dates-from-arab-num-to-ord (A Arab Ord Attr SUGGEST) EXCEPT (Num Arab Sg Nom) TARGET (&msyn-msyn-dates-from-arab-num-to-ord) ; 
 
@@ -4886,6 +4889,7 @@ ADD:msyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Num Pl Ine) OR (Num Sg 
 (NEGATE 0 (Num Sg Nom) LINK -1 BE + Sg3 OR BE + Du3 OR BE + Pl3 LINK -1 (Dem Pl Ela) OR (Pers Pl3 Ela) OR (Pers Pl2 Ela) OR (Pers Pl1 Ela)) 
 (NEGATE 0 ("akta" Num Sg Nom))
 (NEGATE 0 (Num Pl Ine) LINK *1 PL-PAIR-N + (Pl Ine) BARRIER NOT-Attr - PrfPrc)
+(NEGATE 0 (Arab Nom) LINK 1 ("vahkko"))
 (NEGATE 0 (Arab Nom) LINK 1 ("<[A-Z].*>"r) OR ("<Å.*>"r) OR ("<Æ.*>"r) OR ("<Ø.*>"r))
 (NEGATE 1 ("vahkkusasj" Attr) OR ("mánnusasj" Attr) OR ("bæjvvásasj" Attr) OR ("tijmmasasj" Attr) OR ("jahkásasj" Attr))  
 (NEGATE 1 ("låhko"))
