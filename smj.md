@@ -2674,6 +2674,8 @@ LEXICON BEGATJIT_IV   Words ending -tjit, -jdit, reciprocals on -dit, momentativ
 * *duojkkuhiv:* `duojkkuhit+V+IV+Ind+Prt+Sg1`
 * *duojkkuhijma:* `duojkkuhit+V+IV+Ind+Prt+Pl1`
 
+LEXICON MÅRIJDIT_IV   Words ending -IJDIT. Same as BEGATJIT, but a common error is to write "jårgidit", so the whole -ijdit and Err/Orth -idit is made in this  lexicon
+
 LEXICON BALÁDIT_IV   continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms, only Sg3 passive
 
 * lihtudit # Odd-syllable test examples:*
@@ -2715,6 +2717,8 @@ LEXICON MUJTATJIT_TV   Words ending -tjit, -jdit, reciprocals on -dit, momentati
 * *nårddådav:* `nårddådit+V+TV+Ind+Prs+Sg1`
 * *nårddådiv:* `nårddådit+V+TV+Ind+Prt+Sg1`
 * *nårddådijma:* `nårddådit+V+TV+Ind+Prt+Pl1`
+
+LEXICON HÁLIJDIT_TV   Words ending -IJDIT. Same as MUJTATJIT, but a common error is to write "hálidit", so the whole -ijdit and Err/Orth -idit is made in this  lexicon
 
 LEXICON BÅNJÅDIT_TV   continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms. All -uvvat  passives.
 
