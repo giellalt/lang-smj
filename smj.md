@@ -2762,7 +2762,7 @@ LEXICON DULLUT_IV   Does not make nouns via -ár derivation. Only Sg3 passiv.
 * *dussujiv:* `dussut+V+IV+Ind+Prt+Sg1`
 * *dussujma:* `dussut+V+IV+Ind+Prt+Pl1`
 
-LEXICON TJUOLLÁT_TV    Incoativ. All passive. Does not make nouns via -ár derivation,  (gullát, bårråt)
+LEXICON TJUOLLÁT_TV    Inceptiv. All passive. Does not make nouns via -ár derivation,  (gullát, bårråt)
 
 * gajkkát # Contracted test examples:*
 * *gajkkáv:* `gajkkát+V+TV+Ind+Prs+Sg1`
