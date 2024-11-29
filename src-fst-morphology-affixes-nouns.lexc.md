@@ -56,13 +56,19 @@ LEXICON DARRHA  Only for "darrha" or compounds that end on "darrha".
 
 ### Nouns with comparatives
 
-LEXICON GÁDDE  2 syllable stems with cg (note Q1) with comparatives
+LEXICON GÁDDE  2 syllable stems with cg (note Q1) with comparatives, like MUORRA
 
 * boassjo # Even-syllable test examples:*
 * *boassjo:* `boassjo+N+Sg+Nom`
 * *båssjujn:* `boassjo+N+Sg+Com`
 * *boassjojn:* `boassjo+N+Sg+Com`
 * *boassjop:* `boassjo+N+Der/Comp+A+Sg+Nom`
+
+LEXICON VUODO  2 syllable stems without cg (note Q1) with comparatives, like NOADE
+
+* låda # Even-syllable test examples:*
+* *vuodo:* `vuodo+N+Sg+Nom`
+* *vuodos:* `vuodo+N+Sg+Ela`
 
 LEXICON SJIEVNNJET  Like GAHPER but with comparatives. Odd-syllable C-final noun without cg, no vowchange, no short Ess.
 

@@ -606,7 +606,7 @@ LEXICON LONDON-plc  Only singular. Placenames
 * *Njieregij:* `Njierek+N+Prop+Sem/Plc+Sg+Ill`
 * *Njieregis:* `Njierek+N+Prop+Sem/Plc+Sg+Ela`
 
-LEXICON TJIERREK-plc  Only singular. Placenames. Same as LONDON, but does not get Sem/Sur tag, not usuall for SMJ place names to become surnames. 
+LEXICON TJIERREK-plc  Only singular. Placenames. Without cg. Same as LONDON, but does not get Sem/Sur tag, not usuall for SMJ place names to become surnames. 
 
 * Njierek # Odd-syllable test examples:*
 * *Njierek:* `Njierek+N+Prop+Sem/Plc+Sg+Nom`

@@ -688,13 +688,19 @@ LEXICON DARRHA  Only for "darrha" or compounds that end on "darrha".
 
 ### Nouns with comparatives
 
-LEXICON GÁDDE  2 syllable stems with cg (note Q1) with comparatives
+LEXICON GÁDDE  2 syllable stems with cg (note Q1) with comparatives, like MUORRA
 
 * boassjo # Even-syllable test examples:*
 * *boassjo:* `boassjo+N+Sg+Nom`
 * *båssjujn:* `boassjo+N+Sg+Com`
 * *boassjojn:* `boassjo+N+Sg+Com`
 * *boassjop:* `boassjo+N+Der/Comp+A+Sg+Nom`
+
+LEXICON VUODO  2 syllable stems without cg (note Q1) with comparatives, like NOADE
+
+* låda # Even-syllable test examples:*
+* *vuodo:* `vuodo+N+Sg+Nom`
+* *vuodos:* `vuodo+N+Sg+Ela`
 
 LEXICON SJIEVNNJET  Like GAHPER but with comparatives. Odd-syllable C-final noun without cg, no vowchange, no short Ess.
 
@@ -2148,7 +2154,7 @@ LEXICON LONDON-plc  Only singular. Placenames
 * *Njieregij:* `Njierek+N+Prop+Sem/Plc+Sg+Ill`
 * *Njieregis:* `Njierek+N+Prop+Sem/Plc+Sg+Ela`
 
-LEXICON TJIERREK-plc  Only singular. Placenames. Same as LONDON, but does not get Sem/Sur tag, not usuall for SMJ place names to become surnames. 
+LEXICON TJIERREK-plc  Only singular. Placenames. Without cg. Same as LONDON, but does not get Sem/Sur tag, not usuall for SMJ place names to become surnames. 
 
 * Njierek # Odd-syllable test examples:*
 * *Njierek:* `Njierek+N+Prop+Sem/Plc+Sg+Nom`
