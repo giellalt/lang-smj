@@ -329,7 +329,7 @@ LEXICON BASSUT_IV  Passives
 * *buvvujiv:* `buvvut+V+IV+Ind+Prt+Sg1`
 * *buvvujma:* `buvvut+V+IV+Ind+Prt+Pl1`
 
-LEXICON OADDÁT_IV    Incoative, (doarrut,jåhttåt). Only Sg3 passive. Does not make nouns via -ár derivation.
+LEXICON OADDÁT_IV    Inceptive, (doarrut,jåhttåt). Only Sg3 passive. Does not make nouns via -ár derivation.
 
 * bæhkkát # Contracted test examples:*
 * *bæhkkáv:* `bæhkkát+V+IV+Ind+Prs+Sg1`
