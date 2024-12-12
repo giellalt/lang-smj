@@ -4549,7 +4549,38 @@ ADD:msyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Pl Ill) IF ((0 N) OR (0
     #$ De vuolggeba da guovtes stuorra universitehtajda. OK
 	#$ Ja de oahpásmuvviv avta prográmmaj. OK
 
-
+	# the noun is correct, but the numeral is not, we still want them to be connected (homonymy with Pl Com)
+ADD:msyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Sg Ill) IF ((0 (N Pl Com)) OR (0 NUMUNIT - Com LINK NOT 1 N - Sem/Plc))(NOT 0 &msyn-numphrase-sgacc) (*-1 (Num Sg Nom) OR (Num Sg Acc) OR ("moadda" Sg Nom) OR ("moadda" Sg Acc) BARRIER NOT-Attr - PrfPrc - (N Pl Nom) LINK NOT 0 (N Coll Nom) OR Sem/Year OR Sem/Time-clock OR Sem/Time OR Sem/Date OR (Num Rom) LINK NOT -1 Sem/Curr OR POST-N-NUM + (Sg Nom) LINK NEGATE 0 NUMUNIT LINK -1 Num OR PLURAL-QUANTIFIERS) 
+(NEGATE *-1 Der/akti BARRIER NOT-NPMOD) 
+(NEGATE *-1 Num BARRIER NOT-NPMOD LINK 0 ("aktan" Adv))
+(NEGATE *-1 (Num "<[§].*>"r) OR (Num "<.*%>"r) OR ("%") BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE *-1 (Num "<[0123456789]-.*>"r) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE *-1 Num BARRIER NOT-NPMOD LINK 1 Dem)
+(NEGATE *-1 (Num Sg Nom) BARRIER NOT-NPMOD LINK -1 BE + Sg3 OR BE + Du3 OR BE + Pl3 LINK -1 (Dem Pl Ela) OR (Pers Pl3 Ela) OR (Pers Pl2 Ela) OR (Pers Pl1 Ela)) 
+(NEGATE *-1 ("akta" Num Sg Nom) BARRIER NOT-NPMOD-WITHOUT-NUM LINK NOT 1 ("moadda"))
+(NEGATE *-1 (Arab Ord) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE *-1 (Num Sem/ID) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE -1 (PUNCT RIGHT) LINK -1 Num) 
+(NEGATE -1 COMMA)
+(NEGATE -1 CLB)
+(NEGATE -1 Sem/Time) (NEGATE 0 NUMUNIT LINK 1 N) 
+(NEGATE -1 NUMUNIT LINK -1 PLURAL-QUANTIFIERS OR Num) 
+(NEGATE -1 NUMUNIT LINK -1 Num OR ("moadda"))
+(NEGATE -1 ("vahkkusasj") OR ("mánnusasj") OR ("bæjvvásasj") OR ("tijmmasasj") OR ("jahkásasj") LINK -1 (Num)) 
+(NEGATE 0 ("<[A-Z].*>"r) OR ("<Å.*>"r) OR ("<Æ.*>"r) OR ("<Ø.*>"r) LINK -1 (Arab Nom))
+(NEGATE 0 ("låhko"))
+(NEGATE 0 (N Sg) - Ill OR (N Pl Nom))
+(NEGATE 0 (Pl Ela) LINK -1 ("akta" Sg Nom))
+(NEGATE 0 (Pl Ela) LINK -1 (Num Sg Nom) - Arab - Rom - Sem/Date LINK 2 BE + Pl3)
+(NEGATE 0 (N Pl Nom) LINK -1 (Num Sg Nom))
+(NEGATE 0 PL-PAIR-N + (Pl Ill) LINK *-1 (Num Pl Ill) BARRIER NOT-Attr - Gen - PrfPrc) 
+(NEGATE 0 <spelled>)
+(NEGATE 0 Symbol)
+(NEGATE 0 Px LINK NOT 0 (Sg Acc PxSg3) OR (Sg Nom PxSg3) OR (Sg Gen PxSg3))
+(NEGATE *1 Po BARRIER (*) - CC - Gen - (N Pl Nom)) ;
+    ## Vatte dajt ålmmåjda bårrusin, Elisja javlaj, valla dievnár vuosstálastij: Luluv gus mån dájt {tjuohte almatjij} vaddet?
+    
+    
 # coordination of adjectives
 ADD:msyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Pl Ill) IF ((0 N) OR (0 NUMUNIT LINK NOT 1 N - Sem/Plc)) (NOT 0 &msyn-numphrase-sgacc) (*-1 (A Attr) LINK NOT 0 (N Coll Nom) LINK -1 CC LINK -1 (A Attr) LINK NOT 0 (N Coll Nom) OR (Num Rom) LINK -1 Num LINK NEGATE -1 Sem/Curr OR POST-N-NUM + (Sg Nom))
 (NEGATE *-1 ("akta" Num Sg Nom) BARRIER NOT-NPMOD-WITHOUT-NUM LINK NOT 1 ("moadda"))
