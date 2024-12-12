@@ -4415,7 +4415,6 @@ ADDRELATION ($4 RIGHT) (N &msyn-numphrase-sgacc) OR NUMUNIT + &msyn-numphrase-sg
 	# relation from main noun to the second coordinated nouns $4
 ADDRELATION ($4 RIGHT) (N &msyn-numphrase-sgacc) OR NUMUNIT + &msyn-numphrase-sgacc TO (*1 CC OR COMMA LINK *1 (N &msyn-numphrase-sgacc) OR NUMUNIT + &msyn-numphrase-sgacc LINK *1 CC OR COMMA LINK *1 (N &msyn-numphrase-sgacc) OR NUMUNIT + &msyn-numphrase-sgacc);
 
-
 	# relation from noun to the numeral/moadda
 ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgacc) OR NUMUNIT + &msyn-numphrase-sgacc TO (*-1 (Num &msyn-numphrase-sgacc) OR ("moadda" Indef &msyn-numphrase-sgacc) BARRIER (N &msyn-numphrase-sgacc)); 
 
@@ -4755,8 +4754,15 @@ ADD:msyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Num Sg Nom) OR (Num v2 
 
 	#$ ”Kultuvrralåpptim” le 15 almma luohtádusá gånnå ájnnasabmusin le {1 %} stáhtabudsjehtas galggá aneduvvat kultuvrrasuorgen åvddål 2014.
 
+	# relation from main noun to the first coordinated noun
+ADDRELATION ($4 RIGHT) (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela TO (*1 CC OR COMMA LINK *1 (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela); 
 
-ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela TO (*-1 Num OR ("moadda" Indef) BARRIER NOT-Attr - PrfPrc) ;
+	# relation from main noun to the second coordinated nouns $4
+ADDRELATION ($4 RIGHT) (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela TO (*1 CC OR COMMA LINK *1 (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela LINK *1 CC OR COMMA LINK *1 (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela);
+
+	# relation from noun to the numeral/moadda
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela TO (*-1 (Num &msyn-numphrase-sgela) OR ("moadda" Indef &msyn-numphrase-sgela) BARRIER (N &msyn-numphrase-sgela)) ;
+	#Previous last BARRIER was "BARRIER NOT-Attr - PrfPrc"
 
 COPY:msyn-numphrase-sgela (Sg Par SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sgela) OR (v2 Sg Nom &msyn-numphrase-sgela) OR (Pl Nom &msyn-numphrase-sgela) OR (Pl Ela &msyn-numphrase-sgela) OR (Sg Gen &msyn-numphrase-sgela) OR (v2 Sg Acc &msyn-numphrase-sgela) TARGET (Num &msyn-numphrase-sgela) IF (*1 (N Pl Ela) + &msyn-numphrase-sgela OR (Sg Ela) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom)) ;
 	## {Låge} åhtsåmusás li gietjav åhtsåmusá árbbedábálasj juojggusav almodittjat.
@@ -4789,9 +4795,9 @@ COPY:msyn-numphrase-sgela (Sg Ela Attr SUGGEST) EXCEPT (Pl Com Attr &msyn-numphr
     ## {Dajs} 22997 ulmutjijs gudi dáj suohkanijn årrun 15-jagágin.  DNW
 
 
-SUBSTITUTE (&msyn-numphrase-sgela) (co&msyn-numphrase-sgela) TARGET (SUGGEST);
-
-
+SUBSTITUTE (&msyn-numphrase-sgela) (co&msyn-numphrase-sgela) TARGET (SUGGEST) IF (0 Num OR ("moadda") OR Dem);
+SUBSTITUTE (&msyn-numphrase-sgela) (co&msyn-numphrase-sgela) TARGET (N SUGGEST) IF (*-1 &msyn-numphrase-sgela + N);
+MAP:LOCK_READING (SUGGEST) (SUGGEST);
 
 
 
