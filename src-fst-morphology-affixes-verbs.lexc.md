@@ -238,14 +238,18 @@ LEXICON JÅRGGOT_TV  o-verbs with dim -astit that are hardcoded.  Duvvat and dal
 
 This is just awaiting a manual classification
 
+intransitives
+
 LEXICON BIEKKASTIT_IV  Impersonals, only Sg3
 
-LEXICON JÅRGESTIT_IV At the moment IV, we may perhaps change IV/TV. 
+LEXICON JÅRGESTIT_IV  ONLY FOR -STIT verbs, makes Err/Orth jårgest, an with other verbs in this lexicon they will get err/orth Prs Sg3 even if it's same as corrct prs sg3
 
 * doalvestit # Odd-syllable test examples:*
 * *doalvestav:* `doalvestit+V+IV+Ind+Prs+Sg1`
 * *doalvestiv:* `doalvestit+V+IV+Ind+Prt+Sg1`
 * *doalvestijma:* `doalvestit+V+IV+Ind+Prt+Pl1`
+
+LEXICON MÅRIJDIT_IV   ONLY FOR Words ending -IJDIT. Same as BEGATJIT, but a common error is to write "jårgidit", so the whole -ijdit and Err/Orth -idit is made in this  lexicon
 
 LEXICON BEGATJIT_IV   Words ending -tjit, -jdit, reciprocals on -dit, momentatives on -dit, -edit, continuatives on -ldit, -nit, essives on -hit and 5-syllables - no actio cmps, but  only Sg3 passivereintroduced
 
@@ -254,7 +258,12 @@ LEXICON BEGATJIT_IV   Words ending -tjit, -jdit, reciprocals on -dit, momentativ
 * *duojkkuhiv:* `duojkkuhit+V+IV+Ind+Prt+Sg1`
 * *duojkkuhijma:* `duojkkuhit+V+IV+Ind+Prt+Pl1`
 
-LEXICON MÅRIJDIT_IV   Words ending -IJDIT. Same as BEGATJIT, but a common error is to write "jårgidit", so the whole -ijdit and Err/Orth -idit is made in this  lexicon
+LEXICON VÁNDARDIT_IV At the moment IV
+
+* doalvestit # Odd-syllable test examples:*
+* *vándardav:* `vándardit+V+IV+Ind+Prs+Sg1`
+* *vándardiv:* `vándardit+V+IV+Ind+Prt+Sg1`
+* *vándardijma:* `vándardit+V+IV+Ind+Prt+Pl1`
 
 LEXICON BALÁDIT_IV   continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms, only Sg3 passive
 
@@ -284,6 +293,12 @@ LEXICON BÁHTARIT_IV verbs ending -rit.  only Sg3 passive
 * *sjtávttjuriv:* `sjtávttjurit+V+IV+Ind+Prt+Sg1`
 * *sjtávttjurijma:* `sjtávttjurit+V+IV+Ind+Prt+Pl1`
 
+transitives
+
+LEXICON FÁRMASTIT_TV   ONLY FOR verbs ending on -stit. makes Err/Orth jårgest, an with other verbs in this lexicon they will get err/orth Prs Sg3 even if it's same as corrct prs sg3. All -uvvat passives.
+
+LEXICON HÁLIJDIT_TV   ONLY FOR Words ending -IJDIT. Same as MUJTATJIT, but a common error is to write "hálidit", so the whole -ijdit and Err/Orth -idit is made in this  lexicon
+
 LEXICON UNNEDIT_TV   All -uvvat passives.
 
 * nuoledit # Odd-syllable test examples:*
@@ -297,8 +312,6 @@ LEXICON MUJTATJIT_TV   Words ending -tjit, -jdit, reciprocals on -dit, momentati
 * *nårddådav:* `nårddådit+V+TV+Ind+Prs+Sg1`
 * *nårddådiv:* `nårddådit+V+TV+Ind+Prt+Sg1`
 * *nårddådijma:* `nårddådit+V+TV+Ind+Prt+Pl1`
-
-LEXICON HÁLIJDIT_TV   Words ending -IJDIT. Same as MUJTATJIT, but a common error is to write "hálidit", so the whole -ijdit and Err/Orth -idit is made in this  lexicon
 
 LEXICON BÅNJÅDIT_TV   continuatives on -dit, frequentatives on -odit, reciprocals, momentatives and frequentatives ending -alit - actio cpms. All -uvvat  passives.
 
