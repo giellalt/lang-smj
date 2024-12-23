@@ -2057,7 +2057,8 @@ COPY:syn-from-sentence-init-copula (Clt SUGGEST) EXCEPT (SentInit &syn-from-sent
 	# --
 COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (-1 (Pl Nom) OR (Pl3 Nom)) (NEGATE 1 Ess LINK -2 (Sem/Time Pl Nom) LINK -1 ("udnásj") OR ("ihttásj") OR ("boahtte") OR (Dem Sg Gen)) ;
 
-COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (-1 (Sg Nom) LINK -1 ("ja") OR ("jali") LINK -1 (Nom) ) ;
+COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (-1 (Sg Nom) LINK -1 ("ja") OR ("jali") LINK -1 (Nom))
+(NEGATE -1 ("nubbe" Ord Sg Nom)) ;
 
 COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (-1 ("guhti" Rel Pl)) (1 (N Pl) LINK NOT 1 CC) (NEGATE 2 (N Sg Nom))  ;
 
@@ -2066,6 +2067,7 @@ COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence
 COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (*1 (N Pl Nom) BARRIER NOT-NPMOD) 
 (NEGATE -1 (N Sg Nom)) 
 (NEGATE -1 (Pers Sg2) OR (Pers Sg3)) 
+(NEGATE -1 ("nubbe" Ord Sg Nom))
 (NEGATE -1 ("guhti" Sg Nom) LINK -1 (Pers Sg2) OR (Pers Sg3))
 (NEGATE 2 CC)
 (NEGATE *1 (V Pl3) BARRIER S-BOUNDARY) ;
