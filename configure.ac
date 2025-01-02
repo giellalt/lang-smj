@@ -205,6 +205,7 @@ AM_CONDITIONAL([HAVE_SHARED_SME], [test x$gt_SHARED_sme != xfalse])
 gt_USE_SHARED([sma], [lang-sma], [giella-sma])
 AM_CONDITIONAL([HAVE_SHARED_SMA], [test x$gt_SHARED_sma != xfalse])
 
+gt_NEED_SHARED([mul], [shared-mul], [giella-shared-mul], [0.0.3])
 
 # Locally used shares above this line
 
