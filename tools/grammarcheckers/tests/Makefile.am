@@ -25,6 +25,7 @@ TESTS=\
     DEV-msyn-numphrase-PASS.yaml                  \
 	DEV-msyn-sme_interference_neg-FAIL.yaml       \
 	DEV-msyn-sme_interference_neg-PASS.yaml       \
+	DEV-msyn-rájes-FAIL.yaml                      \
     DEV-punct-nom-nom-comma-FAIL.yaml             \
 	DEV-real-NegSg2-NegSg3-FAIL.yaml              \
 	DEV-real-NegSg2-NegSg3-PASS.yaml              \
@@ -124,6 +125,7 @@ XFAIL_TESTS=\
 	DEV-real-NegSg3-NegSg2-FAIL.yaml              \
 	DEV-real-PrsPl3-PrtSg3-FAIL.yaml              \
 	DEV-real-PrtSg3-PrsPl3-FAIL.yaml              \
+	DEV-msyn-rájes-FAIL.yaml                      \
 	DEV-syn-number_congruence-subj-verb-FAIL.yaml \
 	DEV-syn-pred-attr-FAIL.yaml                   \
     DEV-punct-nom-nom-comma-FAIL.yaml             \
