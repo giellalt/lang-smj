@@ -1683,8 +1683,10 @@ LIST &real-PrtSg3-PrsPl3 = &real-PrtSg3-PrsPl3 ;
 
 LIST &syn-attr-pred-sg = &syn-attr-pred-sg ;
 LIST &syn-attr-pred-pl = &syn-attr-pred-pl ;
-
 LIST &syn-pred-attr = &syn-pred-attr ;
+
+LIST &msyn-case-dat-rajes =&msyn-case-dat-rajes ;
+LIST &syn-missing-dat-rajes = &syn-missing-dat-rajes ;
 LIST &syn-missing-copula = &syn-missing-copula ;
 LIST &syn-missing-gus = &syn-missing-gus ;
 LIST &syn-nom_nom-gen_nom = &syn-nom_nom-gen_nom ;
@@ -3012,6 +3014,29 @@ ADDRELATION (RIGHT) (&punct-nom-nom-comma) TO (1 (&ADDED)) ;
     # ===================================================================================================
     # ===================================================================================================
     # ===================================================================================================
+
+
+	# error with rájes, missing "dat" or wrong case
+	#----------------------------------------------
+	
+	# missing dat
+ADD:xsyn-missing-dat-rajes (&syn-missing-dat-rajes) TARGET ("rájes" Po) OR ("rádje" N Sg Ela) IF (-1 TIME-N-SET + (Sg Gen) OR (Pl Nom) LINK -1 Num LINK NOT 0 Sem/Year) ;
+
+ADDCOHORT ("<dat>" "dat" Dem Sg Par &ADDED &syn-missing-dat-rajes) BEFORE &syn-missing-dat-rajes (NEGATE 0 &ADDED) ;
+ADDCOHORT ("<dát>" "dát" Dem Sg Par &ADDED &syn-missing-dat-rajes) BEFORE &syn-missing-dat-rajes (NEGATE 0 &ADDED) ;
+
+ADDRELATION ($2 RIGHT) (Po &syn-missing-dat-rajes) TO (1 &ADDED) ;  
+
+	## 20 jage {rájes} gå Árrana vuodogiergge biejaduváj.
+
+	# wrong case
+ADD:xmsyn-case-dat-rajes (&msyn-case-dat-rajes) TARGET ("dat" Dem Sg Par) OR ("dat" Dem Sg Nom) OR ("dat" Dem Sg Ela Attr) IF (1 TIME-N-SET + (Sg Gen) OR TIME-N-SET + (Sg Nom) LINK 1 ("rádje" N Sg Ela) OR ("rájes" Po)) ;
+
+COPY:msyn-case-dat-rajes (Sg Gen SUGGEST) EXCEPT (Sg Par) OR (Sg Nom) OR (Sg Ela Attr) TARGET (&msyn-case-dat-rajes);
+
+	## Hærrá vuojŋŋanis lij Davida lunna {dat} biejve rájes.
+
+
     # nom-nom = missing copula in SPRED combinations
     #-----------------------------------------------
     
