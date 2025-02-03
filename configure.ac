@@ -1,4 +1,3 @@
-
 ## Process this file with autoconf to produce configure script
 
 ## Copyright (C) 2017 Samediggi/Divvun/UiT
