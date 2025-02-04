@@ -5402,8 +5402,11 @@ COPY:msyn-nom-numeral-jagák (Num Arab Sg Gen SUGGEST) EXCEPT (Num Arab Sg Nom &
 	# Nounphrase
 	# ==========
 	
-ADD:xmsyn-dem-noun-nom (&msyn-dem-noun-nom) TARGET Dem IF (*1 (N Nom) BARRIER NOT-NPMOD) ;
-(NEGATE 0 Nom) ; 
+	# fix dem
+#ADD:xmsyn-dem-noun-nom (&msyn-dem-noun-nom) TARGET Dem IF (*1 (N Nom) BARRIER NOT-NPMOD) 
+#(NEGATE 0 Nom)
+#(NEGATE 0 (Sg Gen) LINK 1 (N Pl Nom)) 
+#(NEGATE 1 Num) ; 
 
 #COPY:msyn-dem-noun-nom (Pl Nom SUGGEST) EXCEPT (
 
