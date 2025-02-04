@@ -3053,6 +3053,7 @@ The alternation patterns according to Spiik's alternations series, here named S4
 Definition of gradation symbols:
 
 * **LowerG2**:  A definition of Grade2 consonant sequences referring mostly to the surface level
+
 * **LowerG1**:  A definition of Grade 1 consonant sequences
 * **LowerG12**:  A definition of Grade 1 or 2 consonant sequences 
 
