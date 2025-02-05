@@ -5442,6 +5442,7 @@ ADD:xmsyn-dem-noun-nom (&msyn-dem-noun-nom) TARGET Dem IF (*1 (N Nom) BARRIER NO
 (NEGATE 0 (Sg Gen) OR (Sg Ine Attr) LINK *1 (Sg Nom) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 0 (Sg Ine)) 
 (NEGATE 0 (Sg Gen) LINK 1 ("lágásj"))
 (NEGATE 1 Num)
+(NEGATE 1 V)
 (NEGATE 1 COMMA OR CLB)
 (NEGATE 1 (Der/NomInstr N Sg Nom))
 (NEGATE *1 Cmp/SplitR BARRIER NOT-NPMOD-WITHOUT-NUM) ; 
@@ -5460,7 +5461,7 @@ ADD:xmsyn-dem-noun-gen (&msyn-dem-noun-gen) TARGET Dem IF (*1 (N Gen) BARRIER NO
 (NEGATE 0 (Sg Gen) LINK *1 (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 0 (N Sg Ill)) 
 (NEGATE 0 (Sg Gen) LINK *1 (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK NOT 0 Á-A-E-O-U-I-Å-NOUNS) 
 (NEGATE 0 Foc/Neg-k)
-(NEGATE 0  (Sg Ill Attr) OR (Sg Gen Attr) OR (Sg Ine Attr) LINK *1 (N Sg Gen))
+(NEGATE 0  (Sg Ill Attr) OR (Sg Gen Attr) OR (Sg Ine Attr) LINK *1 (N Sg Gen) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE 0 ("<.*[r]>"r Dem))
 (NEGATE 0 ("då" Pcle) LINK -1 ImprtII OR Imprt)
 (NEGATE 0 (Sg Ine) LINK *1 (N Gen) LINK 1 ("nanna" Po) OR ("lunna" Po) OR ("sinna" Po) OR ("<.*[n]>"r Po))
@@ -5469,6 +5470,7 @@ ADD:xmsyn-dem-noun-gen (&msyn-dem-noun-gen) TARGET Dem IF (*1 (N Gen) BARRIER NO
 (NEGATE 1 Num)
 (NEGATE 1 COMMA OR CLB)
 (NEGATE 1 ("mærkka" Pl Gen))
+(NEGATE 1 V)
 (NEGATE *1 (N Pl Nom) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE *1 (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 0 V)
 (NEGATE *1 Px + (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM)
@@ -5479,7 +5481,7 @@ ADD:xmsyn-dem-noun-gen (&msyn-dem-noun-gen) TARGET Dem IF (*1 (N Gen) BARRIER NO
 	
 COPY:msyn-dem-noun-gen (Sg Gen SUGGEST) EXCEPT (Sg Nom) OR (Sg Acc) OR (Sg Ine) OR (Sg Ill) OR (Sg Ela) OR (Sg Par) OR (Sg Com)  OR (Sg Ela Attr) OR (Pl Nom) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-gen) IF (*1 (N Sg Gen) BARRIER NOT-NPMOD-WITHOUT-NUM);
 
-COPY:msyn-dem-noun-gen (Pl Gen SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) OR (Sg Ine) OR (Sg Ill) OR (Sg Ela) OR (Sg Par)  OR (Sg Com) OR (Sg Ela Attr) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-gen) IF (*1 (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM);
+COPY:msyn-dem-noun-gen (Pl Gen SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) OR (Sg Ine) OR (Sg Ill) OR (Sg Ela) OR (Sg Par)  OR (Sg Com) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-gen) IF (*1 (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM);
 
 	#acc
 ADD:xmsyn-dem-noun-acc (&msyn-dem-noun-acc) TARGET Dem IF (*1 (N Acc) BARRIER NOT-NPMOD-WITHOUT-NUM) 
@@ -5489,10 +5491,11 @@ ADD:xmsyn-dem-noun-acc (&msyn-dem-noun-acc) TARGET Dem IF (*1 (N Acc) BARRIER NO
 (NEGATE 0 ("<.*[r]>"r Dem))
 (NEGATE 0 ("då" Pcle) LINK -1 ImprtII OR Imprt)
 (NEGATE 0 Gen LINK 1 (N Gen))
+(NEGATE 0 (Sg Ill) LINK *1 (N Acc) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V TV))
 (NEGATE 1 Num)
 (NEGATE 1 COMMA OR CLB) 
-(NEGATE *1 Px + (N Acc) BARRIER NOT-NPMOD-WITHOUT-NUM) 
-(NEGATE 0 (Sg Ill) LINK *1 (N Acc) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V TV));
+(NEGATE 1 V)
+(NEGATE *1 Px + (N Acc) BARRIER NOT-NPMOD-WITHOUT-NUM) ;
 
 COPY:msyn-dem-noun-acc (Sg Acc SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Ine) OR (Sg Ill) OR (Sg Ela) OR (Sg Par) OR (Sg Com) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Nom) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-acc) IF (*1 (N Sg Acc) BARRIER NOT-NPMOD-WITHOUT-NUM);
 
@@ -5501,6 +5504,7 @@ COPY:msyn-dem-noun-acc (Pl Acc SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Ine) 
 
 	#ine
 ADD:xmsyn-dem-noun-ine (&msyn-dem-noun-ine) TARGET Dem IF (*1 (N Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE -1 (V TV) LINK 1 (Dem Acc))
 (NEGATE 0 (Sg Gen) LINK *1 (N Sg Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE 0 (Sg Ine Attr) OR (Sg Ill Attr) LINK *1 (N Sg Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE 0 (Pl Ine) LINK *1 (N Pl Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) 
@@ -5514,6 +5518,7 @@ ADD:xmsyn-dem-noun-ine (&msyn-dem-noun-ine) TARGET Dem IF (*1 (N Ine) BARRIER NO
 (NEGATE 0 (Nom) LINK *1 (N Ine) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V Sg3))
 (NEGATE 0 (Nom) LINK -1 ("liehket" Sg3))
 (NEGATE *1 (Coll Pl Ine) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE 1 V)
 (NEGATE 1 Num)
 (NEGATE 1 COMMA OR CLB) ;
 
@@ -5523,6 +5528,7 @@ COPY:msyn-dem-noun-ine (Pl Ine SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) 
 
 	#ill
 ADD:xmsyn-dem-noun-ill (&msyn-dem-noun-ill) TARGET Dem IF (*1 (N Ill) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE -1 (V TV) LINK 1 (Dem Acc))
 (NEGATE 0 (Sg Gen) LINK *1 (N Sg Ill) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE 0 (Sg Gen) LINK *1 (N Err/Orth Pl Ill) BARRIER NOT-NPMOD-WITHOUT-NUM)  
 (NEGATE 0 (Sg Ine Attr) OR (Sg Ill Attr) LINK *1 (N Sg Ill) BARRIER NOT-NPMOD-WITHOUT-NUM) 
@@ -5533,9 +5539,9 @@ ADD:xmsyn-dem-noun-ill (&msyn-dem-noun-ill) TARGET Dem IF (*1 (N Ill) BARRIER NO
 (NEGATE 0 ("då" Pcle) LINK -1 ImprtII OR Imprt)
 (NEGATE 0 Gen LINK 1 (N Gen))
 (NEGATE 0 (Acc) LINK *1 (N Ill) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V TV))
-(NEGATE -1 (V TV) LINK 1 (Dem Acc) LINK *1 (N Ill) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE 0 (Nom) LINK *1 (N Ill) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V Sg3))
 (NEGATE 0 (Nom) LINK -1 ("liehket" Sg3))
+(NEGATE 1 V)
 (NEGATE 1 Num)
 (NEGATE 1 COMMA OR CLB) ;
 
@@ -5546,6 +5552,7 @@ COPY:msyn-dem-noun-ine (Pl Ill SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) 
 
 	#Ela
 ADD:xmsyn-dem-noun-ela (&msyn-dem-noun-ela) TARGET Dem IF (*1 (N Ela) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE -1 (V TV) LINK 1 (Dem Acc))
 (NEGATE 0 Par LINK *1 (N Sg Ela) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE 0 (Sg Ela Attr) LINK *1 (N Sg Ela) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE 0 (Pl Ela) LINK *1 (N Pl Ela) BARRIER NOT-NPMOD-WITHOUT-NUM)
@@ -5556,10 +5563,11 @@ ADD:xmsyn-dem-noun-ela (&msyn-dem-noun-ela) TARGET Dem IF (*1 (N Ela) BARRIER NO
 (NEGATE 0 (Sg Nom) LINK *1 (N Sg Ela) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V Sg3))
 (NEGATE 0 (Pl Nom) LINK *1 (N Sg Ela) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V Pl3))
 (NEGATE 0 (Acc) LINK *1 (N Ela) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V TV))
-(NEGATE -1 (V TV) LINK 1 (Dem Acc) LINK *1 (N Ela) BARRIER NOT-NPMOD-WITHOUT-NUM)
-(NEGATE 0 (Nom) LINK *1 (N Ela) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V Sg3))
+(NEGATE 0 (Sg Nom) LINK *1 (N Ela) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V Sg3))
+(NEGATE 0 (Pl Nom) LINK *1 (N Ela) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V Pl3))
 (NEGATE 0 (Nom) LINK -1 ("liehket" Sg3))
 (NEGATE *1 ("miella" N Sg Ela) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE 1 V)
 (NEGATE 1 Num)
 (NEGATE 1 COMMA OR CLB) ;
 
@@ -5567,6 +5575,27 @@ COPY:msyn-dem-noun-ela (Sg Par SUGGEST) EXCEPT (Sg Nom) OR (Sg Acc) OR (Sg Ill) 
 
 COPY:msyn-dem-noun-ine (Pl Ela SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) OR (Sg Ill) OR (Sg Ela) OR (Sg Par)  OR (Sg Com) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Gen) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-ela) IF (*1 (N Pl Ela) BARRIER NOT-NPMOD-WITHOUT-NUM);
 
+	#Com
+ADD:xmsyn-dem-noun-com (&msyn-dem-noun-com) TARGET Dem IF (*1 (N Com) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE -1 (V TV) LINK 1 (Dem Acc))
+(NEGATE 0 (Sg Com) LINK *1 (N Sg Com) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE 0 (Pl Com) LINK *1 (N Pl Com) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE 0 (Sg Gen) LINK *1 (N Sg Com) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 0 (Sg Ill)) 
+(NEGATE 0 Foc/Neg-k)
+(NEGATE 0 (Sg Ine))
+#(NEGATE 0  (Sg Ill Attr) OR (Sg Gen Attr) OR (Sg Ine Attr) OR (Sg Gen) LINK 1 (N Sg Gen))
+(NEGATE 0 ("<.*[r]>"r Dem))
+(NEGATE 0 ("då" Pcle) LINK -1 ImprtII OR Imprt)
+(NEGATE 0 (Acc) LINK *1 (N Com) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V TV))
+(NEGATE 0 (Sg Nom) LINK *1 (N Com) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V Sg3))
+(NEGATE 0 (Pl Nom) LINK *1 (N Com) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V Pl3))
+(NEGATE 1 V)
+(NEGATE 1 Num)
+(NEGATE 1 COMMA OR CLB) ;
+	
+COPY:msyn-dem-noun-com (Sg Com SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) OR (Sg Ine) OR (Sg Ill) OR (Sg Ela) OR (Sg Par) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Nom) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-com) IF (*1 (N Sg Com) BARRIER NOT-NPMOD-WITHOUT-NUM);
+
+COPY:msyn-dem-noun-com (Pl Com SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) OR (Sg Ine) OR (Sg Ill) OR (Sg Ela) OR (Sg Par)  OR (Sg Com) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) TARGET (Dem &msyn-dem-noun-com) IF (*1 (N Pl Com) BARRIER NOT-NPMOD-WITHOUT-NUM);
 
 
    # lexical errors
