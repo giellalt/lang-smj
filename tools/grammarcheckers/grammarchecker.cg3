@@ -5427,9 +5427,12 @@ COPY:msyn-nom-numeral-jagák (Num Arab Sg Gen SUGGEST) EXCEPT (Num Arab Sg Nom &
 	
 	#nom
 ADD:xmsyn-dem-noun-nom (&msyn-dem-noun-nom) TARGET Dem IF (*1 (N Nom) BARRIER NOT-NPMOD-WITHOUT-NUM) 
-(NEGATE 0 Nom)
+(NEGATE 0 (Sg Nom) LINK *1 (N Sg Nom) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE 0 (Pl Nom) LINK *1 (N Pl Nom) OR (N Sg Gen) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE 0 (Pl Nom) LINK 1 (Actio Nom) LINK *1 (N Pl Nom) OR (N Sg Gen) BARRIER NOT-Attr) 
 (NEGATE 0 Foc/Neg-k)
 (NEGATE 0 ("<.*[r]>"r Dem))
+(NEGATE 0 ("då" Pcle) LINK -1 ImprtII OR Imprt)
 (NEGATE 0 (Dem Sg Par) LINK (*1 (N Sg Nom) BARRIER NOT-NPMOD-WITHOUT-NUM)) 
 (NEGATE 0 (Sg Gen) OR (Dem Sg Ill Attr) LINK 1 (N Pl Nom) OR (N Sg Gen)) 
 (NEGATE 0 (Acc) LINK -1 (V TV))
@@ -5445,17 +5448,21 @@ ADD:xmsyn-dem-noun-nom (&msyn-dem-noun-nom) TARGET Dem IF (*1 (N Nom) BARRIER NO
 	
 	#$ Guddnedihtit Härráv ednamin, merraielle ja ihkeva tjiegŋalisá, eldagis ja tjuormas, muohta ja murkko, {dån} stoarmmo mij dagá mav gåhttju
 
-COPY:msyn-dem-noun-nom (Sg Nom SUGGEST) EXCEPT (Sg Gen) OR (Sg Acc) OR (Sg Ine) OR (Sg Ill) OR (Sg Ela) OR (Sg Par) OR (Sg Com) OR (Sg Ela Attr) OR (Pl Nom) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-nom) IF (*1 (N Sg Nom) BARRIER NOT-NPMOD-WITHOUT-NUM);
+COPY:msyn-dem-noun-nom (Sg Nom SUGGEST) EXCEPT (Sg Gen) OR (Sg Acc) OR (Sg Ine) OR (Sg Ill) OR (Sg Ela) OR (Sg Par) OR (Sg Com) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Nom) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-nom) IF (*1 (N Sg Nom) BARRIER NOT-NPMOD-WITHOUT-NUM);
 
-COPY:msyn-dem-noun-nom (Pl Nom SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) OR (Sg Ine) OR (Sg Ill) OR (Sg Ela) OR (Sg Par) OR (Sg Com) OR (Sg Ela Attr) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-nom) IF (*1 (N Pl Nom) BARRIER NOT-NPMOD-WITHOUT-NUM);
+COPY:msyn-dem-noun-nom (Pl Nom SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) OR (Sg Ine) OR (Sg Ill) OR (Sg Ela) OR (Sg Par) OR (Sg Com) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-nom) IF (*1 (N Pl Nom) BARRIER NOT-NPMOD-WITHOUT-NUM);
 
 	#gen
 ADD:xmsyn-dem-noun-gen (&msyn-dem-noun-gen) TARGET Dem IF (*1 (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE -1 (V TV) LINK 1 (Dem Acc))
-(NEGATE 0 Gen)
+(NEGATE 0 (Sg Gen) LINK *1 (N Sg Gen) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE 0 (Pl Gen) LINK *1 (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE 0 (Sg Gen) LINK *1 (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 0 (N Sg Ill)) 
+(NEGATE 0 (Sg Gen) LINK *1 (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK NOT 0 Á-A-E-O-U-I-Å-NOUNS) 
 (NEGATE 0 Foc/Neg-k)
-(NEGATE 0  (Sg Ill Attr) OR (Sg Gen Attr) OR (Sg Ine Attr))
+(NEGATE 0  (Sg Ill Attr) OR (Sg Gen Attr) OR (Sg Ine Attr) LINK *1 (N Sg Gen))
 (NEGATE 0 ("<.*[r]>"r Dem))
+(NEGATE 0 ("då" Pcle) LINK -1 ImprtII OR Imprt)
 (NEGATE 0 (Sg Ine) LINK *1 (N Gen) LINK 1 ("nanna" Po) OR ("lunna" Po) OR ("sinna" Po) OR ("<.*[n]>"r Po))
 (NEGATE 0 (Sg Ela) LINK *1 (N Gen) LINK 1 ("nalta" Po) OR ("lussta" Po) OR ("sissta" Po) OR ("<.*[s]>"r Po))
 (NEGATE 0 (Sg Ill) LINK *1 (N Gen) LINK 1 ("nali" Po) OR ("lusi" Po) OR ("sisi" Po) OR ("<.*[j]>"r Po))
@@ -5476,20 +5483,67 @@ COPY:msyn-dem-noun-gen (Pl Gen SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) 
 
 	#acc
 ADD:xmsyn-dem-noun-acc (&msyn-dem-noun-acc) TARGET Dem IF (*1 (N Acc) BARRIER NOT-NPMOD-WITHOUT-NUM) 
-(NEGATE 0 Acc)
+(NEGATE 0 (Sg Acc) LINK *1 (N Sg Acc) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE 0 (Pl Acc) LINK *1 (N Pl Acc) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE 0 Foc/Neg-k) 
 (NEGATE 0 ("<.*[r]>"r Dem))
+(NEGATE 0 ("då" Pcle) LINK -1 ImprtII OR Imprt)
 (NEGATE 0 Gen LINK 1 (N Gen))
 (NEGATE 1 Num)
 (NEGATE 1 COMMA OR CLB) 
 (NEGATE *1 Px + (N Acc) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE 0 (Sg Ill) LINK *1 (N Acc) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V TV));
 
-COPY:msyn-dem-noun-acc (Sg Acc SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Ine) OR (Sg Ill) OR (Sg Ela) OR (Sg Par) OR (Sg Com)  OR (Sg Ela Attr) OR (Pl Nom) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-acc) IF (*1 (N Sg Acc) BARRIER NOT-NPMOD-WITHOUT-NUM);
+COPY:msyn-dem-noun-acc (Sg Acc SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Ine) OR (Sg Ill) OR (Sg Ela) OR (Sg Par) OR (Sg Com) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Nom) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-acc) IF (*1 (N Sg Acc) BARRIER NOT-NPMOD-WITHOUT-NUM);
 
 COPY:msyn-dem-noun-acc (Pl Acc SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Ine) OR (Sg Ill) OR (Sg Ela) OR (Sg Par)  OR (Sg Com) OR (Sg Ela Attr) OR (Pl Gen) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-acc) IF (*1 (N Pl Acc) BARRIER NOT-NPMOD-WITHOUT-NUM);
 
 
+	#ine
+ADD:xmsyn-dem-noun-ine (&msyn-dem-noun-ine) TARGET Dem IF (*1 (N Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE 0 (Sg Gen) LINK *1 (N Sg Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE 0 (Sg Ine Attr) OR (Sg Ill Attr) LINK *1 (N Sg Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE 0 (Pl Ine) LINK *1 (N Pl Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE 0 (Dem Sg Ine))
+(NEGATE 0 Foc/Neg-k) 
+(NEGATE 0 ("<.*[r]>"r Dem))
+(NEGATE 0 ("då" Pcle) LINK -1 ImprtII OR Imprt)
+(NEGATE 0 Gen LINK 1 (N Gen))
+(NEGATE 0 (Pl Ela) LINK *1 (N Sg Ine) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE 0 (Acc) LINK *1 (N Ine) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V TV))
+(NEGATE 0 (Nom) LINK *1 (N Ine) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V Sg3))
+(NEGATE 0 (Nom) LINK -1 ("liehket" Sg3))
+(NEGATE *1 (Coll Pl Ine) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE 1 Num)
+(NEGATE 1 COMMA OR CLB) ;
+
+COPY:msyn-dem-noun-ine (Sg Gen SUGGEST) EXCEPT (Sg Nom) OR (Sg Acc) OR (Sg Ill) OR (Sg Ela) OR (Sg Par) OR (Sg Com)  OR (Sg Ela Attr) OR (Pl Nom) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-ine) IF (*1 (N Sg Ine) BARRIER NOT-NPMOD-WITHOUT-NUM);
+
+COPY:msyn-dem-noun-ine (Pl Ine SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) OR (Sg Ill) OR (Sg Ela) OR (Sg Par)  OR (Sg Com) OR (Sg Ela Attr) OR (Pl Gen) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-ine) IF (*1 (N Pl Ine) BARRIER NOT-NPMOD-WITHOUT-NUM);
+
+
+	#Ela
+ADD:xmsyn-dem-noun-ela (&msyn-dem-noun-ela) TARGET Dem IF (*1 (N Ela) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE 0 Par LINK *1 (N Sg Ela) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE 0 (Sg Ela Attr) LINK *1 (N Sg Ela) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE 0 (Pl Ela) LINK *1 (N Pl Ela) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE 0 Foc/Neg-k) 
+(NEGATE 0 ("<.*[r]>"r Dem))
+(NEGATE 0 ("då" Pcle) LINK -1 ImprtII OR Imprt)
+(NEGATE 0 Gen LINK 1 (Gen))
+(NEGATE 0 (Sg Nom) LINK *1 (N Sg Ela) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V Sg3))
+(NEGATE 0 (Pl Nom) LINK *1 (N Sg Ela) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V Pl3))
+(NEGATE 0 (Acc) LINK *1 (N Ela) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V TV))
+(NEGATE 0 (Acc) LINK *1 (N Ela) BARRIER NOT-NPMOD-WITHOUT-NUM LINK -2 (V TV))
+(NEGATE 0 (Nom) LINK *1 (N Ela) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V Sg3))
+(NEGATE 0 (Nom) LINK -1 ("liehket" Sg3))
+(NEGATE *1 ("miella" N Sg Ela) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE 1 Num)
+(NEGATE 1 COMMA OR CLB) ;
+
+COPY:msyn-dem-noun-ela (Sg Par SUGGEST) EXCEPT (Sg Nom) OR (Sg Acc) OR (Sg Ill) OR (Sg Com) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Nom) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-ela) IF (*1 (N Sg Ela) BARRIER NOT-NPMOD-WITHOUT-NUM);
+
+COPY:msyn-dem-noun-ine (Pl Ela SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) OR (Sg Ill) OR (Sg Ela) OR (Sg Par)  OR (Sg Com) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Gen) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-ela) IF (*1 (N Pl Ela) BARRIER NOT-NPMOD-WITHOUT-NUM);
    # lexical errors
 
    # Wrong use of oahpástuvvat with things and oahpásmuvvat with living creatures + case
