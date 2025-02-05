@@ -9,7 +9,7 @@ if WANT_GRAMCHECK
 # List here (space separated) all yaml files to be run as part of make check:
 TESTS=\
 	DEV-msyn-congr-dem-noun-FAIL.yaml			  \
-	DEV-msyn-congr-dem-noun-PASS.yaml			  \
+	DEV-msyn-congr-dem-noun-PASS.yaml.            \
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
 	DEV-msyn-congr-mij-ma-PASS.yaml               \
 	DEV-msyn-dates-FAIL.yaml				      \
