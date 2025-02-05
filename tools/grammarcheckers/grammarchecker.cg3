@@ -5449,6 +5449,9 @@ ADD:xmsyn-dem-noun-nom (&msyn-dem-noun-nom) TARGET Dem IF (*1 (N Nom) BARRIER NO
 	
 	#$ Guddnedihtit Härráv ednamin, merraielle ja ihkeva tjiegŋalisá, eldagis ja tjuormas, muohta ja murkko, {dån} stoarmmo mij dagá mav gåhttju
 
+ADDRELATION ($2 RIGHT) (Dem &msyn-dem-noun-nom) TO (*1 (N Nom) BARRIER NOT-NPMOD-WITHOUT-NUM) ;
+
+
 COPY:msyn-dem-noun-nom (Sg Nom SUGGEST) EXCEPT (Sg Gen) OR (Sg Acc) OR (Sg Ine) OR (Sg Ill) OR (Sg Ela) OR (Sg Par) OR (Sg Com) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Nom) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-nom) IF (*1 (N Sg Nom) BARRIER NOT-NPMOD-WITHOUT-NUM);
 
 COPY:msyn-dem-noun-nom (Pl Nom SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) OR (Sg Ine) OR (Sg Ill) OR (Sg Ela) OR (Sg Par) OR (Sg Com) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-nom) IF (*1 (N Pl Nom) BARRIER NOT-NPMOD-WITHOUT-NUM);
@@ -5478,6 +5481,7 @@ ADD:xmsyn-dem-noun-gen (&msyn-dem-noun-gen) TARGET Dem IF (*1 (N Gen) BARRIER NO
 
 	#$ Valla suv giehta, la {dánna} bievde nanna aktan mujna.
 	
+ADDRELATION ($2 RIGHT) (Dem &msyn-dem-noun-gen) TO (*1 (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM) ;
 	
 COPY:msyn-dem-noun-gen (Sg Gen SUGGEST) EXCEPT (Sg Nom) OR (Sg Acc) OR (Sg Ine) OR (Sg Ill) OR (Sg Ela) OR (Sg Par) OR (Sg Com)  OR (Sg Ela Attr) OR (Pl Nom) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-gen) IF (*1 (N Sg Gen) BARRIER NOT-NPMOD-WITHOUT-NUM);
 
@@ -5496,6 +5500,8 @@ ADD:xmsyn-dem-noun-acc (&msyn-dem-noun-acc) TARGET Dem IF (*1 (N Acc) BARRIER NO
 (NEGATE 1 COMMA OR CLB) 
 (NEGATE 1 V)
 (NEGATE *1 Px + (N Acc) BARRIER NOT-NPMOD-WITHOUT-NUM) ;
+
+ADDRELATION ($2 RIGHT) (Dem &msyn-dem-noun-acc) TO (*1 (N Acc) BARRIER NOT-NPMOD-WITHOUT-NUM) ;
 
 COPY:msyn-dem-noun-acc (Sg Acc SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Ine) OR (Sg Ill) OR (Sg Ela) OR (Sg Par) OR (Sg Com) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Nom) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-acc) IF (*1 (N Sg Acc) BARRIER NOT-NPMOD-WITHOUT-NUM);
 
@@ -5522,6 +5528,9 @@ ADD:xmsyn-dem-noun-ine (&msyn-dem-noun-ine) TARGET Dem IF (*1 (N Ine) BARRIER NO
 (NEGATE 1 Num)
 (NEGATE 1 COMMA OR CLB) ;
 
+ADDRELATION ($2 RIGHT) (Dem &msyn-dem-noun-ine) TO (*1 (N Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) ;
+
+
 COPY:msyn-dem-noun-ine (Sg Gen SUGGEST) EXCEPT (Sg Nom) OR (Sg Acc) OR (Sg Ill) OR (Sg Ela) OR (Sg Par) OR (Sg Com)  OR (Sg Ela Attr) OR (Pl Nom) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-ine) IF (*1 (N Sg Ine) BARRIER NOT-NPMOD-WITHOUT-NUM);
 
 COPY:msyn-dem-noun-ine (Pl Ine SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) OR (Sg Ill) OR (Sg Ela) OR (Sg Par)  OR (Sg Com) OR (Sg Ela Attr) OR (Pl Gen) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-ine) IF (*1 (N Pl Ine) BARRIER NOT-NPMOD-WITHOUT-NUM);
@@ -5544,6 +5553,9 @@ ADD:xmsyn-dem-noun-ill (&msyn-dem-noun-ill) TARGET Dem IF (*1 (N Ill) BARRIER NO
 (NEGATE 1 V)
 (NEGATE 1 Num)
 (NEGATE 1 COMMA OR CLB) ;
+
+ADDRELATION ($2 RIGHT) (Dem &msyn-dem-noun-ill) TO (*1 (N Ill) BARRIER NOT-NPMOD-WITHOUT-NUM) ;
+
 
 COPY:msyn-dem-noun-ill (Sg Gen SUGGEST) EXCEPT (Sg Nom) OR (Sg Acc) OR (Sg Ill) OR (Sg Com) OR (Sg Par) OR (Sg Ela Attr) OR (Pl Nom) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-ill) IF (*1 (N Sg Ill) BARRIER NOT-NPMOD-WITHOUT-NUM);
 
@@ -5571,6 +5583,9 @@ ADD:xmsyn-dem-noun-ela (&msyn-dem-noun-ela) TARGET Dem IF (*1 (N Ela) BARRIER NO
 (NEGATE 1 Num)
 (NEGATE 1 COMMA OR CLB) ;
 
+ADDRELATION ($2 RIGHT) (Dem &msyn-dem-noun-ela) TO (*1 (N Ela) BARRIER NOT-NPMOD-WITHOUT-NUM) ;
+
+
 COPY:msyn-dem-noun-ela (Sg Par SUGGEST) EXCEPT (Sg Nom) OR (Sg Acc) OR (Sg Ill) OR (Sg Com) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Nom) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-ela) IF (*1 (N Sg Ela) BARRIER NOT-NPMOD-WITHOUT-NUM);
 
 COPY:msyn-dem-noun-ine (Pl Ela SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) OR (Sg Ill) OR (Sg Ela) OR (Sg Par)  OR (Sg Com) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Gen) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-ela) IF (*1 (N Pl Ela) BARRIER NOT-NPMOD-WITHOUT-NUM);
@@ -5592,6 +5607,9 @@ ADD:xmsyn-dem-noun-com (&msyn-dem-noun-com) TARGET Dem IF (*1 (N Com) BARRIER NO
 (NEGATE 1 V)
 (NEGATE 1 Num)
 (NEGATE 1 COMMA OR CLB) ;
+
+ADDRELATION ($2 RIGHT) (Dem &msyn-dem-noun-com) TO (*1 (N Com) BARRIER NOT-NPMOD-WITHOUT-NUM) ;
+
 	
 COPY:msyn-dem-noun-com (Sg Com SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) OR (Sg Ine) OR (Sg Ill) OR (Sg Ela) OR (Sg Par) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Nom) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-com) IF (*1 (N Sg Com) BARRIER NOT-NPMOD-WITHOUT-NUM);
 
