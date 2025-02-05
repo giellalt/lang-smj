@@ -8,6 +8,8 @@ if WANT_GRAMCHECK
 
 # List here (space separated) all yaml files to be run as part of make check:
 TESTS=\
+	DEV-msyn-congr-dem-noun-FAIL.yaml			  \
+	DEV-msyn-congr-dem-noun-PASS.yaml			  \
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
 	DEV-msyn-congr-mij-ma-PASS.yaml               \
 	DEV-msyn-dates-FAIL.yaml				      \
@@ -20,12 +22,14 @@ TESTS=\
 	DEV-msyn-moadda-bale-PASS.yaml                \
 	DEV-msyn-nom-gen-PP-FAIL.yaml                 \
 	DEV-msyn-nom-gen-PP-PASS.yaml                 \
+	DEV-msyn-nom-nom-gen-FAIL.yaml                \
 	DEV-msyn-nom-nom-gen-PASS.yaml                \
 	DEV-msyn-numphrase-FAIL.yaml                  \
     DEV-msyn-numphrase-PASS.yaml                  \
 	DEV-msyn-sme_interference_neg-FAIL.yaml       \
 	DEV-msyn-sme_interference_neg-PASS.yaml       \
 	DEV-msyn-rájes-FAIL.yaml                      \
+	DEV-msyn-rájes-PASS.yaml                      \
     DEV-punct-nom-nom-comma-FAIL.yaml             \
 	DEV-real-NegSg2-NegSg3-FAIL.yaml              \
 	DEV-real-NegSg2-NegSg3-PASS.yaml              \
@@ -37,7 +41,9 @@ TESTS=\
 	DEV-real-PrtSg3-PrsPl3-PASS.yaml              \
 	DEV-real-habbmim-PASS.yaml                    \
     DEV-syn-akta-FAIL.yaml                        \
+    DEV-syn-akta-PASS.yaml                        \
     DEV-syn-missing-gus-FAIL.yaml                 \
+    DEV-syn-missing-gus-PASS.yaml                 \
     DEV-syn-missing-copula-FAIL.yaml              \
     DEV-syn-missing-copula-PASS.yaml              \
 	DEV-syn-number_congruence-subj-verb-FAIL.yaml \
@@ -112,6 +118,7 @@ TESTS=\
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not cDEV-msyn-gut-mij-gut-FAIL.yamlritical at the moment:
 XFAIL_TESTS=\
+	DEV-msyn-congr-dem-noun-FAIL.yaml			  \
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
 	DEV-msyn-dates-FAIL.yaml					  \
 	DEV-msyn-dimin-after-unna-FAIL.yaml           \
