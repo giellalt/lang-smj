@@ -4557,12 +4557,21 @@ ADDRELATION ($4 RIGHT) (N &msyn-numphrase-sgacc) OR NUMUNIT + &msyn-numphrase-sg
 	# relation from noun to the numeral/moadda
 ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgacc) OR NUMUNIT + &msyn-numphrase-sgacc TO (*-1 (Num &msyn-numphrase-sgacc) OR ("moadda" Indef &msyn-numphrase-sgacc) BARRIER (N &msyn-numphrase-sgacc)); 
 
+# correct numerals that get associated with wrong nouns (to get a longer blue line)
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgacc) OR NUMUNIT + &msyn-numphrase-sgacc TO (*-1 (Num Sg Nom) - &msyn-numphrase-sgacc - Sem/Date OR (Num v2 Sg Acc) - &msyn-numphrase-sgacc - Sem/Date OR ("moadda" Indef Sg Acc) - &msyn-numphrase-sgacc - Sem/Date);
+
+# correct nouns that get associated with wrong numerals (to get a longer blue line)
+ADDRELATION ($2 RIGHT) (Num &msyn-numphrase-sgacc) OR ("moadda" Indef &msyn-numphrase-sgacc) TO (*1 (N Sg Gen) - &msyn-numphrase-sgacc OR (N Pl Nom) - &msyn-numphrase-sgacc OR NUMUNIT + (N Sg Gen) - &msyn-numphrase-sgacc OR NUMUNIT + (N Pl Nom) - &msyn-numphrase-sgacc);
+
+
 
 COPY:msyn-numphrase-sgacc (Sg Acc SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sgacc) OR (Sg Gen &msyn-numphrase-sgacc) TARGET ("akta" Num &msyn-numphrase-sgacc) OR ("1" Num &msyn-numphrase-sgacc);
 
 COPY:msyn-numphrase-sgacc (Sg Nom SUGGEST) EXCEPT (Sg Acc &msyn-numphrase-sgacc) OR (Sg Gen &msyn-numphrase-sgacc)  TARGET (Num &msyn-numphrase-sgacc) + ("<.*v>"r) IF (*1 (N Pl Acc) + &msyn-numphrase-sgacc BARRIER (*) - PRE-NP-HEAD LINK NOT 0 (N Coll Nom)) ;
 
 COPY:msyn-numphrase-sgacc (Sg Nom SUGGEST) EXCEPT (Pl Acc &msyn-numphrase-sgacc) OR (Sg Gen &msyn-numphrase-sgacc) TARGET (Num &msyn-numphrase-sgacc) IF (*1 (N Pl Acc) +  &msyn-numphrase-sgacc BARRIER (*) - PRE-NP-HEAD LINK NOT 0 (N Coll Nom)) ;
+
+
 
 
 # Dem
@@ -4584,6 +4593,16 @@ ADD:msyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pron Dem Pl) - Nom IF (
 
 
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgacc) OR NUMUNIT + &msyn-numphrase-sgacc TO (*-1 (Dem &msyn-numphrase-sgacc));
+
+# correct demonstratives that get associated with wrong numerals (to get a longer blue line)
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgacc) OR NUMUNIT + &msyn-numphrase-sgacc TO (*-1 (Dem Pl Nom) - &msyn-numphrase-sgacc);
+	
+# correct demonstratives that get associated with wrong numerals (and in an earlier rule with correct nouns) (to get a longer blue line)
+ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sgacc) OR ("moadda" Indef &msyn-numphrase-sgacc) TO (-1 (Dem Pl Nom) - &msyn-numphrase-sgacc);
+
+# correct nouns that get associated with wrong demonstratives (to get a longer blue line)
+ADDRELATION ($3 RIGHT) (Dem &msyn-numphrase-sgacc) TO (*1 (N Sg Gen) - &msyn-numphrase-sgacc OR (N Pl Nom) - &msyn-numphrase-sgacc OR NUMUNIT + (Sg Gen) - &msyn-numphrase-sgacc OR NUMUNIT + (Pl Nom) - &msyn-numphrase-sgacc);
+
 
 	
 COPY:msyn-numphrase-sgacc (Pl Nom SUGGEST) EXCEPT (Pl Acc Attr &msyn-numphrase-sgacc) OR (Pl Acc &msyn-numphrase-sgacc) OR (Pl Gen &msyn-numphrase-sgacc) OR (Pl Nom &msyn-numphrase-sgacc) TARGET (Dem &msyn-numphrase-sgacc) IF (*1 (Num Sg) OR (Num &msyn-numphrase-sgacc) BARRIER (*) - ("maŋemus") - ("maŋep" Der/Superl <AttrPred>) - ("maŋŋe" Der/Superl <AttrPred>) LINK *1 (Pl Nom) OR (Sg Gen) BARRIER NOT-NPMOD - Num OR (Gen SUGGEST)) ;
