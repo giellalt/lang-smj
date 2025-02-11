@@ -5741,7 +5741,8 @@ COPY:msyn-reksjon-acc-ill (Ill SUGGEST) EXCEPT (Acc &msyn-reksjon-acc-ill) TARGE
 ADD:xmsyn-dem-noun-nom (&msyn-dem-noun-nom) TARGET Dem IF (*1 (N Nom) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE 0 (Sg Nom) OR (Dem Sg Ela Attr) LINK *1 (N Sg Nom) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE 0 (Pl Nom) LINK *1 (N Pl Nom) OR (N Sg Gen) BARRIER NOT-NPMOD-WITHOUT-NUM) 
-(NEGATE 0 (Pl Nom) LINK 1 (Actio Nom) LINK *1 (N Pl Nom) OR (N Sg Gen) BARRIER NOT-Attr) 
+(NEGATE 0 (Pl Nom) LINK 1 (Actio Nom) LINK *1 (N Pl Nom) OR (N Sg Gen) BARRIER NOT-Attr)
+(NEGATE 0 (Dem Acc) LINK 1 (N Gen) LINK 1 (N Acc)) #$ dáv gámá birrasav
 (NEGATE 0 Ess)
 (NEGATE 0 Foc/Neg-k)
 (NEGATE 0 (Dem Sg Ine) LINK NOT 0 Attr) #danna, not likely L1 error since this form never is attr
@@ -5823,7 +5824,7 @@ ADD:xmsyn-dem-noun-acc (&msyn-dem-noun-acc) TARGET Dem IF (*1 (N Acc) BARRIER NO
 (NEGATE 0 (Dem Sg Ine) LINK NOT 0 Attr) #danna, not likely L1 error since this form never is attr
 (NEGATE 0 (Dem Sg Ela) LINK NOT 0 Attr) #dassta, not likely L1 error since this form never is attr
 (NEGATE 0 (Dem Sg Ill) LINK NOT 0 Attr) #dasi, not likely L1 error since this form never is attr
-(NEGATE 0 (Dem Sg Gen) OR (Dem Pl Gen) LINK *1 (N Acc) BARRIER NOT-NPMOD-WITHOUT-NUM) # ja dan árvov duodastit
+(NEGATE 0 (Dem Gen) LINK *1 (N Acc) BARRIER NOT-NPMOD-WITHOUT-NUM) # ja dan árvov duodastit
 (NEGATE 0 Ess)
 (NEGATE 0 Foc/Neg-k) 
 (NEGATE 0 (".*[r]"r Dem) OR (".*[sj]"r Dem))
@@ -5886,6 +5887,7 @@ ADD:xmsyn-dem-noun-ill (&msyn-dem-noun-ill) TARGET Dem IF (*1 (N Ill) BARRIER NO
 (NEGATE 0 (Sg Ine Attr) OR (Sg Ill Attr) LINK *1 (N Sg Ill) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE 0 (Pl Ill) LINK *1 (N Pl Ill) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE 0 (Pl Com) LINK *1 (N Sg Ill) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 0 (N Pl Com))
+(NEGATE 0 Dem Gen) LINK *1 (N Ill) BARRIER NOT-NPMOD-WITHOUT-NUM) #$  de sån tjanáj gåbdutbáttev daj gähtjáj
 (NEGATE 0 (Dem Sg Ine) LINK NOT 0 Attr) #danna, not likely L1 error since this form never is attr
 (NEGATE 0 (Dem Sg Ela) LINK NOT 0 Attr) #dassta, not likely L1 error since this form never is attr
 (NEGATE 0 (Dem Sg Ill) LINK NOT 0 Attr) #dasi, not likely L1 error since this form never is attr
