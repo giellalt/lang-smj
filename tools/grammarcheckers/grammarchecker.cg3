@@ -4271,9 +4271,20 @@ ADD:msyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num v2 
 (NEGATE 1 Attr OR (N Sg Gen) LINK 1 CC LINK 1 (Num Acc) LINK *1 (N Acc) BARRIER NOT-NPMOD)
 (NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
 	## Ienemusoasse væddjáji guhtta jali gietjav biejve birán.
+	
+#	# correct numerals (just to get the blue line)	
+# ADD:msyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num v2 Sg Acc) OR (Num Pl Com) OR (Num Pl Gen) OR ("moadda" Indef Acc) IF (*1 (N Pl Nom) + &msyn-numphrase-sggen OR (N Pl Gen) + &msyn-numphrase-sggen BARRIER NOT-Attr - PrfPrc)
 
 
 ADDRELATION ($2 LEFT) (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen TO (*-1 (Num &msyn-numphrase-sggen) OR ("moadda" Indef &msyn-numphrase-sggen));
+
+# correct numerals that get associated with wrong nouns (to get a longer blue line)
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen TO (*-1 (Num Sg Gen) - &msyn-numphrase-sggen - Sem/Date OR ("moadda" Indef Sg Gen) - &msyn-numphrase-sggen - Sem/Date);
+	## mån vuojnáv guokta bednaga guovte {bievdij} duogen.
+
+# correct nouns that get associated with wrong numerals (to get a longer blue line)
+ADDRELATION ($2 RIGHT) (Num &msyn-numphrase-sggen) OR ("moadda" Indef &msyn-numphrase-sggen) TO (*1 (N Sg Gen) - &msyn-numphrase-sggen OR NUMUNIT + (N Sg Gen) - &msyn-numphrase-sggen);
+	## mån vuojnáv guokta bednaga {guokta} bievde duogen. 
 
 
 COPY:msyn-numphrase-sggen (Sg Gen SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sggen) OR (v2 Sg Nom &msyn-numphrase-sggen) OR (v2 Sg Acc &msyn-numphrase-sggen) OR (Pl Gen &msyn-numphrase-sggen) OR (Pl Com &msyn-numphrase-sggen) TARGET (Num &msyn-numphrase-sggen) IF (0 (Sg Nom) OR (Sg Acc) OR (Pl Com) OR (Pl Gen)) ;
@@ -4313,6 +4324,19 @@ ADD:msyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Pron Dem Pl) IF (1 (Num
 COPY:msyn-numphrase-sggen (Sg Gen SUGGEST) EXCEPT (Pl Gen &msyn-numphrase-sggen) OR (Pl Com &msyn-numphrase-sggen) OR (Pl Ine Attr &msyn-numphrase-sggen) OR (Pl Nom &msyn-numphrase-sggen) TARGET (Dem &msyn-numphrase-sggen) ;
 
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen TO (*-1 (Dem &msyn-numphrase-sggen));
+
+# correct demonstratives that get associated with wrong numerals (to get a longer blue line)
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen TO (*-1 (Dem Sg Gen) - &msyn-numphrase-sggen);
+	## mån vuojnáv guokta bednaga dan guovte bievdij duogen
+	
+# correct demonstratives that get associated with wrong numerals (and in an earlier rule with correct nouns) (to get a longer blue line)
+ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sggen) OR ("moadda" Indef &msyn-numphrase-sggen) TO (-1 (Dem Sg Gen) - &msyn-numphrase-sggen);
+	## mån vuojnáv guokta bednaga dan guokta bievde duogen
+
+# correct nouns that get associated with wrong demonstratives (to get a longer blue line)
+ADDRELATION ($3 RIGHT) (Dem &msyn-numphrase-sggen) TO (*1 (N Sg Gen) - &msyn-numphrase-sggen OR NUMUNIT + (Sg Gen) - &msyn-numphrase-sggen);
+	## mån vuojnáv guokta bednaga da guovte bievde duogen
+
 
 SUBSTITUTE (&msyn-numphrase-sggen) (co&msyn-numphrase-sggen) TARGET (SUGGEST);
 
