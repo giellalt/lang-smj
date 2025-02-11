@@ -4325,7 +4325,7 @@ COPY:msyn-numphrase-sggen (Sg Gen SUGGEST) EXCEPT (Pl Gen &msyn-numphrase-sggen)
 
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen TO (*-1 (Dem &msyn-numphrase-sggen));
 
-# correct demonstratives that get associated with wrong numerals (to get a longer blue line)
+# correct demonstratives that get associated with wrong noun (to get a longer blue line)
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen TO (*-1 (Dem Sg Gen) - &msyn-numphrase-sggen);
 	## mån vuojnáv guokta bednaga dan guovte bievdij duogen
 	
@@ -4990,6 +4990,13 @@ ADD:msyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Pron Dem Pl) - (Sg Nom)
 
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela TO (*-1 (Dem &msyn-numphrase-sgela));
 
+# correct demonstratives that get associated with wrong noun (to get a longer blue line)
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela TO (*-1 (Dem Sg Par) - &msyn-numphrase-sgela);
+
+	
+	# correct demonstratives that get associated with wrong numerals (and in an earlier rule with correct nouns) (to get a longer blue line)
+ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sgela) OR ("moadda" Indef &msyn-numphrase-sgela) TO (-1 (Dem Sg Par) - &msyn-numphrase-sgela);
+
 
 COPY:msyn-numphrase-sgela (Sg Ela Attr SUGGEST) EXCEPT (Pl Com Attr &msyn-numphrase-sgela) OR (Pl Gen Attr &msyn-numphrase-sgela) OR (Pl Com &msyn-numphrase-sgela) OR (Pl Gen &msyn-numphrase-sgela) OR (Pl Ela Attr &msyn-numphrase-sgela) OR (Pl Ela &msyn-numphrase-sgela) OR (Pl Nom &msyn-numphrase-sgela) TARGET (Dem &msyn-numphrase-sgela) IF (*2 (N Sg Ela) OR NUMUNIT + (Sg Ela) BARRIER NOT-Attr)  ;
     ## Divtasvuona suohkan ásadij fåndav mij rudájt oadtju daj guokta luossabiebbmamvidnudagájs.
@@ -5178,6 +5185,13 @@ ADD:msyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Pron Dem Pl) IF (*1 (Nu
 
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgine) OR NUMUNIT + &msyn-numphrase-sgine TO (*-1 (Dem &msyn-numphrase-sgine));
 
+# correct demonstratives that get associated with wrong noun (to get a longer blue line)
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgine) OR NUMUNIT + &msyn-numphrase-sgine TO (*-1 (Dem Sg Ine) - &msyn-numphrase-sgine);
+	## mån vuojnáv guokta bednaga dan guovte bievdij duogen
+	
+	# correct demonstratives that get associated with wrong numerals (and in an earlier rule with correct nouns) (to get a longer blue line)
+ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sgine) OR ("moadda" Indef &msyn-numphrase-sgine) TO (-1 (Dem Sg Ine) - &msyn-numphrase-sgine);
+	## mån vuojnáv guokta bednaga dan guokta bievde duogen
 
 COPY:msyn-numphrase-sgine (Sg Ine Attr SUGGEST) EXCEPT (Pl Com) OR (Pl Gen Attr) OR (Pl Com) OR (Pl Gen) OR (Pl Nom) OR (Pl Ine) OR (Pl Ine Attr) OR (Pl Ela) TARGET (Dem &msyn-numphrase-sgine) ;
 
@@ -5404,6 +5418,14 @@ LINK *1 (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom OR (N Sg Co
 (NEGATE 1 (Num Sg Ine) - SUGGEST LINK NOT 0 &msyn-numphrase-sgcom OR Arab) ;
 
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Dem &msyn-numphrase-sgcom)) ;
+
+# correct demonstratives that get associated with wrong noun (to get a longer blue line)
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Dem Sg Com) - &msyn-numphrase-sgcom);
+	## mån vuojnáv guokta bednaga dan guovte bievdij duogen
+	
+	# correct demonstratives that get associated with wrong numerals (and in an earlier rule with correct nouns) (to get a longer blue line)
+ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom) TO (-1 (Dem Sg Com) - &msyn-numphrase-sgcom);
+	## mån vuojnáv guokta bednaga dan guokta bievde duogen
 
 
 COPY:msyn-numphrase-sgcom (Sg Com SUGGEST) EXCEPT (Pl Com Attr) OR (Pl Com) OR (Pl Gen Attr) OR (Pl Gen) OR (Pl Nom) OR (Pl Ine) OR (Pl Ine Attr) OR (Pl Ela) TARGET (Dem &msyn-numphrase-sgcom) IF (*2 (N Sg Com) OR (N Pl Ine) OR (N &msyn-numphrase-sgcom) BARRIER NOT-NPMOD LINK NOT 0 PL-PAIR-N) ;
