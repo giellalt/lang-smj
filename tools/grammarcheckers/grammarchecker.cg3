@@ -3985,13 +3985,13 @@ COPY:msyn-dates-from-arab-num-to-ord (A Arab Ord Attr SUGGEST) EXCEPT (Num Arab 
 
 # millijåvnnå
 
-ADD:msyn-numphrase-nom (&msyn-numphrase-nom) TARGET NUMUNIT + (Sg Nom) IF (-1 Num) (1 (N Sg Gen) OR (N Pl Nom)) 
+ADD:msyn-numphrase-nom (&msyn-numphrase-sgnom) TARGET NUMUNIT + (Sg Nom) IF (-1 Num) (1 (N Sg Gen) OR (N Pl Nom)) 
 (NEGATE -1 ("akta")) 
 (NEGATE 0 ABBR) ;
 
 # Noun
 
-ADD:msyn-numphrase-nom (&msyn-numphrase-nom) TARGET (N Sg Nom) IF (*-1 (Num Sg Nom) BARRIER NOT-Attr - PrfPrc) 
+ADD:msyn-numphrase-nom (&msyn-numphrase-sgnom) TARGET (N Sg Nom) IF (*-1 (Num Sg Nom) BARRIER NOT-Attr - PrfPrc) 
 (NEGATE -2 &msyn-dates-month-from-nom-to-gen)	
 (NEGATE *-1 ("akta") OR ("1"))
 (NEGATE *-1 (Num Sem/Year))
@@ -4026,7 +4026,58 @@ ADD:msyn-numphrase-nom (&msyn-numphrase-nom) TARGET (N Sg Nom) IF (*-1 (Num Sg N
 
     ##Ja dunji le dárbbo – danen gå dat le muv garra miella vaj tuvsán {tjalmme} dahki mijáv tuvsán gärddáj gievrabu
 
-COPY:msyn-numphrase-nom (Sg Gen SUGGEST) EXCEPT (Sg Nom) TARGET (&msyn-numphrase-nom) ;
+COPY:msyn-numphrase-nom (Sg Gen SUGGEST) EXCEPT (Sg Nom) TARGET (&msyn-numphrase-sgnom) ;
+
+# Num
+
+ADD:msyn-numphrase-nom (&msyn-numphrase-sgnom) TARGET ("akta" Sg Nom) OR ("1" Sg Nom) IF (*1 (N Sg Nom) + &msyn-numphrase-sgnom BARRIER NOT-Attr - PrfPrc) 
+(NEGATE 0 ("<.*%>"r)) 
+(NEGATE 0 (Num "<[0123456789]-.*>"r))
+(NEGATE 0 (Num "<biel.*>"r))
+(NEGATE 0 Sem/Date OR (N Coll Nom) OR Sem/Year) 
+(NEGATE 0 (Arab Nom) LINK 1 ("<[A-Z].*>"r) OR ("<Å.*>"r) OR ("<Æ.*>"r) OR ("<Ø.*>"r))
+(NEGATE 0 (Num Rom)) 
+(NEGATE 1 Prop)
+(NEGATE 1 Num LINK NOT 0 NUMUNIT)
+(NEGATE 1 Dem) 
+(NEGATE 1 COMMA) 
+(NEGATE 1 (PUNCT RIGHT))
+(NEGATE 1 ("ja"))
+(NEGATE 1 ("låhko"))
+(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
+
+
+# coordinated adjectives
+# to the right
+ADD:msyn-numphrase-nom (&msyn-numphrase-sgnom) TARGET ("akta" Sg Nom) OR ("1" Sg Nom) IF (*1 PRE-NP-HEAD BARRIER NOT-ADV LINK 1 CC LINK 1 PRE-NP-HEAD LINK *1 (N Sg Nom) + &msyn-numphrase-sgnom BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) OR PL-PAIR-N) 
+(NEGATE -1 ("nr"))
+(NEGATE -1 (Dem Acc))
+(NEGATE 0 NUMUNIT LINK -1 Num OR ("moadda")) 
+(NEGATE 0 (N Coll Nom) OR Sem/Year OR Sem/Date OR Sem/Time-clock) 
+(NEGATE 0 ONE + (Sg Gen) LINK 1 ("vuoras")) 
+(NEGATE 0 (Num "<biel.*>"r))
+(NEGATE 0 (Num "<[0123456789]-.*>"r))
+(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
+	## 
+
+
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgnom) OR NUMUNIT + &msyn-numphrase-sgnom TO (*-1 (Num &msyn-numphrase-sgnom));
+
+
+COPY:msyn-numphrase-nom (SUGGEST) EXCEPT (&msyn-numphrase-sgnom) TARGET (Num &msyn-numphrase-sgnom) IF (0 (Sg Nom)) ;
+
+
+# Dem
+
+ADD:msyn-numphrase-sgnom (&msyn-numphrase-sgnom) TARGET (Pron Dem Pl) IF (*1 (Num Sg) OR (Nom SUGGEST) OR (A Arab) BARRIER (*) - ("maŋemus") - ("maŋep" Der/Superl <AttrPred>) - ("maŋŋe" Der/Superl <AttrPred>) LINK *1 (N &msyn-numphrase-sgnom) OR NUMUNIT + &msyn-numphrase-sgnom BARRIER NOT-NPMOD - CC) 
+(NEGATE 1 (Pron Dem)) ;
+
+
+COPY:msyn-numphrase-nom (SUGGEST) EXCEPT (&msyn-numphrase-sgnom) TARGET (Dem &msyn-numphrase-sgnom) ;
+
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgnom) OR NUMUNIT + &msyn-numphrase-sgnom TO (*-1 (Dem &msyn-numphrase-sgnom));
+
+SUBSTITUTE (&msyn-numphrase-sgnom) (co&msyn-numphrase-sgnom) TARGET (SUGGEST);
 
 
     # Genitive numeral phrases
