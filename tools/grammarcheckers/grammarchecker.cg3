@@ -5166,6 +5166,14 @@ ADDRELATION ($4 RIGHT) (N &msyn-numphrase-sgine) OR NUMUNIT + &msyn-numphrase-sg
 
 	# relation from noun to the numeral/moadda
 ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgine) OR NUMUNIT + &msyn-numphrase-sgine TO (*-1 (Num &msyn-numphrase-sgine) OR ("moadda" Indef &msyn-numphrase-sgine) BARRIER (N &msyn-numphrase-sgine)); 
+	
+# correct numerals that get associated with wrong nouns (to get a longer blue line)
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgine) OR NUMUNIT + &msyn-numphrase-sgine TO (*-1 (Num Sg Ine) - &msyn-numphrase-sgine - Sem/Date OR (Num Sg Ine Atrr) - &msyn-numphrase-sgine - Sem/Date OR ("moadda" Indef Sg Ine Attr) - &msyn-numphrase-sgine - Sem/Date OR ("moadda" Indef Sg Ine) - &msyn-numphrase-sgine - Sem/Date);
+
+# correct nouns that get associated with wrong numerals (to get a longer blue line)
+ADDRELATION ($2 RIGHT) (Num &msyn-numphrase-sgine) OR ("moadda" Indef &msyn-numphrase-sgine) TO (*1 (N Sg Ine) - &msyn-numphrase-sgine OR NUMUNIT + (N Sg Ine) - &msyn-numphrase-sgine);
+
+
 
 
 
