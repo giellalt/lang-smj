@@ -4757,14 +4757,6 @@ ADD:msyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Pl Ill) IF (*-1 COMMA O
 
 COPY:msyn-numphrase-sgill (Sg SUGGEST) EXCEPT (Pl &msyn-numphrase-sgill) BEFORE CASE TARGET (Ill &msyn-numphrase-sgill) IF (0 N OR NUMUNIT)   ;
 
-ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgill) OR NUMUNIT + &msyn-numphrase-sgill TO (*-1 CC OR COMMA LINK *-1 (Num &msyn-numphrase-sgill) OR ("moadda" Indef &msyn-numphrase-sgill)); 
-
-# correct numerals that get associated with wrong nouns (to get a longer blue line)
-ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgill) OR NUMUNIT + &msyn-numphrase-sgill TO (*-1 (Num Sg Gen) - &msyn-numphrase-sgill - Sem/Date OR (Num Sg Ill Attr) - &msyn-numphrase-sgill - Sem/Date OR ("moadda" Indef Sg Ill Attr) - &msyn-numphrase-sgill - Sem/Date OR ("moadda" Indef Sg Gen) - &msyn-numphrase-sgill - Sem/Date);
-
-# correct nouns that get associated with wrong numerals (to get a longer blue line)
-ADDRELATION ($2 RIGHT) (Num &msyn-numphrase-sgill) OR ("moadda" Indef &msyn-numphrase-sgill) TO (*1 (N Sg Ill) - &msyn-numphrase-sgill OR NUMUNIT + (N Sg Ill) - &msyn-numphrase-sgill);
-
 # Num
 
 ADD:msyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Num Sg Nom) OR (Num Sg Gen) OR (Num Sg Ill) OR (Num v2 Sg Acc) OR ("moadda" Indef Acc) IF (*1 (N Pl) + &msyn-numphrase-sgill OR (N Sg Ill) OR (A Sg Ill) OR NUMUNIT + &msyn-numphrase-sgill BARRIER NOT-Attr - PrfPrc - (Dem Attr) - CC LINK NOT 0 (N Pl Nom) OR (N Coll Nom) OR Acc LINK NEGATE *1 Der/Pass + Pl3 BARRIER NOT-Attr - PrfPrc - Adv - Pcle - Ine - Ela - Ill - Acc) 
@@ -4801,9 +4793,24 @@ ADD:msyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Num Sg Nom) OR (Num Sg 
 
 ADD:num-phrase  (co&msyn-numphrase-sgill)  TARGET (Num &msyn-numphrase-sgill) IF (*1 (&msyn-numphrase-sgill) BARRIER NOT-Attr - PrfPrc);
 
-ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgill) OR NUMUNIT + &msyn-numphrase-sgill TO (*-1 COMMA OR CC BARRIER NOT-Attr - PrfPrc LINK -1 N + &msyn-numphrase-sgill OR N + (co&msyn-numphrase-sgill) LINK *-1 (Num &msyn-numphrase-sgill) OR ("moadda" Indef &msyn-numphrase-sgill) BARRIER NOT-Attr - PrfPrc - CC - &msyn-numphrase-sgill - (co&msyn-numphrase-sgill)) ;
 
 ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgill) OR NUMUNIT + &msyn-numphrase-sgill TO (*-1 (Num &msyn-numphrase-sgill) OR ("moadda" Indef &msyn-numphrase-sgill)); 
+
+
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgill) OR NUMUNIT + &msyn-numphrase-sgill TO (*-1 CC OR COMMA LINK *-1 (Num &msyn-numphrase-sgill) OR ("moadda" Indef &msyn-numphrase-sgill)); 
+
+
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgill) OR NUMUNIT + &msyn-numphrase-sgill TO (*-1 COMMA OR CC BARRIER NOT-Attr - PrfPrc LINK -1 N + &msyn-numphrase-sgill OR N + (co&msyn-numphrase-sgill) LINK *-1 (Num &msyn-numphrase-sgill) OR ("moadda" Indef &msyn-numphrase-sgill) BARRIER NOT-Attr - PrfPrc - CC - &msyn-numphrase-sgill - (co&msyn-numphrase-sgill)) ;
+
+
+
+# correct numerals that get associated with wrong nouns (to get a longer blue line)
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgill) OR NUMUNIT + &msyn-numphrase-sgill TO (*-1 (Num Sg Gen) - &msyn-numphrase-sgill - Sem/Date OR (Num Sg Ill Attr) - &msyn-numphrase-sgill - Sem/Date OR ("moadda" Indef Sg Ill Attr) - &msyn-numphrase-sgill - Sem/Date OR ("moadda" Indef Sg Gen) - &msyn-numphrase-sgill - Sem/Date);
+
+# correct nouns that get associated with wrong numerals (to get a longer blue line)
+ADDRELATION ($2 RIGHT) (Num &msyn-numphrase-sgill) OR ("moadda" Indef &msyn-numphrase-sgill) TO (*1 (N Sg Ill) - &msyn-numphrase-sgill OR NUMUNIT + (N Sg Ill) - &msyn-numphrase-sgill);
+
+
 
 
 COPY:msyn-numphrase-sgill (Sg Gen SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sgill) OR (v2 Sg Nom &msyn-numphrase-sgill) OR (v2 Sg Acc &msyn-numphrase-sgill) OR (Sg Gen &msyn-numphrase-sgill) OR (Pl Com &msyn-numphrase-sgill) OR (Pl Gen &msyn-numphrase-sgill) OR (Sg Ill &msyn-numphrase-sgill)  TARGET (Num &msyn-numphrase-sgill) IF (NEGATE *1 (N Sg Com) OR NUMUNIT + (Num Pl Com) OR NUMUNIT + (Num Sg Com) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) LINK NEGATE 0 (Pl Gen) LINK 1 N OR Po)  
