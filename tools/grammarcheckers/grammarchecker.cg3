@@ -5407,9 +5407,18 @@ ADDRELATION ($4 RIGHT) (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sg
 ADDRELATION ($4 RIGHT) (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom TO (*1 CC OR COMMA LINK *1 (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom LINK *1 CC OR COMMA LINK *1 (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom);
 
 	# relation from noun to the numeral/moadda
-ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgcom) OR (N &msyn-numphrase-plcom) OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom) LINK -1 CC LINK *-1 (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom));
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom) LINK -1 CC LINK *-1 (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom));
 
-ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgcom) OR (N &msyn-numphrase-plcom) OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom) BARRIER (N &msyn-numphrase-plcom) OR (N &msyn-numphrase-sgcom)); # (NEGATE *1 (N &msyn-numphrase-sgcom)) ;
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom) BARRIER (N &msyn-numphrase-sgcom)); # (NEGATE *1 (N &msyn-numphrase-sgcom)) ;
+
+
+	
+# correct numerals that get associated with wrong nouns (to get a longer blue line)
+ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Num Sg Com) - &msyn-numphrase-sgcom - Sem/Date OR ("moadda" Indef Sg Com) - &msyn-numphrase-sgine - Sem/Date);
+
+# correct nouns that get associated with wrong numerals (to get a longer blue line)
+ADDRELATION ($2 RIGHT) (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom) TO (*1 (N Sg Com) - &msyn-numphrase-sgcom OR NUMUNIT + (Sg Com) - &msyn-numphrase-sgcom);
+
 
 
 
