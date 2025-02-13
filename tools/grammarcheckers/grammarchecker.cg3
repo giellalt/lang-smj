@@ -6023,6 +6023,13 @@ ADD:xmsyn-dem-noun-nom (&msyn-dem-noun-nom) TARGET Dem IF (*1 (N Nom) BARRIER NO
 (NEGATE 0 (Pl Nom) LINK *1 (N Pl Nom) OR (N Sg Gen) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE 0 (Pl Nom) LINK 1 (Actio Nom) LINK *1 (N Pl Nom) OR (N Sg Gen) BARRIER NOT-Attr)
 (NEGATE 0 (Dem Acc) LINK 1 (N Gen) LINK 1 (N Acc)) #$ dáv gámá birrasav
+(NEGATE 0 (Dem Acc) LINK 1 (N Nom) LINK 1 (TV)) #$ dav Jubmel gárvedij
+(NEGATE 0 (Sg Nom) LINK 1 (N Gen) LINK 1 (N Acc)) #dat julevsámegiela dilev vájkkut
+(NEGATE 0 (Dem Gen) LINK 1 (N Nom))
+(NEGATE 0 (Dem Sg Com) LINK 1 (N Gen) LINK 1 (N Sg Com))
+(NEGATE 0 (Dem Pl Com) LINK 1 (N Gen) LINK 1 (N Pl Com))
+(NEGATE 0 (Dem Sg Par) LINK 1 (N Gen) LINK 1 (N Sg Ela))
+(NEGATE 0 (Dem Pl Ela) LINK 1 (N Gen) LINK 1 (N Pl Ela))
 (NEGATE 0 Ess)
 (NEGATE 0 Foc/Neg-k)
 (NEGATE 0 (Dem Sg Ine) LINK NOT 0 Attr) #danna, not likely L1 error since this form never is attr
@@ -6064,17 +6071,18 @@ ADD:xmsyn-dem-noun-gen (&msyn-dem-noun-gen) TARGET Dem IF (*1 (N Gen) BARRIER NO
 (NEGATE 0 (Pl Gen) LINK *1 (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE 0 (Sg Gen) LINK *1 (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 0 (N Sg Ill)) 
 (NEGATE 0 (Sg Gen) LINK *1 (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK NOT 0 Á-A-E-O-U-I-Å-NOUNS) 
-(NEGATE 0 Ess)
-(NEGATE 0 Foc/Neg-k)
-(NEGATE 0 (Dem Sg Ine) LINK NOT 0 Attr) #danna, not likely L1 error since this form never is attr
-(NEGATE 0 (Dem Sg Ela) LINK NOT 0 Attr) #dassta, not likely L1 error since this form never is attr
-(NEGATE 0 (Dem Sg Ill) LINK NOT 0 Attr) #dasi, not likely L1 error since this form never is attr
-(NEGATE 0  (Sg Ill Attr) OR (Sg Gen Attr) OR (Sg Ine Attr) LINK *1 (N Sg Gen) BARRIER NOT-NPMOD-WITHOUT-NUM)
-(NEGATE 0 (".*[r]"r Dem) OR (".*[sj]"r Dem))
-(NEGATE 0 ("då" Pcle) LINK -1 ImprtII OR Imprt)
+(NEGATE 0 (Sg Ine) LINK NOT 0 Attr) #danna, not likely L1 error since this form never is attr
+(NEGATE 0 (Sg Ela) LINK NOT 0 Attr) #dassta, not likely L1 error since this form never is attr
+(NEGATE 0 (Sg Ill) LINK NOT 0 Attr) #dasi, not likely L1 error since this form never is attr
+(NEGATE 0 (Sg Ill Attr) OR (Sg Gen Attr) OR (Sg Ine Attr) LINK *1 (N Sg Gen) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE 0 (Sg Ine) LINK *1 (N Gen) LINK 1 ("nanna" Po) OR ("lunna" Po) OR ("sinna" Po) OR ("<.*[n]>"r Po))
 (NEGATE 0 (Sg Ela) LINK *1 (N Gen) LINK 1 ("nalta" Po) OR ("lussta" Po) OR ("sissta" Po) OR ("<.*[s]>"r Po))
 (NEGATE 0 (Sg Ill) LINK *1 (N Gen) LINK 1 ("nali" Po) OR ("lusi" Po) OR ("sisi" Po) OR ("<.*[j]>"r Po))
+(NEGATE 0 (".*[r]"r Dem) OR (".*[sj]"r Dem))
+(NEGATE 0 ("då" Pcle) LINK -1 ImprtII OR Imprt)
+(NEGATE 0 Ess)
+(NEGATE 0 Foc/Neg-k)
+(NEGATE 0 (Dem Sg Ill Attr) OR (Sg Gen) LINK NOT 0 Á-A-E-O-U-I-Å-NOUNS + (Pl Gen))
 (NEGATE 1 Num)
 (NEGATE 1 COMMA OR CLB)
 (NEGATE 1 ("mærkka" Pl Gen))
@@ -6101,10 +6109,12 @@ ADD:xmsyn-dem-noun-acc (&msyn-dem-noun-acc) TARGET Dem IF (*1 (N Acc) BARRIER NO
 (NEGATE -1 (V TV Sg3) LINK 1 (Dem Sg Nom) LINK *1 (N Acc) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE 0 (Sg Acc) LINK *1 (N Sg Acc) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE 0 (Pl Acc) LINK *1 (N Pl Acc) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE 0 (Dem Com) LINK *1 (N Acc) LINK 1 TV)
 (NEGATE 0 (Dem Sg Ine) LINK NOT 0 Attr) #danna, not likely L1 error since this form never is attr
 (NEGATE 0 (Dem Sg Ela) LINK NOT 0 Attr) #dassta, not likely L1 error since this form never is attr
 (NEGATE 0 (Dem Sg Ill) LINK NOT 0 Attr) #dasi, not likely L1 error since this form never is attr
 (NEGATE 0 (Dem Gen) LINK *1 (N Acc) BARRIER NOT-NPMOD-WITHOUT-NUM) # ja dan árvov duodastit
+(NEGATE 0 (Sg Gen) LINK 1 (N Pl))
 (NEGATE 0 Ess)
 (NEGATE 0 Foc/Neg-k) 
 (NEGATE 0 (".*[r]"r Dem) OR (".*[sj]"r Dem))
@@ -6136,6 +6146,7 @@ ADD:xmsyn-dem-noun-ine (&msyn-dem-noun-ine) TARGET Dem IF (*1 (N Ine) BARRIER NO
 (NEGATE 0 (Dem Sg Ela) LINK NOT 0 Attr) #dassta, not likely L1 error since this form never is attr
 (NEGATE 0 (Dem Sg Ill) LINK NOT 0 Attr) #dasi, not likely L1 error since this form never is attr
 (NEGATE 0 (Dem Sg Com) LINK *1 (N Pl Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE 0 (Sg Gen) LINK 1 (N Pl))
 (NEGATE 0 Ess)
 (NEGATE 0 Foc/Neg-k) 
 (NEGATE 0 (".*[r]"r Dem) OR (".*[sj]"r Dem))
@@ -6171,6 +6182,7 @@ ADD:xmsyn-dem-noun-ill (&msyn-dem-noun-ill) TARGET Dem IF (*1 (N Ill) BARRIER NO
 (NEGATE 0 (Dem Sg Ine) LINK NOT 0 Attr) #danna, not likely L1 error since this form never is attr
 (NEGATE 0 (Dem Sg Ela) LINK NOT 0 Attr) #dassta, not likely L1 error since this form never is attr
 (NEGATE 0 (Dem Sg Ill) LINK NOT 0 Attr) #dasi, not likely L1 error since this form never is attr
+(NEGATE 0 (Sg Gen) LINK 1 (N Pl))
 (NEGATE 0 Ess)
 (NEGATE 0 Foc/Neg-k) 
 (NEGATE 0 (".*[r]"r Dem) OR (".*[sj]"r Dem))
@@ -6202,6 +6214,7 @@ ADD:xmsyn-dem-noun-ela (&msyn-dem-noun-ela) TARGET Dem IF (*1 (N Ela) BARRIER NO
 (NEGATE 0 (Pl Ela) LINK *1 (N Pl Ela) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE 0 Foc/Neg-k) 
 (NEGATE 0 Ess)
+(NEGATE 0 (Sg Gen) LINK 1 (N Pl))
 (NEGATE 0 (Dem Sg Ine) LINK NOT 0 Attr) #danna, not likely L1 error since this form never is attr
 (NEGATE 0 (Dem Sg Ela) LINK NOT 0 (Attr) OR (Sh)) #dassta, not likely L1 error since this form never is attr
 (NEGATE 0 (Dem Sg Ill) LINK NOT 0 Attr) #dasi, not likely L1 error since this form never is attr
@@ -6236,7 +6249,9 @@ ADD:xmsyn-dem-noun-com (&msyn-dem-noun-com) TARGET Dem IF (*1 (N Com) BARRIER NO
 (NEGATE 0 (Pl Ine) LINK *1 (N Pl Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE 0 (Sg Gen) LINK *1 (N Pl Com) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 0 (Sg Ill)) 
 (NEGATE 0 Ess)
+(NEGATE 0 (Sg Gen) LINK 1 (N Pl))
 (NEGATE 0 Foc/Neg-k)
+(NEGATE 0 (Dem Sg Ill Attr) OR (Sg Gen) LINK NOT 0 Á-A-E-O-U-I-Å-NOUNS + (Pl Gen)) #dán mállásij ávujn
 (NEGATE 0 (Dem Sg Ine) LINK NOT 0 Attr) #danna, not likely L1 error since this form never is attr
 (NEGATE 0 (Dem Sg Ela) LINK NOT 0 Attr) #dassta, not likely L1 error since this form never is attr
 (NEGATE 0 (Dem Sg Ill) LINK NOT 0 Attr) #dasi, not likely L1 error since this form never is attr
