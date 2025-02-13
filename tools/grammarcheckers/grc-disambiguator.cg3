@@ -1261,7 +1261,8 @@ BEFORE-SECTIONS
 
 SELECT:SemYear Sem/Date (0 Num) ;
 
-SELECT:SemYear Sem/Year (0 Num)(NOT -1 CURRENCY)(NOT 1 CURRENCY OR MEASURE) ;
+SELECT:SemYear Sem/Year (0 Num)(NOT -1 CURRENCY)(NOT 1 CURRENCY OR MEASURE) (-1 Sem/Time) ;
+SELECT:SemYear Sem/Year (0 Num)(NOT -1 CURRENCY)(NOT 1 CURRENCY OR MEASURE) (NEGATE 1 Sem/Hum OR Der/NomAg LINK NOT 0 Attr) ;
 SELECT:SemYear Sem/Year (0 Num)(NOT -1 CURRENCY)(1 Po) ;
 REMOVE:SemYear Sem/Year (0 Num) ((-1 CURRENCY) OR (1 CURRENCY OR MEASURE)) ;
 REMOVE:SemPhonenr Sem/Phonenr (0 Num) ; #vi fjerner alle inntil videre
