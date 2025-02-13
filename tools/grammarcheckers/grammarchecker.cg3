@@ -4556,6 +4556,32 @@ ADD:msyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Num Sg Acc) IF (0 ("<.*
     #$ Dá lågev giela li gullum.  OK
 	## Mij gullu julevsámegiellaj ja oarjjelsámegiellaj le dá dájt maŋemus låge jagijt åvddånahttem læhkám.
 
+## wrong case on "moadde
+ADD:msyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET ("moadda" Sg Gen) OR ("moadda" Sg Ill Attr) IF (*1 (N Pl Acc) +  &msyn-numphrase-sgacc OR (A Pl Acc) +  &msyn-numphrase-sgacc OR (N Pl Nom) OR (A Pl Nom)  BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom)) 
+(NEGATE -1 POST-N-NUM + (Sg Nom))
+(NEGATE -1 CC LINK -1 Num LINK -1 POST-N-NUM + (Sg Nom))
+(NEGATE -1 MONTHS LINK 1 Num LINK 1 ("biejvve") OR ("b" ABBR Gram/IAbbr))
+(NEGATE 0 ("akta" Num) OR ("1" Num))
+(NEGATE 0 ("<.*%>"r))
+(NEGATE 0 (Num "<[0123456789]-.*>"r))
+(NEGATE 0 (Num "<biel.*>"r))
+(NEGATE 0 (Num Rom)) 
+(NEGATE 0 (Num &msyn-nom-numeral-jagák))
+(NEGATE 0 Arab OR (N Coll Nom) OR Sem/Year OR Sem/Date) 
+(NEGATE 0 (Arab Nom) LINK 1 ("<[A-Z].*>"r) OR ("<Å.*>"r) OR ("<Æ.*>"r) OR ("<Ø.*>"r))
+(NEGATE 0 (Num Sg Nom) LINK -1 BE + Sg3 OR BE + Du3 OR BE + Pl3 LINK -1 (Dem Pl Ela) OR (Pers Pl3 Ela) OR (Pers Pl2 Ela) OR (Pers Pl1 Ela)) 
+(NEGATE 0 NUMUNIT LINK -1 Num OR ("moadda")) 
+(NEGATE 1 ("jahke" Sg Gen) LINK 1 ("vuoras" Nom)) 
+(NEGATE 1 ("låhko"))
+(NEGATE 1 Prop)
+(NEGATE 1 (PUNCT RIGHT))
+(NEGATE 1 COMMA)
+(NEGATE 1 ("ja"))
+(NEGATE 1 Dem) 
+(NEGATE *1 Px BARRIER NOT-Attr - PrfPrc LINK NOT 0 (Sg Acc PxSg3) OR (Sg Nom PxSg3) OR (Sg Gen PxSg3))
+(NEGATE 1 Num LINK NOT 0 NUMUNIT)
+(NEGATE *1 (N <spelled>) BARRIER NOT-NPMOD) ;
+
 
 # pl + wrong/right case
 ADD:msyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Num Pl Acc) OR (Num Sg Gen) OR (Num Pl Gen) IF (*1 (N Pl Acc) +  &msyn-numphrase-sgacc OR (A Pl Acc) + &msyn-numphrase-sgacc OR (N Pl Nom) OR (A Pl Nom) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) ) 
@@ -4625,6 +4651,7 @@ COPY:msyn-numphrase-sgacc (Sg Nom SUGGEST) EXCEPT (Sg Acc &msyn-numphrase-sgacc)
 
 COPY:msyn-numphrase-sgacc (Sg Nom SUGGEST) EXCEPT (Pl Acc &msyn-numphrase-sgacc) OR (Sg Gen &msyn-numphrase-sgacc) TARGET (Num &msyn-numphrase-sgacc) IF (*1 (N Pl Acc) +  &msyn-numphrase-sgacc BARRIER (*) - PRE-NP-HEAD LINK NOT 0 (N Coll Nom)) ;
 
+COPY:msyn-numphrase-sgacc (Sg Nom SUGGEST) EXCEPT (Sg Gen &msyn-numphrase-sgacc) OR (Sg Ill Attr &msyn-numphrase-sgacc)  TARGET (Indef &msyn-numphrase-sgacc) ;
 
 
 
