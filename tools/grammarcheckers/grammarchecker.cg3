@@ -5096,7 +5096,7 @@ ADD:msyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Pron Dem Pl) - (Sg Nom)
 (NEGATE 1 ("akta" Num Sg Nom));
 
 	# correct nouns that get associated with wrong numerals (to get a longer blue line)
-ADDRELATION ($2 RIGHT) (Num &msyn-numphrase-sgela) OR ("moadda" Indef &msyn-numphrase-sgela) TO (*1 (N Sg Ela) - &msyn-numphrase-sgela OR NUMUNIT + (Sg Ela) - &msyn-numphrase-sgela)(NEGATE *-1 (Dem &msyn-numphrase-sgela));
+ADDRELATION ($2 RIGHT) (Num &msyn-numphrase-sgela) OR ("moadda" Indef &msyn-numphrase-sgela) TO (*1 (N Sg Ela) - &msyn-numphrase-sgela OR NUMUNIT + (Sg Ela) - &msyn-numphrase-sgela);
 	# experimenting with moving it to just before the $3 rule so it can look at possible demonstrative errors before the numeral
 
 
@@ -5109,8 +5109,12 @@ ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sge
 ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sgela) OR ("moadda" Indef &msyn-numphrase-sgela) TO (-1 (Dem Sg Par) - &msyn-numphrase-sgela);
 
 # correct nouns that get associated with wrong demonstratives (to get a longer blue line)
-ADDRELATION ($3 RIGHT) (Dem &msyn-numphrase-sgela) TO (1 Num LINK *1 (N Sg Ela) - &msyn-numphrase-sgela OR NUMUNIT + (Sg Ela) - &msyn-numphrase-sgela);
+ADDRELATION ($3 RIGHT) (Dem &msyn-numphrase-sgela) TO (1 Num - &msyn-numphrase-sgela LINK *1 (N Sg Ela) - &msyn-numphrase-sgela OR NUMUNIT + (Sg Ela) - &msyn-numphrase-sgela);
 	## mån vuojnáv guokta bednaga da guovte bievde duogen
+
+# wrong demonstratives that get associated with wrong numerals before correct nouns	
+ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sgela) TO (-1 Dem + &msyn-numphrase-sgela);
+	## Gájka dajs gietjav rabdaguovlos la edna jåhtålibme ålgus.
 
 
 COPY:msyn-numphrase-sgela (Sg Ela Attr SUGGEST) EXCEPT (Pl Com Attr &msyn-numphrase-sgela) OR (Pl Gen Attr &msyn-numphrase-sgela) OR (Pl Com &msyn-numphrase-sgela) OR (Pl Gen &msyn-numphrase-sgela) OR (Pl Ela Attr &msyn-numphrase-sgela) OR (Pl Ela &msyn-numphrase-sgela) OR (Pl Nom &msyn-numphrase-sgela) TARGET (Dem &msyn-numphrase-sgela) IF (*2 (N Sg Ela) OR NUMUNIT + (Sg Ela) BARRIER NOT-Attr)  ;
