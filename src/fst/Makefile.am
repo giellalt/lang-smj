@@ -328,7 +328,7 @@ endif !WITH_OFST_TROPICAL
 
 
 # ... as well as in the disambiguation analyser:
-.generatd/analyser-disamb-gt-desc.%: .generated/analyser-disamb-gt-desc.tmp.%      \
+.generated/analyser-disamb-gt-desc.%: .generated/analyser-disamb-gt-desc.tmp.%      \
 				    filters/remove-dialect-tags.%             \
 				    filters/remove-area-tags.%                \
 					filters/remove-homonymy-tags.%			  \
