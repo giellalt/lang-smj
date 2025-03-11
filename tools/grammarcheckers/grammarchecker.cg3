@@ -4942,8 +4942,12 @@ ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgill) OR NUMUNIT + &msyn-numphrase-sgi
 ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sgill) OR ("moadda" Indef &msyn-numphrase-sgill) TO (-1 (Dem Sg Gen) - &msyn-numphrase-sgill OR (Dem Sg Ill Attr) - &msyn-numphrase-sgill);
 
 # correct nouns that get associated with wrong demonstratives (to get a longer blue line)
-ADDRELATION ($3 RIGHT) (Dem &msyn-numphrase-sgill) TO (*1 (N Sg Ill) - &msyn-numphrase-sgill OR NUMUNIT + (Sg Ill) - &msyn-numphrase-sgill);
+ADDRELATION ($3 RIGHT) (Dem &msyn-numphrase-sgill) TO (1 Num - &msyn-numphrase-sgill LINK *1 (N Sg Ill) - &msyn-numphrase-sgill OR NUMUNIT + (Sg Ill) - &msyn-numphrase-sgill);
 	## mån vuojnáv guokta bednaga da guovte bievde duogen
+	
+# wrong demonstratives that get associated with wrong numerals before nouns	
+ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sgill) TO (-1 Dem + &msyn-numphrase-sgill);
+	## daj guokta gielajda
 
 COPY:msyn-numphrase-sgill (Sg Ill Attr SUGGEST) EXCEPT (Pl Com Attr &msyn-numphrase-sgill) OR (Pl Gen Attr &msyn-numphrase-sgill) OR (Pl Com &msyn-numphrase-sgill) OR (Pl Gen &msyn-numphrase-sgill) OR (Pl Ill &msyn-numphrase-sgill) OR (Pl Nom &msyn-numphrase-sgill) OR (Pl Ela &msyn-numphrase-sgill) TARGET (Dem &msyn-numphrase-sgill) IF (*2 (N Sg Ill) OR NUMUNIT + (Sg Ill) BARRIER NOT-NPMOD)  ;
 
