@@ -11,7 +11,7 @@ SUBDIRS=. test
 
 #############################################
 #### Add language-specific sources here: ####
-GT_CG_LOCAL_SRCS=korp.cg3
+GT_CG_LOCAL_SRCS=
 
 #############################################################
 #### Add language-specific targets to be installed here: ####
@@ -35,16 +35,13 @@ else
 	$(AM_V_GEN)echo "! missing dependency $@" > $@
 endif
 
-# Make sure functions.cg3 is available before trying to build korp.cg3:
-korp.cg3: functions.cg3
-
 ##################################################################
 #### END: Add local processing instructions ABOVE this line ######
 ##################################################################
 
 ####### Other targets: ###########
 clean-local:
-	-rm -f *.bin functions.cg3 dependency.cg3 korp.cg3
+	-rm -f *.bin functions.cg3 dependency.cg3
 
 ####### Build rules via include: ########
 
