@@ -3834,6 +3834,7 @@ Obligatory hyphen, not as badly weighed as +Cmp/Hyph
 
 ### Other tags
 * **+MWE**  multi word expressions, goes to abbr
+* **+Span** - used for numerical expressions denoting spans or intervals, like 5-10, 2012-2015, etc  
 * **+Sh**  Short form
 * **+Long**  Long form
 * **+Gram/Comp** = Inherent comp, lexicalized derivation
