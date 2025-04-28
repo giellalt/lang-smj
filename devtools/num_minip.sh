@@ -16,9 +16,9 @@ GTLANGS=$(echo $GTLANGS)
 
 PATTERN=$1
 L_FILE="in.txt"
-cat test/data/numeraler.txt >$L_FILE
+cat src/fst/morphology/test/numeraler.txt >$L_FILE
 
-P_FILE="test/data/testnumparadigm.txt"
+P_FILE="src/fst/morphology/test/testnumparadigm.txt"
 
 for lemma in $(cat $L_FILE);
 do
