@@ -1620,7 +1620,7 @@ LIST POST-N-NUM = "sijddo" "kapihtal" "kap" "konvensjåvnnå" "sámegiella" "jul
 
 #!! Error tags
 
-LIST &ADDED = &ADDED ;
+LIST ADDED = ADDED ;
 LIST SUGGEST = SUGGEST ;
 LIST SUGGESTWF = SUGGESTWF ; #Suggestion from the speller
 LIST &DELETE = &DELETE ;
@@ -3005,18 +3005,18 @@ COPY:syn-nom_nom-gen_nom (Gen SUGGEST) EXCEPT (Nom &syn-nom_nom-gen_nom) TARGET 
     # nom-nom = Should get comma
     #--------------------------
     
-#To add a word as a suggestion, use ADDCOHORT, adding both reading tags (lemma, part-of-speech etc.), a wordform tag (including a space) and &ADDED to mark it as something that didn't appear in the input; and then a LEFT or RIGHT relation from the central cohort of the error to the added word:
+#To add a word as a suggestion, use ADDCOHORT, adding both reading tags (lemma, part-of-speech etc.), a wordform tag (including a space) and ADDED to mark it as something that didn't appear in the input; and then a LEFT or RIGHT relation from the central cohort of the error to the added word:
 
 #ADD (&msyn-valency-go-not-fs) IF (…);
-#ADDCOHORT ("<go >" "go" CS &ADDED &msyn-valency-go-not-fs) BEFORE &msyn-valency-go-not-fs;
-#ADDRELATION (LEFT) (&msyn-valency-go-not-fs) TO (-1 (&ADDED)) ;
+#ADDCOHORT ("<go >" "go" CS ADDED &msyn-valency-go-not-fs) BEFORE &msyn-valency-go-not-fs;
+#ADDRELATION (LEFT) (&msyn-valency-go-not-fs) TO (-1 (ADDED)) ;
 
 #COPY:syn-nom-nom (COMMA SUGGEST) TARGET (&syn-nom-nom) IF  ; 
 
 ADD:xpunct-nom-nom-comma (&punct-nom-nom-comma) TARGET (Gram/3syll Actio Nom) OR (N Sg Nom) IF (1 (N Sg Nom) OR (Actio Nom))(2 (CC) LINK 1 (Nom)) (NEGATE 0 (Gen) OR ("Hærrá" N) OR (N Pl Nom) OR (A Sg Nom)) (NEGATE 1 (V Ind) OR Adv OR Po) (NEGATE 0 EVEN-VERBS + Der/NomAct) (NEGATE 1 (Gram/TAbbr)) (NEGATE 1 ("jurra") LINK *1 (V Ind) BARRIER NOT-CC - Adv) (NEGATE -1 (N Sg Nom) LINK 1 (Actio Nom)) (NEGATE 1 (Prop Sg Nom))  ;
    
-#ADDCOHORT  ("<,>" "," CLB &ADDED &syn-nom-nom-comma) AFTER &punct-nom-nom-comma;
-ADDRELATION (RIGHT) (&punct-nom-nom-comma) TO (1 (&ADDED)) ;
+#ADDCOHORT  ("<,>" "," CLB ADDED &syn-nom-nom-comma) AFTER &punct-nom-nom-comma;
+ADDRELATION (RIGHT) (&punct-nom-nom-comma) TO (1 (ADDED)) ;
    
     ## Dan maŋŋela la Sámedigge giellastivrra ja fylkka bálkáv vaddám.
     
@@ -3034,10 +3034,10 @@ ADDRELATION (RIGHT) (&punct-nom-nom-comma) TO (1 (&ADDED)) ;
 ADD:xsyn-missing-dat-rajes (&syn-missing-dat-rajes) TARGET ("rájes" Po) OR ("rádje" N Sg Ela) IF (-1 TIME-N-SET + (Sg Gen) OR (Pl Nom) LINK -1 Num LINK NOT 0 Sem/Year)
 (NEGATE 1 ("gitta" Adv)) ;
 
-ADDCOHORT ("<dat>" "dat" Dem Sg Par &ADDED &syn-missing-dat-rajes) BEFORE &syn-missing-dat-rajes (NEGATE 0 &ADDED) ;
-ADDCOHORT ("<dát>" "dát" Dem Sg Par &ADDED &syn-missing-dat-rajes) BEFORE &syn-missing-dat-rajes (NEGATE 0 &ADDED) ;
+ADDCOHORT ("<dat>" "dat" Dem Sg Par ADDED &syn-missing-dat-rajes) BEFORE &syn-missing-dat-rajes (NEGATE 0 ADDED) ;
+ADDCOHORT ("<dát>" "dát" Dem Sg Par ADDED &syn-missing-dat-rajes) BEFORE &syn-missing-dat-rajes (NEGATE 0 ADDED) ;
 
-ADDRELATION ($2 RIGHT) (Po &syn-missing-dat-rajes) TO (1 &ADDED) ;  
+ADDRELATION ($2 RIGHT) (Po &syn-missing-dat-rajes) TO (1 ADDED) ;  
 
 	## 20 jage {rájes} gå Árrana vuodogiergge biejaduváj.
 	#$ Mánná 0-4 vahko rájes gut njidtjemielkev val oadtju, bajkká álu juohkka biejve ja binnemusát 6 luvva rapsa li jánndurij maŋŋel gå mielkke l gålggågoahtám. 
@@ -3070,14 +3070,14 @@ ADD:xsyn-missing-copula (&syn-missing-copula) TARGET (Gram/3syll Actio Nom) OR (
 (NEGATE *1 (A Sg Nom) BARRIER NOT-ADV LINK *0 BE + Sg3 OR BECOME + Sg3 BARRIER S-BOUNDARY)  ;
 
 
-ADDCOHORT  ("<la>" "liehket" Ind Prs Sg3 &ADDED &syn-missing-copula) AFTER &syn-missing-copula (NEGATE 0 &ADDED OR ("<.*[aeiouáå]>"r));
-ADDRELATION ($2 RIGHT) (N &syn-missing-copula) TO (1 (&ADDED)) ;      
+ADDCOHORT  ("<la>" "liehket" Ind Prs Sg3 ADDED &syn-missing-copula) AFTER &syn-missing-copula (NEGATE 0 ADDED OR ("<.*[aeiouáå]>"r));
+ADDRELATION ($2 RIGHT) (N &syn-missing-copula) TO (1 (ADDED)) ;      
 
-ADDCOHORT  ("<l>" "liehket" Ind Prs Sg3 Clt &ADDED &syn-missing-copula) AFTER &syn-missing-copula IF (0 ("<.*[aeiouáå]>"r)) (NEGATE 0 &ADDED OR (N Pl Nom));
-ADDRELATION ($2 RIGHT) (N &syn-missing-copula) TO (1 (&ADDED)) ; 
+ADDCOHORT  ("<l>" "liehket" Ind Prs Sg3 Clt ADDED &syn-missing-copula) AFTER &syn-missing-copula IF (0 ("<.*[aeiouáå]>"r)) (NEGATE 0 ADDED OR (N Pl Nom));
+ADDRELATION ($2 RIGHT) (N &syn-missing-copula) TO (1 (ADDED)) ; 
 
-ADDCOHORT  ("<li>" "liehket" Ind Prs Pl3 &ADDED &syn-missing-copula) AFTER &syn-missing-copula IF (0 (N Pl Nom) LINK *1 (A Pl Nom) BARRIER NOT-ADV) (NEGATE 0 &ADDED);
-ADDRELATION ($2 RIGHT) (N &syn-missing-copula) TO (1 (&ADDED)) ; 
+ADDCOHORT  ("<li>" "liehket" Ind Prs Pl3 ADDED &syn-missing-copula) AFTER &syn-missing-copula IF (0 (N Pl Nom) LINK *1 (A Pl Nom) BARRIER NOT-ADV) (NEGATE 0 ADDED);
+ADDRELATION ($2 RIGHT) (N &syn-missing-copula) TO (1 (ADDED)) ; 
    
     ## Bálges buorak.   
     #$ gålldåsámij árbbedábálasj viessomvuohke gássjel sjattaj .
@@ -3098,13 +3098,13 @@ WITH ("gus" Qst) IF
 {
 	ADD:xsyn-gus-before-pron (&syn-gus-before-pron DELETE)(*);
 	
-COPYCOHORT:syn-gus-before-pron (&ADDED co&syn-gus-before-pron) # These tags will be added to the copy
+COPYCOHORT:syn-gus-before-pron (ADDED co&syn-gus-before-pron) # These tags will be added to the copy
       EXCEPT (DELETE &syn-gus-before-pron) # We don't include this tag in the copy
       TARGET (*) # Copy from the main WITH target
       TO AFTER (jC1 (*)) # The copy ends up before the first WITH context
       ;
       
-ADDRELATION:syn-gus-before-pron ($2 LEFT) (*) TO (jC1 (*) LINK 1 (&ADDED));
+ADDRELATION:syn-gus-before-pron ($2 LEFT) (*) TO (jC1 (*) LINK 1 (ADDED));
 };
 
     ## Dádjadi sij gus man birra tæksta la?
@@ -3144,8 +3144,8 @@ COPY:syn-missing-gus (Qst SUGGEST) TARGET (Prs Sg2 &syn-missing-gus) ;
     #$ Ij så vil?
     #$ I då dádjada?
 
-ADDCOHORT  ("<gus>" "gus" Pcle Qst &ADDED &syn-missing-gus) AFTER &syn-missing-gus (NEGATE 0 &ADDED);
-ADDRELATION ($2 RIGHT) (V &syn-missing-gus) TO (1 &ADDED) ;  
+ADDCOHORT  ("<gus>" "gus" Pcle Qst ADDED &syn-missing-gus) AFTER &syn-missing-gus (NEGATE 0 ADDED);
+ADDRELATION ($2 RIGHT) (V &syn-missing-gus) TO (1 ADDED) ;  
 
 
 
@@ -6491,7 +6491,7 @@ ADDRELATION:double-space-before-rel ($2) (*) FROM (T:nextWordCrossSent LINK 0 (<
 ADDRELATION:double-space-before-rel (LEFT) (COERROR) FROM (T:nextWordCrossSent LINK 0 (<doubleSpaceBefore>)) ;
 COPY:double-space-before (VSTR:"$2\ $1"S SUGGESTWF) TARGET ("<(.*)>"r &double-space-before) IF
         (T:prevWordCrossSent LINK 0 ("<(.*)>"r))
-        (NOT 0 (&LINK))
+        (NOT 0 (COERROR))
         (NOT 0 (SUGGESTWF))    # don't COPY more than once
         ;
 	# Test sentence: 'Sanner,gii ráđđehusas.gii lávvardaga?Bonju dán!Lassin.'
@@ -6513,18 +6513,18 @@ ADD:no-space-after-punct (&no-space-after-punct-mark) TARGET (<NoSpaceAfterPunct
     #$ Beaivegirjenotáhtat agis {1;1–3;6.4} leat oktiibuot logi iešguđege sturrosaš čállingirjji, muhto guorahallanáigodaga ráddjema dihte {gč. s. 54} geavahan dás ovcci vuosttaš girjji agi 3;0.6 rádjái, seamma ahkái goas maŋimus videobátti materiála lea báddejuvvon.
     #$ Dát dovdomearkkat leat maid boazodoalu muohtakarakteriseremis, mas omd. geavahit dajaldagaid assás geardni dan sadjái go dárkilis mihtidemiin, ahte lea omd. 10 cm geardni (Eira {et al.}, 2011, sisa sáddejuvvon).
 
-	# 2. Add error tag + &LINK on the following word (part 1 of extending the blue underline to the following word):
+	# 2. Add error tag + COERROR on the following word (part 1 of extending the blue underline to the following word):
 
-ADD:no-space-after-punct-link (&no-space-after-punct-mark &LINK) TARGET (*) IF (T:prevWordCrossSent LINK 0 (&no-space-after-punct-mark) LINK NOT 0 (&LINK))(NEGATE 1 (Num Arab Sg) OR (Num Sem/ID) LINK -1 (";") LINK -1 (Num Arab Sg) LINK *-1 ("ahke") BARRIER (*) - (Num Arab Sg) - (Num Sem/ID) - (";"))(NEGATE 0 (Num Arab Sg) OR (Num Sem/ID) LINK -1 (";") LINK -1 (Num Arab Sg) OR (Num Sem/ID) LINK -1 ("ahke"))(NEGATE 0 COMMA LINK -1 (ABBR Gram/IAbbr))(NEGATE 0 ("!") LINK 1 ("!")) ;
+ADD:no-space-after-punct-link (&no-space-after-punct-mark COERROR) TARGET (*) IF (T:prevWordCrossSent LINK 0 (&no-space-after-punct-mark) LINK NOT 0 (COERROR))(NEGATE 1 (Num Arab Sg) OR (Num Sem/ID) LINK -1 (";") LINK -1 (Num Arab Sg) LINK *-1 ("ahke") BARRIER (*) - (Num Arab Sg) - (Num Sem/ID) - (";"))(NEGATE 0 (Num Arab Sg) OR (Num Sem/ID) LINK -1 (";") LINK -1 (Num Arab Sg) OR (Num Sem/ID) LINK -1 ("ahke"))(NEGATE 0 COMMA LINK -1 (ABBR Gram/IAbbr))(NEGATE 0 ("!") LINK 1 ("!")) ;
 	#$ Agi 2;0 rájes guorahallanáigodaga loahpageahčai, ahkkái 2;10, mánná geavaha 3. persovnna hámis muhtumin geahnohisdásat máddaga.
 
 	# 3. Add RIGHT relation on the punctuation (part 2 of extending the blue underline to the following word,
 	#    also ensures that the correction will replace the word, not be appended to it):
-ADDRELATION:no-space-after-punct-rel (RIGHT) (&LINK) FROM (T:prevWordCrossSent LINK 0 (<NoSpaceAfterPunctMark>)) ;
+ADDRELATION:no-space-after-punct-rel (RIGHT) (COERROR) FROM (T:prevWordCrossSent LINK 0 (<NoSpaceAfterPunctMark>)) ;
 	# 4. Add suggestions
 COPY:no-space-after-punct-sugg (VSTR:"$1\ $2"S SUGGESTWF) TARGET ("<(.*)>"r &no-space-after-punct-mark) IF
         (T:nextWordCrossSent LINK 0 ("<(.*)>"r))
-        (NOT 0 (&LINK))
+        (NOT 0 (COERROR))
         (NOT 0 (SUGGESTWF))    # don't COPY more than once
         ;
 
@@ -6534,15 +6534,15 @@ ADD:no-space-before-parenthesis (&no-space-before-parent-start) TARGET (<NoSpace
 	#$ Vuoigatvuođa Lávdegotti (SVL).
 
 	# No space before parentheses - 2: add error tag + link on the preceding cohort:
-ADD:no-space-before-parenthesis (&no-space-before-parent-start &LINK) TARGET (*) IF ( 1 (&no-space-before-parent-start))(NEGATE 0 <NoSpaceBeforeParenBeg> ) ; # the preceding cohort
+ADD:no-space-before-parenthesis (&no-space-before-parent-start COERROR) TARGET (*) IF ( 1 (&no-space-before-parent-start))(NEGATE 0 <NoSpaceBeforeParenBeg> ) ; # the preceding cohort
 
 	# No space before parentheses - 3: add LEFT relation:
-ADDRELATION:no-before-after-parenthesis (LEFT) (&LINK) FROM ( 1 (<NoSpaceBeforeParenBeg>)) ;
+ADDRELATION:no-before-after-parenthesis (LEFT) (COERROR) FROM ( 1 (<NoSpaceBeforeParenBeg>)) ;
 
 	# No space before parentheses - 4: Add suggestions
 COPY:no-space-before-parenthesis (VSTR:"$2\ $1"S SUGGESTWF) TARGET ("<(.*)>"r &no-space-before-parent-start) IF
         (-1 ("<(.*)>"r))
-        (NOT 0 (&LINK))
+        (NOT 0 (COERROR))
         (NOT 0 (SUGGESTWF))    # don't COPY more than once
         ;
 
@@ -6553,15 +6553,15 @@ ADD:no-space-after-parenthesis (&no-space-after-parent-end) TARGET (<NoSpaceAfte
 	#$ Vuoigatvuođa Lávdegotti(SVL).
 
 	# No space after parentheses - 2: add error tag + link on the following cohort:
-ADD:no-space-after-parenthesis (&no-space-after-parent-end &LINK) TARGET (*) IF (-1 (&no-space-after-parent-end))(NEGATE 0 <NoSpaceAfterParenEnd> ) ; # the folloowing cohort
+ADD:no-space-after-parenthesis (&no-space-after-parent-end COERROR) TARGET (*) IF (-1 (&no-space-after-parent-end))(NEGATE 0 <NoSpaceAfterParenEnd> ) ; # the folloowing cohort
 
 	# No space after parentheses - 3: add RIGHT relation:
-ADDRELATION:no-space-after-parenthesis (RIGHT) (&LINK) FROM (-1 (<NoSpaceAfterParenEnd>)) ;
+ADDRELATION:no-space-after-parenthesis (RIGHT) (COERROR) FROM (-1 (<NoSpaceAfterParenEnd>)) ;
 
 	# No space after parentheses - 4: Add suggestions
 COPY:no-space-after-parenthesis (VSTR:"$1\ $2"S SUGGESTWF) TARGET ("<(.*)>"r &no-space-after-parent-end) IF
         (1 ("<(.*)>"r))
-        (NOT 0 (&LINK))
+        (NOT 0 (COERROR))
         (NOT 0 (SUGGESTWF))    # don't COPY more than once
         ;
 
