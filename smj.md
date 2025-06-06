@@ -4949,8 +4949,6 @@ Miscellaneous symbols
 
 Smileys
 
-Emojies
-
 * Clause boundary symbols
 
 * Single punctuation marks
