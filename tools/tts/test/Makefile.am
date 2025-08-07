@@ -34,5 +34,6 @@ XFAIL_TESTS=test_pure_date_time.normaliser.txt \
 clean-local:
 	-rm -f *.out *.out.tmp *.expect
 
+include $(top_srcdir)/../giella-core/am-shared/tools-tts-test-dir-include.am
 include $(top_srcdir)/../giella-core/am-shared/devtest-include.am
 include $(top_srcdir)/../giella-core/am-shared/tools-tts-test-include.am
