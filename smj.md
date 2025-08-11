@@ -3798,7 +3798,7 @@ Obligatory hyphen, not as badly weighed as +Cmp/Hyph
 * +CLB
 * +PUNCT
 * +LEFT
-* +RIGHT
+* +RIGHT +MIDDLE
 * **+CLBfinal**  Sentence final abbreviated expression ending in full stop, so that the full stop is ambiguous
 * ^GUESSNOUNROOT
 * +TV !
