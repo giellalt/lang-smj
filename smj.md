@@ -4,11 +4,11 @@ All doc-comment documentation in one large file.
 
 ---
 
-# src-cg3-disambiguator.cg3.md 
+## src-cg3-disambiguator.cg3.md 
 
 
 
-### Semantic tags
+#### Semantic tags
 
 * Rules for removing some Props which are identical to common nouns
 
@@ -17,7 +17,7 @@ All doc-comment documentation in one large file.
 Go for minimal weight (requires --with-backend-format=openfst-tropical)
 * @NO CODE@
 
-# Removing Err/Orth
+## Removing Err/Orth
 
 * * *
 
@@ -25,16 +25,16 @@ Go for minimal weight (requires --with-backend-format=openfst-tropical)
 
 ---
 
-# src-fst-morphology-affixes-abbreviations.lexc.md 
+## src-fst-morphology-affixes-abbreviations.lexc.md 
 
 
-# Continuation lexicons for abbreviations
+## Continuation lexicons for abbreviations
 
-## Lexica for adding tags and periods
+### Lexica for adding tags and periods
 
-## The sublexica
+### The sublexica
 
-### Continuation lexicons for abbrs both with and witout final period
+#### Continuation lexicons for abbrs both with and witout final period
 
 * **LEXICON ab-noun   **
 
@@ -44,7 +44,7 @@ Go for minimal weight (requires --with-backend-format=openfst-tropical)
 
 * **LEXICON ab-num   **
 
-### Lexicons without final period
+#### Lexicons without final period
 
 * **LEXICON ab-nodot-noun   **  The bulk
 
@@ -54,7 +54,7 @@ Go for minimal weight (requires --with-backend-format=openfst-tropical)
 
 * **LEXICON ab-nodot-num   **
 
-### Lexicons with final period
+#### Lexicons with final period
 
 * **LEXICON ab-dot-noun   **  This is the lexicon for abbrs that must have a period.
 
@@ -92,13 +92,13 @@ Go for minimal weight (requires --with-backend-format=openfst-tropical)
 
 ---
 
-# src-fst-morphology-affixes-adjectives.lexc.md 
+## src-fst-morphology-affixes-adjectives.lexc.md 
 
 
 
-# Sublexica for Adjective
+## Sublexica for Adjective
 
-## Even-syllable stems
+### Even-syllable stems
 
 LEXICON GIEVRRA  Adjectives with attribute in WeG and -s. As 1a in Spiik. Sg Acc: gievrav, Attr: gievras.
 
@@ -183,7 +183,7 @@ Test data:
 
 Loan words lexicas
 
-###  Correctly assimilated loanwords, derived from real noun.
+####  Correctly assimilated loanwords, derived from real noun.
 
 LEXICON METÅVDÅLASJ  LOAN! Foreign -isk adjectives adapted in updated normative way. To smj ending -alasj, adjective is truly derived from a noun. Mekanisk-mekanihkka-mekanihkalasj, instead of mekánalasj that goes to MEKÁNALASJ_BADASS. Pred and attr are both -alasj. Attr same as pred. With comparatives. 
 
@@ -223,7 +223,7 @@ LEXICON SJÅNÅLASJ_SJONELL_CMP_INFL
 * *konstitusjåvnålattjav:* `konstitusjåvnålasj+A+Sg+Acc`
 * *konstitusjåvnålasj:* `konstitusjåvnålasj+A+Attr`
 
-###  Badly assimilated loanwords, some against norm others with no norm
+####  Badly assimilated loanwords, some against norm others with no norm
 
 LEXICON MEKÁNALASJ_BADASS  LOAN! Wronly assimilated -lasj adjectives from SE/NO -isk. Looks derived but isn't since there is no real noun to be derived from. Like mekanisk-mekánalasj, but "mekádna" is no real noun! Like  METÅVDÅLASJ, but gives the Err/Der tag, so it's only for these wronly/non-derived loan adjectives. 
 
@@ -342,8 +342,8 @@ LEXICON SUOLASIEHKE  -siehke. Sg Acc: suolasiegev, attr: suolasiek
 * *hánessiegev:* `hánessiehke+A+Sg+Acc`
 * *hánessiek:* `hánessiehke+A+Attr`
 
-## Odd-syllable stems
-###  With CG Sorted by attr
+### Odd-syllable stems
+####  With CG Sorted by attr
 
 LEXICON TJIEGOS  Attr same as pred. For adjectives with -e in second syllable e>á: divtes>diktásav in StrG. As a. in Spiik.  Sg Acc: tjiehkusav, Attr: tjiegos. Consonant gradation. 
 
@@ -518,7 +518,7 @@ LEXICON GASSKALAMOS    Inherent superlatives, gives onlys superl. Words that are
 * ájtodamos # Even-syllable test examples:*
 * *ájtodamos:* `ájtodamos+A+Sg+Nom`
 
-## Contracted stems
+### Contracted stems
 
 LEXICON SÁDNES   Attr same as pred. Sg Acc: sáddnáv, Attr: sádnes.
 
@@ -552,7 +552,7 @@ LEXICON GÅLMAKTES   Attr same as pred. without cg but with vowel changes. Sg Ac
 
 ----
 
-# Comparation
+## Comparation
 
 LEXICON BU/MUS   comparison for even-syll adjectives. Also derivates diminutive and adverbs from the comparisions.
 
@@ -562,7 +562,7 @@ LEXICON BUStem  Comparative even-syll, case and attr.
 
 LEXICON ABBO  Comparative odd-syll, get case and attr. With the dialect differences "-ubbo" and "-æbbo".
 
-## Superlative
+### Superlative
 
 LEXICON BUOREMUS  Superlative even-syll, get attr and nom case.
 
@@ -578,7 +578,7 @@ LEXICON ATTR   Sends attributes to
 
 LEXICON ATTR_PrsPrc   Attr without -vuohta derivation.
 
-## Derivation of adjectives
+### Derivation of adjectives
 
 LEXICON DenominalAdjsV1  ! even noun stems are sent here
 
@@ -628,15 +628,15 @@ LEXICON AGAdj  ! denominal derivations go here, attr same as pred, no comp in th
 
 ---
 
-# src-fst-morphology-affixes-nouns.lexc.md 
+## src-fst-morphology-affixes-nouns.lexc.md 
 
 
 
-# Sublexica for Noun
+## Sublexica for Noun
 
-## Even-syllable stems
+### Even-syllable stems
 
-### 2syll stems
+#### 2syll stems
 
 LEXICON MUORRA  Standard even stems with cg (note Q1). OBS: Nouns with invisible 3>2 cg (as busºsa) go to this lexicon.
 
@@ -686,7 +686,7 @@ LEXICON DARRHA  Only for "darrha" or compounds that end on "darrha".
 * *báktedarrha:* `báktedarrha+N+Sg+Nom`
 * *báktedarháv:* `báktedarrha+N+Sg+Acc`
 
-### Nouns with comparatives
+#### Nouns with comparatives
 
 LEXICON GÁDDE  2 syllable stems with cg (note Q1) with comparatives, like MUORRA
 
@@ -723,7 +723,7 @@ LEXICON MIEHTE  Like MUORRA but no locative/elative/illative sg. Presently no wo
 * *nuortto:* `nuortto+N+Sg+Nom`
 * *nuortov:* `nuortto+N+Sg+Acc`
 
-### Plural stems
+#### Plural stems
 
 LEXICON BÅVSÅ  Like MUORRA, only in plural. All, except ganta, juvdá and ávta, have regular, singular stem counterparts.
 
@@ -733,7 +733,7 @@ LEXICON BÅVSÅ  Like MUORRA, only in plural. All, except ganta, juvdá and ávt
 
 LEXICON LÅHTSASA  Like GAHPER, only in plural. Without derivations, these should maybe be added. 
 
-### Partially assimilated loanwords. The first part of the word is "citation borrowed" and keeps its norwegian/swedish orthography, only the last two syllables are adapted to sami.
+#### Partially assimilated loanwords. The first part of the word is "citation borrowed" and keeps its norwegian/swedish orthography, only the last two syllables are adapted to sami.
 
 LEXICON MUORRA_LOAN   For loan words that do not fit in a loan word lexicon because of wrong short cmp, or partially assimilated loanwords without separate lexicas (medállja), or for Err/Orths assimilated with cg but with other errors. This lexicon gives no short compound forms. Potential short cmps must therefore be hard coded into the FirstComponent lexicon. This also for compounded words with partially assimilated loan words. Examples of problem words: sirup>siráhppa og stetoskop>stetoskoahppa.
 
@@ -1053,7 +1053,7 @@ LEXICON TURISSTA_CMP_INFL  Recent loanwords on -ssta with long and short compoun
 * *journalissta:* `journalissta+N+Sg+Nom`
 * *journalistas:* `journalissta+N+Sg+Ela`
 
-### Loanwords becoming odd-syll
+#### Loanwords becoming odd-syll
 
 LEXICON PRIEMIJ_CMP_INFL  Assimilated loanwords. on -ie/-y, like premie and bandy. Become odd syllable loan words with cg, like "riebij". Nom: premij, gen prebmiha. Long and short essive.
 
@@ -1067,11 +1067,11 @@ LEXICON PRIEMIJ_CMP_INFL  Assimilated loanwords. on -ie/-y, like premie and band
 * *priebmihin:* `priemij+N+Ess`
 * *prebmihin:* `priemij+N+Ess`
 
-### Loanwords becoming contracted-syll
+#### Loanwords becoming contracted-syll
 
-### See further down: ÅLMÅJ_LOAN
+#### See further down: ÅLMÅJ_LOAN
 
-###  Error-lexicons, made to not get too many entries with both Err/Orth and correct
+####  Error-lexicons, made to not get too many entries with both Err/Orth and correct
 
 LEXICON A_CMP_INFL   Sub-forms. Lexicon for giving sub-variation conjugation by simply adding an -a to the norwegian/swedish word. No cg. Like "alkohola" and "agronoma". These forms goes against the standarization rule, but are found because of earlier standarizations rules and dictionaries.
 
@@ -1083,7 +1083,7 @@ LEXICON ERR/ORTH_EVEN_STRONG_CASES   Even stem Err/orth lexicon with only nomina
 
 LEXICON ERR/ORTH_ODD  Err/Orth lexicon doing the opposit of what odd-syllable nouns do. Strong grade in nom and weak in all other. fiehpar-fiebara
 
-###  Badly assimilated loanwords
+####  Badly assimilated loanwords
 
 LEXICON NOADE_BADASS  2 syll stems without cg. Badly or wrongly assimilated words, ie. assimilated in a way that isn't lulesami. (Same as NOADE) Most of the words are Err/Orth tagged with a standardized lemma. Some are Err/Lex tagged, 5.9.2019: EJP/SNM: fjerna +Use/-Spell - sjølv om vi ikkje likar orda, så vil vi sjå til at dei blir skrive rett etter smj-ortografien! Dei fleste orda er uansett merka med +Err/Orth :)
 
@@ -1105,7 +1105,7 @@ LEXICON C_ILL_AJ_BADASS  Badly or wrongly assimilated words. Last letter in cons
 * *kálsiumas* `kálsium+N+Sg+Ela`
 * *kálsiumaj* `kálsium+N+Sg+Ill`
 
-###  Unassimilated loanwords
+####  Unassimilated loanwords
 
 LEXICON KINO_UNASS_CMP_INFL  V-final unassimilated loanwords. Not lulesami. No diacritics whatsoever. Words that aren't assimilated at all. Really just norwegian words with a kind of sami inflection. Get even syllable case marking. Are part of the spell checker.
 
@@ -1133,7 +1133,7 @@ LEXICON C_ILL_AJ_UNASS  C-final unassimilated loanwords, gives illativ -aj. Also
 
 +Der4+Der/ahtes:e»g AHTES ; Only for odd-syllble stems
 
-### 4syll stems 
+#### 4syll stems 
 
 LEXICON GÅNÅGIS  Standard C-final 4-syllabic stems
 
@@ -1170,7 +1170,7 @@ LEXICON VIESSOMUJ  gen:viessumuhá
 * *bårråmuj:* `bårråmuj+N+Sg+Nom`
 * *bårråmuháj:* `bårråmuj+N+Sg+Ill`
 
-### 4 syllable plurals
+#### 4 syllable plurals
 
 LEXICON OADÁDAGÁ  Plural forms of words like tjerastahka with short compound-form
 
@@ -1201,17 +1201,17 @@ LEXICON DAGI_SINGULAR  Earlier we generated "bijladagi" and bijlajdagi as abbess
 
 LEXICON DAGI_PLURAL  Earlier we generated "bijladagi" and bijlajdagi as abbessiv. This has been fixed, but to be able to analyse what we earlier generated, we needed this lexicon. Only plural. Gives Err/tag to "bijlajdagi" and makes correct "bijlaj dagi".
 
-### Adjectival sublexicas. Give 4 syll adjectives inflection
+#### Adjectival sublexicas. Give 4 syll adjectives inflection
 
 LEXICON SURGULASJ-EVEN 
 
 LEXICON N-EVENWEAKSTEM-NO-ABE  same as N-EVENWEAKSTEM but without abessive (abessive it Err/Infl-taged). Used for 4-syll nouns
 
-### Compound lexicas
+#### Compound lexicas
 
-## Odd-syllable stems
+### Odd-syllable stems
 
-### without cg
+#### without cg
 
 LEXICON GAHPER  Odd-syllable C-final noun without cg, no vowchange, no short Ess. Spiik A3
 
@@ -1219,7 +1219,7 @@ LEXICON GAHPER  Odd-syllable C-final noun without cg, no vowchange, no short Ess
 * *stiebil:* `stiebil+N+Sg+Nom`
 * *stiebilis:* `stiebil+N+Sg+Ela`
 
-### with cg
+#### with cg
 
 LEXICON ÅRES  Odd-syllable C-final noun with CG, 2ndsyll vowchange. Long and short essive. Spiik A1
 
@@ -1258,7 +1258,7 @@ LEXICON BENA  Odd-syllable V-final noun with cg, no 2nsyll vowchange. Deletes g.
 * *galma:* `galma+N+Sg+Nom`
 * *galmmagis:* `galma+N+Sg+Ela`
 
-## Irregular stems
+### Irregular stems
 
 LEXICON SUOBDE   gen: suobddega.  Presently only for "suobde". For some reason -e dosn't become á. So not in lexicon BENA. Long and short essive.
 
@@ -1357,7 +1357,7 @@ LEXICON AKTIDIBME  Nomen actionionis derived from uneven verbs, ending DIBME. Ea
 
 LEXICON BERUSTIBME  Nomen actionionis derived from uneven verbs, ending STIBME and DIBME is Err/orth-taged. Earlier these went directly to VSBST-EVEN, now they get tag Gram/NomAct before going there. Can't put it in VSBST-ODD lexicon because paths from verb lexicons.  
 
-### Plural odd-syll
+#### Plural odd-syll
 
 LEXICON DÁRBBAGA  Like BENA, but plural. Presently only for "dárbbaga", has singular stem counterpart.
 
@@ -1391,7 +1391,7 @@ LEXICON MANEBU  oddsyllable plural only. presently only for "maŋebu".
 * *maŋebu:* `maŋebu+N+Pl+Nom`
 * *maŋebujt:* `maŋebu+N+Pl+Acc`
 
-## Contracted stems
+### Contracted stems
 
 LEXICON SUOLOJ  C-final with cg II-III: ålmåj:ålmmå
 
@@ -1444,9 +1444,9 @@ LEXICON GISTÁ  gistá:gisstá. Presently only for "gistá".
 * *gistá:* `gistá+N+Sg+Nom`
 * *gisstáv:* `gistá+N+Sg+Acc`
 
-###  Contracted stems sublexica
+####  Contracted stems sublexica
 
-## Px lexica
+### Px lexica
 
 LEXICON DUOLMUN   Fierrot>fierun, instruments derived from verbs, used only for verb derivation, not for lexicalized lemmas. No short essive.
 
@@ -1456,7 +1456,7 @@ LEXICON DUOLMUN   Fierrot>fierun, instruments derived from verbs, used only for 
 
 ---
 
-# src-fst-morphology-affixes-pronouns.lexc.md 
+## src-fst-morphology-affixes-pronouns.lexc.md 
 
 
 
@@ -1478,12 +1478,12 @@ LEXICON DUOLMUN   Fierrot>fierun, instruments derived from verbs, used only for 
 
 ---
 
-# src-fst-morphology-affixes-propernouns.lexc.md 
+## src-fst-morphology-affixes-propernouns.lexc.md 
 
 
-# Lule Sáme Proper noun morphology !
+## Lule Sáme Proper noun morphology !
 
-## Even syllable proper nouns
+### Even syllable proper nouns
 
 Unstressed last syllable
 
@@ -2021,7 +2021,7 @@ Words in lexicon ALEUHTAT even-syllables assimilated plurals.
 
 LEXICON ALEUHTAT-plc  Plural names, not sami names. like -váre, -gårtje
 
-## Odd syllable case marking
+### Odd syllable case marking
 
 Words in lexicon LONDON end on conconant, no cg, case marking with -av, -ij, -is, etc. Last syllable is unstressed. Gets a regular odd syllable case marking. Both real lule sami stems, assimilated stems and non-assimilated stems
 
@@ -2301,7 +2301,7 @@ LEXICON EATNAMAT-plc   Place names. Presently only for Vuolleednama
 
 LEXICON EATNAMAT-org   Organizations
 
-## Contracted proper nouns
+### Contracted proper nouns
 
 Words in lexicon DAVVISUOLLU are contracted propernouns ending on -åj/-oj. Lule sami stems
 
@@ -2331,7 +2331,7 @@ LEXICON SULLOT-plc  Plural names, only names ending on -suollu.
 * *Falklandsuollujda:* `Falklandsuollu+N+Prop+Sem/Plc+Pl+Ill`
 * *Falklandsuollujs:* `Falklandsuollu+N+Prop+Sem/Plc+Pl+Ela`
 
-## Lexicons only used in sme/sma and that are sent to other lexicons in smj
+### Lexicons only used in sme/sma and that are sent to other lexicons in smj
 
 ERVASTI is only used in smi-propenouns. Ervasti names are 3-syllable and are needed as a seperate lexicon because of sma. ERVASTI is same as ACCRA in smj and gets even syllable case marking.
 
@@ -2345,10 +2345,10 @@ HANNOLA is the same as ACCRA
 
 ---
 
-# src-fst-morphology-affixes-symbols.lexc.md 
+## src-fst-morphology-affixes-symbols.lexc.md 
 
 
-# Symbol affixes
+## Symbol affixes
 
 * * *
 
@@ -2356,11 +2356,11 @@ HANNOLA is the same as ACCRA
 
 ---
 
-# src-fst-morphology-affixes-verbs.lexc.md 
+## src-fst-morphology-affixes-verbs.lexc.md 
 
 
 
-# Sublexica for Verb
+## Sublexica for Verb
 
 Table of content:
 
@@ -2387,13 +2387,13 @@ Table of content:
 
 IV means intransitive verbs, TV means transitive verbs.
 
-# Auxiliary verbs
+## Auxiliary verbs
 
-## Negation verb 
+### Negation verb 
 
 LEXICON NEG 
 
-## Copula
+### Copula
 
 LEXICON ÅRROT 
 
@@ -2401,7 +2401,7 @@ LEXICON LIEHKET
 
 LEXICON LULU 
 
-## Modals
+### Modals
 
 LEXICON GALGGAT_IV  even-syllable modal verbs.
 
@@ -2420,9 +2420,9 @@ LEXICON VIERTTIT_IV  Contracted modal verbs.
 * *hæhttujma:* `hæhttut+V+IV+Ind+Prt+Pl1`
 * *hähttujma:* `hæhttut+V+IV+Ind+Prt+Pl1`
 
-# Ordinary main verbs
+## Ordinary main verbs
 
-## Even-syllable stems
+### Even-syllable stems
 Intransitives
 
 LEXICON GALSSJOT_IV  Impersonal o-verbs
@@ -2594,7 +2594,7 @@ LEXICON JÅRGGOT_TV  o-verbs with dim -astit that are hardcoded.  Duvvat and dal
 * *boarkkuv:* `boarkkot+V+TV+Ind+Prt+Sg1`
 * *boarkojma:* `boarkkot+V+TV+Ind+Prt+Pl1`
 
-## Odd-syllable stems
+### Odd-syllable stems
 
 This is just awaiting a manual classification
 
@@ -2687,7 +2687,7 @@ LEXICON VUORDDELIT_TV  Trisyllabic Verbs ending -lit. All -uvvat passives
 * *tsåggåliv:* `tsåggålit+V+TV+Ind+Prt+Sg1`
 * *tsåggålijma:* `tsåggålit+V+TV+Ind+Prt+Pl1`
 
-## Contracted stems
+### Contracted stems
 
 LEXICON SJIERRIT_IV  Impersonals
 
@@ -2804,7 +2804,7 @@ LEXICON ABBONERE_TV_INFL
 
 ---
 
-# src-fst-morphology-compounding.lexc.md 
+## src-fst-morphology-compounding.lexc.md 
 
 
 
@@ -2814,18 +2814,18 @@ LEXICON ABBONERE_TV_INFL
 
 ---
 
-# src-fst-morphology-phonology.twolc.md 
+## src-fst-morphology-phonology.twolc.md 
 
 
 
-# Lule Sámi morphophonological rule set                    
+## Lule Sámi morphophonological rule set                    
 
 This file documents the [phonology.twolc file](http://github.com/giellalt/lang-hun/blob/main/src/fst/phonology.twolc) 
 
 The file contains the rule set for the non-segmental
 Lule Sámi morphphonological rules
 
-## Background
+### Background
 
 The file is modeled upon the corresponding file for North Sámi, but has been
 revised and differs from it on several issues. The grammatical sources are
@@ -2834,11 +2834,11 @@ Spiik 1989: Lulesamisk grammatik and Nystø and Johnsen 2001: Sámásta 2.
 The rule file has the sections **Alphabet, Sets, Definition** and **Rules**. The rules are ordered thematically, 
 with 3 main sections: Consonant alternations (except CG), vowel alternations, and consonant gradation.
 
-# Declarations and definitions
+## Declarations and definitions
 
-## The Alphabet section
+### The Alphabet section
 
-### The real Lule Sámi Alphabet
+#### The real Lule Sámi Alphabet
 
 All Lule Saami letters are listed. The Lule Sámi ENG sound is represented as ñ. 
 Lule Sámi letter repertoire is not fully standardised. In the source code we write (and you shall write!) æ; ø; ŋ, 
@@ -2877,7 +2877,7 @@ The reason why there are more distinctions than for sme, is that the cns deletio
 *  ':'   =  Non-sámi cons clusters
 *  ':'   =  Do not change these where they would normally undergo umlaut etc
 
-### The Dummy symbols
+#### The Dummy symbols
 The Dummy symbols are taken from the sme file for convenience, only a small part of them are actually used, 
 they are defined in the Sets section along the way, included there as soon as they are used. 
 The set of actually used Dummy symbols is thus the set declared in "Dummy".
@@ -2926,7 +2926,7 @@ OBS: the definitions are not all correct or sufficiently specific
 * ****Ø4:0** : Not smj grammar, made only for Err/Orths: changes h:j, b:p, t:d, m:v in contexts where it isn't supposed to change making err/orths as "årojij" (not g:k because og BENA lexicon)
 * ****Ø5:0** : Not smj grammar, made only for Err/Orths: third extra long grade to first grad: l'l>l, m'm>m and so on
 
-### Morpheme boundaries:
+#### Morpheme boundaries:
 * **** «  ****:  Derivational prefix
 * **** »  ****:  Derivational suffix
 * **** %< ****:  Inflectional prefx
@@ -2936,7 +2936,7 @@ OBS: the definitions are not all correct or sufficiently specific
 * **** %  ****:  a space
 * **** ∑  ****:  mark before # to indicate dynamic comounds
 
-## The Sets section
+### The Sets section
 
 These are the sets:
 * **Vow**:  the vowels
@@ -2970,11 +2970,11 @@ These are the sets:
 *  Err     = Ø1 Ø2 Ø3 Ø4 Ø5                                                                            ;  Only for making err/orth inflections that don't follow smj-rules
 *  Hyph    = %-                                                                                        ;  
 
-## The Definitions section
+### The Definitions section
 
 In this section, the consonants are defined. This includes consonant clusters in the various grades and consonant alternations.
 
-### G3 vs G2
+#### G3 vs G2
 The alternation patterns according to Spiik's alternations series, here named S4, S5, ... for "Spiik alternation series 4, 5, etc." as they are presented in his grammar..  
 
 |   Class | Alternation | Series
@@ -3002,13 +3002,13 @@ Definition of gradation symbols:
 
 * **G3**:  A definition of Grade 3 consonant sequences 
 
-# The Rules section
+## The Rules section
 
-## Overview
+### Overview
 
 The rules section has the following chapters: Consonant alternations in certain pos, vowel lengthening, diphthong simplification, stem vowel alternations, consonant gradation rules
 
-## Consonant alternations in certain pos
+### Consonant alternations in certain pos
 
 All rules deal with word-final position.
 
@@ -3064,7 +3064,7 @@ All rules deal with word-final position.
 * *málest#*
 * *máles0#*
 
-## Vowel lengthening
+### Vowel lengthening
 
 The second syllable vowel a is lengthened to á whenever the stem consonants are in grade 1 and the first syllable vowel is short. Short vowels cannot preceed and follow a single intervocalic consonant.
 
@@ -3075,7 +3075,7 @@ The second syllable vowel a is lengthened to á whenever the stem consonants are
 * *skihpaQ1s#*
 * *ski0bá0s#*
 
-## Diphtong simplification
+### Diphtong simplification
 
 The diphthong simplification handles oa:å and æ:e. Phonologically, these are identical processes, but since the dipthong is written by two letters in the former case and by one letter in the latter, the alternations must be handled separately. This section also handles ie:æ, these are in principle the same as oa:å, but the alternation does not occur in so many contexts. 
 
@@ -3266,11 +3266,11 @@ The diphthong simplification handles oa:å and æ:e. Phonologically, these are i
 * *gå0ht0saY6*
 * *goahttse0*
 
-## Stem vowel alternations
+### Stem vowel alternations
 
 This section is divided according to stem vowels: a-, e-, o-, å-stems.
 
-### a-stem alternations
+#### a-stem alternations
 
 For a-stems, there is a:e and a:i.  Each alternation is triggered by a combination of phonological content and dummy symbols.
 
@@ -3289,7 +3289,7 @@ For a-stems, there is a:e and a:i.  Each alternation is triggered by a combinati
 * *giedjeg9>a#*
 * *giedjeg>a#*
 
-### e-stem alternations
+#### e-stem alternations
 
 For e-stems, there is e:i, e:á, e:å, e:u and e:a. Each alternation is triggered by a combination of phonological content and dummy symbols.
 
@@ -3384,13 +3384,13 @@ The following two rules constitute a <= / => rule pair.
 * *ielvveY9ut*
 * *0æälvv00ut*
 
-### i-stem alternations
+#### i-stem alternations
 
 For i-stems, there is i:á. The alternation is triggered by a combination of phonological content and dummy symbols.
 
 **i:á in Verb Derivation**
 
-### o-stem alternations
+#### o-stem alternations
 
 The duplicates of the three lines of the two following rules are
 there to resolve the => conflict between the two rules.
@@ -3403,7 +3403,7 @@ there to resolve the => conflict between the two rules.
 
 **o-stem vowel deletion**  
 
-### For å-stems there is å:e and å:i and vowel deletion.  Each alternation is triggered by a combination of phonological content and dummy symbols.
+#### For å-stems there is å:e and å:i and vowel deletion.  Each alternation is triggered by a combination of phonological content and dummy symbols.
 
 **å:e in Present Participle of even-syllable verbs**  
 
@@ -3411,7 +3411,7 @@ there to resolve the => conflict between the two rules.
 
 **å-stem vowel deletion**  
 
-### alternations valid for several stem types
+#### alternations valid for several stem types
 
 **Stem vowel deletion in even-syllable verbs, imp 3sg, 3du, 2pl, 3pl**  
 
@@ -3424,7 +3424,7 @@ there to resolve the => conflict between the two rules.
 * *bårråY1up*
 * *bårr00up*
 
-## Consonant gradation rules
+### Consonant gradation rules
 
 The consonant gradation rules differ considerably from the corresponding rules for North Sámi. 
 Instead of generalizing oversets of consonants (Cx:Cy &lt;=&gt; ...), each rule contains the
@@ -3448,7 +3448,7 @@ revisions to decide.
 The rules are divided in two subsections, deletion rules and
 change (alternation) rules.
 
-### Deletion rules
+#### Deletion rules
 
 The b, d, g deletion rules are similar, via the optional ( b ) etc. in front of the "_" symbol, both
 bm:m and bbm:bm alternations are covered. The contexts differ to a certain extent. For
@@ -3502,7 +3502,7 @@ added to the word form, this rule will thus not be triggered. Look into this whe
 
 **Gradation Series 4, II-I, tj and ts**  
 
-### Change rules
+#### Change rules
 
 The Cx:Cy format was kept for hk:g, hp:b, ht:d, since the left context h:0 was unique, 
 and no compilation conflict thus arose.
@@ -3574,14 +3574,14 @@ process, and resolve them as they appear!
 
 ---
 
-# src-fst-morphology-root.lexc.md 
+## src-fst-morphology-root.lexc.md 
 
 
-# Lule Sámi morphological analyser
+## Lule Sámi morphological analyser
 
-# Definitions for Multichar_Symbols
+## Definitions for Multichar_Symbols
 
-## Tags for POS
+### Tags for POS
 
 * **+N** = Noun
 * **+A** = Adjective
@@ -3598,13 +3598,13 @@ process, and resolve them as they appear!
 * **+TODO** = Code for items that have not been modeled yet
 * **+Dyn** = Code dynamic acronyms
 
-### Tags for sub-POS
+#### Tags for sub-POS
 
 * **+Prop** = Propernouns
 * **+ACR** = Acronym
 `@CODE` = telephone number (beta testings)
 
-### Pronoun subtypes
+#### Pronoun subtypes
 
 * **+Pers** = Personal pronoun
 * **+Dem** = Demonstrative pronoun
@@ -3617,7 +3617,7 @@ process, and resolve them as they appear!
 * **+Arab** = arabic numerals
 * **+Rom** = remertall
 
-## Error tags
+### Error tags
 
 All Err-tags must have a normative form as lemma except Err/Lex
 
@@ -3630,7 +3630,7 @@ All Err-tags must have a normative form as lemma except Err/Lex
 * **+Err/Hyph** = when there is a hyphen where none should have been
 * **+Err/SpaceCmp** = used for compounds written apart - only retained in the HFST Grammar Checker disambiguation analyser
 
-## Usage restriction tags
+### Usage restriction tags
 
 * **+Use/Marg** – Marginal, but normative lemmas. Not in speller.
 * **+Use/-Spell** – Excluded from speller
@@ -3652,7 +3652,7 @@ All Err-tags must have a normative form as lemma except Err/Lex
 * **+Use/TTS** – **only** retained in the HFST Text-To-Speech disambiguation tokeniser
 * **+Use/-TTS** – **never** retained in the HFST Text-To-Speech disambiguation tokeniser
 
-## Dialect and Area tags
+### Dialect and Area tags
 * **+Area/SE** - Used in Sweden only
 * **+Area/NO** - Used in Norway only
 * **+Dial/N** Used in the northern areas.  Some might say that
@@ -3661,7 +3661,7 @@ the northern part of the dialect area. Words like "válmas"
 * **+Dial/S** Used in the southern areas
 * **+Dial/SH** Short forms
 
-## Compounding tags
+### Compounding tags
 
 The tags are of the following form:
 * **+CmpNP/xxx** - Normative (N), Position (P), ie. the tag describes what
@@ -3671,7 +3671,7 @@ form the tagged word should use when making compounds
 * **+Cmp/xxx**   - Descriptive compounding tags, ie. tags that*describes*
 what form a word actually is using in a compound
 
-### Normative/prescriptive compounding tags
+#### Normative/prescriptive compounding tags
 
 These govern compound behaviour for normative tools like the speller, ie. what a compound **SHOULD BE**.
 
@@ -3706,7 +3706,7 @@ But these tags can again be overriden by the first word in a compound, if this p
 * **+CmpN/DefSgGen**  Overrides left tag, requires SgGen form
 * **+CmpN/DefPlGen**  Overrides left tag, requires PlGen form
 
-## Descriptive compounding tags
+### Descriptive compounding tags
 Tags for compound analysis - this is what a compound actually is.
 Some of these tags are also used in combination with the
 above normative tags to actually enforce compound restrictions in the fst.
@@ -3728,8 +3728,8 @@ It is important for Apertium, and useful in other cases as well.
 Compound with (optional) hyphen, heavily weighted
 Obligatory hyphen, not as badly weighed as +Cmp/Hyph
 
-# Inflectional Tags
-## Tags for Case and Number Inflection
+## Inflectional Tags
+### Tags for Case and Number Inflection
 
 *  **+Sg** = Singular number
 *  **+Du** = Dual number
@@ -3746,7 +3746,7 @@ Obligatory hyphen, not as badly weighed as +Cmp/Hyph
 *  **+Par** = Partitive case
 *  **+Abe** = Abessive case
 
-## Possessive tags
+### Possessive tags
 
 * **+PxSg1** possessive suffix singular first person
 * **+PxSg2** possessive suffix singular second person
@@ -3758,12 +3758,12 @@ Obligatory hyphen, not as badly weighed as +Cmp/Hyph
 * **+PxPl2** possessive suffix plural second person
 * **+PxPl3** possessive suffix plural plural person
 
-## Adjective specific tags
+### Adjective specific tags
 * +Attr Attribute
 * +Card
 * +Ord  CHECK THIS! In closed-sme there are +Ord entries without circ. tag
 
-## Verbal inflection
+### Verbal inflection
 * +Ind Indicative mood
 * +Prs Present tense
 * +Prt Past tense
@@ -3791,7 +3791,7 @@ Obligatory hyphen, not as badly weighed as +Cmp/Hyph
 * +VAbess verb abessive
 * +Actio Actio
 
-## Other tags
+### Other tags
 * +ABBR
 * +Symbol = independent symbols in the text stream, like £, €, ©
 * +ACR
@@ -3809,18 +3809,18 @@ Obligatory hyphen, not as badly weighed as +Cmp/Hyph
 * +Guess  for the name guesser
 * +NomAg Actor Noun From Verb - Nomen Agentis
 
-## Lexeme disambiguation = homonym tags
+### Lexeme disambiguation = homonym tags
 * **+Hom1**:  Homonymy
 * **+Hom2**:  Homonymy
 
-## Stem variant tags
+### Stem variant tags
 * +v1 - variant 1
 * +v2 - variant 2
 * +v3 - variant 3
 * +v4 - variant 4
 * +v5 - variant 5
 
-### Question and Focus particles:
+#### Question and Focus particles:
 * +Qst
 * +Clt
 * +SentInit Sentence initial form of "liehket"
@@ -3832,7 +3832,7 @@ Obligatory hyphen, not as badly weighed as +Cmp/Hyph
 * +Foc/Neg-k
 * +Foc/Pos-k
 
-### Other tags
+#### Other tags
 * **+MWE**  multi word expressions, goes to abbr
 * **+Span** - used for numerical expressions denoting spans or intervals, like 5-10, 2012-2015, etc  
 * **+Sh**  Short form
@@ -3853,7 +3853,7 @@ Obligatory hyphen, not as badly weighed as +Cmp/Hyph
 * **+Gram/3syll**:  trisyllabic verbs
 * **!+Gram/SentInit**:  copula verb le-, tag is replaced by +SentInit
 
-## Semantic tags to help disambiguation & syntactic analysis
+### Semantic tags to help disambiguation & syntactic analysis
 
 These tags should always be located just before the POS tag.
 
@@ -3961,7 +3961,7 @@ These tags should always be located just before the POS tag.
 * **+Sem/Wthr** = The Weather or the state of ground; cloudy weather, wind, driving conditions, night sunlight, rain shower
 * **+Sem/Year** = Year
 
-### Multiple Semantic tags:
+#### Multiple Semantic tags:
 
 * **+Sem/Act_Clth** =
 * **+Sem/Act_Domain** =
@@ -4269,7 +4269,7 @@ Not sure which section this goes in: (before POS)
 
 * +Allegro from LEXICON GOADE-IU-
 
-## Derivation tags
+### Derivation tags
 
 The following tags are used to describe the dynamic derivational system in
 Lule Sámi as encoded in this lexical description. The tags are classified
@@ -4278,7 +4278,7 @@ position, and can only combine with tags from an earlier / lower position.
 This is done to avoid possible overgeneration in the derivational system.
 
 * **+Der1 +Der2 +Der3 +Der4 +Der5**:    - positional tags, preceeds the actual der tag
-### Der#1 tags - tags in first position
+#### Der#1 tags - tags in first position
 * +Der/Caus VV - previously Der/ahtte
 * +Der/PassD VV - dallat passive
 * +Der/PassL VV - long passive láhpeduvvat
@@ -4317,12 +4317,12 @@ This is done to avoid possible overgeneration in the derivational system.
 * +Der/Comp AA
 * +Der/Superl AA
 
-### Der#2 tags - tags in second position
+#### Der#2 tags - tags in second position
 * +Der/dahtte VV
 * +Der/duhtte VV
 * +Der/ahkes VA
 * +Der/NomAct VN
-### Der#3 tags - tags in third position
+#### Der#3 tags - tags in third position
 * +Der/duvva VV
 * +Der/InchL VV (previosuly Der/goahte)
 * +Der/mus VN
@@ -4333,18 +4333,18 @@ This is done to avoid possible overgeneration in the derivational system.
 *       to not define the tag twice, but kept
 *       here for documentation purposes.
 * +Der/lis VA
-### Der#4 tags - tags in fourth position
+#### Der#4 tags - tags in fourth position
 * +Der/ahtes NA ! Abessive. Even verbs>NomAct>ahtes and odd-syll nouns. Morén-Duolljá:Caritive
-### Der#5 tags - tags in fifth position
+#### Der#5 tags - tags in fifth position
 * +Der/AAdv NA AAdv, previously +Der/at
 * +Der/akti NumAdv Adv
 * +Der/vuota NA AN (tag harmonization: previosuly Der/vuohta)
-### Der#other tags - tags that can be in any position
+#### Der#other tags - tags that can be in any position
 
 There are no such tags in SMJ, but for symmetry and code coherence with SME
 the class is still kept.
 
-## Tags for originating language
+### Tags for originating language
 The following tags are used to guide conversion to IPA: loan words
 and foreign names are usually pronounced (approximately) as in the
 originating (majority) language. Instead of trying to identify the
@@ -4381,10 +4381,10 @@ get the same pronunciation whether read as SME or NOB/NNO/SWE.
 * +OLang/UND - Undefined
 * +OLang/PARA - parallelle navn, navnet skal ikke overføres til andre samisk språk
 
-## Flag diacritics
+### Flag diacritics
 Tags from SME, coming to smj by propernouns.
 
-## Flag diacritics
+### Flag diacritics
 
 We have manually optimised the structure of our lexicon using following
 flag diacritics to restrict morhpological combinatorics - only allow compounds
@@ -4494,7 +4494,7 @@ given the proper use of these flags.
 | @P.number.nine@ | Flag used to give arabic numerals in smj different cases ;
 | @P.number.ten@ | Flag used to give arabic numerals in smj different cases ;
 
-# Lexicon `Root`
+## Lexicon `Root`
 
 The beginning of everything. Every FST defined in LexC must start with the
 reserved lexicon name `Root`.
@@ -4503,7 +4503,7 @@ reserved lexicon name `Root`.
 
 * **LEXICON ProperNoun**
 
-# Lexicon ENDLEX
+## Lexicon ENDLEX
 And this is the ENDLEX of everything:
 ```
 @D.CmpOnly.FALSE@@D.CmpPref.TRUE@@D.NeedNoun.ON@ ENDLEX2 ;
@@ -4524,7 +4524,7 @@ The `@D.NeedNoun.ON@` flag diacritic is used to block illegal compounds.
 
 ---
 
-# src-fst-morphology-stems-adjectives.lexc.md 
+## src-fst-morphology-stems-adjectives.lexc.md 
 
 
 
@@ -4538,7 +4538,7 @@ vájnno
 
 ---
 
-# src-fst-morphology-stems-adverbs.lexc.md 
+## src-fst-morphology-stems-adverbs.lexc.md 
 
 
 
@@ -4550,7 +4550,7 @@ sme mojonjálmmiid
 
 ---
 
-# src-fst-morphology-stems-nouns.lexc.md 
+## src-fst-morphology-stems-nouns.lexc.md 
 
 
 
@@ -4567,7 +4567,7 @@ LOAN SWE altar
 
 ---
 
-# src-fst-morphology-stems-numerals.lexc.md 
+## src-fst-morphology-stems-numerals.lexc.md 
 
 
 
@@ -4583,7 +4583,7 @@ XXXtuvsánat
 
 ---
 
-# src-fst-morphology-stems-pronouns.lexc.md 
+## src-fst-morphology-stems-pronouns.lexc.md 
 
 
 
@@ -4595,12 +4595,12 @@ Reciprocal pronouns as multiword expression
 
 ---
 
-# src-fst-morphology-stems-smj-abbreviations.lexc.md 
+## src-fst-morphology-stems-smj-abbreviations.lexc.md 
 
 
-# File containing North Saami abbreviations 
+## File containing North Saami abbreviations 
 
-## Lexica for adding tags and periods
+### Lexica for adding tags and periods
 
 Splitting in 4 + 1 groups, because of the preprocessor
 
@@ -4611,7 +4611,7 @@ Splitting in 4 + 1 groups, because of the preprocessor
 1. The NOAB ;	   lexicon (not really abbrs)
 1. The NUMNOAB ;  lexicon (not behaving as abbr before num)
 
-## The abbreviation lexicon itself
+### The abbreviation lexicon itself
 
 * **LEXICON ITRAB ** are intransitive abbreviations, A.S. etc.
 
@@ -4646,7 +4646,7 @@ the sentence can be considered as true cases.
 
 ---
 
-# src-fst-phonetics-acro2ipa.xfscript.md 
+## src-fst-phonetics-acro2ipa.xfscript.md 
 
 
 Phonological ACRO converter for Julev Sámi
@@ -4667,7 +4667,7 @@ Default, letter by letter pronunciation
 
 ---
 
-# src-fst-phonetics-smj2sampa-from-old-infra.xfscript.md 
+## src-fst-phonetics-smj2sampa-from-old-infra.xfscript.md 
 
 
 
@@ -4834,7 +4834,7 @@ retracted tongue root			_q
 
 ---
 
-# src-fst-phonetics-txt2ipa.xfscript.md 
+## src-fst-phonetics-txt2ipa.xfscript.md 
 
 
 Phonological converter for Julev Sámi
@@ -4848,7 +4848,7 @@ Converts to IPA. Mainly intended for use with TTS.
 
 ---
 
-# src-fst-transcriptions-clock-from-old-infra.lexc.md 
+## src-fst-transcriptions-clock-from-old-infra.lexc.md 
 
 
 
@@ -4874,7 +4874,7 @@ lågenanguovte
 
 ---
 
-# src-fst-transcriptions-transcriptor-abbrevs2text.lexc.md 
+## src-fst-transcriptions-transcriptor-abbrevs2text.lexc.md 
 
 
 
@@ -4904,7 +4904,7 @@ the sentence can be considered as true cases.
 
 ---
 
-# src-fst-transcriptions-transcriptor-acro2text.lexc.md 
+## src-fst-transcriptions-transcriptor-acro2text.lexc.md 
 
 
 
@@ -4917,7 +4917,7 @@ for text-to-speech systems.
 
 ---
 
-# src-fst-transcriptions-transcriptor-date-digit2text.lexc.md 
+## src-fst-transcriptions-transcriptor-date-digit2text.lexc.md 
 
 
 
@@ -4929,7 +4929,7 @@ This is still a dummy file.
 
 ---
 
-# src-fst-transcriptions-transcriptor-numbers-digit2text.lexc.md 
+## src-fst-transcriptions-transcriptor-numbers-digit2text.lexc.md 
 
 
 
@@ -4939,7 +4939,7 @@ This is still a dummy file.
 
 ---
 
-# src-fst-transcriptions-transcriptor-symbols2text.lexc.md 
+## src-fst-transcriptions-transcriptor-symbols2text.lexc.md 
 
 
 
@@ -4962,26 +4962,26 @@ Smileys
 
 ---
 
-# tools-grammarcheckers-grammarchecker.cg3.md 
+## tools-grammarcheckers-grammarchecker.cg3.md 
 
 
 L U L E   S A A M I   G R A M M A R   C H E C K E R
 
-# DELIMITERS
+## DELIMITERS
 
-# TAGS AND SETS
+## TAGS AND SETS
 
-## Tags
+### Tags
 
 This section lists all the tags inherited from the fst, and used as tags
 in the syntactic analysis. The next section, **Sets**, contains sets defined
 on the basis of the tags listed here, those set names are not visible in the output.
 
-### Beginning and end of sentence
+#### Beginning and end of sentence
 BOS
 EOS
 
-### Parts of speech tags
+#### Parts of speech tags
 
 N
 A
@@ -5009,7 +5009,7 @@ PUNCT
 
 COMMA
 
-### Tags for POS sub-categories
+#### Tags for POS sub-categories
 
 Pers
 Dem
@@ -5025,7 +5025,7 @@ Allegro
 Arab
 Romertall
 
-### Tags for morphosyntactic properties
+#### Tags for morphosyntactic properties
 
 Nom
 Abe
@@ -5092,14 +5092,14 @@ VAbess
 
 Err/Orth
 
-### Semantic tags
+#### Semantic tags
 
 PROP-ATTR
 PROP-SUR
 
 TIME-N-SET
 
-###  Syntactic tags
+####  Syntactic tags
 
 @+FAUXV
 @+FMAINV
@@ -5169,22 +5169,22 @@ OBJ>-OTHERS
 SYN-V
 @X
 
-## Sets containing sets of lists and tags
+### Sets containing sets of lists and tags
 
 This part of the file lists a large number of sets based partly upon the tags defined above, and
 partly upon lexemes drawn from the lexicon.
 See the sourcefile itself to inspect the sets, what follows here is an overview of the set types.
 
-### Sets for Single-word sets
+#### Sets for Single-word sets
 
 INITIAL
 
-### Sets for word or not
+#### Sets for word or not
 
 WORD
 NOT-COMMA
 
-### Case sets
+#### Case sets
 
 ADLVCASE
 
@@ -5195,17 +5195,17 @@ NOT-NOM
 NOT-GEN
 NOT-ACC
 
-### Verb sets
+#### Verb sets
 
 NOT-V
 
-### Sets for finiteness and mood
+#### Sets for finiteness and mood
 
 REAL-NEG
 
 NOT-PRFPRC
 
-### Sets for person
+#### Sets for person
 
 SG1-V
 SG2-V
@@ -5217,25 +5217,25 @@ PL1-V
 PL2-V
 PL3-V
 
-### Pronoun sets
+#### Pronoun sets
 
-### Adjectival sets and their complements
+#### Adjectival sets and their complements
 
-### Adverbial sets and their complements
+#### Adverbial sets and their complements
 
-### Relations
+#### Relations
 
-### Sets of elements with common syntactic behaviour
+#### Sets of elements with common syntactic behaviour
 
-### NP sets defined according to their morphosyntactic features
+#### NP sets defined according to their morphosyntactic features
 
-### The PRE-NP-HEAD family of sets
+#### The PRE-NP-HEAD family of sets
 
 These sets model noun phrases (NPs). The idea is to first define whatever can
 occur in front of the head of the NP, and thereafter negate that with the
 expression **WORD - premodifiers**.
 
-### Border sets and their complements
+#### Border sets and their complements
 
 Error tags
 
@@ -5245,17 +5245,17 @@ Error tags
 
 ---
 
-# tools-grammarcheckers-grc-disambiguator.cg3.md 
+## tools-grammarcheckers-grc-disambiguator.cg3.md 
 
 
 
-### Semantic tags
+#### Semantic tags
 
 * Rules for removing some Props which are identical to common nouns
 
 * **IfonlyVerb** selects the FMAINV reading in the cohort
 
-# Removing Err/Orth
+## Removing Err/Orth
 
 * * *
 
@@ -5263,7 +5263,7 @@ Error tags
 
 ---
 
-# tools-tokenisers-mwe-dis.cg3.md 
+## tools-tokenisers-mwe-dis.cg3.md 
 
 
 
@@ -5277,9 +5277,9 @@ next, if present, since we haven't done the mwe-rewrite yet.
 
 ---
 
-# tools-tokenisers-tokeniser-disamb-gt-desc.pmscript.md 
+## tools-tokenisers-tokeniser-disamb-gt-desc.pmscript.md 
 
-# Tokeniser for smj
+## Tokeniser for smj
 
 Usage:
 ```
@@ -5323,7 +5323,7 @@ ASCII digits
 so far:
 * U+F0B7 for "x in box"
 
-## Unknown handling
+### Unknown handling
 Unknowns are tagged ?? and treated specially with `hfst-tokenise`
 hfst-tokenise --giella-cg will treat such empty analyses as unknowns, and
 remove empty analyses from other readings. Empty readings are also
@@ -5342,9 +5342,9 @@ Finally we mark as a token any sequence making up a:
 
 ---
 
-# tools-tokenisers-tokeniser-gramcheck-gt-desc.pmscript.md 
+## tools-tokenisers-tokeniser-gramcheck-gt-desc.pmscript.md 
 
-# Grammar checker tokenisation for smj
+## Grammar checker tokenisation for smj
 
 Requires a recent version of HFST (3.10.0 / git revision>=3aecdbc)
 Then just:
@@ -5412,9 +5412,9 @@ Finally we mark as a token any sequence making up a:
 
 ---
 
-# tools-tokenisers-tokeniser-tts-cggt-desc.pmscript.md 
+## tools-tokenisers-tokeniser-tts-cggt-desc.pmscript.md 
 
-# TTS tokenisation for smj
+## TTS tokenisation for smj
 
 Requires a recent version of HFST (3.10.0 / git revision>=3aecdbc)
 Then just:
