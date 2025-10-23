@@ -9,6 +9,7 @@
 
 This page documents the work on the [Lule Sami language model](http://github.com/giellalt/lang-smj), how to build it and how to use it.
 
+
 # Using the analysers
 
 -   [How to use the morphological
