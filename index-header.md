@@ -4,9 +4,11 @@
 ![Lemma count](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgiellalt%2Flang-smj%2Fgh-pages%2Flemmacount.json)
 [![License](https://img.shields.io/github/license/giellalt/lang-smj)](https://github.com/giellalt/lang-smj/blob/main/LICENSE)
 [![Issues](https://img.shields.io/github/issues/giellalt/lang-smj)](https://github.com/giellalt/lang-smj/issues)
-[![Build Status](https://divvun-tc.giellalt.org/api/github/v1/repository/giellalt/lang-smj/main/badge.svg)](https://github.com/giellalt/lang-smj/actions)
+[![Build Status](https://builds.giellalt.org/api/badge/lang-smj?label=CI)](https://builds.giellalt.org/pipelines/lang-smj/builds/latest)
+[![Glottolog](https://img.shields.io/badge/Glottolog-green)](https://glottolog.org/resource/languoid/id/lule1254)
 
 This page documents the work on the [Lule Sami language model](http://github.com/giellalt/lang-smj), how to build it and how to use it.
+
 
 # Using the analysers
 
