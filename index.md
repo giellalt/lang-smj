@@ -1,11 +1,19 @@
 # Lule Sami documentation
 
+<div class="twocolumn map" markdown="1">
+
 [![Maturity](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgiellalt%2Flang-smj%2Fgh-pages%2Fmaturity.json)](https://giellalt.github.io/MaturityClassification.html)
 ![Lemma count](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgiellalt%2Flang-smj%2Fgh-pages%2Flemmacount.json)
 [![License](https://img.shields.io/github/license/giellalt/lang-smj)](https://github.com/giellalt/lang-smj/blob/main/LICENSE)
 [![Issues](https://img.shields.io/github/issues/giellalt/lang-smj)](https://github.com/giellalt/lang-smj/issues)
 [![Build Status](https://builds.giellalt.org/api/badge/lang-smj?label=CI)](https://builds.giellalt.org/pipelines/lang-smj/builds/latest)
 [![Glottolog](https://img.shields.io/badge/Glottolog-green)](https://glottolog.org/resource/languoid/id/lule1254)
+
+{% include_relative language-map.md %}
+
+Center location data taken from [Glottolog](https://glottolog.org/). Area extent is local data. Both can be adjusted if wrong - file a pull request!
+
+</div>
 
 This page documents the work on the [Lule Sami language model](http://github.com/giellalt/lang-smj), how to build it and how to use it.
 
