@@ -125,7 +125,9 @@ XFAIL_TESTS=\
         DEV-msyn-congr-mij-ma-PASS.yaml               \
         DEV-msyn-dates-FAIL.yaml					  \
 	DEV-msyn-dimin-after-unna-FAIL.yaml           \
+	DEV-msyn-dimin-after-unna-PASS.yaml           \
 	DEV-msyn-gut-mij-gut-FAIL.yaml                \
+	DEV-msyn-gut-mij-gut-PASS.yaml                \
 	DEV-msyn-moadda-bale-FAIL.yaml                \
 	DEV-msyn-nom-gen-PP-FAIL.yaml                 \
 	DEV-msyn-nom-nom-gen-FAIL.yaml                \
