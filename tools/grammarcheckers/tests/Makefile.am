@@ -9,7 +9,7 @@ if WANT_GRAMCHECK
 # List here (space separated) all yaml files to be run as part of make check:
 TESTS=\
 	DEV-msyn-congr-dem-noun-FAIL.yaml			  \
-	DEV-msyn-congr-dem-noun-PASS.yaml            \
+	DEV-msyn-congr-dem-noun-PASS.yaml             \
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
 	DEV-msyn-congr-mij-ma-PASS.yaml               \
 	DEV-msyn-dates-FAIL.yaml				      \
@@ -30,8 +30,8 @@ TESTS=\
     DEV-msyn-numphrase-PASS.yaml                  \
 	DEV-msyn-sme_interference_neg-FAIL.yaml       \
 	DEV-msyn-sme_interference_neg-PASS.yaml       \
-	DEV-msyn-rájes-FAIL.yaml                      \
-	DEV-msyn-rájes-PASS.yaml                      \
+	DEV-msyn-rajes-FAIL.yaml                      \
+	DEV-msyn-rajes-PASS.yaml                      \
     DEV-punct-nom-nom-comma-FAIL.yaml             \
 	DEV-real-NegSg2-NegSg3-FAIL.yaml              \
 	DEV-real-NegSg2-NegSg3-PASS.yaml              \
@@ -124,20 +124,19 @@ XFAIL_TESTS=\
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
 	DEV-msyn-dates-FAIL.yaml                      \
 	DEV-msyn-dimin-after-unna-FAIL.yaml           \
-	DEV-msyn-dimin-after-unna-PASS.yaml           \
 	DEV-msyn-gut-mij-gut-FAIL.yaml                \
-	DEV-msyn-gut-mij-gut-PASS.yaml                \
 	DEV-msyn-moadda-bale-FAIL.yaml                \
 	DEV-msyn-nom-gen-PP-FAIL.yaml                 \
 	DEV-msyn-nom-nom-gen-FAIL.yaml                \
 	DEV-msyn-numphrase-FAIL.yaml                  \
+	DEV-msyn-numphrase-PASS.yaml                  \
 	DEV-msyn-numeral-jagak-FAIL.yaml              \
 	DEV-msyn-sme_interference_neg-FAIL.yaml       \
 	DEV-real-NegSg2-NegSg3-FAIL.yaml              \
 	DEV-real-NegSg3-NegSg2-FAIL.yaml              \
 	DEV-real-PrsPl3-PrtSg3-FAIL.yaml              \
 	DEV-real-PrtSg3-PrsPl3-FAIL.yaml              \
-	DEV-msyn-rájes-FAIL.yaml                      \
+	DEV-msyn-rajes-FAIL.yaml                      \
 	DEV-syn-number_congruence-subj-verb-FAIL.yaml \
 	DEV-syn-pred-attr-FAIL.yaml                   \
     DEV-punct-nom-nom-comma-FAIL.yaml             \
