@@ -129,7 +129,6 @@ XFAIL_TESTS=\
 	DEV-msyn-nom-gen-PP-FAIL.yaml                 \
 	DEV-msyn-nom-nom-gen-FAIL.yaml                \
 	DEV-msyn-numphrase-FAIL.yaml                  \
-	DEV-msyn-numphrase-PASS.yaml                  \
 	DEV-msyn-numeral-jagak-FAIL.yaml              \
 	DEV-msyn-sme_interference_neg-FAIL.yaml       \
 	DEV-real-NegSg2-NegSg3-FAIL.yaml              \
