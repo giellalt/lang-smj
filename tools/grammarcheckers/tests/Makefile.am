@@ -24,8 +24,8 @@ TESTS=\
 	DEV-msyn-nom-gen-PP-PASS.yaml                 \
 	DEV-msyn-nom-nom-gen-FAIL.yaml                \
 	DEV-msyn-nom-nom-gen-PASS.yaml                \
-	DEV-msyn-numeral-jagák-FAIL.yaml              \
-	DEV-msyn-numeral-jagák-PASS.yaml              \
+	DEV-msyn-numeral-jagak-FAIL.yaml              \
+	DEV-msyn-numeral-jagak-PASS.yaml              \
 	DEV-msyn-numphrase-FAIL.yaml                  \
     DEV-msyn-numphrase-PASS.yaml                  \
 	DEV-msyn-sme_interference_neg-FAIL.yaml       \
@@ -130,7 +130,7 @@ XFAIL_TESTS=\
 	DEV-msyn-nom-gen-PP-FAIL.yaml                 \
 	DEV-msyn-nom-nom-gen-FAIL.yaml                \
 	DEV-msyn-numphrase-FAIL.yaml                  \
-	DEV-msyn-numeral-jagák-FAIL.yaml              \
+	DEV-msyn-numeral-jagak-FAIL.yaml              \
 	DEV-msyn-sme_interference_neg-FAIL.yaml       \
 	DEV-real-NegSg2-NegSg3-FAIL.yaml              \
 	DEV-real-NegSg3-NegSg2-FAIL.yaml              \
