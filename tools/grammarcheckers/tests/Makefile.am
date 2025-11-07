@@ -114,16 +114,15 @@ TESTS=\
 	syn-pred-attr-PASS.yaml                       \
     syn-should-be-cmp-FAIL.yaml                   \
     syn-should-be-cmp-PASS.yaml                   \
-	syn-wo-neg-before-subj-FAIL.yaml			  \
+	syn-wo-neg-before-subj-FAIL.yaml              \
 	syn-wo-neg-before-subj-PASS.yaml
 
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not cDEV-msyn-gut-mij-gut-FAIL.yamlritical at the moment:
 XFAIL_TESTS=\
-	DEV-msyn-congr-dem-noun-FAIL.yaml			  \
+	DEV-msyn-congr-dem-noun-FAIL.yaml             \
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
-        DEV-msyn-congr-mij-ma-PASS.yaml               \
-        DEV-msyn-dates-FAIL.yaml					  \
+	DEV-msyn-dates-FAIL.yaml                      \
 	DEV-msyn-dimin-after-unna-FAIL.yaml           \
 	DEV-msyn-dimin-after-unna-PASS.yaml           \
 	DEV-msyn-gut-mij-gut-FAIL.yaml                \
