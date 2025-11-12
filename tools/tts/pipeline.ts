@@ -7,6 +7,8 @@ import * as speech from './.divvun-rt/speech.ts';
 export default function smjTextTTS(entry: StringEntry): Command {
   let x = hfst.tokenize("tokenise", entry, { model_path: "tokeniser-tts-cggt-desc.pmhfst" });
   x = divvun.blanktag("whitespace",     x, { model_path: "analyser-gt-whitespace.hfst" });
+  x = cg3.vislcg3("remove-lexicalised", x, { model_path: "generated-remove-lexicalised-compounds.bin" });
+  x = cg3.vislcg3("valency",            x, { model_path: "valency.bin" });
   x = cg3.vislcg3("mwe-dis",            x, { model_path: "mwe-dis.bin" });
   x = cg3.mwesplit("mwesplit",          x);
   x = cg3.vislcg3("disamb",             x, { model_path: "disambiguator.bin" });
@@ -41,6 +43,8 @@ export default function smjTextTTS(entry: StringEntry): Command {
 export function localTTSTest_dev(entry: StringEntry): Command {
   let x = hfst.tokenize("tokenise", entry, { model_path: "@./tokeniser-tts-cggt-desc.pmhfst" });
   x = divvun.blanktag("whitespace",     x, { model_path: "@./analyser-gt-whitespace.hfst" });
+  x = cg3.vislcg3("remove-lexicalised", x, { model_path: "@./remove-lexicalised-compounds.cg3" });
+  x = cg3.vislcg3("valency",            x, { model_path: "@../../src/cg3/valency.cg3" });
   x = cg3.vislcg3("mwe-dis",            x, { model_path: "@../tokenisers/mwe-dis.cg3" });
   x = cg3.mwesplit("mwesplit",          x);
   x = cg3.vislcg3("disamb",             x, { model_path: "@../../src/cg3/disambiguator.cg3" });
