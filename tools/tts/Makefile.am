@@ -22,7 +22,7 @@ GIELLA_TTS_TOKENISER=tokeniser-tts-cggt-desc.pmhfst
 # List transcriptor source files from src/transcriptions/ (without extension)
 # that should NOT be included in the tts text processing (by default everything
 # is included):
-GIELLA_TTS_REMOVE_TRANSCRIPTORS=
+GIELLA_TTS_REMOVE_TRANSCRIPTORS=transcriptor-date-digit2text
 
 # If there are additional, language specific files used in the GC archive,
 # specify here:
