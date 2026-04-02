@@ -440,7 +440,7 @@ REPONAME = $(shell  grep '__REPO__' $(top_srcdir)/.gut/delta.toml | cut -d'"' -f
 # " reset syntax colouring - gets confused by the single double quote in the previous line
 
 # no regenerations while debugging
-doc_DATA = $(INDEX) $(LINKS) $(ALLINONE_MD_PAGE) lemmacount.json maturity.json
+doc_DATA = $(INDEX) $(LINKS) $(ALLINONE_MD_PAGE) lemmacount.json maturity.json spellersuggs.json
 DOCC2MDWIKI = $(GTCORE)/scripts/doccomments2ghpages.awk
 DOCC2MDWIKI_CG3 = $(GTCORE)/scripts/doccomments2ghpages-vislcg.awk
 GRAPHPLOTTER = $(GTCORE)/scripts/plot-speller-progress.R
@@ -960,6 +960,9 @@ $(srcdir)/lemmacount.json:
 # Generate a maturity.json file as endpoint for the maturity badge.
 $(srcdir)/maturity.json:
 	$(AM_V_GEN)$(GTCORE)/scripts/make-maturity.json.sh $(REPONAME) > $@
+
+$(srcdir)/spellersuggs.json:
+	$(AM_V_GEN)$(GTCORE)/scripts/make-spellerbadge-json.sh $(srcdir)/typosreport/report.json > $@
 
 # Convert source filenames to extracted documentation filenames, VPATH safe:
 # ../../../src/fst/morphology/stems/adverbs.lexc => src-fst-morphology-stems-adverbs.lexc.md
