@@ -1,0 +1,6105 @@
+# Divvun & Giellatekno - open source grammars for Sámi and other languages
+# Copyright © 2000-2010 The University of Tromsø & the Norwegian Sámi Parliament
+# http://giellatekno.uit.no & http://divvun.no
+#
+# This program is free software; you can redistribute and/or modify
+# this file under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version. The GNU General Public License
+# is found at http://www.gnu.org/licenses/gpl.html. It is
+# also available in the file $GTHOME/LICENSE.txt.
+#
+# Other licensing options are available upon request, please contact
+# giellatekno@uit.no or feedback@divvun.no
+#
+# typos.txt
+# This file contains common typos and their corrections separated by
+# a <tab> character, optionally followed by a comment. That is, the
+# format is: three columns, separated by TAB:
+#
+# Column 1: error word/typo
+# Column 2: correction
+# Column 3: Comment, starting with # or !
+#
+# Example:
+#
+# leif	feil	# This is just an example
+#
+# Corrections that consist of two or more parts are not split
+# further in the preprocessor, because there is no way of knowing
+# whether the token is a multipart expression or not.
+# Beware of removing sentence delimiters (.!?) in correction, since
+# they may indicate sentence boundaries.
+#
+#
+#
+#
+#
+# Description abbreviation:
+# rwe = real word error
+# mwe = multi word expression
+#
+#
+#
+#	! multi word expression
+#
+#	mávsálvistjerdan	mávsálvis tjerdan	# mwe rwe
+#	sisisjaddamgadtsa	sisisjaddam gadtsa	# mwe rwe
+#	Aktijriekknim	Aktij riekknidum	# mwe
+#	Almodibmesámegiellaj	Almodibme sámegiellaj	# mwe
+#	AnnaStina	Anna Stina	# mwe
+#	Anne.1996	Anne. 1996	# mwe
+#	Barggoja	Barggo ja	# mwe
+#	Duoiehtjáda	Då iehtjáda	# mwe
+#	Duottarduogen	Duottar duogen	# mwe
+#	Eric.1977	Eric. 1977	# mwe
+#	Gudil ihpit	Gudi lihpit	# mwe
+#	Gájkkaboatsojsujtto	Gájkka boatsojsujtto	# mwe
+#	Hudjámásån	Hudjá má sån	# mwe
+#	Hærrájiesstanam	Hærrá jiesstánam	# mwe
+#	Ijlim	Ij lim	# mwe
+#	Jajuohkka	Ja juohkka	# mwe
+#	JensvoldHábmim	Jensvold Hábbmim	# mwe
+#	Kaloj Limenes	Kaloi Limenes	# mwe
+#	KarlGunnar	Karl Gunnar	# mwe
+#	Kultuvrraja	Kultuvrra ja	# mwe
+#	Muhtemláhkáj	Muhtem láhkáj	# mwe
+#	Nunat	Kalaallit Nunaat	# mwe
+#	Riekhávsskudalájma	Riek hávsskudalájma	# mwe
+#	Ruoudel	Ruovdde l	# mwe
+#	Rávvidusbarggo	Rávvidum barggo	# mwe
+#	Skallujlåhkåt	Skalluj låhkåt	# mwe
+#	Stig.1993	Stig. 1993	# mwe
+#	Stora tigern	Stora Tigern	# mwe
+#	Sámeminisstar	Sáme ministar	# mwe
+#	Sámibåttå	Sæmmi båttå	# mwe
+#	Vieljaja	Vielja ja	# mwe
+#	adnujválldemis	adnuj válldemis	# mwe
+#	aktanbarggat	aktan barggat	# mwe
+#	aktijbiejadum	biejadum aktij	# mwe
+#	aktijmannamij	aktij mannamij	# cmp not allowed with adv - mwe
+#	aktisasjbarggat	aktisattjat barggat	# mwe
+#	aktisasjbarggi	aktisattjat barggi	# mwe
+#	aktisasjbarggá	aktisattjat barggá	# mwe
+#	aktuallasim	aktu allasim	# mwe
+#	aktuallasis	aktu allasis	# mwe
+#	almulattjatdåmaduvvi	almulattjat dåmaduvvi	# mwe
+#	bagádusáv:”Fra	bagádusáv: ”Fra	# mwe
+#	baktu.Oahppe	baktu. Oahppe	# mwe
+#	birraSámen	birra Sáme	# mwe
+#	birásbuorep	buorep birrasij	# mwe
+#	birásbuorre	birás buorre	# mwe
+#	boatsojsujtovguovlon	boatsojsujtto guovlon	# mwe
+#	boatsojsujttoháldadusvuostatjin	boatsojsujttoháldadus vuostatjin	# mwe
+#	bokstáva.16	bokstáva. 16	# mwe
+#	båråjdav	båråj dav	# mwe
+#	daguduodje	dagu duodje	# mwe
+#	daguluonndofágan	dagu luonndofágan	# mwe
+#	dahkatvuodov	dahkat vuodov	# mwe
+#	dahkinoajvvegirkkon	dahkin oajvvegirkkon	# mwe
+#	de:Legus	de: Le gus	# mwe
+#	diehtigå	diehti gå	# mwe
+#	diehtoja	diehto ja	# mwe
+#	duoiehtjáda	då iehtjáda	# mwe
+#	duoladagu	duola dagu	# mwe
+#	duolel	duole l	# mwe
+#	duoppetdáppet	duoppet dáppet	# mwe
+#	dákkáraarvusmahtti	dákkára arvusmahtti	# mwe
+#	dánnaåvddånbådij	dánna åvddånbådij	# mwe
+#	dåjmalattjatmoattelágásj	dåjmalattjat moattelágásj	# mwe
+#	dållåja	dållå ja	# mwe
+#	fámiljahárráj	familja hárráj	# mwe
+#	fámilljanuorttan	famillja nuorttan	# mwe
+#	galggáriggasa	galggá riggasa	# mwe
+#	gehtjasvaden	gehtjas vaden	# mwe
+#	gielav.Danen	gielav. Danen	# mwe
+#	giellaarvusmahteduvvá	giella arvusmuvvá	# mwe
+#	giellaja	giella ja	# mwe
+#	girjebaktu	girje baktu	# mwe
+#	girkkoja	girkko ja	# mwe
+#	gudifámilljajnis	gudi familjajnis	# mwe
+#	gudil ihpit	gudi lihpit	# mwe
+#	guhtikguojmesa	guhtik guojmesa	# mwe
+#	gullu.Guoradallat	gullu. Guoradallat	# mwe
+#	guoradallamdiehti	guoradallama diehti	# mwe
+#	gájkinåvdemusát	gájk åvdemusát	# mwe
+#	gájkinåvdemusát	gájkin åvdemusát	# mwe
+#	gájksáme	gájkka sáme	# mwe
+#	gárgadisájtdahki	gárgadisájt dahki	# mwe
+#	gåktugirjjetjálle	gåktu girjjetjálle	# mwe
+#	gåktuja	gåktu ja	# mwe
+#	gåsuv	gå suv	# mwe
+#	gåvvijigirjjetjálle	gåvviji girjjetjálle	# mwe
+#	gåvådallamfámiljav	gåvådallam familjav	# mwe
+#	gåvåjttjielggiji	gåvåjt tjielggiji	# mwe
+#	gæhttjaladdatvájkkudimnævoj	gæhttjaladdat vájkkudimnævoj	# mwe
+#	hieredusájtma	hieredusájt ma	# mwe
+#	histåvråbirra	histåvrå birra	# mwe
+#	hárjjiditduolla	hárjjidit duolla	# mwe
+#	hávsskelij	hávsske lij	# mwe
+#	härráJesusKristusa	härrá Jesus Kristusa	# mwe
+#	iehtjadijdastuoráp	iehtjádijda stuoráp	# mwe
+#	iehtjádamuv	iehtjáda muv	# mwe
+#	iehtjádijdagudi	iehtjádijda gudi	# mwe
+#	iehtjádijdajulevsáme	iehtjádijda julevsáme	# mwe
+#	ietjasamáhtukvuodav	ietjasa máhtukvuodav	# mwe
+#	ietjasfámilljajn	ietjas familjajn	# mwe
+#	jaVuonan	ja Vuonan	# mwe
+#	jabagát	ja bagát	# mwe
+#	jabuorre	ja buorre	# mwe
+#	jafámiljav	ja familjav	# mwe
+#	jagevbirraednama	jagev birra ednama	# mwe
+#	jagiellasujttuj	ja giellasujttuj	# mwe
+#	jagirjjevuorkkásystebma	ja girjjevuorkkásystiebma	# mwe
+#	jagruvvohiståvrås	ja gruvvohiståvrås	# mwe
+#	jaguoradallat	ja guoradallat	# mwe
+#	jakultuvrav	ja kultuvrav	# mwe
+#	jaluonndovásádusáj	ja luonndovásádusáj	# mwe
+#	jalåhkkijgirjijt	ja låhkkijgirjijt	# mwe
+#	jalåhkåt	ja låhkåt	# mwe
+#	jamanemussaj	ja maŋemussaj	# mwe
+#	jamáhttegoadá	ja máhttegoadá	# mwe
+#	jaståhkat	ja ståhkat	# mwe
+#	jasystemáhtalasj	ja systematihkalasj	# mwe
+#	jasåjådimijt	ja såjådimijt	# mwe
+#	jateahter	ja teáhter	# mwe
+#	javllágassagielajn	javllá gassa gielajn	# mwe
+#	jaådå	ja ådå	# mwe
+#	julevja	julev ja	# mwe
+#	jusiehtjáda	jus iehtjáda	# mwe
+#	jåhtemja	jåhtem ja	# mwe
+#	katisasjbarggá	aktisattjat barggá	# mwe
+#	klássalanján.Oahppe	klássalanján. Oahppe	# mwe
+#	kultuv ralasj	kultuvralasj	# mwe
+#	kultuvrajnja	kultuvrajn ja	# mwe
+#	kultuvrasgånnå	kultuvras gånnå	# mwe
+#	kultuvravtjalmostahtti	kultuvrav tjalmostahtti	#	mwe
+#	kultuvrradagu	kultuvrra dagu	# mwe
+#	kultuvrraja	kultuvrra ja	# mwe
+#	lamájuosik	lamá juosik	# mwe
+#	lasuohtas	la suohtas	# mwe
+#	lea j	le aj	# mwe
+#	leboatsojsujtto	le boatsojsujtto	# mwe
+#	legirkkooahttse	le girkkooahttse	# mwe
+#	lesj iebtjes	le sjiebtjes	# mwe
+#	lesjaddam	le sjaddam	# mwe
+#	lidjinváre	lidjin váre	# mwe
+#	lijvárijn	lij várijn	# mwe
+#	lisierra	li sierra	# mwe
+#	luondulahttjanluonndo	luondulattjan luonndo	# mwe
+#	luondulasjleluonndo	luondulasj le luonndo	# mwe
+#	luonndoja	luonndo ja	# mwe
+#	luonndosuodjalimebirra	luonndosuodjalime birra	# mwe
+#	lågejagijt	låge jagijt	# mwe
+#	låhkåmja	låhkåm ja	# mwe
+#	majtulmutja	majt ulmutja	# mwe
+#	manemusárbbedábálasj	maŋemus árbbedábálasj	# mwe
+#	manenagili	maŋenagi li	# mwe
+#	medijájs.Bæjválattjat	medijájs. Bæjválattjat	# mwe
+#	mijalmulattjat	mij almulattjat	# mwe
+#	mijákultuvrav	mijá kultuvrav	# mwe
+#	moaddabuorre	moadda buorre	# mwe
+#	moattelágásjmediáv	moattelágásj medijáv	# mwe
+#	muhtemláhkáj	muhtem láhkáj	# mwe
+#	máhttihávsskudallat	máhtti hávsskudallat	# mwe
+#	máhttáåhpadiddjijs	máhttá åhpadiddjijs	# mwe
+#	máksusasjaddat	máksusa sjaddat	# mwe
+#	måjasta	måj asta	# mwe
+#	nannimdiehti	nannima diehti	# mwe
+#	nasjonálávllaJuojggamárbbedábe	nasjonalávlla Juojggamárbbedábe	# mwe
+#	nasjunalalasjåvdåsvásstádus	nasjonálla åvdåsvásstádus	# mwe
+#	nomenijtsåjådi	nomenijt såjådi	# mwe
+#	nubbengiellansámegiella	nubbengiellan sámegiella	# mwe
+#	nubbenjunnjusj	nubbe njunnjusj	# mwe nuppát njunnjusj
+#	nuorttaja	nuortta ja	# mwe
+#	nuppebälláj	nuppe bälláj	# mwe
+#	nuppebälláj	nuppe bælláj	# mwe
+#	oassálasstetmoattelágásj	oassálasstet moattelágásj	# mwe
+#	oassálasstetságastallamijda	oassálasstet ságastallamijda	# mwe
+#	prosjæktale	prosjækta le	# mwe
+#	riekhávsske	riek hávsske	# mwe
+#	riektabu	ienep riekta	# mwe
+#	rievtesrájagin	rievtes ráján	# mwe
+#	rijkajrásteldiddje	rijkaj rasstididdje	# mwe
+#	rájájrastá	rájáj rastá	# mwe
+#	sihkebajássjaddam	sihke bajássjaddam	# mwe
+#	sijávdåjmalasj	sijáv dåjmalasj	# mwe
+#	sisanov.Gæhttjat	sisanov. Gæhttjat	# mwe
+#	sjaddatkultuvralattjat	sjaddat kultuvralattjat	# mwe
+#	sjaddiriek	sjaddi riek	# mwe
+#	sjaddáduodastimen	sjaddá duodastimen	# mwe
+#	sjaddádåssju	sjaddá dåssju	# mwe
+#	sjaddájalgga	sjaddá jalgga	# mwe
+#	sjaddávæhkádakbarggo	sjaddá væhkádakbarggo	# mwe
+#	skallujlåhkåma	skalluj låhkåma	# mwe
+#	stuorrudagája	stuorrudagá ja	# mwe
+#	ståhkåtbágoj	ståhkåt bágoj	# mwe
+#	sunjija	sunji ja	# mwe
+#	svierikbiele	svieriga biele	# mwe
+#	svierikbieles	svieriga bieles	# mwe
+#	systemajdasjaddi	systiemajda sjaddi	# mwe
+#	systemáhtalasjfonehtalasj	systematihkalasj fonetihkalasj	# mwe
+#	ságastallamijdagirjálasjvuoda	ságastallamijda girjálasjvuoda	# mwe
+#	sáhkasjaddá	sáhka sjaddá	# mwe
+#	sámegielanháldadi	sámegielan háldadi	# mwe
+#	sámegielavoahppat	sámegielav oahppat	# mwe
+#	sämmibále	sämmi bále	# mwe
+#	såbadimijt.Dættodit	såbadimijt. Dættodit	# mwe
+#	sæbrástallap.Sámegiella	sæbrástallap. Sámegiella	# mwe
+#	sæmmibåttå	sæmmi båttå	# mwe
+#	sæmmiluonndobåhtusij	sæmmi luonndobåhtusij	# mwe
+#	teknisketáhtta	teknihkalasj etáhtta	# mwe
+#	tevstajt.Oahppe	tevstajt. Oahppe	# mwe
+#	tevstavdahki	tevstav dahki	# mwe
+#	tjuovudavadnasijn	tjuovuda vadnasijn	# mwe
+#	vaddádádjadusáv	vaddá dádjadusáv	# mwe
+#	vaddámbuorre	vaddám buorre	# mwe
+#	vajasta	vaj asta	# mwe
+#	vaje	vaj e	# mwe
+#	varresvuodaja	varresvuoda ja	# mwe
+#	vuorrotdájt	vuorot dájt	# mwe
+#	Åhpadusja	Åhpadus ja	# mwe
+#	Æládusja	Æládus ja	# mwe
+#	álkkesártihkkalijt	álkkes artihkkalijt	# mwe
+#	álmmugijbuorre	álmmugij buorre	# mwe
+#	árgumenteriji.Galggi	árgumenteriji. Galggi	# mwe
+#	árvustallatbarggoåvddånimev	árvustallat barggoåvddånimev	# mwe
+#	ásadus ále	ásadusá le	# mwe
+#	ásadus áli	ásadusá li	# mwe
+#	ássjensjaddá	ássjen sjaddá	# mwe
+#	åbbålasjárvustallam	åbbålasj árvustallam	# mwe
+#	ådåsisadnet	ådåsis adnet	# mwe
+#	ådåsisdahkam	dahkam ådåsis	# mwe
+#	ådåsisdahkat	dahkat ådåsis	# mwe
+#	ådåvirggájbiejadum	ådåvirggáj biejadum	# mwe
+#	ådåájggásattjansjaddat	ådåájggásattjan sjaddat	# mwe
+#	åhpadusdárboållessjattugijda	åhpadusdárbo ållessjattugijda	# mwe
+#	åjgusboahtám	ålgus boahtám	# mwe
+#	ålgusbiejaj	ålgus biejaj	# mwe
+#	ålgusjja	ålgusj ja	# mwe
+#	ållubuorre	ållu buorre	# mwe
+#	åtgalla	åvtå galla	# mwe
+#	åtsåmavDivtasvuona	åhtsåmav Divtasvuona	# mwe
+#	æjggujiboahttsujt	æjgguji boahttsujt	# mwe
+#	ælolahka	ælo lahka	# mwe
+#	Färt slaj	Färtsláj	# mwe
+#	Láttáj duvvin	Láttájduvvin	# mwe
+#	Lågenan niellja	Lågenanniellja	# mwe
+#	aktij vuodav	aktijvuodav	# mwe
+#	aktisasj vuodan	aktisasjvuodan	# mwe
+#	bihtám sáme	bihtámsáme	# mwe
+#	báhkoboanndu dahka	báhkoboanndudahka	# mwe
+#	dij másj	dijmásj	# mwe
+#	dij dastallamijn	dijdastallamijn	# mwe
+#	dáro giel bágos	dárogielbágos	# mwe
+#	dåj matjit	dåjmatjit	# mwe
+#	export artihkal	exportartihkal	# mwe
+#	javlla buodá	javllabudá	# mwe
+#	julev sábme	julevsábme	# mwe
+#	julev sáme	julevsáme	# mwe
+#	julev sámen	julevsámen	# mwe
+#	julev sámij	julevsámij	# mwe
+#	jåhttåj in	jåhttåjin	# mwe
+#	máhtuk vuodav	máhtukvuodav	# mwe
+#	måj åt	måjåt	# mwe
+#	nam madum	nammadum	# mwe
+#	oarjje lsáme	oarjjelsáme	# mwe
+#	oarjjel sámegiellaj	oarjjelsámegiellaj	# mwe
+#	sektor ájádus vuogev	sektorájádusvuogev	# mwe
+#	tjuohkej age	tjuohkejage	# mwe
+#	tsäkkohárj ij	tsäkkohárjij	# mwe
+#	udnodis vuodajn	udnodisvuodajn	# mwe
+#	viessom tjærdda	viessomtjærdda	# mwe
+#	Árrasj ielan	Árrasjielan	# mwe
+#	ássje listaj	ássjelistaj	# mwe
+#	aktijmannam	aktij mannam	# mwe
+#	gælak	gelaj gielav	# mwe
+#	mangemusájgijt	maŋemus ájgijt	# mwe
+#	rijkajrastá	rijkaj rastá	# mwe
+#	vuostasjtjåsskåtjuollusis	vuostasj tjåsskåtjuollusis	# mwe
+#   biebbmojuogedijn    biebbmo juogedijn # mwe
+#   gáktsatjuotmiehtera	gáktsatjuot miehttara # mwe
+#   árbbedábálasjdiehto	árbbedábálasj diehto # mwe
+#   gáktsatjuotmiehtera	gáktsatjuot miehttara # mwe
+
+#
+#
+#	! hyhpen
+#
+#	duoggu-dággu	duoggu dággu	# mwe
+#	duolla-dálla	duolla dálla	# mwe
+#	duolloj-dálloj	duolloj dálloj	# mwe
+#	duon-dán	duon dán	# mwe
+#	duot-dát	duot dát	# mwe
+#	duov-dáv	duov dáv	# mwe
+#	dutkam-ja	dutkam- ja	# mwe
+#	gammbal-sjinn-båvsåjt	boares sassnebåvsåjt	# mwe
+#	ja-nuorajda	ja nuorajda		# mwe
+#	julevja	julev- ja	# mwe
+#	persåvnålasj-drámátiserim	persåvnålasj dramatiserim	# mwe
+#	vuolus-bajás	vuolus bajás	# mwe
+#	Ánná-Lijsás.Vuona	Ánná-Lijsás. Vuona	# mwe
+#	ådås-ja	ådås- ja	# mwe
+#	åvddån-ruopptot	åvddån ruopptot	# mwe
+#	Josefnamák	Josef-namák	#outcommented, but should be possible
+#	Máhttunamák	Máhttu-namák	#outcommented, but should be possible
+#	Simonnamák	Simon-namák	#outcommented, but should be possible
+#	almma-ulmusj	almmaulmusj	# correct both with and without the hyhpen
+#	almma-ulmutja	almmaulmutja	# correct both with and without the hyhpen
+#	gietjav-gávtsijn	gietjav - gávtsijn
+#	400 jage-ávvudallama	400-jageávvudallama # mwe
+#	Barggo-ja	Barggo- ja	# mwe
+#	Duolla-dálla	Duolla dálla	# mwe
+#	Kultuvrra-ja	Kultuvrra- ja	# mwe
+#	Lulle-ja	Lulle- ja	# mwe
+#
+#
+#
+#	! different lemmas
+#
+#	Abårttå	Tsuovkkanibme	# rwe
+#	Abårtå	tsuovkkanime	# rwe
+#	Abårtåv	Tsuovkkanimev	# rwe
+#	Hångel	Tjules	# rwe
+#	Hånglit	Tjullit	# rwe
+#	Kommuvnna	Suohkan	# rwe
+#	Rejerik	Ráddidus	# rwe
+#	abårttå	tsuovkkanibme	# rwe
+#	abårttåduostudagájn	tsuovkkanimduostudagájn	# rwe
+#	abårttåduostudagán	tsuovkkanimduostudagán	# rwe
+#	abårttåduostudahkaj	tsuovkkanimduostudahkaj	# rwe
+#	abårttåj	tsuovkkanibmáj	# rwe
+#	abårttålágan	tsuovkkanibmelágan	# rwe
+#	abårttån	tsuovkkanimen	# rwe
+#	abårttåtablähtta	tsuovkkanibmetablähtta	# rwe
+#	abårtå	tsuovkkanibme	# rwe
+#	abårtån	tsuovkkanimen	# rwe
+#	abårtåv	tsuovkkanimev	# rwe
+#	brevvajienajt	girjjejienajt	# rwe
+#	brevvajienastibmáj	girjjejienastibmáj	# rwe
+#	hångelav	tjullásav	# rwe
+#	hångelbåttån	tjulástallambåttån	# rwe
+#	hångelij	tjullásij	# rwe
+#	hånglimis	tjulástallámis	# rwe
+#	hånglit	tjullit	# rwe
+#	nøttera	niehte	# not smj - rwe?
+#	selskáhpijs	vidnudagájs	# rwe
+#	uttrykkajt	moallánahkojt	# rwe
+#	prostahta	åvddåráksá	# rwe
+#	prostahtabårredávda	åvddåráksábårredávda	# rwe
+#	prostahtabårredávdda	åvddåráksábårredávdda	# rwe
+#	prostahtabårrråmdávda	åvddåráksábårredávda	# rwe
+#	prostahtabårråmdávda	åvddåráksábårredávdda	# rwe
+#	prostahtabårråmdávdajn	åvddåráksábårredávdajn	# rwe
+#	prostahtabårråmdávdav	åvddåráksábårredávdav	# rwe
+#	prostahtabårråmdávdda	åvddåráksábårredávdda	# rwe
+#	prostahtainflammasjåvnnå	åvddåráksávuolssje	# rwe
+#	prostahtan	åvddårávsán	# rwe
+#	prostahtaráksá	åvddåráksá	# rwe
+#	prostahtarávsán	åvddårávsán	# rwe
+#	prostahtarávsás	åvddårávsás	# rwe
+#	prostahtas	åvddårávsás	# rwe
+#	prostahtastuoredibme	åvddåráksástuoredibme	# rwe
+#	prostahtav	åvddårávsáv	# rwe
+#	prostahtavájve	åvddåráksávájve	# rwe
+#	prostahtavájvijt	åvddåráksávájvijt	# rwe
+#	prostatabiopsiddja	åvddåráksábiopsiddja	# rwe
+#	prostatabårredávdda	åvddåráksábårredávda	# rwe
+#	prostatabårredávddaj	åvddåráksábårredávddaj	# rwe
+#	prostataj	åvddåráksáj	# rwe
+#	prostatan	åvddårávsán	# rwe
+#	prostataráksá	åvddåráksá	# rwe
+#	prostatarávsán	åvddårávsán	# rwe
+#	prostatarávsás	åvddårávsás	# rwe
+#	prostatarávsáv	åvddårávsáv	# rwe
+#	prostatastuoredibme	åvddåráks	# rwe
+#	prostatatsuottsajn	åvddåráksátsuottsajn	# rwe
+#	prostatav	åvddårávsáv	# rwe
+#	prostatáj	åvddåráksáj	# rwe
+#	hångel	tjules	# rwe
+#	hångli	tjulástallat	# rwe
+#	kryddarijt	ruttajt	# rwe
+#	turnerigij	gilpustallamij	# rwe
+#
+#
+#	! real word error
+#
+#	Boatsojäládussuogge	Boatsojäládussuorgge	# rwe
+#	Rekruttermindåjmasáme	Rekrutterimdåjma sáme	# rwe due to short first cmp
+#	Siljárbáhkon	Siljárbáhkkon	# rwe
+#	Skallujlåhkke	Skallolåhkke	# rwe
+#	Vijnagárddeniehkke	Vijnnagárddeniehkke	# rwe, cmp
+#	badjeltjállagav	bajelttjállagav	# rwe
+#	badjeltjállagin	bajelttjállagin	# rwe
+#	bajeldistjállagav	bajelttjállagav	# rwe
+#	boatsojäládusvidnudagáv	boatsojäládusvidnudagáv	# rwe
+#	boatsojäládusássij	boatsojäládusássjij	# rwe
+#	bunadijs	bunadajs	# not smj but rwe?
+#	dahkamustjerdajs	dahkamus tjerdajs	# rwe
+#	dahkamustjerdajt	dahkamustjerdajt	# rwe
+#	dubáksuovvaj	dubáhkasuovvaj	# rwe
+#	dähkágit	dähkágijt	# rwe
+#	eksámakåntåvrå	eksábmakontåvrå	# rwe, cmp
+#	gaska-biejvev	gasskabiejvev	# rwe, cmp
+#	giellaháldadusguovlluj	giellaháldadimguovlluj	# rwe
+#	guhkudagá	guhkkudagá	# rwe
+#	guolledievvavadnasav	guolle dievva vadnasav	# rwe, cmp
+#	gáddevuolen	gáttevuolen	# rwe, cmp
+#	gássjelisá	gássjela	# rwe
+#	gávkkaj	gávkoj	# rwe gávkkahit+V+IV+Ind+Prs+Sg3
+#	klubban	kluppan	# rwe (inessiv/essiv)
+#	konvensjåvnåmærrádusájt	konvensjåvnnåmærrádusájt	# rwe realworderror, cmp
+#	kultuvrramujtosuorgen	kultuvrramujttosuorgen # rwe, cmp
+#	kultuvrraájggomusplánav	kulturájggomusplánav	# rwe
+#	kultuvrraæládusprosjevtav	kulturæládusprosjevtav	# rwe
+#	låhkam	låhkåm	# rwe
+#	låhkamdádjadusáv	låhkåmdádjadusáv	# rwe
+#	låhkamij	låhkåmij	# rwe
+#	låhke	låhkke	# rwe
+#	njålggåv	njålgåv	# rwe
+#	nuorajklubban	nuorajkluppan	# rwe
+#	nuppátgiellan	nubbengiellan	# rwe
+#	oarjjepåvllåj	Oarjjepåvllåj	# rwe
+#	parlamentáralasj	parlamentaralasj	# rwe
+#	pensumav	# not a smj word - rwe?
+#	pinsetjoaggulvissaj	ájlistaktjoaggulvissaj	# rwe
+#	ristalasj	risstalasj	# rwe
+#	ristalasjvuoda	risstalasjvuoda	# rwe
+#	ristalasjvuodav	risstalasjvuodav	# rwe
+#	ruohkkij	ruohkaj	# rwe : actor noun (ruohkke-ruohkkij) vs regular noun (ruohkke -ruohkij) vs verb pret sg3 (ruohkkat - ruohkaj)
+#	rålla	roalla	# rwe
+#	skallujlåhkke	skallolåhkke	# rwe
+#	skallujlåhkkij	skallolåhkkij	# rwe
+#	skallujlåhkkijda	skallolåhkkijda	# rwe
+#	vájmmelisát	vájmmelit	# rwe
+#	válljimkuverajt	válljimkuvertajt	# rwe
+#	válljimkuverav	válljimkuvertav	# rwe
+#	Álgus	Álgos	# rwe - propernouns sg ela (Álgu - Álgus)
+#	Åhpadusmihttomiere	Åhpadusmihttomierre	# rwe
+#	álmmukbiejve	álmmukbiejvve	# rwe
+#	ålgoldiskuvera	ålgoldiskuverta	# rwe
+#	ålgoldiskuverajn	ålgoldiskuvertajn	# rwe
+#	ålgoldiskuverajt	ålgoldiskuvertajt	# rwe
+#	ålgoldiskuverav	ålgoldiskuvertav	# rwe
+#	ålgoldiskuverra	ålgoldiskuværtta	# rwe
+#	ålgoldiskuverraj	ålgoldiskuværttaj	# rwe
+#	årrijda	årrojda	# rwe
+#	lavvo	låvda	#diff word	# rwe
+#
+#
+#
+#	! sme
+#
+#	Bávgi	Bávkke	# sme
+#	Bávgijåhka	Bávkejåhkå	# sme
+#	Deanus	Dænos #sme
+#	Guovdageaidno	Guovddagæjnno	# sme
+#	Guovdageaidnoj	Guovddagæjnnuj	# sme
+#	Guovdageaidnuj	Guovddagæjnnuj	# sme
+#	Guovdageaidnun	Guovddagæjnon	# sme
+#	Guovdageainnon	Guovddagæjnon	# sme, not smj
+#	Guovdageainnun	Guovddagæjnon	# sme
+#	Viesttarmeara	Viestarmera	# sme
+#	Viesttarrmeara	Viestarmera	# sme
+#	engalasjgiela	ieŋŋilsgiela	# sme
+#	engelasj	ieŋŋils	# sme
+#
+#
+#
+#	! propernouns
+#
+#	Min Aigi	Min Áigi	# prop
+#	Naija	Najia
+#	New Zealándan	New Zealandan
+#	Nordbugt	Nordbukt
+#	Norgejn	Vuonajn
+#	Nunaatin	Nunaatan	# should be Kalaallit Nunaat
+#	Tidende:n	Tidenden	# not smj
+#	Viddas veidemann	Viddas Veidemann
+#	lofothavet	Lofothavet
+#	Sálto Sámesiebrre-NSRa	Sálto Sámesiebrre-NSR
+#	Bodø	Bådåddjo	# rwe
+#	Bodøn	Bådådjon	# rwe
+#	Gáresavvuna	Gárasavvuna	# rwe
+#
+#
+#
+#	! various outcommented
+#
+#	Gasskarijkkasasj	Rijkajgasskasasj
+#	Gasskarijkkasattjat	Rijkajgasskasattjat
+#	Nune	Mune	# what is nune? and Mune is dial of mujna, use/-spell
+#	Ánargiella	Anársámegiella
+#	Ökologalasj	Økologijjalasj	# should be corrected into a Area/SE word
+#	aktijbargguj	aktisasjbargguj	# aktijbarggat V+TV+Der/PassS+V+IV+Ind+Prt+Sg3
+#	aktijmannama	# not a word
+#	aktijmannamin	# ?
+#	aktuvieson	aktuviesun	#err/der
+#	aktuviesuna	aktuviesuna	#err/der
+#	badjelbátsos	badjelbáhtso	# overskudd err/lex sub ruhtabáhtso
+#	biologak	biolåvgålasj	# diff der
+#	budsjehtarámma	budsjæhttarámma	# firstcmp case
+#	báldojga	bálltojga	# ?
+#	båldudagájt	boalldemusájt	#diff words
+#	dihto	visses	# different word
+#	ekologagit	ekolåvgålattjat	# diff der
+#	ekologak	ekolåvgålasj	# diff der
+#	ekologisk	ekolåvgålasj
+#	ekonomak	ekonåvmålasj	# diff der
+#	gasskaa ́jges	gasskaájges
+#	gasskarijkkasasj	rijkajgasskasasj
+#	gelbugisvuohtaåvddånimev
+#	gielabargov	giellabargov	# firstcmp should be in sg nom
+#	grammatihkavuoduk	grammatihkavuodulasj	# strange cmp
+#	guhtiklágásj	geŋgalágásj
+#	guovlolattjat	guovlulattjat
+#	ietjastiská	iehtjasiska
+#	juolggamáná	juolggimáná	# ?
+#	konsekventalattja	konsekventa
+#	mangegasskabiejve	maŋŋegasskabiejve
+#	maññásis	maŋŋásis	# ?
+#	náhkebiktasijt	náhkkebiktasijt	# firstcmp nom
+#	nálgiella	nasjonalgiella
+#	oarjjealemus	oarjjealemus	# strange cmp
+#	profehtagit	profehtalattjat	#diff derivations
+#	sisijåhtem	sisijåhtem	#strange cmp
+#	smidásappo	smidáp	# wrong comp form
+#	sæbrástallamvuohtaj	sæbrástallamij
+#	tippetjåvda	# not a word
+#	vuojnnamslágav	vuojŋamslágav	# sláhka not a smj word
+#	álmmukbiejvven	álmmukbiejven
+#	ánargielak	anársámegielak
+#	ánargielav	anársámegielav
+#	árbbedábak	árbbedábálasj	# two diff der
+#	ássjeålgusgålojs	ássjegålojs
+#	ávkálasstet	ávkástallat
+#	åbbås	åbbå
+#	ålggolt	ålggot
+#	ållesattjat	ålleslattjat	#  not correct correction
+#	ålleslahttjat	ålleslattjat	#  not correct correction
+#	åvddånlåpptima	åvddånlåpptijma	# don't know what this means
+#	ökologalasj	økologijjalasj	# most surely the writer want the Area/SE variant
+#	ökonomalasj	økonåvmålasj	# most surely the writer want the Area/SE variant
+#	ökonomija	økonomiddja	# most surely the writer want the Area/SE variant
+#	økologalasj	ekologijjalasj	# most surely the writer want the Area/NO variant
+#	finansminisstar	ruhtadusministar	# different word
+#
+#
+
+
+
+'am	ham
+1000-kråvnågin	1000-kråvnån
+24-tijmasasj	24-tijmmasasj
+3-jahkasasj	3-jahkásasj
+A'dámá	Ádáma
+A'httjám	Áhttjám
+A'httsám	Áhttjám
+ANa	AN:a
+ANåj	AN:aj
+CD-aj	CD:aj
+CD-ajn	CD:ajn
+CD-an	CD:an
+CD-as	CD:as	# CD+N+ACR+Cmp-#as+N+ACR+Sg+Gen
+CD-av	CD:av
+DO:aj	DO:j
+DSBa	DSB:a
+DT’a	DT:a
+EUa	EU
+IKT-a	IKT:a
+IKTan	IKT:an
+ILO-konvensåvnå	ILO-konvensjåvnå
+ILO-s	ILO:as
+ILOa	ILO
+NATO-basaj	NATO-bássaj
+NRK3åv	NRK3:av
+NSRa	NSR:a
+NSRaj	NSR:aj
+NSRan	NSR:an
+NSRav	NSR:av
+NTV-dåkkiduvvam	NTV-dåhkkiduvvam
+SSRa	SSR:a
+TV-a	TV
+TV-an	TV:an
+TV-av	TV:av
+TV-dramaj	TV-drámáj
+TV-sáddagjin	TV-sáddagijn
+TV:A	TV:a
+TV:AV	TV:av
+TVa	TV:a
+TVan	TV:an
+o-ajn	o:jn
+
+Adne	Addne
+Adverbiálagárgadis	Adverbiállagárgadis	# firstcmp should be nom
+Afrihkaj	Afrihkkáj
+Ahttje	Áhttje
+Ajggeguovddel	Ájggeguovddel
+Ajggop	Ájggop
+Ajnas	Ájnas
+Akeldamakin	Akeldamakihin
+Aktabuohta	Avtabuohta
+Aktavuohtadiedo	Aktijvuodadiedo
+Aktitum	Aktidum
+AlmasjRiektá	Almasjriektá
+Almaslasj	Almalasj
+Almmalasj	Almulasj
+Almmulasj	Almulasj
+Altinn:aj	Altinnaj
+Amas	Amás
+Ambassada	Ambassáda
+Amerikij	Amerigij
+Amerikij	Amierigij
+Amerikin	Amerigin
+Amerikin	Amierigin
+Analoga	Analåvgå
+Andersenan	Andersenin
+AnnaStina	Anna-Stina
+Annfinn	Arnfinn
+Anályjssajuohkusa	Analijssajuohkusa
+Apollosvielljaj	Apollos-vielljaj
+Apostela	Apoasstala
+Apostelij	Apoasstalij
+Apostelijs	Apoasstalijs
+Apostelijt	Apoasstalijt
+Appij	Æhppaj
+Arran	Árran
+Arrat	Árrat
+Artihkkal	Artihkal
+Arvvedahtte	Árvvedahtte
+Askeladden:ij	Askeladdenij
+Askovis	Hásskovis
+Avos	Ávos
+Bajeltjállagijn	Bajelttjállagijn
+Balánseridum	Balanseridum
+Barggibelludagá	Barggijbelludagá
+Barggijbelludag	Barggijbelludagá
+Bargijbelludagá	Barggijbelludagá
+Barrakij	Barragij
+Bavvá	Bávva
+Bergunijn	Biergunijn
+Bielleågenanguovten	Biel-lågenanguovten
+Biethtár	Biehtár
+Biologalasj	Biologijjalasj
+Birásterapeuta	Birásterapievtta
+Birásvájkodime	Birásvájkudime
+Biseksuálakvuohta	Biseksualitiehtta
+Bjørvijka	Bjørkvijka
+Boatsujn	Boahttsujn
+Bodådjon	Bådådjon
+Bodödjo	Bådådjo
+Bodøddjo	Bådåddjo
+Botasoj-Piera	Boatsoj-Piera
+Brosjyra	Brosjijrra
+Buojk	Buojk.
+Buollenuorrre	Buollenuorre
+Buorggujin	Buorggun
+Buorkko	Boarkko
+Buorrissjivnnjádus	Buorissjivnnjádus
+Buvtajt	Buktagijt
+Bádtjihin	Bádtjijin
+Bálldalahkkoj	Bálldalakkoj
+Bárggo	Barggo
+Bárnam	Bárnám
+Bárnijniská	Bárnijniska
+Bárnnam	Bárnnám
+Båddådjon	Bådådjon
+Bådådjå	Bådådjo
+Bådødjon	Bådådjon
+Bårjjås-	Bårjås
+Cambridgan	Cambridgen
+Dagñasa	Dagŋasa
+Dahpe	Dáhpe
+Dakkavidi	Dakkavide
+Dalutjij	Dallutjij
+Dalutjis	Dallutjis
+Darogiela	Dárogiela
+Davve-Tromsså	Davve-Tråmsså
+DavveVássján	Davve-Vássján
+Davveguovllu	Davveguovllo
+Dej	Daj
+Dejs	Dajs
+Dekodárij	Dekuvddarij
+Dekodárijt	Dekuvddarijt
+Demografia	Demografijja
+Didjiv	Didjij
+Diehtebihtet	Diehtebihtit
+Dietojuohkem	Diehtojuohkem
+Dievnastumdoarjja	Dievnastusdoarjja
+Digitáliserimprográmman	Digitaliserimprográmman
+Dijav	Dijáv
+Direktørra	Direkterra
+Disjtagá	Dijstagá
+Divtasvuodna/Hellmoássjen	Divtasvuodna-Hellmo-ássjen
+DoajmmaSiebrre	Doajmmasiebrre
+Doajmmasiebbre	Doajmmasiebrre
+Doarroajvve	Doarrooajvve
+Dragstunan	Dragstunetin
+Dráma	Drámá
+Drámátiserit	Dramatiserit
+Duodj	Duodje
+Duodji	Duodje
+Duoldáda	Duoldada
+Duornnulieges	Duornoslieges
+Dutkámráde	Dutkamráde
+Dábálsj	Dábálasj
+Dáhtámásjijnajn	Dáhtámasjijnajn
+Dáhtáávudallam	Dáhtáávvudallam
+Dájddá	Dájdda
+Dájddávuosádus	Dájddavuosádus
+Dájnas	Dajnas
+Dálvadisán	Dálvvadisán
+Dálvvehávskkudahka	Dálvvehávsskudahka
+Dálánagi	Dalánagi
+Dálátji	Dálátjij
+Dámedigge	Sámedigge
+Dánmárkkuj	Danmárkkuj
+Dánmárkon	Danmárkon
+Dánmárkov	Danmárkov
+Dárbaja	Dárbaha
+Dássaj	Dássáj
+Dássádusoasálassten	Dássádusoassálassten
+Dåbdosamos	Dåbddusamos
+Dåbtos	Dåbdos
+Dåktor	Dåktår
+Dåntá	Dånntå
+Ednamråggåmviddnudagás	Ednamråggåmvidnudagás
+Ehtjin	Ettjin
+Eidsvolltsiekkadusá	Eidsvoll-tsiekkadusá
+Eksámen	Eksábma
+Elektronalasj	Elektronihkalasj
+Elektråvnnålasj	Elektronihkalasj
+Enambarggo	Ednambarggo
+Englandan	Englándan
+Epafroditosvieljav	Epafroditos-vieljav
+Essay	Essaya
+EØS-rievtevuodaj	EØS-rievtesvuodaj
+EØS-sjiehtadussa	EØS-sjiehtadus
+Fariseaja	Fariseaj
+Fierva	Fiervá
+Fileto	Filetos
+Finmarkon	Finnmárkon
+Finmárko	Finnmárko
+Finmárkon	Finnmárkon
+Finmárkos	Finnmárkos
+Finmárkov	Finnmárkov
+Finnmarkon	Finnmárkon
+Finnmárk	Finnmárkko
+Finnmárkkoduoddarin	Finnmárko-duoddarin
+Finnnmárkon	Finnmárkon
+Foalda	Fuoldá
+Foanda	Foannda
+Foanda	Fånda
+For-manowski	Formanowski
+Frelsesarméas	Frelsesarmeenis
+Fuosskos	Fuoskos
+Fámillja	Famillja
+Fámilljabiejvve	Familljabiejvve
+Gajkka	Gájkka
+Gaktu	Gåktu
+Galdhøgpiggen	Galdhøpiggen
+Galggaj	Galgaj
+Gall'	Galle
+Garasavvunis	Gárasavvunis
+Gasskanordlánda	Gasska-Nordlánda
+Gatsaj	Gahtsaj
+Geelmyden	Geelmuyden
+Gehtjá	Gehtja
+Gejr-áddjá	Gejrá-áddjá
+Gejr-ádjá	Gejrá-ádjá
+Gejrááddjá	Gejrá-áddjá
+Geologa	Geolåvggå
+Geometrija	Geometrijja
+Getja	Gehtja
+Gidagiese	Gidágiese
+GiellaGálldo	Giellagálldo
+Giellaárená	Giellaariedná
+Giellaárená	Giellaariená
+Gierisluobbal	Gierisluoppal
+Gierrisijnh	Gierrisijn
+Giesseajen	Giessesajen
+Giettjit	Giehttjit
+Girjálasjvuohtá	Girjálasjvuohta
+Girona	Gieruna
+Girtj-áddjá	Girttja-áddjá
+Goalm	Goalmát
+Goango	Goaŋgo
+Gollegiella	Gållegiella
+Gollevirgge	Gållevirgge
+Googlej	Googlij
+Gosse	Guosse
+Gouvtegielakvuodarudá	Guovtegielakvuodarudá
+Gráddes	Gráttes
+Guht	Gut
+Guoddáluvviv	Guoddaluvviv
+Guojvo	Goajvo
+Guorradallamin	Guoradallamin
+Guossá	Guossa
+Guovddooajvválattja	Guovddooajválattja
+Guovlolasj	Guovlulasj
+Guovssagasak	Guovsagis
+Guvláv	Guláv
+Gynekologalasj	Gynekologijjalasj
+Gáddj-ibme	Gáddjá-ibme
+Gáddj-ime	Gáddjá-ime
+Gáddjibme	Gáddjá-ibme
+Gáhtiáhkko	Gáhti-áhkko
+Gáljjá	Gálljá
+Gámsajta	Gámsajt
+Gárasavunin	Gárasavvunin
+Gárasavvonin	Gárasavvunin
+Gárásjåhkå	Kárásjjåhkå
+Gássjellis	Gássjelis
+Gávnin	Gávnnin
+Gåhtto	Gáhtto
+Gåjkijjávrev	Gåjkijávrev
+Gåvva	Gåvvå
+Gåvvo	Gåvvå
+Habmelin	Hábmelin
+Habmerin	Hábmerin
+Habrel	Hábrrel
+Haparánda	Haparanda
+Harrok-I∫∫gá	Harrok-Iŋŋgá
+Hattfjelldálen	Hattfjelldalan
+Havsskes	Hávsskes
+Hawaiian	Hawaiin
+HellmoCup	Hellmocup
+Hellmocuppa	Hellmocup
+Hellmocuppa	Hellmocupa
+Helmåvvå	Oarjjevuodna
+Heteroseksuálakvuohta	Heteroseksualitiehtta
+Hierenjárggáj	Hierenjárggaj
+Histåvrrålasj	Histåvrålasj
+Homoseksuálakvuohta	Homoseksualitiehtta
+Horda-lándan	Hordalándan
+Hufssa	Hufsa
+Huvva	Huvvá
+Hábmeli	Hábmelij
+Hábmelkártta	Hábmel-kártta
+Hábmim	Hábbmim
+Háldusplána	Háldadusplána
+Hálida	Hálijda
+Hálit	Hálijt
+Hámmárfestan	Hammerfestan
+Hápmera	Hábmera
+Hásskovisav	Hásskovisáv
+Hásstálus	Hásstalus
+Hávskes	Hávsskes
+Hávskke	Hávsske
+Hávskudalá	Hávsskudalá
+Hávsskedabbo	Hávsskep
+Háŋŋá	Haŋŋá
+Iavllá	Javllá
+Ibb-áhkko	Ibbá-áhkko
+Ibb-áhko	Ibbá-áhko
+Ibb-áhkov	Ibbá-áhkov
+Ibbáhkko	Ibbá-áhkko
+Idedismårijdiddjen	Idedismårididdjen
+Idol:as	Idolas
+Idtjiv	Ittjiv
+Iednegiellaanálfabetisma	Iednegiellaanalfabetisma
+Iehtjamav	Iehtjama
+Ientjáválle	Ientjaválle
+Ieridit	Ieredit
+Iesh	Iesj
+Iesjmierredim	Iesjmierredibme
+Ietjása	Ietjasa
+Ingatjijn	Iŋgátjijn
+Ingá	Iŋŋgá
+Ingáv	Iŋgáv
+Inngá	Iŋŋgá
+Inngáj	Iŋŋgáj
+Insituhtta	Instituhtta
+Ipod	iPod
+Irgijnis	Irggijnis
+Irgádallam	Irggádallam
+Italián	Italian
+Iññgá	Iŋŋgá
+Jabob	Jakob
+Jahkkepa	Jáhkkeba
+Jieg∫ahállan	Jiegŋahállan
+Joahanna	Johanna
+Johnsensa	Johnsena
+Jonatas	Johannes
+Jubmelijdam	Jubmelijdám
+Juhtusá	Juhtusa
+Julev	Julev-
+Juobbmuj	Juobmuj
+Juohkkasj	Juohkkahasj
+Juonga	Juoŋga
+Jusga	Juska	# gives wrong analysis b/c of IV/TV issue of verbs
+Jusska	Juska
+Juvdán	Juvddán
+Jábmeáhkká	Jábbmeáhkká
+Jábmeáhkáv	Jábbmeáhkáv
+Jáhkovuotnalasj	Jáhkovuonalasj
+Jápánin	Japánan
+Jämtlanda	Jämtlándan
+Jårgg	Jårggålit
+Jårggålib	Jårggålibme
+Jårggålibm	Jårggålibme
+Jårgit	Jårgijt
+Jönsson-rávgge	Jönsson-rávkke
+Kaféagálvo	Kafedjagálvo
+Kaféarahpam	Kafedjarahpam
+Kanal	Kanálla
+Kapihttal	Kapihtal
+Karakterdásse	Karakterradásse
+KarlGunnar	Karl-Gunnar
+Kathrin:en	Kathrinen
+Kinán	Kinan
+Klássalanjan	Klássalanján
+Komvux´ajn	Komvuxajn
+Korak	Gurák
+Kosultasjåvnåj	Konsultasjåvnåj
+Kristuse	Kristusa
+Kulturskåvlla	Kulturskåvllå
+Kulturskåvvlå	Kulturskåvllå
+Kultuvrraa	Kultuvrra
+Kultuvrralasj	Kultuvralasj
+Kuoljokijn	Kuoljogijn
+Kurrsa	Kurssa
+Kájáhka	Kajáhka
+Kájáhkav	Kajáhkav
+Kájáhkka	Kajáhkka
+Káráktiera	Karaktera
+Kárásjågå	Kárásjjågå
+Kárásjågå	Kárásjjågån
+Kárásjågån	Kárásjjågån
+Kárásjågås	Kárásjjågås
+Kárášjågå	Kárásjjågå
+Kárášjågån	Kárásjjågån
+Kárášjågås	Kárásjjågås
+Kárášjåhkå	Kárásjjåhkå
+Kárášjåhkåj	Kárásjjåhkåj
+Kärrstadtijn	Kärrstedtajn
+Københavnan	Københávnan
+Ladneståhpe	Laddneståhpe
+Lagabu	Lagábu
+Lappefogda	Lappefågddå
+Larssa	Lárssa
+Leastadiana	Laestadiána
+Leavnjan	Levnjan
+LeifErik	Leif-Erik
+Lettji	Littji
+Linbach	Lindbach
+LisMari	Lis-Mari
+Lofoahttaguolástus	Lofoahtta-guolástus
+Lofåhtaalmasjlågon	Lofåhta-almasjlågon
+Losaoahppijs	LOSA-oahppijs
+Ludági	Ludágij
+Lufoahttaguollimin	Lufoahtta-guollimin
+Luhták-Áhkko	Luhták-áhkko
+Lukasgieres	Lukas-gieres
+Lund:aj	Lundaj
+Lund:as	Lundas
+Luonndosuoddjimdepartemennta	Luonndosuoddjimdepartemænnta
+Luonndosuodjalim	Luonndosuodjalibme
+Lágñasa	Lágŋasa
+Lágñasin	Lágŋasin
+Láttijj	Láttij
+Lávllagirji	Lávllomgirjje
+Lávvotideda	Lávvodakideda
+Låggnit	Låggŋit
+Låggñi	Låggŋi
+Låñojma	Låŋojma
+Majtes	Majdes
+Manebuj	Maŋebuj
+Manemus	Maŋemus
+Manemusnammadum	Maŋemus
+Manemusán	Maŋemusán
+Manenagi	Maŋenagi
+Manepnamma	Maŋepnamma
+Mannel	Maŋŋel
+Mannemus	Maŋemus
+Mannoviddnudahka	Mannovidnudahka
+Maoria	Maori
+MarakattLabba	Marakatt-Labba
+Margarehte	Margarethe
+Marhuag-jågå	Marhaug-jågå
+Matematihkkaåhpådiddje	Matematihkaåhpadiddje
+Mañela	Maŋŋela
+Mañemus	Maŋemus
+Mañep	Maŋep
+Mañgemus	Maŋemus
+Maññela	Maŋŋela
+Maññelasj	Maŋŋelasj
+Maññnagi	Maŋenagi
+Maññunam	Maŋŋunam
+Ma∫emus	Maŋemus
+Mentora	Mentåvrå
+Mexicoan	Meksikon
+Miehttjejávrráj	Miehttsejávrráj
+Miellagiddivasj	Miellagiddevasj
+Mierrredimorgádna	Mierredimorgádna
+Mihttsamár	Mihttsamárra
+Mihttsamárá	Mihttsamára
+Miij	Mij
+Mija	Mijá
+Ministerrádes	Ministarrádes
+Mnåske	Måske
+Moarmesmán	Moarmesmáno
+Mobilteknologia	Mobilteknologijja
+Moren-Duollja	Morén-Duolljá
+Moren-Duolljá	Morén-Duolljá
+MorénDuolljá	Morén-Duolljá
+Motåvårjn	Motåvråjn
+Muhten	Muhtem
+Muhttijin	Muhttijn
+Muittalus	Mujttalus
+Muont	Mount
+Muttijn	Muhttijn
+Mykelvoll	Myklevoll
+Máhtijs	Máhtisj
+Málafábrihka	Málafabrihka
+Mánnájgárdde	Mánájgárdde
+Máriddja	Máriddjá
+Másken	Måsske
+Märaka	Märaga
+Månna	Månnat
+Måskke	Måsske
+Måsskoj	Måsskåj
+NRKan	NRK:an
+Nagin	Nágin
+Naryan-Mar	Narjan-Mar
+Naryan-Maran	Narjan-Maran
+Nasjnálabudsjehtan	Nasjonalbudsjehtan
+Nasjonálmonumenntaj	Nasjonalmonumentaj
+Nasjonálpárkaj	Nasjonalpárkaj
+Nasjåvnnålasj	Nasjåvnålasj
+Natsjåvnnå	Nasjåvnnå
+Natsjåvnå	Nasjåvnå
+Navbagádallen	NAV-bagádallen
+Negga-fuolkkenámáv	Negga-fuolkkenamáv
+Nielggijt	Nielgijt
+Nievrret	Nievret
+Nijlas-ádja	Nijlas-ádjá
+Nijlasáddjá	Nijlas-áddjá
+Nijlasádjá	Nijlas-ádjá
+Nils-addjá	Nils-áddjá
+Njálmálásj	Njálmálasj
+Njámádibme	Njamádibme
+Njålgidij	Njålgijdij
+Noahj	Noahij
+Noajtte	Noajdde
+Nordlanda	Nordlánda
+Nordlanda	Nordlánnda
+Nordlandan	Nordlándan
+Nordlandspoasstaj	Nordlandspostenij
+Nordlándabálggáv	Nordlánda-bálggáv
+Norgesglasset:ij	Norgesglassetij
+Normanne	Normánne
+Nubbengiela	Nuppegiela
+Nubbengielak	Nubbegielak
+Nubbengiella	Nubbegiella
+Nubbengiella	Nubbengiellan
+Nuhtti12	Nuhtti
+Nuoadehierge	Noadehierge
+Nuoajda	Nuorajda
+Nuorasamos	Nuoramus
+Nuorrasamos	Nuoramus
+Nuorrta-Sálto	Nuortta-Sálto
+Nuortta-Kálohtan	Nuorttakalåhtån
+Nuortta-Salton	Nuortta-Sálton
+Nuortta-Vuonarahtes	Nuortta-Vuodna-rahtes
+NuorttaSállto	Nuortta-Sállto
+NuorttaSálto	Nuortta-Sálto
+NuorttaSálton	Nuortta-Sálton
+NuorttaSáltos	Nuortta-Sáltos
+NuorttaTrøndelága	Nuortta-Trøndelága
+NuorttaVuonan	Nuortta-Vuonan
+Nuorttaskandinavia	Nuortta-Skandinavia
+Nuorttrijkalasj	Nuorttarijkalasj
+Nárvijka	Narvijka
+Nárvijkan	Narvijkan
+Oabba	Oabbá
+Oajvvádum	Oajvvadum
+Oajvvádusá	Oajvvadusá
+Oajvvádusájt	Oajvvadusájt
+Oarjelij	Oarjjelij
+Oarjje-Áfrikas	Oarjje-Afrihkás
+OarjjeHålogalánda	Oarjje-Hålogalánda
+OarjjeVuodna	Oarjjevuodna
+Oarjjelsámgiela	Oarjjelsámegiela
+Ofoahtá	Ofuohta
+Ornámentihkka	Ornamentihkka
+Osluj	Osloj
+Pallto	Paltto
+Parkka	Párkka
+Pavvall	Pavval
+Peggaluokta	Bieggaluokta
+Peggyijn	Peggyajn
+Piera-áddjáv	Piera-ádjáv
+Pippia	Pippiha
+Pládnaprográmmaoajvvádusáv	Pládnaprográmmaoajvvadusáv
+Prix´an	Prixan
+Programmastivrra	Prográmmastivrra
+Prostatarávsá	Åvddårávsá
+Raddidus	Ráddidus
+Rahka	Ráhka
+Raport	Rappårttå
+Rapportta	Rappårttå
+Reklame	Reklábma
+Relevanta	Relevánta
+Reportasja	Reportássja
+Rieknigådijma	Riekknigådijma
+Rievdadussan	Rievddadussan
+Rijkajgasskasj	Rijkajgasskasasj
+Rijkarádja	Rijkarádjá
+Rijkkajgasskasasj	Rijkajgasskasasj
+Rijkkakansler	Rijkakánslar
+Rijttsemrahte	Rijtsemrahte
+Rikkiv	Rikkev
+Riksántikvárraj	Rijkaantikvárraj
+Rimpijn	Rimpihin
+Risstagis	Ristagis
+Rivtagjávre	Rivtakjávre
+Rivttaga	Rivtaga
+Romsa	Råmså
+Romssåj	Råmssåj
+Romså	Råmså
+Romsån	Råmsån
+Ruonaednama	Ruonáednama
+Ruossjájn	Ruossjajn
+Ruoudi	Ruovde
+Ráddidusbeludagáj	Ráddidusbelludagáj
+Rádjála	Rádjala
+RáhkaKnutsen	Ráhka-Knutsen
+Ráhkká	Ráhkka
+Rámmátsiebrre	Rámátsiebrre
+Rámmátskåvllåj	Rámátskåvllåj
+Rápportta	Rappårttå
+Rátjaduvvá	Ratjáduvvá
+Sagaspelav	Sagaspellav
+Sagaspellavahkon	Sagaspella-váhkon
+Sahárá	Sahara
+Same	Sáme
+Samedigge	Sámedigge
+Sami	Sámij
+Samij	Sámij
+Sardnev	Sárnev
+Schwartzenegger	Schwarzenegger
+Seksuálak	Seksuálla
+Selbuássjen	Selbu-ássjen
+Shakespearesa	Shakespeares
+Sieralágásj	Sierralágásj
+Sierralahkáj	Sierraláhkáj
+Sihkarastem	Sihkarasstem
+Silddá	Silldá
+Siradiddjen	Sirádiddjen
+Siriav	Sirihav
+Sis	Sis-
+Sis-Finmárko	Sis-Finnmárko
+SisVássjá	Sis-Vássjá
+Sisnep	Sisŋep
+Sisnep-Finnmárkko	Sisŋep-Finnmárkko
+Sj-giehtje	Sisgiehtje
+Sjadda	Sjaddá
+Sjáńńar	Sjáŋŋar
+Skielkká	Skilggá
+Skotlándan	Skottlándan
+Skåvllåjáhke	Skåvllåjahke
+Sluññká	Sluŋŋka
+Smajvvi	Smájvvi
+Sosialalasj	Sosiálla
+Sosialdemokráta	Sosialdemokráhta
+Sosialdemokrátaj	Sosialdemokráhtaj
+Spannska	Spánsska
+Spánian	Spanian
+Stallo	Stállo
+Steford-Ánndá	Stefjord-Ánndá
+Steigentunan	Steigentunetin
+Steigentunet:is	Steigentunetis
+Stereotypija	Stereotypijja
+Stockholmmaj	Stockhoalmmaj
+Stokhoalmma	Stockhoalmma
+Stokhålma	Stockhålma
+Stokhålman	Stockhålman
+Straffa	Stráffa
+Strategija	Stratesjijja
+Strávnjunján	Strávnjunjen
+Stuoramus	Stuorámus
+Stuorrdigge	Stuorradigge
+Stáddáv	Státtáv
+Stáhtá	Stáhta
+Státistihkalasj	Statistihkalasj
+Ståkkåhjågå	Ståkkåhajågå
+Subttsas	Subtsas
+Suddodåbdåstattijn	Suttojdåbdåstahttijn
+Sujni	Sunji
+Sunn-ibme	Sunná-ibme
+Sunn-ibmes	Sunná-ibmes
+Sunn-ime	Sunná-ime
+Sunn-áhkko	Sunná-áhkko
+Sunn-áhko	Sunná-áhko
+Sunn-áhkon	Sunná-áhkon
+Suodjalimminisstar	Suodjalimministar
+Suoggñoajvve	Suoggŋooajvve
+Suogñaba	Suogŋaba
+Suoner	Suoŋer
+Suonger	Suongir
+Suovenirvuobddem	Souvenirvuobddem
+Suoña	Suoŋa
+Suoñaj	Suoŋaj
+Suoñajga	Suoŋajga
+Svejpa	Svejba
+SvenRoald	Sven-Roald
+Sveriga	Svieriga
+Sverigin	Svierigin
+Svieri-	Svierik-
+Svierigi	Svierigij
+Svierign	Svierigin
+Sviskeráktsa	Svisskaráktsa
+Sváhkena	Svahke
+Sválbárddaj	Svalbárddaj
+Systemahtalasj	Systematihkalasj
+Systemáhtak	Systematihkalasj
+Ságat:ij	Ságatij
+Sálikijn	Sáligijn
+SámeNet	SameNet
+Sámedigg	Sámedigge
+Sámediggi	Sámedigge
+Sámeminisstar	Sámeministar
+Sámepolihkka	Sámepolitihkka
+Sámi	Sámij
+Sámigiella	Sámegiella
+Sámmedikke	Sámedikke
+Sávgga	Sávggá
+Såppijin	Såppijn
+Tallinnin	Tallinin
+Teahterav	Teáhttarav
+Teatret	Teáhtar
+Teknologalasj	Teknologijjalasj
+Teknologija	Teknologijja
+Terapeuta	Terapievta
+Terapeuta	Terapievtta
+Teáhtarin	Teáhttarin
+Teáhter	Teáhtar
+Titusvieljam	Titus-vieljam
+Tjadne	Tjaddne
+Tjernobylhåhkkånime	Tjernobyl-håhkkånime
+Tjiegnalis	Tjiegŋalis
+Tjiegñalis	Tjiegŋalis
+Tjielaobme	Tjieloabme
+Tjielggidussa	Tjielggidusá
+Tjielggijihpit	Tjielggibihtit
+Tjiellgidusán	Tjielggidusán
+Tjierrigis	Tjierregis
+Tjierrusav	Tjierrasav
+Tjoaggulvispedagoga	Tjoaggulvispedagåvgå
+Tjoaggulvispedagogan	Tjoaggulvispedagåvgån
+Tjoaggulvispedagogaåhpadusá	Tjoaggulvispedagåvgååhpadusá
+Tjoaskojmá	Tjoaskojma
+Tjukte	Tjuktje
+Tjuodjánihtit	Tjuodtjánihtit
+Tjuoggulvis	Tjoaggulvis
+Tjuojggadálkas	Tjuojkkadálkas
+Tjuottjudusfábmudagá	Tjuottjodusfábmudagá
+Tjuottjudusguovllo	Tjuottjodusguovllo
+Tjuottjudusguovlo	Tjuottjodusguovlo
+Tjágñalij	Tjágŋalij
+Tjálálasj	Tjálalasj
+Tjáñada	Tjáŋada
+Tjáñadastijma	Tjáŋadastijma
+Tjáñajga	Tjáŋajga
+Tjåhkånibme	Tjåhkanibme
+Torejn	Torijn
+Tromssa	Råmsså
+Tromsså	Råmsså
+Tromså	Råmså
+Trøndelagas	Trøndelágas
+Tsieggimgålå	Tsieggimgålo
+Tsåhkkå	Tsåkkå
+Ttråmsån	Råmsån
+Tuoljá	Tuolja
+Turija	Turiha
+Tuvvo	Duvvo
+Tækstaoajvvádusá	Tækstaoajvvadusá
+Ubmema	Ubbmema
+Udni	Uddni
+Ufuohtán	Ufuohtan
+Uhtsvuodna	Utsvuodna
+Ulljonjosskidam	Ulljonuoskodibme
+Unjárggas	Unjárgas
+Unnánisj	Unnánasj
+Uppsálán	Uppsálan
+Vadnem	Vaddnem
+Vajsán	Vájsán
+Vakti	Vákti
+Vallboan	Vallbon
+Varrudága	Varrudagá
+Vestarmeran	Viestarmeran
+Viddnodaknummar	Vidnudaknummar
+Viddnudagá	Vidnudagá
+Viddnudagáj	Vidnudagáj
+Viddnudagán	Vidnudagán
+Viddnudahka	Vidnudahka
+Viddnudahkaásadiddje	Vidnudahkaásadiddje
+Viddnudágá	Vidnudagá
+Viddnudáhka	Vidnudahka
+Viedtjale	Viedtjala
+Viestarálen	Viestarállasin
+Viestaráles	Viestarállasis
+Vijdabut	Vijddábut
+Vijdábiut	Vijddábut
+Vijdábuj	Vijddábuj
+Vijdábut	Vijddábut
+Vitsákijn	Vitságijn
+Vuodnabat	Vuodnabahta
+Vuodnabáhta	Vuodnabahta
+Vuojñadastijga	Vuojŋadastijga
+Vuojŋŋánisá	Vuojŋŋanisá
+Vuoj∫∫anis	Vuojŋŋanis
+Vuolgitjáv	Vuolgitjav
+Vuoll-áddjá	Vuollá-áddjá
+Vuollááddjá	Vuollá-áddjá
+Vuolná	Vuollná
+Vuonana	Vuonan
+Vuonna	Vuodna
+Vuorasamos	Vuorrasamos
+Vuoratjismániino	Vuoratjismáno
+Vuorddujuvvam	Vuordeduvvam
+Vuorkasta	Vuorggista
+Vuorodamoase	Vuorodimoase
+Vuosja	Vuossja
+Vuoádus	Vuosádus
+Váhtera	Váhtjera
+Vájkkudusanályjssa	Vájkkudusanalijssa
+Vájsaluoktaj	Vájsáluoktaj
+Vákkvársijddaga	Vákkvársijdaga
+Vásjodav	Vasjodav
+Vátte	Vatte
+Wales:an	Walesan
+Watson:in	Watsonin
+Yellowknifan	Yellowknifen
+YouTuba	YouTube
+Youtube	YouTube
+Zealandan	Ådå Zealánda
+abmása	abmasa
+additiv	additijvva
+addjmin	addjimin
+adnam	adnám
+adne	addne
+adnebehtit	adnebihtit
+adnot	ádnot
+adnoárenáj	adnoariednáj
+adreserit	adressierit
+affisja	affissja
+afghanalasj	afghanistanalasj
+afghanalattja	afghanistanalattja
+ahkep	agep
+aho	áho
+aht	ahte
+ahti	ahte
+ajge	ájge
+ajmon	ájmon
+ajn	ájn
+ajnegis	ájnegis
+akijsasjbarggo	aktisasjbarggo
+akisasjvuohta	aktisasjvuohta
+aktajn	aktan
+aktajn	avtajn
+aktelattjattjat	aktelattjat
+aktelisát	aktelis
+aktij-vuodan	aktijvuodan
+aktijbargon	aktisasjbargon
+aktijbargov	aktisasjbargov
+aktijdibme	aktidibme
+aktijdiddje	aktididdje
+aktijdit	aktidit
+aktijdussaj	aktidussaj
+aktijsasj	aktisasj
+aktijsasjbarggo	aktisasjbarggo
+aktijvuodavságastime	aktijvuodaságastime
+aktijvuoden	aktijvuodan
+aktisahttjat	aktisattjat
+aktisajbargo	aktisasjbargo
+aktisasattjat	aktisattjat
+aktisasjbárgguj	aktisasjbargguj
+aktisasjvuoidan	aktisasjvuodan
+aktisasvuodav	aktisasjvuodav
+aktitjit	aktidit
+aktivalattjat	aktijvalattjat
+aktivuodan	aktijvuodan
+aktivuodav	aktijvuodav
+aktivuohta	aktijvuohta
+akto	aktu
+aktsasasjbarggo	aktisasjbarggo
+aktsasjbarggo	aktisasjbarggo
+aktugis	aktagis
+aktøraj	akterraj
+akvárrra	akvárra
+albetiserim	alfabetiserim
+algadit	álgadit
+alkaholav	alkohåvlåv
+alkohola	alkohåvllå
+alkoholas	alkohåvlås
+alkoholav	alkohåvlåv
+alkohåla	alkohåvllå
+alkohåla	alkohåvlå
+allaprosá	allapråvsså
+allasiská	allasiska
+allaskuvla	allaskåvllå
+allerika	allerijkka
+allessjattuk	ållessjattuk
+allmukjuohkusij	álmmukjuohkusij
+almajduvvat	almoduvvat
+almasja	almatja
+almatij	almatjij
+almi	alme
+almmuduvvi	almoduvvi
+almmugij	álmmugij
+almmugijn	álmmugijn
+almmulasj	almulasj
+almmulasjvuoda	almulasjvuoda
+almmulasjvuohta	almulasjvuohta
+almmulasjvuohtaj	almulasjvuohtaj
+almmulattja	almulattja
+almmulattjat	almulattjat
+almodallamav	almudallamav
+almuduváj	almoduváj
+almugis	álmmugis
+almusj	almulasj
+alternativa	alternatijva
+alto	álldo
+alásbielen	alusjbielen
+amannin	mannin
+ambassada	ambassáda
+ambassada	ambassáhta
+ambassadørra	ambassaderra
+amerik	Amerik
+amerika	Amerijka
+amerikmanne	amierikmanne
+amávva	smávva
+analog	analåvgå
+analoga	analåvgå
+analyjssa	analijssa
+andet	adnet
+aneduvi	aneduvvi
+ani	åni
+annanássa	ananássa
+anneksav	annevsav
+annonsajn	annånsåjn
+ansojdis	ánsojdis
+antikvárrra	antikvárra
+antologian	antologijjan
+antonymajt	antonijmajt
+antropoligia	antropologijja
+anályjssajuohkusav	analijssajuohkusav
+análysajuogos	analijssajuogos
+anályserit	analysierit	# NOR
+anályseritjit	analysieritjit	# NOR
+apostel	apåstal
+apostela	apoasstala
+apostelij	apoasstalij
+apostelijda	apoasstalijda
+apostelijdago	apoasstalijdago
+apostelijgirje	apoasstalijgirje
+apostelijs	apoasstalijs
+apostelijt	apoasstalijt
+apostelin	apoasstalin
+apostelis	apoasstalis
+arbbedábálasj	árbbedábálasj
+arena	ariedná
+arenajt	arienájt
+arenan	arienán
+arenav	arienáv
+areáladnema	arealadnema
+argojda	bargojda
+arkeologa	arkeolåvggå
+arkeologalasj	arkeologijjalasj
+arme	árme
+armesmáno	moarmesmáno
+arrangeret	arrangerit
+artemistiemmpelijt	Artemistiemmpelijt
+artihkkal	artihkal
+artikel	artihkal
+arvusmahtet	arvusmahttet
+arvusmáhteduvvat	arvusmahteduvvat
+arvusmáhtátjit	arvusmahtátjit
+arvá	arva
+arálajt	areálajt
+askovassaj	hásskovissaj
+askovis	hásskovis
+asmáduvvá	assmaduvvá
+assemguollen	bassemguollen
+assimiliserimpolitihkka	assimilerimpolitihkka
+assje	ássje
+assjegiehtadallamprográmmajda	ássjegiehtadallamprográmmajda
+assjijda	ássjijda
+asski	esski
+astida	astijda
+astidav	astijdav
+asttuáigi	asstoájgge
+atombátsadis	atombátsidis
+atsåjga	åtsåjga
+auohkanijda	suohkanijda
+automahtalasj	automáhtalasj
+automahtalattjat	automáhtalattjat
+avddåla	åvddåla
+avijsabajelttjálajn	avijssabajelttjállagijn
+avisa	avijsa
+avisan	avijsan
+avtagielajda	avtagielagijda
+avtagärddasattjajt	avtagärddásattjajt
+avtagærddásj	avtagærddásasj
+avtajtjálmij	avtajtjalmij
+avtaraják	avtatraják
+avtarbirges	avtatbirges
+avtavlágásjvuodajt	avtalágásjvuodajt
+avtaárvugisá	avtaárvvusasj
+avtaárvusasj	avtaárvvusasj
+avtje	avtse
+avtje	ávtje
+avtját	avtsát
+avtsat	avtsát
+avvo	ávvo
+baddimijt	báddimijt
+badjegájnaj	badjeguojnaj
+badjálahkkoj	badjálakkoj
+badtjit	bádtjit
+bagadalle	bagádalle
+bagojt	bágojt
+baha	bahá
+bahodam	bahojdam
+bahtaguorstielas	báhtaguorstielas
+bahábiellja	bahábiellje
+bahánjuonak	bahájuonak
+bajas	bajás
+bajassjaddam	bajássjaddam
+bajassjaddamdile	bajássjaddamdile
+bajassjaddamdilev	bajássjaddamdilev
+bajeltisáv	bajeldisáv
+bajeltjállagav	bajelttjállagav
+bajelttjálajn	bajelttjállagijn
+bajelttjálajt	bajelttjállagijt
+bajkijn	bájkijn
+bajttá	bájttá
+bajásbielen	bajásjbielen
+bajássjaddám	bajássjaddam
+bakku	bággo
+bakkuj	bákkoj
+bakteria	bakterij
+bakttelåbddåj	báktelåbddåj
+balansav	balánsav
+bale	bále
+balges	bálges
+baloaŋŋa	balloaŋŋa
+balåŋŋav	ballåŋŋav
+barddet	barddit
+bardátjit	bárdátjit
+barg-gat	barggat
+bargev	barggev
+bargga	barggá
+bargggamvuoge	barggamvuoge
+barggoharjjidallamin	barggohárjjidallamin
+barggomárknánij	barggomárnánij
+barggov	bargov
+barggujn	bargujn
+bargojde	bargojda
+bargu	bargo
+barnnásis	bárnnásis
+barr	ber
+barrggogaskostibme	barggogaskostibme
+basav	basáv
+bastálmuhttet	bastálmahttet?
+batsidisá	bátsidisá
+bavtjes	bávtjes
+belij	bielij
+belijt	bielijt
+belludag	belludagá
+belludagav	belludagáv
+belludahklaj	belludahkaj
+benav	bienav
+benkaj	beŋkaj
+berajviddnudagá	berajvidnudagá
+bernna	biernna
+beronij	berunij
+berrahijdat	berrahijdát
+berrahijsá	berrahisá
+berranammadusájt	berajnammadusájt
+berri	bierri
+berunskáddne
+berunujt	berunijt
+berusdibme	berustibme
+beruskahtá	berustahtek
+beruskáhtes	berustahtek
+beruskáhtá	berustahtek
+berustáhtek	berustahtek
+besrustibme	berustibme
+besá	besa
+bibliografia	bibliografijja
+bibliotehkka	bibliotiehkka	# girjjevuorkká
+bibliotehkkafálaldagáv	bibliotiehkkafálaldagáv
+bibliotiekárra	bibliotekárra
+biddusav	bihtusav
+biebamadimsadje	biebmadimsadje
+biebbmojt	biebmojt
+biebmadisæládusán	biebmadimæládusán
+biebojt	biebmojt
+biedjatjit	biejatjit
+biedninga	biedniga
+biedningijt	biednigijt
+biehkav	biekkav
+biehtár	Biehtár
+biejsttemis	biejsstemis
+biejvvådåsa	biejvveådåsa
+biejádum	biejadum
+bielguhttaj	biel	guhttaj
+bielji	bieljij
+biellebalduk	biellebálduk
+biellenubjáhke	biellenupjahke
+bielljebielli	bielljebielle
+bierek	bierik
+bierggas	biergas
+bierkkán	bierggán
+biernnabivddárin	biernnabivdárin	# rwe - Bivddár (one who invites) removed from speller b/c ppl actually want to write bivdár (hunter)
+biernná	biernna
+bierrriji	bierriji
+biesselåvgav	biesseloavgáv
+biestin	biesstin
+bija	bieja
+biktasi	biktasa
+biktiasijt	biktasijt
+bilehta	billehta
+bilkkedáhtji	bilkkedahtji
+bilkkális	bilkális
+bingov	biŋŋguv
+binguj	biŋŋguj
+binna	binná
+binneplågåj	binneplågoj
+binnitjav	binnátjav
+biologak	biologijjalasj
+biologalasj	biologijjalasj
+biomassas	biomássas
+biotopa	biotåvppå
+bira	birra
+birggo	bierggo
+birrrusij	birrusij
+birrusjij	birrusij
+birrásav	birrasav
+birsov	birssov
+birásbálka	birásbálká
+birássuoddjim-ministtar	birássuoddjimministar
+biseksuálak	biseksuálla
+biseksuálakvuoda	biseksualitiehtta
+bissovasj	biso
+bivastuvviv	bivástuvviv
+bivddam	bivddám
+bivddiip	bivddip
+bivgga	bivgge
+bivggajáfo	bivggejáfo
+bivggajáfojs	bivggejáfojs
+bivggarievnajs	bivggerievnajs
+bivggarievnajt	bivggerievnajt
+bjelt	bajelt
+bliánnta	blyánnta
+blogga	bloagga
+blyantajs	blyántajs
+boadadalá	boadádalá
+boadnásj	boadnjásj
+boadás	boandás
+boahhteájgen	boahtteájgen
+boahta	boahtá
+boahtssuv	boahttsuv
+boajdobiel	boajtobiel-
+boaresboahtám	buorisboahtem
+boaso	boasto
+boassjo-tjakke	boassjotsakke
+boasstovuoda	boastovuoda
+boastotjåddagij	boastotjåddågij
+boatsojboa	boatsoj
+boatsosujto	boatsojsujtto
+boatte	boahtte
+boattsujt	boahttsujn
+boattsujt	boahttsujt
+boavtjohållå	boavtjohålla
+bohtá	boahtá
+bokstávtjoahkken	bokstavtjoahkken
+bokstávtjoahkkev	bokstavtjoahkkev
+brigade	brigáhta
+brånsav	brånsåv
+budsjehterit	budsjettierit
+buhtadussan	buohttidussan
+bullárastij	bullardastij
+buogñaj	buogŋaj
+buogñaniestes	buogŋaniestes
+buohta-stahttemijt	buohtastahttemijt
+buohtalahkkuj	buohtalakkoj
+buohtastahtet	buohtastahttet
+buohtastáhtá	buohtastahtá
+buohtusasj	buohtasasj
+buohtusattjan	buohtasattjan
+buojkut	buojkot
+buoldán	buoldan
+buollat	buollát
+buollemslanga	buollemsláŋŋa
+buolvvamålssåmij	buolvvamålssomij
+buonndudahka	boanndudahka
+buorastahttem	buorástahttem
+buoredut	buorebut
+buorgguji	buorggu
+buorisboahtám	buorisboahtem
+buorissjivvnjedij	buorissjivnnjedij
+buorret	buoret
+buorrre	buorre
+buorránan	buorránam
+buorádusav	buorádusáv
+buosjástallat	buosjudallat
+buotjájn	buotjajn
+buoñajs	buoŋajs
+buvtagijt	buktagijt
+buvtaj	buktagij
+buvtajt	buktagijt
+buvti	buvtij
+buvvalis	bivvalis
+bydjas	byddjas	# Bielle lågenanguovten	# mwe
+báddnidum	báddnum
+bádjel	badjel
+bádjelin	badjelin
+bádnevarrresvuodadievnastusás	bádnevarresvuodadievnastusás
+bágát	bagát
+báhkoadne	báhkoaddne
+báhkoboanndudáhka	báhkoboanndudahka
+báhkobánkav	báhkobáŋkav
+báhkobåndudagá	báhkoboanndudagá
+báhkobåndudagáv	báhkoboanndudagáv
+báhkobåndudahka	báhkoboanndudahka
+báhkosåjdibme	báhkosåjådibme
+báhkotsoamij	báhkotsåmij
+báhpora	páhppára
+báhppaámmat	báhppaámmát
+báhtaj	bahtaj
+báhtarimladjnja	báhtarimladnja
+báhtjá	báhtja
+báhtjáv	báhtjav
+báhtsudisájt	bátsudisájt
+báhttjamánna	báhttjamánná
+bájka	bajka
+bájkalasj	bájkálasj
+bájkin	bájkijn
+bájkjin	bájkijn
+bájkka	bajkka
+bájkkenam	bájkenam
+bájkkenammaregisterij	bájkkenammaregisstarij
+bájkkenamájdi	bájkkenamájda
+bájkkálasj	bájkálasj
+bájttalibme	bájttelibme
+báktasjijt	báktjasijt
+báktjáju	báktju
+bálggajda	bálggájda
+bálggav	bálggáv
+bálkaj	bálgaj
+bálkkájn	bálkájn
+bálkkáv	bálkáv
+bállagáhttiv	bállagahttiv
+bállaj	bálláj
+bálldalahkkoj	bálldalakkoj
+bánjit	bánijt
+bánkan	báŋkan
+bánkas	báŋkas
+bánnka	báŋŋka
+bánntsarit	bánntsárit
+bárberhievvil	barberhievvil
+bárberit	barbierit
+bárbersåbddå	barbersåbddå
+bárggijda	barggijda
+bárggomáhtukvuohta	barggomáhtukvuohta
+bárggosajijs	barggosajijs
+bárgguj	bargguj
+bárnijniská	bárnijniska
+bárnás	bárnes
+bárnástat	bárnestat
+básska	basska
+bátsadallat	bátsádallat
+bátsijme	bátsijma
+bávsev	bavsev
+bávva	Bávva
+báŋŋkakonto	báŋŋkakuntoj
+bådi	bådij
+bådiga	bådijga
+bådnjot	bådnjåt
+båhtjij	båhtji
+båhttålij	båhtålij
+båjkåtisj	båjkådisj
+båkkås	båkkas
+båkto	båktå
+båldojga	båltojga
+båldojma	båltojma
+båldudallam	boalldudallam
+båldudallat	boalldudallat
+båldåstij	båltåstij
+bålltåt	bålltot
+båndorij	bånndurij
+bårgidij	bårgijdij
+bårråbehtit	bårråbihtit
+båråtjiiit	båråtjit
+båtijma	båtjijma
+båtjo	båhtju
+båttåtj	båttåsj
+båvnnarabddaj	båvnnerabddaj
+båvvå	båvva
+båvvåj	båvvaj
+chipsa	tjipsa
+cohkaras	Čohkkiras
+cohkarassáme	Čohkkiras-sáme
+cuppa	kuhppa
+cuppav	kuhppav
+dabegis	dábegis
+dabridam	dabrridam
+dabridit	dabrijdit
+dagadam	dagádam
+dagij	dagi
+dagádtjit	dagátjit
+dagáduvvisá	dagáduvvisa
+dahka	dahkat
+dahka	dahká
+dahkadallet	dahkadallat
+dahkav	dagáduvvá
+dahkav	dahkat
+dahkdalle	dahkadalle
+dahkt	dahkat
+dahpádus	dáhpádus
+dahpáduvvam	dáhpáduvvam
+dahpáduvvat	dáhpáduvvat
+dajd	dajt
+dajvvárap	dajvap
+dakkavidi	dakkavide
+dalgev	dálkev
+dalsmoen	Dalsmoen
+dalutji	dallutjij
+dalutjij	dallutjij
+dalutjis	dallutjis
+dalvvek	dálvvek
+dangas	daŋgas
+danska	dánska
+dapatus	dáhpádus
+darbo	dárbo
+darda	darta
+dardav	dartav
+dardda	dartta
+darddaj	darttaj
+darmme	dármme
+dasssta	dassta
+dasta	dassta
+daste	dasste
+daste	dasti
+dasádusás	dássádusás
+databása	dáhtábása
+dataj	dáhtáj
+davver	dávver
+davverá	dávvera
+dejs	dajs
+dejt	dajt
+dejte	dajda
+dekodára	dekuvddara
+dekodárijda	dekuvddarijda
+demografia	demografijja
+demografiaj	demografijjaj
+demografian	demografijjan
+demografiav	demografijjav
+demografiija	demografijja
+demográfia	demografijja
+demokratiajda	demokratijjajda
+demokratiav	demokratijjav
+demokratiaåvddånahttem	demokratijjaåvddånahttem
+demokráta	demokráhta
+demokrátija	demokratijja
+demostratijva	demonstratijva
+demostrántajs	demonstrántajs
+depártementaj	departementaj
+dertjestibme	diertjestibme
+designa	desájnna
+dess	des
+destinasjåvnnåviddnudagáj	destinasjåvnnåvidnudagáj
+di	dij
+diakrona	diakåvnnå
+diamiehter	diamiehtar
+diamiehter-diamiehtar
+dibakjiegge	dibákjiegge
+dibmanit	dibmánit
+dibmasabbo	dibmásabbo
+dibmasamos	dibmásamos
+dibmasap	dibmásap
+didaktalasj	didaktihkalasj
+didalasj	dijdalasj
+diddje	didja
+dide	diede
+diededihttjat	diededittjat
+diededusájn	diedádusájn
+diededusájt	diedádusájt
+diededusán	diedádusán
+dieh-tojuohkemav	diehtojuohkemav
+diehket	diehtet
+diehtemahtá	diehtemahttá
+diehtij	diedij
+diehtij	diehti
+diehtojuohkemmatriála	diehtojuohkemmateriála
+diehtojuohkemteknologiav	diehtojuohkemteknologijjav
+diehtomjuohkemgáldojn	diehtojuohkemgáldojn
+dielbastit	dielbestit
+dienastusánis	dievnastusánis
+dieredit	dierredit
+diervnastit	dievnastit
+diet	diehti
+diettelis	diehttelis
+dievnnot	dievnnut
+dievnárises	dievnárases
+diggodit	digguhit
+digitál	digitála
+dijav	dijáv
+dijájna	dijájn
+diktajn	divtajn
+diktajt	divtajt
+diktav	divtav
+diliv	dilev
+dillev	dilev
+dinngum	diŋŋgum
+dinngut	diŋŋgut
+dinnguv	diŋŋguv
+direktøra	direktera
+direktørav	direkterav
+direktørra	direkterra
+direktørramålssom	direkterramålssom
+dispensjasjåvnåjt	dispensasjåvnåjt
+divná	divna
+divnárguojmme	dievnárguojmme
+divrasamos	divrrasamos
+divtasvuona	Divtasvuona
+divtsavuonaga	divtasvuonaga
+diñgajs	diŋgajs
+diŋŋgot	diŋŋgut
+dnaprosessajda	DNA-prosessajda
+doadjuj	doaddjuj
+doahhpij	doahppij
+doahkkijt	dåhkijt
+doahkkoteahterav	doahkkoteáhttarav
+doajmajda	dåjmajda
+doajmmajt	dåjmajt
+doajmmgåhtin	doajmmagåhtin
+doappit	doahppit
+doarjaga	dårja
+doarjjaba	doarjjoba
+doarroajvve	doarrooajvve
+doarroojvve	doarrooajvve
+dojmmavieso	doajmmavieso
+dojt	dåjt
+doktorijn	dåktårijn
+dokumentasjåvnnåprosjektav	dokumentasjåvnnåprosjevtav
+dorrum	doarrum
+dramatiserema	dramatiserima
+dramatiseremav	dramatiserimav
+dramatiseremijn	dramatiserimijn
+drámáhtalasj	dramatihkalasj
+drámátalasj	dramatihkalasj
+drámátiseridum	dramatiseridum
+drámátiserim	dramatiserim
+drámátiserima	dramatiserima
+drámátiserimav	dramatiserimav
+drámátiserimij	dramatiserimij
+drámátiserimijt	dramatiserimijt
+drámátiserit	dramatiserit
+drámátiserit	dramatisierit
+drámátálasj	dramatihkalasj
+dsj	DSJ
+dudagá	duvdagá
+dudálahttja	dudálattja
+dugátja	duogátja
+dujni	dunji
+duktama	dutkama
+duktijs	dutkijs
+dulbedit	dulpedit
+duobbbmo	duobbmo
+duobbeli	duobbelij
+duobda	duobdá
+duobddaga	duobddága
+duodalahttjat	duodalattjat
+duoddegålåjt	duoddegålojt
+duoddemándáhtajt	duoddemandáhtajt
+duodenn	duodden
+duodjekurasajt	duodjekursajt
+duodjeterminologijajn	duodjeterminologijjajn
+duodjjeviddnudagán	duodjevidnudagán
+duodjáre	duodjára
+duogátjáv	duogátjav
+duogñasbiktasij	duogŋasbiktasij
+duohkaj	duohkáj
+duohkáij	duohkáj
+duoht	duot
+duohte	duohta
+duojdesta	dåjdesta
+duojánaj	duojáŋaj
+duolbbadanŋás	duolbbadaŋás
+duoppsoj	duoppsij
+duornosvákkes	Durnosvákkes
+duorrádalli	doarrádalli
+duostu	duosstu
+duottarmusea	duottarmusiedja
+dutammáhtto	dutkammáhtto
+dutkajuvvam	dutkaduvvam
+dutkajuvvat	dutkaduvvat
+dutkamstragijaj	dutkamstratesjijjaj
+dutkistit	dutkastit
+dutkámráde	dutkamráde
+duvdadit	duvdedit
+dábálahttjat	dábálattjat
+dáddal	dáttal-dáddala
+dáddtja	dádtja
+dádjadahtesvuoha	dádjadahtesvuohta
+dádjáda	dádjada
+dádjádam	dádjadam
+dágojimme	dagojimme
+dágásdallat	dágástallat
+dáhkam	dahkam
+dáhkamusá	dahkamusá
+dáhkamusájt	dahkamusájt
+dáhkat	dahkat
+dáhki	dahki
+dáhkorássetjiektjamsaljov	dahkorássetjiektjamsaljov
+dáhká	dahká
+dáhpadahka	dáhpádahka
+dáhpádusa	dáhpádusá
+dáhpádusajda	dáhpádusájda
+dáhpáduva	dáhpáduvá
+dáhpáduvaj	dáhpáduváj
+dáhtámá-sjijnajn	dáhtámasjijnajn
+dáhtámásjijnajn	dáhtámasjijnajn
+dáhtámásjijnajt	dáhtámasjijnajt
+dáhtámásjijnav	dáhtámasjijnav
+dáhtáståhkåmprográmmajt	dáhtáståhkamprográmmajt
+dájadusá	dádjadusá
+dájdalisj	dájdalis
+dájddamusea	dájddamusiedja
+dájddáduojev	dájddaduojev
+dájddávuosádus	dájddavuosádus
+dájvabut	dájvvábut
+dájvvabut	dájvvábut
+dákkáraha	dákkára
+dálasjájge	dálásjájge
+dálkkádagá	dálkádagá
+dálkkádakrievddadibmáj	dálkádakrievddadibmáj
+dálkkádakrievddamij	dálkádakrievddamij
+dálkkádakrievddamijt	dálkádakrievddamijt
+dállá	dálla
+dálvvamárnánij	dálvvemárnánij
+dálvvehávskkudahka	dálvvehávsskudahka
+dálvvemánánijt	dálvvemárnánijt
+dálvvevuojñastibmáj	dálvvevuojŋastibmáj
+dálvvvemárnánijda	dálvvemárnánijda
+dálátji	dálátjij
+dánnsat	dánssat
+dárbaja	dárbaha
+dárbojde	dárbojda
+dárbáhi	dárbahi
+dárkastibme	dárkestibme
+dárkastiddje	dárkestiddje
+dárkastus	dárkástus
+dárkelappot	dárkkelappot
+dárkkestahttá	dárkestahttá
+dárkkestimen	dárkestimen
+dármeduhtet	dármeduhttet
+dármesabmusa	dármedabmusa
+dárogielaak	dárogielak
+dárogielakoahppij	dárogieloahppij
+dároigielas	dárogielas
+dárustattját	dárustahttját
+dárvulasj	dárbulasj
+dássaj	dássáj
+dássádusguddnebálkka	dássádusguddnebálkká
+dát-tja	dáttja
+dátábásajs	dáhtábásajs
+dávdijs	dávtijs
+dähkágá	dähkága
+däjvádallin	dejvadallin
+dåbbdot	dåbddåt
+dåbbdusa	dåbddusa
+dåbbdå	dåbddå
+dåbbelijs	dåbbelis
+dåbddisá	dåbddisa
+dåbddosin	dåbddusin
+dåbdosamos	dåbddusamos
+dåbmahtesvuohta	dåbmarahtesvuohta
+dåbmalis	dåbmaris
+dåbmarisát	dåbmarit
+dåbtos	dåbdos
+dågu	dagu
+dåhhki	dåhkki
+dåhkkidusáv	dåhkkidimev
+dåjmajde	dåjmajda
+dåjmalis	doajmmelis
+dåjmma	doajmma
+dåjmmaplánas	doajmmaplánas
+dåjmájt	dåjmajt
+dåkki	dåhkki
+dåktora	dåktåra
+dåktorijt	dåktårijt
+dåktårå	dåktåra
+dål	dál
+dålke	dålge
+dålkima	dålkkuma
+dålkkum-åhpadadusáv	dålkkum-åhpadusáv
+dålkkåjs	dålkåjs
+dållåenierra	dållånierra
+dållåruson	dållårusun
+dåmmtá	dåntå
+dåmtta	dånntå
+dåmådit	dåmadit
+dåmåjdam	dåjmadam
+dåntá	dånntå
+dåntáj	dånntåj
+dåppelis	dåbbelis
+dårbulasj	dárbulasj
+dårjadit	doarjjalit
+dårjån	dårjajn
+dårvvu	dårvvo
+dåsj	dåjs
+dåssijt	dåssjijt
+dåssja	dåssju
+dåssjo	dåssju
+dåttot	dættot
+dåvter-dåvtår 
+dåvvå	dåvva
+edanama	ednama
+edanamdajvva	ednamdajvva
+eddik	ieddik-ieddiga
+ededis	idedis
+edmamvuolrájgge	ednamvuolrájgge
+ednambarggominisstar	ednambarggoministar
+eitjá	ietjá
+ekologijjalasj	økologijjalasj
+ekonoma	ekonåvmmå
+ekonomija	ekonomiddja
+eksamav	eksámav
+eksamen	eksábma
+eksámen	eksábma
+eksámena	eksáma
+eksámenav	eksámav
+eksámenijs	eksámas
+eldagasstij	eldagastij
+elektralasj	elektronihkalasj
+elektronalasj	elektronihkalasj
+elektronalattjat	elektronihkalattjat
+elektronåvnålasj	elektronihkalasj
+elektrovnålasj	elektronihkalasj
+elektråvnnålasj	elektronihkalasj
+elektråvnnålattjat	elektronihkalattjat
+elfábmoviddnudagás	elfábmovidnudagás
+elfábmoviddnudahka	elfábmovidnudahka
+elfábmoviddnudak	elfábmovidnudak
+elfámoviddnudagás	elfábmovidnudagás
+enagi	ednagijt
+energia	enersjijja
+energiav	enersjijjav
+energijav	enersjijjav
+energijja	enersjijja
+energijjagálldo	enersjijjagálldo
+erit	ierit
+ertaljpptsa	ertaljupptsa
+esjdåbdov	iesjdåbdov
+essay	essaya
+estetalasj	estetihkalasj
+etalasj	etihkalasj
+etjasa	ietjasa
+etján	ietján
+etnisitehtta	etnisitiehtta
+etnologa	etnolåvggå
+ettijn	ettjin
+ettjn	ettjin
+europa	Europa
+europeak	euråvpåk
+europealasj	euråvpålasj
+evalurerimav	evaluerimav
+evangelium	evangiella
+evangeliuma	evangeliumma
+evangeliumav	evangeliummav
+evangeliumij	evangeliummaj
+evangeliumijn	evangeliummajn
+evangeliumin	evangeliumman
+evangeliumis	evangeliummajn
+exportas	expårtås
+faktora	faktåvrrå
+faktovrå	faktåvrå
+faládagájt	fálaldagájt
+faláldagájt	fálaldagájt
+familljas	familjas
+faññga-goahtáj	fáŋŋga-goahtáj
+ferrosementas	fierrosementav
+fiebarin	fiehparin
+fierva	fiervá
+fiervvaj	fiervváj
+fiettarbåvså	fiehtarbåvså
+fijåvlåjn	fiåvlåjn
+filmmaindustria	filmmaindustrijja
+filmátalasj	filmáhtalasj
+final	finálla
+finansminisstar	finansministar
+finnmárkolahka	finnmárkkoláhka
+finnougralasj	finno-ugralasj
+finálistajs	finalistajs
+foarmmal	fårmal
+fonologiav	fonologijjav
+footballav	fotbállov
+formannskáhppe	formanskáhppa
+fotografa	fotográffa
+freelanserin	freelánssarin
+fridddja	friddja
+fridddjabåttåjn	friddjabåttåjn
+friddjevuohta	friddjavuohta
+fránnskagiellaj	fránskagiellaj
+fuohttan	fuohttán
+fursstá	furssta
+fursstáviellde	fursstaviellde
+fylkasuohkani	fylkkasuohkanij
+fylkegielda	fylkagielda
+fylkegielda	fylkkagielda
+fylkesbibliotehka	fylkabibliotehka
+fylkkeålmmåj	fylkaålmåj
+fysalasj	fysihkalasj
+fábel	fábal
+fábmalis	fábmális
+fábmofaktorin	fábmofaktåvrån
+fábvmosystemas	fábmosystemas
+fágalatjat	fágalattjat
+fággadit	fággádit
+fágájgasskasasj	fágajgasskasasj
+fágálasj	fágalasj
+fáhkabiras	fáhkabirás
+fáhkalasj	fágalasj
+fáhkaterminologijav	fáhkaterminologijjav
+fáktora	faktåvrrå
+fákturájt	faktuvrajt
+fáladagájn	fálaldagájn
+fálaldágájda	fálaldagájda
+fálla	fála
+fálla	fállá
+fálladuvvá	fáladuvvá
+fállagi	fállagij
+fámilja	familja
+fámiljaj	familjaj
+fámiljaj	familljaj
+fámiljajda	familjajda
+fámiljajn	familjajn
+fámiljajn	familjan
+fámiljajnis	familjajnis
+fámiljajnis	familjanis
+fámiljajt	familjajt
+fámiljan	familjan
+fámiljanis	familjanis
+fámiljas	familjas
+fámiljastruktuvra	familljastruktuvra
+fámiljav	familjav
+fámillja	famillja
+fámilljaavijsajn	familjahávsskudallam
+fámilljadåjmadum	familjadåjmadum
+fámilljahávsskudallam	familjahávsskudallam
+fámilljaj	familljaj
+fámilljajn	familjajn
+fámilljajnis	familjajnis
+fámilljaministerijn	familljaminisstarijn
+fámilljan	familjan
+fámilljan	familljan
+fámilljasijdav	familljasijdav
+fámilljastruktuvraj	familljastruktuvraj
+fámilljastruktuvrajt	familljastruktuvrajt
+fámilljasuorggáj	familljasuorggáj
+fámilljaåssudagán	familljaåssudagán
+fármasit	fármastit
+fávoriserim	favoriserim
+fávrrovuodas	fávrosvuodas
+fåvddå	fåvttå
+fåvdåk	fåvtåk
+gabas	gabás
+gah-pe-ra	gahpera
+gaherahtá	gahperahtá
+gahkko	gáhkko
+gahtu	gáhtu
+gajggot	gajkkot
+gajhtsajt	gájtsajt
+gajk	gájk
+gajkka	gájkka
+gajkkudáhtji	gajkudahtji
+galbbatsuopppoj	galbbatsuoppoj
+galbá	galba
+galg-gi	galggi
+galgajme	galgajma
+galgalulujin	galgalulun
+galgg	galggat
+galgga	galggá
+galggit	gálggit
+galggq	galggá
+galgi	galggi
+galgá	galga
+galgá	galggá
+gall'	galla
+gallegahttja	gallegattja
+gallgi	galggi
+galmasabbo	galmmasabbo
+galsoaŋga	galsåŋga
+gangan	gáŋgan
+gannuduvvá	ganuguvvá
+gappte	gáppte
+garantia	garantijja
+garggalimes	gárggalimes
+garggalit	gárggalit
+garisvándoj	Garisvándoj
+garrastuhtetuvvam	garrastuhteduvvam
+garráp	garrap
+garráp	garrasap
+garvvidum	gárvvidum
+garvvunam	gárvvunam
+garññelijn	garŋŋelijn
+garŋŋelasstat	garŋŋelasstet
+gaskala	gasskala
+gasken	gaskan
+gaskkaj	gasskaj
+gasskajda	gaskajda
+gasskanordlánda	Gasska-Nordlánda
+gasskarijkasasj	rijkajgasskasasj
+gasskav	gaskav
+gastadit	gástadit
+gatjaj	gatjáj
+gatjalvisbágujn	gatjálvisbágujn
+gatjalvisáv	gatjálvisáv
+gatjáldagáv	gatjálvisáv
+gatjálvisaj	gatjálvisáj
+gatjálvispronomen	gatjálvispronåvmmå
+gatjátij	gatjádij
+gattjá	gahttjá
+gattsatit	gattsastit
+gavnnu	gávnnu
+gavnná	gávnná
+gavás	gávas
+gehtjás	gehtjas
+geilajt	gielajt
+genbankan	gednabáŋkan
+genehtalasj	genetihkalasj
+genehtalattjat	genetihkalattjat
+generáliserimav	generaliserimav
+gengak	geŋgak
+geografalasj	geografijjalasj
+geográfija	geografijja
+geologa	geolåvggå
+geologalasj	geologijjalasj
+geologiaj	geologijjaj
+geometria	geometrijja
+geñgas	geŋgas
+ggSiá	Siggá
+gidásadjo	gidásádjo
+gieddisvuodajn	gierddisvuodajn
+giedjaga	giedjega
+giedjagahtte	giedjegahtte
+giedjekdanŋás	giedjekdaŋás
+giehtadalladuvvá	giehtadaláduvvá
+giehtudisaj	giehtudisáj
+giejdajdis	giedajdis
+giel	giella
+gielaestehtalasj	giellaestetihkalasj
+gielavlasj	gielalasj
+gieldajde	gielajda
+gieldajde	gieldajda
+gieldda	giellda
+giellaadnnijs	giellaaddnijs
+giellaarena	giellaariedná
+giellabánkav	giellabáŋkav
+gielladadjadibme	gielladádjadibme
+gielladuvddemárenáj	gielladuvddemariednáj
+giellafámiljan	giellafamiljajn
+giellafámiljas	giellafamiljas
+giellaguovddáš	giellaguovdásj
+giellanjuolgádusájn	giellanjuolgadusájn
+giellaoahppamárená	giellaoahppamariedná
+giellaoahppamárená	giellaoahppamariená
+giellaoahppamárenán	giellaoahppamarienán
+giellapedágogihkalasj	giellapedagogihkalasj
+giellapolitija	giellapolitijja
+giellaprosjektajt	giellaprosjevtajt
+giellateknologalasj	giellateknologijjalasj
+giellateknologiav	giellateknologijjav
+giellaárena	giellaariedná
+giellaárená	giellaariedná
+giellaárená	giellaariená
+giellaárenáj	giellaariednáj
+giellaárenájt	giellaarienájt
+giellaárenán	giellaarienán
+gielloahppam	giellaoahppam
+gielppusa	gilppusa
+gierddisuovda	gierddisvuoda
+gieresvuosdav	gieresvuodav
+giergavmánná	gierkavmánná
+gierisábnnásijt	gierisábnnasijt
+gierresav	gierrisav
+gierrraga	gierraga
+giesej	giesij
+giessejaŋádága	giessejaŋádagá
+giessekulturaj	giessekultuvrraj
+giessekáfea	giessekafedja
+giessekáfeav	giessekafejav
+giesseloahpaj	giesseloahpáj
+giessájgge	giesseájgge
+giessé	giesse
+gihtta	gitta
+gijttemråhkalvis	gijttemråhkålvis
+gilldejieña	gilldejieŋa
+ginndalav	ginntalav
+giojálasjvuoda	girjálasjvuoda
+girdásj	girddásj
+giresvuodan	gieresvuodan
+girjatbievlla	girjakbievlla
+girji	girjij
+girjit	girjijt
+girjjerádaj	girjjerájdoj
+girjjim	girjjam
+girjá-lasjvuodav	girjálasjvuodav
+girjá-lasjvuohtaj	girjálasjvuohtaj
+girjálasj-vuoda	girjálasjvuoda
+girjálasvuoda	girjálasjvuoda
+girjálasvuodan	girjálasjvuodan
+girjálasvuohta	girjálasjvuohta
+girjálsjvuodav	girjálasjvuodav
+girkkko	girkko
+girkkkon	girkkon
+girkkolahka	girkkoláhka
+girkkominisstar	girkkoministar
+girráma	gierráma
+gista	gistá
+gitjit	gitjijt
+glássadájdáv	glássadájdav
+goabbak	goabbák
+goaivo	goajvo
+goalm	goalmát
+goalmadis	goalmádis
+goalmat	goalmát
+goappatjijda	goappátjijda
+goapptjij	goappátjij
+goappátij	goappátjij
+goappátjit	goappátjijt
+goarrjot	goarjjot
+goarrsát	goarssát
+goaska	guoska
+goassk	goasske
+goasski	goasske
+goasski	guosski
+goasská	guosská
+goassák	goassak
+goathe	goahte
+goavgás	goavggá
+goavgás	goavggás
+goavjvvu	goajvvu
+gommbá	gummbá
+goppátjij	goappátjij
+gosse	guosse
+gotalasj	gåhtalasj
+grada	gráda
+gradaj	grádaj
+grafalasj	gráffalasj
+grammátihkas	grammatihkas
+gráderij	grádaj
+gráderin	grádan
+grámmátihkalasj	grammatihkalasj
+grámmátihkka	grammatihkka
+grámátihkkagirjijt	grammatihkkagirjijt
+gudin	guhtik
+guggnahij	guggŋahij
+guhkas	guhkás
+guhkesfilmm	guhkesfilmma
+guhkla	guhka
+guhkudáhka	guhkkudahka
+guhkáhit	guhkahit
+guhkásåhpadussa	guhkásåhpadusá
+guht	gut
+guhtimus	guhtimusj
+gujtti	guojtti
+gujttiji	gujddiji
+gujttim	gujddim
+gujttimijt	gujddimijt
+gujttimorgádna	gujddimorgádna
+gujttimsadje	gujddimsadje
+gujttimássjijs	gujddimássjijs
+gujttit	gujddit
+gula	gulá
+gulaj	guláj
+gullajiv	gullájiv
+gulldaliddjijlåhkå	gulldaliddjijlåhko
+gulldaliddjit	gulldaliddjijt
+gulldalidje	gulldaliddje
+gulliji	gulluji
+gullumvuohtaj	gulluvasjvuohtaj
+guládallan	guládallam
+guládaládimijn	guládallamijn
+guládaládimijs	guládallamijs
+guobajt	guobájt
+guobbák	goabbák
+guodam	guodám
+guodda	guoddá
+guoddalimme	guoddalibme
+guoddamlimoarev	guoddalimoarev
+guoddáluvviv	guoddaluvviv
+guodjodij	gudjodij
+guodjot	gudjot
+guodkadaláduvá	guoskadaláduvá
+guohtsaj	guotsaj
+guojmema	guojmáma
+guojmestiská	guojmestiska
+guojmmevuohtasjiehtadusáj	guojmmevuodasjiehtadusáj
+guojmmása	guojmmesa
+guojmmásiská	guojmmásiska
+guojtelis	guojttelis
+guokso	guoksu
+guoktalåkávtsát	guoktalåkavtsát
+guoktij	guokti
+guoktáladdet	guoktáladdat
+guoktálattek	guoktálattak
+guolbbaj	guolbbáj
+guolkajs	guolgajs
+guollebiebbama	guollebiebbmama
+guollebiebbmamviddnudagáj	guollebiebmadimvidnudagáj
+guollegiebmarisav	guollegiebmarisáv
+guollekvotajda	guollekvåvtåjda
+guollihin	guollijin
+guoppásj	goappásj
+guoppátja	goappátja
+guor-rasi	guorrasi
+guoradalladuvvam	guoradaláduvvam
+guoradalladuvvá	guoradaláduvvá
+guoradallámáv	guoradallamav
+guoradimme	guoradime
+guorátji	guorátjij
+guoskadálli	guoskadalli
+guoskki	guosski
+guossak	goassak
+guosska	guosská
+guosskasasj	guoskavasj
+guosskavasj	guoskavasj
+guosskevasj	guoskavasj
+guosste	goasste
+guovddooajvválattjaj	guovddooajválattjaj
+guovddooajvválattjajs	guovddooajválattjajs
+guovdádtjin	guovdátjin
+guovkkis	guovggis
+guovlolasj	guovlulasj
+guovluj	guovlluj
+guovoljt	guovlojt
+guovtegielak-vuoda	guovtegielakvuoda
+guovtegirják	guovtegirjak
+guovtejagak	guovtejagák
+guovtelåges	guoktalåges
+guovteoajvák	guovteåjvak
+guovvgis	guovggis
+guovvloj	guovloj
+gurgidij	gurgijdij
+gus-sa	gussa
+gusas	gusás
+guvdátjijn	guovdátjijn
+gynekologa	gynekolåvgå
+gynekologaj	gynekolåvggåj
+gynekologas	gynekolåvgås
+gynokolåvggå	gynekolåvggå
+gádda	gáddá
+gáddan	gádden
+gáhpustimfábmuj	gáhpustallamfábmuj
+gáhpustimfámov	gáhpustallamfámov
+gáhtsot	gahtsot
+gáhttunijda	gahttunijda
+gáhttunijn	gahttunijn
+gájbbadus	gájbbádus
+gájbbadusájt	gájbbádusájt
+gájkke	gájkka
+gájkká	gájkka
+gájkkásij	gájkaj
+gájkáj	gájkaj
+gájkájt	gájkajt
+gájmma	gájmme
+gájpes	gájbes
+gájt	gájda
+gáksa	gáktsa
+gáladahka	gáládahka
+gáladakmuohta	gáládakmuohta
+gálbbe-nahk-båvsåjt	gálbenákbåvsåjt
+gálbbit	galbbit
+gálggå	gålggå
+gállásjvuohta	gállasjvuohta
+gálmmijt	galmmijt
+gálmmum	galmmum
+gámav	gámáv
+gámádit	gámadit
+gápptijt	gáptijt
+gárgadisvássta	gárgadisvásta
+gárggádisájt	gárgadisájt
+gárjebut	gártjebut
+gárranissaj	gárránissaj
+gárvedimminisstar	gárvedimministar
+gárvvasa	gárvvása
+gárvvet	garvvet
+gárvvi	gárvvit
+gárvvij	gárvvidij
+gárvvim	gárvvánam
+gárásjågåga	kárásjjågåga
+gásjelisvuoda	gássjelisvuoda
+gásluovtoahppijn	Gásluovt-oahppijn
+gássel	gássjel
+gássjegis	gássjelis
+gássjelissan	gássjelin
+gássjelivuodajt	gássjelisvuodajt
+gássjkot	gassjkot
+gásskadássáj	gasskadássáj
+gásstamánna	gásstamánná
+gátjadin	gatjádin
+gátjáduvvá	gatjáduvvá
+gátját	gatját
+gátságav	gávtságav
+gávgas	gávkas
+gávnna	gávnná
+gávnnuhi	gávnnuji
+gávtsat	gávtsát
+gávtttuj	gávttuj
+gávvarisnjunnje	gavvarisnjunnje
+gávvå	gåvvå
+gå-nå-gi-sá	gånågisá
+gåbdit	gåbdijt
+gåbtjo	gåbtjå
+gåbttjo	gåbttju
+gåddam	gåddåm
+gågtu	gåktu
+gåhpaj	gåhpåj
+gåhtjåduvvi	gåhtjoduvvi
+gåhttjojma	gåhtjojma
+gåhttjådit	gåttjådit
+gåhttop	gåhttjop
+gåhttsom	gåhttsåm
+gåhttuj	gåhttju
+gåjggåt	gåjkkåt
+gåjgijt	gålgijt
+gåjkunisásj	gåjkudisásj
+gåjlmmå	gålmmå
+gåkto	gåktu
+gåku	gåktu
+gålgidahtij	gålgijdahtij
+gålgidam	gålgijdam
+gålgidij	gålgijdij
+gålgudalájga	gålkudalájga
+gålldåsámegilla	gålldåsámegiella
+gållnam	gållnåm
+gållåbehtit	gållåbihtit
+gålmas	gålmås
+gålmmå-jahkásasj	gålmåjahkásasj
+gålåjs	gålojs
+gålåjt	gålojt
+gåmbalijt	gåmmbalijt
+gåmbål	gåmbal
+gånna	gånnå
+gånågisfámilja	gånågisfamilja
+gånågisfámillja	gånågisfamillja
+gåpttå	gåbdå
+gårvvumjáhkkaj	gårvvomjáhkkaj
+gåsos	gåsås
+gåssta	gåsstå
+gåttjot	gåhttjot
+gåttjådå	gåttjåda
+gåviduvvá	gåvviduvvá
+gåvojt	gåvåjt
+gåvov	gåvåv
+gåvvo	gåvvå
+gåvvuj	gåvvåj
+gåvvåji	gåvvidi
+gåvåstahkke	gåvåstahtte
+habres	hábres
+habrra	hábrrá
+habrrav	hábrráv
+haddidin	háddidin
+hadja	hádja
+hahppida	háhppida
+hallusav	hállusav
+hallán	hállán
+hamhuha	hamuha
+hapsit	hapsijt
+harmonia	harmonijja
+harmoniserigav	harmoniserimav
+haskovasáv	hásskovisáv
+haskovis	hásskovis
+hasoduvvet	hasoduvvat
+hehkav	hekkav
+heisaj	hejsaj
+helikopterijn	helikåpptårijn
+heteroseksuálak	heteroseksuálla
+heteroseksuálakvuoda	heteroseksualitiehtta
+hiebadáhkkás	hiebadahkes
+hiebadáhkkás	hiebadahkká
+hiebadáhkkás	hiebadahkkás
+hiebalvis	hiebalgis
+hiebá	hieba
+hiebádum	hiebadum
+hiehp	hiehpá
+hiehpa	hiehpá
+hiej-tedimij	hiejtedimij
+hiejitj	hiejtij
+hiejttej	hiejttet
+hiemssedit	hiemssidit
+hieredissan	hieredussan
+hiererarkialasj	hierarkijjalasj
+hietij	hiejtij
+hilidam	hilijdam
+his-tåvrå	histåvrå
+historjá	histåvrå
+histårja	histårjå
+histårja	histåvrrå
+histårålasj	histåvrålasj
+histåvr	histåvrrå
+histåvralasj	histåvrålasj
+histåvrrålasj	histåvrålasj
+hoajddá	hoajddi
+hoalla	hoallá
+homofilija	homofilijja
+homoseksuálakvuoda	homoseksualitiehtta
+hormonav	hormåvnåv
+horoskoahppa	horoskåvppå
+huksominisstar	huksoministar
+humanististalasj	humanistalasj
+humanitera	humaniterra
+huoma	huoman
+hábbmimárenan	hábbmimarienán
+hábbmin	hábbmim
+hábmemin	hábbmimin
+hábmidahttijn	hábbmidattijn
+hábmidam	hábbmidam
+hábmidimes	hábmedimes
+hábmidip	hábbmidip
+hábmidum	hábbmidum
+hábmiduvvam	hábbmiduvvam
+hábmiduvvat	hábbmiduvvat
+hábmiduvvi	hábbmiduvvi
+hábmiduvvá	hábbmiduvvá
+hábmim	hábbmim
+hábmima	hábbmima
+hábmimin	hábbmim
+hábmimvuogijt	hábbmimvuogijt
+hábmit	hábbmit
+hábmádimijt	hábmedimijt
+hábmádum	hábbmidum
+hábmáduvvá	hábbmiduvvá
+hábmáris	Hábmeris
+hábmáris	hábbmáris
+hádjemánájt	háddjemánájt
+hájida	hájijda
+háladusán	háldadusán
+háldadimguolov	háldadimguovlov
+háldadusgátjálvisájda	háldadusgatjálvisájda
+háldaduslasj	háldadus
+háldádit	háldadit
+háldádusguovlo	háldadusguovlo
+háldáduslágajt	háldaduslágajt
+háldádussaj	háldadussaj
+háledijn	háledattijn
+hálida	hálijda
+hálidav	hálijdav
+hálidi	hálijdi
+hálidij	hálijdij
+hálidin	hálijdin
+hálit	hálijt
+hálldogiddagisssaj	hálldogiddagissaj
+hálldádussaj	háldadussaj
+hálláhit	hállahit
+hálsjet	hállsjet
+hálvvá	hálvva
+hám	ham
+hámmánin	hámnan
+hán	hájn
+háppset	happset
+hárdov	hárddov
+hárj-jánit	hárjjánit
+hárjjanit	hárjjánit
+hárjjiidallat	hárjjidallat
+hárjjjáni	hárjjáni
+hárjánam	hárjjánam
+hárraj	hárráj
+hásoduvvat	hasoduvvat
+hásot	hasot
+hásstalusajt	hásstalusájt
+hásstalusan	hásstalussan
+hásstalusan	hásstalusán
+hásstalussa	hásstalus
+hásstalusssan	hásstalussan
+hásstádussan	hásstalussan
+hásstáliddje	hásstaliddje
+hásstálus	hásstalus
+hásstálussan	hásstalussan
+hásstálusáj	hásstalusáj
+hásstálusájs	hásstalusájs
+hásstálusájt	hásstalusájt
+hávddadam	hávddádam
+hávddadimen	hávddádimen
+hávddadimsálmma	hávddádimsálmma
+hávddadusá	hávddádusá
+hávddehårrre	hávddehårre
+hávskke	hávsske
+hávskkes	hávsskes
+hávskudallam	hávsskudallam
+hávskudallat	hávsskudallat
+hávskudalli	hávsskudalli
+hávsskedabbo	hávsskep
+hávsskudallamprográmmáj	hávsskudallamprográmmaj
+hávvirrievnajs	hávvarrievnajs
+häjtanissan	häjttanissan
+hådjan	hådjån
+hållå	hålla
+hållåmájgge	hållamájgge
+hållåt	hållat
+hålåv	hålav
+híjtajt	hijtajt
+iPhonean	iPhonen
+ibmeda	ibmáda
+ibnnot	ibnnit
+ideajt	idejajt
+ideajt	idiejajt
+idealajt	ideálajt
+idelogijaj	ideologijjaj
+identehta	identitehta
+identiehtav	identitehtav
+identitehttaj	identitiehttaj
+idi	idij
+idiedis	idedis
+idjábiejvve	idjabiejvve
+idéa	ideja
+idéajt	idejajt
+idéajt	idiejajt
+iebtjes	sjiebtjes
+iednegiellaanálfabetisma	iednegiellaanalfabetisma
+iednijniská	iednijniska
+iehjtasisá	iehtjasisá
+iehkediijt	iehkedijt
+iehkeven	ihkeven
+iehpeássjálisá	iehpeássjálattja
+iehpeássálasj	iehpeássjálasj
+iehtam	iehtjam
+iehtam	ietjam
+iehtj	iesj
+iehtjadij	iehtjádij
+iehtjadijda	iehtjádijda
+iehtjadijn	iehtjádijn
+iehtjadijt	iehtjádijt
+iehtjamij	allasim
+iehtjanimme	ietjanimme
+iehtjasij	ietjasa
+iehtjá	ietjá
+iehtjádi	iehtjádij
+iehtjádijtaj	iehtjádijda
+iehtjájduhttemijt	ietjájduhttemijt
+iehtáda	iehtjáda
+iehtádij	iehtjádij
+iehtádijda	iehtjádijda
+iejas	ietjas
+iejtas	ietjas
+iejtá	ietjá
+iejvvot	iejvvit
+iejá	ietjá
+iemeálmmugvijddudagá	iemeálmmukvijddudagá
+iemeálmmukaktisasajbargov	iemeálmmukaktisasjbargov
+iemeálmmukgirjálasvuoda	iemeálmmukgirjálasjvuoda
+ieneplågåjs	ieneplågojs
+ienngisa	ieŋŋgisa
+ienngisgielav	ieŋŋilsgielav
+iennilsgiellaj	ieŋŋilsgiellaj
+iennit	ienni
+ienŋilsgiellaj	ieŋŋilsgiellaj
+iesguhtik	iesjguhtik
+iesjarádálattjat	iesjrádálattjat
+iesjdåbdåv	iesjdåbdov
+iesjgenga	iesjgeŋga
+iesjgengalágásj	iesjgeŋgalágásj
+iesjmiellulasj	iesjmiellusasj
+iesjmujtolis	iesjmujtulis
+ietja-sa	ietjasa
+ietjajduhttet	ietjájduhttet
+ietjama	iehtjama
+ietjamav	ietjam
+ietjamij	allasim
+ietjamij	iehtjama
+ietjan	ietján
+ietjasav	ietjas
+ietjasij	ietjasa
+ietjastiská	ietjastiska
+ietjsa	ietjas
+ietjsa	ietjasa
+ietjáda	iehtjáda
+ietjádij	iehtjádij
+ietjádis	iehtjádis
+ietjáduhttema	ietjájduhttema
+ietjáduvvám	ietjájduvvam
+ietjálágasj	ietjálágásj
+ietjáláhkaj	ietjáláhkáj
+ietjása	ietjasa
+ietjásij	iehtjásij
+ietját	ietjat
+ietá	ietjá
+ieññilsav	ieŋŋilsav
+ieññilsgielav	ieŋŋilsgielav
+ieññilsgiellaj	ieŋŋilsgiellaj
+ieŋils	ieŋŋils
+ieŋilsa	ieŋŋilsa
+ieŋilsgielaj	ieŋŋilsgielaj
+ieŋilsgielas	ieŋŋilsgielas
+ieŋilsgiellaj	ieŋŋilsgiellaj
+ieŋilsis	ieŋŋilsis
+ieŋilsk	ieŋŋils
+ieŋŋgel	ieŋŋgil
+ieŋŋgilas	ieŋŋgilis
+ieŋŋilskgielak	ieŋŋilsgielak
+ihkáp	ihkap
+ihttusijda	ihtusijda
+ihttásjbiejbiejve	ihttásjbiejve
+ila	ilá
+ilmmenuoskudibme	ilmmenuoskodibme
+improvisásjåvnå	improvisasjåvnå
+improvisásjåvnåj	improvisasjåvnåj
+imálussjaj	imálusjáj
+inarmasstá	inármasstá
+induistria	industrijja
+industria	industrijja
+industriaj	industrijjaj
+industrialiserigijn	industrialisierimijn
+industrijaviddnudahkaj	industrijjavidnudahkaj
+inebut	ienebut
+infastruktuvrra	infrastruktuvrra
+ingenierra	ingenerra
+innovásjåvnålasj	innovasjåvnålasj
+insitusjåvnnå	institusjåvnnå
+institusjonálalasj	institusjåvnålasj
+integrereduvvam	integreriduvvam
+intonásjåvnnåj	intonasjåvnnåj
+intonásjåvnåjn	intonasjåvnåjn
+inuita	inuihta
+irge	irgge
+irges	irgges
+irges	irkes
+irgev	irggev
+irássuoddjim-minisstar	birássuoddjimministar
+islandalahttja	islándalattja
+islánda	Islánda
+itjas	ietjas
+itjjij	ittjij
+ittij	ittjij
+ittjijj	ittjij
+ittjin	ettjin
+ittjj	ittjij
+ittátjij	ihttátjij
+jabe	jábe
+jaen	jagen
+jag	ja
+jahhkegávdda	jahkegávdda
+jahhkegávddavirgge	jahkegávddavirgge
+jahkaj	jahkáj
+jahkasajs	jahkásasj
+jahkasasj	jahkásasj
+jahkatjuoden	jahketjuoden
+jahkedahte	jáhkedahte
+jahkedahtte	jáhkedahtte
+jahkegirjji	jahkegirjje
+jahkep	jáhkkep
+jahkijga	jáhkijga
+jahkkevasj	jáhkkevasj
+jahkkin	jáhkkin
+jahkká	jáhkká
+jahká	jáhká
+jahkása	jahkásasj
+jahkáv	jáhkáv
+jahtålijma	jåhtålijma
+jala	jali
+jallasamos	jallamus
+jargidit	jårgijdit
+jarnñamin	jarŋŋamin
+jarña	jarŋa
+jarñan	jarŋan
+jarñav	jarŋav
+jarñña	jarŋŋa
+jarññá	jarŋŋá
+jaskiduvvat	jaskijduvvat
+jasskidit	jaskijdit
+jasskisabbo	jasskadabbo
+jasskisap	jasskadap
+javkkat	jávkkat
+javllabálldav	javllabálldáv
+javllaevangelium	javllaevangiella
+javllahábrá	javllahábrrá
+javllakortav	javllakårtåv
+javlá	javllá
+javre	jávre
+javrijn	jávrijn
+javrresturjja	jávrresturjja
+javrráj	jávrráj
+javrátjijs	jávrátjijs
+javvli	javlli
+javvlá	javllá
+jeans-j	jeansaj
+jege	jage
+jerkav	jergav
+jieddnáslågådijn	jieddnáslåhkåmin
+jiednabieljas	jiednabeljas
+jiednebátte	jiednabátte
+jieggnudam	jieggŋudam
+jiegna	jiegŋa
+jiegña	jiegŋa
+jiegñabiernna	jiegŋabiernna
+jiegñan	jiegŋan
+jiegñarabadan	jiegŋarabdan
+jiegñáj	jiegŋaj
+jiegŋahockey	jiegŋahåhkij
+jieg∫a-instrumentaj	jiegŋainstrumentaj
+jieg∫a-musijkka	jiegŋamusijkka
+jienastamguoradallam	jienastimguoradallam
+jienastumlåhko	jienastimlåhko
+jienesta	jienasta
+jienstimkårtåjt	jienastimkårtåjt
+jienstuslåhkuj	jienastuslåhkuj
+jiermmálattjat	jiermálattjat
+jieña	jieŋa
+jieñaj	jieŋaj
+jieñajn	jieŋajn
+jieñajs	jieŋajs
+jieñan	jieŋan
+jieñav	jieŋav
+jieñeldiddje	jieŋeldiddje
+jie∫a	jieŋa
+jinnsa	jinsa
+jna	jná
+joarge	joarkke
+joargget	joarkket
+joarggin	joarkkin
+joarkkakåvlå	joarkkaskåvlå
+jorkkám	joarkkám
+ju	ja
+jubmedievnastusá	jubmeldievnastusá
+jugálvissa	jugálvis
+juhkamui	juhkamuj
+juht	jut
+juir	jur
+julev	julev-
+julevs	julevsábme
+julevsamegiellaj	julevsámegiellaj
+juodosnále	judosnále
+juohkasit	juohkásit
+juohkir	juokkirak
+juohkká	juohkka
+juohkkáláhkáj	juohkkaláhkáj
+juohkus-	juogos-
+juojdd	juojddá
+juojddáv	juojddá
+juojggajt	juojggat
+juojkajt	juojgajt
+juolggeláhtasijt	juolggelahtasijt
+juolggenovtåj	juolggenåvtåj
+juolkken	juolggen
+juonga	juoŋga
+juongalágásj	juoŋgalágásj
+juonin	juonen
+juoñgalágásj	juoŋgalágásj
+jurr	jurra
+jusga	juska
+jusska	juska
+juvdán	juvddán
+juvdár	juvdá
+juvdára	juvdá
+juvdára	juvdáj
+já	ja
+jábbmegijdisá	jábbmegijdesa
+jábbmemij	jábmemij
+jábmajahkuga	jábmajáhkuga
+jáge	jage
+jágŋat	jagŋat
+jáhki	jáhkki
+jáhkjátjit	jáhkátjit
+jáhkkogahtes	jáhkodak
+jáhkulas	jáhkulasj
+jáhkáj	jahkáj
+jáhkásasj	jahkásasj
+jáhkásattjat	jahkásattjat
+jámegij	jámigij
+jámigus	jámigusj
+jándura	jánndura
+jávlaj	javlaj
+jávllamis	javllamis
+jávllat	javllat
+jávllá	javllá
+jådunij	jådånij
+jågŋit	jåggŋit
+jåhtaluskomitea	jåhtåluskomitiedja
+jåhtalusássjijs	jåhtålusássjijs
+jåhttåhiv	jåhttåjiv
+jåhtuij	jåhtuj
+jåhtåj	jåhtuj
+jålbbås	jålbås
+jånngå	jåŋŋgå
+jåppelm	jåppål
+jårbåp	jårbbådap
+jårggalimbargov	jårggålimbargov
+jårgidam	jårgijdam
+jårgidi	jårgijdij
+jårgidij	jårgijdij
+jårgidime	jårgijdime
+jårgidip	jårgijdip
+jårgidit	jårgijdit
+jårgij	jårkij
+jårgit	joarkkit
+jårgit	jårgijt
+jårgåluvvat	jårggåluvvat
+jårkålum	jårggålum
+jåvllå	javlla
+jåvsådijjga	jåvsådijga
+kabel	kábal
+kafajs	káfajs
+kafea	kafiedja
+kaféaj	kafedjaj
+kaféav	kafejav
+kakáo	kakávoj
+kakáo	kakávoj-kakávvu
+kalligráfijav	kalligrafijjav
+kanal:av	kanálav
+kandidat	kandidáhtta
+kandidátta	kandidáhtta
+kantor	kantåvrrå
+kanálfálaldagá	kanalfálaldagá
+kapihttal	kapihtal
+kardemomme	kardemoamma
+kartan	kártan
+karáktera	karaktera
+kasáv	kássav
+kategoria	kategorijja
+katregoriaj	kategorijjaj
+kiella	giella
+kilo	tjiloj
+kilometer	kilomiehtar
+kilomiehter	kilomiehtar
+kilomiehtera	kilomiehttara
+kilujs	tjillujs
+klassifiserimmetodaj	vuogij
+klisjéaj	klisjejaj
+klássalanja	klássalanjá
+klássalanjan	klássalanján
+klåhkko	kloahkka
+klåhkko	kloahkko
+klåhko	kloahko
+klåhko	klåhka
+kollektijvvalahttjat	kollektijvalattjat
+kollektijvvalasj	kollektijvalasj
+kolonna	kolånnå
+komedia	komedijja
+komitea	komitiedja
+kommersiáliserim	kommersialiserim
+kommunikásjåvnnå	kommunikasjåvnnå
+komponeremin	komponerim
+konferansav	konferánsav
+konjunksjåvvå	konjunksjåvnnå
+konkreta	konkrehta
+konkritiserima	konkretiserima
+konservativissma	konservatissma
+kontinutehttaj	kontinuitehtaj
+konvensjåvna	konvensjåvnå
+konåvrrå	kontåvrrå
+kopibáhppárhårre	kopipáhperhårre
+kortaj	kårtåj
+kortajt	kårtåjt
+kortav	kårtåv
+kostymajt	kostyjmajt
+krijllsjijvojt	krijllasjijvojt
+kriminálhuvson	kriminalhuvson
+kristagisáj	ristagisáj
+kristagisájda	ristagisájda
+kristalasjvuoda	risstalasjvuoda
+kristusa	Kristusa
+krubba	krubbo
+kråvnåsasj	kråvnnåsasj
+kultivralasj	kultuvralasj
+kultu	kultuvrra
+kultultuvralasj	kultuvralasj
+kultura	kultuvra
+kultura	kultuvrra
+kulturaj	kultuvrraj
+kulturalasj	kultuvralasj
+kulturan	kultuvran
+kulturas	kultuvras
+kulturav	kultuvrav
+kulturdiehtojs	kulturdiedojs
+kulturduobbágav	kulturduobddágav
+kulturfonda	kulturfoannda
+kulturguodvdásj	kulturguovdásj
+kulturr	kultuvrra
+kulturskvlå	kulturskåvllå
+kulturvvraduobddák	kultuvrraduobddák
+kultuv	kultuvrra
+kultuvr	kultuvrra
+kultuvrak	kultuvraj
+kultuvralasjdahpadussan	kulturdáhpádussan
+kultuvren	kultuvran
+kultuvrradiehtto	kultuvrradiehto
+kultuvrrahistårjalasj	kultuvrrahiståvrålasj
+kultuvrralasj	kultuvralasj
+kultuvrralattjat	kultuvralattjat
+kultuvrravalljesvuoda	kultuvrravaljesvuoda
+kultuvrråvddånime	kultuvrraåvddånime
+kultuvvra	kultuvrra
+kultuvvralasj	kultuvralasj
+kultvrra	kultuvrra
+kupea	kupiedja
+kurssaplánájn	kurssaplánajn
+kvalitetadárkestimev	kvalitehtadárkestimev
+kvotajt	kvåvtåjt
+kymrilalasj	kymralasj
+kymrilalasj	kymrilasj
+kábela	kabela
+kábáreav	kabarejav
+káfea	kafedja
+káffav	káfav
+káfáv	káfav
+kájáhka	kajáhka
+kájáhkajn	kajáhkajn
+kájáhkajt	kajáhkajt
+kájáhkan	kajáhkan
+kájáhkav	kajáhkav
+kájáhkka	kajáhkka
+kájáhkkaj	kajáhkkaj
+kámsav	gámsav
+kámssa	gámssa
+káno	kánoj
+kártimin	kárttimin
+káráktera	karaktera
+kárákterajt	karakterajt
+kásusav	kasusav
+kånfirmasjåvnnå	konfirmasjåvnnå
+kåntåvrra	kontåvrrå
+kåntåvrån	kontåvrån
+kåntåvråv	kontåvråv
+kåvlån	skåvlån
+labudattjin	labudahtjin
+lagásvuohta	lagosvuohta
+lahkabirrásav	lahkabirrasav
+lahkkev	lahkev
+lahkkev	lahkke
+lahkáj	láhkáj
+laho	láho
+lahodit	láhodit
+lahpa	lahpá
+lahtjet	láhtjet
+lanja	lanjá
+lanjan	lanján
+lanjas	lanjás
+lasárähttaj	lasarähttaj
+latjeduvvat	látjeduvvat
+lavkátja	lávkátja
+lavllagij	lávllagij
+lavllomij	lávllomij
+lavllot	lávllot
+lavvu	låvdagoahte
+legenanakta	lågenanakta
+lehket	liehket
+lehkit	liehkit
+lejkki	liejkki
+lejkkimin	liejkkimin
+lejkkit	liejkkit
+leksikovnåjs	leksikåvnåjs
+lerdugamus	lerdugamos
+lerret	lerrit
+levsáme	julevsáme
+libjjamvuosádalle	libjjavuosádalle
+lidjijn	lidjin
+lidnasamos	lidnásamos
+lidnasap	lidnásap
+lidnigijt	liednigijt
+lieggaseamos	lieggasamos
+liegket	liehket
+liekkesvuodav	liekkosvuodav
+lienngit	lieŋŋgit
+lihkali	lihkkalij
+lihttar	lihtar
+lihtter	lihtar
+lii	li
+liiehket	liehket
+liip	lip
+lijgá	lijga
+likkuji	lijkkuji
+linja	linnja
+linjav	linnjav
+lissjav	lissjáv
+listu	listo
+liturgia	liturgijja
+liturgiajt	liturgijjajt
+liturgija	liturgijja
+liturgijav	liturgijjav
+livrregákká	lirvvegáhká
+loaggot	loagget
+loahpasága	loahppasága
+lojttet	luojttet
+loppemárkán	loppemárnán
+ludjusattja	ludtjusattja
+ludoav	ludov
+luhták	Luhták
+lujttalit	luojttalit
+lujttem-måhken	luojttem-måhken
+lujujda	lulujda
+lulestussaj	lulesdussaj
+lulleeuropealasj	euråvpålasj
+lulleeuropealasj	lulleeuråvpålasj
+luluji	lulun
+lulujin	lulujma
+lulujin	lulun
+lululusjbielev	lulusjbielev
+lulup	lulujma
+lunchaj	lunssjaj
+luobbal	luoppal
+luoddanam	luottanam
+luodnuk	luoddnok
+luohkkoj	luohkoj
+luohkkojt	luohkojt
+luohtana	luottana
+luohtádahkes	luohtedahkes
+luohtádussa	luohtádus
+luojt...	luojte
+luojttálit	luojttalit
+luonddofenomenav	luondodáhpádusáv
+luonddoterapiav	luonndoterapijjav
+luondlattjat	luondulattjat
+luondoboanndugagáv	luonndoboanndudagáv
+luondolasj	luondulasj
+luondolattjat	luondulattjat
+luondoluohkkojt	luonndoluohkojt
+luonduasj	luondulasj
+luondul	luondulasj
+luonndobirása	luonndobirrasa
+luonndodakfága	luonndofáhka
+luonndodáhpadusá	luondodáhpádusá
+luonndoeserváhta	luonndoreserváhta
+luonndofilosofija	luonndofilosofijja
+luonndoluohkkoj	luonndoluohkkuj
+luonndoluohkkoj	luonndoluohkoj
+luonndoluohkkojadnema	luonndoluohkojadnema
+luonndoluohkkojda	luonndoluohkojda
+luonndoluohkkojs	luonndoluohkojs
+luonndoluohkkojt	luonndoluohkojt
+luonndoluohkkotjuottjudusá	luonndoluohkkotjuottjodusá
+luonndosuodjalamguovlluj	luonndosuodjalimguovlluj
+luonndovirkkáj	luonndovirggáj
+luonnduressursajt	luonndoressursajt
+luorkidattját	luorkijdahttját
+luorkidav	luorkijdav
+luorkidi	luorkijdi
+luorkidit	luorkijdit
+luorkit	luorkijt
+luorkkasam	luorkijdam
+luottjat	luottajt
+luovta-gáhti	Luovta-Gáhti
+luvluj	luluj
+lá	la
+lábllomis	lávllomis
+ládjij	láhkáj
+ládjo	lájdo
+ládádallá	ládadallá
+ládádalá	ládadalá
+ládáduvvam	láddáduvvam
+lágá	lága
+láhkanatjáj	lahkanatjáj
+láhkaoajvvádus	láhkaoajvvadus
+láhkaoajvvádussaj	láhkaoajvvadussaj
+láhkatjallusav	láhkatjállusav
+láhkke	lahkke
+láhkkáj	lahkkáj
+láhkusijn	lahkusijn
+láhpi	láhpij
+láhtaga	láttaga
+láhtagijt	láttagijt
+láhtjat	láhtjet
+láhtjedijn	látjedijn
+láhtjeduvvat	látjeduvvat
+láhtjátjit	látjátjit
+lájbasj	lájbásj
+lájkkudallat	lájkudallat
+lájttalisát	lájttálisát
+lánnga	láŋŋga
+lárkkam	lárkav
+lárkkam	lárkkem
+lásedittjat	lasedittjat
+látijna	latijna
+látijnalasj	latijnalasj
+lávijiská	lávijiska
+lávlle	lávllo
+lávllomgáddtse	lávllomgádtse
+lávllomvuohkaj	lávllomvuohkáj
+lávllott	lávllot
+lávloduvva	lávloduvvá
+låbbdusit	låbddusit
+låbbtusit	låpptusit
+lågenangavtses	lågenangávtses
+låggnit	låggŋit
+låggñi	låggŋi
+låggñij	låggŋij
+låggñim	låggŋim
+låggñit	låggŋit
+låggñoba	lågŋoba
+låhkám	låhkåm
+låhkåmj	låhkåmij
+låhkåmstrategiijav	låhkåmstratesjijjav
+låhkåmstrátegijaj	låhkåmstratesjijjaj
+låhåpav	låhpav
+låpijdit	låptijdit
+låpturfámiljan	låpturfamiljan
+låsjkidit	låsjkijdit
+låssat	låssåt
+låssissmielakvuohta	låssismielakvuohta
+låssåindustria	låssåindustrijja
+låvdas	loavddagis
+låvdågoadev	låvdagoadev
+låvdågådij	låvdagådij
+låvvå	Jåvvå
+låñoj	låŋoj
+låŋidij	låŋijdij
+maKenagi	maŋenagi
+maddagij	máddagij
+mahkkir	makkir
+mahkkirak	makkirak
+mahkkár	makkár
+mahttelis	máhttelis
+mahttelisvuodav	máhttelisvuodav
+mahttep	máhttep
+mahtti	máhtti
+majd	majt
+majjik	majdik
+majtik	majdik
+makedonia	Makedonia
+makka	mahkka
+makkar	makkár
+maksam	máksám
+makset	mákset
+mallásav	mállásav
+mallásij	mállásij
+mandelijt	mánndalijt
+manegiehtjen	maŋŋegiehtjen
+manegietjen	maŋŋegietjen
+manegietjes	maŋŋegietjes
+manela	maŋŋela
+maneldisbáhttse	maŋeldisbáhttse
+maneldisbáhttsij	maŋeldisbáhttsij
+maneldisbáhttsijda	maŋeldisbáhttsijda
+maneldisbáhttsijt	maŋeldisbáhttsijt
+maneltij	maneldij
+manemus	maŋemus
+manemussaj	maŋemussaj
+manemusá	maŋemusát
+manemusán	maŋemusán
+manemusát	maŋemusát
+manenagi	maŋenagi
+manepnamma	maŋepnamma
+manepnamáv	maŋepnamáv
+mangel	maŋŋel
+mangela	maŋŋela
+mangemus	maŋemus
+mangen	maŋen
+mangenagi	maŋenagi
+mannaap	mannap
+mannel	maŋŋel
+mannela	maŋŋela
+mannemus	maŋemus
+mannodagá	mánnodagá
+mannorádioa	mannoradio
+mannoviddnudagá	mannovidnudagá
+mannuni	maŋŋuni
+mannunij	maŋŋunij
+manus	maŋus
+manusis	maŋŋutjissaj
+manén	maŋen
+maoria	maori
+maoriaj	maorij
+maratoviehkam	maratonviehkam
+marin	marijnna
+marion	Marion
+marjju	márjju
+marnánij	márnánij
+marsipángáhkov	marsipangáhkov
+maserit	massierit
+masjinissta	maskinissta
+massjlisvuodav	mássjelisvuodav
+masstas	massta
+mastij	mastaj
+masássja	massássja
+matamatihkajn	matematihkajn
+matemahtalasj	matematihkalasj
+matematihkaijn	matematihkajn
+matematihkkadahkamusa	matematihkadahkamusá
+matematihkkaåhpådiddjev	matematihkaåhpadiddjev
+matemáhtalasj	matematihkalasj
+matemátihka	matematihka
+materialalasj	materiálalasj
+mavsov	mávsov
+mañel	maŋŋel
+mañelt	maŋelt
+mañemus	maŋemus
+mañemusán	maŋemusán
+mañen	maŋen
+mañenagi	maŋenagi
+mañep	maŋep
+mañgelt	maŋelt
+mañij	maŋij
+mañus	maŋus
+mañutjissaj	maŋutjissaj
+maññegietjen	maŋŋegietjen
+maññegietjes	maŋŋegietjes
+maññegietjev	maŋŋegietjev
+maññeiehkeda	maŋŋeiehkeda
+maññeiehket	maŋŋeiehket
+maññel	maŋŋel
+maññela	maŋŋela
+maññelin	maŋŋelin
+maññenagi	maŋenagi
+maññet	maŋŋet
+maññetjaktjagiese	maŋŋetjaktjagiese
+maññihav	maŋŋihav
+maññutjissaj	maŋŋutjissaj
+maññáj	maŋŋáj
+maÿemus	maŋemus
+maÿÿel	maŋŋel
+mańemus	maŋemus
+mańńela	maŋŋela
+mańńenagi	maŋenagi
+maŋanagi	maŋenagi
+maŋela	maŋŋela
+maŋnela	maŋŋela
+maŋŋalakkoj	maŋŋálakkoj
+maŋŋenagi	maŋenagi
+maŋŋálahkkoj	maŋŋálakkoj
+ma∫en	maŋen
+ma∫∫ela	maŋŋela
+ma∫∫et	maŋŋet
+me	ma
+mediahábmidibmen	mediahábmedimen
+mediahábmididdjen	mediahábmediddjen
+mejerijja	meierijja
+mejn	majn
+mejs	majs
+mejssel	miejssel
+mekanalasj	mekanihkalasj
+melisav	miellisav
+mentor	mentåvrrå
+mentora	mentåvrå
+mentorij	mentåvrråj
+meritajs	merihtasj
+merkkiduvvam	mierkkiduvvam
+merkáj	merkaj
+merragáttijja	merragáttijda
+merredimfábmogisvuohta	mierredimfábmogisvuohta
+merustaladum	merustaládum
+merustallamhádde	merustallamhadde
+merustallamháddáj	merustallamhaddáj
+metafora	metafåvrrå
+metaforaj	metafåvrråj
+metaforajs	metafåvråjs
+metaforajt	metafåvråjt
+metera	miehttara
+metodaj	vuogij
+metodajt	metåvdåjt
+metodalasj	metåvdålasj
+metodav	metåvdåv
+metovddalasj	metåvdålasj
+mi	mij
+miav	mijáv
+miehtaj	miehtáj
+miehtara	miehttara
+miehtarij	miehttarij
+miehtemuoráv	miehtemuorav
+miehter	miehtar
+miehtera	miehttara
+miehterijn	miehttarijn
+miehterin	miehttarin
+miehteris	miehttaris
+miehttjen	miehtsen
+miehttsejuodos	miehttsejudos
+miehtá	miehtáj
+miel-lavájnok	miellavájnok
+mielagiddis	miellagiddis
+mielgev	mielkev
+mielggasnjárttja	mielggasnjárttjá
+mielggasnjárttjáv	mielggasnjártjáv
+mielkan	mielgan
+miellagiddavasj	miellagiddevasj
+miellagiddivasj	miellagiddevasj
+miellagiddivattja	miellagiddevattja
+mierriedit	mierredit
+mietjerav	miehtjerav
+mietjerdit	miehtjerdit
+mihttjamára	mihttsamára
+mijas	mijás
+mikroskoahppa	mikroskåvppå
+milijåvnå	millijåvnå
+milijåvnåjda	millijåvnåjda
+miliåvna	millijåvnå
+miliåvnå	millijåvnå
+milja	mijla
+milliarda	millijárda
+millijonerra	millionerra
+millimeter	millimiehtar
+millimiehter	millimiehtar
+milliona	millijåvnå
+milliåvnnå	millijåvnnå
+milliåvnnåj	millijåvnnåj
+milliåvnå	millijåvnnå
+milliåvnå	millijåvnå
+milliåvnåv	millijåvnåv
+millta	milta
+minarállaåhtsåma	minerállaåhtsåma
+mji	mij
+mján	miján
+mmåånn	mån
+moadd	moadda
+moaddakulturalasjvuohta	moattekultuvralasj
+moahttáj	moahttaj
+moajt	moajta
+moall	moallánahka
+moallanagá	moallánagá
+moallanahkko	moallánahkko
+moallánaga	moallánagá
+moallánakboanndudáhka	moallánakboanndudahka
+moamesmáno	moarmesmáno
+moaodda	moadda
+moarsmesmánon	moarmesmáno
+moattebielek	moattebelak
+moattefágálsj	moattefágalasj
+moattelagásj	moattelágásj
+moattelágasj	moattelágásj
+moatteslágásj	moattelágásj
+moattesuorgák	moattesuorgak
+moattijn	måttijn
+modulajda	moduvlajda
+molekyjlla	molekijlla
+molekylajt	molekijlajt
+morfologiav	morfologijjav
+moskea	moskiedja
+mourra	muorra
+mu	muv
+muite	mujte
+mujttaliddji	mujttaliddjij
+mujttohållå	mujttohålla
+muodda	moadda
+muodda	muoddá
+muoddáv	muottáv
+muodogasj	muodugasj
+muohti	muohtij
+muorjjeda	muorjeda
+muorjjijt	muorjijt
+murkodam	murkkodam
+murkodit	murkkodit
+musea	musiedja
+musea	musiedja	# loan err/lex museum - dávvervuorkká
+musean	musiejan	# loan err/lex museum - dávvervuorkán
+museavuosádus	musiedjavuosádus
+muttijn	muhttijn
+mytologija	mytologijja
+máhtak	máhták
+máhtaráddjá	máttaráddjá
+máhti	máhtti
+máhtsá	máhtsa
+máhttelisviddnudagá	máhttelisvidnudagá
+máhttelisvuohda	máhttelisvuoda
+máhttelisvuohda	máhttelisvuohta
+máhttibihtit	máhttebihtit
+máhttim	máhttin
+máhtudagav	máhtudagáv
+máhtudahkdárbov	máhtudakdárbov
+máhtudahká	máhtudahka
+máhtudakinstiusjåvnå	máhtudakinstitusjåvnå
+máhtudakåvddånáhttemij	máhtudakåvddånahttemij
+máhtudáhka	máhtudahka
+máhtudáhkaj	máhtudahkaj
+mákkir	makkir
+mákkár	makkár
+mákkárik	makkárak
+mákkárik	makkárik
+mákrijlas	makrijlas
+máksa	máksá
+máksimála	maksimála
+máksimálla	maksimálla
+máleriaj	malerijjaj
+málestumberunijs	málestimberunijs
+mállekámssa	mállegámssa
+mállás	máles
+mállás	mállása
+málás	máles
+mán-ná	mánná
+mána	maná
+mána	máná
+mánadibme	mánádibme
+mánipulerim	manipulerim
+mánna	mánná
+mánndel	mándal
+mánndela	mánndala
+mánnela	maŋŋela
+mánnájgárdde	mánájgárdde
+mánnáv	mánáv
+mánu	máno
+mánájgárddaj	mánájgárddáj
+mánájgárdddefálaldagájt	mánájgárddefálaldagájt
+mánájrámmát	mánájrámát
+mánájs-	mánájs
+mánájsuodaliminstitusjåvnå	mánájsuodjaliminstitusjåvnå
+mánájágárde	mánájgárde
+márkanbárojt	márnánbárojt
+márkanvuodo	márnánvuodo
+márnáni	márnánij
+másjijna	masjijna
+másjvalit	masjvalit
+mástergráda	mastergráda
+mástergrádav	mastergrádav
+mástertjállusijt	mastertjállusijt
+másvulabbo	mávsulabbo
+mátematihkka	matematihkka
+máttara	máddara
+máttarahko	máttaráhko
+máttaráddja	máttaráddjá
+máttegirjijn	matematihkkagirjijn
+mátti	máttij
+mávsulvisvuoda	mávsulvisvuodo
+máŋemus	maŋemus
+máŋŋela	maŋŋela
+máŋŋáj	maŋŋáj
+må	mån
+mållagáhttara	mållagáhttára
+målsos	målssos
+målssås	målssus
+måssjot	moassjot
+måttijlåhku	måttijlåhko
+måtåvråv	motåvråv
+måvtåstahttep	måvtåstuhttep
+måvtåstahttet	måvtåstuhttet
+mønsstara	minsstara
+mønsståra	minsstara
+nabddam	nabddám
+nabdusti	nabdosti
+nagajma	nagájma
+nagerbadde	nagerbádde
+nagin	nágin
+nahka	nahká
+nahkarij	nahkárij
+nalkidam	nalkijdam
+namamduvvá	nammaduvvá
+nammadijn	nammadattijn
+nammadissa	nammadus
+nammalahttjat	namálattjat
+nammasahttjat	nammasattjat
+nammaássjiev	nammaássjev
+nammduvvat	nammaduvvat
+nammma	namma
+nammá	namma
+namádusá	nammadusá
+nanit	nannit
+nannasappo	nannusappo
+nannudáhkaj	nannudahkaj
+nannustahttet	nannidahttet
+narri	nárri
+nasjnalpárkaj	nasjonalpárkaj
+nasjnalpárkav	nasjonalpárkav
+nasjonalst	nasjonalstáhtta
+nasjonalstataj	nasjonalstáhtaj
+nasjonalstataj	nasjonalstáhttaj
+nasjonalstáta	nasjonalstáhta
+nasjonalálasj	nasjåvnålasj
+nasjonpárka	nasjonalpárka
+nasjonálbudsjehta	nasjonalbudsjehta
+nasjonálbudsjehtan	nasjonalbudsjehtan
+nasjonálgiella	nasjonalgiella
+nasjonálmusajn		nasjonalmusiejajn
+nasjonálparkka	nasjonalpárkka
+nasjonálpárka	nasjonalpárka
+nasjonálpárkaj	nasjonalpárkaj
+nasjonálromantihkajn	nasjonalromantihkka
+nasjonálstáhta	nationalstáhtta
+nasjonálstáhtajn	nasjonalstáhtajn
+nasjonálstáhtajt	nasjonalstáhtajt
+nasjonálsymbåvllån	nasjonalsymbåvllån
+nasjonálváre	nasjonalváre
+nasjonálváres	nasjonalváres
+nasjonálvárev	nasjonalvárev
+nasjonálvárre	nasjonalvárre
+nasjonálvárren	nasjonalváren
+nasjonálávlla	nasjonallávlla
+nasjovnålasj	nasjåvnålasj
+nasjovnålattjat	nasjåvnålattjat
+nasjunalalasj	nasjåvnålasj
+nasjuvnalasj	nasjåvnålasj
+nasjåvnnålasj	nasjåvnålasj
+nationalpark	nationalpárkka
+natronis	natråvnås
+natsjåvnnå	nasjåvnnå
+natsjåvnå	nasjåvnnå
+natsjåvnå	nasjåvnå
+natsjåvnålasj	nasjåvnålasj
+navte	navti
+nejtsutj	nejtsusj
+nejtta	niejdda
+neljudakmiehter	neljudakmiehtar
+nellikijs	nelihkajs
+niehtsagisás	njiehtsagisás
+niejddamánna	niejddamánná
+niejddaviddnudagáj	niejddavidnudagáj
+nielggelmutjijda	nielggeulmutjijda
+nieljejuolgága	nieljejuolgaga
+nieljja	niellja
+nielljes	nieljes
+nihttiduvvi	nihteduvvi
+nijbba	nijbbe
+nison	nissun
+niŋŋgelisboatsoj	niŋŋelisboatsoj
+njahkahit	njahkkahit
+njahparit	njahpárit
+njalgas	njalkas
+njalge	njálge
+njalgedij	njalkedij
+njalgedit	njalkedit
+njalggasa	njalkkasa
+njalka	njálga
+njalmes	njálmes
+njalmijn	njálmijn
+njalmmaj	njálmmáj
+njalmme	njálmme
+njidtjepumpav	njidtjepumpov
+njieljejuolgak	nieljejuolgak
+njiella	niellja
+njiellja	niellja
+njierrá	snjierrá
+njittjos	njidtjus
+njubrre-biesse	njuobrre-biesse
+njubrre-biessev	njuobrre-biessev
+njubrre-biessij	njuobrre-biessij
+njulgadusájt	njuolgadusájt
+njunes	njunjes
+njunjin	njunjijn
+njunjusj	njunnjusj
+njunjusjvirgijda	njunjosvirgijda
+njunnjegiehte	njunnjegiehtje
+njunnjus	njunnjusj
+njunnjágahttem	njunjágahttem
+njunnusj	njunnjusj
+njuovtav	njuovtjav
+njuovtjamátta	njuovtjavmátta
+njurggádit	njurgádit
+njállásit	njallásit
+njálmalasj	njálmálasj
+njálámasj	njálmálasj
+njátsudit	njátsodit
+njávko	njávgo
+njålgit	njålgijt
+noajte	noajde
+noajtev	noajdev
+noajtte	noajdde
+nordlánda	Nordlánda
+nordlándan	Nordlándan
+normajda	nårmajda
+normerikbargguj	normierimbargguj
+norra	nuorra
+norrbotten	Norrbotten
+nsajenis	sajenis
+nubbaj	nubbáj
+nubbegielan	nubbengiellan
+nubbegielan	nuppegielan
+nubbegielaåhpadusán	nubbegiellaåhpadusán
+nubbegiellan	nubbengiellan
+nubbegiellan	nuppegielan
+nubbengiela	nubbegiella
+nubbengiela	nuppegiela
+nubbengielafágan	nubbegiellafágan
+nubbengielan	nubbengiellan
+nubbengielan	nuppegielan
+nubbengielaoahppe	nubbegiellaoahppe
+nubbengielav	nuppegielav
+nubbengiellaoahppe	nubbegiellaoahppe
+nubbengiellaoahppijda	nubbegiellaoahppijda
+nubbenmgielafága	nubbegiellafága
+nubbi	nubbe
+numeralasj	numerálasj
+nuohkasit	nuohkásit
+nuohkásattja	nuohkása
+nuorajdi	nuorajda
+nuorajdássaj	nuorajdássáj
+nuorajpsyhkiatriav	nuorajpsykiatrijjav
+nuorrapsykiatrian	nuorrapsykiatrijjan
+nuorttaguvlo	nuorttaguovlo
+nuorttamus	nuortamus
+nuorttas	nuortas
+nuorttasamos	nuortamus
+nuorttásámegiela	nuorttasámegiela
+nuoráj	nuoraj
+nuovva	nuov
+nuppat	nuppát
+nuppástimássjida	nuppástimássjijda
+nylonav	nylåvnåv
+nylonijt	nylåvnåjt
+náhki	nahki
+náhká	nahká
+náhkárij	nahkárij
+náhkáv	náhkev
+nákin	nahkin
+námaj	namáj
+námáv	namáv
+nánnit	nannit
+násjåvnå	nasjåvnå
+nástája	nástátja
+oaddadit	oaddádit
+oadjtu	oadtju
+oahpadit	åhpadit
+oahpastuvvat	oahpástuvvat
+oahppamstrategijja	oahppamstratesjijja
+oahppijde	oahppijda
+oaijvveluattudagáv	oajvveluottudagáv
+oajedit	bajedit
+oajvvabielle	oajvvebielle
+oajvvadinrievtesvuohta	oajvvadimrievtesvuohta
+oajvvaj	oajvváj
+oajvvebrosjyrajt	oajvvebrosjijrajt
+oajvvefágav-	oajvvefágav
+oajvveháldádus	oajvveháldadus
+oajvveluottudagav	oajvveluottudagáv
+oajvvesåsijt	oajvveåsijt
+oajvvetjalmos	oajvvetjalmostibme
+oajvvetjåvddusa	oajvvetjoavddusa
+oajvvvebáhkon	oajvvebáhkon
+oajvvádam	oajvvadam
+oajvvádi	oajvvadi
+oajvvádij	oajvvadij
+oajvvádit	oajvvadit
+oajvvádum	oajvvadum
+oajvvádus	oajvvadus
+oajvvádussaj	oajvvadussaj
+oajvvádusá	oajvvadusá
+oajvvádusáj	oajvvadusáj
+oajvvádusájt	oajvvadusájt
+oajvvádusáv	oajvvadusáv
+oajvváduvvi	oajvvaduvvi
+oajvválahttja	oajválattja
+oajvválasj	oajválasj
+oajvválattja	oajválattja
+oajvválattjaj	oajválattjaj
+oajvválattjajda	oajválattjajda
+oajvválattjajs	oajválattjajs
+oajvvása	oajvvá
+oajválattaj	oajválattjaj
+oajválattjajjda	oajválattjajda
+oappa	oappá
+oarjjel,-	oarjjel-
+oarjjás	oarjás
+oarjásbielen	oarjásjbielen
+oarrjelsámeguovlojs	oarjjelsámegiella
+oasestihttjat	oasestittjat
+oasesá	oases
+oassalassti	oassálassti
+oasserapportav	oasserappårtåv
+oasseráppårttå	oasserappårttå
+oasslasste	oassálasste
+oasssásin	oassásin
+oasstam	oasstám
+oassálasj	oasálasj
+oassálasset	oassálasstet
+oassálasstam	oassálasstám
+oassálasstijma	oassálastijma
+oassálasstátjit	oassálastátjit
+oassálassám	oassálasstám
+oassálastatjit	oassálastátjit
+oassálattja	oasálattja
+oassálattjan	oasálattjan
+oastátjiv	oastátjit
+oasásasjoasátjasj
+oatjot	oadtjot
+oattjoma	oattjojma
+oattju	oattjo
+oattoj	oattjoj
+oavsátján	oavsátjin
+oddádit	oaddádit
+oerjjelsáme	oarjjelsáme
+ooajvev	oajvev
+organaj	orgánaj
+organajs	orgánajs
+organisajåvnnåiellemij	organisasjåvnnåiellemij
+organiseriuvvam	organiseriduvvam
+organisásjåvnå	organisasjåvnå
+organisásjåvnåjn	organisasjåvnåjn
+organisásjåvnåjt	organisasjåvnåjt
+organisásjåvnån	organisasjåvnån
+orginálak	originála
+orgániseridum	organiseridum
+orgániseriduvvá	organiseriduvvá
+orgániserim	organiserim
+orgániserimvuoge	organiserimvuoge
+orgániserit	organiserit
+ornamentikkav	ornamentihkav
+ornámentihka	ornamentihkka
+ornámentihkkaseminárra	ornamentihkkaseminárra
+ornámentihkkaseminárraj	ornamentihkkaseminárraj
+oslo	Oslo
+oájvvádus	oajvvadus
+paramehter	paramiehtar
+paramehtera	paramiehttarav
+paramehterav	paramiehttarav
+parlamentaralasj	parlamentalasj
+parlámentarihkkárij	parlamentarihkkárij
+partementas	departementas
+pedagoga	pedagåvggå
+pedagovgga	pedagåvggå
+perpektijva	perspektijva
+personalasj	persåvnålasj
+persåvnnålasj	persåvnålasj
+persåvnnåpronomen	persåvnnåpronåvmmå
+petroleumsdåjmaj	petroleumdåjmaj
+pienntim	prienntim
+piera	Piera
+pihpárgáhko	pihpergáhko
+pihpárgáhkojt	pihpergáhkojt
+piáno	piánoj
+plakatan	plakáhtan
+pládnagárvedattijn	pládnagárvedimen
+plákáhta	plakáhta
+plákáhtaj	plakáhtaj
+plákáhtajn	plakáhtajn
+plákáhtajt	plakáhtajt
+pláneriji	planeriji
+plánerima	planerima
+plánijuvvá	plániduvvá
+pláninim	plánimin
+plåmma	plumma
+plåmma	plåmmå
+poasstkårttå	poasstakårttå
+poehtta	poiehtta
+poesiajn	poesijjajn
+poetalasj	poiehtalasj
+polihtkalasj	politihkalasj
+poliklinkan	poliklinihkan
+politian	politijjan
+politidirektørran	politidirekterra
+politihkalahttjat	politihkalattjat
+politihkalsj	politihkalasj
+politihkkahábmimij	politihkkahábbmimij
+politihkkahábmimin	politihkkahábbmimin
+politihkkalasj	politihkalasj
+politihkkárijrt	politihkkárijt
+politihklalasj	politihkalasj
+politija	politijja
+politijan	politijjan
+politijas	politijjas
+politikka	politihkka
+poltihka	politihka
+poltihkalattjat	politihkalattjat
+poltihkkára	politihkkára
+portehtan	portrehtan
+postan	påstan
+postav	påstav
+postel	apåstal
+prahktihkalasj	praktihkalasj
+praksisav	práksisav
+praktihkalahttjat	praktihkalattjat
+praktikantajn	praktikántajn
+praktikánnda	praktikánnta
+prenntidum	prienntidum
+preterra	preterihtta
+pretoriaj	Pretoriaj
+prevansjåvnnå	prevensjåvnnå
+prioriteriduvvuji	prioriteriduvvi
+privatskåvllålága	priváhtaskåvllålága
+priváhtiseridum	privatiseridum
+priváta	priváhta
+proffa	pruffa
+programmav	prográmmav
+prográmmá	prográmma
+prográmmájda	prográmmajda
+prográmstivra	prográmmastivra
+prommillaprográmman	promillaprográmman
+pronomen	pronåvmmå
+propágándá	propagánnda
+prosa	pråvsså
+prosesssa	prosessa
+prosjekta	prosjevta
+prosjektaj	prosjevtaj
+prosjektan	prosjevtan
+prossesajda	prosessajda
+prosá	pråvsså
+práktihkalasj	praktihkalasj
+práktijkalasj	praktihkalasj
+práktijkalattjat	praktihkalattjat
+prátihkalattjat	praktihkalattjat
+psykiatrias	psykiatrijjas
+psykologa	psykolåvggå
+psykologia	psykologijja
+páhperahtes	páhppárahtes
+páhperalmmudusán	páhperalmodusán
+páhppárpåstav	páhperpåstav
+párkkaallea	párkkaalliedja
+párrajt	párajt
+påatnjátj	boadnjásj
+raddjiduvvam	ráddjiduvvam
+raddjim	ráddjim
+raddjima	ráddjima
+radjátsiekkim	rádjátsiekkim
+rahpa	rahpá
+rahtadåjmadahka	rahtedåjmadahka
+rahtaj	rahtáj
+rajggána	rájggána
+rajnnani	rájnnani
+rajástibme	ratjástibme
+raporta	rappårtå
+rapporta	rappårttå
+rapportajt	rappårtåjt
+rapportan	rappårtån
+rapportav	rappårtåv
+rapportta	rappårttå
+rapporttåj	rappårttåj
+rapårttå	rappårttå
+rapårtåv	rappårtåv
+rasisstalasj	rasistalasj
+rassjodij	rássjodij
+rastidi	rasstidit
+rastijdam	rasstidam
+ratjátimev	ratjástimev
+ravdojt	rávdojt
+realaskåvllåj	realskåvllåj
+reaskåvlån	realskåvlån
+redaktørra	redakterra
+referánnsan	referánssan
+reforma	refoarmma
+reforma	refårma
+regiseridum	registreridum
+regissterijn	regisstarijn
+registardit	registrierit
+registerijda	regisstarijda
+registerijn	låhkusijn
+registerijn	regisstarijn
+rehpihis	riehpihis
+reivtesvuodajt	rievtesvuodajt
+reivtesvuohta	rievtesvuohta
+reklaman	rekláman
+reklamekampanjav	reklamekampánjav
+reklámerit	reklamerit
+reklámerit	reklamierit
+rektor	rektåvrrå
+rektor	rievtor
+rektora	riektura
+rektorijn	riekturijn
+rektorin	riekturin
+relevanta	relevánnta
+religijåvnnå	religiåvnnå
+religijåvnnå	relijåvnnå
+religiåvna	relijåvnå
+relásjåvnå	relasjåvnnå
+reportasjajt	reportásjajt
+reportasjaássjijt	reportássjaássjijt
+reportasjja	reportássja
+reportassja	reportássja
+republikkaj	republihkkaj
+resiprohka	resipråvkå
+resiprohka	resipråvkkå
+responsav	respånsåv
+resurssajt	ressursajt
+revtesvuoda	rievtesvuoda
+revya	revijja
+riddárin	riddarin
+riegadit	riegádit
+riekknimmetodajt	vuogijt
+riekniduvvá	riekkniduvvá
+rieknim	riekknim
+rieknimav	riekknimav
+rieknimgirjijda	riekknimgirjijda
+rieknimtijmma	riekknimtijmma
+rieknimtjehpudahka	riekknimtjehpudahka
+rieknimvuoge	riekknimvuoge
+rieknimvuogijt	riekknimvuogijt
+rieknip	riekknip
+rieknit	riekknit
+riekniv	riekkniv
+riekt	riekta
+riektabu	riektabut
+riektabu	rievtabu
+riektatjåhknibme	riektátjåhkanibme
+riektesferduk	rievtesferduk
+riesjek	riessjek
+rievdaduvvi	rievddaduvvi
+rievddádusdábijt	rievddadusdábijt
+rievddádusá	rievddadusá
+rievdádusájda	rievddadusájda
+rievteslahkáj	rievtesláhkáj
+rievtesvuohtamierkkidum	rievtesvuodamierkkidum
+rievtá	riektá
+rihpastam	ribástam
+rijkaantikvárrra	rijkaantikvárra
+rijkabánŋka	rijkabáŋŋka
+rijkajgasskasaj	rijkajgasskasasj
+rijkajgasskasas	rijkajgasskasasj
+rijkajgasskasj	rijkajgasskasasj
+rijkasasj	rijkalasj
+rijkasin	rijkan
+rijkavijddusasj	rijkavijddásasj
+rijkkajgasskasasj	rijkajgasskasasj
+rijkkajgasskasattjat	rijkajgasskasattjat
+rijkkalasj	rijkalasj
+rijkkaoasseteahtera	rijkkaoasseteáhttara
+rijkkaorganisásjåvnån	rijkkaorganisasjåvnån
+rikkasa	riggasa
+rimaj	rijmaj
+rinnguj	riŋŋguj
+rinngum	riŋŋgum
+rinngutjit	riŋŋgudit
+rinngutjit	riŋŋgutjit
+risjidij	risjijdij
+risjidimes	risjijdimes
+rissjodit	risjodit
+ritualaj	rituálaj
+rivtesvuoda	rievtesvuoda
+roadditjit	ruodditjit
+roagáv	rågav
+roahkkij	roahkkahij
+roahttootjiektjamijda	roahttotjiektjamijda
+roallajt	rållajt
+roallav	rållav
+roankok	roaŋkok
+roasskalij	roassjkalij
+rollaj	roallaj
+rollav	rållav
+románáv		románav
+ruhkodit	ruohkodit
+ruhtadilli	ruhtadille
+ruhtadårjåv	ruhtadårjav
+ruhtagålåjt	ruhtagålojt
+ruhtajuolloduibme	ruhtajuollodibme
+ruhtalågå	ruhtalågo
+ruhtbátsujn	ruhtabátsujn
+ruhttsuhit	ruhtsuhit
+ruhtågålov	ruhtagålov
+ruhtålågov	ruhtalågov
+ruittaj	rujttaj
+rujddaj	rujttaj
+ruoddná	ruodná
+ruohtasjda	ruohttasijda
+ruojtta-gaskav	ruojddagaskav
+ruopppsisvuoptak	ruoppsisvuoptak
+ruoptosalto	ruoptosáltoj
+ruoptot	ruopptot
+ruoptusmanádijn	ruoptus	manádijn
+ruossjkedit	ruosjkedit
+ruosskidáládijn	ruosskidaládijn
+ruossmo	roassmo
+ruoude	ruovdde
+ruoudi	ruovde
+ruoudidis	ruovdes
+ruoudit	ruovdijt
+ruovdde-båhtjáv	ruovddebåhtsåv
+ruovdde-båhttjá	ruovddebåhttså
+rusjkis	russjkis
+rutinajt	rutijnajt
+rutsájt	ruohtsajt
+rutsájt	rutsijt
+ruvamus	ruvámus
+ruvvá	ruvva
+rytma	ritmma
+ràdevadde	rádevadde
+rábbagoahte	rábbágoahte
+ráddidusbelludahk	ráddidusbelludahka
+ráddihiddjen	ráddijiddje
+ráddihiddjen	ráddijiddjen
+rádjaguovlojn	rádjáguovlojn
+rádjasi	rájaduvvi
+rádjednam	rádjeednam
+rádjnánisvuohta	rádjánisvuohta
+rádjodusá	ráddjima
+rádjoduvvi	rájaduvvi
+rádjot	ráddji
+rádjáguolvvo	rádjáguovllo
+rádjájrasstididdje	rájájrasstijiddje
+rádjátráktáhtajda	rádjátraktáhtajda
+rádnjajdis	rádnajdis
+ráfástat	ráfestat
+ráhpá	rahpá
+ráhte	rahte
+ráhtev	rahtev
+ráhtijn	rahtijn
+ráhtjam	rahtjam
+ráhtjin	rahtjin
+ráhtáj	rahtáj
+ráijnna	rájnna
+rájadalaj	rájadaláj
+rájgganit	rájggánit
+rájnnán	rájnna
+rájnnán	rájnnan
+rámmbun	rámmpun
+rámmpodi	rámpodi
+rámmpodit	rámpodit
+rámmáj	rámmaj
+rámmát	rámát
+rámmátjårggålimijda	rámátjårggålimijda
+rámmáttevsta	rámáttevsta
+rámmáttevstajt	rámáttevstajt
+rápportajt	rappårtåjt
+rápportav	rappårtåv
+rápporteri	rapporteri
+rápporteriduvvá	rapportieriduvvá
+rápporterit	rapporterit
+rápporterji	rapporterij
+rássti	rassti
+rátifiseriduvvá	ratifisieriduvvá
+rátjaj	ratjáj
+rávggiv	ravggiv
+rávkkå	rávkká
+rávkálvisá	rávkalvisá
+rávtsáv	rávtsav
+räjna-suoládim-sága	räjnnasuoládimsága
+rådjum	rådjåm
+råggamav	råggåmav
+råggñot	råggŋot
+råhkalvisá	råhkålvisá
+råvddibihtit	råvttibihtit
+råvddit	råvttit
+råvddå	råvttå
+råvddån	råvttån
+råvdåv	råvtåv
+råvgo	roavgo
+råñet	råŋet
+sabme	sábme
+sadjihimev	sadjihav
+sadjássasj	sadjásasj
+safári	safárij
+sagaspela	Sagaspella
+sagaspellan	Sagaspellan
+sagaspellav	Sagaspellav
+sagastam	ságastam
+sagastit	ságastit
+sahkat	sáhkat
+sahká	sáhka
+sajidit	sajijdit
+sajiduvvat	sajájduvvat
+sajiduvvá	sajájduvvá
+sajit	sajijt
+sajsas	sájsas
+sajssat	sájssat
+sajáduvvam	sajájduvvam
+samaria	Samaria
+same	sáme
+samegielak	sámegielak
+samegiella	sámegiella
+samegiellaj	sámegiellaj
+sameráde	Sámeráde
+samij	sámij
+samárihtalasj	samarihtalasj
+san	sån
+sanátja	saŋátja
+sarnnet	sárnnet
+sasskamdardda	sasskamdartta
+satellittaj	satelihttaj
+satnem	sádnesvuohta
+satta	sjatta
+satta	sátta
+savvam	savvám
+sebrijda	sebrudagájda
+sebrijda	siebrijda
+sebruda	sebrudagá
+sebrudag	sebrudahka
+sebrudaga	sebrudagá
+sebrudagan	sebrudagán
+sebrudagas	sebrudagás
+sebrudakossálasstemij	sebrudakoassálasstemij
+sebrudaoassálasstijn	sebrudakoassálasstijn
+sebrugán	sebrudagán
+sebrulahttja	sebrulattja
+sebrulahttjajn	sebrulattjajn
+sebrulahttjajt	sebrulattjajt
+sehkanáhtátjit	sehkanattatjit
+seksualalasj	seksuálla
+seksualalattjat	seksuálla
+seksuálalattj	seksuálla
+seksuálattjat	seksuálla
+sekunndánnda	sekundánnta
+selgulasj	selgalasj
+selgulattja	selgalattja
+selibáhtta	sølibáhtta
+selka	selga
+selkajs	selgajs
+sellerijmátta	sellerijjamátta
+sellerijmátta	sellerimátta
+sengaj	seŋgaj
+sensor	siensor
+sensora	sensåvrå
+sensorin	sensåvrån
+sensureriduvvá	sensurieriduvvá
+sensurerit	sensurierit
+sentimiehter	centimiehtar
+serbrudagán	sebrudagán
+seremoniav	seremonijjav
+sertifierim	certifierim
+sertifierimav	certifierimav
+sertifikáhtamárnnánam	sertifikáhttamárnánav
+shoppitjit	sjåhppitjit
+siebrudagá	sebrudagá
+siebrudagán	sebrudagán
+siebrudahkaj	sebrudahkaj
+siebrudak	sebrudahka
+siejnneávijsajt	siejnneavijsajt
+siellom	siellum
+sieredusáj	sieradusáj
+sierradussaj	sieradussaj
+sierradusájt	sieradusájt
+sierralagásj	sierralágásj
+sierralagásjvuoda	sierralágásjvuoda
+sierralahkaj	sierraláhkáj
+sierralahkáj	sierraláhkáj
+sierralaháj	sierraláhkáj
+sierralágájs	sierralágásj
+sierramáhtudakvuodav	sierramáhtukvuohta
+sierratåhkå	sierratåhka
+sierrraláhkáj	sierraláhkáj
+sierádusájt	sieradusájt
+siesstasit	siesstet
+siesstevas	siesstevasj
+sige	sihke
+sihki	sihke
+sihta	sihtá
+sija	sijá
+sijdaisá	sijdanisá
+sijddasiská	sijddasiska
+silbbabastiin	silbbabastijn
+silddá	silldá
+sinn	sinne
+sirddolattjat	sirdulattjajt
+sirkkal		sirkal
+sirkkal	sirkal
+sirranaddam	sirraladdam
+sisi-	sisi
+sisnelt	sisŋelt
+sisnemusán	sisŋemusán
+sisnep	sisŋep
+sissadno	sisadno
+sissnálasj	sissŋálasj
+sissñelis	sissŋelis
+sissñálas	sissŋálasj
+sissŋanit	sissŋánit
+siste	sisste
+sisñep	sisŋep
+sisŋelin	sissŋelin
+sjadda	sjaddá
+sjaddan	sjaddam
+sjaddatja	sjattatja
+sjaddojt	sjattojt
+sjahtjalit	sjáhtjalit
+sjamon	sjamen
+sjavnjime	sjavnjijma
+sjavnnet	sjavnnjet
+sjavo	sjávo
+sjavvuladdat	sjávvuladdat
+sjavvuladdiv	sjávvuladdiv
+sjddá	sjaddá
+sjiejsiji	sjiejssiji
+sjiervijbilitjij	sjiervvebielitjij
+sjievnjis	sjievnnjis
+sjievnnet	sjievnnjet
+sjievnnis	sjievnnjis
+sjievnnjádus	sjivnnjádus
+sjivnjediddjen	sjivnnjediddjen
+sjivnnot	sjivnnjot
+sjnjuktaj	sjnjuktjaj
+sjnuktjamáno	sjnjuktjamáno
+sjnutje	snjutje
+sjoappkaduvvi	sjåpkaduvvi
+sjuokkanisáj	sjuohkkanisáj
+sjuoludimme	sjuoludime
+sjuonaj	sjuonjaj
+sjáddnot	sjáddnjot
+sjáddá	sjaddá
+sjádna	sjádnja
+sjáhtalit	sjáhtjalit
+sjávunihtit	sjávvunihtit
+sjåvvá	sjoavvá
+skadne	skádne
+skanev	skánev
+skavle	skávle
+skibájsujttár	skihppijsujttár
+skiedjaj	skiedjáj
+skieja	skiejá
+skielkogin	skielgogin
+skihpijsujtár	skihppijsujtár
+skihppa	skihpa
+skoaddalit	skoaddálit
+skotlánda	Skottlánda
+skrirrodit	skirrodit
+skrirrodit	skirrodit	ÅB	gajkkot
+skrirrodit	skirrodit
+skuolggam	skuolkkam
+skuornnasin	skuornnásin
+skábenuorjijs	skábemuorjijs
+skáddne
+skájan	skánjan
+skájanis	skánjanis
+skálltjojt	skáltjojt
+skálmáijn	skálmájn
+skánjgidam	skánjgijdam
+skárttá	skártta
+skávlemånnne	skávlemånne
+skávtjaj	skávtjáj
+skåvlan	skåvlån
+skåvllåbirrásij	skåvllåbirrasij
+skåvllåkantijnán	skåvllåkantijnan
+skåvllåávijsajn	skåvllåavijsajn
+skåvvlå	skåvllå
+sladdit	sláddit
+sladjásijt	slajijt
+slakterias	slakterijjas
+slakterijaj	slakterijjaj
+slidjarijn	slijájn
+sliennge	slieŋŋge
+slivarmuohttagav	slievarmuohttagav
+slivŋestit	slivŋastit
+sloamka	sloamká
+sluogñam	sluogŋam
+sluoñaj	sluoŋaj
+sláddu	sláddo
+sláhpa	slahpa
+slávga	slávgá
+slåtjåsvihke	slåtjosvihke
+smajvvaj	smájvváj
+smajvváj	smájvváj
+smavep	smávep
+smidása	smidá
+smjiesskam	smiessjkam
+smávvamána	smávvamáná
+smávvaskuvlla	smávvaskåvllå
+snissjkot	snjissjkot
+snjilttjamáno	snjilltjamáno
+soademim	oademin
+soaj	såj
+soajddá	soajttá
+soajtt	soajttá
+soalssesliehppa	soalssesliehppá
+soapptsombihtit	soapptsobihtit
+soappástjijn	soappátjijn
+soaptsu	soapptsu
+soaptsum	soapptsum
+sofia	Sofia
+sojttá	soajttá
+soldáta	soldáhta
+soldátaj	soldáhtaj
+sollutja	suollutja
+sosialalasj	sosiálalasj
+sosialalattjat	sosiálalattjat
+sosialalattjat	sosiálla
+sosialallasj	sosiálla
+sosialantropologa	sosialantropolåvggå
+sosiálak	sosiálla
+sosiálattjat	sosiálla
+spalkkot	spálkkot
+spannska	spánsska
+spanásmájssa	spánasmájssa
+spiehtjam	spiehtjama
+spihkkam	spihkkim
+spihkár	spiger
+spánnjoj	spánjoj
+stallo	stállo
+stalpe	stálpe
+stalpev	stálpev
+stalppaj	stálppáj
+stalppe	stálppe
+statan	stáhtan
+statestihkaj	statistihkaj
+statistihkán	statistihkan
+statistikk	statistihkka
+statististihkav	statistihkav
+stavvala	stávvala
+steorijdda	steroijdda
+stereotypa	stereotijppa
+stereotypia	stereotijppa
+sterátja	steratja
+stetoskoahppa	stetoskåvppå
+stiebilbájás	stiebilbájas
+stivrárijda	stivrrárijda
+strategiaj	stratesjijjaj
+strategiajs	stratesjijjajs
+strategiajt	stratesjijjajt
+strategias	stratesjijjas
+strategijajt	stratesjijjajt
+strategijan	stratesjijjan
+strategijav	stratesjijjav
+strategijja	stratesjijja
+strategijjalasj	stratesjijjalasj
+strángájs	stráŋgájs
+stujme	stuojme
+stujmme	stuojmme
+stummpajt	stumpajt
+stummpav	stumpav
+stuorabu	stuorábu
+stuorap	stuoráp
+stuorfámiljav	stuorfamiljav
+stuormuottágis	stuormuohttagis
+stuoroabba	stuoroabbá
+stuorrafámiljan	stuorrafamiljan
+stuovas	stuoves
+stuovvágis	stuovvásis
+stáhtaminisstar	stáhtaministar
+stásjåvnnåj	stasjåvnnåj
+stávval	stával
+su	suv
+substastimdábij	subtsastimdábij
+substántijva	substantijva
+substántijvva	substantijvva
+subtastallat	subtsastallat
+subtsasij	subtsastij
+subtsasij	subttsasij
+subtsast	subtsasta
+subtssasav	subttsasav
+subtssasijt	subttsasijt
+subtstantijva	substantijvva
+subttsas	subtsas
+suddogassan	suddogissan
+suddolåhkå	suddolåhko
+suddorumaj	suddorumáj
+sujne	sujna
+sujni	sunji
+suldoduvvat	suoldoduvvat
+sulle	sulla
+sulle	suláj
+suodjalimminisstar	suodjalimministar
+suodjálusáv	suodjalusáv
+suoggñoajvven	Suoggŋooajvven
+suoggñon	suoggŋon
+suoggñudime	suoggŋudime
+suogñalit	suogŋalit
+suogñaliv	suogŋaliv
+suogñam	suogŋam
+suogñih	suogŋi
+suogñá	suogŋá
+suohkanlasj	suohkan	# odd stems do not take -lasj der
+suohkaoajvve	suohkanoajvve
+suohpaldahhka	suohpaldahka
+suohtasamos	suohttasamos
+suohtat	suohtas
+suojmábut	suojmabut
+suoladit	suoládit
+suolsse	soalsse
+suoma-ugralalasj	suoma-ugralasj
+suopptsomav	soapptsomav
+suoskabehtit	suoskadihpit
+suoskabehtit	suosskabihtit
+suovaskebab	suovaskebábba
+suoñajma	suoŋajma
+suptjas	suptsas
+suptjastin	suptsastin
+svanenmierkkidum	Svanen-mierkkidum
+svierigij	Svierigij
+svierigin	Svierigin
+svierik	Svierik
+svierikdoarrofuovan	svierigadárofuovan
+svierikdárogiela	svierigadárogiela
+svierikdárogiella	svierigadárogiella
+svieriksuobmelattj	svieriksuobmelattja
+svieriksuomagijt	svieriksuobmelattjajt
+svieriksuopmelattja	svierigasuobmelattja
+svijninjda	svijnijda
+sviskar	svisska
+sviskara	sviska
+sviskerijt	sviskajt
+svÁhkenin	Svahken
+sykeldav	syhkaldav
+symbolajda	symbåvlåjda
+symbolla	symbåvllå
+symbovlla	symbåvllå
+symbovllån	symbåvllån
+synagogan	synagåvgån
+synkrona	synkråvnnå
+synogogas	synagåvgås
+synonymajt	synonymijjajt
+syrak	syriak
+systemahtalasj	systematihkalasj
+systemáhtalalasj	systiemalasj
+systemáhtalasj	systematihkalasj
+systemáhtalattjat	systiemalattjat
+systemáhtiserit	systematiserit
+systemáhtiserit	systematisierit
+systemátalattjat	systematihkalattjat
+systemátiseriji	systematisieriji
+sáddagaijt	sáddagijt
+sáddijuvvi	sáddiduvvi
+sáddnan	sáddnán
+sáddo	sáddu
+sádjim	sáddjim
+sádjimrája	sáddjimrájá
+sádjimrájá	sáddjimrájá
+sádjobihtit	sáddjibihtit
+ságadahttijn	ságastattijn
+ságastattját	ságastahttját
+ságståvllå	sagståvllå
+ságástimteknologijaj	ságastimteknologijjaj
+ságŋat	sagŋat
+sáhksárnno	sáhkasárnno
+sáhkádit	sáhkadit
+sáhtusa	sáhttusa
+sájijt	sajijt
+sájvvá	sájvva
+sállde	sállte
+sálltesiltájt	sálltesildájt
+sálltesávtsabiegov	sálltesávtsabiergov
+sáltijss	sáltijs
+sámasta	sámásta
+sámastin	sámástin
+sámefámiljas	sámefamiljas
+sámegillii	sámegiellaj
+sámeminisstar	sámeministar
+sámeminisstaraj	sámeminisstarij
+sámemisjånerra	sámemisjonerra
+sámepolitihkár	sámepolitihkkár
+sámepoltijka	sámepolitijka
+sámgiellaåhpadusáv	sámegiellaåhpadusáv
+sámi	sámij
+sámlága	sámelága
+sámástahttjat	sámástahttját
+sámástihttjat	sámástittjat
+sánarda	sáŋarda
+sánardav	sáŋardav
+sánardu	sáŋardu
+sánarvisán	sáŋarvisán
+sárnneålmmá	sárnneålmmå
+sárrnáj	sárnnáj
+sárves	sarves
+sáttojfiervva	sáttojfiervvá
+sávtssa	sávttsa
+sávva	sávvá
+sávádusá	sávadusá
+sáñardahtte	sáŋardahtte
+sáñardin	sáŋardin
+sáñart	sáŋart
+sáñartij	sáŋardij
+såbdadit	såbadit
+såhkkåjijs	såhkkårijs
+såhkåra	såhkkåra
+såjadit	såjådit
+sŧstemahtalasj	systematihkalasj
+taloŋŋa	taloaŋŋa
+tapetajs	tapehtajs
+taro-kielak	dárogielak
+te	tiedja
+tea	tiedja
+teahter	teáhtar
+teahterav	teáhttarav
+teahterdáhpádus	teáhtardáhpádus
+teahterijda	teáhttarijda
+teahterjuohkusa	teáhtarjuohkusa
+teahtervuosádusájt	teáhtarvuosádusájt
+tebmáj	tiebmáj
+teknolgija	teknologijja
+teknologalasj	teknologijjalasj
+teknologia	teknologijja
+teknologiav	teknologijjav
+teknologija	teknologijja
+teknologijan	teknologijjan
+teknologijav	teknologijjav
+telegraffa	telegráffa
+televisjåvnnåkánálla	televisjåvnnåkanálla
+tema	tiebmá
+temájn	tiemájn
+temán	tiebmán
+temáorgániseridum	tiebmáorganiseridum
+tenijkav	teknijkav
+tenologijav	teknologijjav
+teologa	teolåvggå
+teoriaj	teorijjaj
+teoriav	teorijjav
+teorija	teorijja
+teorijajt	teorijjajt
+terapeuta	terapievtta
+terapias	terapijjas
+terminologian	terminologijjan
+terminologija	terminologijja
+terminologijajn	terminologijjajn
+terminologijav	terminologijjav
+termomiehter	termomiehtar
+tevtajs	tevstajs
+tevtsajt	tevstajt
+teáhtara	teáhttara
+teáhter	teáhtar
+teáhterijn	teáhttarijn
+tiebma	tiebmá
+tiema	tiemá
+tiempel	tiemmpil
+tiemátihkas	tematihkas
+tierádij	tjierádij
+tisel	tistal
+tistela	tisstala
+tistelijt	tisstalijt
+tjabben	tjábben
+tjabrra	tjábrra
+tjaledimijt	tjalmedimijt
+tjalibmen	tjállemin
+tjallodiij	tjallodij
+tjalmebelak	tjalmmebelak
+tjalmehtuvaj	tjalmeduváj
+tjalmida	tjalmijda
+tjalmita	tjalmijda
+tjalmmmeramkaldagán	tjalmmeramkaldagán
+tjalmostuhttet	tjalmostahttet
+tjalmot	tjalmos
+tjammat	tjajmmat
+tjanadum	tjanádum
+tjatjev	tjátjev
+tjavalgav	tjavelgav
+tjavggasappot	tjavggadappot
+tjavta	tjavtja
+tjavvasit	tjavvásit
+tjaññgasit	tjaŋŋgasit
+tjańa	tjáŋa
+tjegŋudahka	tjiegŋudahka
+tjehpudáhka	tjehpudahka
+tjelludalli	tjeludalli
+tjenit	tjienit
+tjerdalasajvuohta	tjerdalasjvuohta
+tjerdasis	tjerdastis
+tjerrruj	tjerruj
+tjevllágis	tjevlágis
+tjieggiduvam	tjielggiduvvam
+tjieggŋodibma	tjiegŋodibme
+tjiegnalis	tjiegŋalis
+tjiegnalit	tjiegŋalit
+tjiegñalijt	tjiegŋalijt
+tjiegñalis	tjiegŋalis
+tjiegñalissaj	tjiegŋalissaj
+tjiegÿalis	tjiegŋalis
+tjiegÿális	tjiegŋalis
+tjiegŋudahttemij	tjiegŋodahttemij
+tjieg∫alap	tjiegŋalap
+tjiehppijs	tjiehpijs
+tjiekñalap	tjiegŋalap
+tjiekñalis	tjiegŋalis
+tjielggiduáv	tjielggidusáv
+tjiesskislánátjij	tjiesskislánjátjij
+tjievtjasit	tjievtjastit
+tjinngot	tjiŋŋgot
+tjirelggiduvvat	tjielggiduvvat
+tjivggamsajijda	tjivggomsajijda
+tjivkastij	sjnjivkastij
+tjoaggulvispedagagoga	tjoaggulvispedagåvgå
+tjoaggulvispedagog	tjoaggulvispedagåvggå
+tjoaggulvispedagoga	tjoaggulvispedagåvgå
+tjoaggulvispedagogaj	tjoaggulvispedagåvggåj
+tjoahken11	tjoahken
+tjoahkkihin	tjoahkkijin
+tjoahkká	tjoahkkáj
+tjoahkkájmannama	tjoahkkemannama	# cmp not allowed in ill case
+tjoajhkkit	tjoahkkit
+tjoajvevuollaj	tjoajvevuolláj
+tjoavddabágo	tjåvdabágo
+tjoavddam	tjoavddám
+tjoavddádallat	tjoavdádallat
+tjoave	tjoajve
+tjovoduvvi	tjuovoduvvi
+tjovvolimev	tjuovvolimev
+tjovvolimijn	tjuovvolimijn
+tjovvolimtjuokkes	tjuovvolimtjuokkes
+tjovvolittjat	tjuovvolittjat
+tjuktjaj	tjuktjáj
+tjunngot	tjuŋŋgot
+tjuodjela	tjuodtjela
+tjuodjániv	tjuodtjániv
+tjuohtejahkásasj	tjuodejahkásasj
+tjuohtjejahkemålssom	tjuohtejahkemålssom
+tjuoivvolit	tjuovvolit
+tjuojahij	tjuojadij
+tjuojggadálkkasav	tjuojkkadálkkasav
+tjuojggavuojdas	tjuojkkavuojdas
+tjuojggidus	tsuojggidus
+tjuojggidusájt	tsuojggidusájt
+tjuojkkajda	tjuojkajda
+tjuokkár	tjuokkar
+tjuoktju	tjoaktju
+tjuoldeduvvim	tjuoldeduvvin
+tjuoldemin	tjuolldemin
+tjuoldus	tjuolldus
+tjuolldasin	tjuolldásin
+tjuolmmatjielgádusá	tjuolmmatjielggidusá
+tjuopan	tjuohpan
+tjuorggusij	tjuorggasijt
+tjuottjudusfábmudagáj	tjuottjodusfábmudagáj
+tjuottjudusfábmudahka	tjuottjodusfábmudahka
+tjuottjudusguovlluj	tjuottjodusguovlluj
+tjuottjudusguovlo	tjuottjodusguovlo
+tjuottjudusguovloj	tjuottjodusguovloj
+tjuottjudusguovlon	tjuottjodusguovlon
+tjuottjudusáv	tjuottjodusáv
+tjuottodi	tjuottjodi
+tjuottodi	tjuottjodit
+tjuottot	tjuottjot
+tjuovkkidum	tsuovkkidum
+tjuovu	tjuovvu
+tjuovvunis	tjuovunis
+tjurgudit	tjuorgudit
+tjuruktsábman	tjuruktsábmán
+tjuŋŋ	tjuŋŋgot
+tjábbat	tjábbát
+tjábbádissan	tjáppádissan
+tjábu	tjabu
+tjádjanimsuddárin	tjádjánimsuddárin
+tjádádimes	tjadádimes
+tjágij	tságij
+tjágnat	tjágŋat
+tjágnij	tjágŋi
+tjágñaba	tjágŋaba
+tjágñal	tjágŋal
+tjágñam	tjágŋam
+tjágñamin	tjágŋamin
+tjágñat	tjágŋat
+tjágñiv	tjágŋiv
+tjágñá	tjágŋá
+tjáhjte	tjáhtje
+tjáhpa	tjáppa
+tjáhtjelåddi	tjáhtjelådde
+tjáhttut	tjáhttjut
+tjálala-ttjat	tjálalattjat
+tjálla	tjállá
+tjállam	tjállám
+tjállemgiala	tjállemgiela
+tjállágin	tjállagin
+tjálálalattjat	tjálalattjat
+tjálálalsj	tjálalasj
+tjálálasj	tjálalasj
+tjálálattjat	tjálalattjat
+tjána	tjáŋa
+tjánadahka	tjáŋadahka
+tjánaj	tjáŋaj
+tjángedahttet	tjaŋgedahttet
+tjásjgoajkátja	tjásjgåjkutja
+tjáña	tjáŋa
+tjáñadam	tjáŋadam
+tjáñadin	tjáŋadin
+tjáñaj	tjáŋaj
+tjáñajga	tjáŋajga
+tjáñajma	tjáŋajma
+tjáñas	tjáŋas
+tjáñáj	tjáŋaj
+tjá∫a	tjáŋa
+tjåbbmå	tjåbmå
+tjåhkadimev	tjåhkanimev
+tjåhkanamsaje	tjåhkanimsaje
+tjåhkkudaláj	tjåhkudaláj
+tjåhkkådit	tjåhkkidit
+tjåhkålvisá	tjåhkalvisá
+tjåhkånimbievddegirjje	tjåhkanimbievddegirjje
+tjånegis	tjågŋegis
+tjånek	tjågŋek
+tjårgådit	tjårgadit
+tjåvdå	tjåvda
+tjåvggip	tjavggip
+tjåññgum	tjoaŋŋkum
+toahkkigoahtám	tjoahkkigoahtám
+togan	tågan
+tonnaj	toannaj
+topografija	topografijja
+touristajda	turistajda
+tradisjåvnnålasj	tradisjåvnålasj
+trafihkkaoaggesvuodav	trafihkkaoaggásvuodav
+tribunan	tribuvnan
+trofea	trofiedja
+trokea	trokiedja
+trágedija	tragedijja
+tráktur	trávtor
+trålla	trållå
+tsaggiednedievnastusás	tsaggeiednedievnastusás
+tsahket	tsáhket
+tsahppet	tsáhppet
+tsakkidam	tsahkkidam
+tsakkák	tsakkak
+tsiehkadusájn	tsiekkadusájn
+tsjåjttsin	tsåjttsin
+tsoabmujt	tsåbmijt
+tsujgot	tsuojgot
+tsunamij	tsunámij
+tsuodta	tsuodtsa
+tsuojggimpronomen	tsuojggimpronåvmmå
+tsuojggodam	tsuojgudam
+tsuojkkit	tsuojggit
+tsuovgganit	tsuovkkanit
+tsábman	tsábmán
+tsábmemin	tsábbmemin
+tságaj	tságij
+tságajma	tságijma
+tsáravellde	tsáraviellde
+tsåggo	tsåggå
+tsåhkkåldahka	tsåkkåldahka
+tsåhpak	tsåhpåk
+tsållåt	tsållat
+tsåtsoj	såtsoj
+tuberkolose	tuberkulåvsså
+tuddjavuossa	tyddjavuossa
+tuktje	tjuktje
+tuojggájiv	tjuojggájiv
+tuorvuolnán	Stuorvuolnán
+tuvsan	tuvsán
+tv-prográm-majn	tv-prográmmajn
+tábellajda	tabellajda
+tábellajn	tabellajn
+tábellan	tabellan
+táblehta	tablehta
+táblehtajt	tablehtajt
+tálenta	talenta
+tállerka	tallerka
+tåhkå	tåhka
+tånnå	tånna
+tånnå	toanna
+tækstadivudamprográmmajt	tækstadivudimprográmmajt
+tækstagiehta-dallamav	tækstagiehtadallamav
+tækstahábmimvuoges	tækstahábbmimvuoges
+tækstaárvustallámáv	tækstaárvustallamav
+tæstaoajvvádusá	tæsstaoajvvadusá	# Err/Lex test - gæhttjalibme
+udni	uddni
+udnni	uddni
+udná-tjij	udnátjij
+udásj	udnásj
+uhtema	muhtema
+uksa-tjakke	uksatsakke
+uksaváksjár	uksaváksjo
+ullas	ulás
+ullme	ulmme
+ulmmetjalos	ulmmetjálos
+ulmtja	ulmutja
+ulmtjijs	ulmutjijs
+ulmu-tjij	ulmutjij
+ulmutj	ulmusj
+ulmutji	ulmutjij
+ulmutjáhttet	ulmutjahttet
+ulnutjijda	ulmutjijda
+umass	umasse
+umasslágásj	umasselágásj
+unges	uŋges
+unijåvnnå	uniåvnnå
+unijåvnås	uniåvnås
+uniovna	uniåvnå
+universitehtta	universitiehtta
+unnan	unnán
+unneplågåduogátjijn	unneplågoduogátjijn
+unneplåhkolág	unneplåhkolága
+unneplåhkugielas	unneplåhkogielas
+unnánisj	unnánasj
+urtastea	urtastiedja
+urudasá	urudisá
+urála	urálalasj
+usjudalligåhtiv	usjudallagåhtiv
+ussjudallap	usjudallap
+ussjuli	ussjolit
+uvsadagán	uvsudagán
+vabbulime	vábbulime
+vaderi	vaden
+vadtset	vádtset
+vadttjá	vádtsá
+vahkjo	vahko
+vahkkosattjat	vahkkusattjat
+vahágattem	vahágahttem
+vajbi	vájbi
+vajkkut	vájkkut
+vajmulasj	vájmulasj
+vajált	vájalt
+valde	válde
+valdi	váldij
+valjesamos	valjemus
+valldet	válldet
+valldá	válldá
+valljes	valjes
+valtebet	válldebihtit
+valástallamtjehppe	valástallamtjiehppe
+vanas	vanás
+vani	váni
+vanntasav	vantsav
+vanntsav	vantsav
+variábel	variábal
+variásjåvnå	variasjåvnå
+varkka	vargga
+varnnahin	várnnahin
+varre	várre
+varresvuodabárggij	varresvuodabarggij
+varresvuodafáladagájt	varresvuodafálaldagájt
+varresvuodaviddnudagá	varresvuodavidnudagá
+varresvuodaviddnudagáj	varresvuodavidnudagáj
+varresvuodaviddnudagán	varresvuodavidnudagán
+varresvuohta-	varresvuohta
+varresvuohtafálaldahka	varresvuodafálaldahka
+varresvuohtaviddnudagá	varresvuodavidnudagá
+varreulmusj	várreulmusj
+varrevuohtaj	varresvuohtaj
+varrogisá	várrogisá
+varrresvuodav	varresvuodav
+varrresvuohta	varresvuohta
+varrudagajt	varrudagájt
+varrudágá	varrudagá
+varudisá	várudisá
+vasedit	vásedit
+vasjesvuoda	vassjásvuoda
+vasjodihttjat	vasjodittjat
+vasjulahttjan	vasjulattjan
+vasstadusájt	vásstádusájt
+vassám	vássám
+vastevuodav	vastesvuodav
+vattebehtit	vaddebihtit
+vattsatjit	váttsatjit
+vattse	váttse
+vattsijma	váttsijma
+vedij	vadi
+veli	jali
+veljap	vieljap
+vellajit	vellahit
+velludalátjit	veludalátjit
+venagijdat	venagijdát
+vessom	viessom
+veteranaj	veteránaj
+viddnoahppijs	viddnooahppijs
+viddnodagá	vidnudagá
+viddnudagaj	vidnudagáj
+viddnudagá	vidnudagá
+viddnudagáj	vidnudagáj
+viddnudagájda	vidnudagájda
+viddnudagájn	vidnudagájn
+viddnudagájs	vidnudagájs
+viddnudagájt	vidnudagájt
+viddnudagán	vidnudagán
+viddnudagás	vidnudagás
+viddnudagáv	vidnudagáv
+viddnudahka	vidnudahka
+viddnudahkaj	vidnudahkaj
+viddnudahkavuohke	vidnudakvuohke
+viddnudak	vidnudak
+viddnudaknamá	vidnudaknamá
+viddnudakplánaj	vidnudakplánaj
+viddnudakrádevadde	vidnudakrádevadde
+viddnudakájádusájda	vidnudakájádusájda
+viddnudakájádusájt	vidnudakájádusájt
+viddnudakásadime	vidnudak
+viddnudakásadimijs	vidnudakásadimijs
+viddnudakåvddånahttemprográmma	vidnudakåvddånahttemprográmma
+viddnudakåvddånibmáj	vidnudakåvddånibmáj
+viddnudáhka	vidnudahka
+viddnudáj	vidnudak
+viddnudájs	vidnudagájs
+video:av	videov
+videoa	video
+videoav	videov
+videokássettas	videokassehtas
+vidjedit	vijdedit
+vidjurjijt	vidjurijt
+vidnudagájtja	vidnudagátja
+vidnudágájn	vidnudagájn
+vidábuj	vijddábuj
+viedje	vieddje
+viedtajt	viedtjat
+viedtjaduvvat	viettjaduvvat
+viedtjatjit	viettjatjit
+vieesomvuohke	viessomvuohke
+viegá	viega
+viegáj	viegaj
+viehkegahtá	viehkedak
+viehkkefoandda	viehkkefoannda
+viehkkemetodaj	viehkkemetåvdåj
+vieitjatjit	viettjatjit
+vielkkis	vielggis
+viellidimmes	viellidimes
+vielliduh	viellidu
+vierddiji	vierttiji
+vierojvássjás	vierojvassjás
+vierrdahkke	vierredahkke
+vierrebalggán	vierrebálggán
+vierrigij	vierregij
+vierrti	viertti
+vierrtiji	vierttiji
+viertet	vierdev
+viertij	vierttij
+vierttti	viertti
+viesseomájgge	viessomájgge
+viessomvohke	viessomvuohke
+viessoom	viessom
+viessumuhá	viessomuhá
+viesádiddjijn	viesajdiddjijn
+viesádiddjijt	viesajdiddjijt
+viesájdiddje	viesajdiddje
+viesájdiddjej	viesajdiddjáj
+viesájdiddjen	viesajdiddjen
+viesájdiddjij	viesajdiddjij
+viesájdiddjijda	viesajdiddjijda
+viesájdiddjijn	viesajdiddjijn
+vietjatjit	viettjatjit
+viettiji	vierttiji
+viettjaljit	viettjatjit
+vihtatuvsánij	vihttatuvsánij
+vihtte	vihtta
+vihtán	vihtan
+vijddes	vijdes
+vijdábuj	vijddábuj
+vijdábujt	vijddábut
+vijdábut	vijddábut
+vijdáduj	vijddábuj
+vijdáp	vijddáp
+vijdásappot	vijddásappot
+vijdásattjat	vijddásattjat
+vijdásåvddånahttemav	vijdesåvddånahttemav
+vijdásåvddånahttemin	vijdesåvddånahttemin
+vijsesvuoha	vijsesvuohta
+vindegijt	vinndegijt
+vinnderájge	vinndekrájge
+visjav	visjáv
+visjiv	vissjiv
+vissomtjerdas	viessomtjerdas
+visumav	vijsum
+visuála	visuella
+vivvasiská	vivvasiska
+voa∫nnaj	voaŋnnaj
+vojnnet	vuojnnet
+voset	vuoset
+vuoarrasa	vuorrasa
+vuobbdemdåjmav	vuobddemdåjmav
+vuodajt	vuodojt
+vuodje	vuoddje
+vuodjámbiktasa	vuodjambiktasa
+vuodját	vuoddját
+vuodnasåhkkij	vuodnasåkkij
+vuodnasåhkkijda	vuodnasåkkijda
+vuodnasåhkkijt	vuodnasåkkijt
+vuodobáhkkogárges	vuodobáhkogárges
+vuodobáhkkogárggáv	vuodobáhkogárggáv
+vuododimkomitea	vuododimkomitiedja
+vuododuvva	vuododuvvá
+vuodokontekstan	vuodokontevstan
+vuodolasj	vuodulasj
+vuodoskavlån	vuodoskåvlån
+vuodoskavlås	vuodoskåvlås
+vuodoskåvlla	vuodoskåvllå
+vuodostuvvat	vuododuvvat
+vuodovuojnnu	vuodovuojnno
+vuodoáhpadusá	vuodoåhpadusá
+vuodudus	vuododus
+vuohtuj	vuoduj
+vuoi	vuoj
+vuojnedihkes	vuojnedihke
+vuojnnalasj	vuojŋŋalasj
+vuojnnam	vuojnnám
+vuojnnan	vuojŋŋan
+vuojnnanav	vuojŋŋanav
+vuojnnunagi	vuojnunagi
+vuojnojdisáj	vuojnojdisá
+vuojnojtisá	vuojnojdisá
+vuojnáh	vuojná
+vuojnám	vuojnnám
+vuojti	vuojtij
+vuojtádaláduvvá	vuojtádallá
+vuojñada	vuojŋada
+vuojñadagás	vuojŋadagás
+vuojñadahtjá	vuojŋadahtjá
+vuojñadalájga	vuojŋadalájga
+vuojñadasstet	vuojŋadasstet
+vuojñadattijn	vuojŋadattijn
+vuojñadi	vuojŋadi
+vuojñadibmáj	vuojŋadibmáj
+vuojñadime	vuojŋadime
+vuojñadit	vuojŋadit
+vuojñadittjat	vuojŋadittjat
+vuojñat	vuojŋat
+vuojññan	vuojŋŋan
+vuojññanij	vuojŋŋanij
+vuojññanisá	vuojŋŋanisá
+vuojŋalasj	vuojŋŋalasj
+vuojŋamij	vuojŋŋamij
+vuojŋŋanisavuodjeliddjijs	vuojŋŋanisávuodjeliddjijs
+vuojŋŋnisájs	vuojŋŋanisájs
+vuojŋŋánisá	vuojŋŋanisá
+vuojŋŋánisáj	vuojŋŋanisáj
+vuolenitte	vuolenihtte
+vuolepdirektørra	vuolepdirekterra
+vuolggein	vuolggin
+vuolggádijn	vuolgedijn
+vuolkket	vuolgget
+vuolkki	vuolgij
+vuolkká	vuolggá
+vuollaj	vuolláj
+vuolledirektørra	vuolledirekterra
+vuolládahká	vuolládahka
+vuollágin	vuollagin
+vuollálattja	vuolálattja
+vuollálattjan	vuollásattjan
+vuologisát	vuologit
+vuonarijkaalasj	vuonarijkalasj
+vuonnalasj	vuonalasj
+vuonnet	vuojnnet
+vuoorrulakkoj	vuorrulakkoj
+vuopptagoavnne	vuopptagoavnnje
+vuoq	vuoj
+vuorasap	vuorrasap
+vuorbastuvvá	vuorbástuvvá
+vuorbbegessemav	vuorbbegiessemav
+vuorbálahttja	vuorbálattja
+vuorbástuva	vuorbástuvá
+vuorbástuvvát	vuorbástuvvat
+vuorbástvvat	vuorbástuvvat
+vuordámusá	vuorddámusá
+vuoridit	vuorijdit
+vuorjjásámos	vuorjjámus
+vuorkon	vuorkán
+vuorradis	vuorrádis
+vuorradisvuohta	vuorrádisvuohta
+vuorrastuhttet	vuorrástuhttet
+vuorrastuvvamin	vuorastuvvamin
+vuorrodij	vuorodij
+vuorrodit	vuorodit
+vuorroduvá	vuoroduvá
+vuorrot	vuorot
+vuorrásabbo	vuorrasabbo
+vuortedahtte	vuordedahtte
+vuorñedatjáj	vuorŋedatjáj
+vuorñedatjájma	vuorŋedatjájma
+vuorñedit	vuorŋedit
+vuorñediv	vuorŋediv
+vuor∫et	vuorŋŋet
+vuosadálle	vuosádalle
+vuose	vuoset
+vuosja	vuossja
+vuosjadum	vuossjadum
+vuossstij	vuosstij
+vuosst	vuosstá
+vuossta	vuosstá
+vuosstaj	vuosstij
+vuosstaj	vuosstáj
+vuosstalasstema	vuosstálasstema
+vuossteldit	vuosteldit
+vuosstemuttjan	vuostamuttjan
+vuosstáv	vuostáv
+vuostasgielak	vuostasjgielak
+vuostasjamanuensis	vuostasjamanuænssa
+vuostasjamanuenssa	vuostasjamanuænssa
+vuostasjamánuensas	vuostasjamanuensas
+vuostasjgiellanfága	vuostasjgiellafága
+vuostasjgiellanfágan	vuostasjgiellafágan
+vuostasjriegádimmánna	vuostasjriegádimmánná
+vuostedam	vuosteldam
+vuostemannam	vuosstemannam
+vuostemielav	vuosstemielav
+vuosti	vuossti
+vuostásmarrusav	vuosstásmarrusav	# firstcomp case
+vuosádagá	vuosádusá
+vuosáduvvá	vuoseduvvá
+vuotjin	vuohtjin
+vuottjin	vuohtjin
+vuovsav	vuovsáv
+vurkudit	vuorkudit
+váddá	vaddá
+vádno	vádne
+vádnu	vádnun
+vádnuhi	vádnuni
+vádnuji	vádnuni
+vádtsemprográmas	vádtsemprográmmas
+vágostalá	vágustalá
+váhkkatjiekkav	váhkkátjiekkav
+váhkkojt	váhkojt
+vájkkudagájt	vájkudusájt
+vájkkudamfábmo	vájkkudimfábmo
+vájkkudusanályjssa	vájkkudusanalijssa
+vájkodam	vájkudam
+vájkodim	vájkudim
+vájkodime	vájkudime
+vájkodimev	vájkudimev
+vájmuj	vájmmuj
+vájvahatte	vájvahahtte
+vájvan	vájván
+vájvastuvvat	vájvástuvvat
+vájvvve	vájvve
+vájvástuvvev	vájvástuvvis
+vákkájt	váhkájt
+válastallam	valástallam
+válddet	válldet
+válddá	válldá
+váldep	válldep
+válduvvam	váldeduvvam
+váldádalaj	váldádaláj
+válggabijren	válggabijran
+válggabijrráj	válggabijrraj
+váljjim	válljim
+válldátjit	váldátjit
+válliji	válljiji
+vállje	vallje
+válljeji	válljiji
+válljimlánján	válljimlanján
+válljimmáhttelisvuogda	válljimmáhttelisvuoda
+válljimsiedelav	válljimsiedilav
+válljimsiediijt	válljimsiedilijt
+válljiuduvviv	válljiduvviv
+válllji	vállji
+vánesvuohtá	vánesvuohta
+várdda	várddá
+várdo	várto
+várdojs	vártojs
+várgga	vargga
+várjjaluvvuji	várjjaluvvi
+várrebalges	várrebálges
+várrerábddaj	várrerabddaj
+várresvuoda	varresvuoda
+várrogisvuohtaprinsijpa	várrogisvuodaprinsihppa
+vássam	vássám
+vásssámájgen	vássámájgen
+vásstadus	vásstádus
+vásstediij	vásstedij
+vásstádussáj	vásstádussaj
+vástedij	vásstedij
+vástedit	vásstedit
+vásámájgge	vássámájgge
+vátsij	vádtsij
+vátsij	váttsij
+váttesedijn	váttsedijn
+váttáv	vattáv
+vávddam	vavddam
+vávnájn	vávnajn
+våjn	vån
+våjn	vuojn
+walesgijs	walesagijs
+yatzyav	yatzyv
+Àddjá	Áddjá
+Àhttje	Áhttje
+Àjgeguovddelvuohta	Ájggeguovddelisvuohta
+Àjluovtan	Ájluovtan
+Àjtes	Ájtes
+Áhkanjárggaj	Áhkánjárggaj
+Áhpadusdirektoráhtta	Åhpadusdirektoráhtta
+Áhtsål	Åhtsål
+Ájakjågåtja	Ájajågåtja
+Ájllekiehkada	Ájllekiehkeda
+Ájluovtaguovlos	Ájluovt-guovlos
+Ájlátteguovlluj	Ájlát-guovlluj
+Ákjso	Áksjo
+Áknoluovtta	Áknoluovta
+Ále	Ale
+Álldar	Áldar
+Álmmulasj	Almulasj
+Álo	Álu
+Ámerigis	Amerigis
+Ámmátjiehtje	Ámmá-tjiehtje
+Ánarij	Anárij
+Ánders	Anders
+Ánndáris	Ánndaris
+Árbediehtu	Árbbediehto
+Árjakluoven	Árjepluoven
+Árkijvva	Arkijvva
+Ármmom	Ármmum
+Árran-direktørra	Árran-direkterra
+Árrananj	Árranij
+Ártihkkala	Artihkkala
+Ávddågiesjskåhttåj	Åvddågiesjskåhttåj
+Ávijsav	Avijsav
+ÅNa	AN
+ÅNa-duodastus	ÅN-duodastus
+Åbålasjkaraktera	Åbbålasjkaraktera
+Ådåjalmáno	Ådåjakmáno
+Åhpadusdierktoráhtta	Åhpadusdirektoráhtta
+Åhpadusfáládagájn	Åhpadusfálaldagájn
+Åhpadusinstutusjåvnå	Åhpadusinstitusjåvnå
+Åhpadusluojkkaoase	Åhpadusluojkkeoasse
+Åhpådiddje	Åhpadiddje
+Åhpådusåssudahka	Åhpadusåssudahka
+Åhtsålvisán	Åtsålvisán
+Åhåadusdirektoráhttaj	Åhpadusdirektoráhttaj
+Ålgusgålå	Ålgusgålo
+Ållesjattuga	Ållessjattuga
+Ållesjattugijda	Ållessjattugijda
+Ållesjattugin	Ållessjattugin
+Ållesjattuk	Ållessjattuk
+Ålosa	Ållusa
+Ånigis	Oanegis
+Åvdåsvássterdiddje	Åvdåsvásstediddje
+Åvtajn	Avtajn
+ÆIla	Ælla
+Ællitja	Ællittja
+Ælvvam	Ælvvám
+Íslándan	Islándan
+ØverSørfjordvatnet	Øver-Sørfjordvatnet
+ádja	ádjá
+ádjektijva	adjektijva
+ádjektijvva	adjektijvva
+ádjágij	ádjagij
+ádni	adni
+ádno	ádnu
+ágij	agij
+áhkatjav	áhkátjav
+áhkatjáv	áhkátjav
+áhkka	áhkká
+áhkujs	áhkojs
+áhkátj	áhkátja
+áhppav	áhpav
+áhpájá	áhpáj
+áhpásj	áhpasj
+áhtije	áhtje
+áhtjera	Váhtjera
+áhtjestimes	áhtjestimme
+áhtjijniská	áhtjijniska
+áhtti	gáhtti
+áhttjásiská	áhttjásiska
+áj	aj
+áj	ájn
+ájadallam	ájádallam
+ájadus	ájádus
+ájadusiellem	ájádusiellem
+ájaduskártav	ájáduskártav
+ájbigis	ajbigis
+ájda	ájdá
+ájgeoanadis	ájgeoanádis
+ájgep	ájge
+ájggasasj	ájggásasj
+ájggeguovdelis	ájggeguovddelis
+ájgguji	ájggu
+ájggásasjj	ájggásasj
+ájgu	ájggu
+ájigis	ajigis
+ájkajda	gájkajda
+ájlegijt	ájllegijt
+ájlisin	ájllisin
+ájna	ájnna
+ájnasamos	ájnnasamos
+ájnnas	ájnas
+ájnnat	ájnat
+ájnná	ájnna
+ájtodum	ájtedum
+ájtsáj	ájtsaj
+ájttaga	bájttaga
+ájttsába	ájttsaba
+ájvijsaj	avijsaj
+ájvijsajda	avijsajda
+ájá-dallá	ájádallá
+ájádaladum	ájádaládum
+ájádalak	ájádalák
+ájádallet	ájádallat
+ájáddallat	ájádallat
+ájádusa	ájádusá
+áktuj	gáktuj
+álaldagáv	fálaldagáv
+áldara	álldara
+álfábehtajn	alfabehtajn
+álggam	álggám
+álggoahppa	álggooahppa
+álggosálmme	álggosálmma
+álgus	álgos
+álke	álkke
+álkebut	álkkebut
+álkep	álkkep
+álkes	álkkes
+álket	álkket
+álkkadusháldadimkåntåvråjt	álkkádusháldadimkontåvråjt
+álkkesártihkkalijt	álkkesartihkkalijt
+álldar	áldar
+álldet	válldet
+álldárijs	álldarijs
+álmmudi	almmudi
+álmmugi	álmmugij
+álmmukallaskuvlla	álmmukallaskåvllå
+álmmukjuogkusij	álmmukjuohkusij
+álmmulasj	almulasj
+álmmulasjvuohtaj	almulasjvuohtaj
+álmmulattjat	almulattjat
+álmmáj	almmáj
+álmoduvvam	almoduvvam
+álmoduvvá	almoduvvá
+álmukbiejve	álmmukbiejve
+álmuksubttsasijda	álmmuksubttsasijda
+álmulasj	almulasj
+álmulasjvuoda	almulasjvuoda
+álmulattjat	almulattjat
+álo	álu
+áltánav	altánav
+álvos	alvos
+ámeriekt	sámeriektá
+ámmatduodastus	ámmátduodastus
+ámmatålmmå	ámmátålmmå
+ánajt	ájttega
+ánni	Ánni
+ánnkárav	áŋŋkárav
+ánnonsa	annånsså
+ánnonsajt	annånsåjt
+ánnonsav	annånsåv
+ánnsidummávso	ánssidimmávso
+ánssidsahtte	ánssidahtte
+ánssim	ánssidam
+ánuj	ánoj
+ánályserit	analyserit
+áppen	dáppen
+árajda	várajda
+árbbo	dárbbo
+árbbán	árbben
+árena	ariená
+árená	ariedná
+árenáj	ariednáj
+árenájn	arienájn
+árenájt	arienájt
+árenán	arienán
+árggábiejve	árggabiejve
+árgumentasjåvnnå	argumentasjåvnnå
+árgumenteriji	argumenteriji
+árgumenterip	argumenterip
+árgumentásjåvnnå	argumentasjåvnnå
+árjjelin	gárjjelin
+árjjidallamav	hárjjidallamav
+árkeologijav	arkeologijjav
+árkitektuvrra	arkitektuvrra
+árktalasj	arktalasj
+ármodit	ármmodit
+árragiessie	árragiesse
+ártihkkala	artihkkala
+ártihkkalav	artihkkalav
+ártihkkalij	artihkkalij
+árudiddja	árudidja
+árvogis	árvvogis
+árvu-stallat	árvustallat
+árvusmahtedum	arvusmahtedum
+árvusmahteduvvat	arvusmahteduvvat
+árvusmahttet	arvusmahttet
+árvustaladuvvá	árvustaláduvvá
+árvvadahtte	árvvedahtte
+árvvadusájda	árvvádusájda
+árvvalusa	árvvalusá
+árvvulassti	árvvalassti
+árvvustallam	árvustallam
+árvvustallamav	árvustallamav
+árvvustalli	árvustalli
+ásaduvváj	ásaduváj
+ásatit	ásadit
+ásje	ássje
+ásjen	ássjen
+ásjev	ássjev
+ásjij	ássjij
+ásjijn	ássjijn
+ásjijt	ássjijt
+ásjje	ássje
+ássjeijt	ássjijt
+ássjeprosa	ássjepruvssá
+ássjeprosá	ássjepråvsså
+ássjetjala	ássjetjála
+ássjida	ássjijda
+ássjijde	ássjijda
+ássjit	ássjijt
+ássjálisá	ássjálattja
+ásstedit	vásstedit
+átlasav	atlásav
+áttják	áttjak
+ávadus	sávadus
+ávddånahttem	åvddånahttem
+ávijsa	avijsa
+ávijsajda	avijsajda
+ávijsajn	avijsajn
+ávijsajt	avijsajt
+ávijsan	avijsan
+ávijsav	avijsav
+ávijssa	avijssa
+ávijssaartihk	avijssaartihkal
+ávijssafáladagáv	avijssafálaldagáv
+ávijssasjáŋŋarijn	avijssasjáŋŋarijn
+ávkkkim	ávkkim
+ávllom	lávllom
+ávnasijt	ábnnasijt
+ávsske	hávsske
+ávsskes	hávsskes
+ávtsejagák	avtsejagák
+ávtsejahkásasj	avtsejahkásasj
+ávudalátjit	ávvudalátjit
+ávvoganjal	ávvoganjál
+ávvudalláv	ávvudaláv
+ávvulasj	ávulasj
+ávvun	ávvus
+ááhhttttjjáássiimm	áhttjásim
+ááhkko	áhkko
+áájjáádduussáá	ájádusá
+åbbåk	åbbå
+åbbålatt	åbbålattja
+åbbås	åppås
+åbmuagáv	åbmudagáv
+åbmudakrievtevuodaj	åbmudakrievtesvuodaj
+åda	ådå
+ådså	ådå
+ådtjobehtit	oadtjobihtit
+ådå-ájggásasj	ådåájggásasj
+ådåjahkekortajt	ådåjahkekårtåjt
+ådåjak	ådåjak-
+ådåsdahtedum	ådåstuhtedum
+ådåstuhttemminisstar	ådåstuhttemministar
+ådåággásasj	ådåájggásasj
+åhpadiddijda	åhpadiddjijda
+åhpadidje	åhpadiddje
+åhpadusfaládagájt	åhpadusfálaldagájt
+åhpadusluojkas	åhpaduslånas
+åhpadusmihttimierijn	åhpadusmihttomierijn
+åhpaduspográmma	åhpadusprográmma
+åhpadussa	åhpadusá
+åhpadusásáv	åhpadusáv
+åhpådiddje	åhpadiddje
+åhpåv	åhpav
+åhtsamusáv	åhtsåmusáv
+åhtsat	åhtsåt
+åhtsålvis	åtsålvis
+åhtsålvisá	åtsålvisá
+åjdamájan	åjdåmájan
+åjvisj	åjvijs
+ålggolt	ålgolt
+ålggålin	ålggolin
+ålggårijkkaj	ålggorijkkaj
+ålgon	ålggon
+ålgusbielen	ålgusjbielen
+ålkkon	ålggon
+ålkkus	ålgus
+ållabåskak	allabåskak
+ållesjattuga	ållessjattuga
+ållesjattugijda	ållessjattugijda
+ållesjattugijs	ållessjattugijs
+ållesjattugin	ållessjattugin
+ållugasj	ållagasj
+ållusi	ållusij
+ållågasj	ållagasj
+ållågattjat	ållagattjat
+ållånatjaj	ållånatjáj
+ållåsasj	åbbålasj
+ållåsattjat	åbbålattjat
+ålmoj	ålmåj
+ålmojbiele	ålmåjbiele
+ålmojtjuojgge	ålmåjtjuojgge
+ålmojåhpadiddje	ålmåjåhpadiddje
+ålmå	ålmmå
+ålosa	ållusa
+ålu	ållu
+åmastumriektá	åmastimriektá
+åmudagás	åbmudagás
+ånnå	gånnå
+åroba	årroba
+årrudagán	årudagáv
+årrudagáv	årudagáv
+årråt	årrot
+årudáhkaj	årudahkaj
+åsida	åsijda
+åssudakdirektørra	åssudakdirekterra
+åsåstuhttema	ådåstuhttema
+åtjåtjit	åtsåtjit
+åtsåfallam	åtsådallam
+åtsål	åhtsål
+åtsåla	åhtsåla
+åtsålav	åhtsålav
+åtsålibme	åhtsålibme
+åtsåmav	åhtsåmav
+åttjålvis	åtsålvis
+åvdasvásstádus	åvdåsvásstádus
+åvddanit	åvddånit
+åvdddåla	åvddåla
+åvddågåpttjåsa	åvddågåbttjåsa
+åvddålå	åvddåla
+åvddånaht	åvddånahttem
+åvddånahtatjit	åvddånahtátjit
+åvddånahtedime	åvddånahttema
+åvddånahttemiijn	åvddånahttemijn
+åvddånahttemságastal	åvddånahttemságastallam
+åvddånahttemságastalla	åvddånahttemságastallam
+åvddånahttemságsatallamav	åvddånahttemságastallamav
+åvddånáhttemav	åvddånahttemav
+åvddånáhtátjit	åvddånahtátjit
+åvddåprosjektaj	åvddåprosjevtaj
+åvdeldibme	åvdedibme
+åvdeldime	åvdedibme
+åvdeldimijt	åvdedimijt
+åvduváj	åvdeduváj
+åvdådsvásstádus	åvdåsvásstádus
+åvdåla	åvddåla
+åvdånahttet	åvddånahttet
+åvdås-	åvdås
+åvdåsstibme	åvdåstibme
+åvdåsstiddje	åvdåstiddje
+åvdåstidddje	åvdåstiddje
+åvdåstiddij	åvdåstiddjij
+åvdåstiddjida	åvdåstiddjijda
+åvdåsv	åvdåsvásstádus
+åvdåsvasstádusáv	åvdåsvásstádusáv
+åvdåsvásstadus	åvdåsvásstádus
+åvdåsvásstadusáv	åvdåsvásstádus
+åvdåsvásstá	åvdåsvásstádus
+åvdåsvásstádiddje	åvdåsvásstediddje
+åvtasvastadus	åvdåsvásstádus
+åvtav	åvtåv
+åvtåsduhteduvvi	måvtåstuvvi
+åvtåstuhteduvvi	måvtåstuvvi
+åvvål	åvddål
+åvvåå	åvvå
+åvåånis	åvvånis
+ökologalasj	ekologidjalasj
+ökonomija	ekonomiddja
+økologalasj	økologijjalasj
+økonoma	økonåvmmå
+#	With Norwegian æ:
+
+TVantænnaj	TV-antænnjoj
+AlfabeHtta	Alfabæhtta
+Dearnán	Dærnán
+Departemennta	Departemænnta
+Detnuj	Dædnuj
+Girkkohærra	Girkkohærrá
+Guovddagæjnnoj	Guovddagæjnnuj
+Haehttu	Hæhttu
+Hejkka	Hæjkka
+Hellemoprosjekta	Hellemoprosjækta
+Hellemoprosjekta	Oarjjevuodnaprosjækta
+Hábmernæjttso	Hábmer-næjttso
+Hæhkkát	Hæhkkat
+Hærra	Hærrá
+Kulturdepartemennta	Kulturdepartemænnta
+Luonndosuoddjimdepartemennta	Luonndosuoddjimdepartemænnta
+Lævnján	Levnjan
+Mannoæládos	Mannoæládus
+Máhttodepártemænnta	Máhttodepartemænnta
+Mærkkábiejve	Mærkkabiejve
+Mærradus	Mærrádus
+Nasjonalbalettaj	Nasjonalballæhttaj
+Nasjonálmonumenntaj	Nasjonalmonumænntaj
+Næljat	Nælját
+Oahppanåvoj	Oahpponævoj
+Oahpponevvaga	Oahpponævo
+Objektagárgadis	Objæktagárgadis
+Portrehtta	Portræhtta
+Prosjekta	Prosjækta
+Prosjektabarggo	Prosjæktabarggo
+Prosækta	Prosjækta
+Rámmátsæbrráj	Rámátsæbrráj
+Solidáritehtta	Solidaritæhtta
+Suodjalimvælggo-gisvuohtadåjmadagá	Suodjalimvælggogisvuodadåjmadagá
+Sæjmmatjåhkå	Sæjmmátjåhkå
+Teáhterspællára	Teáhtarspællára
+Tækstaoajvvádusá	Tækstaoajvvadusá
+Tækstatjoahken	Tækstatjoahkken
+Vajkkudimnævvon	Vájkkudimnævvon
+Vearbba	Værbba
+Værroetáhttá	Værroetáhtta
+antenna	antænnjo
+antennea	antænnjo
+avtagærddásj	avtagærddásasj
+balæhtta	ballæhtta
+barggovædtsága	barggovædtsaga
+bessá	bæssá
+biebmadisæládusán	biebmadimæládusán
+bilæhtta	billæhtta
+boatsujæládusáj	boatsojæládusáj
+budsjehtta	budsjæhtta
+budsjehttaoajvvadusánis	budsjæhttaoajvvadusánis
+budsjehttaoajvvádusánis	budsjæhttaoajvvadusánis
+budsjæhttamærradusájn	budsjæhttamærrádusájn
+budsjæhttaoajvvádusájda	budsjæhttaoajvvadusájda
+butsjetta	budsjæhtta
+bæjsttuj	bæjsstuj
+bæjsttám	bæjsstám
+bæjvasj	bæjvásj
+bæjvásasj	bæjvvásasj
+bælosdahtte	bælostahtte
+bærrá	bæssá
+bæsssásj	bæssásj
+bæsstam	bæsstám
+bæssásjiedet	bæssásjidet
+bøsoj	bæsoj
+dutkamdepartemænnda	dutkamdepartemænnta
+dåbddåmærkka	dåbddomærkka
+dåttot	dættot
+dæhkon	dæhkkon
+dænntjáv	dæntjáv
+dættujn	dættojn
+dævddam	dævddám
+fflæsska	flæsska
+fleksibilitehtta	fleksibilitæhtta
+fámilljadepartemennta	familljadepartemænnta
+færjjodahkes	færjodak
+færtbæjvvásasj	fertbæjvvásasj
+garggat	gærggat
+gehttjat	gæhttjat
+gieggehællo	gierggehællo
+giellaprosjektarudá	giellaprosjæktarudá
+girkkodepartemennta	girkkodepartemænnta
+guollimmvædtsagijt	guollimvædtsagijt
+gárevsælgadak	gárevselgadak
+gæhppasappo	gæhppadappo
+gæhtjalimjienastibme	gæhttjalimjienastibme
+gæhtjá	gæhttjá
+gæhttja	gæhttjá
+gæsastij	gæsástij
+gæssaj	gæssáj
+gæsstá	gæssta
+gætjajdallat	gætjájdallat
+gætjátji	gætjátjij
+hearrá	hærrá
+hessusijda	hæsojda
+hiejttuda	hæjttuda
+hiejttup	hæjttup
+hæhkkáájádus	hæhkkaájádus
+hæhttuhi	hæhttuji
+hæhttunjin	hæhttujin
+hæjttam	hæjttám
+hækkkat	hæhkkat
+hærra	hærrá
+hæstafámo	hestafámo
+hættuji	hæhttuji
+hættup	hæhttup
+identitehtta	identitæhtta
+identitehttá	identitæhtta
+iebdebu	æbddása
+iebdebun	æbddásappon
+iebdep	æbddásap
+iebejærgga	iehpejærgga
+iepdep	æbddásap
+ikt-vædtsaga	IKT-vædtsaga
+individuálla	individuælla
+industriálla	industriælla
+intendennta	intendænnta
+jiegñabæhkátjijt	jiegŋabæhkátjijt
+jæbddavuohta	jæbddásasjvuohta
+jæbddásasjbálkkágatjáldagá	jæbddásasjbálkkágatjálvisá
+jæhttep	jahttep
+jækta	jákta
+jærmmás	jiermmás
+jævddásattja	jæbddásattja
+kasæhtta	kassæhtta
+konseptastrategiav	konsæpptastratesjijjav
+konseærtta	konsærtta
+konsulenntan	konsulænntan
+kulturbudsjehtta	kulturbudsjæhtta
+kultuvrrabudsjehtta	kultuvrrabudsjæhtta
+kuvert	kuværtta
+kvalitehtta	kvalitæhtta
+káfeæjgát	kafedjaæjgát
+luonndoæl	luonndoæládus
+læhkam	læhkám
+læhkáam	læhkám
+læhkámarenav	læhkámarienáv
+læjvoktjuorvve	læjvoktjoarvve
+læksojt	lævsojt
+længav	læŋgáv
+længáv	læŋgáv
+lænngá	læŋŋgá
+lænnskaetáhttaj	lænsskaetáhttaj
+lænsmánne	lensmánne
+læpsojt	læppsusijt
+læstadianalasj	læstadianismalasj
+læstadiánera	læstadiánara
+læstadiánálasj	læstadiánalasj
+mannoæládusa	mannoæládusá
+mannoæládusviddnudagá	mannoæládusvidnudagá
+mannoæládusviddnudagájs	mannoæládusvidnudagájs
+matematihkkalaeksoj	matematihkkalæksuj
+matematihkkalaeksoj	matematihkkalævsoj
+matematihkkalæksoj	matematihkkalævsoj
+mejlla	mæjlla
+merrádusá	mærrádusá
+mialanækto	mielanækto
+muhtemærráj	muhtemmærráj
+mærk-kabiejve	mærkkabiejve
+mærradusáj	mærrádusáj
+mærredusáj	mærrádusáj
+mærrádusajs	mærrádusájs
+mærrádusánj	mærrádusájn
+mærádusájda	mærrádusájda
+mørrádusáv	mærrádusáv
+nammakonsulønntaj	nammakonsulænntaj
+naturálla	naturælla	mij	boahtá	fra	naturell
+njuolgatjállemvædtsagijs	njuolggatjállemvædtsagijs
+njuolgatjállemvædtsak	njuolggatjállemvædtsak
+næhttaverjåvnnå	næhttaversjåvnnå
+næjtsso	næjttso
+nævojda-	nævojda
+oahpponevvagijda	oahpponævojda
+oahpponævvåvddånahttemij	oahpponævvoåvddånahttemij
+orkesterijda	orkæsstarijda
+pergamenttagiessasijt	pergamænntagiessasijt
+portrehtta	portræhtta
+prefekta	perfækta
+pressadiedádusán	præssadiedádusán
+presssadoarjjagav	præssadoarjjagav
+professor	profæssur
+professora	profæssura
+profæssur	profæssor
+prosennta	prosænnta
+prosjektabarggon	prosjæktabarggon
+prosjektadahkamusájt	prosjæktadahkamusájt
+prosjæktajuohkus	prosjæktajuogos
+prosjæktajådedim	prosjæktajådedibme
+prosæktajådeddjen	prosjæktajådediddjen
+protessta	protæssta
+respekta	respækta
+ræhkkatrålla	ræhkkatrålar
+ræhttánin	ræhtánin
+ræjddat	riejddit
+sagaspællaj	Sagaspællaj
+sammiláhkáj	sæmmiláhkáj
+sebradahttemdepartemennta	sebradahttemdepartemænnta
+sebrajdahttemdepartemennta	sebradahttemdepartemænnta
+sermoniálla	sermoniælla
+siejvvim	sæjvvám
+sjievnnjedamos	sjævnnjadamos
+sjæbttjasijt	sjæbttjásijt
+sjævvnjat	sjævnnjat
+skallamæsso	skallomæsso
+solidáritehtta	solidaritæhtta
+spæddtjogådij	spædtjogådij
+stipændda	stipænnda
+strænnga	stræŋŋga
+subttsasværált	subtsasværált
+svænskka	svænsska
+syhkkalgæjnno	syhkalgæjnno
+ságaspællaj	Sagaspællaj	# rwe
+sássádusdepartemænnta	dássádusdepartemænnta
+sæbbram	sæbrram
+sæbbrá	sæbrrá
+sægodimkategoria	sægodimkategorijja
+sælldá	sælldása
+sæmmmi	sæmmi
+sænnga	sæŋŋga
+sænngaj	sæŋŋgaj
+tekstagiehtadallamprográmmaj	tækstagiehtadallamprográmmaj
+testamennta	testamænnta
+tjerdasis	tjærddasis
+tjiektá	tjæktá
+tjærddalasjálmmugij	tjerdalasjálmmugij
+tjævráv	tjævrráv
+tsæhkkogav	tsækkogav
+tækstadivudamprográmmajt	tækstadivudimprográmmajt
+tækstagiehta-dallamav	tækstagiehtadallamav
+tækstahábmimvuoges	tækstahábbmimvuoges
+tækstatjoahken	tækstatjoahkken
+tækstatjåhkijt	tækstatjoahkkijt
+tækstaárvustallámáv	tækstaárvustallamav
+tæstaoajvvádusá	tæsstaoajvvadusá	# Err/Lex test - gæhttjalibme
+viddnudakæjgát	vidnudakæjgát
+visuálla	visuælla
+vuobmalistállærkka	vuobmalistallærkka
+vuostasjamanuensis	vuostasjamanuænssa
+vuostasjamanuenssa	vuostasjamanuænssa
+vårroetáhtan	værroetáhtan
+væddsagijt	vædtsagijt
+vædsagijt	vædtsagijt
+vædtasagij	vædtsagij
+vædtságin	vædtsagin
+væjddomijda	væjddumijda
+væjddomrievtesvuodajda	væjddumrievtesvuodajda
+vælggogahtes	vælgodak
+vælggogisvuohtaa	vælggogisvuohta
+vælggogivuohta	vælggogisvuohta
+vælggugisvuodajt	vælggogisvuodajt
+væraldij	væráldij
+væramusáv	værámusáv
+værgga	vargga
+værromaksijda	værromáksijda
+væráldatjerastallemvuojtte	væráldatjerastallamvuojtte
+værálddoaro	væráltdoaro
+væráldáv	væráldav
+væránndá	veránndá
+vættsá	væhttsá
+ålgodisævto	ålgoldisævto
+ålgodisævtoj	ålgoldisævtoj
+ålgodisævtojs	ålgoldisævtojs
+ålgodisævtojt	ålgoldisævtojt
+åvddåprosjekta	åvddåprosjækta
+æddnam	æddnám
+æjdádijda	æjgádijda
+æjgadijda	æjgádijda
+æjgatnammadus	æjgátnammadus
+æjggopronomen	æjggopronåvmmå
+æjggoreivtesvuodajt	æjggumrievtesvuodajt
+æjggumriekáv	æjggumriektá
+æjggurievtesvuodajt	æjggumrievtesvuodajt
+æjgádj	æjgádij
+æladusájt	æládusájt
+ælggaviejddim	ælljaviejddim
+ællga	ællja
+ællgaviejddimin	ælljaviejddimin
+ællin	ællim
+ællitja	ællittja
+ællostuorrudáhka	ællostuorrudahka
+ælláskahttet	ælládahttet
+æládus-organisasjåvnåjt	æládusorganisasjåvnåjt
+æládus-ávijssa	æládusavijssa
+æládusaj	æládusáj
+æládussa	æládusá
+æládusstrategijja	æládusstratesjijja
+æssjakalit	æssjkalit
+æsski	esski
