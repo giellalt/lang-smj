@@ -2098,8 +2098,9 @@ SELECT (A Attr) IF (-1 V-NOT-AUX OR N)(1 N LINK NOT 0 VFIN);
 REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NEGATE 1 N);
 #REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NEGATE 1 A LINK *1 N BARRIER NOT-ADJ);
 
-REMOVE Attr IF (*1 VFIN BARRIER N);
+REMOVE Attr IF (*1 VFIN BARRIER N LINK NOT 0 N);
 	## Josef lij rievtesmielak, ittjij sidá suv hehpaduttet.
+	#% Dát la duohta subtsas gåktu aktisasj gieresvuohta giellaj aktidij «juolggimánáv» New Yorkas ja «sáme­riehtasav» Divtasvuona.
 
 REMOVE Adv IF (-1 (Dem Com))(0 (A Attr))(1 (N Com));
 	## dajna gjielgga rájájn.
@@ -2216,8 +2217,10 @@ SELECT (A Attr) IF (*-1 V-NOT-AUX BARRIER SV-BOUNDARY2)(0 Adv)(1 Acc)(2 ("gus"))
 SELECT (A Attr) IF (NEGATE *-3 COPULAS BARRIER NOT-ADV-PCLE)(-2 Attr OR PrfPrc OR PrsPrc) (-1 CC)(1 N LINK NOT 0 Nom)(NEGATE 0 (Prop Gen) LINK NOT 1 Prop);
 	## Soahpamušas váilot njuolggadusat smávit vahágahtti ja geavatlaččat bággolonistemiide.
  
-REMOVE (A Nom) IF (0 (A Attr))(NEGATE 0 (Pl Nom) LINK *-1 (V Pl3) BARRIER NOT-ADV-PCLE OR CS LINK NOT *-1 (Pl Nom) BARRIER S-BOUNDARY2 OR CC) (NEGATE 0 (Pl Nom) LINK *-1 COPULAS BARRIER NOT-ADV-PCLE LINK 0 Pl3) (*1C N OR Cmp/SplitR BARRIER NOT-ADJ OR (PUNCT RIGHT) LINK NOT 1 Po) (NEGATE 1 Prop OR Ill)(NEGATE 1 COMMA LINK 1 N) (NEGATE 1 Gen LINK *1 Po BARRIER NP-BOUNDARY);
+REMOVE (A Nom) IF (0 (A Attr))(NEGATE 0 (Pl Nom) LINK *-1 (V Pl3) BARRIER NOT-ADV-PCLE OR CS LINK NOT *-1 (Pl Nom) BARRIER S-BOUNDARY2 OR CC) (NEGATE 0 (Pl Nom) LINK *-1 COPULAS BARRIER NOT-ADV-PCLE LINK 0 Pl3) (*1C N OR Cmp/SplitR BARRIER NOT-ADJ OR (PUNCT RIGHT) LINK NOT 1 Po) (NEGATE 1 Prop OR Ill)(NEGATE 1 COMMA LINK 1 N) (NEGATE 1 Gen LINK *1 Po BARRIER NP-BOUNDARY) ;
 	## Dat lea čuovvovaš sajis.
+	
+REMOVE Nom IF (0 ("duohta") + Attr LINK 1 N ) ;	
 
 REMOVE (A Gen) IF (0 (A Attr))(*1 N BARRIER NOT-ADJ LINK NOT 1 Po);
 REMOVE (A Acc) IF (0 (A Attr))(*1 N BARRIER NOT-ADJ LINK NOT 1 Po);
@@ -2423,7 +2426,7 @@ REMOVE (A Attr) IF (0 A-CASE OR Adv)(1 CC)(NEGATE *2 N BARRIER NP-BOUNDARY);
 REMOVE (A Gen) IF (*-1 COPULAS BARRIER NOT-ADV-PCLE)(1 Inf); 
 	## Lea hávski oažžut reivve.
 
-SELECT (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-ADV LINK 0 V-SG3 LINK NOT *-1 Ine BARRIER N)(NEGATE -1 Gen)(NEGATE 0 Inf OR Attr) (NEGATE 0 Adv LINK *1 VERB BARRIER NOT-ADV)(NEGATE 1 PrfPrc) (NEGATE 1 CC LINK 1 Adv);
+SELECT (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-ADV LINK 0 V-SG3 LINK NOT *-1 Ine BARRIER N)(NEGATE -1 Gen)(NEGATE 0 Inf OR Attr) (NEGATE 0 Adv LINK *1 VERB BARRIER NOT-ADV)(NEGATE 1 PrfPrc) (NEGATE 1 CC LINK 1 Adv) (NEGATE 0 Attr LINK 1 N) ;
 	## Buođđu lea dál gárvvis.
 	## Dalle lea lunddolaš, ahte...
 
