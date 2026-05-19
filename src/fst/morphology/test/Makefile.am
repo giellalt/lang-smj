@@ -12,6 +12,10 @@ TESTS=
 
 GENERATION_TESTS=generate-adpos-lemmas.sh \
 				 generate-adverb-lemmas.sh
+			     generate-adjective-paradigm.sh \
+			     generate-verb-paradigm.sh \
+	             generate-propernoun-lemmas.sh \
+			     missing-multichars.sh 
 
 if WANT_GENERATION
 TESTS+=$(GENERATION_TESTS)
@@ -19,10 +23,7 @@ endif # WANT_GENERATION
 
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not critical at the moment:
-XFAIL_TESTS=missing-multichars.sh \
-			generate-adjective-paradigm.sh \
-			generate-verb-paradigm.sh \
-	generate-propernoun-lemmas.sh 
+XFAIL_TESTS=
 
 include $(top_srcdir)/../giella-core/am-shared/devtest-include.am
 include $(top_srcdir)/../giella-core/am-shared/src-fst-morphology-test-include.am
