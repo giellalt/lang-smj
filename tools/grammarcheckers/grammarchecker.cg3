@@ -3019,7 +3019,19 @@ ADD:xpunct-nom-nom-comma (&punct-nom-nom-comma) TARGET (Gram/3syll Actio Nom) OR
 ADDRELATION (RIGHT) (&punct-nom-nom-comma) TO (1 (ADDED)) ;
    
     ## Dan maŋŋela la Sámedigge giellastivrra ja fylkka bálkáv vaddám.
-    
+
+    # Verbform errors
+    # ===================================================================================================
+    # ===================================================================================================
+    # ===================================================================================================
+    # infinitive-actio ela = Should be actio elative instead of infinitive
+    #--------------------------
+
+ADD:msyn-verbform-infinitive-actioela (&msyn-verbform-infinitive-actioela) TARGET (Inf) IF (*-1 ("hiejttet") OR ("gærggat") BARRIER NOT-ADV-PCLE) ; 
+
+COPY:msyn-verbform-infinitive-actioela (SUGGEST Actio Ela) EXCEPT (Inf) TARGET (&msyn-verbform-infinitive-actioela) ;
+
+	## Gærggiv {låhkåt} jur åvdås vuolgijma.
 
     # Missing words
     # ===================================================================================================
