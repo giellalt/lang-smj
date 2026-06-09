@@ -2209,6 +2209,9 @@ ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" 
     #$ Galles julevsámegielav Vuonan ja Svierigin ságasti la dåssjå månadis, soajtti guovtet tuvsánis binnebu.
     
     ## Tjuottjodum la, Vuona stáhtta {la} ásaduvvam guovte álmmuga ednamij nali – dáttja ja sábmelattja. #DNW LINDA Sg2 ij ane clt. Disamb viertti fiksiduvvat ja kanskje válldet ierit Sg2 dánna.
+
+ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" Ind Prs Sg2) IF (-1 ("mån" Pl1 Ill) OR ("dån" Pl2 Ill) OR ("sån" Pl3 Ill)) ;
+	## Midjij la gássjel ássjev tjoavddet.
         
 COPY:msyn-l-not-la (Sg3 Clt SUGGEST) EXCEPT (Sg2 SentInit &msyn-l-not-la) OR (Sg3 SentInit &msyn-l-not-la) OR (Sg3 &msyn-l-not-la) OR (Sg2 &msyn-l-not-la) TARGET (&msyn-l-not-la) (NEGATE -1 ("guhti") LINK -1 ("mån" Pl1 Gen) LINK -1 ("áhttje" Sg Nom)) (NEGATE -1 (Dem Pl Nom) LINK -1 BOS) ;
 	## Linda la buorre.
@@ -2219,11 +2222,13 @@ COPY:msyn-l-not-la (Sg3 Clt SUGGEST) EXCEPT (Sg2 SentInit &msyn-l-not-la) OR (Sg
 
 	#  l to la/le to after consonant
     # ----------------------------------------------------------------------
-ADD:msyn-la-not-l (&msyn-la-not-l) TARGET ("liehket" Clt) IF (NEGATE -1 ("<.*[aeiouáå]>"r) OR BOS LINK NOT 0 ("ja") OR ("jali")) ;
+ADD:msyn-la-not-l (&msyn-la-not-l) TARGET ("liehket" Clt) IF (NEGATE -1 ("<.*[aeiouáå]>"r) OR BOS LINK NOT 0 ("ja") OR ("jali")) (NEGATE -1 ("mån" Pl1 Ill) OR ("dån" Pl2 Ill) OR ("sån" Pl3 Ill)) ;
+
+	## Midjij {la} gássjel ássjev tjoavddet
 
 COPY:msyn-la-not-l (SUGGEST) EXCEPT (Clt &msyn-la-not-l) TARGET (&msyn-la-not-l) ;
-    # Dát ságastallamstasjåvnnå hiehpá oahppijda gejn l buorre sámegiella
-
+    ## Dát ságastallamstasjåvnnå hiehpá oahppijda gejn l buorre sámegiella
+	#$ Midjij l gássjel ássjev tjoavddet.
 
 
 
