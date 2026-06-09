@@ -2064,6 +2064,8 @@ COPY:syn-from-sentence-init-copula (Clt SUGGEST) EXCEPT (SentInit &syn-from-sent
 	## Minimalissta prográmma le dat oasse generatijva grammatihkas mij le doajmmam 1990 lågo rájes.
 	#$ Áhttje mijá guhti {le} almen
     #$ Jus galggap vuorbástuvvat hæhttup aktan barggat, dádjadusájn juhti {le} nasjåvnålasj fálaldagá ma galggi ásaduvvat
+
+COPY:syn-from-sentence-init-copula (Clt SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Prs Sg3 &syn-from-sentence-init-copula) IF (-1 ("mån" Pl1 Ill) OR ("dån" Pl2 Ill) OR ("sån" Pl3 Ill)) ;
     
 	# li
 	# --
@@ -2137,7 +2139,7 @@ COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence
 	## Såj læbá boahtám sijddaj
 	#$ Jus galggap vuorbástuvvat hæhttup aktan barggat, dádjadusájn juhti {le} nasjåvnålasj fálaldagá ma galggi ásaduvvat
 	
-COPY:syn-from-sentence-init-copula ( SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET &syn-from-sentence-init-copula IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 ("ja") OR ("de" Adv) OR ("de" CC) OR ("jali") OR ("juo"))(NEGATE -1 (Sg Nom) OR (Sg3 Nom) OR ( "ij" Neg Ind Prs Sg3) OR (Pl Nom) - <AttrPred> OR (Pl3 Nom)) (NEGATE 1 (N Pl Nom) LINK *1 (V Pl3) BARRIER S-BOUNDARY);
+COPY:syn-from-sentence-init-copula ( SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET &syn-from-sentence-init-copula IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 ("ja") OR ("de" Adv) OR ("de" CC) OR ("jali") OR ("juo"))(NEGATE -1 (Sg Nom) OR (Sg3 Nom) OR ( "ij" Neg Ind Prs Sg3) OR (Pl Nom) - <AttrPred> OR (Pl3 Nom)) (NEGATE 1 (N Pl Nom) LINK *1 (V Pl3) BARRIER S-BOUNDARY) (NEGATE -1 ("mån" Pl1 Ill) OR ("dån" Pl2 Ill) OR ("sån" Pl3 Ill)) ;
 
 	## ja {le} akta dajs ájnnasamos > la
     ## jus boadá de {le} buorre> la 
@@ -2210,7 +2212,7 @@ ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" 
     
     ## Tjuottjodum la, Vuona stáhtta {la} ásaduvvam guovte álmmuga ednamij nali – dáttja ja sábmelattja. #DNW LINDA Sg2 ij ane clt. Disamb viertti fiksiduvvat ja kanskje válldet ierit Sg2 dánna.
 
-ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" Ind Prs Sg2) IF (-1 ("mån" Pl1 Ill) OR ("dån" Pl2 Ill) OR ("sån" Pl3 Ill)) ;
+ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" Ind Prs Sg2) IF (-1 ("mån" Pl1 Ill) OR ("dån" Pl2 Ill) OR ("sån" Pl3 Ill)) (NEGATE 0 SentInit) ;
 	## Midjij la gássjel ássjev tjoavddet.
         
 COPY:msyn-l-not-la (Sg3 Clt SUGGEST) EXCEPT (Sg2 SentInit &msyn-l-not-la) OR (Sg3 SentInit &msyn-l-not-la) OR (Sg3 &msyn-l-not-la) OR (Sg2 &msyn-l-not-la) TARGET (&msyn-l-not-la) (NEGATE -1 ("guhti") LINK -1 ("mån" Pl1 Gen) LINK -1 ("áhttje" Sg Nom)) (NEGATE -1 (Dem Pl Nom) LINK -1 BOS) ;
