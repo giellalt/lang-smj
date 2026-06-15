@@ -25,7 +25,6 @@ too-many-spaces = Lijgge gasska
 missing-space = Gasska vájllu
     .desc = Dánna vállju gasska.
 
-## Default patterns: re:punct-aistton.*
 wrong-type-of-guillemets = Boasto sitáhttamærkka
     .desc = Vuojnnet la  boasto sitáhttamerkajt adnám.
 
