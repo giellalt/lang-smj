@@ -156,6 +156,7 @@ LIST Refl = Refl ;	    #!! Refl
 LIST Rel = Rel ;	    #!! Rel
 LIST Coll = Coll ;	    #!! Coll
 LIST NomAg = NomAg ;    #!! NomAg
+LIST NomAct = Der/NomAc Gram/NomAct ;
 LIST Prop = Prop ;	    #!! Prop
 LIST Allegro = Allegro ; #!! Allegro
 LIST Arab = Arab ; #!! Arab
@@ -3041,14 +3042,23 @@ ADDRELATION (RIGHT) (&punct-nom-nom-comma) TO (1 (ADDED)) ;
     # infinitive-actio ela = Should be actio elative instead of infinitive
     #--------------------------
 
-ADD:msyn-verbform-infinitive-actioela (&msyn-verbform-infinitive-actioela) TARGET (Inf) IF (*-1 ("hiejttet") OR ("ballat") BARRIER NOT-ADV-PCLE - Acc) 
+ADD:msyn-verbform-infinitive-actioela (&msyn-verbform-infinitive-actioela) TARGET (Inf) IF (*-1 ("hiejttet") OR ("ballat") OR ("gáhttit") BARRIER NOT-ADV-PCLE - Acc) 
+(NEGATE -1 ("gåktu"))
+(NEGATE -1 Rel OR Interr)
+(NEGATE *-1 ("hiejttet") OR ("ballat") OR ("gáhttit") BARRIER NOT-ADV-PCLE - Acc LINK 0 N) ; 
+
+	## Hiejttiv {suovastit}.
+
+
+ADD:msyn-verbform-infinitive-actioela (&msyn-verbform-infinitive-actioela) TARGET (Inf) IF (-1 Acc LINK *-1 ("hiejttet") OR ("ballat") BARRIER NOT-NPMODADVPCLE) 
 (NEGATE -1 ("gåktu"))
 (NEGATE -1 Rel OR Interr); 
 
+	## Sij vierttiji mijáv moajttet, dajnas gå balli ietjasa sámevuodav {åvddånbuktet}.
+	
 COPY:msyn-verbform-infinitive-actioela (Actio Ela SUGGEST) EXCEPT (Inf) TARGET (&msyn-verbform-infinitive-actioela) ;
 
 
-	## Bessiv hivsigav bassat.
 
 
 	# -------------------
@@ -3056,10 +3066,12 @@ COPY:msyn-verbform-infinitive-actioela (Actio Ela SUGGEST) EXCEPT (Inf) TARGET (
 	# gærggat > ållit
 	
 ADD:msyn-verbform-infinitive-gærggat (&msyn-verbform-infinitive-gærggat) TARGET ("gærggat") IF (*1 Inf BARRIER NOT-ADV-PCLE  - Acc )
-(NEGATE *1 N - Acc - Ill BARRIER NOT-ADV-PCLE ) ; 
+(NEGATE *1 N - Acc - Ill BARRIER NOT-ADV-PCLE )
+(NEGATE *-1 ("gærggat") BARRIER NOT-ADV-PCLE - Acc LINK 0 N) ; 
 
 ADD:msyn-verbform-infinitive-gærggat (&msyn-verbform-infinitive-gærggat) TARGET ("gærggat") IF (*1 Acc OR Ill BARRIER NOT-NPMODADVPCLE LINK 1 Inf )
-(NEGATE *1 N - Acc - Ill BARRIER NOT-ADV-PCLE ) ; 
+(NEGATE *1 N - Acc - Ill BARRIER NOT-ADV-PCLE ) 
+(NEGATE *-1 ("gærggat") BARRIER NOT-ADV-PCLE - Acc LINK 0 N) ; 
 
 ADD:msyn-verbform-infinitive-gærggat (&msyn-verbform-infinitive-gærggat) TARGET (Inf) IF (*-1 ("gærggat" &msyn-verbform-infinitive-gærggat) BARRIER NOT-ADV-PCLE - Acc - Ill ) 
 (NEGATE -1 ("gåktu")) 
@@ -3083,7 +3095,8 @@ COPY:msyn-verbform-infinitive-gærggat ("ållit" TV SUGGEST) EXCEPT ("gærggat" 
 	
 ADD:msyn-verbform-infinitive-gærggat2 (&msyn-verbform-infinitive-gærggat2) TARGET (Inf) IF (*-1 ("gærggat") BARRIER NOT-ADV-PCLE - Acc) 
 (NEGATE -1 ("gåktu")) 
-(NEGATE -1 Rel OR Interr); 
+(NEGATE -1 Rel OR Interr)
+(NEGATE *-1 ("gærggat") BARRIER NOT-ADV-PCLE - Acc LINK 0 N) ; 
 
 ADD:msyn-verbform-infinitive-gærggat2 (&msyn-verbform-infinitive-gærggat2) TARGET (Inf) IF (-1 Acc  LINK *-1 ("gærggat") BARRIER NOT-NPMODADVPCLE) 
 (NEGATE -1 ("gåktu")) 
@@ -3091,7 +3104,8 @@ ADD:msyn-verbform-infinitive-gærggat2 (&msyn-verbform-infinitive-gærggat2) TAR
 
 
 ADD:msyn-verbform-infinitive-gærggat2 (&msyn-verbform-infinitive-gærggat2) TARGET ("gærggat" &msyn-verbform-infinitive-gærggat2) - SUGGEST IF (*1 Inf BARRIER NOT-ADV-PCLE - Acc)
-(NEGATE *1 N BARRIER NOT-ADV-PCLE) ; 
+(NEGATE *1 N BARRIER NOT-ADV-PCLE) 
+(NEGATE *-1 ("gærggat") BARRIER NOT-ADV-PCLE - Acc LINK 0 N) ; 
 
 ADDRELATION ($2 LEFT) (Inf &msyn-verbform-infinitive-gærggat2) TO (*-1 ("gærggat" &msyn-verbform-infinitive-gærggat2)) ;
 
