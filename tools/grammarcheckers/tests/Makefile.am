@@ -62,6 +62,8 @@ TESTS=\
 	REL-msyn-iesj-ietja-PASS.yaml                 \
 	REL-msyn-soajtta-FAIL.yaml                    \
 	REL-msyn-soajtta-PASS.yaml                    \
+	REL-msyn-verbform-inf-actioela-FAIL.yaml	  \
+	REL-msyn-verbform-inf-actioela-PASS.yaml	  \
 	REL-syn-correct-form-liehket-FAIL.yaml        \
 	REL-syn-correct-form-liehket-PASS.yaml        \
 	format-missing-comma.yaml                     \
@@ -149,6 +151,7 @@ XFAIL_TESTS=\
 	REL-msyn-soajtta-FAIL.yaml                    \
 	REL-syn-correct-form-liehket-FAIL.yaml        \
 	REL-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
+	REL-msyn-verbform-inf-actioela-FAIL.yaml	  \
 	format-missing-comma.yaml                     \
 	lex-oahpasmuvvat-oahpastuvvat.yaml            \
 	msyn-IV-with-object.yaml                      \
