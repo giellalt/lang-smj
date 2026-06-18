@@ -41,7 +41,10 @@ TESTS=\
 	DEV-real-PrsPl3-PrtSg3-PASS.yaml              \
 	DEV-real-PrtSg3-PrsPl3-FAIL.yaml              \
 	DEV-real-PrtSg3-PrsPl3-PASS.yaml              \
+	DEV-real-vuostasj-vuostak-FAIL.yaml			  \
+	DEV-real-vuostasj-vuostak-PASS.yaml			  \
 	DEV-real-habbmim-PASS.yaml                    \
+	DEV-real-habbmim-FAIL.yaml‎					  \
     DEV-syn-akta-FAIL.yaml                        \
     DEV-syn-akta-PASS.yaml                        \
     DEV-syn-missing-gus-FAIL.yaml                 \
@@ -152,6 +155,8 @@ XFAIL_TESTS=\
 	REL-syn-correct-form-liehket-FAIL.yaml        \
 	REL-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
 	REL-msyn-verbform-inf-actioela-FAIL.yaml	  \
+	DEV-real-vuostasj-vuostak-FAIL.yaml			  \
+	DEV-real-habbmim-FAIL.yaml‎					  \
 	format-missing-comma.yaml                     \
 	lex-oahpasmuvvat-oahpastuvvat.yaml            \
 	msyn-IV-with-object.yaml                      \
