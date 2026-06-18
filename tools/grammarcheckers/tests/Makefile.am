@@ -107,7 +107,6 @@ TESTS=\
 	real-PrtSg3-PrsPl3-PASS.yaml                  \
 	real-gæhppat-alkke-FAIL.yaml                  \
 	real-gæhppat-alkke-PASS.yaml                  \
-	real-habbmim-FAIL.yaml                        \
 	real-habbmim-PASS.yaml                        \
     syn-attr-pred-FAIL.yaml                       \
     syn-attr-pred-PASS.yaml                       \
@@ -156,7 +155,6 @@ XFAIL_TESTS=\
 	REL-lex-oahpasmuvvat-oahpastuvvat-FAIL.yaml   \
 	REL-msyn-verbform-inf-actioela-FAIL.yaml	  \
 	DEV-real-vuostasj-vuostak-FAIL.yaml			  \
-	DEV-real-habbmim-FAIL.yaml‎					  \
 	format-missing-comma.yaml                     \
 	lex-oahpasmuvvat-oahpastuvvat.yaml            \
 	msyn-IV-with-object.yaml                      \
