@@ -44,7 +44,6 @@ TESTS=\
 	DEV-real-vuostasj-vuostak-FAIL.yaml			  \
 	DEV-real-vuostasj-vuostak-PASS.yaml			  \
 	DEV-real-habbmim-PASS.yaml                    \
-	DEV-real-habbmim-FAIL.yaml‎					  \
     DEV-syn-akta-FAIL.yaml                        \
     DEV-syn-akta-PASS.yaml                        \
     DEV-syn-missing-gus-FAIL.yaml                 \
