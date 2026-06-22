@@ -2000,14 +2000,15 @@ ADD:xmsyn-congr-ma-mij+verb+verb (&msyn-congr-ma-mij+verb) TARGET (Rel Nom Pl) I
 (NEGATE *-1 (N Sg) OR (Pron Sg) OR Pers - Pl1 - Pl2 - Pl3 - Du1 - Du2 - Du3 BARRIER NOT-BEFORE-REL LINK -1 CC LINK -1 (N Sg) OR (N Pl)) 
 (NEGATE 0 &msyn-congr-mij-ma+verb) (NEGATE 1 DU-V) 
 (NEGATE 1 (Dem Pl) LINK 1 (N Pl) OR (N Sg Gen))
-(NEGATE 1 ("ietjá" Pl Nom) LINK *1 Pl3 BARRIER NOT-ADV-PCLE) ;
+(NEGATE 1 ("ietjá" Pl Nom) LINK *1 Pl3 BARRIER NOT-ADV-PCLE) 
+(NEGATE -1 (N Acc) LINK 1 (Rel Nom)) ;
 
     ## Miján la viehka stuorra nággo dálla guollebiebmadimæládusás {ma} sihti mierdijt biedjat duon dán vuodnaj ja dát båktå rijdojt.
     ## Miján la viehka stuorra nággo dálla guollebiebmadimæládusás ja æládusás {ma} sihti mierdijt biedjat duon dán vuodnaj ja dát båktå rijdojt.
     #$ Giellamåvtåstuhttemstipænnda oahppijda joarkkaskåvlån {gudi} sámegielåhpadusáv válljiji.
     #$  Galggi aj ájggeguovddelis ássjev åvddånbuktet oajválattjajda mij guosská vuorrasij iellemdilláj ja álkkádussaj. Vuordedahtte de li ålos {gudi} dasi ávvudalli.
     #$   Guovtet álmmugis gudi lijga miellusa guorrasittjat tjoavddusijda, ienni gå rijdojda ja niejddemijda boahtte ájgen."
-
+	#$ guhti dan almatjijda hekkav vattij, sidjij vuojŋŋamav gudi ednamin vájaldi
     
 COPY:msyn-congr-mij-ma+verb (Sg SUGGEST) EXCEPT (Pl &msyn-congr-ma-mij+verb) AFTER Rel TARGET (Rel &msyn-congr-ma-mij+verb) ;
 
@@ -2650,8 +2651,9 @@ COPY:msyn-mij-gut ("guhti" Sh SUGGEST) EXCEPT ("mij" &msyn-mij-gut) TARGET (&msy
 ADD:xmsyn-gut-mij (&msyn-gut-mij) TARGET WHO IF (-1 N LINK NOT 0 Sem/AnimateNotOrg LINK NEGATE -1 Sem/Hum + Gen ) 
 (NEGATE -2 Sem/Hum LINK 1 Sem/Plc)
 (NEGATE -3 Sem/Hum LINK *1 Sem/Plc BARRIER NOT-NPMOD - Sem/Plc)
-(NEGATE -1 ("avtak") OR ONE + Foc/Pos-k OR (Pron Pers) OR (Pron Indef) + Sem/Hum OR Coll) 
 (NEGATE *-1 (N Nom) + Sem/Hum OR (Dem Nom) BARRIER (*) - (N Ine) - (Pron Ine) LINK *-1 BE + (Ind Sg3) OR BE + (Ind Sg3) BARRIER NOT-NPMOD LINK -1 WHO) 
+(NEGATE *-1 Pers BARRIER COMMA ) 
+(NEGATE -1 ("avtak") OR ONE + Foc/Pos-k OR (Pron Pers) OR (Pron Indef) + Sem/Hum OR Coll) 
 (NEGATE -1 (N Ine) LINK -1 (N Ill) OR (Pron Ill)) 
 (NEGATE -1 Ess LINK -1 Sem/AnimateNotOrg)
 (NEGATE -1 ("mánno" Pl Nom) OR ("jahke" Pl Nom))
@@ -3006,6 +3008,7 @@ ADD:xsyn-nom_nom-gen_nom (&syn-nom_nom-gen_nom) TARGET (Gram/3syll Actio Nom) OR
 (NEGATE 0 ("idja") LINK 1 ("biejvve")) 
 (NEGATE 0 (Prop Sem/Fem) OR (Prop Sem/Mal) LINK 1 (N Sem/Hum)) 
 (NEGATE 0 (N "<.*lasj>"r))
+(NEGATE 1 (PrfPrc))
 (NEGATE 1 PrsPrc LINK 1 N ) 
 (NEGATE 1 ("jurra") LINK *1 (V Ind) BARRIER NOT-CC - Adv) 
 (NEGATE 1 (N Sg Nom) LINK 1 ("AS")) 
@@ -6159,15 +6162,16 @@ ADD:xmsyn-dem-noun-nom (&msyn-dem-noun-nom) TARGET Dem IF (*1 (N Nom) BARRIER NO
 (NEGATE 0 (Sg Gen) OR (Sg Ine Attr) LINK *1 (Sg Nom) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 0 (Sg Ine)) 
 (NEGATE 0 (Sg Gen) LINK 1 ("lágásj"))
 (NEGATE 1 Num)
-(NEGATE *1 Coll BARRIER NOT-Attr)
-(NEGATE *1 (Prop) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE 1 V)
-(NEGATE *1 (N <spelled>) OR (N Err/Orth) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE 1 CC OR CS)
 (NEGATE 1 COMMA OR CLB)
 (NEGATE 1 ABBR)
 (NEGATE 1 (Der/NomInstr N Sg Nom))
-(NEGATE *1 Cmp/SplitR BARRIER NOT-NPMOD-WITHOUT-NUM) ; 
+(NEGATE *1 (N <spelled>) OR (N Err/Orth) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE *1 Coll BARRIER NOT-Attr)
+(NEGATE *1 (Prop) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE *1 (N Nom) LINK 0 (PrfPrc) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE *1 Cmp/SplitR BARRIER NOT-NPMOD-WITHOUT-NUM); 
 	
 	#$ Guddnedihtit Härráv ednamin, merraielle ja ihkeva tjiegŋalisá, eldagis ja tjuormas, muohta ja murkko, {dån} stoarmmo mij dagá mav gåhttju
 
@@ -6359,6 +6363,7 @@ ADD:xmsyn-dem-noun-ela (&msyn-dem-noun-ela) TARGET Dem IF (*1 (N Ela) BARRIER NO
 (NEGATE 0 (Sg Gen) LINK 1 (N Pl))
 (NEGATE 0 (Dem Acc))
 (NEGATE 0 (Dem Abe))
+#(NEGATE 0 (Dem Gen)) # daj(sijá) muorjijs bårri 
 (NEGATE 0 (Dem Sg Ine) LINK NOT 0 Attr) #danna, not likely L1 error since this form never is attr
 (NEGATE 0 (Dem Sg Ela) LINK NOT 0 (Attr) OR (Sh)) #dassta, not likely L1 error since this form never is attr
 (NEGATE 0 (Dem Sg Ill) LINK NOT 0 Attr) #dasi, not likely L1 error since this form never is attr
