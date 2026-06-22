@@ -2837,8 +2837,9 @@ REMOVE Adv (0 ("juoga"));
 # Noun or not? #
 # ============ #
 
-REMOVE V IF (-1C Attr)(0 N);
+REMOVE V IF (-1C Attr)(0 N) (NEGATE 0 Der/NomAct LINK 0 PrfPrc LINK *-1 ("liehket"));
 	## Álmmuk mij sjievnnejdin årru, le stuorra tjuovgav vuojnnám.
+	#$ GRAM maŋŋela le muhtem iehtjáda aj dav sæmmi {dahkam}. 
 	
 SELECT N IF (-1 Gen)(0 A)(1 CLB OR EOS);
 	## Gen iednne lij Uriasa áhkká?	
@@ -4268,6 +4269,7 @@ SELECT PrfPrc IF (*-1 ("liehket" V) BARRIER V);
 
 SELECT PrfPrc IF (-1 BOS)(*1 ("liehket") BARRIER NOT-ADV-PCLE) ;
 
+REMOVE PrfPrc IF (1 (V Prt) OR (V Prs)) ;
     
 SELECT (V Sg2) IF (-1 BOS)(1 ("gus" Pcle))(2 (Pron Pers Sg2 Nom));
 	## Le gus dån oahpes dán bájkkáj?
