@@ -48,20 +48,9 @@ CUSTOM_FSTS=
 #### Add language-specific build rules here: ####
 
 
-### Process æ-ä early, and separately for xfst, hfst and foma. ###
+### Process æ-ä early, and separately for hfst and foma. ###
 ###
-### Xerox: can't use twosided flag-diacritics, so we'll just allow both
-### everywhere:
-.generated/analyser-raw-gt-desc.xfst: .generated/analyser-raw-gt-desc.tmp.xfst \
-					filters/convert-æae-to-both.xfst
-	$(AM_V_XFST_TOOL)$(PRINTF) "read regex            \
-				@\"$<\"                               \
-			.o. @\"filters/convert-æae-to-both.xfst\" \
-			;\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST_TOOL)
-
-### Foma: as Hfst, but the file is an analyser (as xfst), not generator:
+### Foma: as Hfst, but the file is an analyser, not generator:
 .generated/analyser-raw-gt-desc.foma: .generated/analyser-raw-gt-desc.tmp.foma \
 					 filters/convert-æae-to-area-variant.foma \
 					 filters/insert-area-tags.foma
@@ -248,32 +237,6 @@ endif !WITH_OFST_TROPICAL
 		 save stack $@\n\
 		 quit\n" | $(XFST_TOOL)
 
-.generated/analyser-gt-norm.xfst: .generated/analyser-gt-norm.tmp.xfst \
-					filters/remove-norm-comp-tags.xfst             \
-					filters/remove-derivation-position-tags.xfst   \
-					filters/remove-grammatical-tags.xfst           \
-					filters/remove-illegal-derivation-strings.xfst \
-					filters/remove-use_mt-strings.xfst             \
-					filters/remove-DNorm-tags.xfst \
-					filters/remove-usage-tags.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
-			    @\"filters/remove-usage-tags.xfst\"                 \
-			.o. @\"filters/remove-derivation-position-tags.xfst\"   \
-			.o. @\"filters/remove-grammatical-tags.xfst\"           \
-			.o. @\"filters/remove-norm-comp-tags.xfst\"             \
-			.o. @\"filters/remove-DNorm-tags.xfst\"                 \
-			.o. @\"filters/remove-use_mt-strings.xfst\"             \
-			.o. @\"$<\"                                             \
-			;\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
-
-# This does not work -  the filter in its present form blocks too much because
-# it crosses word boundaries, and restricting the filter by disallowing
-# word boundaries makes it uncompilable when using Xerox. Another version makes
-# Hfst crash!
-#			.o. @\"filters/remove-illegal-derivation-strings.xfst\" \
-#
 
 # ... and also in the Oahpa analyser:
 .generated/analyser-oahpa-gt-norm.%: .generated/analyser-gt-norm.tmp.% \
@@ -388,39 +351,6 @@ endif !WITH_OFST_TROPICAL
 	save stack $@\n\
 	quit\n" | $(HFST_XFST) -p $(MORE_VERBOSITY)
 
-# We need to add processing of language-specific tags in the generator:
-# Xerox processing due to bug in the operation twosided flag-diacritics:
-.generated/generator-gt-norm.xfst: .generated/generator-gt-norm.tmp.xfst                \
-					 filters/remove-derivation-position-tags.xfst \
-					 filters/remove-norm-comp-tags.xfst           \
-					 filters/remove-illegal-derivation-strings.xfst \
-					 filters/remove-DNorm-tags.xfst               \
-					 filters/remove-MinusSpell-strings.xfst       \
-					 filters/remove-use_mt-strings.xfst           \
-					 filters/make-optional-lang_hom-tags.xfst     \
-					 filters/make-optional-grammatical-tags.xfst  \
-					filters/remove-usage-tags.xfst
-	$(AM_V_XFST)$(PRINTF) "read regex \
-				@\"filters/remove-usage-tags.xfst\"               \
-			.o. @\"filters/make-optional-grammatical-tags.xfst\"  \
-			.o. @\"filters/make-optional-lang_hom-tags.xfst\"     \
-			.o. @\"filters/remove-derivation-position-tags.xfst\" \
-			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
-			.o. @\"filters/remove-DNorm-tags.xfst\"               \
-			.o. @\"filters/remove-MinusSpell-strings.xfst\"       \
-			.o. @\"filters/remove-use_mt-strings.xfst\"           \
-			.o. @\"$<\"                                           \
-			;\n\
-		 invert net\n\
-		 save stack $@\n\
-		 quit\n" | $(XFST) $(VERBOSITY)
-
-# This does not work -  the filter in its present form blocks too much because
-# it crosses word boundaries, and restricting the filter by disallowing
-# word boundaries makes it uncompilable when using Xerox. Another version makes
-# Hfst crash!
-#			.o. @\"filters/remove-illegal-derivation-strings.xfst\" \
-#
 
 # gt-norm for Foma and Hfst:
 .generated/generator-gt-norm.%: .generated/generator-gt-norm.tmp.%                   \
