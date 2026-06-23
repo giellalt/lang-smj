@@ -6168,6 +6168,7 @@ ADD:xmsyn-dem-noun-nom (&msyn-dem-noun-nom) TARGET Dem IF (*1 (N Nom) BARRIER NO
 (NEGATE 0 (Dem Sg Par) LINK 1 (N Gen) LINK 1 (N Sg Ela))
 (NEGATE 0 (Dem Pl Ela) LINK 1 (N Gen) LINK 1 (N Pl Ela))
 (NEGATE 0 (Dem Sg Com) LINK 1 (N Pl Nom))
+(NEGATE 0 (Dem Sg Ill Attr) OR (Dem Sg Gen) LINK *1 (N Pl Nom) OR (N Sg Gen) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE 0 (Dem Abe))
 (NEGATE 0 Ess)
 (NEGATE 0 Foc/Neg-k)
@@ -6215,6 +6216,7 @@ ADD:xmsyn-dem-noun-gen (&msyn-dem-noun-gen) TARGET Dem IF (*1 (N Gen) BARRIER NO
 (NEGATE 0 (Sg Gen) LINK *1 (N Sg Gen) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE 0 (Pl Gen) LINK *1 (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE 0 (Pl Ine) LINK *1 (N Sg Gen) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE 0 (Sg Nom) LINK -1 (V Sg3) LINK NOT *-1 (N Sg Nom) OR (Pron Sg Nom) BARRIER S-BOUNDARY OR VFIN)
 (NEGATE 0 (Sg Gen) LINK *1 (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 0 (N Sg Ill)) 
 (NEGATE 0 (Sg Gen) LINK *1 (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK NOT 0 Á-A-E-O-U-I-Å-NOUNS) 
 (NEGATE 0 (Sg Ine) LINK NOT 0 Attr) #danna, not likely L1 error since this form never is attr
@@ -6242,6 +6244,7 @@ ADD:xmsyn-dem-noun-gen (&msyn-dem-noun-gen) TARGET Dem IF (*1 (N Gen) BARRIER NO
 (NEGATE 1 ABBR)
 (NEGATE 1 (Dem Gen) LINK *1 (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE *1 (N <spelled>) OR (N Err/Orth) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE *1 PrfPrc BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 COMMA)
 (NEGATE *1 (N Pl Nom) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE *1 (Prop) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE *1 (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 0 V)
@@ -6300,6 +6303,7 @@ COPY:msyn-dem-noun-acc (Pl Acc SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Ine) 
 
 	#ine
 ADD:xmsyn-dem-noun-ine (&msyn-dem-noun-ine) TARGET Dem IF (*1 (N Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+#(NEGATE -2 (N Pl Nom) LINK 1 CC LINK 1 (Dem Pl Gen) LINK *1 (N Pl Ine) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE -1 (V TV) LINK 1 (Dem Acc))
 (NEGATE 0 (Sg Gen) LINK *1 (N Sg Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE 0 (Sg Ine Attr) OR (Sg Ill Attr) LINK *1 (N Sg Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) 
