@@ -25,8 +25,13 @@ too-many-spaces = Lijgge gasska
 missing-space = Gasska vájllu
     .desc = Dánna vállju gasska.
 
-wrong-type-of-guillemets = Boasto sitáhttamærkka
-    .desc = Vuojnnet la  boasto sitáhttamerkajt adnám.
+## Default patterns: re:msyn-verbform-infinitive*
+verbform-error = Infinitijvvavihke
+    .desc = Dån la adnám infinitijva hámev boasstot
+
+## Default patterns: re:punct-aistton.* 
+wrong-type-of-guillemets = Boasto sitáhttamærkka2
+    .desc = Vuojnnet la boasto sitáhttamerkajt adnám.
 
 msyn-dimin-after-unna = Diminutijvva
     .desc = Hiehpá adnet {$1} bágov diminutijva hámen.
@@ -61,7 +66,10 @@ lex-oahpasmuvvat-oahpastuvvat = Vihke"oahpásmuvvat bágujn"
 typo = Tjállemvihke
     .desc = Báhko {$1} la vuojnnet boasstot tjáleduvvam.
 
-guillemets = Boasto sitáhttamærkka2
+use-guillemets = Boasto sitáhttamærkka
+    .desc = Vuojnnet la boasto sitáhttamerkajt adnám.
+
+guillemets = Boasto sitáhttamærkka3
     .desc = Vuojnnet la boasto sitáhttamerkajt adnám.
 
 ellipsis = Ellipsa
