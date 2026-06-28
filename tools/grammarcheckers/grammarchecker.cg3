@@ -2778,9 +2778,12 @@ ADD:msyn-congr-iesj-ietja (&msyn-congr-iesj-ietja) TARGET REFL-PRON + (Pron Refl
 COPY:msyn-congr-iesj-ietja (Pl SUGGEST) EXCEPT (Sg &msyn-congr-iesj-ietja) AFTER Refl TARGET (&msyn-congr-iesj-ietja) ;
 
 ADD:msyn-congr-ietjas-ietjasa (&msyn-congr-ietjas-ietjasa) TARGET REFL-PRON + (Pron Refl PxSg3) OR REFL-PRON + (Pron Refl PxSg2) OR REFL-PRON + (Pron Refl PxSg1) IF (-1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3) LINK NOT 0 Sg3 OR Sg2 OR Sg1) 
+(NEGATE -1 (V Prs Sg3) LINK -1 (Sg Nom))
+(NEGATE -1 Imprt LINK 0 Ess)
+(NEGATE -1 ("liehket") LINK -1 (Sg Ine))
+(NEGATE 0 PxSg1 LINK 1 (V Sg1))
 (NEGATE 1 (Pron Indef) ) 
-(NEGATE 1 (V Sg2) LINK NOT *-2 (Pl Nom) BARRIER S-BOUNDARY)
-(NEGATE -1 (V Prs Sg3) LINK -1 (Sg Nom)) ; 
+(NEGATE 1 (V Sg2) LINK NOT *-2 (Pl Nom) BARRIER S-BOUNDARY) ; 
 
 
 ADD:msyn-congr-ietjas-ietjasa (&msyn-congr-ietjas-ietjasa) TARGET REFL-PRON + (Pron Refl PxSg3) OR REFL-PRON + (Pron Refl PxSg2) OR REFL-PRON + (Pron Refl PxSg1) IF (-1 (V Prs Pl3) LINK 0 (V Prs Sg3) LINK -1 (A Pl) OR (N Pl) OR Pl3)  
@@ -2791,7 +2794,7 @@ ADD:msyn-congr-ietjas-ietjasa (&msyn-congr-ietjas-ietjasa) TARGET REFL-PRON + (P
 COPY:msyn-congr-iesj-ietja (PxPl3 SUGGEST) EXCEPT (PxSg3 &msyn-congr-ietjas-ietjasa) TARGET (&msyn-congr-ietjas-ietjasa) IF (-1 (V Pl3)) ;    
 COPY:msyn-congr-iesj-ietja (PxDu3 SUGGEST) EXCEPT (PxSg3 &msyn-congr-ietjas-ietjasa) TARGET (&msyn-congr-ietjas-ietjasa) IF (-1 (V Du3)) ;    
 COPY:msyn-congr-iesj-ietja (PxPl1 SUGGEST) EXCEPT (PxSg1 &msyn-congr-ietjas-ietjasa) TARGET (&msyn-congr-ietjas-ietjasa) IF (-1 (V Pl1) OR (V Du1)) ; 
-COPY:msyn-congr-iesj-ietja (PxPl2 SUGGEST) EXCEPT (PxSg2 &msyn-congr-ietjas-ietjasa) TARGET (&msyn-congr-ietjas-ietjasa) IF (-1 (V Pl2) OR (V Du2)) ; 
+COPY:msyn-congr-iesj-ietja (PxPl2 SUGGEST) EXCEPT (PxSg2 &msyn-congr-ietjas-ietjasa) OR (PxSg3 &msyn-congr-ietjas-ietjasa) TARGET (&msyn-congr-ietjas-ietjasa) IF (-1 (V Pl2) OR (V Du2)) ; 
 
     ## Suohkanij ietjas dåjmaj baktu
     ## Vuorrasa ma årru sierra vuorrasijhuvson jali idjadi {ietjas} årudagán adni riektáv ságastit ietjas giellaj.
