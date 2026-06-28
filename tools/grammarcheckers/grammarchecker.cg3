@@ -1992,8 +1992,15 @@ SUBSTITUTE (&msyn-congr-mij-ma+verb) (co&msyn-congr-mij-ma+verb) TARGET (SUGGEST
     # From pl>sg
     #-----------
 ADD:xmsyn-congr-ma-mij+verb+verb (&msyn-congr-ma-mij+verb) TARGET (Rel Nom Pl) IF (*-1 (N Sg) OR (Pron Sg) OR Pers - Pl1 - Pl2 - Pl3 - Du1 - Du2 - Du3 BARRIER NOT-BEFORE-REL LINK NOT 0 (N Pl) OR (Pers Pl1) OR (Pers Pl2) OR (Pers Pl3) LINK NEGATE -1 VFIN OR Inf LINK -1 (N Pl) OR (Pron Pl)) 
+(NEGATE *-1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3) BARRIER Nom OR S-BOUNDARY OR VFIN)
 (NEGATE -1 COMMA)
+(NEGATE *-1 (Indef Pl) OR (Indef Sg Gen) BARRIER NOT-ADV-PCLE - Ela - Ill)
+(NEGATE 1 Acc LINK 1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3))
+(NEGATE -1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3))
+(NEGATE -1 (N Sg Nom) LINK -1 (Pl Gen)) 
+(NEGATE -1 (Indef Pl Nom))
 (NEGATE -1 (Indef Sg Nom)) 
+(NEGATE -1 (A Ine) LINK -1 Pl1 OR Pl2 OR Pl3 OR Du1 OR Du2 OR Du3 OR (Pl Nom))
 (NEGATE -1 ("gájkka" Pl Nom) )
 (NEGATE -1 (Sg Ine) LINK -1 (N Pl)) 
 (NEGATE -1 (N Sg) LINK -1 Num) 
@@ -2001,8 +2008,10 @@ ADD:xmsyn-congr-ma-mij+verb+verb (&msyn-congr-ma-mij+verb) TARGET (Rel Nom Pl) I
 (NEGATE -1 (N Acc) LINK 1 (Rel Nom))
 (NEGATE *-1 (N Sg) OR (Pron Sg) OR Pers - Pl1 - Pl2 - Pl3 - Du1 - Du2 - Du3 BARRIER NOT-BEFORE-REL LINK -1 CC LINK -1 (N Sg) OR (N Pl)) 
 (NEGATE 0 &msyn-congr-mij-ma+verb) (NEGATE 1 DU-V) 
+(NEGATE 1 (Refl PxPl3) OR (Refl PxPl2) OR (Refl PxPl1) OR (Refl PxDu3) OR (Refl PxDu2) OR (Refl PxDu1)) 
 (NEGATE 1 (Dem Pl) LINK 1 (N Pl) OR (N Sg Gen))
 (NEGATE 1 ("ietjá" Pl Nom) LINK *1 Pl3 BARRIER NOT-ADV-PCLE) 
+(NEGATE *1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3) BARRIER NOT-ADV-PCLE - Ela - Ine - Ill)
 (NEGATE *-1 (Dem) BARRIER NOT-BEFORE-REL);
 
     ## Miján la viehka stuorra nággo dálla guollebiebmadimæládusás {ma} sihti mierdijt biedjat duon dán vuodnaj ja dát båktå rijdojt.
