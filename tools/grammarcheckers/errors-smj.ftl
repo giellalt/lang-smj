@@ -75,3 +75,6 @@ guillemets = Boasto sitáhttamærkka3
 ellipsis = Ellipsa
     .desc = Dån la adnám gålmmå tjuoggá. Hiehpá farra ellipsav adnet, "…".
 
+msyn-congr-ma-mij+verb = Relatijva pronåvmmå
+    .desc = Relatijva pronåvmmå {$1} viertti liehket sæmmi lågon dagu báhko masi dat vuoset.
+
