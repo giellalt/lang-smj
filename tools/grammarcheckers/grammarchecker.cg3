@@ -3359,11 +3359,13 @@ SET v = v1 OR v2 OR v3  ;
     # ===================================================================================================
     # ===================================================================================================
 
-ADD:xmsyn-liehket-congr-condsg2-condpl3 (&msyn-liehket-congr-condsg2-condpl3) TARGET (Cond Sg2) IF (*-1 (N Nom Pl) OR (Pron Nom Pl) OR (Pron Nom Pl3) BARRIER NOT-ADV-PCLE ) ;
+ADD:xmsyn-liehket-congr-condsg2-condpl3 (&msyn-liehket-congr-condsg2-condpl3) TARGET (Cond Sg2) IF (*-1 (N Nom Pl) OR (Pron Nom Pl) OR (Pron Nom Pl3) BARRIER NOT-ADV-PCLE ) 
+(NEGATE *-1 ("dån" Pers Sg2) BARRIER S-BOUNDARY) ;
 ADD:xmsyn-liehket-congr-condsg2-condpl3 (&msyn-liehket-congr-condsg2-condpl3) TARGET (Cond Sg2) IF (*-1 (N Nom Sg) BARRIER NOT-ADV-PCLE LINK *-1 CC BARRIER NOT-Attr LINK -1 (N Nom Sg) )  ;
 
-    # vuorasulmutja lulu huvsov ja sujtov oadtjot.
+    ## vuorasulmutja lulu huvsov ja sujtov oadtjot.
     ## Árran ja UiT lulu aktisattjat barggat.
+    #$ Jus dån aj dán biejve lulu dádjadit, mij dunji ráfev vaddá!
 
 COPY:msyn-liehket-congr-condsg2-condpl3 (Pl3 SUGGEST) EXCEPT (Sg2 &msyn-liehket-congr-condsg2-condpl3) TARGET (&msyn-liehket-congr-condsg2-condpl3) ;
 
