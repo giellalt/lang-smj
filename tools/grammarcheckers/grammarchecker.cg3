@@ -1640,7 +1640,7 @@ LIST &lex-oahpastuvvat-oahpasmuvvat = &lex-oahpastuvvat-oahpasmuvvat ;
 LIST &style-short-long = &style-short-long ;
 LIST &msyn-congr-gænna-gejn = &msyn-congr-gænna-gejn ;
 LIST &msyn-congr-iesj-ietja = &msyn-congr-iesj-ietja ;
-LIST &msyn-congr-mij-ma+verb = &msyn-congr-mij-ma+verb ;
+LIST &msyn-congr-mij-ma-pl+verb = &msyn-congr-mij-ma-pl+verb ;
 LIST &msyn-congr-ma-mij+verb = &msyn-congr-ma-mij+verb;
 LIST &msyn-l-not-la = &msyn-l-not-la ;
 LIST &msyn-liehket-congr-condsg2-condpl3 = &msyn-liehket-congr-condsg2-condpl3 ; 
@@ -1835,7 +1835,7 @@ SET WHO = WHO-smj OR WHO-sma OR WHO-sme OR WHO-smn ;
     # From sg>pl
     #-----------
 
-ADD:xmsyn-congr-mij-ma+verb (&msyn-congr-mij-ma+verb) TARGET (Rel Nom Sg) IF (*-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NOT 0 (N Sg) LINK NEGATE -1 VFIN OR Inf LINK -1 (N Sg) OR (Pron Sg))
+ADD:xmsyn-congr-mij-ma-pl+verb (&msyn-congr-mij-ma-pl+verb) TARGET (Rel Nom Sg) IF (*-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK NOT 0 (N Sg) LINK NEGATE -1 VFIN OR Inf LINK -1 (N Sg) OR (Pron Sg))
 (NEGATE *-1 (N Pl) OR (Pron Pl) OR Pers - Sg1 - Sg2 - Sg3 BARRIER NOT-BEFORE-REL LINK -1 ONE OR ("1" Num)) 
 (NEGATE *-1 ("juohkkahasj" Sg) BARRIER (*) - Ela - (V Sg3))
 (NEGATE -1 Po LINK -1 (Gen Pl) LINK -1 (N Sg)) 
@@ -1897,7 +1897,7 @@ ADD:xmsyn-congr-mij-ma+verb (&msyn-congr-mij-ma+verb) TARGET (Rel Nom Sg) IF (*-
     ##  Tjielggidus vuoset oajvvehásstalusájda mij gullu giellaj. DNW LINDA, fordi det er illativ pl om bestemmer, og vanligvis er jo ill adverbial. 
     #$ Áhttje mijá guhti le almen. DNW LINDA, fordi mijá kommer etter subjektet, skal egentlig vær før, men siden det er oversatt "fadervår" så er det rart. Kanskje vi må skrive regel for WO først :)
 
-ADD:xmsyn-congr-mij-ma+verb (&msyn-congr-mij-ma+verb) TARGET (Rel Nom Sg) IF (*-1 (N Sg) BARRIER NOT-BEFORE-REL LINK NOT 0 (N Pl) LINK *-1 Num - ONE BARRIER NOT-NPMOD) 
+ADD:xmsyn-congr-mij-ma-pl+verb (&msyn-congr-mij-ma-pl+verb) TARGET (Rel Nom Sg) IF (*-1 (N Sg) BARRIER NOT-BEFORE-REL LINK NOT 0 (N Pl) LINK *-1 Num - ONE BARRIER NOT-NPMOD) 
 (NEGATE *-1 (N ABBR)) 
 (NEGATE *-1 (Num Sem/Year))
 (NEGATE -1 Po LINK -1 (Sg Gen)) 
@@ -1911,21 +1911,21 @@ ADD:xmsyn-congr-mij-ma+verb (&msyn-congr-mij-ma+verb) TARGET (Rel Nom Sg) IF (*-
     #$ Galggi aj ájggeguovddelis ássjev åvddånbuktet oajválattjajda mij guosská vuorrasij iellemdilláj ja álkkádussaj
     #$ Ráddidus biednigahttá 70 millijåvnnå kråvnå ådåstibmáj {mij} galggá tjadáduvvat 2010 rájes.
 
-ADD:xmsyn-congr-mij-ma+verb (&msyn-congr-mij-ma+verb) TARGET (Rel Nom Sg) IF (-1 Ela LINK -1 (Nom Pl)) ;
+ADD:xmsyn-congr-mij-ma-pl+verb (&msyn-congr-mij-ma-pl+verb) TARGET (Rel Nom Sg) IF (-1 Ela LINK -1 (Nom Pl)) ;
 
     ## Da Ájluovtas gut ásadin konferánsav.
     
-ADD:xmsyn-congr-mij-ma+verb (&msyn-congr-mij-ma+verb) TARGET (Rel Nom Sg) IF (-1 Ela LINK -1 (Gen Sg) LINK -1 (Num Arab)) ;
+ADD:xmsyn-congr-mij-ma-pl+verb (&msyn-congr-mij-ma-pl+verb) TARGET (Rel Nom Sg) IF (-1 Ela LINK -1 (Gen Sg) LINK -1 (Num Arab)) ;
     ## Sij li 3 åhpadiddje Ájluovtas gut vuolggi. 
 
-ADD:xmsyn-congr-mij-ma+verb (&msyn-congr-mij-ma+verb) TARGET (Rel Nom Sg) IF (1 (Ind V Pl1) OR (Ind V Pl2) OR (Ind V Pl3) OR (Ind V Du1) OR (Ind V Du2) OR (Ind V Du3) LINK NEGATE 0 SentInit OR &DELETE OR Sg3) (NEGATE 1 ("liehket" Pl3) LINK *1 (N Sg Nom) BARRIER NOT-NPMOD) ;
+ADD:xmsyn-congr-mij-ma-pl+verb (&msyn-congr-mij-ma-pl+verb) TARGET (Rel Nom Sg) IF (1 (Ind V Pl1) OR (Ind V Pl2) OR (Ind V Pl3) OR (Ind V Du1) OR (Ind V Du2) OR (Ind V Du3) LINK NEGATE 0 SentInit OR &DELETE OR Sg3) (NEGATE 1 ("liehket" Pl3) LINK *1 (N Sg Nom) BARRIER NOT-NPMOD) ;
     ## Mij lip 10 nuora Sáminuorras (sámenuora organisasjåvnnå) guhti vuolggep.
     ## Stáhtta ja Sámedigge galggi gæhttjalit semadit mandáhta birra, ja gut galggi tjielggidusáv tjadádit .
     ## Oahppe {guhti} e gæhttjalimijt mierredimbæjvváj tjadáda.
     #$ Aktan oajvvadusájn sihtap oanegis tevstav {mij} oajvvadusá hábbmimav tjielggi.
     #$ Gárdij hábme, {mij} li soajttá anedum guhkep ájggegávdajn dålen, vuosedi åvddålijguovlluj ja geldulasj aktijvuodajda gåddebivddema ja ællosujto gaskan.
 
-ADD:xmsyn-congr-mij-ma+verb (&msyn-congr-mij-ma+verb) TARGET (Rel Nom Sg) IF (-1 (N Pl Ela) OR (N Pl Ill)) (NEGATE -2 Inf) (NEGATE -1 (N Pl Ela) LINK -1 ONE)(NEGATE *1 <TH-Nom-Any> + Sg3 BARRIER NOT-ADV-PCLE LINK NOT 1 (Pron Sg3) OR (N Nom Sg)) (NEGATE -1 Ill LINK -1 (N Nom)) (NEGATE -1 N LINK NOT 0 Acc LINK 1 (Rel Nom Sg) LINK 1 (TV Ind Sg3) OR REK-ILL + (Ind Sg3) LINK *1 (Sg Acc) BARRIER NOT-NPMOD) ;
+ADD:xmsyn-congr-mij-ma-pl+verb (&msyn-congr-mij-ma-pl+verb) TARGET (Rel Nom Sg) IF (-1 (N Pl Ela) OR (N Pl Ill)) (NEGATE -2 Inf) (NEGATE -1 (N Pl Ela) LINK -1 ONE)(NEGATE *1 <TH-Nom-Any> + Sg3 BARRIER NOT-ADV-PCLE LINK NOT 1 (Pron Sg3) OR (N Nom Sg)) (NEGATE -1 Ill LINK -1 (N Nom)) (NEGATE -1 N LINK NOT 0 Acc LINK 1 (Rel Nom Sg) LINK 1 (TV Ind Sg3) OR REK-ILL + (Ind Sg3) LINK *1 (Sg Acc) BARRIER NOT-NPMOD) ;
 
     ## Tjielggidus vuoset oajvvehásstalusájda {mij} gullu giellaj.
     ## Automatihkalattjat ráfájduhtedum kulturmujto li automatihkalattjat suodjaluvvam mij sihtá javllat suodjaluvvam divna dåjmajs {mij} bæjsstá jali vahágahttá, jådedime, ietjájduhttema, gåbttjåma jali hiebalgahtes biledime, dáj gaskan aj dåjmajs ma ietjájduhtti gåktu kulturmujto vuojnnu.
@@ -1933,24 +1933,24 @@ ADD:xmsyn-congr-mij-ma+verb (&msyn-congr-mij-ma+verb) TARGET (Rel Nom Sg) IF (-1
      #$ Låhkåm le akta vuodomáhtudagájs {mij} tjalmostuvvá Máhtudaklåpptimin, oahppoplánaj sihke vuodo- ja jårggåskåvlån.
      #$ Bargadahttijn tjielggi ja subtsas oahppijda {mij} dáhpáduvvá, ja gåktu dagáduvvá.
 
-ADD:xmsyn-congr-mij-ma+verb (&msyn-congr-mij-ma+verb) TARGET (Rel Nom Sg) IF (*-1 Po BARRIER (*) - COMMA LINK -1 (Pl Gen) LINK NOT -1 (N Nom)) ; 
+ADD:xmsyn-congr-mij-ma-pl+verb (&msyn-congr-mij-ma-pl+verb) TARGET (Rel Nom Sg) IF (*-1 Po BARRIER (*) - COMMA LINK -1 (Pl Gen) LINK NOT -1 (N Nom)) ; 
     ## Rávgaduvvá mákso æjgádijs akti mánnuj mærrádusáj milta, {mij} doajmmá 20. biejve rájes 20. biejve rádjáj juohkka máno.
     #$ Aktisasjbarggo Jielleváre ja Divtasvuona suohkanij gaskan le konkrehta aktisasjbarggo suohkanij gaskan {mij} buoragit hiehpá nuorttaguovllovuorodibmáj. 
     
 
     ## part of group
-ADD:xmsyn-congr-mij-ma+verb+verb (&msyn-congr-mij-ma+verb) TARGET (Rel Nom Sg) IF (-1 (Pers Pl3 Ela) OR (N Pl Ela) OR (Dem Pl Ela) OR (A Pl Ela) LINK -1 Num) ;
+ADD:xmsyn-congr-mij-ma-pl+verb+verb (&msyn-congr-mij-ma-pl+verb) TARGET (Rel Nom Sg) IF (-1 (Pers Pl3 Ela) OR (N Pl Ela) OR (Dem Pl Ela) OR (A Pl Ela) LINK -1 Num) ;
 
     ## Akta sijájs {guhti} lij boahtám subtsastij sån sámegielav åhpaj esski 10. klássan.
     ## Javllá Adrian Nystø Mikkelsen akta studentajs {gut} uddni álggin bacheloråhpadussaj julevsámegielan.
     #$ Maŋenagi gå oahppe oahpásmuvvi dájna teknihkajn, sjaddá aj álkkebu sidjij gulldalit {makkir} dássemålssusibme le duon dán bágon ja soajttá buohtastahttet minimála párajn. DNW linda
 
-COPY:msyn-congr-mij-ma+verb (Pl SUGGEST) EXCEPT (Sg &msyn-congr-mij-ma+verb) OR (Sg Sh &msyn-congr-mij-ma+verb) AFTER Rel TARGET (Rel &msyn-congr-mij-ma+verb) ;
+COPY:msyn-congr-mij-ma-pl+verb (Pl SUGGEST) EXCEPT (Sg &msyn-congr-mij-ma-pl+verb) OR (Sg Sh &msyn-congr-mij-ma-pl+verb) AFTER Rel TARGET (Rel &msyn-congr-mij-ma-pl+verb) ;
 
 
     ## fixing verb to congruence with rel pronoun mij
     ## ---------------------------------------------
-ADD:xmsyn-congr-mij-ma+verb (&msyn-congr-mij-ma+verb) TARGET (V Sg3) IF (*-1 (Rel Nom) + (&msyn-congr-mij-ma+verb) BARRIER NOT-ADV-PCLE - Ill - Ela - Ine) (NEGATE 0 OT-VERBS + Prs)  ;
+ADD:xmsyn-congr-mij-ma-pl+verb (&msyn-congr-mij-ma-pl+verb) TARGET (V Sg3) IF (*-1 (Rel Nom) + (&msyn-congr-mij-ma-pl+verb) BARRIER NOT-ADV-PCLE - Ill - Ela - Ine) (NEGATE 0 OT-VERBS + Prs)  ;
 
     ## Galggap ásadit dåjmajt {mij} {gåtset}
     ## Mij lip tjoaggám gåvåjt, girjijt, filmajt, jienajt, oahppamnævojt ja digitála ressursajt {mij} {giehpet} bargov dunji sáme åhpadiddjen
@@ -1970,23 +1970,23 @@ ADD:xmsyn-congr-mij-ma+verb (&msyn-congr-mij-ma+verb) TARGET (V Sg3) IF (*-1 (Re
     
     
 # coordination    
-ADD:xmsyn-congr-mij-ma+verb (&msyn-congr-mij-ma+verb) TARGET (V Sg3) IF (-1 CC OR COMMA LINK -*1 (V &msyn-congr-mij-ma+verb) BARRIER NOT-ADV) ;
+ADD:xmsyn-congr-mij-ma-pl+verb (&msyn-congr-mij-ma-pl+verb) TARGET (V Sg3) IF (-1 CC OR COMMA LINK -*1 (V &msyn-congr-mij-ma-pl+verb) BARRIER NOT-ADV) ;
 
     ## Galggap ásadit dåjmajt mij sihke {gåtset} ja {åvddånahttá} Rádjebálggáv.
     ## Sån vaddá rádijt mij tjielggi ja {vájkkut} rievddadusájda. 
     ## Oassekapihtal vaddá prinsihpalasj refleksjåvnåjt mij le vuodon sáme-girkkolasj demokratijaj Vuona girkkon, ja {tjielggi} oanegattjat barggojuohkusa bargo birra, ja dan låhpadahtte rádegiehtadallama birra. # DNW LINDA, "tjielggi" la ilá guhken ierit
 
 
-ADD:xmsyn-congr-mij-ma+verb (&msyn-congr-mij-ma+verb) TARGET (V Sg3) IF (-1 (Acc) LINK -1 (Rel Nom) + (&msyn-congr-mij-ma+verb)) (NEGATE 0 OT-VERBS + Prs)  ;
+ADD:xmsyn-congr-mij-ma-pl+verb (&msyn-congr-mij-ma-pl+verb) TARGET (V Sg3) IF (-1 (Acc) LINK -1 (Rel Nom) + (&msyn-congr-mij-ma-pl+verb)) (NEGATE 0 OT-VERBS + Prs)  ;
 
 
-COPY:msyn-congr-mij-ma+verb (Pl3 SUGGEST) EXCEPT (Sg3 &msyn-congr-mij-ma+verb) OR (Sg3 SentInit &msyn-congr-mij-ma+verb) TARGET (V &msyn-congr-mij-ma+verb) ;
+COPY:msyn-congr-mij-ma-pl+verb (Pl3 SUGGEST) EXCEPT (Sg3 &msyn-congr-mij-ma-pl+verb) OR (Sg3 SentInit &msyn-congr-mij-ma-pl+verb) TARGET (V &msyn-congr-mij-ma-pl+verb) ;
 
 
-ADDRELATION ($2 RIGHT) (Rel &msyn-congr-mij-ma+verb) TO (*1 (V &msyn-congr-mij-ma+verb));
-ADDRELATION ($2 LEFT) (V &msyn-congr-mij-ma+verb) TO (*-1 (Rel &msyn-congr-mij-ma+verb));
+ADDRELATION ($2 RIGHT) (Rel &msyn-congr-mij-ma-pl+verb) TO (*1 (V &msyn-congr-mij-ma-pl+verb));
+ADDRELATION ($2 LEFT) (V &msyn-congr-mij-ma-pl+verb) TO (*-1 (Rel &msyn-congr-mij-ma-pl+verb));
 
-SUBSTITUTE (&msyn-congr-mij-ma+verb) (co&msyn-congr-mij-ma+verb) TARGET (SUGGEST); 
+SUBSTITUTE (&msyn-congr-mij-ma-pl+verb) (co&msyn-congr-mij-ma-pl+verb) TARGET (SUGGEST); 
 
 
 
@@ -2009,7 +2009,7 @@ ADD:msyn-congr-ma-mij+verb (&msyn-congr-ma-mij+verb) TARGET (Rel Nom Pl) IF (*-1
 (NEGATE -1 Coll)(NEGATE *-1 (N Sg) OR (Pron Sg) OR Pers - Pl1 - Pl2 - Pl3 - Du1 - Du2 - Du3 LINK -1 CC LINK *-1 (N Sg) OR (N Pl))
 (NEGATE -1 (N Acc) LINK 1 (Rel Nom))
 (NEGATE *-1 (N Sg) OR (Pron Sg) OR Pers - Pl1 - Pl2 - Pl3 - Du1 - Du2 - Du3 BARRIER NOT-BEFORE-REL LINK -1 CC LINK -1 (N Sg) OR (N Pl)) 
-(NEGATE 0 &msyn-congr-mij-ma+verb) (NEGATE 1 DU-V) 
+(NEGATE 0 &msyn-congr-mij-ma-pl+verb) (NEGATE 1 DU-V) 
 (NEGATE 1 (Refl PxPl3) OR (Refl PxPl2) OR (Refl PxPl1) OR (Refl PxDu3) OR (Refl PxDu2) OR (Refl PxDu1)) 
 (NEGATE 1 (Dem Pl) LINK 1 (N Pl) OR (N Sg Gen))
 (NEGATE 1 ("ietjá" Pl Nom) LINK *1 Pl3 BARRIER NOT-ADV-PCLE) 
@@ -2065,7 +2065,7 @@ ADD:syn-from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentIn
 (NEGATE 0 &syn-number_congruence-subj-verb) 
 (NEGATE 0 &msyn-verb-cong-rel) 
 (NEGATE 0 &msyn-soajtta-le) 
-(NEGATE 0 &msyn-congr-mij-ma+verb OR &msyn-congr-ma-mij+verb)
+(NEGATE 0 &msyn-congr-mij-ma-pl+verb OR &msyn-congr-ma-mij+verb)
 (NEGATE 1 ("gus"))
 (NEGATE 1 MAYBE-V + (V Ind Prs Sg3))   ;
 	#$ Dajn gielajn gånnå le riek friddja báhkogárges {le} soajttá vehik gássjel mierredit mij la vuodobáhkogárges.
@@ -4001,7 +4001,7 @@ ADD:xsyn-number_congruence-subj-verb (&syn-number_congruence-subj-verb) TARGET (
 (NEGATE 0 $$PERSON LINK -1 WHO + (Pl Nom) LINK -1 Nom + Sem/Hum LINK *-1 COPULAS + VFIN BARRIER NOT-NPMODADV  LINK *-1 (Pers Nom) + $$PERSON BARRIER NOT-NPMODADV)
 (NEGATE 0 $$PERSON LINK -1 WHO + (Pl Nom) LINK -1 Po LINK *-1 (Pers Gen) + $$PERSON BARRIER NOT-NPMODADV)
 (NEGATE 0 (Ind Prt Sg2) - BE)
-(NEGATE -1 &msyn-congr-mij-ma+verb) ;
+(NEGATE -1 &msyn-congr-mij-ma-pl+verb) ;
     #$ Mij lip moattes gudi barggap.
     ## Mij lip moattes gudi barggi. 
 	#$ Mii leat máŋggas geat {dovdat} dárbbu dánlágan čállosii, ja leamaš ge ollu doarjja ja movttiidahttinprošeavtta duohken.
@@ -6288,6 +6288,7 @@ ADD:xmsyn-dem-noun-gen (&msyn-dem-noun-gen) TARGET Dem IF (*1 (N Gen) BARRIER NO
 (NEGATE 1 V)
 (NEGATE 1 CC OR CS)
 (NEGATE 1 ABBR)
+(NEGATE *1 (N Sg Nom) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE *1 (N <spelled>) OR (N Err/Orth) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE *1 PrfPrc BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 COMMA)
 (NEGATE *1 (N Pl Nom) BARRIER NOT-NPMOD-WITHOUT-NUM)
@@ -6530,6 +6531,7 @@ ADD:xmsyn-dem-noun-com (&msyn-dem-noun-com) TARGET Dem IF (*1 (N Com) BARRIER NO
 (NEGATE 1 Num)
 (NEGATE 1 COMMA OR CLB)
 (NEGATE *1 (Prop) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE *1 (V Prt Sg3))
 (NEGATE *1 (N <spelled>) OR (N Err/Orth) BARRIER NOT-NPMOD-WITHOUT-NUM)  ;
 
 
