@@ -1533,7 +1533,7 @@ SET CCCOMMA = CC OR COMMA ;
  # -----
 
 # The set COPULAS is for predicative constructions
-LIST COPULAS = "liehket" "soajttet" "sjaddat" ("liehket" Neg) ; # more need to be added
+LIST COPULAS = "liehket" "soajttet" "sjaddat" "årrot" ("liehket" Neg) ; # more need to be added
 
 SET V-NOT-COP = V - COPULAS ;
 
@@ -2469,7 +2469,9 @@ ADD:xsyn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF
 (NEGATE 0 (Der/Car) OR Ord)(NEGATE 0 Sem/Hum LINK *1 Ine OR Ill OR Ela OR Com OR Adv OR Po BARRIER NOT-NPMODADV)
 (NEGATE 0 Gen) 
 (NEGATE 0 (Pl Nom))
+(NEGATE 0 Der/Comp LINK -1 Ela OR (Acc PxSg3))
 (NEGATE *-1 COPULAS BARRIER NOT-ADV-PCLE LINK *2 Inf OR Ine OR Ill OR Sem/Time + Gen OR Sem/Time + Acc OR Adv OR Po BARRIER NOT-NPMODADV - Acc - (A Sg Nom) - CASE) (NEGATE 1 (N Nom) OR (Pron Nom) LINK 1 ("liehket" Ind))
+(NEGATE *-1 COPULAS BARRIER NOT-ADV-PCLE LINK 1 A + Nom LINK NOT 1 Nom)
 (NEGATE -1 (N Nom) OR (Pron Nom) LINK *-1 COPULAS BARRIER NOT-NPMODADV - (Pl Nom))
 (NEGATE -1 COPULAS + Sg3 OR COPULAS + (Prs Sg2) LINK *-1 BOS BARRIER NOT-ADV - Ine - Ela LINK *1 (N Nom) OR (Pron Nom) BARRIER NOT-NPMODADV - A - COPULAS)
 (NEGATE -1 CC LINK -1 (A Sg) OR (A Pl))
