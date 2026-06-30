@@ -34,7 +34,7 @@ wrong-type-of-guillemets = Boasto sitáhttamærkka2
     .desc = Vuojnnet la boasto sitáhttamerkajt adnám.
 
 ## Default patterns: re:msyn-congr-mij-ma-.* 
-wrong-type-of-guillemets = Relatijva pronåvmmå
+wrong-type-of-guillemets = Relatijva pronåvmmå nominatijva kasusin
     .desc = Relatijva pronåvmmå {$1} viertti liehket sæmmi lågon dagu báhko masi dat vuoset.
 
 msyn-dimin-after-unna = Diminutijvva
