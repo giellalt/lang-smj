@@ -1218,7 +1218,7 @@ LIST BECOME-smj = "sjaddat" ;
 LIST BECOME-smn = "šoddâđ" ;
 SET BECOME = BECOME-sma OR BECOME-sme OR BECOME-smj OR BECOME-smn ;
 
-LIST REK-ILL = "boadádallat" "báddnut" "bårrut" "dabrijdit" "dihpput" "dæhppot" "gierrot" "guosskat" "lijkkut" "sjiehttat" "snårrut" "suhttat" "suogŋat" "tjuokkudallat" "tjágŋat" "tjárggat" "årrut" "åskeldit" ;
+LIST REK-ILL = "boadádallat" "báddnut" "bårrut" "dabrijdit" "dihpput" "dæhppot" "gierrot" "guosskat" "lijkkut" "sjiehttat" "snårrut" "suhttat" "suogŋat" "tjuokkudallat" "tjágŋat" "tjárggat" "årrut" "åskeldit" "vájkkudit" ;
 
 # Verbs and their complements
 # - - - - - - - - - - - - - -
@@ -3218,6 +3218,7 @@ ADD:xsyn-missing-copula (&syn-missing-copula) TARGET (Gram/3syll Actio Nom) OR (
 (NEGATE 0 (Der/NomInstr) OR (V "liehket") OR ("gijtto") ) 
 (NEGATE 0 (Gen) OR EVEN-VERBS + Der/NomAct OR (A Nom)) 
 (NEGATE 0 V)
+(NEGATE 0 (Pl Nom) LINK 1 (Nom))
 (NEGATE 1 ("ájnas") OR ("binnep") OR ("ienep") OR (V Ind)) 
 (NEGATE 1 (A Nom) LINK 1 BE + Inf OR BECOME + Inf) 
 (NEGATE 1 (A Nom &syn-pred-attr) OR ("muhtem")) 
@@ -6148,13 +6149,29 @@ SUBSTITUTE (&lex-oahpasmuvvat-oahpastuvvat) (co&lex-oahpasmuvvat-oahpastuvvat) T
     # Acc to ill for reksjåvnnåverba
     # ------------------------------   
    
-ADD:xmsyn-reksjon-acc-ill (&msyn-reksjon-acc-ill) TARGET (N Acc) OR (Dem Acc) OR (Pers Acc) OR (A Acc) IF (*0 REK-ILL + Ind BARRIER NOT-NPMODADV OR S-BOUNDARY OR COMMA) 
-(NEGATE 0* Inf BARRIER NOT-NPMODADV OR S-BOUNDARY OR COMMA OR Rel)
-(NEGATE 0* Ill BARRIER S-BOUNDARY OR COMMA OR Rel OR VFIN OR CC) 
+ADD:xmsyn-reksjon-acc-ill (&msyn-reksjon-acc-ill) TARGET (N Acc) OR (Dem Acc) OR (Pers Acc) OR (A Acc) OR (Indef Acc) IF (*0 REK-ILL + Ind OR REK-ILL + PrfPrc BARRIER NOT-NPMODADV OR S-BOUNDARY OR COMMA) 
+(NEGATE *0 Inf BARRIER NOT-NPMODADV OR S-BOUNDARY OR COMMA OR Rel)
+(NEGATE 0 Acc LINK *1 Inf OR Sup BARRIER NOT-ADV-PCLE) # lijkkuji biebmov bårråt
+(NEGATE 0 Acc LINK 1 Gen LINK 1 Po LINK *1 Inf OR Sup BARRIER NOT-ADV-PCLE)  # lijkkuji ienebuv juhtusij birra oahppat.
+(NEGATE 0 Acc LINK 1 Gen LINK 1 CC LINK 1 Gen LINK 1 Po LINK *1 Inf OR Sup BARRIER NOT-ADV-PCLE) # lijkkuji ienebuv juhtusij ja låttij birra oahppat.
+(NEGATE *0 Ill BARRIER COMMA OR Rel OR VFIN OR ("ja" CC) OR S-BOUNDARY - ("de")) 
 (NEGATE 0 Px)
 (NEGATE *0 ("sjiehttat") LINK 0 ("sjiehtadit" Prs Sg3)) ;
 
+
+
+
+
+## coordianation
+ADD:xmsyn-reksjon-acc-ill (&msyn-reksjon-acc-ill) TARGET (N Acc) OR (Dem Acc) OR (Pers Acc) OR (A Acc) IF (-1 COMMA OR CC LINK -1 (&msyn-reksjon-acc-ill)) ;
+	##  mij guosská mærkkagálvvotsieggimav, vuobddemav ja vuobddembargov
+
+ADDRELATION ($1 LEFT) (Acc &msyn-reksjon-acc-ill) TO (*1 (Acc &msyn-reksjon-acc-ill)) ;
+
+
 COPY:msyn-reksjon-acc-ill (Ill SUGGEST) EXCEPT (Acc &msyn-reksjon-acc-ill) TARGET (&msyn-reksjon-acc-ill) ;
+
+COPY:msyn-reksjon-acc-ill (Sg Ill SUGGEST) EXCEPT (Pl Acc &msyn-reksjon-acc-ill) TARGET ("mige" &msyn-reksjon-acc-ill) ;
    
     ## Dá vidjura biedji sierra vásstádusáv guovddooajválattjajda mij guosská sámepolitihka hábmedimev.   
 
