@@ -33,6 +33,10 @@ verbform-error = Infinitijvvavihke
 wrong-type-of-guillemets = Boasto sitáhttamærkka2
     .desc = Vuojnnet la boasto sitáhttamerkajt adnám.
 
+## Default patterns: re:msyn-congr-mij-ma-.* 
+wrong-type-of-guillemets = Relatijva pronåvmmå
+    .desc = Relatijva pronåvmmå {$1} viertti liehket sæmmi lågon dagu báhko masi dat vuoset.
+
 msyn-dimin-after-unna = Diminutijvva
     .desc = Hiehpá adnet {$1} bágov diminutijva hámen.
 
@@ -54,7 +58,7 @@ msyn-l-not-la = "Liehket": "l" farra gå "la"
 msyn-la-not-l = "Liehket": "la" farra gå "l"
     .desc = Dákkir kontevstan hiehpá {$1} sajen adnet "la"
 
-msyn-congr-gænna-gejn = Relatijva pronåvmmå inesijva kasusin viertti kongruierit
+msyn-congr-gænna-gejn = Relatijva pronåvmmå inesijva kasusin
     .desc = Relatijva pronåvmmå {$1} viertti liehket sæmmi lågon dagu báhko masi dat vuoset
 
 lex-oahpastuvvat-oahpasmuvvat = Vihke "oahpástuvvat bágujn"
@@ -74,7 +78,4 @@ guillemets = Boasto sitáhttamærkka3
 
 ellipsis = Ellipsa
     .desc = Dån la adnám gålmmå tjuoggá. Hiehpá farra ellipsav adnet, "…".
-
-msyn-congr-ma-mij+verb = Relatijva pronåvmmå
-    .desc = Relatijva pronåvmmå {$1} viertti liehket sæmmi lågon dagu báhko masi dat vuoset.
 
