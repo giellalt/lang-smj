@@ -6168,21 +6168,30 @@ COPY:msyn-verbform-hiejttet-hiejtedit ("hiejtedit" SUGGEST) EXCEPT ("hiejttet" &
     # ------------------------------   
    
 ADD:xmsyn-reksjon-acc-ill (&msyn-reksjon-acc-ill) TARGET (N Acc) OR (Dem Acc) OR (Pers Acc) OR (A Acc) OR (Indef Acc) IF (*0 REK-ILL + Ind OR REK-ILL + PrfPrc BARRIER NOT-NPMODADV OR S-BOUNDARY OR COMMA) 
-(NEGATE *0 Inf BARRIER NOT-NPMODADV OR S-BOUNDARY OR COMMA OR Rel)
+(NEGATE *1 (TV Inf) BARRIER NOT-NPMODADV OR S-BOUNDARY OR COMMA OR Rel)
 (NEGATE 0 Acc LINK *1 Inf OR Sup BARRIER NOT-ADV-PCLE) # lijkkuji biebmov bårråt
+(NEGATE 0 Acc LINK 1 Gen LINK 1 Po LINK *1 Inf OR Sup BARRIER NOT-ADV-PCLE)  # lijkkuji ienebuv juhtusij birra oahppat.
+(NEGATE 0 Acc LINK 1 Gen LINK 1 CC LINK 1 Gen LINK 1 Po LINK *1 Inf OR Sup BARRIER NOT-ADV-PCLE) # lijkkuji ienebuv juhtusij ja låttij birra oahppat.
+#(NEGATE *1 Ill BARRIER COMMA OR Rel OR VFIN OR ("ja" CC) OR S-BOUNDARY - ("de")) 
+(NEGATE 0 Px)
+(NEGATE *0 ("sjiehttat") LINK 0 ("sjiehtadit" Prs Sg3)) ;
+
+
+ADD:xmsyn-reksjon-acc-ill (&msyn-reksjon-acc-ill) TARGET (N Acc) OR (Dem Acc) OR (Pers Acc) OR (A Acc) OR (Indef Acc) IF (*0 REK-ILL + Inf BARRIER NOT-NPMODADV OR S-BOUNDARY OR COMMA) 
 (NEGATE 0 Acc LINK 1 Gen LINK 1 Po LINK *1 Inf OR Sup BARRIER NOT-ADV-PCLE)  # lijkkuji ienebuv juhtusij birra oahppat.
 (NEGATE 0 Acc LINK 1 Gen LINK 1 CC LINK 1 Gen LINK 1 Po LINK *1 Inf OR Sup BARRIER NOT-ADV-PCLE) # lijkkuji ienebuv juhtusij ja låttij birra oahppat.
 (NEGATE *0 Ill BARRIER COMMA OR Rel OR VFIN OR ("ja" CC) OR S-BOUNDARY - ("de")) 
 (NEGATE 0 Px)
 (NEGATE *0 ("sjiehttat") LINK 0 ("sjiehtadit" Prs Sg3)) ;
 
+	## Dån besa Sámedikkev vájkkudit ietjat organisasjåvnåj baktu.
 
 
 ## coordianation
 ADD:xmsyn-reksjon-acc-ill (&msyn-reksjon-acc-ill) TARGET (N Acc) OR (Dem Acc) OR (Pers Acc) OR (A Acc) IF (-1 COMMA OR CC LINK -1 (&msyn-reksjon-acc-ill)) ;
 	##  mij guosská mærkkagálvvotsieggimav, vuobddemav ja vuobddembargov
 
-ADDRELATION ($1 LEFT) (Acc &msyn-reksjon-acc-ill) TO (*1 (Acc &msyn-reksjon-acc-ill)) ;
+ADDRELATION ($1 LEFT) (Acc &msyn-reksjon-acc-ill) TO (*1 (Acc &msyn-reksjon-acc-ill) BARRIER S-BOUNDARY OR Rel OR TV ) ;
 
 
 COPY:msyn-reksjon-acc-ill (Ill SUGGEST) EXCEPT (Acc &msyn-reksjon-acc-ill) TARGET (&msyn-reksjon-acc-ill) ;
