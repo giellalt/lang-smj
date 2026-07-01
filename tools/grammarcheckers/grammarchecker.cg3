@@ -6188,12 +6188,16 @@ ADD:xmsyn-reksjon-acc-ill (&msyn-reksjon-acc-ill) TARGET (N Acc) OR (Dem Acc) OR
 
 	## Dån besa Sámedikkev vájkkudit ietjat organisasjåvnåj baktu.
 
+ADDRELATION ($2 LEFT) (Acc &msyn-reksjon-acc-ill) TO (*-1 REK-ILL BARRIER NOT-NPMODADV OR S-BOUNDARY OR COMMA OR VFIN) ; # INGA
+
 
 ## coordianation
 ADD:xmsyn-reksjon-acc-ill (&msyn-reksjon-acc-ill) TARGET (N Acc) OR (Dem Acc) OR (Pers Acc) OR (A Acc) IF (-1 COMMA OR CC LINK -1 (&msyn-reksjon-acc-ill)) ;
 	##  mij guosská mærkkagálvvotsieggimav, vuobddemav ja vuobddembargov
 
-ADDRELATION ($1 LEFT) (Acc &msyn-reksjon-acc-ill) TO (*1 (Acc &msyn-reksjon-acc-ill) BARRIER S-BOUNDARY OR Rel OR TV ) ;
+ADDRELATION ($2 RIGHT) (Acc &msyn-reksjon-acc-ill) TO (1 COMMA OR CC LINK *1 (Acc &msyn-reksjon-acc-ill) BARRIER NOT-NPMODADV) ;
+
+ADDRELATION ($3 RIGHT) (Acc &msyn-reksjon-acc-ill) TO (1 COMMA OR CC LINK *1 (Acc &msyn-reksjon-acc-ill) BARRIER NOT-NPMODADV LINK 1 COMMA OR CC LINK *1 (Acc &msyn-reksjon-acc-ill) BARRIER NOT-NPMODADV) ;
 
 
 COPY:msyn-reksjon-acc-ill (Ill SUGGEST) EXCEPT (Acc &msyn-reksjon-acc-ill) TARGET (&msyn-reksjon-acc-ill) ;
@@ -6262,8 +6266,8 @@ COPY:msyn-reksjon-acc-ela (Ela SUGGEST) EXCEPT (Acc &msyn-reksjon-acc-ela) TARGE
 	
 	#nom
 ADD:xmsyn-dem-noun-nom (&msyn-dem-noun-nom) TARGET Dem IF (*1 (N Nom) BARRIER NOT-NPMOD-WITHOUT-NUM) 
-(NEGATE -1 Dem LINK *2 (N Sg Gen) OR (N Pl Nom) - Px BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (N Ela)) # duot dat ...
-(NEGATE 1 Dem LINK *1 (N Sg Gen) OR (N Pl Nom) - Px BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (N Ela)) # duot dat ...
+(NEGATE -1 Dem LINK *2 (N Sg Gen) OR (N Pl Nom) - Px OR (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (N Ela)) # duot dat ...
+(NEGATE 1 Dem LINK *1 (N Sg Gen) OR (N Pl Nom) - Px OR (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (N Ela)) # duot dat ...
 (NEGATE 0 (Dem Sg Nom) OR (Dem Sg Ela Attr) LINK *1 (N Sg Nom) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE 0 (Dem Sg Nom) LINK 1 (N Gen) LINK 1 (N Acc)) #dat julevsámegiela dilev vájkkut
 (NEGATE 0 (Dem Sg Ela Attr) LINK *1 (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (N Ela))
@@ -6325,8 +6329,10 @@ COPY:msyn-dem-noun-nom (Sg Nom SUGGEST) EXCEPT (Sg Gen) OR (Sg Acc) OR (Sg Ine) 
 
 COPY:msyn-dem-noun-nom (Pl Nom SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) OR (Sg Ine) OR (Sg Ill) OR (Sg Ela) OR (Sg Ela Sh) OR (Sg Par) OR (Sg Com) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-nom) IF (*1 (N Pl Nom) BARRIER NOT-NPMOD-WITHOUT-NUM);
 
-	#gen
-ADD:xmsyn-dem-noun-gen (&msyn-dem-noun-gen) TARGET Dem IF (*1 (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+	#Gen
+ADD:xmsyn-dem-noun-gen (&msyn-dem-noun-gen) TARGET Dem IF (*1 (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM  - (Dem Acc)) 
+(NEGATE -1 Dem LINK *2 (N Sg Gen) OR (N Pl Nom) OR (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (N Ela))
+(NEGATE 1 Dem LINK *1 (N Sg Gen) OR (N Pl Nom) OR (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (N Ela))
 (NEGATE -1 (V TV) LINK 1 (Dem Acc))
 (NEGATE 0 (Dem Pl) LINK -1 ("liehket" Neg Pl3))
 (NEGATE 0 (Dem Pl) LINK -1  ("liehket" ConNeg) LINK -1 (Neg Du3))
@@ -6340,7 +6346,7 @@ ADD:xmsyn-dem-noun-gen (&msyn-dem-noun-gen) TARGET Dem IF (*1 (N Gen) BARRIER NO
 (NEGATE 0 (Dem Sg Gen) LINK *1 (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK NOT 0 Á-A-E-O-U-I-Å-NOUNS) 
 (NEGATE 0 (Dem Sg Gen) LINK *1 (N Sg Gen) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE 0 (Dem Pl Gen) LINK *1 (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM) 
-(NEGATE 0 (Dem Acc) LINK NEGATE -1 Dem LINK *1 (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 Po) #LINDA, viehkev dájna, jus li guokta dem de dát ij galga doajmmat, duov dáv tiemá baktu dagu rievsagahttem ja guollim 
+(NEGATE 0 (Dem Acc) LINK *1 (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 Po)  #LINDA, viehkev dájna, jus li guokta dem de dát ij galga doajmmat, duov dáv tiemá baktu dagu rievsagahttem ja guollim 
 (NEGATE 0 (Dem Sg Acc) LINK *1 (V Sg3) BARRIER S-BOUNDARY OR VFIN LINK 1 EOS OR COMMA OR CS) 
 (NEGATE 0 (Dem Sg Ill) LINK *1 (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 ("nali" Po) OR ("lusi" Po) OR ("sisi" Po) OR ("<.*[j]>"r Po))
 (NEGATE 0 (Dem Sg Ill) LINK NOT 0 Attr) #dasi, not likely L1 error since this form never is attr
