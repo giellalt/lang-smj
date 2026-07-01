@@ -321,6 +321,8 @@ LIST Par = Par ; #!! Ess
 LIST Sg = Sg ;   #!! Sg
 LIST Du = Du ;   #!! Du
 LIST Pl = Pl ;   #!! Pl
+LIST Sh = Sh ;   #!! Short
+LIST Long = Long ; #!! Long
 LIST Cmp/SplitR = Cmp/SplitR ;	   #!! Cmp/SplitR
 LIST Cmp/SgNom = Cmp/SgNom ; #!! Cmp/SgNom Cmp/SgGen
 LIST Cmp/SgGen = Cmp/SgGen ; #!! Cmp/SgGen
@@ -6577,7 +6579,9 @@ ADDRELATION ($2 LEFT) (Dem &msyn-dem-noun-ela) TO (-1 (Dem &msyn-dem-noun-ela)) 
 
 COPY:msyn-dem-noun-ela (Sg Par SUGGEST) EXCEPT (Sg Nom) OR (Sg Acc) OR (Sg Ill) OR (Sg Com) OR (Sg Ela Sh) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Nom) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-ela) IF (*1 (N Sg Ela) BARRIER NOT-NPMOD-WITHOUT-NUM - Gen - (Pl Nom));
 
-COPY:msyn-dem-noun-ela (Pl Ela SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) OR (Sg Ill) OR (Sg Ela) OR (Sg Ela Sh) OR (Sg Par)  OR (Sg Com) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Gen) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-ela) IF (*1 (N Pl Ela) BARRIER NOT-NPMOD-WITHOUT-NUM - Gen - (Pl Nom));
+COPY:msyn-dem-noun-ela (Pl Ela SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) OR (Sg Ill) OR (Sg Ela) OR (Sg Par)  OR (Sg Com) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Gen) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-ela) IF (*1 (N Pl Ela) BARRIER NOT-NPMOD-WITHOUT-NUM - Gen - (Pl Nom))(NEGATE 0 Sh);
+
+COPY:msyn-dem-noun-ela (Pl Ela SUGGEST) EXCEPT (Sg Ela Sh) TARGET (Dem Sh &msyn-dem-noun-ela) IF (*1 (N Pl Ela) BARRIER NOT-NPMOD-WITHOUT-NUM - Gen - (Pl Nom));
 
 	#Com
 ADD:xmsyn-dem-noun-com (&msyn-dem-noun-com) TARGET Dem IF (*1 (N Com) BARRIER NOT-NPMOD-WITHOUT-NUM) 
@@ -6628,7 +6632,7 @@ COPY:msyn-dem-noun-com (Pl Com SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) 
     # =================================
     # =================================
     
-#LIST Sh = Sh ;
+
 #LIST Long = Long ;
 #
 #ADD:style-short-long (&style-short-long) TARGET Sh ;
