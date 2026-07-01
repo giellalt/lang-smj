@@ -6260,6 +6260,8 @@ COPY:msyn-reksjon-acc-ela (Ela SUGGEST) EXCEPT (Acc &msyn-reksjon-acc-ela) TARGE
 	
 	#nom
 ADD:xmsyn-dem-noun-nom (&msyn-dem-noun-nom) TARGET Dem IF (*1 (N Nom) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE -1 Dem LINK *2 (N Sg Gen) OR (N Pl Nom) - Px BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (N Ela)) # duot dat ...
+(NEGATE 1 Dem LINK *1 (N Sg Gen) OR (N Pl Nom) - Px BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (N Ela)) # duot dat ...
 (NEGATE 0 (Dem Sg Nom) OR (Dem Sg Ela Attr) LINK *1 (N Sg Nom) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE 0 (Dem Sg Nom) LINK 1 (N Gen) LINK 1 (N Acc)) #dat julevsámegiela dilev vájkkut
 (NEGATE 0 (Dem Sg Ela Attr) LINK *1 (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (N Ela))
@@ -6564,13 +6566,18 @@ ADD:xmsyn-dem-noun-ela (&msyn-dem-noun-ela) TARGET Dem IF (*1 (N Ela) BARRIER NO
 (NEGATE *1 (Prop) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE *1 (N <spelled>) OR (N Err/Orth) BARRIER NOT-NPMOD-WITHOUT-NUM)  ;
 
-ADDRELATION ($2 RIGHT) (Dem &msyn-dem-noun-ela) TO (*1 (N Ela) BARRIER NOT-NPMOD-WITHOUT-NUM OR (Dem &msyn-dem-noun-ela)) ;
+	# duot dat Gen Ela
+		
+ADD:xmsyn-dem-noun-ela (&msyn-dem-noun-ela) TARGET Dem IF (*0 Dem BARRIER (*) LINK *1 (N Ela) BARRIER NOT-NPMOD-WITHOUT-NUM - Dem - Gen - (Pl Nom))  ;
+
+
+ADDRELATION ($2 RIGHT) (Dem &msyn-dem-noun-ela) TO (*1 (N Ela) BARRIER NOT-NPMOD-WITHOUT-NUM - Gen - (Pl Nom) OR (Dem &msyn-dem-noun-ela)) ;
 
 ADDRELATION ($2 LEFT) (Dem &msyn-dem-noun-ela) TO (-1 (Dem &msyn-dem-noun-ela)) ;
 
-COPY:msyn-dem-noun-ela (Sg Par SUGGEST) EXCEPT (Sg Nom) OR (Sg Acc) OR (Sg Ill) OR (Sg Com) OR (Sg Ela Sh) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Nom) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-ela) IF (*1 (N Sg Ela) BARRIER NOT-NPMOD-WITHOUT-NUM);
+COPY:msyn-dem-noun-ela (Sg Par SUGGEST) EXCEPT (Sg Nom) OR (Sg Acc) OR (Sg Ill) OR (Sg Com) OR (Sg Ela Sh) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Nom) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-ela) IF (*1 (N Sg Ela) BARRIER NOT-NPMOD-WITHOUT-NUM - Gen - (Pl Nom));
 
-COPY:msyn-dem-noun-ela (Pl Ela SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) OR (Sg Ill) OR (Sg Ela) OR (Sg Ela Sh) OR (Sg Par)  OR (Sg Com) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Gen) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-ela) IF (*1 (N Pl Ela) BARRIER NOT-NPMOD-WITHOUT-NUM);
+COPY:msyn-dem-noun-ela (Pl Ela SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) OR (Sg Ill) OR (Sg Ela) OR (Sg Ela Sh) OR (Sg Par)  OR (Sg Com) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Gen) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-ela) IF (*1 (N Pl Ela) BARRIER NOT-NPMOD-WITHOUT-NUM - Gen - (Pl Nom));
 
 	#Com
 ADD:xmsyn-dem-noun-com (&msyn-dem-noun-com) TARGET Dem IF (*1 (N Com) BARRIER NOT-NPMOD-WITHOUT-NUM) 
