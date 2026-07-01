@@ -1220,6 +1220,9 @@ SET BECOME = BECOME-sma OR BECOME-sme OR BECOME-smj OR BECOME-smn ;
 
 LIST REK-ILL = "boadádallat" "báddnut" "bårrut" "dabrijdit" "dihpput" "dæhppot" "gierrot" "guosskat" "lijkkut" "sjiehttat" "snårrut" "suhttat" "suogŋat" "tjuokkudallat" "tjágŋat" "tjárggat" "årrut" "åskeldit" "vájkkudit" ;
 
+LIST REK-ELA = "berustit" "ballat" ;
+
+
 # Verbs and their complements
 # - - - - - - - - - - - - - -
 
@@ -6163,8 +6166,6 @@ ADD:xmsyn-reksjon-acc-ill (&msyn-reksjon-acc-ill) TARGET (N Acc) OR (Dem Acc) OR
 
 
 
-
-
 ## coordianation
 ADD:xmsyn-reksjon-acc-ill (&msyn-reksjon-acc-ill) TARGET (N Acc) OR (Dem Acc) OR (Pers Acc) OR (A Acc) IF (-1 COMMA OR CC LINK -1 (&msyn-reksjon-acc-ill)) ;
 	##  mij guosská mærkkagálvvotsieggimav, vuobddemav ja vuobddembargov
@@ -6177,6 +6178,31 @@ COPY:msyn-reksjon-acc-ill (Ill SUGGEST) EXCEPT (Acc &msyn-reksjon-acc-ill) TARGE
 COPY:msyn-reksjon-acc-ill (Sg Ill SUGGEST) EXCEPT (Pl Acc &msyn-reksjon-acc-ill) TARGET ("mige" &msyn-reksjon-acc-ill) ;
    
     ## Dá vidjura biedji sierra vásstádusáv guovddooajválattjajda mij guosská sámepolitihka hábmedimev.   
+
+
+    # Acc to ill for reksjåvnnåverba
+    # ------------------------------   
+   
+ADD:xmsyn-reksjon-acc-ela (&msyn-reksjon-acc-ela) TARGET (N Acc) OR (Dem Acc) OR (Pers Acc) OR (A Acc) OR (Indef Acc) IF (*0 REK-ELA + Ind OR REK-ELA + PrfPrc BARRIER NOT-NPMODADV OR S-BOUNDARY OR COMMA) 
+(NEGATE *0 Inf BARRIER S-BOUNDARY OR COMMA OR Rel)
+(NEGATE *1 TV BARRIER S-BOUNDARY OR COMMA OR Rel)
+(NEGATE 0 Acc LINK *1 Inf OR Sup BARRIER NOT-ADV-PCLE) # berustav ássjev tjuovvot
+(NEGATE 0 Acc LINK 1 Gen LINK 1 Po LINK *1 Inf OR Sup BARRIER NOT-ADV-PCLE)  # berustav ienebuv juhtusij birra oahppat.
+(NEGATE 0 Acc LINK 1 Gen LINK 1 CC LINK 1 Gen LINK 1 Po LINK *1 Inf OR Sup BARRIER NOT-ADV-PCLE) # berustav ienebuv juhtusij ja låttij birra oahppat.
+(NEGATE *0 Ela BARRIER COMMA OR Rel OR VFIN OR ("ja" CC) OR S-BOUNDARY - ("de")) 
+(NEGATE 0 Px) ;
+
+
+## coordianation
+ADD:xmsyn-reksjon-acc-ela (&msyn-reksjon-acc-ela) TARGET (N Acc) OR (Dem Acc) OR (Pers Acc) OR (A Acc) IF (-1 COMMA OR CC LINK -1 (&msyn-reksjon-acc-ela)) ;
+	##  mån berustav mærkkagálvvotsieggimav, vuobddemav ja vuobddembargov
+
+ADDRELATION ($1 LEFT) (Acc &msyn-reksjon-acc-ela) TO (*1 (Acc &msyn-reksjon-acc-ela)) ;
+
+
+COPY:msyn-reksjon-acc-ela (Ill SUGGEST) EXCEPT (Acc &msyn-reksjon-acc-ela) TARGET (&msyn-reksjon-acc-ela) ;
+
+   
 
 
 
