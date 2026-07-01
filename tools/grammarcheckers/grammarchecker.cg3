@@ -6381,6 +6381,21 @@ ADD:xmsyn-dem-noun-gen (&msyn-dem-noun-gen) TARGET Dem IF (*1 (N Gen) BARRIER NO
 (NEGATE *1 (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (N Nom)) ;
 
 	#$ Valla suv giehta, la {dánna} bievde nanna aktan mujna.
+
+ADD:xmsyn-dem-noun-gen (&msyn-dem-noun-gen) TARGET Dem IF (*0 Dem BARRIER (*) LINK *1 (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE 0 (Dem Pl Gen) LINK *1 (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE 0 (Dem Sg Gen) LINK *1 (N Sg Gen) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+(NEGATE 0 (Dem Com) LINK 1 (Dem Gen))
+(NEGATE 0 (Dem Ine) LINK 1 (Dem Ine))
+(NEGATE 0 (Dem Acc) LINK 1 (Dem Gen))
+(NEGATE 0 (Dem Nom) LINK 1 (Dem Gen))
+(NEGATE 0 (Dem Ela) LINK 1 (Dem Gen))
+(NEGATE 0 (Dem Ill) LINK 1 (Dem Gen))
+(NEGATE *1 (N Ill) BARRIER NOT-NPMOD-WITHOUT-NUM)
+(NEGATE 0 (Dem Ine) LINK 1 (Dem Gen)); 
+
+	##  duov dáv tiemá baktu dagu rievsagahttem ja guollim 
+
 	
 ADDRELATION ($2 RIGHT) (Dem &msyn-dem-noun-gen) TO (*1 (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM OR (Dem &msyn-dem-noun-gen)) ;
 
