@@ -7,13 +7,11 @@ following suggestions:
 * iesjgudik		51.00000
 * 
 
-**guoktajuohtevidálågåk** is missing. 
+**guoktajuodevidálågåk** is missing. 
 following suggestions:
-* guoktatjuohtevidálågåk		35.00000
-* guoktjuohtevidálågåk		35.00000
-* guoktetjuohtevidálågåk		44.00000
-* guoktatjuodevidálågåk		51.00000
-* guoktjuodevidálågåk		51.00000
+* guoktatjuodevidálågåk		35.00000
+* guoktjuodevidálågåk		35.00000
+* guoktetjuodevidálågåk		44.00000
 * 
 
 **færtguhti** is missing. 
@@ -24,11 +22,13 @@ following suggestions:
 * færtgudik		51.00000
 * 
 
-**guoktajuodevidálågåk** is missing. 
+**guoktajuohtevidálågåk** is missing. 
 following suggestions:
-* guoktatjuodevidálågåk		35.00000
-* guoktjuodevidálågåk		35.00000
-* guoktetjuodevidálågåk		44.00000
+* guoktatjuohtevidálågåk		35.00000
+* guoktjuohtevidálågåk		35.00000
+* guoktetjuohtevidálågåk		44.00000
+* guoktatjuodevidálågåk		51.00000
+* guoktjuodevidálågåk		51.00000
 * 
 
 ## Lemma statistics:
