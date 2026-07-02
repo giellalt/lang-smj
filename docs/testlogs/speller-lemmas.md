@@ -1,12 +1,6 @@
 # Results for lemmatesting spell-checker
 
 
-**iesjguhti** is missing. 
-following suggestions:
-* iesjguhtik		30.00000
-* iesjgudik		51.00000
-* 
-
 **færtguhti** is missing. 
 following suggestions:
 * færtguhtik		35.00000
@@ -24,6 +18,12 @@ following suggestions:
 * guoktjuodevidálågåk		51.00000
 * 
 
+**iesjguhti** is missing. 
+following suggestions:
+* iesjguhtik		30.00000
+* iesjgudik		51.00000
+* 
+
 **guoktajuodevidálågåk** is missing. 
 following suggestions:
 * guoktatjuodevidálågåk		35.00000
@@ -33,8 +33,8 @@ following suggestions:
 
 ## Lemma statistics:
 
-* 43888 lemmas
-* 99.99088589135982 % accepted
+* 43893 lemmas
+* 99.99088692957875 % accepted
 
 ## Configuration:
 
