@@ -108,7 +108,7 @@ WORD_REPLACEMENTS=yes
 .generated/strings.txt.default.desktop.hfst: strings.default.txt \
 									   $(srcdir)/strings.NO.txt \
 									   $(srcdir)/strings.SE.txt .generated/anystar.hfst
-	$(AM_V_STR2FST)grep -j -v '^#' $< \
+	$(AM_V_STR2FST)grep -h -v '^#' $< \
 		$(srcdir)/strings.NO.txt $(srcdir)/strings.SE.txt | grep -v '^$$' | cut -f1-2 \
 		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
 		| $(HFST_CONCATENATE)   .generated/anystar.hfst - \
