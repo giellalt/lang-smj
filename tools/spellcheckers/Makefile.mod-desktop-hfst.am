@@ -94,6 +94,27 @@ WORD_REPLACEMENTS=yes
 	   --format=openfst-tropical \
 		-o $@
 
+# In-word list of strings known to be misspelled, handling Area specific variation:
+.generated/strings.txt.NO.desktop.hfst \
+.generated/strings.txt.SE.desktop.hfst: \
+.generated/strings.txt.%.desktop.hfst: strings.%.txt \
+									   $(srcdir)/strings.default.txt .generated/anystar.hfst
+	$(AM_V_STR2FST)grep -h -v '^#' $< $(srcdir)/strings.default.txt | grep -v '^$$' | cut -f1-2 \
+		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
+		| $(HFST_CONCATENATE)   .generated/anystar.hfst - \
+		| $(HFST_CONCATENATE) - .generated/anystar.hfst   \
+		-o $@
+
+.generated/strings.txt.default.desktop.hfst: strings.default.txt \
+									   $(srcdir)/strings.NO.txt \
+									   $(srcdir)/strings.SE.txt .generated/anystar.hfst
+	$(AM_V_STR2FST)grep -j -v '^#' $< \
+		$(srcdir)/strings.NO.txt $(srcdir)/strings.SE.txt | grep -v '^$$' | cut -f1-2 \
+		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
+		| $(HFST_CONCATENATE)   .generated/anystar.hfst - \
+		| $(HFST_CONCATENATE) - .generated/anystar.hfst   \
+		-o $@
+
 ### End Local build rules ###
 
 # vim: set ft=automake:
