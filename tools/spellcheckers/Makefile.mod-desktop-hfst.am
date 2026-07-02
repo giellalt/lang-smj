@@ -67,4 +67,33 @@ FINAL_STRING_EDITS=txt
 # - no
 WORD_REPLACEMENTS=yes
 
+### Local build rules ###
+
+# Final string edits, join area specific and default files, so that only Area specific
+# content need to be listed in the Area files:
+.generated/final_strings.txt.NO.desktop.hfst \
+.generated/final_strings.txt.SE.desktop.hfst:
+.generated/final_strings.txt.%.desktop.hfst: \
+			final_strings.%.txt \
+			$(srcdir)/final_strings.default.txt $(GENDIR)
+	$(AM_V_STR2FST)grep -h -v '^#' $< $(srcdir)/final_strings.default.txt | grep -v '^$$' | cut -f1-2 \
+		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
+	   --format=openfst-tropical \
+		-o $@
+
+# Final string edits, default version: join all files, including Area specific files,
+# so that the default file does not need to contain any Area specific content:
+.generated/final_strings.txt.default.desktop.hfst: \
+			$(srcdir)/final_strings.default.txt \
+			$(srcdir)/final_strings.NO.txt \
+			$(srcdir)/final_strings.SE.txt $(GENDIR)
+	$(AM_V_STR2FST)grep -h -v '^#' $< \
+		$(srcdir)/final_strings.NO.txt \
+		$(srcdir)/final_strings.SE.txt | grep -v '^$$' | cut -f1-2 \
+		| $(HFST_STRINGS2FST) $(HFST_FLAGS) -j \
+	   --format=openfst-tropical \
+		-o $@
+
+### End Local build rules ###
+
 # vim: set ft=automake:
