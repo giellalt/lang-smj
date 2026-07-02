@@ -9,6 +9,13 @@ following suggestions:
 * færtgudik		51.00000
 * 
 
+**guoktajuodevidálågåk** is missing. 
+following suggestions:
+* guoktatjuodevidálågåk		35.00000
+* guoktjuodevidálågåk		35.00000
+* guoktetjuodevidálågåk		44.00000
+* 
+
 **guoktajuohtevidálågåk** is missing. 
 following suggestions:
 * guoktatjuohtevidálågåk		35.00000
@@ -16,13 +23,6 @@ following suggestions:
 * guoktetjuohtevidálågåk		44.00000
 * guoktatjuodevidálågåk		51.00000
 * guoktjuodevidálågåk		51.00000
-* 
-
-**guoktajuodevidálågåk** is missing. 
-following suggestions:
-* guoktatjuodevidálågåk		35.00000
-* guoktjuodevidálågåk		35.00000
-* guoktetjuodevidálågåk		44.00000
 * 
 
 **iesjguhti** is missing. 
