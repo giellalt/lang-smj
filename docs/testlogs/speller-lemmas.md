@@ -1,19 +1,17 @@
 # Results for lemmatesting spell-checker
 
 
-**færtguhti** is missing. 
-following suggestions:
-* færtguhtik		35.00000
-* fertguhtik		45.00000
-* färtguhtik		50.00000
-* færtgudik		51.00000
-* 
-
 **guoktajuodevidálågåk** is missing. 
 following suggestions:
 * guoktatjuodevidálågåk		35.00000
 * guoktjuodevidálågåk		35.00000
 * guoktetjuodevidálågåk		44.00000
+* 
+
+**iesjguhti** is missing. 
+following suggestions:
+* iesjguhtik		30.00000
+* iesjgudik		51.00000
 * 
 
 **guoktajuohtevidálågåk** is missing. 
@@ -25,10 +23,12 @@ following suggestions:
 * guoktjuodevidálågåk		51.00000
 * 
 
-**iesjguhti** is missing. 
+**færtguhti** is missing. 
 following suggestions:
-* iesjguhtik		30.00000
-* iesjgudik		51.00000
+* færtguhtik		35.00000
+* fertguhtik		45.00000
+* färtguhtik		50.00000
+* færtgudik		51.00000
 * 
 
 ## Lemma statistics:
