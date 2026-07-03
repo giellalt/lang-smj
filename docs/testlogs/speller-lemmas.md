@@ -1,17 +1,17 @@
 # Results for lemmatesting spell-checker
 
 
+**iesjguhti** is missing. 
+following suggestions:
+* iesjguhtik		30.00000
+* iesjgudik		51.00000
+* 
+
 **guoktajuodevidálågåk** is missing. 
 following suggestions:
 * guoktatjuodevidálågåk		35.00000
 * guoktjuodevidálågåk		35.00000
 * guoktetjuodevidálågåk		44.00000
-* 
-
-**iesjguhti** is missing. 
-following suggestions:
-* iesjguhtik		30.00000
-* iesjgudik		51.00000
 * 
 
 **guoktajuohtevidálågåk** is missing. 
