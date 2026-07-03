@@ -7,6 +7,14 @@ following suggestions:
 * iesjgudik		51.00000
 * 
 
+**færtguhti** is missing. 
+following suggestions:
+* færtguhtik		35.00000
+* fertguhtik		45.00000
+* färtguhtik		50.00000
+* færtgudik		51.00000
+* 
+
 **guoktajuodevidálågåk** is missing. 
 following suggestions:
 * guoktatjuodevidálågåk		35.00000
@@ -21,14 +29,6 @@ following suggestions:
 * guoktetjuohtevidálågåk		44.00000
 * guoktatjuodevidálågåk		51.00000
 * guoktjuodevidálågåk		51.00000
-* 
-
-**færtguhti** is missing. 
-following suggestions:
-* færtguhtik		35.00000
-* fertguhtik		45.00000
-* färtguhtik		50.00000
-* færtgudik		51.00000
 * 
 
 ## Lemma statistics:
