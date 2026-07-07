@@ -270,6 +270,7 @@ LIST Der/vuolde = Der/vuolde ;
 
 LIST Der/NomAg = Der/NomAg ;
 LIST Gram/NomAg = Gram/NomAg ;
+LIST Gram/Comp = Gram/Comp ;
 SET NOMAG = NomAg OR Der/NomAg ;
 LIST G3 = G3 ;
 LIST Gram/3syll = Gram/3syll ;
@@ -1649,7 +1650,8 @@ LIST &msyn-congr-ma-mij+verb = &msyn-congr-ma-mij+verb;
 LIST &msyn-l-not-la = &msyn-l-not-la ;
 LIST &msyn-liehket-congr-condsg2-condpl3 = &msyn-liehket-congr-condsg2-condpl3 ; 
 LIST &msyn-mij-gut = &msyn-mij-gut ;
-LIST &msyn-adjective-adverb =&msyn-adjective-adverb ;
+LIST &msyn-adjective-adverb = &msyn-adjective-adverb ;
+LIST &msyn-adjective-nom-acc = &msyn-adjective-nom-acc ;
 LIST &msyn-gut-mij = &msyn-gut-mij ;
 LIST &msyn-nom-gen-Po = &msyn-nom-gen-Po ;
 LIST &msyn-dates-month-from-nom-to-gen = &msyn-dates-month-from-nom-to-gen ;
@@ -6102,6 +6104,8 @@ ADD:xmsyn-adjective-adverb (&msyn-adjective-adverb) TARGET (A Sg Nom) OR (A Attr
 (NEGATE 1 (V <spelled>))
 (NEGATE 1 N)
 (NEGATE 1 PrfPrc LINK 1 N)
+(NEGATE 0 (A Sg Nom) LINK *1 (V Sg3) BARRIER NOT-ADV-PCLE) 
+(NEGATE 0 Adv)
 (NEGATE 0 N)
 (NEGATE 0 (A Sg Ela))
 (NEGATE 0 (Pl Nom) LINK 1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3))
@@ -6120,6 +6124,9 @@ ADD:xmsyn-adjective-adverb (&msyn-adjective-adverb) TARGET (A Sg Nom) OR (A Attr
 (NEGATE 1 (V <spelled>))
 (NEGATE 1 N)
 (NEGATE 1 PrfPrc LINK 1 N)
+(NEGATE 0 (A Sg Nom) LINK NOT 0 Der/Comp OR Der/Superl LINK *1 (V Sg3) BARRIER NOT-ADV-PCLE ) 
+(NEGATE -1 Ela LINK *1 (Der/Comp A Sg Nom) BARRIER NOT-ADV-PCLE LINK *1 (V Sg3) BARRIER NOT-ADV-PCLE ) # Valla mujsta gievrap boahtá
+(NEGATE 0 Adv)
 (NEGATE 0 Err/SpaceCmp)
 (NEGATE 0 N)
 (NEGATE 0 (A Sg Ela))
@@ -6131,20 +6138,32 @@ ADD:xmsyn-adjective-adverb (&msyn-adjective-adverb) TARGET (A Sg Nom) OR (A Attr
 (NEGATE -1 CC OR COMMA LINK -1 (A Nom) LINK *-1 ("liehket") BARRIER S-BOUNDARY OR VFIN - ("soajttet" Prs Sg3))
 (NEGATE *-1 ("sjaddat") BARRIER NOT-ADV-PCLE) ;
 
+
+
+
 COPY:msyn-adjective-adverb ("buoragit" Adv SUGGEST) EXCEPT ("buorre" A Sg Nom &msyn-adjective-adverb) TARGET ("buorre" &msyn-adjective-adverb) ; #LINDA HELP
 
 	## dat la {buorre} åvddånahtedum
 
 
-COPY:msyn-adjective-adverb (Ex/A Der/AAdv Adv SUGGEST) EXCEPT (A Sg Nom &msyn-adjective-adverb) OR (A Sg Acc &msyn-adjective-adverb) OR (A Sg Gen &msyn-adjective-adverb) OR (A Pl Acc &msyn-adjective-adverb) OR (A Sg Gen &msyn-adjective-adverb) OR (A Attr &msyn-adjective-adverb) TARGET (A &msyn-adjective-adverb) (NEGATE 0 ("buorre")) (NEGATE 0 Der/Comp) ;
+COPY:msyn-adjective-adverb (Ex/A Der/AAdv Adv SUGGEST) EXCEPT (A Sg Nom &msyn-adjective-adverb) OR (A Sg Acc &msyn-adjective-adverb) OR (A Sg Gen &msyn-adjective-adverb) OR (A Pl Acc &msyn-adjective-adverb) OR (A Sg Gen &msyn-adjective-adverb) OR (A Attr &msyn-adjective-adverb) TARGET (A &msyn-adjective-adverb) (NEGATE 0 ("buorre")) (NEGATE 0 Der/Comp) (NEGATE 0 Gram/Comp) ;
 
-COPY:msyn-adjective-adverb (Ex/A Der/AAdv Adv SUGGEST) EXCEPT (A Sg Nom &msyn-adjective-adverb) OR (A Sg Acc &msyn-adjective-adverb) OR (A Sg Gen &msyn-adjective-adverb) OR (A Pl Acc &msyn-adjective-adverb) OR (A Sg Gen &msyn-adjective-adverb) OR (A Attr &msyn-adjective-adverb) TARGET (A Der/Comp &msyn-adjective-adverb) ;
+COPY:msyn-adjective-adverb (Ex/A Der/AAdv Adv SUGGEST) EXCEPT (A Sg Nom &msyn-adjective-adverb) OR (A Sg Acc &msyn-adjective-adverb) OR (A Sg Gen &msyn-adjective-adverb) OR (A Pl Acc &msyn-adjective-adverb) OR (A Sg Gen &msyn-adjective-adverb) OR (A Attr &msyn-adjective-adverb) TARGET (A Der/Comp &msyn-adjective-adverb) (NEGATE 0 Gram/Comp) ;
 
 	## Mij buorebu viesojma
 
+COPY:msyn-adjective-adverb (Ex/A Gram/Comp Der/AAdv Adv SUGGEST) EXCEPT (A Gram/Comp Sg Nom &msyn-adjective-adverb) TARGET (A Gram/Comp &msyn-adjective-adverb) ;
 
+	## Valla ittjiv mån dan niego birra bárep usjudalá
 
+ADD:xmsyn-adjective-nom-acc (&msyn-adjective-nom-acc) TARGET (A Sg Nom) IF (1 (TV)) (NEGATE 1 N) ;
 
+ADD:xmsyn-adjective-nom-acc (&msyn-adjective-nom-acc) TARGET (A Sg Nom) IF (-1 (TV)) (NEGATE 1 N) ;
+
+COPY:msyn-adjective-nom-acc (Acc SUGGEST) EXCEPT (Nom &msyn-adjective-nom-acc) TARGET (A &msyn-adjective-nom-acc) ;
+	## Suohkan ienep diehtá
+	## Suohkan ienep diehtá
+	## Lågå ienep
 
     # Verbform errors
     # ===================================================================================================
