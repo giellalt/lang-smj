@@ -1728,9 +1728,9 @@ ADD:spell-conservatively (&typo SUGGESTWF) (<spelled>) IF (NEGATE -1 QMARK LINK 
 # # used to create human-readable messages.
 
 # Simple punctuation rules showing how to change the lemma in the suggestions:
-ADD:use-guillemets (&guillemets) TARGET ("\"");
-COPY:left-guillemet ("«" SUGGEST) EXCEPT ("\"") TARGET (&guillemets) ;
-COPY:right-guillemet ("»" SUGGEST) EXCEPT ("\"") TARGET (&guillemets) ;
+#ADD:use-guillemets (&guillemets) TARGET ("\"");
+#COPY:left-guillemet ("«" SUGGEST) EXCEPT ("\"") TARGET (&guillemets) ;
+#COPY:right-guillemet ("»" SUGGEST) EXCEPT ("\"") TARGET (&guillemets) ;
 
 ADD:use-ellipsis (&ellipsis) TARGET ("...");
 COPY:use-ellipsis ("…" SUGGEST) EXCEPT ("...") TARGET (&ellipsis) ;
@@ -6743,106 +6743,106 @@ COPY:msyn-dem-noun-com (Pl Com SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) 
     # ===================================================================================================
     # ===================================================================================================
     
-	# 1. Add error tags:
-#ADD:punct-aistton       (&punct-aistton)       TARGET (""") ;  # Delayed til later
-MAP:punct-aistton-both  (&punct-aistton-both)  TARGET ("«" PUNCT LEFT)  OR ("“" PUNCT LEFT) OR ("\"") OR ("„") OR ("‟") OR ("'") OR ("‹") OR ("‘") OR ("‚") OR ("‛") OR ("❛") OR ("❝") OR ("❮") OR ("〝") OR ("〟")
-IF (2 ("»") OR ("“") OR ("\"") OR ("'") OR ("›") OR ("’") OR ("❜") OR ("❞") OR ("❯") OR ("〞") OR ("＂")) ; #NOT THIS ONE! ("”")
-	## Artihkkal Ii fal EU Finnmárkoaviisa "Mearrit", borgemánnu 1993
-
-# "	« » “ ” „ ‟ ' ‹ › ‘ ’ ‚ ‛ ❛ ❜ ❝ ❞ ❮ ❯ 〝 〞 〟 ＂
-
-
-ADD:punct-aistton-left  (&punct-aistton-left)  TARGET ("«" PUNCT LEFT) - Err/Orth OR ("“" PUNCT LEFT) - Err/Orth OR ("„"  PUNCT LEFT) - Err/Orth OR ("‟") - Err/Orth OR ("‹") - Err/Orth OR ("‘") - Err/Orth OR ("‚") - Err/Orth OR ("‛") - Err/Orth OR ("❛") - Err/Orth OR ("❝") - Err/Orth OR ("❮") - Err/Orth OR ("〝") - Err/Orth OR ("〟") - Err/Orth IF (NOT 0 <SpaceOnRightSide>);
-	#$ lávlo “áhku sávzzat lávlaga.
-ADD:punct-aistton-right (&punct-aistton-right) TARGET ("«" PUNCT LEFT <SpaceOnRightSide>) OR ("‹" PUNCT LEFT <SpaceOnRightSide>)  OR ("❮" <SpaceOnRightSide>) OR ("‛" <SpaceOnRightSide>) OR ("❛" <SpaceOnRightSide>) OR ("❝" <SpaceOnRightSide>) OR 
-("«" PUNCT LEFT <LastCohortOfParagraph>) OR ("‹" PUNCT LEFT <LastCohortOfParagraph>)  OR ("❮" <LastCohortOfParagraph>) OR ("‛" <LastCohortOfParagraph>) OR ("❛" <LastCohortOfParagraph>) OR ("❝" <LastCohortOfParagraph>)
-IF (*-2 ("«") OR ("‹") OR ("❮") OR ("‛") OR ("❛") OR ("❝") BARRIER PUNCT OR CLB);
-	##  Obbalaččat lei nu ahte eatnasat geat áigo sátnesaji oaivvildedje ahte «Fjellfinnhua{«} filbma ii dagat ahte buorrána gaskavuohta olbmočearddaid gaskka davviguovllus.
-	## Sámi fibmafestivála jođiheaddji Anne Lajla Utsi duođašta ahte sii áigo geassádit «Villmarkssenter{«} báikkis orrumis, go eaiggát ja sámepolitihkar Issán (Isak Mathis O. Hætta) lea ovddidan cealkámušaid máid olluhat leat dulkon rasistalažžan.
-
-	# for undefined if left or right
-ADD:punct-aistton-left  (&punct-aistton-left)  TARGET ("'" PUNCT) OR ("\"" PUNCT) (*-1 BOS BARRIER ("'" PUNCT) OR ("\"" PUNCT))(NEGATE -1> ("." CLB) OR ("!") OR ("?") LINK *-1 ("«" PUNCT LEFT)  OR ("“" PUNCT LEFT) OR ("\"")  OR ("'")  LINK -1 BOS)(NEGATE 0 <SpaceOnRightSide>)(NEGATE 1 ("." CLB) OR ("!") OR ("?"));
-	#$ Jos boađát dakko, go boađát stálu goahtái, de mon galggan neavvut du.{"} Sápmelaš vulggii ruoktot.
-
-ADD:punct-aistton-right (&punct-aistton-right) TARGET ("'" PUNCT) OR ("\"" PUNCT) OR ("＂") (*-1 (&punct-aistton-left));
-	## Don čuoččut mu 'ovddas'.
-	## Ii lean eambbo go okta vuohki dán eastadit, jus eiseváldit eai háliidan vuotnabivddu oalát nohkat".
-	## Muhto earenoamážit lei hávdda birra sáhka: 1926:s dagai Davvesiidda suohkanstivra ráfáiduhttincealkámuša, vai lottit mat "dál leat hui unnán, eai galgga oalát nohkat" (FFF 1926: ášši 88, s. 337).
-
-ADD:punct-aistton-right (&punct-aistton-right) TARGET ("'" PUNCT) OR ("\"" PUNCT) OR ("＂") OR ("»") OR ("“") (0 <SpaceOnRightSide> OR <LastCohortOfParagraph>);
-
-ADD:punct-aistton-right (&punct-aistton-right) TARGET ("'" PUNCT) OR ("\"" PUNCT) OR ("＂") OR ("»") OR ("“") (1 ("." CLB) OR ("!" CLB) OR ("?" CLB) OR COMMA OR (":" CLB) OR (";" CLB) OR ("-" PUNCT));
-	## Doppe biddjui ovdan nu ahte sápmelaččaide mearkkaša dát: «leat dahje ii leat{»}.
-
-	# 2. Add COERROR tags to the preceding/following word (depending on LEFT or RIGHT quotation marks), to handle overlapping errors:
-MAP:punct-aistton-both-link  (co&punct-aistton-both )  TARGET (*) IF (-2 (&punct-aistton-both) LINK NOT 0 (co&punct-aistton-both)) ;
-ADD:punct-aistton-left-link  (co&punct-aistton-left )  TARGET (*) IF (-1 (&punct-aistton-left) LINK NOT 0 (co&punct-aistton-left)) ;
-#ADD:punct-aistton-left-link  (co&punct-aistton-left )  TARGET (*) IF (-*<1 (>>>) BARRIER (>>>) (&punct-aistton-left) LINK NOT 0 (co&punct-aistton-left)) ;
-	# when it follows the next window
-
-ADD:punct-aistton-right-link (co&punct-aistton-right ) TARGET (*) IF (1 (&punct-aistton-right) LINK NOT 0 (co&punct-aistton-right)) ;
-
-ADD:punct-aistton-right-link (co&punct-aistton-right) TARGET ("." CLB) OR ("!" CLB) OR ("?" CLB) IF (1*> (>>>) BARRIER (>>>) LINK 1 ("'" PUNCT <SpaceOnRightSide>) OR ("\"" PUNCT <SpaceOnRightSide>) OR ("＂" PUNCT <SpaceOnRightSide>) OR ("»" PUNCT <SpaceOnRightSide>) LINK NOT 0 (COERROR)) ;
-	# when  jumping  to the next window
-
-	# 3. Add relation RIGHT/LEFT from the sentral cohort to the LINKed cohort for extended underline:
-ADDRELATION:punct-aistton-both-rel  (RIGHT) (&punct-aistton-both)  TO (2 (co&punct-aistton-both) );
-ADDRELATION:punct-aistton-left-rel  (RIGHT) (&punct-aistton-left)  TO (1 (co&punct-aistton-left) );
-ADDRELATION:punct-aistton-left-rel  (RIGHT) (&punct-aistton-left)  TO (1*> (>>>) BARRIER (>>>) LINK 1 (co&punct-aistton-left) );
-	## Jos boađát dakko, go boađát stálu goahtái, de mon galggan neavvut du.{"} Sápmelaš vulggii ruoktot.
-ADDRELATION:punct-aistton-right-rel (LEFT)  (&punct-aistton-right) TO (-1 (co&punct-aistton-right));
-ADDRELATION:punct-aistton-right-rel (LEFT)  (&punct-aistton-right) TO (-1*< (<<<) BARRIER (<<<) LINK 0 (co&punct-aistton-right));
-
-	# 4. Generate suggestions including the following/preceeding word (ie matching underline):
-	# Generer forslag for hermeteikn på _begge_ sider viss me har feilen på eitt og same ord:
-COPY:punct-aistton-both-sugg KEEPORDER (VSTR:"”$1”"S SUGGESTWF) TARGET (&punct-aistton-both) IF
-        (NOT 0 (co&punct-aistton-both))
-        (2 (co&punct-aistton-both))
-        (1 ("<(.*)>"r))
-        (NOT 0 SUGGESTWF)      # don't COPY more than once
-        ;
-
-	# Generer forslag for doble hermeteikn på _venstre_ side:
-COPY:punct-aistton-left-sugg KEEPORDER (VSTR:"”$1"S SUGGESTWF) TARGET (&punct-aistton-left) IF
-        (NOT 0 (co&punct-aistton-left))
-        (NOT 0 ("'" PUNCT) OR ("‚") OR ("‛") OR ("❛") OR ("‘"))
-        (1 (co&punct-aistton-left) LINK 0 ("<(.*)>"r))
-        (NOT 0 SUGGESTWF)      # don't COPY more than once
-        ;
-
-	# Generer forslag for enkle hermeteikn på _venstre_ side:
-COPY:punct-aistton-left-sugg KEEPORDER (VSTR:"’$1"S SUGGESTWF) TARGET (&punct-aistton-left) IF
-		(0 ("'" PUNCT) OR ("‚") OR ("‛") OR ("❛") OR ("‘"))
-        (NOT 0 (co&punct-aistton-left))
-        (1 (co&punct-aistton-left) LINK 0 ("<(.*)>"r))
-        (NOT 0 SUGGESTWF)      # don't COPY more than once
-        ;
-
-	# Generer forslag for hermeteikn på _høgre_ side:
-COPY:punct-aistton-right-sugg KEEPORDER (VSTR:"$1”"S SUGGESTWF) TARGET (&punct-aistton-right) IF
-        (NOT 0 (co&punct-aistton-right))
-        (NOT 0 ("'" PUNCT))
-        (-1 (co&punct-aistton-right) LINK 0 ("<(.*)>"r))
-        (NOT 0 SUGGESTWF)      # don't COPY more than once
-        ;
-	# this one is after a clause/window boundary
-COPY:punct-aistton-right-sugg KEEPORDER (VSTR:"$1”"S SUGGESTWF) TARGET (&punct-aistton-right) IF
-        (NOT 0 (co&punct-aistton-right))
-        (NOT 0 ("'" PUNCT))
-        (-1*< (<<<) BARRIER (<<<) LINK 0 (co&punct-aistton-right) LINK 0 ("<(.*)>"r))
-        (NOT 0 SUGGESTWF)      # don't COPY more than once
-        ;
-   ## Jos boađát dakko, go boađát stálu goahtái, de mon galggan neavvut du{."} Sápmelaš vulggii ruoktot.
-
-	# Generer forslag for hermeteikn på _høgre_ side:
-COPY:punct-aistton-right-sugg KEEPORDER (VSTR:"$1’"S SUGGESTWF) TARGET (&punct-aistton-right) IF
-        (NOT 0 (co&punct-aistton-right))
-        (0 ("'" PUNCT))
-        (-1 (co&punct-aistton-right) LINK 0 ("<(.*)>"r))
-        (NOT 0 SUGGESTWF)      # don't COPY more than once
-        ;
-
-# ADD (&keep-your-voice-down) ("^[A-ZÆØÅÁŠŽĐŊ]+$"r) (NOT (0 (<firstCohortOfParagraph>)));
+#	# 1. Add error tags:
+##ADD:punct-aistton       (&punct-aistton)       TARGET (""") ;  # Delayed til later
+#MAP:punct-aistton-both  (&punct-aistton-both)  TARGET ("«" PUNCT LEFT)  OR ("“" PUNCT LEFT) OR ("\"") OR ("„") OR ("‟") OR ("'") OR ("‹") OR ("‘") OR ("‚") OR ("‛") OR ("❛") OR ("❝") OR ("❮") OR ("〝") OR ("〟")
+#IF (2 ("»") OR ("“") OR ("\"") OR ("'") OR ("›") OR ("’") OR ("❜") OR ("❞") OR ("❯") OR ("〞") OR ("＂")) ; #NOT THIS ONE! ("”")
+#	## Artihkkal Ii fal EU Finnmárkoaviisa "Mearrit", borgemánnu 1993
+#
+## "	« » “ ” „ ‟ ' ‹ › ‘ ’ ‚ ‛ ❛ ❜ ❝ ❞ ❮ ❯ 〝 〞 〟 ＂
+#
+#
+#ADD:punct-aistton-left  (&punct-aistton-left)  TARGET ("«" PUNCT LEFT) - Err/Orth OR ("“" PUNCT LEFT) - Err/Orth OR ("„"  PUNCT LEFT) - Err/Orth OR ("‟") - Err/Orth OR ("‹") - Err/Orth OR ("‘") - Err/Orth OR ("‚") - Err/Orth OR ("‛") - Err/Orth OR ("❛") - Err/Orth OR ("❝") - Err/Orth OR ("❮") - Err/Orth OR ("〝") - Err/Orth OR ("〟") - Err/Orth IF (NOT 0 <SpaceOnRightSide>);
+#	#$ lávlo “áhku sávzzat lávlaga.
+#ADD:punct-aistton-right (&punct-aistton-right) TARGET ("«" PUNCT LEFT <SpaceOnRightSide>) OR ("‹" PUNCT LEFT <SpaceOnRightSide>)  OR ("❮" <SpaceOnRightSide>) OR ("‛" <SpaceOnRightSide>) OR ("❛" <SpaceOnRightSide>) OR ("❝" <SpaceOnRightSide>) OR 
+#("«" PUNCT LEFT <LastCohortOfParagraph>) OR ("‹" PUNCT LEFT <LastCohortOfParagraph>)  OR ("❮" <LastCohortOfParagraph>) OR ("‛" <LastCohortOfParagraph>) OR ("❛" <LastCohortOfParagraph>) OR ("❝" <LastCohortOfParagraph>)
+#IF (*-2 ("«") OR ("‹") OR ("❮") OR ("‛") OR ("❛") OR ("❝") BARRIER PUNCT OR CLB);
+#	##  Obbalaččat lei nu ahte eatnasat geat áigo sátnesaji oaivvildedje ahte «Fjellfinnhua{«} filbma ii dagat ahte buorrána gaskavuohta olbmočearddaid gaskka davviguovllus.
+#	## Sámi fibmafestivála jođiheaddji Anne Lajla Utsi duođašta ahte sii áigo geassádit «Villmarkssenter{«} báikkis orrumis, go eaiggát ja sámepolitihkar Issán (Isak Mathis O. Hætta) lea ovddidan cealkámušaid máid olluhat leat dulkon rasistalažžan.
+#
+#	# for undefined if left or right
+#ADD:punct-aistton-left  (&punct-aistton-left)  TARGET ("'" PUNCT) OR ("\"" PUNCT) (*-1 BOS BARRIER ("'" PUNCT) OR ("\"" PUNCT))(NEGATE -1> ("." CLB) OR ("!") OR ("?") LINK *-1 ("«" PUNCT LEFT)  OR ("“" PUNCT LEFT) OR ("\"")  OR ("'")  LINK -1 BOS)(NEGATE 0 <SpaceOnRightSide>)(NEGATE 1 ("." CLB) OR ("!") OR ("?"));
+#	#$ Jos boađát dakko, go boađát stálu goahtái, de mon galggan neavvut du.{"} Sápmelaš vulggii ruoktot.
+#
+#ADD:punct-aistton-right (&punct-aistton-right) TARGET ("'" PUNCT) OR ("\"" PUNCT) OR ("＂") (*-1 (&punct-aistton-left));
+#	## Don čuoččut mu 'ovddas'.
+#	## Ii lean eambbo go okta vuohki dán eastadit, jus eiseváldit eai háliidan vuotnabivddu oalát nohkat".
+#	## Muhto earenoamážit lei hávdda birra sáhka: 1926:s dagai Davvesiidda suohkanstivra ráfáiduhttincealkámuša, vai lottit mat "dál leat hui unnán, eai galgga oalát nohkat" (FFF 1926: ášši 88, s. 337).
+#
+#ADD:punct-aistton-right (&punct-aistton-right) TARGET ("'" PUNCT) OR ("\"" PUNCT) OR ("＂") OR ("»") OR ("“") (0 <SpaceOnRightSide> OR <LastCohortOfParagraph>);
+#
+#ADD:punct-aistton-right (&punct-aistton-right) TARGET ("'" PUNCT) OR ("\"" PUNCT) OR ("＂") OR ("»") OR ("“") (1 ("." CLB) OR ("!" CLB) OR ("?" CLB) OR COMMA OR (":" CLB) OR (";" CLB) OR ("-" PUNCT));
+#	## Doppe biddjui ovdan nu ahte sápmelaččaide mearkkaša dát: «leat dahje ii leat{»}.
+#
+#	# 2. Add COERROR tags to the preceding/following word (depending on LEFT or RIGHT quotation marks), to handle overlapping errors:
+#MAP:punct-aistton-both-link  (co&punct-aistton-both )  TARGET (*) IF (-2 (&punct-aistton-both) LINK NOT 0 (co&punct-aistton-both)) ;
+#ADD:punct-aistton-left-link  (co&punct-aistton-left )  TARGET (*) IF (-1 (&punct-aistton-left) LINK NOT 0 (co&punct-aistton-left)) ;
+##ADD:punct-aistton-left-link  (co&punct-aistton-left )  TARGET (*) IF (-*<1 (>>>) BARRIER (>>>) (&punct-aistton-left) LINK NOT 0 (co&punct-aistton-left)) ;
+#	# when it follows the next window
+#
+#ADD:punct-aistton-right-link (co&punct-aistton-right ) TARGET (*) IF (1 (&punct-aistton-right) LINK NOT 0 (co&punct-aistton-right)) ;
+#
+#ADD:punct-aistton-right-link (co&punct-aistton-right) TARGET ("." CLB) OR ("!" CLB) OR ("?" CLB) IF (1*> (>>>) BARRIER (>>>) LINK 1 ("'" PUNCT <SpaceOnRightSide>) OR ("\"" PUNCT <SpaceOnRightSide>) OR ("＂" PUNCT <SpaceOnRightSide>) OR ("»" PUNCT <SpaceOnRightSide>) LINK NOT 0 (COERROR)) ;
+#	# when  jumping  to the next window
+#
+#	# 3. Add relation RIGHT/LEFT from the sentral cohort to the LINKed cohort for extended underline:
+#ADDRELATION:punct-aistton-both-rel  (RIGHT) (&punct-aistton-both)  TO (2 (co&punct-aistton-both) );
+#ADDRELATION:punct-aistton-left-rel  (RIGHT) (&punct-aistton-left)  TO (1 (co&punct-aistton-left) );
+#ADDRELATION:punct-aistton-left-rel  (RIGHT) (&punct-aistton-left)  TO (1*> (>>>) BARRIER (>>>) LINK 1 (co&punct-aistton-left) );
+#	## Jos boađát dakko, go boađát stálu goahtái, de mon galggan neavvut du.{"} Sápmelaš vulggii ruoktot.
+#ADDRELATION:punct-aistton-right-rel (LEFT)  (&punct-aistton-right) TO (-1 (co&punct-aistton-right));
+#ADDRELATION:punct-aistton-right-rel (LEFT)  (&punct-aistton-right) TO (-1*< (<<<) BARRIER (<<<) LINK 0 (co&punct-aistton-right));
+#
+#	# 4. Generate suggestions including the following/preceeding word (ie matching underline):
+#	# Generer forslag for hermeteikn på _begge_ sider viss me har feilen på eitt og same ord:
+#COPY:punct-aistton-both-sugg KEEPORDER (VSTR:"”$1”"S SUGGESTWF) TARGET (&punct-aistton-both) IF
+#        (NOT 0 (co&punct-aistton-both))
+#        (2 (co&punct-aistton-both))
+#        (1 ("<(.*)>"r))
+#        (NOT 0 SUGGESTWF)      # don't COPY more than once
+#        ;
+#
+#	# Generer forslag for doble hermeteikn på _venstre_ side:
+#COPY:punct-aistton-left-sugg KEEPORDER (VSTR:"”$1"S SUGGESTWF) TARGET (&punct-aistton-left) IF
+#        (NOT 0 (co&punct-aistton-left))
+#        (NOT 0 ("'" PUNCT) OR ("‚") OR ("‛") OR ("❛") OR ("‘"))
+#        (1 (co&punct-aistton-left) LINK 0 ("<(.*)>"r))
+#        (NOT 0 SUGGESTWF)      # don't COPY more than once
+#        ;
+#
+#	# Generer forslag for enkle hermeteikn på _venstre_ side:
+#COPY:punct-aistton-left-sugg KEEPORDER (VSTR:"’$1"S SUGGESTWF) TARGET (&punct-aistton-left) IF
+#		(0 ("'" PUNCT) OR ("‚") OR ("‛") OR ("❛") OR ("‘"))
+#        (NOT 0 (co&punct-aistton-left))
+#        (1 (co&punct-aistton-left) LINK 0 ("<(.*)>"r))
+#        (NOT 0 SUGGESTWF)      # don't COPY more than once
+#        ;
+#
+#	# Generer forslag for hermeteikn på _høgre_ side:
+#COPY:punct-aistton-right-sugg KEEPORDER (VSTR:"$1”"S SUGGESTWF) TARGET (&punct-aistton-right) IF
+#        (NOT 0 (co&punct-aistton-right))
+#        (NOT 0 ("'" PUNCT))
+#        (-1 (co&punct-aistton-right) LINK 0 ("<(.*)>"r))
+#        (NOT 0 SUGGESTWF)      # don't COPY more than once
+#        ;
+#	# this one is after a clause/window boundary
+#COPY:punct-aistton-right-sugg KEEPORDER (VSTR:"$1”"S SUGGESTWF) TARGET (&punct-aistton-right) IF
+#        (NOT 0 (co&punct-aistton-right))
+#        (NOT 0 ("'" PUNCT))
+#        (-1*< (<<<) BARRIER (<<<) LINK 0 (co&punct-aistton-right) LINK 0 ("<(.*)>"r))
+#        (NOT 0 SUGGESTWF)      # don't COPY more than once
+#        ;
+#   ## Jos boađát dakko, go boađát stálu goahtái, de mon galggan neavvut du{."} Sápmelaš vulggii ruoktot.
+#
+#	# Generer forslag for hermeteikn på _høgre_ side:
+#COPY:punct-aistton-right-sugg KEEPORDER (VSTR:"$1’"S SUGGESTWF) TARGET (&punct-aistton-right) IF
+#        (NOT 0 (co&punct-aistton-right))
+#        (0 ("'" PUNCT))
+#        (-1 (co&punct-aistton-right) LINK 0 ("<(.*)>"r))
+#        (NOT 0 SUGGESTWF)      # don't COPY more than once
+#        ;
+#
+## ADD (&keep-your-voice-down) ("^[A-ZÆØÅÁŠŽĐŊ]+$"r) (NOT (0 (<firstCohortOfParagraph>)));
 
 ADD (&punct-end) TARGET Nom (-1 (\n));
 
