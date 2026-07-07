@@ -6098,10 +6098,6 @@ ADD:xmsyn-adjective-adverb (&msyn-adjective-adverb) TARGET (A Sg Nom) OR (A Attr
 
 COPY:msyn-adjective-adverb (Der/AAdv Adv SUGGEST) EXCEPT (Sg Nom &msyn-adjective-adverb) OR (Attr &msyn-adjective-adverb) TARGET (A &msyn-adjective-adverb) ; #LINDA HELP
 
-COPY:msyn-adjective-adverb ("buoragit" Adv SUGGEST) EXCEPT ("buorre" A Sg Nom &msyn-adjective-adverb) TARGET ("buorre" &msyn-adjective-adverb) ; #LINDA HELP
-
-	## dat la {buorre} åvddånahtedum
-
 ADD:xmsyn-adjective-adverb (&msyn-adjective-adverb) TARGET (A Sg Nom) OR (A Attr) IF (1 V) 
 (NEGATE 1 ("liehket") OR ("årrot") OR ("sjaddat"))
 (NEGATE 1 (Neg Sg3) LINK 1 ("liehket" ConNeg) OR ("liehket" Sg3) OR ("liehket" Prs Sg2)) 
@@ -6116,11 +6112,17 @@ ADD:xmsyn-adjective-adverb (&msyn-adjective-adverb) TARGET (A Sg Nom) OR (A Attr
 (NEGATE 0 Ord)
 (NEGATE 0 ("heva") LINK 1 (V PrfPrc))
 (NEGATE *-1 ("liehket") BARRIER S-BOUNDARY OR VFIN - ("soajttet" Prs Sg3))
+(NEGATE -1 CC OR COMMA LINK -1 (A Nom) LINK *-1 ("liehket") BARRIER S-BOUNDARY OR VFIN - ("soajttet" Prs Sg3))
 (NEGATE *-1 ("sjaddat") BARRIER NOT-ADV-PCLE) ;
+
+COPY:msyn-adjective-adverb ("buoragit" Adv SUGGEST) EXCEPT ("buorre" A Sg Nom &msyn-adjective-adverb) TARGET ("buorre" &msyn-adjective-adverb) ; #LINDA HELP
+
+	## dat la {buorre} åvddånahtedum
+
 
 COPY:msyn-adjective-adverb (Ex/A Der/AAdv Adv SUGGEST) EXCEPT (A Sg Nom &msyn-adjective-adverb) OR (A Sg Acc &msyn-adjective-adverb) OR (A Sg Gen &msyn-adjective-adverb) OR (A Pl Acc &msyn-adjective-adverb) OR (A Sg Gen &msyn-adjective-adverb) OR (A Attr &msyn-adjective-adverb) TARGET (A &msyn-adjective-adverb) (NEGATE 0 ("buorre")) (NEGATE 0 Der/Comp) ;
 
-COPY:msyn-adjective-adverb (Der/AAdv Adv SUGGEST) EXCEPT (A Sg Nom &msyn-adjective-adverb) OR (A Sg Acc &msyn-adjective-adverb) OR (A Sg Gen &msyn-adjective-adverb) OR (A Pl Acc &msyn-adjective-adverb) OR (A Sg Gen &msyn-adjective-adverb) OR (A Attr &msyn-adjective-adverb) TARGET (A Der/Comp &msyn-adjective-adverb) ;
+COPY:msyn-adjective-adverb (Ex/A Der/AAdv Adv SUGGEST) EXCEPT (A Sg Nom &msyn-adjective-adverb) OR (A Sg Acc &msyn-adjective-adverb) OR (A Sg Gen &msyn-adjective-adverb) OR (A Pl Acc &msyn-adjective-adverb) OR (A Sg Gen &msyn-adjective-adverb) OR (A Attr &msyn-adjective-adverb) TARGET (A Der/Comp &msyn-adjective-adverb) ;
 
 	## Mij buorebu viesojma
 
@@ -6315,6 +6317,17 @@ COPY:msyn-reksjon-acc-ela (Ela SUGGEST) EXCEPT (Acc &msyn-reksjon-acc-ela) TARGE
     # ===================================================================================================
     # ===================================================================================================
     # ===================================================================================================
+    
+    # Dependency rules for complex nominal attributes
+    
+SETPARENT (N Sg Gen) (0 Sem/Hum OR Sem/Veh OR Sem/Org) TO (*1 (".*uvvat"r PrfPrc) OR (Der/PassL PrfPrc) OR (Der/PassS) BARRIER NOT-ADV-PCLE - ADVLCASE);
+	## Dáv {almatja} giedas tsieggidum tiemmpilav mån gajkov.
+	
+SETPARENT (N Ine) OR (N Ela) OR (N Ill) OR (N Com) TO (*1 (".*uvvat"r PrfPrc) OR (Der/PassL PrfPrc) OR (Der/PassS) BARRIER NOT-ADV-PCLE - ADVLCASE);
+	## Dáv almatja {giedas} tsieggidum tiemmpilav mån gajkov.
+
+SETPARENT PrfPrc (c Ine OR Ela OR Ill OR Com) TO (1 N);
+	## Dáv almatja giedas {tsieggidum} tiemmpilav mån gajkov.
 
 	# Dem + Noun
 	# Nounphrase
@@ -6341,7 +6354,7 @@ COPY:msyn-reksjon-acc-ela (Ela SUGGEST) EXCEPT (Acc &msyn-reksjon-acc-ela) TARGE
 	
 	
 	#nom
-ADD:xmsyn-dem-noun-nom (&msyn-dem-noun-nom) TARGET Dem IF (*1 (N Nom) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+ADD:xmsyn-dem-noun-nom (&msyn-dem-noun-nom) TARGET Dem IF (*1 (N Nom) BARRIER NOT-NPMOD-WITHOUT-NUM LINK NEGATE p PrfPrc LINK p N) 
 (NEGATE -1 Dem LINK *2 (N Sg Gen) OR (N Pl Nom) - Px OR (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (N Ela)) # duot dat ...
 (NEGATE 1 Dem LINK *1 (N Sg Gen) OR (N Pl Nom) - Px OR (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (N Ela)) # duot dat ...
 (NEGATE 0 (Dem Sg Nom) OR (Dem Sg Ela Attr) LINK *1 (N Sg Nom) BARRIER NOT-NPMOD-WITHOUT-NUM) 
@@ -6395,6 +6408,8 @@ ADD:xmsyn-dem-noun-nom (&msyn-dem-noun-nom) TARGET Dem IF (*1 (N Nom) BARRIER NO
 (NEGATE *1 Cmp/SplitR BARRIER NOT-NPMOD-WITHOUT-NUM); 
 	
 	#$ Guddnedihtit Härráv ednamin, merraielle ja ihkeva tjiegŋalisá, eldagis ja tjuormas, muohta ja murkko, {dån} stoarmmo mij dagá mav gåhttju
+	
+	
 
 ADDRELATION ($2 RIGHT) (Dem &msyn-dem-noun-nom) TO (*1 (N Nom) BARRIER NOT-NPMOD-WITHOUT-NUM OR (Dem &msyn-dem-noun-nom)) ;
 
