@@ -8,6 +8,7 @@ if WANT_GRAMCHECK
 
 # List here (space separated) all yaml files to be run as part of make check:
 TESTS=\
+	DEV-adjective-adverb-FAIL.yaml				  \
 	DEV-msyn-congr-dem-noun-FAIL.yaml			  \
 	DEV-msyn-congr-dem-noun-PASS.yaml             \
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
@@ -74,6 +75,7 @@ TESTS=\
 # List tests that are presently (expected) failures here, ie things that should
 # be fixed *later*, but is not cDEV-msyn-gut-mij-gut-FAIL.yamlritical at the moment:
 XFAIL_TESTS=\
+	DEV-adjective-adverb-FAIL.yaml				  \
 	DEV-msyn-congr-dem-noun-FAIL.yaml             \
 	DEV-msyn-congr-mij-ma-FAIL.yaml               \
 	DEV-msyn-dates-FAIL.yaml                      \
