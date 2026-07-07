@@ -2287,10 +2287,11 @@ REMOVE:AAttr Attr IF (0 Nom LINK -1 COPULAS)(*1 Inf BARRIER S-BOUNDARY OR VERB O
   
 REMOVE (Actor Nom)(-1C Nom)(0 Attr LINK 1 N) ; 
 
-REMOVE PrfPrc (0 Actio LINK NOT *-1 COPULAS BARRIER VERB)(1 N) (NEGATE -1 ("ij" Neg Ind)) (NEGATE -1 Num LINK 1 PrfPrc LINK 1 (N Pl Nom)) (NEGATE -1 Num LINK 1 PrfPrc LINK 1 N) ;
+REMOVE PrfPrc (0 Actio LINK NOT *-1 COPULAS BARRIER VERB)(1 N) (NEGATE -1 ("ij" Neg Ind)) (NEGATE -1 Num LINK 1 PrfPrc LINK 1 (N Pl Nom)) (NEGATE -1 Num LINK 1 PrfPrc LINK 1 N) (NEGATE 1 (N Nom));
 	## Dåppe buktin suv lusi gállnam ålmmåv guoddemlátjo nanna vällahime.
 	#$GRAM Åvdås gå stiebila båhtin, de juolgen gábmaga, tjátjega majt dállit lidna suojnij gå ij {galggam} guobájt, valla beri rihtso juolgij.
 	#$ Hähkkat gånågis Nebukadnessar goavgeda badjánij, ja gatjáj rádevaddijstis: Ejma gus gålmmå {tjanáduvvam} ålmmå dållåj bálkesta?
+	#$ Valla {válldum} áhkásj mårås dassta, mij väráldij gullu, gåktu ålmmåsis vuogas la.
 
 REMOVE (A Attr) IF (1 CC)(2 N)(NEGATE 2 (A Attr)) (NEGATE 2 PrfPrc LINK *1 N BARRIER NPNH);
 	## ...jus doaimma ovttadagat sihke fágalaččat ja lágideami bokte leat...
@@ -3767,9 +3768,10 @@ SELECT Nom IF (-1 COMMA OR CC LINK -1 Po LINK -1 Gen LINK *-1 Po BARRIER NPNH LI
 # Nominative in sentence fragments
 # --------------------------------
 
-SELECT Nom IF (NEGATE *-1 Pr OR V)(0 Gen LINK NOT 0 Num)(NEGATE *1 Po OR V) (NEGATE 1 (N Sg Nom));
+SELECT Nom IF (NEGATE *-1 Pr OR V)(0 Gen LINK NOT 0 Num)(NEGATE *1 Po OR V) (NEGATE 1 (N Sg Nom)) (NEGATE 0 (V Sg3) LINK *-1 (Sg Nom) BARRIER NOT-ADV-PCLE);
 	## Sjokoláda ja næjtso
     ##GRAM Guokta gusá fiekse.
+    #$GRAM Vuoj didjij, stardigis bárne, Härrá hoallá.
 
 SELECT ("millijåvnnå" Num Sg Gen) IF (-1 Num) (1 ("kråvnnå" Sg Gen)) ;
 	## GRAM 50 milliåvnå kråvnå
@@ -4243,7 +4245,9 @@ SELECT Pl3 IF (*-1 (Pron Pers Pl3 Nom) BARRIER (N Nom));
 	## Sij le jåhtemin.
 
 SELECT Sg2 IF (*1 (Pron Pers Sg2 Nom) BARRIER N);
-SELECT Sg3 IF (*1 (Pron Pers Sg3 Nom) BARRIER N);
+SELECT Sg3 IF (*1 (Pron Pers Sg3 Nom) BARRIER N) (NEGATE 0 N LINK -1 (A Attr));
+	#$GRAM Goappátja lijkkujin ådå vuogijt gæhttjalit
+
 SELECT Pl3 IF (*1 (Pron Pers Pl3 Nom) BARRIER N);
 	## -Man huohppelasj la dån Tore, javlaj Ámmá munji. 
     
