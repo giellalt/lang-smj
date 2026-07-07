@@ -225,6 +225,7 @@ LIST Der/geahtes = Der/geahtes ;
 LIST Der/gielat = Der/gielat ;
 LIST !better: = !better: ;
 LIST Der/NuA = Der/NuA ;
+LIST Der/AAdv = Der/AAdv ;
 
 LIST Der/h = Der/h ;
 LIST Der/heapmi = Der/heapmi ;
@@ -256,8 +257,6 @@ LIST Der/jagáš = Der/jagáš ;
 LIST Der/jahkásaš = Der/jahkásaš ;
 LIST Der/diibmosaš = Der/diibmosaš ;
 LIST Der/at = Der/at ;
-LIST Der/AAdv = Der/AAdv ;
-
 
 LIST Der/Dimin = Der/Dimin ;
 LIST Der/viđá = Der/viđá ;
@@ -1650,6 +1649,7 @@ LIST &msyn-congr-ma-mij+verb = &msyn-congr-ma-mij+verb;
 LIST &msyn-l-not-la = &msyn-l-not-la ;
 LIST &msyn-liehket-congr-condsg2-condpl3 = &msyn-liehket-congr-condsg2-condpl3 ; 
 LIST &msyn-mij-gut = &msyn-mij-gut ;
+LIST &msyn-adjective-adverb =&msyn-adjective-adverb ;
 LIST &msyn-gut-mij = &msyn-gut-mij ;
 LIST &msyn-nom-gen-Po = &msyn-nom-gen-Po ;
 LIST &msyn-dates-month-from-nom-to-gen = &msyn-dates-month-from-nom-to-gen ;
@@ -6034,8 +6034,6 @@ ADDRELATION ($3 LEFT) (V &lex-oahpasmuvvat-oahpastuvvat) OR ("oahpásmuvvat" V) 
 ADDRELATION ($3 RIGHT) (V &lex-oahpasmuvvat-oahpastuvvat) OR ("oahpásmuvvat" V) TO (*1 (Dem &lex-oahpasmuvvat-oahpastuvvat));
 
 
-
-
 #    # numeral + ill to com when oahpástuvvat  #only when correct illative-numphrase
 #    #--------------------------------------
 #
@@ -6076,6 +6074,54 @@ ADDRELATION ($3 RIGHT) (V &lex-oahpasmuvvat-oahpastuvvat) OR ("oahpásmuvvat" V)
 
 
 SUBSTITUTE (&lex-oahpasmuvvat-oahpastuvvat) (co&lex-oahpasmuvvat-oahpastuvvat) TARGET (SUGGEST);
+
+    # adjective to adverb
+    # ===================================================================================================
+    # ===================================================================================================
+    # ===================================================================================================
+
+ADD:xmsyn-adjective-adverb (&msyn-adjective-adverb) TARGET (A Sg Nom) OR (A Attr) IF (1 PrfPrc)
+(NEGATE 1 ("liehket") OR ("årrot") OR ("sjaddat"))
+(NEGATE 1 (Neg Sg3) LINK 1 ("liehket" ConNeg) OR ("liehket" Sg3) OR ("liehket" Prs Sg2)) 
+(NEGATE 1 (V <spelled>))
+(NEGATE 1 N)
+(NEGATE 1 PrfPrc LINK 1 N)
+(NEGATE 0 N)
+(NEGATE 0 (Pl Nom) LINK 1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3))
+(NEGATE 0 Err/SpaceCmp)
+(NEGATE 0 Pron)
+(NEGATE 0 Ord)
+(NEGATE 0 ("heva") LINK 1 (V PrfPrc))
+(NEGATE *-1 ("liehket") BARRIER S-BOUNDARY OR VFIN) ;
+
+COPY:msyn-adjective-adverb (Der/AAdv Adv SUGGEST) EXCEPT (Sg Nom &msyn-adjective-adverb) OR (Attr &msyn-adjective-adverb) TARGET (A &msyn-adjective-adverb) ; #LINDA HELP
+
+COPY:msyn-adjective-adverb ("buoragit" Adv SUGGEST) EXCEPT ("buorre" A Sg Nom &msyn-adjective-adverb) TARGET ("buorre" &msyn-adjective-adverb) ; #LINDA HELP
+
+	## dat la {buorre} åvddånahtedum
+
+ADD:xmsyn-adjective-adverb (&msyn-adjective-adverb) TARGET (A Sg Nom) OR (A Attr) IF (1 V) 
+(NEGATE 1 ("liehket") OR ("årrot") OR ("sjaddat"))
+(NEGATE 1 (Neg Sg3) LINK 1 ("liehket" ConNeg) OR ("liehket" Sg3) OR ("liehket" Prs Sg2)) 
+(NEGATE 1 (V <spelled>))
+(NEGATE 1 N)
+(NEGATE 1 PrfPrc LINK 1 N)
+(NEGATE 0 Err/SpaceCmp)
+(NEGATE 0 N)
+(NEGATE 0 (A Pl Nom) LINK 1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3))
+(NEGATE 0 Pron)
+(NEGATE 0 Ord)
+(NEGATE 0 ("heva") LINK 1 (V PrfPrc))
+(NEGATE *-1 ("liehket") BARRIER S-BOUNDARY OR VFIN) ;
+
+COPY:msyn-adjective-adverb (Der/AAdv Adv SUGGEST) EXCEPT (Sg Nom &msyn-adjective-adverb) OR (Sg Acc &msyn-adjective-adverb) OR (Sg Gen &msyn-adjective-adverb) OR (Pl Acc &msyn-adjective-adverb) OR (Sg Gen &msyn-adjective-adverb)TARGET (A &msyn-adjective-adverb) (NEGATE 0 ("buorre")) (NEGATE 0 Der/Comp) ;
+
+COPY:msyn-adjective-adverb (Der/AAdv Adv SUGGEST) EXCEPT (Sg Nom &msyn-adjective-adverb) OR (Sg Acc &msyn-adjective-adverb) OR (Sg Gen &msyn-adjective-adverb) OR (Pl Acc &msyn-adjective-adverb) OR (Sg Gen &msyn-adjective-adverb) TARGET (A Der/Comp &msyn-adjective-adverb) ;
+
+	## Mij buorebu viesojma
+
+
+
 
 
     # Verbform errors
