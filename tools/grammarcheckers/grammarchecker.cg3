@@ -3164,6 +3164,20 @@ ADD:xsyn-missing-copula (&syn-missing-copula) TARGET (Gram/3syll Actio Nom) OR (
 (NEGATE *1 (A Sg Nom) BARRIER NOT-ADV LINK *0 BE + Sg3 OR BECOME + Sg3 BARRIER S-BOUNDARY)  
 (NEGATE *1 (A Nom) OR (Pron Indef Nom) BARRIER NOT-ADV LINK NOT 0 Attr OR (V Ind) OR Adv OR Po OR (Gram/TAbbr) LINK 1 ("liehket")) ;
 
+  	## Bálges buorak.   
+    #$ gålldåsámij árbbedábálasj viessomvuohke gássjel sjattaj .
+    #$ Árranin la årrum giellaguovdásj moadda jage   
+    
+    
+
+    # A nom-inf = missing copula 
+    #-----------------------------------------------
+    
+ADD:xsyn-missing-copula (&syn-missing-copula) TARGET (A Sg Nom) IF (1 Inf) (NEGATE -1 ("liehket") OR ("sjaddat") OR ("årrot")) (NEGATE 1 ("liehket")) ;
+
+	## Hávsske vuojnnet duv
+	## Suohtas låhkåt girjev
+
 
 ADDCOHORT  ("<la>" "liehket" Ind Prs Sg3 ADDED &syn-missing-copula) AFTER &syn-missing-copula (NEGATE 0 ADDED OR ("<.*[aeiouáå]>"r));
 ADDRELATION ($2 RIGHT) (N &syn-missing-copula) TO (1 (ADDED)) ;      
@@ -3174,9 +3188,11 @@ ADDRELATION ($2 RIGHT) (N &syn-missing-copula) TO (1 (ADDED)) ;
 ADDCOHORT  ("<li>" "liehket" Ind Prs Pl3 ADDED &syn-missing-copula) AFTER &syn-missing-copula IF (0 (N Pl Nom) LINK *1 (A Pl Nom) BARRIER NOT-ADV) (NEGATE 0 ADDED);
 ADDRELATION ($2 RIGHT) (N &syn-missing-copula) TO (1 (ADDED)) ; 
    
-    ## Bálges buorak.   
-    #$ gålldåsámij árbbedábálasj viessomvuohke gássjel sjattaj .
-    #$ Árranin la årrum giellaguovdásj moadda jage   
+  
+
+
+
+
 
     
     # Gus, missing and word order
