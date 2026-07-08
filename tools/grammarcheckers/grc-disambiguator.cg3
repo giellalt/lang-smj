@@ -2215,6 +2215,10 @@ SELECT (A Attr) IF (-1 V-NOT-AUX OR N)(*1 N BARRIER (*) - (A Attr) LINK NOT 0 VF
 	#$GRAM Nammadit gålmmå ájrrasa {gudát} ájrrasijs Finnmárkoåbmudahkaj mij háldat ednamijt ja resursajt Finnmárkon finnmárkolága milta.
 	## Oahpásmuvvat oanes suohtas pruvsájn ja vájkkudusáj ma li anon
 
+SELECT (A Attr) IF (1 A) (NEGATE 0 Gen LINK 1 Po) ;
+	## GRAM de viertti liehket {ienep} tjadádahtte 
+	#$GRAM Vájku Vuodna lij Svieriga siegen
+
 REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NEGATE 1 N)(NEGATE 0 ATTR-A-S);
 #REMOVE Attr IF (0 (Prop Nom) OR (Prop Gen))(NEGATE 1 A LINK *1 N BARRIER NOT-ADJ);
 	#$GRAM
@@ -2275,9 +2279,10 @@ SELECT (A Attr) IF (*-1 (Dem Ess) BARRIER NPNH)(*1 (N Ess) BARRIER NPNH) (NEGATE
 	# Other attribute rules
 	# ---------------------
 
-REMOVE:AAttr Attr IF (0 Nom LINK -1 COPULAS)(*1 Inf BARRIER S-BOUNDARY OR VERB OR N);
+REMOVE:AAttr Attr IF (0 Nom LINK -1 COPULAS)(*1 Inf BARRIER S-BOUNDARY OR VERB OR N) (NEGATE 1 (A Nom));
 	#$ Bierita mielas la suohtas muohtavuojánav tjuovvot.
 	#$ Hæhkkat giehpesvihke jali dahpaldahka mij gájbbet oksygenviehkev soajttá {værámus} dilijn sjaddat.
+	#$ GRAM: de viertti liehket {ienep} tjadádahtte 
 
 # This whole chapter is taken from sme, and should be revised.
 # The rules in question have sme examples.
@@ -2553,7 +2558,7 @@ REMOVE (A Attr) IF (-1 COPULAS)(0 Nom)(1C (Pron Interr));
 REMOVE VFIN IF (*-1 COPULAS BARRIER NOT-ADV-INDEF)(0 Attr)(1 N OR EOS);
 	## Joddu suhppejuvvo go doaris lea gárvvis.	
 
-SELECT A IF (*-1 COPULAS BARRIER NOT-ADV-INDEF)(NEGATE 0 VERB OR Ord OR N) (1 N OR EOS)(NEGATE 0 Adv LINK 1 Adv);
+SELECT A IF (*-1 COPULAS BARRIER NOT-ADV-INDEF)(NEGATE 0 VERB OR Ord OR N) (1 N OR EOS)(NEGATE 0 Adv LINK 1 Adv) ;
 	## ...de dilli orru leamen earalágan.
 	#$GRAM Dan biejve, Härrá Sebaot hoallá, galggá návlle mij lij {tjavgga} gitta luovvanit; doaddjut ja gahttjat, ja gájkka ma danna lidjin smållånit.
 
