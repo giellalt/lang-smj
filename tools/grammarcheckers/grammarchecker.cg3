@@ -3180,7 +3180,15 @@ ADD:xsyn-missing-copula (&syn-missing-copula) TARGET (Gram/3syll Actio Nom) OR (
     # A nom-inf = missing copula 
     #-----------------------------------------------
     
-ADD:xsyn-missing-copula (&syn-missing-copula) TARGET (A Sg Nom) IF (1 Inf) (NEGATE -1 ("liehket") OR ("sjaddat") OR ("årrot")) (NEGATE 1 ("liehket")) ;
+ADD:xsyn-missing-copula (&syn-missing-copula) TARGET (A Sg Nom) IF (1 Inf) 
+(NEGATE *-1 ("liehket") OR ("sjaddat") OR ("årrot") OR ("soajttet") BARRIER NOT-NPMODADVPCLE - Ine - Ill - Ela - Com ) 
+(NEGATE -1 CS)
+(NEGATE -1 Adv)
+(NEGATE 1 TV LINK -1 (A Sg Nom) LINK -1 Acc LINK -1 ("liehket")) #gåktu le CV:av máhttelis dahkat ja tjállet.
+(NEGATE -1 CC)
+(NEGATE *1 ("liehket") OR ("sjaddat") OR ("årrot") OR ("soajttet") BARRIER NOT-ADV-PCLE)
+(NEGATE 1 Sup)
+(NEGATE -1 CC LINK -1 (A Sg Nom)) ;
 
 	## Hávsske vuojnnet duv
 	## Suohtas låhkåt girjev
