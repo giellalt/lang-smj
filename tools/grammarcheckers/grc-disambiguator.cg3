@@ -1473,8 +1473,10 @@ SELECT (Der/InchL PrfPrc) IF (0 N) ;
 
 REMOVE VFIN (0 ("vilpástalle" Nom) LINK *-1 BOC BARRIER NP-HEAD-NOM)(*1 VFIN BARRIER S-BOUNDARY) ; 
 
-REMOVE (V Sg3) IF (0 (N Ela) LINK -1 (Dem Sg Gen) OR (Dem Sg Ill Attr) OR (Dem Sg Ine Attr)) ; 
+REMOVE (V Prs Sg3) IF (0 (N Ela) LINK -1 (Dem Sg Gen) OR (Dem Sg Ill Attr) OR (Dem Sg Ine Attr)) ; 
 	##GRAM  gávnnam diehti sáme bájkkenamájt dán {guovlos}.
+
+REMOVE (V Prs Sg3) IF (0 (N Ine) LINK -1 (Dem));
 
 #REMOVE VFIN (*-1 MO)(1C VFIN);
 
@@ -3683,7 +3685,7 @@ REMOVE (Sg Nom) IF (NEGATE *-1 ("ja") OR COMMA BARRIER NOT-AA LINK -1 Nom)(0 (Pl
 	#$Gram Åhpadiddje gudi lij dibddám oahppijt ságastallamav jådedit, li åtsådallam oahppe {le} ålov oahppam.
 	#$GRAM Ja dunji le dárbbo – danen gå dat le muv garra miella vaj tuvsán tjalmme dahki mijáv tuvsán gärddáj gievrabu
 	
-SELECT Pl (0 Sg LINK 0 N OR (Pron Pers))(*1C (Pron Rel Pl) BARRIER WORD) (NEGATE 0 (Sg Ill));
+SELECT Pl (0 Sg LINK 0 N OR (Pron Pers))(*1C (Pron Rel Pl) BARRIER WORD) (NEGATE 0 (Sg Ill)) (NEGATE 0 Coll);
 	## Allit fásstudattijn hådjen vuojnnu nåv gåk vilpástalle, gudi tsusskaha fásstudi almatjij vuojnedijn. 
 	#$ GRAM Surggojuogos la unna juogos vidájn gitta gávtse {sebrulattjaj} gudi gávnadi juogadittjat ájádusájt ja dåbdojt birra gåktu l masset lagámusáv.
     
