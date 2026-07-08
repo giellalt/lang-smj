@@ -6112,14 +6112,15 @@ SUBSTITUTE (&lex-oahpasmuvvat-oahpastuvvat) (co&lex-oahpasmuvvat-oahpastuvvat) T
     # ===================================================================================================
 
 ADD:xmsyn-adjective-adverb (&msyn-adjective-adverb) TARGET (A Sg Nom) OR (A Attr) IF (1 PrfPrc)
-(NEGATE 1 ("liehket") OR ("årrot") OR ("sjaddat"))
+(NEGATE 1 ("liehket") OR ("årrot") OR ("sjaddat") OR ("soajttet"))
 (NEGATE 1 (Neg Sg3) LINK 1 ("liehket" ConNeg) OR ("liehket" Sg3) OR ("liehket" Prs Sg2)) 
 (NEGATE 1 (V <spelled>))
 (NEGATE 1 N)
-(NEGATE 1 PrfPrc LINK 1 N)
+(NEGATE 1 PrfPrc LINK *1 N BARRIER NOT-NPMOD)
 (NEGATE 0 (A Sg Nom) LINK *1 (V Sg3) BARRIER NOT-ADV-PCLE) 
 (NEGATE 0 Adv)
 (NEGATE 0 N)
+(NEGATE 0 ("luovas"))
 (NEGATE 0 (A Sg Ela))
 (NEGATE 0 (Pl Nom) LINK 1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3))
 (NEGATE 0 Err/SpaceCmp)
@@ -6127,21 +6128,23 @@ ADD:xmsyn-adjective-adverb (&msyn-adjective-adverb) TARGET (A Sg Nom) OR (A Attr
 (NEGATE 0 Ord)
 (NEGATE 0 ("heva") LINK 1 (V PrfPrc))
 (NEGATE *-1 ("liehket") BARRIER S-BOUNDARY OR VFIN - ("soajttet" Prs Sg3))
-(NEGATE *-1 ("sjaddat") BARRIER NOT-ADV-PCLE) ;
+(NEGATE *-1 ("sjaddat") OR ("årrot") OR  ("soajttet") BARRIER NOT-ADV-PCLE) ;
 
 COPY:msyn-adjective-adverb (Der/AAdv Adv SUGGEST) EXCEPT (Sg Nom &msyn-adjective-adverb) OR (Attr &msyn-adjective-adverb) TARGET (A &msyn-adjective-adverb) ; #LINDA HELP
 
 ADD:xmsyn-adjective-adverb (&msyn-adjective-adverb) TARGET (A Sg Nom) OR (A Attr) IF (1 V) 
-(NEGATE 1 ("liehket") OR ("årrot") OR ("sjaddat"))
+(NEGATE 1 ("liehket") OR ("årrot") OR ("sjaddat") OR ("soajttet"))
 (NEGATE 1 (Neg Sg3) LINK 1 ("liehket" ConNeg) OR ("liehket" Sg3) OR ("liehket" Prs Sg2)) 
 (NEGATE 1 (V <spelled>))
 (NEGATE 1 N)
-(NEGATE 1 PrfPrc LINK 1 N)
+(NEGATE 1 A)
+(NEGATE 1 PrfPrc LINK *1 N BARRIER NOT-NPMOD)
 (NEGATE 0 (A Sg Nom) LINK NOT 0 Der/Comp OR Der/Superl LINK *1 (V Sg3) BARRIER NOT-ADV-PCLE ) 
 (NEGATE -1 Ela LINK *1 (Der/Comp A Sg Nom) BARRIER NOT-ADV-PCLE LINK *1 (V Sg3) BARRIER NOT-ADV-PCLE ) # Valla mujsta gievrap boahtá
 (NEGATE 0 Adv)
 (NEGATE 0 Err/SpaceCmp)
 (NEGATE 0 N)
+(NEGATE 0 ("luovas"))
 (NEGATE 0 (A Sg Ela))
 (NEGATE 0 (A Pl Nom) LINK 1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3))
 (NEGATE 0 Pron)
@@ -6149,7 +6152,9 @@ ADD:xmsyn-adjective-adverb (&msyn-adjective-adverb) TARGET (A Sg Nom) OR (A Attr
 (NEGATE 0 ("heva") LINK 1 (V PrfPrc))
 (NEGATE *-1 ("liehket") BARRIER S-BOUNDARY OR VFIN - ("soajttet" Prs Sg3))
 (NEGATE -1 CC OR COMMA LINK -1 (A Nom) LINK *-1 ("liehket") BARRIER S-BOUNDARY OR VFIN - ("soajttet" Prs Sg3))
-(NEGATE *-1 ("sjaddat") BARRIER NOT-ADV-PCLE) ;
+(NEGATE *-1 ("sjaddat") OR ("årrot") OR  ("soajttet") BARRIER NOT-ADV-PCLE) 
+(NEGATE *-1 ("liehket") BARRIER S-BOUNDARY LINK -1 Nom) 
+(NEGATE *-1 Nom BARRIER S-BOUNDARY LINK -1 ("liehket")) ;
 
 
 
