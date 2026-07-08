@@ -6174,9 +6174,38 @@ COPY:msyn-adjective-adverb (Ex/A Gram/Comp Der/AAdv Adv SUGGEST) EXCEPT (A Gram/
 
 	## Valla ittjiv mån dan niego birra bárep usjudalá
 
-ADD:xmsyn-adjective-nom-acc (&msyn-adjective-nom-acc) TARGET (A Sg Nom) IF (1 (TV)) (NEGATE 1 N) ;
+ADD:xmsyn-adjective-nom-acc (&msyn-adjective-nom-acc) TARGET (A Sg Nom) IF (1 (TV)) 
+(NEGATE 1 N) 
+(NEGATE *-1 ("liehket") OR ("sjaddat") OR ("årrot") OR ("soajttet") BARRIER NOT-NPMODADVPCLE)
+(NEGATE -1 N OR (Actio Nom) OR PrfPrc)
+(NEGATE -1 CC)
+(NEGATE *2 Acc BARRIER NOT-NPMOD)
+(NEGATE *-1 ("liehket") BARRIER S-BOUNDARY LINK -1 Nom) 
+(NEGATE *-1 Nom BARRIER S-BOUNDARY LINK -1 ("liehket"))
+(NEGATE 0 Adv)
+(NEGATE 0 Err/SpaceCmp)
+(NEGATE 0 N)
+(NEGATE 0 Pron)
+(NEGATE 0 Ord)
+(NEGATE 0 ("luovas"))
+(NEGATE 0 (A Sg Ela))
+(NEGATE 0 (A Sg Nom) LINK NOT 0 Der/Comp OR Der/Superl LINK *1 (V Sg3) BARRIER NOT-ADV-PCLE ) 
+(NEGATE 0 (A Pl Nom) LINK 1 (V Pl1) OR (V Pl2) OR (V Pl3) OR (V Du1) OR (V Du2) OR (V Du3)) ;
 
-ADD:xmsyn-adjective-nom-acc (&msyn-adjective-nom-acc) TARGET (A Sg Nom) IF (-1 (TV)) (NEGATE 1 N) ;
+ADD:xmsyn-adjective-nom-acc (&msyn-adjective-nom-acc) TARGET (A Sg Nom) IF (-1 (TV)) 
+(NEGATE 1 N)
+(NEGATE *1 ("liehket") OR ("sjaddat") OR ("årrot") OR ("soajttet") BARRIER NOT-ADV-PCLE)
+(NEGATE 0 Adv)
+(NEGATE 1 CC LINK *1 A BARRIER NOT-ADV LINK *1 Acc BARRIER NOT-NPMOD)
+(NEGATE 1 CC LINK 1 Gen LINK 1 Acc)
+(NEGATE 0 Err/SpaceCmp)
+(NEGATE 0 N)
+(NEGATE 0 Pron)
+(NEGATE 0 Ord)
+(NEGATE 0 ("luovas"))
+(NEGATE 0 (A Sg Ela))
+(NEGATE 0 Der/Comp LINK *-1 MOD-ASP BARRIER NOT-ADV-PCLE)
+(NEGATE -1 N OR (Actio Nom) OR PrfPrc) ;
 
 COPY:msyn-adjective-nom-acc (Acc SUGGEST) EXCEPT (Nom &msyn-adjective-nom-acc) TARGET (A &msyn-adjective-nom-acc) ;
 	## Suohkan ienep diehtá
