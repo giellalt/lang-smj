@@ -2868,13 +2868,13 @@ SELECT (Ind Sg3) IF (NEGATE -1 V)(1 CC LINK *1 (Ind Sg3) BARRIER NOT-ADV);
 	## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj:
 	## Valla Johannes nádoj ja javlaj:
 
-SELECT (N Pl Nom) IF (NEGATE *-1 (Pl Nom) BARRIER S-BOUNDARY2)(NOT 0 CC OR Po)(NEGATE 0 Gen LINK 1 Po)(*1 (Ind Pl3) BARRIER NP-BOUNDARY OR (Pl Nom) OR COMMA LINK NEGATE 0 Sg3) (NEGATE 0 Pron)(NEGATE *1 N BARRIER (*) - Attr) (NEGATE -1 Num);
+SELECT (N Pl Nom) IF (NEGATE *-1 (Pl Nom) BARRIER S-BOUNDARY2)(NOT 0 CC OR Po)(NEGATE 0 Gen LINK 1 Po OR N)(NEGATE 0 Gen LINK 1 CC LINK 1 Gen)(*1 (Ind Pl3) BARRIER NP-BOUNDARY OR (Pl Nom) OR COMMA LINK NEGATE 0 Sg3) (NEGATE 0 Pron)(NEGATE *1 N BARRIER (*) - Attr) (NEGATE -1 Num);
 	## Valla stádaj årro dav gullájin.
 	#$ Ja gåktu de manáj dáj guoktásijn {ma} galggin dunnuv viedtjat?
 	#$GRAM Jus buohtastahttep dán {nuorttasáme} Ådå Testamentajn de le danna 11, 4 % OV ja 88,6 % VO.
     #$ GRAM Guoktalågev {sáme} gatjádaláduvvin sijá äjgádij viessomvuoge ja biebmo birra 50-70 jage dán åvddåla (Oasseåtsålvis 1).
     
-SELECT (N Pl Nom) IF (NEGATE *-1 (Pl Nom) BARRIER S-BOUNDARY2)(NOT 0 CC OR Po)(NEGATE 0 Gen LINK 1 Po)(*-1 (Ind Pl3) BARRIER NP-BOUNDARY OR (Pl Nom) OR COMMA LINK NEGATE 0 Sg3) (NEGATE 0 Pron)(NEGATE *1 N BARRIER (*) - Attr);
+SELECT (N Pl Nom) IF (NEGATE *-1 (Pl Nom) BARRIER S-BOUNDARY2)(NOT 0 CC OR Po)(NEGATE 0 Gen LINK 1 Po OR N)(NEGATE 0 Gen LINK 1 CC LINK 1 Gen)(*-1 (Ind Pl3) BARRIER NP-BOUNDARY OR (Pl Nom) OR COMMA LINK NEGATE 0 Sg3) (NEGATE 0 Pron)(NEGATE *1 N BARRIER (*) - Attr);
 	##GRAM: Dille, mij guosská åhpadiddjijda, la buorránam, valla vájlluji {åhpadiddje} gænna la dagu ieŋŋilsgiella fáhkan, javllá Skjelnes.
 
 
@@ -3749,11 +3749,12 @@ SELECT (N Sg Nom) IF (*-1 Rel BARRIER NPNH)(*1 V-SG3 BARRIER NOT-ADV-PCLE LINK *
 #REMOVE (N Sg Gen) IF (*-1 BOS OR CS BARRIER NPNH)(1 (V Ind Pl3) LINK NOT 0 Imprt OR ImprtII);
 	## dan dihti go profehta le náv tjállám.
 
-REMOVE (N Sg Gen) IF (*-1 BOS OR CS BARRIER (Pron Pers Du1))(0 (N Pl Nom))(*1 (V Ind Pl3) BARRIER S-BOUNDARY2 LINK NOT 0 Imprt OR ImprtII OR Sg3 OR Sg2) (NEGATE -1 Num) (NEGATE 1 (Ord Attr)) (NEGATE -1 (Dem Acc) LINK 2 (N Acc));
+REMOVE (N Sg Gen) IF (*-1 BOS OR CS BARRIER (Pron Pers Du1))(0 (N Pl Nom))(*1 (V Ind Pl3) BARRIER S-BOUNDARY2 LINK NOT 0 Imprt OR ImprtII OR Sg3 OR Sg2) (NEGATE -1 Num) (NEGATE 1 (Ord Attr)) (NEGATE -1 (Dem Acc) LINK 2 (N Acc))(NEGATE 0 Sem/Time LINK -1 Ord);
 	#$ GRAM {Suohkana} mielas le dákkir rádnastallam viehka ájnas.
     #$ GRAM Guoktalågev {sáme} gatjádaláduvvin sijá äjgádij viessomvuoge ja biebmo birra 50-70 jage dán åvddåla (Oasseåtsålvis 1).
 	## Maŋŋela de doarroåjvijs guoktásav ietjas lusi gåhtjoj ja javlaj: Gähttje vaj guoktatjuohte doarroålmmå {ijá} goalmát tijma rájes li gárvvása Caesareaj vuolgátjit 
 	#$ GRAM Oahppe javlli juohkka bále dav {vahkkobiejve} namáv
+	#$ Buorre l dat vuostasj ijá, måjut boargál, älla ham oadtjum ienebujt ietjá sajijn.
 
 # N Sg Ill = N Pl Com
 # ------------------- 
