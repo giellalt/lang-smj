@@ -6503,7 +6503,7 @@ COPY:msyn-dem-noun-nom (Sg Nom SUGGEST) EXCEPT (Sg Gen) OR (Sg Acc) OR (Sg Ine) 
 COPY:msyn-dem-noun-nom (Pl Nom SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) OR (Sg Ine) OR (Sg Ill) OR (Sg Ela) OR (Sg Ela Sh) OR (Sg Par) OR (Sg Com) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Gen) OR (Pl Acc) OR (Pl Ine) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-nom) - SUGGEST IF (*1 (N Pl Nom) BARRIER NOT-NPMOD-WITHOUT-NUM);
 
 	#Gen
-ADD:xmsyn-dem-noun-gen (&msyn-dem-noun-gen) TARGET Dem - SUGGEST IF (*1 (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM  - (Dem Acc)) 
+ADD:xmsyn-dem-noun-gen (&msyn-dem-noun-gen) TARGET Dem - SUGGEST IF (*1 (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM  - (Dem Acc) LINK NEGATE p PrfPrc LINK p N) # looking at complex attributes to a noun phrase
 (NEGATE -1 Dem LINK *2 (N Sg Gen) OR (N Pl Nom) OR (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (N Ela))
 (NEGATE 1 Dem LINK *1 (N Sg Gen) OR (N Pl Nom) OR (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (N Ela))
 (NEGATE -1 (V TV) LINK 1 (Dem Acc))
@@ -6630,7 +6630,7 @@ COPY:msyn-dem-noun-acc (Pl Acc SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Ine) 
 
 
 	#ine
-ADD:xmsyn-dem-noun-ine (&msyn-dem-noun-ine) TARGET Dem - SUGGEST IF (*1 (N Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+ADD:xmsyn-dem-noun-ine (&msyn-dem-noun-ine) TARGET Dem - SUGGEST IF (*1 (N Ine) BARRIER NOT-NPMOD-WITHOUT-NUM LINK NEGATE p PrfPrc LINK p N) 
 #(NEGATE -2 (N Pl Nom) LINK 1 CC LINK 1 (Dem Pl Gen) LINK *1 (N Pl Ine) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE -1 (V TV) LINK 1 (Dem Acc))
 (NEGATE 0 (Dem Sg) LINK -1  ("liehket" ConNeg) LINK -1 (Neg Sg3))
@@ -6676,7 +6676,8 @@ COPY:msyn-dem-noun-ine (Sg Gen SUGGEST) EXCEPT (Sg Nom) OR (Sg Acc) OR (Sg Ill) 
 COPY:msyn-dem-noun-ine (Pl Ine SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) OR (Sg Ill) OR (Sg Ela) OR (Sg Ela Sh) OR (Sg Par)  OR (Sg Com) OR (Sg Ela Attr) OR (Sg Ine Attr) OR (Sg Ill Attr) OR (Pl Gen) OR (Pl Ela) OR (Pl Ill) OR (Pl Com) TARGET (Dem &msyn-dem-noun-ine) - SUGGEST IF (*1 (N Pl Ine) BARRIER NOT-NPMOD-WITHOUT-NUM);
 
 	#ill
-ADD:xmsyn-dem-noun-ill (&msyn-dem-noun-ill) TARGET Dem - SUGGEST IF (*1 (N Ill) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+	
+ADD:xmsyn-dem-noun-ill (&msyn-dem-noun-ill) TARGET Dem - SUGGEST IF (*1 (N Ill) BARRIER NOT-NPMOD-WITHOUT-NUM LINK NEGATE p PrfPrc LINK p N) 
 (NEGATE -1 (V TV) LINK 1 (Dem Acc))
 (NEGATE 0 (Dem Sg) LINK -1  ("liehket" ConNeg) LINK -1 (Neg Sg3))
 (NEGATE 0 (Dem Pl) LINK -1 ("liehket" Neg Pl3))
@@ -6729,7 +6730,7 @@ COPY:msyn-dem-noun-ine (Pl Ill SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) 
 
 
 	#Ela
-ADD:xmsyn-dem-noun-ela (&msyn-dem-noun-ela) TARGET Dem - SUGGEST IF (*1 (N Ela) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+ADD:xmsyn-dem-noun-ela (&msyn-dem-noun-ela) TARGET Dem - SUGGEST IF (*1 (N Ela) BARRIER NOT-NPMOD-WITHOUT-NUM LINK NEGATE p PrfPrc LINK p N) 
 (NEGATE -1 (V TV) LINK 1 (Dem Acc))
 (NEGATE 0 (Dem Pl) LINK -1 ("liehket" Neg Pl3))
 (NEGATE 0 (Dem Pl) LINK -1  ("liehket" ConNeg) LINK -1 (Neg Du3))
@@ -6781,7 +6782,7 @@ COPY:msyn-dem-noun-ela (Pl Ela SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) 
 COPY:msyn-dem-noun-ela (Pl Ela SUGGEST) EXCEPT (Sg Ela Sh) TARGET (Dem Sh &msyn-dem-noun-ela) - SUGGEST IF (*1 (N Pl Ela) BARRIER NOT-NPMOD-WITHOUT-NUM - Gen - (Pl Nom));
 
 	#Com
-ADD:xmsyn-dem-noun-com (&msyn-dem-noun-com) TARGET Dem - SUGGEST IF (*1 (N Com) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+ADD:xmsyn-dem-noun-com (&msyn-dem-noun-com) TARGET Dem - SUGGEST IF (*1 (N Com) BARRIER NOT-NPMOD-WITHOUT-NUM LINK NEGATE p PrfPrc LINK p N) 
 (NEGATE -1 (V TV) LINK 1 (Dem Acc))
 (NEGATE 0 (Dem Sg) LINK -1  ("liehket" ConNeg) LINK -1 (Neg Sg3))
 (NEGATE 0 (Dem Pl) LINK -1 ("liehket" Neg Pl3))
