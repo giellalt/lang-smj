@@ -6436,7 +6436,7 @@ SETPARENT PrfPrc (c Ine OR Ela OR Ill OR Com) TO (1 N);
 	
 	
 	#nom
-ADD:xmsyn-dem-noun-nom (&msyn-dem-noun-nom) TARGET Dem - SUGGEST IF (*1 (N Nom) BARRIER NOT-NPMOD-WITHOUT-NUM LINK NEGATE p PrfPrc LINK p N) 
+ADD:xmsyn-dem-noun-nom (&msyn-dem-noun-nom) TARGET Dem - SUGGEST IF (*1 (N Nom) BARRIER NOT-NPMOD-WITHOUT-NUM LINK NOT 0 (Sg Gen) + Sem/Time LINK NEGATE p PrfPrc LINK p N) 
 (NEGATE -1 Dem LINK *2 (N Sg Gen) OR (N Pl Nom) - Px OR (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (N Ela)) # duot dat ...
 (NEGATE 1 Dem LINK *1 (N Sg Gen) OR (N Pl Nom) - Px OR (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (N Ela)) # duot dat ...
 (NEGATE 0 (Dem Sg Nom) OR (Dem Sg Ela Attr) LINK *1 (N Sg Nom) BARRIER NOT-NPMOD-WITHOUT-NUM) 
@@ -6453,7 +6453,7 @@ ADD:xmsyn-dem-noun-nom (&msyn-dem-noun-nom) TARGET Dem - SUGGEST IF (*1 (N Nom) 
 (NEGATE 0 (Dem Sg Gen) OR (Dem Sg Ill Attr) LINK 1 (N Pl Nom) OR (N Sg Gen)) 
 (NEGATE 0 (Dem Sg Gen) OR (Ine) OR (Ill) OR (Ela) OR (Com) LINK (*1 (N Sg Nom) BARRIER NOT-NPMOD-WITHOUT-NUM) LINK *1 (V Sg3) BARRIER NOT-ADV-PCLE)
 (NEGATE 0 (Dem Pl Gen) LINK 1 (N Pl Gen)) 
-(NEGATE 0 (Dem Acc) LINK 1 (N Gen) LINK 1 (N Acc)) #$ dáv gámá birrasav
+(NEGATE 0 (Dem Acc) LINK 1 (N Gen) LINK *1 (N Acc) BARRIER (*) - Gen - (Pl Nom) - CC) #$ dáv gámá birrasav / dáv gámá ja stárfo birrusav
 (NEGATE 0 (Dem Acc) LINK 1 (N Nom) LINK 1 (TV)) #$ dav Jubmel gárvedij
 (NEGATE 0 (Dem Acc) LINK *-1 (V TV) BARRIER NOT-ADV-PCLE)
 #(NEGATE 0 (Dem Acc) LINK *-1 TV BARRIER (*) - Adv - Pcle - Attr LINK NEGATE *2 (N Acc)  BARRIER S-BOUNDARY)
