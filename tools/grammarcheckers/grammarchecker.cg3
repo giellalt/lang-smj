@@ -6511,6 +6511,7 @@ ADD:xmsyn-dem-noun-gen (&msyn-dem-noun-gen) TARGET Dem - SUGGEST IF (*1 (N Gen) 
 (NEGATE 0 (Dem Pl) LINK -1 ("liehket" Neg Pl3))
 (NEGATE 0 (Dem Pl) LINK -1  ("liehket" ConNeg) LINK -1 (Neg Du3))
 (NEGATE 0 (Dem Sg) LINK -1  ("liehket" ConNeg) LINK -1 (Neg Sg3))
+(NEGATE 0 (Dem Nom) OR (Dem Sg Ela Attr) LINK -1 BOS) 
 (NEGATE 0 (Dem Sg Nom) LINK -1 (V Sg3) LINK NOT *-1 (N Sg Nom) OR (Pron Sg Nom) BARRIER S-BOUNDARY OR VFIN)
 (NEGATE 0 (Dem Sg Nom) LINK *1 (N Sg Gen) OR (N Pl Nom) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (N Sg Ine))
 (NEGATE 0 (Dem Sg Nom) LINK *1 (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK *1 (V Sg3) BARRIER NOT-ADV-PCLE - Ess)
@@ -6543,6 +6544,7 @@ ADD:xmsyn-dem-noun-gen (&msyn-dem-noun-gen) TARGET Dem - SUGGEST IF (*1 (N Gen) 
 (NEGATE 1 V)
 (NEGATE 1 CC OR CS)
 (NEGATE 1 ABBR)
+(NEGATE *1 (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM  - (Dem Acc) LINK *1 (V Pl3) BARRIER NOT-ADV-PCLE - Ine - Ela - Ill)
 (NEGATE *1 (N Sg Nom) BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE *1 (N <spelled>) OR (N Err/Orth) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE *1 PrfPrc BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 COMMA)
@@ -6587,7 +6589,8 @@ ADD:xmsyn-dem-noun-acc (&msyn-dem-noun-acc) TARGET Dem - SUGGEST IF (*1 (N Acc) 
 (NEGATE 0 (Dem Pl) LINK -1 ("liehket" Neg Pl3))
 (NEGATE 0 (Dem Pl) LINK -1  ("liehket" ConNeg) LINK -1 (Neg Du3))
 (NEGATE 0 (Dem Sg) LINK -1  ("liehket" ConNeg) LINK -1 (Neg Sg3))
-(NEGATE 0 (Dem Sg Nom) OR (Dem Sg Ela Attr) LINK *-1 COMMA OR BOS OR CC LINK NOT -1 N) #$ , ja dát girkkov vælggogissan dahká vuosedittjat sidodav vahágahttemav buohttit.
+(NEGATE 0 (Dem Sg Nom) OR (Dem Sg Ela Attr) LINK *-1 COMMA OR BOS) #$ ja dát girkkov vælggogissan dahká vuosedittjat sidodav vahágahttemav buohttit.
+(NEGATE 0 (Dem Sg Nom) OR (Dem Sg Ela Attr) LINK *-1 CC LINK NOT -1 N) #$ , ja dát girkkov vælggogissan dahká vuosedittjat sidodav vahágahttemav buohttit.
 (NEGATE 0 (Dem Sg Nom) LINK *-1 ("liehket" Sg3) BARRIER NOT-ADV-PCLE LINK -1 ("mij" Rel Sg Nom)) # mij la lik dát hålajt?
 (NEGATE 0 (Dem Sg Nom) LINK *1 (V Sg3) BARRIER S-BOUNDARY OR VFIN LINK 1 EOS OR COMMA OR CS) 
 (NEGATE 0 (Dem Sg Nom) LINK *1 (N Acc) BARRIER NOT-NPMOD-WITHOUT-NUM LINK *1 (V Sg3) BARRIER NOT-ADV-PCLE - Ess)
@@ -6637,7 +6640,11 @@ ADD:xmsyn-dem-noun-ine (&msyn-dem-noun-ine) TARGET Dem - SUGGEST IF (*1 (N Ine) 
 (NEGATE -1 (V TV) LINK 1 (Dem Acc))
 (NEGATE 0 (Dem Sg) LINK -1  ("liehket" ConNeg) LINK -1 (Neg Sg3))
 (NEGATE 0 (Dem Pl) LINK -1 ("liehket" Neg Pl3))
-(NEGATE 0 (Dem Pl) LINK -1  ("liehket" ConNeg) LINK -1 (Neg Du3))
+(NEGATE 0 (Dem Pl) LINK -1 ("liehket" Neg Pl3))
+(NEGATE 0 (Dem Nom Sg) LINK -1  ("liehket" Cond Sg3)) #Luluj dát duohtavuodan sjatta?
+(NEGATE 0 (Dem Nom Sg) LINK -1 ("gus") LINK -1 ("liehket" Cond Sg3)) #Luluj gus dát duohtavuodan sjatta?
+(NEGATE 0 (Dem Nom Pl) LINK -1  ("liehket" Cond Pl3)) #Lulun dá duohtavuodan sjatta?
+(NEGATE 0 (Dem Nom Pl) LINK -1 ("gus") LINK -1 ("liehket" Cond Pl3)) #Lulun gus dá duohtavuodan sjatta?
 (NEGATE 0 (Dem Nom) LINK *1 (N Ine) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V Sg3))
 (NEGATE 0 (Dem Nom) LINK -1 ("liehket" Sg3))(NEGATE 0 (Sg Gen) LINK *1 (N Sg Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE 0 (Dem Gen) LINK 1 (N Gen))
@@ -6789,6 +6796,9 @@ ADD:xmsyn-dem-noun-com (&msyn-dem-noun-com) TARGET Dem - SUGGEST IF (*1 (N Com) 
 (NEGATE 0 (Dem Sg) LINK -1  ("liehket" ConNeg) LINK -1 (Neg Sg3))
 (NEGATE 0 (Dem Pl) LINK -1 ("liehket" Neg Pl3))
 (NEGATE 0 (Dem Pl) LINK -1  ("liehket" ConNeg) LINK -1 (Neg Du3))
+
+(NEGATE 0 (Dem Nom) LINK -1 BOS)
+
 (NEGATE 0 (Dem Sg Nom) LINK *1 (N Com) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (V Sg3))
 (NEGATE 0 (Dem Sg Nom) LINK *1 (N Com) BARRIER NOT-NPMOD-WITHOUT-NUM LINK *1 (V Sg3) BARRIER NOT-ADV-PCLE - Ess)
 (NEGATE 0 (Dem Sg Gen) LINK *1 (N Pl Com) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 0 (N Sg Ill))
