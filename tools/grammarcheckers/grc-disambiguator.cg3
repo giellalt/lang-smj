@@ -2712,9 +2712,10 @@ SELECT (Sg Gen) IF (*-1 Num BARRIER NPNH LINK 0 Acc LINK NOT 0 Nom)(NEGATE 0 Po 
 
 # Gen before Po
 
-SELECT:GenPo Gen IF (1 Po)(NEGATE 0 (Pron Pl Nom)); # må nok få flere betingelser
+SELECT:GenPo Gen IF (1 Po)(NEGATE 0 (Pron Pl Nom)) (NEGATE 0 (N Pl Nom) LINK 1 Po OR (N Sg Ine) LINK 1 (N Sg Ine) LINK 1 (V Pl3)); # må nok få flere betingelser
 	## Profehta baktu.
 	#$ ja lidjin ájn vil tjállám bårde nali, láhpav dajda {ma} maŋŋela båhti.
+	#$ GRAM de daj {gåroda} ålggolin sjaljon boaldeduvvin.
 
 SELECT:GenPoCoor Gen IF (1 CC LINK 1C Gen LINK 1 Po) (NEGATE 0 (Err/Orth Gram/NomAg Pl Gen) OR (Err/Orth Der/NomAg Pl Gen) LINK 0 (Prt Sg3));
 	#$ Sån årru ietjas iedne ja áhtje siegen bájkátjin man namma l Jårbbåjávrre. 
@@ -2931,19 +2932,20 @@ REMOVE Po (0 ("bielle") LINK -1 ("nubbe")) ;
 REMOVE Gen (0 ("bielle") LINK -1 ("nubbe"))(NOT 1 N) ;
 SELECT ("bielle" Ill) (0 Com LINK -1 ("nubbe") LINK -1 PLACE) ;
 
-SELECT Po IF (-1 Gen OR Par)(NEGATE *1 Gen BARRIER Attr OR CLB OR V OR CC OR CS)(NEGATE 0 (".*dahka"r)) (NEGATE 1 (N Pl Nom) OR (N Gen)) ;
+SELECT Po IF (-1 Gen OR Par)(NEGATE *1 Gen BARRIER Attr OR CLB OR V OR CC OR CS)(NEGATE 0 (".*dahka"r)) (NEGATE 1 (N Pl Nom) OR (N Gen)) (NEGATE 0 (N Ine Sg) LINK 1 (N Ine Sg)) ;
 	## Nåv li buolva Abrahama fájes Davida rádjáj.
 	## Dat rájes lihtudin suv gåddet . #partitiiva
 	#% stáhta rahtedåjmadagá
 	#$ GRAM 724 miehttara {badjel} mera
 
-SELECT Po IF (NEGATE *-2 Pr BARRIER N OR SV-BOUNDARY)(-1C Gen)(NEGATE *1C Gen BARRIER S-BOUNDARY2)(NEGATE 0 (".*dahka"r)) (NEGATE 1 (N Pl Nom) OR (N Gen)) ;
+SELECT Po IF (NEGATE *-2 Pr BARRIER N OR SV-BOUNDARY)(-1C Gen)(NEGATE *1C Gen BARRIER S-BOUNDARY2)(NEGATE 0 (".*dahka"r)) (NEGATE 1 (N Pl Nom) OR (N Gen)) (NEGATE 0 (N Ine Sg) LINK 1 (N Ine Sg)) ;
 	#% stáhta rahtedåjmadagá
 	#$ GRAM 724 miehttara {badjel} mera
 SELECT N IF (0 (".*dahka"r) LINK 0 Po) ;
 	#$ stáhta rahtedåjmadagá
 
-    
+SELECT (N Ine) IF (0 Po LINK 0 ("<.*[n]>"r) LINK 1 (N Ine)) (NEGATE 0 (N Ine Err/Orth)) ; 
+    ##GRAM de daj gåroda {ålggolin} sjaljon boaldeduvvin.
 
 	# ============== #
       SECTION    # 
