@@ -6415,6 +6415,17 @@ SETPARENT (N Ine) OR (N Ela) OR (N Ill) OR (N Com) TO (*1 (".*uvvat"r PrfPrc) OR
 
 SETPARENT PrfPrc (c Ine OR Ela OR Ill OR Com) TO (1 N);
 	## Dáv almatja giedas {tsieggidum} tiemmpilav mån gajkov.
+	
+	# Some dependency rules for subject verb agreement (we need this in case of word order issues)
+
+SETPARENT (Pron Dem Pl Nom) (-1 BOS) TO (*1 CS BARRIER (N Nom) OR (Pron Nom) OR (A Nom) LINK -1 COMMA LINK *-1 (Ind Prs Pl3) OR (Ind Prt Pl3) BARRIER NOT-ADV-PCLE - ADVLCASE) ;
+
+SETPARENT (Pron Dem Pl Nom) (-1 BOS) TO (*1 EOS BARRIER (N Nom) OR (Pron Nom) OR (A Nom) LINK *-1 (Ind Prs Pl3) OR (Ind Prt Pl3) BARRIER NOT-ADV-PCLE - ADVLCASE);
+	## Dá mánáj giellaadnuj vájkkudi, danen le ájnas jut dá aj sámegiellaj gávnnuji. 
+
+SETPARENT (Pron Dem Sg Nom) (-1 BOS) TO (*1 CS BARRIER (N Nom) OR (Pron Nom) OR (A Nom) LINK -1 COMMA LINK *-1 (Ind Prs Sg3) OR (Ind Prt Sg3) BARRIER NOT-ADV-PCLE - ADVLCASE) ;
+ 
+SETPARENT (Pron Dem Sg Nom) (-1 BOS) TO (*1 EOS BARRIER (N Nom) OR (Pron Nom) OR (A Nom) LINK *-1 (Ind Prs Sg3) OR (Ind Prt Sg3) BARRIER NOT-ADV-PCLE - ADVLCASE);
 
 	# Dem + Noun
 	# Nounphrase
@@ -6510,6 +6521,7 @@ COPY:msyn-dem-noun-nom (Pl Nom SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) 
 
 	#Gen
 ADD:xmsyn-dem-noun-gen (&msyn-dem-noun-gen) TARGET Dem - SUGGEST IF (*1 (N Gen) BARRIER NOT-NPMOD-WITHOUT-NUM  - (Dem Acc) LINK NEGATE p PrfPrc LINK p N) # looking at complex attributes to a noun phrase
+(NEGATE p Pl3 OR Sg3) # In case it is the subject and the following noun has another function
 (NEGATE -1 Dem LINK *2 (N Sg Gen) OR (N Pl Nom) OR (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (N Ela))
 (NEGATE 1 Dem LINK *1 (N Sg Gen) OR (N Pl Nom) OR (N Pl Gen) BARRIER NOT-NPMOD-WITHOUT-NUM LINK 1 (N Ela))
 (NEGATE -1 (V TV) LINK 1 (Dem Acc))
@@ -6692,6 +6704,7 @@ COPY:msyn-dem-noun-ine (Pl Ine SUGGEST) EXCEPT (Sg Nom) OR (Sg Gen) OR (Sg Acc) 
 	#ill
 	
 ADD:xmsyn-dem-noun-ill (&msyn-dem-noun-ill) TARGET Dem - SUGGEST IF (*1 (N Ill) BARRIER NOT-NPMOD-WITHOUT-NUM LINK NEGATE p PrfPrc LINK p N) 
+(NEGATE p Pl3 OR Sg3) # In case it is the subject and the following noun has another function
 (NEGATE -1 (V TV) LINK 1 (Dem Acc))
 (NEGATE 0 (Dem Sg) LINK -1  ("liehket" ConNeg) LINK -1 (Neg Sg3))
 (NEGATE 0 (Dem Pl) LINK -1 ("liehket" Neg Pl3))
