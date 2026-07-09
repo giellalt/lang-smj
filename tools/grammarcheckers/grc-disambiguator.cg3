@@ -2165,9 +2165,9 @@ SELECT @CVP IF (NEGATE -1 NP-HEAD-NOM)(1 NP-HEAD-NOM LINK 1 VFIN); #XX
 SELECT @CVP IF (-1 NP-HEAD LINK *-1 VFIN BARRIER S-BOUNDARY2)(1 VFIN); #XX
 	## Bärggal de alla várráj suv doalvoj ja vuosedij sunji gájkka värálda rijkajt ja daj herlukvuodav ja javlaj.
 
-SELECT @CVP IF (*-1C VFIN BARRIER S-BOUNDARY)(*1C AUX + Prs BARRIER COMMA);  #XX
+SELECT @CVP IF (*-1C VFIN BARRIER S-BOUNDARY)(*1C AUX + Prs BARRIER COMMA) (NEGATE 0 Adv LINK -2 BOS);  #XX
 	## Gåhtjo dan diehti hávdev gålmmå biejve váttugit gŋahttjat vaj åhpadisålmmå e besa suv suoládit ja álmmugij javllat sån le jábbmegij lussta tjuodtjelam.
-
+	#$GRAM Lidjiv {de} vuostasj Vuonan guhti oajvvefágav
 SELECT @CVP IF (*-1 COMMA LINK *-1C VFIN BARRIER S-BOUNDARY)(*1C AUX LINK *0 Prs BARRIER S-BOUNDARY);  #XX
     # The comma version
 	## Guhti tiempelav gajko ja gålmån biejven vas tsieggi, gájo dal ietjat, ja luojttáda ruossas.
@@ -4104,13 +4104,14 @@ SELECT Ine IF (0 (N Sem/Plc Ess));
 	## Jesus lij riegádam Betleheman.
          # Needs further condition!!
          
-SELECT (N Ine) IF (0 VAHKKU OR MANNU)(*1 VFIN BARRIER NP-BOUNDARY);
+SELECT (N Ine) IF (0 VAHKKU OR MANNU)(*1 VFIN BARRIER NP-BOUNDARY) ;
 	## Gidán máhttá oaggut.         
 
-SELECT Ine IF (1 COPULAS)(*2 (N Nom) BARRIER VERB) (NEGATE *-1 Num BARRIER NPNH);
+SELECT Ine IF (1 COPULAS)(*2 (N Nom) BARRIER VERB) (NEGATE *-1 Num BARRIER NPNH)(NEGATE 0 ("mij" Rel));
 	## Sujna le goajvvo giedan.
 	## Juohkka biejven li ietjas vájve.
     #$GRAM Divna daj tjuoldeduvvam 23 {suohkanijn} li stuorra oasse álmmugis sáme.
+    #$GRAM Sivva {manen} li guokta vuojno dási 
     
 SELECT Ine IF (0 Com)(1 (@CNP))(*2 Ine BARRIER NPNH LINK 1 COPULAS);    
 	## Gå mijájn ja fariseajn li fásto.  
@@ -4153,11 +4154,11 @@ REMOVE Ine IF (-1C (Dem Sg Com))(0 (Dem Sg Com));
  
 # Too strong:    
 REMOVE Ess IF (-1 ("liehket") OR ("årrut") LINK 0 FMAINV)(0 (A Ine) OR (N Ine) LINK NOT 0 HUMAN OR Actor LINK NOT *1 Ill BARRIER NPNH); 
-REMOVE Ess IF (0 (A Ine) OR (N Ine) LINK NOT 0 HUMAN OR Actor)(1 ("liehket") OR ("årrut") LINK 0 FMAINV);  
+REMOVE Ess IF (0 (A Ine) OR (N Ine) LINK NOT 0 HUMAN OR Actor)(1 ("liehket") OR ("årrut") LINK 0 FMAINV)(NEGATE 0 ("mij" Rel));  
 	## Ålles rumáj le sjievnnjedin.
 	## Álmmuk mij sjievnnjedin årru. 
 	## Ja sidjij gudi jábmema rijkan ja sähkásin årru. 
-    
+    #$GRAM Sivva {manen} li guokta vuojno dási 
 
 SELECT (Pl Ine) IF (NEGATE *-1 COMV BARRIER SV-BOUNDARY2)(0 (Sg Com) LINK 0 PLACE)(NEGATE *1 COMV BARRIER SV-BOUNDARY2);
 	## Ale ga vattástagájt jieddnát gálggi nåv gåk vilpástalle synagogajn ja gahttunijn rámmpoma diehti dahki. 
