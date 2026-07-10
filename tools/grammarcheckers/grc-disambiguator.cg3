@@ -1818,8 +1818,8 @@ REMOVE (Imprt Sg2) IF (-1 (Pron Pers Sg2))(0 (Ind Prs Sg2));
 
 SELECT (V Ind Sg3) (1 CC LINK *1 Sg3 BARRIER VERB OR Nom) ;
 
-SELECT (V Sg3) (*-1 CC BARRIER Nom OR VERB LINK *-1 Sg3 BARRIER VERB OR Nom)(NOT 0 Adv) ;
-
+SELECT (V Sg3) (*-1 CC BARRIER Nom OR VERB LINK *-1 Sg3 BARRIER VERB OR Nom)(NOT 0 Adv) (NEGATE 0 ("hálldo") LINK -1 Gen)  ;
+	#$ GRAM Farao biejaj åbbå Egiptav ja åbmudagás suv {hállduj}.
 LIST DUOLLA = "duolla" "miella" ;
 
 SELECT (V Sg3) (0 ("liehket"))(*1 DUOLLA BARRIER NOT-PCLE);
@@ -3037,9 +3037,10 @@ REMOVE (Pers Acc) IF (*1C (N Acc) BARRIER S-BOUNDARY2 OR Po OR Actio OR ("degu")
 SELECT (Pers Acc) IF (-1 V-TRANS-ACT-NOT-ACT LINK *-1 BOS OR PUNCT OR CLB)(1 CLB);
 	## ”Tjuovvolav duv, Härrá, ...
 
-SELECT Acc IF (0 Pers OR Refl)(*0 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 LINK NOT 0 N) (NEGATE 0 (Refl Acc) LINK 1 Acc) ;
+SELECT Acc IF (0 Pers OR Refl)(*0 V-TRANS-ACT-NOT-ACT BARRIER SV-BOUNDARY2 LINK NOT 0 N) (NEGATE 0 (Refl Acc) LINK 1 Acc) (NEGATE 0 Gen LINK 1 N) ;
 	## Ja de rájddiv dasik dudálattjan iehtjam dåbddiv.  
 	#$ GRAM  Sij vierttiji mijáv moajttet, dajnas gå balli {ietjasa} sámevuodav åvddånbuktet.
+	#$ GRAM Farao biejaj åbbå Egiptav ja åbmudagás {suv} hállduj.
 
 # =================================== #
 # Reflexive pronouns #
@@ -3299,8 +3300,8 @@ REMOVE (ImprtII Du1) IF (*-1 (Pl Nom))(0 (V Pl3));
 # ----------
 # Inf or Imprt Pl2 or Der of different sorts.
 
-SELECT Inf IF (*-1 INFV);#BARRIER
-
+SELECT Inf IF (*-1 INFV) (NEGATE 0 ImprtII OR Imprt LINK -1 COMMA OR CC LINK *-1 Imprt OR ImprtII BARRIER AUX-OR-MAIN) ; #BARRIER
+	#$GRAM Guddnedihtit gájkajt, iehttsit jáhkkoguojmijdihtte, lehkut jubmelbalulattjan ja {rámmput} tjäjssárav
 # Infinitive in coordination
 
 SELECT Inf IF (1 CC)(2C Inf);
@@ -4364,8 +4365,9 @@ SELECT (V Pl3) IF (*-1C (Pl Nom) OR (Pl3 Nom) BARRIER (V Pl3) OR CC OR S-BOUNDAR
 SELECT Prs (0 Prt)(*-1C Prs BARRIER VFIN) (NEGATE -1 (Pron Sg Nom)) ;
     #$GRAMSijáv lájddi ja sáddjiji dan várráj mij la duv åbmudahka, bájkkáj mav ietjat viesson dahki, Härrá, dan ájlisbájkkáj Härrá, mav iesj {vuododi}.
 
-SELECT Prt (0 Prt)(*-1C Prt BARRIER VFIN) (NEGATE -1 Num)  ;
+SELECT Prt (0 Prt)(*-1C Prt BARRIER VFIN) (NEGATE -1 Num) (NEGATE 1 (V Ind)) ;
     #$GRAM Jus organisasjåvnnå oattjoj oassálasstemav binnemusát 60 {jienaj} válggaguovlon
+    #$ ittjij vijsesvuodajn dijáv {jáhkkuj} buvte
               SECTION            #
 
 # Rules for a special infinitive construction
