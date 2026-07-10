@@ -3,7 +3,11 @@
 
 ## Default patterns: re:msyn-numphrase-.*
 numphrase-error = Tállabáhkovihke
-    .desc = Dån la tjállám vigev tállabáhkogihpon
+    .desc = Dån la tjállám vigev tállabáhkogihpon.
+
+## Default patterns: re:msyn-dem-noun.*
+numphrase-error = Vihke tsuojggompronåvmåjn
+    .desc = Tsuojggompronåvmmå ja báhko masi dat vuoset ælla sæmmi hámen.
 
 ## Default patterns: re:syn-attr-pr.*
 adjective-should-be-predicative = Adjektijvva galggá predikatijva hámen
