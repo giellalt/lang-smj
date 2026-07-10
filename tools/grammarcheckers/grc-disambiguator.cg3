@@ -920,7 +920,7 @@ SET PRE-APP   = COMMA OR PUNCT-LEFT OR PRE-NP-HEAD ; # This set ist not only for
 
 # There must be a sensible naming convention for these sets...
 # Most strict BARRIERs...
-SET NPNH     = WORD - PRE-NP-HEAD OR ABBR;       # NPNH  = "NOT-PRE-NP-HEAD" 
+SET NPNH     = WORD - PRE-NP-HEAD OR ABBR;       # NPNH  = "NOT-PRE-NP-HEAD"  not-npmod?
 SET NPNHV    = WORD - PRE-NP-HEAD - V-PRE-NP ;    # including possible verbal premodifiers 
 SET NPNHA    = WORD - PRE-NP-HEAD - Adv ;        # NPNHA = "NOT-PRE-NP-HEAD-OR-ADV"
 SET NPNHAPcle    = WORD - PRE-NP-HEAD - Adv - Pcle; 
@@ -4365,8 +4365,9 @@ SELECT (V Pl3) IF (*-1C (Pl Nom) OR (Pl3 Nom) BARRIER (V Pl3) OR CC OR S-BOUNDAR
 SELECT Prs (0 Prt)(*-1C Prs BARRIER VFIN) (NEGATE -1 (Pron Sg Nom)) ;
     #$GRAMSijáv lájddi ja sáddjiji dan várráj mij la duv åbmudahka, bájkkáj mav ietjat viesson dahki, Härrá, dan ájlisbájkkáj Härrá, mav iesj {vuododi}.
 
-SELECT Prt (0 Prt)(*-1C Prt BARRIER VFIN) (NEGATE -1 Num) (NEGATE 1 (V Ind)) ;
+SELECT Prt (0 Prt)(*-1C Prt BARRIER VFIN) (NEGATE -1 Num) (NEGATE 1 (V Ind)) (NEGATE 0 (N Ill) LINK *1 N BARRIER NPNH)  ;
     #$GRAM Jus organisasjåvnnå oattjoj oassálasstemav binnemusát 60 {jienaj} válggaguovlon
+    #$GRAM gå Titus oattjoj dijá {huksuj} davga sávresvuodav gå mån.
     #$ ittjij vijsesvuodajn dijáv {jáhkkuj} buvte
               SECTION            #
 
