@@ -74,12 +74,6 @@ lex-oahpasmuvvat-oahpastuvvat = Vihke"oahpásmuvvat bágujn"
 typo = Tjállemvihke
     .desc = Báhko {$1} la vuojnnet boasstot tjáleduvvam.
 
-use-guillemets = Boasto sitáhttamærkka
-    .desc = Vuojnnet la boasto sitáhttamerkajt adnám.
-
-guillemets = Boasto sitáhttamærkka3
-    .desc = Vuojnnet la boasto sitáhttamerkajt adnám.
-
 ellipsis = Ellipsa
     .desc = Dån la adnám gålmmå tjuoggá. Hiehpá farra ellipsav adnet, "…".
 
