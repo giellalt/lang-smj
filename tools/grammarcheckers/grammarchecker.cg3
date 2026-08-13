@@ -392,6 +392,7 @@ LIST Err/MissingHyph    = Err/MissingHyph ; # On compounds that SHOULD have had 
 LIST Err/SpaceCmp       = Err/SpaceCmp ;
 LIST Err/MissingSpace   = Err/MissingSpace ;
 
+LIST Err/Not-Orth = Err/Lex Err/DerSub Err/CmpSub Err/HyphSub Err/Hyph Err/MissingHyph Err/Spellrelax ;
 LIST Err/Any =  Err/Orth Err/Lex Err/Spellrelax Err/Hyph Err/MissingHyph Err/SpaceCmp Err/MissingSpace ;
 
 
@@ -7172,6 +7173,16 @@ ADD:no-space-after-parenthesis (co&no-space-after-parent-end) TARGET (*) IF (-1 
 
 	# No space after parentheses - 3: add RIGHT relation:
 ADDRELATION:no-space-after-parenthesis (RIGHT) (co&no-space-after-parent-end) FROM (-1 (<NoSpaceAfterParenEnd>)) ;
+
+# Fallback: Add typo tag to any other Err tag not covered above,
+# to ensure that they are at least underlined - important to make the
+# grammar checker catch the same errors as the speller:
+# presently defined as:
+#  Err/Not-Orth = Err/Lex Err/DerSub Err/CmpSub Err/HyphSub Err/Hyph Err/MissingHyph Err/Spellrelax ;
+ADD:other-errors (typo) Err/Not-Orth (NEGATE 0t (*) - Err/Any);
+
+# Add typo error tag to unkown words that are not corrected by the speller, so that they at least get a blue underline and a message
+ADD:uncorrected-typos (typo) (?) ;
 
 # Local Variables:
 # cg-pre-pipe: "bash -o pipefail modes/smjgram-dev9-cg.mode"
