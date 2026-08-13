@@ -2026,6 +2026,14 @@ REMOVE:num-before-curr ("." CLB) IF (0 Num)(1*> (>>>) BARRIER (>>>) LINK 1 Sem/C
 REMOVE ("." CLB) IF (0 Sem/Curr OR ("kr"))(1*> (>>>) BARRIER (>>>) LINK 1 Sem/Curr); 	
 	## 1900-logu álggu rájes lea universitehtain leamaš dálá grádavuogádat, mas leat vuođđofága, gaskafága ja váldofága ja grádat nugo cand.mag. ja cand.real{.} Dan sadjái galget dál šaddat riikkaidgaskasaš grádat Bachelor (BA) ja Master MA).
 
+	# Percent
+
+	# Keep only the Num Arab in subreadings of a %-lemma that have subreadings. Used in disamb analysers/tokenisers, should not affect
+	# grammar checking and TTS tokenisation. End result after cg-mwesplit is that we have two tokens: the Arab numeral, and the
+	# percent symbol, even though there are no space between.
+REMOVE:percent-num-with-mwe (Num Arab) IF (0 (".*%"r Num Arab));
+	## 100%
+	
 # Ruđalaččat lea dus buorre dilli , ja oaččut áinnas udno alccet juoidá maid guhká leat áibbašan
 REMOVE (Err/SpaceCmp) (0/1 ("buorre") + $$CASE)(0 $$CASE);
 REMOVE (Err/SpaceCmp) (0/1 ("buorre"));
