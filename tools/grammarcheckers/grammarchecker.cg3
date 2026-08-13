@@ -7199,4 +7199,8 @@ SUBSTITUTE (MWE) (*) TARGET MWE ;
 	## Guollefestivála geassemánus ja Riddu Riđđu suoidnemánus.
 
 
+# Only add the &typo tag if no other error tags:
+SUBSTITUTE (typo) (&typo) TARGET (typo) IF (NEGATE 0 (/^&.*/r));
+# Else drop it so it generates correctly:
+SUBSTITUTE (typo) (*) TARGET SUGGEST OR SUGGESTWF;
   
