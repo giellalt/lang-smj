@@ -31,15 +31,7 @@ missing-space = Gasska vájllu
 
 ## Default patterns: re:msyn-verbform-infinitive*
 verbform-error = Infinitijvvavihke
-    .desc = Dån la adnám infinitijva hámev boasstot
-
-## Default patterns: re:punct-aistton.* 
-wrong-type-of-guillemets = Boasto sitáhttamærkka2
-    .desc = Vuojnnet la boasto sitáhttamerkajt adnám.
-
-## Default patterns: re:msyn-congr-mij-ma-.* 
-wrong-type-of-guillemets = Relatijva pronåvmmå nominatijva kasusin
-    .desc = Relatijva pronåvmmå {$1} viertti liehket sæmmi lågon dagu báhko masi dat vuoset.
+    .desc = Dån la dávk adnám infinitijva hámev boasstot
 
 msyn-dimin-after-unna = Diminutijvva
     .desc = Hiehpá adnet {$1} bágov diminutijva hámen.
@@ -47,7 +39,7 @@ msyn-dimin-after-unna = Diminutijvva
 style-short-long = STIJLLA: guhka háme
     .desc = {$1} bágon la guhka hábme mav máhtá adnet.
 
-msyn-nom-numeral-jagák = Genitijvva "jagák"-bágo åvddåla
+msyn-nom-numeral-jagak = Genitijvva "jagák"-bágo åvddåla
     .desc = Báhko {$1} galggá genitijvan
 
 syn-to-sentence-init-copula = "Liehket": Gárgadisá álgon
@@ -62,7 +54,7 @@ msyn-l-not-la = "Liehket": "l" farra gå "la"
 msyn-la-not-l = "Liehket": "la" farra gå "l"
     .desc = Dákkir kontevstan hiehpá {$1} sajen adnet "la"
 
-msyn-congr-gænna-gejn = Relatijva pronåvmmå inesijva kasusin
+msyn-congr-rel-ine-genna-gejn = Relatijva pronåvmmå inesijva kasusin
     .desc = Relatijva pronåvmmå {$1} viertti liehket sæmmi lågon dagu báhko masi dat vuoset
 
 lex-oahpastuvvat-oahpasmuvvat = Vihke "oahpástuvvat bágujn"

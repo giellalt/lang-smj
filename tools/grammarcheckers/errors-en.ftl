@@ -5,6 +5,10 @@
 numphrase-error = Numphrase error
     .desc = The numphrase is incorrect, it dosn't follow agreement rules.
 
+## Default patterns: re:msyn-dem-noun.*
+numphrase-error = Error with demonstrative pronoun
+    .desc = The demonstarive pronoun must agree.
+
 ## Default patterns: re:syn-attr-pr.*
 adjective-should-be-predicative = Adjective should be predicative
     .desc = The adjective {$1} should have the predicative instead of the attributive form.
@@ -25,9 +29,14 @@ too-many-spaces = Too many spaces
 missing-space = Missing space
     .desc = There should be a space here.
 
-## Default patterns: re:punct-aistton.*
-wrong-type-of-guillemets = Wrong type of guillemets
-    .desc = You have used wrong kind of guillemets.
+## Default patterns: re:msyn-verbform-infinitive*
+verbform-error = Infinitive error
+    .desc = Ypu may have used the infinitve wrongly
+
+## Default patterns: re:msyn-congr-rel-nom-.* 
+relative-error = Relative pronoun in nominative case
+    .desc = The relative pronoun {$1} must agree.
+
 
 msyn-dimin-after-unna = Diminutive
     .desc = The word {$1} should be diminutive.
@@ -35,7 +44,7 @@ msyn-dimin-after-unna = Diminutive
 style-short-long = STYLE: long forms
     .desc = The word {$1} has a long form that can be used.
 
-msyn-nom-numeral-jagák = Genitive before "jagák"
+msyn-nom-numeral-jagak = Genitive before "jagák"
     .desc = The word {$1} should be in genitive case
 
 syn-to-sentence-init-copula = "Liehket" copula: sentence initially
@@ -50,7 +59,7 @@ msyn-l-not-la = "Liehket" copula: from "la" to "l"
 msyn-la-not-l = "Liehket" copula: from "l" to "la"
     .desc = In this context one might want to use "la" instead of {$1}
 
-msyn-congr-gænna-gejn = Relative pronoun in inessive case must agree
+msyn-congr-rel-ine-genna-gejn = Relative pronoun in inessive case must agree
     .desc = The relative pronoun {$1} must have same number as the antecedent
 
 lex-oahpastuvvat-oahpasmuvvat = Error with "oahpástuvvat"
@@ -61,9 +70,6 @@ lex-oahpasmuvvat-oahpastuvvat = Error with "oahpásmuvvat"
 
 typo = Misspelling
     .desc = The word {$1} seems to be misspelled.
-
-guillemets = Wrong type of guillemets
-    .desc = You have used wrong kind of guillemets.
 
 ellipsis = Ellipsis
     .desc = You have used three periods, {$1}. Here an ellipsis would have been a better choice.
