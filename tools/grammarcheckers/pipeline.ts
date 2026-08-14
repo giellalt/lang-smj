@@ -3,6 +3,20 @@ import * as divvun from "./.divvun-rt/divvun.ts";
 import * as hfst from "./.divvun-rt/hfst.ts";
 import { Command, StringEntry } from "./.divvun-rt/mod.ts";
 
+let spellcheckerConfig = {
+        n_best: 15,              // Maks tal på forslag per ord
+        max_weight: 10000.0,     // Maks vekt for forslag - alle forslag med høgare vekt blir automatisk fjerna
+        beam: 18.0,              // Vektområde, meir enn for sjølvstendig stavekontroll - vi kan filtrera med cg-reglar
+        reweight: {              // Ekstra straffepoeng for endringar etter posisjon
+            start_penalty: 3.0,
+            end_penalty: 1.0,
+            mid_penalty: 1.0,
+        },
+        "reweight-exceptions": [
+          "nuvviDspeller"
+        ],
+        recase: true,            // Prøv å endra berre stor/liten bokstav først
+    }
 export default function smjGramRelease(entry: StringEntry): Command {
   let x = hfst.tokenize("tokenize", entry, { model_path: "tokeniser-gramcheck-gt-desc.pmhfst" });
   x = divvun.blanktag("whitespace", x, { model_path: "analyser-gt-whitespace.hfst" });
