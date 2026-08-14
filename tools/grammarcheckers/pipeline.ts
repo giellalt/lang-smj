@@ -26,6 +26,7 @@ export default function smjGramRelease(entry: StringEntry): Command {
   x = divvun.cgspell("speller", x, {
     acc_model_path: "acceptor.default.hfst",
     err_model_path: "errmodel.default.hfst",
+    config: spellcheckerConfig,
   });
   x = cg3.vislcg3("postspell-valency", x, { model_path: "valency-postspell.bin" });
   x = cg3.vislcg3("grc-disamb", x, { model_path: "grc-disambiguator.bin" });
@@ -46,6 +47,7 @@ export function localTest_dev(entry: StringEntry): Command {
   x = divvun.cgspell("speller", x, {
     acc_model_path: "@./acceptor.default.hfst",
     err_model_path: "@./errmodel.default.hfst",
+    config: spellcheckerConfig,
   });
   x = cg3.vislcg3("postspell-valency", x, { model_path: "@./valency-postspell.cg3" });
   x = cg3.vislcg3("grc-disamb", x, { model_path: "@./grc-disambiguator.cg3" });
@@ -66,6 +68,7 @@ export function localTestTrace_dev(entry: StringEntry): Command {
   x = divvun.cgspell("speller", x, {
     acc_model_path: "@./acceptor.default.hfst",
     err_model_path: "@./errmodel.default.hfst",
+    config: spellcheckerConfig,
   });
   x = cg3.vislcg3("disamb", x, { model_path: "@../../src/cg3/disambiguator.cg3", config: { trace: true } });
   x = cg3.vislcg3("spell-sugg-filtering", x, { model_path: "@./spellchecker.cg3", config: { trace: true } });
