@@ -37,7 +37,6 @@ verbform-error = Infinitive error
 relative-error = Relative pronoun in nominative case
     .desc = The relative pronoun {$1} must agree.
 
-
 msyn-dimin-after-unna = Diminutive
     .desc = The word {$1} should be diminutive.
 
@@ -74,3 +73,5 @@ typo = Misspelling
 ellipsis = Ellipsis
     .desc = You have used three periods, {$1}. Here an ellipsis would have been a better choice.
 
+syn-pred-attr = Adjective should be attributive
+    .desc = The adjective {$1} should have the attributive instead of the predicative form.

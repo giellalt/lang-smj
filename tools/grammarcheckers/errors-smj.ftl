@@ -69,3 +69,7 @@ typo = Tjállemvihke
 ellipsis = Ellipsa
     .desc = Dån la adnám gålmmå tjuoggá. Hiehpá farra ellipsav adnet, "…".
 
+syn-pred-attr = Adjektijvva galggá attributijva hámen
+    .desc = Adjektijvva {$1} l predikatijva hámen, galggá attributijva hámen.
+
+
