@@ -1718,9 +1718,11 @@ LIST &real-NegSg3-NegSg2 = &real-NegSg3-NegSg2 ;
 LIST &real-PrsPl3-PrtSg3 = &real-PrsPl3-PrtSg3 ;
 LIST &real-PrtSg3-PrsPl3 = &real-PrtSg3-PrsPl3 ;
 
-LIST &syn-attr-pred-sg = &syn-attr-pred-sg ;
-LIST &syn-attr-pred-pl = &syn-attr-pred-pl ;
-LIST &syn-pred-attr = &syn-pred-attr ;
+LIST &syn-attr-pred-sg = &syn-attr-pred-sg ; #released
+LIST &syn-attr-pred-pl = &syn-attr-pred-pl ; #released
+LIST &syn-attr-pred = &syn-attr-pred ; #released
+
+LIST &syn-pred-attr = &syn-pred-attr ; 
 
 LIST &syn-nom_nom-gen_nom = &syn-nom_nom-gen_nom ;
 
@@ -2510,21 +2512,24 @@ LIST CONGRUENCE-A-sme = "buorre" "fuotni" ;
 LIST CONGRUENCE-A-smn = "pyeri" (Der/Comp A) (Der/Superl A) (".*vâš"r) (".*lâš"r) (".*sâš"r) (".*gâš"r) (".*bâš"r) ;
 SET CONGRUENCE-A = CONGRUENCE-A-sma OR CONGRUENCE-A-smj OR CONGRUENCE-A-sme OR CONGRUENCE-A-smn ;
       
-ADD:xsyn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF 
-(*1 N + CASE OR A + CASE BARRIER (*) - (A Attr) LINK NOT 0 Dem OR VFIN)
+ADD:syn-pred-attr (&syn-pred-attr) TARGET  A + (Nom Sg)  IF (*1 N + CASE OR A + CASE BARRIER (*) - (A Attr) LINK NOT 0 Dem OR VFIN)
 (NEGATE 0 <TH-Inf> LINK *1 (N Acc) BARRIER NOT-NPMOD LINK *1 (TV Inf) BARRIER NOT-ADV-PCLE) 
 (NEGATE 0 Attr OR (V Sg3) OR ONLY-ATTR-A OR <AttrPred> OR CONGRUENCE-A-smj)  
 (NEGATE 0 Sem/Hum + (Pl Nom) LINK *0 (V Pl3) OR (V Pl1) OR (V Pl2))
 (NEGATE 0 (Der/Car) OR Ord)(NEGATE 0 Sem/Hum LINK *1 Ine OR Ill OR Ela OR Com OR Adv OR Po BARRIER NOT-NPMODADV)
 (NEGATE 0 Gen) 
 (NEGATE 0 (Pl Nom))
+(NEGATE 0 <AttrPred> OR Attr)
 (NEGATE 0 Der/Comp LINK -1 Ela OR (Acc PxSg3))
 (NEGATE *-1 COPULAS BARRIER NOT-ADV-PCLE LINK *2 Inf OR Ine OR Ill OR Sem/Time + Gen OR Sem/Time + Acc OR Adv OR Po BARRIER NOT-NPMODADV - Acc - (A Sg Nom) - CASE) (NEGATE 1 (N Nom) OR (Pron Nom) LINK 1 ("liehket" Ind))
+(NEGATE *-1 COPULAS BARRIER NOT-ADV-PCLE LINK NEGATE 0 Sg3 LINK *1 (A Sg Nom) BARRIER NOT-ADV-PCLE LINK 1 (N Sg Nom))
 (NEGATE *-1 COPULAS BARRIER NOT-ADV-PCLE LINK 1 A + Nom LINK NOT 1 Nom)
 (NEGATE -1 (N Nom) OR (Pron Nom) LINK *-1 COPULAS BARRIER NOT-NPMODADV - (Pl Nom))
 (NEGATE -1 COPULAS + Sg3 OR COPULAS + (Prs Sg2) LINK *-1 BOS BARRIER NOT-ADV - Ine - Ela LINK *1 (N Nom) OR (Pron Nom) BARRIER NOT-NPMODADV - A - COPULAS)
-(NEGATE -1 CC LINK -1 (A Sg) OR (A Pl))
-(NEGATE -1 ("man") LINK 1 (A) LINK 1 Nom LINK *1 ("liehket" Ind) BARRIER NOT-CC - Nom)  
+(NEGATE -1 CC LINK -1 (A Sg) OR (A Pl) LINK NOT 0 Attr OR <AttrPred>)
+(NEGATE -1 ("man") LINK 1 (A) LINK 1 Nom LINK *1 ("liehket" Ind) BARRIER NOT-CC - Nom)
+(NEGATE 1 (Gen PxSg3)) 
+(NEGATE 1 Sup) 
 (NEGATE 1 BE)  
 (NEGATE 1 Pr)  ;
 	#$ {Buorijn} mielajn	vuordáv snivva tjadádit dåjmajt ja rapportan oajvvaduvvi ja sidáv ráddidusájn vuogas láhkáj guládallat ja aktan barggat váj iesjguhtik dåjma lulujin jåhtuj biejaduvvat.
@@ -2542,8 +2547,9 @@ ADD:xsyn-pred-attr (&msyn-pred-attr) TARGET  A + Nom  IF
 	#$ Imájdallin gå vuojnnin man jálo Petrus ja Johannes lijga ja árvvedin lijga sahte, åhpadak ålmmå.
     #$ {Tjáhppat} badjel åjvij
     #$ tjalmedime vuojnnegåhti, gállnasa vádtsáji, spihtálattja rájnnani ja bieljedime gullagåhti, jábbmega tjuodtjeli ja {häjo} ávvoságav gulli.
+    
 
-ADD:xsyn-pred-attr (&msyn-pred-attr) TARGET  (A Der/Comp Nom)  IF (-1 Acc LINK 1 (V Inf) OR (V Sup)) (NEGATE 0 Attr OR (V Sg3) OR ONLY-ATTR-A OR <AttrPred> OR CONGRUENCE-A-smj) (NEGATE 1 Pron)  
+ADD:syn-pred-attr (&syn-pred-attr) TARGET  (A Der/Comp Nom)  IF (-1 Acc LINK 1 (V Inf) OR (V Sup)) (NEGATE 0 Attr OR (V Sg3) OR ONLY-ATTR-A OR <AttrPred> OR CONGRUENCE-A-smj) (NEGATE 1 Pron)  
 ; 
     ## Dán gålmå sámedikke aktisasj ásadime ussjolmis la giellabarggij máhtudagáv doarjjot, vaddet máhttelisvuodav {tjiegŋalabbo} giellaássjijt dágástalátjit ja dålkåj, jårggåliddjij ja giellabarggij bargguj tjiegŋodit guoskavasj gatjálvisájda, máhttelisvuodajda ja hásstalusájda.
 
@@ -2551,7 +2557,7 @@ ADD:xsyn-pred-attr (&msyn-pred-attr) TARGET  (A Der/Comp Nom)  IF (-1 Acc LINK 1
 #ADD:msyn-attr-not-pred (&msyn-attr-not-pred) TARGET A IF (NOT 0 Attr OR (N Gen) OR @<SPRED LINK NEGATE 0 (Sg Nom) LINK 0 ADJ_ATTR/NOM OR Comp OR Superl)(*1 CNOUN OR A BARRIER NOT-ADJ-CC OR  GO-PCLE)(NOT 1 Rel) (NEGATE 0 ("buorre") OR ("riekta") OR ("duođas") OR Ord - ("nubbi")) (NEGATE *0 MODALS BARRIER GRAMCHK-S-BOUNDARY OR GRAMCHK-VFIN OR Rel) (NEGATE 0 A LINK 1 COMMA OR CC LINK NOT 1 Attr OR Gen) (NEGATE 0 Ess LINK NOT *0 GRAMCHK-VFIN BARRIER GRAMCHK-S-BOUNDARY OR CLB)(NEGATE 0 Superl LINK 0 (Adv Superl))(NEGATE 0 Attr LINK NOT 0 Attr)(NEGATE 1 EOS)(NEGATE 0 (N Sg Ill));
   
 
-COPY:syn-pred-attr (Attr SUGGEST) EXCEPT (Sg Nom &msyn-pred-attr) OR (Pl Nom &msyn-pred-attr) TARGET (&msyn-pred-attr) ;
+COPY:syn-pred-attr (Attr SUGGEST) EXCEPT (Sg Nom &syn-pred-attr) OR (Pl Nom &syn-pred-attr) TARGET (&syn-pred-attr) ;
 
     ## Mij tjuovojma {roaŋkok}  bálggáv
     ## HLF Gullamvádnásij Rijkalihtto le berustiddje organisásjåvnnå dájda; gullamvádnasijda, bieljedis tjalmedimijda, CI-operidum ulmutjijda, virggeulmutjijda, ja æjgádijda gullamvánes mánájda, ulmutjijda gænna li tinnitus-vájve ja méniér-skihppijda.
