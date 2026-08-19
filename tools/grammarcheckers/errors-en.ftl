@@ -9,7 +9,7 @@ numphrase-error = Numphrase error
 numphrase-error = Error with demonstrative pronoun
     .desc = The demonstarive pronoun must agree.
 
-## Default patterns: re:syn-attr-pr.*
+## Default patterns: re:syn-attr-pred.*
 adjective-should-be-predicative = Adjective should be predicative
     .desc = The adjective {$1} should have the predicative instead of the attributive form.
 
@@ -31,10 +31,10 @@ missing-space = Missing space
 
 ## Default patterns: re:msyn-verbform-infinitive*
 verbform-error = Infinitive error
-    .desc = Ypu may have used the infinitve wrongly
+    .desc = You may have used the infinitve wrongly
 
-## Default patterns: re:msyn-congr-rel-nom-.* 
-relative-error = Relative pronoun in nominative case
+## Default patterns: re:msyn-congr-rel-nom.* 
+relative-nominative-error = Relative pronoun in nominative case
     .desc = The relative pronoun {$1} must agree.
 
 msyn-dimin-after-unna = Diminutive
@@ -75,3 +75,6 @@ ellipsis = Ellipsis
 
 syn-pred-attr = Adjective should be attributive
     .desc = The adjective {$1} should have the attributive instead of the predicative form.
+
+msyn-dates-from-arab-num-to-ord = Date not number
+    .desc = The date {$1} should be a ordinal numeral.

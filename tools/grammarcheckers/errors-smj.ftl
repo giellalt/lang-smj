@@ -3,7 +3,7 @@
 
 ## Default patterns: re:msyn-numphrase-.*
 numphrase-error = Tállabáhkovihke
-    .desc = Dån la tjállám vigev tállabáhkogihpon.
+    .desc = Dån la dávk tjállám vigev tállabáhkogihpon.
 
 ## Default patterns: re:msyn-dem-noun.*
 numphrase-error = Vihke tsuojggompronåvmåjn
@@ -32,6 +32,10 @@ missing-space = Gasska vájllu
 ## Default patterns: re:msyn-verbform-infinitive*
 verbform-error = Infinitijvvavihke
     .desc = Dån la dávk adnám infinitijva hámev boasstot
+
+## Default patterns: re:msyn-congr-rel-nom.* 
+relative-nominative-error = Relatijva pronåvmmå nominatijva kasusin
+    .desc = Relative pronåvmmå {$1} viertti liehket sæmmi lågon dagu báhko masi dat vuoset.
 
 msyn-dimin-after-unna = Diminutijvva
     .desc = Hiehpá adnet {$1} bágov diminutijva hámen.
@@ -72,4 +76,5 @@ ellipsis = Ellipsa
 syn-pred-attr = Adjektijvva galggá attributijva hámen
     .desc = Adjektijvva {$1} l predikatijva hámen, galggá attributijva hámen.
 
-
+msyn-dates-from-arab-num-to-ord = Biejvedimen adná rájddotállav
+    .desc = Biejvedimen {$1} galggá liehket rájddotálla.
