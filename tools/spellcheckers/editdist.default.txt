@@ -40,17 +40,34 @@ z
 @@
 
 ## Transition pair specifications + weight:
+##
+## Both directions of a confusable pair have to be listed. editdist.py
+## documents that a single FROM/TO line also sets TO -> FROM at the same
+## weight, but that back-fill lives in the ATT code path only; --regex, which
+## is what this file is built with, reads the specified pairs verbatim and
+## leaves everything else at DEFAULT_WEIGHT. An unlisted direction is not
+## symmetric, it is 10.
+##
+## n -> ŋ has no counterpart on purpose: ŋ -> n does not occur once in the
+## typo corpus, and ŋ -> ñ would license suggestions spelled with ñ, which is
+## not part of the orthography. ñ -> ŋ stays at 0 - that is normalisation of
+## a substitute letter, not a typo.
 a	á	1
-a	å	4
 á	a	2
+a	å	4
+å	a	4
 a	e	4
 e	a	4
 e	i	5
+i	e	5
 n	ŋ	4
 ñ	ŋ	0
 o	u	5
+u	o	5
 o	å	5
+å	o	5
 t	d	4
+d	t	4
 
 ## Swaps. NB! Please note that these depend on the variable
 ## USE_SWAPS in Makefile.am in this directory. Also note that
