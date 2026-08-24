@@ -9,7 +9,7 @@ numphrase-error = Tállabáhkovihke
 numphrase-error = Vihke tsuojggompronåvmåjn
     .desc = Tsuojggompronåvmmå ja báhko masi dat vuoset ælla sæmmi hámen.
 
-## Default patterns: re:syn-attr-pr.*
+## Default patterns: re:syn-attr-pred.*
 adjective-should-be-predicative = Adjektijvva galggá predikatijva hámen
     .desc = Adjektijvva {$1} l attributijva hámen, galggá predikatijva hámen.
 
