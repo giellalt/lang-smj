@@ -20,7 +20,8 @@ include $(top_srcdir)/../giella-core/am-shared/devtest-include.am
 AREA_EDITDIST_FILES = editdist.NO.txt editdist.SE.txt
 BUILT_SOURCES = $(AREA_EDITDIST_FILES)
 CLEANFILES += $(AREA_EDITDIST_FILES)
-EXTRA_DIST = editdist.default.txt generate-area-editdist.py
+EXTRA_DIST = editdist.default.txt generate-area-editdist.py \
+		extract-errorth-strings.py strings.errorth.default.regex
 
 editdist.NO.txt: $(srcdir)/editdist.default.txt \
 		$(srcdir)/generate-area-editdist.py
