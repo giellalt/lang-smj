@@ -1186,6 +1186,8 @@ LIST CASE = Nom Acc Gen Ill Ela Ine Com Ess ; #!! CASE
 SET NOT-NOM = CASE - Nom ; #!! NOT-NOM
 SET NOT-GEN = CASE - Gen ; #!! NOT-GEN
 SET NOT-ACC = CASE - Acc ; #!! NOT-ACC
+SET NOT-INE = CASE - Ine ; #!! NOT-INE
+SET NOT-COM = CASE - Com ; #!! NOT-Com
 
 
 LIST A-NOUNS = (".*[^aáeiou]a"r N) ;
@@ -2898,6 +2900,12 @@ ADD:msyn-congr-refl-iesj-ietja (&msyn-congr-refl-iesj-ietja) TARGET REFL-PRON + 
    ## Valla ælla gus rievddama iesj allasisá buore?
    #$ Ánu {iesj} viehká ällorabdav, huvkká ja slávggi gahperijn.
 
+ADD:msyn-congr-refl-iesj-ietja (&msyn-congr-refl-iesj-ietja) TARGET REFL-PRON + (Pron Refl Sg Nom) IF (*1 (Prs Pl3) BARRIER NOT-ADV-PCLE LINK 0 (Prt Sg2)) (-1 Po LINK -1 (N Gen) LINK *-1 (N Pl Nom) BARRIER NOT-ADV-PCLE LINK NOT 0 (N Sg Nom))
+(NEGATE -1 (V Sg2))
+(NEGATE *0 (N Sg Nom) BARRIER S-BOUNDARY) 
+(NEGATE 1 (Pron Indef)) ;
+
+	## vaj máná ájge nalluj {iesj} galggi nahkat dåbdojt identifiserit 
 
     #  Congr verb on right side of iesj
     #----------------------------------
