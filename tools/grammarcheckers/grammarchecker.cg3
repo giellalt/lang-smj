@@ -2294,8 +2294,14 @@ ADD:syn-to-sentence-init-copula (&syn-to-sentence-init-copula) TARGET ("liehket"
 COPY:syn-to-sentence-init-copula (SentInit SUGGEST) EXCEPT (&syn-to-sentence-init-copula) TARGET (&syn-to-sentence-init-copula) ;
 
 
+
+
+
 	# la to l after vowel
     # ----------------------------------------------------------------------
+    # ===================================================================================================
+    # ===================================================================================================
+    
 ADD:msyn-l-not-la (&msyn-l-not-la) TARGET ("liehket" Ind Prs Sg3) OR ("liehket" Ind Prs Sg2) IF (NEGATE 0 Clt OR Neg) (-1 ("<.*[aeiouáå]>"r) LINK NEGATE 0 SUGGEST OR CC OR CS OR ("de" Adv) OR ("juo") OR (Ill Pl) OR V) 
 (NEGATE -1 &msyn-congr-rel-ine-genna-gejn) 
 (NEGATE -1 (Sg Nom) LINK -1 (Rel Sg Nom))
@@ -2341,13 +2347,27 @@ COPY:msyn-l-not-la (Sg3 Clt SUGGEST) EXCEPT (Sg2 SentInit &msyn-l-not-la) OR (Sg
 
 	#  l to la/le to after consonant
     # ----------------------------------------------------------------------
+    # ===================================================================================================
+    # ===================================================================================================
+    
 ADD:msyn-la-not-l (&msyn-la-not-l) TARGET ("liehket" Clt) IF (NEGATE -1 ("<.*[aeiouáå]>"r) OR BOS LINK NOT 0 ("ja") OR ("jali")) (NEGATE -1 ("mån" Pl1 Ill) OR ("dån" Pl2 Ill) OR ("sån" Pl3 Ill)) ;
 
 	## Midjij {la} gássjel ássjev tjoavddet
+	
+	# l>la after gænna>gejn
+    # ----------------------------------------------------------------------  
+ADD:msyn-la-not-l (&msyn-la-not-l) TARGET ("liehket" Clt) IF (-1 &msyn-congr-rel-ine-genna-gejn) ;
+
+ADDRELATION: ($ RIGHT) (Rel &msyn-congr-rel-ine-genna-gejn) TO (1 ("liehket" &msyn-la-not-l)) ;
+ADDRELATION: ($ LEFT)  ("liehket" &msyn-la-not-l) TO (-1 (Rel &msyn-congr-rel-ine-genna-gejn)) ;
+
 
 COPY:msyn-la-not-l (SUGGEST) EXCEPT (Clt &msyn-la-not-l) TARGET (&msyn-la-not-l) ;
     ## Dát ságastallamstasjåvnnå hiehpá oahppijda gejn l buorre sámegiella
 	#$ Midjij l gássjel ássjev tjoavddet.
+
+
+
 
 
 
