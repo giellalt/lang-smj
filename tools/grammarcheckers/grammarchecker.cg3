@@ -2741,7 +2741,8 @@ ADD:xmsyn-mij-gut (&msyn-mij-gut) TARGET WHAT IF (*-1 (N Coll) OR Der/NomAg OR G
 (NEGATE 0 WHAT + Ess)
 (NEGATE 0 (Rel Acc) LINK NOT -1 (N Nom)) 
 (NEGATE 0 ("mån" Pl1 Nom))
-(NEGATE *1 ("liehket" Sg3) BARRIER S-BOUNDARY LINK *1 PrfPrc BARRIER NOT-ADV-PCLE) ; 
+(NEGATE *1 ("liehket" Sg3) BARRIER S-BOUNDARY LINK *1 PrfPrc BARRIER NOT-ADV-PCLE) 
+(NEGATE 1 ("liehket" Ind) LINK *1 (N Nom) BARRIER NOT-NPMOD LINK NOT 0 Sem/Hum OR Sem/Hum-prof OR Sem/Sur OR Sem/Mal OR Sem/Fem OR (Pron Pers) OR (Pron Indef) + Sem/Hum) ; 
 
     ## Ja gåktu de manáj dáj guoktásijn {ma} galggin dunnuv viedtjat? 
     #$ Gárggájj tjálli oahppe {mij} la sæmmilágásj dajn guovte kultuvrajn. # TV human subject, non-human object <RE-Ill-Ani><TH-Acc-*Ani>
@@ -2818,6 +2819,8 @@ COPY:msyn-mij-gut ("guhti" Sh SUGGEST) EXCEPT ("mij" &msyn-mij-gut) TARGET (&msy
 
 ADD:xmsyn-gut-mij (&msyn-gut-mij) TARGET WHO IF (-1 N LINK NOT 0 Sem/AnimateNotOrg LINK NEGATE -1 Sem/Hum + Gen ) 
 (NEGATE -2 Sem/Hum LINK 1 Sem/Plc)
+(NEGATE *-1 (Rel Sem/Hum) BARRIER Rel) 
+(NEGATE -1 Acc LINK *-1 (TV Imprt) OR (TV ImprtII) BARRIER NOT-ADV-PCLE) 
 (NEGATE -3 Sem/Hum LINK *1 Sem/Plc BARRIER NOT-NPMOD - Sem/Plc)
 (NEGATE *-1 (N Nom) + Sem/Hum OR (Dem Nom) BARRIER (*) - (N Ine) - (Pron Ine) LINK *-1 BE + (Ind Sg3) OR BE + (Ind Sg3) BARRIER NOT-NPMOD LINK -1 WHO) 
 (NEGATE *-1 Pers BARRIER COMMA ) 
@@ -2845,7 +2848,8 @@ ADD:xmsyn-gut-mij (&msyn-gut-mij) TARGET WHO IF (*-1 (N Nom) - Sem/Hum OR (Dem N
 ADD:xmsyn-gut-mij (&msyn-gut-mij) TARGET WHO IF (-1 COMMA LINK -1 N LINK NOT 0 Sem/AnimateNotOrg)
 (NEGATE -2 V)
 (NEGATE -2 ("gijtto"))
-(NEGATE -2 Ine OR Ela LINK NOT 2 Ine OR Ela) ;
+(NEGATE -2 Ine OR Ela LINK NOT 2 Ine OR Ela)
+(NEGATE *-1 (Rel Sem/Hum) BARRIER Rel)  ;
 
     ## Ålggorijkkadepartementan, gænna l åvdåsvásstádus nuorttaguovlloássjijs Ráddidusán, le biellejahkásattjat tjåhkanime Sámedikkijn.
     #$ Jubmelij gijtto, {guhti} Kristusa baktu agev muv vuojttofárrusis válldá, ja juohkka bájken muv miedet kristusdiedo njálga hapsav bigodit.
