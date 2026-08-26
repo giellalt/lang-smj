@@ -1852,6 +1852,13 @@ ADD:msyn-congr-rel-ine-genna-gejn (&msyn-congr-rel-ine-genna-gejn) TARGET (Rel I
 
 	## vierttiji liehket bargge {gænna} li dålkkum- ja tjálalasj jårggålimmáhtudahka
 
+ADD:msyn-congr-rel-ine-genna-gejn (&msyn-congr-rel-ine-genna-gejn) TARGET (Rel Ine Sg) IF (-1 (N Pl Nom) LINK NOT 0 (N Sg Nom) LINK *-1 (V Ind Pl3) BARRIER NOT-ADV-PCLE) 
+(NEGATE 0 WHICH-OF-TWO) 
+(NEGATE 0 Attr)
+(NEGATE 0 ("goabbá") OR ("guhtimusj") OR ("makkir") OR ("makkár") ) ;
+
+	## Danen máhtti máná {gænna} li gássjelisvuoda. 
+
 
 ADD:msyn-congr-rel-ine-genna-gejn (&msyn-congr-rel-ine-genna-gejn) TARGET (Rel Ine Sg) IF (*-1 (N Sg Gen) BARRIER NOT-BEFORE-REL LINK *-1 Num BARRIER NOT-NPMOD ) (NEGATE 0 ("goabbá") OR ("guhtimusj") OR ("makkir") OR ("makkár") ) ;
    
@@ -1882,7 +1889,7 @@ ADD:msyn-congr-rel-ine-genna-gejn (&msyn-congr-rel-ine-genna-gejn) TARGET (Rel I
 (NEGATE 0 Attr)
 (NEGATE 0 ("goabbá") OR ("guhtimusj") OR ("makkir") OR ("makkár") ) ;
 
-ADD:msyn-congr-rel-ine-genna-gejn (&msyn-congr-rel-ine-genna-gejn) TARGET (Rel Ine Sg) IF (*-1 (&msyn-congr-rel-ine-genna-gejn) )   #LINDA Hjelp med barrier 
+ADD:msyn-congr-rel-ine-genna-gejn (&msyn-congr-rel-ine-genna-gejn) TARGET (Rel Ine Sg) IF (*-1 (&msyn-congr-rel-ine-genna-gejn)) ;  #LINDA Hjelp med barrier 
     
 COPY:msyn-congr-rel-ine-genna-gejn (Pl SUGGEST) EXCEPT (Sg &msyn-congr-rel-ine-genna-gejn Area/NO Area/SE) AFTER Rel TARGET (&msyn-congr-rel-ine-genna-gejn) ;
 
@@ -2266,13 +2273,6 @@ COPY:syn-from-sentence-init-copula (SUGGEST Sg3) EXCEPT (Pl3 SentInit &syn-from-
 
 COPY:syn-from-sentence-init-copula (SUGGEST Sg3) EXCEPT (Pl3 SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (*-1 ("guhti") BARRIER S-BOUNDARY OR COMMA OR Rel)   ;
 	##  guhti moadda idjatijma {le} låhkåm ja responsav buktám.
-
-	#  Le after gænna> gejna/gejn (suggestes both)
-    # ----------------------------------------------------------------------    
-
-#COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 &msyn-congr-rel-ine-genna-gejn)  ;
-
-#COPY:syn-from-sentence-init-copula (Clt SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 &msyn-congr-rel-ine-genna-gejn) ;
 
 	
     # Should be sentence initial copula: from la to le. 
