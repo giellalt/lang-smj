@@ -1,40 +1,10 @@
 # Results for lemmatesting spell-checker
 
 
-**guoktajuohtevidálågåk** is missing. 
-following suggestions:
-* guoktatjuohtevidálågåk		35.00000
-* guoktjuohtevidálågåk		35.00000
-* guoktetjuohtevidálågåk		44.00000
-* guoktatjuodevidálågåk		51.00000
-* guoktjuodevidálågåk		51.00000
-* 
-
-**færtguhti** is missing. 
-following suggestions:
-* færtguhtik		35.00000
-* fertguhtik		45.00000
-* färtguhtik		50.00000
-* færtgudik		51.00000
-* 
-
-**iesjguhti** is missing. 
-following suggestions:
-* iesjguhtik		30.00000
-* iesjgudik		51.00000
-* 
-
-**guoktajuodevidálågåk** is missing. 
-following suggestions:
-* guoktatjuodevidálågåk		35.00000
-* guoktjuodevidálågåk		35.00000
-* guoktetjuodevidálågåk		44.00000
-* 
-
 ## Lemma statistics:
 
-* 43893 lemmas
-* 99.99088692957875 % accepted
+* 43866 lemmas
+* 100.0 % accepted
 
 ## Configuration:
 
