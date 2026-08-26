@@ -1,0 +1,187 @@
+#!/bin/bash
+
+# Guards the never-suggest barrier.
+#
+# weights/tags.reweight adds +10000 to +Use/SpellNoSugg, +Use/Derrog,
+# +Cmp/Hyph and +Cmp/SplitR, and config.json's max-weight sits at that same
+# value so those candidates fall outside the suggestion filter. The two
+# numbers are a matched pair, not independent knobs: raise max-weight past
+# the sentinel and every deliberately blocked form becomes suggestable
+# again, derogatory stems included.
+#
+# Nothing else in the test suite notices when that happens. typos.tsv only
+# scores recall, so removing the barrier reads as a small accuracy gain.
+#
+# The check below takes the lowest four-digit-or-larger weight in
+# tags.reweight as the barrier. That is exact for smj, where all four blocking
+# tags sit at +10000. It is not a universal rule: lang-sme grades its tags, and
+# gives +Cmp/Hyph only +5000 so hyphen compounds stay offerable as a last
+# resort under the same 10000 ceiling. A language with such a tier needs the
+# barrier named explicitly rather than inferred, so do not copy this test
+# across without checking its tags.reweight first.
+#
+# Part 1 checks the invariant against the source files, and so fails even in
+# a tree with no speller built. Part 2 proves it end to end on probes that
+# are known to leak once the barrier is gone.
+
+# colours
+if test -f "$GIELLA_CORE/scripts/termcolors.bash" ; then
+    . "$GIELLA_CORE/scripts/termcolors.bash"
+fi
+
+TESTER=@DIVVUNSPELL@
+PYTHON=@PYTHON@
+CONFIG="@srcdir@/../config.json"
+REWEIGHT="@srcdir@/../weights/tags.reweight"
+ZHFST="@builddir@/../@GTLANG2@.zhfst"
+PROBES="@srcdir@/nosugg-probes.tsv"
+
+if test ! -f "$CONFIG" ; then
+    printf "%sSKIP%s: %s not found\n" "$light_blue" "$reset" "$CONFIG"
+    exit 77
+fi
+if test ! -f "$REWEIGHT" ; then
+    printf "%sSKIP%s: %s not found\n" "$light_blue" "$reset" "$REWEIGHT"
+    exit 77
+fi
+
+########## Part 1: the config invariant ##########
+
+SENTINEL=$("$PYTHON" - "$REWEIGHT" "$CONFIG" <<'PYEOF'
+import json, re, sys
+
+reweight, config = sys.argv[1], sys.argv[2]
+
+# Ordinary tag weights are one or two digits; the never-suggest sentinels are
+# whole thousands. Anything at or above this cutoff is a barrier, not a nudge.
+BARRIER_CUTOFF = 1000
+
+sentinels = {}
+for line in open(reweight, encoding="utf-8"):
+    line = line.split("!")[0].strip()
+    if not line or line.startswith("#"):
+        continue
+    parts = re.split(r"\s+", line)
+    if len(parts) < 2:
+        continue
+    try:
+        weight = int(parts[-1].lstrip("+"))
+    except ValueError:
+        continue
+    if weight >= BARRIER_CUTOFF:
+        sentinels[parts[0]] = weight
+
+if not sentinels:
+    print("ERROR no never-suggest sentinel found in %s" % reweight)
+    sys.exit(1)
+
+floor = min(sentinels.values())
+max_weight = json.load(open(config, encoding="utf-8")).get("max-weight")
+
+if max_weight is None:
+    print("ERROR %s has no max-weight; the barrier is unenforced" % config)
+    sys.exit(1)
+
+# divvunspell keeps a candidate when weight <= max-weight, and a blocked
+# candidate always carries its lexical weight on top of the sentinel, so
+# equality is the intended setting rather than an off-by-one.
+if max_weight > floor:
+    print(
+        "ERROR max-weight %s exceeds the never-suggest sentinel %s (%s).\n"
+        "       Every blocked form is suggestable at this ceiling."
+        % (max_weight, floor, ", ".join(sorted(sentinels)))
+    )
+    sys.exit(1)
+
+print(floor)
+PYEOF
+)
+rv=$?
+if test $rv -ne 0 ; then
+    printf "%sFAIL%s: %s\n" "$red" "$reset" "$SENTINEL"
+    exit 1
+fi
+
+########## Part 2: the speller actually suppresses them ##########
+
+if test x$TESTER = xfalse ; then
+    printf "%sSKIP%s: missing divvunspell, config invariant passed\n" \
+        "$light_blue" "$reset"
+    exit 77
+fi
+if test ! -f "$ZHFST" ; then
+    printf "%sSKIP%s: %s not found, config invariant passed\n" \
+        "$light_blue" "$reset" "$ZHFST"
+    exit 77
+fi
+if test ! -f "$PROBES" ; then
+    printf "%sSKIP%s: %s not found, config invariant passed\n" \
+        "$light_blue" "$reset" "$PROBES"
+    exit 77
+fi
+
+INPUTS=$(grep -v '^#' "$PROBES" | cut -f1 | grep -v '^$' | tr '\n' ' ')
+if test -z "$INPUTS" ; then
+    printf "%sSKIP%s: no probes in %s\n" "$light_blue" "$reset" "$PROBES"
+    exit 77
+fi
+
+SUGGESTIONS=$(mktemp)
+trap 'rm -f "$SUGGESTIONS"' EXIT
+
+# One invocation for every probe: the archive is large and loading it per word
+# dominates the runtime.
+$TESTER suggest -a "$ZHFST" -c "$CONFIG" --json $INPUTS > "$SUGGESTIONS"
+rv=$?
+if test $rv -ne 0 ; then
+    printf "%sFAIL%s: divvunspell suggest exited %s\n" "$red" "$reset" "$rv"
+    exit 1
+fi
+
+"$PYTHON" - "$PROBES" "$SENTINEL" "$SUGGESTIONS" <<'PYEOF'
+import json, sys
+
+probes_path, floor, suggestions_path = sys.argv[1], float(sys.argv[2]), sys.argv[3]
+
+forbidden = {}
+for line in open(probes_path, encoding="utf-8"):
+    if line.startswith("#") or not line.strip():
+        continue
+    parts = line.rstrip("\n").split("\t")
+    if len(parts) >= 2:
+        forbidden.setdefault(parts[0], []).append(parts[1])
+
+data = json.load(open(suggestions_path, encoding="utf-8"))
+failures = []
+for entry in data.get("suggest", []):
+    word = entry.get("word")
+    for suggestion in entry.get("suggestions", []):
+        value = suggestion.get("value")
+        weight = suggestion.get("weight", 0.0)
+        if value in forbidden.get(word, []):
+            failures.append(
+                "%s offered the blocked form %s (weight %s)"
+                % (word, value, weight)
+            )
+        elif weight >= floor:
+            # Catches blocked forms that are not named in the probe file.
+            failures.append(
+                "%s offered %s at weight %s, at or above the sentinel %s"
+                % (word, value, weight, floor)
+            )
+
+if failures:
+    for failure in failures:
+        print("  " + failure)
+    sys.exit(1)
+PYEOF
+rv=$?
+
+if test $rv -ne 0 ; then
+    printf "%sFAIL%s: never-suggest forms leaked into suggestions\n" \
+        "$red" "$reset"
+    exit 1
+fi
+
+printf "%sPASS%s\n" "$green" "$reset"
+exit 0

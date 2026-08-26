@@ -10,9 +10,14 @@ YAML_TEST_RUNNERS=
 
 # Specify other shell scripts here to make sure they are included in the distro
 # even though spellers are disabled:
-OTHER_TEST_RUNNERS_IN=
+OTHER_TEST_RUNNERS_IN=test-nosugg-suppression.sh.in
 
-OTHER_TEST_RUNNERS=
+# test-nosugg-suppression.sh runs unconditionally. Its first half compares
+# config.json's max-weight against the never-suggest sentinel in
+# weights/tags.reweight; that is a source-only check, and worth making even in
+# a tree that builds no speller. The second half skips itself when there is no
+# archive to query.
+OTHER_TEST_RUNNERS=test-nosugg-suppression.sh
 
 # Only test spellers if we build spellers:
 if WANT_SPELLERS
@@ -38,7 +43,8 @@ YAML_DIRS=desktopspeller-gt-norm-yamls
 EXTRA_DIST=$(OTHER_TEST_RUNNERS_IN) \
            $(YAML_TEST_RUNNERS) \
            $(YAML_FILES) \
-           $(YAML_DIRS)
+           $(YAML_DIRS) \
+           nosugg-probes.tsv
 
 include $(top_srcdir)/../giella-core/am-shared/tools-spellcheckers-test-include.am
 include $(top_srcdir)/../giella-core/am-shared/devtest-include.am

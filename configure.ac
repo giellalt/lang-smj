@@ -237,6 +237,11 @@ AC_CONFIG_FILES([tools/tts/convert-to-SE.sh], \
 AC_CONFIG_FILES([tools/spellcheckers/index.NO.xml \
                  tools/spellcheckers/index.SE.xml ])
 
+# Keeps config.json's max-weight below the never-suggest sentinel in
+# weights/tags.reweight, and proves blocked forms stay out of suggestions:
+AC_CONFIG_FILES([tools/spellcheckers/test/test-nosugg-suppression.sh], \
+      [chmod a+x tools/spellcheckers/test/test-nosugg-suppression.sh])
+
 ############ END: Language-specific scripts. #############
 
 # This must be near the end of all configure.ac files:
