@@ -2,23 +2,29 @@
 
 # Guards the never-suggest barrier.
 #
-# weights/tags.reweight adds +10000 to +Use/SpellNoSugg, +Use/Derrog,
-# +Cmp/Hyph and +Cmp/SplitR, and config.json's max-weight sits at that same
-# value so those candidates fall outside the suggestion filter. The two
-# numbers are a matched pair, not independent knobs: raise max-weight past
-# the sentinel and every deliberately blocked form becomes suggestable
-# again, derogatory stems included.
+# weights/tags.reweight prices two kinds of tag in the thousands, and
+# config.json's max-weight decides which of them a user ever sees:
 #
-# Nothing else in the test suite notices when that happens. typos.tsv only
-# scores recall, so removing the barrier reads as a small accuracy gain.
+#   hard block   +Use/SpellNoSugg, +Use/Derrog, +Cmp/Hyph and +Cmp/SplitR,
+#                all at +10000. At or above max-weight, so a form carrying
+#                one is filtered out of suggestions entirely. Raise
+#                max-weight past these and every deliberately blocked form
+#                comes back, derogatory stems and all.
+#   graded       Empty here. A graded tag sits deliberately BELOW max-weight:
+#                still offerable, but at a weight no real correction can lose
+#                to, so it surfaces only when nothing else does. lang-sme
+#                grades +Cmp/Hyph to +5000 that way; whether smj should
+#                follow is a question for the linguists.
 #
-# The check below takes the lowest four-digit-or-larger weight in
-# tags.reweight as the barrier. That is exact for smj, where all four blocking
-# tags sit at +10000. It is not a universal rule: lang-sme grades its tags, and
-# gives +Cmp/Hyph only +5000 so hyphen compounds stay offerable as a last
-# resort under the same 10000 ceiling. A language with such a tier needs the
-# barrier named explicitly rather than inferred, so do not copy this test
-# across without checking its tags.reweight first.
+# The two lists are declared below rather than inferred from the file,
+# because the tiers are indistinguishable by weight alone -- an inferred
+# "lowest large weight" rule would read a graded tier as the barrier and
+# demand max-weight be dropped to meet it. Any barrier-scale tag in neither
+# list fails the test, so adding one forces the choice to be made explicitly
+# rather than defaulting to whichever tier the arithmetic happens to pick.
+#
+# Nothing else in the test suite notices when the barrier moves. typos.tsv
+# scores recall only, so removing it reads as a small accuracy gain.
 #
 # Part 1 checks the invariant against the source files, and so fails even in
 # a tree with no speller built. Part 2 proves it end to end on probes that
@@ -52,11 +58,19 @@ import json, re, sys
 
 reweight, config = sys.argv[1], sys.argv[2]
 
-# Ordinary tag weights are one or two digits; the never-suggest sentinels are
-# whole thousands. Anything at or above this cutoff is a barrier, not a nudge.
+# Tags whose forms must never reach a user. Each must price at or above
+# max-weight.
+HARD_BLOCK = ("+Use/SpellNoSugg", "+Use/Derrog", "+Cmp/Hyph", "+Cmp/SplitR")
+
+# Tags deliberately priced below max-weight: offerable, but only once
+# nothing cheaper exists.
+GRADED = ()
+
+# Ordinary tag weights are one or two digits. Anything at or above this is a
+# barrier of some kind and must be classified as one of the two above.
 BARRIER_CUTOFF = 1000
 
-sentinels = {}
+weights = {}
 for line in open(reweight, encoding="utf-8"):
     line = line.split("!")[0].strip()
     if not line or line.startswith("#"):
@@ -69,31 +83,62 @@ for line in open(reweight, encoding="utf-8"):
     except ValueError:
         continue
     if weight >= BARRIER_CUTOFF:
-        sentinels[parts[0]] = weight
+        weights[parts[0]] = weight
 
-if not sentinels:
-    print("ERROR no never-suggest sentinel found in %s" % reweight)
-    sys.exit(1)
+errors = []
 
-floor = min(sentinels.values())
-max_weight = json.load(open(config, encoding="utf-8")).get("max-weight")
-
-if max_weight is None:
-    print("ERROR %s has no max-weight; the barrier is unenforced" % config)
-    sys.exit(1)
-
-# divvunspell keeps a candidate when weight <= max-weight, and a blocked
-# candidate always carries its lexical weight on top of the sentinel, so
-# equality is the intended setting rather than an off-by-one.
-if max_weight > floor:
-    print(
-        "ERROR max-weight %s exceeds the never-suggest sentinel %s (%s).\n"
-        "       Every blocked form is suggestable at this ceiling."
-        % (max_weight, floor, ", ".join(sorted(sentinels)))
+# A renamed or deleted tag must not silently disarm the guard.
+missing = [t for t in HARD_BLOCK if t not in weights]
+if missing:
+    errors.append(
+        "hard-block tags absent from %s: %s.\n"
+        "       They were renamed or dropped; the barrier is unenforced."
+        % (reweight, ", ".join(missing))
     )
+
+unclassified = sorted(set(weights) - set(HARD_BLOCK) - set(GRADED))
+if unclassified:
+    errors.append(
+        "barrier-scale tags in neither list: %s.\n"
+        "       Classify each as hard-block or graded in this test."
+        % ", ".join(unclassified)
+    )
+
+max_weight = json.load(open(config, encoding="utf-8")).get("max-weight")
+if max_weight is None:
+    errors.append("%s has no max-weight; the barrier is unenforced" % config)
+
+if max_weight is not None:
+    # divvunspell keeps a candidate when weight <= max-weight, and a blocked
+    # candidate always carries its lexical weight on top of the tag, so
+    # equality is the intended setting rather than an off-by-one.
+    breached = sorted(
+        t for t in HARD_BLOCK if t in weights and weights[t] < max_weight
+    )
+    if breached:
+        errors.append(
+            "max-weight %s is above hard-block tags %s.\n"
+            "       Forms carrying them are suggestable at this ceiling."
+            % (max_weight, ", ".join("%s=%s" % (t, weights[t]) for t in breached))
+        )
+    # A graded tag at or above the ceiling is silently a hard block, which
+    # means the grading is not doing what it claims.
+    inert = sorted(
+        t for t in GRADED if t in weights and weights[t] >= max_weight
+    )
+    if inert:
+        errors.append(
+            "graded tags %s are at or above max-weight %s.\n"
+            "       They block outright rather than ranking last."
+            % (", ".join("%s=%s" % (t, weights[t]) for t in inert), max_weight)
+        )
+
+if errors:
+    print("ERROR " + "\n       ".join(errors))
     sys.exit(1)
 
-print(floor)
+# Part 2 flags any suggestion at or above the cheapest hard block.
+print(min(weights[t] for t in HARD_BLOCK))
 PYEOF
 )
 rv=$?
