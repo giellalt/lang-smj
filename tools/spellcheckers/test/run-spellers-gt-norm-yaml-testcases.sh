@@ -36,7 +36,7 @@ halftest=
 
 # Specify the name of the subdir where the yaml files are, use '.' if it is the
 # same dir as this script:
-yaml_file_subdir=speller-gt-norm-yamls
+yaml_file_subdir=desktopspeller-gt-norm-yamls
 
 ####### Run the helper script from giella core - DO NOT CHANGE: ########
 for tk in $TESTKITS ; do

@@ -6,7 +6,10 @@ if test -f "$GIELLA_CORE/scripts/termcolors.bash" ; then
 fi
 # settings:
 TESTER=@DIVVUNSPELL@
-THRESHOLD=75
+# Regression floor for precision@5 on the composed default-speller typo set.
+# Keep this a couple of points under the measured value so it guards against a
+# real regression without tripping on build-to-build noise.
+THRESHOLD=85
 TYPOS_GENERATED="@builddir@/typos-default-generated.tsv"
 TYPOS_FALLBACK="@srcdir@/typos.tsv"
 ZHFST="@builddir@/../@GTLANG2@.zhfst"

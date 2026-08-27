@@ -115,6 +115,96 @@ WORD_REPLACEMENTS=yes
 		| $(HFST_CONCATENATE) - .generated/anystar.hfst   \
 		-o $@
 
+# Lexicalised +Err/Orth entries already provide curated misspelling/correction
+# pairs.  The generated test file is their checked-in, deterministic surface
+# form.  Reduce those pairs to contextual alternations so the same evidence can
+# correct unseen inflections and compounds instead of shipping a word list.
+ERRORTH_SOURCE = $(srcdir)/test/typos-generated-err.tsv
+ERRORTH_STRINGS = $(srcdir)/strings.errorth.default.regex
+ERRORTH_EXTRACT = $(srcdir)/extract-errorth-strings.py
+
+# These costs were selected on the independent hand corpus and on lemma-
+# disjoint folds, not on fit to the generated source pairs.  All contextual
+# rules are retained: requiring multiple source lemmas removed independent-
+# corpus wins as well as noise.  Multi-region and expansion evidence is useful
+# at a lower cost, while complete deletions need a more conservative cost.
+# This never adds a whole-word correction relation.
+#
+# Independent hand corpus:       74.64 / 88.27 -> 75.58 / 88.92 (top1/top5)
+# Lemma-disjoint generated folds: 58.97 / 73.36 -> 67.97 / 81.47 (top1/top5)
+ERRORTH_WEIGHT = 10
+ERRORTH_MULTI_WEIGHT = 5
+ERRORTH_DELETION_WEIGHT = 15
+ERRORTH_EXPANSION_WEIGHT = 5
+ERRORTH_MIN_SUPPORT = 1
+ERRORTH_MAX_SPAN = 8
+
+# A generated alternation may fire anywhere in a word.  Repetition lets the
+# separate regions recovered from one pair fire together in one string-edit
+# component.  All area models share the rules; their acceptors still decide
+# which resulting word forms are valid for that area.
+.generated/strings.errorth.default.desktop.hfst \
+.generated/strings.errorth.NO.desktop.hfst \
+.generated/strings.errorth.SE.desktop.hfst: $(ERRORTH_STRINGS) \
+										 .generated/anystar.hfst
+	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) -S $(HFST_FLAGS) -i $< \
+	   --format=openfst-tropical \
+		| $(HFST_CONCATENATE)   .generated/anystar.hfst - \
+		| $(HFST_CONCATENATE) - .generated/anystar.hfst \
+		| $(HFST_REPEAT) -f 1 -t $(STRING_REGEX_EDIT_DISTANCE) \
+		-o $@
+
+# These explicit rules override the shared edit-distance assembly.  Keeping
+# each target explicit also prevents make's implicit-rule search from choosing
+# the shared recipe before the generated Err/Orth component exists.
+.generated/editdist.all.default.desktop.hfst: \
+					 .generated/strings.all.default.desktop.hfst \
+					 .generated/strings.errorth.default.desktop.hfst \
+					 .generated/editdist.default.hfst
+	$(AM_V_UNION)$(HFST_DISJUNCT) $(MORE_VERBOSITY) \
+		    .generated/strings.all.default.desktop.hfst \
+		    .generated/strings.errorth.default.desktop.hfst \
+		| $(HFST_DISJUNCT) $(MORE_VERBOSITY) - .generated/editdist.default.hfst \
+		| $(HFST_REPEAT) -f 1 -t $(EDIT_DISTANCE) \
+		-o $@
+
+.generated/editdist.all.NO.desktop.hfst: \
+					 .generated/strings.all.NO.desktop.hfst \
+					 .generated/strings.errorth.NO.desktop.hfst \
+					 .generated/editdist.NO.hfst
+	$(AM_V_UNION)$(HFST_DISJUNCT) $(MORE_VERBOSITY) \
+		    .generated/strings.all.NO.desktop.hfst \
+		    .generated/strings.errorth.NO.desktop.hfst \
+		| $(HFST_DISJUNCT) $(MORE_VERBOSITY) - .generated/editdist.NO.hfst \
+		| $(HFST_REPEAT) -f 1 -t $(EDIT_DISTANCE) \
+		-o $@
+
+.generated/editdist.all.SE.desktop.hfst: \
+					 .generated/strings.all.SE.desktop.hfst \
+					 .generated/strings.errorth.SE.desktop.hfst \
+					 .generated/editdist.SE.hfst
+	$(AM_V_UNION)$(HFST_DISJUNCT) $(MORE_VERBOSITY) \
+		    .generated/strings.all.SE.desktop.hfst \
+		    .generated/strings.errorth.SE.desktop.hfst \
+		| $(HFST_DISJUNCT) $(MORE_VERBOSITY) - .generated/editdist.SE.hfst \
+		| $(HFST_REPEAT) -f 1 -t $(EDIT_DISTANCE) \
+		-o $@
+
+# Regenerate the checked-in rules only when the lexical error pairs change.
+# The ordinary speller build consumes the compact regex and stays independent
+# of the expensive descriptive morphology build.
+errorth-regen: $(ERRORTH_SOURCE) $(ERRORTH_EXTRACT)
+	$(AM_V_GEN)$(PYTHON) $(ERRORTH_EXTRACT) \
+		-i $(ERRORTH_SOURCE) -o $(ERRORTH_STRINGS) \
+		--weight $(ERRORTH_WEIGHT) \
+		--multi-weight $(ERRORTH_MULTI_WEIGHT) \
+		--deletion-weight $(ERRORTH_DELETION_WEIGHT) \
+		--expansion-weight $(ERRORTH_EXPANSION_WEIGHT) \
+		--min-support $(ERRORTH_MIN_SUPPORT) \
+		--max-span $(ERRORTH_MAX_SPAN)
+
+.PHONY: errorth-regen
+
 ### End Local build rules ###
 
 # vim: set ft=automake:
