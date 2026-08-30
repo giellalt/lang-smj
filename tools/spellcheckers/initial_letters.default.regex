@@ -1,9 +1,22 @@
+! Initial-letter edits, read only when INITIAL_EDITS in
+! Makefile.mod-desktop-hfst.am is 'regex' or 'both'.
+!
+! The lowercase block below matches the alphabet declared in
+! editdist.default.txt. It previously carried c and s in their North Sami
+! hacek forms, which Lule Sami does not use, and omitted ng, n-tilde, w, x
+! and z, which it does.
+!
+! The uppercase and case-correction blocks are left as they were: that
+! alphabet declares NO uppercase letters at all, so every symbol those two
+! blocks name is undeclared and neither can work as written. Adding the
+! uppercase inventory to editdist.default.txt is a live change to the error
+! model and wants a linguist, so it is not made here.
 [
 [ [A|Á|B|C|Č|D|E|F|G|H|I|J|K|L|M|N|O|P|R|S|Š|T|U|V|Y|Ä|Æ|Ø|Ö|Å] ->
   [A|Á|B|C|Č|D|E|F|G|H|I|J|K|L|M|N|O|P|R|S|Š|T|U|V|Y|Ä|Æ|Ø|Ö|Å] ]::20 
 |
-[ [a|á|b|c|č|d|e|f|g|h|i|j|k|l|m|n|o|p|r|s|š|t|u|v|y|ä|æ|ø|ö|å] ->
-  [a|á|b|c|č|d|e|f|g|h|i|j|k|l|m|n|o|p|r|s|š|t|u|v|y|ä|æ|ø|ö|å] ]::20 
+[ [a|á|b|c|d|e|f|g|h|i|j|k|l|m|n|ŋ|ñ|o|p|r|s|t|u|v|w|x|y|z|ä|æ|ö|ø|å] ->
+  [a|á|b|c|d|e|f|g|h|i|j|k|l|m|n|ŋ|ñ|o|p|r|s|t|u|v|w|x|y|z|ä|æ|ö|ø|å] ]::20 
 |
 [
 a -> A,
