@@ -2154,6 +2154,9 @@ LIST MAYBE-V-sme = "soaitit" ;
 LIST MAYBE-V-smn = "sättiđ" ;
 SET MAYBE-V = MAYBE-V-smj OR MAYBE-V-sma OR MAYBE-V-sme OR MAYBE-V-smn ;
 
+LIST JAGÁK-LIKE = "minuhttasasj" "sekunndasasj" "tijmmasasj" "bæjvvásasj" "vahkkusasj" "mánnusasj" "jahkásasj" "tjiluk" "fåvtåk" "hestak" "mánuk" "jagák" "vahkuk" "tjillusasj" ;
+
+
 ADD:syn-from-sentence-init-copula (&syn-from-sentence-init-copula) TARGET SentInit IF (NEGATE -1 BOS OR COMMA OR (";") OR (":") OR CITATION OR HYPHEN) 
 (NEGATE 0 &syn-number_congruence-subj-verb) 
 (NEGATE 0 &msyn-soajtta-le) 
@@ -2201,6 +2204,7 @@ COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence
 (NEGATE -1 (Pers Sg2) OR (Pers Sg3)) 
 (NEGATE -1 ("nubbe" Ord Sg Nom))
 (NEGATE -1 ("guhti" Sg Nom) LINK -1 (Pers Sg2) OR (Pers Sg3))
+(NEGATE *-1 (Rel Sg Nom) BARRIER S-BOUNDARY OR Rel)
 (NEGATE 2 CC)
 (NEGATE *1 (V Pl3) BARRIER S-BOUNDARY) 
 (NEGATE -1 (Neg Sg1) OR (Neg Sg2) OR (Neg Sg3));
@@ -2211,6 +2215,9 @@ COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence
 COPY:syn-from-sentence-init-copula (Pl3 SUGGEST) EXCEPT (Sg3 SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (1 (Pl Nom) LINK -2 ("de")) ;
     ## Vájku dat rádje sjattaj de {le} ulmutja sässtám ietjasa dábijt ja kultuvrav. 
     
+COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Pl3 &syn-from-sentence-init-copula) IF (1 (Num)) (NEGATE 1 ("akta" Num) OR ("1" Num)) (NEGATE 1 JAGÁK-LIKE ) (NEGATE *-1 (Rel Sg Nom) BARRIER S-BOUNDARY OR Rel) (NEGATE -1 (Sg Nom)) ;
+	## Jahkelågo 2000 rájes {le} gålmmå guoradallama dagádum gåk le årrum gå unneplåhkoláhka bådij.
+
 
     
 LIST GO-PCLE-smj = "gå" ;
@@ -2221,16 +2228,26 @@ SET GO-PCLE = GO-PCLE-smj OR GO-PCLE-sme OR GO-PCLE-sma OR GO-PCLE-smn ;
 
 	# la
 	# --
-COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 ("ja") OR ("de" Adv) OR ("de" CC) OR GO-PCLE OR ("valla") OR ConNeg) (-1 (Sg) OR (Sg3 Nom) OR ("ij" Neg Ind Prs Sg3)) ;
+COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 ("ja") OR ("de" Adv) OR ("de" CC) OR GO-PCLE OR ("valla") OR ConNeg OR Neg) (-1 (Sg) OR (Sg3 Nom) OR ("ij" Neg Ind Prs Sg3))  (NEGATE 1 Num LINK NOT -1 ("liehket" Sg3) LINK -1 (Sg Nom))  ;
 
     ## Ieŋŋgil le buorre > la
 	## Árvustallam viertti dáhpáduvvat dajna elementajn manna le sæmmi lágásj dåbddomærkka ja mij {le} lagámus, ij dåhkki dåbddomerkajt árvustallat ietjá elementajn jus gávnnu elemænnta manna le sæmmi lágásj dåbddomerka lagábun. 
 	#$ Avtaárvvusasj sosiáldievnastus sáme álmmugij man vuodo {le} sámegiella ja kultuvrra.
 
+COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (1 ("akta" Num) OR ("1" Num) OR Coll ) (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 ("ja") OR ("de" Adv) OR ("de" CC) OR GO-PCLE OR ("valla") OR ConNeg OR Neg) ;
+	## Såj æbá le guovtes
+
+COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (1 Num LINK 1 JAGÁK-LIKE ) (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 ("ja") OR ("de" Adv) OR ("de" CC) OR GO-PCLE OR ("valla") OR ConNeg OR Neg);
+	## Sån {le} gålmå jagák
+
+COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (1 Num LINK *-1 (Rel Sg Nom) BARRIER S-BOUNDARY OR Rel) (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 ("ja") OR ("de" Adv) OR ("de" CC) OR GO-PCLE OR ("valla") OR ConNeg OR Neg);
+	## dållåsajev mij dán aktijvuodan {le} gáktsa gierge.
+
+
 COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) OR (Sg2 &syn-from-sentence-init-copula) IF (-1 ("guhti" Sg Nom) LINK -1 ("dån")) ;
 
 
-COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 (V Prt) OR (V Prs)) (NEGATE -1 N OR A) ; 
+COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (-1 (V Prt) OR (V Prs)) (NEGATE -1 N OR A) (NEGATE 1 Num LINK NOT 0 ("akta" Num) OR ("1" Num) LINK NOT 1 JAGÁK-LIKE ); 
     ## dagu sálmmagirjje suláj 1890-rájes majt sån jáhkká {le} ájnna mij Divtasvuonan vilák gávnnu.
 
 COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET (Sg3 &syn-from-sentence-init-copula) IF (1 COMMA OR EOS) ;
@@ -2258,7 +2275,7 @@ COPY:syn-from-sentence-init-copula (SUGGEST) EXCEPT (SentInit &syn-from-sentence
 	## Såj læbá boahtám sijddaj
 	#$ Jus galggap vuorbástuvvat hæhttup aktan barggat, dádjadusájn juhti {le} nasjåvnålasj fálaldagá ma galggi ásaduvvat
 	
-COPY:syn-from-sentence-init-copula ( SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET &syn-from-sentence-init-copula IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 ("ja") OR ("de" Adv) OR ("de" CC) OR ("jali") OR ("juo"))(NEGATE -1 (Sg Nom) OR (Sg3 Nom) OR ( "ij" Neg Ind Prs Sg3) OR (Pl Nom) - <AttrPred> OR (Pl3 Nom)) (NEGATE 1 (N Pl Nom) LINK *1 (V Pl3) BARRIER S-BOUNDARY) (NEGATE -1 ("mån" Pl1 Ill) OR ("dån" Pl2 Ill) OR ("sån" Pl3 Ill)) ;
+COPY:syn-from-sentence-init-copula ( SUGGEST) EXCEPT (SentInit &syn-from-sentence-init-copula) TARGET &syn-from-sentence-init-copula IF (NEGATE -1 ("<.*[aeiouáå]>"r) LINK NOT 0 ("ja") OR ("de" Adv) OR ("de" CC) OR ("jali") OR ("juo"))(NEGATE -1 (Sg Nom) OR (Sg3 Nom) OR ( "ij" Neg Ind Prs Sg3) OR (Pl Nom) - <AttrPred> OR (Pl3 Nom)) (NEGATE 1 (N Pl Nom) LINK *1 (V Pl3) BARRIER S-BOUNDARY) (NEGATE -1 ("mån" Pl1 Ill) OR ("dån" Pl2 Ill) OR ("sån" Pl3 Ill)) (NEGATE 1 Num LINK NOT 0 ("akta" Num) OR ("1" Num) LINK NOT 1 JAGÁK-LIKE ) ;
 
 	## ja {le} akta dajs ájnnasamos > la
     ## jus boadá de {le} buorre> la 
@@ -4282,7 +4299,7 @@ LIST YEAR-OLD-A-sma = "fïerhtenjaapetje" ;
 LIST YEAR-OLD-A-smn = "ihásâš" ;
 SET YEAR-OLD-A = YEAR-OLD-A-smj OR YEAR-OLD-A-sme OR YEAR-OLD-A-sma OR YEAR-OLD-A-smn ;
 
-LIST JAGÁK-LIKE = "minuhttasasj" "sekunndasasj" "tijmmasasj" "bæjvvásasj" "vahkkusasj" "mánnusasj" "jahkásasj" "tjiluk" "fåvtåk" "hestak" "mánuk" "jagák" "vahkuk" "tjillusasj" ;
+
 
 ADD:msyn-nom-numeral-jagak (&msyn-nom-numeral-jagak) TARGET (Num Sg Nom) IF (1 JAGÁK-LIKE + A) ;
 
