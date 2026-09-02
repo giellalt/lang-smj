@@ -1,41 +1,19 @@
+! Initial-letter edits, read only when INITIAL_EDITS in
+! Makefile.mod-desktop-hfst.am is 'regex' or 'both'. It is 'no', so nothing
+! here is compiled in today.
+!
+! The alphabet must match editdist.default.txt. This previously carried c and
+! s in their North Sami hacek forms, which Lule Sami does not use, and omitted
+! ng, n-tilde, w, x and z, which it does.
+!
+! There is no uppercase block and no lowercase-to-uppercase block. Both used
+! to be here, and both named symbols the alphabet does not declare -- it has
+! no uppercase letters at all -- so neither could ever fire. That is the
+! intended shape: uppercase makes the error model much larger and the speller
+! slower, and the chance of misspelling the initial letter of a name is low
+! enough that other error models drop it too. Sentence-initial capitalisation
+! is handled outside the error model.
 [
-[ [A|Á|B|C|Č|D|E|F|G|H|I|J|K|L|M|N|O|P|R|S|Š|T|U|V|Y|Ä|Æ|Ø|Ö|Å] ->
-  [A|Á|B|C|Č|D|E|F|G|H|I|J|K|L|M|N|O|P|R|S|Š|T|U|V|Y|Ä|Æ|Ø|Ö|Å] ]::20 
-|
-[ [a|á|b|c|č|d|e|f|g|h|i|j|k|l|m|n|o|p|r|s|š|t|u|v|y|ä|æ|ø|ö|å] ->
-  [a|á|b|c|č|d|e|f|g|h|i|j|k|l|m|n|o|p|r|s|š|t|u|v|y|ä|æ|ø|ö|å] ]::20 
-|
-[
-a -> A,
-á -> Á,
-b -> B,
-c -> C,
-č -> Č,
-d -> D,
-e -> E,
-f -> F,
-g -> G,
-h -> H,
-i -> I,
-j -> J,
-k -> K,
-l -> L,
-m -> M,
-n -> N,
-o -> O,
-p -> P,
-q -> Q,
-r -> R,
-s -> S,
-š -> Š,
-t -> T,
-u -> U,
-v -> V,
-w -> W,
-y -> Y,
-æ -> Æ,
-ø -> Ø,
-å -> Å,
-ä -> Ä,
-ö -> Ö ]::25
+[ [a|á|b|c|d|e|f|g|h|i|j|k|l|m|n|ŋ|ñ|o|p|r|s|t|u|v|w|x|y|z|ä|æ|ö|ø|å] ->
+  [a|á|b|c|d|e|f|g|h|i|j|k|l|m|n|ŋ|ñ|o|p|r|s|t|u|v|w|x|y|z|ä|æ|ö|ø|å] ]::20 
 ] ;
