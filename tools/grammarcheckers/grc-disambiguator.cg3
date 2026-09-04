@@ -2690,8 +2690,13 @@ SELECT Pcle IF (*-1 BOS BARRIER NOT-PCLE)(1 ("dal"));
 # ========
 
 # Gen as modifier
-REMOVE V (NOT *-1 VFIN BARRIER S-BOUNDARY2)(0 Gen LINK NEGATE 0 VFIN LINK *-1 NP-HEAD-NOM BARRIER NOT-ADV)(*1 (N Nom) BARRIER NPNH OR CC OR COMMA LINK *1 VFIN BARRIER V OR S-BOUNDARY2) (NEGATE 0 PxSg1 LINK 0 PrfPrc) (NEGATE 0  (Gram/NomAg Err/Orth) OR (Der/NomAg Err/Orth)) (NEGATE 0 (V Sg3) LINK 1 CLB);
+REMOVE V (NOT *-1 VFIN BARRIER S-BOUNDARY2)(0 Gen LINK NEGATE 0 VFIN LINK *-1 NP-HEAD-NOM BARRIER NOT-ADV)(*1 (N Nom) BARRIER NPNH OR CC OR COMMA LINK *1 VFIN BARRIER V OR S-BOUNDARY2) 
+(NEGATE 0 PxSg1 LINK 0 PrfPrc) 
+(NEGATE 0  (Gram/NomAg Err/Orth) OR (Der/NomAg Err/Orth)) 
+(NEGATE 0 (V Sg3) LINK 1 CLB) 
+(NEGATE 0 (N Err/Orth) OR (N <spelled>)) ;
 	## Giela árvo le bájnnám sámij giellamáhtov. 
+	#$ Sámedikke guoradallam sámegiela adnema birra jages 2000 {vuoset} dálasj ájge birrusij 400 ulmutja bukti julevsámegielav 
 #REMOVE Nom (NOT *-1 VFIN BARRIER S-BOUNDARY)(0 Gen)(*1 (N Nom) BARRIER NPNH OR CC OR COMMA LINK *1 VFIN BARRIER V OR S-BOUNDARY) ;
 	
 
@@ -3978,7 +3983,7 @@ SELECT Com IF (0 ("kråvnnå") OR Num)(*1 ("oasstet") BARRIER SV-BOUNDARY2 LINK 
 	## Gålmåjn låk kråvnåjn la sån oasstám biebmojt.  
     
 SELECT Com IF (*-1 COMV BARRIER SV-BOUNDARY2 LINK 0 VERB)(NEGATE 0 PLACE OR SITUATION) (NEGATE 0 (N Sg Ill) LINK -1 (Num Sg Gen));
-SELECT Com IF (NEGATE 0 PLACE OR SITUATION)(*1 COMV BARRIER SV-BOUNDARY2 LINK 0 VERB);
+SELECT Com IF (NEGATE 0 PLACE OR SITUATION)(*1 COMV BARRIER SV-BOUNDARY2 LINK 0 VERB) (NEGATE 0 (Err/Orth Com));
 	## Duola dagu subsastin man gássjel la uddni bierggit árbbedábálasj æládusáj.
 
 SELECT Com IF (*-1 COMV BARRIER SV-BOUNDARY2 LINK 0 VERB)(0 POLITICAL-PLACE);
