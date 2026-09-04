@@ -3479,7 +3479,7 @@ LIST NEG-PRON = Foc/Neg-k ("nágin") ;
 
 SET V-SUBJ-CONGR = SG-V-SUBJ OR PL-V-SUBJ ;
 
-ADD:xsyn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + $$PERSON IF (*1 (Pron Nom) + $$PERSON BARRIER NOT-NPMOD OR CC LINK NOT 0 NEG-PRON  OR ("ietja")) (*1 ConNeg BARRIER Rel OR Neg OR CS)  (*-1 CS OR Rel OR MO OR ("váj")) (NEGATE *1 ("?") LINK 1 EOS)  ;
+ADD:xsyn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + $$PERSON IF (*1 (Pron Nom) + $$PERSON BARRIER NOT-NPMOD OR CC LINK NOT 0 NEG-PRON  OR ("ietja")) (*1 ConNeg BARRIER Rel OR Neg OR CS)  (*-1 CS OR Rel OR MO OR ("váj")) (NEGATE *1 ("?") LINK 1 EOS)  (NEGATE 0 ImprtII OR Imprt);
 	#$ Oahppe e ietja diede.
     #$ Dile li sierraláhkáj, ja ij aktak åtsådallamijs máhte sirdeduvvat mekánalattjat sáme guovlojda.
 
@@ -3494,7 +3494,11 @@ ADD:xsyn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + $$PERSON IF (*1 (Pr
     ## ij váiban áddjá --- PrfPrc
    
 
-ADD:xsyn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + Sg3 IF (*1 (N Sg Nom) BARRIER NOT-NPMOD OR CC) (*1 ConNeg BARRIER Rel OR Neg OR CS) (*-1 CS OR Rel OR MO OR ("váj") OR BOS BARRIER S-BOUNDARY) (NEGATE *1 ("?") LINK 1 EOS) (NEGATE 1 PrfPrc ) (NEGATE -1 ("javllat" Ind)) ;
+ADD:xsyn-subj-before-neg (&syn-subj-before-neg) TARGET Neg + Sg3 IF (*1 (N Sg Nom) BARRIER NOT-NPMOD OR CC) (*1 ConNeg BARRIER Rel OR Neg OR CS) (*-1 CS OR Rel OR MO OR ("váj") OR BOS BARRIER S-BOUNDARY) 
+(NEGATE *1 ("?") LINK 1 EOS) 
+(NEGATE 1 PrfPrc ) 
+(NEGATE -1 ("javllat" Ind)) 
+(NEGATE -1 Ine) ; #Ålles Egiptan ittjij akta ájnna rássegahpan gåsik bátse
     ## ij áddjá boade
 	#$ Oslon le suohkanstivrraválgga ja stádaguovlloválgga, valla {ij} fylkadiggeválgga.
     #$ Báhttja buolvav gihpo vuosstij diebttjij ja gákkaj majt nagáj, valla gihppo {ittjij} doaddjum. 
