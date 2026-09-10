@@ -4719,15 +4719,15 @@ COPY:msyn-numphrase-sggen (Sg Gen SUGGEST) EXCEPT (Pl Gen &msyn-numphrase-sggen)
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen TO (*-1 (Dem &msyn-numphrase-sggen));
 
 # correct demonstratives that get associated with wrong noun (to get a longer blue line)
-ADDRELATION ($3 LEFT) (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen TO (*-1 (Dem Sg Gen) - &msyn-numphrase-sggen);
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen TO (*-1 (Dem Sg Gen) - &msyn-numphrase-sggen LINK NOT 0 &msyn-numphrase-sggen);
 	## mån vuojnáv guokta bednaga dan guovte bievdij duogen
 	
 # correct demonstratives that get associated with wrong numerals (and in an earlier rule with correct nouns) (to get a longer blue line)
-ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sggen) OR ("moadda" Indef &msyn-numphrase-sggen) TO (-1 (Dem Sg Gen) - &msyn-numphrase-sggen);
+ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sggen) OR ("moadda" Indef &msyn-numphrase-sggen) TO (-1 (Dem Sg Gen) - &msyn-numphrase-sggen LINK NOT 0 &msyn-numphrase-sggen);
 	## mån vuojnáv guokta bednaga dan guokta bievde duogen
 
 # correct nouns that get associated with wrong demonstratives (to get a longer blue line)
-ADDRELATION ($3 RIGHT) (Dem &msyn-numphrase-sggen) TO (*1 (N Sg Gen) - &msyn-numphrase-sggen OR NUMUNIT + (Sg Gen) - &msyn-numphrase-sggen);
+ADDRELATION ($3 RIGHT) (Dem &msyn-numphrase-sggen) TO (*1 (N Sg Gen) - &msyn-numphrase-sggen OR NUMUNIT + (Sg Gen) - &msyn-numphrase-sggen LINK NOT 0 &msyn-numphrase-sggen);
 	## mån vuojnáv guokta bednaga da guovte bievde duogen
 
 
@@ -5022,13 +5022,13 @@ ADD:msyn-numphrase-sgacc (&msyn-numphrase-sgacc) TARGET (Pron Dem Pl) - Nom IF (
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgacc) OR NUMUNIT + &msyn-numphrase-sgacc TO (*-1 (Dem &msyn-numphrase-sgacc));
 
 # correct demonstratives that get associated with wrong numerals (to get a longer blue line)
-ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgacc) OR NUMUNIT + &msyn-numphrase-sgacc TO (*-1 (Dem Pl Nom) - &msyn-numphrase-sgacc);
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgacc) OR NUMUNIT + &msyn-numphrase-sgacc TO (*-1 (Dem Pl Nom) - &msyn-numphrase-sgacc LINK NOT 0 &msyn-numphrase-sgacc);
 	
 # correct demonstratives that get associated with wrong numerals (and in an earlier rule with correct nouns) (to get a longer blue line)
-ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sgacc) OR ("moadda" Indef &msyn-numphrase-sgacc) TO (-1 (Dem Pl Nom) - &msyn-numphrase-sgacc);
+ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sgacc) OR ("moadda" Indef &msyn-numphrase-sgacc) TO (-1 (Dem Pl Nom) - &msyn-numphrase-sgacc LINK NOT 0 &msyn-numphrase-sgacc);
 
 # correct nouns that get associated with wrong demonstratives (to get a longer blue line)
-ADDRELATION ($3 RIGHT) (Dem &msyn-numphrase-sgacc) TO (*1 (N Sg Gen) - &msyn-numphrase-sgacc OR (N Pl Nom) - &msyn-numphrase-sgacc OR NUMUNIT + (Sg Gen) - &msyn-numphrase-sgacc OR NUMUNIT + (Pl Nom) - &msyn-numphrase-sgacc);
+ADDRELATION ($3 RIGHT) (Dem &msyn-numphrase-sgacc) TO (*1 (N Sg Gen) - &msyn-numphrase-sgacc OR (N Pl Nom) - &msyn-numphrase-sgacc OR NUMUNIT + (Sg Gen) - &msyn-numphrase-sgacc OR NUMUNIT + (Pl Nom) - &msyn-numphrase-sgacc LINK NOT 0 &msyn-numphrase-sgacc);
 
 
 	
@@ -5276,14 +5276,14 @@ ADD:msyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Pron Dem Pl) IF (*1 (Nu
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgill) OR NUMUNIT + &msyn-numphrase-sgill TO (*-1 (Dem &msyn-numphrase-sgill));
 
 # correct demonstratives that get associated with wrong noun (to get a longer blue line)
-ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgill) OR NUMUNIT + &msyn-numphrase-sgill TO (*-1 (Dem Sg Gen) - &msyn-numphrase-sgill OR (Dem Sg Ill Attr) - &msyn-numphrase-sgill);
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgill) OR NUMUNIT + &msyn-numphrase-sgill TO (*-1 (Dem Sg Gen) - &msyn-numphrase-sgill OR (Dem Sg Ill Attr) - &msyn-numphrase-sgill LINK NOT 0 &msyn-numphrase-sgill);
 
 	
 # correct demonstratives that get associated with wrong numerals (and in an earlier rule with correct nouns) (to get a longer blue line)
-ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sgill) OR ("moadda" Indef &msyn-numphrase-sgill) TO (-1 (Dem Sg Gen) - &msyn-numphrase-sgill OR (Dem Sg Ill Attr) - &msyn-numphrase-sgill);
+ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sgill) OR ("moadda" Indef &msyn-numphrase-sgill) TO (-1 (Dem Sg Gen) - &msyn-numphrase-sgill OR (Dem Sg Ill Attr) - &msyn-numphrase-sgill LINK NOT 0 &msyn-numphrase-sgill);
 
 # correct nouns that get associated with wrong demonstratives (to get a longer blue line)
-ADDRELATION ($3 RIGHT) (Dem &msyn-numphrase-sgill) TO (1 Num - &msyn-numphrase-sgill LINK *1 (N Sg Ill) - &msyn-numphrase-sgill OR NUMUNIT + (Sg Ill) - &msyn-numphrase-sgill);
+ADDRELATION ($3 RIGHT) (Dem &msyn-numphrase-sgill) TO (1 Num - &msyn-numphrase-sgill LINK *1 (N Sg Ill) - &msyn-numphrase-sgill OR NUMUNIT + (Sg Ill) - &msyn-numphrase-sgill LINK NOT 0 &msyn-numphrase-sgill);
 	## mån vuojnáv guokta bednaga da guovte bievde duogen
 	
 # wrong demonstratives that get associated with wrong numerals before nouns	
@@ -5451,7 +5451,7 @@ ADDRELATION ($2 RIGHT) (Num &msyn-numphrase-sgela) OR ("moadda" Indef &msyn-nump
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela TO (*-1 (Dem &msyn-numphrase-sgela));
 
     # correct demonstratives that get associated with wrong noun (to get a longer blue line)
-ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela TO (*-1 (Dem Sg Par) - &msyn-numphrase-sgela);
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela TO (*-1 (Dem Sg Par) - &msyn-numphrase-sgela LINK NOT 0 &msyn-numphrase-sgela);
 	
 	# correct demonstratives that get associated with wrong numerals (and in an earlier rule with correct nouns) (to get a longer blue line)
 ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sgela) OR ("moadda" Indef &msyn-numphrase-sgela) TO (-1 (Dem Sg Par) - &msyn-numphrase-sgela);
@@ -5670,15 +5670,15 @@ ADD:msyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Pron Dem Pl) IF (*1 (Nu
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgine) OR NUMUNIT + &msyn-numphrase-sgine TO (*-1 (Dem &msyn-numphrase-sgine));
 
 # correct demonstratives that get associated with wrong noun (to get a longer blue line)
-ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgine) OR NUMUNIT + &msyn-numphrase-sgine TO (*-1 (Dem Sg Ine) - &msyn-numphrase-sgine);
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgine) OR NUMUNIT + &msyn-numphrase-sgine TO (*-1 (Dem Sg Ine) - &msyn-numphrase-sgine LINK NOT 0 &msyn-numphrase-sgine);
 	## mån vuojnáv guokta bednaga dan guovte bievdij duogen
 	
 	# correct demonstratives that get associated with wrong numerals (and in an earlier rule with correct nouns) (to get a longer blue line)
-ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sgine) OR ("moadda" Indef &msyn-numphrase-sgine) TO (-1 (Dem Sg Ine) - &msyn-numphrase-sgine);
+ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sgine) OR ("moadda" Indef &msyn-numphrase-sgine) TO (-1 (Dem Sg Ine) - &msyn-numphrase-sgine LINK NOT 0 &msyn-numphrase-sgine);
 	## mån vuojnáv guokta bednaga dan guokta bievde duogen
 
 # correct nouns that get associated with wrong demonstratives (to get a longer blue line)
-ADDRELATION ($3 RIGHT) (Dem &msyn-numphrase-sgine) TO (*1 (N Sg Ine) - &msyn-numphrase-sgine OR NUMUNIT + (Sg Ine) - &msyn-numphrase-sgine);
+ADDRELATION ($3 RIGHT) (Dem &msyn-numphrase-sgine) TO (*1 (N Sg Ine) - &msyn-numphrase-sgine OR NUMUNIT + (Sg Ine) - &msyn-numphrase-sgine LINK NOT 0 &msyn-numphrase-sgine);
 	## mån vuojnáv guokta bednaga da guovte bievde duogen
 
 COPY:msyn-numphrase-sgine (Sg Ine Attr SUGGEST) EXCEPT (Pl Com) OR (Pl Gen Attr) OR (Pl Com) OR (Pl Gen) OR (Pl Nom) OR (Pl Ine) OR (Pl Ine Attr) OR (Pl Ela) TARGET (Dem &msyn-numphrase-sgine) ;
@@ -5900,7 +5900,7 @@ ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgc
 ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Num Sg Com) - &msyn-numphrase-sgcom - Sem/Date OR ("moadda" Indef Sg Com) - &msyn-numphrase-sgine - Sem/Date);
 
 # correct nouns that get associated with wrong numerals (to get a longer blue line)
-ADDRELATION ($2 RIGHT) (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom) TO (*1 (N Sg Com) - &msyn-numphrase-sgcom OR NUMUNIT + (Sg Com) - &msyn-numphrase-sgcom);
+ADDRELATION ($2 RIGHT) (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom) TO (*1 (N Sg Com) - &msyn-numphrase-sgcom OR NUMUNIT + (Sg Com) - &msyn-numphrase-sgcom LINK NOT 0 &msyn-numphrase-sgcom OR &msyn-numphrase-sgine);
 
 
 
@@ -5926,15 +5926,15 @@ LINK *1 (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom OR (N Sg Co
 ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Dem &msyn-numphrase-sgcom)) ;
 
 # correct demonstratives that get associated with wrong noun (to get a longer blue line)
-ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Dem Sg Com) - &msyn-numphrase-sgcom);
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom TO (*-1 (Dem Sg Com) - &msyn-numphrase-sgcom LINK NOT 0 &msyn-numphrase-sgcom);
 	## mån vuojnáv guokta bednaga dan guovte bievdij duogen
 	
 	# correct demonstratives that get associated with wrong numerals (and in an earlier rule with correct nouns) (to get a longer blue line)
-ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom) TO (-1 (Dem Sg Com) - &msyn-numphrase-sgcom);
+ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sgcom) OR ("moadda" Indef &msyn-numphrase-sgcom) TO (-1 (Dem Sg Com) - &msyn-numphrase-sgcom  LINK NOT 0 &msyn-numphrase-sgcom);
 	## mån vuojnáv guokta bednaga dan guokta bievde duogen
 
 # correct nouns that get associated with wrong demonstratives (to get a longer blue line)
-ADDRELATION ($3 RIGHT) (Dem &msyn-numphrase-sgcom) TO (*1 (N Sg Com) - &msyn-numphrase-sgcom OR NUMUNIT + (Sg Com) - &msyn-numphrase-sgcom);
+ADDRELATION ($3 RIGHT) (Dem &msyn-numphrase-sgcom) TO (*1 (N Sg Com) - &msyn-numphrase-sgcom OR NUMUNIT + (Sg Com) - &msyn-numphrase-sgcom LINK NOT 0 &msyn-numphrase-sgcom OR &msyn-numphrase-sgine);
 	## mån vuojnáv guokta bednaga da guovte bievde duogen
 
 COPY:msyn-numphrase-sgcom (Sg Com SUGGEST) EXCEPT (Pl Com Attr) OR (Pl Com) OR (Pl Gen Attr) OR (Pl Gen) OR (Pl Nom) OR (Pl Ine) OR (Pl Ine Attr) OR (Pl Ela) TARGET (Dem &msyn-numphrase-sgcom) IF (*2 (N Sg Com) OR (N Pl Ine) OR (N &msyn-numphrase-sgcom) BARRIER NOT-NPMOD LINK NOT 0 PL-PAIR-N) ;
@@ -6003,15 +6003,15 @@ ADDRELATION ($3 LEFT) (N &msyn-numphrase-ess) OR NUMUNIT + &msyn-numphrase-ess T
 
 
 # correct demonstratives that get associated with wrong noun (to get a longer blue line)
-ADDRELATION ($3 LEFT) (N &msyn-numphrase-ess) OR NUMUNIT + &msyn-numphrase-ess TO (*-1 (Dem Ess) - &msyn-numphrase-ess);
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-ess) OR NUMUNIT + &msyn-numphrase-ess TO (*-1 (Dem Ess) - &msyn-numphrase-ess LINK NOT 0 &msyn-numphrase-ess);
 	## mån vuojnáv guokta bednaga dan guovte bievdij duogen
 	
 	# correct demonstratives that get associated with wrong numerals (and in an earlier rule with correct nouns) (to get a longer blue line)
-ADDRELATION ($3 LEFT) (Num &msyn-numphrase-ess) OR ("moadda" Indef &msyn-numphrase-ess) TO (-1 (Dem Sg Ess) - &msyn-numphrase-ess);
+ADDRELATION ($3 LEFT) (Num &msyn-numphrase-ess) OR ("moadda" Indef &msyn-numphrase-ess) TO (-1 (Dem Sg Ess) - &msyn-numphrase-ess LINK NOT 0 &msyn-numphrase-ess);
 	## mån vuojnáv guokta bednaga dan guokta bievde duogen
 
 # correct nouns that get associated with wrong demonstratives (to get a longer blue line)
-ADDRELATION ($3 RIGHT) (Dem &msyn-numphrase-ess) TO (*1 (N Sg Ess) - &msyn-numphrase-ess OR NUMUNIT + (Sg Ess) - &msyn-numphrase-ess);
+ADDRELATION ($3 RIGHT) (Dem &msyn-numphrase-ess) TO (*1 (N Sg Ess) - &msyn-numphrase-ess OR NUMUNIT + (Sg Ess) - &msyn-numphrase-ess LINK NOT 0 &msyn-numphrase-ess);
 	## mån vuojnáv guokta bednaga da guovte bievde duogen
 
 
