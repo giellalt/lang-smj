@@ -4498,12 +4498,12 @@ ADD:msyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Pl Gen) IF ((0 N) OR (0
 (NEGATE 0 NUMUNIT LINK 1 N)
 (NEGATE 1 (N Pl Nom) LINK 1 (V Pl3))
 (NEGATE 1 (V Ind)) 
-(NEGATE *1 PrfPrc BARRIER Rel OR Po LINK *-1 BE ) ; 
+(NEGATE *1 PrfPrc BARRIER Rel OR Po LINK *-1 BE ) ; #INGA
 
 
 #Coordinated nouns after moadda
 ADD:msyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Pl Gen) IF (*-1 COMMA OR CC BARRIER NOT-Attr - PrfPrc LINK -1 N + &msyn-numphrase-sggen OR N + (co&msyn-numphrase-sggen) LINK *-1 ("moadda") BARRIER NOT-Attr - PrfPrc) ;
-    ## Moadda guosaj ja bietsij duogen.
+    ## Moadda guosaj ja bietsij duogen. INGA
     
 COPY:msyn-numphrase-sggen (Sg Gen SUGGEST) EXCEPT (Pl Gen &msyn-numphrase-sggen) TARGET (N &msyn-numphrase-sggen) ;
 	## Guokta {gusáj}  fiekse 
@@ -4668,6 +4668,13 @@ ADD:msyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num v2 
 #	# correct numerals (just to get the blue line)	
 # ADD:msyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num v2 Sg Acc) OR (Num Pl Com) OR (Num Pl Gen) OR ("moadda" Indef Acc) IF (*1 (N Pl Nom) + &msyn-numphrase-sggen OR (N Pl Gen) + &msyn-numphrase-sggen BARRIER NOT-Attr - PrfPrc)
 
+	# relation from main noun to the first coordinated noun
+ADDRELATION ($4 RIGHT) (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen TO (*1 CC OR COMMA LINK *1 (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen); 
+	## Moadda guosaj ja bietsij duogen.
+	
+	# relation from main noun to the second coordinated nouns $4
+ADDRELATION ($4 RIGHT) (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen TO (*1 CC OR COMMA LINK *1 (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen LINK *1 CC OR COMMA LINK *1 (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen);
+	## Moadda guosaj, bietsij ja sågij duogen.
 
 ADDRELATION ($2 LEFT) (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen TO (*-1 (Num &msyn-numphrase-sggen) OR ("moadda" Indef &msyn-numphrase-sggen));
 
@@ -5737,9 +5744,9 @@ ADD:msyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Pl Ine) OR (Sg Com) OR 
 (NEGATE 0 Symbol)
 (NEGATE 0 (Sg Ill) LINK *-1 (Num Sg Gen) OR (Ill Attr) BARRIER NOT-Attr - PrfPrc LINK NOT 0 &msyn-numphrase-sgill)
 (NEGATE 0 (V Sg3) LINK *-1 ("akta" Sg Nom) BARRIER NOT-ADV-PCLE)
-(NEGATE 1 Po OR (N Ill) OR (N Nom)) 
-(NEGATE 1 (N Gen) LINK 1 Po) 
-(NEGATE *1 Po BARRIER (*) - CC - Gen - (N Pl Nom)) ;
+(NEGATE 1 Po OR (N Ill) OR (N Nom))
+(NEGATE 1 CC OR COMMA LINK 1C Gen LINK *1 Po BARRIER (*) - CC - Gen) 
+(NEGATE 1 (N Gen) LINK 1 Po)  ;
     #$ Sámedikkeráde doarjju guokta julevsáme giellaprosjevta {rudáj}.
 
 
