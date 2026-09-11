@@ -37,10 +37,10 @@ del:delis	8
 dját:ddját	9	# vuodját > vuoddját
 dn:ddn	5
 dusáv:dus	9	# åvdåsvásstadusáv > åvdåsvásstádus
-e:ie	4
-ea:edja	5
+e:ie	2
+ea:edja	3
 ea:eja	5
-ea:iedja	5
+ea:iedja	3
 ea:ieja	5
 edia:edijá	9	# Media > Medijá
 ei:ie	9	# æjggoreivtesvuodajt > æjggumrievtesvuodajt
@@ -162,7 +162,7 @@ pia:pijja	9	# Kopia > Kopijja
 pm:bm	8
 prosa:pruvssá	9	# ássjeprosa > ássjepruvssá
 rd:rt	5	# dardav > dartav
-rena:riedná	8
+rena:riedná	2
 rena:riená	9
 rg:rgg	5
 rgg:rkk	5
@@ -240,9 +240,9 @@ y:yj	6
 åp:ådap	5
 åvnnålasj:onihkalasj	9	# Elektråvnnålasj > Elektronihkalasj
 åvtå:avtaj	9	# åvtånik > avtajnik
-éa:edja	5
+éa:edja	3
 éa:eja	5
-éa:iedja	5
+éa:iedja	3
 éa:ieja	5
 ñko:ŋgu	9	# äñko > eŋgu
 ññ:ŋŋ	5
@@ -282,3 +282,32 @@ ss:s	4
 tt:t	4
 vv:v	4
 ŋŋ:ŋ	4
+
+# Diphthongisation of i before a consonant: the plural/illative stems are
+# spelled ij where the misspelling has bare i. The letter model prices the
+# inserted j at DEFAULT_WEIGHT (10), which loses to every same-stem rival.
+i:ij	4
+
+# Loanword vowel adaptation: Norwegian/Swedish -o- before a consonant is
+# spelled -åv- (nasjon > nasjåvnna, metod > metåvdå, europa > euråvpå). The
+# letter model can only reach it as two unrelated edits at 10 each.
+o:åv	5
+
+# Greek/Latin -ikk- science nouns. The adjective is built on -tihkka
+# (matematihkka > matematihkalasj), and the misspellings drop the -ihk- to
+# a bare -t- or spell it as the native -hta- gradation.
+ta:tihka	5
+hta:tihka	5
+
+# -gi- in Greek loans is spelled -sji-, and the following -ia/-ija is the
+# productive -ijja shape: strategi > stratesjijja, energi > enersjijja.
+# The existing gia:sjidja pairs land on -idja, which is the wrong ending.
+gia:sjijja	4
+gija:sjijja	4
+
+# -log- nouns take the native -låvggå shape (geolåvggå), not the -logijja
+# shape that ologa:ologijja lands on.
+ologa:olåvggå	4
+
+# Latin -ct-/-kt- is spelled -vt- (dialekta > dialevta, direkte > direvtte).
+ekt:evt	4
