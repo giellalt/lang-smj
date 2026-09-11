@@ -3,17 +3,45 @@ import * as divvun from "./.divvun-rt/divvun.ts";
 import * as hfst from "./.divvun-rt/hfst.ts";
 import { Command, StringEntry } from "./.divvun-rt/mod.ts";
 
-let spellcheckerConfig = {
-        n_best: 100,             // Maks tal på forslag per ord
-        max_weight: 10000.0,     // Maks vekt for forslag - alle forslag med høgare vekt blir automatisk fjerna
-        beam: 18.0,              // Vektområde, meir enn for sjølvstendig stavekontroll - vi kan filtrera med cg-reglar
-        reweight: {              // Ekstra straffepoeng for endringar etter posisjon
-            start_penalty: 3.0,
-            end_penalty: 1.0,
-            mid_penalty: 1.0,
-        },
-        recase: true,            // Prøv å endra berre stor/liten bokstav først
-    }
+// The tuned speller config, from tools/spellcheckers/config.json. It is copied
+// in rather than imported because divvun-runtime relocates a pipeline's source
+// into a temporary directory before bundling it, where no relative import
+// resolves. Regenerate after retuning the speller:
+//
+//     deno run --allow-read --allow-write sync-speller-config.ts
+//
+// --- BEGIN GENERATED from tools/spellcheckers/config.json ---
+const SPELLER_BASE = {
+    n_best: 100,
+    max_weight: 10000,
+    beam: 25,
+    reweight: {
+        start_penalty: 3,
+        mid_penalty: 1,
+        end_penalty: 1,
+    },
+    node_pool_size: 128,
+    recase: true,
+    search_budget: 1000000,
+};
+// --- END GENERATED ---
+
+// Where this pipeline departs from the tuned speller, and only there. The
+// effective values are the same ones the hand-written copy this replaced set,
+// so behaviour is unchanged; every field not named here now follows the tuned
+// config as it is retuned.
+const spellcheckerConfig = {
+    ...SPELLER_BASE,
+    // Vektområde, meir enn for sjølvstendig stavekontroll - vi kan filtrera med
+    // cg-reglar. Compare the base above before trusting that: the standalone
+    // speller has since been retuned past this beam, so the reason given no
+    // longer describes which of the two is wider. Needs evaluation.
+    beam: 18.0,
+    // Pre-existing: the search runs unbounded here, bounded in the base.
+    // Needs evaluation.
+    search_budget: undefined,
+};
+
 export default function smjGramRelease(entry: StringEntry): Command {
   let x = hfst.tokenize("tokenize", entry, { model_path: "tokeniser-gramcheck-gt-desc.pmhfst" });
   x = divvun.blanktag("whitespace", x, { model_path: "analyser-gt-whitespace.hfst" });
