@@ -6,9 +6,10 @@ import type { SpellerConfig } from "./.divvun-rt/divvun.ts";
 import spellerBase from "../spellcheckers/config.json" with { type: "json" };
 
 // The tuned speller config, imported live from tools/spellcheckers/config.json.
-// The file is in the wire format the runtime deserializes, which is what the
-// cast asserts; these bindings render those keys as TypeScript identifiers.
-const SPELLER_BASE = spellerBase as unknown as SpellerConfig;
+// Kept in the wire format the runtime deserializes: an override must use the
+// same spelling as the key it replaces, or the spread keeps both and the
+// runtime rejects the pair as a duplicate field.
+const SPELLER_BASE = spellerBase;
 
 // Where this pipeline departs from the tuned speller, and only there. The
 // effective values are the same ones the hand-written copy this replaced set,
@@ -27,7 +28,7 @@ const spellcheckerConfig = {
     beam: 18.0,
     // Pre-existing: the search runs unbounded here, bounded in the base.
     // Needs evaluation.
-    search_budget: undefined,
+    "search-budget": undefined,
 };
 
 export default function smjGramRelease(entry: StringEntry): Command {
@@ -39,7 +40,7 @@ export default function smjGramRelease(entry: StringEntry): Command {
   x = divvun.cgspell("speller", x, {
     acc_model_path: "acceptor.default.hfst",
     err_model_path: "errmodel.default.hfst",
-    config: spellcheckerConfig,
+    config: spellcheckerConfig as unknown as SpellerConfig,
   });
   x = cg3.vislcg3("postspell-valency", x, { model_path: "valency-postspell.bin" });
   x = cg3.vislcg3("grc-disamb", x, { model_path: "grc-disambiguator.bin" });
@@ -60,7 +61,7 @@ export function localTest_dev(entry: StringEntry): Command {
   x = divvun.cgspell("speller", x, {
     acc_model_path: "@./acceptor.default.hfst",
     err_model_path: "@./errmodel.default.hfst",
-    config: spellcheckerConfig,
+    config: spellcheckerConfig as unknown as SpellerConfig,
   });
   x = cg3.vislcg3("postspell-valency", x, { model_path: "@./valency-postspell.cg3" });
   x = cg3.vislcg3("grc-disamb", x, { model_path: "@./grc-disambiguator.cg3" });
@@ -81,7 +82,7 @@ export function localTestTrace_dev(entry: StringEntry): Command {
   x = divvun.cgspell("speller", x, {
     acc_model_path: "@./acceptor.default.hfst",
     err_model_path: "@./errmodel.default.hfst",
-    config: spellcheckerConfig,
+    config: spellcheckerConfig as unknown as SpellerConfig,
   });
   x = cg3.vislcg3("disamb", x, { model_path: "@../../src/cg3/disambiguator.cg3", config: { trace: true } });
   x = cg3.vislcg3("spell-sugg-filtering", x, { model_path: "@./spellchecker.cg3", config: { trace: true } });
