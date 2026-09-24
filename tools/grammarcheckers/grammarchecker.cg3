@@ -4656,7 +4656,7 @@ ADD:msyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num v2 
 	## Jus baldeduvvá giddiduvvá {guokta} stuor ja buorre væráldij gaskan.
 
 # coordinated numerals
-ADD:msyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num v2 Sg Acc) IF (1 ("jali") LINK 1 Num + &msyn-numphrase-sggen OR (Num Sg Gen) LINK NOT 0 (N Coll Nom) OR ("tuvsán" Num Pl Nom) OR PL-PAIR-N LINK *1 (N Sg Gen) OR N + &msyn-numphrase-sggen BARRIER NOT-NPMOD-WITHOUT-NUM)
+ADD:msyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num v2 Sg Acc) IF (1 ("jali") OR ("ja") OR ("váj") LINK 1 Num + &msyn-numphrase-sggen OR (Num Sg Gen) LINK NOT 0 (N Coll Nom) OR ("tuvsán" Num Pl Nom) OR PL-PAIR-N LINK *1 (N Sg Gen) OR N + &msyn-numphrase-sggen BARRIER NOT-NPMOD-WITHOUT-NUM)
 (NEGATE -1 ("nr"))
 (NEGATE -1 (Dem Acc))
 (NEGATE 0 NUMUNIT LINK -1 Num OR ("moadda")) 
@@ -4671,11 +4671,11 @@ ADD:msyn-numphrase-sggen (&msyn-numphrase-sggen) TARGET (Num Sg Nom) OR (Num v2 
 	## Ienemusoasse væddjáji guhtta jali gietjav biejve birán.
 
 	#Addrelation between wrong noun and two wrong coordinated numersals
-ADDRELATION ($3 LEFT) (N &msyn-numphrase-sggen) TO (*-3 (Num &msyn-numphrase-sggen) BARRIER (*) - ("jali") - Attr - Num );
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sggen) TO (*-3 (Num &msyn-numphrase-sggen) BARRIER (*) - ("jali") - ("ja") - ("váj") - Attr - Num );
 	## Ållessjattugin la dujna rievtesvuohta jahkásasj bádnesujttodoarjjagij akta jali guokta kråvnå åvdås
 
 	#Addrelation between correct noun and two wrong coordinated numersals
-ADDRELATION ($3 LEFT) (N Sg Gen) TO (*-3 (Num &msyn-numphrase-sggen) BARRIER (*) - ("jali") - Attr - Num );
+ADDRELATION ($3 LEFT) (N Sg Gen) TO (*-3 (Num &msyn-numphrase-sggen) BARRIER (*) - ("jali") - ("ja") - ("váj") - Attr - Num );
 
 	
 #	# correct numerals (just to get the blue line)	
@@ -5268,7 +5268,7 @@ ADD:msyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Num Sg Nom) OR (Num Sg 
 ADD:num-phrase  (co&msyn-numphrase-sgill)  TARGET (Num &msyn-numphrase-sgill) IF (*1 (&msyn-numphrase-sgill) BARRIER NOT-Attr - PrfPrc);
 
 # coordinated numerals
-ADD:msyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Num Sg Nom) IF (1 ("jali") LINK 1 Num + &msyn-numphrase-sgill OR (Num Sg Gen) LINK NOT 0 (N Coll Nom) OR ("tuvsán" Num Pl Nom) OR PL-PAIR-N LINK *1 (N Sg Ill) OR N + &msyn-numphrase-sgill BARRIER NOT-NPMOD-WITHOUT-NUM)  
+ADD:msyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Num Sg Nom) IF (1 ("jali") OR ("ja") OR ("váj") LINK 1 Num + &msyn-numphrase-sgill OR (Num Sg Gen) LINK NOT 0 (N Coll Nom) OR ("tuvsán" Num Pl Nom) OR PL-PAIR-N LINK *1 (N Sg Ill) OR N + &msyn-numphrase-sgill BARRIER NOT-NPMOD-WITHOUT-NUM)  
 (NEGATE -1 POST-N-NUM + (Sg Nom))
 (NEGATE -1 CC LINK -1 Num LINK -1 POST-N-NUM + (Sg Nom))
 (NEGATE 0 (Num "<[0123456789]-.*>"r))
@@ -5283,11 +5283,11 @@ ADD:msyn-numphrase-sgill (&msyn-numphrase-sgill) TARGET (Num Sg Nom) IF (1 ("jal
 
 
 	#Addrelation between wrong noun and two wrong coordinated numersals
-ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgill) TO (*3 (Num &msyn-numphrase-sgill) BARRIER (*) - ("jali") - Num - Attr );
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgill) TO (*3 (Num &msyn-numphrase-sgill) BARRIER (*) - ("jali") - ("ja") - ("váj") - Num - Attr );
 	## sån vattij ájvijt guokta jali gålmmå gusájda.
 
 	#Addrelation between correct noun and two wrong coordinated numersals
-ADDRELATION ($3 LEFT) (N Sg Ill) TO (*3 (Num &msyn-numphrase-sgill) BARRIER (*) - ("jali") - Num - Attr );
+ADDRELATION ($3 LEFT) (N Sg Ill) TO (*3 (Num &msyn-numphrase-sgill) BARRIER (*) - ("jali") - ("ja") - ("váj") - Num - Attr );
 
 ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgill) OR NUMUNIT + &msyn-numphrase-sgill TO (*-1 (Num &msyn-numphrase-sgill) OR ("moadda" Indef &msyn-numphrase-sgill) BARRIER NOT-NPMOD); 
 
@@ -5473,7 +5473,7 @@ ADD:msyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Num Sg Nom) OR (Num v2 
 	#$ ”Kultuvrralåpptim” le 15 almma luohtádusá gånnå ájnnasabmusin le {1 %} stáhtabudsjehtas galggá aneduvvat kultuvrrasuorgen åvddål 2014.
 
 # coordinated numerals
-ADD:msyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Num Sg Nom) OR (Num Sg Gen) OR (Num v2 Sg Acc) OR (Num Sg Acc) IF (1 ("jali") LINK 1 Num + &msyn-numphrase-sgela OR (Num Sg Par) LINK NOT 0 (N Coll Nom) OR ("tuvsán" Num Pl Nom) OR PL-PAIR-N LINK *1 (N Sg Ela) OR N + &msyn-numphrase-sgela BARRIER NOT-NPMOD-WITHOUT-NUM) 
+ADD:msyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Num Sg Nom) OR (Num Sg Gen) OR (Num v2 Sg Acc) OR (Num Sg Acc) IF (1 ("jali") OR ("ja") -OR("váj") LINK 1 Num + &msyn-numphrase-sgela OR (Num Sg Par) LINK NOT 0 (N Coll Nom) OR ("tuvsán" Num Pl Nom) OR PL-PAIR-N LINK *1 (N Sg Ela) OR N + &msyn-numphrase-sgela BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE -1 POST-N-NUM + (Sg Nom))
 (NEGATE -1 CC LINK -1 Num LINK -1 POST-N-NUM + (Sg Nom))
 (NEGATE 0 (Num "<[0123456789]-.*>"r))
@@ -5488,11 +5488,11 @@ ADD:msyn-numphrase-sgela (&msyn-numphrase-sgela) TARGET (Num Sg Nom) OR (Num Sg 
 	## Goalmádis dal dijá lusi boadáv: guovte jali gålmå vihtana bágoj juohkka ássje nanniduvvá.
 
 	#Addrelation between wrong noun and two wrong coordinated numersals
-ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgela) TO (*-3 (Num &msyn-numphrase-sgela) BARRIER (*) - ("jali") - Attr - Num );
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgela) TO (*-3 (Num &msyn-numphrase-sgela) BARRIER (*) - ("jali") - ("ja") - ("váj") - Attr - Num );
 	## Ållessjattugin la dujna rievtesvuohta jahkásasj bádnesujttodoarjjagij akta jali guokta kråvnå åvdås
 
 	#Addrelation between correct noun and two wrong coordinated numersals
-ADDRELATION ($3 LEFT) (N Sg Ela) TO (*-3 (Num &msyn-numphrase-sgela) BARRIER (*) - ("jali") - Attr - Num );
+ADDRELATION ($3 LEFT) (N Sg Ela) TO (*-3 (Num &msyn-numphrase-sgela) BARRIER (*) - ("jali") - ("ja") - ("váj") - Attr - Num );
 
 
 	# relation from main noun to the first coordinated noun
@@ -5519,7 +5519,7 @@ COPY:msyn-numphrase-sgela (Sg Par SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sgela)
 COPY:msyn-numphrase-sgela (Sg Par SUGGEST) EXCEPT (Sg Ill Attr &msyn-numphrase-sgela) OR (Sg Gen &msyn-numphrase-sgela) OR (Sg Acc &msyn-numphrase-sgela) TARGET ("moadda" &msyn-numphrase-sgela) IF (*1 (N Pl Ela) + &msyn-numphrase-sgela OR (Sg Ela) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) OR ("tuvsán" Num Pl Nom)) ;
 
 
-COPY:msyn-numphrase-sgela (Sg Par SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sgela) OR (v2 Sg Nom &msyn-numphrase-sgela) OR (Pl Nom &msyn-numphrase-sgela) OR (Pl Ela &msyn-numphrase-sgela) OR (Sg Gen &msyn-numphrase-sgela) OR (v2 Sg Acc &msyn-numphrase-sgela) TARGET (Num &msyn-numphrase-sgela) IF (1 ("jali") LINK 1 (Num &msyn-numphrase-sgela)) ;
+COPY:msyn-numphrase-sgela (Sg Par SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sgela) OR (v2 Sg Nom &msyn-numphrase-sgela) OR (Pl Nom &msyn-numphrase-sgela) OR (Pl Ela &msyn-numphrase-sgela) OR (Sg Gen &msyn-numphrase-sgela) OR (v2 Sg Acc &msyn-numphrase-sgela) TARGET (Num &msyn-numphrase-sgela) IF (1 ("jali") OR ("ja") OR ("váj") LINK 1 (Num &msyn-numphrase-sgela)) ;
 	
     #$ Akta dåjmajs le	doajmmaruhtadårjav lasedit ja giellakursajda stuoves ruhtadimev gávnnat.
     #$ Akta oajvveságajs giellalåpptimin	la , nanos låpptim sámegielaj gáktuj hæhttu sáme sebrudahka aktan dahkat.
@@ -5723,7 +5723,7 @@ ADD:msyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Num Pl Ine) OR (Num Sg 
 	## Tjoahkkáj li dájn {niellja} buorre ja stuor sajijn, Mortensnesajn oajvvebájkken, sierralágásj buojkulvisá årromij, bivddemij ja åsskuj Arktalasj guovlojn 12000 jagij tjadá.
 
 # coordinated numerals
-ADD:msyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) OR (Num Sg Gen) OR (Num Sg Nom) IF (1 ("jali") LINK 1 Num + &msyn-numphrase-sgine OR (Num Sg Ine) LINK NOT 0 (N Coll Nom) OR ("tuvsán" Num Pl Nom) OR PL-PAIR-N LINK *1 Num + &msyn-numphrase-sgine OR (N Sg Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) 
+ADD:msyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num Sg Acc) OR (Num Sg Gen) OR (Num Sg Nom) IF (1 ("jali") OR ("ja") OR ("váj") LINK 1 Num + &msyn-numphrase-sgine OR (Num Sg Ine) LINK NOT 0 (N Coll Nom) OR ("tuvsán" Num Pl Nom) OR PL-PAIR-N LINK *1 Num + &msyn-numphrase-sgine OR (N Sg Ine) BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE -1 POST-N-NUM + (Sg Nom))
 (NEGATE -1 CC LINK -1 Num LINK -1 POST-N-NUM + (Sg Nom))
 (NEGATE 0 (Num "<[0123456789]-.*>"r))
@@ -5738,11 +5738,11 @@ ADD:msyn-numphrase-sgine (&msyn-numphrase-sgine) TARGET (Num Pl Ine) OR (Num Sg 
 	## Goalmádis dal dijá lusi boadáv: guovte jali gålmå vihtana bágoj juohkka ássje nanniduvvá.
 
 	#Addrelation between wrong noun and two wrong coordinated numersals
-ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgine) TO (*-3 (Num &msyn-numphrase-sgine) BARRIER (*) - ("jali") - Attr - Num);
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgine) TO (*-3 (Num &msyn-numphrase-sgine) BARRIER (*) - ("jali") - ("ja") - ("váj") - Attr - Num);
 	## Ållessjattugin la dujna rievtesvuohta jahkásasj bádnesujttodoarjjagij akta jali guokta kråvnå åvdås
 
 	#Addrelation between correct noun and two wrong coordinated numersals
-ADDRELATION ($3 LEFT) (N Sg Ine) TO (*-3 (Num &msyn-numphrase-sgine) BARRIER (*) - ("jali") - Attr - Num);
+ADDRELATION ($3 LEFT) (N Sg Ine) TO (*-3 (Num &msyn-numphrase-sgine) BARRIER (*) - ("jali") - ("ja") - ("váj") - Attr - Num);
 
 	# relation from main noun to the first coordinated noun
 ADDRELATION ($4 RIGHT) (N &msyn-numphrase-sgine) OR NUMUNIT + &msyn-numphrase-sgine TO (*1 CC OR COMMA BARRIER NOT-NPMOD LINK *1 (N &msyn-numphrase-sgine) OR NUMUNIT + &msyn-numphrase-sgine BARRIER NOT-NPMOD ); 
@@ -5994,7 +5994,7 @@ ADD:msyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Num Pl Ine) OR (Num Sg 
 	## Tjoahkkáj li dájn {niellja} buorre ja stuor sajijn, Mortensnesajn oajvvebájkken, sierralágásj buojkulvisá årromij, bivddemij ja åsskuj Arktalasj guovlojn 12000 jagij tjadá.
 	
 # coordinated numerals
-ADD:msyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num v2 Sg Acc) OR (Num Sg Nom) IF (1 ("jali") LINK 1 Num + &msyn-numphrase-sgcom OR (n Sg Com) LINK NOT 0 (N Coll Nom) OR ("tuvsán" Num Pl Nom) OR PL-PAIR-N LINK *1 (N Sg Com) OR N + &msyn-numphrase-sgcom BARRIER NOT-NPMOD-WITHOUT-NUM) 
+ADD:msyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Num Pl Ine) OR (Num Sg Com) OR (Num Pl Nom) OR (Num v2 Sg Acc) OR (Num Sg Nom) IF (1 ("jali") OR ("ja") OR ("váj") LINK 1 Num + &msyn-numphrase-sgcom OR (n Sg Com) LINK NOT 0 (N Coll Nom) OR ("tuvsán" Num Pl Nom) OR PL-PAIR-N LINK *1 (N Sg Com) OR N + &msyn-numphrase-sgcom BARRIER NOT-NPMOD-WITHOUT-NUM) 
 (NEGATE -1 POST-N-NUM + (Sg Nom))
 (NEGATE -1 CC LINK -1 Num LINK -1 POST-N-NUM + (Sg Nom))
 (NEGATE 0 (Num "<[0123456789]-.*>"r))
@@ -6009,11 +6009,11 @@ ADD:msyn-numphrase-sgcom (&msyn-numphrase-sgcom) TARGET (Num Pl Ine) OR (Num Sg 
 	## Goalmádis dal dijá lusi boadáv: guovte jali gålmå vihtana bágoj juohkka ássje nanniduvvá.
 
 	#Addrelation between wrong noun and two wrong coordinated numersals
-ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgcom) TO (*-3 (Num &msyn-numphrase-sgcom) BARRIER (*) - ("jali") - Attr - Num );
+ADDRELATION ($3 LEFT) (N &msyn-numphrase-sgcom) TO (*-3 (Num &msyn-numphrase-sgcom) BARRIER (*) - ("jali") - ("ja") - ("váj") - Attr - Num );
 	## Ållessjattugin la dujna rievtesvuohta jahkásasj bádnesujttodoarjjagij akta jali guokta kråvnå åvdås
 
 	#Addrelation between correct noun and two wrong coordinated numersals
-ADDRELATION ($3 LEFT) (N Sg Com) TO (*-3 (Num &msyn-numphrase-sgcom) BARRIER (*) - ("jali") - Attr - Num );
+ADDRELATION ($3 LEFT) (N Sg Com) TO (*-3 (Num &msyn-numphrase-sgcom) BARRIER (*) - ("jali") - ("ja") - ("váj") - Attr - Num );
 
 	# relation from main noun to the coordinated nouns $4
 ADDRELATION ($4 RIGHT) (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom TO (*1 CC OR COMMA BARRIER NOT-NPMOD LINK *1 (N &msyn-numphrase-sgcom) OR NUMUNIT + &msyn-numphrase-sgcom BARRIER NOT-NPMOD );
