@@ -5,8 +5,8 @@
 numphrase-error = Numphrase error
     .desc = The numphrase is incorrect, it dosn't follow agreement rules.
 
-## Default patterns: re:msyn-dem-noun.*
-numphrase-error = Error with demonstrative pronoun
+## Default patterns: re:msyn-dem-noun-.*
+demonstrative-error = Error with demonstrative pronoun
     .desc = The demonstarive pronoun must agree.
 
 ## Default patterns: re:syn-attr-pred.*

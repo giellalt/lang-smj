@@ -5,9 +5,9 @@
 numphrase-error = Tállabáhkovihke
     .desc = Dån la dávk tjállám vigev tállabáhkogihpon.
 
-## Default patterns: re:msyn-dem-noun.*
-numphrase-error = Vihke tsuojggompronåvmåjn
-    .desc = Tsuojggompronåvmmå ja báhko masi dat vuoset ælla sæmmi hámen.
+## Default patterns: re:msyn-dem-noun-.*
+demonstrative-error = Vihke tsuojggompronåvmåjn
+    .desc = Tsuojggompronåvmmå ja nåvmmå ælla sæmmi hámen.
 
 ## Default patterns: re:syn-attr-pred.*
 adjective-should-be-predicative = Adjektijvva galggá predikatijva hámen
@@ -76,5 +76,5 @@ ellipsis = Ellipsa
 syn-pred-attr = Adjektijvva galggá attributijva hámen
     .desc = Adjektijvva {$1} l predikatijva hámen, galggá attributijva hámen.
 
-msyn-dates-from-arab-num-to-ord = Biejvedimen adná rájddotállav
+msyn-dates-from-arab-num-to-ord = Biejvedimen galggá rájddotálla
     .desc = Biejvedimen {$1} galggá liehket rájddotálla.
