@@ -115,6 +115,44 @@ WORD_REPLACEMENTS=yes
 		| $(HFST_CONCATENATE) - .generated/anystar.hfst   \
 		-o $@
 
+# String edits learnt from the lexicon's +Err/Orth entries, desktop only.
+# strings.errorth.regex is generated from test/typos-generated-err.tsv by
+# extract-errorth-strings.py (make errorth-regen): each misspelling is reduced
+# to the part that differs, with three letters of context, so the rule also
+# corrects inflected forms and compounds the lexicon lists no error for. It
+# never adds a whole-word correction. The weights (10, 5 for rules found only
+# in pairs with two differences and for longer corrections, 15 for deletions)
+# held up against four alternatives on held-out typos.
+.generated/strings.errorth.desktop.hfst: strings.errorth.regex \
+										 .generated/anystar.hfst
+	$(AM_V_RGX2FST)$(HFST_REGEXP2FST) -S $(HFST_FLAGS) -i $< \
+		| $(HFST_CONCATENATE)   .generated/anystar.hfst - \
+		| $(HFST_CONCATENATE) - .generated/anystar.hfst   \
+		| $(HFST_REPEAT) -f 1 -t $(STRING_REGEX_EDIT_DISTANCE) \
+		-o $@
+
+# The edit distance assembly, as in giella-core, plus the rules above. The
+# mobile error model reads strings.all directly and so stays without them.
+.generated/editdist.all.default.desktop.hfst \
+.generated/editdist.all.NO.desktop.hfst \
+.generated/editdist.all.SE.desktop.hfst: \
+.generated/editdist.all.%.desktop.hfst: \
+			.generated/strings.all.%.desktop.hfst \
+			.generated/strings.errorth.desktop.hfst \
+			.generated/editdist.%.hfst
+	$(AM_V_UNION)$(HFST_DISJUNCT) \
+			.generated/strings.all.$*.desktop.hfst \
+			.generated/strings.errorth.desktop.hfst \
+		| $(HFST_DISJUNCT) - .generated/editdist.$*.hfst \
+		| $(HFST_REPEAT) -f 1 -t $(EDIT_DISTANCE) \
+		-o $@
+
+errorth-regen: $(srcdir)/test/typos-generated-err.tsv
+	$(AM_V_GEN)$(PYTHON) $(srcdir)/extract-errorth-strings.py \
+		-i $< -o $(srcdir)/strings.errorth.regex --stats /dev/null
+
+.PHONY: errorth-regen
+
 ### End Local build rules ###
 
 # vim: set ft=automake:
