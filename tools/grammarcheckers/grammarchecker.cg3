@@ -4675,7 +4675,7 @@ ADDRELATION ($3 LEFT) (N &msyn-numphrase-sggen) TO (*-3 (Num &msyn-numphrase-sgg
 	## Ållessjattugin la dujna rievtesvuohta jahkásasj bádnesujttodoarjjagij akta jali guokta kråvnå åvdås
 
 	#Addrelation between correct noun and two wrong coordinated numersals
-ADDRELATION ($3 LEFT) (N Sg Gen) TO (*-3 (Num &msyn-numphrase-sggen) BARRIER (*) - ("jali") - ("ja") - ("váj") - Attr - Num );
+#ADDRELATION ($3 RIGHT) (Num &msyn-numphrase-sggen) TO (*3 (N Sg Gen) - &msyn-numphrase-sggen BARRIER (*) - ("jali") - ("ja") - ("váj") - Attr - Num LINK NEGATE 0 &msyn-numphrase-sggen);
 
 	
 #	# correct numerals (just to get the blue line)	
@@ -4695,9 +4695,14 @@ ADDRELATION ($2 LEFT) (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sgg
 ADDRELATION ($2 LEFT) (N &msyn-numphrase-sggen) OR NUMUNIT + &msyn-numphrase-sggen TO (*-1 (Num Sg Gen) - &msyn-numphrase-sggen - Sem/Date OR ("moadda" Indef Sg Gen) - &msyn-numphrase-sggen - Sem/Date BARRIER NOT-NPMOD LINK NOT 0 &msyn-numphrase-sggen);
 	## mån vuojnáv guokta bednaga guovte {bievdij} duogen.
 
+
 # correct nouns that get associated with wrong numerals (to get a longer blue line)
-ADDRELATION ($2 RIGHT) (Num &msyn-numphrase-sggen) OR ("moadda" Indef &msyn-numphrase-sggen) TO (*1 (N Sg Gen) - &msyn-numphrase-sggen OR NUMUNIT + (Sg Gen) - &msyn-numphrase-sggen BARRIER NOT-NPMOD LINK NOT 0 &msyn-numphrase-sggen);
+ADDRELATION ($2 RIGHT) (Num &msyn-numphrase-sggen) OR ("moadda" Indef &msyn-numphrase-sggen) TO (*1 (N Sg Gen) - &msyn-numphrase-sggen OR NUMUNIT + (Sg Gen) - &msyn-numphrase-sggen BARRIER NOT-NPMOD OR CC LINK NOT 0 &msyn-numphrase-sggen);
 	## mån vuojnáv guokta bednaga {guokta} bievde duogen. 
+	
+# coordinated numerals to the left of the main erroneous numeral with a correct noun
+
+ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sggen) OR ("moadda" Indef &msyn-numphrase-sggen) (*1 (N Sg Gen) - &msyn-numphrase-sggen OR NUMUNIT + (Sg Gen) - &msyn-numphrase-sggen BARRIER NOT-NPMOD OR CC LINK NOT 0 &msyn-numphrase-sggen) TO (-1 CC LINK -1 (Num &msyn-numphrase-sggen) OR ("moadda" Indef &msyn-numphrase-sggen));
 
 
 COPY:msyn-numphrase-sggen (Sg Gen SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sggen) OR (v2 Sg Nom &msyn-numphrase-sggen) OR (v2 Sg Acc &msyn-numphrase-sggen) OR (Pl Gen &msyn-numphrase-sggen) OR (Pl Com &msyn-numphrase-sggen) TARGET (Num &msyn-numphrase-sggen) IF (0 (Sg Nom) OR (Sg Acc) OR (Pl Com) OR (Pl Gen)) ;
@@ -5509,7 +5514,11 @@ ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sge
 ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgela) OR NUMUNIT + &msyn-numphrase-sgela TO (*-1 (Num Sg Ela Attr) - &msyn-numphrase-sgela - Sem/Date OR (Num Sg Par) - &msyn-numphrase-sgela - Sem/Date OR ("moadda" Indef Sg Ela Attr) - &msyn-numphrase-sgela - Sem/Date OR ("moadda" Indef Sg Par) - &msyn-numphrase-sgela - Sem/Date  BARRIER NOT-NPMOD LINK NOT 0 &msyn-numphrase-sgela);
 
 	# correct nouns that get associated with wrong numerals (to get a longer blue line)
-ADDRELATION ($2 RIGHT) (Num &msyn-numphrase-sgela) OR ("moadda" Indef &msyn-numphrase-sgela) TO (*1 (N Sg Ela) - &msyn-numphrase-sgela OR NUMUNIT + (Sg Ela) - &msyn-numphrase-sgela BARRIER NOT-NPMOD LINK NOT 0 &msyn-numphrase-sgela);
+ADDRELATION ($2 RIGHT) (Num &msyn-numphrase-sgela) OR ("moadda" Indef &msyn-numphrase-sgela) TO (*1 (N Sg Ela) - &msyn-numphrase-sgela OR NUMUNIT + (Sg Ela) - &msyn-numphrase-sgela BARRIER NOT-NPMOD OR CC LINK NOT 0 &msyn-numphrase-sgela);
+
+# coordinated numerals to the left of the main erroneous numeral with a correct noun
+
+ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sgela) OR ("moadda" Indef &msyn-numphrase-sgela) (*1 (N Sg Ela) - &msyn-numphrase-sgela OR NUMUNIT + (Sg Ela) - &msyn-numphrase-sgela BARRIER NOT-NPMOD OR CC LINK NOT 0 &msyn-numphrase-sgela) TO (-1 CC LINK -1 (Num &msyn-numphrase-sgela) OR ("moadda" Indef &msyn-numphrase-sgela));
 
 COPY:msyn-numphrase-sgela (Sg Par SUGGEST) EXCEPT (Sg Nom &msyn-numphrase-sgela) OR (v2 Sg Nom &msyn-numphrase-sgela) OR (Pl Nom &msyn-numphrase-sgela) OR (Pl Ela &msyn-numphrase-sgela) OR (Sg Gen &msyn-numphrase-sgela) OR (v2 Sg Acc &msyn-numphrase-sgela) TARGET (Num &msyn-numphrase-sgela) IF (*1 (N Pl Ela) + &msyn-numphrase-sgela OR (Sg Ela) BARRIER NOT-Attr - PrfPrc LINK NOT 0 (N Coll Nom) OR ("tuvsán" Num Pl Nom)) ;
 	## {Låge} åhtsåmusás li gietjav åhtsåmusá árbbedábálasj juojggusav almodittjat.
@@ -5757,9 +5766,11 @@ ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgine) OR NUMUNIT + &msyn-numphrase-sgi
 ADDRELATION ($2 LEFT) (N &msyn-numphrase-sgine) OR NUMUNIT + &msyn-numphrase-sgine TO (*-1 (Num Sg Ine) - &msyn-numphrase-sgine - Sem/Date OR (Num Sg Ine Atrr) - &msyn-numphrase-sgine - Sem/Date OR ("moadda" Indef Sg Ine) BARRIER NOT-NPMOD LINK NOT 0 &msyn-numphrase-sgcom OR &msyn-numphrase-sgine);
 
 # correct nouns that get associated with wrong numerals (to get a longer blue line)
-ADDRELATION ($2 RIGHT) (Num &msyn-numphrase-sgine) OR ("moadda" Indef &msyn-numphrase-sgine) (NEGATE -1 (Dem Pl Ine)) TO (*1 (N Sg Ine) - &msyn-numphrase-sgine OR NUMUNIT + (Sg Ine) - &msyn-numphrase-sgine LINK NOT 0 &msyn-numphrase-sgcom OR &msyn-numphrase-sgine);
+ADDRELATION ($2 RIGHT) (Num &msyn-numphrase-sgine) OR ("moadda" Indef &msyn-numphrase-sgine) (NEGATE -1 (Dem Pl Ine)) TO (*1 (N Sg Ine) - &msyn-numphrase-sgine OR NUMUNIT + (Sg Ine) - &msyn-numphrase-sgine BARRIER NOT-NPMOD OR CC LINK NOT 0 &msyn-numphrase-sgcom OR &msyn-numphrase-sgine);
 
+# coordinated numerals to the left of the main erroneous numeral with a correct noun
 
+ADDRELATION ($3 LEFT) (Num &msyn-numphrase-sgine) OR ("moadda" Indef &msyn-numphrase-sgine) (*1 (N Sg Ine) - &msyn-numphrase-sgine OR NUMUNIT + (Sg Ine) - &msyn-numphrase-sgine BARRIER NOT-NPMOD OR CC LINK NOT 0 &msyn-numphrase-sgine) TO (-1 CC LINK -1 (Num &msyn-numphrase-sgine) OR ("moadda" Indef &msyn-numphrase-sgine));
 
 
 
