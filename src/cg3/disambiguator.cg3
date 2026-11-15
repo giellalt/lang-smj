@@ -507,7 +507,7 @@ LIST ALL  = N A Adv V Pron CS CC Adp Po Pr Interj Pcle Pers Dem Interr Refl Reci
 # -----------------
 # (Check these sets)
 
-LIST N-DER = Der/Dimin Der/k Der/lasj Der/r Der/NomAct Der/mus Der/NomAct Der/dahka Der/NomAg Der/vuota ;
+LIST N-DER = Der/Dimin Der/k Der/lasj Der/r Der/NomAct Der/mus Der/NomAct Der/dahka Der/NomAg Der/vuota prsprc ;
 
 LIST V-DER = Der/PassL Der/PassS Der/PassD Der/adda Der/ahtja Der/ahttjá Der/Caus Der/alla Der/asste Der/d Der/dalla Der/dasste Der/l Der/ladda Der/lahtte Der/lasste Der/st Der/stahtte Der/stalla Der/stasste Der/tj Der/u/a/åd Der/dahtte Der/duhtte Der/duvva Der/InchL  ;
 
@@ -1236,6 +1236,9 @@ SELECT:SemYear Sem/Year (0 Num)(NOT -1 CURRENCY)(NOT 1 CURRENCY OR MEASURE) ;
 SELECT:SemYear Sem/Year (0 Num)(NOT -1 CURRENCY)(1 Po) ;
 REMOVE:SemYear Sem/Year (0 Num) ((-1 CURRENCY) OR (1 CURRENCY OR MEASURE)) ;
 REMOVE:SemPhonenr Sem/Phonenr (0 Num) ; #vi fjerner alle inntil videre
+REMOVE:PlSem/Year Pl (0 Sem/Year + Nom) ;
+#SELECT:NomSem/Year Nom (0 Sem/Year LINK -1 ADVLCASE) ;
+SELECT:NomSem/Year Nom (0 Sem/Year) ;
 
 SELECT:Sem/Date  Sem/Date + Nom ; #foreløpig, for MT 
 
@@ -1759,6 +1762,9 @@ REMOVE ("Dan") (0 ("dat")) ; # NT
 # =========================== #
 
 SELECT Dem (0 Pers + $$CASE LINK 1 N + $$CASE) ;
+
+SELECT $$CASE + Attr (0 Dem LINK 1 N + $$CASE) ;
+
 
 SELECT (Pers Gen) (0 Dem)(1 ("diehti")) ;
 
@@ -3501,7 +3507,7 @@ SELECT (Sg Gen) IF (*-1C (Dem Sg Gen) BARRIER NOT-ADJ)(NEGATE 0 VFIN)(0 N);
 SELECT (Sg Gen) IF (0 Prop)(1 (N Nom) LINK NOT 0 Prop);
 	## Josef la Maria ålmåj.
     
-REMOVE Nom IF (NEGATE 0 TITLE)(0 N)(1C Nom);
+REMOVE Nom IF (NEGATE 0 TITLE)(0 N)(1C Nom LINK NEGATE 0 Arab);
 	## Valla dáv ájádaládijn Härrá ieŋŋgil Josefij niegon bihkusij ja javlaj:
         
 SELECT (Sg Gen) IF (-1C Gen)(0C N)(1 N);
